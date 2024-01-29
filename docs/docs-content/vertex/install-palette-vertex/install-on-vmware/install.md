@@ -34,7 +34,8 @@ before proceeding with the installation. Refer to the
 
 - An Ubuntu Pro Subscription and token. Ubuntu Pro provides access to FIPS 140-2 certified cryptographic packages.
 
-- Review required VMware vSphere environment [permissions](vmware-system-requirements.md).
+- Review the required VMware vSphere [permissions](vmware-system-requirements.md). Ensure you have created the proper
+  custom roles and zone tags.
 
 - We recommended the following resources for Palette VerteX. Refer to the
   [Palette VerteX size guidelines](../install-palette-vertex.md#instance-sizing) for additional sizing information.
@@ -67,7 +68,7 @@ before proceeding with the installation. Refer to the
 
 - Assigned IP addresses for application workload services, such as Load Balancer services.
 
-- Shared Storage between vSphere hosts.
+- Shared Storage between VMware vSphere hosts.
 
 :::info
 
@@ -82,7 +83,7 @@ a PCG on VMware, check out the [VMware](../../../clusters/data-center/vmware.md)
 
 The video below demonstrates the installation wizard and the prompts you will encounter. Take a moment to watch the
 video before you begin the installation process. Make sure to use values that are appropriate for your environment. Use
-the **three-dot Menu** in the lower right corner of the video to expand the video to full screen and to change the
+the **three-dots Menu** in the lower right corner of the video to expand the video to full screen and to change the
 playback speed.
 
 <Tabs groupId="mode">
@@ -293,69 +294,69 @@ type `:wq` to save and exit.
         | ----------------- | ---------------------------------------------------------------------------------------- |
         | **Node Affinity** | Select the node affinity. Enter `y` to schedule all Palette pods on control plane nodes. |
 
-The installation process stands up a [kind](https://kind.sigs.k8s.io/) cluster locally that will orchestrate the
-remainder of the installation. The installation takes some time.
+    The installation process stands up a [kind](https://kind.sigs.k8s.io/) cluster locally that will orchestrate the
+    remainder of the installation. The installation takes some time.
 
-Upon completion, the enterprise cluster configuration file named `ec.yaml` contains the information you provided, and
-its location is displayed in the terminal. Credentials and tokens are encrypted in the YAML file.
+    Upon completion, the enterprise cluster configuration file named `ec.yaml` contains the information you provided,
+    and its location is displayed in the terminal. Credentials and tokens are encrypted in the YAML file.
 
-```bash hideClipboard
-==== Enterprise Cluster config saved ====
-Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml
-```
+    ```bash hideClipboard
+    ==== Enterprise Cluster config saved ====
+    Location: :/home/spectro/.palette/ec/ec-20230706150945/ec.yaml
+    ```
 
-:::tip
+    :::tip
 
-If an error occurs during installation, remove the `kind` cluster that was created and restart the installation. To
-remove the `kind` cluster, issue the following command. Replace `spectro-mgmt-cluster` with the name of your cluster if
-you used a different name.
+    If an error occurs during installation, remove the `kind` cluster that was created and restart the installation. To
+    remove the `kind` cluster, issue the following command. Replace `spectro-mgmt-cluster` with the name of your cluster
+    if you used a different name.
 
-```bash
-kind delete cluster spectro-mgmt-cluster
-```
+    ```bash
+    kind delete cluster spectro-mgmt-cluster
+    ```
 
-Restart the install process by referencing the `ec.yaml` file that was created during the first installation attempt.
-For example:
+    Restart the install process by referencing the `ec.yaml` file that was created during the first installation
+    attempt. For example:
 
-```bash
-palette ec install --config /home/spectro/.palette/ec/ec-20230706150945/ec.yaml
-```
+    ```bash
+    palette ec install --config /home/spectro/.palette/ec/ec-20230706150945/ec.yaml
+    ```
 
-:::
+    :::
 
-When the installation is complete, Enterprise Cluster Details that include a URL and default credentials are displayed
-in the terminal. You will use these to access the Palette VerteX System Console. The Palette CLI has the kubectl CLI
-included. You can find the kubectl binary in the **bin** directory of the Palette CLI configuration directory, located
-at **~/.palette/bin/kubectl**.
+    When the installation is complete, Enterprise Cluster Details that include a URL and default credentials are
+    displayed in the terminal. You will use these to access the Palette VerteX System Console. The Palette CLI has the
+    kubectl CLI included. You can find the kubectl binary in the **bin** directory of the Palette CLI configuration
+    directory, located at **~/.palette/bin/kubectl**.
 
-```bash hideClipboard
-===========================================
-==== Enterprise Cluster System Console ====
-===========================================
-Console URL: https://10.10.100.0/system
-Username:    ************
-Password:    ************
+    ```bash hideClipboard
+    ===========================================
+    ==== Enterprise Cluster System Console ====
+    ===========================================
+    Console URL: https://10.10.100.0/system
+    Username:    ************
+    Password:    ************
 
-The first of three Enterprise Cluster nodes is online and will now provision nodes two and three.
+    The first of three Enterprise Cluster nodes is online and will now provision nodes two and three.
 
-It will take another ~30-45 minutes for the installation to complete.
+    It will take another ~30-45 minutes for the installation to complete.
 
-You can monitor its progress via kubectl/k9s or by viewing the system console.
+    You can monitor its progress via kubectl/k9s or by viewing the system console.
 
-export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
-```
+    export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
+    ```
 
-17. Copy the URL to the browser to access the system console. You will be prompted to reset the password.
+17. Copy the URL and paste it in your browser's URL field to access the system console. You will be prompted to reset.
 
-:::info
+    :::info
 
-The first time you visit the Palette VerteX system console, a warning message about an untrusted SSL certificate may
-appear. This is expected, as you have not yet uploaded your SSL certificate to Palette VerteX. You can ignore this
-warning message and proceed.
+    The first time you visit the Palette VerteX system console, a warning message about an untrusted SSL certificate may
+    appear. This is expected, as you have not yet uploaded your SSL certificate to Palette VerteX. You can ignore this
+    warning message and proceed.
 
-:::
+    :::
 
-![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.png)
+    ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.png)
 
 18. Log in to the System Console using the credentials provided in the Enterprise Cluster Details output. After login,
     you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to
@@ -370,7 +371,7 @@ warning message and proceed.
 20. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../system-management/tenant-management.md) guide.
 
-![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.png)
+    ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.png)
 
 ## Validate
 
