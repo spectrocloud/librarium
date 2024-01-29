@@ -51,9 +51,8 @@ To complete this tutorial, ensure you have the following prerequisites in place:
 
 If you choose to use an OCI registry, you will need the following item.
 
-<!--- - An active OCI registry such as [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) or [Harbor](https://goharbor.io/).-->
-
-- An active OCI registry such as [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/).
+- An active OCI registry such as [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) or
+  [Harbor](https://goharbor.io/).
 
 If you opt for an ECR OCI registry, you will require the following.
 
@@ -283,7 +282,9 @@ per the [Prerequisites](#prerequisites) section, ensure you have an active OCI r
 are available: **Amazon (ECR)** and **Basic**. To learn more about Amazon ECR, consult the
 [What is ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) user guide.
 
-<!-- For Basic OCI Authentication, this tutorial uses a [Harbor registry](https://goharbor.io/) as an example. However, you have the flexibility to opt for the OCI registry of your choice. Learn how to set up a Harbor registry server using the [Harbor Installation and Configuration](https://goharbor.io/docs/2.9.0/install-config/) guide.-->
+For Basic OCI Authentication, this tutorial uses a [Harbor registry](https://goharbor.io/) as an example. However, you
+have the flexibility to opt for the OCI registry of your choice. Learn how to set up a Harbor registry server using the
+[Harbor Installation and Configuration](https://goharbor.io/docs/2.9.0/install-config/) guide.
 
 The following sections will guide you through starting the registry server, authenticating, pushing your custom add-on
 pack, and, finally, configuring the registry server in Palette. Select the tab below corresponding to the registry type
@@ -385,21 +386,26 @@ Registry.
 
 </TabItem>
 
-<!-- <TabItem label="Basic" value="Basic_Registry">
+<TabItem label="Basic" value="Basic_Registry">
 
 <br />
 
-Once you have an active Harbor registry server, access its domain on your web browser and log in using your Harbor credentials. If you have kept the default credentials, the administrator username and password are **admin** and **Harbor12345**, respectively.
+Once you have an active Harbor registry server, access its domain on your web browser and log in using your Harbor
+credentials. If you have kept the default credentials, the username and password are **admin** and **Harbor12345**,
+respectively.
 
 ![Screenshot of Harbor login](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-login.png)
 
+In the **Projects** section, click on **New Project**. A project in Harbor contains all repositories of an application.
+This tutorial uses **spectro-oci-registry** as the project name. Keep the default settings for the remaining
+configuration options and proceed by clicking **OK**.
 
-Next, go to the **Projects** section and click on **New Project**. A project in Harbor contains all repositories of an application. This tutorial uses **spectro-oci-registry** as the project name. Leave the other settings as default and click on **OK**.
+Next, create another project called **spectro-packs**. This specific project is required to complete the validation of
+your registry in Palette.
 
 ![Screenshot of Harbor project](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-project.png)
 
-
-</TabItem> -->
+</TabItem>
 
 </Tabs>
 
@@ -474,11 +480,12 @@ Login Succeeded
 
 </TabItem>
 
-<!-- <TabItem label="Basic" value="Basic_Registry">
+<TabItem label="Basic" value="Basic_Registry">
 
 <br />
 
-After creating the project, proceed with the Harbor authentication. In the tutorial container bash session, export the `HARBOR_ADDRESS` variable, which will store your Harbor address. Do not include the "https://" prefix.
+After creating the projects, proceed with the Harbor authentication. In the tutorial container bash session, export the
+`HARBOR_ADDRESS` variable, which will store your Harbor address. Do not include the "https://" prefix.
 
 ```bash
 export HARBOR_ADDRESS=<Your_Harbor_Address>
@@ -490,15 +497,16 @@ Now, issue the command `oras login`.
 oras login $HARBOR_ADDRESS
 ```
 
-You will be prompted for your Harbor username and password. If the login is successful, you will receive the following confirmation message.
+You will be prompted for your Harbor username and password. If the login is successful, you will receive the following
+confirmation message.
 
-``` hideClipboard
+```hideClipboard
 Username: admin
 Password:
 Login Succeeded
 ```
 
-</TabItem> -->
+</TabItem>
 
 </Tabs>
 
@@ -590,11 +598,12 @@ Universe pack in the repository.
 
 </TabItem>
 
-<!-- <TabItem label="Basic" value="Basic_Registry">
+<TabItem label="Basic" value="Basic_Registry">
 
 <br />
 
-Once you are authenticated to your Harbor registry, export the following variables, which you will use to create the Harbor repository and push the pack.
+Once you are authenticated to your Harbor registry, export the following variables, which you will use to create the
+Harbor repository and push the pack.
 
 - `HARBOR_PROJECT` - the name of your Harbor project. This tutorial uses **spectro-oci-registry**.
 - `NAME` - the pack's name, which must match the name in the **pack.json** file.
@@ -612,14 +621,15 @@ Next, navigate to the **packs** directory, which contains the pack folder, **hel
 cd /packs
 ```
 
-Before pushing the pack to the registry, compress the contents of the pack folder into an archive file. Issue the command below to create the archive file.
+Before pushing the pack to the registry, compress the contents of the pack folder into an archive file. Issue the
+command below to create the archive file.
 
 ```bash
 tar -czvf $NAME-$VERSION.tar.gz hello-universe-pack
 ```
 
-Harbor creates a repository when the user pushes an artifact to a project.
-Create a base path repository to store your pack repositories.
+Harbor creates a repository when the user pushes an artifact to a project. Create a base path repository to store your
+pack repositories.
 
 ```bash
 oras push $HARBOR_ADDRESS/$HARBOR_PROJECT/spectro-packs/archive
@@ -631,12 +641,14 @@ Now, proceed to create the pack repository and push the Hello Universe pack to t
 oras push $HARBOR_ADDRESS/$HARBOR_PROJECT/spectro-packs/archive/$NAME:$VERSION $NAME-$VERSION.tar.gz
 ```
 
-To confirm the presence of the pack in the repository, open your web browser, access your Harbor address, click on **Projects**, select the **spectro-oci-registry** project, and then click on the **spectro-oci-registry/spectro-packs/archive/hellouniverse** repository. You should see the pushed artifact, as shown in the image below.
+To confirm the presence of the pack in the repository, open your web browser, access your Harbor address, click on
+**Projects**, select the **spectro-oci-registry** project, and then click on the
+**spectro-oci-registry/spectro-packs/archive/hellouniverse** repository. You should see the pushed artifact, as shown in
+the image below.
 
 ![Screenshot of the Hello Universe Harbor Repository](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-repository.png)
 
-
-</TabItem> -->
+</TabItem>
 
 </Tabs>
 
@@ -721,40 +733,40 @@ the registry name and selecting **Sync**.
 
 </TabItem>
 
-<!-- <TabItem label="Basic" value="Basic_Registry">
+<TabItem label="Basic" value="Basic_Registry">
 
 <br />
 
-After pushing the pack to the Harbor registry, follow the next steps to log in to Palette and add the Harbor registry to it.
-
+After pushing the pack to the Harbor registry, follow the next steps to log in to Palette and add the Harbor registry to
+it.
 
 Log in to [Palette](https://console.spectrocloud.com) and switch to the **Tenant Admin** view.
 
-
 ![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.png)
 
-
-Navigate to the **Tenant Settings** > **Registries** > **OCI Registries** section and click on **Add New OCI Registry**. Palette will open a pop-up window prompting you for the required fields to configure an OCI registry.
+Navigate to the **Tenant Settings** > **Registries** > **OCI Registries** section and click on **Add New OCI Registry**.
+Palette will open a pop-up window prompting you for the required fields to configure an OCI registry.
 
 ![A screenshot highlighting the fields to configure an OCI registry. ](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry.png)
 
+Provide the registry name. For consistency, we suggest using the registry name **harbor-registry**. Choose **Pack** as
+the provider and select **Basic** as the OCI authentication type. Complete the **Endpoint** field with your Harbor
+registry address. Ensure to include "https://" as the prefix.
 
-Provide the registry name. For consistency, we suggest using the registry name **harbor-registry**. Choose **Pack** as the provider and select **Basic** as the OCI authentication type. Complete the **Endpoint** field with your Harbor registry address. Ensure to include "https://" as the prefix.
+Next, set the base content path as **spectro-oci-registry**, which corresponds to your Harbor project name. Then, enter
+your Harbor credentials in the **Username** and **Password** fields.
 
-Next, set the base content path as **spectro-oci-registry**, which corresponds to your Harbor project name. Then, enter your Harbor credentials in the **Username** and **Password** fields.
-
-Last, click on **Validate** to ensure the provided URL and credentials are correct. After validation, click on **Confirm** to complete the Harbor registry configuration.
-
+Last, click on **Validate** to ensure the provided URL and credentials are correct. After validation, click on
+**Confirm** to complete the Harbor registry configuration.
 
 ![Screenshot of OCI registry fields in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry-edit.png)
 
-
-Palette automatically syncs the registry. However, you can sync it manually by clicking the **three-dot Menu** next to the registry name and selecting **Sync**.
-
+Palette automatically syncs the registry. However, you can sync it manually by clicking the **three-dot Menu** next to
+the registry name and selecting **Sync**.
 
 ![Screenshot of OCI registry sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry-sync.png)
 
-</TabItem> -->
+</TabItem>
 
 </Tabs>
 
@@ -857,8 +869,7 @@ ECR registry, select **ecr-registry**.
 | ------------- | ----------------- | --------------------- | -------------- | ---------------- |
 | App Services  | Spectro Registry  | spectro-pack-registry | Hello Universe | `1.0.x`          |
 | App Services  | ECR               | ecr-registry          | Hello Universe | `1.0.x`          |
-
-<!--|App Services | Basic | harbor-registry | Hello Universe | `1.0.x` |-->
+| App Services  | Basic             | harbor-registry       | Hello Universe | `1.0.x`          |
 
 Click on the **Confirm & Create** button to finish adding the Hello Universe pack.
 
@@ -1085,8 +1096,8 @@ We recommend that you explore all Terraform files. Below is a high-level overvie
     deploy the cluster.
   - Next, provide your registry server name for the `spectro_pack_registry` variable. For example, you can use the
     **spectro-pack-registry** as the value if you have followed this tutorial's naming convention and used the Spectro
-    registry. If you used an ECR registry, set the registry server name to **ecr-registry**.
-    <!--Lastly, if you used a Harbor registry, set the registry server name to **harbor-registry**.-->
+    registry. If you used an ECR registry, set the registry server name to **ecr-registry**. Lastly, if you used a
+    Harbor registry, set the registry server name to **harbor-registry**.
 
   - Lastly, set the value of the `use_oci_registry` variable to either true or false. For instance, if you are not using
     an OCI registry, set this value to false. The default value is set to true. <br />
@@ -1272,8 +1283,8 @@ Registries** section in Palette to remove the registry configuration.
 ![Screenshot of registry server delete in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-delete.png)
 
 Now, delete the registry server. If you used the Spectro registry, stop the registry server by closing the tutorial
-container bash session that serves the Ngrok reverse proxy server. If you used the ECR registry, you must first remove
-the pack from the repository before deleting it.
+container bash session that serves the Ngrok reverse proxy server. If you used a Harbor Registry, If you used the ECR
+registry, you must first remove the pack from the repository before deleting it.
 
 Execute the following command to delete the pack from your ECR repository.
 
@@ -1327,7 +1338,8 @@ The output should provide information regarding the deleted repositories.
 }
 ```
 
-<!--Finally, if you used a Basic registry, such as Harbor, delete your Harbor registry. If you hosted the Harbor registry on a virtual machine, for example, ensure to delete the virtual machine according to your setup.-->
+If you used a Basic registry, such as Harbor, delete your Harbor registry. If you hosted the Harbor registry on a
+virtual machine, for example, ensure to delete the virtual machine according to your setup.
 
 At this point, you can close all the bash sessions. To remove the container and the image from the local machine, issue
 the following commands.
