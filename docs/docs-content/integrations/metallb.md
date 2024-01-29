@@ -132,9 +132,8 @@ charts:
 
 ### Airgap Palette and VerteX
 
-In the context of an airgap Palette or VerteX installation, the following labels must be added to the MetalLB namespace.
-These labels allow the speaker pods come up successfully. Otherwise, depending on the Kubernetes version, the speaker
-pods may get blocked by security policies.
+In the context of an airgap Palette or VerteX installation, you must add the following labels to the MetalLB namespace.
+These labels allow the speaker pods to come up successfully. Otherwise, depending on the Kubernetes version, the speaker pods may get blocked by security policies.
 
 - `pod-security.kubernetes.io/enforce: privileged`
 - `pod-security.kubernetes.io/audit: privileged`

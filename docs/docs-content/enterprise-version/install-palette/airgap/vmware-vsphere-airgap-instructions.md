@@ -9,9 +9,15 @@ tags: ["self-hosted", "enterprise", "airgap", "vmware", "vsphere"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-This guide provides instructions for preparing your airgap environment for a Palette installation, by ensuring you
-complete all the required preparatory steps shown in the diagram. The installation process is covered in the respective
-installation guides for each platform.
+This guide helps you to prepare your airgap environment for Palette VerteX installation.
+
+:::info
+
+This guide is for preparing your airgap environment only. For instructions on installing Palette VerteX on [VMware](enterprise-version/install-palette/install-on-vmware/install) or [Kubernetes](enterprise-version/install-palette/install-on-kubernetes/install), refer to their respective guides.
+
+:::
+
+The following diagram offers a general overview of the steps you will complete to prepare your airgap environment for Palette VerteX.
 
 ![Overview diagram of the pre-install steps eager-load](/vertex_airgap_vmware-vsphere-airgap-instructions_order-operations.png)
 
@@ -35,8 +41,7 @@ installation guides for each platform.
 
   - 120 GB of disk space available for the airgap support VM.
 
-- Dynamic Host Configuration Protocol (DHCP) is required for the airgap support VM so that you can access the VM with
-  SSH. You can disable DHCP or modify the IP address after the airgap support VM is deployed.
+- Configure the Dynamic Host Configuration Protocol (DHCP) to access the airgap support VM via SSH. You can disable DHCP or modify the IP address after deploying the airgap support VM.
 
 - Review the required vSphere [permissions](../install-on-vmware/vmware-system-requirements.md). Ensure you have created
   the proper custom roles and zone tags. Zone tagging is required for dynamic storage allocation across fault domains
@@ -48,9 +53,7 @@ installation guides for each platform.
 :::info
 
 Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not
-require a separate, user-installed PCG. However, you can deploy additional PCG instances as needed to support
-provisioning into remote data centers that do not have a direct incoming connection to Palette. To learn how to install
-a PCG on VMware, check out the [VMware](../../../clusters/data-center/vmware.md) guide.
+require a separate, user-installed PCG. However, you can deploy additional PCG instances to support provisioning into remote data centers without a direct incoming connection to VerteX. To learn how to install a PCG on VMware, check out the [VMware](../../../clusters/data-center/vmware.md) guide.
 
 :::
 
