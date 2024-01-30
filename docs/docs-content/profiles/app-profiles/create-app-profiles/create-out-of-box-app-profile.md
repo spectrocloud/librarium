@@ -33,15 +33,15 @@ Engine.
 
 4. Provide the following basic information for your app profile and click **Next**.
 
-| **Parameter**        | **Description**                                                                                                                                                                                           |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **App Profile Name** | A custom name for the app profile.                                                                                                                                                                        |
-| **Version**          | An optional version number for the new app profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`.                        |
-| **Description**      | Use the description to provide context about the profile.                                                                                                                                                 |
-| **Tag**              | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when apps are created from this app profile. Example: `owner` or `region`. |
+   | **Parameter**        | **Description**                                                                                                                                                                                           |
+   | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **App Profile Name** | A custom name for the app profile.                                                                                                                                                                        |
+   | **Version**          | An optional version number for the new app profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`.                        |
+   | **Description**      | Use the description to provide context about the profile.                                                                                                                                                 |
+   | **Tag**              | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when apps are created from this app profile. Example: `owner` or `region`. |
 
-To learn how to create multiple profile versions that use the same name, check out
-[Version a Cluster Profile](../modify-app-profiles/version-app-profile.md).
+   To learn how to create multiple profile versions that use the same name, check out
+   [Version a Cluster Profile](../modify-app-profiles/version-app-profile.md).
 
 5. Select one of the out-of-the-box services to start configuring your app profile. Review the
    [Out-of-the-Box Service](/devx/services/service-listings/service-listings.mdx) listing to learn more about specific
@@ -70,17 +70,17 @@ Use the following steps to validate that your app profile is available and ready
 4. Hover your cursor over each profile layer to learn more about them, including the service name, version, and
    registry.
 
-![A view of a cursor triggering the info box for each app profile layer.](/devx_app-profile_create-app-profile_app-layer-infoboxes.png)
+   ![A view of a cursor triggering the info box for each app profile layer.](/devx_app-profile_create-app-profile_app-layer-infoboxes.png)
 
-:::info
+   :::info
 
-Use the tool-tip that displays when you select a layer to gather information required for creating Terraform templates
-for app profiles. Check out our Terraform registry for
-[Application Profiles](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/application_profile).
+   Use the tool-tip that displays when you select a layer to gather information required for creating Terraform
+   templates for app profiles. Check out our Terraform registry for
+   [Application Profiles](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/application_profile).
 
-:::
+   :::
 
-6. Deploy your application to a virtual cluster to verify all the required configurations and dependencies are correct.
+5. Deploy your application to a virtual cluster to verify all the required configurations and dependencies are correct.
    Review [Create and Manage Apps](../../../devx/apps/create-app.md) to learn how to deploy an app to a virtual cluster.
    Check out the [Deploy an Application using Palette Dev Engine](../../../devx/apps/deploy-app.md) tutorial for a more
    in-depth guide.

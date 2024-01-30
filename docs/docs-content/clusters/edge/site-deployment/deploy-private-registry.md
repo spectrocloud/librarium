@@ -12,12 +12,14 @@ private registry during deployment. You can configure your cluster to pull image
 cluster creation and cluster updates. To configure a cluster to pull images from a private image registry, provide the
 registry URL and the credentials needed to authenticate with the registry in the cluster profile.
 
-:::warning
+:::danger
 
-If you have specified registry credentials in the `registryCredentials` field in the user data file during the EdgeForge
-process, the credentials provided in the cluster profile will be ignored. For more information, refer to
-[EdgeForge - Build Artifacts](../edgeforge-workflow/palette-canvos.md) and
-[Installer Configuration](../edge-configuration/installer-reference.md#external-registry).
+There is a currently a known issue with deploying clusters with a private registry where if the password used for
+authentication with the registry is only made up of alphanumerical characters, Palette will mistake it as base64 encoded
+and attempt to decode it. While this won't affect initial cluster deployment, all cluster repaves would fail because of
+incorrect credentials.
+
+To prevent this issue, ensure your registry password includes special characters such as `!`, `#`, and `*`.
 
 :::
 
@@ -60,17 +62,26 @@ process, the credentials provided in the cluster profile will be ignored. For mo
    EdgeForge process. Refer to the EdgeForge [Build Images](../edgeforge-workflow/palette-canvos.md) guide if you are
    missing a custom OS image. The following is an example configuration using the BYOOS pack with a custom OS image.
 
-```yaml
-pack:
-content:
-  images:
-    - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
-    # - image: example.io/my-other-images/example:v1.0.0
-    # - image: example.io/my-super-other-images/example:v1.0.0
+   ```yaml
+   pack:
+   content:
+   images:
+     - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
+     # - image: example.io/my-other-images/example:v1.0.0
+     # - image: example.io/my-super-other-images/example:v1.0.0
 
-options:
-  system.uri: example.io/my-images/example-custom-os:v1.4.5
-```
+   options:
+   system.uri: example.io/my-images/example-custom-os:v1.4.5
+   ```
+
+   :::warning
+
+   If you have specified registry credentials in the `registryCredentials` field in the user data file during the
+   EdgeForge process, the credentials provided in the cluster profile will be ignored. For more information, refer to
+   [EdgeForge - Build Artifacts](../edgeforge-workflow/palette-canvos.md) and
+   [Installer Configuration](../edge-configuration/installer-reference.md#external-registry).
+
+   :::
 
 6. At the root level of YAML for your OS layer, add the `providerCredentials` field to provide the credentials you need
    to authenticate with your registry. For more information about the `providerCredentials` field, refer to
@@ -79,28 +90,28 @@ options:
    providing it directly in the YAML file. For more information, refer to
    [Macros Support](../../cluster-management/macros.md):
 
-```yaml {7-16}
-pack:
-content:
-  images:
-    - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
-    # - image: example.io/my-other-images/example:v1.0.0
-    # - image: example.io/my-super-other-images/example:v1.0.0
-providerCredentials:
-  registry: <registry_domain or IP Address>
-  # - e.x. registry: registry-1.docker.io
-  user: user
-  password: ******
-  certificates: |
-    -----BEGIN CERTIFICATE-----
-    MIIDVzCCAj+gAwIBAgIRANtGPo/hFkZtYRNw0KaeW54wDQYJKoZIhvcNAQELBQAw
-    ----------------------------------------------------------------
-    7OicCaV35lje5FSl0owu74ghAlCgMyAdKsJf615g1kKO4V5E2BMErd9Ibw==
-    -----END CERTIFICATE-----
+   ```yaml {7-16}
+   pack:
+   content:
+   images:
+      - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
+      # - image: example.io/my-other-images/example:v1.0.0
+      # - image: example.io/my-super-other-images/example:v1.0.0
+   providerCredentials:
+   registry: <registry_domain or IP Address>
+   # - e.x. registry: registry-1.docker.io
+   user: user
+   password: ******
+   certificates: |
+      -----BEGIN CERTIFICATE-----
+      MIIDVzCCAj+gAwIBAgIRANtGPo/hFkZtYRNw0KaeW54wDQYJKoZIhvcNAQELBQAw
+      ----------------------------------------------------------------
+      7OicCaV35lje5FSl0owu74ghAlCgMyAdKsJf615g1kKO4V5E2BMErd9Ibw==
+      -----END CERTIFICATE-----
 
-options:
-  system.uri: example.io/my-images/example-custom-os:v1.4.5
-```
+   options:
+   system.uri: example.io/my-images/example-custom-os:v1.4.5
+   ```
 
 7. If you are updating an existing profile, click **Confirm changes**, and then click **Save changes** to publish the
    new version of your cluster profile. If you are creating a new profile, click **Next layer** and finish configuring

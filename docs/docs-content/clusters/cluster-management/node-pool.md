@@ -57,13 +57,15 @@ cluster repaves.
 The following tables contain the configuration settings for node pools. Depending on the type of node pool, some of the
 settings may not be available.
 
-### Master Node Pool
+<br />
+
+### Control Plane Node Pool
 
 | **Property**                    | **Description**                                                                                                                                                                                                  |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Node pool name**              | A descriptive name for the node pool.                                                                                                                                                                            |
-| **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool. For the master pool, this number can be 1, 3, or 5.                                                                                                         |
-| **Allow worker capability**     | Select this option to allow workloads to be provisioned on master nodes.                                                                                                                                         |
+| **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool. For the control plane pool, this number can be 1, 3, or 5.                                                                                                  |
+| **Allow worker capability**     | Select this option to allow workloads to be provisioned on control plane nodes.                                                                                                                                  |
 | **Additional Labels**           | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](taints.md#labels).      |
 | **Taints**                      | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Overview on Taints](taints.md#taints).                              |
 | **Availability Zones**          | The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
