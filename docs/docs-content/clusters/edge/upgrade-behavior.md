@@ -14,19 +14,19 @@ cluster, restarting services, or doing nothing. For more information about clust
 
 ## Upgrade Behaviors
 
-A cluster could respond to an upgrade in several ways.
+A cluster could respond to an upgrade in several ways. The table below lists the potential upgrade behaviors you could encounter.
 
 | Upgrade Behavior     | Description                                                                                                                                             |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Repave               | Repaves all nodes in the cluster, starting with the control plane.                                                                                      |
-| Reboot               | Reboots all nodes in the cluster, starting with the control plane                                                                                       |
-| Service restart      | Restarts specific services in all nodes in the cluster, starting with the control plane                                                                 |
-| Configuration reload | Updates the configurations without needing to restart services or the node. This is only triggered when you update `stage.reconcile.*` in the OS layer. |
+| Reboot               | Reboots all nodes in the cluster, starting with the control plane.                                                                                       |
+| Service restart      | Restarts specific services in all nodes in the cluster, starting with the control plane.                                                                |
+| Configuration reload | Updates the configurations without needing to restart services or the node. This is only triggered when you update `stage.reconcile.*` in the Operating System (OS) layer. |
 | No-op                | Acknowledges the update request but does nothing.                                                                                                       |
 
-## Upgrade Behavior By Change Location
+## Upgrade Behavior by Change Location
 
-Updates in the OS layer or the Kubernetes lay can trigger different upgrade behavior depending on the exact values
+Updates in the OS or Kubernetes layers can trigger different upgrade behaviors depending on the exact values
 changed.
 
 ### OS Layer
@@ -63,7 +63,7 @@ changed.
 
 ## Network Layer
 
-Changes made to the same Container Network Interface (CNI) pack typically do not result in cluster repave or reboot, and
+Changes made to the Container Network Interface (CNI) pack typically do not result in cluster repave or reboot, and
 can be applied by restarting the related networking services.
 
 :::warning
@@ -75,5 +75,5 @@ if you want to use a different CNI pack altogether, we recommend you re-create a
 
 ## Storage Layer
 
-Changes made to the storage layer typically do not result in cluster repave or reboot, and can be applied by restarting
+Changes made to the storage layer typically do not result in cluster repave or reboot and can be applied by restarting
 the related storage services.
