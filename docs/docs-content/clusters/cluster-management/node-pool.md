@@ -184,7 +184,7 @@ After you have modified a new node pool, you can validate the node pool by follo
 
 ### Prerequisites
 
-- A Palette-deployed cluster.
+- An active cluster in Palette.
 
 - Sufficient permissions to edit the cluster.
 
