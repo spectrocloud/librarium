@@ -88,16 +88,21 @@ All binaries require the OCI environment variables to be set and for the registr
 The following table lists additional OVAs that may be required depending on the Kubernetes version and distribution you
 want to use for your workload clusters.
 
-| **Kubernetes Version** | **OVA Name**                  | **Download URL**                                                                             |
-| ---------------------- | ----------------------------- | -------------------------------------------------------------------------------------------- |
-| Kubernetes 1.25.9      | u-2004-0-k-1259-fips.ova      | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1259-fips.ova`      |
-| Kubernetes 1.25.10     | u-2004-0-k-12510-fips.ova     | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-12510-fips.ova`     |
-| Kubernetes 1.26.4      | u-2004-0-k-1264-fips.ova      | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1264-fips.ova`      |
-| Kubernetes 1.26.5      | u-2004-0-k-1265-fips.ova      | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1265-fips.ova`      |
-| Kubernetes 1.27.1      | u-2004-0-k-1271-fips.ova      | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1271-fips.ova`      |
-| Kubernetes 1.27.2      | u-2004-0-k-1272-fips.ova      | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1272-fips.ova`      |
-| RKE2 1.25.10           | u-2004-0-k-rke2-1250-fips.ova | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-rke2-1250-fips.ova` |
-| RKE2 1.26.5            | u-2004-0-k-rke2-1265-fips.ova | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-rke2-1265-fips.ova` |
+| **Kubernetes Version** | **OVA Name**                   | **Download URL**                                                                              |
+| ---------------------- | ------------------------------ | --------------------------------------------------------------------------------------------- |
+| Kubernetes 1.25.9      | u-2004-0-k-1259-fips.ova       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1259-fips.ova`       |
+| Kubernetes 1.25.10     | u-2004-0-k-12510-fips.ova      | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-12510-fips.ova`      |
+| Kubernetes 1.26.4      | u-2004-0-k-1264-fips.ova       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1264-fips.ova`       |
+| Kubernetes 1.26.5      | u-2004-0-k-1265-fips.ova       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1265-fips.ova`       |
+| Kubernetes 1.26.10     | u-2004-0-k-12610-fips.ova      | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-12610-fips.ova`      |
+| Kubernetes 1.27.1      | u-2004-0-k-1271-fips.ova       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1271-fips.ova`       |
+| Kubernetes 1.27.2      | u-2004-0-k-1272-fips.ova       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1272-fips.ova`       |
+| Kubernetes 1.28.3      | u-2004-0-k-1283-fips.ova       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1283-fips.ova`       |
+| RKE2 1.25.10           | u-2004-0-k-rke2-1250-fips.ova  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-rke2-1250-fips.ova`  |
+| RKE2 1.26.5            | u-2004-0-k-rke2-1265-fips.ova  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-rke2-1265-fips.ova`  |
+| RKE2 1.26.11           | u-2004-0-k-rke2-12611-fips.ova | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-rke2-12611-fips.ova` |
+| RKE2 1.27.8            | u-2004-0-k-rke2-1278-fips.ova  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-rke2-1278-fips.ova`  |
+| RKE2 1.28.4            | u-2004-0-k-rke2-1284-fips.ova  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-rke2-1284-fips.ova`  |
 
 ### Usage Instructions
 
