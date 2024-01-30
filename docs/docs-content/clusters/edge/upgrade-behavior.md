@@ -9,8 +9,8 @@ tags: ["edge", "architecture"]
 
 When you update an active Edge cluster's profile, Palette will upgrade the active cluster to the latest version of the
 profile. Depending on the nature of the change, implementing an upgrade might involve repaving a cluster, rebooting a
-cluster, restarting services, or doing nothing. For more information about cluster repaves, refer to [Repave Behavior
-and Configurations].
+cluster, restarting services, or doing nothing. For more information about cluster repaves, refer to
+[Repave Behavior and Configurations](../cluster-management/node-pool.md#repave-behavior-and-configuration).
 
 ## Upgrade Behaviors
 
