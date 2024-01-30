@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Upgrade Behavior"
-title: "Upgrade Behavior"
+sidebar_label: "Edge Cluster Upgrade Behavior"
+title: "Edge Cluster Upgrade Behavior"
 description: "Learn about how Palette Edge responds to upgrades of the cluster profile."
 hide_table_of_contents: false
 sidebar_position: 80
@@ -9,7 +9,8 @@ tags: ["edge", "architecture"]
 
 When you update an active Edge cluster's profile, Palette will upgrade the active cluster to the latest version of the
 profile. Depending on the nature of the change, implementing an upgrade might involve repaving a cluster, rebooting a
-cluster, restarting services, or doing nothing.
+cluster, restarting services, or doing nothing. For more information about cluster repaves, refer to [Repave Behavior
+and Configurations].
 
 ## Upgrade Behaviors
 
@@ -18,8 +19,8 @@ There are five ways in which a cluster could respond to an upgrade.
 | Upgrade Behavior     | Description                                                                                                                                             |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Repave               | Repaves all nodes in the cluster, starting with the control plane.                                                                                      |
-| Reboot               | Physically reboots the cluster and all cluster services.                                                                                                |
-| Service restart      | Restarts specific Kubernetes services without affecting the whole cluster.                                                                              |
+| Reboot               | Reboots all nodes in the cluster, starting with the control plane                                                                                       |
+| Service restart      | Restarts specific services in all nodes in the cluster, starting with the control plane                                                                 |
 | Configuration reload | Updates the configurations without needing to restart services or the node. This is only triggered when you update `stage.reconcile.*` in the OS layer. |
 | No-op                | Acknowledges the update request but does nothing.                                                                                                       |
 
@@ -59,3 +60,20 @@ changed.
 </TabItem>
 
 </Tabs>
+
+## Network Layer
+
+Changes made to the same Container Network Interface (CNI) pack typically do not result in cluster repave or reboot, and
+can be applied by restarting the related networking services.
+
+:::warning
+
+Do not change to a different CNI pack after provisioning a cluster. You can make changes to the existing CNI pack, but
+if you want to use a different CNI pack altogether, we recommend you re-create another cluster.
+
+:::
+
+## Storage Layer
+
+Changes made to the storage layer typically do not result in cluster repave or reboot, and can be applied by restarting
+the related storage services.

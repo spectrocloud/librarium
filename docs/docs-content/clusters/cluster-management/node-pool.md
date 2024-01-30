@@ -27,6 +27,13 @@ have failed. You can configure the repave time interval for a node pool.
 
 Different types of repaving operations may occur, depending on what causes them:
 
+:::info
+
+This section only applies to non-Edge clusters. To learn about the upgrade behavior of Edge clusters, refer to
+[Edge Cluster Upgrade Behavior](../edge/upgrade-behavior.md).
+
+:::
+
 - **Control plane repave**: This takes place when certain changes are made to the Kubernetes configuration, such as
   changing the **apiServer** specification. This type of repave also occurs when there are changes in the hardware
   specifications of the control plane nodes, such as during a node scale-up operation or when changing from one instance
