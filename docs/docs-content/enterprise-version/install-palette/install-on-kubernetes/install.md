@@ -33,7 +33,7 @@ information.
   `kubectl` commands and have sufficient permissions to install Palette. We recommend using a role with cluster-admin
   permissions to install Palette.
 
-- `unzip` or similar utility is installed and available to extract the Helm Charts.
+- Ensure `unzip` or a similar extraction utility is installed on your system.
 
 - The Kubernetes cluster must be set up on a supported version of Kubernetes, which includes versions v1.25 to v1.27.
 
