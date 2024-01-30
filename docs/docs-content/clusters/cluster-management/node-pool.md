@@ -29,8 +29,8 @@ Different types of repaving operations may occur, depending on what causes them:
 
 :::info
 
-This section only applies to non-Edge clusters. To learn about the upgrade behavior of Edge clusters, refer to
-the [Edge Cluster Upgrade Behavior](../edge/upgrade-behavior.md) page.
+This section only applies to non-Edge clusters. To learn about the upgrade behavior of Edge clusters, refer to the
+[Edge Cluster Upgrade Behavior](../edge/upgrade-behavior.md) page.
 
 :::
 
