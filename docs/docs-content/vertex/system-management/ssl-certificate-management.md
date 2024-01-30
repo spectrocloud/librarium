@@ -23,10 +23,6 @@ functionality.
 
 :::
 
-## Upload an SSL Certificate
-
-You can upload an SSL certificate in Palette VerteX by using the following steps.
-
 ## Prerequisites
 
 - Access to the Palette VerteX system console.
@@ -40,6 +36,8 @@ You can upload an SSL certificate in Palette VerteX by using the following steps
 
 ## Enablement
 
+You can upload an SSL certificate in Palette VerteX by using the following steps.
+
 1. Log in to the Palette VerteX system console.
 
 2. Navigate to the left **Main Menu** and select **Administration**.
@@ -52,11 +50,7 @@ You can upload an SSL certificate in Palette VerteX by using the following steps
 
 6. Copy and paste the certificate authority into the **Certificate authority** field.
 
-<br />
-
-![A view of the certificate upload screen](/vertex_system-management_ssl-certifiacte-management_certificate-upload.png)
-
-<br />
+   ![A view of the certificate upload screen](/vertex_system-management_ssl-certifiacte-management_certificate-upload.png)
 
 7. Save your changes.
 
@@ -66,8 +60,6 @@ VerteX will refresh its listening ports and start using the new certificate.
 ## Validate
 
 You can validate that your certificate is uploaded correctly by using the following steps.
-
-<br />
 
 1. Log out of the Palette VerteX system console. If you are already logged in, log out and close your browser session.
    Browsers cache connections and may not use the newly enabled HTTPS connection. Closing your existing browser session
