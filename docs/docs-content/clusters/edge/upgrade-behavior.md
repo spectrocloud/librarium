@@ -14,7 +14,7 @@ cluster, restarting services, or doing nothing. For more information about clust
 
 ## Upgrade Behaviors
 
-There are five ways in which a cluster could respond to an upgrade.
+A cluster could respond to an upgrade in several ways.
 
 | Upgrade Behavior     | Description                                                                                                                                             |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
