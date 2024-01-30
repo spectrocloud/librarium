@@ -198,11 +198,11 @@ After you have modified a new node pool, you can validate the node pool by follo
 
 4.  Click **Updates**.
 
-    ![](/clusters_cluster-management_node-pool_cluster-updates-highlight.png)
+    ![Cluster overview page with the highlighted Updates button](/clusters_cluster-management_node-pool_cluster-updates-highlight.png)
 
 5.  Review and, optionally, override changes that the repave introduces.
 
-    ![](/clusters_cluster-management_node-pool_available-updates-modal.png)
+    ![Preview of repave updates in the Palette editor](/clusters_cluster-management_node-pool_available-updates-modal.png)
 
 6.  Click **Confirm updates**.
 
@@ -216,4 +216,4 @@ After you have modified a new node pool, you can validate the node pool by follo
 
 4. Verify that all compute instances are in the healthy status and reflect the applied repave changes.
 
-   ![](/clusters_cluster-management_node-pool_cluster-nodes-healthy.png)
+   ![Cluster nodes page with all nodes in the healthy status](/clusters_cluster-management_node-pool_cluster-nodes-healthy.png)
