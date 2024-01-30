@@ -77,8 +77,7 @@ VerteX installation.
 
 - [ ] Download the Certificate Authority (CA) certificate from your OCI registry.
 
-- [ ] Set the required environment variables for the airgap setup binary. Refer to step 8 in the
-      [Preparation](#preperation) section for information.
+- [ ] Set the required environment variables for the airgap setup binary.
 
 - [ ] Started the airgap setup binary and verified the setup completed successfully
 
