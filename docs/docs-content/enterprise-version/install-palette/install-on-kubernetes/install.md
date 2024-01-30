@@ -654,7 +654,7 @@ Ensure you have configured the **values.yaml** file with the required parameters
    TEST SUITE: None
    ```
 
-6. This step is only required if you are installing Palette in an enviroment where a network proxy must be configured
+6. This step is only required if you are installing Palette in an environment where a network proxy must be configured
    for Palette to access the internet. If you are not using a network proxy, skip to the next step.
 
    Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in the
