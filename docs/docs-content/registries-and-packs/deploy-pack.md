@@ -44,8 +44,9 @@ To complete this tutorial, ensure you have the following prerequisites in place:
   [Add an AWS Account to Palette](https://docs.spectrocloud.com/clusters/public-cloud/aws/add-aws-accounts) guide for
   instructions.
 - An SSH key available in the region where you plan to deploy the cluster.
-- [Docker Desktop](https://docs.docker.com/get-docker/) installed on your local machine to start the tutorial container.
-- Basic knowledge of Docker containers and Kubernetes manifest file attributes. Refer to the
+- [Docker](https://docs.docker.com/get-docker/) or [Podman](https://podman.io/docs/installation) installed on your local
+  machine to start the tutorial container.
+- Basic knowledge of containers and Kubernetes manifest file attributes. Refer to the
   [Docker Get Started](https://docs.docker.com/get-started/) guide and the
   [Learn Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/) tutorial to start learning.
 
@@ -79,11 +80,15 @@ infrastructure to avoid additional charges.
 
 ## Set Up the Tutorial Environment
 
-In this tutorial, you will work in a Docker container pre-configured with the necessary tools. Alternatively, you can
-choose to follow along with the tutorial in any `linux/amd64` or `x86_64` environment by installing the
+In this tutorial, you will work in a container pre-configured with the necessary tools. Alternatively, you can choose to
+follow along with the tutorial in any `linux/amd64` or `x86_64` environment by installing the
 [required tools](https://github.com/spectrocloud/tutorials/blob/main/docs/docker.md#docker) and cloning the
 [GitHub repository](https://github.com/spectrocloud/tutorials/) that contains the tutorial files. To initialize the
 tutorial container, follow the steps described below.
+
+<Tabs>
+
+<TabItem label="Docker" value="Docker">
 
 Start Docker Desktop on your local machine and ensure that the Docker daemon is available by issuing a command to list
 the currently active containers.
@@ -104,6 +109,33 @@ Next, start the container and open a bash session into it.
 ```bash
 docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.2 bash
 ```
+
+</TabItem>
+
+<TabItem label="Podman" value="Podman">
+
+Ensure that Podman is available by issuing a command to list the currently active containers.
+
+```bash
+podman ps
+```
+
+Use the following command to download the `ghcr.io/spectrocloud/tutorials:1.1.2` image to your local machine. This image
+includes the necessary tools.
+
+```bash
+podman pull ghcr.io/spectrocloud/tutorials:1.1.2
+```
+
+Next, start the container and open a bash session into it.
+
+```bash
+podman run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.2 bash
+```
+
+</TabItem>
+
+</Tabs>
 
 If the port 7000 on your local machine is unavailable, you can use any other port of your choice. <br />
 
@@ -422,9 +454,25 @@ your registry in Palette.
 Once the `/health` endpoint of the registry server displays an `UP` status, proceed to the authentication step. In a new
 terminal window, start another bash session in the tutorial container.
 
+<Tabs>
+
+<TabItem label="Docker" value="Docker">
+
 ```bash
 docker exec -it tutorialContainer bash
 ```
+
+</TabItem>
+
+<TabItem label="Podman" value="Podman">
+
+```bash
+podman exec -it tutorialContainer bash
+```
+
+</TabItem>
+
+</Tabs>
 
 Log in to the registry server using the Ngrok public URL assigned to you. Issue the following command, replacing the URL
 with your Ngrok URL. The `--insecure` flag indicates that the connection to the Spectro registry will be made without
@@ -990,19 +1038,31 @@ single source of truth for all infrastructure.
 Return to your tutorial container bash session to locate the starter Terraform files. If you have closed the terminal
 session, you can open another bash session in the tutorial container using the following command.
 
+<Tabs>
+
+<TabItem label="Docker" value="Docker">
+
 ```bash
 docker exec -it tutorialContainer bash
 ```
 
-<br />
+</TabItem>
+
+<TabItem label="Podman" value="Podman">
+
+```bash
+podman exec -it tutorialContainer bash
+```
+
+</TabItem>
+
+</Tabs>
 
 Navigate to the **/terraform/pack-tf** directory, which contains the Terraform code for this tutorial.
 
 ```bash
 cd /terraform/pack-tf
 ```
-
-<br />
 
 ### Set Up the Spectro Cloud API Key
 
@@ -1283,8 +1343,8 @@ Registries** section in Palette to remove the registry configuration.
 ![Screenshot of registry server delete in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-delete.png)
 
 Now, delete the registry server. If you used the Spectro registry, stop the registry server by closing the tutorial
-container bash session that serves the Ngrok reverse proxy server. If you used a Harbor Registry, If you used the ECR
-registry, you must first remove the pack from the repository before deleting it.
+container bash session that serves the Ngrok reverse proxy server. If you used the ECR registry, you must first remove
+the pack from the repository before deleting it.
 
 Execute the following command to delete the pack from your ECR repository.
 
@@ -1338,18 +1398,32 @@ The output should provide information regarding the deleted repositories.
 }
 ```
 
-If you used a Basic registry, such as Harbor, delete your Harbor registry. If you hosted the Harbor registry on a
-virtual machine, for example, ensure to delete the virtual machine according to your setup.
+Last, if you used a Basic registry, such as Harbor, make sure to delete your Harbor registry server.
 
-At this point, you can close all the bash sessions. To remove the container and the image from the local machine, issue
+At this point, you can close all the bash sessions. To remove the container and the image from your local machine, issue
 the following commands.
+
+<Tabs>
+
+<TabItem label="Docker" value="Docker">
 
 ```bash
 docker container rm --force tutorialContainer
 docker image rm --force ghcr.io/spectrocloud/tutorials:1.1.2
 ```
 
-<br />
+</TabItem>
+
+<TabItem label="Podman" value="Podman">
+
+```bash
+podman container rm --force tutorialContainer
+podman image rm --force ghcr.io/spectrocloud/tutorials:1.1.2
+```
+
+</TabItem>
+
+</Tabs>
 
 ## Wrap-Up
 
