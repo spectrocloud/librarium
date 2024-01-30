@@ -99,7 +99,7 @@ cd tutorials/
 Check out the following git tag.
 
 ```shell
-git checkout v1.1.0
+git checkout v1.1.2
 ```
 
 Change the directory to the tutorial code.
@@ -736,13 +736,13 @@ resource "spectrocloud_cluster_azure" "azure-cluster" {
   machine_pool {
     control_plane           = true
     control_plane_as_worker = true
-    name                    = "master-pool"
-    count                   = var.azure_master_nodes.count
-    instance_type           = var.azure_master_nodes.instance_type
-    azs                     = var.azure-use-azs ? var.azure_master_nodes.azs : [""]
-    is_system_node_pool     = var.azure_master_nodes.is_system_node_pool
+    name                    = "control-plane-pool"
+    count                   = var.azure_control_plane_nodes.count
+    instance_type           = var.azure_control_plane_nodes.instance_type
+    azs                     = var.azure-use-azs ? var.azure_control_plane_nodes.azs : [""]
+    is_system_node_pool     = var.azure_control_plane_nodes.is_system_node_pool
     disk {
-      size_gb = var.azure_master_nodes.disk_size_gb
+      size_gb = var.azure_control_plane_nodes.disk_size_gb
       type    = "Standard_LRS"
     }
   }

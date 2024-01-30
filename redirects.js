@@ -65,7 +65,11 @@ const redirects = [
   },
   {
     from: `/getting-started/free-cloud-credit`,
-    to: `/getting-started/palette-freemium`,
+    to: `/getting-started`,
+  },
+  {
+    from: `/getting-started/palette-freemium`,
+    to: `/getting-started`,
   },
   {
     from: `/clusters/public-cloud/eks`,
