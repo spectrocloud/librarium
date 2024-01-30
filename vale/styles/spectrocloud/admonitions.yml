@@ -1,0 +1,4 @@
+extends: existence
+message:
+level: error
+ignorecase: true
