@@ -120,7 +120,18 @@ your environment. Reach out to our support team if you need assistance.
    the one you downloaded, as the version number may be different.
 
    ```shell
-     helm upgrade --values cert-manager/values.yaml cert-manager cert-manager-1.11.0.tgz --install
+    helm upgrade --values extras/cert-manager/values.yaml \
+    cert-manager extras/cert-manager/cert-manager-*.tgz --install
+   ```
+
+   ```shell hideClipboard
+   Release "cert-manager" does not exist. Installing it now.
+   NAME: cert-manager
+   LAST DEPLOYED: Mon Jan 29 16:32:33 2024
+   NAMESPACE: default
+   STATUS: deployed
+   REVISION: 1
+   TEST SUITE: None
    ```
 
 4. Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml**
@@ -131,12 +142,13 @@ your environment. Reach out to our support team if you need assistance.
 <Tabs groupId="mode">
 <TabItem label="Non-Airgap" value="non-airgap">
 
-| **Parameter**                             | **Description**                                                                                                                       | **Type** |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `env.rootDomain`                          | The URL name or IP address you will use for the VerteX installation.                                                                  | string   |
-| `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for VerteX FIPS packs. These credentials are provided by our support team.                               | object   |
-| `scar`                                    | The Spectro Cloud Artifact Repository (SCAR) credentials for VerteX FIPS images. These credentials are provided by our support team.  | object   |
-| `ingress.enabled`                         | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster. | boolean  |
+| **Parameter**                             | **Description**                                                                                                                                               | **Type** |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `env.rootDomain`                          | The URL name or IP address you will use for the VerteX installation.                                                                                          | string   |
+| `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for VerteX FIPS packs. These credentials are provided by our support team.                                                       | object   |
+| `scar`                                    | The Spectro Cloud Artifact Repository (SCAR) credentials for VerteX FIPS images. These credentials are provided by our support team.                          | object   |
+| `ingress.enabled`                         | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                         | boolean  |
+| `reach-system`                            | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure VerteX to use a network proxy in your environment | object   |
 
 Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the
 following sections to review an example of the **values.yaml** file with the required parameters highlighted.
@@ -374,7 +386,7 @@ reach-system:
 <TabItem label="Airgap" value="airgap">
 
 | **Parameter**                             | **Description**                                                                                                                                                                                     | **Type** |
-| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --- | ------ |
 | `env.rootDomain`                          | The URL name or IP address you will use for the VerteX installation.                                                                                                                                | string   |
 | `config.installationMode`                 | The installation mode for VerteX. The values can be `connected` or `airgap`. Set this value to `airgap`.                                                                                            | string   |
 | `ociPackEcrRegistry` or `ociPackRegistry` | The OCI registry credentials for the VerteX FIPS packs repository. If you are using a Harbor registry, use the `ociPackRegistry` parameter block but ensure you have the OCI registry CA available. | object   |
@@ -384,6 +396,7 @@ reach-system:
 | `imageSwapConfig.isEKSCluster`            | Set this value to `false` if you are NOT installing VerteX on an EKS cluster.                                                                                                                       | boolean  |
 | `scar`                                    | Specify your HTTP file server values. If your HTTP file server requires credentials ensure the provided values are base64 encoded. Example of the string "admin" in base64 encoding - `YWRtaW4=`.   | object   |
 | `ingress.enabled`                         | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                                                               | boolean  |
+| `reach-system`                            | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure VerteX to use a network proxy in your environment                                       | object   |     | object |
 
 Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the
 following sections to review an example of the **values.yaml** file with the required parameters highlighted.
@@ -619,27 +632,66 @@ reach-system:
 </TabItem>
 </Tabs>
 
-5. This step only applies when installing VerteX in an airgap environment or when using a self-hosted OCI registry with
+5. This step only applies to those who are installing an airgap VerteX or who are using a self-hosted OCI registry with
    registry caching enabled. Otherwise, skip to the next step.
 
-Go ahead and install the image-swap chart using the following command. Replace the `image-swap-0.0.0.tgz` file name with
-the name of the image-swap chart you downloaded. Point to the **values.yaml** file you configured in the previous step.
-
-<br />
-
-```shell
-helm upgrade --values spectro-mgmt-plane/values.yaml image-swap image-swap-0.0.0.tgz --install
-```
-
-6. Install the VerteX Helm Chart using the following command.
-
-   <br />
+   Go ahead and install the image-swap chart using the following command. Point to the **values.yaml** file you
+   configured in the previous step.
 
    ```shell
-   helm upgrade --values spectro-mgmt-plane/values.yaml hubble spectro-mgmt-plane-0.0.0.tgz --install
+   helm upgrade --values vertex/values.yaml \
+   image-swap extras/image-swap/image-swap-*.tgz --install
    ```
 
-7. Track the installation process using the command below. VerteX is ready when the deployments in the namespaces
+   ```shell hideClipboard
+   Release "image-swap" does not exist. Installing it now.
+   NAME: image-swap
+   LAST DEPLOYED: Mon Jan 29 17:04:23 2024
+   NAMESPACE: default
+   STATUS: deployed
+   REVISION: 1
+   TEST SUITE: None
+   ```
+
+6. This step is only required if you are installing Palette in an enviroment where a network proxy must be configured
+   for Palette to access the internet. If you are not using a network proxy, skip to the next step.
+
+   Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in the
+   previous step.
+
+   ```shell
+   helm upgrade --values vertex/values.yaml \
+   reach-system extras/reach-system/reach-system-*.tgz --install
+   ```
+
+   ```shell hideClipboard
+   Release "reach-system" does not exist. Installing it now.
+   NAME: reach-system
+   LAST DEPLOYED: Mon Jan 29 17:04:23 2024
+   NAMESPACE: default
+   STATUS: deployed
+   REVISION: 1
+   TEST SUITE: None
+   ```
+
+7. Install the Palette Helm Chart using the following command.
+
+   ```shell
+    helm upgrade --values vertex/values.yaml \
+    hubble vertex/spectro-mgmt-plane-*.tgz --install
+   ```
+
+   ```shell hideClipboard
+   Release "hubble" does not exist. Installing it now.
+   NAME: hubble
+   LAST DEPLOYED: Mon Jan 29 17:07:51 2024
+   NAMESPACE: default
+   STATUS: deployed
+   REVISION: 1
+   TEST SUITE: None
+   ```
+
+8. Track the installation process using the command below. VerteX is ready when the deployments in the namespaces
    `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` reach the _Ready_ state. The
    installation takes between two to three minutes to complete.
 
@@ -649,14 +701,15 @@ helm upgrade --values spectro-mgmt-plane/values.yaml image-swap image-swap-0.0.0
    kubectl get pods --all-namespaces --watch
    ```
 
-8. Create a DNS CNAME record that is mapped to the VerteX `ingress-nginx-controller` load balancer. You can use the
+9. Create a DNS CNAME record that is mapped to the VerteX `ingress-nginx-controller` load balancer. You can use the
    following command to retrieve the load balancer IP address. You may require the assistance of your network
    administrator to create the DNS record.
 
    <br />
 
    ```shell
-   kubectl get service ingress-nginx-controller --namespace ingress-nginx --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+   kubectl get service ingress-nginx-controller --namespace ingress-nginx \
+   --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
    ```
 
    <br />
@@ -670,35 +723,27 @@ helm upgrade --values spectro-mgmt-plane/values.yaml image-swap image-swap-0.0.0
 
    :::
 
-9. Use the custom domain name or the IP address of the load balancer to visit the VerteX system console. To access the
-   system console, open a web browser and paste the custom domain URL in the address bar and append the value `/system`.
-   Replace the domain name in the URL with your custom domain name or the IP address of the load balancer.
-   Alternatively, you can use the load balancer IP address with the appended value `/system` to access the system
-   console.
+10. Use the custom domain name or the IP address of the load balancer to visit the VerteX system console. To access the
+    system console, open a web browser and paste the custom domain URL in the address bar and append the value
+    `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer.
+    Alternatively, you can use the load balancer IP address with the appended value `/system` to access the system
+    console.
 
-   The first time you visit the VerteX system console, a warning message about a not-trusted SSL certificate may appear.
-   This is expected, as you still need to upload your SSL certificate to VerteX. You can ignore this warning message and
-   proceed.
+    The first time you visit the VerteX system console, a warning message about a not-trusted SSL certificate may
+    appear. This is expected, as you still need to upload your SSL certificate to VerteX. You can ignore this warning
+    message and proceed.
 
-<br />
+    ![Screenshot of the VerteX system console showing Username and Password fields.](/vertex_install-on-kubernetes_install_system-console.png)
 
-![Screenshot of the VerteX system console showing Username and Password fields.](/vertex_install-on-kubernetes_install_system-console.png)
-
-10. Log in to the system console using the following default credentials.
-
-    <br />
+11. Log in to the system console using the following default credentials.
 
     | **Parameter** | **Value** |
     | ------------- | --------- |
     | Username      | `admin`   |
     | Password      | `admin`   |
 
-    <br />
-
 After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be
 redirected to the VerteX system console.
-
-<br />
 
 11. After login, a summary page is displayed. VerteX is installed with a self-signed SSL certificate. To assign a
     different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
@@ -706,15 +751,13 @@ redirected to the VerteX system console.
     [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to
     upload the SSL certificate files to VerteX.
 
-<br />
+    :::warning
 
-:::warning
+    If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the
+    [Configure Reverse Proxy](../../system-management/reverse-proxy.md) guide for instructions on how to configure a
+    reverse proxy for VerteX.
 
-If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the
-[Configure Reverse Proxy](../../system-management/reverse-proxy.md) guide for instructions on how to configure a reverse
-proxy for VerteX.
-
-:::
+    :::
 
 You now have a self-hosted instance of VerteX installed in a Kubernetes cluster. Make sure you retain the
 **values.yaml** file as you may need it for future upgrades.
@@ -722,8 +765,6 @@ You now have a self-hosted instance of VerteX installed in a Kubernetes cluster.
 ## Validate
 
 Use the following steps to validate the VerteX installation.
-
-<br />
 
 1. To access the VerteX system console, open a web browser and paste the `env.rootDomain` value you provided in the
    address bar and append the value `/system`. You can also use the IP address of the load balancer.
@@ -734,8 +775,6 @@ Use the following steps to validate the VerteX installation.
 3. Open a terminal session and issue the following command to verify the VerteX installation. The command should return
    a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system`
    namespaces.
-
-   <br />
 
    ```shell
    kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
