@@ -137,7 +137,7 @@ podman run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr
 
 </Tabs>
 
-If the port 7000 on your local machine is unavailable, you can use any other port of your choice. <br />
+If the port 7000 on your local machine is unavailable, you can use any other port of your choice.
 
 :::warning
 
@@ -145,20 +145,16 @@ Do not exit the container until the tutorial is complete. Otherwise, you may los
 
 :::
 
-<br />
-
 ## Build a Pack
 
 Building a custom pack involves defining specific files. As outlined in the
 [Adding Add-on Packs](adding-add-on-packs.md) guide, there are two ways to define a custom pack: using manifest files or
 Helm charts. The file structure differs for manifest-based packs and Helm chart-based packs. Below is the reference file
-structure for each. <br />
+structure for each.
 
 <Tabs>
 
 <TabItem label="Manifests-based pack" value="add_on_packs_manifests">
-
-<br />
 
 ```bash hideClipboard
 .
@@ -175,8 +171,6 @@ structure for each. <br />
 </TabItem>
 
 <TabItem label="Helm charts-based pack" value="add_on_packs_helm_charts">
-
-<br />
 
 ```bash hideClipboard
 .
@@ -205,8 +199,6 @@ structure for each. <br />
 
 </Tabs>
 
-<br />
-
 For your convenience, we provide you with the manifest-based pack files for the Hello Universe application. These files
 are located in the **packs/hello-universe-pack** folder.
 
@@ -227,8 +219,6 @@ Ensure you have the following files in the current directory.
 ├── logo.png            # Mandatory.
 └── README.md           # Optional.
 ```
-
-<br />
 
 ### Pack File Structure
 
@@ -251,8 +241,6 @@ Review each of the following five files in the **hello-universe-pack** folder.
   }
   ```
 
-  <br />
-
 - **values.yaml** - This file contains configurable parameters you can define while adding the current pack to a cluster
   profile. In the **values.yaml** file for this tutorial, the `pack/namespace` attribute specifies the namespace on the
   target cluster to deploy the pack. If the **values.yaml** specifies a namespace value, then Palette first checks to
@@ -264,7 +252,7 @@ Review each of the following five files in the **hello-universe-pack** folder.
 
   The `manifests` section exposes the configurable parameters for each manifest file listed in the **manifests**
   directory. For example, in the sample code snippet below, the `hello-universe` attribute exposes the `registry`,
-  `repository`, and `tag` parameters. <br />
+  `repository`, and `tag` parameters.
 
   ```yaml
   pack:
@@ -275,8 +263,6 @@ Review each of the following five files in the **hello-universe-pack** folder.
       repository: spectrocloud/hello-universe
       tag: 1.0.12
   ```
-
-  <br />
 
   Optionally, you can define _presets_, which are pack configuration values predefined in a file called **presets.yaml**
   within the pack. Once defined, the **Presets** field becomes visible in both the **Clusters** and **Profile** sections
@@ -291,17 +277,15 @@ Review each of the following five files in the **hello-universe-pack** folder.
 
 - **manifests** - This directory contains the manifest files for your Kubernetes application. This tutorial has only one
   manifest, **hello-universe.yaml**. Note that the **values.yaml** file has a corresponding `manifests/hello-universe`
-  element with the same name as the YAML file. <br />
+  element with the same name as the YAML file.
 
-- **logo.png** - This file contains a logo that displays when you create a cluster profile. <br />
+- **logo.png** - This file contains a logo that displays when you create a cluster profile.
 
 - **README.md** - This file may contain the pack description, purpose, authors, and other relevant information. The
-  README in the current example introduces the application used in the pack. <br />
+  README in the current example introduces the application used in the pack.
 
 After completing the review of all files in the pack directory, the next step is to set up a registry server, publish
 the pack to the registry, and configure the registry in Palette.
-
-<br />
 
 ## Set Up the Registry Server
 
@@ -327,8 +311,6 @@ you want to use.
 <Tabs groupId="registry-server">
 
 <TabItem label="Spectro Registry" value="Spectro_Registry">
-
-<br />
 
 Start the registry server by issuing the following command from the tutorial container bash session initialized in the
 [Set Up the Tutorial Environment](#set-up-the-tutorial-environment) section.
@@ -360,8 +342,6 @@ a `{"status":"UP"}` response.
 </TabItem>
 
 <TabItem label="ECR" value="ECR_Registry">
-
-<br />
 
 The initial step to creating the pack's repository in the ECR registry is to export your AWS credentials as environment
 variables for authentication.
@@ -403,15 +383,11 @@ Next, create the repository to store the Hello Universe pack.
 aws ecr create-repository --repository-name $REGISTRY_NAME/spectro-packs/archive/$NAME --region $AWS_DEFAULT_REGION
 ```
 
-<br />
-
 :::warning
 
 Make sure to include the **spectro-packs/archive** path in _all_ your repositories to meet Palette's requirements.
 
 :::
-
-<br />
 
 This configuration sets up the required environment and repositories for pushing the Hello Universe pack to your ECR
 Registry.
@@ -419,8 +395,6 @@ Registry.
 </TabItem>
 
 <TabItem label="Basic" value="Basic_Registry">
-
-<br />
 
 Once you have an active Harbor registry server, access its domain on your web browser and log in using your Harbor
 credentials. If you have kept the default credentials, the username and password are **admin** and **Harbor12345**,
@@ -441,15 +415,11 @@ your registry in Palette.
 
 </Tabs>
 
-<br />
-
 ### Log in to the Registry Server
 
 <Tabs groupId="registry-server">
 
 <TabItem label="Spectro Registry" value="Spectro_Registry">
-
-<br />
 
 Once the `/health` endpoint of the registry server displays an `UP` status, proceed to the authentication step. In a new
 terminal window, start another bash session in the tutorial container.
@@ -484,16 +454,12 @@ spectro registry login  --insecure --default --username admin --password admin \
 58ec-174-119-143-38.ngrok-free.app
 ```
 
-<br />
-
 :::warning
 
 Do not include the "https://" or "http://" prefixes in the Ngrok URL. Using either of these prefixes will result in an
 authorization issue.
 
 :::
-
-<br />
 
 You will receive a `Login Succeeded` response upon successful login.
 
@@ -503,13 +469,9 @@ WARNING! Your password will be stored unencrypted in /root/.spectro/config.json.
 Login Succeeded
 ```
 
-<br />
-
 </TabItem>
 
 <TabItem label="ECR" value="ECR_Registry">
-
-<br />
 
 After you have created the repositories, authenticate to your ECR registry using the `aws ecr get-login-password`
 command. The ECR authorization token is then passed to the `oras login` command with **AWS** as username and the
@@ -529,8 +491,6 @@ Login Succeeded
 </TabItem>
 
 <TabItem label="Basic" value="Basic_Registry">
-
-<br />
 
 After creating the projects, proceed with the Harbor authentication. In the tutorial container bash session, export the
 `HARBOR_ADDRESS` variable, which will store your Harbor address. Do not include the "https://" prefix.
@@ -558,15 +518,11 @@ Login Succeeded
 
 </Tabs>
 
-<br />
-
 ### Push the Pack to the Registry Server
 
 <Tabs groupId="registry-server">
 
 <TabItem label="Spectro Registry" value="Spectro_Registry">
-
-<br />
 
 Once you are logged in, push the pack to the registry server using the following command.
 
@@ -587,13 +543,9 @@ Check if the pushed pack is listed, as shown in the image below.
 
 For assistance with Spectro CLI commands, refer to the [Spectro CLI Commands](spectro-cli-reference.md#commands) guide.
 
-<br />
-
 </TabItem>
 
 <TabItem label="ECR" value="ECR_Registry">
-
-<br />
 
 Once you are authenticated to your ECR registry, navigate to the **packs** directory, which contains the pack folder,
 **hello-universe-pack**.
@@ -648,8 +600,6 @@ Universe pack in the repository.
 
 <TabItem label="Basic" value="Basic_Registry">
 
-<br />
-
 Once you are authenticated to your Harbor registry, export the following variables, which you will use to create the
 Harbor repository and push the pack.
 
@@ -700,15 +650,11 @@ the image below.
 
 </Tabs>
 
-<br />
-
 ### Configure the Registry Server in Palette
 
 <Tabs groupId="registry-server">
 
 <TabItem label="Spectro Registry" value="Spectro_Registry">
-
-<br />
 
 After pushing the pack to the registry server, follow the next steps to log in to Palette and add the registry server to
 it.
@@ -742,13 +688,9 @@ next to the registry server name and selecting **Sync**.
 
 ![Screenshot of registry server sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-sync.png)
 
-<br />
-
 </TabItem>
 
 <TabItem label="ECR" value="ECR_Registry">
-
-<br />
 
 After pushing the pack to the ECR registry, follow the next steps to log in to Palette and add the ECR registry to it.
 
@@ -783,8 +725,6 @@ the registry name and selecting **Sync**.
 
 <TabItem label="Basic" value="Basic_Registry">
 
-<br />
-
 After pushing the pack to the Harbor registry, follow the next steps to log in to Palette and add the Harbor registry to
 it.
 
@@ -818,8 +758,6 @@ the registry name and selecting **Sync**.
 
 </Tabs>
 
-<br />
-
 ## Create a Cluster Profile and Deploy a Cluster
 
 Once you have configured the registry, create a cluster profile and apply the profile to a cluster in Palette. This
@@ -828,8 +766,6 @@ tutorial provides two workflows from which you can choose: Palette User Interfac
 <Tabs groupId="deploy-cluster">
 
 <TabItem label="UI Workflow" value="UI_Workflow">
-
-<br />
 
 ### Create a Cluster Profile
 
@@ -852,7 +788,7 @@ Complete the wizard using the values provided below.
 | Type        | Full                                                                   |
 | Tags        | `spectro-cloud-education, app:hello-universe, terraform_managed:false` |
 
-Click on **Next** to continue. <br />
+Click on **Next** to continue.
 
 #### Cloud Type
 
@@ -865,8 +801,6 @@ If you choose a different cloud provider, note that the options for core infrast
 **Profile Layers** section below, will differ from those presented in this tutorial.
 
 :::
-
-<br />
 
 #### Profile Layers
 
@@ -896,18 +830,14 @@ but it will help connect your local machine to the cluster's API for debugging. 
 Click on the **Confirm & Create** button to finish adding the Spectro Proxy pack.
 
 Now, click on the Kubernetes layer and add the following certificate Subject Alternative Name (SAN) value under the
-`apiServer` parameter section to configure the Spectro Proxy pack. <br />
+`apiServer` parameter section to configure the Spectro Proxy pack.
 
 ```yaml
 certSANs:
   - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
 ```
 
-<br />
-
 ![Screenshot of the certificate Subject Alternative Name.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-certsan.png)
-
-<br />
 
 Finally, add the Hello Universe pack. Click on **Add New Pack** and select the registry you created earlier in this
 tutorial. The table below specifies the registry name corresponding to the registry type. For example, if you created an
@@ -928,14 +858,12 @@ click **Next**.
 
 #### Review
 
-Review the cluster layers and click on **Finish Configuration** to complete the creation of the cluster profile. <br />
+Review the cluster layers and click on **Finish Configuration** to complete the creation of the cluster profile.
 
 ### Create a Cluster
 
 Navigate to the **Profiles** page and select the recently created cluster profile. Click on the **Deploy** button to
 start the deployment of a new cluster.
-
-<br />
 
 #### Basic Information
 
@@ -950,8 +878,6 @@ For the first section, **Basic information**, use the following values.
 
 Click **Next** to proceed.
 
-<br />
-
 #### Parameters
 
 The **Parameters** section allows you to change the profile configurations. For example, by clicking on the **Hello
@@ -961,8 +887,6 @@ Universe 1.0.x** layer, you can configure the `registry`, `repository`, and `tag
 ![Screenshot of the Cluster layers.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-layers.png)
 
 Keep the default values and click **Next**.
-
-<br />
 
 #### Cluster config
 
@@ -978,39 +902,33 @@ Ensure that you have already created an SSH key in the AWS region where you plan
 
 Click **Next** to continue.
 
-<br />
-
 #### Nodes config
 
 In the **Nodes config** section, provide the details for the control plane and worker pools. For this tutorial, you can
 use the following minimal configuration:
 
-| **Field**                   | **Value for the control-plane-pool** | **Value for the worker-pool**                                             |
-| --------------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
-| Node pool name              | control-plane-pool                   | worker-pool                                                               |
-| Number of nodes in the pool | `1`                                  | `1`                                                                       |
-| Allow worker capability     | Checked                              | Not applicable                                                            |
-| Enable Autoscaler           | Not applicable                       | No                                                                        |
-| Rolling update              | Not applicable                       | Expand First. <br /> Launch a new node first, then shut down the old one. |
+| **Field**                   | **Value for the control-plane-pool** | **Value for the worker-pool**                                      |
+| --------------------------- | ------------------------------------ | ------------------------------------------------------------------ |
+| Node pool name              | control-plane-pool                   | worker-pool                                                        |
+| Number of nodes in the pool | `1`                                  | `1`                                                                |
+| Allow worker capability     | Checked                              | Not applicable                                                     |
+| Enable Autoscaler           | Not applicable                       | No                                                                 |
+| Rolling update              | Not applicable                       | Expand First. Launch a new node first, then shut down the old one. |
 
 Keep the **Cloud Configuration** the same for both control plane and worker pools.
 
-| **Field**          | **Value**                                                                                                        |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------- |
-| Instance Type      | General purpose `m4.xlarge` <br />A minimum allocation of four CPU cores is required for the control plane node. |
-| Availability zones | Choose any _one_ availability zone.<br /> This tutorial uses the `us-east-1a` availability zone.                 |
-| Disk size          | 60 GiB                                                                                                           |
+| **Field**          | **Value**                                                                                                  |
+| ------------------ | ---------------------------------------------------------------------------------------------------------- |
+| Instance Type      | General purpose `m4.xlarge` A minimum allocation of four CPU cores is required for the control plane node. |
+| Availability zones | Choose any _one_ availability zone. This tutorial uses the `us-east-1a` availability zone.                 |
+| Disk size          | 60 GiB                                                                                                     |
 
 Click **Next** to continue.
-
-<br />
 
 #### Settings
 
 The **Settings** section displays options for OS patching, scheduled scans, scheduled backups, and cluster role binding.
 Use the default values, and click on the **Validate** button.
-
-<br />
 
 #### Review
 
@@ -1021,8 +939,6 @@ complete the cluster deployment, which may take up to _20 minutes_.
 While the deployment is in progress, Palette displays the cluster status as **Provisioning**. While you wait for the
 cluster to finish deploying, you can explore the various tabs on the cluster page, such as **Overview**, **Workloads**,
 and **Events**.
-
-<br />
 
 </TabItem>
 
@@ -1086,8 +1002,6 @@ Below are the steps to add and export an API key:
 export SPECTROCLOUD_APIKEY=<Your-Spectro-Cloud-API-key>
 ```
 
-<br />
-
 ### Review the Terraform Files
 
 Ensure you have the following files in the current working directory.
@@ -1103,17 +1017,13 @@ Ensure you have the following files in the current working directory.
 └── provider.tf		# Spectro Cloud Terraform provider
 ```
 
-<br />
-
 :::warning
 
 Note that the Terraform code will deploy the resources to **AWS**.
 
 :::
 
-<br />
-
-We recommend that you explore all Terraform files. Below is a high-level overview of each file. <br />
+We recommend that you explore all Terraform files. Below is a high-level overview of each file.
 
 - **profile.tf** - contains the configuration for the `spectrocloud_cluster_profile` resource. Review the core
   infrastructure layers that make up the `spectrocloud_cluster_profile` resource.
@@ -1160,7 +1070,7 @@ We recommend that you explore all Terraform files. Below is a high-level overvie
     Harbor registry, set the registry server name to **harbor-registry**.
 
   - Lastly, set the value of the `use_oci_registry` variable to either true or false. For instance, if you are not using
-    an OCI registry, set this value to false. The default value is set to true. <br />
+    an OCI registry, set this value to false. The default value is set to true.
 
   ```bash
   cluster_cloud_account_aws_name = "REPLACE ME"   # Name of the cloud account added to your Palette project settings.
@@ -1174,8 +1084,6 @@ We recommend that you explore all Terraform files. Below is a high-level overvie
 - **outputs.tf** - contains the output variables to expose information.
 
 - **provider.tf** - contains the provider configuration and version.
-
-<br />
 
 ### Deploy Terraform
 
@@ -1223,8 +1131,6 @@ the provided screenshot.
 
 ![Screenshot of the successful Profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_verify-cluster.png)
 
-<br />
-
 </TabItem>
 
 </Tabs>
@@ -1238,7 +1144,7 @@ cluster's **Overview** page and monitor the provisioning progress.
 
 Once the cluster status displays **Running** and **Healthy**, you can access the application through the exposed service
 URL along with the displayed port number. For the Hello Universe application, port 8080 is exposed. Click on the
-**Services** URL to access the application. <br />
+**Services** URL to access the application.
 
 :::warning
 
@@ -1247,11 +1153,7 @@ the public load balancer URL, preventing the browser from caching an unresolved 
 
 :::
 
-<br />
-
 ![Screenshot of the successful accessing the application using the load balancer URL.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_success.png)
-
-<br />
 
 You can also look at real-time metrics, such as CPU and memory consumption, in the cluster's **Overview** tab in
 Palette.
@@ -1260,21 +1162,15 @@ Palette.
 
 By using your custom pack, you have successfully deployed the **Hello Universe** application to the cluster.
 
-<br />
-
 ## Cleanup
 
 The following steps will guide you in cleaning up your environment. Follow the Palette-specific steps if you used
 Palette to deploy the cluster. Alternatively, use Terraform commands to delete the cluster if you used Terraform for
 deployment.
 
-<br />
-
 <Tabs groupId="deploy-cluster">
 
 <TabItem label="Palette UI" value="palette_ui_delete">
-
-<br />
 
 #### Delete the Cluster and Cluster Profile
 
@@ -1284,7 +1180,7 @@ select the **Delete Cluster** option. Palette will prompt you to enter the clust
 
 ![Screenshot of deleting the cluster in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-cluster.png)
 
-The cluster status will display **Deleting**, and the deletion may take up to 10 minutes. <br />
+The cluster status will display **Deleting**, and the deletion may take up to 10 minutes.
 
 :::info
 
@@ -1294,8 +1190,6 @@ clusters that are stuck in the deletion phase for over 24 hours.
 
 :::
 
-<br />
-
 After deleting the cluster, proceed to delete the cluster profile. In the left **Main Menu**, click on **Profiles** and
 select the profile you want to delete. Next, click on the **Delete** option in the **three-dot Menu**.
 
@@ -1303,13 +1197,9 @@ select the profile you want to delete. Next, click on the **Delete** option in t
 
 Wait for the resources to complete cleanup and ensure they are successfully deleted.
 
-<br />
-
 </TabItem>
 
 <TabItem label="Terraform" value="terraform_ui_delete">
-
-<br />
 
 #### Delete the Cluster and Cluster Profile
 
@@ -1327,13 +1217,9 @@ Wait for the resources to complete cleanup. Deleting the Terraform resources may
 Destroy complete! Resources: 2 destroyed.
 ```
 
-<br />
-
 </TabItem>
 
 </Tabs>
-
-<br />
 
 #### Delete the Registry Server
 
