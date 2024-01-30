@@ -40,9 +40,9 @@ Different types of repaving operations may occur, depending on what causes them:
   Kubernetes layer impact all nodes, such as when upgrading to a different Kubernetes version. All nodes across all
   pools are sequentially repaved starting with the control plane.
 
-You can customize the repave time interval for all node pools except the master pool. The default repave time interval
-is 0 seconds. You can adjust the node repave time interval during or after cluster creation. If you need to modify the
-repave time interval post-cluster creation, follow the [Change a Node Pool](#change-a-node-pool) guide.
+You can customize the repave time interval for all node pools except the control plane node pool. The default repave
+time interval is 0 seconds. You can adjust the node repave time interval during or after cluster creation. If you need
+to modify the repave time interval post-cluster creation, follow the [Change a Node Pool](#change-a-node-pool) guide.
 
 :::info
 
