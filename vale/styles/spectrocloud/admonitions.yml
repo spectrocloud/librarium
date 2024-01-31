@@ -1,4 +1,8 @@
-extends: existence
-message:
+extends: substitution
+message: "The ':::note' admonition is not approved under the Spectro Cloud style guide. Consider using ':::info' or another approved admonition."
+link: https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Admonitions/Callouts
 level: error
+nonword: true
 ignorecase: true
+swap:
+  ":::note": ":::info"
