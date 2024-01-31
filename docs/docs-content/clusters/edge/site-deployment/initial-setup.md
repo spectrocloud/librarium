@@ -7,10 +7,11 @@ sidebar_position: 32
 tags: ["edge"]
 ---
 
-When you boot up an Edge host for the first time after installation, you will be prompted to configure the Edge host and its network environment. You may already have specified some of these
-configurations in the **user-data** file in the EdgeForge process or have supplied them with site-specific
-**user-data**, and can either keep them as they are or update them during this step. For more information about
-EdgeForge and site user data, refer to [EdgeForge Workflow](../edgeforge-workflow/edgeforge-workflow.md) and
+When you boot up an Edge host for the first time after installation, you will be prompted to configure the Edge host and
+its network environment. You may already have specified some of these configurations in the **user-data** file in the
+EdgeForge process or have supplied them with site-specific **user-data**, and can either keep them as they are or update
+them during this step. For more information about EdgeForge and site user data, refer to
+[EdgeForge Workflow](../edgeforge-workflow/edgeforge-workflow.md) and
 [Apply Site User Data](./site-installation/site-user-data.md).
 
 ## Prerequisite
@@ -37,8 +38,8 @@ EdgeForge and site user data, refer to [EdgeForge Workflow](../edgeforge-workflo
 
 4. In **Network Adapters**, choose a network adapter that the Edge host will use to communicate with Palette.
 
-   By default, the network adapter requests an IP automatically from the DHCP server. Optionally, you can also specify
-   a static IP.
+   By default, the network adapter requests an IP automatically from the DHCP server. Optionally, you can also specify a
+   static IP.
 
 5. In **DNS Configuration**, specify the IP address of the primary and secondary name servers.
 
