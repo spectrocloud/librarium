@@ -26,7 +26,6 @@ export const fontAwesomeIcons = {
   "hdd": faHdd,
   "cloud-arrow-down": faCloudArrowDown,
   "server": faServer,
-  "user-shield": faUserShield,
   "users": faUsers,
   "warehouse": faWarehouse,
   "book": faBook,
