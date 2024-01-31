@@ -87,12 +87,12 @@ The following applies when replacing variables within curly braces in the YAML c
 
 :::
 
-9. In the Node pool configuration YAML files for the master and worker pools, edit the files to replace each occurrence
-   of the variables within curly braces listed in the tables below with values that apply to your Nutanix cloud
-   environment. You can configure scaling in the Palette UI by specifying the number of nodes in the pool. This
+9. In the Node pool configuration YAML files for the control plane and worker pools, edit the files to replace each
+   occurrence of the variables within curly braces listed in the tables below with values that apply to your Nutanix
+   cloud environment. You can configure scaling in the Palette UI by specifying the number of nodes in the pool. This
    corresponds to `replicas` in the YAML file.
 
-#### Master Pool
+#### Control Plane Pool
 
 | **Variable**                             | **Description**                                                                                                                                                  |
 | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |

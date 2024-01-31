@@ -392,7 +392,7 @@ docker version
 Download the tutorial image to your local machine. <br />
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.0.4
+docker pull ghcr.io/spectrocloud/tutorials:1.1.2
 ```
 
 Next, start the container, and open a bash session into it.
@@ -400,7 +400,7 @@ Next, start the container, and open a bash session into it.
 <br />
 
 ```shell
-docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.4 bash
+docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.2 bash
 ```
 
 Navigate to the tutorial code.
@@ -1205,7 +1205,7 @@ the **Enter** key. Next, issue the following command to stop the container.
 
 ```shell
 docker stop tutorialContainer && \
-docker rmi --force ghcr.io/spectrocloud/tutorials:1.0.4
+docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.2
 ```
 
 :::info
