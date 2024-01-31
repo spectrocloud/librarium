@@ -103,7 +103,7 @@ guide.
 etcd backups are enabled by default. You can edit the YAML file for a cluster's Kubernetes layer to configure its
 frequency, maximum number of copies to retain. Use the following resource to learn more about etcd backups:
 
-- [Enable etcd Backups](./etcd/enable-backup.md)
+- [Enable etcd Backups](./enable-etcd-backup.md)
 
 ## Resources
 
@@ -115,4 +115,4 @@ frequency, maximum number of copies to retain. Use the following resource to lea
 
 - [Restore a Cluster Backup](restore-cluster-backup.md)
 
-- [etcd Backups](./etcd/etcd.md)
+- [etcd Backups](./enable-etcd-backup.md)
