@@ -21,8 +21,8 @@ to monitor the cluster and perform cluster lifecycle operations.
 ## Supported Environments
 
 You can deploy a PCG into most private cloud environments. Some of the infrastructure environments have first-class
-support for PCG deployments through the Palette CLI. Other environments require a manual installation of the PCG. Refer
-to the table below to learn more about the supported environments.
+support for PCG deployments through the Palette CLI. Other environments require manually installing the PCG onto an
+existing Kubernetes cluster. Refer to the table below to learn more about the supported environments.
 
 | Environment    | Palette CLI Install? | Description                                                                                     | Install Guide                                                         |
 | -------------- | -------------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
