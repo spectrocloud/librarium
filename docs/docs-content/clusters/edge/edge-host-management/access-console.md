@@ -1,0 +1,86 @@
+---
+sidebar_label: "Access Edge Management Console"
+title: "Access Edge Management Console"
+description: "Instructions for accessing the Edge Management Console."
+hide_table_of_contents: false
+sidebar_position: 32
+tags: ["edge"]
+---
+
+The Edge Management Console (EMC) allows you to manage Edge hosts in your network locally, upload content such as images
+and packs, and create Edge clusters without connections to a centralized Palette installation.
+
+This page guides you through how access the console, and log in, and manage your username and password.
+
+## Log in to Edge Management Console
+
+### Prerequisites
+
+- An Edge host with Palette Edge 4.3 or later.
+
+- You have completed the initial configuration of the Edge host.
+
+- Network access to the Edge host's 5080 port.
+
+### Log in to Edge Management Console
+
+1. Ensure the Edge host is powered on.
+
+2. In your browser, go to `https://HOST_IP:5080`. Replace `HOST_IP` with the IP address of your Edge host. If you have
+   access to the Edge host terminal, the address of the EMC console is displayed on the terminal screen.
+
+3. You'll be prompted to log in. Enter your username and password to log in.
+
+### Validate
+
+1. A successful login directs you to the Edge management console. You will see an overview of your Edge host on your
+   browser tab.
+
+## Log out of Edge Management Console
+
+### Prerequisites
+
+- An Edge host with Palette Edge 4.3 or later.
+
+- You have completed the initial configuration of the Edge host and logged into the console.
+
+- Network access to the Edge host's 5080 port.
+
+### Log out of Edge Management Console
+
+1. In your browser, go to `https://HOST_IP:5080`. Replace `HOST_IP` with the IP address of your Edge host. If you have
+   access to the Edge host terminal, the address of the EMC console is displayed on the terminal screen.
+
+2. From the Edge Management Console, navigate to the top right **User Menu**.
+
+3. Click **Sign out**.
+
+### Validate
+
+1. A successful sign-out takes you back to the login page. You need to enter your credentials to log in again.
+
+## Change User Password
+
+### Prerequisites
+
+- An Edge host with Palette Edge 4.3 or later.
+
+- You have completed the initial configuration of the Edge host.
+
+- Network access to the Edge host's 5080 port.
+
+### Change User Password
+
+1. [Log in](#log-in-to-edge-management-console) to the Edge Management Console.
+
+2. From the Edge Management Console, navigate to the top right **User Menu**.
+
+3. Click **Update password**.
+
+4. Provide your existing credentials and enter the new password.
+
+### Validate
+
+1. [Log out](#log-out-of-edge-management-console) of the console.
+
+2. Enter your new credentials to log back in and confirm that the password has been updated.
