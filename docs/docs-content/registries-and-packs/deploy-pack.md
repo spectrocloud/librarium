@@ -110,11 +110,6 @@ Next, start the container and open a bash session into it.
 docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.2 bash
 ```
 
-<<<<<<< HEAD
-If the port 7000 on your local machine is unavailable, you can use any other port of your choice.
-
-<br />
-=======
 </TabItem>
 
 <TabItem label="Podman" value="Podman">
@@ -143,7 +138,6 @@ podman run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr
 </Tabs>
 
 If the port 7000 on your local machine is unavailable, you can use any other port of your choice.
->>>>>>> e287e1bc (docs: add harbor, update screenshots (#2133))
 
 :::warning
 
@@ -157,11 +151,6 @@ Building a custom pack involves defining specific files. As outlined in the
 [Adding Add-on Packs](adding-add-on-packs.md) guide, there are two ways to define a custom pack: using manifest files or
 Helm charts. The file structure differs for manifest-based packs and Helm chart-based packs. Below is the reference file
 structure for each.
-<<<<<<< HEAD
-
-<br />
-=======
->>>>>>> e287e1bc (docs: add harbor, update screenshots (#2133))
 
 <Tabs>
 
@@ -264,11 +253,6 @@ Review each of the following five files in the **hello-universe-pack** folder.
   The `manifests` section exposes the configurable parameters for each manifest file listed in the **manifests**
   directory. For example, in the sample code snippet below, the `hello-universe` attribute exposes the `registry`,
   `repository`, and `tag` parameters.
-<<<<<<< HEAD
-
-  <br />
-=======
->>>>>>> e287e1bc (docs: add harbor, update screenshots (#2133))
 
   ```yaml
   pack:
@@ -296,22 +280,10 @@ Review each of the following five files in the **hello-universe-pack** folder.
   manifest, **hello-universe.yaml**. Note that the **values.yaml** file has a corresponding `manifests/hello-universe`
   element with the same name as the YAML file.
 
-<<<<<<< HEAD
-  <br />
-
-- **logo.png** - This file contains a logo that displays when you create a cluster profile.
-
-  <br />
-
-- **README.md** - This file may contain the pack description, purpose, authors, and other relevant information. The
-  README in the current example introduces the application used in the pack.
-  <br />
-=======
 - **logo.png** - This file contains a logo that displays when you create a cluster profile.
 
 - **README.md** - This file may contain the pack description, purpose, authors, and other relevant information. The
   README in the current example introduces the application used in the pack.
->>>>>>> e287e1bc (docs: add harbor, update screenshots (#2133))
 
 After completing the review of all files in the pack directory, the next step is to set up a registry server, publish
 the pack to the registry, and configure the registry in Palette.
@@ -819,11 +791,6 @@ Complete the wizard using the values provided below.
 | Tags        | `spectro-cloud-education, app:hello-universe, terraform_managed:false` |
 
 Click on **Next** to continue.
-<<<<<<< HEAD
-
-<br />
-=======
->>>>>>> e287e1bc (docs: add harbor, update screenshots (#2133))
 
 #### Cloud Type
 
@@ -866,11 +833,6 @@ Click on the **Confirm & Create** button to finish adding the Spectro Proxy pack
 
 Now, click on the Kubernetes layer and add the following certificate Subject Alternative Name (SAN) value under the
 `apiServer` parameter section to configure the Spectro Proxy pack.
-<<<<<<< HEAD
-
-<br />
-=======
->>>>>>> e287e1bc (docs: add harbor, update screenshots (#2133))
 
 ```yaml
 certSANs:
@@ -899,11 +861,6 @@ click **Next**.
 #### Review
 
 Review the cluster layers and click on **Finish Configuration** to complete the creation of the cluster profile.
-<<<<<<< HEAD
-
-<br />
-=======
->>>>>>> e287e1bc (docs: add harbor, update screenshots (#2133))
 
 ### Create a Cluster
 
@@ -1068,15 +1025,7 @@ Note that the Terraform code will deploy the resources to **AWS**.
 
 :::
 
-<<<<<<< HEAD
-<br />
-
 We recommend that you explore all Terraform files. Below is a high-level overview of each file.
-
-<br />
-=======
-We recommend that you explore all Terraform files. Below is a high-level overview of each file.
->>>>>>> e287e1bc (docs: add harbor, update screenshots (#2133))
 
 - **profile.tf** - contains the configuration for the `spectrocloud_cluster_profile` resource. Review the core
   infrastructure layers that make up the `spectrocloud_cluster_profile` resource.
@@ -1124,10 +1073,6 @@ We recommend that you explore all Terraform files. Below is a high-level overvie
 
   - Lastly, set the value of the `use_oci_registry` variable to either true or false. For instance, if you are not using
     an OCI registry, set this value to false. The default value is set to true.
-<<<<<<< HEAD
-    <br />
-=======
->>>>>>> e287e1bc (docs: add harbor, update screenshots (#2133))
 
   ```bash
   cluster_cloud_account_aws_name = "REPLACE ME"   # Name of the cloud account added to your Palette project settings.
@@ -1202,11 +1147,6 @@ cluster's **Overview** page and monitor the provisioning progress.
 Once the cluster status displays **Running** and **Healthy**, you can access the application through the exposed service
 URL along with the displayed port number. For the Hello Universe application, port 8080 is exposed. Click on the
 **Services** URL to access the application.
-<<<<<<< HEAD
-
-<br />
-=======
->>>>>>> e287e1bc (docs: add harbor, update screenshots (#2133))
 
 :::warning
 
@@ -1243,11 +1183,6 @@ select the **Delete Cluster** option. Palette will prompt you to enter the clust
 ![Screenshot of deleting the cluster in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-cluster.png)
 
 The cluster status will display **Deleting**, and the deletion may take up to 10 minutes.
-<<<<<<< HEAD
-
-<br />
-=======
->>>>>>> e287e1bc (docs: add harbor, update screenshots (#2133))
 
 :::info
 
