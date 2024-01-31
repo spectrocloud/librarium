@@ -79,7 +79,8 @@ information.
   encryption for Palette.
 
 - If you are installing Palette behind a network proxy server, ensure you have the Certificate Authority (CA)
-  certificate file in base64 format. You will need this to enable Palette to communicate with the network proxy server.
+  certificate file in the base64 format. You will need this to enable Palette to communicate with the network proxy
+  server.
 
 - Access to the Palette Helm Charts. Refer to the [Access Palette](../../enterprise-version.md#access-palette) for
   instructions on how to request access to the Helm Chart
@@ -391,7 +392,7 @@ reachSystem:
 | `imageSwapConfig.isEKSCluster`      | Set this value to `false` if you are NOT installing Palette on an EKS cluster.                                                                                                                    | boolean  |
 | `scar`                              | Specify your HTTP file server values. If your HTTP file server requires credentials ensure the provided values are base64 encoded. Example of the string "admin" in base64 encoding - `YWRtaW4=`. | object   |
 | `ingress.enabled`                   | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                                                             | boolean  |
-| `reach-system`                      | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure Palette to use a network proxy in your environment                                    | object   |
+| `reach-system`                      | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters for Palette to use a network proxy in your environment                                             | object   |
 
 Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the
 following sections to review an example of the **values.yaml** file with the required parameters highlighted.
@@ -702,7 +703,7 @@ Ensure you have configured the **values.yaml** file with the required parameters
 
    :::tip
 
-   For a more user friendly experience, use the open-source tool [k9s](https://k9scli.io/) to monitor the installation
+   For a more user-friendly experience, use the open-source tool [k9s](https://k9scli.io/) to monitor the installation
    process.
 
    :::
@@ -711,14 +712,10 @@ Ensure you have configured the **values.yaml** file with the required parameters
    following command to retrieve the load balancer IP address. You may require the assistance of your network
    administrator to create the DNS record.
 
-   <br />
-
    ```shell
    kubectl get service ingress-nginx-controller --namespace ingress-nginx \
     --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
    ```
-
-   <br />
 
    :::info
 
