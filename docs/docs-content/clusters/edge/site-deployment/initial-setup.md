@@ -16,7 +16,7 @@ EdgeForge and site user data, refer to [EdgeForge Workflow](../edgeforge-workflo
 
 ## Prerequisite
 
-- An Edge host with Palette Edge 4.3 or later.
+- An Edge host with Palette Edge 4.3 or later. The Edge host must be booting up for the first time since installation.
 
 - A keyboard or another input device connected to the Edge host.
 
