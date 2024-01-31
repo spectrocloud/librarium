@@ -73,7 +73,7 @@ If you opt for an ECR OCI registry, you will require the following.
 
 :::warning
 
-There are AWS expenses associated with this tutorial. An estimated hourly cost is provided by Palette during the cluster
+AWS expenses are associated with this tutorial. An estimated hourly cost is provided by Palette during the cluster
 creation step. After completing the tutorial, make sure to delete the infrastructure to avoid additional charges.
 
 :::
