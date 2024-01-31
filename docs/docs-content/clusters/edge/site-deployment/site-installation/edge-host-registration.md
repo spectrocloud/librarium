@@ -12,8 +12,8 @@ is required to complete the registration process. You have two options to regist
 
 | **Method**          | **Description**                                                                                                                                                  | **Set up Effort** |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| Auto Registration   | Edge hosts can automatically register with Palette by using a _Registration Token_. This method requires you to specify the registration token in the user data. | Low               |
-| Manual Registration | You can manually enter a unique Edge host ID into Palette.                                                                                                       | Low               |
+| Auto Registration   | Edge hosts can automatically register with Palette through a _Registration Token_. This method requires you to specify the registration token in the user data. | Low               |
+| Manual Registration | You can manually enter a unique Edge host ID in Palette.                                                                                                       | Low               |
 
 :::warning
 

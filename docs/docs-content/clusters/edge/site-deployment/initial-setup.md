@@ -7,8 +7,7 @@ sidebar_position: 32
 tags: ["edge"]
 ---
 
-When you boot up an Edge host for the first time after installation, you will be prompted to enter several
-configurations for the Edge host and its network environment. You may already have specified some of these
+When you boot up an Edge host for the first time after installation, you will be prompted to configure the Edge host and its network environment. You may already have specified some of these
 configurations in the **user-data** file in the EdgeForge process or have supplied them with site-specific
 **user-data**, and can either keep them as they are or update them during this step. For more information about
 EdgeForge and site user data, refer to [EdgeForge Workflow](../edgeforge-workflow/edgeforge-workflow.md) and
@@ -25,7 +24,7 @@ EdgeForge and site user data, refer to [EdgeForge Workflow](../edgeforge-workflo
 1. Power up the Edge host. Do not make any input and allow Palette to choose the boot option automatically.
 
 2. A terminal user interface will display a **Create User** page. This allows you to create a Linux user with the
-   necessary permissions to operate Palette. Enter a username-password pair to create a new user and hit the Enter key
+   necessary permissions to operate Palette. Enter a username and password to create a new user and press the Enter key
    to progress to the next screen.
 
    You may have already created a user in your **user-data** file. If so, you cannot use the same username.
@@ -39,7 +38,7 @@ EdgeForge and site user data, refer to [EdgeForge Workflow](../edgeforge-workflo
 4. In **Network Adapters**, choose a network adapter that the Edge host will use to communicate with Palette.
 
    By default, the network adapter requests an IP automatically from the DHCP server. Optionally, you can also specify
-   an static IP.
+   a static IP.
 
 5. In **DNS Configuration**, specify the IP address of the primary and secondary name servers.
 
