@@ -9,16 +9,20 @@ tags: ["edge"]
 
 When you boot up an Edge host for the first time after installation, you will be prompted to enter several
 configurations for the Edge host and its network environment. You may already have specified some of these
-configurations in the **user-data** file in the EdgeForge process, and can keep them as they are during this step.
+configurations in the **user-data** file in the EdgeForge process or have supplied them with site-specific
+**user-data**, and can either keep them as they are or update them during this step. For more information about
+EdgeForge and site user data, refer to [EdgeForge Workflow](../edgeforge-workflow/edgeforge-workflow.md) and
+[Apply Site User Data](./site-installation/site-user-data.md).
 
 ## Prerequisite
 
 - An Edge host with Palette Edge 4.3 or later.
+
 - A keyboard or another input device connected to the Edge host.
 
 ## Set up Edge Host
 
-1. Power up the Edge host. In the GRUB menu, let Palette select the boot option.
+1. Power up the Edge host. Do not make any input and allow Palette to choose the boot option automatically.
 
 2. A terminal user interface will display a **Create User** page. This allows you to create a Linux user with the
    necessary permissions to operate Palette. Enter a username-password pair to create a new user and hit the Enter key
