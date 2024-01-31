@@ -3,7 +3,7 @@ sidebar_label: "Initial Edge Host Configuration"
 title: "Initial Edge Host Configuration"
 description: "Instructions for configuring the Edge host when booting up the Edge host for the first time."
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 32
 tags: ["edge"]
 ---
 
