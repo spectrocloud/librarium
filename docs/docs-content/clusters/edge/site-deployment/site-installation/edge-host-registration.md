@@ -8,7 +8,7 @@ tags: ["edge"]
 ---
 
 To use an Edge host with a host cluster, you must first register it with Palette. A registration token in the user data
-is required to complete the registration process. You have two options to register the Edge host with Palette.
+is required to complete the registration process. You have the following options to register the Edge host with Palette.
 
 | **Method**          | **Description**                                                                                                                                                  | **Set up Effort** |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
