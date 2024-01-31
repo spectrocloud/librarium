@@ -190,16 +190,16 @@ have selected the **Region** and your **SSH Key Pair Name**, click on **Next**.
 
 #### Nodes Configuration
 
-The **Nodes config** section allows you to configure the nodes that make up the control plane (master nodes) and data
-plane (worker nodes) of the host cluster.
+The **Nodes config** section allows you to configure the nodes that make up the control plane and worker nodes of the
+host cluster.
 
 Before you proceed to next section, review the following parameters. <br /> <br />
 
-- **Number of nodes in the pool** - This option sets the number of master or worker nodes in the master or worker pool.
-  For this tutorial, set the count to one for the master pool and two for the worker pool.
+- **Number of nodes in the pool** - This option sets the number of control plane or worker nodes in the control plane or
+  worker pool. For this tutorial, set the count to one for the control plane pool and two for the worker pool.
 
-- **Allow worker capability** - This option allows the master node to also accept workloads. This is useful when spot
-  instances are used as worker nodes. You can check this box if you want to.
+- **Allow worker capability** - This option allows the control plane node to also accept workloads. This is useful when
+  spot instances are used as worker nodes. You can check this box if you want to.
 
 - **Instance Type** - Select the compute type for the node pool. Each instance type displays the amount of CPU, RAM, and
   hourly cost of the instance. Select `m4.2xlarge`.
@@ -359,8 +359,8 @@ click on **Next**. <br />
 
 #### Nodes Configuration
 
-The **Nodes config** section allows you to configure the nodes that compose the control plane (master nodes) and data
-plane (worker nodes) of the Kubernetes cluster.
+The **Nodes config** section allows you to configure the nodes that compose the control plane nodes and worker nodes of
+the Kubernetes cluster.
 
 Refer to the [Node Pool](../cluster-management/node-pool.md) guide for a list and description of parameters.
 
@@ -368,11 +368,11 @@ Before you proceed to next section, review the following parameters.
 
 <br />
 
-**Number of nodes in the pool** - This option sets the number of master or worker nodes in the master or worker pool.
-For this tutorial, set the count to one for both the master and worker pools.
+**Number of nodes in the pool** - This option sets the number of control plane or worker nodes in the control plane or
+worker pool. For this tutorial, set the count to one for both the control plane and worker pools.
 
-**Allow worker capability** - This option allows the master node to also accept workloads. This is useful when spot
-instances are used as worker nodes. You can check this box if you want to.
+**Allow worker capability** - This option allows the control plane node to also accept workloads. This is useful when
+spot instances are used as worker nodes. You can check this box if you want to.
 
 - **Instance Type** - Select the compute type for the node pool. Each instance type displays the amount of CPU, RAM, and
   hourly cost of the instance. Select **Standard_A8_v2**.
@@ -524,8 +524,8 @@ After selecting a **Project**, **Region**, and **SSH Key**, click on **Next**.
 
 ### Nodes Configuration
 
-The **Nodes config** section allows you to configure the nodes that make up the control plane (master nodes) and data
-plane (worker nodes) of the host cluster.
+The **Nodes config** section allows you to configure the nodes that make up the control plane and worker nodes of the
+host cluster.
 
 Before you proceed to the next section, review the following parameters.
 
@@ -533,11 +533,11 @@ Refer to the [Node Pool](../cluster-management/node-pool.md) guide for a list an
 
 Before you proceed to next section, review the following parameters.
 
-- **Number of nodes in the pool** - This option sets the number of master or worker nodes in the master or worker pool.
-  For this tutorial, set the count to one for the master pool and two for the worker pool.
+- **Number of nodes in the pool** - This option sets the number of control plane or worker nodes in the control plane or
+  worker pool. For this tutorial, set the count to one for the control plane pool and two for the worker pool.
 
-- **Allow worker capability** - This option allows the master node to also accept workloads. This is useful when spot
-  instances are used as worker nodes. You can check this box if you want to.
+- **Allow worker capability** - This option allows the control plane node to also accept workloads. This is useful when
+  spot instances are used as worker nodes. You can check this box if you want to.
 
 - **Instance Type** - Select the compute type for the node pool. Each instance type displays the amount of CPU, RAM, and
   hourly cost of the instance. Select **n1-standard-4**.
@@ -832,13 +832,13 @@ docker version
 Download the tutorial image to your local machine. <br />
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.1.0
+docker pull ghcr.io/spectrocloud/tutorials:1.1.2
 ```
 
 Next, start the container, and open a bash session into it. <br />
 
 ```shell
-docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.0 bash
+docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.2 bash
 ```
 
 Navigate to the tutorial code.
@@ -873,7 +873,7 @@ Check out the following git tag.
 <br />
 
 ```shell
-git checkout v1.1.0
+git checkout v1.1.2
 ```
 
 Change the directory to the tutorial code.
@@ -1126,13 +1126,13 @@ resource "spectrocloud_cluster_azure" "cluster" {
   machine_pool {
     control_plane           = true
     control_plane_as_worker = true
-    name                    = "master-pool"
-    count                   = var.azure_master_nodes.count
-    instance_type           = var.azure_master_nodes.instance_type
-    azs                     = var.azure_master_nodes.azs
-    is_system_node_pool     = var.azure_master_nodes.is_system_node_pool
+    name                    = "control-plane-pool"
+    count                   = var.azure_control_plane_nodes.count
+    instance_type           = var.azure_control_plane_nodes.instance_type
+    azs                     = var.azure_control_plane_nodes.azs
+    is_system_node_pool     = var.azure_control_plane_nodes.is_system_node_pool
     disk {
-      size_gb = var.azure_master_nodes.disk_size_gb
+      size_gb = var.azure_control_plane_nodes.disk_size_gb
       type    = "Standard_LRS"
     }
   }
@@ -1163,7 +1163,7 @@ Variables to populate are identified with `REPLACE_ME`.
 
 In the example AWS section below, you would change `deploy-aws = false` to `deploy-aws = true` to deploy to AWS.
 Additionally, you would replace all the variables with a value `REPLACE_ME`. You can also update the values for nodes in
-the master pool or worker pool.
+the control plane pool or worker pool.
 
 <br />
 
@@ -1177,7 +1177,7 @@ aws-cloud-account-name = "REPLACE_ME"
 aws-region             = "REPLACE_ME"
 aws-key-pair-name      = "REPLACE_ME"
 
-aws_master_nodes = {
+aws_control_plane_nodes = {
   count              = "1"
   control_plane      = true
   instance_type      = "m4.2xlarge"
@@ -1328,7 +1328,7 @@ the **Enter** key. Next, issue the following command to stop the container.
 
 ```shell
 docker stop tutorialContainer && \
-docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.0
+docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.2
 ```
 
 ## Wrap-up

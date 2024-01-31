@@ -56,6 +56,8 @@ VerteX installation.
 
 ## Supported Platforms
 
+The following table outlines the supported platforms for an airgap VerteX installation and the supported OCI registries.
+
 | **Platform**   | **OCI Registry** | **Supported** |
 | -------------- | ---------------- | ------------- |
 | Kubernetes     | Harbor           | ✅            |

@@ -15,7 +15,7 @@ concerns, please contact us at [contact@spectrocloud.com](mailto:contact@spectro
 ## Resources
 
 - [About Us](https://www.spectrocloud.com/company)
-- [Compliance](compliance.md)
+- [Compliance](./compliance.md)
 - [Open-Source Licenses](oss-licenses.md)
 - [Partners](https://www.spectrocloud.com/partners)
 - [Security Bulletins](../security/security-bulletins/security-bulletins.md)

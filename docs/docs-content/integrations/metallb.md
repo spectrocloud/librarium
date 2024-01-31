@@ -130,6 +130,39 @@ charts:
           enabled: true
 ```
 
+### Airgap Palette and VerteX
+
+In the context of an airgap Palette or VerteX installation, you must add the following labels to the MetalLB namespace.
+These labels allow the speaker pods to come up successfully. Otherwise, depending on the Kubernetes version, the speaker
+pods may get blocked by security policies.
+
+- `pod-security.kubernetes.io/enforce: privileged`
+- `pod-security.kubernetes.io/audit: privileged`
+- `pod-security.kubernetes.io/warn: privileged`
+
+The following example shows how to update the pack YAML with the required labels.
+
+```yaml {13-15}
+pack:
+  content:
+    images:
+      - image: gcr.io/spectro-images-public/packs/metallb/0.13.11/controller:v0.13.11
+      - image: gcr.io/spectro-images-public/packs/metallb/0.13.11/speaker:v0.13.11
+      - image: gcr.io/spectro-images-public/packs/metallb/0.13.11/frr:8.5.2
+    charts:
+      - repo: https://metallb.github.io/metallb
+        name: metallb
+        version: 0.13.11
+  namespace: metallb-system
+  namespaceLabels:
+    "metallb-system":
+      "pod-security.kubernetes.io/warn=privileged,pod-security.kubernetes.io/audit=privileged,pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v{{
+      .spectro.system.kubernetes.version | substr 0 4 }}"
+```
+
+Refer to the [Profile Customization](../profiles/profile-customization.md) page to learn more about additional namespace
+labels and annotations.
+
 </TabItem>
 
 <TabItem label="0.11.x" value="0.11.x">
