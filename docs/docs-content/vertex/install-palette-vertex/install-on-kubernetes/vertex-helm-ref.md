@@ -448,27 +448,25 @@ ui-system:
       mapBoxStyledLayerID: ""
 ```
 
-### Reach System
+## Reach System
 
-You can configure VerteX to use a proxy server to access the internet. Set the parameter `reach-system.enabled` to
-`true` to enable the proxy server. Proxy settings are configured in the `reach-system.proxySettings` section.
+You can configure Palette VerteX to use a proxy server to access the internet. Set the parameter
+`reach-system.reachSystem.enabled` to `true` to enable the proxy server. Proxy settings are configured in the
+`reach-system.reachSystem.proxySettings` section.
 
-| **Parameters**                          | **Description**                                                                     | **Type** | **Default value** |
-| --------------------------------------- | ----------------------------------------------------------------------------------- | -------- | ----------------- |
-| `reachSystem.enabled`                   | Specifies whether to enable the usage of a proxy server for Palette.                | Boolean  | `false`           |
-| `reachSystem.proxySettings.http_proxy`  | The HTTP proxy server URL.                                                          | String   | `""`              |
-| `reachSystem.proxySettings.https_proxy` | The HTTPS proxy server URL.                                                         | String   | `""`              |
-| `reachSystem.proxySettings.no_proxy`    | A list of hostnames or IP addresses that should not be go through the proxy server. | String   | `""`              |
-| `reachSystem.proxySettings.ca_crt_path` | The base64-encoded certificate authority (CA) of the proxy server.                  | String   | `""`              |
-| `reachSystem.scheduleOnControlPlane`    | Specifies whether to schedule the reach system on the control plane.                | Boolean  | `true`            |
+| **Parameters**                          | **Description**                                                             | **Type** | **Default value** |
+| --------------------------------------- | --------------------------------------------------------------------------- | -------- | ----------------- |
+| `reachSystem.enabled`                   | Specifies whether to enable the usage of a proxy server for Palette VerteX. | Boolean  | `false`           |
+| `reachSystem.proxySettings.http_proxy`  | The HTTP proxy server URL.                                                  | String   | `""`              |
+| `reachSystem.proxySettings.https_proxy` | The HTTPS proxy server URL.                                                 | String   | `""`              |
+| `reachSystem.proxySettings.no_proxy`    | A list of hostnames or IP addresses that should not be proxied.             | String   | `""`              |
 
 ```yaml
 reach-system:
-  enabled: false
-  proxySettings:
-    http_proxy: ""
-    https_proxy: ""
-    no_proxy:
-    ca_crt_path: ""
-  scheduleOnControlPlane: true
+  reachSystem:
+    enabled: false
+    proxySettings:
+      http_proxy: ""
+      https_proxy: ""
+      no_proxy:
 ```
