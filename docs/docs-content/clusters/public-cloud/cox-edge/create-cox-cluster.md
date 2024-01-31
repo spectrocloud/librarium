@@ -68,13 +68,13 @@ charts:
    - Environment: The Cox Edge environment to deploy the compute resources.
    - Update worker pools in parallel: Enable this checkbox if you wish to update worker pool nodes in parallel.
 
-9. Configure the master and worker node pools. The following input fields apply to Cox Edge master and worker node
-   pools. For a description of input fields that are common across target platforms refer to the
+9. Configure the control plane and worker node pools. The following input fields apply to Cox Edge control plane and
+   worker node pools. For a description of input fields that are common across target platforms refer to the
    [Node Pools](../../cluster-management/node-pool.md) management page. Click **Next** when you are done.
 
 <br />
 
-#### Master Pool configuration:
+#### Control Plane Pool
 
     - Cloud Configuration:
 
@@ -92,7 +92,7 @@ network rules, Palette will be unable to deploy the cluster to Cox Edge.
 
 :::
 
-#### Worker Pool configuration:
+#### Worker Pool
 
     - Cloud Configuration:
       - Deployment Name: The name to assign the Cox Edge deployment.

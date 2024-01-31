@@ -20,3 +20,4 @@ ensure that you can keep your Edge clusters and their services operational and a
 - [Publish Cluster Services with Kube-vip](kubevip.md)
 - [Enable Overlay Network](vxlan-overlay.md)
 - [Enable Local Harbor Image Registry](local-registry.md)
+- [Connect Intel NUC Edge Host to Wifi](./connect-wifi.md)
