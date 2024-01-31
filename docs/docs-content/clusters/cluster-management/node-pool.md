@@ -97,9 +97,9 @@ configuration settings to learn more.
 
 ### Prerequisites
 
-- A Palette-deployed cluster.
+- An active cluster in Palette.
 
-- Sufficient permissions to edit the cluster.
+- The `cluster.update` permission that is required to edit clusters.
 
 ### Create Node Pool
 
@@ -143,9 +143,9 @@ cluster's node pools, follow the steps below.
 
 ### Prerequisites
 
-- A Palette deployed cluster.
+- An active cluster in Palette.
 
-- Sufficient permissions to edit the cluster.
+- The `cluster.update` permission that is required to edit clusters.
 
 ### Edit Node Pool
 
@@ -186,7 +186,7 @@ After you have modified a new node pool, you can validate the node pool by follo
 
 - An active cluster in Palette.
 
-- Sufficient permissions to edit the cluster.
+- The `cluster.update` permission that is required to edit clusters.
 
 - Pending cluster repave operations.
 
