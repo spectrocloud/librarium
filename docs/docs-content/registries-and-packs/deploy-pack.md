@@ -73,8 +73,8 @@ If you opt for an ECR OCI registry, you will require the following.
 
 :::warning
 
-There could be AWS expenses associated with this tutorial. After completing the tutorial, make sure to delete the
-infrastructure to avoid additional charges.
+There are AWS expenses associated with this tutorial. An estimated hourly cost is provided by Palette during the cluster
+creation step. After completing the tutorial, make sure to delete the infrastructure to avoid additional charges.
 
 :::
 
@@ -641,8 +641,8 @@ oras push $HARBOR_ADDRESS/$HARBOR_PROJECT/spectro-packs/archive/$NAME:$VERSION $
 
 To confirm the presence of the pack in the repository, open your web browser, access your Harbor address, click on
 **Projects**, select the **spectro-oci-registry** project, and then click on the
-**spectro-oci-registry/spectro-packs/archive/hellouniverse** repository. You should see the pushed artifact, as shown in
-the image below.
+**spectro-oci-registry/spectro-packs/archive/hellouniverse** repository. You should verify the pushed artifact, as shown
+in the image below.
 
 ![Screenshot of the Hello Universe Harbor Repository](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-repository.png)
 
