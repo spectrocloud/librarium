@@ -49,7 +49,7 @@ kubeadmconfig:
 
 </TabItem>
 
-<TabItem value="rke2">
+<TabItem value="rke2" label="RKE2">
 
 Use the following parameters to configure scheduled backups.
 
