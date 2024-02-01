@@ -23,7 +23,6 @@ env:
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
 
 jobs:
-
   dependabot_build:
     name: Dependabot Build
     runs-on: ubuntu-latest
