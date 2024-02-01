@@ -24,17 +24,21 @@ them during this step. For more information about EdgeForge and site user data, 
 
 1. Power up the Edge host. Do not make any input and allow Palette to choose the boot option automatically.
 
-2. A terminal user interface will display a **Create User** page. This allows you to create a Linux user with the
-   necessary permissions to operate Palette. Enter a username and password to create a new user and press the Enter key
-   to progress to the next screen.
+2. If you have already configured a user in your **user-data** file in the EdgeForge step whose user name is not
+   `kairos`, this step will be skipped automatically. If your username is `kairos`, you will not be able to log into the
+   Edge Management Console with the `kairos` user and need to create another user here.
 
-   You may have already created a user in your **user-data** file. If so, you cannot use the same username.
+   If you did not configure a user in your **user-data** file during EdgeForge or provide site user data, a terminal
+   user interface will display a **Create User** page. This allows you to create a Linux user with the necessary
+   permissions to operate Palette. Enter a username and password to create a new user and press the Enter key to
+   progress to the next screen.
 
 3. Next, the terminal will display a console for you to provide hostname and network configurations to the Edge host.
 
    ![A terminal user interface showing displaying network configuration options](/cluster_edge_site-deployment_installation_initial-setup_tui.png)
 
-   Check the existing hostname and, optionally, change it to a new one.
+   Check the existing hostname and, optionally, change it to a new one. Use the Tab key or the up and down arrow keys to
+   switch between fields. When you make a change, press Enter to confirm the change.
 
 4. In **Network Adapters**, choose a network adapter that the Edge host will use to communicate with Palette.
 
