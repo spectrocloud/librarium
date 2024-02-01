@@ -62,7 +62,7 @@ Each prerequisite listed is required for a successful installation.
   server is a critical component of the airgap installation and must be available post-install for Palette to function
   properly.
 
-:::
+  :::
 
 - jq - Command-line JSON processor installed and available. Refer to the [jq](https://jqlang.github.io/jq/download/)
   download page for guidance.
@@ -281,7 +281,7 @@ populated correctly. If you are still having issues, reach out to our support te
     unzip spectro-manifests-XXXXXXXXXXXX.zip -d /target/folder
     ```
 
-:::tip
+    :::tip
 
     If you want to get started quickly with a file server, install
     [Caddy](https://caddyserver.com/docs/quick-starts/static-files) or use Python3's

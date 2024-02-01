@@ -298,7 +298,7 @@ virtual clusters. For guidance, refer to
   We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
   rely on OIDC.
 
-:::
+  :::
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
   specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
@@ -639,7 +639,7 @@ virtual clusters. For guidance, refer to
   We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
   rely on OIDC.
 
-:::
+  :::
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
   specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
@@ -1325,8 +1325,8 @@ for virtual clusters. For guidance, refer to
   rely on OIDC.
 
 - **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the
-  Kubeadm configuration file as described in [Configure Custom OIDC](#configurecustomoidc). This setting displays in the
-  YAML file as `none`.
+  Kubeadm configuration file as described in [Configure Custom OIDC](#configure-custom-oidc). This setting displays in
+  the YAML file as `none`.
 
 - **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the
   Kubeadm configuration file as described in [Configure Custom OIDC](#configure-custom-oidc). This setting displays in

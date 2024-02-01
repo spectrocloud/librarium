@@ -68,7 +68,7 @@ To complete this tutorial, you will need the following:
 
   The Linux machine must have network connectivity to your VMware vCenter environment.
 
-:::
+  :::
 
 - The following minimum hardware configuration:
 
@@ -529,12 +529,12 @@ is an explanation of the options and sub-command used below:
 
 :::info
 
-  Should you need to change the VM template name or VM settings defined in the **vsphere.hcl** file, or review the
-  Packer script, you must open a bash session into the container using the
-  `docker run -it --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.0.10 bash`
-  command, and change to the **edge/vmware/packer/** directory to make the modifications. After you finish the
-  modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command to trigger the Packer
-  build process.
+Should you need to change the VM template name or VM settings defined in the **vsphere.hcl** file, or review the Packer
+script, you must open a bash session into the container using the
+`docker run -it --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.0.10 bash`
+command, and change to the **edge/vmware/packer/** directory to make the modifications. After you finish the
+modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command to trigger the Packer build
+process.
 
 :::
 

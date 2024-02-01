@@ -10,14 +10,6 @@ if (fs.existsSync(sidebarFilePath)) {
   sidebarItems = require(sidebarFilePath);
 }
 
-const fs = require("fs");
-const sidebarFilePath = "./docs/api-content/api-docs/v1/sidebar.ts";
-
-let sidebarItems = [];
-if (fs.existsSync(sidebarFilePath)) {
-  sidebarItems = require(sidebarFilePath);
-}
-
 module.exports = {
   apiSidebar: [
     { type: "doc", id: "introduction", label: "Introduction" },
