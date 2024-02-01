@@ -33,6 +33,8 @@ If you want to enable OIDC at the Kubernetes cluster level, refer to the
 
 ## Enable OIDC SSO in Palette
 
+Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
+
 ### Prerequisites
 
 - Palette or Palette VerteX version 4.0.X or greater.
@@ -47,39 +49,39 @@ If you want to enable OIDC at the Kubernetes cluster level, refer to the
 
 ### Configure Microsoft Entra ID with Palette
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a **Tenant Admin**.
+1.  Log in to [Palette](https://console.spectrocloud.com) as a **Tenant Admin**.
 
-2. Navigate to the left **Main Menu** and select **Tenant Settings**. From the **Tenant Menu**, select **SSO**, then
-   **Configure**, and lastly, click on the **OIDC** tab.
+2.  Navigate to the left **Main Menu** and select **Tenant Settings**. From the **Tenant Menu**, select **SSO**, then
+    **Configure**, and lastly, click on the **OIDC** tab.
 
-   ![A view of the callback URL field](/oidc-entra-id-images/oidcallback.png)
+    ![A view of the callback URL field](/oidc-entra-id-images/oidcallback.png)
 
-3. Copy the **Callback URL** to your clipboard. This URL will be used in the next step to configure Microsoft Entra ID.
+3.  Copy the **Callback URL** to your clipboard. This URL will be used in the next step to configure Microsoft Entra ID.
 
-4. In a separate browser tab, log in to the Microsoft Entra ID Admin console and open the
-   [App registration blade](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
+4.  In a separate browser tab, log in to the Microsoft Entra ID Admin console and open the
+    [App registration blade](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
 
-5. Click on **New registration** and assign a name to the new registration. In this guide, the example app registration
-   is named _palette_oidc_.
+5.  Click on **New registration** and assign a name to the new registration. In this guide, the example app registration
+    is named _palette_oidc_.
 
-6. Next, select **Web**, and paste the _Palette Callback URL_ value from your clipboard into the **Redirect URL
-   (optional)** field, and Click **Register**.
+6.  Next, select **Web**, and paste the _Palette Callback URL_ value from your clipboard into the **Redirect URL
+    (optional)** field, and Click **Register**.
 
-   ![Azure application creation screen](/oidc-entra-id-images/palette-registration.png)
+    ![Azure application creation screen](/oidc-entra-id-images/palette-registration.png)
 
-7. From the app overview page, navigate to the left **Main Menu** and select **Certificates & secrets**. In the
-   following screen, click on **New client secret**.
+7.  From the app overview page, navigate to the left **Main Menu** and select **Certificates & secrets**. In the
+    following screen, click on **New client secret**.
 
-8. Add a description for the secret and select an expiration period. Click on **Add** to create the secret.
+8.  Add a description for the secret and select an expiration period. Click on **Add** to create the secret.
 
-   :::warning
+    :::warning
 
-   We recommend you store the secret value in a secure location, such as a password manager. You will need this value
-   later when you configure Palette.
+    We recommend you store the secret value in a secure location, such as a password manager. You will need this value
+    later when you configure Palette.
 
-   :::
+    :::
 
-9. From the application overview page, navigate to the left **Main Menu** and select **Token configuration**.
+9.  From the application overview page, navigate to the left **Main Menu** and select **Token configuration**.
 
 10. Select **Add optional claim** button. Choose **Token type** as **ID**, and add the claims **email** and
     **preferred_username**. When finished, click the **Add** button.
@@ -93,7 +95,7 @@ If you want to enable OIDC at the Kubernetes cluster level, refer to the
 
     ![Groups and inviduals can be assigned a group membership in Azure](/oidc-entra-id-images/groupsclaim.png)
 
-When completed, the **Token Configuration** page will look similar to the image below.
+    When completed, the **Token Configuration** page will look similar to the image below.
 
     ![A view of the token configuration screen](/oidc-entra-id-images/token-configuration.png)
 
@@ -107,18 +109,19 @@ When completed, the **Token Configuration** page will look similar to the image 
     | **Directory (tenant) ID**   | The Directory ID is the unique identifier for your Azure AD tenant.                                        |
     | **Secret Value**            | The Secret Value is the value of the client secret you created in the previous steps.                      |
 
-  <details>
-  <summary>Additional Redirect URLs</summary>
+      <details>
 
-You can also add additional redirect URIs if needed. For example, to enable integration with the Kubernetes Dashboard,
-add the following redirect URI to the list of redirect URIs in the Azure AD application:
+    <summary>Additional Redirect URLs</summary>
 
-    | URL | Type of Access |
-    | --- | --- |
-    | `http://localhost:8000` | UsUseing kubectl with the kube-login plugin from a workstation |
-    | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Use OIDC to authenticate and log in to the Kubernetes Dashboard |
+          You can also add additional redirect URIs if needed. For example, to enable integration with the Kubernetes Dashboard,
+          add the following redirect URI to the list of redirect URIs in the Azure AD application:
 
-  </details>
+          | URL | Type of Access |
+          | --- | --- |
+          | `http://localhost:8000` | UsUseing kubectl with the kube-login plugin from a workstation |
+          | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Use OIDC to authenticate and log in to the Kubernetes Dashboard |
+
+      </details>
 
 #### Configure Microsoft Entra ID with Users and Groups
 
@@ -147,11 +150,12 @@ add the following redirect URI to the list of redirect URIs in the Azure AD appl
     following information for the users:
 
     - Create the new user **Defaultprojectadmin** with the following inputs: - User principal name example:
-      `defaultprojectadmin@SpectroCloud500.onmicrosoft.com`  
-       - Display name example: `defaultprojectadmin` - Browse to Properties, Edit First Name: `DefaultProject` - Browse
-      to Properties, Edit Last Name: `Admin` - Browse to Properties, add Email:
-      `defaultprojectadmin@SpectroCloud500.onmicrosoft.com`  
-       - Add this account to the Entra ID group `Palette_default_project_admins`
+      `defaultprojectadmin@SpectroCloud500.onmicrosoft.com`
+
+      - Display name example: `defaultprojectadmin` - Browse to Properties, Edit First Name: `DefaultProject` - Browse
+        to Properties, Edit Last Name: `Admin` - Browse to Properties, add Email:
+        `defaultprojectadmin@SpectroCloud500.onmicrosoft.com`
+      - Add this account to the Entra ID group `Palette_default_project_admins`
 
     - Create the new user **Test User** with the following inputs:
 
@@ -163,10 +167,10 @@ add the following redirect URI to the list of redirect URIs in the Azure AD appl
       - Do not add this account to any groups
 
     - Create an external user with your corporate/personal email account: - User principal name example: your corporate
-      email address  
-       - Display name example: Your First Name and Last Name - Browse to Properties, Edit First Name - Browse to
-      Properties, Edit Last Name - Browse to Properties, add your corporate email address - Add this account to the
-      Entra ID Group `palette_tenant_admins`
+      email address
+      - Display name example: Your First Name and Last Name - Browse to Properties, Edit First Name - Browse to
+        Properties, Edit Last Name - Browse to Properties, add your corporate email address - Add this account to the
+        Entra ID Group `palette_tenant_admins`
 
 18. Add your Entra ID admin account, the account you used to create the **App** in Microsoft Entra ID, to the following
     groups: `palette_tenant_admins` and `k8s_cluster_admins`.
@@ -254,6 +258,17 @@ without SSO.
 
 ## Enable OIDC in Kubernetes Clusters With Entra ID
 
+Kubelogin is a kubectl plugin for Kubernetes OpenID Connect (OIDC) authentication. When you use kubectl, kubelogin opens
+up your browser, starts a session, and redirects you to your IDP's login site. Upon a succesfull login, you receive an
+authentication token that is used to grant you access to the cluster.
+
+In the following diagram, Entra ID is the IDP. Once Kubelogin gets a token from Entra ID or similar IDP, you can then
+use kubectl to access the Kubernetes cluster API.
+
+    ![Palette and EntraID](/oidc-entra-id-images/PalettewEntraID.png)
+
+Use the following steps to enable OIDC in Kubernetes clusters with Microsoft Entra ID.
+
 ### Prerequisites
 
 - Palette or Palette VerteX version 4.0.X or greater.
@@ -262,22 +277,7 @@ without SSO.
   [Enable OIDC SSO in Palette](#enable-oidc-sso-in-palette) section for detailed guidance on how to configure OIDC in
   Palette.
 
-- [kubelogin](https://github.com/Azure/kubelogin) installed on your local workstation.
-
-- ## Architecture
-
-Kubelogin is a kubectl plugin for Kubernetes OpenID Connect (OIDC) authentication. When you run kubectl, kubelogin opens
-your browser, and you can log in to the IDP to authenticate. In our example, Entra ID is the IDP. Once Kubelogin gets a
-token from Entra ID or similar IDP, you can then use Kubectl to access Kubernetes APIs.
-
-Take a look at the diagram below for more details and flow:
-
-![Palette and EntraID](/oidc-entra-id-images/PalettewEntraID.png)
-
-### Install kubelogin
-
-Install the latest kubelogin release from Homebrew, Krew, Chocolatey, or GitHub Releases: See
-https://github.com/int128/kubelogin for more details.
+- Install [kubelogin](https://github.com/Azure/kubelogin) your local workstation.
 
 ### Create Cluster Profile With RoleBindings
 
@@ -485,14 +485,10 @@ cluster, check the kubeconfig file to ensure the OIDC configuration is correct. 
 [Configure kubectl](../../clusters/cluster-management/palette-webctl.md) documentation for detailed guidance on how to
 configure kubectl.
 
-## References
+## Resources
 
 - [Credential Plugin Diagram](https://github.com/int128/kubelogin/raw/master/docs/credential-plugin-diagram.svg)
 - [kubelogin](https://github.com/int128/kubelogin)
 - [Microsoft Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc)
 - [Palette SSO](./saml-sso.md)
 - [Palette User Management](../user-management.md)
-
-## How'd we Do?
-
-Please leave feedback and ideas on how to improve by submitting feedback from this page. Thank you!
