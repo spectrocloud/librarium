@@ -28,7 +28,7 @@ jobs:
     defaults:
       run:
         shell: bash
-    if: ${{ !github.event.pull_request.draft }}
+    if: ${{ !github.event.pull_request.draft && github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' }}
     steps:
       # If the condition above is not met, aka, the PR is not in draft status, then this step is skipped.
       # Because this step is part of the critical path, omission of this step will result in remaining CI steps not gettinge executed.
@@ -39,7 +39,6 @@ jobs:
     name: Writing Checks
     needs: [run-ci]
     runs-on: ubuntu-latest
-    if: ${{ !github.event.pull_request.draft }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -59,7 +58,6 @@ jobs:
     name: Check Code Formatting
     needs: [run-ci]
     runs-on: ubuntu-latest
-    if: ${{ !github.event.pull_request.draft }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -77,7 +75,6 @@ jobs:
     name: Build
     needs: [run-ci, prettier]
     runs-on: ubuntu-latest
-    if: ${{ !github.event.pull_request.draft }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
