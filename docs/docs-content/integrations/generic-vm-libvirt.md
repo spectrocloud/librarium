@@ -1,34 +1,36 @@
 ---
-sidebar_label: 'generic-vm-libvirt'
-title: 'Generic Virtual Machines Libvirt'
-description: 'Choosing Libvirt Generic Virtual Machine within the Palette console'
+sidebar_label: "generic-vm-libvirt"
+title: "Generic Virtual Machines Libvirt"
+description: "Choosing Libvirt Generic Virtual Machine within the Palette console"
 hide_table_of_contents: true
 type: "integration"
-category: ['system app', 'amd64']
+category: ["system app", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: 'https://registry.spectrocloud.com/v1/generic-vm-libvirt/blobs/sha256:23e1ba27947158ccf1ae36913601011508a55103ce1bdb517a175d752fb35eea?type=image/png'
-tags: ['packs', 'generic-vm-libvirt', 'system app']
+logoUrl: "https://registry.spectrocloud.com/v1/generic-vm-libvirt/blobs/sha256:23e1ba27947158ccf1ae36913601011508a55103ce1bdb517a175d752fb35eea?type=image/png"
+tags: ["packs", "generic-vm-libvirt", "system app"]
 ---
 
-
-Generic-VM-Libvirt is a Palette Add-on pack used to simplify deploying the virtual machine applications from a cluster profile or a system profile. Generic-VM-Libvirt extracts all Terraform constructs inside the pack and exposes nothing but the values. Users will then have the ability to modify the add-on pack for the different applications.
+Generic-VM-Libvirt is a Palette Add-on pack used to simplify deploying the virtual machine applications from a cluster
+profile or a system profile. Generic-VM-Libvirt extracts all Terraform constructs inside the pack and exposes nothing
+but the values. Users will then have the ability to modify the add-on pack for the different applications.
 
 ## Version Supported
 
 <Tabs queryString="versions">
 <TabItem label="1.0.x" value="1.0.x">
 
-* **1.0.2**
-* **1.0.0**
+- **1.0.2**
+- **1.0.0**
 
 </TabItem>
 </Tabs>
 
-<br/>
+<br />
 
 ## Configuring Palette Generic VM Libvirt Add-on
 
-To configure the Generic-VM-Libvirt add-on pack for the application cluster, begin by editing the manifest namespace value.
+To configure the Generic-VM-Libvirt add-on pack for the application cluster, begin by editing the manifest namespace
+value.
 
 `cluster-{{ .spectro.system.cluster.uid }}`
 
@@ -38,15 +40,17 @@ To configure the Generic-VM-Libvirt add-on pack for the application cluster, beg
 namespace: jet-system
 ```
 
-If multiple instances of this pack have to be deployed on the cluster for different virtual machine applications, then modify '`spectrocloud.com/display-name`' and '`releaseNameOverride`' with distinctive names to make it unique across all the packs in the cluster.
+If multiple instances of this pack have to be deployed on the cluster for different virtual machine applications, then
+modify '`spectrocloud.com/display-name`' and '`releaseNameOverride`' with distinctive names to make it unique across all
+the packs in the cluster.
 
 <br />
-
 
 ```yaml
 spectrocloud.com/display-name: vm-app-1
 releaseNameOverride:
 ```
+
 <br />
 
 ## Generic-VM-Libvirt Pack Manifest
@@ -63,17 +67,17 @@ pack:
   # unique across all the packs in the cluster
   # spectrocloud.com/display-name: vm-app-1
   # releaseNameOverride:
-    # generic-vm-libvirt: vm-app-1
+  # generic-vm-libvirt: vm-app-1
 
 charts:
   generic-vm-libvirt:
     providers:
       source: "dmacvicar/libvirt"
-      version: "0.6.14"  
+      version: "0.6.14"
     name: vm-app-1
     image: https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.img
-    
-    # uncomment the below line and comment the above line if the image is present within the host. 
+
+    # uncomment the below line and comment the above line if the image is present within the host.
     # image="/opt/spectrocloud/ubuntu-16.04-server-cloudimg-amd64-disk1.img"
     hardware:
       cpu: 2
@@ -134,10 +138,10 @@ charts:
     # so that data present in config map or secret can be accessed while executing pre and post exec hooks
     mounts:
       configMap:
-    #     - name: system-config
-    #       path: /data/system-config
-    #     - name: system-config-2
-    #       path: /data/system-config-2
+      #     - name: system-config
+      #       path: /data/system-config
+      #     - name: system-config-2
+      #       path: /data/system-config-2
       secret:
     #     - name: system-config
     #       path: /data/system-config
@@ -149,9 +153,9 @@ charts:
     # so that data present in config map or secret can be accessed while executing pre and post exec hooks
     envs:
       configMap:
-    #     - name: database-app-config
-    #       env: DATABASE_USER
-    #       dataKey: "db.user"
+      #     - name: database-app-config
+      #       env: DATABASE_USER
+      #       dataKey: "db.user"
       secret:
     #     - name: database-app-secret
     #       env: DATABASE_PASSWORD
@@ -170,19 +174,20 @@ charts:
     #     echo "I am post exec"
 ```
 
-
 ## Virtual Machine Hooks
 
-The Generic-VM-Libvirt pack supports various hooks, while deploying VM applications and supports multiple use-cases of customizing workflow, as customers require.
-
+The Generic-VM-Libvirt pack supports various hooks, while deploying VM applications and supports multiple use-cases of
+customizing workflow, as customers require.
 
 <br />
 
 ## Using preExecCmd and postExecCmd
 
-The **preExecCmd** and **postExecCmd** commands will be executed in every pod reconciliation. The loop runs at approximately a 2-minute interval.
+The **preExecCmd** and **postExecCmd** commands will be executed in every pod reconciliation. The loop runs at
+approximately a 2-minute interval.
 
-If you want to run the command or script only, whenever the virtual machine is getting created or after the virtual machine is destroyed, use **preVMInitCmd** and **postVMInitCmd**, respectively.
+If you want to run the command or script only, whenever the virtual machine is getting created or after the virtual
+machine is destroyed, use **preVMInitCmd** and **postVMInitCmd**, respectively.
 
 <br />
 
@@ -198,7 +203,8 @@ postExecCmd: "bash /var/files/pre-exec.sh"
 
 ## Using preVMInitCmd and postVMInitCmd
 
-The **preVMInitCmd** command is executed, only when the virtual machine is being created or recreated. Likewise, the **postVMInitCmd** command is executed only after the virtual machine is created or recreated.
+The **preVMInitCmd** command is executed, only when the virtual machine is being created or recreated. Likewise, the
+**postVMInitCmd** command is executed only after the virtual machine is created or recreated.
 
 **Note**: These commands will not be executed in each reconciliation.
 
@@ -216,7 +222,9 @@ postVMInitCmd: "echo 'Ooho! VM is created.'"
 
 ## Using preVMDestroyCmd
 
-Any command or script provided in this virtual machine hook will execute before the VM gets destroyed. It will be executed only when the VM is being deleted. A virtual machine deletion can happen for any reason, like changing anything in cloud-init or removing the pack from the profile.
+Any command or script provided in this virtual machine hook will execute before the VM gets destroyed. It will be
+executed only when the VM is being deleted. A virtual machine deletion can happen for any reason, like changing anything
+in cloud-init or removing the pack from the profile.
 
 <br />
 
@@ -227,11 +235,15 @@ preVMDestroyCmd: ""
 <br />
 
 :::info
-During a first-time deployment, <b> preVMDestroyCmd</b> will not be invoked. However, if there is any change in cloud-init, then the VM resource will be recreated, preVMDestroyCmd will be invoked before deleting the VM, and once preVMDestroyCmd is executed successfully, only then will the VM resource be deleted.
+
+During a first-time deployment, <b> preVMDestroyCmd</b> will not be invoked. However, if there is any change in
+cloud-init, then the VM resource will be recreated, preVMDestroyCmd will be invoked before deleting the VM, and once
+preVMDestroyCmd is executed successfully, only then will the VM resource be deleted.
 
 <br />
 <br />
 Once the virtual machine is deleted and before another virtual machine is created, <b>preVMInitCmd</b> will be invoked.
+
 :::
 
 <br />
@@ -244,14 +256,14 @@ Files presented in this section will be added to the pod, where the pre-and-post
 
 ```yaml
 files:
-- name: pre-exec.sh
-  content: |
-    #!/bin/bash
-    echo "I am pre exec"
-- name: post-exec.sh
-  content: |
-    #!/bin/bash
-    echo "I am post exec"
+  - name: pre-exec.sh
+    content: |
+      #!/bin/bash
+      echo "I am pre exec"
+  - name: post-exec.sh
+    content: |
+      #!/bin/bash
+      echo "I am post exec"
 extraDomainHclConfig: |
   cpu {
     mode = "host-passthrough"
@@ -260,21 +272,22 @@ extraDomainHclConfig: |
 
 <br />
 
-
 ## Mounts
 
-Mount the data inside the existing configuration maps or secrets into the pod as files, where pre-and-post hooks are executed. This allows the data present in the configuration map or the secrets file to be accessible while running pre-and-post exec hooks.
+Mount the data inside the existing configuration maps or secrets into the pod as files, where pre-and-post hooks are
+executed. This allows the data present in the configuration map or the secrets file to be accessible while running
+pre-and-post exec hooks.
 
 <br />
 
 ```yaml
 mounts:
-   configMap:
+  configMap:
     - name: system-config
       path: /data/system-config
     - name: system-config-2
       path: /data/system-config-2
-   secret:
+  secret:
     - name: system-config
       path: /data/system-config
     - name: system-config-2
@@ -285,25 +298,24 @@ mounts:
 
 ## Environment Variables
 
-The ENVS section can inject data inside the existing config maps or secrets into the pod as environment variables, where pre-and post-hooks are executed so that data present in the config map or the secret file can be accessed while running pre-and-post exec hooks.
+The ENVS section can inject data inside the existing config maps or secrets into the pod as environment variables, where
+pre-and post-hooks are executed so that data present in the config map or the secret file can be accessed while running
+pre-and-post exec hooks.
 
 <br />
 
 ```yaml
 envs:
   configMap:
-  - name: database-app-config
-    env: DATABASE_USER
-    dataKey: "db.user"
+    - name: database-app-config
+      env: DATABASE_USER
+      dataKey: "db.user"
   secret:
-  - name: database-app-secret
-    env: DATABASE_PASSWORD
-    dataKey: "db.password"
+    - name: database-app-secret
+      env: DATABASE_PASSWORD
+      dataKey: "db.password"
 ```
-
 
 ## References
 
 - [Libvirt Apps](https://libvirt.org/apps.html)
-
-

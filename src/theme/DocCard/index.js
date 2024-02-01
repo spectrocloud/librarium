@@ -65,12 +65,7 @@ function CardLink({ item }) {
   const icon = isInternalUrl(item.href) ? "📄️" : "🔗";
   const doc = useDocById(item.docId ?? undefined);
   return (
-    <CardLayout
-      href={item.href}
-      icon={icon}
-      title={item.label}
-      description={item.description ?? doc?.description}
-    />
+    <CardLayout href={item.href} icon={icon} title={item.label} description={item.description ?? doc?.description} />
   );
 }
 export default function DocCard({ item }) {
