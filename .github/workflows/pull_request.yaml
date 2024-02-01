@@ -39,7 +39,6 @@ jobs:
     name: Writing Checks
     needs: [run-ci]
     runs-on: ubuntu-latest
-    if: ${{ !github.event.pull_request.draft && github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -59,7 +58,6 @@ jobs:
     name: Check Code Formatting
     needs: [run-ci]
     runs-on: ubuntu-latest
-    if: ${{ !github.event.pull_request.draft && github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -77,7 +75,6 @@ jobs:
     name: Build
     needs: [run-ci, prettier]
     runs-on: ubuntu-latest
-    if: ${{ !github.event.pull_request.draft && github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
