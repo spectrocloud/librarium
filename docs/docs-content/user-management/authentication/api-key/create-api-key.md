@@ -82,7 +82,7 @@ Ensure you save the API key in a secure location. You will not be able to view t
 
 6. Fill out the following input fields:
 
-| **Input Field **    | **Description**                                                                                                   |
+| **Input Field**     | **Description**                                                                                                   |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **API Key Name**    | Assign a name to the API key.                                                                                     |
 | **Description**     | Provide a description for the API key.                                                                            |
