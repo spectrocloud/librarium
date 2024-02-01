@@ -15,7 +15,7 @@ OpenID Connect (OIDC) lets developers authenticate users across websites and app
 
 In October 2023, Microsoft renamed [Azure Active Directory](https://learn.microsoft.com/en-us/entra/fundamentals/new-name) to Microsoft Entra ID. For the purposes of this guide, please consider Microsoft Entra ID and Azure Active Directory to be synonymous. Microsoft Entra ID securely manages anything to do with the user's information, access, and the trust relationships between parties in a flow. It authenticates the user's identity, grants, and revokes access to resources, and issues tokens.
 
-This document will guide you on how to deploy and enabling SSO with Microsoft Entra based on OpenID Connect for integration with Palette and Kubernetes clusters. 
+This document will guide you on deploying and enabling SSO with Microsoft Entra based on OpenID Connect for integration with Palette and Kubernetes clusters. 
 
 :::tip
 
@@ -23,45 +23,36 @@ If you want to enable OIDC at the Kubernetes cluster level, refer to the [Enable
 
 :::
 
-## Architecture
-
-
-  ![Palette and EntraID](/oidc-entra-id-images/PalettewEntraID.png)
-
 ## Enable OIDC SSO in Palette
 
 ### Prerequisites
 
 - Palette or Palette VerteX version 4.0.X or greater. 
 
-- A [Microsoft Entra ID](https://entra.microsoft.com/#home) subscription. You will need an account with one of the following roles, Global Administrator, Cloud Application Administrator, Application Administrator. Alternatively, you may be the owner of the service principal. 
+- A [Microsoft Entra ID](https://entra.microsoft.com/#home) subscription. You will need an account with one of the following roles: Global Administrator, Cloud Application Administrator, or Application Administrator. Alternatively, you may be the owner of the service principal. 
 
-- If you want to use the same Microsoft Entra ID application for OIDC-based SSO into your Kubernetes cluster itself, you need to install [kubelogin](https://github.com/int128/kubelogin) on your local workstation to handle retrieval of access tokens for your cluster.
-
+- If you want to use the same Microsoft Entra ID application for OIDC-based SSO in your Kubernetes cluster itself, you need to install [kubelogin](https://github.com/int128/kubelogin) on your local workstation to handle retrieval of access tokens for your cluster.
 
 
 ### Configure Microsoft Entra ID with Palette
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a **Tenant Admin**. 
 
-2. Navigate to the left **Main Menu** and select **Tenant Settings**. From the **Tenant Menu**, select **SSO**, then **Configure** and lastly, click on the **OIDC** tab.
+2. Navigate to the left **Main Menu** and select **Tenant Settings**. From the **Tenant Menu**, select **SSO**, then **Configure**, and lastly, click on the **OIDC** tab.
 
     ![A view of the callback URL field](/oidc-entra-id-images/oidcallback.png)
 
 3. Copy the **Callback URL** to your clipboard. This URL will be used in the next step to configure Microsoft Entra ID. 
 
-
 4. In a separate browser tab, log in to the Microsoft Entra ID Admin console and open the [App registration blade](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
 
-5. Click on **New registration** and assign a name to new registration. In this guide, the example app registration is named *palette_oidc*.  
-
+5. Click on **New registration** and assign a name to the new registration. In this guide, the example app registration is named *palette_oidc*.  
 
 6. Next, select **Web**, and paste the *Palette Callback URL* value from your clipboard into the **Redirect URL (optional)** field, and Click **Register**.
 
     ![Azure application creation screen](/oidc-entra-id-images/palette-registration.png)
  
 7. From the app overview page, navigate to the left **Main Menu** and select **Certificates & secrets**. In the following screen, click on **New client secret**. 
-
 
 8. Add a description for the secret and select an expiration period. Click on **Add** to create the secret. 
 
@@ -73,19 +64,15 @@ If you want to enable OIDC at the Kubernetes cluster level, refer to the [Enable
 
 9. From the application overview page, navigate to the left **Main Menu** and select **Token configuration**.
 
-
 10. Select **Add optional claim** button. Choose **Token type** as **ID**, and add the claims **email** and **preferred_username**. When finished, click the **Add** button.
 
     ![Add a claim button](/oidc-entra-id-images/twooptionalclaims.png)
 
-
-11. In addition to allowing individual user authentication, Palette provides groups claim functionality, allowing an OpenID Connect identity provider, like Microsoft Entra ID, to identify the user's Entra ID group membership within Palette. To enable group membership, select the **Add groups claim** button. Then select **Security groups**, and **Group ID** for each property: **ID**, **Access** and **SAML**.
+11. In addition to allowing individual user authentication, Palette provides group claim functionality, allowing an OpenID Connect identity provider, like Microsoft Entra ID, to identify the user's Entra ID group membership within Palette. To enable group membership, select the **Add groups claim** button. Then select **Security groups**, and **Group ID** for each property: **ID**, **Access** and **SAML**.
 
     ![Groups and inviduals can be assigned a group membership in Azure](/oidc-entra-id-images/groupsclaim.png)
 
-
-
-When completed, the **Token Configuration** page will look similar to image below.
+When completed, the **Token Configuration** page will look similar to the image below.
 
     ![A view of the token configuration screen](/oidc-entra-id-images/token-configuration.png)
 
@@ -93,7 +80,7 @@ When completed, the **Token Configuration** page will look similar to image belo
 
     | Field  | Description   |
     | ------------ | ------------ |
-    | **Application (client) ID**  | The Application ID, also known as the client ID. This is a unique identifier for your Azure application.  |
+    | **Application (client) ID** | The Application ID is also known as the client ID. This is a unique identifier for your Azure application.  |
     | **Object ID**     | The Object ID is the unique identifier for the application in Azure AD.  |
     | **Directory (tenant) ID**    | The Directory ID is the unique identifier for your Azure AD tenant.  |
     | **Secret Value**    | The Secret Value is the value of the client secret you created in the previous steps.  |
@@ -102,12 +89,12 @@ When completed, the **Token Configuration** page will look similar to image belo
   <details>
   <summary>Additional Redirect URLs</summary>
 
-  You can also add additional redirect URIs if needed. For example, to enable integration with the Kubernetes Dashboard add the following redirect URI to the list of redirect URIs in the Azure AD application:
+  You can also add additional redirect URIs if needed. For example, to enable integration with the Kubernetes Dashboard, add the following redirect URI to the list of redirect URIs in the Azure AD application:
 
     | URL | Type of Access |
     | --- | --- |
     | `http://localhost:8000` | UsUseing kubectl with the kube-login plugin from a workstation |
-    | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Use OIDC to autenticate and log in to the Kubernetes Dashboard |
+    | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Use OIDC to authenticate and log in to the Kubernetes Dashboard |
   </details>
 
 #### Configure Microsoft Entra ID with Users and Groups
@@ -123,7 +110,7 @@ When completed, the **Token Configuration** page will look similar to image belo
     - `k8s_cluster-editor`
 
  
-15. Record for future steps the group name and **Object ID** of each group. You will use this information in future steps to configure Palette. 
+15. Record each group's group name and **Object ID** for future steps. You will use this information in future steps to configure Palette. 
 
 #### Add & Edit Entra ID Users for Testing 
 
@@ -155,17 +142,16 @@ When completed, the **Token Configuration** page will look similar to image belo
           - Browse to Properties, add your corporate email address
           - Add this account to the Entra ID Group `palette_tenant_admins`
         
-18.	Change your Entra ID admin account with group membership. This is the account you used to create the **App** in Microsoft Entra ID. Add the following groups to this account, `palette_tenant_admins` and `k8s_cluster_admins`. 
-
+18.	Add your Entra ID admin account, the account you used to create the **App** in Microsoft Entra ID, to the following groups: `palette_tenant_admins` and `k8s_cluster_admins`. 
 
 
 #### Configure Palette SSO 
 
-19. At this point should have at least four Entra ID user objects, including the admin account used to access first access Entra ID. Your Palette tenant will need information from Microsoft to complete the OIDC setup. Navigate back to the browser tab with Palette open.
+19. At this point, you should have at least four Entra ID user objects, including the admin account in Entra ID. Your Palette tenant will need information from Microsoft to complete the OIDC setup. Navigate back to the browser tab with Palette open.
 
 20. From the left **Main Menu** select **Users and Teams**. Next, choose **Teams** and then select **Create New Team**.
 
-21. Create four Palette teams with each team named after the **Entra ID Group ID*** you created in the previous steps.  Use the table below as an example reference.
+21. Create four Palette teams, with each team named after the **Entra ID Group ID*** you created in the previous steps.  Use the table below as an example reference.
 
     | Palette Team Name is the Entra Group ID | Entra ID Group Name     |  
     |-------------------|-------------------------------------------------|
@@ -200,18 +186,17 @@ Refer to the images below to ensure you have the correct settings.
 
 | Field| Description |
 |------|-------------|
-| **Issuer URL**        | Add your tenant URL. The tenant URL looks like the following but with your unique tenant ID at the end `https://sts.windows.net/xxxxxxx`|
+| **Issuer URL**        | Add your tenant URL. The tenant URL looks like the following but with your unique tenant ID at the end `https://sts.windows.net/[**Directory (tenant) ID**]`|
 | **Client ID**        | The application ID from Entra ID |
 | **Client Secret**     | The application secret you created  |
 | **Default Teams**     | Leave blank if you don't want users without group claims to be assigned to a default group. If you do, enter the desired default group name. If you use this option, be careful with how much access you assign to the group |
-| **Scopes**            | Add `allatclaims`, `openid`, `profile` and `email`.  |
+| **Scopes**            | Add `openid`, `profile` and `email`.  |
 | **Email**             | Use `email` as the default value  |
 
 
-25. Leave other fields with the default values and click **Enable**. If all required values are provided, you will receive a message stating OIDC is configured successfully.
+25. Leave other fields with the default values and click **Enable**. If all required values are provided, you will receive a message stating that OIDC is configured successfully.
 
     ![Example of Palette with populated input fields](/oidc-entra-id-images/enable.png)
-
 
 You have now successfully configured OIDC SSO in Palette. Next, validate the configuration by logging in to Palette with an Entra ID user account.
 
@@ -219,10 +204,9 @@ You have now successfully configured OIDC SSO in Palette. Next, validate the con
 
 1. Log out of Palette. To log out, click on **User Menu** in the top right corner of the screen and select **Sign Out**. 
 
-2. The Palette login screen now displays a **Sign in** button and no longer presents a username and password field. If this is the first time you are logging in with SSO, you will be redirected to the Entra ID login page. Depending on your organization's SSO settings, this could be a simple login form or require MFA (Multi-Factor Authentication). Make sure you log in as a user that is a member of the `palette-tenant-admins` group in Entra ID. Once authenticated, you will automatically be redirected back to Palette and logged into Palette as that user.
+2. The Palette login screen now displays a **Sign in** button and no longer presents a username and password field. If this is your first time logging in with SSO, you will be redirected to the Entra ID login page. Depending on your organization's SSO settings, this could be a simple login form or require MFA (Multi-Factor Authentication). Make sure you log in as a user who is a member of the `palette-tenant-admins` group in Entra ID. Once authenticated, you will automatically be redirected back to Palette and logged into Palette as that user.
 
-
-3. Navigate to the left **Main Menu** and ensure the **Tenant Settings** option is available. If you do not see the **Tenant Settings** option, you are not logged in as a user that is a member of the `palette-tenant-admins` group in Entra ID.
+3. Navigate to the left **Main Menu** and ensure the **Tenant Settings** option is available. If you do not see the **Tenant Settings** option, you are not logged in as a user who is a member of the `palette-tenant-admins` group in Entra ID.
 
   :::tip
 
@@ -241,8 +225,19 @@ You have now successfully configured OIDC SSO in Palette. Next, validate the con
 
 - OIDC configured in Palette with Microsoft Entra ID. Refer to the [Enable OIDC SSO in Palette](#enable-oidc-sso-in-palette) section for detailed guidance on how to configure OIDC in Palette.
 
-- [kubelogin](https://github.com/Azure/kubelogin) installed on your local workstation. 
+- [kubelogin](https://github.com/Azure/kubelogin) installed on your local workstation.
 
+- ## Architecture
+
+Kubelogin is a kubectl plugin for Kubernetes OpenID Connect (OIDC) authentication.  When you run kubectl, kubelogin opens your browser, and you can log in to the IDP to authenticate. In our example, Entra ID is the IDP. Once Kubelogin gets a token from Entra ID or similar IDP, you can then use Kubectl to access Kubernetes APIs.
+
+Take a look at the diagram below for more details and flow:
+
+  ![Palette and EntraID](/oidc-entra-id-images/PalettewEntraID.png)
+
+### Install kubelogin
+
+Install the latest kubelogin release from Homebrew, Krew, Chocolatey, or GitHub Releases: See https://github.com/int128/kubelogin for more details.
 
 ### Create Cluster Profile With RoleBindings
 
@@ -293,7 +288,6 @@ This section describes how to enable Entra ID SSO authentication to access a Kub
       oidc-extra-scope: "profile,email"
     ```
  7. Complete the remaining steps to create the cluster profile. Once you have specified the container network interface and the storage container interface, select **Add New Pack** to add the RBAC addon pack. 
-
 
 8. Select the **Spectro RBAC** from the **Public Repo** or the **Palette Registry**.
 
@@ -394,14 +388,14 @@ This section describes how to enable Entra ID SSO authentication to access a Kub
 
 12. Review the cluster profile settings and click on **Finish Configuration** to create the cluster profile.
 
-You now have a cluster profile that will enable Entra ID SSO authentication to access a Kubernetes cluster. You can now create a cluster using this profile. When you log in to the cluster, you will be redirected to the Entra ID login page. Depending on your organization's SSO settings, this could be a simple login form or require MFA (Multi-Factor Authentication).
+You now have a cluster profile that will use Entra ID SSO authentication to access a Kubernetes cluster. You can now create a cluster using this profile. You will be redirected to the Entra ID login page when you log in to the cluster. Depending on your organization's SSO settings, this could be a simple login form or require MFA (Multi-Factor Authentication).
 
 
 ### Validate
 
 You can validate the Entra ID SSO integration by deploying a Kubernetes cluster with the cluster profile you created in the previous steps. Once the cluster is deployed, you can log in to the cluster by using kubectl with the kube-login plugin from a workstation that has kubelogin installed.
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a user that is a member of one of the Entra ID groups you created in the previous steps.
+1. Log in to [Palette](https://console.spectrocloud.com) as a user who is a member of one of the Entra ID groups you created in the previous steps.
 
 2. Navigate to the left **Main Menu** and select **Clusters**.
 
@@ -424,7 +418,7 @@ You can validate the Entra ID SSO integration by deploying a Kubernetes cluster 
 
 9. Once you have successfully authenticated, you will be redirected back to the terminal and the kubectl command will be issued. 
 
-If everything is configured correctly, a list of pods in the cluster will be displayed. If you are not able to access the cluster, check the kubeconfig file to ensure the OIDC configuration is correct. Also make sure you have [kubelogin](https://github.com/Azure/kubelogin) installed on your workstation. Refer to the [Configure kubectl](../../clusters/cluster-management/palette-webctl.md) documentation for detailed guidance on how to configure kubectl.
+A list of pods in the cluster will be displayed if everything is configured correctly. If you are not able to access the cluster, check the kubeconfig file to ensure the OIDC configuration is correct. Also, make sure you have [kubelogin](https://github.com/Azure/kubelogin) installed on your workstation. Refer to the [Configure kubectl](../../clusters/cluster-management/palette-webctl.md) documentation for detailed guidance on how to configure kubectl.
 
 ## References
 
@@ -434,4 +428,7 @@ If everything is configured correctly, a list of pods in the cluster will be dis
 - [Palette SSO](./saml-sso.md)
 - [Palette User Management](../user-management.md)
 
+## How'd we Do?
+
+Please leave feedback and ideas on how to improve by submitting feedback from this page. Thank you!
 
