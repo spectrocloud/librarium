@@ -3,7 +3,7 @@ sidebar_label: "Configure etcd Backup"
 title: "Configure etcd Backup"
 description: "Learn how to enable scheduled etcd backups."
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 45
 tags: ["clusters", "cluster management", "backup"]
 ---
 
@@ -24,67 +24,82 @@ cluster profile's Kubernetes layer.
 3. Select the profile you use to deploy clusters. And then, select the Kubernetes layer of your profile.
 
 4. Edit the YAML file of your Kubernetes layer and add the following configurations. Depending on your Kubernetes
-   distribution, different configuration parameters are available:
+   distribution, different configuration parameters are available.
 
-<Tabs group="distribution">
+    <Tabs group="distribution">
 
-<TabItem value="PXK" label="PXK/PXK-E">
+    <TabItem value="PXK" label="PXK/PXK-E">
 
-In Palette-eXtended Kubernetes (PXK), etcd backup is enabled by default and cannot be disabled. You also cannot change
-the directory where the backups are stored, which is `/var/lib/etcd`.
+   In Palette-eXtended Kubernetes (PXK), etcd backup is enabled by default and cannot be disabled. You also cannot
+   change the directory where the backups are stored, which is `/var/lib/etcd`.
 
-| Parameter                                                    | Description                                                          |
-| ------------------------------------------------------------ | -------------------------------------------------------------------- |
-| `kubeadmconfig.etcd.local.extraArgs.snapshot-count`          | The number of committed transactions required to trigger a snapshot. |
-| `kubeadmconfig.etcd.local.extraArgs.etcd-snapshot-retention` | The maximum number of etcd backups to retain.                        |
+   | Parameter                                                    | Description                                                          |
+   | ------------------------------------------------------------ | -------------------------------------------------------------------- |
+   | `kubeadmconfig.etcd.local.extraArgs.snapshot-count`          | The number of committed transactions required to trigger a snapshot. |
+   | `kubeadmconfig.etcd.local.extraArgs.etcd-snapshot-retention` | The maximum number of etcd backups to retain.                        |
 
-```yaml
-kubeadmconfig:
-  etcd:
-    local:
-      extraArgs:
-        max-snapshots: 10
-        snapshot-count: "10000"
-```
+   For example,
 
-</TabItem>
+   ```yaml
+   kubeadmconfig:
+     etcd:
+       local:
+         extraArgs:
+           max-snapshots: 10
+           snapshot-count: "10000"
+   ```
 
-<TabItem value="rke2" label="RKE2">
+    </TabItem>
 
-Use the following parameters to configure scheduled backups.
+    <TabItem value="rke2" label="RKE2">
 
-| Parameter                                    | Description                                                                                                                                                           |
-| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cluster.config.etcd-snapshot-schedule-cron` | A cron expression that controls the time and frequency of scheduled backups. For example, the default value `0 */1 * * *` means the scheduled backup runs every hour. |
-| `cluster.config.etcd-snapshot-retention`     | The maximum number of etcd backups to retain.                                                                                                                         |
-| `cluster.config.etcd-disable-snapshots`      | Controls whether or not to disable scheduled etcd snapshots.                                                                                                          |
-| `cluster.config.etcd-snapshot-dir`           | Specifies the directory where the etcd snapshots are saved. By default, this value is `/var/lib/rke2/rancher/server/db/snapshots`.                                    |
+   Use the following parameters to configure scheduled backups.
 
-```yaml
-cluster:
-  config:
-    etcd-snapshot-schedule-cron: 0 */1 * * *
-    etcd-snapshot-retention: 12
-    etcd-disable-snapshots: false
-    etcd-snapshot-dir: /var/lib/rancher/rke2/server/db/snapshots
-```
+   | Parameter                                    | Description                                                                                                                                                           |
+   | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `cluster.config.etcd-snapshot-schedule-cron` | A cron expression that controls the time and frequency of scheduled backups. For example, the default value `0 */1 * * *` means the scheduled backup runs every hour. |
+   | `cluster.config.etcd-snapshot-retention`     | The maximum number of etcd backups to retain.                                                                                                                         |
+   | `cluster.config.etcd-disable-snapshots`      | Controls whether or not to disable scheduled etcd snapshots.                                                                                                          |
+   | `cluster.config.etcd-snapshot-dir`           | Specifies the directory where the etcd snapshots are saved. By default, this value is `/var/lib/rke2/rancher/server/db/snapshots`.                                    |
 
-</TabItem>
+   For example,
 
-<TabItem value="k3s" label="K3S">
+   ```yaml
+   cluster:
+     config:
+       etcd-snapshot-schedule-cron: 0 */1 * * *
+       etcd-snapshot-retention: 12
+       etcd-disable-snapshots: false
+       etcd-snapshot-dir: /var/lib/rancher/rke2/server/db/snapshots
+   ```
 
-Use the following parameters to configure scheduled backups.
+    </TabItem>
 
-| Parameter                                    | Description                                                                                                                                                           |
-| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cluster.config.etcd-snapshot-schedule-cron` | A cron expression that controls the time and frequency of scheduled backups. For example, the default value `0 */1 * * *` means the scheduled backup runs every hour. |
-| `cluster.config.etcd-snapshot-retention`     | The maximum number of etcd backups to retain.                                                                                                                         |
-| `cluster.config.etcd-disable-snapshots`      | Controls whether or not to disable scheduled etcd snapshots.                                                                                                          |
-| `cluster.config.etcd-snapshot-dir`           | Specifies the directory where the etcd snapshots are saved. By default, this value is `/var/lib/k3s/rancher/server/db/snapshots`.                                     |
+    <TabItem value="k3s" label="K3S">
 
-</TabItem>
+   Use the following parameters to configure scheduled backups.
 
-</Tabs>
+   | Parameter                                    | Description                                                                                                                                                           |
+   | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `cluster.config.etcd-snapshot-schedule-cron` | A cron expression that controls the time and frequency of scheduled backups. For example, the default value `0 */1 * * *` means the scheduled backup runs every hour. |
+   | `cluster.config.etcd-snapshot-retention`     | The maximum number of etcd backups to retain.                                                                                                                         |
+   | `cluster.config.etcd-disable-snapshots`      | Controls whether or not to disable scheduled etcd snapshots.                                                                                                          |
+   | `cluster.config.etcd-snapshot-dir`           | Specifies the directory where the etcd snapshots are saved. By default, this value is `/var/lib/k3s/rancher/server/db/snapshots`.                                     |
+
+   For example,
+
+   ```yaml
+   cluster:
+     config:
+       etcd-snapshot-schedule-cron: 0 */1 * * *
+       etcd-snapshot-retention: 12
+       etcd-disable-snapshots: false
+       etcd-snapshot-dir: /var/lib/rancher/k3s/server/db/snapshots
+   ```
+
+    </TabItem>
+
+    </Tabs>
 
 ## Validate
 
@@ -101,4 +116,4 @@ The following is list of helpful resources that can help you understand disaster
 
 - [Disaster recovery](https://etcd.io/docs/v3.5/op-guide/recovery/)
 
-- [https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)
+- [Operating etcd clusters for Kubernetes](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)
