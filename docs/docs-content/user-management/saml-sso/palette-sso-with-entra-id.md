@@ -203,10 +203,9 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
     | `3f33c3a5-e0af-4ef6-9671-c7545fe264f3` | No role assigned | `k8s_cluster_admins`             |
     | `c4606295-e8b0-4df0-891b-de4428d7e54f` | No role assigned | `k8s_cluster-editor`             |
 
-Refer to the images below to ensure you have the correct settings.
+    Refer to the images below to ensure you have the correct settings.
 
     ![Example of IDs](/oidc-entra-id-images/ba_tenantadmin.png)
-
 
     ![Example of IDs with Palette roles attached to a team](/oidc-entra-id-images/25_def_project_admin.png)
 
@@ -217,14 +216,14 @@ Refer to the images below to ensure you have the correct settings.
 24. You will now configure the OIDC settings in Palette. Use the table below as a reference and populate the fields with
     the information you saved from the previous steps.
 
-| Field             | Description                                                                                                                                                                                                                  |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Issuer URL**    | Add your tenant URL. The tenant URL looks like the following but with your unique tenant ID at the end `https://sts.windows.net/[**Directory (tenant) ID**]`                                                                 |
-| **Client ID**     | The application ID from Entra ID                                                                                                                                                                                             |
-| **Client Secret** | The application secret you created                                                                                                                                                                                           |
-| **Default Teams** | Leave blank if you don't want users without group claims to be assigned to a default group. If you do, enter the desired default group name. If you use this option, be careful with how much access you assign to the group |
-| **Scopes**        | Add `openid`, `profile` and `email`.                                                                                                                                                                                         |
-| **Email**         | Use `email` as the default value                                                                                                                                                                                             |
+    | Field             | Description                                                                                                                                                                                                                  |
+    | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Issuer URL**    | Add your tenant URL. The tenant URL looks like the following but with your unique tenant ID at the end `https://sts.windows.net/[**Directory (tenant) ID**]`                                                                 |
+    | **Client ID**     | The application ID from Entra ID                                                                                                                                                                                             |
+    | **Client Secret** | The application secret you created                                                                                                                                                                                           |
+    | **Default Teams** | Leave blank if you don't want users without group claims to be assigned to a default group. If you do, enter the desired default group name. If you use this option, be careful with how much access you assign to the group |
+    | **Scopes**        | Add `openid`, `profile` and `email`.                                                                                                                                                                                         |
+    | **Email**         | Use `email` as the default value                                                                                                                                                                                             |
 
 25. Leave other fields with the default values and click **Enable**. If all required values are provided, you will
     receive a message stating that OIDC is configured successfully.
@@ -248,13 +247,13 @@ an Entra ID user account.
    **Tenant Settings** option, you are not logged in as a user who is a member of the `palette-tenant-admins` group in
    Entra ID.
 
-:::tip
+   :::tip
 
-Below the **Sign In** button, there is a link titled **SSO issues? --> Use your password**. The link can be used to
-bypass SSO and log in with a local Palette account in case there is an issue with SSO and you need to access Palette
-without SSO.
+   Below the **Sign In** button, there is a link titled **SSO issues? --> Use your password**. The link can be used to
+   bypass SSO and log in with a local Palette account in case there is an issue with SSO and you need to access Palette
+   without SSO.
 
-:::
+   :::
 
 ## Enable OIDC in Kubernetes Clusters With Entra ID
 
