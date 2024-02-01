@@ -4,7 +4,6 @@ on:
   pull_request_target:
     types: [opened, synchronize, reopened, ready_for_review]
     branches: ["master"]
-  if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
 
 
 concurrency:
@@ -29,7 +28,7 @@ jobs:
     name: Build
     needs: [run-ci, prettier]
     runs-on: ubuntu-latest
-    if: ${{ !github.event.pull_request.draft }}
+    if: ${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
