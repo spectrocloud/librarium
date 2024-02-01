@@ -38,15 +38,16 @@ The following prerequisites must be met before deploying a cluster to AWS:
 
 :::info
 
-The following tags should be added to the virtual private network (VPC) public subnets to enable automatic subnet
-discovery for integration with AWS load balancer service. Replace the value `yourClusterName` with your cluster's name.
+  The following tags should be added to the virtual private network (VPC) public subnets to enable automatic subnet
+  discovery for integration with AWS load balancer service. Replace the value `yourClusterName` with your cluster's
+  name.
 
-- `kubernetes.io/role/elb = 1`
-- `sigs.k8s.io/cluster-api-provider-aws/role = public`
-- `kubernetes.io/cluster/[yourClusterName] = shared`
-- `sigs.k8s.io/cluster-api-provider-aws/cluster/[yourClusterName] = owned`
+  - `kubernetes.io/role/elb = 1`
+  - `sigs.k8s.io/cluster-api-provider-aws/role = public`
+  - `kubernetes.io/cluster/[yourClusterName] = shared`
+  - `sigs.k8s.io/cluster-api-provider-aws/cluster/[yourClusterName] = owned`
 
-:::
+  :::
 
 ## Deploy an AWS Cluster
 

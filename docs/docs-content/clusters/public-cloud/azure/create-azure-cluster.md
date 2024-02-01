@@ -100,21 +100,21 @@ Use the following steps to deploy an Azure cluster.
     :::warning
 
     If you enable the **Disable Properties** setting when
-    [registering an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), Palette cannot list network
+    [registering an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), Palette cannot create network
     resources on your behalf. In this case, when creating clusters, you must manually specify their virtual network
     subnets and security groups.
 
     :::
 
-| **Parameter**         | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Subscription**      | Use the **drop-down Menu** to select the subscription that will be used to access Azure services.                                                                                                                                                                                                                                                                                                                                                                                        |
-| **Region**            | Use the **drop-down Menu** to choose the Azure region where you would like to provision the cluster.                                                                                                                                                                                                                                                                                                                                                                                     |
-| **Resource Group**    | Select the name of the resource group that contains the Azure resources you will be accessing.                                                                                                                                                                                                                                                                                                                                                                                           |
-| **Storage Account**   | Optionally, if you have a custom storage account available, you can use the **drop-down Menu** to select the storage account name. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                   |
-| **Storage Container** | Optionally, if you will be using a custom storage container, use the **drop-down Menu** to select it. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                                                |
-| **SSH Key**           | The public SSH key for connecting to the nodes. SSH key pairs must be pre-configured in your Azure environment. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats).                                                                                                                             |
-| **Static Placement**  | By default, Palette uses dynamic placement. This creates a new VNet for clusters with two subnets in different Availability Zones (AZs). Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into a pre-existing VNet, enable the **Static Placement** option, and fill out the input values listed in the [Static Placement](#static-placement-table) table below. |
+| **Parameter**         | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Subscription**      | Use the **drop-down Menu** to select the subscription that will be used to access Azure services.                                                                                                                                                                                                                                                                                                                                                                                           |
+| **Region**            | Use the **drop-down Menu** to choose the Azure region where you would like to provision the cluster.                                                                                                                                                                                                                                                                                                                                                                                        |
+| **Resource Group**    | Select the name of the resource group that contains the Azure resources you will be accessing.                                                                                                                                                                                                                                                                                                                                                                                              |
+| **Storage Account**   | Optionally, if you have a custom storage account available, you can use the **drop-down Menu** to select the storage account name. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                      |
+| **Storage Container** | Optionally, if you will be using a custom storage container, use the **drop-down Menu** to select it. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                                                   |
+| **SSH Key**           | The public SSH key for connecting to the nodes. SSH key pairs must be pre-configured in your Azure environment. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats).                                                                                                                                |
+| **Static Placement**  | By default, Palette uses dynamic placement. This creates a new VNet for clusters with two subnets in different Availability Zones (AZs). Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into a pre-existing VNet, enable the **Static Placement** option, and fill out the input values listed in the [Static Placement](#static-placement-settings) table below. |
 
 #### Static Placement Settings
 
@@ -142,9 +142,6 @@ Standard_D2_v2 instance types for general-purpose workloads, and another worker 
 Standard_NC12s_v3 can be configured for Graphics Processing Unit (GPU) workloads.
 
 :::
-
-You can apply autoscale capability to dynamically increase resources during high loads and reduce them during low loads.
-To learn more, refer to [Enable Autoscale for Azure IaaS Cluster](#enable-autoscale-for-azure-iaas-cluster).
 
 #### Control Plane Pool Configuration Settings
 
@@ -227,6 +224,46 @@ You can validate your cluster is up and in **Running** state.
 4. Select the cluster you deployed to review its details page. Ensure the **Cluster Status** field contains the value
    **Running**.
 
+<!--
+## Configure Autoscaling in Azure Portal
+
+Azure Autoscale allows you to provision nodes to support workload demand on your application. Within [Azure Portal](https://portal.azure.com/#home), you can scale out VMs to handle increases in load or scale in VMs when they are not needed. Azure VMs autoscale using a *virtual machine scale set*, which you create. The scale set serves as a virtual machine pool. For more information, review Microsoft's [Overview of Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-overview).
+
+:::warning
+
+To use Custom Autoscale capability, the following details apply with regard to scale sets:
+
+- You must create a virtual machine scale set. To learn how, review Microsoft's [Create Virtual Machines in a Scale Set Using Azure Portal](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal) guide.
+
+- Ensure you create the scale set within the same resource group you specified during cluster creation in Palette.
+
+- When creating a scale set, ensure you specify the same Availability Zone (AZ) in the region you specified during cluster creation in Palette.
+
+:::
+
+Once you create your scale set, you can find it by navigating to the **Azure services** home page, selecting **Virtual machine scale sets**, and using the search field.
+
+Basic autoscaling options are available for host-based scaling when you create your scale set. However, to create custom autoscale rules based on metrics or a schedule, use **Custom autoscale**. To learn how you can scale resources based on metrics you define, refer to Microsoft's [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) reference guide.
+
+![Screenshot with an arrow that points to the Custom Autoscale option in Azure portal.](/clusters_publiccloud_azure_custom-autoscale.png)
+
+When scaling based on a metric, you add a rule to scale out VMs and a matching rule to scale in VMs when they are no longer needed.
+
+:::warning
+
+A [Microsoft video](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started?WT.mc_id=Portal-Microsoft_Azure_Monitoring#discover-the-autoscale-settings-in-your-subscription) in [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) recommends adding matching scale-in and scale-out rules to avoid extra costs that could be incurred for unused provisioned resources.
+
+:::
+
+
+![Screenshot of scaling options with arrows pointing to the "Scale based on metric" option and the link to add a rule.](/clusters_publiccloud_azure_add-rule.png)
+
+:::tip
+
+The link to access the Add Rules page is displayed within a caution message in the **Rules** section of the scale set resource page.
+
+::: -->
+
 ## Resources
 
 - [Register and Manage Azure Cloud Account](azure-cloud.md)
@@ -240,3 +277,7 @@ You can validate your cluster is up and in **Running** state.
 - [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings)
 
 - [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc)
+
+<!-- - [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started)
+
+- [Create Virtual Machines in a Scale Set Using Azure Portal](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal) -->

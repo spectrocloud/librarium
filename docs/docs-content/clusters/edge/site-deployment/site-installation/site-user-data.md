@@ -20,65 +20,105 @@ to a bootable device, such as a USB stick.
 
 - `mkisofs`, or `genisoimage`, or similar ISO management software.
 
-- `cdrtools` or `wodim` for Windows.
+  - `cdrtools` or `wodim` for Windows.
 
 ## Create ISO
 
-1. Create a file called **user-data** that contains the additional configurations you want to override or inject.
+1.  Create a file called **user-data** that contains the additional configurations you want to override or inject.
+    Ensure that the file starts with a line that only contains `#cloud-config`. Only include configurations you'd like
+    to add or override. There is no need to include user data that was already present when the ISO image was build in
+    the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos.md) step.
 
-<br />
+    ```shell
+    touch user-data
+    ```
 
-```shell
-touch user-data
-```
+    For example, you can include the following content in the **user-data** file to connect your Edge host to Wi-Fi.
+    This requires wpa_supplicant to be included in your base OS image. For more information, refer to
+    [Connect Intel NUC Edge Host to Wifi](../../networking/connect-wifi.md).
 
-2. Create an empty **meta-data** file:
+    ```yaml
+    #cloud-config
+    install:
+    bind_mounts:
+       - /var/lib/wpa
 
-<br />
+    stages:
+    network.before:
+       - name: "Connect to wifi"
+          commands:
+          - |
+             # Find the first wireless network interface
+             wireless_interface=""
+             for interface in $(ip link | grep -oP '^\d+: \K[^:]+(?=:)')
+             do
+                if [ -d "/sys/class/net/$interface/wireless" ]; then
+                      wireless_interface=$interface
+                      break
+                fi
+             done
 
-```shell
-touch meta-data
-```
+             # Check if a wireless interface was found and connect it to WiFi
+             if [ -n "$wireless_interface" ]; then
+                wpa_passphrase Madrid supersup | tee /var/lib/wpa/wpa_supplicant.conf
+                wpa_supplicant -B -c /var/lib/wpa/wpa_supplicant.conf -i $wireless_interface
+                dhclient $wireless_interface
+             else
+                echo "No wireless network interface found."
+             fi
+    ```
 
-3. Create an ISO using the following command.
+2.  Create an empty **meta-data** file:
 
-MacOS/Linux:
+    ```shell
+    touch meta-data
+    ```
 
-```shell
-mkisofs -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
-```
+3.  Create an ISO using the following command.
 
-Windows:
+   <Tabs>
+   <TabItem label="macOS/Linux" value="mac-linux">
 
-```shell
-genisoimage -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
-```
+    ```shell
+    mkisofs -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
+    ```
 
-This generates an ISO file called site-user-data.iso in the current directory.
+   </TabItem>
 
-<br />
+   <TabItem label="Windows" value="windows">
 
-4. Copy the ISO to a bootable device such as a USB drive.
+    ```shell
+    genisoimage -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
+    ```
 
-   <br />
+   </TabItem>
+    </Tabs>
 
-:::info
+This generates an ISO file called **site-user-data.iso** in the current directory.
 
-You can use several software tools to create a bootable USB drive, such as [balenaEtcher](https://www.balena.io/etcher).
-For a PXE server, there are open-source projects such as [Fog](https://fogproject.org/download) or
-[Windows Deployment Services](https://learn.microsoft.com/en-us/windows/deployment/wds-boot-support) for Windows.
+4. Flash your bootable device such as a USB drive with the ISO file you just created.
 
-:::
+   :::info
+
+   You can use several software tools to create a bootable USB drive, such as
+   [balenaEtcher](https://www.balena.io/etcher). For a PXE server, there are open-source projects such as
+   [Fog](https://fogproject.org/download) or
+   [Windows Deployment Services](https://learn.microsoft.com/en-us/windows/deployment/wds-boot-support) for Windows.
+
+   :::
 
 5. Once the Edge host arrives at the physical site. Load the USB drive to the Edge host before powering it on. The Edge
    Installer will apply the new user data during the installation process.
-
-<br />
 
 ## Validate
 
 You can validate that the ISO image is not corrupted by attempting to flash a bootable device. Most software that
 creates a bootable device will validate the ISO image before the flash process.
+
+If you have SSH access, you can also SSH into the Edge host and locate your **user-data** file in either `/oem` or
+`/run/stylus`. The site-specific user data is named **user-data** while the original user data file is named something
+similar to `90_custom.yaml`. If you can find the files on the Edge host, it means the user data has been applied
+successfully.
 
 ## Next Steps
 

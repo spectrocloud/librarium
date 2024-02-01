@@ -62,9 +62,9 @@ Use the following steps to add a Legacy Pack registry to Palette.
 
 :::tip
 
-If you are encountering issues with adding a registry, review the endpoint URL and ensure that it is accessible from
-Palette. Verify the credentials and try again. Lastly, if the registry is hosted on a server using a self-signed
-certificate, upload the certificate to Palette and skip TLS verification.
+   If you are encountering issues with adding a registry, review the endpoint URL and ensure that it is accessible from
+   Palette. Verify the credentials and try again. Lastly, if the registry is hosted on a server using a self-signed
+   certificate, upload the certificate to Palette and skip TLS verification.
 
 :::
 

@@ -48,8 +48,8 @@ solutions with minimal overhead.
 
 :::info
 
-The liveness and readiness probe port can be changed during installation by using the `--probe-port` flag. Ensure the
-probe port is not used by another process on the worker nodes.
+  The liveness and readiness probe port can be changed during installation by using the `--probe-port` flag. Ensure the
+  probe port is not used by another process on the worker nodes.
 
 :::
 
@@ -222,8 +222,8 @@ spec:
 
 :::info
 
-The liveness and readiness probe port can be changed during installation by using the `--probe-port` flag. Ensure the
-probe port is not used by another process on the worker nodes.
+  The liveness and readiness probe port can be changed during installation by using the `--probe-port` flag. Ensure the
+  probe port is not used by another process on the worker nodes.
 
 :::
 

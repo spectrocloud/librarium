@@ -248,9 +248,7 @@ storageCluster:
 <TabItem label="AWS" value="AWS">
 
 To deploy Portworx in an AWS environment, ensure the following IAM policy is created in AWS and attached to the
-`nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role.
-
-<br />
+`nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role. <br/>
 
 ```yaml
 {
@@ -909,9 +907,7 @@ storageCluster:
 <TabItem label="AWS" value="AWS">
 
 To deploy Portworx in an AWS environment, ensure the following IAM policy is created in AWS and attached to the
-`nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role.
-
-<br />
+`nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role. <br/>
 
 ```yaml
 {
@@ -1500,9 +1496,7 @@ storageCluster:
 <TabItem label="AWS" value="AWS">
 
 To deploy Portworx in an AWS environment, ensure the following IAM policy is created in AWS and attached to the
-`nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role.
-
-<br />
+`nodes.cluster-api-provider-aws.sigs.k8s.io` IAM role. <br/>
 
 ```yaml
 {

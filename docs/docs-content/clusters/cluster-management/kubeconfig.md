@@ -72,14 +72,14 @@ The access you have as a user to the kubeconfig files for a cluster depends on t
   to the respective Kubernetes distribution on the [Packs List](../../integrations/integrations.mdx) page to learn more
   about OIDC configuration.
 
-:::warning
+  :::warning
 
-When enabling OIDC, ensure the parameter `oidc-issuer-url` and the `clientConfig` block are properly configured in the
-Kubernetes Pack YAML. Properly configuring both parameters ensures the kubeconfig file is available for all project
-users. Otherwise, the kubeconfig file will only be available for Cluster Admins or custom roles that have the _delete_
-permission for the resource key _cluster_.
+  When enabling OIDC, ensure the parameter `oidc-issuer-url` and the `clientConfig` block are properly configured in the
+  Kubernetes Pack YAML. Properly configuring both parameters ensures the kubeconfig file is available for all project
+  users. Otherwise, the kubeconfig file will only be available for Cluster Admins or custom roles that have the _delete_
+  permission for the resource key _cluster_.
 
-:::
+  :::
 
 - Is the [Spectro Proxy](../../integrations/frp.md) enabled for the cluster?
 

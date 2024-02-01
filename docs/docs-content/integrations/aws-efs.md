@@ -103,9 +103,7 @@ policy.<br /><br />
 ### Storage Class
 
 Palette creates storage classes named _spectro-storage-class_. You can view a list of storage classes using this kubectl
-command:
-
-<br />
+command: <br />
 
 ```bash
 kubectl get storageclass
@@ -115,9 +113,7 @@ kubectl get storageclass
 
 A PersistentVolumeClaim (PVC) is a request made by a pod for a certain amount of storage from the cluster. It acts as a
 link between the pod and the storage resource, allowing the pod to use the storage. You can learn details about a PVC,
-as shown in the following output, when you use the `kubectl describe pvc` command.
-
-<br />
+as shown in the following output, when you use the `kubectl describe pvc` command. <br />
 
 ```bash
 kubectl describe pvc my-efs-volume
@@ -253,9 +249,7 @@ kubectl get storageclass
 
 A PersistentVolumeClaim (PVC) is a request made by a pod for a certain amount of storage from the cluster. It acts as a
 link between the pod and the storage resource, allowing the pod to use the storage. You can learn details about a PVC by
-using the `kubectl describe pvc` command, as the following example output shows.
-
-<br />
+using the `kubectl describe pvc` command, as the following example output shows. <br />
 
 ```bash
 kubectl describe pvc my-efs-volume
@@ -301,9 +295,7 @@ Mounted By:  <none>
 ## Troubleshooting
 
 Some basic troubleshooting steps you can take if you receive errors in your pods when mounting an Amazon EFS volume in
-your Amazon EKS cluster are to verify you have the following:
-
-<br />
+your Amazon EKS cluster are to verify you have the following: <br />
 
 - An Amazon EFS file system created with a mount target in each of the worker node subnets.
 - A valid EFS storage class definition using the efs.csi.aws.com provisioner.
@@ -313,9 +305,7 @@ your Amazon EKS cluster are to verify you have the following:
 
 The following list provides more specific details to help you troubleshoot issues when mounting an Amazon EFS volume.
 CSI driver pod logs are also available to determine the cause of the mount failures. If the volume is failing to mount,
-the efs-plugin logs are available.
-
-<br />
+the efs-plugin logs are available. <br />
 
 - **Mount Targets:** Verify the mount targets are configured correctly. Be sure to create the EFS mount targets in each
   Availability Zone where the EKS worker nodes are running.

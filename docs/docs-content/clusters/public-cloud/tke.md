@@ -169,9 +169,7 @@ The following steps need to be performed to provision a new TKS cluster:
      pre-configured in the Project/Tenant Admin settings.
 
    **Note**: The cloud account can be created during the cluster creation by clicking **+** next to the **Cloud
-   Account**.
-
-   <br />
+   Account**. <br />
 
 2. Select the cluster profile created for Tencent Cloud. The profile definition will be used as the cluster deployment
    template.
@@ -196,23 +194,23 @@ The following steps need to be performed to provision a new TKS cluster:
    "OsName": "ubuntu18.04.1x86_64 GPU"
    ```
 
-:::warning
+   :::warning
 
-While adding Add-on packs to the Cluster Profile, make sure that Persistent Volume Claim size is >=10 GB and in
-multiples of 10.
+   While adding Add-on packs to the Cluster Profile, make sure that Persistent Volume Claim size is >=10 GB and in
+   multiples of 10.
 
-Example:
+   Example:
 
-```yaml
-master:
-persistence:
-  enabled: true
-  accessModes:
-    - ReadWriteOnce
-  size: 20Gi
-```
+   ```yaml
+   master:
+   persistence:
+     enabled: true
+     accessModes:
+       - ReadWriteOnce
+     size: 20Gi
+   ```
 
-:::
+   :::
 
 4. Provide the Tencent Cloud account and placement information:
 
@@ -227,12 +225,12 @@ persistence:
    | **Cluster Endpoint Access** | Select Public, or Private & Public, based on how you want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster.                                                                                     |
    | **Public Security Group**   | A security group to controls the traffic that is allowed to reach and leave the resources that it is associated with. For example, after you associate a security group with the cluster, it controls the inbound and outbound traffic to the cluster. |
 
-:::info
+   :::info
 
-Palette encourages its uses to go with the Public Cluster endpoint access as of now. Other options will be supported in
-the near future.
+   Palette encourages its uses to go with the Public Cluster endpoint access as of now. Other options will be supported
+   in the near future.
 
-:::
+   :::
 
 5. Public Access CIDRs - To enable access restrictions.
 
@@ -280,8 +278,8 @@ In Tenant Admin and Project Admin scope, Palette allows you to force the deletio
    - If the **Force Delete Cluster** button is not enabled, wait for 15 minutes. The **Settings** dropdown will give the
      estimated time for the auto-enabling of the **Force Delete** button.
 
-:::warning
+   :::warning
 
-If any resources remain in the cloud, you should clean them up before initiating a forced delete.
+   If any resources remain in the cloud, you should clean them up before initiating a forced delete.
 
-:::
+   :::

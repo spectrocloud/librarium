@@ -55,9 +55,7 @@ menu. You can use the following built-in filters.
 
 ### Custom Filters
 
-Palette supports a wide range of custom filters in a fixed format. To add a custom filter:
-
-<br />
+Palette supports a wide range of custom filters in a fixed format. To add a custom filter: <br />
 
 - Log in to Palette and select **Clusters** from the left **Main Menu**.
 

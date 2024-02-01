@@ -12,9 +12,7 @@ sidebar_custom_props:
 Welcome to the Spectro Cloud Kubernetes Knowledge Hub. You will find core Kubernetes tutorials, how-tos, frequently
 asked questions, and community curated resources.
 
-If you have a topic in mind you would like to see, use the Feedback app on the lower-right-hand corner.
-
-<br />
+If you have a topic in mind you would like to see, use the Feedback app on the lower-right-hand corner. <br />
 
 - [How-To](/kubernetes-knowlege-hub/how-to)
 

@@ -40,9 +40,7 @@ To add your private Helm Chart registry to Palette:
 
      - Charts are not synchronized with Palette, and you must type Helm chart names and versions when you create Cluster
        Profiles.
-     - The **Last Synced** column in the **Helm Registries** tab displays _n/a_.
-       <br />
-       <br />
+     - The **Last Synced** column in the **Helm Registries** tab displays _n/a_. <br /> <br />
 
    - Leave **Protected** mode toggled _off_ if your Helm registry is deployed in a public network. We refer to Helm
      registries with this option disabled as being unprotected.
@@ -51,15 +49,12 @@ To add your private Helm Chart registry to Palette:
 
      - Palette synchronizes Helm charts with the console so you can select charts and versions from drop-down menus.
      - The **Last Synced** column in the **Helm Registries** tab displays the date that charts were last synchronized in
-       Palette.
-       <br />
+       Palette. <br />
 
 6. If you haven’t set up credentials for your registry, leave **No Authentication** toggled _on_.
 
    If your registry has credentials, toggle **No Authentication** to _off_ and type the registry **Username** and
-   **Password**.
-
-   <br />
+   **Password**. <br />
 
 7. Confirm your changes.
 

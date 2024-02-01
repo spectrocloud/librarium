@@ -15,9 +15,7 @@ layers that are based on packs or helm charts.
 
 System profiles modeled on Palette UI should be downloaded and provided input to the edge system. Upon bootstrap, when
 the edge appliance registers back with the SaaS console, it links to the system profile. Any subsequent changes made to
-the profile after registration are propagated down to the edge appliance.
-
-<br />
+the profile after registration are propagated down to the edge appliance. <br />
 
 ## Create a System Profile
 
@@ -40,8 +38,7 @@ Here are the steps to create a system profile:
 
 5. Click the `Confirm and Create` button to save the configuration.
 
-6. Click the `Next` button to review the information and `Finish` to create and save the system profile.
-   <br />
+6. Click the `Next` button to review the information and `Finish` to create and save the system profile. <br />
 
 **Note:** Palette enables the [Export](cluster-profiles/cluster-profile-import-export.md#export-cluster-profile) and
 [Import](cluster-profiles/cluster-profile-import-export.md#import-cluster-profile) of System profiles across multiple
@@ -56,8 +53,7 @@ environments, projects and tenants.
 3. Open an existing system profile.
 
 4. Click the `Download System Profile` button at the bottom of the panel to download the profile definition as an
-   archive (with extension `tgz`).
-   <br />
+   archive (with extension `tgz`). <br />
 
 ## Sample Snapshots
 

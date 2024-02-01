@@ -167,7 +167,7 @@ experience problems with Kubernetes.
     above content. The `stages` block is based on Kairos cloud-init stages. For more information on cloud init stages,
     refer to [Cloud Init Stages](../edge-configuration/cloud-init.md).
 
-:::info
+    :::info
 
     In the above `stages` block, you are using the device ID of your Edge device that is read from the file
     **/sys/class/dmi/id/product_uuid**, as the hostname with which to register your device with Tailscale. For more
@@ -178,7 +178,7 @@ experience problems with Kubernetes.
     you can adjust the two `ID=$(cat /sys/class/dmi/id/product_uuid)` lines in the content above to match your custom
     device naming configuration.
 
-:::
+    :::
 
 7.  Build the Edge device installation ISO and providers images.
 

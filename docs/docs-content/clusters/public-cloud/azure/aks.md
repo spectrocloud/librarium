@@ -127,26 +127,35 @@ The following steps need to be performed to provision a new cluster:
 
 6. Complete the **Cluster config** section with the information for each parameter listed below.
 
-   | **Parameter**                       | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-   | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Subscription**                    | Select the subscription which is to be used to access Azure Services.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-   | **Region**                          | Select a region in Azure in where the cluster should be deployed.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-   | **Resource Group**                  | Select the resource group in which the cluster should be deployed.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-   | **SSH Key**                         | The public SSH key for connecting to the nodes. Review Microsoft's [supported SSH](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats) formats.                                                                                                                                                                                                                                                                                                             |
-   | **Static Placement**                | By default, Palette uses dynamic placement, wherein a new VPC with a public and private subnet is created to place cluster resources for every cluster. These resources are fully managed by Palette and deleted when the corresponding cluster is deleted. <br /> Turn on the **Static Placement** option if it is desired to place resources into preexisting VPCs and subnets. If the user is making the selection of **Static Placement** of resources, the following placement information needs to be provided: |
-   |                                     | **Virtual Resource Group**: The logical container for grouping related Azure resources.                                                                                                                                                                                                                                                                                                                                                                                                                               |
-   |                                     | **Virtual Network**: Select the virtual network from dropdown menu.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-   |                                     | **Control plane Subnet**: Select the control plane network from the dropdown menu.                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-   |                                     | **Worker Network**: Select the worker network from the dropdown.                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-   | **Update worker pools in parallel** | Check the box to concurrently update the worker pools.                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+   | **Parameter**        | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+   | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Subscription**     | Select the subscription which is to be used to access Azure Services.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+   | **Region**           | Select a region in Azure in where the cluster should be deployed.                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+   | **Resource Group**   | Select the resource group in which the cluster should be deployed.                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+   | **SSH Key**          | The public SSH key for connecting to the nodes. Review Microsoft's [supported SSH](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats) formats.                                                                                                                                                                                                                                                                                               |
+   | **Static Placement** | By default, Palette uses dynamic placement. This creates a new VNet for the cluster that contains two subnets in different Availability Zones (AZs). Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into a pre-existing VNet, enable the **Static Placement** option, and fill out the input values listed in the [Static Placement](#static-placement-settings) table below. |
 
-:::warning
+   #### Static Placement Settings
 
-If the Palette [cloud account](azure-cloud.md) is created with **Disable Properties** and the cluster option **Static
-Placement** is enabled, the network information from your Azure account will not be imported to Palette. You can
-manually input the information for the **Control Plane Subnet** and the **Worker Network**.
+   Each subnet allows you to specify the CIDR range and a security group.
 
-:::
+   | **Parameter**              | **Description**                                             |
+   | -------------------------- | ----------------------------------------------------------- |
+   | **Network Resource Group** | The logical container for grouping related Azure resources. |
+   | **Virtual Network**        | Select the VNet.                                            |
+   | **CIDR Block**             | Select the IP address CIDR range.                           |
+   | **Security Group Name**    | Select the security group name.                             |
+   | **Control Plane Subnet**   | Select the control plane subnet.                            |
+   | **Worker Subnet**          | Select the worker network.                                  |
+
+   :::warning
+
+   If you enable the **Disable Properties** setting when
+   [registering an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), Palette cannot create network
+   resources on your behalf. In this case, every time you deploy a cluster, you must manually specify their virtual
+   network subnets and security groups,
+
+   :::
 
 7. Click **Next** to configure the node pools.
 
@@ -187,6 +196,8 @@ A complete AKS cluster contains the following:
 
 During cluster creation, you will default to a single pool.
 
+<br />
+
 1. To add additional pools, click **Add Node Pool**.
 
 2. Provide any additional Kubernetes labels to assign to each node in the pool. This section is optional, and you can
@@ -195,33 +206,38 @@ During cluster creation, you will default to a single pool.
 
 3. To remove a pool, click **Remove** across from the title for each pool.
 
+<br />
+
 ## Create a System Node Pool
 
-1.  Each cluster requires at least one (1) system node pool. To define a pool as a system pool, check the box labeled
-    **System Node Pool**.
+1. Each cluster requires at least one (1) system node pool. To define a pool as a system pool, check the box labeled
+   **System Node Pool**.
+   <br />
 
-    :::info
+:::info
 
-    Identifying a Node Pool as a System Pool will deactivate taints, and the operating system options within the **Cloud
-    Configuration** section, as you can not to taint or change their OS from Linux. See the
-    [AKS Documentation](https://docs.microsoft.com/en-us/azure/aks/use-system-pools?tabs=azure-cli#system-and-user-node-pools)
-    for more details on pool limitations.
+Identifying a Node Pool as a System Pool will deactivate taints, and the operating system options within the cluster.
+You can not to taint or change the node OS from Linux. Refer to the
+[Azure AKS Documentation](https://docs.microsoft.com/en-us/azure/aks/use-system-pools?tabs=azure-cli#system-and-user-node-pools")
+for more details on pool limitations.
 
-    :::
+:::
 
-2.  Provide a name in the **Node pool name** text box. When creating a node, it is good practice to include an
-    identifying name that matches the node in Azure.
+<br />
 
-3.  Add the **Desired size**. You can start with three for multiple nodes.
+2. Provide a name in the **Node pool name** text box. When creating a node, it is good practice to include an
+   identifying name that matches the node in Azure.
 
-4.  Include **Additional Labels**. This is optional.
+3. Add the **Desired size**. You can start with three for multiple nodes.
 
-5.  In the **Azure Cloud Configuration** section, add the **Instance type**. The cost details are present for review.
+4. Include **Additional Labels**. This is optional.
 
-6.  Enter the **Managed Disk** information and its size.
+5. In the **Azure Cloud Configuration** section, add the **Instance type**. The cost details are present for review.
 
-7.  If you are including additional or multiple nodes to make a node pool, click the **Add Worker Pool** button to
-    create the next node.
+6. Enter the **Managed Disk** information and its size.
+
+7. If you are including additional or multiple nodes to make a node pool, click the **Add Worker Pool** button to create
+   the next node.
 
 ## Configure Node Pools
 
@@ -251,24 +267,30 @@ In all types of node pools, configure the following.
 - Provide instance details for all nodes in the pool with the **Instance type** dropdown. The cost details are present
   for review.
 
-  :::info
+<br />
 
-  New worker pools may be added if you want to customize specific worker nodes to run specialized workloads. As an
-  example, the default worker pool may be configured with the <i>Standard_D2_v2</i> instance types for general-purpose
-  workloads, and another worker pool with the instance type <i>Standard_NC12s_v3</i> can be configured to run GPU
-  workloads.
+:::info
 
-  :::
+New worker pools may be added if you want to customize specific worker nodes to run specialized workloads. As an
+example, the default worker pool may be configured with the <i>Standard_D2_v2</i> instance types for general-purpose
+workloads, and another worker pool with the instance type <i>Standard_NC12s_v3</i> can be configured to run GPU
+workloads.
+
+:::
+
+<br />
 
 - Provide the disk type via the **Managed Disk** dropdown and the size in Gigabytes (GB) in the **Disk size** field.
 
-  :::info
+:::info
 
-  A minimum allocation of <i>two (2)</i> CPU cores is required across all worker nodes.
+A minimum allocation of <i>two (2)</i> CPU cores is required across all worker nodes.
 
-  A minimum allocation of <i>4Gi</i> of memory is required across all worker nodes.
+A minimum allocation of <i>4Gi</i> of memory is required across all worker nodes.
 
-  :::
+:::
+
+<br />
 
 - When are done setting up all node pools, click **Next** to go to the **Settings** page to **Validate** and finish the
   cluster deployment wizard.
@@ -297,21 +319,24 @@ following are the steps to create the custom user _kubeconfig_ file:
 3. Create custom Kubernetes roles and role bindings for the created users and apply the roles and role bindings, using
    the Admin _kubeconfig_ file.
 
-   :::info
+<br />
 
-   The above step can also be completed using Spectro RBAC pack available under the Authentication section of Add-on
-   Packs.
+:::info
 
-   :::
+The above step can also be completed using Spectro RBAC pack available under the Authentication section of Add-on Packs.
+
+:::
+
+<br />
 
 4. Once the roles and role bindings are created, these roles can be linked to the Groups created in Azure AD.
 
 5. The users can now access the Azure clusters with the complete benefits of AAD. To get the user-specific _kubeconfig_
    file, please run the following command:
 
-   ```shell
-   az aks get-credentials --resource-group <resource-group> --name <cluster-name>
-   ```
+`az aks get-credentials --resource-group <resource-group> --name <cluster-name>`
+
+<br />
 
 ## Resources
 

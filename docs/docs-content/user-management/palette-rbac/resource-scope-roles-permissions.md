@@ -62,6 +62,7 @@ Palette provides the following built-in global resource roles:
 ### Resource Cluster Admin
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -100,6 +101,7 @@ Palette provides the following built-in global resource roles:
 ### Resource Cluster Editor
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -138,6 +140,7 @@ Palette provides the following built-in global resource roles:
 ### Resource Cluster Viewer
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -194,6 +197,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 ### Resource Cluster Profile Admin
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -222,6 +226,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 ### Resource Cluster Profile Editor
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -250,6 +255,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 ### Resource Cluster Profile Viewer
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -288,6 +294,7 @@ available **operations** can be added as per your requirements.
 ## List of Custom Permissions
 
 <br />
+
 <table>
   <tr>
     <td width="400">

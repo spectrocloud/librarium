@@ -281,9 +281,7 @@ value:
 ![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
 
 For RKE2 and k3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config`
-parameter section.
-
-<br />
+parameter section. <br />
 
 ```yaml
 tls-san:
@@ -404,9 +402,7 @@ value:
 ![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
 
 For RKE2 and k3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config`
-parameter section.
-
-<br />
+parameter section. <br />
 
 ```yaml
 tls-san:
@@ -526,9 +522,7 @@ value:
 ![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
 
 For RKE2 and k3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config`
-parameter section.
-
-<br />
+parameter section. <br />
 
 ```yaml
 tls-san:
@@ -626,9 +620,7 @@ plane nodes getting repaved.
 :::
 
 Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the
-`kubeadmconfig.apiServer` parameter section.
-
-<br />
+`kubeadmconfig.apiServer` parameter section. <br />
 
 ```yaml
 certSANs:
@@ -641,9 +633,7 @@ value:
 ![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
 
 For RKE2 and k3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config`
-parameter section.
-
-<br />
+parameter section. <br />
 
 ```yaml
 tls-san:
@@ -686,9 +676,7 @@ Set the parameter `k8sDashboardIntegration.enabled` to true if you intend to exp
 
 ## Troubleshooting
 
-Troubleshooting scenarios related to the Spectro Proxy.
-
-<br />
+Troubleshooting scenarios related to the Spectro Proxy. <br />
 
 ### x509 Unknown Authority Error
 

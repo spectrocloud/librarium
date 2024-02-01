@@ -67,4 +67,33 @@ gRPC is used for all communication between the management platform and the workl
 | 415789037893.dkr.ecr.us-east-1.amazonaws.com  | 443       |
 | 415789037893.dkr.ecr.us-west-2.amazonaws.com  | 443       |
 
+| Domain                                        | Ports     |
+| :-------------------------------------------- | :-------- |
+| api.spectrocloud.com                          | 443       |
+| api1.spectrocloud.com                         | 443       |
+| api2.spectrocloud.com                         | 443       |
+| api3.spectrocloud.com                         | 443       |
+| message.spectrocloud.com                      | 443, 4222 |
+| message1.spectrocloud.com                     | 443, 4222 |
+| message2.spectrocloud.com                     | 443, 4222 |
+| message3.spectrocloud.com                     | 443, 4222 |
+| msg.spectrocloud.com                          | 443       |
+| msg1.spectrocloud.com                         | 443       |
+| msg2.spectrocloud.com                         | 443       |
+| msg3.spectrocloud.com                         | 443       |
+| console.spectrocloud.com                      | 443       |
+| proxy.console.spectrocloud.com                | 443       |
+| registry.spectrocloud.com                     | 443       |
+| saas-repo.console.spectrocloud.com            | 443       |
+| registry.spectrocloud.com                     | 443       |
+| maasgoldenimage-console.s3.amazonaws.com      | 443       |
+| openstackgoldenimage-console.s3.amazonaws.com | 443       |
+| edgegoldenimage-console.s3.amazonaws.com      | 443       |
+| vmwaregoldenimage-console.s3.amazonaws.com    | 443       |
+| registry1.spectrocloud.com                    | 443       |
+| registry2.spectrocloud.com                    | 443       |
+| registry3.spectrocloud.com                    | 443       |
+| 415789037893.dkr.ecr.us-east-1.amazonaws.com  | 443       |
+| 415789037893.dkr.ecr.us-west-2.amazonaws.com  | 443       |
+
 <br />

@@ -55,8 +55,8 @@ an on-prem or edge environment and use the MetalLB pack to expose a load balance
 
 :::info
 
-You can also download the YAML file and edit it to suit your requirements before deploying it to your cluster. If you
-choose to do so, replace the GitHub file link in the original command with a file path to your YAML file.
+   You can also download the YAML file and edit it to suit your requirements before deploying it to your cluster. If you
+   choose to do so, replace the GitHub file link in the original command with a file path to your YAML file.
 
 :::
 

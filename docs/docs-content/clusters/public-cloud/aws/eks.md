@@ -48,21 +48,21 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
   <br />
 
-:::info
+  :::info
 
-To enable automated subnet discovery to create external load balancers, you need to add tags to the Virtual Private
-Cloud (VPC) public subnets. For more information about tagging VPC networks, refer to the AWS
-[EKS VPC Subnet Discovery](https://repost.aws/knowledge-center/eks-vpc-subnet-discovery) reference guide. Use the AWS
-Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName`
-with your cluster's name. To learn more about the Tag Editor, refer to the
-[AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) reference guide.
+  To enable automated subnet discovery to create external load balancers, you need to add tags to the Virtual Private
+  Cloud (VPC) public subnets. For more information about tagging VPC networks, refer to the AWS
+  [EKS VPC Subnet Discovery](https://repost.aws/knowledge-center/eks-vpc-subnet-discovery) reference guide. Use the AWS
+  Tag Editor and specify the region and resource type. Then, add the following tags. Replace the value `yourClusterName`
+  with your cluster's name. To learn more about the Tag Editor, refer to the
+  [AWS Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-editor.html) reference guide.
 
-- `kubernetes.io/role/elb = 1`
-- `sigs.k8s.io/cluster-api-provider-aws/role = public`
-- `kubernetes.io/cluster/[yourClusterName] = shared`
-- `sigs.k8s.io/cluster-api-provider-aws/cluster/[yourClusterName] = owned`
+  - `kubernetes.io/role/elb = 1`
+  - `sigs.k8s.io/cluster-api-provider-aws/role = public`
+  - `kubernetes.io/cluster/[yourClusterName] = shared`
+  - `sigs.k8s.io/cluster-api-provider-aws/cluster/[yourClusterName] = owned`
 
-:::
+  :::
 
 Use the following steps to deploy an EKS cluster on AWS.
 
@@ -153,13 +153,13 @@ open it to all possible IP addresses. Otherwise, Palette will not open it up ent
     | **Subnets**   | Pods running on Fargate Profiles are not assigned public IP addresses, so only private subnets (with no direct route to an Internet Gateway) are accepted for this parameter. For dynamic provisioning, this input is not required and subnets are automatically selected.                                                         |
     | **Selectors** | Define a pod selector by providing a target namespace and optional labels. Pods with a matching namespace and app labels are scheduled to run on dynamically provisioned compute nodes.<br /> You can have up to five selectors in a Fargate profile, and a pod only needs to match one selector to run using the Fargate profile. |
 
-:::info
+    :::info
 
     You can add new worker pools if you need to customize certain worker nodes to run specialized workloads. As an
     example, the default worker pool may be configured with the m3.large instance types for general-purpose workloads,
     and another worker pool with instance type g2.2xlarge can be configured to run GPU workloads.
 
-:::
+    :::
 
 13. Click on **Next** to continue.
 
@@ -273,7 +273,7 @@ For guidance in setting up kubectl, review the [Kubectl](../../cluster-managemen
 
 - [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
 
-- [EKS Cluster Encryption](#eks-cluster-secrets-encryption)
+- [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md)
 
 - [Configure Custom OIDC](../../../integrations/kubernetes.md#configure-custom-oidc)
 

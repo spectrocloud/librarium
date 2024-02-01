@@ -118,7 +118,7 @@ You will not be able to change the network overlay configurations after the clus
 
     The following are the sections of the packs you need to change depending on which CNI pack you are using:
 
-    <Tabs>
+          <Tabs>
 
     <TabItem value="calico" label="Calico">
 
@@ -139,7 +139,7 @@ You will not be able to change the network overlay configurations after the clus
         IP_AUTODETECTION_METHOD: "interface=scbr-100"
     ```
 
-    </TabItem>
+          </TabItem>
 
     <TabItem value="flannel" label="Flannel">
 
@@ -157,20 +157,20 @@ You will not be able to change the network overlay configurations after the clus
         - "--iface=scbr-100"
     ```
 
-    </TabItem>
+          </TabItem>
 
     <TabItem value="cilium" label="Cilium">
 
     You do not need to make any adjustments to the Cilium pack.
 
-    </TabItem>
+          </TabItem>
 
     <TabItem value="other" label="Other">
 
     If you are using other CNIs, refer to the documentation of your selected CNI and configure it to make sure that it
     picks the NIC named `scbr-100` on your Edge host.
 
-    </TabItem>
+          </TabItem>
 
     </Tabs>
 

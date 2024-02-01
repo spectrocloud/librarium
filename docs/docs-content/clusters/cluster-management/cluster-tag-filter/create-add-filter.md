@@ -64,11 +64,9 @@ types of roles:
 
 - A [Palette account](https://console.spectrocloud.com) with Tenant scope privileges.
 
-- A [user created](../../../user-management/new-user.md#create-a-new-user) to assign the resource privileges.
+* A [user created](../../../user-management/new-user.md#create-a-new-user) to assign the resource privileges.
 
-To assign the resource roles and filter to the user follow the below steps:
-
-<br />
+To assign the resource roles and filter to the user follow the below steps: <br />
 
 1. Log in to Palette as Tenant Admin
 

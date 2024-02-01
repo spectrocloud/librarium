@@ -237,9 +237,7 @@ OIDC claims required by Palette and Kubernetes.
 
 <br />
 
-You have now completed all configuration steps in Okta.
-
-<br />
+You have now completed all configuration steps in Okta. <br />
 
 ### Enable OIDC SSO in Palette
 

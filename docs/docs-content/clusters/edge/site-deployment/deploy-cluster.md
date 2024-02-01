@@ -56,9 +56,7 @@ To complete this tutorial, you will need the following:
   guide from VMware to configure a DHCP server on the network.
 
 - A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture to build the Edge
-  artifacts. You can issue the following command in the terminal to check your processor architecture.
-
-  <br />
+  artifacts. You can issue the following command in the terminal to check your processor architecture. <br/>
 
   ```bash
   uname -m
@@ -66,11 +64,13 @@ To complete this tutorial, you will need the following:
 
   <br />
 
-:::warning
+  :::warning
 
-The Linux machine must have network connectivity to your VMware vCenter environment.
+  The Linux machine must have network connectivity to your VMware vCenter environment.
 
 :::
+
+- The following minimum hardware configuration:
 
 - The following minimum hardware configuration:
 
@@ -204,24 +204,10 @@ export token=[your_token_here]
 Use the following command to create the **user-data** file containing the tenant registration token. You can click on
 the _Points of Interest_ numbers below to learn more about the main attributes relevant to this example.
 
-<PointsOfInterest
-  points={[
-    {
-      x: 250,
-      y: 160,
-      label: 1,
-      description: "Stores the registration token and lets the agent use the auto-registration functionality and authenticate with the provided token.",
-      tooltipPlacement: "rightTop",
-    },
-    {
-      x: 600,
-      y: 300,
-      label: 2,
-      description: "Sets the login credentials for Edge hosts. The login credentials allow you to SSH log in to the edge host for debugging purposes.",
-      tooltipPlacement: "rightTop",
-    }
-  ]}
->
+<PointsOfInterest points={[
+  { x: 250, y: 160, label: 1, description: "Stores the registration token and lets the agent use the auto-registration functionality and authenticate with the provided token.", tooltipPlacement: "rightTop", },
+  { x: 600, y: 300, label: 2, description: "Sets the login credentials for Edge hosts. The login credentials allow you to SSH log in to the edge host for debugging purposes.", tooltipPlacement: "rightTop", }
+]}>
 
 ```shell
 cat << EOF > user-data
@@ -239,9 +225,7 @@ EOF
 
 </PointsOfInterest>
 
-Review the newly created user data file.
-
-<br />
+Review the newly created user data file. <br />
 
 ```bash
 cat user-data
@@ -249,9 +233,7 @@ cat user-data
 
 The expected output should show that the `edgeHostToken` and login credentials for Edge hosts are set correctly. The
 `edgeHostToken` value must match your Palette registration token. Otherwise, your Edge hosts will not register
-themselves with Palette automatically. Below is a sample output with a dummy token value.
-
-<br />
+themselves with Palette automatically. Below is a sample output with a dummy token value. <br />
 
 ```hideClipboard bash
 #cloud-config
@@ -547,12 +529,12 @@ is an explanation of the options and sub-command used below:
 
 :::info
 
-Should you need to change the VM template name or VM settings defined in the **vsphere.hcl** file, or review the Packer
-script, you must open a bash session into the container using the
-`docker run -it --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.0.10 bash`
-command, and change to the **edge/vmware/packer/** directory to make the modifications. After you finish the
-modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command to trigger the Packer build
-process.
+  Should you need to change the VM template name or VM settings defined in the **vsphere.hcl** file, or review the
+  Packer script, you must open a bash session into the container using the
+  `docker run -it --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.0.10 bash`
+  command, and change to the **edge/vmware/packer/** directory to make the modifications. After you finish the
+  modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command to trigger the Packer
+  build process.
 
 :::
 
@@ -1052,9 +1034,7 @@ template, right-click on it and choose **Delete** option from the **drop-down Me
 
 Switch to the **Storage** view in your vSphere client. To delete the **palette-edge-installer.iso** file from the
 **packer_cache/** directory in the VMware vCenter datastore, right-click on it and choose **Delete** option from the
-**drop-down Menu**.
-
-<br />
+**drop-down Menu**. <br />
 
 ## Wrap-Up
 

@@ -20,23 +20,17 @@ deployment), and applies the changes to all the managed resources.
 
 Palette and Palette VerteX API can be used with the Spectro Cloud Terraform provider. The provider is available in the
 HashiCorp Terraform registry as
-[Spectro Cloud Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
-
-<br />
+[Spectro Cloud Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs). <br />
 
 ### Release Notes
 
 Information about the latest changes in the Spectro Cloud provider can be found in the
-[release notes](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-
-<br />
+[release notes](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases). <br />
 
 ### Provider Documentation
 
 Detailed documentation on supported data sources and resources are available in the Terraform Spectro Cloud Provider
-[documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) page.
-
-<br />
+[documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) page. <br />
 
 ## Usage
 

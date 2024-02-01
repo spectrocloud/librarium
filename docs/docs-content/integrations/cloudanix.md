@@ -92,9 +92,7 @@ Use the following information to find the **Spectro Namespace Labeler** add-on p
 - **Pack Name**: Spectro Namespace Labeler
 - **Pack Version**: 1.0.x or higher
 
-Below is the YAML file for the **Spectro Namespace Labeler** add-on pack. No action is required.
-
-<br />
+Below is the YAML file for the **Spectro Namespace Labeler** add-on pack. No action is required. <br />
 
 ```yaml
 pack:

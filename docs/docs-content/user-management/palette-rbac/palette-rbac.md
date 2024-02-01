@@ -117,32 +117,24 @@ modify the Project Scopes.
 Tenant is an isolated workspace within the Palette. `Users` and `Teams` with specific `Roles` can be associated with the
 Tenant(s) you create. Palette provides a [wide set of permissions](tenant-scope-roles-permissions.md) under the scope of
 a Tenant. Everyone is a user and there should be at least one user with Tenant Admin privilege to control the product
-operations.
-
-<br />
+operations. <br />
 
 ### Project
 
 The Global Project Scope holds a group of resources, in a logical grouping, to a specific project. The project acts as a
 namespace for resource management. Users and Teams with specific roles can be associated with the project, cluster, or
 cluster profile you create. Users are members of a tenant who are assigned
-[project scope roles](./project-scope-roles-permissions.md) that control their access within the platform.
-
-<br />
+[project scope roles](./project-scope-roles-permissions.md) that control their access within the platform. <br />
 
 ## Palette Specific (Default) Roles:
 
 Palette RBAC has several built-in roles that can be assigned to users and teams. Role assignments are the way you
-control access to Palette resources.
-
-<br />
+control access to Palette resources. <br />
 
 ### Tenant Scope Default Roles:
 
 The Global Tenant Scope holds all the tenant resources of Palette. The list of `Role` types within the `Tenant Scope`
-are as follows:
-
-<br />
+are as follows: <br />
 
 1. [Tenant Administrator Role](tenant-scope-roles-permissions.md#tenant-admin)
 

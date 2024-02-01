@@ -99,21 +99,17 @@ These requirements apply to an Ingress endpoint:
 <br />
 
 - The Host Cluster must specify a Host domain name service (DNS) Pattern, for example: `*.starship.te.spectrocloud.com`
-  <br />
-  To create a valid Host DNS Pattern, you must deploy the NGINX Ingress Controller on the Host Cluster with SSL passthrough
-  enabled. This allows transport layer security (TLS) termination to occur at the virtual cluster's Kubernetes API server.
-  <br />
+  <br /> To create a valid Host DNS Pattern, you must deploy the NGINX Ingress Controller on the Host Cluster with SSL
+  passthrough enabled. This allows transport layer security (TLS) termination to occur at the virtual cluster's
+  Kubernetes API server. <br />
 - A wildcard DNS record must be configured, which maps the Host DNS Pattern to the load balancer associated with the
   NGINX Ingress Controller.
 
-To map the Host DNS Pattern to the load balancer with the NGINX Ingress Controller:
-
-<br />
+To map the Host DNS Pattern to the load balancer with the NGINX Ingress Controller: <br />
 
 1. Deploy the NGINX Ingress Controller on the Host Cluster and ensure that SSL passthrough is enabled in the
    `values.yaml` file for the NGINX Ingress Controller pack. Set `charts.ingress-nginx.controller.extraArgs` to _true_
-   as shown in the example:
-   <br />
+   as shown in the example: <br />
 
 <br />
 

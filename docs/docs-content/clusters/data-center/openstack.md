@@ -471,12 +471,12 @@ daemon installed and has connectivity to the Palette Management console as well 
 8. A new PCG configuration file is generated and its location is displayed on the console. You will receive an output
    similar to the following.
 
-<br />
+   <br />
 
-```bash hideClipboard
-==== PCG config saved ====
-Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
-```
+   ```bash hideClipboard
+   ==== PCG config saved ====
+   Location: :/home/spectro/.palette/pcg/pcg-20230706150945/pcg.yaml
+   ```
 
 :::info
 
@@ -544,7 +544,7 @@ The following steps need to be performed to delete a PCG:
 
 The delete gateway operation deletes the gateway instance registered in the management console, however the gateway
 infrastructure such as Load Balancers, VMs, Networks (if dynamic provision was chosen), etc. need to be deleted on the
-OpenStack console
+OpenStack console.
 
 :::
 
@@ -643,7 +643,7 @@ The following steps need to be performed to provision a new OpenStack cluster:
 | **Enable Autoscaler**                                | You can enable the autoscaler, by toggling the **Enable Autoscaler** button. Autoscaler scales up and down resources between the defined minimum and the maximum number of nodes to optimize resource utilization.                          |
 |                                                      | Set the scaling limit by setting the **Minimum Size** and **Maximum Size**, as per the workload the number of nods will scale up from minimum set value to maximum set value and the scale down from maximum set value to minimum set value |
 | **Size**                                             | Number of VMs to be provisioned for the node pool.                                                                                                                                                                                          |
-| **Rolling Update**                                   | Rolling update has two available options. Review the [Update Parameter](#update-parameter-table) table below for more details.                                                                                                              |
+| **Rolling Update**                                   | Rolling update has two available options. The expand option launches a new node first, then shuts down old one. The contract option shuts down a old one first, then launches new one.                                                      |
 | **[Labels](../cluster-management/taints.md#labels)** | Add a label to apply placement constraints on a pod, such as a node eligible for receiving the workload.                                                                                                                                    |
 | **[Taints](../cluster-management/taints.md#taints)** | To set toleration to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.                                                                                                                              |
 | **Instance type**                                    | Select the compute instance type to be used for all nodes in the node pool.                                                                                                                                                                 |

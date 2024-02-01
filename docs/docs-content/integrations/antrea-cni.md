@@ -21,9 +21,7 @@ vSwitch enables Antrea to implement Kubernetes network policies efficiently.
 
 ## Prerequisites
 
-- Enable the integrated NodeIPAM controller in the Antrea manifest: `NodeIPAM:enable`.
-
-  <br />
+- Enable the integrated NodeIPAM controller in the Antrea manifest: `NodeIPAM:enable`. <br />
 
 - When deploying a cluster using Palette, use the `podCIDR` parameter in the Pack section of the Kubernetes manifest.
   The classless inter-domain routing (CIDR) IP specified in the Kubernetes manifest always takes precedence.

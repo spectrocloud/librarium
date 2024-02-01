@@ -78,5 +78,4 @@ Each database service exposes a set of output variables. To learn about each dat
 
 - [Palette System Macros](../../registries-and-packs/pack-constraints.md#pack-macros)
 
-- [Palette User Macros](../../clusters/cluster-management/macros.md)
-  <br />
+- [Palette User Macros](../../clusters/cluster-management/macros.md) <br />

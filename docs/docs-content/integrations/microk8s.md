@@ -65,9 +65,7 @@ you can specify a channel made up of two components:
 - **Risk level**: indicates the maturity level of the release, such as stable and edge.
 
 MicroK8s comes with its own packaged version of the `kubectl` command for operating Kubernetes. This avoids interfering
-with any version that may already be on the host machine. You can run it in a terminal like this:
-
-<br />
+with any version that may already be on the host machine. You can run it in a terminal like this: <br />
 
 ```yaml
 microk8s kubectl

@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    target-branch: "master"
+    commit-message:
+      prefix: "chore:"
+
+  - package-ecosystem: "github-actions"
+    directory: "/" # Root directory of the repository
+    schedule:
+      interval: "monthly"
+    target-branch: "master"
+    commit-message:
+      prefix: "chore:"

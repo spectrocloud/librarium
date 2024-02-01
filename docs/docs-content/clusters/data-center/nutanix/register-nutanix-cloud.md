@@ -47,60 +47,61 @@ Use the following steps to prepare to register your cloud with Palette.
    - **infrastructure-components.yaml**
    - **cluster-template.yaml**
 
-<br />
+   <br />
 
-:::warning
+   :::warning
 
-Review the
-[Nutanix compatibility matrix](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions) to
-ensure you download a compatible CAPX version of the files.
+   Review the
+   [Nutanix compatibility matrix](https://opendocs.nutanix.com/capx/v1.2.x/validated_integrations/#validated-versions)
+   to ensure you download a compatible CAPX version of the files.
 
-:::
+   :::
 
-Export the CAPX version as an environment variable. For example, if you want to download version **v1.2.4**, issue the
-following command.
+   Export the CAPX version as an environment variable. For example, if you want to download version **v1.2.4**, issue
+   the following command.
 
-```bash
-export CAPX_VERSION="v1.2.4"
-```
+   ```bash
+   export CAPX_VERSION="v1.2.4"
+   ```
 
-Next, issue the commands below to download the files.
+   Next, issue the commands below to download the files.
 
-    ```bash
-    curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/download/$CAPX_VERSION/cluster-template.yaml
-    curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/download/$CAPX_VERSION/infrastructure-components.yaml
-    ```
+   ```bash
+   curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/download/$CAPX_VERSION/cluster-template.yaml
+   curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/download/$CAPX_VERSION/infrastructure-components.yaml
+   ```
 
 2. Create two copies of `cluster-template.yaml` and rename them so you have the following files in addition to the
    `infrastructure-components.yaml`:
+
    - **cloudClusterTemplate.yaml**
    - **controlPlanePoolTemplate.yaml**
    - **workerPoolTemplate.yaml**
 
-Use the following commands to copy and rename the files.
+   Use the following commands to copy and rename the files.
 
-    ```bash
-    cp cluster-template.yaml cloudClusterTemplate.yaml
-    cp cluster-template.yaml controlPlanePoolTemplate.yaml
-    mv cluster-template.yaml workerPoolTemplate.yaml
-    ```
+   ```bash
+   cp cluster-template.yaml cloudClusterTemplate.yaml
+   cp cluster-template.yaml controlPlanePoolTemplate.yaml
+   mv cluster-template.yaml workerPoolTemplate.yaml
+   ```
 
 3. Open the **cloudClusterTemplate.yaml**, **controlPlanePoolTemplate.yaml**, and **workerPoolTemplate.yaml** files in
    the editor of your choice.
 
 4. Modify the YAML files to remove sections so that only those sections listed in the table below remain in each file.
 
-:::tip
+   :::tip
 
-When editing the YAMLs, it is helpful to collapse the `spec` section to help you identify the sections to remove.
+   When editing the YAMLs, it is helpful to collapse the `spec` section to help you identify the sections to remove.
 
-:::
+   :::
 
-| **Templates**                     | **Objects**                                                                    |
-| --------------------------------- | ------------------------------------------------------------------------------ |
-| **cloudClusterTemplate.yaml**     | ConfigMap<br />Secret<br />Cluster<br />NutanixCluster<br />MachineHealthCheck |
-| **controlPlanePoolTemplate.yaml** | KubeadmControlPlane<br />NutanixMachineTemplate                                |
-| **workerPoolTemplate.yaml**       | KubeadmConfigTemplate<br />MachineDeployment<br />NutanixMachineTemplate       |
+   | **Templates**                     | **Objects**                                                                    |
+   | --------------------------------- | ------------------------------------------------------------------------------ |
+   | **cloudClusterTemplate.yaml**     | ConfigMap<br />Secret<br />Cluster<br />NutanixCluster<br />MachineHealthCheck |
+   | **controlPlanePoolTemplate.yaml** | KubeadmControlPlane<br />NutanixMachineTemplate                                |
+   | **workerPoolTemplate.yaml**       | KubeadmConfigTemplate<br />MachineDeployment<br />NutanixMachineTemplate       |
 
 5. In all three templates, remove all occurrences of `${NAMESPACE}`, as Palette provides its own namespace.
 
@@ -110,22 +111,22 @@ When editing the YAMLs, it is helpful to collapse the `spec` section to help you
 7. In **controlPlanePoolTemplate.yaml**, edit the NutanixMachineTemplate object. Rename `name: ${CLUSTER_NAME}-mt-0` as
    `${CLUSTER_NAME}-cp-0`, and change `providerID` to `nutanix://${CLUSTER_NAME}-m1-cp-0`.
 
-:::warning
+   :::warning
 
-The `${CLUSTER_NAME}-cp-0` parameters for the KubeadmControlPlane and NutanixMachineTemplate objects must have the same
-name.
+   The `${CLUSTER_NAME}-cp-0` parameters for the KubeadmControlPlane and NutanixMachineTemplate objects must have the
+   same name.
 
-:::
+   :::
 
 8. In **controlPlanePoolTemplate.yaml**, edit the KubeadmControlPlane object to enable the
    [**Nutanix CSI**](../../../integrations/nutanix-csi.md) pack. Include a new line with the
    `- systemctl enable --now iscsid` command below the `preKubeadmCommands:` line, keeping proper indentation as
    illustrated below.
 
-```bash
-preKubeadmCommands:
-  - systemctl enable --now iscsid
-```
+   ```bash
+   preKubeadmCommands:
+   - systemctl enable --now iscsid
+   ```
 
 9. In **workerPoolTemplate.yaml**, change `providerID` to `providerID: nutanix://${CLUSTER_NAME}-m1-mt-0` within the
    `NutanixMachineTemplate` object.
@@ -135,10 +136,10 @@ preKubeadmCommands:
     `- systemctl enable --now iscsid` command below the `preKubeadmCommands:` line, keeping proper indentation as
     illustrated below.
 
-```bash
-preKubeadmCommands:
-  - systemctl enable --now iscsid
-```
+    ```bash
+    preKubeadmCommands:
+    - systemctl enable --now iscsid
+    ```
 
 :::warning
 
@@ -150,19 +151,19 @@ The following modifications in steps 11 and 12 are only applicable to VerteX ins
     `rotate-server-certificates: "true"` below the two occurrences of the `kubeletExtraArgs:` line, keeping proper
     indentation as illustrated below.
 
-```bash
-kubeletExtraArgs:
-  rotate-server-certificates: "true"
-```
+    ```bash
+    kubeletExtraArgs:
+    rotate-server-certificates: "true"
+    ```
 
 12. In **workerPoolTemplate.yaml**, edit the KubeadmConfigTemplate object. Include a new line with
     `rotate-server-certificates: "true"` below the `kubeletExtraArgs:` line, keeping proper indentation as illustrated
     below.
 
-```bash
-kubeletExtraArgs:
-  rotate-server-certificates: "true"
-```
+    ```bash
+    kubeletExtraArgs:
+    rotate-server-certificates: "true"
+    ```
 
 ## Validate
 
@@ -178,11 +179,11 @@ Use the steps below to confirm you have the required files and verify the requir
 
 2. Ensure each template contains objects as listed in the table.
 
-| **Templates**                     | **Objects**                                                                    |
-| --------------------------------- | ------------------------------------------------------------------------------ |
-| **cloudClusterTemplate.yaml**     | ConfigMap<br />Secret<br />Cluster<br />NutanixCluster<br />MachineHealthCheck |
-| **controlPlanePoolTemplate.yaml** | KubeadmControlPlane<br />NutanixMachineTemplate                                |
-| **workerPoolTemplate.yaml**       | KubeadmConfigTemplate<br />MachineDeployment<br />NutanixMachineTemplate       |
+   | **Templates**                     | **Objects**                                                                    |
+   | --------------------------------- | ------------------------------------------------------------------------------ |
+   | **cloudClusterTemplate.yaml**     | ConfigMap<br />Secret<br />Cluster<br />NutanixCluster<br />MachineHealthCheck |
+   | **controlPlanePoolTemplate.yaml** | KubeadmControlPlane<br />NutanixMachineTemplate                                |
+   | **workerPoolTemplate.yaml**       | KubeadmConfigTemplate<br />MachineDeployment<br />NutanixMachineTemplate       |
 
 3. Open each file and verify that all occurrences of `${NAMESPACE}` are removed.
 
@@ -207,133 +208,133 @@ height is 40 pixels. It is preferable that the image be transparent.
 1. Export the URL of your self-hosted Palette or VerteX instance and the cloud type as environment variables.
    Additionally, export the path to the YAML templates and logo file.
 
-```bash
-export ENDPOINT="https://palette.example.com"
-export CLOUD_TYPE="nutanix"
-export cloudLogo="/path/to/the/file/cloud-logo.png"
-export infraComponents="/path/to/the/file/infrastructure-components.yaml"
-export cloudClusterTemplate="/path/to/the/file/cloudClusterTemplate.yaml"
-export controlPlanePoolTemplate="/path/to/the/file/controlPlanePoolTemplate.yaml"
-export workerPoolTemplate="/path/to/the/file/workerPoolTemplate.yaml"
-```
+   ```bash
+   export ENDPOINT="https://palette.example.com"
+   export CLOUD_TYPE="nutanix"
+   export cloudLogo="/path/to/the/file/cloud-logo.png"
+   export infraComponents="/path/to/the/file/infrastructure-components.yaml"
+   export cloudClusterTemplate="/path/to/the/file/cloudClusterTemplate.yaml"
+   export controlPlanePoolTemplate="/path/to/the/file/controlPlanePoolTemplate.yaml"
+   export workerPoolTemplate="/path/to/the/file/workerPoolTemplate.yaml"
+   ```
 
-:::warning
+   :::warning
 
-The CLOUD_TYPE variable value must be set as `nutanix`, as this value will be used in the following steps.
+   The CLOUD_TYPE variable value must be set as `nutanix`, as this value will be used in the following steps.
 
-Moreover, in the cloud registration API, set `name` as `nutanix`. Setting `name` as `nutanix` will make the
-out-of-the-box [**Nutanix CSI**](../../../integrations/nutanix-csi.md) pack available to users when they create a
-cluster profile in Palette.
+   Moreover, in the cloud registration API, set `name` as `nutanix`. Setting `name` as `nutanix` will make the
+   out-of-the-box [**Nutanix CSI**](../../../integrations/nutanix-csi.md) pack available to users when they create a
+   cluster profile in Palette.
 
-:::
+   :::
 
 2. To acquire system administrator credentials, use the `/v1/auth/syslogin` endpoint. Issue the `curl` command below and
    ensure you replace the credentials with your system console credentials.
 
-```bash
-curl --location "${ENDPOINT}/v1/auth/syslogin" \
---header 'Content-Type: application/json' \
---data '{
-  "password": "**********",
-  "username": "**********"
-}'
-```
+   ```bash
+   curl --location "${ENDPOINT}/v1/auth/syslogin" \
+   --header 'Content-Type: application/json' \
+   --data '{
+   "password": "**********",
+   "username": "**********"
+   }'
+   ```
 
-The output contains your authorization token. The token is valid for 15 minutes.
+   The output contains your authorization token. The token is valid for 15 minutes.
 
-```bash hideClipBoard
-{
-  "Authorization": "**********",
-  "IsPasswordReset": true
-}
-```
+   ```bash hideClipBoard
+   {
+   "Authorization": "**********",
+   "IsPasswordReset": true
+   }
+   ```
 
 3. Copy the authorization token, assign it to a `TOKEN` shell variable, and export it. Replace the authorization value
    below with the value from the output.
 
-```bash
-export TOKEN="**********"
-```
+   ```bash
+   export TOKEN="**********"
+   ```
 
 4. Register the Nutanix cloud type in Palette using the `/v1/clouds/cloudTypes/register` endpoint.
 
-```bash
-curl --location --request POST "${ENDPOINT}/v1/clouds/cloudTypes/register" \
---header "Content-Type: application/json" \
---header "Authorization: ${TOKEN}" \
---data '{
-    "metadata": {
-        "annotations": {},
-        "labels": {},
-        "name": "nutanix"
-    },
-    "spec": {
-        "displayName": "Nutanix",
-        "isControlPlaneManaged": false
-    }
-}'
-```
+   ```bash
+   curl --location --request POST "${ENDPOINT}/v1/clouds/cloudTypes/register" \
+        --header "Content-Type: application/json" \
+        --header "Authorization: ${TOKEN}" \
+        --data '{
+           "metadata": {
+              "annotations": {},
+              "labels": {},
+              "name": "nutanix"
+           },
+           "spec": {
+              "displayName": "Nutanix",
+              "isControlPlaneManaged": false
+           }
+        }'
+   ```
 
 5. Upload the Nutanix cloud logo.
 
-```bash
-curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/logo" \
---header "Authorization: ${TOKEN}" \
---form "fileName=@${cloudLogo}"
-```
+   ```bash
+   curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/logo" \
+        --header "Authorization: ${TOKEN}" \
+        --form "fileName=@${cloudLogo}"
+   ```
 
 6. Register the cloud provider.
 
-```bash
-curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/cloudProvider" \
-      --header "Content-Type: multipart/form-data" \
-      --header "Authorization: ${TOKEN}" \
-      --form "fileName=@${infraComponents}"
-```
+   ```bash
+   curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/cloudProvider" \
+        --header "Content-Type: multipart/form-data" \
+        --header "Authorization: ${TOKEN}" \
+        --form "fileName=@${infraComponents}"
+   ```
 
 7. Register the cluster template.
 
-```bash
-curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/clusterTemplate" \
-      --header "Content-Type: multipart/form-data" \
-      --header "Authorization: ${TOKEN}" \
-      --form "fileName=@${cloudClusterTemplate}"
-```
+   ```bash
+   curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/clusterTemplate" \
+        --header "Content-Type: multipart/form-data" \
+        --header "Authorization: ${TOKEN}" \
+        --form "fileName=@${cloudClusterTemplate}"
+   ```
 
 8. Register the control plane pool template.
 
-```bash
-curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/controlPlanePoolTemplate" \
-      --header "Content-Type: multipart/form-data" \
-      --header "Authorization: ${TOKEN}" \
-      --form "fileName=@${controlPlanePoolTemplate}"
-```
+   ```bash
+   curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/controlPlanePoolTemplate" \
+         --header "Content-Type: multipart/form-data" \
+         --header "Authorization: ${TOKEN}" \
+         --form "fileName=@${controlPlanePoolTemplate}"
+   ```
 
 9. Register the worker pool template.
 
-```bash
-  curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/workerPoolTemplate" \
+   ```bash
+   curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/workerPoolTemplate" \
         --header "Content-Type: multipart/form-data" \
         --header "Authorization: ${TOKEN}" \
         --form "fileName=@${workerPoolTemplate}"
-```
+   ```
 
 10. Register the cloud account keys.
 
-```bash
-curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/cloudAccountKeys" \
---header "Content-Type: application/json" \
---header "Authorization: ${TOKEN}" \
---data '{
-    "keys": [
-        "NUTANIX_USER",
-        "NUTANIX_PASSWORD",
-        "NUTANIX_ENDPOINT",
-        "NUTANIX_PORT",
-        "NUTANIX_INSECURE"
-    ]
-}'
-```
+    ```bash
+    curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/cloudAccountKeys" \
+         --header "Content-Type: application/json" \
+         --header "Authorization: ${TOKEN}" \
+         --data '{
+            "keys": [
+               "NUTANIX_USER",
+               "NUTANIX_PASSWORD",
+               "NUTANIX_ENDPOINT",
+               "NUTANIX_PORT",
+               "NUTANIX_INSECURE"
+            ]
+         }'
+    ```
 
 ## Validate
 

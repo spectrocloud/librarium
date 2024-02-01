@@ -33,9 +33,7 @@ The possible conditions of PCG migration are:
 
 ## How to Migrate a PCG Traffic
 
-To migrate the traffic from a PCG:
-
-<br />
+To migrate the traffic from a PCG: <br />
 
 1. Log in as **Tenant Admin** to the Palette Console.
 

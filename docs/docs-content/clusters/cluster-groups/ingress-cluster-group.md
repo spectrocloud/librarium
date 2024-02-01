@@ -93,9 +93,7 @@ c. Confirm and save your changes.
    ```
 
    d. Copy the record to your clipboard or to a text file. You will use the External-IP address to create a CNAME DNS
-   record.
-
-   <br />
+   record. <br />
 
    e. Close the web shell.
 

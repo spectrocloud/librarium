@@ -22,18 +22,22 @@ account in Palette.
 
   - [Compute Admin](https://cloud.google.com/iam/docs/understanding-roles#compute.admin)
 
-  - [Storage Object Viewer](https://cloud.google.com/iam/docs/understanding-roles#storage.objectViewer)
+  - [Service Account User](https://cloud.google.com/iam/docs/understanding-roles#iam.serviceAccountUser)
 
   - [Service Account Token Creator](https://cloud.google.com/iam/docs/understanding-roles#iam.serviceAccountTokenCreator)
 
-  <br />
+    - [Storage Object Viewer](https://cloud.google.com/iam/docs/understanding-roles#storage.objectViewer)
 
-:::info
+    - [Service Account Token Creator](https://cloud.google.com/iam/docs/understanding-roles#iam.serviceAccountTokenCreator)
 
-Alternatively, you can create a custom role and assign Palette the required GCP permissions. Check out the
-[Required IAM Permission](required-permissions.md) for a detailed list of all permissions.
+    <br />
 
-:::
+  :::info
+
+  Alternatively, you can create a custom role and assign Palette the required GCP permissions. Check out the
+  [Required IAM Permission](required-permissions.md) for a detailed list of all permissions.
+
+  :::
 
 - Ensure you have access to the JSON credential file for your service account. For additional guidance, refer to the
   [GCP Credentials](https://developers.google.com/workspace/guides/create-credentials) documentation.
@@ -54,11 +58,11 @@ Alternatively, you can create a custom role and assign Palette the required GCP 
 
    <br />
 
-:::info
+   <br />
+
+   You can use the **Upload** button to upload the JSON file you downloaded from the GCP console.
 
 You can use the **Upload** button to upload the JSON file you downloaded from the GCP console.
-
-:::
 
 5. Click the **Validate** button to validate the credentials.
 

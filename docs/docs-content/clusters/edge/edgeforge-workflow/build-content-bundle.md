@@ -52,9 +52,7 @@ Creating a content bundle provides several benefits that may address common use 
 
 ## Create Content Bundle
 
-1. Download Palette Edge Content CLI and assign the executable bit to the CLI.
-
-   <br />
+1. Download Palette Edge Content CLI and assign the executable bit to the CLI. <br />
 
    ```shell
    VERSION=4.1.2
@@ -87,45 +85,45 @@ Creating a content bundle provides several benefits that may address common use 
 
    <br />
 
-:::info
+   :::info
 
-There are several Spectro Cloud CLI flags that you can use to customize the content bundle. Use the command
-`./palette-edge build --help` to learn more about the available flags.
+   There are several Spectro Cloud CLI flags that you can use to customize the content bundle. Use the command
+   `./palette-edge build --help` to learn more about the available flags.
 
-:::
+   :::
 
-<br />
+   <br />
 
-```shell
-./palette-edge build --api-key <API_KEY> \
- --project-id <PROJECT_ID> \
- --cluster-profile-ids <CLUSTER_PROFILE_ID1,CLUSTER_PROFILE_ID2...> \
- --palette-endpoint <Palette API Endpoint> \
- --outfile <bundle-name>.tar \
- --iso
-```
+   ```shell
+   ./palette-edge build --api-key <API_KEY> \
+    --project-id <PROJECT_ID> \
+    --cluster-profile-ids <CLUSTER_PROFILE_ID1,CLUSTER_PROFILE_ID2...> \
+    --palette-endpoint <Palette API Endpoint> \
+    --outfile <bundle-name>.tar \
+    --iso
+   ```
 
-```hideClipboard shell
-# Output
-INFO[0000] getting hubble export for build
-INFO[0000] Fetching latest version for service 'stylus'
-INFO[0000] stylus version: 3.4.3
-INFO[0000] Fetching manifest for service stylus and version 3.4.3 for action resources
-INFO[0000] Fetching manifest of service stylus and version '3.4.3' for action resources
-INFO[0000] Fetching manifest from service stylus and version '3.4.3' for action resources with file name images.yaml
-INFO[0000] Get manifest with file name: images.yaml
-INFO[0000] Get manifest with file content: image: gcr.io/spectro-images-public/stylus:v3.4.3
-INFO[0002] successfully pulled image : gcr.io/spectro-images-public/calico/cni:v3.25.0
-...
-...
-INFO[0143] Total translation table size: 0
-INFO[0143] Total rockridge attributes bytes: 272
-INFO[0143] Total directory bytes: 0
-INFO[0143] Path table size(bytes): 10
-INFO[0143] Max brk space used 0
-INFO[0143] 872027 extents written (1703 MB)
-INFO[0144] ISO file created successfully
-```
+   ```hideClipboard shell
+   # Output
+   INFO[0000] getting hubble export for build
+   INFO[0000] Fetching latest version for service 'stylus'
+   INFO[0000] stylus version: 3.4.3
+   INFO[0000] Fetching manifest for service stylus and version 3.4.3 for action resources
+   INFO[0000] Fetching manifest of service stylus and version '3.4.3' for action resources
+   INFO[0000] Fetching manifest from service stylus and version '3.4.3' for action resources with file name images.yaml
+   INFO[0000] Get manifest with file name: images.yaml
+   INFO[0000] Get manifest with file content: image: gcr.io/spectro-images-public/stylus:v3.4.3
+   INFO[0002] successfully pulled image : gcr.io/spectro-images-public/calico/cni:v3.25.0
+   ...
+   ...
+   INFO[0143] Total translation table size: 0
+   INFO[0143] Total rockridge attributes bytes: 272
+   INFO[0143] Total directory bytes: 0
+   INFO[0143] Path table size(bytes): 10
+   INFO[0143] Max brk space used 0
+   INFO[0143] 872027 extents written (1703 MB)
+   INFO[0144] ISO file created successfully
+   ```
 
 The result is a content bundle that you can use to preload into your installer. Alternatively, you can use the ISO
 version of the content bundle and transfer it to a USB drive to be used separately at the time of Edge host

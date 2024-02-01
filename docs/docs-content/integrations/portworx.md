@@ -390,9 +390,7 @@ a Portworx deployment failure.
 
 ## AWS Environment
 
-Palette provisions Portworx in an AWS environment. The following are the packs supported:
-
-<br />
+Palette provisions Portworx in an AWS environment. The following are the packs supported: <br />
 
 ### Packs Supported
 

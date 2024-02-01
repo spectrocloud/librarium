@@ -1,3 +1,19 @@
+# [4.2.0](https://github.com/spectrocloud/librarium/compare/v4.1.0...v4.2.0) (2024-01-07)
+
+### Features
+
+- 4.2 release ([6731901](https://github.com/spectrocloud/librarium/commit/67319019639ea03258aba4103e559a7f8f8742ab))
+- release 4.2 ([#1976](https://github.com/spectrocloud/librarium/issues/1976))
+  ([f126287](https://github.com/spectrocloud/librarium/commit/f12628767b7dfcdf9eb6718e6d0fecd1f450ffab))
+
+# [4.2.0](https://github.com/spectrocloud/librarium/compare/v4.1.0...v4.2.0) (2024-01-07)
+
+### Features
+
+- 4.2 release ([6731901](https://github.com/spectrocloud/librarium/commit/67319019639ea03258aba4103e559a7f8f8742ab))
+- release 4.2 ([#1976](https://github.com/spectrocloud/librarium/issues/1976))
+  ([f126287](https://github.com/spectrocloud/librarium/commit/f12628767b7dfcdf9eb6718e6d0fecd1f450ffab))
+
 # 1.0.0 (2023-09-01)
 
 ### Features

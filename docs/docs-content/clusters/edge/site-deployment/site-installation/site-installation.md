@@ -56,12 +56,12 @@ Select the target environment for your Edge host.
 
    <br />
 
-:::info
+   :::info
 
-Once the Edge host is registered, Palette will wait for you to create a host cluster and assign the Edge host to the
-cluster.
+   Once the Edge host is registered, Palette will wait for you to create a host cluster and assign the Edge host to the
+   cluster.
 
-:::
+   :::
 
 4. The last step is to create a cluster definition if you don't have a host cluster that the Edge host can join. Follow
    the steps in the [Create Cluster Definition](cluster-deployment.md) to complete the site installation.
@@ -129,12 +129,12 @@ Perform the following steps to proceed with the installation at the site in your
 
    <br />
 
-:::info
+   :::info
 
-Once the Edge host is registered, Palette will wait for you to create a host cluster and assign the Edge host to the
-cluster.
+   Once the Edge host is registered, Palette will wait for you to create a host cluster and assign the Edge host to the
+   cluster.
 
-:::
+   :::
 
 6. The last step is to create a cluster if you don't have a host cluster that the Edge host can join. Follow the steps
    in the [Create Cluster Definition](cluster-deployment.md) to complete the site installation.

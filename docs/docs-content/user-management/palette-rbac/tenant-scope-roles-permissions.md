@@ -59,6 +59,7 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 ## Tenant Admin
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -105,6 +106,7 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 ## Tenant Viewer
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -148,6 +150,7 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 ## Tenant Project Admin
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -281,6 +284,7 @@ The table lists role resourceKeys and operations that are predefined under the G
 ## Tenant Cluster Group Admin
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -309,6 +313,7 @@ The table lists role resourceKeys and operations that are predefined under the G
 ## Tenant Cluster Group Editor
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -335,6 +340,7 @@ The table lists role resourceKeys and operations that are predefined under the G
 ## Tenant Cluster Group Viewer
 
 <br />
+
 <table>
   <tr>
     <td width="400">

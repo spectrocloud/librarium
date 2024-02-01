@@ -293,16 +293,16 @@ virtual clusters. For guidance, refer to
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
 
-:::warning
+  :::warning
 
-We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
-rely on OIDC.
+  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
+  rely on OIDC.
 
 :::
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
   specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
-  [Configure Custom OIDC](#configurecustomoidc). This setting displays in the YAML file as `none`.
+  [Configure Custom OIDC](#configure-custom-oidc). This setting displays in the YAML file as `none`.
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper
   permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting
@@ -313,13 +313,13 @@ rely on OIDC.
   **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
   information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
-:::info
+  :::info
 
-If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will
-not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
-authentication and not SAML authentication.
+  If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option
+  will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
+  authentication and not SAML authentication.
 
-:::
+  :::
 
 ### Configure Custom OIDC
 
@@ -634,16 +634,16 @@ virtual clusters. For guidance, refer to
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
 
-:::warning
+  :::warning
 
-We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
-rely on OIDC.
+  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
+  rely on OIDC.
 
 :::
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
   specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
-  [Configure Custom OIDC](#configurecustomoidc). This setting displays in the YAML file as `none`.
+  [Configure Custom OIDC](#configure-custom-oidc). This setting displays in the YAML file as `none`.
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper
   permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting
@@ -654,13 +654,13 @@ rely on OIDC.
   **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
   information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
-:::info
+  :::info
 
-If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will
-not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
-authentication and not SAML authentication.
+  If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option
+  will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
+  authentication and not SAML authentication.
 
-:::
+  :::
 
 ### Configure Custom OIDC
 
@@ -784,7 +784,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 | `kubeadmconfig.files`                            | A list of additional files to copy to the nodes.                                                                                                                                                                                                                                                                                                                                                                 |
 | `kubeadmconfig.preKubeadmCommands`               | A list of additional commands to invoke **before** running kubeadm commands.                                                                                                                                                                                                                                                                                                                                     |
 | `kubeadmconfig.postKubeadmCommands`              | A list of additional commands to invoke **after** running kubeadm commands.                                                                                                                                                                                                                                                                                                                                      |
-| `kubeadmconfig.clientConfig`                     | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](#configurecustomoidc).                                                                                                                                                                                                                                                     |
+| `kubeadmconfig.clientConfig`                     | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](#configure-custom-oidc).                                                                                                                                                                                                                                                   |
 
 ## Usage
 
@@ -799,7 +799,7 @@ The Kubeadm configuration file is where you can do the following:
   [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md).
 
 - Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out
-  [Configure Custom OIDC](#configurecustomoidc).
+  [Configure Custom OIDC](#configure-custom-oidc).
 
 - Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only
   change the DNS domain during cluster creation. For more information, refer to
@@ -977,16 +977,18 @@ for virtual clusters. For guidance, refer to
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
 
-:::warning
+  :::warning
 
-We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
-rely on OIDC.
+  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
+  rely on OIDC.
 
-:::
+- **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper
+  permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting
+  displays in the YAML file as `palette`.
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
   specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
-  [Configure Custom OIDC](#configurecustomoidc). This setting displays in the YAML file as `none`.
+  [Configure Custom OIDC](#configure-custom-oidc). This setting displays in the YAML file as `none`.
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper
   permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting
@@ -997,13 +999,13 @@ rely on OIDC.
   **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
   information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
-:::info
+  :::info
 
-If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will
-not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
-authentication and not SAML authentication.
+  If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option
+  will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
+  authentication and not SAML authentication.
 
-:::
+  :::
 
 ### Configure Custom OIDC
 
@@ -1127,7 +1129,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 | `kubeadmconfig.files`                            | A list of additional files to copy to the nodes.                                                                                                                                                                                                                                                                                                                                                               |
 | `kubeadmconfig.preKubeadmCommands`               | A list of additional commands to invoke **before** running kubeadm commands.                                                                                                                                                                                                                                                                                                                                   |
 | `kubeadmconfig.postKubeadmCommands`              | A list of additional commands to invoke **after** running kubeadm commands.                                                                                                                                                                                                                                                                                                                                    |
-| `kubeadmconfig.clientConfig`                     | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](#configurecustomoidc).                                                                                                                                                                                                                                                   |
+| `kubeadmconfig.clientConfig`                     | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](#configure-custom-oidc).                                                                                                                                                                                                                                                 |
 
 ## Usage
 
@@ -1142,7 +1144,7 @@ The Kubeadm configuration file is where you can do the following:
   [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md).
 
 - Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out
-  [Configure Custom OIDC](#configurecustomoidc).
+  [Configure Custom OIDC](#configure-custom-oidc).
 
 - Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only
   change the DNS domain during cluster creation. For more information, refer to
@@ -1317,16 +1319,18 @@ for virtual clusters. For guidance, refer to
 - **None**: This is the default setting and there is nothing to configure. This setting displays in the YAML file as
   `noauth`.
 
-:::warning
+  :::warning
 
-We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
-rely on OIDC.
-
-:::
+  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
+  rely on OIDC.
 
 - **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the
   Kubeadm configuration file as described in [Configure Custom OIDC](#configurecustomoidc). This setting displays in the
   YAML file as `none`.
+
+- **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the
+  Kubeadm configuration file as described in [Configure Custom OIDC](#configure-custom-oidc). This setting displays in
+  the YAML file as `none`.
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper
   permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting
@@ -1337,13 +1341,13 @@ rely on OIDC.
   **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
   information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
-:::info
+  :::info
 
-If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option will
-not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
-authentication and not SAML authentication.
+  If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option
+  will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
+  authentication and not SAML authentication.
 
-:::
+  :::
 
 ### Configure Custom OIDC
 

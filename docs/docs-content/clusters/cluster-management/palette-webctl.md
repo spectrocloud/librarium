@@ -71,13 +71,13 @@ Verify you have access to your host cluster by issuing kubectl commands against 
 
 <!-- # Overview
 
-Palette leverages Kubectl through an in-built command line interface for the users to communicate with their workload clusters. This enables our users to deploy applications, inspect and manage cluster resources, and view logs using the Palette terminal without an external terminal. 
+Palette leverages Kubectl through an in-built command line interface for the users to communicate with their workload clusters. This enables our users to deploy applications, inspect and manage cluster resources, and view logs using the Palette terminal without an external terminal.
 
 # Usage Scenarios
 
 * Cluster Access
 * Cluster access with OIDC Authentication enabled
-* Cluster access with Spectro Proxy  
+* Cluster access with Spectro Proxy
 * CLI-Based Cluster Access
 
 ## Cluster Access
@@ -89,10 +89,10 @@ For general scenario, a user can connect to the cluster directly as below:
 1. Launch a cluster from the `Project Admin` Console.
 
 
-2. Go the the `Cluster Details` page 
+2. Go the the `Cluster Details` page
 
 
-3. Click the `Connect` button available at the `Kubernetes Config File.` 
+3. Click the `Connect` button available at the `Kubernetes Config File.`
 
 
 4. Wait for the terminal to be launched and start communicating to the cluster using the `kubectl` commands.
@@ -112,7 +112,7 @@ Cluster access with OIDC authentication enables the clients to verify the end us
 	**Note:** To enable OIDC, the user can use the Spectro RBAC Add-on or the Kubernetes YAML file.
 
 
-3. Go the the **Cluster Details** page. 
+3. Go the the **Cluster Details** page.
 
 
 4. Click the **Connect** button by the **Kubernetes Config File**
@@ -120,7 +120,7 @@ Cluster access with OIDC authentication enables the clients to verify the end us
 
 5. Wait for the terminal to be launched.
 
- 
+
 6. Once the terminal is launched, give a kubectl command to obtain the console endpoint.
 
 
@@ -129,8 +129,8 @@ Cluster access with OIDC authentication enables the clients to verify the end us
 
 8. After successful login to the page, get back to the terminal and start communicating to the cluster using the `kubectl` commands.
 
-## Cluster Access with Spectro Proxy  
-  
+## Cluster Access with Spectro Proxy
+
 Palette users can attach [Spectro Proxy](/integrations/frp/) pack to the cluster profile while profile creation. This installs the FRP client to the workload clusters and configures it with an FRP server to establish external connectivity for private clusters. To establish cluster access with Spectro Proxy (Forward Reverse Proxy), follow the steps below:
 
 <br/>
@@ -139,10 +139,10 @@ Palette users can attach [Spectro Proxy](/integrations/frp/) pack to the cluster
 **Note:** The cluster profile must have an attached Spectro Proxy add-on pack.
 
 
-2. Go the the `Cluster Details` page. 
+2. Go the the `Cluster Details` page.
 
 
-3. Click the ‘Connect’ button at the ‘Kubernetes Config File.’ 
+3. Click the ‘Connect’ button at the ‘Kubernetes Config File.’
 
 
 4. Wait for the terminal to be launched.
@@ -182,7 +182,7 @@ The users can establish connectivity for public clusters via the public cloud CL
 2. Go the the `Cluster Details` page.
 
 
-3. Click the `Connect` button available at the `Kubernetes Config File.` 
+3. Click the `Connect` button available at the `Kubernetes Config File.`
 
 
 4. Wait for the terminal to be launched. Once the terminal is launched, configure the `Public Cloud CLI`.

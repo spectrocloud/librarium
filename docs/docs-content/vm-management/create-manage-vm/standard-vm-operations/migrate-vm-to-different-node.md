@@ -85,11 +85,11 @@ Kubernetes resource.
 
    <br />
 
-:::warning
+   :::warning
 
-Maintenance mode reduces cluster capacity. Be sure to turn off maintenance mode after maintenance completes.
+   Maintenance mode reduces cluster capacity. Be sure to turn off maintenance mode after maintenance completes.
 
-:::
+   :::
 
 ## Validate
 
@@ -137,11 +137,11 @@ You can validate evacuation completed by following the steps below.
 
    <br />
 
-:::info
+   :::info
 
-The kubectl `drain` command should only be issued to a single node at a time.
+   The kubectl `drain` command should only be issued to a single node at a time.
 
-:::
+   :::
 
 ## Validate
 

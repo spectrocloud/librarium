@@ -45,8 +45,7 @@ In this how-to, you learn how to add an add-on cluster profile to an imported cl
    profile.
 
 7. Navigate to the **Overview** tab to monitor the deployment. When the add-on cluster profile is deployed, the
-   **Cluster Profile** status displays as a green circle next to the layer.
-   <br />
+   **Cluster Profile** status displays as a green circle next to the layer. <br />
 
 ![A cluster profile with an add-on profile deployed successfully](/clusters_imported-clusters_attach-add-on-profile_cluster-details-app-deployed.png)
 

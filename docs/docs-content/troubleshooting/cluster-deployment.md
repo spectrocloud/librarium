@@ -31,79 +31,79 @@ why a service may fail are:
 
 ### Debug Steps
 
-1.  Initiate an SSH session with the Kubernetes instance using the SSH key provided during provisioning, and log in as
-    user `spectro`. If you are initiating an SSH session into an installer instance, log in as user `ubuntu`.
+1. Initiate an SSH session with the Kubernetes instance using the SSH key provided during provisioning, and log in as
+   user `spectro`. If you are initiating an SSH session into an installer instance, log in as user `ubuntu`.
 
-    ```shell
-        ssh --identity_file <_pathToYourSSHkey_> spectro@X.X.X.X
-    ```
+   ```shell
+       ssh --identity_file <_pathToYourSSHkey_> spectro@X.X.X.X
+   ```
 
-2.  Elevate the user access.
+2. Elevate the user access.
 
-    ```shell
-        sudo -i
-    ```
+   ```shell
+       sudo -i
+   ```
 
-3.  Verify the Kubelet service is operational.
+3. Verify the Kubelet service is operational.
 
-    ```shell
-        systemctl status kubelet.service
-    ```
+   ```shell
+       systemctl status kubelet.service
+   ```
 
-4.  If the Kubelet service does not work as expected, do the following. If the service operates correctly, you can skip
-    this step.
+4. If the Kubelet service does not work as expected, do the following. If the service operates correctly, you can skip
+   this step.
 
-    1. Navigate to the **/var/log/** folder.
+   1. Navigate to the **/var/log/** folder.
+      ```shell
+      cd /var/log/
+      ```
+   2. Scan the **cloud-init-output** file for any errors. Take note of any errors and address them.
+      ```
+      cat cloud-init-output.log
+      ```
+
+5. If the kubelet service works as expected, do the following.
+
+   - Export the kubeconfig file.
+
+   ```shell
+       export KUBECONFIG=/etc/kubernetes/admin.conf
+   ```
+
+   - Connect with the cluster's Kubernetes API.
+
+   ```shell
+       kubectl get pods --all-namespaces
+   ```
+
+   - When the connection is established, verify the pods are in a _Running_ state. Take note of any pods that are not in
+     _Running_ state.
+
+   ```shell
+       kubectl get pods -o wide
+   ```
+
+   - If all the pods are operating correctly, verify their connection with the Palette API.
+
+     - For clusters using Gateway, verify the connection between the Installer and Gateway instance:
        ```shell
-       cd /var/log/
+          curl -k https://<KUBE_API_SERVER_IP>:6443
        ```
-    2. Scan the **cloud-init-output** file for any errors. Take note of any errors and address them.
+     - For Public Clouds that do not use Gateway, verify the connection between the public Internet and the Kube
+       endpoint:
+
+       ```shell
+           curl -k https://<KUBE_API_SERVER_IP>:6443
        ```
-       cat cloud-init-output.log
-       ```
 
-5.  If the kubelet service works as expected, do the following.
+       :::info
 
-    - Export the kubeconfig file.
+       You can obtain the URL for the Kubernetes API using this command: `kubectl cluster-info`.
 
-    ```shell
-        export KUBECONFIG=/etc/kubernetes/admin.conf
-    ```
+       :::
 
-    - Connect with the cluster's Kubernetes API.
-
-    ```shell
-        kubectl get pods --all-namespaces
-    ```
-
-    - When the connection is established, verify the pods are in a _Running_ state. Take note of any pods that are not
-      in _Running_ state.
-
-    ```shell
-        kubectl get pods -o wide
-    ```
-
-    - If all the pods are operating correctly, verify their connection with the Palette API.
-
-          - For clusters using Gateway, verify the connection between the Installer and Gateway instance:
-            ```shell
-               curl -k https://<KUBE_API_SERVER_IP>:6443
-            ```
-          - For Public Clouds that do not use Gateway, verify the connection between the public Internet and the Kube
-            endpoint:
-
-            ```shell
-                curl -k https://<KUBE_API_SERVER_IP>:6443
-            ```
-
-:::info
-
-      You can obtain the URL for the Kubernetes API using this command: kubectl cluster-info
-
-:::
-
-6.  Check stdout for errors. You can also open a support ticket. Visit our
-    [support page](http://support.spectrocloud.io/).
+6. Check stdout for errors. You can also open a support ticket. Visit our
+   [support page](http://support.spectrocloud.io/).
 
 ## Deployment Violates Pod Security
 

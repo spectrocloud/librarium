@@ -420,14 +420,10 @@ process means installing the necessary tools and configurations on a host machin
 
 ### Prerequisites
 
-To complete this advanced guide, you will need the following items:
-
-<br />
+To complete this advanced guide, you will need the following items: <br />
 
 - A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture to build the Edge
-  artifacts. You can issue the following command in the terminal to check your processor architecture.
-
-  <br />
+  artifacts. You can issue the following command in the terminal to check your processor architecture. <br/>
 
   ```bash
   uname -m
@@ -864,14 +860,11 @@ you created and pushed to a registry are tied to the OS and Kubernetes version y
 24. Add add-on layers and manifests to your cluster profile per your requirements.
 
 25. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
-    review. Verify the layers you added, and finish creating the cluster profile.
-    <br />
+    review. Verify the layers you added, and finish creating the cluster profile. <br />
 
 ### Validate
 
-List the Edge installer ISO image and checksum by issuing the following command from the **CanvOS/** directory.
-
-<br />
+List the Edge installer ISO image and checksum by issuing the following command from the **CanvOS/** directory. <br />
 
 ```shell
 ls build/
@@ -894,9 +887,7 @@ process means installing the necessary tools and configurations on a host machin
 
 After building the Edge artifacts and creating an Edge cluster profile, the next step is to use the Edge installer ISO
 image to prepare your Edge host. To learn more about utilizing Edge artifacts to prepare Edge hosts and deploy
-Palette-managed Edge clusters, we encourage you to check out the reference resources below.
-
-<br />
+Palette-managed Edge clusters, we encourage you to check out the reference resources below. <br />
 
 - [Deploy an Edge Cluster on VMware](../site-deployment/deploy-cluster.md)
 

@@ -127,10 +127,10 @@ notes below to learn more about the new features and improvements.
   broadcast domain. Clusters using this feature will remain operational when the host IP addresses change unexpectedly.
   Check out the [Enable Overlay Network](clusters/edge/networking/vxlan-overlay.md) resource for more information.
 
-- Local registry support. You can deploy a self-hosted [Harbor registry](https://goharbor.io) on your Edge cluster and
-  use the registry to store images for your workloads and initialize a cluster's other edge host nodes. Using a local
-  registry can help you reduce the amount of data transferred over the network, cache images locally, and provide a
-  backup for when internet access is unavailable.
+- Local registry support is now available as a Tech Preview feature. You can deploy a self-hosted
+  [Harbor registry](https://goharbor.io) on your Edge cluster and use the registry to store images for your workloads
+  and initialize a cluster's other edge host nodes. Using a local registry can help you reduce the amount of data
+  transferred over the network, cache images locally, and provide a backup for when internet access is unavailable.
 
 - Edge Kubernetes network interface management support. You can now specify the network interface for your edge hosts
   versus relying on the default interface selected by Kubernetes. This feature is useful when you have multiple network

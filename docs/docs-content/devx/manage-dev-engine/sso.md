@@ -22,7 +22,7 @@ To learn more about the Sign-In Flow, refer to the
 
 :::
 
-### Prerequisites
+    ### Prerequisites
 
 - Palette Tenant Administrator access.
 

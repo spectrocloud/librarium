@@ -389,9 +389,7 @@ displaying the version number.
 docker version
 ```
 
-Download the tutorial image to your local machine.
-
-<br />
+Download the tutorial image to your local machine. <br />
 
 ```bash
 docker pull ghcr.io/spectrocloud/tutorials:1.1.2
@@ -600,44 +598,12 @@ five key points:
    [Terraform Heredoc strings](https://developer.hashicorp.com/terraform/language/expressions/strings#heredoc-strings),
    or you can specify these values as a stringified JSON object.
 
-<PointsOfInterest
-  points={[
-    {
-      x: 105,
-      y: 160,
-      label: 1,
-      description: "The pack object represents a single tier or layer in the app profile. Inside the pack object, you define all the attributes that make up the specific layer of the app profile.",
-    },
-    {
-      x: 720,
-      y: 230,
-      label: 2,
-      description: "The type of app tier or layer. This application is hosted on a container image. Therefore a container pack is specified. Instead of hard coding the value, the data resource data.spectrocloud_pack_simple.container_pack is specified",
-      tooltipPlacement: "rightTop",
-    },
-    {
-      x: 720,
-      y: 265,
-      label: 3,
-      description: "A pack requires a registry id. To create the app profile, Terraform needs to know what registry is hosting the pack. For containers, you can use the `Public Repo` hosting most of the Palette packs. This time the data resource data.spectrocloud_registry.container_registry is specified to avoid hardcoding values",
-      tooltipPlacement: "rightTop",
-    },
-    {
-      x: 720,
-      y: 295,
-      label: 4,
-      description: "The attribute source_app_tier is used to specify the unique id of the pack. All packs are assigned a unique id, including different versions of a pack. To ensure the correct pack is selected, the data resource data.spectrocloud_pack_simple.container_pack is used.",
-      tooltipPlacement: "rightTop",
-    },
-    {
-      x: 290,
-      y: 332,
-      label: 5,
-      description: "The values attribute is used to specify the properties of the specific service. In this case, the properties of the container, such as the image name, ports, and service type, are specified. These properties can be provided as an extended string using the Terraform Heredoc strings or you can alternatively specify these values as a stringified JSON object.",
-      tooltipPlacement: "rightTop",
-    },
-  ]}
->
+<PointsOfInterest points={[
+  { x: 105, y: 160, label: "1", description: "The pack object represents a single tier or layer in the app profile. Inside the pack object, you define all the attributes that make up the specific layer of the app profile.", },
+  { x: 720, y: 230, label: 2, description: "The type of app tier or layer. This application is hosted on a container image. Therefore a container pack is specified. Instead of hard coding the value, the data resource data.spectrocloud_pack_simple.container_pack is specified", tooltipPlacement: "rightTop", }, { x: 720, y: 265, label: "3", description: "A pack requires a registry id. To create the app profile, Terraform needs to know what registry is hosting the pack. For containers, you can use the `Public Repo` hosting most of the Palette packs. This time the data resource data.spectrocloud_registry.container_registry is specified to avoid hardcoding values", tooltipPlacement: "rightTop", },
+  { x: 720, y: 295, label: "4", description: "The attribute source_app_tier is used to specify the unique id of the pack. All packs are assigned a unique id, including different versions of a pack. To ensure the correct pack is selected, the data resource data.spectrocloud_pack_simple.container_pack is used.", tooltipPlacement: "rightTop", },
+  { x: 290, y: 332, label: "5", description: "The values attribute is used to specify the properties of the specific service. In this case, the properties of the container, such as the image name, ports, and service type, are specified. These properties can be provided as an extended string using the Terraform Heredoc strings or you can alternatively specify these values as a stringified JSON object.", tooltipPlacement: "rightTop", },
+]}>
 
 ```hcl
 resource "spectrocloud_application_profile" "hello-universe-ui" {
@@ -738,23 +704,10 @@ points to the app profile `spectrocloud_application_profile.hello-universe-ui` a
 
 <br />
 
-<PointsOfInterest
-  points={[
-    {
-      x: 810,
-      y: 90,
-      label: 1,
-      description: "The id of the application profile that will be created with the resource spectrocloud_application_profile.hello-universe-ui.",
-    },
-    {
-      x: 590,
-      y: 230,
-      label: 2,
-      description: "The id of the virtual cluster that will be created with the resource spectrocloud_virtual_cluster.cluster-1.",
-      tooltipPlacement: "rightTop",
-    },
-  ]}
->
+<PointsOfInterest points={[
+  { x: 810, y: 90, label: "1", description: "The id of the application profile that will be created with the resource spectrocloud_application_profile.hello-universe-ui.", },
+  { x: 590, y: 230, label: "2", description: "The id of the virtual cluster that will be created with the resource spectrocloud_virtual_cluster.cluster-1.", tooltipPlacement: "rightTop", },
+]}>
 
 ```hcl
 resource "spectrocloud_application" "scenario-1" {
@@ -1177,7 +1130,7 @@ pack {
 
 All container services expose their service address, Kubernetes hostname, and the exposed service ports as output
 variables. You will use output variables frequently when creating app profiles. You can learn more about connecting
-services by referring to the [Service Connectivity](../services/connectivity.md documentation.
+services by referring to the [Service Connectivity](../services/connectivity.md) documentation.
 
 :::
 

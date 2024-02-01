@@ -235,11 +235,8 @@ stream is a good source for identifying issues in the event an operation does no
 
 - Due to the Palette reconciliation logic, intermittent errors appear in the event stream. <br /><br /> As an example,
   errors might show up in the event stream regarding being unable to reach the node after launching a node. However, the
-  errors clear up once the node comes up.
-  <br />
-  <br />
-  Error messages that persist over a long time or errors indicating issues with underlying infrastructure are an
-  indication of a real problem.
+  errors clear up once the node comes up. <br /> <br /> Error messages that persist over a long time or errors
+  indicating issues with underlying infrastructure are an indication of a real problem.
 
 :::
 
@@ -249,9 +246,7 @@ At times, you may be required to work with the Palette Support Team to troublesh
 ability to gather logs from the clusters it manages. Problems that occur during the orchestration lifecycle, may require
 access to the various containers, nodes, and Kube system logs. Palette automates this log-collection process and
 provides an easy download option from the Palette UI console. Hence, it reduces the burden on the operator to log in to
-various cluster nodes individually and fetch these logs.
-
-<br />
+various cluster nodes individually and fetch these logs. <br />
 
 ### Collect the Logs
 

@@ -44,6 +44,7 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 ## App Deployment Admin
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -80,6 +81,7 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 ## App Deployment Editor
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -118,6 +120,7 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 ## App Deployment Viewer
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -170,6 +173,7 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 ## App Profile Admin
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -197,6 +201,7 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 ## App Profile Editor
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -226,6 +231,7 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 ## App Profile Viewer
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -270,6 +276,7 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 ## Project Admin
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -310,6 +317,7 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 ## Project Editor
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -352,6 +360,7 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 ## Project Viewer
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -410,6 +419,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 ## Cluster Profile Admin
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -439,6 +449,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 ## Cluster Profile Editor
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -468,6 +479,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 ## Cluster Profile Viewer
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -518,6 +530,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 ## Cluster Admin
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -557,6 +570,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 ## Cluster Editor
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -596,6 +610,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 ## Cluster Viewer
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -653,6 +668,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 ## Cluster Account Admin
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -679,6 +695,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 ## Cluster Account Editor
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -705,6 +722,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 ## Cluster Account Viewer
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -747,6 +765,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 ## Workspace Admin
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -773,6 +792,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 ## Workspace Operator
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -816,6 +836,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 ## Virtual Cluster Admin
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -846,6 +867,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 ## Virtual Cluster Editor
 
 <br />
+
 <table>
   <tr>
     <td width="400">
@@ -878,6 +900,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 ## Virtual Cluster Viewer
 
 <br />
+
 <table>
   <tr>
     <td width="400">

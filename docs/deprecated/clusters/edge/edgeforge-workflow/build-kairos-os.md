@@ -43,8 +43,7 @@ have the necessary credentials to download the OS source image.
 # Build Image
 
 1. Issue the following commands to prepare your server. You can also add more packages to the `apt install` command if
-   needed.
-   <br />
+   needed. <br />
 
 ```shell
 mkdir -p /etc/apt/keyrings
@@ -96,9 +95,7 @@ docker push [your image repository]/rhel8-kairos:1.0
 
 Your image will be used in the [Build Images](/clusters/edge/edgeforge-workflow/palette-canvos) step and become part of
 your Edge artifact. The custom OS you created will also be used in the OS layer of the cluster profile by using the
-[Bring Your Own OS (BYOOS)](/integrations/byoos) pack.
-
-<br />
+[Bring Your Own OS (BYOOS)](/integrations/byoos) pack. <br />
 
 # Next Steps
 

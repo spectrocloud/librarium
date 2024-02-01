@@ -88,7 +88,6 @@ Choose the workflow that fits your needs.
 | `--cloud-init-file`       | Specify the Edge Installer configuration user data file to include in the Edge artifact. |
 
 <br />
-
 :::info
 
 When using the `generate` command, the specified registry is where Edge artifacts will be uploaded.

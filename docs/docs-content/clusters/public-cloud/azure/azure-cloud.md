@@ -17,15 +17,12 @@ authentication methods to register your cloud account.
 - A [Palette](https://console.spectrocloud.com/), or VerteX account.
 
 - An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
-  provision compute, network, and security resources in the desired regions.
+  provision compute, network, and security resources in the desired regions. Refer to the
+  [Required Permissions](./required-permissions.md) section for more information.
 
 - An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
 
 * An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
-  provision compute, network, and security resources in the desired regions. Refer to the
-  [Required Permissions](./required-permissions.md) section for more information.
-
-- An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
   provision compute, network, and security resources in the desired regions.
 
 - An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.

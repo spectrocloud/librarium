@@ -7,8 +7,6 @@ hide_table_of_contents: false
 sidebar_position: 0
 ---
 
-# Add Custom Registries
-
 Setting up a custom pack registry is a two-step process. The first step is to deploy a pack registry server using a
 Docker image provided by us. While deploying a pack registry server, you can employ a TLS certificate from a Certificate
 Authority (CA) or a self-signed certificate. The current guide will provide instructions for both methods - using TLS
@@ -47,15 +45,13 @@ server using the designated Docker image and a TLS certificate issued by [Let's 
 
 <br />
 
-1. Create a folder that contains an httppasswd file.
-   <br />
+1. Create a folder that contains an httppasswd file. <br />
 
 ```bash
 mkdir spectropaxconfig
 ```
 
-2. Create a htpasswd file.
-   <br />
+2. Create a htpasswd file. <br />
 
 ```shell
 htpasswd -Bbn admin "yourPasswordHere" > spectropaxconfig/htpasswd-basic
@@ -64,8 +60,7 @@ htpasswd -Bbn admin "yourPasswordHere" > spectropaxconfig/htpasswd-basic
 3. Create a pax registry configuration file titled **myconfig.yml** in the **spectropaxconfig** directory. The YAML code
    block below displays the sample content for the **myconfig.yml** file. The current example assumes that your pack
    registry server will be hosted at `yourhost.companydomain.com` and the email id for notifications is
-   `you@companydomain.com`. Replace the `host` and `email` attribute values as applicable to you.
-   <br />
+   `you@companydomain.com`. Replace the `host` and `email` attribute values as applicable to you. <br />
 
 ```yaml
 version: 0.1
@@ -108,30 +103,26 @@ admin and the password of your choice.
 The following steps need to be performed to deploy the pack registry server using self-signed certificates:
 
 1. Configure the user credentials by using the `htpasswd` utility and store the credentials in a file locally. This file
-   will be mounted inside the pack registry docker container.
-   <br />
+   will be mounted inside the pack registry docker container. <br />
 
 ```bash
 mkdir -p /root/auth
 ```
 
-2. For admin users, the command below has a placeholder to specify your unique secure password for admin users.
-   <br />
+2. For admin users, the command below has a placeholder to specify your unique secure password for admin users. <br />
 
 ```bash
 htpasswd -Bbn admin "yourPasswordHere" > /root/auth/htpasswd-basic
 ```
 
 3. For other users. The following command has the placeholder to specify your unique secure password for read-only
-   users.
-   <br />
+   users. <br />
 
 ```bash
 htpasswd -Bbn spectro "yourPasswordHere" >> /root/auth/htpasswd-basic
 ```
 
-4. If HTTPS mode is used, create a directory called `certs`.
-   <br />
+4. If HTTPS mode is used, create a directory called `certs`. <br />
 
 ```shell
 mkdir -p /root/certs
@@ -289,7 +280,7 @@ to affirm the certificate's authenticity before establishing a communication cha
 7. Click the **Confirm** button to finish configuring the pack registry server. After you finish the configuration,
    Palette will periodically synchronize with the pack registry server to download pack updates, if any.
 
-# Self-Signed Certificates
+## Self-Signed Certificates
 
 For self-signed certificates, use the following command to generate certificates.
 

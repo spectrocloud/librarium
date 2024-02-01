@@ -355,9 +355,7 @@ account**, and **SSH Key** to apply to the host cluster. All clusters require yo
 <br />
 
 When you are done selecting a **Subscription**, **Region**, **Resource Group**, **Storage account** and **SSH Key**,
-click on **Next**.
-
-<br />
+click on **Next**. <br />
 
 #### Nodes Configuration
 
@@ -831,17 +829,13 @@ displaying the version number.
 docker version
 ```
 
-Download the tutorial image to your local machine.
-
-<br />
+Download the tutorial image to your local machine. <br />
 
 ```bash
 docker pull ghcr.io/spectrocloud/tutorials:1.1.2
 ```
 
-Next, start the container, and open a bash session into it.
-
-<br />
+Next, start the container, and open a bash session into it. <br />
 
 ```shell
 docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.2 bash

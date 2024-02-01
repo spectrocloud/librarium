@@ -55,9 +55,7 @@ to manage node groups.
 
 - Updated Kubernetes layer manifest - The Kubernetes pack's manifest should be updated with the newly created IAM policy
   ARN. The YAML code block below displays the `managedMachinePool.roleAdditionalPolicies` section to update in the
-  Kubernetes pack's manifest. Refer to the [Usage](#usage) section below for more details with an example.
-
-  <br />
+  Kubernetes pack's manifest. Refer to the [Usage](#usage) section below for more details with an example. <br />
 
   ```yaml
   managedMachinePool:
@@ -74,15 +72,12 @@ to manage node groups.
 Cluster Autoscaler helps improve your cluster's performance and makes your cluster more resilient to failures. It
 automatically adjusts the number of nodes in your cluster based on the current workload. In other words, Cluster
 Autoscaler monitors the resource utilization, such as CPU and memory, and the number of pods active in your cluster and
-scales the cluster when either of these events occurs:
-
-<br />
+scales the cluster when either of these events occurs: <br />
 
 - Multiple pods fail due to resource contention. In this case, the Cluster Autoscaler will provision more nodes.
 
 - Nodes are underutilized for a specific period. In this case, the Cluster Autoscaler will reschedule the pods onto
-  other nodes and shut down the underutilized node.
-  <br />
+  other nodes and shut down the underutilized node. <br />
 
 ### Deploy Cluster Autoscaler
 
@@ -99,8 +94,7 @@ The following steps provide detailed instructions for deploying the Cluster Auto
 <br />
 
 1. Define the new IAM policy using the policy outlined below, and give it a name, for example,
-   _PaletteEKSClusterAutoscaler_.
-   <br />
+   _PaletteEKSClusterAutoscaler_. <br />
 
 ```json
 {
@@ -145,9 +139,7 @@ The following steps provide detailed instructions for deploying the Cluster Auto
 
 For example, the code block below displays the updated `managedMachinePool.roleAdditionalPolicies` section with a sample
 policy ARN, `"arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"`. Before you use the following code block,
-replace the ARN below with yours.
-
-<br />
+replace the ARN below with yours. <br />
 
 ```yaml
 managedMachinePool:
@@ -194,9 +186,7 @@ the cluster. As a result, the Cluster Autoscaler will provision new smaller-size
 accommodate the current workload and reschedule those contending pods on new nodes. Also, the new nodes' count will be
 within the minimum and maximum limit you specified for the worker pool.
 
-Use the following steps to trigger the pod rescheduling event manually:
-
-<br />
+Use the following steps to trigger the pod rescheduling event manually: <br />
 
 1. In the cluster deployment wizard, while defining the **Nodes configuration**, choose a large-sized instance type. For
    example, you can choose your worker pool to have instance size **t3.2xlarge** (8 vCPUs, 32 GB RAM) or higher.
@@ -246,9 +236,7 @@ nodes will be able to handle the same workload as a single larger-sized node.
 
 - Updated Kubernetes layer manifest - The Kubernetes pack's manifest should be updated with the newly created IAM policy
   ARN. The YAML code block below displays the `managedMachinePool.roleAdditionalPolicies` section to update in the
-  Kubernetes pack's manifest. Refer to the [Usage](#usage) section below for more details with an example.
-
-  <br />
+  Kubernetes pack's manifest. Refer to the [Usage](#usage) section below for more details with an example. <br />
 
   ```yaml
   managedMachinePool:
@@ -265,15 +253,12 @@ nodes will be able to handle the same workload as a single larger-sized node.
 Cluster Autoscaler helps improve your cluster's performance and makes your cluster more resilient to failures. It
 automatically adjusts the number of nodes in your cluster based on the current workload. In other words, Cluster
 Autoscaler monitors the resource utilization, such as CPU and memory, and the number of pods active in your cluster and
-scales the cluster when either of these events occurs:
-
-<br />
+scales the cluster when either of these events occurs: <br />
 
 - Multiple pods fail due to resource contention. In this case, the Cluster Autoscaler will provision more nodes.
 
 - Nodes are underutilized for a specific period. In this case, the Cluster Autoscaler will reschedule the pods onto
-  other nodes and shut down the underutilized node.
-  <br />
+  other nodes and shut down the underutilized node. <br />
 
 ### Deploy Cluster Autoscaler
 
@@ -290,8 +275,7 @@ The following steps provide detailed instructions for deploying the Cluster Auto
 <br />
 
 1. Define the new IAM policy using the policy outlined below, and give it a name, for example,
-   _PaletteEKSClusterAutoscaler_.
-   <br />
+   _PaletteEKSClusterAutoscaler_. <br />
 
 ```json
 {
@@ -336,9 +320,7 @@ The following steps provide detailed instructions for deploying the Cluster Auto
 
 For example, the code block below displays the updated `managedMachinePool.roleAdditionalPolicies` section with a sample
 policy ARN, `"arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"`. Before you use the following code block,
-replace the ARN below with yours.
-
-<br />
+replace the ARN below with yours. <br />
 
 ```yaml
 managedMachinePool:
@@ -385,9 +367,7 @@ the cluster. As a result, the Cluster Autoscaler will provision new smaller-size
 accommodate the current workload and reschedule those contending pods on new nodes. Also, the new nodes' count will be
 within the minimum and maximum limit you specified for the worker pool.
 
-Use the following steps to trigger the pod rescheduling event manually:
-
-<br />
+Use the following steps to trigger the pod rescheduling event manually: <br />
 
 1. In the cluster deployment wizard, while defining the **Nodes configuration**, choose a large-sized instance type. For
    example, you can choose your worker pool to have instance size **t3.2xlarge** (8 vCPUs, 32 GB RAM) or higher.

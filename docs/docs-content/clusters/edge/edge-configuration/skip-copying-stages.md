@@ -42,9 +42,7 @@ stages from getting copied to the edge host's storage, you can use a specific na
 copy behavior. However, be aware that different persistence behaviors apply depending on which stage of the Edge
 deployment life cycle you provide sensitive data in the user data configuration file. Refer to the
 [Sensitive Information in the Site Installation](#sensitive-information-in-the-site-installation) section below to learn
-more.
-
-<br />
+more. <br />
 
 ## Sensitive Information in the Installer Handoff
 
@@ -77,23 +75,18 @@ edge host. The stage and the sensitive information below are marked with the poi
 
 <br />
 
-<PointsOfInterest
-  points={[
-    {
-      x: 300,
-      y: 95,
-      label: 2,
-      description: "This stage follows the `skip-copy-[string]` naming convention. Therefore, the Edge Installer will skip copying the stage to the edge host.",
-      tooltipPlacement: "rightTop",
-    },
-    {
-      x: 95,
-      y: 30,
-      label: 1,
-      description: "You can transmit a sensitive information, such as credentials, in the stages section.",
-    }
-  ]}
->
+<PointsOfInterest points={[
+  { x: 300,
+    y: 95,
+    label: "2",
+    description: "This stage follows the `skip-copy-[string]` naming convention. Therefore, the Edge Installer will skip copying the stage to the edge host.",
+    tooltipPlacement: "rightTop", },
+  { x: 95,
+    y: 30,
+    label: "1",
+    description: "You can transmit a sensitive information, such as credentials, in the stages section.",
+  }
+]}>
 
 ```yaml
 stages:

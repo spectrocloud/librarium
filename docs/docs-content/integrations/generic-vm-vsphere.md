@@ -33,9 +33,7 @@ but the values. Users will then have the ability to modify the add-on pack for t
 
 To configure the Generic-VM-vSphere Add-on pack for the application cluster, the namespace value should be as follows:
 
-`cluster-{{ .spectro.system.cluster.uid }}`
-
-<br />
+`cluster-{{ .spectro.system.cluster.uid }}` <br />
 
 ```yaml
 namespace: cluster-{{ .spectro.system.cluster.uid }}

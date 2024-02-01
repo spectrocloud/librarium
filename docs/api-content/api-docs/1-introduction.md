@@ -21,9 +21,9 @@ Every API's URI has the prefix of the version and the Palette resource, such as:
 
 Palette supports two types of API authentication methods that can be used to authenticate API requests:
 
-- [Authorization Token](#using-authorization-token)
+- [Authorization Token](#authorization-token)
 
-- [API Key](#using-the-api-key)
+- [API Key](#api-key)
 
 ### Authorization Token
 
@@ -183,7 +183,7 @@ The API rate limits are as follows:
 - There is a limit of ten API requests per second for each source IP address. The API supports additional bursts through
   the usage of a burst queue. The default burst queue size is set to five. You could make 50 (10 \* 5) requests in
   seconds before the API returns a `429 - TooManyRequests` error. Refer to the
-  [Endpoint Prefix Rate](#endpointprefixrate) for additional information.
+  [Endpoint Prefix Rate](#endpoint-prefix-rate) for additional information.
 
 - API request limits are categorized by the parent resources, such as `/v1/cloudconfig/:uid` and `/v1/roles`. You can
   find a list of all resource types in the [API documentation](/api/category/palette-api-v1). The requests are counted
@@ -196,70 +196,70 @@ The API rate limits are as follows:
 
 ## Endpoint Prefix Rate
 
-| **Endpoint Prefix**                                                                      | **Request Per Second** | **Burst Size** | **Max with Burst** |
-| ---------------------------------------------------------------------------------------- | ---------------------- | -------------- | ------------------ |
-| /v1/auth                                                                                 | 10                     | 5              | 50                 |
-| /v1/nats                                                                                 | 10                     | 5              | 50                 |
-| /v1/users                                                                                | 10                     | 5              | 50                 |
-| /v1/userprofiles                                                                         | 10                     | 5              | 50                 |
-| /v1/permissions                                                                          | 10                     | 5              | 50                 |
-| /v1/roles                                                                                | 10                     | 5              | 50                 |
-| /v1/teams                                                                                | 10                     | 5              | 50                 |
-| /v1/tenants                                                                              | 10                     | 5              | 50                 |
-| /v1/projects                                                                             | 10                     | 5              | 50                 |
-| /v1/plans                                                                                | 10                     | 5              | 50                 |
-| /v1/payments                                                                             | 10                     | 5              | 50                 |
-| /v1/audits                                                                               | 10                     | 5              | 50                 |
-| /v1/apiKeys                                                                              | 10                     | 5              | 50                 |
-| /v1/datasinks                                                                            | 10                     | 5              | 50                 |
-| /v1/notifications                                                                        | 10                     | 5              | 50                 |
-| /v1/events                                                                               | 10                     | 5              | 50                 |
-| /v1/crypto                                                                               | 10                     | 5              | 50                 |
-| /v1/async                                                                                | 10                     | 5              | 50                 |
-| /v1/errlogs                                                                              | 10                     | 5              | 50                 |
-| /v1/jobs                                                                                 | 10                     | 5              | 50                 |
-| /v1/health                                                                               | 10                     | 5              | 50                 |
-| /v1/cache                                                                                | 10                     | 5              | 50                 |
-| /v1/cloudaccounts                                                                        | 10                     | 5              | 50                 |
-| /v1/packs                                                                                | 10                     | 5              | 50                 |
-| /v1/workspaces                                                                           | 10                     | 5              | 50                 |
-| /v1/installers                                                                           | 10                     | 5              | 50                 |
-| /v1/git/webhook                                                                          | 10                     | 5              | 50                 |
-| /v1/registries                                                                           | 10                     | 5              | 50                 |
-| /v1/services                                                                             | 10                     | 5              | 50                 |
-| /v1/overlords                                                                            | 10                     | 5              | 50                 |
-| /v1/cluster                                                                              | 10                     | 5              | 50                 |
-| /v1/cloudconfigs                                                                         | 10                     | 5              | 50                 |
-| /v1/cloudconfigs/\{cloudType}/\{uid}/machinePools                                        | 10                     | 5              | 50                 |
-| /v1/edgehosts                                                                            | 10                     | 5              | 50                 |
-| /v1/metrics                                                                              | 10                     | 5              | 50                 |
-| /v1/system                                                                               | 10                     | 5              | 50                 |
-| /v1/mgmt                                                                                 | 10                     | 5              | 50                 |
-| /v1/oidc                                                                                 | 10                     | 5              | 50                 |
-| /v1/clouds                                                                               | 10                     | 5              | 50                 |
-| /v1/events/components                                                                    | 10                     | 5              | 50                 |
-| /v1/dashboard                                                                            | 10                     | 5              | 50                 |
-| /v1/cloudconfigs/\{cloudType}/:uid/machinePools/\{machinePoolName}/\machines             | 10                     | 5              | 50                 |
-| /v1/cloudconfigs/\{cloudType}/:uid/machinePools/\{machinePoolName}/\machines/:machineUid | 10                     | 5              | 50                 |
-| /v1/auth/authenticate                                                                    | 10                     | 5              | 50                 |
-| /v1/auth/services/login                                                                  | 10                     | 5              | 50                 |
-| /v1/auth/services/edge/login                                                             | 10                     | 5              | 50                 |
-| /v1/files                                                                                | 10                     | 5              | 50                 |
-| /v1/edgehosts/registers                                                                  | 10                     | 5              | 50                 |
-| /v1/edgehosts/:uid/health                                                                | 10                     | 5              | 50                 |
-| /v1/edgehosts/:uid/spc/download                                                          | 10                     | 5              | 50                 |
-| /v1/spectroclusters/features/logFetcher                                                  | 10                     | 5              | 50                 |
-| /v1/spectroclusters/:uid/assets                                                          | 10                     | 5              | 50                 |
-| /v1/spectroclusters/cost                                                                 | 10                     | 5              | 50                 |
-| /v1/spectroclusters/usage                                                                | 10                     | 5              | 50                 |
-| /v1/spectroclusters/:uid/download                                                        | 10                     | 5              | 50                 |
-| /v1/spectroclusters/acquire                                                              | 10                     | 5              | 50                 |
-| /v1/auth/user/password/reset                                                             | 2                      | 5              | 10                 |
-| /v1/spectroclusters                                                                      | 50                     | 5              | 250                |
-| /v1/clusterprofiles                                                                      | 50                     | 5              | 250                |
-| /v1/clusterprofiles/:uid/packs                                                           | 50                     | 5              | 250                |
-| /v1/clusterprofiles/:uid/packs/manifests                                                 | 50                     | 5              | 250                |
-| /v1/clusterprofiles/:uid/packs/\{packName}/manifests                                     | 50                     | 5              | 250                |
-| /v1/clusterprofiles/validate/packs                                                       | 50                     | 5              | 250                |
-| /v1/clusterprofiles/:uid/validate/packs                                                  | 50                     | 5              | 250                |
-| /v1/spectroclusters/:uid/profiles                                                        | 50                     | 5              | 250                |
+| **Endpoint Prefix**                                                                     | **Request Per Second** | **Burst Size** | **Max with Burst** |
+| --------------------------------------------------------------------------------------- | ---------------------- | -------------- | ------------------ |
+| /v1/auth                                                                                | 10                     | 5              | 50                 |
+| /v1/nats                                                                                | 10                     | 5              | 50                 |
+| /v1/users                                                                               | 10                     | 5              | 50                 |
+| /v1/userprofiles                                                                        | 10                     | 5              | 50                 |
+| /v1/permissions                                                                         | 10                     | 5              | 50                 |
+| /v1/roles                                                                               | 10                     | 5              | 50                 |
+| /v1/teams                                                                               | 10                     | 5              | 50                 |
+| /v1/tenants                                                                             | 10                     | 5              | 50                 |
+| /v1/projects                                                                            | 10                     | 5              | 50                 |
+| /v1/plans                                                                               | 10                     | 5              | 50                 |
+| /v1/payments                                                                            | 10                     | 5              | 50                 |
+| /v1/audits                                                                              | 10                     | 5              | 50                 |
+| /v1/apiKeys                                                                             | 10                     | 5              | 50                 |
+| /v1/datasinks                                                                           | 10                     | 5              | 50                 |
+| /v1/notifications                                                                       | 10                     | 5              | 50                 |
+| /v1/events                                                                              | 10                     | 5              | 50                 |
+| /v1/crypto                                                                              | 10                     | 5              | 50                 |
+| /v1/async                                                                               | 10                     | 5              | 50                 |
+| /v1/errlogs                                                                             | 10                     | 5              | 50                 |
+| /v1/jobs                                                                                | 10                     | 5              | 50                 |
+| /v1/health                                                                              | 10                     | 5              | 50                 |
+| /v1/cache                                                                               | 10                     | 5              | 50                 |
+| /v1/cloudaccounts                                                                       | 10                     | 5              | 50                 |
+| /v1/packs                                                                               | 10                     | 5              | 50                 |
+| /v1/workspaces                                                                          | 10                     | 5              | 50                 |
+| /v1/installers                                                                          | 10                     | 5              | 50                 |
+| /v1/git/webhook                                                                         | 10                     | 5              | 50                 |
+| /v1/registries                                                                          | 10                     | 5              | 50                 |
+| /v1/services                                                                            | 10                     | 5              | 50                 |
+| /v1/overlords                                                                           | 10                     | 5              | 50                 |
+| /v1/cluster                                                                             | 10                     | 5              | 50                 |
+| /v1/cloudconfigs                                                                        | 10                     | 5              | 50                 |
+| /v1/cloudconfigs/\{cloudType}/\{uid}/machinePools                                       | 10                     | 5              | 50                 |
+| /v1/edgehosts                                                                           | 10                     | 5              | 50                 |
+| /v1/metrics                                                                             | 10                     | 5              | 50                 |
+| /v1/system                                                                              | 10                     | 5              | 50                 |
+| /v1/mgmt                                                                                | 10                     | 5              | 50                 |
+| /v1/oidc                                                                                | 10                     | 5              | 50                 |
+| /v1/clouds                                                                              | 10                     | 5              | 50                 |
+| /v1/events/components                                                                   | 10                     | 5              | 50                 |
+| /v1/dashboard                                                                           | 10                     | 5              | 50                 |
+| /v1/cloudconfigs/\{cloudType}/:uid/machinePools/\{machinePoolName}/machines             | 10                     | 5              | 50                 |
+| /v1/cloudconfigs/\{cloudType}/:uid/machinePools/\{machinePoolName}/machines/:machineUid | 10                     | 5              | 50                 |
+| /v1/auth/authenticate                                                                   | 10                     | 5              | 50                 |
+| /v1/auth/services/login                                                                 | 10                     | 5              | 50                 |
+| /v1/auth/services/edge/login                                                            | 10                     | 5              | 50                 |
+| /v1/files                                                                               | 10                     | 5              | 50                 |
+| /v1/edgehosts/registers                                                                 | 10                     | 5              | 50                 |
+| /v1/edgehosts/:uid/health                                                               | 10                     | 5              | 50                 |
+| /v1/edgehosts/:uid/spc/download                                                         | 10                     | 5              | 50                 |
+| /v1/spectroclusters/features/logFetcher                                                 | 10                     | 5              | 50                 |
+| /v1/spectroclusters/:uid/assets                                                         | 10                     | 5              | 50                 |
+| /v1/spectroclusters/cost                                                                | 10                     | 5              | 50                 |
+| /v1/spectroclusters/usage                                                               | 10                     | 5              | 50                 |
+| /v1/spectroclusters/:uid/download                                                       | 10                     | 5              | 50                 |
+| /v1/spectroclusters/acquire                                                             | 10                     | 5              | 50                 |
+| /v1/auth/user/password/reset                                                            | 2                      | 5              | 10                 |
+| /v1/spectroclusters                                                                     | 50                     | 5              | 250                |
+| /v1/clusterprofiles                                                                     | 50                     | 5              | 250                |
+| /v1/clusterprofiles/:uid/packs                                                          | 50                     | 5              | 250                |
+| /v1/clusterprofiles/:uid/packs/manifests                                                | 50                     | 5              | 250                |
+| /v1/clusterprofiles/:uid/packs/\{packName}/manifests                                    | 50                     | 5              | 250                |
+| /v1/clusterprofiles/validate/packs                                                      | 50                     | 5              | 250                |
+| /v1/clusterprofiles/:uid/validate/packs                                                 | 50                     | 5              | 250                |
+| /v1/spectroclusters/:uid/profiles                                                       | 50                     | 5              | 250                |

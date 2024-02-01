@@ -92,7 +92,7 @@ Use the following instructions to configure S3 backup for your enterprise cluste
           "s3:AbortMultipartUpload",
           "s3:ListMultipartUploadParts"
         ],
-        "Resource": ["arn:aws:s3:::REPLACE_ME_WITH_YOUR_BUCKET_NAME", "arn:aws:s3:::REPLACE*ME_WITH_YOUR_BUCKET_NAME/*"]
+        "Resource": ["arn:aws:s3:::REPLACE_ME_WITH_YOUR_BUCKET_NAME", "arn:aws:s3:::REPLACE_ME_WITH_YOUR_BUCKET_NAME/*"]
       },
       {
         "Sid": "ec2Permissions",
@@ -105,7 +105,7 @@ Use the following instructions to configure S3 backup for your enterprise cluste
           "ec2:CreateSnapshot",
           "ec2:DeleteSnapshot"
         ],
-        "Resource": ["_"]
+        "Resource": ["*"]
       }
     ]
   }
@@ -123,7 +123,7 @@ Use the following instructions to configure S3 backup for your enterprise cluste
 
 3. Click on the **Backup/Restore** tab.
 
-4. Select the **FTP**tab and fill out the following fields:
+4. Select the **FTP** tab and fill out the following fields:
 
    | **Field**            | **Description**                                                           |
    | -------------------- | ------------------------------------------------------------------------- |

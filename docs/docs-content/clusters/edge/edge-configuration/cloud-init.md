@@ -48,9 +48,7 @@ Each stage has a before and after hook you can use to achieve more granular cust
 ## Where to Apply Cloud-Init Stages?
 
 You may ask yourself where to use cloud-init stages, as both the Edge Installer and the OS pack support the usage of
-cloud-init stages. Use the following statements to help you decide.
-
-<br />
+cloud-init stages. Use the following statements to help you decide. <br />
 
 - If you need to apply a set of configurations to a specific site, then use the Edge Installer user data configuration
   file and its cloud-init stages to provide site settings to that specific site.
@@ -229,9 +227,7 @@ stages:
 If you need to transmit sensitive information, such as credentials, during the site installation phase, you can make the
 Edge installer skip copying specific stages to the edge hosts. The Edge installer will skip copying the stages that
 follow the `skip-copy-[string]` naming convention. Refer to the
-[Sensitive Information in the User Data Stages](skip-copying-stages.md) guide to learn more.
-
-<br />
+[Sensitive Information in the User Data Stages](skip-copying-stages.md) guide to learn more. <br />
 
 ```yaml
 stages:
@@ -298,9 +294,7 @@ to apply common configurations to many edge hosts.
 #### Assign User to Group
 
 In this example snippet, the OS pack is using the cloud-init stage `initramfs` to assign a default password to the user
-`kairos` and add the user to the `sudo` group.
-
-<br />
+`kairos` and add the user to the `sudo` group. <br />
 
 ```yaml
 stages:
@@ -315,9 +309,7 @@ stages:
 #### Custom Commands
 
 This is an example of moving files to a different location prior to another stage or boot-up process that requires the
-file.
-
-<br />
+file. <br />
 
 ```yaml
 stages:
@@ -345,9 +337,7 @@ stages:
 
 #### Invoke Custom Script
 
-An example of applying logic after the device has booted by using the `boot.after` stage.
-
-<br />
+An example of applying logic after the device has booted by using the `boot.after` stage. <br />
 
 ```yaml
 boot.after:

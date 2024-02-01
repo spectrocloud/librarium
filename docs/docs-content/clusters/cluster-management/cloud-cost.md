@@ -75,6 +75,6 @@ For the cluster configuration of control-plane-pool and worker-pool considers in
 
 :::info
 
-Cluster costs are calculated for all cluster types (new and existing) across all cloud types (public and private)
+Cluster costs are calculated for all cluster types (new and existing) across all cloud types (public and private).
 
 :::

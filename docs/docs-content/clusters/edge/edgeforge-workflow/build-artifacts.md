@@ -73,16 +73,14 @@ Use the following instructions on your Linux machine, which this guide refers to
 
 1.  Visit the [Downloads](../../../spectro-downloads#palette-edge-cli) page and download the latest Palette Edge CLI.
     You can download the Palette Edge CLI by clicking on the available URL or using the download URL in the following
-    command. Replace the `[PALETTE-EDGE-BINARY-URL]` placeholder with the download URL.
-    <br />
+    command. Replace the `[PALETTE-EDGE-BINARY-URL]` placeholder with the download URL. <br />
 
 ```bash
 curl [PALETTE-EDGE-BINARY-URL] --output palette-edge
 ```
 
 2. Open a terminal session and navigate to the folder where you have downloaded the palette-edge binary. Set the
-   executable permissions for the palette-edge binary by issuing the following command.
-   <br />
+   executable permissions for the palette-edge binary by issuing the following command. <br />
 
 ```bash
 chmod 755 palette-edge
@@ -90,16 +88,14 @@ chmod 755 palette-edge
 
 3. Use the following command to move the palette-edge binary to the **/usr/local/bin** directory to make the binary
    available in your system $PATH. This will allow you to issue the `palette-edge` command from any directory in your
-   development environment.
-   <br />
+   development environment. <br />
 
 ```bash
 mv palette-edge /usr/local/bin
 ```
 
 4. Verify the installation of the Palette Edge CLI by issuing the following command. The output will display information
-   about the currently supported OS and Kubernetes distributions.
-   <br />
+   about the currently supported OS and Kubernetes distributions. <br />
 
 ```bash
 palette-edge show
@@ -130,8 +126,7 @@ palette-edge show
 
 5. Set the Spectro Cloud API key as an environment variable by issuing the following command. Replace the
    `[USE-YOUR-API-KEY_HERE]` placeholder with your API key. The Palette Edge CLI will use this API key to authenticate
-   with Palette. Once authenticated, the Palette Edge CLI can interact with your Palette account.
-   <br />
+   with Palette. Once authenticated, the Palette Edge CLI can interact with your Palette account. <br />
 
 ```bash
 export API_KEY=[USE-YOUR-API-KEY_HERE]
@@ -159,8 +154,7 @@ export API_KEY=[USE-YOUR-API-KEY_HERE]
 11. Copy the cluster profile ID from the cluster details page URL for the next step.
 
 12. Switch back to your development environment, and set the project ID as an environment variable by issuing the
-    following command. Replace the `[USE-YOUR-PROJECT-ID_HERE]` placeholder with your project ID.
-    <br />
+    following command. Replace the `[USE-YOUR-PROJECT-ID_HERE]` placeholder with your project ID. <br />
 
 ```bash
 export PROJECT_ID=[USE-YOUR-PROJECT-ID_HERE]
@@ -168,8 +162,7 @@ export PROJECT_ID=[USE-YOUR-PROJECT-ID_HERE]
 
 13. Set the cluster profile ID as an environment variable using the following command. Replace the
     `[USE-YOUR-PROFILE-ID_HERE]` placeholder with your cluster profile ID. The Palette Edge CLI uses the cluster profile
-    ID to reference the correct cluster profile and download all its software dependencies.
-    <br />
+    ID to reference the correct cluster profile and download all its software dependencies. <br />
 
 ```bash
 export PROFILE_ID=[USE-YOUR-PROFILE-ID_HERE]
@@ -185,9 +178,7 @@ export PROFILE_ID=[USE-YOUR-PROFILE-ID_HERE]
 | `--palette-endpoint`    | Palette API endpoint. The default Palette API endpoint is `api.spectrocloud.com`                                                                    |
 | `--outfile`             | Path to write the final content bundle.                                                                                                             |
 
-You can issue `palette-edge build --help` to know about other available flags.
-
-<br />
+You can issue `palette-edge build --help` to know about other available flags. <br />
 
 ```bash
 palette-edge build --api-key $API_KEY \
@@ -199,16 +190,14 @@ palette-edge build --api-key $API_KEY \
 
 15. Use the command below to list all files in the current directory to verify that you created the content bundle
     successfully. The content bundle will have the following naming convention, `content-[random-string]`, for example,
-    **content-8e61a9e5**.
-    <br />
+    **content-8e61a9e5**. <br />
 
 ```bash
 ls -al
 ```
 
 16. List the files in the content bundle folder using the following command. The output will display the compressed core
-    and app content files.
-    <br />
+    and app content files. <br />
 
 ```bash
 ls -al content-*/
@@ -223,8 +212,7 @@ total 3981104
 
 17. Issue the following command to build the Edge artifacts with your content bundle. The `+iso` option specifies the
     build target. This command will generate an ISO image from the content bundle and other configurations you have
-    specified in the **.arg** and **user-data** files.
-    <br />
+    specified in the **.arg** and **user-data** files. <br />
 
 ```bash
 sudo ./earthly.sh +iso
@@ -234,9 +222,7 @@ This command may take up to 15-20 minutes to finish depending on the resources o
 
 ## Validate
 
-List the Edge installer ISO and checksum by issuing the following command from the **CanvOS/** directory.
-
-<br />
+List the Edge installer ISO and checksum by issuing the following command from the **CanvOS/** directory. <br />
 
 ```shell
 ls build/
@@ -251,9 +237,7 @@ palette-edge-installer.iso.sha256
 
 To validate, you can prepare an edge device using the Edge installer ISO. You can follow the
 [Prepare Edge Host for Installation](../site-deployment/stage.md) guide if you prepare a bare metal machine or a VMware
-VM as a host. Below are the high-level steps for your reference:
-
-<br />
+VM as a host. Below are the high-level steps for your reference: <br />
 
 1. Create a bootable USB flash drive using any third-party software. Most software that creates a bootable USB drive
    will validate the ISO image.
@@ -265,8 +249,7 @@ VM as a host. Below are the high-level steps for your reference:
 3. Flash the edge device with a bootable USB drive.
 
 4. The last step is to power on the edge device and start the installation process. For more information, refer to the
-   [Perform Site Install](../site-deployment/site-installation/site-installation.md) documentation.
-   <br />
+   [Perform Site Install](../site-deployment/site-installation/site-installation.md) documentation. <br />
 
 ## Next Steps
 

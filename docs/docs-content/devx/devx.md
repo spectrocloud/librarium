@@ -44,9 +44,7 @@ App Mode is available for the following Palette and VerteX platforms.
 
 The PDE dashboard provides a snapshot of resource utilization in your PDE environment. You can keep track of the
 resource utilization in your PDE environment without having to navigate to different views. The dashboard displays the
-following information.
-
-<br />
+following information. <br />
 
 - The number of apps deployed.
 
