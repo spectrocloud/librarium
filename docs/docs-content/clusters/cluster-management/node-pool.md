@@ -41,8 +41,10 @@ Different types of repaving operations may occur, depending on what causes them:
   pools are sequentially repaved starting with the control plane.
 
 You can customize the repave time interval for all node pools except the control plane node pool. The default repave
-time interval is 0 seconds. You can adjust the node repave time interval during or after cluster creation. If you need
-to modify the repave time interval post-cluster creation, follow the [Change a Node Pool](#change-a-node-pool) guide.
+time interval is zero seconds, meaning the old worker node is considered for deletion as soon as a new worker node is
+initialized. Because the new worker node can take some time to become fully operational, you can extend the repave time
+interval to preserve the old worker node until the new one is ready. If you need to modify the repave time interval
+post-cluster creation, follow the [Change a Node Pool](#change-a-node-pool) guide.
 
 :::info
 
