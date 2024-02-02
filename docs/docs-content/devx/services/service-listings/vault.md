@@ -9,7 +9,7 @@ sidebar_position: 40
 logoUrl: "https://icon-library.com/images/padlock-icon-png/padlock-icon-png-29.jpg"
 ---
 
-# Vault
+## Vault
 
 Palette Dev Engine (PDE) users can deploy Vault onto their virtual cluster using the out-of-the-box Vault offering.
 Vault deployed through PDE is using Banzai Cloud Bank-Vaults. Bank-Vaults is a wrapper for the official
@@ -32,11 +32,11 @@ Vault is deployed as a single container in the virtual cluster, and the containe
 
 :::
 
-# Deploy Vault
+## Deploy Vault
 
 Use the following steps to learn how to deploy Vault to your virtual cluster.
 
-## Prerequisites
+### Prerequisites
 
 - A Spectro Cloud [account](https://www.spectrocloud.com/get-started/).
 
@@ -50,7 +50,7 @@ Use the following steps to learn how to deploy Vault to your virtual cluster.
 
 <br />
 
-## Enablement
+### Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -81,7 +81,7 @@ Use the following steps to learn how to deploy Vault to your virtual cluster.
    [Deploy a Virtual Cluster](../../../clusters/palette-virtual-clusters/deploy-virtual-cluster.md) guide for additional
    guidance or check out the [Deploy an Application using Palette Dev Engine](../../apps/deploy-app.md) tutorial.
 
-## Validate
+### Validate
 
 You can validate the Vault instance deployed successfully by using the following steps.
 
@@ -135,7 +135,7 @@ You can validate the Vault instance deployed successfully by using the following
 
 To acquire the Vault root token, review the [Vault Credentials](#vault-credentials) section.
 
-# Output Variables
+## Output Variables
 
 The exposed output variables. Use these variables when connecting higher-level services with Vault:
 
@@ -146,7 +146,7 @@ The exposed output variables. Use these variables when connecting higher-level s
 | Service Port     | `{{.spectro.app.$appDeploymentName.<service-name>.VAULTMSTR_SVC_PORT}}`      | The exposed port for the Vault service.                     |
 | Namespace        | `{{.spectro.app.$appDeploymentName.<service-name>.VAULTMSTR_SVC_NAMESPACE}}` | The Kubernetes namespace the Vault instance is deployed to. |
 
-# Vault Credentials
+## Vault Credentials
 
 The Vault root token and the unseal keys are stored as a Kubernetes secret inside the virtual cluster. You can retrieve
 the Vault root token by following these steps. <br /> <br />
@@ -188,13 +188,13 @@ the Vault root token by following these steps. <br /> <br />
    | jq -r '.data | to_entries | .[] | select(.key | startswith("vault-unseal-")) | .value | @base64d + "\n"'
    ```
 
-# Next Steps
+## Next Steps
 
 You can add Vault to your application profile and start integrating Vault with your applications. To learn more about
 integrating Vault with your applications, check out the
 [Vault App Integrations](https://developer.hashicorp.com/vault/tutorials/app-integration) tutorials from HashiCorp.
 
-# Resources
+## Resources
 
 - [Vault Documentation](https://developer.hashicorp.com/vault/docs)
 

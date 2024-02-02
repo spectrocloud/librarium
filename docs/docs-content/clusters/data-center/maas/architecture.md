@@ -81,7 +81,7 @@ installation. A System Private Gateway is a PCG service that is enabled inside t
 :::warning
 
 Only self-hosted Palette instances support the option of using the System Private Gateway. Use the default
-[PCG deployment](#private-cloud-gatewayy) option if you have NAT gateways or network firewalls between Palette and MAAS.
+[PCG deployment](#private-cloud-gateway) option if you have NAT gateways or network firewalls between Palette and MAAS.
 
 :::
 

@@ -7,8 +7,6 @@ hide_table_of_contents: false
 sidebar_position: 0
 ---
 
-# Add Custom Registries
-
 Setting up a custom pack registry is a two-step process. The first step is to deploy a pack registry server using a
 Docker image provided by us. While deploying a pack registry server, you can employ a TLS certificate from a Certificate
 Authority (CA) or a self-signed certificate. The current guide will provide instructions for both methods - using TLS
@@ -289,7 +287,7 @@ to affirm the certificate's authenticity before establishing a communication cha
 7. Click the **Confirm** button to finish configuring the pack registry server. After you finish the configuration,
    Palette will periodically synchronize with the pack registry server to download pack updates, if any.
 
-# Self-Signed Certificates
+## Self-Signed Certificates
 
 For self-signed certificates, use the following command to generate certificates.
 
