@@ -100,8 +100,6 @@ configuration settings to learn more.
 
 ### Create Node Pool
 
-# Create a New Node Pool
-
 You can create a new node pool for an active cluster. To create a new node pool follow the steps below.
 
 1. Ensure you are in the correct scope or project.
@@ -119,7 +117,7 @@ You can create a new node pool for an active cluster. To create a new node pool 
 
 7. Click on **Confirm** to create the new node pool.
 
-# Change a Node Pool
+### Change a Node Pool
 
 Palette allows its users to apply changes to a node pool, including its taints label for a running cluster. To make
 changes to the an active cluster's node pools, follow the steps below.

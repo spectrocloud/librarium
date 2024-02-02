@@ -1474,7 +1474,7 @@ The Kubeadm configuration file is where you can do the following:
   [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md).
 
 - Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out
-  [Configure Custom OIDC](#configurecustomoidc).
+  [Configure Custom OIDC](#configure-custom-oidc).
 
 - Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only
   change the DNS domain during cluster creation. For more information, refer to
@@ -1633,8 +1633,8 @@ role to users and groups, refer to
 <br />
 
 - **Custom**: This setting allows you to specify a third-party OIDC provider by configuring OIDC statements in the
-  Kubeadm configuration file as described in [Configure Custom OIDC](#configurecustomoidc). This setting displays in the
-  YAML file as `none`.
+  Kubeadm configuration file as described in [Configure Custom OIDC](#configure-custom-oidc). This setting displays in
+  the YAML file as `none`.
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper
   permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting
