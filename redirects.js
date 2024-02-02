@@ -360,7 +360,12 @@ const redirects = [
     to: `/legal-licenses/compliance`,
   },
   {
-    from: `/clusters/public-cloud/cox-edge/`,
+    from: [
+      `/clusters/public-cloud/cox-edge/`,
+      `/clusters/public-cloud/cox-edge/add-cox-edge-accounts`,
+      `/clusters/public-cloud/cox-edge/create-cox-cluster`,
+      `/clusters/public-cloud/cox-edge/network-rules`,
+    ],
     to: `/unlisted/cox-edge-eol`,
   },
 ];
