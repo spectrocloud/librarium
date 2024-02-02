@@ -273,7 +273,7 @@ For guidance in setting up kubectl, review the [Kubectl](../../cluster-managemen
 
 - [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
 
-- [EKS Cluster Encryption](#eks-cluster-secrets-encryption)
+- [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md)
 
 - [Configure Custom OIDC](../../../integrations/kubernetes.md#configure-custom-oidc)
 
