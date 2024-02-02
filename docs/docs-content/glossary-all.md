@@ -275,7 +275,7 @@ which users can bring up in their environment using Palette's pack registry soft
 
 Projects provide a way for grouping clusters together for logical separation. Role-based access controls within Palette
 are applied at the project level. [Users](#user) and [teams](#team) can be assigned one or more [roles](#role) within a
-project for granular control over [permissions](#permission) within the project scope.
+project for granular control over [permissions](#permissions) within the project scope.
 
 ## Public Pack Registry
 
@@ -292,7 +292,7 @@ pool. The process is fully automated and does not require manual intervention.
 
 ## Role
 
-A Role is a collection of [permissions](#permission). There are two kinds of roles in Palette: _tenant roles_ and
+A Role is a collection of [permissions](#permissions). There are two kinds of roles in Palette: _tenant roles_ and
 _project roles_. _Tenant roles_ are a collection of tenant-level permissions such as create a new user, add a new
 project, etc. _Project roles_ consist of permissions for various actions within the scope of a project such as create a
 cluster profile, create a cluster, etc.
@@ -326,7 +326,7 @@ it.Initial login:admin/admin.
 
 A Team is a group of [users](#user). Users can be part of one or more teams. Teams provide a convenient way to control
 platform access for a group of users. [Roles](#role) assigned to a team grant associated tenant or [project](#project)
-[permissions](#permission) to all users that are part of the team.
+[permissions](#permissions) to all users that are part of the team.
 
 ## Tenant
 
