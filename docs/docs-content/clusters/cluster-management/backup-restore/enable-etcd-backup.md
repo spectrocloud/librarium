@@ -30,7 +30,7 @@ cluster profile's Kubernetes layer.
 
     <TabItem value="PXK" label="PXK/PXK-E">
 
-   In Palette-eXtended Kubernetes (PXK), etcd backup is enabled by default and cannot be disabled. You also cannot
+   In Palette eXtended Kubernetes (PXK), etcd backup is enabled by default and cannot be disabled. You also cannot
    change the directory where the backups are stored, which is `/var/lib/etcd`.
 
    | Parameter                                                    | Description                                                          |
@@ -109,8 +109,8 @@ where the etcd snapshots are saved. Confirm that the snapshots are being created
 ## Next Steps
 
 If your cluster experiences data corruption issues, you can use the etcd snapshots to restore the cluster to working
-conditions. Restoring a cluster is a complicated procedure that requires SSH access to the node and intimate knowledge
-of etcd. We strongly suggest you contact us for assistance at support@spectrocloud.com.
+conditions. Restoring a cluster may be a challenging procedure, depending on your experience and technical skill level. The restoration also requires SSH access to the node and intimate knowledge
+of etcd. If you have concerns or need assistance, contact us [support@spectrocloud.com](mailto:support@spectrocloud.com) for additional guidance.
 
 The following is list of helpful resources that can help you understand disaster recovery for etcd:
 
