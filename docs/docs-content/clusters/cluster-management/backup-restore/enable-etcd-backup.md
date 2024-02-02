@@ -13,7 +13,9 @@ cluster profile's Kubernetes layer.
 
 ## Prerequisite
 
-- An active cluster in Palette.
+- An active cluster in Palette using PXK, PXK-E, RKE2, or K3S as its Kubernetes layer.
+  - The MicroK8s distribution of Kubernetes uses dqlite3 instead of etcd for its data store by default, so these steps
+    are not applicable to MicroK8s instances.
 
 ## Configure etcd Backup
 
@@ -33,10 +35,10 @@ cluster profile's Kubernetes layer.
    In Palette eXtended Kubernetes (PXK), etcd backup is enabled by default and cannot be disabled. You also cannot
    change the directory where the backups are stored, which is `/var/lib/etcd`.
 
-   | Parameter                                                    | Description                                                          |
-   | ------------------------------------------------------------ | -------------------------------------------------------------------- |
-   | `kubeadmconfig.etcd.local.extraArgs.snapshot-count`          | The number of committed transactions required to trigger a snapshot. |
-   | `kubeadmconfig.etcd.local.extraArgs.etcd-snapshot-retention` | The maximum number of etcd backups to retain.                        |
+   | Parameter                                           | Description                                                          | Default |
+   | --------------------------------------------------- | -------------------------------------------------------------------- | ------- |
+   | `kubeadmconfig.etcd.local.extraArgs.snapshot-count` | The number of committed transactions required to trigger a snapshot. | 100000  |
+   | `kubeadmconfig.etcd.local.extraArgs.max-snapshots`  | The maximum number of etcd backups to retain.                        | 5       |
 
    For example,
 
@@ -55,12 +57,12 @@ cluster profile's Kubernetes layer.
 
    Use the following parameters to configure scheduled backups.
 
-   | Parameter                                    | Description                                                                                                                                                           |
-   | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | `cluster.config.etcd-snapshot-schedule-cron` | A cron expression that controls the time and frequency of scheduled backups. For example, the default value `0 */1 * * *` means the scheduled backup runs every hour. |
-   | `cluster.config.etcd-snapshot-retention`     | The maximum number of etcd backups to retain.                                                                                                                         |
-   | `cluster.config.etcd-disable-snapshots`      | Controls whether or not to disable scheduled etcd snapshots.                                                                                                          |
-   | `cluster.config.etcd-snapshot-dir`           | Specifies the directory where the etcd snapshots are saved. By default, this value is `/var/lib/rke2/rancher/server/db/snapshots`.                                    |
+   | Parameter                                    | Description                                                                                                                                                           | Default                                     |
+   | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+   | `cluster.config.etcd-snapshot-schedule-cron` | A cron expression that controls the time and frequency of scheduled backups. For example, the default value `0 */1 * * *` means the scheduled backup runs every hour. | `0 */1 * * *`                               |
+   | `cluster.config.etcd-snapshot-retention`     | The maximum number of etcd backups to retain.                                                                                                                         | 12                                          |
+   | `cluster.config.etcd-disable-snapshots`      | Controls whether or not to disable scheduled etcd snapshots.                                                                                                          | `false`                                     |
+   | `cluster.config.etcd-snapshot-dir`           | Specifies the directory where the etcd snapshots are saved.                                                                                                           | `/var/lib/rancher/rke2/server/db/snapshots` |
 
    For example,
 
@@ -79,12 +81,12 @@ cluster profile's Kubernetes layer.
 
    Use the following parameters to configure scheduled backups.
 
-   | Parameter                                    | Description                                                                                                                                                           |
-   | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | `cluster.config.etcd-snapshot-schedule-cron` | A cron expression that controls the time and frequency of scheduled backups. For example, the default value `0 */1 * * *` means the scheduled backup runs every hour. |
-   | `cluster.config.etcd-snapshot-retention`     | The maximum number of etcd backups to retain.                                                                                                                         |
-   | `cluster.config.etcd-disable-snapshots`      | Controls whether or not to disable scheduled etcd snapshots.                                                                                                          |
-   | `cluster.config.etcd-snapshot-dir`           | Specifies the directory where the etcd snapshots are saved. By default, this value is `/var/lib/k3s/rancher/server/db/snapshots`.                                     |
+   | Parameter                                    | Description                                                                                                                                                           | Default                                    |
+   | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+   | `cluster.config.etcd-snapshot-schedule-cron` | A cron expression that controls the time and frequency of scheduled backups. For example, the default value `0 */1 * * *` means the scheduled backup runs every hour. | `0 */1 * * *`                              |
+   | `cluster.config.etcd-snapshot-retention`     | The maximum number of etcd backups to retain.                                                                                                                         | 12                                         |
+   | `cluster.config.etcd-disable-snapshots`      | Controls whether or not to disable scheduled etcd snapshots.                                                                                                          | `false`                                    |
+   | `cluster.config.etcd-snapshot-dir`           | Specifies the directory where the etcd snapshots are saved. By default, this value is `/var/lib/k3s/rancher/server/db/snapshots`.                                     | `/var/lib/rancher/k3s/server/db/snapshots` |
 
    For example,
 
@@ -101,16 +103,26 @@ cluster profile's Kubernetes layer.
 
     </Tabs>
 
+5. If you have not deployed a cluster, finish the cluster profile creation and deploy a cluster. For more information,
+   refer to [Create Cluster Profile](../../../profiles/cluster-profiles/create-cluster-profiles/) for non-Edge and
+   [Model Cluster Profile](../../edge/site-deployment/model-profile.md).
+
+   If you are editing the profile of an active cluster, updating the profile will trigger and update to the active
+   cluster. We recommend that you publish a new version of the profile instead of updating a profile directly. For more
+   information, refer to [Update a Cluster](../cluster-updates.md).
+
 ## Validate
 
-To validate the snapshots are successfully configured, connect to the cluster via SSH and change into the directory
-where the etcd snapshots are saved. Confirm that the snapshots are being created in the directory.
+To validate the snapshots are successfully configured, connect to any control plane node of the cluster via SSH and
+change into the directory where the etcd snapshots are saved. Confirm that the snapshots are being created in the
+directory.
 
 ## Next Steps
 
 If your cluster experiences data corruption issues, you can use the etcd snapshots to restore the cluster to working
-conditions. Restoring a cluster may be a challenging procedure, depending on your experience and technical skill level. The restoration also requires SSH access to the node and intimate knowledge
-of etcd. If you have concerns or need assistance, contact us [support@spectrocloud.com](mailto:support@spectrocloud.com) for additional guidance.
+conditions. Restoring a cluster may be a challenging procedure, depending on your experience and technical skill level.
+The restoration also requires SSH access to the node and intimate knowledge of etcd. If you have concerns or need
+assistance, contact us [support@spectrocloud.com](mailto:support@spectrocloud.com) for additional guidance.
 
 The following is list of helpful resources that can help you understand disaster recovery for etcd:
 
