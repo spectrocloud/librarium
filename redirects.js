@@ -359,6 +359,10 @@ const redirects = [
     from: `/compliance`,
     to: `/legal-licenses/compliance`,
   },
+  {
+    from: `/clusters/public-cloud/cox-edge/`,
+    to: `/clusters/public-cloud/cox-edge-eol`,
+  },
 ];
 
 module.exports = redirects;
