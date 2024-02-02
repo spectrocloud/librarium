@@ -66,7 +66,7 @@ organization's templates. To learn more about using and creating templates, revi
 
 ## Feature Gates
 
-Palette VM Orchestrator utilizes open-source KubeVirt as a component of the **Virtual Machnine Orchestrator** pack to
+Palette VM Orchestrator utilizes open-source KubeVirt as a component of the **Virtual Machine Orchestrator** pack to
 manage VMs and enables the following KubeVirt feature gates by default:
 
 - LiveMigration
