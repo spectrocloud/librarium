@@ -172,7 +172,7 @@ The API rate limits are as follows:
 - There is a limit of ten API requests per second for each source IP address. The API supports additional bursts through
   the usage of a burst queue. The default burst queue size is set to five. You could make 50 (10 \* 5) requests in
   seconds before the API returns a `429 - TooManyRequests` error. Refer to the
-  [Endpoint Prefix Rate](#endpointprefixrate) for additional information.
+  [Endpoint Prefix Rate](#endpoint-prefix-rate) for additional information.
 
 - API request limits are categorized by the parent resources, such as `/v1/cloudconfig/:uid` and `/v1/roles`. You can
   find a list of all resource types in the [API documentation](/api/category/palette-api-v1). The requests are counted
