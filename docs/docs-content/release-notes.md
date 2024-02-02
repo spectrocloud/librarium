@@ -329,7 +329,7 @@ enhancements.
 
 ##### Features
 
-- Support for the [Cox Edge](unlisted/cox-edge.md) cloud provider is now available in Palette.
+- Support for the [Cox Edge](unlisted/cox-edge-eol.md) cloud provider is now available in Palette.
 - Palette introduces a new user sign-in flow for users who previously created an account through SSO and who are a
   member of different organizations. Palette prompts you to select the organization to log in to. If you need help
   remembering, you can retrieve it using “Forgot your organization name?”.
