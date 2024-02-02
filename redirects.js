@@ -361,7 +361,7 @@ const redirects = [
   },
   {
     from: `/clusters/public-cloud/cox-edge/`,
-    to: `/clusters/public-cloud/cox-edge-eol`,
+    to: `/unlisted/cox-edge-eol`,
   },
 ];
 
