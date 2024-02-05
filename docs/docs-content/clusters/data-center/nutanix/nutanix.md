@@ -44,26 +44,26 @@ steps in Palette and their local environment.
    commands provided in the Palette UI. For guidance, review
    [Install Private Cloud Gateway](./install-pcg/install-pcg.md).
 
-When the PCG status displays the state **Running**, the PCG cluster is integrated with Palette.
+   When the PCG status displays the state **Running**, the PCG cluster is integrated with Palette.
 
-:::info
+   :::info
 
-Nutanix cloud requires the deployment of a PCG, which enables Palette to monitor clusters in the infrastructure provider
-environment. The PCG instance is installed on an existing Kubernetes cluster that must remain operational.
+   Nutanix cloud requires the deployment of a PCG, which enables Palette to monitor clusters in the infrastructure
+   provider environment. The PCG instance is installed on an existing Kubernetes cluster that must remain operational.
 
-:::
+   :::
 
 3. Next, add the Nutanix cloud account to Palette. Use the **drop-down Menu** to select the PCG name you provided when
    you configured it in the previous step. You must fill out the account name and account details.
 
 4. Create a cluster profile by selecting Nutanix as the cloud type.
 
-When creating a Nutanix profile, you do not have to specify anything for the OS or Kubernetes layers. Palette provides
-out-of-the-box packs for the network and storage profile layers, including the
-[**Nutanix CSI**](../../../integrations/nutanix-csi.md) storage pack. The **Nutanix CSI** pack is available when the
-cloud is registered using the name `nutanix`. If you have custom packs, you can add them to Palette by adding your
-registry. To learn how to add a pack registry, review
-[Add a Custom Registry](/docs/docs-content/registries-and-packs/adding-a-custom-registry.md).
+   When creating a Nutanix profile, you do not have to specify anything for the OS or Kubernetes layers. Palette
+   provides out-of-the-box packs for the network and storage profile layers, including the
+   [**Nutanix CSI**](../../../integrations/nutanix-csi.md) storage pack. The **Nutanix CSI** pack is available when the
+   cloud is registered using the name `nutanix`. If you have custom packs, you can add them to Palette by adding your
+   registry. To learn how to add a pack registry, review
+   [Add a Custom Registry](/docs/docs-content/registries-and-packs/adding-a-custom-registry.md).
 
 5. Deploy a cluster by specifying Nutanix, listed under **Tech Preview**, as the cluster type. Select the cloud account
    you added and make any needed changes to the profile layers by using the YAML editor. At the **Cluster Config** step,
