@@ -9,8 +9,15 @@ tags: ["clusters", "cluster management"]
 
 Palette allows you to update active clusters. You can update any layer of a cluster, including all infrastructure layers
 and add-on layers. Depending on the nature of the update, a cluster update could trigger different cluster repave
-operations. For more information, refer to
-[Repave Behaviors and Configurations](./node-pool.md#repave-behavior-and-configuration).
+operations.
+
+:::info
+
+Palette requires explicit cluster-level approval to initiate repave operations, offering you more control over the
+repave schedule and methodology. Refer to
+[Repave Behaviors and Configurations](./node-pool.md#repave-behavior-and-configuration) for more information.
+
+:::
 
 ## Limitations
 
@@ -24,7 +31,7 @@ operations. For more information, refer to
 
 - An active Kubernetes cluster in Palette.
 
-## Enablement
+## Update a Cluster
 
 <Tabs groupId="update-method">
 <TabItem value="profile-version" label="Use a new cluster profile version">
@@ -95,8 +102,7 @@ guidance on creating a new cluster profile version.
 
 ## Validation
 
-<Tabs groupId="update-method">
-<TabItem value="profile-version" label="Use a new cluster profile version">
+You can follow these steps to validate all cluster update approaches.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -105,30 +111,3 @@ guidance on creating a new cluster profile version.
 3. Select the cluster you updated, and navigate to the **Profile** tab of the cluster.
 
 4. Confirm that the cluster is now using an updated profile.
-
-</TabItem>
-
-<TabItem value="update-cluster-profile" label="Update cluster profile">
-
-1. Log in to [Palette](https://console.spectrocloud.com).
-
-2. Navigate to the left **Main Menu** and select **Clusters**.
-
-3. Select the cluster you updated, and navigate to the **Profile** tab of the cluster.
-
-4. Confirm that the cluster is now using an updated profile.
-
-</TabItem>
-
-<TabItem value="override-profile-config" label="Override cluster profile configurations">
-
-1. Log in to [Palette](https://console.spectrocloud.com).
-
-2. Navigate to the left **Main Menu** and select **Clusters**.
-
-3. Select the cluster you updated, and navigate to the **Profile** tab of the cluster.
-
-4. Confirm that the cluster is now using an updated profile.
-
-</TabItem>
-</Tabs>
