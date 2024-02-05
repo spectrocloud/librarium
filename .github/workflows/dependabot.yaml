@@ -26,7 +26,7 @@ jobs:
   dependabot_build:
     name: Dependabot Build
     runs-on: ubuntu-latest
-    if: $ {{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }}
+    if: ${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
