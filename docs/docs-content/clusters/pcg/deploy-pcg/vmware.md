@@ -538,8 +538,14 @@ Once installed, the PCG registers itself with Palette. To verify the PCG is regi
 2. Navigate to the left **Main Menu** and select **Tenant Settings**
 
 3. From the **Tenant Settings Menu** click on **Private Cloud Gateways**. Verify your PCG cluster is available from the
-   list of PCG clusters displayed.
+   list of PCG clusters displayed and that its **Status** is healthy.
 
 4. Navigate to left **Tenant Settings Menu** and select **Cloud Accounts**.
 
 5. Verify a new VMware cloud account is available from the list of cloud accounts displayed.
+
+## Next Steps
+
+After you have successfully deployed the PCG into your VMware vSphere environment, you can now create and define node
+pools that Kubernetes clusters deployed in vSphere can use. To learn more about creating and defining node pools, refer
+to the [Create and Manage PCG Node Pools](../manage-pcg/create-manage-node-pool.md) documentation.
