@@ -21,8 +21,8 @@ purposes of this guide, please consider Microsoft Entra ID and Azure Active Dire
 ID securely manages anything to do with the user's information, access, and the trust relationships between parties in a
 flow. It authenticates the user's identity, grants and revokes access to resources, and issues tokens.
 
-This document will guide you on deploying and enabling SSO with Microsoft Entra based on OIDC for integration
-with Palette and Kubernetes clusters.
+This document will guide you on deploying and enabling SSO with Microsoft Entra based on OIDC for integration with
+Palette and Kubernetes clusters.
 
 :::tip
 
@@ -86,14 +86,23 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 10. Select the **Add optional claim** button. Choose **Token type** as **ID**, and add the claims **email** and
     **preferred_username**. When finished, click the **Add** button.
 
+    :::info
+
+    If you are using
+    [Entra v2 ID tokens](https://learn.microsoft.com/en-us/entra/identity-platform/access-tokens#v10-and-v20-tokens),
+    add the claim `family_name` and `given_name` to your token configuration. Entra v1 ID tokens already include these
+    claims by default.
+
+    :::
+
     ![Add a claim button](/oidc-entra-id-images/twooptionalclaims.png)
 
-11. In addition to allowing individual user authentication, Palette provides group claim functionality, allowing an
-    OIDC identity provider, like Microsoft Entra ID, to identify the user's Entra ID group membership within
-    Palette. To enable group membership, select the **Add groups claim** button. Then select **Security groups** and
-    **Group ID** for each property: **ID**, **Access** and **SAML**.
+11. In addition to allowing individual user authentication, Palette provides group claim functionality, allowing an OIDC
+    identity provider, like Microsoft Entra ID, to identify the user's Entra ID group membership within Palette. To
+    enable group membership, select the **Add groups claim** button. Then select **Security groups** and **Group ID**
+    for each property: **ID**, **Access** and **SAML**.
 
-    ![Groups and inviduals can be assigned a group membership in Azure](/oidc-entra-id-images/groupsclaim.png)
+    ![Groups and individuals can be assigned a group membership in Azure](/oidc-entra-id-images/groupsclaim.png)
 
     When completed, the **Token Configuration** page will look similar to the image below.
 
@@ -152,10 +161,10 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
     - Create the new user **Defaultprojectadmin** with the following inputs: - User principal name example:
       `defaultprojectadmin@SpectroCloud500.onmicrosoft.com`
 
-      - Display name example: `defaultprojectadmin` - Browse to Properties, Edit First Name: `DefaultProject` - Browse
-        to Properties, Edit Last Name: `Admin` - Browse to Properties, add Email:
-        `defaultprojectadmin@SpectroCloud500.onmicrosoft.com`
-      - Add this account to the Entra ID group `Palette_default_project_admins`
+    - Display name example: `defaultprojectadmin` - Browse to Properties, Edit First Name: `DefaultProject` - Browse to
+      Properties, Edit Last Name: `Admin` - Browse to Properties, add Email:
+      `defaultprojectadmin@SpectroCloud500.onmicrosoft.com`
+    - Add this account to the Entra ID group `Palette_default_project_admins`
 
     - Create the new user **Test User** with the following inputs:
 
@@ -178,8 +187,8 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 #### Configure Palette SSO
 
 19. At this point, you should have at least four Entra ID user objects, including the admin account in Entra ID. Your
-    Palette tenant will need information from Microsoft to complete the OIDC setup. Navigate back to the Palette browser tab
-.
+    Palette tenant will need information from Microsoft to complete the OIDC setup. Navigate back to the Palette browser
+    tab .
 
 20. From the left **Main Menu** select **Users and Teams**. Next, choose **Teams** and then select **Create New Team**.
 
@@ -216,14 +225,14 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 24. You will now configure the OIDC settings in Palette. Use the table below as a reference and populate the fields with
     the information you saved from the previous steps.
 
-    | Field             | Description                                                                                                                                                                                                                  |
-    | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Issuer URL**    | Add your tenant URL. The tenant URL looks like the following but with your unique tenant ID at the end `https://sts.windows.net/[**Directory (tenant) ID**]`                                                                 |
-    | **Client ID**     | The application ID from Entra ID                                                                                                                                                                                             |
-    | **Client Secret** | The application secret you created                                                                                                                                                                                           |
-    | **Default Teams** | Leave it blank if you don't want users without group claims to be assigned to a default group. If you do, enter the desired default group name. If you use this option, be careful with how much access you assign to the group |
-    | **Scopes**        | Add `openid`, `profile` and `email`.                                                                                                                                                                                         |
-    | **Email**         | Use `email` as the default value                                                                                                                                                                                             |
+    | Field             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Issuer URL**    | Refer to the [Find your app's OpenID configuration document URI](https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri) guide to learn how to determine your issuer URL. If you are using Entra v2 tokens with the endpoint `https://login.microsoftonline.com/{tenant-ID}/v2.0`, ensure you added the claims `family_name` and `given_name` to the token configuration. |
+    | **Client ID**     | The application ID from Entra ID                                                                                                                                                                                                                                                                                                                                                                                                                |
+    | **Client Secret** | The application secret you created                                                                                                                                                                                                                                                                                                                                                                                                              |
+    | **Default Teams** | Leave it blank if you don't want users without group claims to be assigned to a default group. If you do, enter the desired default group name. If you use this option, be careful with how much access you assign to the group                                                                                                                                                                                                                 |
+    | **Scopes**        | Add `openid`, `profile` and `email`.                                                                                                                                                                                                                                                                                                                                                                                                            |
+    | **Email**         | Use `email` as the default value                                                                                                                                                                                                                                                                                                                                                                                                                |
 
 25. Leave other fields with the default values and click **Enable**. If all required values are provided, you will
     receive a message stating that OIDC is configured successfully.
@@ -243,7 +252,8 @@ an Entra ID user account.
    sure you log in as a user who is a member of the `palette-tenant-admins` group in Entra ID. Once authenticated, you
    will automatically be redirected back to Palette and logged into Palette as that user.
 
-3. Navigate to the left **Main Menu** and ensure the **Tenant Settings** option is available. If the **Tenant Settings** option is not available, then you are not logged in as a user who is a member of the `palette-tenant-admins` group in
+3. Navigate to the left **Main Menu** and ensure the **Tenant Settings** option is available. If the **Tenant Settings**
+   option is not available, then you are not logged in as a user who is a member of the `palette-tenant-admins` group in
    Entra ID.
 
    :::tip
@@ -256,14 +266,9 @@ an Entra ID user account.
 
 ## Enable OIDC in Kubernetes Clusters With Entra ID
 
-Kubelogin is a kubectl plugin for Kubernetes OIDC authentication. When you use kubectl, kubelogin opens
-up your browser, starts a session, and redirects you to your IDP's login site. Upon a succesfull login, you receive an
-authentication token that is used to grant you access to the cluster.
-
-In the following diagram, Entra ID is the IDP. Once kubelogin gets a token from Entra ID or similar IDP, you can then
-use kubectl to access the Kubernetes cluster API.
-
-    ![Palette and EntraID](/oidc-entra-id-images/PalettewEntraID.png)
+Kubelogin is a kubectl plugin for Kubernetes OIDC authentication. When you use kubectl, kubelogin opens up your browser,
+starts a session, and redirects you to your IDP's login site. Upon a succesfull login, you receive an authentication
+token that is used to grant you access to the cluster.
 
 Use the following steps to enable OIDC in Kubernetes clusters with Microsoft Entra ID.
 
@@ -334,9 +339,9 @@ This section describes how to enable Entra ID SSO authentication to access a Kub
 9. Select the latest version and click on the **Values** button to modify the pack YAML values.
 
 10. Navigate to the `clusterRoleBindings` section of the pack layer. For Entra ID integration with RBAC, edit your RBAC
-    pack values to match the YAML snippet below. Alternatively, copy and paste the entire block to your RBAC pack and modify you
-    inputs where appropriate. Replace all the `name` fields that start with the value `INSERT` with the Entra groups' ID
-    you created in Azure.
+    pack values to match the YAML snippet below. Alternatively, copy and paste the entire block to your RBAC pack and
+    modify you inputs where appropriate. Replace all the `name` fields that start with the value `INSERT` with the Entra
+    groups' ID you created in Azure.
 
     ```yml {17,27,37,50}
     pack:
