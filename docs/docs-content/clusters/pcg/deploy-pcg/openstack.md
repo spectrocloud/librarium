@@ -36,11 +36,8 @@ The following system requirements must be met to install a PCG in OpenStack:
   - 1 IP address for the Kubernetes control-plane
   - DNS can resolve the domain `api.spectrocloud.com`.
 
-- A Linux environment with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The Palette CLI
-  installation must be invoked on an up-to-date Linux system with an x86-64 architecture.
-
-- One additional Kubernetes control plane IP address for rolling upgrades.
-- A Linux x86-64 host with the Docker daemon installed.
+- An x86 Linux environment with a Docker daemon installed and a connection to Palette and the Openstack endpoint. The
+  Palette CLI installation must be invoked on an up-to-date Linux system with an x86-64 architecture
 
 - An Open Stack SSH Key Pair. Refer to the
   [Configure access and security for instances](https://docs.openstack.org/horizon/latest/user/configure-access-and-security-for-instances.html)
@@ -318,3 +315,160 @@ The following permissions are required to deploy a PCG to OpenStack and for Pale
 </Tabs>
 
 ## Deploy PCG
+
+1.  In an x86 Linux host with the Palette CLI installed, open up a terminal session.
+
+2.  Issue the following command to authenticate with Palette. When prompted, enter the required information. Refer to
+    the table below for information about each parameter.
+
+    ```shell
+    palette login
+    ```
+
+    | **Parameter**                  | **Description**                                                                                                                                                                                                                                                   |
+    | :----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Spectro Cloud Console**      | Enter the Palette endpoint URL. When using the Palette SaaS service, enter `https://console.spectrocloud.com`. When using a self-hosted instance of Palette, enter the URL for that instance.                                                                     |
+    | **Allow Insecure Connection**  | Enabling this option bypasses x509 server Certificate Authority (CA) verification. Enter `y` if you are using a self-hosted Palette, or VerteX instance with self-signed TLS certificates and need to provide the file path to instance CA. Otherwise, enter `n`. |
+    | **Spectro Cloud API Key**      | Enter your Palette API Key. Refer to the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md) for guidance on creating an API key.                                                                                                 |
+    | **Spectro Cloud Organization** | Select your Palette Organization name.                                                                                                                                                                                                                            |
+    | **Spectro Cloud Project**      | Select the project name you want to register the VMware vSphere account in.                                                                                                                                                                                       |
+    | **Acknowledge**                | Accept the login banner message. Login banner messages are only displayed if the tenant admin enabled a login banner.                                                                                                                                             |
+
+    :::info
+
+    The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the **pcg.yaml** are encrypted and cannot be manually updated.
+    To change these values, use the `palette pcg install --update-passwords` command. Refer to the
+    [PCG command](../../../palette-cli/commands/pcg.md#update-passwords) reference page for more information.
+
+    :::
+
+3.  Once you have authenticated successfully, start the PCG installer by issuing the following command. Refer to the
+    table below for information about each parameter.
+
+    ```bash
+    palette pcg install
+    ```
+
+    | **Parameter**                                        | **Description**                                                                                                                                                                                                                                  |
+    | :--------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Management Plane Type**                            | Select Palette or VerteX.                                                                                                                                                                                                                        |
+    | **Enable Ubuntu Pro (required for production)**      | Choose `y` if you want to to use Ubuntu Pro, otherwise press `n`. If you select `y`, you will be be asked to provide an Ubuntu Pro token.                                                                                                        |
+    | **Select an image registry type**                    | Choose `Default` to pull images from public image registries. This requires an internet connection. Airgap customers, select `Custom` so you can point to our airgap support VM or a custom internal registry that contains the required images. |
+    | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.                              |
+    | **Cloud Type**                                       | Select OpenStack.                                                                                                                                                                                                                                |
+    | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG. Example: `openstack-pcg-1`.                                                                                                                                                                                     |
+    | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the Cloud account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.                              |
+
+4.  Next, provide environment configurations for the cluster. Refer to the following table for information about each
+    option.
+
+    | **Parameter**                     | **Description**                                                                                                                                                                                                                                                                                                |
+    | :-------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **HTTPS Proxy**                   | Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: `https://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.                                                                                                                   |
+    | **HTTP Proxy**                    | Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.                                                                                                                     |
+    | **No Proxy**                      | You will be prompted to provide a list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example if you have a self-hosted environment: `my.company.com,10.10.0.0/16`.     |
+    | **Proxy CA Certificate Filepath** | The default is blank. You can provide the file path of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`. |
+    | **Pod CIDR**                      | Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                        |
+    | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                         |
+
+5.  If you selected `Custom` for the image registry type, you will be prompted to provide the following information.
+
+    | **Parameter**                                            | **Description**                                                                                                                                                                                                                                                    |
+    | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Registry Name**                                        | Assign a name to the custom registry.                                                                                                                                                                                                                              |
+    | **Registry Endpoint**                                    | The endpoint or IP address for the custom registry. Example: `https://palette.example.com` or `https://10.10.1.0`.                                                                                                                                                 |
+    | **Registry Base Content Path**                           | The base content path for the custom registry. Example: `spectro-images`.                                                                                                                                                                                          |
+    | **Configure Registry Mirror**                            | Your system default text editor, such as Vi, will open up and allow you customize the default mirror registry settings. Add any additional registry mirrors you want to add. Otherwise, press `Esc` and then `:wq` to save and exit the file.                      |
+    | **Allow Insecure Connection (Bypass x509 Verification)** | Enabling this option bypasses x509 CA verification. Enter `n` if using a custom registry with self-signed SSL certificates. Otherwise, enter `y`. If you enter `y`, you will receive a follow up prompt asking you to provide the file path to the CA certificate. |
+    | **Registry CA certificate Filepath**                     | The CA certificate for the custom registry. This is optional. Provide the file path of the CA certificate on the installer host. Example: `/usr/local/share/ca-certificates/ca.crt`.                                                                               |
+    | **Registry Username**                                    | The username for the custom registry.                                                                                                                                                                                                                              |
+    | **Password**                                             | The password for the custom registry.                                                                                                                                                                                                                              |
+
+6.  Next, provide the OpenStack environment configurations. Refer to the following table for information about each
+    option.
+
+    | **Parameter**                   | **Description**                                                                                                                                                                            |
+    | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **OpenStack Identity Endpoint** | OpenStack Identity endpoint. Domain or IP address. Example: `https://openstack.mycompany.com/identity`.                                                                                    |
+    | **OpenStack Account Username**  | OpenStack account username.                                                                                                                                                                |
+    | **OpenStack Account Password**  | OpenStack account password.                                                                                                                                                                |
+    | **Allow Insecure Connection**   | Enabling this option bypasses x509 verification. Enter `y` if you are using an OpenStack instance with self-signed TLS certificates. Otherwise, enter `n`.                                 |
+    | **CA certificate Filepath**     | The CA certificate for the OpenStack environment. This is optional. Provide the file path of the CA certificate on the installer host. Example: `/usr/local/share/ca-certificates/ca.crt`. |
+    | **Default Domain**              | The default domain for the OpenStack environment.                                                                                                                                          |
+    | **Default Region**              | The default region for the OpenStack environment.                                                                                                                                          |
+    | **Default Project**             | The default project for the OpenStack environment.                                                                                                                                         |
+
+    After providing the OpenStack environment configurations and credentials, the Palette CLI will query the OpenStack
+    environment to validate the provided credentials. If the credentials are valid, the installation process will
+    continue. If the credentials are invalid, you will be prompted to re-enter the credentials.
+
+7.  After the OpenStack environment configurations are validated, you will be prompted for additional OpenStack
+    configuration values. Use the following table to learn more about each options.
+
+    | **Parameter**                             | **Description**                                                                                                                                                                                                                                                               |
+    | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Domain**                                | Select the domain you want to target for the PCG deployment. Example: `Default`.                                                                                                                                                                                              |
+    | **Region**                                | Select the region for the PCG deployment.                                                                                                                                                                                                                                     |
+    | **Project**                               | Specify the OpenStack project to place the PCG cluster in.                                                                                                                                                                                                                    |
+    | **Placement Type**                        | Placement can be static or dynamic. For static placement, cluster nodes are placed into existing networks. For dynamic placement, a new network is created.                                                                                                                   |
+    | **Network**                               | Select an existing network. This is only required for static placement.                                                                                                                                                                                                       |
+    | **Subnet**                                | Select an existing subnet. This is only required for static placement.                                                                                                                                                                                                        |
+    | **DNS Server(s)**                         | Enter a comma-separated list of DNS server IPs . This is only required for dynamic placement.                                                                                                                                                                                 |
+    | **Node CIDR**                             | Enter a node CIDR. This is only required for dynamic placement. Example: `10.55.0.0/24`.                                                                                                                                                                                      |
+    | **SSH Public Key**                        | Provide the public OpenSSH key for the PCG cluster. Use this key when establishing an SSH connection with the PCG cluster. This prompt will result in the default text editor for the Operating System to open. Vi is the more common text editor used in Linux environments. |
+    | **Patch OS on boot**                      | This parameter indicates whether or not to patch the OS of the PCG hosts on the first boot.                                                                                                                                                                                   |
+    | **Reboot nodes once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are complete. This only applies if the **Patch OS on boot** parameter is enabled.                                                                                                                |
+    | **AZs**                                   | Select the availability zones for the PCG cluster.                                                                                                                                                                                                                            |
+    | **Flavor**                                | Specify the OpenStack Flavor for the PCG nodes.                                                                                                                                                                                                                               |
+    | **Number of Nodes**                       | Specify the number of nodes for the PCG cluster. We recommend three node clusters for production workloads.                                                                                                                                                                   |
+    | **Node Affinity**                         | Enter `y` to schedule all Palette pods on the control plane node                                                                                                                                                                                                              |
+
+8.  A new PCG configuration file is generated and its location is displayed on the console. You will receive an output
+    similar to the following.
+
+    ```bash hideClipboard
+    ==== PCG config saved ====
+    Location: :/home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
+    ```
+
+    The Palette CLI will now provision a PCG cluster in your OpenStack environment. You can monitor the progress of the
+    PCG cluster by navigating to Palette and selecting **Tenant Settings** from the left **Main Menu**. Next, click on
+    **Private Cloud Gateways** from the left **Tenant Settings Menu** and select the PCG cluster you just deployed to
+    access its details page. From the details page, select the **Events** tab to view the progress of the PCG cluster
+
+    If you encounter issues during the installation, refer to the [PCG Troubleshooting](../../../troubleshooting/pcg.md)
+    guide for debugging assistance. If you need additional help, reach out to our
+    [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) team.
+
+    :::warning
+
+    You cannot modify a deployed PCG cluster. If you need to make changes to the PCG cluster, you must first delete the
+    cluster and redeploy it. We recommend you save your PCG configuration file for future use. Use the `--config-only`
+    flag to save the configuration file without deploying the PCG cluster. Refer to the
+    [Generate a Configuration File](../../../palette-cli/commands/pcg.md#generate-a-configuration-file) section to learn
+    more. For additional assistance, visit our
+    [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+
+    :::
+
+## Validate
+
+Once installed, the PCG registers itself with Palette. To verify the PCG is registered, use the following steps.
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+2. Navigate to the left **Main Menu** and select **Tenant Settings**
+
+3. From the **Tenant Settings Menu** click on **Private Cloud Gateways**. Verify your PCG cluster is available from the
+   list of PCG clusters displayed and that its **Status** is healthy.
+
+4. Navigate to left **Tenant Settings Menu** and select **Cloud Accounts**.
+
+5. Verify a new OpenStack cloud account is available from the list of cloud accounts displayed.
+
+## Next Steps
+
+After you have successfully deployed the PCG into your OpenStack environment, you can now deploy Kubernetes clusters in
+your MAAS environment through Palette. Check out the
+[Deploying an OpenStack Cluster](../../data-center/openstack.md#deploying-an-openstack-cluster) guide to learn how to
+deploy a Kubernetes cluster in MAAS that is managed by Palette.

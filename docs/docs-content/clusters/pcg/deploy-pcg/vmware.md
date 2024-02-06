@@ -55,11 +55,8 @@ The following system requirements must be met to install a PCG in VMware vSphere
   Nodes can exhaust the 60 GiB storage with prolonged use. If you initially set up the gateway with one node, you can
   resize it at a later time.
 
-- A Linux environment with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The Palette CLI
-  installation must be invoked on an up-to-date Linux system with an x86-64 architecture.
-
-- One additional Kubernetes control plane IP address for rolling upgrades.
-- A Linux x86-64 host with the Docker daemon installed.
+- An x86 Linux environment with a Docker daemon installed and a connection to Palette and the VMware vSphere endpoint.
+  The Palette CLI installation must be invoked on an up-to-date Linux system with an x86-64 architecture.
 
 Before installing PCG on VMware, review the following system requirements and permissions. The vSphere user account used
 to deploy the PCG must have the required permissions to access the proper roles and objects in vSphere.
@@ -387,14 +384,14 @@ The following requirements apply to tags:
     palette pcg install
     ```
 
-    | **Parameter**                                        | **Description**                                                                                                                                                                                                                                |
-    | :--------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Management Plane Type**                            | Select Palette or VerteX.                                                                                                                                                                                                                      |
-    | **Enable Ubuntu Pro (required for production)**      | Choose `y` if you want to to use Ubuntu Pro, otherwise press `n`. If you select `y`, you will be be asked to provide an Ubuntu Pro token.                                                                                                      |
-    | **Select an image registry type**                    | Choose Default to pull images from public iamge registries. This requires an internet connection. Airgap customers, select `Custom` so you can point to our airgap support VM or a custom internal registry that contains the required images. |
-    | **Cloud Type**                                       | Choose VMware vSphere.                                                                                                                                                                                                                         |
-    | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG. Example: `vmware-pcg-1`.                                                                                                                                                                                      |
-    | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.                            |
+    | **Parameter**                                        | **Description**                                                                                                                                                                                                                                  |
+    | :--------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Management Plane Type**                            | Select Palette or VerteX.                                                                                                                                                                                                                        |
+    | **Enable Ubuntu Pro (required for production)**      | Choose `y` if you want to to use Ubuntu Pro, otherwise press `n`. If you select `y`, you will be be asked to provide an Ubuntu Pro token.                                                                                                        |
+    | **Select an image registry type**                    | Choose `Default` to pull images from public image registries. This requires an internet connection. Airgap customers, select `Custom` so you can point to our airgap support VM or a custom internal registry that contains the required images. |
+    | **Cloud Type**                                       | Choose VMware vSphere.                                                                                                                                                                                                                           |
+    | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG. Example: `vmware-pcg-1`.                                                                                                                                                                                        |
+    | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.                              |
 
 4.  Next, provide environment configurations for the cluster. Refer to the following table for information about each
     option.
@@ -417,9 +414,9 @@ The following requirements apply to tags:
     | **Registry Base Content Path**                           | The base content path for the custom registry. Example: `spectro-images`.                                                                                                                                                                                          |
     | **Configure Registry Mirror**                            | Your system default text editor, such as Vi, will open up and allow you customize the default mirror registry settings. Add any additional registry mirrors you want to add. Otherwise, press `Esc` and then `:wq` to save and exit the file.                      |
     | **Allow Insecure Connection (Bypass x509 Verification)** | Enabling this option bypasses x509 CA verification. Enter `n` if using a custom registry with self-signed SSL certificates. Otherwise, enter `y`. If you enter `y`, you will receive a follow up prompt asking you to provide the file path to the CA certificate. |
+    | **Registry CA certificate Filepath**                     | The CA certificate for the custom registry. This is optional. Provide the file path of the CA certificate on the installer host. Example: `/usr/local/share/ca-certificates/ca.crt`.                                                                               |
     | **Registry Username**                                    | The username for the custom registry.                                                                                                                                                                                                                              |
     | **Password**                                             | The password for the custom registry.                                                                                                                                                                                                                              |
-    | **CA Cert**                                              | The CA certificate for the custom registry. This is optional. Provide the file path of the CA certificate on the installer host. Example: `/usr/local/share/ca-certificates/ca.crt`.                                                                               |
 
 6.  The next set of prompts is for configuring connection details for the vSphere environment. The CLI will use this
     information to establish a network connection to the vSphere environment and query the vSphere API to retrieve

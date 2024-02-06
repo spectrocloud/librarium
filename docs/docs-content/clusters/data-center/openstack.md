@@ -563,7 +563,7 @@ following steps to resize a single-node PCG cluster to a three-node PCG cluster.
 4. The gateway upgrade begins shortly after the update. Two new nodes are created, and the gateway is upgraded to a
    3-node cluster.
 
-# Creating an OpenStack Cloud Account
+## Creating an OpenStack Cloud Account
 
 A default cloud account is automatically created when the private cloud gateway is configured. This cloud account can be
 used to create tenant clusters. Additional cloud accounts may be created if desired within the same gateway.
@@ -584,7 +584,7 @@ used to create tenant clusters. Additional cloud accounts may be created if desi
    | **Default Domain**        | Default OpenStack domain             |
    | **Default Project**       | Default OpenStack project            |
 
-# Deploying an OpenStack Cluster
+## Deploying an OpenStack Cluster
 
 <Video
   title="openstack-cluster-creation"
@@ -684,7 +684,7 @@ being provisioned, the 'Abort' action is available to stop provisioning and dele
 
 :::
 
-# Force Delete a Cluster
+## Force Delete a Cluster
 
 A cluster stuck in the **Deletion** state can be force deleted by the user through the User Interface. The user can go
 for a force deletion of the cluster, only if it is stuck in a deletion state for a minimum of **15 minutes**. Palette

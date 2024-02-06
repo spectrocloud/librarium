@@ -36,8 +36,8 @@ The following system requirements must be met to install a PCG in MAAS:
   - 1 IP address for the Kubernetes control-plane
   - DNS can resolve the domain `api.spectrocloud.com`.
 
-- A Linux environment with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The Palette CLI
-  installation must be invoked on an up-to-date Linux system with an x86-64 architecture.
+- An x86 Linux environment with a Docker daemon installed and a connection to Palette and the MAAS endpoint. The Palette
+  CLI installation must be invoked on an up-to-date Linux system with an x86-64 architecture.
 
 - PCG IP address requirements:
 
@@ -130,14 +130,14 @@ is not required for the DNS records to be accessible from the internet.
     palette pcg install
     ```
 
-    | **Parameter**                                        | **Description**                                                                                                                                                                                                                                |
-    | :--------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Management Plane Type**                            | Select Palette or VerteX.                                                                                                                                                                                                                      |
-    | **Enable Ubuntu Pro (required for production)**      | Choose `y` if you want to to use Ubuntu Pro, otherwise press `n`. If you select `y`, you will be be asked to provide an Ubuntu Pro token.                                                                                                      |
-    | **Select an image registry type**                    | Choose Default to pull images from public iamge registries. This requires an internet connection. Airgap customers, select `Custom` so you can point to our airgap support VM or a custom internal registry that contains the required images. |
-    | **Cloud Type**                                       | Select MAAS.                                                                                                                                                                                                                                   |
-    | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG. Example: `maas-pcg-1`.                                                                                                                                                                                        |
-    | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.                            |
+    | **Parameter**                                        | **Description**                                                                                                                                                                                                                                  |
+    | :--------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Management Plane Type**                            | Select Palette or VerteX.                                                                                                                                                                                                                        |
+    | **Enable Ubuntu Pro (required for production)**      | Choose `y` if you want to to use Ubuntu Pro, otherwise press `n`. If you select `y`, you will be be asked to provide an Ubuntu Pro token.                                                                                                        |
+    | **Select an image registry type**                    | Choose `Default` to pull images from public image registries. This requires an internet connection. Airgap customers, select `Custom` so you can point to our airgap support VM or a custom internal registry that contains the required images. |
+    | **Cloud Type**                                       | Select MAAS.                                                                                                                                                                                                                                     |
+    | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG. Example: `maas-pcg-1`.                                                                                                                                                                                          |
+    | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.                              |
 
 4.  Next, provide environment configurations for the cluster. Refer to the following table for information about each
     option.
@@ -151,14 +151,27 @@ is not required for the DNS records to be accessible from the internet.
     | **Pod CIDR**                      | Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                        |
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                         |
 
-5.  Provide the MAAS API key and the MAAS server URL. Refer to the table below for information about each parameter.
+5.  If you selected `Custom` for the image registry type, you will be prompted to provide the following information.
+
+    | **Parameter**                                            | **Description**                                                                                                                                                                                                                                                    |
+    | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Registry Name**                                        | Assign a name to the custom registry.                                                                                                                                                                                                                              |
+    | **Registry Endpoint**                                    | The endpoint or IP address for the custom registry. Example: `https://palette.example.com` or `https://10.10.1.0`.                                                                                                                                                 |
+    | **Registry Base Content Path**                           | The base content path for the custom registry. Example: `spectro-images`.                                                                                                                                                                                          |
+    | **Configure Registry Mirror**                            | Your system default text editor, such as Vi, will open up and allow you customize the default mirror registry settings. Add any additional registry mirrors you want to add. Otherwise, press `Esc` and then `:wq` to save and exit the file.                      |
+    | **Allow Insecure Connection (Bypass x509 Verification)** | Enabling this option bypasses x509 CA verification. Enter `n` if using a custom registry with self-signed SSL certificates. Otherwise, enter `y`. If you enter `y`, you will receive a follow up prompt asking you to provide the file path to the CA certificate. |
+    | **Registry CA certificate Filepath**                     | The CA certificate for the custom registry. This is optional. Provide the file path of the CA certificate on the installer host. Example: `/usr/local/share/ca-certificates/ca.crt`.                                                                               |
+    | **Registry Username**                                    | The username for the custom registry.                                                                                                                                                                                                                              |
+    | **Password**                                             | The password for the custom registry.                                                                                                                                                                                                                              |
+
+6.  Provide the MAAS API key and the MAAS server URL. Refer to the table below for information about each parameter.
 
     | **Parameter**       | **Description**                                                  |
     | :------------------ | ---------------------------------------------------------------- |
     | **MAAS API Key**    | Enter the MAAS API key.                                          |
     | **MAAS Server URL** | Enter the MAAS server URL. Example: `http://10.1.1.1:5240/MAAS`. |
 
-6.  Configure the PCG Cluster. The values provided will determine what machines should be selected in MAAS for
+7.  Configure the PCG Cluster. The values provided will determine what machines should be selected in MAAS for
     deployment as a PCG. Refer to the table below for information about each parameter.
 
     | **Parameter**                             | **Description**                                                                                       |
@@ -177,7 +190,7 @@ is not required for the DNS records to be accessible from the internet.
 
     :::
 
-7.  A new PCG configuration file is generated and its location is displayed on the console. You will receive an output
+8.  A new PCG configuration file is generated and its location is displayed on the console. You will receive an output
     similar to the following.
 
     ```bash hideClipboard
@@ -205,7 +218,7 @@ is not required for the DNS records to be accessible from the internet.
 
     :::
 
-## Validation
+## Validate
 
 Once installed, the PCG registers itself with Palette. To verify the PCG is registered, use the following steps.
 
