@@ -23,10 +23,10 @@ env:
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
 
 jobs:
-
-  build:
-    name: Build
+  dependabot_build:
+    name: Dependabot Build
     runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
