@@ -53,7 +53,7 @@ spec:
       url: "docker://gcr.io/spectro-images-public/release/vm-dashboard/os/ubuntu-container-disk:22.04"
 ```
 
-The provided manifest defines a `DataVolume` that imports the example disk template for _Ubuntu 22.04_ into the
+The provided manifest defines a `DataVolume` that imports the example disk template for Ubuntu 22.04 into the
 `vmo-golden-images` namespace.
 
 This `DataVolume` has three important configuration options.
