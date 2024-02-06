@@ -400,8 +400,8 @@ container.
 
 > [!NOTE]
 >
-> **_x_**, **_y_**, **_description_** properties are **mandatory**. **_label_** and **_tooltipPlacement_** properties
-> are optional.
+> **_x_**, **_y_**, **_description_** properties are **mandatory**. The properties **_label_** and
+> **_tooltipPlacement_** are optional.
 
 If no label is specified, the default one is "+".
 
@@ -653,8 +653,10 @@ To create a new release, use the following steps:
 The semantic-release logic and the GitHub Actions in the [release.yaml](.github/workflows/release.yaml) will ensure the
 new release tag is created.
 
-> **Warning** Do not use `feat`,`perf` or `fix` or other semantic-release key words that trigger a version change. Use
-> the commit message prefix `docs: yourMessageHere` for regular documentation commits.
+> [!WARNING]
+>
+> Do not use `feat`,`perf` or `fix` or other semantic-release key words that trigger a version change. Use the commit
+> message prefix `docs: yourMessageHere` for regular documentation commits.
 
 ## Versioning
 
