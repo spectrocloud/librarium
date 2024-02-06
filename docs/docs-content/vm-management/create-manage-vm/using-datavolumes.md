@@ -372,3 +372,11 @@ In this guide, you created your own disk templates using Kubevirt Data Volumes. 
   namespaces.
 - Define `StorageProfile` resources to ensure that the Kubevirt CDI uses the CSI-assisted cloning technique. The storage
   profile allows you to efficiently create VMs using the images already saved on your cluster.
+
+To learn more about the Palette VMO, we encourage you to check out the reference resources below.
+
+- [Virtual Machine Orchestrator Pack](../vm-packs-profiles/vm-packs-profiles.md)
+
+- [Standard VM Operations](../create-manage-vm/standard-vm-operations/standard-vm-operations.md)
+
+- [Deploy VM From a Template](../create-manage-vm/standard-vm-operations/deploy-vm-from-template.md)
