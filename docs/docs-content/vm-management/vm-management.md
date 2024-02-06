@@ -61,11 +61,6 @@ Palette VM Orchestrator provides various methods to quickly deploy VMs from out-
 
 While you can import template disks from external locations at VM deployment time, this approach is not efficient. To learn about leveraging the `DataVolume` resource to import template disks once and create clones at VM deployment time, review the [Create disk templates](create-manage-vm/using-datavolumes.md) tutorial.
 
-Palette VM Orchestrator provides various methods to quickly deploy VMs from out-of-the-box templates or from your
-organization's templates. To learn more about using and creating templates, review
-[Deploy VM From a Template](create-manage-vm/standard-vm-operations/deploy-vm-from-template.md) and
-[Create a VM Template](create-manage-vm/create-vm-template.md).
-
 ## Feature Gates
 
 Palette VM Orchestrator utilizes open-source KubeVirt as a component of the **Virtual Machine Orchestrator** pack to
