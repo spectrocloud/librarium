@@ -68,11 +68,11 @@ This `DataVolume` has three important configuration options.
   [CDI DataVolumes documentation](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md#source)
   describes other possible `source` values.
 
-:::warning 
+:::warning
 
-When `Filesystem` mode is selected, the CDI will automatically apply a small overhead factor to the Persisten
-Volume Claim (PVC) size to account for the storage space lost due to filesystem overhead. As a result, the PVC for such
-a template will be slightly larger. Any clones made from this PVC also need to use this slightly larger minimum size.
+When `Filesystem` mode is selected, the CDI will automatically apply a small overhead factor to the Persisten Volume
+Claim (PVC) size to account for the storage space lost due to filesystem overhead. As a result, the PVC for such a
+template will be slightly larger. Any clones made from this PVC also need to use this slightly larger minimum size.
 
 :::
 
@@ -179,19 +179,19 @@ This snippet has three notable configurations.
 - The `spec.dataVolumeTemplates.spec.pvc` section creates a new target PVC with the specified `accessMode` and
   `volumeMode` characteristics. The size of the new PVC must be the same or larger as the source PVC.
 
-:::warning 
+:::warning
 
 To allow CSI-assisted cloning to work, there are a few
 [prerequisites](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/csi-cloning.md#prerequisites) that
 must be followed. Most importantly, the source and target PVC must share the same Storage Class and the same Volume
-Mode. If the requirements are not met, the CDI will automatically fallback to the slower host-assisted cloning. 
+Mode. If the requirements are not met, the CDI will automatically fallback to the slower host-assisted cloning.
 
 :::
 
-:::tip 
+:::tip
 
-To enable CSI-assisted cloning into larger PVCs than the source PVC, set `allowVolumeExpansion : true` on your
-defined Storage Class. 
+To enable CSI-assisted cloning into larger PVCs than the source PVC, set `allowVolumeExpansion : true` on your defined
+Storage Class.
 
 :::
 
