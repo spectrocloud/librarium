@@ -5,7 +5,7 @@ description: "Learn how to set up Palette SSO with Microsoft Entra ID"
 hide_table_of_contents: false
 sidebar_position: 120
 hiddenFromNav: false
-tags: ["user-management", "oidc-sso", "entra-id", "azure-ad"]
+tags: ["user-management", "oidc-sso", "entra-id", "azure-ad", "rbac"]
 ---
 
 Single Sign-On (SSO) is an authentication method that enables users to log in to multiple applications and websites with
