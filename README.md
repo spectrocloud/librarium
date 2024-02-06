@@ -398,8 +398,10 @@ In your markdown file, use the component and ensure you specify a URL.
 **x** and **y** properties refer to the coordinates of the point starting from the **top-left corner** of the markdown
 container.
 
-**Note**: **_x_**, **_y_**, **_description_** properties are **mandatory**. **_label_** and **_tooltipPlacement_**
-properties are optional.
+> [!NOTE]
+>
+> **_x_**, **_y_**, **_description_** properties are **mandatory**. **_label_** and **_tooltipPlacement_** properties
+> are optional.
 
 If no label is specified, the default one is "+".
 
@@ -572,7 +574,8 @@ We use [Prettier](https://prettier.io/) to maintain uniform and consistent forma
 commit changes, Prettier formats the staged files automatically. Then, once you create a pull request, it verifies that
 the formatting in all files complies with our Prettier configuration.
 
-> [!NOTE]  
+> [!NOTE]
+>
 > The build fails if the Code Formatting check doesn't pass.
 
 To manually check the formatting before pushing your work upstream, execute the following command in your terminal:
@@ -655,7 +658,9 @@ new release tag is created.
 
 ## Versioning
 
-> [!NOTE] Detailed documentation for versioning can be found in the internal
+> [!NOTE]
+>
+> Detailed documentation for versioning can be found in the internal
 > [Versioning](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1962639377/Versioning) guide.
 
 All versioned content belongs to a specific version branch. The version branch name follows the naming convention
@@ -701,5 +706,7 @@ make build
 make clean-versions
 ```
 
-> [!WARNING] The `docuasurus.config.js` file is updated by the [`update_docusaurs_config.js`](./docusaurus.config.js)
-> script. DO NOT commit this file with the updated changes.
+> [!WARNING]
+>
+> The `docuasurus.config.js` file is updated by the [`update_docusaurs_config.js`](./docusaurus.config.js) script. DO
+> NOT commit this file with the updated changes.
