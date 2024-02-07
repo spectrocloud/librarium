@@ -8,23 +8,21 @@ sidebar_position: 20
 tags: ["vmo"]
 ---
 
-Palette Virtual Machine Orchestrator(VMO) streamlines the deployment of Virtual Machines (VMs) through its ability to
+Palette Virtual Machine Orchestrator (VMO) streamlines the deployment of Virtual Machines (VMs) through its ability to
 create and manage templates. Check out the [Create a VM Template](./create-vm-template.md) guide to learn more about how
 to create your own VM template.
 
-When VMs are deployed from template, they often include a disk template containing a pre-installed copy of the desired
-OS. The [Kubevirt Containerized Data Importer (CDI)](https://github.com/kubevirt/containerized-data-importer/tree/main)
+When deployed from a template, VMs include a disk template containing a pre-installed copy of the desired
+Operating System (OS). The [Kubevirt Containerized Data Importer (CDI)](https://github.com/kubevirt/containerized-data-importer/tree/main)
 imports templates through
 [Data Volumes](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md). This guide
 demonstrates how to implement your own disk and VM templates using Kubevirt Data Volumes.
 
 ## Prerequisites
 
-- A VMO profile. Check out the [Create a VMO Profile](../vm-packs-profiles/create-vmo-profile.md) guide for the steps of
-  how to create this profile.
-- A deployed cluster with this VMO profile. Check out the
-  [Deploy a Cluster](../../clusters/public-cloud/deploy-k8s-cluster.md) tutorial for the detailed steps on how to deploy
-  a cluster to a public cloud.
+- A VMO profile. Check out the [Create a VMO Profile](../vm-packs-profiles/create-vmo-profile.md) guide to learn how you can create this profile.
+- A cluster deployed with this VMO profile. Check out the
+  [Deploy a Cluster](../../clusters/public-cloud/deploy-k8s-cluster.md) tutorial for detailed steps on how you can deploy clusters to a public cloud.
 
 ## Create a Template
 
@@ -35,15 +33,15 @@ demonstrates how to implement your own disk and VM templates using Kubevirt Data
     The provided manifest defines a `DataVolume` that imports the example disk template for Ubuntu 22.04 into the
     `vmo-golden-images` namespace. This snippet has three important configuration options.
 
-    - It sets the `cdi.kubevirt.io/storage.deleteAfterCompletion` annotation to prevent deleting the `DataVolume` object
-      after the import process completes. This is necessary to prevent Palette from continuously recreating the
+    - `cdi.kubevirt.io/storage.deleteAfterCompletion` that prevents deleting the `DataVolume` object
+      after the import process completes. This annotation is necessary to stop Palette from continuously recreating the
       `DataVolume` object.
-    - The `volumeMode` aligns with the mode that the CSI supports for `ReadWriteMany` access. For some CSIs such as
-      Rook-Ceph and EMC PowerMax this is `Block` mode, while for other CSIs such as Portworx, Longhorn and EMC PowerFlex
-      this is `Filesystem` mode. Make sure to check this setting if you choose another CSI than demonstrated.
-    - The `registry` source specifies data should be imported from a container disk on an external Docker registry. The
+    - `volumeMode` that aligns with the mode that CSI supports for `ReadWriteMany` access. For some CSIs, such as
+      Rook-Ceph and EMC PowerMax, it's the `Block` mode, while for other CSIs, such as Portworx, Longhorn, and EMC PowerFlex,
+      it's the `Filesystem` mode. Make sure to check the `volumeMode` setting if you choose another CSI.
+    - `registry` that specifies a container disk on an external Docker registry from which data should be imported. Check the
       [CDI DataVolumes documentation](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md#source)
-      describes other possible `source` values.
+      for other possible `source` values.
 
     <br />
 
@@ -70,20 +68,20 @@ demonstrates how to implement your own disk and VM templates using Kubevirt Data
 
     :::warning
 
-    When `Filesystem` mode is selected, the CDI will automatically apply a small overhead factor to the Persisten Volume
-    Claim (PVC) size to account for the storage space lost due to filesystem overhead. As a result, the PVC for such a
-    template will be slightly larger. Any clones made from this PVC also need to use this slightly larger minimum size.
+ When the `Filesystem` mode is selected, the CDI will automatically apply a small overhead factor to the Persistent Volume
+    Claim (PVC) size to account for the storage space lost due to the filesystem overhead. As a result, the PVC for such a
+    template will be slightly larger. Any clones made from this PVC will also use this larger minimum size.
 
     :::
 
-2.  Add the following code snippet in another manifest file in the same cluster profile.
+2. Create another manifest in this cluster profile and add the following code snippet.
 
     This snippet has three notable configurations.
 
-    - The `spec.dataVolumeTemplates.spec` section defines which source PVC to clone from and what PVC to clone into.
-    - The `spec.dataVolumeTemplates.spec.source` section points to the `template-ubuntu-2204` PVC in the
+    - `spec.dataVolumeTemplates.spec` that defines which source PVC to clone from and what PVC to clone into.
+    - `spec.dataVolumeTemplates.spec.source` that points to the `template-ubuntu-2204` PVC in the
       `vmo-golden-images` namespace.
-    - The `spec.dataVolumeTemplates.spec.pvc` section creates a new target PVC with the specified `accessMode` and
+    - `spec.dataVolumeTemplates.spec.pvc` that creates a new target PVC with the specified `accessMode` and
       `volumeMode` characteristics. The size of the new PVC must be the same or larger as the source PVC.
 
     <br />
@@ -161,11 +159,7 @@ demonstrates how to implement your own disk and VM templates using Kubevirt Data
 
     :::warning
 
-    To allow CSI-assisted cloning to work, there are a few
-    [prerequisites](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/csi-cloning.md#prerequisites)
-    that must be followed. Most importantly, the source and target PVC must share the same Storage Class and the same
-    Volume Mode. If the requirements are not met, the CDI will automatically fallback to the slower host-assisted
-    cloning.
+To enable CSI-assisted cloning, you must fulfill a few [prerequisites](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/csi-cloning.md#prerequisites). For instance, the source and target PVCs must share the same Storage Class and Volume Mode. The CDI will automatically fall back to slower host-assisted cloning if you don't meet these requirements.
 
     :::
 
@@ -176,13 +170,12 @@ demonstrates how to implement your own disk and VM templates using Kubevirt Data
 
     :::
 
-3.  When the CDI performs a cloning operation, it runs under the `default` service account in the namespace of the
-    target PVC. When the source PVC is in a different namespace, required permissions must be given to the service
+3.  When the CDI clones a PVC, it runs under the `default` service account in the namespace of the
+    target PVC. When the source PVC is in a different namespace, you must give the required permissions to the service
     account. The [VMO pack](../vm-management.md) version 4.2.0 does this automatically through its default charts
     specification. This configuration uses the `vmEnabledNamespaces` option to specify the namespaces for which the
     permissions are configured.
 
-    <br />
 
     ```yaml {8}
     charts:
@@ -196,13 +189,13 @@ demonstrates how to implement your own disk and VM templates using Kubevirt Data
           - "virtual-machines"
     ```
 
-4.  The CDI contains an internal database of CSIs, the CSI supported access modes, volume modes and CSI-assisted cloning
-    support. However, it is still recommended to create a `StorageProfile` to force these parameters to your desired
+4.  By default, the CDI contains an internal database of CSIs, with the CSI supported access modes, volume modes, and CSI-assisted cloning
+    support. However, we recommend creating a `StorageProfile` to adjust these parameters to your desired
     values.
 
-    Add the following code snippet in another manifest file in the same cluster profile.
+    Create another manifest in this cluster profile and add the following code snippet.
 
-    This snippet has three notable configurations for the storage class it defines.
+    This snippet has three notable configurations that define the storage class.
 
     - The storage class has the name `ceph-block`.
     - The storage class supports the `Block` volume mode with the `ReadWriteMany` access mode.
@@ -316,13 +309,13 @@ demonstrates how to implement your own disk and VM templates using Kubevirt Data
 
 6.  Click on **Confirm & Create**.
 
-7.  Complete cluster profile configuration and click on **Finish Configuration**.
+7.  Complete the cluster profile configuration and click on **Finish Configuration**.
 
 ## Validate
 
 1.  Navigate to the left **Main Menu** and select **Clusters**.
 
-2.  Select your cluster and view its **Overview** tab. Select the **Profile** tab.
+2.  Select your cluster and click the **Profile** tab.
 
 3.  Add the newly created **Add-on Profile** to your cluster profile. Click on **Save**.
 

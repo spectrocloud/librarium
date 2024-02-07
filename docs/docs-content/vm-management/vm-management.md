@@ -64,9 +64,8 @@ organization's templates. To learn more about using and creating templates, revi
 [Deploy VM From a Template](create-manage-vm/standard-vm-operations/deploy-vm-from-template.md) and
 [Create a VM Template](create-manage-vm/create-vm-template.md).
 
-While you can import template disks from external locations at VM deployment time, this approach is not efficient. To
-learn about leveraging the `DataVolume` resource to import template disks once and create clones at VM deployment time,
-review the [Create disk templates](create-manage-vm/using-datavolumes.md) tutorial.
+While you can import template disks from external locations when deploying a VM, it can be inefficient. Instead, you can leverage the `DataVolume` resource to import template disks once and then clone them when deploying new VMs.
+Review the [Create disk templates](create-manage-vm/using-datavolumes.md) guide for more information.
 
 ## Feature Gates
 
