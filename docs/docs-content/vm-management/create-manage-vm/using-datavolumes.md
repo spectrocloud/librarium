@@ -314,9 +314,9 @@ demonstrates how to implement your own disk and VM templates using Kubevirt Data
               name: cloudinitdisk
     ```
 
-6.  Click on **Confirm updates**. The manifest editor closes.
+6.  Click on **Confirm & Create**.
 
-7.  Click on **Save Changes**.
+7.  Complete cluster profile configuration and click on **Finish Configuration**.
 
 ## Validate
 
