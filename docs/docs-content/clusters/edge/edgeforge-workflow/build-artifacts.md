@@ -9,8 +9,8 @@ tags: ["edge"]
 ---
 
 Palette's Edge solution supports creating Edge artifacts for edge devices deployed in a low internet bandwidth
-environment or an _air-gapped_ environment. An air-gapped environment is a deployment site with no direct internet
-access. Using a content bundle, you can build Edge artifacts for installation in such environments.
+environment or an disconnected environment. An disconnected environment is a deployment site with no network access to a
+central Palette instance. Using a content bundle, you can build Edge artifacts for installation in such environments.
 
 A content bundle is an archive that includes the Operating System (OS) image, the Kubernetes distribution, the Network
 Container Interface (CNI), and all other dependencies specified in the cluster profiles you want to deploy to the Edge
@@ -26,7 +26,7 @@ This how-to guide provides instructions for creating and using a content bundle 
 begin with installing a necessary tool, the Palette Edge CLI, on your development machine. The Palette Edge CLI is a
 command-line utility to interact with Palette and perform specific tasks in your development environment, such as
 creating a content bundle. Next, you will download all the software dependencies mentioned in your cluster profile using
-the Palette Edge CLI and create a content bundle. Lastly, when your content bundle is ready, you will use the CanvOS
+the Palette Edge CLI and create a content bundle. Lastly, when your content bundle is ready, you will use the EdgeForge
 utility to embed the content bundle and user data into the Edge installer ISO image.
 
 The diagram below displays the overarching steps to build the Edge installer ISO using a content bundle. The diagram
@@ -73,156 +73,154 @@ Use the following instructions on your Linux machine, which this guide refers to
 
 1.  Visit the [Downloads](../../../spectro-downloads#palette-edge-cli) page and download the latest Palette Edge CLI.
     You can download the Palette Edge CLI by clicking on the available URL or using the download URL in the following
-    command. Replace the `[PALETTE-EDGE-BINARY-URL]` placeholder with the download URL. <br />
+    command. Replace the `[PALETTE-EDGE-BINARY-URL]` placeholder with the download URL.
 
-```bash
-curl [PALETTE-EDGE-BINARY-URL] --output palette-edge
-```
+    ```bash
+    curl [PALETTE-EDGE-BINARY-URL] --output palette-edge
+    ```
 
-2. Open a terminal session and navigate to the folder where you have downloaded the palette-edge binary. Set the
-   executable permissions for the palette-edge binary by issuing the following command. <br />
+2.  Open a terminal session and navigate to the folder where you have downloaded the palette-edge binary. Set the
+    executable permissions for the palette-edge binary by issuing the following command.
 
-```bash
-chmod 755 palette-edge
-```
+    ```bash
+    chmod 755 palette-edge
+    ```
 
-3. Use the following command to move the palette-edge binary to the **/usr/local/bin** directory to make the binary
-   available in your system $PATH. This will allow you to issue the `palette-edge` command from any directory in your
-   development environment. <br />
+3.  Use the following command to move the palette-edge binary to the **/usr/local/bin** directory to make the binary
+    available in your system $PATH. This will allow you to issue the `palette-edge` command from any directory in your
+    development environment.
 
-```bash
-mv palette-edge /usr/local/bin
-```
+    ```bash
+    mv palette-edge /usr/local/bin
+    ```
 
-4. Verify the installation of the Palette Edge CLI by issuing the following command. The output will display information
-   about the currently supported OS and Kubernetes distributions. <br />
+4.  Verify the installation of the Palette Edge CLI by issuing the following command. The output will display
+    information about the currently supported OS and Kubernetes distributions.
 
-```bash
-palette-edge show
-```
+    ```bash
+    palette-edge show
+    ```
 
-```hideClipboard bash
-# Sample output
-┌────────────────────────────────────────────────────────────────────────┐
-| OS Flavor     | Description        | Base Image URI                    |
-| opensuse-leap | Opensuse Leap 15.4 | quay.io/kairos/core-opensuse-leap |
-| ubuntu-20     | Ubuntu 20.4 LTS    | quay.io/kairos/core-ubuntu-20-lts |
-| ubuntu-22     | Ubuntu 22.4 LTS    | quay.io/kairos/core-ubuntu-22-lts |
-└────────────────────────────────────────────────────────────────────────┘
-┌─────────────────────────────────────────────────────────────────────────────────────────────┐
-| K8S Flavor | Description        | Supported Versions                                        |
-| k3s        | Rancher K3s        | 1.25.2-k3s1,1.24.6-k3s1,1.23.12-k3s1,1.22.15-k3s1         |
-| kubeadm    | Kubernetes kubeadm | 1.25.2,1.24.6,1.23.12,1.22.15                             |
-| rke2       | Rancher RK2        | 1.25.2-rke2r1,1.24.6-rke2r1,1.23.12-rke2r1,1.22.15-rke2r1 |
-└─────────────────────────────────────────────────────────────────────────────────────────────┘
-┌─────────────────────────────────┐
-| Component             | Version |
-| Spectro Agent Version | v3.4.3  |
-| Kairos Version        | v2.0.3  |
-└─────────────────────────────────┘
-```
+    ```hideClipboard bash
+    # Sample output
+    ┌────────────────────────────────────────────────────────────────────────┐
+    | OS Flavor     | Description        | Base Image URI                    |
+    | opensuse-leap | Opensuse Leap 15.4 | quay.io/kairos/core-opensuse-leap |
+    | ubuntu-20     | Ubuntu 20.4 LTS    | quay.io/kairos/core-ubuntu-20-lts |
+    | ubuntu-22     | Ubuntu 22.4 LTS    | quay.io/kairos/core-ubuntu-22-lts |
+    └────────────────────────────────────────────────────────────────────────┘
+    ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+    | K8S Flavor | Description        | Supported Versions                                        |
+    | k3s        | Rancher K3s        | 1.25.2-k3s1,1.24.6-k3s1,1.23.12-k3s1,1.22.15-k3s1         |
+    | kubeadm    | Kubernetes kubeadm | 1.25.2,1.24.6,1.23.12,1.22.15                             |
+    | rke2       | Rancher RK2        | 1.25.2-rke2r1,1.24.6-rke2r1,1.23.12-rke2r1,1.22.15-rke2r1 |
+    └─────────────────────────────────────────────────────────────────────────────────────────────┘
+    ┌─────────────────────────────────┐
+    | Component             | Version |
+    | Spectro Agent Version | v3.4.3  |
+    | Kairos Version        | v2.0.3  |
+    └─────────────────────────────────┘
+    ```
 
-<br />
+5.  Set the Spectro Cloud API key as an environment variable by issuing the following command. Replace the
+    `[USE-YOUR-API-KEY_HERE]` placeholder with your API key. The Palette Edge CLI will use this API key to authenticate
+    with Palette. Once authenticated, the Palette Edge CLI can interact with your Palette account.
 
-5. Set the Spectro Cloud API key as an environment variable by issuing the following command. Replace the
-   `[USE-YOUR-API-KEY_HERE]` placeholder with your API key. The Palette Edge CLI will use this API key to authenticate
-   with Palette. Once authenticated, the Palette Edge CLI can interact with your Palette account. <br />
+    ```bash
+    export API_KEY=[USE-YOUR-API-KEY_HERE]
+    ```
 
-```bash
-export API_KEY=[USE-YOUR-API-KEY_HERE]
-```
+6.  Log in to [Palette](https://console.spectrocloud.com).
 
-6. Log in to [Palette](https://console.spectrocloud.com).
+7.  Copy your Palette project ID. You will use this ID in a later step. The project ID is on the top-right corner of
+    your Palette project overview page. Use the following screenshot to help you find your project ID.
 
-7. Copy your Palette project ID. You will use this ID in a later step. The project ID is on the top-right corner of your
-   Palette project overview page. Use the following screenshot to help you find your project ID.
+    ![A screenshot highlighting the project ID in Palette project overview page](/clusters_edge_edge-forge-workflow_build-images_build-project_id.png)
 
-![A screenshot highlighting the project ID in Palette project overview page](/clusters_edge_edge-forge-workflow_build-images_build-project_id.png)
+8.  Navigate to the left **Main Menu** and select **Profiles**.
 
-8. Navigate to the left **Main Menu** and select **Profiles**.
-
-9. Select the cluster profile you want to include in the content bundle. Click on the target cluster profile to access
-   its details page.
+9.  Select the cluster profile you want to include in the content bundle. Click on the target cluster profile to access
+    its details page.
 
 10. Examine the cluster details page URL. The cluster details page URL follows the
     `[Palette-URL]/projects/[PROJECT-ID]/profiles/cluster/[CLUSTER-PROFILE-ID]` syntax. The cluster details page URL has
     your project ID and the cluster profile ID. For example, the screenshot below highlights the project ID and the
     cluster profile ID in a cluster details page URL.
 
-![A screenshot highlighting the cluster profile ID and project ID in the URL of the cluster details page.](/clusters_edge_edge-forge-workflow_build-images_build-artifacts_url.png)
+    ![A screenshot highlighting the cluster profile ID and project ID in the URL of the cluster details page.](/clusters_edge_edge-forge-workflow_build-images_build-artifacts_url.png)
 
 11. Copy the cluster profile ID from the cluster details page URL for the next step.
 
 12. Switch back to your development environment, and set the project ID as an environment variable by issuing the
-    following command. Replace the `[USE-YOUR-PROJECT-ID_HERE]` placeholder with your project ID. <br />
+    following command. Replace the `[USE-YOUR-PROJECT-ID_HERE]` placeholder with your project ID.
 
-```bash
-export PROJECT_ID=[USE-YOUR-PROJECT-ID_HERE]
-```
+    ```bash
+    export PROJECT_ID=[USE-YOUR-PROJECT-ID_HERE]
+    ```
 
 13. Set the cluster profile ID as an environment variable using the following command. Replace the
     `[USE-YOUR-PROFILE-ID_HERE]` placeholder with your cluster profile ID. The Palette Edge CLI uses the cluster profile
-    ID to reference the correct cluster profile and download all its software dependencies. <br />
+    ID to reference the correct cluster profile and download all its software dependencies.
 
-```bash
-export PROFILE_ID=[USE-YOUR-PROFILE-ID_HERE]
-```
+    ```bash
+    export PROFILE_ID=[USE-YOUR-PROFILE-ID_HERE]
+    ```
 
 14. Issue the command below to create the content bundle. The `build` command uses the following flags:
 
-| **Command Flag**        | **Value**                                                                                                                                           |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--api-key`             | Spectro Cloud API key                                                                                                                               |
-| `--project-id`          | Palette project ID                                                                                                                                  |
-| `--cluster-profile-ids` | Cluster profile IDs. If you want to include multiple cluster profiles in the content bundle, add multiple cluster profile IDs separated by a comma. |
-| `--palette-endpoint`    | Palette API endpoint. The default Palette API endpoint is `api.spectrocloud.com`                                                                    |
-| `--outfile`             | Path to write the final content bundle.                                                                                                             |
+    | **Command Flag**        | **Value**                                                                                                                                           |
+    | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `--api-key`             | Spectro Cloud API key                                                                                                                               |
+    | `--project-id`          | Palette project ID                                                                                                                                  |
+    | `--cluster-profile-ids` | Cluster profile IDs. If you want to include multiple cluster profiles in the content bundle, add multiple cluster profile IDs separated by a comma. |
+    | `--palette-endpoint`    | Palette API endpoint. The default Palette API endpoint is `api.spectrocloud.com`                                                                    |
+    | `--outfile`             | Path to write the final content bundle.                                                                                                             |
 
-You can issue `palette-edge build --help` to know about other available flags. <br />
+    You can issue `palette-edge build --help` to know about other available flags.
 
-```bash
-palette-edge build --api-key $API_KEY \
-  --project-id $PROJECT_ID \
-  --cluster-profile-ids $PROFILE_ID \
-  --palette-endpoint api.spectrocloud.com \
-  --outfile content
-```
+    ```bash
+    palette-edge build --api-key $API_KEY \
+    --project-id $PROJECT_ID \
+    --cluster-profile-ids $PROFILE_ID \
+    --palette-endpoint api.spectrocloud.com \
+    --outfile content
+    ```
 
 15. Use the command below to list all files in the current directory to verify that you created the content bundle
     successfully. The content bundle will have the following naming convention, `content-[random-string]`, for example,
-    **content-8e61a9e5**. <br />
+    **content-8e61a9e5**.
 
-```bash
-ls -al
-```
+    ```bash
+    ls -al
+    ```
 
 16. List the files in the content bundle folder using the following command. The output will display the compressed core
-    and app content files. <br />
+    and app content files.
 
-```bash
-ls -al content-*/
-```
+    ```bash
+    ls -al content-*/
+    ```
 
-```hideClipboard bash
-# Sample output
-total 3981104
--rw-rw-r-- 1 jb jb 1598552722 Jul 26 18:20 app-content-8e61a9e5.zst
--rw-rw-r-- 1 jb jb 2478086360 Jul 26 18:20 core-content-8e61a9e5.zst
-```
+    ```hideClipboard bash
+    # Sample output
+    total 3981104
+    -rw-rw-r-- 1 jb jb 1598552722 Jul 26 18:20 app-content-8e61a9e5.zst
+    -rw-rw-r-- 1 jb jb 2478086360 Jul 26 18:20 core-content-8e61a9e5.zst
+    ```
 
 17. Issue the following command to build the Edge artifacts with your content bundle. The `+iso` option specifies the
     build target. This command will generate an ISO image from the content bundle and other configurations you have
-    specified in the **.arg** and **user-data** files. <br />
+    specified in the **.arg** and **user-data** files.
 
-```bash
-sudo ./earthly.sh +iso
-```
+    ```bash
+    sudo ./earthly.sh +iso
+    ```
 
-This command may take up to 15-20 minutes to finish depending on the resources of the host machine.
+    This command may take up to 15-20 minutes to finish depending on the resources of the host machine.
 
 ## Validate
 
-List the Edge installer ISO and checksum by issuing the following command from the **CanvOS/** directory. <br />
+List the Edge installer ISO and checksum by issuing the following command from the **CanvOS/** directory.
 
 ```shell
 ls build/
@@ -233,11 +231,9 @@ palette-edge-installer.iso
 palette-edge-installer.iso.sha256
 ```
 
-<br />
-
 To validate, you can prepare an edge device using the Edge installer ISO. You can follow the
 [Prepare Edge Host for Installation](../site-deployment/stage.md) guide if you prepare a bare metal machine or a VMware
-VM as a host. Below are the high-level steps for your reference: <br />
+VM as a host. Below are the high-level steps for your reference:
 
 1. Create a bootable USB flash drive using any third-party software. Most software that creates a bootable USB drive
    will validate the ISO image.
@@ -249,7 +245,7 @@ VM as a host. Below are the high-level steps for your reference: <br />
 3. Flash the edge device with a bootable USB drive.
 
 4. The last step is to power on the edge device and start the installation process. For more information, refer to the
-   [Perform Site Install](../site-deployment/site-installation/site-installation.md) documentation. <br />
+   [Perform Site Install](../site-deployment/site-installation/site-installation.md) documentation.
 
 ## Next Steps
 
