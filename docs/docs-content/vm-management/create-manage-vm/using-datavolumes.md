@@ -176,8 +176,8 @@ demonstrates how to implement your own disk and VM templates using Kubevirt Data
 
     :::
 
-3.  When the CDI performs a cloning operation, it runs under the `default` serviceaccount in the namespace of the target
-    PVC. When the source PVC is in a different namespace, required permissions must be given to the serviceaccount. The
+3.  When the CDI performs a cloning operation, it runs under the `default` service account in the namespace of the target
+    PVC. When the source PVC is in a different namespace, required permissions must be given to the service account. The
     [VMO pack](../vm-management.md) version 4.2.0 does this automatically through its default charts specification. This
     configuration uses the `vmEnabledNamespaces` option to specify the namespaces for which the permissions are
     configured.
