@@ -17,24 +17,11 @@ components, refer to [Virtual Machine Orchestrator Pack](../vm-packs-profiles/vm
 - If you are updating the profile of an existing cluster that already has the **Spectro Proxy** pack. You must restart
   the Spectro Proxy pod for the proxy to work as expected.
 
-  To restart the Spectro Proxy pod, delete the pod and it will restart automatically. You can issue the command
-  `kubectl get pods --all-namespaces | grep spectro-proxy` to find the name and namespace of the Spectro Proxy pod, and
-  then issue the command `kubectl delete pod --namespace NAMESPACE POD_NAME` to delete the pod.
-
-  For example:
+  To restart the Spectro Proxy pod, delete the pod and it will restart automatically. You can issue the following
+  command to delete the pod:
 
   ```shell
-  kubectl get pods --all-namespaces | grep spectro-proxy
-  ```
-
-  ```hideClipboard
-  cluster-65c40969caf2312a4a885570   spectro-proxy-6bff55c7dd-cffx9                                   1/1     Running     0          11m
-  ```
-
-  Then, issue the following command to delete the pod and a new one will automatically be created in its place.
-
-  ```shell hideClipboard
-  kubectl delete pod --namespace cluster-65c40969caf2312a4a885570 spectro-proxy-6bff55c7dd-cffx9
+  kubectl delete pods --selector app=spectro-proxy --all-namespaces
   ```
 
 ## Prerequisites
