@@ -25,8 +25,7 @@ The following options are available for OS patching:
 - Patch OS on-demand
 
 You can use a combination of these options to patch the operating system to the latest version. For example, you can
-patch OS on boot, set up scheduled patching every month, and also perform on-demand patches at any given point in
-time.
+patch OS on boot, set up scheduled patching every month, and also perform on-demand patches at any given point in time.
 
 ## Patch OS on Boot
 
@@ -44,8 +43,8 @@ operating system on all cluster nodes will be updated to the latest when the clu
 2. From the left **Main Menu**, click **Cluster**. And then, click **Create Cluster**. Proceed in the cluster creation
    wizard until you reach the **Settings** step.
 
-   For more information on cluster creation, refer to the [Clusters](../clusters.md) section and any page that
-   is relevant to your choice of cloud provider.
+   For more information on cluster creation, refer to the [Clusters](../clusters.md) section and any page that is
+   relevant to your choice of cloud provider.
 
 3. In the **Setting** step, click on the **Manage machines** tab, and select the checkbox for **Patch OS on boot** and
    **Reboot if required**.
@@ -62,13 +61,12 @@ operating system on all cluster nodes will be updated to the latest when the clu
 
 2. Click on the cluster you patched to view cluster details.
 
-3. Click on the **Nodes** tab of the cluster details page. You can find the current OS version and when the most
-   recent patch was applied.
+3. Click on the **Nodes** tab of the cluster details page. You can find the current OS version and when the most recent
+   patch was applied.
 
    | **Field**               | **Description**                         |
    | ----------------------- | --------------------------------------- |
    | Last Applied Patch Time | The date and time of the last OS patch. |
-   |                         |                                         |
    | Patched Version         | The latest patched version.             |
 
 ## Enable Scheduled Patching
@@ -95,7 +93,8 @@ and at any given point later.
 4. In the upper-right corner, click on **Settings** and select **Cluster settings**. And then, click on the **Machine
    Management** tab.
 
-5. Select a patching schedule in the **OS Patching Schedule** field, and then select the **Reboot if required** checkbox.
+5. Select a patching schedule in the **OS Patching Schedule** field, and then select the **Reboot if required**
+   checkbox.
 
    The **Reboot if required** option allows your nodes to reboot if an OS patch requires a reboot. If you do not select
    this option, your node will not be able to reboot even if a patch requires it and the respective patch may not
@@ -110,8 +109,8 @@ and at any given point later.
 2. From the left **Main Menu**, click **Cluster**. And then, click **Create Cluster**. Proceed in the cluster creation
    wizard until you reach the **Settings** step.
 
-   For more information on cluster creation, refer to the [Clusters](../clusters.md) section and any page that
-   is relevant to your choice of cloud provider.
+   For more information on cluster creation, refer to the [Clusters](../clusters.md) section and any page that is
+   relevant to your choice of cloud provider.
 
 3. In the **Setting** step, click on the **Manage machines** tab, select a patching schedule in the **OS Patching
    Schedule** field, and then select the **Reboot if required** checkbox.
@@ -135,26 +134,25 @@ on the **Manage machines** tab, and select the drop-down input for **OS Patching
 
 2. Click on the cluster you patched to view cluster details.
 
-3. Click on the **Nodes** tab of cluster details page. You can find the current OS version and when the most
-   recent patch was applied.
+3. Click on the **Nodes** tab of cluster details page. You can find the current OS version and when the most recent
+   patch was applied.
 
    | **Field**               | **Description**                         |
    | ----------------------- | --------------------------------------- |
    | Last Applied Patch Time | The date and time of the last OS patch. |
-   |                         |                                         |
    | Patched Version         | The latest patched version.             |
 
 ## Perform On-Demand Patching
 
-You can request an on-demand OS patch after creating a cluster. This option allows you to you to perform
-immediate updates.
+You can request an on-demand OS patch after creating a cluster. This option allows you to you to perform immediate
+updates.
 
 ### Limitations
 
 - This operation is not available for existing Kubernetes clusters imported into Palette.
 - This operation is not available for managed Kubernetes Services such as EKS and AKS.
-  - For EKS clusters, you can trigger OS updates from Palette. This would request AWS to update cluster
-    node groups to the latest patch version.
+  - For EKS clusters, you can trigger OS updates from Palette. This would request AWS to update cluster node groups to
+    the latest patch version.
 
 ### Prerequisite
 
@@ -175,11 +173,10 @@ immediate updates.
 
 2. Click on the cluster you patched to view cluster details.
 
-3. Click on the **Nodes** tab of the cluster details page. You can find the current OS version and when the most
-   recent patch was applied.
+3. Click on the **Nodes** tab of the cluster details page. You can find the current OS version and when the most recent
+   patch was applied.
 
    | **Field**               | **Description**                         |
    | ----------------------- | --------------------------------------- |
    | Last Applied Patch Time | The date and time of the last OS patch. |
-   |                         |                                         |
    | Patched Version         | The latest patched version.             |
