@@ -15,7 +15,7 @@ upstream repositories as improvements, bug fixes, and security patches are relea
 
 OS Patching allows the operating system on the running cluster nodes to be updated to the latest patch version so that
 it is up-to-date with the latest fixes. Assume Ubuntu 18.04.4 LTE and 18.04.5 LTE are released over time to fix
-important security issues. OS Patching operation will identify 18.04.5 as the latest version and upgrade it on the
+important security issues. The OS Patching operation will identify 18.04.5 as the latest version and upgrade it on the
 cluster nodes.
 
 The following options are available for OS patching:
