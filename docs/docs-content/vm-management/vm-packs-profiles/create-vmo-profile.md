@@ -13,6 +13,18 @@ components and automatically installs the [Spectro Proxy](../../integrations/frp
 profile configuration. To learn about pack components, refer to
 [Virtual Machine Orchestrator Pack](../vm-packs-profiles/vm-packs-profiles.md).
 
+## Limitations
+
+- If you are updating the profile of an existing cluster that already has the **Spectro Proxy** pack. You must restart
+  the Spectro Proxy pod for the proxy to work as expected.
+
+  To restart the Spectro Proxy pod, delete the pod and it will restart automatically. You can issue the following
+  command to delete the pod:
+
+  ```shell
+  kubectl delete pods --selector app=spectro-proxy --all-namespaces
+  ```
+
 ## Prerequisites
 
 - A Palette permission key `create` for the resource `clusterProfile`.
