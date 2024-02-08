@@ -36,8 +36,6 @@ The following table offers a overview of the differences between a cluster backu
 
 ## Cluster Backup
 
-### Get Started
-
 To get started with creating a backup, check out the
 [Add a Backup Location using Static Credentials](add-backup-location-static.md) or
 [Add a Backup Location using Dynamic Credentials](add-backup-location-dynamic.md) guide.
@@ -49,7 +47,7 @@ learn more about backup and restore actions for a workspace.
 
 :::
 
-### What is a Backup Location?
+### Backup Locations
 
 A backup location is an object storage, such as an AWS Simple Storage Service (S3) bucket, where you store and retrieve
 the backup files. Before you create a backup, the initial step is configuring a backup location. You can configure a
@@ -63,8 +61,6 @@ object storage solutions as backup locations.
 - MinIO S3 bucket
 
 - Azure blob storage
-
-<br />
 
 :::info
 
