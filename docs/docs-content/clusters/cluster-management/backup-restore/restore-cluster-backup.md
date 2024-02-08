@@ -89,7 +89,8 @@ backup. To learn more about the restore operation, refer to the Velero
 
 :::warning
 
-If the source cluster is unavailable in Palette, you cannot restore its backup.
+If the source cluster is unavailable in Palette, you cannot restore its backup through the Palette user interface. Reach
+out to our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com) for additional guidance.
 
 :::
 
