@@ -13,7 +13,7 @@ cluster profile's Kubernetes layer.
 
 ## Prerequisite
 
-- An active cluster in Palette using PXK, PXK-E, RKE2, or K3S as its Kubernetes layer.
+- An active cluster in Palette using PXK, PXK-E, RKE2, or K3s as its Kubernetes layer.
   - The MicroK8s distribution of Kubernetes uses dqlite3 instead of etcd for its data store by default, so these steps
     are not applicable to MicroK8s instances.
 
