@@ -222,26 +222,26 @@ This guide demonstrates how to implement your own disk and VM templates using Ku
       cloneStrategy: csi-clone
     ```
 
-    Expand the following section to review how to use storage profiles for CSI-assisted cloning.
+    Expand the following section to learn how you can use storage profiles for CSI-assisted cloning.
 
     <details>
 
     <summary>Storage Profiles in VM Templates</summary>
 
-    If Storage Profiles are not manually defined, the CDI will automatically generate one for every Storage Class, based
-    on the information in its internal database. It is recommend to verify these parameters are accurate for your use
-    case and if not, overwrite them by defining the Storage Profile manually.
+    If Storage Profiles are not manually defined, the CDI will automatically generate one for every Storage Class based
+    on the information in its internal database. We recommend verifying that these parameters are accurate for your use
+    case and, if not, overwriting them to define a Storage Profile manually.
 
-    As noted in the
+    Per the
     [CDI documentation](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md#storage),
     you can optionally replace the target `pvc` sections in your `vmTemplate` resources with a `storage` section once
     you have defined a storage profile.
 
-    Using storage instead of PVC will automatically discover default values for `accessMode`, `volumeMode` and
-    optionally even the size from the source PVC and its associated storage profile.
+    Using storage instead of PVC will automatically discover default values for `accessMode`, `volumeMode` and,
+    optionally, even the size from the source PVC and its associated storage profile.
 
     A benefit of `storage` over `pvc` is that the CDI will automatically calculate the size overhead for `Filesystem`
-    mode storage classes, allowing the VM template to use the original disk size instead of one adjusted for the
+    mode storage classes, allowing the VM template to use the original disk size instead of the one adjusted for the
     filesystem overhead.
 
     If you want to use this template, replace the contents of the manifest you added in step two with the following
