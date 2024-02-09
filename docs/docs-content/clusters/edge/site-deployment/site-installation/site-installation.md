@@ -23,7 +23,7 @@ Use the following steps to complete the Edge host installation.
 
 :::info
 
-The community resource, [Painting with Palette](https://www.paintingwithpalette.com/tutorials/) has a great Edge Native
+The community resource, [Painting with Palette](https://www.paintingwithpalette.com/tutorials/) has a great Edge
 tutorial.
 
 :::
