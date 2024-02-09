@@ -8,15 +8,26 @@ tags: ["edge"]
 ---
 
 When you boot up an Edge host for the first time after installation, you will be prompted to configure the Edge host and
-its network environment. You may already have specified some of these configurations in the **user-data** file in the
-EdgeForge process or have supplied them with site-specific **user-data**, and can either keep them as they are or update
-them during this step. For more information about EdgeForge and site user data, refer to
+its network environment. This includes the configuration of an OS user, machine hostname, IP address, and DNS server.
+
+You may already have specified some of these configurations in the **user-data** file in the EdgeForge process or have
+supplied them with site-specific **user-data**, and can either keep them as they are or update them during this step.
+For more information about EdgeForge and site user data, refer to
 [EdgeForge Workflow](../edgeforge-workflow/edgeforge-workflow.md) and
 [Apply Site User Data](./site-installation/site-user-data.md).
 
 ## Prerequisite
 
-- An Edge host with Palette Edge 4.3 or later. The Edge host must be booting up for the first time since installation.
+- An Edge host installed with Edge Installer 4.3 or later. The Edge host must be booting up for the first time since
+  installation.
+
+- The Edge installer ISO used to install Palette on the Edge host must not contain user data that skips the initial
+  configuration.
+
+  - If you skipped initial configuration in the user data, the initial configuration will not be triggered when you
+    first start up the Edge host. However, you can trigger the initial configuration manually by establishing an SSH
+    connection to the Edge host and issue the command `spectro-edge-console`. The command will bring up the initial
+    configuration screen.
 
 - A keyboard or another input device connected to the Edge host.
 
@@ -24,12 +35,11 @@ them during this step. For more information about EdgeForge and site user data, 
 
 1. Power up the Edge host. Do not make any input and allow Palette to choose the boot option automatically.
 
-2. If you have already configured a user in your **user-data** file in the EdgeForge step whose user name is not
-   `kairos`, this step will be skipped automatically. If your username is `kairos`, you will not be able to log into the
-   Edge Management Console with the `kairos` user and need to create another user here.
+2. If you have already configured a user in your **user-data** file in the EdgeForge step, this step will be skipped
+   automatically.
 
    If you did not configure a user in your **user-data** file during EdgeForge or provide site user data, a terminal
-   user interface will display a **Create User** page. This allows you to create a Linux user with the necessary
+   user interface will display a **Create User** page. This allows you to create an OS user with the necessary
    permissions to operate Palette. Enter a username and password to create a new user and press the Enter key to
    progress to the next screen.
 
@@ -43,11 +53,15 @@ them during this step. For more information about EdgeForge and site user data, 
 4. In **Network Adapters**, choose a network adapter that the Edge host will use to communicate with Palette.
 
    By default, the network adapter requests an IP automatically from the DHCP server. Optionally, you can also specify a
-   static IP.
+   static IP. Press Enter to confirm the change.
 
-5. In **DNS Configuration**, specify the IP address of the primary and secondary name servers.
+5. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. Press Enter to confirm
+   the change.
 
 6. After you are satisfied with the configurations, navigate to **Quit** and hit enter to finish configuration.
+
+7. If you want to change these configuration, you can trigger the configuration again by establishing an SSH connection
+   to the Edge host and issue the command `spectro-edge-console`.
 
 ## Validate
 
