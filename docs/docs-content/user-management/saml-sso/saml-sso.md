@@ -1,10 +1,10 @@
 ---
-sidebar_label: "SAML and SSO Setup"
-title: "SAML and SSO Setup"
+sidebar_label: "SAML and OIDC SSO Setup"
+title: "SAML and OIDC SSO Setup"
 description: "Detailed instructions on creating Single Sign-on to log in to Palette using SAML 2.0"
 icon: ""
 hide_table_of_contents: false
-tags: ["user-management", "saml-sso"]
+tags: ["user-management", "saml-sso", "oidc", "saml", "sso"]
 ---
 
 Palette supports Single Sign-On (SSO) with a variety of Identity Providers (IDP). You can enable SSO in Palette by using
@@ -37,3 +37,5 @@ Enable SSO by following our [Enable SSO in Palette](enable-saml.md) guide.
 - [Palette SSO with OneLogin](palette-sso-with-onelogin.md)
 
 - [Palette SSO with Keycloak](palette-sso-with-keycloak.md)
+
+- [Palette SSO with Microsoft Entra ID](./palette-sso-with-entra-id.md)

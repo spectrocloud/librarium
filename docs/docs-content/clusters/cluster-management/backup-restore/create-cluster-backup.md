@@ -11,7 +11,7 @@ This guide provides instructions for how to create a cluster backup using Palett
 where you created the backup as the _source cluster_.
 
 A backup operation can only back up specified namespaces, cluster-scoped resources, and Persistent Volumes (PVs) from
-the source cluster. The backup operation includes the source cluster profile in Palette's final backup object.
+the source cluster.
 
 :::info
 

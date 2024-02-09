@@ -726,22 +726,6 @@ data "spectrocloud_pack_simple" "ubuntu" {
 ```
 
 </TabItem>
-<TabItem label="Cox Edge" value="cox-edge">
-
-```hcl
-data "spectrocloud_registry" "public_registry" {
-  name = "Public Repo"
-}
-
-data "spectrocloud_pack_simple" "ubuntu" {
-  name    = "ubuntu-coxedge"
-  version = "22.04"
-  type = "helm"
-  registry_uid = data.spectrocloud_registry.public_registry.id
-}
-```
-
-</TabItem>
 <TabItem label="AWS" value="aws">
 
 ```hcl
