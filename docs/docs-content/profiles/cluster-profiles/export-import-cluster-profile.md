@@ -41,6 +41,8 @@ Use these steps to export the profile as a `.json` file.
 
 3. Click **Export Profile** at the bottom of the details panel. Palette downloads the profile as a `.json` file.
 
+   ![Screenshot of the Export Profile button.](/profiles_cluster-profiles_export-import-cluster-profiles_export-highlight.png)
+
 4. Verify that any custom macros used in the exported profile exist in the target environment before you import the
    profile. If they do not, create the macros in the target environment. For guidance, review
    [Create Your Macro](../../clusters/cluster-management/macros.md#create-your-macro).
