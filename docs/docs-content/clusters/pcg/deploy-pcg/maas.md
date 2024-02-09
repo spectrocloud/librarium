@@ -32,7 +32,8 @@ The following system requirements must be met to install a PCG in MAAS:
 
 - Private cloud gateway IP requirements:
 
-  - 1 IP address for a single node PCG or 3 three IP addresses for a 3 node PCG
+  - 1 IP address for a single node PCG or 3 three IP addresses for a 3 node PCG. Refer to the
+    [PCG Sizing](./deploy-pcg.md#pcg-sizing) section for more information on sizing
   - 1 IP address for the Kubernetes control-plane
   - DNS can resolve the domain `api.spectrocloud.com`.
 

@@ -12,6 +12,28 @@ environments, refer to the [Deploy PCG to a Kubernetes Cluster](../deploy-pcg-k8
 
 Select the install guide that matches your environment in the [Resources](#resources) to learn how to deploy a PCG.
 
+## PCG Sizing
+
+The following table provides the recommended sizing for the PCG based on the number of nodes, CPU, memory, storage, and
+the maximum concurrent cluster deployments. You can continue to deploy additional clusters once the current clusters
+deployment batch is complete.
+
+##### Single-Node Cluster
+
+| **Size** | **Nodes** | **CPU** | **Memory** | **Storage** | **Maximum concurrent cluster deployments** |
+| -------- | --------- | ------- | ---------- | ----------- | ------------------------------------------ |
+| Small    | 1         | 4       | 4 GB       | 60 GB       | 1-3                                        |
+| Medium   | 1         | 8       | 8 GB       | 100 GB      | 4-6                                        |
+| Large    | 1         | 16      | 16 GB      | 120 GB      | 7-10                                       |
+
+##### High-Availability (HA) Cluster
+
+| **Size** | **Nodes** | **CPU** | **Memory** | **Storage** | **Maximum concurrent cluster deployments** |
+| -------- | --------- | ------- | ---------- | ----------- | ------------------------------------------ |
+| Small    | 3         | 4       | 4 GB       | 60 GB       | 4-6                                        |
+| Medium   | 3         | 8       | 8 GB       | 100 GB      | 7-10                                       |
+| Large    | 3         | 16      | 16 GB      | 120 GB      | 10-15                                      |
+
 ## Resources
 
 - [Deploy to MAAS](./maas.md)
