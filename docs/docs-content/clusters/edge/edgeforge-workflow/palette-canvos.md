@@ -565,8 +565,6 @@ EOF
 
 View the newly created file to ensure the customized arguments are set correctly.
 
-<br />
-
 ```bash
 cat .arg
 ```

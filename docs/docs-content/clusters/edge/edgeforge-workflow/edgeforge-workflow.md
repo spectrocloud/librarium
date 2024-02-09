@@ -10,16 +10,9 @@ _EdgeForge_ is the process or workflow of preparing an Edge host with all the re
 EdgeForge workflow contains several steps and key elements that you must complete to ensure the Edge host is ready for a
 successful site deployment.
 
-EdgeForge contains three critical components.
-
-- Edge Installer ISO.
-
-- Edge Host Agent Container Image.
-
-- Edge Provider Container Images.
-
-Each component plays a critical role in the [lifecycle](../edge-native-lifecycle.md) of an Edge deployment. Review the
-[Edge Artifacts](../edgeforge-workflow/edgeforge-workflow.md#edge-artifacts) section to learn more about each component.
+Each EdgeForge component plays a critical role in the [lifecycle](../edge-native-lifecycle.md) of an Edge deployment.
+Review the [Edge Artifacts](../edgeforge-workflow/edgeforge-workflow.md#edge-artifacts) section to learn more about each
+component.
 
 ![A diagram that displays the relationship between the three components  and how they relate to an Edge host](/clusters_edge-forge-workflow_edgeforge-workflow_components-diagram.png)
 
@@ -27,25 +20,32 @@ Each component plays a critical role in the [lifecycle](../edge-native-lifecycle
 
 To start building a custom Edge artifact, use the [Build Edge Artifacts](palette-canvos.md) guide.
 
-<br />
-
 ## Edge Artifacts
+
+EdgeForge contains the following critical components:
+
+- Edge Installer ISO.
+
+- Edge Provider Container Images.
 
 ### Edge Installer ISO
 
 An ISO file that bootstraps the installation is created in the EdgeForge process. The ISO image contains the Edge
-Installer that installs the Palette Edge host agent and metadata to perform the initial installation.
+Installer that installs the Palette Edge host agent and metadata to perform the initial installation. The Edge Installer
+ISO can also contain the following optional components:
 
-<br />
+- User data. User data includes essential configurations for the Edge Installer. It is optional to include user data in
+  the Edge Installer ISO. However, if you choose to not supply user data in the ISO, you must supply it before the Edge
+  Installer first runs.
+
+- Content bundle. Content bundles are archives of all the required container images required for specified cluster
+  profiles. You have the option to build content bundles into the Edge Installer ISO, which allows your Edge host to
+  build clusters without a connection to external image registries.
+
+- Cluster definition. Cluster definitions are specifications of how to create your cluster. You can export cluster
+  definition from any existing cluster profiles in your Palette account.
 
 ![A diagram breaking up the internal components of the ISO image](/clusters_edge_edgeforge-workflow_iso-diagram.png)
-
-### Edge Host Agent Container Image
-
-The Edge host agent container image contains the Palette Edge host agent. The agent is responsible for Day-2 operations
-and management of the Edge host. The Edge host agent also provides ongoing support during cluster runtime.
-
-<br />
 
 ### Edge Provider Container Images
 
@@ -58,8 +58,6 @@ registries, or a private self-hosted OCI registry and automatically downloaded d
 default Palette container registries to familiarize yourself with the installation process. However, in a typical
 production scenario, you would need to customize these artifacts to suit your specific needs or perform some
 [content bundle](../edgeforge-workflow/build-content-bundle.md) optimization.
-
-<br />
 
 ![A diagram breaking up the internal components of the Edge Provider container images](/clusters_edge_edgeforge-workflow_provider-diagram.png)
 
@@ -78,8 +76,6 @@ The Edge Installer supports various deployment scenarios. You can customize your
 Installer configuration user data, creating content bundles, and creating a custom Edge artifact. Below are a few common
 scenarios that organizations encounter when deploying an Edge host that requires customization. If you have a similar
 scenario, use the CLIs to help you with the customization.
-
-<br />
 
 - **Additional Packages**: You may need to install additional OS packages for your specific needs, such as an NVIDIA
   driver or a network package essential for your hardware to establish an outgoing network connection. These additional
@@ -103,13 +99,15 @@ scenario, use the CLIs to help you with the customization.
   [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn more about how you can
   customize the OS used in an Edge deployment.
 
-<br />
-
 ## Resources
 
-- [Build Edge Artifacts](palette-canvos.md)
-
 - [Build Preloaded Content Bundles](build-content-bundle.md)
+
+- Build Edge Installer ISO
+
+- Build Provider Images
+
+- [Build Edge Artifacts](palette-canvos.md)
 
 - [Build Edge Artifacts using a Content Bundle](build-artifacts.md)
 
