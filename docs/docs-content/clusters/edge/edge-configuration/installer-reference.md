@@ -63,8 +63,6 @@ stylus:
 You can specify the mode the Edge Installer should prepare the installation for. The Edge Installer supports two
 different modes.
 
-<br />
-
 - Connected: The site has internet connectivity and the installation is initiated through Palette.
 
 - Air-Gapped: The site does not have internet connectivity. The Installation is initiated through the Palette Edge CLI.
@@ -73,13 +71,29 @@ different modes.
 | ------------------ | ------------------------------------------------------------- |
 | `installationMode` | Allowed values are `connected`. Default value is `connected`. |
 
-<br />
-
 ```yaml
 #cloud-config
 stylus:
   installationMode: "connected"
 ```
+
+### Initial Configuration
+
+You can configure the Edge Installer to skip the initial configuration when you boot up the Edge host for the first
+time. For more information about initial configuration, refer to
+[Initial Edge Host Configuration](../site-deployment/initial-setup.md).
+
+| Parameter | Description                                                          |
+| --------- | -------------------------------------------------------------------- |
+| `skipTui` | Skips the initial Edge host configuration. Default value is `false`. |
+
+### Edge Management Console
+
+You can change the port that the Edge management console is exposed on. The default port is 5080.
+
+| Parameter        | Description                                                                               |
+| ---------------- | ----------------------------------------------------------------------------------------- |
+| `emcServer.port` | Specifies the port that the Edge management console is exposed on. Default value is 6080. |
 
 ### External Registry
 
@@ -92,8 +106,6 @@ You can point the Edge Installer to a non-default registry to load content from 
 | `username` | The username to authenticate with the registry.                                       |
 | `password` | The password to authenticate with the registry.                                       |
 | `insecure` | Whether to allow insecure connections to the registry. Default value is `false`.      |
-
-<br />
 
 ```yaml
 #cloud-config

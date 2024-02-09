@@ -24,11 +24,6 @@ For more information about EdgeForge and site user data, refer to
 - The Edge installer ISO used to install Palette on the Edge host must not contain user data that skips the initial
   configuration.
 
-  - If you skipped initial configuration in the user data, the initial configuration will not be triggered when you
-    first start up the Edge host. However, you can trigger the initial configuration manually by establishing an SSH
-    connection to the Edge host and issue the command `spectro-edge-console`. The command will bring up the initial
-    configuration screen.
-
 - A keyboard or another input device connected to the Edge host.
 
 ## Set up Edge Host
@@ -39,9 +34,17 @@ For more information about EdgeForge and site user data, refer to
    automatically.
 
    If you did not configure a user in your **user-data** file during EdgeForge or provide site user data, a terminal
-   user interface will display a **Create User** page. This allows you to create an OS user with the necessary
-   permissions to operate Palette. Enter a username and password to create a new user and press the Enter key to
-   progress to the next screen.
+   user interface will display a **Create User** page. This allows you to create an Operating System (OS) user with the
+   necessary permissions to operate Palette. Enter a username and password to create a new user and press the Enter key
+   to progress to the next screen.
+
+   :::info
+
+   The user `kairos` always exists in the OS. If you configured the username and password in your user data, you can use
+   this user to log in to the OS as well as the Edge Management Console. However, you cannot create this user during
+   initial configuration as this user already exists.
+
+   :::
 
 3. Next, the terminal will display a console for you to provide hostname and network configurations to the Edge host.
 
@@ -59,9 +62,6 @@ For more information about EdgeForge and site user data, refer to
    the change.
 
 6. After you are satisfied with the configurations, navigate to **Quit** and hit enter to finish configuration.
-
-7. If you want to change these configuration, you can trigger the configuration again by establishing an SSH connection
-   to the Edge host and issue the command `spectro-edge-console`.
 
 ## Validate
 
