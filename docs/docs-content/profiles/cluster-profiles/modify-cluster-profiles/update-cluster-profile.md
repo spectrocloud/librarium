@@ -58,7 +58,7 @@ profiles, check out [Version a Cluster Profile](version-cluster-profile.md).
 
 3. Check that profile details display your changes.
 
-To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-updates-to-clusters).
+To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-profile-updates-to-clusters).
 
 ## Update a Profile Layer
 
@@ -110,7 +110,7 @@ To learn how to apply the changes, review [Apply Profile Updates to Clusters](#a
 5. If you added, removed, or modified a manifest, click the layer in the stack that you updated and verify the manifest
    changes.
 
-To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-updates-to-clusters).
+To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-profile-updates-to-clusters).
 
 ## Update the Pack Version
 
@@ -183,7 +183,7 @@ Ensure you follow these practices when updating to a new pack version.
 
 10. Confirm your updates.
 
-To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-updates-to-clusters).
+To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-profile-updates-to-clusters).
 
 ### Validate
 
