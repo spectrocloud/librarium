@@ -8,12 +8,12 @@ tags: ["edge"]
 ---
 
 To use an Edge host with a host cluster, you must first register it with Palette. A registration token in the user data
-is required to complete the registration process. You have two options to register the Edge host with Palette.
+is required to complete the registration process. You have the following options to register the Edge host with Palette.
 
-| **Method**          | **Description**                                                                                                                                                  | **Set up Effort** |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| Auto Registration   | Edge hosts can automatically register with Palette by using a _Registration Token_. This method requires you to specify the registration token in the user data. | Low               |
-| Manual Registration | You can manually enter a unique Edge host ID into Palette.                                                                                                       | Low               |
+| **Method**          | **Description**                                                                                                                                                 | **Set up Effort** |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| Auto Registration   | Edge hosts can automatically register with Palette through a _Registration Token_. This method requires you to specify the registration token in the user data. | Low               |
+| Manual Registration | You can manually enter a unique Edge host ID in Palette.                                                                                                        | Low               |
 
 :::warning
 
