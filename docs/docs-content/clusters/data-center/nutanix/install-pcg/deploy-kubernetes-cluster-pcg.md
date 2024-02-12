@@ -112,7 +112,7 @@ following the process described in the
       --target-namespace ${TEST_NAMESPACE}  \
       > ./cluster.yaml
     kubectl create namespace ${TEST_NAMESPACE}
-    kubectl apply -filename ./cluster.yaml -namespace ${TEST_NAMESPACE}
+    kubectl apply --filename ./cluster.yaml --namespace ${TEST_NAMESPACE}
     ```
 
     The snippet below displays the output of the command.
