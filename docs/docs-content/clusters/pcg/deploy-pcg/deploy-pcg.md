@@ -18,6 +18,9 @@ The following table provides the recommended sizing for the PCG based on the num
 the maximum concurrent cluster deployments. You can continue to deploy additional clusters once the current clusters
 deployment batch is complete.
 
+We recommend using a minimum of 3 nodes for production environments. Single node cluster are better suited for
+development and testing environments.
+
 ##### Single-Node Cluster
 
 | **Size** | **Nodes** | **CPU** | **Memory** | **Storage** | **Maximum concurrent cluster deployments** |

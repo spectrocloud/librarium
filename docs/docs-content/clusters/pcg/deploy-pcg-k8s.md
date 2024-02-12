@@ -16,14 +16,17 @@ You can deploy a PCG onto an existing Kubernetes cluster that is not managed by 
 
 - AWS
 - Azure
-- GCP
-- Nutanix. Refer to the [Nutanix](../data-center/nutanix/nutanix.md) section for more information about requirements.
+- Nutanix. Requires the registration of a Nutanix account. Refer to the
+  [Add Nutanix Cloud Account](../data-center/nutanix/add-nutanix-cloud-account.md) section for more information.
 
 ### PCG Sizing
 
 The following table provides the recommended sizing for the PCG based on the number of nodes, CPU, memory, storage, and
 the maximum concurrent cluster deployments. You can continue to deploy additional clusters once the current clusters
 deployment batch is complete.
+
+We recommend using a minimum of 3 nodes for production environments. Single node cluster are better suited for
+development and testing environments.
 
 ##### Single-Node Cluster
 
