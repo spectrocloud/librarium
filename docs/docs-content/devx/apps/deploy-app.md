@@ -415,13 +415,18 @@ cd terraform/hello-universe-tf/
 
 <TabItem label="Podman" value="Podman">
 
-Ensure Podman on your local machine is available. Use the following command and ensure you receive an output displaying
-the version number.
-
-<br />
+If you are not running a Linux operating system, create and start the Podman Machine in your local environment.
+Otherwise, skip this step.
 
 ```bash
-podman version
+podman machine init
+podman machine start
+```
+
+Use the following command and ensure you receive an output displaying the installation information.
+
+```bash
+podman info
 ```
 
 Download the tutorial image to your local machine. <br />
