@@ -544,6 +544,6 @@ Once installed, the PCG registers itself with Palette. To verify the PCG is regi
 
 ## Next Steps
 
-After you have successfully deployed the PCG into your VMware vSphere environment, you can now create and define node
-pools that Kubernetes clusters deployed in vSphere can use. To learn more about creating and defining node pools, refer
-to the [Create and Manage PCG Node Pools](../manage-pcg/create-manage-node-pool.md) documentation.
+After you have successfully deployed the PCG into your VMware vSphere environment, you can now create and define an IPAM
+node pool that Kubernetes clusters deployed in vSphere can use. To learn more about creating and defining node pools,
+refer to the [Create and Manage IPAM Node Pools](../manage-pcg/create-manage-node-pool.md) documentation.
