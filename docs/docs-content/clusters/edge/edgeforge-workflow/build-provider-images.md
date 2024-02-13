@@ -38,13 +38,6 @@ In this guide, you will use the CanvOS utility to build provider images.
   command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
   create privileged containers.
 
-- A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for a
-  [free trial](https://www.spectrocloud.com/free-tier/).
-
-- Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
-  generate a new registration token. For detailed instructions, refer to the
-  [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide.
-
 ## Build Provider Images
 
 1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
