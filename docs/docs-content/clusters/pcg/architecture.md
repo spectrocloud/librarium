@@ -132,13 +132,17 @@ Only self-hosted Palette or VerteX instances support the option of using the Sys
 
 :::
 
-When registering a private cloud account with Palette, toggle on **Use System Private Gateway** to enable direct
-communication between Palette and the local infrastructure provider. This option is only available to private cloud
-environments such as MAAS, OpenStack, and VMware vSphere.
-
 The following table explains the different use cases for when a PCG and System Private Gateway are eligible.
 
 | Scenario                                                                              | Use Private Cloud Gateway | Use System Private Gateway |
 | ------------------------------------------------------------------------------------- | ------------------------- | -------------------------- |
 | Firewall or NAT between infrastructure environment and a self-hosted Palette instance | ✅                        | ❌                         |
 | Direct connectivity between infrastructure environment and a Palette instance         | ✅                        | ✅                         |
+
+#### How to Use System Private Gateway?
+
+To use the System Private Gateway with a self-hosted Palette instance, you must toggle the **Use System Private
+Gateway** option during the registration of a private cloud account with Palette. This option is only available from the
+Palette user interface for private cloud environments such as MAAS, OpenStack, and VMware vSphere.
+
+![View of the cloud account registration screen with the system pcg check box highlighted](/clusters_pcg_architecture_system-pcg-ui.png)
