@@ -135,7 +135,7 @@ following the process described in the
 6. After your Nutanix workload cluster is deployed, retrieve its kubeconfig file with the command described below.
 
    ```bash
-   clusterctl get kubeconfig $TEST_CLUSTER_NAME > $TEST_CLUSTER_NAME.kubeconfig -namespace $TEST_NAMESPACE
+   clusterctl get kubeconfig $TEST_CLUSTER_NAME > $TEST_CLUSTER_NAME.kubeconfig --namespace $TEST_NAMESPACE
    ```
 
 7. Deploy a Container Network Interface (CNI) pod in the workload cluster to enable pod-to-pod communication. For more
@@ -172,8 +172,8 @@ Use the steps below to verify your virtual machines (VMs) are created.
 
 ## Cleanup
 
-With the PCG successfully installed in your Kubernetes workload cluster, you can delete the kind cluster that was used
-to bootstrap the workload cluster.
+Once you have successfully [installed a Nutanix PCG in Palette](/clusters/data-center/nutanix/install-pcg), delete the
+kind cluster you used to bootstrap the workload cluster.
 
 ```bash
 kind delete cluster --name pcg-pilot
