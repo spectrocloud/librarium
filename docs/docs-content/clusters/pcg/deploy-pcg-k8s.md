@@ -46,7 +46,14 @@ development and testing environments.
 
 ## Prerequisites
 
-- An existing Kubernetes cluster created that has network connectivity with Palette.
+- An existing Kubernetes cluster created that has network connectivity with Palette. The kubernetes cluster must be able
+  to connect to the internet to download the required images and packages, and to connect with Palette on port 443. To
+  learn more about PCG network requirements, refer to the
+  [Network Communication](./architecture.md#network-communication) section.
+
+- You need sufficient permissions to deploy the PCG services in the cluster. The
+  [default Kubernetes cluster roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#default-roles-and-role-bindings)
+  _cluster-admin_ and _admin_ have the necessary permissions to deploy the PCG services.
 
 - The Kubernetes cluster must at least have the following resources:
 
@@ -65,7 +72,7 @@ development and testing environments.
   - DNS can resolve the domain `api.spectrocloud.com` or the domain that you have configured for a self-hosted Palette
     installation.
 
-- If you want to access cluster metrics, you need to ensure that the
+- If you want to Palette to display cluster metrics, you need to ensure that the
   [metrics server](https://github.com/kubernetes-sigs/metrics-server) is installed in the cluster. You can install the
   metrics server by using the following command.
 
