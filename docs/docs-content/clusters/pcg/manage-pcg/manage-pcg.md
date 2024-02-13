@@ -7,6 +7,11 @@ sidebar_position: 0
 tags: ["pcg"]
 ---
 
-This section provides information on how to manage a Private Cloud Gateway (PCG) and its resources.
+This section provides information on how to manage a Private Cloud Gateway (PCG) and its resources. Review the following
+topics to learn more about managing a PCG.
 
 ## Resources
+
+- [Create and Manage IPAM Node Pools](./create-manage-node-pool.md)
+
+- [Remove a PCG](./remove-pcg.md)
