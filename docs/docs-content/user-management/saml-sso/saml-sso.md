@@ -10,8 +10,6 @@ tags: ["user-management", "saml-sso", "oidc", "saml", "sso"]
 Palette supports Single Sign-On (SSO) with a variety of Identity Providers (IDP). You can enable SSO in Palette by using
 the following protocols for authentication and authorization.
 
-<br />
-
 - Security Assertion Markup Language (SAML) - SAML is a standalone protocol that requires a centralized identity
   provider (IDP) to manage user identities and credentials. SAML supports SSO and is commonly used for enterprise
   applications.
@@ -20,13 +18,9 @@ the following protocols for authentication and authorization.
   [OAuth 2.0](https://www.rfc-editor.org/rfc/rfc6749), a widely used authorization framework. OIDC supports distributed
   identity providers and supports social login providers such as Google or GitHub.
 
-Enable SSO by following our [Enable SSO in Palette](enable-saml.md) guide.
+Check the following resources to enable SSO in Palette with the supported Identity Providers (IDP).
 
 ## Resources
-
-- [Enable SSO in Palette](enable-saml.md)
-
-- [Palette SSO with Azure Active Directory](palette-sso-azure-ad.md)
 
 - [Enable SSO with Microsoft Active Directory Federation Service (AD FS)](palette-sso-with-adfs.md)
 
