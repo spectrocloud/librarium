@@ -132,12 +132,14 @@ Only self-hosted Palette or VerteX instances support the option of using the Sys
 
 :::
 
-The following table explains the different use cases for when a PCG and System Private Gateway are eligible.
+The following table explains the different use cases for when a PCG or a System Private Gateway are supported.
 
-| Scenario                                                                              | Use Private Cloud Gateway | Use System Private Gateway |
-| ------------------------------------------------------------------------------------- | ------------------------- | -------------------------- |
-| Firewall or NAT between infrastructure environment and a self-hosted Palette instance | ✅                        | ❌                         |
-| Direct connectivity between infrastructure environment and a Palette instance         | ✅                        | ✅                         |
+| Scenario                                                                                      | Use Private Cloud Gateway? | Use System Private Gateway? |
+| --------------------------------------------------------------------------------------------- | -------------------------- | --------------------------- |
+| Firewall or NAT between the infrastructure environment and a self-hosted Palette instance     | ✅                         | ❌                          |
+| Direct connectivity between the infrastructure environment and a self-hosted Palette instance | ✅                         | ✅                          |
+| Firewall or NAT between the infrastructure environment and Palette SaaS                       | ✅                         | ❌                          |
+| Direct connectivity between Palette SaaS and infrastructure environment                       | ✅                         | ❌                          |
 
 #### How to Use System Private Gateway?
 

@@ -14,9 +14,10 @@ other clusters.
 
 :::info
 
-Other private cloud providers, such as MAAS and OpenStack, do not have the ability to create additional node pools. You
-can manage where compute nodes are deployed by using the native placement capabilities provided by the private cloud
-provider such as tags, availability zones, or regions.
+Other private cloud providers, such as MAAS and OpenStack, do not have the ability for you to create additional node
+pools. You can manage where compute nodes are deployed using the native placement capabilities provided by the private
+cloud provider, such as tags, availability zones, or regions. Unlike VMware vSphere, these other private cloud providers
+natively support IPAM and DHCP.
 
 :::
 
@@ -33,6 +34,8 @@ Use the following steps to create and manage node pools for a PCG.
   instructions on how to install a PCG.
 
 - Tenant administrator access.
+
+- An IP address range or subnet available for the node pool.
 
 ## Create a PCG Node Pool
 
@@ -94,4 +97,7 @@ Use the following steps to validate that the node pool was created successfully.
 
 5. From the PCG details page, click on the **IP Address Management (IPAM)** tab.
 
-6. The new node pool should be listed in the **Node Pools** section.
+6. The new node pool should is listed in the **Node Pools** section.
+
+To use the new node pool, you will need to create a cluster and assign the node pool when configuring the cluster
+control plane and worker nodes.

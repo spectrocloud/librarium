@@ -42,7 +42,8 @@ The following system requirements must be met to install a PCG in VMware vSphere
 
   - One IP address for a single node PCG or three three IP addresses for a three node PCG. Refer to the
     [PCG Sizing](./deploy-pcg.md#pcg-sizing) section for more information on sizing
-  - One IP address for the Kubernetes control-plane
+  - One IP address reserved for cluster repave operations
+  - One IP address for the Virtual IP (VIP)
   - DNS can resolve the domain `api.spectrocloud.com`.
   - NTP server is reachable from the PCG.
 

@@ -44,9 +44,10 @@ The following system requirements must be met to install a PCG in MAAS:
 
   - For a single-node gateway, one IP address must be available in the MAAS subnet for the PCG, or three available IP
     addresses for a three-node gateway.
-
   - One IP address must be available in the MAAS subnet for the Kubernetes API-server endpoint when deploying a
     three-node gateway.
+  - One IP address reserved for cluster repave operations
+  - One IP address for the Virtual IP (VIP)
 
 - Sufficient available IPs within the configured MAAS subnets.
 
