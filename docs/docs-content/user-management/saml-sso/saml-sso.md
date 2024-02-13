@@ -18,7 +18,7 @@ the following protocols for authentication and authorization.
   [OAuth 2.0](https://www.rfc-editor.org/rfc/rfc6749), a widely used authorization framework. OIDC supports distributed
   identity providers and supports social login providers such as Google or GitHub.
 
-Check the following resources to enable SSO in Palette with the supported Identity Providers (IDP).
+Check out the following resources to enable SSO in Palette with the supported Identity Providers (IDP).
 
 ## Resources
 
