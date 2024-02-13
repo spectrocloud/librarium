@@ -850,7 +850,8 @@ cd /terraform/iaas-cluster-deployment-tf
 
 <TabItem label="Podman" value="podman">
 
-Ensure that you create and start the Podman Machine on your local environment.
+Ensure you create and start the Podman Machine on your local environment if you are not running a Linux operating
+system. Otherwise, skip this step.
 
 ```bash
 podman machine init
