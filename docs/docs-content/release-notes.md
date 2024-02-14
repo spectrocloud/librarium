@@ -654,7 +654,7 @@ Export of Profiles, Terraform Releases, and many exciting enhancements.
   addition to the default image template folder, `spectro-templates` for the vSphere environment.
 - [Regex Expression](./workspace/workspace.md) for mass selection of workspace names for role binding.
 - Palette also leverages the single sign-on, using SAML/OIDC integration with
-  [Google Identity](./user-management/saml-sso/enable-saml.md).
+  [Google Identity](./user-management/saml-sso/saml-sso.md).
 - Palette enables the customers to optionally disable the [OIDC associate provider](/clusters/public-cloud/aws/eks) for
   EKS clusters if the service provider restricts the cluster deployment in OIDC enabled state.
 - Tenant administrators can now set the
