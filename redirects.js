@@ -350,7 +350,7 @@ const redirects = [
   },
   {
     from: "/user-management/saml-sso/palette-sso-azure-ad",
-    to: "/user-management/saml-sso/palette-sso-with-entra-id",
+    to: "/user-management/saml-sso/",
   },
   {
     from: "/user-management/saml-sso/enable-saml",
