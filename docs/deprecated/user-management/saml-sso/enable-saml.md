@@ -61,7 +61,7 @@ To set up an OIDC-based SSO in Spectro Cloud Palette perform the following steps
 
    * **Client ID** - The ID for the client application that makes authentication requests.
    * **Client Secret** - Enter the secret created by the IdP.
-   * **Default Teams** - The Default Palette Team(s) to which authenticated members are assigned automatically.
+   * **Default Teams** - The default Palette Team(s) to which authenticated members are assigned automatically.
    * **Scopes** - The user's details will be used as part of SSO, like _email_, _firstname_, _lastname_ or _groups_.
      Each scope returns a set of user attributes, called claims. Microsoft Azure AD Example: "openid, profile, email,
      allatclaims"
@@ -71,15 +71,15 @@ To set up an OIDC-based SSO in Spectro Cloud Palette perform the following steps
      - **Email** - Azure AD Example: "email"
      - **First Name** - Azure AD Example: "given_name"
      - **Last Name** - Azure AD Example: "family_name"
-     - **Spectro Team Name** - Azure AD Example: "groups". Any non-admin user that is added to a Tenant, must be added
-       to at least one Team. This Team can be changed later if needed. See the [Teams](../../glossary-all.md#team)
-       section for more details on Teams.
+     - **Spectro Team Name** - Azure AD Example: "groups". Any non-admin user that is added to a tenant, must be added
+       to at least one team. This team can be changed later if needed. Refer to the [Teams](../../glossary-all.md#team)
+       section for more details on teams.
 
        - If a user is not added to a Team, the user can still log in successfully but will not be able to see the
          console until proper Project or Tenant permissions are applied (Tenant Admin, Project Admin, Project Viewer,
          and so on). The **SpectroTeam** attribute carries forward the available team(s) for the user being authorized.
          This gives the administrator the flexibility to grant access to Spectro Cloud Palette using either Users or
-         Groups in their IdP or by adding users directly to a Palette Team(s).
+         Groups in their IdP or by adding users directly to a Palette team.
 
        - The values of the **SpectroTeam** parameter is case-sensitive, so the Tenant Admin should ensure that the team
          names are identical on both consoles. To sync an IdP group with a Palette Team, ensure the IdP group Name (or
