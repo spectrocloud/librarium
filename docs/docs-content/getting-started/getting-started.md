@@ -19,6 +19,19 @@ our product before making a purchase decision.
 After successful account creation, Palette presents a well-organized Product Onboarding Workflow to streamline the user
 product adoption. The onboarding process consists of explaining our product features, followed by a Palette experience
 session. Here we furnish an easy-to-follow deployment pipeline for our users to launch their first cluster successfully.
-Explore more about the feature:
 
-[Product Onboarding Workflow](../getting-started/onboarding-workflow.md)
+Explore more about Palette:
+
+- [Introduction to Palette](./introduction.md)
+
+- [Palette Dashboard](./dashboard.md)
+
+- [Cluster Profiles](./cluster-profiles.md)
+
+- [Create a Cluster Profile](./create-cluster-profile.md)
+
+- [Deploy a Cluster](./deploy-k8s-cluster.md)
+
+- [Deploy Cluster Profile Updates](./update-k8s-cluster.md)
+
+- [Deploy a Cluster with Terraform](./terraform.md)
