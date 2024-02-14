@@ -348,6 +348,14 @@ const redirects = [
     ],
     to: `/unlisted/cox-edge-eol`,
   },
+  {
+    from: "/user-management/saml-sso/palette-sso-azure-ad",
+    to: "/user-management/saml-sso/palette-sso-with-entra-id",
+  },
+  {
+    from: "/user-management/saml-sso/enable-saml",
+    to: "/user-management/saml-sso/",
+  },
 ];
 
 module.exports = redirects;
