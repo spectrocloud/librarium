@@ -62,7 +62,8 @@ will need the following items.
 <TabItem label="Terraform workflow" value="Terraform">
 
 - Basic knowledge of containers.
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) or another container management tool.
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/), [Podman](https://podman.io/docs/installation) or
+  another container management tool.
 - A public cloud account from one of these providers:
   - [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
   - [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account)
@@ -99,7 +100,7 @@ cd tutorials/
 Check out the following git tag.
 
 ```shell
-git checkout v1.1.2
+git checkout v1.1.3
 ```
 
 Change the directory to the tutorial code.

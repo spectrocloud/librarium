@@ -787,7 +787,8 @@ If want to become more familiar with Terraform, we recommend you check out the
 To complete this tutorial, you will need the following items
 
 - Basic knowledge of containers.
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) or another container management tool.
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/), [Podman](https://podman.io/docs/installation) or
+  another container management tool.
 - Create a Cloud account from one of the following providers.
   - [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
   - [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account)
@@ -823,38 +824,69 @@ greater installed.
 Ensure Docker Desktop on your local machine is available. Use the following command and ensure you receive an output
 displaying the version number.
 
-<br />
-
 ```bash
 docker version
 ```
 
-Download the tutorial image to your local machine. <br />
+Download the tutorial image to your local machine.
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.1.2
+docker pull ghcr.io/spectrocloud/tutorials:1.1.3
 ```
 
-Next, start the container, and open a bash session into it. <br />
+Next, start the container, and open a bash session into it.
 
 ```shell
-docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.2 bash
+docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.3 bash
 ```
 
 Navigate to the tutorial code.
-
-<br />
 
 ```shell
 cd /terraform/iaas-cluster-deployment-tf
 ```
 
 </TabItem>
+
+<TabItem label="Podman" value="podman">
+
+If you are not running a Linux operating system, create and start the Podman Machine in your local environment.
+Otherwise, skip this step.
+
+```bash
+podman machine init
+podman machine start
+```
+
+Use the following command and ensure you receive an output displaying the installation information.
+
+```bash
+podman info
+```
+
+Download the tutorial image to your local machine.
+
+```bash
+podman pull ghcr.io/spectrocloud/tutorials:1.1.3
+```
+
+Next, start the container, and open a bash session into it.
+
+```shell
+podman run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.3 bash
+```
+
+Navigate to the tutorial code.
+
+```shell
+cd /terraform/iaas-cluster-deployment-tf
+```
+
+</TabItem>
+
 <TabItem label="Git" value="git">
 
 Open a terminal window and download the tutorial code from GitHub.
-
-<br />
 
 ```shell
 git@github.com:spectrocloud/tutorials.git
@@ -862,23 +894,17 @@ git@github.com:spectrocloud/tutorials.git
 
 Change the directory to the tutorial folder.
 
-<br />
-
 ```shell
 cd tutorials/
 ```
 
 Check out the following git tag.
 
-<br />
-
 ```shell
-git checkout v1.1.2
+git checkout v1.1.3
 ```
 
 Change the directory to the tutorial code.
-
-<br />
 
 ```shell
 cd terraform/iaas-cluster-deployment-tf/
@@ -1299,8 +1325,6 @@ single container application with no upstream dependencies.
 Use the following steps to clean up the resources you created for the tutorial. Use the `destroy` command to remove all
 the resources you created through Terraform.
 
-<br />
-
 ```shell
 terraform destroy --auto-approve
 ```
@@ -1324,12 +1348,27 @@ the cluster. Palette automatically removes clusters stuck in the cluster deletio
 If you are using the tutorial container and want to exit the container, type `exit` in your terminal session and press
 the **Enter** key. Next, issue the following command to stop the container.
 
-<br />
+<Tabs>
+
+<TabItem label="Docker" value="docker">
 
 ```shell
 docker stop tutorialContainer && \
-docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.2
+docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.3
 ```
+
+</TabItem>
+
+<TabItem label="Podman" value="podman">
+
+```shell
+podman stop tutorialContainer && \
+podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.3
+```
+
+</TabItem>
+
+</Tabs>
 
 ## Wrap-up
 
@@ -1345,8 +1384,6 @@ We encourage you to check out the [Deploy an Application using Palette Dev Engin
 learn more about Palette. Palette Dev Engine can help you deploy applications more quickly through the usage of
 [virtual clusters](../../glossary-all.md#palette-virtual-cluster). Feel free to check out the reference links below to
 learn more about Palette.
-
-<br />
 
 - [Palette Modes](../../introduction/palette-modes.md)
 

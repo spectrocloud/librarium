@@ -29,7 +29,7 @@ To complete this tutorial, you will need the following items.
 
 If you select the Terraform workflow, you will need the following software installed.
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) or another container management tool.
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) or [Podman](https://podman.io/docs/installation).
 
 There are no expenses associated with this tutorial as everything falls under the Palette Free Tier.
 
@@ -392,7 +392,7 @@ docker version
 Download the tutorial image to your local machine. <br />
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.1.2
+docker pull ghcr.io/spectrocloud/tutorials:1.1.3
 ```
 
 Next, start the container, and open a bash session into it.
@@ -400,7 +400,47 @@ Next, start the container, and open a bash session into it.
 <br />
 
 ```shell
-docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.2 bash
+docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.3 bash
+```
+
+Navigate to the tutorial code.
+
+<br />
+
+```shell
+cd terraform/hello-universe-tf/
+```
+
+</TabItem>
+
+<TabItem label="Podman" value="Podman">
+
+If you are not running a Linux operating system, create and start the Podman Machine in your local environment.
+Otherwise, skip this step.
+
+```bash
+podman machine init
+podman machine start
+```
+
+Use the following command and ensure you receive an output displaying the installation information.
+
+```bash
+podman info
+```
+
+Download the tutorial image to your local machine. <br />
+
+```bash
+podman pull ghcr.io/spectrocloud/tutorials:1.1.3
+```
+
+Next, start the container, and open a bash session into it.
+
+<br />
+
+```shell
+podman run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.3 bash
 ```
 
 Navigate to the tutorial code.
@@ -1203,10 +1243,27 @@ the **Enter** key. Next, issue the following command to stop the container.
 
 <br />
 
+<Tabs>
+
+<TabItem label="Docker" value="Docker">
+
 ```shell
 docker stop tutorialContainer && \
-docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.2
+docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.3
 ```
+
+</TabItem>
+
+<TabItem label="Podman" value="Podman">
+
+```shell
+podman stop tutorialContainer && \
+podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.3
+```
+
+</TabItem>
+
+</Tabs>
 
 :::info
 
