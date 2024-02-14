@@ -3,7 +3,7 @@ sidebar_label: "Delete a PCG"
 title: "Delete a PCG"
 description: "Learn how to delete a Private Cloud Gateway (PCG) from Palette."
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 30
 tags: ["pcg"]
 ---
 

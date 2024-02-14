@@ -43,7 +43,7 @@ Use the following steps to create and manage node pools for a PCG.
 
 2. Navigate to the left **Main Menu** and select **Tenant Settings**.
 
-3. Select **Private Cloud Gateways** from the **Tenant Settings Menu**
+3. Select **Private Cloud Gateways** from the **Tenant Settings Menu**.
 
 4. Click on the PCG for which you want to create a node pool.
 
