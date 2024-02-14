@@ -9,6 +9,13 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
+## February 3, 2024 - Release 4.2.9
+
+### Bug Fixes
+
+- Fixed an issue that caused errors when creating pods after certificate renewals.
+- Resolved image pull errors from the AWS ECR registry.
+
 ## January 25, 2024 - Release 4.2.7
 
 ### Bug Fixes
