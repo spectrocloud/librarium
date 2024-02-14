@@ -110,7 +110,7 @@ You can also use pack settings described in the [Palette eXtended Kubernetes](ku
 
 ## Usage
 
-The Kubernetes configuration file is where you can do the following:
+The Kubeadm configuration file is where you can do the following:
 
 - Manually configure a third-party OIDC IDP. For more information, check out
   [Configure Custom OIDC](kubernetes-edge.md#configure-custom-oidc).
@@ -131,7 +131,7 @@ pack:
         identityProvider: <your_idp_selection>
 ```
 
-#### Example Kubernetes Configuration File
+#### Example Kubeadm Configuration File
 
 ```yaml
 cluster:
@@ -411,7 +411,7 @@ for virtual clusters. For guidance, refer to
 - **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure
   OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
   **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
-  information, check out the [SSO Setup](../user-management/saml-sso/enable-saml.md) guide.
+  information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
 :::info
 
@@ -430,7 +430,7 @@ Follow these steps to configure a third-party OIDC IDP.
 
 ```yaml
 cluster:
-  config: |
+  config:
     clusterConfiguration:
       apiServer:
         extraArgs:
@@ -440,14 +440,15 @@ cluster:
           oidc-username-claim: "email"
 ```
 
-2. Add the following `clientConfig` section that contains OIDC parameters to your Kubernetes configuration file.
+2. Add the following `kubeadmconfig.clientConfig` section that contains OIDC parameters to your Kubernetes YAML file.
 
 ```yaml
-clientConfig:
-  oidc-issuer-url: "<OIDC-ISSUER-URL>"
-  oidc-client-id: "<OIDC-CLIENT-ID>"
-  oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-  oidc-extra-scope: profile,email,openid
+kubeadmconfig:
+  clientConfig:
+    oidc-issuer-url: "<OIDC-ISSUER-URL>"
+    oidc-client-id: "<OIDC-CLIENT-ID>"
+    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+    oidc-extra-scope: profile,email,openid
 ```
 
 3. Provide third-party OIDC IDP details.
@@ -796,7 +797,7 @@ for virtual clusters. For guidance, refer to
 - **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure
   OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
   **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
-  information, check out the [SSO Setup](../user-management/saml-sso/enable-saml.md) guide.
+  information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
 :::info
 
@@ -1183,7 +1184,7 @@ for virtual clusters. For guidance, refer to
 - **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure
   OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
   **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
-  information, check out the [SSO Setup](../user-management/saml-sso/enable-saml.md) guide.
+  information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
 :::info
 
@@ -1565,7 +1566,7 @@ for virtual clusters. For guidance, refer to
 - **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure
   OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
   **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
-  information, check out the [SSO Setup](../user-management/saml-sso/enable-saml.md) guide.
+  information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
 :::info
 
