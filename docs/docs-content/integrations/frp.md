@@ -40,8 +40,6 @@ You can attach this pack to a cluster profile. For more information, refer to
 [Cluster Profiles](../profiles/cluster-profiles/cluster-profiles.md). The pack installs the Spectro Proxy client in the
 workload clusters and configures the cluster's API server to point to a managed proxy server.
 
-<br />
-
 :::info
 
 This pack can be combined with the
@@ -50,8 +48,6 @@ Kubernetes dashboard. To learn more about exposing the Kubernetes dashboard, che
 [Enable Kubernetes Dashboard](../clusters/cluster-management/kubernetes-dashboard.md) guide.
 
 :::
-
-<br />
 
 ## Network Connectivity
 
@@ -65,24 +61,16 @@ network that does not allow inbound internet access are considered private. Wher
 with both inbound and outbound access to the internet are considered public. The following are the three possible
 network connectivity scenarios:
 
-<br />
-
 - The cluster and the user are in the same private network.
 
 - The cluster and the user are in different private networks.
 
 - The cluster is in a public network.
 
-<br />
-
 ![An overview of the three different connectivity scenarios](/integrations_frp_conection_overview.png)
-
-<br />
 
 The following table summarizes the network connectivity requirements for each scenario and whether the Spectro Proxy is
 required.
-
-<br />
 
 | **Scenario**                           | **Description**                                                                            | **Requires Spectro Proxy?** |
 | -------------------------------------- | ------------------------------------------------------------------------------------------ | --------------------------- |
@@ -90,12 +78,8 @@ required.
 | Private cluster in a different network | The cluster is deployed with a private endpoint, and the user is in a different network.   | ✅                          |
 | Public cluster in a different network  | The cluster is deployed with a public endpoint, and the user is in a different network.    | ❌                          |
 
-<br />
-
 To learn more about how the Spectro Proxy interacts with clusters in a public or private network environment and when
 the Spectro Proxy is required, select the tab that matches your use case.
-
-<br />
 
 <Tabs queryString="network-path">
 
@@ -105,8 +89,6 @@ Networks labeled as private do not allow inbound internet access. Inbound networ
 only if the connection originated from the internal network. If you are in a different network than the cluster, you can
 connect to the cluster's API server through the Spectro Proxy. The Spectro Proxy allows you to connect to the cluster's
 API server although you are not in the same network as the cluster.
-
-<br />
 
 :::warning
 
@@ -126,8 +108,6 @@ kubeconfig file where the SSL certificate and server address attribute point to 
 
 The following diagram displays the network connection flow of a user attempting to connect to a cluster with private
 endpoints. The user is in a different network than the cluster.
-
-<br />
 
 1. The user issues a kubectl command to the cluster's API server.
 
@@ -152,8 +132,6 @@ only if the connection originated from the internal network. If you are in the s
 connect directly to the cluster's API server. The term "same network" means that from a network perspective, requests
 can reach the cluster's API server without having to traverse the internet.
 
-<br />
-
 :::info
 
 Users in the same network as the cluster do not require the Spectro Proxy server to connect to the cluster's API server.
@@ -167,8 +145,6 @@ Users in the same network as the cluster do not require the Spectro Proxy server
 <TabItem label="Public Cluster" value="public-cluster">
 
 Clusters deployed in a network with both inbound and outbound access to the internet are considered public.
-
-<br />
 
 :::info
 
@@ -188,11 +164,122 @@ public endpoints. Any user with access to the internet can connect to the cluste
 
 ---
 
-<br />
-
 ## Versions Supported
 
 <Tabs queryString="versions">
+
+<TabItem label="1.4.x" value="1.4.x">
+
+## Prerequisites
+
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro
+  Cloud reverse proxy.
+
+## Parameters
+
+The Spectro Proxy supports the following parameters.
+
+| Parameter  | Description                                            | Default                                     |
+| ---------- | ------------------------------------------------------ | ------------------------------------------- |
+| namespace  | The Kubernetes namespace to install the Spectro Proxy. | `cluster-{{ .spectro.system.cluster.uid }}` |
+| server     | The Kubernetes server.                                 | `{{ .spectro.system.reverseproxy.server }}` |
+| clusterUid | The Kubernetes cluster identifier.                     | `{{ .spectro.system.cluster.uid }}`         |
+| subdomain  | The Kubernetes cluster subdomain identifier.           | `cluster-{{ .spectro.system.cluster.uid }}` |
+
+The Kubernetes dashboard integration supports the following parameters.
+
+| Parameter       | Description                                 | Default |
+| --------------- | ------------------------------------------- | ------- |
+| enabled         | Enable the dashboard.                       | `false` |
+| useInsecurePort | Use unsecure port (HTTP) for communication. | `false` |
+
+The VMware dashboard integration supports the following parameters.
+
+| Parameter | Description           | Default |
+| --------- | --------------------- | ------- |
+| enabled   | Enable the dashboard. | `false` |
+
+## Usage
+
+To use this pack, you have to add it to your cluster profile. You can also add the Spectro Proxy pack when you create
+the cluster profile. Check out the
+[Create Cluster Profile](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide to learn
+more about cluster profile creation.
+
+Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you
+have. Use the following definitions to help you identify the type of cluster.
+
+- **Palette Deployed**: A brand new IaaS cluster that is deployed or will be deployed through Palette. An IaaS cluster
+  is a Kubernetes cluster with a control plane that is not managed by a third party or cloud vendor but is completely
+  managed by Palette. Google GKE and Tencent TKE fall into this category. Clusters in this category get an additional
+  entry in the Kubernetes configuration that adds the reverse proxy certificate (CA) to the API server configuration.
+
+- **Imported Cluster**: An imported cluster or a non-IaaS cluster with a control plane that a third party manages. Azure
+  AKS and AWS EKS fall in this category, as both Palette and the cloud provider partially manage the clusters. Clusters
+  that fall under this category get the default kubeconfig CA replaced with the CA from the proxy server. Additionally,
+  the kubeconfig authentication method is changed to a bearer token. To support the bearer token method, a new service
+  account is created in the cluster with a role binding that allows Kubernetes API requests to pass through the reverse
+  proxy and connect with the cluster API server.
+
+<Tabs>
+
+<TabItem label="Palette Deployed" value="palette-deployed">
+
+:::warning
+
+Be aware that if this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have
+to re-download the kubeconfig file to pick up the new configuration changes. This will also result in Kubernetes control
+plane nodes getting repaved.
+
+:::
+
+Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the
+`kubeadmconfig.apiServer` parameter section.
+
+```yaml
+certSANs:
+  - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
+```
+
+The following is an example configuration of the Kubernetes Pack manifest getting updated with the certificate SAN
+value:
+
+![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
+
+For RKE2 and k3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config`
+parameter section.
+
+```yaml
+tls-san:
+  - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
+```
+
+![TLS-SAN configuration example](/docs_integrations_frp_tls-san-example.png)
+
+</TabItem>
+<TabItem label="Imported Cluster" value="imported-cluster">
+
+:::warning
+
+Be aware that if this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have
+to re-download the kubeconfig file to pick up the new configuration changes.
+
+:::
+
+Add the Spectro Proxy pack to a cluster profile without making any configuration changes. Use the pack as is.
+
+:::info
+
+Set the parameter `k8sDashboardIntegration.enabled` to true if you intend to expose the Kubernetes dashboard. Review the
+[Enable Kubernetes Dashboard](spectro-k8s-dashboard.md) guide for more information.
+
+:::
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
 
 <TabItem label="1.3.x" value="1.3.x">
 
@@ -235,14 +322,10 @@ more about cluster profile creation.
 Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you
 have. Use the following definitions to help you identify the type of cluster.
 
-<br />
-
 - **Palette Deployed**: A brand new IaaS cluster that is deployed or will be deployed through Palette. An IaaS cluster
   is a Kubernetes cluster with a control plane that is not managed by a third party or cloud vendor but is completely
   managed by Palette. Google GKE and Tencent TKE fall into this category. Clusters in this category get an additional
   entry in the Kubernetes configuration that adds the reverse proxy certificate (CA) to the API server configuration.
-
-<br />
 
 - **Imported Cluster**: An imported cluster or a non-IaaS cluster with a control plane that a third party manages. Azure
   AKS and AWS EKS fall in this category, as both Palette and the cloud provider partially manage the clusters. Clusters
@@ -255,8 +338,6 @@ have. Use the following definitions to help you identify the type of cluster.
 
 <TabItem label="Palette Deployed" value="palette-deployed">
 
-<br />
-
 :::warning
 
 Be aware that if this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have
@@ -267,8 +348,6 @@ plane nodes getting repaved.
 
 Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the
 `kubeadmconfig.apiServer` parameter section.
-
-<br />
 
 ```yaml
 certSANs:
@@ -281,7 +360,7 @@ value:
 ![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
 
 For RKE2 and k3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config`
-parameter section. <br />
+parameter section.
 
 ```yaml
 tls-san:
@@ -290,12 +369,8 @@ tls-san:
 
 ![TLS-SAN configuration example](/docs_integrations_frp_tls-san-example.png)
 
-<br />
-
 </TabItem>
 <TabItem label="Imported Cluster" value="imported-cluster">
-
-<br />
 
 :::warning
 
@@ -305,8 +380,6 @@ to re-download the kubeconfig file to pick up the new configuration changes.
 :::
 
 Add the Spectro Proxy pack to a cluster profile without making any configuration changes. Use the pack as is.
-
-<br />
 
 :::info
 
@@ -356,14 +429,10 @@ more about cluster profile creation.
 Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you
 have. Use the following definitions to help you identify the type of cluster.
 
-<br />
-
 - **Palette Deployed**: A brand new IaaS cluster that is deployed or will be deployed through Palette. An IaaS cluster
   is a Kubernetes cluster with a control plane that is not managed by a third party or cloud vendor but is completely
   managed by Palette. Google GKE and Tencent TKE fall into this category. Clusters in this category get an additional
   entry in the Kubernetes configuration that adds the reverse proxy certificate (CA) to the API server configuration.
-
-<br />
 
 - **Imported Cluster**: An imported cluster or a non-IaaS cluster with a control plane that a third party manages. Azure
   AKS and AWS EKS fall in this category, as both Palette and the cloud provider partially manage the clusters. Clusters
@@ -375,8 +444,6 @@ have. Use the following definitions to help you identify the type of cluster.
 <Tabs>
 
 <TabItem label="Palette Deployed" value="palette-deployed">
-
-<br />
 
 :::warning
 
@@ -389,8 +456,6 @@ plane nodes getting repaved.
 Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the
 `kubeadmconfig.apiServer` parameter section.
 
-<br />
-
 ```yaml
 certSANs:
   - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
@@ -402,7 +467,7 @@ value:
 ![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
 
 For RKE2 and k3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config`
-parameter section. <br />
+parameter section.
 
 ```yaml
 tls-san:
@@ -411,12 +476,8 @@ tls-san:
 
 ![TLS-SAN configuration example](/docs_integrations_frp_tls-san-example.png)
 
-<br />
-
 </TabItem>
 <TabItem label="Imported Cluster" value="imported-cluster">
-
-<br />
 
 :::warning
 
@@ -426,8 +487,6 @@ to re-download the kubeconfig file to pick up the new configuration changes.
 :::
 
 Add the Spectro Proxy pack to a cluster profile without making any configuration changes. Use the pack as is.
-
-<br />
 
 :::info
 
@@ -441,248 +500,24 @@ Set the parameter `k8sDashboardIntegration.enabled` to true if you intend to exp
 </Tabs>
 
 </TabItem>
-<TabItem label="1.1.x" value="1.1.x">
-
-## Prerequisites
-
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro
-  Cloud reverse proxy.
-
-## Parameters
-
-The Spectro Proxy supports the following parameters.
-
-| Parameter  | Description                                            | Default                                     |
-| ---------- | ------------------------------------------------------ | ------------------------------------------- |
-| namespace  | The Kubernetes namespace to install the Spectro Proxy. | `cluster-{{ .spectro.system.cluster.uid }}` |
-| server     | The Kubernetes server.                                 | `{{ .spectro.system.reverseproxy.server }}` |
-| clusterUid | The Kubernetes cluster identifier.                     | `{{ .spectro.system.cluster.uid }}`         |
-| subdomain  | The Kubernetes cluster subdomain identifier.           | `cluster-{{ .spectro.system.cluster.uid }}` |
-
-The Kubernetes dashboard integration supports the following parameters.
-
-| Parameter       | Description                                 | Default |
-| --------------- | ------------------------------------------- | ------- |
-| enabled         | Enable the dashboard.                       | `false` |
-| useInsecurePort | Use unsecure port (HTTP) for communication. | `false` |
-
-## Usage
-
-To use this pack, you have to add it to your cluster profile. You can also add the Spectro Proxy pack when you create
-the cluster profile. Check out the
-[Create Cluster Profile](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide to learn
-more about cluster profile creation.
-
-Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you
-have. Use the following definitions to help you identify the type of cluster.
-
-<br />
-
-- **Palette Deployed**: A brand new IaaS cluster that is deployed or will be deployed through Palette. An IaaS cluster
-  is a Kubernetes cluster with a control plane that is not managed by a third party or cloud vendor but is completely
-  managed by Palette. Google GKE and Tencent TKE fall into this category. Clusters in this category get an additional
-  entry in the Kubernetes configuration that adds the reverse proxy certificate (CA) to the API server configuration.
-
-<br />
-
-- **Imported Cluster**: An imported cluster or a non-IaaS cluster with a control plane that a third party manages. Azure
-  AKS and AWS EKS fall in this category, as both Palette and the cloud provider partially manage the clusters. Clusters
-  that fall under this category get the default kubeconfig CA replaced with the CA from the proxy server. Additionally,
-  the kubeconfig authentication method is changed to a bearer token. To support the bearer token method, a new service
-  account is created in the cluster with a role binding that allows Kubernetes API requests to pass through the reverse
-  proxy and connect with the cluster API server.
-
-<Tabs>
-
-<TabItem label="Palette Deployed" value="palette-deployed">
-
-<br />
+<TabItem label="Deprecated" value="deprecated">
 
 :::warning
 
-Be aware that if this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have
-to re-download the kubeconfig file to pick up the new configuration changes. This will also result in Kubernetes control
-plane nodes getting repaved.
+All versions less than v1.1.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
 
 :::
-
-Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the
-`kubeadmconfig.apiServer` parameter section.
-
-<br />
-
-```yaml
-certSANs:
-  - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
-```
-
-The following is an example configuration of the Kubernetes Pack manifest getting updated with the certificate SAN
-value:
-
-![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
-
-For RKE2 and k3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config`
-parameter section. <br />
-
-```yaml
-tls-san:
-  - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
-```
-
-![TLS-SAN configuration example](/docs_integrations_frp_tls-san-example.png)
-
-<br />
-
-</TabItem>
-<TabItem label="Imported Cluster" value="imported-cluster">
-
-<br />
-
-:::warning
-
-Be aware that if this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have
-to re-download the kubeconfig file to pick up the new configuration changes.
-
-:::
-
-Add the Spectro Proxy pack to a cluster profile without making any configuration changes. Use the pack as is.
-
-<br />
-
-:::info
-
-Set the parameter `k8sDashboardIntegration.enabled` to true if you intend to expose the Kubernetes dashboard. Review the
-[Enable Kubernetes Dashboard](spectro-k8s-dashboard.md) guide for more information.
-
-:::
-
-</TabItem>
-
-</Tabs>
-
-</TabItem>
-<TabItem label="1.0.x" value="1.0.x">
-
-## Prerequisites
-
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro
-  Cloud reverse proxy.
-
-## Parameters
-
-The Spectro Proxy supports the following parameters.
-
-| Parameter  | Description                                            | Default                                     |
-| ---------- | ------------------------------------------------------ | ------------------------------------------- |
-| namespace  | The Kubernetes namespace to install the Spectro Proxy. | `cluster-{{ .spectro.system.cluster.uid }}` |
-| server     | The Kubernetes server.                                 | `{{ .spectro.system.reverseproxy.server }}` |
-| clusterUid | The Kubernetes cluster identifier.                     | `{{ .spectro.system.cluster.uid }}`         |
-| subdomain  | The Kubernetes cluster subdomain identifier.           | `cluster-{{ .spectro.system.cluster.uid }}` |
-
-## Usage
-
-To use this pack, you have to add it to your cluster profile. You can also add the Spectro Proxy pack when you create
-the cluster profile. Check out the
-[Create Cluster Profile](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide to learn
-more about cluster profile creation.
-
-Depending on the type of cluster, the usage guidance varies. Select the tab that corresponds to the kind of cluster you
-have. Use the following definitions to help you identify the type of cluster.
-
-<br />
-
-- **Palette Deployed**: A brand new IaaS cluster that is deployed or will be deployed through Palette. An IaaS cluster
-  is a Kubernetes cluster with a control plane that is not managed by a third party or cloud vendor but is completely
-  managed by Palette. Google GKE and Tencent TKE fall into this category. Clusters in this category get an additional
-  entry in the Kubernetes configuration that adds the reverse proxy certificate (CA) to the API server configuration.
-
-<br />
-
-- **Imported Cluster**: An imported cluster or a non-IaaS cluster with a control plane that a third party manages. Azure
-  AKS and AWS EKS fall in this category, as both Palette and the cloud provider partially manage the clusters. Clusters
-  that fall under this category get the default kubeconfig CA replaced with the CA from the proxy server. Additionally,
-  the kubeconfig authentication method is changed to a bearer token. To support the bearer token method, a new service
-  account is created in the cluster with a role binding that allows Kubernetes API requests to pass through the reverse
-  proxy and connect with the cluster API server.
-
-<Tabs>
-
-<TabItem label="Palette Deployed" value="palette-deployed">
-
-<br />
-
-:::warning
-
-Be aware that if this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have
-to re-download the kubeconfig file to pick up the new configuration changes. This will also result in Kubernetes control
-plane nodes getting repaved.
-
-:::
-
-Add the following extra certificate Subject Alternative Name (SAN) value to the Kubernetes pack under the
-`kubeadmconfig.apiServer` parameter section. <br />
-
-```yaml
-certSANs:
-  - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
-```
-
-The following is an example configuration of the Kubernetes Pack manifest getting updated with the certificate SAN
-value:
-
-![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
-
-For RKE2 and k3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config`
-parameter section. <br />
-
-```yaml
-tls-san:
-  - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
-```
-
-![TLS-SAN configuration example](/docs_integrations_frp_tls-san-example.png)
-
-<br />
-
-</TabItem>
-<TabItem label="Imported Cluster" value="imported-cluster">
-
-<br />
-
-:::warning
-
-Be aware that if this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have
-to re-download the kubeconfig file to pick up the new configuration changes.
-
-:::
-
-Add the Spectro Proxy pack to a cluster profile without making any configuration changes. Use the pack as is.
-
-<br />
-
-:::info
-
-Set the parameter `k8sDashboardIntegration.enabled` to true if you intend to expose the Kubernetes dashboard. Review the
-[Enable Kubernetes Dashboard](spectro-k8s-dashboard.md) guide for more information.
-
-:::
-
-</TabItem>
-
-</Tabs>
 
 </TabItem>
 </Tabs>
 
 ## Troubleshooting
 
-Troubleshooting scenarios related to the Spectro Proxy. <br />
+Troubleshooting scenarios related to the Spectro Proxy.
 
 ### x509 Unknown Authority Error
 
 If you encounter an x509 unknown authority error when deploying a cluster with the Spectro Proxy.
-
-<br />
 
 ```hideClipboard shell
 Unable to connect to connect the server: X509: certiticate signed by unknown authorit signed by
