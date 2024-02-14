@@ -147,4 +147,4 @@ To use the System Private Gateway with a self-hosted Palette instance, you must 
 Gateway** option during the registration of a private cloud account with Palette. This option is only available from the
 Palette user interface for private cloud environments such as MAAS, OpenStack, and VMware vSphere.
 
-![View of the cloud account registration screen with the system pcg check box highlighted](/clusters_pcg_architecture_system-pcg-ui.png)
+![View of the cloud account registration screen with the system PCG check box highlighted](/clusters_pcg_architecture_system-pcg-ui.png)

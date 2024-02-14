@@ -38,7 +38,7 @@ The following system requirements must be met to install a PCG in OpenStack:
   - One IP address for the Virtual IP (VIP)
   - DNS can resolve the domain `api.spectrocloud.com`.
 
-- An x86 Linux environment with a Docker daemon installed and a connection to Palette and the Openstack endpoint. The
+- An x86 Linux environment with a Docker daemon installed and a connection to Palette and the OpenStack endpoint. The
   Palette CLI installation must be invoked on an up-to-date Linux system with an x86-64 architecture
 
 - An Open Stack SSH Key Pair. Refer to the
@@ -354,7 +354,7 @@ The following permissions are required to deploy a PCG to OpenStack and for Pale
     | **Parameter**                                        | **Description**                                                                                                                                                                                                                                  |
     | :--------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
     | **Management Plane Type**                            | Select Palette or VerteX.                                                                                                                                                                                                                        |
-    | **Enable Ubuntu Pro (required for production)**      | Choose `y` if you want to to use Ubuntu Pro, otherwise press `n`. If you select `y`, you will be be asked to provide an Ubuntu Pro token.                                                                                                        |
+    | **Enable Ubuntu Pro (required for production)**      | Choose `y` if you want to use Ubuntu Pro, otherwise press `n`. If you select `y`, you will be asked to provide an Ubuntu Pro token.                                                                                                              |
     | **Select an image registry type**                    | Choose `Default` to pull images from public image registries. This requires an internet connection. Airgap customers, select `Custom` so you can point to our airgap support VM or a custom internal registry that contains the required images. |
     | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.                              |
     | **Cloud Type**                                       | Select OpenStack.                                                                                                                                                                                                                                |

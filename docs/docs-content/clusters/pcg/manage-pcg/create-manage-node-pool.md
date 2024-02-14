@@ -9,7 +9,7 @@ tags: ["pcg"]
 
 You can create and manage additional node pools for a Private Cloud Gateway (PCG) deployed in VMware vSphere. By
 default, a PCG is created with a single node pool definition based on the values provided during the installation
-process. The default node pool created during the installation is resevered for the PCG cluster and cannot be used by
+process. The default node pool created during the installation is reserved for the PCG cluster and cannot be used by
 other clusters.
 
 :::info
@@ -59,7 +59,7 @@ Use the following steps to create and manage node pools for a PCG.
    | **Network Type**                 | Choose between **Range** or **Subnet**. Each option has different input requirements. Refer to the [Range](#range) or [Subnet](#subnet) to learn more. |
    | **Gateway**                      | The gateway IP address for the node pool.                                                                                                              |
    | **Nameservers addresses**        | The IP addresses of the nameservers for the node pool.                                                                                                 |
-   | **Nameserver search suffix**     | The search suffix for the domain suported by the nameservers.                                                                                          |
+   | **Nameserver search suffix**     | The search suffix for the domain supported by the nameservers.                                                                                         |
    | **Restrict to a single cluster** | If enabled, the node pool will be restricted to a single cluster. Additional cluster will require creating more node pools.                            |
 
    #### Range

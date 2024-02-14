@@ -42,7 +42,7 @@ Use the following steps to increase the number of nodes in a PCG.
 
 3. Select **Private Cloud Gateways** from the **Tenant Settings Menu**.
 
-4. Indentify the PCG you want to modify and click on the **Three-Dot Menu** at the end of the PCG row.
+4. Identify the PCG you want to modify and click on the **Three-Dot Menu** at the end of the PCG row.
 
 5. Select **Set number of nodes**.
 

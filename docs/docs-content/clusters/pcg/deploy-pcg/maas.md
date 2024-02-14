@@ -135,7 +135,7 @@ is not required for the DNS records to be accessible from the internet.
     | **Parameter**                                        | **Description**                                                                                                                                                                                                                                  |
     | :--------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
     | **Management Plane Type**                            | Select Palette or VerteX.                                                                                                                                                                                                                        |
-    | **Enable Ubuntu Pro (required for production)**      | Choose `y` if you want to to use Ubuntu Pro, otherwise press `n`. If you select `y`, you will be be asked to provide an Ubuntu Pro token.                                                                                                        |
+    | **Enable Ubuntu Pro (required for production)**      | Choose `y` if you want to use Ubuntu Pro, otherwise press `n`. If you select `y`, you will be asked to provide an Ubuntu Pro token.                                                                                                              |
     | **Select an image registry type**                    | Choose `Default` to pull images from public image registries. This requires an internet connection. Airgap customers, select `Custom` so you can point to our airgap support VM or a custom internal registry that contains the required images. |
     | **Cloud Type**                                       | Select MAAS.                                                                                                                                                                                                                                     |
     | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG. Example: `maas-pcg-1`.                                                                                                                                                                                          |
@@ -183,7 +183,7 @@ is not required for the DNS records to be accessible from the internet.
     | **Reboot nodes once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are applied.             |
     | **Availability Zone**                     | Select the availability zones for the PCG cluster.                                                    |
     | **Number of Nodes**                       | Select the number of nodes for the PCG cluster. We recommend three nodes for production environments. |
-    | **Node Affinity**                         | Select `y` to allow pods to be scehduled all Palette pods on control plane nodes.                     |
+    | **Node Affinity**                         | Select `y` to allow pods to be scheduled all Palette pods on control plane nodes.                     |
 
     :::warning
 

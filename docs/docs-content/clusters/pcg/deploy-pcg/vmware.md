@@ -40,7 +40,7 @@ The following system requirements must be met to install a PCG in VMware vSphere
 
 - Private cloud gateway IP requirements:
 
-  - One IP address for a single node PCG or three three IP addresses for a three node PCG. Refer to the
+  - One IP address for a single node PCG or three IP addresses for a three node PCG. Refer to the
     [PCG Sizing](./deploy-pcg.md#pcg-sizing) section for more information on sizing
   - One IP address reserved for cluster repave operations
   - One IP address for the Virtual IP (VIP)
@@ -106,12 +106,12 @@ the following table. Review the vSphere objects and privileges required to ensur
 privileges.
 
 <details>
-  <summary>Click to reveal all requried vSphere permissions</summary>
+  <summary>Click to reveal all required vSphere permissions</summary>
 
 #### Spectro Root Role Privileges
 
-The spectro root role privileges are only applied to root objects and data center objects. Select the tab for the
-vSphere version you are using to view the required privileges for the spectro root role.
+The Spectro root role privileges are only applied to root objects and data center objects. Select the tab for the
+vSphere version you are using to view the required privileges for the Spectro root role.
 
 <Tabs  groupId="vsphere-version">
 
@@ -171,13 +171,13 @@ without “Propagate to children” is required.
 
 #### Spectro Role Privileges
 
-As listed in the table, apply spectro role privileges to vSphere objects you intend to use for the PCG installation. A
+As listed in the table, apply Spectro role privileges to vSphere objects you intend to use for the PCG installation. A
 separate table lists Spectro role privileges for VMs by category.
 
 During the installation, images and Open Virtual Appliance (OVA) files are downloaded to the folder you selected. These
 images are cloned from the folder and applied VMs that deployed during the installation.
 
-Select the tab for the vSphere version you are using to view the required privileges for the spectro role.
+Select the tab for the vSphere version you are using to view the required privileges for the Spectro role.
 
 <Tabs groupId="vsphere-version">
 
@@ -199,7 +199,7 @@ Select the tab for the vSphere version you are using to view the required privil
 | **vApp**              | Import<br />View OVF environment<br />Configure vAPP application<br />Configure vApp instance                                     |
 | **vSphere tagging**   | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag                              |
 
-The following table lists spectro role privileges for VMs by category. All privileges are for the vSphere object,
+The following table lists Spectro role privileges for VMs by category. All privileges are for the vSphere object,
 Virtual Machines.
 
 | **Category**          | **Privileges**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
@@ -234,7 +234,7 @@ Virtual Machines.
 | **vApp**                   | Import<br />View OVF environment<br />Configure vAPP applications<br />Configure vApp instances                                   |
 | **vSphere tagging**        | Assign or unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag                              |
 
-The following table lists spectro role privileges for VMs by category. All privileges are for the vSphere object,
+The following table lists Spectro role privileges for VMs by category. All privileges are for the vSphere object,
 Virtual Machines.
 
 | **Category**          | **Privileges**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
@@ -269,7 +269,7 @@ Virtual Machines.
 | **vApp**                   | Import<br />View OVF environment<br />Configure vAPP applications<br />Configure vApp instances                                   |
 | **vSphere tagging**        | Assign or unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag                              |
 
-The following table lists spectro role privileges for VMs by category. All privileges are for the vSphere object,
+The following table lists Spectro role privileges for VMs by category. All privileges are for the vSphere object,
 Virtual Machines.
 
 | **Category**          | **Privileges**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
