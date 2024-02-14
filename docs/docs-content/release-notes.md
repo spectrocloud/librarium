@@ -14,7 +14,7 @@ tags: ["release-notes"]
 ### Bug Fixes
 
 - Fixed an issue that caused errors when creating pods after a certificate renewal.
-- Resolved image pull errors from the Amazon ECR Public Gallery.
+- Resolved image pull errors from the AWS ECR registry.
 
 ## January 25, 2024 - Release 4.2.7
 
