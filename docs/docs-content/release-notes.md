@@ -13,7 +13,7 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
-- Fixed an issue with CAPA certificate manager annotations that caused errors when pods are created after a certificate renewal.
+- Fixed an issue that caused errors when creating pods after a certificate renewal.
 - Resolved image pull errors from the Amazon ECR Public Gallery.
 
 ## January 25, 2024 - Release 4.2.7
