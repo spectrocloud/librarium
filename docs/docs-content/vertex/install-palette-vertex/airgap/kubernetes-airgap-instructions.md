@@ -64,22 +64,17 @@ properly.
 
 :::
 
-- jq - Command-line JSON processor installed and available. Refer to the [jq](https://jqlang.github.io/jq/download/)
-  download page for guidance.
-
 - To interact with the OCI registry, you must have the following tools installed and available.
 
   - [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) - Required for AWS ECR.
-
   - [Oras](https://oras.land/docs/installation.html) CLI v1.0.0 - This version is explicitly required for the setup
     script.
-
   - [zip](https://linux.die.net/man/3/zip) - Required for the setup script.
-
   - [unzip](https://linux.die.net/man/1/unzip) - or equivalent for extracting the manifest content from the airgap setup
     binary.
-
-<br />
+  - [jq](https://jqlang.github.io/jq/download/) - Command-line JSON processor installed and available.
+  - [Docker](https://docs.docker.com/get-docker/) - The airgap setup binary requires Docker to be installed and
+    available.
 
 ## Instructions
 
