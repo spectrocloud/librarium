@@ -47,15 +47,15 @@ look feel of the console for all Edge hosts of your organization.
 
 1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
 
-```bash
-git clone https://github.com/spectrocloud/CanvOS.git
-```
+   ```bash
+   git clone https://github.com/spectrocloud/CanvOS.git
+   ```
 
 2. Change to the **CanvOS/** directory.
 
-```bash
-cd CanvOS
-```
+   ```bash
+   cd CanvOS
+   ```
 
 3. Create a directory called **ui.tar** at the path `CanvOS/ui.tar`.
 

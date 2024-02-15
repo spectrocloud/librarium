@@ -46,27 +46,27 @@ The following files are used to customize the provider images:
 
 1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
 
-```bash
-git clone https://github.com/spectrocloud/CanvOS.git
-```
+   ```bash
+   git clone https://github.com/spectrocloud/CanvOS.git
+   ```
 
 2. Change to the **CanvOS/** directory.
 
-```bash
-cd CanvOS
-```
+   ```bash
+   cd CanvOS
+   ```
 
 3. View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
 
-```bash
-git tag
-```
+   ```bash
+   git tag
+   ```
 
 4. Check out the newest available tag. This guide uses the tag **v4.3.0** as an example.
 
-```shell
-git checkout v4.3.0
-```
+   ```shell
+   git checkout v4.3.0
+   ```
 
 5. Review the files relevant for this guide.
 
@@ -85,7 +85,7 @@ git checkout v4.3.0
    | `IMAGE_REGISTRY`   | Image registry name                                                 | ttl.sh             | Your image registry hostname, without `http` or `https` <br /> Example: docker.io/spectrocloud |
    | `OS_DISTRIBUTION`  | OS Distribution                                                     | ubuntu             | ubuntu, opensuse-leap                                                                          |
    | `IMAGE_REPO`       | Image repository name.<br /> It is the same as the OS distribution. | `$OS_DISTRIBUTION` | Your image repository name.                                                                    |
-   | `OS_VERSION`       | OS version, only applies to Ubuntu                                  | 22                 | 20, 22                                                                                         |
+   | `OS_VERSION`       | OS version, only applies to Ubuntu                                  | 22.04              | 20, 22.04                                                                                      |
    | `K8S_DISTRIBUTION` | Kubernetes Distribution                                             | k3s                | k3s, rke2, kubeadm                                                                             |
    | `ARCH`             | Architecture of the image.                                          | `amd64`            | `amd64`, `arm64`                                                                               |
 
@@ -105,10 +105,11 @@ git checkout v4.3.0
    export IMAGE_REGISTRY=docker.io/[DOCKER-ID]
    ```
 
-9. Issue the following command to use the openSUSE Leap OS distribution.
+9. Issue the following command to use the Ubuntu OS distribution and use the 22.04 version.
 
    ```bash
-   export OS_DISTRIBUTION=opensuse-leap
+   export OS_DISTRIBUTION=ubuntu
+   export OS_VERSION=22.04
    ```
 
 10. Issue the command below to create the **.arg** file containing the custom tag, Docker Hub image registry hostname,
@@ -119,6 +120,7 @@ git checkout v4.3.0
     cat << EOF > .arg
     IMAGE_REGISTRY=$IMAGE_REGISTRY
     OS_DISTRIBUTION=$OS_DISTRIBUTION
+    OS_VERSION=$OS_VERSION
     IMAGE_REPO=$OS_DISTRIBUTION
     CUSTOM_TAG=$CUSTOM_TAG
     K8S_DISTRIBUTION=k3s
@@ -130,7 +132,10 @@ git checkout v4.3.0
     EOF
     ```
 
-11. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
+11. Open the **Earthfile** in the CanvOS directory. Under `build-provider-images`, remove the lines containing
+    Kubernetes versions that you do not need.
+
+12. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
     start the build process.
 
     ```bash
@@ -143,21 +148,19 @@ git checkout v4.3.0
     Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
     ```
 
-12. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file.
+13. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file.
     Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
     ```bash
     docker login
     ```
 
-13. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
+14. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
     `[DOCKER-ID]` and version numbers in the command below with your Docker ID and respective Kubernetes versions that
     the utility created.
 
     ```bash
-    docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.27.2-v4.0.6-palette-learn
-    docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.26.6-v4.0.6-palette-learn
-    docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.25.2-v4.0.6-palette-learn
+    docker push docker.io/[DOCKER-ID]/ubuntu:k3s-1.28.2-v4.3.0-palette-learn
     ```
 
 ## Validate
@@ -171,11 +174,9 @@ git checkout v4.3.0
 
 2. Verify that the provider images were created successfully.
 
-   ```
-   REPOSITORY             TAG                                   IMAGE ID       CREATED         SIZE
-   ttl.sh/ubuntu          k3s-1.27.2-v4.0.6-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
-   ttl.sh/ubuntu          k3s-1.25.2-v4.0.6-palette-learn       02424d29fcac   10 minutes ago   4.09GB
-   ttl.sh/ubuntu          k3s-1.26.4-v4.0.6-palette-learn       4e373ddfb53f   10 minutes ago   4.11GB
+   ```hideClipboard
+   REPOSITORY                            TAG                                   IMAGE ID       CREATED         SIZE
+   docker.io/[DOCKER-ID]/ubuntu          k3s-1.28.2-v4.3.0-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
    ```
 
 ## Next Steps
