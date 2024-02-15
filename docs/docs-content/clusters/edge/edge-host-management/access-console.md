@@ -10,24 +10,30 @@ tags: ["edge"]
 The Edge Management Console (EMC) allows you to manage Edge hosts in your network locally, upload content such as images
 and packs, and create Edge clusters without connections to a centralized Palette installation.
 
+:::preview
+
+:::
+
 This page guides you through how access the console, and log in, and manage your username and password.
 
 ## Log in to Edge Management Console
 
 ### Prerequisites
 
-- An Edge host with Palette Edge 4.3 or later.
+- An Edge host with installed with Edge Installer 4.3 or later using the `airgapped` install mode.
 
-- You have completed the initial configuration of the Edge host.
+- You have completed or skipped the initial configuration of the Edge host. For more information, refer to
+  [Edge Host Initial Configuration](../site-deployment/initial-setup.md).
 
-- Network access to the Edge host's 5080 port.
+- Network access to the Edge host's port where EMC is exposed. The default port is 5080.
 
-### Log in to Edge Management Console
+### Instructions
 
 1. Ensure the Edge host is powered on.
 
 2. In your browser, go to `https://HOST_IP:5080`. Replace `HOST_IP` with the IP address of your Edge host. If you have
-   access to the Edge host terminal, the address of the EMC console is displayed on the terminal screen.
+   access to the Edge host terminal, the address of the EMC console is displayed on the terminal screen. If you have
+   changed the default port of the console, replace `5080` with the EMC port.
 
 3. You'll be prompted to log in. Enter your username and password to log in.
 
@@ -46,7 +52,7 @@ This page guides you through how access the console, and log in, and manage your
 
 - Network access to the Edge host's 5080 port.
 
-### Log out of Edge Management Console
+### Instructions
 
 1. In your browser, go to `https://HOST_IP:5080`. Replace `HOST_IP` with the IP address of your Edge host. If you have
    access to the Edge host terminal, the address of the EMC console is displayed on the terminal screen.
@@ -69,7 +75,7 @@ This page guides you through how access the console, and log in, and manage your
 
 - Network access to the Edge host's 5080 port.
 
-### Change User Password
+### Instructions
 
 1. [Log in](#log-in-to-edge-management-console) to the Edge Management Console.
 

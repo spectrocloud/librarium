@@ -7,8 +7,8 @@ sidebar_position: 32
 tags: ["edge"]
 ---
 
-You can create and manage a single-node cluster locally from the Edge Management Console, without needing a connection
-to a central Palette instance. This page guides you through how to create a cluster using Edge Management Console.
+You can create and manage a single-node cluster locally from the Edge Management Console (EMC). This page guides you
+through how to create a cluster using Edge Management Console.
 
 ## Limitations
 
@@ -17,12 +17,12 @@ to a central Palette instance. This page guides you through how to create a clus
 
 ## Prerequisites
 
-- Network access to the Edge device's 5080 port.
+- Network access to the Edge device's port where EMC is exposed. The default port is 5080.
 
-- Credentials to log into the Edge Management Console.
+- Credentials to log into EMC.
 
 - You have uploaded the necessary software artifacts to the Edge host. For more information, refer to
-  [Build and Upload Content Bundle](./upload-content-bundle.md).
+  [Upload Content Bundle](./upload-content-bundle.md).
 
 ## Create Local Cluster
 
@@ -40,7 +40,7 @@ to a central Palette instance. This page guides you through how to create a clus
    you used to install Palette Edge on your Edge host.
 
    To learn more about how to export a cluster configuration and import it during this step, refer to [Export Cluster
-   Configuration].
+   Definition].
 
    After you finish configuring the cluster profile, click **Next**.
 

@@ -18,7 +18,12 @@ component.
 
 ## Get Started
 
-To start building a custom Edge artifact, use the [Build Edge Artifacts](palette-canvos.md) guide.
+To start building a custom Edge artifact, use the following guides:
+
+- [Build Edge Artifacts](palette-canvos.md). This guide builds both the Edge Installer ISO and provider images to help
+  you get started quickly,
+- [Build Provider Images](./build-provider-images.md).
+- [Build Installer ISO](./build-installer-iso.md).
 
 ## Edge Artifacts
 

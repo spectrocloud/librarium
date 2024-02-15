@@ -21,9 +21,16 @@ Optionally, you can build the following content into the Edge installer ISO to c
     [Apply Site User Data](../site-deployment/site-installation/site-user-data.md).
 - Content bundles. This is an archive of all images, helm charts and packs used for any number of specified cluster
   profiles.
-- Cluster definition. Cluster definitions contains a cluster profile and any profile variables used in the profile. When
-  you include a cluster definition during the Edge Installer ISO build process, you can create a new cluster that uses
-  your imported cluster definition in your Edge host.
+- Cluster definition (Tech Preview). Cluster definitions contains cluster profiles and any profile variables used in the
+  profiles. When you include a cluster definition during the Edge Installer ISO build process, you can create a new
+  cluster that uses your imported cluster definition in your Edge host using the Edge Management Console (EMC).
+
+:::preview
+
+EMC, profile variables, and incorporating cluster definitions into your Edge Installer ISO are all Tech Preview features
+and should not be used in production workloads.
+
+:::
 
 The benefits of building the above content into the ISO is that you can ensure the standardization of your Edge
 deployments through the installer. Whether you build the content into the installer ISO or not, you always have the
