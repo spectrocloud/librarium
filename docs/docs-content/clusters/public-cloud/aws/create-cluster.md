@@ -85,11 +85,11 @@ Use the following steps to provision a new AWS cluster:
 
    #### Static Placement
 
-   | Parameter                                                                                 | Description |
-   | ----------------------------------------------------------------------------------------- | ----------- |
-   | **VPCID**: Select the Virtual Private Cloud (VPC) ID network from the **drop-down Menu**. |
-   | **Control plane subnet**: Select the control plane network from the **drop-down Menu**.   |
-   | **Worker Network**: Select the worker network from the **drop-down Menu**.                |
+   | Parameter                | Description                                                                    |
+   | ------------------------ | ------------------------------------------------------------------------------ |
+   | **VPCID**                | Select the Virtual Private Cloud (VPC) ID network from the **drop-down Menu**. |
+   | **Control plane subnet** | Select the control plane network from the **drop-down Menu**.                  |
+   | **Worker Network**       | Select the worker network from the **drop-down Menu**.                         |
 
 10. Configure the control plane and worker node pools. A control plane and a worker node pool are configured by default.
     Refer to the [Node Pool](../../cluster-management/node-pool.md) documentation to learn more about the node pool
