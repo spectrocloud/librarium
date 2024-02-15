@@ -54,32 +54,25 @@ HTTPS. If you are using Harbor, you must enable HTTPS to authenticate with the r
 
   - [Caddy](https://caddyserver.com/)
 
-  <br />
+  :::warning
 
-:::warning
+  Take the necessary steps to secure your file server and ensure it can automatically recover from a failure. The file
+  server is a critical component of the airgap installation and must be available post-install for Palette to function
+  properly.
 
-Take the necessary steps to secure your file server and ensure it can automatically recover from a failure. The file
-server is a critical component of the airgap installation and must be available post-install for Palette to function
-properly.
-
-:::
-
-- jq - Command-line JSON processor installed and available. Refer to the [jq](https://jqlang.github.io/jq/download/)
-  download page for guidance.
+  :::
 
 - To interact with the OCI registry, you must have the following tools installed and available.
 
   - [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) - Required for AWS ECR.
-
   - [Oras](https://oras.land/docs/installation.html) CLI v1.0.0 - This version is explicitly required for the setup
     script.
-
   - [zip](https://linux.die.net/man/3/zip) - Required for the setup script.
-
   - [unzip](https://linux.die.net/man/1/unzip) - or equivalent for extracting the manifest content from the airgap setup
     binary.
-
-<br />
+  - [jq](https://jqlang.github.io/jq/download/) - Command-line JSON processor installed and available.
+  - [Docker](https://docs.docker.com/get-docker/) - The airgap setup binary requires Docker to be installed and
+    available.
 
 ## Instructions
 
