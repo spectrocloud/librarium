@@ -32,6 +32,9 @@ an Edge installer ISO image and provider images for all the Palette-supported Ku
 multiple provider images, so you can use either one that matches the desired Kubernetes version you want to use with
 your cluster profile.
 
+If you want to build the ISO image and the provider images individually, refer to
+[Build Provider Images](./build-provider-)
+
 :::info
 
 CanvOS is a utility that helps you build Edge artifacts. CanvOS is part of the EdgeForge workflow.

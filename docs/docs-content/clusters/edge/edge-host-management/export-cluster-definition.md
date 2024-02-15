@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Export Cluster Definition“
-title: "Export Cluster Definition“
+sidebar_label: "Export Cluster Definition"
+title: "Export Cluster Definition"
 description: "Instructions for exporting cluster definition."
 hide_table_of_contents: false
 sidebar_position: 32
