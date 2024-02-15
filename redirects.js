@@ -41,11 +41,11 @@ const redirects = [
   },
   {
     from: `/devx/registries/helm-registry`,
-    to: `/registries-and-packs/helm-charts`,
+    to: `/registries-and-packs/registries/helm-charts`,
   },
   {
     from: `/devx/registries/oci-registry`,
-    to: `/registries-and-packs/oci-registry`,
+    to: `/registries-and-packs/registries/oci-registry`,
   },
   {
     from: `/clusters/palette-virtual-clusters/virtual-cluster-quickstart`,
@@ -65,7 +65,11 @@ const redirects = [
   },
   {
     from: `/getting-started/free-cloud-credit`,
-    to: `/getting-started/palette-freemium`,
+    to: `/getting-started`,
+  },
+  {
+    from: `/getting-started/palette-freemium`,
+    to: `/getting-started`,
   },
   {
     from: `/clusters/public-cloud/eks`,
@@ -239,7 +243,7 @@ const redirects = [
     from: `/devx/app-profile/container-deployment`,
     to: `/profiles/app-profiles/create-app-profiles/container-deployment`,
   },
-   {
+  {
     from: `/devx/app-profile/app-profile-macros`,
     to: `/profiles/app-profiles/app-profile-output-vars`,
   },
@@ -309,36 +313,69 @@ const redirects = [
   },
   {
     from: `/enterprise-version/deploying-palette-with-helm`,
-    to: `/enterprise-version/install-palette/install-on-kubernetes/install`
+    to: `/enterprise-version/install-palette/install-on-kubernetes/install`,
   },
   {
-   from: `/enterprise-version/helm-chart-install-reference`,
-    to: `/enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref` 
+    from: `/enterprise-version/helm-chart-install-reference`,
+    to: `/enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref`,
   },
   {
     from: `/enterprise-version/system-console-dashboard`,
-    to: `/enterprise-version/system-management`
+    to: `/enterprise-version/system-management`,
   },
   {
     from: `/enterprise-version/enterprise-cluster-management`,
-    to: `/enterprise-version/system-management`
+    to: `/enterprise-version/system-management`,
   },
   {
     from: `/enterprise-version/monitoring`,
-    to: `/enterprise-version/system-management`
+    to: `/enterprise-version/system-management`,
   },
   {
     from: `/enterprise-version/air-gap-repo`,
-    to: `/enterprise-version/install-palette`
+    to: `/enterprise-version/install-palette`,
   },
   {
     from: `/enterprise-version/reverse-proxy`,
-    to: `/enterprise-version/system-management/reverse-proxy`
+    to: `/enterprise-version/system-management/reverse-proxy`,
   },
   {
     from: `/enterprise-version/ssl-certificate-management`,
-    to: `/enterprise-version/system-management/ssl-certificate-management`
-  }
+    to: `/enterprise-version/system-management/ssl-certificate-management`,
+  },
+  {
+    from: `/clusters/cluster-management/palette-lock-cluster`,
+    to: `/clusters/cluster-management/platform-settings`,
+  },
+  {
+    from: `/registries-and-packs/helm-charts`,
+    to: `/registries-and-packs/registries/helm-charts`,
+  },
+  {
+    from: `/registries-and-packs/oci-registry`,
+    to: `/registries-and-packs/registries/oci-registry`,
+  },
+  {
+    from: `/compliance`,
+    to: `/legal-licenses/compliance`,
+  },
+  {
+    from: [
+      `/clusters/public-cloud/cox-edge/`,
+      `/clusters/public-cloud/cox-edge/add-cox-edge-accounts`,
+      `/clusters/public-cloud/cox-edge/create-cox-cluster`,
+      `/clusters/public-cloud/cox-edge/network-rules`,
+    ],
+    to: `/unlisted/cox-edge-eol`,
+  },
+  {
+    from: "/user-management/saml-sso/palette-sso-azure-ad",
+    to: "/user-management/saml-sso/palette-sso-with-entra-id",
+  },
+  {
+    from: "/user-management/saml-sso/enable-saml",
+    to: "/user-management/saml-sso/",
+  },
 ];
 
 module.exports = redirects;

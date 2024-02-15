@@ -25,16 +25,14 @@ concurrency:
 jobs:
   build:
     name: Build
-    runs-on: 
-      group: 'Doc Runners'
-      labels: docbot
+    runs-on: ubuntu-latest
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "18"
           cache: "npm"
@@ -50,3 +48,14 @@ jobs:
           aws s3 sync --cache-control 'public, max-age=604800' --exclude '*.html' --exclude '*.xml' --exclude build/scripts/ build/ s3://docs-latest.spectrocloud.com --delete
           aws s3 sync --cache-control 'public, max-age=0, s-maxage=604800' build/ s3://docs-latest.spectrocloud.com --delete
           aws cloudfront create-invalidation --distribution-id ${{ secrets.LATEST_DOCS_DISTRIBUTION_ID }} --paths "/*"
+
+
+      - name: Post Netlify URL
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+              🚀 docs-latest.spectrocloud.com preview deployed succesfully for commit ${{ github.sha }}. Click [here](https://docs-latest.spectrocloud.com) to preview the changes.
+          message-failure: |
+              👎 Uh oh! The Netlify Preview failed to deploy for commit ${{ github.sha }}. Please check the Netlify logs for more information.
+          refresh-message-position: true
+          update-only: true

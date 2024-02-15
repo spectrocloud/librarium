@@ -5,8 +5,8 @@
 # Release branches get a preview through docs-latest.spectrocloud.com
 
 
-# List of branches to NOT create an automatic Netlify preview
-disallowed_branches=("master" "release-*" "version-*" "backport/**")
+# List of branches to NOT create an automatic Netlify preview. This also includes branch-deploy previews.
+disallowed_branches=("master" "release-*")
 
 # Get current branch name
 current_branch=$(git branch --show-current)

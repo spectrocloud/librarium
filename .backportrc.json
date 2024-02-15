@@ -3,12 +3,10 @@
   "repoName": "librarium",
   "editor": "code",
 
-  "targetBranchChoices": ["master", "version-4-0", "version-3-4"],
+  "targetBranchChoices": ["master", "version-4-1", "version-4-0", "version-3-4"],
 
   "autoMerge": true,
   "autoMergeMethod": "squash",
 
-  "branchLabelMapping": {
-    "^backport-(.+)$": "$1"
-  }
+  "branchLabelMapping": { "^backport-(.+)$": "$1" }
 }

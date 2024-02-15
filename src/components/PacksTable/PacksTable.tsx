@@ -11,6 +11,8 @@ type Pack = {
   cloudTypesFormatted: string;
   version: string;
   status: string;
+  prodStatus: string;
+  inProduction: string;
   packCreateDate: string;
   packLastModifiedDate: string;
   timeLastUpdated: string;
@@ -23,6 +25,37 @@ const statusClassNames: Record<string, string> = {
   deprecated: styles.deprecated,
   deleted: styles.deleted,
   disabled: styles.disabled,
+};
+
+// Format the cloud type strings so they display properly
+const formatCloudType = (type: string): string => {
+  const cloudTypeMapping: Record<string, string> = {
+    aws: "AWS",
+    eks: "EKS",
+    vsphere: "vSphere",
+    maas: "MaaS",
+    gcp: "GCP",
+    libvirt: "libvirt",
+    openstack: "OpenStack",
+    "edge-native": "Edge",
+    tke: "TKE",
+    aks: "AKS",
+    coxedge: "Cox Edge",
+    gke: "GKE",
+    all: "All",
+    azure: "Azure",
+    // ... add other special cases as needed
+  };
+
+  return type
+    .split(",")
+    .map((part) => cloudTypeMapping[part.trim()] || capitalizeWord(part))
+    .join(", ");
+};
+
+// Capitalize the word as a default option
+const capitalizeWord = (string: string): string => {
+  return string.toUpperCase();
 };
 
 interface PacksColumn {
@@ -43,6 +76,14 @@ const columns: PacksColumn[] = [
     width: 200,
   },
   {
+    title: "Cloud Types",
+    dataIndex: "cloudTypesFormatted",
+    key: "cloudTypesFormatted",
+    sorter: (a: Pack, b: Pack) => a.cloudTypesFormatted.localeCompare(b.cloudTypesFormatted),
+    render: (value: string) => formatCloudType(value),
+    width: 200,
+  },
+  {
     title: "Version",
     dataIndex: "version",
     key: "version",
@@ -51,9 +92,9 @@ const columns: PacksColumn[] = [
   },
   {
     title: "Status",
-    dataIndex: "status",
-    key: "status",
-    sorter: (a: Pack, b: Pack) => a.status.localeCompare(b.status),
+    dataIndex: "prodStatus",
+    key: "prodStatus",
+    sorter: (a: Pack, b: Pack) => a.prodStatus.localeCompare(b.prodStatus),
     render: (status: string) => {
       const className = statusClassNames[status];
       return <span className={className}>{status}</span>;
@@ -101,7 +142,18 @@ const FilteredTable: React.FC = () => {
     fetch("/packs-data/packs_report.json")
       .then((response) => response.json())
       .then((packData: PacksData) => {
-        const deprecatedPackData = packData.Packs.filter((pack) => pack.status !== "active");
+        const deprecatedPackData = packData.Packs.filter((pack) => {
+          // Handle the case where the pack name is empty.
+          // This is applicable when the API returns a pack with no name.
+          // The API also does not include the last modified date for these packs.
+          if (pack.displayName == "") {
+            pack.displayName = toTitleCase(pack.name);
+            pack.timeLastUpdated = "-";
+            pack.packLastModifiedDate = "-";
+          }
+
+          return pack.prodStatus !== "active" && pack.prodStatus !== "unknown";
+        });
         setDeprecatedPacks(deprecatedPackData);
         setLoading(false);
       })
@@ -122,7 +174,7 @@ const FilteredTable: React.FC = () => {
   }, []);
 
   const filteredPacks = searchValue
-    ? deprecatedPacks.filter((pack) => pack.name.toLowerCase().includes(searchValue.toLowerCase()))
+    ? deprecatedPacks.filter((pack) => pack.displayName.toLowerCase().includes(searchValue.toLowerCase()))
     : deprecatedPacks;
 
   return (
@@ -140,5 +192,24 @@ const FilteredTable: React.FC = () => {
     </div>
   );
 };
+
+// Convert the pack name to title case
+export function toTitleCase(str: string) {
+  return (
+    str
+      .replace(/([a-z])([A-Z])|-/g, "$1 $2")
+      // Split, filter, and capitalize words
+      .split(/\s+/)
+      .map((word) => {
+        // Words that should be capitalized
+        if (["CNI", "CSI", "OSS", "EBS", "AWS"].includes(word.toUpperCase())) {
+          return word.toUpperCase();
+        }
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      })
+      .filter((word) => word)
+      .join(" ")
+  );
+}
 
 export default FilteredTable;

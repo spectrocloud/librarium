@@ -55,8 +55,7 @@ export default function Technologies({ data }: TechnologiesProps) {
     }
 
     if (selectedCategory !== "all") {
-      technologies =
-        technologies.filter(({ fields }) => fields.category.includes(selectedCategory)) || [];
+      technologies = technologies.filter(({ fields }) => fields.category.includes(selectedCategory)) || [];
     }
 
     return technologies;
@@ -68,18 +67,12 @@ export default function Technologies({ data }: TechnologiesProps) {
 
   return (
     <div className={styles.wrapper}>
-      <CategorySelector
-        categories={[...categories]}
-        selectCategory={setSelectedCategory}
-        selected={selectedCategory}
-      />
+      <CategorySelector categories={[...categories]} selectCategory={setSelectedCategory} selected={selectedCategory} />
       <Search onSearch={onSearch} placeholder={"Search for integration..."} />
       <div className={styles.technologyWrapper}>
         {technologies.map(({ fields }) => {
           const { title, slug, logoUrl } = fields;
-          return (
-            <TechnologyCard title={title} slug={slug} logoUrl={logoUrl} key={slug}></TechnologyCard>
-          );
+          return <TechnologyCard title={title} slug={slug} logoUrl={logoUrl} key={slug}></TechnologyCard>;
         })}
       </div>
     </div>

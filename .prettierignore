@@ -2,3 +2,13 @@
 build
 node_modules
 Dockerfile
+src/deprecated
+vale/
+**/*.yaml
+**/*.yml
+
+docs/api-content/**/*.json
+
+# Troublesome files
+tsconfig.json
+src/components/IconMapper/dynamicFontAwesomeImports.js

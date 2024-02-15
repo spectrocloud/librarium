@@ -1,15 +1,18 @@
 ---
 sidebar_label: "Checklist"
 title: "Checklist"
-description: "An airgap installation of VerteX requires a few steps to be completed before the installation can begin. This checklist will help you prepare for the installation."
+description:
+  "An airgap installation of VerteX requires a few steps to be completed before the installation can begin. This
+  checklist will help you prepare for the installation."
 icon: ""
 sidebar_position: 40
 hide_table_of_contents: false
 tags: ["vertex", "self-hosted", "airgap"]
+keywords: ["self-hosted", "vertex"]
 ---
- 
 
-Use the following checklist to ensure you have completed all the required steps before deploying the airgap Palette VerteX installation.
+Use the following checklist to ensure you have completed all the required steps before deploying the airgap Palette
+VerteX installation.
 
 <Tabs queryString="platform">
 
@@ -21,65 +24,45 @@ Use the following checklist to ensure you have completed all the required steps 
 
 - [ ] `zip` is installed and available.
 
-- [ ] Downloaded the airgap setup binary from the support team.
+- [ ] Download the airgap setup binary from the support team.
 
-- [ ] Created a private repository with the name `spectro-packs` in your OCI registry. You can use a different name if you prefer.
+- [ ] Create a private repository named `spectro-packs` in your OCI registry. You can use a different name if you
+      prefer.
 
-- [ ] Created a public repository with the name `spectro-images` in your OCI registry. You can use a different name if you prefer.
+- [ ] Create a public repository named `spectro-images` in your OCI registry. You can use a different name if you
+      prefer.
 
-- [ ] Authenticated with your OCI registry and acquired credentials to both repositories.
+- [ ] Authenticate with your OCI registry and acquired credentials to both repositories.
 
 - [ ] Download the Certificate Authority (CA) certificate from your OCI registry.
 
-- [ ] Set the required environment variables for the airgap setup binary. The values are different depending on what type of OCI registry you use.
+- [ ] Set the required environment variables for the airgap setup binary. The values are different depending on what
+      type of OCI registry you use.
 
-- [ ] Started the airgap setup binary and verified the setup completed successfully.
+- [ ] Start the airgap setup binary and verify the setup is completed successfully.
 
-- [ ] Reviewed the list of pack binaries to download and upload to your OCI registry. 
+- [ ] Review the list of pack binaries to download and upload to your OCI registry.
 
-- [ ] Extracted the manifest content from the airgap setup binary to an HTTP file server.
+- [ ] Extract the manifest content from the airgap setup binary to an HTTP file server.
 
-- [ ] Ensured the manifest content is hosted on an HTTP file server that is accessible from the environment you are installing VerteX.
+- [ ] Ensure the manifest content is hosted on an HTTP file server accessible from the environment to which you are
+      installing VerteX.
 
 </TabItem>
-
-
 
 <TabItem label="VMware vSphere" value="vsphere">
 
-- [ ] `oras` CLI v1.0.0 is installed and available.
+- [ ] Create a vSphere VM and Template folder named `spectro-templates`.
 
-- [ ] `aws` CLI v2 or greater CLI is installed and available.
+- [ ] Import the Operating System and Kubernetes distribution OVA required for the installation and place the OVA in the
+      `spectro-templates` folder.
 
-- [ ] `zip` is installed and available.
+- [ ] Append an `r_` prefix and remove the `.ova` suffix from the OVA name after the import.
 
-- [ ] Downloaded the airgap setup binary from the support team.
+- [ ] Start the airgap setup binary and verify the setup is completed successfully.
 
-- [ ] Created a vSphere VM and Template folder with the name `spectro-templates`.
-
-- [ ] Imported the Operating System and Kubernetes distribution OVA required for the install and placed the OVA in the `spectro-templates` folder.
-
-- [ ] Appended an `r_` prefix to the OVA name after the import.
-
-- [ ] Created a private repository with the name `spectro-packs` in your OCI registry. You can use a different name if you prefer.
-
-- [ ] Created a public repository with the name `spectro-images` in your OCI registry.  You can use a different name if you prefer.
-
-- [ ] Authenticated with your OCI registry and acquired credentials to both repositories.
-
-- [ ] Download the Certificate Authority (CA) certificate from your OCI registry.
- 
-- [ ] Set the required environment variables for the airgap setup binary. Refer to step 8 in the [Preparation](#preperation) section for information.
-
-- [ ] Started the airgap setup binary and verified the setup completed successfully
-
-- [ ] Reviewed the list of pack binaries to download and upload to your OCI registry. 
-
-- [ ] Extracted the manifest content from the airgap setup binary to an HTTP file server.
-
-- [ ] Ensured the manifest content is hosted on an HTTP file server that is accessible from the vSphere environment you are installing VerteX.
+- [ ] Reviewe the list of [pack binaries](./supplemental-packs.md) to download and upload to your OCI registry.
 
 </TabItem>
-
 
 </Tabs>

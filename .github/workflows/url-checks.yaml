@@ -12,19 +12,17 @@ concurrency:
 name: Broken URL check
 jobs:
   markdown-link-check:
-    runs-on: 
-      group: 'Doc Runners'
-      labels: docbot
+    runs-on: ubuntu-latest
     steps:
       - id: checkout
         name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Nodejs
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 

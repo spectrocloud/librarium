@@ -187,6 +187,10 @@ pre code {
   border-left: unset;
 }
 
+.theme-doc-version-badge p {
+  margin: 0;
+}
+
 h2.openapi__method-endpoint-path {
   font-size: 14px;
   margin-left: 8px;
@@ -194,4 +198,18 @@ h2.openapi__method-endpoint-path {
 
 .markdown .card h2 {
   font-size: 1rem;
+}
+
+// Center images and round image corners
+
+p img.markdown-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1vw;
+}
+
+.custom-admonition {
+  border: 1px solid var(--custom-important-color);
+  background-color: var(--custom-alert-bg-color);
 }
