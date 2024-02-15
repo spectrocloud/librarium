@@ -8,13 +8,17 @@ sidebar_position: 30
 tags: ["edge"]
 ---
 
-Provider images are Kairos-based images containing the OS and the desired Kubernetes versions. These images install an
-immutable Operating System (OS) and software dependencies compatible with a specific Kubernetes version at runtime,
-i.e., during the cluster deployment. A provider image is used in the OS and the Kubernetes layer when creating a cluster
-profile. These container images are downloaded during the installation by the Edge Installer and converted to disk
-images for the system to boot into.
+In this guide, you will use the CanvOS utility to build provider images for your Edge deployment. Provider images are
+Kairos-based images containing the OS and the desired Kubernetes versions. These images install an immutable Operating
+System (OS) and software dependencies compatible with a specific Kubernetes version during the cluster deployment. A
+provider image is used in the OS and the Kubernetes layer when creating a cluster profile. These container images are
+downloaded during the installation by the Edge Installer and converted to disk images for the system to boot into.
 
-In this guide, you will use the CanvOS utility to build provider images.
+The following files are used to customize the provider images:
+
+- **.arg**. This file specifies the OS as well as the Kubernetes version, image tags and image registry information.
+  - Some arguments in the **.arg** file are also used to build the Edge Installer ISO.
+- **Dockerfile**. This file allows you to install dependencies and modify your OS image.
 
 ## Prerequisites
 
@@ -58,10 +62,10 @@ cd CanvOS
 git tag
 ```
 
-4. Check out the newest available tag. This guide uses the tag **v4.0.6** as an example.
+4. Check out the newest available tag. This guide uses the tag **v4.3.0** as an example.
 
 ```shell
-git checkout v4.0.6
+git checkout v4.3.0
 ```
 
 5. Review the files relevant for this guide.
@@ -118,7 +122,6 @@ git checkout v4.0.6
     IMAGE_REPO=$OS_DISTRIBUTION
     CUSTOM_TAG=$CUSTOM_TAG
     K8S_DISTRIBUTION=k3s
-    ISO_NAME=palette-edge-installer
     ARCH=amd64
     HTTPS_PROXY=
     HTTP_PROXY=
@@ -174,3 +177,12 @@ git checkout v4.0.6
    ttl.sh/ubuntu          k3s-1.25.2-v4.0.6-palette-learn       02424d29fcac   10 minutes ago   4.09GB
    ttl.sh/ubuntu          k3s-1.26.4-v4.0.6-palette-learn       4e373ddfb53f   10 minutes ago   4.11GB
    ```
+
+## Next Steps
+
+Provider images are only one the artifacts you need to provision an Edge deployment. You also need to build the Edge
+Installer ISO that matches your provider image settings. Refer to [Build Edge Installer ISO](./build-installer-iso.md)
+for more information.
+
+If you have built both provider images and the installer ISO, refer to
+[Site Deployment](../site-deployment/site-deployment.md) to learn how to deploy your Edge cluster.

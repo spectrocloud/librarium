@@ -93,7 +93,7 @@ You can change the port that the Edge management console is exposed on. The defa
 
 | Parameter        | Description                                                                               |
 | ---------------- | ----------------------------------------------------------------------------------------- |
-| `emcServer.port` | Specifies the port that the Edge management console is exposed on. Default value is 6080. |
+| `emcServer.port` | Specifies the port that the Edge management console is exposed on. Default value is 5080. |
 
 ### External Registry
 

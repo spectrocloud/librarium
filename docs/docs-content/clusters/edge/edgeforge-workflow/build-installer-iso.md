@@ -19,10 +19,15 @@ Optionally, you can build the following content into the Edge installer ISO to c
   - If you do not include the user data file during the Edge Installer ISO build process, you must provide this
     configuration before the installation takes place with site user data. For more information, refer to
     [Apply Site User Data](../site-deployment/site-installation/site-user-data.md).
-- Content bundles.
-- Cluster definition. The cluster definition contains all configurations for a cluster in Palette. When you include a
-  cluster definition during the Edge Installer ISO build process, you can create a new cluster that uses your imported
-  cluster definition in your Edge host.
+- Content bundles. This is an archive of all images, helm charts and packs used for any number of specified cluster
+  profiles.
+- Cluster definition. Cluster definitions contains a cluster profile and any profile variables used in the profile. When
+  you include a cluster definition during the Edge Installer ISO build process, you can create a new cluster that uses
+  your imported cluster definition in your Edge host.
+
+The benefits of building the above content into the ISO is that you can ensure the standardization of your Edge
+deployments through the installer. Whether you build the content into the installer ISO or not, you always have the
+option of uploading them or changing them later in the deployment process.
 
 ## Prerequisites
 
@@ -112,18 +117,18 @@ the Edge Management Console once you finish installing the Edge host.
 
 5. Place the cluster definition tgz file in the root directory of the **CanvOS** repository.
 
-### Build Edge Installer ISO
-
-1. Ensure that all components of the ISO are in the correct directory.
-
-2. Add the following lines to the **.arg** file. Replace `cluster-definition-file-name` the name of the cluster
+6. Add the following lines to the **.arg** file. Replace `cluster-definition-file-name` the name of the cluster
    definition tgz file.
 
    ```
     CLUSTERCONFIG=cluster-definition-file-name
    ```
 
-3. Issue the following command to build the ISO image.
+### Build Edge Installer ISO
+
+1. Ensure that all components of the ISO you want to include are in the **CanvOS/** directory.
+
+2. Issue the following command to build the ISO image.
 
    ```shell
     ./earthly.sh +iso
