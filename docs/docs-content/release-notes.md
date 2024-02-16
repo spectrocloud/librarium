@@ -28,21 +28,22 @@ instances. Affected cluster types include the following:
 #### Issue Summary
 
 We identified an issue related to cluster repaves in Palette 4.2.x. During a cluster upgrade that required a repave, the
-Palette Agent deployed within the clusters would delete all the worker nodes within a worker pool before provisioning new
-worker nodes This results in the worker pool being down during an upgrade. All workloads within the pool will be offline
-during the upgrade.
+Palette Agent deployed within the clusters would delete all the worker nodes within a worker pool before provisioning
+new worker nodes This results in the worker pool being down during an upgrade. All workloads within the pool will be
+offline during the upgrade.
 
 If the cluster is configured to enable updating worker pools in parallel, then this can result in all services on the
 cluster becoming unavailable.
 
 #### Customer Guidance
 
-This issue has been addressed in Palette 4.2.12 and its corresponding Palette Agent version 4.2.4. Use the following steps to identify whether your cluster uses an affected agent version.
+This issue has been addressed in Palette 4.2.12 and its corresponding Palette Agent version 4.2.4. Use the following
+steps to identify whether your cluster uses an affected agent version.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 2. From the left **Main Menu**, click on **Clusters**. Select your cluster to access the cluster details page.
-3. At the bottom of the cluster details page, the Palette agent version used by your cluster is displayed. If your Agent version
-   is any of the following versions, your cluster is still susceptible to this issue: 4.2.0, 4.2.1, 4.2.2, 4.2.3
+3. At the bottom of the cluster details page, the Palette agent version used by your cluster is displayed. If your Agent
+   version is any of the following versions, your cluster is still susceptible to this issue: 4.2.0, 4.2.1, 4.2.2, 4.2.3
 
 ::: warning
 
@@ -55,12 +56,12 @@ reject the repave.
 **If you are not using an affected agent version**, no action is required on your part. If you plan to upgrade to 4.2.x
 in the future, ensure you upgrade to a version of Palette that's 4.2.12 or later.
 
-**If you are using an affected agent version**, first make sure that your Palette instance version is 4.2.12 or newer. Once you
-have confirmed your Palette version, unpause Agent upgrades for your cluster if they are paused. To learn how to toggle
-agent upgrades, refer to
-[Pause Platform Upgrades](./clusters/cluster-management/platform-settings/pause-platform-upgrades.md) to learn more about pausing updates. In 5 - 10
-minutes, the Palette agent will upgrade to a new version that includes the bug fix. If the agent does not upgrade for
-an extended period of time, contact support@spectrocloud.com.
+**If you are using an affected agent version**, first make sure that your Palette instance version is 4.2.12 or newer.
+Once you have confirmed your Palette version, unpause Agent upgrades for your cluster if they are paused. To learn how
+to toggle agent upgrades, refer to
+[Pause Platform Upgrades](./clusters/cluster-management/platform-settings/pause-platform-upgrades.md) to learn more
+about pausing updates. In 5 - 10 minutes, the Palette agent will upgrade to a new version that includes the bug fix. If
+the agent does not upgrade for an extended period of time, contact support@spectrocloud.com.
 
 ## February 3, 2024 - Release 4.2.9
 
