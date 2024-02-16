@@ -12,17 +12,6 @@ private registry during deployment. You can configure your cluster to pull image
 cluster creation and cluster updates. To configure a cluster to pull images from a private image registry, provide the
 registry URL and the credentials needed to authenticate with the registry in the cluster profile.
 
-:::danger
-
-There is a currently a known issue with deploying clusters with a private registry where if the password used for
-authentication with the registry is only made up of alphanumerical characters, Palette will mistake it as base64 encoded
-and attempt to decode it. While this won't affect initial cluster deployment, all cluster repaves would fail because of
-incorrect credentials.
-
-To prevent this issue, ensure your registry password includes special characters such as `!`, `#`, and `*`.
-
-:::
-
 ## Limitations
 
 - A cluster cannot pull images from more than one private registry.
