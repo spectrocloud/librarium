@@ -240,6 +240,7 @@ for more details on pool limitations.
 
    Additional worker node pools may be added after you create the system node pool if you want to customize specific
    worker nodes to run specialized workloads. As an example, the system worker pool may be configured with the
+
    <i>Standard_D2_v2</i> instance types for general-purpose workloads, and another worker pool with the instance type
    <i>Standard_NC12s_v3</i> can be configured to run GPU workloads.
 
