@@ -120,7 +120,7 @@ Creating a content bundle provides several benefits that may address common use 
 
    </TabItem>
 
-   <IabItem value="image" label="Image">
+   <TabItem value="image" label="Image">
 
    For image registries, you must provide credentials with the following schema. se a key at the root level of the JSON
    object named "image" and set its value to a list. The list is a list of credentials for each Helm chart repository.
@@ -206,16 +206,12 @@ Creating a content bundle provides several benefits that may address common use 
 9. Navigate back to your terminal window and issue the following command to create the content bundle. Replace the
    placeholder values with your actual values.
 
-   <br />
-
    :::info
 
    There are several Spectro Cloud CLI flags that you can use to customize the content bundle. Use the command
    `./palette-edge build --help` to learn more about the available flags.
 
    :::
-
-   <br />
 
    ```shell
    ./palette-edge build --api-key <API_KEY> \
