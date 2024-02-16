@@ -179,9 +179,9 @@ This guide demonstrates how to implement your own disk and VM templates using Ku
 
 3.  When the CDI clones a PVC, it runs under the `default` service account in the namespace of the target PVC. When the
     source PVC is in a different namespace, you must give the required permissions to the service account. The
-    [VMO pack](../vm-management.md) version 4.2.0 (or higher) does this automatically through its default pack specification. This
-    configuration uses the `vmEnabledNamespaces` option to specify the namespaces for which the permissions are
-    configured.
+    [VMO pack](../vm-management.md) version 4.2.0 (or higher) does this automatically through its default pack
+    specification. This configuration uses the `vmEnabledNamespaces` option to specify the namespaces for which the
+    permissions are configured.
 
     ```yaml {8}
     charts:

@@ -66,7 +66,7 @@ organization's templates. To learn more about using and creating templates, revi
 
 While you can import template disks from external locations when deploying a VM, it can be inefficient. Instead, you can
 leverage the `DataVolume` resource to import template disks once and then clone them when deploying new VMs. Review the
-[Create disk templates](create-manage-vm/using-datavolumes.md) guide for more information.
+[Create Disk Templates](create-manage-vm/create-disk-templates.md) guide for more information.
 
 ## Feature Gates
 
@@ -114,7 +114,7 @@ VMO includes the following KubeVirt plugins:
 
 - [Create a VM Template](create-manage-vm/create-vm-template.md)
 
-- [Create Disk Templates](create-manage-vm/using-datavolumes.md)
+- [Create Disk Templates](create-manage-vm/create-disk-templates.md)
 
 - [VM Roles and Permissions](vm-roles-permissions.md)
 
