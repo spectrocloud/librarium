@@ -44,8 +44,8 @@ Use the following steps to install the PCG in your self-hosted Kubernetes cluste
    self-hosted cluster.
 
 7. Close the slide-out panel when you have copied both commands. The PCG Overview page **Cluster Status** field will
-   display **Pending** while the PCG is deploying. The deployment is complete when the **Cluster Status** field displays
-   the status **Running**.
+   display **Importing** while the PCG is deploying. The deployment is complete when the **Cluster Status** field
+   displays the status **Running**.
 
 ## Validate
 

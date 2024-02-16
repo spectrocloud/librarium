@@ -29,7 +29,7 @@ section guides you in creating a Kubernetes cluster in a Nutanix cloud managed b
 
 - A Nutanix Prism Element cluster created.
 
-- A Nutanix subnet created in Nutanix Prism Central that will be assigned to the virtual machines (VMs) that will make
+- A Nutanix subnet created in Nutanix Prism Central that will be assigned to the Virtual Machines (VMs) that will make
   up the Kubernetes cluster.
 
 - A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to
@@ -39,80 +39,92 @@ section guides you in creating a Kubernetes cluster in a Nutanix cloud managed b
 
 Use the following steps to deploy a Kubernetes cluster in Nutanix.
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
+1.  Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left **Main Menu** select **Clusters**.
+2.  From the left **Main Menu** select **Clusters**.
 
-3. Click on **Add New Cluster** and select **Deploy New Cluster** on the next page that Palette displays.
+3.  Click on **Add New Cluster** and select **Deploy New Cluster** on the next page that Palette displays.
 
-4. Select **Nutanix** and click the **Start Nutanix Configuration** button.
+4.  Select **Nutanix** and click the **Start Nutanix Configuration** button.
 
-5. Fill out the following basic information, and click **Next** to continue.
+5.  Fill out the following basic information, and click **Next** to continue.
 
-| **Field**         | **Description**                                                                                                          |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| **Cluster Name**  | A custom name for the cluster. Use this cluster name for the `${CLUSTER_NAME}` variable in the YAML configuration files. |
-| **Description**   | Use the description to provide context about the cluster.                                                                |
-| **Tags**          | Assign any desired cluster tags.                                                                                         |
-| **Cloud Account** | Select your Nutanix account from the **drop-down Menu**.                                                                 |
+    | **Field**         | **Description**                                           |
+    | ----------------- | --------------------------------------------------------- |
+    | **Cluster Name**  | A custom name for your cluster.                           |
+    | **Description**   | Use the description to provide context about the cluster. |
+    | **Tags**          | Assign any desired cluster tags.                          |
+    | **Cloud Account** | Select your Nutanix account from the **drop-down Menu**.  |
 
-6. Select the Nutanix cluster profile you created and click **Next**. Palette displays the profile layers.
+6.  Select the Nutanix cluster profile you created and click **Next**. Palette displays the profile layers.
 
-7. Review profile layers, leaving the OS and Kubernetes packs empty, and customize parameters as desired in the YAML
-   files that display when you select the network and storage layers. Click **Next** when you are done.
+7.  Review profile layers, leaving the OS and Kubernetes packs empty, and customize parameters as desired in the YAML
+    files that display when you select the network and storage layers. Click **Next** when you are done.
 
-8. In the Cluster configuration YAML file that Palette displays, edit the file to replace variables within curly braces
-   listed in the table below with values that apply to your Nutanix cloud environment, and make any adjustments to
-   configure your cluster. Click **Next** when you are done.
+8.  In the **Cluster Configuration Macros** pane, enter values that apply to your Nutanix cloud environment and, if
+    necessary, adjust the **Cluster configuration** YAML file to configure your cluster. Click **Next** when you are
+    ready to proceed.
 
-| **Variable**                   | **Description**                                                                              |
-| ------------------------------ | -------------------------------------------------------------------------------------------- |
-| `${CLUSTER_NAME}`              | The name of the Nutanix workload cluster. Use the same cluster name you specified in step 5. |
-| `${CONTROL_PLANE_ENDPOINT_IP}` | The Kubernetes API IP endpoint for the cluster you are creating.                             |
-| `${NUTANIX_ENDPOINT}`          | The Nutanix Prism Central IP address.                                                        |
+    :::info
 
-:::warning
+    The inactive fields are auto-populated from your Nutanix cloud account configuration. When entering other macros,
+    make sure to verify the default values.
 
-The following applies when replacing variables within curly braces in the YAML configuration files.
+    :::
 
-    - All the variables must be resolved or have a default value.
+    | **Field**                           | **Description**                                                                                                                                                                                                                                                                                                 |
+    | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **NUTANIX_ADDITIONAL_TRUST_BUNDLE** | An optional environment variable that allows CAPX to verify certificates that are not issued by a publicly trusted certificate authority. For more information, refer to the [Nutanix Certificate Trust](https://opendocs.nutanix.com/capx/v1.2.x/pc_certificates/#configure-an-additional-trust-bundle) guide. |
+    | **CONTROL_PLANE_ENDPOINT_IP**       | The host IP of the CAPX Kubernetes cluster.                                                                                                                                                                                                                                                                     |
+    | **CONTROL_PLANE_ENDPOINT_PORT**     | Port of the CAPX Kubernetes cluster that you assigned in `cloudClusterTemplate.yaml`. Defaults to `6443`.                                                                                                                                                                                                       |
 
-    - Verify default values such as the port.
+9.  In the **Node Pool Configuration Macros** panes for the control plane and worker pools, enter the values that apply
+    to your Nutanix cloud environment and, if necessary, adjust their **Node pool configuration** YAML files.
 
-    - Names you provide must match. Any names in the YAML files that do not match your Nutanix cluster configuration will result in unsuccessful cluster deployment.
+    You can configure scaling in the Palette UI by specifying the number of nodes in the pool. This corresponds to
+    `replicas` in the YAML file.
 
-    - Values that are passed as a string, such as names and keys, must be enclosed in quotes, for example `" "`.
+    :::info
 
-    - When replacing values, remove the dollar sign and curly braces.
+    The inactive fields are auto-populated from the cluster configuration specified in the previous step. When entering
+    other macros, make sure to verify the default values.
 
-:::
+    :::
 
-9. In the Node pool configuration YAML files for the control plane and worker pools, edit the files to replace each
-   occurrence of the variables within curly braces listed in the tables below with values that apply to your Nutanix
-   cloud environment. You can configure scaling in the Palette UI by specifying the number of nodes in the pool. This
-   corresponds to `replicas` in the YAML file.
+    #### Control Plane Pool
 
-#### Control Plane Pool
+    | **Field**                               | **Description**                                                                                                                                                                                                                                                              |
+    | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **TLS_CIPHER_SUITES**                   | Cryptographic algorithms for securing network communications. Refer to [Nutanix Cryptographic Module for OpenSSL](https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp3460.pdf) for more options and details. |
+    | **KUBEVIP_SVC_ENABLE**                  | This setting enables a service of type `LoadBalancer`. Refer to the [Kubernetes Service Load Balancing docs](https://kube-vip.io/docs/about/architecture/#kubernetes-service-load-balancing) for details.                                                                    |
+    | **KUBEVIP_LB_ENABLE**                   | This setting allows control plane load balancing using IPVS. Refer to the [Control Plane Load-Balancing docs](https://kube-vip.io/docs/about/architecture/#control-plane-load-balancing) for details.                                                                        |
+    | **KUBEVIP_SVC_ELECTION**                | This setting enables watching services of type `LoadBalancer`.                                                                                                                                                                                                               |
+    | **NUTANIX_SSH_AUTHORIZED_KEY**          | Your public SSH key.                                                                                                                                                                                                                                                         |
+    | **KUBERNETES_VERSION**                  | Your cluster Kubernetes version preceded with `v`, for example, `v1.26.3`.                                                                                                                                                                                                   |
+    | **NUTANIX_MACHINE_BOOT_TYPE**           | The VM boot type. Depends on the OS image you're using. Allowed values: `legacy`, `uefi`. Defaults to `legacy`.                                                                                                                                                              |
+    | **NUTANIX_PRISM_ELEMENT_CLUSTER_NAME**  | The name of your Nutanix AHV cluster as defined in Prism.                                                                                                                                                                                                                    |
+    | **NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME** | The name of your OS image as defined in Prism Central. To locate images, in the Nutanix Prism dashboard, navigate to **Compute & Storage** and select **Images**.                                                                                                            |
+    | **NUTANIX_MACHINE_MEMORY_SIZE**         | Amount of memory. Defaults to `4Gi`.                                                                                                                                                                                                                                         |
+    | **NUTANIX_SUBNET_NAME**                 | The name of the subnet defined in Prism Central, which will be assigned to the VMs deployed in this cluster.                                                                                                                                                                 |
+    | **NUTANIX_SYSTEMDISK_SIZE**             | Amount of storage assigned to the system disk. Defaults to `40Gi`.                                                                                                                                                                                                           |
+    | **NUTANIX_MACHINE_VCPU_SOCKET**         | Number of vCPU sockets. Defaults to `2`.                                                                                                                                                                                                                                     |
+    | **NUTANIX_MACHINE_VCPU_PER_SOCKET**     | Number of vCPUs per socket. Defaults to `1`.                                                                                                                                                                                                                                 |
 
-| **Variable**                             | **Description**                                                                                                                                                  |
-| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `${CLUSTER_NAME}`                        | The name of the Nutanix workload cluster. Use the same cluster name you specified in step 5.                                                                     |
-| `${CONTROL_PLANE_ENDPOINT_IP}`           | The Kubernetes API IP endpoint for the cluster you are creating.                                                                                                 |
-| `${NUTANIX_SSH_AUTHORIZED_KEY}`          | Provide your public SSH key.                                                                                                                                     |
-| `${KUBERNETES_VERSION}`                  | Specify the Kubernetes version for your cluster, and precede the version number with `v`. For example `v1.26.3`                                                  |
-| `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`  | The name of your Nutanix AHV cluster as defined in Prism.                                                                                                        |
-| `${NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME}` | The name of your OS image as defined in Prism Central. To locate images, navigate in the Nutanix Prism dashboard to **Compute & Storage** and select **Images**. |
-| `${NUTANIX_SUBNET_NAME}`                 | The name of the subnet as defined in Prism Central that will be assigned to the virtual machines (VMs) deployed in this cluster.                                 |
+    #### Worker Pool
 
-#### Worker-Pool
-
-    | **Variable** | **Description** |
-    |--------------|-----------------|
-    | `${NUTANIX_SSH_AUTHORIZED_KEY}`| Provide your public SSH key. |
-    | `${KUBERNETES_VERSION}`| Specify the Kubernetes version for your cluster, and precede the version number with `v`. For example `v1.26.3` |
-    | `${NUTANIX_PRISM_ELEMENT_CLUSTER_NAME}`| The name of your Nutanix AHV cluster as defined in Prism. |
-    | `${NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME}` | The name of your OS image as defined in Prism Central. To locate images, navigate in the Nutanix Prism dashboard to **Compute & Storage** and select **Images**. |
-    | `${NUTANIX_SUBNET_NAME}` | The name of the subnet as defined in Prism Central that will be assigned to the VMs deployed in this cluster. |
+    | **Field**                               | **Description**                                                                                                                                                                                                                                                              |
+    | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **KUBERNETES_VERSION**                  | Your cluster Kubernetes version preceded with `v`, for example, `v1.26.3`.                                                                                                                                                                                                   |
+    | **NUTANIX_MACHINE_BOOT_TYPE**           | The VM boot type. Depends on the OS image you're using. Allowed values: `legacy`, `uefi`. Defaults to `legacy`.                                                                                                                                                              |
+    | **NUTANIX_PRISM_ELEMENT_CLUSTER_NAME**  | The name of your Nutanix AHV cluster as defined in Prism.                                                                                                                                                                                                                    |
+    | **NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME** | The name of your OS image as defined in Prism Central. To locate images, in the Nutanix Prism dashboard, navigate to **Compute & Storage** and select **Images**.                                                                                                            |
+    | **NUTANIX_MACHINE_MEMORY_SIZE**         | Amount of memory. Defaults to `4Gi`.                                                                                                                                                                                                                                         |
+    | **NUTANIX_SUBNET_NAME**                 | The name of the subnet defined in Prism Central, which will be assigned to the VMs deployed in this cluster.                                                                                                                                                                 |
+    | **NUTANIX_SYSTEMDISK_SIZE**             | Amount of storage assigned to the system disk. Defaults to `40Gi`.                                                                                                                                                                                                           |
+    | **NUTANIX_MACHINE_VCPU_SOCKET**         | Number of vCPU sockets. Defaults to `2`.                                                                                                                                                                                                                                     |
+    | **NUTANIX_MACHINE_VCPU_PER_SOCKET**     | Number of vCPUs per socket. Defaults to `1`.                                                                                                                                                                                                                                 |
+    | **TLS_CIPHER_SUITES**                   | Cryptographic algorithms for securing network communications. Refer to [Nutanix Cryptographic Module for OpenSSL](https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp3460.pdf) for more options and details. |
+    | **NUTANIX_SSH_AUTHORIZED_KEY**          | Your public SSH key.                                                                                                                                                                                                                                                         |
 
 10. Click **Next** when you are done.
 
