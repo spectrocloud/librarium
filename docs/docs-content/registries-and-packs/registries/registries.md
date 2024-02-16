@@ -40,14 +40,15 @@ synchronization behavior of Helm registries.
 Palette comes with a set of default registries that are available to all SaaS tenants, and non-airgap self-hosted
 Palette environments. The default registries are listed below:
 
-| **Name**                   | **Provider** | **Description**                                                                   | **URL**                                        | **Base Path** |
-| -------------------------- | ------------ | --------------------------------------------------------------------------------- | ---------------------------------------------- | ------------- |
-| Bitnami                    | Helm         | A Helm Chart registry containing Helm Charts maintained and supported by Bitnami. | `https://charts.bitnami.com/bitnami`           | -             |
-| Public Spectro Helm Repo   | Helm         | A Helm Chart registry containing Helm Charts maintained and supported by us.      | `https://spectrocloud.github.io/helm-charts`   | -             |
-| Public Repo                | Legacy Packs | A packs registry containing packs maintained and supported by us.                 | `https://registry.spectrocloud.com`            | -             |
-| Spectro Addon Repo         | Legacy Packs | A packs registry containing add-on packs maintained and supported by us.          | `https://registry-addon.spectrocloud.com`      | -             |
-| Palette Registry           | OCI          | A packs registry containing packs maintained and supported by us.                 | `415789037893.dkr.ecr.us-east-1.amazonaws.com` | `production`  |
-| Palette Community Registry | OCI          | A packs registry containing community packs.                                      | `415789037893.dkr.ecr.us-east-1.amazonaws.com` | `community`   |
+| **Name**                   | **Provider** | **Description**                                                                   | **URL**                                        | **Base Path**     |
+| -------------------------- | ------------ | --------------------------------------------------------------------------------- | ---------------------------------------------- | ----------------- |
+| Bitnami                    | Helm         | A Helm Chart registry containing Helm Charts maintained and supported by Bitnami. | `https://charts.bitnami.com/bitnami`           | -                 |
+| Public Spectro Helm Repo   | Helm         | A Helm Chart registry containing Helm Charts maintained and supported by us.      | `https://spectrocloud.github.io/helm-charts`   | -                 |
+| Public Repo                | Legacy Packs | A packs registry containing packs maintained and supported by us.                 | `https://registry.spectrocloud.com`            | -                 |
+| Spectro Addon Repo         | Legacy Packs | A packs registry containing add-on packs maintained and supported by us.          | `https://registry-addon.spectrocloud.com`      | -                 |
+| Palette Registry           | OCI          | A packs registry containing packs maintained and supported by us.                 | `415789037893.dkr.ecr.us-east-1.amazonaws.com` | `production`      |
+| Palette Registry FIPS      | OCI          | A packs registry containing FIPS packs maintained and supported by us.            | `415789037893.dkr.ecr.us-east-1.amazonaws.com` | `production-fips` |
+| Palette Community Registry | OCI          | A packs registry containing community packs.                                      | `415789037893.dkr.ecr.us-east-1.amazonaws.com` | `community`       |
 
 :::info
 
