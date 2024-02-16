@@ -64,6 +64,10 @@ organization's templates. To learn more about using and creating templates, revi
 [Deploy VM From a Template](create-manage-vm/standard-vm-operations/deploy-vm-from-template.md) and
 [Create a VM Template](create-manage-vm/create-vm-template.md).
 
+While you can import template disks from external locations when deploying a VM, it can be inefficient. Instead, you can
+leverage the `DataVolume` resource to import template disks once and then clone them when deploying new VMs. Review the
+[Create Disk Templates](create-manage-vm/create-disk-templates.md) guide for more information.
+
 ## Feature Gates
 
 Palette VM Orchestrator utilizes open-source KubeVirt as a component of the **Virtual Machine Orchestrator** pack to
@@ -109,6 +113,8 @@ VMO includes the following KubeVirt plugins:
 - [Deploy VM from a Template](create-manage-vm/standard-vm-operations/deploy-vm-from-template.md)
 
 - [Create a VM Template](create-manage-vm/create-vm-template.md)
+
+- [Create Disk Templates](create-manage-vm/create-disk-templates.md)
 
 - [VM Roles and Permissions](vm-roles-permissions.md)
 
