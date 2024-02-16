@@ -9,6 +9,56 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
+## Feb 16, 2024 - Release 4.2.11
+
+## Bug Fixes
+
+### IaaS Cluster Repaves Causing Cluster Downtime
+
+#### Affected services
+
+IaaS clusters in Palette 4.2.x prior to 4.2.12, including Palette SaaS, self-hosted Palette/VerteX, as well as dedicated
+instances. Affected cluster types include the following:
+
+- AWS IaaS (not EKS)
+- Azure IaaS (not AKS)
+- Google IaaS (not GKE)
+- MAAS
+- vSphere
+- OpenStack Managed Kubernetes clusters on EKS, GKE and AKS are not affected. Edge clusters are not affected.
+
+#### Issue Summary
+
+We identified an issue in Palette 4.2.x during cluster repaves that caused all the worker nodes of a cluster to be
+deleted before new worker nodes are provisioned. This results in the cluster being down during an upgrade. All workloads
+running on the cluster will be offline during the upgrade, and under certain circumstances, data loss will occur.
+
+#### Customer Guidance
+
+This issue has been addressed in Palette 4.2.12 and its corresponding Palette Agent version 4.2.4. To identify whether
+your cluster is using an affected agent version:
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+2. From the left **Main Menu**., click **Clusters**. And the select your cluster to view cluster details.
+3. At the bottom of the cluster details page, you can see the Agent version used by your cluster. If your Agent version
+   is any of the following versions, your cluster is still susceptible to this issue: 4.2.0, 4.2.1, 4.2.2, 4.2.3
+
+::: warning
+
+Ensure that you do not initiate any cluster repaves as long as you are using an affected agent version. Changes in the
+OS or the Kubernetes layer would initiate an cluster repave attempt. When you get the cluster repave notification,
+reject the repave.
+
+:::
+
+**If you are not using an affected agent version**, no action is required on your part. If you plan to upgrade to 4.2.x
+in the future, ensure you upgrade to a version of Palette that's later than 4.2.12.
+
+**If you are using an affected agent version**, first make sure that your Palette version in newer than 4.2.12. Once you
+have confirmed your Palette version, unpause Agent upgrades for your cluster if they are paused. In 5 - 10 minutes, you
+should see that the Palette agent has been upgraded to a new version that includes the bug fix. If you do not see the
+Agent being upgraded for an extended period of time, contact support@spectrocloud.com.
+
 ## February 3, 2024 - Release 4.2.9
 
 ### Bug Fixes
