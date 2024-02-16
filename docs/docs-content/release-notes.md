@@ -39,7 +39,7 @@ This issue has been addressed in Palette 4.2.12 and its corresponding Palette Ag
 your cluster is using an affected agent version:
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
-2. From the left **Main Menu**., click **Clusters**. And the select your cluster to view cluster details.
+2. From the left **Main Menu**., click **Clusters**. And then select your cluster to view cluster details.
 3. At the bottom of the cluster details page, you can see the Agent version used by your cluster. If your Agent version
    is any of the following versions, your cluster is still susceptible to this issue: 4.2.0, 4.2.1, 4.2.2, 4.2.3
 
@@ -52,9 +52,9 @@ reject the repave.
 :::
 
 **If you are not using an affected agent version**, no action is required on your part. If you plan to upgrade to 4.2.x
-in the future, ensure you upgrade to a version of Palette that's later than 4.2.12.
+in the future, ensure you upgrade to a version of Palette that's 4.2.12 or later.
 
-**If you are using an affected agent version**, first make sure that your Palette version in newer than 4.2.12. Once you
+**If you are using an affected agent version**, first make sure that your Palette version is 4.2.12 or newer. Once you
 have confirmed your Palette version, unpause Agent upgrades for your cluster if they are paused. In 5 - 10 minutes, you
 should see that the Palette agent has been upgraded to a new version that includes the bug fix. If you do not see the
 Agent being upgraded for an extended period of time, contact support@spectrocloud.com.
