@@ -11,9 +11,7 @@ tags: ["release-notes"]
 
 ## Feb 16, 2024 - Release 4.2.12
 
-## Bug Fixes
-
-### IaaS Cluster Repaves Causing Cluster Downtime
+### Bug Fix: IaaS Cluster Repaves Causing Cluster Downtime
 
 #### Affected services
 
@@ -29,9 +27,10 @@ instances. Affected cluster types include the following:
 
 #### Issue Summary
 
-We identified an issue in Palette 4.2.x during cluster repaves that caused all the worker nodes within a worker pool to
-be deleted before new worker nodes are provisioned. This results in the worker pool being down during an upgrade. All
-workloads within the pool will be offline during the upgrade.
+We identified an issue related to cluster repaves in Palette 4.2.x. During a cluster upgrade that required a repave, the
+Palette Agent running within the clusters would delete all the worker nodes within a worker pool before provisioning new
+worker nodes This results in the worker pool being down during an upgrade. All workloads within the pool will be offline
+during the upgrade.
 
 If the cluster is configured to enable updating worker pools in parallel, then this can result in all services on the
 cluster becoming unavailable.
