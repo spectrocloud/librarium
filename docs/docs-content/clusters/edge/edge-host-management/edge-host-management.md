@@ -23,5 +23,11 @@ connection to a central Palette instance.
 Refer to the follow resources to learn how to use EMC to manage your disconnected Edge deployment:
 
 - [](./access-console.md)
+
 - [](./upload-content-bundle.md)
-- [](./)
+
+- [](./export-cluster-definition.md)
+
+- [](./create-cluster.md)
+
+- [](./theming.md)
