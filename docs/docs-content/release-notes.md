@@ -9,7 +9,7 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
-## Feb 16, 2024 - Release 4.2.11
+## Feb 16, 2024 - Release 4.2.12
 
 ## Bug Fixes
 
@@ -55,9 +55,11 @@ reject the repave.
 in the future, ensure you upgrade to a version of Palette that's 4.2.12 or later.
 
 **If you are using an affected agent version**, first make sure that your Palette version is 4.2.12 or newer. Once you
-have confirmed your Palette version, unpause Agent upgrades for your cluster if they are paused. In 5 - 10 minutes, you
-should see that the Palette agent has been upgraded to a new version that includes the bug fix. If you do not see the
-Agent being upgraded for an extended period of time, contact support@spectrocloud.com.
+have confirmed your Palette version, unpause Agent upgrades for your cluster if they are paused. To learn how to toggle
+agent upgrades, refer to
+[Pause Platform Upgrades](./clusters/cluster-management/platform-settings/pause-platform-upgrades.md). In 5 - 10
+minutes, you should see that the Palette agent has been upgraded to a new version that includes the bug fix. If you do
+not see the Agent being upgraded for an extended period of time, contact support@spectrocloud.com.
 
 ## February 3, 2024 - Release 4.2.9
 
