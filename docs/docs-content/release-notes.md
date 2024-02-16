@@ -29,9 +29,12 @@ instances. Affected cluster types include the following:
 
 #### Issue Summary
 
-We identified an issue in Palette 4.2.x during cluster repaves that caused all the worker nodes of a cluster to be
-deleted before new worker nodes are provisioned. This results in the cluster being down during an upgrade. All workloads
-running on the cluster will be offline during the upgrade, and under certain circumstances, data loss will occur.
+We identified an issue in Palette 4.2.x during cluster repaves that caused all the worker nodes within a worker pool to
+be deleted before new worker nodes are provisioned. This results in the worker pool being down during an upgrade. All
+workloads within the pool will be offline during the upgrade.
+
+If the cluster is configured to enable updating worker pools in parallel, then this can result in all services on the
+cluster becoming unavailable.
 
 #### Customer Guidance
 
