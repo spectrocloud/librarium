@@ -59,9 +59,9 @@ in the future, ensure you upgrade to a version of Palette that's 4.2.12 or later
 **If you are using an affected agent version**, first make sure that your Palette instance version is 4.2.12 or newer.
 Once you have confirmed your Palette version, unpause Agent upgrades for your cluster if they are paused. To learn how
 to toggle agent upgrades, refer to
-[Pause Platform Upgrades](./clusters/cluster-management/platform-settings/pause-platform-upgrades.md) to learn more
-about pausing updates. In 5 - 10 minutes, the Palette agent will upgrade to a new version that includes the bug fix. If
-the agent does not upgrade for an extended period of time, contact support@spectrocloud.com.
+[Pause Platform Upgrades](./clusters/cluster-management/platform-settings/pause-platform-upgrades.md). In 5 - 10
+minutes, the Palette agent will upgrade to a new version that includes the bug fix. If the agent does not upgrade for an
+extended period of time, contact support@spectrocloud.com.
 
 ## February 3, 2024 - Release 4.2.9
 
