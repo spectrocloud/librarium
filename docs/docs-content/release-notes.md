@@ -45,7 +45,7 @@ steps to identify whether your cluster uses an affected agent version.
 3. At the bottom of the cluster details page, the Palette agent version used by your cluster is displayed. If your Agent
    version is any of the following versions, your cluster is still susceptible to this issue: 4.2.0, 4.2.1, 4.2.2, 4.2.3
 
-::: warning
+:::warning
 
 Ensure that you do not initiate any cluster repaves as long as you are using an affected agent version. Changes in the
 OS or the Kubernetes layer would initiate an cluster repave attempt. When you get the cluster repave notification,
