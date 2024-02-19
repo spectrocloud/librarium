@@ -45,7 +45,8 @@ steps to identify whether your cluster uses an affected agent version.
 1. Log in to [Palette](https://console.spectrocloud.com/).
 2. From the left **Main Menu**, click on **Clusters**. Select your cluster to access the cluster details page.
 3. At the bottom of the cluster details page, the Palette agent version used by your cluster is displayed. If your Agent
-   version is any of the following versions, your cluster is still susceptible to this issue: 4.2.0, 4.2.1, 4.2.2, 4.2.3.
+   version is any of the following versions, your cluster is still susceptible to this issue: 4.2.0, 4.2.1, 4.2.2,
+   4.2.3.
 
 :::warning
 
