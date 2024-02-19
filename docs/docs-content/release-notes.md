@@ -23,13 +23,15 @@ instances. Affected cluster types include the following:
 - Google IaaS (not GKE)
 - MAAS
 - vSphere
-- OpenStack Managed Kubernetes clusters on EKS, GKE and AKS are not affected. Edge clusters are not affected.
+- OpenStack
+
+Managed Kubernetes clusters on EKS, GKE and AKS are not affected. Edge clusters are not affected.
 
 #### Issue Summary
 
 We identified an issue related to cluster repaves in Palette 4.2.x. During a cluster upgrade that required a repave, the
 Palette Agent deployed within the clusters would delete all the worker nodes within a worker pool before provisioning
-new worker nodes This results in the worker pool being down during an upgrade. All workloads within the pool will be
+new worker nodes. This results in the worker pool being down during an upgrade. All workloads within the pool will be
 offline during the upgrade.
 
 If the cluster is configured to enable updating worker pools in parallel, then this can result in all services on the
@@ -43,7 +45,7 @@ steps to identify whether your cluster uses an affected agent version.
 1. Log in to [Palette](https://console.spectrocloud.com/).
 2. From the left **Main Menu**, click on **Clusters**. Select your cluster to access the cluster details page.
 3. At the bottom of the cluster details page, the Palette agent version used by your cluster is displayed. If your Agent
-   version is any of the following versions, your cluster is still susceptible to this issue: 4.2.0, 4.2.1, 4.2.2, 4.2.3
+   version is any of the following versions, your cluster is still susceptible to this issue: 4.2.0, 4.2.1, 4.2.2, 4.2.3.
 
 :::warning
 
