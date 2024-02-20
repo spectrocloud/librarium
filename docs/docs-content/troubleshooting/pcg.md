@@ -492,9 +492,8 @@ log.
 
 <br />
 
-1. Ensure you have all the permissions listed in the
-   [VMware Privileges](../clusters/data-center/vmware.md#vmware-privileges) section before proceeding to provision a PCG
-   cluster.
+1. Ensure you have all the permissions listed in the [VMware Privileges](../clusters/pcg/deploy-pcg/vmware.md) section
+   before proceeding to provision a PCG cluster.
 
 2. Contact your VMware administrator if you are missing any of the required permissions.
 
