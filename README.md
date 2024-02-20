@@ -400,8 +400,8 @@ container.
 
 > [!NOTE]
 >
-> **_x_**, **_y_**, **_description_** properties are **mandatory**. The properties **_label_** and
-> **_tooltipPlacement_** are optional.
+> The **_x_**, **_y_**, and **_description_** properties are **mandatory**. The **_label_** and
+> **_tooltipPlacement_** properties are optional.
 
 If no label is specified, the default one is "+".
 
@@ -655,7 +655,7 @@ new release tag is created.
 
 > [!WARNING]
 >
-> Do not use `feat`,`perf` or `fix` or other semantic-release key words that trigger a version change. Use the commit
+> Do not use `feat`,`perf`, `fix`, or other semantic-release key words that trigger a version change. Use the commit
 > message prefix `docs: yourMessageHere` for regular documentation commits.
 
 ## Versioning
@@ -710,5 +710,5 @@ make clean-versions
 
 > [!WARNING]
 >
-> The `docuasurus.config.js` file is updated by the [`update_docusaurs_config.js`](./docusaurus.config.js) script. DO
+> The `docusaurus.config.js` file is updated by the [`update_docusaurus_config.js`](./docusaurus.config.js) script. DO
 > NOT commit this file with the updated changes.
