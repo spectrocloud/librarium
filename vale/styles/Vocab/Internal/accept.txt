@@ -190,3 +190,6 @@ Datagram
 swapfile
 Unassign
 vApp
+PCGs
+vCPU
+vCPUs
