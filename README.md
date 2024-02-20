@@ -400,8 +400,8 @@ container.
 
 > [!NOTE]
 >
-> The **_x_**, **_y_**, and **_description_** properties are **mandatory**. The **_label_** and
-> **_tooltipPlacement_** properties are optional.
+> The **_x_**, **_y_**, and **_description_** properties are **mandatory**. The **_label_** and **_tooltipPlacement_**
+> properties are optional.
 
 If no label is specified, the default one is "+".
 
