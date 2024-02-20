@@ -70,10 +70,10 @@ There are two main data flows represented in the provisioning flow (red) and mon
 ### SaaS to Private Clouds / Data Center / Bare Metal
 
 For private clouds like VMware, since the Palette SaaS platform does not have direct access to the private cloud
-endpoint (e.g., vCenter), there is one extra component, Palette Private Cloud Gateway, to be deployed in a private cloud
-environment to act as the local orchestrator and the proxy between Palette’s SaaS platform and cloud endpoint. The
-following diagram illustrates the data flow for the Palette SaaS platform to manage an on-prem VMware private data
-center:
+endpoint (e.g., vCenter), there is one extra component, Palette
+[Private Cloud Gateway](../clusters/pcg/architecture.md), to be deployed in a private cloud environment to act as the
+local orchestrator and the proxy between Palette’s SaaS platform and cloud endpoint. The following diagram illustrates
+the data flow for the Palette SaaS platform to manage an on-prem VMware private data center:
 
 ![Palette SaaS architecture diagram with connections to private data centers](/architecture_architecture-overview_on-prem.png)
 
@@ -83,6 +83,7 @@ Although the Palette SaaS platform fully supports both public clouds and data ce
 regulated industry or air-gapped environments, may prefer to install Palette in their own environment behind the
 firewall, so that they can control the platform upgrade cycles and ensure no sensitive data are exposed. For these use
 cases, Palette supports a self-hosted on-premises installation. The platform updates and add-on integration contents can
-be optionally downloaded from an on-prem private repository instead of pulling from Palette’s hosted public repository.
+be optionally downloaded from a self-hosted private repository instead of pulling from Palette’s hosted public
+repository.
 
 ![Self-hosted Palette architecture diagram](/architecture_architecture-on-prem-detailed.png)
