@@ -34,7 +34,7 @@ Palette Virtual Machine Orchestrator requires the following:
 
 - For data centers, production VMs are supported on bare metal Kubernetes clusters deployed on Canonical MAAS. To learn
   how to configure MAAS and create MAAS clusters in Palette, refer to the
-  [Install and Manage MAAS Gateway](../clusters/data-center/maas/install-manage-maas-pcg.md) guide.
+  [Deploy to MAAS](../clusters/data-center/maas/create-manage-maas-clusters.md) guide.
 
 - For Edge deployment, your Edge cluster profile must have a CSI pack. For more information, refer to
   [Create VMO Profile](./vm-packs-profiles/create-vmo-profile.md#create-the-profile) in the **Edge** tab.
