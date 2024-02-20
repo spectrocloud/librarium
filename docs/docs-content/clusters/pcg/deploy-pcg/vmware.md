@@ -33,8 +33,8 @@ environment, then you already have all the required permissions and roles. Proce
 
   :::
 
-- Download and install the Palette CLI from the [Downloads](../../../spectro-downloads.md#palette-cli) page.
-  Refer to the [Palette CLI Install](../../../palette-cli/install-palette-cli.md) guide to learn more.
+- Download and install the Palette CLI from the [Downloads](../../../spectro-downloads.md#palette-cli) page. Refer to
+  the [Palette CLI Install](../../../palette-cli/install-palette-cli.md) guide to learn more.
 
 The following system requirements must be met to install a PCG in VMware vSphere:
 
@@ -60,13 +60,13 @@ The following system requirements must be met to install a PCG in VMware vSphere
 - An x86 Linux environment with an installed Docker daemon and connections to Palette and the VMware vSphere endpoint.
   The Palette CLI installation must be invoked on an up-to-date Linux system with an x86-64 architecture.
 
-Before installing the PCG on VMware, review the following system requirements and permissions. The vSphere user account used
-to deploy the PCG must have the required permissions to access the proper roles and objects in vSphere.
+Before installing the PCG on VMware, review the following system requirements and permissions. The vSphere user account
+used to deploy the PCG must have the required permissions to access the proper roles and objects in vSphere.
 
 Start by reviewing the required action items below:
 
-1. Create two custom vSphere roles. Check out the [Create Required Roles](#create-required-roles) section to create
-   the required roles in vSphere.
+1. Create two custom vSphere roles. Check out the [Create Required Roles](#create-required-roles) section to create the
+   required roles in vSphere.
 
 2. Review the [vSphere Permissions](#vsphere-permissions) section to ensure the created roles have the required vSphere
    privileges and permissions.
@@ -101,9 +101,8 @@ resource.
 
 ### vSphere Permissions
 
-The vSphere user account that deploys Palette requires access to the vSphere objects and permissions listed in
-the following table. Review the vSphere objects and privileges to ensure each role is assigned the required
-privileges.
+The vSphere user account that deploys Palette requires access to the vSphere objects and permissions listed in the
+following table. Review the vSphere objects and privileges to ensure each role is assigned the required privileges.
 
 <details>
   <summary>Click to reveal all required vSphere permissions</summary>
@@ -362,19 +361,19 @@ The following requirements apply to tags:
     palette login
     ```
 
-    | **Parameter**                  | **Description**                                                                                                                                                                                                                                                   |
-    | :----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Spectro Cloud Console**      | Enter the Palette endpoint URL. When using the Palette SaaS service, enter `https://console.spectrocloud.com`. When using a self-hosted instance of Palette, enter the URL for that instance.                                                                     |
+    | **Parameter**                  | **Description**                                                                                                                                                                                                                                                    |
+    | :----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Spectro Cloud Console**      | Enter the Palette endpoint URL. When using the Palette SaaS service, enter `https://console.spectrocloud.com`. When using a self-hosted instance of Palette, enter the URL for that instance.                                                                      |
     | **Allow Insecure Connection**  | Enabling this option bypasses x509 server Certificate Authority (CA) verification. Enter `y` if you are using a self-hosted Palette or VerteX instance with self-signed TLS certificates and need to provide a file path to the instance CA. Otherwise, enter `n`. |
-    | **Spectro Cloud API Key**      | Enter your Palette API Key. Refer to the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md) guide to create an API key.                                                                                                 |
-    | **Spectro Cloud Organization** | Select your Palette Organization name.                                                                                                                                                                                                                            |
-    | **Spectro Cloud Project**      | Select the project for which you want to register the VMware vSphere account.                                                                                                                                                                                       |
-    | **Acknowledge**                | Accept the login banner message. Login banner messages are only displayed if the tenant admin enabled a login banner.                                                                                                                                             |
+    | **Spectro Cloud API Key**      | Enter your Palette API Key. Refer to the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md) guide to create an API key.                                                                                                           |
+    | **Spectro Cloud Organization** | Select your Palette Organization name.                                                                                                                                                                                                                             |
+    | **Spectro Cloud Project**      | Select the project for which you want to register the VMware vSphere account.                                                                                                                                                                                      |
+    | **Acknowledge**                | Accept the login banner message. Login banner messages are only displayed if the tenant admin enabled a login banner.                                                                                                                                              |
 
     :::info
 
-    The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the **pcg.yaml** file are encrypted and cannot be manually updated.
-    To change these values, use the `palette pcg install --update-passwords` command. Refer to the
+    The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the **pcg.yaml** file are encrypted and cannot be manually
+    updated. To change these values, use the `palette pcg install --update-passwords` command. Refer to the
     [PCG command](../../../palette-cli/commands/pcg.md#update-passwords) reference page for more information.
 
     :::
@@ -386,14 +385,14 @@ The following requirements apply to tags:
     palette pcg install
     ```
 
-    | **Parameter**                                        | **Description**                                                                                                                                                                                                                                  |
-    | :--------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-    | **Management Plane Type**                            | Select Palette or VerteX.                                                                                                                                                                                                                        |
-    | **Enable Ubuntu Pro (required for production)**      | Enter `y` if you want to use Ubuntu Pro and provide an Ubuntu Pro token. Otherwise, enter `n`.                                                                                                        |
+    | **Parameter**                                        | **Description**                                                                                                                                                                                                                                                                    |
+    | :--------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Management Plane Type**                            | Select Palette or VerteX.                                                                                                                                                                                                                                                          |
+    | **Enable Ubuntu Pro (required for production)**      | Enter `y` if you want to use Ubuntu Pro and provide an Ubuntu Pro token. Otherwise, enter `n`.                                                                                                                                                                                     |
     | **Select an image registry type**                    | For a non-airgap installation, choose `Default` to pull images from public image registries. This requires an internet connection. For an airgap installation, select `Custom` and point to our airgap support VM or a custom internal registry that contains the required images. |
-    | **Cloud Type**                                       | Choose VMware vSphere.                                                                                                                                                                                                                           |
-    | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG. Example: `vmware-pcg-1`.                                                                                                                                                                                        |
-    | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.                              |
+    | **Cloud Type**                                       | Choose VMware vSphere.                                                                                                                                                                                                                                                             |
+    | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG. Example: `vmware-pcg-1`.                                                                                                                                                                                                                          |
+    | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.                                                                |
 
 4.  Next, provide environment configurations for the cluster. Refer to the following table for information about each
     option.
@@ -402,7 +401,7 @@ The following requirements apply to tags:
     | :-------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **HTTPS Proxy**                   | Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: `https://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.                                                                                                                   |
     | **HTTP Proxy**                    | Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes and all of its cluster nodes. Example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.                                                                                                                     |
-    | **No Proxy**                      | Provide a list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example for a self-hosted environment: `my.company.com,10.10.0.0/16`.     |
+    | **No Proxy**                      | Provide a list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server. Example for a self-hosted environment: `my.company.com,10.10.0.0/16`.                                     |
     | **Proxy CA Certificate Filepath** | The default is blank. You can provide the file path of a CA certificate on the installer host. If provided, this CA certificate will be copied to each host in the PCG cluster during deployment. The provided path will be used on the PCG cluster hosts. Example: `/usr/local/share/ca-certificates/ca.crt`. |
     | **Pod CIDR**                      | Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                        |
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                         |
@@ -414,7 +413,7 @@ The following requirements apply to tags:
     | **Registry Name**                                        | Assign a name to the custom registry.                                                                                                                                                                                                                              |
     | **Registry Endpoint**                                    | The endpoint or IP address for the custom registry. Example: `https://palette.example.com` or `https://10.10.1.0`.                                                                                                                                                 |
     | **Registry Base Content Path**                           | The base content path for the custom registry. Example: `spectro-images`.                                                                                                                                                                                          |
-    | **Configure Registry Mirror**                            | Your system default text editor, such as Vi, will open up and allow you to customize the default mirror registry settings. Add any additional registry mirrors you want to add. Otherwise, press `Esc` and then `:wq` to save and exit the file.                      |
+    | **Configure Registry Mirror**                            | Your system default text editor, such as Vi, will open up and allow you to customize the default mirror registry settings. Add any additional registry mirrors you want to add. Otherwise, press `Esc` and then `:wq` to save and exit the file.                   |
     | **Allow Insecure Connection (Bypass x509 Verification)** | Enabling this option bypasses x509 CA verification. Enter `n` if using a custom registry with self-signed SSL certificates. Otherwise, enter `y`. If you enter `y`, you will receive a follow-up prompt asking you to provide the file path to the CA certificate. |
     | **Registry CA certificate Filepath**                     | The CA certificate for the custom registry. This is optional. Provide the file path of the CA certificate on the installer host. Example: `/usr/local/share/ca-certificates/ca.crt`.                                                                               |
     | **Registry Username**                                    | The username for the custom registry.                                                                                                                                                                                                                              |
@@ -422,12 +421,11 @@ The following requirements apply to tags:
 
 6.  The next set of prompts is for configuring connection details for the vSphere environment. The CLI will use this
     information to establish a network connection to the vSphere environment and query the vSphere API to retrieve
-    information about the environment. The information retrieved is used in the next step to select target
-    resources.
+    information about the environment. The information retrieved is used in the next step to select target resources.
 
     | **Parameter**                                            | **Description**                                                                                                                                                                                                                                                    |
     | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-    | **vSphere Endpoint**                                     | The vSphere endpoint. You can specify a Full Qualified Domain Name (FQDN) or an IP address. Make sure you specify the endpoint without the HTTP scheme `https://` or `http://`. Example: `vcenter.mycompany.com`.                                                   |
+    | **vSphere Endpoint**                                     | The vSphere endpoint. You can specify a Full Qualified Domain Name (FQDN) or an IP address. Make sure you specify the endpoint without the HTTP scheme `https://` or `http://`. Example: `vcenter.mycompany.com`.                                                  |
     | **vSphere Username**                                     | The vSphere account username.                                                                                                                                                                                                                                      |
     | **vSphere Password**                                     | The vSphere account password.                                                                                                                                                                                                                                      |
     | **Allow Insecure Connection (Bypass x509 Verification)** | Enabling this option bypasses x509 CA verification. Enter `n` if using a custom registry with self-signed SSL certificates. Otherwise, enter `y`. If you enter `y`, you will receive a follow-up prompt asking you to provide the file path to the CA certificate. |
@@ -438,7 +436,7 @@ The following requirements apply to tags:
     | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Datacenter**                                           | The vSphere Datacenter to target when deploying the PCG cluster.                                                                                                                                                                                                              |
     | **Folder**                                               | The folder to target when deploying the PCG cluster.                                                                                                                                                                                                                          |
-    | **Network**                                              | The port group to which the PCG cluster will be connected.                                                                                                                                                                                                                          |
+    | **Network**                                              | The port group to which the PCG cluster will be connected.                                                                                                                                                                                                                    |
     | **Resource Pool**                                        | The resource pool to target when deploying the PCG cluster.                                                                                                                                                                                                                   |
     | **Cluster**                                              | The compute cluster to use for the PCG deployment.                                                                                                                                                                                                                            |
     | **Select specific Datastore or use a VM Storage Policy** | Select the datastore or VM Storage policy to apply to the PCG cluster.                                                                                                                                                                                                        |
@@ -446,12 +444,12 @@ The following requirements apply to tags:
     | **Add another Fault Domain**                             | Specify any fault domains you would like to use.                                                                                                                                                                                                                              |
     | **NTP Servers**                                          | Specify the IP address for any Network Time Protocol (NTP) servers the PCG cluster can reference. We recommend you specify at least one NTP server.                                                                                                                           |
     | **SSH Public Keys**                                      | Provide the public OpenSSH key for the PCG cluster. Use this key when establishing an SSH connection with the PCG cluster. This prompt will result in the default text editor for the Operating System to open. Vi is the more common text editor used in Linux environments. |
-    | **Number of Nodes**                                      | The number of nodes that will make up the cluster. Available options are **1** or **3**. We recommend three nodes for a High Availability (HA) cluster in a production environment.                                                                                          |
+    | **Number of Nodes**                                      | The number of nodes that will make up the cluster. Available options are **1** or **3**. We recommend three nodes for a High Availability (HA) cluster in a production environment.                                                                                           |
 
-8.  Specify the IP pool configuration. You have the option to select a static placement or use Dynamic Domain Name Service
-    (DDNS). With static placement, an IP pool is created, and the PCG VMs are assigned IP addresses from the selected
-    pool. With DDNS, PCG VMs are assigned IP addresses via DNS. Review the following tables to learn more about each
-    parameter.
+8.  Specify the IP pool configuration. You have the option to select a static placement or use Dynamic Domain Name
+    Service (DDNS). With static placement, an IP pool is created, and the PCG VMs are assigned IP addresses from the
+    selected pool. With DDNS, PCG VMs are assigned IP addresses via DNS. Review the following tables to learn more about
+    each parameter.
 
     ##### Static Placement Configuration
 
@@ -465,6 +463,7 @@ The following requirements apply to tags:
     | **Name server search suffixes (optional)** | Comma-separated list of DNS search domains.                                                                                        |
 
          ##### DDNS Placement Configuration
+
          |**Parameter**                            | **Description**|
          |-----------------------------------------|----------------|
          | **Search domains** | Comma-separated list of DNS search domains.|
@@ -496,8 +495,8 @@ The following requirements apply to tags:
 
 11. Specify the node affinity configuration.
 
-    | **Parameter**     | **Description**                                                  |
-    | ----------------- | ---------------------------------------------------------------- |
+    | **Parameter**     | **Description**                                                   |
+    | ----------------- | ----------------------------------------------------------------- |
     | **Node Affinity** | Enter `y` to schedule all Palette pods on the control plane node. |
 
 12. A new PCG configuration file is generated, and its location is displayed on the console. You will receive an output
@@ -511,7 +510,8 @@ The following requirements apply to tags:
     The Palette CLI will now provision a PCG cluster in your VMware environment. You can monitor the progress of the PCG
     cluster by navigating to Palette and selecting **Tenant Settings** from the left **Main Menu**. Next, click on
     **Private Cloud Gateways** from the left **Tenant Settings Menu** and select the PCG cluster you just deployed to
-    access its details page. From the details page, select the **Events** tab to view the progress of the PCG cluster deployment.
+    access its details page. From the details page, select the **Events** tab to view the progress of the PCG cluster
+    deployment.
 
     If you encounter issues during the installation, refer to the [PCG Troubleshooting](../../../troubleshooting/pcg.md)
     guide for debugging assistance. If you need additional help, reach out to our
@@ -545,6 +545,7 @@ Once installed, the PCG registers itself with Palette. To verify the PCG is regi
 
 ## Next Steps
 
-After you have successfully deployed the PCG into your VMware vSphere environment, you can now create and define an IP Address Management (IPAM)
-node pool that Kubernetes clusters deployed in vSphere can use. To learn more about creating and defining node pools,
-refer to the [Create and Manage IPAM Node Pools](../manage-pcg/create-manage-node-pool.md) documentation.
+After you have successfully deployed the PCG into your VMware vSphere environment, you can now create and define an IP
+Address Management (IPAM) node pool that Kubernetes clusters deployed in vSphere can use. To learn more about creating
+and defining node pools, refer to the [Create and Manage IPAM Node Pools](../manage-pcg/create-manage-node-pool.md)
+documentation.

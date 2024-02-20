@@ -46,15 +46,18 @@ development and testing environments.
 
 ## Prerequisites
 
-- An existing Kubernetes cluster that has network connectivity with Palette. The Kubernetes cluster must be able
-  to connect to the internet to download the required images and packages and connect with Palette on port 443. To
-  learn more about PCG network requirements, refer to the
-  [Network Communication](./architecture.md#network-communication) section.
-:::warning
+- An existing Kubernetes cluster that has network connectivity with Palette. The Kubernetes cluster must be able to
+  connect to the internet to download the required images and packages and connect with Palette on port 443. To learn
+  more about PCG network requirements, refer to the [Network Communication](./architecture.md#network-communication)
+  section.
 
-Do not install the PCG in a Kubernetes cluster managed by Palette.  The installation will fail due to resource naming conflicts.
+  :::warning
 
-:::
+  Do not install the PCG in a Kubernetes cluster managed by Palette. The installation will fail due to resource naming
+  conflicts.
+
+  :::
+
 - You need sufficient permissions to deploy the PCG services in the cluster. The
   [default Kubernetes cluster roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#default-roles-and-role-bindings)
   _cluster-admin_ and _admin_ have the necessary permissions to deploy the PCG services.
@@ -105,9 +108,9 @@ Use the following steps to install the PCG in your existing Kubernetes cluster.
 
    ![View of the cluster details page with the side drawer extended that contains the kubectl commands](/clusters_pcg_deploy-pcg-k8s_kubectl-cmds-view.png)
 
-7. Close the slide-out panel when you have copied and issued both commands. The PCG Overview page **Cluster Status** field will
-   display **Pending** while the PCG is deploying. The deployment is complete when the **Cluster Status** field displays
-   the status **Running**.
+7. Close the slide-out panel when you have copied and issued both commands. The PCG Overview page **Cluster Status**
+   field will display **Pending** while the PCG is deploying. The deployment is complete when the **Cluster Status**
+   field displays the status **Running**.
 
 ## Validate
 
@@ -124,8 +127,8 @@ successful.
 
 ## Next Steps
 
-When the PCG is in the **Running** state, you can create a cloud account, toggle **Connect Private Cloud
-Gateway**, and select the PCG you just deployed. The option to use the PCG you deployed on an existing cluster is only
-available to the infrastructure provider you selected when you deployed the PCG. Clusters deployed to the cloud account
-with the **Connect Private Cloud Gateway** enabled will use the PCG you deployed to support cluster deployment and
-removal operations.
+When the PCG is in the **Running** state, you can create a cloud account, toggle **Connect Private Cloud Gateway**, and
+select the PCG you just deployed. The option to use the PCG you deployed on an existing cluster is only available to the
+infrastructure provider you selected when you deployed the PCG. Clusters deployed to the cloud account with the
+**Connect Private Cloud Gateway** enabled will use the PCG you deployed to support cluster deployment and removal
+operations.
