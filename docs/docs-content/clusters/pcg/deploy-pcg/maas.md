@@ -121,7 +121,7 @@ is not required for the DNS records to be accessible from the internet.
 
     The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the **pcg.yaml** file are encrypted and cannot be manually
     updated. To change these values, use the `palette pcg install --update-passwords` command. Refer to the
-    [PCG command](../../../palette-cli/commands/pcg.md#update-passwords) reference page for more information.
+    [PCG command](../../../palette-cli/commands.md#pcg) reference page for more information.
 
     :::
 
@@ -215,9 +215,8 @@ is not required for the DNS records to be accessible from the internet.
     You cannot modify a deployed PCG cluster. If you need to make changes to the PCG cluster, you must first delete the
     cluster and redeploy it. We recommend you save your PCG configuration file for future use. Use the `--config-only`
     flag to save the configuration file without deploying the PCG cluster. Refer to the
-    [Generate a Configuration File](../../../palette-cli/commands/pcg.md#generate-a-configuration-file) section to learn
-    more. For additional assistance, visit our
-    [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+    [Generate a Configuration File](../../../palette-cli/commands.md#pcg) section to learn more. For additional
+    assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
     :::
 

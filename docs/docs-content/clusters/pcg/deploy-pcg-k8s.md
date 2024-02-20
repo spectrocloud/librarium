@@ -16,8 +16,6 @@ You can deploy a PCG onto an existing Kubernetes cluster that is not managed by 
 
 - AWS
 - Azure
-- Nutanix. Requires the registration of a Nutanix cloud. Refer to the
-  [Register Nutanix Cloud](../data-center/nutanix/register-nutanix-cloud.md) section for more information.
 
 ### PCG Sizing
 
