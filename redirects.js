@@ -376,6 +376,10 @@ const redirects = [
     from: "/user-management/saml-sso/enable-saml",
     to: "/user-management/saml-sso/",
   },
+  {
+    from: "/clusters/data-center/maas/install-manage-maas-pcg",
+    to: "/clusters/pcg/deploy-pcg/maas",
+  },
 ];
 
 module.exports = redirects;
