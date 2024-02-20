@@ -398,8 +398,10 @@ In your markdown file, use the component and ensure you specify a URL.
 **x** and **y** properties refer to the coordinates of the point starting from the **top-left corner** of the markdown
 container.
 
-**Note**: **_x_**, **_y_**, **_description_** properties are **mandatory**. **_label_** and **_tooltipPlacement_**
-properties are optional.
+> [!NOTE]
+>
+> The **_x_**, **_y_**, and **_description_** properties are **mandatory**. The **_label_** and **_tooltipPlacement_**
+> properties are optional.
 
 If no label is specified, the default one is "+".
 
@@ -573,7 +575,8 @@ We use [Prettier](https://prettier.io/) to maintain uniform and consistent forma
 commit changes, Prettier formats the staged files automatically. Then, once you create a pull request, it verifies that
 the formatting in all files complies with our Prettier configuration.
 
-> [!NOTE]  
+> [!NOTE]
+>
 > The build fails if the Code Formatting check doesn't pass.
 
 To manually check the formatting before pushing your work upstream, execute the following command in your terminal:
@@ -651,12 +654,16 @@ To create a new release, use the following steps:
 The semantic-release logic and the GitHub Actions in the [release.yaml](.github/workflows/release.yaml) will ensure the
 new release tag is created.
 
-> **Warning** Do not use `feat`,`perf` or `fix` or other semantic-release key words that trigger a version change. Use
-> the commit message prefix `docs: yourMessageHere` for regular documentation commits.
+> [!WARNING]
+>
+> Do not use `feat`,`perf`, `fix`, or other semantic-release key words that trigger a version change. Use the commit
+> message prefix `docs: yourMessageHere` for regular documentation commits.
 
 ## Versioning
 
-> [!NOTE] Detailed documentation for versioning can be found in the internal
+> [!NOTE]
+>
+> Detailed documentation for versioning can be found in the internal
 > [Versioning](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1962639377/Versioning) guide.
 
 All versioned content belongs to a specific version branch. The version branch name follows the naming convention
@@ -701,5 +708,7 @@ make build
 rm versions.json
 ```
 
-> [!WARNING] The `docuasurus.config.js` file is updated by the [`update_docusaurs_config.js`](./docusaurus.config.js)
-> script. DO NOT commit this file with the updated changes.
+> [!WARNING]
+>
+> The `docusaurus.config.js` file is updated by the [`update_docusaurus_config.js`](./docusaurus.config.js) script. DO
+> NOT commit this file with the updated changes.
