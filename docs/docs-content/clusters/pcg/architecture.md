@@ -9,14 +9,14 @@ tags: ["pcg"]
 ---
 
 A Private Cloud Gateway (PCG) facilitates communication between Palette and your infrastructure environment. The PCG is
-necessary in environments where Palette does not have direct network access. Many infrastructure environments are placed in a
-private network that blocks connections originating externally. The PCG connects to Palette, and acts as an endpoint,
-allowing you to target the environment when deploying clusters in Palette.
+necessary in environments where Palette does not have direct network access. Many infrastructure environments are placed
+in a private network that blocks connections originating externally. The PCG connects to Palette, and acts as an
+endpoint, allowing you to target the environment when deploying clusters in Palette.
 
-When installed, the PCG registers with the self-hosted or SaaS Palette instance you specify,
-enabling secure communication between the Palette control management plane and the private cloud environment. The PCG
-enables the deployment and removal of Kubernetes clusters in private cloud environments through the Palette user interface,
-API, CLI, or Terraform provider.
+When installed, the PCG registers with the self-hosted or SaaS Palette instance you specify, enabling secure
+communication between the Palette control management plane and the private cloud environment. The PCG enables the
+deployment and removal of Kubernetes clusters in private cloud environments through the Palette user interface, API,
+CLI, or Terraform provider.
 
 ![An architecture diagram of PCG](/clusters_pcg_architecture_overview_diagram.png)
 
@@ -27,22 +27,23 @@ Palette originates from the PCG, and the PCG acts as an endpoint for Palette to 
 environment. The PCG also supports using a proxy server to access the internet if needed. The PCG is constantly polling
 Palette instructions to either deploy a new cluster or delete an existing one.
 
-The PCG communicates with Palette using a secure communication channel that is encrypted using the Transport Layer Security (TLS) protocol. The table below
-lists the network ports and protocols the PCG uses to communicate with Palette and the infrastructure environment.
+The PCG communicates with Palette using a secure communication channel that is encrypted using the Transport Layer
+Security (TLS) protocol. The table below lists the network ports and protocols the PCG uses to communicate with Palette
+and the infrastructure environment.
 
 | Port | Protocol | Source | Destination   | Description                                                                                                                                                                                |
 | ---- | -------- | ------ | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 443  | HTTPS    | PCG    | Palette       | Secure communication channel between PCG and Palette.                                                                                                                                      |
 | 443  | gRPC     | PCG    | Palette       | Secure communication channel between PCG and Palette.                                                                                                                                      |
 | 443  | HTTPS    | PCG    | Local Network | Secure communication channel between PCG and infrastructure provider in local network. For example, if you are using VMware vSphere, the PCG would communicate with your vSphere endpoint. |
-| 6443 | HTTPS    | PCG    | Local Network | Secure communication channel between PCG and the deployed Kubernetes cluster API server.                                                                                                       |
+| 6443 | HTTPS    | PCG    | Local Network | Secure communication channel between PCG and the deployed Kubernetes cluster API server.                                                                                                   |
 
 :::info
 
-To establish communication between the PCG and Palette, the PCG initiates all network communication to Palette. Similarly, when
-deploying workload clusters, the cluster initiates all network communication to Palette. To deploy the PCG
-successfully, you must provide the Palette endpoint, which helps the PCG know where to connect. This information is also
-shared with the workload cluster during the cluster deployment.
+To establish communication between the PCG and Palette, the PCG initiates all network communication to Palette.
+Similarly, when deploying workload clusters, the cluster initiates all network communication to Palette. To deploy the
+PCG successfully, you must provide the Palette endpoint, which helps the PCG know where to connect. This information is
+also shared with the workload cluster during the cluster deployment.
 
 :::
 
@@ -60,10 +61,10 @@ proxy server. The workload cluster is self-sustaining and does not require the P
 <details>
   <summary>Cluster API State Management with PCG</summary>
 
-During a cluster deployment, the PCG uses the [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io) to interact with the infrastructure provider to deploy
-the cluster. Once the cluster is deployed, the CAPI state management is pivoted to the workload cluster as a dedicated
-service. The workload cluster, through the Palette agent, is then responsible for managing its own lifecycle operations.
-The PCG is not involved in managing the workloads of the deployed cluster.
+During a cluster deployment, the PCG uses the [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io) to interact with the
+infrastructure provider to deploy the cluster. Once the cluster is deployed, the CAPI state management is pivoted to the
+workload cluster as a dedicated service. The workload cluster, through the Palette agent, is then responsible for
+managing its own lifecycle operations. The PCG is not involved in managing the workloads of the deployed cluster.
 
 In the event of a cluster deletion, the CAPI state management is pivoted back to the PCG, and CAPI begins the cluster
 deletion process to release the resources used by the workload cluster.
@@ -75,8 +76,8 @@ The following table explains the different lifecycle phases of a workload cluste
 | Lifecycle Phase            | PCG Involvement? | Description                                                                                                                                                                                                                                             |
 | -------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Cluster Creation           | ✅               | The PCG is involved in the cluster creation process. The PCG polls Palette for new cluster deployment requests. Once a request is received, the PCG will request resources from the infrastructure provider and support the cluster deployment process. |
-| Managing Cluster Workloads | ❌               | The local Palette agent inside the cluster manages the cluster workloads. The PCG is not involved in managing the workloads of the deployed cluster.                                                                                |
-| Day-2 Operations           | ❌               | The PCG is not involved in Day-2 operations. The internal [Cluster API](https://cluster-api.sigs.k8s.io/) service handles interactions with the local infrastructure provider.                                                                 |
+| Managing Cluster Workloads | ❌               | The local Palette agent inside the cluster manages the cluster workloads. The PCG is not involved in managing the workloads of the deployed cluster.                                                                                                    |
+| Day-2 Operations           | ❌               | The PCG is not involved in Day-2 operations. The internal [Cluster API](https://cluster-api.sigs.k8s.io/) service handles interactions with the local infrastructure provider.                                                                          |
 | Cluster Deletion           | ✅               | The PCG is involved in the cluster deletion process. The PCG will request the infrastructure provider to release the resources used by the cluster.                                                                                                     |
 
 ## PCG Deployment Options
@@ -110,9 +111,9 @@ that are currently deployed will remain operational and still be managed by Pale
 
 All Palette deployed clusters will use the PCG cluster during the creation and deletion phase. Once a deployed cluster
 is available, the internal Palette agent will communicate with Palette directly. The Palette agent inside each cluster
-originates all communication, so the network requests are outbound toward Palette. The exception is a host
-cluster creation or deletion request, where the PCG must be involved because it needs to acquire and release resources
-provided by the infrastructure provider.
+originates all communication, so the network requests are outbound toward Palette. The exception is a host cluster
+creation or deletion request, where the PCG must be involved because it needs to acquire and release resources provided
+by the infrastructure provider.
 
 Typically, the PCG is used with Palette SaaS. However, a PCG is also required if you have a self-hosted Palette instance
 and it does not have direct access to the infrastructure environment. You can utilize the System Private Gateway if
@@ -139,12 +140,12 @@ The following table explains the different use cases for when a PCG or a System 
 | Firewall or NAT between the infrastructure environment and a self-hosted Palette instance     | ✅                         | ❌                          |
 | Direct connectivity between the infrastructure environment and a self-hosted Palette instance | ✅                         | ✅                          |
 | Firewall or NAT between the infrastructure environment and Palette SaaS                       | ✅                         | ❌                          |
-| Direct connectivity between Palette SaaS and the infrastructure environment                       | ✅                         | ❌                          |
+| Direct connectivity between Palette SaaS and the infrastructure environment                   | ✅                         | ❌                          |
 
 #### How to Use System Private Gateway?
 
 To use the System Private Gateway with a self-hosted Palette instance, you must toggle the **Use System Private
-Gateway** option while registering a private cloud account with Palette. This option is only available from the
-Palette user interface for private cloud environments such as MAAS, OpenStack, and VMware vSphere.
+Gateway** option while registering a private cloud account with Palette. This option is only available from the Palette
+user interface for private cloud environments such as MAAS, OpenStack, and VMware vSphere.
 
 ![View of the cloud account registration screen with the system PCG check box highlighted](/clusters_pcg_architecture_system-pcg-ui.png)

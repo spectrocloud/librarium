@@ -60,7 +60,7 @@ Use the following steps to create and manage node pools for a PCG.
    | **Gateway**                      | The gateway IP address for the node pool.                                                                                                              |
    | **Nameservers addresses**        | The IP addresses of the nameservers for the node pool.                                                                                                 |
    | **Nameserver search suffix**     | The search suffix for the domain supported by the nameservers.                                                                                         |
-   | **Restrict to a single cluster** | If enabled, the node pool will be restricted to a single cluster. Additional clusters will require creating more node pools.                            |
+   | **Restrict to a single cluster** | If enabled, the node pool will be restricted to a single cluster. Additional clusters will require creating more node pools.                           |
 
    #### Range
 
@@ -76,10 +76,10 @@ Use the following steps to create and manage node pools for a PCG.
 
    If you select **Subnet** as the **Network Type**, you will need to provide the following additional information:
 
-   | Field              | Description                                                               |
-   | ------------------ | ------------------------------------------------------------------------- |
+   | Field              | Description                                                                 |
+   | ------------------ | --------------------------------------------------------------------------- |
    | **Subnet**         | The subnet for the node pool in CIDR format. For example, `10.10.100.0/24`. |
-   | **Network Prefix** | The network prefix for the node pool. For example, `/18`                   |
+   | **Network Prefix** | The network prefix for the node pool. For example, `/18`                    |
 
 8. Click **Confirm** to create the node pool.
 

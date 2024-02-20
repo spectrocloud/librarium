@@ -7,14 +7,14 @@ sidebar_position: 20
 tags: ["pcg"]
 ---
 
-You can increase the number of nodes of a Private Cloud Gateway (PCG). This is useful when you want to convert a single-node
- PCG to a multi-node PCG to provide additional capacity or to meet the requirements of your workloads.
+You can increase the number of nodes of a Private Cloud Gateway (PCG). This is useful when you want to convert a
+single-node PCG to a multi-node PCG to provide additional capacity or to meet the requirements of your workloads.
 
 :::warning
 
 You cannot scale down the number of nodes in a PCG. If you want to reduce the number of PCG nodes, then you must delete
-the PCG and deploy a new one with the desired number of nodes. This limitation is due to the etcd not supporting scale-down
-operations.
+the PCG and deploy a new one with the desired number of nodes. This limitation is due to the etcd not supporting
+scale-down operations.
 
 :::
 
