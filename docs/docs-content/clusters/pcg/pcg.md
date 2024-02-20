@@ -38,3 +38,5 @@ existing Kubernetes cluster. Refer to the table below to learn more about the su
 - [Deploy a PCG with Palette CLI](./deploy-pcg/deploy-pcg.md)
 
 - [Deploy a PCG to an Existing Kubernetes Cluster](./deploy-pcg-k8s.md)
+
+- [Manage a PCG](./manage-pcg/manage-pcg.md)
