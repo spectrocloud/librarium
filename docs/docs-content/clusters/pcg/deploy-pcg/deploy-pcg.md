@@ -7,10 +7,10 @@ tags: ["pcg"]
 ---
 
 You can install a Private Cloud Gateway (PCG) on a Linux server to support Palette or VerteX deployments. Use the
-Palette CLI to install the PCG if you are targeting a VMware vSphere environment, MAAS, or OpenStack. All other
-environments, refer to the [Deploy PCG to a Kubernetes Cluster](../deploy-pcg-k8s.md).
+Palette CLI to install the PCG if you are targeting a VMware vSphere environment, MAAS, or OpenStack. For other
+environments, refer to the [Deploy PCG to a Kubernetes Cluster](../deploy-pcg-k8s.md) guide.
 
-Select the install guide that matches your environment in the [Resources](#resources) to learn how to deploy a PCG.
+Select the installation guide that matches your environment in the [Resources](#resources) section to learn how to deploy a PCG.
 
 ## PCG Sizing
 
@@ -18,7 +18,7 @@ The following table provides the recommended sizing for the PCG based on the num
 the maximum concurrent cluster deployments. You can continue to deploy additional clusters once the current clusters
 deployment batch is complete.
 
-We recommend using a minimum of 3 nodes for production environments. Single node cluster are better suited for
+We recommend using a minimum of 3 nodes for production environments. Single-node clusters are better suited for
 development and testing environments.
 
 ##### Single-Node Cluster

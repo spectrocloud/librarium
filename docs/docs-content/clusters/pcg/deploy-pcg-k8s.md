@@ -50,7 +50,11 @@ development and testing environments.
   to connect to the internet to download the required images and packages and connect with Palette on port 443. To
   learn more about PCG network requirements, refer to the
   [Network Communication](./architecture.md#network-communication) section.
+:::warning
 
+Do not install the PCG in a Kubernetes cluster managed by Palette.  The installation will fail due to resource naming conflicts.
+
+:::
 - You need sufficient permissions to deploy the PCG services in the cluster. The
   [default Kubernetes cluster roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#default-roles-and-role-bindings)
   _cluster-admin_ and _admin_ have the necessary permissions to deploy the PCG services.
@@ -82,7 +86,7 @@ development and testing environments.
 
 ## Install PCG
 
-Use the following steps to install the PCG in your self-hosted Kubernetes cluster.
+Use the following steps to install the PCG in your existing Kubernetes cluster.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
