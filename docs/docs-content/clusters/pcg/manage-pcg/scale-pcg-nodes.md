@@ -7,13 +7,13 @@ sidebar_position: 20
 tags: ["pcg"]
 ---
 
-You can increase the number of nodes in a Private Cloud Gateway (PCG). This is useful when you want to convert a single
-node PCG to a multi-node PCG to provide additional capacity or to meet the requirements of your workloads.
+You can increase the number of nodes of a Private Cloud Gateway (PCG). This is useful when you want to convert a single-node
+ PCG to a multi-node PCG to provide additional capacity or to meet the requirements of your workloads.
 
 :::warning
 
-You cannot scale down the number of nodes in a PCG. If you want to reduce the number of PCG nodes then you must delete
-the PCG and deploy a new PCG with the desired number of nodes. This limitation is due to etcd not supporting scale down
+You cannot scale down the number of nodes in a PCG. If you want to reduce the number of PCG nodes, then you must delete
+the PCG and deploy a new one with the desired number of nodes. This limitation is due to the etcd not supporting scale-down
 operations.
 
 :::
@@ -22,10 +22,10 @@ Use the following steps to increase the number of nodes in a PCG.
 
 ## Prerequisites
 
-- A PCG is installed, active and in a healthy state. Refer to [Deploy a PCG](../deploy-pcg/deploy-pcg.md) for
+- A PCG is installed, active, and in a healthy state. Refer to [Deploy a PCG](../deploy-pcg/deploy-pcg.md) for
   instructions on how to install a PCG.
 
-- The PCG is a single node deployment.
+- The PCG is a single-node deployment.
 
 - The PCG was deployed through the Palette CLI. A PCG hosted on an existing Kubernetes cluster cannot be scaled up by
   Palette.
@@ -34,7 +34,7 @@ Use the following steps to increase the number of nodes in a PCG.
 
 - Tenant administrator access.
 
-## Change Node Count
+## Increase Node Count
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant administrator.
 

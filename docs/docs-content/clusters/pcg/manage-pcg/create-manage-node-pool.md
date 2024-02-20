@@ -22,7 +22,7 @@ natively support IPAM and DHCP.
 :::
 
 You can create additional node pools to meet the requirements of your workloads, such as defining different node pools
-for different workloads, better manage the IP address utilization, or to provide additional capacity. This guide
+for different workloads, better managing the IP address utilization, or providing additional capacity. This guide
 provides instructions on how to create a node pool for IP address management (IPAM) for a PCG deployed in a VMware
 vSphere environment.
 
@@ -30,7 +30,7 @@ Use the following steps to create and manage node pools for a PCG.
 
 ## Prerequisites
 
-- A PCG is installed, active and in a healthy state. Refer to [Deploy a PCG](../deploy-pcg/deploy-pcg.md) for
+- A PCG is installed, active, and in a healthy state. Refer to [Deploy a PCG](../deploy-pcg/deploy-pcg.md) for
   instructions on how to install a PCG.
 
 - Tenant administrator access.
@@ -60,7 +60,7 @@ Use the following steps to create and manage node pools for a PCG.
    | **Gateway**                      | The gateway IP address for the node pool.                                                                                                              |
    | **Nameservers addresses**        | The IP addresses of the nameservers for the node pool.                                                                                                 |
    | **Nameserver search suffix**     | The search suffix for the domain supported by the nameservers.                                                                                         |
-   | **Restrict to a single cluster** | If enabled, the node pool will be restricted to a single cluster. Additional cluster will require creating more node pools.                            |
+   | **Restrict to a single cluster** | If enabled, the node pool will be restricted to a single cluster. Additional clusters will require creating more node pools.                            |
 
    #### Range
 
@@ -78,8 +78,8 @@ Use the following steps to create and manage node pools for a PCG.
 
    | Field              | Description                                                               |
    | ------------------ | ------------------------------------------------------------------------- |
-   | **Subnet**         | The subnet for the node pool in CIDR format. For example `10.10.100.0/24` |
-   | **Network Prefix** | The network prefix for the node pool. For example `/18`                   |
+   | **Subnet**         | The subnet for the node pool in CIDR format. For example, `10.10.100.0/24`. |
+   | **Network Prefix** | The network prefix for the node pool. For example, `/18`                   |
 
 8. Click **Confirm** to create the node pool.
 
@@ -93,11 +93,11 @@ Use the following steps to validate that the node pool was created successfully.
 
 3. Select **Private Cloud Gateways** from the **Tenant Settings Menu**
 
-4. Click on the PCG for which you want to create a node pool.
+4. Click on the PCG for which you created a node pool.
 
 5. From the PCG details page, click on the **IP Address Management (IPAM)** tab.
 
-6. The new node pool should is listed in the **Node Pools** section.
+6. The new node pool should be listed in the **Node Pools** section.
 
 To use the new node pool, you will need to create a cluster and assign the node pool when configuring the cluster
 control plane and worker nodes.
