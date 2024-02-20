@@ -32,10 +32,18 @@ pause platform upgrades.
 
 ## Cluster Profile Updates
 
-The cluster profile for a PCG is locked down and cannot be changed by any user. In the scenario where a cluster profile
-is updated, for example, when upgrading the underlying Kubernetes version, the PCG cluster detail's page will display a
-notification that a new version of the cluster profile is available.
+The cluster profile for a PCG is locked down and cannot be changed by a user. In the scenario when a cluster profile is
+update available, for example, when upgrading the underlying Kubernetes version of the PCG cluster, the PCG cluster
+detail's page will display a notification that a new version of the cluster profile is available.
 
     ![A PCG details page displaying an eligble update](/clusters_manage-pcg_pcg-upgrade_updates-button.png)
 
-To upgrade the PCG cluster, click the **Updates** button to start the upgrade process.
+To upgrade the PCG cluster, click the **Updates** button to start the upgrade process. An cluster profile editor will
+appear displaying the changes that will be made to the cluster profile. Review the changes and click **Confirm updates**
+to start the upgrade process. Depending on the changes, the upgrade process may take some time to complete and the PCG
+cluster may be unavailable during the upgrade process. Refer to the
+[Update a Cluster Profile](../../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) to
+learn more about the cluster profile update process.
+
+Once a PCG cluster profile update is complete, an event log message stating "all control planes are updated" is
+displayed in the event log.
