@@ -180,7 +180,7 @@ is especially important when operating with many clusters or multiple cloud depl
 Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. Find the
 `[cloud provider]-cluster` you deployed with the _hello-universe_ application. Click on it to view its **Overview** tab.
 
-Click on the **Settings** dropdown menu in the upper right corner and select **Cluster Settings**.
+Click on the **Settings** drop-down Menu in the upper right corner and select **Cluster Settings**.
 
 Fill **service:hello-universe-frontend** in the **Tags (Optional)** input box. Click on **Save Changes**. Close the
 panel.

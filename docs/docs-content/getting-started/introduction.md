@@ -44,5 +44,5 @@ Palette has the richest coverage in supported environments that includes:
 
 - Public Clouds: AWS, Azure, and Google Cloud (both IaaS and managed Kubernetes services EKS/AKS/GKE)
 - Data Centers: VMware, OpenStack
-- Bare Metal: Canonical MaaS
+- Bare Metal: Canonical MAAS
 - Edge
