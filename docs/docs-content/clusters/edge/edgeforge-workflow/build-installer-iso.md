@@ -153,8 +153,8 @@ a disconnected Edge host instance via the Edge Management Console. For more info
 [Upload Content Bundle](../edge-host-management/upload-content-bundle.md).
 
 1. Refer to [Build Content Bundle](./build-content-bundle.md) to learn how to build content bundles for your ISO image.
-   Since you are including the content bundle in the the Installer ISO, you should choose either the zst format or the
-   tar format for the content bundle. Do not build the content bundle as an ISO image.
+   Since you are including the content bundle in the Installer ISO, you should choose either the zst format or the tar
+   format for the content bundle. Do not build the content bundle as an ISO image.
 
 2. When the content bundle build finishes, the output will be in a directory named **content-XXXXXX**, where XXXXXX is a
    random alphanumerical string. Inside the directory is the content bundle file.
