@@ -33,3 +33,5 @@ Refer to the follow resources to learn how to use EMC to manage your disconnecte
 - [Create Local Cluster](./create-cluster.md)
 
 - [Customize Edge Management Console Theme](./theming.md)
+
+- [Configure HTTP Proxy in Edge Management Console](./configure-proxy.md)
