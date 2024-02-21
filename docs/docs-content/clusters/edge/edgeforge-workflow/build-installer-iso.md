@@ -8,7 +8,7 @@ sidebar_position: 30
 tags: ["edge"]
 ---
 
-The Edge Installer ISO is an ISO file that bootstraps the installation is created in the EdgeForge process. The ISO
+The Edge Installer ISO is an ISO file that bootstraps the installation and is created in the EdgeForge process. The ISO
 image contains the Edge Installer that installs the Palette Edge host agent and metadata to perform the initial
 installation.
 
@@ -30,7 +30,7 @@ You can build the following content into the Edge installer ISO to customize you
   - If you do not include the user data file during the Edge Installer ISO build process, you must provide this
     configuration before the installation takes place with site user data. For more information, refer to
     [Apply Site User Data](../site-deployment/site-installation/site-user-data.md).
-- Content bundles. This is an archive of all images, helm charts and packs used for any number of specified cluster
+- Content bundles. This is an archive of all images, Helm charts and packs used for any number of specified cluster
   profiles. Content bundles are optional to include in an installer ISO.
 - Cluster definition (Tech Preview). Cluster definitions contains cluster profiles and any profile variables used in the
   profiles. When you include a cluster definition during the Edge Installer ISO build process, you can create a new
@@ -153,21 +153,34 @@ a disconnected Edge host instance via the Edge Management Console. For more info
 [Upload Content Bundle](../edge-host-management/upload-content-bundle.md).
 
 1. Refer to [Build Content Bundle](./build-content-bundle.md) to learn how to build content bundles for your ISO image.
+   Since you are including the content bundle in the the Installer ISO, you should choose either the zst format or the
+   tar format for the content bundle. Do not build the content bundle as an ISO image.
 
-2. After you build the content bundle, place the content bundle tar file in the root directory of the CanvOS repository.
+2. When the content bundle build finishes, the output will be in a directory named **content-XXXXXX**, where XXXXXX is a
+   random alphanumerical string. Inside the directory is the content bundle file.
+
+3. Place the directory containing the content bundle file in the root directory of the **CanvOS** directory.
 
 ### Prepare Cluster Definition (Tech Preview)
 
-Optionally, you can include a cluster definition in your Edge Installer ISO. Cluster definitions include the cluster
-profile and any dynamic values used in the cluster profile. Cluster definitions can be exported from an existing Palette
-cluster or from the download cluster definition API. When you include a cluster definition in the Edge Installer ISO,
-you can provision a cluster using the cluster definition without having to reconfigure your cluster.
+Optionally, you can include a cluster definition in your Edge Installer ISO. Cluster definitions include one or more
+cluster profile and any dynamic values used in the cluster profiles. Cluster definitions can be exported from an Palette
+API endpoint.
 
 If you do not include cluster definitions in your Edge Installer ISO, you can still import the cluster definition from
-the Edge Management Console once you finish installing the Edge host.
+Edge Management Console once you finish installing Palette on the Edge host.
 
-Refer to [Export Cluster Definition](../edge-host-management/export-cluster-definition.md) to learn how to export
-cluster definitions. Put the cluster definition tgz file in the **CanvOS/** directory.
+1. Refer to [Export Cluster Definition](../edge-host-management/export-cluster-definition.md) to learn how to export
+   cluster definitions.
+
+2. Put the cluster definition tgz file in the **CanvOS/** directory.
+
+3. In the **.arg** file, add an argument `CLUSTERCONFIG` and set it to the name of the cluster configuration file. For
+   example:
+
+   ```
+   CLUSTERCONFIG=demo-cluster-65cbe80213d15e81c308748b.tgz
+   ```
 
 ### Build Edge Installer ISO
 

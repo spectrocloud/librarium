@@ -35,12 +35,12 @@ through how to create a cluster using Edge Management Console.
 
 4. Fill out **Basic Information** such as cluster name and tag. Click **Next**.
 
-5. Depending on how you built your Edge installer ISO, you can either choose to use the embedded config or import a
-   cluster configuration file. The embedded config uses a configuration you defined during the creation of the ISO image
-   you used to install Palette Edge on your Edge host.
+5. If you built a cluster definition into your Edge installer ISO, you can either choose to use the embedded config or
+   import a cluster configuration file. The embedded config uses a configuration you defined during the creation of the
+   ISO image you used to install Palette Edge on your Edge host.
 
-   To learn more about how to export a cluster configuration and import it during this step, refer to [Export Cluster
-   Definition].
+   To learn more about how to export a cluster configuration and import it during this step, refer to
+   [Export Cluster Definition](./export-cluster-definition.md).
 
    After you finish configuring the cluster profile, click **Next**.
 
