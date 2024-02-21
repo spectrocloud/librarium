@@ -184,3 +184,6 @@ goroutines
 renegotiation
 renegotiations
 wpa_supplicant
+Earthfile
+ubuntu
+tgz

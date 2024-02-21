@@ -108,9 +108,9 @@ scenario, use the CLIs to help you with the customization.
 
 - [Build Preloaded Content Bundles](build-content-bundle.md)
 
-- Build Edge Installer ISO
+- [Build Edge Installer ISO](./build-installer-iso.md)
 
-- Build Provider Images
+- [Build Provider Images](./build-provider-images.md)
 
 - [Build Edge Artifacts](palette-canvos.md)
 

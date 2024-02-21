@@ -122,9 +122,10 @@ Creating a content bundle provides several benefits that may address common use 
 
    <TabItem value="image" label="Image">
 
-   For image registries, you must provide credentials with the following schema. se a key at the root level of the JSON
-   object named "image" and set its value to a list. The list is a list of credentials for each Helm chart repository.
-   For each set of credentials, use an object in the list with the keys "endpoint", "username", and "password".
+   For image registries, you must provide credentials with the following schema. Provide a key at the root level of the
+   JSON object named "image" and set its value to a list. The list is a list of credentials for each Helm chart
+   repository. For each set of credentials, use an object in the list with the keys "endpoint", "username", and
+   "password".
 
    ```json
    {
@@ -244,9 +245,13 @@ Creating a content bundle provides several benefits that may address common use 
    INFO[0144] ISO file created successfully
    ```
 
-The result is a content bundle that you can use to preload into your installer. Alternatively, you can use the ISO
-version of the content bundle and transfer it to a USB drive to be used separately at the time of Edge host
-installation.
+The result is a content bundle that you can use to preload into your installer. For more information, refer to
+[Build Edge Artifacts with Content Bundle](./build-artifacts.md) or [Build Installer ISO](./build-installer-iso.md). Our
+Tech Preview feature [Edge Management Console](../edge-host-management/edge-host-management.md) also allows you to
+upload content bundles to a disconnected Edge deployment.
+
+Alternatively, you can use the ISO version of the content bundle and transfer it to a USB drive to be used separately at
+the time of Edge host installation.
 
 ## Validate
 
