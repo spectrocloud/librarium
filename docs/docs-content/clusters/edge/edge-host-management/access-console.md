@@ -8,7 +8,7 @@ tags: ["edge"]
 ---
 
 The Edge Management Console (EMC) allows you to manage Edge hosts in your network locally, upload content such as images
-and packs, and create Edge clusters without connections to a centralized Palette installation.
+and packs, and create Edge clusters without connections to a Palette installation.
 
 :::preview
 
@@ -35,12 +35,11 @@ This page guides you through how access the console, and log in, and manage your
    access to the Edge host terminal, the address of the EMC console is displayed on the terminal screen. If you have
    changed the default port of the console, replace `5080` with the EMC port.
 
-3. You'll be prompted to log in. Enter your username and password to log in.
+3. You will be prompted to log in. Enter your username and password to log in.
 
 ### Validate
 
-1. A successful login directs you to the Edge management console. You will see an overview of your Edge host on your
-   browser tab.
+A successful login directs you to the Edge management console. Displayed is an overview of your Edge host.
 
 ## Log out of Edge Management Console
 

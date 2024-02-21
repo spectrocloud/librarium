@@ -75,8 +75,7 @@ host. A cluster definition contains one or more cluster profiles, including the 
 3. Try creating a cluster with the exported cluster definition. For more information, refer to
    [Create a Local Cluster](./create-cluster.md).
 
-4. If your successfully import the cluster definition and see the correct layers displayed from the cluster creation
-   view, you can confirm that the export was successful.
+4. A successful cluster definition export will display the correct profile layers from the cluster creation view.
 
 ## Next Steps
 

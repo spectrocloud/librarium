@@ -84,4 +84,4 @@ look feel of the console for all Edge hosts of your organization.
 2. Power up the device and follow [Access Edge Management Console](./access-console.md) to access the Edge management
    console.
 
-3. Verify that the customizations you made are reflected in the UI.
+3. Verify that the customizations you made are reflected in the user interface.

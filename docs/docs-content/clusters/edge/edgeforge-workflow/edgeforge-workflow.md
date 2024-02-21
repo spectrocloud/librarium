@@ -40,8 +40,7 @@ Installer that installs the Palette Edge host agent and metadata to perform the 
 ISO can also contain the following components:
 
 - User data. User data includes essential configurations for the Edge Installer. The Edge Installer ISO requires user
-  data to function. If you choose to not supply user data in the ISO, you must supply it before the Edge Installer first
-  runs with site user data. You can also use site user data to override of supplement the user data supplied in the
+  data to function. If you choose to not supply user data in the ISO, you must supply it before the Edge Installer initiates with a site user data. You can also use site user data to override or supplement the user data supplied in the
   installer ISO.
 
 - Content bundle. Content bundles are archives of all the required container images required for specified cluster

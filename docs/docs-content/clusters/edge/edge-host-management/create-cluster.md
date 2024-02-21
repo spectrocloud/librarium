@@ -51,7 +51,7 @@ through how to create a cluster using Edge Management Console.
    more information, refer to [Enable Overlay Network](../networking/vxlan-overlay.md). If you enable the overlay
    network, you need to specify a CIDR range to be used by the overlay network.
 
-7. In the **Node Config** step, you con specify configurations for the master pool of your single-node cluster. For more
+7. In the **Node Config** step, you can specify configurations for the control plane pool of your single-node cluster. For more
    information about node pool configurations, refer to [Node pools](../../cluster-management/node-pool.md). After you
    finish configuration, click **Next**.
 
