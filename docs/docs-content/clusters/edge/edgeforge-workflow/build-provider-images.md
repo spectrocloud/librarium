@@ -14,11 +14,15 @@ System (OS) and software dependencies compatible with a specific Kubernetes vers
 provider image is used in the OS and the Kubernetes layer when creating a cluster profile. These container images are
 downloaded during the installation by the Edge Installer and converted to disk images for the system to boot into.
 
-The following files are used to customize the provider images:
+:::info
 
-- **.arg**. This file specifies the OS as well as the Kubernetes version, image tags and image registry information.
-  - Some arguments in the **.arg** file are also used to build the Edge Installer ISO.
-- **Dockerfile**. This file allows you to install dependencies and modify your OS image.
+The provider images are one of the critical artifacts you need to build during EdgeForge. The other artifact is the Edge
+Installer ISO. Both are required for Edge deployment. For education purposes, we provide separate instructions for
+building the installer ISO and the provider images. However, these two artifacts are often built together in a single
+step in practice. Refer to [Build Edge Artifacts](palette-canvos.md) for an how-to that covers how to build both
+artifacts at the same time.
+
+:::
 
 ## Prerequisites
 
