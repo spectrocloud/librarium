@@ -37,11 +37,12 @@ EdgeForge contains the following critical components:
 
 An ISO file that bootstraps the installation is created in the EdgeForge process. The ISO image contains the Edge
 Installer that installs the Palette Edge host agent and metadata to perform the initial installation. The Edge Installer
-ISO can also contain the following optional components:
+ISO can also contain the following components:
 
-- User data. User data includes essential configurations for the Edge Installer. It is optional to include user data in
-  the Edge Installer ISO. However, if you choose to not supply user data in the ISO, you must supply it before the Edge
-  Installer first runs.
+- User data. User data includes essential configurations for the Edge Installer. The Edge Installer ISO requires user
+  data to function. If you choose to not supply user data in the ISO, you must supply it before the Edge Installer first
+  runs with site user data. You can also use site user data to override of supplement the user data supplied in the
+  installer ISO.
 
 - Content bundle. Content bundles are archives of all the required container images required for specified cluster
   profiles. You have the option to build content bundles into the Edge Installer ISO, which allows your Edge host to
