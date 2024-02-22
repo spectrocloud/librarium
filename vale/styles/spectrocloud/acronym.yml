@@ -1,0 +1,49 @@
+extends: conditional
+message: "Use title case to define the acronym '%s'."
+link: 'https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Acronyms'
+level: error
+ignorecase: false
+scope: text
+# Match two to five capital letters to detect an acronym
+first: '([A-Z]{2,5})'
+# Match two to five capitalised words before the acronym definition
+second: '(?:\b[A-Z][a-z]+ ){2,5}\(([A-Z]{2,5})\)'
+exceptions:
+  - API
+  - AWS
+  - BYOOS
+  - CLI
+  - CPU
+  - CSS
+  - CSV
+  - FAQ
+  - GCP
+  - GET
+  - GPU
+  - HTML
+  - HTTP
+  - HTTPS
+  - IDE
+  - ISO
+  - JPEG
+  - JPG
+  - JSON
+  - OS
+  - OSS
+  - PDF
+  - PNG
+  - POST
+  - RAM
+  - SDK
+  - SQL
+  - SSH
+  - SSL
+  - SVG
+  - TCP
+  - URI
+  - URL
+  - USB
+  - YAML
+  - YML
+  - XML
+  - ZIP
