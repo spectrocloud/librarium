@@ -107,15 +107,15 @@ pdf: ## Generate PDF from docs
 	@echo "generating pdf"
 	npx docs-to-pdf docusaurus --initialDocURLs="https://docs.spectrocloud.com" --contentSelector="article" --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" \
 	--excludeSelectors=".margin-vert--xl a,[class^='tocCollapsible'],.breadcrumbs,.theme-edit-this-page" \
-	--protocolTimeout=6000000 --outputPDFFilename=palette-docs.pdf  --coverTitle="Palette Documentation" \
+	--protocolTimeout=1500000 --outputPDFFilename=palette-docs.pdf  --coverTitle="Palette Documentation" \
 	--coverImage=https://docs.spectrocloud.com/assets/images/docs_introduction_product-overview-80d5488097f9e227a325e252dda42f85.png
 
 
-pdf-local: start ## Generate PDF from local docs
+pdf-local: ## Generate PDF from local docs
 	@echo "generating pdf"
 	npx docs-to-pdf docusaurus --initialDocURLs="http://localhost:9000" --contentSelector="article" --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" \
 	--excludeSelectors=".margin-vert--xl a,[class^='tocCollapsible'],.breadcrumbs,.theme-edit-this-page" \
-	--protocolTimeout=6000000 --outputPDFFilename=palette-docs.pdf  --coverTitle="Palette Documentation" \
+	--protocolTimeout=1500000 --outputPDFFilename=palette-docs.pdf  --coverTitle="Palette Documentation" \
 	--coverImage=https://docs.spectrocloud.com/assets/images/docs_introduction_product-overview-80d5488097f9e227a325e252dda42f85.png
 
 ###@ URL Checks
