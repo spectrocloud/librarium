@@ -25,16 +25,20 @@ exceptions:
   - HTTPS
   - IDE
   - ISO
+  - JPEG
+  - JPG
   - JSON
   - OS
   - OSS
   - PDF
+  - PNG
   - POST
   - RAM
   - SDK
   - SQL
   - SSH
   - SSL
+  - SVG
   - TCP
   - URI
   - URL
