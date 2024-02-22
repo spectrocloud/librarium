@@ -16,9 +16,10 @@ host. A cluster definition contains one or more cluster profiles, including the 
 
 ## Prerequisites
 
-- At least one cluster profile in Palette.
+- At least one [cluster profile](../../../profiles/cluster-profiles/cluster-profiles.md) in Palette.
 
-- A Palette API key.
+- A Palette API key. For more information on how to create a Palette API key, refer to
+  [Create API Key](../../../user-management/authentication/api-key/create-api-key.md).
 
 - curl is installed on your machine. You can also use API management tools such as Postman. This document uses curl as
   an example.

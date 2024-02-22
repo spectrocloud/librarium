@@ -20,7 +20,7 @@ This page guides you through how access the console, and log in, and manage your
 
 ### Prerequisites
 
-- An Edge host with installed with Edge Installer 4.3 or later using the `airgapped` install mode.
+- An Edge host with installed with Edge Installer 4.3 or later.
 
 - You have completed or skipped the initial configuration of the Edge host. For more information, refer to
   [Edge Host Initial Configuration](../site-deployment/initial-setup.md).
@@ -62,7 +62,7 @@ A successful login directs you to the Edge management console. Displayed is an o
 
 ### Validate
 
-1. A successful sign-out takes you back to the login page. You need to enter your credentials to log in again.
+A successful sign-out takes you back to the login page. You need to enter your credentials to log in again.
 
 ## Change User Password
 
