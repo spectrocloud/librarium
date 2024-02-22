@@ -42,7 +42,7 @@ for troubleshooting.
    required if you are using DHCP. Dynamic DNS is not required for a static IP allocation scheme.
 
 5. If there are no network-related issues, SSH into the PCG installer VM using the username `ubuntu` and the SSH public
-   key you provided during the instllation.
+   key you provided during the installation.
 
 6. Inspect the log files in the **/var/log** directory.
 
