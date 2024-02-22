@@ -74,8 +74,7 @@ unavailable IP addresses for the worker nodes, or the inability to perform a Net
    timestamp, associated service name, and orchestration details.
 
 6. If you encounter one of the following error events - `Failed to deploy image: Failed to create govomiClient` or
-   `No route to host`, refer to the remediation steps outlined in the
-   [Scenario - Failed to Deploy Image](#scenario---failed-to-deploy-image) or the
+   `No route to host`, refer to the remediation steps in the
    [Scenario - No Route to the Kubernetes API Server](#scenario---no-route-to-the-kubernetes-api-server) section,
    respectively.
 
@@ -138,14 +137,16 @@ configuration or an error in the cloud-init process.
 
    - If the previous command does not return an `ok`, use the command below to make a verbose GET request by specifying
      the `verbose` parameter. The output will display the individual health checks so you can decide on further
-     debugging steps based on the failed checks. <br />
+     debugging steps based on the failed checks.
 
      ```bash
      kubectl --kubeconfig [path_to_kubeconfig] get --raw='/readyz?verbose'
      ```
 
-5. If the PCG installer VM has a public IP address assigned, SSH into the VM using the username `ubuntu` and the public
-   SSH key you provided during the OVA import.
+5. If the PCG node has an IP address assigned, SSH into the VM using the username `spectro` and the public SSH key you
+   provided during the PCG install. If you installed the PCG onto an
+   [existing Kubernetes cluster](../clusters/pcg/deploy-pcg-k8s.md), contact your Kubernetes system administrator for
+   the SSH credentials.
 
 6. Navigate to the **/var/log** directory containing the log files.
 
