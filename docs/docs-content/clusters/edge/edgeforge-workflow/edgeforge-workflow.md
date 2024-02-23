@@ -33,7 +33,13 @@ opposed to pulling content from external registries during cluster deployment, r
 
 - [Build Content Bundle](./build-content-bundle.md)
 
-- [Build Edge Artifacts with Content Bundles](build-content-bundle.md)
+- [Build Edge Artifacts with Content Bundles](./palette-canvos/build-artifacts.md)
+
+Use the following table to choose the EdgeForge procedure that best fits your needs.
+
+| Build Edge artifacts without preloaded content                                                                                                                                                             | Build Edge artifacts with preloaded content                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| - [Build Edge Artifacts](./palette-canvos/palette-canvos.md) <br/> - [Build Provider Images](./palette-canvos//build-provider-images.md) + [Build Installer ISO](./palette-canvos//build-installer-iso.md) | - [Build Content Bundle](./build-content-bundle.md) + [Build Edge Artifacts with Content Bundles](./palette-canvos/build-artifacts.md) |
 
 ## Edge Artifacts
 
@@ -87,6 +93,18 @@ You can specify a custom registry for the Edge Installer to use during installat
 details.
 
 :::
+
+## Content Bundles
+
+Content bundles are archives of all the required container images required for one or more cluster profiles. You can
+include build content bundles using the Palette Edge Command-line Interface (CLI), and build the preloaded content into
+the Edge Installer ISO during EdgeForge. This allows the Edge host to provision clusters without a connection to an
+external image registry. Refer to the following guides on how to build a content bundle and how to use them during the
+EdgeForge process:
+
+- [Build Content Bundle](./build-content-bundle.md)
+
+- [Build Edge Artifacts with Content Bundles](./palette-canvos/build-artifacts.md)
 
 ## Deployment Scenarios
 

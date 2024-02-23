@@ -93,54 +93,54 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
 
 ### Prepare **.arg** file
 
-Review the **.arg.template** file to view a template of all the arguments that are used during the build process. Since
-the process to build provider images uses the same **.arg** file, some of the arguments in the template are related to
-the provider images. The following is a table of all the arguments in that can be used in the file:
+5. Review the **.arg.template** file to view a template of all the arguments that are used during the build process.
+   Since the process to build provider images uses the same **.arg** file, some of the arguments in the template are
+   related to the provider images. The following is a table of all the arguments in that can be used in the file:
 
-| **Argument**       | **Description**                                                                              | **Default Value**      | **Allowed Values**                                                                             |
-| ------------------ | -------------------------------------------------------------------------------------------- | ---------------------- | ---------------------------------------------------------------------------------------------- |
-| `CUSTOM_TAG`       | Tag for the provider images                                                                  | demo                   | Lowercase alphanumeric string without spaces.                                                  |
-| `IMAGE_REGISTRY`   | Image registry name                                                                          | ttl.sh                 | Your image registry hostname, without `http` or `https` <br /> Example: docker.io/spectrocloud |
-| `OS_DISTRIBUTION`  | OS Distribution                                                                              | ubuntu                 | ubuntu, opensuse-leap                                                                          |
-| `IMAGE_REPO`       | Image repository name.<br /> It is the same as the OS distribution.                          | `$OS_DISTRIBUTION`     | Your image repository name.                                                                    |
-| `OS_VERSION`       | OS version, only applies to Ubuntu                                                           | 22                     | 20, 22                                                                                         |
-| `K8S_DISTRIBUTION` | Kubernetes Distribution                                                                      | k3s                    | k3s, rke2, kubeadm                                                                             |
-| `ISO_NAME`         | Name of the Installer ISO                                                                    | palette-edge-installer | Lowercase alphanumeric string without spaces. The characters `-` and `_` are allowed.          |
-| `ARCH`             | Architecture of the image.                                                                   | `amd64`                | `amd64`, `arm64`                                                                               |
-| `FIPS_ENABLED`     | to generate FIPS compliant binaries `true`or`false`                                          | `false`                | `true`, `false`                                                                                |
-| `HTTP_PROXY`       | URL of the HTTP Proxy server.                                                                | `""`                   | URL string                                                                                     |
-| `HTTPS_PROXY`      | URL of the HTTPS Proxy server.                                                               | `""`                   | URL string                                                                                     |
-| `NO_PROXY`         | URLS that should be excluded from the proxy.                                                 | `""`                   | Comma separated URL string                                                                     |
-| `PROXY_CERT_PATH`  | Absolute path of the SSL Proxy certificate in PEM format.                                    | `""`                   | Absolute path string                                                                           |
-| `UPDATE_KERNEL`    | Determines whether to upgrade the Kernel version to the latest from the upstream OS provider | `false`                | `true`, `false`                                                                                |
+   | **Argument**       | **Description**                                                                              | **Default Value**      | **Allowed Values**                                                                             |
+   | ------------------ | -------------------------------------------------------------------------------------------- | ---------------------- | ---------------------------------------------------------------------------------------------- |
+   | `CUSTOM_TAG`       | Tag for the provider images                                                                  | demo                   | Lowercase alphanumeric string without spaces.                                                  |
+   | `IMAGE_REGISTRY`   | Image registry name                                                                          | ttl.sh                 | Your image registry hostname, without `http` or `https` <br /> Example: docker.io/spectrocloud |
+   | `OS_DISTRIBUTION`  | OS Distribution                                                                              | ubuntu                 | ubuntu, opensuse-leap                                                                          |
+   | `IMAGE_REPO`       | Image repository name.<br /> It is the same as the OS distribution.                          | `$OS_DISTRIBUTION`     | Your image repository name.                                                                    |
+   | `OS_VERSION`       | OS version, only applies to Ubuntu                                                           | 22                     | 20, 22                                                                                         |
+   | `K8S_DISTRIBUTION` | Kubernetes Distribution                                                                      | k3s                    | k3s, rke2, kubeadm                                                                             |
+   | `ISO_NAME`         | Name of the Installer ISO                                                                    | palette-edge-installer | Lowercase alphanumeric string without spaces. The characters `-` and `_` are allowed.          |
+   | `ARCH`             | Architecture of the image.                                                                   | `amd64`                | `amd64`, `arm64`                                                                               |
+   | `FIPS_ENABLED`     | to generate FIPS compliant binaries `true`or`false`                                          | `false`                | `true`, `false`                                                                                |
+   | `HTTP_PROXY`       | URL of the HTTP Proxy server.                                                                | `""`                   | URL string                                                                                     |
+   | `HTTPS_PROXY`      | URL of the HTTPS Proxy server.                                                               | `""`                   | URL string                                                                                     |
+   | `NO_PROXY`         | URLS that should be excluded from the proxy.                                                 | `""`                   | Comma separated URL string                                                                     |
+   | `PROXY_CERT_PATH`  | Absolute path of the SSL Proxy certificate in PEM format.                                    | `""`                   | Absolute path string                                                                           |
+   | `UPDATE_KERNEL`    | Determines whether to upgrade the Kernel version to the latest from the upstream OS provider | `false`                | `true`, `false`                                                                                |
 
-Customize these arguments to use during the build process. The following is an example **.arg** file.
+6. Customize these arguments to use during the build process. The following is an example **.arg** file.
 
-```
-CUSTOM_TAG=palette-learn
-IMAGE_REGISTRY=ttl.sh
-OS_DISTRIBUTION=ubuntu
-IMAGE_REPO=ubuntu
-OS_VERSION=22.04
-K8S_DISTRIBUTION=k3s
-ISO_NAME=palette-edge-installer
-ARCH=amd64
-HTTPS_PROXY=
-HTTP_PROXY=
-PROXY_CERT_PATH=
-UPDATE_KERNEL=false
-EOF
-```
+   ```
+   CUSTOM_TAG=palette-learn
+   IMAGE_REGISTRY=ttl.sh
+   OS_DISTRIBUTION=ubuntu
+   IMAGE_REPO=ubuntu
+   OS_VERSION=22.04
+   K8S_DISTRIBUTION=k3s
+   ISO_NAME=palette-edge-installer
+   ARCH=amd64
+   HTTPS_PROXY=
+   HTTP_PROXY=
+   PROXY_CERT_PATH=
+   UPDATE_KERNEL=false
+   EOF
+   ```
 
 ### Prepare User Data
 
-Refer to [Prepare User Data](./../prepare-user-data.md) to prepare the **user-data** file in the root directory of the
-**CanvOS** directory.
+7. Refer to [Prepare User Data](./../prepare-user-data.md) to prepare the **user-data** file in the root directory of
+   the **CanvOS** directory.
 
-User data contains installer configuration and is required for an installer ISO. If you do not supply user data during
-this step, you must provide site user data before installation takes place. You can also use site user data to override
-or supplement configuration you provided to the installer ISO. For more information, refer to
-[Apply Site User Data](../../site-deployment/site-installation/site-user-data.md).
+   User data contains installer configuration and is required for an installer ISO. If you do not supply user data
+   during this step, you must provide site user data before installation takes place. You can also use site user data to
+   override or supplement configuration you provided to the installer ISO. For more information, refer to
+   [Apply Site User Data](../../site-deployment/site-installation/site-user-data.md).
 
 ### Build Content Bundle
 
@@ -152,14 +152,14 @@ If you do not include content bundle in your Edge Installer ISO, you can still b
 a disconnected Edge host instance via the Edge Management Console. For more information, refer to
 [Upload Content Bundle](../../edge-host-management/upload-content-bundle.md).
 
-1. Refer to [Build Content Bundle](../build-content-bundle.md) to learn how to build content bundles for your ISO image.
+8. Refer to [Build Content Bundle](../build-content-bundle.md) to learn how to build content bundles for your ISO image.
    Since you are including the content bundle in the Installer ISO, you should choose either the zst format or the tar
    format for the content bundle. Do not build the content bundle as an ISO image.
 
-2. When the content bundle build finishes, the output will be in a directory named **content-XXXXXX**, where XXXXXX is a
+9. When the content bundle build finishes, the output will be in a directory named **content-XXXXXX**, where XXXXXX is a
    random alphanumerical string. Inside the directory is the content bundle file.
 
-3. Place the directory containing the content bundle file in the root directory of the **CanvOS** directory.
+10. Place the directory containing the content bundle file in the root directory of the **CanvOS** directory.
 
 ### Prepare Cluster Definition (Tech Preview)
 
@@ -170,40 +170,40 @@ API endpoint.
 If you do not include cluster definitions in your Edge Installer ISO, you can still import the cluster definition from
 Edge Management Console once you finish installing Palette on the Edge host.
 
-1. Refer to [Export Cluster Definition](../../edge-host-management/export-cluster-definition.md) to learn how to export
-   cluster definitions.
+11. Refer to [Export Cluster Definition](../../edge-host-management/export-cluster-definition.md) to learn how to export
+    cluster definitions.
 
-2. Put the cluster definition tgz file in the **CanvOS/** directory.
+12. Put the cluster definition tgz file in the **CanvOS/** directory.
 
-3. In the **.arg** file, add an argument `CLUSTERCONFIG` and set it to the name of the cluster configuration file. For
-   example:
+13. In the **.arg** file, add an argument `CLUSTERCONFIG` and set it to the name of the cluster configuration file. For
+    example:
 
-   ```
-   CLUSTERCONFIG=demo-cluster-65cbe80213d15e81c308748b.tgz
-   ```
+    ```
+    CLUSTERCONFIG=demo-cluster-65cbe80213d15e81c308748b.tgz
+    ```
 
 ### Build Edge Installer ISO
 
-1. Ensure that all components of the ISO you want to include are in the **CanvOS/** directory:
+14. Ensure that all components of the ISO you want to include are in the **CanvOS/** directory:
 
-   - **.args** file: **CanvOS/.args**
-   - User data: **CanvOS/user-data**
-   - Content bundle: **CanvOS/content-XXXXX/core-spectro-content**
-   - Cluster definition: **CanvOS/cluster-name-XXXX.tgz**
+    - **.args** file: **CanvOS/.args**
+    - User data: **CanvOS/user-data**
+    - Content bundle: **CanvOS/content-XXXXX/core-spectro-content**
+    - Cluster definition: **CanvOS/cluster-name-XXXX.tgz**
 
-2. Issue the following command to build the ISO image.
+15. Issue the following command to build the ISO image.
 
-   ```shell
+    ```shell
     ./earthly.sh +iso
-   ```
+    ```
 
-   ```
-   # Output condensed for readability
-   ===================== Earthly Build SUCCESS =====================
-   Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
-   ```
+    ```
+    # Output condensed for readability
+    ===================== Earthly Build SUCCESS =====================
+    Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
+    ```
 
-   When the build finishes, the ISO image can be found in the **build/** folder.
+    When the build finishes, the ISO image can be found in the **build/** folder.
 
 ## Validate
 
