@@ -96,8 +96,15 @@ following the process described in the
 
 4.  Instantiate Nutanix Cluster API.
 
+    :::info
+
+    To prevent conflicts with the recent Nutanix CAPI provider updates, you need to install this exact version of the
+    Nutanix infrastructure.
+
+    :::
+
     ```bash
-    clusterctl init --infrastructure nutanix
+    clusterctl init --infrastructure nutanix:v1.2.4
     ```
 
 5.  Deploy a workload cluster in Nutanix by issuing the following command. Replace `mytestcluster` with the cluster name
