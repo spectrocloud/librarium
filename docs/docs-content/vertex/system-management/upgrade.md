@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Manage Platform Upgrades"
-title: "Manage Platform Upgrades"
+sidebar_label: "Upgrade"
+title: "Upgrade"
 description: "Learn how to upgrade Palette VerteX."
 icon: ""
 hide_table_of_contents: false
@@ -8,3 +8,11 @@ sidebar_position: 100
 tags: ["vertex", "management", "management", "upgrades"]
 keywords: ["self-hosted", "vertex"]
 ---
+
+## Prerequisites
+
+- Access to the Palette VerteX system console.
+
+## Upgrade Palette VerteX
+
+## Validate
