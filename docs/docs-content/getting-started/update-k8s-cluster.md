@@ -329,7 +329,7 @@ indicates that it is connected to the API server.
 
 ![Image that shows hello-universe with API server](/getting-started/getting-started_update-k8s-cluster_hello-universe-with-api.png)
 
-## Roll back Cluster Profiles
+## Roll Back Cluster Profiles
 
 One of the key advantages of using cluster profile versions is that they make it possible to maintain a copy of
 previously known working states. The ability to roll back to a previously working cluster profile in one action shortens
