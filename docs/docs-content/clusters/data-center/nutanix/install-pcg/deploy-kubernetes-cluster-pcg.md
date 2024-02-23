@@ -98,8 +98,8 @@ following the process described in the
 
    :::info
 
-   To prevent conflicts with the recent Nutanix CAPI provider updates, you need to install this exact version of the
-   Nutanix infrastructure.
+   To prevent conflicts with the recent Nutanix CAPI provider updates, you need to instantiate Cluster API with this
+   exact version of the Nutanix infrastructure.
 
    :::
 
