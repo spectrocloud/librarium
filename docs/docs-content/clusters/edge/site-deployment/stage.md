@@ -54,7 +54,7 @@ The following items are optional and not required but may apply to your use case
   additional configurations after the Edge host is powered on at the physical site.
 
 - USB disk containing the content bundle ISO. You can avoid this by creating a custom installer. Refer to the
-  [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md) guide.
+  [Build Edge Artifacts](../edgeforge-workflow/palette-canvos/palette-canvos.md) guide.
 
 ### Installer Handoff
 
@@ -84,8 +84,8 @@ vCenter environment, you will convert the VMDK to a VM template, and export it o
 
 ### Prerequisites
 
-- Edge Installer ISO file. Check out the [build images](../edgeforge-workflow/palette-canvos.md) guide to learn how to
-  create an Edge Installer image or use the default Edge Installer image.
+- Edge Installer ISO file. Check out the [build images](../edgeforge-workflow/palette-canvos/palette-canvos.md) guide to
+  learn how to create an Edge Installer image or use the default Edge Installer image.
 
 - vCenter environment with sufficient resources and access privileges to complete the following actions:
   - Upload files to a datastore.
