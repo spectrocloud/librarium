@@ -10,9 +10,9 @@ tags: ["edge"]
 The Edge Installer supports using a custom configuration file in the format of a YAML file named **user-data** that you
 can use to customize the installation. You can provide the customized configuration to the Edge Installer as a user data
 file. For more information on how to provide the configuration to the Edge Installer, refer to
-[Build Edge Installer ISO](./build-installer-iso.md). Additionally, you can also provide the configuration during site
-deployment as site-specific configuration. This can replace, supplement, or override your installer configuration you
-provide to the installer ISO. For more information, refer to
+[Build Edge Installer ISO](./palette-canvos/build-installer-iso.md). Additionally, you can also provide the
+configuration during site deployment as site-specific configuration. This can replace, supplement, or override your
+installer configuration you provide to the installer ISO. For more information, refer to
 [Apply Site User Data](../site-deployment/site-installation/site-user-data.md).
 
 :::info
@@ -314,7 +314,8 @@ use case.
 After you have finalized your Installer configuration, you can build the configuration into the Edge Installer ISO, or
 turn the **user-data** file into an ISO file to use before site deployment.
 
-- Check out the [Build Edge Installer ISO](palette-canvos.md) guide to learn how to build the Edge Installer ISO image.
+- Check out the [Build Edge Installer ISO](palette-canvos/palette-canvos.md) guide to learn how to build the Edge
+  Installer ISO image.
 
 - Check out the [Apply Site User Data](../site-deployment/site-installation/site-user-data.md) guide to learn how to
   provide site user data.

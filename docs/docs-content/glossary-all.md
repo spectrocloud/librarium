@@ -68,6 +68,10 @@ fully encrypted using the tenant's unique encryption key.
 Cluster Mode enables you to create, deploy, and manage Kubernetes clusters and applications. In Cluster Mode, you can
 deploy Kubernetes clusters to public cloud providers, on-prem data centers, and on the edge.
 
+## Cluster Definition
+
+A Cluster Definition contain one or more cluster profiles and profile variables used in those profiles.
+
 ## Cluster Profile
 
 A Cluster Profile is a declarative model of a Kubernetes infrastructure stack. A Kubernetes infrastructure stack is

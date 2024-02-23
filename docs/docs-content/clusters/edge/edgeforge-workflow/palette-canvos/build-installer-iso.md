@@ -25,11 +25,11 @@ artifacts at the same time.
 You can build the following content into the Edge installer ISO to customize your installation:
 
 - User data. This is a YAML file that contains the configuration for the Edge Installer. For all available configuration
-  options, refer to [Installer Configuration](../edge-configuration/installer-reference.md). User data is required for
-  the installer ISO.
+  options, refer to [Installer Configuration](../../edge-configuration/installer-reference.md). User data is required
+  for the installer ISO.
   - If you do not include the user data file during the Edge Installer ISO build process, you must provide this
     configuration before the installation takes place with site user data. For more information, refer to
-    [Apply Site User Data](../site-deployment/site-installation/site-user-data.md).
+    [Apply Site User Data](../../site-deployment/site-installation/site-user-data.md).
 - Content bundles. This is an archive of all images, Helm charts and packs used for any number of specified cluster
   profiles. Content bundles are optional to include in an installer ISO.
 - Cluster definition (Tech Preview). Cluster definitions contains cluster profiles and any profile variables used in the
@@ -134,13 +134,13 @@ EOF
 
 ### Prepare User Data
 
-Refer to [Prepare User Data](./prepare-user-data.md) to prepare the **user-data** file in the root directory of the
+Refer to [Prepare User Data](./../prepare-user-data.md) to prepare the **user-data** file in the root directory of the
 **CanvOS** directory.
 
 User data contains installer configuration and is required for an installer ISO. If you do not supply user data during
 this step, you must provide site user data before installation takes place. You can also use site user data to override
 or supplement configuration you provided to the installer ISO. For more information, refer to
-[Apply Site User Data](../site-deployment/site-installation/site-user-data.md).
+[Apply Site User Data](../../site-deployment/site-installation/site-user-data.md).
 
 ### Build Content Bundle
 
@@ -150,9 +150,9 @@ image registry.
 
 If you do not include content bundle in your Edge Installer ISO, you can still build content bundles and upload them to
 a disconnected Edge host instance via the Edge Management Console. For more information, refer to
-[Upload Content Bundle](../edge-host-management/upload-content-bundle.md).
+[Upload Content Bundle](../../edge-host-management/upload-content-bundle.md).
 
-1. Refer to [Build Content Bundle](./build-content-bundle.md) to learn how to build content bundles for your ISO image.
+1. Refer to [Build Content Bundle](../build-content-bundle.md) to learn how to build content bundles for your ISO image.
    Since you are including the content bundle in the Installer ISO, you should choose either the zst format or the tar
    format for the content bundle. Do not build the content bundle as an ISO image.
 
@@ -170,7 +170,7 @@ API endpoint.
 If you do not include cluster definitions in your Edge Installer ISO, you can still import the cluster definition from
 Edge Management Console once you finish installing Palette on the Edge host.
 
-1. Refer to [Export Cluster Definition](../edge-host-management/export-cluster-definition.md) to learn how to export
+1. Refer to [Export Cluster Definition](../../edge-host-management/export-cluster-definition.md) to learn how to export
    cluster definitions.
 
 2. Put the cluster definition tgz file in the **CanvOS/** directory.

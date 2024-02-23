@@ -20,12 +20,18 @@ This page guides you through how access the console, and log in, and manage your
 
 ### Prerequisites
 
-- An Edge host with installed with Edge Installer 4.3 or later.
+- An Edge host installed with Edge Installer 4.3 or later.
+
+- The Edge host does not have a connection to a Palette instance and the installation is conducted with the
+  `installationMode` parameter set to `airgap`. For more information, refer to
+  [Installer Configuration](../edge-configuration/installer-reference.md).
 
 - You have completed or skipped the initial configuration of the Edge host. For more information, refer to
   [Edge Host Initial Configuration](../site-deployment/initial-setup.md).
 
 - Network access to the Edge host's port where EMC is exposed. The default port is 5080.
+
+- You have the credentials for
 
 ### Instructions
 
@@ -45,16 +51,13 @@ A successful login directs you to the Edge management console. Displayed is an o
 
 ### Prerequisites
 
-- An Edge host with Palette Edge 4.3 or later.
-
-- You have completed the initial configuration of the Edge host and logged into the console.
-
-- Network access to the Edge host's 5080 port.
+- You are logged in to EMC.
 
 ### Instructions
 
 1. In your browser, go to `https://HOST_IP:5080`. Replace `HOST_IP` with the IP address of your Edge host. If you have
-   access to the Edge host terminal, the address of the EMC console is displayed on the terminal screen.
+   access to the Edge host terminal, the address of the EMC console is displayed on the terminal screen. If you have
+   changed the default port of the console, replace `5080` with the EMC port.
 
 2. From the Edge Management Console, navigate to the top right **User Menu**.
 
@@ -68,11 +71,9 @@ A successful sign-out takes you back to the login page. You need to enter your c
 
 ### Prerequisites
 
-- An Edge host with Palette Edge 4.3 or later.
+- Network access to the Edge host's port where EMC is exposed. Default is port 5080.
 
-- You have completed the initial configuration of the Edge host.
-
-- Network access to the Edge host's 5080 port.
+- You have the existing credentials for EMC.
 
 ### Instructions
 

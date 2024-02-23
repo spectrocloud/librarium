@@ -41,7 +41,7 @@ To prevent this issue, ensure your registry password includes special characters
 - A private image registry.
 
 - A provider image you created in the EdgeForge process stored in your private image registry. For more information,
-  refer to [Build Artifacts](../edgeforge-workflow/palette-canvos.md).
+  refer to [Build Artifacts](../edgeforge-workflow/palette-canvos/palette-canvos.md).
 
 ## Enablement
 
@@ -59,8 +59,9 @@ To prevent this issue, ensure your registry password includes special characters
    pack for your OS layer.
 
 5. Update the `system.uri` parameter in the pack editor for your OS layer. Use the custom OS image you created in the
-   EdgeForge process. Refer to the EdgeForge [Build Images](../edgeforge-workflow/palette-canvos.md) guide if you are
-   missing a custom OS image. The following is an example configuration using the BYOOS pack with a custom OS image.
+   EdgeForge process. Refer to the EdgeForge [Build Images](../edgeforge-workflow/palette-canvos/palette-canvos.md)
+   guide if you are missing a custom OS image. The following is an example configuration using the BYOOS pack with a
+   custom OS image.
 
    ```yaml
    pack:
@@ -78,7 +79,7 @@ To prevent this issue, ensure your registry password includes special characters
 
    If you have specified registry credentials in the `registryCredentials` field in the user data file during the
    EdgeForge process, the credentials provided in the cluster profile will be ignored. For more information, refer to
-   [EdgeForge - Build Artifacts](../edgeforge-workflow/palette-canvos.md) and
+   [EdgeForge - Build Artifacts](../edgeforge-workflow/palette-canvos/palette-canvos.md) and
    [Installer Configuration](../edge-configuration/installer-reference.md#external-registry).
 
    :::

@@ -16,21 +16,26 @@ without connections to a Palette instance.
 
 :::
 
-![A diagram illustrating how users and use EdgeForge and Edge Management Console to deploy Edge hosts without a Palette connection](/clusters_edge_emc_workflow.png)
+![A diagram illustrating how users and use EdgeForge and Edge Management Console to deploy clusters without a Palette connection](/clusters_edge_emc_workflow.png)
 
 EMC is designed for Edge deployment in disconnected environments. A disconnected environment means that the Edge host
-does not have a connection to a Palette instance. EMC's functionalities are not available if your cluster has a
-connection to a Palette instance.
+does not have a connection to a Palette instance. Do not use EMC if your cluster has a connection to a Palette instance.
 
 Refer to the follow resources to learn how to use EMC to manage your disconnected Edge deployment:
 
+## Get Started
+
 - [Access Edge Management Console](./access-console.md)
+
+## Create and Manage Clusters
 
 - [Upload Content Bundles](./upload-content-bundle.md)
 
 - [Export Cluster Definition](./export-cluster-definition.md)
 
 - [Create Local Cluster](./create-cluster.md)
+
+##
 
 - [Customize Edge Management Console Theme](./theming.md)
 

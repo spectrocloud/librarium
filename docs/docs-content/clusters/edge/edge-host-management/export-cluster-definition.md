@@ -16,10 +16,10 @@ host. A cluster definition contains one or more cluster profiles, including the 
 
 ## Prerequisites
 
-- At least one [cluster profile](../../../profiles/cluster-profiles/cluster-profiles.md) in Palette.
+- At least one [cluster profile](/docs/docs-content/profiles/cluster-profiles/cluster-profiles.md) in Palette.
 
 - A Palette API key. For more information on how to create a Palette API key, refer to
-  [Create API Key](../../../user-management/authentication/api-key/create-api-key.md).
+  [Create API Key](/docs/docs-content/user-management/authentication/api-key/create-api-key.md).
 
 - curl is installed on your machine. You can also use API management tools such as Postman. This document uses curl as
   an example.
@@ -83,6 +83,6 @@ host. A cluster definition contains one or more cluster profiles, including the 
 You can build the cluster definition into the Edge Installer ISO, or upload the cluster definition to an existing Edge
 deployment using Edge Management Console during cluster creation.
 
-- [Build Edge Installer ISO](../edgeforge-workflow/build-installer-iso.md)
+- [Build Edge Installer ISO](../edgeforge-workflow/palette-canvos/build-installer-iso.md)
 
 - [Create Local Cluster](./create-cluster.md)

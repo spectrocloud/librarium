@@ -190,4 +190,4 @@ Installer ISO that matches your provider image settings. Refer to [Build Edge In
 for more information.
 
 If you have built both provider images and the installer ISO, refer to
-[Site Deployment](../site-deployment/site-deployment.md) to learn how to deploy your Edge cluster.
+[Site Deployment](../../site-deployment/site-deployment.md) to learn how to deploy your Edge cluster.

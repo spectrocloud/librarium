@@ -64,8 +64,8 @@ To complete this guide, you will need the following items:
 
 - A Spectro Cloud API key. Later in this guide, you will use this API key to authenticate the Palette Edge CLI utility
   and allow it to interact with Palette. Refer to the
-  [User Authentication](../../../user-management/authentication/api-key/create-api-key.md) guide to create a new API
-  key.
+  [User Authentication](/docs/docs-content/user-management/authentication/api-key/create-api-key.md) guide to create a
+  new API key.
 
 ## Instructions
 
@@ -232,8 +232,8 @@ palette-edge-installer.iso.sha256
 ```
 
 To validate, you can prepare an edge device using the Edge installer ISO. You can follow the
-[Prepare Edge Host for Installation](../site-deployment/stage.md) guide if you prepare a bare metal machine or a VMware
-VM as a host. Below are the high-level steps for your reference:
+[Prepare Edge Host for Installation](../../site-deployment/stage.md) guide if you prepare a bare metal machine or a
+VMware VM as a host. Below are the high-level steps for your reference:
 
 1. Create a bootable USB flash drive using any third-party software. Most software that creates a bootable USB drive
    will validate the ISO image.
@@ -245,7 +245,7 @@ VM as a host. Below are the high-level steps for your reference:
 3. Flash the edge device with a bootable USB drive.
 
 4. The last step is to power on the edge device and start the installation process. For more information, refer to the
-   [Perform Site Install](../site-deployment/site-installation/site-installation.md) documentation.
+   [Perform Site Install](../../site-deployment/site-installation/site-installation.md) documentation.
 
 ## Next Steps
 
@@ -254,11 +254,11 @@ internet bandwidth or air-gapped environments. You created a content bundle usin
 Next, you used the CanvOS utility to embed the content bundle and user data into an Edge installer ISO.
 
 As the next step, we recommend you check out the end-to-end tutorial,
-[Deploy an Edge Cluster on VMware](../site-deployment/deploy-cluster.md). The tutorial provides a detailed walkthrough
-on deploying an Edge cluster in a VMware environment.
+[Deploy an Edge Cluster on VMware](../../site-deployment/deploy-cluster.md). The tutorial provides a detailed
+walkthrough on deploying an Edge cluster in a VMware environment.
 
 Check out the reference resources below to learn more about preparing an Edge host.
 
-- [Prepare Edge Host for Installation](../site-deployment/stage.md)
+- [Prepare Edge Host for Installation](../../site-deployment/stage.md)
 
-- [Perform Site Install](../site-deployment/site-installation/site-installation.md)
+- [Perform Site Install](../../site-deployment/site-installation/site-installation.md)

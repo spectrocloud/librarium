@@ -20,10 +20,20 @@ component.
 
 To start building a custom Edge artifact, use the following guides:
 
-- [Build Edge Artifacts](palette-canvos.md). This guide builds both the Edge Installer ISO and provider images to help
-  you get started quickly.
-- [Build Provider Images](./build-provider-images.md).
-- [Build Installer ISO](./build-installer-iso.md).
+- [Build Edge Artifacts](./palette-canvos/palette-canvos.md). This guide builds both the Edge Installer ISO and provider
+  images to help you get started quickly. You can also refer to the following how-tos to learn how to build the Edge
+  Installer ISO and provider images individually.
+
+  - [Build Provider Images](./palette-canvos//build-provider-images.md).
+
+  - [Build Installer ISO](./palette-canvos//build-installer-iso.md).
+
+If you want your Edge host to have preloaded content and be able to create clusters using the preloaded content, as
+opposed to pulling content from external registries during cluster deployment, refer to the following guides:
+
+- [Build Content Bundle](./build-content-bundle.md)
+
+- [Build Edge Artifacts with Content Bundles](build-content-bundle.md)
 
 ## Edge Artifacts
 
@@ -40,15 +50,18 @@ Installer that installs the Palette Edge host agent and metadata to perform the 
 ISO can also contain the following components:
 
 - User data. User data includes essential configurations for the Edge Installer. The Edge Installer ISO requires user
-  data to function. If you choose to not supply user data in the ISO, you must supply it before the Edge Installer initiates with a site user data. You can also use site user data to override or supplement the user data supplied in the
-  installer ISO.
+  data to function. If you choose to not supply user data in the ISO, you must supply it before the Edge Installer
+  initiates with a site user data. You can also use site user data to override or supplement the user data supplied in
+  the installer ISO.
 
 - Content bundle. Content bundles are archives of all the required container images required for specified cluster
   profiles. You have the option to build content bundles into the Edge Installer ISO, which allows your Edge host to
   build clusters without a connection to external image registries.
 
-- Cluster definition. Cluster definitions are specifications of how to create your cluster. You can export cluster
-  definition from any existing cluster profiles in your Palette account.
+- Cluster definition (Tech Preview). A cluster definition include one or more cluster profiles. You can export cluster
+  definitions from any existing cluster profiles in your Palette account. If you include a cluster definition in your
+  Edge Installer ISO, you can use the profiles contained within to build a cluster without a connection to a Palette
+  instance.
 
 ![A diagram breaking up the internal components of the ISO image](/clusters_edge_edgeforge-workflow_iso-diagram.png)
 
@@ -108,12 +121,12 @@ scenario, use the CLIs to help you with the customization.
 
 - [Build Preloaded Content Bundles](build-content-bundle.md)
 
-- [Build Edge Installer ISO](./build-installer-iso.md)
+- [Build Edge Installer ISO](./palette-canvos/build-installer-iso.md)
 
-- [Build Provider Images](./build-provider-images.md)
+- [Build Provider Images](./palette-canvos/build-provider-images.md)
 
-- [Build Edge Artifacts](palette-canvos.md)
+- [Build Edge Artifacts](./palette-canvos/palette-canvos.md)
 
-- [Build Edge Artifacts using a Content Bundle](build-artifacts.md)
+- [Build Edge Artifacts using a Content Bundle](./palette-canvos/build-artifacts.md)
 
 - [Prepare User Data](prepare-user-data.md)
