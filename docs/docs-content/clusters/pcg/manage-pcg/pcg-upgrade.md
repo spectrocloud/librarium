@@ -8,7 +8,17 @@ tags: ["pcg"]
 ---
 
 A PCG upgrade event can be broken down into two categories: Palette agent updates and cluster profile updates. Depending
-on the upgrade event, different steps are required to complete the upgrade.
+on the upgrade event, different steps are required to complete the upgrade. The cluster profile for a PCG is locked down
+and cannot be changed by a user. However, when a PCG's cluster profile update is available, you must manually approve
+the update to apply changes.
+
+:::info
+
+Upgrading a PCG has no impact on deployed host clusters. The PCG upgrade process only affects the PCG cluster itself.
+Refer to the [Cluster Lifecycle Support](../architecture.md#cluster-lifecycle-support) to learn more about how a PCG
+supports the lifecycle of a host cluster.
+
+:::
 
 Palette agent updates are tied to the Palette platform version. Self-hosted Palette instances must upgrade to the next
 minor or major version to receive the latest Palette agent and cluster profile updates that are compatible with the new
@@ -18,10 +28,10 @@ cluster profile updates after upgrading your self-hosted Palette instance to a n
 
 The table below outlines a high-level overview of the upgrade process for a PCG and each of its components.
 
-| Component       | User Action Required? | Expected Downtime? | Description                                                                                                                                                                                                                                                                                                    |
-| --------------- | --------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Palette Agent   | No                    | No                 | Automatically updated unless platform updates or cluster updates are paused. Refer to the [Pause Platform Upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md) to learn more about pausing updates.                                                                                |
-| Cluster Profile | Yes                   | Potentially        | Manually approve the cluster profile update to apply the latest cluster profile changes. Refer to the [Pause Platform Upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md) to learn more about pausing updates. Not all Palette version updates introduce cluster profile changes. |
+| Component       | User Action Required? | Expected PCG Downtime? | Description                                                                                                                                                                                                                     |
+| --------------- | --------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Palette Agent   | No                    | No                     | Automatically updated unless platform updates or cluster updates are paused. Refer to the [Pause Platform Upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md) to learn more about pausing updates. |
+| Cluster Profile | Yes                   | Potentially            | Manually approve the cluster profile update to apply the latest cluster profile changes. Not all Palette version updates introduce cluster profile changes.                                                                     |
 
 Review the following sections to learn more about the upgrade process for a PCG.
 
@@ -56,8 +66,8 @@ To upgrade the PCG cluster, click the **Updates** button to start the upgrade pr
 appear, displaying the changes that will be made to the cluster profile. Review the changes and click **Confirm
 updates** to start the upgrade process. Depending on the changes, the upgrade process may take some time to complete,
 and the PCG cluster may be unavailable during the upgrade process. Refer to the
-[Update a Cluster Profile](../../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) to
-learn more about the cluster profile update process.
+[Update a Cluster Profile](../../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md#update-the-pack-version)
+to learn more about the cluster profile update process.
 
 Once a PCG cluster profile update is complete, an event log message stating "all control planes are updated" is
 displayed in the event log.
