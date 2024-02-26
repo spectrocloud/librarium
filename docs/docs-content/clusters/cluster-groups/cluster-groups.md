@@ -24,8 +24,6 @@ similar cloud providers, Kubernetes versions, or by location. You have the flexi
 The following image displays a cluster group comprised of various host clusters deployed in a public cloud, private
 cloud, and edge environment.
 
-<br />
-
 :::warning
 
 Cluster groups support two network endpoints: load balancer and ingress. All host clusters added to a cluster group must
