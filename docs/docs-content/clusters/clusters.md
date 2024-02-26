@@ -333,4 +333,22 @@ Administrator role. A Tenant Administrator can get an aggregated view of cluster
 
 # Additional Resources
 
-The next section provides details for setting workload clusters in various environments.
+:::
+
+## Resources
+
+- [Public Cloud Clusters](./public-cloud/public-cloud.md)
+
+- [Data Center Clusters](./data-center/data-center.md)
+
+- [Edge](./edge/edge.md)
+
+- [Palette Virtual Clusters](./palette-virtual-clusters/palette-virtual-clusters.md)
+
+- [Imported Clusters](./imported-clusters/imported-clusters.md)
+
+- [Manage Clusters](./cluster-management/)
+
+- [Cluster Groups](./cluster-groups/cluster-groups.md)
+
+- [Private Cloud Gateways](./pcg/pcg.md)
