@@ -16,11 +16,6 @@ With a unique approach to managing multiple clusters, Palette gives IT teams com
 production-scale efficiencies to provide developers with highly curated Kubernetes stacks and tools based on their
 specific needs, with granular governance and enterprise-grade security.
 
-Palette VerteX edition is also available to meet the stringent requirements of regulated industries such as government
-and public sector organizations. Palette VerteX integrates Spectro Cloud’s Federal Information Processing Standards
-(FIPS) 140-2 cryptographic modules. To learn more about FIPS-enabled Palette, check out
-[Palette VerteX](../vertex/vertex.md).
-
 ![Palette product high level overview eager-load](/getting-started/getting-started_introduction_product-overview.png)
 
 ## What Makes Palette Different?
@@ -47,6 +42,6 @@ Palette has the richest coverage in supported environments that includes:
 
 - Public Clouds: AWS, Azure, Google Cloud and Tencent TKE. Palette supports both IaaS and managed Kubernetes services
   AWS EKS, Azure AKS and Google GKE.
-- Data Centers: VMware, Nutanix, and OpenStack
+- Data Centers: VMware, OpenStack
 - Bare Metal: Canonical MAAS
 - Edge
