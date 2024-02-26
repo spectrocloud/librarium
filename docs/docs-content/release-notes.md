@@ -18,7 +18,7 @@ tags: ["release-notes"]
 - Fixed an issue with the Kubernetes Dashboard cookies and internal Palette ingress configuration that caused the
   Kubernetes Dashboard to fail to load.
 
-- Fixed an issue with Mircok8s failing to launch pods due to a mismatch in node affinity labels.
+- Fixed an issue with MicroK8s failing to launch pods due to a mismatch in node affinity labels.
 
 - Resolved an issue with MAAS clusters failing to deploy when the default image endpoint is not set in an airgap
   environment
