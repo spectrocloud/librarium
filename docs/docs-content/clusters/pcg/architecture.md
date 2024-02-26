@@ -47,6 +47,21 @@ also shared with the workload cluster during the cluster deployment.
 
 :::
 
+### Network Proxy
+
+The PCG supports using a proxy server to access the internet if needed. If you are installing the PCG through the
+Palette CLI, you can provide the proxy server details, including any required Certificate Authority certificates, during
+installation. The PCG will use the provided proxy server to access the internet. The PCG will also provide the proxy
+server details to the deployed workload clusters.
+
+A PCG installed onto an existing Kubernetes cluster will inherit the proxy server configuration from the underlying
+Kubernetes cluster. Contact your Kubernetes administrator for the proxy server details and guidance on configuring the
+underlying Kubernetes cluster to use a proxy server if needed.
+
+We encourage you to review the [gRPC and Proxies](../../architecture/grps-proxy.md) reference page to better prepare for
+using a proxy server with the PCG. Depending on your network proxy configuration and software, you may need to make
+updates to ensure compatibility with Palette.
+
 ## Cluster Lifecycle Support
 
 The PCG supports the lifecycle of Kubernetes clusters deployed in your private cloud environments. When you initiate a
@@ -79,6 +94,22 @@ The following table explains the different lifecycle phases of a workload cluste
 | Managing Cluster Workloads | ❌               | The local Palette agent inside the cluster manages the cluster workloads. The PCG is not involved in managing the workloads of the deployed cluster.                                                                                                    |
 | Day-2 Operations           | ❌               | The PCG is not involved in Day-2 operations. The internal [Cluster API](https://cluster-api.sigs.k8s.io/) service handles interactions with the local infrastructure provider.                                                                          |
 | Cluster Deletion           | ✅               | The PCG is involved in the cluster deletion process. The PCG will request the infrastructure provider to release the resources used by the cluster.                                                                                                     |
+
+## Operating System
+
+The PCG is deployed with [Canonical Ubuntu](https://ubuntu.com/) as the Operating System (OS). You can use Ubuntu Pro
+when installing the PCG through the Palette CLI. Ubuntu Pro is a premium Ubuntu version with additional security and
+compliance features. You must provide a Ubuntu Pro subscription token to use Ubuntu Pro with the PCG. The version of
+Ubuntu varies based on the Palette release and the PCG version, but each Ubuntu version is an LTS release.
+
+If you are installing a PCG onto an [existing Kubernetes cluster](./deploy-pcg-k8s.md), then the OS of the PCG will be
+the same as the underlying Kubernetes cluster.
+
+The default user name for a PCG node deployed through the Palette CLI is `spectro`. If you need to establish a Secure
+Shell Session (SSH) with a PCG node, use the private SSH key that matches the public key you provided during the PCG
+installation process. For PCG nodes deployed onto an existing Kubernetes cluster, the default user name is dictated by
+the configuration of the underlying Kubernetes cluster. Contact your Kubernetes administrator for the default user name
+and guidance on establishing an SSH session.
 
 ## PCG Deployment Options
 
