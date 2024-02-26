@@ -187,3 +187,9 @@ wpa_supplicant
 Podman
 filepath
 Datagram
+swapfile
+Unassign
+vApp
+PCGs
+vCPU
+vCPUs

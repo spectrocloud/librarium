@@ -36,8 +36,7 @@ clusters, a Private Cloud Gateway (PCG) component is deployed in the self-hosted
 The PCG pairs automatically with a tenant based on a randomly generated pairing code similar to the Bluetooth pairing
 process and acts as a proxy between Palette SaaS and private cloud endpoints, such as vCenter. The PCG uses an outgoing
 internet connection to the SaaS platform using Static Network Address Translation (NATS) with Transport Layer Security
-(TLS). Refer to the [System Private Gateway](../../clusters/data-center/maas/architecture.md#system-private-gateway)
-reference page to learn more.
+(TLS). Refer to the [System Private Gateway](../../clusters/pcg/architecture.md) reference page to learn more.
 
 <br />
 

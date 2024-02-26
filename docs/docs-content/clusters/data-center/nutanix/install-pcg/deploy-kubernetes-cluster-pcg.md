@@ -63,36 +63,36 @@ following the process described in the
 
     Copy the following Nutanix environment variables to your terminal, provide values, and export the variables.
 
-    ```bash
-    export NUTANIX_ENDPOINT=""
-    export NUTANIX_USER=""
-    export NUTANIX_PASSWORD=""
-    export NUTANIX_INSECURE=false
-    export NUTANIX_SSH_AUTHORIZED_KEY=""
-    export NUTANIX_PRISM_ELEMENT_CLUSTER_NAME=""
-    export NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME=""
-    export NUTANIX_SUBNET_NAME=""
-    ```
+```bash
+export NUTANIX_ENDPOINT=""
+export NUTANIX_USER=""
+export NUTANIX_PASSWORD=""
+export NUTANIX_INSECURE=false
+export NUTANIX_SSH_AUTHORIZED_KEY=""
+export NUTANIX_PRISM_ELEMENT_CLUSTER_NAME=""
+export NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME=""
+export NUTANIX_SUBNET_NAME=""
+```
 
     You can ensure the Nutanix variables were successfully exported by issuing the following command in your terminal.
 
-    ```bash
-    env | grep "NUTANIX"
-    ```
+```bash
+env | grep "NUTANIX"
+```
 
     Copy the following environment variables to your terminal, provide values, and export the variables.
 
-    ```bash
-    export KUBERNETES_VERSION="v1.22.9"
-    export WORKER_MACHINE_COUNT=1
-    ```
+```bash
+export KUBERNETES_VERSION="v1.22.9"
+export WORKER_MACHINE_COUNT=1
+```
 
     To verify the KUBERNETES_VERSION and WORKER_MACHINE_COUNT variables were successfully exported, you can issue the
     following command for each variable.
 
-    ```bash
-    echo $variable_name
-    ```
+```bash
+echo $variable_name
+```
 
 4.  Instantiate Nutanix Cluster API.
 
