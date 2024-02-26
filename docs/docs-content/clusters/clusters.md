@@ -354,3 +354,5 @@ at the tenant scope.
 - [Manage Clusters](./cluster-management/)
 
 - [Cluster Groups](./cluster-groups/cluster-groups.md)
+
+- [Private Cloud Gateways](./pcg/pcg.md)
