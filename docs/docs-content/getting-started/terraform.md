@@ -23,6 +23,10 @@ notable reasons why you would want to utilize IaC are:
 If want to become more familiar with Terraform, we recommend you check out the
 [Terraform](https://developer.hashicorp.com/terraform/intro) learning resources from HashiCorp.
 
+This tutorial will teach you how to deploy a host cluster with Terraform using Amazon Web Services (AWS), Microsoft
+Azure, or Google Cloud Platform (GCP) cloud providers. You will learn about _Cluster Mode_ and _Cluster Profiles_ and
+how these components enable you to deploy customized applications to Kubernetes with minimal effort.
+
 ## Prerequisites
 
 To complete this tutorial, you will need the following items

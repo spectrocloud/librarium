@@ -8,9 +8,18 @@ sidebar_position: 30
 tags: ["getting-started"]
 ---
 
-Cluster profiles are composed of layers using packs, Helm charts, and custom manifests to meet specific types of
-workloads on your Palette cluster deployments. You can create as many profiles as needed for your workload cluster
-deployments.
+Cluster profiles are the declarative, full-stack models that Palette follows when it provisions, scales, and maintains
+your clusters. Cluster profiles are composed of layers using packs, Helm charts, Zarf packages, or cluster manifests to
+meet specific types of workloads on your Palette cluster deployments. You can create as many profiles as needed for your
+workloads.
+
+Once you create your profiles, the provide you with a repeatable deployment process for all of your development and
+production environments. Cluster profile layers also give you visibility on the layers, packages and versions present on
+your deployed clusters.
+
+Finally, if you want to update or maintain your deployed workloads, cluster profiles give you the flexibility to make
+changes to all clusters deployed with the profile by removing, swapping or adding a new layer. Palette will then
+reconcile the current state of your workloads with the desired state specified by the profile.
 
 Below are cluster profile types you can create:
 
@@ -37,4 +46,8 @@ clusters.
 
 Palette provides packs that are tailored for specific uses to support the core infrastructure a cluster needs and add-on
 packs to extend Kubernetes functionality. Each pack you add to a cluster profile is considered a layer in the profile.
-Check out the [Packs List](../integrations/integrations.mdx) page to learn more about individual packs.
+
+The diagram below illustrates some of the popular technologies that you can use in your profile layers. Check out the
+[Packs List](../integrations/integrations.mdx) page to learn more about individual packs.
+
+![Diagram of stack grouped as a unit](/getting-started/getting-started_cluster-profiles_stack-grouped-packs.png)

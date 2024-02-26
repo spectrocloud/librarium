@@ -9,9 +9,8 @@ tags: ["getting-started"]
 ---
 
 This tutorial will teach you how to deploy a host cluster with Palette using Amazon Web Services (AWS), Microsoft Azure,
-or Google Cloud Platform (GCP) cloud providers. You can deploy a cluster using either Palette or Terraform. You will
-learn about _Cluster Mode_ and _Cluster Profiles_ and how these components enable you to deploy customized applications
-to Kubernetes with minimal effort.
+or Google Cloud Platform (GCP) cloud providers. You will learn about _Cluster Mode_ and _Cluster Profiles_ and how these
+components enable you to deploy customized applications to Kubernetes with minimal effort.
 
 As you navigate the tutorial, refer to this diagram to help you understand how Palette uses a cluster profile as a
 blueprint for the host cluster you deploy. Palette clusters have the same node pools you may be familiar with: _control
