@@ -44,10 +44,10 @@ clusters.
 
 ## Packs
 
-Palette provides packs that are tailored for specific uses to support the core infrastructure a cluster needs and add-on
-packs to extend Kubernetes functionality. Each pack you add to a cluster profile is considered a layer in the profile.
+Packs are the smallest component of a cluster profile. Each layer of a cluster profile is made up of a specific pack. 
+Palette provides packs that are tailored for specific uses to support the core infrastructure a cluster needs. You can also use add-on packs, or create your own custom pack to extend Kubernetes functionality.
 
-The diagram below illustrates some of the popular technologies that you can use in your profile layers. Check out the
+The diagram below illustrates some of the popular technologies that you can use in your cluster profile layers. Check out the
 [Packs List](../integrations/integrations.mdx) page to learn more about individual packs.
 
 ![Diagram of stack grouped as a unit](/getting-started/getting-started_cluster-profiles_stack-grouped-packs.png)

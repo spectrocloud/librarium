@@ -16,8 +16,7 @@ environments.
 
 The first step towards adopting Palette in your organization is to
 [create a login](https://www.spectrocloud.com/get-started). The
-[Palette Free Tier](https://www.spectrocloud.com/free-tier) gives our users the opportunity to get a first impression of
-our product before making a purchase decision.
+[Palette Free Tier](https://www.spectrocloud.com/free-tier) allows you to experience the benefits of Palette first-hand.
 
 The Getting Started section introduces you to the concepts and workflows you need to begin using Palette. Explore more
 through the following pages.
