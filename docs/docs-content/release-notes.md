@@ -9,9 +9,25 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
+## Feb 26, 2024 - Release 4.2.13
+
+### Bug Fixes
+
+- Fixed an issue where AWS VPC CNI would not work with Kubernetes 1.28 when using AWS EKS.
+
+- Fixed an issue with the Kubernetes Dashboard cookies and internal Palette ingress configuration that caused the
+  Kubernetes Dashboard to fail to load.
+
+- Fixed an issue with Mircok8s failing to launch pods due to a mismatch in node affinity labels.
+
+- Resolved an issue with MAAS clusters failing to deploy when the default image endpoint is not set in an airgap
+  environment
+
+- Resolved the remaining MAAS node upgrade issues 4.2.12 did not address.
+
 ## Feb 16, 2024 - Release 4.2.12
 
-### Bug Fix: IaaS Cluster Repaves Causing Cluster Downtime
+### Bug Fix - IaaS Cluster Repaves Causing Cluster Downtime
 
 #### Affected services
 
