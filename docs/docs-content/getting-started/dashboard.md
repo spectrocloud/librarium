@@ -4,7 +4,7 @@ title: "Palette Dashboard"
 description: "Spectro Cloud Palette Dashboard"
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 tags: ["getting-started"]
 ---
 
@@ -27,7 +27,7 @@ the list below.
 
 <!-- ![project-dashboard](/project-dashboard.png) -->
 
-![A screenshot of the Project dashboard with numbered UI elements described in this document.](/getting-started_dashboard_project-dashboard.png)
+![A screenshot of the Project dashboard with numbered UI elements described in this document.](/getting-started/getting-started_dashboard_project-dashboard.png)
 
 1. Projects are used to organize the cluster resources within a logical group. Use the **drop-down Menu** to shift
    between projects.
@@ -59,7 +59,7 @@ described in the list below.
 
 <!-- ![admin-dashboard](/admin-dashboard.png) -->
 
-![A screenshot of the Tenant Admin dashboard with numbered UI elements described in this document.](/getting-started_dashboard_admin-dashboard.png)
+![A screenshot of the Tenant Admin dashboard with numbered UI elements described in this document.](/getting-started/getting-started_dashboard_admin-dashboard.png)
 
 1. Tenant admins use the **drop-down Menu** to switch to the **Tenant Admin** dashboard.
 
