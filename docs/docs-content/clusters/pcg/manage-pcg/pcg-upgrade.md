@@ -13,14 +13,15 @@ on the upgrade event, different steps are required to complete the upgrade.
 Palette agent updates are tied to the Palette platform version. Self-hosted Palette instances must upgrade to the next
 minor or major version to receive the latest Palette agent and cluster profile updates that are compatible with the new
 version of Palette. For example, if you are on Palette 4.1.12, you must upgrade to next minor version, Palette 4.2.0 or
-greater to receive the latest Palette agent updates that are compatible with Palette 4.2.x.
+greater to receive the latest Palette agent updates that are compatible with Palette 4.2.x. We recommend you check for
+cluster profile updates after upgrading your self-hosted Palette instance to a new version.
 
 The table below outlines a high-level overview of the upgrade process for a PCG and each of its components.
 
-| Component       | User Action Required? | Expected Downtime? | Description                                                                                                                                                                                                                                 |
-| --------------- | --------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Palette Agent   | No                    | No                 | Automatically updated unless platform updates or cluster updates are paused. Refer to the [Pause Platform Upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md) to learn more about pausing updates.             |
-| Cluster Profile | Yes                   | Potentially        | Manually approve the cluster profile update to apply the latest cluster profile changes. Refer to the [Pause Platform Upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md) to learn more about pausing updates. |
+| Component       | User Action Required? | Expected Downtime? | Description                                                                                                                                                                                                                                                                                                    |
+| --------------- | --------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Palette Agent   | No                    | No                 | Automatically updated unless platform updates or cluster updates are paused. Refer to the [Pause Platform Upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md) to learn more about pausing updates.                                                                                |
+| Cluster Profile | Yes                   | Potentially        | Manually approve the cluster profile update to apply the latest cluster profile changes. Refer to the [Pause Platform Upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md) to learn more about pausing updates. Not all Palette version updates introduce cluster profile changes. |
 
 Review the following sections to learn more about the upgrade process for a PCG.
 
@@ -67,13 +68,13 @@ Before upgrading a self-hosted Palette instance to a new minor or major version,
 automatically upgrade to the latest version and manually approve any pending cluster profile updates. This will help you
 avoid compatibility issues between the PCG and the upgraded Palette.
 
-The general guideline is to upgrade self-hosted Palette instances to the lastest patch release of the current minor,
-then upgrade to the next minor version. For a major version upgrade, ensure the latest minor version is applied before
-upgrading to the next major version.
+The general guideline is to upgrade self-hosted Palette instances to the lastest patch release of the current minor
+version, then upgrade to the next minor version. For a major version upgrade, ensure the latest minor version is applied
+before upgrading to the next major version.
 
-In between each upgrade, ensure the Palette agent in the PCG and its cluster profile updates are applied. We recommed
-you allow approximately 30 min for the Palette agent to automatically update, followed by applying cluster profile
-updates, if applicable. This will reduce the risk of compatibility issues during a Palette upgrade.
+In between each version upgrade, ensure the Palette agent in the PCG and its cluster profile updates are applied. We
+recommed you allow approximately 30 min for the Palette agent to automatically update, followed by applying cluster
+profile updates, if applicable.
 
 For instance, if you are upgrading from Palette v3.4.x to v4.2.x, ensure both Palette agent and cluster profiles updates
 are applied for the latest patch release of v3.4.x. Then, upgrade to Palette v4.0.x.
