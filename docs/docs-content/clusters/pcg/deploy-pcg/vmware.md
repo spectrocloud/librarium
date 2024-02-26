@@ -451,6 +451,14 @@ The following requirements apply to tags:
     selected pool. With DDNS, PCG VMs are assigned IP addresses via DNS. Review the following tables to learn more about
     each parameter.
 
+    :::warning
+
+    If you select **Static Placement**, you must create a PCG IPAM pool before deploying clusters. Refer to the
+    [Create and Manage IPAM Node Pools](../manage-pcg/create-manage-node-pool.md) for guidance on how to create an IPAM
+    pool.
+
+    :::
+
     ##### Static Placement Configuration
 
     | **Parameter**                              | **Description**                                                                                                                    |
@@ -462,11 +470,11 @@ The following requirements apply to tags:
     | **Name servers**                           | Comma-separated list of DNS name server IP addresses.                                                                              |
     | **Name server search suffixes (optional)** | Comma-separated list of DNS search domains.                                                                                        |
 
-         ##### DDNS Placement Configuration
+    ##### DDNS Placement Configuration
 
-         |**Parameter**                            | **Description**|
-         |-----------------------------------------|----------------|
-         | **Search domains** | Comma-separated list of DNS search domains.|
+    | **Parameter**      | **Description**                             |
+    | ------------------ | ------------------------------------------- |
+    | **Search domains** | Comma-separated list of DNS search domains. |
 
 9.  Specify the cluster boot configuration.
 
@@ -544,7 +552,7 @@ Once installed, the PCG registers itself with Palette. To verify the PCG is regi
 
 ## Next Steps
 
-After you have successfully deployed the PCG into your VMware vSphere environment, you can now create and define an IP
-Address Management (IPAM) node pool that Kubernetes clusters deployed in vSphere can use. To learn more about creating
-and defining node pools, refer to the [Create and Manage IPAM Node Pools](../manage-pcg/create-manage-node-pool.md)
-documentation.
+After you have successfully deployed the PCG into your VMware vSphere environment, you can now deploy clusters into your
+VMware vSphere environment. If you selected **Static Placement**, make sure you define an IP Address Management (IPAM)
+node pool that Kubernetes clusters deployed in vSphere can use. To learn more about creating and defining node pools,
+refer to the [Create and Manage IPAM Node Pools](../manage-pcg/create-manage-node-pool.md) documentation.
