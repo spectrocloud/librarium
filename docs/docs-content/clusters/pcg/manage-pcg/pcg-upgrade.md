@@ -30,7 +30,7 @@ The table below outlines a high-level overview of the upgrade process for a PCG 
 
 | Component       | User Action Required? | Expected PCG Downtime? | Supported PCG Type?                             | Description                                                                                                                                                                                                                                                                                                                                      |
 | --------------- | --------------------- | ---------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Palette Agent   | No                    | No                     | All                                             | Automatically updated unless platform updates or cluster updates are paused. Refer to the [Pause Platform Upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md) to learn more about pausing updates.                                                                                                                  |
+| Palette Agent   | No                    | No                     | All                                             | Automatically updated unless platform updates or cluster updates are paused. Refer to the [Pause Platform Upgrades](../../cluster-management/palette-lock-cluster.md) to learn more about pausing updates.                                                                                                                                       |
 | Cluster Profile | Yes                   | Potentially            | Only PCG clusters installed through Palette CLI | Manually approve the cluster profile update to apply the latest cluster profile changes. Not all Palette version updates introduce cluster profile changes. PCG clusters installed on an existing Kubernetes cluster is not eligble for cluster profile updates. Refer to the [Cluster Profile Updates](#cluster-profile-updates) to learn more. |
 
 Review the following sections to learn more about the upgrade process for a PCG.
@@ -44,8 +44,8 @@ require downtime for the PCG cluster.
 The Palette agent polls Palette for updates every 15 minutes and applies the update if a new version is available,
 unless platform updates or cluster updates are paused. If you do not want the Palette agent to be automatically updated,
 you can turn off the automatic agent update feature by disabling platform updates. Refer to
-[Pause Platform Upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md) for guidance on how to
-pause platform upgrades.
+[Pause Platform Upgrades](../../cluster-management/palette-lock-cluster.md) for guidance on how to pause platform
+upgrades.
 
 :::tip
 
