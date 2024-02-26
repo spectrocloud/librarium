@@ -25,7 +25,8 @@ If want to become more familiar with Terraform, we recommend you check out the
 
 This tutorial will teach you how to deploy a host cluster with Terraform using Amazon Web Services (AWS), Microsoft
 Azure, or Google Cloud Platform (GCP) cloud providers. You will learn about _Cluster Mode_ and _Cluster Profiles_ and
-how these components enable you to deploy customized applications to Kubernetes with minimal effort.
+how these components enable you to deploy customized applications to Kubernetes with minimal effort using the
+[Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider.
 
 ## Prerequisites
 
