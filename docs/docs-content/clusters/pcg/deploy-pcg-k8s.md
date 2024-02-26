@@ -69,7 +69,7 @@ development and testing environments.
   - 60 GB of disk space
   - 1 control plane node and 1 worker node. We recommend using a minimum of 3 nodes for production environments. Refer
     to the [PCG Sizing](#pcg-sizing) section for more information.
-  - A Container Nework Interface plugin installed.
+  - A Container Network Interface plugin installed.
   - A Container Storage Interface plugin installed.
 
 - PCG IP address requirements:

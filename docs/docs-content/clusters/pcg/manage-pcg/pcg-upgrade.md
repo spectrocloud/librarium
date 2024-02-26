@@ -70,7 +70,7 @@ through Palette
 
 :::
 
-    ![A PCG details page displaying an eligble update](/clusters_manage-pcg_pcg-upgrade_updates-button.png)
+    ![A PCG details page displaying an eligible update](/clusters_manage-pcg_pcg-upgrade_updates-button.png)
 
 To upgrade the PCG cluster, click the **Updates** button to start the upgrade process. A cluster profile editor will
 appear, displaying the changes that will be made to the cluster profile. Review the changes and click **Confirm
