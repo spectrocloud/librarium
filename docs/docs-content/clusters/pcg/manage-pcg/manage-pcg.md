@@ -17,3 +17,5 @@ topics to learn more about managing a PCG.
 - [Increase PCG Node Count](./scale-pcg-nodes.md)
 
 - [Delete a PCG](./remove-pcg.md)
+
+- [Upgrade a PCG](./pcg-upgrade.md)
