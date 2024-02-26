@@ -145,4 +145,9 @@ Ensure your `values.yaml` file is ready before proceeding.
    helm ls
    ```
 
+<<<<<<< Updated upstream
   You should receive an output with details about each installed app. Review the version of the 
+=======
+  You should receive an output with details about each installed app. Review the version of the 
+
+>>>>>>> Stashed changes
