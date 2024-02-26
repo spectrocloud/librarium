@@ -42,15 +42,7 @@ Platform administrators can use the system console to perform the following oper
 
 - Enable metrics collection.
 
-<<<<<<< Updated upstream
-- [Manage VerteX platform upgrades](manage-upgrades.md).
-=======
-<<<<<<< Updated upstream
 - Manage VerteX platform upgrades.
-=======
-- [Manage VerteX platform upgrades].
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 
 - Configuere login banner.
 

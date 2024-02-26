@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Upgrade Notes"
-title: "Upgrade Notes"
+sidebar_label: "Upgrade Guides"
+title: "Upgrade Guides"
 description: "Spectro Cloud upgrade notes for specific Palette versions."
 icon: ""
 hide_table_of_contents: false
@@ -24,7 +24,7 @@ Palette 4.0 includes the following major enhancements that require user interven
 
   If you already have an SSL certificate, key, and Certificate Authority (CA) certificate, you can use them when
   upgrading to Palette 4.0.0. To learn how to upload SSL certificates to Palette, refer to
-  [SSL Certificate Management](system-management/ssl-certificate-management.md).
+  [SSL Certificate Management](../system-management/ssl-certificate-management.md).
 
 - **Self-hosted Palette Kubernetes Upgrade** - If you installed Palette using the Helm Chart method, the Kubernetes
   version used for Palette is upgraded from version 1.24 to 1.25. You will need to copy the new Kubernetes YAML to the

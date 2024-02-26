@@ -43,6 +43,6 @@ required to get started with self-hosted Palette.
 
 - [System Management](system-management/system-management.md)
 
-- [Upgrade Notes](upgrade.md)
+- [Upgrade Notes](upgrade/upgrade.md)
 
 - [Enterprise Install Troubleshooting](../troubleshooting/enterprise-install.md)
