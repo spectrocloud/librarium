@@ -37,9 +37,9 @@ will deploy in Kubernetes.
   If you do not have a personal registry account, you can use DockerHub.
 - Access to a running Kubernetes cluster. To learn how to create clusters in different environments using Palette,
   review guides listed under [Clusters](../../clusters/clusters.md) or visit the
-  [Palette Onboarding Workflow](../../getting-started/onboarding-workflow.md#palette-workflow) guide. To learn how to
-  create a Kubernetes cluster from scratch, check out the
-  [Create a Cluster](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/) Kubernetes resource.
+  [Getting Started](../../getting-started/getting-started.md) section. To learn how to create a Kubernetes cluster from
+  scratch, check out the [Create a Cluster](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/)
+  Kubernetes resource.
 
 The following example explains how you can create a secret and use it in a Kubernetes deployment.
 

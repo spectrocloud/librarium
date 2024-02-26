@@ -787,7 +787,7 @@ offerings, many enhancements, and bug fixes.
   service from Tencent Cloud. Deploy and manage the end-to-end life cycle of TKS clusters, effortlessly.
 - Palette introduces **Placeholder Variables** as [Macros](./clusters/cluster-management/macros.md) in our Cluster
   Profile layers for advanced regression and easier update of variables, across multiple running clusters.
-- Palette displays a well-organized [Product Onboarding](./getting-started/onboarding-workflow.md) process to streamline
+- Palette displays a well-organized [Product Onboarding](./getting-started/getting-started.md) process to streamline
   user-product adoption, with an assured unfailing user experience, to jump-start our product journey.
 - Palette helps out new users in their purchase decision by offering free tier services.
   - Palette Freemium to explore Palette's capabilities with free and fixed kilo-Core-hour usage for finite cluster
