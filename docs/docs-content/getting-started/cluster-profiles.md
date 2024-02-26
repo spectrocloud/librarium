@@ -13,9 +13,8 @@ your clusters. Cluster profiles are composed of layers using packs, Helm charts,
 meet specific types of workloads on your Palette cluster deployments. You can create as many profiles as needed for your
 workloads.
 
-Once you create your profiles, the provide you with a repeatable deployment process for all of your development and
-production environments. Cluster profile layers also give you visibility on the layers, packages and versions present on
-your deployed clusters.
+Cluster profiles provide you with a repeatable deployment process for all of your development and production
+environments. They also give you visibility on the layers, packages and versions present on your deployed clusters.
 
 Finally, if you want to update or maintain your deployed workloads, cluster profiles give you the flexibility to make
 changes to all clusters deployed with the profile by removing, swapping or adding a new layer. Palette will then
@@ -44,10 +43,11 @@ clusters.
 
 ## Packs
 
-Packs are the smallest component of a cluster profile. Each layer of a cluster profile is made up of a specific pack. 
-Palette provides packs that are tailored for specific uses to support the core infrastructure a cluster needs. You can also use add-on packs, or create your own custom pack to extend Kubernetes functionality.
+Packs are the smallest component of a cluster profile. Each layer of a cluster profile is made up of a specific pack.
+Palette provides packs that are tailored for specific uses to support the core infrastructure a cluster needs. You can
+also use add-on packs, or create your own custom pack to extend Kubernetes functionality.
 
-The diagram below illustrates some of the popular technologies that you can use in your cluster profile layers. Check out the
-[Packs List](../integrations/integrations.mdx) page to learn more about individual packs.
+The diagram below illustrates some of the popular technologies that you can use in your cluster profile layers. Check
+out the [Packs List](../integrations/integrations.mdx) page to learn more about individual packs.
 
 ![Diagram of stack grouped as a unit](/getting-started/getting-started_cluster-profiles_stack-grouped-packs.png)
