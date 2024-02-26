@@ -40,9 +40,10 @@ day 2 management.
 
 Palette has the richest coverage in supported environments that includes:
 
-- Public Clouds: AWS, Azure, and Google Cloud (both IaaS and managed Kubernetes services EKS/AKS/GKE)
-- Data Centers: VMware, OpenStack
-- Bare Metal: Canonical MaaS
+- Public Clouds: AWS, Azure, Google Cloud and Tencent TKE. Palette supports both IaaS and managed Kubernetes services
+  AWS EKS, Azure AKS and Google GKE.
+- Data Centers: VMware, Nutanix, and OpenStack
+- Bare Metal: Canonical MAAS
 - Edge
 
 ## What is Under the Hood?
