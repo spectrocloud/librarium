@@ -311,10 +311,10 @@ on the running cluster.
 
 ## System Administrator
 
-The self-hosted Palette or Palette VerteX user with access to the
-[system console](#system-console-on-prem-system-console).
+The self-hosted Palette or Palette VerteX user with access to the system console and can perform various operations
+based on their assigned role. Palette supports the multiple system administrator roles.
 
-## System Console (On-prem System Console)
+## System Console
 
 The console is used to scale up the Enterprise cluster and manage it. The System console supports creating and
 activating a new tenant in a new instance. It Initiates the installation of a Palette Enterprise Cluster. The On-Prem
