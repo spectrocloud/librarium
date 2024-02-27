@@ -48,7 +48,7 @@ Palette 4.0 includes the following major enhancements that require user interven
   version used for Palette is upgraded from version 1.24 to 1.25. You will need to copy the new Kubernetes YAML to the
   Kubernetes layer in the Enterprise cluster profile. If you have customized your Kubernetes configuration, you will
   need to manually adjust custom values and include any additional configuration in the upgraded YAML that we provide.
-  Refer to [Upgrade Kubernetes](#upgrade-kubernetes).
+  Refer to [Upgrade Enterprise Cluster Profile](#upgrade-enterprise-cluster-profile).
 
 ### Upgrade with VMware
 
