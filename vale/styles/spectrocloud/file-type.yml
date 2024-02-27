@@ -4,13 +4,19 @@ level: error
 ignorecase: false
 swap:
   csv file: CSV file
+  iso file: ISO file
+  iso image: ISO image
   json file: JSON file
+  md file: Markdown file
+  pdf file: PDF file
   png file: PNG file
+  py file: Python file
   svg file: SVG file
   TAR file: tar file
   tf file: Terraform file
+  TGZ file: tgz file
   txt file: text file
   yaml file: YAML file
   ZIP file: zip file
   ZST file: zst file
-  TGZ file: tgz file
+
