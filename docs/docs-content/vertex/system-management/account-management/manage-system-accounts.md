@@ -9,9 +9,8 @@ tags: ["vertex", "management", "account"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-As a system administrator, of the role Root Administrator, or Account Administrator, you can create and manage system
-accounts in Palette VerteX. System accounts are used to access the system console and perform various operations based
-on the assigned role.
+You can create and manage system accounts if you have the Root Administrator or Account Administrator role in Palette
+VerteX. These accounts are used to access the system console and perform various operations based on the assigned role
 
 ![A view of the admin user dashboard](/vertex_account-management_manage-system-accounts_user-dashboard.png)
 
@@ -48,9 +47,8 @@ Use the following steps to create a new system account.
 
 5. Click **Create** to save the new system account.
 
-6. A message appears confirming the new system account has been created. The message contains an activation URL that you
-   can share with the new user to activate their account. The new user will be prompted to set a password upon
-   activation.
+6. A message appears confirming the new system account has been created. The message contains an activation URL you can
+   share with the new user to activate their account. The new user will be prompted to set a password upon activation.
 
    :::warning
 
@@ -141,13 +139,13 @@ Use the following steps to reset the password of a system administrator.
 
 4. Click **Password Reset Link**.
 
-5. A message containing the password reset link appears. The message contains a password reset URL that you can share
-   with the user to reset their password. The user will be prompted to set a new password upon visiting the URL.
+5. A message containing the password reset link appears. The message includes a password reset URL that you can share
+   with the user to reset their password. Upon visiting the URL, the user will be prompted to set a new password.
 
    :::warning
 
-   The password reset URL is valid for 24 hours. If the user does not reset their password within 24 hours, you will
-   need to generate a new password reset link.
+   The password reset URL is valid for 24 hours. If the user does not reset their password within 24 hours, you must
+   generate a new password reset link. The current password will remain unchanged until the user sets a new password
 
    :::
 
