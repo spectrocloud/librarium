@@ -104,16 +104,20 @@ fix-server: ## Fix server issues by removing the cache folder and reinstalling n
 ###@ PDF Generation
 
 pdf: ## Generate PDF from docs
+# This requires Google Chrome to be installed on the system
+# Additionaly, this breaks on pages with a details and summary element inside a tab so ensure you remove those from the pages.
 	@echo "generating pdf"
-	npx docs-to-pdf docusaurus --initialDocURLs="https://docs.spectrocloud.com" --contentSelector="article" --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" \
+	npx docs-to-pdf docusaurus --initialDocURLs="https://docs.spectrocloud.com/?docusaurus-theme=light" --contentSelector="article" --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" \
 	--excludeSelectors=".margin-vert--xl a,[class^='tocCollapsible'],.breadcrumbs,.theme-edit-this-page" \
 	--protocolTimeout=1500000 --outputPDFFilename=palette-docs.pdf  --coverTitle="Palette Documentation" \
 	--coverImage=https://docs.spectrocloud.com/assets/images/docs_introduction_product-overview-80d5488097f9e227a325e252dda42f85.png
 
 
 pdf-local: ## Generate PDF from local docs
+# This requires Google Chrome to be installed on the system
+# Additionaly, this breaks on pages with a details and summary element inside a tab so ensure you remove those from the pages.
 	@echo "generating pdf"
-	npx docs-to-pdf docusaurus --initialDocURLs="http://localhost:9000" --contentSelector="article" --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" \
+	npx docs-to-pdf docusaurus --initialDocURLs="http://localhost:9000/enterprise-version/install-palette/install-on-kubernetes/install?docusaurus-theme=light" --contentSelector="article" --paginationSelector="a.pagination-nav__link.pagination-nav__link--next" \
 	--excludeSelectors=".margin-vert--xl a,[class^='tocCollapsible'],.breadcrumbs,.theme-edit-this-page" \
 	--protocolTimeout=1500000 --outputPDFFilename=palette-docs.pdf  --coverTitle="Palette Documentation" \
 	--coverImage=https://docs.spectrocloud.com/assets/images/docs_introduction_product-overview-80d5488097f9e227a325e252dda42f85.png
