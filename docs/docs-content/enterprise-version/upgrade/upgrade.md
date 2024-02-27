@@ -18,12 +18,11 @@ Refer to the following table for the self-hosted Palette upgrade paths that we c
 
 :::warning
 
-Before upgrading Palette to a new major or minor version, you must first update it to the latest patch version
-available.
+Before upgrading Palette to a new major version, you must first update it to the latest minor version available.
 
 If your setup includes a PCG or if the new Palette version updates Kubernetes, then, before each major or minor Palette
 upgrade, you must [allow the PCG to upgrade automatically](../../clusters/pcg/manage-pcg/pcg-upgrade.md) and apply the
-Kubernetes updates to the currently deployed cluster profiles.
+Kubernetes updates to your Enterprise Cluster Profile.
 
 :::
 

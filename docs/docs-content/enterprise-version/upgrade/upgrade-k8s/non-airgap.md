@@ -12,12 +12,12 @@ This guide takes you through the process of upgrading a self-hosted Palette inst
 
 :::warning
 
-Before upgrading Palette to a new major or minor version, you must first update it to the latest patch version
-available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for details.
+Before upgrading Palette to a new major version, you must first update it to the latest minor version available. Refer
+to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for details.
 
 If your setup includes a PCG, you must also
 [allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
-Palette update.
+Palette upgrade.
 
 :::
 
@@ -27,7 +27,7 @@ Palette update.
   available in your system.
 
 - Access to the `kubeconfig` file of the target Kubernetes cluster. You must be able to interact with the cluster
-  through `kubectl` and have sufficient permissions to upgrade Palette. We recomment using a role with the cluster-admin
+  through `kubectl` and have sufficient permissions to upgrade Palette. We recommend using a role with the cluster-admin
   permissions.
 
 - `unzip` or a similar tool available in your system.

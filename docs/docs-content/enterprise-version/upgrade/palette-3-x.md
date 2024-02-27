@@ -57,7 +57,7 @@ system services update.
 
 ![Screenshot of the "Update version" button in the system consoles.](/enterprise-version_sys-console-update-palette-version.png)
 
-### Update Cluster Profiles
+### Upgrade Enterprise Cluster Profile
 
 Follow the steps below to upgrade Kubernetes.
 
