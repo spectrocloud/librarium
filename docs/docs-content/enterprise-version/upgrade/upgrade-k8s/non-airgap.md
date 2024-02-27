@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Non-airgap"
-title: "Upgrade Palette on Kubernetes"
+title: "Upgrade Palette Installed with Kubernetes"
 description: "Learn how to upgrade self-hosted non-airgap Palette with Helm and Kubernetes."
 icon: ""
 sidebar_position: 0
@@ -12,17 +12,26 @@ This guide takes you through the process of upgrading a self-hosted Palette inst
 
 :::warning
 
-Before upgrading Palette to a new major or minor version, you must first update it to the latest minor version
+Before upgrading Palette to a new major or minor version, you must first update it to the latest patch version
 available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for details.
 
-If your setup includes a PCG or if the new Palette version upgrades Kubernetes, you should also upgrade the PCG and
-Kubernetes before each major or minor Palette update.
+If your setup includes a PCG, you must also
+[allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
+Palette update.
 
 :::
 
 ## Prerequisites
 
-- Access to the Palette system console.
+- [`kubectl`](https://kubernetes.io/docs/tasks/tools/#kubectl) and [`helm`](https://helm.sh/docs/intro/install/)
+  available in your system.
+
+- Access to the `kubeconfig` file of the target Kubernetes cluster. You must be able to interact with the cluster
+  through `kubectl` and have sufficient permissions to upgrade Palette. We recomment using a role with the cluster-admin
+  permissions.
+
+- `unzip` or a similar tool available in your system.
+
 - Access to the latest Palette Helm Chart. Refer to [Access Palette](/enterprise-version/#access-palette) for more
   details.
 
@@ -48,8 +57,7 @@ match your environment.
    cd palette-install/charts/release-*
    ```
 
-3. Update the cert-manager chart using the following command. Replace `cert-manager-*` with the cert manager you
-   downloaded, as the version may be different.
+3. Update the cert-manager chart using the following command.
 
    ```shell
    helm upgrade --values extras/cert-manager/values.yaml \
@@ -80,10 +88,8 @@ that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` inc
 
 :::
 
-5.  If you are using a self-hosted OCI registry with caching enabled, upgrade the image-swap chart with the following
-    command. Point to the `palette/values.yaml` file from step four.
-
-    Replace `image-swap-*` with the image-swap version you downloaded, as the version may be different.
+5.  If you are using a self-hosted OCI registry, upgrade the image-swap chart with the following command. Point to the
+    `palette/values.yaml` file from step four.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -104,8 +110,6 @@ that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` inc
 
 6.  If you are upgrading a Palette instance in an environment that requires network proxy configuration, upgrade the
     reach-system chart with the following command. Point to the `palette/values.yaml` file from step four.
-
-    Replace `reach-system-*` with the reach-system version you downloaded, as the version may be different.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -149,6 +153,13 @@ that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` inc
     kubectl get pods --all-namespaces --watch
     ```
 
+    :::tip
+
+    For a more user-friendly experience, consider using [K9s](https://k9scli.io/) or a similar tool to track the
+    upgrade.
+
+    :::
+
     The upgrade usually takes up to five minutes. Palette is upgraded when the deployments in the namespaces
     `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` are in the **Ready** status.
 
@@ -160,16 +171,15 @@ that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` inc
    helm ls
    ```
 
-   You should receive an output with the versions of the currently deployed apps.
+   You should receive an output with the version and other details of the currently deployed apps.
 
    ```shell
    NAME        	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART                   	APP VERSION
    cert-manager	default  	2       	2024-02-22 19:42:33.776829 +0100 CET	deployed	cert-manager-1.11.0     	1.11.0
-   image-swap  	default  	2       	2024-02-26 21:29:21.209592 +0100 CET	deployed	image-swap-v1.5.2-spectro-4.1.1	1.5.2
-   reach-system	default  	2       	2024-02-26 21:29:49.558061 +0100 CET	deployed	reach-system-4.2.0             	4.2.0
+   image-swap  	default  	2       	2024-02-22 19:44:13.209592 +0100 CET	deployed	image-swap-v1.5.2-spectro-4.1.1	1.5.2
+   reach-system	default  	2       	2024-02-22 19:47:10.558061 +0100 CET	deployed	reach-system-4.2.0             	4.2.0
    hubble      	default  	2       	2024-02-22 19:47:24.085305 +0100 CET	deployed	spectro-mgmt-plane-4.2.7	4.2.7
    ```
 
-2. Check `cert-manager`, `image-swap`, `reach-system`, and `hubble` to verify that they have the expected versions.
-
-## Next steps
+2. Check the `App Version` column of `cert-manager`, `image-swap`, `reach-system`, and `hubble` to verify that they have
+   the expected versions.
