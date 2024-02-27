@@ -71,3 +71,10 @@ Proceed with the following steps if the Palette upgrade introduces a new version
    The Enterprise Cluster initiate the Kubernetes upgrade and leads to the reconciliation of the three Palette nodes.
 
 ## Validate
+
+1. Log in to the Palette system console.
+
+2. On the **Summary** page, check the current Palette version. You should see a message that states **You are using the
+   latest version of Palette**.
+
+   ![Self-hosted Palette system console with upgraded system.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_upgraded.png)
