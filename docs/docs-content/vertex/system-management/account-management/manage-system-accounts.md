@@ -120,7 +120,7 @@ Use the following steps to validate the system account has been removed.
 
 Use the following steps to reset the password of a system administrator.
 
-## Limitations
+### Limitations
 
 - You cannot use this feature to reset the password of the account you are currently logged in with. Use the normal
   [password change workflow](./credentials.md#change-password) to reset the password of the account you are currently
