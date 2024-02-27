@@ -37,8 +37,10 @@ host. A cluster definition contains one or more cluster profiles, including the 
 
 5. Extract the project ID and the profile ID from the URL.
 
-6. Use the [Download Cluster Definition API] to download the cluster definition. The following curl command is an
-   example.
+6. Use the [Download Cluster Definition API] to download the cluster definition. The endpoint location is
+   `POST https://<palette-instance-url>/v1/spectroclusters/spc/download`.
+
+   The following curl command is an example.
 
    ```shell
    curl --location 'https://api.spectrocloud.com/v1/spectroclusters/spc/download' \

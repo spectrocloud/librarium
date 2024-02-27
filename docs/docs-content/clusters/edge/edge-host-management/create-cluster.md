@@ -35,6 +35,11 @@ through how to create a cluster using Edge Management Console.
 
 4. Fill out **Basic Information** such as cluster name and tag. Click **Next**.
 
+   | Parameter    | Description                                             |
+   | ------------ | ------------------------------------------------------- |
+   | Cluster bane | Name of the cluster.                                    |
+   | Tags         | Key-value pairs to provide metadata about your cluster. |
+
 5. If you built a cluster definition into your Edge installer ISO, you can either choose to use the embedded config or
    import a cluster configuration file. The embedded config uses a configuration you defined during the creation of the
    ISO image you used to install Palette Edge on your Edge host.
@@ -46,6 +51,12 @@ through how to create a cluster using Edge Management Console.
 
 6. In the **Cluster Config** step, enter a virtual IP address to be used by your cluster. Optionally, you can also
    specify a Network Time Protocol server and an SSH public key.
+
+   | Parameter                   | Description                                                                                   |
+   | --------------------------- | --------------------------------------------------------------------------------------------- |
+   | Network Time Protocol (NPT) | Specify the IP address for any Network Time Protocol (NTP) servers the cluster can reference. |
+   | SSH keys                    | Provide the public key of an SSH key pair that you will use to connect to the Edge host.      |
+   | Virtual IP address          | Provide the virtual IP address to be used by the cluster.                                     |
 
    Optionally, you can also enabled network overlay, especially if your cluster will operate in an DHCP environment. For
    more information, refer to [Enable Overlay Network](../networking/vxlan-overlay.md). If you enable the overlay

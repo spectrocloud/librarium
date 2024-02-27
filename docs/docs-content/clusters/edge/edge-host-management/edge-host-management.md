@@ -25,18 +25,31 @@ Refer to the follow resources to learn how to use EMC to manage your disconnecte
 
 ## Get Started
 
-- [Access Edge Management Console](./access-console.md)
+- Refer to [Access Edge Management Console](./access-console.md) for guidance on how to access EMC and update your
+  credentials.
 
-## Create and Manage Clusters
+- If you already included a content bundle and a cluster definition in your installer ISO, you can create a cluster
+  using the resources in the ISO directly. Refer to [Create Local Cluster](./create-cluster.md) for guidance. Refer to
+  [EdgeForge Workflow](../edgeforge-workflow/edgeforge-workflow.md) for guidance on how to include content bundles and
+  cluster definitions in your ISO.
 
-- [Upload Content Bundles](./upload-content-bundle.md)
+- If you did not provide a content bundle or cluster definition, or if you want to provide new content from which to
+  build clusters, refer to the following guides to upload content bundles and export cluster definitions.
 
-- [Export Cluster Definition](./export-cluster-definition.md)
+  - [Upload Content Bundles](./upload-content-bundle.md)
 
-- [Create Local Cluster](./create-cluster.md)
+  - [Export Cluster Definition](./export-cluster-definition.md)
 
-##
+## Configure Edge Host
 
-- [Customize Edge Management Console Theme](./theming.md)
+EMC also allows you to configure HTTP proxy for your Edge host.
 
 - [Configure HTTP Proxy in Edge Management Console](./configure-proxy.md)
+
+- [Reset Edge Host to Factory Default]
+
+## Branding
+
+During the EdgeForge process, you can use CSS to adjust the look and feel of the EMC console.
+
+- [Customize Edge Management Console Theme](./theming.md)
