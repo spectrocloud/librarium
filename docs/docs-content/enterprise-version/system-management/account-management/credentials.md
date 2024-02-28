@@ -4,7 +4,7 @@ title: "Manage User Credentials"
 description: "Update and manage the user credentials"
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 tags: ["palette", "management", "account", "credentials"]
 keywords: ["self-hosted", "palette"]
 ---
