@@ -15,8 +15,8 @@ access the admin panel. The passkey feature supports both virtual passkey and ph
 ## Password Requirements and Security
 
 Palette VerteX passwords are hashed and salted, the cryptographic key value of the password is stored inside the
-internal system database. The cryptographic key is created through Password Based Key Derivation Function 2 (PBKDF2)
-using SHA512 with an iteration count of 210,000. The salt is 32 bytes long.
+internal system database. The cryptographic key is created using Password Based Key Derivation Function 2 (PBKDF2) and
+SHA512 with an iteration count of 210,000. The salt is 32 bytes long.
 
 All system administrators are required to set a password that complies with the following password policy:
 
