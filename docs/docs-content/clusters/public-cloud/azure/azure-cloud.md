@@ -18,9 +18,6 @@ Palette. You can use any of the following authentication methods to register you
   provision compute, network, and security resources in the desired regions. Refer to the
   [Required Permissions](./required-permissions.md) section for more information.
 
-- An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
-  provision compute, network, and security resources in the desired regions.
-
 - An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
 
 ## Add Azure Cloud Account
