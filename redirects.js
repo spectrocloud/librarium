@@ -72,6 +72,10 @@ const redirects = [
     to: `/getting-started`,
   },
   {
+    from: `/getting-started/onboarding-workflow`,
+    to: `/getting-started`,
+  },
+  {
     from: `/clusters/public-cloud/eks`,
     to: `/clusters/public-cloud/aws/eks`,
   },
@@ -358,6 +362,27 @@ const redirects = [
   {
     from: `/compliance`,
     to: `/legal-licenses/compliance`,
+  },
+  {
+    from: [
+      `/clusters/public-cloud/cox-edge/`,
+      `/clusters/public-cloud/cox-edge/add-cox-edge-accounts`,
+      `/clusters/public-cloud/cox-edge/create-cox-cluster`,
+      `/clusters/public-cloud/cox-edge/network-rules`,
+    ],
+    to: `/unlisted/cox-edge-eol`,
+  },
+  {
+    from: "/user-management/saml-sso/palette-sso-azure-ad",
+    to: "/user-management/saml-sso/palette-sso-with-entra-id",
+  },
+  {
+    from: "/user-management/saml-sso/enable-saml",
+    to: "/user-management/saml-sso/",
+  },
+  {
+    from: "/clusters/data-center/maas/install-manage-maas-pcg",
+    to: "/clusters/pcg/deploy-pcg/maas",
   },
 ];
 

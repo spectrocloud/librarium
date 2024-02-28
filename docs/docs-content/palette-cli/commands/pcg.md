@@ -86,8 +86,8 @@ palette pcg install --config-file <path-to-config-file> --update-passwords
 
 You can use the `install` subcommand to install a PCG cluster in the following environments.
 
-| **Platform** | **Install Guide**                                                                            |
-| ------------ | -------------------------------------------------------------------------------------------- |
-| MAAS         | [Link](../../clusters/data-center/maas/install-manage-maas-pcg.md#install-pcg)               |
-| OpenStack    | [Link](../../clusters/data-center/openstack.md#installing-private-cloud-gateway---openstack) |
-| VMware       | [Link](../../clusters/data-center/vmware.md#create-vmware-cloud-gateway)                     |
+| **Platform** | **Install Guide**                                  |
+| ------------ | -------------------------------------------------- |
+| MAAS         | [Link](../../clusters/pcg/deploy-pcg/maas.md)      |
+| OpenStack    | [Link](../../clusters/pcg/deploy-pcg/openstack.md) |
+| VMware       | [Link](../../clusters/pcg/deploy-pcg/vmware.md)    |

@@ -411,7 +411,7 @@ for virtual clusters. For guidance, refer to
 - **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure
   OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
   **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
-  information, check out the [SSO Setup](../user-management/saml-sso/enable-saml.md) guide.
+  information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
 :::info
 
@@ -796,7 +796,7 @@ for virtual clusters. For guidance, refer to
 - **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure
   OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
   **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
-  information, check out the [SSO Setup](../user-management/saml-sso/enable-saml.md) guide.
+  information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
 :::info
 
@@ -1182,7 +1182,7 @@ for virtual clusters. For guidance, refer to
 - **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure
   OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
   **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
-  information, check out the [SSO Setup](../user-management/saml-sso/enable-saml.md) guide.
+  information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
 :::info
 
@@ -1569,7 +1569,7 @@ for virtual clusters. For guidance, refer to
 - **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure
   OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
   **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
-  information, check out the [SSO Setup](../user-management/saml-sso/enable-saml.md) guide.
+  information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
 :::info
 

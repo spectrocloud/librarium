@@ -75,48 +75,45 @@ Use the following steps to provision a new AWS cluster:
 
 9. Provide the AWS cloud account and placement information.
 
-<br />
+   | **Parameter**             | **Description**                                                                                                                                                                                                                         |
+   | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Cloud Account**         | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.                                                                                                                |
+   | **Region**                | Choose the preferred AWS region where you would like to provision clusters.                                                                                                                                                             |
+   | **SSH Key Pair Name**     | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the provisioned VMs.                                                                         |
+   | **Static Placement**      | Check the **Static Placement** box if you want to deploy resources into pre-existing VPCs and subnets. Review the [Static Placement](#static-placement) table below to learn more about the required input fields.                      |
+   | **Private API Server LB** | Enable to deploy the cluster load balancer in a private subnet. This feature requires Palette to have direct network connectivity with the private subnet or a [Private Cluster Gateway](../../pcg/pcg.md) deployed in the environment. |
 
-| **Parameter**             | **Description**                                                                                                                                                                                                                                                          |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Cloud Account**         | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.                                                                                                                                                 |
-| **Region**                | Choose the preferred AWS region where you would like to provision clusters.                                                                                                                                                                                              |
-| **SSH Key Pair Name**     | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the provisioned VMs.                                                                                                          |
-| **Static Placement**      | Check the **Static Placement** box if you want to deploy resources into pre-existing VPCs and subnets. Review the [Static Placement](#static-placement) table below to learn more about the required input fields.                                                       |
-| **Private API Server LB** | Enable to deploy the cluster load balancer in a private subnet. This feature requires Palette to have direct network connectivity with the private subnet or a [Private Cluster Gateway](../../data-center/maas/install-manage-maas-pcg.md) deployed in the environment. |
+   #### Static Placement
 
-<br />
-
-#### Static Placement
-
-| Parameter                                                                                 | Description |
-| ----------------------------------------------------------------------------------------- | ----------- |
-| **VPCID**: Select the Virtual Private Cloud (VPC) ID network from the **drop-down Menu**. |
-| **Control plane subnet**: Select the control plane network from the **drop-down Menu**.   |
-| **Worker Network**: Select the worker network from the **drop-down Menu**.                |
+   | Parameter                | Description                                                                    |
+   | ------------------------ | ------------------------------------------------------------------------------ |
+   | **VPCID**                | Select the Virtual Private Cloud (VPC) ID network from the **drop-down Menu**. |
+   | **Control plane subnet** | Select the control plane network from the **drop-down Menu**.                  |
+   | **Worker Network**       | Select the worker network from the **drop-down Menu**.                         |
 
 10. Configure the control plane and worker node pools. A control plane and a worker node pool are configured by default.
+    Refer to the [Node Pool](../../cluster-management/node-pool.md) documentation to learn more about the node pool
+    configuration.
+
     This is the section where you can specify the availability zones (AZ), instance types,
     [instance cost type](architecture.md#spot-instances), disk size, and the number of nodes. Click on **Next** after
     you have completed configuring the node pool. The minimum number of CPUs and amount of memory depend on your cluster
     profile, but in general you need at least 4 CPUs and 4 GB of memory both in the control plane pool and across all
     worker pools.
 
-<br />
+    :::info
 
-:::info
+    You can add new worker pools if you need to customize certain worker nodes to run specialized workloads. As an
+    example, the default worker pool may be configured with the m3.large instance types for general-purpose workloads,
+    and another worker pool with instance type g2.2xlarge can be configured to run GPU workloads.
 
-You can add new worker pools if you need to customize certain worker nodes to run specialized workloads. As an example,
-the default worker pool may be configured with the m3.large instance types for general-purpose workloads, and another
-worker pool with instance type g2.2xlarge can be configured to run GPU workloads.
+    :::
 
-:::
-
-12. An optional taint label can be applied to a node pool during the cluster creation. For an existing cluster, the
+11. An optional taint label can be applied to a node pool during the cluster creation. For an existing cluster, the
     taint label can be edited, review the [Node Pool](../../cluster-management/node-pool.md) management page to learn
     more. Toggle the **Taint** button to create a label.
 
-13. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following
+12. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following
     parameters:
 
     | **Parameter** | **Description**                                                                                     |
@@ -133,16 +130,16 @@ worker pool with instance type g2.2xlarge can be configured to run GPU workloads
     | **PreferNoSchedule** | The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.                                                  |
     | **NoExecute**        | New pods will not be scheduled on the node, and existing pods on the node if any on the node will be evicted they do not tolerate the taint. |
 
-14. If you checked the **Static Placement** box in the **Cluster config** page, you can specify additional AWS
+13. If you checked the **Static Placement** box in the **Cluster config** page, you can specify additional AWS
     [security groups](https://docs.aws.amazon.com/vpc/latest/userguide/security-groups.html) to apply to the worker
     group nodes. Use the **Additional Security Groups (Optional) drop-down Menu** to select additional security groups.
 
-15. Click on **Next**.
+14. Click on **Next**.
 
-16. The settings page is where you can configure the patching schedule, security scans, backup settings, and set up Role
+15. The settings page is where you can configure the patching schedule, security scans, backup settings, and set up Role
     Based Access Control (RBAC). Review the cluster settings and make changes if needed. Click on **Validate**.
 
-17. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Provisioning IaaS clusters
+16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Provisioning IaaS clusters
     can take 15 - 30 minutes depending on the cluster profile and the node pool configuration.
 
 The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the
