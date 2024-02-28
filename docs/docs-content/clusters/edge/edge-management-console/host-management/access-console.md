@@ -22,16 +22,16 @@ This page guides you through how access the console, and log in, and manage your
 
 - An Edge host installed with Edge Installer 4.3 or later.
 
+- The Edge Installer contains a content bundle that has the Harbor Edge-Native Config pack.
+
 - The Edge host does not have a connection to a Palette instance and the installation is conducted with the
   `installationMode` parameter set to `airgap`. For more information, refer to
-  [Installer Configuration](../edge-configuration/installer-reference.md).
+  [Installer Configuration](../../edge-configuration/installer-reference.md).
 
 - You have completed or skipped the initial configuration of the Edge host. For more information, refer to
-  [Edge Host Initial Configuration](../site-deployment/initial-setup.md).
+  [Edge Host Initial Configuration](../../site-deployment/initial-setup.md).
 
 - Network access to the Edge host's port where EMC is exposed. The default port is 5080.
-
-- You have the credentials for
 
 ### Instructions
 

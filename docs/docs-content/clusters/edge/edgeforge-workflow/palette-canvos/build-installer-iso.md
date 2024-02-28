@@ -150,7 +150,7 @@ image registry.
 
 If you do not include content bundle in your Edge Installer ISO, you can still build content bundles and upload them to
 a disconnected Edge host instance via the Edge Management Console. For more information, refer to
-[Upload Content Bundle](../../edge-host-management/upload-content-bundle.md).
+[Upload Content Bundle](../../edge-management-console/cluster-management/upload-content-bundle.md).
 
 8. Refer to [Build Content Bundle](../build-content-bundle.md) to learn how to build content bundles for your ISO image.
    Since you are including the content bundle in the Installer ISO, you should choose either the zst format or the tar
@@ -170,8 +170,8 @@ API endpoint.
 If you do not include cluster definitions in your Edge Installer ISO, you can still import the cluster definition from
 Edge Management Console once you finish installing Palette on the Edge host.
 
-11. Refer to [Export Cluster Definition](../../edge-host-management/export-cluster-definition.md) to learn how to export
-    cluster definitions.
+11. Refer to [Export Cluster Definition](../../edge-management-console/cluster-management/export-cluster-definition.md)
+    to learn how to export cluster definitions.
 
 12. Put the cluster definition tgz file in the **CanvOS/** directory.
 

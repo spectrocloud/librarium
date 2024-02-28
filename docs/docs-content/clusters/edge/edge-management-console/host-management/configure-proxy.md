@@ -20,7 +20,7 @@ You can configure your Edge hosts to use an HTTP/HTTPS proxy for secure internet
 
 - The Edge host does not have a connection to a Palette instance and the installation is conducted with the
   `installationMode` parameter set to `airgap`. For more information, refer to
-  [Installer Configuration](../edge-configuration/installer-reference.md).
+  [Installer Configuration](../../edge-configuration/installer-reference.md).
 
 - An active HTTP proxy server.
 

@@ -71,12 +71,12 @@ host. A cluster definition contains one or more cluster profiles, including the 
 
 ## Validate
 
-1. Log in to [Edge Management Console](./access-console.md).
+1. Log in to [Edge Management Console](../host-management/access-console.md).
 
 2. From the left **Main Menu**, click on **Cluster**.
 
 3. Try creating a cluster with the exported cluster definition. For more information, refer to
-   [Create a Local Cluster](./create-cluster.md).
+   [Create a Local Cluster](../cluster-management/create-cluster.md).
 
 4. A successful cluster definition export will display the correct profile layers from the cluster creation view.
 
@@ -85,6 +85,6 @@ host. A cluster definition contains one or more cluster profiles, including the 
 You can build the cluster definition into the Edge Installer ISO, or upload the cluster definition to an existing Edge
 deployment using Edge Management Console during cluster creation.
 
-- [Build Edge Installer ISO](../edgeforge-workflow/palette-canvos/build-installer-iso.md)
+- [Build Edge Installer ISO](../../edgeforge-workflow/palette-canvos/build-installer-iso.md)
 
-- [Create Local Cluster](./create-cluster.md)
+- [Create Local Cluster](../cluster-management/create-cluster.md)

@@ -27,7 +27,7 @@ through how to create a cluster using Edge Management Console.
 ## Create Local Cluster
 
 1. Log into the Edge Management Console by visiting the 5080 port of your Edge device's IP address or domain name. For
-   more information, refer to [Access Edge Management Console](./access-console.md).
+   more information, refer to [Access Edge Management Console](../host-management/access-console.md).
 
 2. From the left **Main Menu**, click **Clusters**.
 
@@ -41,8 +41,9 @@ through how to create a cluster using Edge Management Console.
    | Tags         | Key-value pairs to provide metadata about your cluster. |
 
 5. If you built a cluster definition into your Edge installer ISO, you can either choose to use the embedded config or
-   import a cluster configuration file. The embedded config uses a configuration you defined during the creation of the
-   ISO image you used to install Palette Edge on your Edge host.
+   import a cluster definition file. The embedded config uses a cluster definition you included during the creation of
+   the ISO image you used to install Palette Edge on your Edge host. Ensure that any cluster definition you use contains
+   the pack **Harbor Edge-Native Config**. This pack is required for all disconnected Edge clusters.
 
    To learn more about how to export a cluster configuration and import it during this step, refer to
    [Export Cluster Definition](./export-cluster-definition.md).
@@ -59,11 +60,11 @@ through how to create a cluster using Edge Management Console.
    | Virtual IP address          | Provide the virtual IP address to be used by the cluster.                                     |
 
    Optionally, you can also enabled network overlay, especially if your cluster will operate in an DHCP environment. For
-   more information, refer to [Enable Overlay Network](../networking/vxlan-overlay.md). If you enable the overlay
+   more information, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md). If you enable the overlay
    network, you need to specify a CIDR range to be used by the overlay network.
 
 7. In the **Node Config** step, you can specify configurations for the control plane pool of your single-node cluster.
-   For more information about node pool configurations, refer to [Node pools](../../cluster-management/node-pool.md).
+   For more information about node pool configurations, refer to [Node pools](../../../cluster-management/node-pool.md).
    After you finish configuration, click **Next**.
 
 8. Review your configurations and deploy the cluster.

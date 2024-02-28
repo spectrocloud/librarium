@@ -19,13 +19,13 @@ console.
 - An Edge host with installed with Edge Installer 4.3 or later using the `airgapped` install mode.
 
 - You have built a content bundle that's necessary for provisioning a cluster using your intended cluster profile. For
-  more information, refer to [Build Content Bundles](../edgeforge-workflow/build-content-bundle.md).
+  more information, refer to [Build Content Bundles](../../edgeforge-workflow/build-content-bundle.md).
 
 - Network access to the Edge host's port where EMC is exposed. The default port is 5080.
 
 ## Upload Content
 
-1. Log in to [EMC](./access-console.md#log-in-to-edge-management-console).
+1. Log in to [EMC](../host-management/access-console.md#log-in-to-edge-management-console).
 
 2. From the left **Main Menu**, click **Content**.
 
