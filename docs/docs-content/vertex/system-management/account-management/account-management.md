@@ -9,12 +9,24 @@ tags: ["vertex", "management", "account"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-VerteX supports the ability to have multiple system administrators with different roles and permissions. You can also
-manage and update your individual user settings, such as email address and credentials from the system console.
+VerteX supports the ability to have multiple system administrators with different roles and permissions. Use the
+different roles to separate the duties of system administrators.
+
+:::info
+
+Separation of duties addresses the potential for abuse of authorized privileges and helps to reduce the risk of
+malevolent activity without collusion. Separation of duties is supported for management of VerteX for system
+administrators using the system console by defining account administration roles that are separate from operations
+roles.
+
+:::
+
+You can also manage and update your individual user settings, such as email address and credentials from the system
+console.
 
 ## System Administrators
 
-System Administrators are users who have access to the system console and can perform various operations based on their
+System administrators are users who have access to the system console and can perform various operations based on their
 assigned role. VerteX supports the following system administrator roles:
 
 - Root Administrator

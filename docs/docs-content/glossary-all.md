@@ -312,7 +312,7 @@ on the running cluster.
 ## System Administrator
 
 The self-hosted Palette or Palette VerteX user with access to the system console and can perform various operations
-based on their assigned role. Palette supports the multiple system administrator roles.
+based on their assigned role. Palette supports multiple system administrator roles.
 
 ## System Console
 

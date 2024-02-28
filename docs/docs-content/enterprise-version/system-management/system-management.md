@@ -34,6 +34,8 @@ Platform administrators can use the system console to perform the following oper
 
 - [Account management](account-management/account-management.md)
 
+- [Create and Manage System Accounts](./account-management/account-management.md)
+
 - [Configure and manage SMTP settings](smtp.md).
 
 - [Configure and manage Pack registries](add-registry.md).
