@@ -27,7 +27,7 @@ All system administrators are required to set a password that complies with the 
 - The password must contain at least one special character.
 - The password cannot be the same as the previous password.
 
-Additionaly, system administrators can manage the [password blocklist](./password-blocklist.md) to prevent users from
+Additionally, system administrators can manage the [password blocklist](./password-blocklist.md) to prevent users from
 using common or weak passwords. The password blocklist is a list of passwords that are not allowed to be used by users
 when setting or updating their passwords. The password blocklist is enforced when users set or update their passwords.
 
@@ -35,7 +35,7 @@ All system administrators are allowed a maximum of five failed login attempts. A
 user account will be placed in a temporary suspended state for a duration of 15 minutes. Upon expiration of the 15
 minutes, the user can try to log in again.
 
-Use the following sections below to learn how to manage user credentials.
+Use the following sections to learn how to manage user credentials.
 
 ## Change Password
 

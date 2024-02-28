@@ -54,7 +54,7 @@ Use the following steps to insert new passwords into the password blocklist.
 :::warning
 
 If you enabled passkeys for your system administrator account, the System API login endpoint will be disabled. Refer to
-the [Passkeys and API Access](./credentials.md#passkeys-and-api-access) for guidance on how to use passkeys to access
+the [Passkeys and API Access](./credentials.md#passkeys-and-api-access) page for guidance on how to use passkeys to access
 the System API.
 
 :::
@@ -119,7 +119,7 @@ the System API.
 
     :::info
 
-    The payload expects the `spec.passwords`field to be an array of strings. You can add as many passwords as you want
+    The payload expects the `spec.passwords` field to be an array of strings. You can add as many passwords as you want
     as long as they are separated by a comma.
 
     :::
@@ -165,7 +165,7 @@ Use the following steps to remove passwords from the password blocklist.
 :::warning
 
 If you enabled passkeys for your system administrator account, the System API login endpoint will be disabled. Refer to
-the [Passkeys and API Access](./credentials.md#passkeys-and-api-access) for guidance on how to use passkeys to access
+the [Passkeys and API Access](./credentials.md#passkeys-and-api-access) page for guidance on how to use passkeys to access
 the System API.
 
 :::
@@ -208,7 +208,7 @@ the System API.
     TOKEN=**********
     ```
 
-3.  Use the `curl` command below to insert new passwords into the password blocklist. Replace the URL with the custom
+3.  Use the `curl` command below to remove passwords from the password blocklist. Replace the URL with the custom
     domain URL you assigned to Palette VerteX or use the IP address. Ensure you replace the `TOKEN` value with the value
     you assigned to the shell variable.
 
@@ -230,7 +230,7 @@ the System API.
 
     :::info
 
-    The payload expects the `spec.passwords`field to be an array of strings. You can add as many passwords as you want
+    The payload expects the `spec.passwords`field to be an array of strings. You can remove as many passwords as you want
     as long as they are separated by a comma.
 
     :::
