@@ -1,12 +1,12 @@
 ---
 sidebar_label: "Manage Password Blocklist"
 title: "Manage Password Blocklist"
-description: "Learn how to manage the password blocklist in Palette VerteX."
+description: "Learn how to manage the password blocklist in Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 50
-tags: ["vertex", "management", "account", "credentials"]
-keywords: ["self-hosted", "vertex"]
+tags: ["palette", "management", "account", "credentials"]
+keywords: ["self-hosted", "palette"]
 ---
 
 You can manage a password blocklist to prevent users from using common or weak passwords. The password blocklist is a
@@ -16,7 +16,7 @@ when users set or update their passwords.
 :::info
 
 Refer to [Password Requirements and Security](credentials.md#password-requirements-and-security) to learn more about the
-password requirements and security in Palette VerteX.
+password requirements and security in Palette.
 
 :::
 
@@ -43,7 +43,7 @@ Use the following steps to insert new passwords into the password blocklist.
 
 ### Prerequisites
 
-- Access to the Palette VerteX system console.
+- Access to the Palette system console.
 
 - The role of root administrator or operations administrator.
 
@@ -61,12 +61,12 @@ access the System API.
 
 ### Insert Passwords
 
-1.  Open a terminal session and log in to the Palette VerteX System API by using the `/v1/auth/syslogin` endpoint. Use
-    the `curl` command below and replace the URL with the custom domain URL you assigned to Palette VerteX or use the IP
-    address. Ensure you replace the credentials below with your system console credentials.
+1.  Open a terminal session and log in to the Palette System API by using the `/v1/auth/syslogin` endpoint. Use the
+    `curl` command below and replace the URL with the custom domain URL you assigned to Palette or use the IP address.
+    Ensure you replace the credentials below with your system console credentials.
 
     ```bash
-    curl --location 'https://vertex.example.com/v1/auth/syslogin' \
+    curl --location 'https://palette.example.com/v1/auth/syslogin' \
     --header 'Content-Type: application/json' \
     --data '{
       "password": "**********",
@@ -98,11 +98,11 @@ access the System API.
     ```
 
 3.  Use the `curl` command below to insert new passwords into the password blocklist. Replace the URL with the custom
-    domain URL you assigned to Palette VerteX or use the IP address. Ensure you replace the `TOKEN` value with the value
-    you assigned to the shell variable.
+    domain URL you assigned to Palette or use the IP address. Ensure you replace the `TOKEN` value with the value you
+    assigned to the shell variable.
 
     ```bash
-    curl --location 'https://vertex.example.com/v1/sys/passwords' \
+    curl --location 'https://palette.example.com/v1/sys/passwords' \
     --header "Authorization: $TOKEN" \
     --header 'Content-Type: application/json' \
     --data '{
@@ -132,7 +132,7 @@ access the System API.
 
 To validate the password blocklist, use the following steps.
 
-1. Log in to the Palette VerteX system console. Refer to
+1. Log in to the Palette system console. Refer to
    [Access the System Console](../system-management.md#access-the-system-console) guide.
 
 2. From the **left Main Menu** select **My Account**.
@@ -154,7 +154,7 @@ Use the following steps to remove passwords from the password blocklist.
 
 ### Prerequisites
 
-- Access to the Palette VerteX system console.
+- Access to the Palette system console.
 
 - The role of root administrator or operations administrator.
 
@@ -172,12 +172,12 @@ access the System API.
 
 ### Remove Passwords
 
-1.  Open a terminal session and log in to the Palette VerteX System API by using the `/v1/auth/syslogin` endpoint. Use
-    the `curl` command below and replace the URL with the custom domain URL you assigned to Palette VerteX or use the IP
-    address. Ensure you replace the credentials below with your system console credentials.
+1.  Open a terminal session and log in to the Palette System API by using the `/v1/auth/syslogin` endpoint. Use the
+    `curl` command below and replace the URL with the custom domain URL you assigned to Palette or use the IP address.
+    Ensure you replace the credentials below with your system console credentials.
 
     ```bash
-    curl --location 'https://vertex.example.com/v1/auth/syslogin' \
+    curl --location 'https://palette.example.com/v1/auth/syslogin' \
     --header 'Content-Type: application/json' \
     --data '{
       "password": "**********",
@@ -209,11 +209,11 @@ access the System API.
     ```
 
 3.  Use the `curl` command below to remove passwords from the password blocklist. Replace the URL with the custom domain
-    URL you assigned to Palette VerteX or use the IP address. Ensure you replace the `TOKEN` value with the value you
-    assigned to the shell variable.
+    URL you assigned to Palette or use the IP address. Ensure you replace the `TOKEN` value with the value you assigned
+    to the shell variable.
 
     ```bash
-    curl --location --request DELETE 'https://vertex.example.com/v1/sys/passwords' \
+    curl --location --request DELETE 'https://palette.example.com/v1/sys/passwords' \
     --header "Authorization: $TOKEN" \
     --header 'Content-Type: application/json' \
     --data '{
@@ -243,7 +243,7 @@ access the System API.
 
 To validate the password blocklist, use the following steps.
 
-1. Log in to the Palette VerteX system console. Refer to
+1. Log in to the Palette system console. Refer to
    [Access the System Console](../system-management.md#access-the-system-console) guide.
 
 2. From the **left Main Menu** select **My Account**.
