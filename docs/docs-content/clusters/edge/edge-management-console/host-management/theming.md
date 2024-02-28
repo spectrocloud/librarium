@@ -75,7 +75,8 @@ look feel of the console for all Edge hosts of your organization.
 
    To do: a screenshot demoing what each property does.
 
-6. Follow the EdgeForge guide from step 3 onwards to finish the EdgeForge process.
+6. Follow the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide from step 3
+   onwards to finish the EdgeForge process.
 
 ### Validate
 

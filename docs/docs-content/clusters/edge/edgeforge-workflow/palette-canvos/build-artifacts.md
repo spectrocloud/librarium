@@ -9,8 +9,8 @@ tags: ["edge"]
 ---
 
 Palette's Edge solution supports creating Edge artifacts for edge devices deployed in a low internet bandwidth
-environment or an disconnected environment. An disconnected environment is a deployment site with no network access to a
-central Palette instance. Using a content bundle, you can build Edge artifacts for installation in such environments.
+environment or a disconnected environment. A disconnected environment is a deployment site with no network access to a
+Palette instance. Using a content bundle, you can build Edge artifacts for installation in such environments.
 
 A content bundle is an archive that includes the Operating System (OS) image, the Kubernetes distribution, the Network
 Container Interface (CNI), and all other dependencies specified in the cluster profiles you want to deploy to the Edge
@@ -83,7 +83,7 @@ Use the following instructions on your Linux machine, which this guide refers to
     executable permissions for the palette-edge binary by issuing the following command.
 
     ```bash
-    chmod 755 palette-edge
+    chmod +x palette-edge
     ```
 
 3.  Use the following command to move the palette-edge binary to the **/usr/local/bin** directory to make the binary
@@ -122,7 +122,7 @@ Use the following instructions on your Linux machine, which this guide refers to
     └─────────────────────────────────┘
     ```
 
-5.  Set the Spectro Cloud API key as an environment variable by issuing the following command. Replace the
+5.  Set the Palette API key as an environment variable by issuing the following command. Replace the
     `[USE-YOUR-API-KEY_HERE]` placeholder with your API key. The Palette Edge CLI will use this API key to authenticate
     with Palette. Once authenticated, the Palette Edge CLI can interact with your Palette account.
 

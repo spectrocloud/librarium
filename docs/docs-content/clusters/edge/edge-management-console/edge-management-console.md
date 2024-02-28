@@ -46,7 +46,7 @@ EMC also allows you to configure HTTP proxy for your Edge host.
 
 - [Configure HTTP Proxy in Edge Management Console](./host-management/configure-proxy.md)
 
-- [Reset Edge Host to Factory Default](./host-management/reset-factory-default.md)
+- [Reset Edge Host to Factory Default](./host-management/reset-reboot.md)
 
 ## Branding
 

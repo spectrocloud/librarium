@@ -149,7 +149,8 @@ Installer ISO, you can provision a cluster using the images in your content bund
 image registry.
 
 If you do not include content bundle in your Edge Installer ISO, you can still build content bundles and upload them to
-a disconnected Edge host instance via the Edge Management Console. For more information, refer to
+a disconnected Edge host instance via the
+[Edge Management Console](../../edge-management-console/edge-management-console.md). For more information, refer to
 [Upload Content Bundle](../../edge-management-console/cluster-management/upload-content-bundle.md).
 
 8. Refer to [Build Content Bundle](../build-content-bundle.md) to learn how to build content bundles for your ISO image.

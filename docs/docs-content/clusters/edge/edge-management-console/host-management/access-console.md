@@ -22,8 +22,6 @@ This page guides you through how access the console, and log in, and manage your
 
 - An Edge host installed with Edge Installer 4.3 or later.
 
-- The Edge Installer contains a content bundle that has the Harbor Edge-Native Config pack.
-
 - The Edge host does not have a connection to a Palette instance and the installation is conducted with the
   `installationMode` parameter set to `airgap`. For more information, refer to
   [Installer Configuration](../../edge-configuration/installer-reference.md).

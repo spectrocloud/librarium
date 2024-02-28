@@ -28,12 +28,22 @@ Installer ISO and provider images individually.
 
 - [Build Installer ISO](./palette-canvos//build-installer-iso.md).
 
-If you want your Edge host to have preloaded content and be able to create clusters using the preloaded content, as
-opposed to pulling content from external registries during cluster deployment, refer to the following guides:
+If you want your Edge host to have preloaded content and be able to create clusters using the preloaded content, you
+build a content bundle and build the content bundle into your Edge Installer ISO. Building preloaded content into your
+ISO allows you to create clusters without a connection to a Palette instance. Refer to the following guides to build
+Edge Artifacts with content bundles:
 
 - [Build Content Bundle](./build-content-bundle.md)
 
 - [Build Edge Artifacts with Content Bundles](./palette-canvos/build-artifacts.md)
+
+The following table lists the combination of our guides you can follow to build Edge artifacts with or without preloaded
+content.
+
+| Edge Artifacts have preloaded content? | Option 1                                                                                                                                                                                  | Option 2                                                                                                                             |
+| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| No                                     | [Build Provider Images](./palette-canvos//build-provider-images.md) + [Build Installer ISO](./palette-canvos//build-installer-iso.md)                                                     | [Build Edge Artifacts](./palette-canvos/palette-canvos.md)                                                                           |
+| Yes                                    | [Build Provider Images](./palette-canvos//build-provider-images.md) + [Build Installer ISO](./palette-canvos//build-installer-iso.md) + [Build Content Bundle](./build-content-bundle.md) | [Build Content Bundle](./build-content-bundle.md) + [Build Edge Artifacts with Content Bundles](./palette-canvos/build-artifacts.md) |
 
 ## Edge Artifacts
 
