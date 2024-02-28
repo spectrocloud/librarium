@@ -14,25 +14,26 @@ access the admin panel. The passkey feature supports both virtual passkey and ph
 
 ## Password Requirements and Security
 
-Palette VerteX passwords are hashed, salted and stored inside the internal system database. Each password is hashed with
-PBKDF2 using SHA512 with an iteration count of 210,000. The salt is 32 bytes long.
+Palette VerteX passwords are hashed and salted, the cryptographic key value of the password is stored inside the
+internal system database. The cryptographic key is created through Password Based Key Derivation Function 2 (PBKDF2)
+using SHA512 with an iteration count of 210,000. The salt is 32 bytes long.
 
-All users are required to set a password that complies with the following password policy:
+All system administrators are required to set a password that complies with the following password policy:
 
-- The password must be at least 8 characters long.
+- The password must be at least 14 characters long.
 - The password must contain at least one uppercase letter.
 - The password must contain at least one lowercase letter.
 - The password must contain at least one digit.
 - The password must contain at least one special character.
 - The password cannot be the same as the previous password.
 
-Additionaly, System administrators can manage the [password blocklist](./password-blocklist.md) to prevent users from
+Additionaly, system administrators can manage the [password blocklist](./password-blocklist.md) to prevent users from
 using common or weak passwords. The password blocklist is a list of passwords that are not allowed to be used by users
 when setting or updating their passwords. The password blocklist is enforced when users set or update their passwords.
 
-All users are allowed a maximum of five failed login attempts. After five failed login attempts, the user account will
-be placed in a temporary suspended state for a duration of 15 minutes. Upon expiration of the 15 minutes, the user can
-try to log in again.
+All system administrators are allowed a maximum of five failed login attempts. After five failed login attempts, the
+user account will be placed in a temporary suspended state for a duration of 15 minutes. Upon expiration of the 15
+minutes, the user can try to log in again.
 
 Use the following sections below to learn how to manage user credentials.
 
