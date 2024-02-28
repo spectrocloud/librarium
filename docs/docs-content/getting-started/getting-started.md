@@ -10,9 +10,16 @@ tags: ["getting-started"]
 
 This page gives an overview of how to get started with Spectro Cloud Palette and begin leveraging its Kubernetes
 full-stack management at scale. Palette's unique capabilities provide end-to-end declarative cluster management, cluster
-monitoring and reconciliation, as well as adherence to the highest security standards. It provides support for public
-cloud providers, data centers, bare metal and edge, so you can use Palette no matter the complexity of your production
-environments.
+monitoring and reconciliation, as well as enterprise-grade security.
+
+Check out the following short video for an overview of some the the key functionality that Palette provides. Spectro
+Cloud Palette provides developers and platform engineers with complete control of their Kubernetes clusters. It provides
+support for public cloud providers, data centers, bare metal and edge, so you can use Palette no matter the complexity
+or location of your production environments.
+
+<YouTube url="https://www.youtube.com/embed/-oo93ZC0vKs" title="Spectro Cloud | Get to know us" />
+
+<br />
 
 The first step towards adopting Palette in your organization is to
 [create a login](https://www.spectrocloud.com/get-started). The
