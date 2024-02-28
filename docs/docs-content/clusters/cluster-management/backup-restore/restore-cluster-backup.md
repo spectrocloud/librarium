@@ -25,8 +25,6 @@ provision persistent volumes dynamically. When restoring a backup with persisten
 in the destination cluster. Storage classes in the destination cluster must match the storage classes in the source
 cluster.
 
-<br />
-
 ### Default Storage Class
 
 When you create a cluster profile, Palette _usually_ creates a default storage class called `spectro-storage-class`. In
@@ -36,8 +34,6 @@ does not create a default storage class. For example, when you create a cluster 
 create a storage class by default. In this scenario, you can define a custom storage class in the cluster profile or
 create one after deploying the cluster.
 
-<br />
-
 ### Identify Storage Classes
 
 Below are different methods to identify the storage classes of your source and destination clusters.
@@ -46,23 +42,21 @@ You can review the cluster profile's Container Storage Interface (CSI) layer con
 the storage classes, you will find them within the `storageClasses` attribute. Below is an example of a CSI YAML that
 defines two storage classes, `spectro-storage-class` and `addon-storage-class`.
 
-<br />
-
-```yaml
-storageClasses:
-  - name: spectro-storage-class
-    annotations:
-      storageclass.kubernetes.io/is-default-class: "true"
-      type: "gp2"
-  - name: addon-storage-class
-```
+    ```yaml
+    storageClasses:
+      - name: spectro-storage-class
+        annotations:
+          storageclass.kubernetes.io/is-default-class: "true"
+          type: "gp2"
+      - name: addon-storage-class
+    ```
 
 Another method to identify the storage classes in the destination cluster is to use the kubectl CLI. If you have access
 to the destination cluster, you can issue the following command to view a list of storage classes.
 
-```bash
-kubectl get storageclasses --all-namespaces
-```
+    ```bash
+    kubectl get storageclasses --all-namespaces
+    ```
 
 Review the output from the above command. If the output contains the storage classes you need, you can proceed with the
 restore operation. Otherwise, you can create the required storage classes in the destination cluster.
@@ -89,7 +83,8 @@ backup. To learn more about the restore operation, refer to the Velero
 
   :::warning
 
-  If the source cluster is unavailable in Palette, you cannot restore its backup.
+  If the source cluster is unavailable in Palette, you cannot restore its backup through the Palette user interface.
+  Reach out to our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com) for additional guidance.
 
   :::
 
@@ -124,7 +119,7 @@ Use the following instructions in Palette to restore a backup to a destination c
 
 6. Click on the **Restore Backup** button at the bottom, as highlighted in the screenshot below.
 
-![A screenshot highlighting the details of a specific backup.](/clusters_cluster-management_backup-restore_restore.png)
+   ![A screenshot highlighting the details of a specific backup.](/clusters_cluster-management_backup-restore_restore.png)
 
 7. In the restore operation wizard, select the destination cluster where you want to restore the backup. For example,
    you can select the current or a different cluster. You can initiate a restore operation on any destination cluster in
@@ -134,7 +129,7 @@ Use the following instructions in Palette to restore a backup to a destination c
 
 You can include specific namespaces, Persistent Volumes (PVs), and cluster-scoped resources.
 
-![A screenshot highlighting the restore operation configurations.](/clusters_cluster-management_backup-restore_confirm-restore.png)
+    ![A screenshot highlighting the restore operation configurations.](/clusters_cluster-management_backup-restore_confirm-restore.png)
 
 8. Review the restore operation configurations, and click on the **Confirm Restore** button at the bottom.
 
@@ -158,7 +153,7 @@ Use the following steps to validate restoring a cluster backup.
    timestamp, source cluster, and the backup name for each restore operation you performed for the current cluster. The
    screenshot below shows an example restore operation.
 
-![A screenshot highlighting the restoration status for the destination cluster.](/clusters_cluster-management_backup-restore_verify-restore.png)
+   ![A screenshot highlighting the restoration status for the destination cluster.](/clusters_cluster-management_backup-restore_verify-restore.png)
 
 You restored the backup successfully when the backup status displays _Completed_.
 

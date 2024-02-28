@@ -110,8 +110,8 @@ Use the instructions below to create a cluster group.
 
    :::
 
-   To enable virtual clusters for OpenShift, review the OpenShit
-   [instructions below](#enable-virtual-cluster-for-openshift).
+   To enable virtual clusters for OpenShift, review the OpenShift
+   [instructions below](#enable-virtual-clusters-for-openshift).
 
 8. Click **Next** to complete the cluster group creation process.
 

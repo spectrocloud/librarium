@@ -51,8 +51,6 @@ Select the registration method that best fits your organizational needs and revi
 
 - [Manual Registration](#manual-registration)
 
-- [QR Code Registration](#qr-code-registration)
-
 ### Auto Registration
 
 You can automate the registration process by using registration tokens.

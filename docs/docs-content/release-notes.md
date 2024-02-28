@@ -9,6 +9,86 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
+## Feb 26, 2024 - Release 4.2.13
+
+### Bug Fixes
+
+- Fixed an issue where AWS VPC CNI would not work with Kubernetes 1.28 when using AWS EKS.
+
+- Fixed an issue with the Kubernetes Dashboard cookies and internal Palette ingress configuration that caused the
+  Kubernetes Dashboard to fail to load.
+
+- Fixed an issue with MicroK8s failing to launch pods due to a mismatch in node affinity labels.
+
+- Resolved an issue with MAAS clusters failing to deploy when the default image endpoint is not set in an airgap
+  environment
+
+- Resolved the remaining MAAS node upgrade issues 4.2.12 did not address.
+
+## Feb 16, 2024 - Release 4.2.12
+
+### Bug Fix - IaaS Cluster Repaves Causing Cluster Downtime
+
+#### Affected services
+
+IaaS clusters in Palette 4.2.x prior to 4.2.12, including Palette SaaS, self-hosted Palette/VerteX, as well as dedicated
+instances. Affected cluster types include the following:
+
+- AWS IaaS (not EKS)
+- Azure IaaS (not AKS)
+- Google IaaS (not GKE)
+- MAAS
+- vSphere
+- OpenStack
+
+Managed Kubernetes clusters on EKS, GKE and AKS are not affected. Edge clusters are not affected.
+
+#### Issue Summary
+
+We identified an issue related to cluster repaves in Palette 4.2.x. During a cluster upgrade that required a repave, the
+Palette Agent deployed within the clusters would delete all the worker nodes within a worker pool before provisioning
+new worker nodes. This results in the worker pool being down during an upgrade. All workloads within the pool will be
+offline during the upgrade.
+
+If the cluster is configured to enable updating worker pools in parallel, then this can result in all services on the
+cluster becoming unavailable.
+
+#### Customer Guidance
+
+This issue has been addressed in Palette 4.2.12 and its corresponding Palette Agent version 4.2.4. Use the following
+steps to identify whether your cluster uses an affected agent version.
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+2. From the left **Main Menu**, click on **Clusters**. Select your cluster to access the cluster details page.
+3. At the bottom of the cluster details page, the Palette agent version used by your cluster is displayed. If your Agent
+   version is any of the following versions, your cluster is still susceptible to this issue: 4.2.0, 4.2.1, 4.2.2,
+   4.2.3.
+
+:::warning
+
+Ensure that you do not initiate any cluster repaves as long as you are using an affected agent version. Changes in the
+OS or the Kubernetes layer would initiate an cluster repave attempt. When you get the cluster repave notification,
+reject the repave.
+
+:::
+
+**If you are not using an affected agent version**, no action is required on your part. If you plan to upgrade to 4.2.x
+in the future, ensure you upgrade to a version of Palette that's 4.2.12 or later.
+
+**If you are using an affected agent version**, first make sure that your Palette instance version is 4.2.12 or newer.
+Once you have confirmed your Palette version, unpause Agent upgrades for your cluster if they are paused. To learn how
+to toggle agent upgrades, refer to
+[Pause Platform Upgrades](./clusters/cluster-management/platform-settings/pause-platform-upgrades.md). In 5 - 10
+minutes, the Palette agent will upgrade to a new version that includes the bug fix. If the agent does not upgrade for an
+extended period of time, contact support@spectrocloud.com.
+
+## February 3, 2024 - Release 4.2.9
+
+### Bug Fixes
+
+- Fixed an issue that caused errors when creating pods after certificate renewals.
+- Resolved image pull errors from the AWS ECR registry.
+
 ## January 25, 2024 - Release 4.2.7
 
 ### Bug Fixes
