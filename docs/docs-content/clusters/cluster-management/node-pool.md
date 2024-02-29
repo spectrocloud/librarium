@@ -143,6 +143,12 @@ You can apply changes to a node pool after a cluster is created and deployed. Yo
 label, node repavement interval, number of compute instances in the node pool and more. To make changes to an active
 cluster's node pools, follow the steps below.
 
+:::warning
+
+If you have enabled Autoscaler for a node pool, you cannot adjust the number of nodes in the pool manually.
+
+:::
+
 ### Prerequisites
 
 - An active cluster in Palette.

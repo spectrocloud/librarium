@@ -5,6 +5,7 @@ import { faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
 import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 import { faHdd } from '@fortawesome/free-solid-svg-icons';
 import { faCloudArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faNetworkWired } from '@fortawesome/free-solid-svg-icons';
 import { faServer } from '@fortawesome/free-solid-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faWarehouse } from '@fortawesome/free-solid-svg-icons';
@@ -26,6 +27,7 @@ export const fontAwesomeIcons = {
   "database": faDatabase,
   "hdd": faHdd,
   "cloud-arrow-down": faCloudArrowDown,
+  "network-wired": faNetworkWired,
   "server": faServer,
   "users": faUsers,
   "warehouse": faWarehouse,
