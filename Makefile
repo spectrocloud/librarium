@@ -29,7 +29,7 @@ deep-clean: ## Clean all artifacts
 clean-versions: ## Clean Docusarus content versions
 	@echo "cleaning versions"
 	rm -rf api_versions.json versions.json versioned_docs versioned_sidebars api_versioned_sidebars api_versioned_docs
-	git checkout -- docusaurus.config.js
+	git checkout -- docusaurus.config.js static/robots.txt
 
 ##@ npm Targets
 
