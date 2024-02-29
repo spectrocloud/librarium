@@ -1,5 +1,11 @@
 #!/bin/bash
 
+###################################################################################################
+# This script is used to generate the robots.txt file for Spectro Cloud Docs.                     
+# The script uses the auto-generated versions.json file to generate the Disallow statements for the robots.txt file.
+# This script is invoked by the versions.sh script.
+###################################################################################################      
+
 set -euo pipefail
 
 versionFile=$1
@@ -17,7 +23,7 @@ echo "Disallowed versions: ${disallowed_versions[@]}"
 # Append User-agent statement to the robots.txt file
 echo "User-agent: *" >> robots.txt
 
-# Loop through each version and append the modified Disallow statements to the robots.txt file
+
 for version in "${disallowed_versions[@]}"; do
     # Escape forward slashes for sed
     version_escaped=$(echo "$version" | sed 's/\//\\\//g')
@@ -28,7 +34,7 @@ done
 # Append the Allow statement to the robots.txt file
 echo "Allow: /$" >> robots.txt
 
-# Append the Sitemap statement to the robots.txt file
+# Append the sitemap statement to the robots.txt file
 echo "Sitemap: https://docs.spectrocloud.com/sitemap.xml" >> robots.txt
 
 # Overwrite the existing robots.txt file with the newly generated one
