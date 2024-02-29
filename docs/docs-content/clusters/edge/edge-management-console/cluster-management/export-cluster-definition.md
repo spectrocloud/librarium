@@ -40,6 +40,22 @@ host. A cluster definition contains one or more cluster profiles, including the 
 6. Use the [Download Cluster Definition API] to download the cluster definition. The endpoint location is
    `POST https://<palette-instance-url>/v1/spectroclusters/spc/download`.
 
+   The endpoint takes a few header arguments and a request body.
+
+   | Header Parameter | Description                                                                                                      |
+   | ---------------- | ---------------------------------------------------------------------------------------------------------------- |
+   | `ProjectUid`     | The unique ID of the project where the profiles are located.                                                     |
+   | `Content-Type`   | You must set the value of this header to `application/json` to indicate that your payload is in the JSON format. |
+   | `ApiKey`         | The value of your Palette API key.                                                                               |
+
+   In the request body, you must provide the ID of the cluster profiles to include in the cluster definition.
+
+   | Parameter        | Description                                                                                                                                                                                                                    |
+   | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | `metadata`       | You must set the value of this field to `{"name":"cluster-profiles"}`.                                                                                                                                                         |
+   | `spec.cloudType` | You must set the value of this field to `edge-native`.                                                                                                                                                                         |
+   | `spec.profiles`  | Provide a list of cluster profiles to include in the cluster definition. In side the list are objects representing the cluster profiles. Each object must have the required key `uid`, which is the ID of the cluster profile. |
+
    The following curl command is an example.
 
    ```shell
@@ -56,16 +72,13 @@ host. A cluster definition contains one or more cluster profiles, including the 
            "profiles":
                [
                    {
-                       "uid": "65c90XXXXX770dae35",
-                       "packs": []
+                       "uid": "65c90XXXXX770dae35"
                    },
                    {
-                       "uid": "65c91XXXXa9fe4f51c",
-                       "packs":[]
+                       "uid": "65c91XXXXa9fe4f51c"
                    }
                ]
        }
-
    }
    ```
 

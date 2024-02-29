@@ -14,6 +14,10 @@ networks such as the internet.
 You can configure your Edge hosts to use an HTTP/HTTPS proxy for secure internet access from Edge Management Console
 (EMC).
 
+:::preview
+
+:::
+
 ## Prerequisites
 
 - An Edge host deployed with Edge Installer 4.3 or later.

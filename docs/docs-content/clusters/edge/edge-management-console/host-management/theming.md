@@ -11,6 +11,10 @@ Palette offers the option to customize the Edge Management Console web interface
 bar as well as using your own logo. You can do this before deployment during the EdgeForge process to standardize the
 look feel of the console for all Edge hosts of your organization.
 
+:::preview
+
+:::
+
 ## Prerequisites
 
 - The theme customization process prior to deployment is based on the EdgeForge process. We recommend that you
@@ -61,7 +65,10 @@ look feel of the console for all Edge hosts of your organization.
 
 4. In the directory, create a file named **customizations.json**.
 
-5. Populate the file with the following schema:
+5. Upload a logo you'd like to use for EMC. The logo image must be a JPG, PMG or SVG image that's smaller than 2 MB. If
+   you don't upload a logo, EMC will use the Spectro Cloud logo.
+
+6. Populate the file with the following schema:
 
    ```json
    {
@@ -75,7 +82,7 @@ look feel of the console for all Edge hosts of your organization.
 
    To do: a screenshot demoing what each property does.
 
-6. Follow the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide from step 3
+7. Follow the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide from step 3
    onwards to finish the EdgeForge process.
 
 ### Validate

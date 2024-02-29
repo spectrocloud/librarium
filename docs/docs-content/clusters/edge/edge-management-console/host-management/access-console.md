@@ -31,6 +31,8 @@ This page guides you through how access the console, and log in, and manage your
 
 - Network access to the Edge host's port where EMC is exposed. The default port is 5080.
 
+- Credentials to log in to the EMC. Any OS user can be used to log into EMC.
+
 ### Instructions
 
 1. Ensure the Edge host is powered on.
@@ -71,7 +73,7 @@ A successful sign-out takes you back to the login page. You need to enter your c
 
 - Network access to the Edge host's port where EMC is exposed. Default is port 5080.
 
-- You have the existing credentials for EMC.
+- Credentials to log in to the EMC. Any OS user can be used to log into EMC.
 
 ### Instructions
 

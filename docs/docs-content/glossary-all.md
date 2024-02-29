@@ -112,6 +112,12 @@ Clusters on such edge appliances from its SaaS-based management console. Besides
 also provides end-to-end management of these clusters through operations such as scaling, upgrades, reconfiguration,
 etc.
 
+## Edge Management Console
+
+Edge Management Console (EMC) is a browser-based tool that allows you to manage your Edge host and perform tasks such as
+creating local clusters, upload content bundles, and configure network settings. EMC is a Tech Preview feature and
+should not be used in production workloads.
+
 ## Helm Charts
 
 Helm Charts are Kubernetes YAML manifests that describe a related set of Kubernetes resources into a single package.

@@ -40,16 +40,20 @@ Refer to the follow resources to learn how to use EMC to manage your disconnecte
 
   - [Export Cluster Definition](./cluster-management/export-cluster-definition.md)
 
+## Cluster Management
+
+- [Upload Content Bundles](./cluster-management/upload-content-bundle.md)
+
+- [Export Cluster Definition](./cluster-management/export-cluster-definition.md)
+
+- [Create Local Cluster](./cluster-management/create-cluster.md)
+
 ## Host Management
 
-EMC also allows you to configure HTTP proxy for your Edge host.
+- [Access Edge Management Console](./host-management/access-console.md)
 
 - [Configure HTTP Proxy in Edge Management Console](./host-management/configure-proxy.md)
 
 - [Reset Edge Host to Factory Default](./host-management/reset-reboot.md)
-
-## Branding
-
-During the EdgeForge process, you can use CSS to adjust the look and feel of the EMC console.
 
 - [Customize Edge Management Console Theme](./host-management/theming.md)

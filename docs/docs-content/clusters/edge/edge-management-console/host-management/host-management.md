@@ -11,6 +11,10 @@ Edge Management Console allows you to manage your Edge host. You can configure u
 your Edge host to factory default. You can also update credentials, update EMC's branding and configure HTTP proxy for
 your Edge host from EMC.
 
+:::preview
+
+:::
+
 Refer to the following resources to learn how to configure your Edge host using EMC:
 
 - [Access EMC](./access-console.md)

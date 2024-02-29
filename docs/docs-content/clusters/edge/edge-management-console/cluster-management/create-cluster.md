@@ -10,6 +10,10 @@ tags: ["edge"]
 You can create and manage a single-node cluster locally from the Edge Management Console (EMC). This page guides you
 through how to create a cluster using Edge Management Console.
 
+:::preview
+
+:::
+
 ## Limitations
 
 - You can only create single node clusters consisting solely of the Edge host you create the cluster from. You cannot
@@ -19,10 +23,11 @@ through how to create a cluster using Edge Management Console.
 
 - Network access to the Edge device's port where EMC is exposed. The default port is 5080.
 
-- Credentials to log into EMC.
+- Credentials to log into EMC. Any OS user can be used to log in to EMC.
 
-- You have uploaded the necessary software artifacts to the Edge host. For more information, refer to
-  [Upload Content Bundle](./upload-content-bundle.md).
+- You have uploaded the necessary software artifacts to the Edge host or included the artifacts in the Edge Installer
+  ISO during EdgeForge. For more information, refer to [Upload Content Bundle](./upload-content-bundle.md) and
+  [Build Edge Artifacts with Content Bundle](../../edgeforge-workflow/palette-canvos/build-artifacts.md).
 
 ## Create Local Cluster
 

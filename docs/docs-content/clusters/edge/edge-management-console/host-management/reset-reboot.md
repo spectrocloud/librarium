@@ -1,13 +1,17 @@
 ---
 sidebar_label: "Reboot, Shutdown, and Reset Edge Host"
 title: "Reboot, Shutdown, and Reset Edge Host"
-description: "Instructions for resetting Edge Host to factory default."
+description: "Instructions for rebooting, shutting down, and resetting Edge Host to factory default."
 hide_table_of_contents: false
 sidebar_position: 32
 tags: ["edge"]
 ---
 
 You can reboot, shut down and reset an Edge host from Edge Management Console (EMC).
+
+:::preview
+
+:::
 
 ## Reboot Edge Host
 
@@ -18,7 +22,7 @@ rebooting.
 
 - Network access to EMC. Default port is 5080.
 
-- Credentials to log into the EMC.
+- Credentials to log in to the EMC. Any OS user can be used to log into EMC.
 
 ### Instructions
 
@@ -50,7 +54,7 @@ This includes content bundles that were built into the ISO image during EdgeForg
 
 - Network access to EMC. Default port is 5080.
 
-- Credentials to log into the EMC.
+- Credentials to log in to the EMC. Any OS user can be used to log into EMC.
 
 ### Instructions
 
@@ -77,7 +81,7 @@ You can shut down the Edge host from EMC.
 
 - Network access to EMC. Default port is 5080.
 
-- Credentials to log into the EMC.
+- Credentials to log in to the EMC. Any OS user can be used to log into EMC.
 
 ### Instructions
 
