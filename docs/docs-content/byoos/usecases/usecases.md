@@ -19,6 +19,12 @@ not covered here, refer to the [Create Images with Image Builder](../image-build
 
 :::
 
+## Platforms
+
+- [VMware vSphere](./vmware/vmware.md)
+
 ## Resources
 
-- [RHEL and Konvoy](./konvoy.md)
+- [VMware vSphere](./vmware/vmware.md)
+
+- [Create Images with Image Builder](../image-builder.md)
