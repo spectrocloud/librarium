@@ -165,7 +165,7 @@ Creating a content bundle provides several benefits that may address common use 
    | Field                         | Description                                                                                         |
    | ----------------------------- | --------------------------------------------------------------------------------------------------- |
    | `type`                        | The type of credential, which is `service_account` for Google Cloud service accounts.               |
-   | `project_id`                  | The project ID associated with your Google Cloud project, e.g., `spectro-images`.                   |
+   | `project_id`                  | The project ID associated with your Google Cloud project. For example, `spectro-images`.            |
    | `private_key_id`              | A unique identifier for the private key associated with the service account.                        |
    | `private_key`                 | The private key that is used to authenticate to Google Cloud services, encapsulated in a PEM block. |
    | `client_email`                | The email address associated with the service account, used for authentication.                     |

@@ -7,8 +7,9 @@ sidebar_position: 32
 tags: ["edge"]
 ---
 
-When you boot up an Edge host for the first time after installation, you will be prompted to configure the Edge host and
-its network environment. This includes the configuration of an OS user, machine hostname, IP address, and DNS server.
+When you boot up an Edge host for the first time after installation, if you enabled initial configuration in the user
+data, you will be prompted to configure the Edge host and its network environment in a terminal user interface (TUI).
+This includes the configuration of an OS user, machine hostname, IP address, and DNS server.
 
 You may already have specified some of these configurations in the **user-data** file in the EdgeForge process or have
 supplied them with site-specific **user-data**, and can either keep them as they are or update them during this step.
@@ -16,13 +17,20 @@ For more information about EdgeForge and site user data, refer to
 [EdgeForge Workflow](../edgeforge-workflow/edgeforge-workflow.md) and
 [Apply Site User Data](./site-installation/site-user-data.md).
 
+:::warning
+
+If you are upgrading to 4.3 from an older version, the initial configuration does not get triggered. If you want to
+perform the setup, you can issue the command `spectro-edge-console` in the terminal to trigger it manually.
+
+:::
+
 ## Prerequisite
 
 - An Edge host installed with Edge Installer 4.3 or later. The Edge host must be booting up for the first time since
   installation.
 
-- The Edge installer ISO used to install Palette on the Edge host must not contain user data that skips the initial
-  configuration.
+- The Edge installer ISO used to install Palette on the Edge host must
+  [enable initial configuration](../edge-configuration/installer-reference.md#initial-configuration).
 
 - A keyboard or another input device connected to the Edge host.
 

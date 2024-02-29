@@ -79,13 +79,13 @@ stylus:
 
 ### Initial Configuration
 
-You can configure the Edge Installer to skip the initial configuration when you boot up the Edge host for the first
-time. For more information about initial configuration, refer to
+You can configure the Edge Installer to enable the initial configuration in the terminal user interface (TUI) when you
+boot up the Edge host for the first time. For more information about initial configuration, refer to
 [Initial Edge Host Configuration](../site-deployment/initial-setup.md).
 
-| Parameter | Description                                                          |
-| --------- | -------------------------------------------------------------------- |
-| `skipTui` | Skips the initial Edge host configuration. Default value is `false`. |
+| Parameter    | Description                                                           |
+| ------------ | --------------------------------------------------------------------- |
+| `includeTui` | Enable the initial Edge host configuration. Default value is `false`. |
 
 ### Edge Management Console
 

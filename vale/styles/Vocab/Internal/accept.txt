@@ -196,3 +196,5 @@ vApp
 PCGs
 vCPU
 vCPUs
+preload
+preloaded
