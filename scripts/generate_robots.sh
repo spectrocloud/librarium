@@ -2,8 +2,10 @@
 
 set -euo pipefail
 
+versionFile=$1
+
 # Read the JSON array values into a Bash array
-disallowed_versions=($(jq -r '.[]' ../versions.json))
+disallowed_versions=($(jq -r '.[]' $versionFile))
 
 # Echo contents of the disallowed_versions array
 echo "Disallowed versions: ${disallowed_versions[@]}"

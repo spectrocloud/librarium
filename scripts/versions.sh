@@ -191,7 +191,7 @@ echo "Versioned documentation generated successfully"
 echo "Create the robots.txt file"
 
 # Invoke the generated_robots.sh script
-$baseDir/scripts/generate_robots.sh
+$baseDir/scripts/generate_robots.sh $baseDir/versions.json
 
 if [ $? -ne 0 ]; then
   echo "Error generating the robots.txt file"
