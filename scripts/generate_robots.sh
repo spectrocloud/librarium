@@ -3,6 +3,7 @@
 set -euo pipefail
 
 versionFile=$1
+destinationFolder=$2
 
 # Read the JSON array values into a Bash array
 disallowed_versions=($(jq -r '.[]' $versionFile))
@@ -31,4 +32,4 @@ echo "Allow: /$" >> robots.txt
 echo "Sitemap: https://docs.spectrocloud.com/sitemap.xml" >> robots.txt
 
 # Overwrite the existing robots.txt file with the newly generated one
-mv robots.txt ../static/robots.txt
+mv robots.txt $destinationFolder/robots.txt
