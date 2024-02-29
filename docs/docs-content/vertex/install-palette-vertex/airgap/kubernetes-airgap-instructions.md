@@ -54,8 +54,6 @@ Each prerequisite is required for a successful installation.
 
   - [Caddy](https://caddyserver.com/)
 
-  <br />
-
   :::warning
 
   Take the necessary steps to secure your file server and ensure it can automatically recover from a failure. The file
