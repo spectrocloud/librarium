@@ -30,16 +30,25 @@ following diagram outlines the major pre-install steps for an airgap installatio
 
 ![An architecture diagram outlining the five different install phases](/enterprise-version_air-gap-repo_overview-order-diagram.png)
 
-1. Download the airgap setup binary from the support team. The airgap setup binary is a self-extracting archive that
-   contains the Palette platform manifests, images, and required packs. The airgap setup binary is a one-time use binary
-   for uploading VerteX images and packs to your OCI registry. You will not use the airgap setup binary again after the
-   initial installation.
+1. Download the airgap setup binary from the URL provided by the support team. The airgap setup binary is a
+   self-extracting archive that contains the Palette platform manifests, images, and required packs. The airgap setup
+   binary is a one-time use binary for uploading VerteX images and packs to your OCI registry. You will not use the
+   airgap setup binary again after the initial installation. This step must be completed in an environment with internet
+   access.
 
-2. Extract the manifest content from the airgap setup binary. The manifest content is hosted on a file server.
+2. Move the airgap setup binary to the airgap environment. The airgap setup binary is used to extract the manifest
+   content and upload the required images and packs to your private OCI registry. Start the airgap setup binary in a
+   Linux Virtual Machine (VM).
 
-3. Install VerteX using the Palette CLI. The Palette CLI is used to install VerteX into your vSphere environment.
+3. The airgap script will push the required images and packs to your private OCI registry.
 
-4. Configure your VerteX environment.
+4. Extract the manifest content from the airgap setup binary. The manifest content must be hosted on a web server that
+   is accessible from the airgap environment. You can use the same Linux VM from step 2 to host the manifest content or
+   use a different web server.
+
+5. Install Palette using the Palette CLI or the Kubernetes Helm chart.
+
+6. Configure your VerteX environment.
 
 ## Get Started
 
