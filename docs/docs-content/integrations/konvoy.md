@@ -26,7 +26,7 @@ then use it to create a cluster.
 
 ## Prerequisites
 
-- A minimum of 4 CPU and 4GB Memory.
+- A minimum of 4 CPU and 4 GB Memory.
 
 - Users or groups mapped to a Kubernetes RBAC role.
 
@@ -72,7 +72,7 @@ the Konvoy image builder project.
 
 Select Konvoy as the Kubernetes distribution when choosing a Kubernetes distribution in the cluster profile.
 
-![A view of the cluster profile kubernetes selection screen](/byoos_vmware_konvoy_cluster-profile-view.png)
+![A view of the cluster profile Kubernetes selection screen](/byoos_vmware_konvoy_cluster-profile-view.png)
 
 </TabItem>
 <TabItem label="Deprecated" value="deprecated">
