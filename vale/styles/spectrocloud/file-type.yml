@@ -12,11 +12,11 @@ swap:
   png file: PNG file
   py file: Python file
   svg file: SVG file
-  TAR file: tar file
+  tar file: TAR file
   tf file: Terraform file
-  TGZ file: tgz file
+  tgz file: TGZ file
   txt file: text file
   yaml file: YAML file
   ZIP file: zip file
-  ZST file: zst file
+  zst file: ZST file
 
