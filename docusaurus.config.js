@@ -177,6 +177,19 @@ const config = {
             // Customize API MDX with mustache template
             hideSendButton: true,
           },
+          emc: {
+            specPath: "docs/api-content/api-docs/edge-v1/emc-api.json",
+            outputDir: "docs/api-content/api-docs/edge-v1",
+            downloadUrl:
+              "https://github.com/spectrocloud/librarium/blob/master/docs/api-content/api-docs/palette-apis.json",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+            template: "api.mustache",
+            // Customize API MDX with mustache template
+            hideSendButton: true,
+          },
         },
       },
     ],
