@@ -22,11 +22,6 @@ authentication methods to register your cloud account.
 
 - An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
 
-* An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
-  provision compute, network, and security resources in the desired regions.
-
-* An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
-
 ## Add Azure Cloud Account
 
 Use the following steps to add an Azure or Azure Government account in Palette or Palette VerteX.
