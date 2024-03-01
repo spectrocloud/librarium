@@ -12,6 +12,16 @@ private registry during deployment. You can configure your cluster to pull image
 cluster creation and cluster updates. To configure a cluster to pull images from a private image registry, provide the
 registry URL and the credentials needed to authenticate with the registry in the cluster profile.
 
+:::tip
+
+You can use the [Harbor Edge-Native Config](../../../integrations/harbor-edge.md) pack to configure a local registry in
+your Edge cluster. After the initial download of artifacts from the private registry, the cluster will redirect
+subsequent image pulls to the local Harbor registry. This allows you to save network bandwidth and provision clusters
+without a connection to external networks. For more information, refer to
+[Enable Local Harbor Registry](../networking/local-registry.md).
+
+:::
+
 ## Limitations
 
 - A cluster cannot pull images from more than one private registry.

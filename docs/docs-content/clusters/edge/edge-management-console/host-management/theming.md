@@ -81,6 +81,13 @@ look feel of the console for all Edge hosts of your organization.
    }
    ```
 
+   The sidebar color controls the color of the sidebar. This is also the color of the background in the EMC login
+   screen. We suggest you choose a color that contrasts well against your logo as the logo as the color will serve as
+   the background for your logo. The **brand** color controls the color of buttons and checkboxes in the UI. The
+   following image displays the default logo, brand, and sidebar color.
+
+   ![A screenshot of the Edge Management Console showing the elements controlled by the color properties and the location of the logo](/cluster_edge_emc_theming.png)
+
 7. Compress the UI directory to a TAR file. The file must be named **ui.tar**.
 
 8. Follow the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide from step 3
