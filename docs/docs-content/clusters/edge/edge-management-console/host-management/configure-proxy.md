@@ -12,7 +12,8 @@ network environment such as most corporate networks. In such environments, you o
 networks such as the internet.
 
 You can configure your Edge hosts to use an HTTP/HTTPS proxy for secure internet access from Edge Management Console
-(EMC).
+(EMC). The proxy server configured through EMC will be retained even after a
+[factory reset](./reset-reboot.md#reset-edge-host-to-factory-default).
 
 :::preview
 

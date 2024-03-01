@@ -35,16 +35,12 @@ By default, devices automatically register during the site installation process 
 is present. Set the parameter `disableAutoRegister` to `true` in the Edge Installer configuration to disable auto
 registration and require manual device registration.
 
-<br />
-
 ```yaml
 stylus:
   site:
     edgeHostToken: MjBhNTQxYzZjZTViNGFhM2RlYTU3ZXXXXXXXXXX
     disableAutoRegister: true
 ```
-
-<br />
 
 Select the registration method that best fits your organizational needs and review the steps to get started.
 

@@ -50,6 +50,13 @@ state right after the [initial configuration](../../site-deployment/initial-setu
 interface (TUI). Reset to factory default removes all workloads, content, and cluster definition from the Edge host.
 This includes content bundles that were built into the ISO image during EdgeForge.
 
+:::info
+
+If you configured HTTP/HTTPS proxy through EMC, the proxy setting will be retained after the factory reset. For more
+information about HTTP proxy, refer to [Configure HTTP Proxy](configure-proxy.md).
+
+:::
+
 ### Prerequisite
 
 - Network access to EMC. Default port is 5080.
