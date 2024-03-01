@@ -1,0 +1,23 @@
+.simpleCardWrapper {
+  min-width: 300px;
+  margin: 8px;
+}
+
+.card,
+.simpleCard {
+  background-color: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-primary);
+  border-radius: 4px;
+  color: var(--ifm-font-color-base);
+}
+
+.simpleCard:hover {
+  box-shadow: 2px 2px 2px 2px var(--ifm-color-primary);
+  cursor: pointer;
+}
+
+// .col,
+// .col--6,
+// .simpleCardCol {
+//   margin: auto;
+// }

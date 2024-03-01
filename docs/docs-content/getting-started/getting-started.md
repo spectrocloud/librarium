@@ -28,16 +28,50 @@ The first step towards adopting Palette in your organization is to
 The Getting Started section introduces you to the concepts and workflows you need to begin using Palette. Explore more
 through the following pages.
 
-- [Introduction to Palette](./introduction.md)
-
-- [Palette Dashboard](./dashboard.md)
-
-- [Cluster Profiles](./cluster-profiles.md)
-
-- [Create a Cluster Profile](./create-cluster-profile.md)
-
-- [Deploy a Cluster](./deploy-k8s-cluster.md)
-
-- [Deploy Cluster Profile Updates](./update-k8s-cluster.md)
-
-- [Deploy a Cluster with Terraform](./terraform.md)
+<SimpleCardGrid 
+  elemsPerRow = "2"  
+  cards={[       
+    {
+      title: "1. Introduction to Palette",
+      description: "Learn about what makes Palette different.",
+      buttonText: "Learn more",
+      relativeURL: "./introduction",
+    },
+    {
+      title: "2. Palette Dashboard", 
+      description: "Tour the Palette Project and Tenant Admin dashboards.",
+      buttonText: "Learn more",
+      relativeURL: "./dashboard",
+    },
+    {
+      title: "3. Cluster Profiles",
+      description: "Learn about Palette Cluster Profiles and Packs.",
+      buttonText: "Learn more",
+      relativeURL: "./cluster-profiles",
+    },
+    {
+      title: "4. Create a Cluster Profile",
+      description: "Learn to create a full Cluster Profile in Palette.",
+      buttonText: "Learn more",
+      relativeURL: "./create-cluster-profile",
+    },
+    {
+      title: "5. Deploy a Cluster",
+      description: "Deploy a Palette host cluster in AWS, Azure or Google Cloud.",
+      buttonText: "Learn more",
+      relativeURL: "./deploy-k8s-cluster",
+    },
+    {
+      title: "6. Deploy Cluster Profile Updates",
+      description: "Learn how to update your clusters using Palette Cluster Profiles.",
+      buttonText: "Learn more",
+      relativeURL: "./update-k8s-cluster",
+    },
+    {
+      title: "7. Deploy a Cluster with Terraform",
+      description: "Learn to deploy a Palette host cluster with Terraform.",
+      buttonText: "Learn more",
+      relativeURL: "./terraform",
+    }
+  ]} 
+/>
