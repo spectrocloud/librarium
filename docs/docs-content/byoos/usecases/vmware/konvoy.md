@@ -31,10 +31,7 @@ Konvoy. Make sure you have met all the prerequisites before you begin.
 - The following software must be installed on the Linux VM:
 
   - [Docker Engine](https://docs.docker.com/engine/install/) version 25.0.0 or later.
-  - [Git](https://git-scm.com/) version 2.30 or later.
-  - [Go](https://golang.org/) version 1.18 or later.
   - [HashiCorp Packer](https://developer.hashicorp.com/packer/) version 1.10.1 or later.
-  - [Make](https://www.gnu.org/software/make/) 4.0 or later.
   - [tar](https://www.gnu.org/software/tar/) or similar tool to extract tarballs.
   - [wget](https://www.gnu.org/software/wget/) or similar tool, such as curl to download files from the internet.
 
@@ -80,9 +77,9 @@ Defaults        !authenticate
 
   :::warning
 
-  Reach out to your VMware administrator if you need assistance with the VMware vSphere template. It's critical you
-  configure the RHEL template correctly to ensure the Konvoy image builder can use it to create the custom RHEL with
-  Konvoy image.
+  Reach out to your VMware administrator if you need assistance with creating the VMware vSphere template. It's critical
+  you configure the RHEL template correctly to ensure the Konvoy image builder can the template to create the custom
+  RHEL with Konvoy image.
 
   :::
 
@@ -189,8 +186,8 @@ instructions on how to build the custom RHEL with Konvoy image.
     </details>
 
 7.  Review the **images/common.yaml** file and modify the file if necessary. The **common.yaml** file is where you
-    specify the Kubernetes version. Refer to the[Konvoy](../../../integrations/konvoy.md) pack reference to learn about
-    supported Konvoy versions.
+    specify the Kubernetes version. Refer to the[Konvoy](../../../integrations/konvoy.md) pack reference page to learn
+    about supported Konvoy versions.
 
     ```yaml hideClipboard {2}
     ---
@@ -332,8 +329,8 @@ instructions on how to build the custom RHEL with Konvoy image.
     </details>
 
 7.  Review the **images/common.yaml** file and modify the file if necessary. The **common.yaml** file is where you
-    specify the Kubernetes version. Refer to the[Konvoy](../../../integrations/konvoy.md) pack reference to learn about
-    supported Konvoy versions.
+    specify the Kubernetes version. Refer to the[Konvoy](../../../integrations/konvoy.md) pack reference page to learn
+    about supported Konvoy versions.
 
     ```yaml hideClipboard {2}
     ---
