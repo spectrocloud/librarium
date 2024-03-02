@@ -2670,7 +2670,7 @@
   ],
   "servers": [
     {
-      "url": "https://api.spectrocloud.com"
+      "url": "https://edge-host-ip:5080"
     }
   ]
 }

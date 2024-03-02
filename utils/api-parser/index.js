@@ -3,7 +3,7 @@ const lodash = require("lodash");
 // Read the content of api.json file
 
 // Function to process a single Swagger file
-function processSwaggerFile(filePath) {
+function processSwaggerFile(filePath, baseUrl) {
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {
       console.error("Error reading the file:", err);
@@ -45,7 +45,7 @@ function processSwaggerFile(filePath) {
 
       jsonData.servers = [
         {
-          url: "https://api.spectrocloud.com",
+          url: baseUrl,
         },
       ];
 
@@ -65,10 +65,10 @@ function processSwaggerFile(filePath) {
 
 // List of Swagger files to process
 const swaggerFiles = [
-  "docs/api-content/api-docs/v1/api.json",
+  { path: "docs/api-content/api-docs/v1/api.json", baseUrl: "https://api.spectrocloud.com" },
   // Add the path to your second Swagger file here
-  "docs/api-content/api-docs/edge-v1/emc-api.json",
+  { path: "docs/api-content/api-docs/edge-v1/emc-api.json", baseUrl: "https://edge-host-ip:5080" },
 ];
 
 // Process each Swagger file
-swaggerFiles.forEach(processSwaggerFile);
+swaggerFiles.forEach((file) => processSwaggerFile(file.path, file.baseUrl));
