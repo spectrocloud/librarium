@@ -30,6 +30,9 @@ then use it to create a cluster.
 
 - Users or groups mapped to a Kubernetes RBAC role.
 
+- Konvoy requires the [BYOOS](./byoos.md) pack to reference the image created through the Konvoy image builder project.
+  Refer to the [Usage](#usage) section for more information.
+
 - Operating System (OS) dependencies as listed in the table.
 
 ### Supported Infrastructure Platforms

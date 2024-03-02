@@ -98,7 +98,7 @@ instructions on how to build the custom RHEL with Konvoy image.
     cd ~/builder
     ```
 
-2.  Download the Konvoud builder release artifact from the GitHub releases page.
+2.  Download the Konvoy builder release artifact from the GitHub releases page.
 
     ```shell
     wget https://github.com/mesosphere/konvoy-image-builder/releases/download/v2.8.5/konvoy-image-bundle-v2.8.5_linux_amd64.tar.gz
@@ -135,7 +135,7 @@ instructions on how to build the custom RHEL with Konvoy image.
     | Parameter                    | Description                                                                                                                        |
     | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
     | `packer.cluster`             | The name of the vSphere cluster to deploy the Packer VM.                                                                           |
-    | `packer.datacenter`          | The name of the vSphere datacenter to deploy the Packer VM.                                                                        |
+    | `packer.datacenter`          | The name of the vSphere Datacenter to deploy the Packer VM.                                                                        |
     | `packer.datastore`           | The name of the vSphere datastore to deploy the Packer VM.                                                                         |
     | `packer.folder`              | The name of the vSphere folder to deploy the Packer VM.                                                                            |
     | `packer.network`             | The name of the vSphere network to deploy the Packer VM.                                                                           |
@@ -143,7 +143,7 @@ instructions on how to build the custom RHEL with Konvoy image.
     | `packer.resource_pool`       | The name of the vSphere resource pool to deploy the Packer VM.                                                                     |
     | `packer.template`            | The name of the RHEL template in vSphere that you created using the ISO file of the RHEL version you want to use.                  |
     | `packer.ssh_username`        | The username to SSH into the Packer VM. Specify the username you used to log in to the RHEL VM before converting it to a template. |
-    | `packer.ssh_password`        | The password to SSH into the Packer VM. Specify the passowrd you used to log in to the RHEL VM before converting it to a template. |
+    | `packer.ssh_password`        | The password to SSH into the Packer VM. Specify the password you used to log in to the RHEL VM before converting it to a template. |
 
     <details>
 
@@ -241,7 +241,7 @@ instructions on how to build the custom RHEL with Konvoy image.
     cd ~/builder
     ```
 
-2.  Download the Konvoud builder release artifact from the GitHub releases page.
+2.  Download the Konvoy builder release artifact from the GitHub releases page.
 
     ```shell
     wget https://github.com/mesosphere/konvoy-image-builder/releases/download/v2.8.5/konvoy-image-bundle-v2.8.5_linux_amd64.tar.gz
@@ -278,7 +278,7 @@ instructions on how to build the custom RHEL with Konvoy image.
     | Parameter                    | Description                                                                                                                        |
     | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
     | `packer.cluster`             | The name of the vSphere cluster to deploy the Packer VM.                                                                           |
-    | `packer.datacenter`          | The name of the vSphere datacenter to deploy the Packer VM.                                                                        |
+    | `packer.datacenter`          | The name of the vSphere Datacenter to deploy the Packer VM.                                                                        |
     | `packer.datastore`           | The name of the vSphere datastore to deploy the Packer VM.                                                                         |
     | `packer.folder`              | The name of the vSphere folder to deploy the Packer VM.                                                                            |
     | `packer.network`             | The name of the vSphere network to deploy the Packer VM.                                                                           |
@@ -286,7 +286,7 @@ instructions on how to build the custom RHEL with Konvoy image.
     | `packer.resource_pool`       | The name of the vSphere resource pool to deploy the Packer VM.                                                                     |
     | `packer.template`            | The name of the RHEL template in vSphere that you created using the ISO file of the RHEL version you want to use.                  |
     | `packer.ssh_username`        | The username to SSH into the Packer VM. Specify the username you used to log in to the RHEL VM before converting it to a template. |
-    | `packer.ssh_password`        | The password to SSH into the Packer VM. Specify the passowrd you used to log in to the RHEL VM before converting it to a template. |
+    | `packer.ssh_password`        | The password to SSH into the Packer VM. Specify the password you used to log in to the RHEL VM before converting it to a template. |
 
     <details>
 
