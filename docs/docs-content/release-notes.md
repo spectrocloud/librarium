@@ -9,7 +9,7 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
-## March 9, 2024 - Release 4.3.0
+## March 16, 2024 - Release 4.3.0
 
 ### Palette
 
