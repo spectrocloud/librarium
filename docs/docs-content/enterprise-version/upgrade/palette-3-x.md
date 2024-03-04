@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Palette v.3.x"
 title: "Palette v.3.x"
-description: "Learn how to upgrade self-hosted airgap Palette with Helm and Kubernetes."
+description: "Learn how to upgrade self-hosted Palette instances."
 icon: ""
 sidebar_position: 30
 tags: ["palette", "self-hosted", "airgap", "kubernetes", "upgrade"]
