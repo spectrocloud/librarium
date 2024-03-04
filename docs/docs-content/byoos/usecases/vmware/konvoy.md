@@ -15,10 +15,10 @@ guide assumes that you have a basic understanding of VMware vSphere, RHEL and [K
 You will use the [Konvoy image builder](https://github.com/mesosphere/konvoy-image-builder) project to build the custom
 RHEL image with Konvoy. The custom image will be used to deploy a Kubernetes cluster on VMware vSphere.
 
+## Prerequisites
+
 Carefully review the prerequisites and follow the steps in the order provided to build and use a custom RHEL with
 Konvoy. Make sure you have met all the prerequisites before you begin.
-
-## Prerequisites
 
 - A x86_64 Linux VM with the following resources:
 
@@ -52,12 +52,12 @@ the input for the **CD/DVD Drive**.
 ![A View of the ISO selection](/byoos_vmware_konvoy_iso-selection.png)
 
 After the VM is deployed, and you have completed the RHEL installation, verify you can SSH into the VM. If you can SSH
-and login to the VM, you can use it as a template for the Konvoy image builder. Save the VM as a template in vSphere.
+and log in to the VM, you can use it as a template for the Konvoy image builder. Save the VM as a template in vSphere.
 Reference the template in the Konvoy image builder configuration file.
 
 :::tip
 
-Configure the RHEL VM with the proper users and credentials before creating a VM template of it. Consider adding the
+Configure the RHEL VM with the correct users and credentials before creating a VM template of it. Consider adding the
 following configuration to the `/etc/sudoers` file so that the root user and the `admin` and `sudo` groups can issue
 commands as root without entering a password.
 
@@ -98,7 +98,7 @@ instructions on how to build the custom RHEL with Konvoy image.
     cd ~/builder
     ```
 
-2.  Download the Konvoy builder release artifact from the GitHub releases page.
+2.  Download the Konvoy builder release artifact from the GitHub releases page. In this guide, version 2.8.5 is used.
 
     ```shell
     wget https://github.com/mesosphere/konvoy-image-builder/releases/download/v2.8.5/konvoy-image-bundle-v2.8.5_linux_amd64.tar.gz
@@ -112,6 +112,7 @@ instructions on how to build the custom RHEL with Konvoy image.
     ```
 
 4.  Export your vSphere and RHEL credentials as environment variables. Replace the placeholders with your credentials.
+    Issue the following commands to set these values in your terminal session.
 
     ```shell
     export VSPHERE_SERVER=your-vsphere-server-IP
@@ -186,7 +187,7 @@ instructions on how to build the custom RHEL with Konvoy image.
     </details>
 
 7.  Review the **images/common.yaml** file and modify the file if necessary. The **common.yaml** file is where you
-    specify the Kubernetes version. Refer to the[Konvoy](../../../integrations/konvoy.md) pack reference page to learn
+    specify the Kubernetes version. Refer to the [Konvoy](../../../integrations/konvoy.md) pack reference page to learn
     about supported Konvoy versions.
 
     ```yaml hideClipboard {2}

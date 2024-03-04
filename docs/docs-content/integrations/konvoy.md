@@ -10,7 +10,7 @@ logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d8
 tags: ["packs", "konvoy", "kubernetes"]
 ---
 
-[Konvoy](https://d2iq.com/products/konvoy) is a Kubernetes distribution by D2iQ. Konvoy is built on pure open-source
+[Konvoy](https://d2iq.com/products/konvoy) is a Kubernetes distribution by D2iQ. It is built on pure open-source
 Kubernetes and includes a full suite of integrated and supported best-of-breed Day-2 platform applications for an
 out-of-the-box, production-ready experience.
 
@@ -39,9 +39,11 @@ then use it to create a cluster.
 
 Palette supports the following infrastructure platforms and Operating Systems (OS) combinations for Konvoy.
 
-| Infrastructure Platform | OS                       | Supported?         |
-| ----------------------- | ------------------------ | ------------------ |
-| VMware vSphere          | Red Hat Linux Enterprise | :white_check_mark: |
+- RHEL version 8.8 or later for VMware vSphere.
+
+<!-- | Infrastructure Platform | OS                       | Version        | Supported?         |
+| ----------------------- | ------------------------ | -------------- | ------------------ |
+| VMware vSphere          | Red Hat Linux Enterprise | 8.8 or greater | :white_check_mark: | -->
 
 ## Parameters
 
