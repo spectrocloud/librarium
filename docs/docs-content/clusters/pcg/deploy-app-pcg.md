@@ -5,6 +5,8 @@ description:
   "Learn how to deploy a Private Cloud Gateway (PCG) to connect your data center or private cloud environment to
   Palette. This tutorial teaches you how to launch a PCG, create a data center cluster, and deploy a demo application."
 hide_table_of_contents: false
+toc_min_heading_level: 2
+toc_max_heading_level: 2
 sidebar_position: 50
 tags: ["pcg"]
 ---
@@ -54,7 +56,6 @@ To complete this tutorial, you will need the following items in place.
         - Memory: 4 GiB.
         - Storage: 60 GiB.
 
-
         :::info
 
         In production environments, we recommend deploying a three-node PCG, each node with 8 cores of CPU, 8 GiB of memory, and 100 GiB of storage.
@@ -66,7 +67,7 @@ To complete this tutorial, you will need the following items in place.
     - [Docker](https://docs.docker.com/desktop).
     - [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation).
     - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-    - [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli), if you choose to follow along with the Terraform workflow.
+    - [Terraform CLI](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) v1.4.0 or greater, if you choose to follow along with the Terraform workflow.
 
 ## Authenticate with Palette
 
@@ -81,7 +82,7 @@ palette login
 
 Once issued, you will be prompted for a few parameters to complete the authentication. The table below displays the
 required parameters along with the values that will be utilized in this tutorial. If the parameter is specific to your
-environment, such as your Palette API key, enter the value according to your environment. Access the
+environment and Palette account, such as your Palette API key, enter the value according to your environment. Access the
 [Deploy a PCG to VMware vSphere](../pcg/deploy-pcg/vmware.md) guide for more information about each option.
 
 | **Parameter**                  | **Value**                                                                                                        | **Specific** |
@@ -131,8 +132,8 @@ environment, such as your vSphere endpoint, enter the value according to your en
 
 :::info
 
-The PCG that will be deployed in this tutorial is for educational purposes only and is not recommended for use in
-production environments.
+The PCG to be deployed in this tutorial is for educational purposes only and is not recommended for use in production
+environments.
 
 :::
 
@@ -192,7 +193,9 @@ production environments.
 
 5. **PCG Cluster Size**
 
-   This tutorial will deploy a one-node PCG with dynamic IP placement (DDNS).
+   This tutorial will deploy a one-node PCG with dynamic IP placement (DDNS). If needed, you can convert a single-node
+   PCG to a multi-node PCG to provide additional capacity. Refer to the
+   [Increase PCG Node Count](./manage-pcg/scale-pcg-nodes.md) guide to learn more about it.
 
    | **Parameter**       | **Value**                                                                     | **Specific** |
    | ------------------- | ----------------------------------------------------------------------------- | ------------ |
@@ -225,12 +228,406 @@ production environments.
    | ----------------- | --------- | ------------ |
    | **Node Affinity** | `N`       | No           |
 
-## Create a Cluster Profile and Deploy a Cluster
+After finishing answering the prompts, a new PCG configuration file is generated and its location displayed on the
+console.
 
-UI and Terraform workflows
+```text hideClipboard
+==== PCG config saved ==== Location: :/home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
+```
+
+Next, Palette CLI will create a local kind cluster that will be used to bootstrap the PCG cluster deployment in your
+VMware environment. Once installed, the PCG registers itself with Palette and creates a VMware cloud account with the
+same name of the PCG.
+
+The following recording showcases the `pcg install --config-only` command with the set of prompts that needs to be
+answered in order to deploy a PCG cluster.
+
+((VIDEO RECORDING))
+
+You can monitor the creation of the PCG cluster by logging in to Palette, switching to the **Tenan Admin** scope, and
+clicking on **Tenant Settings** from the left **Main Menu**. Next, click on **Private Cloud Gateways** from the left
+**Tenant Settings Menu** and select the PCG cluster you just deployed to access its **Overview** page. From the
+**Overview** page, select the **Events** tab to view the progress of the PCG cluster deployment.
+
+((IMAGE PCG TAB??))
 
 ### Validate
 
+Log in to Palette as a tenant admin, navigate to the left **Main Menu** and select **Tenant Settings**. Next, click on
+**Private Cloud Gateways** from the **Tenant Settings Menu** and check if the PCG you created is displayed in the list
+of PCG clusters. Click on your PCG and verify that its cluster status is **Running** and it is **Healthy**.
+
+((IMAGE PCG HEALTH))
+
+## Create a Cluster Profile and Deploy a Cluster
+
+Once you have successfully deployed the PCG, create a cluster profile with the
+[hello-universe](hhttps://github.com/spectrocloud/hello-universe) application and use it to deploy a VMware cluster.
+This tutorial provides two different workflows: Palette User Interface (UI) and Terraform.
+
+<Tabs groupId="deploy-pcg">
+
+<TabItem label="UI Workflow" value="UI_Workflow">
+
+### Create a Cluster Profile
+
+Log in to Palette and select **Profiles** from the left **Main Menu** to view the cluster profile page and the available
+cluster profiles. Click on the **Add Cluster Profile** button and follow the wizard to create a new cluster profile.
+
+((IMAGE CLUSTER PROFILE CREATION))
+
+**Basic Information**
+
+Complete the **Basic Information** section with the information provided below.
+
+| **Field**   | **Value**                                                                                                                                                   |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name        | `pcg-tutorial-profile`                                                                                                                                      |
+| Version     | `1.0.0`                                                                                                                                                     |
+| Description | Cluster profile as part of the Deploy App Workloads with a PCG tutorial.                                                                                    |
+| Type        | Full                                                                                                                                                        |
+| Tags        | `spectro-cloud-education`, `app:hello-universe`, `terraform_managed:false`, `repository:spectrocloud:tutorials`, `tutorial:DEPLOY_APP_WORKLOADS_WITH_A_PCG` |
+
+Click on **Next** to continue.
+
+**Cloud Type**
+
+In the **Cloud Type** section, select VMware as the infrastructure provider, and click **Next** to proceed.
+
+**Profile Layers**
+
+Add the core infrastructure layers displayed below to your profile.
+
+| Pack Name          | Version | Layer            |
+| ------------------ | ------- | ---------------- |
+| ubuntu-vsphere LTS | 22.4.x  | Operating System |
+| kubernetes         | 1.28.x  | Kubernetes       |
+| cni-calico         | 3.26.x  | Network          |
+| csi-vsphere-csi    | 3.0.x   | Storage          |
+
+As you add each layer, click on the **Next Layer** button. After adding the storage layer, click on the **Confirm**
+button to complete the core infrastructure stack.
+
+Next, click on the **Add New Pack** button to include add-on layers to your cluster profile.
+
+Add the MetalLB (Helm) pack to your profile. The MetalLB pack will provide a load-balancer implementation for your
+VMware cluster, as VMware does not offer a load balancer solution natively. You will need a load balancer to help the
+LoadBalancer service specified in the Hello Universe application manifest obtain an IP address, so that you can access
+the application on your browser. Refer to the Metallb (LINK TO METALLB PACK) guide to learn more about the pack.
+
+| Pack Name       | Version | Layer         |
+| --------------- | ------- | ------------- |
+| lb-metallb-helm | 0.13.x  | Load Balancer |
+
+Now, click on **Values** under **Pack Details** and replace the `192.168.10.0/24` IP CIDR listed below the **addresses**
+line with a valid IP address or range of IP addresses for your load balancer. This will be the address that will be used
+to access the Hello Universe application, and it can be a private IP address of your VMware environment, for example.
+Click on the **Confirm & Create** button to finish adding the Metallb pack.
+
+((FOTO IP ADDR METALLB))
+
+Finally, click again on the **Add New Pack** button to add the Hello Universe pack.
+
+| Pack Name      | Version | Layer       |
+| -------------- | ------- | ----------- |
+| hello-universe | 1.1.x   | App Service |
+
+Click on the **Confirm & Create** button and then click **Next**.
+
+**Review**
+
+The review section displays the cluster layers you selected. Click on **Finish Configuration** to complete the cluster
+profile creation.
+
+((IMAGE CLUSTER PROFILE CREATION))
+
+### Create a VMware Cluster
+
+Navigate to the left **Main Menu** and select **Profiles**. Click on the cluster profile you created previously. Next,
+click on the **Deploy** button and then **OK** to start the cluster deployment using the selected cluster profile.
+
+((IMAGE DEPLOY BUTTON))
+
+**Basic Information**
+
+Use the following values for the **Basic Information** section.
+
+| **Field**       | **Value**                                                                                                                                                                                            |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cluster name    | `pcg-tutorial-cluster`                                                                                                                                                                               |
+| Description     | Cluster as part of the Deploy App Workloads with a PCG tutorial.                                                                                                                                     |
+| Tags            | `spectro-cloud-education`, `app:hello-universe`, `terraform_managed:false`, `repository:spectrocloud:tutorials`, `tutorial:DEPLOY_APP_WORKLOADS_WITH_A_PCG`                                          |
+| Type of cluster | Datacenter                                                                                                                                                                                           |
+| Cloud Account   | Select the VMware cloud account that was registered with Palette during the PCG creation. The cloud account has the same name of the PCG. In this tutorial, the cloud account is called `gateway-1`. |
+
+**Parameters**
+
+The **Parameters** section displays all the layers in the cluster profile and allows you to change the profile
+configurations if needed. Click on **Next** to proceed.
+
+**Cluster Configuration**
+
+In the **Cluster Config** section, fill in the fields with the information specific to your VMware vSphere enviroment.
+First, select the **Datacenter** and the **Deployment Folder** where the cluster nodes will be launched. Next, select
+the **Image Template Folder** to which the Spectro templates are imported and the **SSH key** that will be used to
+access the cluster nodes. Finally, select **DHCP** as the **Network Type**. Click Next to proceed to the **Nodes
+Configuration** section.
+
+**Nodes Configuration**
+
+Provide the details for the nodes of the control plane and worker pools.
+
+| **Field**                   | **Control Plane Pool** | **Worker Pool** |
+| --------------------------- | ---------------------- | --------------- |
+| Node pool name              | control-plane-pool     | worker-pool     |
+| Number of nodes in the pool | `1`                    | `1`             |
+| Allow worker capability     | No                     | Not applicable  |
+| Enable Autoscaler           | Not applicable         | No              |
+| Rolling update              | Not applicable         | Expand First    |
+
+Keep the **Cloud Configuration** the same for both pools, with **CPU** set to 4 cores, **memory** allocated at 8 GB, and
+**disk** space at 60 GB. Next, populate the **Compute cluster**, **Resource Pool**, **Datastore**, and **Network**
+fields according to your VMware vSphere environment. Click **Next** to continue.
+
+**Settings**
+
+The **Settings** section provides advanced options for OS patching, scheduled scans, scheduled backups, and cluster role
+binding. Use the default values, and click on the **Validate** button.
+
+**Review**
+
+The **Review** section allows you to review the cluster configuration before deployng the cluster. If everything is
+correct, click on **Finish Configuration** to start the cluster deployment, which may take up to 20 minutes.
+
+((IMAGE REVIEW PAGE))
+
+Now, navigate to the left **Main Menu** and click on **Clusters**. While the deployment is in progress, Palette displays
+the cluster status as **Provisioning**. You can select your cluster and explore the cluster information such as the
+deployment status and event logs.
+
+((IMAGE CLUSTER PROVISIONING))
+
+</TabItem>
+
+<TabItem label="Terraform Workflow" value="Terraform_Workflow">
+
+### Set Up Local Environment
+
+Open a terminal window and clone the Spectro Cloud [Tutorials](https://github.com/spectrocloud/tutorials) repository
+from GitHub.
+
+```bash
+git clone https://github.com/spectrocloud/tutorials.git
+```
+
+Change the directory to the **/terraform/vmware-cluster-deployment-tf** directory, which contains the Terraform code for
+this tutorial.
+
+```bash
+cd terraform/vmware-cluster-deployment-tf
+```
+
+Next, copy your Palette API key and issue the following command to export it as an environment variable. Replace
+`YourAPIKeyHere` with your API key.
+
+```bash
+export SPECTROCLOUD_APIKEY=YourAPIKeyHere
+```
+
+### Create a Cluster Profile and Deploy a VMware Cluster
+
+We recommend that you explore all Terraform files available in the directory. Below is a high-level overview of each
+file.
+
+- **profile.tf** - contains the configuration for the `spectrocloud_cluster_profile` resource. The following layers will
+  be added to the profile.
+
+| Pack Name          | Version | Layer            |
+| ------------------ | ------- | ---------------- |
+| ubuntu-vsphere LTS | 22.4.x  | Operating System |
+| kubernetes         | 1.28.x  | Kubernetes       |
+| cni-calico         | 3.26.x  | Network          |
+| csi-vsphere-csi    | 3.0.x   | Storage          |
+| lb-metallb-helm    | 0.13.x  | Load Balancer    |
+| hello-universe     | 1.1.x   | App Service      |
+
+The MetalLB pack will provide a load-balancer implementation for your VMware cluster, as VMware does not offer a load
+balancer solution natively. You will need a load balancer to help the LoadBalancer service specified in the Hello
+Universe application manifest obtain an IP address, so that you can access the application on your browser. Refer to the
+Metallb (LINK TO METALLB PACK) guide to learn more about the pack.
+
+- **cluster.tf** - This file contains the configuration for the `spectrocloud_cluster_vsphere` resource.
+
+- **data.tf** - This file has the required configuration for the resources to retrieve data from Palette dynamically.
+
+- **inputs.tf** - This file contains the variables used in the tutorial, such as the pcg name, SSH key, and vSphere
+  information.
+
+- **outputs.tf** - This file contains output variables responsible to output information to the terminal once the
+  resources are created, such as the location of the SSH key and the command to use to SSH to your cluster nodes.
+
+- **provider.tf** - This file contains the Terraform providers and their respective versions.
+
+- **ssh-key.tf** - This file contains the resources to generate an SSH key pair in case the user does not provide one.
+
+- **ippool.tf** - This file contains the resources required for static IP placement deployments. You will note that the
+  resource `spectrocloud_privatecloudgateway_ippool` is currently commented out as this tutorial uses dynamic IP
+  placement.
+
+- **terraform.tfvars** - This file contains the variable definitions. Open the **terraform.tfvars** file in the editor
+  of your choice and provide the values for the variables required for the deployment according to the table below.
+
+| Variable Name      | Description                                                                                | Required |
+| ------------------ | ------------------------------------------------------------------------------------------ | -------- |
+| metallb_ip         | Provide a valid IP address or a range of IP addresses for your Metallb Load Balancer.      | Yes      |
+| pcg_name           | Provide the name of the PCG that will be used to deploy the Palette cluster.               | Yes      |
+| datacenter_name    | Provide the name of the PCG that will be used to deploy the Palette cluster.               | Yes      |
+| folder_name        | Provide the name of the folder in vSphere.                                                 | Yes      |
+| search_domain      | Provide the name of the network search domain.                                             | Yes      |
+| vsphere_cluster    | Provide the cluster name for the machine pool as it appears in vSphere.                    | Yes      |
+| datastore_name     | Provide the datastore name for the machine pool as it appears in vSphere.                  | Yes      |
+| network_name       | Provide the network name for the machine pool as it appears in vSphere.                    | Yes      |
+| resource_pool_name | Provide the resource pool name for the machine pool as it appears in vSphere.              | Yes      |
+| ssh_key            | Provide the path to your public SSH key. If not provided, a new key pair will be created.  | No       |
+| ssh_key_private    | Provide the path to your private SSH key. If not provided, a new key pair will be created. | No       |
+
+When you are ready making the required changes, execute the following command to initialize Terraform.
+
+```bash
+terraform init
+```
+
+The `init` command will download the plugins and providers defined in the **provider.tf** file.
+
+Next, issue the `terraform plan` command to preview the resources that Terraform will create.
+
+```bash
+terraform plan
+```
+
+The output displays the resources that Terraform will create in an actual implementation, including the cluster profile,
+VMware vSphere cluster, and a new SSH key pair if the keys were not provided.
+
+```text hideClipboard
+# Output condensed for readability
+Plan: 5 to add, 0 to change, 0 to destroy.
+```
+
+Issue the `terraform apply` command to deploy the resources to your VMware vSphere environment.
+
+```bash
+terraform apply -auto-approve
+```
+
+It can take up to 20 minutes to complete the cluster deployment process. Once the cluster provisioning is complete, the
+following output will be displayed.
+
+```text hideClipboard
+# Output condensed for readability
+Apply complete! Resources: 5 added, 0 to changed, 0 to destroyed.
+```
+
+Now, log in to Palette, navigate to the left **Main Menu** and click on **Clusters**. While the deployment is in
+progress, Palette displays the cluster status as **Provisioning**.
+
+((IMAGE CLUSTER PROVISIONING))
+
+You can select the `pcg-tutorial-cluster` and explore the cluster information such as the deployment status and event
+logs.
+
+</TabItem>
+
+</Tabs>
+
+## Validate
+
+In Palette, navigate to the left **Main Menu** and click on **Clusters**. Select the `pcg-tutorial-cluster` to display
+the cluster's **Overview** page. Once the cluster status displays **Running** and **Healthy**, you can access the
+application through the exposed service URL along with the displayed port number. Click on the URL for port **:8080** to
+access the Hello Universe application landing page.
+
+((IMAGE HELLO UNI APPLICATION))
+
+You have successfully deployed your first application to a VMware cluster managed by Palette.
+
 ## Clean Up
 
-## Wrap-up
+The following steps will guide you to clean up your environment after completing the tutorial. Follow the steps below to
+delete the PCG, the cluster profile, and the VMware cluster.
+
+### Delete the Cluster Profile and Cluster
+
+<Tabs groupId="deploy-pcg">
+
+<TabItem label="UI Workflow" value="UI_Workflow">
+
+In Palette, navigate to the left **Main Menu**, click on **Clusters** and select the `pcg-tutorial-cluster` to access
+its details page. Next, click on the **Settings** button to expand the **drop-down Menu**, and select the **Delete
+Cluster** option. Palette will prompt you to enter the cluster name to confirm the deletion.
+
+(((IMAGE CLUSTER DELETION)))
+
+The cluster status will display **Deleting**, and the deletion may take up to 15 minutes.
+
+Once the cluster is deleted, proceed to delete the cluster profile. In the left **Main Menu**, click on **Profiles** and
+select the profile `pcg-tutorial-profile`. Next, click on the **three-dot Menu**, select the **Delete** option and
+confirm the selection to remove the cluster profile.
+
+</TabItem>
+
+<TabItem label="Terraform Workflow" value="Terraform_Workflow">
+
+Issue the `terraform destroy` command within the **/terraform/vmware-cluster-deployment-tf** directory to remove all the
+resources that were created through Terraform.
+
+```bash
+terraform destroy --auto-approve
+```
+
+Deleting the resources may take up to 15 minutes. Upon deletion, you should receive an output similar to the provided
+below.
+
+```text hideClipboard
+# Output condensed for readability
+Destroy complete! Resources: 5 destroyed.
+```
+
+</TabItem>
+
+</Tabs>
+
+### Delete the PCG
+
+After deleting your VMware cluster and cluster profile, proceed with the PCG deletion. Log in to Palette as a tenant
+admin, navigate to the left **Main Menu** and select **Tenant Settings**. Next, on the **Tenant Settings Menu**, select
+**Private Cloud Gateways**. Identify the PCG you want to delete, click on the **Three-Dot Menu** at the end of the PCG
+row, and select **Delete**. Click **OK** to confirm the PCG deletion.
+
+((IMAGE PCG DELETION))
+
+Palette will delete the PCG and the Palette services deployed on the PCG node. However, the underlying infrastructure
+resources, such as the virtual machine, must be removed manually from VMware vSphere.
+
+Log in to your VMware vSphere server and select the VM that composes the PCG node named `gateway-1-cp`. Click on the
+**Three-Dot Actions** button, select **Power**, and **Power Off** to power off the machine. Once the machine is powered
+off, click on the **Three-Dot Actions** button again and select **Delete from Disk** to remove the machine from your
+VMware vSphere environment.
+
+((IMAGE VSPHERE VM DELETION))
+
+## Wrap-Up
+
+In this tutorial, you learned how to deploy a VMware PCG using Palette CLI. After the PCG deployment, you utilized it to
+deploy a Palette cluster with a sample Kubernetes application to your VMware vSphere environment. Next, you accessed the
+Hello Universe application landing page through the exposed service URL.
+
+A PCG is a powerful component that enables Palette to communicate with private clouds or data center environments that
+restrict external connections. Through the PCG, you can deploy Palette clusters in environments such as VMware vSphere,
+securing lifecycle support and monitoring for your clusters.
+
+We encourage you to check out the reference resources below to learn more about PCGs.
+
+- [Private Cloud Gateway](./pcg.md)
+- [PCG Architecture](architecture.md)
+- [Deploy a PCG to VMware vSphere](./deploy-pcg/vmware.md)
+- [Manage PCG](./manage-pcg/)
