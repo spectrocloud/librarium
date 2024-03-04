@@ -11,7 +11,7 @@ tags: ["packs", "konvoy", "kubernetes"]
 ---
 
 [Konvoy](https://d2iq.com/products/konvoy) is a Kubernetes distribution by D2iQ. Konvoy is built on pure open-source
-Kubernetes and includes a full suite of integrated and supported best-of-breed Day 2 platform applications for an
+Kubernetes and includes a full suite of integrated and supported best-of-breed Day-2 platform applications for an
 out-of-the-box, production-ready experience.
 
 Palette offers Konvoy as an available Kubernetes distribution for creating and managing clusters. You can use Konvoy
