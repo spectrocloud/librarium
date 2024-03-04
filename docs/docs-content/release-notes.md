@@ -21,8 +21,8 @@ tags: ["release-notes"]
 
 - MAAS clusters using Palette eXtended Kubernetes (PXK) now support the ability to specify a custom MAAS API endpoint
   URL and port during cluster creation. This feature allows you to use a custom DNS server or Virtual IP (VIP) that is
-  not resolvable outside of the MAAS network. Refer to the
-  [MAAS Architecutre](./clusters/data-center/maas/architecture.md) documentation for more details.
+  not resolvable outside of the MAAS network. Refer to the [PXK](./integrations/kubernetes.md) documentation for more
+  details.
 
 #### Improvements
 
