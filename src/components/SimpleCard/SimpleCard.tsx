@@ -3,7 +3,7 @@ import styles from "./SimpleCard.module.scss";
 
 interface SimpleCardProps {
   cards?: SimpleCard[];
-  elemsPerRow: number;
+  cardsPerRow: number;
 }
 
 interface SimpleCard {
@@ -17,12 +17,12 @@ interface SimpleCardRow {
   cards: SimpleCard[];
 }
 
-export default function SimpleCardGrid({ cards = [], elemsPerRow }: SimpleCardProps) {
+export default function SimpleCardGrid({ cards = [], cardsPerRow }: SimpleCardProps) {
   // Construct the rows according to how many elements we want per row
   let previousCards: SimpleCard[] = [];
   let rows: SimpleCardRow[] = [];
   cards.map(function (card, index) {
-    if (previousCards.length < elemsPerRow) {
+    if (previousCards.length < cardsPerRow) {
       previousCards.push(card);
     } else {
       // The row is full. Save it and reset the cards buffer.
@@ -40,7 +40,7 @@ export default function SimpleCardGrid({ cards = [], elemsPerRow }: SimpleCardPr
   }
 
   return (
-    <div className="simpleCardGrid">
+    <div className={styles.simpleCardGrid}>
       {rows.map((row) => (
         <div className="row row--no-gutters">
           {row.cards.map((card) => (
