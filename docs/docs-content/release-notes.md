@@ -19,6 +19,11 @@ tags: ["release-notes"]
   Tech Preview and is available only for Edge clusters. Profile variables allow you to define variable types, apply
   validation, and more. Refer to the Cluster Profile Variables documentation to learn more about profile variables.
 
+- MAAS clusters using Palette eXtended Kubernetes (PXK) now support the ability to specify a custom MAAS API endpoint
+  URL and port during cluster creation. This feature allows you to use a custom DNS server or Virtual IP (VIP) that is
+  not resolvable outside of the MAAS network. Refer to the
+  [MAAS Architecutre](./clusters/data-center/maas/architecture.md) documentation for more details.
+
 #### Improvements
 
 - Nutanix cluster deployments now display YAML variables and exposes them as input fields on the User Interface (UI)
@@ -26,6 +31,11 @@ tags: ["release-notes"]
   users had to manually update the machine template YAML. Check out the
   [Create and Manage Nutanix Cluster](./clusters/data-center/nutanix/create-manage-nutanix-cluster.md) guide for more
   details.
+
+- The cluster deployment user flow experience has been improved to streamline the cluster creation process. From the
+  initial platform selection screen, you can now select between IaaS and managed Kubernetes clusters. The update
+  combines the selection of platform and type of Kubernetes cluster while also detecting and notifying if a prerequisite
+  is not met.
 
 #### Known Issues
 
