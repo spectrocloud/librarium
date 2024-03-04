@@ -28,9 +28,9 @@ The first step towards adopting Palette in your organization is to
 The Getting Started section introduces you to the concepts and workflows you need to begin using Palette. Explore more
 through the following pages.
 
-<SimpleCardGrid 
-  elemsPerRow = "2"  
-  cards={[       
+<SimpleCardGrid
+  elemsPerRow="2"
+  cards={[
     {
       title: "1. Introduction to Palette",
       description: "Learn about what makes Palette different.",
@@ -38,7 +38,7 @@ through the following pages.
       relativeURL: "./introduction",
     },
     {
-      title: "2. Palette Dashboard", 
+      title: "2. Palette Dashboard",
       description: "Tour the Palette Project and Tenant Admin dashboards.",
       buttonText: "Learn more",
       relativeURL: "./dashboard",
@@ -72,6 +72,6 @@ through the following pages.
       description: "Learn to deploy a Palette host cluster with Terraform.",
       buttonText: "Learn more",
       relativeURL: "./terraform",
-    }
-  ]} 
+    },
+  ]}
 />
