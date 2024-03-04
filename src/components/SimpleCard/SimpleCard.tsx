@@ -1,4 +1,4 @@
-import React, { useState, RefObject } from "react";
+import React from "react";
 import styles from "./SimpleCard.module.scss";
 
 interface SimpleCardProps {
@@ -20,13 +20,13 @@ interface SimpleCardRow {
 export default function SimpleCardGrid({ cards = [], cardsPerRow }: SimpleCardProps) {
   // Construct the rows according to how many elements we want per row
   let previousCards: SimpleCard[] = [];
-  let rows: SimpleCardRow[] = [];
-  cards.map(function (card, index) {
+  const rows: SimpleCardRow[] = [];
+  cards.map(function (card) {
     if (previousCards.length < cardsPerRow) {
       previousCards.push(card);
     } else {
       // The row is full. Save it and reset the cards buffer.
-      let row: SimpleCardRow = { cards: previousCards.slice() };
+      const row: SimpleCardRow = { cards: previousCards.slice() };
       rows.push(row);
       previousCards = [] as SimpleCard[];
       // Add the current card to the newly emptied buffer.
@@ -35,16 +35,16 @@ export default function SimpleCardGrid({ cards = [], cardsPerRow }: SimpleCardPr
   });
   // Create row for overflow cards, if any
   if (previousCards.length > 0) {
-    let row: SimpleCardRow = { cards: previousCards.slice() };
+    const row: SimpleCardRow = { cards: previousCards.slice() };
     rows.push(row);
   }
 
   return (
     <div className={styles.simpleCardGrid}>
-      {rows.map((row) => (
-        <div className="row row--no-gutters">
-          {row.cards.map((card) => (
-            <div className="col">
+      {rows.map((row, index) => (
+        <div className="row row--no-gutters" key={`simpleCardRow-${index}`}>
+          {row.cards.map((card, index) => (
+            <div className="col" key={`simpleCardCol-${index}`}>
               <SimpleCard {...card} />
             </div>
           ))}
