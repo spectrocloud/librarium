@@ -44,8 +44,9 @@ The following are some highlights of the comprehensive Palette Edge Solution:
 
 - Support for pre-provisioned and on-site device registration
 
-Palette's Edge solution is designed for sites that typically have one or more small devices, such as Intel NUC. An instance
-of Palette optimized for edge computing is installed in the device along with the operating system and Kubernetes.
+Palette's Edge solution is designed for sites that typically have one or more small devices, such as Intel NUC. An
+instance of Palette optimized for edge computing is installed in the device along with the operating system and
+Kubernetes.
 
 :::info
 
