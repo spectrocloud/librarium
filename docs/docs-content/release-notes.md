@@ -15,9 +15,23 @@ tags: ["release-notes"]
 
 #### Features
 
+- Cluster Profile variables, a new feature that allows you to define variables in a cluster profile. This feature is in
+  Tech Preview and is available only for Edge clusters. Profile variables allow you to define variable types, apply
+  validation, and more. Refer to the Cluster Profile Variables documentation to learn more about profile variables.
+
 #### Improvements
 
+- Nutanix cluster deployments now display YAML variables and exposes them as input fields on the User Interface (UI)
+  during the cluster deployment process. Previously, the UI did not display the YAML variables for Nutanix clusters and
+  users had to manually update the machine template YAML. Check out the
+  [Create and Manage Nutanix Cluster](./clusters/data-center/nutanix/create-manage-nutanix-cluster.md) guide for more
+  details.
+
 #### Known Issues
+
+- Conducting cluster node scaling operations on a cluster undergoing a backup can lead to issues and potential
+  unresponsiveness. To avoid this, ensure that no backup operations are in progress before scaling nodes or performing
+  other cluster operations that change the cluster state.
 
 ### Edge
 
