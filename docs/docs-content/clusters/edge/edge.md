@@ -36,8 +36,6 @@ The following are some highlights of the comprehensive Palette Edge Solution:
 
 - Support for pre-provisioned and on-site device registration
 
-<br />
-
 :::warning
 
 Edge is still in active development and is subject to change. Review the Palette [release notes](../../release-notes.md)
@@ -47,9 +45,9 @@ for updates and changes.
 
 # Edge Native
 
-Palette's Edge native solution is designed for sites that typically have one or more small devices, such as
-[Intel NUC](https://www.intel.com/content/www/us/en/products/docs/boards-kits/nuc/what-is-nuc-article.html). An instance
-of Palette optimized for edge computing, along with the operating system and Kubernetes, is installed in the device.
+Palette's Edge solution is designed for sites that typically have one or more small devices, such as
+[Asus NUC](https://www.asus.com/us/displays-desktops/nucs/nuc-mini-pcs). An instance of Palette optimized for edge
+computing is installed in the device along with the operating system and Kubernetes.
 
 Palette manages the installation and all the Day-2 activities, such as scaling, upgrades, and reconfiguration.
 
