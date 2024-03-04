@@ -38,7 +38,7 @@ describe("Display SimpleCardGrid", () => {
     expect(screen.getByText(/Card 3/i)).toBeInTheDocument();
     expect(screen.getAllByRole("button")).toHaveLength(3);
     screen.getAllByRole("button").forEach((btn) => {
-        expect(btn).toHaveTextContent(/Learn More/i);
+      expect(btn).toHaveTextContent(/Learn More/i);
     });
     expect(container.querySelectorAll(".row")).toHaveLength(2);
   });
@@ -70,7 +70,7 @@ describe("Display SimpleCardGrid", () => {
     expect(screen.getByText(/Card 2/i)).toBeInTheDocument();
     expect(screen.getAllByRole("button")).toHaveLength(2);
     screen.getAllByRole("button").forEach((btn) => {
-        expect(btn).toHaveTextContent(/Learn More/i);
+      expect(btn).toHaveTextContent(/Learn More/i);
     });
     expect(container.querySelectorAll(".row")).toHaveLength(1);
   });
@@ -94,7 +94,7 @@ describe("Display SimpleCardGrid", () => {
     expect(screen.getByText(/Card 1/i)).toBeInTheDocument();
     expect(screen.getAllByRole("button")).toHaveLength(1);
     screen.getAllByRole("button").forEach((btn) => {
-        expect(btn).toHaveTextContent(/Learn More/i);
+      expect(btn).toHaveTextContent(/Learn More/i);
     });
     expect(container.querySelectorAll(".row")).toHaveLength(1);
   });
