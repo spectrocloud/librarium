@@ -1,107 +1,100 @@
 ---
-sidebar_label: "Running Windows Workloads"
-title: "Running MS Windows Workloads on an Azure AKS Cluster"
-description: "How to create and manage Windows Node Pools and run a Windows based application"
+sidebar_label: "Manage Windows Workloads"
+title: "Manage Microsoft Windows Workloads on an Azure AKS Cluster"
+description: "How to create and manage Windows Node Pools and deploy a Windows based application"
 hide_table_of_contents: false
 tags: ["public cloud", "azure"]
 sidebar_position: 35
 ---
 
-Palette supports the deployment of Microsoft Windows Applications on Azure AKS Clusters. Windows Applications require a
-Windows based Node Pool to run. This section guides you on how to create an AKS Cluster with a Windows Node Pool and how
-to configure your Windows Application to be deployed to that Windows Node Pool
+Palette supports the deployment of Microsoft Windows applications on Azure AKS clusters. Windows applications require a
+Windows-based node pool to operate. This section guides you on how to create a Windows node pool within an existing AKS
+cluster and configure your Windows application to be deployed to that Windows node pool.
 
 ## Prerequisites
 
-These prerequisites must be met before deploying a Windows Workload:
+The following prerequisites must be met before deploying a Windows workload.
 
-1. An AKS Cluster created as descibed in [Create and Manage Azure AKS CLuster](./aks.md)
+- An AKS cluster created as described in the [Create and Manage Azure AKS Cluster](./aks.md) guide.
 
-2. A Linux based Node Pool configured as the System Node Pool as described in
-   [Create a System Node Pool](./aks#create-a-system-node-pool)
+- A Linux based node pool configured as the system node pool as described in the
+  [Create a System Node Pool](./aks#create-a-system-node-pool) section of the
+  [Create and Manage Azure AKS Cluster](./aks.md) guide.
 
-3. A second Windows based Node Pool Configured as described [Create a Windows Node Pool](#create-a-windows-node-pool)
+- A second Windows node pool configured as described in the [Create a Windows Node Pool](#create-a-windows-node-pool)
+  section.
 
 ## Create a Windows Node Pool
 
+Follow the steps below to create a Windows node pool within an existing AKS cluster. Refer to the
+[Node Pools](../../cluster-management/node-pool.md) page for more information about node pool configuration.
+
+:::info
+
+Palette also allows you to add a Windows node pool during the creation of an AKS cluster. Refer to the
+[Create and Manage Azure AKS CLuster - Create and Remove Node Pools](./aks#create-and-remove-node-pools) page to learn
+more.
+
+:::
+
+1. Log in to Palette, navigate to the left **Main Menu** and click on **Clusters**.
+
+2. Select your Azure AKS cluster.
+
+3. Navigate to the **Nodes** tab and click on **New Node Pool**.
+
+4. Provide a name for your node pool. When naming a node pool, it is good practice to include a name that matches the
+   node and operating system (OS) in Azure.
+
+5. If auto-scaling is desired, enable the **Enable Autoscaler** option.
+
+<br />
+
+:::warning
+
+Do not select the **System Node Pool** option. System node pools must be Linux-based, and choosing this option will
+remove the ability to create a Windows node pool.
+
+:::
+
+<br />
+
+6. Enter the **Number of nodes in the pool**, or set the **Minimum Size** and **Maximum Size** if you have enabled
+   Autoscaler.
+
+7. Include **Additional Labels** if desired. This step is optional.
+
+8. Enable **Taints**. This step is also optional.
+
+9. Choose the **Instance type**. Once selected, the cost details will be displayed.
+
+10. For the **OS Type**, choose **Windows**.
+
+11. Select the **Managed Disk** information and its size.
+
+12. Last, click on **Confirm** to create the Windows node pool.
+
+The video below showcases the process of creating a Windows node pool within an existing AKS cluster.
+
+<br />
+
 <Video title="add-windows-node-pool" src="/videos/clusters/public-cloud/azure/add-windows-node-pool.mp4"></Video>
-
-The following steps need to be performed to to add Windows node pool to an existing AKS cluster:
-
-1. If you have an existing AKS Cluster deployed go to **Clusters** and select the cluster.
-
-2. Go to **Nodes** and click **New Node Pool**.
-
-3. Provide a name in the **Node pool name** text box. When creating a node, it is good practice to include an
-   identifying name that matches the node and OS in Azure.
-
-4. If auto-scaling is desired select **Enable Autoscaler**.
-
-<br />
-
-:::info
-
-Do NOT select **System Node Pool**. System Node Pools, must be Linux based and this option will remove the abilty to
-make the node pool Windows based
-
-:::
-
-<br />
-
-4. Enter **Number of nodes in the pool** or **Minimum size** and **Maximum Size** if you enabled Autoscaler.
-
-5. Include **Additional Labels**. This is optional.
-
-6. Enable **Taints**. This is optional.
-
-7. Select the **Instance type**. The cost details are present for review.
-
-8. For **OS Type** select **Windows**.
-
-9. Select the **Managed Disk** information and its size.
-
-10. Select **Confirm**.
-
-<br />
-
-:::info
-
-Palette **also** allows you to add a Windows Node Pool at the time of an AKS Cluster Creation. Follow
-[Create and Manage Azure AKS CLuster / Create and Remove Node Pools](./aks#create-and-remove-node-pools). When creating
-additional node pools, select **OS Type** Windows to make the node pool Windows based.
-
-:::
 
 <br />
 
 ## Create an Add-on Profile with a Windows Workload
 
-<br />
+After creating your Windows node pool, use the following steps to create an add-on cluster profile with a Windows
+workload.
 
-<Video title="add-win-profile" src="/videos/clusters/public-cloud/azure/add-win-profile.mp4"></Video>
+1. Follow the
+   [Add a Manifest to an Add-on Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md#add-manifest-to-add-on-profile)
+   guide to create an add-on cluster profile with a custom manifest.
 
-{" "}
-
-<br />
-<br />
-
-:::info
-
-Kubernetes does not automatically know if an application is Windows based and should be placed on a Windows node. When
-defining a Windows Application in a Profile you will need to add a manifest with  
- **nodeSelector: "kubernetes.io/os": windows**, so Kubernetes will place that application on a Windows node.
-
-:::
-
-<br />
-
-1. Follow
-   [Add a manifest to an add-on profile ](../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md#add-manifest-to-add-on-profile)
-   to create a cluster profile with a custom manifest.
-
-2. Use the manifest below, which is for a sample asp.net app or use your own Windows application manifest. Defining
-   **spec** of **nodeSelector: "kubernetes.io/os": windows** is required for Kubernetes to know to application needs to
-   be place on a Windows Node.
+2. Use the manifest provided below for a sample ASP.NET application, or alternatively, use your own Windows application
+   manifest. It is essential to include in the **spec** block of the manifest the **nodeSelector: "kubernetes.io/os":
+   windows** specification. This specification is required for Kubernetes to know that the application needs to be
+   deployed on a Windows node.
 
    ```yaml
    apiVersion: v1
@@ -153,26 +146,35 @@ defining a Windows Application in a Profile you will need to add a manifest with
        app: sample
    ```
 
-## Deploy a Windows add-on profile to an existing cluster
+The video below illustrates the process of creating an add-on cluster profile with a Windows workload.
 
-<br />
+<Video title="add-win-profile" src="/videos/clusters/public-cloud/azure/add-win-profile.mp4"></Video>
 
-<Video title="deploy-windows-pack" src="/videos/clusters/public-cloud/azure/deploy-windows-pack.mp4"></Video>
+## Deploy a Windows Add-on Profile to an Existing AKS Cluster
 
-{" "}
-
-<br />
-<br />
-<br />
+Lastly, after creating your add-on cluster profile, attach it to your AKS cluster that has the previously created
+Windows node pool. Follow the steps outlined in the
+[Attach an Add-on Profile](../../../clusters/imported-clusters/attach-add-on-profile.md#attach-an-add-on-profile) guide
+to attach your add-on cluster profile to the AKS cluster.
 
 :::info
 
-The existing cluster must have an existing Windows Node Pool to be able to sucessfully deploy a Windows workload.
+The AKS cluster must have a Windows node pool to be able to successfully deploy a Windows workload.
 
 :::
 
-<br />
+The following video demonstrates the steps required to attach the add-on cluster profile with the Windows application to
+the AKS cluster.
 
-1. Follow
-   [Attach on Add-on Profile](../../../clusters/imported-clusters/attach-add-on-profile.md#attach-an-add-on-profile) to
-   deploy the Windows application using the pack you created.
+<Video title="deploy-windows-pack" src="/videos/clusters/public-cloud/azure/deploy-windows-pack.mp4"></Video>
+
+## Validate
+
+You can validate that the Windows application was succesfully deployed by acessing the service URL on the AKS cluster
+**Overview** page.
+
+1. In Palette, navigate to the left **Main Menu** and select **Clusters**.
+
+2. Next, click on your AKS cluster, which will open the cluster's **Overview** page.
+
+3. Access the Windows application through the exposed **Services** URL.
