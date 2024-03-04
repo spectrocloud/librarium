@@ -12,8 +12,8 @@ This page gives you an overview of how to get started with Spectro Cloud Palette
 full-stack management at scale. Palette's unique capabilities provide end-to-end declarative cluster management, cluster
 monitoring and reconciliation, as well as enterprise-grade security.
 
-Check out the following short video for an overview of some the the key functionality that Palette provides. Spectro
-Cloud Palette provides developers and platform engineers with complete control of their Kubernetes clusters. It provides
+Check out the following short video for an overview of some the key functionality that Palette provides. Spectro Cloud
+Palette provides developers and platform engineers with complete control of their Kubernetes clusters. It provides
 support for public cloud providers, data centers, bare metal and edge, so you can use Palette no matter the complexity
 or location of your production environments.
 
@@ -31,7 +31,7 @@ The first step towards adopting Palette in your organization is to
 [Palette Free Tier](https://www.spectrocloud.com/free-tier) allows you to experience the benefits of Palette first-hand.
 
 We have curated the pages in the Getting Started section to give you a gradual introduction to the fundamental concepts
-and workflows you need to deploy Kubernets clusters to Palette.
+and workflows you need to deploy Kubernetes clusters to Palette.
 
 First, you learn how to create cluster profiles, which are the blueprints to your Kubernetes stacks. Then, you deploy
 your cluster profiles with the Palette Dashboard and through Terraform. Once you have deployed your first cluster, there
