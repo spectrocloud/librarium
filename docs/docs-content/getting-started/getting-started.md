@@ -8,7 +8,7 @@ sidebar_custom_props:
 tags: ["getting-started"]
 ---
 
-This page gives an overview of how to get started with Spectro Cloud Palette and begin leveraging its Kubernetes
+This page gives you an overview of how to get started with Spectro Cloud Palette and begin leveraging its Kubernetes
 full-stack management at scale. Palette's unique capabilities provide end-to-end declarative cluster management, cluster
 monitoring and reconciliation, as well as enterprise-grade security.
 
@@ -17,19 +17,31 @@ Cloud Palette provides developers and platform engineers with complete control o
 support for public cloud providers, data centers, bare metal and edge, so you can use Palette no matter the complexity
 or location of your production environments.
 
-<YouTube url="https://www.youtube.com/embed/-oo93ZC0vKs" title="Spectro Cloud | Get to know us" />
+<YouTube
+  url="https://www.youtube.com/embed/P9QBOifS_cc"
+  title="Demo | Spectro Cloud Palette - Kubernetes-as-a-Service"
+/>
 
 <br />
+
+## Deploy Kubernetes Clusters with Palette
 
 The first step towards adopting Palette in your organization is to
 [create a login](https://www.spectrocloud.com/get-started). The
 [Palette Free Tier](https://www.spectrocloud.com/free-tier) allows you to experience the benefits of Palette first-hand.
 
-The Getting Started section introduces you to the concepts and workflows you need to begin using Palette. Explore more
-through the following pages.
+We have curated the pages in the Getting Started section to give you a gradual introduction to the fundamental concepts
+and workflows you need to deploy Kubernets clusters to Palette.
+
+First, you learn how to create cluster profiles, which are the blueprints to your Kubernetes stacks. Then, you deploy
+your cluster profiles with the Palette Dashboard and through Terraform. Once you have deployed your first cluster, there
+are many other capabilities you can learn about such as Palette on edge, virtual machine orchestration and self-hosted
+Palette.
+
+Explore more through the following pages.
 
 <SimpleCardGrid
-  elemsPerRow="2"
+  cardsPerRow={2}
   cards={[
     {
       title: "1. Introduction to Palette",
@@ -51,7 +63,7 @@ through the following pages.
     },
     {
       title: "4. Create a Cluster Profile",
-      description: "Learn to create a full Cluster Profile in Palette.",
+      description: "Create a full cluster profile in Palette.",
       buttonText: "Learn more",
       relativeURL: "./create-cluster-profile",
     },
@@ -63,13 +75,13 @@ through the following pages.
     },
     {
       title: "6. Deploy Cluster Profile Updates",
-      description: "Learn how to update your clusters using Palette Cluster Profiles.",
+      description: "Update your deployed clusters using Palette Cluster Profiles.",
       buttonText: "Learn more",
       relativeURL: "./update-k8s-cluster",
     },
     {
       title: "7. Deploy a Cluster with Terraform",
-      description: "Learn to deploy a Palette host cluster with Terraform.",
+      description: "Deploy a Palette host cluster with Terraform.",
       buttonText: "Learn more",
       relativeURL: "./terraform",
     },
