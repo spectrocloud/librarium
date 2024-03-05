@@ -267,7 +267,7 @@ The API rate limits are as follows:
 | /v1/clusterprofiles/:uid/validate/packs                                                 | 50                     | 5              | 250                |
 | /v1/spectroclusters/:uid/profiles                                                       | 50                     | 5              | 250                |
 
-## EMC API (Tech Preview)
+## EMC API
 
 The Edge Management Console (EMC) has its own set of API endpoints. These API endpoints are available on each Edge host
 instead of on a Palette instance. You can use EMC API endpoints to programmatically perform tasks such as retrieve
