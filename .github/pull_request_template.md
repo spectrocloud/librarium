@@ -22,5 +22,5 @@ This PR ....
 
 Can this PR be backported?
 
-- [ ] Yes. _Remember to add the relevant backport labels to your PR!_
+- [ ] Yes. _Remember to add the relevant backport labels to your PR._
 - [ ] No. _Please leave a short comment below about why this PR cannot be backported._
