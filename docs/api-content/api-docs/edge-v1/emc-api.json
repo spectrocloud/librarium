@@ -2654,6 +2654,14 @@
       }
     }
   },
+  "securityDefinitions": {
+    "Authorization": {
+      "description": "JWT authorization token obtained using /v1/users/default/login API",
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
   "tags": [
     {
       "name": "edge-mgmt",
