@@ -13,10 +13,13 @@ workloads. These features comprise diverse deployment scenarios, ensuring organi
 across different environments. This can include data centers such as VMware vSphere and OpenStack, bare metal, or public
 cloud using your cloud accounts.
 
-Whether deploying workloads in remote locations with Edge, securing sensitive information with VerteX, maximizing
-management control with self-hosted Palette, or integrating Virtual Machine workloads into Kubernetes environments with
-Virtual Machine Orchestrator, Palette provides comprehensive solutions to meet different business needs. Learn more
-about each capability below.
+Whether deploying workloads in remote locations with [Edge](./additional-capabilities.md#edge), securing sensitive
+information with [VerteX](./additional-capabilities.md#palette-vertex), maximizing management control with
+[self-hosted Palette](./additional-capabilities.md#self-hosted-palette), or integrating virtual machine workloads into
+Kubernetes environments with [Virtual Machine Orchestrator](./additional-capabilities.md#virtual-machine-orchestrator),
+Palette provides comprehensive solutions to meet different business needs. Learn more about each capability below.
+
+![A drawing of Palette with humans interacting](/getting-started/getting-started_additional-capabilities_palette.png)
 
 ## Edge
 
@@ -29,8 +32,6 @@ isolated locations. Palette deploys and manages workload clusters at the Edge th
 bringing computing and data storage closer to the source. This approach reduces latency and bandwidth issues that result
 from central computing, enhancing overall application performance. Learn more on the
 [Palette Edge](../clusters/edge/edge.md) page.
-
-![A drawing of Edge architecture with humans interacting](/getting-started/getting-started_additional-capabilities_edge.png)
 
 ## Self-Hosted Palette
 
@@ -51,8 +52,6 @@ Palette VerteX incorporates validated Federal Information Processing Standards (
 the Kubernetes clusters it deploys, ensuring robust data protection for your organization’s infrastructure and
 applications. Read more on [Palette VerteX](../vertex/vertex.md) page.
 
-![A screenshot of Palette VerteX.](/getting-started/getting-started_additional-capabilities_vertex.png)
-
 ## Virtual Machine Orchestrator
 
 Palette Virtual Machine Orchestrator (VMO) allows you to run and manage traditional VM workloads within a modern
@@ -63,5 +62,3 @@ complete mapping between the VM and Kubernetes concepts.
 Palette VMO simplifies infrastructure management and eliminates the need for a hypervisor by leveraging Canonical’s
 Metal As A Service (MAAS). It works in self-hosted, air-gapped, and Spectro Cloud’s SaaS environments. Learn more on the
 [Virtual Machine Orchestrator](../vm-management/vm-management.md) page.
-
-![A screenshot of Palette VMO.](/getting-started/getting-started_additional-capabilities_vmo.png)
