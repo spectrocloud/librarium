@@ -498,6 +498,29 @@ To add a video, use the following syntax. Ensure you capitalize the letter "V":
 <Video title="vsphere-pcg-creation" src="/cluster-creation-videos/vmware.mp4"></Video>
 ```
 
+### Badges
+
+The following badges are available for use:
+
+> [!NOTE]
+>
+> All badges are globally available. No need to import them.
+
+- Technical Preview Badge ![Technical Preview Badge](static/img/tech-preview-light.svg)
+  ![Technical Preview Badge](static/img/tech-preview-dark.svg)
+
+#### Technical Preview Badge
+
+The technical preview badge is used to indicate that a feature is in technical preview. The badge is intended for
+release notes in the context of a list. The following is an example of how to use the technical preview badge.
+
+```markdown
+- <TpBadge /> Cluster Profile variables, a new feature that allows you to define variables in a cluster profile. This
+  feature is in Tech Preview and is available only for Edge clusters. Profile variables allow you to define variable
+  types, apply validation, and more. Refer to the Cluster Profile Variables documentation to learn more about profile
+  variables.
+```
+
 ## Netlify Previews
 
 By default Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. In

@@ -9,7 +9,7 @@ import Packs from "@site/src/components/Integrations/Packs/Packs";
 import AppTiers from "@site/src/components/Integrations/AppTiers/AppTiers";
 import PacksTable from "@site/src/components/PacksTable/PacksTable";
 import TOCInline from "@theme/TOCInline";
-import { TechnicalPreviewReleaseNote as TechnicalPreviewReleaseNoteBadge } from "@site/src/components/Badges";
+import { TechnicalPreviewReleaseNote as TpBadge } from "@site/src/components/Badges";
 
 export default {
   ...MDXComponents,
@@ -23,5 +23,5 @@ export default {
   AppTiers,
   PacksTable,
   TOCInline,
-  TechnicalPreviewReleaseNoteBadge,
+  TpBadge,
 };
