@@ -50,7 +50,7 @@ jobs:
           reporter: github-pr-review
           vale_flags: --glob=*.{md} --minAlertLevel=error
           fail_on_error: false
-          version: 2.28.2
+          version: 3.2.1
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
