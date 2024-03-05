@@ -73,12 +73,13 @@ describe("Display SimpleCardGrid", () => {
       ).not.toBeNull();
     });
 
-    if (testCards.length != 0) {
-      expect(screen.getAllByRole("button")).toHaveLength(testCards.length);
-      expect(container.querySelectorAll(".row")).toHaveLength(Math.ceil(testCards.length / cardsPerRow));
-    } else {
+    if (testCards.length == 0) {
       expect(container.querySelectorAll(".row")).toHaveLength(0);
+      return;
     }
+
+    expect(screen.getAllByRole("button")).toHaveLength(testCards.length);
+    expect(container.querySelectorAll(".row")).toHaveLength(Math.ceil(testCards.length / cardsPerRow));
   }
 
   testCases.forEach((tc) => {
