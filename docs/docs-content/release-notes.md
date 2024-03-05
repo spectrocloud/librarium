@@ -24,6 +24,11 @@ tags: ["release-notes"]
   not resolvable outside of the MAAS network. Refer to the [PXK](./integrations/kubernetes.md) documentation for more
   details.
 
+- Support for [Konvoy](./integrations/konvoy.md) is now available in Palette. You can create a custom image using the
+  Konvoy image builder project and use it to deploy a Konvoy cluster. Check out the
+  [Red Hat Linux Enterprise and Konvoy](./byoos/usecases/vmware/konvoy.md) guide to learn how to create a custom image
+  and deploy a Konvoy cluster.
+
 #### Improvements
 
 - Nutanix cluster deployments now display YAML variables and exposes them as input fields on the User Interface (UI)
@@ -36,6 +41,8 @@ tags: ["release-notes"]
   initial platform selection screen, you can now select between IaaS and managed Kubernetes clusters. The update
   combines the selection of platform and type of Kubernetes cluster while also detecting and notifying if a prerequisite
   is not met.
+
+- Imported clusters now have support for updating network proxy configurations as a day-2 operation.
 
 #### Known Issues
 
@@ -59,11 +66,26 @@ tags: ["release-notes"]
 
 ### Virtual Machine Orchestrator (VMO)
 
-#### Features
+#### Improvements
+
+- Internal VMO components, including KubeVirt, KubeVirt Container Data Importer, and Snapshot Controller, have been
+  updated to ensure compatibility with the latest versions of KubeVirt and its associated components.
 
 ### VerteX
 
 #### Features
+
+- VerteX now supports deploying clusters on Azure Kubernetes Service (AKS). Refer to the
+  [Create and Manage Azure AKS Cluster](./clusters/public-cloud/azure/aks.md) guide to learn how to deploy an AKS
+  cluster.
+
+- Support for [Konvoy](./integrations/konvoy.md) is now available in VerteX. You can create a custom image using the
+  Konvoy image builder project and use it to deploy a Konvoy cluster. Check out the
+  [Red Hat Linux Enterprise and Konvoy](./byoos/usecases/vmware/konvoy.md) guide to learn how to create a custom image
+  and deploy a Konvoy cluster.
+
+- Support for TLS 1.3 is now available in VerteX. Clusters deployed through VerteX and the VerteX instance cluster
+  itself now supports TLS 1.3.
 
 #### Improvements
 
