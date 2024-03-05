@@ -84202,7 +84202,7 @@
   ],
   "servers": [
     {
-      "url": "https://api.stage.spectrocloud.com"
+      "url": "https://stage.spectrocloud.com"
     }
   ]
 }
