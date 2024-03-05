@@ -62,7 +62,7 @@ connect to the host cluster and may require the use of a forward proxy.
 :::warning
 
 The Spectro Proxy pack does not support Edge deployments in airgapped environments where the Edge host does not have
-access to the internet.
+outbound access to the internet.
 
 :::
 
