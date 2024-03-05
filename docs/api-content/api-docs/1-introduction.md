@@ -311,7 +311,7 @@ the following request retrieves information about the Edge host such as the proc
 
 ```shell
 curl --location 'https://10.10.135.182:5080/v1/edge-mgmt/edgehosts/current' \
---header 'Cookie: Authorization=eyJh_auth_token'
+--header 'Cookie: Authorization=*******'
 ```
 
 ```hideClipboard
