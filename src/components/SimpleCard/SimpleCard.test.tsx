@@ -77,7 +77,7 @@ describe("Display SimpleCardGrid", () => {
       expect(screen.getAllByRole("button")).toHaveLength(testCards.length);
       expect(container.querySelectorAll(".row")).toHaveLength(Math.ceil(testCards.length / cardsPerRow));
     } else {
-      expect(container.querySelectorAll(".row")).toHaveLength(0)
+      expect(container.querySelectorAll(".row")).toHaveLength(0);
     }
   }
 
