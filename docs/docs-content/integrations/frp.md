@@ -59,6 +59,13 @@ is in the same network as the cluster, the user may be able to access the host c
 However, if the user is on a different network, the host cluster's network configuration may limit the user's ability to
 connect to the host cluster and may require the use of a forward proxy.
 
+:::warning
+
+The Spectro Proxy pack does not support Edge deployments in airgapped environments where the Edge host does not have
+access to the internet.
+
+:::
+
 From a network configuration perspective, a cluster can be in a private or a public network. Host clusters deployed in a
 network that does not allow inbound internet access are considered private. Whereas the clusters deployed in a network
 with both inbound and outbound access to the internet are considered public. The following are the three possible
