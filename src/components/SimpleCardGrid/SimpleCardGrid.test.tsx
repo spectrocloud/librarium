@@ -62,6 +62,11 @@ describe("Display SimpleCardGrid", () => {
 
   function assert(cardsPerRow: number, testCards: testCard[]) {
     const { container } = render(<SimpleCardGrid cardsPerRow={cardsPerRow} cards={testCards} />);
+    if (testCards.length == 0) {
+      expect(container.querySelectorAll(".row")).toHaveLength(0);
+      return;
+    }
+
     testCards.forEach((tc) => {
       expect(screen.getByText(tc.title)).toBeInTheDocument();
       expect(screen.getByText(tc.description)).toBeInTheDocument();
@@ -72,11 +77,6 @@ describe("Display SimpleCardGrid", () => {
         })
       ).not.toBeNull();
     });
-
-    if (testCards.length == 0) {
-      expect(container.querySelectorAll(".row")).toHaveLength(0);
-      return;
-    }
 
     expect(screen.getAllByRole("button")).toHaveLength(testCards.length);
     expect(container.querySelectorAll(".row")).toHaveLength(Math.ceil(testCards.length / cardsPerRow));
