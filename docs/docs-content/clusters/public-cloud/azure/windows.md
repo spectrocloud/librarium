@@ -170,7 +170,7 @@ the AKS cluster.
 
 ## Validate
 
-You can validate that the Windows application was succesfully deployed by acessing the service URL on the AKS cluster
+You can validate that the Windows application was successfully deployed by accessing the service URL on the AKS cluster
 **Overview** page.
 
 1. In Palette, navigate to the left **Main Menu** and select **Clusters**.
