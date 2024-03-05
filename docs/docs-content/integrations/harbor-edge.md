@@ -244,7 +244,7 @@ Use the following steps, which uses Nginx deployment as an example, to label a n
    kubectl label namespace namespace-name stylus.io/imageswap=disable
    ```
 
-4. Deploy the resource into the namespace. For example, the folloing manifest deploys six replicas of Nginx to a cluster
+4. Deploy the resource into the namespace. For example, the following manifest deploys six replicas of Nginx to a cluster
    in the `nginx` namespace.
 
    ```yaml
