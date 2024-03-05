@@ -221,7 +221,7 @@ images from the Harbor registry. You can do this when you create the namespace, 
 namespaces. As long as a namespace has the label, the Palette agent will not attempt to pull images in the namespace
 from the Harbor registry.
 
-Use the following steps, which uses NGINX deployment as an example, to label a namespace:
+Use the following steps, which uses Nginx deployment as an example, to label a namespace:
 
 1. Connect to the cluster via `kubectl`. For more information, refer to
    [Access Cluster with kubectl](../clusters/cluster-management/palette-webctl.md).
