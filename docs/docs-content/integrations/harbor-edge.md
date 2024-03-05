@@ -206,6 +206,78 @@ docker tag alpine:latest 10.10.137.220:30003/spectro-images/alpine:latest
 docker push 10.10.137.220:30003/spectro-images/alpine:latest
 ```
 
+#### Enable Image Download from Outside of Harbor
+
+When a cluster uses the Harbor Edge-Native Config pack, the cluster assumes all images will be stored in Harbor after
+the initial download, because all images that are requested by Palette will be stored in the Harbor registry. This can
+cause issues if you want to use images that are not managed by Palette in your cluster. Harbor will not store those
+images because they are not part of your cluster profile and were not requested by Palette. However, the Palette agent
+in your Edge host will still try to pull those images from Harbor, resulting in ImagePullBackOff errors.
+
+You can apply the label `stylus.io/imageswap=disable` to a namespace, which instructs the Palette agent to not pull
+images from the Harbor registry. You can do this when you create the namespace, or apply the label to existing
+namespaces. As long as a namespace has the label, the Palette agent will not attempt to pull images in the namespace
+from the Harbor registry.
+
+Use the following steps, which uses NGINX deployment as an example, to label a namespace:
+
+1. Connect to the cluster via `kubectl`. For more information, refer to
+   [Access Cluster with kubectl](../clusters/cluster-management/palette-webctl.md).
+
+2. (Optional) Skip this step if the namespace where you plan to create the resouces using a non-Palette managed image
+   already exists in your cluster. Issue the following command to create a namespace where you plan to deploy the
+   resources. Replace `namespace-name` with the name of your namespace.
+
+   ```shell
+   kubectl create namespace nginx
+   ```
+
+3. Apply the `stylus.io/imageswap=disable` label to the namespace you plan to deploy resources in. Replace
+   `namespace-name` with the name of your namespace.
+
+   ```shell
+   kubectl label namespace namespace-name stylus.io/imageswap=disable
+   ```
+
+4. Deploy the resource into the namespace. For example, the folloinwg manifest deploys six replicas of NGINX to a
+   cluster in the `nginx` namespace.
+
+   ```yaml
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     name: nginx-deployment
+     namespace: nginx
+   spec:
+     replicas: 6
+     selector:
+       matchLabels:
+         app: nginx
+     template:
+       metadata:
+         labels:
+           app: nginx
+       spec:
+         containers:
+           - name: nginx
+             image: nginx:latest
+             ports:
+               - containerPort: 80
+   ```
+
+   ```shell
+   kubectl apply -f nginx.yaml
+   ```
+
+   Since we already labeled the `nginx` namespace with the label `stylus.io/imageswap=diable`, the Palette agent will
+   not attempt to pull the image for this deployment from the Harbor registry, but from `nginx:latest` as specified in
+   the manifest.
+
+5. If you already deployed the resources before applying the label, you will need to trigger another image pull action
+   as the label will only apply to subsequent image pulls after it has been applied. You can do this by running the
+   `kubectl apply` command again to reapply the manifest. Or use the `kubectl delete` command to delete the resource and
+   wait for it to be re-created.
+
   </TabItem>
   </Tabs>
 
