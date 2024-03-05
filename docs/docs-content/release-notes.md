@@ -9,15 +9,24 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
+import ThemedImage from "@theme/ThemedImage";
+
 ## March 16, 2024 - Release 4.3.0
 
 ### Palette
 
 #### Features
 
-- Cluster Profile variables, a new feature that allows you to define variables in a cluster profile. This feature is in
-  Tech Preview and is available only for Edge clusters. Profile variables allow you to define variable types, apply
-  validation, and more. Refer to the Cluster Profile Variables documentation to learn more about profile variables.
+- <ThemedImage
+    alt="Docusaurus themed image"
+    sources={{
+      light: "/img/tech-preview-dark.svg",
+      dark: "/img/tech-preview-light.svg",
+    }}
+    className="custom-tp-badge"
+  /> Cluster Profile variables, a new feature that allows you to define variables in a cluster profile. This feature is in
+  Tech Preview and is available only for Edge clusters. Profile variables allow you to define variable types, apply validation,
+  and more. Refer to the Cluster Profile Variables documentation to learn more about profile variables.
 
 - MAAS clusters using Palette eXtended Kubernetes (PXK) now support the ability to specify a custom MAAS API endpoint
   URL and port during cluster creation. This feature allows you to use a custom DNS server or Virtual IP (VIP) that is
@@ -29,13 +38,24 @@ tags: ["release-notes"]
   [Red Hat Linux Enterprise and Konvoy](./byoos/usecases/vmware/konvoy.md) guide to learn how to create a custom image
   and deploy a Konvoy cluster.
 
+- Multiple system administrators can now be added to the self-hosted Palette system console to help manage and maintain
+  the VerteX instance. The feature helps organizations embrace the separation of duties by delegating different
+  responsibilities to system administrators. Refer to the
+  [System Administrators](./vertex/system-management/account-management/account-management.md#system-administrators)
+  page to learn more about system administrators.
+
 #### Improvements
 
-- Nutanix cluster deployments now display YAML variables and exposes them as input fields on the User Interface (UI)
-  during the cluster deployment process. Previously, the UI did not display the YAML variables for Nutanix clusters and
-  users had to manually update the machine template YAML. Check out the
-  [Create and Manage Nutanix Cluster](./clusters/data-center/nutanix/create-manage-nutanix-cluster.md) guide for more
-  details.
+- <ThemedImage
+    alt="Docusaurus themed image"
+    sources={{
+      light: "/img/tech-preview-dark.svg",
+      dark: "/img/tech-preview-light.svg",
+    }}
+  /> Nutanix cluster deployments now display YAML variables and exposes them as input fields on the User Interface (UI) during
+  the cluster deployment process. Previously, the UI did not display the YAML variables for Nutanix clusters and users had
+  to manually update the machine template YAML. Check out the [Create and Manage Nutanix Cluster](./clusters/data-center/nutanix/create-manage-nutanix-cluster.md)
+  guide for more details.
 
 - The cluster deployment user flow experience has been improved to streamline the cluster creation process. From the
   initial platform selection screen, you can now select between IaaS and managed Kubernetes clusters. The update
@@ -87,7 +107,18 @@ tags: ["release-notes"]
 - Support for TLS 1.3 is now available in VerteX. Clusters deployed through VerteX and the VerteX instance cluster
   itself now supports TLS 1.3.
 
+- Multiple system administrators can now be added to the VerteX system console to help manage and maintain the VerteX
+  instance. The feature helps organizations embrace the separation of duties by delegating different responsibilities to
+  system administrators. Refer to the
+  [System Administrators](./vertex/system-management/account-management/account-management.md#system-administrators)
+  page to learn more about system administrators.
+
 #### Improvements
+
+- Password enforcement for VerteX system administrators has been improved to ensure to comply with NIST password
+  specifications, NIST 800-53 and NIST 800-63B. Refer to
+  [Password Requirements and Security](./vertex/system-management/account-management/credentials.md#password-requirements-and-security)
+  page for more details.
 
 ### Terraform
 

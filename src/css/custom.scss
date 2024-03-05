@@ -213,3 +213,9 @@ p img.markdown-image {
   border: 1px solid var(--custom-important-color);
   background-color: var(--custom-alert-bg-color);
 }
+
+.custom-tp-badge {
+  display: initial;
+  height: auto;
+  max-width: 100%;
+}
