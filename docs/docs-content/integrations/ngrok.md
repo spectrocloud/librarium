@@ -4,10 +4,10 @@ title: "ngrok"
 description: "Learn about using ngrok Kubernetes Ingress to access applications in Palette."
 hide_table_of_contents: true
 type: "integration"
-category: ["ingress", "kubernetes", "amd64", "community"]
+category: ["ingress", "amd64", "community"]
 sidebar_class_name: "hide-from-sidebar"
 logoUrl: "https://registry.spectrocloud.com/v1/ngrok-ingress-controller/blobs/sha256:a723399d53d716c5441d57d021a7975d961e5b7db79ccb2bc10f7524ba7e67c1?type=image/png"
-tags: ["packs", "ngrok", "network", "kubernetes"]
+tags: ["packs", "ngrok", "network"]
 ---
 
 The ngrok [Ingress Controller for Kubernetes](https://github.com/ngrok/kubernetes-ingress-controller) adds public and
