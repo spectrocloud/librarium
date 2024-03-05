@@ -34,3 +34,5 @@ through the following pages.
 - [Deploy Cluster Profile Updates](./update-k8s-cluster.md)
 
 - [Deploy a Cluster with Terraform](./terraform.md)
+
+- [Palette Additional Capabilities](./additional-capabilities.md)
