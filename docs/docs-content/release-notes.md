@@ -17,16 +17,10 @@ import ThemedImage from "@theme/ThemedImage";
 
 #### Features
 
-- <ThemedImage
-    alt="Docusaurus themed image"
-    sources={{
-      light: "/img/tech-preview-dark.svg",
-      dark: "/img/tech-preview-light.svg",
-    }}
-    className="custom-tp-release-notes-badge"
-  /> Cluster Profile variables, a new feature that allows you to define variables in a cluster profile. This feature is in
-  Tech Preview and is available only for Edge clusters. Profile variables allow you to define variable types, apply validation,
-  and more. Refer to the Cluster Profile Variables documentation to learn more about profile variables.
+- <TechnicalPreviewReleaseNoteBadge /> Cluster Profile variables, a new feature that allows you to define variables in a
+  cluster profile. This feature is in Tech Preview and is available only for Edge clusters. Profile variables allow you
+  to define variable types, apply validation, and more. Refer to the Cluster Profile Variables documentation to learn
+  more about profile variables.
 
 - MAAS clusters using Palette eXtended Kubernetes (PXK) now support the ability to specify a custom MAAS API endpoint
   URL and port during cluster creation. This feature allows you to use a custom DNS server or Virtual IP (VIP) that is
@@ -46,17 +40,10 @@ import ThemedImage from "@theme/ThemedImage";
 
 #### Improvements
 
-- <ThemedImage
-    alt="Docusaurus themed image"
-    sources={{
-      light: "/img/tech-preview-dark.svg",
-      dark: "/img/tech-preview-light.svg",
-    }}
-    className="custom-tp-release-notes-badge"
-  /> Nutanix cluster deployments now display YAML variables and exposes them as input fields on the User Interface (UI) during
-  the cluster deployment process. Previously, the UI did not display the YAML variables for Nutanix clusters and users had
-  to manually update the machine template YAML. Check out the [Create and Manage Nutanix Cluster](./clusters/data-center/nutanix/create-manage-nutanix-cluster.md)
-  guide for more details.
+- <TechnicalPreviewReleaseNoteBadge /> Nutanix cluster deployments now display YAML variables and exposes them as input
+  fields on the User Interface (UI) during the cluster deployment process. Previously, the UI did not display the YAML
+  variables for Nutanix clusters and users had to manually update the machine template YAML. Check out the [Create and
+  Manage Nutanix Cluster](./clusters/data-center/nutanix/create-manage-nutanix-cluster.md) guide for more details.
 
 - The cluster deployment user flow experience has been improved to streamline the cluster creation process. From the
   initial platform selection screen, you can now select between IaaS and managed Kubernetes clusters. The update
