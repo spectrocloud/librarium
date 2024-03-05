@@ -206,6 +206,9 @@ docker tag alpine:latest 10.10.137.220:30003/spectro-images/alpine:latest
 docker push 10.10.137.220:30003/spectro-images/alpine:latest
 ```
 
+  </TabItem>
+  </Tabs>
+
 #### Enable Image Download from Outside of Harbor
 
 When a cluster uses the Harbor Edge-Native Config pack, the cluster assumes all images will be stored in Harbor after
@@ -279,9 +282,6 @@ Use the following steps, which uses Nginx deployment as an example, to label a n
    as the label will only apply to subsequent image pulls after it has been applied. You can do this by running the
    `kubectl apply` command again to reapply the manifest. Or use the `kubectl delete` command to delete the resource and
    wait for it to be re-created.
-
-  </TabItem>
-  </Tabs>
 
 ### Known Issues
 
