@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./SimpleCard.module.scss";
+import styles from "./SimpleCardGrid.module.scss";
 
 interface SimpleCardProps {
   cards?: SimpleCard[];
@@ -21,7 +21,7 @@ export default function SimpleCardGrid({ cards = [], cardsPerRow }: SimpleCardPr
   // Construct the rows according to how many elements we want per row
   let previousCards: SimpleCard[] = [];
   const rows: SimpleCardRow[] = [];
-  cards.map(function (card) {
+  cards.forEach((card) => {
     if (previousCards.length < cardsPerRow) {
       previousCards.push(card);
     } else {
