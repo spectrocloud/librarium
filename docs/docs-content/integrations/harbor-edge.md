@@ -209,10 +209,12 @@ docker push 10.10.137.220:30003/spectro-images/alpine:latest
 #### Enable Image Download from Outside of Harbor
 
 When a cluster uses the Harbor Edge-Native Config pack, the cluster assumes all images will be stored in Harbor after
-the initial download, because all images that are requested by Palette will be stored in the Harbor registry. This can
-cause issues if you want to use images that are not managed by Palette in your cluster. Harbor will not store those
-images because they are not part of your cluster profile and were not requested by Palette. However, the Palette agent
-in your Edge host will still try to pull those images from Harbor, resulting in ImagePullBackOff errors.
+the initial download. While it's true that all images in the cluster profile for that cluster and managed by Palette
+will be stored in the Harbor registry, images that are not managed by Palette will not exist in the Harbor registry.
+
+This can cause issues if you want to use images that are not managed by Palette in your cluster. Harbor will not store
+those images because they are not part of your cluster profile and were not requested by Palette. However, the Palette
+agent in your Edge host will still try to pull those images from Harbor, resulting in ImagePullBackOff errors.
 
 You can apply the label `stylus.io/imageswap=disable` to a namespace, which instructs the Palette agent to not pull
 images from the Harbor registry. You can do this when you create the namespace, or apply the label to existing
