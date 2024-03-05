@@ -23,7 +23,7 @@ import ThemedImage from "@theme/ThemedImage";
       light: "/img/tech-preview-dark.svg",
       dark: "/img/tech-preview-light.svg",
     }}
-    className="custom-tp-badge"
+    className="custom-tp-release-notes-badge"
   /> Cluster Profile variables, a new feature that allows you to define variables in a cluster profile. This feature is in
   Tech Preview and is available only for Edge clusters. Profile variables allow you to define variable types, apply validation,
   and more. Refer to the Cluster Profile Variables documentation to learn more about profile variables.
@@ -52,6 +52,7 @@ import ThemedImage from "@theme/ThemedImage";
       light: "/img/tech-preview-dark.svg",
       dark: "/img/tech-preview-light.svg",
     }}
+    className="custom-tp-release-notes-badge"
   /> Nutanix cluster deployments now display YAML variables and exposes them as input fields on the User Interface (UI) during
   the cluster deployment process. Previously, the UI did not display the YAML variables for Nutanix clusters and users had
   to manually update the machine template YAML. Check out the [Create and Manage Nutanix Cluster](./clusters/data-center/nutanix/create-manage-nutanix-cluster.md)

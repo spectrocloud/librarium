@@ -214,8 +214,9 @@ p img.markdown-image {
   background-color: var(--custom-alert-bg-color);
 }
 
-.custom-tp-badge {
+.custom-tp-release-notes-badge {
   display: initial;
   height: auto;
   max-width: 100%;
+  margin-bottom: -5px;
 }
