@@ -54,7 +54,7 @@ applications. Read more on [Palette VerteX](../vertex/vertex.md) page.
 
 ## Virtual Machine Orchestrator
 
-Palette Virtual Machine Orchestrator (VMO) allows you to run and manage traditional VM workloads within a modern
+Palette Virtual Machine Orchestrator (VMO) allows you to deploy and manage traditional VM workloads within a modern
 Kubernetes environment, side by side with your containerized applications. With VMO, you can deploy, manage, and scale
 VMs within the same cluster that hosts your containerized applications. VMs are managed as Kubernetes pods, ensuring
 complete mapping between the VM and Kubernetes concepts.
