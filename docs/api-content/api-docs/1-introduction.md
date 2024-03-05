@@ -300,7 +300,7 @@ If your credentials are valid, you will receive a authorization token.
 ```hideClipboard
 {
     "Token": {
-        "Authorization": "eyJhb_authorization_token_truncated"
+        "Authorization": "******"
     }
 }
 
