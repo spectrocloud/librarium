@@ -226,7 +226,7 @@ Use the following steps, which uses Nginx deployment as an example, to label a n
 1. Connect to the cluster via `kubectl`. For more information, refer to
    [Access Cluster with kubectl](../clusters/cluster-management/palette-webctl.md).
 
-2. (Optional) Skip this step if the namespace where you plan to create the resouces using a non-Palette managed image
+2. (Optional) Skip this step if the namespace where you plan to create the resources using a non-Palette managed image
    already exists in your cluster. Issue the following command to create a namespace where you plan to deploy the
    resources. Replace `namespace-name` with the name of your namespace.
 
