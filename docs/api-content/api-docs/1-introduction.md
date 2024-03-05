@@ -274,9 +274,7 @@ instead of on a Palette instance. You can use EMC API endpoints to programmatica
 information about Edge clusters, retrieve the list of available images on your Edge host, and create local clusters
 using embedded cluster definitions.
 
-:::warning
-
-This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
+:::preview
 
 :::
 

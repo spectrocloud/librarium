@@ -149,6 +149,10 @@ const config = {
         docItemComponent: "@theme/ApiItem",
         lastVersion: "current",
         includeCurrentVersion: true,
+        admonitions: {
+          keywords: ["preview"],
+          extendDefaults: true,
+        },
         versions: {
           current: {
             label: "latest",
