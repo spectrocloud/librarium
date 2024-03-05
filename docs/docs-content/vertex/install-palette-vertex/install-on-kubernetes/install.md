@@ -738,7 +738,7 @@ your environment. Reach out to our support team if you need assistance.
     appear. This is expected, as you still need to upload your SSL certificate to VerteX. You can ignore this warning
     message and proceed.
 
-    ![Screenshot of the VerteX system console showing Username and Password fields.](/vertex_install-on-kubernetes_install_system-console.png)
+    ![Screenshot of the VerteX system console showing Username and Password fields.](/vertex_install-on-kubernetes_install_system-console.webp)
 
 11. Log in to the system console using the following default credentials.
 

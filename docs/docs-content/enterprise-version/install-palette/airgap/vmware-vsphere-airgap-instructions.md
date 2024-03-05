@@ -23,7 +23,7 @@ available in the [Checklist](./checklist.md) page.
 The following diagram offers a general overview of the steps you will complete to prepare your airgap environment for
 Palette.
 
-![Overview diagram of the pre-install steps eager-load](/vertex_airgap_vmware-vsphere-airgap-instructions_order-operations.png)
+![Overview diagram of the pre-install steps eager-load](/vertex_airgap_vmware-vsphere-airgap-instructions_order-operations.webp)
 
 ## Prerequisites
 
@@ -110,7 +110,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     Palette install OVA URL in the **URL** field. The URL is provided to you by your Palette support representative.
     Click on **Next** to continue.
 
-    ![View of the OVF deploy wizard](/vertex_airgap_vmware-vsphere-airgap-instructions_ovf-wizard.png)
+    ![View of the OVF deploy wizard](/vertex_airgap_vmware-vsphere-airgap-instructions_ovf-wizard.webp)
 
 6.  Assign a name to the virtual machine and select a target location. Click on **Next** to continue.
 

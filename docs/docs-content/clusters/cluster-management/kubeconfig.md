@@ -38,7 +38,7 @@ Palette exposes two kubeconfig files for each cluster deployed through Palette.
   [Kubeconfig Access Permissions](#kubeconfig-access-permissions) section to learn more about access permissions for the
   admin kubeconfig file.
 
-![The cluster details page with the two Kubeconfig files elements highlighted](/clusters_cluster--management_kubeconfig_cluster-details-kubeconfig-files.png)
+![The cluster details page with the two Kubeconfig files elements highlighted](/clusters_cluster--management_kubeconfig_cluster-details-kubeconfig-files.webp)
 
 ## Kubeconfig Access Permissions
 
@@ -97,6 +97,7 @@ the resource key _cluster_ to access both kubeconfig files for a cluster.
 | Yes                     | Yes                           | ✅                            | ✅                                  |
 | No                      | Yes                           | ❌                            | ✅                                  |
 | Yes                     | No                            | ✅                            | ✅                                  |
+| No                      | No                            | ❌                            | ✅                                  |
 
 ### Non-Cluster Admin
 
@@ -112,6 +113,7 @@ enabled and the Spectro Proxy disabled, the kubeconfig file is available.
 | Yes                     | Yes                           | ✅                            | ❌                                  |
 | No                      | Yes                           | ❌                            | ❌                                  |
 | Yes                     | No                            | ✅                            | ❌                                  |
+| No                      | No                            | ❌                            | ❌                                  |
 
 ## API Access
 

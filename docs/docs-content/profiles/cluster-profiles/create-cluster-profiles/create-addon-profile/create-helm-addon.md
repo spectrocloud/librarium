@@ -69,7 +69,7 @@ For examples of pack structure for a Helm chart-based pack, review
 
 8. When you are done, click **Confirm & Create**, then click **Next** to review the profile.
 
-  <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.png) -->
+  <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.webp) -->
 
 9. Click **Finish Configuration** to create the cluster profile.
 

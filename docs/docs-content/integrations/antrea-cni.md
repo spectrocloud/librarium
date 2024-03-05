@@ -5,7 +5,7 @@ description: "Antrea CNI network pack for Palette Kubernetes Clusters"
 type: "integration"
 category: ["network", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/antrea/blobs/sha256:3c5704caf6652c63374282cbf413f8e73a77c4efbc49f375c19c73f8e2ec4148?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/antrea/blobs/sha256:3c5704caf6652c63374282cbf413f8e73a77c4efbc49f375c19c73f8e2ec4148?type=image.webp"
 tags: ["packs", "antrea", "cni", "network"]
 ---
 
