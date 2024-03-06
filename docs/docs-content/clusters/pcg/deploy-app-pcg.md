@@ -22,7 +22,7 @@ more information.
 
 Typically, a PCG is used with Palette SaaS and self-hosted Palette instances that do not have direct access to the
 target environment. However, a System Private Gateway is recommended when direct network connectivity is available.
-Visit the [System Private Gateway](./architecture.md/#system-private-gateway) section to learn more.
+Visit the [System Private Gateway](./architecture.md#system-private-gateway) section to learn more.
 
 A PCG comprises a cluster of nodes and can be deployed by two methods. These include using the
 [Palette CLI](./deploy-pcg/) for VMware vSphere, MAAS, or OpenStack environments, or deploying it
@@ -32,7 +32,8 @@ In this tutorial, you will deploy a VMware PCG using Palette CLI. Next, you will
 with a sample Kubernetes application called
 [Hello Universe](https://github.com/spectrocloud/hello-universe#hello-universe), utilizing either Palette or Terraform.
 
-The following diagram illustrates the components that will be deployed and how they communicate with each other.
+The following diagram illustrates the components that will be deployed in this tutorial and how they communicate with
+each other.
 
 ![An architecture diagram of PCG](/clusters_pcg_deploy-app-pcg_pcg-diagram.png)
 
@@ -43,10 +44,10 @@ To complete this tutorial, you will need the following prerequisites in place.
     - A Palette account with [tenant admin](../../tenant-settings/tenant-settings.md) access.
     - A Palette API key. Refer to the [Create API Key](../../user-management/authentication/api-key/create-api-key.md) page for instructions on how to create an API key.
     - A [VMware vSphere](https://docs.vmware.com/en/VMware-vSphere/index.html) user account with the required [permissions](../data-center/vmware.md/#vsphere-permissions), [roles](../data-center/vmware.md/#spectro-role-privileges), and [zone tagging](../data-center/vmware.md/#zone-tagging) defined.
-    - A Linux x86-64 machine with access to a terminal and internet, as well as established connections to both Palette and the VMware vSphere endpoint.
+    - A Linux x86-64 machine with access to a terminal and internet, as well as connection to both Palette and VMware vSphere.
     - An SSH key pair. Use the [Create and Upload an SSH Key](../cluster-management/ssh-keys.md) guide to learn how to create an SSH key and upload it to Palette.
     - The following IP address requirements must be met on VMware vSphere:
-        - One IP address available for a single-node PCG deployment. Refer to the [PCG Sizing](./manage-pcg/scale-pcg-nodes.md) section for more information on sizing.
+        - One IP address available for the single-node PCG deployment. Refer to the [PCG Sizing](./manage-pcg/scale-pcg-nodes.md) section for more information on sizing.
         - One IP address reserved for cluster repave operations.
         - One IP address for the Virtual IP (VIP).
         - DNS must be able to resolve the domain `api.spectrocloud.com`.
@@ -55,6 +56,8 @@ To complete this tutorial, you will need the following prerequisites in place.
         - CPU: 4 cores.
         - Memory: 4 GiB.
         - Storage: 60 GiB.
+
+        <br />
 
         :::info
 
@@ -105,30 +108,21 @@ Welcome to Spectro Cloud Palette
 The video below demonstrates Palette's authentication process. Ensure you utilize values appropriate for your
 environment.
 
-(TERMINAL RECORDING HERE)
+<Video title="palette-login-video" src="/videos/palette-login.mp4"></Video>
 
 ## Deploy a PCG with Palette CLI
 
-After successfully authenticating with Palette, you can proceed with the PCG creation process. Issue the command below
-to start the PCG installation.
+After authenticating with Palette, you can proceed with the PCG creation process. Issue the command below to start the
+PCG installation.
 
 ```bash
 palette pcg install
 ```
 
-:::info
-
-Optionally, you can use the command `palette pcg install` with the flag `--config-only` to generate a configuration file
-named **pcg.yaml**. This file is located at the home directory under the path **.palette/pcg**. You can then utilize
-this configuration file to install a PCG with predefined values. Refer to the
-[Palette CLI PCG Commands](../../palette-cli/commands/pcg.md) page to learn more about the `pcg` command.
-
-:::
-
 The `palette pcg install` command will prompt you for information regarding your PCG cluster, vSphere environment, and
-VMware resource configurations. The following tables display the required parameters along with the values that will be
-used in this tutorial. Enter the provided values when prompted. If a parameter is specific to your environment, such as
-your vSphere endpoint, enter the corresponding value according to your environment. For detailed information about each
+resource configurations. The following tables display the required parameters along with the values that will be used in
+this tutorial. Enter the provided values when prompted. If a parameter is specific to your environment, such as your
+vSphere endpoint, enter the corresponding value according to your environment. For detailed information about each
 parameter, refer to the [Deploy a PCG to VMware vSphere](../pcg/deploy-pcg/vmware.md) guide.
 
 :::info
@@ -229,20 +223,26 @@ environments.
    | ----------------- | --------- | ------------------------ |
    | **Node Affinity** | `N`       | No                       |
 
-After answering the prompts, a new PCG configuration file is generated, and its location is displayed on the console.
+After answering the prompts of the `pcg install` command, a new PCG configuration file is generated, and its location is
+displayed on the console.
 
 ```text hideClipboard
-==== PCG config saved ==== Location: :/home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
+==== PCG config saved ==== Location: /home/ubuntu/.palette/pcg/pcg-20240306182821/pcg.yaml
 ```
 
 Next, Palette CLI will create a local kind cluster that will be used to bootstrap the PCG cluster deployment in your
 VMware environment. Once installed, the PCG registers itself with Palette and creates a VMware cloud account with the
 same name as the PCG.
 
-The following terminal recording demonstrates the `pcg install --config-only` command, showcasing the series of prompts
-required to deploy a PCG cluster.
+The following recording demonstrates the `pcg install` command with the `--config-only` flag. When using this flag, a
+configuration file named **pcg.yaml** is created under the path **.palette/pcg**. You can then utilize this file to
+install a PCG with predefined values using the command `pcg install` with the `--config-file` flag. Refer to the
+[Palette CLI PCG Command](../../palette-cli/commands/pcg.md) page for further information about the command.
 
-((VIDEO RECORDING))
+<Video title="palette-pcg-config-only" src="/videos/palette-pcg.mp4"></Video>
+
+<br />
+<br />
 
 You can monitor the PCG cluster creation by logging into Palette, switching to the **Tenan Admin** scope, clicking on
 **Tenant Settings** from the left **Main Menu**, then selecting **Private Cloud Gateways** from the left **Tenant
@@ -250,6 +250,11 @@ Settings Menu**. Click on the PCG cluster you just deployed to access its **Over
 progress under the **Events** tab.
 
 ![PCG Events page.](/clusters_pcg_deploy-app-pcg_pcg-events.png)
+
+Additionally, you can observe the PCG deployment progress from your terminal. Upon completion, the local kind cluster is
+automatically deleted from your machine.
+
+![Palette CLI PCG deployment](/clusters_pcg_deploy-app-pcg_pcg-cli.png)
 
 ### Validate
 
@@ -263,7 +268,8 @@ PCG and confirm that its cluster status is **Running** and **Healthy**.
 
 Once you have successfully deployed the PCG, proceed to create a cluster profile with the
 [Hello Universe](hhttps://github.com/spectrocloud/hello-universe) application and use it to deploy a VMware cluster.
-This tutorial offers two different workflows: one through the Palette User Interface (UI) and the other using Terraform.
+This tutorial offers two different workflows: one utilizing the Palette User Interface (UI) and the other employing
+Terraform.
 
 <Tabs groupId="deploy-pcg">
 
@@ -549,8 +555,8 @@ Click on the URL for port **:8080** to access the Hello Universe application lan
 
 ![Hello Universe application](/clusters_pcg_deploy-app-pcg_hello-universe.png)
 
-Once you have completed the steps and accessed the application successfully, you have effectively deployed your first
-application to a VMware cluster managed by Palette.
+Once you have completed the steps and accessed the application, you have successfully deployed your first application to
+a VMware cluster managed by Palette.
 
 ## Clean Up
 
@@ -624,8 +630,8 @@ with a sample Kubernetes application to your VMware vSphere environment. Next, y
 application landing page through the exposed service URL.
 
 A PCG is a powerful component that enables Palette to communicate with private clouds or data center environments that
-restrict external connections. Through the PCG, you can deploy Palette clusters in environments such as VMware vSphere,
-securing lifecycle support and monitoring for your clusters.
+impose restrictions on external connections. With a PCG, you can deploy Palette clusters in environments such as VMware
+vSphere, while also providing lifecycle support and monitoring for your clusters.
 
 We encourage you to check out the reference resources below to learn more about PCGs.
 
