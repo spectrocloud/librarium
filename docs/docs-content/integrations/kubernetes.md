@@ -417,8 +417,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 You can specify a custom MAAS endpoint and port that instructs Palette to direct all MAAS API requests to the provided
 endpoint URL. Use the `cloud.maas.customEndpoint` and `cloud.maas.customEndpointPort` parameters to specify the custom
 MAAS API URL and port. This is useful in scenarios where the MAAS API endpoint is not resolvable outside of the MAAS
-network. Using the custom MAAS endpoint and port, you can direct all MAAS API requests to an resolves outside the MAAS
-network.
+network. 
 
 The following example shows how to specify a custom MAAS endpoint and port in the Kubernetes YAML file. Make sure the
 `cloud.maas` section is at the same level as the `pack` section.
