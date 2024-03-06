@@ -198,3 +198,6 @@ vCPU
 vCPUs
 preload
 preloaded
+eXtented
+Palette eXtented Kubernetes
+Palette eXtented Kubernetes - Edge

@@ -73,7 +73,7 @@ create the image.
 
 1.  Clone the KIB repository.
 
-          <Tabs>
+    <Tabs>
 
     <TabItem label="HTTPS" value="https">
 
@@ -89,9 +89,9 @@ create the image.
     git clone git@github.com:kubernetes-sigs/image-builder.git
     ```
 
-          </TabItem>
+    </TabItem>
 
-          </Tabs>
+    </Tabs>
 
 2.  Switch the directory into the image builder folder.
 

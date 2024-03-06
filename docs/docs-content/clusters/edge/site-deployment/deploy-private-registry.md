@@ -64,14 +64,14 @@ without a connection to external networks. For more information, refer to
 
    ```yaml
    pack:
-   content:
-   images:
-     - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
-     # - image: example.io/my-other-images/example:v1.0.0
-     # - image: example.io/my-super-other-images/example:v1.0.0
+     content:
+       images:
+         - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
+         # - image: example.io/my-other-images/example:v1.0.0
+         # - image: example.io/my-super-other-images/example:v1.0.0
 
    options:
-   system.uri: example.io/my-images/example-custom-os:v1.4.5
+     system.uri: example.io/my-images/example-custom-os:v1.4.5
    ```
 
    :::warning
@@ -90,27 +90,27 @@ without a connection to external networks. For more information, refer to
    providing it directly in the YAML file. For more information, refer to
    [Macros Support](../../cluster-management/macros.md):
 
-   ```yaml {7-16}
+   ```yaml {7-8}
    pack:
-   content:
-   images:
-      - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
-      # - image: example.io/my-other-images/example:v1.0.0
-      # - image: example.io/my-super-other-images/example:v1.0.0
+     content:
+       images:
+         - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
+         # - image: example.io/my-other-images/example:v1.0.0
+         # - image: example.io/my-super-other-images/example:v1.0.0
    providerCredentials:
-   registry: <registry_domain or IP Address>
-   # - e.x. registry: registry-1.docker.io
-   user: user
-   password: ******
-   certificates: |
-      -----BEGIN CERTIFICATE-----
-      MIIDVzCCAj+gAwIBAgIRANtGPo/hFkZtYRNw0KaeW54wDQYJKoZIhvcNAQELBQAw
-      ----------------------------------------------------------------
-      7OicCaV35lje5FSl0owu74ghAlCgMyAdKsJf615g1kKO4V5E2BMErd9Ibw==
-      -----END CERTIFICATE-----
+     registry: <registry_domain or IP Address>
+       # - e.x. registry: registry-1.docker.io
+     user: user
+     password: ******
+     certificates: |
+       -----BEGIN CERTIFICATE-----
+       MIIDVzCCAj+gAwIBAgIRANtGPo/hFkZtYRNw0KaeW54wDQYJKoZIhvcNAQELBQAw
+       ----------------------------------------------------------------
+       7OicCaV35lje5FSl0owu74ghAlCgMyAdKsJf615g1kKO4V5E2BMErd9Ibw==
+       -----END CERTIFICATE-----
 
    options:
-   system.uri: example.io/my-images/example-custom-os:v1.4.5
+     system.uri: example.io/my-images/example-custom-os:v1.4.5
    ```
 
 7. If you are updating an existing profile, click **Confirm changes**, and then click **Save changes** to publish the
