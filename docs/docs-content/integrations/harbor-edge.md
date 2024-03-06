@@ -241,7 +241,7 @@ through the command-line.
    kubectl label namespace namespace-name stylus.io/imageswap=disable
    ```
 
-3. Deploy the resouces into the namespace with the label `stylus.io/imageswap=disable`, and the Palette agent will pull
+3. Deploy the resources into the namespace with the label `stylus.io/imageswap=disable`, and the Palette agent will pull
    the image from registiries you specify instead of from the Harbor registry.
 
    If you already deployed the resources before applying the label, you will need to trigger another image pull action
@@ -264,7 +264,7 @@ through the command-line.
    to [Profile Customizations](../profiles/profile-customization.md) for more information on how to apply labels to
    namespaces.
 
-5. Deploy the resouces into the namespace with the label `stylus.io/imageswap=disable`, and the Palette agent will pull
+5. Deploy the resources into the namespace with the label `stylus.io/imageswap=disable`, and the Palette agent will pull
    the image from registiries you specify instead of from the Harbor registry.
 
 </TabItem>
