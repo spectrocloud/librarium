@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Customize Edge Management Console Theme"
 title: "Customize Edge Management Console Theme"
-description: "Instructions for Edge Host Manage"
+description: "Instructions for customizing EMC theme."
 hide_table_of_contents: false
 sidebar_position: 100
 tags: ["edge"]
@@ -18,7 +18,8 @@ look feel of the console for all Edge hosts of your organization.
 ## Prerequisites
 
 - The theme customization process prior to deployment is based on the EdgeForge process. We recommend that you
-  familiarize yourself with EdgeForge and the process to build Edge artifacts.
+  familiarize yourself with [EdgeForge](../../edgeforge-workflow/edgeforge-workflow.md) and the process to build Edge
+  artifacts.
 
 - A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture to build the Edge
   artifacts. You can issue the following command in the terminal to check your processor architecture.
@@ -66,7 +67,7 @@ look feel of the console for all Edge hosts of your organization.
 4. In the directory, create a file named **customizations.json**.
 
 5. Upload a logo you'd like to use for EMC to the **ui** directory. All file types are allowed. We recommend you limit
-   the height of the logo image to between 64px and 120 px. If you don't upload a logo, EMC will use the Spectro Cloud
+   the height of the logo image to between 64 px and 120 px. If you don't upload a logo, EMC will use the Spectro Cloud
    logo.
 
 6. Populate the file with the following schema:

@@ -37,8 +37,16 @@ host. A cluster definition contains one or more cluster profiles, including the 
 
 5. Extract the project ID and the profile ID from the URL.
 
-6. Use the [Download Cluster Definition API] to download the cluster definition. The endpoint location is
-   `POST https://<palette-instance-url>/v1/spectroclusters/spc/download`.
+6. If you want to include another profile in the cluster definition, repeat step 3 - 4 and extract the profile ID for
+   each profile you want to export. All profiles must be in the same project.
+
+   Make sure the combination of profiles you choose to export can be used to provision a cluster together. This means
+   that you cannot include more than one profile that has infrastructure layers and cannot have duplicate packs between
+   the profiles.
+
+7. Use the Palette Download Cluster Definition API to download the cluster definition. The endpoint location is
+   `POST https://api.spectrocloud.com/v1/spectroclusters/spc/download`. If you are using a self-hosted Palette instance,
+   replace the base URL `api.spectrocloud.com` with API endpoint address of your Palette instance.
 
    The endpoint takes a few header arguments and a request body.
 
@@ -50,11 +58,11 @@ host. A cluster definition contains one or more cluster profiles, including the 
 
    In the request body, you must provide the ID of the cluster profiles to include in the cluster definition.
 
-   | Parameter        | Description                                                                                                                                                                                                                    |
-   | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | `metadata`       | You must set the value of this field to `{"name":"cluster-profiles"}`.                                                                                                                                                         |
-   | `spec.cloudType` | You must set the value of this field to `edge-native`.                                                                                                                                                                         |
-   | `spec.profiles`  | Provide a list of cluster profiles to include in the cluster definition. In side the list are objects representing the cluster profiles. Each object must have the required key `uid`, which is the ID of the cluster profile. |
+   | Parameter        | Description                                                                                                                                                                                                                           |
+   | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `metadata`       | You must set the value of this field to `{"name":"cluster-profiles"}`.                                                                                                                                                                |
+   | `spec.cloudType` | You must set the value of this field to `edge-native`.                                                                                                                                                                                |
+   | `spec.profiles`  | Provide the exact list of cluster profiles to include in the cluster definition. Inside the list are objects representing the cluster profiles. Each object must have the required key `uid`, which is the ID of the cluster profile. |
 
    The following curl command is an example.
 

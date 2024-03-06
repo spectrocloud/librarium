@@ -18,8 +18,12 @@ without connections to a Palette instance.
 
 ![A diagram illustrating how users and use EdgeForge and Edge Management Console to deploy clusters without a Palette connection](/clusters_edge_emc_workflow.png)
 
+:::warning
+
 EMC on works for Edge deployment in disconnected environments. A disconnected environment means that the Edge host does
 not have a connection to a Palette instance. Do not use EMC if your cluster has a connection to a Palette instance.
+
+:::
 
 Refer to the follow resources to learn how to use EMC to manage your disconnected Edge deployment:
 

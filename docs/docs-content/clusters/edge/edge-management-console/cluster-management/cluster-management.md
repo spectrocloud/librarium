@@ -9,7 +9,8 @@ tags: ["edge"]
 
 Edge Management Console (EMC) allows you to upload content bundles to the Edge host. The content in the content bundles
 can then be used to create a single-node cluster consisting of the Edge host itself. You can also import cluster
-definitions from Palette to define your Edge cluster.
+definitions, which is a bundle of one or more cluster profiles and their profile variables, from Palette to define your
+Edge cluster.
 
 :::preview
 

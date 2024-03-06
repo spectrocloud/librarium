@@ -70,7 +70,7 @@ deploy Kubernetes clusters to public cloud providers, on-prem data centers, and 
 
 ## Cluster Definition
 
-A Cluster Definition contain one or more cluster profiles and profile variables used in those profiles.
+A Cluster Definition contain one or more cluster profiles, including profile variables used in those profiles.
 
 ## Cluster Profile
 
