@@ -8,7 +8,7 @@ tags: ["edge"]
 ---
 
 When you boot up an Edge host for the first time after installation, if you enabled initial configuration in the user
-data, you will be prompted to configure the Edge host and its network environment in a terminal user interface (TUI).
+data, you will be prompted to configure the Edge host and its network environment in a Terminal User Interface (TUI).
 This includes the configuration of an OS user, machine hostname, IP address, and DNS server.
 
 You may already have specified some of these configurations in the **user-data** file in the EdgeForge process or have

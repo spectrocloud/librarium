@@ -7,9 +7,9 @@ sidebar_position: 100
 tags: ["edge"]
 ---
 
-Palette offers the option to customize the Edge Management Console web interface. You can change the color of the side
-bar as well as using your own logo. You can do this before deployment during the EdgeForge process to standardize the
-look feel of the console for all Edge hosts of your organization.
+Palette offers the option to customize the Edge Management Console web interface. You can change the color of the
+sidebar as well as using your own logo. You can do this before deployment during the EdgeForge process to standardize
+the look feel of the console for all Edge hosts of your organization.
 
 :::preview
 

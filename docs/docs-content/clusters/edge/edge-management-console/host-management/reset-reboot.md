@@ -46,8 +46,8 @@ rebooting.
 ## Reset Edge Host to Factory Default
 
 You can reset an Edge host to factory default from Edge Management Console (EMC). This restores the Edge host to the
-state right after the [initial configuration](../../site-deployment/initial-setup.md) is completed in the terminal user
-interface (TUI). Reset to factory default removes all workloads, content, and cluster definition from the Edge host.
+state right after the [initial configuration](../../site-deployment/initial-setup.md) is completed in the Terminal User
+Interface (TUI). Reset to factory default removes all workloads, content, and cluster definition from the Edge host.
 This includes content bundles that were built into the ISO image during EdgeForge.
 
 :::info
@@ -104,5 +104,5 @@ You can shut down the Edge host from EMC.
 
 1. After confirming, a message displays that the Edge host will shut down.
 
-2. Verify that the Edge host has shut down by observing the hardware has stopped. If your Edge host is a Virtual
-   Machine (VM), observe on the VM platform that the VM is powered off.
+2. Verify that the Edge host has shut down by observing the hardware has stopped. If your Edge host is a Virtual Machine
+   (VM), observe on the VM platform that the VM is powered off.
