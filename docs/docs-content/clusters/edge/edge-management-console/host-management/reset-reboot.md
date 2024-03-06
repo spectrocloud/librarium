@@ -22,7 +22,7 @@ rebooting.
 
 - Network access to EMC. Default port is 5080.
 
-- Credentials to log in to the EMC. Any OS user can be used to log into EMC.
+- Credentials to log in to the EMC. Any Operating System (OS) user can be used to log into EMC.
 
 ### Instructions
 
@@ -94,7 +94,7 @@ You can shut down the Edge host from EMC.
 
 1. Log in to [EMC](./access-console.md#log-in-to-edge-management-console).
 
-2. Under the upper-right **User Menu**, click on **Actions** to open the actions drop-down menu.
+2. Under the upper-right **User Menu**, click on **Actions** to open the actions **drop-down Menu**.
 
 3. Click **Shutdown**.
 
@@ -104,5 +104,5 @@ You can shut down the Edge host from EMC.
 
 1. After confirming, a message displays that the Edge host will shut down.
 
-2. Verify that the Edge host has shut down by observing the hardware has stopped running. If your Edge host is a Virtual
+2. Verify that the Edge host has shut down by observing the hardware has stopped. If your Edge host is a Virtual
    Machine (VM), observe on the VM platform that the VM is powered off.

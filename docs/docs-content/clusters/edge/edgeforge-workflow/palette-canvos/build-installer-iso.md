@@ -8,7 +8,7 @@ sidebar_position: 30
 tags: ["edge"]
 ---
 
-The Edge Installer ISO is an ISO file that bootstraps the installation and is created in the EdgeForge process. The ISO
+The Edge Installer ISO is a file that bootstraps the installation and is created in the EdgeForge process. The ISO
 image contains the Edge Installer that installs the Palette Edge host agent and metadata to perform the initial
 installation.
 
