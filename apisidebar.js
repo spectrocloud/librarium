@@ -10,6 +10,12 @@ if (fs.existsSync(sidebarFilePath)) {
   sidebarItems = require(sidebarFilePath);
 }
 
+let emcSidebarItems = [];
+const sidebarEmcFilePath = "./docs/api-content/api-docs/edge-v1/sidebar.ts";
+if (fs.existsSync(sidebarEmcFilePath)) {
+  emcSidebarItems = require(sidebarEmcFilePath);
+}
+
 module.exports = {
   apiSidebar: [
     { type: "doc", id: "introduction", label: "Introduction" },
@@ -20,6 +26,12 @@ module.exports = {
       label: "Palette API V1",
       link: { type: "generated-index", title: "Palette API V1" },
       items: sidebarItems,
+    },
+    {
+      type: "category",
+      label: "Edge Management Console API V1",
+      link: { type: "generated-index", title: "EMC API V1" },
+      items: emcSidebarItems,
     },
   ],
 };
