@@ -43,7 +43,7 @@ To complete this tutorial, you will need the following prerequisites in place.
 
     - A Palette account with [tenant admin](../../tenant-settings/tenant-settings.md) access.
     - A Palette API key. Refer to the [Create API Key](../../user-management/authentication/api-key/create-api-key.md) page for instructions on how to create an API key.
-    - A [VMware vSphere](https://docs.vmware.com/en/VMware-vSphere/index.html) user account with the required [permissions](../data-center/vmware.md/#vsphere-permissions), [roles](../data-center/vmware.md/#spectro-role-privileges), and [zone tagging](../data-center/vmware.md/#zone-tagging) defined.
+    - A [VMware vSphere](https://docs.vmware.com/en/VMware-vSphere/index.html) user account with the required [permissions](../data-center/vmware.md#vsphere-permissions), [roles](../data-center/vmware.md#spectro-role-privileges), and [zone tagging](../data-center/vmware.md#zone-tagging) defined.
     - A Linux x86-64 machine with access to a terminal and internet, as well as connection to both Palette and VMware vSphere.
     - An SSH key pair. Use the [Create and Upload an SSH Key](../cluster-management/ssh-keys.md) guide to learn how to create an SSH key and upload it to Palette.
     - The following IP address requirements must be met on VMware vSphere:
