@@ -241,8 +241,8 @@ through the command-line.
    kubectl label namespace namespace-name stylus.io/imageswap=disable
    ```
 
-3. Deploy the resources into the namespace with the label `stylus.io/imageswap=disable`, and the Palette agent will pull
-   the image from registiries you specify instead of from the Harbor registry.
+3. Deploy the resources into the namespace. Since the namespace has the label `stylus.io/imageswap=disable`, the Palette
+   agent will pull the image from registiries you specify instead of from the Harbor registry.
 
    If you already deployed the resources before applying the label, you will need to trigger another image pull action
    as the label will only apply to subsequent image pulls after it has been applied. You can do this by running the
@@ -262,10 +262,19 @@ through the command-line.
 4. Click on **Add Manifest** to add a new manifest to your cluster profile containing the namespaces you plan to deploy
    resources to. Create a namespace if needed, and apply the label `stylus.io/imageswap=disable` to the namespace. Refer
    to [Profile Customizations](../profiles/profile-customization.md) for more information on how to apply labels to
-   namespaces.
+   namespaces. For example, the following pack YAML creates a namespaced called `"wordpress"` and applies the label
+   `stylus.io/imageswap=disable` to the namespace.
 
-5. Deploy the resources into the namespace with the label `stylus.io/imageswap=disable`, and the Palette agent will pull
-   the image from registiries you specify instead of from the Harbor registry.
+   ```yaml
+   pack:
+     namespace: "wordpress"
+
+     namespaceLabels:
+       "wordpress": "stylus.io/imageswap=disable"
+   ```
+
+5. Deploy the resources into the namespace. Since the namespace has the label `stylus.io/imageswap=disable`, the Palette
+   agent will pull the image from registiries you specify instead of from the Harbor registry.
 
 </TabItem>
 </Tabs>
