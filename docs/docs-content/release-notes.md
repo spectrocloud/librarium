@@ -61,6 +61,10 @@ tags: ["release-notes"]
   Refer to the Palette CLI [Validator](./palette-cli/commands/validator.md) page to learn how to use Validator with the
   Palette CLI.
 
+- Packs that are marked as _Disabled_ are no longer displayed in the cluster profile creation wizard. Existing cluster
+  profiles containing disabled packs are not affected and continue to work as expected. Refer to the
+  [maintenance policy](./integrations/maintenance-policy.md#pack-deprecations) page to learn more.
+
 - Several enhancements have been added to the Palette CLI [Validator](./palette-cli/commands/validator.md) command that
   improves the user experience. The enhancements include a Validator upgrade feature, a describe subcommand that
   displays results more clearly, an interactive re-configure option, the ability to restart the wizard, and more.
@@ -162,7 +166,15 @@ tags: ["release-notes"]
 
 ### Docs and Education
 
--
+- A new tutorial [Deploy Cluster Profile Updates](./clusters/cluster-management/update-k8s-cluster.md) is now available
+  that guides you through the process of updating a cluster profile.
+
+- A new pack, [Hello Universe](https://github.com/spectrocloud/pack-central/tree/main/packs/hello-universe-1.1.1) is now
+  available in the Pack community repository.
+
+- A new documentation section for PCG has been added to the Palette documentation. The new section consolidates
+  information about the PCG and how to install and configure it. Refer to the
+  [Private Cloud Gateway](./clusters/pcg/pcg.md) page to learn more about PCG.
 
 ### Packs
 
@@ -174,16 +186,96 @@ tags: ["release-notes"]
 
 #### Kubernetes
 
+| Pack                                       | New Version |
+| ------------------------------------------ | ----------- |
+| K3s                                        | 1.25.15     |
+| K3s                                        | 1.26.10     |
+| K3s                                        | 1.27.7      |
+| K3s                                        | 1.28.2      |
+| Kubernetes AKS                             | 1.28.0      |
+| Kubernetes EKS                             | 1.28.0      |
+| Kubernetes GKE                             | 1.25.14     |
+| Kubernetes GKE                             | 1.25.14     |
+| Kubernetes GKE                             | 1.27.6      |
+| Palette eXtended Kubernetes (PXK)          | 1.25.15     |
+| Palette eXtended Kubernetes (PXK)          | 1.26.10     |
+| Palette eXtended Kubernetes (PXK)          | 1.27.7      |
+| Palette eXtended Kubernetes (PXK)          | 1.28.3      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.25.15     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.26.10     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.7      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.28.2      |
+| RKE2                                       | 1.26.11     |
+| RKE2                                       | 1.27.8      |
+| RKE2                                       | 1.28.2      |
+
 #### CNI
+
+| Pack           | New Version |
+| -------------- | ----------- |
+| Azure Disk CSI | 1.29.1      |
+| AWS EBS CSI    | 1.24.0      |
+| Longhorn CSI   | 1.5.3       |
+| Nutanix CSI    | 2.6.6       |
+| Rook Ceph CSI  | 1.12.7      |
+| Portworx CSI   | 3.0.4       |
 
 #### CSI
 
+| Pack        | New Version |
+| ----------- | ----------- |
+| AWS VPC CNI | 1.15.1      |
+| Calico      | 3.26.3      |
+| Cilium CNI  | 1.14.3      |
+| Flannel     | 0.23.0      |
+
 #### Add-on Packs
+
+| Pack                      | New Version |
+| ------------------------- | ----------- |
+| ArgoCD                    | 5.46.8      |
+| External Secrets Operator | 0.9.7       |
+| Flux2 CD                  | 2.10.2      |
+| Imageswap                 | 1.5.3       |
+| Istio                     | 1.18.2      |
+| Kong Ingress              | 2.32.0      |
+| MetalLB                   | 0.13.11     |
+| Nginx Ingress             | 1.9.4       |
+| Nvidia GPU Operator       | 23.9.1      |
+| Open Policy Agent         | 3.13.2      |
+| Prometheus Grafana        | 51.0.3      |
+| Reloader                  | 1.0.43      |
+| Spot.io                   | 1.0.117     |
 
 #### FIPS Packs
 
+| Pack                                       | New Version |
+| ------------------------------------------ | ----------- |
+| Azure CSI Driver                           | 1.28.3      |
+| Palette eXtended Kubernetes (PXK)          | 1.25.15     |
+| Palette eXtended Kubernetes (PXK)          | 1.26.10     |
+| Palette eXtended Kubernetes (PXK)          | 1.27.7      |
+| Palette eXtended Kubernetes (PXK)          | 1.28.3      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.25.9      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.26.4      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.2      |
+| RKE2                                       | 1.26.11     |
+| RKE2                                       | 1.27.8      |
+| RKE2                                       | 1.28.6      |
+| RKE2 - Edge                                | 1.25.2      |
+| RKE2 - Edge                                | 1.26.4      |
+| RKE2 - Edge                                | 1.27.2      |
+
 #### Pack Notes
 
+- The following two packs are now classified as [Verified packs](./integrations/verified_packs.md) - ArgoCD, and
+  Spot.io.
+
 #### Deprecations and Removals
+
+- All Kubernetes 1.25 packs are deprecated.
+- All Kubernetes 1.24 packs and prior are disabled.
+- Kubernetes packs prior to version 1.25 for Azure AKS and Google GKE are deleted and removed.
+- Kubernetes AKS version 1.26 is deprecated.
 
 - Check out the [Deprecated Packs](integrations/deprecated-packs.md) page for a list of deprecated packs.
