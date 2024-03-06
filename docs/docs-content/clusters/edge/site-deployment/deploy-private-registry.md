@@ -78,29 +78,29 @@ registry URL and the credentials needed to authenticate with the registry in the
    be masked when you provide it in the YAML file. You can also use a macro to store your credentials instead of
    providing it directly in the YAML file. For more information, refer to
    [Macros Support](../../cluster-management/macros.md):
-  
-  ```yaml
-  pack:
-    content:
-      images:
-        - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
-        # - image: example.io/my-other-images/example:v1.0.0
-        # - image: example.io/my-super-other-images/example:v1.0.0
-  providerCredentials:
-    registry: <registry_domain or IP Address>
-      # - e.x. registry: registry-1.docker.io
-    user: user
-    password: ******
-    certificates: |
-      -----BEGIN CERTIFICATE-----
-      MIIDVzCCAj+gAwIBAgIRANtGPo/hFkZtYRNw0KaeW54wDQYJKoZIhvcNAQELBQAw
-      ----------------------------------------------------------------
-      7OicCaV35lje5FSl0owu74ghAlCgMyAdKsJf615g1kKO4V5E2BMErd9Ibw==
-      -----END CERTIFICATE-----
-  
-  options:
-    system.uri: example.io/my-images/example-custom-os:v1.4.5
-  ```
+
+   ```yaml {7-8}
+   pack:
+     content:
+       images:
+         - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
+         # - image: example.io/my-other-images/example:v1.0.0
+         # - image: example.io/my-super-other-images/example:v1.0.0
+   providerCredentials:
+     registry: <registry_domain or IP Address>
+       # - e.x. registry: registry-1.docker.io
+     user: user
+     password: ******
+     certificates: |
+       -----BEGIN CERTIFICATE-----
+       MIIDVzCCAj+gAwIBAgIRANtGPo/hFkZtYRNw0KaeW54wDQYJKoZIhvcNAQELBQAw
+       ----------------------------------------------------------------
+       7OicCaV35lje5FSl0owu74ghAlCgMyAdKsJf615g1kKO4V5E2BMErd9Ibw==
+       -----END CERTIFICATE-----
+
+   options:
+     system.uri: example.io/my-images/example-custom-os:v1.4.5
+   ```
 
 7. If you are updating an existing profile, click **Confirm changes**, and then click **Save changes** to publish the
    new version of your cluster profile. If you are creating a new profile, click **Next layer** and finish configuring
