@@ -32,7 +32,7 @@ create a Kubernetes cluster in MAAS that is managed by Palette.
 :::warning
 
 If the MAAS API server URL is not resolvable outside of the MAAS environment, you can specify a different URL in the
-cluster profile's Kubernetes YAML. This feature is only supported in Palette eXtented Kubernetes (PKX). For more
+cluster profile's Kubernetes YAML. This feature is only supported in Palette eXtented Kubernetes (PXK). For more
 information, refer to the [Custom MAAS Endpoint](../../../integrations/kubernetes.md#custom-maas-endpoint) section of
 the PXK reference page.
 
