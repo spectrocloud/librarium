@@ -21,7 +21,7 @@ through how to create a cluster using Edge Management Console.
 
 ## Prerequisites
 
-- Network access to the Edge device's port where EMC is exposed. The default port is 5080.
+- Network access to the Edge device’s IP and port where EMC is exposed. The default port is 5080.
 
 - Credentials to log into EMC. Any OS user can be used to log in to EMC.
 

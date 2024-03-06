@@ -20,7 +20,7 @@ rebooting.
 
 ### Prerequisite
 
-- Network access to EMC. Default port is 5080.
+- Network access to the Edge device’s IP and port where EMC is exposed. The default port is 5080.
 
 - Credentials to log in to the EMC. Any Operating System (OS) user can be used to log into EMC.
 
@@ -59,7 +59,7 @@ information about HTTP proxy, refer to [Configure HTTP Proxy](configure-proxy.md
 
 ### Prerequisite
 
-- Network access to EMC. Default port is 5080.
+- Network access to the Edge device’s IP and port where EMC is exposed. The default port is 5080.
 
 - Credentials to log in to the EMC. Any OS user can be used to log into EMC.
 
@@ -86,7 +86,7 @@ You can shut down the Edge host from EMC.
 
 ### Prerequisites
 
-- Network access to EMC. Default port is 5080.
+- Network access to the Edge device’s IP and port where EMC is exposed. The default port is 5080.
 
 - Credentials to log in to the EMC. Any OS user can be used to log into EMC.
 
