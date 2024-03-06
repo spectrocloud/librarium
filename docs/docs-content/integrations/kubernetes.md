@@ -103,6 +103,8 @@ four months. Once we stop supporting the minor version, we initiate the deprecat
 | `kubeadmconfig.preKubeadmCommands`               | A list of additional commands to invoke **before** running kubeadm commands.                                                                                                                                                                                                                                                                                                                                   |
 | `kubeadmconfig.postKubeadmCommands`              | A list of additional commands to invoke **after** running kubeadm commands.                                                                                                                                                                                                                                                                                                                                    |
 | `kubeadmconfig.clientConfig`                     | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](#configure-custom-oidc).                                                                                                                                                                                                                                                 |
+| `cloud.maas.customEndpoint`                      | The custom MaaS API or DNS endpoint URL to use for the PXK cluster. This parameter is only available for MaaS.                                                                                                                                                                                                                                                                                                 |
+| `cloud.maas.customEndpointPort`                  | The custom MaaS API or DNS endpoint port to use for the PXK cluster. This parameter is only available for MaaS. Default value is `6443`.                                                                                                                                                                                                                                                                       |
 
 ## Usage
 
@@ -409,6 +411,33 @@ pack with all the correct OIDC settings, you could then create a role binding fo
 In this example, Palette is used as the IDP, and all users in the `dev-east-2` would inherit the `cluster-admin` role.
 
 ![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
+
+### Custom MAAS Endpoint
+
+You can specify a custom MAAS endpoint and port that instructs Palette to direct all MAAS API requests to the provided
+endpoint URL. Use the `cloud.maas.customEndpoint` and `cloud.maas.customEndpointPort` parameters to specify the custom
+MAAS API URL and port. This is useful in scenarios where the MAAS API endpoint is not resolvable outside of the MAAS
+network. Using the custom MAAS endpoint and port, you can direct all MAAS API requests to an resolves outside the MAAS
+network.
+
+The following example shows how to specify a custom MAAS endpoint and port in the Kubernetes YAML file. Make sure the
+`cloud.maas` section is at the same level as the `pack` section.
+
+```yaml hideClipboard {10-14}
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+  palette:
+    config:
+      dashboard:
+        identityProvider: palette
+
+cloud:
+  maas:
+    customEndpoint: "maas-api.example.maas.org"
+    customEndpointPort: "6443"
+```
 
 </TabItem>
 
