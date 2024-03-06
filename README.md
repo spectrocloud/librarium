@@ -512,7 +512,8 @@ The following badges are available for use:
 #### Technical Preview Badge
 
 The technical preview badge is used to indicate that a feature is in technical preview. The badge is intended for
-release notes in the context of a list. The following is an example of how to use the technical preview badge.
+release notes in the context of a list. The following is an example of how to use the technical preview badge. The
+component will automatically display the badge in the correct color based on the light theme (dark/light).
 
 ```markdown
 - <TpBadge /> Cluster Profile variables, a new feature that allows you to define variables in a cluster profile. This

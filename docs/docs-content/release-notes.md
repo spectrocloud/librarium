@@ -48,7 +48,22 @@ tags: ["release-notes"]
   combines the selection of platform and type of Kubernetes cluster while also detecting and notifying if a prerequisite
   is not met.
 
+- When installing a Private Cloud Gateway (PCG) or a self-hosted Palette instance through the Palette CLI, you can now
+  benefit from additional checks and user feedback that ensure the installation process is successful. This new feedback
+  experience gives you a better understanding of the components being installed and the progress of the installation. In
+  case of a failure, the failed component is highlighted, and an error message is displayed.
+
 - Imported clusters now have support for updating network proxy configurations as a day-2 operation.
+
+- The [Validator AWS](https://github.com/spectrocloud-labs/validator-plugin-aws) plugin now reports IAM permissions
+  issues that are caused by
+  [Service control policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html).
+  Refer to the Palette CLI [Validator](./palette-cli/commands/validator.md) page to learn how to use Validator with the
+  Palette CLI.
+
+- Several enhancements have been added to the Palette CLI [Validator](./palette-cli/commands/validator.md) command that
+  improves the user experience. The enhancements include a Validator upgrade feature, a describe subcommand that
+  displays results more clearly, an interactive re-configure option, the ability to restart the wizard, and more.
 
 #### Known Issues
 
@@ -98,6 +113,11 @@ tags: ["release-notes"]
   system administrators. Refer to the
   [System Administrators](./vertex/system-management/account-management/account-management.md#system-administrators)
   page to learn more about system administrators.
+
+- The Palette CLI now supports the ability to scan deployed clusters and check for FIPS compliance using the
+  `fips-validate` command. The command scans the cluster and reports the FIPS compliance status of images. The command
+  also supports checking exposed service endpoints for approved ciphers and TLS versions. Images and service endpoints
+  that are not compliant are reported with a failed status.
 
 #### Improvements
 
