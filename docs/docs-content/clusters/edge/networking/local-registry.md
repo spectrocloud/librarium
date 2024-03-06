@@ -13,9 +13,9 @@ registry, including your provider images and all packs used by your cluster. Sub
 made to the local Harbor registry. This allows your Edge cluster to reboot containers or add new nodes without being
 connected to the external network.
 
-If you specified the installation mode of the Edge Installer to be `airgap`, the Harbor registry also downloads any
-images and artifacts from the content bundle of the Edge Installer ISO. For more information about building content
-bundles, refer to [Build Content Bundle](../edgeforge-workflow/build-content-bundle.md) and
+If you specified the installation mode of the Edge Installer to be `airgap`, any images that were included in the Edge
+Installer ISO will also be loaded into the Harbor registry. For more information about building content bundles, refer
+to [Build Content Bundle](../edgeforge-workflow/build-content-bundle.md) and
 [Build Edge Artifacts with Content Bundles](../edgeforge-workflow/palette-canvos/).
 
 If you enable the local Harbor registry on a cluster, the Palette agent will pull all images requested by the cluster
