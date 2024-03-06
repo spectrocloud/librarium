@@ -109,8 +109,9 @@ tags: ["release-notes"]
   [network overlay](./clusters/edge/networking/vxlan-overlay.md) feature.
 
 - Edge hosts using a local image registry through Harbor can now disable image pulls from the local registry through
-  namespace annotations. Refer to the [Harbor Edge](./integrations/harbor-edge.md) reference page to learn more about
-  the feature.
+  namespace annotations. Refer to the
+  [Harbor Edge](./integrations/harbor-edge.md#enable-image-download-from-outside-of-harbor) reference page to learn more
+  about the feature.
 
 #### Known Issues
 
