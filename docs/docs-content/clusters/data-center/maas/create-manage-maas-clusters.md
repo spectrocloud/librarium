@@ -29,6 +29,15 @@ create a Kubernetes cluster in MAAS that is managed by Palette.
   your MAAS environment. Review the [How to use standard images](https://maas.io/docs/how-to-use-standard-images) for
   guidance on downloading OS images for MAAS.
 
+:::warning
+
+If the MAAS API server URL is not resolvable outside of the MAAS environment, you can specify a different URL in the
+cluster profile's Kubernetes YAML. This feature is only supported in Palette eXtented Kubernetes (PXK). For more
+information, refer to the [Custom MAAS Endpoint](../../../integrations/kubernetes.md#custom-maas-endpoint) section of
+the PXK reference page.
+
+:::
+
 ## Deploy a MAAS Cluster
 
 To deploy a new MAAS cluster:

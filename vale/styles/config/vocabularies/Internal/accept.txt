@@ -193,3 +193,6 @@ vApp
 PCGs
 vCPU
 vCPUs
+eXtented
+Palette eXtented Kubernetes
+Palette eXtented Kubernetes - Edge
