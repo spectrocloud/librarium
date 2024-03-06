@@ -31,9 +31,9 @@ tags: ["release-notes"]
   and deploy a Konvoy cluster.
 
 - Multiple system administrators can now be added to the self-hosted Palette system console to help manage and maintain
-  the VerteX instance. The feature helps organizations embrace the separation of duties by delegating different
+  the Palette instance. The feature helps organizations embrace the separation of duties by delegating different
   responsibilities to system administrators. Refer to the
-  [System Administrators](./vertex/system-management/account-management/account-management.md#system-administrators)
+  [System Administrators](./enterprise-version/system-management/account-management/account-management.md#system-administrators)
   page to learn more about system administrators.
 
 #### Improvements
