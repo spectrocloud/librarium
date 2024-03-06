@@ -245,7 +245,7 @@ through the command-line.
    agent will pull the image from registiries you specify instead of from the Harbor registry.
 
    If you already deployed the resources before applying the label, you will need to trigger another image pull action
-   as the label will only apply to subsequent image pulls after it has been applied. You can do this by running the
+   as the label will only apply to subsequent image pulls after it has been applied. You can do this by issuing the
    `kubectl apply` command again to reapply the manifest. Or use the `kubectl delete` command to delete the resource and
    wait for it to be re-created.
 
