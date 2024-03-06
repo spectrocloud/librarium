@@ -65,6 +65,9 @@ tags: ["release-notes"]
   improves the user experience. The enhancements include a Validator upgrade feature, a describe subcommand that
   displays results more clearly, an interactive re-configure option, the ability to restart the wizard, and more.
 
+- Cox Edge has been removed as a supported platform for Edge clusters. Cox stopped supporting the platform and the
+  platform is longer available for new deployments. All Cox Edge related resources and API endpoints have been removed.
+
 #### Known Issues
 
 - Conducting cluster node scaling operations on a cluster undergoing a backup can lead to issues and potential
@@ -75,15 +78,37 @@ tags: ["release-notes"]
 
 #### Breaking Changes
 
+- Edge hosts now require a minimum storage capacity of 100 GB. The previous minimum storage capacity was 60 GB. Refer to
+  the [Minimum Device Requirements](./clusters/edge/architecture.md#minimum-device-requirements.md) page to learn more
+  about the minimum requirements for Edge hosts.
+
 #### Features
 
+- The Edge Management Console (EMC) is a new feature that provides a local management interface for Edge clusters in an
+  airgap environment. The EMC is a web-based interface that allows you to manage Edge hosts in your network locally,
+  upload content bundles containing images, Helm charts, and packs, and create Edge clusters locally in disconnected
+  environments without connections to a Palette instance. To get started with the EMC, refer to the
+  [Edge Management Console](./clusters/edge/edge.md) documentation.
+
+- <TpBadge /> Edge hosts using a local [image registry through Harbor](./integrations/harbor-edge.md) now have the
+  ability also use an external image registry alongside the local registry. The feature allows you to use an external
+  image registry to pull image that may not be available in the local registry.
+
 #### Improvements
+
+- Improved Edge host upgrade experience. In the past, most upgrades would trigger a repave when not always necessary.
+  The enhancement applies more intelligence to the upgrade process and determines if a reboot, service reload, or repave
+  is required. Refer to the [Edge Cluster Upgrade Behavior](./clusters/edge/upgrade-behavior.md) page to learn more
+  about the upgrade behavior.
+
+- Edge hosts using RKE2 as the Kubernetes distribution can now use the
+  [network overlay](./clusters/edge/networking/vxlan-overlay.md) feature.
+
+- Edge hosts using a local image registry through Harbor can now disable image pulls from the local registry through
+  namespace annotations. Refer to the [Harbor Edge](./integrations/harbor-edge.md) reference page to learn more about
+  the feature.
 
 #### Known Issues
-
-### Palette Dev Engine (PDE)
-
-#### Improvements
 
 ### Virtual Machine Orchestrator (VMO)
 
@@ -140,6 +165,12 @@ tags: ["release-notes"]
 -
 
 ### Packs
+
+#### Breaking Changes
+
+- K3s version 1.27.7 is removed from Palette. The reason for the urgent removal is due to an upstream issue that causes
+  deployed clusters to error out and become unresponsive. You can learn more about the issue in the
+  [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047)
 
 #### Kubernetes
 
