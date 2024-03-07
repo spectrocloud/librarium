@@ -184,6 +184,9 @@ goroutines
 renegotiation
 renegotiations
 wpa_supplicant
+Earthfile
+ubuntu
+tgz
 Podman
 filepath
 Datagram
@@ -193,3 +196,8 @@ vApp
 PCGs
 vCPU
 vCPUs
+preload
+preloaded
+eXtented
+Palette eXtented Kubernetes
+Palette eXtented Kubernetes - Edge

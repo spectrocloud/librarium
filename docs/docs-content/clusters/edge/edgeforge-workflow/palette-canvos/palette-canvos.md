@@ -13,8 +13,8 @@ tags: ["edge"]
 ---
 
 Palette's Edge solution requires Edge hosts to be ready with the required dependencies and
-[user data](../edge-configuration/installer-reference.md) configurations before deploying a Kubernetes cluster. An Edge
-host requires the following artifacts to prepare for successful cluster deployment:
+[user data](../../edge-configuration/installer-reference.md) configurations before deploying a Kubernetes cluster. An
+Edge host requires the following artifacts to prepare for successful cluster deployment:
 
 - **Edge installer ISO image** - This bootable ISO image installs the necessary dependencies and configurations on a
   bare host machine. During installation, the host machine will boot from the Edge installer ISO, partition the disk,
@@ -31,6 +31,9 @@ In this guide, you will use the utility, [CanvOS](https://github.com/spectroclou
 an Edge installer ISO image and provider images for all the Palette-supported Kubernetes versions. The utility builds
 multiple provider images, so you can use either one that matches the desired Kubernetes version you want to use with
 your cluster profile.
+
+If you want to build the ISO image and the provider images individually, refer to
+[Build Provider Images](./build-provider-images.md) and [Build Installer ISO](./build-installer-iso.md).
 
 :::info
 
@@ -143,8 +146,8 @@ export CUSTOM_TAG=palette-learn
 :::info
 
 The default ttl.sh image registry is free and does not require a sign-up. Images pushed to ttl.sh are ephemeral and will
-expire after the 24 hrs time limit. Should you need to use a different image registry, refer to the Advanced workflow in
-the [Build Edge Artifacts](palette-canvos.md) guide.
+expire after the 24 hrs time limit. Should you need to use a different image registry, refer to the Advanced workflow on
+this page.
 
 :::
 
@@ -320,7 +323,7 @@ images accordingly.
 15. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
     out the required basic information fields to create a cluster profile for Edge.
 
-16. Add the following [BYOS Edge OS](../../../integrations/byoos.md) pack to the OS layer in the **Profile Layers**
+16. Add the following [BYOS Edge OS](../../../../integrations/byoos.md) pack to the OS layer in the **Profile Layers**
     section.
 
 | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
@@ -371,8 +374,8 @@ The screenshot below displays how to reference a provider image in the BYOOS pac
 :::info
 
 The BYOOS pack's `system.uri` attribute references the Kubernetes version selected in the cluster profile by using the
-`{{ .spectro.system.kubernetes.version }}` [macro](../../cluster-management/macros.md). This is how the provider images
-you created and pushed to a registry are tied to the OS and Kubernetes version you selected in the **.arg** file.
+`{{ .spectro.system.kubernetes.version }}` [macro](../../../cluster-management/macros.md). This is how the provider
+images you created and pushed to a registry are tied to the OS and Kubernetes version you selected in the **.arg** file.
 
 :::
 
@@ -510,7 +513,7 @@ git checkout v4.0.6
 | `IMAGE_REPO`       | Image repository name.<br /> It is the same as the OS distribution.                          | `$OS_DISTRIBUTION`     | Your image repository name.                                                                    |
 | `OS_VERSION`       | OS version, only applies to Ubuntu                                                           | 22                     | 20, 22                                                                                         |
 | `K8S_DISTRIBUTION` | Kubernetes Distribution                                                                      | k3s                    | k3s, rke2, kubeadm                                                                             |
-| `ISO_NAME`         | Name of the Installer ISO                                                                    | palette-edge-installer | Lowercase alphanumeric string without spaces. The charaters `-` and `_` are allowed.           |
+| `ISO_NAME`         | Name of the Installer ISO                                                                    | palette-edge-installer | Lowercase alphanumeric string without spaces. The characters `-` and `_` are allowed.          |
 | `ARCH`             | Architecture of the image.                                                                   | `amd64`                | `amd64`, `arm64`                                                                               |
 | `FIPS_ENABLED`     | to generate FIPS compliant binaries `true`or`false`                                          | `false`                | `true`, `false`                                                                                |
 | `HTTP_PROXY`       | URL of the HTTP Proxy server.                                                                | `""`                   | URL string                                                                                     |
@@ -564,8 +567,6 @@ EOF
 ```
 
 View the newly created file to ensure the customized arguments are set correctly.
-
-<br />
 
 ```bash
 cat .arg
@@ -669,7 +670,7 @@ EOF
 If you need to pull images from a private image registry, you can supply the credentials for the registry in the user
 data file in the `registryCredentials` field or in the cluster profile. Credentials specified in **user-data**
 overwrites the credentials provided in the cluster profile. To learn how to provide credentials in cluster profiles,
-refer to [Deploy Cluster with a Private Registry](../site-deployment/deploy-private-registry.md).
+refer to [Deploy Cluster with a Private Registry](../../site-deployment/deploy-private-registry.md).
 
 :::
 
@@ -680,8 +681,8 @@ cat user-data
 ```
 
 If you want further customization, check the existing **user-data.template** file, and refer to the
-[Edge Configuration Stages](../edge-configuration/cloud-init.md) and
-[User Data Parameters](../edge-configuration/installer-reference.md) documents to learn more.
+[Edge Configuration Stages](../../edge-configuration/cloud-init.md) and
+[User Data Parameters](../../edge-configuration/installer-reference.md) documents to learn more.
 
 14. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
     start the build process.
@@ -785,7 +786,7 @@ docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.25.2-v4.0.6-palette-learn
 19. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
     out the required basic information fields to create a cluster profile for Edge.
 
-20. Add the following [BYOS Edge OS](../../../integrations/byoos.md) pack to the OS layer in the **Profile Layers**
+20. Add the following [BYOS Edge OS](../../../../integrations/byoos.md) pack to the OS layer in the **Profile Layers**
     section.
 
 | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
@@ -836,8 +837,8 @@ The screenshot below displays how to reference a provider image in the BYOOS pac
 :::info
 
 The BYOOS pack's `system.uri` attribute references the Kubernetes version selected in the cluster profile by using the
-`{{ .spectro.system.kubernetes.version }}` [macro](../../cluster-management/macros.md). This is how the provider images
-you created and pushed to a registry are tied to the OS and Kubernetes version you selected in the **.arg** file.
+`{{ .spectro.system.kubernetes.version }}` [macro](../../../cluster-management/macros.md). This is how the provider
+images you created and pushed to a registry are tied to the OS and Kubernetes version you selected in the **.arg** file.
 
 :::
 
@@ -889,6 +890,6 @@ After building the Edge artifacts and creating an Edge cluster profile, the next
 image to prepare your Edge host. To learn more about utilizing Edge artifacts to prepare Edge hosts and deploy
 Palette-managed Edge clusters, we encourage you to check out the reference resources below. <br />
 
-- [Deploy an Edge Cluster on VMware](../site-deployment/deploy-cluster.md)
+- [Deploy an Edge Cluster on VMware](../../site-deployment/deploy-cluster.md)
 
-- [Prepare Edge Host for Installation](../site-deployment/stage.md)
+- [Prepare Edge Host for Installation](../../site-deployment/stage.md)

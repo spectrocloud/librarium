@@ -68,6 +68,10 @@ fully encrypted using the tenant's unique encryption key.
 Cluster Mode enables you to create, deploy, and manage Kubernetes clusters and applications. In Cluster Mode, you can
 deploy Kubernetes clusters to public cloud providers, on-prem data centers, and on the edge.
 
+## Cluster Definition
+
+A Cluster Definition contain one or more cluster profiles, including profile variables used in those profiles.
+
 ## Cluster Profile
 
 A Cluster Profile is a declarative model of a Kubernetes infrastructure stack. A Kubernetes infrastructure stack is
@@ -107,6 +111,12 @@ virtual machines and are managed by operators at these remote sites. Palette pro
 Clusters on such edge appliances from its SaaS-based management console. Besides provisioning of the cluster, Palette
 also provides end-to-end management of these clusters through operations such as scaling, upgrades, reconfiguration,
 etc.
+
+## Edge Management Console
+
+Edge Management Console (EMC) is a browser-based tool that allows you to manage your Edge host and perform tasks such as
+creating local clusters, upload content bundles, and configure network settings. EMC is a Tech Preview feature and
+should not be used in production workloads.
 
 ## Helm Charts
 
