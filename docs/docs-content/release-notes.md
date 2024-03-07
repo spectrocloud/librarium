@@ -179,11 +179,10 @@ tags: ["release-notes"]
 
 ### Packs
 
-#### Breaking Changes
+#### Pack Notes
 
-- K3s version 1.27.7 is removed from Palette. The reason for the urgent removal is due to an upstream issue that causes
-  deployed clusters to error out and become unresponsive. You can learn more about the issue in the
-  [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047)
+- K3s version 1.27.7 has a known issue that causes clusters to repeatedly crash. You can learn more about the issue in
+  the [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047)
 
 #### Kubernetes
 
@@ -267,16 +266,6 @@ tags: ["release-notes"]
 | RKE2 - Edge                                | 1.26.4      |
 | RKE2 - Edge                                | 1.27.2      |
 
-#### Pack Notes
-
-- The following two packs are now classified as [Verified packs](./integrations/verified_packs.md) - ArgoCD, and
-  Spot.io.
-
 #### Deprecations and Removals
-
-- All Kubernetes 1.25 packs are deprecated.
-- All Kubernetes 1.24 packs and prior are disabled.
-- Kubernetes packs prior to version 1.25 for Azure AKS and Google GKE are deleted and removed.
-- Kubernetes AKS version 1.26 is deprecated.
 
 - Check out the [Deprecated Packs](integrations/deprecated-packs.md) page for a list of deprecated packs.
