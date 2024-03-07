@@ -16,6 +16,12 @@ By instilling a sense of collective responsibility for security, everyone at Spe
 security posture. Our dedication to security helps protect your interests and enhances the quality and reliability of
 our software and services.
 
+:::info
+
+Blah Blah
+
+:::
+
 <br />
 
 ## Security-Aware Culture
