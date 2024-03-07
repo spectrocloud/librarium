@@ -11,6 +11,8 @@ The Palette CLI has built-in support for the open-source [Validator](https://git
 framework and its plugins ecosystem. You can use the Validator to verify your environment is ready for an installation
 of self-hosted Palette, VerteX, or for deployment of Kubernetes clusters through Palette.
 
+## Subcommands
+
 The `validator` command exposes the following subcommands.
 
 - [`install`](#install) - Install the Validator framework and configure Validator plugins.
