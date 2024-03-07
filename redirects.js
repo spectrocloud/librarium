@@ -360,6 +360,10 @@ const redirects = [
     from: "/user-management/saml-sso/enable-saml",
     to: "/user-management/saml-sso/",
   },
+  {
+    from: ["/security/security-bulletins/", "/security-bulletins/cve-reports", "/security/security-bulletins/index"],
+    to: "/security-bulletins/",
+  },
 ];
 
 module.exports = redirects;
