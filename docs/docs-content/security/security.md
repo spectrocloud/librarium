@@ -16,9 +16,9 @@ By instilling a sense of collective responsibility for security, everyone at Spe
 security posture. Our dedication to security helps protect your interests and enhances the quality and reliability of
 our software and services.
 
-:::info
+:::tip
 
-Blah Blah
+You can find all security bulletins in the [Security Bulletins](../security-bulletins/cve-reports.md) section.
 
 :::
 
@@ -54,7 +54,7 @@ certifications, check out the [Compliance](../legal-licenses/compliance.md) refe
 ## Transparency
 
 We list any Common Vulnerabilities and Exposure (CVE) issues that affect Palette or any part of its infrastructure in
-our [Security Bulletins](security-bulletins) along with the fix applied and any workarounds.
+our [Security Bulletins](../security-bulletins/security-bulletins.md) along with the fix applied and any workarounds.
 
 <br />
 
@@ -85,5 +85,3 @@ Please contact our Security team at security@spectrocloud.com to report any secu
 - [Self-Hosted Operation](product-architecture/self-hosted-operation.md)
 
 - [Tenant Cluster Security](product-architecture/tenant-cluster.md)
-
-- [Security Bulletins](security-bulletins/security-bulletins.md)

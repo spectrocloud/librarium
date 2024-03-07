@@ -209,7 +209,7 @@ p img.markdown-image {
   border-radius: 1vw;
 }
 
-.custom-admonition {
-  border: 1px solid var(--custom-important-color);
-  background-color: var(--custom-alert-bg-color);
+.admonition-tech-preview {
+  border: 1px solid var(--custom-purple-important-color);
+  background-color: var(--custom-purple-alert-bg-color);
 }
