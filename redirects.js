@@ -372,6 +372,10 @@ const redirects = [
     from: "/clusters/data-center/maas/install-manage-maas-pcg",
     to: "/clusters/pcg/deploy-pcg/maas",
   },
+  {
+    from: ["/security/security-bulletins/", "/security-bulletins/cve-reports", "/security/security-bulletins/index"],
+    to: "/security-bulletins/",
+  },
 ];
 
 module.exports = redirects;
