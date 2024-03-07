@@ -115,10 +115,6 @@ support for MicroK8S on MAAS clusters, several network enhancements for Edge dep
 helps you identify cluster profile changes, and support for a local image registry for Edge clusters. Check out the
 notes below to learn more about the new features and improvements.
 
-### Security Advisories
-
-- Seciruty advisories can be found in the [Security Bulletins](./security/security-bulletins/cve-reports.md) page.
-
 ### Palette
 
 #### Features

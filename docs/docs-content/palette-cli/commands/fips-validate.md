@@ -12,6 +12,13 @@ The `fips-validate` command checks the
 (FIPS) compliance of your Kubernetes clusters. You can use the command to ensure that your clusters are FIPS-compliant
 by scanning the images and exposed service endpoints in your clusters.
 
+:::info
+
+If you have the environment variable `KUBECONFIG` set, the `fips-validate` will automatically use the kubeconfig file
+and skip prompting you for the kubeconfig file path.
+
+:::
+
 ### Supported Languages
 
 The `fips-validate` currently only supports Go binaries. Images with binaries compiled in other languages are marked as
@@ -40,6 +47,12 @@ The `fips-validate` command requires the following prerequisites:
   clusterRole such as [_cluster-admin_](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)
   to ensure that the command can create the necessary resources.
 
+- The Kubernetes cluster must be accessible from the machine where you issue the `fips-validate` command. Ensure that
+  the kubeconfig file is correctly configured to access the cluster.
+
+- The Kuberntes cluster must have internet access to download the images when using the `images` subcommand. Private
+  image registries are not supported.
+
 ## Images
 
 The `images` subcommand validates the FIPS compliance of the images in your clusters. The command scans all the images
@@ -59,12 +72,11 @@ The `images` subcommand accepts the following flags:
 | `-f`           | `--out`       | The output file path to save the scan results. The default output is the terminal.                     | string   |
 | `-h`           | `--help`      | Display the help message for the `images` subcommand.                                                  | boolean  |
 
-:::warning
+### Limitations
 
-Images hosted in private registries are not supported. The `fips-validate` command only supports images hosted in public
-registries.
-
-:::
+- Images hosted in private registries are not supported.
+- Only Go binaries are supported. Images with binaries compiled in other languages are marked as `unknown` in the
+  report.
 
 ### Examples
 
@@ -149,9 +161,21 @@ of each image.
 ## Services
 
 The `services` subcommand validates the FIPS compliance of the service endpoints in your clusters. The command scans the
-service endpoints and checks if the service endpoind is using FIPS compliant cryptographic libraries and TLS 1.2 or
-higher. The scan also checks if the service endpoint's certificate is within its valid timeframe by verifying its start
-and expiration dates.
+service endpoints and conducts a handshake with each endpoint thorugh [testssl](https://testssl.sh/). The handshake is
+used to verify if the service endpoind is using FIPS compliant TLS versions and cryptographic ciphers. The service
+endpoint's certificate is also verified if it's within a valid timeframe by verifying its start and expiration dates.
+
+The following flags are available for the `services` subcommand:
+
+| **Short Flag** | **Long Flag** | **Description**                                                                                        | **Type** |
+| -------------- | ------------- | ------------------------------------------------------------------------------------------------------ | -------- |
+| `-n`           | `--namespace` | The namespace in which to deploy the resources for the FIPS scan. The default namespace is `vertex-ns` | string   |
+| `-f`           | `--out`       | The output file path to save the scan results. The default output is the terminal.                     | string   |
+| `-h`           | `--help`      | Display the help message for the `images` subcommand.                                                  | boolean  |
+
+### Checks
+
+The following is a list of checks is performed by the `services` subcommand:
 
 | Check                      | Description                                                                                                                                                                                 |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -172,3 +196,127 @@ and expiration dates.
 | security_headers           | Checks for the presence of recommended security headers. Refer to [testssl.sh](https://testssl.sh/doc/testssl.1.html) documentation for more context. Seach for the `--header` description. |
 | overall_grade              | Assesses the overall security grade of the configuration.                                                                                                                                   |
 | cert\_                     | Ensures certificate-related configurations meet requirements, excluding specific cases.                                                                                                     |
+
+### Limitations
+
+- Only services exposing port `443` are supported.
+- Only HTTP and HTTPS services are supported.
+
+### Examples
+
+Validate the FIPS compliance of the service endpoints in your cluster.
+
+```shell
+palette fips-validate services
+```
+
+Validate the FIPS compliance of the service endpoints in your cluster and save the results to a file.
+
+```shell
+palette fips-validate services --out /path/to/fips-scan-results.txt
+```
+
+Validate the FIPS compliance of the service endpoints in your cluster and deploy the resources in a custom namespace.
+
+```shell
+palette fips-validate services --namespace my-scan-ns
+```
+
+### Review Results
+
+The report contains a list of service endpoints and the FIPS compliance status of the service endpoints. Each row in the
+report contains the following columns:
+
+| **Column** | **Description**                                                                                                                                                                    |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NO.`      | The number of the service endpoint in the order of the scan.                                                                                                                       |
+| `ID`       | The finding identifier.                                                                                                                                                            |
+| `FINDING`  | The description of the finding. Depending on the finding, you may receive a technical finding. Refer to the [Findings](#findings) section in case you receive a technical finding. |
+| `SEVERITY` | The severity of the finding.                                                                                                                                                       |
+| `STATUS`   | The status of the finding. Allowed values are `PASSED` or `FAILED`.                                                                                                                |
+
+```text
+endpoint: oldrelease-vc1.cluster-65ea4b3b9fe382461d51fbb3
+┌─────┬────────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬──────────┬────────┐
+│ NO. │ ID                     │ FINDING                                                                                                                           │ SEVERITY │ STATUS │
+├─────┼────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼──────────┼────────┤
+│   1 │ cipherlist_OBSOLETED   │ offered                                                                                                                           │ CRITICAL │ FAILED │
+│   2 │ cipher-tls1_2_xcca9    │ TLSv1.2   xcca9   ECDHE-ECDSA-CHACHA20-POLY1305     ECDH 521   ChaCha20    256      TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 │ HIGH     │ FAILED │
+│   3 │ cipher-tls1_3_x1303    │ TLSv1.3   x1303   TLS_CHACHA20_POLY1305_SHA256      ECDH 253   ChaCha20    256      TLS_CHACHA20_POLY1305_SHA256                  │ HIGH     │ FAILED │
+│   4 │ Cache-Control_multiple │ Multiple Cache-Control headers. Using first header: no-cache, private                                                             │ MEDIUM   │ FAILED │
+│   5 │ LUCKY13                │ potentially vulnerable, uses TLS CBC ciphers                                                                                      │ LOW      │ FAILED │
+└─────┴────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴──────────┴────────┘
+```
+
+#### Findings
+
+A finding is a result of a failed check. The `FINDING` column may contain technical details of the finding. The
+technical finding contains the following information:
+
+- The TLS version
+
+- The cipher suite HEX code.
+
+- The name of the cipher suite.
+
+- The key exchange algorithm.
+
+- The encryption algorithm.
+
+- The encryption key length.
+
+- The authentication algorithm.
+
+To help you better understand technical findings values, use the following example.
+
+```text
+TLSv1.3   x1303   TLS_CHACHA20_POLY1305_SHA256      ECDH 253   ChaCha20    256      TLS_CHACHA20_POLY1305_SHA256
+```
+
+The table below explains the example finding value and what each value represents. The values are separated by a space.
+
+| **Value**                      | **Explanation**               |
+| ------------------------------ | ----------------------------- |
+| `TLSv1.3`                      | The TLS version.              |
+| `x1303`                        | The cipher suite HEX code.    |
+| `TLS_CHACHA20_POLY1305_SHA256` | The name of the cipher suite. |
+| `ECDH 253`                     | The key exchange algorithm.   |
+| `ChaCha20`                     | The encryption algorithm.     |
+| `256`                          | The encryption key length.    |
+| `TLS_CHACHA20_POLY1305_SHA256` | The authentication algorithm. |
+
+The service endpoint is using the `TLSv1.3` version with `TLS_CHACHA20_POLY1305_SHA256` cipher suit. The TLS version and
+the cipher suite is not considered FIPS compliant and the status is marked as `FAILED`.
+
+A successful check will not have a finding identifier. The following is an example of a successful check.
+
+```text
+---------------------------------------------------------------
+endpoint: palette-webhook-service.palette-system
+note: all validations passed
+---------------------------------------------------------------
+```
+
+The end of the report contains a summary of the scan results. The summary includes all the service endpoints scanned and
+the status of each endpoint. Below is an example of the summary section.
+
+```text
+┌────────────────────────────────────────────────────────────────┬────────┐
+│ ENDPOINT                                                       │ STATUS │
+├────────────────────────────────────────────────────────────────┼────────┤
+│ capa-webhook-service.capi-webhook-system                       │ passed │
+│ capi-kubeadm-bootstrap-webhook-service.capi-webhook-system     │ passed │
+│ capi-kubeadm-control-plane-webhook-service.capi-webhook-system │ passed │
+│ capi-webhook-service.capi-webhook-system                       │ passed │
+│ capvc-webhook-service.capi-webhook-system                      │ failed │
+│ cert-manager-webhook.cert-manager                              │ passed │
+│ metrics-server.cluster-65e4cb59cbfc84ea5877af4c                │ passed │
+│ oldrelease-vc1.cluster-65ea4b3b9fe382461d51fbb3                │ failed │
+│ oldrelease-vc1-headless.cluster-65ea4b3b9fe382461d51fbb3       │ failed │
+│ oldrelease-vc1-lb.cluster-65ea4b3b9fe382461d51fbb3             │ failed │
+│ kubernetes.default                                             │ passed │
+│ palette-webhook-service.palette-system                         │ passed │
+│ 10-0-3-97.kubernetes.default:2380                              │ failed │
+│ 10-0-3-97.kubernetes.default:10250                             │ passed │
+└────────────────────────────────────────────────────────────────┴────────┘
+```
