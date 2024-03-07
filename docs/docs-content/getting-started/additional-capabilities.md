@@ -13,8 +13,7 @@ workloads. These features comprise diverse deployment scenarios, ensuring organi
 across different environments. This can include data centers such as VMware vSphere and OpenStack, bare metal, or public
 cloud using your cloud accounts.
 
-Whether deploying workloads in remote locations with [Edge](./additional-capabilities.md#edge), securing sensitive
-information with [VerteX](./additional-capabilities.md#palette-vertex), maximizing management control with
+Whether deploying workloads in remote locations with [Edge](./additional-capabilities.md#edge), enforcing FIPS compliance with [VerteX](./additional-capabilities.md#palette-vertex), maximizing management control with
 [self-hosted Palette](./additional-capabilities.md#self-hosted-palette), or integrating virtual machine workloads into
 Kubernetes environments with [Virtual Machine Orchestrator](./additional-capabilities.md#virtual-machine-orchestrator),
 Palette provides comprehensive solutions to meet different business needs. Learn more about each capability below.
@@ -28,15 +27,15 @@ high-bandwidth connectivity from these sites back to the cloud. Its secure and d
 services to operate even without connection to the central management plane while enforcing policies locally.
 
 Edge clusters are Kubernetes clusters set up on Edge hosts. These hosts can be bare metal or virtual machines located in
-isolated locations. Palette deploys and manages workload clusters at the Edge through the Palette management console,
-bringing computing and data storage closer to the source. This approach reduces latency and bandwidth issues that result
-from central computing, enhancing overall application performance. Learn more on the
-[Palette Edge](../clusters/edge/edge.md) page.
+isolated locations. Palette deploys and manages workload clusters at the Edge. You can manage Edge clusters locally on-site through the Edge Management console, or centrally through the Palette management plane. 
+Palette Edge is able to meet your needs, regardless of the network topology your deployments face. 
+Check out the
+[Palette Edge](../clusters/edge/edge.md) page to learn more about Edge and its features.
 
 ## Self-Hosted Palette
 
 Palette is available as a fully self-hosted platform offering. You can install an instance of the Palette management
-plane in your data center or public cloud provider to manage Kubernetes clusters.
+plane in your data center or public cloud provider and use it to manage all your Kubernetes clusters.
 
 This option gives you maximum control over the platform, as you are responsible for the day-to-day management.
 Additionally, it enables deployments in air-gapped environments where access to the public cloud is not possible. Read
@@ -50,7 +49,7 @@ can install in your data center or public cloud provider.
 
 Palette VerteX incorporates validated Federal Information Processing Standards (FIPS) 140-2 cryptographic modules into
 the Kubernetes clusters it deploys, ensuring robust data protection for your organization’s infrastructure and
-applications. Read more on [Palette VerteX](../vertex/vertex.md) page.
+applications. To learn more, check out the [Palette VerteX](../vertex/vertex.md) documentation.
 
 ## Virtual Machine Orchestrator
 
@@ -60,5 +59,5 @@ VMs within the same cluster that hosts your containerized applications. VMs are 
 complete mapping between the VM and Kubernetes concepts.
 
 Palette VMO simplifies infrastructure management and eliminates the need for a hypervisor by leveraging Canonical’s
-Metal As A Service (MAAS). It works in self-hosted, air-gapped, and Spectro Cloud’s SaaS environments. Learn more on the
+Metal As A Service (MAAS). It works in self-hosted, air-gapped, and in our SaaS environments. Learn more on the
 [Virtual Machine Orchestrator](../vm-management/vm-management.md) page.
