@@ -16,12 +16,15 @@ const defaultProps = {
       tech preview
     </Translate>
   ),
+  defaultText:
+    "This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.",
 };
 
 export default function AdmonitionTypeTechPreview(props) {
+  const text = props.children || defaultProps.defaultText;
   return (
     <AdmonitionLayout {...defaultProps} {...props} className={clsx(infimaClassName, props.className)}>
-      {"This is a Tech Preview feature and is subject to change. Do not use this feature in production workloads."}
+      {text}
     </AdmonitionLayout>
   );
 }
