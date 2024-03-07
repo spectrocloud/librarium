@@ -7,11 +7,11 @@ sidebar_position: 20
 tags: ["edge"]
 ---
 
-Content bundles are archives of all the required container images required for a cluster profiles. The content bundle
-includes Helm charts, Packs, and manifest files needed to deploy your Edge host cluster. In addition to core container
-images, the content bundle can include artifacts from your applications that you wish to deploy to the Edge cluster.
-[Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) are the primary source for building these
-content bundles.
+Content bundles are archives of all the required container images required for one or more cluster profiles. The content
+bundle includes Helm charts, Packs, and manifest files needed to deploy your Edge host cluster. In addition to core
+container images, the content bundle can include artifacts from your applications that you wish to deploy to the Edge
+cluster. [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) are the primary source for building
+these content bundles.
 
 :::warning
 
@@ -80,10 +80,132 @@ Creating a content bundle provides several benefits that may address common use 
    https://console.spectrocloud.com/projects/yourProjectId/profiles/cluster/<YourClusterProfileHere>
    ```
 
-8. Navigate back to your terminal window and issue the following command to create the content bundle. Replace the
-   placeholder values with your actual values.
+8. (Optional) If your cluster profile uses images or helm charts that are hosted on private registries that require
+   authentication, you must provide a JSON file that contains the necessary credentials to access the registry.
 
-   <br />
+   <Tabs>
+
+   <TabItem value="helm" label="Helm">
+
+   For authenticated access to Helm charts, your must provide credentials with the following schema. Use a key at the
+   root level of the JSON object named "helm" and set its value to a list. The list is a list of credentials for each
+   Helm chart repository. For each set of credentials, use an object in the list with the keys "endpoint", "username",
+   and "password".
+
+   ```json
+   {
+     "helm": [
+         {
+           "endpoint": <Registry URL>,
+           "username": <Registry username>,
+           "password": <Password>
+         }
+     ]
+   }
+   ```
+
+   For example, the following JSON code is a valid set of credentials.
+
+   ```json
+   {
+     "helm": [
+       {
+         "endpoint": "harbor.abcd.com",
+         "username": "admin",
+         "password": "xxxxxxxx"
+       }
+     ]
+   }
+   ```
+
+   </TabItem>
+
+   <TabItem value="image" label="Image">
+
+   For image registries, you must provide credentials with the following schema. Provide a key at the root level of the
+   JSON object named "image" and set its value to a list. The list is a list of credentials for each Helm chart
+   repository. For each set of credentials, use an object in the list with the keys "endpoint", "username", and
+   "password".
+
+   ```json
+   {
+     "image": [
+         {
+           "endpoint": <Registry URL>,
+           "username": <Registry username>,
+           "password": <Password>
+         }
+     ]
+   }
+   ```
+
+   For example, the following JSON code provides access to two registries `ttl.sh` and `docker.io` with two
+   username-password pairs.
+
+   ```json
+   {
+     "image": [
+       {
+         "endpoint": "ttl.sh",
+         "username": "admin",
+         "password": "Welc0me!123"
+       },
+       {
+         "endpoint": "docker.io",
+         "username": "akhileshpvt",
+         "password": "Lucent122333!"
+       }
+     ]
+   }
+   ```
+
+   For Google Container Registry (GCR) access, you need to set the username field to `"_json_key"` and set the password
+   to an JSON object containing the following fields.
+
+   | Field                         | Description                                                                                         |
+   | ----------------------------- | --------------------------------------------------------------------------------------------------- |
+   | `type`                        | The type of credential, which is `service_account` for Google Cloud service accounts.               |
+   | `project_id`                  | The project ID associated with your Google Cloud project. For example, `spectro-images`.            |
+   | `private_key_id`              | A unique identifier for the private key associated with the service account.                        |
+   | `private_key`                 | The private key that is used to authenticate to Google Cloud services, encapsulated in a PEM block. |
+   | `client_email`                | The email address associated with the service account, used for authentication.                     |
+   | `client_id`                   | The client ID associated with the service account.                                                  |
+   | `auth_uri`                    | The URI for the authentication provider, typically Google's OAuth 2.0 server.                       |
+   | `token_uri`                   | The URI for obtaining tokens from Google's OAuth 2.0 server.                                        |
+   | `auth_provider_x509_cert_url` | The URL of the public x509 certificate for the authentication provider.                             |
+   | `client_x509_cert_url`        | The URL of the public x509 certificate for the client (service account).                            |
+
+   For example, the following is a valid set of credentials for a GCR registry.
+
+   ```json
+   {
+     "image": [
+       {
+         "endpoint": "gcr.io",
+         "username": "_json_key",
+         "password": {
+           "type": "service_account",
+           "project_id": "spectro-images",
+           "private_key_id": "847c09190xxxxxxxxxxxxc4ebc",
+           "private_key": "-----BEGIN KEY-----MIIEvQIBADA ... -----Shortened for brevity",
+           "client_email": "xxx.iam.gserviceaccount.com",
+           "client_id": "115830xxxxxxx340453",
+           "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+           "token_uri": "https://oauth2.googleapis.com/token",
+           "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+           "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/spectro-images-viewer%40spectro-images.iam.gserviceaccount.com"
+         }
+       }
+     ]
+   }
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+9. Navigate back to your terminal window and issue the following command to create the content bundle. Replace the
+   placeholder values with your actual values.
 
    :::info
 
@@ -91,8 +213,6 @@ Creating a content bundle provides several benefits that may address common use 
    `./palette-edge build --help` to learn more about the available flags.
 
    :::
-
-   <br />
 
    ```shell
    ./palette-edge build --api-key <API_KEY> \
@@ -125,9 +245,14 @@ Creating a content bundle provides several benefits that may address common use 
    INFO[0144] ISO file created successfully
    ```
 
-The result is a content bundle that you can use to preload into your installer. Alternatively, you can use the ISO
-version of the content bundle and transfer it to a USB drive to be used separately at the time of Edge host
-installation.
+The result is a content bundle that you can use to preload into your installer. For more information, refer to
+[Build Edge Artifacts with Content Bundle](./palette-canvos/build-artifacts.md) or
+[Build Installer ISO](./palette-canvos/build-installer-iso.md). Our Tech Preview feature
+[Edge Management Console](../edge-management-console/edge-management-console.md) also allows you to upload content
+bundles to a disconnected Edge deployment.
+
+Alternatively, you can use the ISO version of the content bundle and transfer it to a USB drive to be used separately at
+the time of Edge host installation.
 
 ## Validate
 
@@ -137,4 +262,4 @@ creates a bootable device will validate the ISO image before the flash process.
 ## Next Steps
 
 Your next step is to build the Edge artifacts so that you can deploy an Edge host. To create an Edge artifacts, check
-out the [Build Images](../edgeforge-workflow/palette-canvos.md) guide.
+out the [Build Images](../edgeforge-workflow/palette-canvos/palette-canvos.md) guide.

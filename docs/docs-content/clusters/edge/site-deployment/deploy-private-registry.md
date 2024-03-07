@@ -12,6 +12,16 @@ private registry during deployment. You can configure your cluster to pull image
 cluster creation and cluster updates. To configure a cluster to pull images from a private image registry, provide the
 registry URL and the credentials needed to authenticate with the registry in the cluster profile.
 
+:::tip
+
+You can use the [Harbor Edge-Native Config](../../../integrations/harbor-edge.md) pack to configure a local registry in
+your Edge cluster. After the initial download of artifacts from the private registry, the cluster will redirect
+subsequent image pulls to the local Harbor registry. This allows you to save network bandwidth and provision clusters
+without a connection to external networks. For more information, refer to
+[Enable Local Harbor Registry](../networking/local-registry.md).
+
+:::
+
 ## Limitations
 
 - A cluster cannot pull images from more than one private registry.
@@ -30,7 +40,7 @@ registry URL and the credentials needed to authenticate with the registry in the
 - A private image registry.
 
 - A provider image you created in the EdgeForge process stored in your private image registry. For more information,
-  refer to [Build Artifacts](../edgeforge-workflow/palette-canvos.md).
+  refer to [Build Artifacts](../edgeforge-workflow/palette-canvos/palette-canvos.md).
 
 ## Enablement
 
@@ -48,26 +58,27 @@ registry URL and the credentials needed to authenticate with the registry in the
    pack for your OS layer.
 
 5. Update the `system.uri` parameter in the pack editor for your OS layer. Use the custom OS image you created in the
-   EdgeForge process. Refer to the EdgeForge [Build Images](../edgeforge-workflow/palette-canvos.md) guide if you are
-   missing a custom OS image. The following is an example configuration using the BYOOS pack with a custom OS image.
+   EdgeForge process. Refer to the EdgeForge [Build Images](../edgeforge-workflow/palette-canvos/palette-canvos.md)
+   guide if you are missing a custom OS image. The following is an example configuration using the BYOOS pack with a
+   custom OS image.
 
    ```yaml
    pack:
-   content:
-   images:
-     - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
-     # - image: example.io/my-other-images/example:v1.0.0
-     # - image: example.io/my-super-other-images/example:v1.0.0
+     content:
+       images:
+         - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
+         # - image: example.io/my-other-images/example:v1.0.0
+         # - image: example.io/my-super-other-images/example:v1.0.0
 
    options:
-   system.uri: example.io/my-images/example-custom-os:v1.4.5
+     system.uri: example.io/my-images/example-custom-os:v1.4.5
    ```
 
    :::warning
 
    If you have specified registry credentials in the `registryCredentials` field in the user data file during the
    EdgeForge process, the credentials provided in the cluster profile will be ignored. For more information, refer to
-   [EdgeForge - Build Artifacts](../edgeforge-workflow/palette-canvos.md) and
+   [EdgeForge - Build Artifacts](../edgeforge-workflow/palette-canvos/palette-canvos.md) and
    [Installer Configuration](../edge-configuration/installer-reference.md#external-registry).
 
    :::
@@ -79,27 +90,27 @@ registry URL and the credentials needed to authenticate with the registry in the
    providing it directly in the YAML file. For more information, refer to
    [Macros Support](../../cluster-management/macros.md):
 
-   ```yaml {7-16}
+   ```yaml {7-8}
    pack:
-   content:
-   images:
-      - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
-      # - image: example.io/my-other-images/example:v1.0.0
-      # - image: example.io/my-super-other-images/example:v1.0.0
+     content:
+       images:
+         - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
+         # - image: example.io/my-other-images/example:v1.0.0
+         # - image: example.io/my-super-other-images/example:v1.0.0
    providerCredentials:
-   registry: <registry_domain or IP Address>
-   # - e.x. registry: registry-1.docker.io
-   user: user
-   password: ******
-   certificates: |
-      -----BEGIN CERTIFICATE-----
-      MIIDVzCCAj+gAwIBAgIRANtGPo/hFkZtYRNw0KaeW54wDQYJKoZIhvcNAQELBQAw
-      ----------------------------------------------------------------
-      7OicCaV35lje5FSl0owu74ghAlCgMyAdKsJf615g1kKO4V5E2BMErd9Ibw==
-      -----END CERTIFICATE-----
+     registry: <registry_domain or IP Address>
+       # - e.x. registry: registry-1.docker.io
+     user: user
+     password: ******
+     certificates: |
+       -----BEGIN CERTIFICATE-----
+       MIIDVzCCAj+gAwIBAgIRANtGPo/hFkZtYRNw0KaeW54wDQYJKoZIhvcNAQELBQAw
+       ----------------------------------------------------------------
+       7OicCaV35lje5FSl0owu74ghAlCgMyAdKsJf615g1kKO4V5E2BMErd9Ibw==
+       -----END CERTIFICATE-----
 
    options:
-   system.uri: example.io/my-images/example-custom-os:v1.4.5
+     system.uri: example.io/my-images/example-custom-os:v1.4.5
    ```
 
 7. If you are updating an existing profile, click **Confirm changes**, and then click **Save changes** to publish the
