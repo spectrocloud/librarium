@@ -1,0 +1,11 @@
+extends: existence
+message: "Consider avoiding '%s' in favor of more inclusive language."
+link: "https://spectrocloud.atlassian.net/wiki/x/AQBCaQ"
+ignorecase: true
+level: error
+tokens:
+  - master
+  - slave
+nonword: true
+exceptions:
+  - master branch

@@ -5,8 +5,8 @@ import { faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
 import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 import { faHdd } from '@fortawesome/free-solid-svg-icons';
 import { faCloudArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faNetworkWired } from '@fortawesome/free-solid-svg-icons';
 import { faServer } from '@fortawesome/free-solid-svg-icons';
-import { faUserShield } from '@fortawesome/free-solid-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faWarehouse } from '@fortawesome/free-solid-svg-icons';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
@@ -16,6 +16,7 @@ import { faTerminal } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faGears } from '@fortawesome/free-solid-svg-icons';
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
+import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { faShield } from '@fortawesome/free-solid-svg-icons';
 
 export const fontAwesomeIcons = {
@@ -26,8 +27,8 @@ export const fontAwesomeIcons = {
   "database": faDatabase,
   "hdd": faHdd,
   "cloud-arrow-down": faCloudArrowDown,
+  "network-wired": faNetworkWired,
   "server": faServer,
-  "user-shield": faUserShield,
   "users": faUsers,
   "warehouse": faWarehouse,
   "book": faBook,
@@ -37,5 +38,6 @@ export const fontAwesomeIcons = {
   "lock": faLock,
   "gears": faGears,
   "screwdriver-wrench": faScrewdriverWrench,
+  "eye-slash": faEyeSlash,
   "shield": faShield
 };

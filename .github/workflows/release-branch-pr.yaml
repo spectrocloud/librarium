@@ -11,6 +11,10 @@ env:
   MENDABLE_API_KEY: ${{ secrets.MENDABLE_API_KEY }}
   NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
   NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+  FULLSTORY_ORGID: ${{ secrets.FULLSTORY_ORGID }}
+  ALGOLIA_ADMIN_KEY: ${{ secrets.DEV_ALGOLIA_ADMIN_KEY }}
+  ALGOLIA_APP_ID: ${{ secrets.DEV_GATSBY_ALGOLIA_APP_ID }}
+  ALGOLIA_SEARCH_KEY: ${{ secrets.DEV_GATSBY_ALGOLIA_SEARCH_KEY }}
 
 
 concurrency:
@@ -24,16 +28,15 @@ jobs:
     steps:
 
     - name: Check out repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Setup Node.js environment
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: "18"
         cache: "npm"
 
     - run: npm ci
-
 
     - name: Post Netlify progress
       uses: mshick/add-pr-comment@v2
@@ -42,6 +45,7 @@ jobs:
             🤖 Starting the Netlify preview build for commit ${{ github.sha }}. This may take a few minutes.
         refresh-message-position: true
 
+    - run: npm run build
 
     - name: Deploy to Netlify
       id: netlify

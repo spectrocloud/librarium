@@ -3,22 +3,34 @@ sidebar_label: "Getting Started"
 title: "Getting Started"
 description: "Spectro Cloud Getting Started"
 hide_table_of_contents: false
-sidebar_custom_props: 
-    icon: "overview"
+sidebar_custom_props:
+  icon: "overview"
 tags: ["getting-started"]
 ---
 
-This page gives an overview of getting started with Spectro Cloud Palette quickly. We introduce Palette's complimentary subscription plans, features, workflow, and user experience session to our users.
+This page gives an overview of how to get started with Spectro Cloud Palette and begin leveraging its Kubernetes
+full-stack management at scale. Palette's unique capabilities provide end-to-end declarative cluster management, cluster
+monitoring and reconciliation, as well as adherence to the highest security standards. It provides support for public
+cloud providers, data centers, bare metal and edge, so you can use Palette no matter the complexity of your production
+environments.
 
+The first step towards adopting Palette in your organization is to
+[create a login](https://www.spectrocloud.com/get-started). The
+[Palette Free Tier](https://www.spectrocloud.com/free-tier) allows you to experience the benefits of Palette first-hand.
 
-The first step towards adopting Palette to your organization is to create a login. We highly appreciate our users having a first impression of our product before making a purchase decision; hence, we provide our users with the following options:
+The Getting Started section introduces you to the concepts and workflows you need to begin using Palette. Explore more
+through the following pages.
 
+- [Introduction to Palette](./introduction.md)
 
-[Palette Freemium](../getting-started/palette-freemium.md)
+- [Palette Dashboard](./dashboard.md)
 
-[Free Cloud Credit](..//getting-started/palette-freemium.md)
+- [Cluster Profiles](./cluster-profiles.md)
 
+- [Create a Cluster Profile](./create-cluster-profile.md)
 
-After successful account creation, Palette presents a well-organized Product Onboarding Workflow to streamline the user product adoption. The onboarding process consists of explaining our product features, followed by a Palette experience session. Here we furnish an easy-to-follow deployment pipeline for our users to launch their first cluster successfully. Explore more about the feature:
+- [Deploy a Cluster](./deploy-k8s-cluster.md)
 
-[Product Onboarding Workflow](../getting-started/onboarding-workflow.md) 
+- [Deploy Cluster Profile Updates](./update-k8s-cluster.md)
+
+- [Deploy a Cluster with Terraform](./terraform.md)

@@ -1,4 +1,3 @@
-
 ## [Home](https://github.com/spectrocloud/librarium/wiki)
 
 ## [Spectro Cloud Style Guide](https://github.com/spectrocloud/librarium/wiki/Spectro-Cloud-Style-Guide)

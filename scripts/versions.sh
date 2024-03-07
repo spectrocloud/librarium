@@ -25,7 +25,7 @@ fi
 echo "Temp directory: $tempdir"
 echo "Base directory: $baseDir"
 # List of version branches to exclude
-exclude_branches=(version-3-4) # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD A SPACE INSTEAD AND THE NEW VERSION STRING.
+exclude_branches=(version-3-4 version-4-0 version-4-1) # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD A SPACE INSTEAD AND THE NEW VERSION STRING.
 # exclude_branches=("version-3-4")
 
 # Save the current branch name
@@ -187,3 +187,15 @@ fi
 mv $tempdir/temp.docusaurus.config.js $baseDir/docusaurus.config.js
 
 echo "Versioned documentation generated successfully"
+
+echo "Create the robots.txt file"
+
+# Invoke the generated_robots.sh script
+$baseDir/scripts/generate_robots.sh $baseDir/versions.json $baseDir/static
+
+if [ $? -ne 0 ]; then
+  echo "Error generating the robots.txt file"
+  exit 1
+fi
+
+echo "robots.txt file generated successfully"
