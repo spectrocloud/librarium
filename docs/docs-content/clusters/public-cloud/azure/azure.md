@@ -29,7 +29,7 @@ To learn more about Palette and Azure cluster creation and its capabilities chec
 
 - [Create and Manage Azure AKS Cluster](aks.md)
 
-- [Manage Windows Workloads](windows.md)
+- [Deploy Windows Workloads](windows.md)
 
 - [Create and Manage IaaS Azure Cluster](create-azure-cluster.md)
 
