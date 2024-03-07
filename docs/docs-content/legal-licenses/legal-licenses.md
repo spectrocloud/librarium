@@ -18,4 +18,4 @@ concerns, please contact us at [contact@spectrocloud.com](mailto:contact@spectro
 - [Compliance](compliance.md)
 - [Open-Source Licenses](oss-licenses.md)
 - [Partners](https://www.spectrocloud.com/partners)
-- [Security Bulletins](../security/security-bulletins/security-bulletins.md)
+- [Security Bulletins](../security-bulletins/security-bulletins.md)
