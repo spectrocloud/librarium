@@ -4,6 +4,8 @@ title: "Security Bulletins"
 description: "Palette Security bulletins for Common Vulnerabilities and Exposures (CVEs)."
 icon: ""
 hide_table_of_contents: false
+sidebar_custom_props:
+  icon: "tower-observation"
 tags: ["security", "cve"]
 ---
 
