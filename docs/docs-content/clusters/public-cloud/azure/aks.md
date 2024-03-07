@@ -184,8 +184,8 @@ A complete AKS cluster contains the following:
 <br />
 
 1. As a mandatory primary **System Node Pool**, this pool will host the pods necessary to operate a Kubernetes cluster,
-   like the control plane and etcd. All system pools must have at least a single node for a development cluster; one (1)
-   node is enough for high availability production clusters, and three (3) or more is recommended.
+   like the control plane and etcd. All system pools must have at least a single node for a development cluster; one
+   node is enough for high availability production clusters, and three nodes or more is recommended.
 
 2. **Worker Node** pools consist of one (1) or more per workload requirements. Worker node pools can be sized to zero
    (0) nodes when not in use.
@@ -283,8 +283,8 @@ In all types of node pools, configure the following.
 :::info
 
 New worker pools may be added if you want to customize specific worker nodes for specialized workloads. As an example,
-the default worker pool may be configured with the <i>Standard_D2_v2</i> instance types for general-purpose workloads,
-and another worker pool with the instance type <i>Standard_NC12s_v3</i> can be configured to for GPU workloads.
+the default worker pool may be configured with the <i>Standard_D2_v2</i> instance type for general-purpose workloads,
+and another worker pool with the instance type <i>Standard_NC12s_v3</i> can be configured for GPU workloads.
 
 :::
 
