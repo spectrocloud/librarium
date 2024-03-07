@@ -44,7 +44,7 @@ This guide explains how you can define and manage cluster profile variables.
 :::warning
 
 Palette does not support nesting profile variables within macros or other profile variables. Also, you cannot define
-profile variables for the `pack.content` and `system.uri` parameters because because the [Palette CLI](/palette-cli/)
+profile variables for the `pack.content` and `system.uri` parameters because the [Palette CLI](/palette-cli/)
 automatically populates them.
 
 :::
@@ -87,7 +87,7 @@ guide at the **Profile Layers** step of cluster profile creation.
     | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | Custom input validation | Whether the input is validated against a regular expression. Based on the [regexp](https://pkg.go.dev/regexp) engine.                                                                                                                     |
     | Required                | Whether the input is required.                                                                                                                                                                                                            |
-    | Default value           | Whether the variable has a default value. The default value can be overriden during cluster depllyment.                                                                                                                                   |
+    | Default value           | Whether the variable has a default value.                                                                                                                                                                                                 |
     | Mask value              | Whether the input is masked with asterisks in the layer YAML configuration. When you export a profile with masked variables, they will be masked in the exported profile. Upon import, you will be required to provide the masked values. |
     | Hidden                  | Whether the variable is hidden during cluster deployment.                                                                                                                                                                                 |
     | Read-only               | Whether the variable is editable during cluster deployment.                                                                                                                                                                               |
