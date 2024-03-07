@@ -24,7 +24,9 @@ The following prerequisites must be met before deploying a Windows workload.
 
 - A Windows node pool configured as described in the [Create a Windows Node Pool](#create-a-windows-node-pool) section.
 
-## Create a Windows Node Pool
+## Enablement
+
+### Create a Windows Node Pool
 
 Follow the steps below to create a Windows node pool within an existing AKS cluster. Refer to the
 [Node Pools](../../cluster-management/node-pool.md) page for more information about node pool configuration.
@@ -82,85 +84,76 @@ The video below showcases the process of creating a Windows node pool within an 
 
 <br />
 
-## Create an Add-on Profile with a Windows Workload
+### Create an Add-on Profile with a Windows Workload
 
 After creating your Windows node pool, use the following steps to create an add-on cluster profile with a Windows
 workload.
 
-1. Follow the
-   [Add a Manifest to an Add-on Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md#add-manifest-to-add-on-profile)
-   guide to create an add-on cluster profile with a custom manifest.
+13. Follow the
+    [Add a Manifest to an Add-on Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md#add-manifest-to-add-on-profile)
+    guide to create an add-on cluster profile with a custom manifest.
 
-2. Use the manifest provided below for a sample ASP.NET application, or alternatively, use your own Windows application
-   manifest. It is essential to include in the **spec** block of the manifest the **nodeSelector: "kubernetes.io/os":
-   windows** specification. This specification is required for Kubernetes to know that the application needs to be
-   deployed on a Windows node.
+14. Use the manifest provided below for a sample ASP.NET application, or alternatively, use your own Windows application
+    manifest. It is essential to include in the **spec** block of the manifest the **nodeSelector: "kubernetes.io/os":
+    windows** specification. This specification is required for Kubernetes to know that the application needs to be
+    deployed on a Windows node.
 
-   ```yaml
-   apiVersion: v1
-   kind: Namespace
-   metadata:
-     name: win-pack
-   ---
-   apiVersion: apps/v1
-   kind: Deployment
-   metadata:
-     namespace: win-pack
-     name: sample
-     labels:
-       app: sample
-   spec:
-     replicas: 1
-     template:
-       metadata:
-         name: sample
-         labels:
-           app: sample
-       spec:
-         nodeSelector:
-           "kubernetes.io/os": windows
-         containers:
-           - name: sample
-             image: mcr.microsoft.com/dotnet/framework/samples:aspnetapp
-             resources:
-               limits:
-                 cpu: 1
-                 memory: 800M
-             ports:
-               - containerPort: 80
-     selector:
-       matchLabels:
-         app: sample
-   ---
-   apiVersion: v1
-   kind: Service
-   metadata:
-     name: sample
-     namespace: win-pack
-   spec:
-     type: LoadBalancer
-     ports:
-       - protocol: TCP
-         port: 80
-     selector:
-       app: sample
-   ```
+    ```yaml
+    apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: win-pack
+    ---
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      namespace: win-pack
+      name: sample
+      labels:
+        app: sample
+    spec:
+      replicas: 1
+      template:
+        metadata:
+          name: sample
+          labels:
+            app: sample
+        spec:
+          nodeSelector:
+            "kubernetes.io/os": windows
+          containers:
+            - name: sample
+              image: mcr.microsoft.com/dotnet/framework/samples:aspnetapp
+              resources:
+                limits:
+                  cpu: 1
+                  memory: 800M
+              ports:
+                - containerPort: 80
+      selector:
+        matchLabels:
+          app: sample
+    ---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: sample
+      namespace: win-pack
+    spec:
+      type: LoadBalancer
+      ports:
+        - protocol: TCP
+          port: 80
+      selector:
+        app: sample
+    ```
 
-The video below illustrates the process of creating an add-on cluster profile with a Windows workload.
-
-<Video title="add-win-profile" src="/videos/clusters/public-cloud/azure/add-win-profile.mp4"></Video>
-
-## Deploy a Windows Add-on Profile to an Existing AKS Cluster
+### Deploy a Windows Add-on Profile to an Existing AKS Cluster
 
 Lastly, after creating your add-on cluster profile, attach it to your AKS cluster that has the previously created
 Windows node pool. Follow the steps outlined in the
 [Attach an Add-on Profile](../../../clusters/imported-clusters/attach-add-on-profile.md#attach-an-add-on-profile) guide
 to attach your add-on cluster profile to the AKS cluster.
-
-The following video demonstrates the steps required to attach the add-on cluster profile with the Windows application to
-the AKS cluster.
-
-<Video title="deploy-windows-pack" src="/videos/clusters/public-cloud/azure/deploy-windows-pack.mp4"></Video>
 
 ## Validate
 
