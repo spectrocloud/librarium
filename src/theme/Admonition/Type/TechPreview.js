@@ -4,7 +4,7 @@ import Translate from "@docusaurus/Translate";
 import AdmonitionLayout from "@theme/Admonition/Layout";
 import IconTechPreview from "../Icon/TechPreview";
 
-const infimaClassName = "alert custom-admonition";
+const infimaClassName = "alert admonition-tech-preview";
 
 const defaultProps = {
   icon: <IconTechPreview />,
@@ -23,7 +23,7 @@ const defaultProps = {
 export default function AdmonitionTypeTechPreview(props) {
   const text = props.children || defaultProps.defaultText;
   return (
-    <AdmonitionLayout {...defaultProps} {...props} className={clsx(infimaClassName, props.className)}>
+    <AdmonitionLayout {...defaultProps} className={clsx(infimaClassName, props.className)}>
       {text}
     </AdmonitionLayout>
   );
