@@ -44,13 +44,13 @@ The `fips-validate` command requires the following prerequisites:
   get the kubeconfig file for your cluster.
 
 - Sufficient permissions to create a new namespace and deploy resources in the namespace. We recommend using an elevated
-  clusterRole such as [_cluster-admin_](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)
+  ClusterRole such as [_cluster-admin_](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)
   to ensure that the command can create the necessary resources.
 
 - The Kubernetes cluster must be accessible from the machine where you issue the `fips-validate` command. Ensure that
   the kubeconfig file is correctly configured to access the cluster.
 
-- The Kuberntes cluster must have internet access to download the images when using the `images` subcommand. Private
+- The Kubernetes cluster must have internet access to download the images when using the `images` subcommand. Private
   image registries are not supported.
 
 ## Images
@@ -161,8 +161,8 @@ of each image.
 ## Services
 
 The `services` subcommand validates the FIPS compliance of the service endpoints in your clusters. The command scans the
-service endpoints and conducts a handshake with each endpoint thorugh [testssl](https://testssl.sh/). The handshake is
-used to verify if the service endpoind is using FIPS compliant TLS versions and cryptographic ciphers. The service
+service endpoints and conducts a handshake with each endpoint through [testssl](https://testssl.sh/). The handshake is
+used to verify if the service endpoint is using FIPS compliant TLS versions and cryptographic ciphers. The service
 endpoint's certificate is also verified if it's within a valid timeframe by verifying its start and expiration dates.
 
 The following flags are available for the `services` subcommand:
@@ -177,25 +177,25 @@ The following flags are available for the `services` subcommand:
 
 The following is a list of checks is performed by the `services` subcommand:
 
-| Check                      | Description                                                                                                                                                                                 |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cipher-tls1*2*             | Verifies TLS 1.2 cipher suites.                                                                                                                                                             |
-| cipher-tls1*3*             | Verifies TLS 1.3 cipher suites.                                                                                                                                                             |
-| SSLv2, SSLv3, TLS1, TLS1_1 | Checks for the presence of deprecated SSL/TLS versions.                                                                                                                                     |
-| cipherlist_NULL            | Checks for the presence of NULL encryption cipher suites.                                                                                                                                   |
-| cipherlist_aNULL           | Checks for the presence of aNULL encryption cipher suites.                                                                                                                                  |
-| cipherlist_EXPORT          | Checks for the presence of EXPORT encryption cipher suites.                                                                                                                                 |
-| cipherlist_3DES_IDEA       | Checks for the presence of 3DES and IDEA encryption cipher suites.                                                                                                                          |
-| cipherlist_OBSOLETED       | Checks for the presence of obsoleted encryption cipher suites.                                                                                                                              |
-| cipherlist_LOW             | Checks for the presence of LOW encryption cipher suites.                                                                                                                                    |
-| cert_notBefore             | Validates the start date of the certificate.                                                                                                                                                |
-| cert_notAfter              | Validates the expiration date of the certificate.                                                                                                                                           |
-| FS_TLS12_sig_algs          | Verifies the supported signature algorithms for TLS 1.2.                                                                                                                                    |
-| HSTS                       | Validates the presence of HTTP Strict Transport Security (HSTS) headers.                                                                                                                    |
-| DNS_CAArecord              | Confirms the presence of DNS Certification Authority Authorization (CAA) records.                                                                                                           |
-| security_headers           | Checks for the presence of recommended security headers. Refer to [testssl.sh](https://testssl.sh/doc/testssl.1.html) documentation for more context. Seach for the `--header` description. |
-| overall_grade              | Assesses the overall security grade of the configuration.                                                                                                                                   |
-| cert\_                     | Ensures certificate-related configurations meet requirements, excluding specific cases.                                                                                                     |
+| Check                      | Description                                                                                                                                                                                  |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| cipher-tls1*2*             | Verifies TLS 1.2 cipher suites.                                                                                                                                                              |
+| cipher-tls1*3*             | Verifies TLS 1.3 cipher suites.                                                                                                                                                              |
+| SSLv2, SSLv3, TLS1, TLS1_1 | Checks for the presence of deprecated SSL/TLS versions.                                                                                                                                      |
+| cipherlist_NULL            | Checks for the presence of NULL encryption cipher suites.                                                                                                                                    |
+| cipherlist_aNULL           | Checks for the presence of aNULL encryption cipher suites.                                                                                                                                   |
+| cipherlist_EXPORT          | Checks for the presence of EXPORT encryption cipher suites.                                                                                                                                  |
+| cipherlist_3DES_IDEA       | Checks for the presence of 3DES and IDEA encryption cipher suites.                                                                                                                           |
+| cipherlist_OBSOLETED       | Checks for the presence of obsoleted encryption cipher suites.                                                                                                                               |
+| cipherlist_LOW             | Checks for the presence of LOW encryption cipher suites.                                                                                                                                     |
+| cert_notBefore             | Validates the start date of the certificate.                                                                                                                                                 |
+| cert_notAfter              | Validates the expiration date of the certificate.                                                                                                                                            |
+| FS_TLS12_sig_algs          | Verifies the supported signature algorithms for TLS 1.2.                                                                                                                                     |
+| HSTS                       | Validates the presence of HTTP Strict Transport Security (HSTS) headers.                                                                                                                     |
+| DNS_CAArecord              | Confirms the presence of DNS Certification Authority Authorization (CAA) records.                                                                                                            |
+| security_headers           | Checks for the presence of recommended security headers. Refer to [testssl.sh](https://testssl.sh/doc/testssl.1.html) documentation for more context. Search for the `--header` description. |
+| overall_grade              | Assesses the overall security grade of the configuration.                                                                                                                                    |
+| cert\_                     | Ensures certificate-related configurations meet requirements, excluding specific cases.                                                                                                      |
 
 ### Limitations
 
@@ -322,3 +322,20 @@ the status of each endpoint. Below is an example of the summary section.
 ```
 
 ## Clean
+
+The `clean` subcommand removes the FIPS validation resources from your clusters. The command is intended to be used in
+scenarios where the `images` or `services` subcommands fail to clean up the resources from the cluster. The `clean`
+subcommand accepts the following flags:
+
+| **Short Flag** | **Long Flag** | **Description**                                      | **Type** |
+| -------------- | ------------- | ---------------------------------------------------- | -------- |
+| `-h`           | `--help`      | Display the help message for the `clean` subcommand. | boolean  |
+
+### Examples
+
+Remove the FIPS validation resources from your cluster.
+
+```shell
+export KUBECONFIG=/path/to/kubeconfig
+palette fips-validate clean
+```
