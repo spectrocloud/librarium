@@ -41,9 +41,9 @@ perform the setup, you can issue the command `spectro-edge-console` in the termi
    the first time you've started the Edge host since installation, you will be automatically directed to the TUI.
 
    If you are accessing the Edge host with an SSH connection, you can issue the command `spectro-edge-console` to bring
-   up the TUI. You can do this if you have gone through the initial setup in the TUI and want to change any
-   configuration. However, you can only issue `spectro-edge-console` to bring up the TUI before you have deployed a
-   cluster on the Edge host.
+   up the TUI. You can also use the same command to bring up the TUI if you have gone through the initial setup in the
+   TUI and want to change any configuration. However, you can only do this before you have deployed a cluster on the
+   Edge host.
 
 2. If you have already configured a user in your **user-data** file in the EdgeForge step, this step will be skipped
    automatically.
