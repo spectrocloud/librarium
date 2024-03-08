@@ -19,7 +19,7 @@ external image registry.
 :::tip
 
 You can use a private external registry together with a local Harbor image registry. All images from the external
-private registry will be stored in the local Harbor registry after the initial download, which allows you to reduce
+private registry will be stored in the local Harbor registry after the initial download, which allows you to reduce the
 bandwidth use and protect against outages. For more information, refer to
 [Enable Local Harbor Registry](./local-registry.md).
 
@@ -54,7 +54,9 @@ bandwidth use and protect against outages. For more information, refer to
   command.
 
 - [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
-  command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
+  command to view the existing Docker version.
+  
+  - You should have root-level or `sudo` privileges on your Linux machine to
   create privileged containers.
 
 - A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for a

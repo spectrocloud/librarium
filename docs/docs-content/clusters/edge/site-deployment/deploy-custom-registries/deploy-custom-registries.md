@@ -14,9 +14,9 @@ Palette agent divides the images into two categories in terms of when and from w
   Kubernetes combination built during EdgeForge and pushed to an image registry. Provider images are always downloaded
   first.
 
-- All other images. These images are for the network, storage, and application layers of the cluster. These images
+- All other images. These images are for the network, storage, and application layers of the cluster.
 
-The location of where the images are downloaded from depends on whether you have specified an external registry and
+The Palette agent decides on where to download the images from depending on whether you have specified an external registry and
 whether you have enabled a local Harbor registry on your cluster.
 
 ## Provider Image Registry
@@ -36,7 +36,7 @@ After the provider images are downloaded, the Palette agent proceeds to download
 cluster from registries that are specified in each pack's YAML configuration. However, you can specify an _external
 registry_ as the registry from which all images used by the cluster will be downloaded, including the provider images.
 
-When an external registry is provided in the user data, the Palette agent will replace the registry URL of every images
+When an external registry is provided in the user data, the Palette agent will replace the registry URL of every image
 used by the cluster with the external registry. For example, if your OS pack specified that the provider images be
 downloaded from `quay.io/kairos/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1`, but in your user data, you have specified an
 external registry `10.10.254.254:8000/spectro-images`. The Palette agent will automatically download the image using the
@@ -58,7 +58,7 @@ requests for application images from the cluster will be made to the Harbor regi
 ## Limitations
 
 There are limitations to using the local Harbor image registry and authenticated registries. The following table shows
-you which combinations are supported or unsupported.
+you which combinations are supported.
 
 | Feature                         | Can be used with                                                   | Cannot be used with                                             |
 | ------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------- |
