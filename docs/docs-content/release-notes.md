@@ -11,6 +11,11 @@ tags: ["release-notes"]
 
 ## March 16, 2024 - Release 4.3.0
 
+This release contains several new technical previews, including the Edge Management Console and Cluster Profile
+variables. Other notable features include enhancements to the Palette CLI, support for deploying Konvoy clusters, Azure
+AKS support for VerteX, and adding multiple system administrators to the Palette and VerteX system consoles. Check out
+the following sections for a complete list of features, improvements, and known issues.
+
 ### Palette
 
 #### Features
@@ -38,22 +43,22 @@ tags: ["release-notes"]
 
 #### Improvements
 
-- <TpBadge /> Nutanix cluster deployments now display YAML variables and exposes them as input fields on the User
+- <TpBadge /> Nutanix cluster deployments now display YAML variables and expose them as input fields on the User
   Interface (UI) during the cluster deployment process. Previously, the UI did not display the YAML variables for
-  Nutanix clusters and users had to manually update the machine template YAML. You can learn more about Nutanix in the
+  Nutanix clusters and users had to update the machine template YAML manually. You can learn more about Nutanix in the
   [Create and Manage Nutanix Cluster](./clusters/data-center/nutanix/create-manage-nutanix-cluster.md) guide.
 
-- The cluster deployment user flow experience has been improved to streamline the cluster creation process. From the
-  initial platform selection screen, you can now select between IaaS and managed Kubernetes clusters. The update
-  combines the selection of platform and type of Kubernetes cluster while also detecting and notifying if a prerequisite
-  is not met.
+- The cluster deployment user flow experience has been improved to streamline the cluster creation process. You can now
+  select between IaaS and managed Kubernetes clusters from the initial platform selection screen. The update combines
+  the selection of platform and type of Kubernetes cluster while also detecting and notifying if a prerequisite is not
+  met.
 
 - When installing a Private Cloud Gateway (PCG) or a self-hosted Palette instance through the Palette CLI, you can now
   benefit from additional checks and user feedback that ensure the installation process is successful. This new feedback
   experience gives you a better understanding of the components being installed and the progress of the installation. In
   case of a failure, the failed component is highlighted, and an error message is displayed.
 
-- Imported clusters now have support for updating network proxy configurations as a day-2 operation.
+- Imported clusters now support updating network proxy configurations as a day-2 operation.
 
 - The [Validator AWS](https://github.com/spectrocloud-labs/validator-plugin-aws) plugin now reports IAM permissions
   issues that are caused by
@@ -69,14 +74,14 @@ tags: ["release-notes"]
   improves the user experience. The enhancements include a Validator upgrade feature, a describe subcommand that
   displays results more clearly, an interactive re-configure option, the ability to restart the wizard, and more.
 
-- Cox Edge has been removed as a supported platform for Edge clusters. Cox stopped supporting the platform and the
-  platform is longer available for new deployments. All Cox Edge related resources and API endpoints have been removed.
+- Cox Edge has been removed as a supported platform for Edge clusters. Cox stopped supporting the platform and is no
+  longer available for new deployments. All Cox Edge-related resources and API endpoints have been removed.
 
 #### Known Issues
 
 - Conducting cluster node scaling operations on a cluster undergoing a backup can lead to issues and potential
-  unresponsiveness. To avoid this, ensure that no backup operations are in progress before scaling nodes or performing
-  other cluster operations that change the cluster state.
+  unresponsiveness. To avoid this, ensure no backup operations are in progress before scaling nodes or performing other
+  cluster operations that change the cluster state.
 
 ### Edge
 
@@ -94,9 +99,9 @@ tags: ["release-notes"]
   environments without connections to a Palette instance. To get started with the EMC, refer to the
   [Edge Management Console](./clusters/edge/edge.md) documentation.
 
-- <TpBadge /> Edge hosts using a local [image registry through Harbor](./integrations/harbor-edge.md) now have the
-  ability also use an external image registry alongside the local registry. The feature allows you to use an external
-  image registry to pull image that may not be available in the local registry.
+- <TpBadge /> Edge hosts using a local [image registry through Harbor](./integrations/harbor-edge.md) can now also use
+  an external image registry alongside the local registry. The feature allows you to use an external image registry to
+  pull images that may not be available in the local registry.
 
 #### Improvements
 
@@ -108,7 +113,7 @@ tags: ["release-notes"]
 - Edge hosts using RKE2 as the Kubernetes distribution can now use the
   [network overlay](./clusters/edge/networking/vxlan-overlay.md) feature.
 
-- Edge hosts using a local image registry through Harbor can now disable image pulls from the local registry through
+- Edge hosts using a local image registry through Harbor can now turn off image pulls from the local registry through
   namespace annotations. Refer to the
   [Harbor Edge](./integrations/harbor-edge.md#enable-image-download-from-outside-of-harbor) reference page to learn more
   about the feature.
@@ -120,7 +125,7 @@ tags: ["release-notes"]
 #### Improvements
 
 - Internal VMO components, including KubeVirt, KubeVirt Container Data Importer, and Snapshot Controller, have been
-  updated to ensure compatibility with the latest versions of KubeVirt and its associated components.
+  updated to ensure compatibility with the latest versions of KubeVirt and associated components.
 
 ### VerteX
 
@@ -147,13 +152,13 @@ tags: ["release-notes"]
 - The Palette CLI now supports the ability to scan deployed clusters and check for FIPS compliance using the
   `fips-validate` command. The command scans the cluster and reports the FIPS compliance status of images. The command
   also supports checking exposed service endpoints for approved ciphers and TLS versions. Images and service endpoints
-  that are not compliant are reported with a either a failed or unknown status. Refer to the
+  that are not compliant are reported with either a failed or unknown status. Refer to the
   [FIPS Validate](./palette-cli/commands/commands.md) to learn more about the command.
 
 #### Improvements
 
-- Password enforcement for VerteX system administrators has been improved to ensure to comply with NIST password
-  specifications, NIST 800-53 and NIST 800-63B. Refer to
+- Password enforcement for VerteX system administrators has been improved to comply with NIST password specifications,
+  NIST 800-53 and NIST 800-63B. Refer to
   [Password Requirements and Security](./vertex/system-management/account-management/credentials.md#password-requirements-and-security)
   page for more details.
 
@@ -184,9 +189,9 @@ tags: ["release-notes"]
 
 - Local Path Provisioner CSI for Edge is now a [verifed pack](./integrations/verified_packs.md).
 
-- K3s version 1.27.7 has been marked as _Disabled_ and no longer available for new cluster profles. This version has a
-  known issue that causes clusters to repeatedly crash. You can learn more about the issue in the
-  [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047). Upgrade to a newer version of K3s to avoid the issue.
+- K3s version 1.27.7 has been marked as _Disabled_ and is no longer available for new cluster profiles. This version has
+  a known issue that causes clusters to crash. You can learn more about the issue in the
+  [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047). Upgrade to a newer version of K3s to avoid the issue
 
 #### Kubernetes
 
