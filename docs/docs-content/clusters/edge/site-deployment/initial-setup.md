@@ -26,8 +26,9 @@ perform the setup, you can issue the command `spectro-edge-console` in the termi
 
 ## Prerequisite
 
-- An Edge host installed with Edge Installer 4.3 or later. The Edge host must be booting up for the first time since
-  installation.
+- An Edge host installed with Edge Installer 4.3 or later.
+
+- The Edge host must not have an active cluster deployed on it.
 
 - The Edge installer ISO used to install Palette on the Edge host must
   [enable initial configuration](../edge-configuration/installer-reference.md#initial-configuration).
@@ -36,7 +37,13 @@ perform the setup, you can issue the command `spectro-edge-console` in the termi
 
 ## Set up Edge Host
 
-1. Power up the Edge host. Do not make any input and allow Palette to choose the boot option automatically.
+1. Power up the Edge host. Do not make any input and allow Palette to choose the boot option automatically. If this is
+   the first time you've started the Edge host since installation, you will be automatically directed to the TUI.
+
+   If you are accessing the Edge host with an SSH connection, you can issue the command `spectro-edge-console` to bring
+   up the TUI. You can do this if you have gone through the initial setup in the TUI and want to change any
+   configuration. However, you can only issue `spectro-edge-console` to bring up the TUI before you have deployed a
+   cluster on the Edge host.
 
 2. If you have already configured a user in your **user-data** file in the EdgeForge step, this step will be skipped
    automatically.
