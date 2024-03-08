@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Define Profile Variables"
-title: "Define Profile Variables"
+sidebar_label: "Define and Manage Profile Variables"
+title: "Define and Manage Profile Variables"
 description: "Learn what cluster profile variables are and how to use them."
 sidebar_position: 40
 tags: ["profiles", "cluster profiles"]
@@ -10,28 +10,53 @@ Cluster profile variables enable you to create placeholders for parameters in pr
 can then populate for individual clusters during deployment. Meaning you can use a single cluster profile to deploy
 multiple clusters with unique requirements for security, networking, resource allocation, and so on.
 
-:::preview
-
-This is a Tech Preview feature currently available in the
-[Edge Management Console](/clusters/edge/edge-management-console/). Do not use this feature in production workloads, as
-it is subject to change.
-
-:::
-
 When defining a cluster profile variable, you can set specific constraints on the expected values, such as format,
 optionality, masking, and so on, to ensure scalable, error-free cluster deployments.
 
-:::info
+:::preview
+
+This is a Tech Preview feature currently available in the
+[Edge Management Console (EMC)](/clusters/edge/edge-management-console/). Do not use this feature in production
+workloads, as it is subject to change.
+
+:::
 
 You can use profile variables with any number of packs, manifests, and Helm charts, but only in the scope of their
 parent cluster profile. If you want to create placeholders to use across different cluster profiles, consider using
 [Palette Macros](/clusters/cluster-management/macros/).
 
-:::
+The following table describes the difference between profile variables and macros.
+
+| **Capability**                                                            | **Profile Variable** | **Macro** |
+| ------------------------------------------------------------------------- | :------------------: | :-------: |
+| Belongs to the cluster profile scope                                      |          ✅          |    ❌     |
+| Belongs to the project scope                                              |          ❌          |    ✅     |
+| Belongs to the tenant scope                                               |          ❌          |    ✅     |
+| Supports data format restrictions                                         |          ✅          |    ❌     |
+| Supports optionality restrictions                                         |          ✅          |    ❌     |
+| Supports [sprig template functions](https://masterminds.github.io/sprig/) |          ✅          |    ✅     |
 
 This guide explains how you can define and manage cluster profile variables.
 
+## Limitations
+
+- Cluster profile variables are currently available only in the EMC.
+
+- Palette does not support nesting profile variables within macros or other profile variables.
+
+- You cannot define profile variables for the `pack.content` and `system.uri` parameters because the
+  [Palette CLI](/palette-cli/) populates them automatically.
+
+- Once you deploy a cluster from a profile with variables, you can neither edit nor delete the profile variables. To
+  update them, [version the cluster profile](/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile)
+  and update the variables in the new version.
+
+  When you version a cluster profile with variables, the variables are propagated to the new version. However, upon
+  versioning, the variables in each version are independent.
+
 ## Prerequisites
+
+To define cluster profile variables, you need the following:
 
 - The `clusterProfile.create` and `clusterProfile.update` permissions to create and update cluster profiles. Refer to
   [Roles and Permissions](/user-management/palette-rbac/project-scope-roles-permissions#cluster-profile-admin) for more
@@ -40,15 +65,15 @@ This guide explains how you can define and manage cluster profile variables.
 - An in-progress or already created cluster profile. The cluster profile must either have the **Edge Native**
   infrastructure or be an edge-based add-on profile.
 
+To manage cluster profile variables, you need the following:
+
+- The `clusterProfile.update` permission to update cluster profiles. Refer to
+  [Roles and Permissions](/user-management/palette-rbac/project-scope-roles-permissions#cluster-profile-admin) for more
+  information.
+
+- A cluster profile with profile variables created in Palette.
+
 ## Define Profile Variables
-
-:::warning
-
-Palette does not support nesting profile variables within macros or other profile variables. Also, you cannot define
-profile variables for the `pack.content` and `system.uri` parameters because the [Palette CLI](/palette-cli/) populates
-them automatically.
-
-:::
 
 You can define profile variables both while creating and for the already created cluster profiles. To define profile
 variables [while creating a cluster profile](/profiles/cluster-profiles/create-cluster-profiles/), start following this
@@ -74,7 +99,7 @@ guide from step three at the **Profile Layers** stage of cluster profile creatio
 
     | **Format** | **Description**                                                                                        |
     | ---------- | ------------------------------------------------------------------------------------------------------ |
-    | String     | Custom string of text.                                                                                 |
+    | String     | Custom text input.                                                                                     |
     | Number     | Any numeric type, such as integers and floating point numbers.                                         |
     | Boolean    | `true` or `false`. Values that evaluate to `true` or `false`, such as 1 and 0, are not accepted.       |
     | Version    | Version value that follows the [Semantic Versioning](https://semver.org/) convention, such as `x.y.z`. |
@@ -119,35 +144,36 @@ guide from step three at the **Profile Layers** stage of cluster profile creatio
 ## Validate
 
 1. Log in to Palette.
+
 2. From the left **Main Menu**, select **Profiles** and navigate to the cluster profile for which you have defined
    profile variables.
+
 3. In the upper-right corner, click **Variables** and, on the **Profile variables** pane, check that the necessary
    variables are defined.
+
 4. Open the necessary profile layers and check that their YAML configuration contains the expected variables.
 
 ## Manage Profile Variables
 
-:::warning
+1. Log in to Palette.
 
-Once you deploy a cluster from a profile with variables, you can neither edit nor delete the profile variables. To
-update them, [version the cluster profile](/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile)
-and update the variables in the new version.
+2. Navigate to the cluster profile for which you want to update profile variables.
 
-When you version a cluster profile with variables, the variables are propagated to the new version. However, upon
-versioning, the variables in each version are independent.
+3. In the upper-right corner, click **Variables**.
 
-:::
+4. To edit a profile variable, in the right **Three-dot menu** of the necessary variable, click **Edit** and make the
+   necessary changes. Note that you cannot edit the **Variable**, **Format**, **Custom input validation**, **Required**,
+   **Mask value**, and **Read-only** fields.
 
-- To edit a profile variable, click its **Three-dot menu** > **Edit** and update its configuration. Note that you cannot
-  edit the **Variable**, **Format**, **Custom input validation**, **Required**, **Mask value**, and **Read-only**
-  fields.
-- To delete a profile variable, click its **Three-dot menu** > **Delete**. Note that you have to manually delete the
-  variable from the profile layers in which it's used.
+5. To delete a profile variable, in the right **Three-dot menu** of the necessary variable, click **Delete**. Then,
+   navigate to the profile layers that implement this variable and manually remove it from their YAML configurations.
 
 ## Validate
 
 1. Log in to Palette.
+
 2. From the left **Main Menu**, select **Profiles** and navigate to the cluster profile for which you have updated the
    profile variables.
+
 3. In the upper-right corner, click **Variables** and, on the **Profile variables** pane, check that only the necessary
    variables are present and that each variable has the expected definition.
