@@ -4,7 +4,7 @@ title: "Deploy Cluster Profile Updates"
 description: "Learn how to update your deployed clusters using Palette Cluster Profiles."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 40
 tags: ["getting-started"]
 ---
 
@@ -12,8 +12,8 @@ Palette provides cluster profiles, which allow you to specify layers for your wo
 packages, or cluster manifests. Packs serve as blueprints to the provisioning and deployment process, as they contain
 the versions of the container images that Palette will install for you. Cluster profiles provide consistency across
 environments during the cluster creation process, as well as when maintaining your clusters. Check out the
-[cluster profiles](./cluster-profiles.md) page to learn more. Once provisioned, there are three main ways to update your
-Palette deployments.
+[cluster profiles](../cluster-profiles.md) page to learn more. Once provisioned, there are three main ways to update
+your Palette deployments.
 
 | Method                   | Description                                                                        | Cluster application process                                                                                                                                                                                |
 | ------------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -28,27 +28,10 @@ apply these changes using Palette.
 ## Prerequisites
 
 This tutorial builds upon the resources and steps outlined in the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial
-for creating initial clusters. To complete it, you will need the following items.
+for creating initial clusters.
 
-- A public cloud account from one of these providers:
-
-  - [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
-  - [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account)
-  - [GCP](https://cloud.google.com/docs/get-started)
-
-- Register the [cloud account with Palette](https://console.spectrocloud.com/auth/signup). Use the following resource
-  for additional guidance.
-
-  - [Register and Manage AWS Accounts](../clusters/public-cloud/aws/add-aws-accounts.md)
-  - [Register and Manage Azure Cloud Accounts](../clusters/public-cloud/azure/azure-cloud.md)
-  - [Register and Manage GCP Accounts](../clusters/public-cloud/gcp/add-gcp-accounts.md)
-
-- An SSH Key Pair. Use the [Create and Upload an SSH Key](../clusters/cluster-management/ssh-keys.md) guide to learn how
-  to create an SSH key and upload it to Palette.
-
-  - AWS users must create an AWS Key pair before starting the tutorial. If you need additional guidance, check out the
-    [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html)
-    tutorial.
+To complete it, follow the steps described in the [Set up Palette with GCP](./setup.md) guide to authenticate Palette
+for use with your GCP cloud account.
 
 ## Set Up Clusters
 
@@ -315,7 +298,7 @@ Select the **1.1.0** version. Click on **Save** to confirm your profile version 
 
 Palette has backup and restore capabilities available for your mission critical workloads. Ensure that you have adequate
 backups before you make any cluster profile version changes in your production environments. You can learn more in the
-[Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) section.
+[Backup and Restore](../../clusters/cluster-management/backup-restore/backup-restore.md) section.
 
 :::
 
@@ -451,5 +434,5 @@ Cluster profiles provide consistency during the cluster creation process, as wel
 They can be versioned to keep a record of previously working cluster states, giving you visibility when updating or
 rolling back workloads across your environments.
 
-We recommend that you continue to the [Terraform Support](./terraform.md) page to learn about how you can use Palette
-with Terraform.
+We recommend that you continue to the [Deploy a Cluster with Terraform](./deploy-k8s-cluster-tf.md) page to learn about how you can
+use Palette with Terraform.
