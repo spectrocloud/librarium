@@ -70,7 +70,7 @@ deploy Kubernetes clusters to public cloud providers, on-prem data centers, and 
 
 ## Cluster Definition
 
-A Cluster Definition contain one or more cluster profiles, including profile variables used in those profiles.
+A Cluster Definition contains one or more cluster profiles, including profile variables used in those profiles.
 
 ## Cluster Profile
 
@@ -88,6 +88,12 @@ The diagram below shows an example of a cluster profile:
 ![cluster_profile_new](/cluster_profile_new.png)
 
 For more information, check out [Cluster Profiles](profiles/cluster-profiles/cluster-profiles.md).
+
+## Cluster Profile Variable
+
+Cluster Profile Variables enable you to create placeholders for parameters in profile layer configurations, which you
+can then populate for individual clusters during deployment. Meaning you can use a single cluster profile to deploy
+multiple clusters with unique requirements for security, networking, resource allocation, and so on.
 
 ## Edge Appliances
 
