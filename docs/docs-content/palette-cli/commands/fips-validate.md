@@ -19,11 +19,6 @@ and skip prompting you for the kubeconfig file path.
 
 :::
 
-### Supported Languages
-
-The `fips-validate` currently only supports Go binaries. Images with binaries compiled in other languages are marked as
-`unknown` in the report.
-
 ## Subcommands
 
 The `fips-validate` command exposes the following subcommands:
@@ -51,6 +46,15 @@ The `fips-validate` command requires the following prerequisites:
   the kubeconfig file is correctly configured to access the cluster.
 
 - The Kubernetes cluster must have internet access to download the images when using the `images` subcommand.
+
+## Limitations
+
+- The only supported runtime is Go. Images with binaries compiled in other languages are marked as `unknown` in the
+  report.
+
+- Only services exposing port `443` are verified.
+
+- Non-HTTP based service endpoints are not supported.
 
 ## Images
 
@@ -196,11 +200,6 @@ The following is a list of checks is performed by the `services` subcommand:
 | overall_grade              | Assesses the overall security grade of the configuration.                                                                                                                                    |
 | cert\_                     | Ensures certificate-related configurations meet requirements, excluding specific cases.                                                                                                      |
 
-### Limitations
-
-- Only services exposing port `443` are supported.
-- Only HTTP and HTTPS services are supported.
-
 ### Examples
 
 Validate the FIPS compliance of the service endpoints in your cluster.
@@ -323,8 +322,10 @@ the status of each endpoint. Below is an example of the summary section.
 ## Clean
 
 The `clean` subcommand removes the FIPS validation resources from your clusters. The command is intended to be used in
-scenarios where the `images` or `services` subcommands fail to clean up the resources from the cluster. The `clean`
-subcommand accepts the following flags:
+scenarios where the `images` or `services` subcommands may fail to clean up the resources from the cluster. As a
+workaround, you can manually trigger the `clean` subcommand to remove the resources from the cluster.
+
+The `clean` subcommand accepts the following flags:
 
 | **Short Flag** | **Long Flag** | **Description**                                      | **Type** |
 | -------------- | ------------- | ---------------------------------------------------- | -------- |
