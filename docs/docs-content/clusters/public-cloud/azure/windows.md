@@ -9,12 +9,11 @@ sidebar_position: 35
 ---
 
 Palette supports the deployment of Microsoft Windows applications on Azure AKS clusters. For the Windows applications to
-operate, a Windows-based node pool is required. This section guides you on creating a Windows node pool within an
+work, Palette requires a Windows-based node pool. This section guides you on creating a Windows node pool within an
 existing AKS cluster and configuring your Windows application to be deployed to that node pool.
 
 ## Prerequisites
 
-The following prerequisites must be met before deploying a Windows workload.
 
 - An AKS cluster created as described in the [Create and Manage Azure AKS Cluster](./aks.md) guide.
 
@@ -39,7 +38,7 @@ more.
 
 :::
 
-1. Log in to Palette, navigate to the left **Main Menu** and click on **Clusters**.
+1. Log in to Palette, navigate to the left **Main Menu**, and click on **Clusters**.
 
 2. Select your Azure AKS cluster.
 
@@ -48,9 +47,8 @@ more.
 4. Provide a name for your node pool. When naming a node pool, it is good practice to include a name that matches the
    node and operating system (OS) in Azure.
 
-5. If auto-scaling is desired, enable the **Enable Autoscaler** option.
+5. If auto-scaling is necessary, enable the **Enable Autoscaler** option.
 
-<br />
 
 :::warning
 
@@ -59,7 +57,6 @@ remove the ability to create a Windows node pool.
 
 :::
 
-<br />
 
 6. Enter the **Number of nodes in the pool**, or set the **Minimum Size** and **Maximum Size** if you have enabled
    Autoscaler.
@@ -93,7 +90,7 @@ workload.
     [Add a Manifest to an Add-on Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md#add-manifest-to-add-on-profile)
     guide to create an add-on cluster profile with a custom manifest.
 
-14. Use the manifest provided below for a sample ASP.NET application, or alternatively, use your own Windows application
+14. Use the manifest provided below for a sample ASP.NET application. Alternatively, use your own Windows application
     manifest. It is essential to include in the **spec** block of the manifest the **nodeSelector: "kubernetes.io/os":
     windows** specification. This specification is required for Kubernetes to know that the application needs to be
     deployed on a Windows node.
