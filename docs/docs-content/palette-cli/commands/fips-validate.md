@@ -50,8 +50,7 @@ The `fips-validate` command requires the following prerequisites:
 - The Kubernetes cluster must be accessible from the machine where you issue the `fips-validate` command. Ensure that
   the kubeconfig file is correctly configured to access the cluster.
 
-- The Kubernetes cluster must have internet access to download the images when using the `images` subcommand. Private
-  image registries are not supported.
+- The Kubernetes cluster must have internet access to download the images when using the `images` subcommand.
 
 ## Images
 
@@ -113,7 +112,7 @@ report contains the following columns:
 | `EXE`      | How the binary was compiled, either statically or dynamically.                                                                            |
 | `CRYPTO`   | The cryptographic library used to compile the binary.                                                                                     |
 
-The following is an example of the FIPS compliance report. The following image is FIPS compliant as the binary is
+The following is an example of the FIPS compliance report. The validated image is FIPS compliant as the binary is
 compiled with the BoringSSL cryptographic library.
 
 ```text
