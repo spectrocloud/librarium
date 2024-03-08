@@ -147,7 +147,8 @@ tags: ["release-notes"]
 - The Palette CLI now supports the ability to scan deployed clusters and check for FIPS compliance using the
   `fips-validate` command. The command scans the cluster and reports the FIPS compliance status of images. The command
   also supports checking exposed service endpoints for approved ciphers and TLS versions. Images and service endpoints
-  that are not compliant are reported with a failed status.
+  that are not compliant are reported with a either a failed or unknown status. Refer to the
+  [FIPS Validate](./palette-cli/commands/commands.md) to learn more about the command.
 
 #### Improvements
 
@@ -181,90 +182,78 @@ tags: ["release-notes"]
 
 #### Pack Notes
 
-- K3s version 1.27.7 has a known issue that causes clusters to repeatedly crash. You can learn more about the issue in
-  the [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047)
+- Local Path Provisioner CSI for Edge is now a [verifed pack](./integrations/verified_packs.md).
+
+- K3s version 1.27.7 has been marked as _Disabled_ and no longer available for new cluster profles. This version has a
+  known issue that causes clusters to repeatedly crash. You can learn more about the issue in the
+  [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047). Upgrade to a newer version of K3s to avoid the issue.
 
 #### Kubernetes
 
 | Pack                                       | New Version |
 | ------------------------------------------ | ----------- |
-| K3s                                        | 1.25.15     |
-| K3s                                        | 1.26.10     |
-| K3s                                        | 1.27.7      |
-| K3s                                        | 1.28.2      |
-| Kubernetes AKS                             | 1.28.0      |
-| Kubernetes EKS                             | 1.28.0      |
-| Kubernetes GKE                             | 1.25.14     |
-| Kubernetes GKE                             | 1.25.14     |
-| Kubernetes GKE                             | 1.27.6      |
-| Palette eXtended Kubernetes (PXK)          | 1.25.15     |
-| Palette eXtended Kubernetes (PXK)          | 1.26.10     |
-| Palette eXtended Kubernetes (PXK)          | 1.27.7      |
-| Palette eXtended Kubernetes (PXK)          | 1.28.3      |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.25.15     |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.26.10     |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.7      |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.28.2      |
-| RKE2                                       | 1.26.11     |
-| RKE2                                       | 1.27.8      |
-| RKE2                                       | 1.28.2      |
+| K3s                                        | 1.29.0      |
+| Konvoy                                     | 1.27.6      |
+| Palette eXtended Kubernetes (PXK)          | 1.29.0      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.0      |
+| RKE2                                       | 1.29.0      |
 
 #### CNI
 
-| Pack           | New Version |
-| -------------- | ----------- |
-| Azure Disk CSI | 1.29.1      |
-| AWS EBS CSI    | 1.24.0      |
-| Longhorn CSI   | 1.5.3       |
-| Nutanix CSI    | 2.6.6       |
-| Rook Ceph CSI  | 1.12.7      |
-| Portworx CSI   | 3.0.4       |
+| Pack        | New Version |
+| ----------- | ----------- |
+| AWS VPC CNI | 1.15.5      |
+| Calico      | 3.27.0      |
+| Cilium OSS  | 1.13.12     |
+| Cilium OSS  | 1.14.7      |
+| Cilium OSS  | 1.15.1      |
+| Flannel     | 0.24.0      |
 
 #### CSI
 
-| Pack        | New Version |
-| ----------- | ----------- |
-| AWS VPC CNI | 1.15.1      |
-| Calico      | 3.26.3      |
-| Cilium CNI  | 1.14.3      |
-| Flannel     | 0.23.0      |
+| Pack                                | New Version   |
+| ----------------------------------- | ------------- |
+| AWS EBS CSI                         | 1.26.1        |
+| GCE Persistent Disk Driver          | 1.12.4        |
+| Local Path Provisioner CSI for Edge | 0.0.25        |
+| Longhorn CSI                        | 1.6.0         |
+| Rook Ceph (manifests)               | 1.13.1        |
+| vSphere CSI                         | 3.1.0 , 3.1.2 |
 
 #### Add-on Packs
 
-| Pack                      | New Version |
-| ------------------------- | ----------- |
-| ArgoCD                    | 5.46.8      |
-| External Secrets Operator | 0.9.7       |
-| Flux2 CD                  | 2.10.2      |
-| Imageswap                 | 1.5.3       |
-| Istio                     | 1.18.2      |
-| Kong Ingress              | 2.32.0      |
-| MetalLB                   | 0.13.11     |
-| Nginx Ingress             | 1.9.4       |
-| Nvidia GPU Operator       | 23.9.1      |
-| Open Policy Agent         | 3.13.2      |
-| Prometheus Grafana        | 51.0.3      |
-| Reloader                  | 1.0.43      |
-| Spot.io                   | 1.0.117     |
+| Pack                          | New Version |
+| ----------------------------- | ----------- |
+| AWS Application Load Balancer | 2.6.2       |
+| Cilium Tetragon               | 0.10.1      |
+| Cluster Autoscaler for AWS    | 1.27.5      |
+| Cluster Autoscaler for AWS    | 1.28.2      |
+| External DNS                  | 0.13.6      |
+| External Secrets Operator     | 0.9.11      |
+| Hashicorp Vault               | 0.27.0      |
+| Istio                         | 1.20.1      |
+| MetalLB                       | 0.13.12     |
+| Nginx Ingress                 | 1.9.5       |
+| Prometheus Grafana            | 55.8.3      |
 
 #### FIPS Packs
 
 | Pack                                       | New Version |
 | ------------------------------------------ | ----------- |
-| Azure CSI Driver                           | 1.28.3      |
-| Palette eXtended Kubernetes (PXK)          | 1.25.15     |
-| Palette eXtended Kubernetes (PXK)          | 1.26.10     |
-| Palette eXtended Kubernetes (PXK)          | 1.27.7      |
-| Palette eXtended Kubernetes (PXK)          | 1.28.3      |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.25.9      |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.26.4      |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.2      |
-| RKE2                                       | 1.26.11     |
-| RKE2                                       | 1.27.8      |
-| RKE2                                       | 1.28.6      |
-| RKE2 - Edge                                | 1.25.2      |
-| RKE2 - Edge                                | 1.26.4      |
-| RKE2 - Edge                                | 1.27.2      |
+| AKS                                        | 1.27        |
+| AKS                                        | 1.28        |
+| AWS EBS CSI                                | 1.26.1      |
+| Calico CNI                                 | 3.26.3      |
+| Konvoy                                     | 1.27.6      |
+| Palette eXtended Kubernetes (PXK)          | 1.26.12     |
+| Palette eXtended Kubernetes (PXK)          | 1.27.9      |
+| Palette eXtended Kubernetes (PXK)          | 1.28.5      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.26.12     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.9      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.28.5      |
+| RKE2 - Edge                                | 1.26.12     |
+| RKE2 - Edge                                | 1.27.9      |
+| RKE2 - Edge                                | 1.28.5      |
 
 #### Deprecations and Removals
 
