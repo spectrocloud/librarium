@@ -12,8 +12,8 @@ Palette agent to download images from an authenticated external registry by spec
 for the registry in the user data used to build your Edge Installer ISO.
 
 External registries store images for all elements of the cluster _other than_ the Operating System (OS) and Kubernetes
-layers of your cluster. If you want your cluster to pull provider images from a private registry, refer to
-[Deploy Cluster with a Private Provider Registry](./deploy-private-registry.md)
+layers of your cluster. If you want your cluster to pull provider images, which are used by the OS and the Kubernetes
+layer, from a private registry, refer to [Deploy Cluster with a Private Provider Registry](./deploy-private-registry.md)
 
 :::tip
 
@@ -38,6 +38,35 @@ bandwidth use and protect against outages. For more information, refer to
   familiar with EdgeForge before following this guide. Refer to
   [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) to learn how to build Edge Installer
   ISO and provider images.
+
+- A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture to build the Edge
+  artifacts. You can issue the following command in the terminal to check your processor architecture.
+
+  ```bash
+  uname -m
+  ```
+
+- Minimum hardware configuration of the Linux machine:
+
+  - 4 CPU
+  - 8 GB memory
+  - 50 GB storage
+
+- [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the `git --version`
+  command.
+
+- [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
+  command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
+  create privileged containers.
+
+- A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for a
+  [free trial](https://www.spectrocloud.com/free-tier/).
+
+- Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
+  generate a new registration token. For detailed instructions, refer to the
+  [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide.
+
+- A private external registry that stores all images except for provider images required by your cluster.
 
 ## Deploy Cluster with a Private External Registry
 

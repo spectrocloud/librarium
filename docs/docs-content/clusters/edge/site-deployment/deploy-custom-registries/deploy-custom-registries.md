@@ -7,21 +7,23 @@ sidebar_position: 60
 tags: ["edge"]
 ---
 
-During Edge cluster deployment, the Palette agent must download the necessary images for cluster deployment. There are
-two kinds of images:
+During Edge cluster deployment, the Palette agent must download the necessary images for cluster deployment. The Palette
+agent divides images into two groups in terms of when and where to download the images:
 
 - Provider images. These images are Kairos-based container images for each supported Operating System (OS) and
-  Kubernetes combination built during EdgeForge and pushed to a provider image registry.
+  Kubernetes combination built during EdgeForge and pushed to a provider image registry. Provider images are downloaded
+  before all other images from the provider image registry.
 
-- All other images. These images are for the other infrastructure and application layers of the cluster.
+- All other images. These images are for the network, storage and application layers of the cluster. These images are
+  downloaded from external registries after the provider images have been downloaded.
 
 ## Provider Image Registry
 
-Provider images are downloaded by the Palette agent first from the _provider image registry_. You are required to
-provide the location provider registry in the OS pack of your cluster profile. Palette supports downloading provider
-images from authenticated registries. If your cluster needs to download provider images from a authenticated registry,
-you need to provide the credentials to access the registry in the OS pack of the cluster profile. For more information,
-refer to [Deploy Cluster with a Private Provider Registry](./deploy-private-registry.md).
+Provider images are downloaded by the Palette agent from the _provider image registry_. You are required to provide the
+location provider registry in the OS pack of your cluster profile. Palette supports downloading provider images from
+authenticated registries. If your cluster needs to download provider images from a authenticated registry, you need to
+provide the credentials to access the registry in the OS pack of the cluster profile. For more information, refer to
+[Deploy Cluster with a Private Provider Registry](./deploy-private-registry.md).
 
 ## External Registry
 
@@ -31,7 +33,8 @@ registries.
 
 If you want to use a private image registry for applications on your Edge cluster, you can instruct the Palette agent to
 download images from an _authenticated external registry_. You can specify an external registry in the user-data used to
-build your Edge Installer ISO.
+build your Edge Installer ISO. For more information on how to deploy a cluster with an authenticated external registry,
+refer to [Deploy Cluster with a Private External Registry](./deploy-external-registry.md).
 
 ## Local Harbor Registry
 
