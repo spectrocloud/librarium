@@ -8,12 +8,12 @@ tags: ["public cloud", "azure"]
 sidebar_position: 35
 ---
 
-Palette supports the deployment of Microsoft Windows applications on Azure AKS clusters. For the Windows applications to
-work, Palette requires a Windows-based node pool. This section guides you on creating a Windows node pool within an
-existing AKS cluster and configuring your Windows application to be deployed to that node pool.
+Palette supports the deployment of Microsoft Windows applications on
+[Azure AKS clusters](../azure/create-azure-cluster.md). For the Windows applications to work, Palette requires a
+Windows-based node pool created within the cluster. This section guides you on creating a Windows node pool within an
+existing AKS cluster managed by Palette and configuring your Windows application to be deployed to that node pool.
 
 ## Prerequisites
-
 
 - An AKS cluster created as described in the [Create and Manage Azure AKS Cluster](./aks.md) guide.
 
@@ -49,14 +49,12 @@ more.
 
 5. If auto-scaling is necessary, enable the **Enable Autoscaler** option.
 
+   :::warning
 
-:::warning
+   Do not select the **System Node Pool** option. System node pools must be Linux-based, and choosing this option will
+   remove the ability to create a Windows node pool.
 
-Do not select the **System Node Pool** option. System node pools must be Linux-based, and choosing this option will
-remove the ability to create a Windows node pool.
-
-:::
-
+   :::
 
 6. Enter the **Number of nodes in the pool**, or set the **Minimum Size** and **Maximum Size** if you have enabled
    Autoscaler.
@@ -154,11 +152,8 @@ to attach your add-on cluster profile to the AKS cluster.
 
 ## Validate
 
-You can validate that the Windows application was successfully deployed by accessing the service URL on the AKS cluster
-**Overview** page.
-
 1. In Palette, navigate to the left **Main Menu** and select **Clusters**.
 
 2. Next, click on your AKS cluster, which will open the cluster's **Overview** page.
 
-3. Access the Windows application through the exposed **Services** URL.
+3. Click on the exposed **Services** URL to access the Windows application landing page.
