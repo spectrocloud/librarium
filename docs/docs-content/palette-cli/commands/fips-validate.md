@@ -320,3 +320,5 @@ the status of each endpoint. Below is an example of the summary section.
 │ 10-0-3-97.kubernetes.default:10250                             │ passed │
 └────────────────────────────────────────────────────────────────┴────────┘
 ```
+
+## Clean
