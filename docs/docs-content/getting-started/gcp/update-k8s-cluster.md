@@ -4,7 +4,7 @@ title: "Deploy Cluster Profile Updates"
 description: "Learn how to update your deployed clusters using Palette Cluster Profiles."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 40
 tags: ["getting-started"]
 ---
 
@@ -12,8 +12,8 @@ Palette provides cluster profiles, which allow you to specify layers for your wo
 packages, or cluster manifests. Packs serve as blueprints to the provisioning and deployment process, as they contain
 the versions of the container images that Palette will install for you. Cluster profiles provide consistency across
 environments during the cluster creation process, as well as when maintaining your clusters. Check out the
-[cluster profiles](./cluster-profiles.md) page to learn more. Once provisioned, there are three main ways to update your
-Palette deployments.
+[cluster profiles](../cluster-profiles.md) page to learn more. Once provisioned, there are three main ways to update
+your Palette deployments.
 
 | Method                   | Description                                                                        | Cluster application process                                                                                                                                                                                |
 | ------------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -28,27 +28,10 @@ apply these changes using Palette.
 ## Prerequisites
 
 This tutorial builds upon the resources and steps outlined in the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial
-for creating initial clusters. To complete it, you will need the following items.
+for creating initial clusters.
 
-- A public cloud account from one of these providers:
-
-  - [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
-  - [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account)
-  - [GCP](https://cloud.google.com/docs/get-started)
-
-- Register the [cloud account with Palette](https://console.spectrocloud.com/auth/signup). Use the following resource
-  for additional guidance.
-
-  - [Register and Manage AWS Accounts](../clusters/public-cloud/aws/add-aws-accounts.md)
-  - [Register and Manage Azure Cloud Accounts](../clusters/public-cloud/azure/azure-cloud.md)
-  - [Register and Manage GCP Accounts](../clusters/public-cloud/gcp/add-gcp-accounts.md)
-
-- An SSH Key Pair. Use the [Create and Upload an SSH Key](../clusters/cluster-management/ssh-keys.md) guide to learn how
-  to create an SSH key and upload it to Palette.
-
-  - AWS users must create an AWS Key pair before starting the tutorial. If you need additional guidance, check out the
-    [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html)
-    tutorial.
+To complete it, follow the steps described in the [Set up Palette with GCP](./setup.md) guide to authenticate Palette
+for use with your GCP cloud account.
 
 ## Set Up Clusters
 
@@ -166,7 +149,7 @@ Deploy this cluster profile to a new cluster using the same steps outlined in th
 Once you have completed these steps and the host cluster creation process has finished, navigate to the left **Main
 Menu** and select **Clusters** to view your deployed clusters. You should have two healthy clusters.
 
-![Image that shows the two clusters in the clusters list](/getting-started/getting-started_update-k8s-cluster_deployed-clusters-start-setup.webp)
+![Image that shows the two clusters in the clusters list](/getting-started/getting-started_update-k8s-cluster_deployed-clusters-start-setup.png)
 
 ## Tag and Filter Clusters
 
@@ -185,7 +168,7 @@ Click on the **Settings** drop-down Menu in the upper right corner and select **
 Fill **service:hello-universe-frontend** in the **Tags (Optional)** input box. Click on **Save Changes**. Close the
 panel.
 
-![Image that shows how to add a cluster tag](/getting-started/getting-started_update-k8s-cluster_add-service-tag.webp)
+![Image that shows how to add a cluster tag](/getting-started/getting-started_update-k8s-cluster_add-service-tag.png)
 
 Repeat the steps above for the `[cloud provider]-cluster-api` cluster you deployed with the _hello-universe-api_. Add
 the **service:hello-universe-backend** tag to it.
@@ -198,7 +181,7 @@ Use the drop-down boxes to fill in the values of the filter. Select **Tags** in 
 
 Click on **Apply Filter**.
 
-![Image that shows how to add a frontend service filter](/getting-started/getting-started_update-k8s-cluster_apply-frontend-filter.webp)
+![Image that shows how to add a frontend service filter](/getting-started/getting-started_update-k8s-cluster_apply-frontend-filter.png)
 
 Once you apply the filter, only the `[cloud provider]-cluster` with this tag is displayed.
 
@@ -222,7 +205,7 @@ Navigate to the left **Main Menu** and select **Profiles** to view the cluster p
 corresponding to your _hello-universe-frontend_ cluster. It should be named using the pattern
 `[cloud provider]-profile`. Select it to view its details.
 
-![Image that shows the frontend cluster profile with cluster linked to it](/getting-started/getting-started_update-k8s-cluster_profile-with-cluster.webp)
+![Image that shows the frontend cluster profile with cluster linked to it](/getting-started/getting-started_update-k8s-cluster_profile-with-cluster.png)
 
 The current version is displayed in the **drop-down Menu** next to the profile name. This profile has the default value
 of **1.0.0**, as you did not specify another value when you created it. The cluster profile also shows the host clusters
@@ -235,7 +218,7 @@ A dialog box appears. Fill in the **Version** input with **1.1.0**. Click on **C
 Palette creates a new cluster profile version and opens it. The version dropdown displays the newly created **1.1.0**
 profile. This profile version is not deployed to any host clusters.
 
-![Image that shows cluster profile version 1.1.0](/getting-started/getting-started_update-k8s-cluster_new-version-overview.webp)
+![Image that shows cluster profile version 1.1.0](/getting-started/getting-started_update-k8s-cluster_new-version-overview.png)
 
 The version **1.1.0** has the same layers as the version **1.0.0** it was created from. Click on the **hello-universe**
 manifest layer. The manifest editor appears.
@@ -307,36 +290,27 @@ Navigate to the left **Main Menu** and select **Clusters**. Filter for the clust
 Select the **Profile** tab of this cluster. You can select a new version of your cluster profile by using the version
 dropdown.
 
-Select the **1.1.0** version.
+Select the **1.1.0** version. Click on **Save** to confirm your profile version selection.
 
-![Image that shows how to select a new profile version for the cluster](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_profile-version-selection.webp)
-
-Click **Review & Save**. Palette prompts you to preview the change summary.
-
-Click **Review changes in Editor**. Palette displays the changes, with the current configuration on the left and the
-incoming configuration on the right.
-
-Click **Apply Changes**.
-
-![Palette Editor that displays changes coming from the profile version update.](/getting-started/getting-started_update-k8s-cluster_editor-changes.webp)
+![Image that shows how to select a new profile version for the cluster](/getting-started/getting-started_update-k8s-cluster_profile-version-selection.png)
 
 :::warning
 
 Palette has backup and restore capabilities available for your mission critical workloads. Ensure that you have adequate
 backups before you make any cluster profile version changes in your production environments. You can learn more in the
-[Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) section.
+[Backup and Restore](../../clusters/cluster-management/backup-restore/backup-restore.md) section.
 
 :::
 
 Palette now makes the required changes to your cluster according to the specifications of the configured cluster profile
 version. Once your changes have completed, Palette marks your layers with the green status indicator.
 
-![Image that shows completed cluster profile updates](/getting-started/getting-started_update-k8s-cluster_completed-cluster-updates.webp)
+![Image that shows completed cluster profile updates](/getting-started/getting-started_update-k8s-cluster_completed-cluster-updates.png)
 
 Click on the URL for port **:8080** to access the Hello Universe application. The landing page of the application
 indicates that it is connected to the API server.
 
-![Image that shows hello-universe with API server](/getting-started/getting-started_update-k8s-cluster_hello-universe-with-api.webp)
+![Image that shows hello-universe with API server](/getting-started/getting-started_update-k8s-cluster_hello-universe-with-api.png)
 
 ## Roll Back Cluster Profiles
 
@@ -395,21 +369,19 @@ Navigate to the left **Main Menu** and select **Clusters**. Filter for the clust
 your clusters match this filter. Palette indicates that the cluster associated with the cluster profile you updated has
 updates available.
 
-![Image that shows the pending updates ](/getting-started/getting-started_update-k8s-cluster_pending-update-clusters-view.webp)
+![Image that shows the pending updates ](/getting-started/getting-started_update-k8s-cluster_pending-update-clusters-view.png)
 
-Select this cluster to open its **Overview** tab. Click on **Updates** to begin the cluster update.
+Select this cluster to open its **Overview** tab. Click on **Updates Available** to begin the cluster update.
 
-![Image that shows the Updates button](/getting-started/getting-started_update-k8s-cluster_updates-available-button-cluster-overview.webp)
+![Image that shows the Updates Available button](/getting-started/getting-started_update-k8s-cluster_updates-available-button-cluster-overview.png)
 
-A dialog appears which shows the changes made in this update. Click on **Review changes in Editor**. As previously,
-Palette displays the changes, with the current configuration on the left and the incoming configuration on the right.
+A dialog appears which shows the changes made in this update. Review the changes and ensure the only change is the
+`replicas` field value. The pending update maintains the override you have made and sets the `replicas` field to `1`.
 
-Review the changes and ensure the only change is the `replicas` field value. You can choose to maintain your cluster
-override or apply the incoming cluster profile update.
+![Image that shows the available updates dialog ](/getting-started/getting-started_update-k8s-cluster_available-updates-dialog.png)
 
-![Image that shows the available updates dialog ](/getting-started/getting-started_update-k8s-cluster_available-updates-dialog.webp)
-
-Click on **Apply Changes** once you have finished reviewing your changes. This removes your cluster override.
+Set the value of `replicas` to `3` in the right-hand dialog. This removes your cluster override. Click on **Confirm
+updates** once you have finished reviewing your changes.
 
 Palette updates your cluster according to cluster profile specifications. Once these changes are complete, select the
 **Workloads** tab. Then, select the **hello-universe** namespace.
@@ -426,12 +398,14 @@ delete to access its details page.
 
 Click on **Settings** to expand the menu, and select **Delete Cluster**.
 
-![Delete cluster](/getting-started/getting-started_deploy-k8s-cluster_delete-cluster-button.webp)
+![Delete cluster](/getting-started/getting-started_deploy-k8s-cluster_delete-cluster-button.png)
 
 You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name to proceed with
 the delete step. The deletion process takes several minutes to complete.
 
 Repeat the same steps for the other cluster.
+
+<br />
 
 :::info
 
@@ -440,6 +414,8 @@ delete, navigate to the cluster’s details page, click on **Settings**, then se
 automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
 
 :::
+
+<br />
 
 Once the cluster is deleted, navigate to the left **Main Menu** and click on **Profiles**. Find the cluster profile you
 created and click on the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the
@@ -458,5 +434,5 @@ Cluster profiles provide consistency during the cluster creation process, as wel
 They can be versioned to keep a record of previously working cluster states, giving you visibility when updating or
 rolling back workloads across your environments.
 
-We recommend that you continue to the [Terraform Support](./terraform.md) page to learn about how you can use Palette
-with Terraform.
+We recommend that you continue to the [Deploy a Cluster with Terraform](./deploy-k8s-cluster-tf.md) page to learn about how you can
+use Palette with Terraform.

@@ -4,7 +4,7 @@ title: "Deploy a Cluster"
 description: "Learn to deploy a Palette host cluster."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 50
+sidebar_position: 30
 tags: ["getting-started"]
 ---
 
@@ -22,24 +22,8 @@ plane nodes_ and _worker nodes_ where you will deploy applications. The result i
 
 To complete this tutorial, you will need the following.
 
-- A public cloud account from one of these providers:
-
-  - [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
-  - [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account)
-  - [GCP](https://cloud.google.com/docs/get-started)
-
-- Register the cloud account in Palette. The following resources provide additional guidance.
-
-  - [Register and Manage AWS Accounts](../clusters/public-cloud/aws/add-aws-accounts.md)
-  - [Register and Manage Azure Cloud Accounts](../clusters/public-cloud/azure/azure-cloud.md)
-  - [Register and Manage GCP Accounts](../clusters/public-cloud/gcp/add-gcp-accounts.md)
-
-- An SSH Key Pair. Use the [Create and Upload an SSH Key](../clusters/cluster-management/ssh-keys.md) guide to learn how
-  to create an SSH key and upload it to Palette.
-
-  - AWS users must create an AWS Key pair before starting the tutorial. If you need additional guidance, check out the
-    [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html)
-    tutorial.
+- Follow the steps described in the [Set up Palette with AWS](./setup.md) guide to authenticate Palette for use with
+  your AWS cloud account.
 
 - A Palette cluster profile. Follow the [Create a Cluster Profile](./create-cluster-profile.md) tutorial to create the
   required cluster profile for your chosen cloud provider.
@@ -47,10 +31,6 @@ To complete this tutorial, you will need the following.
 ## Deploy a Cluster
 
 The following steps will guide you through deploying the cluster infrastructure.
-
-<Tabs>
-
-<TabItem label="AWS" value="aws-ui">
 
 Navigate to the left **Main Menu** and select **Cluster**. From the clusters page, click on **Add New Cluster**.
 
@@ -119,153 +99,6 @@ settings and click on **Finish Configuration** to deploy the cluster.
 Navigate to the left **Main Menu** and select **Clusters**.
 
 ![Update the cluster](/getting-started/aws/getting-started_deploy-k8s-cluster_create_cluster.webp)
-
-</TabItem>
-
-<TabItem label="Azure" value="azure-ui">
-
-Navigate to the left **Main Menu** and select **Clusters**. Click on **Add New Cluster**.
-
-![Palette clusters overview page](/getting-started/getting-started_deploy-k8s-cluster_new_cluster.webp)
-
-Click on **Deploy New Cluster** to access the cluster deployment wizard. Select **Azure** and click the **Start Azure
-Configuration** button. Use the following steps to create a host cluster in Azure.
-
-In the **Basic information** section, insert the general information about the cluster, such as the Cluster name,
-Description, Tags, and Cloud account. Click on **Next**.
-
-![Palette clusters basic information](/getting-started/azure/getting-started_deploy-k8s-cluster_clusters_basic_info.webp)
-
-A list is displayed of available profiles you can choose to deploy to Azure. Select the cluster profile you created in
-the [Create a Cluster Profile](./create-cluster-profile.md) tutorial, named **azure-profile**, and click on **Next**.
-
-The **Parameters** section displays all the layers in the cluster profile.
-
-![palette clusters basic information](/getting-started/azure/getting-started_deploy-k8s-cluster_parameters.webp)
-
-Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format. Each
-pack contains a set of default values. You can change the manifest values if needed. Click on **Next** to proceed.
-
-The **Cluster config** section allows you to select the **Subscription**, **Region**, **Resource Group**, **Storage
-account**, and **SSH Key** to apply to the host cluster. All clusters require you to assign an SSH key. Refer to the
-[SSH Keys](../clusters/cluster-management/ssh-keys.md) guide for information about uploading an SSH key.
-
-When you are done selecting a **Subscription**, **Region**, **Resource Group**, **Storage account** and **SSH Key**,
-click on **Next**.
-
-The **Nodes config** section allows you to configure the nodes that compose the control plane nodes and worker nodes of
-the Kubernetes cluster.
-
-Refer to the [Node Pool](../clusters/cluster-management/node-pool.md) guide for a list and description of parameters.
-
-Before you proceed to next section, review the following parameters.
-
-- **Number of nodes in the pool** - This option sets the number of control plane or worker nodes in the control plane or
-  worker pool. For this tutorial, set the count to one for both the control plane and worker pools.
-
-- **Allow worker capability** - This option allows the control plane node to also accept workloads. This is useful when
-  spot instances are used as worker nodes. You can check this box if you want to.
-
-- **Instance Type** - Select the compute type for the node pool. Each instance type displays the amount of CPU, RAM, and
-  hourly cost of the instance. Select **Standard_A8_v2**.
-
-- **Managed disk** - Used to select the storage class. Select **Standard LRS** and set the disk size to **60**.
-
-- **Availability zones** - Used to specify the availability zones in which the node pool can place nodes. Select an
-  availability zone.
-
-![Palette clusters nodes configuration](/getting-started/azure/getting-started_deploy-k8s-cluster_cluster_nodes_config.webp)
-
-In the **Settings** section, you can configure advanced options such as when to patch the OS, enable security scans,
-manage backups, add Role-Based Access Control (RBAC) bindings, and more.
-
-For this tutorial, you can use the default settings. Click on **Validate** to continue.
-
-The Review section allows you to review the cluster configuration before deploying the cluster. Review all the settings
-and click on **Finish Configuration** to deploy the cluster.
-
-![Configuration overview of newly created Azure cluster](/getting-started/azure/getting-started_deploy-k8s-cluster_profile_review.webp)
-
-Navigate to the left **Main Menu** and select **Clusters**.
-
-![Update the cluster](/getting-started/azure/getting-started_deploy-k8s-cluster_create_cluster.webp)
-
-</TabItem>
-
-<TabItem label="Google Cloud" value="gcp-ui">
-
-Navigate to the left **Main Menu** and select **Cluster**. Click on **Add New Cluster**.
-
-![Palette clusters overview page](/getting-started/getting-started_deploy-k8s-cluster_new_cluster.webp)
-
-Click on **Deploy New Cluster** to access the cluster deployment wizard. Select **Google Cloud** and click the **Start
-Google Cloud Configuration** button. Use the following steps to create a host cluster in Google Cloud.
-
-In the **Basic information** section, insert the general information about the cluster, such as the **Cluster name**,
-**Description**, **Tags**, and **Cloud account**. Click on **Next**.
-
-![Palette clusters basic information](/getting-started/gcp/getting-started_deploy-k8s-cluster_basic_info.webp)
-
-A list is displayed of available profiles you can choose to deploy to GCP. Select the cluster profile you created in the
-[Create a Cluster Profile](./create-cluster-profile.md) tutorial, named **gcp-profile**, and click on **Next**.
-
-The **Parameters** section displays all the layers in the cluster profile.
-
-![Palette clusters basic information](/getting-started/gcp/getting-started_deploy-k8s-cluster_clusters_parameters.webp)
-
-Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format. Each
-pack contains a set of default values. You can change the manifest values if needed. Click on **Next** to proceed.
-
-The **Cluster config** section allows you to select the **Project**, **Region**, and **SSH Key** to apply to the host
-cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/clusters/cluster-management/ssh-keys)
-guide for information about uploading an SSH key.
-
-After selecting a **Project**, **Region**, and **SSH Key**, click on **Next**.
-
-The **Nodes config** section allows you to configure the nodes that make up the control plane and worker nodes of the
-host cluster.
-
-Before you proceed to the next section, review the following parameters.
-
-Refer to the [Node Pool](../clusters/cluster-management/node-pool.md) guide for a list and description of parameters.
-
-Before you proceed to next section, review the following parameters.
-
-- **Number of nodes in the pool** - This option sets the number of control plane or worker nodes in the control plane or
-  worker pool. For this tutorial, set the count to one for the control plane pool and two for the worker pool.
-
-- **Allow worker capability** - This option allows the control plane node to also accept workloads. This is useful when
-  spot instances are used as worker nodes. You can check this box if you want to.
-
-- **Instance Type** - Select the compute type for the node pool. Each instance type displays the amount of CPU, RAM, and
-  hourly cost of the instance. Select **n1-standard-4**.
-
-- **Disk size** - Set the disk size to **60**.
-
-- **Availability zones** - Used to specify the availability zones in which the node pool can place nodes. Select an
-  availability zone.
-
-![Palette clusters nodes configuration](/getting-started/gcp/getting-started_deploy-k8s-cluster_cluster_nodes_config.webp)
-
-Select **Next** to proceed with the cluster deployment.
-
-In the **Settings** section, you can configure advanced options such as when to patch the OS, enable security scans,
-manage backups, add Role-Based Access Control (RBAC) bindings, and more.
-
-For this tutorial, you can use the default settings. Click on **Validate** to continue.
-
-The **Review** section allows you to review the cluster configuration before deploying the cluster. Review all the
-settings and click on **Finish Configuration** to deploy the cluster.
-
-![Newly created GCP cluster](/getting-started/gcp/getting-started_deploy-k8s-cluster_profile_review.webp)
-
-Navigate to the left **Main Menu** and select **Clusters**.
-
-![Update the cluster](/getting-started/gcp/getting-started_deploy-k8s-cluster_new_cluster.webp)
-
-</TabItem>
-
-</Tabs>
 
 The cluster deployment process can take 15 to 30 min. The deployment time varies depending on the cloud provider,
 cluster profile, cluster size, and the node pool configurations provided. You can learn more about the deployment

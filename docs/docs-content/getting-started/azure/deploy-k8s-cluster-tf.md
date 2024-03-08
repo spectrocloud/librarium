@@ -4,7 +4,7 @@ title: "Deploy a Cluster with Terraform"
 description: "Learn to deploy a Palette host cluster with Terraform."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 70
+sidebar_position: 50
 tags: ["getting-started"]
 ---
 
@@ -35,18 +35,9 @@ To complete this tutorial, you will need the following items
 - Basic knowledge of containers.
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/), [Podman](https://podman.io/docs/installation) or
   another container management tool.
-- Create a Cloud account from one of the following providers.
 
-  - [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
-  - [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account)
-  - [GCP](https://cloud.google.com/docs/get-started)
-
-- Register the [cloud account with Palette](https://console.spectrocloud.com/auth/signup). Use the following resource
-  for additional guidance.
-
-  - [Register and Manage AWS Accounts](../clusters/public-cloud/aws/add-aws-accounts.md)
-  - [Register and Manage Azure Cloud Accounts](../clusters/public-cloud/azure/azure-cloud.md)
-  - [Register and Manage GCP Accounts](../clusters/public-cloud/gcp/add-gcp-accounts.md)
+- Follow the steps described in the [Set up Palette with Azure](./setup.md) guide to authenticate Palette for use with
+  your Azure cloud account.
 
 ## Set Up Local Environment
 
@@ -168,7 +159,7 @@ Before you can get started with the Terraform code, you need a Spectro Cloud API
 To create an API key, log in to [Palette](https://console.spectrocloud.com) and click on the user **User Menu** and
 select **My API Keys**.
 
-![Image that points to the user drop-down Menu and points to the API key link](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_create_api_key.webp)
+![Image that points to the user drop-down Menu and points to the API key link](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_create_api_key.png)
 
 Next, click on **Add New API Key**. Fill out the required input field, **API Key Name**, and the **Expiration Date**.
 Click on **Confirm** to create the API key. Copy the key value to your clipboard, as you will use it shortly.
@@ -254,39 +245,41 @@ container storage interface. The first `pack {}` block in the list equates to th
 Ensure you define the bottom layer of the cluster profile - the OS layer - first in the list of `pack {}` blocks.
 
 ```hcl
-resource "spectrocloud_cluster_profile" "aws-profile" {
-  name        = "tf-aws-profile"
-  description = "A basic cluster profile for AWS"
-  tags        = concat(var.tags, ["env:aws"])
-  cloud       = "aws"
+resource "spectrocloud_cluster_profile" "azure-profile" {
+  count = var.deploy-azure ? 1 : 0
+
+  name        = "tf-azure-profile"
+  description = "A basic cluster profile for Azure"
+  tags        = concat(var.tags, ["env:azure"])
+  cloud       = "azure"
   type        = "cluster"
 
   pack {
-    name   = data.spectrocloud_pack.aws_ubuntu.name
-    tag    = data.spectrocloud_pack.aws_ubuntu.version
-    uid    = data.spectrocloud_pack.aws_ubuntu.id
-    values = data.spectrocloud_pack.aws_ubuntu.values
+    name   = data.spectrocloud_pack.azure_ubuntu.name
+    tag    = data.spectrocloud_pack.azure_ubuntu.version
+    uid    = data.spectrocloud_pack.azure_ubuntu.id
+    values = data.spectrocloud_pack.azure_ubuntu.values
   }
 
   pack {
-    name   = data.spectrocloud_pack.aws_k8s.name
-    tag    = data.spectrocloud_pack.aws_k8s.version
-    uid    = data.spectrocloud_pack.aws_k8s.id
-    values = data.spectrocloud_pack.aws_k8s.values
+    name   = data.spectrocloud_pack.azure_k8s.name
+    tag    = data.spectrocloud_pack.azure_k8s.version
+    uid    = data.spectrocloud_pack.azure_k8s.id
+    values = data.spectrocloud_pack.azure_k8s.values
   }
 
   pack {
-    name   = data.spectrocloud_pack.aws_cni.name
-    tag    = data.spectrocloud_pack.aws_cni.version
-    uid    = data.spectrocloud_pack.aws_cni.id
-    values = data.spectrocloud_pack.aws_cni.values
+    name   = data.spectrocloud_pack.azure_cni.name
+    tag    = data.spectrocloud_pack.azure_cni.version
+    uid    = data.spectrocloud_pack.azure_cni.id
+    values = data.spectrocloud_pack.azure_cni.values
   }
 
   pack {
-    name   = data.spectrocloud_pack.aws_csi.name
-    tag    = data.spectrocloud_pack.aws_csi.version
-    uid    = data.spectrocloud_pack.aws_csi.id
-    values = data.spectrocloud_pack.aws_csi.values
+    name   = data.spectrocloud_pack.azure_csi.name
+    tag    = data.spectrocloud_pack.azure_csi.version
+    uid    = data.spectrocloud_pack.azure_csi.id
+    values = data.spectrocloud_pack.azure_csi.values
   }
 
   pack {
@@ -311,10 +304,10 @@ You may have noticed that each `pack {}` block contains references to a data res
 
 ```hcl
   pack {
-    name   = data.spectrocloud_pack.aws_csi.name
-    tag    = data.spectrocloud_pack.aws_csi.version
-    uid    = data.spectrocloud_pack.aws_csi.id
-    values = data.spectrocloud_pack.aws_csi.values
+    name   = data.spectrocloud_pack.azure_csi.name
+    tag    = data.spectrocloud_pack.azure_csi.version
+    uid    = data.spectrocloud_pack.azure_csi.id
+    values = data.spectrocloud_pack.azure_csi.values
   }
 ```
 
@@ -327,9 +320,10 @@ unique ID, registry ID, available versions, and the pack's YAML values.
 Below is the data resource used to query Palette for information about the Kubernetes pack for version `1.27.5`.
 
 ```hcl
-data "spectrocloud_pack" "aws_k8s" {
-  name    = "kubernetes"
-  version = "1.27.5"
+data "spectrocloud_pack" "azure_k8s" {
+  name         = "kubernetes"
+  version      = "1.27.5"
+  registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
 
@@ -404,34 +398,39 @@ To simplify the process, we added a toggle variable in the Terraform template, t
 environment. Each cloud provider has a section in the template that contains all the variables you must populate.
 Variables to populate are identified with `REPLACE_ME`.
 
-In the example AWS section below, you would change `deploy-aws = false` to `deploy-aws = true` to deploy to AWS.
+In the example Azure section below, you would change `deploy-azure = false` to `deploy-azure = true` to deploy to Azure.
 Additionally, you would replace all the variables with a value `REPLACE_ME`. You can also update the values for nodes in
 the control plane pool or worker pool.
 
 ```hcl
 ###########################
-# AWS Deployment Settings
+# Azure Deployment Settings
 ############################
-deploy-aws = false # Set to true to deploy to AWS
+deploy-azure  = false # Set to true to deploy to Azure
+azure-use-azs = true # Set to false when you deploy to a region without AZs
 
-aws-cloud-account-name = "REPLACE_ME"
-aws-region             = "REPLACE_ME"
-aws-key-pair-name      = "REPLACE_ME"
+azure-cloud-account-name = "REPLACE_ME"
+azure-region             = "REPLACE_ME"
+azure_subscription_id    = "REPLACE_ME"
+azure_resource_group     = "REPLACE_ME"
 
-aws_control_plane_nodes = {
-  count              = "1"
-  control_plane      = true
-  instance_type      = "m4.2xlarge"
-  disk_size_gb       = "60"
-  availability_zones = ["REPLACE_ME"] # If you want to deploy to multiple AZs, add them here
+
+azure_master_nodes = {
+  count               = "1"
+  control_plane       = true
+  instance_type       = "Standard_A8_v2"
+  disk_size_gb        = "60"
+  azs                 = ["1"] # If you want to deploy to multiple AZs, add them here.
+  is_system_node_pool = false
 }
 
-aws_worker_nodes = {
-  count              = "1"
-  control_plane      = false
-  instance_type      = "m4.2xlarge"
-  disk_size_gb       = "60"
-  availability_zones = ["REPLACE_ME"] # If you want to deploy to multiple AZs, add them here
+azure_worker_nodes = {
+  count               = "1"
+  control_plane       = false
+  instance_type       = "Standard_A8_v2"
+  disk_size_gb        = "60"
+  azs                 = ["1"] # If you want to deploy to multiple AZs, add them here.
+  is_system_node_pool = false
 }
 ```
 
@@ -466,11 +465,11 @@ To check out the cluster profile creation in Palette, log in to [Palette](https:
 the left **Main Menu** click on **Profiles**. Locate the cluster profile with the name pattern
 `tf-[cloud provier]-profile`. Click on the cluster profile to review its details, such as layers, packs, and versions.
 
-![A view of the cluster profile](/getting-started/aws/getting-started_deploy-k8s-cluster_profile_cluster_profile_review.webp)
+![A view of the cluster profile](/getting-started/aws/getting-started_deploy-k8s-cluster_profile_cluster_profile_review.png)
 
 You can also check the cluster creation process by navigating to the left **Main Menu** and selecting **Clusters**.
 
-![Update the cluster](/getting-started/aws/getting-started_deploy-k8s-cluster_create_cluster.webp)
+![Update the cluster](/getting-started/aws/getting-started_deploy-k8s-cluster_create_cluster.png)
 
 Select your cluster to review its details page, which contains the status, cluster profile, event logs, and more.
 
@@ -478,7 +477,7 @@ The cluster deployment may take several minutes depending on the cloud provider,
 cluster profile. You can learn more about the deployment progress by reviewing the event log. Click on the **Events**
 tab to check the event log.
 
-![Update the cluster](/getting-started/getting-started_deploy-k8s-cluster_event_log.webp)
+![Update the cluster](/getting-started/getting-started_deploy-k8s-cluster_event_log.png)
 
 ## Verify the Application
 
@@ -493,7 +492,7 @@ moments before clicking on the service URL to prevent the browser from caching a
 
 :::
 
-![Deployed application](/getting-started/getting-started_deploy-k8s-cluster_hello-universe-without-api.webp)
+![Deployed application](/getting-started/getting-started_deploy-k8s-cluster_hello-universe-without-api.png)
 
 Welcome to Hello Universe, a demo application to help you learn more about Palette and its features. Feel free to click
 on the logo to increase the counter and for a fun image change.
@@ -554,13 +553,13 @@ podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.3
 In this tutorial, you created a cluster profile, which is a template that contains the core layers required to deploy a
 host cluster. You then deployed a host cluster onto your preferred cloud service provider using Terraform.
 
-We encourage you to check out the [Deploy an Application using Palette Dev Engine](../devx/apps/deploy-app.md) tutorial
+We encourage you to check out the [Deploy an Application using Palette Dev Engine](../../devx/apps/deploy-app) tutorial
 to learn more about Palette. Palette Dev Engine can help you deploy applications more quickly through the usage of
-[virtual clusters](../glossary-all.md#palette-virtual-cluster). Feel free to check out the reference links below to
+[virtual clusters](../../glossary-all.md#palette-virtual-cluster). Feel free to check out the reference links below to
 learn more about Palette.
 
-- [Palette Modes](../introduction/palette-modes.md)
+- [Palette Modes](../../introduction/palette-modes.md)
 
-- [Palette Clusters](../clusters/clusters.md)
+- [Palette Clusters](../../clusters/clusters.md)
 
 - [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)
