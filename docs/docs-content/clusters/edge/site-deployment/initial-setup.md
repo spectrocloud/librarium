@@ -24,7 +24,7 @@ perform the setup, you can issue the command `spectro-edge-console` in the termi
 
 :::
 
-## Prerequisite
+## Prerequisites
 
 - An Edge host installed with Edge Installer 4.3 or later.
 
