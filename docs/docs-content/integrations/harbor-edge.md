@@ -68,7 +68,7 @@ You can use Harbor in an Edge cluster that is connected to external networks. Ha
 downloaded from the internet and future image pulls from the cluster will be from the local harbor registry. If your
 cluster experiences an internet outage, it can still reboot containers or add new nodes using images stored locally in
 Harbor. For more information, refer to
-[Deploy a Cluster with a Local Harbor Registry](../clusters/edge/networking/local-registry.md).
+[Deploy a Cluster with a Local Harbor Registry](../clusters/edge/site-deployment/deploy-custom-registries/local-registry.md).
 
 #### Log in to Harbor Web UI
 
@@ -335,6 +335,6 @@ data "spectrocloud_pack_simple" "harbor-edge-native-config" {
 
 ## Resources
 
-- [Deploy a Cluster with a Local Harbor Registry](../clusters/edge/networking/local-registry.md)
+- [Deploy a Cluster with a Local Harbor Registry](../clusters/edge/site-deployment/deploy-custom-registries/local-registry.md)
 
 - [Harbor documentation](https://goharbor.io/docs/2.4.0/install-config/)
