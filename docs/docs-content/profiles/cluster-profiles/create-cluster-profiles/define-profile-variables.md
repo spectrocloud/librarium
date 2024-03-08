@@ -48,15 +48,16 @@ This guide explains how you can define and manage cluster profile variables.
   [Palette CLI](/palette-cli/) populates them automatically.
 
 - Once you deploy a cluster from a profile with variables, you can neither edit nor delete the profile variables. To
-  update them, [version the cluster profile](/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile)
-  and update the variables in the new version.
+  edit or delete them,
+  [version the cluster profile](/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile) and update
+  the variables in the new version.
 
   When you version a cluster profile with variables, the variables are propagated to the new version. However, upon
   versioning, the variables in each version are independent.
 
-## Prerequisites
+## Define Profile Variables
 
-To define cluster profile variables, you need the following:
+### Prerequisites
 
 - The `clusterProfile.create` and `clusterProfile.update` permissions to create and update cluster profiles. Refer to
   [Roles and Permissions](/user-management/palette-rbac/project-scope-roles-permissions#cluster-profile-admin) for more
@@ -65,15 +66,7 @@ To define cluster profile variables, you need the following:
 - An in-progress or already created cluster profile. The cluster profile must either have the **Edge Native**
   infrastructure or be an edge-based add-on profile.
 
-To manage cluster profile variables, you need the following:
-
-- The `clusterProfile.update` permission to update cluster profiles. Refer to
-  [Roles and Permissions](/user-management/palette-rbac/project-scope-roles-permissions#cluster-profile-admin) for more
-  information.
-
-- A cluster profile with profile variables created in Palette.
-
-## Define Profile Variables
+### Enablement
 
 You can define profile variables both while creating and for the already created cluster profiles. To define profile
 variables [while creating a cluster profile](/profiles/cluster-profiles/create-cluster-profiles/), start following this
@@ -141,7 +134,7 @@ guide from step three at the **Profile Layers** stage of cluster profile creatio
 13. Repeat the steps described in this guide to define more variables and add them to the necessary cluster profile
     layers.
 
-## Validate
+### Validation
 
 1. Log in to Palette.
 
@@ -154,6 +147,25 @@ guide from step three at the **Profile Layers** stage of cluster profile creatio
 4. Open the necessary profile layers and check that their YAML configuration contains the expected variables.
 
 ## Manage Profile Variables
+
+:::info
+
+Once you deploy a cluster from a profile with variables, you can neither edit nor delete the profile variables. To edit
+or delete them,
+[version the cluster profile](/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile) and update the
+variables in the new version.
+
+:::
+
+### Prerequisites
+
+- The `clusterProfile.update` permission to update cluster profiles. Refer to
+  [Roles and Permissions](/user-management/palette-rbac/project-scope-roles-permissions#cluster-profile-admin) for more
+  information.
+
+- A cluster profile with profile variables created in Palette.
+
+### Enablement
 
 1. Log in to Palette.
 
@@ -168,7 +180,7 @@ guide from step three at the **Profile Layers** stage of cluster profile creatio
 5. To delete a profile variable, in the right **Three-dot menu** of the necessary variable, click **Delete**. Then,
    navigate to the profile layers that implement this variable and manually remove it from their YAML configurations.
 
-## Validate
+### Validation
 
 1. Log in to Palette.
 
