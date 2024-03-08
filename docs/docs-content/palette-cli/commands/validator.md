@@ -15,9 +15,13 @@ of self-hosted Palette, VerteX, or for deployment of Kubernetes clusters through
 
 The `validator` command exposes the following subcommands.
 
+- [`describe`](#describe) - Describe the Validator results in a Kubernetes cluster.
+
 - [`install`](#install) - Install the Validator framework and configure Validator plugins.
 
 - [`uninstall`](#uninstall) - Uninstall the Validator framework and remove all Validator plugins.
+
+- [`upgrade`](#upgrade) - Upgrade Validator & reconfigure validator plugins.
 
 ## Prerequisites
 
@@ -50,11 +54,13 @@ can install the Validator into an existing Kubernetes cluster by using the Helm 
 
 The `install` subcommand accepts the following flags.
 
-| **Short Flag** | **Long Flag**   | **Description**                                                                                               | **Type** |
-| -------------- | --------------- | ------------------------------------------------------------------------------------------------------------- | -------- |
-| `-f`           | `--config-file` | Install the Validator using a configuration file (optional). Provide the file path to the configuration file. | string   |
-| `-o`           | `--config-only` | Generate a configuration file without proceeding with an actual install. Default: false                       | boolean  |
-| `-h`           | `--help`        | Help with any command.                                                                                        | -        |
+| **Short Flag** | **Long Flag**   | **Description**                                                                                                                                 | **Type** |
+| -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `-f`           | `--config-file` | Install the Validator using a configuration file (optional). Provide the file path to the configuration file.                                   | string   |
+| `-o`           | `--config-only` | Generate a configuration file without proceeding with an actual install. Default: false                                                         | boolean  |
+| `-h`           | `--help`        | Help with any command.                                                                                                                          | -        |
+| `-r`           | `--reconfigure` | Reconfigure Validator and plugins prior to the installation. The `--config-file` flag must be included. Default: false.                         | boolean  |
+| `-p`           | `--password`    | Update credentials provided in a configuration. This does proceed with installation. The `--config-file` flag must be included. Default: false. | boolean  |
 
 ### Examples
 
@@ -77,6 +83,13 @@ Generate a configuration file without proceeding with an actual installation
 
 ```shell
 palette validator install --config-only
+```
+
+Update credentials provided in a configuration file. This does proceed with installation but will prompt for new
+credentials.
+
+```shell
+palette validator install --password --config-file /Users/demo/.palette/validator/validator-20231109135306/validator.yaml
 ```
 
 ### Configuration Files
@@ -139,6 +152,13 @@ validatorconfigs.validation.spectrocloud.labs    2023-11-09T21:02:12Z
 
 You can use the `kubectl` command to view the validation results. To review all the results collectively, use the
 `describe` command to display the `validationresults` CR.
+
+:::tip
+
+Use the `validator describe` command to view the validation results. The `validator describe` provides a more
+user-friendly output of the validation results. Refer to the [Describe](#describe) section for more information.
+
+:::
 
 ```shell
 kubectl describe validationresults --namespace validator
@@ -294,6 +314,13 @@ changed. Once you resolve the failure, the Validator will update the `Validation
 
 Use the `kubectl describe` command to view the validation results.
 
+:::tip
+
+Use the `validator describe` command to view the validation results. The `validator describe` provides a more
+user-friendly output of the validation results. Refer to the [Describe](#describe) section for more information.
+
+:::
+
 ```shell
 kubectl describe validationresults --namespace validator
 ```
@@ -327,4 +354,47 @@ Remove the Validator, its plugins, but not the kind cluster.
 palette validator uninstall  \
 --config-file /Users/demo/.palette/validator/validator-20231109135306/validator.yaml \
 --delete-cluster=false
+```
+
+## Describe
+
+Use the `describe` subcommand to describe the Validator results in a Kubernetes cluster. The `describe` subcommand
+prints out the validation results in a user-friendly format.
+
+The following examples show an error scenario and a success scenario.
+
+```shell hideClipboard
+Using kubeconfig from validator configuration file: /home/ubuntu/.palette/validator/validator-20240308182709/kind-cluster.kubeconfig
+------------
+
+Validation Rule:        validation-quota
+Validation Type:        aws-service-quota
+Status:                 False
+Last Validated:         2024-03-08T19:22:07Z
+Message:                Validation failed with an unexpected error
+
+--------
+Failures
+--------
+- operation error Service Quotas: ListServiceQuotas, https response error StatusCode: 400, RequestID: 9cc75646-4278-42df-ba18-a28c12180510, AccessDeniedException: User: arn:aws:iam::123456789:user/example/palette/PaletteClusterOperator is not authorized to perform: servicequotas:ListServiceQuotas because no identity-based policy allows the servicequotas:ListServiceQuotas action
+```
+
+## Upgrade
+
+Use the `upgrade` subcommand to upgrade Validator and reconfigure Validator plugins. The `upgrade` subcommand requires a
+configuration file. You can use the `--config-file` flag to specify the configuration file.
+
+The `upgrade` subcommand accepts the following flags.
+
+| **Short Flag** | **Long Flag**   | **Description**                                                                                                       | **Type** |
+| -------------- | --------------- | --------------------------------------------------------------------------------------------------------------------- | -------- |
+| `-f`           | `--config-file` | Upgrade using a configuration file. Refer to the [Install](#install) section to learn more about configuration files. | string   |
+| `-h`           | `--help`        | Help for the upgrade command.                                                                                         | -        |
+
+### Examples
+
+Upgrade an existing Validator installation using the configuration file created during the installation process.
+
+```shell
+palette validator upgrade --config-file /Users/demo/.palette/validator/validator-20231109135306/validator.yaml
 ```
