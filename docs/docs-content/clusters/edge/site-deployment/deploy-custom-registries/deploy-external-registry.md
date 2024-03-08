@@ -11,9 +11,10 @@ Palette Edge provides support for downloading images from authenticated external
 Palette agent to download images from an authenticated external registry by specifying the address and the credentials
 for the registry in the user data used to build your Edge Installer ISO.
 
-External registries store images for all elements of the cluster _other than_ the Operating System (OS) and Kubernetes
-layers of your cluster. If you want your cluster to pull provider images, which are used by the OS and the Kubernetes
-layer, from a private registry, refer to [Deploy Cluster with a Private Provider Registry](./deploy-private-registry.md)
+Once you specify an external registry, images for all elements of the cluster are expected to be in the external
+registry. This includes the provider images, images for the network and storage layer, and images for all application
+layers. All images specified in the cluster profile will have their registry URL replaced by the registry URL of the
+external image registry.
 
 :::tip
 
@@ -25,9 +26,6 @@ bandwidth use and protect against outages. For more information, refer to
 :::
 
 ## Limitations
-
-- A cluster cannot have both a private provider image registry and a private external registry. If you are using a
-  private external registry, your provider image registry must be public.
 
 - Palette Edge supports basic username/password authentication. Token authentication schemes used by services such as
   AWS ECR and Google Artifact Registry are not supported.
