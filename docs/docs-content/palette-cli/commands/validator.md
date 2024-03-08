@@ -361,6 +361,15 @@ palette validator uninstall  \
 Use the `describe` subcommand to describe the Validator results in a Kubernetes cluster. The `describe` subcommand
 prints out the validation results in a user-friendly format.
 
+The `describe` subcommand accepts the following flags.
+
+| **Short Flag** | **Long Flag**   | **Description**                                                                                                                                                       | **Type** |
+| -------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `-f`           | `--config-file` | File path to the configuration file. This flag is required. Refer to the [Configuration Files](#configuration-files) section to learn more about configuration files. | string   |
+| `-h`           | `--help`        | Help with any command.                                                                                                                                                | -        |
+
+### Examples
+
 The following examples show an error scenario and a success scenario.
 
 ```shell hideClipboard
@@ -386,10 +395,10 @@ configuration file. You can use the `--config-file` flag to specify the configur
 
 The `upgrade` subcommand accepts the following flags.
 
-| **Short Flag** | **Long Flag**   | **Description**                                                                                                       | **Type** |
-| -------------- | --------------- | --------------------------------------------------------------------------------------------------------------------- | -------- |
-| `-f`           | `--config-file` | Upgrade using a configuration file. Refer to the [Install](#install) section to learn more about configuration files. | string   |
-| `-h`           | `--help`        | Help for the upgrade command.                                                                                         | -        |
+| **Short Flag** | **Long Flag**   | **Description**                                                                                                                               | **Type** |
+| -------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `-f`           | `--config-file` | Upgrade using a configuration file. Refer to the [Configuration Files](#configuration-files) section to learn more about configuration files. | string   |
+| `-h`           | `--help`        | Help for the upgrade command.                                                                                                                 | -        |
 
 ### Examples
 
