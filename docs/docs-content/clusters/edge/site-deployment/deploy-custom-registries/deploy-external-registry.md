@@ -55,9 +55,8 @@ bandwidth use and protect against outages. For more information, refer to
 
 - [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
   command to view the existing Docker version.
-  
-  - You should have root-level or `sudo` privileges on your Linux machine to
-  create privileged containers.
+
+  - You should have root-level or `sudo` privileges on your Linux machine to create privileged containers.
 
 - A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for a
   [free trial](https://www.spectrocloud.com/free-tier/).

@@ -16,14 +16,15 @@ Palette agent divides the images into two categories in terms of when and from w
 
 - All other images. These images are for the network, storage, and application layers of the cluster.
 
-The Palette agent decides on where to download the images from depending on whether you have specified an external registry and
-whether you have enabled a local Harbor registry on your cluster.
+The Palette agent decides on where to download the images from depending on whether you have specified an external
+registry and whether you have enabled a local Harbor registry on your cluster.
 
 ## Provider Image Registry
 
 Provider images are always downloaded first by the Palette agent. You are required to provide the location of the
-provider image in the OS pack of your cluster profile. If an external registry is not specified in the user data,
-provider images will be downloaded from the provider image registry specified in the OS pack of the cluster profile.
+provider image in the OS pack of your cluster profile. If an external registry is not specified in the
+[user data](../../edgeforge-workflow/prepare-user-data.md) during EdgeForge, provider images will be downloaded from the
+provider image registry specified in the OS pack of the cluster profile.
 
 Palette supports downloading provider images from authenticated registries. If your cluster needs to download provider
 images from a authenticated registry, you need to provide the credentials to access the registry in the OS pack of the
