@@ -26,7 +26,7 @@ Edge host is rebooting.
 
 ### Instructions
 
-1. Log in to [Local UI(./access-console.md#log-in-to-edge-management-console).
+1. Log in to [Local UI(./access-console.md#log-in-to-local-ui).
 
 2. Under the upper-right **User Menu**, click on **Actions** to open the actions drop-down menu.
 
@@ -65,7 +65,7 @@ more information about HTTP proxy, refer to [Configure HTTP Proxy](configure-pro
 
 ### Instructions
 
-1. Log in to [Local UI(./access-console.md#log-in-to-edge-management-console).
+1. Log in to [Local UI(./access-console.md#log-in-to-local-ui).
 
 2. Under the upper-right **User Menu**, click on **Actions** to open the actions drop-down menu.
 
@@ -93,7 +93,7 @@ You can shut down the Edge host from Local UI.
 
 ### Instructions
 
-1. Log in to [Local UI(./access-console.md#log-in-to-edge-management-console).
+1. Log in to [Local UI(./access-console.md#log-in-to-local-ui).
 
 2. Under the upper-right **User Menu**, click on **Actions** to open the actions **drop-down Menu**.
 

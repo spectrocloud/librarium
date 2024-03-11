@@ -77,7 +77,7 @@ A successful sign-out takes you back to the login page. You need to enter your c
 
 ### Instructions
 
-1. [Log in](#log-in-to-edge-management-console) to the Local UI.
+1. [Log in](#log-in-to-local-ui) to the Local UI.
 
 2. From the Local UI, navigate to the top right **User Menu**.
 
@@ -87,6 +87,6 @@ A successful sign-out takes you back to the login page. You need to enter your c
 
 ### Validate
 
-1. [Log out](#log-out-of-edge-management-console) of the console.
+1. [Log out](#log-out-of-local-ui) of the console.
 
 2. Enter your new credentials to log back in and confirm that the password has been updated.

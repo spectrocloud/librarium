@@ -29,7 +29,7 @@ console.
 
 ## Upload Content
 
-1. Log in to [Local UI(../host-management/access-console.md#log-in-to-edge-management-console).
+1. Log in to [Local UI(../host-management/access-console.md#log-in-to-local-ui).
 
 2. From the left **Main Menu**, click **Content**.
 
