@@ -72,7 +72,7 @@ Use the following steps to deploy an EKS cluster on AWS.
 
 3. From the left **Main Menu** select **Clusters**, and click **Add New Cluster**.
 
-4. Under **Public Clouds**, under **Managed Kubernetes**, select **AWS EKS**.
+4. In **Public Clouds**, under **Managed Kubernetes**, select **AWS EKS**.
 
 5. In the bottom-right corner, click **Start AWS EKS Configuration**.
 
