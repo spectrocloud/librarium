@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 ## March 16, 2024 - Release 4.3.0
 
-This release contains several new technical previews, including the Edge Management Console and Cluster Profile
+This release contains several new exciting technical previews, including the Edge Management Console and Cluster Profile
 variables. Other notable features include enhancements to the Palette CLI, support for deploying Konvoy clusters, Azure
 AKS support for VerteX, and adding multiple system administrators to the Palette and VerteX system consoles. Check out
 the following sections for a complete list of features, improvements, and known issues.
@@ -22,13 +22,14 @@ the following sections for a complete list of features, improvements, and known 
 
 - <TpBadge /> Cluster Profile variables, a new feature that allows you to define variables in a cluster profile. This
   feature is in Tech Preview and is available only for Edge clusters. Profile variables allow you to define variable
-  types, apply validation, and more. Refer to the Cluster Profile Variables documentation to learn more about profile
-  variables.
+  types, apply validation, and narrow the scope of variables to a cluster profile. Check out the reference page for
+  [Cluster Profile Variables](./profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) to learn
+  more about profile variables.
 
 - MAAS clusters using Palette eXtended Kubernetes (PXK) now support the ability to specify a custom MAAS API endpoint
   URL and port during cluster creation. This feature allows you to use a custom DNS server or Virtual IP (VIP) that is
-  not resolvable outside of the MAAS network. Refer to the [PXK](./integrations/kubernetes.md) documentation for more
-  details.
+  not resolvable outside of the MAAS network. Refer to the [PXK](./integrations/kubernetes.md#custom-maas-endpoint)
+  documentation for more details.
 
 - Support for [Konvoy](./integrations/konvoy.md) is now available in Palette. You can create a custom image using the
   Konvoy image builder project and use it to deploy a Konvoy cluster. Check out the
@@ -58,7 +59,7 @@ the following sections for a complete list of features, improvements, and known 
   experience gives you a better understanding of the components being installed and the progress of the installation. In
   case of a failure, the failed component is highlighted, and an error message is displayed.
 
-- Imported clusters now support updating network proxy configurations as a day-2 operation.
+- Imported clusters now support updating network proxy configurations as a Day-2 operation.
 
 - The [Validator AWS](https://github.com/spectrocloud-labs/validator-plugin-aws) plugin now reports IAM permissions
   issues that are caused by
@@ -82,6 +83,10 @@ the following sections for a complete list of features, improvements, and known 
 - Conducting cluster node scaling operations on a cluster undergoing a backup can lead to issues and potential
   unresponsiveness. To avoid this, ensure no backup operations are in progress before scaling nodes or performing other
   cluster operations that change the cluster state.
+
+- Palette automatically creates a seucurity group for worker nodes using the format `<cluster-name>-node`. If a security
+  group with the same name already exists in the VPC, the cluster creation process fails. To avoid this, ensure that no
+  security group with the same name exists in the VPC before creating a cluster.
 
 ### Edge
 
@@ -153,7 +158,7 @@ the following sections for a complete list of features, improvements, and known 
   `fips-validate` command. The command scans the cluster and reports the FIPS compliance status of images. The command
   also supports checking exposed service endpoints for approved ciphers and TLS versions. Images and service endpoints
   that are not compliant are reported with either a failed or unknown status. Refer to the
-  [FIPS Validate](./palette-cli/commands/commands.md) to learn more about the command.
+  [FIPS Validate](./palette-cli/commands/fips-validate.md) to learn more about the command.
 
 #### Improvements
 
