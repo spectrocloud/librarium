@@ -134,6 +134,14 @@ Use the following steps to provision a new AWS cluster:
     [security groups](https://docs.aws.amazon.com/vpc/latest/userguide/security-groups.html) to apply to the worker
     group nodes. Use the **Additional Security Groups (Optional) drop-down Menu** to select additional security groups.
 
+    :::warning
+
+    Palette automatically creates a security group using the cluster name as a prefix followed by the text `-node`. The
+    format is `[name of cluster]-node`. Do not create a security group with the same name as the one created by Palette.
+    Otherwise, the cluster creation will fail due to duplicate resource name in the VPC.
+
+    :::
+
 14. Click on **Next**.
 
 15. The settings page is where you can configure the patching schedule, security scans, backup settings, and set up Role
