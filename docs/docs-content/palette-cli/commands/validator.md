@@ -407,13 +407,13 @@ Failures
 - Action: autoscaling:DescribeInstanceRefreshes is denied due to an Organization level SCP policy for role: SpectroCloudRole
 - Action: ec2:AllocateAddress is denied due to an Organization level SCP policy for role: SpectroCloudRole
 - Action: ec2:AssociateRouteTable is denied due to an Organization level SCP policy for role: SpectroCloudRole
-- Action: ec2:AttachInternetGateway is denied due to an Organization level SCP policy for role: SpectroCloudRole
+- Action: ec2:AttachInternetGateway is denied due to an Organization level SCP policy for role: SpectroCloudRol
 ```
 
 ## Upgrade
 
-Use the `upgrade` subcommand to upgrade Validator and reconfigure Validator plugins. The `upgrade` subcommand requires a
-configuration file. You can use the `--config-file` flag to specify the configuration file.
+Use the `upgrade` subcommand to upgrade Validator and reconfigure Validator plugins. The `upgrade` subcommand requires
+the Validator configuration file. Use the `--config-file` flag to specify the configuration file.
 
 The `upgrade` subcommand accepts the following flags.
 
@@ -424,12 +424,58 @@ The `upgrade` subcommand accepts the following flags.
 
 ### Examples
 
-Upgrade an existing Validator installation using the configuration file created during the installation process.
+In the following example, the Validator version is upgraded. The configuration file located at
+`/Users/demo/.palette/validator/validator-20231109135306/validator.yaml` was updated to use Validator version `v0.0.36`
+from version `v0.0.30`.
+
+```yaml {5} hideClipboard
+helmRelease:
+  chart:
+    name: validator
+    repository: https://spectrocloud-labs.github.io/validator
+    version: v0.0.36
+    insecureSkipVerify: true
+  values: ""
+helmReleaseSecret:
+```
+
+Once the configuration file is updated, use the `upgrade` subcommand to upgrade the Validator.
 
 ```shell
-palette validator upgrade --config-file /Users/demo/.palette/validator/validator-20231109135306/validator.yaml
+palette validator upgrade \
+--config-file /Users/demo/.palette/validator/validator-20231109135306/validator.yaml
 ```
 
-```
+```shell hideClipboard
+==== Installing/upgrading validator Helm chart ====
+helm upgrade validator validator --repo https://spectrocloud-labs.github.io/validator --version v0.0.36 --insecure-skip-tls-verify --kubeconfig /tmp/2773008921 --namespace validator --install --create-namespace --values /tmp/1655869680
 
+==== Kubectl Command ====
+/home/ubuntu/.palette/bin/kubectl wait --for=condition=available --timeout=600s deployment/validator-controller-manager -n validator --kubeconfig=/home/ubuntu/.palette/validator/validator-20240311153652/kind-cluster.kubeconfig
+deployment.apps/validator-controller-manager condition met
+Pausing for 20s for validator to establish a lease & begin plugin installation
+
+==== Kubectl Command ====
+/home/ubuntu/.palette/bin/kubectl wait --for=condition=available --timeout=600s deployment/validator-plugin-aws-controller-manager -n validator --kubeconfig=/home/ubuntu/.palette/validator/validator-20240311153652/kind-cluster.kubeconfig
+deployment.apps/validator-plugin-aws-controller-manager condition met
+
+validator and validator plugin(s) installed successfully
+
+==== Applying AWS plugin validator(s) ====
+
+==== Kubectl Command ====
+/home/ubuntu/.palette/bin/kubectl apply -f /home/ubuntu/.palette/validator/validator-20240311154338/manifests/rules.yaml --kubeconfig=/home/ubuntu/.palette/validator/validator-20240311153652/kind-cluster.kubeconfig
+awsvalidator.validation.spectrocloud.labs/rules unchanged
+
+==== Kubectl Command ====
+/home/ubuntu/.palette/bin/kubectl apply -f /home/ubuntu/.palette/validator/validator-20240311154338/manifests/awsvalidator-iam-role-spectro-cloud-base.yaml --kubeconfig=/home/ubuntu/.palette/validator/validator-20240311153652/kind-cluster.kubeconfig
+awsvalidator.validation.spectrocloud.labs/validator-plugin-aws-iam-base unchanged
+
+Plugins will now execute validation checks.
+
+You can list validation results via the following command:
+kubectl -n validator get validationresults --kubeconfig /home/ubuntu/.palette/validator/validator-20240311153652/kind-cluster.kubeconfig
+
+And you can view all validation result details via the following command:
+kubectl -n validator describe validationresults --kubeconfig /home/ubuntu/.palette/validator/validator-20240311153652/kind-cluster.kubeconfig
 ```
