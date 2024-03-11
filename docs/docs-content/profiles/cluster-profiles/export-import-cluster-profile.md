@@ -86,13 +86,13 @@ Use these steps to import the profile to one or more projects or tenants.
 10. In the **Select repositories** window that displays when the profile is successfully validated, use the **drop-down
     Menus** to select one or more repositories in which profile packs exist so Palette can fetch them.
 
-:::warning
+    :::warning
 
-If any of the packs are missing in the target environment, profile import will not proceed.
+    If any of the packs are missing in the target environment, profile import will not proceed.
 
-:::
+    :::
 
-![Screenshot of the Select repositories window.](/profiles_cluster-profiles_import-select-repos.png)
+    ![Screenshot of the Select repositories window.](/profiles_cluster-profiles_import-select-repos.png)
 
 11. Click the **Confirm** button to complete the import.
 

@@ -201,3 +201,5 @@ preloaded
 eXtented
 Palette eXtented Kubernetes
 Palette eXtented Kubernetes - Edge
+timeframe
+Luet
