@@ -49,6 +49,12 @@ The following prerequisites must be met before deploying a cluster to AWS:
 
   :::
 
+- Ensure you don't have an existing security group that starts with the cluster name followed by the text `-node` in the
+  selected VPC. Palette will automatically create a security group using the cluster name as a prefix followed by the
+  text `-node`. The format is `[name of cluster]-node`. If you have an existing security group with the same name, you
+  will need to either rename the existing security group before creating the cluster, or use a different cluster name.
+  Otherwise, the cluster creation will fail due to duplicate resource name in the VPC.
+
 ## Deploy an AWS Cluster
 
 Use the following steps to provision a new AWS cluster:
