@@ -54,13 +54,13 @@ can install the Validator into an existing Kubernetes cluster by using the Helm 
 
 The `install` subcommand accepts the following flags.
 
-| **Short Flag** | **Long Flag**   | **Description**                                                                                                                                 | **Type** |
-| -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `-f`           | `--config-file` | Install the Validator using a configuration file (optional). Provide the file path to the configuration file.                                   | string   |
-| `-o`           | `--config-only` | Generate a configuration file without proceeding with an actual install. Default: false                                                         | boolean  |
-| `-h`           | `--help`        | Help with any command.                                                                                                                          | -        |
-| `-r`           | `--reconfigure` | Reconfigure Validator and plugins prior to installation. The `--config-file` flag must be included. Default: false.                         | boolean  |
-| `-p`           | `--password`    | Update credentials provided in the configuration file. This does proceed with installation. The `--config-file` flag must be included. Default: false. | boolean  |
+| **Short Flag** | **Long Flag**   | **Description**                                                                                                                                            | **Type** |
+| -------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `-f`           | `--config-file` | Install the Validator using a configuration file (optional). Provide the file path to the configuration file.                                              | string   |
+| `-o`           | `--config-only` | Generate a configuration file without proceeding with an actual install. Default: false                                                                    | boolean  |
+| `-h`           | `--help`        | Help with any command.                                                                                                                                     | -        |
+| `-r`           | `--reconfigure` | Reconfigure Validator and plugins prior to installation. The `--config-file` flag must be included. Default: false.                                        | boolean  |
+| `-p`           | `--password`    | Update credentials provided in the configuration file. This does not proceed with installation. The `--config-file` flag must be included. Default: false. | boolean  |
 
 ### Examples
 
@@ -412,8 +412,8 @@ Failures
 
 ## Upgrade
 
-Use the `upgrade` subcommand to upgrade Validator and reconfigure the Validator plugins. The `upgrade` subcommand requires
-the Validator configuration file. Use the `--config-file` flag to specify the configuration file.
+Use the `upgrade` subcommand to upgrade Validator and reconfigure the Validator plugins. The `upgrade` subcommand
+requires the Validator configuration file. Use the `--config-file` flag to specify the configuration file.
 
 The `upgrade` subcommand accepts the following flags.
 
