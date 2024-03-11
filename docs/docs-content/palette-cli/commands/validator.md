@@ -59,8 +59,8 @@ The `install` subcommand accepts the following flags.
 | `-f`           | `--config-file` | Install the Validator using a configuration file (optional). Provide the file path to the configuration file.                                   | string   |
 | `-o`           | `--config-only` | Generate a configuration file without proceeding with an actual install. Default: false                                                         | boolean  |
 | `-h`           | `--help`        | Help with any command.                                                                                                                          | -        |
-| `-r`           | `--reconfigure` | Reconfigure Validator and plugins prior to the installation. The `--config-file` flag must be included. Default: false.                         | boolean  |
-| `-p`           | `--password`    | Update credentials provided in a configuration. This does proceed with installation. The `--config-file` flag must be included. Default: false. | boolean  |
+| `-r`           | `--reconfigure` | Reconfigure Validator and plugins prior to installation. The `--config-file` flag must be included. Default: false.                         | boolean  |
+| `-p`           | `--password`    | Update credentials provided in the configuration file. This does proceed with installation. The `--config-file` flag must be included. Default: false. | boolean  |
 
 ### Examples
 
@@ -85,7 +85,7 @@ Generate a configuration file without proceeding with an actual installation
 palette validator install --config-only
 ```
 
-Update credentials provided in a configuration file. This does proceed with installation but will prompt for new
+Update credentials provided in the configuration file. This does proceed with installation but will prompt for new
 credentials.
 
 ```shell
@@ -155,7 +155,7 @@ You can use the `kubectl` command to view the validation results. To review all 
 
 :::tip
 
-Use the `validator describe` command to view the validation results. The `validator describe` provides a more
+Use the `validator describe` command to view the validation results. The `validator describe`command provides a more
 user-friendly output of the validation results. Refer to the [Describe](#describe) section for more information.
 
 :::
@@ -316,7 +316,7 @@ Use the `kubectl describe` command to view the validation results.
 
 :::tip
 
-Use the `validator describe` command to view the validation results. The `validator describe` provides a more
+Use the `validator describe` command to view the validation results. The `validator describe` command provides a more
 user-friendly output of the validation results. Refer to the [Describe](#describe) section for more information.
 
 :::
@@ -412,7 +412,7 @@ Failures
 
 ## Upgrade
 
-Use the `upgrade` subcommand to upgrade Validator and reconfigure Validator plugins. The `upgrade` subcommand requires
+Use the `upgrade` subcommand to upgrade Validator and reconfigure the Validator plugins. The `upgrade` subcommand requires
 the Validator configuration file. Use the `--config-file` flag to specify the configuration file.
 
 The `upgrade` subcommand accepts the following flags.
