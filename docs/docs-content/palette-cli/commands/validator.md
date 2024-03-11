@@ -370,22 +370,44 @@ The `describe` subcommand accepts the following flags.
 
 ### Examples
 
-The following examples show an error scenario and a success scenario.
+The following example uses the `describe` subcommand to display the validation results in a user-friendly format.
 
 ```shell hideClipboard
-Using kubeconfig from validator configuration file: /home/ubuntu/.palette/validator/validator-20240308182709/kind-cluster.kubeconfig
+palette validator describe \
+ --config-file /Users/demo/.palette/validator/validator-20231109135306/validator.yaml
+```
+
+```shell hideClipboard
+Using kubeconfig from validator configuration file: /home/ubuntu/.palette/validator/validator-20240311151646/kind-cluster.kubeconfig
+
+=================
+Validation Result
+=================
+
+Plugin:            AWS
+Name:              validator-plugin-aws-validator-plugin-aws-iam-base
+Namespace:         validator
+State:             Failed
+Sink State:        N/A
+
+------------
+Rule Results
 ------------
 
-Validation Rule:        validation-quota
-Validation Type:        aws-service-quota
+Validation Rule:        validation-SpectroCloudRole
+Validation Type:        aws-iam-role-policy
 Status:                 False
-Last Validated:         2024-03-08T19:22:07Z
-Message:                Validation failed with an unexpected error
+Last Validated:         2024-03-11T15:20:58Z
+Message:                One or more required SCP permissions was not found, or a condition was not met
 
 --------
 Failures
 --------
-- operation error Service Quotas: ListServiceQuotas, https response error StatusCode: 400, RequestID: 9cc75646-4278-42df-ba18-a28c12180510, AccessDeniedException: User: arn:aws:iam::123456789:user/example/palette/PaletteClusterOperator is not authorized to perform: servicequotas:ListServiceQuotas because no identity-based policy allows the servicequotas:ListServiceQuotas action
+- Action: autoscaling:DescribeAutoScalingGroups is denied due to an Organization level SCP policy for role: SpectroCloudRole
+- Action: autoscaling:DescribeInstanceRefreshes is denied due to an Organization level SCP policy for role: SpectroCloudRole
+- Action: ec2:AllocateAddress is denied due to an Organization level SCP policy for role: SpectroCloudRole
+- Action: ec2:AssociateRouteTable is denied due to an Organization level SCP policy for role: SpectroCloudRole
+- Action: ec2:AttachInternetGateway is denied due to an Organization level SCP policy for role: SpectroCloudRole
 ```
 
 ## Upgrade
@@ -406,4 +428,8 @@ Upgrade an existing Validator installation using the configuration file created 
 
 ```shell
 palette validator upgrade --config-file /Users/demo/.palette/validator/validator-20231109135306/validator.yaml
+```
+
+```
+
 ```
