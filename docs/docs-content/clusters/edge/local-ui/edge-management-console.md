@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Edge Management Console"
-title: "Edge Management Console"
+sidebar_label: "Local UI"
+title: "Local UI"
 description: "Instructions for Edge Host Management Console."
 hide_table_of_contents: false
 sidebar_position: 32
@@ -8,29 +8,30 @@ tags: ["edge"]
 ---
 
 Once Palette Edge has been installed on the Edge host and the Edge host has gone through initial configuration, you will
-be able to access the Edge Management Console (EMC). EMC allows you to manage Edge hosts in your network locally, upload
-content bundles containing images, Helm charts, and packs, and create Edge clusters locally in disconnected environments
-without connections to a Palette instance.
+be able to access Local UI. Local UI allows you to manage Edge hosts in your network locally, upload content bundles
+containing images, Helm charts, and packs, and create Edge clusters locally in disconnected environments without
+connections to a Palette instance.
 
 :::preview
 
 :::
 
-![A diagram illustrating how users and use EdgeForge and Edge Management Console to deploy clusters without a Palette connection](/clusters_edge_emc_workflow.png)
+![A diagram illustrating how users and use EdgeForge and Local UI to deploy clusters without a Palette connection](/clusters_edge_emc_workflow.png)
 
 :::warning
 
-EMC on works for Edge deployment in disconnected environments. A disconnected environment means that the Edge host does
-not have a connection to a Palette instance. Do not use EMC if your cluster has a connection to a Palette instance.
+Local UI on works for Edge deployment in disconnected environments. A disconnected environment means that the Edge host
+does not have a connection to a Palette instance. Do not use Local UI if your cluster has a connection to a Palette
+instance.
 
 :::
 
-Refer to the follow resources to learn how to use EMC to manage your disconnected Edge deployment:
+Refer to the follow resources to learn how to use Local UI to manage your disconnected Edge deployment:
 
 ## Get Started
 
-- Refer to [Access Edge Management Console](./host-management/access-console.md) for guidance on how to access EMC and
-  update your credentials.
+- Refer to [Access Local UI](./host-management/access-console.md) for guidance on how to access Local UI and update your
+  credentials.
 
 - If you already included a content bundle and a cluster definition in your installer ISO, you can create a cluster
   using the resources in the ISO directly. Refer to [Create Local Cluster](./cluster-management/create-cluster.md) for
@@ -54,10 +55,10 @@ Refer to the follow resources to learn how to use EMC to manage your disconnecte
 
 ## Host Management
 
-- [Access Edge Management Console](./host-management/access-console.md)
+- [Access Local UI](./host-management/access-console.md)
 
-- [Configure HTTP Proxy in Edge Management Console](./host-management/configure-proxy.md)
+- [Configure HTTP Proxy in Local UI](./host-management/configure-proxy.md)
 
 - [Reset Edge Host to Factory Default](./host-management/reset-reboot.md)
 
-- [Customize Edge Management Console Theme](./host-management/theming.md)
+- [Customize Local UI Theme](./host-management/theming.md)

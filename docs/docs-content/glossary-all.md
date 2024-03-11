@@ -112,11 +112,11 @@ Clusters on such edge appliances from its SaaS-based management console. Besides
 also provides end-to-end management of these clusters through operations such as scaling, upgrades, reconfiguration,
 etc.
 
-## Edge Management Console
+## Local UI
 
-Edge Management Console (EMC) is a browser-based tool that allows you to manage your Edge host and perform tasks such as
-creating local clusters, upload content bundles, and configure network settings. EMC is a Tech Preview feature and
-should not be used in production workloads.
+Local UI is a browser-based tool that allows you to manage your Edge host and perform tasks such as creating local
+clusters, upload content bundles, and configure network settings. Local UI is a Tech Preview feature and should not be
+used in production workloads.
 
 ## Helm Charts
 

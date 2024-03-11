@@ -7,9 +7,9 @@ sidebar_position: 32
 tags: ["edge"]
 ---
 
-You can build a content bundle and upload it to an Edge host through the Edge Management Console (EMC). The content you
-upload can include images, helm charts, and packs. This allows you to provision clusters locally using the content you
-upload to the Edge host when the host does not have a connection to a central Palette instance or an image repository.
+You can build a content bundle and upload it to an Edge host through Local UI. The content you upload can include
+images, helm charts, and packs. This allows you to provision clusters locally using the content you upload to the Edge
+host when the host does not have a connection to a central Palette instance or an image repository.
 
 This page guides you through how to build a content bundle and upload it to an Edge host using the Edge management
 console.
@@ -25,11 +25,11 @@ console.
 - You have built a content bundle that's necessary for provisioning a cluster using your intended cluster profile. For
   more information, refer to [Build Content Bundles](../../edgeforge-workflow/build-content-bundle.md).
 
-- Network access to the Edge host's port where EMC is exposed. The default port is 5080.
+- Network access to the Edge host's port where Local UI is exposed. The default port is 5080.
 
 ## Upload Content
 
-1. Log in to [EMC](../host-management/access-console.md#log-in-to-edge-management-console).
+1. Log in to [Local UI(../host-management/access-console.md#log-in-to-edge-management-console).
 
 2. From the left **Main Menu**, click **Content**.
 

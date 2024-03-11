@@ -87,7 +87,7 @@ boot up the Edge host for the first time. For more information about initial con
 | ------------ | --------------------------------------------------------------------- |
 | `includeTui` | Enable the initial Edge host configuration. Default value is `false`. |
 
-### Edge Management Console
+### Local UI
 
 You can change the port that the Edge management console is exposed on. The default port is 5080.
 

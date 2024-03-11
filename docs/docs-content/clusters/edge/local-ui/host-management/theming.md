@@ -1,15 +1,15 @@
 ---
-sidebar_label: "Customize Edge Management Console Theme"
-title: "Customize Edge Management Console Theme"
-description: "Instructions for customizing EMC theme."
+sidebar_label: "Customize Local UI Theme"
+title: "Customize Local UI Theme"
+description: "Instructions for customizing Local UI theme."
 hide_table_of_contents: false
 sidebar_position: 100
 tags: ["edge"]
 ---
 
-Palette offers the option to customize the Edge Management Console web interface. You can change the color of the
-sidebar as well as using your own logo. You can do this before deployment during the EdgeForge process to standardize
-the look feel of the console for all Edge hosts of your organization.
+Palette offers the option to customize the Local UI web interface. You can change the color of the sidebar as well as
+using your own logo. You can do this before deployment during the EdgeForge process to standardize the look feel of the
+console for all Edge hosts of your organization.
 
 :::preview
 
@@ -66,9 +66,9 @@ the look feel of the console for all Edge hosts of your organization.
 
 4. In the directory, create a file named **customizations.json**.
 
-5. Upload a logo you'd like to use for EMC to the **ui** directory. All file types are allowed. We recommend you limit
-   the height of the logo image to between 64 px and 120 px. If you don't upload a logo, EMC will use the Spectro Cloud
-   logo.
+5. Upload a logo you'd like to use for Local UI to the **ui** directory. All file types are allowed. We recommend you
+   limit the height of the logo image to between 64 px and 120 px. If you don't upload a logo, Local UI will use the
+   Spectro Cloud logo.
 
 6. Populate the file with the following schema:
 
@@ -82,12 +82,12 @@ the look feel of the console for all Edge hosts of your organization.
    }
    ```
 
-   The sidebar color controls the color of the sidebar. This is also the color of the background in the EMC login
+   The sidebar color controls the color of the sidebar. This is also the color of the background in the Local UI login
    screen. We suggest you choose a color that contrasts well against your logo as the logo as the color will serve as
    the background for your logo. The **brand** color controls the color of buttons and checkboxes in the UI. The
    following image displays the default logo, brand, and sidebar color.
 
-   ![A screenshot of the Edge Management Console showing the elements controlled by the color properties and the location of the logo](/cluster_edge_emc_theming.png)
+   ![A screenshot of the Local UI showing the elements controlled by the color properties and the location of the logo](/cluster_edge_emc_theming.png)
 
 7. Compress the UI directory to a TAR file. The file must be named **ui.tar**.
 
@@ -98,7 +98,6 @@ the look feel of the console for all Edge hosts of your organization.
 
 1. Use the ISO you produced to install Palette Edge on an Edge device.
 
-2. Power up the device and follow [Access Edge Management Console](./access-console.md) to access the Edge management
-   console.
+2. Power up the device and follow [Access Local UI](./access-console.md) to access the Edge management console.
 
 3. Verify that the customizations you made are reflected in the user interface.

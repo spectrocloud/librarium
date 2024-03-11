@@ -7,8 +7,8 @@ sidebar_position: 32
 tags: ["edge"]
 ---
 
-You can create and manage a single-node cluster locally from the Edge Management Console (EMC). This page guides you
-through how to create a cluster using Edge Management Console.
+You can create and manage a single-node cluster locally from Local UI. This page guides you through how to create a
+cluster using Local UI.
 
 :::preview
 
@@ -21,9 +21,9 @@ through how to create a cluster using Edge Management Console.
 
 ## Prerequisites
 
-- Network access to the Edge device’s IP and port where EMC is exposed. The default port is 5080.
+- Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
 
-- Credentials to log into EMC. Any OS user can be used to log in to EMC.
+- Credentials to log into Local UI. Any OS user can be used to log in to Local UI.
 
 - You have uploaded the necessary software artifacts to the Edge host or included the artifacts in the Edge Installer
   ISO during EdgeForge. For more information, refer to [Upload Content Bundle](./upload-content-bundle.md) and
@@ -31,8 +31,8 @@ through how to create a cluster using Edge Management Console.
 
 ## Create Local Cluster
 
-1. Log into the Edge Management Console by visiting the 5080 port of your Edge device's IP address or domain name. For
-   more information, refer to [Access Edge Management Console](../host-management/access-console.md).
+1. Log into the Local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more
+   information, refer to [Access Local UI](../host-management/access-console.md).
 
 2. From the left **Main Menu**, click **Clusters**.
 
@@ -80,6 +80,6 @@ through how to create a cluster using Edge Management Console.
 
 ## Validate
 
-1. Log in to the Edge Management Console.
+1. Log in to the Local UI.
 
 2. Click **Clusters**. Verify that you cluster has entered the running status.
