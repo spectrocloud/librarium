@@ -12,6 +12,14 @@ profile. Depending on the nature of the change, implementing an upgrade might in
 cluster, restarting services, or doing nothing. For more information about cluster repaves, refer to
 [Repave Behavior and Configurations](../cluster-management/node-pool.md#repave-behavior-and-configuration).
 
+:::warning
+
+- If a cluster's Kubernetes service is down, updates to the cluster's profile will not get applied. You must fix the
+  issue impacting the Kubernetes service first and ensure that the Kubernetes service of the cluster is operational
+  before applying updates to the cluster.
+
+:::
+
 ## Known Issues
 
 - For RKE2 clusters, updates to the `stages.*` section in the Operating System (OS) and the Kubernetes pack of the
