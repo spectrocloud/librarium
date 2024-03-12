@@ -61,7 +61,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
    layers.
 
 8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
-   All pack parameters contain default values from the cluster profile.
+   By default, the pack parameters contain values from the cluster profile.
 
 9. Fill out the following parameters and click **Next** when you are done.
 
