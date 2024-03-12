@@ -3,7 +3,7 @@ sidebar_label: "Deploy Cluster with a Private External Registry"
 title: "Deploy Cluster with a Private External Registry"
 description: "Instructions for deploying an Edge cluster with a private external registry."
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 20
 tags: ["edge"]
 ---
 
@@ -106,8 +106,10 @@ bandwidth use and protect against outages. For more information, refer to
 
 7. From the left **Main Menu**, click on **Profiles**. Then select the profile you are using to deploy the cluster.
 
-8. Go through each layer of the profile and ensure that all images referenced in the profile refer to the registry you
-   provided and that all images are present in the external registry.
+8. Go through each layer of the profile and ensure that all images referenced in the profile are present in the external
+   registry. If you do not want to do this manually image by image, refer to
+   [Upload Cluster Images to External Registry with Palette Edge CLI](./upload-images-to-registry.md) to learn how to
+   use the Palette Edge CLI to upload all images in a cluster profile to an external registry.
 
 9. Follow the [Create Cluster Definition](../site-installation/cluster-deployment.md) and deploy your cluster.
 

@@ -3,7 +3,7 @@ sidebar_label: "Deploy Cluster with a Private Provider Registry"
 title: "Deploy Cluster with a Private Provider Registry"
 description: "Instructions for deploying an Edge cluster with a private provider registry."
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 40
 tags: ["edge"]
 ---
 

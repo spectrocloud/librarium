@@ -1,41 +1,16 @@
 ---
-sidebar_label: "Build Content Bundle"
-title: "Build Content Bundle"
-description: "Learn about building your edge content bundles in order to optimize cluster deployments"
+sidebar_label: "Upload Cluster Images to Registry with Palette Edge CLI"
+title: "Upload Cluster Images to Registry with Palette Edge CLI"
+description: "Guide to uploading all images required by a cluster to an external registry."
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 70
 tags: ["edge"]
 ---
 
-Content bundles are archives of all the required container images required for one or more cluster profiles. The content
-bundle includes Helm charts, Packs, and manifest files needed to deploy your Edge host cluster. In addition to core
-container images, the content bundle can include artifacts from your applications that you wish to deploy to the Edge
-cluster. [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) are the primary source for building
-these content bundles.
-
-:::warning
-
-Currently, the content bundles include Helm charts and Packs. However, keep in mind that the container images of the
-Helm Charts and Packs are extracted and predeployed into the container runtime [containerd](https://containerd.io/) for
-optimization. In the future, Palette will include a built-in OCI registry to host Helm Charts and other artifacts to
-avoid downloading these from the internet if included in a content bundle
-
-:::
-
-## Benefits of Content Bundle
-
-Creating a content bundle provides several benefits that may address common use cases related to deploying Edge hosts.
-
-- Preloading required software dependencies removes the need to download assets during cluster deployment.
-
-- If connectivity to a container registry is unstable or bandwidth limited, preloading the software dependencies can
-  address these concerns.
-
-- Preloading required software dependencies optimizes the Edge host deployment process when the Edge host is in an
-  internet bandwidth-constrained environment.
-
-- Organizations that want better control over the software used by their Edge hosts can use content bundles to ensure
-  that only approved software is consumed.
+Palette Edge allows you to deploy a cluster using an external private registry. When you deploy a cluster using an
+external registry, all images required by the cluster are expected to be in the registry before deployment starts. It
+can be error-prone to upload the images manually one by one. Therefore, we recommend you use the Palette Edge CLI to
+download the images and upload them to the external registry.
 
 ## Prerequisites
 
@@ -50,12 +25,12 @@ Creating a content bundle provides several benefits that may address common use 
 
 - Content tags in your profiles highlight the exact location of container images to be downloaded.
 
-## Create Content Bundle
+## Upload Cluster Images to Registry
 
 1. Download Palette Edge Content CLI and assign the executable bit to the CLI.
 
    ```shell
-   VERSION=4.1.2
+   VERSION=4.3.0
    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
    chmod +x palette-edge
    ```
@@ -67,21 +42,14 @@ Creating a content bundle provides several benefits that may address common use 
 
 4. Navigate to the left **Main Menu** and select **Profiles**.
 
-5. Use the **Cloud Types drop-down Menu** and select **Edge Native**.
+5. Click on the cluster profile you want to include in the content bundle.
 
-6. Click on the cluster profile you want to include in the content bundle.
-
-7. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last
+6. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last
    value in the URL. Repeat this step for all the cluster profiles you want to specify in the content bundle.
 
-   <br />
+7. If you are downloading images from public image or Helm registries only, skip this step.
 
-   ```text
-   https://console.spectrocloud.com/projects/yourProjectId/profiles/cluster/<YourClusterProfileHere>
-   ```
-
-8. (Optional) If your cluster profile uses images or helm charts that are hosted on private registries that require
-   authentication, you must provide a JSON file that contains the necessary credentials to access the registry.
+   Prepare a JSON file that includes the credentials to your image or Helm registries.
 
    <Tabs>
 
@@ -204,62 +172,25 @@ Creating a content bundle provides several benefits that may address common use 
 
    </Tabs>
 
-9. Navigate back to your terminal window and issue the following command to create the content bundle. Replace the
-   placeholder values with your actual values.
-
-   :::info
-
-   There are several Spectro Cloud CLI flags that you can use to customize the content bundle. Use the command
-   `./palette-edge build --help` to learn more about the available flags.
-
-   :::
+8. Issue the following command to download the images as a content bundle. The command produces a ZST file as output.
+   Replace the `******` after the `--api-key` flag with your Palette API key. Replace `project-ID` with the ID of your
+   project in Palette, and `profile-ID` with the ID of your profile.
 
    ```shell
-   ./palette-edge build --api-key <API_KEY> \
-    --project-id <PROJECT_ID> \
-    --cluster-profile-ids <CLUSTER_PROFILE_ID1,CLUSTER_PROFILE_ID2...> \
-    --palette-endpoint <Palette API Endpoint> \
-    --outfile <bundle-name>.tar \
-    --iso
+    ./palette-edge build --api-key ****** --project-id project-ID --cluster-profile-ids profile-ID \
+        --outfile spectro-external-profile --cred-file-path registry-creds.json --include-palette-content
    ```
 
-   ```hideClipboard shell
-   # Output
-   INFO[0000] getting hubble export for build
-   INFO[0000] Fetching latest version for service 'stylus'
-   INFO[0000] stylus version: 3.4.3
-   INFO[0000] Fetching manifest for service stylus and version 3.4.3 for action resources
-   INFO[0000] Fetching manifest of service stylus and version '3.4.3' for action resources
-   INFO[0000] Fetching manifest from service stylus and version '3.4.3' for action resources with file name images.yaml
-   INFO[0000] Get manifest with file name: images.yaml
-   INFO[0000] Get manifest with file content: image: gcr.io/spectro-images-public/stylus:v3.4.3
-   INFO[0002] successfully pulled image : gcr.io/spectro-images-public/calico/cni:v3.25.0
-   ...
-   ...
-   INFO[0143] Total translation table size: 0
-   INFO[0143] Total rockridge attributes bytes: 272
-   INFO[0143] Total directory bytes: 0
-   INFO[0143] Path table size(bytes): 10
-   INFO[0143] Max brk space used 0
-   INFO[0143] 872027 extents written (1703 MB)
-   INFO[0144] ISO file created successfully
+9. Issue the following command to upload the images to the external registry. Replace `path-to-content-bundle` with the
+   path to the content bundle you downloaded in the previous step. Replace `registry-URL` with the URL of your external
+   registry. Replace `username` and `******` with the username and password used to access the external registry.
+
+   ```shell
+   ./palette-edge-cli deploy --export path-to-content-bundle --registry registry-URL \
+    --username username --password ******
    ```
-
-The result is a content bundle that you can use to preload into your installer. For more information, refer to
-[Build Edge Artifacts with Content Bundle](./palette-canvos/build-artifacts.md) or
-[Build Installer ISO](./palette-canvos/build-installer-iso.md). Our Tech Preview feature
-[Edge Management Console](../edge-management-console/edge-management-console.md) also allows you to upload content
-bundles to a disconnected Edge deployment.
-
-Alternatively, you can use the ISO version of the content bundle and transfer it to a USB drive to be used separately at
-the time of Edge host installation.
 
 ## Validate
 
-You can validate that the ISO image has not been corrupted by attempting to flash a bootable device. Most software that
-creates a bootable device will validate the ISO image before the flash process.
-
-## Next Steps
-
-Your next step is to build the Edge artifacts so that you can deploy an Edge host. To create an Edge artifacts, check
-out the [Build Images](../edgeforge-workflow/palette-canvos/palette-canvos.md) guide.
+Go to your external registry and verify that all the images referenced in the cluster profile are uploaded to the
+external registry.

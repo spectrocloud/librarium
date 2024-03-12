@@ -8,10 +8,9 @@ tags: ["edge"]
 ---
 
 Palette Edge allows you to provision a local Harbor image registry as part of your Edge deployment. When your Edge
-cluster is created for the first time, all images downloaded from external registries are stored locally in the Harbor
-registry, including your provider images and all packs used by your cluster. Subsequent image pulls from the cluster are
-made to the local Harbor registry. This allows your Edge cluster to reboot containers or add new nodes without being
-connected to the external network.
+cluster is created for the first time, all images from add-on packs downloaded from external registries are stored
+locally in the Harbor registry. Subsequent image pulls from the cluster are made to the local Harbor registry. This
+allows your Edge cluster to reboot containers or add new nodes without being connected to the external network.
 
 If you specified the installation mode of the Edge Installer to be `airgap`, any images that were included in the Edge
 Installer ISO will also be loaded into the Harbor registry. For more information about building content bundles, refer
