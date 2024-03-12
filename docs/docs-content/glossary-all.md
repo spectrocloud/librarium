@@ -170,7 +170,7 @@ are not part of any Palette pack or a chart. Pack manifests provide a pass-throu
 through raw manifests. Pack Manifest layers can be added to a cluster profile stack built using Spectro Packs and
 Charts.
 
-## Palette Edge Manager (Local API)
+## Palette Edge Manager (Edge Host API)
 
 A cmd line API that supports TUI operations & site diagnostics. For Dark Site or Air Gapped environments Palette Edge
 Manager can be used to upload cluster configurations.
