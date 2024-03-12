@@ -11,8 +11,8 @@ Local UI is only available in a disconnected installations of Palette Edge, and 
 restricted network environment such as most corporate networks. In such environments, you often need a proxy to access
 external networks such as the internet.
 
-You can configure your Edge hosts to use an HTTP/HTTPS proxy for secure internet access from Local UI (Local UI). The
-proxy server configured through the local UI will be retained even after a
+You can configure your Edge hosts to use an HTTP/HTTPS proxy for secure internet access from the local UI (Local UI).
+The proxy server configured through the local UI will be retained even after a
 [factory reset](./reset-reboot.md#reset-edge-host-to-factory-default).
 
 :::preview

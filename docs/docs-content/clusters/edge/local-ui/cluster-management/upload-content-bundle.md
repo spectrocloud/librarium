@@ -7,7 +7,7 @@ sidebar_position: 32
 tags: ["edge"]
 ---
 
-You can build a content bundle and upload it to an Edge host through Local UI. The content you upload can include
+You can build a content bundle and upload it to an Edge host through the local UI. The content you upload can include
 images, helm charts, and packs. This allows you to provision clusters locally using the content you upload to the Edge
 host when the host does not have a connection to a central Palette instance or an image repository.
 
