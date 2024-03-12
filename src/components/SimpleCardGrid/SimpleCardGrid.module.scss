@@ -27,4 +27,8 @@
   .simpleCardGrid {
     grid-template-columns: 1fr;
   }
+
+  .simpleCardWrapper {
+    min-width: 280px;
+  }
 }
