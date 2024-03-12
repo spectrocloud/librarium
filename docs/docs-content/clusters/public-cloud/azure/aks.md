@@ -1,111 +1,89 @@
 ---
 sidebar_label: "Create and Manage Azure AKS Cluster"
 title: "Create and Manage Azure AKS Cluster"
-description: "The methods of creating clusters for a speedy deployment on any CSP"
+description: "Learn how to deploy Azure Kubernetes Service clusters in Palette."
 hide_table_of_contents: false
-tags: ["public cloud", "azure"]
+tags: ["public cloud", "azure", "aks"]
 sidebar_position: 30
 ---
 
-Palette supports creating and managing Kubernetes clusters deployed to an Azure subscription. This section guides you on
-how to create an IaaS Kubernetes cluster in Azure that is managed by Palette.
-
-Azure clusters can be created under the following scopes:
-
-- Tenant admin
-
-- Project Scope - This is the recommended scope.
-
-Be aware that clusters that are created under the **Tenant Admin** scope are not visible under Project scope .
+Palette supports creating and managing Azure Kubernetes Service (AKS) clusters deployed to an Azure account. This guide
+explains how you can create an Azure AKS cluster managed by Palette.
 
 ## Prerequisites
 
-These prerequisites must be met before deploying an AKS workload cluster:
+- An active Azure cloud account.
 
-1. You need an active Azure cloud account with sufficient resource limits and permissions to provision compute, network,
-   and security resources in the desired regions.
+- Palette integration with an Azure cloud account. Review [Register and Manage Azure Cloud Account](./azure-cloud.md)
+  for guidance.
 
-2. You will need to have permissions to deploy clusters using the AKS service on Azure.
+- A Secure Shell (SSH) key pre-configured in your Azure environment. Refer to the
+  [SSH Keys](../../cluster-management/ssh-keys.md) guide for more information about creating and managing SSH keys in
+  Palette.
 
-3. Register your Azure cloud account in Palette as described in the [Creating an Azure Cloud Account](./azure-cloud.md)
-   section below.
+- An infrastructure cluster profile for Azure. Review
+  [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
+  for guidance.
 
-4. You should have a cluster profile created in Palette for AKS.
+- To use custom storage accounts or containers, you must create them before you create your cluster. For information
+  about use cases for custom storage, review [Azure Storage](./architecture.md#azure-storage).
 
-5. Associate an SSH key pair to the cluster worker node.
+  :::tip
 
-## Additional Prerequisites
+  If you need help creating a custom storage account or container, check out the
+  [Create a Storage Account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal)
+  and the [Manage Blob Containers](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal) guides.
 
-There are additional prerequisites if you want to set up Azure Active Directory integration for the AKS cluster:
+  :::
 
-1. A Tenant Name must be provided as part of the Azure cloud account creation in Palette.
+- To enable OIDC with Microsoft Entra ID, you need to configure Entra ID with Palette. Review the
+  [Enable SSO with Microsoft Entra ID](../../../user-management/saml-sso/palette-sso-with-entra-id.md) guide for more
+  information.
 
-2. For the Azure client used in the Azure cloud account, these API permissions have to be provided:
+- Optionally, a Virtual Network (VNet). If you do not provide a VNet, Palette creates one for you with compute, network,
+  and storage resources in Azure when it provisions Kubernetes clusters.
 
-   |                 |                                       |
-   | --------------- | ------------------------------------- |
-   | Microsoft Graph | Group.Read.All (Application Type)     |
-   | Microsoft Graph | Directory.Read.All (Application Type) |
+  To use a VNet that Palette creates, ensure there is sufficient capacity in the preferred Azure region to create the
+  following resources:
 
-3. You can configure these permissions from the Azure cloud console under **App registrations** > **API permissions**
-   for the specified application.
+  - Virtual CPU (vCPU)
+  - VNet
+  - Static Public IP addresses
+  - Virtual Network Interfaces
+  - Load Balancers
+  - Virtual Hard Disk (VHD)
+  - Managed Disks
+  - Virtual Network Address Translation (NAT) Gateway
 
-   :::info
+## Deploy an Azure AKS Cluster
 
-   Palette **also** enables the provisioning of private AKS clusters via a private cloud gateway (Self Hosted PCGs). The
-   Self-Hosted PCG is an AKS cluster that needs to be launched manually and linked to an Azure cloud account in Palette
-   Management Console. [Click here for more..](gateways.md)
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-   :::
+2. Ensure you are in the correct project scope.
 
-   <Video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/aks.mp4"></Video>
+3. From the left **Main Menu**, select **Clusters** and click **Add New Cluster**.
 
-   To create an Azure cloud account you need the following Azure account information:
+4. In **Public Clouds**, under **Infrastructure Provider**, select **Azure AKS**.
 
-   - Client ID
-   - Tenant ID
-   - Client Secret
-   - Tenant Name (optional)
-   - Toggle `Connect Private Cloud Gateway` option and select the [Self-Hosted PCG](gateways.md) already created from
-     the drop-down menu to link it to the cloud account.
+5. In the bottom-right corner, click **Start Azure AKS Configuration**.
 
-   <br />
+6. Fill out the following basic information and click **Next**.
 
-   :::info
+   | **Field**         | **Description**                                                                                                                                                         |
+   | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Cluster Name**  | A custom name for the cluster.                                                                                                                                          |
+   | **Description**   | Use the description to provide context about the cluster.                                                                                                               |
+   | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-west`.         |
+   | **Cloud Account** | If you already added your Azure account in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your Azure account information. |
 
-   For existing cloud account go to `Edit` and toggle the `Connect Private Cloud Gateway` option to select the created
-   gateway from the drop down menu.
+7. Select the Azure cluster profile you created and click **Next**. Palette displays the cluster profile layers.
 
-   :::
+---
 
-   For Azure cloud account creation, we first need to create an Azure Active Directory (AAD) application that can be
-   used with role-based access control. Follow the steps below to create a new AAD application, assign roles, and create
-   the client secret:
+Update worker pools in parallel Enable this option to efficiently manage various types of workloads by performing
+simultaneous updates on multiple worker pools.
 
-   1. Follow the steps described
-      [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
-      to create a new Azure Active Directory application. Note down your ClientID and TenantID.
-
-   2. On creating the application, assign a minimum required
-      [ContributorRole](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor). To
-      assign any type of role, the user must have a minimum role of
-      [UserAccessAdministrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator).
-      Follow the
-      [Assign Role To Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)
-      link learn more about roles.
-
-   3. Follow the steps described in the
-      [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret)
-      section to create the client application secret. Store the Client Secret safely as it will not be available as
-      plain text later.
-
-## Deploy an AKS Cluster
-
-<br />
-
-<Video title="aks-cluster-creation" src="/videos/clusters/public-cloud/cloud-accounts/azure.mp4"></Video>
-
-The following steps need to be performed to provision a new cluster:
+---
 
 1. If you already have a profile to use, go to **Cluster** > **Add a New Cluster** > **Deploy New Cluster** and select
    an Azure cloud. If you do not have a profile to use, review the

@@ -59,7 +59,7 @@ Use the following steps to deploy an Azure cluster.
 
 2. Ensure you are in the correct project scope.
 
-3. From the left **Main Menu** select **Clusters**, and click **Add New Cluster**.
+3. From the left **Main Menu**, select **Clusters** and click **Add New Cluster**.
 
 4. In **Public Clouds**, under **Infrastructure Provider**, select **Azure IaaS**.
 
@@ -71,7 +71,7 @@ Use the following steps to deploy an Azure cluster.
    | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Cluster Name**  | A custom name for the cluster.                                                                                                                                          |
    | **Description**   | Use the description to provide context about the cluster.                                                                                                               |
-   | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-west`          |
+   | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-west`.         |
    | **Cloud Account** | If you already added your Azure account in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your Azure account information. |
 
 7. Select the Azure cluster profile you created and click **Next**. Palette displays the cluster profile layers.
