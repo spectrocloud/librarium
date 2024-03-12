@@ -15,7 +15,7 @@ bundle of one or more cluster profiles and their profile variables, from Palette
 
 :::
 
-Refer to the following resources to learn how to upload content and create a cluster using Local UI:
+Refer to the following resources to learn how to upload content and create a cluster using the local UI:
 
 - [Upload Content Bundle](./upload-content-bundle.md)
 

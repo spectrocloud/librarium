@@ -25,11 +25,11 @@ console.
 - You have built a content bundle that's necessary for provisioning a cluster using your intended cluster profile. For
   more information, refer to [Build Content Bundles](../../edgeforge-workflow/build-content-bundle.md).
 
-- Network access to the Edge host's port where Local UI is exposed. The default port is 5080.
+- Network access to the Edge host's port where the local UI is exposed. The default port is 5080.
 
 ## Upload Content
 
-1. Log in to [Local UI(../host-management/access-console.md#log-in-to-local-ui).
+1. Log in to the [local UI](../host-management/access-console.md#log-in-to-local-ui).
 
 2. From the left **Main Menu**, click **Content**.
 

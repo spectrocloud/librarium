@@ -29,17 +29,17 @@ This page guides you through how access the console, and log in, and manage your
 - You have completed or skipped the initial configuration of the Edge host. For more information, refer to
   [Edge Host Initial Configuration](../../site-deployment/initial-setup.md).
 
-- Network access to the Edge host's port where Local UI is exposed. The default port is 5080.
+- Network access to the Edge host's port where the local UI is exposed. The default port is 5080.
 
-- Credentials to log in to the Local UI. Any OS user can be used to log into Local UI.
+- Credentials to log in to the local UI. Any OS user can be used to log into local UI.
 
 ### Instructions
 
 1. Ensure the Edge host is powered on.
 
 2. In your browser, go to `https://HOST_IP:5080`. Replace `HOST_IP` with the IP address of your Edge host. If you have
-   access to the Edge host terminal, the address of the Local UI console is displayed on the terminal screen. If you
-   have changed the default port of the console, replace `5080` with the Local UI port.
+   access to the Edge host terminal, the address of the local UI console is displayed on the terminal screen. If you
+   have changed the default port of the console, replace `5080` with the local UI port.
 
 3. You will be prompted to log in. Enter your username and password to log in.
 
@@ -51,15 +51,15 @@ A successful login directs you to the Edge management console. Displayed is an o
 
 ### Prerequisites
 
-- You are logged in to Local UI.
+- You are logged in to the local UI.
 
 ### Instructions
 
 1. In your browser, go to `https://HOST_IP:5080`. Replace `HOST_IP` with the IP address of your Edge host. If you have
-   access to the Edge host terminal, the address of the Local UI console is displayed on the terminal screen. If you
-   have changed the default port of the console, replace `5080` with the Local UI port.
+   access to the Edge host terminal, the address of the local UI console is displayed on the terminal screen. If you
+   have changed the default port of the console, replace `5080` with the local UI port.
 
-2. From the Local UI, navigate to the top right **User Menu**.
+2. From the local UI, navigate to the top right **User Menu**.
 
 3. Click **Sign out**.
 
@@ -71,15 +71,15 @@ A successful sign-out takes you back to the login page. You need to enter your c
 
 ### Prerequisites
 
-- Network access to the Edge host's port where Local UI is exposed. Default is port 5080.
+- Network access to the Edge host's port where the local UI is exposed. Default is port 5080.
 
-- Credentials to log in to the Local UI. Any OS user can be used to log into Local UI.
+- Credentials to log in to the local UI. Any OS user can be used to log into the local UI.
 
 ### Instructions
 
-1. [Log in](#log-in-to-local-ui) to the Local UI.
+1. [Log in](#log-in-to-local-ui) to the local UI.
 
-2. From the Local UI, navigate to the top right **User Menu**.
+2. From the local UI, navigate to the top right **User Menu**.
 
 3. Click **Update password**.
 

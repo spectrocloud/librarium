@@ -8,7 +8,7 @@ tags: ["edge"]
 ---
 
 Once Palette Edge has been installed on the Edge host and the Edge host has gone through initial configuration, you will
-be able to access Local UI. Local UI allows you to manage Edge hosts in your network locally, upload content bundles
+be able to access the local UI. Local UI allows you to manage Edge hosts in your network locally, upload content bundles
 containing images, Helm charts, and packs, and create Edge clusters locally in disconnected environments without
 connections to a Palette instance.
 
@@ -16,22 +16,22 @@ connections to a Palette instance.
 
 :::
 
-![A diagram illustrating how users and use EdgeForge and Local UI to deploy clusters without a Palette connection](/clusters_edge_emc_workflow.png)
+![A diagram illustrating how users and use EdgeForge and the local UI to deploy clusters without a Palette connection](/clusters_edge_emc_workflow.png)
 
 :::warning
 
 Local UI on works for Edge deployment in disconnected environments. A disconnected environment means that the Edge host
-does not have a connection to a Palette instance. Do not use Local UI if your cluster has a connection to a Palette
+does not have a connection to a Palette instance. Do not use the local UI if your cluster has a connection to a Palette
 instance.
 
 :::
 
-Refer to the follow resources to learn how to use Local UI to manage your disconnected Edge deployment:
+Refer to the follow resources to learn how to use the local UI to manage your disconnected Edge deployment:
 
 ## Get Started
 
-- Refer to [Access Local UI](./host-management/access-console.md) for guidance on how to access Local UI and update your
-  credentials.
+- Refer to [Access Local UI](./host-management/access-console.md) for guidance on how to access the local UI and update
+  your credentials.
 
 - If you already included a content bundle and a cluster definition in your installer ISO, you can create a cluster
   using the resources in the ISO directly. Refer to [Create Local Cluster](./cluster-management/create-cluster.md) for

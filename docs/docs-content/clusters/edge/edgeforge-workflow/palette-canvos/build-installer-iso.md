@@ -33,8 +33,8 @@ You can build the following content into the Edge installer ISO to customize you
   profiles. Content bundles are optional to include in an installer ISO.
 - Cluster definition (Tech Preview). Cluster definitions contains cluster profiles and any profile variables used in the
   profiles. When you include a cluster definition during the Edge Installer ISO build process, you can create a new
-  cluster that uses your imported cluster definition in your Edge host using Local UI. Cluster definitions are optional
-  to include in an installer ISO.
+  cluster that uses your imported cluster definition in your Edge host using the local UI. Cluster definitions are
+  optional to include in an installer ISO.
 
   :::preview
 

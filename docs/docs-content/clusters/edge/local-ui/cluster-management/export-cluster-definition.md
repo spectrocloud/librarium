@@ -92,7 +92,7 @@ host. A cluster definition contains one or more cluster profiles, including the 
 
 ## Validate
 
-1. Log in to [Local UI](../host-management/access-console.md).
+1. Log in to the [local UI](../host-management/access-console.md).
 
 2. From the left **Main Menu**, click on **Cluster**.
 
@@ -104,7 +104,7 @@ host. A cluster definition contains one or more cluster profiles, including the 
 ## Next Steps
 
 You can build the cluster definition into the Edge Installer ISO, or upload the cluster definition to an existing Edge
-deployment using Local UI during cluster creation.
+deployment using the local UI during cluster creation.
 
 - [Build Edge Installer ISO](../../edgeforge-workflow/palette-canvos/build-installer-iso.md)
 
