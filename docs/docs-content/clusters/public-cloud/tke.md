@@ -152,9 +152,6 @@ detailing of the Tencent TKE cluster provisioning through Palette:
 
 4. Click **Confirm** button to complete the cloud account create wizard.
 
-**Note**: The cloud account can be created during the first step of cluster creation when you fill in the basic
-information by clicking the **+** next to **Cloud Account**.
-
 ## Deploy a Tencent Cluster
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
