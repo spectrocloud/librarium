@@ -15,9 +15,8 @@ optionality, masking, and so on, to ensure scalable, error-free cluster deployme
 
 :::preview
 
-This is a Tech Preview feature currently available in the
-[Edge Management Console (EMC)](/clusters/edge/edge-management-console/). Do not use this feature in production
-workloads, as it is subject to change.
+This is a Tech Preview feature currently available in the [Edge Management Console (EMC)](/clusters/edge/local-ui/). Do
+not use this feature in production workloads, as it is subject to change.
 
 :::
 

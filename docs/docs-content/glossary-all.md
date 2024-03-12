@@ -118,11 +118,11 @@ Clusters on such edge appliances from its SaaS-based management console. Besides
 also provides end-to-end management of these clusters through operations such as scaling, upgrades, reconfiguration,
 etc.
 
-## Edge Management Console
+## Local UI
 
-Edge Management Console (EMC) is a browser-based tool that allows you to manage your Edge host and perform tasks such as
-creating local clusters, upload content bundles, and configure network settings. EMC is a Tech Preview feature and
-should not be used in production workloads.
+Local UI is a browser-based tool that allows you to manage your Edge host and perform tasks such as creating local
+clusters, upload content bundles, and configure network settings. Local UI is a Tech Preview feature and should not be
+used in production workloads.
 
 ## Helm Charts
 
@@ -170,7 +170,7 @@ are not part of any Palette pack or a chart. Pack manifests provide a pass-throu
 through raw manifests. Pack Manifest layers can be added to a cluster profile stack built using Spectro Packs and
 Charts.
 
-## Palette Edge Manager (Local API)
+## Palette Edge Manager (Edge Host API)
 
 A cmd line API that supports TUI operations & site diagnostics. For Dark Site or Air Gapped environments Palette Edge
 Manager can be used to upload cluster configurations.

@@ -248,8 +248,7 @@ Creating a content bundle provides several benefits that may address common use 
 The result is a content bundle that you can use to preload into your installer. For more information, refer to
 [Build Edge Artifacts with Content Bundle](./palette-canvos/build-artifacts.md) or
 [Build Installer ISO](./palette-canvos/build-installer-iso.md). Our Tech Preview feature
-[Edge Management Console](../edge-management-console/edge-management-console.md) also allows you to upload content
-bundles to a disconnected Edge deployment.
+[local UI](../local-ui/local-ui.md) also allows you to upload content bundles to a disconnected Edge deployment.
 
 Alternatively, you can use the ISO version of the content bundle and transfer it to a USB drive to be used separately at
 the time of Edge host installation.
