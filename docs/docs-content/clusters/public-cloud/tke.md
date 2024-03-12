@@ -137,9 +137,7 @@ detailing of the Tencent TKE cluster provisioning through Palette:
 
 ## Create a Tencent Cloud Account
 
-Create a Tencent Cloud account in Palette from the Tenant Admin or Project Admin scope. To create the cloud account:
-
-1. Log in to the Palette and from the **Tenant Admin Settings**, select the **Cloud Accounts** tab.
+1. Log in to Palette and from the **Tenant Admin Settings**, select the **Cloud Accounts** tab.
 
 2. Click **+ Tencent Account** to open the cloud account creation wizard and fill in the following details:
 
@@ -159,24 +157,33 @@ information by clicking the **+** next to **Cloud Account**.
 
 ## Deploy a Tencent Cluster
 
-The following steps need to be performed to provision a new TKS cluster:
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
-1. Provide the basic cluster information such as:
+2. Ensure you are in the correct project scope.
 
-   - **Name**, **Description**, and **Tags**. Tags on a cluster are propagated to the VMs deployed on the cloud or data
-     center environments.
-   - Select the desired [Tencent cloud account](#create-a-tencent-cloud-account). The Tencent credentials must be
-     pre-configured in the Project/Tenant Admin settings.
+3. From the left **Main Menu** select **Clusters**, and click **Add New Cluster**.
 
-   **Note**: The cloud account can be created during the cluster creation by clicking **+** next to the **Cloud
-   Account**. <br />
+4. In **Public Clouds**, under **Managed Kubernetes**, select **TKE**.
 
-2. Select the cluster profile created for Tencent Cloud. The profile definition will be used as the cluster deployment
-   template.
+5. In the bottom-right corner, click **Start TKE Configuration**.
 
-3. Review and override pack parameters as desired. By default, parameters for all packs are set with values defined in
-   the cluster profile. While configuring the Operating System layer of the TKE cluster profile, configure the value of
-   the OS pack file with any one of the following images:
+6. Fill out the following basic information and click **Next**.
+
+   | **Field**         | **Description**                                                                                                                                                                                                                |
+   | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Cluster Name**  | A custom name for the cluster.                                                                                                                                                                                                 |
+   | **Description**   | Use the description to provide context about the cluster.                                                                                                                                                                      |
+   | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the computing environments. Example: `region:ap-guangzhou` or `zone:ap-guangzhou-2`.                               |
+   | **Cloud Account** | If you already [added your Tencent Cloud account](<(#create-a-tencent-cloud-account)>) in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your Tencent Cloud account information. |
+
+7. Click **Add Cluster Profile**, select a cluster profile, and click **Next**. Palette displays the cluster profile
+   layers.
+
+8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
+   By default, the pack parameters contain values from the cluster profile.
+
+9. While configuring the Operating System layer of the TKE cluster profile, configure the value of the OS pack file with
+   any one of the following images:
 
    ```yaml
    "OsName": "centos7.6.0_x64"
@@ -212,53 +219,54 @@ The following steps need to be performed to provision a new TKS cluster:
 
    :::
 
-4. Provide the Tencent Cloud account and placement information:
+10. Click **Next** to continue.
 
-   | **Parameter**               | **Description**                                                                                                                                                                                                                                        |
-   | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | **Cloud Account**           | Select the desired cloud account.                                                                                                                                                                                                                      |
-   | **Tencent Cloud Accounts**  | The Tencent credentials need to be pre-configured in the **Project**/**Tenant Admin** settings.                                                                                                                                                        |
-   |                             | **Note**: The cloud account can be created during this step of<br /> cluster creation by clicking **+** next to the **Cloud Account**.                                                                                                                 |
-   | **Region**                  | Choose the desired Tencent region where you <br /> would like the clusters to be provisioned.                                                                                                                                                          |
-   | **SSH Key Pair Name**       | Choose the desired SSH keypair. You must preconfigure SSH key pairs on TKS for the desired regions. The selected key is inserted into the provisioned VMs.                                                                                             |
-   | **VPCID**                   | The ID of the Virtual Private Cloud (VPC) that the stack is to be launched into. The VPC must be in the specified region. All cluster instances will be launched into this VPC.                                                                        |
-   | **Cluster Endpoint Access** | Select Public, or Private & Public, based on how you want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster.                                                                                     |
-   | **Public Security Group**   | A security group to controls the traffic that is allowed to reach and leave the resources that it is associated with. For example, after you associate a security group with the cluster, it controls the inbound and outbound traffic to the cluster. |
+11. Provide the Tencent Cloud account and placement information:
 
-   :::info
+    | **Parameter**               | **Description**                                                                                                                                                                                                                                        |
+    | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Cloud Account**           | Select the desired cloud account.                                                                                                                                                                                                                      |
+    | **Tencent Cloud Accounts**  | The Tencent credentials need to be pre-configured in the **Project**/**Tenant Admin** settings.                                                                                                                                                        |
+    |                             | **Note**: The cloud account can be created during this step of<br /> cluster creation by clicking **+** next to the **Cloud Account**.                                                                                                                 |
+    | **Region**                  | Choose the desired Tencent region where you <br /> would like the clusters to be provisioned.                                                                                                                                                          |
+    | **SSH Key Pair Name**       | Choose the desired SSH keypair. You must preconfigure SSH key pairs on TKS for the desired regions. The selected key is inserted into the provisioned VMs.                                                                                             |
+    | **VPCID**                   | The ID of the Virtual Private Cloud (VPC) that the stack is to be launched into. The VPC must be in the specified region. All cluster instances will be launched into this VPC.                                                                        |
+    | **Cluster Endpoint Access** | Select Public, or Private & Public, based on how you want to establish the communication with the endpoint for the managed Kubernetes API server and your cluster.                                                                                     |
+    | **Public Security Group**   | A security group to controls the traffic that is allowed to reach and leave the resources that it is associated with. For example, after you associate a security group with the cluster, it controls the inbound and outbound traffic to the cluster. |
 
-   Palette encourages its uses to go with the Public Cluster endpoint access as of now. Other options will be supported
-   in the near future.
+    :::info
 
-   :::
+    We recommend going with the Public Cluster endpoint access as of now.
 
-5. Public Access CIDRs - To enable access restrictions.
+    :::
 
-6. Update Worker Pools in parallel - Patch updates to all Worker Pools simultaneously.
+12. Configure **Public Access CIDRs** to enable access restrictions.
 
-7. Configure one or more worker node pools. A single worker node will be configured by default. To learn more about the
-   configuration options, review the [Node Pool](../cluster-management/node-pool.md) documentation page. Click on
-   **Next** when you are done with node pool configurations.
+13. Enable the update of Worker Pools in parallel to patch updates to all Worker Pools simultaneously.
 
-8. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available
-   to track progress.
+14. Configure one or more worker node pools. A single worker node will be configured by default. To learn more about the
+    configuration options, review the [Node Pool](../cluster-management/node-pool.md) documentation page. Click **Next**
+    when you are done with node pool configurations.
 
-# Delete a Tencent Cluster
+15. Review settings and deploy the cluster. Provisioning status with details of ongoing provisioning tasks is available
+    to track progress.
+
+## Delete a Tencent Cluster
 
 The deletion of a Tencent cluster results in the removal of all Virtual Machines and associated Storage Disks created
 for the cluster. The following tasks need to be performed to delete a Tencent cluster:
 
 1. Ensure you are in the correct project scope.
 
-2. Navigate to the left **Main Menu** and click on **Clusters**
+2. Navigate to the left **Main Menu** and click **Clusters**
 
 3. Click on the cluster that you want to remove.
 
-4. Click on the **Settings** drop-down menu.
+4. Click the **Settings** drop-down menu.
 
-5. Click on **Delete Cluster**
+5. Click **Delete Cluster**
 
-6. Type in the name of the cluster and click on **OK**
+6. Type in the name of the cluster and click **OK**
 
 The cluster status is updated to **Deleting** while cluster resources are being deleted. Once all resources are
 successfully deleted, the cluster status is updated to **Deleted** and is removed from the list of clusters.
