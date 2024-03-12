@@ -12,6 +12,12 @@ profile. Depending on the nature of the change, implementing an upgrade might in
 cluster, restarting services, or doing nothing. For more information about cluster repaves, refer to
 [Repave Behavior and Configurations](../cluster-management/node-pool.md#repave-behavior-and-configuration).
 
+## Known Issues
+
+- For RKE2 clusters, updates to the `stages.*` section in the Operating System (OS) and the Kubernetes pack of the
+  cluster profile will trigger a repave instead of a reboot. The only exception is changes to the `stages.reconcile.*`
+  section, which will behave as expected and trigger a configuration reload.
+
 ## Upgrade Behaviors
 
 A cluster could respond to an upgrade in several ways. The table below lists the potential upgrade behaviors you could
