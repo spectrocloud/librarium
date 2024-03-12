@@ -24,13 +24,11 @@ Typically, a PCG is used with Palette SaaS and self-hosted Palette instances tha
 target environment. However, a System Private Gateway is recommended when direct network connectivity is available.
 Visit the [System Private Gateway](./architecture.md#system-private-gateway) section to learn more.
 
-A PCG comprises a cluster of nodes and can be deployed by two methods. These include using the
-[Palette CLI](./deploy-pcg/) for VMware vSphere, MAAS, or OpenStack environments, or deploying it
-[manually onto an existing Kubernetes cluster](./deploy-pcg-k8s.md).
+A PCG comprises a cluster of nodes and can be deployed using two methods. The first method uses the Palette CLI to deploy a PCG in one of the three supported infrastructure environments; MAAS, OpenStack, or VMware vSphere. The other method manually deploys a PCG [onto an existing Kubernetes cluster](./deploy-pcg-k8s.md).
 
 In this tutorial, you will deploy a VMware PCG using Palette CLI. Next, you will learn how to deploy a VMware cluster
 with a sample Kubernetes application called
-[Hello Universe](https://github.com/spectrocloud/hello-universe#hello-universe), utilizing either Palette or Terraform.
+[Hello Universe](https://github.com/spectrocloud/hello-universe#hello-universe), utilizing either the Palette dashboard or Terraform.
 
 The following diagram illustrates the components that will be deployed in this tutorial and how they communicate with
 each other.
@@ -44,15 +42,15 @@ To complete this tutorial, you will need the following prerequisites in place.
     - A Palette account with [tenant admin](../../tenant-settings/tenant-settings.md) access.
     - A Palette API key. Refer to the [Create API Key](../../user-management/authentication/api-key/create-api-key.md) page for instructions on how to create an API key.
     - A [VMware vSphere](https://docs.vmware.com/en/VMware-vSphere/index.html) user account with the required [permissions](../data-center/vmware.md#vsphere-permissions), [roles](../data-center/vmware.md#spectro-role-privileges), and [zone tagging](../data-center/vmware.md#zone-tagging) defined.
-    - A Linux x86-64 machine with access to a terminal and internet, as well as connection to both Palette and VMware vSphere.
+    - A Linux x86-64 machine with access to a terminal and Internet, as well as connection to both Palette and VMware vSphere.
     - An SSH key pair. Use the [Create and Upload an SSH Key](../cluster-management/ssh-keys.md) guide to learn how to create an SSH key and upload it to Palette.
-    - The following IP address requirements must be met on VMware vSphere:
+    - The following IP address requirements must be met in your VMware vSphere environment:
         - One IP address available for the single-node PCG deployment. Refer to the [PCG Sizing](./manage-pcg/scale-pcg-nodes.md) section for more information on sizing.
         - One IP address reserved for cluster repave operations.
         - One IP address for the Virtual IP (VIP).
         - DNS must be able to resolve the domain `api.spectrocloud.com`.
         - NTP server must be reachable from the PCG.
-    - The following minimum resources must be available on VMware vSphere:
+    - The following minimum resources must be available in your VMware vSphere environment:
         - CPU: 4 cores.
         - Memory: 4 GiB.
         - Storage: 60 GiB.
@@ -65,7 +63,7 @@ To complete this tutorial, you will need the following prerequisites in place.
 
         :::
 
-    - The following software installed.
+    - Ensure the following software is installed and available on your Linux machine. 
       - [Palette CLI](../../palette-cli/install-palette-cli.md).
       - [Docker](https://docs.docker.com/desktop).
       - [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation).
@@ -86,7 +84,7 @@ palette login
 Once issued, you will be prompted for several parameters to complete the authentication. The table below outlines the
 required parameters along with the values that will be utilized in this tutorial. If a parameter is specific to your
 environment and Palette account, such as your Palette API key, ensure to input the value according to your environment.
-Access the [Deploy a PCG to VMware vSphere](../pcg/deploy-pcg/vmware.md) guide for detailed information about each
+Check out the [Deploy a PCG to VMware vSphere](../pcg/deploy-pcg/vmware.md) guide for more information.
 option.
 
 | **Parameter**                  | **Value**                                                                                                        | **Environment-Specific** |
@@ -98,14 +96,14 @@ option.
 | **Spectro Cloud Project**      | `None (TenantAdmin)`                                                                                             | No                       |
 | **Acknowledge**                | `Y`                                                                                                              | No                       |
 
-After accepting the login banner message, you will receive the following output confirming you have successfull
-authentication with Palette.
+After accepting the login banner message, you will receive the following output confirming you have successfully
+authenticated with Palette.
 
 ```text hideClipboard
 Welcome to Spectro Cloud Palette
 ```
 
-The video below demonstrates Palette's authentication process. Ensure you utilize values appropriate for your
+The video below demonstrates Palette's authentication process. Ensure you utilize values specific to your
 environment.
 
 <Video title="palette-login-video" src="/videos/palette-login.mp4"></Video>
@@ -244,14 +242,14 @@ install a PCG with predefined values using the command `pcg install` with the `-
 <br />
 <br />
 
-You can monitor the PCG cluster creation by logging into Palette, switching to the **Tenan Admin** scope, clicking on
+You can monitor the PCG cluster creation by logging into Palette, switching to the **Tenant Admin** scope, clicking on
 **Tenant Settings** from the left **Main Menu**, then selecting **Private Cloud Gateways** from the left **Tenant
 Settings Menu**. Click on the PCG cluster you just deployed to access its **Overview** page and check the deployment
 progress under the **Events** tab.
 
 ![PCG Events page.](/clusters_pcg_deploy-app-pcg_pcg-events.png)
 
-Additionally, you can observe the PCG deployment progress from your terminal. Upon completion, the local kind cluster is
+You can also follow along with the PCG deployment progress from your terminal. Upon completion, the local kind cluster is
 automatically deleted from your machine.
 
 ![Palette CLI PCG deployment](/clusters_pcg_deploy-app-pcg_pcg-cli.png)
@@ -267,8 +265,8 @@ PCG and confirm that its cluster status is **Running** and **Healthy**.
 ## Create a Cluster Profile and Deploy a Cluster
 
 Once you have successfully deployed the PCG, proceed to create a cluster profile with the
-[Hello Universe](hhttps://github.com/spectrocloud/hello-universe) application and use it to deploy a VMware cluster.
-This tutorial offers two different workflows: one utilizing the Palette User Interface (UI) and the other employing
+[Hello Universe](https://github.com/spectrocloud/hello-universe) application and use it to deploy a VMware cluster.
+You can use the Palette dashboard or 
 Terraform.
 
 <Tabs groupId="deploy-pcg">
@@ -317,7 +315,7 @@ Next, click on the **Add New Pack** button to include add-on layers to your clus
 Add the **MetalLB (Helm)** pack to your profile. The [MetalLB](../../integrations/metallb.md) pack provides a
 load-balancer implementation for your Kubernetes cluster, as VMware does not offer a load balancer solution natively.
 The load balancer is required to help the _LoadBalancer_ service specified in the Hello Universe application manifest
-obtain an IP address, so that you can access the application on your browser.
+obtain an IP address, so that you can access the application from your browser.
 
 | Pack Name       | Version | Layer         |
 | --------------- | ------- | ------------- |
@@ -339,7 +337,7 @@ Click on the **Confirm & Create** button and then click **Next**.
 
 **Review**
 
-Review the selected cluster layers and configurations. If everything looks correct, click on **Finish Configuration** to
+Review the selected cluster layers and configurations. Click on **Finish Configuration** to
 complete the cluster profile creation.
 
 ![Cluster profile review page.](/clusters_pcg_deploy-app-pcg_cluster-profile.png)
@@ -347,7 +345,7 @@ complete the cluster profile creation.
 ### Deploy a VMware Cluster
 
 Navigate to the left **Main Menu** and select **Profiles**. Locate and click on the cluster profile you previously
-created. Next, click on the **Deploy** button and confirm by clicking **OK** to initiate the cluster deployment using
+created. Next, click on the **Deploy** button and confirm by clicking **OK** to start the cluster deployment using
 the selected cluster profile.
 
 ![Cluster profile page.](/clusters_pcg_deploy-app-pcg_deploy-profile.png)
@@ -400,8 +398,7 @@ binding. Utilize the default values, and click on the **Validate** button.
 
 **Review**
 
-The **Review** section allows you to review the cluster configuration before deploying the cluster. If everything is
-correct, click on **Finish Configuration** to start the cluster deployment, which may take up to 20 minutes.
+The **Review** section allows you to review the cluster configuration before deploying the cluster. Click on **Finish Configuration** to start the cluster deployment, which may take up to 20 minutes.
 
 ![Cluster review page.](/clusters_pcg_deploy-app-pcg_cluster-review.png)
 
@@ -440,7 +437,7 @@ export SPECTROCLOUD_APIKEY=YourAPIKeyHere
 
 ### Create a Cluster Profile and Deploy a VMware Cluster
 
-Before proceeding, we suggest that you explore all the Terraform files present in the directory. Below is a high-level
+Before proceeding, we recommend that you explore all the Terraform files present in the directory. Below is a high-level
 overview of each file.
 
 - **profile.tf** - Configuration for the `spectrocloud_cluster_profile` resource. The following layers will be added to
@@ -510,7 +507,7 @@ terraform plan
 ```
 
 The output displays the resources that Terraform will create in an actual implementation, including the cluster profile,
-VMware vSphere cluster, and a new SSH key pair if the keys were not provided.
+VMware vSphere cluster, and a new SSH key pair unless an existing key pair was specified.
 
 ```text hideClipboard
 # Output condensed for readability
@@ -531,12 +528,12 @@ displayed.
 Apply complete! Resources: 5 added, 0 to changed, 0 to destroyed.
 ```
 
-Now, log in to Palette, navigate to the left **Main Menu** and click on **Clusters**. While the deployment is in
+Log in to Palette, navigate to the left **Main Menu**, and click on **Clusters**. While the deployment is in
 progress, Palette displays the cluster status as **Provisioning**.
 
 ![Palette's Clusters page.](/clusters_pcg_deploy-app-pcg_cluster-provisioning.png)
 
-You can select the `pcg-tutorial-cluster` to explore deployment status and event logs.
+You can select the **pcg-tutorial-cluster** to explore deployment status and event logs.
 
 </TabItem>
 
@@ -545,7 +542,7 @@ You can select the `pcg-tutorial-cluster` to explore deployment status and event
 ## Validate
 
 Once the cluster creation process has finished, log in to Palette, navigate to the left **Main Menu**, and click on
-**Clusters**. Select the `pcg-tutorial-cluster` to display the cluster's **Overview** page. Once the cluster status
+**Clusters**. Select the **pcg-tutorial-cluster** to display the cluster's **Overview** page. Once the cluster status
 displays **Running** and **Healthy**, you can access the application through the exposed service URL along with the
 displayed port number.
 
@@ -625,7 +622,7 @@ your VMware vSphere environment.
 
 ## Wrap-Up
 
-In this tutorial, you learned how to deploy a VMware PCG using Palette CLI and utilize it to deploy a Palette cluster
+In this tutorial, you learned how to deploy a VMware PCG using Palette CLI. Then, you used the PCG to support the deployment of a Palette cluster
 with a sample Kubernetes application to your VMware vSphere environment. Next, you accessed the Hello Universe
 application landing page through the exposed service URL.
 
