@@ -1,14 +1,14 @@
 ---
-sidebar_label: "Access Edge Management Console"
-title: "Access Edge Management Console"
-description: "Instructions for accessing the Edge Management Console."
+sidebar_label: "Access Local UI"
+title: "Access Local UI"
+description: "Instructions for accessing the Local UI."
 hide_table_of_contents: false
 sidebar_position: 32
 tags: ["edge"]
 ---
 
-The Edge Management Console (EMC) allows you to manage Edge hosts in your network locally, upload content such as images
-and packs, and create Edge clusters without connections to a Palette installation.
+Local UI allows you to manage Edge hosts in your network locally, upload content such as images and packs, and create
+Edge clusters without connections to a Palette installation.
 
 :::preview
 
@@ -16,7 +16,7 @@ and packs, and create Edge clusters without connections to a Palette installatio
 
 This page guides you through how access the console, and log in, and manage your username and password.
 
-## Log in to Edge Management Console
+## Log in to Local UI
 
 ### Prerequisites
 
@@ -29,17 +29,17 @@ This page guides you through how access the console, and log in, and manage your
 - You have completed or skipped the initial configuration of the Edge host. For more information, refer to
   [Edge Host Initial Configuration](../../site-deployment/initial-setup.md).
 
-- Network access to the Edge host's port where EMC is exposed. The default port is 5080.
+- Network access to the Edge host's port where the local UI is exposed. The default port is 5080.
 
-- Credentials to log in to the EMC. Any OS user can be used to log into EMC.
+- Credentials to log in to the local UI. Any OS user can be used to log into local UI.
 
 ### Instructions
 
 1. Ensure the Edge host is powered on.
 
 2. In your browser, go to `https://HOST_IP:5080`. Replace `HOST_IP` with the IP address of your Edge host. If you have
-   access to the Edge host terminal, the address of the EMC console is displayed on the terminal screen. If you have
-   changed the default port of the console, replace `5080` with the EMC port.
+   access to the Edge host terminal, the address of the local UI console is displayed on the terminal screen. If you
+   have changed the default port of the console, replace `5080` with the local UI port.
 
 3. You will be prompted to log in. Enter your username and password to log in.
 
@@ -47,19 +47,19 @@ This page guides you through how access the console, and log in, and manage your
 
 A successful login directs you to the Edge management console. Displayed is an overview of your Edge host.
 
-## Log out of Edge Management Console
+## Log out of Local UI
 
 ### Prerequisites
 
-- You are logged in to EMC.
+- You are logged in to the local UI.
 
 ### Instructions
 
 1. In your browser, go to `https://HOST_IP:5080`. Replace `HOST_IP` with the IP address of your Edge host. If you have
-   access to the Edge host terminal, the address of the EMC console is displayed on the terminal screen. If you have
-   changed the default port of the console, replace `5080` with the EMC port.
+   access to the Edge host terminal, the address of the local UI console is displayed on the terminal screen. If you
+   have changed the default port of the console, replace `5080` with the local UI port.
 
-2. From the Edge Management Console, navigate to the top right **User Menu**.
+2. From the local UI, navigate to the top right **User Menu**.
 
 3. Click **Sign out**.
 
@@ -71,15 +71,15 @@ A successful sign-out takes you back to the login page. You need to enter your c
 
 ### Prerequisites
 
-- Network access to the Edge host's port where EMC is exposed. Default is port 5080.
+- Network access to the Edge host's port where the local UI is exposed. Default is port 5080.
 
-- Credentials to log in to the EMC. Any OS user can be used to log into EMC.
+- Credentials to log in to the local UI. Any OS user can be used to log into the local UI.
 
 ### Instructions
 
-1. [Log in](#log-in-to-edge-management-console) to the Edge Management Console.
+1. [Log in](#log-in-to-local-ui) to the local UI.
 
-2. From the Edge Management Console, navigate to the top right **User Menu**.
+2. From the local UI, navigate to the top right **User Menu**.
 
 3. Click **Update password**.
 
@@ -87,6 +87,6 @@ A successful sign-out takes you back to the login page. You need to enter your c
 
 ### Validate
 
-1. [Log out](#log-out-of-edge-management-console) of the console.
+1. [Log out](#log-out-of-local-ui) of the console.
 
 2. Enter your new credentials to log back in and confirm that the password has been updated.

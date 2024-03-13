@@ -12,6 +12,8 @@ installation. A local [kind](https://kind.sigs.k8s.io/) cluster is created to fa
 target environment. You do not need to install kind or any other dependencies. The CLI includes all the required
 dependencies to set up the kind cluster.
 
+## Subcommands
+
 The `pcg` command exposes the following subcommand.
 
 <br />

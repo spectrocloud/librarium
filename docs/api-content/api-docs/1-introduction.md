@@ -8,8 +8,8 @@ sidebar_custom_props:
   icon: "graph"
 ---
 
-The API documentation section includes documentation for Palette API and Edge Management Console (EMC) API. EMC API
-endpoints are Tech Preview features and should not be used in production workloads.
+The API documentation section includes documentation for Palette API and Edge Host API. Edge Host API endpoints are Tech
+Preview features and should not be used in production workloads.
 
 ## Palette API
 
@@ -267,12 +267,12 @@ The API rate limits are as follows:
 | /v1/clusterprofiles/:uid/validate/packs                                                 | 50                     | 5              | 250                |
 | /v1/spectroclusters/:uid/profiles                                                       | 50                     | 5              | 250                |
 
-## EMC API
+## Edge Host API
 
-The Edge Management Console (EMC) has its own set of API endpoints. These API endpoints are available on each Edge host
-instead of on a Palette instance. You can use EMC API endpoints to programmatically perform tasks such as retrieve
-information about Edge clusters, retrieve the list of available images on your Edge host, and create local clusters
-using embedded cluster definitions.
+An Edge host has its own set of API endpoints. These API endpoints are available on each Edge host instead of on a
+Palette instance. You can use Edge Host API endpoints to programmatically perform tasks such as retrieve information
+about Edge clusters, retrieve the list of available images on your Edge host, and create local clusters using embedded
+cluster definitions.
 
 :::preview
 
@@ -304,8 +304,9 @@ If your credentials are valid, you will receive a authorization token.
 
 ```
 
-Include this token in the header of your subsequent requests to the EMC API to authenticate your requests. For example,
-the following request retrieves information about the Edge host such as the processor architecture and the host name.
+Include this token in the header of your subsequent requests to the Edge Host API to authenticate your requests. For
+example, the following request retrieves information about the Edge host such as the processor architecture and the host
+name.
 
 ```shell
 curl --location 'https://10.10.135.182:5080/v1/edge-mgmt/edgehosts/current' \

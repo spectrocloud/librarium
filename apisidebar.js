@@ -29,8 +29,8 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Edge Management Console API V1",
-      link: { type: "generated-index", title: "EMC API V1" },
+      label: "Edge Host API V1",
+      link: { type: "generated-index", title: "Edge Host API V1" },
       items: emcSidebarItems,
     },
   ],
