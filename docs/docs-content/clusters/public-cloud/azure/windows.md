@@ -8,18 +8,18 @@ tags: ["public cloud", "azure"]
 sidebar_position: 35
 ---
 
-Palette supports the deployment of Microsoft Windows applications on
-[Azure AKS clusters](../azure/create-azure-cluster.md). For the Windows applications to work, Palette requires a
-Windows-based node pool created within the cluster. This section guides you on creating a Windows node pool within an
-existing AKS cluster managed by Palette and configuring your Windows application to be deployed to that node pool.
+Palette supports the deployment of Microsoft Windows applications on [Azure AKS clusters](../azure/aks.md). For the
+Windows applications to work, Palette requires a Windows-based node pool created within the cluster. This section guides
+you on creating a Windows node pool within an existing AKS cluster managed by Palette and configuring your Windows
+application to be deployed to that node pool.
 
 ## Prerequisites
 
 - An AKS cluster created as described in the [Create and Manage Azure AKS Cluster](./aks.md) guide.
 
 - A Linux-based node pool configured as the system node pool as described in the
-  [Create a System Node Pool](./aks#create-a-system-node-pool) section of the
-  [Create and Manage Azure AKS Cluster](./aks.md) guide.
+  [Create a System Node Pool](../azure/aks.md#create-a-system-node-pool) section of the
+  [Create and Manage Azure AKS Cluster](../azure/aks.md) guide.
 
 - A Windows node pool configured as described in the [Create a Windows Node Pool](#create-a-windows-node-pool) section.
 
