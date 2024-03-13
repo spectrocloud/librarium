@@ -188,7 +188,7 @@ Use the following steps to deploy an Azure cluster.
 
 13. Click **Next** to continue.
 
-14. Specify your preferred **OS Patching Schedule** for EKS-managed machines.
+14. Specify your preferred **OS Patching Schedule**.
 
 15. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
     Kubernetes configuration security, penetration testing, and conformance testing.
@@ -219,8 +219,8 @@ You can validate your cluster is up and in **Running** state.
 
 2. Ensure you are in the correct project scope.
 
-3. From the left **Main Menu** select **Clusters**. The **Clusters** page displays a list of all available clusters that
-   Palette manages.
+3. From the left **Main Menu**, select **Clusters**. The **Clusters** page displays a list of all available clusters
+   that Palette manages.
 
 4. Select the cluster you deployed to review its details page. Ensure the **Cluster Status** field contains the value
    **Running**.
