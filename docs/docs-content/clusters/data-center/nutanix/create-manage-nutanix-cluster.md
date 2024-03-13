@@ -37,17 +37,17 @@ section guides you in creating a Kubernetes cluster in a Nutanix cloud managed b
 
 ## Deploy a Nutanix Cluster
 
-Use the following steps to deploy a Kubernetes cluster in Nutanix.
+1.  Log in to [Palette](https://console.spectrocloud.com).
 
-1.  Log in to [Palette](https://console.spectrocloud.com/).
+2.  Ensure you are in the correct project scope.
 
-2.  From the left **Main Menu** select **Clusters**.
+3.  From the left **Main Menu**, select **Clusters** and click **Add New Cluster**.
 
-3.  Click on **Add New Cluster** and select **Deploy New Cluster** on the next page that Palette displays.
+4.  In **Tech Preview**, select **Nutanix**.
 
-4.  Select **Nutanix** and click the **Start Nutanix Configuration** button.
+5.  In the bottom-right corner, click **Start Nutanix Configuration**.
 
-5.  Fill out the following basic information, and click **Next** to continue.
+6.  Fill out the following basic information, and click **Next** to continue.
 
     | **Field**         | **Description**                                           |
     | ----------------- | --------------------------------------------------------- |
@@ -56,12 +56,12 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
     | **Tags**          | Assign any desired cluster tags.                          |
     | **Cloud Account** | Select your Nutanix account from the **drop-down Menu**.  |
 
-6.  Select the Nutanix cluster profile you created and click **Next**. Palette displays the profile layers.
+7.  Select the Nutanix cluster profile you created and click **Next**. Palette displays the profile layers.
 
-7.  Review profile layers, leaving the OS and Kubernetes packs empty, and customize parameters as desired in the YAML
+8.  Review profile layers, leaving the OS and Kubernetes packs empty, and customize parameters as desired in the YAML
     files that display when you select the network and storage layers. Click **Next** when you are done.
 
-8.  In the **Cluster Configuration Macros** pane, enter values that apply to your Nutanix cloud environment and, if
+9.  In the **Cluster Configuration Macros** pane, enter values that apply to your Nutanix cloud environment and, if
     necessary, adjust the **Cluster configuration** YAML file to configure your cluster. Click **Next** when you are
     ready to proceed.
 
@@ -78,7 +78,7 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
     | **CONTROL_PLANE_ENDPOINT_IP**       | The host IP of the CAPX Kubernetes cluster.                                                                                                                                                                                                                                                                     |
     | **CONTROL_PLANE_ENDPOINT_PORT**     | Port of the CAPX Kubernetes cluster that you assigned in `cloudClusterTemplate.yaml`. Defaults to `6443`.                                                                                                                                                                                                       |
 
-9.  In the **Node Pool Configuration Macros** panes for the control plane and worker pools, enter the values that apply
+10. In the **Node Pool Configuration Macros** panes for the control plane and worker pools, enter the values that apply
     to your Nutanix cloud environment and, if necessary, adjust their **Node pool configuration** YAML files.
 
     You can configure scaling in the Palette UI by specifying the number of nodes in the pool. This corresponds to
@@ -126,20 +126,20 @@ Use the following steps to deploy a Kubernetes cluster in Nutanix.
     | **TLS_CIPHER_SUITES**                   | Cryptographic algorithms for securing network communications. Refer to [Nutanix Cryptographic Module for OpenSSL](https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp3460.pdf) for more options and details. |
     | **NUTANIX_SSH_AUTHORIZED_KEY**          | Your public SSH key.                                                                                                                                                                                                                                                         |
 
-10. Click **Next** when you are done.
+11. Click **Next** when you are done.
 
-11. Review the options for OS patching schedule, scanning, backups, and RBAC.
+12. Review the options for OS patching schedule, scanning, backups, and RBAC.
 
-12. Click **Validate** and review the cluster configuration and settings summary.
+13. Click **Validate** and review the cluster configuration and settings summary.
 
-13. Click **Finish Configuration** to deploy the cluster. The cluster details page contains the status and details of
+14. Click **Finish Configuration** to deploy the cluster. The cluster details page contains the status and details of
     the deployment. Use this page to track deployment progress. Provisioning clusters can take several minutes to
     complete.
 
-14. To edit node pool configurations, navigate to the cluster details page, click the **Nodes** tab, and select the node
+15. To edit node pool configurations, navigate to the cluster details page, click the **Nodes** tab, and select the node
     pool you want to edit. Click the **Edit** button and edit the YAML file that Palette displays.
 
-15. To edit cluster settings, from the cluster details page, click the **Settings** button and select **Cluster
+16. To edit cluster settings, from the cluster details page, click the **Settings** button and select **Cluster
     Configuration**. Edit the YAML file that Palette displays.
 
 ## Validate
