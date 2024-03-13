@@ -15,14 +15,14 @@ optionality, masking, and so on, to ensure scalable, error-free cluster deployme
 
 :::preview
 
-This is a Tech Preview feature currently available in the [Edge Management Console (EMC)](/clusters/edge/local-ui/). Do
+This is a Tech Preview feature currently available in the [local UI](../../../clusters/edge/local-ui/local-ui.md). Do
 not use this feature in production workloads, as it is subject to change.
 
 :::
 
 You can use profile variables with any number of packs, manifests, and Helm charts, but only in the scope of their
 parent cluster profile. If you want to create placeholders to use across different cluster profiles, consider using
-[Palette Macros](/clusters/cluster-management/macros/).
+[Palette Macros](../../../clusters/cluster-management/macros.md).
 
 The following table describes the difference between profile variables and macros.
 
@@ -39,16 +39,15 @@ This guide explains how you can define and manage cluster profile variables.
 
 ## Limitations
 
-- Cluster profile variables are currently available only in the EMC.
+- Cluster profile variables are currently available only in the [local UI](../../../clusters/edge/local-ui/local-ui.md).
 
 - Palette does not support nesting profile variables within macros or other profile variables.
 
 - You cannot define profile variables for the `pack.content` and `system.uri` parameters because the
-  [Palette CLI](/palette-cli/) populates them automatically.
+  [Palette CLI](../../../palette-cli/palette-cli.md) populates them automatically.
 
 - Once you deploy a cluster from a profile with variables, you can neither edit nor delete the profile variables. To
-  edit or delete them,
-  [version the cluster profile](/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile) and update
+  edit or delete them, [version the cluster profile](../modify-cluster-profiles/version-cluster-profile.md) and update
   the variables in the new version.
 
   When you version a cluster profile with variables, the variables are propagated to the new version. However, upon
@@ -59,8 +58,8 @@ This guide explains how you can define and manage cluster profile variables.
 ### Prerequisites
 
 - The `clusterProfile.create` and `clusterProfile.update` permissions to create and update cluster profiles. Refer to
-  [Roles and Permissions](/user-management/palette-rbac/project-scope-roles-permissions#cluster-profile-admin) for more
-  information.
+  [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  for more information.
 
 - An in-progress or already created cluster profile. The cluster profile must either have the **Edge Native**
   infrastructure or be an edge-based add-on profile.
@@ -68,8 +67,8 @@ This guide explains how you can define and manage cluster profile variables.
 ### Enablement
 
 You can define profile variables both while creating and for the already created cluster profiles. To define profile
-variables [while creating a cluster profile](/profiles/cluster-profiles/create-cluster-profiles/), start following this
-guide from step three at the **Profile Layers** stage of cluster profile creation.
+variables [while creating a cluster profile](../create-cluster-profiles/create-cluster-profiles.md), start following
+this guide from step three at the **Profile Layers** stage of cluster profile creation.
 
 1.  Log in to Palette.
 
@@ -150,8 +149,7 @@ guide from step three at the **Profile Layers** stage of cluster profile creatio
 :::info
 
 Once you deploy a cluster from a profile with variables, you can neither edit nor delete the profile variables. To edit
-or delete them,
-[version the cluster profile](/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile) and update the
+or delete them, [version the cluster profile](../modify-cluster-profiles/version-cluster-profile.md) and update the
 variables in the new version.
 
 :::
@@ -159,8 +157,8 @@ variables in the new version.
 ### Prerequisites
 
 - The `clusterProfile.update` permission to update cluster profiles. Refer to
-  [Roles and Permissions](/user-management/palette-rbac/project-scope-roles-permissions#cluster-profile-admin) for more
-  information.
+  [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  for more information.
 
 - A cluster profile with profile variables created in Palette.
 
