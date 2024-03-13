@@ -80,7 +80,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
    | **Control plane subnet**: Select the control plane network from the **drop-down Menu**. |
    | **Worker Network**: Select the worker network from the **drop-down Menu**.              |
 
-10. The Node configuration page is where you can specify the availability zones (AZ), instance types, disk size, and the
+10. The Node configuration page is where you can specify the Availability Zones (AZ), instance types, disk size, and the
     number of nodes. Configure the control plane and worker node pools. A control plane and a worker node pool are
     configured by default. The minimum number of CPUs and amount of memory depend on your cluster profile, but in
     general you need at least 4 CPUs and 4 GB of memory both in the control plane pool and across all worker pools.
