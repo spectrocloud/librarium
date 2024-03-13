@@ -166,12 +166,12 @@ detailing of the Tencent TKE cluster provisioning through Palette:
 
 6. Fill out the following basic information and click **Next**.
 
-   | **Field**         | **Description**                                                                                                                                                                                                                |
-   | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | **Cluster Name**  | A custom name for the cluster.                                                                                                                                                                                                 |
-   | **Description**   | Use the description to provide context about the cluster.                                                                                                                                                                      |
-   | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the computing environments. Example: `region:ap-guangzhou` or `zone:ap-guangzhou-2`.                               |
-   | **Cloud Account** | If you already [added your Tencent Cloud account](<(#create-a-tencent-cloud-account)>) in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your Tencent Cloud account information. |
+   | **Field**         | **Description**                                                                                                                                                                                                            |
+   | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Cluster Name**  | A custom name for the cluster.                                                                                                                                                                                             |
+   | **Description**   | Use the description to provide context about the cluster.                                                                                                                                                                  |
+   | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the computing environments. Example: `region:ap-guangzhou` or `zone:ap-guangzhou-2`.                           |
+   | **Cloud Account** | If you already [added your Tencent Cloud account](#create-a-tencent-cloud-account) in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your Tencent Cloud account information. |
 
 7. Click **Add Cluster Profile**, select a cluster profile, and click **Next**. Palette displays the cluster profile
    layers.
