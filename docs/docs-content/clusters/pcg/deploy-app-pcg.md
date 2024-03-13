@@ -228,7 +228,7 @@ After answering the prompts of the `pcg install` command, a new PCG configuratio
 displayed on the console.
 
 ```text hideClipboard
-==== PCG config saved ==== Location: /home/ubuntu/.palette/pcg/pcg-20240306182821/pcg.yaml
+==== PCG config saved ==== Location: /home/ubuntu/.palette/pcg/pcg-20240313152521/pcg.yaml
 ```
 
 Next, Palette CLI will create a local [kind](https://kind.sigs.k8s.io/) cluster that will be used to bootstrap the PCG
@@ -630,10 +630,9 @@ deployment of a Palette cluster with a sample Kubernetes application to your VMw
 accessed the Hello Universe application landing page through the exposed service URL.
 
 A PCG is a powerful component that enables Palette to communicate with private clouds or data center environments
-residing in restricted networks that don't allow inbound connections from the outside. The PCG acts as an endpoint for
-Palette, and continuously polls Palette for instructions. With a PCG, you can deploy Palette clusters and support their
-lifecycle in environments like VMware vSphere without the need to configure complex firewall rules or expose public
-endpoints.
+residing in restricted networks that don't allow inbound connections from external sources. The PCG acts as an endpoint
+and continuously polls Palette for instructions. With a PCG, you can deploy Palette clusters and support their lifecycle
+in environments like VMware vSphere without the need to configure complex firewall rules or expose public endpoints.
 
 We encourage you to check out the reference resources below to learn more about PCGs.
 
