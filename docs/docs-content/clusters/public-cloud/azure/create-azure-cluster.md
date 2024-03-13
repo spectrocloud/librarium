@@ -77,6 +77,7 @@ Use the following steps to deploy an Azure cluster.
 7. Select the Azure cluster profile you created and click **Next**. Palette displays the cluster profile layers.
 
 8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
+
    You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out
    [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider) for more
    information.
