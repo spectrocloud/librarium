@@ -20,11 +20,11 @@ resources from reaching Palette directly.
 
 Upon installation, the PCG initiates a connection from inside the private network to Palette, serving as an endpoint for
 Palette to communicate with the infrastructure environment. The PCG continuously polls Palette for instructions to
-deploy or delete Kubernetes clusters within the environment. This connection uses a secure communication channel that is
-encrypted using the Transport Layer Security (TLS) protocol. Once a cluster is deployed, the PCG is no longer involved
-in the communication between Palette and the deployed cluster. The cluster then communicates directly with Palette
-through the Palette agent available within each cluster, which originates all communication. Therefore, the network
-requests are outbound toward Palette. Refer to the [PCG Architecture](./architecture.md) section for more information.
+either deploy or delete Kubernetes clusters within the environment. This connection uses a secure communication channel
+that is encrypted using the Transport Layer Security (TLS) protocol. Once a cluster is deployed, the PCG is no longer
+involved in the communication between Palette and the deployed cluster. The cluster then communicates directly with
+Palette through the Palette agent available within each cluster, which originates all network requests outbound toward
+Palette. Refer to the [PCG Architecture](./architecture.md) section for more information.
 
 A PCG comprises a cluster of nodes and can be deployed using two methods. The first method uses the Palette CLI to
 deploy a PCG in one of the three supported infrastructure environments; MAAS, OpenStack, or VMware vSphere. The other
@@ -94,7 +94,7 @@ Check out the [Deploy a PCG to VMware vSphere](../pcg/deploy-pcg/vmware.md) guid
 | **Parameter**                  | **Value**                                                                                                                                                                                                                                                            | **Environment-Specific** |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
 | **Spectro Cloud Console**      | `https://console.spectrocloud.com`. If using a self-hosted instance of Palette, enter the URL for that instance.                                                                                                                                                     | No                       |
-| **Allow Insecure Connection**  | `Y`. Enabling this option bypasses x509 CA verification. In production environments, enter `y` if you are using a self-hosted Palette or VerteX instance with self-signed TLS certificates and need to provide a file path to the instance CA. Otherwise, enter `n`. | No                       |
+| **Allow Insecure Connection**  | `Y`. Enabling this option bypasses x509 CA verification. In production environments, enter `Y` if you are using a self-hosted Palette or VerteX instance with self-signed TLS certificates and need to provide a file path to the instance CA. Otherwise, enter `N`. | No                       |
 | **Spectro Cloud API Key**      | Enter your Palette API Key.                                                                                                                                                                                                                                          | Yes                      |
 | **Spectro Cloud Organization** | Select your Palette Organization name.                                                                                                                                                                                                                               | Yes                      |
 | **Spectro Cloud Project**      | `None (TenantAdmin)`                                                                                                                                                                                                                                                 | No                       |
