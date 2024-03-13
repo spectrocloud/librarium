@@ -8,13 +8,13 @@ sidebar_position: 80
 tags: ["getting-started"]
 ---
 
-Palette offers a range of additional capabilities designed to extend the functionality and versatility of Kubernetes
-workloads. These features comprise diverse deployment scenarios, ensuring organizations can manage their workloads
-across different environments. This can include data centers such as VMware vSphere and OpenStack, bare metal, or public
-cloud using your cloud accounts.
+Palette offers a range of additional capabilities designed to enable its users to deploy, scale, and effectively manage
+Kubernetes workloads across a wide variety of environments and deployment options. These environments include different
+public cloud providers, data centers like [VMware vSphere](https://www.vmware.com/products/vsphere.html), bare metal
+with [Canonical MAAS](https://maas.io), and edge.
 
-Whether deploying workloads in remote locations with [Edge](./additional-capabilities.md#edge), enforcing FIPS
-compliance with [VerteX](./additional-capabilities.md#palette-vertex), maximizing management control with
+Whether managing thousands of clusters in remote locations with [Edge](./additional-capabilities.md#edge), enforcing
+FIPS compliance with [VerteX](./additional-capabilities.md#palette-vertex), maximizing management control with
 [self-hosted Palette](./additional-capabilities.md#self-hosted-palette), or integrating virtual machine workloads into
 Kubernetes environments with [Virtual Machine Orchestrator](./additional-capabilities.md#virtual-machine-orchestrator),
 Palette provides comprehensive solutions to meet different business needs. Learn more about each capability below.
@@ -23,19 +23,22 @@ Palette provides comprehensive solutions to meet different business needs. Learn
 
 ## Edge
 
-Palette Edge enables you to deploy Kubernetes workloads in remote or rural locations without having to provision
-high-bandwidth connectivity from these sites back to the cloud. It supports both VM and container-based workloads,
-multiple Kubernetes distributions, and Intel and ARM hardware architectures. Palette Edge is built on top of the
-open-source project [Kairos](https://kairos.io/), which provides an immutable and highly available operating system with
-zero-downtime rolling upgrades. Additionally, it is designed to scale to tens of thousands of locations while enforcing
-policies locally within each cluster.
+Palette Edge enables you to deploy Kubernetes workloads in remote locations without having to provision high-bandwidth
+connectivity from these sites back to the cloud. This means you can deploy Kubernetes clusters at scale to a wide range
+of locations, including retail stores, hospitals, restaurants, cruise ships, manufacturing facilities, oil and gas
+sites, and rural areas.
+
+Palette Edge supports both VM and container-based workloads, multiple Kubernetes distributions, and Intel and ARM
+hardware architectures. It is built on top of the open-source project [Kairos](https://kairos.io/), which enables the
+creation and customization of immutable versions of operating systems. Additionally, Palette Edge is designed to scale
+to tens of thousands of locations while enforcing policies locally within each cluster.
 
 Edge clusters are Kubernetes clusters set up on Edge hosts. These hosts can be bare metal or virtual machines located in
 isolated locations. Palette deploys and manages workload clusters at the Edge, and the services continue operating even
-when the connection to the management plane is lost. You can manage Edge clusters locally on-site through the Edge
-Management console, or centrally through the Palette management plane. Palette Edge is able to meet your needs,
-regardless of the network topology your deployments face. Check out the [Palette Edge](../clusters/edge/edge.md) page to
-learn more about Edge and its features.
+when the connection to the management plane is lost. You can manage Edge clusters locally on-site through the local UI,
+or centrally through the Palette management plane. Palette Edge is able to meet your needs, regardless of the network
+topology your deployments face. Check out the [Palette Edge](../clusters/edge/edge.md) page to learn more about Edge and
+its features.
 
 ## Self-Hosted Palette
 
@@ -57,8 +60,8 @@ workloads containing sensitive and classified information. It is available as a 
 can install in your data center or public cloud provider.
 
 Palette VerteX incorporates validated Federal Information Processing Standards (FIPS) 140-2 cryptographic modules into
-the Kubernetes clusters it deploys, ensuring robust data protection for your organization’s infrastructure and
-applications. To learn more, check out the [Palette VerteX](../vertex/vertex.md) documentation.
+its management plane and the Kubernetes clusters it deploys, ensuring robust data protection for your organization’s
+infrastructure and applications. To learn more, check out the [Palette VerteX](../vertex/vertex.md) documentation.
 
 ## Virtual Machine Orchestrator
 
