@@ -33,7 +33,12 @@ The first step towards adopting Palette in your organization is to
 We have curated the pages in the Getting Started section to give you a gradual introduction to the fundamental concepts
 and workflows you need to deploy Kubernetes clusters to Palette.
 
-![Overview of the getting started journey rocket](/getting-started/getting-started_getting-started_journey-overview.png)
+<div class="desktop-only-display">
+  <img
+    src="/getting-started/getting-started_getting-started_journey-overview.png"
+    alt="Overview of the getting started journey rocket"
+  />
+</div>
 
 First, you learn how to create cluster profiles, which are the blueprints to your Kubernetes stacks. Then, you deploy
 your cluster profiles with the Palette Dashboard. Once you have deployed your first cluster, there are many other
