@@ -1,0 +1,25 @@
+---
+extends: existence
+message: "Avoid using the short form of commands. Replace the short form flag in '%s' with the corresponding long form flag."
+link: https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Commands-%26-Parameters
+level: error
+ignorecase: false
+scope: raw
+tokens:
+# Match a word followed by one or more spaces, followed by the short form of a flag (one to three letters). The short flag can appear one or more times consecutively. For example: palette -h.
+    - (\b([\w]+))([\s ]{1,}[-][a-zA-Z]{1,3})+
+exceptions:
+    - ls([\s ]{1,}[-][a-zA-Z]{1,3})+
+    - cd([\s ]{1,}[-][a-zA-Z]{1,3})+
+    - cp([\s ]{1,}[-][a-zA-Z]{1,3})+
+    - mv([\s ]{1,}[-][a-zA-Z]{1,3})+
+    - rm([\s ]{1,}[-][a-zA-Z]{1,3})+
+    - mkdir([\s ]{1,}[-][a-zA-Z]{1,3})+
+    - rmdir([\s ]{1,}[-][a-zA-Z]{1,3})+
+    - cat([\s ]{1,}[-][a-zA-Z]{1,3})+
+    - pwd([\s ]{1,}[-][a-zA-Z]{1,3})+
+    - echo([\s ]{1,}[-][a-zA-Z]{1,3})+
+    - chmod([\s ]{1,}[-][a-zA-Z]{1,3})+
+    - chown([\s ]{1,}[-][a-zA-Z]{1,3})+
+    - sed([\s ]{1,}[-][a-zA-Z]{1,3})+
+    - wc([\s ]{1,}[-][a-zA-Z]{1,3})+
