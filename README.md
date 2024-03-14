@@ -500,29 +500,26 @@ To add a video, use the following syntax. Ensure you capitalize the letter "V":
 
 ### Simple Card Grid
 
-This is a custom component that creates a grid of
-[Infima Simple Cards](https://infima.dev/docs/components/card/#simple-card), styled according to our color scheme. The
-rows of cards are dynamically created according to the list of cards and how many cards per row you would like to
-specify.
+This is a custom component that creates a grid of simple text cards with two columns, styled according to our color
+scheme. The rows of cards are dynamically created according to the list of specified cards.
 
 ```js
 <SimpleCardGrid
-  cardsPerRow={2}
   cards={[
     {
-      title: "1. Lorem Ipsum",
+      title: "Lorem Ipsum",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       buttonText: "Learn more",
       relativeURL: "./link",
     },
     {
-      title: "2. Lorem Ipsum",
+      title: "Lorem Ipsum",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       buttonText: "Learn more",
       relativeURL: "./link",
     },
     {
-      title: "3. Lorem Ipsum",
+      title: "Lorem Ipsum",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       buttonText: "Learn more",
       relativeURL: "./link",

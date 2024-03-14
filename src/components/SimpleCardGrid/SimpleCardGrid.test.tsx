@@ -12,7 +12,6 @@ describe("Display SimpleCardGrid", () => {
 
   interface testCase {
     name: string;
-    cardsPerRow: number;
     cards: testCard[];
   }
 
@@ -40,29 +39,26 @@ describe("Display SimpleCardGrid", () => {
   const testCases: testCase[] = [
     {
       name: "multiple row cards",
-      cardsPerRow: 2,
       cards: testCards.slice(),
     },
     {
       name: "single row cards",
-      cardsPerRow: 2,
       cards: testCards.slice(2),
     },
     {
       name: "less cards than a single row",
-      cardsPerRow: 2,
       cards: testCards.slice(1),
     },
     {
       name: "empty cards",
-      cardsPerRow: 2,
       cards: [],
     },
   ];
 
-  function assert(cardsPerRow: number, testCards: testCard[]) {
+  function assert(testCards: testCard[]) {
     const { container } = render(<SimpleCardGrid cards={testCards} />);
     if (testCards.length == 0) {
+      expect(screen.queryAllByRole("button")).toHaveLength(0);
       return;
     }
 
@@ -82,7 +78,7 @@ describe("Display SimpleCardGrid", () => {
 
   testCases.forEach((tc) => {
     it(tc.name, () => {
-      assert(tc.cardsPerRow, tc.cards);
+      assert(tc.cards);
     });
   });
 });
