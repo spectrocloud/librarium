@@ -14,14 +14,18 @@ for the registry in the user data used to build your Edge Installer ISO.
 Once you specify an external registry, images for all elements of the cluster are expected to be in the external
 registry. This includes the provider images, images for the network and storage layer, and images for all application
 layers. All images specified in the cluster profile will have their registry URL replaced by the registry URL of the
-external image registry.
+external image registry. For example, if your OS pack specified that the provider images be downloaded from
+`quay.io/kairos/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1`, but in your user data, you have specified an external registry
+`10.10.254.254:8000/spectro-images`. The Palette agent will automatically download the image using the tag
+`10.10.254.254:8000/spectro-images/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1` instead of looking for the image in the
+`quay.io/kairos` registry.
 
 :::tip
 
-You can use a private external registry together with a local Harbor image registry. All images from the external
-private registry will be stored in the local Harbor registry after the initial download, which allows you to reduce the
-bandwidth use and protect against outages. For more information, refer to
-[Enable Local Harbor Registry](./local-registry.md).
+You can use a private external registry together with a local Harbor image registry by adding the Harbor Edge-Native
+Config pack to your cluster profile. All images for add-on layers of the cluster will be stored in the local Harbor
+registry after the initial download, which allows you to reduce the bandwidth use and protect against outages. For more
+information, refer to [Enable Local Harbor Registry](./local-registry.md).
 
 :::
 
@@ -65,7 +69,7 @@ bandwidth use and protect against outages. For more information, refer to
   generate a new registration token. For detailed instructions, refer to the
   [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide.
 
-- A private external registry that stores all images except for provider images required by your cluster.
+- A private external registry that stores all images required by your cluster.
 
 ## Deploy Cluster with a Private External Registry
 
@@ -111,7 +115,7 @@ bandwidth use and protect against outages. For more information, refer to
    [Upload Cluster Images to External Registry with Palette Edge CLI](./upload-images-to-registry.md) to learn how to
    use the Palette Edge CLI to upload all images in a cluster profile to an external registry.
 
-9. Follow the [Create Cluster Definition](../site-installation/cluster-deployment.md) and deploy your cluster.
+9. Follow the [Create Cluster Definition](../site-installation/cluster-deployment.md) guide and deploy your cluster.
 
 ## Validate
 

@@ -65,4 +65,4 @@ you which combinations are supported.
 | ------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------- |
 | Local Harbor registry           | - Authenticated external registry <br/> - Public provider registry | Authenticated provider registry                                 |
 | Authenticated external registry | - Local Harbor registry <br/> - Public provider registry           | Authenticated provider registry.                                |
-| Authenticated provider registry | Public external registry                                           | - Authenticated external registry <br/> - Local Harbor registry |
+| Authenticated provider registry | N/A                                                                | - Authenticated external registry <br/> - Local Harbor registry |

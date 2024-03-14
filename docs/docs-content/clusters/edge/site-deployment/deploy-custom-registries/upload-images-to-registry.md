@@ -21,9 +21,10 @@ download the images and upload them to the external registry.
   [User Authentication](/docs/docs-content/user-management/authentication/api-key/create-api-key.md) resource to learn
   how to create a Palette API key.
 
-- An Edge Native cluster profile. Refer to [Create Edge Native Cluster Profile](../site-deployment/model-profile.md)
-  guide to learn how to create an Edge Native cluster profile. You may also have other add-on profiles that you wish to
-  attach to your cluster.
+- An Edge Native cluster profile. Refer to
+  [Create Edge Native Cluster Profile](/docs/docs-content/clusters/edge/site-deployment/model-profile.md) guide to learn
+  how to create an Edge Native cluster profile. You may also have other add-on profiles that you wish to attach to your
+  cluster.
 
 - Content tags in your profiles highlight the exact location of container images to be downloaded.
 
