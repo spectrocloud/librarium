@@ -224,7 +224,8 @@ notes below to learn more about the new features and improvements.
 - New Edge clusters can now retrieve provider images from authenticated registries. Previously, only public registries
   were supported for non-airgapped clusters. Now, you can use authenticated registries to store your provider images and
   retrieve them during cluster deployment. For more information, refer to the
-  [Deploy Cluster with a Private Registry](clusters/edge/site-deployment/deploy-private-registry.md) guide.
+  [Deploy Cluster with a Private Registry](clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md)
+  guide.
 
 - Extended [kube-vip customization](https://kube-vip.io/docs/installation/flags/) is now available for new Edge
   clusters. You can now specify additional kube-vip configuration parameters as part of the Kubernetes pack layer
