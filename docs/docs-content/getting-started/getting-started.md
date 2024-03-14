@@ -48,7 +48,6 @@ orchestration and self-hosted Palette.
 Explore more through the following pages.
 
 <SimpleCardGrid
-  cardsPerRow={2}
   cards={[
     {
       title: "Introduction to Palette",

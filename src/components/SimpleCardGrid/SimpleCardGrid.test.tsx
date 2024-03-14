@@ -18,19 +18,19 @@ describe("Display SimpleCardGrid", () => {
 
   const testCards: testCard[] = [
     {
-      title: "1. First Card",
+      title: "First Card",
       description: "Card 1",
       buttonText: "Learn more 1",
       relativeURL: "./getting-started-1",
     },
     {
-      title: "2. Second Card",
+      title: "Second Card",
       description: "Card 2",
       buttonText: "Learn more 2",
       relativeURL: "./getting-started-2",
     },
     {
-      title: "3. Third Card",
+      title: "Third Card",
       description: "Card 3",
       buttonText: "Learn more 3",
       relativeURL: "./getting-started-3",
@@ -61,9 +61,8 @@ describe("Display SimpleCardGrid", () => {
   ];
 
   function assert(cardsPerRow: number, testCards: testCard[]) {
-    const { container } = render(<SimpleCardGrid cardsPerRow={cardsPerRow} cards={testCards} />);
+    const { container } = render(<SimpleCardGrid cards={testCards} />);
     if (testCards.length == 0) {
-      expect(container.querySelectorAll(".row")).toHaveLength(0);
       return;
     }
 
@@ -79,7 +78,6 @@ describe("Display SimpleCardGrid", () => {
     });
 
     expect(screen.getAllByRole("button")).toHaveLength(testCards.length);
-    expect(container.querySelectorAll(".row")).toHaveLength(Math.ceil(testCards.length / cardsPerRow));
   }
 
   testCases.forEach((tc) => {
