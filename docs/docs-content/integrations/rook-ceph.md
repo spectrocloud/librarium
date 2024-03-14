@@ -12,10 +12,8 @@ tags: ["packs", "rook-ceph", "storage"]
 ---
 
 Rook is an open source cloud-native storage orchestrator, providing the platform, framework, and support for Ceph
-storage to natively integrate with cloud-native environments.
-
-Ceph is a distributed storage system that provides file, block and object storage and is deployed in large scale
-production clusters.
+storage to natively integrate with cloud-native environments. Ceph is a distributed storage system that provides file,
+block and object storage and is deployed in large scale production clusters.
 
 Rook turns storage software into self-managing, self-scaling, and self-healing storage services. It automates
 deployment, bootstrapping, configuration, provisioning, scaling, upgrading, migration, disaster recovery, monitoring,
@@ -24,7 +22,7 @@ scheduling, and orchestration platform to perform its duties.
 
 The pack has two presets that provide the following two configurations:
 
-- A three-node Ceph cluster (recommended).
+- A multi-node Ceph cluster.
 - A single node Ceph cluster.
 
 ## Versions Supported
@@ -37,8 +35,7 @@ The pack has two presets that provide the following two configurations:
 
 - Kubernetes v1.21 or higher.
 
-- If you are using Rook on Edge, the Edge host needs to be created with at least two hard disks. The actual required
-  number of disks depend on your cluster configuration.
+- If you are using Rook on Edge, the Edge host needs to be created with at least two hard disks.
 
 ## Parameters
 
