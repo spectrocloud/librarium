@@ -93,7 +93,7 @@ workload.
     windows** specification. This specification is required for Kubernetes to know that the application needs to be
     deployed on a Windows node.
 
-    ```yaml
+    ```yaml {20-22}
     apiVersion: v1
     kind: Namespace
     metadata:
