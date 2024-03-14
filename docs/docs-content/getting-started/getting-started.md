@@ -39,10 +39,12 @@ and workflows you need to deploy Kubernetes clusters to Palette.
 
 </div>
 
+<br />
+
 First, you learn how to create cluster profiles, which are the blueprints to your Kubernetes stacks. Then, you deploy
 your cluster profiles with Palette. Once you have deployed your first cluster, you update it using Palette's cluster
-management functionality. There are many other topics to explore such as cluster deployment with Terraform, Palette's
-edge capabilities, virtual machine orchestration and self-hosted Palette.
+management functionality. The Getting Started section also includes other topics that you can explore further such as
+cluster deployment with Terraform, Palette's edge capabilities and virtual machine orchestration.
 
 Explore more through the following pages.
 
