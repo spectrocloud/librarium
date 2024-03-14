@@ -18,7 +18,6 @@ application to be deployed to that node pool.
 - An AKS cluster created as described in the [Create and Manage Azure AKS Cluster](./aks.md) guide.
 
 - A Linux-based node pool configured as the system node pool as described in the
-  [Create a System Node Pool](../azure/aks.md#create-a-system-node-pool) section of the
   [Create and Manage Azure AKS Cluster](../azure/aks.md) guide.
 
 - A Windows node pool configured as described in the [Create a Windows Node Pool](#create-a-windows-node-pool) section.
