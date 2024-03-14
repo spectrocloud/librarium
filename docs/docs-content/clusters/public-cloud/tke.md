@@ -10,14 +10,14 @@ sidebar_position: 40
 Palette supports the deployment of tenant workloads with Tencent Kubernetes Engine (TKE). The following are the
 detailing of the Tencent TKE cluster provisioning through Palette:
 
-1. Palette enables the effortless deployment and management of containerized applications with fully managed TKE.
+- Palette enables the effortless deployment and management of containerized applications with fully managed TKE.
 
-2. TKE is fully compatible with the native Kubernetes APIs and extends Kubernetes plugins such as CBS and CLB on the
-   Tencent Cloud.
+- TKE is fully compatible with the native Kubernetes APIs and extends Kubernetes plugins such as CBS and CLB on the
+  Tencent Cloud.
 
-3. The Palette-supported TKE architecture is represented diagrammatically as below:
+- The Palette-supported TKE architecture is represented diagrammatically as below:
 
-   ![tencent-diagram.png](/tencent-diagram.png)
+  ![tencent-diagram.png](/tencent-diagram.png)
 
 ## Prerequisites
 

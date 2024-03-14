@@ -12,10 +12,8 @@ explains how you can create an Azure AKS cluster managed by Palette.
 
 ## Prerequisites
 
-- An active Azure cloud account.
-
-- Palette integration with an Azure cloud account. Review [Register and Manage Azure Cloud Account](./azure-cloud.md)
-  for guidance.
+- An active Azure cloud account integrated with Palette. Review
+  [Register and Manage Azure Cloud Account](./azure-cloud.md) for guidance.
 
 - A Secure Shell (SSH) key that you have pre-configured in your Azure environment. Refer to the
   [SSH Keys](../../cluster-management/ssh-keys.md) guide for more information about creating and managing SSH keys in
