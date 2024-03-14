@@ -16,16 +16,17 @@ interface SimpleCard {
 }
 
 export default function SimpleCardGrid({ cards = [] }: SimpleCardProps) {
-  // Construct the rows according to how many elements we want per row
-  cards.forEach((card, index) => {
-    // Offset zero index
-    card.index = index + 1;
-  });
-
   return (
     <div className={styles.simpleCardGrid}>
-      {cards.map((card) => (
-        <SimpleCard {...card} key={`simpleCard-${card.index}`} />
+      {cards.map((card, index) => (
+        <SimpleCard
+          title={card.title}
+          index={index + 1}
+          description={card.description}
+          buttonText={card.buttonText}
+          relativeURL={card.relativeURL}
+          key={`simpleCard-${index}`}
+        />
       ))}
     </div>
   );
@@ -43,7 +44,7 @@ function SimpleCard({ title, index, description, buttonText, relativeURL }: Simp
           <p className={styles.simpleCardDescription}>{description}</p>
         </div>
         <div className={styles.simpleCardFooter}>
-          <button>
+          <button className={styles.simpleCardFooterBtn}>
             {buttonText}
             <FontAwesomeIcon className="fa-lg" icon={faArrowRightLong} />
           </button>

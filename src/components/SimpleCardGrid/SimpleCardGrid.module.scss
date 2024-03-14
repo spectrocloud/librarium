@@ -43,7 +43,7 @@
   align-items: center;
 }
 
-.simpleCardFooter button {
+.simpleCardFooterBtn {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -53,7 +53,8 @@
   font-size: 14px;
   font-weight: var(--ifm-button-font-weight);
   padding: 10px 16px;
-  cursor: pointer;
+  border: none;
+  outline: none;
 }
 
 .simpleCardIndex {
