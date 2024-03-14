@@ -33,7 +33,7 @@ export default function SimpleCardGrid({ cards = [], cardsPerRow }: SimpleCardPr
       rows.push(row);
       previousCards = [] as SimpleCard[];
       // Add the current card to the newly emptied buffer.
-      card.index = index + 1 ;
+      card.index = index + 1;
       previousCards.push(card);
     }
   });
@@ -46,7 +46,7 @@ export default function SimpleCardGrid({ cards = [], cardsPerRow }: SimpleCardPr
   return (
     <div className={styles.simpleCardGrid}>
       {rows.map((row, index) => (
-        <div className="row row--no-gutters" key={`simpleCardRow-${index}`}>
+        <div className="row" key={`simpleCardRow-${index}`}>
           {row.cards.map((card, index) => (
             <div className="col" key={`simpleCardCol-${index}`}>
               <SimpleCard {...card} />
@@ -60,21 +60,19 @@ export default function SimpleCardGrid({ cards = [], cardsPerRow }: SimpleCardPr
 
 function SimpleCard({ title, index, description, buttonText, relativeURL }: SimpleCard) {
   return (
-    <div className={styles.simpleCardWrapper}>
-      <a href={relativeURL}>
-        <div className={styles.simpleCard}>
-          <div className={styles.simpleCardHeader}>
-            <div className={styles.simpleCardIndex}>{index}</div>
-            <div className={styles.simpleCardTitle}>{title}</div>
-          </div>
-          <div className={styles.simpleCardBody}>
-            <p className={styles.simpleCardDescription}>{description}</p>
-          </div>
-          <div className={styles.simpleCardFooter}>
-            <button className="button button--secondary">{buttonText}</button>
-          </div>
+    <a href={relativeURL}>
+      <div className={styles.simpleCard}>
+        <div className={styles.simpleCardHeader}>
+          <div className={styles.simpleCardIndex}>{index}</div>
+          <div className={styles.simpleCardTitle}>{title}</div>
         </div>
-      </a>
-    </div>
+        <div className={styles.simpleCardBody}>
+          <p className={styles.simpleCardDescription}>{description}</p>
+        </div>
+        <div className={styles.simpleCardFooter}>
+          <button className="button button--secondary">{buttonText}</button>
+        </div>
+      </div>
+    </a>
   );
 }

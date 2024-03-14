@@ -5,26 +5,22 @@
 
 .simpleCardGrid {
   display: grid;
-}
-
-.simpleCardWrapper {
-  padding: 16px 12px;
-  gap: 10px;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
+  grid-gap: 32px;
+  grid-template-columns: 1fr 1fr;
 }
 
 .simpleCard {
-  display: flex;
-  flex-direction: column;
   min-width: 333px;
   min-height: 159px;
-  background-color: var(--ifm-background-color);
-  border: 1px solid var(--ifm-color-primary);
-  border-radius: 4px;
-  color: var(--ifm-font-color-base);
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  gap: 10px;
+  border: 1px solid var(--ifm-color-primary);
+  border-radius: 16px;
+  background-color: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
 }
 
 .simpleCardDescription {
