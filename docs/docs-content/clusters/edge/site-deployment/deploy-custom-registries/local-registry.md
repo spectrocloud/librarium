@@ -46,6 +46,7 @@ documentation.
 
 - At least 300 GB of persistent storage. The actual amount of storage required depends on the size of your images.
 
+
 - An Edge cluster profile. For information about how to create a cluster profile for Edge, refer to
   [Model Edge Cluster Profile](../../site-deployment/model-profile.md).
 

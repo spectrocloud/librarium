@@ -52,7 +52,7 @@ Creating a content bundle provides several benefits that may address common use 
 
 ## Create Content Bundle
 
-1. Download Palette Edge Content CLI and assign the executable bit to the CLI. <br />
+1. Download Palette Edge Content CLI and assign the executable bit to the CLI.
 
    ```shell
    VERSION=4.1.2
