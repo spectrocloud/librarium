@@ -16,8 +16,9 @@ download the images and upload them to the external registry.
 
 - Linux Machine (Physical or VM) with an AMD64 architecture.
 
-- Palette API key. Refer to the [User Authentication](../../../user-management/authentication/api-key/create-api-key.md)
-  resource to learn how to create a Palette API key.
+- Palette API key. Refer to the
+  [User Authentication](/docs/docs-content/user-management/authentication/api-key/create-api-key.md) resource to learn
+  how to create a Palette API key.
 
 - An Edge Native cluster profile. Refer to [Create Edge Native Cluster Profile](../site-deployment/model-profile.md)
   guide to learn how to create an Edge Native cluster profile. You may also have other add-on profiles that you wish to
