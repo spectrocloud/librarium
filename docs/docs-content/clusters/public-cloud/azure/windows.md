@@ -31,9 +31,8 @@ Follow the steps below to create a Windows node pool within an existing AKS clus
 
 :::info
 
-Palette also allows you to add a Windows node pool during the creation of an AKS cluster. Refer to the
-[Create and Manage Azure AKS CLuster - Create and Remove Node Pools](./aks#create-and-remove-node-pools) page to learn
-more.
+Palette also allows you to add a Windows node pool during the creation of an AKS cluster. Refer to the the
+[Node Pool](../../cluster-management/node-pool.md) guide to learn more.
 
 :::
 
