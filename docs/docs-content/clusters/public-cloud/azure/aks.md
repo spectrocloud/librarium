@@ -1,354 +1,242 @@
 ---
 sidebar_label: "Create and Manage Azure AKS Cluster"
 title: "Create and Manage Azure AKS Cluster"
-description: "The methods of creating clusters for a speedy deployment on any CSP"
+description: "Learn how to deploy Azure Kubernetes Service clusters in Palette."
 hide_table_of_contents: false
-tags: ["public cloud", "azure"]
+tags: ["public cloud", "azure", "aks"]
 sidebar_position: 30
 ---
 
-Palette supports creating and managing Kubernetes clusters deployed to an Azure subscription. This section guides you on
-how to create an IaaS Kubernetes cluster in Azure that is managed by Palette.
-
-Azure clusters can be created under the following scopes:
-
-- Tenant admin
-
-- Project Scope - This is the recommended scope.
-
-Be aware that clusters that are created under the **Tenant Admin** scope are not visible under Project scope .
+Palette supports creating and managing Azure Kubernetes Service (AKS) clusters deployed to an Azure account. This guide
+explains how you can create an Azure AKS cluster managed by Palette.
 
 ## Prerequisites
 
-These prerequisites must be met before deploying an AKS workload cluster:
+- An active Azure cloud account integrated with Palette. Review
+  [Register and Manage Azure Cloud Account](./azure-cloud.md) for guidance.
 
-1. You need an active Azure cloud account with sufficient resource limits and permissions to provision compute, network,
-   and security resources in the desired regions.
+- A Secure Shell (SSH) key that you have pre-configured in your Azure environment. Refer to the
+  [SSH Keys](../../cluster-management/ssh-keys.md) guide for more information about creating and managing SSH keys in
+  Palette.
 
-2. You will need to have permissions to deploy clusters using the AKS service on Azure.
+- An infrastructure cluster profile for Azure. Review
+  [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
+  for guidance.
 
-3. Register your Azure cloud account in Palette as described in the [Creating an Azure Cloud Account](./azure-cloud.md)
-   section below.
+- To use custom storage accounts or containers, you must create them before you create your cluster. For information
+  about use cases for custom storage, review [Azure Storage](./architecture.md#azure-storage).
 
-4. You should have a cluster profile created in Palette for AKS.
+  :::tip
 
-5. Associate an SSH key pair to the cluster worker node.
+  If you need help creating a custom storage account or container, check out the
+  [Create a Storage Account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal)
+  and the [Manage Blob Containers](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal) guides.
 
-<br />
+  :::
 
-## Additional Prerequisites
+- To enable OIDC with Microsoft Entra ID, you need to configure Entra ID with Palette. Review the
+  [Enable SSO with Microsoft Entra ID](../../../user-management/saml-sso/palette-sso-with-entra-id.md) guide for more
+  information.
 
-There are additional prerequisites if you want to set up Azure Active Directory integration for the AKS cluster:
+- Optionally, a Virtual Network (VNet). If you do not provide a VNet, Palette creates one for you with compute, network,
+  and storage resources in Azure when it provisions Kubernetes clusters.
 
-1. A Tenant Name must be provided as part of the Azure cloud account creation in Palette.
+  To use a VNet that Palette creates, ensure there is sufficient capacity in your preferred Azure region to create the
+  following resources:
 
-2. For the Azure client used in the Azure cloud account, these API permissions have to be provided:
+  - Virtual CPU (vCPU)
+  - VNet
+  - Static Public IP addresses
+  - Virtual Network Interfaces
+  - Load Balancers
+  - Virtual Hard Disk (VHD)
+  - Managed Disks
+  - Virtual Network Address Translation (NAT) Gateway
 
-   |                 |                                       |
-   | --------------- | ------------------------------------- |
-   | Microsoft Graph | Group.Read.All (Application Type)     |
-   | Microsoft Graph | Directory.Read.All (Application Type) |
+## Deploy an Azure AKS Cluster
 
-3. You can configure these permissions from the Azure cloud console under **App registrations** > **API permissions**
-   for the specified application.
+1.  Log in to [Palette](https://console.spectrocloud.com).
 
-:::info
+2.  Ensure you are in the correct project scope.
 
-Palette **also** enables the provisioning of private AKS clusters via a private cloud gateway (Self Hosted PCGs). The
-Self-Hosted PCG is an AKS cluster that needs to be launched manually and linked to an Azure cloud account in Palette
-Management Console. [Click here for more..](gateways.md)
+3.  From the left **Main Menu** select **Clusters** > **Add New Cluster** > **Deploy New Cluster**.
 
-:::
+4.  Under **Cloud**, select **Azure** and click **Start Azure Configuration**.
 
-<Video title="azure-cluster-creation" src="/videos/clusters/public-cloud/azure/aks.mp4"></Video>
+5.  Fill out the following basic information and click **Next**.
 
-To create an Azure cloud account you need the following Azure account information:
+    | **Field**         | **Description**                                                                                                                                                              |
+    | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Cluster Name**  | A custom name for the cluster.                                                                                                                                               |
+    | **Description**   | Use the description to provide context about the cluster.                                                                                                                    |
+    | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-west`.              |
+    | **Cloud Account** | If you have already added your Azure account in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your Azure account information. |
 
-- Client ID
-- Tenant ID
-- Client Secret
-- Tenant Name (optional)
-- Toggle `Connect Private Cloud Gateway` option and select the [Self-Hosted PCG](gateways.md) already created from the
-  drop-down menu to link it to the cloud account.
+6.  Under **Managed Kubernetes**, select **Azure AKS** and select your Azure AKS cluster profile. Click **Next** to
+    continue.
 
-**Note:**
+7.  Palette displays the cluster profile layers. Review the profile layers and customize parameters as desired in the
+    YAML files that display when you select a layer.
 
-For existing cloud account go to `Edit` and toggle the `Connect Private Cloud Gateway` option to select the created
-gateway from the drop down menu.
+    You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out
+    [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider) for more
+    information.
 
-For Azure cloud account creation, we first need to create an Azure Active Directory (AAD) application that can be used
-with role-based access control. Follow the steps below to create a new AAD application, assign roles, and create the
-client secret:
+    :::warning
 
-<br />
+    All OIDC options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a
+    Kubernetes role to users and groups, refer to
+    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
 
-1. Follow the steps described
-   [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
-   to create a new Azure Active Directory application. Note down your ClientID and TenantID.
+    :::
 
-2. On creating the application, assign a minimum required
-   [ContributorRole](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor). To
-   assign any type of role, the user must have a minimum role of
-   [UserAccessAdministrator](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator).
-   Follow the
-   [Assign Role To Application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)
-   link learn more about roles.
+8.  Click **Next** to continue.
 
-3. Follow the steps described in the
-   [Create an Application Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret)
-   section to create the client application secret. Store the Client Secret safely as it will not be available as plain
-   text later.
+9.  Configure your Azure AKS cluster using the following table for reference.
 
-## Deploy an AKS Cluster
+    :::warning
 
-<br />
+    If you enable the **Disable Properties** setting when
+    [registering an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), Palette cannot create network
+    resources on your behalf. In this case, every time you deploy a cluster, you must manually specify its virtual
+    network subnets and security groups.
 
-<Video title="aks-cluster-creation" src="/videos/clusters/public-cloud/cloud-accounts/azure.mp4"></Video>
+    :::
 
-The following steps need to be performed to provision a new cluster:
+    | **Parameter**                       | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+    | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Subscription**                    | Use the **drop-down Menu** to select the subscription that will be used to access Azure services.                                                                                                                                                                                                                                                                                                                                                                                          |
+    | **Region**                          | Use the **drop-down Menu** to choose the Azure region where you would like to provision the cluster.                                                                                                                                                                                                                                                                                                                                                                                       |
+    | **Resource Group**                  | Select the name of the resource group that contains the Azure resources you will be accessing.                                                                                                                                                                                                                                                                                                                                                                                             |
+    | **Storage Account**                 | Optionally, if you have a custom storage account available, you can use the **drop-down Menu** to select the storage account name. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                     |
+    | **Storage Container**               | Optionally, if you are using a custom storage container, use the **drop-down Menu** to select it. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                                                      |
+    | **SSH Key**                         | The public SSH key for connecting to the nodes. SSH key pairs must be pre-configured in your Azure environment. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats).                                                                                                                               |
+    | **Enable Private Cluster**          | Whether the control plane or API server should have internal IP addresses. Refer to the [Create a private AKS cluster](https://learn.microsoft.com/en-us/azure/aks/private-clusters?tabs=azure-portal) guide for more information.                                                                                                                                                                                                                                                         |
+    | **Static Placement**                | By default, Palette uses dynamic placement. This creates a new VNet for clusters with two subnets in different Availability Zones (AZs). Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into a pre-existing VNet, enable the **Static Placement** option and fill out the input values listed in the [Static Placement](#static-placement-settings) table below. |
+    | **Update worker pools in parallel** | If enabled, allows you to efficiently manage various types of workloads by performing simultaneous updates on multiple worker pools.                                                                                                                                                                                                                                                                                                                                                       |
 
-<br />
+    #### Static Placement Settings
 
-1. If you already have a profile to use, go to **Cluster** > **Add a New Cluster** > **Deploy New Cluster** and select
-   an Azure cloud. If you do not have a profile to use, review the
-   [Creating a Cluster Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
-   page for guidance on profile types to create.
+    Each subnet allows you to specify the CIDR range and a security group.
 
-2. Fill the basic cluster profile information such as **Name**, **Description**, **Tags** and **Cloud Account**.
+    | **Parameter**              | **Description**                                             |
+    | -------------------------- | ----------------------------------------------------------- |
+    | **Network Resource Group** | The logical container for grouping related Azure resources. |
+    | **Virtual Network**        | Select the VNet.                                            |
+    | **CIDR Block**             | Select the IP address CIDR range.                           |
+    | **Security Group Name**    | Select the security group name.                             |
+    | **Control Plane Subnet**   | Select the control plane subnet.                            |
+    | **Worker Subnet**          | Select the worker network.                                  |
 
-3. In the **Cloud Account** dropdown list, select the Azure Cloud account or create a new one. Refer to the
-   [Creating an Azure Cloud Account](azure-cloud.md) section above.
+10. Click **Next** to continue.
 
-4. Next, in the **Cluster profile** tab from the **Managed Kubernetes** list, pick **AKS**, and select the AKS cluster
-   profile definition.
+11. Provide the following node pool and cloud configuration information. To learn more about node pools, review the
+    [Node Pool](../../cluster-management/node-pool.md) guide.
 
-5. Review the **Parameters** for the selected cluster profile definitions. By default, parameters for all packs are set
-   with values defined in the cluster profile.
+    #### System Node Pool
 
-6. Complete the **Cluster config** section with the information for each parameter listed below.
+    To deploy an AKS cluster, you need to have at least one system node pool, which will run the pods necessary to run a
+    Kubernetes cluster, like the control plane and etcd. To add a system node pool, add a worker node pool and select
+    the **System Node Pool** checkbox.
 
-   | **Parameter**        | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-   | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Subscription**     | Select the subscription which is to be used to access Azure Services.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-   | **Region**           | Select a region in Azure in where the cluster should be deployed.                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-   | **Resource Group**   | Select the resource group in which the cluster should be deployed.                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-   | **SSH Key**          | The public SSH key for connecting to the nodes. Review Microsoft's [supported SSH](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats) formats.                                                                                                                                                                                                                                                                                               |
-   | **Static Placement** | By default, Palette uses dynamic placement. This creates a new VNet for the cluster that contains two subnets in different Availability Zones (AZs). Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into a pre-existing VNet, enable the **Static Placement** option, and fill out the input values listed in the [Static Placement](#static-placement-settings) table below. |
+    :::info
 
-   #### Static Placement Settings
+    A system pool must have at least one node for development purposes. We recommend having between one and three nodes
+    for high availability in production environments. You can configure a static node count with the **Number of nodes
+    in the pool** parameter or a dynamic node count with the **Enable Autoscaler** parameter.
 
-   Each subnet allows you to specify the CIDR range and a security group.
+    :::
 
-   | **Parameter**              | **Description**                                             |
-   | -------------------------- | ----------------------------------------------------------- |
-   | **Network Resource Group** | The logical container for grouping related Azure resources. |
-   | **Virtual Network**        | Select the VNet.                                            |
-   | **CIDR Block**             | Select the IP address CIDR range.                           |
-   | **Security Group Name**    | Select the security group name.                             |
-   | **Control Plane Subnet**   | Select the control plane subnet.                            |
-   | **Worker Subnet**          | Select the worker network.                                  |
+    The following table describes how to configure a system node pool.
 
-   :::warning
+    | **Parameter**                   | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+    | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Node pool name**              | A descriptive name for the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+    | **Enable Autoscaler**           | Whether Palette should scale the pool horizontally based on its per-node workload counts. If enabled, instead of the **Number of nodes in the pool** parameter, you will have to configure the **Minimum size** and **Maximum size** parameters, which will allow AKS to adjust the node pool size based on the workload. You can set the node count to a minimum of zero and a maximum of 1000. Setting both parameters to the same value results in a static node count. |
+    | **System Node Pool**            | Sets the pool to be a system node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+    | **Number of nodes in the pool** | A statically defined number of nodes in the system pool.                                                                                                                                                                                                                                                                                                                                                                                                                   |
+    | **Additional Labels**           | Optional node labels in the key-value format. To learn more, review [Apply Labels to Nodes](../../cluster-management/taints.md#labels). Example: `environment:production`.                                                                                                                                                                                                                                                                                                 |
 
-   If you enable the **Disable Properties** setting when
-   [registering an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), Palette cannot create network
-   resources on your behalf. In this case, every time you deploy a cluster, you must manually specify their virtual
-   network subnets and security groups,
+    #### System Node Pool Cloud Configuration
 
-   :::
+    The following table describes how to configure the Azure Cloud for a system node pool.
 
-7. Click **Next** to configure the node pools.
+    | **Parameter**     | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                      |
+    | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Instance Type** | Select the instance type to use for all nodes in the system node pool.                                                                                                                                                                                                                                                                                                                                                               |
+    | **Managed disk**  | Choose a storage option. For more information, refer to Microsoft's [Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) reference. For information about Solid State Drive (SSD) disks, refer to [Standard SSD Disks for Azure Virtual Machine Workloads](https://azure.microsoft.com/en-us/blog/preview-standard-ssd-disks-for-azure-virtual-machine-workloads/) reference. |
+    | **Disk size**     | You can choose disk size based on your requirements. The default size is **60**.                                                                                                                                                                                                                                                                                                                                                     |
 
-<br />
+    #### Worker Node Pool
 
-The [maximum number](https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#maximum-pods-per-node) of pods per
-node in an AKS cluster is 250. If you don't specify maxPods when creating new node pools, then the default value of 30
-is applied. You can edit this value from the Kubernetes configuration file at any time by editing the `maxPodPerNode`
-value. Refer to the snippet below:
+    The following table describes how to configure a worker node pool.
 
-<br />
+    | **Parameter**                   | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+    | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Node pool name**              | A descriptive name for the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+    | **Enable Autoscaler**           | Whether Palette should scale the pool horizontally based on its per-node workload counts. If enabled, instead of the **Number of nodes in the pool** parameter, you will have to configure the **Minimum size** and **Maximum size** parameters, which will allow AKS to adjust the node pool size based on the workload. You can set the node count to a minimum of zero and a maximum of 1000. Setting both parameters to the same value results in a static node count.                                                                                                                                                                                                                                                                       |
+    | **System Node Pool**            | Sets the pool to be a system node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+    | **Number of nodes in the pool** | A statically defined number of nodes in the system pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+    | **Additional Labels**           | Optional node labels in the key-value format. To learn more, review [Apply Labels to Nodes](../../cluster-management/taints.md#labels). Example: `environment:production`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+    | **Taints**                      | You can apply optional taint labels to a worker node pool. Review the [Node Pool](../../cluster-management/node-pool.md) and [Apply Taints to Nodes](../../cluster-management/taints.md#apply-taints-to-nodes) guides to learn more.<br/><br/>Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />- **NoSchedule**—Pods are not scheduled onto nodes with this taint.<br />- **PreferNoSchedule**—Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />- **NoExecute**—Existing pods on nodes with this taint are evicted. |
 
-```
-managedMachinePool:
-  maxPodPerNode: 30
-```
+    #### Worker Node Pool Cloud Configuration
 
-## Node Pools
+    The following table describes how to configure the Azure Cloud for a worker node pool.
 
-This section guides you to through configuring Node Pools. As you set up the cluster, the **Nodes config** section will
-allow you to customize node pools. AKS Clusters are comprised of System and User node pools, and all pool types can be
-configured to use the Autoscaler, which scales out pools horizontally based on per node workload counts.
+    | **Parameter**     | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                      |
+    | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Instance Type** | Select the instance type to use for all nodes in the worker node pool. You must allocate at least 2 vCPUs and 4 GB RAM across all worker nodes.                                                                                                                                                                                                                                                                                      |
+    | **Managed disk**  | Choose a storage option. For more information, refer to Microsoft's [Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) reference. For information about Solid State Drive (SSD) disks, refer to [Standard SSD Disks for Azure Virtual Machine Workloads](https://azure.microsoft.com/en-us/blog/preview-standard-ssd-disks-for-azure-virtual-machine-workloads/) reference. |
+    | **Disk size**     | You can choose disk size based on your requirements. The default size is **60**.                                                                                                                                                                                                                                                                                                                                                     |
 
-A complete AKS cluster contains the following:
+12. Click **Next** to continue.
 
-<br />
+13. Specify your preferred **OS Patching Schedule**.
 
-1. As a mandatory primary **System Node Pool**, this pool will host the pods necessary to operate a Kubernetes cluster,
-   like the control plane and etcd. All system pools must have at least a single node for a development cluster; one
-   node is enough for high availability production clusters, and three nodes or more is recommended.
+14. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
+    Kubernetes configuration security, penetration testing, and conformance testing.
 
-2. **Worker Node** pools consist of one (1) or more per workload requirements. Worker node pools can be sized to zero
-   (0) nodes when not in use.
+15. Schedule any backups you want Palette to perform. Review
+    [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
-<br />
+16. If you're using custom OIDC, configure the Role-Based Access Control (RBAC). You must map a set of users or groups
+    to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
+    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
+    [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
 
-## Create and Remove Node Pools
+17. Click **Validate** and review the cluster configuration and settings summary.
 
-During cluster creation, you will default to a single pool.
+18. Click **Finish Configuration** to deploy the cluster. Provisioning Azure AKS clusters can take several minutes.
 
-<br />
+The cluster details page contains the status and details of the deployment. Use this page to track the deployment
+progress.
 
-1. To add additional pools, click **Add Node Pool**.
+To learn how to remove a cluster and what to do if a force delete is necessary so you do not incur unexpected costs,
+refer to [Cluster Removal](../../cluster-management/remove-clusters.md).
 
-2. Provide any additional Kubernetes labels to assign to each node in the pool. This section is optional, and you can
-   use a `key:value` structure, press your space bar to add additional labels, and click the **X** with your mouse to
-   remove unwanted labels.
+## Validate
 
-3. To remove a pool, click **Remove** across from the title for each pool.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-<br />
+2. Ensure you are in the correct project scope.
 
-## Create a System Node Pool
+3. From the left **Main Menu**, select **Clusters**. The **Clusters** page lists all available clusters that Palette
+   manages.
 
-1. Each cluster requires at least one (1) system node pool. To define a pool as a system pool, check the box labeled
-   **System Node Pool**.
-   <br />
-
-:::info
-
-Identifying a Node Pool as a System Pool will deactivate taints, and the operating system options within the cluster.
-You can not to taint or change the node OS from Linux. Refer to the
-[Azure AKS Documentation](https://docs.microsoft.com/en-us/azure/aks/use-system-pools?tabs=azure-cli#system-and-user-node-pools")
-for more details on pool limitations.
-
-:::
-
-<br />
-
-2. Provide a name in the **Node pool name** text box. When creating a node, it is good practice to include an
-   identifying name that matches the node in Azure.
-
-3. Add the **Desired size**. You can start with three for multiple nodes.
-
-4. Include **Additional Labels**. This is optional.
-
-5. In the **Azure Cloud Configuration** section, add the **Instance type**. The cost details are present for review.
-
-6. Enter the **Managed Disk** information and its size.
-
-   :::info
-
-   You can add more worker node pools after creating the system node pool to customize specific worker nodes for
-   specialized workloads. For example, you can configure the system worker pool with the _Standard_D2_v2_ instance type
-   for general-purpose workloads, and another worker pool with the _Standard_NC12s_v3_ instance type for GPU workloads.
-
-   You can also select **OS Type** as **Windows** to create a worker pool specifically for Windows workloads.
-
-   :::
-
-7. If you require additional or multiple node pools for different types of workloads, click the **Add Worker Pool**
-   button to create the next node pool.
-
-## Configure Node Pools
-
-In all types of node pools, configure the following.
-
-<br />
-
-1.  Provide a name in the **Node pool name** text box. When creating a node, it is good practice to include an
-    identifying name.
-
-**Note:** Windows clusters have a name limitation of six (6) characters.
-
-2.  Provide how many nodes the pool will contain by adding the count to the box labeled **Number of nodes in the pool**.
-    Configure each pool to use the autoscaler controller. There are more details on how to configure that below.
-
-3.  Alternative to a static node pool count, you can enable the autoscaler controller, click **Enable Autoscaler** to
-    change to the **Minimum size** and **Maximum size** fields which will allow AKS to increase or decrease the size of
-    the node pool based on workloads. The smallest size of a dynamic pool is zero (0), and the maximum is one thousand
-    (1000); setting both to the same value is identical to using a static pool size.
-
-4.  Provide any additional Kubernetes labels to assign to each node in the pool. This section is optional; you can use a
-    `key:value` structure. Press your space bar to add additional labels and click the **X** with your mouse to remove
-    unwanted labels.
-
-5.  In the **Azure Cloud Configuration** section:
-
-- Provide instance details for all nodes in the pool with the **Instance type** dropdown. The cost details are present
-  for review.
-
-<br />
-
-:::info
-
-You can add new worker pools to customize specific worker nodes for specialized workloads. As an example, you can
-configure the default worker pool with the _Standard_D2_v2_ instance type for general-purpose workloads, and another
-worker pool with the _Standard_NC12s_v3_ instance type for GPU workloads.
-
-:::
-
-<br />
-
-- Provide the disk type via the **Managed Disk** dropdown and the size in Gigabytes (GB) in the **Disk size** field.
-
-:::info
-
-A minimum allocation of <i>two (2)</i> CPU cores is required across all worker nodes.
-
-A minimum allocation of <i>4Gi</i> of memory is required across all worker nodes.
-
-:::
-
-<br />
-
-- When are done setting up all node pools, click **Next** to go to the **Settings** page to **Validate** and finish the
-  cluster deployment wizard.
-
-**Note**: Keep an eye on the **Cluster Status** once you click **Finish Configuration** as it will start as
-_Provisioning_. Deploying an AKS cluster does take a considerable amount of time to complete, and the **Cluster Status**
-in Palette will say _Ready_ when it is complete and ready to use.
-
-<br />
-
-## Configure an Azure Active Directory
-
-The Azure Active Directory (AAD) could be enabled while creating and linking the Azure Cloud account for the Palette
-Platform, using a simple check box. Once the cloud account is created, you can create the Azure AKS cluster. The
-AAD-enabled AKS cluster will have its Admin _kubeconfig_ file created and can be downloaded from our Palette UI as the
-'Kubernetes config file'. You need to manually create the user's _kubeconfig_ file to enable AAD completely. The
-following are the steps to create the custom user _kubeconfig_ file:
-
-<br />
-
-1. Go to the Azure console to create the Groups in Azure AD to access the Kubernetes RBAC and Azure AD control access to
-   cluster resources.
-
-2. After you create the groups, create users in the Azure AD.
-
-3. Create custom Kubernetes roles and role bindings for the created users and apply the roles and role bindings, using
-   the Admin _kubeconfig_ file.
-
-<br />
-
-:::info
-
-The above step can also be completed using Spectro RBAC pack available under the Authentication section of Add-on Packs.
-
-:::
-
-<br />
-
-4. Once the roles and role bindings are created, these roles can be linked to the Groups created in Azure AD.
-
-5. The users can now access the Azure clusters with the complete benefits of AAD. To get the user-specific _kubeconfig_
-   file, please issue the following command:
-
-`az aks get-credentials --resource-group <resource-group> --name <cluster-name>`
-
-<br />
+4. Select the Azure AKS cluster you deployed to review its details. Ensure the **Cluster Status** field displays the
+   value **Running**.
 
 ## Resources
 
-- [Use Kubernetes RBAC with Azure AD integration](https://learn.microsoft.com/en-us/azure/aks/azure-ad-rbac?tabs=portal)
+- [Register and Manage Azure Cloud Account](azure-cloud.md)
 
-- [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/)
+- [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
+
+- [Azure Storage](../azure/architecture.md#azure-storage)
+
+- [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider)
+
+- [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings)
+
+- [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc)
