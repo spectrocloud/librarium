@@ -8,8 +8,9 @@ tags: ["edge"]
 ---
 
 Palette Edge allows you to deploy a cluster using an external private registry. When you deploy a cluster using an
-external registry, all images required by the cluster are expected to be in the registry before deployment starts. It
-can be error-prone to upload the images manually one by one. Therefore, we recommend you use the Palette Edge CLI to
+external registry, all images required by the cluster are expected to be in the registry before deployment starts.
+
+It can be error-prone to upload the images manually one by one. Therefore, we recommend you use the Palette Edge CLI to
 download the images and upload them to the external registry.
 
 ## Prerequisites
@@ -46,7 +47,8 @@ download the images and upload them to the external registry.
 5. Click on the cluster profile you want to include in the content bundle.
 
 6. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last
-   value in the URL. Repeat this step for all the cluster profiles you want to specify in the content bundle.
+   value in the URL. Repeat this step for all the cluster profiles whose images you want to include in the content
+   bundle.
 
 7. If you are downloading images from public image or Helm registries only, skip this step.
 
@@ -179,7 +181,7 @@ download the images and upload them to the external registry.
 
    ```shell
     ./palette-edge build --api-key ****** --project-id project-ID --cluster-profile-ids profile-ID \
-        --outfile spectro-external-profile --cred-file-path registry-creds.json --include-palette-content
+        --outfile output-file-name --cred-file-path registry-creds.json --include-palette-content
    ```
 
 9. Issue the following command to upload the images to the external registry. Replace `path-to-content-bundle` with the

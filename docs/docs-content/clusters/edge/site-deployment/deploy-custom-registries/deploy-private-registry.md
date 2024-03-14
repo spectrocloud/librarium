@@ -20,6 +20,9 @@ to use a private registry for images other the provider images, refer to
 
 - A cluster cannot pull provider images from more than one private registry.
 
+- If you have already specified an external registry. the provider registry will be ignored and the provider images will
+  be pulled from the external registry instead.
+
 - You cannot use private provider registries for clusters with a local Harbor registry. For more information, refer to
   [Enable Local Harbor Registry](./local-registry.md).
 
