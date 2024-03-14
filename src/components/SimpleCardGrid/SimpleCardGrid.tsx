@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./SimpleCardGrid.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 
 interface SimpleCardProps {
   cards?: SimpleCard[];
@@ -16,8 +18,8 @@ interface SimpleCard {
 export default function SimpleCardGrid({ cards = [] }: SimpleCardProps) {
   // Construct the rows according to how many elements we want per row
   cards.forEach((card, index) => {
-      // Offset zero index
-      card.index = index + 1;
+    // Offset zero index
+    card.index = index + 1;
   });
 
   return (
@@ -41,7 +43,10 @@ function SimpleCard({ title, index, description, buttonText, relativeURL }: Simp
           <p className={styles.simpleCardDescription}>{description}</p>
         </div>
         <div className={styles.simpleCardFooter}>
-          <button className="button button--secondary">{buttonText}</button>
+          <button>
+            {buttonText}
+            <FontAwesomeIcon className="fa-lg" icon={faArrowRightLong} />
+          </button>
         </div>
       </div>
     </a>
