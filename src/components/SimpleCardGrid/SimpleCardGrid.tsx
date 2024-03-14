@@ -8,6 +8,7 @@ interface SimpleCardProps {
 
 interface SimpleCard {
   title: string;
+  index: number;
   description: string;
   buttonText: string;
   relativeURL: string;
@@ -21,8 +22,10 @@ export default function SimpleCardGrid({ cards = [], cardsPerRow }: SimpleCardPr
   // Construct the rows according to how many elements we want per row
   let previousCards: SimpleCard[] = [];
   const rows: SimpleCardRow[] = [];
-  cards.forEach((card) => {
+  cards.forEach((card, index) => {
     if (previousCards.length < cardsPerRow) {
+      // Offset zero index
+      card.index = index + 1;
       previousCards.push(card);
     } else {
       // The row is full. Save it and reset the cards buffer.
@@ -30,6 +33,7 @@ export default function SimpleCardGrid({ cards = [], cardsPerRow }: SimpleCardPr
       rows.push(row);
       previousCards = [] as SimpleCard[];
       // Add the current card to the newly emptied buffer.
+      card.index = index + 1 ;
       previousCards.push(card);
     }
   });
@@ -54,19 +58,20 @@ export default function SimpleCardGrid({ cards = [], cardsPerRow }: SimpleCardPr
   );
 }
 
-function SimpleCard({ title, description, buttonText, relativeURL }: SimpleCard) {
+function SimpleCard({ title, index, description, buttonText, relativeURL }: SimpleCard) {
   return (
     <div className={styles.simpleCardWrapper}>
       <a href={relativeURL}>
         <div className={styles.simpleCard}>
-          <div className="card__header">
-            <h3>{title}</h3>
+          <div className={styles.simpleCardHeader}>
+            <div className={styles.simpleCardIndex}>{index}</div>
+            <div className={styles.simpleCardTitle}>{title}</div>
           </div>
-          <div className="card__body">
-            <p>{description}</p>
+          <div className={styles.simpleCardBody}>
+            <p className={styles.simpleCardDescription}>{description}</p>
           </div>
-          <div className="card__footer">
-            <button className="button button--secondary button--block">{buttonText}</button>
+          <div className={styles.simpleCardFooter}>
+            <button className="button button--secondary">{buttonText}</button>
           </div>
         </div>
       </a>

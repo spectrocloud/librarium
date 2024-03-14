@@ -51,43 +51,43 @@ Explore more through the following pages.
   cardsPerRow={2}
   cards={[
     {
-      title: "1. Introduction to Palette",
+      title: "Introduction to Palette",
       description: "Learn about what makes Palette different.",
       buttonText: "Learn more",
       relativeURL: "./introduction",
     },
     {
-      title: "2. Palette Dashboard",
+      title: "Palette Dashboard",
       description: "Tour the Palette Project and Tenant Admin dashboards.",
       buttonText: "Learn more",
       relativeURL: "./dashboard",
     },
     {
-      title: "3. Cluster Profiles",
+      title: "Cluster Profiles",
       description: "Learn about Palette Cluster Profiles and Packs.",
       buttonText: "Learn more",
       relativeURL: "./cluster-profiles",
     },
     {
-      title: "4. Create a Cluster Profile",
+      title: "Create a Cluster Profile",
       description: "Create a full cluster profile in Palette.",
       buttonText: "Learn more",
       relativeURL: "./create-cluster-profile",
     },
     {
-      title: "5. Deploy a Cluster",
+      title: "Deploy a Cluster",
       description: "Deploy a Palette host cluster in AWS, Azure or Google Cloud.",
       buttonText: "Learn more",
       relativeURL: "./deploy-k8s-cluster",
     },
     {
-      title: "6. Deploy Cluster Profile Updates",
+      title: "Deploy Cluster Profile Updates",
       description: "Update your deployed clusters using Palette Cluster Profiles.",
       buttonText: "Learn more",
       relativeURL: "./update-k8s-cluster",
     },
     {
-      title: "7. Deploy a Cluster with Terraform",
+      title: "Deploy a Cluster with Terraform",
       description: "Deploy a Palette host cluster with Terraform.",
       buttonText: "Learn more",
       relativeURL: "./terraform",
