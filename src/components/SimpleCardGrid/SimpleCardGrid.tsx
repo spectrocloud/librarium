@@ -46,7 +46,7 @@ function SimpleCard({ title, index, description, buttonText, relativeURL }: Simp
         <div className={styles.simpleCardFooter}>
           <button className={styles.simpleCardFooterBtn}>
             {buttonText}
-            <FontAwesomeIcon className="fa-lg" icon={faArrowRightLong} />
+            <FontAwesomeIcon className="fa-1x" icon={faArrowRightLong} />
           </button>
         </div>
       </div>
