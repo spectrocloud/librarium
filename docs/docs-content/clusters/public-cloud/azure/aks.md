@@ -116,7 +116,7 @@ The following steps need to be performed to provision a new cluster:
 
 2. Fill the basic cluster profile information such as **Name**, **Description**, **Tags** and **Cloud Account**.
 
-3. In the **Cloud Account** dropdown list, select the Azure Cloud account or create a new one. See the
+3. In the **Cloud Account** dropdown list, select the Azure Cloud account or create a new one. Refer to the
    [Creating an Azure Cloud Account](azure-cloud.md) section above.
 
 4. Next, in the **Cluster profile** tab from the **Managed Kubernetes** list, pick **AKS**, and select the AKS cluster
@@ -183,9 +183,9 @@ A complete AKS cluster contains the following:
 
 <br />
 
-1. As a mandatory primary **System Node Pool**, this pool will run the pods necessary to run a Kubernetes cluster, like
-   the control plane and etcd. All system pools must have at least a single node for a development cluster; one (1) node
-   is enough for high availability production clusters, and three (3) or more is recommended.
+1. As a mandatory primary **System Node Pool**, this pool will host the pods necessary to operate a Kubernetes cluster,
+   like the control plane and etcd. All system pools must have at least a single node for a development cluster; one
+   node is enough for high availability production clusters, and three nodes or more is recommended.
 
 2. **Worker Node** pools consist of one (1) or more per workload requirements. Worker node pools can be sized to zero
    (0) nodes when not in use.
@@ -236,8 +236,18 @@ for more details on pool limitations.
 
 6. Enter the **Managed Disk** information and its size.
 
-7. If you are including additional or multiple nodes to make a node pool, click the **Add Worker Pool** button to create
-   the next node.
+   :::info
+
+   You can add more worker node pools after creating the system node pool to customize specific worker nodes for
+   specialized workloads. For example, you can configure the system worker pool with the _Standard_D2_v2_ instance type
+   for general-purpose workloads, and another worker pool with the _Standard_NC12s_v3_ instance type for GPU workloads.
+
+   You can also select **OS Type** as **Windows** to create a worker pool specifically for Windows workloads.
+
+   :::
+
+7. If you require additional or multiple node pools for different types of workloads, click the **Add Worker Pool**
+   button to create the next node pool.
 
 ## Configure Node Pools
 
@@ -269,12 +279,13 @@ In all types of node pools, configure the following.
 
   :::info
 
-  New worker pools may be added if you want to customize specific worker nodes to run specialized workloads. As an
-  example, the default worker pool may be configured with the <i>Standard_D2_v2</i> instance types for general-purpose
-  workloads, and another worker pool with the instance type <i>Standard_NC12s_v3</i> can be configured to run GPU
-  workloads.
+  You can add new worker pools to customize specific worker nodes for specialized workloads. As an example, you can
+  configure the default worker pool with the _Standard_D2_v2_ instance type for general-purpose workloads, and another
+  worker pool with the _Standard_NC12s_v3_ instance type for GPU workloads.
 
   :::
+
+<br />
 
 - Provide the disk type via the **Managed Disk** dropdown and the size in Gigabytes (GB) in the **Disk size** field.
 
@@ -325,7 +336,7 @@ following are the steps to create the custom user _kubeconfig_ file:
 4. Once the roles and role bindings are created, these roles can be linked to the Groups created in Azure AD.
 
 5. The users can now access the Azure clusters with the complete benefits of AAD. To get the user-specific _kubeconfig_
-   file, please run the following command:
+   file, please issue the following command:
 
    ```shell
    az aks get-credentials --resource-group <resource-group> --name <cluster-name>
