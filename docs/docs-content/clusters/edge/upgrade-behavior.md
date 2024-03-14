@@ -10,13 +10,15 @@ tags: ["edge", "architecture"]
 When you update an active Edge cluster's profile, Palette will upgrade the active cluster to the latest version of the
 profile. Depending on the nature of the change, implementing an upgrade might involve repaving a cluster, rebooting a
 cluster, restarting services, or doing nothing. For more information about cluster repaves, refer to
-[Repave Behavior and Configurations](../cluster-management/node-pool.md#repave-behavior-and-configuration).
+[Repave Behavior and Configurations](../cluster-management/node-pool.md#repave-behavior-and-configuration). For more
+information about how to update a cluster profile, refer to
+[Update a Cluster](../cluster-management/cluster-updates.md).
 
 :::warning
 
-- If a cluster's Kubernetes service is down, updates to the cluster's profile will not get applied. You must fix the
-  issue impacting the Kubernetes service first and ensure that the Kubernetes service of the cluster is operational
-  before applying updates to the cluster.
+- If a cluster's Kubernetes service is down, updates to the cluster's profile will not get applied to the cluster. You
+  must fix the issue impacting the Kubernetes service first. Once the Kubernetes service is back to being operational,
+  the Palette agent will apply the updates from the cluster profile to the cluster.
 
 :::
 
