@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./SimpleCardGrid.module.scss";
-import RightArrow from "@site/static/assets/icons/arrow-right-long.svg";
+import SimpleCardFooterArrow from "./SimpleCardFooterArrow";
 
 interface SimpleCardProps {
   cards?: SimpleCard[];
@@ -45,7 +45,7 @@ function SimpleCard({ title, index, description, buttonText, relativeURL }: Simp
         <div className={styles.simpleCardFooter}>
           <button className={styles.simpleCardFooterBtn}>
             {buttonText}
-            <RightArrow className={styles.simpleCardFooterArrow} />
+            <SimpleCardFooterArrow index={index} />
           </button>
         </div>
       </div>

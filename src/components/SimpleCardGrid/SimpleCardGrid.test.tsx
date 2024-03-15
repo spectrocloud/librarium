@@ -1,6 +1,12 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import SimpleCardGrid from ".";
+import SimpleCardGrid from "./SimpleCardGrid";
+
+jest.mock("./SimpleCardFooterArrow", () => {
+  return jest.fn((index) => {
+    return <div data-testid="mock-arrow"></div>;
+  });
+});
 
 describe("Display SimpleCardGrid", () => {
   interface testCard {
@@ -56,13 +62,13 @@ describe("Display SimpleCardGrid", () => {
   ];
 
   function assert(testCards: testCard[]) {
-    const { container } = render(<SimpleCardGrid cards={testCards} />);
+    render(<SimpleCardGrid cards={testCards} />);
     if (testCards.length == 0) {
       expect(screen.queryAllByRole("button")).toHaveLength(0);
       return;
     }
 
-    testCards.forEach((tc) => {
+    testCards.forEach((tc, index) => {
       expect(screen.getByText(tc.title)).toBeInTheDocument();
       expect(screen.getByText(tc.description)).toBeInTheDocument();
       expect(screen.getByText(tc.buttonText, { selector: "button" })).toBeInTheDocument();
@@ -73,6 +79,7 @@ describe("Display SimpleCardGrid", () => {
       ).not.toBeNull();
     });
 
+    expect(screen.getAllByTestId("mock-arrow")).toHaveLength(testCards.length);
     expect(screen.getAllByRole("button")).toHaveLength(testCards.length);
   }
 
