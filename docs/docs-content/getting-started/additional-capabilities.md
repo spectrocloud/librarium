@@ -57,9 +57,12 @@ the [Self-Hosted Palette](../enterprise-version/enterprise-version.md) page.
 
 Palette VerteX offers a simple, flexible, and secure way for government and regulated industries to deploy and manage
 Kubernetes workloads containing sensitive and classified information. It is available as a self-hosted platform offering
-that you can install in various environments. These include virtualized and bare metal data centers (like VMware vSphere
-and Nutanix), clouds (including AWS and Azure government clouds), and edge locations (including air-gapped setups),
-which makes VerteX also appropriate for addressing challenges like intermittent connectivity or low bandwidth.
+that you can install in various environments. These include virtualized and bare metal data centers (like
+[VMware vSphere](https://www.vmware.com/products/vsphere.html) and [Nutanix](https://www.nutanix.com/)), clouds
+(including [AWS](https://aws.amazon.com/govcloud-us/) and
+[Azure](https://azure.microsoft.com/en-ca/explore/global-infrastructure/government) government clouds), and edge
+locations (including air-gapped setups), which makes VerteX also appropriate for addressing challenges like intermittent
+connectivity or low bandwidth.
 
 Palette VerteX is fully proven in operational environments as it has a Technology Readiness Level (TRL) 9 designation,
 making it suitable for use in high-security production environments up to Impact Levels (IL) 5, 6, and 6+. Additionally,
