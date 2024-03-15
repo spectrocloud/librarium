@@ -44,7 +44,7 @@ The pack has two presets that provide the following two configurations:
 | cluster.contents.spec.storage.useAllDevices | Allows the cluster to use all available devices on the nodes for storage.                                       | true         |
 | cluster.contents.spec.storage.deviceFilter  | A regex filter that filters storage devices. Only device names that match the filter are used by Ceph clusters. | Empty String |
 | cluster.contents.spec.dashboard.enabled     | Whether to enable the Ceph dashboard.                                                                           | true         |
-| cluster.operator.contents.data.LOG_LEVEL    | The log level of Rook Operator. Accepted values are `DEBUG`, `INFO`. `WARNING`, and `ERROR`.                      | `INFO`       |
+| cluster.operator.contents.data.LOG_LEVEL    | The log level of Rook Operator. Accepted values are `DEBUG`, `INFO`. `WARNING`, and `ERROR`.                    | `INFO`       |
 
 ## Usage
 
@@ -139,7 +139,7 @@ clusters.
 | cluster.contents.spec.storage.useAllDevices | Allows the cluster to use all available devices on the nodes for storage.                                       | true         |
 | cluster.contents.spec.storage.deviceFilter  | A regex filter that filters storage devices. Only device names that match the filter are used by Ceph clusters. | Empty String |
 | cluster.contents.spec.dashboard.enabled     | Whether to enable the Ceph dashboard.                                                                           | true         |
-| cluster.operator.contents.data.LOG_LEVEL    | The log level of Rook Operator. Accepted values are `DEBUG`, `INFO`. `WARNING`, and `ERROR`.                      | `INFO`       |
+| cluster.operator.contents.data.LOG_LEVEL    | The log level of Rook Operator. Accepted values are `DEBUG`, `INFO`. `WARNING`, and `ERROR`.                    | `INFO`       |
 
 ## Usage
 
@@ -234,7 +234,7 @@ clusters.
 | cluster.contents.spec.storage.useAllDevices | Allows the cluster to use all available devices on the nodes for storage.                                       | true         |
 | cluster.contents.spec.storage.deviceFilter  | A regex filter that filters storage devices. Only device names that match the filter are used by Ceph clusters. | Empty String |
 | cluster.contents.spec.dashboard.enabled     | Whether to enable the Ceph dashboard.                                                                           | true         |
-| cluster.operator.contents.data.LOG_LEVEL    | The log level of Rook Operator. Accepted values are `DEBUG`, `INFO`. `WARNING`, and `ERROR`.                      | `INFO`       |
+| cluster.operator.contents.data.LOG_LEVEL    | The log level of Rook Operator. Accepted values are `DEBUG`, `INFO`. `WARNING`, and `ERROR`.                    | `INFO`       |
 
 ## Usage
 
