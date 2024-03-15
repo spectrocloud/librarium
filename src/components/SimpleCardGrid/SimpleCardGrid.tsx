@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./SimpleCardGrid.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import RightArrow from "@site/static/assets/icons/arrow-right-long.svg";
 
 interface SimpleCardProps {
   cards?: SimpleCard[];
@@ -46,7 +45,7 @@ function SimpleCard({ title, index, description, buttonText, relativeURL }: Simp
         <div className={styles.simpleCardFooter}>
           <button className={styles.simpleCardFooterBtn}>
             {buttonText}
-            <FontAwesomeIcon className="fa-1x" icon={faArrowRightLong} />
+            <RightArrow className={styles.simpleCardFooterArrow} />
           </button>
         </div>
       </div>
