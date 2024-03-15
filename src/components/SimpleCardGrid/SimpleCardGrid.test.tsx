@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import SimpleCardGrid from "./SimpleCardGrid";
 
 jest.mock("./SimpleCardFooterArrow", () => {
-  return jest.fn((index) => {
+  return jest.fn(() => {
     return <div data-testid="mock-arrow"></div>;
   });
 });
