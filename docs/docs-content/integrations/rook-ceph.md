@@ -11,9 +11,9 @@ logoUrl:
 tags: ["packs", "rook-ceph", "storage"]
 ---
 
-Rook is an open source cloud-native storage orchestrator, providing the platform, framework, and support for Ceph
+Rook is an open-source cloud-native storage orchestrator that provides the platform, framework, and support for Ceph
 storage to natively integrate with cloud-native environments. Ceph is a distributed storage system that provides file,
-block and object storage and is deployed in large scale production clusters.
+block, and object storage and is deployed in large-scale production clusters.
 
 Rook turns storage software into self-managing, self-scaling, and self-healing storage services. It automates
 deployment, bootstrapping, configuration, provisioning, scaling, upgrading, migration, disaster recovery, monitoring,
@@ -23,7 +23,7 @@ scheduling, and orchestration platform to perform its duties.
 The pack has two presets that provide the following two configurations:
 
 - A multi-node Ceph cluster.
-- A single node Ceph cluster.
+- A single-node Ceph cluster.
 
 ## Versions Supported
 
@@ -44,7 +44,7 @@ The pack has two presets that provide the following two configurations:
 | cluster.contents.spec.storage.useAllDevices | Allows the cluster to use all available devices on the nodes for storage.                                       | true         |
 | cluster.contents.spec.storage.deviceFilter  | A regex filter that filters storage devices. Only device names that match the filter are used by Ceph clusters. | Empty String |
 | cluster.contents.spec.dashboard.enabled     | Whether to enable the Ceph dashboard.                                                                           | true         |
-| cluster.operator.contents.data.LOG_LEVEL    | The log level of Rook Operator. Allows values are `DEBUG`, `INFO`. `WARNING`. and `ERROR`.                      | `INFO`       |
+| cluster.operator.contents.data.LOG_LEVEL    | The log level of Rook Operator. Accepted values are `DEBUG`, `INFO`. `WARNING`, and `ERROR`.                      | `INFO`       |
 
 ## Usage
 
@@ -139,7 +139,7 @@ clusters.
 | cluster.contents.spec.storage.useAllDevices | Allows the cluster to use all available devices on the nodes for storage.                                       | true         |
 | cluster.contents.spec.storage.deviceFilter  | A regex filter that filters storage devices. Only device names that match the filter are used by Ceph clusters. | Empty String |
 | cluster.contents.spec.dashboard.enabled     | Whether to enable the Ceph dashboard.                                                                           | true         |
-| cluster.operator.contents.data.LOG_LEVEL    | The log level of Rook Operator. Allows values are `DEBUG`, `INFO`. `WARNING`. and `ERROR`.                      | `INFO`       |
+| cluster.operator.contents.data.LOG_LEVEL    | The log level of Rook Operator. Accepted values are `DEBUG`, `INFO`. `WARNING`, and `ERROR`.                      | `INFO`       |
 
 ## Usage
 
@@ -234,7 +234,7 @@ clusters.
 | cluster.contents.spec.storage.useAllDevices | Allows the cluster to use all available devices on the nodes for storage.                                       | true         |
 | cluster.contents.spec.storage.deviceFilter  | A regex filter that filters storage devices. Only device names that match the filter are used by Ceph clusters. | Empty String |
 | cluster.contents.spec.dashboard.enabled     | Whether to enable the Ceph dashboard.                                                                           | true         |
-| cluster.operator.contents.data.LOG_LEVEL    | The log level of Rook Operator. Allows values are `DEBUG`, `INFO`. `WARNING`. and `ERROR`.                      | `INFO`       |
+| cluster.operator.contents.data.LOG_LEVEL    | The log level of Rook Operator. Accepted values are `DEBUG`, `INFO`. `WARNING`, and `ERROR`.                      | `INFO`       |
 
 ## Usage
 
@@ -315,7 +315,7 @@ clusters.
 
 <TabItem label="Deprecated" value="Deprecated">
 
-Older versions of this pack is deprecated. Please use the later versions to take advantage of new features and
+The older versions of this pack are deprecated. Please use the later versions to take advantage of new features and
 improvements.
 
 </TabItem>
@@ -325,7 +325,6 @@ improvements.
 ## Terraform
 
 ```tf
-
 data "spectrocloud_registry" "registry" {
   name = "Public Repo"
 }
@@ -336,7 +335,6 @@ data "spectrocloud_pack_simple" "pack" {
   type = "helm"
   registry_uid = data.spectrocloud_registry.registry.id
 }
-
 ```
 
 ## References
