@@ -107,7 +107,7 @@ authenticated with Palette.
 Welcome to Spectro Cloud Palette
 ```
 
-The video below demonstrates Palette's authentication process. Ensure you utilize values specific to your environment.
+The video below demonstrates Palette's authentication process. Ensure you utilize values specific to your environment, such as the correct Palette URL. Contact your Palette administrator for the correct URL if you use a self-hosted Palette or VerteX instance. 
 
 <Video title="palette-login-video" src="/videos/palette-login.mp4"></Video>
 
@@ -625,8 +625,8 @@ your VMware vSphere environment.
 
 ## Wrap-Up
 
-In this tutorial, you learned how to deploy a VMware PCG using Palette CLI. Then, you used the PCG to support the
-deployment of a Palette cluster with a sample Kubernetes application to your VMware vSphere environment. Next, you
+In this tutorial, you learned how to deploy a VMware PCG using the Palette CLI. Then, you used the PCG to support the
+deployment of a Kubernetes cluster with a sample application to your VMware vSphere environment. Next, you
 accessed the Hello Universe application landing page through the exposed service URL.
 
 A PCG is a powerful component that enables Palette to communicate with private clouds or data center environments
