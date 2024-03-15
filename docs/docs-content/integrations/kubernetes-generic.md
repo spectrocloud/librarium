@@ -180,8 +180,7 @@ to a Kubernetes role that is available in the cluster. The Kubernetes role can b
 #### Configure Custom OIDC
 
 The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon
-Elastic Kubernetes Service (EKS) and
-[Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
+Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md).
 
 <Tabs queryString="oidc-mode">
 
@@ -190,8 +189,8 @@ Elastic Kubernetes Service (EKS) and
 Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers
 except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to
 use Azure Active Directory (AAD) to enable OIDC integration. Refer to
-[Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory) to learn more. Click the **Amazon
-EKS** tab for steps to configure OIDC for EKS clusters.
+[Enable OIDC in Kubernetes Clusters With Entra ID](../user-management/saml-sso/palette-sso-with-entra-id.md#enable-oidc-in-kubernetes-clusters-with-entra-id)
+to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
 
 1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the
    `identityProvider` value with your OIDC provider name.
@@ -413,8 +412,7 @@ to a Kubernetes role that is available in the cluster. The Kubernetes role can b
 #### Configure Custom OIDC
 
 The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon
-Elastic Kubernetes Service (EKS) and
-[Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
+Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md).
 
 <Tabs queryString="oidc-mode">
 
@@ -423,8 +421,8 @@ Elastic Kubernetes Service (EKS) and
 Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers
 except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to
 use Azure Active Directory (AAD) to enable OIDC integration. Refer to
-[Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory) to learn more. Click the **Amazon
-EKS** tab for steps to configure OIDC for EKS clusters.
+[Enable OIDC in Kubernetes Clusters With Entra ID](../user-management/saml-sso/palette-sso-with-entra-id.md#enable-oidc-in-kubernetes-clusters-with-entra-id)
+to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
 
 1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the
    `identityProvider` value with your OIDC provider name.
@@ -647,8 +645,7 @@ to a Kubernetes role that is available in the cluster. The Kubernetes role can b
 #### Configure Custom OIDC
 
 The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon
-Elastic Kubernetes Service (EKS) and
-[Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
+Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md).
 
 <Tabs queryString="oidc-mode">
 
@@ -657,8 +654,8 @@ Elastic Kubernetes Service (EKS) and
 Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers
 except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to
 use Azure Active Directory (AAD) to enable OIDC integration. Refer to
-[Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory) to learn more. Click the **Amazon
-EKS** tab for steps to configure OIDC for EKS clusters.
+[Enable OIDC in Kubernetes Clusters With Entra ID](../user-management/saml-sso/palette-sso-with-entra-id.md#enable-oidc-in-kubernetes-clusters-with-entra-id)
+to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
 
 1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the
    `identityProvider` value with your OIDC provider name.
@@ -878,8 +875,7 @@ to a Kubernetes role that is available in the cluster. The Kubernetes role can b
 #### Configure Custom OIDC
 
 The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon
-Elastic Kubernetes Service (EKS) and
-[Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory).
+Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md).
 
 <Tabs queryString="oidc-mode">
 
@@ -888,8 +884,8 @@ Elastic Kubernetes Service (EKS) and
 Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers
 except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to
 use Azure Active Directory (AAD) to enable OIDC integration. Refer to
-[Azure-AKS](../clusters/public-cloud/azure/aks.md#configure-an-azure-active-directory) to learn more. Click the **Amazon
-EKS** tab for steps to configure OIDC for EKS clusters.
+[Enable OIDC in Kubernetes Clusters With Entra ID](../user-management/saml-sso/palette-sso-with-entra-id.md#enable-oidc-in-kubernetes-clusters-with-entra-id)
+to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
 
 1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the
    `identityProvider` value with your OIDC provider name.
