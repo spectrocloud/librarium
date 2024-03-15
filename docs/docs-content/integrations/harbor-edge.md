@@ -37,7 +37,8 @@ cluster. You cannot manually choose a version of this pack.
 
 - All Edge devices in your cluster must have at least 4 CPUs and 8 GB of RAM.
 
-  - For single-node clusters, your Edge host must have at least 6 CPUs and 12 GB of RAM.
+  - For single-node clusters, where there is only one Edge host handling both control plane and worker capabilities,
+    your Edge host must have at least 6 CPUs and 12 GB of RAM.
 
 - At least 300 GB of persistent storage volume for the cluster. The actual volume required depends on the size of the
   images used by your cluster.

@@ -42,10 +42,10 @@ documentation.
 
 - Each of your Edge hosts must have at least 4 CPUs and 8 GB of RAM.
 
-  - For single-node clusters with Harbor, the Edge host needs at least 6 CPUs and 12 GB of RAM.
+  - For single-node clusters, where there is only one Edge host handling both control plane and worker capabilities,
+    your Edge host must have at least 6 CPUs and 12 GB of RAM.
 
 - At least 300 GB of persistent storage. The actual amount of storage required depends on the size of your images.
-
 
 - An Edge cluster profile. For information about how to create a cluster profile for Edge, refer to
   [Model Edge Cluster Profile](../../site-deployment/model-profile.md).
