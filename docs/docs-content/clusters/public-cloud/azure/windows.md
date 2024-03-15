@@ -18,7 +18,6 @@ application to be deployed to that node pool.
 - An AKS cluster created as described in the [Create and Manage Azure AKS Cluster](./aks.md) guide.
 
 - A Linux-based node pool configured as the system node pool as described in the
-  [Create a System Node Pool](../azure/aks.md#create-a-system-node-pool) section of the
   [Create and Manage Azure AKS Cluster](../azure/aks.md) guide.
 
 - A Windows node pool configured as described in the [Create a Windows Node Pool](#create-a-windows-node-pool) section.
@@ -33,8 +32,7 @@ Follow the steps below to create a Windows node pool within an existing AKS clus
 :::info
 
 Palette also allows you to add a Windows node pool during the creation of an AKS cluster. Refer to the
-[Create and Manage Azure AKS CLuster - Create and Remove Node Pools](./aks#create-and-remove-node-pools) page to learn
-more.
+[Node Pool](../../cluster-management/node-pool.md) guide to learn more.
 
 :::
 
