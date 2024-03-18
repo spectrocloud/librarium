@@ -75,7 +75,7 @@ four months. Once we stop supporting the minor version, we initiate the deprecat
 
 ## Prerequisites
 
-- A minimum of 4 CPU and 4GB Memory.
+- A minimum of 4 CPU and 4 GB Memory.
 
 - Operating System (OS) dependencies as listed in the table.
 
@@ -443,7 +443,7 @@ cloud:
 
 ## Prerequisites
 
-- A minimum of 4 CPU and 4GB Memory.
+- A minimum of 4 CPU and 4 GB Memory.
 
 - Operating System (OS) dependencies as listed in the table.
 
@@ -811,7 +811,7 @@ cloud:
 
 ## Prerequisites
 
-- A minimum of 4 CPU and 4GB Memory.
+- A minimum of 4 CPU and 4 GB Memory.
 
 - Operating System (OS) dependencies as listed in the table.
 
@@ -1151,7 +1151,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 ## Prerequisites
 
-- A minimum of 4 CPU and 4GB Memory.
+- A minimum of 4 CPU and 4 GB Memory.
 
 - Operating System (OS) dependencies as listed in the table.
 
@@ -1338,7 +1338,7 @@ kubeadmconfig:
 
     preKubeadmCommands:
     - 'echo "====> Applying kernel parameters for Kubelet"'
-    - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'
+    - 'sysctl --load /etc/sysctl.d/90-kubelet.conf'
     postKubeadmCommands:
     - 'echo "List of post kubeadm commands to be executed"'
 
@@ -1491,7 +1491,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 ## Prerequisites
 
-- A minimum of 4 CPU and 4GB Memory.
+- A minimum of 4 CPU and 4 GB Memory.
 
 - Operating System (OS) dependencies as listed in the table.
 

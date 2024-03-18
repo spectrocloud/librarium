@@ -87,7 +87,7 @@ four months. Once we stop supporting the minor version, we initiate the deprecat
 
 ## Prerequisites
 
-- A minimum of 2 CPU and 4GB Memory.
+- A minimum of 2 CPU and 4 GB Memory.
 
 ## Parameters
 
@@ -472,7 +472,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 ## Prerequisites
 
-- A minimum of 2 CPU and 4GB Memory.
+- A minimum of 2 CPU and 4 GB Memory.
 
 ## Parameters
 
@@ -857,7 +857,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 ## Prerequisites
 
-- A minimum of 2 CPU and 4GB Memory.
+- A minimum of 2 CPU and 4 GB Memory.
 
 ## Parameters
 
@@ -1243,7 +1243,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 ## Prerequisites
 
-- A minimum of 2 CPU and 4GB Memory.
+- A minimum of 2 CPU and 4 GB Memory.
 
 ## Parameters
 
@@ -1629,7 +1629,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 ## Prerequisites
 
-- A minimum of 2 CPU and 4GB Memory.
+- A minimum of 2 CPU and 4 GB Memory.
 
 ## Parameters
 
