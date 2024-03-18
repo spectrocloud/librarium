@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Palette Dashboard"
 title: "Palette Dashboard"
-description: "Spectro Cloud Palette Dashboard"
+description: "Explore the Spectro Cloud Palette Dashboard."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
