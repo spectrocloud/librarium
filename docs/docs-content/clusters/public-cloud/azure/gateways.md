@@ -75,7 +75,7 @@ VNet contains the following network settings.
    This selection of VNet is not possible via Azure User Interface and hence can be achieved
    [programmatically](https://learn.microsoft.com/en-us/azure/aks/configure-kubenet) as below:
 
-   ```
+   ```shell
    SUBNET_ID=$(az network vnet subnet show --resource-group resource-group-name --vnet-name vnet-name --name subnet-name --query id -o tsv)
    ```
 
