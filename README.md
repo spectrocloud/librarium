@@ -522,6 +522,36 @@ component will automatically display the badge in the correct color based on the
   variables.
 ```
 
+### Simple Card Grid
+
+This is a custom component that creates a grid of simple text cards with two columns, styled according to our color
+scheme. The rows of cards are dynamically created according to the list of specified cards.
+
+```js
+<SimpleCardGrid
+  cards={[
+    {
+      title: "Lorem Ipsum",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      buttonText: "Learn more",
+      relativeURL: "./link",
+    },
+    {
+      title: "Lorem Ipsum",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      buttonText: "Learn more",
+      relativeURL: "./link",
+    },
+    {
+      title: "Lorem Ipsum",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      buttonText: "Learn more",
+      relativeURL: "./link",
+    },
+  ]}
+/>
+```
+
 ## Netlify Previews
 
 By default Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. In
@@ -736,3 +766,7 @@ make clean-versions
 >
 > The `docusaurus.config.js` file is updated by the [`update_docusaurus_config.js`](./docusaurus.config.js) script. DO
 > NOT commit this file with the updated changes.
+
+```
+
+```

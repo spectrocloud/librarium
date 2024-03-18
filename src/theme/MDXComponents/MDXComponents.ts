@@ -10,6 +10,7 @@ import AppTiers from "@site/src/components/Integrations/AppTiers/AppTiers";
 import PacksTable from "@site/src/components/PacksTable/PacksTable";
 import TOCInline from "@theme/TOCInline";
 import { TechnicalPreviewReleaseNote as TpBadge } from "@site/src/components/Badges";
+import SimpleCardGrid from "@site/src/components/SimpleCardGrid/index";
 
 export default {
   ...MDXComponents,
@@ -24,4 +25,5 @@ export default {
   PacksTable,
   TOCInline,
   TpBadge,
+  SimpleCardGrid,
 };
