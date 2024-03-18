@@ -78,9 +78,9 @@ to attach a custom storage account or container to the Azure cluster that contai
 
 ## Network Access
 
-Clusters that use a Palette self-hosted [Private Cloud Gateway](gateways.md) (PCG), should use a custom storage account
-and container that are restricted to the VNet that the PCG and cluster are located in. Ensure you disable public access
-and use private access for the Azure storage account.
+Clusters that use a Palette self-hosted [Private Cloud Gateway](../../pcg/architecture.md) (PCG), should use a custom
+storage account and container that are restricted to the VNet that the PCG and cluster are located in. Ensure you
+disable public access and use private access for the Azure storage account.
 
 ## Pricing Options
 

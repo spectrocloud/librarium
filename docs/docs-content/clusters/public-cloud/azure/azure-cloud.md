@@ -41,7 +41,7 @@ Palette. You can use any of the following authentication methods to register you
 | **Cloud**                         | Select **Azure Public Cloud** or **Azure US Government**.                                                                                                                                                                                                                                              |
 | **Tenant Name**                   | An optional tenant name.                                                                                                                                                                                                                                                                               |
 | **Disable Properties**            | This option prevents Palette and VerteX from creating Azure Virtual Networks (VNets) and other network resources on your behalf for static placement deployments. If you enable this option, all users must manually specify a pre-existing VNet, subnets, and security groups when creating clusters. |
-| **Connect Private Cloud Gateway** | If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link to the cloud account.                                                                                                                        |
+| **Connect Private Cloud Gateway** | Select this option to connect to a Private Cloud Gateway (PCG) if you have a PCG deployed in your environment. Refer to the PCG [Architecture](../../pcg/architecture.md) page to learn more about a PCG.                                                                                              |
 
 ## Validate
 
