@@ -393,7 +393,11 @@ const redirects = [
     to: "/clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry",
   },
   {
-    from: ["/security/security-bulletins/", "/security-bulletins/cve-reports", "/security/security-bulletins/index"],
+    from: [
+      "/security/security-bulletins/",
+      "/security/security-bulletins/cve-reports",
+      "/security/security-bulletins/index",
+    ],
     to: "/security-bulletins/",
   },
 ];
