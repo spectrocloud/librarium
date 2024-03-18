@@ -388,6 +388,10 @@ const redirects = [
     from: ["/security/security-bulletins/", "/security-bulletins/cve-reports", "/security/security-bulletins/index"],
     to: "/security-bulletins/",
   },
+  {
+    from: "/clusters/public-cloud/azure/gateways",
+    to: "/clusters/pcg/",
+  },
 ];
 
 module.exports = redirects;
