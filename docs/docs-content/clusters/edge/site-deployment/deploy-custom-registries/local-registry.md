@@ -8,26 +8,31 @@ tags: ["edge"]
 ---
 
 Palette Edge allows you to provision a local Harbor image registry as part of your Edge deployment. When your Edge
-cluster is created for the first time, all images downloaded from external registries are stored locally in the Harbor
-registry, including your provider images and all packs used by your cluster. Subsequent image pulls from the cluster are
-made to the local Harbor registry. This allows your Edge cluster to reboot containers or add new nodes without being
-connected to the external network.
+cluster is created for the first time, all images from add-on packs downloaded from external registries are stored
+locally in the Harbor registry. Subsequent image pulls from the cluster are made to the local Harbor registry. This
+allows your Edge cluster to reboot containers or add new nodes without being connected to the external network.
 
 If you specified the installation mode of the Edge Installer to be `airgap`, any images that were included in the Edge
 Installer ISO will also be loaded into the Harbor registry. For more information about building content bundles, refer
-to [Build Content Bundle](../edgeforge-workflow/build-content-bundle.md) and
-[Build Edge Artifacts with Content Bundles](../edgeforge-workflow/palette-canvos/).
+to [Build Content Bundle](../../edgeforge-workflow/build-content-bundle.md) and
+[Build Edge Artifacts with Content Bundles](../../edgeforge-workflow/palette-canvos/).
 
 If you enable the local Harbor registry on a cluster, the Palette agent will pull all images requested by the cluster
 from the Harbor registry. If your cluster uses any image that is not included in your cluster profile, you will need to
 instruct the Palette agent to not pull that image from the Harbor registry by disabling this behavior for certain
 namespaces. You can do this by giving a namespace the label `stylus.io/imageswap=disable`. For more information, refer
-to [Harbor Edge-Native Config pack](../../../integrations/harbor-edge.md#enable-image-download-from-outside-of-harbor)
+to
+[Harbor Edge-Native Config pack](/docs/docs-content/integrations/harbor-edge.md#enable-image-download-from-outside-of-harbor)
 documentation.
 
 :::preview
 
 :::
+
+## Limitations
+
+- You cannot enable Harbor registry on clusters that use authenticated provider registries. The provider registry must
+  be public.
 
 ![Local Harbor Registry Architecture](/clusters_edge_networking_local_harbor_architecture.png)
 
@@ -40,7 +45,7 @@ documentation.
 - At least 160 GB of persistent storage. The actual amount of storage required depends on the size of your images.
 
 - An Edge cluster profile. For information about how to create a cluster profile for Edge, refer to
-  [Model Edge Cluster Profile](../site-deployment/model-profile.md).
+  [Model Edge Cluster Profile](../../site-deployment/model-profile.md).
 
 ## Enable Local Harbor Registry
 
@@ -68,7 +73,7 @@ kube-apiserver-arg:
 
 6. Click **Add New Pack** and search for the **Harbor Edge Native Config** pack. Add the pack to your cluster profile.
    For more information about the pack and its parameters, refer to
-   [Harbor Edge Native Config pack documentation](../../../integrations/harbor-edge.md).
+   [Harbor Edge Native Config pack documentation](/docs/docs-content/integrations/harbor-edge.md).
 
 7. In the `harbor-config.storage` parameter, make sure you allocate enough storage in the `registry` field to store all
    your images.
@@ -99,8 +104,8 @@ kube-apiserver-arg:
 
 6. Type in your credentials to log in to Harbor. The username is always `admin`. The password is what you configured
    during cluster creation. If you don't know your password, refer to
-   [Retrieve Harbor Credentials](../../../integrations/harbor-edge.md#retrieve-harbor-credentials) to retrieve your
-   password.
+   [Retrieve Harbor Credentials](/docs/docs-content/integrations/harbor-edge.md#retrieve-harbor-credentials) to retrieve
+   your password.
 
 7. In the **Projects** view, select the **spectro-images** project.
 

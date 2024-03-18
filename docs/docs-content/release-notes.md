@@ -9,9 +9,9 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
-## March 16, 2024 - Release 4.3.0
+## March 30, 2024 - Release 4.3.0
 
-This release contains several new exciting technical previews, including the Edge Management Console and Cluster Profile
+This release contains several new exciting technical previews, including the Edge Local UI and Cluster Profile
 variables. Other notable features include enhancements to the Palette CLI, support for deploying Konvoy clusters, Azure
 AKS support for VerteX, and adding multiple system administrators to the Palette and VerteX system consoles. Check out
 the following sections for a complete list of features, improvements, and known issues.
@@ -83,13 +83,6 @@ the following sections for a complete list of features, improvements, and known 
   through Palette CLI will be eligible for a cluster profile update. We recommend you review the
   [Upgrade a PCG](./clusters/pcg/manage-pcg/pcg-upgrade.md) guide to learn more about updating a PCG.
 
-Private Cloud Gateway (PCG) deployments now use Kubernetes version 1.26. Previously, the default Kubernetes version was
-1.24. Use the latest version of the Palette CLI to install PCG clusters. Existing Private Cloud Gateway deployments will
-require a manual reconciliation of the cluster profile to update the Kubernetes version to 1.26. Make sure you carry
-over any customizations the current cluster profile may have, such as pod CIDR and service CIDR before updating the
-cluster profile with the new Kubernetes version. Refer to the Update a Cluster Profile guide to learn more on
-reconciling a cluster profile pack layer change.
-
 #### Known Issues
 
 - Conducting cluster node scaling operations on a cluster undergoing a backup can lead to issues and potential
@@ -110,11 +103,11 @@ reconciling a cluster profile pack layer change.
 
 #### Features
 
-- The Edge Management Console (EMC) is a new feature that provides a local management interface for Edge clusters in an
-  airgap environment. The EMC is a web-based interface that allows you to manage Edge hosts in your network locally,
+- The Edge Local UI is a new feature that provides a local management interface for Edge clusters in an airgap
+  environment. The local UI is a web-based interface that allows you to manage Edge hosts in your network locally,
   upload content bundles containing images, Helm charts, and packs, and create Edge clusters locally in disconnected
-  environments without connections to a Palette instance. To get started with the EMC, refer to the
-  [Edge Management Console](./clusters/edge/edge.md) documentation.
+  environments without connections to a Palette instance. To get started with local UI, refer to the
+  [Edge Local UI](./clusters/edge/local-ui/local-ui.md) documentation.
 
 - <TpBadge /> Edge hosts using a local [image registry through Harbor](./integrations/harbor-edge.md) can now also use
   an external image registry alongside the local registry. The feature allows you to use an external image registry to
@@ -127,6 +120,12 @@ reconciling a cluster profile pack layer change.
   is required. Refer to the [Edge Cluster Upgrade Behavior](./clusters/edge/upgrade-behavior.md) page to learn more
   about the upgrade behavior.
 
+- New Edge clusters can now retrieve provider images from authenticated registries. Previously, only public registries
+  were supported for non-airgapped clusters. Now, you can use authenticated registries to store your provider images and
+  retrieve them during cluster deployment. For more information, refer to the
+  [Deploy Cluster with a Private Registry](clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md)
+  guide.
+
 - Edge hosts using RKE2 as the Kubernetes distribution can now use the
   [network overlay](./clusters/edge/networking/vxlan-overlay.md) feature.
 
@@ -134,8 +133,6 @@ reconciling a cluster profile pack layer change.
   namespace annotations. Refer to the
   [Harbor Edge](./integrations/harbor-edge.md#enable-image-download-from-outside-of-harbor) reference page to learn more
   about the feature.
-
-#### Known Issues
 
 ### Virtual Machine Orchestrator (VMO)
 
