@@ -89,7 +89,7 @@ the following sections for a complete list of features, improvements, and known 
   unresponsiveness. To avoid this, ensure no backup operations are in progress before scaling nodes or performing other
   cluster operations that change the cluster state.
 
-- Palette automatically creates a seucurity group for worker nodes using the format `<cluster-name>-node`. If a security
+- Palette automatically creates a security group for worker nodes using the format `<cluster-name>-node`. If a security
   group with the same name already exists in the VPC, the cluster creation process fails. To avoid this, ensure that no
   security group with the same name exists in the VPC before creating a cluster.
 
@@ -201,7 +201,7 @@ the following sections for a complete list of features, improvements, and known 
 
 #### Pack Notes
 
-- Local Path Provisioner CSI for Edge is now a [verifed pack](./integrations/verified_packs.md).
+- Local Path Provisioner CSI for Edge is now a [verified pack](./integrations/verified_packs.md).
 
 - K3s version 1.27.7 has been marked as _Disabled_ and is no longer available for new cluster profiles. This version has
   a known issue that causes clusters to crash. You can learn more about the issue in the
@@ -249,7 +249,7 @@ the following sections for a complete list of features, improvements, and known 
 | Cluster Autoscaler for AWS    | 1.28.2      |
 | External DNS                  | 0.13.6      |
 | External Secrets Operator     | 0.9.11      |
-| Hashicorp Vault               | 0.27.0      |
+| HashiCorp Vault               | 0.27.0      |
 | Istio                         | 1.20.1      |
 | MetalLB                       | 0.13.12     |
 | Nginx Ingress                 | 1.9.5       |
