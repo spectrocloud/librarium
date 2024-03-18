@@ -109,9 +109,12 @@ the following sections for a complete list of features, improvements, and known 
   environments without connections to a Palette instance. To get started with local UI, refer to the
   [Edge Local UI](./clusters/edge/local-ui/local-ui.md) documentation.
 
-- <TpBadge /> Edge hosts using a local [image registry through Harbor](./integrations/harbor-edge.md) can now also use
-  an external image registry alongside the local registry. The feature allows you to use an external image registry to
-  pull images that may not be available in the local registry.
+- <TpBadge /> Edge hosts using a local [image registry through Harbor](./integrations/harbor-edge.md) can now also use a
+  [private external image
+  registry](./clusters/edge/site-deployment/deploy-custom-registries/deploy-external-registry.md) alongside the local
+  registry. The feature allows the cluster to pull image from a private external image registry and store them in the
+  local registry. Images for the add-on layers of the cluster will be pulled from the local registry, reducing bandwidth
+  needs and improving service availability.
 
 #### Improvements
 
