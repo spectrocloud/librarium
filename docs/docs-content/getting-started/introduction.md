@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Introduction to Palette"
 title: "Introduction to Palette"
-description: "Learn what Spectro Cloud's Palette platform is."
+description: "Learn about Spectro Cloud Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10

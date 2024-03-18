@@ -62,6 +62,9 @@ api: ## Generate API docs
 	npm run clean-api-docs
 	npm run generate-api-docs
 
+test: ## Run Jest tests
+	npm test
+
 ##@ Git Targets
 
 commit: ## Add a Git commit. Usage: make commit MESSAGE="<your message here>"
