@@ -498,6 +498,36 @@ To add a video, use the following syntax. Ensure you capitalize the letter "V":
 <Video title="vsphere-pcg-creation" src="/cluster-creation-videos/vmware.mp4"></Video>
 ```
 
+### Simple Card Grid
+
+This is a custom component that creates a grid of simple text cards with two columns, styled according to our color
+scheme. The rows of cards are dynamically created according to the list of specified cards.
+
+```js
+<SimpleCardGrid
+  cards={[
+    {
+      title: "Lorem Ipsum",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      buttonText: "Learn more",
+      relativeURL: "./link",
+    },
+    {
+      title: "Lorem Ipsum",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      buttonText: "Learn more",
+      relativeURL: "./link",
+    },
+    {
+      title: "Lorem Ipsum",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      buttonText: "Learn more",
+      relativeURL: "./link",
+    },
+  ]}
+/>
+```
+
 ## Netlify Previews
 
 By default Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. In
