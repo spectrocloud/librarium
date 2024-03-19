@@ -28,7 +28,7 @@ The prerequisite steps to getting started with Palette on AWS are as follows.
 - An SSH Key Pair. Use the [Create and Upload an SSH Key](../../clusters/cluster-management/ssh-keys.md) guide to learn
   how to create an SSH key and upload it to Palette.
 
-## Validate
+## Validate
 
 You can verify your account is added.
 
