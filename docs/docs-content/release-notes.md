@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 ## March 30, 2024 - Release 4.3.0
 
-This release contains several new exciting technical previews, including the Edge Local UI and Cluster Profile
+This release contains several new exciting Technical Preview features, including the Edge Local UI and Cluster Profile
 variables. Other notable features include enhancements to the Palette CLI, support for deploying Konvoy clusters, Azure
 AKS support for VerteX, and adding multiple system administrators to the Palette and VerteX system consoles. Check out
 the following sections for a complete list of features, improvements, and known issues.
@@ -22,7 +22,7 @@ the following sections for a complete list of features, improvements, and known 
 
 - <TpBadge /> Cluster Profile variables, a new feature that allows you to define variables in a cluster profile. This
   feature is in Tech Preview and is available only for Edge clusters. Profile variables allow you to define variable
-  types, apply validation, and narrow the scope of variables to a cluster profile. Check out the reference page for
+  types, apply validation, and narrow the scope of variables to a cluster profile. Check out
   [Cluster Profile Variables](./profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) to learn
   more about profile variables.
 
@@ -44,7 +44,7 @@ the following sections for a complete list of features, improvements, and known 
 
 #### Improvements
 
-- <TpBadge /> Nutanix cluster deployments now display YAML variables and expose them as input fields on the User
+- <TpBadge /> Nutanix cluster deployments now display YAML variables and expose them as input fields in the User
   Interface (UI) during the cluster deployment process. Previously, the UI did not display the YAML variables for
   Nutanix clusters and users had to update the machine template YAML manually. You can learn more about Nutanix in the
   [Create and Manage Nutanix Cluster](./clusters/data-center/nutanix/create-manage-nutanix-cluster.md) guide.
@@ -118,7 +118,7 @@ the following sections for a complete list of features, improvements, and known 
 
 #### Improvements
 
-- Improved Edge host upgrade experience. In the past, most upgrades would trigger a repave when not always necessary.
+- Improved Edge cluster upgrade experience. In the past, most upgrades would trigger a repave when not always necessary.
   The enhancement applies more intelligence to the upgrade process and determines if a reboot, service reload, or repave
   is required. Refer to the [Edge Cluster Upgrade Behavior](./clusters/edge/upgrade-behavior.md) page to learn more
   about the upgrade behavior.
@@ -158,7 +158,7 @@ the following sections for a complete list of features, improvements, and known 
   and deploy a Konvoy cluster.
 
 - Support for TLS 1.3 is now available in VerteX. Clusters deployed through VerteX and the VerteX instance cluster
-  itself now supports TLS 1.3.
+  itself now support TLS 1.3.
 
 - Multiple system administrators can now be added to the VerteX system console to help manage and maintain the VerteX
   instance. The feature helps organizations embrace the separation of duties by delegating different responsibilities to
@@ -170,7 +170,7 @@ the following sections for a complete list of features, improvements, and known 
   `fips-validate` command. The command scans the cluster and reports the FIPS compliance status of images. The command
   also supports checking exposed service endpoints for approved ciphers and TLS versions. Images and service endpoints
   that are not compliant are reported with either a failed or unknown status. Refer to the
-  [FIPS Validate](./palette-cli/commands/fips-validate.md) to learn more about the command.
+  [FIPS Validate](./palette-cli/commands/fips-validate.md) guide to learn more about the command.
 
 #### Improvements
 
@@ -208,7 +208,7 @@ the following sections for a complete list of features, improvements, and known 
 
 - K3s version 1.27.7 has been marked as _Disabled_ and is no longer available for new cluster profiles. This version has
   a known issue that causes clusters to crash. You can learn more about the issue in the
-  [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047). Upgrade to a newer version of K3s to avoid the issue
+  [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047). Upgrade to a newer version of K3s to avoid the issue.
 
 #### Kubernetes
 
