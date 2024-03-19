@@ -20,11 +20,12 @@ the following sections for a complete list of features, improvements, and known 
 
 #### Features
 
+<!-- prettier-ignore -->
 - <TpBadge /> Cluster Profile variables, a new feature that allows you to define variables in a cluster profile. This
   feature is in Tech Preview and is available only for Edge clusters. Profile variables allow you to define variable
-  types, apply validation, and narrow the scope of variables to a cluster profile. Check out
-  [Cluster Profile Variables](./profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) to learn
-  more about profile variables.
+  types, apply validation, and narrow the scope of variables to a cluster profile. 
+  Check out [Cluster Profile Variables](./profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) to learn more about
+  profile variables.
 
 - MAAS clusters using Palette eXtended Kubernetes (PXK) now support the ability to specify a custom MAAS API endpoint
   URL and port during cluster creation. This feature allows you to use a custom DNS server or Virtual IP (VIP) that is
@@ -93,6 +94,10 @@ the following sections for a complete list of features, improvements, and known 
   group with the same name already exists in the VPC, the cluster creation process fails. To avoid this, ensure that no
   security group with the same name exists in the VPC before creating a cluster.
 
+- K3s version 1.27.7 has been marked as _Disabled_ and is no longer available for new cluster profiles. This version has
+  a known issue that causes clusters to crash. You can learn more about the issue in the
+  [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047). Upgrade to a newer version of K3s to avoid the issue.
+
 ### Edge
 
 #### Breaking Changes
@@ -109,9 +114,9 @@ the following sections for a complete list of features, improvements, and known 
   environments without connections to a Palette instance. To get started with local UI, refer to the
   [Edge Local UI](./clusters/edge/local-ui/local-ui.md) documentation.
 
+<!-- prettier-ignore -->
 - <TpBadge /> Edge hosts using a local [image registry through Harbor](./integrations/harbor-edge.md) can now also use a
-  [private external image
-  registry](./clusters/edge/site-deployment/deploy-custom-registries/deploy-external-registry.md) alongside the local
+  [private external image registry](./clusters/edge/site-deployment/deploy-custom-registries/deploy-external-registry.md) alongside the local
   registry. The feature allows the cluster to pull image from a private external image registry and store them in the
   local registry. Images for the add-on layers of the cluster will be pulled from the local registry, reducing bandwidth
   needs and improving service availability.
@@ -205,10 +210,6 @@ the following sections for a complete list of features, improvements, and known 
 #### Pack Notes
 
 - Local Path Provisioner CSI for Edge is now a [verified pack](./integrations/verified_packs.md).
-
-- K3s version 1.27.7 has been marked as _Disabled_ and is no longer available for new cluster profiles. This version has
-  a known issue that causes clusters to crash. You can learn more about the issue in the
-  [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047). Upgrade to a newer version of K3s to avoid the issue.
 
 #### Kubernetes
 
