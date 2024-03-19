@@ -35,4 +35,4 @@ through the following pages.
 
 - [Deploy a Cluster with Terraform](./terraform.md)
 
-- [Palette Additional Capabilities](./additional-capabilities.md)
+- [Additional Capabilities](./additional-capabilities.md)

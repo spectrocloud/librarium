@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Palette Additional Capabilities"
-title: "Palette Additional Capabilities"
+sidebar_label: "Additional Capabilities"
+title: "Additional Capabilities"
 description: "Learn more about Palette's Additional Capabilities."
 icon: ""
 hide_table_of_contents: false
