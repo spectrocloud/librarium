@@ -4,7 +4,7 @@ title: "Create a Cluster Profile"
 description: "Learn to create a full cluster profile in Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 40
+sidebar_position: 20
 tags: ["getting-started"]
 ---
 
@@ -12,7 +12,7 @@ Palette offers profile-based management for Kubernetes, enabling consistency, re
 across multiple clusters. A cluster profile allows you to customize the cluster infrastructure stack, allowing you to
 choose the desired Operating System (OS), Kubernetes, Container Network Interfaces (CNI), Container Storage Interfaces
 (CSI). You can further customize the stack with add-on application layers. For more information about cluster profile
-types, refer to [Cluster Profiles](./cluster-profiles.md).
+types, refer to [Cluster Profiles](../cluster-profiles.md).
 
 In this tutorial, you create a full profile directly from the Palette dashboard. Then, you add a layer to your cluster
 profile by using a manifest to deploy a web application. Adding custom manifests to your cluster profile allows you to
@@ -20,95 +20,11 @@ customize and configure clusters based on specific requirements.
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a cluster profile. Refer to the
-  [Roles and Permissions](../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
-  documentation for more information.
+- Follow the steps described in the [Set up Palette with GCP](./setup.md) guide to authenticate Palette for use with
+  your GCP cloud account.
 
 ## Create a Full Cluster Profile
 
-<Tabs>
-
-<TabItem label="AWS" value="aws-ui">
-Log in to [Palette](https://console.spectrocloud.com) and navigate to the left **Main Menu**. Select **Profiles** to
-view the cluster profile page. You can view the list of available cluster profiles. To create a cluster profile, click
-on **Add Cluster Profile**.
-
-![View of the cluster Profiles page](/getting-started/getting-started_create-cluster-profile_profile_list_view.png)
-
-Follow the wizard to create a new profile.
-
-In the **Basic Information** section, assign the name **aws-profile**, a brief profile description, select the type as
-**Full**, and assign the tag **env:aws**. You can leave the version empty if you want to. Just be aware that the version
-defaults to **1.0.0**. Click on **Next**.
-
-**Cloud Type** allows you to choose the infrastructure provider with which this cluster profile is associated. Select
-**AWS** and click on **Next**.
-
-The **Profile Layers** step is where you specify the packs that compose the profile. There are four required
-infrastructure packs and several optional add-on packs you can choose from. Every pack requires you to select the **Pack
-Type**, **Registry**, and **Pack Name**.
-
-For this tutorial, use the following packs:
-
-| Pack Name      | Version | Layer            |
-| -------------- | ------- | ---------------- |
-| ubuntu-aws LTS | 22.4.x  | Operating System |
-| Kubernetes     | 1.27.x  | Kubernetes       |
-| cni-calico     | 3.26.x  | Network          |
-| csi-aws-ebs    | 1.22.x  | Storage          |
-
-As you fill out the information for each layer, click on **Next** to proceed to the next layer.
-
-Click on **Confirm** after you have completed filling out all the core layers.
-
-![A view of the cluster profile stack](/getting-started/aws/getting-started_create-cluster-profile_clusters_parameters.png)
-
-The review section gives an overview of the cluster profile configuration you selected. Click on **Finish
-Configuration** to create the cluster profile.
-
-</TabItem>
-
-<TabItem label="Azure" value="azure-ui">
-
-Log in to Palette and navigate to the left **Main Menu**. Select **Profiles** to view the cluster profile page. You can
-view the list of available cluster profiles. To create a cluster profile, click on **Add Cluster Profile**.
-
-![View of the cluster Profiles page](/getting-started/getting-started_create-cluster-profile_profile_list_view.png)
-
-Follow the wizard to create a new profile.
-
-In the **Basic Information** section, assign the name **azure-profile**, a brief profile description, select the type as
-**Full**, and assign the tag **env:azure**. You can leave the version empty if you want to. Just be aware that the
-version defaults to **1.0.0**. Click on **Next**.
-
-**Cloud Type** allows you to choose the infrastructure provider with which this cluster profile is associated. Select
-**Azure** and click on **Next**.
-
-The **Profile Layers** step is where you specify the packs that compose the profile. There are four required
-infrastructure packs and several optional add-on packs you can choose from. Every pack requires you to select the **Pack
-Type**, **Registry**, and **Pack Name**.
-
-For this tutorial, use the following packs:
-
-| Pack Name        | Version | Layer            |
-| ---------------- | ------- | ---------------- |
-| ubuntu-azure LTS | 22.4.x  | Operating System |
-| Kubernetes       | 1.27.x  | Kubernetes       |
-| cni-calico-azure | 3.26.x  | Network          |
-| Azure Disk       | 1.28.x  | Storage          |
-
-As you fill out the information for each layer, click on **Next** to proceed to the next layer.
-
-Click on **Confirm** after you have completed filling out all the core layers.
-
-![Azure cluster profile overview page](/getting-started/azure/getting-started_create-cluster-profile_cluster_profile_stack.png)
-
-The review section gives an overview of the cluster profile configuration you selected. Click on **Finish
-Configuration** to finish creating the cluster profile.
-
-</TabItem>
-
-<TabItem label="Google Cloud" value="gcp-ui">
 Log in to [Palette](https://console.spectrocloud.com) and navigate to the left **Main Menu**. Select **Profiles** to
 view the cluster profile page. You can view the list of available cluster profiles. To create a cluster profile, click
 on **Add Cluster Profile**.
@@ -145,10 +61,6 @@ Click on **Confirm** after you have completed filling out all the core layers.
 
 The review section gives an overview of the cluster profile configuration you selected. Click on **Finish
 Configuration** to create the cluster profile.
-
-</TabItem>
-
-</Tabs>
 
 ## Add a Manifest
 
