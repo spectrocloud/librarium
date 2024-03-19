@@ -175,7 +175,7 @@ const config = {
             },
             template: "api.mustache",
             // Customize API MDX with mustache template
-            hideSendButton: true,
+            hideSendButton: false,
           },
         },
       },
