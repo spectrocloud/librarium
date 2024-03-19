@@ -57,22 +57,22 @@ the [Self-Hosted Palette](../enterprise-version/enterprise-version.md) page.
 
 Palette VerteX offers a simple, flexible, and secure way for government and regulated industries to deploy and manage
 Kubernetes workloads containing sensitive and classified information. It is available as a self-hosted platform offering
-that you can install in various environments. These include virtualized and bare metal data centers (like
-[VMware vSphere](https://www.vmware.com/products/vsphere.html) and [Nutanix](https://www.nutanix.com/)), clouds
-(including [AWS](https://aws.amazon.com/govcloud-us/) and
+that you can install in your data center or public cloud provider.
+
+Palette VerteX is fully proven in operational environments as it has a Technology Readiness Level (TRL) 9 designation,
+making it suitable for use in high-security production environments up to Impact Levels (IL) 5, 6, and 6+. It enables
+you to deploy and manage the life cycle of multiple Kubernetes clusters in various environments. These include
+virtualized and bare metal data centers (such as [VMware vSphere](https://www.vmware.com/products/vsphere.html) and
+[Nutanix](https://www.nutanix.com/)), clouds (including [AWS](https://aws.amazon.com/govcloud-us/) and
 [Azure](https://azure.microsoft.com/en-ca/explore/global-infrastructure/government) government clouds), and edge
 locations (including air-gapped setups), which makes VerteX also appropriate for addressing challenges like intermittent
 connectivity or low bandwidth.
 
-Palette VerteX is fully proven in operational environments as it has a Technology Readiness Level (TRL) 9 designation,
-making it suitable for use in high-security production environments up to Impact Levels (IL) 5, 6, and 6+. Additionally,
-VerteX incorporates validated Federal Information Processing Standards (FIPS) 140-2 cryptographic modules into its
-management plane and the Kubernetes clusters it deploys.
-
-The platform also secures data in motion through encrypted Transport Layer Security (TLS) communication channels,
-includes a suite of scanning tools, and offers CONUS support from a dedicated public sector team. These capabilities
-ensure robust data protection for your organization’s infrastructure and applications. To learn more, check out the
-[Palette VerteX](../vertex/vertex.md) documentation.
+Additionally, VerteX incorporates validated Federal Information Processing Standards (FIPS) 140-2 cryptographic modules
+into its management plane and the Kubernetes clusters it deploys. It secures data in motion through encrypted Transport
+Layer Security (TLS) communication channels, includes a suite of scanning tools, and offers CONUS support from a
+dedicated public sector team. These capabilities ensure robust data protection for your organization’s infrastructure
+and applications. To learn more, check out the [Palette VerteX](../vertex/vertex.md) documentation.
 
 ## Virtual Machine Orchestrator
 
@@ -82,5 +82,5 @@ VMs within the same cluster that hosts your containerized applications. VMs are 
 complete mapping between the VM and Kubernetes concepts.
 
 Palette VMO simplifies infrastructure management and eliminates the need for a hypervisor by leveraging
-[Canonical MAAS](https://maas.io). It works in self-hosted, air-gapped, and in our SaaS environments. Learn more on the
+[Canonical MAAS](https://maas.io). It works in self-hosted, airgapped, and in our SaaS environments. Learn more on the
 [Virtual Machine Orchestrator](../vm-management/vm-management.md) page.
