@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Override Image Registry Configuration"
-title: "Override Image Registry Configuration"
+sidebar_label: "Override Registry Configuration"
+title: "Override Registry Configuration"
 description: "Learn how to override the image registry configuration for a Private Cloud Gateway (PCG) in Palette."
 hide_table_of_contents: false
 sidebar_position: 60
@@ -23,10 +23,10 @@ Before you override the image registry configuration for a PCG, ensure you have 
 
   :::tip
 
-  You can download the kubeconfig file from the PCG cluster details page in Palette. Navigate to the PCG's cluster
-  details's page. Click on the **Admin Kubeconfig** link to download the kubeconfig file. If you need help with
-  configuring kubectl to access the PCG cluster, refer to the
-  [Access Cluster with CLI](../../cluster-management/palette-webctl.md) guide.
+  You can download the kubeconfig file from the PCG cluster details page in Palette. Navigate to the PCG cluster details
+  page. Click on the **Admin Kubeconfig** link to download the kubeconfig file. If you need help with configuring
+  kubectl to access the PCG cluster, refer to the [Access Cluster with CLI](../../cluster-management/palette-webctl.md)
+  guide.
 
   :::
 
@@ -41,7 +41,7 @@ Use the following steps to override the image registry configuration.
 
 1. Open a terminal session.
 
-2. Creat an empty YAML file with the name **registry-secret.yaml**. Use the following command to create the file.
+2. Create an empty YAML file with the name **registry-secret.yaml**. Use the following command to create the file.
 
    ```shell
    touch registry-secret.yaml
@@ -79,15 +79,15 @@ Use the following steps to override the image registry configuration.
 4. Replace the placeholder values with the actual values for your custom image registry. Refer to the table below for a
    description of each parameter.
 
-   | Parameter           | Description                                                                                                                                                                                         | Required |
-   | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-   | `DOMAIN`            | The domain of the custom image registry.                                                                                                                                                            | Yes      |
-   | `BASE_PATH`         | The base path of the custom image registry.                                                                                                                                                         | Yes      |
-   | `USERNAME`          | The username to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                          | No       |
-   | `PASSWORD`          | The password to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                          | No       |
-   | `INSECURE`          | Set to `true` if the custom image registry uses an insecure connection or self-signed certificate. Set to `false` if the custom image registry uses a secure connection.                            | Yes      |
-   | `CA_CERT`           | The Certificate Authority of the custom image registry in PEM format. Required if the custom image registry uses a self-signed certificate.                                                         | No       |
-   | `MIRROR_REGISTRIES` | A comma-separated list of mirror registries to use for pulling images. For example: `docker.io::public.ecr.aws/1234567/airgap-images/docker.io,gcr.io::public.ecr.aws/1234567/airgap-images/gcr.io` | Yes      |
+   | Parameter           | Description                                                                                                                                                                                                                                                                                                   | Required |
+   | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+   | `DOMAIN`            | The domain of the custom image registry.                                                                                                                                                                                                                                                                      | Yes      |
+   | `BASE_PATH`         | The base path of the custom image registry.                                                                                                                                                                                                                                                                   | Yes      |
+   | `USERNAME`          | The username to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                                                                    | No       |
+   | `PASSWORD`          | The password to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                                                                    | No       |
+   | `INSECURE`          | Set to `true` if the custom image registry uses an insecure connection or self-signed certificate. Set to `false` if the custom image registry uses a secure connection.                                                                                                                                      | Yes      |
+   | `CA_CERT`           | The Certificate Authority of the custom image registry in PEM format. Required if the custom image registry uses a self-signed certificate.                                                                                                                                                                   | No       |
+   | `MIRROR_REGISTRIES` | A comma-separated list of mirror registries in [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::public.ecr.aws/1234567/airgap-images/docker.io,gcr.io::public.ecr.aws/1234567/airgap-images/gcr.io` | Yes      |
 
     <details>
     <!-- prettier-ignore -->
@@ -124,3 +124,22 @@ Use the following steps to override the image registry configuration.
 ## Validate
 
 Use the following steps to validate the image registry configuration.
+
+1. Open a terminal session that has network access to the PCG cluster.
+
+2. Configure kubectl to use the kubeconfig file for the PCG cluster. Use the following command to configure kubectl.
+   Refer to the [Access Cluster with CLI](../../cluster-management/palette-webctl.md) for guidance on configuring
+   kubectl.
+
+3. Issue the following command to verify that the secret containing the image registry configuration is created.
+
+   ```shell
+   kubectl get secret registry-info --namespace=jet-system  \
+   --output jsonpath='{.data.MIRROR_REGISTRIES}' | base64 --decode
+   ```
+
+   The command returns the mirror registries that you configured in the `MIRROR_REGISTRIES` parameter.
+
+   ```shell hideClipboard
+   docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images
+   ```
