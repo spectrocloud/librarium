@@ -152,7 +152,7 @@ Use the following steps to install Palette.
 
     If you are using the Palette CLI from inside an
     [airgap support VM](../airgap/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect the airgap
-    environment and prompt you if you want to use the **Use local, air-gapped Spectro Cloud Artifact Repository (SCAR)
+    environment and prompt you to **Use local, air-gapped Spectro Cloud Artifact Repository (SCAR)
     configuration**. Type `y` to use the local resources and skip filling in the repository URL and credentials.
 
     :::
@@ -192,7 +192,7 @@ Use the following steps to install Palette.
 :::info
 
 If you are using the Palette CLI from inside an [airgap support VM](../airgap/vmware-vsphere-airgap-instructions.md),
-the CLI will automatically detect the airgap environment and prompt you if you want to use the **Use local, air-gapped
+the CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped
 Pack Registry?** Type `y` to use the local resources and skip filling in the OCI registry URL and credentials.
 
 :::
@@ -226,7 +226,7 @@ for more information.
     		| **Use Public Registry for Images**               | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. Airgap users, select `n` so that you can specify the values for the OCI registry that contains all the required images. |
 
     		When prompted to **Pull images from public registry**, type `n` and specify the OCI registry configuration values for
-    		your image registry. If you are an [airgap support VM](../airgap/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect the airgap environment and prompt you if you want to use the **Use local, air-gapped Image Registry?** Type `y` to use the local resources and skip filling in the OCI registry URL and credentials.
+    		your image registry. If you are an [airgap support VM](../airgap/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Image Registry?** Type `y` to use the local resources and skip filling in the OCI registry URL and credentials.
         Refer to the table above for more information.
 
 :::info
