@@ -22,7 +22,7 @@ lowest latency. The ngrok Ingress Controller for Kubernetes equips you to serve 
 configure networking details such as ELBs, IPs, network interfaces, or VPC routing, radically simplifying ingress into
 Kubernetes.
 
-# Versions Supported
+## Versions Supported
 
 - 0.9.0
 
