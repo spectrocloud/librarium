@@ -152,8 +152,8 @@ Use the following steps to install Palette.
 
     If you are using the Palette CLI from inside an
     [airgap support VM](../airgap/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect the airgap
-    environment and prompt you to **Use local, air-gapped Spectro Cloud Artifact Repository (SCAR)
-    configuration**. Type `y` to use the local resources and skip filling in the repository URL and credentials.
+    environment and prompt you to **Use local, air-gapped Spectro Cloud Artifact Repository (SCAR) configuration**. Type
+    `y` to use the local resources and skip filling in the repository URL and credentials.
 
     :::
 
@@ -192,8 +192,8 @@ Use the following steps to install Palette.
 :::info
 
 If you are using the Palette CLI from inside an [airgap support VM](../airgap/vmware-vsphere-airgap-instructions.md),
-the CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped
-Pack Registry?** Type `y` to use the local resources and skip filling in the OCI registry URL and credentials.
+the CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type
+`y` to use the local resources and skip filling in the OCI registry URL and credentials.
 
 :::
 
