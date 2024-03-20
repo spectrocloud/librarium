@@ -143,3 +143,53 @@ Use the following steps to validate the image registry configuration.
    ```shell hideClipboard
    docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images
    ```
+
+4. Deploy a cluster through Palette. The PCG will propagate the image registry configuration to the workload cluster,
+   and the cluster will use the custom image registry to pull images if specified in the mirror registry configuration.
+
+5. SSH into one of the workload cluster nodes. You can verify the image registry configuration on the workload cluster
+   by checking the containerd configuration file. Use the following command to check the containerd configuration file.
+
+   ```shell
+   cat /etc/containerd/config.toml
+   ```
+
+   Each mirror registry specified in the `MIRROR_REGISTRIES` parameter is added to the
+   `plugins."io.containerd.grpc.v1.cri".registry.mirrors.` section. Using the example configuration from earlier, the
+   containerd configuration file should contain the following configuration.
+
+   ```yaml {19-33}
+   ## template: jinja
+
+   # Use config version 2 to enable new configuration fields.
+   # Config file is parsed as version 1 by default.
+   version = 2
+
+   imports = ["/etc/containerd/conf.d/*.toml"]
+
+   [plugins]
+     [plugins."io.containerd.grpc.v1.cri"]
+     [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+       runtime_type = "io.containerd.runc.v2"
+     [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+       SystemdCgroup = true
+
+
+     # contains spectro changes
+     [plugins."io.containerd.grpc.v1.cri".registry]
+       [plugins."io.containerd.grpc.v1.cri".registry.mirrors]
+         [plugins."io.containerd.grpc.v1.cri".registry.mirrors."docker.io"]
+           endpoint = ["harbor.example.org/airgap-images/docker.io"]
+         [plugins."io.containerd.grpc.v1.cri".registry.mirrors."gcr.io"]
+           endpoint = ["harbor.example.org/airgap-images/gcr.io"]
+         [plugins."io.containerd.grpc.v1.cri".registry.mirrors."ghcr.io"]
+           endpoint = ["harbor.example.org/airgap-images/ghcr.io"]
+         [plugins."io.containerd.grpc.v1.cri".registry.mirrors."k8s.gcr.io"]
+           endpoint = ["harbor.example.org/airgap-images/gcr.io"]
+         [plugins."io.containerd.grpc.v1.cri".registry.mirrors."registry.k8s.io"]
+           endpoint = ["harbor.example.org/airgap-images/k8s.io"]
+         [plugins."io.containerd.grpc.v1.cri".registry.mirrors."quay.io"]
+           endpoint = ["harbor.example.org/airgap-images/quay.io"]
+         [plugins."io.containerd.grpc.v1.cri".registry.mirrors."us-east1-docker.pkg.dev"]
+           endpoint = ["harbor.example.org/airgap-images"]
+   ```
