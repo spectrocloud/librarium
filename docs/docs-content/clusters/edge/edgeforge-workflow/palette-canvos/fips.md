@@ -16,6 +16,40 @@ This page guides you through the process of building FIPS-enabled Edge artifacts
 
 ## Prerequisites
 
+- A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture to build the Edge
+  artifacts. You can issue the following command in the terminal to check your processor architecture.
+
+  ```bash
+  uname -m
+  ```
+
+- Minimum hardware configuration of the Linux machine:
+
+  - 4 CPU
+  - 8 GB memory
+  - 50 GB storage
+
+- Depending on the Operating System (OS) you want to use on your Edge host, you will need subscription credentials.
+
+  - Red Hat Enterprise Linux (RHEL): RHEL subscription token.
+  - Ubuntu Pro: Ubuntu Pro subscription token.
+
+  Contact your system administrator for access to the subscription tokens.
+
+- [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the `git --version`
+  command.
+
+- [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
+  command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
+  create privileged containers.
+
+- A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for a
+  [free trial](https://www.spectrocloud.com/free-tier/).
+
+- Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
+  generate a new registration token. For detailed instructions, refer to the
+  [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide.
+
 ## Build FIPS-Enabled Edge Artifacts
 
 ### Clone CanvOS Repository
@@ -44,10 +78,13 @@ git tag
 git checkout v4.3.0
 ```
 
-### Build FIPS-Enabled Provider Image
+### Build FIPS-Compliant Base OS Image
 
-Palette supports the Operating Systems (OS) Red Hat Enterprise Linux (RHEL) and Ubuntu for FIPS-enabled provider image.
-Choose the OS that you want to build the provider image with.
+Before we can build the Edge Installer ISO or the provider images, we need to build a FIPS-compliant Operating Systems
+(OS) base image with the Kairos framework.
+
+Palette supports the Red Hat Enterprise Linux (RHEL) and Ubuntu for FIPS-compliant base OS images. Choose the OS that
+you want to build the base image with.
 
 <Tabs>
 
@@ -68,16 +105,8 @@ Choose the OS that you want to build the provider image with.
    bash build.sh
    ```
 
-8. When the build finishes, issue `docker images` and look for an image named `rhel-byoi-fips:latest`.
-
-9. Tag the image with a remote repository and push the provider image to the repository where it can be access by the
-   Edge host during installation. For example, the following command tags the image and pushes the image to the
-   **ttl.sh** registry in the **spectro-images** repository.
-
-   ```shell
-   docker tag rhel-byoi-fips:latest ttl.sh/spectro-images/rhel-byoi-fips:latest
-   docker push ttl.sh/spectro-images/rhel-byoi-fips:latest
-   ```
+8. When the build finishes, issue `docker images` and confirm there is an image named `rhel-byoi-fips:latest`. This is
+   the base image that you will use to build provider images and the Edge installer ISO later on.
 
 </TabItem>
 
@@ -97,46 +126,39 @@ Choose the OS that you want to build the provider image with.
    bash build.sh
    ```
 
-8. When the build finishes, issue `docker images` and look for an image named `ubuntu-focal-fips:latest`.
-
-9. Tag the image with a remote repository and push the provider image to the repository where it can be access by the
-   Edge host during installation. For example, the following command tags the image and pushes the image to the
-   **ttl.sh** registry in the **spectro-images** repository.
-
-   ```shell
-   docker tag ubuntu-focal-fips:latest ttl.sh/spectro-images/ubuntu-focal-fips:latest
-   docker push ttl.sh/spectro-images/ubuntu-focal-fips:latest
-   ```
+8. When the build finishes, issue `docker images` and confirm there is an image named `ubuntu-focal-fips:latest`. This
+   is the base image that you will use to build provider images and the Edge installer ISO later on.
 
 </TabItem>
 
 ### Build Edge Installer ISO
 
-10. Return to the **CanvOS** directory.
+9. Return to the **CanvOS** directory.
 
-    ```shell
-    cd ..
-    ```
+   ```shell
+   cd ..
+   ```
 
-11. Create a file named **.arg**. This file will contain parameters that customize the Edge Installer ISO build.
+10. Create a file named **.arg**. This file will contain parameters that customize the Edge Installer ISO build.
 
-12. In the **.arg** file, provide the following required information. Refer to
+11. In the **.arg** file, provide the following required information. Refer to
     [Edge Artifact Build Configuration](arg.md) for more information.
 
-    | Argument         | Description                                                                                                                                                               |
-    | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | IMAGE_REGISTRY   | The image registry that the Edge Installer will pull provider images from. This must be the same registry where you pushed the provider images in the previous steps.     |
-    | OS_DISTRIBUTION  | The OS distribution in your provider image.                                                                                                                               |
-    | IMAGE_REPO       | The image repository that the Edge Installer will pull provider images from. This must be the same repository where you pushed the provider images in the previous steps. |
-    | OS_VERSION       | The OS version in your provider image. This only applies to Ubuntu.                                                                                                       |
-    | K8S_DISTRIBUTION | The Kubernetes distribution [TBD]                                                                                                                                         |
-    | FIPS_ENABLED     | Whether to enable FIPS compliance. This parameter must be set to `true`.                                                                                                  |
-    | ARCH             | The architecture of the image. This parameter must be set to `amd64`.                                                                                                     |
+    | Argument         | Description                                                                                                                                        |
+    | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | IMAGE_REGISTRY   | The image registry that the Edge Installer will pull provider images from.                                                                         |
+    | OS_DISTRIBUTION  | The OS distribution in your provider image.                                                                                                        |
+    | IMAGE_REPO       | The image repository that the Edge Installer will pull provider images from.                                                                       |
+    | OS_VERSION       | The OS version in your provider image. This only applies to Ubuntu.                                                                                |
+    | K8S_DISTRIBUTION | The Kubernetes distribution for your provider image. Allowed values are `rke2` and `kubeadm-fips`.                                                 |
+    | FIPS_ENABLED     | Whether to enable FIPS compliance. This parameter must be set to `true`.                                                                           |
+    | ARCH             | The architecture of the image. Allowed values are `amd64` and `arm64`.                                                                             |
+    | BASE_IMAGE       | The base image used by EdgeForge to build the Edge Installer and provider images. This must be the same image that you build in the previous step. |
 
-13. Create a file named **user-data**, This file configures the Edge Installer. Refer to
+12. Create a file named **user-data**, This file configures the Edge Installer. Refer to
     [Installer Reference](../../edge-configuration/installer-reference.md) for more information.
 
-14. Add the following block to the **user-data** file. `install` is at the root level of the YAML file.
+13. Add the following block to root level of the **user-data** file.
 
     ```yaml
     install:
@@ -144,7 +166,7 @@ Choose the OS that you want to build the provider image with.
         extra_cmdline: "fips=1"
     ```
 
-15. Issue the following command to build the Edge Installer ISO.
+14. Issue the following command to build the Edge Installer ISO.
 
     ```shell
     ./earthly +iso
@@ -152,6 +174,25 @@ Choose the OS that you want to build the provider image with.
 
     When the build finishes, the ISO file will be provided in the **build** directory under the name you specified in
     your **.arg** file.
+
+### Build FIPS-Compliant Provider Images
+
+Provider images are Kairos-based container images for a supported OS and Kubernetes distribution combination.
+FIPS-complaint provider images are built on top of the base OS image you have built previously.
+
+15. Locate **Earthfile** in the CanvOS directory. In the file, find the block that starts with
+    `build-provider-images-fips:` and delete the Kubernetes versions that you do not want. This will speed up the build
+    process and save storage space.
+
+16. Review the **.arg** file again to ensure the parameters are correct. Issue the following command to build the
+    provider images:
+
+    ```shell
+      ./earthly +provider-images-fips
+    ```
+
+    When the build finishes, copy and save the output attributes in a notepad or clipboard to use later in your cluster
+    profile.
 
 ## Validate
 
