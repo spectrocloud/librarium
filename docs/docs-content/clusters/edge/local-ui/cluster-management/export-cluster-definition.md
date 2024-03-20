@@ -87,7 +87,7 @@ host. A cluster definition contains one or more cluster profiles, including the 
                    }
                ]
        }
-   }
+   }'
    ```
 
 ## Validate

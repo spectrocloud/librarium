@@ -220,6 +220,7 @@ Creating a content bundle provides several benefits that may address common use 
     --cluster-profile-ids <CLUSTER_PROFILE_ID1,CLUSTER_PROFILE_ID2...> \
     --palette-endpoint <Palette API Endpoint> \
     --outfile <bundle-name>.tar \
+    --include-palette-content \
     --iso
    ```
 
