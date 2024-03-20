@@ -31,7 +31,7 @@ const config = {
     defaultLocale: "en",
     locales: ["en"],
   },
-  staticDirectories: ["static", "static/assets/docs/images", "static/assets"],
+  staticDirectories: ["static", "static/assets/docs/images", "static/assets", "static/img/"],
   headTags: [
     {
       tagName: "script",
