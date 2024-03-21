@@ -209,6 +209,8 @@ the following sections for a complete list of features, improvements, and known 
 
 #### Pack Notes
 
+- OpenStack support is limited to Palette eXtended Kubernetes (PXK) for version 1.24.x.
+
 - Local Path Provisioner CSI for Edge is now a [verified pack](./integrations/verified_packs.md).
 
 #### Kubernetes
