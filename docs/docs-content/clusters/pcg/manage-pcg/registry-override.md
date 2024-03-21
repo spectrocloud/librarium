@@ -7,10 +7,10 @@ sidebar_position: 60
 tags: ["pcg"]
 ---
 
-You can override the image registry configuration for a Private Cloud Gateway (PCG) to use a custom image registry for
-the PCG cluster. This feature is useful when you want to use a custom image registry to store and manage the images used
-by the PCG cluster. The image registry configuration is applied to the PCG cluster and is used to pull the required
-images for the PCG cluster.
+You can override the image registry configuration for a Private Cloud Gateway (PCG) to use a custom image registry. This
+feature is useful when you want to use a custom image registry to store and manage the images used by the PCG cluster.
+The image registry configuration is applied to the PCG cluster and is used to pull the required images for the PCG
+cluster.
 
 ## Prerequisites
 
@@ -35,7 +35,76 @@ Before you override the image registry configuration for a PCG, ensure you have 
 - The kubectl command-line tool installed on your local machine. Refer to the
   [kubectl installation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) guide to learn how to install kubectl.
 
+- If you are in airgap environment, you must have the image swap Helm chart available in your airgap environment. You
+  can get access to the image swap Helm chart by contacting the support team at
+  [support@spectrocloud.com](mailto:support@spectrocloud.com)
+
 ## Override Image Registry Configuration
+
+Select the appropriate tab below based on the environment in which you are deploying the PCG cluster.
+
+<Tabs>
+<TabItem label="Airgap" value="airgap">
+
+1. Open a terminal session.
+
+2. Navigate to the folder where you have the image swap Helm chart available. You may have to extract the Helm chart if
+   it is in a compressed format.
+
+3. Open the **values.yaml** file and populate the `ociImageRegistry` section. Refer to the table below for a description
+   of each parameter.
+
+   ```yaml
+   ociImageRegistry:
+     endpoint: "REPLACE_WITH_CUSTOM_REGISTRY_DOMAIN"
+     name: "REPLACE_WITH_CUSTOM_REGISTRY_NAME"
+     password: "REPLACE_WITH_CUSTOM_REGISTRY_PASSWORD"
+     username: "REPLACE_WITH_CUSTOM_REGISTRY_USERNAME"
+     baseContentPath: "REPLACE_WITH_CUSTOM_REGISTRY_BASE_PATH"
+     insecureSkipVerify: false
+     caCert: "REPLACE_WITH_CUSTOM_REGISTRY_CA_CERT"
+     mirrorRegistries: "REPLACE_WITH_CUSTOM_REGISTRY_MIRROR_REGISTRIES"
+   ```
+
+   | Parameter            | Description                                                                                                                                                                                                                                                    | Required |
+   | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+   | `endpoint`           | The URL of the custom image registry.                                                                                                                                                                                                                          | Yes      |
+   | `name`               | The name of the custom image registry.                                                                                                                                                                                                                         | Yes      |
+   | `password`           | The password to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                     | No       |
+   | `username`           | The username to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                     | No       |
+   | `baseContentPath`    | The base path of the custom image registry.                                                                                                                                                                                                                    | Yes      |
+   | `insecureSkipVerify` | Set to `true` if the custom image registry uses an insecure connection or self-signed certificate. Set to `false` if the custom image registry uses a secure connection.                                                                                       | Yes      |
+   | `caCert`             | The Certificate Authority of the custom image registry in PEM format. Required if the custom image registry uses a self-signed certificate.                                                                                                                    | No       |
+   | `mirrorRegistries`   | [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::public.ecr.aws/1234567/airgap-images/docker.io,gcr.io::public.ecr.aws/1234567/airgap-images/gcr.io` | Yes      |
+
+    <details>
+    <!-- prettier-ignore -->
+    <summary>Click here for a complete example configuration.</summary>
+
+   ```yaml
+   config:
+     imageSwapImages:
+       imageSwapInitImage: "gcr.io/spectro-images-public/thewebroot/imageswap-init:v1.5.2"
+       imageSwapImage: "gcr.io/spectro-images-public/thewebroot/imageswap:v1.5.2"
+
+     imageSwapConfig:
+       isEKSCluster: true #If the Cluster you are trying to install is EKS cluster set value to true else set to false
+
+     ociImageRegistry:
+       endpoint: "harbor.example.org" #<Contact Spectro Cloud Sales for More info>
+       name: "Internal Registry" #<Contact Spectro Cloud Sales for More info>
+       password: "" #<Contact Spectro Cloud Sales for More info>
+       username: "" #<Contact Spectro Cloud Sales for More info>
+       baseContentPath: "airgap-images" #<Contact Spectro Cloud Sales for More info>
+       insecureSkipVerify: false
+       caCert: ""
+       mirrorRegistries: "docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images"
+   ```
+
+    </details>
+
+</TabItem>
+<TabItem label="Non-Airgap" value="non-airgap">
 
 Use the following steps to override the image registry configuration.
 
@@ -47,8 +116,7 @@ Use the following steps to override the image registry configuration.
    touch registry-secret.yaml
    ```
 
-3. Open the **registry-secret.yaml** file and copy the placeholder configuration below. Check the table below for a
-   description of each parameter.
+3. Open the **registry-secret.yaml** file and copy the placeholder configuration below.
 
    ```yaml
     ---
@@ -121,15 +189,17 @@ Use the following steps to override the image registry configuration.
    kubectl create --filename registry-secret.yaml
    ```
 
+</TabItem>
+</Tabs>
+
 ## Validate
 
 Use the following steps to validate the image registry configuration.
 
 1. Open a terminal session that has network access to the PCG cluster.
 
-2. Configure kubectl to use the kubeconfig file for the PCG cluster. Use the following command to configure kubectl.
-   Refer to the [Access Cluster with CLI](../../cluster-management/palette-webctl.md) for guidance on configuring
-   kubectl.
+2. Configure kubectl to use the kubeconfig file for the PCG cluster. Refer to the
+   [Access Cluster with CLI](../../cluster-management/palette-webctl.md) for guidance on configuring kubectl.
 
 3. Issue the following command to verify that the secret containing the image registry configuration is created.
 
