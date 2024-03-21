@@ -19,13 +19,17 @@ if [[ -n "$non_webp_files" ]]; then
     webpconvert -r static/assets/docs/images/
 
     echo "Removing original images and renaming WebP images..."
-    find static/assets/docs/images/ -type f \( -name "*.png.webp" -o -name "*.png" \) | while IFS= read -r file; do
-        if [[ $file == *.png.webp ]]; then
-            mv "$file" "${file%.png.webp}.webp"
+    find static/assets/docs/images/ -type f \( -name "*.png.webp" -o -name "*.png" -o -name "*.jpg.webp" -o -name "*.jpg" -o -name "*.jpeg.webp" -o -name "*.jpeg" \) | while IFS= read -r file; do
+        if [[ $file == *.png* ]]; then
+            mv "$file" "${file%.png*}.webp"
+        elif [[ $file == *.jpg* || $file == *.jpeg* ]]; then
+            mv "$file" "${file%.jpg*}.webp"
         else
             rm "$file"
         fi
     done
+
+
 
     echo "Done."
     exit 0
