@@ -14,7 +14,7 @@ cluster.
 
 ## Prerequisites
 
-Before you override the image registry configuration for a PCG, ensure you have the following:
+Before overriding the image registry configuration for a PCG, ensure you have the following:
 
 - An active PCG cluster. Refer to [Deploy a PCG](../deploy-pcg/deploy-pcg.md) to learn how to deploy a PCG.
 
@@ -39,6 +39,9 @@ Before you override the image registry configuration for a PCG, ensure you have 
   can get access to the image swap Helm chart by contacting the support team at
   [support@spectrocloud.com](mailto:support@spectrocloud.com)
 
+- If you are in a airgap environment, ensure [Helm](https://helm.sh/docs/intro/install/) is installed on your local
+  machine.
+
 ## Override Image Registry Configuration
 
 Select the appropriate tab below based on the environment in which you are deploying the PCG cluster.
@@ -48,11 +51,14 @@ Select the appropriate tab below based on the environment in which you are deplo
 
 1. Open a terminal session.
 
-2. Navigate to the folder where you have the image swap Helm chart available. You may have to extract the Helm chart if
+2. Configure kubectl to use the kubeconfig file for the PCG cluster. Refer to the
+   [Access Cluster with CLI](../../cluster-management/palette-webctl.md) for guidance on configuring kubectl.
+
+3. Navigate to the folder where you have the image swap Helm chart available. You may have to extract the Helm chart if
    it is in a compressed format.
 
-3. Open the **values.yaml** file and populate the `ociImageRegistry` section. Refer to the table below for a description
-   of each parameter.
+4. Open the **values.yaml** file and populate the `ociImageRegistry` section with your OCI registry values. Refer to the
+   table below for a description of each parameter.
 
    ```yaml
    ociImageRegistry:
@@ -66,16 +72,16 @@ Select the appropriate tab below based on the environment in which you are deplo
      mirrorRegistries: "REPLACE_WITH_CUSTOM_REGISTRY_MIRROR_REGISTRIES"
    ```
 
-   | Parameter            | Description                                                                                                                                                                                                                                                    | Required |
-   | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-   | `endpoint`           | The URL of the custom image registry.                                                                                                                                                                                                                          | Yes      |
-   | `name`               | The name of the custom image registry.                                                                                                                                                                                                                         | Yes      |
-   | `password`           | The password to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                     | No       |
-   | `username`           | The username to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                     | No       |
-   | `baseContentPath`    | The base path of the custom image registry.                                                                                                                                                                                                                    | Yes      |
-   | `insecureSkipVerify` | Set to `true` if the custom image registry uses an insecure connection or self-signed certificate. Set to `false` if the custom image registry uses a secure connection.                                                                                       | Yes      |
-   | `caCert`             | The Certificate Authority of the custom image registry in PEM format. Required if the custom image registry uses a self-signed certificate.                                                                                                                    | No       |
-   | `mirrorRegistries`   | [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::public.ecr.aws/1234567/airgap-images/docker.io,gcr.io::public.ecr.aws/1234567/airgap-images/gcr.io` | Yes      |
+   | Parameter            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Required |
+   | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+   | `endpoint`           | The URL of the custom image registry.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Yes      |
+   | `name`               | The name of the custom image registry.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Yes      |
+   | `password`           | The password to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                                                                                                                                                                                                                                                                                        | No       |
+   | `username`           | The username to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                                                                                                                                                                                                                                                                                        | No       |
+   | `baseContentPath`    | The base path of the custom image registry.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Yes      |
+   | `insecureSkipVerify` | Set to `true` if the custom image registry uses an insecure connection or self-signed certificate. Set to `false` if the custom image registry uses a secure connection.                                                                                                                                                                                                                                                                                                                                                          | Yes      |
+   | `caCert`             | The Certificate Authority of the custom image registry in PEM format. Required if the custom image registry uses a self-signed certificate.                                                                                                                                                                                                                                                                                                                                                                                       | No       |
+   | `mirrorRegistries`   | [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images` | Yes      |
 
     <details>
     <!-- prettier-ignore -->
@@ -103,20 +109,30 @@ Select the appropriate tab below based on the environment in which you are deplo
 
     </details>
 
-</TabItem>
-<TabItem label="Non-Airgap" value="non-airgap">
+5. Once you have configured the `ociImageRegistry` section, issue the following command from the folder where you have
+   the image swap Helm chart available to deploy the image swap Helm chart.
 
-Use the following steps to override the image registry configuration.
+   ```shell
+   helm upgrade --values values.yaml image-swap image-swap-*.tgz --install
+   ```
 
-1. Open a terminal session.
+   ```shell hideClipboard
+   Release "image-swap" does not exist. Installing it now.
+   NAME: image-swap
+   LAST DEPLOYED: Mon March 20 17:04:23 2024
+   NAMESPACE: default
+   STATUS: deployed
+   REVISION: 1
+   TEST SUITE: None
+   ```
 
-2. Create an empty YAML file with the name **registry-secret.yaml**. Use the following command to create the file.
+6. Create an empty YAML file with the name **registry-secret.yaml**. Use the following command to create the file.
 
    ```shell
    touch registry-secret.yaml
    ```
 
-3. Open the **registry-secret.yaml** file and copy the placeholder configuration below.
+7. Open the **registry-secret.yaml** file and copy the placeholder configuration below.
 
    ```yaml
     ---
@@ -144,18 +160,108 @@ Use the following steps to override the image registry configuration.
 
    :::
 
-4. Replace the placeholder values with the actual values for your custom image registry. Refer to the table below for a
+8. Replace the placeholder values with the actual values for your custom image registry. Use the same values that you
+   used in the `ociImageRegistry` section of the **values.yaml** file for the image swap Helm chart. Refer to the table
+   below for a description of each parameter.
+
+   | Parameter           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Required |
+   | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
+   | `DOMAIN`            | The domain of the custom image registry.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Yes      |
+   | `BASE_PATH`         | The base path to the custom image registry.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Yes      |
+   | `USERNAME`          | The username to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                                                                                                                                                                                                                                                                                                                                           | No       |
+   | `PASSWORD`          | The password to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                                                                                                                                                                                                                                                                                                                                           | No       |
+   | `INSECURE`          | Set to `true` if the custom image registry uses an insecure connection or a self-signed certificate. Set to `false` if the custom image registry uses a secure connection.                                                                                                                                                                                                                                                                                                                                                                                                           | Yes      |
+   | `CA_CERT`           | The Certificate Authority of the custom image registry in the PEM format. Required if the custom image registry uses a self-signed certificate.                                                                                                                                                                                                                                                                                                                                                                                                                                      | No       |
+   | `MIRROR_REGISTRIES` | A comma-separated list of mirror registries in the [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images` | Yes      |
+
+      <details>
+      <!-- prettier-ignore -->
+      <summary>Click here for a complete example configuration.</summary>
+
+   ```yaml
+   ---
+   apiVersion: v1
+   stringData:
+     DOMAIN: "harbor.example.org"
+     BASE_PATH: "airgap-images"
+     USERNAME: ""
+     PASSWORD: ""
+     INSECURE: "false"
+     CA_CERT: ""
+     MIRROR_REGISTRIES: docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images
+   kind: Secret
+   metadata:
+     name: registry-info
+     namespace: jet-system
+   type: Opaque
+   ---
+   ```
+
+      </details>
+
+9. Once you have created the YAML file and configured the parameter values, issue the following command to create the
+   Kubernetes secret containing the image registry configuration.
+
+   ```shell
+   kubectl create --filename registry-secret.yaml
+   ```
+
+</TabItem>
+<TabItem label="Non-Airgap" value="non-airgap">
+
+Use the following steps to override the image registry configuration.
+
+1. Open a terminal session.
+
+2. Configure kubectl to use the kubeconfig file for the PCG cluster. Refer to the
+   [Access Cluster with CLI](../../cluster-management/palette-webctl.md) for guidance on configuring kubectl.
+
+3. Create an empty YAML file with the name **registry-secret.yaml**. Use the following command to create the file.
+
+   ```shell
+   touch registry-secret.yaml
+   ```
+
+4. Open the **registry-secret.yaml** file and copy the placeholder configuration below.
+
+   ```yaml
+    ---
+    apiVersion: v1
+    stringData:
+      DOMAIN: "REPLACE_WITH_CUSTOM_REGISTRY_DOMAIN"
+      BASE_PATH: "REPLACE_WITH_CUSTOM_REGISTRY_BASE_PATH"
+      USERNAME: "REPLACE_WITH_CUSTOM_REGISTRY_USERNAME"
+      PASSWORD: "REPLACE_WITH_CUSTOM_REGISTRY_PASSWORD"
+      INSECURE: "false"
+      CA_CERT: "REPLACE_WITH_CUSTOM_REGISTRY_CA_CERT"
+      MIRROR_REGISTRIES: REPLACE_WITH_CUSTOM_REGISTRY_MIRROR_REGISTRIES
+    kind: Secret
+    metadata:
+      name: registry-info
+      namespace: jet-system
+    type: Opaque
+    ---
+   ```
+
+   :::warning
+
+   Do not change the `kind`, `metadata` and `type` fields in the YAML file. The values provided in the placeholder
+   configuration are required to override the image registry configuration for the PCG cluster.
+
+   :::
+
+5. Replace the placeholder values with the actual values for your custom image registry. Refer to the table below for a
    description of each parameter.
 
-   | Parameter           | Description                                                                                                                                                                                                                                                                                                   | Required |
-   | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-   | `DOMAIN`            | The domain of the custom image registry.                                                                                                                                                                                                                                                                      | Yes      |
-   | `BASE_PATH`         | The base path of the custom image registry.                                                                                                                                                                                                                                                                   | Yes      |
-   | `USERNAME`          | The username to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                                                                    | No       |
-   | `PASSWORD`          | The password to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                                                                    | No       |
-   | `INSECURE`          | Set to `true` if the custom image registry uses an insecure connection or self-signed certificate. Set to `false` if the custom image registry uses a secure connection.                                                                                                                                      | Yes      |
-   | `CA_CERT`           | The Certificate Authority of the custom image registry in PEM format. Required if the custom image registry uses a self-signed certificate.                                                                                                                                                                   | No       |
-   | `MIRROR_REGISTRIES` | A comma-separated list of mirror registries in [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::public.ecr.aws/1234567/airgap-images/docker.io,gcr.io::public.ecr.aws/1234567/airgap-images/gcr.io` | Yes      |
+   | Parameter           | Description                                                                                                                                                                                                                                                                                                       | Required |
+   | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+   | `DOMAIN`            | The domain of the custom image registry.                                                                                                                                                                                                                                                                          | Yes      |
+   | `BASE_PATH`         | The base path to the custom image registry.                                                                                                                                                                                                                                                                       | Yes      |
+   | `USERNAME`          | The username to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                                                                        | No       |
+   | `PASSWORD`          | The password to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                                                                        | No       |
+   | `INSECURE`          | Set to `true` if the custom image registry uses an insecure connection or a self-signed certificate. Set to `false` if the custom image registry uses a secure connection.                                                                                                                                        | Yes      |
+   | `CA_CERT`           | The Certificate Authority of the custom image registry in the PEM format. Required if the custom image registry uses a self-signed certificate.                                                                                                                                                                   | No       |
+   | `MIRROR_REGISTRIES` | A comma-separated list of mirror registries in the [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::public.ecr.aws/1234567/airgap-images/docker.io,gcr.io::public.ecr.aws/1234567/airgap-images/gcr.io` | Yes      |
 
     <details>
     <!-- prettier-ignore -->
@@ -182,7 +288,7 @@ Use the following steps to override the image registry configuration.
 
     </details>
 
-5. Once you have created the YAML file and configured the parameter values. Issue the following command to create the
+6. Once you have created the YAML file and configured the parameter values, issue the following command to create the
    Kubernetes secret containing the image registry configuration.
 
    ```shell
@@ -194,9 +300,7 @@ Use the following steps to override the image registry configuration.
 
 ## Validate
 
-Use the following steps to validate the image registry configuration.
-
-1. Open a terminal session that has network access to the PCG cluster.
+1. Open a terminal session with a network access to the PCG cluster.
 
 2. Configure kubectl to use the kubeconfig file for the PCG cluster. Refer to the
    [Access Cluster with CLI](../../cluster-management/palette-webctl.md) for guidance on configuring kubectl.
@@ -214,8 +318,9 @@ Use the following steps to validate the image registry configuration.
    docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images
    ```
 
-4. Deploy a cluster through Palette. The PCG will propagate the image registry configuration to the workload cluster,
-   and the cluster will use the custom image registry to pull images if specified in the mirror registry configuration.
+4. Deploy a PCG cluster through Palette. The PCG will propagate the image registry configuration to the workload
+   cluster, and the cluster will use the custom image registry to pull images if specified in the mirror registry
+   configuration.
 
 5. SSH into one of the workload cluster nodes. You can verify the image registry configuration on the workload cluster
    by checking the containerd configuration file. Use the following command to check the containerd configuration file.
@@ -225,8 +330,8 @@ Use the following steps to validate the image registry configuration.
    ```
 
    Each mirror registry specified in the `MIRROR_REGISTRIES` parameter is added to the
-   `plugins."io.containerd.grpc.v1.cri".registry.mirrors.` section. Using the example configuration from earlier, the
-   containerd configuration file should contain the following configuration.
+   `plugins."io.containerd.grpc.v1.cri".registry.mirrors.` section. Based on the example configuration we provided in
+   step four, the configuration file should contain the following details.
 
    ```yaml {19-33}
    ## template: jinja
