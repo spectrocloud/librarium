@@ -143,5 +143,5 @@ verify-url-links-ci: ## Check for broken URLs in production in a GitHub Actions 
 ###@ Image Formatting
 
 format-images: ## Format images
-	@echo "formatting images"
+	@echo "formatting images in /static/assets/docs/images/ folder"
 	./scripts/compress-convert-images.sh
