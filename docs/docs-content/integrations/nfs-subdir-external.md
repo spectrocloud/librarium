@@ -6,7 +6,7 @@ type: "integration"
 category: ["storage", "amd64"]
 hide_table_of_contents: true
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.dev.spectrocloud.com/v1/csi-nfs-subdir-external/blobs/sha256:4b40eb85382d04dc4dcfc174b5e288b963b6201f6915e14b07bd8a5c4323b51b?type=image/png"
+logoUrl: "https://registry.dev.spectrocloud.com/v1/csi-nfs-subdir-external/blobs/sha256:4b40eb85382d04dc4dcfc174b5e288b963b6201f6915e14b07bd8a5c4323b51b?type=image.webp"
 tags: ["packs", "nfs-subdir-external", "storage"]
 ---
 

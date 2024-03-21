@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["security", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.dev.spectrocloud.com/v1/prismacloud/blobs/sha256:9ddb035af0e9f299e5df178ebb3153e90383a5e42ded2c1a3f6c9470dd851c12?type=image/png"
+logoUrl: "https://registry.dev.spectrocloud.com/v1/prismacloud/blobs/sha256:9ddb035af0e9f299e5df178ebb3153e90383a5e42ded2c1a3f6c9470dd851c12?type=image.webp"
 tags: ["packs", "prismacloud", "security"]
 ---
 

@@ -63,7 +63,7 @@ can choose to deploy the Prometheus agent with or without authentication and enc
    The following image displays the cluster details page of a monitoring stack. Use the URL exposed for port 9090 to
    populate the `remoteWrite.url` parameter.
 
-![A view of the cluster details page with a highlighted box around the Prometheus service URL](/integrations_prometheus-agent_cluster-detail-view.png)
+![A view of the cluster details page with a highlighted box around the Prometheus service URL](/integrations_prometheus-agent_cluster-detail-view.webp)
 
 <br />
 
@@ -149,7 +149,7 @@ sending metrics to the monitoring stack.
    The following image displays the cluster details page of a monitoring stack. Use the URL exposed for port 9090 to
    populate the `remoteWrite.url` parameter.
 
-![A view of the cluster details page with a highlighted box around the Prometheus service URL](/integrations_prometheus-agent_cluster-detail-view.png)
+![A view of the cluster details page with a highlighted box around the Prometheus service URL](/integrations_prometheus-agent_cluster-detail-view.webp)
 
 <br />
 
@@ -248,7 +248,7 @@ following steps.
 9. Use the **cluster** filter and review the list of available clusters. Select your newly deployed cluster to review
    its metrics.
 
-![A grafana dashboard view of the cluster metric displaying pack status](/clusters_cluster-management_grafana_spectro_metrics.png)
+![A grafana dashboard view of the cluster metric displaying pack status](/clusters_cluster-management_grafana_spectro_metrics.webp)
 
 <br />
 

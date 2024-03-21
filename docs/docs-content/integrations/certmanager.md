@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["security", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.dev.spectrocloud.com/v1/certmanager/blobs/sha256:7882e13d7056781a0195ec15e3b9fa5d4b4bb7f8b4e2c32cc5e254e2295c6a16?type=image/png"
+logoUrl: "https://registry.dev.spectrocloud.com/v1/certmanager/blobs/sha256:7882e13d7056781a0195ec15e3b9fa5d4b4bb7f8b4e2c32cc5e254e2295c6a16?type=image.webp"
 tags: ["packs", "cert-manager", "security"]
 ---
 
