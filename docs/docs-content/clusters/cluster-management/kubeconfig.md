@@ -97,6 +97,7 @@ the resource key _cluster_ to access both kubeconfig files for a cluster.
 | Yes                     | Yes                           | ✅                            | ✅                                  |
 | No                      | Yes                           | ❌                            | ✅                                  |
 | Yes                     | No                            | ✅                            | ✅                                  |
+| No                      | No                            | ❌                            | ✅                                  |
 
 ### Non-Cluster Admin
 
@@ -112,6 +113,7 @@ enabled and the Spectro Proxy disabled, the kubeconfig file is available.
 | Yes                     | Yes                           | ✅                            | ❌                                  |
 | No                      | Yes                           | ❌                            | ❌                                  |
 | Yes                     | No                            | ✅                            | ❌                                  |
+| No                      | No                            | ❌                            | ❌                                  |
 
 ## API Access
 

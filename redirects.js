@@ -400,6 +400,10 @@ const redirects = [
     ],
     to: "/security-bulletins/",
   },
+  {
+    from: "/clusters/public-cloud/azure/gateways",
+    to: "/clusters/pcg/",
+  },
 ];
 
 module.exports = redirects;

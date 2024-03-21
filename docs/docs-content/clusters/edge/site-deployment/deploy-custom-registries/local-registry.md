@@ -42,7 +42,10 @@ documentation.
 
 - Each of your Edge hosts must have at least 4 CPUs and 8 GB of RAM.
 
-- At least 160 GB of persistent storage. The actual amount of storage required depends on the size of your images.
+  - For single-node clusters, where there is only one Edge host handling both control plane and worker capabilities,
+    your Edge host must have at least 6 CPUs and 12 GB of RAM.
+
+- At least 300 GB of persistent storage. The actual amount of storage required depends on the size of your images.
 
 - An Edge cluster profile. For information about how to create a cluster profile for Edge, refer to
   [Model Edge Cluster Profile](../../site-deployment/model-profile.md).
@@ -61,15 +64,15 @@ documentation.
 5. Select the Kubernetes layer of the profile. Under `cluster.config.kube-apiserver-arg`, remove `AlwaysPullImages` from
    the list item `enable-admission-plugins`:
 
-```yaml {7}
-kube-apiserver-arg:
-  - anonymous-auth=true
-  - profiling=false
-  - disable-admission-plugins=AlwaysAdmit
-  - default-not-ready-toleration-seconds=60
-  - default-unreachable-toleration-seconds=60
-  - enable-admission-plugins=NamespaceLifecycle,ServiceAccount,NodeRestriction
-```
+   ```yaml {7}
+   kube-apiserver-arg:
+     - anonymous-auth=true
+     - profiling=false
+     - disable-admission-plugins=AlwaysAdmit
+     - default-not-ready-toleration-seconds=60
+     - default-unreachable-toleration-seconds=60
+     - enable-admission-plugins=NamespaceLifecycle,ServiceAccount,NodeRestriction
+   ```
 
 6. Click **Add New Pack** and search for the **Harbor Edge Native Config** pack. Add the pack to your cluster profile.
    For more information about the pack and its parameters, refer to

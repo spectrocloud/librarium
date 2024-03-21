@@ -50,7 +50,17 @@ console for all Edge hosts of your organization.
 
 ## Customize theme during EdgeForge
 
-l
+1. Clone the **CanvOS** repository.
+
+   ```shell
+   git clone https://github.com/spectrocloud/CanvOS.git
+   ```
+
+2. Change into the **CanvOS** directory.
+
+   ```shell
+   cd CanvOS
+   ```
 
 3. Create a directory called **ui.tar** at the path `CanvOS/ui.tar`.
 

@@ -347,6 +347,13 @@ used to create tenant clusters. Additional cloud accounts may be created if desi
 - A PCG is installed and available in the OpenStack. Refer to the [Deploy to OpenStack](../pcg/deploy-pcg/openstack.md)
   guide to learn how to deploy a PCG.
 
+:::caution
+
+OpenStack support is limited to the Kubernetes distribution
+[Palette eXtended Kubernetes (PXK)](../../integrations/kubernetes.md) for version 1.24.x.
+
+:::
+
 ### Deploy Cluster
 
 The following steps need to be performed to provision a new OpenStack cluster:
