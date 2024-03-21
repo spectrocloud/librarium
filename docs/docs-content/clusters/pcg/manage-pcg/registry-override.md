@@ -7,14 +7,13 @@ sidebar_position: 60
 tags: ["pcg"]
 ---
 
-You can override the image registry configuration for a Private Cloud Gateway (PCG) to use a custom image registry for
-the PCG cluster. This feature is useful when you want to use a custom image registry to store and manage the images used
+You can override the image registry configuration for a Private Cloud Gateway (PCG) to use a custom image registry. This feature is useful when you want to use a custom image registry to store and manage the images used
 by the PCG cluster. The image registry configuration is applied to the PCG cluster and is used to pull the required
 images for the PCG cluster.
 
 ## Prerequisites
 
-Before you override the image registry configuration for a PCG, ensure you have the following:
+Before overriding the image registry configuration for a PCG, ensure you have the following:
 
 - An active PCG cluster. Refer to [Deploy a PCG](../deploy-pcg/deploy-pcg.md) to learn how to deploy a PCG.
 
@@ -37,7 +36,6 @@ Before you override the image registry configuration for a PCG, ensure you have 
 
 ## Override Image Registry Configuration
 
-Use the following steps to override the image registry configuration.
 
 1. Open a terminal session.
 
@@ -82,12 +80,12 @@ Use the following steps to override the image registry configuration.
    | Parameter           | Description                                                                                                                                                                                                                                                                                                   | Required |
    | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
    | `DOMAIN`            | The domain of the custom image registry.                                                                                                                                                                                                                                                                      | Yes      |
-   | `BASE_PATH`         | The base path of the custom image registry.                                                                                                                                                                                                                                                                   | Yes      |
+   | `BASE_PATH`         | The base path to the custom image registry.                                                                                                                                                                                                                                                                   | Yes      |
    | `USERNAME`          | The username to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                                                                    | No       |
    | `PASSWORD`          | The password to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                                                                    | No       |
-   | `INSECURE`          | Set to `true` if the custom image registry uses an insecure connection or self-signed certificate. Set to `false` if the custom image registry uses a secure connection.                                                                                                                                      | Yes      |
-   | `CA_CERT`           | The Certificate Authority of the custom image registry in PEM format. Required if the custom image registry uses a self-signed certificate.                                                                                                                                                                   | No       |
-   | `MIRROR_REGISTRIES` | A comma-separated list of mirror registries in [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::public.ecr.aws/1234567/airgap-images/docker.io,gcr.io::public.ecr.aws/1234567/airgap-images/gcr.io` | Yes      |
+   | `INSECURE`          | Set to `true` if the custom image registry uses an insecure connection or a self-signed certificate. Set to `false` if the custom image registry uses a secure connection.                                                                                                                                      | Yes      |
+   | `CA_CERT`           | The Certificate Authority of the custom image registry in the PEM format. Required if the custom image registry uses a self-signed certificate.                                                                                                                                                                   | No       |
+   | `MIRROR_REGISTRIES` | A comma-separated list of mirror registries in the [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::public.ecr.aws/1234567/airgap-images/docker.io,gcr.io::public.ecr.aws/1234567/airgap-images/gcr.io` | Yes      |
 
     <details>
     <!-- prettier-ignore -->
@@ -114,7 +112,7 @@ Use the following steps to override the image registry configuration.
 
     </details>
 
-5. Once you have created the YAML file and configured the parameter values. Issue the following command to create the
+5. Once you have created the YAML file and configured the parameter values, issue the following command to create the
    Kubernetes secret containing the image registry configuration.
 
    ```shell
@@ -123,9 +121,8 @@ Use the following steps to override the image registry configuration.
 
 ## Validate
 
-Use the following steps to validate the image registry configuration.
 
-1. Open a terminal session that has network access to the PCG cluster.
+1. Open a terminal session with a network access to the PCG cluster.
 
 2. Configure kubectl to use the kubeconfig file for the PCG cluster. Use the following command to configure kubectl.
    Refer to the [Access Cluster with CLI](../../cluster-management/palette-webctl.md) for guidance on configuring
@@ -144,7 +141,7 @@ Use the following steps to validate the image registry configuration.
    docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images
    ```
 
-4. Deploy a cluster through Palette. The PCG will propagate the image registry configuration to the workload cluster,
+4. Deploy a PCG cluster through Palette. The PCG will propagate the image registry configuration to the workload cluster,
    and the cluster will use the custom image registry to pull images if specified in the mirror registry configuration.
 
 5. SSH into one of the workload cluster nodes. You can verify the image registry configuration on the workload cluster
@@ -155,8 +152,8 @@ Use the following steps to validate the image registry configuration.
    ```
 
    Each mirror registry specified in the `MIRROR_REGISTRIES` parameter is added to the
-   `plugins."io.containerd.grpc.v1.cri".registry.mirrors.` section. Using the example configuration from earlier, the
-   containerd configuration file should contain the following configuration.
+   `plugins."io.containerd.grpc.v1.cri".registry.mirrors.` section. Based on the example configuration we provided in step four, the
+  configuration file should contain the following details.
 
    ```yaml {19-33}
    ## template: jinja
