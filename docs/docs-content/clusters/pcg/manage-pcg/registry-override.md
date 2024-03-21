@@ -5,6 +5,7 @@ description: "Learn how to override the image registry configuration for a Priva
 hide_table_of_contents: false
 sidebar_position: 60
 tags: ["pcg"]
+keywords: ["enterprise kubernetes", "multi cloud kubernetes"]
 ---
 
 You can override the image registry configuration for a Private Cloud Gateway (PCG) to use a custom image registry. This
@@ -35,7 +36,7 @@ Before overriding the image registry configuration for a PCG, ensure you have th
 - The kubectl command-line tool installed on your local machine. Refer to the
   [kubectl installation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) guide to learn how to install kubectl.
 
-- If you are in airgap environment, you must have the image swap Helm chart available in your airgap environment. You
+- If you are in airgap environment, you must have the image-swap Helm chart available in your airgap environment. You
   can get access to the image swap Helm chart by contacting the support team at
   [support@spectrocloud.com](mailto:support@spectrocloud.com)
 
@@ -54,8 +55,8 @@ Select the appropriate tab below based on the environment in which you are deplo
 2. Configure kubectl to use the kubeconfig file for the PCG cluster. Refer to the
    [Access Cluster with CLI](../../cluster-management/palette-webctl.md) for guidance on configuring kubectl.
 
-3. Navigate to the folder where you have the image swap Helm chart available. You may have to extract the Helm chart if
-   it is in a compressed format.
+3. Navigate to the folder where you have the image-swap Helm chart available. You may have to extract the Helm chart if
+   it is in a compressed format to access the **values.yaml** file.
 
 4. Open the **values.yaml** file and populate the `ociImageRegistry` section with your OCI registry values. Refer to the
    table below for a description of each parameter.
@@ -110,7 +111,8 @@ Select the appropriate tab below based on the environment in which you are deplo
     </details>
 
 5. Once you have configured the `ociImageRegistry` section, issue the following command from the folder where you have
-   the image swap Helm chart available to deploy the image swap Helm chart.
+   the image swap Helm chart available to deploy the image swap Helm chart. You may have to modify the command below
+   based on the location of **values.yaml** file and the compressed Helm chart file.
 
    ```shell
    helm upgrade --values values.yaml image-swap image-swap-*.tgz --install
