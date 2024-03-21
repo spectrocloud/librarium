@@ -329,8 +329,6 @@ stages:
 
 An example of applying logic after the device has booted by using the `boot.after` stage.
 
-<br />
-
 ```yaml
 boot.after:
   - |
