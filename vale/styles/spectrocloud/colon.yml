@@ -1,0 +1,11 @@
+extends: existence
+message: "Use colons only to introduce lists, unless in code blocks or inline code."
+link: https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Colon-Usage
+nonword: true
+level: error
+scope: raw
+tokens:
+  - ([:][\n]{2,}[^-\n])
+exceptions:
+  - '`[^`]*:[^`]*`'
+

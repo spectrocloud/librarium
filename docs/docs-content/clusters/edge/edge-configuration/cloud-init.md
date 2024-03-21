@@ -337,7 +337,7 @@ stages:
 
 #### Invoke Custom Script
 
-An example of applying logic after the device has booted by using the `boot.after` stage. <br />
+An example of applying logic after the device has booted by using the `boot.after` stage:
 
 ```yaml
 boot.after:
