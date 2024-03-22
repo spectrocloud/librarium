@@ -40,7 +40,7 @@ This error may occur if the self-hosted pack registry specified in the installat
 
 7. Check the box **Insecure Skip TLS Verify** and click on **Confirm**.
 
-![A pack registry configuration screen.](/troubleshooting_enterprise-install_pack-registry-tls.png)
+![A pack registry configuration screen.](/troubleshooting_enterprise-install_pack-registry-tls.webp)
 
 After a few moments, a system profile will be created and Palette or VerteX will be able to self-link successfully. If
 you continue to encounter issues, contact our support team by emailing

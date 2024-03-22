@@ -65,7 +65,7 @@ Use the following instructions to schedule a backup for an existing cluster.
 
    <br />
 
-   ![A screenshot highlighting the fields for scheduling a backup for an existing cluster.](/clusters_cluster-management_backup-restore_scheduled-backup.png)
+   ![A screenshot highlighting the fields for scheduling a backup for an existing cluster.](/clusters_cluster-management_backup-restore_scheduled-backup.webp)
 
 6. Fill out the required input fields to schedule a backup. Refer to the table to learn more about each input field.
 
@@ -121,7 +121,7 @@ Use the following steps to validate creating a backup in Palette.
    backups for the current cluster, including the newly created one. The screenshot below shows an example backup. This
    step validates that you have successfully created the backup.
 
-![A screenshot highlighting the list of available backups for the specific cluster.](/clusters_cluster-management_backup-restore_view-backup.png)
+![A screenshot highlighting the list of available backups for the specific cluster.](/clusters_cluster-management_backup-restore_view-backup.webp)
 
 5. You can click on the newly created backup from the list to view its details. Palette displays the backup name,
    status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup
@@ -152,7 +152,7 @@ Use the following instructions to create an on-demand backup for an existing clu
 
    <br />
 
-   ![A screenshot highlighting the fields for an on-demand backup for an existing cluster.](/clusters_cluster-management_backup-restore_ondemand-backup.png)
+   ![A screenshot highlighting the fields for an on-demand backup for an existing cluster.](/clusters_cluster-management_backup-restore_ondemand-backup.webp)
 
 5. Use the following information to configure a scheduled backup.
 
@@ -200,7 +200,7 @@ Use the following steps to validate creating a backup in Palette.
    backups for the current cluster, including the newly created one. The screenshot below shows an example backup. This
    step validates that you have successfully created the backup.
 
-![A screenshot highlighting the list of available backups for the specific cluster.](/clusters_cluster-management_backup-restore_view-backup.png)
+![A screenshot highlighting the list of available backups for the specific cluster.](/clusters_cluster-management_backup-restore_view-backup.webp)
 
 5. You can click on the newly created backup from the list to view its details. Palette displays the backup name,
    status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup

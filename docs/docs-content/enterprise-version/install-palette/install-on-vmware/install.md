@@ -322,8 +322,6 @@ Password:    ************
 
 The first of three Enterprise Cluster nodes is online and will now provision nodes two and three.
 
-It will take another ~30-45 minutes for the installation to complete.
-
 You can monitor its progress via kubectl/k9s or by viewing the System Console.
 
 export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
@@ -343,7 +341,7 @@ proceed.
 
 <br />
 
-![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.png)
+![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
 <br />
 
@@ -360,9 +358,7 @@ proceed.
 16. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../system-management/tenant-management.md) guide.
 
-<br />
-
-![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.png)
+    ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.webp)
 
 ## Validate
 

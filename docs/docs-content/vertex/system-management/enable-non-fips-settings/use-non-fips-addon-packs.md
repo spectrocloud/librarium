@@ -41,7 +41,7 @@ The screenshot below shows the icon that VerteX displays next to FIPS-compliant 
 full FIPS compliance. Other icons are used to indicate profile layers with partial, unknown, or non-FIPS compliant
 status. To learn about other icons VerteX applies, refer to [FIPS Status Icons](../../fips/fips-status-icons.md).
 
-![Diagram showing FIPS-compliant icons in profile stack.](/vertex_fips-status-icons_icons-in-profile-stack.png)
+![Diagram showing FIPS-compliant icons in profile stack.](/vertex_fips-status-icons_icons-in-profile-stack.webp)
 
 Use the following steps to enable non-FIPS packs.
 
@@ -64,7 +64,7 @@ Use the following steps to enable non-FIPS packs.
 4. Enable the **Allow non-FIPS packs** option. When you enable this option, you are prompted to confirm the use of
    non-FIPS packs for the tenant.
 
-![Diagram showing the Allow non-FIPS packs toggle enabled.](/vertex_use-non-fips-settings_nonFips-packs.png)
+![Diagram showing the Allow non-FIPS packs toggle enabled.](/vertex_use-non-fips-settings_nonFips-packs.webp)
 
 To disable the setting, toggle this option off and confirm you want to disable it.
 

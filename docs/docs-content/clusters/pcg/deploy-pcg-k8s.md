@@ -106,7 +106,7 @@ Use the following steps to install the PCG in your existing Kubernetes cluster.
 6. To install the Palette agent, copy the kubectl commands from the slide-out panel and execute them against your
    self-hosted cluster. Issue the commands in the order they are listed.
 
-   ![View of the cluster details page with the side drawer extended that contains the kubectl commands](/clusters_pcg_deploy-pcg-k8s_kubectl-cmds-view.png)
+   ![View of the cluster details page with the side drawer extended that contains the kubectl commands](/clusters_pcg_deploy-pcg-k8s_kubectl-cmds-view.webp)
 
 7. Close the slide-out panel when you have copied and issued both commands. The PCG Overview page **Cluster Status**
    field will display **Pending** while the PCG is deploying. The deployment is complete when the **Cluster Status**

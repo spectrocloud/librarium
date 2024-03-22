@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["kubernetes", "amd64", "fips"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/edge-k3s/blobs/sha256:5b7f8a80330d6938056848905238efbbd085e2f0f86fd03d7be10ccdabf791c7?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/edge-k3s/blobs/sha256:5b7f8a80330d6938056848905238efbbd085e2f0f86fd03d7be10ccdabf791c7?type=image.webp"
 tags: ["packs", "kubernetes", "k3s", "edge"]
 ---
 

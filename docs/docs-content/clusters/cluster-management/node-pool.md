@@ -182,3 +182,43 @@ After you have modified a new node pool, you can validate the node pool by follo
 
 5. Ensure the new node pool is listed in the **Node Pools** section and that all compute instances are in the healthy
    status.
+
+## Approve Cluster Repave
+
+### Prerequisites
+
+- An active cluster in Palette.
+
+- The `cluster.update` permission that is required to edit clusters.
+
+- Pending cluster repave operations.
+
+### Approve Cluster Repave
+
+1.  Log in to [Palette](https://console.spectrocloud.com).
+
+2.  Navigate to the left **Main Menu** and click on **Clusters**.
+
+3.  Select a cluster with pending repave operations.
+
+4.  Click **Updates**.
+
+    ![Cluster overview page with the highlighted Updates button](/clusters_cluster-management_node-pool_cluster-updates-highlight.webp)
+
+5.  Review and, optionally, override changes that the repave introduces.
+
+    ![Preview of repave updates in the Palette editor](/clusters_cluster-management_node-pool_available-updates-modal.webp)
+
+6.  Click **Confirm updates**.
+
+### Validation
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Navigate to the left **Main Menu** and click on **Clusters**.
+
+3. Click on the **Nodes** tab.
+
+4. Verify that all compute instances are in the healthy status and reflect the applied repave changes.
+
+   ![Cluster nodes page with all nodes in the healthy status](/clusters_cluster-management_node-pool_cluster-nodes-healthy.webp)

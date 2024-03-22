@@ -10,7 +10,7 @@ tags: ["edge"]
 The typical end-to-end lifecycle of deploying clusters at edge locations involves several distinct phases in which
 different organizations or teams need to perform specific tasks.
 
-![A flow of the lifecycle, starting with model, staging, install, and finally register. Once all phases are complete the cluster provision occurs.](/native-edge-deployment-lifecycle.png)
+![A flow of the lifecycle, starting with model, staging, install, and finally register. Once all phases are complete the cluster provision occurs.](/native-edge-deployment-lifecycle.webp)
 
 - **Modeling** - App owners build and test the applications in test environments and model application profiles in
   Palette for a cluster installation.

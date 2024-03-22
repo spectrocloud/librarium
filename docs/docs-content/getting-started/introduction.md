@@ -21,7 +21,7 @@ and public sector organizations. Palette VerteX integrates Spectro Cloud’s Fed
 (FIPS) 140-2 cryptographic modules. To learn more about FIPS-enabled Palette, check out
 [Palette VerteX](../vertex/vertex.md).
 
-![Palette product high level overview eager-load](/getting-started/getting-started_introduction_product-overview.png)
+![Palette product high level overview eager-load](/getting-started/getting-started_introduction_product-overview.webp)
 
 ## What Makes Palette Different?
 

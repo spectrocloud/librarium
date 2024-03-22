@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["load balancers", "amd64", "arm64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/lb-metallb/blobs/sha256:3d09a1eab856a03d5b821062dcd1da624256e8f1e2ede404d88cb088d3adb945?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/lb-metallb/blobs/sha256:3d09a1eab856a03d5b821062dcd1da624256e8f1e2ede404d88cb088d3adb945?type=image.webp"
 tags: ["packs", "metallb", "network"]
 ---
 
