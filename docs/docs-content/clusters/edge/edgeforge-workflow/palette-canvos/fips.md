@@ -123,11 +123,11 @@ you want to build the base image with.
    docker tag rhel-byoi-fips:latest ttl.sh/rhel/rhel-byoi-fips:latest
    ```
 
-   Push the image to the repository.
+10. Push the image to the repository.
 
-   ```shell
-   docker push ttl.sh/rhel/rhel-byoi-fips:latest
-   ```
+    ```shell
+    docker push ttl.sh/rhel/rhel-byoi-fips:latest
+    ```
 
 </TabItem>
 
@@ -157,11 +157,11 @@ you want to build the base image with.
    docker tag ubuntu-focal-fips:latest ttl.sh/ubuntu/ubuntu-focal-fips:latest
    ```
 
-   Push the image to the repository.
+10. Push the image to the repository.
 
-   ```shell
-   docker push ttl.sh/ubuntu/ubuntu-focal-fips:latest
-   ```
+    ```shell
+    docker push ttl.sh/ubuntu/ubuntu-focal-fips:latest
+    ```
 
 </TabItem>
 
@@ -169,15 +169,15 @@ you want to build the base image with.
 
 ### Build Edge Installer ISO
 
-9. Return to the **CanvOS** directory.
+11. Return to the **CanvOS** directory.
 
-   ```shell
-   cd ..
-   ```
+    ```shell
+    cd ..
+    ```
 
-10. Create a file named **.arg**. This file will contain parameters that customize the Edge Installer ISO build.
+12. Create a file named **.arg**. This file will contain parameters that customize the Edge Installer ISO build.
 
-11. In the **.arg** file, provide the following required information. Refer to
+13. In the **.arg** file, provide the following required information. Refer to
     [Edge Artifact Build Configuration](arg.md) for more information.
 
     | Argument         | Description                                                                                                                                        |
@@ -192,7 +192,7 @@ you want to build the base image with.
     | BASE_IMAGE       | The base image used by EdgeForge to build the Edge Installer and provider images. This must be the same image that you build in the previous step. |
     | ISO_NAME         | The file name of the ISO file that will be generated.                                                                                              |
 
-12. Create a file named **user-data**. Add the following blocks to root level of the **user-data** file. Replace the
+14. Create a file named **user-data**. Add the following blocks to root level of the **user-data** file. Replace the
     value for `edgeHostToken` with your VerteX registration token, and replace the value `paletteEndPoint` with the URL
     of your VerteX instance.
 
@@ -207,10 +207,10 @@ you want to build the base image with.
         paletteEndpoint: https://vertex.palette-devx.spectrocloud.com
     ```
 
-13. Add further customization to the **user-data** file as needed. This file configures the Edge Installer. Refer to
+15. Add further customization to the **user-data** file as needed. This file configures the Edge Installer. Refer to
     [Installer Reference](../../edge-configuration/installer-reference.md) for more information.
 
-14. Issue the following command to build the Edge Installer ISO.
+16. Issue the following command to build the Edge Installer ISO.
 
     ```shell
     ./earthly.sh +iso
@@ -224,11 +224,11 @@ you want to build the base image with.
 Provider images are Kairos-based container images for a supported OS and Kubernetes distribution combination.
 FIPS-complaint provider images are built on top of the base OS image you have built previously.
 
-15. Locate **Earthfile** in the CanvOS directory. In the file, find the block that starts with
+17. Locate **Earthfile** in the CanvOS directory. In the file, find the block that starts with
     `build-provider-images-fips:` and delete the Kubernetes versions that you do not want. This will speed up the build
     process and save storage space.
 
-16. Review the **.arg** file again to ensure the parameters are correct. Issue the following command to build the
+18. Review the **.arg** file again to ensure the parameters are correct. Issue the following command to build the
     provider images.
 
     ```shell
