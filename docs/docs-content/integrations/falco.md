@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["security", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/falco/blobs/sha256:4e37461d0a31959ca8af65128329750ca3417e883e7e4ba17ee085b01a383a27?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/falco/blobs/sha256:4e37461d0a31959ca8af65128329750ca3417e883e7e4ba17ee085b01a383a27?type=image.webp"
 tags: ["packs", "falco", "security"]
 ---
 

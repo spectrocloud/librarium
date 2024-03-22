@@ -32,7 +32,7 @@ type cannot be added to a cluster group configured for the endpoint type load ba
 
 :::
 
-![An example cluster group made up of various clusters](/clusters_cluster-groups_index-page.png)
+![An example cluster group made up of various clusters](/clusters_cluster-groups_index-page.webp)
 
 ## Get Started
 

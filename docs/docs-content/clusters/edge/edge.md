@@ -22,7 +22,7 @@ require content data and processing to be closer to their applications.
 
 <br />
 
-![A drawing of Edge architecture with humans interacting](/clusters_edge_edge-arch-drawing.png)
+![A drawing of Edge architecture with humans interacting](/clusters_edge_edge-arch-drawing.webp)
 
 <br />
 

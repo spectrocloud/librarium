@@ -29,7 +29,7 @@ tags: ["clusters", "imported clusters"]
 
 <br />
 
-![The cluster details view with an arrow pointing to the migrate button](/clusters_imported-clusters_migrate-full-permissions_cluster-details-page.png)
+![The cluster details view with an arrow pointing to the migrate button](/clusters_imported-clusters_migrate-full-permissions_cluster-details-page.webp)
 
 <br />
 
@@ -92,7 +92,7 @@ job.batch/palette-import-presetup-job created
 
 <br />
 
-![A cluster details page with an imported cluster after a completed migration](/clusters_imported-clusters_migrate-full-permissions_cluster-details-page-import-complete.png)
+![A cluster details page with an imported cluster after a completed migration](/clusters_imported-clusters_migrate-full-permissions_cluster-details-page-import-complete.webp)
 
 You now have successfully migrated a read-only mode cluster to full-permissions mode. Imported clusters in
 full-permissions mode allow Palette to manage more Day-2 activities. You can also now deploy add-on cluster profiles to

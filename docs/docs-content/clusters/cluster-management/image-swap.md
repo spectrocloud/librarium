@@ -153,7 +153,7 @@ Use the following steps to learn how to use Palette's image swap functionality.
 
 <br />
 
-![A view of the Kubernetes layer YAML with an imageSwap configuration block.](/clusters_cluster-management_image-swap_kubernetes-layer-yaml.png)
+![A view of the Kubernetes layer YAML with an imageSwap configuration block.](/clusters_cluster-management_image-swap_kubernetes-layer-yaml.webp)
 
 9. Complete the remainder of the cluster profile creation wizard.
 

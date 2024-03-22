@@ -93,7 +93,8 @@
     "test-links": "^0.0.1",
     "ts-jest": "^29.1.1",
     "typescript": "^5.1.6",
-    "typescript-plugin-css-modules": "^5.0.1"
+    "typescript-plugin-css-modules": "^5.0.1",
+    "webpconvert": "^3.0.1"
   },
   "browserslist": {
     "production": [
