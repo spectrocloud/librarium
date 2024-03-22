@@ -168,6 +168,8 @@ you want to build the base image with.
 
 </TabItem>
 
+</Tabs>
+
 ### Build Edge Installer ISO
 
 9. Return to the **CanvOS** directory.
