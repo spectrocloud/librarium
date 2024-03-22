@@ -25,4 +25,4 @@ The following are some highlights of Palette-provisioned GCP clusters.
 - The Kubernetes API server endpoint is exposed through a Global Load Balancer. Applications deployed into the cluster
   can use a Regional Load Balancer to expose internal Kubernetes services.
 
-  ![gcp_cluster_architecture.png](/gcp_cluster_architecture.png)
+  ![gcp_cluster_architecture.webp](/gcp_cluster_architecture.webp)

@@ -33,7 +33,7 @@ instances of Palette and Palette VerteX have access to the system console by a
 level, making the Nutanix cloud available to all the tenants. Regular Palette or VerteX users perform the remaining
 steps in Palette and their local environment.
 
-![Diagram showing the overall Nutanix workflow for users to construct self-hosted cloud solutions tailored to their environment.](/clusters_data-center_nutanix_workflow.png)
+![Diagram showing the overall Nutanix workflow for users to construct self-hosted cloud solutions tailored to their environment.](/clusters_data-center_nutanix_workflow.webp)
 
 1. A [system administrator](../../../glossary-all.md#system-administrator) registers Nutanix with Palette by preparing
    YAML templates to configure the cluster and node pools and invokes APIs to define the logo, required cloud account

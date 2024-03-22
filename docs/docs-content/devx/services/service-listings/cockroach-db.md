@@ -7,7 +7,7 @@ type: "appTier"
 category: ["databases"]
 hiddenFromNav: false
 sidebar_position: 50
-logoUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/3/31/Cockroach_Labs_Logo.png/220px-Cockroach_Labs_Logo.png"
+logoUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/3/31/Cockroach_Labs_Logo.webp/220px-Cockroach_Labs_Logo.webp"
 tags: ["devx", "app mode", "pde", "databases"]
 ---
 

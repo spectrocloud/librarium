@@ -332,12 +332,12 @@ This guide demonstrates how to implement your own disk and VM templates using Ku
     Your cluster applies the changes. As soon as the cluster finishes updating, the CDI begins to import the data into
     the target PVC in the `vmo-golden-images` namespace. The target PVC has the same name as the `DataVolume` object.
 
-    ![Add-on Profile](/create-disk-templates-guide/vm-management_create-manage-vm_create-disk-templates_add-on-disk-template-profile.png)
+    ![Add-on Profile](/create-disk-templates-guide/vm-management_create-manage-vm_create-disk-templates_add-on-disk-template-profile.webp)
 
 4.  Once the cluster updates, this VM template is available to the VMs you create on your cluster. Check out the
     [Deploy VM From a Template](./standard-vm-operations/deploy-vm-from-template.md) guide for more information.
 
-    ![Create VM from template](/create-disk-templates-guide/vm-management_create-manage-vm_create-disk-templates_create-vm-from-template.png)
+    ![Create VM from template](/create-disk-templates-guide/vm-management_create-manage-vm_create-disk-templates_create-vm-from-template.webp)
 
 ## Resources
 
