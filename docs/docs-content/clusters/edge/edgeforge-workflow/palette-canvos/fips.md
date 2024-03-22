@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Build FIPS-Enabled Edge Artifacts"
-title: "Build FIPS-Enabled Edge Artifacts"
+sidebar_label: "Build FIPS-Compliant Edge Artifacts"
+title: "Build FIPS-Compliant Edge Artifacts"
 description: "Learn how to build Edge Installer ISO and provider images to install FIPS-compliant Palette Edge."
 icon: ""
 hide_table_of_contents: false
@@ -8,11 +8,12 @@ sidebar_position: 30
 tags: ["edge"]
 ---
 
-Palette Edge supports Federal Information Processing Standards (FIPS)-compliant Edge clusters. To deploy a
-FIPS-compliant Edge cluster, you need to build FIPS-enabled Edge artifacts. Both the Edge Installer ISO and the provider
-images must be FIPS-enabled.
+Palette Edge supports
+[Federal Information Processing Standards](https://www.nist.gov/standardsgov/compliance-faqs-federal-information-processing-standards-fips)
+(FIPS)-compliant Edge clusters. To deploy a FIPS-compliant Edge cluster, you need to build FIPS-enabled Edge artifacts.
+Both the Edge Installer ISO and the provider images must be FIPS-compliant.
 
-This page guides you through the process of building FIPS-enabled Edge artifacts.
+This page guides you through the process of building FIPS-compliant Edge Installer ISO and provider images.
 
 ## Prerequisites
 
@@ -29,7 +30,8 @@ This page guides you through the process of building FIPS-enabled Edge artifacts
   - 8 GB memory
   - 50 GB storage
 
-- Depending on the Operating System (OS) you want to use on your Edge host, you will need subscription credentials.
+- Depending on the Operating System (OS) you want to use on your Edge host, you will need the following subscription
+  credentials:
 
   - Red Hat Enterprise Linux (RHEL): RHEL subscription token.
   - Ubuntu Pro: Ubuntu Pro subscription token.
@@ -80,8 +82,8 @@ git checkout v4.3.0
 
 ### Build FIPS-Compliant Base OS Image
 
-Before we can build the Edge Installer ISO or the provider images, we need to build a FIPS-compliant Operating Systems
-(OS) base image with the Kairos framework.
+Before you can build the Edge Installer ISO or the provider images, you need to build a FIPS-compliant Operating Systems
+(OS) base image with the Kairos framework. This base image is then used to build the final Edge artifacts.
 
 Palette supports the Red Hat Enterprise Linux (RHEL) and Ubuntu for FIPS-compliant base OS images. Choose the OS that
 you want to build the base image with.
@@ -107,8 +109,8 @@ you want to build the base image with.
 
    :::info
 
-   If you run into issues with the script recognizing the RHEL credentials, try replacing the credentials directly in
-   the Docker file in the following line:
+   If you run into issues with the script not recognizing the RHEL credentials, try searching **Dockerfile** for the
+   following line and replacing the credentials directly:
 
    ```dockerfile
    RUN rm /etc/rhsm-host && subscription-manager register --username 'your-username' --password '*******' \
@@ -119,8 +121,8 @@ you want to build the base image with.
 8. When the build finishes, issue `docker images` and confirm there is an image named `rhel-byoi-fips:latest`. This is
    the base image that you will use to build provider images and the Edge installer ISO later on.
 
-9. Tag the image with a repository that is accessible by your Linux machine. For example, use the publicly accessible
-   `ttl.sh` repository.
+9. Tag the image with a repository that is accessible by your Linux machine. For example, the following command uses the
+   publicly accessible `ttl.sh` repository.
 
    ```shell
    docker tag rhel-byoi-fips:latest ttl.sh/rhel/rhel-byoi-fips:latest
@@ -189,7 +191,7 @@ you want to build the base image with.
     | OS_DISTRIBUTION  | The OS distribution in your provider image.                                                                                                        |
     | IMAGE_REPO       | The image repository to use for tagging the generated provider images.                                                                             |
     | OS_VERSION       | The OS version in your provider image. This only applies to Ubuntu.                                                                                |
-    | K8S_DISTRIBUTION | The Kubernetes distribution for your provider image. Allowed values are `rke2` and `kubeadm-fips`.                                                 |
+    | K8S_DISTRIBUTION | The Kubernetes distribution for your provider image. Allowed values are `rke2` and `kubeadm-fips`. The other distributions are not FIPS-compliant. |
     | FIPS_ENABLED     | Whether to enable FIPS compliance. This parameter must be set to `true`.                                                                           |
     | ARCH             | The architecture of the image. Allowed values are `amd64` and `arm64`.                                                                             |
     | BASE_IMAGE       | The base image used by EdgeForge to build the Edge Installer and provider images. This must be the same image that you build in the previous step. |
@@ -215,7 +217,7 @@ you want to build the base image with.
     When the build finishes, the ISO file will be generated in the **build** directory under the name you specified in
     your **.arg** file.
 
-### Build FIPS-Compliant Provider Images
+### Build Provider Images
 
 Provider images are Kairos-based container images for a supported OS and Kubernetes distribution combination.
 FIPS-complaint provider images are built on top of the base OS image you have built previously.
@@ -233,7 +235,8 @@ FIPS-complaint provider images are built on top of the base OS image you have bu
 
     :::warning
 
-    For the Kubernetes distribution, only `rke2` and `kubeadm-fips` will produce FIPS-compliant provider images.
+    For the Kubernetes distribution set in your **.arg** file, only `rke2` and `kubeadm-fips` will produce
+    FIPS-compliant provider images.
 
     :::
 
