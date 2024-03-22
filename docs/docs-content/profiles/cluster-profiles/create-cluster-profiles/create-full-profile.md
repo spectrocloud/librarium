@@ -60,7 +60,7 @@ For more information about the layers, applying pack versions, configuration par
 
 8. Fill out the required input fields for each layer and click on **Confirm & Create**.
 
-<!-- ![A view of the manfiest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.png) -->
+<!-- ![A view of the manfiest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.webp) -->
 
 9. If you want to add additional layers, repeat steps 7 and 8. Otherwise, click on **Next** to review the profile.
 

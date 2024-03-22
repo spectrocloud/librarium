@@ -39,7 +39,7 @@ example, a role within the scope project can operate within the projects. The co
 the totality of the accessibility available to that user. Scopes are structured in a parent-child relationship. Each
 level of hierarchy makes the Scope more specific. The roles are assigned at any of these levels of Scope. The level you
 select determines how widely the role is applied. Lower levels inherit role permissions from higher levels.
-![palette-rbac-scope.png](/palette-rbac-scope.png)
+![palette-rbac-scope.webp](/palette-rbac-scope.webp)
 
 The following are the major properties of Palette driven Scopes:
 

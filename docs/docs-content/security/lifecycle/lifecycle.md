@@ -10,7 +10,7 @@ Our comprehensive approach to security is ingrained in each stage of our develop
 coding to testing and deployment, our processes are designed to identify, prevent, and mitigate security risks to ensure
 we deliver reliable and secure solutions.
 
-![Secure development flow from feature definition and design to development and release](/security_dev_lifecycle.png)
+![Secure development flow from feature definition and design to development and release](/security_dev_lifecycle.webp)
 
 Our Security team reviews early in the design process and identifies real and potential issues, which are logged in a
 ticketing system. Throughout development and before release we conduct more reviews and automated scans for common

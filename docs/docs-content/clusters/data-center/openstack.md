@@ -19,7 +19,7 @@ The following are some highlights of OpenStack clusters provisioned by Palette:
    enables secure communication between the SaaS portal and private cloud environment. The gateway enables installation
    and end-to-end lifecycle management of Kubernetes clusters in private cloud environments from Palette's SaaS portal.
 
-![openstack_cluster_architecture.png](/openstack_cluster_architecture.png)
+   ![openstack_cluster_architecture.webp](/openstack_cluster_architecture.webp)
 
 ## Prerequisites
 

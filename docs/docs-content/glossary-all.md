@@ -81,7 +81,7 @@ Monitoring (Prometheus), Security (Twistlock) pre-installed.
 
 The diagram below shows an example of a cluster profile:
 
-![cluster_profile_new](/cluster_profile_new.png)
+![cluster_profile_new](/cluster_profile_new.webp)
 
 For more information, check out [Cluster Profiles](profiles/cluster-profiles/cluster-profiles.md).
 

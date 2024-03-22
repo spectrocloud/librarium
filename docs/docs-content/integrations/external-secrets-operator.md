@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["authentication", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/external-secrets-operator/blobs/sha256:ee6f7f347d381852582f688c70b2564b0a346c2b2ed1221310889075a4453c6d?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/external-secrets-operator/blobs/sha256:ee6f7f347d381852582f688c70b2564b0a346c2b2ed1221310889075a4453c6d?type=image.webp"
 tags: ["packs", "external-secrets-operator", "security"]
 ---
 

@@ -19,7 +19,7 @@ With a unique approach to managing multiple clusters, Palette gives IT teams com
 production-scale efficiencies to provide developers with highly curated Kubernetes stacks and tools based on their
 specific needs, with granular governance and enterprise-grade security.
 
-![Palette product high level overview eager-load](/docs_introduction_product-overview.png)
+![Palette product high level overview eager-load](/docs_introduction_product-overview.webp)
 
 ## What Makes Palette Different?
 
@@ -59,7 +59,7 @@ and any add-on application services. Cluster Profiles enable a repeatable way to
 environment. Palette also enables importing of existing Kubernetes environments and creating equivalent Cluster
 Profiles.
 
-![2-what-is-sc](/docs_introduction_palette-components.png)
+![2-what-is-sc](/docs_introduction_palette-components.webp)
 
 ## Who Can Benefit From Palette?
 

@@ -16,7 +16,7 @@ With a unique approach to managing multiple clusters, Palette gives IT teams com
 production-scale efficiencies to provide developers with highly curated Kubernetes stacks and tools based on their
 specific needs, with granular governance and enterprise-grade security.
 
-![Palette product high level overview eager-load](/getting-started/getting-started_introduction_product-overview.png)
+![Palette product high level overview eager-load](/getting-started/getting-started_introduction_product-overview.webp)
 
 ## What Makes Palette Different?
 

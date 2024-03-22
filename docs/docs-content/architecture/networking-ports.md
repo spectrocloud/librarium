@@ -9,11 +9,11 @@ sidebar_position: 20
 
 The following ports must be reachable from a network perspective for Palette SaaS to function correctly.
 
-![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram.png "title=SaaS Network Diagram with ports")
+![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram-grpc.webp "title=SaaS Network Diagram with ports")
 
 ## SaaS Managed
 
-![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge.png)
+![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge.webp)
 
 The following ports must be reachable from a network perspective for Palette to operate properly.
 
@@ -43,7 +43,7 @@ is entirely optional and not required for Palette to operate appropriately.
 
 The following ports must be reachable from a network perspective for Palette Sefl-Hosted to function correctly.
 
-![On-prem network diagram](/architecture_networking-ports_network-diagram.png "#title="network diagram")
+![On-prem network diagram](/architecture_networking-ports_network-diagram.webp "#title="network diagram")
 
 ### Management Platform
 

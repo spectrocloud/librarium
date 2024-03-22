@@ -28,7 +28,7 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 
   The diagram below illustrates how MAAS works with Palette using a PCG.
 
-  ![Network flow from an architectural perspective of how MAAS works with Palette](/maas_cluster_architecture.png)
+  ![Network flow from an architectural perspective of how MAAS works with Palette](/maas_cluster_architecture.webp)
 
   <br />
 

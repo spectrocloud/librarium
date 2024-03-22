@@ -156,7 +156,7 @@ resources.
 
 The following diagram represents the infrastructure pattern you will use in this guide to enable HTTPS.
 
-![An architecture diagram that displays the network flow and infrastructure components](/clusters_monitoring_deploy-monitor-stack_https-architecture.png)
+![An architecture diagram that displays the network flow and infrastructure components](/clusters_monitoring_deploy-monitor-stack_https-architecture.webp)
 
 In this guide, the following domains are used to expose the monitoring stack:
 
@@ -389,7 +389,7 @@ network administrator team if you need additional guidance.
 | `nginx-ingress-controller`                          | `metrics.example.com`    | `a57b622a0c0a148189ed00df614481c9-1803006767.us-east-1.elb.amazonaws.com` |
 | `prometheus-operator-kube-prometheus-stack-grafana` | `monitoring.example.com` | `a702f8a14b9684a30b18b875d2cca997-1676466159.us-east-1.elb.amazonaws.com` |
 
-![A screenshot of the Palette user interface with two boxes highlighting the load balancers that you need to add to your CNAME.](/clusters_monitoring_deploy-monitor-stack_loadbalancers.png)
+![A screenshot of the Palette user interface with two boxes highlighting the load balancers that you need to add to your CNAME.](/clusters_monitoring_deploy-monitor-stack_loadbalancers.webp)
 
 :::info
 
