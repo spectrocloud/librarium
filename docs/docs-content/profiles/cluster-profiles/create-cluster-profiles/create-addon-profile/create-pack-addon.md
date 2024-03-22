@@ -45,7 +45,7 @@ To learn more about creating multiple profile versions, check out
    to the layer in Helm values.yaml form, and specify the layer
    [install order](./create-addon-profile.md#install-order).
 
-  <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.png) -->
+  <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.webp) -->
 
 7. If you want to add additional layers, repeat steps 5 and 6. Otherwise, click on **Next** to review the profile.
 

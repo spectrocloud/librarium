@@ -5,7 +5,7 @@ description: "Choosing K3s with Ubuntu within the Palette console"
 hiddenFromNav: true
 type: "integration"
 category: ["system app"]
-logoUrl: "https://registry.spectrocloud.com/v1/ubuntu-k3s/blobs/sha256:10c291a69f428cc6f42458e86cf07fd3a3202c3625cc48121509c56bdf080f38?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/ubuntu-k3s/blobs/sha256:10c291a69f428cc6f42458e86cf07fd3a3202c3625cc48121509c56bdf080f38?type=image.webp"
 ---
 
 # Lightweight Kubernetes on Ubuntu

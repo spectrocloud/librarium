@@ -6,7 +6,7 @@ type: "integration"
 hide_table_of_contents: true
 category: ["load balancers", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/external-dns/blobs/sha256:1bfd6dceb0b50efee4068cd6321511f6b24be86e2d613e0a8206e716ba7aea3f?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/external-dns/blobs/sha256:1bfd6dceb0b50efee4068cd6321511f6b24be86e2d613e0a8206e716ba7aea3f?type=image.webp"
 tags: ["packs", "external-dns", "network"]
 ---
 

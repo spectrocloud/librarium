@@ -21,7 +21,7 @@ cluster experiences an outage with the overlay network enabled, components insid
 addresses in the overlay network, even if their IP addresses in the underlying physical network has changed, protecting
 the cluster from an outage.
 
-![VxLAN Overlay Architecture](/clusters_edge_site-installation_vxlan-overlay_architecture.png)
+![VxLAN Overlay Architecture](/clusters_edge_site-installation_vxlan-overlay_architecture.webp)
 
 :::preview
 
