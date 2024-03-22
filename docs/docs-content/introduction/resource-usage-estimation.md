@@ -22,7 +22,7 @@ the product by 1000.
 For instance, if you deploy a single-node cluster with 16 CPU cores for 24 hours, you will use about 0.39 kCh.
 Alternatively, if you deploy a three-node cluster that has 16 CPUs per node for 24 hours, you will use about 1.2 kCh.
 
-![A diagram that offers a visual representation of how Palette calculates resource usage in kCh.](/introduction_resource-usage-estimation_diagram-kCh-calculation.png)
+![A diagram that offers a visual representation of how Palette calculates resource usage in kCh.](/introduction_resource-usage-estimation_diagram-kCh-calculation.webp)
 
 ## Your Current Usage
 
@@ -30,7 +30,7 @@ Palette and Palette Vertex display your current resource usage on the **Project 
 offers 25 kCh per month, but you can always request on-demand compute capacity by clicking **Upgrade now** in the
 bottom-left corner of Palette.
 
-![Palette interface with the kCh meter highlighted.](/introduction_resourse-usage-estimation_kCh-in-ui.png)
+![Palette interface with the kCh meter highlighted.](/introduction_resourse-usage-estimation_kCh-in-ui.webp)
 
 :::warning
 
