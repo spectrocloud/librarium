@@ -7,7 +7,7 @@ type: "integration"
 category: ["storage", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
 logoUrl:
-  " https://registry.dev.spectrocloud.com/v1/csi-rook-ceph/blobs/sha256:2817270f4eecbc2eea0740c55c7611d1a538a3e17da610a3487bb11b067076d1?type=image/png"
+  " https://registry.dev.spectrocloud.com/v1/csi-rook-ceph/blobs/sha256:2817270f4eecbc2eea0740c55c7611d1a538a3e17da610a3487bb11b067076d1?type=image.webp"
 tags: ["packs", "rook-ceph", "storage"]
 ---
 

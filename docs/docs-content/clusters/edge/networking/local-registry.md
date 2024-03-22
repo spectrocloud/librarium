@@ -17,7 +17,7 @@ connected to the external network.
 
 :::
 
-![Local Harbor Registry Architecture](/clusters_edge_networking_local_harbor_architecture.png)
+![Local Harbor Registry Architecture](/clusters_edge_networking_local_harbor_architecture.webp)
 
 ## Prerequisites
 

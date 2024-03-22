@@ -33,14 +33,14 @@ repeat this for any other team that you configured with group claims.
 1.  Open a web browser and navigate to your Palette subscription. Navigate to **Tenant Settings** --> **Users & Teams**
     --> **Teams** tab, and click **+ Create Team**.
 
-![Create Palette Team](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_create-team.png)
+![Create Palette Team](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_create-team.webp)
 
 <br />
 
 2. Specify `Okta Team` in the **Team name** field. You don't need to set any members now, as this will happen
    automatically from the SSO. Click **Confirm** to create the team.
 
-![Name Palette Team](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_name-team.png)
+![Name Palette Team](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_name-team.webp)
 
 <br />
 
@@ -48,13 +48,13 @@ repeat this for any other team that you configured with group claims.
    team administrative access to the entire tenant and all the projects in it, assign the **Tenant Admin** role. Select
    **Tenant Roles** and click **+ Add Tenant Role**:
 
-![Palette Tenant Roles](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_tenant-roles.png)
+![Palette Tenant Roles](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_tenant-roles.webp)
 
 <br />
 
 4. Click on **Tenant Admin** to enable the role. Click **Confirm** to add the role.
 
-![Add Tenant Role](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-tenant-role.png)
+![Add Tenant Role](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-tenant-role.webp)
 
 <br />
 
@@ -83,7 +83,7 @@ Replace `{your-okta-account-id}` with your Okta account ID.
 
 <br />
 
-![Create Okta Application](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_create-application.png)
+![Create Okta Application](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_create-application.webp)
 
 <br />
 
@@ -92,7 +92,7 @@ Replace `{your-okta-account-id}` with your Okta account ID.
 
 <br />
 
-![Configure Okta General Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_general-settings.png)
+![Configure Okta General Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_general-settings.webp)
 
 <br />
 
@@ -103,7 +103,7 @@ Replace `{your-okta-account-id}` with your Okta account ID.
 
 <br />
 
-![Configure General SSO Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml.png)
+![Configure General SSO Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml.webp)
 
 <br />
 
@@ -129,7 +129,7 @@ Under **Group Attribute Statements (Optional)** specify the below values.
 
 <br />
 
-![Configure Attribute Statements](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_attribute-statements.png)
+![Configure Attribute Statements](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_attribute-statements.webp)
 
 <br />
 
@@ -140,7 +140,7 @@ Under **Group Attribute Statements (Optional)** specify the below values.
 
 <br />
 
-![Copy Okta SAML Metadata](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_metadata-url.png)
+![Copy Okta SAML Metadata](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_metadata-url.webp)
 
 <br />
 
@@ -149,7 +149,7 @@ Under **Group Attribute Statements (Optional)** specify the below values.
 
 <br />
 
-![Paste Metadata in Palette SSO Manager](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml.png)
+![Paste Metadata in Palette SSO Manager](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml.webp)
 
 <br />
 
@@ -166,7 +166,7 @@ Under **Group Attribute Statements (Optional)** specify the below values.
 
 <br />
 
-![User Logout](/oidc-okta-images/oidc-okta_user-logout.png)
+![User Logout](/oidc-okta-images/oidc-okta_user-logout.webp)
 
 <br />
 
@@ -177,7 +177,7 @@ Under **Group Attribute Statements (Optional)** specify the below values.
 
 <br />
 
-![User SSO Login](/oidc-okta-images/oidc-okta_palette-login.png)
+![User SSO Login](/oidc-okta-images/oidc-okta_palette-login.webp)
 
 <br />
 

@@ -15,7 +15,7 @@ phase, where you add the Edge installer to the Edge host. The second opportunity
 where you can provide supplementary user-data configurations if needed. The diagram below highlights the two mentioned
 phases in the Edge lifecycle.
 
-![A diagram highlighting the two stages in the edge deployment lifecycle where you can apply user data.](/edge_edge-configuration_cloud-init_user-data.png)
+![A diagram highlighting the two stages in the edge deployment lifecycle where you can apply user data.](/edge_edge-configuration_cloud-init_user-data.webp)
 
 - **Staging Phase** - In the staging phase, you prepare your edge hosts using the organization-level configurations. The
   configurations include the Edge Installer, the user data, and, optionally, a content bundle. You boot the edge hosts

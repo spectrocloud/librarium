@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["storage", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.dev.spectrocloud.com/v1/nutanix-csi/blobs/sha256:7944cb5fecaaac0b5d5bf47a311ab80573147a34ac438954a70f97c69d65d733?type=image/png"
+logoUrl: "https://registry.dev.spectrocloud.com/v1/nutanix-csi/blobs/sha256:7944cb5fecaaac0b5d5bf47a311ab80573147a34ac438954a70f97c69d65d733?type=image.webp"
 tags: ["packs", "Nutanix", "Storage"]
 ---
 
