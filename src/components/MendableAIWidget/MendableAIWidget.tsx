@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import useBaseUrl from "@docusaurus/useBaseUrl";
+// import { useEffect } from "react";
+// import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+// import useBaseUrl from "@docusaurus/useBaseUrl";
 
-export const MENDABLE_SCRIPT_URL = "https://unpkg.com/@mendable/search@0.0.205/dist/umd/mendable-bundle.min.js";
+// export const MENDABLE_SCRIPT_URL = "https://unpkg.com/@mendable/search@0.0.205/dist/umd/mendable-bundle.min.js";
 
 export default function MendableAIWidget() {
   // const {
