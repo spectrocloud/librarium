@@ -283,6 +283,6 @@ map many users to a role. The group name is the group assigned in the OIDC provi
 Assume in an OIDC provider you created a group named `dev-east-2`. If you configure the host cluster's Kubernetes pack
 with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group.
 
-![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
+![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.webp)
 
 In this example, all users in the `dev-east-2` would inherit the `cluster-admin` role.

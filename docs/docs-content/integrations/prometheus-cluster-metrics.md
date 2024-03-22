@@ -24,7 +24,7 @@ information is exposed by the Prometheus Cluster Metrics pack.
 
 <br />
 
-![A grafana dashboard view of the cluster metric displaying pack status](/clusters_cluster-management_grafana_spectro_metrics.png)
+![A grafana dashboard view of the cluster metric displaying pack status](/clusters_cluster-management_grafana_spectro_metrics.webp)
 
 ## Versions Supported
 

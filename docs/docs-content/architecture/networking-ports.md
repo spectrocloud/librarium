@@ -9,11 +9,11 @@ sidebar_position: 20
 
 The following ports must be reachable from a network perspective for Palette SaaS to function correctly.
 
-![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram-grpc.webp "title=SaaS Network Diagram with ports")
+![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram-nats.webp "title=SaaS Network Diagram with ports")
 
 ## SaaS Managed
 
-![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge.webp)
+![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge_nats.webp)
 
 The following ports must be reachable from a network perspective for Palette to operate properly.
 

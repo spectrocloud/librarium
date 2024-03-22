@@ -79,7 +79,7 @@ the OVF template deployment wizard, such as the Palette endpoint or a mistyped p
 The screenshot below highlights the OVF template properties you must carefully configure and verify before deploying a
 PCG installer VM.
 
-![A screenshot displaying the OVF template properties you  configure while deploying the PCG installer VM](/troubleshooting-pcg-template_properties.png)
+![A screenshot displaying the OVF template properties you  configure while deploying the PCG installer VM](/troubleshooting-pcg-template_properties.webp)
 
 3. Double-check the accuracy of the pairing code used for the PCG installer VM. A pairing code is a unique
    authentication code Palette generates for each PCG installer instance. Confirm that it matches the value you copied
@@ -207,12 +207,12 @@ system logs from the monitoring console. Follow the steps below to review the de
    highlighted in the screenshot below. The monitoring console allows you to check the high-level status and download
    the individual log files.
 
-![A screenshot of the monitoring console of the PCG installer.](/troubleshooting-pcg-monitoring_console.png)
+![A screenshot of the monitoring console of the PCG installer.](/troubleshooting-pcg-monitoring_console.webp)
 
 4. If any of the statuses is not **Done** after waiting for a while, download the concerned logs. The screenshot below
    displays the **Logs** tab in the monitoring console.
 
-![A screenshot of the logs in the monitoring console of the PCG installer.](/troubleshooting-pcg-monitoring_logs.png)
+![A screenshot of the logs in the monitoring console of the PCG installer.](/troubleshooting-pcg-monitoring_logs.webp)
 
 5. Examine the log files for potential errors and root causes.
 
@@ -363,7 +363,7 @@ installer VM lacks outbound internet connectivity.
    occurred due to a preceding "https://" or "http://" string in the vCenter server URL, the error details will mention
    "https://" twice, as highlighted in the screenshot below.
 
-![A screenshot highlighting the "https://" prepended twice to the data center server URL.](/troubleshooting-pcg-http_error.png)
+![A screenshot highlighting the "https://" prepended twice to the data center server URL.](/troubleshooting-pcg-http_error.webp)
 
 6. Palette does not allow you to edit the vCenter server URL you used for authentication. Therefore, you must redeploy
    the PCG cluster with the following considerations:
@@ -372,14 +372,14 @@ installer VM lacks outbound internet connectivity.
      URL, ensure the URL does not include the preceding "http://" or "https://" string. Also, select the **Use Qualified
      Network Name** checkbox if you use a URL. The screenshot below displays the vCenter server field you configure in
      Palette.
-     ![A screenshot displaying the vCenter server field you configure in Palette](/troubleshooting-pcg-cluster_config_1.png)
+     ![A screenshot displaying the vCenter server field you configure in Palette](/troubleshooting-pcg-cluster_config_1.webp)
 
    - Ensure the VMware cloud properties are specified correctly in the cloud gateway configuration. You must use the
      vSphere data center and the folder where you have permission to create resources.
 
    - If you choose the DHCP option, enable the Dynamic DNS in your DNS server. The screenshot below displays the VMware
      cloud properties you configure in Palette.
-     ![A screenshot displaying the VMware cloud properties you configure in Palette](/troubleshooting-pcg-cluster_config_2.png)
+     ![A screenshot displaying the VMware cloud properties you configure in Palette](/troubleshooting-pcg-cluster_config_2.webp)
 
 7. If the steps above do not resolve the issue, check if the deployment failed due to a lack of outbound internet
    connectivity from the PCG installer VM. Use the following steps to check outbound internet connectivity:

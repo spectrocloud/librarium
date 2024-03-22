@@ -28,7 +28,7 @@ operations pertaining to storing images and packages.
 The following diagram is a high-level overview of the order of operations required to deploy a self-hosted instance of
 Palette in an airgap environment.
 
-![An architecture diagram outlining the five different install phases](/enterprise-version_air-gap-repo_overview-order-diagram.png)
+![An architecture diagram outlining the five different install phases](/enterprise-version_air-gap-repo_overview-order-diagram.webp)
 
 The airgap installation can be simplified into five major phases.
 
