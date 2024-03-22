@@ -30,8 +30,6 @@ kubeadm
 upsize
 Alertmanager 
 alertmanager
-application
-Application
 grafana
 Grafana
 etcd
@@ -204,3 +202,5 @@ Palette eXtented Kubernetes - Edge
 timeframe
 Luet
 rhel
+ubuntu
+RHEL
