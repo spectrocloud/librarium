@@ -36,11 +36,11 @@ Before overriding the image registry configuration for a PCG, ensure you have th
 - The kubectl command-line tool installed on your local machine. Refer to the
   [kubectl installation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) guide to learn how to install kubectl.
 
-- If you are in airgap environment, you must have the image-swap Helm chart available in your airgap environment. You
-  can get access to the image swap Helm chart by contacting the support team at
+- If you are in an airgap environment, you must have the image-swap Helm chart available there. You
+  can get access to the image-swap Helm chart by contacting the support team at
   [support@spectrocloud.com](mailto:support@spectrocloud.com)
 
-- If you are in a airgap environment, ensure [Helm](https://helm.sh/docs/intro/install/) is installed on your local
+- If you are in an airgap environment, ensure [Helm](https://helm.sh/docs/intro/install/) is installed on your local
   machine.
 
 ## Override Image Registry Configuration
@@ -80,9 +80,9 @@ Select the appropriate tab below based on the environment in which you are deplo
    | `password`           | The password to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                                                                                                                                                                                                                                                                                        | No       |
    | `username`           | The username to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                                                                                                                                                                                                                                                                                        | No       |
    | `baseContentPath`    | The base path of the custom image registry.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Yes      |
-   | `insecureSkipVerify` | Set to `true` if the custom image registry uses an insecure connection or self-signed certificate. Set to `false` if the custom image registry uses a secure connection.                                                                                                                                                                                                                                                                                                                                                          | Yes      |
-   | `caCert`             | The Certificate Authority of the custom image registry in PEM format. Required if the custom image registry uses a self-signed certificate.                                                                                                                                                                                                                                                                                                                                                                                       | No       |
-   | `mirrorRegistries`   | [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images` | Yes      |
+   | `insecureSkipVerify` | Set to `true` if the custom image registry uses an insecure connection or a self-signed certificate. Set to `false` if the custom image registry uses a secure connection.                                                                                                                                                                                                                                                                                                                                                          | Yes      |
+   | `caCert`             | The Certificate Authority of the custom image registry in the PEM format. Required if the custom image registry uses a self-signed certificate.                                                                                                                                                                                                                                                                                                                                                                                       | No       |
+   | `mirrorRegistries`   | [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) for pulling images. For example: `docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images` | Yes      |
 
     <details>
     <!-- prettier-ignore -->
@@ -111,7 +111,7 @@ Select the appropriate tab below based on the environment in which you are deplo
     </details>
 
 5. Once you have configured the `ociImageRegistry` section, issue the following command from the folder where you have
-   the image swap Helm chart available to deploy the image swap Helm chart. You may have to modify the command below
+   the image-swap Helm chart available to deploy the image-swap Helm chart. You may have to modify the command below
    based on the location of **values.yaml** file and the compressed Helm chart file.
 
    ```shell
@@ -163,7 +163,7 @@ Select the appropriate tab below based on the environment in which you are deplo
    :::
 
 8. Replace the placeholder values with the actual values for your custom image registry. Use the same values that you
-   used in the `ociImageRegistry` section of the **values.yaml** file for the image swap Helm chart. Refer to the table
+   used in the `ociImageRegistry` section of the **values.yaml** file for the image-swap Helm chart. Refer to the table
    below for a description of each parameter.
 
    | Parameter           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Required |
