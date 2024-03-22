@@ -58,27 +58,21 @@ This page guides you through the process of building FIPS-compliant Edge Install
 
 1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
 
-```bash
-git clone https://github.com/spectrocloud/CanvOS.git
-```
+   ```bash
+   git clone https://github.com/spectrocloud/CanvOS.git
+   ```
 
 2. Change to the **CanvOS/** directory.
 
-```bash
-cd CanvOS
-```
+   ```bash
+   cd CanvOS
+   ```
 
-3. View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
+3. Ensure that you are using rhe **main** branch of the repository.
 
-```bash
-git tag
-```
-
-4. Check out the newest available tag. This guide uses the tag **v4.3.0** as an example.
-
-```shell
-git checkout v4.3.0
-```
+   ```bash
+   git tag
+   ```
 
 ### Build FIPS-Compliant Base OS Image
 
@@ -109,7 +103,7 @@ you want to build the base image with.
 
    :::info
 
-   If you run into issues with the script not recognizing the RHEL credentials, try searching **Dockerfile** for the
+   If you experience issues with the script not recognizing the RHEL credentials, try searching **Dockerfile** for the
    following line and replacing the credentials directly:
 
    ```dockerfile
@@ -227,7 +221,7 @@ FIPS-complaint provider images are built on top of the base OS image you have bu
     process and save storage space.
 
 16. Review the **.arg** file again to ensure the parameters are correct. Issue the following command to build the
-    provider images:
+    provider images.
 
     ```shell
       ./earthly +build-provider-images-fips
