@@ -51,8 +51,18 @@ This is the recommended best practice for updating a cluster in Palette.
 
 6. Next to the name of the profile, click on the version number and select the new version you just published.
 
-7. Click **Save**. Depending on the changes you made to the profile, doing so might trigger a cluster repave warning.
-   Click **Continue** to confirm updating the cluster.
+7. Click **Review & Save**. Palette prompts you to preview the change summary.
+
+8. Click **Review changes in Editor**. Palette displays the changes, with the current configuration on the left and the
+   incoming changes on the right. Review the changes and click **Apply Changes**.
+
+   :::info
+
+   Make sure to preserve any existing cluster profile overrides.
+
+   :::
+
+   ![Palette Editor that displays changes coming from the profile version update.](/clusters_cluster-management_cluster-updates_preview-profile-ver-changes.png)
 
 </TabItem>
 
