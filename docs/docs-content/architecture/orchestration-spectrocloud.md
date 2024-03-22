@@ -54,7 +54,7 @@ clusters.
 
 Palette's decentralized model is based on a "decentralized management - local policy enforcement" scalable architecture.
 
-![distributed_orchestration.webp](/architecture_orchestartion-spectrocloud_distributed-flow.webp)
+![distributed_orchestration image](/architecture_orchestartion-spectrocloud_distributed-flow.webp)
 
 As part of the workload K8s cluster provisioning, only the first control-plane node is launched by Cluster API, running
 in the Palette management cluster. Once the control-plane node is operational, Cluster API resources are _pivoted_ from
