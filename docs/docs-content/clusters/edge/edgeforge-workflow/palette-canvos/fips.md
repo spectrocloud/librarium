@@ -36,7 +36,7 @@ This page guides you through the process of building FIPS-compliant Edge Install
   - Red Hat Enterprise Linux (RHEL): RHEL subscription token.
   - Ubuntu Pro: Ubuntu Pro subscription token.
 
-  Contact your system administrator for access to the subscription tokens.
+  Contact your system administrator for access to the subscription credentials.
 
 - [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the `git --version`
   command.
@@ -45,11 +45,12 @@ This page guides you through the process of building FIPS-compliant Edge Install
   command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
   create privileged containers.
 
-- A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for a
-  [free trial](https://www.spectrocloud.com/free-tier/).
+- A [VerteX](/docs/docs-content/vertex/vertex.md) account. Refer to
+  [Palette VerteX](/docs/docs-content/vertex/vertex.md#access-palette-vertex) for information on how to set up a VerteX
+  account.
 
-- Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
-  generate a new registration token. For detailed instructions, refer to the
+- VerteX registration token for pairing Edge hosts with VerteX. You will need tenant admin access to VerteX to generate
+  a new registration token. For detailed instructions, refer to the
   [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide.
 
 ## Build FIPS-Enabled Edge Artifacts
@@ -191,16 +192,23 @@ you want to build the base image with.
     | BASE_IMAGE       | The base image used by EdgeForge to build the Edge Installer and provider images. This must be the same image that you build in the previous step. |
     | ISO_NAME         | The file name of the ISO file that will be generated.                                                                                              |
 
-12. Create a file named **user-data**, This file configures the Edge Installer. Refer to
-    [Installer Reference](../../edge-configuration/installer-reference.md) for more information.
-
-13. Add the following block to root level of the **user-data** file.
+12. Create a file named **user-data**. Add the following blocks to root level of the **user-data** file. Replace the
+    value for `edgeHostToken` with your VerteX registration token, and replace the value `paletteEndPoint` with the URL
+    of your VerteX instance.
 
     ```yaml
     install:
       grub_options:
         extra_cmdline: "fips=1"
+
+    stylus:
+      site:
+        edgeHostToken: ********
+        paletteEndpoint: https://vertex.palette-devx.spectrocloud.com
     ```
+
+13. Add further customization to the **user-data** file as needed. This file configures the Edge Installer. Refer to
+    [Installer Reference](../../edge-configuration/installer-reference.md) for more information.
 
 14. Issue the following command to build the Edge Installer ISO.
 
