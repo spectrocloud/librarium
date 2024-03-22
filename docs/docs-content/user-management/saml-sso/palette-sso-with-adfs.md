@@ -50,7 +50,7 @@ for additional guidance.
 
 <br />
 
-![Add AD FS Application Group](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-application-group.png)
+![Add AD FS Application Group](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-application-group.webp)
 
 <br />
 
@@ -59,13 +59,13 @@ for additional guidance.
 
 <br />
 
-![Name Application Group](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_name-application-group.png)
+![Name Application Group](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_name-application-group.webp)
 
 <br />
 
 3. The next screen displays the **Client Identifier** for this Application Group:
 
-![Get Client Identifier](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_get-client-identifier.png)
+![Get Client Identifier](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_get-client-identifier.webp)
 
 <br />
 
@@ -75,28 +75,28 @@ for additional guidance.
 5. Open a web browser and navigate to your Palette subscription. Navigate to **Tenant Settings** --> **SSO** and click
    **OIDC**. Click the button next to **Callback URL** to copy this value to the clipboard:
 
-![Copy Callback URL](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_copy-callback-url.png)
+![Copy Callback URL](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_copy-callback-url.webp)
 
 <br />
 
 6. Switch back to your AD FS Management console and paste the copied value into the **Redirect URI** field, then click
    **Add** to add it to the list:
 
-![Paste Redirect URI](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_paste-redirect-uri.png)
+![Paste Redirect URI](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_paste-redirect-uri.webp)
 
 <br />
 
 7. Switch back to Palette in the web browser and click the button next to **Logout URL** to copy this value to the
    clipboard:
 
-![Copy Logout URL](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_copy-logout-url.png)
+![Copy Logout URL](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_copy-logout-url.webp)
 
 <br />
 
 8. Switch back to your AD FS Management console and paste the copied value into the **Redirect URI** field, then click
    **Add** to add it to the list:
 
-![Paste Logout URI](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_paste-logout-uri.png)
+![Paste Logout URI](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_paste-logout-uri.webp)
 
 <br />
 
@@ -113,21 +113,21 @@ for additional guidance.
     shared secret** and click **Copy to clipboard** to copy the secret value and save it somewhere. You will need to
     enter this value into the Palette SSO configuration later:
 
-![Copy Shared Secret](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_copy-shared-secret.png)
+![Copy Shared Secret](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_copy-shared-secret.webp)
 
 <br />
 
 11. Click **Next** and on the Summary screen, click **Next** again to complete the wizard. You need to add another
     application to the application group. Select the newly created application group and click **Properties**:
 
-![Open Application Group](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_open-oidc-app.png)
+![Open Application Group](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_open-oidc-app.webp)
 
 <br />
 
 12. In the Properties screen, click **Add application...**. In the wizard that opens, select **Web API** and click
     **Next**:
 
-![Add Web API application](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-web-api.png)
+![Add Web API application](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-web-api.webp)
 
 <br />
 
@@ -139,11 +139,11 @@ for additional guidance.
 
 <br />
 
-![Find Base URL](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_base-url.png)
+![Find Base URL](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_base-url.webp)
 
 <br />
 
-![Add Web API Identifiers](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-identifiers.png)
+![Add Web API Identifiers](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-identifiers.webp)
 
 <br />
 
@@ -152,7 +152,7 @@ for additional guidance.
 
 <br />
 
-![Select Access Control Policy](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_select-policy.png)
+![Select Access Control Policy](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_select-policy.webp)
 
 <br />
 
@@ -161,24 +161,24 @@ for additional guidance.
     **allatclaims** scope in the list, click **New scope...** and type `allatclaims` in the Name field, then click
     **OK** to add it. Ensure both scopes are enabled and then click **Next**:
 
-![Enable Permitted Scopes](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_enable-scopes.png)
+![Enable Permitted Scopes](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_enable-scopes.webp)
 
 16. On the Summary screen, click **Next** to finish the wizard. You need to set the **Issuance Transform Rules** for the
     Web API application. Open the application again by double-clicking on the Web API entry or clicking **Edit**.
 
-![Re-open Web API Application](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_reopen-webapi-app.png)
+![Re-open Web API Application](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_reopen-webapi-app.webp)
 
 <br />
 
 17. Navigate to the **Issuance Transform Rules** tab and click **Add Rule**.
 
-![Add Issuance Transform Rule 1](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-transform-rule-1.png)
+![Add Issuance Transform Rule 1](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-transform-rule-1.webp)
 
 <br />
 
 18. Select the **Send LDAP Attributes as Claims** template and click **Next**:
 
-![Send LDAP As Claims Rule](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_ldap-as-claims.png)
+![Send LDAP As Claims Rule](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_ldap-as-claims.webp)
 
 <br />
 
@@ -192,19 +192,19 @@ for additional guidance.
 You can select the items on the left from the list. You will need to type the items on the right manually. Ensure you
 use all lowercase characters for the values on the right:
 
-![Set LDAP Claims](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_set-ldap-claims.png)
+![Set LDAP Claims](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_set-ldap-claims.webp)
 
 <br />
 
 20. Click **Finish** to add the rule. Now click on **Add Rule...** again to add the second rule:
 
-![Add Issuance Transform Rule 2](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-transform-rule-2.png)
+![Add Issuance Transform Rule 2](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-transform-rule-2.webp)
 
 <br />
 
 21. Select the **Send Group Membership as Claims** template and click **Next**:
 
-![Send Groups As Claims Rule](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_groups-as-claims.png)
+![Send Groups As Claims Rule](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_groups-as-claims.webp)
 
 <br />
 
@@ -213,7 +213,7 @@ use all lowercase characters for the values on the right:
     `groups` claim with the value `Admins`. In Palette this user will automatically be mapped to a group with the same
     name, `Admins`. You can assign RBAC permissions to that group in Palette to give it the desired access.
 
-![Set Group Claim](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_set-group-claim.png)
+![Set Group Claim](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_set-group-claim.webp)
 
 <br />
 
@@ -223,7 +223,7 @@ use all lowercase characters for the values on the right:
 24. Take note of your AD FS identifier, you will need this for Palette in the next step. Typically this is your AD FS
     name plus `/adfs`. You can also take the Federation Service identifier and remove `/services/trust` from that URL:
 
-![Note AD FS Name](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_note-adfs-name.png)
+![Note AD FS Name](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_note-adfs-name.webp)
 
 <br />
 
@@ -245,7 +245,7 @@ Navigate to **Tenant Settings** --> **SSO** and click on **OIDC**. Enter the fol
 | Last Name     | Keep `family_name` as the default.                                                                                                                                                                                          |
 | Spectro Team  | Keep `groups` as the default.                                                                                                                                                                                               |
 
-![Enable Palette OIDC SSO](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_configure-palette-oidc.png)
+![Enable Palette OIDC SSO](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_configure-palette-oidc.webp)
 
 26. When all the information has been entered, click **Enable** to enable SSO. You will receive a message stating **OIDC
     configured successfully**.
@@ -259,14 +259,14 @@ You can repeat this for any other team that you configured with group claims.
 27. Open a web browser and navigate to your Palette subscription. Navigate to **Tenant Settings** --> **Users & Teams**
     --> **Teams** tab, and click **+ Create Team**.
 
-![Create Palette Team](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_create-team.png)
+![Create Palette Team](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_create-team.webp)
 
 <br />
 
 28. Specify `Admins` in the **Team name** field. You don't need to set any members now, as this will happen
     automatically from the SSO. Click **Confirm** to create the team.
 
-![Name Palette Team](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_name-team.png)
+![Name Palette Team](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_name-team.webp)
 
 <br />
 
@@ -274,13 +274,13 @@ You can repeat this for any other team that you configured with group claims.
     administrative access to the entire tenant and all the projects in it, assign the **Tenant Admin** role. Select
     **Tenant Roles** and click **+ Add Tenant Role**:
 
-![Palette Tenant Roles](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_tenant-roles.png)
+![Palette Tenant Roles](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_tenant-roles.webp)
 
 <br />
 
 30. Click on **Tenant Admin** to enable the role. Click **Confirm** to add the role.
 
-![Add Tenant Role](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-tenant-role.png)
+![Add Tenant Role](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-tenant-role.webp)
 
 <br />
 
@@ -299,7 +299,7 @@ You have now successfully configured Palette SSO based on OIDC with Microsoft AD
 If you're still logged into Palette with a non-SSO user, log out by selecting **Logout** in the **User Menu** at top
 right.
 
-![User Logout](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_user-logout.png)
+![User Logout](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_user-logout.webp)
 
 <br />
 
@@ -310,7 +310,7 @@ right.
 
 Click on the **Sign in** button to log in via SSO.
 
-![User SSO Login](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_palette-login.png)
+![User SSO Login](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_palette-login.webp)
 
 <br />
 
@@ -325,7 +325,7 @@ authenticated, you will automatically be redirected back to Palette and logged i
    select **Tenant Settings** --> **Users & Teams** --> **Teams** tab. Click the **Admins** team and view the team
    members section.
 
-![Palette Team Members](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_team-members.png)
+![Palette Team Members](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_team-members.webp)
 
 The user you logged in as has automatically been added to this team.
 

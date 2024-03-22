@@ -78,7 +78,7 @@ console for all Edge hosts of your organization.
        "brand": "#4A8FF1",
        "sidebar": "#2B323C"
      },
-     "logo": "/logo.png"
+     "logo": "/logo.webp"
    }
    ```
 
@@ -87,7 +87,7 @@ console for all Edge hosts of your organization.
    the background for your logo. The **brand** color controls the color of buttons and checkboxes in the UI. The
    following image displays the default logo, brand, and sidebar color.
 
-   ![A screenshot of the local UI showing the elements controlled by the color properties and the location of the logo](/cluster_edge_emc_theming.png)
+   ![A screenshot of the local UI showing the elements controlled by the color properties and the location of the logo](/cluster_edge_emc_theming.webp)
 
 7. Compress the UI directory to a TAR file. The file must be named **ui.tar**.
 

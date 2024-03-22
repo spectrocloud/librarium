@@ -21,7 +21,7 @@ network communication and ports for each architecture.
 
 The following ports must be reachable from a network perspective for Palette SaaS to function correctly.
 
-![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram-grpc.png "title=SaaS Network Diagram with ports")
+![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram-grpc.webp "title=SaaS Network Diagram with ports")
 
 </TabItem>
 
@@ -29,7 +29,7 @@ The following ports must be reachable from a network perspective for Palette Saa
 
 The following ports must be reachable from a network perspective for Palette SaaS to function correctly.
 
-![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram-nats.png "title=SaaS Network Diagram with ports")
+![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram-nats.webp "title=SaaS Network Diagram with ports")
 
 </TabItem>
 
@@ -40,13 +40,13 @@ The following ports must be reachable from a network perspective for Palette Saa
 <Tabs groupId="architecture">
 <TabItem label="gRPC" value="gRPC">
 
-![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge-grpc.png)
+![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge-grpc.webp)
 
 </TabItem>
 
 <TabItem label="NATS" value="nats">
 
-![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge-nats.png)
+![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge-nats.webp)
 
 </TabItem>
 </Tabs>
@@ -108,13 +108,13 @@ is entirely optional and not required for Palette to operate appropriately.
 <Tabs groupId="architecture">
 <TabItem label="gRPC" value="gRPC">
 
-![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram-grpc.png)
+![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram-grpc.webp)
 
 </TabItem>
 
 <TabItem label="NATS" value="nats">
 
-![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram-nats.png)
+![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram-nats.webp)
 
 </TabItem>
 </Tabs>

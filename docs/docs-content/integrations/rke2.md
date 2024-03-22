@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["kubernetes", "amd64", "fips"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.dev.spectrocloud.com/v1/kubernetes-rke2/blobs/sha256:47cde61005d9996f1571c132ba9f753982134a7a0d8e445e27001ab8519e6051?type=image/png"
+logoUrl: "https://registry.dev.spectrocloud.com/v1/kubernetes-rke2/blobs/sha256:47cde61005d9996f1571c132ba9f753982134a7a0d8e445e27001ab8519e6051?type=image.webp"
 ---
 
 [RKE2](https://docs.rke2.io/) is a fully conformant Kubernetes distribution focusing on security and compliance within

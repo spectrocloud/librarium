@@ -49,7 +49,7 @@ You can download RHEL 8.8 or later ISO files from the
 your vSphere Datastore and be used to deploy a VM. Deploy the VM and reference the ISO you uploaded to your Datastore as
 the input for the **CD/DVD Drive**.
 
-![A View of the ISO selection](/byoos_vmware_konvoy_iso-selection.png)
+![A View of the ISO selection](/byoos_vmware_konvoy_iso-selection.webp)
 
 After the VM is deployed, and you have completed the RHEL installation, verify you can SSH into the VM. If you can SSH
 and log in to the VM, you can use it as a template for the Konvoy image builder. Save the VM as a template in vSphere.
@@ -463,4 +463,4 @@ Make sure you select the same version of Konvoy as specified in the Packer confi
 
 :::
 
-![A view of the cluster profile kubernetes selection screen](/byoos_vmware_konvoy_cluster-profile-view.png)
+![A view of the cluster profile kubernetes selection screen](/byoos_vmware_konvoy_cluster-profile-view.webp)

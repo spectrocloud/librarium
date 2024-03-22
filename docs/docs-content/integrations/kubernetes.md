@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["kubernetes", "amd64", "fips"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image.webp"
 tags: ["packs", "kubernetes", "pxk"]
 ---
 
@@ -409,7 +409,7 @@ pack with all the correct OIDC settings, you could then create a role binding fo
 
 In this example, Palette is used as the IDP, and all users in the `dev-east-2` would inherit the `cluster-admin` role.
 
-![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
+![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.webp)
 
 ### Custom MAAS Endpoint
 
@@ -777,7 +777,7 @@ pack with all the correct OIDC settings, you could then create a role binding fo
 
 In this example, Palette is used as the IDP, and all users in the `dev-east-2` would inherit the `cluster-admin` role.
 
-![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
+![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.webp)
 
 ### Custom MAAS Endpoint
 
@@ -1143,7 +1143,7 @@ pack with all the correct OIDC settings, you could then create a role binding fo
 
 In this example, Palette is used as the IDP, and all users in the `dev-east-2` would inherit the `cluster-admin` role.
 
-![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
+![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.webp)
 
 </TabItem>
 
@@ -1483,7 +1483,7 @@ pack with all the correct OIDC settings, you could then create a role binding fo
 
 In this example, Palette is used as the IDP, and all users in the `dev-east-2` would inherit the `cluster-admin` role.
 
-![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
+![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.webp)
 
 </TabItem>
 
@@ -1823,7 +1823,7 @@ pack with all the correct OIDC settings, you could then create a role binding fo
 
 In this example, Palette is used as the IDP, and all users in the `dev-east-2` would inherit the `cluster-admin` role.
 
-![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
+![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.webp)
 
 </TabItem>
 

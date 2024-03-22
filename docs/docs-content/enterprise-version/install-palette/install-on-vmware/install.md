@@ -365,7 +365,7 @@ type `:wq` to save and exit.
 
     :::
 
-    ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.png)
+    ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
 18. Copy the URL and paste it in your browser's URL field to access the system console. You will be prompted to reset
     the password.
@@ -391,7 +391,7 @@ type `:wq` to save and exit.
 21. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../system-management/tenant-management.md) guide.
 
-    ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.png)
+    ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.webp)
 
 ## Validate
 

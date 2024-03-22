@@ -56,7 +56,7 @@ Use the following steps to increase the number of nodes in a PCG.
 Additional nodes are added sequentially to the PCG. The status of the nodes will change from **Provisioning Node** to
 **Running** once the provisioning process is complete.
 
-![View of the nodes page with two nodes in the deployment process](/clusters_manage-pcg_scale-pcg-nodes_nodes-view.png)
+![View of the nodes page with two nodes in the deployment process](/clusters_manage-pcg_scale-pcg-nodes_nodes-view.webp)
 
 ## Validate
 

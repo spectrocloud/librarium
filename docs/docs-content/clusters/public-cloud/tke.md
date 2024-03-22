@@ -17,7 +17,7 @@ detailing of the Tencent TKE cluster provisioning through Palette:
 
 - The Palette-supported TKE architecture is represented diagrammatically as below:
 
-  ![tencent-diagram.png](/tencent-diagram.png)
+  ![tencent-diagram.webp](/tencent-diagram.webp)
 
 ## Prerequisites
 
@@ -114,7 +114,7 @@ detailing of the Tencent TKE cluster provisioning through Palette:
             "vpc:DescribeCcnAttachedInstances",
             "vpc:DescribeLocalGateway",
             "vpc:DescribeHaVips",
-            "vpc:DescribeVpnGw",
+            "vpc:Describe.webpw",
             "vpc:DescribeDirectConnectGateways",
             "vpc:DescribeVpcPeeringConnections",
             "vpc:DescribeCustomerGateways",

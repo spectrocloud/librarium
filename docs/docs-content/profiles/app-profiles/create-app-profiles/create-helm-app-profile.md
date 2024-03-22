@@ -86,7 +86,7 @@ Use the following steps to validate that your app profile is available and ready
 4. Hover your cursor over each profile layer to learn more about them, including the service name, version, and
    registry.
 
-   ![A view of a cursor triggering the info box for a helm layer.](/profiles_app-profiles_create-app-profiles_helm-layer-infobox.png)
+   ![A view of a cursor triggering the info box for a helm layer.](/profiles_app-profiles_create-app-profiles_helm-layer-infobox.webp)
 
    :::info
 

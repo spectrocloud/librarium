@@ -25,9 +25,9 @@ the list below.
 
 <!-- Numbered items in the screenshot are described in the list below.  -->
 
-<!-- ![project-dashboard](/project-dashboard.png) -->
+<!-- ![project-dashboard](/project-dashboard.webp) -->
 
-![A screenshot of the Project dashboard with numbered UI elements described in this document.](/getting-started/getting-started_dashboard_project-dashboard.png)
+![A screenshot of the Project dashboard with numbered UI elements described in this document.](/getting-started/getting-started_dashboard_project-dashboard.webp)
 
 1. Projects are used to organize the cluster resources within a logical group. Use the **drop-down Menu** to shift
    between projects.
@@ -57,9 +57,9 @@ the list below.
 The **Tenant Admin** dashboard shows available views for tenant administrators. Numbered items in the screenshot are
 described in the list below.
 
-<!-- ![admin-dashboard](/admin-dashboard.png) -->
+<!-- ![admin-dashboard](/admin-dashboard.webp) -->
 
-![A screenshot of the Tenant Admin dashboard with numbered UI elements described in this document.](/getting-started/getting-started_dashboard_admin-dashboard.png)
+![A screenshot of the Tenant Admin dashboard with numbered UI elements described in this document.](/getting-started/getting-started_dashboard_admin-dashboard.webp)
 
 1. Tenant admins use the **drop-down Menu** to switch to the **Tenant Admin** dashboard.
 

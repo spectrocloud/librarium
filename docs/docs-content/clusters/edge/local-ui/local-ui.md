@@ -16,7 +16,7 @@ connections to a Palette instance.
 
 :::
 
-![A diagram illustrating how users and use EdgeForge and the local UI to deploy clusters without a Palette connection](/clusters_edge_emc_workflow.png)
+![A diagram illustrating how users and use EdgeForge and the local UI to deploy clusters without a Palette connection](/clusters_edge_emc_workflow.webp)
 
 :::warning
 

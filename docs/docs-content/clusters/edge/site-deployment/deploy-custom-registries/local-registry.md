@@ -29,12 +29,7 @@ documentation.
 
 :::
 
-## Limitations
-
-- You cannot enable Harbor registry on clusters that use authenticated provider registries. The provider registry must
-  be public.
-
-![Local Harbor Registry Architecture](/clusters_edge_networking_local_harbor_architecture.png)
+![Local Harbor Registry Architecture](/clusters_edge_networking_local_harbor_architecture.webp)
 
 ## Prerequisites
 

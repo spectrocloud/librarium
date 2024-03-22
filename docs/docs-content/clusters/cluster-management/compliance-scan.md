@@ -37,7 +37,7 @@ control plane or worker results if required.
 All the tests in the report are marked as Scored or Not Scored. The ones marked Not Scored cannot be automatically run,
 and it is suggested to be tested manually.
 
-![kcs.png](/kcs.png)
+![kcs.webp](/kcs.webp)
 
 ## Penetration Testing
 
@@ -50,7 +50,7 @@ the API server, whereas, in external mode, the external public-facing endpoint i
 vulnerabilities found in both modes is shown on the Palette UI. Users can filter the report to view just the internal or
 external report if required.
 
-![kpt.png](/kpt.png)
+![kpt.webp](/kpt.webp)
 
 ## Conformance Testing
 
@@ -66,7 +66,7 @@ test run duration increases and may impact other workloads running on the cluste
 The scan summary of total passed and failed tests are displayed while the test is in progress. In addition, a complete
 overview of the tests that were run is displayed after the completion of the report.
 
-![conformance.png](/conformance.png)
+![conformance.webp](/conformance.webp)
 
 ## SBOM: Dependencies & Vulnerabilities
 
@@ -81,7 +81,7 @@ organizations to track vulnerabilities, perform regular software maintenance, an
 requirements such as the European Union's General Data Protection Regulation (GDPR) and the Payment Card Industry Data
 Security Standard (PCI DSS).
 
-![sbom_scan.png](/sbom_scan.png)
+![sbom_scan.webp](/sbom_scan.webp)
 
 ## Configure an SBOM Scan
 
@@ -134,7 +134,7 @@ use of each image, broken out by container name, namespace, and pod name. Each i
 within a given scope. The vulnerability summary column provides a condensed view of the vulnerability report, which can
 be viewed in greater detail by clicking on any row in the scan report.
 
-![sbom_results.png](/sbom_results.png)
+![sbom_results.webp](/sbom_results.webp)
 
 Each identified image has its own detailed results page containing dependency and vulnerability reports. To review an
 image's result page, select the **>** button. Regardless of the selected SBOM format, each dependency’s name, version,
@@ -143,14 +143,14 @@ and type is displayed, and each vulnerability's name, severity, code, impacted v
 Additional metadata will be included in the SBOM. Exactly what additional metadata is included depends on the selected
 SBOM format.
 
-![sbom_dependencies.png](/sbom_dependencies.png)
+![sbom_dependencies.webp](/sbom_dependencies.webp)
 
 For each identified vulnerability, you can view the name, severity level, vulnerability code, installed or impacted
 version, and the fix version (if a fix is available). Any CVEs documented in the
 [NIST National Vulnerability Database](https://nvd.nist.gov/vuln) (NVD) will render as a hyperlink to the NVD detail
 page for that particular vulnerability.
 
-![sbom_vulnerabilities.png](/sbom_vulnerabilities.png)
+![sbom_vulnerabilities.webp](/sbom_vulnerabilities.webp)
 
 ## Scan Options
 

@@ -66,7 +66,7 @@ Engine.
    manifests as needed. For an example of how to create a custom add-on pack using a manifest, review
    [Add an Add-on Pack](../../../registries-and-packs/adding-add-on-packs.md#manifests) guide.
 
-   ![A view showing an arrow that points to the blue-circled checkmark the user clicks to add a manifest.](/profiles_app-profiles_create-app-profiles_add-manifest.png)
+   ![A view showing an arrow that points to the blue-circled checkmark the user clicks to add a manifest.](/profiles_app-profiles_create-app-profiles_add-manifest.webp)
 
 8. You can add more services to the app profile as needed. To do this, click `+` next to the **Configure tier** pane. To
    rearrange layers in the profile, select a service and drag it up or down in the pane. Each service becomes a layer in
@@ -89,7 +89,7 @@ Use the following steps to validate that your app profile is available and ready
 4. Hover your cursor over each profile layer to learn more about them, including the service name, version, and
    registry.
 
-   ![A view of a cursor triggering the info box for a manifest layer.](/profiles_app-profiles_create-app-profiles_manifest-layer-infobox.png)
+   ![A view of a cursor triggering the info box for a manifest layer.](/profiles_app-profiles_create-app-profiles_manifest-layer-infobox.webp)
 
    :::info
 
