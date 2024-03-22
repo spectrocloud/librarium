@@ -212,7 +212,7 @@ proceed.
 
 <br />
 
-![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.png)
+![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
 9. Log in to the system console using the following default credentials.
 

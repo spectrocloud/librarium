@@ -18,7 +18,7 @@ created up to this point.
 
 - User Data
 
-![A diagram that illustrates the mentioned pieces making up an Edge artifact created by the Palette Edge CLI](/clusters_edge-forge-workflow_build-images_edge-artifact-result.png)
+![A diagram that illustrates the mentioned pieces making up an Edge artifact created by the Palette Edge CLI](/clusters_edge-forge-workflow_build-images_edge-artifact-result.webp)
 
 Use the following steps to create an Edge artifact for your Edge host.
 
@@ -64,7 +64,7 @@ Choose the workflow that fits your needs.
    ./palette-edge show
    ```
 
-   ![CLI example output from the show command](/clusters_edge-forge-workflow_build-images_edge-cli-show.png)
+   ![CLI example output from the show command](/clusters_edge-forge-workflow_build-images_edge-cli-show.webp)
 
    <br />
 
@@ -158,7 +158,7 @@ Example:
 
 <br />
 
-![The output directory content in a tree diagram](/clusters_edge-forge-workflow_build-images_edge-cli-output.png)
+![The output directory content in a tree diagram](/clusters_edge-forge-workflow_build-images_edge-cli-output.webp)
 
 5. Navigate to the output directory and review the file **.VERSIONS.env**. Set the variable `PUSH_BUILD` to `true` so
    that the Edge provider images and the Edge Installer image get pushed to your image registry. The alternative is to

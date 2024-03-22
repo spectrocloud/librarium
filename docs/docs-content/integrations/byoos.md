@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["operating system", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.dev.spectrocloud.com/v1/spectro-proxy/blobs/sha256:b6081bca439eeb01a8d43b3cb6895df4c088f80af978856ddc0da568e5c09365?type=image/png"
+logoUrl: "https://registry.dev.spectrocloud.com/v1/spectro-proxy/blobs/sha256:b6081bca439eeb01a8d43b3cb6895df4c088f80af978856ddc0da568e5c09365?type=image.webp"
 tags: ["packs", "byoos", "operating system"]
 ---
 
@@ -80,7 +80,7 @@ Select the BYOOS pack and fill out the required parameters during the cluster pr
 parameter specifies the location of the BYOOS image. Refer to the
 [Build Images](../clusters/edge/edgeforge-workflow/build-images.md) guide to learn how to create Edge Artifacts.
 
-![A view of the Kubernetes pack editor with a YAML configuration](/clusters_site-deployment_model-profile_byoos-pack-yaml.png)
+![A view of the Kubernetes pack editor with a YAML configuration](/clusters_site-deployment_model-profile_byoos-pack-yaml.webp)
 
 </TabItem>
 
@@ -139,7 +139,7 @@ pack:
 
 <br />
 
-![View of the cluster profile wizard](/clusters_byoos_image-builder_cluster-profile-byoos-yaml.png)
+![View of the cluster profile wizard](/clusters_byoos_image-builder_cluster-profile-byoos-yaml.webp)
 
 Check out the [Create Images with Image Builder](../byoos/image-builder.md) guide to learn to create a custom image for
 Palette.

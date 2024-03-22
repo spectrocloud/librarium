@@ -68,11 +68,11 @@ Use these steps to import the profile to one or more projects or tenants.
 
 5. In the slide panel that opens at right, click the **Upload file** button.
 
-![Screenshot of the slide panel with the Upload file button.](/profiles_cluster-profiles_upload-json.png)
+![Screenshot of the slide panel with the Upload file button.](/profiles_cluster-profiles_upload-json.webp)
 
 6. Navigate to the downloaded `.json` file and select it so that it opens in the slide panel as shown.
 
-![Screenshot of the slide panel with uploaded JSON.](/profiles_cluster-profiles_json-to-import.png)
+![Screenshot of the slide panel with uploaded JSON.](/profiles_cluster-profiles_json-to-import.webp)
 
 7. Update any pack YAML files that contain sensitive values, such as credentials or certificates.
 
@@ -90,7 +90,7 @@ If any of the packs are missing in the target environment, profile import will n
 
 :::
 
-![Screenshot of the Select repositories window.](/profiles_cluster-profiles_import-select-repos.png)
+![Screenshot of the Select repositories window.](/profiles_cluster-profiles_import-select-repos.webp)
 
 11. Click the **Confirm** button to complete the import.
 

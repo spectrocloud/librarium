@@ -308,7 +308,9 @@ To add a Service to the Service List complete the following actions:
 
 ### Images or other assets
 
-All images must reside in the [`assets/docs/images`](./assets/docs/images/) folder.
+All images must reside in the [`static/assets/docs/images`](./static/assets/docs/images/) folder. All images must be in
+webp format. You can save png, jpg, or jpeg to the directory. The commit hook will convert the images to webp format. Or
+issue the command `make format-images` to convert the images to webp format.
 
 ```md
 ![alt text](/clusterprofiles.png "cluster profiles example")

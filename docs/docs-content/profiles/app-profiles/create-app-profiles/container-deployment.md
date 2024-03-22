@@ -97,7 +97,7 @@ less overhead. To add a container layer to a Palette Dev Engine app profile, fol
 4. Hover your cursor over each profile layer to learn more about them, including the service name, version, and
    registry.
 
-   ![A view of a cursor triggering the info box for each app profile layer.](/profiles_app-profiles_create-app-profiles_container-infobox.png)
+   ![A view of a cursor triggering the info box for each app profile layer.](/profiles_app-profiles_create-app-profiles_container-infobox.webp)
 
    :::info
 

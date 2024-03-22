@@ -48,7 +48,7 @@ contain the necessary parameters to configure Palette.
 2. **Enterprise applications** - You will use Azure AD Enterprise registrations to configure SAML SSO with Spectro Cloud
    Palette. <p></p><br />
 
-![enterprise-app-registration](/oidc-azure-images/enterprise-app-registration.png)
+![enterprise-app-registration](/oidc-azure-images/enterprise-app-registration.webp)
 
 <p></p>
 
@@ -74,7 +74,7 @@ This section describes how to enable Azure AD SSO authentication to access a Kub
     - **oidc-issuer-url** - "Issuer's URL"<p></p><br />
     - **oidc-client-id** - "Client ID"<p></p><br />
 
-      ![kubeadminconfig](/oidc-azure-images/kubeadmconfig.png)
+      ![kubeadminconfig](/oidc-azure-images/kubeadmconfig.webp)
 
 <p></p>
 <br />
@@ -87,7 +87,7 @@ This section describes how to enable Azure AD SSO authentication to access a Kub
     - **oidc-client-secret** - The secret provided by Azure AD.<p></p><br />
     - **oidc-extra-scope** - The scope tags.<p></p><br />
 
-![oidc](/oidc-azure-images/client-config.png)
+![oidc](/oidc-azure-images/client-config.webp)
 
 <p></p>
 <br />
@@ -214,7 +214,7 @@ Group** with the display name of **cluster-admin-role**.
 
 **name**: "AZURE AD GROUP ID NAME"
 
-![oidc](/oidc-azure-images/client-config.png)
+![oidc](/oidc-azure-images/client-config.webp)
 
 ## Results
 

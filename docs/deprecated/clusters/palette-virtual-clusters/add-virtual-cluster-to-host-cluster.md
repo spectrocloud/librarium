@@ -133,9 +133,9 @@ To map the Host DNS Pattern to the load balancer with the NGINX Ingress Controll
 3. Create a wildcard DNS record that maps the Host Pattern to the NGINX Ingress Controller load balancer. The example
    shows an AWS Route53 record for the `*.starship.te.spectrocloud.com` Host DNS Pattern.
 
-| Example Record with Host DNS Pattern |                                                                                                                            |
-| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| ![AWS Route 53](/record-details.png) | Here is an example of an <br /> AWS Route53 record for the <br />`*.starship.te.spectrocloud.com` <br /> Host DNS Pattern. |
+| Example Record with Host DNS Pattern  |                                                                                                                            |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| ![AWS Route 53](/record-details.webp) | Here is an example of an <br /> AWS Route53 record for the <br />`*.starship.te.spectrocloud.com` <br /> Host DNS Pattern. |
 
 </TabItem>
 </Tabs>

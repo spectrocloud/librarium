@@ -24,7 +24,7 @@ The following are some architectural highlights of Kubernetes clusters provision
   When the PCG is installed on-prem, it registers itself with Palette's SaaS portal and enables secure communications
   between the SaaS portal and private cloud environment.
 
-  ![vmware_arch_oct_2020.png](/vmware_arch_oct_2020.png)
+  ![vmware_arch_oct_2020.webp](/vmware_arch_oct_2020.webp)
 
 ## Prerequisites
 
