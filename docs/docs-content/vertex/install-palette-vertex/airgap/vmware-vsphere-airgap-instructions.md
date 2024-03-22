@@ -388,9 +388,9 @@ Use the following steps to validate the airgap setup process completed successfu
    command to verify the manifest content is accessible from the file server. Replace the hostname or IP address below
    with your file server hostname or IP address.
 
-```shell
-curl http://<hostname>:<port>/roar/nickfury/versions.yaml
-```
+   ```shell
+   curl http://<hostname>:<port>/roar/nickfury/versions.yaml
+   ```
 
 ```yaml hideClipboard
 versions:
