@@ -324,7 +324,7 @@ Make sure to preserve any existing cluster profile overrides.
 
 After reviewing the changes, click **Apply Changes**.
 
-![Palette Editor that displays changes coming from the profile version update.](/clusters_cluster-management_cluster-updates_preview-profile-ver-changes.png)
+![Palette Editor that displays changes coming from the profile version update.](/clusters_cluster-management_cluster-updates_preview-profile-ver-changes.webp)
 
 :::warning
 

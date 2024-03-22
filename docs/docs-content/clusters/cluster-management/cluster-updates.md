@@ -62,7 +62,7 @@ This is the recommended best practice for updating a cluster in Palette.
 
    :::
 
-   ![Palette Editor that displays changes coming from the profile version update.](/clusters_cluster-management_cluster-updates_preview-profile-ver-changes.png)
+   ![Palette Editor that displays changes coming from the profile version update.](/clusters_cluster-management_cluster-updates_preview-profile-ver-changes.webp)
 
 </TabItem>
 
