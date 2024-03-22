@@ -62,6 +62,9 @@ api: ## Generate API docs
 	npm run clean-api-docs
 	npm run generate-api-docs
 
+test: ## Run Jest tests
+	npm test
+
 ##@ Git Targets
 
 commit: ## Add a Git commit. Usage: make commit MESSAGE="<your message here>"
@@ -136,3 +139,9 @@ verify-url-links-ci: ## Check for broken URLs in production in a GitHub Actions 
 	jq 'del(.links[] | select(.status <= 200))' temp_report.json > link_report.json
 	rm temp_report.json
 	mv link_report.json scripts/
+
+###@ Image Formatting
+
+format-images: ## Format images
+	@echo "formatting images in /static/assets/docs/images/ folder"
+	./scripts/compress-convert-images.sh

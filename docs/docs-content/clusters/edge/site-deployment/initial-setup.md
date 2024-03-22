@@ -63,7 +63,7 @@ perform the setup, you can issue the command `spectro-edge-console` in the termi
 
 3. Next, the terminal will display a console for you to provide hostname and network configurations to the Edge host.
 
-   ![A terminal user interface showing displaying network configuration options](/cluster_edge_site-deployment_installation_initial-setup_tui.png)
+   ![A terminal user interface showing displaying network configuration options](/cluster_edge_site-deployment_installation_initial-setup_tui.webp)
 
    Check the existing hostname and, optionally, change it to a new one. Use the Tab key or the up and down arrow keys to
    switch between fields. When you make a change, press Enter to confirm the change.

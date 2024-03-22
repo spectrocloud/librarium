@@ -41,7 +41,7 @@ You can create a tenant in Palette by following these steps.
 
 <br />
 
-![View of a tenant activation option](/enterprise-version_system-management_tenant-management_activate-tenant.png)
+![View of a tenant activation option](/enterprise-version_system-management_tenant-management_activate-tenant.webp)
 
 <br />
 
@@ -80,7 +80,7 @@ You can remove a tenant in Palette using the following steps.
 
 <br />
 
-![View of a tenant deletion option](/enterprise_version_system-management_tenant-management_remove-tenant.png)
+![View of a tenant deletion option](/enterprise_version_system-management_tenant-management_remove-tenant.webp)
 
 <br />
 

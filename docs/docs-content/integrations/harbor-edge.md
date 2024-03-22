@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["system-app", "registry"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/harbor/blobs/sha256:5cf19a83449d41a6eb2398194dd4563d31d371074375255ba8a2fc4feff4ef33?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/harbor/blobs/sha256:5cf19a83449d41a6eb2398194dd4563d31d371074375255ba8a2fc4feff4ef33?type=image.webp"
 tags: ["packs", "harbor-edge-native-config", "system-app"]
 ---
 
@@ -37,10 +37,16 @@ cluster. You cannot manually choose a version of this pack.
 
 - All Edge devices in your cluster must have at least 4 CPUs and 8 GB of RAM.
 
-- At least 160 GB of persistent storage volume for the cluster. The actual volume required depends on the size of the
+  - For single-node clusters, where there is only one Edge host handling both control plane and worker capabilities,
+    your Edge host must have at least 6 CPUs and 12 GB of RAM.
+
+- At least 300 GB of persistent storage volume for the cluster. The actual volume required depends on the size of the
   images used by your cluster.
 
 - A Container Storage Interface (CSI) pack is required in your cluster profile.
+
+- In the YAML file for the Kubernetes layer of your cluster, ensure that `AlwaysPullImages` is not in the list
+  `enable-admission-plugins`.
 
 ### Parameters
 
@@ -68,7 +74,7 @@ You can use Harbor in an Edge cluster that is connected to external networks. Ha
 downloaded from the internet and future image pulls from the cluster will be from the local harbor registry. If your
 cluster experiences an internet outage, it can still reboot containers or add new nodes using images stored locally in
 Harbor. For more information, refer to
-[Deploy a Cluster with a Local Harbor Registry](../clusters/edge/networking/local-registry.md).
+[Deploy a Cluster with a Local Harbor Registry](../clusters/edge/site-deployment/deploy-custom-registries/local-registry.md).
 
 #### Log in to Harbor Web UI
 
@@ -335,6 +341,6 @@ data "spectrocloud_pack_simple" "harbor-edge-native-config" {
 
 ## Resources
 
-- [Deploy a Cluster with a Local Harbor Registry](../clusters/edge/networking/local-registry.md)
+- [Deploy a Cluster with a Local Harbor Registry](../clusters/edge/site-deployment/deploy-custom-registries/local-registry.md)
 
 - [Harbor documentation](https://goharbor.io/docs/2.4.0/install-config/)

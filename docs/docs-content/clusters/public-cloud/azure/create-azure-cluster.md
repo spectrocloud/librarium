@@ -246,7 +246,7 @@ Once you create your scale set, you can find it by navigating to the **Azure ser
 
 Basic autoscaling options are available for host-based scaling when you create your scale set. However, to create custom autoscale rules based on metrics or a schedule, use **Custom autoscale**. To learn how you can scale resources based on metrics you define, refer to Microsoft's [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started) reference guide.
 
-![Screenshot with an arrow that points to the Custom Autoscale option in Azure portal.](/clusters_publiccloud_azure_custom-autoscale.png)
+![Screenshot with an arrow that points to the Custom Autoscale option in Azure portal.](/clusters_publiccloud_azure_custom-autoscale.webp)
 
 When scaling based on a metric, you add a rule to scale out VMs and a matching rule to scale in VMs when they are no longer needed.
 
@@ -257,7 +257,7 @@ A [Microsoft video](https://learn.microsoft.com/en-us/azure/azure-monitor/autosc
 :::
 
 
-![Screenshot of scaling options with arrows pointing to the "Scale based on metric" option and the link to add a rule.](/clusters_publiccloud_azure_add-rule.png)
+![Screenshot of scaling options with arrows pointing to the "Scale based on metric" option and the link to add a rule.](/clusters_publiccloud_azure_add-rule.webp)
 
 :::tip
 

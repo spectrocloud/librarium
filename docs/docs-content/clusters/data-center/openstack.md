@@ -19,7 +19,7 @@ The following are some highlights of OpenStack clusters provisioned by Palette:
    portal and the private cloud environment. The PCG enables installation and end-to-end lifecycle management of
    Kubernetes clusters in private cloud environments from Palette.
 
-   ![openstack_cluster_architecture.png](/openstack_cluster_architecture.png)
+   ![openstack_cluster_architecture.webp](/openstack_cluster_architecture.webp)
 
    Refer to the [PCG Architecture](../pcg/architecture.md) section to learn more about the PCG architecture.
 
@@ -346,6 +346,13 @@ used to create tenant clusters. Additional cloud accounts may be created if desi
 
 - A PCG is installed and available in the OpenStack. Refer to the [Deploy to OpenStack](../pcg/deploy-pcg/openstack.md)
   guide to learn how to deploy a PCG.
+
+:::caution
+
+OpenStack support is limited to the Kubernetes distribution
+[Palette eXtended Kubernetes (PXK)](../../integrations/kubernetes.md) for version 1.24.x.
+
+:::
 
 ### Deploy Cluster
 

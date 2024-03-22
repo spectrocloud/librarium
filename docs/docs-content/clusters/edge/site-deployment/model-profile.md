@@ -58,7 +58,7 @@ needs.
 
 <br />
 
-![A view of the Kubernetes pack editor with a YAML configuration](/clusters_site-deployment_model-profile_byoos-pack-yaml.png)
+![A view of the Kubernetes pack editor with a YAML configuration](/clusters_site-deployment_model-profile_byoos-pack-yaml.webp)
 
 10. Update the `system.uri` parameter in the pack editor. Use the custom OS image you created in the EdgeForge process.
     Refer to the EdgeForge [Build Images](../edgeforge-workflow/palette-canvos/palette-canvos.md) guide if you are

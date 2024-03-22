@@ -308,7 +308,9 @@ To add a Service to the Service List complete the following actions:
 
 ### Images or other assets
 
-All images must reside in the [`static/assets/docs/images`](./static/assets/docs/images/) folder.
+All images must reside in the [`static/assets/docs/images`](./static/assets/docs/images/) folder. All images must be in
+webp format. You can save png, jpg, or jpeg to the directory. The commit hook will convert the images to webp format. Or
+issue the command `make format-images` to convert the images to webp format.
 
 ```md
 ![alt text](/clusterprofiles.png "cluster profiles example")
@@ -496,6 +498,60 @@ To add a video, use the following syntax. Ensure you capitalize the letter "V":
 
 ```
 <Video title="vsphere-pcg-creation" src="/cluster-creation-videos/vmware.mp4"></Video>
+```
+
+### Badges
+
+The following badges are available for use:
+
+> [!NOTE]
+>
+> All badges are globally available. No need to import them.
+
+- Technical Preview Badge ![Technical Preview Badge](static/img/tech-preview-light.svg)
+  ![Technical Preview Badge](static/img/tech-preview-dark.svg)
+
+#### Technical Preview Badge
+
+The technical preview badge is used to indicate that a feature is in technical preview. The badge is intended for
+release notes in the context of a list. The following is an example of how to use the technical preview badge. The
+component will automatically display the badge in the correct color based on the light theme (dark/light).
+
+```markdown
+- <TpBadge /> Cluster Profile variables, a new feature that allows you to define variables in a cluster profile. This
+  feature is in Tech Preview and is available only for Edge clusters. Profile variables allow you to define variable
+  types, apply validation, and more. Refer to the Cluster Profile Variables documentation to learn more about profile
+  variables.
+```
+
+### Simple Card Grid
+
+This is a custom component that creates a grid of simple text cards with two columns, styled according to our color
+scheme. The rows of cards are dynamically created according to the list of specified cards.
+
+```js
+<SimpleCardGrid
+  cards={[
+    {
+      title: "Lorem Ipsum",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      buttonText: "Learn more",
+      relativeURL: "./link",
+    },
+    {
+      title: "Lorem Ipsum",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      buttonText: "Learn more",
+      relativeURL: "./link",
+    },
+    {
+      title: "Lorem Ipsum",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      buttonText: "Learn more",
+      relativeURL: "./link",
+    },
+  ]}
+/>
 ```
 
 ## Netlify Previews
@@ -712,3 +768,7 @@ make clean-versions
 >
 > The `docusaurus.config.js` file is updated by the [`update_docusaurus_config.js`](./docusaurus.config.js) script. DO
 > NOT commit this file with the updated changes.
+
+```
+
+```

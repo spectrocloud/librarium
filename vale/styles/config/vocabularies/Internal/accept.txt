@@ -204,3 +204,5 @@ Palette eXtented Kubernetes - Edge
 timeframe
 Luet
 rhel
+repave
+airgap

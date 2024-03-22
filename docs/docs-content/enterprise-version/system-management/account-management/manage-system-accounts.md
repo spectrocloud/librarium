@@ -12,7 +12,7 @@ keywords: ["self-hosted", "palette"]
 You can create and manage system accounts if you have the Root Administrator or Account Administrator role in Palette.
 These accounts are used to access the system console and perform various operations based on the assigned role
 
-![A view of the admin user dashboard](/vertex_account-management_manage-system-accounts_user-dashboard.png)
+![A view of the admin user dashboard](/vertex_account-management_manage-system-accounts_user-dashboard.webp)
 
 Check out the following sections to learn more about the supported system administrator management workflows.
 

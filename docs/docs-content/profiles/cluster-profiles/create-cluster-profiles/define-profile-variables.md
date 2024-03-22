@@ -76,7 +76,7 @@ this guide from step three at the **Profile Layers** stage of cluster profile cr
 
 3.  In the upper-right corner, click **Variables** and, on the **Profile variables** pane, click **Create variable**.
 
-    ![Palette with the Variables button highlighted.](/profiles_create-cluster-profiles_define-profile-variables_open-profile-variables.png)
+    ![Palette with the Variables button highlighted.](/profiles_create-cluster-profiles_define-profile-variables_open-profile-variables.webp)
 
 4.  Enter the variable name in the `{{.spectro.var.<variable_name>}}` format. You will use this name when adding
     variables to layer configurations. The name must be unique within the parent cluster.
@@ -127,7 +127,7 @@ this guide from step three at the **Profile Layers** stage of cluster profile cr
     Alternatively, you can start typing the profile variable name with `{{.spectro.var.}}`, and Palette will suggest
     profile variables that you can autocomplete.
 
-    ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_add-vars-to-yaml.png)
+    ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_add-vars-to-yaml.webp)
 
 13. Repeat the steps described in this guide to define more variables and add them to the necessary cluster profile
     layers.

@@ -59,13 +59,11 @@ explains how you can create an Azure AKS cluster managed by Palette.
 
 2.  Ensure you are in the correct project scope.
 
-3.  From the left **Main Menu**, select **Clusters** and click **Add New Cluster**.
+3.  From the left **Main Menu** select **Clusters** > **Add New Cluster** > **Deploy New Cluster**.
 
-4.  In **Public Clouds**, under **Infrastructure Provider**, select **Azure AKS**.
+4.  Under **Cloud**, select **Azure** and click **Start Azure Configuration**.
 
-5.  In the bottom-right corner, click **Start Azure AKS Configuration**.
-
-6.  Fill out the following basic information and click **Next**.
+5.  Fill out the following basic information and click **Next**.
 
     | **Field**         | **Description**                                                                                                                                                              |
     | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -74,10 +72,11 @@ explains how you can create an Azure AKS cluster managed by Palette.
     | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-west`.              |
     | **Cloud Account** | If you have already added your Azure account in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your Azure account information. |
 
-7.  Select the Azure cluster profile you created and click **Next**. Palette displays the cluster profile layers.
+6.  Under **Managed Kubernetes**, select **Azure AKS** and select your Azure AKS cluster profile. Click **Next** to
+    continue.
 
-8.  Review the profile layers and customize parameters as desired in the YAML files that display when you select a
-    layer.
+7.  Palette displays the cluster profile layers. Review the profile layers and customize parameters as desired in the
+    YAML files that display when you select a layer.
 
     You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out
     [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider) for more
@@ -91,9 +90,9 @@ explains how you can create an Azure AKS cluster managed by Palette.
 
     :::
 
-9.  Click **Next** to continue.
+8.  Click **Next** to continue.
 
-10. Configure your Azure AKS cluster using the following table for reference.
+9.  Configure your Azure AKS cluster using the following table for reference.
 
     :::warning
 
@@ -104,17 +103,16 @@ explains how you can create an Azure AKS cluster managed by Palette.
 
     :::
 
-    | **Parameter**                       | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-    | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-    | **Subscription**                    | Use the **drop-down Menu** to select the subscription that will be used to access Azure services.                                                                                                                                                                                                                                                                                                                                                                                          |
-    | **Region**                          | Use the **drop-down Menu** to choose the Azure region where you would like to provision the cluster.                                                                                                                                                                                                                                                                                                                                                                                       |
-    | **Resource Group**                  | Select the name of the resource group that contains the Azure resources you will be accessing.                                                                                                                                                                                                                                                                                                                                                                                             |
-    | **Storage Account**                 | Optionally, if you have a custom storage account available, you can use the **drop-down Menu** to select the storage account name. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                     |
-    | **Storage Container**               | Optionally, if you are using a custom storage container, use the **drop-down Menu** to select it. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                                                      |
-    | **SSH Key**                         | The public SSH key for connecting to the nodes. SSH key pairs must be pre-configured in your Azure environment. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats).                                                                                                                               |
-    | **Enable Private Cluster**          | Whether the control plane or API server should have internal IP addresses. Refer to the [Create a private AKS cluster](https://learn.microsoft.com/en-us/azure/aks/private-clusters?tabs=azure-portal) guide for more information.                                                                                                                                                                                                                                                         |
-    | **Static Placement**                | By default, Palette uses dynamic placement. This creates a new VNet for clusters with two subnets in different Availability Zones (AZs). Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into a pre-existing VNet, enable the **Static Placement** option and fill out the input values listed in the [Static Placement](#static-placement-settings) table below. |
-    | **Update worker pools in parallel** | If enabled, allows you to efficiently manage various types of workloads by performing simultaneous updates on multiple worker pools.                                                                                                                                                                                                                                                                                                                                                       |
+    | **Parameter**              | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+    | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Subscription**           | Use the **drop-down Menu** to select the subscription that will be used to access Azure services.                                                                                                                                                                                                                                                                                                                                                                                          |
+    | **Region**                 | Use the **drop-down Menu** to choose the Azure region where you would like to provision the cluster.                                                                                                                                                                                                                                                                                                                                                                                       |
+    | **Resource Group**         | Select the name of the resource group that contains the Azure resources you will be accessing.                                                                                                                                                                                                                                                                                                                                                                                             |
+    | **Storage Account**        | Optionally, if you have a custom storage account available, you can use the **drop-down Menu** to select the storage account name. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                     |
+    | **Storage Container**      | Optionally, if you are using a custom storage container, use the **drop-down Menu** to select it. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                                                      |
+    | **SSH Key**                | The public SSH key for connecting to the nodes. SSH key pairs must be pre-configured in your Azure environment. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats).                                                                                                                               |
+    | **Enable Private Cluster** | Whether the control plane or API server should have internal IP addresses. Refer to the [Create a private AKS cluster](https://learn.microsoft.com/en-us/azure/aks/private-clusters?tabs=azure-portal) guide for more information.                                                                                                                                                                                                                                                         |
+    | **Static Placement**       | By default, Palette uses dynamic placement. This creates a new VNet for clusters with two subnets in different Availability Zones (AZs). Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into a pre-existing VNet, enable the **Static Placement** option and fill out the input values listed in the [Static Placement](#static-placement-settings) table below. |
 
     #### Static Placement Settings
 
@@ -129,16 +127,16 @@ explains how you can create an Azure AKS cluster managed by Palette.
     | **Control Plane Subnet**   | Select the control plane subnet.                            |
     | **Worker Subnet**          | Select the worker network.                                  |
 
-11. Click **Next** to continue.
+10. Click **Next** to continue.
 
-12. Provide the following node pool and cloud configuration information. To learn more about node pools, review the
+11. Provide the following node pool and cloud configuration information. To learn more about node pools, review the
     [Node Pool](../../cluster-management/node-pool.md) guide.
 
     #### System Node Pool
 
-    To deploy an AKS cluster, you need to have at least one system node pool, which will run the pods necessary to run a
-    Kubernetes cluster, like the control plane and etcd. To add a system node pool, add a worker node pool and select
-    the **System Node Pool** checkbox.
+    To deploy an AKS cluster, you need to have at least one system node pool, which will manage the pods necessary to
+    deploy a Kubernetes cluster, like the control plane and etcd. To add a system node pool, add a worker node pool and
+    select the **System Node Pool** checkbox.
 
     :::info
 
@@ -191,24 +189,24 @@ explains how you can create an Azure AKS cluster managed by Palette.
     | **Managed disk**  | Choose a storage option. For more information, refer to Microsoft's [Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) reference. For information about Solid State Drive (SSD) disks, refer to [Standard SSD Disks for Azure Virtual Machine Workloads](https://azure.microsoft.com/en-us/blog/preview-standard-ssd-disks-for-azure-virtual-machine-workloads/) reference. |
     | **Disk size**     | You can choose disk size based on your requirements. The default size is **60**.                                                                                                                                                                                                                                                                                                                                                     |
 
-13. Click **Next** to continue.
+12. Click **Next** to continue.
 
-14. Specify your preferred **OS Patching Schedule**.
+13. Specify your preferred **OS Patching Schedule**.
 
-15. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
+14. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
     Kubernetes configuration security, penetration testing, and conformance testing.
 
-16. Schedule any backups you want Palette to perform. Review
+15. Schedule any backups you want Palette to perform. Review
     [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
-17. If you're using custom OIDC, configure the Role-Based Access Control (RBAC). You must map a set of users or groups
+16. If you're using custom OIDC, configure the Role-Based Access Control (RBAC). You must map a set of users or groups
     to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
     [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
     [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
 
-18. Click **Validate** and review the cluster configuration and settings summary.
+17. Click **Validate** and review the cluster configuration and settings summary.
 
-19. Click **Finish Configuration** to deploy the cluster. Provisioning Azure AKS clusters can take several minutes.
+18. Click **Finish Configuration** to deploy the cluster. Provisioning Azure AKS clusters can take several minutes.
 
 The cluster details page contains the status and details of the deployment. Use this page to track the deployment
 progress.

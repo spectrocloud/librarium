@@ -155,6 +155,15 @@ Use the following steps to install Palette VerteX.
     - Non-Airgap: `https://saas-repo-fips.console.spectrocloud.com`
     - Airgap: The URL or IP address of the Spectro Cloud Repository that is provided to you by the airgap setup script.
 
+    :::info
+
+    If you are using the Palette CLI from inside an
+    [airgap support VM](../airgap/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect the airgap
+    environment and prompt you to **Use local, air-gapped Spectro Cloud Artifact Repository (SCAR) configuration**. Type
+    `y` to use the local resources and skip filling in the repository URL and credentials.
+
+    :::
+
 9.  Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro
     Cloud repository. Airgap installations, provide the credentials to your private repository provided to you by the
     airgap setup script .
@@ -187,6 +196,14 @@ Use the following steps to install Palette VerteX.
 
     <TabItem label="Airgap" value="airgap">
 
+:::info
+
+If you are using the Palette CLI from inside an [airgap support VM](../airgap/vmware-vsphere-airgap-instructions.md),
+the CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type
+`y` to use the local resources and skip filling in the OCI registry URL and credentials.
+
+:::
+
     Select the OCI registry type and provide the configuration values. Review the following table for more information.
 
 :::warning
@@ -216,7 +233,8 @@ for more information.
     		| **Use Public Registry for Images**               | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. Airgap users, select `n` so that you can specify the values for the OCI registry that contains all the required images. |
 
     		When prompted to **Pull images from public registry**, type `n` and specify the OCI registry configuration values for
-    		your image registry. Refer to the table above for more information.
+    		your image registry. If you are an [airgap support VM](../airgap/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Image Registry?**. Type `y` to use the local resources and skip filling in the OCI registry URL and credentials.
+        Refer to the table above for more information.
 
 :::info
 
@@ -356,7 +374,7 @@ type `:wq` to save and exit.
 
     :::
 
-    ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.png)
+    ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.webp)
 
 18. Log in to the System Console using the credentials provided in the Enterprise Cluster Details output. After login,
     you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to
@@ -371,7 +389,7 @@ type `:wq` to save and exit.
 20. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../system-management/tenant-management.md) guide.
 
-    ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.png)
+    ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.webp)
 
 ## Validate
 

@@ -740,7 +740,7 @@ Ensure you have configured the **values.yaml** file with the required parameters
     appear. This is expected, as you have not yet uploaded your SSL certificate to Palette. You can ignore this warning
     message and proceed.
 
-    ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.png)
+    ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
 11. Log in to the system console using the following default credentials.
 

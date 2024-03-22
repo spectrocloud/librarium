@@ -67,9 +67,9 @@ different modes.
 
 - Air-Gapped: The site does not have internet connectivity. The Installation is initiated through the Palette Edge CLI.
 
-| Parameter          | Description                                                   |
-| ------------------ | ------------------------------------------------------------- |
-| `installationMode` | Allowed values are `connected`. Default value is `connected`. |
+| Parameter          | Description                                                                |
+| ------------------ | -------------------------------------------------------------------------- |
+| `installationMode` | Allowed values are `connected` and `airgap`. Default value is `connected`. |
 
 ```yaml
 #cloud-config
