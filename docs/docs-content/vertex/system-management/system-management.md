@@ -47,6 +47,8 @@ Platform administrators can use the system console to perform the following oper
 
 - [Manage tenants](tenant-management.md).
 
+- [Override Registry Configuration](registry-override.md)
+
 - Manage the Enterprise cluster and the profile layers and pack integrations that makeup the Enterprise cluster.
 
 Check out the following resources to learn more about these operations.
