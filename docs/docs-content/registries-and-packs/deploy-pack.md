@@ -163,7 +163,7 @@ structure for each:
     ├── manifest-1.yaml
     ├── manifest-2.yaml
 │   └── manifest-3.yaml
-├── logo.png            # Mandatory
+├── logo.webp            # Mandatory
 └── README.md           # Optional
 ```
 
@@ -192,7 +192,7 @@ structure for each:
 │   │   │   └── template-2.yaml
 │   │   └── values.yaml # Chart-level values.yaml file.
 │   └── chart-2.tgz
-├── logo.png            # Mandatory
+├── logo.webp            # Mandatory
 └── README.md           # Optional
 ```
 
@@ -221,7 +221,7 @@ Ensure you have the following files in the current directory.
 ├── values.yaml         # Mandatory
 ├── manifests           # Mandatory
 │   └── hello-universe.yaml
-├── logo.png            # Mandatory
+├── logo.webp            # Mandatory
 └── README.md           # Optional
 ```
 
@@ -286,7 +286,7 @@ Go ahead and review each of the following five files in the pack.
 
   <br />
 
-  ![Screenshot of the configurable parameters in the values.yaml file.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-values-yaml.png)
+  ![Screenshot of the configurable parameters in the values.yaml file.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-values-yaml.webp)
 
   <br />
 
@@ -296,7 +296,7 @@ Go ahead and review each of the following five files in the pack.
 
   <br />
 
-- **logo.png** - This file contains a logo that displays when you create a cluster profile.
+- **logo.webp** - This file contains a logo that displays when you create a cluster profile.
 
   <br />
 
@@ -343,7 +343,7 @@ server later in this tutorial. The screenshot below shows the registry server su
 
 <br />
 
-![Screenshot of registry server exposed via ngrok](/tutorials/deploy-pack/registries-and-packs_deploy-pack_ngrok-start.png)
+![Screenshot of registry server exposed via ngrok](/tutorials/deploy-pack/registries-and-packs_deploy-pack_ngrok-start.webp)
 
 <br />
 
@@ -417,7 +417,7 @@ Verify the pack you pushed is listed, as shown in the screenshot below.
 
 <br />
 
-![Screenshot of spectro pack ls](/tutorials/deploy-pack/registries-and-packs_deploy-pack_pack-push.png)
+![Screenshot of spectro pack ls](/tutorials/deploy-pack/registries-and-packs_deploy-pack_pack-push.webp)
 
 <br />
 
@@ -435,7 +435,7 @@ Log in to [Palette](https://console.spectrocloud.com), and switch to the Tenant 
 
 <br />
 
-![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.png)
+![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.webp)
 
 <br />
 
@@ -443,7 +443,7 @@ Navigate to **Tenant Settings** > **Registries** > **Pack Registries** section. 
 Palette will open a pop-up window asking for the fields to configure a custom pack registry, as highlighted in the
 screenshot below.
 
-![A screenshot highlighting the fields to configure a custom pack registry. ](/registries-and-packs_adding-a-custom-registry-tls_certificate.png)
+![A screenshot highlighting the fields to configure a custom pack registry. ](/registries-and-packs_adding-a-custom-registry-tls_certificate.webp)
 
 Provide the pack registry name, endpoint, and user credentials in the pop-up window. For a consistent experience in this
 tutorial, we suggest using the name **private-pack-registry**. Use your Ngrok URL as the pack registry endpoint. Ensure
@@ -460,7 +460,7 @@ registry server.
 
 <br />
 
-![Screenshot of registry server edit option in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-edit.png)
+![Screenshot of registry server edit option in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-edit.webp)
 
 <br />
 
@@ -469,7 +469,7 @@ clicking the **three-dot Menu** next to the registry server name and selecting *
 
 <br />
 
-![Screenshot of registry server sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-sync.png)
+![Screenshot of registry server sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-sync.webp)
 
 <br />
 
@@ -489,7 +489,7 @@ provided you configure the following two items:
 
   <br />
 
-  ![Screenshot of Cloud Accounts in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_palette-cloud-account.png)
+  ![Screenshot of Cloud Accounts in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_palette-cloud-account.webp)
 
   <br />
 
@@ -518,7 +518,7 @@ Switch to the **Default** project scope for creating a cluster profile.
 
 <br />
 
-![Screenshot of the Palette Default scope.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_default-scope.png)
+![Screenshot of the Palette Default scope.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_default-scope.webp)
 
 <br />
 
@@ -600,7 +600,7 @@ certSANs:
 
 <br />
 
-![Screenshot of the certificate Subject Alternative Name.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-certsan.png)
+![Screenshot of the certificate Subject Alternative Name.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-certsan.webp)
 
 <br />
 
@@ -618,7 +618,7 @@ layers you added, and click **Next**.
 
 <br />
 
-![Screenshot of the Profile Layers success.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-layer.png)
+![Screenshot of the Profile Layers success.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-layer.webp)
 
 <br /> <br />
 
@@ -663,7 +663,7 @@ Universe 1.0.x** layer allows you to configure the `registry`, `repository`, and
 
 <br />
 
-![Screenshot of the Cluster layers.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-layers.png)
+![Screenshot of the Cluster layers.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-layers.webp)
 
 <br />
 
@@ -771,7 +771,7 @@ Keys**, as shown in the screenshot below.
 
 <br />
 
-![Screenshot of generating an API key in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_generate-api-key.png)
+![Screenshot of generating an API key in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_generate-api-key.webp)
 
 <br />
 
@@ -928,7 +928,7 @@ screenshot below.
 
 <br />
 
-![Screenshot of the successful Profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_verify-profile.png)
+![Screenshot of the successful Profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_verify-profile.webp)
 
 <br />
 
@@ -945,7 +945,7 @@ Overview page and monitor cluster provisioning progress.
 
 <br />
 
-![Screenshot of the cluster health.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-health.png)
+![Screenshot of the cluster health.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-health.webp)
 
 <br />
 
@@ -964,7 +964,7 @@ public load balancer URL. This prevents the browser from caching an unresolved D
 
 <br />
 
-![Screenshot of the successful accessing the application using the load balancer URL.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_success.png)
+![Screenshot of the successful accessing the application using the load balancer URL.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_success.webp)
 
 <br />
 
@@ -973,7 +973,7 @@ Palette.
 
 <br />
 
-![Screenshot of the cluster metrics.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-metrics.png)
+![Screenshot of the cluster metrics.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-metrics.webp)
 
 <br />
 
@@ -1006,7 +1006,7 @@ the cluster name to proceed with the delete step.
 
 <br />
 
-![Screenshot of deleting the cluster in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-cluster.png)
+![Screenshot of deleting the cluster in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-cluster.webp)
 
 <br />
 
@@ -1029,7 +1029,7 @@ select the profile to delete. Choose the **Delete** option in the **three-dot Me
 
 <br />
 
-![Screenshot of deleting the profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-profile.png)
+![Screenshot of deleting the profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-profile.webp)
 
 <br />
 
@@ -1078,7 +1078,7 @@ to delete the registry service configuration from Palette.
 
 <br />
 
-![Screenshot of registry server delete in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-delete.png)
+![Screenshot of registry server delete in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-delete.webp)
 
 <br />
 

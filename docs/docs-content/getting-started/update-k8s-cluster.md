@@ -166,7 +166,7 @@ Deploy this cluster profile to a new cluster using the same steps outlined in th
 Once you have completed these steps and the host cluster creation process has finished, navigate to the left **Main
 Menu** and select **Clusters** to view your deployed clusters. You should have two healthy clusters.
 
-![Image that shows the two clusters in the clusters list](/getting-started/getting-started_update-k8s-cluster_deployed-clusters-start-setup.png)
+![Image that shows the two clusters in the clusters list](/getting-started/getting-started_update-k8s-cluster_deployed-clusters-start-setup.webp)
 
 ## Tag and Filter Clusters
 
@@ -185,7 +185,7 @@ Click on the **Settings** drop-down Menu in the upper right corner and select **
 Fill **service:hello-universe-frontend** in the **Tags (Optional)** input box. Click on **Save Changes**. Close the
 panel.
 
-![Image that shows how to add a cluster tag](/getting-started/getting-started_update-k8s-cluster_add-service-tag.png)
+![Image that shows how to add a cluster tag](/getting-started/getting-started_update-k8s-cluster_add-service-tag.webp)
 
 Repeat the steps above for the `[cloud provider]-cluster-api` cluster you deployed with the _hello-universe-api_. Add
 the **service:hello-universe-backend** tag to it.
@@ -198,7 +198,7 @@ Use the drop-down boxes to fill in the values of the filter. Select **Tags** in 
 
 Click on **Apply Filter**.
 
-![Image that shows how to add a frontend service filter](/getting-started/getting-started_update-k8s-cluster_apply-frontend-filter.png)
+![Image that shows how to add a frontend service filter](/getting-started/getting-started_update-k8s-cluster_apply-frontend-filter.webp)
 
 Once you apply the filter, only the `[cloud provider]-cluster` with this tag is displayed.
 
@@ -222,7 +222,7 @@ Navigate to the left **Main Menu** and select **Profiles** to view the cluster p
 corresponding to your _hello-universe-frontend_ cluster. It should be named using the pattern
 `[cloud provider]-profile`. Select it to view its details.
 
-![Image that shows the frontend cluster profile with cluster linked to it](/getting-started/getting-started_update-k8s-cluster_profile-with-cluster.png)
+![Image that shows the frontend cluster profile with cluster linked to it](/getting-started/getting-started_update-k8s-cluster_profile-with-cluster.webp)
 
 The current version is displayed in the **drop-down Menu** next to the profile name. This profile has the default value
 of **1.0.0**, as you did not specify another value when you created it. The cluster profile also shows the host clusters
@@ -235,7 +235,7 @@ A dialog box appears. Fill in the **Version** input with **1.1.0**. Click on **C
 Palette creates a new cluster profile version and opens it. The version dropdown displays the newly created **1.1.0**
 profile. This profile version is not deployed to any host clusters.
 
-![Image that shows cluster profile version 1.1.0](/getting-started/getting-started_update-k8s-cluster_new-version-overview.png)
+![Image that shows cluster profile version 1.1.0](/getting-started/getting-started_update-k8s-cluster_new-version-overview.webp)
 
 The version **1.1.0** has the same layers as the version **1.0.0** it was created from. Click on the **hello-universe**
 manifest layer. The manifest editor appears.
@@ -309,7 +309,7 @@ dropdown.
 
 Select the **1.1.0** version. Click on **Save** to confirm your profile version selection.
 
-![Image that shows how to select a new profile version for the cluster](/getting-started/getting-started_update-k8s-cluster_profile-version-selection.png)
+![Image that shows how to select a new profile version for the cluster](/getting-started/getting-started_update-k8s-cluster_profile-version-selection.webp)
 
 :::warning
 
@@ -322,12 +322,12 @@ backups before you make any cluster profile version changes in your production e
 Palette now makes the required changes to your cluster according to the specifications of the configured cluster profile
 version. Once your changes have completed, Palette marks your layers with the green status indicator.
 
-![Image that shows completed cluster profile updates](/getting-started/getting-started_update-k8s-cluster_completed-cluster-updates.png)
+![Image that shows completed cluster profile updates](/getting-started/getting-started_update-k8s-cluster_completed-cluster-updates.webp)
 
 Click on the URL for port **:8080** to access the Hello Universe application. The landing page of the application
 indicates that it is connected to the API server.
 
-![Image that shows hello-universe with API server](/getting-started/getting-started_update-k8s-cluster_hello-universe-with-api.png)
+![Image that shows hello-universe with API server](/getting-started/getting-started_update-k8s-cluster_hello-universe-with-api.webp)
 
 ## Roll Back Cluster Profiles
 
@@ -386,16 +386,16 @@ Navigate to the left **Main Menu** and select **Clusters**. Filter for the clust
 your clusters match this filter. Palette indicates that the cluster associated with the cluster profile you updated has
 updates available.
 
-![Image that shows the pending updates ](/getting-started/getting-started_update-k8s-cluster_pending-update-clusters-view.png)
+![Image that shows the pending updates ](/getting-started/getting-started_update-k8s-cluster_pending-update-clusters-view.webp)
 
 Select this cluster to open its **Overview** tab. Click on **Updates Available** to begin the cluster update.
 
-![Image that shows the Updates Available button](/getting-started/getting-started_update-k8s-cluster_updates-available-button-cluster-overview.png)
+![Image that shows the Updates Available button](/getting-started/getting-started_update-k8s-cluster_updates-available-button-cluster-overview.webp)
 
 A dialog appears which shows the changes made in this update. Review the changes and ensure the only change is the
 `replicas` field value. The pending update maintains the override you have made and sets the `replicas` field to `1`.
 
-![Image that shows the available updates dialog ](/getting-started/getting-started_update-k8s-cluster_available-updates-dialog.png)
+![Image that shows the available updates dialog ](/getting-started/getting-started_update-k8s-cluster_available-updates-dialog.webp)
 
 Set the value of `replicas` to `3` in the right-hand dialog. This removes your cluster override. Click on **Confirm
 updates** once you have finished reviewing your changes.
@@ -415,7 +415,7 @@ delete to access its details page.
 
 Click on **Settings** to expand the menu, and select **Delete Cluster**.
 
-![Delete cluster](/getting-started/getting-started_deploy-k8s-cluster_delete-cluster-button.png)
+![Delete cluster](/getting-started/getting-started_deploy-k8s-cluster_delete-cluster-button.webp)
 
 You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name to proceed with
 the delete step. The deletion process takes several minutes to complete.

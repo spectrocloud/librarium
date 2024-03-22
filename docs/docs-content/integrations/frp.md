@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["authentication", "amd64", "fips", "network"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.dev.spectrocloud.com/v1/spectro-proxy/blobs/sha256:b6081bca439eeb01a8d43b3cb6895df4c088f80af978856ddc0da568e5c09365?type=image/png"
+logoUrl: "https://registry.dev.spectrocloud.com/v1/spectro-proxy/blobs/sha256:b6081bca439eeb01a8d43b3cb6895df4c088f80af978856ddc0da568e5c09365?type=image.webp"
 tags: ["packs", "spectro-proxy", "network"]
 ---
 
@@ -63,9 +63,7 @@ Kubernetes dashboard. To learn more about exposing the Kubernetes dashboard, che
 
 - The cluster is in a public network.
 
-<br />
-
-![An overview of the three different connectivity scenarios](/integrations_frp_conection_overview.png)
+![An overview of the three different connectivity scenarios](/integrations_frp_conection_overview.webp)
 
 <br />
 
@@ -127,7 +125,7 @@ endpoints. The user is in a different network than the cluster.
 3. The Spectro Proxy server forwards the request to the cluster's API server located in a different network. The
    cluster's API server authenticates the request and replies with the proper response.
 
-![Private cluster in a different network.](/integrations_frp_conection_private-different-network.png)
+![Private cluster in a different network.](/integrations_frp_conection_private-different-network.webp)
 
 Depending on what type of infrastructure provider you are deploying the host cluster in, you may have to specify the
 Spectro Proxy server's SSL certificate in the Kubernetes cluster's configuration. Refer to the [Usage](#usage) section
@@ -150,7 +148,7 @@ Users in the same network as the cluster do not require the Spectro Proxy server
 
 :::
 
-![Private cluster in the same network.](/integrations_frp_conection_private-same-network.png)
+![Private cluster in the same network.](/integrations_frp_conection_private-same-network.webp)
 
 </TabItem>
 
@@ -170,7 +168,7 @@ When a cluster has public endpoints, you can query the cluster's Kubernetes API 
 access. The following diagram displays the network connection flow of a user attempting to connect to a cluster with
 public endpoints. Any user with access to the internet can connect to the cluster's API server.
 
-![A public cluster connection path](/integrations_frp_conection_public_connection.png)
+![A public cluster connection path](/integrations_frp_conection_public_connection.webp)
 
 </TabItem>
 
@@ -268,7 +266,7 @@ certSANs:
 The following is an example configuration of the Kubernetes Pack manifest getting updated with the certificate SAN
 value:
 
-![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
+![frp-cert-san-example](/docs_integrations_frp_cert-san-example.webp)
 
 For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config`
 parameter section.
@@ -280,7 +278,7 @@ tls-san:
   - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
 ```
 
-![TLS-SAN configuration example](/docs_integrations_frp_tls-san-example.png)
+![TLS-SAN configuration example](/docs_integrations_frp_tls-san-example.webp)
 
 <br />
 
@@ -391,7 +389,7 @@ certSANs:
 The following is an example configuration of the Kubernetes Pack manifest getting updated with the certificate SAN
 value:
 
-![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
+![frp-cert-san-example](/docs_integrations_frp_cert-san-example.webp)
 
 For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config`
 parameter section.
@@ -403,7 +401,7 @@ tls-san:
   - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
 ```
 
-![TLS-SAN configuration example](/docs_integrations_frp_tls-san-example.png)
+![TLS-SAN configuration example](/docs_integrations_frp_tls-san-example.webp)
 
 <br />
 
@@ -513,7 +511,7 @@ certSANs:
 The following is an example configuration of the Kubernetes Pack manifest getting updated with the certificate SAN
 value:
 
-![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
+![frp-cert-san-example](/docs_integrations_frp_cert-san-example.webp)
 
 For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config`
 parameter section.
@@ -525,7 +523,7 @@ tls-san:
   - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
 ```
 
-![TLS-SAN configuration example](/docs_integrations_frp_tls-san-example.png)
+![TLS-SAN configuration example](/docs_integrations_frp_tls-san-example.webp)
 
 <br />
 
@@ -628,7 +626,7 @@ certSANs:
 The following is an example configuration of the Kubernetes Pack manifest getting updated with the certificate SAN
 value:
 
-![frp-cert-san-example](/docs_integrations_frp_cert-san-example.png)
+![frp-cert-san-example](/docs_integrations_frp_cert-san-example.webp)
 
 For RKE2 and K3s edge-native clusters, add the following configuration to the Kubernetes pack under the `cluster.config`
 parameter section.
@@ -640,7 +638,7 @@ tls-san:
   - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
 ```
 
-![TLS-SAN configuration example](/docs_integrations_frp_tls-san-example.png)
+![TLS-SAN configuration example](/docs_integrations_frp_tls-san-example.webp)
 
 <br />
 

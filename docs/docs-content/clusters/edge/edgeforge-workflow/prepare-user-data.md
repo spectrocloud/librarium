@@ -26,7 +26,7 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
 If you don't need to apply any unique configurations on the device once it arrives at the physical site, then your site
 deployment flow would look like the following.
 
-![The flow of an install process not requiring additional customization](/clusters_site-deployment_prepare-edge-configuration_install-flow.png)
+![The flow of an install process not requiring additional customization](/clusters_site-deployment_prepare-edge-configuration_install-flow.webp)
 
 Should you need to apply different configurations once the device arrives at the physical site, you can use a secondary
 user data to support this use case.
@@ -38,7 +38,7 @@ organizations that need to change settings after powering on the Edge host at th
 To use additional user data, create a bootable device, such as a USB stick, that contains the user data in the form of
 an ISO image. The Edge Installer will consume the additional user data during the installation process.
 
-![The flow of an install process with an additional customization occurring at the physical site. The additional customization is using a USB stick to upload the new user data.](/clusters_site-deployment_prepare-edge-configuration_install-flow-with-more-user-data.png)
+![The flow of an install process with an additional customization occurring at the physical site. The additional customization is using a USB stick to upload the new user data.](/clusters_site-deployment_prepare-edge-configuration_install-flow-with-more-user-data.webp)
 
 When creating your Edge Installer, you can embed the user data into the installer image to eliminate providing it via a
 USB drive.

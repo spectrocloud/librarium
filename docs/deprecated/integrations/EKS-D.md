@@ -5,7 +5,7 @@ description: "EKS-D packs in Spectro Cloud"
 hide_table_of_contents: true
 type: "integration"
 category: ["kubernetes"]
-logoUrl: "https://registry.spectrocloud.com/v1/kubernetes-eksd/blobs/sha256:5790ca7040999e2f9371163a319cda652ed1e32139bcb9c6fb32a0152d9f48fb?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/kubernetes-eksd/blobs/sha256:5790ca7040999e2f9371163a319cda652ed1e32139bcb9c6fb32a0152d9f48fb?type=image.webp"
 ---
 
 # Amazon EKS Distro
@@ -33,9 +33,9 @@ We have made the usage of EKS-D easy by incorporating it as integration within t
 button, EKS-D is brought to use while creating a Spectro Cloud-specific cluster profile. Once the cluster profile is
 created, users can deploy EKS-D based Kubernetes clusters through the Spectro Cloud console.
 
-![eksd-cluster-profile](/eksd-cluster-profile.png)
+![eksd-cluster-profile](/eksd-cluster-profile.webp)
 
-![eksd-cluster](/eksd-cluster.png)
+![eksd-cluster](/eksd-cluster.webp)
 
 ## Why EKS-D with Spectro Cloud
 

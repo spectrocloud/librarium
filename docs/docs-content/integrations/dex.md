@@ -6,7 +6,7 @@ type: "integration"
 hide_table_of_contents: true
 category: ["authentication", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/dex/blobs/sha256:78e381fe12509ed94c7c19cd6f6fc4e896ec66485364644dc1a40229fcf9d90d?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/dex/blobs/sha256:78e381fe12509ed94c7c19cd6f6fc4e896ec66485364644dc1a40229fcf9d90d?type=image.webp"
 tags: ["packs", "dex", "security"]
 ---
 

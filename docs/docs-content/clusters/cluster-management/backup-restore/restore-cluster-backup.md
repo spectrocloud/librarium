@@ -124,7 +124,7 @@ Use the following instructions in Palette to restore a backup to a destination c
 
 6. Click on the **Restore Backup** button at the bottom, as highlighted in the screenshot below.
 
-![A screenshot highlighting the details of a specific backup.](/clusters_cluster-management_backup-restore_restore.png)
+   ![A screenshot highlighting the details of a specific backup.](/clusters_cluster-management_backup-restore_restore.webp)
 
 7. In the restore operation wizard, select the destination cluster where you want to restore the backup. For example,
    you can select the current or a different cluster. You can initiate a restore operation on any destination cluster in
@@ -134,7 +134,7 @@ Use the following instructions in Palette to restore a backup to a destination c
 
 You can include specific namespaces, Persistent Volumes (PVs), and cluster-scoped resources.
 
-![A screenshot highlighting the restore operation configurations.](/clusters_cluster-management_backup-restore_confirm-restore.png)
+    ![A screenshot highlighting the restore operation configurations.](/clusters_cluster-management_backup-restore_confirm-restore.webp)
 
 8. Review the restore operation configurations, and click on the **Confirm Restore** button at the bottom.
 
@@ -158,7 +158,7 @@ Use the following steps to validate restoring a cluster backup.
    timestamp, source cluster, and the backup name for each restore operation you performed for the current cluster. The
    screenshot below shows an example restore operation.
 
-![A screenshot highlighting the restoration status for the destination cluster.](/clusters_cluster-management_backup-restore_verify-restore.png)
+   ![A screenshot highlighting the restoration status for the destination cluster.](/clusters_cluster-management_backup-restore_verify-restore.webp)
 
 You restored the backup successfully when the backup status displays _Completed_.
 

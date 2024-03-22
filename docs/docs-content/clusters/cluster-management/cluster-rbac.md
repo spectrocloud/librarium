@@ -141,12 +141,12 @@ You can create role bindings during the cluster creation process or after the ho
 For a new cluster, you can modify the cluster settings at the end of the cluster creation process. RBAC is one of the
 cluster settings you can modify. Select **RBAC** from the left **Settings Menu**.
 
-![A view of the cluster settings page when creating a cluster](/clusters_cluster-management_cluster-rbac_cluster-creation-settings.png)
+![A view of the cluster settings page when creating a cluster](/clusters_cluster-management_cluster-rbac_cluster-creation-settings.webp)
 
 To create or modify a role binding for an active cluster. Navigate to the cluster details page and click on
 **Settings**. Select **RBAC** from the left **Settings Menu**.
 
-![A view of the cluster settings page for an active cluster](/clusters_cluster-management_cluster-rbac_cluster-settings.png)
+![A view of the cluster settings page for an active cluster](/clusters_cluster-management_cluster-rbac_cluster-settings.webp)
 
 The RBAC settings view contains two tabs:
 
@@ -283,6 +283,6 @@ map many users to a role. The group name is the group assigned in the OIDC provi
 Assume in an OIDC provider you created a group named `dev-east-2`. If you configure the host cluster's Kubernetes pack
 with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group.
 
-![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.png)
+![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.webp)
 
 In this example, all users in the `dev-east-2` would inherit the `cluster-admin` role.

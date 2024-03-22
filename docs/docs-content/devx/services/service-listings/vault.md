@@ -6,7 +6,7 @@ hide_table_of_contents: false
 type: "appTier"
 category: ["security"]
 sidebar_position: 40
-logoUrl: "https://icon-library.com/images/padlock-icon-png/padlock-icon-png-29.jpg"
+logoUrl: "https://icon-library.com/images/padlock-icon.webp/padlock-icon.webp-29.jpg"
 ---
 
 ## Vault

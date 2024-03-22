@@ -43,7 +43,7 @@ To learn more about creating multiple profile versions, check out
 
 6. Fill out the required input fields and click on **Confirm & Create**.
 
-  <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.png) -->
+  <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.webp) -->
 
 7. If you want to add additional layers, repeat steps 5 and 6. Otherwise, click on **Next** to review the profile.
 

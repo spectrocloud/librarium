@@ -79,7 +79,7 @@ the OVF template deployment wizard, such as the Palette endpoint or a mistyped p
 The screenshot below highlights the OVF template properties you must carefully configure and verify before deploying a
 PCG installer VM.
 
-![A screenshot displaying the OVF template properties you  configure while deploying the PCG installer VM](/troubleshooting-pcg-template_properties.png)
+![A screenshot displaying the OVF template properties you  configure while deploying the PCG installer VM](/troubleshooting-pcg-template_properties.webp)
 
 3. Double-check the accuracy of the pairing code used for the PCG installer VM. A pairing code is a unique
    authentication code Palette generates for each PCG installer instance. Confirm that it matches the value you copied
@@ -207,12 +207,12 @@ system logs from the monitoring console. Follow the steps below to review the de
    highlighted in the screenshot below. The monitoring console allows you to check the high-level status and download
    the individual log files.
 
-![A screenshot of the monitoring console of the PCG installer.](/troubleshooting-pcg-monitoring_console.png)
+![A screenshot of the monitoring console of the PCG installer.](/troubleshooting-pcg-monitoring_console.webp)
 
 4. If any of the statuses is not **Done** after waiting for a while, download the concerned logs. The screenshot below
    displays the **Logs** tab in the monitoring console.
 
-![A screenshot of the logs in the monitoring console of the PCG installer.](/troubleshooting-pcg-monitoring_logs.png)
+![A screenshot of the logs in the monitoring console of the PCG installer.](/troubleshooting-pcg-monitoring_logs.webp)
 
 5. Examine the log files for potential errors and root causes.
 
@@ -277,16 +277,16 @@ unavailable IP addresses for the worker nodes, or the inability to perform a Net
 7. If you encounter errors other than the ones mentioned in the previous step, it is possible that the cluster
    configuration or the DNS settings are not set correctly. You can review and edit the cluster configuration in the
    cluster settings. The screenshot below highlights the cluster configuration section in the cluster settings blade.
-   ![A screenshot highlighting the cluster configuration section in the cluster settings blade.](/troubleshooting-pcg-cluster_settings.png)
+   ![A screenshot highlighting the cluster configuration section in the cluster settings blade.](/troubleshooting-pcg-cluster_settings.webp)
 
 8. If the cluster settings look correct, ensure the search domain is correctly defined in the fault domain's DNS
    settings. The screenshot below highlights how you can review and edit the DNS mapping of an existing PCG cluster.
-   ![A screenshot highlighting the DNS mapping settings.](/troubleshooting-pcg-dns.png)
+   ![A screenshot highlighting the DNS mapping settings.](/troubleshooting-pcg-dns.webp)
 
 9. If the problem persists, download the cluster logs from Palette. The screenshot below will help you locate the button
    to download logs from the cluster details page.
 
-![A screenshot highlighting how to download the cluster logs from Palette.](/troubleshooting-pcg-download_logs.png)
+![A screenshot highlighting how to download the cluster logs from Palette.](/troubleshooting-pcg-download_logs.webp)
 
 10. Share the logs with our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com).
     <br />
@@ -363,7 +363,7 @@ installer VM lacks outbound internet connectivity.
    occurred due to a preceding "https://" or "http://" string in the vCenter server URL, the error details will mention
    "https://" twice, as highlighted in the screenshot below.
 
-![A screenshot highlighting the "https://" prepended twice to the data center server URL.](/troubleshooting-pcg-http_error.png)
+![A screenshot highlighting the "https://" prepended twice to the data center server URL.](/troubleshooting-pcg-http_error.webp)
 
 6. Palette does not allow you to edit the vCenter server URL you used for authentication. Therefore, you must redeploy
    the PCG cluster with the following considerations:
@@ -372,14 +372,14 @@ installer VM lacks outbound internet connectivity.
      URL, ensure the URL does not include the preceding "http://" or "https://" string. Also, select the **Use Qualified
      Network Name** checkbox if you use a URL. The screenshot below displays the vCenter server field you configure in
      Palette.
-     ![A screenshot displaying the vCenter server field you configure in Palette](/troubleshooting-pcg-cluster_config_1.png)
+     ![A screenshot displaying the vCenter server field you configure in Palette](/troubleshooting-pcg-cluster_config_1.webp)
 
    - Ensure the VMware cloud properties are specified correctly in the cloud gateway configuration. You must use the
      vSphere data center and the folder where you have permission to create resources.
 
    - If you choose the DHCP option, enable the Dynamic DNS in your DNS server. The screenshot below displays the VMware
      cloud properties you configure in Palette.
-     ![A screenshot displaying the VMware cloud properties you configure in Palette](/troubleshooting-pcg-cluster_config_2.png)
+     ![A screenshot displaying the VMware cloud properties you configure in Palette](/troubleshooting-pcg-cluster_config_2.webp)
 
 7. If the steps above do not resolve the issue, check if the deployment failed due to a lack of outbound internet
    connectivity from the PCG installer VM. Use the following steps to check outbound internet connectivity:
@@ -441,7 +441,7 @@ This issue can occur due to improper networking configuration or an error in the
    - Download the PCG cluster's kubeconfig file from the **Overview** tab. Click on the kubeconfig file name to download
      it to your local machine, as highlighted in the screenshot below.
 
-     ![A screenshot highlighting the kubeconfig file to download from Palette.](/troubleshooting-pcg-download_kubeconfig.png)
+     ![A screenshot highlighting the kubeconfig file to download from Palette.](/troubleshooting-pcg-download_kubeconfig.webp)
 
    - After you download the PCG cluster's kubeconfig file, use the following commands to make a GET request to one of
      the
