@@ -29,7 +29,7 @@ setting the tenant developer setting **Hide system-level cluster groups from ten
 setting value is **true**, the beehive cluster is not displayed in the cluster group drop-down menu when deploying
 Palette virtual clusters.
 
-![The deployment path for a user](/045-devx_resource-quota_is-beehive-enabled.png)
+![The deployment path for a user](/045-devx_resource-quota_is-beehive-enabled.webp)
 
 You can change tenant developer settings by switching to the tenant scope and navigating from the left **Main Menu** to
 **Tenant Settings > Developers Settings**. Toggle the **Hide system-level cluster groups from tenant users** button.
@@ -121,7 +121,7 @@ the parent cluster group.
 The following diagram displays the evaluation process Palette uses to determine the status of a virtual cluster creation
 request.
 
-![Order of flow when it comes to evaluating cluster requests](/045-devx_resource-quota_evaluation-process.png)
+![Order of flow when it comes to evaluating cluster requests](/045-devx_resource-quota_evaluation-process.webp)
 
 To better understand this concept, use the following examples.
 

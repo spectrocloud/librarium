@@ -36,7 +36,7 @@ Palette 4.0 includes the following major enhancements that require user interven
 From the Palette system console, click the **Update version** button. Palette will be temporarily unavailable while
 system services update.
 
-![Screenshot of the "Update version" button in the system consoles.](/enterprise-version_sys-console-update-palette-version.png)
+![Screenshot of the "Update version" button in the system consoles.](/enterprise-version_sys-console-update-palette-version.webp)
 
 #### Upgrade Kubernetes
 
@@ -57,7 +57,7 @@ Follow the steps below to upgrade Kubernetes.
 
 <br />
 
-![Screenshot of the Kubernetes YAML editor.](/enterprise-version_upgrade_ec-cluster-profile.png)
+![Screenshot of the Kubernetes YAML editor.](/enterprise-version_upgrade_ec-cluster-profile.webp)
 
 6. If you have made any additional configuration changes or additions, add your customizations to the new YAML.
 

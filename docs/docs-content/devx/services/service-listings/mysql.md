@@ -6,7 +6,7 @@ hide_table_of_contents: false
 type: "appTier"
 category: ["databases"]
 sidebar_position: 10
-logoUrl: "https://registry.dev.spectrocloud.com/v1/mysql-operator/blobs/sha256:2d59bc428916752528280eac03330d712164163e2f3c476409f5c25d8a7c2778?type=image/png"
+logoUrl: "https://registry.dev.spectrocloud.com/v1/mysql-operator/blobs/sha256:2d59bc428916752528280eac03330d712164163e2f3c476409f5c25d8a7c2778?type=image.webp"
 tags: ["devx", "app mode", "pde", "databases"]
 ---
 

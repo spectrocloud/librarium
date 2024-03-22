@@ -190,8 +190,6 @@ type `:wq` to save and exit.
 
 </Tabs>
 
----
-
 10. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following
     table.
 
@@ -343,7 +341,7 @@ proceed.
 
 <br />
 
-![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.png)
+![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
 <br />
 
@@ -360,9 +358,7 @@ proceed.
 16. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../system-management/tenant-management.md) guide.
 
-<br />
-
-![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.png)
+    ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.webp)
 
 ## Validate
 

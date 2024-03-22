@@ -714,9 +714,7 @@ The first time you visit the Palette system console, a warning message about a n
 This is expected, as you have not yet uploaded your SSL certificate to Palette. You can ignore this warning message and
 proceed.
 
-<br />
-
-![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.png)
+    ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
 10. Log in to the system console using the following default credentials.
 

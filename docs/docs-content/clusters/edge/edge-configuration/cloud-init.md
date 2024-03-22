@@ -14,7 +14,7 @@ locking down the image.
 
 The following diagram displays the available cloud-init stages you can use to customize the device installation.
 
-![A diagram that displays all the cloud-init stages supported. The stages are listed in the markdown table below.](/clusters_edge_cloud-init_cloud-init-stages-supported.png)
+![A diagram that displays all the cloud-init stages supported. The stages are listed in the markdown table below.](/clusters_edge_cloud-init_cloud-init-stages-supported.webp)
 
 You can read more about Kairos and cloud-init by reviewing
 [Kairo's cloud-init](https://kairos.io/docs/architecture/cloud-init/) resource. For your convenience, all the supported

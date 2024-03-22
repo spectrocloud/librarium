@@ -74,9 +74,12 @@ Use the instructions below to create a cluster group.
 
    #### Palette Virtual Cluster Configuration
 
-   The configuration applied to all virtual clusters launched into the host clusters. Use the **Advanced Config** for
-   further customization. The request sizing applies to the maximum amount of resources a virtual cluster is allowed to
-   claim.
+   The configuration applied to all virtual clusters launched into the host clusters. Select the Kubernetes distribution
+   you want all virtual clusters to use. Use the **Advanced Config** for further customization.
+
+   ![A view of the Kubernetes distribution selection menu](/clusters_cluster-groups_create-cluster-group_virtual-cluster-distro.webp)
+
+   The request sizing applies to the maximum amount of resources a virtual cluster is allowed to claim.
 
    | **Palette Virtual Cluster Resource** | **Default** | **Minimum Limit** |
    | ------------------------------------ | ----------- | ----------------- |

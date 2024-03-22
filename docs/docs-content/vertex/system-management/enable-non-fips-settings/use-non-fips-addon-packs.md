@@ -25,7 +25,7 @@ As shown in the screenshot below, the FIPS-compliant icon used to indicate full 
 Palette VerteX infrastructure components in the cluster profile stack. To learn about other icons Palette VerteX
 applies, refer to [FIPS Status Icons](../../fips/fips-status-icons.md).
 
-![Diagram showing FIPS-compliant icons in profile stack.](/vertex_fips-status-icons_icons-in-profile-stack.png)
+![Diagram showing FIPS-compliant icons in profile stack.](/vertex_fips-status-icons_icons-in-profile-stack.webp)
 
 You can allow tenant users to customize their cluster profiles by using add-on packs, which _may not_ be FIPS compliant.
 Add-on packs enhance cluster functionality by adding profile layers such as system apps, authentication, security,
@@ -46,7 +46,7 @@ monitoring, logging, and more.
 4. Enable the **Allow non-FIPS add-on packs** option. When you enable this option, you are prompted to confirm the use
    of non-FIPS add-on packs for the tenant.
 
-![Diagram showing the Allow non-FIPS add-on packs toggle enabled.](/vertex_use-non-fips-settings_nonFips-addon-packs.png)
+   ![Diagram showing the Allow non-FIPS packs toggle enabled.](/vertex_use-non-fips-settings_nonFips-packs.webp)
 
 To disable the setting, toggle this option off and confirm you want to disable it.
 

@@ -95,7 +95,7 @@ The diagram below shows an example of using an external DNS server for servers t
 delegation. This ensures all servers in the network can resolve the DNS names of servers deployed by MAAS. Note that it
 is not required for the DNS records to be accessible from the internet.
 
-![Image showing external DNS server machines that MAAS deploys in addition to a DNS delegation](/clusters_maas_maas-dns-setup.png)
+![Image showing external DNS server machines that MAAS deploys in addition to a DNS delegation](/clusters_maas_maas-dns-setup.webp)
 
 ## Deploy PCG
 

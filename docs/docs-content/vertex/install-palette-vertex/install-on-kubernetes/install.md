@@ -721,7 +721,7 @@ helm upgrade --values spectro-mgmt-plane/values.yaml image-swap image-swap-0.0.0
 
 <br />
 
-![Screenshot of the VerteX system console showing Username and Password fields.](/vertex_install-on-kubernetes_install_system-console.png)
+![Screenshot of the VerteX system console showing Username and Password fields.](/vertex_install-on-kubernetes_install_system-console.webp)
 
 10. Log in to the system console using the following default credentials.
 

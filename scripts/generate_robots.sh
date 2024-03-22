@@ -29,6 +29,7 @@ for version in "${disallowed_versions[@]}"; do
     version_escaped=$(echo "$version" | sed 's/\//\\\//g')
     # Append the modified Disallow statements to the robots.txt file
     echo "Disallow: /${version_escaped}/" >> robots.txt
+    echo "Disallow: /api/${version_escaped}" >> robots.txt
 done
 
 # Append the Allow statement to the robots.txt file

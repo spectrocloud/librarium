@@ -6,7 +6,7 @@ type: "integration"
 hide_table_of_contents: true
 category: ["authentication", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/permission-manager/blobs/sha256:15d08b02d78823c12616b72d1b5adb0520940016b89bae1f758e6f1a105597ff?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/permission-manager/blobs/sha256:15d08b02d78823c12616b72d1b5adb0520940016b89bae1f758e6f1a105597ff?type=image.webp"
 tags: ["packs", "permission-manager", "security"]
 ---
 
