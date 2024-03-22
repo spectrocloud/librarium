@@ -361,7 +361,11 @@ const redirects = [
     to: "/user-management/saml-sso/",
   },
   {
-    from: ["/security/security-bulletins/", "/security-bulletins/cve-reports", "/security/security-bulletins/index"],
+    from: [
+      "/security/security-bulletins/",
+      "/security/security-bulletins/cve-reports",
+      "/security/security-bulletins/index",
+    ],
     to: "/security-bulletins/",
   },
 ];
