@@ -105,8 +105,32 @@ you want to build the base image with.
    bash build.sh
    ```
 
+   :::info
+
+   If you run into issues with the script recognizing the RHEL credentials, try replacing the credentials directly in
+   the Docker file in the following line:
+
+   ```dockerfile
+   RUN rm /etc/rhsm-host && subscription-manager register --username 'your-username' --password '*******' \
+   ```
+
+   :::
+
 8. When the build finishes, issue `docker images` and confirm there is an image named `rhel-byoi-fips:latest`. This is
    the base image that you will use to build provider images and the Edge installer ISO later on.
+
+9. Tag the image with a repository that is accessible by your Linux machine. For example, use the publicly accessible
+   `ttl.sh` repository.
+
+   ```shell
+   docker tag rhel-byoi-fips:latest ttl.sh/rhel/rhel-byoi-fips:latest
+   ```
+
+   Push the image to the repository.
+
+   ```shell
+   docker push ttl.sh/rhel/rhel-byoi-fips:latest
+   ```
 
 </TabItem>
 
@@ -129,6 +153,19 @@ you want to build the base image with.
 8. When the build finishes, issue `docker images` and confirm there is an image named `ubuntu-focal-fips:latest`. This
    is the base image that you will use to build provider images and the Edge installer ISO later on.
 
+9. Tag the image with a repository that is accessible by your Linux machine. For example, use the publicly accessible
+   `ttl.sh` repository.
+
+   ```shell
+   docker tag ubuntu-focal-fips:latest ttl.sh/ubuntu/ubuntu-focal-fips:latest
+   ```
+
+   Push the image to the repository.
+
+   ```shell
+   docker push ttl.sh/ubuntu/ubuntu-focal-fips:latest
+   ```
+
 </TabItem>
 
 ### Build Edge Installer ISO
@@ -146,14 +183,15 @@ you want to build the base image with.
 
     | Argument         | Description                                                                                                                                        |
     | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | IMAGE_REGISTRY   | The image registry that the Edge Installer will pull provider images from.                                                                         |
+    | IMAGE_REGISTRY   | The image registry to use for tagging the generated provider images.                                                                               |
     | OS_DISTRIBUTION  | The OS distribution in your provider image.                                                                                                        |
-    | IMAGE_REPO       | The image repository that the Edge Installer will pull provider images from.                                                                       |
+    | IMAGE_REPO       | The image repository to use for tagging the generated provider images.                                                                             |
     | OS_VERSION       | The OS version in your provider image. This only applies to Ubuntu.                                                                                |
     | K8S_DISTRIBUTION | The Kubernetes distribution for your provider image. Allowed values are `rke2` and `kubeadm-fips`.                                                 |
     | FIPS_ENABLED     | Whether to enable FIPS compliance. This parameter must be set to `true`.                                                                           |
     | ARCH             | The architecture of the image. Allowed values are `amd64` and `arm64`.                                                                             |
     | BASE_IMAGE       | The base image used by EdgeForge to build the Edge Installer and provider images. This must be the same image that you build in the previous step. |
+    | ISO_NAME         | The file name of the ISO file that will be generated.                                                                                              |
 
 12. Create a file named **user-data**, This file configures the Edge Installer. Refer to
     [Installer Reference](../../edge-configuration/installer-reference.md) for more information.
@@ -169,10 +207,10 @@ you want to build the base image with.
 14. Issue the following command to build the Edge Installer ISO.
 
     ```shell
-    ./earthly +iso
+    ./earthly.sh +iso
     ```
 
-    When the build finishes, the ISO file will be provided in the **build** directory under the name you specified in
+    When the build finishes, the ISO file will be generated in the **build** directory under the name you specified in
     your **.arg** file.
 
 ### Build FIPS-Compliant Provider Images
@@ -188,11 +226,14 @@ FIPS-complaint provider images are built on top of the base OS image you have bu
     provider images:
 
     ```shell
-      ./earthly +provider-images-fips
+      ./earthly +build-provider-images-fips
     ```
 
-    When the build finishes, copy and save the output attributes in a notepad or clipboard to use later in your cluster
-    profile.
+    :::warning
+
+    For the Kubernetes distribution, only `rke2` and `kubeadm-fips` will produce FIPS-compliant provider images.
+
+    :::
 
 ## Validate
 
