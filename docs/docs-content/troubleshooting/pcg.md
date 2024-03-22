@@ -81,16 +81,16 @@ unavailable IP addresses for the worker nodes, or the inability to perform a Net
 7. If you encounter errors other than the ones mentioned in the previous step, it is possible that the cluster
    configuration or the DNS settings are not set correctly. You can review and edit the cluster configuration in the
    cluster settings. The screenshot below highlights the cluster configuration section in the cluster settings blade.
-   ![A screenshot highlighting the cluster configuration section in the cluster settings blade.](/troubleshooting-pcg-cluster_settings.png)
+   ![A screenshot highlighting the cluster configuration section in the cluster settings blade.](/troubleshooting-pcg-cluster_settings.webp)
 
 8. If the cluster settings look correct, ensure the search domain is correctly defined in the fault domain's DNS
    settings. The screenshot below highlights how you can review and edit the DNS mapping of an existing PCG cluster.
-   ![A screenshot highlighting the DNS mapping settings.](/troubleshooting-pcg-dns.png)
+   ![A screenshot highlighting the DNS mapping settings.](/troubleshooting-pcg-dns.webp)
 
 9. If the problem persists, download the cluster logs from Palette. The screenshot below will help you locate the button
    to download logs from the cluster details page.
 
-![A screenshot highlighting how to download the cluster logs from Palette.](/troubleshooting-pcg-download_logs.png)
+![A screenshot highlighting how to download the cluster logs from Palette.](/troubleshooting-pcg-download_logs.webp)
 
 10. Share the logs with our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com).
 
@@ -123,7 +123,7 @@ configuration or an error in the cloud-init process.
    - Download the PCG cluster's kubeconfig file from the **Overview** tab. Click on the kubeconfig file name to download
      it to your local machine, as highlighted in the screenshot below.
 
-     ![A screenshot highlighting the kubeconfig file to download from Palette.](/troubleshooting-pcg-download_kubeconfig.png)
+     ![A screenshot highlighting the kubeconfig file to download from Palette.](/troubleshooting-pcg-download_kubeconfig.webp)
 
    - After you download the PCG cluster's kubeconfig file, use the following commands to make a GET request to one of
      the

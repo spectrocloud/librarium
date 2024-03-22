@@ -58,7 +58,7 @@ If a cluster group does not exist, you will need to create a host cluster and th
 6. Locate the `vcluster.extraArgs` parameter section of the cluster group configuration file and uncomment the lines
    shown in the example.
 
-![Screenshot of the cluster group YAML showing oidc-related parameters to uncomment and update.](/clusters_palette-virtual-clusters_configure-vcluster-oidc.png)
+![Screenshot of the cluster group YAML showing oidc-related parameters to uncomment and update.](/clusters_palette-virtual-clusters_configure-vcluster-oidc.webp)
 
 7. Update the `vcluster.extraArgs` section with your identity provider information.
 

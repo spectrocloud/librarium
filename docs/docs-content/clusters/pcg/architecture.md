@@ -18,7 +18,7 @@ communication between the Palette control management plane and the private cloud
 deployment and removal of Kubernetes clusters in private cloud environments through the Palette user interface, API,
 CLI, or Terraform provider.
 
-![An architecture diagram of PCG](/clusters_pcg_architecture_overview_diagram.png)
+![An architecture diagram of PCG](/clusters_pcg_architecture_overview_diagram.webp)
 
 ## Network Communication
 
@@ -179,4 +179,4 @@ To use the System Private Gateway with a self-hosted Palette instance, you must 
 Gateway** option while registering a private cloud account with Palette. This option is only available from the Palette
 user interface for private cloud environments such as MAAS, OpenStack, and VMware vSphere.
 
-![View of the cloud account registration screen with the system PCG check box highlighted](/clusters_pcg_architecture_system-pcg-ui.png)
+![View of the cloud account registration screen with the system PCG check box highlighted](/clusters_pcg_architecture_system-pcg-ui.webp)

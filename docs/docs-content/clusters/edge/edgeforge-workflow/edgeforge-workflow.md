@@ -14,7 +14,7 @@ Each EdgeForge component plays a critical role in the [lifecycle](../edge-native
 Review the [Edge Artifacts](../edgeforge-workflow/edgeforge-workflow.md#edge-artifacts) section to learn more about each
 component.
 
-![A diagram that displays the relationship between the three components  and how they relate to an Edge host](/clusters_edge-forge-workflow_edgeforge-workflow_components-diagram.png)
+![A diagram that displays the relationship between the three components  and how they relate to an Edge host](/clusters_edge-forge-workflow_edgeforge-workflow_components-diagram.webp)
 
 ## Get Started
 
@@ -73,7 +73,7 @@ ISO can also contain the following components:
   Edge Installer ISO, you can use the profiles contained within to build a cluster without a connection to a Palette
   instance.
 
-![A diagram breaking up the internal components of the ISO image](/clusters_edge_edgeforge-workflow_iso-diagram.png)
+![A diagram breaking up the internal components of the ISO image](/clusters_edge_edgeforge-workflow_iso-diagram.webp)
 
 ### Edge Provider Container Images
 
@@ -87,7 +87,7 @@ default Palette container registries to familiarize yourself with the installati
 production scenario, you would need to customize these artifacts to suit your specific needs or perform some
 [content bundle](../edgeforge-workflow/build-content-bundle.md) optimization.
 
-![A diagram breaking up the internal components of the Edge Provider container images](/clusters_edge_edgeforge-workflow_provider-diagram.png)
+![A diagram breaking up the internal components of the Edge Provider container images](/clusters_edge_edgeforge-workflow_provider-diagram.webp)
 
 :::info
 

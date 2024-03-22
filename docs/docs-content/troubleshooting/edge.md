@@ -24,7 +24,7 @@ If you need to override or reconfigure the read-only file system, you can do so 
 
 3. Type `rd.cos.debugrw` and press `Enter`.
 
-![The grub menu displays with the command rd.cos.debugrw typed in the terminal.](/troubleshooting_edge_grub-menu.png)
+![The grub menu displays with the command rd.cos.debugrw typed in the terminal.](/troubleshooting_edge_grub-menu.webp)
 
 4. Press `Ctrl+X` to boot the system.
 

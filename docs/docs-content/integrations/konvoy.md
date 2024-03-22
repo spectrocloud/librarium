@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["kubernetes", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image/webp"
 tags: ["packs", "konvoy", "kubernetes"]
 ---
 
@@ -77,7 +77,7 @@ the Konvoy image builder project.
 
 Select Konvoy as the Kubernetes distribution when choosing a Kubernetes distribution in the cluster profile.
 
-![A view of the cluster profile Kubernetes selection screen](/byoos_vmware_konvoy_cluster-profile-view.png)
+![A view of the cluster profile Kubernetes selection screen](/byoos_vmware_konvoy_cluster-profile-view.webp)
 
 </TabItem>
 <TabItem label="Deprecated" value="deprecated">

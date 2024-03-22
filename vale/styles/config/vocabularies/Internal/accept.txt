@@ -202,5 +202,7 @@ Palette eXtented Kubernetes - Edge
 timeframe
 Luet
 rhel
-ubuntu
+Ubuntu
 RHEL
+repave
+airgap

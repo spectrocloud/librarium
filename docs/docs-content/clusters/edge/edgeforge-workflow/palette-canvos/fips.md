@@ -69,7 +69,7 @@ This page guides you through the process of building FIPS-compliant Edge Install
    cd CanvOS
    ```
 
-3. Ensure that you are using rhe **main** branch of the repository.
+3. Ensure that you are using the **main** branch of the repository.
 
    ```bash
    git tag
