@@ -21,7 +21,7 @@ and repeated cluster deployment across multiple infrastructure environments.
 
 ## Workload Cluster Provisioning
 
-![workload_cluster_provisioning.png](/architecture_orchestartion-spectrocloud_provision-flow.png)
+![workload_cluster_provisioning.webp](/architecture_orchestartion-spectrocloud_provision-flow.webp)
 
 1. New K8S cluster request from user submitted to the cluster management system.
 
@@ -54,7 +54,7 @@ clusters.
 
 Palette's decentralized model is based on a "decentralized management - local policy enforcement" scalable architecture.
 
-![distributed_orchestration.png](/architecture_orchestartion-spectrocloud_distributed-flow.png)
+![distributed_orchestration.webp](/architecture_orchestartion-spectrocloud_distributed-flow.webp)
 
 As part of the workload K8s cluster provisioning, only the first control-plane node is launched by Cluster API, running
 in the Palette management cluster. Once the control-plane node is operational, Cluster API resources are _pivoted_ from

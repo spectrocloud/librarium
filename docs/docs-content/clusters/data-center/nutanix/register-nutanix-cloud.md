@@ -211,7 +211,7 @@ height is 40 pixels. It is preferable that the image be transparent.
    ```bash
    export ENDPOINT="https://palette.example.com"
    export CLOUD_TYPE="nutanix"
-   export cloudLogo="/path/to/the/file/cloud-logo.png"
+   export cloudLogo="/path/to/the/file/cloud-logo.webp"
    export infraComponents="/path/to/the/file/infrastructure-components.yaml"
    export cloudClusterTemplate="/path/to/the/file/cloudClusterTemplate.yaml"
    export controlPlanePoolTemplate="/path/to/the/file/controlPlanePoolTemplate.yaml"

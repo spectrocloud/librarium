@@ -14,7 +14,7 @@ offer verified packs across the spectrum of a typical cluster profile stack - fr
 application layers. Verified packs are readily recognized in Palette by the green shield icon that distinguishes them
 from other packs.
 
-![A screenshot of several Verified Packs with a green shield icon.](/integrations_verified-packs-green-check.png)
+![A screenshot of several Verified Packs with a green shield icon.](/integrations_verified-packs-green-check.webp)
 
 ### Verified Pack Updates
 

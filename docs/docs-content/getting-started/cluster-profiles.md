@@ -39,7 +39,7 @@ The diagram below illustrates the components of these profile types and how you 
 add-on layers to create a full cluster profile. You can also create separate add-on profiles to reuse among multiple
 clusters.
 
-![A flow diagram that shows how you can add layers to an infrastructure profile to create a full profile.](/getting-started/getting-started_cluster-profiles_cluster-profiles.png)
+![A flow diagram that shows how you can add layers to an infrastructure profile to create a full profile.](/getting-started/getting-started_cluster-profiles_cluster-profiles.webp)
 
 ## Packs
 
@@ -50,4 +50,4 @@ also use add-on packs, or create your own custom pack to extend Kubernetes funct
 The diagram below illustrates some of the popular technologies that you can use in your cluster profile layers. Check
 out the [Packs List](../integrations/integrations.mdx) page to learn more about individual packs.
 
-![Diagram of stack grouped as a unit](/getting-started/getting-started_cluster-profiles_stack-grouped-packs.png)
+![Diagram of stack grouped as a unit](/getting-started/getting-started_cluster-profiles_stack-grouped-packs.webp)
