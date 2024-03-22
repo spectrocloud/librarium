@@ -127,6 +127,8 @@ the product by 1000.
 For instance, if you deploy a single-node cluster with 16 CPU cores for 24 hours, you will use about 0.39 kCh.
 Alternatively, if you deploy a three-node cluster that has 16 CPUs per node for 24 hours, you will use about 1.2 kCh.
 
+For more information, refer to the [Resource Usage Calculation](./introduction/resource-usage-estimation.md) page.
+
 ## Management Clusters
 
 Management Cluster is where Palette core components are hosted and are often referred to in on-prem installations of
