@@ -118,6 +118,15 @@ chart registry on to Kubernetes clusters.
 
 A Kubernetes cluster that is managed by Palette. A host cluster may contain several Palette Virtual Clusters.
 
+## Kilo-Core-Hours (kCh)
+
+kCh, short for kilo-core-hours, represents a unit of computational time. This value is a product of the cluster node
+count, the number of CPUs per node, and the duration of time these nodes are in use. To improve readability, we divide
+the product by 1000.
+
+For instance, if you deploy a single-node cluster with 16 CPU cores for 24 hours, you will use about 0.39 kCh.
+Alternatively, if you deploy a three-node cluster that has 16 CPUs per node for 24 hours, you will use about 1.2 kCh.
+
 ## Management Clusters
 
 Management Cluster is where Palette core components are hosted and are often referred to in on-prem installations of
