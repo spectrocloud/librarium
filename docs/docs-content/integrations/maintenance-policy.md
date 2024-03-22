@@ -95,11 +95,11 @@ deploy clusters that use profiles containing the pack.
 Palette displays the deprecation stage when you click the information icon next to the pack name during profile
 creation.
 
-![Screenshot showing how Palette indicates a pack's stage of deprecation.](/integrations_deprecation-stage.png)
+![Screenshot showing how Palette indicates a pack's stage of deprecation.](/integrations_deprecation-stage.webp)
 
 An information icon in the profile stack also displays a message that instructs about required pack versions.
 
-![Screenshot showing message in profile stack that tells you the required pack version to use.](/integrations_deprecation-profile-stack-msg.png)
+![Screenshot showing message in profile stack that tells you the required pack version to use.](/integrations_deprecation-profile-stack-msg.webp)
 
 :::info
 

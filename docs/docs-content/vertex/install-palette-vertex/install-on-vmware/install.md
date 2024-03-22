@@ -338,18 +338,15 @@ Console URL: https://10.10.100.0/system
 Username:    ************
 Password:    ************
 
+
 The first of three Enterprise Cluster nodes is online and will now provision nodes two and three.
 
 It will take another ~30-45 minutes for the installation to complete.
 
 You can monitor its progress via kubectl/k9s or by viewing the system console.
-
-export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
 ```
 
 13. Copy the URL to the browser to access the system console. You will be prompted to reset the password.
-
-<br />
 
 :::info
 
@@ -359,11 +356,7 @@ warning message and proceed.
 
 :::
 
-<br />
-
-![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.png)
-
-<br />
+    ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.webp)
 
 14. Log in to the System Console using the credentials provided in the Enterprise Cluster Details output. After login,
     you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to
@@ -378,9 +371,7 @@ warning message and proceed.
 16. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../system-management/tenant-management.md) guide.
 
-<br />
-
-![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.png)
+    ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.webp)
 
 ## Validate
 

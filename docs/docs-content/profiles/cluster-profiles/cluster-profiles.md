@@ -35,7 +35,7 @@ The diagram below illustrates the components of these profile types and how you 
 add-on layers to create a full cluster profile. You can also create separate add-on profiles to reuse among multiple
 clusters.
 
-![A flow diagram that shows how you can add layers to an infrastructure profile to create a full profile.](/profiles_cluster-profiles_cluster-profiles.png)
+![A flow diagram that shows how you can add layers to an infrastructure profile to create a full profile.](/profiles_cluster-profiles_cluster-profiles.webp)
 
 ## Profile Layers
 

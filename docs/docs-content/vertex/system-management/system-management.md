@@ -21,7 +21,7 @@ You can access the system setting by visiting the IP address or the custom domai
 cluster and appending the `/system` path to the URL. For example, if your Palette VerteX cluster is hosted at
 `https://vertex.abc.com`, you can access the system settings at `https://vertex.abc.com/system`.
 
-![View of the VerteX system console landing page.](/vertex_system-management_overview-system-console.png)
+![View of the VerteX system console landing page.](/vertex_system-management_overview-system-console.webp)
 
 ## Administration and Management
 

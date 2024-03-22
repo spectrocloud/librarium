@@ -32,7 +32,7 @@ be confirmed. To learn about icons that Palette VerteX applies, refer to
 3. Enable the **Allow non-FIPS cluster import** option. When you enable this option, you are prompted to confirm
    importing clusters into the tenant that may not be FIPS-compliant.
 
-![Diagram showing the Allow non-FIPS cluster import toggle enabled.](/vertex_use-non-fips-settings_nonFips-cluster-import.png)
+![Diagram showing the Allow non-FIPS cluster import toggle enabled.](/vertex_use-non-fips-settings_nonFips-cluster-import.webp)
 
 To disable the setting, toggle this option off and confirm you want to disable it.
 

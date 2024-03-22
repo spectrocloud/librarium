@@ -15,7 +15,7 @@ applications. This solution allows organizations to onboard, deploy, manage, and
 their containerized applications. Palette VM Orchestrator simplifies managing infrastructure, improves resource
 utilization, and removes the cost of having a hypervisor.
 
-![A drawing of VMs deployed to Palette](/docs_vm-mangement_vmo-diagram.png)
+![A drawing of VMs deployed to Palette](/docs_vm-mangement_vmo-diagram.webp)
 
 ## Use Cases
 
