@@ -35,7 +35,7 @@ and workflows you need to deploy and manage Kubernetes clusters through Palette.
 
 <div class="desktop-only-display">
 
-![Overview of the getting started journey rocket](/getting-started/getting-started_getting-started_journey-overview.png)
+![Overview of the getting started journey rocket](/getting-started/getting-started_getting-started_journey-overview.webp)
 
 </div>
 

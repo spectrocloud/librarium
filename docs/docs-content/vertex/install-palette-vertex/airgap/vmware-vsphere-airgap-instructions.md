@@ -8,7 +8,7 @@ sidebar_position: 30
 tags: ["vertex", "enterprise", "airgap", "vmware", "vsphere"]
 ---
 
-![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_overview-order-diagram-focus.png)
+![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_overview-order-diagram-focus.webp)
 
 This guide provides instructions for preparing your airgap environment for a Palette VerteX installation, by ensuring
 you complete all the required preparatory steps 1 and 2 shown in the diagram. The installation process is covered in the
@@ -24,6 +24,11 @@ Carefully review the [prerequisites](#prerequisites) section before proceeding. 
 Each prerequisite is required for a successful installation.
 
 :::
+
+The following diagram offers a general overview of the steps you will complete to prepare your airgap environment for
+VerteX.
+
+![Overview diagram of the pre-install steps eager-load](/vertex_airgap_vmware-vsphere-airgap-instructions_order-operations.webp)
 
 ## Prerequisites
 
@@ -377,7 +382,7 @@ Use the following steps to validate the airgap setup process completed successfu
    installation process. The screenshot below is an example of a file server hosting the unzipped manifest content. The
    example is using Caddy as the file server.
 
-![Example of a file server hosting the unzipped manifest content](/enterprise-version_airgap_airgap-instructions_file-server-caddy.png)
+![Example of a file server hosting the unzipped manifest content](/enterprise-version_airgap_airgap-instructions_file-server-caddy.webp)
 
 3. Ensure your file server is accessible from the environment in which you are installing VerteX. Use the following
    command to verify the manifest content is accessible from the file server. Replace the hostname or IP address below

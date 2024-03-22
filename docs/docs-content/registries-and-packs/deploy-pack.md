@@ -32,7 +32,7 @@ or Terraform.
 
 The following diagram illustrates the sequential steps required to successfully complete this tutorial.
 
-![Architecture Diagram of the Deploy a Custom Pack Tutorial](/tutorials/deploy-pack/registries-and-packs_deploy-pack_architecture-diagram.png)
+![Architecture Diagram of the Deploy a Custom Pack Tutorial](/tutorials/deploy-pack/registries-and-packs_deploy-pack_architecture-diagram.webp)
 
 ## Prerequisites {#prerequisites}
 
@@ -164,7 +164,7 @@ structure for each.
     ├── manifest-1.yaml
     ├── manifest-2.yaml
 │   └── manifest-3.yaml
-├── logo.png            # Mandatory.
+├── logo.webp            # Mandatory.
 └── README.md           # Optional.
 ```
 
@@ -191,7 +191,7 @@ structure for each.
 │   │   │   └── template-2.yaml
 │   │   └── values.yaml # Chart-level values.yaml file.
 │   └── chart-2.tgz
-├── logo.png            # Mandatory.
+├── logo.webp            # Mandatory.
 └── README.md           # Optional.
 ```
 
@@ -216,7 +216,7 @@ Ensure you have the following files in the current directory.
 ├── values.yaml         # Mandatory.
 ├── manifests           # Mandatory.
 │   └── hello-universe.yaml
-├── logo.png            # Mandatory.
+├── logo.webp            # Mandatory.
 └── README.md           # Optional.
 ```
 
@@ -274,13 +274,13 @@ Review each of the following five files in the **hello-universe-pack** folder.
   The example below shows the parameters you can configure in the **values.yaml** file for the `hello-universe` manifest
   during the creation of the cluster profile.
 
-![Screenshot of the configurable parameters in the values.yaml file.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-values-yaml.png)
+![Screenshot of the configurable parameters in the values.yaml file.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-values-yaml.webp)
 
 - **manifests** - This directory contains the manifest files for your Kubernetes application. This tutorial has only one
   manifest, **hello-universe.yaml**. Note that the **values.yaml** file has a corresponding `manifests/hello-universe`
   element with the same name as the YAML file.
 
-- **logo.png** - This file contains a logo that displays when you create a cluster profile.
+- **logo.webp** - This file contains a logo that displays when you create a cluster profile.
 
 - **README.md** - This file may contain the pack description, purpose, authors, and other relevant information. The
   README in the current example introduces the application used in the pack.
@@ -335,7 +335,7 @@ ngrok http 5000 --log-level debug
 This command reserves the current bash session and displays the status of each HTTP request made to the Ngrok server.
 The image below shows the registry server successfully exposed via Ngrok.
 
-![Screenshot of registry server exposed via ngrok](/tutorials/deploy-pack/registries-and-packs_deploy-pack_ngrok-start.png)
+![Screenshot of registry server exposed via ngrok](/tutorials/deploy-pack/registries-and-packs_deploy-pack_ngrok-start.webp)
 
 Check if the registry server is accessible from outside the tutorial container by visiting the `/health` endpoint. Open
 your browser and go to _https://Your-URL-Here/health_, replacing the base URL with the Ngrok URL output. You should get
@@ -402,7 +402,7 @@ Once you have an active Harbor registry server, access its domain on your web br
 credentials. If you have kept the default credentials, the username and password are **admin** and **Harbor12345**,
 respectively.
 
-![Screenshot of Harbor login](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-login.png)
+![Screenshot of Harbor login](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-login.webp)
 
 In the **Projects** section, click on **New Project**. A project in Harbor contains all repositories of an application.
 This tutorial uses **spectro-oci-registry** as the project name. Keep the default settings for the remaining
@@ -411,7 +411,7 @@ configuration options and proceed by clicking **OK**.
 Next, create another project called **spectro-packs**. This specific project is required to complete the validation of
 your registry in Palette.
 
-![Screenshot of Harbor project](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-project.png)
+![Screenshot of Harbor project](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-project.webp)
 
 </TabItem>
 
@@ -541,7 +541,7 @@ spectro pack ls
 
 Check if the pushed pack is listed, as shown in the image below.
 
-![Screenshot of spectro pack ls](/tutorials/deploy-pack/registries-and-packs_deploy-pack_pack-push.png)
+![Screenshot of spectro pack ls](/tutorials/deploy-pack/registries-and-packs_deploy-pack_pack-push.webp)
 
 For assistance with Spectro CLI commands, refer to the [Spectro CLI Commands](spectro-cli-reference.md#commands) guide.
 
@@ -646,7 +646,7 @@ To confirm the presence of the pack in the repository, open your web browser, ac
 **spectro-oci-registry/spectro-packs/archive/hellouniverse** repository. You should verify the pushed artifact, as shown
 in the image below.
 
-![Screenshot of the Hello Universe Harbor Repository](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-repository.png)
+![Screenshot of the Hello Universe Harbor Repository](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-repository.webp)
 
 </TabItem>
 
@@ -663,12 +663,12 @@ it.
 
 Log in to [Palette](https://console.spectrocloud.com) and switch to the **Tenant Admin** view.
 
-![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.png)
+![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.webp)
 
 Navigate to the **Tenant Settings** > **Registries** > **Pack Registries** section and click on **Add New Pack
 Registry**. Palette will open a pop-up window prompting you for the required fields to configure a custom pack registry.
 
-![A screenshot highlighting the fields to configure a custom pack registry. ](/tutorials/deploy-pack/registries-and-packs_adding-a-custom-registry-tls_certificate.png)
+![A screenshot highlighting the fields to configure a custom pack registry. ](/tutorials/deploy-pack/registries-and-packs_adding-a-custom-registry-tls_certificate.webp)
 
 Provide the pack registry name, endpoint, and user credentials in the pop-up window. For consistency, we suggest using
 the registry name **spectro-pack-registry**. Use your Ngrok URL as the pack registry endpoint. Ensure to add "https://"
@@ -683,12 +683,12 @@ communicating with the pack registry server.
 Click on **Validate** to ensure the provided URL and credentials are correct, then click on **Confirm** to finish the
 registry server configuration.
 
-![Screenshot of registry server edit option in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-edit.png)
+![Screenshot of registry server edit option in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-edit.webp)
 
 Palette automatically syncs the registry server. However, you can sync it manually by clicking the **three-dot Menu**
 next to the registry server name and selecting **Sync**.
 
-![Screenshot of registry server sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-sync.png)
+![Screenshot of registry server sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-sync.webp)
 
 </TabItem>
 
@@ -698,12 +698,12 @@ After pushing the pack to the ECR registry, follow the next steps to log in to P
 
 Log in to [Palette](https://console.spectrocloud.com) and switch to the **Tenant Admin** view.
 
-![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.png)
+![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.webp)
 
 Navigate to the **Tenant Settings** > **Registries** > **OCI Registries** section and click on **Add New OCI Registry**.
 Palette will open a pop-up window prompting you for the required fields to configure an OCI registry.
 
-![A screenshot highlighting the fields to configure an OCI registry. ](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry.png)
+![A screenshot highlighting the fields to configure an OCI registry. ](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry.webp)
 
 Provide the registry name. For consistency, we suggest using the registry name **ecr-registry**. Choose **Pack** as the
 provider and select **ECR** as the OCI authentication type. Complete the **Endpoint** field with your ECR registry URI.
@@ -716,12 +716,12 @@ option, choose **Credentials** as the AWS authentication method, and specify you
 Last, click on **Validate** to ensure the provided URL and credentials are correct. After validation, click on
 **Confirm** to finish the ECR registry configuration.
 
-![Screenshot of OCI registry fields in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry-edit.png)
+![Screenshot of OCI registry fields in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry-edit.webp)
 
 Palette automatically syncs the registry. However, you can sync it manually by clicking the **three-dot Menu** next to
 the registry name and selecting **Sync**.
 
-![Screenshot of OCI registry sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry-sync.png)
+![Screenshot of OCI registry sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry-sync.webp)
 
 </TabItem>
 
@@ -732,12 +732,12 @@ it.
 
 Log in to [Palette](https://console.spectrocloud.com) and switch to the **Tenant Admin** view.
 
-![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.png)
+![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.webp)
 
 Navigate to the **Tenant Settings** > **Registries** > **OCI Registries** section and click on **Add New OCI Registry**.
 Palette will open a pop-up window prompting you for the required fields to configure an OCI registry.
 
-![A screenshot highlighting the fields to configure an OCI registry. ](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry.png)
+![A screenshot highlighting the fields to configure an OCI registry. ](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry.webp)
 
 Provide the registry name. For consistency, we suggest using the registry name **harbor-registry**. Choose **Pack** as
 the provider and select **Basic** as the OCI authentication type. Complete the **Endpoint** field with your Harbor
@@ -749,12 +749,12 @@ your Harbor credentials in the **Username** and **Password** fields.
 Last, click on **Validate** to ensure the provided URL and credentials are correct. After validation, click on
 **Confirm** to complete the Harbor registry configuration.
 
-![Screenshot of OCI registry fields in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry-edit.png)
+![Screenshot of OCI registry fields in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry-edit.webp)
 
 Palette automatically syncs the registry. However, you can sync it manually by clicking the **three-dot Menu** next to
 the registry name and selecting **Sync**.
 
-![Screenshot of OCI registry sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry-sync.png)
+![Screenshot of OCI registry sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry-sync.webp)
 
 </TabItem>
 
@@ -773,7 +773,7 @@ tutorial provides two workflows from which you can choose: Palette User Interfac
 
 Switch to the **Default** project scope for creating a cluster profile.
 
-![Screenshot of the Palette Default scope.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_default-scope.png)
+![Screenshot of the Palette Default scope.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_default-scope.webp)
 
 Next, select the **Profiles** section in the left **Menu** to create a cluster profile that combines the core
 infrastructure and add-on layers. Click on the **Add Cluster Profile** button.
@@ -839,7 +839,7 @@ certSANs:
   - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
 ```
 
-![Screenshot of the certificate Subject Alternative Name.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-certsan.png)
+![Screenshot of the certificate Subject Alternative Name.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-certsan.webp)
 
 Finally, add the Hello Universe pack. Click on **Add New Pack** and select the registry you created earlier in this
 tutorial. The table below specifies the registry name corresponding to the registry type. For example, if you created an
@@ -856,7 +856,7 @@ Click on the **Confirm & Create** button to finish adding the Hello Universe pac
 If there are no errors or compatibility issues, Palette displays the cluster profile. Verify the layers you added, and
 click **Next**.
 
-![Screenshot of the Profile Layers success.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-layer.png)
+![Screenshot of the Profile Layers success.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-layer.webp)
 
 #### Review
 
@@ -886,7 +886,7 @@ The **Parameters** section allows you to change the profile configurations. For 
 Universe 1.0.x** layer, you can configure the `registry`, `repository`, and `tag` parameters defined in the
 **values.yaml** file.
 
-![Screenshot of the Cluster layers.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-layers.png)
+![Screenshot of the Cluster layers.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-layers.webp)
 
 Keep the default values and click **Next**.
 
@@ -989,7 +989,7 @@ endpoint. To add a new API key, log in to Palette, click on the **User Menu** at
 Keys**, as shown in the screenshot below. Visit the
 [Create API Key](../user-management/authentication/api-key/create-api-key.md) guide for more information.
 
-![Screenshot of generating an API key in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_generate-api-key.png)
+![Screenshot of generating an API key in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_generate-api-key.webp)
 
 Below are the steps to add and export an API key:
 
@@ -1131,7 +1131,7 @@ Log in to [Palette](https://console.spectrocloud.com/) and navigate to the **Clu
 Menu**. Locate the **pack-tutorial-cluster** and check its status, which should appear as **Provisioning** according to
 the provided screenshot.
 
-![Screenshot of the successful Profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_verify-cluster.png)
+![Screenshot of the successful Profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_verify-cluster.webp)
 
 </TabItem>
 
@@ -1142,7 +1142,7 @@ the provided screenshot.
 In Palette, navigate to the left **Main Menu** and select **Clusters**. Next, select your cluster to display the
 cluster's **Overview** page and monitor the provisioning progress.
 
-![Screenshot of the cluster health.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-health.png)
+![Screenshot of the cluster health.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-health.webp)
 
 Once the cluster status displays **Running** and **Healthy**, you can access the application through the exposed service
 URL along with the displayed port number. For the Hello Universe application, port 8080 is exposed. Click on the
@@ -1155,12 +1155,12 @@ the public load balancer URL, preventing the browser from caching an unresolved 
 
 :::
 
-![Screenshot of the successful accessing the application using the load balancer URL.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_success.png)
+![Screenshot of the successful accessing the application using the load balancer URL.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_success.webp)
 
 You can also look at real-time metrics, such as CPU and memory consumption, in the cluster's **Overview** tab in
 Palette.
 
-![Screenshot of the cluster metrics.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-metrics.png)
+![Screenshot of the cluster metrics.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-metrics.webp)
 
 By using your custom pack, you have successfully deployed the **Hello Universe** application to the cluster.
 
@@ -1180,7 +1180,7 @@ Navigate to the **Cluster** section in Palette's left **Main Menu** and access t
 **pack-tutorial-cluster**. To delete the cluster, click on the **Settings** button to expand the **drop-down Menu**, and
 select the **Delete Cluster** option. Palette will prompt you to enter the cluster name and confirm the deletion.
 
-![Screenshot of deleting the cluster in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-cluster.png)
+![Screenshot of deleting the cluster in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-cluster.webp)
 
 The cluster status will display **Deleting**, and the deletion may take up to 10 minutes.
 
@@ -1195,7 +1195,7 @@ clusters that are stuck in the deletion phase for over 24 hours.
 After deleting the cluster, proceed to delete the cluster profile. In the left **Main Menu**, click on **Profiles** and
 select the profile you want to delete. Next, click on the **Delete** option in the **three-dot Menu**.
 
-![Screenshot of deleting the profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-profile.png)
+![Screenshot of deleting the profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-profile.webp)
 
 Wait for the resources to complete cleanup and ensure they are successfully deleted.
 
@@ -1228,7 +1228,7 @@ Destroy complete! Resources: 2 destroyed.
 After deleting the cluster and cluster profile, navigate to the **Tenant Settings** > **Registries** > **Pack
 Registries** section in Palette to remove the registry configuration.
 
-![Screenshot of registry server delete in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-delete.png)
+![Screenshot of registry server delete in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-delete.webp)
 
 Now, delete the registry server. If you used the Spectro registry, stop the registry server by closing the tutorial
 container bash session that serves the Ngrok reverse proxy server. If you used the ECR registry, you must first remove

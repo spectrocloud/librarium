@@ -41,7 +41,7 @@ CanvOS is a utility that helps you build Edge artifacts. CanvOS is part of the E
 The diagram below shows the high-level steps to building the Edge artifacts and pushing the provider images to an image
 registry.
 
-![Overarching diagram showing the workflow in the current guide.](/tutorials/palette-canvos/clusters_edge_palette-canvos_artifacts.png)
+![Overarching diagram showing the workflow in the current guide.](/tutorials/palette-canvos/clusters_edge_palette-canvos_artifacts.webp)
 
 This guide presents two workflows - Basic and Advanced.
 
@@ -374,7 +374,7 @@ options:
 
 The screenshot below displays how to reference a provider image in the BYOOS pack of your cluster profile.
 
-![Screenshot of a sample cluster profile's OS layer ](/tutorials/palette-canvos/clusters_edge_palette-canvos_edit_profile.png)
+![Screenshot of a sample cluster profile's OS layer ](/tutorials/palette-canvos/clusters_edge_palette-canvos_edit_profile.webp)
 
 <br />
 
@@ -843,7 +843,7 @@ options:
 
 The screenshot below displays how to reference a provider image in the BYOOS pack of your cluster profile.
 
-![Screenshot of a sample cluster profile's OS layer ](/tutorials/palette-canvos/clusters_edge_palette-canvos_edit_profile.png)
+![Screenshot of a sample cluster profile's OS layer ](/tutorials/palette-canvos/clusters_edge_palette-canvos_edit_profile.webp)
 
 <br />
 

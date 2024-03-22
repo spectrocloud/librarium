@@ -11,7 +11,7 @@ tags: ["self-hosted", "enterprise"]
 Palette is available as a self-hosted platform offering. You can install the self-hosted version of Palette in your data
 centers or public cloud providers to manage Kubernetes clusters.
 
-![A diagram of Palette deployment models eager-load](/architecture_architecture-overview-deployment-models-on-prem-focus.png)
+![A diagram of Palette deployment models eager-load](/architecture_architecture-overview-deployment-models-on-prem-focus.webp)
 
 :::info
 

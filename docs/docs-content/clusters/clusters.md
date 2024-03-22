@@ -111,7 +111,7 @@ Overall health is computed based on the following factors:
   monitoring activities. In case a cluster goes to an unhealthy state, the last received healthy heartbeat can help you
   in troubleshooting.
 
-![Cluster_Health_Heart_Beat](/doc_cluster_clusters-cluster-heart-beat.png)
+![Cluster_Health_Heart_Beat](/doc_cluster_clusters-cluster-heart-beat.webp)
 
 - **Node Conditions** - Kubernetes maintains the status for each cluster node in the form of conditions such as
   DiskPressure, MemoryPressure, or NetworkUnavailable. Palette monitors these conditions and reports back to the
@@ -139,7 +139,7 @@ displayed for the worker nodes in the cluster:
 
 - **Memory Requests** - Total memory requested across all pods.
 
-![Cluster Update Details](/cluster_usage_metrics.png)
+![Cluster Update Details](/cluster_usage_metrics.webp)
 
 Additionally, usage metrics for individual nodes and node conditions are accessible from the Node Details page.
 
@@ -150,7 +150,7 @@ those on the management console. These include the applications and services dep
 deployed through any other means. Services are monitored on an ongoing basis, and all services of the type LoadBalancer
 or NodePort are displayed on the management console.
 
-![Cluster Update Details](/cluster_services.png "#width=500px")
+![Cluster Update Details](/cluster_services.webp "#width=500px")
 
 ## Troubleshooting
 
@@ -177,7 +177,7 @@ condition is marked as _failed_, with relevant error messages. Reconciliation, h
 continuous attempts are made to perform the task. Failed conditions are a great source of troubleshooting provisioning
 issues.
 
-![Cluster Update Details](/cluster_conditions.png "#width=400px")
+![Cluster Update Details](/cluster_conditions.webp "#width=400px")
 
 For example, failure to create a Virtual Machine in AWS due to the exceeded vCPU limit will cause this error to be shown
 to the end-users. Then, they can choose to bring down some workloads in the AWS cloud to free up space. The next time a
@@ -207,12 +207,12 @@ are some of the actions that will result in a rolling upgrade:
 Palette keeps track of the reason that triggered the rolling upgrade on the nodes in the cluster and is made accessible
 under **Cluster Overview** > **Upgrade details**.
 
-![upgrade-details1.png](/upgrade-details1.png)
+![upgrade-details1.webp](/upgrade-details1.webp)
 
 Besides actions taken by the user, Palette also performs a rolling upgrade if the cluster nodes' health degrades.
 Palette keeps track of the nodes machine's health and will relaunch the node when the machine health check fails.
 
-![upgrade-details2.png](/upgrade-details2.png)
+![upgrade-details2.webp](/upgrade-details2.webp)
 
 The following are some sample scenarios where the node health is considered as degraded:
 

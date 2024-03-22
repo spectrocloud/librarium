@@ -6,7 +6,7 @@ type: "integration"
 category: ["network", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
 hide_table_of_contents: true
-logoUrl: "https://registry.spectrocloud.com/v1/cni-multus/blobs/sha256:3727499ea41784a17c818b7269c27918b8664766c40d1b1f3cd90c34d5154676?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/cni-multus/blobs/sha256:3727499ea41784a17c818b7269c27918b8664766c40d1b1f3cd90c34d5154676?type=image.webp"
 tags: ["packs", "multus", "network"]
 ---
 

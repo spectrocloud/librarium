@@ -55,7 +55,7 @@ metadata:
 spec:
   description: This is Fedora 36 image
   displayName: Fedora 36
-  icon: "https://s3.amazonaws.com/manifests.spectrocloud.com/logos/fedora.png"
+  icon: "https://s3.amazonaws.com/manifests.spectrocloud.com/logos/fedora.webp"
   running: false
   template:
     spec:

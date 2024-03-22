@@ -20,7 +20,7 @@ Palette is available in three flexible deployment models:
 - **Self-hosted**: The management plane is hosted in the customer’s environment. It can be the customer’s on-prem VMware
   vSphere, OpenStack, bare metal, or in a public cloud using the customer’s cloud account.
 
-![A diagram of Palette deployment models eager-load](/architecture_architecture-overview-deployment-models.png)
+![A diagram of Palette deployment models eager-load](/architecture_architecture-overview-deployment-models.webp)
 
 <br />
 
@@ -44,7 +44,7 @@ public or an on-premises data center.
 The following diagram illustrates the data flow for the Palette SaaS platform to manage the EKS cluster using the user's
 cloud account in AWS:
 
-![A diagram of the Palette SaaS architecture eager-load](/architecture_architecture-overview_saas.png)
+![A diagram of the Palette SaaS architecture eager-load](/architecture_architecture-overview_saas.webp)
 
 There are two main data flows represented in the provisioning flow (red) and monitoring flow (green).
 
@@ -75,7 +75,7 @@ endpoint (e.g., vCenter), there is one extra component, Palette
 local orchestrator and the proxy between Palette’s SaaS platform and cloud endpoint. The following diagram illustrates
 the data flow for the Palette SaaS platform to manage an on-prem VMware private data center:
 
-![Palette SaaS architecture diagram with connections to private data centers](/architecture_architecture-overview_on-prem.png)
+![Palette SaaS architecture diagram with connections to private data centers](/architecture_architecture-overview_on-prem.webp)
 
 ## Self-Hosted Architecture and Data Flow
 
@@ -86,4 +86,4 @@ cases, Palette supports a self-hosted on-premises installation. The platform upd
 be optionally downloaded from a self-hosted private repository instead of pulling from Palette’s hosted public
 repository.
 
-![Self-hosted Palette architecture diagram](/architecture_architecture-on-prem-detailed.png)
+![Self-hosted Palette architecture diagram](/architecture_architecture-on-prem-detailed.webp)
