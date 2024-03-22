@@ -1,37 +1,36 @@
 ---
 sidebar_label: "Override Registry Configuration"
 title: "Override Registry Configuration"
-description: "Learn how to override the image registry configuration for a Private Cloud Gateway (PCG) in Palette."
+description: "Learn how to override the image registry configuration for Palette VerteX."
 hide_table_of_contents: false
-sidebar_position: 60
-tags: ["pcg"]
+sidebar_position: 120
+tags: ["vertex"]
 keywords: ["enterprise kubernetes", "multi cloud kubernetes"]
 ---
 
-You can override the image registry configuration for a Private Cloud Gateway (PCG) to use a custom image registry. This
-feature is useful when you want to use a custom image registry to store and manage the images used by the PCG cluster.
-The image registry configuration is applied to the PCG cluster and is used to pull the required images for the PCG
-cluster.
+You can override the image registry configuration for Palette VerteX to reference a different image registry. This
+feature is useful when you want to use a custom image registry to store and manage the images VerteX uses.
 
 ## Prerequisites
 
-Before overriding the image registry configuration for a PCG, ensure you have the following:
+Before overriding the image registry configuration for VerteX, ensure you have the following:
 
-- An active PCG cluster. Refer to [Deploy a PCG](../deploy-pcg/deploy-pcg.md) to learn how to deploy a PCG.
+- A deployed and healthy [VerteX cluster](../install-palette-vertex/install-palette-vertex.md).
 
-- Access to the kubeconfig file for the PCG cluster. You need the kubeconfig file to access the PCG cluster and apply
-  the image registry configuration.
+- Access to the kubeconfig file for the VerteX cluster. You need the kubeconfig file to access the VerteX cluster and
+  apply the image registry configuration.
 
   :::tip
 
-  You can download the kubeconfig file from the PCG cluster details page in Palette. Navigate to the PCG cluster details
-  page. Click on the **Admin Kubeconfig** link to download the kubeconfig file. If you need help with configuring
-  kubectl to access the PCG cluster, refer to the [Access Cluster with CLI](../../cluster-management/palette-webctl.md)
-  guide.
+  If you deployed VerteX through the Palette CLI, then you can download the kubeconfig file from the VerteX cluster
+  details page in the system console. Navigate to the **Enterprise Cluster Migration** page. Click on the **Admin
+  Kubeconfig** link to download the kubeconfig file. If you need help with configuring kubectl to access the VerteX
+  cluster, refer to the [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) guide. If you
+  deployed VerteX onto an existing Kubernetes cluster, reach out to your cluster administrator for the kubeconfig file.
 
   :::
 
-- Access to a terminal session that has network access to the PCG cluster.
+- Access to a terminal session that has network access to the VerteX cluster.
 
 - The kubectl command-line tool installed on your local machine. Refer to the
   [kubectl installation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) guide to learn how to install kubectl.
@@ -45,15 +44,15 @@ Before overriding the image registry configuration for a PCG, ensure you have th
 
 ## Override Image Registry Configuration
 
-Select the appropriate tab below based on the environment in which your PCG cluster is deployed.
+Select the appropriate tab below based on the environment in which your VertX cluster is deployed.
 
 <Tabs>
 <TabItem label="Airgap" value="airgap">
 
 1. Open a terminal session.
 
-2. Configure kubectl to use the kubeconfig file for the PCG cluster. Refer to the
-   [Access Cluster with CLI](../../cluster-management/palette-webctl.md) for guidance on configuring kubectl.
+2. Configure kubectl to use the kubeconfig file for the VerteX cluster. Refer to the
+   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) for guidance on configuring kubectl.
 
 3. Navigate to the folder where you have the image-swap Helm chart available. You may have to extract the Helm chart if
    it is in a compressed format to access the **values.yaml** file.
@@ -158,7 +157,7 @@ Select the appropriate tab below based on the environment in which your PCG clus
    :::warning
 
    Do not change the `kind`, `metadata` and `type` fields in the YAML file. The values provided in the placeholder
-   configuration are required to override the image registry configuration for the PCG cluster.
+   configuration are required to override the image registry configuration for the VerteX cluster.
 
    :::
 
@@ -215,8 +214,8 @@ Use the following steps to override the image registry configuration.
 
 1. Open a terminal session.
 
-2. Configure kubectl to use the kubeconfig file for the PCG cluster. Refer to the
-   [Access Cluster with CLI](../../cluster-management/palette-webctl.md) for guidance on configuring kubectl.
+2. Configure kubectl to use the kubeconfig file for the VerteX cluster. Refer to the
+   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) for guidance on configuring kubectl.
 
 3. Create an empty YAML file with the name **registry-secret.yaml**. Use the following command to create the file.
 
@@ -248,7 +247,7 @@ Use the following steps to override the image registry configuration.
    :::warning
 
    Do not change the `kind`, `metadata` and `type` fields in the YAML file. The values provided in the placeholder
-   configuration are required to override the image registry configuration for the PCG cluster.
+   configuration are required to override the image registry configuration for the VerteX cluster.
 
    :::
 
@@ -302,10 +301,10 @@ Use the following steps to override the image registry configuration.
 
 ## Validate
 
-1. Open a terminal session with a network access to the PCG cluster.
+1. Open a terminal session with a network access to the VeteX cluster.
 
-2. Configure kubectl to use the kubeconfig file for the PCG cluster. Refer to the
-   [Access Cluster with CLI](../../cluster-management/palette-webctl.md) for guidance on configuring kubectl.
+2. Configure kubectl to use the kubeconfig file for the VerteX cluster. Refer to the
+   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) for guidance on configuring kubectl.
 
 3. Issue the following command to verify that the secret containing the image registry configuration is created.
 
@@ -320,8 +319,8 @@ Use the following steps to override the image registry configuration.
    docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images
    ```
 
-4. Deploy a cluster through Palette. The PCG will propagate the image registry configuration to the workload cluster,
-   and the cluster will use the custom image registry to pull images if specified in the mirror registry configuration.
+4. Deploy a cluster through VerteX. VerteX will propagate the image registry configuration to the workload cluster, and
+   the cluster will use the custom image registry to pull images if specified in the mirror registry configuration.
 
 5. SSH into one of the workload cluster nodes. You can verify the image registry configuration on the workload cluster
    by checking the containerd configuration file. Use the following command to check the containerd configuration file.
