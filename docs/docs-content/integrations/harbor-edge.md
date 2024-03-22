@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["system-app", "registry"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/harbor/blobs/sha256:5cf19a83449d41a6eb2398194dd4563d31d371074375255ba8a2fc4feff4ef33?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/harbor/blobs/sha256:5cf19a83449d41a6eb2398194dd4563d31d371074375255ba8a2fc4feff4ef33?type=image.webp"
 tags: ["packs", "harbor-edge-native-config", "system-app"]
 ---
 

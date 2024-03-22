@@ -99,13 +99,13 @@ method, using the Palette UI or the API.
 
 <br />
 
-![A view of the Palette UI with an arrow pointing to the **View K8s Certificates** button.](/clusters_cluster-management_certificate-management_cluster-details-page.png)
+![A view of the Palette UI with an arrow pointing to the **View K8s Certificates** button.](/clusters_cluster-management_certificate-management_cluster-details-page.webp)
 
 5. Next, select **Renew All** to start the renewal process.
 
 <br />
 
-![A view of the cluster certificates displaying the expiration date](/clusters_cluster-management_certificate-management_certificate-renew-page.png)
+![A view of the cluster certificates displaying the expiration date](/clusters_cluster-management_certificate-management_certificate-renew-page.webp)
 
 The renewal process may take several minutes, depending on the number of cluster nodes.
 
@@ -378,6 +378,6 @@ nodes.
 
 <br />
 
-![View of the cluster nodes where only the control plane nodes are modified](/clusters_cluster-management_certificate-management_control-plane-only-change.png)
+![View of the cluster nodes where only the control plane nodes are modified](/clusters_cluster-management_certificate-management_control-plane-only-change.webp)
 
 <br />

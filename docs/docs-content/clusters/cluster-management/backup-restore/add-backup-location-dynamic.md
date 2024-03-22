@@ -118,7 +118,7 @@ guide to learn more.
 3. Click on the **Add New Backup Location** button. Palette will open a wizard to configure the new backup location, as
    highlighted in the screenshot below.
 
-![A screenshot highlighting the wizard and configuration fields to add a backup location in Palette.](/clusters_cluster-management_backup-restore_add_aws_account.png)
+   ![A screenshot highlighting the wizard and configuration fields to add a backup location in Palette.](/clusters_cluster-management_backup-restore_add_aws_account.webp)
 
 4. Fill out the input fields listed in the table.
 
@@ -152,13 +152,13 @@ guide to learn more.
 
 <br />
 
-![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.png)
+![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
 
 7. Review the details of the newly created IAM role.
 
 <br />
 
-![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.png)
+![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.webp)
 
 8. Copy the IAM role Amazon Resource Name (ARN)
 
@@ -196,7 +196,7 @@ but the Palette instance is hosted in _AWS Account C_. In this scenario, Palette
 authentication method to add a backup location. The diagram below presents this scenario and shows the order of
 authentication you must follow.
 
-![A diagram highlighting the order of authentication required when the backup cloud account differs from the cluster deployment cloud account.](/clusters_cluster-management_backup-restore_separate-cloud-accounts.png)
+![A diagram highlighting the order of authentication required when the backup cloud account differs from the cluster deployment cloud account.](/clusters_cluster-management_backup-restore_separate-cloud-accounts.webp)
 
 A multi-cloud account scenario requires you to perform the following authentication steps.
 
@@ -281,7 +281,7 @@ multiple cloud accounts.
 3. Click on the **Add New Backup Location** button. Palette will open a wizard to configure the new backup location, as
    shown in the screenshot below.
 
-   ![A screenshot highlighting the wizard and configuration fields to add a backup location in Palette.](/clusters_cluster-management_backup-restore_add_aws_account.png)
+   ![A screenshot highlighting the wizard and configuration fields to add a backup location in Palette.](/clusters_cluster-management_backup-restore_add_aws_account.webp)
 
 4. Fill out the input fields listed in the table below.
 
@@ -317,13 +317,13 @@ multiple cloud accounts.
 
 <br />
 
-![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.png)
+![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
 
 7. Review the details of the newly created IAM role in AWS Account B.
 
 <br />
 
-![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.png)
+![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.webp)
 
 8. In the IAM role's **Trust relationships** section, a relationship will already be defined for Palette so that Palette
    can assume this role under specified conditions.

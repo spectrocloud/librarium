@@ -110,7 +110,7 @@ Use the following steps to add a passkey for the admin user.
 
 3. Click **Add passkey**.
 
-![View of the adding passkey view](/vertex_account-management_credentials_add-passkey.png)
+![View of the adding passkey view](/vertex_account-management_credentials_add-passkey.webp)
 
 4. Provide a nickname for the passkey in the field **Passkey nickname**. Depending on the type of passkey you are
    adding, you will be prompted to select the type of passkey, such as password manager, physical device, or web
@@ -221,7 +221,7 @@ browser.
 
 6. Copy the value of the **lscache-loginauthToken** cookie. The image below highlights the sections of importance.
 
-![View of the auth cookie](/vertex_account-management_credentials_browser-cache-token.png)
+![View of the auth cookie](/vertex_account-management_credentials_browser-cache-token.webp)
 
 7. Access the system console API endpoints using the Authorization header with the value of **lscache-loginauthToken**
    cookie. .
