@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["app services", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://raw.githubusercontent.com/spectrocloud/pack-central/main/packs/hello-universe-1.1.1/logo.webp"
+logoUrl: "https://raw.githubusercontent.com/spectrocloud/pack-central/main/packs/hello-universe-1.1.1/logo.png"
 tags: ["packs", "hello-universe", "app-services"]
 ---
 
