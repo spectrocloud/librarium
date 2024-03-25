@@ -182,8 +182,6 @@ for more information.
 
 :::
 
-<br />
-
 #### Pack & Image Registry Configuration
 
 | **Parameter**                                    | **Description**                                                                                                                                                                                                             |
@@ -202,8 +200,6 @@ for more information.
 
 When prompted to "Pull images from public registry", type `n` and specify the OCI registry configuration values for your
 image registry. Refer to the table above for more information.
-
-<br />
 
 :::info
 
