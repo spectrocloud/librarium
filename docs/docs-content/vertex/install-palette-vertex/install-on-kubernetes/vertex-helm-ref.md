@@ -188,7 +188,13 @@ registries for Palette VerteX to download the required images. You must configur
 (OCI) registry for Palette VerteX. You must also provide the credentials for the Spectro Cloud Artifact Repository
 (SCAR) to download the required FIPS images.
 
-<br />
+:::warning
+
+Palette VerteX does not support insecure connections. Ensure you have the Certificate Authority (CA) available, in PEM
+format, when using a custom packs and image registry. Otherwise, VerteX will not be able to pull packs and images from
+the registry. Use the `caCert` parameter to provide the base64-encoded CA certificate.
+
+:::
 
 ### OCI Registry
 
@@ -206,15 +212,15 @@ for additional guidance on how to add the required FIPS packs to your OCI regist
 
 :::
 
-| **Parameters**                       | **Description**                                                                                                | **Type** | **Default value** |
-| ------------------------------------ | -------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
-| `ociPackRegistry.endpoint`           | The endpoint URL for the registry.                                                                             | String   | `""`              |
-| `ociPackRegistry.name`               | The name of the registry.                                                                                      | String   | `""`              |
-| `ociPackRegistry.password`           | The base64-encoded password for the registry.                                                                  | String   | `""`              |
-| `ociPackRegistry.username`           | The username for the registry.                                                                                 | String   | `""`              |
-| `ociPackRegistry.baseContentPath`    | The base path for the registry.                                                                                | String   | `""`              |
-| `ociPackRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection.             | Boolean  | `false`           |
-| `ociPackRegistry.caCert`             | The registry's base64-encoded certificate authority (CA) certificate. Required for self-hosted OCI registries. | String   | `""`              |
+| **Parameters**                       | **Description**                                                                                                                                                              | **Type** | **Default value** |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
+| `ociPackRegistry.endpoint`           | The endpoint URL for the registry.                                                                                                                                           | String   | `""`              |
+| `ociPackRegistry.name`               | The name of the registry.                                                                                                                                                    | String   | `""`              |
+| `ociPackRegistry.password`           | The base64-encoded password for the registry.                                                                                                                                | String   | `""`              |
+| `ociPackRegistry.username`           | The username for the registry.                                                                                                                                               | String   | `""`              |
+| `ociPackRegistry.baseContentPath`    | The base path for the registry.                                                                                                                                              | String   | `""`              |
+| `ociPackRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. VerteX requires the CA for registries that use a self-signed certificate. | Boolean  | `false`           |
+| `ociPackRegistry.caCert`             | The registry's base64-encoded certificate authority (CA) certificate. Required for self-hosted OCI registries.                                                               | String   | `""`              |
 
 ```yaml
 config:
