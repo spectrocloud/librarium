@@ -21,7 +21,7 @@ This section will introduce you to some of Palette's additional capabilities, wh
 - Integrating virtual machine workloads into Kubernetes environments with
   [Virtual Machine Orchestrator](./additional-capabilities.md#virtual-machine-orchestrator).
 
-![A drawing of Palette with humans interacting](/getting-started/getting-started_additional-capabilities_palette.png)
+![A drawing of Palette with humans interacting](/getting-started/getting-started_additional-capabilities_palette.webp)
 
 ## Edge
 
