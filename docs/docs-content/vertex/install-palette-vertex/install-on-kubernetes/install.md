@@ -393,7 +393,7 @@ your environment. Reach out to our support team if you need assistance.
     | `config.installationMode`                 | The installation mode for VerteX. The values can be `connected` or `airgap`. Set this value to `airgap`.                                                                                            | string   |
     | `ociPackEcrRegistry` or `ociPackRegistry` | The OCI registry credentials for the VerteX FIPS packs repository. If you are using a Harbor registry, use the `ociPackRegistry` parameter block but ensure you have the OCI registry CA available. | object   |
     | `ociImageRegistry`                        | The OCI registry credentials for the VerteX images repository.                                                                                                                                      | object   |
-    | `ociImageRegistry.ca`                     | If you are using a self-hosted OCI, such as Harbor, ensure you provide the CA. If you are using AWS ECR, you can leave this parameter empty.                                                        | string   |
+    | `ociImageRegistry.ca`                     | If you are using a self-hosted OCI, such as Harbor, ensure you provide the CA in PEM format. If you are using AWS ECR, you can leave this parameter empty.                                          | string   |
     | `ociImageRegistry.mirrorRegistries`       | Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images.                                                                               |
     | `imageSwapConfig.isEKSCluster`            | Set this value to `false` if you are NOT installing VerteX on an EKS cluster.                                                                                                                       | boolean  |
     | `scar`                                    | Specify your HTTP file server values. If your HTTP file server requires credentials ensure the provided values are base64 encoded. Example of the string "admin" in base64 encoding - `YWRtaW4=`.   | object   |
@@ -402,6 +402,14 @@ your environment. Reach out to our support team if you need assistance.
 
     Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the
     following sections to review an example of the **values.yaml** file with the required parameters highlighted.
+
+    :::warning
+
+    Palette VerteX does not support insecure connections. Ensure you have the Certificate Authority (CA) available, in
+    PEM format, when using a custom packs and image registry. Otherwise, VerteX will not be able to pull packs and
+    images from the registry. Use the `caCert` parameter to provide the base64-encoded CA certificate.
+
+    :::
 
     <details>
 
