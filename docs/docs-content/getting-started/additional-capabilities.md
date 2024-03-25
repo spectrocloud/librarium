@@ -83,8 +83,8 @@ Palette Virtual Machine Orchestrator (VMO) allows you to deploy, manage, and sca
 modern Kubernetes environment, side by side with your containerized applications. It lets you apply to VMs the same
 lifecycle management capabilities as Palette applies to containers, including backups.
 
-VMO uses the CNCF project [KubeVirt](KubeVirt) to manage VMs as Kubernetes pods, ensuring complete mapping between the
-VM and Kubernetes concepts. This solution also has near complete feature parity with
+VMO uses the CNCF project [KubeVirt](https://kubevirt.io) to manage VMs as Kubernetes pods, ensuring complete mapping
+between the VM and Kubernetes concepts. This solution also has near complete feature parity with
 [VMware vSphere](https://www.vmware.com/products/vsphere.html), including capabilities such as live migration.
 
 Palette VMO can be used on edge hosts, giving the ability to deploy VM workloads at the edge without the overhead of a
