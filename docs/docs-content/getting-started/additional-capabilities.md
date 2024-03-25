@@ -9,24 +9,27 @@ tags: ["getting-started"]
 ---
 
 Palette offers a range of additional capabilities designed to enable its users to deploy, scale, and effectively manage
-Kubernetes workloads across a wide variety of environments and deployment options. These environments include different
-public cloud providers, data centers like [VMware vSphere](https://www.vmware.com/products/vsphere.html), bare metal
-with [Canonical MAAS](https://maas.io), and edge.
+Kubernetes workloads across a wide variety of environments and deployment options.
 
-Whether managing thousands of clusters in remote locations with [Edge](./additional-capabilities.md#edge), enforcing
-FIPS compliance with [VerteX](./additional-capabilities.md#palette-vertex), maximizing management control with
-[self-hosted Palette](./additional-capabilities.md#self-hosted-palette), or integrating virtual machine workloads into
-Kubernetes environments with [Virtual Machine Orchestrator](./additional-capabilities.md#virtual-machine-orchestrator),
-Palette provides comprehensive solutions to meet different business needs. Learn more about each capability below.
+This section will introduce you to some of Palette's additional capabilities, which include:
+
+- Managing thousands of clusters in remote locations with [Edge](./additional-capabilities.md#edge).
+- Supporting high-security requirements with our FIPS-validated [VerteX](./additional-capabilities.md#palette-vertex)
+  edition.
+- Self-hosting the Palette management plane in your own environment with
+  [Self-Hosted Palette](./additional-capabilities.md#self-hosted-palette).
+- Integrating virtual machine workloads into Kubernetes environments with
+  [Virtual Machine Orchestrator](./additional-capabilities.md#virtual-machine-orchestrator).
 
 ![A drawing of Palette with humans interacting](/getting-started/getting-started_additional-capabilities_palette.png)
 
 ## Edge
 
-Palette Edge enables you to deploy Kubernetes workloads in remote locations without having to provision high-bandwidth
-connectivity from these sites back to the cloud. This means you can deploy Kubernetes clusters at scale to a wide range
-of locations, including retail stores, hospitals, restaurants, cruise ships, manufacturing facilities, oil and gas
-sites, and rural areas.
+Palette Edge enables you to deploy Kubernetes workloads in remote locations characterized by limited or intermittent
+connectivity and limited compute infrastructure. This means you can deploy Kubernetes clusters at scale and ensure
+application performance, availability, security, and lifecycle management across a diverse range of edge locations.
+These locations include hospitals, retail stores, telco environments, restaurants, manufacturing facilities, rural
+areas, and many more.
 
 Palette Edge supports both VM and container-based workloads, multiple Kubernetes distributions, and Intel and ARM
 hardware architectures. It is built on top of the open-source project [Kairos](https://kairos.io/), which enables the
@@ -42,16 +45,16 @@ its features.
 
 ## Self-Hosted Palette
 
-Palette is available as a fully self-hosted platform offering that you can leverage to manage all your Kubernetes
-clusters. You can install an instance of the Palette management plane in your data center or public cloud provider using
-different hosting models.
+By default, the Palette management plane is available as a multi-tenant SaaS deployment in a public cloud with multiple
+availability zones. Should you need it, Palette is also offered as a dedicated SaaS instance, as well as a fully
+self-hosted option that allows your teams to directly deploy and manage a private instance of the Palette management
+plane in your data center or public cloud provider.
 
-This option allows you to meet compliance and legal requirements once you have full control over your workloads,
-determine who has access to them, and ensure that no sensitive data is exposed. You can also upgrade the platform at
-your own pace and configure system settings through the
-[System Console](../enterprise-version/system-management/system-management.md#system-console). Additionally, self-hosted
-Palette enables deployments in air-gapped environments where access to the public cloud is not possible. Explore more on
-the [Self-Hosted Palette](../enterprise-version/enterprise-version.md) page.
+Self-hosted Palette puts you in full control of the management plane, including its configuration and the timing of
+upgrades. A self-hosted instance may be necessary to meet compliance requirements or your organization's security
+policies. You may also need to deploy an instance of Palette within an airgapped facility to manage clusters where
+access to any outside service is not possible. Explore more on the
+[Self-Hosted Palette](https://docs.spectrocloud.com/enterprise-version/) page.
 
 ## Palette VerteX
 
@@ -72,15 +75,19 @@ Additionally, VerteX incorporates validated Federal Information Processing Stand
 into its management plane and the Kubernetes clusters it deploys. It secures data in motion through encrypted Transport
 Layer Security (TLS) communication channels, includes a suite of scanning tools, and offers CONUS support from a
 dedicated public sector team. These capabilities ensure robust data protection for your organization’s infrastructure
-and applications. To learn more, check out the [Palette VerteX](../vertex/vertex.md) documentation.
+and applications. To learn more, check out the [Palette VerteX](../vertex/vertex.md) page.
 
 ## Virtual Machine Orchestrator
 
-Palette Virtual Machine Orchestrator (VMO) allows you to deploy and manage traditional VM workloads within a modern
-Kubernetes environment, side by side with your containerized applications. With VMO, you can deploy, manage, and scale
-VMs within the same cluster that hosts your containerized applications. VMs are managed as Kubernetes pods, ensuring
-complete mapping between the VM and Kubernetes concepts.
+Palette Virtual Machine Orchestrator (VMO) allows you to deploy, manage, and scale traditional VM workloads within a
+modern Kubernetes environment, side by side with your containerized applications. It lets you apply to VMs the same
+lifecycle management capabilities as Palette applies to containers, including backups.
 
-Palette VMO simplifies infrastructure management and eliminates the need for a hypervisor by leveraging
-[Canonical MAAS](https://maas.io). It works in self-hosted, airgapped, and in our SaaS environments. Learn more on the
+VMO uses the CNCF project [KubeVirt](KubeVirt) to manage VMs as Kubernetes pods, ensuring complete mapping between the
+VM and Kubernetes concepts. This solution also has near complete feature parity with
+[VMware vSphere](https://www.vmware.com/products/vsphere.html), including capabilities such as live migration.
+
+Palette VMO can be used on edge hosts, giving the ability to run VM workloads at the edge without the overhead of a
+hypervisor layer. This is achieved by leveraging [Canonical MAAS](https://maas.io). Additionally, VMO can also be used
+in self-hosted, airgapped, and in our SaaS environments. Learn more on the
 [Virtual Machine Orchestrator](../vm-management/vm-management.md) page.
