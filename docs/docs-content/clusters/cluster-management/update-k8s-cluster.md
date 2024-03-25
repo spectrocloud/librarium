@@ -504,9 +504,24 @@ Navigate to the left **Main Menu** and select **Clusters**. Filter for the clust
 Select the **Profile** tab of this cluster. You can select a new version of your cluster profile by using the version
 dropdown.
 
-Select the **1.1.0** version. Click on **Save** to confirm your profile version selection.
+Select the **1.1.0** version.
 
 ![Image that shows how to select a new profile version for the cluster](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_profile-version-selection.webp)
+
+Click **Review & Save**. Palette prompts you to preview the change summary.
+
+Click **Review changes in Editor**. Palette displays the changes, with the current configuration on the left and the
+incoming changes on the right.
+
+:::info
+
+Make sure to preserve any existing cluster profile overrides.
+
+:::
+
+After reviewing the changes, click **Apply Changes**.
+
+![Palette Editor that displays changes coming from the profile version update.](/clusters_cluster-management_cluster-updates_preview-profile-ver-changes.webp)
 
 :::warning
 
