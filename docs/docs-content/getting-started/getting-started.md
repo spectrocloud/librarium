@@ -93,5 +93,11 @@ Explore more through the following pages.
       buttonText: "Learn more",
       relativeURL: "./terraform",
     },
+    {
+      title: "Additional Capabilities",
+      description: "Learn about Palette's additional capabilities.",
+      buttonText: "Learn more",
+      relativeURL: "./additional-capabilities",
+    },
   ]}
 />
