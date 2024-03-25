@@ -28,7 +28,7 @@ This section will introduce you to some of Palette's additional capabilities, wh
 Palette Edge enables you to deploy Kubernetes workloads in remote locations characterized by limited or intermittent
 connectivity and limited compute infrastructure. This means you can deploy Kubernetes clusters at scale and ensure
 application performance, availability, security, and lifecycle management across a diverse range of edge locations.
-These locations include hospitals, retail stores, telco environments, restaurants, manufacturing facilities, rural
+These locations include hospitals, retail stores, Telco environments, restaurants, manufacturing facilities, rural
 areas, and many more.
 
 Palette Edge supports both VM and container-based workloads, multiple Kubernetes distributions, and Intel and ARM
@@ -87,7 +87,7 @@ VMO uses the CNCF project [KubeVirt](KubeVirt) to manage VMs as Kubernetes pods,
 VM and Kubernetes concepts. This solution also has near complete feature parity with
 [VMware vSphere](https://www.vmware.com/products/vsphere.html), including capabilities such as live migration.
 
-Palette VMO can be used on edge hosts, giving the ability to run VM workloads at the edge without the overhead of a
+Palette VMO can be used on edge hosts, giving the ability to deploy VM workloads at the edge without the overhead of a
 hypervisor layer. This is achieved by leveraging [Canonical MAAS](https://maas.io). Additionally, VMO can also be used
 in self-hosted, airgapped, and in our SaaS environments. Learn more on the
 [Virtual Machine Orchestrator](../vm-management/vm-management.md) page.
