@@ -1,0 +1,30 @@
+.dropdownContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.dropdown {
+  appearance: none;
+  background: var(--ifm-background-color);
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  color: #495057;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 0.375rem 0.75rem;
+  transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  width: 45%;
+  color: var(--ifm-font-color-base);
+}
+
+.dropdown:hover {
+  border-color: #80bdff;
+}
+
+.dropdown:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
