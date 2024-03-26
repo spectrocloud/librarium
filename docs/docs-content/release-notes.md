@@ -9,12 +9,7 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
-:::tip
-
-Are you looking for the release notes to a specific version of Palette? Use the version selector **drop-down Menu**
-located at the top left side of the page to navigate to the release notes for the version you are interested in.
-
-:::
+<ReleaseNotesVersions />
 
 ## Feb 26, 2024 - Release 4.2.13
 
