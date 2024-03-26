@@ -33,7 +33,7 @@ The Spectro CLI tool is currently available for OSX and Linux.
    <TabItem label="OSX" value="osx_cli">
 
    ```bash
-   wget https://spectro-cli.s3.amazonaws.com/v4.2.0/osx/spectro
+   wget https://spectro-cli.s3.amazonaws.com/v4.3.0/osx/spectro
    ```
 
    </TabItem>
@@ -41,7 +41,7 @@ The Spectro CLI tool is currently available for OSX and Linux.
    <TabItem label="Linux" value="linux_cli">
 
    ```bash
-   wget https://spectro-cli.s3.amazonaws.com/v4.2.0/linux/spectro
+   wget https://spectro-cli.s3.amazonaws.com/v4.3.0/linux/spectro
    ```
 
    </TabItem>
@@ -87,8 +87,6 @@ Authenticate user with Spectro Cloud pack registry by using the login command:
  spectro registry login spectro.io:5000 --insecure --default
 ```
 
-<br />
-
 #### Arguments
 
 SERVER - Spectro Cloud pack registry server in the format [host:port]
@@ -105,8 +103,6 @@ If you have access to the pack registry's Certificate Authority (CA) certificate
 **/etc/spectro/certs.d/[SERVER]/ca.crt** folder. Replace the [SERVER] with the pack registry server name.
 
 :::
-
-<br />
 
 ## Pack
 
@@ -135,8 +131,6 @@ PACK_NAME - Name of the pack TARGET_DIR - Directory containing the pack data
 -p, --push - Push the pack on the registry after creation
 
 -r, --registry-server - Override the default Spectro registry
-
-<br />
 
 ### Push
 
@@ -177,8 +171,6 @@ enabled.
 --skip-digest-check - By default, the _force_ option can push the pack only if the pack content digest is different than
 the registry pack digest. So the _skip digest_ command can be used to skip the comparison of the digests.
 
-<br />
-
 ### List
 
 List all the packs from the Spectro Cloud pack registry:
@@ -196,8 +188,6 @@ List all the packs from the Spectro Cloud pack registry:
 ```bash
  spectro pack ls spectro.io:5000 --name ubuntu --registry-server spectro.io:5000
 ```
-
-<br />
 
 #### Flags
 
@@ -274,8 +264,6 @@ TARGET_LABEL - Target tag label.
 -g, --group string - Target tag group.
 
 -r, --registry-server string - To override the default Spectro Cloud pack registry.
-
-<br />
 
 To remove a tag from a pack which is already pushed to the pack registry use the `pack tag delete` subcommand.
 
