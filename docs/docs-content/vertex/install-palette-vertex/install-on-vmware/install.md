@@ -75,7 +75,15 @@ before proceeding with the installation. Refer to the
 Self-hosted Palette VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do
 not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning
 into remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install
-a PCG on VMware, check out the [VMware](../../../clusters/data-center/vmware.md) guide.
+a PCG on VMware, check out the [Deploy to VMware vSphere](../../../clusters/pcg/deploy-pcg/vmware.md) guide.
+
+:::
+
+:::warning
+
+Palette VerteX does not support insecure connections. Ensure you have the Certificate Authority (CA) available, in PEM
+format, when using a custom packs and image registry. Otherwise, VerteX will not be able to pull packs and images from
+the registry. The Palette CLI will prompt you to provide the CA certificate file path when necessary.
 
 :::
 
@@ -154,6 +162,7 @@ Use the following steps to install Palette VerteX.
 
     - Non-Airgap: `https://saas-repo-fips.console.spectrocloud.com`
     - Airgap: The URL or IP address of the Spectro Cloud Repository that is provided to you by the airgap setup script.
+      Make sure to specify the file path to the CA certificate when prompted.
 
     :::info
 
