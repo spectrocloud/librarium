@@ -307,5 +307,5 @@ spectro version
 ```
 
 ```bash hideClipboard
-Spectro ClI Version 4.2.0 linux/amd64
+Spectro CLI Version 4.3.4 linux/amd64
 ```
