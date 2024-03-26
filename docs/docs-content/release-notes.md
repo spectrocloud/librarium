@@ -22,7 +22,7 @@ the following sections for a complete list of features, improvements, and known 
 
 <!-- prettier-ignore -->
 - <TpBadge /> Cluster Profile variables, a new feature that allows you to define variables in a cluster profile. This
-  feature is in Tech Preview and is available only for Edge clusters. Profile variables allow you to define variable
+  feature is in Tech Preview and is available only for Edge clusters using Local UI. Profile variables allow you to define variable
   types, apply validation, and narrow the scope of variables to a cluster profile. 
   Check out [Cluster Profile Variables](./profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) to learn more about
   profile variables.
@@ -95,8 +95,13 @@ the following sections for a complete list of features, improvements, and known 
   security group with the same name exists in the VPC before creating a cluster.
 
 - K3s version 1.27.7 has been marked as _Disabled_ and is no longer available for new cluster profiles. This version has
-  a known issue that causes clusters to crash. You can learn more about the issue in the
-  [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047). Upgrade to a newer version of K3s to avoid the issue.
+  a known issue that causes clusters to crash. Upgrade to a newer version of K3s to avoid the issue, such as versions
+  1.26.12, 1.28.5, and 1.27.9. You can learn more about the issue in the
+  [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047).
+
+- When deploying a multi-node AWS EKS cluster with the Container Network Interface (CNI)
+  [Calico](https://docs.spectrocloud.com/integrations/calico), the cluster deployments fail. A workaround is to use the
+  AWS VPC CNI in the interim while the issue is resolved.
 
 ### Edge
 
@@ -194,6 +199,10 @@ the following sections for a complete list of features, improvements, and known 
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
 ### Docs and Education
+
+- A new Getting Started experience is now available for new users. The new experience guides users through the key
+  Palette concepts and features to help them get started with Palette. Check out the
+  [Getting Started](./getting-started/getting-started.md) page to learn more.
 
 - A new tutorial [Deploy Cluster Profile Updates](./clusters/cluster-management/update-k8s-cluster.md) is now available
   that guides you through the process of updating a cluster profile.
