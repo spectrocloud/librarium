@@ -1,3 +1,26 @@
+import api from "../src/services/api";
+import { setTimeout } from "timers/promises";
+
+const layerMap = {
+  k8s: "Kubernetes",
+  cni: "network",
+  os: "operating system",
+  servicemesh: "service mesh",
+  monitoring: "monitoring",
+  csi: "storage",
+  logging: "logging",
+  "load balancer": "load balancer",
+  ingress: "ingress",
+  authentication: "authentication",
+  registry: "registry",
+  "system app": "system app",
+  spectro: "spectro",
+  security: "security",
+  serverless: "serverless",
+  "app services": "app services",
+
+}
+
 function generateIntegrationData(allContent) {
   const packsData = allContent["docusaurus-plugin-content-docs"].default.loadedVersions[0].docs
     .filter((doc) => {
@@ -20,14 +43,83 @@ function generatePacksData(allContent) {
   return packsData;
 }
 
+function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPacksData) {
+  const filteredPalattePackData = packsPaletteDetailsData.filter((packContent) => {
+    const packName = packContent.name;
+    return ((packsMData[packName].spec.layer === "addon" && packsMData[packName].spec.addonType) || packsMData[packName].spec.layer !== "addon");
+  });
+  return filteredPalattePackData.map((packContent) => {
+    const packName = packContent.name;
+    if (packsMData[packName]) {
+      const packMDValue = packsMData[packName];
+      const layer = packMDValue.spec.layer === "addon" ? packMDValue.spec.addonType : layerMap[packMDValue.spec.layer];
+      return {
+        fields: {
+          sidebar_label: packMDValue.spec.name,
+          title: packMDValue.spec.displayName,
+          description: 'dynamically generated',
+          hide_table_of_contents: true,
+          type: 'integration',
+          category: [layer],
+          sidebar_class_name: 'hide-from-sidebar',
+          logoUrl: packMDValue.spec.registries[0].logoUrl,
+          tags: [],
+          slug: '/integrations/${packMDValue.spec.name}',
+          id: 'integrations/${packMDValue.spec.name}',
+        }
+      };
+    }
+  });
+}
+
+async function fetchPackListItems(queryParams, packDataArr, counter) {
+  const payload = {filter: { type: ["spectro", "oci"],environment:["aws"]}};
+  counter+=1;
+  if(counter%10 === 0) {
+    await setTimeout(2000);
+  }
+  const response = await api.post('/v1/packs/search'+queryParams, payload);
+  const tempPackArr = packDataArr.concat(response.data.items);
+  if(response.data.listmeta.continue) {
+    return fetchPackListItems("?limit=100&continue="+response.data.listmeta.continue, tempPackArr, counter);
+  } else {
+    return tempPackArr;
+  }
+}
+
 async function pluginPacksAndIntegrationsData() {
   return {
     name: "plugin-packs-integrations",
-    async contentLoaded({ allContent, actions }) {
+    async loadContent() {
+      const packDataArr = await fetchPackListItems("?limit=100", [], 0);
+      const packUrl = "v1/packs/";
+      const packMDMap = new Map();
+      let apiPacksData = [];
+      let counter = 0;
+      let promises = new Array();
+      for (let i = 0; i < packDataArr.length; i++) {
+        counter+=1
+        const packData = packDataArr[i];
+        packMDMap[packData.spec.name]=packData;
+        promises.push(api.get(packUrl + packData.spec.registries[0].latestPackUid));
+        if(counter%10 === 0 || i === packDataArr.length-1) {
+          await setTimeout(2000);
+          const response2 = await Promise.all(promises);
+          apiPacksData = apiPacksData.concat(response2.map((pack) => pack.data));
+          promises = [];
+        }
+      }
+      return {packsPaletteData: packMDMap, packsPaletteDetailsData: apiPacksData} ;
+    },
+    async contentLoaded({ allContent, content, actions }) {
       const { setGlobalData } = actions;
+      const { packsPaletteData, packsPaletteDetailsData } = content;
       const integrationsData = generateIntegrationData(allContent);
-      const packsData = generatePacksData(allContent);
-      setGlobalData({ integrations: integrationsData, packs: packsData });
+      const customPacksData = generatePacksData(allContent);
+      //console.log("hello here packData is ---- ", customPacksData);
+      //console.log("hello here packData is ---- ", packsPaletteDetailsData.length);
+      const unionPackData = combineAPICustomPackData(packsPaletteData, packsPaletteDetailsData, customPacksData)
+      setGlobalData({ integrations: integrationsData, packs: unionPackData });
     },
   };
 }
