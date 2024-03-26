@@ -136,12 +136,6 @@ section guides you in creating a Kubernetes cluster in a Nutanix cloud managed b
     the deployment. Use this page to track deployment progress. Provisioning clusters can take several minutes to
     complete.
 
-15. To edit node pool configurations, navigate to the cluster details page, click the **Nodes** tab, and select the node
-    pool you want to edit. Click the **Edit** button and edit the YAML file that Palette displays.
-
-16. To edit cluster settings, from the cluster details page, click the **Settings** button and select **Cluster
-    Configuration**. Edit the YAML file that Palette displays.
-
 ## Validate
 
 1.  Log in to [Palette](https://console.spectrocloud.com/).
@@ -152,3 +146,63 @@ section guides you in creating a Kubernetes cluster in a Nutanix cloud managed b
 3.  Click on the Nutanix cluster you created to view its details page.
 
 4.  Ensure the **Cluster Status** field displays **Running**.
+
+## Update a Deployed Cluster
+
+Palette supports editing the settings of a deployed Nutanix cluster, including the control plane and worker node pool
+configurations. You can change the memory, CPU, or storage of your node pools. Follow the steps described below to
+update your cluster.
+
+1.  Log in to [Palette](https://console.spectrocloud.com/).
+
+2.  Navigate to the **left Main Menu** and select **Clusters**.
+
+3.  Click on the Nutanix cluster you created.
+
+4.  To edit cluster settings, from the cluster details page, click the **Settings** button and select **Cluster
+    Configuration**. Edit the YAML file that Palette displays.
+
+### Update Control Plane Node Pool
+
+5. To edit the control plane node pool configuration, navigate to the cluster details page and click the **Nodes** tab.
+   Next, click the **Edit** button of the control plane node pool to open its YAML file.
+
+6. Edit the NutanixMachineTemplate object. You can update the memory (`memorySize`), CPU (`vcpuSockets` and
+   `vcpuPerSocket`), and storage (`systemDiskSize`). Once you are finished changing the node pool configurations, update
+   the `name` parameter under the `metadata` line. For example, if the previous name was
+   **control-plane-pool-resource-3**, rename it to **control-plane-pool-resource-4**.
+
+   :::info
+
+   Updating the name is required to enable the update of the node pool, ensuring that it accurately reflects the new
+   parameters.
+
+   :::
+
+7. Edit the KubeadmControlPlane object. Change the `name` parameter under the `kind: NutanixMachineTemplate` line to
+   match the new name utilized in the NutanixMachineTemplate object.
+
+8. When you are done with the control plane node pool updates, click **Confirm** and **Continue** to confirm the
+   alterations.
+
+### Update Worker Node Pool
+
+9. To edit the worker node pool configuration, navigate to the cluster details page and click the **Nodes** tab. Next,
+   click the **Edit** button of the worker node pool to open its YAML file.
+
+10. Edit the NutanixMachineTemplate object. You can update the memory (`memorySize`), CPU (`vcpuSockets` and
+    `vcpuPerSocket`), and storage (`systemDiskSize`). Once you are finished editing the node pool configurations, update
+    the `name` parameter under the `metadata` line. For example, if the previous name was **worker-pool-resource-3**,
+    rename it to **worker-pool-resource-4**.
+
+    :::info
+
+    Updating the name is required to enable the update of the node pool, ensuring that it accurately reflects the new
+    parameters.
+
+    :::
+
+11. Edit the MachineDeployment object. Change the `name` parameter under the `kind: NutanixMachineTemplate` line to
+    match the new name utilized in the NutanixMachineTemplate object.
+
+12. When you are done with the worker node pool updates, click **Confirm** and **Continue** to confirm the alterations.
