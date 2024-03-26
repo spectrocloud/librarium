@@ -94,24 +94,8 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
 
 5. Review the **.arg.template** file to view a template of all the arguments that are used during the build process.
    Since the process to build provider images uses the same **.arg** file, some of the arguments in the template are
-   related to the provider images. The following is a table of all the arguments in that can be used in the file:
-
-   | **Argument**       | **Description**                                                                              | **Default Value**      | **Allowed Values**                                                                             |
-   | ------------------ | -------------------------------------------------------------------------------------------- | ---------------------- | ---------------------------------------------------------------------------------------------- |
-   | `CUSTOM_TAG`       | Tag for the provider images                                                                  | demo                   | Lowercase alphanumeric string without spaces.                                                  |
-   | `IMAGE_REGISTRY`   | Image registry name                                                                          | ttl.sh                 | Your image registry hostname, without `http` or `https` <br /> Example: docker.io/spectrocloud |
-   | `OS_DISTRIBUTION`  | OS Distribution                                                                              | ubuntu                 | ubuntu, opensuse-leap                                                                          |
-   | `IMAGE_REPO`       | Image repository name.<br /> It is the same as the OS distribution.                          | `$OS_DISTRIBUTION`     | Your image repository name.                                                                    |
-   | `OS_VERSION`       | OS version, only applies to Ubuntu                                                           | 22                     | 20, 22                                                                                         |
-   | `K8S_DISTRIBUTION` | Kubernetes Distribution                                                                      | k3s                    | k3s, rke2, kubeadm                                                                             |
-   | `ISO_NAME`         | Name of the Installer ISO                                                                    | palette-edge-installer | Lowercase alphanumeric string without spaces. The characters `-` and `_` are allowed.          |
-   | `ARCH`             | Architecture of the image.                                                                   | `amd64`                | `amd64`, `arm64`                                                                               |
-   | `FIPS_ENABLED`     | to generate FIPS compliant binaries `true`or`false`                                          | `false`                | `true`, `false`                                                                                |
-   | `HTTP_PROXY`       | URL of the HTTP Proxy server.                                                                | `""`                   | URL string                                                                                     |
-   | `HTTPS_PROXY`      | URL of the HTTPS Proxy server.                                                               | `""`                   | URL string                                                                                     |
-   | `NO_PROXY`         | URLS that should be excluded from the proxy.                                                 | `""`                   | Comma separated URL string                                                                     |
-   | `PROXY_CERT_PATH`  | Absolute path of the SSL Proxy certificate in PEM format.                                    | `""`                   | Absolute path string                                                                           |
-   | `UPDATE_KERNEL`    | Determines whether to upgrade the Kernel version to the latest from the upstream OS provider | `false`                | `true`, `false`                                                                                |
+   related to the provider images. Refer to [Edge Artifact Build Configuration](./arg.md) for all available
+   configuration parameters.
 
 6. Customize these arguments to use during the build process. The following is an example **.arg** file.
 

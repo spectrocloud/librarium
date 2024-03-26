@@ -30,8 +30,6 @@ kubeadm
 upsize
 Alertmanager 
 alertmanager
-application
-Application
 grafana
 Grafana
 etcd
@@ -203,5 +201,8 @@ Palette eXtented Kubernetes
 Palette eXtented Kubernetes - Edge
 timeframe
 Luet
+rhel
+Ubuntu
+RHEL
 repave
 airgap
