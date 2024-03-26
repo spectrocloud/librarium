@@ -8,9 +8,11 @@ tags: ["data center", "nutanix"]
 ---
 
 Palette supports creating and managing Kubernetes clusters deployed to a Nutanix infrastructure environment. This
-section guides you in creating a Kubernetes cluster in a Nutanix cloud managed by Palette.
+section guides you in creating and updating a Kubernetes cluster in a Nutanix cloud managed by Palette.
 
-## Prerequisites
+## Deploy a Nutanix Cluster
+
+### Prerequisites
 
 - A Nutanix cloud account added to Palette. Refer to [Add Nutanix Cloud Account](add-nutanix-cloud-account.md).
 
@@ -35,7 +37,9 @@ section guides you in creating a Kubernetes cluster in a Nutanix cloud managed b
 - A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to
   [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
 
-## Deploy a Nutanix Cluster
+### Enablement
+
+Follow the steps below to deploy a Nutanix cluster.
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
@@ -136,11 +140,11 @@ section guides you in creating a Kubernetes cluster in a Nutanix cloud managed b
     the deployment. Use this page to track deployment progress. Provisioning clusters can take several minutes to
     complete.
 
-## Validate
+### Validate
 
 1.  Log in to [Palette](https://console.spectrocloud.com/).
 
-2.  Navigate to the **left Main Menu** and select **Clusters**. The Clusters page displays a list of all available
+2.  Navigate to the left **Main Menu** and select **Clusters**. The Clusters page displays a list of all available
     clusters that Palette manages.
 
 3.  Click on the Nutanix cluster you created to view its details page.
@@ -153,16 +157,25 @@ Palette supports editing the settings of a deployed Nutanix cluster, including t
 configurations. You can change the memory, CPU, or storage of your node pools. Follow the steps described below to
 update your cluster.
 
+### Prerequisites
+
+- An active Nutanix cluster in Palette.
+- The `cluster.update` permission to update clusters. Refer to
+  [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-admin) for
+  more information.
+
+### Enablement
+
 1.  Log in to [Palette](https://console.spectrocloud.com/).
 
-2.  Navigate to the **left Main Menu** and select **Clusters**.
+2.  Navigate to the left **Main Menu** and select **Clusters**.
 
 3.  Click on the Nutanix cluster you created.
 
 4.  To edit cluster settings, from the cluster details page, click the **Settings** button and select **Cluster
     Configuration**. Edit the YAML file that Palette displays.
 
-### Update Control Plane Node Pool
+#### Update Control Plane Node Pool
 
 5. To edit the control plane node pool configuration, navigate to the cluster details page and click the **Nodes** tab.
    Next, click the **Edit** button of the control plane node pool to open its YAML file.
@@ -185,7 +198,7 @@ update your cluster.
 8. When you are done with the control plane node pool updates, click **Confirm** and **Continue** to confirm the
    alterations.
 
-### Update Worker Node Pool
+#### Update Worker Node Pool
 
 9. To edit the worker node pool configuration, navigate to the cluster details page and click the **Nodes** tab. Next,
    click the **Edit** button of the worker node pool to open its YAML file.
@@ -206,3 +219,18 @@ update your cluster.
     match the new name utilized in the NutanixMachineTemplate object.
 
 12. When you are done with the worker node pool updates, click **Confirm** and **Continue** to confirm the alterations.
+
+13. The node pool alterations will trigger a
+    [cluster repave](../../cluster-management/node-pool.md#repave-behavior-and-configuration). Follow the
+    [Approve Cluster Repave](../../cluster-management/node-pool.md#approve-cluster-repave) guide to incorporate the
+    updates to your cluster.
+
+### Validate
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. Navigate to the left **Main Menu** and select **Clusters**.
+
+3. Click on the Nutanix cluster you deployed. Next, click on the **Nodes** tab.
+
+4. Verify that all nodes have a **Running** and **Healthy** status, and reflect the applied repave changes.
