@@ -180,17 +180,17 @@ image with.
 13. In the **.arg** file, provide the following required information. Refer to
     [Edge Artifact Build Configuration](arg.md) for more information.
 
-    | Argument         | Description                                                                                                                                        |
-    | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | IMAGE_REGISTRY   | The image registry to use for tagging the generated provider images.                                                                               |
-    | OS_DISTRIBUTION  | The OS distribution in your provider image.                                                                                                        |
-    | IMAGE_REPO       | The image repository to use for tagging the generated provider images.                                                                             |
-    | OS_VERSION       | The OS version in your provider image. This applies to Ubuntu only.                                                                                |
-    | K8S_DISTRIBUTION | The Kubernetes distribution for your provider image. Allowed values are `rke2` and `kubeadm-fips`. The other distributions are not FIPS-compliant. |
-    | FIPS_ENABLED     | Whether to enable FIPS compliance. This parameter must be set to `true`.                                                                           |
-    | ARCH             | The architecture of the image. Allowed values are `amd64` and `arm64`.                                                                             |
-    | BASE_IMAGE       | The base image used by EdgeForge to build the Edge Installer and provider images. This must be the same image that you build in the previous step. |
-    | ISO_NAME         | The file name of the ISO file that will be generated.                                                                                              |
+    | Argument         | Description                                                                                                                                                       |
+    | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | IMAGE_REGISTRY   | The image registry to use for tagging the generated provider images.                                                                                              |
+    | OS_DISTRIBUTION  | The OS distribution in your provider image.                                                                                                                       |
+    | IMAGE_REPO       | The image repository to use for tagging the generated provider images.                                                                                            |
+    | OS_VERSION       | The OS version in your provider image. This applies to Ubuntu only.                                                                                               |
+    | K8S_DISTRIBUTION | The Kubernetes distribution for your provider image. Allowed values are `rke2` (RKE2) and `kubeadm-fips` (PXK-E). The other distributions are not FIPS-compliant. |
+    | FIPS_ENABLED     | Whether to enable FIPS compliance. This parameter must be set to `true`.                                                                                          |
+    | ARCH             | The architecture of the image. Allowed values are `amd64` and `arm64`.                                                                                            |
+    | BASE_IMAGE       | The base image used by EdgeForge to build the Edge Installer and provider images. This must be the same image that you build in the previous step.                |
+    | ISO_NAME         | The file name of the ISO file that will be generated.                                                                                                             |
 
 14. Create a file named **user-data**. Add the following blocks to the root level of the **user-data** file. Replace the
     value for `edgeHostToken` with your VerteX registration token, and replace the value `paletteEndPoint` with the URL
