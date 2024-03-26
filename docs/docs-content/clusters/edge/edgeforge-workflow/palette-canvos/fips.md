@@ -77,10 +77,11 @@ This page guides you through the process of building FIPS-compliant Edge Install
 
 ### Build FIPS-Compliant Base OS Image
 
-Before you can build the Edge Installer ISO or the provider images, you need to build a FIPS-compliant OS base image with the Kairos framework. This base image is then used to build the final Edge artifacts.
+Before you can build the Edge Installer ISO or the provider images, you need to build a FIPS-compliant OS base image
+with the Kairos framework. This base image is then used to build the final Edge artifacts.
 
-Palette supports the RHEL and Ubuntu for FIPS-compliant base OS images. Choose the OS that
-you want to build the base image with.
+Palette supports the RHEL and Ubuntu for FIPS-compliant base OS images. Choose the OS that you want to build the base
+image with.
 
 <Tabs>
 
