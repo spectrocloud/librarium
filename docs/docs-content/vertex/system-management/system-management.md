@@ -22,7 +22,7 @@ You can access the system setting by visiting the IP address or the custom domai
 cluster and appending the `/system` path to the URL. For example, if your Palette VerteX cluster is hosted at
 `https://vertex.abc.com`, you can access the system settings at `https://vertex.abc.com/system`.
 
-![View of the VerteX system console landing page.](/vertex_system-management_overview-system-console.png)
+![View of the VerteX system console landing page.](/vertex_system-management_overview-system-console.webp)
 
 ## Administration and Management
 
@@ -47,6 +47,8 @@ Platform administrators can use the system console to perform the following oper
 - Configuere login banner.
 
 - [Manage tenants](tenant-management.md).
+
+- [Override Registry Configuration](registry-override.md)
 
 - Manage the Enterprise cluster and the profile layers and pack integrations that makeup the Enterprise cluster.
 

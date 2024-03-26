@@ -18,4 +18,6 @@ topics to learn more about managing a PCG.
 
 - [Delete a PCG](./remove-pcg.md)
 
+- [Override Registry Configuration](./registry-override.md)
+
 - [Upgrade a PCG](./pcg-upgrade.md)
