@@ -42,7 +42,7 @@ This page guides you through the process of building FIPS-compliant Edge Install
   command.
 
 - [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
-  command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
+  command to check the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
   create privileged containers.
 
 - A [VerteX](/docs/docs-content/vertex/vertex.md) account. Refer to
@@ -57,7 +57,7 @@ This page guides you through the process of building FIPS-compliant Edge Install
 
 ### Clone CanvOS Repository
 
-1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
+1. Clone the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
 
    ```bash
    git clone https://github.com/spectrocloud/CanvOS.git
@@ -77,10 +77,9 @@ This page guides you through the process of building FIPS-compliant Edge Install
 
 ### Build FIPS-Compliant Base OS Image
 
-Before you can build the Edge Installer ISO or the provider images, you need to build a FIPS-compliant Operating Systems
-(OS) base image with the Kairos framework. This base image is then used to build the final Edge artifacts.
+Before you can build the Edge Installer ISO or the provider images, you need to build a FIPS-compliant OS base image with the Kairos framework. This base image is then used to build the final Edge artifacts.
 
-Palette supports the Red Hat Enterprise Linux (RHEL) and Ubuntu for FIPS-compliant base OS images. Choose the OS that
+Palette supports the RHEL and Ubuntu for FIPS-compliant base OS images. Choose the OS that
 you want to build the base image with.
 
 <Tabs>
@@ -185,14 +184,14 @@ you want to build the base image with.
     | IMAGE_REGISTRY   | The image registry to use for tagging the generated provider images.                                                                               |
     | OS_DISTRIBUTION  | The OS distribution in your provider image.                                                                                                        |
     | IMAGE_REPO       | The image repository to use for tagging the generated provider images.                                                                             |
-    | OS_VERSION       | The OS version in your provider image. This only applies to Ubuntu.                                                                                |
+    | OS_VERSION       | The OS version in your provider image. This applies to Ubuntu only.                                                                                |
     | K8S_DISTRIBUTION | The Kubernetes distribution for your provider image. Allowed values are `rke2` and `kubeadm-fips`. The other distributions are not FIPS-compliant. |
     | FIPS_ENABLED     | Whether to enable FIPS compliance. This parameter must be set to `true`.                                                                           |
     | ARCH             | The architecture of the image. Allowed values are `amd64` and `arm64`.                                                                             |
     | BASE_IMAGE       | The base image used by EdgeForge to build the Edge Installer and provider images. This must be the same image that you build in the previous step. |
     | ISO_NAME         | The file name of the ISO file that will be generated.                                                                                              |
 
-14. Create a file named **user-data**. Add the following blocks to root level of the **user-data** file. Replace the
+14. Create a file named **user-data**. Add the following blocks to the root level of the **user-data** file. Replace the
     value for `edgeHostToken` with your VerteX registration token, and replace the value `paletteEndPoint` with the URL
     of your VerteX instance.
 
