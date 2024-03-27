@@ -4,40 +4,9 @@
 }
 
 .dropdownContainer > div:first-child {
-  width: 100%;
+  width: 50%;
 
   @media (max-width: 768px) {
     width: 100%;
-  }
-}
-
-// .dropdown {
-//   appearance: none;
-//   background: var(--ifm-background-color);
-//   color: var(--ifm-font-color-base);
-// }
-
-.dropdown:hover {
-  border-color: #80bdff;
-}
-
-.dropdown:focus {
-  border-color: #80bdff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-// .container {
-//   // This is the default with for larger displays
-//   width: 100px;
-
-// }
-
-.input-container {
-  width: 100%;
-  background-color: green;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    background-color: yellow;
   }
 }

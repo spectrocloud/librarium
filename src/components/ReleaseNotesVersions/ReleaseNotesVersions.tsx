@@ -73,13 +73,19 @@ export default function ReleaseNotesVersions(): JSX.Element {
   };
 
   const customSelectStyles = {
-    option: (provided: any) => ({
+    control: (provided: any) => ({
       ...provided,
-      // background: "var(--ifm-alert-background-color)",
-      // color: "var(--ifm-alert-foreground-color)",
       background: "var(--custom-release-notes-background-color)",
-      // color: "var(--ifm-font-color-base)",
-      color: "var(--custom-color-info-contrast-background)",
+      color: "var(--custom-release-notes-background-font-color)",
+    }),
+    singleValue: (provided: any) => ({
+      ...provided,
+      color: "var(--custom-release-notes-background-font-color)",
+    }),
+    option: (provided: any, state: any) => ({
+      ...provided,
+      color: state.isSelected ? "black" : "black",
+      background: state.isSelected ? "var(--ifm-color-info-contrast-foreground)" : "prurple",
     }),
   };
 
