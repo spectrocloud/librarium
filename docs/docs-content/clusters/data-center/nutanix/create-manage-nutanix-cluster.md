@@ -8,9 +8,11 @@ tags: ["data center", "nutanix"]
 ---
 
 Palette supports creating and managing Kubernetes clusters deployed to a Nutanix infrastructure environment. This
-section guides you in creating a Kubernetes cluster in a Nutanix cloud managed by Palette.
+section guides you in creating and updating a Kubernetes cluster in a Nutanix cloud managed by Palette.
 
-## Prerequisites
+## Deploy a Nutanix Cluster
+
+### Prerequisites
 
 - A Nutanix cloud account added to Palette. Refer to [Add Nutanix Cloud Account](add-nutanix-cloud-account.md).
 
@@ -35,7 +37,9 @@ section guides you in creating a Kubernetes cluster in a Nutanix cloud managed b
 - A Nutanix Cluster API (CAPI) OS image. For guidance on creating the image, refer to
   [Building CAPI Images for Nutanix Cloud Platform](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp).
 
-## Deploy a Nutanix Cluster
+### Enablement
+
+Follow the steps below to deploy a Nutanix cluster.
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
@@ -136,19 +140,98 @@ section guides you in creating a Kubernetes cluster in a Nutanix cloud managed b
     the deployment. Use this page to track deployment progress. Provisioning clusters can take several minutes to
     complete.
 
-15. To edit node pool configurations, navigate to the cluster details page, click the **Nodes** tab, and select the node
-    pool you want to edit. Click the **Edit** button and edit the YAML file that Palette displays.
-
-16. To edit cluster settings, from the cluster details page, click the **Settings** button and select **Cluster
-    Configuration**. Edit the YAML file that Palette displays.
-
-## Validate
+### Validate
 
 1.  Log in to [Palette](https://console.spectrocloud.com/).
 
-2.  Navigate to the **left Main Menu** and select **Clusters**. The Clusters page displays a list of all available
+2.  Navigate to the left **Main Menu** and select **Clusters**. The Clusters page displays a list of all available
     clusters that Palette manages.
 
 3.  Click on the Nutanix cluster you created to view its details page.
 
 4.  Ensure the **Cluster Status** field displays **Running**.
+
+## Update a Deployed Cluster
+
+Palette supports editing the settings of a deployed Nutanix cluster, including the control plane and worker node pool
+configurations. You can change the memory, CPU, or storage of your node pools. Follow the steps described below to
+update your cluster.
+
+### Prerequisites
+
+- An active Nutanix cluster in Palette.
+- The `cluster.update` permission to update clusters. Refer to
+  [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-admin) for
+  more information.
+
+### Enablement
+
+1.  Log in to [Palette](https://console.spectrocloud.com/).
+
+2.  From the left **Main Menu**, select **Clusters**.
+
+3.  Click on the Nutanix cluster you created.
+
+4.  To edit the cluster settings, from the cluster details page, click **Settings** and select **Cluster
+    Configuration**. Edit the YAML file that Palette displays.
+
+#### Update Control Plane Node Pool
+
+5. Navigate to the cluster details page and click the **Nodes** tab.
+
+6. In the control plane node pool you want to edit, click **Edit** to open its YAML configuration file.
+
+7. Edit the `NutanixMachineTemplate` object. You can update the memory (`memorySize`), CPU (`vcpuSockets` and
+   `vcpuPerSocket`), and storage (`systemDiskSize`). Once you are finished changing the node pool configurations, update
+   the `name` parameter under the `metadata` line. For example, if the previous name was
+   **control-plane-pool-resource-3**, rename it to **control-plane-pool-resource-4**.
+
+   :::warning
+
+   You must update the node pool name for the configuration updates to take effect.
+
+   :::
+
+8. Edit the `KubeadmControlPlane` object. Change the `name` parameter under the `kind: NutanixMachineTemplate` line to
+   match the new name you used in the `NutanixMachineTemplate` object.
+
+9. When you are done updating the control plane node pool configuration, click **Confirm** and **Continue** to confirm
+   the changes.
+
+#### Update Worker Node Pool
+
+10. Navigate to the cluster details page and click the **Nodes** tab.
+
+11. In the worker node pool you want to edit, click **Edit** to open its YAML configuration file.
+
+12. Edit the `NutanixMachineTemplate` object. You can update the memory (`memorySize`), CPU (`vcpuSockets` and
+    `vcpuPerSocket`), and storage (`systemDiskSize`). Once you are finished editing the node pool configurations, update
+    the `name` parameter under the `metadata` line. For example, if the previous name was **worker-pool-resource-3**,
+    rename it to **worker-pool-resource-4**.
+
+    :::warning
+
+    You must update the node pool name for the configuration updates to take effect.
+
+    :::
+
+13. Edit the `MachineDeployment` object. Change the `name` parameter under the `kind: NutanixMachineTemplate` line to
+    match the new name you used in the `NutanixMachineTemplate` object.
+
+14. When you are done updating the worker node pool configuration, click **Confirm** and **Continue** to confirm the
+    changes.
+
+15. The node pool alterations will trigger a
+    [cluster repave](../../cluster-management/node-pool.md#repave-behavior-and-configuration). Follow the
+    [Approve Cluster Repave](../../cluster-management/node-pool.md#approve-cluster-repave) guide to incorporate the
+    updates to your cluster.
+
+### Validate
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. From the left **Main Menu**, select **Clusters**.
+
+3. Click on the Nutanix cluster you deployed, and then click on the **Nodes** tab.
+
+4. Verify that all nodes are in the **Running** and **Healthy** status, and reflect the applied repave changes.
