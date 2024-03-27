@@ -83,7 +83,7 @@ export default function ReleaseNotesVersions(): JSX.Element {
           </option>
           {versions.map((version: Version) => (
             <option key={version.name} value={version.name}>
-              {version.url.startsWith("http") ? version.name + " (External)" : version.name}
+              {version.url.startsWith("http") ? version.name + " ↗️" : version.name}
             </option>
           ))}
         </select>
