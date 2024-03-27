@@ -1,74 +1,169 @@
-import React from "react";
+// import React, { useEffect, useState } from "react";
+// import { useHistory } from "@docusaurus/router";
+// import Admonition from "@theme/Admonition";
+// import { useActivePluginAndVersion, ActivePlugin } from "@docusaurus/plugin-content-docs/client";
+// import styles from "./ReleaseNotesVersions.module.scss";
+// import ArchivedVersions from "../../../archiveVersions.json";
+// import useIsBrowser from "@docusaurus/useIsBrowser";
+
+// type VersionName = string;
+// type VersionURL = string;
+
+// interface Version {
+//   name: VersionName;
+//   url: VersionURL;
+// }
+
+// interface PluginData {
+//   activePlugin?: {
+//     pluginData?: {
+//       versions?: Version[];
+//     };
+//   };
+// }
+
+// // Assuming the rest of your type definitions remain the same
+// function isExternalDomain(url: string, isBrowser: boolean): boolean {
+//   if (!isBrowser) {
+//     return false;
+//   } else {
+//     const currentDomain = window.location.hostname;
+//     return currentDomain.includes(url);
+//   }
+// }
+
+// export default function ReleaseNotesVersions(): JSX.Element {
+//   const [selectedVersion, setSelectedVersion] = useState<string>("");
+//   const isBrowser = useIsBrowser();
+//   const isExternal = isBrowser && isExternalDomain("legacy.docs.spectrocloud.com", isBrowser);
+//   const pluginData: PluginData | undefined = useActivePluginAndVersion();
+//   const history = useHistory();
+
+//   // Load the selected version from localStorage when the component mounts
+//   useEffect(() => {
+//     const savedVersion = localStorage.getItem("selectedVersion");
+//     if (savedVersion) {
+//       setSelectedVersion(savedVersion);
+//     }
+//   }, []);
+
+//   if (isExternal) {
+//     return <></>;
+//   }
+
+//   const versions: Version[] = (pluginData?.activePlugin?.pluginData?.versions ?? []).map((version: Version) => ({
+//     name: version.name === "current" ? "latest" : version.name,
+//     url: version.name === "current" ? "/release-notes" : `/${version.name}/release-notes`,
+//   }));
+
+//   Object.entries(ArchivedVersions).forEach(([versionName, versionUrl]: [VersionName, VersionURL]) => {
+//     versions.push({ name: versionName, url: versionUrl });
+//   });
+
+//   const handleVersionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+//     const newSelectedVersion = event.target.value;
+//     localStorage.setItem("selectedVersion", newSelectedVersion); // Save the selected version to localStorage
+//     setSelectedVersion(newSelectedVersion);
+
+//     const selectedVersionObject = versions.find((version) => version.name === newSelectedVersion);
+//     if (selectedVersionObject) {
+//       const { url } = selectedVersionObject;
+//       if (url.startsWith("http")) {
+//         window.open(url + "/release-notes", "_blank");
+//       } else {
+//         history.push(url);
+//       }
+//     }
+//   };
+
+//   return (
+//     <Admonition type="tip">
+//       <p>
+//         Are you looking for the release notes to a specific version of Palette? Use the version selector below to
+//         navigate to the release notes of the desired version.
+//       </p>
+//       <div className={styles.dropdownContainer}>
+//         <select className={styles.dropdown} onChange={handleVersionChange} value={selectedVersion}>
+//           <option value="" disabled>
+//             Select Version
+//           </option>
+//           {versions.map((version: Version) => (
+//             <option key={version.name} value={version.name}>
+//               {version.name}
+//             </option>
+//           ))}
+//         </select>
+//       </div>
+//     </Admonition>
+//   );
+// }
+import React, { useEffect, useState } from "react";
 import { useHistory } from "@docusaurus/router";
 import Admonition from "@theme/Admonition";
-import { useActivePluginAndVersion } from "@docusaurus/plugin-content-docs/client";
+import { useVersions } from "@docusaurus/plugin-content-docs/client"; // Adjusted import for useVersions
 import styles from "./ReleaseNotesVersions.module.scss";
 import ArchivedVersions from "../../../archiveVersions.json";
+import useIsBrowser from "@docusaurus/useIsBrowser";
 
 type VersionName = string;
 type VersionURL = string;
+
 interface Version {
   name: VersionName;
   url: VersionURL;
 }
 
-interface GlobalVersion {
-  name: VersionName;
-  url: VersionURL;
-}
-
-interface PluginData {
-  activePlugin?: {
-    pluginData?: {
-      versions?: Version[];
-    };
-  };
-}
-
-// Check if the domain is external.
-function isExternalDomain(url: string = "legacy.docs.spectrocloud.com"): boolean {
-  const currentDomain = window.location.hostname;
-  // check if the domain contains the specified URL
-  return currentDomain.includes(url);
+function isExternalDomain(url: string, isBrowser: boolean): boolean {
+  if (!isBrowser) {
+    return false;
+  } else {
+    const currentDomain = window.location.hostname;
+    return currentDomain.includes(url);
+  }
 }
 
 export default function ReleaseNotesVersions(): JSX.Element {
-  const pluginData: GlobalVersion | undefined = useActivePluginAndVersion();
-
-  const isExternal: boolean = isExternalDomain("legacy.docs.spectrocloud.com");
+  const [selectedVersion, setSelectedVersion] = useState<string>("");
+  const isBrowser = useIsBrowser();
+  const isExternal = isBrowser && isExternalDomain("legacy.docs.spectrocloud.com", isBrowser);
+  const history = useHistory();
+  const versionsList = useVersions("default"); // Now returns an array of GlobalVersion
+  console.log(versionsList);
+  useEffect(() => {
+    const savedVersion = localStorage.getItem("selectedVersion");
+    if (savedVersion) {
+      setSelectedVersion(savedVersion);
+    }
+  }, []);
 
   if (isExternal) {
-    // If the domain is external, return an empty element to avoid rendering the component.
-    // The external domain used for achived versions is "legacy.docs.spectrocloud.com" is not aware of new versions.
     return <></>;
   }
 
-  // Extracting versions from pluginData
-  const versions: Version[] = (pluginData?.activePlugin?.pluginData?.versions ?? []).map((version: Version) => ({
-    name: version.name === "current" ? "latest" : version.name, // Rename "current" to "latest"
-    url: version.name === "current" ? "/release-notes" : `/${version.name}/release-notes`, // Adjust URL accordingly
+  // Map through versionsList to construct the versions array
+  const versions: Version[] = versionsList.map((version) => ({
+    name: version.label === "current" ? "latest" : version.label,
+    url: version.path === "/" ? "/release-notes" : `${version.path}/release-notes`,
   }));
 
-  // Adding archived versions from JSON file
+  console.log(versions);
+
+  // Add archived versions
   Object.entries(ArchivedVersions).forEach(([versionName, versionUrl]: [VersionName, VersionURL]) => {
     versions.push({ name: versionName, url: versionUrl });
   });
 
-  const history = useHistory();
-
   const handleVersionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedVersion = event.target.value;
-    if (selectedVersion === "latest") {
-      history.push(`/release-notes`);
-    } else {
-      const selectedVersionObject = versions.find((version) => version.name === selectedVersion);
-      if (selectedVersionObject) {
-        const { name, url } = selectedVersionObject;
-        if (url.startsWith("http")) {
-          window.open(url + "/release-notes", "_blank");
-        } else {
-          history.push(url);
-        }
+    const newSelectedVersion = event.target.value;
+    localStorage.setItem("selectedVersion", newSelectedVersion);
+    setSelectedVersion(newSelectedVersion);
+
+    const selectedVersionObject = versions.find((version) => version.name === newSelectedVersion);
+    if (selectedVersionObject) {
+      if (selectedVersionObject.url.startsWith("http")) {
+        window.open(selectedVersionObject.url + "/release-notes", "_blank");
+      } else {
+        history.push(selectedVersionObject.url);
       }
     }
   };
@@ -80,7 +175,7 @@ export default function ReleaseNotesVersions(): JSX.Element {
         navigate to the release notes of the desired version.
       </p>
       <div className={styles.dropdownContainer}>
-        <select className={styles.dropdown} onChange={handleVersionChange} defaultValue="">
+        <select className={styles.dropdown} onChange={handleVersionChange} value={selectedVersion}>
           <option value="" disabled>
             Select Version
           </option>
