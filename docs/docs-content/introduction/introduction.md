@@ -19,6 +19,14 @@ With a unique approach to managing multiple clusters, Palette gives IT teams com
 production-scale efficiencies to provide developers with highly curated Kubernetes stacks and tools based on their
 specific needs, with granular governance and enterprise-grade security.
 
+:::tip 
+
+Make sure to check out the [Getting Started](../getting-started/getting-started.md) section to learn how you can
+use Palette to deploy and update your Kubernetes clusters. This section contains hands-on tutorials for Amazon Web
+Services (AWS), Microsoft Azure and Google Cloud Platform (GCP). 
+
+:::
+
 Palette VerteX edition is also available to meet the stringent requirements of regulated industries such as government
 and public sector organizations. Palette VerteX integrates Spectro Cloud’s Federal Information Processing Standards
 (FIPS) 140-2 cryptographic modules. To learn more about FIPS-enabled Palette, check out
@@ -28,7 +36,7 @@ and public sector organizations. Palette VerteX integrates Spectro Cloud’s Fed
 
 ## What Makes Palette Different?
 
-<br />
+Palette helps our customers accelerate and grow through Kubernetes management at scale.
 
 ### Full-Stack Management
 
@@ -68,7 +76,7 @@ Profiles.
 
 ## Who Can Benefit From Palette?
 
-<br />
+Palette provides benefits to developers and platform engineers who maintain Kubernetes environments.
 
 ### Developers
 
