@@ -40,6 +40,8 @@ html[data-theme="dark"] {
   --simpleCardBorder: #1f263c;
   --custom-release-notes-background-color: #2b323c;
   --custom-release-notes-background-font-color: #e8ebee;
+  --custom-release-notes-active-option-hoover: red;
+  --custom-release-notes-selected-background: #b5bdd4;
 
   .theme-last-updated {
     color: var(--ifm-font-color-base);

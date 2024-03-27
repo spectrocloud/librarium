@@ -1,91 +1,88 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "@docusaurus/router";
 import Admonition from "@theme/Admonition";
-import { useVersions } from "@docusaurus/plugin-content-docs/client"; // This hook should be called at the top level.
+import { useVersions } from "@docusaurus/plugin-content-docs/client";
 import styles from "./ReleaseNotesVersions.module.scss";
 import ArchivedVersions from "../../../archiveVersions.json";
-import useIsBrowser from "@docusaurus/useIsBrowser";
 import Select, { components } from "react-select";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
-type VersionURL = string;
-
 interface VersionOption {
   label: string;
   value: string;
-  url: VersionURL;
+  url: string;
   isExternal: boolean;
 }
 
-const CustomOption = (props: any) => {
-  return (
-    <components.Option {...props}>
-      {props.data.label}
-      {props.data.isExternal ? <FontAwesomeIcon icon={faArrowUpRightFromSquare} /> : null}
-    </components.Option>
-  );
-};
+// Improved CustomOption with destructuring
+const CustomOption = ({ data: { label, isExternal }, ...props }) => (
+  <components.Option {...props}>
+    {label}
+    {isExternal && <FontAwesomeIcon icon={faArrowUpRightFromSquare} />}
+  </components.Option>
+);
 
 export default function ReleaseNotesVersions(): JSX.Element {
   const [selectedVersion, setSelectedVersion] = useState<VersionOption | null>(null);
-  const isBrowser = useIsBrowser();
   const history = useHistory();
-  const versionsList = useVersions("default"); // Moved useVersions to top level
+  const versionsList = useVersions("default");
 
-  // Create versions array without useMemo, directly in the component body
-  const versions: VersionOption[] =
-    versionsList.map((version) => ({
-      label: version.label === "current" ? "latest" : version.label,
-      value: version.label,
-      url: version.path === "/" ? "/release-notes" : `${version.path}/release-notes`,
-      isExternal: version.path.startsWith("http"),
-    })) || [];
-
-  Object.entries(ArchivedVersions).forEach(([versionName, versionUrl]: [string, VersionURL]) => {
-    versions.push({
-      label: versionName + " ",
-      value: versionName + " ",
+  // Simplified version construction
+  const versions: VersionOption[] = [
+    ...versionsList.map(({ label, path }) => ({
+      label: label === "current" ? "latest" : label,
+      value: label,
+      url: path === "/" ? "/release-notes" : `${path}/release-notes`,
+      isExternal: path.startsWith("http"),
+    })),
+    ...Object.entries(ArchivedVersions).map(([versionName, versionUrl]) => ({
+      label: versionName,
+      value: versionName,
       url: versionUrl,
       isExternal: versionUrl.startsWith("http"),
-    });
-  });
+    })),
+  ];
 
   useEffect(() => {
     const savedVersion = localStorage.getItem("selectedVersion");
     if (savedVersion) {
       const savedVersionObj = versions.find((v) => v.value === savedVersion);
-      if (savedVersionObj && savedVersionObj.value !== selectedVersion?.value) {
+      if (savedVersionObj?.value !== selectedVersion?.value) {
         setSelectedVersion(savedVersionObj);
       }
     }
-  }, [versions, selectedVersion?.value]);
+  }, [selectedVersion?.value]);
 
   const handleVersionChange = (selectedOption: VersionOption | null) => {
     setSelectedVersion(selectedOption);
-    localStorage.setItem("selectedVersion", selectedOption?.value || "");
+    localStorage.setItem("selectedVersion", selectedOption?.value ?? "");
 
     if (selectedOption?.isExternal) {
-      window.open(selectedOption.url + "/release-notes", "_blank");
+      window.open(selectedOption.url, "_blank");
     } else {
-      history.push(selectedOption?.url || "");
+      history.push(selectedOption?.url ?? "");
     }
   };
 
   const customSelectStyles = {
-    control: (provided: any) => ({
+    control: (provided) => ({
       ...provided,
       background: "var(--custom-release-notes-background-color)",
       color: "var(--custom-release-notes-background-font-color)",
     }),
-    singleValue: (provided: any) => ({
+    singleValue: (provided) => ({
       ...provided,
       color: "var(--custom-release-notes-background-font-color)",
     }),
-    option: (provided: any, state: any) => ({
+    option: (provided, state) => ({
       ...provided,
-      color: state.isSelected ? "black" : "black",
-      background: state.isSelected ? "var(--ifm-color-info-contrast-foreground)" : "prurple",
+      color: "black",
+      background: state.isSelected
+        ? "var(--custom-release-notes-selected-background)"
+        : state.isFocused
+          ? "(--custom-release-notes-active-option-hoover)"
+          : "var(--custom-release-notes-background-color)",
     }),
   };
 
@@ -109,11 +106,8 @@ export default function ReleaseNotesVersions(): JSX.Element {
   );
 }
 
-function isExternalDomain(url: string, isBrowser: boolean): boolean {
-  if (!isBrowser) {
-    return false;
-  } else {
-    const currentDomain = window.location.hostname;
-    return !currentDomain.includes(url);
-  }
+// Moved isExternalDomain function outside the component for better separation of concerns
+function isExternalDomain(url: string): boolean {
+  const currentDomain = window.location.hostname;
+  return !url.includes(currentDomain);
 }

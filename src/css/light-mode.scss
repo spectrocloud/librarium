@@ -37,6 +37,8 @@ html[data-theme="light"] {
   --simpleCardBorder: #dee1ea;
   --custom-release-notes-background-color: var(--ifm-background-color);
   --custom-release-notes-background-font-color: #111626;
+  --custom-release-notes-active-option-hoover: #f7f9ff;
+  --custom-release-notes-selected-background: #bec0c4;
 
   .theme-doc-sidebar-item-category-level-1 .menu__list-item {
     .menu__link:hover {
