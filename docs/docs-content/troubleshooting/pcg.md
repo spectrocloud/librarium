@@ -174,10 +174,9 @@ log.
 
 ## Scenario - VMware Resources Remain After Cluster Deletion
 
-In the scenario, a VMWare workload cluster is deleted, and later re-created with the same name, the resources from the
+In the scenario where a VMWare workload cluster is deleted and later re-created with the same name, the resources from the
 previous cluster may need to be cleaned up properly. This can cause the new cluster to fail to provision. To address
-this issue, you must manually clean up the resources from the previous cluster. Use the following steps to clean up the
-resources.
+this issue, you must manually clean up the resources from the previous cluster. Use the following steps for guidance.
 
 :::info
 

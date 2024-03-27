@@ -105,7 +105,7 @@ the following sections for a complete list of features, improvements, and known 
 
 - If a Kubernetes cluster deployed onto VMware is deleted, and later re-created with the same name, the cluster creation
   process fails. The issue is caused by existing resources remaining inside PCG, or System PCG, that are not cleaned up
-  during the cluster deletion process. Refer to
+  during the cluster deletion process. Refer to the
   [VMware Resources Remain After Cluster Deletion](./troubleshooting/pcg.md#scenario---vmware-resources-remain-after-cluster-deletion)
   troubleshooting guide for resolution steps.
 
