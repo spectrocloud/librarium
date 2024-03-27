@@ -26,7 +26,9 @@ cluster and appending the `/system` path to the URL. For example, if your Palett
 
 ## Administration and Management
 
-Platform administrators can use the system console to perform the following operations:
+System administrators can use the system console to perform the following operations:
+
+- [Create and Manage System Accounts](./account-management/account-management.md)
 
 - Manage FIPS enforcement behaviors and settings.
 

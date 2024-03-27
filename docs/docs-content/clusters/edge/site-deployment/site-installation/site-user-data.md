@@ -27,7 +27,7 @@ to a bootable device, such as a USB stick.
 1.  Create a file called **user-data** that contains the additional configurations you want to override or inject.
     Ensure that the file starts with a line that only contains `#cloud-config`. Only include configurations you'd like
     to add or override. There is no need to include user data that was already present when the ISO image was build in
-    the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos.md) step.
+    the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) step.
 
     ```shell
     touch user-data

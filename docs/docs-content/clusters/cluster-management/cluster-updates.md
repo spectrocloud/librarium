@@ -9,7 +9,9 @@ tags: ["clusters", "cluster management"]
 
 Palette allows you to update active clusters. You can update any layer of a cluster, including all infrastructure layers
 and add-on layers. Depending on the nature of the update, a cluster update could trigger different cluster repave
-operations.
+operations. For more information, refer to
+[Repave Behaviors and Configurations](./node-pool.md#repave-behavior-and-configuration) for non-Edge clusters and
+[Edge Cluster Upgrade Behavior](../edge/upgrade-behavior.md) for Edge clusters. operations.
 
 :::info
 

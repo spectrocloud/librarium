@@ -148,6 +148,15 @@ Use the following steps to install Palette.
     - Non-Airgap: `https://saas-repo.console.spectrocloud.com`
     - Airgap: The URL or IP address of the Spectro Cloud Repository that is provided to you by the airgap setup script
 
+    :::info
+
+    If you are using the Palette CLI from inside an
+    [airgap support VM](../airgap/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect the airgap
+    environment and prompt you to **Use local, air-gapped Spectro Cloud Artifact Repository (SCAR) configuration**. Type
+    `y` to use the local resources and skip filling in the repository URL and credentials.
+
+    :::
+
 9.  Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro
     Cloud repository. Airgap installations, provide the credentials to your private repository provided to you by the
     airgap setup script .
@@ -174,11 +183,19 @@ Use the following steps to install Palette.
 <Tabs groupId="mode">
 	<TabItem label="Non-Airgap" value="non-airgap">
 
-    Select `y` to use the Spectro Cloud FIPS repository and proceed to the next step.
+    Select `y` to use the Spectro Cloud repository and proceed to the next step.
 
     </TabItem>
 
     <TabItem label="Airgap" value="airgap">
+
+:::info
+
+If you are using the Palette CLI from inside an [airgap support VM](../airgap/vmware-vsphere-airgap-instructions.md),
+the CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type
+`y` to use the local resources and skip filling in the OCI registry URL and credentials.
+
+:::
 
     Select the OCI registry type and provide the configuration values. Review the following table for more information.
 
@@ -209,7 +226,8 @@ for more information.
     		| **Use Public Registry for Images**               | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. Airgap users, select `n` so that you can specify the values for the OCI registry that contains all the required images. |
 
     		When prompted to **Pull images from public registry**, type `n` and specify the OCI registry configuration values for
-    		your image registry. Refer to the table above for more information.
+    		your image registry. If you are an [airgap support VM](../airgap/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Image Registry?** Type `y` to use the local resources and skip filling in the OCI registry URL and credentials.
+        Refer to the table above for more information.
 
 :::info
 

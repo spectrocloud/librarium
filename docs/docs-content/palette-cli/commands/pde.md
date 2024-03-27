@@ -10,6 +10,8 @@ tags: ["palette-cli"]
 The `pde` command interacts with the Palette Dev Engine (PDE) platform and its resources. You can use the `pde` command
 to log in to Palette, manage virtual clusters, and switch the project scope.
 
+## Subcommands
+
 The `pde` command exposes the following subcommands.
 
 - [`app`](#app) - Manage Palette Apps deployments.

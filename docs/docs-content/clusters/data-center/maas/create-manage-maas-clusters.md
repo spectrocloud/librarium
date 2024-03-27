@@ -29,30 +29,39 @@ create a Kubernetes cluster in MAAS that is managed by Palette.
   your MAAS environment. Review the [How to use standard images](https://maas.io/docs/how-to-use-standard-images) for
   guidance on downloading OS images for MAAS.
 
+:::warning
+
+If the MAAS API server URL is not resolvable outside of the MAAS environment, you can specify a different URL in the
+cluster profile's Kubernetes YAML. This feature is only supported in Palette eXtented Kubernetes (PXK). For more
+information, refer to the [Custom MAAS Endpoint](../../../integrations/kubernetes.md#custom-maas-endpoint) section of
+the PXK reference page.
+
+:::
+
 ## Deploy a MAAS Cluster
 
-To deploy a new MAAS cluster:
+1.  Log in to [Palette](https://console.spectrocloud.com).
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+2.  Ensure you are in the correct project scope.
 
-2. Navigate to the **Main Menu** and click **Clusters**. Then click the **Add New Cluster** button.
+3.  From the left **Main Menu**, select **Clusters** and click **Add New Cluster**.
 
-3. Click **Deploy New Cluster** on the Create a New Cluster page.
+4.  In **Data Center**, select **MAAS**.
 
-4. Select **MAAS** and click the **Start MAAS Configuration** button.
+5.  In the bottom-right corner, click **Start MAAS Configuration**.
 
-5. Provide basic cluster information: **Cluster name**, **Description**, and **Tags**.
+6.  Provide basic cluster information: **Cluster name**, **Description**, and **Tags**.
 
-6. Select your MAAS cloud account from the **drop-down Menu** and click **Next**.
+7.  Select your MAAS cloud account from the **drop-down Menu** and click **Next**.
 
-7. Select the cluster profile for your MAAS cluster.
+8.  Select the cluster profile for your MAAS cluster.
 
-8. Review and override pack parameters as desired and click **Next**. By default, parameters for all packs are set with
-   values defined in the cluster profile.
+9.  Review and override pack parameters as desired and click **Next**. By default, parameters for all packs are set with
+    values defined in the cluster profile.
 
-9. Select a domain from the **Domain drop-down Menu** and click **Next**.
+10. Select a domain from the **Domain drop-down Menu** and click **Next**.
 
-10. Configure the control plane and worker node pools. The following input fields apply to MAAS control plane and worker
+11. Configure the control plane and worker node pools. The following input fields apply to MAAS control plane and worker
     node pools. For a description of input fields that are common across target platforms refer to the
     [Node Pools](../../cluster-management/node-pool.md) management page. Click **Next** when you are done.
 
@@ -68,8 +77,6 @@ To deploy a new MAAS cluster:
       [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags)
       documentation.
 
-    <br />
-
     #### Worker Pool configuration
 
     - Cloud configuration:
@@ -81,7 +88,7 @@ To deploy a new MAAS cluster:
         provided tags. To learn more about MAAS tags, refer to the [MAAS Tags](https://maas.io/docs/how-to-tag-machines)
         documentation.
 
-11. You can configure the following cluster management features now if needed, or you can do it later:
+12. You can configure the following cluster management features now if needed, or you can do it later:
 
     - Manage machines
     - Schedule scans
@@ -89,7 +96,7 @@ To deploy a new MAAS cluster:
     - Role-based access control (RBAC)
     - Location
 
-12. Review settings and deploy the cluster.
+13. Review settings and deploy the cluster.
 
 ## Validate
 
@@ -97,15 +104,11 @@ You can validate your cluster is available by reviewing the cluster details page
 click **Clusters**. The **Clusters** page lists all available clusters that Palette manages. Select the cluster to
 review its details page. Ensure the **Cluster Status** field contains the value **Running**.
 
-<br />
-
 ## Delete a MAAS Cluster
 
 When you delete a MAAS cluster, all machines and associated storage disks that were created for the cluster are removed.
 
 Follow these steps to delete a MAAS cluster.
-
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -120,8 +123,6 @@ successfully deleted, the cluster status is updated to **Deleted** and the clust
 operation returns the edge hosts to the **Ready** state. All the artifacts related to the Kubernetes distribution are
 removed.
 
-<br />
-
 ## Upgrade a MAAS Cluster
 
 Upgrade a MAAS cluster to enhance the performance and functionality of the cluster. To learn more about managing a MAAS
@@ -130,8 +131,6 @@ cluster, refer to [Manage Clusters](../../cluster-management/cluster-updates.md)
 To protect your data, we recommend you create a backup of your MAAS cluster before proceeding with any upgrades or
 infrastructure changes. Review instructions provided in the
 [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md).
-
-<br />
 
 :::warning
 

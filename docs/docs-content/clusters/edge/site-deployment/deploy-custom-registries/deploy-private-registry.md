@@ -1,20 +1,30 @@
 ---
-sidebar_label: "Deploy Cluster with a Private Registry"
-title: "Deploy Cluster with a Private Registry"
-description: "Instructions for creating an Edge Native Cluster Profile"
+sidebar_label: "Deploy Cluster with a Private Provider Registry"
+title: "Deploy Cluster with a Private Provider Registry"
+description: "Instructions for deploying an Edge cluster with a private provider registry."
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 40
 tags: ["edge"]
 ---
 
-Palette Edge supports authentication with private image registries, which allows your cluster to pull images from a
-private registry during deployment. You can configure your cluster to pull images from a private registry for both
-cluster creation and cluster updates. To configure a cluster to pull images from a private image registry, provide the
-registry URL and the credentials needed to authenticate with the registry in the cluster profile.
+Palette Edge supports authentication with private image registries, which allows your cluster to pull provider images
+from a private registry during deployment. You can configure your cluster to pull provider images from a private
+registry for both cluster creation and cluster updates.
+
+To configure a cluster to pull images from a private image registry, provide the registry URL and the credentials needed
+to authenticate with the registry in the cluster profile. This registry supplies the provider images only. If you want
+to use a private registry for images other the provider images, refer to
+[Deploy Cluster with Private External Registry](./deploy-external-registry.md).
 
 ## Limitations
 
-- A cluster cannot pull images from more than one private registry.
+- A cluster cannot pull provider images from more than one private registry.
+
+- If you have already specified an external registry. the provider registry will be ignored and the provider images will
+  be pulled from the external registry instead.
+
+- You cannot use private provider registries for clusters with a local Harbor registry. For more information, refer to
+  [Enable Local Harbor Registry](./local-registry.md).
 
 - If your private registry has TLS enabled, you can only configure a _new_ cluster to use a TLS certificate with a
   private registry. You cannot configure an existing cluster with a TLS certificate to communicate with your private
@@ -30,7 +40,7 @@ registry URL and the credentials needed to authenticate with the registry in the
 - A private image registry.
 
 - A provider image you created in the EdgeForge process stored in your private image registry. For more information,
-  refer to [Build Artifacts](../edgeforge-workflow/palette-canvos.md).
+  refer to [Build Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md).
 
 ## Enablement
 
@@ -48,8 +58,9 @@ registry URL and the credentials needed to authenticate with the registry in the
    pack for your OS layer.
 
 5. Update the `system.uri` parameter in the pack editor for your OS layer. Use the custom OS image you created in the
-   EdgeForge process. Refer to the EdgeForge [Build Images](../edgeforge-workflow/palette-canvos.md) guide if you are
-   missing a custom OS image. The following is an example configuration using the BYOOS pack with a custom OS image.
+   EdgeForge process. Refer to the EdgeForge [Build Images](../../edgeforge-workflow/palette-canvos/palette-canvos.md)
+   guide if you are missing a custom OS image. The following is an example configuration using the BYOOS pack with a
+   custom OS image.
 
    ```yaml
    pack:
@@ -67,17 +78,17 @@ registry URL and the credentials needed to authenticate with the registry in the
 
    If you have specified registry credentials in the `registryCredentials` field in the user data file during the
    EdgeForge process, the credentials provided in the cluster profile will be ignored. For more information, refer to
-   [EdgeForge - Build Artifacts](../edgeforge-workflow/palette-canvos.md) and
-   [Installer Configuration](../edge-configuration/installer-reference.md#external-registry).
+   [EdgeForge - Build Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) and
+   [Installer Configuration](../../edge-configuration/installer-reference.md#external-registry).
 
    :::
 
 6. At the root level of YAML for your OS layer, add the `providerCredentials` field to provide the credentials you need
    to authenticate with your registry. For more information about the `providerCredentials` field, refer to
-   [Bring Your Own OS (BYOOS)](../../../integrations/byoos.md) pack page. The `providerCredentials.password` field will
-   be masked when you provide it in the YAML file. You can also use a macro to store your credentials instead of
-   providing it directly in the YAML file. For more information, refer to
-   [Macros Support](../../cluster-management/macros.md):
+   [Bring Your Own OS (BYOOS)](/docs/docs-content/integrations/byoos.md) pack page. The `providerCredentials.password`
+   field will be masked when you provide it in the YAML file. You can also use a macro to store your credentials instead
+   of providing it directly in the YAML file. For more information, refer to
+   [Macros Support](/docs/docs-content/clusters/cluster-management/macros.md):
 
    ```yaml {7-8}
    pack:
@@ -108,9 +119,10 @@ registry URL and the credentials needed to authenticate with the registry in the
 
 8. If you already have an active cluster that is using the original version of the cluster profile, update the cluster
    so that it uses the new version of the cluster profile you just published. For more information about updating
-   clusters, refer to [Update a Cluster](../../cluster-management/cluster-updates.md). This will trigger a full cluster
-   repave since it includes an update to the OS layer of the cluster. To learn more about cluster repave behavior, refer
-   to [Repave Behavior and Configuration](../../cluster-management/node-pool.md#repave-behavior-and-configuration).
+   clusters, refer to [Update a Cluster](../../../cluster-management/cluster-updates.md). This will trigger a full
+   cluster repave since it includes an update to the OS layer of the cluster. To learn more about cluster repave
+   behavior, refer to
+   [Repave Behavior and Configuration](../../../cluster-management/node-pool.md#repave-behavior-and-configuration).
 
    If you don't have an active cluster yet, deploy a new cluster with the profile you just created, and the cluster will
    pull images from the private registry you specified.

@@ -45,3 +45,5 @@ by people with different roles. The Palette Edge lifecycle is explained in detai
 - [Register Edge Host](site-installation/edge-host-registration.md)
 
 - [Create Cluster Definition](site-installation/cluster-deployment.md)
+
+- [Deployment with Custom Registries](./deploy-custom-registries/deploy-custom-registries.md)

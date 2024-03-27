@@ -68,6 +68,10 @@ fully encrypted using the tenant's unique encryption key.
 Cluster Mode enables you to create, deploy, and manage Kubernetes clusters and applications. In Cluster Mode, you can
 deploy Kubernetes clusters to public cloud providers, on-prem data centers, and on the edge.
 
+## Cluster Definition
+
+A Cluster Definition contains one or more cluster profiles, including profile variables used in those profiles.
+
 ## Cluster Profile
 
 A Cluster Profile is a declarative model of a Kubernetes infrastructure stack. A Kubernetes infrastructure stack is
@@ -84,6 +88,12 @@ The diagram below shows an example of a cluster profile:
 ![cluster_profile_new](/cluster_profile_new.webp)
 
 For more information, check out [Cluster Profiles](profiles/cluster-profiles/cluster-profiles.md).
+
+## Cluster Profile Variable
+
+Cluster Profile Variables enable you to create placeholders for parameters in profile layer configurations, which you
+can then populate for individual clusters during deployment. Meaning you can use a single cluster profile to deploy
+multiple clusters with unique requirements for security, networking, resource allocation, and so on.
 
 ## Edge Appliances
 
@@ -107,6 +117,12 @@ virtual machines and are managed by operators at these remote sites. Palette pro
 Clusters on such edge appliances from its SaaS-based management console. Besides provisioning of the cluster, Palette
 also provides end-to-end management of these clusters through operations such as scaling, upgrades, reconfiguration,
 etc.
+
+## Local UI
+
+Local UI is a browser-based tool that allows you to manage your Edge host and perform tasks such as creating local
+clusters, upload content bundles, and configure network settings. Local UI is a Tech Preview feature and should not be
+used in production workloads.
 
 ## Helm Charts
 
@@ -165,7 +181,7 @@ are not part of any Palette pack or a chart. Pack manifests provide a pass-throu
 through raw manifests. Pack Manifest layers can be added to a cluster profile stack built using Spectro Packs and
 Charts.
 
-## Palette Edge Manager (Local API)
+## Palette Edge Manager (Edge Host API)
 
 A cmd line API that supports TUI operations & site diagnostics. For Dark Site or Air Gapped environments Palette Edge
 Manager can be used to upload cluster configurations.
@@ -322,10 +338,10 @@ on the running cluster.
 
 ## System Administrator
 
-The self-hosted Palette or Palette VerteX user with access to the
-[system console](#system-console-on-prem-system-console).
+The self-hosted Palette or Palette VerteX user with access to the system console and can perform various operations
+based on their assigned role. Palette supports multiple system administrator roles.
 
-## System Console (On-prem System Console)
+## System Console
 
 The console is used to scale up the Enterprise cluster and manage it. The System console supports creating and
 activating a new tenant in a new instance. It Initiates the installation of a Palette Enterprise Cluster. The On-Prem
