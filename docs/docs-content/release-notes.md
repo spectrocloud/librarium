@@ -103,6 +103,12 @@ the following sections for a complete list of features, improvements, and known 
   [Calico](https://docs.spectrocloud.com/integrations/calico), the cluster deployments fail. A workaround is to use the
   AWS VPC CNI in the interim while the issue is resolved.
 
+- If a Kubernetes cluster deployed onto VMware is deleted, and later re-created with the same name, the cluster creation
+  process fails. The issue is caused by existing resources remaining inside PCG, or System PCG, that are not cleaned up
+  during the cluster deletion process. Refer to the
+  [VMware Resources Remain After Cluster Deletion](./troubleshooting/pcg.md#scenario---vmware-resources-remain-after-cluster-deletion)
+  troubleshooting guide for resolution steps.
+
 ### Edge
 
 #### Breaking Changes
