@@ -35,6 +35,8 @@ html[data-theme="light"] {
   --simpleCardSubtle: #545f7e;
   --simpleCardButtonIcon: #545f7e;
   --simpleCardBorder: #dee1ea;
+  --custom-release-notes-background-color: var(--ifm-background-color);
+  --custom-color-info-contrast-background: #111626;
 
   .theme-doc-sidebar-item-category-level-1 .menu__list-item {
     .menu__link:hover {
