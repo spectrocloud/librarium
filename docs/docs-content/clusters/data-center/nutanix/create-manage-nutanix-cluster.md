@@ -168,11 +168,11 @@ update your cluster.
 
 1.  Log in to [Palette](https://console.spectrocloud.com/).
 
-2.  Navigate to the left **Main Menu** and select **Clusters**.
+2.  From the left **Main Menu**, select **Clusters**.
 
 3.  Click on the Nutanix cluster you created.
 
-4.  To edit cluster settings, from the cluster details page, click the **Settings** button and select **Cluster
+4.  To edit the cluster settings, from the cluster details page, click **Settings** and select **Cluster
     Configuration**. Edit the YAML file that Palette displays.
 
 #### Update Control Plane Node Pool
@@ -180,23 +180,22 @@ update your cluster.
 5. To edit the control plane node pool configuration, navigate to the cluster details page and click the **Nodes** tab.
    Next, click the **Edit** button of the control plane node pool to open its YAML file.
 
-6. Edit the NutanixMachineTemplate object. You can update the memory (`memorySize`), CPU (`vcpuSockets` and
+6. Edit the `NutanixMachineTemplate` object. You can update the memory (`memorySize`), CPU (`vcpuSockets` and
    `vcpuPerSocket`), and storage (`systemDiskSize`). Once you are finished changing the node pool configurations, update
    the `name` parameter under the `metadata` line. For example, if the previous name was
    **control-plane-pool-resource-3**, rename it to **control-plane-pool-resource-4**.
 
-   :::info
+   :::warning
 
-   Updating the name is required to enable the update of the node pool, ensuring that it accurately reflects the new
-   parameters.
+   You must update the node pool name to for the configuration updates to take effect.
 
    :::
 
-7. Edit the KubeadmControlPlane object. Change the `name` parameter under the `kind: NutanixMachineTemplate` line to
-   match the new name utilized in the NutanixMachineTemplate object.
+7. Edit the `KubeadmControlPlane` object. Change the `name` parameter under the `kind: NutanixMachineTemplate` line to
+   match the new name you used in the `NutanixMachineTemplate` object.
 
-8. When you are done with the control plane node pool updates, click **Confirm** and **Continue** to confirm the
-   alterations.
+8. When you are done updating the control plane node pool configuration, click **Confirm** and **Continue** to confirm the
+   changes.
 
 #### Update Worker Node Pool
 
@@ -229,8 +228,8 @@ update your cluster.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. Navigate to the left **Main Menu** and select **Clusters**.
+2. From the left **Main Menu**, select **Clusters**.
 
-3. Click on the Nutanix cluster you deployed. Next, click on the **Nodes** tab.
+3. Click on the Nutanix cluster you deployed, and then click on the **Nodes** tab.
 
-4. Verify that all nodes have a **Running** and **Healthy** status, and reflect the applied repave changes.
+4. Verify that all nodes are in the **Running** and **Healthy** status, and reflect the applied repave changes.
