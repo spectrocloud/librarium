@@ -75,8 +75,8 @@ export default function ReleaseNotesVersions(): JSX.Element {
   const customSelectStyles = {
     option: (provided: any) => ({
       ...provided,
-      background: "var(--ifm-background-color)",
-      color: "var(--ifm-font-color-base)",
+      background: "var(--ifm-alert-background-color)",
+      color: "var(--ifm-alert-foreground-color)",
     }),
   };
 
@@ -93,7 +93,7 @@ export default function ReleaseNotesVersions(): JSX.Element {
           value={selectedVersion}
           options={versions}
           components={{ Option: CustomOption }}
-          // styles={customSelectStyles}
+          styles={customSelectStyles}
         />
       </div>
     </Admonition>

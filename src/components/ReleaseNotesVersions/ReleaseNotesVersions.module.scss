@@ -3,8 +3,12 @@
   justify-content: center;
 }
 
-.dropdownContainer:first-child {
+.dropdownContainer > div:first-child {
   width: 100%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 // .dropdown {
@@ -22,14 +26,11 @@
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.container {
-  // This is the default with for larger displays
-  width: 100px;
+// .container {
+//   // This is the default with for larger displays
+//   width: 100px;
 
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-}
+// }
 
 .input-container {
   width: 100%;
