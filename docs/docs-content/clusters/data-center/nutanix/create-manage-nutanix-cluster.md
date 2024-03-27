@@ -177,49 +177,51 @@ update your cluster.
 
 #### Update Control Plane Node Pool
 
-5. To edit the control plane node pool configuration, navigate to the cluster details page and click the **Nodes** tab.
-   Next, click the **Edit** button of the control plane node pool to open its YAML file.
+5. Navigate to the cluster details page and click the **Nodes** tab.
 
-6. Edit the `NutanixMachineTemplate` object. You can update the memory (`memorySize`), CPU (`vcpuSockets` and
+6. In the control plane node pool you want to edit, click **Edit** to open its YAML configuration file.
+
+7. Edit the `NutanixMachineTemplate` object. You can update the memory (`memorySize`), CPU (`vcpuSockets` and
    `vcpuPerSocket`), and storage (`systemDiskSize`). Once you are finished changing the node pool configurations, update
    the `name` parameter under the `metadata` line. For example, if the previous name was
    **control-plane-pool-resource-3**, rename it to **control-plane-pool-resource-4**.
 
    :::warning
 
-   You must update the node pool name to for the configuration updates to take effect.
+   You must update the node pool name for the configuration updates to take effect.
 
    :::
 
-7. Edit the `KubeadmControlPlane` object. Change the `name` parameter under the `kind: NutanixMachineTemplate` line to
+8. Edit the `KubeadmControlPlane` object. Change the `name` parameter under the `kind: NutanixMachineTemplate` line to
    match the new name you used in the `NutanixMachineTemplate` object.
 
-8. When you are done updating the control plane node pool configuration, click **Confirm** and **Continue** to confirm the
-   changes.
+9. When you are done updating the control plane node pool configuration, click **Confirm** and **Continue** to confirm
+   the changes.
 
 #### Update Worker Node Pool
 
-9. To edit the worker node pool configuration, navigate to the cluster details page and click the **Nodes** tab. Next,
-   click the **Edit** button of the worker node pool to open its YAML file.
+10. Navigate to the cluster details page and click the **Nodes** tab.
 
-10. Edit the NutanixMachineTemplate object. You can update the memory (`memorySize`), CPU (`vcpuSockets` and
+11. In the worker node pool you want to edit, click **Edit** to open its YAML configuration file.
+
+12. Edit the `NutanixMachineTemplate` object. You can update the memory (`memorySize`), CPU (`vcpuSockets` and
     `vcpuPerSocket`), and storage (`systemDiskSize`). Once you are finished editing the node pool configurations, update
     the `name` parameter under the `metadata` line. For example, if the previous name was **worker-pool-resource-3**,
     rename it to **worker-pool-resource-4**.
 
-    :::info
+    :::warning
 
-    Updating the name is required to enable the update of the node pool, ensuring that it accurately reflects the new
-    parameters.
+    You must update the node pool name for the configuration updates to take effect.
 
     :::
 
-11. Edit the MachineDeployment object. Change the `name` parameter under the `kind: NutanixMachineTemplate` line to
-    match the new name utilized in the NutanixMachineTemplate object.
+13. Edit the `MachineDeployment` object. Change the `name` parameter under the `kind: NutanixMachineTemplate` line to
+    match the new name you used in the `NutanixMachineTemplate` object.
 
-12. When you are done with the worker node pool updates, click **Confirm** and **Continue** to confirm the alterations.
+14. When you are done updating the worker node pool configuration, click **Confirm** and **Continue** to confirm the
+    changes.
 
-13. The node pool alterations will trigger a
+15. The node pool alterations will trigger a
     [cluster repave](../../cluster-management/node-pool.md#repave-behavior-and-configuration). Follow the
     [Approve Cluster Repave](../../cluster-management/node-pool.md#approve-cluster-repave) guide to incorporate the
     updates to your cluster.
