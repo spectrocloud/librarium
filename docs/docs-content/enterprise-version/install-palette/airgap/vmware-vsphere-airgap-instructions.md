@@ -37,6 +37,11 @@ Palette.
 - 30 GB of disk space available for the airgap setup binary and temporary files. The uncompressed airgap content is
   approximately 20 GB.
 
+- The airgap support VM requires connectivity to your VMware vSphere environment.
+
+- Configure the Dynamic Host Configuration Protocol (DHCP) to access the airgap support VM via SSH. You can disable DHCP
+  or modify the IP address after deploying the airgap support VM.
+
 - An OCI registry such as [Harbor](https://goharbor.io/) or [AWS ECR](https://aws.amazon.com/ecr/) to store Palette
   images and packages. The OCI registry must be accessible from the VMware vSphere environment. We have verified the
   installation against Harbor and AWS ECR. Other OCI registries may work but have not been tested.
