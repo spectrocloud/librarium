@@ -164,7 +164,7 @@ structure for each.
     ├── manifest-1.yaml
     ├── manifest-2.yaml
 │   └── manifest-3.yaml
-├── logo.webp            # Mandatory.
+├── logo.png            # Mandatory.
 └── README.md           # Optional.
 ```
 
@@ -191,7 +191,7 @@ structure for each.
 │   │   │   └── template-2.yaml
 │   │   └── values.yaml # Chart-level values.yaml file.
 │   └── chart-2.tgz
-├── logo.webp            # Mandatory.
+├── logo.png            # Mandatory.
 └── README.md           # Optional.
 ```
 
@@ -216,7 +216,7 @@ Ensure you have the following files in the current directory.
 ├── values.yaml         # Mandatory.
 ├── manifests           # Mandatory.
 │   └── hello-universe.yaml
-├── logo.webp            # Mandatory.
+├── logo.png            # Mandatory.
 └── README.md           # Optional.
 ```
 
@@ -279,7 +279,7 @@ Review each of the following five files in the **hello-universe-pack** folder.
   manifest, **hello-universe.yaml**. Note that the **values.yaml** file has a corresponding `manifests/hello-universe`
   element with the same name as the YAML file.
 
-- **logo.webp** - This file contains a logo that displays when you create a cluster profile.
+- **logo.png** - This file contains a logo that displays when you create a cluster profile.
 
 - **README.md** - This file may contain the pack description, purpose, authors, and other relevant information. The
   README in the current example introduces the application used in the pack.
