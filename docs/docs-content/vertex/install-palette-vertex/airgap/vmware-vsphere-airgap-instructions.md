@@ -44,6 +44,8 @@ VerteX.
 
   - 120 GB of disk space available for the airgap support VM.
 
+- The airgap support VM requires connectivity to your VMware vSphere environment.
+
 - Configure the Dynamic Host Configuration Protocol (DHCP) to access the airgap support VM via SSH. You can disable DHCP
   or modify the IP address after deploying the airgap support VM.
 
