@@ -163,8 +163,8 @@ structure for each:
     ├── manifest-1.yaml
     ├── manifest-2.yaml
 │   └── manifest-3.yaml
-├── logo.webp            # Mandatory
-└── README.md           # Optional
+├── logo.png            # Mandatory.
+└── README.md           # Optional.
 ```
 
 </TabItem>
@@ -192,8 +192,8 @@ structure for each:
 │   │   │   └── template-2.yaml
 │   │   └── values.yaml # Chart-level values.yaml file.
 │   └── chart-2.tgz
-├── logo.webp            # Mandatory
-└── README.md           # Optional
+├── logo.png            # Mandatory.
+└── README.md           # Optional.
 ```
 
 </TabItem>
@@ -221,8 +221,8 @@ Ensure you have the following files in the current directory.
 ├── values.yaml         # Mandatory
 ├── manifests           # Mandatory
 │   └── hello-universe.yaml
-├── logo.webp            # Mandatory
-└── README.md           # Optional
+├── logo.png            # Mandatory.
+└── README.md           # Optional.
 ```
 
 <br />
@@ -294,9 +294,7 @@ Go ahead and review each of the following five files in the pack.
   file, **hello-universe.yaml**. Note that the **values.yaml** file has a corresponding `manifests/hello-universe`
   element with the same name as the YAML file.
 
-  <br />
-
-- **logo.webp** - This file contains a logo that displays when you create a cluster profile.
+- **logo.png** - This file contains a logo that displays when you create a cluster profile.
 
   <br />
 
