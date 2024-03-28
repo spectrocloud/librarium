@@ -9,6 +9,8 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
+<ReleaseNotesVersions />
+
 ## October 11, 2023 - Release 4.0.19
 
 This release contains the following enhancements and minor bug fixes.
