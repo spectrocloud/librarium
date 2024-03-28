@@ -9,6 +9,8 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
+<ReleaseNotesVersions />
+
 ## September 21, 2023 - Release 3.4.114
 
 This release contains a minor bug fix.
