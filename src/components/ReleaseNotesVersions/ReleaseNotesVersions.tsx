@@ -15,7 +15,6 @@ interface VersionOption {
   isExternal: boolean;
 }
 
-// Improved CustomOption with destructuring
 const CustomOption = ({ data: { label, isExternal }, ...props }) => (
   <components.Option {...props}>
     {label}
@@ -28,7 +27,6 @@ export default function ReleaseNotesVersions(): JSX.Element {
   const history = useHistory();
   const versionsList = useVersions("default");
 
-  // Simplified version construction
   const versions: VersionOption[] = [
     ...versionsList.map(({ label, path }) => ({
       label: label === "current" ? "latest" : label,
@@ -37,8 +35,8 @@ export default function ReleaseNotesVersions(): JSX.Element {
       isExternal: path.startsWith("http"),
     })),
     ...Object.entries(ArchivedVersions).map(([versionName, versionUrl]) => ({
-      label: versionName,
-      value: versionName,
+      label: `${versionName} `,
+      value: `${versionName} `,
       url: versionUrl,
       isExternal: versionUrl.startsWith("http"),
     })),
@@ -70,6 +68,12 @@ export default function ReleaseNotesVersions(): JSX.Element {
       ...provided,
       background: "var(--custom-release-notes-background-color)",
       color: "var(--custom-release-notes-background-font-color)",
+      boxShadow: "none",
+    }),
+    menu: (provided) => ({
+      ...provided,
+      marginTop: "0",
+      backgroundColor: "var(--custom-release-notes-menu-padding)",
     }),
     singleValue: (provided) => ({
       ...provided,
@@ -77,11 +81,12 @@ export default function ReleaseNotesVersions(): JSX.Element {
     }),
     option: (provided, state) => ({
       ...provided,
-      color: "black",
+      borderRadius: "0.25rem",
+      color: "var(--custom-release-notes-option-font-color)",
       background: state.isSelected
         ? "var(--custom-release-notes-selected-background)"
         : state.isFocused
-          ? "(--custom-release-notes-active-option-hoover)"
+          ? "var(--custom-release-notes-active-option-hover)"
           : "var(--custom-release-notes-background-color)",
     }),
   };
