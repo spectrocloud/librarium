@@ -1,0 +1,12 @@
+.dropdownContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.dropdownContainer > div:first-child {
+  width: 50%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}

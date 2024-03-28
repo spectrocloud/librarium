@@ -9,7 +9,9 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
-## March 30, 2024 - Release 4.3.0
+<ReleaseNotesVersions />
+
+## April 6, 2024 - Release 4.3.0
 
 This release contains several new exciting Technical Preview features, including the Edge Local UI and Cluster Profile
 variables. Other notable features include enhancements to the Palette CLI, support for deploying Konvoy clusters, Azure
