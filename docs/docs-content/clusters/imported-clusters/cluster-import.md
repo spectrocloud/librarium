@@ -52,7 +52,7 @@ Select the mode you want to use when importing a cluster into Palette.
 
    <br />
 
-   ![A view of the cluster details page with the sidebar instructions box](/clusters_imported-clusters_full-permissions-instructions.png)
+   ![A view of the cluster details page with the sidebar instructions box](/clusters_imported-clusters_full-permissions-instructions.webp)
 
    <br />
 
@@ -101,7 +101,7 @@ Select the mode you want to use when importing a cluster into Palette.
 
    <br />
 
-   ![A view of an imported cluster's details page](/clusters_imported-clusters_full-permissions.png)
+   ![A view of an imported cluster's details page](/clusters_imported-clusters_full-permissions.webp)
 
    <br />
 
@@ -153,7 +153,7 @@ You now have imported a cluster into Palette with full permissions.
 
    <br />
 
-   ![A view of the cluster details page with the sidebar instructions box](/clusters_imported-clusters_read-only-instructions.png)
+   ![A view of the cluster details page with the sidebar instructions box](/clusters_imported-clusters_read-only-instructions.webp)
 
    <br />
 
@@ -202,7 +202,7 @@ You now have imported a cluster into Palette with full permissions.
 
    <br />
 
-   ![A view of an imported cluster's details page](/clusters_imported-clusters_read-only.png)
+   ![A view of an imported cluster's details page](/clusters_imported-clusters_read-only.webp)
 
    <br />
 

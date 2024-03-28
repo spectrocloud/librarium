@@ -22,7 +22,7 @@ require content data and processing to be closer to their applications.
 
 <br />
 
-![A drawing of Edge architecture with humans interacting](/clusters_edge_edge-arch-drawing.png)
+![A drawing of Edge architecture with humans interacting](/clusters_edge_edge-arch-drawing.webp)
 
 <br />
 
@@ -45,8 +45,8 @@ The following are some highlights of the comprehensive Palette Edge Solution:
 - Support for pre-provisioned and on-site device registration
 
 Palette's Edge solution is designed for sites that typically have one or more small devices, such as
-[Intel NUC](https://www.intel.com/content/www/us/en/products/docs/boards-kits/nuc/what-is-nuc-article.html). An instance
-of Palette optimized for edge computing is installed in the device along with the operating system and Kubernetes.
+[Asus NUC](https://www.asus.com/us/displays-desktops/nucs/nuc-mini-pcs). An instance of Palette optimized for edge
+computing is installed in the device along with the operating system and Kubernetes.
 
 :::info
 

@@ -31,7 +31,7 @@ As the following diagram shows, Palette provides an installer in the form of a D
 deployed on your laptop, workstation, or jump box. You can use the installer on any Linux x86-64 system with a Docker
 daemon installed and connectivity to Palette and the MAAS identity endpoint.
 
-![An architecture diagram of MaaS with PCG.](/clusters_maas_install-manage-mass-pcg_diagram-of-mass-with-pcg.png)
+![An architecture diagram of MaaS with PCG.](/clusters_maas_install-manage-mass-pcg_diagram-of-mass-with-pcg.webp)
 
 ## Install PCG
 
@@ -122,7 +122,7 @@ The diagram below shows an example of using an external DNS server for servers t
 delegation. This ensures all servers in the network can resolve the DNS names of servers deployed by MAAS. Note that it
 is not required for the DNS records to be accessible from the internet.
 
-![Image showing external DNS server machines that MAAS deploys in addition to a DNS delegation](/clusters_maas_maas-dns-setup.png)
+![Image showing external DNS server machines that MAAS deploys in addition to a DNS delegation](/clusters_maas_maas-dns-setup.webp)
 
 ### Install
 

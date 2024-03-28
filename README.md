@@ -308,7 +308,9 @@ To add a Service to the Service List complete the following actions:
 
 ### Images or other assets
 
-All images must reside in the [`static/assets/docs/images`](./static/assets/docs/images/) folder.
+All images must reside in the [`static/assets/docs/images`](./static/assets/docs/images/) folder. All images must be in
+webp format. You can save png, jpg, or jpeg to the directory. The commit hook will convert the images to webp format. Or
+issue the command `make format-images` to convert the images to webp format.
 
 ```md
 ![alt text](/clusterprofiles.png "cluster profiles example")
@@ -496,6 +498,36 @@ To add a video, use the following syntax. Ensure you capitalize the letter "V":
 
 ```
 <Video title="vsphere-pcg-creation" src="/cluster-creation-videos/vmware.mp4"></Video>
+```
+
+### Simple Card Grid
+
+This is a custom component that creates a grid of simple text cards with two columns, styled according to our color
+scheme. The rows of cards are dynamically created according to the list of specified cards.
+
+```js
+<SimpleCardGrid
+  cards={[
+    {
+      title: "Lorem Ipsum",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      buttonText: "Learn more",
+      relativeURL: "./link",
+    },
+    {
+      title: "Lorem Ipsum",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      buttonText: "Learn more",
+      relativeURL: "./link",
+    },
+    {
+      title: "Lorem Ipsum",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      buttonText: "Learn more",
+      relativeURL: "./link",
+    },
+  ]}
+/>
 ```
 
 ## Netlify Previews
