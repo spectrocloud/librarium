@@ -36,6 +36,8 @@ export function ReleaseNotesVersions(): JSX.Element | null {
   const [selectedVersion, setSelectedVersion] = useState<VersionOption | null>(null);
   const history = useHistory();
   const isBrowser = useIsBrowser();
+  const isExternal = isBrowser && isExternalDomain("legacy.docs.spectrocloud.com", isBrowser);
+
   const versionsList = useVersions("default");
 
   const versions: VersionOption[] = [
@@ -52,6 +54,10 @@ export function ReleaseNotesVersions(): JSX.Element | null {
       isExternal: versionUrl.startsWith("http"),
     })),
   ];
+
+  if (isExternal) {
+    return <></>;
+  }
 
   useEffect(() => {
     const savedVersion = localStorage.getItem("selectedVersion");
@@ -102,10 +108,6 @@ export function ReleaseNotesVersions(): JSX.Element | null {
     }),
   };
 
-  if (isExternalDomain("legacy.docs.spectrocloud.com", window.location.hostname, isBrowser)) {
-    return null;
-  }
-
   return (
     <Admonition type="tip">
       <p>
@@ -127,11 +129,12 @@ export function ReleaseNotesVersions(): JSX.Element | null {
 }
 
 //isExternalDomain checks if the url is external
-export function isExternalDomain(url: string, currentDomain: string, isBrowser: boolean): boolean {
+export function isExternalDomain(url: string, isBrowser: boolean): boolean {
   if (!isBrowser) {
     return false;
   } else {
-    return url.includes(currentDomain);
+    const currentDomain = window.location.hostname;
+    return currentDomain.includes(url);
   }
 }
 
