@@ -16,6 +16,8 @@ interface VersionOption {
   isExternal: boolean;
 }
 
+const externalDomainURL = "legacy.docs.spectrocloud.com";
+
 interface CustomOptionProps extends OptionProps<VersionOption, false> {}
 
 const CustomOption: React.FC<CustomOptionProps> = (props) => {
@@ -36,7 +38,7 @@ export function ReleaseNotesVersions(): JSX.Element | null {
   const [selectedVersion, setSelectedVersion] = useState<VersionOption | null>(null);
   const history = useHistory();
   const isBrowser = useIsBrowser();
-  const isExternal = isBrowser && isExternalDomain("legacy.docs.spectrocloud.com", isBrowser);
+  const isExternal = isBrowser && isExternalDomain(externalDomainURL, isBrowser);
 
   const versionsList = useVersions("default");
 
