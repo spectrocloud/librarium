@@ -7,6 +7,7 @@ import ArchivedVersions from "../../../archiveVersions.json";
 import Select, { components, OptionProps } from "react-select";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import useIsBrowser from "@docusaurus/useIsBrowser";
 
 interface VersionOption {
   label: string;
@@ -34,6 +35,7 @@ const CustomOption: React.FC<CustomOptionProps> = (props) => {
 export function ReleaseNotesVersions(): JSX.Element | null {
   const [selectedVersion, setSelectedVersion] = useState<VersionOption | null>(null);
   const history = useHistory();
+  const isBrowser = useIsBrowser();
   const versionsList = useVersions("default");
 
   const versions: VersionOption[] = [
@@ -100,7 +102,7 @@ export function ReleaseNotesVersions(): JSX.Element | null {
     }),
   };
 
-  if (isExternalDomain("legacy.docs.spectrocloud.com", window.location.hostname || "")) {
+  if (isExternalDomain("legacy.docs.spectrocloud.com", window.location.hostname, isBrowser)) {
     return null;
   }
 
@@ -125,8 +127,12 @@ export function ReleaseNotesVersions(): JSX.Element | null {
 }
 
 //isExternalDomain checks if the url is external
-export function isExternalDomain(url: string, currentDomain: string): boolean {
-  return url.includes(currentDomain);
+export function isExternalDomain(url: string, currentDomain: string, isBrowser: boolean): boolean {
+  if (!isBrowser) {
+    return false;
+  } else {
+    return url.includes(currentDomain);
+  }
 }
 
 export default ReleaseNotesVersions;
