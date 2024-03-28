@@ -4,7 +4,7 @@ import Admonition from "@theme/Admonition";
 import { useVersions } from "@docusaurus/plugin-content-docs/client";
 import styles from "./ReleaseNotesVersions.module.scss";
 import ArchivedVersions from "../../../archiveVersions.json";
-import Select, { components } from "react-select";
+import Select, { components, OptionProps } from "react-select";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
@@ -15,14 +15,23 @@ interface VersionOption {
   isExternal: boolean;
 }
 
-const CustomOption = ({ data: { label, isExternal }, ...props }) => (
-  <components.Option {...props}>
-    {label}
-    {isExternal && <FontAwesomeIcon icon={faArrowUpRightFromSquare} />}
-  </components.Option>
-);
+interface CustomOptionProps extends OptionProps<VersionOption, false> {}
 
-export default function ReleaseNotesVersions(): JSX.Element {
+const CustomOption: React.FC<CustomOptionProps> = (props) => {
+  const {
+    data: { label, isExternal },
+  } = props;
+
+  // Return the Option component with proper props spread and conditional rendering
+  return (
+    <components.Option {...props}>
+      {label}
+      {isExternal && <FontAwesomeIcon icon={faArrowUpRightFromSquare} />}
+    </components.Option>
+  );
+};
+
+export function ReleaseNotesVersions(): JSX.Element | null {
   const [selectedVersion, setSelectedVersion] = useState<VersionOption | null>(null);
   const history = useHistory();
   const versionsList = useVersions("default");
@@ -45,7 +54,7 @@ export default function ReleaseNotesVersions(): JSX.Element {
   useEffect(() => {
     const savedVersion = localStorage.getItem("selectedVersion");
     if (savedVersion) {
-      const savedVersionObj = versions.find((v) => v.value === savedVersion);
+      const savedVersionObj: any = versions.find((v) => v.value === savedVersion);
       if (savedVersionObj?.value !== selectedVersion?.value) {
         setSelectedVersion(savedVersionObj);
       }
@@ -64,22 +73,22 @@ export default function ReleaseNotesVersions(): JSX.Element {
   };
 
   const customSelectStyles = {
-    control: (provided) => ({
+    control: (provided: any) => ({
       ...provided,
       background: "var(--custom-release-notes-background-color)",
       color: "var(--custom-release-notes-background-font-color)",
       boxShadow: "none",
     }),
-    menu: (provided) => ({
+    menu: (provided: any) => ({
       ...provided,
       marginTop: "0",
       backgroundColor: "var(--custom-release-notes-menu-padding)",
     }),
-    singleValue: (provided) => ({
+    singleValue: (provided: any) => ({
       ...provided,
       color: "var(--custom-release-notes-background-font-color)",
     }),
-    option: (provided, state) => ({
+    option: (provided: any, state: any) => ({
       ...provided,
       borderRadius: "0.25rem",
       color: "var(--custom-release-notes-option-font-color)",
@@ -90,6 +99,10 @@ export default function ReleaseNotesVersions(): JSX.Element {
           : "var(--custom-release-notes-background-color)",
     }),
   };
+
+  if (isExternalDomain("legacy.docs.spectrocloud.com", window.location.hostname || "")) {
+    return null;
+  }
 
   return (
     <Admonition type="tip">
@@ -111,8 +124,9 @@ export default function ReleaseNotesVersions(): JSX.Element {
   );
 }
 
-// Moved isExternalDomain function outside the component for better separation of concerns
-function isExternalDomain(url: string): boolean {
-  const currentDomain = window.location.hostname;
-  return !url.includes(currentDomain);
+//isExternalDomain checks if the url is external
+export function isExternalDomain(url: string, currentDomain: string): boolean {
+  return url.includes(currentDomain);
 }
+
+export default ReleaseNotesVersions;
