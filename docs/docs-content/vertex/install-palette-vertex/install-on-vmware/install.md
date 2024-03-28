@@ -53,6 +53,9 @@ before proceeding with the installation. Refer to the
   - TCP/6443: Outbound traffic from the Palette VerteX management cluster to the deployed cluster's Kubernetes API
     server.
 
+- The network IP address range you specify during the installation must not overlap with any existing IP addresses in
+  your environment. The IP address range must also have connectivity to the VMware vSphere environment.
+
 - Ensure you have an SSL certificate that matches the domain name you will assign to Palette VerteX. You will need this
   to enable HTTPS encryption for Palette VerteX. Reach out to your network administrator or security team to obtain the
   SSL certificate. You need the following files:
