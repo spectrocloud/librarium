@@ -9,6 +9,8 @@ sidebar_custom_props:
 tags: ["release-notes"]
 ---
 
+<ReleaseNotesVersions />
+
 ## Feb 26, 2024 - Release 4.2.13
 
 ### Bug Fixes
