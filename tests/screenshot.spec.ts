@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import { test } from "@playwright/test";
-
+import { extractSitemapPathnames } from "argos/utils";
 // Constants:
 const siteUrl = "http://localhost:3000";
 const sitemapPath = "../website/build/sitemap.xml";
@@ -18,15 +18,16 @@ function isVersionedDocsPathname(pathname: string): boolean {
   return pathname.match(/^\/docs\/((\d\.\d\.\d)|(next))\//);
 }
 
-// function screenshotPathname(pathname: string) {
-//   test(`pathname ${pathname}`, async ({ page }) => {
-//     const url = siteUrl + pathname;
-//     await page.goto(url);
-//     await page.waitForFunction(waitForDocusaurusHydration);
-//     await page.addStyleTag({ content: stylesheet });
-//     await argosScreenshot(page, pathnameToArgosName(pathname));
-//   });
-// }
+function screenshotPathname(pathname: string) {
+  test(`pathname ${pathname}`, async ({ page }) => {
+    const url = siteUrl + pathname;
+    await page.goto(url);
+    await page.waitForFunction(waitForDocusaurusHydration);
+    await page.addStyleTag({ content: stylesheet });
+    await expect(page).toHaveScreenshot();
+    // await argosScreenshot(page, pathnameToArgosName(pathname));
+  });
+}
 
 test.describe("Docusaurus site screenshots", () => {
   const pathnames = extractSitemapPathnames(sitemapPath).filter(isVersionedDocsPathname);
