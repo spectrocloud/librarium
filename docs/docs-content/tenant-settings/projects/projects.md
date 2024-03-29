@@ -21,7 +21,7 @@ All resources created within a project are scoped to that project and only avail
 
 :::info
 
-Resources created under the teanant scope are available to all projects.
+Resources created under the tenant scope are available to all projects.
 
 :::
 
