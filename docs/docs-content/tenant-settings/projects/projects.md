@@ -9,11 +9,12 @@ sidebar_position: 0
 tags: ["projects"]
 ---
 
-A **Project** helps you organize the cluster resources in a logical grouping. A tenant can have multiple projects.
-Projects are used to group resources and manage access control. You can assign users and teams with specific roles to
-specific projects.
+A **Project** helps you organize and manage cluster resources. A tenant can have multiple projects. Projects are used to
+group resources and manage user access control through Role Based Access Control (RBAC). You can assign users and teams
+with specific roles to specific projects.
 
-Use projects to logically group resources and manage access control.
+For example, you can create a project for each team, or create a project for each infrastructure environment. The
+flexibility of projects allow you to organize resources in a way that makes sense for your organization.
 
 ## Scope
 
