@@ -135,7 +135,7 @@ Use the site network parameters to configure network settings so the edge host c
 | Parameter                | Description                                                                                                                           |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
 | `siteNetwork.httpProxy`  | The URL of the HTTP proxy endpoint.                                                                                                   |
-| `siteNetwork.httpSProxy` | The URL of the HTTPS proxy endpoint.                                                                                                  |
+| `siteNetwork.httpsProxy` | The URL of the HTTPS proxy endpoint.                                                                                                  |
 | `siteNetwork.noProxy`    | The list of IP addresses or CIDR ranges to exclude routing through the network proxy.                                                 |
 | `siteNetwork.interfaces` | The network settings respective to the interfaces. Review the [Network Parameters](#network-parameters) table below for more details. |
 | `siteNetwork.nameserver` | The IP address of the global DNS nameserver that requests should be routed to.                                                        |
