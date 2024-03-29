@@ -396,6 +396,10 @@ const redirects = [
     from: "/clusters/public-cloud/azure/gateways",
     to: "/clusters/pcg/",
   },
+  {
+    from: "/projects",
+    to: "/tenant-settings/projects/",
+  },
 ];
 
 module.exports = redirects;

@@ -32,7 +32,8 @@ the list below.
 1. Projects are used to organize the cluster resources within a logical group. Use the **drop-down Menu** to shift
    between projects.
 
-2. The [Project Overview](../projects.md) shows the resource and cost consumption of the selected project.
+2. The [Project Overview](../tenant-settings/projects/projects.md) shows the resource and cost consumption of the
+   selected project.
 
 3. [Cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) are instantiated templates that are created with
    pre-configured layers needed for cluster deployments.
