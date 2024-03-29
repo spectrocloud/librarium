@@ -10,6 +10,7 @@ import Select, { components, OptionProps } from "react-select";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import useIsBrowser from "@docusaurus/useIsBrowser";
+import Link from "@docusaurus/Link";
 
 interface VersionOption {
   label: string;
@@ -109,8 +110,13 @@ export function ReleaseNotesVersions(): JSX.Element | null {
     }),
   };
 
-  if (isExternal) {
-    return null;
+  if (!isExternal) {
+    return (
+      <Admonition type="tip">
+        To learn more about the latest features and product changes, check out the most recent
+        <Link href="https://docs.spectrocloud.com/release-notes"> Palette release notes.</Link>.
+      </Admonition>
+    );
   } else {
     return (
       <Admonition type="tip">
