@@ -17,13 +17,13 @@ Use the following steps to create a new project.
 
 ### Prerequisites
 
-- Tenant admin access
+- Tenant admin access.
 
 ### Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Switch to **Tenant Admin** scope.
+2. Click on the **drop-down Menu** at the top of the page and switch to **Tenant Admin** scope.
 
 3. Navigate to the left **Main Menu** and click on **Projects**.
 
@@ -89,4 +89,4 @@ However, if a project has active clusters, you must remove them first before del
 
 4. From the **Tenant Settings Menu**, select **Projects** .
 
-The project you deleted is no longer displayed and available for interaction.
+The project you deleted is no longer displayed or available for interaction.
