@@ -376,7 +376,7 @@ enhancements.
 
 - Enabling virtual clusters on host clusters is deprecated. Use
   [cluster groups](clusters/cluster-groups/create-cluster-group.md) to enable virtual clusters moving forward. Cluster
-  groups are also now supported at the [project](projects.md) scope.
+  groups are also now supported at the [project](./tenant-settings/projects/projects.md) scope.
 
 ### Edge
 
