@@ -66,7 +66,7 @@ test: ## Run Jest tests
 	npm test
 
 test-visual: ## Run visual regression tests
-	npx playwright test tests/screenshots.spec.ts --workers 4
+	npx playwright test tests/screenshot.spec.ts --workers 2
 
 ##@ Git Targets
 

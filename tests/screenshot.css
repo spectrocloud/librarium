@@ -1,5 +1,5 @@
 /*
-We need to hide some elements in Argos/Playwright screenshots
+We need to hide some elements in Playwright screenshots
 Those elements are source of flakiness due to nondeterministic rendering
 They don't consistently render exactly the same across CI runs
  */
@@ -38,6 +38,6 @@ Mermaid diagrams are rendered client-side and produce layout shifts
 Hide Cookie Consent banner
 
 */
-#uc-center-container {
+#usercentrics-root {
   display: none !important;
 }

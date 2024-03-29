@@ -34,6 +34,7 @@ function screenshotPathname(pathname: string) {
     await page.goto(url);
     await page.waitForFunction(waitForDocusaurusHydration);
     await page.addStyleTag({ content: stylesheet });
+    await page.waitForTimeout(1000); // Waits for 100 milliseconds
 
     // Sanitize the pathname to be used as a valid filename
     // const sanitizedPathname = sanitizePathnameForFile(pathname);
