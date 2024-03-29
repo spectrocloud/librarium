@@ -9,6 +9,7 @@ icon: ""
 sidebar_position: 0
 hide_table_of_contents: false
 tags: ["tutorial", "k8s-tips"]
+unlisted: true
 ---
 
 # Deploy a Stateless Frontend App with Kubernetes

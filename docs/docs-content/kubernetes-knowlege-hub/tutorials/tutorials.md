@@ -5,6 +5,7 @@ description: "Kubernetes School with How to"
 hide_table_of_contents: false
 sidebar_custom_props:
   icon: "book"
+unlisted: true
 ---
 
 Learn about core Kubernetes concepts and how you can apply them on Spectro Cloud Palette.

@@ -5,6 +5,8 @@ description: "Create a Kubernetes Secret to retrieve images from a private regis
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
+hiddenFromNav: false
+unlisted: true
 tags: ["how-to", "k8s-tips"]
 ---
 

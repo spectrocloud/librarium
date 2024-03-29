@@ -368,6 +368,10 @@ const redirects = [
     ],
     to: "/security-bulletins/",
   },
+  {
+    from: "/projects",
+    to: "/tenant-settings/projects/",
+  },
 ];
 
 module.exports = redirects;
