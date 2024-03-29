@@ -216,7 +216,7 @@ state.
 4.  In the pack YAML for the Longhorn pack, replace the base URL of each image referenced in the pack with the Harbor
     registry.
 
-    For example, the following is a snippet of the Longhorn pack's YAML before and after you replace the base URL:
+    For example, the following is a snippet of the Longhorn pack's YAML before and after you replace the base URL.
 
     <Tabs>
 
