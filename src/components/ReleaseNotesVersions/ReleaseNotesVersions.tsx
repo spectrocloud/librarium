@@ -110,7 +110,7 @@ export function ReleaseNotesVersions(): JSX.Element | null {
     }),
   };
 
-  if (!isExternal) {
+  if (isExternal) {
     return (
       <Admonition type="tip">
         To learn more about the latest features and product changes, check out the most recent
