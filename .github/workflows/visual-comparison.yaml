@@ -20,13 +20,13 @@ jobs:
         run: npm ci
 
       - name: Install Playwright browsers
-        run: yarn playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium
 
       - name: Build the website
-        run: yarn docusaurus build
+        run: make build
 
       - name: Take screenshots with Playwright
-        run: yarn playwright test
+        run: npx playwright test
 
       # - name: Upload screenshots to Argos
       #   run: yarn argos upload ./screenshots
