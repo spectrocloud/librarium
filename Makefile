@@ -65,6 +65,9 @@ api: ## Generate API docs
 test: ## Run Jest tests
 	npm test
 
+test-visual: ## Run visual regression tests
+	npx playwright test tests/screenshots.spec.ts --workers 4
+
 ##@ Git Targets
 
 commit: ## Add a Git commit. Usage: make commit MESSAGE="<your message here>"

@@ -3,7 +3,10 @@ name: Visual Comparison
 on:
   push:
     branches: [visual-tests]
-
+# on:
+#   push:
+#     paths:
+#       - 'src/**'
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

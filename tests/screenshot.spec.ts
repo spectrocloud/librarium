@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { test } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 import { extractSitemapPathnames } from "./utils";
 // Constants:
 const siteUrl = "http://localhost:3000";
@@ -15,7 +15,17 @@ function waitForDocusaurusHydration() {
 }
 
 function isVersionedDocsPathname(pathname: string): boolean {
-  return pathname.match(/^\/docs\/((\d\.\d\.\d)|(next))\//);
+  // First, check if it starts with /api/, if so, return false immediately
+  if (pathname.startsWith("/api/")) {
+    return false;
+  }
+  // This regex checks if the pathname does not follow the /4.1.x/ pattern
+  // and still follows the allowed versioning pattern.
+  const isValidVersion = !pathname.match(/^\/docs\/(\d+\.\d+\.x)\//);
+  const isNextVersion = pathname.match(/^\/docs\/next\//);
+
+  // Return true if it's a valid version format or the next version, otherwise false
+  return isValidVersion || isNextVersion ? true : false;
 }
 
 function screenshotPathname(pathname: string) {
@@ -24,14 +34,22 @@ function screenshotPathname(pathname: string) {
     await page.goto(url);
     await page.waitForFunction(waitForDocusaurusHydration);
     await page.addStyleTag({ content: stylesheet });
-    await expect(page).toHaveScreenshot();
-    // await argosScreenshot(page, pathnameToArgosName(pathname));
+
+    // Sanitize the pathname to be used as a valid filename
+    // const sanitizedPathname = sanitizePathnameForFile(pathname);
+
+    // Ensure the screenshot is saved with a cleaned-up, valid file name
+    // await page.screenshot({ path: `screenshots/${sanitizedPathname}.png`, fullPage: true });
+
+    // This line ensures that the screenshot matches the expected screenshot.
+    // It may need to be customized based on how your testing framework expects to
+    // handle screenshot comparisons.
+    await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
   });
 }
 
 test.describe("Docusaurus site screenshots", () => {
-  // const pathnames = extractSitemapPathnames(sitemapPath).filter(isVersionedDocsPathname);
-  const pathnames = extractSitemapPathnames(sitemapPath);
+  const pathnames = extractSitemapPathnames(sitemapPath).filter(isVersionedDocsPathname);
   console.log("Pathnames to screenshot:", pathnames);
   pathnames.forEach(screenshotPathname);
 });

@@ -33,3 +33,11 @@ Mermaid diagrams are rendered client-side and produce layout shifts
 .docusaurus-mermaid-container {
   display: none;
 }
+
+/*
+Hide Cookie Consent banner
+
+*/
+#uc-center-container {
+  display: none !important;
+}

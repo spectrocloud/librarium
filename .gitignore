@@ -53,3 +53,9 @@ staging_sidebars/
 ## Cosign
 
 cosign.key
+
+# Visual Compare
+screenshots/
+tests/screenshot.spec.ts-snapshots/
+tests-results/
+playwright-report/
