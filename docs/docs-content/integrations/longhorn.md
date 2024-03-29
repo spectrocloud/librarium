@@ -207,9 +207,6 @@ state.
     domain name instead of the node IP.
 
 </TabItem>
-</Tabs>
-
-</TabItem>
 
 <TabItem label="1.3.x" value="1.3.x">
 
