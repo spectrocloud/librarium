@@ -1,10 +1,10 @@
 import * as fs from "fs";
 import { test } from "@playwright/test";
-import { extractSitemapPathnames } from "argos/utils";
+import { extractSitemapPathnames } from "./utils";
 // Constants:
 const siteUrl = "http://localhost:3000";
-const sitemapPath = "../website/build/sitemap.xml";
-const stylesheetPath = "./screenshot.css";
+const sitemapPath = "build/sitemap.xml";
+const stylesheetPath = "tests/screenshot.css";
 const stylesheet = fs.readFileSync(stylesheetPath).toString();
 
 // Wait for hydration, requires Docusaurus v2.4.3+
@@ -30,7 +30,8 @@ function screenshotPathname(pathname: string) {
 }
 
 test.describe("Docusaurus site screenshots", () => {
-  const pathnames = extractSitemapPathnames(sitemapPath).filter(isVersionedDocsPathname);
+  // const pathnames = extractSitemapPathnames(sitemapPath).filter(isVersionedDocsPathname);
+  const pathnames = extractSitemapPathnames(sitemapPath);
   console.log("Pathnames to screenshot:", pathnames);
-  // pathnames.forEach(screenshotPathname);
+  pathnames.forEach(screenshotPathname);
 });
