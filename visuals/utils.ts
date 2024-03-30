@@ -15,3 +15,10 @@ export function extractSitemapPathnames(sitemapPath: string): string[] {
 export function pathnameToArgosName(pathname: string): string {
   return pathname.replace(/^\/|\/$/g, "") || "index";
 }
+
+// Wait for hydration, requires Docusaurus v2.4.3+
+// See https://github.com/facebook/docusaurus/pull/9256
+// Docusaurus adds a <html data-has-hydrated="true"> once hydrated
+export function WaitForDocusaurusHydration() {
+  return document.documentElement.dataset.hasHydrated === "true";
+}

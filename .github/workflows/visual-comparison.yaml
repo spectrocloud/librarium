@@ -102,7 +102,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          path: visual-assets.tar
+          artifact_name: visual-assets.tar
 
       - name: GH Pages URL
         run: echo "https://spectrocloud.github.io/librarium/${{ github.sha }}/playwright-report/index.html"

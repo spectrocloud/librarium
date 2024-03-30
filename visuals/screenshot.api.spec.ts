@@ -7,12 +7,12 @@ const sitemapPath = "build/sitemap.xml";
 const stylesheetPath = "visuals/screenshot.css";
 const stylesheet = fs.readFileSync(stylesheetPath).toString();
 
-function isVersionedDocsPathname(pathname: string): boolean {
-  if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
-    return false;
+function isApiDocsPathname(pathname: string): boolean {
+  // return false if the pathname does not start with /api/
+  if (pathname.startsWith("/api/") && !pathname.match(/^\/api\/(\d+\.\d+\.x)\//)) {
+    return true;
   }
-
-  return true;
+  return false;
 }
 
 function screenshotPathname(pathname: string) {
@@ -28,19 +28,8 @@ function screenshotPathname(pathname: string) {
   });
 }
 
-test.describe("cookie-banner is visible", () => {
-  test("cookie-banner is visible", async ({ page }) => {
-    await page.goto(siteUrl);
-    await page.waitForFunction(WaitForDocusaurusHydration);
-    await page.waitForLoadState("domcontentloaded");
-    await page.addStyleTag({ content: stylesheet });
-    await expect(page).toHaveScreenshot({ fullPage: true });
-    await expect(page.getByTestId("#usercentrics-root")).toBeVisible();
-  });
-});
-
-test.describe("Docusaurus site screenshots", () => {
-  const pathnames = extractSitemapPathnames(sitemapPath).filter(isVersionedDocsPathname);
+test.describe("API docs screenshots", () => {
+  const pathnames = extractSitemapPathnames(sitemapPath).filter(isApiDocsPathname);
   console.log("Total pathnames: ", pathnames.length);
   pathnames.forEach(screenshotPathname);
 });
