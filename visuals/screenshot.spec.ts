@@ -4,7 +4,7 @@ import { extractSitemapPathnames } from "./utils";
 // Constants:
 const siteUrl = "http://localhost:3000";
 const sitemapPath = "build/sitemap.xml";
-const stylesheetPath = "tests/screenshot.css";
+const stylesheetPath = "visuals/screenshot.css";
 const stylesheet = fs.readFileSync(stylesheetPath).toString();
 
 // Wait for hydration, requires Docusaurus v2.4.3+
@@ -33,8 +33,9 @@ function screenshotPathname(pathname: string) {
     const url = siteUrl + pathname;
     await page.goto(url);
     await page.waitForFunction(waitForDocusaurusHydration);
+    await page.waitForLoadState("domcontentloaded");
     await page.addStyleTag({ content: stylesheet });
-    await page.waitForTimeout(1000); // Waits for 100 milliseconds
+    await page.waitForTimeout(500); // Waits for 100 milliseconds
 
     // Sanitize the pathname to be used as a valid filename
     // const sanitizedPathname = sanitizePathnameForFile(pathname);

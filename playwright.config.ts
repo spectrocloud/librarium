@@ -4,8 +4,16 @@ import { PlaywrightTestConfig } from "@playwright/test";
 const config: PlaywrightTestConfig = {
   // Other config options...
   snapshotDir: "screenshots/",
-  testDir: "tests",
+  testDir: "visuals",
   fullyParallel: true,
+  expect: {
+    toMatchSnapshot: {
+      maxDiffPixels: 10,
+    },
+    toHaveScreenshot: {
+      maxDiffPixels: 10,
+    },
+  },
   workers: process.env.CI ? 1 : 2,
   reporter: [["html", { open: "never" }]],
   webServer: {

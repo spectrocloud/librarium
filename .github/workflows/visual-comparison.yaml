@@ -43,7 +43,28 @@ jobs:
         run: make build
 
       - name: Take screenshots with Playwright
-        run: npx playwright test
+        run: make test-visual
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: "snapshots"
+          path: |
+            screenshots/screenshot.specs.ts-snapshots/
+          if-no-files-found: error
+          retention-days: 1
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: "report"
+          path: |
+            playwright-report/
+          if-no-files-found: error
+          retention-days: 1
+          
+
+
 
       # - name: Upload screenshots to Argos
       #   run: yarn argos upload ./screenshots
