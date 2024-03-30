@@ -79,7 +79,7 @@ test-visual: ## Run visual regression tests
 	npx playwright test visuals/screenshot.spec.ts --workers $(CPUS)
 
 test-visual-ci: ## Run visual regression tests
-	npx playwright test visuals/screenshot.spec.ts --workers $(CPUS)
+	npx playwright test visuals/screenshot.spec.ts --workers 2
 
 ##@ Git Targets
 

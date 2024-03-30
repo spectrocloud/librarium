@@ -40,14 +40,15 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
-      # - name: Build the website
-      #   run: make build
+      - name: Build the website
+        run: make build
 
       - name: Take screenshots with Playwright
         run: make test-visual
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v4
+        id: screenshots
         with:
           name: "snapshots"
           path: |
@@ -57,14 +58,18 @@ jobs:
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
+        id: report
         with:
           name: "report"
           path: |
             playwright-report/
           if-no-files-found: error
-          retention-days: 1
-          
+          retention-days: 1  
 
+      - name: URLs
+        run:  |
+          echo 'Screenshots URL is ${{ steps.screenshots.outputs.artifact-url }}'
+          echo 'Report URL is ${{ steps.report.outputs.artifact-url }}'
 
 
       # - name: Upload screenshots to Argos
