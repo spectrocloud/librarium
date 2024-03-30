@@ -21,6 +21,7 @@ env:
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
 
 
+
 concurrency:
   group: "visual-comparison-${{ github.workflow }}"
   cancel-in-progress: false
@@ -32,6 +33,11 @@ permissions:
 
 jobs:
   take-screenshots:
+
+    environment:
+      name: github-pages
+      url: ${{ steps.take-screenshots.outputs.page_url }}
+
     name: Visual Comparison
     runs-on: ubuntu-latest
     steps:
