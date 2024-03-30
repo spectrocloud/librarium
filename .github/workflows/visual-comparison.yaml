@@ -71,7 +71,7 @@ jobs:
           path: |
             screenshots/screenshot.spec.ts-snapshots/
           if-no-files-found: error
-          retention-days: 1
+          retention-days: 3
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
@@ -81,7 +81,7 @@ jobs:
           path: |
             playwright-report/
           if-no-files-found: error
-          retention-days: 1  
+          retention-days: 3  
 
       - name: Download URLs
         run:  |
@@ -92,18 +92,19 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Unique Folder name
-        run : mkdir ${{ github.sha }} && cp -r playwright-report/* ${{ github.sha }}
+        run : mkdir -p ${{ github.sha }} && cp -r playwright-report/* ${{ github.sha }}
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ${{ github.sha }}
+     
+      - name: Archive directory with SHA
+        run: tar -czvf visual-assets.tar ${GITHUB_SHA}
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          path: visual-assets.tar
 
       - name: GH Pages URL
-        run: echo "https://spectrocloud.github.io/docs.spectrocloud.com/${{ github.sha }}/playwright-report/index.html"
+        run: echo "https://spectrocloud.github.io/librarium/${{ github.sha }}/playwright-report/index.html"
 
 

@@ -30,28 +30,29 @@ function isVersionedDocsPathname(pathname: string): boolean {
 
 function screenshotPathname(pathname: string) {
   test(`pathname ${pathname}`, async ({ page }) => {
+    console.log(`Taking screenshot of ${pathname}`);
     const url = siteUrl + pathname;
     await page.goto(url);
     await page.waitForFunction(waitForDocusaurusHydration);
     await page.waitForLoadState("domcontentloaded");
     await page.addStyleTag({ content: stylesheet });
     await page.waitForTimeout(500); // Waits for 100 milliseconds
-
-    // Sanitize the pathname to be used as a valid filename
-    // const sanitizedPathname = sanitizePathnameForFile(pathname);
-
-    // Ensure the screenshot is saved with a cleaned-up, valid file name
-    // await page.screenshot({ path: `screenshots/${sanitizedPathname}.png`, fullPage: true });
-
-    // This line ensures that the screenshot matches the expected screenshot.
-    // It may need to be customized based on how your testing framework expects to
-    // handle screenshot comparisons.
     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
   });
 }
 
+// test.describe("cookie-banner is visible", () => {
+//   test("cookie-banner is visible", async ({ page }) => {
+//     await page.goto(siteUrl);
+//     await page.waitForFunction(waitForDocusaurusHydration);
+//     await page.waitForLoadState("domcontentloaded");
+//     await page.addStyleTag({ content: stylesheet });
+//     await expect(page).toHaveScreenshot({ fullPage: true });
+//     await expect(page.getByTestId("#usercentrics-root")).toBeVisible();
+//   });
+// });
+
 test.describe("Docusaurus site screenshots", () => {
   const pathnames = extractSitemapPathnames(sitemapPath).filter(isVersionedDocsPathname);
-  console.log("Pathnames to screenshot:", pathnames);
   pathnames.forEach(screenshotPathname);
 });
