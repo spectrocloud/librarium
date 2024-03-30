@@ -22,7 +22,8 @@ env:
 
 jobs:
   take-screenshots:
-    runs-on: ubuntu-latest
+    name: Visual Comparison
+    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -39,8 +40,8 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Build the website
-        run: make build
+      # - name: Build the website
+      #   run: make build
 
       - name: Take screenshots with Playwright
         run: make test-visual
