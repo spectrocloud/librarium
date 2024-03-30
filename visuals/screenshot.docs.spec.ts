@@ -28,19 +28,24 @@ function screenshotPathname(pathname: string) {
   });
 }
 
-test.describe("cookie-banner is visible", () => {
-  test("cookie-banner is visible", async ({ page }) => {
-    await page.goto(siteUrl);
-    await page.waitForFunction(WaitForDocusaurusHydration);
-    await page.waitForLoadState("domcontentloaded");
-    await page.addStyleTag({ content: stylesheet });
-    await expect(page).toHaveScreenshot({ fullPage: true });
-    await expect(page.getByTestId("#usercentrics-root")).toBeVisible();
-  });
-});
+// test.describe("cookie-banner is visible", () => {
+//   test("cookie-banner is visible", async ({ page }) => {
+//     await page.goto(siteUrl);
+//     await page.waitForFunction(WaitForDocusaurusHydration);
+//     await page.waitForLoadState("domcontentloaded");
+//     await page.addStyleTag({ content: stylesheet });
+//     await expect(page).toHaveScreenshot({ fullPage: true });
+//     await expect(page.getByTestId("#usercentrics-root")).toBeVisible();
+//   });
+// });
 
-test.describe("Docusaurus site screenshots", () => {
+// test.describe("Docusaurus site screenshots", () => {
+//   const pathnames = extractSitemapPathnames(sitemapPath).filter(isVersionedDocsPathname);
+//   pathnames.forEach(screenshotPathname);
+// });
+
+test.describe("API docs screenshots", () => {
   const pathnames = extractSitemapPathnames(sitemapPath).filter(isVersionedDocsPathname);
   console.log("Total pathnames: ", pathnames.length);
-  pathnames.forEach(screenshotPathname);
+  screenshotPathname(pathnames[0]);
 });

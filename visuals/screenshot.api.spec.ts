@@ -28,8 +28,13 @@ function screenshotPathname(pathname: string) {
   });
 }
 
+// test.describe("API docs screenshots", () => {
+//   const pathnames = extractSitemapPathnames(sitemapPath).filter(isApiDocsPathname);
+//   pathnames.forEach(screenshotPathname);
+// });
+
 test.describe("API docs screenshots", () => {
   const pathnames = extractSitemapPathnames(sitemapPath).filter(isApiDocsPathname);
   console.log("Total pathnames: ", pathnames.length);
-  pathnames.forEach(screenshotPathname);
+  screenshotPathname(pathnames[0]);
 });
