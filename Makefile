@@ -78,6 +78,9 @@ test: ## Run Jest tests
 test-visual: ## Run visual regression tests
 	npx playwright test visuals/screenshot.spec.ts --workers $(CPUS)
 
+test-visual-ci: ## Run visual regression tests
+	npx playwright test visuals/screenshot.spec.ts --workers $(CPUS)
+
 ##@ Git Targets
 
 commit: ## Add a Git commit. Usage: make commit MESSAGE="<your message here>"
