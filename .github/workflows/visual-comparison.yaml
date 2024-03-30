@@ -91,12 +91,21 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Unique Folder name
+      - name: Unique Folder Name
         run : mkdir -p ${{ github.sha }} && cp -r playwright-report/* ${{ github.sha }}
 
      
       - name: Archive directory with SHA
         run: tar -czvf visual-assets.tar ${GITHUB_SHA}
+
+      - name: Upload artifact with New Folder Structure
+        id: upload-artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-assets
+          path: visual-assets.tar
+          retention-days: 3
+          if-no-files-found: error
 
       - name: Deploy to GitHub Pages
         id: deployment
@@ -105,6 +114,10 @@ jobs:
           artifact_name: visual-assets.tar
 
       - name: GH Pages URL
-        run: echo "https://spectrocloud.github.io/librarium/${{ github.sha }}/playwright-report/index.html"
+        run: | 
+          echo "https://spectrocloud.github.io/librarium/${{ github.sha }}/playwright-report/index.html"
+          echo "https://spectrocloud.github.io/librarium/${{ github.sha }}/index.html"
+          
+
 
 
