@@ -23,7 +23,7 @@ env:
 jobs:
   take-screenshots:
     name: Visual Comparison
-    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -44,7 +44,7 @@ jobs:
         run: make build
 
       - name: Take screenshots with Playwright
-        run: make test-visual
+        run: make test-visual-ci
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v4
@@ -70,7 +70,3 @@ jobs:
         run:  |
           echo 'Screenshots URL is ${{ steps.screenshots.outputs.artifact-url }}'
           echo 'Report URL is ${{ steps.report.outputs.artifact-url }}'
-
-
-      # - name: Upload screenshots to Argos
-      #   run: yarn argos upload ./screenshots
