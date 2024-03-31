@@ -19,6 +19,7 @@ env:
   ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
   ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
+  HTML_REPORT_URL_PATH: reports/${{ github.ref_name }}/${{ github.run_id }}/${{ github.run_attempt }}
 
 
 
@@ -29,16 +30,6 @@ concurrency:
 
 jobs:
   take-screenshots:
-
-    environment:
-      name: github-pages
-      url: ${{ steps.take-screenshots.outputs.page_url }}
-      HTML_REPORT_URL_PATH: reports/${{ github.ref_name }}/${{ github.run_id }}/${{ github.run_attempt }}
-
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
 
     name: Visual Comparison
     runs-on: ubuntu-latest
@@ -83,31 +74,7 @@ jobs:
             fi
           done
 
-
-      - name: Download URLs
-        run:  |
-          echo 'Screenshots URL is ${{ steps.screenshots.outputs.artifact-url }}'
-          echo 'Report URL is ${{ steps.report.outputs.artifact-url }}'
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Unique Folder Name
-        run : mkdir -p ${{ github.sha }} && cp -r playwright-report/* ${{ github.sha }}
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3.7.3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: playwright-report/
-          destination_dir: ${{ github.sha }}
-          keep_files: true
-
           
       - name: GH Pages URL
         run: |
           echo "::notice title=📋 Published Playwright Test Report::https://spectrocloud.github.io/librarium/$HTML_REPORT_URL_PATH"
-
-
-
-
