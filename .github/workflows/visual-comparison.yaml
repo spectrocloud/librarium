@@ -74,7 +74,7 @@ jobs:
         run:  ./scripts/screenshot_artifacts.sh
 
       - name: Take screenshots with Playwright
-        run: make test-visual-ci
+        run: make test-visuals-ci
 
       - name: Upload Report
         uses: actions/upload-artifact@v4

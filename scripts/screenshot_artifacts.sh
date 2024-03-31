@@ -36,7 +36,7 @@ OWNER="${GITHUB_REPOSITORY_OWNER:-spectrocloud}"
 REPO_NAME="${GITHUB_REPOSITORY#*/}"  
 REPO="${REPO_NAME:-librarium}"
 WORKFLOW_FILE="screenshot_capture.yaml"
-UNZIP_FOLDER="../screenshots" 
+UNZIP_FOLDER="screenshots" 
 
 
 perform_curl() {

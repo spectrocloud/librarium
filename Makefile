@@ -75,10 +75,10 @@ api: ## Generate API docs
 test: ## Run Jest tests
 	npm test
 
-test-visual: ## Run visual regression tests
+test-visuals: ## Run visual regression tests
 	npx playwright test visuals/ --workers $(CPUS)
 
-test-visual-ci: ## Run visual regression tests
+test-visuals-ci: ## Run visual regression tests
 	npx playwright test visuals/ --workers 4 || exit 0
 
 ##@ Git Targets
