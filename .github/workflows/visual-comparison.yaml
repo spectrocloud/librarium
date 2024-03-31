@@ -94,31 +94,38 @@ jobs:
       - name: Unique Folder Name
         run : mkdir -p ${{ github.sha }} && cp -r playwright-report/* ${{ github.sha }}
 
-     
-      - name: Archive directory with SHA
-        run:  |
-          tar --dereference --hard-dereference \
-          --exclude=.git \
-          --exclude=.github \
-          -cvf visual-assets.tar ${GITHUB_SHA} && ls -ll
-
-      - name: Upload artifact with New Folder Structure
-        id: upload-artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: visual-assets
-          path: visual-assets.tar
-          retention-days: 3
-          if-no-files-found: error
-
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v3.7.3
         with:
-          artifact_name: visual-assets
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: playwright-report/
+          
+     
+      # - name: Archive directory with SHA
+      #   run:  |
+      #     tar --dereference --hard-dereference \
+      #     --exclude=.git \
+      #     --exclude=.github \
+      #     -cvf visual-assets.tar ${GITHUB_SHA} && ls -ll
+
+      # - name: Upload artifact with New Folder Structure
+      #   id: upload-artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: visual-assets
+      #     path: visual-assets.tar
+      #     retention-days: 3
+      #     if-no-files-found: error
+
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: actions/deploy-pages@v4
+      #   with:
+      #     artifact_name: visual-assets
+
 
       - name: GH Pages URL
-        run: | 
+        run: |
           echo "https://spectrocloud.github.io/librarium/${{ github.sha }}/playwright-report/index.html"
           echo "https://spectrocloud.github.io/librarium/${{ github.sha }}/index.html"
 
