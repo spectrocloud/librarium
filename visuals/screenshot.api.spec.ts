@@ -6,7 +6,7 @@ const siteUrl = "http://localhost:3000";
 const sitemapPath = "build/sitemap.xml";
 const stylesheetPath = "visuals/screenshot.css";
 const stylesheet = fs.readFileSync(stylesheetPath).toString();
-const excludeList = require("./excludeList.json");
+const excludeList = require("./exclude.json");
 
 function isApiDocsPathname(pathname: string, excludeList: string[]): boolean {
   if (excludeList.includes(pathname)) {

@@ -33,25 +33,25 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js environment
+      - name: Setup Node.js Environment
         uses: actions/setup-node@v4
         with:
           node-version: "18"
           cache: "npm"
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm ci
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Build the website
+      - name: Build Website
         run: make build
 
-      - name: Take screenshots with Playwright
+      - name: Take Screenshots with Playwright
         run: make test-visual-ci
 
-      - name: Upload screenshots
+      - name: Upload Screenshots
         uses: actions/upload-artifact@v4
         id: screenshots
         with:

@@ -130,6 +130,10 @@ jobs:
           fi
         done
 
+
+    - name: DNS Wait
+      run:  sleep 120
+
         
     - name: GH Pages URL
       run: |
