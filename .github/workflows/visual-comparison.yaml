@@ -71,7 +71,7 @@ jobs:
           path: |
             screenshots/
           if-no-files-found: error
-          retention-days: 3
+          retention-days: 1
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
@@ -81,7 +81,7 @@ jobs:
           path: |
             playwright-report/
           if-no-files-found: error
-          retention-days: 3  
+          retention-days: 1  
 
       - name: Download URLs
         run:  |
@@ -99,36 +99,15 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: playwright-report/
+          destination_dir: ${{ github.sha }}
+          keep_files: true
 
-
-     
-      # - name: Archive directory with SHA
-      #   run:  |
-      #     tar --dereference --hard-dereference \
-      #     --exclude=.git \
-      #     --exclude=.github \
-      #     -cvf visual-assets.tar ${GITHUB_SHA} && ls -ll
-
-      # - name: Upload artifact with New Folder Structure
-      #   id: upload-artifact
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: visual-assets
-      #     path: visual-assets.tar
-      #     retention-days: 3
-      #     if-no-files-found: error
-
-      # - name: Deploy to GitHub Pages
-      #   id: deployment
-      #   uses: actions/deploy-pages@v4
-      #   with:
-      #     artifact_name: visual-assets
-
-
+          
       - name: GH Pages URL
         run: |
-          echo "https://spectrocloud.github.io/librarium/${{ github.sha }}/playwright-report/index.html"
-          echo "https://spectrocloud.github.io/librarium/${{ github.sha }}/index.html"
+          # echo "https://spectrocloud.github.io/librarium/${{ github.sha }}/playwright-report/index.html"
+          # echo "https://spectrocloud.github.io/librarium/${{ github.sha }}/index.html"
+          echo "::notice title=📋 Published Playwright Test Report::https://spectrocloud.github.io/librarium/${{ github.sha }}/index.html"
 
 
 
