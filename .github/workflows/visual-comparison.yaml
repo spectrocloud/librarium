@@ -33,6 +33,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.take-screenshots.outputs.page_url }}
+      HTML_REPORT_URL_PATH: reports/${{ github.ref_name }}/${{ github.run_id }}/${{ github.run_attempt }}
 
     permissions:
       contents: write
@@ -63,25 +64,25 @@ jobs:
       - name: Take screenshots with Playwright
         run: make test-visual-ci
 
-      - name: Upload screenshots
-        uses: actions/upload-artifact@v4
-        id: screenshots
-        with:
-          name: "snapshots"
-          path: |
-            screenshots/
-          if-no-files-found: error
-          retention-days: 1
+      - name: Push HTML Report
+        timeout-minutes: 3
+        run: |
+          git add .
+          git commit -m "workflow: add HTML report for run-id ${{ github.run_id }} (attempt:  ${{ github.run_attempt }})"
+          while true; do
+            git pull --rebase
+            if [ $? -ne 0 ]; then
+              echo "Failed to rebase. Please review manually."
+              exit 1
+            fi
 
-      - name: Upload Report
-        uses: actions/upload-artifact@v4
-        id: report
-        with:
-          name: "report"
-          path: |
-            playwright-report/
-          if-no-files-found: error
-          retention-days: 1  
+            git push
+            if [ $? -eq 0 ]; then
+              echo "Successfully pushed HTML report to repo."
+              exit 0
+            fi
+          done
+
 
       - name: Download URLs
         run:  |
@@ -105,9 +106,7 @@ jobs:
           
       - name: GH Pages URL
         run: |
-          # echo "https://spectrocloud.github.io/librarium/${{ github.sha }}/playwright-report/index.html"
-          # echo "https://spectrocloud.github.io/librarium/${{ github.sha }}/index.html"
-          echo "::notice title=📋 Published Playwright Test Report::https://spectrocloud.github.io/librarium/${{ github.sha }}/index.html"
+          echo "::notice title=📋 Published Playwright Test Report::https://spectrocloud.github.io/librarium/$HTML_REPORT_URL_PATH"
 
 
 
