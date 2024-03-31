@@ -10,6 +10,7 @@ const excludeList = require("./exclude.json");
 
 function isApiDocsPathname(pathname: string, excludeList: string[]): boolean {
   if (excludeList.includes(pathname)) {
+    console.log(`Excluding ${pathname}`);
     return false;
   }
   // return false if the pathname does not start with /api/

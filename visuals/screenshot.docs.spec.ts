@@ -10,6 +10,7 @@ const excludeList = require("./exclude.json");
 
 function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
   if (excludeList.includes(pathname)) {
+    console.log(`Excluding ${pathname}`);
     return false;
   }
 

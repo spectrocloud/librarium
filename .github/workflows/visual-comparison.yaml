@@ -1,16 +1,16 @@
 name: Visual Comparison
 
-# on:
-#   push:
-#     branches: [visual-tests]
-
-
 on:
-  pull_request:
-    types: [opened, reopened, synchronize, labeled]
-    branches-ignore: ["version-*", "release-*"]
-    paths:
-      - 'src/**'
+  push:
+    branches: [visual-tests]
+
+
+# on:
+#   pull_request:
+#     types: [opened, reopened, synchronize, labeled]
+#     branches-ignore: ["version-*", "release-*"]
+#     paths:
+#       - 'src/**'
 
 
 env:
