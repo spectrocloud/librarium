@@ -4,11 +4,15 @@ name: Screenshot Capture
 # The screenshots can be used to compare the visual appearance of the website before and after a release.
 # The workflow Visual Comparison uses these screenshots to generate a visual comparison report.
 
+# on:
+#   workflow_run:
+#     workflows: ["Release to Production"]
+#     types: [completed]
+#   workflow_dispatch:
+
 on:
-  workflow_run:
-    workflows: ["Release to Production"]
-    types: [completed]
-  workflow_dispatch:
+  push:
+    branches: [visual-tests]
 
 
 env:
