@@ -96,7 +96,11 @@ jobs:
 
      
       - name: Archive directory with SHA
-        run: tar -czvf visual-assets.tar ${GITHUB_SHA}
+        run:  | 
+          tar  --dereference --hard-dereference \
+          --exclude=.git \
+          --exclude=.github \
+          -cvf visual-assets.tar ${GITHUB_SHA}
 
       - name: Upload artifact with New Folder Structure
         id: upload-artifact
