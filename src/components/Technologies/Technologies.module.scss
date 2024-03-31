@@ -1,8 +1,6 @@
 .wrapper {
   padding: 15px 0;
   .technologyWrapper {
-    display: flex;
-    flex-wrap: wrap;
     margin-top: 32px;
   }
   .imageWrapper {
@@ -12,11 +10,6 @@
     height: 52px;
     width: 100%;
     margin: 5px 0 5px;
-  }
-
-  .imageWrapper > img {
-    max-height: 100%;
-    max-width: 100%;
   }
   .card {
     width: 120px;
@@ -44,4 +37,14 @@
     text-align: center;
     word-break: break-word;
   }
+  .ant-collapse {
+    width: 100%;
+    border: 0 none;
+    background: white;
+  }
+}
+.ant-collapse {
+  width: 100%;
+  border: 0 none;
+  background: white;
 }

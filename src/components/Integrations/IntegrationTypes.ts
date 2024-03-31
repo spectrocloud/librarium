@@ -8,6 +8,7 @@ export interface FrontMatterData {
   logoUrl: string;
   slug: string;
   id: string;
+  packType: string;
 }
 
 export interface PacksData {
