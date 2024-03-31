@@ -3,10 +3,15 @@ name: Visual Comparison
 on:
   push:
     branches: [visual-tests]
+
+
 # on:
-#   push:
+#   pull_request:
+#     types: [opened, reopened, synchronize, labeled]
+#     branches-ignore: ["version-*", "release-*"]
 #     paths:
 #       - 'src/**'
+
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -29,9 +34,22 @@ concurrency:
 
 
 jobs:
-  take-screenshots:
+  # run-ci:
+  #   # runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       shell: bash
+  #   if: ${{ !github.event.pull_request.draft && github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' }}
+  #   steps:
+  #     # If the condition above is not met, aka, the PR is not in draft status, then this step is skipped.
+  #     # Because this step is part of the critical path, omission of this step will result in remaining CI steps not gettinge executed.
+  #     # As of 8/8/2022 there is now way to enforce this beahvior in GitHub Actions CI.
+  #     - run: exit 0
 
+  take-screenshots:
     name: Visual Comparison
+    # needs: [run-ci]
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -78,8 +96,8 @@ jobs:
 
   publish_report:
     name: Publish HTML Report
-    if: "success()"
-    needs: [test]
+    # needs: [run-ci, take-screenshots]
+    needs: [take-screenshots]
     runs-on: ubuntu-latest
     continue-on-error: true    
     steps: 
