@@ -6,8 +6,12 @@ const siteUrl = "http://localhost:3000";
 const sitemapPath = "build/sitemap.xml";
 const stylesheetPath = "visuals/screenshot.css";
 const stylesheet = fs.readFileSync(stylesheetPath).toString();
+const excludeList = require("./excludeList.json");
 
-function isApiDocsPathname(pathname: string): boolean {
+function isApiDocsPathname(pathname: string, excludeList: string[]): boolean {
+  if (excludeList.includes(pathname)) {
+    return false;
+  }
   // return false if the pathname does not start with /api/
   if (pathname.startsWith("/api/") && !pathname.match(/^\/api\/(\d+\.\d+\.x)\//)) {
     return true;
@@ -28,13 +32,7 @@ function screenshotPathname(pathname: string) {
   });
 }
 
-// test.describe("API docs screenshots", () => {
-//   const pathnames = extractSitemapPathnames(sitemapPath).filter(isApiDocsPathname);
-//   pathnames.forEach(screenshotPathname);
-// });
-
 test.describe("API docs screenshots", () => {
-  const pathnames = extractSitemapPathnames(sitemapPath).filter(isApiDocsPathname);
-  console.log("Total pathnames: ", pathnames.length);
-  screenshotPathname(pathnames[0]);
+  const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) => isApiDocsPathname(pathname, excludeList));
+  pathnames.forEach(screenshotPathname);
 });

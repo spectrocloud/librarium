@@ -70,18 +70,11 @@ jobs:
       - name: Build the website
         run: make build
 
+      - name: Download Reference Screenshots
+        run:  ./scripts/screenshot_artifacts.sh
+
       - name: Take screenshots with Playwright
         run: make test-visual-ci
-
-      # - name: Upload screenshots
-      #   uses: actions/upload-artifact@v4
-      #   id: screenshots
-      #   with:
-      #     name: "snapshots"
-      #     path: |
-      #       screenshots/
-      #     if-no-files-found: error
-      #     retention-days: 1
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
@@ -148,7 +141,7 @@ jobs:
       with:
         message: |
             📋 Visual Report for ${{ github.ref_name }} with CI run ${{ github.run_id }} and attempt ${{ github.run_attempt }} is ready attempt at
-              https://spectrocloud.github.io/librarium/$HTML_REPORT_URL_PATH
+              https://spectrocloud.github.io/$GITHUB_REPOSITORY_OWNER/$HTML_REPORT_URL_PATH
         message-failure: |
             👎 Uh oh! Unable to publish Visual Report URL.
         refresh-message-position: true

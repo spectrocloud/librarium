@@ -6,8 +6,13 @@ const siteUrl = "http://localhost:3000";
 const sitemapPath = "build/sitemap.xml";
 const stylesheetPath = "visuals/screenshot.css";
 const stylesheet = fs.readFileSync(stylesheetPath).toString();
+const excludeList = require("./excludeList.json");
 
-function isVersionedDocsPathname(pathname: string): boolean {
+function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
+  if (excludeList.includes(pathname)) {
+    return false;
+  }
+
   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
     return false;
   }
@@ -39,13 +44,9 @@ function screenshotPathname(pathname: string) {
 //   });
 // });
 
-// test.describe("Docusaurus site screenshots", () => {
-//   const pathnames = extractSitemapPathnames(sitemapPath).filter(isVersionedDocsPathname);
-//   pathnames.forEach(screenshotPathname);
-// });
-
 test.describe("API docs screenshots", () => {
-  const pathnames = extractSitemapPathnames(sitemapPath).filter(isVersionedDocsPathname);
-  console.log("Total pathnames: ", pathnames.length);
-  screenshotPathname(pathnames[0]);
+  const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
+    isVersionedDocsPathname(pathname, excludeList)
+  );
+  pathnames.forEach(screenshotPathname);
 });
