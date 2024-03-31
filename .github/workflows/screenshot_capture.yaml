@@ -1,0 +1,58 @@
+name: Screenshot Capture
+# This workflow is triggered when a workflow run of the "Release to Production" workflow is completed or when manually triggered.
+# The primary purpose of this workflow is to take screenshots of the website using Playwright and upload them as artifacts.
+# The screenshots can be used to compare the visual appearance of the website before and after a release.
+# The workflow Visual Comparison uses these screenshots to generate a visual comparison report.
+
+on:
+  workflow_run:
+    workflows: ["Release to Production"]
+    types: [completed]
+  workflow_dispatch:
+
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  APPZI_TOKEN: ${{ secrets.APPZI_TOKEN }}
+  MENDABLE_API_KEY: ${{ secrets.MENDABLE_API_KEY }}
+  FULLSTORY_ORGID: ${{ secrets.FULLSTORY_ORGID }}
+  ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+  ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+  ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
+
+
+jobs:
+
+  visual-snapshots:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Build the website
+        run: make build
+
+      - name: Take screenshots with Playwright
+        run: make test-visual-ci
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        id: screenshots
+        with:
+          name: "snapshots"
+          path: |
+            screenshots/
+          if-no-files-found: error
+          retention-days: 3
