@@ -19,11 +19,12 @@ installation. Refer to the [Site Parameters](#site-parameters) for a list of all
 
 The Edge Installer is configured with a set of default values.
 
-| Parameter         | Default                                        | Description                                                                    |
-| ----------------- | ---------------------------------------------- | ------------------------------------------------------------------------------ |
-| `PaletteEndpoint` | `api.console.spectrocloud.com`                 | The Palette API endpoint.                                                      |
-| `Prefix`          | `edge`                                         | The default prefix to apply to the unique identifier.                          |
-| `RegistrationURL` | `https://edge-registration-generic.vercel.app` | The URL that operators should use when registering the Edge host with Palette. |
+| Parameter             | Default                                        | Description                                                                                                                                                                                                           |
+| --------------------- | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `paletteEndpoint`     | `api.console.spectrocloud.com`                 | The Palette API endpoint.                                                                                                                                                                                             |
+| `prefix`              | `edge`                                         | The prefix prepended to the edge device hostname to form the unique identifier.                                                                                                                                       |
+| `registrationURL`     | `https://edge-registration-generic.vercel.app` | The URL that operators should use when registering the Edge host with Palette.                                                                                                                                        |
+| `disableAutoRegister` | `false`                                        | Set to `true` if you want to disable auto registration. Refer to the [Register Edge Host](../site-deployment/site-installation/edge-host-registration.md) reference page to learn more about Edge host registrations. |
 
 The default values assume you are installing the Edge host in an environment without a network proxy, do not require
 remote access to the Edge host, and are using Palette SaaS. If you have requirements different from the default values,
