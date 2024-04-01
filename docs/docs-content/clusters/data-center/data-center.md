@@ -30,4 +30,4 @@ environments.
 
 - [OpenStack](openstack.md)
 
-- [VMware](vmware.md)
+- [VMware](./vmware/vmware.md)
