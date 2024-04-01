@@ -23,8 +23,14 @@ function isVersionedDocsPathname(pathname: string, excludeList: string[]): boole
   return true;
 }
 
+test.beforeAll(async () => {
+  console.log("Excluded pages: ", excludeList);
+  console.log("Total pages: ", extractSitemapPathnames(sitemapPath).length);
+});
+
 function screenshotPathname(pathname: string) {
   test(`pathname ${pathname}`, async ({ page }) => {
+    console.log(`Taking screenshot of ${pathname}`);
     const url = siteUrl + pathname;
     await page.goto(url);
     await page.waitForFunction(WaitForDocusaurusHydration);
@@ -39,8 +45,6 @@ test.describe("Docs screenshots", () => {
   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
     isVersionedDocsPathname(pathname, excludeList)
   );
-  console.log(`Taking screenshots of ${pathnames.length} Docs pages`);
-  console.log("Excluded pages: ", excludeList);
 
   pathnames.forEach(screenshotPathname);
 });

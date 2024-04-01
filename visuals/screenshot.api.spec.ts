@@ -21,6 +21,11 @@ function isApiDocsPathname(pathname: string, excludeList: string[]): boolean {
   return false;
 }
 
+test.beforeAll(async () => {
+  console.log("Excluded pages: ", excludeList);
+  console.log("Total pages: ", extractSitemapPathnames(sitemapPath).length);
+});
+
 function screenshotPathname(pathname: string) {
   test(`pathname ${pathname}`, async ({ page }) => {
     console.log(`Taking screenshot of ${pathname}`);
@@ -36,8 +41,5 @@ function screenshotPathname(pathname: string) {
 
 test.describe("API docs screenshots", () => {
   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) => isApiDocsPathname(pathname, excludeList));
-  console.log(`Taking screenshots of ${pathnames.length} API docs pages`);
-  console.log("Excluded pages: ", excludeList);
-
   pathnames.forEach(screenshotPathname);
 });
