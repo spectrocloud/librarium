@@ -8,6 +8,8 @@ const stylesheetPath = "visuals/screenshot.css";
 const stylesheet = fs.readFileSync(stylesheetPath).toString();
 const excludeList = require("./exclude.json");
 
+test.describe.configure({ mode: "parallel" });
+
 function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
   if (excludeList.includes(pathname)) {
     console.log(`Excluding ${pathname}`);
@@ -20,6 +22,14 @@ function isVersionedDocsPathname(pathname: string, excludeList: string[]): boole
 
   return true;
 }
+
+// function chunkArray(array: string[], parts: number): string[][] {
+//   let result: string[][] = [];
+//   for (let i = parts; i > 0; i--) {
+//     result.push(array.splice(0, Math.ceil(array.length / i)));
+//   }
+//   return result;
+// }
 
 function screenshotPathname(pathname: string) {
   test(`pathname ${pathname}`, async ({ page }) => {

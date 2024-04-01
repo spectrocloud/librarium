@@ -76,10 +76,13 @@ test: ## Run Jest tests
 	npm test
 
 test-visuals: ## Run visual regression tests
-	npx playwright test visuals/ --workers $(CPUS)
+	npx playwright test visuals/
 
 test-visuals-ci: ## Run visual regression tests
-	npx playwright test visuals/ --workers 4 || exit 0
+	npx playwright test --shard=1/4
+	npx playwright test --shard=2/4
+	npx playwright test --shard=3/4
+	npx playwright test --shard=4/4
 
 ##@ Git Targets
 

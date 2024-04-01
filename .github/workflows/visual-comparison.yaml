@@ -45,10 +45,54 @@ jobs:
       # As of 8/8/2022 there is now way to enforce this beahvior in GitHub Actions CI.
       - run: exit 0
 
-  take-screenshots:
-    name: Visual Comparison
+
+  build:
+    name: Build
     needs: [run-ci]
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Post PR Comment
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+              🤖 Starting the visual tests. This will take approximately an hour.
+          refresh-message-position: true
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Website
+        run: make build
+
+      - name: Upload Build
+        uses: actions/upload-artifact@v4
+        with:
+          name: "build"
+          path: |
+            build/
+          if-no-files-found: error
+          retention-days: 1
+
+
+
+  take-screenshots:
+    name: Visual Comparison
+    needs: [run-ci, build]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [1, 2, 3, 4]
+        shardTotal: [4]
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -65,37 +109,56 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Build the website
-        run: make build
+      - name: Download Build
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: build
 
       - name: Download Reference Screenshots
         run:  ./scripts/screenshot_artifacts.sh
 
-
-      - name: Post Netlify progress
-        uses: mshick/add-pr-comment@v2
-        with:
-          message: |
-              🤖 Starting the visual tests. This will take approximately 45 minutes.
-          refresh-message-position: true
-
       - name: Take screenshots with Playwright
-        run: make test-visuals-ci
+        run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
-      - name: Upload Report
+      - name: Upload blob report to GitHub Actions Artifacts
         uses: actions/upload-artifact@v4
-        id: report
         with:
-          name: "report"
-          path: |
-            playwright-report/
-          if-no-files-found: error
-          retention-days: 1  
+          name: blob-report-${{ matrix.shardIndex }}
+          path: blob-report
+          retention-days: 1
+
+
+  merge-reports:
+    name: Merge Reports
+    needs: [take-screenshots]
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Download blob reports from GitHub Actions Artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: all-blob-reports
+        pattern: blob-report-*
+        merge-multiple: true
+
+    - name: Merge into HTML Report
+      run: npx playwright merge-reports --reporter html ./all-blob-reports
+
+    - name: Upload Report
+      uses: actions/upload-artifact@v4
+      id: report
+      with:
+        name: "report"
+        path: |
+          playwright-report/
+        if-no-files-found: error
+        retention-days: 1  
 
 
   publish_report:
     name: Publish HTML Report
-    needs: [run-ci, take-screenshots]
+    needs: [run-ci, take-screenshots, merge-reports]
     runs-on: ubuntu-latest
     continue-on-error: true    
     steps: 

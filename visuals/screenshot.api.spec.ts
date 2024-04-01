@@ -1,12 +1,14 @@
 import * as fs from "fs";
 import { test, expect } from "@playwright/test";
 import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
-// Constants:
+
 const siteUrl = "http://localhost:3000";
 const sitemapPath = "build/sitemap.xml";
 const stylesheetPath = "visuals/screenshot.css";
 const stylesheet = fs.readFileSync(stylesheetPath).toString();
 const excludeList = require("./exclude.json");
+
+test.describe.configure({ mode: "parallel" });
 
 function isApiDocsPathname(pathname: string, excludeList: string[]): boolean {
   if (excludeList.includes(pathname)) {

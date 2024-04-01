@@ -6,6 +6,7 @@ const config: PlaywrightTestConfig = {
   snapshotDir: "screenshots/",
   testDir: "visuals",
   fullyParallel: true,
+  retries: 1,
   expect: {
     toMatchSnapshot: {
       maxDiffPixels: 100,
@@ -14,7 +15,6 @@ const config: PlaywrightTestConfig = {
       maxDiffPixels: 100,
     },
   },
-  workers: process.env.CI ? 1 : 2,
   reporter: [["html", { open: "never" }]],
   webServer: {
     command: "npm run serve",
