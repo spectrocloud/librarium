@@ -4,7 +4,7 @@ title: "Add a Pack to an OCI Registry"
 description: "Learn how to upload packs to an OCI registry."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 40
+sidebar_position: 60
 ---
 
 Palette supports the use of Open Container Initiative (OCI) registries. You can register a private OCI registry with
@@ -13,7 +13,7 @@ Palette, publish custom packs, and then use the packs in your cluster profiles.
 Two types of OCI authentication are available: registries that support basic authentication, such as Harbor, and AWS
 ECR, which is supported as a third-party registry provider. To upload packs to OCI registries, you can use
 [ORAS](https://oras.land/docs/), a CLI tool for pushing and pulling OCI artifacts to and from OCI registries. Refer to
-[OCI Registry](./registries/oci-registry/oci-registry.md) for more information.
+[OCI Registry](./oci-registry.md) for more information.
 
 This guide explains how to upload packs to OCI registries. You will learn how to authenticate to your OCI registry, push
 a custom pack, and configure the registry in Palette.
@@ -22,8 +22,8 @@ a custom pack, and configure the registry in Palette.
 
 - Palette's tenant admin access to add a new registry.
 
-- Custom pack files available on your local machine. Refer to the [Add an Add-on Pack](./adding-add-on-packs.md) guide
-  to learn how to create a custom pack.
+- Custom pack files available on your local machine. Refer to the [Add an Add-on Pack](../../adding-add-on-packs.md)
+  guide to learn how to create a custom pack.
 
 - A private OCI registry such as [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) or
   [Harbor](https://goharbor.io/). Learn how to set up a Harbor registry server using the
@@ -224,8 +224,7 @@ Make sure to include the **spectro-packs/archive** path in _all_ your repositori
 <Tabs groupId="registry-server">
 <TabItem label="ECR" value="ECR_Registry">
 
-9. Follow the steps in [Add OCI Packs Registry](./registries/oci-registry/add-oci-packs.md) to add your ECR registry to
-   Palette.
+9. Follow the steps in [Add OCI Packs Registry](./add-oci-packs.md) to add your ECR registry to Palette.
 
 :::info
 
@@ -238,8 +237,7 @@ page, click the **three-dot Menu** next to the registry name you added and selec
 
 <TabItem label="Basic" value="Basic_Registry">
 
-11. Follow the steps in [Add OCI Packs Registry](./registries/oci-registry/add-oci-packs.md) to add your Harbor registry
-    to Palette.
+11. Follow the steps in [Add OCI Packs Registry](./add-oci-packs.md) to add your Harbor registry to Palette.
 
 :::info
 
