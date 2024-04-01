@@ -75,8 +75,12 @@ jobs:
           node-version: "18"
           cache: "npm"
 
-      - name: Install Dependencies
-        run: npm ci
+      - name: Download Build
+        uses: Wandalen/wretry.action@v3
+        with: 
+            command: npm ci
+            attempt_limit: 3
+            attempt_delay: 60000 # 1 minute
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium

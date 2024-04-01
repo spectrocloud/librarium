@@ -103,13 +103,17 @@ jobs:
           node-version: "18"
           cache: "npm"
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Download Build
+        uses: Wandalen/wretry.action@v3
+        with: 
+            command: npm ci
+            attempt_limit: 3
+            attempt_delay: 60000 # 1 minute
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
-      - name: retry action
+      - name: Download Build
         uses: Wandalen/wretry.action@v3
         with: 
           attempt_limit: 3
@@ -120,7 +124,7 @@ jobs:
           attempt_delay: 60000 # 1 minute
 
       - name: Download Reference Screenshots
-        run:  ./scripts/screenshot_artifacts.sh && ls -ll 
+        run:  ./scripts/screenshot_artifacts.sh ./screenshots && ls -ll 
 
       - name: Take screenshots with Playwright
         run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} || exit 0
