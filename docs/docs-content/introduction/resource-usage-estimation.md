@@ -20,7 +20,8 @@ count, the number of CPUs per node, and the duration of time these nodes are in 
 the product by 1000.
 
 For instance, if you deploy a single-node cluster with 16 CPU for 24 hours continuously,you will use about 0.39 kCh.
-Alternatively, if you deploy a three-node cluster that has 16 CPUs per node for 24 hours continuously, you will use about 1.2 kCh.
+Alternatively, if you deploy a three-node cluster that has 16 CPUs per node for 24 hours continuously, you will use
+about 1.2 kCh.
 
 ![A diagram that offers a visual representation of how Palette calculates resource usage in kCh.](/introduction_resource-usage-estimation_diagram-kCh-calculation.webp)
 
