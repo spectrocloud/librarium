@@ -29,7 +29,7 @@ function screenshotPathname(pathname: string) {
     await page.waitForFunction(WaitForDocusaurusHydration);
     await page.waitForLoadState("domcontentloaded");
     await page.addStyleTag({ content: stylesheet });
-    await page.waitForTimeout(500); // Waits for 100 milliseconds
+    await page.waitForTimeout(1000); // Waits for 1000 milliseconds
     await expect(page).toHaveScreenshot({ fullPage: true, timeout: 10000 });
   });
 }

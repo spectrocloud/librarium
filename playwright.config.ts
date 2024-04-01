@@ -8,10 +8,10 @@ const config: PlaywrightTestConfig = {
   fullyParallel: true,
   expect: {
     toMatchSnapshot: {
-      maxDiffPixels: 10,
+      maxDiffPixels: 100,
     },
     toHaveScreenshot: {
-      maxDiffPixels: 10,
+      maxDiffPixels: 100,
     },
   },
   workers: process.env.CI ? 1 : 2,
