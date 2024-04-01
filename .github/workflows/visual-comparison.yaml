@@ -28,7 +28,7 @@ env:
 
 concurrency:
   group: "visual-comparison-${{ github.workflow }}"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 
 jobs:
@@ -124,7 +124,7 @@ jobs:
           attempt_delay: 60000 # 1 minute
 
       - name: Download Reference Screenshots
-        run:  ./scripts/screenshot_artifacts.sh ./screenshots && ls -ll 
+        run:  ./scripts/screenshot_artifacts.sh ./screenshots
 
       - name: Take screenshots with Playwright
         run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} || exit 0
