@@ -7,7 +7,6 @@ const config: PlaywrightTestConfig = {
   testDir: "visuals",
   fullyParallel: true,
   retries: 1,
-
   expect: {
     toMatchSnapshot: {
       maxDiffPixels: 100,

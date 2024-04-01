@@ -80,7 +80,7 @@ jobs:
           node-version: "18"
           cache: "npm"
 
-      - name: Download Build
+      - name: Install Dependencies
         uses: Wandalen/wretry.action@v3
         with: 
             command: npm ci
@@ -107,39 +107,36 @@ jobs:
         uses: actions/upload-artifact@v4
         id: screenshots
         with:
-          name: snapshots-${{ matrix.shardIndex }}
+          name: screenshots-${{ matrix.shardIndex }}
           path: |
             screenshots/
           if-no-files-found: error
           retention-days: 1
 
   merge-snapshots:
-    name: Merge Snapshots
+    name: Merge Screenshots
     runs-on: ubuntu-latest
     needs: [visual-snapshots]
     steps:
 
-    - name: Check out repository code
-      uses: actions/checkout@v4
-
     - name: Download blob reports from GitHub Actions Artifacts
       uses: actions/download-artifact@v4
       with:
-        path: snapshots
-        pattern: snapshots-*
+        path: screenshots
+        pattern: screenshots-*
         merge-multiple: true
 
     - name: Merge Snapshots
       run: |
         ls -ll
-        ls -ll snapshots
+        ls -ll screenshots
 
     - name: Upload Screenshots
       uses: actions/upload-artifact@v4
       id: screenshots
       with:
-        name: "snapshots"
+        name: "screenshots"
         path: |
-          snapshots/
+          screenshots/
         if-no-files-found: error
         retention-days: 3

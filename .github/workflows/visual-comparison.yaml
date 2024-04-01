@@ -207,7 +207,7 @@ jobs:
         path: ${{ env.HTML_REPORT_URL_PATH }}
 
     - name: Push HTML Report
-      timeout-minutes: 3
+      timeout-minutes: 5
       run: |
         git add .
         git commit -m "workflow: add HTML report for run-id ${{ github.run_id }} (attempt:  ${{ github.run_attempt }})"
@@ -240,7 +240,9 @@ jobs:
       with:
         message: |
             📋 Visual Report for ${{ github.ref_name }} with CI run ${{ github.run_id }} and attempt ${{ github.run_attempt }} is ready attempt at
-              https://spectrocloud.github.io/${{env.GITHUB_REPOSITORY_OWNER}}/${{env.HTML_REPORT_URL_PATH}}
+              https://spectrocloud.github.io/${{ github.GITHUB_REPOSITORY_OWNER}}/${{env.HTML_REPORT_URL_PATH}}
+
+              💡 You may have to wait for DNS to resolve or the GitHub Pages job to complete. You can view the progress of the GitHub Pages job [here](https://github.com/spectrocloud/librarium/actions/workflows/pages/pages-build-deployment).
         message-failure: |
             👎 Uh oh! Unable to publish Visual Report URL.
         refresh-message-position: true
