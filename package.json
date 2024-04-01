@@ -65,7 +65,7 @@
     "@semantic-release/git": "latest",
     "@semantic-release/github": "latest",
     "@semantic-release/npm": "latest",
-    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.1.2",
     "@tsconfig/docusaurus": "^1.0.5",
     "@types/jest": "^29.5.3",
