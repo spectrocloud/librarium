@@ -45,7 +45,7 @@ function screenshotPathname(pathname: string) {
 //   });
 // });
 
-test.describe("API docs screenshots", () => {
+test.describe("Docs screenshots", () => {
   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
     isVersionedDocsPathname(pathname, excludeList)
   );

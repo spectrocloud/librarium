@@ -71,6 +71,14 @@ jobs:
       - name: Download Reference Screenshots
         run:  ./scripts/screenshot_artifacts.sh
 
+
+      - name: Post Netlify progress
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+              🤖 Starting the visual tests. This will take approximately 45 minutes.
+          refresh-message-position: true
+
       - name: Take screenshots with Playwright
         run: make test-visuals-ci
 
@@ -138,7 +146,7 @@ jobs:
         echo "::notice title= Published Playwright Test Report::https://spectrocloud.github.io/librarium/$HTML_REPORT_URL_PATH"
 
 
-    - name: Post Netlify URL
+    - name: Post Report URL Comment
       uses: mshick/add-pr-comment@v2
       with:
         message: |

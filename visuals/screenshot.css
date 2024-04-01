@@ -41,3 +41,11 @@ Hide Cookie Consent banner
 #usercentrics-root {
   display: none !important;
 }
+
+/*
+API Request Form
+
+*/
+.openapi-explorer__request-form {
+  display: none;
+}
