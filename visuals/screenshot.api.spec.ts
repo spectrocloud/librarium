@@ -12,7 +12,6 @@ test.describe.configure({ mode: "parallel" });
 
 function isApiDocsPathname(pathname: string, excludeList: string[]): boolean {
   if (excludeList.includes(pathname)) {
-    console.log(`Excluding ${pathname}`);
     return false;
   }
   // return false if the pathname does not start with /api/
@@ -37,5 +36,8 @@ function screenshotPathname(pathname: string) {
 
 test.describe("API docs screenshots", () => {
   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) => isApiDocsPathname(pathname, excludeList));
+  console.log(`Taking screenshots of ${pathnames.length} API docs pages`);
+  console.log("Excluded pages: ", excludeList);
+
   pathnames.forEach(screenshotPathname);
 });

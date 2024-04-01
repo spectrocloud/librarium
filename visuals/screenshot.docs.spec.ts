@@ -23,17 +23,8 @@ function isVersionedDocsPathname(pathname: string, excludeList: string[]): boole
   return true;
 }
 
-// function chunkArray(array: string[], parts: number): string[][] {
-//   let result: string[][] = [];
-//   for (let i = parts; i > 0; i--) {
-//     result.push(array.splice(0, Math.ceil(array.length / i)));
-//   }
-//   return result;
-// }
-
 function screenshotPathname(pathname: string) {
   test(`pathname ${pathname}`, async ({ page }) => {
-    console.log(`Taking screenshot of ${pathname}`);
     const url = siteUrl + pathname;
     await page.goto(url);
     await page.waitForFunction(WaitForDocusaurusHydration);
@@ -44,20 +35,12 @@ function screenshotPathname(pathname: string) {
   });
 }
 
-// test.describe("cookie-banner is visible", () => {
-//   test("cookie-banner is visible", async ({ page }) => {
-//     await page.goto(siteUrl);
-//     await page.waitForFunction(WaitForDocusaurusHydration);
-//     await page.waitForLoadState("domcontentloaded");
-//     await page.addStyleTag({ content: stylesheet });
-//     await expect(page).toHaveScreenshot({ fullPage: true });
-//     await expect(page.getByTestId("#usercentrics-root")).toBeVisible();
-//   });
-// });
-
 test.describe("Docs screenshots", () => {
   const pathnames = extractSitemapPathnames(sitemapPath).filter((pathname) =>
     isVersionedDocsPathname(pathname, excludeList)
   );
+  console.log(`Taking screenshots of ${pathnames.length} Docs pages`);
+  console.log("Excluded pages: ", excludeList);
+
   pathnames.forEach(screenshotPathname);
 });

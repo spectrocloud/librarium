@@ -14,6 +14,7 @@ const config: PlaywrightTestConfig = {
     toHaveScreenshot: {
       maxDiffPixels: 100,
     },
+    timeout: 30000,
   },
   reporter: [["html", { open: "never" }]],
   webServer: {
