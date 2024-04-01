@@ -13,6 +13,8 @@
 
 set -e
 
+DESTINATION_FOLDER=$1
+
 # Function to unzip the artifact
 unzip_artifact() {
     local zip_file=$1
@@ -36,7 +38,7 @@ OWNER="${GITHUB_REPOSITORY_OWNER:-spectrocloud}"
 REPO_NAME="${GITHUB_REPOSITORY#*/}"  
 REPO="${REPO_NAME:-librarium}"
 WORKFLOW_FILE="screenshot_capture.yaml"
-UNZIP_FOLDER="screenshots" 
+UNZIP_FOLDER="${DESTINATION_FOLDER:-screenshots}" 
 
 
 perform_curl() {

@@ -120,7 +120,7 @@ jobs:
           attempt_delay: 60000 # 1 minute
 
       - name: Download Reference Screenshots
-        run:  ./scripts/screenshot_artifacts.sh
+        run:  ./scripts/screenshot_artifacts.sh && ls -ll 
 
       - name: Take screenshots with Playwright
         run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} || exit 0
