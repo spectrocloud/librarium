@@ -19,7 +19,6 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  APPZI_TOKEN: ${{ secrets.APPZI_TOKEN }}
   MENDABLE_API_KEY: ${{ secrets.MENDABLE_API_KEY }}
   FULLSTORY_ORGID: ${{ secrets.FULLSTORY_ORGID }}
   ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
