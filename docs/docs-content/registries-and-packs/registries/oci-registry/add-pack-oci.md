@@ -47,8 +47,8 @@ a custom pack, and configure the registry in Palette.
   - `ecr:BatchDeleteImage`
   - `ecr:DeleteRepository`
 
-- If your OCI registry is using a self-signed certificate or a certificate that is not signed by a trusted certificate
-  authority (CA), you will need the certificate to add the registry to Palette.
+- If your OCI registry is using a self-signed certificate or a certificate that is not signed by a trusted Certificate
+  Authority (CA), you will need the certificate to add the registry to Palette.
 
 ## Enablement
 
