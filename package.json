@@ -56,10 +56,13 @@
     "prism-react-renderer": "^2.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.72.0",
-    "react-select": "^5.8.0"
+    "react-select": "^5.8.0",
+    "sass": "^1.72.0"
   },
   "devDependencies": {
+    "@argos-ci/cli": "^1.0.12",
+    "@argos-ci/playwright": "^2.0.0",
+    "@playwright/test": "^1.42.1",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "latest",
