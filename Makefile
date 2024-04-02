@@ -84,6 +84,10 @@ test-visuals-ci: ## Run visual regression tests
 	npx playwright test --shard=3/4
 	npx playwright test --shard=4/4
 
+
+view-visual-report: ## View visual regression test report
+	npx playwright show-report
+
 ##@ Git Targets
 
 commit: ## Add a Git commit. Usage: make commit MESSAGE="<your message here>"

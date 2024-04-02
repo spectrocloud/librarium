@@ -45,8 +45,8 @@ jobs:
       - run: exit 0
 
 
-  build:
-    name: Build
+  create-assets:
+    name: create-assets
     needs: [run-ci]
     runs-on: ubuntu-latest
     steps:
@@ -89,7 +89,7 @@ jobs:
 
   take-screenshots:
     name: Visual Comparison
-    needs: [run-ci, build]
+    needs: [run-ci, create-assets]
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -240,7 +240,7 @@ jobs:
       with:
         message: |
             📋 Visual Report for ${{ github.ref_name }} with CI run ${{ github.run_id }} and attempt ${{ github.run_attempt }} is ready attempt at
-              https://spectrocloud.github.io/${{ github.GITHUB_REPOSITORY_OWNER}}/${{env.HTML_REPORT_URL_PATH}}
+              https://spectrocloud.github.io/librarium/${{env.HTML_REPORT_URL_PATH}}
 
               💡 You may have to wait for DNS to resolve or the GitHub Pages job to complete. You can view the progress of the GitHub Pages job [here](https://github.com/spectrocloud/librarium/actions/workflows/pages/pages-build-deployment).
         message-failure: |

@@ -1,8 +1,6 @@
-// playwright.config.ts
 import { PlaywrightTestConfig } from "@playwright/test";
 
 const config: PlaywrightTestConfig = {
-  // Other config options...
   snapshotDir: "screenshots/",
   testDir: "visuals",
   fullyParallel: true,
