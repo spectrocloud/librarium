@@ -12,8 +12,8 @@ Palette, publish custom packs, and then use the packs in your cluster profiles.
 
 Two types of OCI authentication are available: registries that support basic authentication, such as Harbor, and AWS
 ECR, which is supported as a third-party registry provider. To upload packs to OCI registries, you can use
-[ORAS](https://oras.land/docs/), a CLI tool for pushing and pulling OCI artifacts to and from OCI registries. Refer to
-[OCI Registry](./oci-registry.md) for more information.
+[ORAS](https://oras.land/docs/), a CLI tool for pushing and pulling OCI artifacts to and from OCI registries. To learn
+more about OCI registries and how they work in Palette, refer to the [OCI Registry](./oci-registry.md) page.
 
 This guide explains how to upload packs to OCI registries. You will learn how to authenticate to your OCI registry, push
 a custom pack, and configure the registry in Palette.
@@ -29,11 +29,13 @@ a custom pack, and configure the registry in Palette.
   [Harbor](https://goharbor.io/). Learn how to set up a Harbor registry server using the
   [Harbor Installation and Configuration](https://goharbor.io/docs/2.9.0/install-config/) guide.
 
-- [ORAS](https://oras.land/docs/installation/) and [Tar](https://www.gnu.org/software/tar/) installed on your machine.
+- [ORAS](https://oras.land/docs/installation/) v1.0.0 installed and available.
+
+- [Tar](https://www.gnu.org/software/tar/) installed and available.
 
 - If you are using an ECR OCI registry, ensure you have
-  [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed and an AWS Identity
-  and Access Management (IAM) user with the following permissions.
+  [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed and an AWS
+  Identity and Access Management (IAM) user with the following permissions.
 
   - `ecr:CreateRepository`
   - `ecr:InitiateLayerUpload`
@@ -70,14 +72,14 @@ a custom pack, and configure the registry in Palette.
 
    - `REPOSITORY_NAME` - Specify a name for the repository that will store the pack files. For example,
      `spectro-oci-registry`.
-   - `NAME` - The pack's name, which must match the name in the **pack.json** file.
-   - `VERSION` - The pack's version, which must match the version in the **pack.json** file.
+   - `NAME` - The pack's name, which must match the `name` parameter in the **pack.json** file.
+   - `VERSION` - The pack's version, which must match the `version` parameter in the **pack.json** file.
    - `ACCOUNT_ID` - Your AWS account ID, containing only numerical digits and no dashes.
 
    ```bash
    export REPOSITORY_NAME=<Your_Repository_Name>
-   export NAME=<Your_Packs_Name>
-   export VERSION=<Your_Packs_Version>
+   export NAME=<Your_Pack_Name>
+   export VERSION=<Your_Pack_Version>
    export ACCOUNT_ID=<Your_AWS_Account_ID>
    ```
 
@@ -95,13 +97,17 @@ a custom pack, and configure the registry in Palette.
 
 :::warning
 
-Make sure to include the **spectro-packs/archive** path in _all_ your repositories. Palette expects this namespace in custom OCI registries. 
+Make sure to include the **spectro-packs/archive** path in _all_ your repositories. Palette expects this namespace in
+custom OCI registries.
 
 :::
 
 </TabItem>
 
 <TabItem label="Basic" value="Basic_Registry">
+
+Palette supports all OCI-compliant registries that use basic authentication. This guide uses a
+[Harbor](https://goharbor.io/) registry as an example.
 
 1. Access the Harbor registry server domain on your web browser and log in using your credentials. If you have kept the
    default credentials, the username and password are **admin** and **Harbor12345**, respectively.
@@ -158,10 +164,10 @@ Make sure to include the **spectro-packs/archive** path in _all_ your repositori
 6. In your terminal, navigate to the directory containing the folder with the pack files.
 
 7. Compress the contents of the pack folder into an archive file. Issue the command below to create the archive file.
-   Replace `<Your_Packs_Folder_Name>` with the name of the folder containing the pack files.
+   Replace `<Your_Pack_Folder_Name>` with the name of the folder containing the pack files.
 
    ```bash
-   tar -czvf $NAME-$VERSION.tar.gz <Your_Packs_Folder_Name>
+   tar -czvf $NAME-$VERSION.tar.gz <Your_Pack_Folder_Name>
    ```
 
 8. Push the pack to the ECR registry.
@@ -178,13 +184,13 @@ Make sure to include the **spectro-packs/archive** path in _all_ your repositori
 
     - `HARBOR_PROJECT` - Specify a name for the Harbor project that will store the repositories and the pack files. For
       example, `spectro-oci-registry`.
-    - `NAME` - The pack's name, which must match the name in the **pack.json** file.
-    - `VERSION` - The pack's version, which must match the version in the **pack.json** file.
+    - `NAME` - The pack's name, which must match the `name` parameter in the **pack.json** file.
+    - `VERSION` - The pack's version, which must match the `version` parameter in the **pack.json** file.
 
     ```bash
     export HARBOR_PROJECT=<Your_Repository_Name>
-    export NAME=<Your_Packs_Name>
-    export VERSION=<Your_Packs_Version>
+    export NAME=<Your_Pack_Name>
+    export VERSION=<Your_Pack_Version>
     ```
 
 7.  Navigate to the directory containing the folder with the pack files.
@@ -228,8 +234,8 @@ Make sure to include the **spectro-packs/archive** path in _all_ your repositori
 
 :::info
 
-Palette automatically syncs the registries. However, you can sync them manually if needed. From the **OCI Registries**
-page, click the **three-dot Menu** next to the registry name you added and select **Sync**.
+Palette automatically synchronizes the registries. However, you can manually trigger the synchronization if needed. From
+the **OCI Registries** page, click the **three-dot Menu** next to the registry name you added and select **Sync**.
 
 :::
 
@@ -241,8 +247,8 @@ page, click the **three-dot Menu** next to the registry name you added and selec
 
 :::info
 
-Palette automatically synchronizes the registries. However, you can manually trigger the synchronization if needed. From the **OCI Registries**
-page, click the **three-dot Menu** next to the registry name you added and select **Sync**.
+Palette automatically synchronizes the registries. However, you can manually trigger the synchronization if needed. From
+the **OCI Registries** page, click the **three-dot Menu** next to the registry name you added and select **Sync**.
 
 :::
 
