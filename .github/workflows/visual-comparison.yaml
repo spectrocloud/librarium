@@ -5,10 +5,6 @@ on:
   pull_request:
     types: [opened, reopened, synchronize, labeled]
     branches-ignore: ["version-*", "release-*"]
-    paths:
-      - 'src/**'
-      - 'package.json'
-      - 'package-lock.json'
 
 
 env:
@@ -33,7 +29,7 @@ jobs:
     defaults:
       run:
         shell: bash
-    if: ${{ !github.event.pull_request.draft && github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' || contains(github.event.pull_request.labels.*.name, 'visual-tests') }}
+    if: ${{ !github.event.pull_request.draft && github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' && contains(github.event.pull_request.labels.*.name, 'visual-tests') }}
     steps:
       # If the condition above is not met, aka, the PR is not in draft status, then this step is skipped.
       # Because this step is part of the critical path, omission of this step will result in remaining CI steps not gettinge executed.
