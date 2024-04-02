@@ -20,7 +20,7 @@ a custom pack, and configure the registry in Palette.
 
 ## Prerequisites
 
-- Palette's tenant admin access to add a new registry.
+- Tenant administrator access.
 
 - Custom pack files available on your local machine. Refer to the [Add an Add-on Pack](../../adding-add-on-packs.md)
   guide to learn how to create a custom pack.
@@ -95,7 +95,7 @@ a custom pack, and configure the registry in Palette.
 
 :::warning
 
-Make sure to include the **spectro-packs/archive** path in _all_ your repositories to meet Palette's requirements.
+Make sure to include the **spectro-packs/archive** path in _all_ your repositories. Palette expects this namespace in custom OCI registries. 
 
 :::
 
@@ -190,10 +190,10 @@ Make sure to include the **spectro-packs/archive** path in _all_ your repositori
 7.  Navigate to the directory containing the folder with the pack files.
 
 8.  Compress the contents of the pack folder into an archive file. Issue the command below to create the archive file.
-    Replace `<Your_Packs_Folder_Name>` with the name of the folder containing the pack files.
+    Replace `<Your_Pack_Folder_Name>` with the name of the folder containing the pack files.
 
     ```bash
-    tar -czvf $NAME-$VERSION.tar.gz <Your_Pack's_Folder_Name>
+    tar -czvf $NAME-$VERSION.tar.gz <Your_Pack_Folder_Name>
     ```
 
 9.  Issue the command below to create a base path repository to store your pack repositories. Note that Harbor creates a
@@ -241,7 +241,7 @@ page, click the **three-dot Menu** next to the registry name you added and selec
 
 :::info
 
-Palette automatically syncs the registries. However, you can sync them manually if needed. From the **OCI Registries**
+Palette automatically synchronizes the registries. However, you can manually trigger the synchronization if needed. From the **OCI Registries**
 page, click the **three-dot Menu** next to the registry name you added and select **Sync**.
 
 :::
