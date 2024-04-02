@@ -7,9 +7,9 @@ sidebar_position: 60
 tags: ["data center", "vmware", "permissions"]
 ---
 
-The vSphere user account that deploys Palette require access to the following vSphere objects and permissions listed in
-the following table. Review the vSphere objects and privileges required to ensure each role is assigned the required
-privileges.
+The vSphere user account that deploys host clusters require access to the following vSphere objects and permissions
+listed in the following table. Review the vSphere objects and privileges required to ensure each role is assigned the
+required privileges.
 
 ### Spectro Root Role Privileges
 
@@ -77,8 +77,8 @@ without “Propagate to children” is required.
 As listed in the table, apply spectro role privileges to vSphere objects you intend to use for Palette installation. A
 separate table lists Spectro role privileges for VMs by category.
 
-During the installation, images and Open Virtual Appliance (OVA) files are downloaded to the folder you selected. These
-images are cloned from the folder and applied VMs that deployed during the installation.
+Open Virtual Appliance (OVA) files are downloaded to the folder you selected. These images are cloned from the folder
+and applied VMs that deployed during deployments.
 
 Select the tab for the vSphere version you are using to view the required privileges for the spectro role.
 
@@ -201,10 +201,15 @@ use the node labels to ensure that the workloads are deployed to the correct zon
 The following is an example of node labels that are discovered and inherited from vSphere tags. The tag values are
 applied to Kubernetes nodes in vSphere.
 
+<!-- prettier-ignore-start -->
+
 ```yaml hideClipboard
-topology.kubernetes.io/region=usdc topology.kubernetes.io/zone=zone3 failure-domain.beta.kubernetes.io/region=usdc
+topology.kubernetes.io/region=usdc 
+topology.kubernetes.io/zone=zone3 
+failure-domain.beta.kubernetes.io/region=usdc
 failure-domain.beta.kubernetes.io/zone=zone3
 ```
+<!-- prettier-ignore-end -->
 
 :::info
 
