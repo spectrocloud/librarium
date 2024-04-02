@@ -14,7 +14,7 @@ env:
   ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
   ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
-  HTML_REPORT_URL_PATH: reports/${{ github.github_head_ref }}/${{ github.run_id }}/${{ github.run_attempt }}
+  HTML_REPORT_URL_PATH: reports/${{ github.head_ref }}/${{ github.run_id }}/${{ github.run_attempt }}
 
 
 concurrency:
