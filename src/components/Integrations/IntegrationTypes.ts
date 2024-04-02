@@ -9,6 +9,8 @@ export interface FrontMatterData {
   slug: string;
   id: string;
   packType: string;
+  verified: boolean;
+  cloudTypes: string[];
 }
 
 export interface PacksData {

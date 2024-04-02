@@ -2,25 +2,6 @@ import api from "../src/services/api";
 import { setTimeout } from "timers/promises";
 import { packTypeNames } from "../src/components/Technologies/PackConstants";
 
-/*const layerMap = {
-  k8s: "Kubernetes",
-  cni: "network",
-  os: "operating system",
-  servicemesh: "service mesh",
-  monitoring: "monitoring",
-  csi: "storage",
-  logging: "logging",
-  "load balancer": "load balancer",
-  ingress: "ingress",
-  authentication: "authentication",
-  registry: "registry",
-  "system app": "system app",
-  spectro: "spectro",
-  security: "security",
-  serverless: "serverless",
-  "app services": "app services",
-
-}*/
 
 function generateIntegrationData(allContent) {
   const packsData = allContent["docusaurus-plugin-content-docs"].default.loadedVersions[0].docs
@@ -57,7 +38,6 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
       const layer = packMDValue.spec.layer === "addon" ? packMDValue.spec.addonType : packTypeNames[packMDValue.spec.layer];
       return {
         fields: {
-          sidebar_label: packMDValue.spec.name,
           name: packMDValue.spec.name,
           title: packMDValue.spec.displayName,
           description: 'dynamically generated',
@@ -71,6 +51,7 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
           tags: [],
           slug: '/integrations/${packMDValue.spec.name}',
           id: 'integrations/${packMDValue.spec.name}',
+          verified: packMDValue.spec.registries[0].annotations?.source === "spectrocloud",
         }
       };
     }
@@ -106,15 +87,17 @@ async function pluginPacksAndIntegrationsData() {
       let counter = 0;
       let promises = new Array();
       for (let i = 0; i < packDataArr.length; i++) {
-        counter+=1
         const packData = packDataArr[i];
-        packMDMap[packData.spec.name]=packData;
-        promises.push(api.get(packUrl + packData.spec.registries[0].latestPackUid));
-        if(counter%10 === 0 || i === packDataArr.length-1) {
-          await setTimeout(2000);
-          const response2 = await Promise.all(promises);
-          apiPacksData = apiPacksData.concat(response2.map((pack) => pack.data));
-          promises = [];
+        if(packData.spec.registries.length) {
+          counter+=1
+          packMDMap[packData.spec.name]=packData;
+          promises.push(api.get(packUrl + packData.spec.registries[0].latestPackUid));
+          if(counter%10 === 0 || i === packDataArr.length-1) {
+            await setTimeout(2000);
+            const response2 = await Promise.all(promises);
+            apiPacksData = apiPacksData.concat(response2.map((pack) => pack.data));
+            promises = [];
+          }
         }
       }
       return {packsPaletteData: packMDMap, packsPaletteDetailsData: apiPacksData} ;

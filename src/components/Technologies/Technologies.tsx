@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import Fuse from "fuse.js";
 import styles from "./Technologies.module.scss";
 import Search from "./Search";
-import { PacksData, IntegrationsData } from "../Integrations/IntegrationTypes";
+import { PacksData, IntegrationsData, FrontMatterData } from "../Integrations/IntegrationTypes";
 import TechnologyCard from "./TechnologyCard";
 import PacksFilters from "./PacksFilters";
 import { packTypeNames } from "./PackConstants";
@@ -19,7 +19,7 @@ interface TechnologiesProps {
 }
 
 export default function Technologies({ data }: TechnologiesProps) {
-  const [selectedFilters, setSelectedFilters] = useState({ category: [""]});
+  const [selectedFilters, setSelectedFilters] = useState({ category: [], provider: "", additionalFilters: []});
   const [searchValue, setSearchValue] = useState("");
 
   const categories = useMemo(() => {
@@ -52,24 +52,45 @@ export default function Technologies({ data }: TechnologiesProps) {
   const onSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
   };
-  const renderPacks = (fields) => {
+  const renderPacks = (fields: FrontMatterData[]) => {
     return fields.map((field) => {
       const { title, slug, logoUrl, packType } = field;
       return <TechnologyCard title={title} slug={slug} logoUrl={logoUrl} key={slug} type={packType}></TechnologyCard>;
     });
   };
   const renderPacksCategories = () => {
-    const categoryKeys = Array.from(categories.keys());
-    const categoryItems = [];
+    let categoryKeys: string[] = Array.from(categories.keys());
+    const categoryItems: JSX.Element[] = [];
+    if(selectedFilters.category.length > 0) {
+      categoryKeys = categoryKeys.filter((category: string) => { // Add type annotation for category parameter
+        return selectedFilters.category.includes(category);
+      });
+    }
     categoryKeys.forEach((category) => {
-      const obj = (<Collapse.Panel header={packTypeNames[category]} key={category}>{renderPacks(categories.get(category))}</Collapse.Panel>)
+      let filteredTechCards = categories.get(category);
+      if (selectedFilters.provider) {
+        filteredTechCards = filteredTechCards.filter((techCard: FrontMatterData) => {
+          return techCard.cloudTypes.includes("all") || techCard.cloudTypes.includes(selectedFilters.provider);
+        });
+      }
+    //TODO: Add additional filter logic based on backend API data like community, FIPs
+      if (selectedFilters.additionalFilters.length && selectedFilters.additionalFilters.includes("Verified")) {
+        filteredTechCards = filteredTechCards.filter((techCard: FrontMatterData) => {
+          return techCard.verified;
+        });
+      }
+
+      const obj = (<Collapse.Panel header={packTypeNames[category]} key={category}>{renderPacks(filteredTechCards)}</Collapse.Panel>)
       categoryItems.push(obj)
     });
     return categoryItems;
   };
-  const setSelectedSearchFilters = (selectedSearchFilters) => {
-    setSelectedFilters(selectedSearchFilters)
-  }
+  const setSelectedSearchFilters = (selectedSearchFilters: Record<string, any>) => {
+    setSelectedFilters((prevState) => ({
+      ...prevState,
+      ...selectedSearchFilters
+    }));
+  };
   return (
     <div className={styles.wrapper}>
       <PacksFilters categories={Array.from(categories.keys())} setSelectedSearchFilters={setSelectedSearchFilters} selectedFilters={selectedFilters} />

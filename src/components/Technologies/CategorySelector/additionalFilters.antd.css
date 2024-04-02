@@ -7,3 +7,7 @@
 .ant-btn {
   background-color: #d9d9d9;
 }
+.ant-menu-horizontal {
+  background-color: #d9d9d9;
+  line-height: 32px;
+}
