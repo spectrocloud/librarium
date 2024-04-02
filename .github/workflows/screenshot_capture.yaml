@@ -30,7 +30,8 @@ jobs:
 
   create-assets:
     name: asset-builds
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -63,7 +64,8 @@ jobs:
 
 
   visual-snapshots:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
     needs: [create-assets]
     strategy:
       fail-fast: false
@@ -115,7 +117,8 @@ jobs:
 
   merge-snapshots:
     name: Merge Screenshots
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
     needs: [visual-snapshots]
     steps:
 
@@ -125,11 +128,6 @@ jobs:
         path: screenshots
         pattern: screenshots-*
         merge-multiple: true
-
-    - name: Merge Snapshots
-      run: |
-        ls -ll
-        ls -ll screenshots
 
     - name: Upload Screenshots
       uses: actions/upload-artifact@v4

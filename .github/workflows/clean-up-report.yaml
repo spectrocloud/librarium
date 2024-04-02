@@ -1,4 +1,4 @@
-name: Delete
+name: Delete Visual Tests Reports
 
 on:
   delete:
