@@ -385,12 +385,20 @@ const redirects = [
     to: "/clusters/pcg/deploy-pcg/maas",
   },
   {
-    from: ["/security/security-bulletins/", "/security-bulletins/cve-reports", "/security/security-bulletins/index"],
+    from: [
+      "/security/security-bulletins/",
+      "/security/security-bulletins/cve-reports",
+      "/security/security-bulletins/index",
+    ],
     to: "/security-bulletins/",
   },
   {
     from: "/clusters/public-cloud/azure/gateways",
     to: "/clusters/pcg/",
+  },
+  {
+    from: "/projects",
+    to: "/tenant-settings/projects/",
   },
 ];
 
