@@ -18,7 +18,7 @@ env:
   ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
   ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
-  HTML_REPORT_URL_PATH: reports/${{ github.ref_name }}/${{ github.run_id }}/${{ github.run_attempt }}
+  HTML_REPORT_URL_PATH: reports/${{ github.GITHUB_HEAD_REF }}/${{ github.run_id }}/${{ github.run_attempt }}
 
 
 
@@ -235,7 +235,7 @@ jobs:
       uses: mshick/add-pr-comment@v2
       with:
         message: |
-            📋 Visual Report for PR ${{ github.ref_name }} with CI run ${{ github.run_id }} and attempt ${{ github.run_attempt }} is ready at
+            📋 Visual Report for branch ${{ github.GITHUB_HEAD_REF }} with CI run ${{ github.run_id }} and attempt ${{ github.run_attempt }} is ready at
               https://spectrocloud.github.io/librarium/${{env.HTML_REPORT_URL_PATH}}
 
               💡 You may have to wait for DNS to resolve or the GitHub Pages job to complete. You can view the progress of the GitHub Pages job [here](https://github.com/spectrocloud/librarium/actions/workflows/pages/pages-build-deployment).
