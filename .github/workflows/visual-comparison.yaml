@@ -236,7 +236,7 @@ jobs:
       uses: mshick/add-pr-comment@v2
       with:
         message: |
-            📋 Visual Report for branch ${{ github.GITHUB_HEAD_REF }} with CI run ${{ github.run_id }} and attempt ${{ github.run_attempt }} is ready at
+            📋 Visual Report for branch ${{ github.head_ref }} with CI run ${{ github.run_id }} and attempt ${{ github.run_attempt }} is ready at
               https://spectrocloud.github.io/librarium/${{env.HTML_REPORT_URL_PATH}}
 
               💡 You may have to wait for DNS to resolve or the GitHub Pages job to complete. You can view the progress of the GitHub Pages job [here](https://github.com/spectrocloud/librarium/actions/workflows/pages/pages-build-deployment).
