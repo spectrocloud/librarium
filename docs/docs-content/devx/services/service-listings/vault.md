@@ -7,7 +7,7 @@ type: "appTier"
 category: ["security"]
 hiddenFromNav: false
 sidebar_position: 40
-logoUrl: "https://icon-library.com/images/padlock-icon.webp/padlock-icon.webp-29.jpg"
+logoUrl: "/assets/icons/lock.svg"
 ---
 
 ## Vault
