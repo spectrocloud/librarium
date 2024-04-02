@@ -13,9 +13,6 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_S3_ACCESS_KEY }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_S3_SECRET_KEY }}
-  AWS_DEFAULT_REGION: us-east-1
   MENDABLE_API_KEY: ${{ secrets.MENDABLE_API_KEY }}
   FULLSTORY_ORGID: ${{ secrets.FULLSTORY_ORGID }}
   ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
@@ -32,7 +29,6 @@ concurrency:
 
 jobs:
   run-ci:
-    # runs-on: ubuntu-latest
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -48,8 +44,7 @@ jobs:
   create-assets:
     name: create-assets
     needs: [run-ci]
-    # runs-on: ubuntu-latest
-    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -91,8 +86,7 @@ jobs:
   take-screenshots:
     name: Visual Comparison
     needs: [run-ci, create-assets]
-    # runs-on: ubuntu-latest
-    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -145,8 +139,7 @@ jobs:
   merge-reports:
     name: Merge Reports
     needs: [take-screenshots]
-    # runs-on: ubuntu-latest
-    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
+    runs-on: ubuntu-latest
     steps:
     - name: Check out repository code
       uses: actions/checkout@v4
@@ -188,8 +181,7 @@ jobs:
   publish_report:
     name: Publish HTML Report
     needs: [run-ci, take-screenshots, merge-reports]
-    # runs-on: ubuntu-latest
-    runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
+    runs-on: ubuntu-latest
     continue-on-error: true    
     steps: 
 
