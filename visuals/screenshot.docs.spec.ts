@@ -1,12 +1,12 @@
 import * as fs from "fs";
 import { test, expect } from "@playwright/test";
 import { extractSitemapPathnames, WaitForDocusaurusHydration } from "./utils";
-// Constants:
+import excludeList from "./exclude.json";
+
 const siteUrl = "http://localhost:3000";
 const sitemapPath = "build/sitemap.xml";
 const stylesheetPath = "visuals/screenshot.css";
 const stylesheet = fs.readFileSync(stylesheetPath).toString();
-const excludeList = require("./exclude.json");
 
 test.describe.configure({ mode: "parallel" });
 
@@ -23,7 +23,7 @@ function isVersionedDocsPathname(pathname: string, excludeList: string[]): boole
   return true;
 }
 
-test.beforeAll(async () => {
+test.beforeAll(() => {
   console.log("Excluded pages: ", excludeList);
   console.log("Total pages: ", extractSitemapPathnames(sitemapPath).length);
 });
