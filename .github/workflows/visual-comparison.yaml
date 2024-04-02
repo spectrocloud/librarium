@@ -37,7 +37,7 @@ jobs:
           echo "GITHUB_BASE_REF: ${{ github.base_ref }}"
           echo "GITHUB_HEAD_REF: ${{ github.head_ref }}"
           echo "GITHUB_REF_NAME: ${{ github.ref_name }}"
-          echo "HTML_REPORT_URL_PATH ${{ env.HTML_REPORT_URL_PATH }}""
+          echo "HTML_REPORT_URL_PATH ${{ env.HTML_REPORT_URL_PATH }}"
           exit 0
 
 
