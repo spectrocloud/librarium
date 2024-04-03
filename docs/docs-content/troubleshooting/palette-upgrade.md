@@ -50,3 +50,5 @@ Error: UPGRADE FAILED: failed to create resource: admission webhook "validate.ng
 4. Restart the upgrade process.
 
 <br />
+
+## Persistent Volume Claims Not Starting
