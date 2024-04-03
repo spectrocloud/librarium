@@ -5,10 +5,6 @@ on:
   pull_request:
     types: [opened, reopened, synchronize, labeled]
     branches-ignore: ["version-*", "release-*"]
-    paths:
-      - 'src/**'
-      - 'package.json'
-      - 'package-lock.json'
 
 
 env:
@@ -18,8 +14,7 @@ env:
   ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
   ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
-  HTML_REPORT_URL_PATH: reports/${{ github.ref_name }}/${{ github.run_id }}/${{ github.run_attempt }}
-
+  HTML_REPORT_URL_PATH: reports/${{ github.head_ref }}/${{ github.run_id }}/${{ github.run_attempt }}
 
 
 concurrency:
@@ -33,12 +28,18 @@ jobs:
     defaults:
       run:
         shell: bash
-    if: ${{ !github.event.pull_request.draft && github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' ||  contains(github.event.pull_request.labels.*.name, 'visual-tests') }}
+    if: ${{ !github.event.pull_request.draft && github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]' && contains(github.event.pull_request.labels.*.name, 'visual-tests') }}
     steps:
       # If the condition above is not met, aka, the PR is not in draft status, then this step is skipped.
       # Because this step is part of the critical path, omission of this step will result in remaining CI steps not gettinge executed.
       # As of 8/8/2022 there is now way to enforce this beahvior in GitHub Actions CI.
-      - run: exit 0
+      - run: |
+          echo "GITHUB_BASE_REF: ${{ github.base_ref }}"
+          echo "GITHUB_HEAD_REF: ${{ github.head_ref }}"
+          echo "GITHUB_REF_NAME: ${{ github.ref_name }}"
+          echo "HTML_REPORT_URL_PATH ${{ env.HTML_REPORT_URL_PATH }}"
+          exit 0
+
 
 
   create-assets:
@@ -235,7 +236,7 @@ jobs:
       uses: mshick/add-pr-comment@v2
       with:
         message: |
-            📋 Visual Report for PR ${{ github.ref_name }} with CI run ${{ github.run_id }} and attempt ${{ github.run_attempt }} is ready at
+            📋 Visual Report for branch ${{ github.head_ref }} with CI run ${{ github.run_id }} and attempt ${{ github.run_attempt }} is ready at
               https://spectrocloud.github.io/librarium/${{env.HTML_REPORT_URL_PATH}}
 
               💡 You may have to wait for DNS to resolve or the GitHub Pages job to complete. You can view the progress of the GitHub Pages job [here](https://github.com/spectrocloud/librarium/actions/workflows/pages/pages-build-deployment).
