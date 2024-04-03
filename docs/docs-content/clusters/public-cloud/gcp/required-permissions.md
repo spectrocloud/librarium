@@ -93,7 +93,7 @@ having issues when deploying a host cluster.
 | `recommender.networkAnalyzerGkeConnectivityInsights.*` | Access insights about network connectivity for Google Kubernetes Engine clusters.               |
 | `recommender.networkAnalyzerGkeIpAddressInsights.*`    | Access insights about IP address usage for Google Kubernetes Engine clusters.                   |
 
-The following API's must also be enabled: 
+The following APIs must also be enabled: 
 
 - Cloud Resource Manager API
 - Compute Engine API
