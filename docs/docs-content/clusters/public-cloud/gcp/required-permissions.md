@@ -66,6 +66,16 @@ having issues when deploying a host cluster.
 | `compute.routes.delete`                                | Delete routes                                                                                   |
 | `compute.routes.get`                                   | Get route information                                                                           |
 | `compute.routes.list`                                  | List routes                                                                                     |
+| `compute.subnetworks.create`                           | Create subnetwork                                                                               |
+| `compute.subnetworks.delete`                           | Delete subnetwork                                                                               |
+| `compute.subnetworks.list`                             | List subnetworks                                                                                |
+| `compute.subnetworks.use`                              | Use subnetwork                                                                                  |
+| `compute.zones.list`                                   | List zones                                                                                      |
+| `container.clusters.create`                            | Create cluster                                                                                  |
+| `container.clusters.delete`                            | Delete cluster                                                                                  |
+| `container.clusters.get`                               | Get clusters                                                                                    |
+| `container.clusters.list`                              | List clusters                                                                                   |
+| `container.clusters.update`                            | Update cluster                                                                                  |
 | `resourcemanager.projects.get`                         | Get details of a specified Google Cloud project.                                                |
 | `resourcemanager.projects.list`                        | List all Google Cloud projects that the user has access to.                                     |
 | `storage.objects.get`                                  | Get details of a specified object in Google Cloud Storage.                                      |
@@ -82,3 +92,9 @@ having issues when deploying a host cluster.
 | `recommender.locations.*`                              | Access details about locations in Google Cloud Recommender.                                     |
 | `recommender.networkAnalyzerGkeConnectivityInsights.*` | Access insights about network connectivity for Google Kubernetes Engine clusters.               |
 | `recommender.networkAnalyzerGkeIpAddressInsights.*`    | Access insights about IP address usage for Google Kubernetes Engine clusters.                   |
+
+The following API's must also be enabled: 
+
+- Cloud Resource Manager API
+- Compute Engine API
+- Kubernetes Engine API
