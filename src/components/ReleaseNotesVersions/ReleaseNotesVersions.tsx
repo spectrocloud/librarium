@@ -10,6 +10,7 @@ import Select, { components, OptionProps } from "react-select";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import useIsBrowser from "@docusaurus/useIsBrowser";
+import Link from "@docusaurus/Link";
 
 interface VersionOption {
   label: string;
@@ -40,7 +41,6 @@ export function ReleaseNotesVersions(): JSX.Element | null {
   const [selectedVersion, setSelectedVersion] = useState<VersionOption | null>(null);
   const history = useHistory();
   const isBrowser = useIsBrowser();
-  const isExternal = isBrowser && isExternalDomain(externalDomainURL, isBrowser);
 
   const versionsList = useVersions("default");
 
@@ -54,14 +54,10 @@ export function ReleaseNotesVersions(): JSX.Element | null {
     ...Object.entries(ArchivedVersions).map(([versionName, versionUrl]) => ({
       label: `${versionName} `,
       value: `${versionName} `,
-      url: versionUrl,
+      url: versionUrl + "/release-notes",
       isExternal: versionUrl.startsWith("http"),
     })),
   ];
-
-  if (isExternal) {
-    return <></>;
-  }
 
   useEffect(() => {
     const savedVersion = localStorage.getItem("selectedVersion");
@@ -72,6 +68,8 @@ export function ReleaseNotesVersions(): JSX.Element | null {
       }
     }
   }, [selectedVersion?.value]);
+
+  const isExternal = isBrowser && isExternalDomain(externalDomainURL, isBrowser);
 
   const handleVersionChange = (selectedOption: VersionOption | null) => {
     setSelectedVersion(selectedOption);
@@ -112,24 +110,33 @@ export function ReleaseNotesVersions(): JSX.Element | null {
     }),
   };
 
-  return (
-    <Admonition type="tip">
-      <p>
-        Are you looking for the release notes to a specific version of Palette? Use the version selector below to
-        navigate to the release notes of the desired version.
-      </p>
-      <div className={styles.dropdownContainer}>
-        <Select
-          classNamePrefix="reactSelect"
-          onChange={handleVersionChange}
-          value={selectedVersion}
-          options={versions}
-          components={{ Option: CustomOption }}
-          styles={customSelectStyles}
-        />
-      </div>
-    </Admonition>
-  );
+  if (isExternal) {
+    return (
+      <Admonition type="tip">
+        To learn more about the latest features and product changes, check out the most recent
+        <Link href="https://docs.spectrocloud.com/release-notes"> Palette release notes.</Link>.
+      </Admonition>
+    );
+  } else {
+    return (
+      <Admonition type="tip">
+        <p>
+          Are you looking for the release notes to a specific version of Palette? Use the version selector below to
+          navigate to the release notes of the desired version.
+        </p>
+        <div className={styles.dropdownContainer}>
+          <Select
+            classNamePrefix="reactSelect"
+            onChange={handleVersionChange}
+            value={selectedVersion}
+            options={versions}
+            components={{ Option: CustomOption }}
+            styles={customSelectStyles}
+          />
+        </div>
+      </Admonition>
+    );
+  }
 }
 
 //isExternalDomain checks if the url is external
