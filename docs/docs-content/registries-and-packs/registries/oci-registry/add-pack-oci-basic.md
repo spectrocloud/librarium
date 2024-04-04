@@ -23,7 +23,7 @@ authenticate to your Basic OCI registry, push a custom pack, and configure the r
 
 - Tenant administrator access.
 
-- Custom pack files available on your local machine. Refer to the [Add an Add-on Pack](../../adding-add-on-packs.md)
+- Custom pack files available on your local computer. Refer to the [Add an Add-on Pack](../../adding-add-on-packs.md)
   guide to learn how to create a custom pack.
 
 - A private OCI registry that supports basic authentication. This guide uses [Harbor](https://goharbor.io/) as an
@@ -46,7 +46,7 @@ push the pack, and configure the registry in Palette.
 1. Access the Harbor registry server domain on your web browser and log in using your credentials. If you have kept the
    default credentials, the username and password are **admin** and **Harbor12345**, respectively.
 
-2. From the **Projects** section, click **New Project**. A project in Harbor contains all repositories of an
+2. In the **Projects** section, click **New Project**. A project in Harbor contains all repositories of an
    application.
 
 3. Give your project a name and keep the default settings for the remaining configuration. Click **OK** to proceed.
@@ -55,7 +55,7 @@ push the pack, and configure the registry in Palette.
    "https://" prefix.
 
    ```bash
-   export HARBOR_ADDRESS=<Your_Harbor_Address>
+   export HARBOR_ADDRESS=<your-harbor-address>
    ```
 
 5. Issue the command `oras login` to log in to your Harbor registry. When prompted, enter your username and password. If
@@ -73,9 +73,9 @@ push the pack, and configure the registry in Palette.
    - `VERSION` - The pack's version, which must match the `version` parameter in the **pack.json** file.
 
    ```bash
-   export HARBOR_PROJECT=<Your_Repository_Name>
-   export NAME=<Your_Pack_Name>
-   export VERSION=<Your_Pack_Version>
+   export HARBOR_PROJECT=<your-repository-name>
+   export NAME=<your-pack-name>
+   export VERSION=<your-pack-version>
    ```
 
 7. Navigate to the directory containing the folder with the pack files.
@@ -85,7 +85,7 @@ push the pack, and configure the registry in Palette.
    the pack files.
 
    ```bash
-   tar -czvf $NAME-$VERSION.tar.gz <Your_Pack_Folder_Name>
+   tar -czvf $NAME-$VERSION.tar.gz <your-pack-folder-name>
    ```
 
 9. Create a base path repository to store your pack repositories. Note that Harbor creates a repository when the user

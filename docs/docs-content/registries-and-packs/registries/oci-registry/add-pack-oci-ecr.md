@@ -43,9 +43,9 @@ registry, push a custom pack, and configure the registry in Palette.
   - `ecr:DeleteRepository`
 
 - The following software installed on your local machine.
-  - [ORAS](https://oras.land/docs/installation/) v1.0.0.
-  - [Tar](https://www.gnu.org/software/tar/).
-  - [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
+  - [ORAS](https://oras.land/docs/installation/) v1.0.0
+  - [Tar](https://www.gnu.org/software/tar/)
+  - [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
 ## Upload Pack to an ECR Registry
 
@@ -55,9 +55,9 @@ Follow the steps described below to set up your ECR registry, push the pack, and
    account.
 
    ```bash
-   export AWS_ACCESS_KEY_ID=<Your_Access_Key_ID>
-   export AWS_SECRET_ACCESS_KEY=<Your_Secret_Access_Key>
-   export AWS_DEFAULT_REGION=<Your_Default_Region>
+   export AWS_ACCESS_KEY_ID=<your-access-key-id>
+   export AWS_SECRET_ACCESS_KEY=<your-secret-access-key>
+   export AWS_DEFAULT_REGION=<your-default-region>
    ```
 
 2. Additionally, export the required variables for creating the ECR repository and pushing the pack.
@@ -69,10 +69,10 @@ Follow the steps described below to set up your ECR registry, push the pack, and
    - `ACCOUNT_ID` - Your AWS account ID, containing only numerical digits and no dashes.
 
    ```bash
-   export REPOSITORY_NAME=<Your_Repository_Name>
-   export NAME=<Your_Pack_Name>
-   export VERSION=<Your_Pack_Version>
-   export ACCOUNT_ID=<Your_AWS_Account_ID>
+   export REPOSITORY_NAME=<your-repository-name>
+   export NAME=<your-pack-name>
+   export VERSION=<your-pack-version>
+   export ACCOUNT_ID=<your-aws-account-id>
    ```
 
 3. Issue the command below to create a base path repository to store your pack repositories.
