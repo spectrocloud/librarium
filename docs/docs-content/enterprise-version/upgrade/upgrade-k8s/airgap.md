@@ -269,7 +269,36 @@ Palette installation steps to match your environment.
     cd palette-install/charts/release-*
     ```
 
-11. Update the cert-manager chart using the following command.
+11. In a code editor of your choice, open the **extras/cert-manager/values.yaml** file and replace the
+    `controllerImage`, `webhookImage`, and `amceResolverImage` image URLs with your OCI image registry URLs.
+
+    ```yaml
+    image:
+    cainjectorImage: "gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-cainjector:spectro-v1.11.0-20230427"
+    // highlight-start
+    controllerImage: "<your-oci-registry-url>/spectro-images-public/release-fips/jetstack/cert-manager-controller:spectro-v1.11.0-20230427"
+    webhookImage: "<your-oci-registry-url>/spectro-images-public/release-fips/jetstack/cert-manager-webhook:spectro-v1.11.0-20230808"
+    amceResolverImage: "<your-oci-registry-url>/spectro-images-public/release-fips/jetstack/cert-manager-acmesolver:spectro-v1.11.0-20230427"
+    // highlight-end
+
+    featureGates: "AdditionalCertificateOutputFormats=true"
+    ```
+
+    Consider the following example for reference.
+
+    ```yaml
+    image:
+    cainjectorImage: "gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-cainjector:spectro-v1.11.0-20230427"
+    // highlight-start
+    controllerImage: "harbor.docs.spectro.dev/spectro-images-public/release-fips/jetstack/cert-manager-controller:spectro-v1.11.0-20230427"
+    webhookImage: "harbor.docs.spectro.dev/spectro-images-public/release-fips/jetstack/cert-manager-webhook:spectro-v1.11.0-20230808"
+    amceResolverImage: "harbor.docs.spectro.dev/spectro-images-public/release-fips/jetstack/cert-manager-acmesolver:spectro-v1.11.0-20230427"
+    // highlight-end
+
+    featureGates: "AdditionalCertificateOutputFormats=true"
+    ```
+
+12. Update the cert-manager chart using the following command.
 
     ```shell
     helm upgrade --values extras/cert-manager/values.yaml \
@@ -288,7 +317,7 @@ Palette installation steps to match your environment.
     TEST SUITE: None
     ```
 
-12. Prepare the Palette configuration file `values.yaml`. If you saved `values.yaml` used during the Palette
+13. Prepare the Palette configuration file `values.yaml`. If you saved `values.yaml` used during the Palette
     installation, you can reuse it for the upgrade. Alternatively, follow the
     [Kubernetes Installation Instructions](../../install-palette/install-on-kubernetes/install.md) to populate your
     `values.yaml`.

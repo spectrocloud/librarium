@@ -1,14 +1,14 @@
 ---
-sidebar_label: "Palette v.3.x"
-title: "Palette v.3.x"
+sidebar_label: "Upgrade Notes"
+title: "Upgrade Notes"
 description: "Learn how to upgrade self-hosted Palette instances."
 icon: ""
-sidebar_position: 30
+sidebar_position: 0
 tags: ["palette", "self-hosted", "airgap", "kubernetes", "upgrade"]
 keywords: ["self-hosted", "enterprise", "airgap", "kubernetes"]
 ---
 
-This page offers reference to help you prepare for upgrading self-hosted Palette instances from v.3.x to v.4.x.
+This page offers version-specific reference to help you prepare for upgrading self-hosted Palette instances.
 
 ## Palette 3.4
 

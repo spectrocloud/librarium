@@ -52,60 +52,6 @@ to your Enterprise Cluster Profile.
 
 ---
 
-:::info
-
-If the new version of Palette requires you to update the underlying OS and Kubernetes distribution, proceed with the
-steps 1 through 3. Otherwise, start at step 4.
-
-:::
-
-1. Log in to your vCenter.
-2. Right-click the cluster or resource group that hosts Palette and select **Deploy OVF Template**.
-3. In the **Deploy OVF Template** wizard, at the **Select an OVF template** step, enter a link to the OVA with the new
-   OS and Kubernetes distribution.
-
-   Consider the following example for reference.
-
-   ```shell
-   https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12610-0.ova
-   ```
-
-   At the **Select a name and folder** step:
-
-   - In the **Virtual machine name** field, append the `r_` prefix to the populated OVA name and remove the `.ova`
-     ending.
-
-     :::info
-
-     It's important that you follow this naming convention. Otherwise, Palette will not be able to identify the OS and
-     Kubernetes OVA and you will not be able to upgrade your Palette instance.
-
-     :::
-
-     Consider the following example for reference.
-
-     ```shell
-     r_u-2204-0-k-12610-0
-     ```
-
-   - Under the **Select a location for the virtual machine** selector, choose the **spectro-templates** folder you
-     created during installation.
-
-   Once the OS and Kubernetes OVA is available in your **spectro-templates** directory, you can terminate its
-   deployment. Refer to the
-   [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
-   guide for more information on deploying OVAs in vCenter.
-
-   :::tip
-
-   If, during the OVA deployment, you encounter an error message stating **Unable to retrieve manifest or certificate**,
-   refer to this [known issue](https://kb.vmware.com/s/article/79986) from the VMware knowledge base for a guide on how
-   to resolve it.
-
-4. Right-click the cluster or resource group that hosts Palette and select **Deploy OVF Template**.
-
----
-
 1. Use the following command template to SSH into the Palette airgap support VM. Enter the path to your private SSH key,
    your username, and the IP or domain of the airgap support VM. The default username is `ubuntu`.
 
@@ -244,7 +190,7 @@ steps 1 through 3. Otherwise, start at step 4.
    To update a package, use the following command template to download and execute the pack binary.
 
    ```shell
-   chmod +x <pack-name-version>.bin && ./<pack-name-version>.bin
+   curl -o <link-to-pack-bin> && chmod +x <pack-name-version>.bin && ./<pack-name-version>.bin
    ```
 
    Consider the following example for reference.

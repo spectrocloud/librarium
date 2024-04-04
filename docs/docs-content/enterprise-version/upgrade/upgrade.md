@@ -34,10 +34,10 @@ Kubernetes updates to your Enterprise Cluster Profile.
 
 ## Upgrade Guides
 
-Refer to the respective guide for your self-hosted Palette setup.
+Refer to the respective guide for guidance on upgrading your self-hosted Palette instance.
 
+- [Upgrade Notes](upgrade-notes.md)
 - [Non-Airgap VMware](upgrade-vmware/non-airgap.md)
 - [Airgap VMware](upgrade-vmware/airgap.md)
 - [Non-Airgap Kubernetes](upgrade-k8s/non-airgap.md)
 - [Airgap Kubernetes](upgrade-k8s/airgap.md)
-- [Palette v.3.x](palette-3-x.md)
