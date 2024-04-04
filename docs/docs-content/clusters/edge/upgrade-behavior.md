@@ -51,6 +51,15 @@ Updates in the OS or Kubernetes layers can trigger different upgrade behaviors d
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | - `options.system.uri` | - `stages.rootfs.*` <br/> - `stages.initramfs.*`<br/> - `stages.boot.*`<br/> - `stages.fs.*`<br/> - `stages.network.*`<br/> - `stages.after-install.*`<br/> - `stages.after-install-chroot.*`<br/> - `stages.after-upgrade.*`<br/> - `stages.after-upgrade-chroot.*`<br/> - `stages.after-reset.*`<br/> - `stages.after-reset-chroot.*`<br/> - `stages.before-install.*`<br/> - `stages.before-upgrade.*`<br/> - `stages.before-reset.*` <br/> | None.           | - `pack.*`<br/> - `providerCredentials.*`<br/> - `options.system.registry`<br/> - `options.system.repo`<br/> - `options.system.k8sDistribution`<br/> - `options.system.osName`<br/> - `options.system.peVersion`<br/> - `options.system.customTag`<br/> - `options.system.osVersion` <br/> |
 
+:::warning
+
+Changes to any other parameters that are used by the `options.system.uri` parameter will also trigger a cluster repave.
+For example, if your `options.system.uri` parameter is
+`{{ options.system.registry }}/{{ options.system.repo }}:{{ options.system.k8sDistribution }`, changes to
+`options.system.registry` will trigger a cluster repave because it changes the `options.system.uri` parameter.
+
+:::
+
 ### Kubernetes Layer
 
 <Tabs>
