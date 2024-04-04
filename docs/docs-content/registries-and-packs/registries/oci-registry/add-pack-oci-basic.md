@@ -32,6 +32,12 @@ authenticate to your Basic OCI registry, push a custom pack, and configure the r
 
 - [ORAS](https://oras.land/docs/installation/) v1.0.0 installed and available.
 
+  :::warning
+
+  This specific version of ORAS is explicitly required for pushing packs to OCI registries.
+
+  :::
+
 - [Tar](https://www.gnu.org/software/tar/) installed and available.
 
 - If your OCI registry is using a self-signed certificate or a certificate that is not signed by a trusted Certificate
@@ -43,11 +49,15 @@ Palette supports all OCI-compliant registries that use basic authentication. Thi
 [Harbor](https://goharbor.io/) registry as an example. Follow the steps described below to set up your Harbor registry,
 push the pack, and configure the registry in Palette.
 
-1. Access the Harbor registry server domain on your web browser and log in using your credentials. If you have kept the
-   default credentials, the username and password are **admin** and **Harbor12345**, respectively.
+1. Access the Harbor registry server domain on your web browser and log in using your credentials.
 
-2. In the **Projects** section, click **New Project**. A project in Harbor contains all repositories of an
-   application.
+   :::tip
+
+   If you have kept the default credentials, the username and password are **admin** and **Harbor12345**, respectively.
+
+   :::
+
+2. In the **Projects** section, click **New Project**. A project in Harbor contains all repositories of an application.
 
 3. Give your project a name and keep the default settings for the remaining configuration. Click **OK** to proceed.
 
@@ -73,7 +83,7 @@ push the pack, and configure the registry in Palette.
    - `VERSION` - The pack's version, which must match the `version` parameter in the **pack.json** file.
 
    ```bash
-   export HARBOR_PROJECT=<your-repository-name>
+   export HARBOR_PROJECT=<your-harbor-project-name>
    export NAME=<your-pack-name>
    export VERSION=<your-pack-version>
    ```
@@ -111,12 +121,13 @@ custom OCI registries.
 11. After pushing the pack to the Harbor registry, follow the steps in [Add OCI Packs Registry](./add-oci-packs.md) to
     add your Harbor registry to Palette.
 
-:::info
+    :::info
 
-Palette automatically synchronizes the registries. However, you can manually trigger the synchronization if needed. From
-the **OCI Registries** page, click the **three-dot Menu** next to the registry name you added and select **Sync**.
+    Palette automatically synchronizes the registries. However, you can manually trigger the synchronization if needed.
+    From the **OCI Registries** page, click the **three-dot Menu** next to the registry name you added and select
+    **Sync**.
 
-:::
+    :::
 
 ## Validate
 

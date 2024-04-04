@@ -43,9 +43,17 @@ registry, push a custom pack, and configure the registry in Palette.
   - `ecr:DeleteRepository`
 
 - The following software installed on your local machine.
-  - [ORAS](https://oras.land/docs/installation/) v1.0.0
-  - [Tar](https://www.gnu.org/software/tar/)
-  - [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+- [ORAS](https://oras.land/docs/installation/) v1.0.0
+
+  :::warning
+
+  This specific version of ORAS is explicitly required for pushing packs to OCI registries.
+
+  :::
+
+- [Tar](https://www.gnu.org/software/tar/)
+- [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
 ## Upload Pack to an ECR Registry
 
@@ -121,12 +129,13 @@ custom OCI registries.
 9. After pushing the pack to the ECR registry, follow the steps in [Add OCI Packs Registry](./add-oci-packs.md) to add
    your ECR registry to Palette.
 
-:::info
+   :::info
 
-Palette automatically synchronizes the registries. However, you can manually trigger the synchronization if needed. From
-the **OCI Registries** page, click the **three-dot Menu** next to the registry name you added and select **Sync**.
+   Palette automatically synchronizes the registries. However, you can manually trigger the synchronization if needed.
+   From the **OCI Registries** page, click the **three-dot Menu** next to the registry name you added and select
+   **Sync**.
 
-:::
+   :::
 
 ## Validate
 
