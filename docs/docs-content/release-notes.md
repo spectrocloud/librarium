@@ -86,6 +86,11 @@ the following sections for a complete list of features, improvements, and known 
   through Palette CLI will be eligible for a cluster profile update. We recommend you review the
   [Upgrade a PCG](./clusters/pcg/manage-pcg/pcg-upgrade.md) guide to learn more about updating a PCG.
 
+- Self-hosted Palette instances will now use Kubernetes version 1.27.9. The new version of Kubernetes will cause node
+  repave events during the upgrade process. If you have multiple self-hosted Palette instances in a VMware environment,
+  take a moment and review the [Known Issues](#known-issues) section below for potential issues that may arise during
+  the upgrade process.
+
 #### Known Issues
 
 - Conducting cluster node scaling operations on a cluster undergoing a backup can lead to issues and potential
@@ -115,7 +120,8 @@ the following sections for a complete list of features, improvements, and known 
   cause issues during a node repave event, such as a Kubernetes version upgrade. Specifically, the VMware vSphere CSI's
   Persistent Volume (PV) and Persistent Volume Claim (PVC) will experience start problems due to the lack of a unique
   cluster ID. To resolve this issue, refer to the
-  [Persistent Volume Claims Not Starting](./troubleshooting/palette-upgrade.md) troubleshooting guide.
+  [Volume Attachement Erros Volume in VMware Environment](./troubleshooting/palette-upgrade.md#volume-attachement-erros-volume-in-vmware-environment)
+  troubleshooting guide.
 
 ### Edge
 
@@ -195,6 +201,11 @@ the following sections for a complete list of features, improvements, and known 
   also supports checking exposed service endpoints for approved ciphers and TLS versions. Images and service endpoints
   that are not compliant are reported with either a failed or unknown status. Refer to the
   [FIPS Validate](./palette-cli/commands/fips-validate.md) guide to learn more about the command.
+
+- VerteX instances will now use Kubernetes version 1.27.9. The new version of Kubernetes will cause node repave events
+  during the upgrade process. If you have multiple self-hosted Palette instances in a VMware environment, take a moment
+  and review the Palette [Known Issues](#known-issues) section above for potential issues that may arise during the
+  upgrade process.
 
 #### Improvements
 
