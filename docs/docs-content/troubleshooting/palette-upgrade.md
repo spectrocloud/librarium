@@ -49,7 +49,7 @@ Error: UPGRADE FAILED: failed to create resource: admission webhook "validate.ng
 
 <br />
 
-## Volume Attachement Errors Volume in VMware Environment
+## Volume Attachment Errors Volume in VMware Environment
 
 If you deployed Palette in a VMware vSphere environment and are experiencing volume attachment errors for the MongoDB
 pods during the upgrade process. It may be due to duplicate resources in the cluster causing resource creation errors.
