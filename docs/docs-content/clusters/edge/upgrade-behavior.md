@@ -55,8 +55,9 @@ Updates in the OS or Kubernetes layers can trigger different upgrade behaviors d
 
 Changes to any other parameters that are used by the `options.system.uri` parameter will also trigger a cluster repave.
 For example, if your `options.system.uri` parameter is
-`{{ options.system.registry }}/{{ options.system.repo }}:{{ options.system.k8sDistribution }`, changes to
-`options.system.registry` will trigger a cluster repave because it changes the `options.system.uri` parameter.
+`{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}`,
+changes to `.spectro.pack.edge-native-byoi.options.system.registry` will trigger a cluster repave because it changes the
+`options.system.uri` parameter.
 
 :::
 
