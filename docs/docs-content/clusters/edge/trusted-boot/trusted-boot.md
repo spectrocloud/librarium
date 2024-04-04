@@ -1,0 +1,43 @@
+---
+sidebar_label: "Trusted Boot"
+title: "Trusted Boot"
+description: "Learn about Trusted Boot."
+hide_table_of_contents: false
+sidebar_position: 10
+tags: ["edge"]
+---
+
+Trusted Boot is a security feature supported by Palette Edge running on Edge devices with supported hardware and
+firmware. Trusted Boot consists of the following security measures:
+
+- Full disk encryption (FDE): Encryption of the entire contents of a disk drive, including the operating system, system
+  files, and user data. The purpose of FDE is to protect data stored on the disk from unauthorized access in the event
+  of theft or loss of the device.
+- Secure boot: A security measure that ensures only properly signed and authenticated software is allowed to operate
+  during the boot process of a device.
+- Measured boot. A security feature that works by measures each component of the boot process and recording these
+  measurements in a
+  [Trusted Platform Module (TPM)](https://www.intel.com/content/www/us/en/business/enterprise-computers/resources/trusted-platform-module.html),
+  which can be used for later analysis.
+
+Together, these measures allows Trusted Boot to ensure the authenticity of the boot processes that are allowed to run on
+your Edge device. In addition, the measurements stored in the TPM can be provided to third parties to prove that your
+boot process is secure and unaltered. In the event that your Edge device is stolen or lost, FDE ensures that its content
+is not accessible to those without the key used to encrypt it.
+
+## Why Do You Need Trusted Boot?
+
+Edge devices are often deployed in locations with minimal security and high traffic. such as restaurants and coffee
+shops, and are susceptible physical attacks. If an attacker is able to inject malware into the Edge host through a
+physical attack, it has the potential to seriously compromise the security of your systems.
+
+Trusted Boot allows you to be confident that all software that is allowed to run on your Edge hosts are authenticated
+software verified through cryptographic signatures. In addition, you may need provide evidence of the integrity of your
+boot processes to meet certain compliance requirements. The Measured Boot aspect of Trusted Boot allows you to provide
+such evidence.
+
+## Hardware and Firmware Requirements
+
+The following hardware and firmware requirements apply for devices that support Trusted Boot:
+
+- Edge host must have TPM 2.0.
