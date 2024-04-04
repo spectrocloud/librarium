@@ -7,6 +7,24 @@ sidebar_position: 40
 tags: ["public cloud", "gcp", "iam"]
 ---
 
+## Required API Services
+
+Ensure the following Google Cloud Platform (GCP) API services are enabled in your GCP project to deploy a host cluster:
+
+- [Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest)
+- [Compute Engine API](https://cloud.google.com/compute/docs/reference/rest/v1)
+- [Kubernetes Engine API](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1)
+
+:::tip
+
+If you need help enabling a Google Cloud API service, check out the
+[Enable and disable APIs](https://support.google.com/googleapi/answer/6158841?hl=en) guide from the official Google
+Cloud documentation.
+
+:::
+
+## Required Permissions
+
 This table contains the required Google Cloud Platform (GCP) permissions to create a custom GCP role tailored for usage
 with Palette. When creating a custom role, ensure you include all the permissions listed below to prevent Palette from
 having issues when deploying a host cluster.
@@ -92,9 +110,3 @@ having issues when deploying a host cluster.
 | `recommender.locations.*`                              | Access details about locations in Google Cloud Recommender.                                     |
 | `recommender.networkAnalyzerGkeConnectivityInsights.*` | Access insights about network connectivity for Google Kubernetes Engine clusters.               |
 | `recommender.networkAnalyzerGkeIpAddressInsights.*`    | Access insights about IP address usage for Google Kubernetes Engine clusters.                   |
-
-The following APIs must also be enabled: 
-
-- Cloud Resource Manager API
-- Compute Engine API
-- Kubernetes Engine API
