@@ -116,11 +116,13 @@ the following sections for a complete list of features, improvements, and known 
   [VMware Resources Remain After Cluster Deletion](./troubleshooting/pcg.md#scenario---vmware-resources-remain-after-cluster-deletion)
   troubleshooting guide for resolution steps.
 
+  <!-- prettier-ignore -->
+
 - In a VMware environment, self-hosted Palette instances do not receive a unique cluster ID when deployed, which can
   cause issues during a node repave event, such as a Kubernetes version upgrade. Specifically, the VMware vSphere CSI's
   Persistent Volume (PV) and Persistent Volume Claim (PVC) will experience start problems due to the lack of a unique
   cluster ID. To resolve this issue, refer to the
-  [Volume Attachement Erros Volume in VMware Environment](./troubleshooting/palette-upgrade.md#volume-attachement-erros-volume-in-vmware-environment)
+  [Volume Attachement Erros Volume in VMware Environment](./troubleshooting/palette-upgrade.md#volume-attachement-errors-volume-in-vmware-environment)
   troubleshooting guide.
 
 ### Edge

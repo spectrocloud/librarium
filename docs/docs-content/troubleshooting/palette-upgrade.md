@@ -51,10 +51,10 @@ Error: UPGRADE FAILED: failed to create resource: admission webhook "validate.ng
 
 ## Volume Attachement Errors Volume in VMware Environment
 
-If you deployed Palette in a VMware environment and are experiencing volume attachment errors for the MongoDB pods
-during the upgrade process. It may be due to duplicate resources in the cluster causing resource creation errors.
+If you deployed Palette in a VMware vSphere environment and are experiencing volume attachment errors for the MongoDB
+pods during the upgrade process. It may be due to duplicate resources in the cluster causing resource creation errors.
 Palette versions between 4.0.0 and 4.3.0 are affected by a known issue where cluster resources are not receiving unique
-IDs. Use the following steps to address the issue
+IDs. Use the following steps to correctly identify the issue and resolve it.
 
 ### Debug Steps
 
@@ -100,8 +100,8 @@ IDs. Use the following steps to address the issue
 
    :::warning
 
-   To prevent data loss, only do the steps for a MongoDB pod one at a time and wait for the pod to come up correctly
-   before proceeding to the next pod.
+   Only do the steps for one MongoDB pod at a time to prevent data loss. Wait for the pod to come up correctly before
+   proceeding to the next pod.
 
    :::
 
@@ -112,7 +112,8 @@ IDs. Use the following steps to address the issue
    ```
 
 8. Delete the PV associated with the MongoDB pod. Use the following command to list all PVs and find the PV associated
-   with the MongoDB pod you started with. In this example, the PV associated with `mongo-2` is `mongo-data-mongo-2`.
+   with the MongoDB pod you started with. In this example, the PV associated with `mongo-2` is
+   `pvc-94cbb8f5-9145-4b18-9bf9-ee027b64d0c7`.
 
    ```shell
     kubectl get pv | grep 'mongo-data-mongo-2'
@@ -165,3 +166,6 @@ left **Main Menu** and select **Enterprise Cluster**. The **Nodes** tab will dis
 cluster.
 
 ![A view of three nodes in a healthy status](/troubleshootig_palette-upgrade_nodes-healthy.webp)
+
+If you continue to encounter issues, contact our support team by emailing
+[support@spectrocloud.com](mailto:support@spectrocloud.com) so that we can provide you with further guidance.
