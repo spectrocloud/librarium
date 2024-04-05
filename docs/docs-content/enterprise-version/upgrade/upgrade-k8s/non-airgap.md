@@ -57,8 +57,9 @@ match your environment.
    cd palette-install/charts/release-*
    ```
 
-3. In a code editor of your choice, open the **extras/cert-manager/values.yaml** file and replace the `controllerImage`,
-   `webhookImage`, and `amceResolverImage` image URLs with your OCI image registry URLs.
+3. If you're using a self-hosted OCI registry, then, in a code editor of your choice, open the
+   **extras/cert-manager/values.yaml** file and replace the `controllerImage`, `webhookImage`, and `amceResolverImage`
+   image URLs with your OCI image registry URLs.
 
    ```yaml
    image:

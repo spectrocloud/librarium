@@ -18,7 +18,7 @@ to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section 
 If your setup includes a PCG, you must also
 [allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette upgrade. Additionally, if the new Palette version updates Kubernetes, you need to apply the Kubernetes updates
-to your Enterprise Cluster Profile.
+to your Enterprise Cluster profile.
 
 :::
 
@@ -36,18 +36,26 @@ to your Enterprise Cluster Profile.
 
    :::warning
 
-   If your Enterprise Cluster Profile has configuration changes or additions, make sure to back up all the customized
+   If your Enterprise Cluster profile has configuration changes or additions, make sure to back up all the customized
    values to preserve them after the upgrade.
 
    :::
 
-   ![Self-hosted Palette system console with the highlighted Enterprise Cluster Profile configuration values.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_copy_configurations.png)
+   ![Self-hosted Palette system console with the highlighted Enterprise Cluster profile configuration values.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_copy_configurations.png)
 
 4. From the left **Main Menu**, select **Update Management** and click **Update**.
 
    ![Self-hosted Palette system console with Update Management open and the Update button highlighted.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_update.png)
 
-5. Review the changes that the upgrade introduces and select **Confirm**.
+5. Review the changes that the upgrade introduces. If your Enterprise Cluster Profile had any configuration changes or
+   additions, add them to the **Current configuration** pane and select **Confirm**.
+
+   :::warning
+
+   Make sure to transfer the configuration changes and additions in all Enterprise Cluster Profile layers to preserve
+   them after the upgrade.
+
+   :::
 
    ![Self-hosted Palette system console with the upgrade preview pane.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_upgrade-preview.png)
 
@@ -62,13 +70,10 @@ Proceed with the following steps if the Palette upgrade introduces a new version
 6. Once the system console unlocks, from the left **Main Menu**, select **Enterprise Cluster** and then select the
    **Profile** tab.
 
-7. Open each Enterprise Cluster Profile layer and replace their configurations with the values you received from our
+7. Open each Enterprise Cluster profile layer and replace their configurations with the values you received from our
    support team.
 
-8. If your original profile layers had configuration changes or additions, apply them to the updated configurations and
-   select **Save**.
-
-   The Enterprise Cluster initiate the Kubernetes upgrade and leads to the reconciliation of the three Palette nodes.
+   The Enterprise Cluster initiates the Kubernetes upgrade and reconciles the Palette instance nodes.
 
 ## Validate
 

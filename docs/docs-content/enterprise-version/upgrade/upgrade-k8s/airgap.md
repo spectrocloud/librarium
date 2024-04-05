@@ -150,10 +150,10 @@ Palette upgrade.
       ```shell
       export ECR_IMAGE_REGISTRY=<ecr-endpoint>
       export ECR_IMAGE_BASE=spectro-images
-      export ECR_IMAGE_REGISTRY_REGION=us-east-1
+      export ECR_IMAGE_REGISTRY_REGION=<ecr-region>
       export ECR_PACK_REGISTRY=<ecr-endpoint>
       export ECR_PACK_BASE=spectro-packs
-      export ECR_PACK_REGISTRY_REGION=us-east-1
+      export ECR_PACK_REGISTRY_REGION=<ecr-region>
       ```
 
     Consider the following example for reference.
@@ -175,23 +175,29 @@ Palette upgrade.
     the following command template to set up a `VERSION` variable you'll use in the following steps.
 
     ```shell
-    VERSION=<x.y.z>
+    export VERSION=<x.y.z>
     ```
 
-    Then, use the following command template to download the airgap setup binary.
+    Consider the following example for reference.
+
+    ```shell
+    export VERSION=4.2.7
+    ```
+
+5.  Use the following command template to download the airgap setup binary.
 
     ```shell
     curl --user <username>:<password> https://software-private.spectrocloud.com/airgap/$VERSION/airgap-v$VERSION.bin  \
     --output airgap-v$VERSION.bin
     ```
 
-5.  Use the following command to make the airgap binary executable.
+6.  Use the following command to make the airgap binary executable.
 
     ```shell
     chmod +x airgap-v$VERSION.bin
     ```
 
-6.  Use the following command to start the airgap setup binary.
+7.  Use the following command to start the airgap setup binary.
 
     ```shell
     ./airgap-v$VERSION.bin
@@ -218,26 +224,28 @@ Palette upgrade.
     Setup Completed
     ```
 
-7.  Move the `spectro-manifests` archive to a directory that your file server can access and use the following command
+8.  Move the `spectro-manifests` archive to a directory that your file server can access and use the following command
     template to unzip it.
 
     ```shell
     unzip spectro-manifests-<file-id>.zip -d /target/folder
     ```
 
-8.  Refer to the [Additional Packs](../../install-palette/airgap/supplemental-packs.md) page and update the packages you
+9.  Refer to the [Additional Packs](../../install-palette/airgap/supplemental-packs.md) page and update the packages you
     are currently using. You must update each package separetely.
 
     To update a package, use the following command template to download and execute the pack binary.
 
     ```shell
-    chmod +x <pack-name-version>.bin && ./<pack-name-version>.bin
+    curl --remote-name <pack-name-url> && chmod +x <pack-name-version>.bin && ./<pack-name-version>.bin
     ```
 
     Consider the following example for reference.
 
     ```shell
-    chmod +x airgap-pack-aws-alb-2.5.1.bin && ./airgap-pack-aws-alb-2.5.1.bin
+    curl --remote-name https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-alb-2.5.1.bin \
+      && chmod +x airgap-pack-aws-alb-2.5.1.bin \
+      && ./airgap-pack-aws-alb-2.5.1.bin
     ```
 
     ```shell
@@ -252,12 +260,11 @@ Palette upgrade.
 :::info
 
 Depending on your underlying infrastructure provider and Kubernetes distribution, you may need to modify the following
-Palette installation steps to match your environment.
+Palette upgrade steps to match your environment.
 
 :::
 
-9.  Open a terminal session and navigate to the directory with the Palette installation zip file. Unzip the file to a
-    **palette-install** directory.
+9.  Navigate to the directory with the Palette installation zip file. Unzip the file to a **palette-install** directory.
 
     ```shell
     unzip release-*.zip -d palette-install

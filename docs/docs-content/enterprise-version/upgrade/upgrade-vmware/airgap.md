@@ -18,7 +18,7 @@ to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section 
 If your setup includes a PCG, you must also
 [allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette upgrade. Additionally, if the new Palette version updates Kubernetes, you need to apply the Kubernetes updates
-to your Enterprise Cluster Profile.
+to your Enterprise Cluster profile.
 
 :::
 
@@ -36,182 +36,152 @@ to your Enterprise Cluster Profile.
 
 ## Upgrade
 
-1. SSH into the support VM.
-2. Download the new binary to your support VM.
-3. Execute the binary.
-4. Run pack sync from the system console.
-5. Once the packs sync, you will see the upgrade button from the system console.
-6. Upgrade as you would a non-airgap instance.
+1.  Use the following command template to SSH into the Palette airgap support VM. Enter the path to your private SSH
+    key, your username, and the IP or domain of the airgap support VM. The default username is `ubuntu`.
 
----
+    ```shell
+    ssh -identity_file </path/to/private/key> <username>@<vm-ip-or-domain>
+    ```
 
-1. SSH into the support VM.
-2. Run the airgap setup script.
-3. Get the setup script values.
-4.
+    Consider the following command example for reference.
 
----
+    ```shell
+    ssh -identity_file /docs/ssh-private-key.pem ubuntu@palette.example.com
+    ```
 
-1. Use the following command template to SSH into the Palette airgap support VM. Enter the path to your private SSH key,
-   your username, and the IP or domain of the airgap support VM. The default username is `ubuntu`.
+2.  Use the following command to switch to the `root` user account, which you need to proceed with the upgrade.
 
-   ```shell
-   ssh -identity_file </path/to/private/key> <username>@<vm-ip-or-domain>
-   ```
+    ```shell
+    sudo --login
+    ```
 
-   Consider the following command example for reference.
+3.  Use the following command template to donwload the new Palette airgap installation bin. Enter the username,
+    password, and the Palette airgap installation URL you received from our support team. In the output file name,
+    replace `<version>` with the Palette version you're downloading.
 
-   ```shell
-   ssh -identity_file /docs/ssh-private-key.pem ubuntu@palette.example.com
-   ```
+    ```shell
+    curl --user <username>:<password> --output airgap-<version>.bin <link-to-airgap-installation-bin>
+    ```
 
-2. Use the following command to switch to the `root` user account, which you need to proceed with the upgrade.
+    Consider the following command example for reference.
 
-   ```shell
-   sudo --login
-   ```
+    ```shell
+    curl --user <username>:<password> --output airgap-4.1.12.bin https://software-private.spectrocloud.com/airgap/4.1.12/airgap-v4.1.12.bin
+    ```
 
-3. Use the following command template to donwload the new Palette airgap installation bin. Enter the username, password,
-   and the Palette airgap installation URL you received from our support team. In the output file name, replace
-   `<version>` with the Palette version you're downloading.
+4.  Refer to the [Additional Packs](../../install-palette/airgap/supplemental-packs.md) page and update the packages you
+    are currently using. You must update each package separetely.
 
-   ```shell
-   curl --user <username>:<password> <link-to-airgap-installation-bin> --output airgap-<version>.bin
-   ```
+    To update a package, use the following command template to download and execute the pack binary.
 
-   Consider the following command example for reference.
+    ```shell
+    curl --remote-name <pack-name-url> && chmod +x <pack-name-version>.bin && ./<pack-name-version>.bin
+    ```
 
-   ```shell
-   curl --user <username>:<password> https://software-private.spectrocloud.com/airgap/4.1.12/airgap-v4.1.12.bin --output airgap-4.1.12.bin
-   ```
+    Consider the following example for reference.
 
-4. Select one of the following tabs to initialize the airgap Palette installation script either with the IP address or
-   the domain of your airgap support VM. Be aware that the script generates a self-signed certificate for the IP or
-   domain you provide.
+    ```shell
+    curl --remote-name https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-alb-2.5.1.bin \
+      && chmod +x airgap-pack-aws-alb-2.5.1.bin \
+      && ./airgap-pack-aws-alb-2.5.1.bin
+    ```
 
-   <Tabs>
+    ```shell
+    Verifying archive integrity...  100%   MD5 checksums are OK. All good.
+    Uncompressing Airgap Pack - aws-alb Version 4.0.17  100%
+    Setting up Packs
+    - Pushing Pack aws-alb:2.5.1
+    Setting up Images
+    Setup Completed
+    ```
 
-   <TabItem value="domain" label="Domain">
+5.  Use the following command template to execute the new Palette airgap installation bin.
 
-   Use the following command template to start the airgap initialization binary.
+    ```shell
+    chmod +x airgap-<version>.bin && ./airgap-<version>.bin
+    ```
 
-   ```shell
-   /bin/airgap-setup.sh <domain>
-   ```
+    Consider the following example for reference.
 
-   Consider the following command example for reference.
+    ```shell
+    chmod +x airgap-v4.2.13.bin && ./airgap-v4.2.13.bin
+    ```
 
-   ```shell
-   /bin/airgap-setup.sh palette.example.com
-   ```
+6.  After the Palette airgap binary is verified and uncompressed, it uploads the updates to your existing Palette
+    instance. This step takes some time to complete.
 
-   You should receive an output similar to the following.
+    Once the airgap binary is executed, you will receive a **Setup Completed** success message.
 
-   ```shell
-   Setting up SSL Certs
-   Setting up Harbor
+    ```shell
+    Verifying archive integrity...  100%   MD5 checksums are OK. All good.
+    Uncompressing Airgap Setup - Version 4.2.13  100%
+    Setting up CLI
+    Setting up Manifests
+    Setting up Packs
+    ...
 
-   Details:
-   -------
-   Spectro Cloud Repository
-   Location: https://palette.example.com:8443
-   UserName: ********
-   Password: ********
-   CA certificate filepath: /opt/spectro/ssl/server.crt
+    //highlight-next-line
+    Setup Completed
+    ```
 
-   Pack OCI Registry
-   Endpoint: https://palette.example.com
-   Base Content Path: spectro-packs
-   CA certificate Filepath: /opt/spectro/ssl/server.crt
-   Username: ********
-   Password: ********
+7.  Log in to the Palette system console.
 
-   Image OCI Registry
-   Endpoint: https://palette.example.com
-   Base Content Path: spectro-images
-   CA certificate Filepath: /opt/spectro/ssl/server.crt
-   Username: ********
-   Password: ********
-   ```
+8.  From the left **Main Menu**, select **Enterprise Cluster** and then select the **Profile** tab.
 
-   </TabItem>
+9.  Copy the configurations for your CSI, CNI, and Kubernetes layers to an external location for backup.
 
-   <TabItem value="ip" label="IP Address">
+    :::warning
 
-   Use the following command template to start the airgap initialization binary.
+    If your Enterprise Cluster profile has configuration changes or additions, make sure to back up all the customized
+    values to preserve them after the upgrade.
 
-   ```shell
-   /bin/airgap-setup.sh <ip-address>
-   ```
+    :::
 
-   Consider the following command example for reference.
+    ![Self-hosted Palette system console with the highlighted Enterprise Cluster profile configuration values.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_copy_configurations.png)
 
-   ```shell
-   /bin/airgap-setup.sh 10.10.1.1
-   ```
+10. From the left **Main Menu**, select **Administration** > **Pack Registries**. Then, next to your **spectro-packs**
+    registry, select the **three-dot Menu** > **Sync**.
 
-   You should receive an output similar to the following. This output contains credentials and values that your need to
-   complete installation with the Palette CLI.
+    Palette initiates a registry sync, which can take up to 30 minutes to complete.
 
-   ```shell
-   Setting up SSL Certs
-   Setting up Harbor
+11. From the left **Main Menu**, select **Update Management**. Once the registry sync is done, Palette will prompt you
+    to update to the new version. Click **Update**.
 
-   Details:
-   -------
-   Spectro Cloud Repository
-   Location: 10.10.1.1:8443
-   UserName: ********
-   Password: ********
-   CA certificate filepath: /opt/spectro/ssl/server.crt
+    ![Self-hosted Palette system console with Update Management open and the Update button highlighted.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_update.png)
 
-   Pack OCI Registry
-   Endpoint: 10.10.1.1
-   Base Content Path: spectro-packs
-   CA certificate Filepath: /opt/spectro/ssl/server.crt
-   Username: ********
-   Password: ********
+12. Review the changes that the upgrade introduces. If your Enterprise Cluster profile had any configuration changes or
+    additions, add them to the **Current configuration** pane and select **Confirm**.
 
-   Image OCI Registry
-   Endpoint: 10.10.1.1
-   Base Content Path: spectro-images
-   CA certificate Filepath: /opt/spectro/ssl/server.crt
-   Username: ********
-   Password: ********
-   ```
+    :::warning
 
-   </TabItem>
+    Make sure to transfer the configuration changes and additions in all Enterprise Cluster profile layers to preserve
+    them after the upgrade.
 
-   </Tabs>
+    :::
 
-5. Refer to the [Additional Packs](../../install-palette/airgap/supplemental-packs.md) page and update the packages you
-   are currently using. You must update each package separetely.
+    ![Self-hosted Palette system console with the upgrade preview pane.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_upgrade-preview.png)
 
-   To update a package, use the following command template to download and execute the pack binary.
+    The system console locks for a couple of minutes while the upgrade is applied.
 
-   ```shell
-   curl -o <link-to-pack-bin> && chmod +x <pack-name-version>.bin && ./<pack-name-version>.bin
-   ```
+:::info
 
-   Consider the following example for reference.
+Proceed with the following steps if the Palette upgrade introduces a new version of Kubernetes.
 
-   ```shell
-   chmod +x airgap-pack-aws-alb-2.5.1.bin && ./airgap-pack-aws-alb-2.5.1.bin
-   ```
+:::
 
-   ```shell
-   Verifying archive integrity...  100%   MD5 checksums are OK. All good.
-   Uncompressing Airgap Pack - aws-alb Version 4.0.17  100%
-   Setting up Packs
-   - Pushing Pack aws-alb:2.5.1
-   Setting up Images
-   Setup Completed
-   ```
+13. Once the system console unlocks, from the left **Main Menu**, select **Enterprise Cluster** and then select the
+    **Profile** tab.
 
-6. Use the following Palette CLI command to upgrade your airgap instance and packages.
+14. Open each Enterprise Cluster profile layer and replace their configurations with the values you received from our
+    support team.
 
-   ```shell
-   palette ec install
-   ```
+The Enterprise Cluster initiates the Kubernetes upgrade and reconciles the Palette instance nodes.
 
 ## Validate
+
+1. Log in to the Palette system console.
+
+2. On the **Summary** page, check the current Palette version. You should see a message that states **You are using the
+   latest version of Palette**.
+
+   ![Self-hosted Palette system console with upgraded system.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_upgraded.png)
