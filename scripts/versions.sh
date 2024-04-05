@@ -150,8 +150,7 @@ for item in $(git branch --format '%(refname:short)'); do
     rm api_versions.json
 
     # Remove API auto-generated files
-    npm run clean-api-docs
-    rm -rf docs/api-content/api-docs/v1/sidebar.ts
+    make clean-api
 
     # Switch back to the original branch
     git checkout $current_branch
