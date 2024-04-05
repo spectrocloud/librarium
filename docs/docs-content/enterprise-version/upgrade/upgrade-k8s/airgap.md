@@ -204,7 +204,7 @@ Palette upgrade.
     ```
 
     After the binary execution is done, you should receive the following success message (the example is shortened for
-    brewity). As a result of running the binary, you should have a `spectro-manifests` archive in your temporary
+    brevity). As a result of running the binary, you should have a `spectro-manifests` archive in your temporary
     directory.
 
     ```shell
@@ -232,7 +232,7 @@ Palette upgrade.
     ```
 
 9.  Refer to the [Additional Packs](../../install-palette/airgap/supplemental-packs.md) page and update the packages you
-    are currently using. You must update each package separetely.
+    are currently using. You must update each package separately.
 
     To update a package, use the following command template to download and execute the pack binary.
 
@@ -412,7 +412,7 @@ Ensure that the `values.yaml` file is ready before proceeding. Specifically, mak
 
 ## Validate
 
-1. In your terminal, run the following command.
+1. In your terminal, issue the following command.
 
    ```shell
    helm ls
