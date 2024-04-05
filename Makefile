@@ -35,6 +35,12 @@ clean-versions: ## Clean Docusarus content versions
 	rm -rf api_versions.json versions.json versioned_docs versioned_sidebars api_versioned_sidebars api_versioned_docs
 	git checkout -- docusaurus.config.js static/robots.txt
 
+clean-api: ## Clean API docs
+	@echo "cleaning api docs"
+	npm run clean-api-docs
+	rm -rf docs/api-content/v1/sidebar.ts
+
+
 clean-visuals:
 	@echo "Cleaning visual regression tests"
 
