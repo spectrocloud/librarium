@@ -9,11 +9,11 @@ tags: ["vertex", "enterprise", "airgap", "kubernetes"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_overview-order-diagram-focus.png)
+![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_overview-order-diagram-focus.webp)
 
 This guide provides instructions to prepare your airgap environment for a Palette VerteX installation by completing the
-required preparatory steps 1 and 2 shown in the diagram. The respective installation guides for each platform cover the
-remaining installation process.
+required preparatory steps 1 through 4 shown in the diagram. The respective installation guides for each platform cover
+the remaining installation process
 
 ## Prepare Airgap Installation
 
@@ -53,8 +53,6 @@ Each prerequisite is required for a successful installation.
   - [Nginx](https://www.nginx.com/)
 
   - [Caddy](https://caddyserver.com/)
-
-  <br />
 
   :::warning
 
@@ -337,7 +335,7 @@ Use the following steps to validate the airgap setup process completed successfu
    installation process. The screenshot below is an example of a file server hosting the unzipped manifest content. The
    example is using Caddy as the file server.
 
-![Example of a file server hosting the unzipped manifest content](/enterprise-version_airgap_airgap-instructions_file-server-caddy.png)
+![Example of a file server hosting the unzipped manifest content](/enterprise-version_airgap_airgap-instructions_file-server-caddy.webp)
 
 3. Ensure your file server is accessible from the environment you are installing VerteX. Use the following command to
    verify the manifest content is accessible from the file server. Replace the hostname or IP address below with your

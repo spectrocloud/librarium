@@ -6,6 +6,10 @@ CHANGED_FILE=$(shell git diff-tree -r --no-commit-id --name-only master HEAD | g
 
 TEMP_DIR=$(shell $TMPDIR)
 
+CPUS := $(shell sysctl -n hw.ncpu | awk '{print int($$1 / 2)}')
+
+
+
 help: ## Display this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
@@ -29,7 +33,13 @@ deep-clean: ## Clean all artifacts
 clean-versions: ## Clean Docusarus content versions
 	@echo "cleaning versions"
 	rm -rf api_versions.json versions.json versioned_docs versioned_sidebars api_versioned_sidebars api_versioned_docs
-	git checkout -- docusaurus.config.js
+	git checkout -- docusaurus.config.js static/robots.txt
+
+clean-visuals:
+	@echo "Cleaning visual regression tests"
+
+	rm -rf test-results/  playwright-report/  screenshots/
+	
 
 ##@ npm Targets
 
@@ -61,6 +71,22 @@ api: ## Generate API docs
 	@echo "generating api docs"
 	npm run clean-api-docs
 	npm run generate-api-docs
+
+test: ## Run Jest tests
+	npm test
+
+test-visuals: ## Run visual regression tests
+	npx playwright test visuals/
+
+test-visuals-ci: ## Run visual regression tests
+	npx playwright test --shard=1/4
+	npx playwright test --shard=2/4
+	npx playwright test --shard=3/4
+	npx playwright test --shard=4/4
+
+
+view-visual-report: ## View visual regression test report
+	npx playwright show-report
 
 ##@ Git Targets
 
@@ -136,3 +162,9 @@ verify-url-links-ci: ## Check for broken URLs in production in a GitHub Actions 
 	jq 'del(.links[] | select(.status <= 200))' temp_report.json > link_report.json
 	rm temp_report.json
 	mv link_report.json scripts/
+
+###@ Image Formatting
+
+format-images: ## Format images
+	@echo "formatting images in /static/assets/docs/images/ folder"
+	./scripts/compress-convert-images.sh

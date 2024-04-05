@@ -40,7 +40,7 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
 
 3. In the search bar, type "OpenID Connect" to find the generic OIDC app connector.
 
-![Search for OpenID Connect](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_search-oidc.png)
+![Search for OpenID Connect](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_search-oidc.webp)
 
 4. Select the **OpenID Connect** app connector to add it to your account.
 
@@ -48,7 +48,7 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
    display name **Spectro Cloud Palette OIDC** and click **Save**. OpenLog displays the configuration screen for your
    new application.
 
-![Enter Display Name](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_oidc-app-name.png)
+![Enter Display Name](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_oidc-app-name.webp)
 
 6. Select the **Configuration** tab and fill out the following input values.
 
@@ -62,31 +62,31 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
    **Tenant Admin**. Next, select **Tenant Settings** to access the settings page. From the settings page, select
    **SSO** and click on the **OIDC** tab. Copy the **Callback URL** value to your clipboard.
 
-![Copy Callback URL](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_callbackurl.png)
+![Copy Callback URL](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_callbackurl.webp)
 
 8. Paste the Palette **Callback URL** value in the **Login Url** and **Redirect URI's** sections.
 
-![Add Login URL and Redirect URL](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_login-redirect-uris.png)
+![Add Login URL and Redirect URL](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_login-redirect-uris.webp)
 
 9. Next, do the same for the **Logout Redirect URIs** and copy the **Logout URL** value located below the **Callback
    URL** from Palette.
 
-![Add Logout URL](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_logout-uri.png)
+![Add Logout URL](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_logout-uri.webp)
 
 10. Your configuration should look similar to the following screenshot.
 
-![URI config](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_uri-config.png)
+![URI config](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_uri-config.webp)
 
 11. Select the **Parameters** tab and click on the **Groups** field. Ensure the bottom configuration contains the
     **MemberOf** value so that the correct group value is passed.
 
-![Check MemberOf field](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_group-field.png)
+![Check MemberOf field](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_group-field.webp)
 
 12. Navigate to the left **Main Menu** and select **SSO**. From the SSO settings page, copy the **Client ID**, **Client
     Secret**, and **Issuer URL** values. These values are important credentials that Palette will use to authenticate
     with OneLogin. Make sure to save them securely. Click **Save** to save all changes.
 
-![ClientID & Client Secret](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_clientid-clientsecret.png)
+![ClientID & Client Secret](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_clientid-clientsecret.webp)
 
 ### Create Role, Security Policy, and Group
 
@@ -94,7 +94,7 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
     **New Role**. Create an **Admin** role and select your **Role App**. The **Spectro Cloud Palette OIDC** app is used
     in this example. When selecting the app, a green check will appear next to the name. Click **Save**.
 
-![Add Role](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_app-role.png)
+![Add Role](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_app-role.webp)
 
 14. You can create an optional security policy. To create a security policy, navigate to **Security** and select
     **Policies**.
@@ -109,7 +109,7 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
 
 18. Select your security policy and click **Save**.
 
-![Add Security Policy](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_group-sec-policy.png)
+![Add Security Policy](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_group-sec-policy.webp)
 
 19. Automate the mapping of a user to a role and group by creating a _Mapping_. Navigate to **Users**, followed by
     **Mappings** and select **New Mapping**.
@@ -125,13 +125,13 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
 
     :::
 
-![Add Mapping](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_mapping-role-group.png)
+![Add Mapping](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_mapping-role-group.webp)
 
 21. Navigate to the **Users** screen and select your user.
 
 22. Select the **Authentication** tab and select the group and security policy you created earlier. Click on **Save**.
 
-![Add User to Group](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_user-auth-group.png)
+![Add User to Group](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_user-auth-group.webp)
 
 ### Enable OIDC in Palette
 
@@ -148,7 +148,7 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
 
     :::
 
-![Full OIDC config](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_oidc-full-palette.png)
+![Full OIDC config](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_oidc-full-palette.webp)
 
 You now have a working configuration for OneLogin as a third-party IdP in Palette. Check out the
 [Create Teams in Palette](#create-teams-in-palette) section to learn how to create teams in Palette and map them to
@@ -161,19 +161,19 @@ Use the following steps to validate the configuration.
 1. Log out of Palette by navigating to the top right **User Menu** and selecting **Log Out**. You will be redirected to
    a new login screen.
 
-![Logout](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_logout.png)
+![Logout](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_logout.webp)
 
 2. In the login screen that displays, click the **Sign In** button. You will be required to authenticate with OneLogin.
    If you are already authenticated with OneLogin, you will be signed in automatically to Palette with the proper
    permissions inherited from the Palette team you are a member of. If you cannot sign in, you can use the username and
    password method.
 
-![SSO Login Screen](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_login-screen.png)
+![SSO Login Screen](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_login-screen.webp)
 
 3. To check which teams you are mapped to, navigate to the left **Main Menu** and select **Users & Teams**. In the
    **Users** tab, find your user name to review the teams you are a member of.
 
-![Check Team Member](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_team-member.png)
+![Check Team Member](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_team-member.webp)
 
 :::tip
 
@@ -209,7 +209,7 @@ OneLogin.
    users who are part of the mapped administrators group will be automatically added to the team. Click **Confirm** to
    continue.
 
-![Create New Team](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_new-team.png)
+![Create New Team](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_new-team.webp)
 
 5. Next, you need to assign the members of this team a set of permissions. Assign all members the **Tenant Admin**
    permissions. You can customize the assigned permissions as needed. For this example admin access is granted.
@@ -221,7 +221,7 @@ OneLogin.
 
 8. You should have a configuration similar to the following image.
 
-![Permissions](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_roles-full.png)
+![Permissions](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_roles-full.webp)
 
 You have now configured Palette to use OneLogin as a third-party IDP. Use the above steps to create additional groups in
 OneLogin and Palette.

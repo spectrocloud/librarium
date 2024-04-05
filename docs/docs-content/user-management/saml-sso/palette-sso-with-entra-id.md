@@ -54,7 +54,7 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 2.  Navigate to the left **Main Menu** and select **Tenant Settings**. From the **Tenant Menu**, select **SSO**, then
     **Configure**, and lastly, click on the **OIDC** tab.
 
-    ![A view of the callback URL field](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-oidcallback.png)
+    ![A view of the callback URL field](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-oidcallback.webp)
 
 3.  Copy the **Callback URL** to your clipboard. This URL will be used in the next step to configure Microsoft Entra ID.
 
@@ -67,7 +67,7 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 6.  Next, select **Web**, paste the _Palette Callback URL_ value from your clipboard into the **Redirect URL
     (optional)** field, and click **Register**.
 
-    ![Azure application creation screen](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-palette-registration.png)
+    ![Azure application creation screen](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-palette-registration.webp)
 
 7.  From the app overview page, navigate to the left **Main Menu** and select **Certificates & secrets**. In the
     following screen, click on **New client secret**.
@@ -95,18 +95,18 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 
     :::
 
-    ![Add a claim button](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-twooptionalclaims.png)
+    ![Add a claim button](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-twooptionalclaims.webp)
 
 11. In addition to allowing individual user authentication, Palette provides group claim functionality, allowing an OIDC
     identity provider, like Microsoft Entra ID, to identify the user's Entra ID group membership within Palette. To
     enable group membership, select the **Add groups claim** button. Then select **Security groups** and **Group ID**
     for each property: **ID**, **Access** and **SAML**.
 
-    ![Groups and individuals can be assigned a group membership in Azure](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-groupsclaim.png)
+    ![Groups and individuals can be assigned a group membership in Azure](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-groupsclaim.webp)
 
     When completed, the **Token Configuration** page will look similar to the image below.
 
-    ![A view of the token configuration screen](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-token-configuration.png)
+    ![A view of the token configuration screen](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-token-configuration.webp)
 
 12. From the application overview page, navigate to the left **Main Menu** and select the **Overview** tab. From the
     **Overview** selection, save the following fields for the next steps you will complete in Palette.
@@ -214,9 +214,9 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 
     Refer to the images below to ensure you have the correct settings.
 
-    ![Example of IDs](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-ba_tenantadmin.png)
+    ![Example of IDs](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-ba_tenantadmin.webp)
 
-    ![Example of IDs with Palette roles attached to a team](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-25_def_project_admin.png)
+    ![Example of IDs with Palette roles attached to a team](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-25_def_project_admin.webp)
 
 #### Palette SSO OIDC Configuration
 
@@ -237,7 +237,7 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 25. Leave other fields with the default values and click **Enable**. If all required values are provided, you will
     receive a message stating that OIDC is configured successfully.
 
-    ![Example of Palette with populated input fields](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-enable.png)
+    ![Example of Palette with populated input fields](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-enable.webp)
 
 You have now successfully configured OIDC SSO in Palette. Next, validate the configuration by logging in to Palette with
 an Entra ID user account.

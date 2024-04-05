@@ -30,7 +30,7 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 - Palette Edge Distribution supports use cases that require customizing OS packages, device drivers, and more.
 
-  ![Architecture diagram of Edge](/native-edge.png "#title=An architecture diagram of Palette and all of the components.")
+  ![Architecture diagram of Edge](/native-edge.webp "#title=An architecture diagram of Palette and all of the components.")
 
 ## Minimum Device Requirements
 

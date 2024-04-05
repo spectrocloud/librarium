@@ -23,7 +23,7 @@ function generatePacksData(allContent) {
 async function pluginPacksAndIntegrationsData() {
   return {
     name: "plugin-packs-integrations",
-    async contentLoaded({ allContent, actions }) {
+    async allContentLoaded({ allContent, actions }) {
       const { setGlobalData } = actions;
       const integrationsData = generateIntegrationData(allContent);
       const packsData = generatePacksData(allContent);

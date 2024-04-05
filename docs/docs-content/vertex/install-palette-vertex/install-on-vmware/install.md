@@ -53,6 +53,9 @@ before proceeding with the installation. Refer to the
   - TCP/6443: Outbound traffic from the Palette VerteX management cluster to the deployed cluster's Kubernetes API
     server.
 
+- The network IP address range you specify during the installation must not overlap with any existing IP addresses in
+  your environment. The IP address range must also have connectivity to the VMware vSphere environment.
+
 - Ensure you have an SSL certificate that matches the domain name you will assign to Palette VerteX. You will need this
   to enable HTTPS encryption for Palette VerteX. Reach out to your network administrator or security team to obtain the
   SSL certificate. You need the following files:
@@ -75,7 +78,15 @@ before proceeding with the installation. Refer to the
 Self-hosted Palette VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do
 not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning
 into remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install
-a PCG on VMware, check out the [VMware](../../../clusters/data-center/vmware.md) guide.
+a PCG on VMware, check out the [Deploy to VMware vSphere](../../../clusters/pcg/deploy-pcg/vmware.md) guide.
+
+:::
+
+:::warning
+
+Palette VerteX does not support insecure connections. Ensure you have the Certificate Authority (CA) available, in PEM
+format, when using a custom packs and image registry. Otherwise, VerteX will not be able to pull packs and images from
+the registry. The Palette CLI will prompt you to provide the CA certificate file path when necessary.
 
 :::
 
@@ -154,6 +165,7 @@ Use the following steps to install Palette VerteX.
 
     - Non-Airgap: `https://saas-repo-fips.console.spectrocloud.com`
     - Airgap: The URL or IP address of the Spectro Cloud Repository that is provided to you by the airgap setup script.
+      Make sure to specify the file path to the CA certificate when prompted.
 
 9.  Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro
     Cloud repository. Airgap installations, provide the credentials to your private repository provided to you by the
@@ -356,7 +368,7 @@ type `:wq` to save and exit.
 
     :::
 
-    ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.png)
+    ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.webp)
 
 18. Log in to the System Console using the credentials provided in the Enterprise Cluster Details output. After login,
     you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to
@@ -371,7 +383,7 @@ type `:wq` to save and exit.
 20. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../system-management/tenant-management.md) guide.
 
-    ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.png)
+    ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.webp)
 
 ## Validate
 

@@ -22,7 +22,7 @@ The following are some architectural highlights of Kubernetes clusters provision
   When the PCG is installed on-prem, it registers itself with Palette and enables secure communications with the private
   cloud environment.
 
-  ![vmware_arch_oct_2020.png](/vmware_arch_oct_2020.png)
+  ![vmware_arch_oct_2020.webp](/vmware_arch_oct_2020.webp)
 
   Refer to the [PCG Architecture](../pcg/architecture.md) section to learn more about the PCG architecture.
 

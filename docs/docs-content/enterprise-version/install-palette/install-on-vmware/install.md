@@ -49,6 +49,9 @@ proceeding with the installation. Refer to the
 
   - TCP/6443: Outbound traffic from the Palette management cluster to the deployed cluster's Kubernetes API server.
 
+- The network IP address range you specify during the installation must not overlap with any existing IP addresses in
+  your environment. The IP address range must also have connectivity to the VMware vSphere environment.
+
 - Ensure you have an SSL certificate that matches the domain name you will assign to Palette. You will need this to
   enable HTTPS encryption for Palette. Reach out to your network administrator or security team to obtain the SSL
   certificate. You need the following files:
@@ -347,7 +350,7 @@ type `:wq` to save and exit.
 
     :::
 
-    ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.png)
+    ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
 18. Copy the URL and paste it in your browser's URL field to access the system console. You will be prompted to reset
     the password.
@@ -373,7 +376,7 @@ type `:wq` to save and exit.
 21. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../system-management/tenant-management.md) guide.
 
-    ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.png)
+    ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.webp)
 
 ## Validate
 

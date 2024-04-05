@@ -22,11 +22,6 @@ authentication methods to register your cloud account.
 
 - An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
 
-* An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
-  provision compute, network, and security resources in the desired regions.
-
-* An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
-
 ## Add Azure Cloud Account
 
 Use the following steps to add an Azure or Azure Government account in Palette or Palette VerteX.
@@ -50,7 +45,7 @@ Use the following steps to add an Azure or Azure Government account in Palette o
 | **Cloud**                         | Select **Azure Public Cloud** or **Azure US Government**.                                                                                                                                                                                                                                              |
 | **Tenant Name**                   | An optional tenant name.                                                                                                                                                                                                                                                                               |
 | **Disable Properties**            | This option prevents Palette and VerteX from creating Azure Virtual Networks (VNets) and other network resources on your behalf for static placement deployments. If you enable this option, all users must manually specify a pre-existing VNet, subnets, and security groups when creating clusters. |
-| **Connect Private Cloud Gateway** | If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link to the cloud account.                                                                                                                        |
+| **Connect Private Cloud Gateway** | Select this option to connect to a Private Cloud Gateway (PCG) if you have a PCG deployed in your environment. Refer to the PCG [Architecture](../../pcg/architecture.md) page to learn more about a PCG.                                                                                              |
 
 6. After providing the required values, click the **Validate** button. If the client secret you provided is correct, a
    _Credentials validated_ success message with a green check is displayed.
