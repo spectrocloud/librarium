@@ -7,26 +7,18 @@ hide_table_of_contents: false
 sidebar_position: 70
 ---
 
-Palette supports the use of Open Container Initiative (OCI) registries. You can register a private OCI registry with
-Palette, publish custom packs, and then use the packs in your cluster profiles.
-
-Two types of OCI authentication are available: registries that support [basic authentication](./add-pack-oci-basic.md),
-such as [Harbor](https://goharbor.io/), and AWS Elastic Container Registry (ECR), which is supported as a third-party
-registry provider. To upload packs to OCI registries, you can use [ORAS](https://oras.land/docs/), a CLI tool for
-pushing and pulling OCI artifacts to and from OCI registries. To learn more about OCI registries and how they work in
-Palette, refer to the [OCI Registry](./oci-registry.md) page.
-
-This guide explains how to upload packs to AWS ECR registries. You will learn how to authenticate to your AWS ECR
-registry, push a custom pack, and configure the registry in Palette.
+This guide explains how to upload packs to the [AWS Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/). You
+will learn how to authenticate to your AWS ECR registry, push a custom pack, and configure the registry in Palette.
 
 ## Prerequisites
 
 - Tenant administrator access.
 
-- Custom pack files available on your local machine. Refer to the [Add an Add-on Pack](../../adding-add-on-packs.md)
-  guide to learn how to create a custom pack.
+- Custom pack files available on your computer. Refer to the [Add an Add-on Pack](../../../adding-add-on-packs.md) guide
+  to learn how to create a custom pack.
 
-- A private [AWS (ECR)](https://aws.amazon.com/ecr/) registry.
+- A private [AWS (ECR)](https://docs.aws.amazon.com/AmazonECR/latest/userguide/Registries.html) registry. Each AWS
+  account is provided with a default private ECR registry.
 
 - An Identity and Access Management (IAM) user with the following permissions.
 
@@ -42,9 +34,9 @@ registry, push a custom pack, and configure the registry in Palette.
   - `ecr:BatchDeleteImage`
   - `ecr:DeleteRepository`
 
-- The following software installed on your local machine.
+- The following software installed on your computer.
 
-- [ORAS](https://oras.land/docs/installation/) v1.0.0
+  - [ORAS](https://oras.land/docs/installation/) v1.0.0
 
   :::warning
 
@@ -52,8 +44,8 @@ registry, push a custom pack, and configure the registry in Palette.
 
   :::
 
-- [Tar](https://www.gnu.org/software/tar/)
-- [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+  - [Tar](https://www.gnu.org/software/tar/)
+  - [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
 ## Upload Pack to an ECR Registry
 
@@ -103,21 +95,26 @@ custom OCI registries.
 :::
 
 5. After creating the ECR repositories, issue the command below to authenticate to your ECR registry. The
-   `aws ecr get-login-password` generates an authorization token, which is then passed to the `oras login` command. If
-   the login is successful, you will receive a confirmation message.
+   `aws ecr get-login-password` generates an authorization token, which is then passed to the `oras login` command.
 
    ```bash
    aws ecr get-login-password --region $AWS_DEFAULT_REGION | oras login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
    ```
 
+   If the login is successful, you will receive a confirmation message.
+
+   ```text hideClipboard
+   Login Succeeded
+   ```
+
 6. Navigate to the directory containing the folder with the pack files.
 
 7. Before pushing the pack to the ECR registry, compress the contents of the pack folder into an archive file. Issue the
-   command below to create the archive file. Replace `<Your_Pack_Folder_Name>` with the name of the folder containing
+   command below to create the archive file. Replace `<your_pack_folder_name>` with the name of the folder containing
    the pack files.
 
    ```bash
-   tar -czvf $NAME-$VERSION.tar.gz <Your_Pack_Folder_Name>
+   tar -czvf $NAME-$VERSION.tar.gz <your_pack_folder_name>
    ```
 
 8. Push the pack to the ECR registry.
@@ -126,7 +123,16 @@ custom OCI registries.
    oras push $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$REPOSITORY_NAME/spectro-packs/archive/$NAME:$VERSION $NAME-$VERSION.tar.gz
    ```
 
-9. After pushing the pack to the ECR registry, follow the steps in [Add OCI Packs Registry](./add-oci-packs.md) to add
+   The command output is similar to the following.
+
+   ```text hideClipboard
+   Uploading ba65d21e72f1 your-pack-name-1.0.0.tar.gz
+   Uploaded  ba65d21e72f1 your-pack-name-1.0.0.tar.gz
+   Pushed [registry] 123456789.dkr.ecr.us-east-1.amazonaws.com/spectro-packs-oci/spectro-packs/archive/your-pack-name:1.0.0
+   Digest: sha256:9067f964301c2b8e7a702fdbee35f5ca20a46695ef121e760e38967a2dd7cc4f
+   ```
+
+9. After pushing the pack to the ECR registry, follow the steps in [Add OCI Packs Registry](../add-oci-packs.md) to add
    your ECR registry to Palette.
 
    :::info

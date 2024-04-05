@@ -7,15 +7,6 @@ hide_table_of_contents: false
 sidebar_position: 60
 ---
 
-Palette supports the use of Open Container Initiative (OCI) registries. You can register a private OCI registry with
-Palette, publish custom packs, and then use the packs in your cluster profiles.
-
-Two types of OCI authentication are available: registries that support basic authentication, such as
-[Harbor](https://goharbor.io/), and [AWS Elastic Container Registry (ECR)](./add-pack-oci-ecr.md), which is supported as
-a third-party registry provider. To upload packs to OCI registries, you can use [ORAS](https://oras.land/docs/), a CLI
-tool for pushing and pulling OCI artifacts to and from OCI registries. To learn more about OCI registries and how they
-work in Palette, refer to the [OCI Registry](./oci-registry.md) documentation page.
-
 This guide explains how to upload packs to an OCI registry that supports basic authentication. You will learn how to
 authenticate to your Basic OCI registry, push a custom pack, and configure the registry in Palette.
 
@@ -23,8 +14,8 @@ authenticate to your Basic OCI registry, push a custom pack, and configure the r
 
 - Tenant administrator access.
 
-- Custom pack files available on your local computer. Refer to the [Add an Add-on Pack](../../adding-add-on-packs.md)
-  guide to learn how to create a custom pack.
+- Custom pack files available on your computer. Refer to the [Add an Add-on Pack](../../../adding-add-on-packs.md) guide
+  to learn how to create a custom pack.
 
 - A private OCI registry that supports basic authentication. This guide uses [Harbor](https://goharbor.io/) as an
   example. Learn how to set up a Harbor registry server using the
@@ -61,18 +52,23 @@ push the pack, and configure the registry in Palette.
 
 3. Give your project a name and keep the default settings for the remaining configuration. Click **OK** to proceed.
 
-4. In your terminal, export the `HARBOR_ADDRESS` variable, which will store your Harbor address. Do not include the
-   "https://" prefix.
+4. In your terminal, export the `HARBOR_ADDRESS` variable, which will store your Harbor server hostname. Do not include
+   the "https://" prefix. For example, `harbor.yourdomain.com`.
 
    ```bash
    export HARBOR_ADDRESS=<your-harbor-address>
    ```
 
-5. Issue the command `oras login` to log in to your Harbor registry. When prompted, enter your username and password. If
-   the login is successful, you will receive a confirmation message.
+5. Issue the command `oras login` to log in to your Harbor registry. When prompted, enter your username and password.
 
    ```bash
    oras login $HARBOR_ADDRESS
+   ```
+
+   If the login is successful, you will receive a confirmation message.
+
+   ```text hideClipboard
+   Login Succeeded
    ```
 
 6. Next, export the variables required for creating the Harbor repository and pushing the pack.
@@ -91,7 +87,7 @@ push the pack, and configure the registry in Palette.
 7. Navigate to the directory containing the folder with the pack files.
 
 8. Before pushing the pack to the registry, compress the contents of the pack folder into an archive file. Issue the
-   command below to create the archive file. Replace `<Your_Pack_Folder_Name>` with the name of the folder containing
+   command below to create the archive file. Replace `<your_pack_folder_name>` with the name of the folder containing
    the pack files.
 
    ```bash
@@ -105,10 +101,27 @@ push the pack, and configure the registry in Palette.
    oras push $HARBOR_ADDRESS/$HARBOR_PROJECT/spectro-packs/archive
    ```
 
+   The command output is similar to the following.
+
+   ```text hideClipboard
+    Uploading empty artifact
+    Pushed [registry] harbor.yourdomain.com/spectro-oci-registry/spectro-packs/archive
+    Digest: sha256:93239180c18b0b6fa99b1f0463853165bdf9fc9c6a69eff3d7545f9852b6c86e
+   ```
+
 10. Now, proceed to create the pack repository and push your pack to the Harbor registry.
 
     ```bash
     oras push $HARBOR_ADDRESS/$HARBOR_PROJECT/spectro-packs/archive/$NAME:$VERSION $NAME-$VERSION.tar.gz
+    ```
+
+    The command output is similar to the following.
+
+    ```text hideClipboard
+    Uploading ba65d21e72f1 your-pack-name-1.0.0.tar.gz
+    Uploaded  ba65d21e72f1 your-pack-name-1.0.0.tar.gz
+    Pushed [registry] harbor.yourdomain.com/spectro-oci-registry/spectro-packs/archive/your-pack-name:1.0.0
+    Digest: sha256:448bc5d5ba0675dfc1906f442c5f0f294e21b85b62cea1ede789ba039c7b3f80
     ```
 
 :::warning
@@ -118,7 +131,7 @@ custom OCI registries.
 
 :::
 
-11. After pushing the pack to the Harbor registry, follow the steps in [Add OCI Packs Registry](./add-oci-packs.md) to
+11. After pushing the pack to the Harbor registry, follow the steps in [Add OCI Packs Registry](../add-oci-packs.md) to
     add your Harbor registry to Palette.
 
     :::info
