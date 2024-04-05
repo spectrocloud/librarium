@@ -26,10 +26,9 @@ to your Enterprise Cluster profile.
 
 - Access to the Palette system console.
 
-- Access to the Palette airgap support Virtual Machine (VM) that you used for the initial Palette instalaltion.
+- Access to the Palette airgap support Virtual Machine (VM) that you used for the initial Palette installation.
 
 - Refer to [Access Palette](/enterprise-version/#access-palette) to download the following from our support:
-
   - The new airgap Palette installation bin.
   - The OVA with the Operating System (OS) and Kubernetes distribution required for the Palette nodes (if the new
     version of Palette requires a new version of the OS and Kubernetes).
@@ -55,7 +54,7 @@ to your Enterprise Cluster profile.
     sudo --login
     ```
 
-3.  Use the following command template to donwload the new Palette airgap installation bin. Enter the username,
+3.  Use the following command template to download the new Palette airgap installation bin. Enter the username,
     password, and the Palette airgap installation URL you received from our support team. In the output file name,
     replace `<version>` with the Palette version you're downloading.
 
@@ -70,7 +69,7 @@ to your Enterprise Cluster profile.
     ```
 
 4.  Refer to the [Additional Packs](../../install-palette/airgap/supplemental-packs.md) page and update the packages you
-    are currently using. You must update each package separetely.
+    are currently using. You must update each package separately.
 
     To update a package, use the following command template to download and execute the pack binary.
 
@@ -181,7 +180,7 @@ The Enterprise Cluster initiates the Kubernetes upgrade and reconciles the Palet
 
 1. Log in to the Palette system console.
 
-2. On the **Summary** page, check the current Palette version. You should see a message that states **You are using the
-   latest version of Palette**.
+2. On the **Summary** page, Palette should display a message that states **You are using the latest version of
+   Palette**.
 
    ![Self-hosted Palette system console with upgraded system.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_upgraded.png)

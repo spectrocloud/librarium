@@ -195,7 +195,7 @@ that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` inc
 
 ## Validate
 
-1. In your terminal, run the following command.
+1. In your terminal, issue the following command.
 
    ```shell
    helm ls
