@@ -41,11 +41,11 @@ to your Enterprise Cluster profile.
 
    :::
 
-   ![Self-hosted Palette system console with the highlighted Enterprise Cluster profile configuration values.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_copy_configurations.png)
+   ![Self-hosted Palette system console with the highlighted Enterprise Cluster profile configuration values.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_copy_configurations.webp)
 
 4. From the left **Main Menu**, select **Update Management** and click **Update**.
 
-   ![Self-hosted Palette system console with Update Management open and the Update button highlighted.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_update.png)
+   ![Self-hosted Palette system console with Update Management open and the Update button highlighted.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_update.webp)
 
 5. Review the changes that the upgrade introduces. If your Enterprise Cluster Profile had any configuration changes or
    additions, add them to the **Current configuration** pane and select **Confirm**.
@@ -57,7 +57,7 @@ to your Enterprise Cluster profile.
 
    :::
 
-   ![Self-hosted Palette system console with the upgrade preview pane.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_upgrade-preview.png)
+   ![Self-hosted Palette system console with the upgrade preview pane.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_upgrade-preview.webp)
 
    The system console locks for a couple of minutes while the upgrade is applied.
 
@@ -82,4 +82,4 @@ Proceed with the following steps if the Palette upgrade introduces a new version
 2. On the **Summary** page, Palette should display a message that states **You are using the latest version of
    Palette**.
 
-   ![Self-hosted Palette system console with upgraded system.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_upgraded.png)
+   ![Self-hosted Palette system console with upgraded system.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_upgraded.webp)
