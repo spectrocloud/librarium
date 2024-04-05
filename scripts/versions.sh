@@ -151,7 +151,7 @@ for item in $(git branch --format '%(refname:short)'); do
 
     # Remove API auto-generated files
     npm run clean-api-docs
-    rm -rf docs/api-content/v1/sidebar.ts
+    rm -rf docs/api-content/api-docs/v1/sidebar.ts
 
     # Switch back to the original branch
     git checkout $current_branch

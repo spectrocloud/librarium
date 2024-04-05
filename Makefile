@@ -38,7 +38,7 @@ clean-versions: ## Clean Docusarus content versions
 clean-api: ## Clean API docs
 	@echo "cleaning api docs"
 	npm run clean-api-docs
-	rm -rf docs/api-content/v1/sidebar.ts
+	rm -rf docs/api-content/api-docs/v1/sidebar.ts
 
 
 clean-visuals:
