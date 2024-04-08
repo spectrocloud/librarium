@@ -29,7 +29,7 @@ Log in to [Palette](https://console.spectrocloud.com) and navigate to the left *
 view the cluster profile page. You can view the list of available cluster profiles. To create a cluster profile, click
 on **Add Cluster Profile**.
 
-![View of the cluster Profiles page](/getting-started/getting-started_create-cluster-profile_profile_list_view.png)
+![View of the cluster Profiles page](/getting-started/getting-started_create-cluster-profile_profile_list_view.webp)
 
 Follow the wizard to create a new profile.
 
@@ -57,7 +57,7 @@ As you fill out the information for each layer, click on **Next** to proceed to 
 
 Click on **Confirm** after you have completed filling out all the core layers.
 
-![A view of the cluster profile stack](/getting-started/aws/getting-started_create-cluster-profile_clusters_parameters.png)
+![A view of the cluster profile stack](/getting-started/aws/getting-started_create-cluster-profile_clusters_parameters.webp)
 
 The review section gives an overview of the cluster profile configuration you selected. Click on **Finish
 Configuration** to create the cluster profile.
@@ -72,7 +72,7 @@ Click on **Add Manifest** at the top of the page and fill out the following inpu
 - **Manifests** - Add your manifest by giving it a name and clicking the **New Manifest** button. Assign a name to the
   internal manifest and click on the blue button. An empty editor will be displayed on the right side of the screen.
 
-![Screenshot of unopened manifest editor](/getting-started/getting-started_create-cluster-profile_manifest_blue_btn.png)
+![Screenshot of unopened manifest editor](/getting-started/getting-started_create-cluster-profile_manifest_blue_btn.webp)
 
 In the manifest editor, insert the following content.
 
@@ -117,7 +117,7 @@ application. You may have noticed that the code snippet you added is a Kubernete
 method you can use to achieve more granular customization of your Kubernetes cluster. You can add any valid Kubernetes
 configuration to a manifest file.
 
-![Screenshot of manifest in the editor](/getting-started/getting-started_create-cluster-profile_manifest.png)
+![Screenshot of manifest in the editor](/getting-started/getting-started_create-cluster-profile_manifest.webp)
 
 The manifest defines a replica set for the application to simulate a distributed environment with a web application
 deployed to Kubernetes. The application is assigned a load balancer. Using a load balancer, you can expose a single
