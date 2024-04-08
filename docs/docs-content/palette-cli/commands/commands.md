@@ -21,6 +21,8 @@ The following list contains all the supported Palette CLI subcommands. Click on 
 
 - [`ec`](ec.md) - Palette Enterprise Cluster installation & pre-validation.
 
+- [`import`](import.md) - Import clusters into Palette.
+
 - [`login`](login.md) - Login to Palette.
 
 - [`pcg`](pcg.md) - Private Cloud Gateway installation & pre-validation.
@@ -31,8 +33,6 @@ The following list contains all the supported Palette CLI subcommands. Click on 
 
 - [`validator`](validator.md) - Deploy a kind cluster and install the Validator framework to validate your environment
   is ready for Palette.
-
-- [`import`](import.md) - Import clusters into Palette.
 
 ## Global Flags
 
