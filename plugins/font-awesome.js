@@ -38,7 +38,7 @@ function camelCase(str) {
 async function pluginImportFontAwesomeIcons() {
   return {
     name: "import-font-awesome-icons",
-    async contentLoaded({ allContent }) {
+    async allContentLoaded({ allContent }) {
       const appFontAwesomeIcons = {};
       allContent["docusaurus-plugin-content-docs"].default.loadedVersions[0].docs.map((doc) => {
         if (doc.frontMatter?.sidebar_custom_props?.icon && !assetIcons[doc.frontMatter?.sidebar_custom_props?.icon]) {
