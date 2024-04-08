@@ -86,7 +86,7 @@ the following sections for a complete list of features, improvements, and known 
   through Palette CLI will be eligible for a cluster profile update. We recommend you review the
   [Upgrade a PCG](./clusters/pcg/manage-pcg/pcg-upgrade.md) guide to learn more about updating a PCG.
 
-- Self-hosted Palette instances now use Kubernetes version 1.27.9. This new version of Kubernetes will cause node repave
+- Self-hosted Palette instances now use Kubernetes version 1.27.11. This new version of Kubernetes will cause node repave
   events during the upgrade process. If you have multiple self-hosted Palette instances in a VMware environment, take a
   moment and review the [Known Issues](#known-issues) section below for potential issues that may arise during the
   upgrade process.
@@ -204,7 +204,7 @@ the following sections for a complete list of features, improvements, and known 
   that are not compliant are reported with either a failed or unknown status. Refer to the
   [FIPS Validate](./palette-cli/commands/fips-validate.md) guide to learn more about the command.
 
-- VerteX instances now use Kubernetes version 1.27.9. This new version of Kubernetes will cause node repave events
+- VerteX instances now use Kubernetes version 1.27.11. This new version of Kubernetes will cause node repave events
   during the upgrade process. If you have multiple self-hosted Palette instances in a VMware environment, take a moment
   and review the Palette [Known Issues](#known-issues) section above for potential issues that may arise during the
   upgrade process.
