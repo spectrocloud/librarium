@@ -333,9 +333,8 @@ improvements.
 
 ### File Mount Becomes Unavailable after Cluster Experiences Network Issues
 
-A known issue exists with Rook-Ceph that if your cluster experiences network issues, file mount becomes unavailable even
-after the network is restored. This is currently an open issue with Rook. If you run into this issue, follow these steps
-for a workaround.
+A known issue exists with Rook-Ceph that if your cluster experiences network issues, file mount becomes unavailable and
+remains unavailable even after the network is restored.
 
 #### Debug Steps
 
@@ -345,14 +344,13 @@ for a workaround.
 2. Connect to your cluster via the command-line. For more information, refer to
    [Access Cluster with CLI](/docs/docs-content/clusters/cluster-management/palette-webctl.md).
 
-3. Issue the following command to identify Persistent Volume Claims (PVC) from Ceph File System (FS):
+3. Issue the following command to identify Persistent Volume Claims (PVC) from Ceph File System (FS).
 
    ```shell
-   kubectl get pvc -all | grep "cephFS"
+   kubectl get pvc --all | grep "cephFS"
    ```
 
-4. Scale down all workloads, including pods, deployments, and StatefulSets using the PVC to zero. Ensure that all
-   workloads must be scaled down. Even if one pod remains that uses the PVC, this workaround wil not work.
+4. Scale down all workloads, including pods, deployments, and StatefulSets using the PVC to zero.
 
    <Tabs>
 
@@ -394,14 +392,16 @@ for a workaround.
    their PVC names with the following command.
 
    ```shell
-   kubectl get pods --all-namespaces -o=json | jq -c '.items[] | {name: .metadata.name, namespace: .metadata.namespace, claimName: .spec |  select( has ("volumes") ).volumes[] | select( has ("persistentVolumeClaim") ).persistentVolumeClaim.claimName }'
+   kubectl get pods --all-namespaces --output=json | jq '.items[] | {name: .metadata.name, namespace: .metadata.namespace, claimName: .spec |  select( has ("volumes") ).volumes[] | select( has ("persistentVolumeClaim") ).persistentVolumeClaim.claimName }'
    ```
 
    You can then find workloads that are associated with the pods and scale them down to zero.
 
    :::
 
-5. Once all the workloads are scaled down, this will trigger a unmount and fresh mount of cephFS volumes.
+5. Once all the workloads are scaled down, this will trigger a unmount and fresh mount of cephFS volumes. Ensure that
+   all workloads are scaled down to zero. Even if one pod remains that uses the PVC, the unmount will not happen and the
+   issue will not be resolved.
 
 6. Scale the workloads back to their original state.
 
