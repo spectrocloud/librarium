@@ -121,6 +121,13 @@ clusters.
 
 4. Use the password you receive in the output with the username `admin` to log in to the Ceph Dashboard.
 
+### Known Issues
+
+- If a cluster experiences network issues, it's possible for the file mount to become unavailable. This a known issue
+  disclosed in the [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
+  [Troubleshooting section](#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) for a workaround
+  if you observe this issue in your cluster.
+
 </TabItem>
 
 <TabItem label="1.11.x" value="1.11.x">
@@ -321,6 +328,82 @@ improvements.
 </TabItem>
 
 </Tabs>
+
+## Troubleshooting
+
+### File Mount Becomes Unavailable after Cluster Experiences Network Issues
+
+A known issue exists with Rook-Ceph that if your cluster experiences network issues, file mount becomes unavailable even
+after the network is restored. This is currently an open issue with Rook. If you run into this issue, follow these steps
+for a workaround.
+
+#### Debug Steps
+
+1. One way to debug is to reboot the node that is experiencing the issues. If you are unable to reboot the node, or if
+   rebooting the node does not fix the issue, continue to the following steps.
+
+2. Connect to your cluster via the command-line. For more information, refer to
+   [Access Cluster with CLI](/docs/docs-content/clusters/cluster-management/palette-webctl.md).
+
+3. Issue the following command to identify Persistent Volume Claims (PVC) from Ceph File System (FS):
+
+   ```shell
+   kubectl get pvc -all | grep "cephFS"
+   ```
+
+4. Scale down all workloads, including pods, deployments, and StatefulSets using the PVC to zero. Ensure that all
+   workloads must be scaled down. Even if one pod remains that uses the PVC, this workaround wil not work.
+
+   <Tabs>
+
+   <TabItem label="Pods" value="pods">
+
+   To scale down a pod, delete it.
+
+   ```shell
+   kubectl delete pods pod-name
+   ```
+
+   </TabItem>
+
+   <TabItem label="StatefulSet" value="stateful-set">
+
+   To scale down a StatefulSet, use the following command. Replace `statefulset-name` with the name of the StatefulSet.
+
+   ```shell
+   kubectl scale statefulset statefulset-name --replicas=0
+   ```
+
+   </TabItem>
+
+   <TabItem label="Deployment" value="deployment">
+
+   To scale down a deployment, use the following command. Replace `deployment-name` with the name of the deployment.
+
+   ```shell
+   kubectl scale deployment deployment-name --replicas=0
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   :::tip
+
+   If you do not know which workloads use the PVC, you can start by getting a list of all pods that are using PVCs and
+   their PVC names with the following command.
+
+   ```shell
+   kubectl get pods --all-namespaces -o=json | jq -c '.items[] | {name: .metadata.name, namespace: .metadata.namespace, claimName: .spec |  select( has ("volumes") ).volumes[] | select( has ("persistentVolumeClaim") ).persistentVolumeClaim.claimName }'
+   ```
+
+   You can then find workloads that are associated with the pods and scale them down to zero.
+
+   :::
+
+5. Once all the workloads are scaled down, this will trigger a unmount and fresh mount of cephFS volumes.
+
+6. Scale the workloads back to their original state.
 
 ## Terraform
 

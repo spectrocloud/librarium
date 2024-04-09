@@ -86,10 +86,10 @@ the following sections for a complete list of features, improvements, and known 
   through Palette CLI will be eligible for a cluster profile update. We recommend you review the
   [Upgrade a PCG](./clusters/pcg/manage-pcg/pcg-upgrade.md) guide to learn more about updating a PCG.
 
-- Self-hosted Palette instances now use Kubernetes version 1.27.11. This new version of Kubernetes will cause node repave
-  events during the upgrade process. If you have multiple self-hosted Palette instances in a VMware environment, take a
-  moment and review the [Known Issues](#known-issues) section below for potential issues that may arise during the
-  upgrade process.
+- Self-hosted Palette instances now use Kubernetes version 1.27.11. This new version of Kubernetes will cause node
+  repave events during the upgrade process. If you have multiple self-hosted Palette instances in a VMware environment,
+  take a moment and review the [Known Issues](#known-issues) section below for potential issues that may arise during
+  the upgrade process.
 
 #### Known Issues
 
@@ -168,6 +168,14 @@ the following sections for a complete list of features, improvements, and known 
   namespace annotations. Refer to the
   [Harbor Edge](./integrations/harbor-edge.md#enable-image-download-from-outside-of-harbor) reference page to learn more
   about the feature.
+
+#### Known issues
+
+- If a cluster that uses the Rook-Ceph pack experiences network issues, it's possible for the file mount to become
+  unavailable. This a known issue disclosed in the [Rook GitHub repository](https://github.com/rook/rook/issues/13818).
+  To resolve this issue, refer to
+  [Rook-Ceph](./integrations/rook-ceph.md#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) pack
+  documentation.
 
 ### Virtual Machine Orchestrator (VMO)
 
