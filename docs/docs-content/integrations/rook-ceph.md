@@ -123,8 +123,9 @@ clusters.
 
 ### Known Issues
 
-- If a cluster experiences network issues, it's possible for the file mount to become unavailable. This a known issue
-  disclosed in the [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
+- If a cluster experiences network issues, it's possible for the file mount to become unavailable and it will remain
+  unavailable even after network is restored. This a known issue disclosed in the
+  [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
   [Troubleshooting section](#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) for a workaround
   if you observe this issue in your cluster.
 
@@ -223,6 +224,14 @@ clusters.
 
 4. Use the password you receive in the output with the username `admin` to log in to the Ceph Dashboard.
 
+### Known Issues
+
+- If a cluster experiences network issues, it's possible for the file mount to become unavailable and it will remain
+  unavailable even after network is restored. This a known issue disclosed in the
+  [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
+  [Troubleshooting section](#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) for a workaround
+  if you observe this issue in your cluster.
+
 </TabItem>
 
 <TabItem label="1.10.x" value="1.10.x">
@@ -317,6 +326,14 @@ clusters.
    ```
 
 4. Use the password you receive in the output with the username `admin` to log in to the Ceph Dashboard.
+
+### Known Issues
+
+- If a cluster experiences network issues, it's possible for the file mount to become unavailable and it will remain
+  unavailable even after network is restored. This a known issue disclosed in the
+  [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
+  [Troubleshooting section](#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) for a workaround
+  if you observe this issue in your cluster.
 
 </TabItem>
 
