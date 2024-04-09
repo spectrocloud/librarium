@@ -23,9 +23,9 @@ Before you begin, ensure that you have the following prerequisites:
 
   :::info
 
-  If you have a self-hosted Palette or VerteX instance, you can use the System PCG instance that is deployed in a
-  VMware environment. Refer to the [System PCG](../../pcg/architecture.md#system-private-gateway) to learn more about
-  the system PCG.
+  If you have a self-hosted Palette or VerteX instance, you can use the System PCG instance that is deployed in a VMware
+  environment. Refer to the [System PCG](../../pcg/architecture.md#system-private-gateway) to learn more about the
+  system PCG.
 
   :::
 
@@ -213,6 +213,6 @@ kubeconfig file.
 ## Next Steps
 
 Now that you have a Kubernetes cluster deployed, you can start developing and deploying applications to your clusters.
-We recommend you review the Day-2 responsibilities and become familiar with the cluster management tasks. Check out
-the [Manage Clusters](../../cluster-management/cluster-management.md) documentation to learn more about Day-2
+We recommend you review the Day-2 responsibilities and become familiar with the cluster management tasks. Check out the
+[Manage Clusters](../../cluster-management/cluster-management.md) documentation to learn more about Day-2
 responsibilities.

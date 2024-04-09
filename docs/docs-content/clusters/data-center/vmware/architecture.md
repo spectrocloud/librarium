@@ -9,17 +9,18 @@ tags: ["data center", "vmware", "architecture"]
 
 ## Overview
 
-The following are some architectural highlights of Kubernetes clusters provisioned by Palette on VMware:
+Palette supports using VMware vSphere as a data center provider. You can deploy Kubernetes clusters to your vSphere
+environment using Palette. Below are some key features of the Palette VMware architecture:
 
 - Kubernetes nodes can be distributed across multiple-compute clusters, which serve as distinct fault domains.
 
-- Support for static IP addresses, as well as DHCP. If you are using Dynamic Host Configuration Protocol (DHCP),
-  Dynamic DNS is required.
+- Support for static IP addresses, as well as DHCP. If you are using Dynamic Host Configuration Protocol (DHCP), Dynamic
+  DNS is required.
 
-- IP address pool management for assigning blocks of IPs dedicated to clusters or projects.
+- Support for IP address pool management for assigning blocks of IPs dedicated to clusters or projects.
 
-- A Private Cloud Gateway (PCG) that you set up within the environment to communicate with the Palette management
-  platform and VMware vCenter installed in the private data center.
+- A Private Cloud Gateway (PCG) must be setup within the VMware vSphere environment to communicate with the Palette
+  management platform and the VMware vCenter that installed in the private data center.
 
   The PCG facilitates communication between Palette and your infrastructure environment. The PCG is necessary in
   environments where Palette does not have direct network access. Many infrastructure environments are placed in a
