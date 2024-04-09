@@ -8,7 +8,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["security", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://cloudanix-assets.s3.amazonaws.com/static/cloudanix-logo-p.webp"
+logoUrl: "https://cloudanix-assets.s3.amazonaws.com/static/cloudanix-logo-p.png"
 tags: ["packs", "cloudanix", "security"]
 ---
 
