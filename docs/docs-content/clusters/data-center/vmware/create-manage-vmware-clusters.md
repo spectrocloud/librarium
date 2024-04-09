@@ -15,7 +15,7 @@ clusters in Palette.
 Before you begin, ensure that you have the following prerequisites:
 
 - A VMware vSphere user account with the necessary permissions to create and manage clusters. Refer to the
-  [Require Permissions](./permissions.md) page for details on the required permissions.
+  [Required Permissions](./permissions.md) page for more information.
 
 - A VMware account registered in Palette. VMware accounts are automatically registered when you deploy a Private Cloud
   Gateway (PCG) in Palette. Check out the [Deploy a PCG](../../pcg/deploy-pcg/vmware.md) guide to learn how to deploy a
@@ -23,7 +23,7 @@ Before you begin, ensure that you have the following prerequisites:
 
   :::info
 
-  If you have a self-hosted Palette or VerteX instance, you can use the System PCG that if the instance is deployed in a
+  If you have a self-hosted Palette or VerteX instance, you can use the System PCG instance that is deployed in a
   VMware environment. Refer to the [System PCG](../../pcg/architecture.md#system-private-gateway) to learn more about
   the system PCG.
 
@@ -67,7 +67,7 @@ Before you begin, ensure that you have the following prerequisites:
 
 6. Select the cluster profile you want to use for the cluster. Click the **Next** to proceed.
 
-7. Modify any cluster profile layers if needed. Click **Next** to continue.
+7. Modify any cluster profile layers as needed. Click **Next** to continue.
 
 8. Fill out the VMware vSphere configuration details for the cluster. Refer to the table below to learn more about each
    option. Click **Next** to proceed.
@@ -213,6 +213,6 @@ kubeconfig file.
 ## Next Steps
 
 Now that you have a Kubernetes cluster deployed, you can start developing and deploying applications to your clusters.
-We recommend you review the day two responsibilities and become familiar with the cluster management tasks. Check out
-the [Manage Clusters](../../cluster-management/cluster-management.md) documentation to learn more about day two
+We recommend you review the Day-2 responsibilities and become familiar with the cluster management tasks. Check out
+the [Manage Clusters](../../cluster-management/cluster-management.md) documentation to learn more about Day-2
 responsibilities.

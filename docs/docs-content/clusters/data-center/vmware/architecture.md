@@ -13,7 +13,7 @@ The following are some architectural highlights of Kubernetes clusters provision
 
 - Kubernetes nodes can be distributed across multiple-compute clusters, which serve as distinct fault domains.
 
-- Support for static IP addresses, as well as DHCP. If your are using Dynamic Host Configuration Protocol (DHCP),
+- Support for static IP addresses, as well as DHCP. If you are using Dynamic Host Configuration Protocol (DHCP),
   Dynamic DNS is required.
 
 - IP address pool management for assigning blocks of IPs dedicated to clusters or projects.
@@ -28,8 +28,7 @@ The following are some architectural highlights of Kubernetes clusters provision
 
   ![vmware_arch_oct_2020.webp](/clusters_vmware_architecture_arch-overview.webp)
 
-You can learn more about the [PCG Architecture](../../pcg/architecture.md) section to learn more about the PCG
-architecture.
+You can learn more in the [PCG Architecture](../../pcg/architecture.md) section.
 
 ## Zone Tagging
 
@@ -91,6 +90,6 @@ The following requirements apply to tags:
 
 - A valid tag must consist of alphanumeric characters.
 
-- The tag must start and end with an alphanumeric characters.
+- The tag must start and end with an alphanumeric character.
 
 - The regex used for tag validation is `(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?`
