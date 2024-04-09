@@ -25,7 +25,7 @@ Before you begin, ensure that you have the following prerequisites:
 
   If you have a self-hosted Palette or VerteX instance, you can use the System PCG that if the instance is deployed in a
   VMware environment. Refer to the [System PCG](../../pcg/architecture.md#system-private-gateway) to learn more about
-  the System PCG.
+  the system PCG.
 
   :::
 
@@ -34,9 +34,16 @@ Before you begin, ensure that you have the following prerequisites:
   [Create a Cluster Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
   guide.
 
-- An IP Address Management (IPAM) pool is required to assign IP addresses to the nodes in the cluster. You can learn how
-  to create an IPAM pool by following the steps in the
-  [Create and Manage IPAM Node Pools](../../pcg/manage-pcg/create-manage-node-pool.md) guide.
+- Depending on the network type you select for the cluster, you may need to create an IP Address Management (IPAM) pool
+  or define a search domain. Use the following guidelines to create an IPAM pool or define a search domain.
+
+  - An IP Address Management (IPAM) pool is required to assign static IP addresses to the nodes in the cluster. You can
+    learn how to create an IPAM pool by following the steps in the
+    [Create and Manage IPAM Node Pools](../../pcg/manage-pcg/create-manage-node-pool.md) guide.
+
+  - A search domain, also called DNS mapping, can be used to assign cluster nodes to a specific network, cluster, and
+    datacenter. Check out the [Add DNS Mapping](../../pcg/manage-pcg/add-dns-mapping.md) guide to learn how to add
+    multiple DNS mappings to a PCG.
 
 ## Create a VMware Cluster
 
@@ -119,12 +126,12 @@ Before you begin, ensure that you have the following prerequisites:
 
    #### Network Configuration
 
-   Depending on what option you selected for the **Network Type** field, the following fields are displayed:
+   Depending on what option you selected for the **Network Type** field, the following fields are displayed.
 
-   | Field Name        | Description                                                                                                                                                                                                                                                                                                               | Network Type |
-   | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-   | **IPAM Pool**     | The IPAM pool to use for the control plane nodes. An IP Address Management (IPAM) pool is required to assign IP addresses to the nodes in the cluster. You can learn how to create an IPAM pool by following the steps in the [Create and Manage IPAM Node Pools](../../pcg/manage-pcg/create-manage-node-pool.md) guide. | Static IP    |
-   | **Search Domain** | The search domain to use for the control plane nodes. If no search domain is defined, click on the **Define DNS** button and specify the search domain. Check out the [Add DNS Mapping](../../pcg/manage-pcg/add-dns-mapping.md) guide to learn how to add multiple DNS mappings to a PCG.                                | DHCP         |
+   | Field Name        | Description                                                                                                                                                                                                                                                                                       | Network Type |
+   | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+   | **IPAM Pool**     | The IPAM pool to use for the control plane nodes. An IPAM pool is required to assign IP addresses to the nodes in the cluster. You can learn how to create an IPAM pool by following the steps in the [Create and Manage IPAM Node Pools](../../pcg/manage-pcg/create-manage-node-pool.md) guide. | Static IP    |
+   | **Search Domain** | The search domain to assign the cluster nodes in. If no search domain is defined, click on the **Define DNS** button and specify the search domain. Check out the [Add DNS Mapping](../../pcg/manage-pcg/add-dns-mapping.md) guide to learn how to add multiple DNS mappings to a PCG.            | DHCP         |
 
    ### Worker Plane Pool Configuration
 
@@ -145,7 +152,7 @@ Before you begin, ensure that you have the following prerequisites:
     - OS Patching
     - Schedule scans
     - Schedule backups
-    - Role-based access control (RBAC)
+    - Role Based Access Control (RBAC)
     - Location
 
     #### OS Patching
@@ -202,3 +209,10 @@ Check out the [Access a Cluster](../../cluster-management/palette-webctl.md) gui
 kubeconfig file.
 
 :::
+
+## Next Steps
+
+Now that you have a Kubernetes cluster deployed, you can start developing and deploying applications to your clusters.
+We recommend you review the day two responsibilities and become familiar with the cluster management tasks. Check out
+the [Manage Clusters](../../cluster-management/cluster-management.md) documentation to learn more about day two
+responsibilities.
