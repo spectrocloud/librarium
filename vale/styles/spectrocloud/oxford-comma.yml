@@ -1,0 +1,8 @@
+extends: existence
+message: "You need to use the Oxford comma in '%s'."
+level: suggestion
+link: https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Commas
+scope: sentence
+nonword: true
+tokens:
+  - '(\b(?:\w+(?: \w+)?, )+\b(?:\w+(?: \w+)?) (?:and|or) \w+(?: \w+)?[.?!])'
