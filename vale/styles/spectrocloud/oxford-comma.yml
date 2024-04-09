@@ -5,4 +5,4 @@ link: https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro
 scope: sentence
 nonword: true
 tokens:
-  - '(?i)\b(?:\w+\b(?:, \w+)* (?:and|or) [a-z]+(?: [a-z]+)*[.?!])'
+  - '(\b(?:\w+(?: \w+)?, )+\b(?:\w+(?: \w+)?) (?:and|or) \w+(?: \w+)?[.?!])'
