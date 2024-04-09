@@ -76,7 +76,7 @@ proceeding with the installation. Refer to the
 Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not
 require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into
 remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install a
-PCG on VMware, check out the [VMware](../../../clusters/data-center/vmware.md) guide.
+PCG on VMware, check out the [VMware](../../../clusters/pcg/deploy-pcg/vmware.md) guide.
 
 :::
 

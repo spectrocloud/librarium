@@ -61,7 +61,7 @@ VerteX.
 Self-hosted VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not
 require a separate, user-installed PCG. However, you can deploy additional PCG instances to support provisioning into
 remote data centers without a direct incoming connection to VerteX. To learn how to install a PCG on VMware, check out
-the [VMware](../../../clusters/data-center/vmware.md) guide.
+the [VMware](../../../clusters/data-center/vmware/vmware.md) guide.
 
 :::
 
