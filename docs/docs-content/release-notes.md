@@ -18,6 +18,13 @@ variables. Other notable features include enhancements to the Palette CLI, suppo
 AKS support for VerteX, and adding multiple system administrators to the Palette and VerteX system consoles. Check out
 the following sections for a complete list of features, improvements, and known issues.
 
+### Security Notices
+
+- Kubernetes version 1.27.9 is deprecated due to a security vulnerability. We recommend upgrading to a newer version of
+  Kubernetes, such as 1.27.11, to avoid issues.
+
+- Review the [Security Bulletins](./security-bulletins/cve-reports.md) page for the latest security advisories.
+
 ### Palette
 
 #### Features
@@ -103,7 +110,7 @@ the following sections for a complete list of features, improvements, and known 
 
 - K3s version 1.27.7 has been marked as _Disabled_ and is no longer available for new cluster profiles. This version has
   a known issue that causes clusters to crash. Upgrade to a newer version of K3s to avoid the issue, such as versions
-  1.26.12, 1.28.5, and 1.27.9. You can learn more about the issue in the
+  1.26.12, 1.28.5, and 1.27.11. You can learn more about the issue in the
   [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047).
 
 - When deploying a multi-node AWS EKS cluster with the Container Network Interface (CNI)
