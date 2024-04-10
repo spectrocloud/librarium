@@ -81,15 +81,15 @@ the following sections for a complete list of features, improvements, and known 
 - Cox Edge has been removed as a supported platform for Edge clusters. Cox stopped supporting the platform and is no
   longer available for new deployments. All Cox Edge-related resources and API endpoints have been removed.
 
-- PCG deployments using the Palette CLI for MAAS and VMware vSphere now use Kubernetes version 1.27.9. Palette CLI
+- PCG deployments using the Palette CLI for MAAS and VMware vSphere now use Kubernetes version 1.27.11. Palette CLI
   installs targeting an OpenStack environment will use Kubernetes version 1.24.10. Existing PCG clusters installed
   through Palette CLI will be eligible for a cluster profile update. We recommend you review the
   [Upgrade a PCG](./clusters/pcg/manage-pcg/pcg-upgrade.md) guide to learn more about updating a PCG.
 
-- Self-hosted Palette instances now use Kubernetes version 1.27.11. This new version of Kubernetes will cause node repave
-  events during the upgrade process. If you have multiple self-hosted Palette instances in a VMware environment, take a
-  moment and review the [Known Issues](#known-issues) section below for potential issues that may arise during the
-  upgrade process.
+- Self-hosted Palette instances now use Kubernetes version 1.27.11. This new version of Kubernetes will cause node
+  repave events during the upgrade process. If you have multiple self-hosted Palette instances in a VMware environment,
+  take a moment and review the [Known Issues](#known-issues) section below for potential issues that may arise during
+  the upgrade process.
 
 #### Known Issues
 
