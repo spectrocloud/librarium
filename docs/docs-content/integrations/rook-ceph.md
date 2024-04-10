@@ -123,8 +123,8 @@ clusters.
 
 ### Known Issues
 
-- If a cluster experiences network issues, it's possible for the file mount to become unavailable and it will remain
-  unavailable even after network is restored. This a known issue disclosed in the
+- If a cluster experiences network issues, it's possible for the file mount to become unavailable and remain
+  unavailable even after the network is restored. This a known issue disclosed in the
   [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
   [Troubleshooting section](#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) for a workaround
   if you observe this issue in your cluster.
@@ -226,8 +226,8 @@ clusters.
 
 ### Known Issues
 
-- If a cluster experiences network issues, it's possible for the file mount to become unavailable and it will remain
-  unavailable even after network is restored. This a known issue disclosed in the
+- If a cluster experiences network issues, it's possible for the file mount to become unavailable and remain
+  unavailable even after the network is restored. This a known issue disclosed in the
   [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
   [Troubleshooting section](#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) for a workaround
   if you observe this issue in your cluster.
@@ -329,8 +329,8 @@ clusters.
 
 ### Known Issues
 
-- If a cluster experiences network issues, it's possible for the file mount to become unavailable and it will remain
-  unavailable even after network is restored. This a known issue disclosed in the
+- If a cluster experiences network issues, it's possible for the file mount to become unavailable and remain
+  unavailable even after the network is restored. This a known issue disclosed in the
   [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
   [Troubleshooting section](#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) for a workaround
   if you observe this issue in your cluster.
@@ -350,8 +350,7 @@ improvements.
 
 ### File Mount Becomes Unavailable after Cluster Experiences Network Issues
 
-A known issue exists with Rook-Ceph that if your cluster experiences network issues, file mount becomes unavailable and
-remains unavailable even after the network is restored.
+A known issue exists with Rook-Ceph where file mounts become unavailable and remain unavailable even after network issues are resolved.
 
 #### Debug Steps
 
@@ -416,7 +415,7 @@ remains unavailable even after the network is restored.
 
    :::
 
-5. Once all the workloads are scaled down, this will trigger a unmount and fresh mount of cephFS volumes. Ensure that
+5. Once all the workloads are scaled down, all existing volume mounts will be unmounted, followed by fresh new mounts of cephFS volumes. Ensure that
    all workloads are scaled down to zero. Even if one pod remains that uses the PVC, the unmount will not happen and the
    issue will not be resolved.
 
