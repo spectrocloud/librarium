@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## April 13, 2024 - Release 4.3.0
+## April 14, 2024 - Release 4.3.0
 
 This release contains several new exciting Technical Preview features, including the Edge Local UI and Cluster Profile
 variables. Other notable features include enhancements to the Palette CLI, support for deploying Konvoy clusters, Azure
@@ -326,10 +326,10 @@ the following sections for a complete list of features, improvements, and known 
 | Calico CNI                                 | 3.26.3      |
 | Konvoy                                     | 1.27.6      |
 | Palette eXtended Kubernetes (PXK)          | 1.26.12     |
-| Palette eXtended Kubernetes (PXK)          | 1.27.9      |
+| Palette eXtended Kubernetes (PXK)          | 1.27.11     |
 | Palette eXtended Kubernetes (PXK)          | 1.28.5      |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.26.12     |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.9      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.11     |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.28.5      |
 | RKE2 - Edge                                | 1.26.12     |
 | RKE2 - Edge                                | 1.27.9      |
