@@ -123,8 +123,8 @@ clusters.
 
 ### Known Issues
 
-- If a cluster experiences network issues, it's possible for the file mount to become unavailable and remain
-  unavailable even after the network is restored. This a known issue disclosed in the
+- If a cluster experiences network issues, it's possible for the file mount to become unavailable and remain unavailable
+  even after the network is restored. This a known issue disclosed in the
   [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
   [Troubleshooting section](#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) for a workaround
   if you observe this issue in your cluster.
@@ -226,8 +226,8 @@ clusters.
 
 ### Known Issues
 
-- If a cluster experiences network issues, it's possible for the file mount to become unavailable and remain
-  unavailable even after the network is restored. This a known issue disclosed in the
+- If a cluster experiences network issues, it's possible for the file mount to become unavailable and remain unavailable
+  even after the network is restored. This a known issue disclosed in the
   [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
   [Troubleshooting section](#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) for a workaround
   if you observe this issue in your cluster.
@@ -329,8 +329,8 @@ clusters.
 
 ### Known Issues
 
-- If a cluster experiences network issues, it's possible for the file mount to become unavailable and remain
-  unavailable even after the network is restored. This a known issue disclosed in the
+- If a cluster experiences network issues, it's possible for the file mount to become unavailable and remain unavailable
+  even after the network is restored. This a known issue disclosed in the
   [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
   [Troubleshooting section](#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) for a workaround
   if you observe this issue in your cluster.
@@ -350,7 +350,8 @@ improvements.
 
 ### File Mount Becomes Unavailable after Cluster Experiences Network Issues
 
-A known issue exists with Rook-Ceph where file mounts become unavailable and remain unavailable even after network issues are resolved.
+A known issue exists with Rook-Ceph where file mounts become unavailable and remain unavailable even after network
+issues are resolved.
 
 #### Debug Steps
 
@@ -368,19 +369,11 @@ A known issue exists with Rook-Ceph where file mounts become unavailable and rem
 
 4. Scale down all workloads, including pods, deployments, and StatefulSets using the PVC to zero.
 
-   <Tabs>
-
-   <TabItem label="Pods" value="pods">
-
-   To scale down a pod, delete it.
+   To scale down a deployment, use the following command. Replace `deployment-name` with the name of the deployment.
 
    ```shell
-   kubectl delete pods pod-name
+   kubectl scale deployment deployment-name --replicas=0
    ```
-
-   </TabItem>
-
-   <TabItem label="StatefulSet" value="stateful-set">
 
    To scale down a StatefulSet, use the following command. Replace `statefulset-name` with the name of the StatefulSet.
 
@@ -388,19 +381,12 @@ A known issue exists with Rook-Ceph where file mounts become unavailable and rem
    kubectl scale statefulset statefulset-name --replicas=0
    ```
 
-   </TabItem>
-
-   <TabItem label="Deployment" value="deployment">
-
-   To scale down a deployment, use the following command. Replace `deployment-name` with the name of the deployment.
+   To scale down a pod, delete it. Make sure you delete the deployments and StatefulSets first. If a pod belongs to a
+   StatefulSet or a deployment, it will simply be recreated.
 
    ```shell
-   kubectl scale deployment deployment-name --replicas=0
+   kubectl delete pods pod-name
    ```
-
-   </TabItem>
-
-   </Tabs>
 
    :::tip
 
@@ -415,9 +401,9 @@ A known issue exists with Rook-Ceph where file mounts become unavailable and rem
 
    :::
 
-5. Once all the workloads are scaled down, all existing volume mounts will be unmounted, followed by fresh new mounts of cephFS volumes. Ensure that
-   all workloads are scaled down to zero. Even if one pod remains that uses the PVC, the unmount will not happen and the
-   issue will not be resolved.
+5. Once all the workloads are scaled down, all existing volume mounts will be unmounted, followed by fresh new mounts of
+   cephFS volumes. Ensure that all workloads are scaled down to zero. Even if one pod remains that uses the PVC, the
+   unmount will not happen and the issue will not be resolved.
 
 6. Scale the workloads back to their original state.
 
