@@ -463,7 +463,7 @@ information, refer to the [Spectro Proxy](frp.md) pack guide.
 
 :::warning
 
-All versions less than v1.27.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
+All versions less than v1.26.14 are considered deprecated. Upgrade to a newer version to take advantage of new features.
 
 :::
 

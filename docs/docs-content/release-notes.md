@@ -251,8 +251,11 @@ the following sections for a complete list of features, improvements, and known 
 
 #### Pack Notes
 
-- Kubernetes versions prior to 1.27.x are deprecated. We recommend upgrading to a newer version of Kubernetes to support
-  the latest features and security updates.
+- PXK, PXK-E, and RKE2, versions prior to 1.27.x are deprecated. We recommend upgrading to a newer version of Kubernetes
+  to support the latest features and security updates.
+
+- K3s versions prior to 1.26.14 are deprecated. We recommend upgrading to a newer version of K3s to support the latest
+  features and security updates.
 
 - OpenStack support is limited to Palette eXtended Kubernetes (PXK) for version 1.24.x.
 
@@ -262,11 +265,18 @@ the following sections for a complete list of features, improvements, and known 
 
 | Pack                                       | New Version |
 | ------------------------------------------ | ----------- |
-| K3s                                        | 1.29.0      |
+| K3s                                        | 1.26.14     |
+| K3s                                        | 1.27.11     |
+| K3s                                        | 1.28.7      |
+| K3s                                        | 1.29.2      |
 | Konvoy                                     | 1.27.6      |
 | Palette eXtended Kubernetes (PXK)          | 1.29.0      |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.0      |
 | RKE2                                       | 1.29.0      |
+| RKE2 - Edge                                | 1.26.14     |
+| RKE2 - Edge                                | 1.27.11     |
+| RKE2 - Edge                                | 1.28.7      |
+| RKE2 - Edge                                | 1.29.3      |
 
 #### CNI
 
@@ -326,5 +336,11 @@ the following sections for a complete list of features, improvements, and known 
 | RKE2 - Edge                                | 1.28.5      |
 
 #### Deprecations and Removals
+
+- PXK, PXK-E, and RKE2, versions prior to 1.27.x are deprecated. We recommend upgrading to a newer version of Kubernetes
+  to support the latest features and security updates.
+
+- K3s versions prior to 1.26.14 are deprecated. We recommend upgrading to a newer version of K3s to support the latest
+  features and security updates.
 
 - Check out the [Deprecated Packs](integrations/deprecated-packs.md) page for a list of deprecated packs.
