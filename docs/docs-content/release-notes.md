@@ -131,6 +131,9 @@ the following sections for a complete list of features, improvements, and known 
   [Volume Attachment Errors Volume in VMware Environment](./troubleshooting/palette-upgrade.md#volume-attachment-errors-volume-in-vmware-environment)
   troubleshooting guide.
 
+- Day-2 operations related to infrastructure changes, such as modifying the node size, and node count, when using
+  MicroK8s are not taking effect.
+
 ### Edge
 
 #### Breaking Changes
