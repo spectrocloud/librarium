@@ -28,6 +28,16 @@ The private PK must be stowed away in a secure location **immediately** after be
 private key during EdgeForge, installation or deployment of your Edge devices. The public PK key is required during the
 EdgeForge build process so that it can be embedded into the Edge Installer ISO.
 
+The following files are all part of the PK key.
+
+| Filename    | Description                                                                                      | Key Management Recommendation              |
+| ----------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------ |
+| **PK.pem**  | The public PK key in Privacy Enhanced Mail (PEM) format.                                         | Store in the build pipeline for EdgeForge. |
+| **PK.key**  | The private PK key.                                                                              | Store offline in a secure location.        |
+| **PK.esl**  | The EFI Signature List for the PK key.                                                           | Store in the build pipeline for EdgeForge. |
+| **PK.der**  | The public PK key in DER (Distinguished Encoding Rules) format, a binary form of the PEM file.   | Store in the build pipeline for EdgeForge. |
+| **PK.auth** | This file contains signed data used for updating the Secure Boot variables in the UEFI firmware. | Store in the build pipeline for EdgeForge. |
+
 ## Key Exchange Key (KEK)
 
 Similar to how PK authenticates updates to the KEK key, the KEK authenticates updates to the Signature Database (DB). It
@@ -40,16 +50,32 @@ The private KEK must be stowed away in a secure location **immediately** after b
 private key during EdgeForge, installation or deployment of your Edge devices. The public KEK is required during the
 EdgeForge build process so that it can be embedded into the Edge Installer ISO.
 
+| Filename     | Description                                                                                      | Key Management Recommendation              |
+| ------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------ |
+| **KEK.pem**  | The public KEK key in Privacy Enhanced Mail (PEM) format.                                        | Store in the build pipeline for EdgeForge. |
+| **KEK.key**  | The private KEK key.                                                                             | Store offline in a secure location.        |
+| **KEK.esl**  | The EFI Signature List for the KEK key.                                                          | Store in the build pipeline for EdgeForge. |
+| **KEK.der**  | The public KEK key in DER (Distinguished Encoding Rules) format, a binary form of the PEM file.  | Store in the build pipeline for EdgeForge. |
+| **KEK.auth** | This file contains signed data used for updating the Secure Boot variables in the UEFI firmware. | Store in the build pipeline for EdgeForge. |
+
 ## Signature Database (DB) Key
 
-The signature database (DB) stores The db contains the authorized signatures or certificates for valid EFI
-files. The DB key is also a pair that has a public key and a private key.
+The signature database (DB) stores The db contains the authorized signatures or certificates for valid EFI files. The DB
+key is also a pair that has a public key and a private key.
 
 The private DB key signs the UKI image in the Edge Installer ISO. The public DB key verifies the signature on the UKI
 image.
 
 Both the public and private DB keys should be stored securely in the build pipeline of your Edge artifacts, as they are
 needed during EdgeForge both during initial deployment and upgrades.
+
+| Filename    | Description                                                                                      | Key Management Recommendation              |
+| ----------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------ |
+| **db.pem**  | The public DB key in Privacy Enhanced Mail (PEM) format.                                         | Store in the build pipeline for EdgeForge. |
+| **db.key**  | The private DB key.                                                                              | Store in the build pipeline for EdgeForge  |
+| **db.esl**  | The EFI Signature List for the DB key.                                                           | Store in the build pipeline for EdgeForge. |
+| **db.der**  | The public DB key in DER (Distinguished Encoding Rules) format, a binary form of the PEM file.   | Store in the build pipeline for EdgeForge. |
+| **db.auth** | This file contains signed data used for updating the Secure Boot variables in the UEFI firmware. | Store in the build pipeline for EdgeForge. |
 
 ## Platform Configuration Registers (PCR) Policy Key
 
@@ -61,3 +87,7 @@ These measurements are signed by the private PCR policy key. During the boot pro
 embedded in the UKI image is evaluated against the signature database. If it is an allowed signature, the boot process
 is allowed to continue. After the boot process is complete, the measurements are stored in the Trusted Platform Module
 (TPM) of your Edge host.
+
+| Filename                 | Description                 | Key Management Recommendation              |
+| ------------------------ | --------------------------- | ------------------------------------------ |
+| **tpm2-pcr-private.pem** | The private PCR policy key. | Store in the build pipeline for EdgeForge. |
