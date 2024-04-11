@@ -18,23 +18,46 @@ the security of your systems.
 
 ## Platform Key (PK)
 
-The PK is at the top of the Secure Boot cryptographic key hierarchy. It establishes a trust relationship between the
-platform owner and the platform firmware.
+The PK is at the top of the Secure Boot cryptographic key hierarchy. It's a key pair that has a private key and a public
+key.
+
+The private PK signs updates to the Key Exchange Key (KEK). The public PK is used to verify whether updates to the KEK
+are signed with the authentic private key and can be trusted.
+
+The private PK must be stowed away in a secure location **immediately** after being generated. You do not need the
+private key during EdgeForge, installation or deployment of your Edge devices. The public PK key is required during the
+EdgeForge build process so that it can be embedded into the Edge Installer ISO.
 
 ## Key Exchange Key (KEK)
 
-## Signature Database (DB)
+Similar to how PK authenticates updates to the KEK key, the KEK authenticates updates to the Signature Database (DB). It
+also consists of pair that has a private key and a public key.
 
-The signature database (DB) stores the signers or image hashes of Unified Kernel Images (UKI) that can be used to boot
-the device. Only UKI images with signatured matching the records on the DB key are allowed to boot.
+The private KEK signs updates to the DB. When there are updates to the DB, the public KEK is used to verify that those
+updates are signed by the authentic private KEK.
 
-The signature database includes the following files.
+The private KEK must be stowed away in a secure location **immediately** after being generated. You do not need the
+private key during EdgeForge, installation or deployment of your Edge devices. The public KEK is required during the
+EdgeForge build process so that it can be embedded into the Edge Installer ISO.
 
-| File       | Description | Storage Recommendation |
-| ---------- | ----------- | ---------------------- |
-| **db.pem** |             |                        |
-| **db.key** |             |                        |
-| **db.esl** |             |                        |
-| **db.der** |             |                        |
+## Signature Database (DB) Key
 
-## Platform Configuration Registers (PCR)
+The signature database (DB) stores The db contains the authorized signatures or certificates for valid Unified Kernel
+Image (UKI) files. The DB key is also a pair that has a public key and a private key.
+
+The private DB key signs the UKI image in the Edge Installer ISO. The public DB key verifies the signature on the UKI
+image.
+
+Both the public and private DB keys should be stored securely in the build pipeline of your Edge artifacts, as they are
+needed during EdgeForge both during initial deployment and upgrades.
+
+## Platform Configuration Registers (PCR) Policy Key
+
+The PCR policy key is technically also a key pair, but you only see the private key after the key generation step. The
+public key is generated automatically during the EdgeForge process.
+
+During EdgeForge, each boot component is hashed and these hash values, or measurements, are embedded in the UKI image.
+These measurements are signed by the private PCR policy key. During the boot process, the public key generated and
+embedded in the UKI image is evaluated against the signature database. If it is an allowed signature, the boot process
+is allowed to continue. After the boot process is complete, the measurements are stored in the Trusted Platform Module
+(TPM) of your Edge host.
