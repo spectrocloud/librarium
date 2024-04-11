@@ -4,9 +4,9 @@ import IconMapper from "@site/src/components/IconMapper/IconMapper";
 import { Image } from "antd";
 
 interface PackCardIconProps {
-  title: string;
-  logoUrl: string;
-  type: string;
+  title?: string;
+  logoUrl?: string;
+  type?: string;
 }
 
 export default function PackCardIcon({ title, logoUrl, type }: PackCardIconProps) {
@@ -16,13 +16,13 @@ export default function PackCardIcon({ title, logoUrl, type }: PackCardIconProps
     console.log(`Failed to load e.target.src: ${e.target.src}`);
     e.target.style.display = "none";
     setIsError(true);
-    //<IconMapper type={"oslayer"}></IconMapper>
   };
 
   return (
     <div className={styles.imageWrapper}>
       {isError ?(<IconMapper type={type} />) :
       (<Image
+        preview={false}
         height={52}
         src={logoUrl}
         alt={`${title} logo`}

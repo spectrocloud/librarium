@@ -1,0 +1,54 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  .versionsection {
+    align-self: start;
+  }
+  .bullets::before {
+    content: "•";
+    padding-right: 8px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .description {
+    display: flex;
+    width: 100%;
+    background-color: #edeef4;
+    flex-direction: column;
+    padding: 10px;
+    .packdescfirstrow {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      .packname {
+        font-size: 16px;
+        font-weight: bold;
+        width: 50%;
+        display: flex;
+      }
+
+      .customlabel {
+        margin-top: 15px;
+      }
+      .versionselect {
+        width: 50%;
+        display: flex;
+        place-content: end;
+      }
+    }
+    .packdescription {
+      font-size: 14px;
+      width: 100%;
+      display: flex;
+      padding-bottom: 10px;
+      padding-top: 15px;
+    }
+    .packdescription :first-child {
+      width: 80px;
+      margin-right: 15px;
+    }
+  }
+}

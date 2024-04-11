@@ -1,4 +1,5 @@
 export interface FrontMatterData {
+  name: string;
   sidebar_label: string;
   title: string;
   description: string;
@@ -11,6 +12,15 @@ export interface FrontMatterData {
   packType: string;
   verified: boolean;
   cloudTypes: string[];
+  readme: Map<string, any>;
+  versions: VersionTemplate[];
+}
+
+export interface VersionTemplate {
+  title: string;
+  version: string;
+  packUid: string;
+  children: VersionTemplate[];
 }
 
 export interface PacksData {

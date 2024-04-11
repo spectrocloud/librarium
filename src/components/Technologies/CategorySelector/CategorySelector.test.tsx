@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
-import CategorySelector from "./CategorySelector";
+import CategorySelector from "./TypeSelector";
 
 describe("CategorySelector Component", () => {
   const mockSelectCategory = jest.fn();

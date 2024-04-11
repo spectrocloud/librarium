@@ -1,32 +1,31 @@
 import React from "react";
-import Link from "@docusaurus/Link";
+import { useHistory } from "react-router-dom";
 import styles from "./Technologies.module.scss";
 import PackCardIcon from "./PackCardIcon";
-import osLayerIcon from "@site/static/assets/packs/os_layer.svg";
-import Image from "@theme/IdealImage";
-import IconMapper from "@site/src/components/IconMapper/IconMapper";
-
 
 interface TechnologyCardProps {
+  name: string;
   title: string;
-  slug: string;
   logoUrl: string;
   type: string;
 }
 
-export default function TechnologyCard({ title, slug, logoUrl, type }: TechnologyCardProps) {
+export default function TechnologyCard({ name, title, logoUrl, type }: TechnologyCardProps) {
+  const history = useHistory();
   const handleImageError = (e: any) => {
     console.log(`Failed to load e.target.src: ${e.target.src}`);
     e.target.src.display = "none"
-    //<IconMapper type={"oslayer"}></IconMapper>
+  };
+  const handleClick = () => {
+    history.push({
+      pathname: `/integrations/packs/${name}`,
+    });
   };
 
   return (
-    <Link key={title} to={slug}>
-      <div className={styles.card}>
-          <PackCardIcon title={title} logoUrl={logoUrl} type={type}/>
-        <div className={styles.title}>{title}</div>
-      </div>
-    </Link>
+    <div className={styles.card} onClick={()=>handleClick()}>
+        <PackCardIcon title={title} logoUrl={logoUrl} type={type}/>
+      <div className={styles.title}>{title}</div>
+    </div>
   );
 }

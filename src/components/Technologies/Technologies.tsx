@@ -8,6 +8,7 @@ import PacksFilters from "./PacksFilters";
 import { packTypeNames } from "./PackConstants";
 import { Collapse } from "antd";
 import "./technologies.antd.css";
+import IconMapper from "../IconMapper/IconMapper";
 
 const searchOptions = {
   threshold: 0.5,
@@ -54,8 +55,8 @@ export default function Technologies({ data }: TechnologiesProps) {
   };
   const renderPacks = (fields: FrontMatterData[]) => {
     return fields.map((field) => {
-      const { title, slug, logoUrl, packType } = field;
-      return <TechnologyCard title={title} slug={slug} logoUrl={logoUrl} key={slug} type={packType}></TechnologyCard>;
+      const { title, logoUrl, packType, name } = field;
+      return <TechnologyCard name={name} title={title} logoUrl={logoUrl} type={packType}></TechnologyCard>;
     });
   };
   const renderPacksCategories = () => {
@@ -80,11 +81,19 @@ export default function Technologies({ data }: TechnologiesProps) {
         });
       }
 
-      const obj = (<Collapse.Panel header={packTypeNames[category]} key={category}>{renderPacks(filteredTechCards)}</Collapse.Panel>)
+      const obj = (<Collapse.Panel header={addPanelHeader(category)} key={category}>{renderPacks(filteredTechCards)}</Collapse.Panel>)
       categoryItems.push(obj)
     });
     return categoryItems;
   };
+  function addPanelHeader(category: string) {
+    return (
+      <>
+        <IconMapper type={category} />
+        {packTypeNames[category as keyof typeof packTypeNames]}
+      </>
+    );
+  }
   const setSelectedSearchFilters = (selectedSearchFilters: Record<string, any>) => {
     setSelectedFilters((prevState) => ({
       ...prevState,

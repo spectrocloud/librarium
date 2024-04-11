@@ -2,6 +2,10 @@
   padding: 15px 0;
   .technologyWrapper {
     margin-top: 32px;
+    svg {
+      vertical-align: bottom;
+      margin-right: 5px;
+    }
   }
   .imageWrapper {
     display: flex;

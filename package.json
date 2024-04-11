@@ -55,10 +55,14 @@
     "docusaurus-plugin-sass": "^0.2.5",
     "docusaurus-theme-openapi-docs": "^3.0.0-beta.3",
     "fuse.js": "^6.6.2",
+    "markdown-to-jsx": "^7.0.0",
     "prism-react-renderer": "^2.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.64.1"
+    "react-markdown": "9.0.1",
+    "remark-gfm": "4.0.0",
+    "sass": "^1.64.1",
+    "semver": "^7.3.7"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.1",

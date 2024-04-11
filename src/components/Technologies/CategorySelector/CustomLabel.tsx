@@ -4,13 +4,16 @@ import styles from "./CustomLabel.module.scss";
 
 interface CustomLabelProps {
   label: string;
+  className?: string;
 }
 
-export default function CustomLabel({ label }: CustomLabelProps) {
+export default function CustomLabel({ label, className = "" }: CustomLabelProps) {
   const { Text } = Typography;
   return (
-    <div className={styles.customLabel}>
-      <Text>{label}</Text>
-    </div>
+    <>
+      <div className={`${className} ${styles.customLabel}`}>
+        <Text>{label}</Text>
+      </div>
+    </>
   );
 }

@@ -1,41 +1,37 @@
 export const packTypes = [
+  'app services',
+  'authentication',
+  'ingress',
   'k8s',
+  'load balancer',
+  'logging',
+  'monitoring',
   'cni',
   'os',
-  'servicemesh',
-  'monitoring',
-  'csi',
-  'logging',
-  'load balancer',
-  'ingress',
-  'authentication',
   'registry',
-  'system app',
-  'spectro',
   'security',
-  'serverless',
-  'app services',
+  'servicemesh',
+  'csi',
+  'system app',
 ] as const;
 
 type packType = typeof packTypes[number];
 
 export const packTypeNames: Record<packType, string> = {
+  'app services': 'App Services',
+  authentication: 'Authentication',
+  ingress: 'Ingress',
   k8s: 'Kubernetes',
+  'load balancer': 'Load Balancer',
+  logging: 'Logging',
+  monitoring: 'Monitoring',
   cni: 'Network',
   os: 'Operating System',
-  servicemesh: 'Service Mesh',
-  monitoring: 'Monitoring',
-  csi: 'Storage',
-  logging: 'Logging',
-  'load balancer': 'Load Balancer',
-  ingress: 'Ingress',
-  authentication: 'Authentication',
   registry: 'Registry',
-  'system app': 'System App',
-  spectro: 'Spectro',
   security: 'Security',
-  serverless: 'Serverless',
-  'app services': 'App Services',
+  servicemesh: 'Service Mesh',
+  csi: 'Storage',
+  'system app': 'System App',
 } as const;
 
 export const cloudProviderTypes = {
@@ -52,3 +48,23 @@ export const cloudProviderTypes = {
   'edge-native': 'Edge Native',
   custom: 'Custom',
 } as const;
+
+export const layerTypes = [
+  'k8s',
+  'cni',
+  'os',
+  'csi',
+] as const;
+
+export const addOnTypes = [
+  'app services',
+  'authentication',
+  'ingress',
+  'load balancer',
+  'logging',
+  'monitoring',
+  'registry',
+  'security',
+  'servicemesh',
+  'system app',
+] as const;
