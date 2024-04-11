@@ -1,7 +1,9 @@
 ---
 sidebar_label: "rook-ceph"
 title: "Rook Ceph"
-description: "Rook Ceph storage pack in Spectro Cloud"
+description: "Rook is an open-source cloud-native storage orchestrator that provides the platform, framework, and support for Ceph
+storage to natively integrate with cloud-native environments. Ceph is a distributed storage system that provides file,
+block, and object storage and is deployed in large-scale production clusters. This page talks about how to use the Rook Ceph storage pack in Spectro Cloud"
 hide_table_of_contents: true
 type: "integration"
 category: ["storage", "amd64"]
@@ -121,6 +123,14 @@ clusters.
 
 4. Use the password you receive in the output with the username `admin` to log in to the Ceph Dashboard.
 
+### Known Issues
+
+- If a cluster experiences network issues, it's possible for the file mount to become unavailable and remain unavailable
+  even after the network is restored. This a known issue disclosed in the
+  [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
+  [Troubleshooting section](#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) for a workaround
+  if you observe this issue in your cluster.
+
 </TabItem>
 
 <TabItem label="1.11.x" value="1.11.x">
@@ -215,6 +225,14 @@ clusters.
    ```
 
 4. Use the password you receive in the output with the username `admin` to log in to the Ceph Dashboard.
+
+### Known Issues
+
+- If a cluster experiences network issues, it's possible for the file mount to become unavailable and remain unavailable
+  even after the network is restored. This a known issue disclosed in the
+  [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
+  [Troubleshooting section](#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) for a workaround
+  if you observe this issue in your cluster.
 
 </TabItem>
 
@@ -311,6 +329,14 @@ clusters.
 
 4. Use the password you receive in the output with the username `admin` to log in to the Ceph Dashboard.
 
+### Known Issues
+
+- If a cluster experiences network issues, it's possible for the file mount to become unavailable and remain unavailable
+  even after the network is restored. This a known issue disclosed in the
+  [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
+  [Troubleshooting section](#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) for a workaround
+  if you observe this issue in your cluster.
+
 </TabItem>
 
 <TabItem label="Deprecated" value="Deprecated">
@@ -321,6 +347,67 @@ improvements.
 </TabItem>
 
 </Tabs>
+
+## Troubleshooting
+
+### File Mount Becomes Unavailable after Cluster Experiences Network Issues
+
+A known issue exists with Rook-Ceph where file mounts become unavailable and remain unavailable even after network
+issues are resolved.
+
+#### Debug Steps
+
+1. One way to debug is to reboot the node that is experiencing the issues. If you are unable to reboot the node, or if
+   rebooting the node does not fix the issue, continue to the following steps.
+
+2. Connect to your cluster via the command-line. For more information, refer to
+   [Access Cluster with CLI](/docs/docs-content/clusters/cluster-management/palette-webctl.md).
+
+3. Issue the following command to identify Persistent Volume Claims (PVC) from Ceph File System (FS).
+
+   ```shell
+   kubectl get pvc --all | grep "cephFS"
+   ```
+
+4. Scale down all workloads, including pods, deployments, and StatefulSets using the PVC to zero.
+
+   To scale down a deployment, use the following command. Replace `deployment-name` with the name of the deployment.
+
+   ```shell
+   kubectl scale deployment deployment-name --replicas=0
+   ```
+
+   To scale down a StatefulSet, use the following command. Replace `statefulset-name` with the name of the StatefulSet.
+
+   ```shell
+   kubectl scale statefulset statefulset-name --replicas=0
+   ```
+
+   To scale down a pod, delete it. Make sure you delete the deployments and StatefulSets first. If a pod belongs to a
+   StatefulSet or a deployment, it will simply be recreated.
+
+   ```shell
+   kubectl delete pods pod-name
+   ```
+
+   :::tip
+
+   If you do not know which workloads use the PVC, you can start by getting a list of all pods that are using PVCs and
+   their PVC names with the following command.
+
+   ```shell
+   kubectl get pods --all-namespaces --output=json | jq '.items[] | {name: .metadata.name, namespace: .metadata.namespace, claimName: .spec |  select( has ("volumes") ).volumes[] | select( has ("persistentVolumeClaim") ).persistentVolumeClaim.claimName }'
+   ```
+
+   You can then find workloads that are associated with the pods and scale them down to zero.
+
+   :::
+
+5. Once all the workloads are scaled down, all existing volume mounts will be unmounted, followed by fresh new mounts of
+   cephFS volumes. Ensure that all workloads are scaled down to zero. Even if one pod remains that uses the PVC, the
+   unmount will not happen and the issue will not be resolved.
+
+6. Scale the workloads back to their original state.
 
 ## Terraform
 
