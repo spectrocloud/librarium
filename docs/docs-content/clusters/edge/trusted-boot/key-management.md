@@ -42,8 +42,8 @@ EdgeForge build process so that it can be embedded into the Edge Installer ISO.
 
 ## Signature Database (DB) Key
 
-The signature database (DB) stores The db contains the authorized signatures or certificates for valid Unified Kernel
-Image (UKI) files. The DB key is also a pair that has a public key and a private key.
+The signature database (DB) stores The db contains the authorized signatures or certificates for valid EFI
+files. The DB key is also a pair that has a public key and a private key.
 
 The private DB key signs the UKI image in the Edge Installer ISO. The public DB key verifies the signature on the UKI
 image.
@@ -54,7 +54,7 @@ needed during EdgeForge both during initial deployment and upgrades.
 ## Platform Configuration Registers (PCR) Policy Key
 
 The PCR policy key is technically also a key pair, but you only see the private key after the key generation step. The
-public key is generated automatically during the EdgeForge process.
+public key and the signature is generated automatically during the EdgeForge process and added inside the EFI files.
 
 During EdgeForge, each boot component is hashed and these hash values, or measurements, are embedded in the UKI image.
 These measurements are signed by the private PCR policy key. During the boot process, the public key generated and
