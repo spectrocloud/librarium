@@ -184,6 +184,8 @@ the following sections for a complete list of features, improvements, and known 
   [Rook-Ceph](./integrations/rook-ceph.md#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) pack
   documentation.
 
+- Edge clusters on Edge hosts with ARM64 processors may experience instability issues that causes cluster failures.
+
 ### Virtual Machine Orchestrator (VMO)
 
 #### Improvements
