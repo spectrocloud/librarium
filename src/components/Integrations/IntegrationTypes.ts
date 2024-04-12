@@ -12,8 +12,9 @@ export interface FrontMatterData {
   packType: string;
   verified: boolean;
   cloudTypes: string[];
-  readme: Map<string, any>;
+  readme: Map<string, string>;
   versions: VersionTemplate[];
+  community: boolean;
 }
 
 export interface VersionTemplate {

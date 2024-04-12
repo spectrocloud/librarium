@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useMemo, lazy, Suspense, ReactElement } from "react";
-import { useLocation } from 'react-router-dom';
 import { IntegrationsData, PacksData } from "../Integrations/IntegrationTypes";
 import styles from "./PacksReadme.module.scss";
 import { Select, List, Tabs } from "antd";
 import CustomLabel from "../Technologies/CategorySelector/CustomLabel";
 import PackCardIcon from "../Technologies/PackCardIcon";
-import { Typography } from "antd";
 import Markdown from 'markdown-to-jsx';
 import "./PacksReadme.antd.css";
 import { usePluginData } from "@docusaurus/useGlobalData";
@@ -15,21 +13,19 @@ import PacksIntegrationsPluginData from "../Integrations/IntegrationTypes";
 interface TechnologiesProps {
   data: PacksData | IntegrationsData;
 }
+interface PackReadmeProps {
+  customDescription: string,
+  packReadme: any,
+  versions: Array<any>,
+  title: string,
+  logoUrl: string,
+  type: string
+}
 
 export default function PacksReadme() {
-  const { Text } = Typography;
-  //const location = useLocation();
-  //const packName = location?.state?.id || "";
   const [selectedVersion, setSelectedVersion] = useState<string>("");
-  //const [md, setMd] = useState(null);
-  //let Custom = falco;
-
-  //const [md, setMd] = useState<ReactElement<any, any> | null>(null);
-
   const [md, setMd] = useState<ReactElement<any, any> | null>(null);
   const packName = new URLSearchParams(window.location.search).get("pack")
-
-
   useEffect(() => {
     const importComponent = async () => {
       try {
@@ -51,7 +47,7 @@ export default function PacksReadme() {
     const _packData = packs.filter((pack) => pack.fields.name === packName)[0];
     if(_packData) {
       setSelectedVersion(_packData.fields.versions[0].title);
-      return {
+      const packDataInfo: PackReadmeProps = {
         customDescription: _packData.fields.description,
         packReadme: _packData.fields.readme,
         versions: _packData.fields.versions,
@@ -59,6 +55,7 @@ export default function PacksReadme() {
         logoUrl: _packData.fields.logoUrl,
         type: _packData.fields.packType,
       };
+      return packDataInfo;
     }
     return {
       customDescription: "",
@@ -85,25 +82,20 @@ export default function PacksReadme() {
   function versionSupportedTextRender() {
     if(selectedVersion) {
       const listVersion = packData.versions?.find((ver) => ver.title === selectedVersion);
-      if(listVersion) {
+      if (listVersion) {
         return (
           <>
             <List
               size="small"
               header={<div>Versions Supported</div>}
               dataSource={listVersion.children}
-              renderItem={child => <List.Item><div className={styles.bullets}>{child.title}</div></List.Item>}
+              renderItem={(child: any) => <List.Item><div className={styles.bullets}>{child.title}</div></List.Item>}
             />
-
           </>
         )
       }
     }
     return null;
-  }
-
-  function changeReadMeTab() {
-
   }
 
   function renderTabs() {
@@ -122,7 +114,8 @@ export default function PacksReadme() {
           key: '2',
           children: md,
         },
-      ]
+      ] as { label: string, key: string, children: JSX.Element }[];
+
       return (
         <Tabs defaultActiveKey="1">
           {items.map((item) => {
@@ -134,11 +127,13 @@ export default function PacksReadme() {
           })}
         </Tabs>
       )
-    } else if(Object.keys(packData.packReadme).length) {
+    } else if (Object.keys(packData.packReadme).length) {
       const packUid = packData.versions.find((ver) => ver.title === selectedVersion)?.packUid;
-      readme = packUid ? packData.packReadme[packUid] : "";
+      //const temp = someObj[field as keyof ObjectType]
+
+      readme = packUid ? packData.packReadme[packUid as keyof string] : "";
       return (<Markdown children={readme} />)
-    } else if(md) {
+    } else if (md) {
       return md;
     } else {
       return null;

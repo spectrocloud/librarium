@@ -16,10 +16,6 @@ interface AdditionalFiltersProps {
 export default function AdditionalFilters({ selectAdditionalFilters }: AdditionalFiltersProps) {
   const [items, setItems] = useState<MenuItemProps[]>([
     {
-      label: 'FIPS',
-      key: 'FIPS',
-    },
-    {
       label: 'Verified',
       key: 'Verified',
     },

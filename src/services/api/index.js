@@ -14,9 +14,10 @@ axiosRetry(api, {
   retries: 3,
   retryDelay: (...arg) => axiosRetry.exponentialDelay(...arg, 1000),
   retryCondition(error) {
-    console.log("error === ", error);
+    //console.log("error === ");
     switch (error.response.status) {
       case 500:
+      case 404:
       case 501:
       case 429:
         return true;
