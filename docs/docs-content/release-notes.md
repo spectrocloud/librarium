@@ -178,6 +178,16 @@ the following sections for a complete list of features, improvements, and known 
   [Harbor Edge](./integrations/harbor-edge.md#enable-image-download-from-outside-of-harbor) reference page to learn more
   about the feature.
 
+#### Known issues
+
+- If a cluster that uses the Rook-Ceph pack experiences network issues, it's possible for the file mount to become
+  unavailable and will remain unavailable even after network is restored. This a known issue disclosed in the
+  [Rook GitHub repository](https://github.com/rook/rook/issues/13818). To resolve this issue, refer to
+  [Rook-Ceph](./integrations/rook-ceph.md#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) pack
+  documentation.
+
+- Edge clusters on Edge hosts with ARM64 processors may experience instability issues that causes cluster failures.
+
 ### Virtual Machine Orchestrator (VMO)
 
 #### Improvements
