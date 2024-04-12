@@ -15,11 +15,11 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
 Before upgrading Palette to a new major version, you must first update it to the latest minor version available. Refer
 to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for details.
 
+:::
+
 If your setup includes a PCG, you must also
 [allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette upgrade.
-
-:::
 
 ## Prerequisites
 
@@ -92,16 +92,34 @@ Palette upgrade.
 
     Alternatively, you can use the following command templates:
 
-    - Authenticate with your private `spectro-packs` registry.
+    - Authenticate with your private `spectro-packs` registry:
+
+      - `<ecr-region>`: Replace with the region where your ECR repository is hosted.
+      - `<aws-account-id>`: Replace with your AWS account ID.
+
+        ```shell
+        aws ecr get-login-password --region <ecr-region> | oras login --username AWS --password-stdin <aws-account-id>.dkr.ecr.<ecr-region>.amazonaws.com
+        ```
+
+      Consider the following example for reference.
 
       ```shell
-      aws ecr get-login-password --region xxxxx | oras login --username AWS --password-stdin 1234567890.dkr.ecr.us-east-1.amazonaws.com
+      aws ecr get-login-password --region us-east-1 | oras login --username AWS --password-stdin 123456789.dkr.ecr.us-east-1.amazonaws.com
       ```
 
-    - Authenticate with your public `spectro-images` registry.
+    - Authenticate with your public `spectro-images` registry:
+
+      - `<ecr-region>`: Replace with the region where your ECR repository is hosted.
+      - `<public-ecr-url>`: Replace with the URL to your public ECR registry.
+
+        ```shell
+        aws ecr-public get-login-password --region <ecr-region> | docker login --username AWS --password-stdin <public-ecr-url>
+        ```
+
+      Consider the following example for reference.
 
       ```shell
-      aws ecr-public get-login-password --region xxxxx | docker login --username AWS --password-stdin public.ecr.aws/xxxxxxx
+      aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/dfa987f
       ```
 
     </TabItem>
@@ -127,14 +145,14 @@ Palette upgrade.
       export OCI_PACK_BASE=spectro-packs
       ```
 
-    Consider the following example for reference.
+      Consider the following example for reference.
 
-    ```shell
-    export OCI_IMAGE_REGISTRY=example.internal.com
-    export OCI_IMAGE_BASE=spectro-images
-    export OCI_PACK_REGISTRY=10.10.100.48
-    export OCI_PACK_BASE=spectro-packs
-    ```
+      ```shell
+      export OCI_IMAGE_REGISTRY=example.internal.com
+      export OCI_IMAGE_BASE=spectro-images
+      export OCI_PACK_REGISTRY=10.10.100.48
+      export OCI_PACK_BASE=spectro-packs
+      ```
 
     </TabItem>
 
@@ -156,16 +174,16 @@ Palette upgrade.
       export ECR_PACK_REGISTRY_REGION=<ecr-region>
       ```
 
-    Consider the following example for reference.
+      Consider the following example for reference.
 
-    ```shell
-    export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
-    export ECR_IMAGE_BASE=spectro-images
-    export ECR_IMAGE_REGISTRY_REGION=us-east-1
-    export ECR_PACK_REGISTRY=123456789.dkr.ecr.us-east-1.amazonaws.com
-    export ECR_PACK_BASE=spectro-packs
-    export ECR_PACK_REGISTRY_REGION=us-east-1
-    ```
+      ```shell
+      export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
+      export ECR_IMAGE_BASE=spectro-images
+      export ECR_IMAGE_REGISTRY_REGION=us-east-1
+      export ECR_PACK_REGISTRY=123456789.dkr.ecr.us-east-1.amazonaws.com
+      export ECR_PACK_BASE=spectro-packs
+      export ECR_PACK_REGISTRY_REGION=us-east-1
+      ```
 
     </TabItem>
 
@@ -184,27 +202,28 @@ Palette upgrade.
     export VERSION=4.2.7
     ```
 
-5.  Use the following command template to download the airgap setup binary.
+5.  Use the following command template to download the new Palette airgap installation bin. Enter the username,
+    password, and the Palette airgap installation URL you received from our support team. In the output file name,
+    replace `<version>` with the Palette version you're downloading.
 
     ```shell
-    curl --user <username>:<password> https://software-private.spectrocloud.com/airgap/$VERSION/airgap-v$VERSION.bin  \
-    --output airgap-v$VERSION.bin
+    curl --user <username>:<password> --output airgap-<version>.bin <url-to-airgap-installation-bin>
     ```
 
-6.  Use the following command to make the airgap binary executable.
+    Consider the following command example for reference.
 
     ```shell
-    chmod +x airgap-v$VERSION.bin
+    curl --user <username>:<password> --output airgap-4.2.7.bin https://software.spectrocloud.com/airgap-v4.2.7.bin
     ```
 
-7.  Use the following command to start the airgap setup binary.
+6.  Use the following command template to execute the new Palette airgap installation bin.
 
     ```shell
-    ./airgap-v$VERSION.bin
+    chmod +x airgap-v$VERSION.bin && ./airgap-v$VERSION.bin
     ```
 
     After the binary execution is done, you should receive the following success message (the example is shortened for
-    brevity). As a result of running the binary, you should have a `spectro-manifests` archive in your temporary
+    brevity). As a result of starting the binary, you should have a `spectro-manifests` archive in your temporary
     directory.
 
     ```shell
@@ -224,38 +243,15 @@ Palette upgrade.
     Setup Completed
     ```
 
-8.  Move the `spectro-manifests` archive to a directory that your file server can access and use the following command
+7.  Move the `spectro-manifests` archive to a directory that your file server can access and use the following command
     template to unzip it.
 
     ```shell
     unzip spectro-manifests-<file-id>.zip -d /target/folder
     ```
 
-9.  Refer to the [Additional Packs](../../install-palette/airgap/supplemental-packs.md) page and update the packages you
+8.  Refer to the [Additional Packs](../../install-palette/airgap/supplemental-packs.md) page and update the packages you
     are currently using. You must update each package separately.
-
-    To update a package, use the following command template to download and execute the pack binary.
-
-    ```shell
-    curl --remote-name <pack-name-url> && chmod +x <pack-name-version>.bin && ./<pack-name-version>.bin
-    ```
-
-    Consider the following example for reference.
-
-    ```shell
-    curl --remote-name https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-alb-2.5.1.bin \
-      && chmod +x airgap-pack-aws-alb-2.5.1.bin \
-      && ./airgap-pack-aws-alb-2.5.1.bin
-    ```
-
-    ```shell
-    Verifying archive integrity...  100%   MD5 checksums are OK. All good.
-    Uncompressing Airgap Pack - aws-alb Version 4.0.17  100%
-    Setting up Packs
-    - Pushing Pack aws-alb:2.5.1
-    Setting up Images
-    Setup Completed
-    ```
 
 :::info
 
@@ -418,7 +414,9 @@ Ensure that the `values.yaml` file is ready before proceeding. Specifically, mak
    helm ls
    ```
 
-   You should receive an output with the version and other details of the currently deployed apps.
+   You should receive an output with the version and other details of the currently deployed apps. Check the
+   `App Version` column of `cert-manager`, `image-swap`, `reach-system`, and `hubble` to verify that they have the
+   expected versions.
 
    ```shell
    NAME        	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART                   	APP VERSION
@@ -428,5 +426,50 @@ Ensure that the `values.yaml` file is ready before proceeding. Specifically, mak
    hubble      	default  	2       	2024-02-22 19:47:24.085305 +0100 CET	deployed	spectro-mgmt-plane-4.2.7	4.2.7
    ```
 
-2. Check the `App Version` column of `cert-manager`, `image-swap`, `reach-system`, and `hubble` to verify that they have
-   the expected versions.
+2. Issue the following command to verify that the Palette clusters work as expected.
+
+   ```shell
+   kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
+   | grep -E '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\s'
+   ```
+
+   The command should return a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system`,
+   and `ui-system` namespaces. All deployments should have the status `Running`.
+
+   ```shell
+   cp-system       spectro-cp-ui-689984f88d-54wsw             Running
+   hubble-system   auth-85b748cbf4-6drkn                      Running
+   hubble-system   auth-85b748cbf4-dwhw2                      Running
+   hubble-system   cloud-fb74b8558-lqjq5                      Running
+   hubble-system   cloud-fb74b8558-zkfp5                      Running
+   hubble-system   configserver-685fcc5b6d-t8f8h              Running
+   hubble-system   event-68568f54c7-jzx5t                     Running
+   hubble-system   event-68568f54c7-w9rnh                     Running
+   hubble-system   foreq-6b689f54fb-vxjts                     Running
+   hubble-system   hashboard-897bc9884-pxpvn                  Running
+   hubble-system   hashboard-897bc9884-rmn69                  Running
+   hubble-system   hutil-6d7c478c96-td8q4                     Running
+   hubble-system   hutil-6d7c478c96-zjhk4                     Running
+   hubble-system   mgmt-85dbf6bf9c-jbggc                      Running
+   hubble-system   mongo-0                                    Running
+   hubble-system   mongo-1                                    Running
+   hubble-system   mongo-2                                    Running
+   hubble-system   msgbroker-6c9b9fbf8b-mcsn5                 Running
+   hubble-system   oci-proxy-7789cf9bd8-qcjkl                 Running
+   hubble-system   packsync-28205220-bmzcg                    Succeeded
+   hubble-system   spectrocluster-6c57f5775d-dcm2q            Running
+   hubble-system   spectrocluster-6c57f5775d-gmdt2            Running
+   hubble-system   spectrocluster-6c57f5775d-sxks5            Running
+   hubble-system   system-686d77b947-8949z                    Running
+   hubble-system   system-686d77b947-cgzx6                    Running
+   hubble-system   timeseries-7865bc9c56-5q87l                Running
+   hubble-system   timeseries-7865bc9c56-scncb                Running
+   hubble-system   timeseries-7865bc9c56-sxmgb                Running
+   hubble-system   user-5c9f6c6f4b-9dgqz                      Running
+   hubble-system   user-5c9f6c6f4b-hxkj6                      Running
+   ingress-nginx   ingress-nginx-controller-2txsv             Running
+   ingress-nginx   ingress-nginx-controller-55pk2             Running
+   ingress-nginx   ingress-nginx-controller-gmps9             Running
+   jet-system      jet-6599b9856d-t9mr4                       Running
+   ui-system       spectro-ui-76ffdf67fb-rkgx8                Running
+   ```

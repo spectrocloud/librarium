@@ -15,11 +15,11 @@ This guide takes you through the process of upgrading a self-hosted Palette inst
 Before upgrading Palette to a new major version, you must first update it to the latest minor version available. Refer
 to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for details.
 
+:::
+
 If your setup includes a PCG, you must also
 [allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette upgrade.
-
-:::
 
 ## Prerequisites
 
@@ -57,37 +57,7 @@ match your environment.
    cd palette-install/charts/release-*
    ```
 
-3. If you're using a self-hosted OCI registry, then, in a code editor of your choice, open the
-   **extras/cert-manager/values.yaml** file and replace the `controllerImage`, `webhookImage`, and `amceResolverImage`
-   image URLs with your OCI image registry URLs.
-
-   ```yaml
-   image:
-   cainjectorImage: "gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-cainjector:spectro-v1.11.0-20230427"
-   // highlight-start
-   controllerImage: "<your-oci-registry-url>/spectro-images-public/release-fips/jetstack/cert-manager-controller:spectro-v1.11.0-20230427"
-   webhookImage: "<your-oci-registry-url>/spectro-images-public/release-fips/jetstack/cert-manager-webhook:spectro-v1.11.0-20230808"
-   amceResolverImage: "<your-oci-registry-url>/spectro-images-public/release-fips/jetstack/cert-manager-acmesolver:spectro-v1.11.0-20230427"
-   // highlight-end
-
-   featureGates: "AdditionalCertificateOutputFormats=true"
-   ```
-
-   Consider the following example for reference.
-
-   ```yaml
-   image:
-   cainjectorImage: "gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-cainjector:spectro-v1.11.0-20230427"
-   // highlight-start
-   controllerImage: "harbor.docs.spectro.dev/spectro-images-public/release-fips/jetstack/cert-manager-controller:spectro-v1.11.0-20230427"
-   webhookImage: "harbor.docs.spectro.dev/spectro-images-public/release-fips/jetstack/cert-manager-webhook:spectro-v1.11.0-20230808"
-   amceResolverImage: "harbor.docs.spectro.dev/spectro-images-public/release-fips/jetstack/cert-manager-acmesolver:spectro-v1.11.0-20230427"
-   // highlight-end
-
-   featureGates: "AdditionalCertificateOutputFormats=true"
-   ```
-
-4. Update the cert-manager chart using the following command.
+3. Update the cert-manager chart using the following command.
 
    ```shell
    helm upgrade --values extras/cert-manager/values.yaml \
@@ -106,7 +76,7 @@ match your environment.
    TEST SUITE: None
    ```
 
-5. Prepare the Palette configuration file `values.yaml`. If you saved `values.yaml` used during the Palette
+4. Prepare the Palette configuration file `values.yaml`. If you saved `values.yaml` used during the Palette
    installation, you can reuse it for the upgrade. Alternatively, follow the
    [Kubernetes Installation Instructions](../../install-palette/install-on-kubernetes/install.md) to populate your
    `values.yaml`.
@@ -201,7 +171,9 @@ that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` inc
    helm ls
    ```
 
-   You should receive an output with the version and other details of the currently deployed apps.
+   You should receive an output with the version and other details of the currently deployed apps. Check the
+   `App Version` column of `cert-manager`, `image-swap`, `reach-system`, and `hubble` to verify that they have the
+   expected versions.
 
    ```shell
    NAME        	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART                   	APP VERSION
@@ -211,5 +183,50 @@ that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` inc
    hubble      	default  	2       	2024-02-22 19:47:24.085305 +0100 CET	deployed	spectro-mgmt-plane-4.2.7	4.2.7
    ```
 
-2. Check the `App Version` column of `cert-manager`, `image-swap`, `reach-system`, and `hubble` to verify that they have
-   the expected versions.
+2. Issue the following command to verify that the Palette clusters work as expected.
+
+   ```shell
+   kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
+   | grep -E '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\s'
+   ```
+
+   The command should return a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system`,
+   and `ui-system` namespaces. All deployments should have the status `Running`.
+
+   ```shell
+   cp-system       spectro-cp-ui-689984f88d-54wsw             Running
+   hubble-system   auth-85b748cbf4-6drkn                      Running
+   hubble-system   auth-85b748cbf4-dwhw2                      Running
+   hubble-system   cloud-fb74b8558-lqjq5                      Running
+   hubble-system   cloud-fb74b8558-zkfp5                      Running
+   hubble-system   configserver-685fcc5b6d-t8f8h              Running
+   hubble-system   event-68568f54c7-jzx5t                     Running
+   hubble-system   event-68568f54c7-w9rnh                     Running
+   hubble-system   foreq-6b689f54fb-vxjts                     Running
+   hubble-system   hashboard-897bc9884-pxpvn                  Running
+   hubble-system   hashboard-897bc9884-rmn69                  Running
+   hubble-system   hutil-6d7c478c96-td8q4                     Running
+   hubble-system   hutil-6d7c478c96-zjhk4                     Running
+   hubble-system   mgmt-85dbf6bf9c-jbggc                      Running
+   hubble-system   mongo-0                                    Running
+   hubble-system   mongo-1                                    Running
+   hubble-system   mongo-2                                    Running
+   hubble-system   msgbroker-6c9b9fbf8b-mcsn5                 Running
+   hubble-system   oci-proxy-7789cf9bd8-qcjkl                 Running
+   hubble-system   packsync-28205220-bmzcg                    Succeeded
+   hubble-system   spectrocluster-6c57f5775d-dcm2q            Running
+   hubble-system   spectrocluster-6c57f5775d-gmdt2            Running
+   hubble-system   spectrocluster-6c57f5775d-sxks5            Running
+   hubble-system   system-686d77b947-8949z                    Running
+   hubble-system   system-686d77b947-cgzx6                    Running
+   hubble-system   timeseries-7865bc9c56-5q87l                Running
+   hubble-system   timeseries-7865bc9c56-scncb                Running
+   hubble-system   timeseries-7865bc9c56-sxmgb                Running
+   hubble-system   user-5c9f6c6f4b-9dgqz                      Running
+   hubble-system   user-5c9f6c6f4b-hxkj6                      Running
+   ingress-nginx   ingress-nginx-controller-2txsv             Running
+   ingress-nginx   ingress-nginx-controller-55pk2             Running
+   ingress-nginx   ingress-nginx-controller-gmps9             Running
+   jet-system      jet-6599b9856d-t9mr4                       Running
+   ui-system       spectro-ui-76ffdf67fb-rkgx8                Running
+   ```

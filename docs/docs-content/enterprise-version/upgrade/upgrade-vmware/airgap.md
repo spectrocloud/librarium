@@ -15,12 +15,11 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
 Before upgrading Palette to a new major version, you must first update it to the latest minor version available. Refer
 to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for details.
 
+:::
+
 If your setup includes a PCG, you must also
 [allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
-Palette upgrade. Additionally, if the new Palette version updates Kubernetes, you need to apply the Kubernetes updates
-to your Enterprise Cluster profile.
-
-:::
+Palette upgrade.
 
 ## Prerequisites
 
@@ -32,6 +31,7 @@ to your Enterprise Cluster profile.
   - The new airgap Palette installation bin.
   - The OVA with the Operating System (OS) and Kubernetes distribution required for the Palette nodes (if the new
     version of Palette requires a new version of the OS and Kubernetes).
+- A diff or text comparison tool of your choice.
 
 ## Upgrade
 
@@ -39,7 +39,7 @@ to your Enterprise Cluster profile.
     key, your username, and the IP or domain of the airgap support VM. The default username is `ubuntu`.
 
     ```shell
-    ssh -identity_file </path/to/private/key> <username>@<vm-ip-or-domain>
+    ssh -identity_file </path/to/private/key> ubuntu@<vm-ip-or-domain>
     ```
 
     Consider the following command example for reference.
@@ -59,40 +59,17 @@ to your Enterprise Cluster profile.
     replace `<version>` with the Palette version you're downloading.
 
     ```shell
-    curl --user <username>:<password> --output airgap-<version>.bin <link-to-airgap-installation-bin>
+    curl --user <username>:<password> --output airgap-<version>.bin <url-to-airgap-installation-bin>
     ```
 
     Consider the following command example for reference.
 
     ```shell
-    curl --user <username>:<password> --output airgap-4.1.12.bin https://software-private.spectrocloud.com/airgap/4.1.12/airgap-v4.1.12.bin
+    curl --user <username>:<password> --output airgap-4.2.12.bin https://software.spectrocloud.com/airgap-v4.2.12.bin
     ```
 
 4.  Refer to the [Additional Packs](../../install-palette/airgap/supplemental-packs.md) page and update the packages you
     are currently using. You must update each package separately.
-
-    To update a package, use the following command template to download and execute the pack binary.
-
-    ```shell
-    curl --remote-name <pack-name-url> && chmod +x <pack-name-version>.bin && ./<pack-name-version>.bin
-    ```
-
-    Consider the following example for reference.
-
-    ```shell
-    curl --remote-name https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-alb-2.5.1.bin \
-      && chmod +x airgap-pack-aws-alb-2.5.1.bin \
-      && ./airgap-pack-aws-alb-2.5.1.bin
-    ```
-
-    ```shell
-    Verifying archive integrity...  100%   MD5 checksums are OK. All good.
-    Uncompressing Airgap Pack - aws-alb Version 4.0.17  100%
-    Setting up Packs
-    - Pushing Pack aws-alb:2.5.1
-    Setting up Images
-    Setup Completed
-    ```
 
 5.  Use the following command template to execute the new Palette airgap installation bin.
 
@@ -109,8 +86,6 @@ to your Enterprise Cluster profile.
 6.  After the Palette airgap binary is verified and uncompressed, it uploads the updates to your existing Palette
     instance. This step takes some time to complete.
 
-    Once the airgap binary is executed, you will receive a **Setup Completed** success message.
-
     ```shell
     Verifying archive integrity...  100%   MD5 checksums are OK. All good.
     Uncompressing Airgap Setup - Version 4.2.13  100%
@@ -123,13 +98,15 @@ to your Enterprise Cluster profile.
     Setup Completed
     ```
 
+    Once the airgap binary is executed, you will receive a **Setup Completed** success message.
+
 7.  Log in to the Palette system console.
 
 8.  From the left **Main Menu**, select **Enterprise Cluster** and then select the **Profile** tab.
 
 9.  Copy the configurations for your CSI, CNI, and Kubernetes layers to an external location for backup.
 
-    :::warning
+    :::tip
 
     If your Enterprise Cluster profile has configuration changes or additions, make sure to back up all the customized
     values to preserve them after the upgrade.
@@ -148,39 +125,38 @@ to your Enterprise Cluster profile.
 
     ![Self-hosted Palette system console with Update Management open and the Update button highlighted.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_update.webp)
 
-12. Review the changes that the upgrade introduces. If your Enterprise Cluster profile had any configuration changes or
-    additions, add them to the **Current configuration** pane and select **Confirm**.
-
-    :::warning
-
-    Make sure to transfer the configuration changes and additions in all Enterprise Cluster profile layers to preserve
-    them after the upgrade.
-
-    :::
-
-    ![Self-hosted Palette system console with the upgrade preview pane.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_upgrade-preview.webp)
-
-    The system console locks for a couple of minutes while the upgrade is applied.
+12. In the **Palette version update** preview modal, from the left menu, select the **Kubernetes** layer. The **Incoming
+    changes** pane displays the changes that the upgrade introduces. The **Current configuration** pane displays your
+    current layer configuration.
 
 :::info
 
-Proceed with the following steps if the Palette upgrade introduces a new version of Kubernetes.
+To complete the Palette upgrade, you need an external diff or text comparison tool. Proceed with the following steps
+once you have the comparison tool available next to the Palette system console.
 
 :::
 
-13. Once the system console unlocks, from the left **Main Menu**, select **Enterprise Cluster** and then select the
-    **Profile** tab.
+6. Copy the configurations from both **Incoming changes** and **Current configuration** panes to your comparison tool.
 
-14. Open each Enterprise Cluster profile layer and replace their configurations with the values you received from our
-    support team.
+7. From your current configuration, transfer only those differences that are custom to your self-hosted Palette instance
+   (for example, the `podCIDR` and `serviceClusterIpRange` values). Do not override any other changes or upgrades.
 
-The Enterprise Cluster initiates the Kubernetes upgrade and reconciles the Palette instance nodes.
+   ![Self-hosted Palette system console with the upgrade preview pane.](/enterprise-version_upgrade-upgrade_vmware_diff-checker.png)
+
+8. After you finish merging the configurations, copy the resulting configuration, and then paste it to the **Current
+   configuration** pane in the Palette system console.
+
+   ![Self-hosted Palette system console with the upgrade preview pane.](/enterprise-version_upgrade-upgrade_vmware_palette-upgrade-preview.png)
+
+9. Repeat steps six through eight for each Enterprise Cluster profile layer.
+
+10. In the bottom-right corner of the **Palette version update** preview modal, select **Confirm**.
+
+    The system console locks for a couple of minutes while the upgrade is applied.
 
 ## Validate
 
 1. Log in to the Palette system console.
 
-2. On the **Summary** page, Palette should display a message that states **You are using the latest version of
-   Palette**.
-
-   ![Self-hosted Palette system console with upgraded system.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_upgraded.webp)
+2. On the **Summary** page, Palette should display messages that state **You are using the latest version of Palette**
+   and **On-prem system console is healthy**.

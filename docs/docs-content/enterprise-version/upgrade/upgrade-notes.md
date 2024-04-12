@@ -61,10 +61,9 @@ system services update.
 
 Follow the steps below to upgrade Kubernetes.
 
-1. To obtain the upgraded Kubernetes YAML file for Palette 4.0, contact our support team by sending an email to
-   support@spectrocloud.com.
+1. Log in to the Palette system console.
 
-2. In the system console, click on **Enterprise Cluster Migration**.
+2. From the left **Main Menu**, click **Enterprise Cluster Migration**.
 
 3. Click on the **Profiles** tab, and select the Kubernetes layer. The Kubernetes YAML is displayed in the editor at
    right.
