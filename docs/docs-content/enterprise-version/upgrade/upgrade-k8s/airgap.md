@@ -27,7 +27,7 @@ Palette upgrade.
   Palette.
 
 - An OCI registry such as [Harbor](https://goharbor.io/) or [AWS ECR](https://aws.amazon.com/ecr/) configured and
-  available to store the new Palette images and packages.
+  available to store the new Palette images and packs.
 
 - Access to the latest Palette airgap setup binary. Refer to [Access Palette](/enterprise-version/#access-palette) for
   more details.
@@ -35,7 +35,7 @@ Palette upgrade.
 - [`kubectl`](https://kubernetes.io/docs/tasks/tools/#kubectl) and [`helm`](https://helm.sh/docs/intro/install/)
   available in your system.
 
-- Access to the `kubeconfig` file of the target Kubernetes cluster. You must be able to interact with the cluster
+- Access to the kubeconfig file of the target Kubernetes cluster. You must be able to interact with the cluster
   through `kubectl` and have sufficient permissions to upgrade Palette. We recommend using a role with the cluster-admin
   permissions.
 
