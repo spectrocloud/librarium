@@ -51,7 +51,7 @@ test your hardware configuration before deploying to production.
 :::warning
 
 ARM64 support is a preview feature and requires Palette version 4.0.0 or later. ARM64 support is only verified in the
-Nvdia Jetson Orin family.
+Nvidia Jetson Orin family.
 
 :::
 
