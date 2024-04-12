@@ -45,8 +45,8 @@ export default function PacksReadme() {
     const { packs } = usePluginData("plugin-packs-integrations") as PacksIntegrationsPluginData;
 
     const _packData = packs.filter((pack) => pack.fields.name === packName)[0];
-    if(_packData) {
-      setSelectedVersion(_packData.fields.versions[0].title);
+    if (_packData) {
+      setSelectedVersion(`${_packData.fields.versions[0].title}`);
       const packDataInfo: PackReadmeProps = {
         customDescription: _packData.fields.description,
         packReadme: _packData.fields.readme,
@@ -80,7 +80,7 @@ export default function PacksReadme() {
   }
 
   function versionSupportedTextRender() {
-    if(selectedVersion) {
+    if (selectedVersion) {
       const listVersion = packData.versions?.find((ver) => ver.title === selectedVersion);
       if (listVersion) {
         return (
@@ -129,8 +129,6 @@ export default function PacksReadme() {
       )
     } else if (Object.keys(packData.packReadme).length) {
       const packUid = packData.versions.find((ver) => ver.title === selectedVersion)?.packUid;
-      //const temp = someObj[field as keyof ObjectType]
-
       readme = packUid ? packData.packReadme[packUid as keyof string] : "";
       return (<Markdown children={readme} />)
     } else if (md) {
@@ -150,8 +148,8 @@ export default function PacksReadme() {
             <Select
               allowClear
               placeholder="Search"
-              onChange={(item) => versionChange(item as string)} // Cast item to string[]
-              value={selectedVersion}
+              onChange={(item) => versionChange(item as string)}
+              value={selectedVersion === packData.versions[0].title ? `${selectedVersion} (latest)` : selectedVersion}
             >
               {getOptions()}
             </Select>

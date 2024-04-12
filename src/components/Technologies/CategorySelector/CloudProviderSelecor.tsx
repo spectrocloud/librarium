@@ -3,12 +3,12 @@ import { Select } from "antd";
 import { cloudProviderTypes } from "../PackConstants";
 import styles from "./CategorySelector.module.scss";
 
-interface CategorySelectorProps {
-  selected: string; // Update the type to string[]
+interface CloudProviderSelectorProps {
+  selected: string;
   selectCloudProvider: (provider: string) => void;
 }
 
-export default function CloudProviderSelecor({ selected="", selectCloudProvider  }: CategorySelectorProps) {
+export default function CloudProviderSelecor({ selected="", selectCloudProvider  }: CloudProviderSelectorProps) {
   const getOptions = () => {
     const providers = Object.keys(cloudProviderTypes);
     const providersMap = providers.map((provider) => {

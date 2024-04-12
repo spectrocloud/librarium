@@ -1,20 +1,9 @@
 import React from "react";
 import { useLocation } from 'react-router-dom';
 import PacksReadme from "@site/src/components/PacksReadme";
-import { usePluginData } from "@docusaurus/useGlobalData";
-import PacksIntegrationsPluginData from "../Integrations/IntegrationTypes";
-import Layout from '@theme/Layout';
-import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom'
-
-interface PackInfoProps {
-  custom: any;
-};
-
+import { Switch, useRouteMatch, Redirect } from 'react-router-dom'
 
 export default function Packs(props:any) {
-  //const { packs } = usePluginData("plugin-packs-integrations") as PacksIntegrationsPluginData;
-
-  //return <PacksReadme data={packs} />;
   let match = useRouteMatch();
   const location = useLocation();
   const packName = location?.state?.id;
@@ -27,6 +16,6 @@ export default function Packs(props:any) {
           <PacksReadme />
         )
       }
-      </>
+    </>
   );
 }

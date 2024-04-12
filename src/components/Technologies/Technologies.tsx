@@ -27,7 +27,7 @@ export default function Technologies({ data }: TechnologiesProps) {
     const categoriesMap = new Map();
     data.forEach((technology) => {
       const key = technology.fields.packType;
-      if(categoriesMap.has(key)){
+      if (categoriesMap.has(key)){
         categoriesMap.get(key).push(technology.fields);
       } else {
         categoriesMap.set(key, new Array(technology.fields));
@@ -38,9 +38,9 @@ export default function Technologies({ data }: TechnologiesProps) {
     categoryKeys.forEach((category) => {
       const fields = sortedCategoriesMap.get(category);
       fields.sort((field1: any, field2: any) => {
-        if(field1.name > field2.name){
+        if (field1.name > field2.name){
           return 1;
-        } else if(field1.name < field2.name){
+        } else if (field1.name < field2.name){
           return -1;
         } else {
           return 0;
@@ -62,8 +62,8 @@ export default function Technologies({ data }: TechnologiesProps) {
   const renderPacksCategories = () => {
     let categoryKeys: string[] = Array.from(categories.keys());
     const categoryItems: JSX.Element[] = [];
-    if(selectedFilters.category.length > 0) {
-      categoryKeys = categoryKeys.filter((category: string) => { // Add type annotation for category parameter
+    if (selectedFilters.category.length > 0) {
+      categoryKeys = categoryKeys.filter((category: string) => {
         return selectedFilters.category.includes(category as never);
       });
     }
@@ -74,7 +74,7 @@ export default function Technologies({ data }: TechnologiesProps) {
           return techCard.cloudTypes.includes("all") || techCard.cloudTypes.includes(selectedFilters.provider);
         });
       }
-      //TODO: Add additional filter logic based on backend API data like community, FIPs
+
       if (selectedFilters.additionalFilters?.length && selectedFilters.additionalFilters.includes("Verified")) {
         filteredTechCards = filteredTechCards.filter((techCard: FrontMatterData) => {
           return techCard.verified;

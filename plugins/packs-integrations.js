@@ -16,11 +16,9 @@ function generateIntegrationData(allContent) {
 }
 
 function getReadMeMap(packValues) {
-  const map = new Map();
-  packValues.forEach((packValue) => {
-    map[packValue.packUid] = packValue.readme;
-  });
-  return map;
+  const generatedReadMeData = packValues.reduce((packValuesMap, packValue) =>
+    Object.assign(packValuesMap, {[packValue.packUid]: packValue.readme}), {});
+  return generatedReadMeData;
 }
 
 function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPacksData) {
@@ -35,7 +33,7 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
       const packType = packMDValue.spec.layer === "addon" ? packMDValue.spec.addonType : packMDValue.spec.layer;
       const layer = packMDValue.spec.layer === "addon" ? packMDValue.spec.addonType : packTypeNames[packMDValue.spec.layer];
       const packValues = packContent.packValues;
-      return {
+      const packValueMap = {
         fields: {
           name: packName,
           title: packMDValue.spec.displayName,
@@ -56,6 +54,7 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
           versions: getAggregatedVersions(packContent.tags, packValues, packName, layer)
         }
       };
+      return packValueMap;
     }
   });
 }
@@ -118,8 +117,6 @@ function getAggregatedVersions(tags, packValues, packName, layer) {
         packUid: version.packUid,
       };
     });
-    //console.log("roots length= ", roots.length);
-    //console.log("_sortedVersions length= ", _sortedVersions.length);
     _sortedVersions.forEach((version) => {
       const parentTags = version?.parentTags || [];
       const parent = parentTags.find(matchAmbiguousPatch);
@@ -139,17 +136,14 @@ function getAggregatedVersions(tags, packValues, packName, layer) {
         });
       }
     });
-  //console.log("roots = ", JSON.stringify(roots));
-
   return roots;
 }
 
 function generateCustomData(packsDescription) {
-  const customPackMap = new Map();
-  packsDescription.forEach((pack) => {
-    customPackMap[pack.name] = pack.description;
-  });
-  return customPackMap;
+  const generatedCustomData = packsDescription.reduce((obj, desc) =>
+   Object.assign(obj, {[desc.name]: desc.description}), {});
+  console.log("completed custom data description generation");
+  return generatedCustomData;
 }
 
 function generateRoutes(packDataMap, packsData) {
@@ -168,14 +162,11 @@ function generateRoutes(packDataMap, packsData) {
 
 async function fetchPackListItems(queryParams, packDataArr, counter) {
   const payload = {filter: { type: ["spectro", "oci"], environment:["aws"] }};
-  //const payload = {filter: { type: ["spectro", "oci"], layer: ["os", "k8s"], environment:["aws"]}}
-  //const payload = {"filter":{"displayName":{"contains":""},"ignoreCase":true,"type":["spectro"],"layer":["csi"],"environment":["openstack"],"registryUid":["5e2031962f090e2d3d8a3290"]}};
   counter+=1;
   if(counter%10 === 0) {
     await setTimeout(2000);
   }
   const response = await api.post('/v1/packs/search'+queryParams, payload);
-  //console.log("response.data.listmeta.count = ", response.data.listmeta.count);
   const tempPackArr = packDataArr.concat(response.data.items);
   if(response.data.listmeta.continue) {
     return fetchPackListItems("?limit=100&continue="+response.data.listmeta.continue, tempPackArr, counter);
@@ -189,10 +180,10 @@ async function pluginPacksAndIntegrationsData() {
     name: "plugin-packs-integrations",
     async loadContent() {
       let packDataArr = await fetchPackListItems("?limit=100", [], 0);
+      console.log("completed the fetch of all the names of the pack")
       packDataArr = packDataArr.filter((pack) => {
         return layerTypes.includes(pack.spec.layer) || (pack.spec.layer === "addon" && addOnTypes.includes(pack.spec.addonType));
       })
-      //console.log("packDataArr length = ", packDataArr.length)
       const packUrl = "v1/packs/";
       const packMDMap = new Map();
       let apiPacksData = [];
@@ -207,7 +198,6 @@ async function pluginPacksAndIntegrationsData() {
           promises.push(api.get(`${packUrl}${packData.spec.name}/registries/${packData.spec.registries[0].uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`));
           if(counter%10 === 0 || i === packDataArr.length-1) {
             await setTimeout(2000);
-            //const response2 = await Promise.all(promises);
             const results = await Promise.all(promises.map(p => p.catch(e => e)));
             const validResults = results.filter(result => !(result instanceof Error));
             apiPacksData = apiPacksData.concat(validResults.map((pack) => pack.data));
@@ -215,7 +205,7 @@ async function pluginPacksAndIntegrationsData() {
           }
         }
       }
-      //console.log("packDescription = ", packDescription);
+      console.log("completed the fetch of all the pack details");
       return {packsPaletteData: packMDMap, packsPaletteDetailsData: apiPacksData, packsDescription: packDescription} ;
     },
     async contentLoaded({ allContent, content, actions }) {
@@ -225,6 +215,7 @@ async function pluginPacksAndIntegrationsData() {
       const customPacksData = generateCustomData(packsDescription);
       const unionPackData = combineAPICustomPackData(packsPaletteData, packsPaletteDetailsData, customPacksData);
       const routes = generateRoutes(packsPaletteData, unionPackData);
+      console.log("completed the generation of the routes");
       routes.map(route => addRoute(route));
       setGlobalData({ integrations: integrationsData, packs: unionPackData });
     },
