@@ -264,7 +264,7 @@ the following sections for a complete list of features, improvements, and known 
 
 #### Pack Notes
 
-- Serveral Kubernetes versions are [deprecated](./integrations/maintenance-policy.md#pack-deprecations) and removed in
+- Several Kubernetes versions are [deprecated](./integrations/maintenance-policy.md#pack-deprecations) and removed in
   this release. Review the [Deprecation](#deprecations-and-removals) section for a list of deprecated packs.
 
 - OpenStack support is limited to Palette eXtended Kubernetes (PXK) for version 1.24.x.
