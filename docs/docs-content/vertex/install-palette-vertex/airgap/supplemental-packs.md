@@ -70,6 +70,7 @@ Review the following table to determine which pack binaries you need to download
 | `airgap-vertex-pack-kubernetes-rke2-1.28.4-rke2r1-build20231115.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.28.4-rke2r1-build20231115.bin  |
 | `airgap-vertex-pack-kubernetes-rke2-1.28.5-rke2r1-build20231220.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.28.5-rke2r1-build20231220.bin  |
 | `airgap-vertex-pack-spectro-proxy-1.3.0.bin`                          | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-spectro-proxy-1.3.0.bin                          |
+| `airgap-thirdparty-4.3.5.bin`                                         | https://software-private.spectrocloud.com/airgap/thirdparty/airgap-thirdparty-4.3.5.bin                                           |
 | `airgap-vertex-pack-ubuntu-aks-22.04.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-ubuntu-aks-22.04.bin                             |
 | `airgap-vertex-pack-ubuntu-azure-20.04.bin`                           | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-ubuntu-azure-20.04.bin                           |
 | `airgap-vertex-pack-ubuntu-vsphere-20.04.bin`                         | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-ubuntu-vsphere-20.04.bin                         |
