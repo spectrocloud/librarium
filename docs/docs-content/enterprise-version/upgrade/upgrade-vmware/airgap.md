@@ -56,7 +56,7 @@ Palette upgrade.
 
 3.  Use the following command template to download the new Palette airgap installation bin. Enter the username,
     password, and the Palette airgap installation URL you received from our support team. In the output file name,
-    replace `<version>` with the Palette version you're downloading.
+    replace `<version>` with the Palette version you are downloading.
 
     ```shell
     curl --user <username>:<password> --output airgap-<version>.bin <url-to-airgap-installation-bin>
