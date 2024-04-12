@@ -47,8 +47,6 @@ Review the following table to determine which pack binaries you need to download
 | `airgap-pack-edge-k3s-1.26.4.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.26.4.bin                              |
 | `airgap-pack-edge-k3s-1.27.11.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.27.11.bin                             |
 | `airgap-pack-edge-k3s-1.27.2.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.27.2.bin                              |
-| `airgap-pack-edge-k3s-1.27.9.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.27.9.bin                              |
-| `airgap-pack-edge-k3s-1.28.5.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.28.5.bin                              |
 | `airgap-pack-edge-k3s-1.28.7.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.28.7.bin                              |
 | `airgap-pack-edge-k3s-1.29.0.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.29.0.bin                              |
 | `airgap-pack-edge-k3s-1.29.2.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.29.2.bin                              |
@@ -111,15 +109,61 @@ our support team to [obtain the credentials](../../enterprise-version.md#access-
 how to download the `airgap-pack-aws-alb-2.5.1.bin` binary.
 
 ```bash
-curl --user XXXXX:YYYYY https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-alb-2.5.1.bin \
- --output airgap-pack-aws-alb-2.5.1.bin
+curl --user XXXXX:YYYYY https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-ebs-1.26.1.bin \
+ --output airgap-pack-csi-aws-ebs-1.26.1.bin
 ```
+
+<Tabs>
+<TabItem label="curl" value="curl">
+
+```bash
+curl --user 'XXXX:YYYY' \
+https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-ebs-1.26.1.bin \
+--output airgap-pack-csi-aws-ebs-1.26.1.bin
+```
+
+Once the download is complete, issue the following command to start the binary and the upload process. Replace the
+binary name with the one you downloaded.
+
+```bash
+chmod +x airgap-pack-csi-aws-ebs-1.26.1.bin && \
+./airgap-pack-csi-aws-ebs-1.26.1.bin
+```
+
+</TabItem>
+
+<TabItem label="wget" value="wget">
+
+```shell
+wget --user='XXXX' --password='YYYY' \
+--output-document=airgap-pack-csi-aws-ebs-1.26.1.bin \
+https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-ebs-1.26.1.bin
+```
+
+Once the download is complete, issue the following command to start the binary and the upload process. Replace the
+binary name with the one you downloaded.
+
+```bash
+chmod +x airgap-pack-csi-aws-ebs-1.26.1.bin && \
+./airgap-pack-csi-aws-ebs-1.26.1.bin
+```
+
+</TabItem> 
+</Tabs>
 
 :::info
 
 All binaries require the OCI environment variables to be set and for the registry credentials to be available.
 
 :::
+
+## Conformance Capabilities
+
+In an airgap installation, you need to upload the conformance packs to the self-hosted OCI registry. The conformance
+binary contains the packs required to use the [Compliance Scan](../../../clusters/cluster-management/compliance-scan.md)
+capabilities. The conformance binary can be found in the pack table above. The binary has the prefix
+`airgap-thirdparty-`. Follow the [Usage Instructions](#usage-instructions) to upload the conformance packs to the OCI
+registry.
 
 ## Additional OVAs
 
@@ -134,9 +178,7 @@ use for the workload clusters.
 | Kubernetes 1.26.12     | u-2204-0-k-12612-0      | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12612-0.ova`      |
 | Kubernetes 1.27.1      | u-2204-0-k-1271-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1271-0.ova`       |
 | Kubernetes 1.27.2      | u-2204-0-k-1272-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1272-0.ova`       |
-| Kubernetes 1.27.9      | u-2204-0-k-1279-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1279-0.ova`       |
 | Kubernetes 1.28.2      | u-2204-0-k-1282-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1282-0.ova`       |
-| Kubernetes 1.28.5      | u-2204-0-k-1285-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1285-0.ova`       |
 | Kubernetes 1.29.0      | u-2204-0-k-1290-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1290-0.ova`       |
 | RKE2 1.26.11           | u-2204-0-k-rke2-12611-0 | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-rke2-12611-0.ova` |
 | RKE2 1.26.12           | u-2204-0-k-rke2-12612-0 | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-rke2-12612-0.ova` |
