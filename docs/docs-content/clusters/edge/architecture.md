@@ -11,8 +11,6 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 - Kubernetes is natively installed on the host.
 
-- Support for AMD64 and ARM64 architectures.
-
 - Support for bare metal and virtualized edge devices.
 
 - Customizable site properties such as network proxies and certificates.
@@ -54,7 +52,8 @@ test your hardware configuration before deploying to production.
 
 :::warning
 
-ARM64 support is a preview feature and requires Palette version 4.0.0 or later.
+ARM64 support is a preview feature and requires Palette version 4.0.0 or later. ARM64 support is only verified for the
+Nvidia Jetson Orin device family.
 
 :::
 
@@ -82,8 +81,6 @@ table below describes these aspects and the available options.
 | FIPS Mode                         | - True: Enforce usage of FIPS packs and other required FIPS configuration to meet FIPS compliance<br/>- False                                                                                                                                                                                                                                                                                                                                                                            |
 | Edge Host Registration Mode       | - Manual: A unique Edge host ID is manually entered into the Palette Management Console <br/> - Auto: Edge hosts automatically register with the Palette through the usage of a registration token supplied in the use-data<br/>- QR Code: Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry. |
 | Edge Host Type - Installer Format | Create an ISO image that contains all your dependencies and custom configurations.                                                                                                                                                                                                                                                                                                                                                                                                       |
-
-<br />
 
 ## Kubernetes Defaults
 
@@ -114,5 +111,3 @@ cluster:
    Disable:
      - metrics-server
 ```
-
-<br />
