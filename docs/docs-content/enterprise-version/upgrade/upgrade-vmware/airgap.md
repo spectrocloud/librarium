@@ -141,12 +141,12 @@ once you have the comparison tool available next to the Palette system console.
 7. From your current configuration, transfer only those differences that are custom to your self-hosted Palette instance
    (for example, the `podCIDR` and `serviceClusterIpRange` values). Do not override any other changes or upgrades.
 
-   ![Self-hosted Palette system console with the upgrade preview pane.](/enterprise-version_upgrade-upgrade_vmware_diff-checker.png)
+   ![Self-hosted Palette system console with the upgrade preview pane.](/enterprise-version_upgrade-upgrade_vmware_diff-checker.webp)
 
 8. After you finish merging the configurations, copy the resulting configuration, and then paste it to the **Current
    configuration** pane in the Palette system console.
 
-   ![Self-hosted Palette system console with the upgrade preview pane.](/enterprise-version_upgrade-upgrade_vmware_palette-upgrade-preview.png)
+   ![Self-hosted Palette system console with the upgrade preview pane.](/enterprise-version_upgrade-upgrade_vmware_palette-upgrade-preview.webp)
 
 9. Repeat steps six through eight for each Enterprise Cluster profile layer.
 
