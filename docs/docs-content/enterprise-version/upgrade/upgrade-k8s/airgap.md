@@ -35,8 +35,8 @@ Palette upgrade.
 - [`kubectl`](https://kubernetes.io/docs/tasks/tools/#kubectl) and [`helm`](https://helm.sh/docs/intro/install/)
   available in your system.
 
-- Access to the kubeconfig file of the target Kubernetes cluster. You must be able to interact with the cluster
-  through `kubectl` and have sufficient permissions to upgrade Palette. We recommend using a role with the cluster-admin
+- Access to the kubeconfig file of the target Kubernetes cluster. You must be able to interact with the cluster through
+  `kubectl` and have sufficient permissions to upgrade Palette. We recommend using a role with the cluster-admin
   permissions.
 
 - `unzip` or a similar tool available in your system.
@@ -101,11 +101,11 @@ Palette upgrade.
         aws ecr get-login-password --region <ecr-region> | oras login --username AWS --password-stdin <aws-account-id>.dkr.ecr.<ecr-region>.amazonaws.com
         ```
 
-      Consider the following example for reference.
+        Consider the following example for reference.
 
-      ```shell
-      aws ecr get-login-password --region us-east-1 | oras login --username AWS --password-stdin 123456789.dkr.ecr.us-east-1.amazonaws.com
-      ```
+        ```shell
+        aws ecr get-login-password --region us-east-1 | oras login --username AWS --password-stdin 123456789.dkr.ecr.us-east-1.amazonaws.com
+        ```
 
     - Authenticate with your public `spectro-images` registry:
 
@@ -116,11 +116,11 @@ Palette upgrade.
         aws ecr-public get-login-password --region <ecr-region> | docker login --username AWS --password-stdin <public-ecr-url>
         ```
 
-      Consider the following example for reference.
+        Consider the following example for reference.
 
-      ```shell
-      aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/dfa987f
-      ```
+        ```shell
+        aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/dfa987f
+        ```
 
     </TabItem>
 

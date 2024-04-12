@@ -26,8 +26,8 @@ Palette upgrade.
 - [`kubectl`](https://kubernetes.io/docs/tasks/tools/#kubectl) and [`helm`](https://helm.sh/docs/intro/install/)
   available in your system.
 
-- Access to the kubeconfig file of the target Kubernetes cluster. You must be able to interact with the cluster
-  through `kubectl` and have sufficient permissions to upgrade Palette. We recommend using a role with the cluster-admin
+- Access to the kubeconfig file of the target Kubernetes cluster. You must be able to interact with the cluster through
+  `kubectl` and have sufficient permissions to upgrade Palette. We recommend using a role with the cluster-admin
   permissions.
 
 - `unzip` or a similar tool available in your system.
