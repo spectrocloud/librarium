@@ -39,7 +39,7 @@ fi
 BROKEN_LINK_COUNT=0
 
 # Format comment with JSON content
-COMMENT=":loudspeaker: Broken Docs Links in Production Report :spectro: \n\n This is the weekly report of broken links in production. Please review the report and make the required changes. \n\n *Note*: Some links may be false positives due to redirects behavior.\n\n"
+COMMENT=":loudspeaker: Broken External Docs Links in Production Report :spectro: \n\n This is the weekly report of broken links in production. Please review the report and make the required changes. \n\n *Note*: Some links may be false positives due to redirects behavior.\n\n"
 
 # Loop through the "links" array and concatenate each item into the COMMENT variable
 for link in $(echo "${JSON_CONTENT}" | jq -r '.links[] | @base64'); do
@@ -57,7 +57,7 @@ done
 
 # Check if no broken links are found
 if [[ "$BROKEN_LINK_COUNT" -eq 0 ]]; then
-  COMMENT=":tada: No broken links found in the production report :tada:\n\nGreat job team! Keep up the good work!\n\nSource: :github: - librarium"
+  COMMENT=":tada: No broken external links found in the production report :tada:\n\nGreat job team! Keep up the good work!\n\nSource: :github: - librarium"
 else
   # Add broken link count to the comment
   COMMENT="${COMMENT}\n\n Total count of broken URLs: ${BROKEN_LINK_COUNT}\n\n Source: :github: - librarium"
