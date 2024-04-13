@@ -171,3 +171,47 @@ log.
 2. Contact your VMware administrator if you are missing any of the required permissions.
 
 3. Delete the existing PCG cluster and redeploy a new one so that the new permissions take effect.
+
+## Scenario - VMware Resources Remain After Cluster Deletion
+
+In the scenario where a VMWare workload cluster is deleted and later re-created with the same name, the resources from
+the previous cluster may not be fully cleaned up. This can cause the new cluster to fail to provision. To address this
+issue, you must manually clean up the resources from the previous cluster. Use the following steps for guidance.
+
+:::info
+
+If you are using the System PCG for VMware cluster deployments, follow the same steps below but target the self-hosted
+Palette or VerteX cluster instead when issuing the kubectl command. You will need access to the kubeconfig file for the
+self-hosted Palette or VerteX cluster. Reach out to your Palette system administrator for the kubeconfig file.
+
+:::
+
+### Debug Steps
+
+1. Open a terminal session and ensure you have the [kubectl command-line tool](https://kubernetes.io/docs/tasks/tools/)
+   installed.
+
+2. Download the kubeconfig file for the PCG cluster from Palette. The kubeconfig file contains the necessary
+   configuration details to access the Kubernetes cluster.
+
+   :::tip
+
+   You can find the kubeconfig file in the PCG cluster's details page in Palette. Navigate to the left **Main Menu** and
+   select **Tenant Settings**. From the **Tenant settings Menu**, select **Private Cloud Gateways**. Select the PCG
+   cluster that is deployed in the VMware environment to access the details page.
+
+   :::
+
+3. Setup kubectl to use the kubeconfig file you downloaded in the previous step. Check out the
+   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) page to learn how to set up kubectl.
+
+   ```bash
+   export KUBECONFIG=[path_to_kubeconfig]
+   ```
+
+4. Issue the following command to remove the remaining cluster resources. Replace `<cluster-name>` with the name of the
+   cluster you removed.
+
+   ```bash
+   kubectl delete VSphereFailureDomain  <cluster-name>
+   ```

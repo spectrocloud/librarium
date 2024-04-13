@@ -38,8 +38,8 @@ experience problems with Kubernetes.
 - An external volume that can be flashed with the Edge installer ISO. For example, a USB drive.
 
 - This how-to uses the EdgeForge workflow to build artifacts used to provision Edge hosts. Review
-  [EdgeForge Workflow](../edgeforge-workflow/palette-canvos.md) to become familiar with how to build EdgeForge
-  artifacts.
+  [EdgeForge Workflow](../edgeforge-workflow/palette-canvos/palette-canvos.md) to become familiar with how to build
+  EdgeForge artifacts.
 
 ## Use Tailscale to Remotely Connect to Your Edge Cluster
 
@@ -87,7 +87,7 @@ experience problems with Kubernetes.
 
 3.  Review the **.arg.template** file containing the customizable arguments and create an **.arg** file. Below is a
     command you can use to create an example **.arg** file. For more information, refer to the
-    [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md) guide.
+    [Build Edge Artifacts](../edgeforge-workflow/palette-canvos/palette-canvos.md) guide.
 
     ```bash
     cat << EOF > .arg
@@ -195,7 +195,7 @@ experience problems with Kubernetes.
     ```
 
 8.  Afterward, push the provider images to an image registry. For more information, refer to
-    [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md).
+    [Build Edge Artifacts](../edgeforge-workflow/palette-canvos/palette-canvos.md).
 
 9.  Flash your external volume with the Edge installer ISO image. You can use [balena etcher](https://etcher.balena.io/)
     or any other tool of your choice to flash your volume.

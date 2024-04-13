@@ -13,8 +13,6 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/kubernetes-rke2/blobs/sha256:
 the U.S. Federal Government sector. To meet the Kubernetes security and compliance goals required by the U.S. Federal
 Government, RKE2 establishes the following:
 
-<br />
-
 1. Provides defaults and configuration options that allow clusters to pass the CIS Kubernetes Benchmark v1.6 with
    minimal operator intervention.
 
@@ -38,10 +36,9 @@ the respective owner. Once we stop supporting the minor version, we initiate the
 
 The following RKE2 versions are supported to work with Palette.
 
-<br />
-
 <Tabs queryString="versions">
-<TabItem label="1.28.x" value="k8s_rke2_1.28.x">
+
+<TabItem label="1.29.x" value="k8s_rke2_1.29.x">
 
 ## Prerequisites
 
@@ -63,7 +60,41 @@ guide to learn more.
 RKE2 offers several customization options, ranging from networking to security. We recommend you review the following
 RKE2 documentation:
 
-<br />
+- [Configuration Options](https://docs.rke2.io/install/configuration)
+
+- [Inbound Network Rules](https://docs.rke2.io/install/requirements#inbound-network-rules)
+
+- [Registries Configuration](https://docs.rke2.io/install/containerd_registry_configuration)
+
+- [Advanced Options](https://docs.rke2.io/advanced)
+
+Many of the Day-2 cluster management responsibilities are handled by Palette. Review the
+[Cluster Management](../clusters/cluster-management/cluster-management.md) reference resource to learn more about
+Palette and Day-2 operations.
+
+</TabItem>
+
+<TabItem label="1.28.x" value="k8s_rke2_1.28.x">
+
+## Prerequisites
+
+- A Linux operating system. Refer to the official [RKE2 requirements](https://docs.rke2.io/install/requirements) for
+  more details on supported Linux distributions and versions.
+
+- 8 GB Memory
+
+- 4 CPU
+
+- An Edge host. Refer to the [Edge](../clusters/edge/edge.md) documentation to learn more about Edge.
+
+## Usage
+
+You can add RKE2 to an Edge cluster profile as the Kubernetes layer. Refer to the
+[Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
+guide to learn more.
+
+RKE2 offers several customization options, ranging from networking to security. We recommend you review the following
+RKE2 documentation:
 
 - [Configuration Options](https://docs.rke2.io/install/configuration)
 
@@ -100,81 +131,6 @@ guide to learn more.
 RKE2 offers several customization options, ranging from networking to security. We recommend you review the following
 RKE2 documentation:
 
-<br />
-
-- [Configuration Options](https://docs.rke2.io/install/configuration)
-
-- [Inbound Network Rules](https://docs.rke2.io/install/requirements#inbound-network-rules)
-
-- [Registries Configuration](https://docs.rke2.io/install/containerd_registry_configuration)
-
-- [Advanced Options](https://docs.rke2.io/advanced)
-
-Many of the Day-2 cluster management responsibilities are handled by Palette. Review the
-[Cluster Management](../clusters/cluster-management/cluster-management.md) reference resource to learn more about
-Palette and Day-2 operations.
-
-</TabItem>
-<TabItem label="1.26.x" value="k8s_rke2_1.26.x">
-
-## Prerequisites
-
-- A Linux operating system. Refer to the official [RKE2 requirements](https://docs.rke2.io/install/requirements) for
-  more details on supported Linux distributions and versions.
-
-- 8 GB Memory
-
-- 4 CPU
-
-- An Edge host. Refer to the [Edge](../clusters/edge/edge.md) documentation to learn more about Edge.
-
-## Usage
-
-You can add RKE2 to an Edge cluster profile as the Kubernetes layer. Refer to the
-[Create an Infrastructure Profile](../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
-guide to learn more.
-
-RKE2 offers several customization options, ranging from networking to security. We recommend you review the following
-RKE2 documentation:
-
-<br />
-
-- [Configuration Options](https://docs.rke2.io/install/configuration)
-
-- [Inbound Network Rules](https://docs.rke2.io/install/requirements#inbound-network-rules)
-
-- [Registries Configuration](https://docs.rke2.io/install/containerd_registry_configuration)
-
-- [Advanced Options](https://docs.rke2.io/advanced)
-
-Many of the Day-2 cluster management responsibilities are handled by Palette. Review the
-[Cluster Management](../clusters/cluster-management/cluster-management.md) reference resource to learn more about
-Palette and Day-2 operations.
-
-</TabItem>
-<TabItem label="1.25.x" value="k8s_rke2_1.25.x">
-
-## Prerequisites
-
-- A Linux operating system. Refer to the official [RKE2 requirements](https://docs.rke2.io/install/requirements) for
-  more details on supported Linux distributions and versions.
-
-- 8 GB Memory
-
-- 4 CPU
-
-- An Edge host. Refer to the [Edge](../clusters/edge/edge.md) documentation to learn more about Edge.
-
-## Usage
-
-You can add RKE2 to an Edge cluster profile as the Kubernetes layer. To learn more, refer to the
-[Create Cluster Profiles](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide.
-
-RKE2 offers several customization options, ranging from networking to security. We recommend you review the following
-RKE2 documentation:
-
-<br />
-
 - [Configuration Options](https://docs.rke2.io/install/configuration)
 
 - [Inbound Network Rules](https://docs.rke2.io/install/requirements#inbound-network-rules)
@@ -191,7 +147,7 @@ Palette and Day-2 operations.
 
 <TabItem label="Deprecated" value="k8s_rke2_deprecated">
 
-All version of RKE2 prior to 1.25.x are deprecated and no longer supported by Palette. We recommend you upgrade to a
+All version of RKE2 prior to 1.27.x are deprecated and no longer supported by Palette. We recommend you upgrade to a
 supported version of RKE2.
 
 </TabItem>
