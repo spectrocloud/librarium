@@ -27,10 +27,10 @@ the row of the node you want to scan, and select **Turn off maintenance mode**.
 ## Airgap Environment
 
 If you are using self-hosted Palette or VerteX in an airgap environment, you must ensure the conformance packs are
-available in the self-hosted OCI registry. Refer to the
+available in the self-hosted OCI registry before triggering scans. Refer to the
 [Palette Supplemental Packs](../../enterprise-version/install-palette/airgap/supplemental-packs.md#conformance-capabilities)
 page or the
-[Vertex Supplemental Packs](../../vertex/install-palette-vertex/airgap/supplemental-packs.md#conformance-capabilities)
+[VerteX Supplemental Packs](../../vertex/install-palette-vertex/airgap/supplemental-packs.md#conformance-capabilities)
 page for guidance on how to upload the conformance packs to the self-hosted OCI registry.
 
 ## Configuration Security

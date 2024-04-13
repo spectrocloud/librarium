@@ -361,9 +361,9 @@ the following sections for a complete list of features, improvements, and known 
   - Exceptions - OpenStack and PXK 1.24 packs have been reverted to _Deprecated_ state from _Disabled_ state. EKS 1.24
     is also back in deprecated state as support has been extended by AWS.
 
-- An upstream issue in K3S could prevent cluster from starting up sucesfully when a node is rebooted. This issue can be
+- An upstream issue in K3s could prevent clusters from starting up successfully when a node is rebooted. This issue can be
   potentially be seen in patch versions 1.26.10, 1.26.4, 1.26.8 for 1.26, 1.27.2 ,1.27.5 and 1.27.7 for 1.27 and 1.28.2,
   1.28.4 for 1.28. All these versions have been deprecated. We recommend you use Kubernetes versions 1.26.14, 1.27.11 or
-  1.28.7 as these versions the fix for the upstream issue.
+  1.28.7 as these versions contain the fix for the upstream issue.
 
 - Check out the [Deprecated Packs](integrations/deprecated-packs.md) page for a list of all deprecated packs.
