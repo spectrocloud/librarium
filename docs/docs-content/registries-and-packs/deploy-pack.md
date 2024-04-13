@@ -343,7 +343,9 @@ server later in this tutorial. The screenshot below shows the registry server su
 
 ![Screenshot of registry server exposed via ngrok](/tutorials/deploy-pack/registries-and-packs_deploy-pack_ngrok-start.webp)
 
-<br />
+Check if the registry server is accessible from outside the tutorial container by visiting the `/health` endpoint. Open
+your browser and go to `https://Your-URL-Here/health`, replacing the base URL with the Ngrok URL output. You should get
+a `{"status":"UP"}` response.
 
 Verify the registry server is accessible from outside the tutorials container by visiting the `/health` endpoint. Access
 the _https://Your-URL-Here/health_ in your host browser. Replace the base URL with the Ngrok URL output you received.
