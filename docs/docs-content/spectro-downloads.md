@@ -25,10 +25,10 @@ the [Palette CLI](/palette-cli/install-palette-cli) document for installation gu
 
 | Version | Operating System                                                                      | Checksum (SHA256)                                                  |
 | ------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| 4.3.4   | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.3.4/linux/cli/palette) | `853bfc7340a87e779010a700407c9f1e40728a07578edd5347fa68562284db33` |
+| 4.3.7   | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.3.7/linux/cli/palette) | `3728ee52b68aa3569bb5816de4b28f92414ee4fa5f43a9c7507a0abc5bbbc23e` |
 
 ## Palette Edge CLI
 
 | Version | Operating System                                                                      | Checksum (SHA256)                                                  |
 | ------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| 4.3.2   | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.3.2/cli/linux/palette-edge) | `c424a9e72019e1e62f7ac8268e565984702e5783beba93f06ba698b0a37b521a` |
+| 4.3.2   | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.3.2/cli/linux/palette-edge) | `5e9082e090d643f486eec29e029713e40a4d9ab75978a438d1c6d4ad2500b90d` |
