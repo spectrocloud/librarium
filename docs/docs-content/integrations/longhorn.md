@@ -123,7 +123,7 @@ when learning how to use Longhorn.
 
 - [How to Create Volumes](https://longhorn.io/docs/1.4.4/volumes-and-nodes/create-volumes/).
 
-- [Access the Longhorn UI](https://longhorn.io/docs/1.4.4/deploy/accessing-the-ui/)
+- [Access the Longhorn UI](https://longhorn.io/docs/latest/deploy/accessing-the-ui/#accessing-the-longhorn-ui)
 
 - [Longhorn Networking](https://longhorn.io/docs/1.4.4/references/networking/)
 
@@ -175,7 +175,7 @@ when learning how to use Longhorn.
 
 - [How to Create Volumes](https://longhorn.io/docs/1.4.4/volumes-and-nodes/create-volumes/).
 
-- [Access the Longhorn UI](https://longhorn.io/docs/1.4.4/deploy/accessing-the-ui/)
+- [Access the Longhorn UI](https://longhorn.io/docs/latest/deploy/accessing-the-ui/#accessing-the-longhorn-ui)
 
 - [Longhorn Networking](https://longhorn.io/docs/1.4.4/references/networking/)
 
