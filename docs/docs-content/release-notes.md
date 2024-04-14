@@ -188,6 +188,12 @@ the following sections for a complete list of features, improvements, and known 
 
 - Edge clusters on Edge hosts with ARM64 processors may experience instability issues that causes cluster failures.
 
+- During the cluster provisioning process of new edge clusters, the palette webhook pods may not always deploy
+  successfully, causing the cluster to be stuck in the provisioning phase. This issue does not impact deployed clusters.
+  Review the
+  [Palette Webhook Pods Fail to Start](./troubleshooting/edge.md#scenario---palette-webhook-pods-fail-to-start)
+  troubleshooting guide for resolution steps.
+
 ### Virtual Machine Orchestrator (VMO)
 
 #### Improvements
@@ -356,7 +362,7 @@ the following sections for a complete list of features, improvements, and known 
   - AKS
 
   Kubernetes versions for GKE and AKS prior to verison 1.25 are removed as they are no longer available upstream. AKS
-  1.26 is deprecated as it reached End of Life (EOL).
+  1.26 is deprecated as it reached End Of Life (EOL).
 
   - Exceptions - OpenStack and PXK 1.24 packs have been reverted to _Deprecated_ state from _Disabled_ state. EKS 1.24
     is also back in deprecated state as support has been extended by AWS.
