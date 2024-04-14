@@ -50,8 +50,18 @@ Longhorn provides these features:
 - Backup to secondary storage (NFSv4 or S3-compatible object storage) built on change block detection.
 - Recurring snapshot and backup.
 
-For more information, check out Longhorn guide on
-[How to Create Volumes](https://longhorn.io/docs/1.4.0/volumes-and-nodes/create-volumes/).
+- [Access the Longhorn UI](https://longhorn.io/docs/latest/deploy/accessing-the-ui/#accessing-the-longhorn-ui)
+
+- [Longhorn Networking](https://longhorn.io/docs/1.4.4/references/networking/)
+
+- [Node Maintenance and Kubernetes Upgrade Guide](https://longhorn.io/docs/1.4.4/volumes-and-nodes/maintenance/)
+
+- [Storage Tags](https://longhorn.io/docs/1.4.4/volumes-and-nodes/storage-tags/)
+
+- [Important Notes](https://longhorn.io/docs/1.4.4/deploy/important-notes/)
+
+We also recommend you check out the [Examples](https://longhorn.io/docs/1.4.4/references/examples/) section of the
+Longhorn documentation. The examples section contains several use cases of how to configure Longhorn.
 
 </TabItem>
 
@@ -84,8 +94,18 @@ Longhorn provides these features:
 - Backup to secondary storage (NFSv4 or S3-compatible object storage) built on change block detection.
 - Recurring snapshot and backup.
 
-For more information, check out Longhorn guide on
-[How to Create Volumes](https://longhorn.io/docs/1.4.0/volumes-and-nodes/create-volumes/).
+- [Access the Longhorn UI](https://longhorn.io/docs/latest/deploy/accessing-the-ui/#accessing-the-longhorn-ui)
+
+- [Longhorn Networking](https://longhorn.io/docs/1.4.4/references/networking/)
+
+- [Node Maintenance and Kubernetes Upgrade Guide](https://longhorn.io/docs/1.4.4/volumes-and-nodes/maintenance/)
+
+- [Storage Tags](https://longhorn.io/docs/1.4.4/volumes-and-nodes/storage-tags/)
+
+- [Important Notes](https://longhorn.io/docs/1.4.4/deploy/important-notes/)
+
+We also recommend you check out the [Examples](https://longhorn.io/docs/1.4.4/references/examples/) section of the
+Longhorn documentation. The examples section contains several use cases of how to configure Longhorn.
 
 </TabItem>
 </Tabs>

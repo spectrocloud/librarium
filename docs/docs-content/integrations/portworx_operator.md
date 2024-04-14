@@ -533,7 +533,7 @@ vsphereSecret:
 
 To activate the Pure Flash Array integration, you will need to create a Kubernetes secret named `px-pure-secret` on your
 cluster containing your
-[Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/cloud-references/auto-disk-provisioning/pure-flash-array.html#deploy-portworx).
+[Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/install-portworx/kubernetes/install-flasharray.html#create-a-json-configuration-file).
 The secret must be created in the namespace that contains the `StorageCluster` resource. The namespace is `portworx` by
 default.
 
@@ -1142,7 +1142,7 @@ vsphereSecret:
 
 To activate the Pure Flash Array integration, you will need to create a Kubernetes secret named `px-pure-secret` on your
 cluster containing your
-[Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/cloud-references/auto-disk-provisioning/pure-flash-array.html#deploy-portworx).
+[Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/install-portworx/kubernetes/install-flasharray.html#create-a-json-configuration-file).
 The secret must be created in the namespace that contains the `StorageCluster` resource. The namespace is `kube-system`
 by default.
 
@@ -1733,7 +1733,7 @@ vsphereSecret:
 
 To activate the Pure Flash Array integration, you will need to create a Kubernetes secret named `px-pure-secret` on your
 cluster containing your
-[Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/cloud-references/auto-disk-provisioning/pure-flash-array.html#deploy-portworx).
+[Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/install-portworx/kubernetes/install-flasharray.html#create-a-json-configuration-file).
 The secret must be created in the namespace that contains the `StorageCluster` resource. The namespace is `kube-system`
 by default.
 
@@ -1916,4 +1916,4 @@ data "spectrocloud_pack_simple" "portworx-operator" {
 
 - [Portworx Central](https://docs.portworx.com/portworx-central-on-prem/install/px-central.html)
 
-- [Flash Array License JSON](https://docs.portworx.com/portworx-enterprise/cloud-references/auto-disk-provisioning/pure-flash-array.html#deploy-portworx)
+- [Flash Array License JSON](https://docs.portworx.com/portworx-enterprise/install-portworx/kubernetes/install-flasharray.html#create-a-json-configuration-file)

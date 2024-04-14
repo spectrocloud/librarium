@@ -155,7 +155,7 @@ pdf-local: ## Generate PDF from local docs
 verify-url-links:
 	@echo "Checking for broken external URLs in markdown files..."
 	rm link_report.csv || echo "No report exists. Proceeding to scan step"
-	@npx linkinator "docs/**/*.md" --markdown --recurse --timeout 60000 --retry --retry-errors-count 3 \
+	@npx linkinator "docs/**/*.md" --markdown --recurse --timeout 60000 --retry --retry-errors-jitter --retry-errors-count 3 \
 		--skip "^https:\/\/docs\.spectrocloud\.com.*$$" \
 		--skip "^https:\/\/docs\.spectrocloud\.com\/.*\/supplemental\-packs$$" \
 		--skip "^http:\/\/docs\.spectrocloud\.com.*$$" \
@@ -163,6 +163,9 @@ verify-url-links:
 		--skip "^\/.*\.md$$" \
 		--skip "!\[.*\]\(.*\)$$" \
 		--skip "\.(jpg|jpeg|png|gif|webp)$$" \
+		--skip "https:\/\/linux\.die\.net\/man\/.*$$" \
+		--skip "https:\/\/mysql\.com\/.*\.*$$" \
+		--skip "https:\/\/dev\.mysql\.com\/doc/\.*$$" \
 		--format csv > temp_report.csv && sleep 2
 	@grep -E 'https?://' temp_report.csv > filtered_report.csv
 	@grep -E ',[[:space:]]*([4-9][0-9]{2}|[0-9]{4,}),' filtered_report.csv > link_report.csv && rm temp_report.csv filtered_report.csv
@@ -171,10 +174,16 @@ verify-url-links-ci: ## Check for broken URLs in production in a GitHub Actions 
 	@echo "Checking for broken external URLs in CI environment..."
 	rm link_report.json || echo "No report exists. Proceeding to scan step"
 	@npx linkinator "docs/**/*.md" --markdown --recurse --timeout 60000 --retry --retry-errors-count 3 \
-		--skip '^https:\/\/docs\.spectrocloud\.com.*' \
-		--skip '^https:\/\/docs\.spectrocloud\.com\/.*\/supplemental\-packs' \
-		--skip '^http:\/\/docs\.spectrocloud\.com.*' \
-		--skip '^https:\/\/software-private\.spectrocloud\.com.*' \
+		--skip "^https:\/\/docs\.spectrocloud\.com.*$$" \
+		--skip "^https:\/\/docs\.spectrocloud\.com\/.*\/supplemental\-packs$$" \
+		--skip "^http:\/\/docs\.spectrocloud\.com.*$$" \
+		--skip "^https:\/\/software-private\.spectrocloud\.com.*$$" \
+		--skip "^\/.*\.md$$" \
+		--skip "!\[.*\]\(.*\)$$" \
+		--skip "\.(jpg|jpeg|png|gif|webp)$$" \
+		--skip "https:\/\/linux\.die\.net\/man\/.*$$" \
+		--skip "https:\/\/mysql\.com\/.*\.*$$" \
+		--skip "https:\/\/dev\.mysql\.com\/doc/\.*$$" \
 		--format json > temp_report.json
 	@# Use jq to filter out links that do not start with http or https and keep only broken links
 	@jq '[.links[] | select(.url | test("^https?://")) | select(.status >= 400)]' temp_report.json > filtered_report.json
