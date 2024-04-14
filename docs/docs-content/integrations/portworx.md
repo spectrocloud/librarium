@@ -72,7 +72,7 @@ The default installation of Portworx will deploy the following components in the
 - [Lighthouse](https://portworx.com/blog/manage-portworx-clusters-using-lighthouse/)
 
 - [Stork](https://github.com/libopenstorage/stork) and
-  [Stork on Portworx](https://docs.portworx.com/portworx-install-with-kubernetes/storage-operations/stork/)
+  [Stork on Portworx](https://docs.portworx.com/portworx-enterprise/platform/openshift/ocp-gcp/operations/storage-operations/stork.html)
 
 - Storage class making use of portworx-volume provisioner.
 
@@ -527,8 +527,6 @@ manifests:
 
 - [Portworx Install with Kubernetes](https://docs.portworx.com/portworx-install-with-kubernetes/)
 
-- [Lighthouse](https://legacy-docs.portworx.com/enterprise/lighthouse-new.html)
-
 - [Installation Prerequisites](https://docs.portworx.com/install-portworx/prerequisites/)
 
-- [Install Portworx on AWS ASG using the DaemonSet](https://docs.portworx.com/install-portworx/cloud/aws/aws-asg/daemonset/)
+- [Install Portworx on AWS ASG](https://docs.portworx.com/portworx-enterprise/install-portworx/kubernetes/aws/aws-asg)

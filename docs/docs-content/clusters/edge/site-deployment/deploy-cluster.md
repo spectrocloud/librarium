@@ -78,7 +78,7 @@ The Linux machine must have network connectivity to your VMware vCenter environm
   - 8 GB memory
   - 50 GB storage
 
-- [Git](https://cli.github.com/manual/installation). Ensure git installation by issuing the `git --version` command.
+- [Git](https://git-scm.com/downloads). Ensure git installation by issuing the `git --version` command.
 
 - [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
   command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
@@ -507,7 +507,7 @@ is an explanation of the options and sub-command used below:
 - The
   `sh -c "source /edge/vmware/clone_vm_template/setenv.sh && bash /edge/vmware/clone_vm_template/delete-packer-cache.sh"`
   shell sub-command deletes any pre-existing **packer_cache**. A known
-  [issue]((https://github.com/hashicorp/packer-plugin-vsphere/issues/55) with the Packer vSphere plugin causes checksum
+  [issue](https://github.com/hashicorp/packer-plugin-vsphere/issues/55) with the Packer vSphere plugin causes checksum
   logic to ignore previous builds, and reuse previously created ISO found in the **packer_cache** folder. The delete
   script removes any existing packer cache to prevent re-using a previously created ISO.
 
