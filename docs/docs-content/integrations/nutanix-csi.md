@@ -36,9 +36,8 @@ platform with Kubernetes by implementing a node controller function.
 
 ## Parameters
 
-The table below lists commonly used parameters you can configure when adding the Nutanix CSI pack. Review the
-[Nutanix CSI Pack](https://github.com/spectrocloud/pax/edit/master/stable/storage/nutanix-csi-2.6.6/README.md) GitHub
-page for a complete parameters list.
+The table below lists commonly used parameters you can configure when adding the Nutanix CSI pack. Review the Nutanix
+CSI Pack README for a complete list of parameters.
 
 | **Parameter**                                   | **Description**                                                                                                        | **Default**      |
 | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------- |
@@ -102,4 +101,3 @@ data "spectrocloud_pack_simple" "nutanix-csi" {
 - [Nutanix Documentation](https://www.nutanixbible.com)
 - [Nutanix Cloud Controller Manager on GitHub](https://github.com/nutanix-cloud-native/cloud-provider-nutanix)
 - [Nutanix CSI Volume Driver Documentation](https://portal.nutanix.com/page/documents/details?targetId=CSI-Volume-Driver-v2_6:CSI-Volume-Driver-v2_6)
-- [Nutanix CSI Pack on GitHub](https://github.com/spectrocloud/pax/tree/master/stable/storage/nutanix-csi-2.6.6)

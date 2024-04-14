@@ -13,7 +13,7 @@ Ensure the following Google Cloud Platform (GCP) API services are enabled in you
 
 - [Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest)
 - [Compute Engine API](https://cloud.google.com/compute/docs/reference/rest/v1)
-- [Kubernetes Engine API](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1)
+- [Kubernetes Engine API](https://cloud.google.com/kubernetes-engine/docs/reference/rest)
 
 :::tip
 
