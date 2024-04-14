@@ -906,7 +906,7 @@ The Prometheus Operator pack installs the following dependencies:
 ## Parameters
 
 The Prometheus operator supports all the parameters exposed by the kube-prometheus-stack Helm Chart. Refer to the
-[kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stackn)
+[kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
 documentation for details.
 
 The Prometheus Operator pack has one parameter you must initialize `grafana.adminPassword`:
@@ -1055,7 +1055,7 @@ The Prometheus Operator pack installs the following dependencies:
 ## Parameters
 
 The Prometheus operator supports all the parameters exposed by the kube-prometheus-stack Helm Chart. Refer to the
-[kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stackn)
+[kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
 documentation for details.
 
 The Prometheus Operator pack has one parameter you must initialize `grafana.adminPassword`:
