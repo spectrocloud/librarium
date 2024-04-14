@@ -23,7 +23,7 @@ Vault also tracks who has accessed which secrets and when, making it easier to m
 govern access to secrets, automate application delivery, and consume secrets programmatically.
 
 Vault is deployed behind the scenes through the use of the
-[Bank-Vaults Vault Operator Helm Chart](https://github.com/banzaicloud/bank-vaults/tree/main/charts/vault-operator).
+[Bank-Vaults Vault Operator Helm Chart](https://github.com/bank-vaults/bank-vaults).
 
 <br />
 
