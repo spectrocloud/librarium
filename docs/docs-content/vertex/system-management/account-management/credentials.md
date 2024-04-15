@@ -4,7 +4,7 @@ title: "Manage User Credentials"
 description: "Update and manage the user credentials"
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 tags: ["vertex", "management", "account", "credentials"]
 keywords: ["self-hosted", "vertex"]
 ---
@@ -12,7 +12,30 @@ keywords: ["self-hosted", "vertex"]
 You can manage the credentials of the admin user by logging in to the system console. You can also enable passkeys to
 access the admin panel. The passkey feature supports both virtual passkey and physical passkey.
 
-Use the sections below to learn how to manage user credentials.
+## Password Requirements and Security
+
+Palette VerteX passwords are hashed and salted, the cryptographic key value of the password is stored inside the
+internal system database. The cryptographic key is created using Password Based Key Derivation Function 2 (PBKDF2) and
+SHA512 with an iteration count of 210,000. The salt is 32 bytes long.
+
+All system administrators are required to set a password that complies with the following password policy:
+
+- The password must be at least 14 characters long.
+- The password must contain at least one uppercase letter.
+- The password must contain at least one lowercase letter.
+- The password must contain at least one digit.
+- The password must contain at least one special character.
+- The password cannot be the same as the previous password.
+
+Additionally, system administrators can manage the [password blocklist](./password-blocklist.md) to prevent users from
+using common or weak passwords. The password blocklist is a list of passwords that are not allowed to be used by users
+when setting or updating their passwords. The password blocklist is enforced when users set or update their passwords.
+
+All system administrators are allowed a maximum of five failed login attempts. After five failed login attempts, the
+user account will be placed in a temporary suspended state for a duration of 15 minutes. Upon expiration of the 15
+minutes, the user can try to log in again.
+
+Use the following sections to learn how to manage user credentials.
 
 ## Change Password
 
@@ -26,6 +49,9 @@ Use the following steps to change the password of the admin user.
 
 - A Simple Mail Transfer Protocol (SMTP) server must be configured in the system console. Refer to
   [Configure SMTP](../smtp.md) page for guidance on how to configure an SMTP server.
+
+- The password cannot be in the password blocklist. Refer to the [Manage Password Blocklist](./password-blocklist.md)
+  guide for guidance on how to manage the password blocklist.
 
 ### Steps
 

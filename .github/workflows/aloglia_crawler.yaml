@@ -4,10 +4,12 @@ on:
   workflow_run:
     workflows: ["Release to Production"]
     types: [completed]
+  workflow_dispatch:
+
 jobs:
   docsearch:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4

@@ -11,8 +11,6 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 - Kubernetes is natively installed on the host.
 
-- Support for AMD64 and ARM64 architectures.
-
 - Support for bare metal and virtualized edge devices.
 
 - Customizable site properties such as network proxies and certificates.
@@ -52,7 +50,8 @@ test your hardware configuration before deploying to production.
 
 :::warning
 
-ARM64 support is a preview feature and requires Palette version 4.0.0 or later.
+ARM64 support is a preview feature and requires Palette version 4.0.0 or later. ARM64 support is only verified for the
+Nvidia Jetson Orin device family.
 
 :::
 
@@ -76,12 +75,10 @@ table below describes these aspects and the available options.
 | Cluster Mode                      | - Connected: The site has internet connectivity and the installation is initiated via Palette Management Console<br/> - Air-Gapped: The site does not have internet connectivity. Installation is initiated via the Palette CLI.                                                                                                                                                                                                                                                         |
 | OS                                | - Ubuntu<br/>- OpenSUSE<br/>- Bring your own OS (BYOOS)                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | K8s Flavor                        | - Palette eXtended K8s for Edge FIPS (PXK-E) <br /> - Palette eXtended K8s for Edge (PXK-E)<br/>- Palette Optimized K3s<br/>- Palette Optimized RKE2                                                                                                                                                                                                                                                                                                                                     |
-| K8s Version                       | - 1.24.x<br/>- 1.25.x<br/>- 1.26.x<br/>- 1.27.x                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| K8s Version                       | - 1.26.x<br/>- 1.27.x<br/>- 1.28.x<br/>- 1.29.x                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | FIPS Mode                         | - True: Enforce usage of FIPS packs and other required FIPS configuration to meet FIPS compliance<br/>- False                                                                                                                                                                                                                                                                                                                                                                            |
 | Edge Host Registration Mode       | - Manual: A unique Edge host ID is manually entered into the Palette Management Console <br/> - Auto: Edge hosts automatically register with the Palette through the usage of a registration token supplied in the use-data<br/>- QR Code: Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry. |
 | Edge Host Type - Installer Format | Create an ISO image that contains all your dependencies and custom configurations.                                                                                                                                                                                                                                                                                                                                                                                                       |
-
-<br />
 
 ## Kubernetes Defaults
 
@@ -112,5 +109,3 @@ cluster:
    Disable:
      - metrics-server
 ```
-
-<br />

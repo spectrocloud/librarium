@@ -63,23 +63,37 @@ stylus:
 You can specify the mode the Edge Installer should prepare the installation for. The Edge Installer supports two
 different modes.
 
-<br />
-
 - Connected: The site has internet connectivity and the installation is initiated through Palette.
 
 - Air-Gapped: The site does not have internet connectivity. The Installation is initiated through the Palette Edge CLI.
 
-| Parameter          | Description                                                   |
-| ------------------ | ------------------------------------------------------------- |
-| `installationMode` | Allowed values are `connected`. Default value is `connected`. |
-
-<br />
+| Parameter          | Description                                                                |
+| ------------------ | -------------------------------------------------------------------------- |
+| `installationMode` | Allowed values are `connected` and `airgap`. Default value is `connected`. |
 
 ```yaml
 #cloud-config
 stylus:
   installationMode: "connected"
 ```
+
+### Initial Configuration
+
+You can configure the Edge Installer to enable the initial configuration in the Terminal User Interface (TUI) when you
+boot up the Edge host for the first time. For more information about initial configuration, refer to
+[Initial Edge Host Configuration](../site-deployment/initial-setup.md).
+
+| Parameter    | Description                                                           |
+| ------------ | --------------------------------------------------------------------- |
+| `includeTui` | Enable the initial Edge host configuration. Default value is `false`. |
+
+### Local UI
+
+You can change the port that the Edge management console is exposed on. The default port is 5080.
+
+| Parameter        | Description                                                                               |
+| ---------------- | ----------------------------------------------------------------------------------------- |
+| `emcServer.port` | Specifies the port that the Edge management console is exposed on. Default value is 5080. |
 
 ### External Registry
 
@@ -93,8 +107,6 @@ You can point the Edge Installer to a non-default registry to load content from 
 | `password`        | The password to authenticate with the registry.                                                                                                                                                                                                                                                                                   |
 | `insecure`        | Whether to allow insecure connections to the registry. Default value is `false`.                                                                                                                                                                                                                                                  |
 | `encodedPassword` | Specifies whether the password as given is base64 encoded.`true` means that the provided password is base64 encoded and that when using the password to authenticate, the password must be decoded first. `false` means the password is not encoded and must be used as is to authenticate with the registry. Default is `false`. |
-
-<br />
 
 ```yaml
 #cloud-config
