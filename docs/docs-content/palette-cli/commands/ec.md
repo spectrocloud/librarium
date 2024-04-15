@@ -14,6 +14,8 @@ install kind or any other dependencies. The CLI includes all the required depend
 can use the `ec` command to install a [self-hosted Palette](../../enterprise-version/install-palette/install-palette.md)
 instance or a self-hosted [VerteX](../../vertex/install-palette-vertex/install-palette-vertex.md) instance.
 
+## Subcommands
+
 The `ec` command exposes the following subcommand.
 
 <br />

@@ -64,41 +64,39 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
   :::
 
-Use the following steps to deploy an EKS cluster on AWS.
+## Deploy an AWS EKS Cluster
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 2. Ensure you are in the correct project scope.
 
-3. From the left **Main Menu** select **Clusters**, and click on the **Add New Cluster** button.
+3. From the left **Main Menu** select **Clusters**, and click **Add New Cluster**.
 
-4. Select **Deploy New Cluster** on the next page Palette displays. This will allow you to deploy a cluster using your
-   own cloud account.
+4. In **Public Clouds**, under **Managed Kubernetes**, select **AWS EKS**.
 
-5. Select **AWS** and click on the **Start AWS Configuration** button.
+5. In the bottom-right corner, click **Start AWS EKS Configuration**.
 
-6. Fill out the following basic information, and click **Next** to continue.
+6. Fill out the following basic information and click **Next**.
 
    | **Field**         | **Description**                                                                                                                                                                                     |
    | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Cluster Name**  | A custom name for the cluster.                                                                                                                                                                      |
    | **Description**   | Use the description to provide context about the cluster.                                                                                                                                           |
    | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-east-1a` or `zone:vpc-private-us-east-1a`. |
-   | **Cloud Account** | If you already added your AWS account in Palette, select it from the **drop-down Menu**. Otherwise, click on **Add New Account** and add your AWS account information.                              |
+   | **Cloud Account** | If you already added your AWS account in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your AWS account information.                                 |
 
    To learn how to add an AWS account, review the [Add an AWS Account to Palette](add-aws-accounts.md) guide.
 
-7. Select **EKS** listed under **Managed Kubernetes**.
+7. Click **Add Cluster Profile**, select a cluster profile and click **Next**. Palette displays the cluster profile
+   layers.
 
-8. Select the EKS cluster profile you created and click on **Next**. Palette displays the cluster profile layers.
-
-9. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
+8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
    You can configure custom OpenID Connect (OIDC) for EKS clusters at the Kubernetes layer. Check out
    [Access EKS Cluster](#access-eks-cluster) if you need more guidance.
 
-10. Click on **Next** to continue.
+9. Click **Next** to continue.
 
-11. Provide the following cluster configuration information and click on **Next** to continue.
+10. Provide the following cluster configuration information and click **Next** to continue.
 
     | **Parameter**               | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
     | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -118,7 +116,7 @@ Use the following steps to deploy an EKS cluster on AWS.
 
     :::
 
-12. Provide the following node pool and cloud configuration information. If you will be using Fargate profiles, you can
+11. Provide the following node pool and cloud configuration information. If you will be using Fargate profiles, you can
     add them here.
 
     #### Node Configuration Settings
@@ -159,26 +157,26 @@ Use the following steps to deploy an EKS cluster on AWS.
 
     :::
 
-13. Click on **Next** to continue.
+12. Click **Next** to continue.
 
-14. Specify your preferred **OS Patching Schedule** for EKS-managed machines.
+13. Specify your preferred **OS Patching Schedule** for EKS-managed machines.
 
-15. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
+14. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
     Kubernetes configuration security, penetration testing, and conformance testing.
 
-16. Schedule any backups you want Palette to perform. Review
+15. Schedule any backups you want Palette to perform. Review
     [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
-17. RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes
+16. RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes
     RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
     [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
     [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
 
-18. Click on the **Validate** button and review the cluster configuration and settings summary.
+17. Click **Validate** and review the cluster configuration and settings summary.
 
-19. Click **Finish Configuration** to deploy the cluster.
+18. Click **Finish Configuration** to deploy the cluster.
 
-The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the
+The displayed cluster details page contains the status and details of the deployment. Use this page to track the
 deployment progress.
 
 :::info
