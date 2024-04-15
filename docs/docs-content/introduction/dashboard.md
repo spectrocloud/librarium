@@ -4,7 +4,7 @@ title: "Palette Dashboard"
 description: "Explore the Spectro Cloud Palette Dashboard."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 10
 tags: ["getting-started"]
 ---
 
