@@ -20,27 +20,27 @@ interface TechnologiesProps {
 }
 
 export default function Technologies({ data }: TechnologiesProps) {
-  const [selectedFilters, setSelectedFilters] = useState<{category: string[], provider: string, additionalFilters: string[]}>({category: [], provider: "", additionalFilters: []})
+  const [selectedFilters, setSelectedFilters] = useState<{ category: string[], provider: string, additionalFilters: string[] }>({ category: [], provider: "", additionalFilters: [] })
   const [searchValue, setSearchValue] = useState("");
 
   const categories = useMemo(() => {
-    const categoriesMap = new Map();
-    data.forEach((technology) => {
-      const key = technology.fields.packType;
-      if (categoriesMap.has(key)){
-        categoriesMap.get(key).push(technology.fields);
+    const categoriesMap = data.reduce((acc: Map<string, any>, technology: PacksData | IntegrationsData) => {
+      let packType = technology.fields.packType;
+      if (acc.has(packType)) {
+        acc.get(packType).push(technology.fields);
       } else {
-        categoriesMap.set(key, new Array(technology.fields));
+        acc.set(packType, [technology.fields]);
       }
-    });
+      return acc;
+    }, new Map<string, any>());
     const sortedCategoriesMap = new Map([...categoriesMap.entries()].sort());
     const categoryKeys = Array.from(sortedCategoriesMap.keys());
     categoryKeys.forEach((category) => {
       const fields = sortedCategoriesMap.get(category);
       fields.sort((field1: any, field2: any) => {
-        if (field1.name > field2.name){
+        if (field1.name > field2.name) {
           return 1;
-        } else if (field1.name < field2.name){
+        } else if (field1.name < field2.name) {
           return -1;
         } else {
           return 0;

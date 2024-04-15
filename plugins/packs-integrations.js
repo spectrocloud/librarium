@@ -1,4 +1,4 @@
-const api = require("../src/services/api");
+const { api, callRateLimitAPI }  = require("../src/services/api");
 const { setTimeout } = require("timers/promises");
 const { packTypeNames, addOnTypes, layerTypes } = require("../src/components/Technologies/PackConstants");
 const packDescription = require("../static/packs-data/packs_information.json");
@@ -17,7 +17,7 @@ function generateIntegrationData(allContent) {
 
 function getReadMeMap(packValues) {
   const generatedReadMeData = packValues.reduce((packValuesMap, packValue) =>
-    Object.assign(packValuesMap, {[packValue.packUid]: packValue.readme}), {});
+    Object.assign(packValuesMap, { [packValue.packUid]: packValue.readme }), {});
   return generatedReadMeData;
 }
 
@@ -117,32 +117,32 @@ function getAggregatedVersions(tags, packValues, packName, layer) {
         packUid: version.packUid,
       };
     });
-    _sortedVersions.forEach((version) => {
-      const parentTags = version?.parentTags || [];
-      const parent = parentTags.find(matchAmbiguousPatch);
+  _sortedVersions.forEach((version) => {
+    const parentTags = version?.parentTags || [];
+    const parent = parentTags.find(matchAmbiguousPatch);
 
-      if (!parent) return;
+    if (!parent) return;
 
-      const parentVersion = roots.find(
-        (rootVersion) => rootVersion.title === parent
-      );
+    const parentVersion = roots.find(
+      (rootVersion) => rootVersion.title === parent
+    );
 
-      if (parentVersion) {
-        parentVersion.children = parentVersion.children || [];
-        parentVersion.children.push({
-          title: version.tag,
-          value: version.version,
-          packUid: version.packUid,
-        });
-      }
-    });
+    if (parentVersion) {
+      parentVersion.children = parentVersion.children || [];
+      parentVersion.children.push({
+        title: version.tag,
+        value: version.version,
+        packUid: version.packUid,
+      });
+    }
+  });
   return roots;
 }
 
 function generateCustomData(packsDescription) {
   const generatedCustomData = packsDescription.reduce((obj, desc) =>
-   Object.assign(obj, {[desc.name]: desc.description}), {});
-  console.log("completed custom data description generation");
+    Object.assign(obj, { [desc.name]: desc.description }), {});
+  console.info("completed custom data description generation");
   return generatedCustomData;
 }
 
@@ -161,15 +161,15 @@ function generateRoutes(packDataMap, packsData) {
 }
 
 async function fetchPackListItems(queryParams, packDataArr, counter) {
-  const payload = {filter: { type: ["spectro", "oci"], environment:["aws"] }};
-  counter+=1;
-  if(counter%10 === 0) {
+  const payload = { filter: { type: ["spectro", "oci"]} };
+  counter += 1;
+  if (counter % 10 === 0) {
     await setTimeout(2000);
   }
-  const response = await api.post('/v1/packs/search'+queryParams, payload);
+  const response = await api.post('/v1/packs/search' + queryParams, payload);
   const tempPackArr = packDataArr.concat(response.data.items);
-  if(response.data.listmeta.continue) {
-    return fetchPackListItems("?limit=100&continue="+response.data.listmeta.continue, tempPackArr, counter);
+  if (response.data.listmeta.continue) {
+    return fetchPackListItems("?limit=100&continue=" + response.data.listmeta.continue, tempPackArr, counter);
   } else {
     return tempPackArr;
   }
@@ -180,33 +180,26 @@ async function pluginPacksAndIntegrationsData() {
     name: "plugin-packs-integrations",
     async loadContent() {
       let packDataArr = await fetchPackListItems("?limit=100", [], 0);
-      console.log("completed the fetch of all the names of the pack")
+      console.info("completed the fetch of all the names of the pack")
       packDataArr = packDataArr.filter((pack) => {
         return layerTypes.includes(pack.spec.layer) || (pack.spec.layer === "addon" && addOnTypes.includes(pack.spec.addonType));
       })
       const packUrl = "v1/packs/";
       const packMDMap = new Map();
       let apiPacksData = [];
-      let counter = 0;
       let promises = new Array();
       for (let i = 0; i < packDataArr.length; i++) {
         const packData = packDataArr[i];
-        if(packData.spec.registries.length) {
-          counter+=1
-          packMDMap[packData.spec.name]=packData;
+        if (packData.spec.registries.length) {
+          packMDMap[packData.spec.name] = packData;
           const cloudType = packData.spec.cloudTypes.includes("all") ? "aws" : packData.spec.cloudTypes[0];
-          promises.push(api.get(`${packUrl}${packData.spec.name}/registries/${packData.spec.registries[0].uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`));
-          if(counter%10 === 0 || i === packDataArr.length-1) {
-            await setTimeout(2000);
-            const results = await Promise.all(promises.map(p => p.catch(e => e)));
-            const validResults = results.filter(result => !(result instanceof Error));
-            apiPacksData = apiPacksData.concat(validResults.map((pack) => pack.data));
-            promises = [];
-          }
+          promises.push(`${packUrl}${packData.spec.name}/registries/${packData.spec.registries[0].uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`);
         }
       }
-      console.log("completed the fetch of all the pack details");
-      return {packsPaletteData: packMDMap, packsPaletteDetailsData: apiPacksData, packsDescription: packDescription} ;
+      const results = await callRateLimitAPI(promises);
+      apiPacksData = results.filter(result => result.status === "fulfilled" && result.value?.data).map((pack) => pack.value?.data);
+      console.info("completed the fetch of all the pack details");
+      return { packsPaletteData: packMDMap, packsPaletteDetailsData: apiPacksData, packsDescription: packDescription };
     },
     async contentLoaded({ allContent, content, actions }) {
       const { setGlobalData, addRoute } = actions;
@@ -215,7 +208,7 @@ async function pluginPacksAndIntegrationsData() {
       const customPacksData = generateCustomData(packsDescription);
       const unionPackData = combineAPICustomPackData(packsPaletteData, packsPaletteDetailsData, customPacksData);
       const routes = generateRoutes(packsPaletteData, unionPackData);
-      console.log("completed the generation of the routes");
+      console.info("completed the generation of the routes");
       routes.map(route => addRoute(route));
       setGlobalData({ integrations: integrationsData, packs: unionPackData });
     },

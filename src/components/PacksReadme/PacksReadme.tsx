@@ -76,7 +76,7 @@ export default function PacksReadme() {
       return (<Select.Option key={_version.title}>
         {_version.title}
       </Select.Option>)
-      });
+    });
   }
 
   function versionSupportedTextRender() {
@@ -149,7 +149,7 @@ export default function PacksReadme() {
               allowClear
               placeholder="Search"
               onChange={(item) => versionChange(item as string)}
-              value={selectedVersion === packData.versions[0].title ? `${selectedVersion} (latest)` : selectedVersion}
+              value={selectedVersion === packData.versions[0]?.title ? `${selectedVersion} (latest)` : selectedVersion}
             >
               {getOptions()}
             </Select>

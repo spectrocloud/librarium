@@ -23,8 +23,8 @@ export default function TechnologyCard({ name, title, logoUrl, type }: Technolog
   };
 
   return (
-    <div className={styles.card} onClick={()=>handleClick()}>
-        <PackCardIcon title={title} logoUrl={logoUrl} type={type}/>
+    <div className={styles.card} onClick={() => handleClick()}>
+      <PackCardIcon title={title} logoUrl={logoUrl} type={type} />
       <div className={styles.title}>{title}</div>
     </div>
   );

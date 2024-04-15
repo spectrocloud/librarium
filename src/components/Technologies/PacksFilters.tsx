@@ -6,20 +6,20 @@ import CustomLabel from "./CategorySelector/CustomLabel";
 import AdditionalFilters from "./CategorySelector/AdditionalFilters";
 interface PackFiltersProps {
   categories: string[];
-  selectedFilters: { category: string[], provider: string, additionalFilters: string[]};
+  selectedFilters: { category: string[], provider: string, additionalFilters: string[] };
   setSelectedSearchFilters: (...args: any[]) => void;
 }
 export default function PacksFilters({ categories, selectedFilters, setSelectedSearchFilters }: PackFiltersProps) {
   function setSelectedCategory(category: string[]) {
-    setSelectedSearchFilters({category: category});
+    setSelectedSearchFilters({ category: category });
     console.log("category", category);
   }
   function setSelectedProvider(provider: string) {
-    setSelectedSearchFilters({provider: provider});
+    setSelectedSearchFilters({ provider: provider });
     console.log("provider", provider);
   }
   function selectAdditionalFilters(additionalFilters: string[]) {
-    setSelectedSearchFilters({additionalFilters: additionalFilters});
+    setSelectedSearchFilters({ additionalFilters: additionalFilters });
     console.log("additionalFilters", additionalFilters);
   }
   return (
@@ -33,7 +33,7 @@ export default function PacksFilters({ categories, selectedFilters, setSelectedS
         <CloudProviderSelecor selected={selectedFilters.provider} selectCloudProvider={setSelectedProvider} />
       </div>
       <div className={styles.filterItems}>
-        <AdditionalFilters selectAdditionalFilters={selectAdditionalFilters}/>
+        <AdditionalFilters selectAdditionalFilters={selectAdditionalFilters} />
       </div>
     </div>
   );
