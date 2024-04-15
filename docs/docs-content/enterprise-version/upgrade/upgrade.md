@@ -32,7 +32,9 @@ Before upgrading Palette to a new major version, you must first update it to the
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.2.13       |       4.3.6        | :white_check_mark: |
 |       4.2.7        |       4.2.13       | :white_check_mark: |
+|       4.1.x        |       4.3.6        |        :x:         |
 |       4.1.12       |       4.2.7        | :white_check_mark: |
 |       4.1.7        |       4.2.7        | :white_check_mark: |
 

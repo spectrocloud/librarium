@@ -81,87 +81,86 @@ match your environment.
    [Kubernetes Installation Instructions](../../install-palette/install-on-kubernetes/install.md) to populate your
    `values.yaml`.
 
-:::warning
+   :::warning
 
-Ensure that the `values.yaml` file is ready before proceeding. If you're using a self-hosted OCI registry, make sure
-that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` includes the necessary mirror links.
+   Ensure that the `values.yaml` file is ready before proceeding. If you're using a self-hosted OCI registry, make sure
+   that the `ociImageRegistry.mirrorRegistries` parameter in your `values.yaml` includes the necessary mirror links.
 
-:::
+   :::
 
-5.  If you are using a self-hosted OCI registry, upgrade the image-swap chart with the following command. Point to the
-    `palette/values.yaml` file from step four.
+5. If you are using a self-hosted OCI registry, upgrade the image-swap chart with the following command. Point to the
+   `palette/values.yaml` file from step four.
 
-    ```shell
-    helm upgrade --values palette/values.yaml \
-    image-swap extras/image-swap/image-swap-*.tgz --install
-    ```
+   ```shell
+   helm upgrade --values palette/values.yaml \
+   image-swap extras/image-swap/image-swap-*.tgz --install
+   ```
 
-    You should receive an output similar to the following.
+   You should receive an output similar to the following.
 
-    ```shell
-    Release "image-swap" has been upgraded. Happy Helming!
-    NAME: image-swap
-    LAST DEPLOYED: Thu Feb 22 19:44:13 2024
-    NAMESPACE: default
-    STATUS: deployed
-    REVISION: 2
-    TEST SUITE: None
-    ```
+   ```shell
+   Release "image-swap" has been upgraded. Happy Helming!
+   NAME: image-swap
+   LAST DEPLOYED: Thu Feb 22 19:44:13 2024
+   NAMESPACE: default
+   STATUS: deployed
+   REVISION: 2
+   TEST SUITE: None
+   ```
 
-6.  If you are upgrading a Palette instance in an environment that requires network proxy configuration, upgrade the
-    reach-system chart with the following command. Point to the `palette/values.yaml` file from step four.
+6. If you are upgrading a Palette instance in an environment that requires network proxy configuration, upgrade the
+   reach-system chart with the following command. Point to the `palette/values.yaml` file from step four.
 
-    ```shell
-    helm upgrade --values palette/values.yaml \
-    reach-system extras/reach-system/reach-system-\*.tgz --install
-    ```
+   ```shell
+   helm upgrade --values palette/values.yaml \
+   reach-system extras/reach-system/reach-system-\*.tgz --install
+   ```
 
-    You should receive an output similar to the following.
+   You should receive an output similar to the following.
 
-    ```shell
-    Release "reach-system" has been upgraded. Happy Helming!
-    NAME: reach-system
-    LAST DEPLOYED: Thu Feb 22 19:47:10 2024
-    NAMESPACE: default
-    STATUS: deployed
-    REVISION: 2
-    TEST SUITE: None
-    ```
+   ```shell
+   Release "reach-system" has been upgraded. Happy Helming!
+   NAME: reach-system
+   LAST DEPLOYED: Thu Feb 22 19:47:10 2024
+   NAMESPACE: default
+   STATUS: deployed
+   REVISION: 2
+   TEST SUITE: None
+   ```
 
-7.  Upgrade Palette with the following command.
+7. Upgrade Palette with the following command.
 
-    ```shell
-    helm upgrade --values palette/values.yaml \
-    hubble palette/spectro-mgmt-plane-\*.tgz --install
-    ```
+   ```shell
+   helm upgrade --values palette/values.yaml \
+   hubble palette/spectro-mgmt-plane-\*.tgz --install
+   ```
 
-    You should receive an output similar to the following.
+   You should receive an output similar to the following.
 
-    ```shell
-    Release "hubble" has been upgraded. Happy Helming!
-    NAME: hubble
-    LAST DEPLOYED: Thu Feb 22 20:05:24 2024
-    NAMESPACE: default
-    STATUS: deployed
-    REVISION: 2
-    TEST SUITE: None
-    ```
+   ```shell
+   Release "hubble" has been upgraded. Happy Helming!
+   NAME: hubble
+   LAST DEPLOYED: Thu Feb 22 20:05:24 2024
+   NAMESPACE: default
+   STATUS: deployed
+   REVISION: 2
+   TEST SUITE: None
+   ```
 
-8.  Use the following command to track the upgrade process.
+8. Use the following command to track the upgrade process.
 
-    ```shell
-    kubectl get pods --all-namespaces --watch
-    ```
+   ```shell
+   kubectl get pods --all-namespaces --watch
+   ```
 
-    :::tip
+   :::tip
 
-    For a more user-friendly experience, consider using [K9s](https://k9scli.io/) or a similar tool to track the
-    upgrade.
+   For a more user-friendly experience, consider using [K9s](https://k9scli.io/) or a similar tool to track the upgrade.
 
-    :::
+   :::
 
-    The upgrade usually takes up to five minutes. Palette is upgraded when the deployments in the namespaces
-    `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` are in the **Ready** status.
+   The upgrade usually takes up to five minutes. Palette is upgraded when the deployments in the namespaces `cp-system`,
+   `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` are in the **Ready** status.
 
 ## Validate
 

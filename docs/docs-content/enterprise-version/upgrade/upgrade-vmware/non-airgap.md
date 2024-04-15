@@ -51,12 +51,12 @@ Palette upgrade.
    changes** pane displays the changes that the upgrade introduces. The **Current configuration** pane displays your
    current layer configuration.
 
-:::info
+   :::info
 
-To complete the Palette upgrade, you need an external diff or text comparison tool. Proceed with the following steps
-once you have the comparison tool available next to the Palette system console.
+   To complete the Palette upgrade, we recommend using an external diff or text comparison tool. Proceed with the
+   following steps once you have the comparison tool available next to the Palette system console.
 
-:::
+   :::
 
 6. Copy the configurations from both **Incoming changes** and **Current configuration** panes to your comparison tool.
 

@@ -129,28 +129,29 @@ Palette upgrade.
     changes** pane displays the changes that the upgrade introduces. The **Current configuration** pane displays your
     current layer configuration.
 
-:::info
+    :::info
 
-To complete the Palette upgrade, you need an external diff or text comparison tool. Proceed with the following steps
-once you have the comparison tool available next to the Palette system console.
+    To complete the Palette upgrade, we recommend using an external diff or text comparison tool. Proceed with the
+    following steps once you have the comparison tool available next to the Palette system console.
 
-:::
+    :::
 
-6. Copy the configurations from both **Incoming changes** and **Current configuration** panes to your comparison tool.
+13. Copy the configurations from both **Incoming changes** and **Current configuration** panes to your comparison tool.
 
-7. From your current configuration, transfer only those differences that are custom to your self-hosted Palette instance
-   (for example, the `podCIDR` and `serviceClusterIpRange` values). Do not override any other changes or upgrades.
+14. From your current configuration, transfer only those differences that are custom to your self-hosted Palette
+    instance (for example, the `podCIDR` and `serviceClusterIpRange` values). Do not override any other changes or
+    upgrades.
 
-   ![Self-hosted Palette system console with the upgrade preview pane.](/enterprise-version_upgrade-upgrade_vmware_diff-checker.webp)
+    ![Self-hosted Palette system console with the upgrade preview pane.](/enterprise-version_upgrade-upgrade_vmware_diff-checker.webp)
 
-8. After you finish merging the configurations, copy the resulting configuration, and then paste it to the **Current
-   configuration** pane in the Palette system console.
+15. After you finish merging the configurations, copy the resulting configuration, and then paste it to the **Current
+    configuration** pane in the Palette system console.
 
-   ![Self-hosted Palette system console with the upgrade preview pane.](/enterprise-version_upgrade-upgrade_vmware_palette-upgrade-preview.webp)
+    ![Self-hosted Palette system console with the upgrade preview pane.](/enterprise-version_upgrade-upgrade_vmware_palette-upgrade-preview.webp)
 
-9. Repeat steps six through eight for each Enterprise Cluster profile layer.
+16. Repeat steps six through eight for each Enterprise Cluster profile layer.
 
-10. In the bottom-right corner of the **Palette version update** preview modal, select **Confirm**.
+17. In the bottom-right corner of the **Palette version update** preview modal, select **Confirm**.
 
     The system console locks for a couple of minutes while the upgrade is applied.
 

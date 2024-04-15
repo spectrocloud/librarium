@@ -253,12 +253,12 @@ Palette upgrade.
 8.  Refer to the [Additional Packs](../../install-palette/airgap/supplemental-packs.md) page and update the packages you
     are currently using. You must update each package separately.
 
-:::info
+    :::info
 
-Depending on your underlying infrastructure provider and Kubernetes distribution, you may need to modify the following
-Palette upgrade steps to match your environment.
+    Depending on your underlying infrastructure provider and Kubernetes distribution, you may need to modify the
+    following Palette upgrade steps to match your environment.
 
-:::
+    :::
 
 9.  Navigate to the directory with the Palette installation zip file. Unzip the file to a **palette-install** directory.
 
@@ -325,15 +325,15 @@ Palette upgrade steps to match your environment.
     [Kubernetes Installation Instructions](../../install-palette/install-on-kubernetes/install.md) to populate your
     `values.yaml`.
 
-:::warning
+    :::warning
 
-Ensure that the `values.yaml` file is ready before proceeding. Specifically, make sure that the `ociPackEcrRegistry` and
-`ociImageRegistry` configurations include the parameters necessary to interact with your `spectro-images` and
-`spectro-packs` repositories.
+    Ensure that the `values.yaml` file is ready before proceeding. Specifically, make sure that the `ociPackEcrRegistry`
+    and `ociImageRegistry` configurations include the parameters necessary to interact with your `spectro-images` and
+    `spectro-packs` repositories.
 
-:::
+    :::
 
-13. Upgrade the image-swap chart with the following command. Point to the `palette/values.yaml` file from step twelve.
+14. Upgrade the image-swap chart with the following command. Point to the `palette/values.yaml` file from step twelve.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -352,7 +352,7 @@ Ensure that the `values.yaml` file is ready before proceeding. Specifically, mak
     TEST SUITE: None
     ```
 
-14. Upgrade the reach-system chart with the following command. Point to the `palette/values.yaml` file from step twelve.
+15. Upgrade the reach-system chart with the following command. Point to the `palette/values.yaml` file from step twelve.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -371,7 +371,7 @@ Ensure that the `values.yaml` file is ready before proceeding. Specifically, mak
     TEST SUITE: None
     ```
 
-15. Upgrade Palette with the following command.
+16. Upgrade Palette with the following command.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -390,7 +390,7 @@ Ensure that the `values.yaml` file is ready before proceeding. Specifically, mak
     TEST SUITE: None
     ```
 
-16. Use the following command to track the upgrade process.
+17. Use the following command to track the upgrade process.
 
     ```shell
     kubectl get pods --all-namespaces --watch
