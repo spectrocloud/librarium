@@ -39,7 +39,7 @@ clean-api: ## Clean API docs
 	@echo "cleaning api docs"
 	npm run clean-api-docs
 	# Remove the sidebar file as it's not removed by the clean-api command
-	rm -f docs/api-content/api-docs/v1/sidebar.ts
+	rm -f docs/api-content/api-docs/v1/sidebar.ts && rm -f docs/api-content/api-docs/edge-v1/sidebar.ts
 
 clean-visuals:
 	@echo "Cleaning visual regression tests"
