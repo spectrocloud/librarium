@@ -132,8 +132,8 @@ custom OCI registries.
    Digest: sha256:9067f964301c2b8e7a702fdbee35f5ca20a46695ef121e760e38967a2dd7cc4f
    ```
 
-9. After pushing the pack to the ECR registry, follow the steps in [Add OCI Packs Registry](../oci-registry) to add your
-   ECR registry to Palette.
+9. After pushing the pack to the ECR registry, follow the steps in [Add OCI Packs Registry](../oci-registry.md) to add
+   your ECR registry to Palette.
 
    :::info
 
