@@ -24,6 +24,7 @@ const config = {
   onBrokenLinks: "throw",
   onBrokenAnchors: "throw",
   onBrokenMarkdownLinks: "throw",
+  trailingSlash: true,
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
@@ -127,7 +128,7 @@ const config = {
           editUrl: "https://github.com/spectrocloud/librarium/blob/master",
         },
         sitemap: {
-          changefreq: "weekly",
+          changefreq: "daily",
           priority: 0.5,
           ignorePatterns: ["/tags/**"],
           filename: "sitemap.xml",
