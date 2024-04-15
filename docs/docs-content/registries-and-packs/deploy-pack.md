@@ -1335,4 +1335,4 @@ To learn more about packs in Palette, we encourage you to check out the referenc
 
 - [Pack Constraints](pack-constraints.md)
 
-- [Spectro Cloud OCI Registry](oci-registry.md)
+- [Spectro Cloud OCI Registry](./oci-registry/oci-registry.md)

@@ -4,7 +4,7 @@ title: "Add a Pack to a Basic OCI Registry"
 description: "Learn how to upload packs to a Basic OCI registry."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 10
 ---
 
 This guide explains how to upload packs to an OCI registry that supports basic authentication. You will learn how to
@@ -14,8 +14,8 @@ authenticate to your Basic OCI registry, push a custom pack, and configure the r
 
 - Tenant administrator access.
 
-- Custom pack files available on your computer. Refer to the [Add an Add-on Pack](../../../adding-add-on-packs.md) guide
-  to learn how to create a custom pack.
+- Custom pack files available on your computer. Refer to the [Add an Add-on Pack](../../adding-add-on-packs.md) guide to
+  learn how to create a custom pack.
 
 - A private OCI registry that supports basic authentication. This guide uses [Harbor](https://goharbor.io/) as an
   example. Learn how to set up a Harbor registry server using the
@@ -131,7 +131,7 @@ custom OCI registries.
 
 :::
 
-11. After pushing the pack to the Harbor registry, follow the steps in [Add OCI Packs Registry](../add-oci-packs.md) to
+11. After pushing the pack to the Harbor registry, follow the steps in [Add OCI Packs Registry](../oci-registry.md) to
     add your Harbor registry to Palette.
 
     :::info

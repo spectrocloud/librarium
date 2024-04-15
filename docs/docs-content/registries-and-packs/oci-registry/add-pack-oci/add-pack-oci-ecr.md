@@ -4,7 +4,7 @@ title: "Add a Pack to an ECR Registry"
 description: "Learn how to upload packs to an ECR registry."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 70
+sidebar_position: 20
 ---
 
 This guide explains how to upload packs to the [AWS Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/). You
@@ -14,8 +14,8 @@ will learn how to authenticate to your AWS ECR registry, push a custom pack, and
 
 - Tenant administrator access.
 
-- Custom pack files available on your computer. Refer to the [Add an Add-on Pack](../../../adding-add-on-packs.md) guide
-  to learn how to create a custom pack.
+- Custom pack files available on your computer. Refer to the [Add an Add-on Pack](../../adding-add-on-packs.md) guide to
+  learn how to create a custom pack.
 
 - A private [AWS (ECR)](https://docs.aws.amazon.com/AmazonECR/latest/userguide/Registries.html) registry. Each AWS
   account is provided with a default private ECR registry.
@@ -132,8 +132,8 @@ custom OCI registries.
    Digest: sha256:9067f964301c2b8e7a702fdbee35f5ca20a46695ef121e760e38967a2dd7cc4f
    ```
 
-9. After pushing the pack to the ECR registry, follow the steps in [Add OCI Packs Registry](../add-oci-packs.md) to add
-   your ECR registry to Palette.
+9. After pushing the pack to the ECR registry, follow the steps in [Add OCI Packs Registry](../oci-registry) to add your
+   ECR registry to Palette.
 
    :::info
 

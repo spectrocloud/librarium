@@ -4,7 +4,7 @@ title: "Add a Pack to an OCI Registry"
 description: "Learn how to upload packs to OCI registries."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 0
 ---
 
 Palette supports the use of Open Container Initiative (OCI) registries. You can register a private OCI registry with
