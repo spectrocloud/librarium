@@ -29,6 +29,7 @@ echo "Pull request number: $PR_NUMBER"
 # Read JSON file contents into a variable
 JSON_CONTENT=$(cat link_report.json)
 
+
 # Check if JSON file is empty
 if [[ -z "$JSON_CONTENT" ]]; then
   echo "No broken links found"
@@ -41,11 +42,12 @@ BROKEN_LINK_COUNT=0
 # Format comment with JSON content
 COMMENT=":loudspeaker: Broken External Docs Links in Production Report :spectro: \n\n This is the weekly report of broken links in production. Please review the report and make the required changes. \n\n *Note*: Some links may be false positives due to redirects behavior.\n\n"
 
-# Loop through the "links" array and concatenate each item into the COMMENT variable
-for link in $(echo "${JSON_CONTENT}" | jq -r '.links[] | @base64'); do
-    url=$(echo "${link}" | base64 --decode | jq -r '.url')
-    state=$(echo "${link}" | base64 --decode | jq -r '.state')
-    parent=$(echo "${link}" | base64 --decode | jq -r '.parent')
+# Loop through each item in the JSON array directly
+for link in $(echo "${JSON_CONTENT}" | jq -c '.[]'); do
+    url=$(echo "${link}" | jq -r '.url')
+    status=$(echo "${link}" | jq -r '.status')
+    state=$(echo "${link}" | jq -r '.state')
+    parent=$(echo "${link}" | jq -r '.parent')
 
     # Increment counter for broken links if status is not "200"
     if [[ "$status" != "200" ]]; then
@@ -65,16 +67,3 @@ fi
 
 # Post the comment to the Slack webhook
 curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"${COMMENT}\"}" $SLACK_WEBHOOK_URL
-
-if [[ "${DEBUG}" == "true" ]]; then
-    echo "GitHub API URL: ${GITHUB_API_URL}"
-    echo "Pull Request Number: ${PR_NUMBER}"
-    echo "Repository Owner: ${REPO_OWNER}"
-    echo "Repository Name: ${REPO_NAME}"
-    echo "JSON content:"
-    echo "$json"
-    echo "COMMENT content:"
-    echo "$COMMENT"
-fi
-
-echo "Posting comment to pull request #$PR_NUMBER to Slack webhook"
