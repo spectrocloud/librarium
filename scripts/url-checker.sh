@@ -67,3 +67,16 @@ fi
 
 # Post the comment to the Slack webhook
 curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"${COMMENT}\"}" $SLACK_WEBHOOK_URL
+
+if [[ "${DEBUG}" == "true" ]]; then
+    echo "GitHub API URL: ${GITHUB_API_URL}"
+    echo "Pull Request Number: ${PR_NUMBER}"
+    echo "Repository Owner: ${REPO_OWNER}"
+    echo "Repository Name: ${REPO_NAME}"
+    echo "JSON content:"
+    echo "$json"
+    echo "COMMENT content:"
+    echo "$COMMENT"
+fi
+
+echo "Posting comment to pull request #$PR_NUMBER to Slack webhook"
