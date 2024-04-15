@@ -28,4 +28,4 @@ Palette Dev Engine supports the following types of custom registries:
 
 - [Helm Registry](../../registries-and-packs/helm-charts.md)
 
-- [OCI Registry](../../registries-and-packs/oci-registry.md)
+- [OCI Registry](../../registries-and-packs/oci-registry/oci-registry.md)

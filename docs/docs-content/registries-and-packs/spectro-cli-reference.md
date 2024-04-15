@@ -12,8 +12,8 @@ or download packs and perform other operations.
 
 :::info
 
-We recommend using an OCI registry for storing and maintaining your packs. Refer to the [OCI registry](oci-registry.md)
-section for more information.
+We recommend using an OCI registry for storing and maintaining your packs. Refer to the
+[OCI registry](./oci-registry/oci-registry.md) section for more information.
 
 :::
 
