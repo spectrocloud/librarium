@@ -117,7 +117,7 @@ Palette 4.0.0 introduces new features and improvements, including [Palette Verte
 edition - and the [Virtual Machine Orchestrator](vm-management/vm-management.md) (VMO) which enables unified management
 of containerized applications and virtual machines in Kubernetes. Additionally, Palette 4.0.0 introduces a new Pack User
 Interface (UI) that improves the user experience for finding and installing packs. Check out the
-[Upgrade Notes](enterprise-version/upgrade.md) and release notes below to learn more about the new features and
+[Upgrade Notes](enterprise-version/upgrade/upgrade.md) and release notes below to learn more about the new features and
 improvements in Palette 4.0.0.
 
 ### Palette {#release-4-0-palette}
