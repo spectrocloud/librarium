@@ -9,8 +9,8 @@ tags: ["troubleshooting", "palette-upgrade"]
 ---
 
 We recommend you review the [Release Notes](../release-notes.md) and the
-[Upgrade Notes](../enterprise-version/upgrade.md) before attempting to upgrade Palette. Use this information to address
-common issues that may occur during an upgrade.
+[Upgrade Notes](../enterprise-version/upgrade/upgrade.md) before attempting to upgrade Palette. Use this information to
+address common issues that may occur during an upgrade.
 
 ## Ingress Errors
 
