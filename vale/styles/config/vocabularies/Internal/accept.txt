@@ -194,6 +194,7 @@ vApp
 PCGs
 vCPU
 vCPUs
+ORAS
 preload
 preloaded
 eXtented
