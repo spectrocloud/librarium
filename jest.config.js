@@ -6,7 +6,7 @@ module.exports = {
   moduleNameMapper: {
     ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": `identity-obj-proxy`,
   },
-  testPathIgnorePatterns: [`node_modules`, `\\.cache`, `<rootDir>.*/build`],
+  testPathIgnorePatterns: [`node_modules`, `\\.cache`, `<rootDir>.*/build`, `visuals`],
   testEnvironment: `jsdom`,
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
 };

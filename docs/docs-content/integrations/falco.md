@@ -39,4 +39,4 @@ use Falco to monitor the run-time security of your Kubernetes applications and i
 
 ## References
 
-- [Falco Helm Chart GitHub](https://github.com/falcosecurity/charts/tree/master/falco)
+- [Falco Helm Chart GitHub](https://github.com/falcosecurity/charts/tree/master/charts/falco)

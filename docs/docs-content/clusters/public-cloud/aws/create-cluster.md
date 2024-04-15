@@ -59,25 +59,32 @@ The following prerequisites must be met before deploying a cluster to AWS:
 
 Use the following steps to provision a new AWS cluster:
 
-1. Log in to [Palette](https://console.spectrocloud.com) and ensure you are in the correct project scope.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and click on **Clusters**
+2. Ensure you are in the correct project scope.
 
-3. Click on **Add New Cluster**
+3. From the left **Main Menu** select **Clusters**, and click **Add New Cluster**.
 
-4. You will receive a prompt asking you if you want to deploy a new cluster or import an existing cluster. Click on
-   **Deploy New Cluster**
+4. In **Public Clouds**, under **Infrastructure Provider**, select **AWS IaaS**.
 
-5. Select **AWS** and click on **Start AWS Configuration**
+5. In the bottom-right corner, click **Start AWS IaaS Configuration**.
 
-6. Populate the wizard page with the following information: name, description, tags and select AWS account. Tags on a
-   cluster are propagated to the VMs deployed to the computing environments. Click on **Next** after you have filled out
-   all the required information.
+6. Fill out the following basic information and click **Next**.
 
-7. Select a cluster profile. Click on **Next**.
+   | **Field**         | **Description**                                                                                                                                                                                     |
+   | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Cluster Name**  | A custom name for the cluster.                                                                                                                                                                      |
+   | **Description**   | Use the description to provide context about the cluster.                                                                                                                                           |
+   | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-east-1a` or `zone:vpc-private-us-east-1a`. |
+   | **Cloud Account** | If you already added your AWS account in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your AWS account information.                                 |
 
-8. Review and customize pack parameters, as desired. By default, parameters for all packs are set with values, defined
-   in the cluster profile.
+   To learn how to add an AWS account, review the [Add an AWS Account to Palette](add-aws-accounts.md) guide.
+
+7. Click **Add Cluster Profile**, select a cluster profile and click **Next**. Palette displays the cluster profile
+   layers.
+
+8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
+   All pack parameters contain default values from the cluster profile.
 
 9. Provide the AWS cloud account and placement information.
 
@@ -102,8 +109,8 @@ Use the following steps to provision a new AWS cluster:
     configuration.
 
     This is the section where you can specify the availability zones (AZ), instance types,
-    [instance cost type](architecture.md#spot-instances), disk size, and the number of nodes. Click on **Next** after
-    you have completed configuring the node pool. The minimum number of CPUs and amount of memory depend on your cluster
+    [instance cost type](architecture.md#spot-instances), disk size, and the number of nodes. Click **Next** after you
+    have completed configuring the node pool. The minimum number of CPUs and amount of memory depend on your cluster
     profile, but in general you need at least 4 CPUs and 4 GB of memory both in the control plane pool and across all
     worker pools.
 
@@ -140,13 +147,15 @@ Use the following steps to provision a new AWS cluster:
     [security groups](https://docs.aws.amazon.com/vpc/latest/userguide/security-groups.html) to apply to the worker
     group nodes. Use the **Additional Security Groups (Optional) drop-down Menu** to select additional security groups.
 
-14. Click on **Next**.
+14. Click **Next**.
 
-15. The settings page is where you can configure the patching schedule, security scans, backup settings, and set up Role
-    Based Access Control (RBAC). Review the cluster settings and make changes if needed. Click on **Validate**.
+15. Configure the patching schedule, security scans, backup settings, and set up Role Based Access Control (RBAC).
+    Review the cluster settings and make changes if needed.
 
-16. Review the settings summary and click on **Finish Configuration** to deploy the cluster. Provisioning IaaS clusters
-    can take 15 - 30 minutes depending on the cluster profile and the node pool configuration.
+16. Click **Validate** to continue.
+
+17. Review the summary and click **Finish Configuration** to deploy the cluster. Provisioning IaaS clusters can take
+    15 - 30 minutes depending on the cluster profile and the node pool configuration.
 
 The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the
 deployment progress.
@@ -157,10 +166,10 @@ You can validate that your cluster is up and available by reviewing the cluster 
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and click on **Clusters**.
+2. Navigate to the left **Main Menu** and click **Clusters**.
 
-3. The **Clusters** page contains a list of the available clusters Palette manages. Click on the row for the cluster you
-   wish to review its details page.
+3. The **Clusters** page contains a list of the available clusters Palette manages. Click on the cluster you want to
+   review.
 
 4. From the cluster details page, verify the **Cluster Status** field displays **Running**.
 
