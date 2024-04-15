@@ -169,7 +169,7 @@ capabilities. If you need remote access to the cluster, consider adding the
 
 Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on
 profiles. Check out the guide for adding a [Helm](../../../registries-and-packs/helm-charts.md) or
-[OCI](../../../registries-and-packs/oci-registry.md) registry to learn more.
+[OCI](../../../registries-and-packs/oci-registry/oci-registry.md) registry to learn more.
 
 ### Validate
 

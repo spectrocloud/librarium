@@ -4,7 +4,7 @@ title: "Spectro Cloud OCI Registry"
 description: "creation and usages of OCI Registry within Spectro Cloud"
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 70
+sidebar_position: 0
 ---
 
 Palette supports OCI registries to serve the “filesystem bundle” unpacked on disk as helm registries. Helm charts hosted
