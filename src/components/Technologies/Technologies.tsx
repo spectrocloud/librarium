@@ -12,7 +12,7 @@ import IconMapper from "../IconMapper/IconMapper";
 
 const searchOptions = {
   threshold: 0.5,
-  keys: ["fields.title"],
+  keys: ["title"],
 };
 
 interface TechnologiesProps {
@@ -67,8 +67,13 @@ export default function Technologies({ data }: TechnologiesProps) {
         return selectedFilters.category.includes(category as never);
       });
     }
+
     categoryKeys.forEach((category) => {
       let filteredTechCards = categories.get(category);
+      if (searchValue) {
+        const fuse = new Fuse(filteredTechCards, searchOptions);
+        filteredTechCards = fuse.search(searchValue).map(({ item }) => item);
+      }
       if (selectedFilters.provider) {
         filteredTechCards = filteredTechCards.filter((techCard: FrontMatterData) => {
           return techCard.cloudTypes.includes("all") || techCard.cloudTypes.includes(selectedFilters.provider);
