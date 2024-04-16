@@ -8,9 +8,9 @@ sidebar_position: 30
 tags: ["getting-started"]
 ---
 
-This tutorial will teach you how to deploy a host cluster with Palette using Amazon Web Services (AWS), Microsoft Azure,
-or Google Cloud Platform (GCP) cloud providers. You will learn about _Cluster Mode_ and _Cluster Profiles_ and how these
-components enable you to deploy customized applications to Kubernetes with minimal effort.
+This tutorial will teach you how to deploy a host cluster with Palette using Microsoft Azure. You will learn about
+_Cluster Mode_ and _Cluster Profiles_ and how these components enable you to deploy customized applications to
+Kubernetes with minimal effort.
 
 As you navigate the tutorial, refer to this diagram to help you understand how Palette uses a cluster profile as a
 blueprint for the host cluster you deploy. Palette clusters have the same node pools you may be familiar with: _control
@@ -26,7 +26,7 @@ To complete this tutorial, you will need the following.
   your Azure cloud account.
 
 - A Palette cluster profile. Follow the [Create a Cluster Profile](./create-cluster-profile.md) tutorial to create the
-  required cluster profile for your chosen cloud provider.
+  required Azure cluster profile.
 
 ## Deploy a Cluster
 
@@ -102,7 +102,7 @@ The cluster deployment process can take 15 to 30 min. The deployment time varies
 cluster profile, cluster size, and the node pool configurations provided. You can learn more about the deployment
 progress by reviewing the event log. Click on the **Events** tab to view the log.
 
-![Update the cluster](/getting-started/getting-started_deploy-k8s-cluster_event_log.webp)
+![Update the cluster](/getting-started/azure/getting-started_deploy-k8s-cluster_event_log.webp)
 
 <br />
 
@@ -124,7 +124,7 @@ Select your cluster to view its **Overview** tab. When the application is deploy
 indicated in the **Services** field, Palette exposes the service URL. Click on the URL for port **:8080** to access the
 Hello Universe application.
 
-![Cluster details page with service URL highlighted](/getting-started/getting-started_deploy-k8s-cluster_service_url.webp)
+![Cluster details page with service URL highlighted](/getting-started/azure/getting-started_deploy-k8s-cluster_service_url.webp)
 
 <br />
 
@@ -154,7 +154,7 @@ delete to access its details page.
 
 Click on **Settings** to expand the menu, and select **Delete Cluster**.
 
-![Delete cluster](/getting-started/getting-started_deploy-k8s-cluster_delete-cluster-button.webp)
+![Delete cluster](/getting-started/azure/getting-started_deploy-k8s-cluster_delete-cluster-button.webp)
 
 You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name to proceed with
 the delete step. The deletion process takes several minutes to complete.

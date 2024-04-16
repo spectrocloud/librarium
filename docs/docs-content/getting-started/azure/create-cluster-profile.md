@@ -71,7 +71,7 @@ Click on **Add Manifest** at the top of the page and fill out the following inpu
 - **Manifests** - Add your manifest by giving it a name and clicking the **New Manifest** button. Assign a name to the
   internal manifest and click on the blue button. An empty editor will be displayed on the right side of the screen.
 
-![Screenshot of unopened manifest editor](/getting-started/getting-started_create-cluster-profile_manifest_blue_btn.webp)
+![Screenshot of unopened manifest editor](/getting-started/azure/getting-started_create-cluster-profile_manifest_blue_btn.webp)
 
 In the manifest editor, insert the following content.
 
@@ -116,7 +116,7 @@ application. You may have noticed that the code snippet you added is a Kubernete
 method you can use to achieve more granular customization of your Kubernetes cluster. You can add any valid Kubernetes
 configuration to a manifest file.
 
-![Screenshot of manifest in the editor](/getting-started/getting-started_create-cluster-profile_manifest.webp)
+![Screenshot of manifest in the editor](/getting-started/azure/getting-started_create-cluster-profile_manifest.webp)
 
 The manifest defines a replica set for the application to simulate a distributed environment with a web application
 deployed to Kubernetes. The application is assigned a load balancer. Using a load balancer, you can expose a single
@@ -128,8 +128,8 @@ profile.
 ## Wrap-Up
 
 In this tutorial, you created a cluster profile, which is a template that contains the core layers required to deploy a
-host cluster using Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) cloud providers. You added
+host cluster using Microsoft Azure. You added
 a custom manifest to your profile to deploy a custom workload.
 
 We recommend that you continue to the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial to deploy this cluster
-profile to a host cluster onto your preferred cloud service provider.
+profile to a host cluster onto Azure.

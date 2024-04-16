@@ -467,7 +467,7 @@ The cluster deployment may take several minutes depending on the cloud provider,
 cluster profile. You can learn more about the deployment progress by reviewing the event log. Click on the **Events**
 tab to check the event log.
 
-![Update the cluster](/getting-started/getting-started_deploy-k8s-cluster_event_log.webp)
+![Update the cluster](/getting-started/aws/getting-started_deploy-k8s-cluster_event_log.webp)
 
 ## Verify the Application
 

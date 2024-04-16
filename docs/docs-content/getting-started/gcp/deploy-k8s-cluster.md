@@ -105,7 +105,7 @@ The cluster deployment process can take 15 to 30 min. The deployment time varies
 cluster profile, cluster size, and the node pool configurations provided. You can learn more about the deployment
 progress by reviewing the event log. Click on the **Events** tab to view the log.
 
-![Update the cluster](/getting-started/getting-started_deploy-k8s-cluster_event_log.webp)
+![Update the cluster](/getting-started/aws/getting-started_deploy-k8s-cluster_event_log.webp)
 
 <br />
 
@@ -127,7 +127,7 @@ Select your cluster to view its **Overview** tab. When the application is deploy
 indicated in the **Services** field, Palette exposes the service URL. Click on the URL for port **:8080** to access the
 Hello Universe application.
 
-![Cluster details page with service URL highlighted](/getting-started/getting-started_deploy-k8s-cluster_service_url.webp)
+![Cluster details page with service URL highlighted](/getting-started/aws/getting-started_deploy-k8s-cluster_service_url.webp)
 
 <br />
 
@@ -157,7 +157,7 @@ delete to access its details page.
 
 Click on **Settings** to expand the menu, and select **Delete Cluster**.
 
-![Delete cluster](/getting-started/getting-started_deploy-k8s-cluster_delete-cluster-button.webp)
+![Delete cluster](/getting-started/aws/getting-started_deploy-k8s-cluster_delete-cluster-button.webp)
 
 You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name to proceed with
 the delete step. The deletion process takes several minutes to complete.
