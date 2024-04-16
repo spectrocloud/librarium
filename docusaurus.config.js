@@ -358,10 +358,10 @@ const config = {
       ],
       algolia: {
         // The application ID provided by Algolia
-        appId: process.env.ALGOLIA_APP_ID,
+        appId: "9AJ6SKEWEN",
         // Public API key: it is safe to commit it
-        apiKey: process.env.ALGOLIA_SEARCH_KEY,
-        indexName: "prod-docusaurus-librarium",
+        apiKey: "ce2b4db7872279451d8b8964a2239e28",
+        indexName: "spectrocloud",
         // Optional: see doc section below
         contextualSearch: true,
         // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
@@ -376,6 +376,7 @@ const config = {
         searchParameters: {},
         // Optional: path for search page that enabled by default (`false` to disable it)
         searchPagePath: "search",
+        debug: true,
       },
       sidebar: {
         hideable: true,
