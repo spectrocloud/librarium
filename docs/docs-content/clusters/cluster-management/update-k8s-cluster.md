@@ -1102,7 +1102,7 @@ To learn more about Palette, we encourage you to check out the reference resourc
 
 - [Palette Clusters](../clusters.md)
 
-- [Backup and Restore](./backup-restore)
+- [Backup and Restore](./backup-restore/backup-restore.md)
 
 - [Deploy a Custom Pack](../../registries-and-packs/deploy-pack.md)
 
