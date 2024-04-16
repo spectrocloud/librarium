@@ -78,11 +78,11 @@ operations.
 
 Now you are ready to deploy a cluster using the infrastructure cluster profile you created. If desired, you can add
 layers to your infrastructure profile using add-on profiles. For more information, check out the
-[Create an Add-on Profile](../create-cluster-profiles/create-addon-profile/) guide.
+[Create an Add-on Profile](../create-cluster-profiles/create-addon-profile/create-addon-profile.md) guide.
 
 ## Resources
 
-- [Create an Add-on Profile](../create-cluster-profiles/create-addon-profile/)
+- [Create an Add-on Profile](../create-cluster-profiles/create-addon-profile/create-addon-profile.md)
 
 - [Create a Full Profile](../create-cluster-profiles/create-full-profile.md)
 

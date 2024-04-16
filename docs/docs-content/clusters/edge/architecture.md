@@ -61,11 +61,11 @@ Nvidia Jetson Orin device family.
 
 Palette provides the following distributions for edge installations.
 
-| Name                                                                                                  | OS               | Kubernetes Distro | CNIs            | CSIs      |
-| ----------------------------------------------------------------------------------------------------- | ---------------- | ----------------- | --------------- | --------- |
-| Palette Optimized K3s                                                                                 | openSUSE, Ubuntu | K3s               | Calico, Flannel | Rook Ceph |
-| Palette Optimized RKE2                                                                                | openSUSE, Ubuntu | RKE2              | Calico, Flannel | Rook Ceph |
-| [Palette eXtended Kubernetes Edge (PXK-E)](../../glossary-all#palette-extended-kubernetes-edge-pxk-e) | openSUSE, Ubuntu | CNCF              | Calico, Flannel | Rook Ceph |
+| Name                                                                                                     | OS               | Kubernetes Distro | CNIs            | CSIs      |
+| -------------------------------------------------------------------------------------------------------- | ---------------- | ----------------- | --------------- | --------- |
+| Palette Optimized K3s                                                                                    | openSUSE, Ubuntu | K3s               | Calico, Flannel | Rook Ceph |
+| Palette Optimized RKE2                                                                                   | openSUSE, Ubuntu | RKE2              | Calico, Flannel | Rook Ceph |
+| [Palette eXtended Kubernetes Edge (PXK-E)](../../glossary-all.md#palette-extended-kubernetes-edge-pxk-e) | openSUSE, Ubuntu | CNCF              | Calico, Flannel | Rook Ceph |
 
 ## Supported Configurations
 
