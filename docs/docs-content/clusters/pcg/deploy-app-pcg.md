@@ -641,4 +641,4 @@ We encourage you to check out the reference resources below to learn more about 
 - [Private Cloud Gateway](./pcg.md)
 - [PCG Architecture](architecture.md)
 - [Deploy a PCG to VMware vSphere](./deploy-pcg/vmware.md)
-- [Manage PCG](./manage-pcg/)
+- [Manage PCG](./manage-pcg/manage-pcg.md)
