@@ -15,14 +15,14 @@ allows your Edge cluster to reboot containers or add new nodes without being con
 If you specified the installation mode of the Edge Installer to be `airgap`, any images that were included in the Edge
 Installer ISO will also be loaded into the Harbor registry. For more information about building content bundles, refer
 to [Build Content Bundle](../../edgeforge-workflow/build-content-bundle.md) and
-[Build Edge Artifacts with Content Bundles](../../edgeforge-workflow/palette-canvos/).
+[Build Edge Artifacts with Content Bundles](../../edgeforge-workflow/palette-canvos/palette-canvos.md).
 
 If you enable the local Harbor registry on a cluster, the Palette agent will pull all images requested by the cluster
 from the Harbor registry. If your cluster uses any image that is not included in your cluster profile, you will need to
 instruct the Palette agent to not pull that image from the Harbor registry by disabling this behavior for certain
 namespaces. You can do this by giving a namespace the label `stylus.io/imageswap=disable`. For more information, refer
 to
-[Harbor Edge-Native Config pack](/docs/docs-content/integrations/harbor-edge.md#enable-image-download-from-outside-of-harbor)
+[Harbor Edge-Native Config pack](../../../../integrations/harbor-edge.md#enable-image-download-from-outside-of-harbor)
 documentation.
 
 :::preview
@@ -71,7 +71,7 @@ documentation.
 
 6. Click **Add New Pack** and search for the **Harbor Edge Native Config** pack. Add the pack to your cluster profile.
    For more information about the pack and its parameters, refer to
-   [Harbor Edge Native Config pack documentation](/docs/docs-content/integrations/harbor-edge.md).
+   [Harbor Edge Native Config pack documentation](../../../../integrations/harbor-edge.md).
 
 7. In the `harbor-config.storage` parameter, make sure you allocate enough storage in the `registry` field to store all
    your images.
@@ -102,8 +102,8 @@ documentation.
 
 6. Type in your credentials to log in to Harbor. The username is always `admin`. The password is what you configured
    during cluster creation. If you don't know your password, refer to
-   [Retrieve Harbor Credentials](/docs/docs-content/integrations/harbor-edge.md#retrieve-harbor-credentials) to retrieve
-   your password.
+   [Retrieve Harbor Credentials](../../../../integrations/harbor-edge.md#retrieve-harbor-credentials) to retrieve your
+   password.
 
 7. In the **Projects** view, select the **spectro-images** project.
 
