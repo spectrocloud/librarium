@@ -11,6 +11,8 @@ tags: ["getting-started"]
 In this guide, you learn how to set up Palette for use with your AWS cloud account. These steps are required in order to
 authenticate Palette and allow it to deploy host clusters.
 
+## Enablement
+
 The prerequisite steps to getting started with Palette on AWS are as follows.
 
 - Sign up to [Palette](https://www.spectrocloud.com/get-started).
@@ -19,17 +21,16 @@ The prerequisite steps to getting started with Palette on AWS are as follows.
     [Roles and Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
     documentation for more information.
 
-- A public cloud account from
-  [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
+- Sign up to a public cloud account from
+  [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account).
 
-- Register the cloud account in Palette. The
-  [Register and Manage AWS Accounts](../../clusters/public-cloud/aws/add-aws-accounts.md) page provides additional
-  guidance.
+  - Register the AWS cloud account in Palette. The
+    [Register and Manage AWS Accounts](../../clusters/public-cloud/aws/add-aws-accounts.md) page provides additional
+    guidance.
 
-- An SSH Key Pair. Use the [Create and Upload an SSH Key](../../clusters/cluster-management/ssh-keys.md) guide to learn
-  how to create an SSH key and upload it to Palette.
+- Create an SSH key and upload it to Palette. Check out the [Create and Upload an SSH Key](../../clusters/cluster-management/ssh-keys.md) guide for more information.
 
-  - AWS users must create an AWS Key pair before starting the tutorial. If you need additional guidance, check out the
+  - AWS users must create an AWS Key pair before following our tutorials. If you need additional guidance, check out the
     [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html)
     tutorial.
 

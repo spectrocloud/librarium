@@ -58,12 +58,6 @@ Explore more through the following pages.
       relativeURL: "./introduction",
     },
     {
-      title: "Palette Dashboard",
-      description: "Tour the Palette Project and Tenant Admin dashboards.",
-      buttonText: "Learn more",
-      relativeURL: "./dashboard",
-    },
-    {
       title: "Cluster Profiles",
       description: "Learn about Palette Cluster Profiles and Packs.",
       buttonText: "Learn more",

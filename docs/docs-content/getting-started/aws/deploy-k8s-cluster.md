@@ -8,8 +8,7 @@ sidebar_position: 30
 tags: ["getting-started"]
 ---
 
-This tutorial will teach you how to deploy a host cluster with Palette using Amazon Web Services (AWS), Microsoft Azure,
-or Google Cloud Platform (GCP) cloud providers. You will learn about _Cluster Mode_ and _Cluster Profiles_ and how these
+This tutorial will teach you how to deploy a host cluster with Palette using Amazon Web Services (AWS). You will learn about _Cluster Mode_ and _Cluster Profiles_ and how these
 components enable you to deploy customized applications to Kubernetes with minimal effort.
 
 As you navigate the tutorial, refer to this diagram to help you understand how Palette uses a cluster profile as a
@@ -26,7 +25,7 @@ To complete this tutorial, you will need the following.
   your AWS cloud account.
 
 - A Palette cluster profile. Follow the [Create a Cluster Profile](./create-cluster-profile.md) tutorial to create the
-  required cluster profile for your chosen cloud provider.
+  required AWS cluster profile.
 
 ## Deploy a Cluster
 
@@ -104,7 +103,7 @@ The cluster deployment process can take 15 to 30 min. The deployment time varies
 cluster profile, cluster size, and the node pool configurations provided. You can learn more about the deployment
 progress by reviewing the event log. Click on the **Events** tab to view the log.
 
-![Update the cluster](/getting-started/getting-started_deploy-k8s-cluster_event_log.webp)
+![Update the cluster](/getting-started/aws/getting-started_deploy-k8s-cluster_event_log.webp)
 
 <br />
 
@@ -180,8 +179,7 @@ selection to remove the cluster profile.
 ## Wrap-Up
 
 In this tutorial, you used the cluster profile you created in the previous
-[Create a Cluster Profile](./create-cluster-profile.md) tutorial to deploy a host cluster onto your preferred cloud
-service provider. After the cluster deployed, you verified the Hello Universe application was successfully deployed.
+[Create a Cluster Profile](./create-cluster-profile.md) tutorial to deploy a host cluster onto AWS. After the cluster deployed, you verified the Hello Universe application was successfully deployed.
 
 We recommend that you continue to the [Deploy Cluster Profile Updates](./update-k8s-cluster.md) tutorial to learn how to
 update your host cluster.

@@ -23,9 +23,9 @@ notable reasons why you would want to utilize IaC are:
 If want to become more familiar with Terraform, we recommend you check out the
 [Terraform](https://developer.hashicorp.com/terraform/intro) learning resources from HashiCorp.
 
-This tutorial will teach you how to deploy a host cluster with Terraform using Amazon Web Services (AWS), Microsoft
-Azure, or Google Cloud Platform (GCP) cloud providers. You will learn about _Cluster Mode_ and _Cluster Profiles_ and
-how these components enable you to deploy customized applications to Kubernetes with minimal effort using the
+This tutorial will teach you how to deploy a host cluster with Terraform using Amazon Web Services (AWS). You will learn
+about _Cluster Mode_ and _Cluster Profiles_ and how these components enable you to deploy customized applications to
+Kubernetes with minimal effort using the
 [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider.
 
 ## Prerequisites
@@ -38,8 +38,8 @@ To complete this tutorial, you will need the following items
 - A public cloud account from
   [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account).
 
-- Follow the steps described in the [Set up Palette with AWS](./setup.md) guide to authenticate Palette for use with
-  your AWS cloud account.
+  - Follow the steps described in the [Set up Palette with AWS](./setup.md) guide to authenticate Palette for use with
+    your AWS cloud account.
 
 ## Set Up Local Environment
 
@@ -186,7 +186,7 @@ To help you get started with Terraform, the tutorial code is structured to suppo
 GCP, or AWS. Before you deploy a host cluster to your target provider, take a few moments to review the following files
 in the folder structure.
 
-- **providers.tf** - This file contains the Terraform providers that are used to support the deployment of the cluster.
+- **provider.tf** - This file contains the Terraform providers that are used to support the deployment of the cluster.
 
 - **inputs.tf** - This file contains all the Terraform variables for the deployment logic.
 
@@ -194,7 +194,7 @@ in the folder structure.
 
 - **cluster_profiles.tf** - This file contains the cluster profile definitions for each cloud provider.
 
-- **cluster.tf** - This file has all the required cluster configurations to deploy a host cluster to one of the cloud
+- **clusters.tf** - This file has all the required cluster configurations to deploy a host cluster to one of the cloud
   providers.
 
 - **terraform.tfvars** - Use this file to customize the deployment and target a specific cloud provider. This is the
@@ -329,10 +329,8 @@ data "spectrocloud_pack" "aws_k8s" {
 Using the data resource, you avoid manually typing in the parameter values required by the cluster profile's `pack {}`
 block.
 
-The **clusters.tf** file contains the definitions for deploying a host cluster to one of the cloud providers. To create
-a host cluster, you must use a cluster resource for the cloud provider you are targeting.
-
-In this tutorial, the following Terraform cluster resources are used.
+The **clusters.tf** file contains the definitions for deploying a host cluster to one of the public cloud providers. To create
+a host cluster, you must use a cluster resource for the cloud provider you are targeting. The following Terraform cluster resources are defined in this file.
 
 | Terraform Resource                                                                                                                    | Platform |
 | ------------------------------------------------------------------------------------------------------------------------------------- | -------- |
@@ -340,47 +338,43 @@ In this tutorial, the following Terraform cluster resources are used.
 | [`spectrocloud_cluster_azure`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_azure) | Azure    |
 | [`spectrocloud_cluster_gcp`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_gcp)     | GCP      |
 
-Using the `spectrocloud_cluster_azure` resource in this tutorial as an example, note how the resource accepts a set of
+Using the `spectrocloud_cluster_aws` resource in this tutorial as an example, note how the resource accepts a set of
 parameters. When deploying a cluster, you can change the same parameters in the Palette user interface (UI). You can
 learn more about each parameter by reviewing the resource documentation page hosted in the Terraform registry.
 
 ```hcl
-resource "spectrocloud_cluster_azure" "cluster" {
-  name             = "azure-cluster"
-  tags             = concat(var.tags, ["env:azure"])
-  cloud_account_id = data.spectrocloud_cloudaccount_azure.account[0].id
+resource "spectrocloud_cluster_aws" "aws-cluster" {
+  count = var.deploy-aws ? 1 : 0
+
+  name             = "aws-cluster"
+  tags             = concat(var.tags, ["env:aws"])
+  cloud_account_id = data.spectrocloud_cloudaccount_aws.account[0].id
 
   cloud_config {
-    subscription_id = var.azure_subscription_id
-    resource_group  = var.azure_resource_group
-    region          = var.azure-region
-    ssh_key         = tls_private_key.tutorial_ssh_key[0].public_key_openssh
+    region       = var.aws-region
+    ssh_key_name = var.aws-key-pair-name
   }
 
   cluster_profile {
-    id = spectrocloud_cluster_profile.azure-profile[0].id
+    id = spectrocloud_cluster_profile.aws-profile[0].id
   }
 
   machine_pool {
     control_plane           = true
     control_plane_as_worker = true
-    name                    = "control-plane-pool"
-    count                   = var.azure_control_plane_nodes.count
-    instance_type           = var.azure_control_plane_nodes.instance_type
-    azs                     = var.azure_control_plane_nodes.azs
-    is_system_node_pool     = var.azure_control_plane_nodes.is_system_node_pool
-    disk {
-      size_gb = var.azure_control_plane_nodes.disk_size_gb
-      type    = "Standard_LRS"
-    }
+    name                    = "master-pool"
+    count                   = var.aws_master_nodes.count
+    instance_type           = var.aws_master_nodes.instance_type
+    disk_size_gb            = var.aws_master_nodes.disk_size_gb
+    azs                     = var.aws_master_nodes.availability_zones
   }
 
   machine_pool {
-    name                = "worker-basic"
-    count               = var.azure_worker_nodes.count
-    instance_type       = var.azure_worker_nodes.instance_type
-    azs                 = var.azure_worker_nodes.azs
-    is_system_node_pool = var.azure_worker_nodes.is_system_node_pool
+    name          = "worker-pool"
+    count         = var.aws_worker_nodes.count
+    instance_type = var.aws_worker_nodes.instance_type
+    disk_size_gb  = var.aws_worker_nodes.disk_size_gb
+    azs           = var.aws_worker_nodes.availability_zones
   }
 
   timeouts {
@@ -391,7 +385,7 @@ resource "spectrocloud_cluster_azure" "cluster" {
 ```
 
 To deploy a cluster using Terraform, you must first modify the **terraform.tfvars** file. Open the **terraform.tfvars**
-file in the editor of your choice, and locate the cloud provider you will use to deploy a host cluster.
+file in the editor of your choice, and locate the AWS cloud provider.
 
 To simplify the process, we added a toggle variable in the Terraform template, that you can use to select the deployment
 environment. Each cloud provider has a section in the template that contains all the variables you must populate.
@@ -446,7 +440,7 @@ Output:
 Plan: 2 to add, 0 to change, 0 to destroy.
 ```
 
-If you change the desired cloud provider's toggle variable to `true,` you will receive an output message that two new
+If you change the AWS cloud provider's toggle variable to `true,` you will receive an output message that two new
 resources will be created. The two resources are your cluster profile and the host cluster.
 
 To deploy all the resources, use the `apply` command.
@@ -456,14 +450,14 @@ terraform apply -auto-approve
 ```
 
 To check out the cluster profile creation in Palette, log in to [Palette](https://console.spectrocloud.com), and from
-the left **Main Menu** click on **Profiles**. Locate the cluster profile with the name pattern
-`tf-[cloud provier]-profile`. Click on the cluster profile to review its details, such as layers, packs, and versions.
+the left **Main Menu** click on **Profiles**. Locate the cluster profile named `tf-aws-profile`. Click
+on the cluster profile to review its details, such as layers, packs, and versions.
 
-![A view of the cluster profile](/getting-started/aws/getting-started_deploy-k8s-cluster_profile_cluster_profile_review.webp)
+![A view of the cluster profile](/getting-started/aws/getting-started_deploy-k8s-cluster-tf_profile_review.webp)
 
 You can also check the cluster creation process by navigating to the left **Main Menu** and selecting **Clusters**.
 
-![Update the cluster](/getting-started/aws/getting-started_deploy-k8s-cluster_create_cluster.webp)
+![Update the cluster](/getting-started/aws/getting-started_deploy-k8s-cluster-tf_create_cluster.webp)
 
 Select your cluster to review its details page, which contains the status, cluster profile, event logs, and more.
 
@@ -471,7 +465,7 @@ The cluster deployment may take several minutes depending on the cloud provider,
 cluster profile. You can learn more about the deployment progress by reviewing the event log. Click on the **Events**
 tab to check the event log.
 
-![Update the cluster](/getting-started/getting-started_deploy-k8s-cluster_event_log.webp)
+![Update the cluster](/getting-started/aws/getting-started_deploy-k8s-cluster-tf_event_log.webp)
 
 ## Verify the Application
 

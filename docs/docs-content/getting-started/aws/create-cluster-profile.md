@@ -129,8 +129,6 @@ profile.
 ## Wrap-Up
 
 In this tutorial, you created a cluster profile, which is a template that contains the core layers required to deploy a
-host cluster using Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) cloud providers. You added
-a custom manifest to your profile to deploy a custom workload.
-
-We recommend that you continue to the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial to deploy this cluster
-profile to a host cluster onto your preferred cloud service provider.
+host cluster using Amazon Web Services (AWS). You added
+a custom manifest to your profile to deploy a custom workload. We recommend that you continue to the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial to deploy this cluster
+profile to a host cluster onto AWS.
