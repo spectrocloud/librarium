@@ -179,7 +179,7 @@ environments.
 
    | **Parameter**                                            | **Value**                                                              | **Environment-Specific** |
    | -------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------ |
-   | **Datacenter**                                           | The vSphere Datacenter to target when deploying the PCG cluster.       | Yes                      |
+   | **Datacenter**                                           | The vSphere Data center to target when deploying the PCG cluster.      | Yes                      |
    | **Folder**                                               | The vSphere folder to target when deploying the PCG cluster.           | Yes                      |
    | **Network**                                              | The port group to which the PCG cluster will be connected.             | Yes                      |
    | **Resource Pool**                                        | The vSphere resource pool to target when deploying the PCG cluster.    | Yes                      |
@@ -371,7 +371,7 @@ configurations if needed. Proceed by clicking **Next**.
 
 **Cluster Configuration**
 
-In the **Cluster Config** section, provide specific information about your VMware vSphere enviroment. First, select the
+In the **Cluster Config** section, provide specific information about your VMware vSphere environment. First, select the
 **Datacenter** and **Deployment Folder** where the cluster nodes will be launched. Next, select the **Image Template
 Folder** to which the Spectro templates are imported, and choose **DHCP** as the **Network Type**. Finally, provide the
 **SSH key** for accessing the cluster nodes. Proceed by clicking **Next** to advance to the **Nodes Configuration**
@@ -487,7 +487,7 @@ the table below.
 | -------------------- | ----------------------------------------------------------------------------------------------------------- | -------- |
 | `metallb_ip`         | Provide a valid IP address or IP range from your VMware environment to be assigned to your load balancer.   | Yes      |
 | `pcg_name`           | Provide the name of the PCG that will be used to deploy the VMware cluster.                                 | Yes      |
-| `datacenter_name`    | Provide the name of the vSphere datacenter to target when deploying the VMware cluster.                     | Yes      |
+| `datacenter_name`    | Provide the name of the vSphere data center to target when deploying the VMware cluster.                    | Yes      |
 | `folder_name`        | Provide the name of the vSphere folder to target when deploying the VMware cluster.                         | Yes      |
 | `search_domain`      | Provide the name of the network search domain of your vSphere environment. For example, `spectrocloud.dev`. | Yes      |
 | `vsphere_cluster`    | Provide the vSphere compute cluster to use for the VMware cluster deployment.                               | Yes      |
