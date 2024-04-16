@@ -518,7 +518,7 @@ information.
 
 In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s as your
 intended Kubernetes distribution when you build your OS image. For more information, refer to the
-[EdgeForge Workflow](../clusters/edge/edgeforge-workflow/) guide.
+[EdgeForge Workflow](../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) guide.
 
 :::
 
@@ -662,7 +662,7 @@ information.
 
 In order to use K3s as part of an Edge deployment, you need to go through the EdgeForge process and specify K3s as your
 intended Kubernetes distribution when you build your OS image. For more information, refer to the
-[EdgeForge Workflow](../clusters/edge/edgeforge-workflow/) guide.
+[EdgeForge Workflow](../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) guide.
 
 :::
 

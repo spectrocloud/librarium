@@ -74,10 +74,10 @@ registry URL and the credentials needed to authenticate with the registry in the
 
 6. At the root level of YAML for your OS layer, add the `providerCredentials` field to provide the credentials you need
    to authenticate with your registry. For more information about the `providerCredentials` field, refer to
-   [Bring Your Own OS (BYOOS)](../../../../integrations/byoos.md) pack page. The `providerCredentials.password` field
-   will be masked when you provide it in the YAML file. You can also use a macro to store your credentials instead of
+   [Bring Your Own OS (BYOOS)](../../../integrations/byoos.md) pack page. The `providerCredentials.password` field will
+   be masked when you provide it in the YAML file. You can also use a macro to store your credentials instead of
    providing it directly in the YAML file. For more information, refer to
-   [Macros Support](../../../cluster-management/macros.md):
+   [Macros Support](../../cluster-management/macros.md):
 
    ```yaml {7-8}
    pack:
