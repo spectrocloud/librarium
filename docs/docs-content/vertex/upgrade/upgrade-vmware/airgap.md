@@ -29,11 +29,8 @@ Palette VerteX upgrade.
 - Access to the Palette VerteX airgap support Virtual Machine (VM) that you used for the initial Palette VerteX
   installation.
 
-- Refer to [Access Palette VerteX](../../vertex.md#access-palette-vertex) to download the following from our support:
-
-  - The new airgap Palette VerteX installation bin.
-  - The OVA with the Operating System (OS) and Kubernetes distribution required for the Palette VerteX nodes (if the new
-    version of Palette VerteX requires a new version of the OS and Kubernetes).
+- Refer to [Access Palette VerteX](../../vertex.md#access-palette-vertex) to download the new airgap Palette VerteX
+  installation bin.
 
 - A diff or text comparison tool of your choice.
 
