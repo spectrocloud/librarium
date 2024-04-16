@@ -27,7 +27,8 @@ Palette upgrade.
 
 - Access to the Palette airgap support Virtual Machine (VM) that you used for the initial Palette installation.
 
-- Refer to [Access Palette](/enterprise-version/#access-palette) to download the new airgap Palette installation bin.
+- Refer to [Access Palette](../../enterprise-version.md#access-palette) to download the new airgap Palette installation
+  bin.
 
 - A diff or text comparison tool of your choice.
 
