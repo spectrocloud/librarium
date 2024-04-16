@@ -29,7 +29,6 @@ export default function PacksReadme() {
   useEffect(() => {
     const importComponent = async () => {
       try {
-        console.log("packName", packName);
         const module = await import(`../../../docs/docs-content/integrations/${packName}.md`);
         const PackReadMeComponent = module.default;
         setMd(<PackReadMeComponent />);
