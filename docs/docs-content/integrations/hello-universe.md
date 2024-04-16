@@ -46,8 +46,8 @@ not need to take any additional actions regarding these parameters.
 
 To utilize the Hello Universe pack, create either a
 [full Palette cluster profile](../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md) or an
-[add-on Palette cluster profile](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/) and add the
-pack to your profile.
+[add-on Palette cluster profile](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md)
+and add the pack to your profile.
 
 If your infrastructure provider does not offer a native load balancer solution, such as VMware and MAAS, the
 [MetalLB](./metallb.md) pack must be included to the cluster profile to help the LoadBalancer service specified in the

@@ -104,8 +104,8 @@ cluster profile's Kubernetes layer.
     </Tabs>
 
 5. If you have not deployed a cluster, finish the cluster profile creation and deploy a cluster. For more information,
-   refer to [Create Cluster Profile](../../../profiles/cluster-profiles/create-cluster-profiles/) for non-Edge and
-   [Model Cluster Profile](../../edge/site-deployment/model-profile.md).
+   refer to [Create Cluster Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md)
+   for non-Edge and [Model Cluster Profile](../../edge/site-deployment/model-profile.md).
 
    If you are editing the profile of an active cluster, updating the profile will trigger and update to the active
    cluster. We recommend that you publish a new version of the profile instead of updating a profile directly. For more
