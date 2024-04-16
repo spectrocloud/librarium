@@ -408,9 +408,6 @@ In the **Projects** section, click on **New Project**. A project in Harbor conta
 This tutorial uses **spectro-oci-registry** as the project name. Keep the default settings for the remaining
 configuration options and proceed by clicking **OK**.
 
-Next, create another project called **spectro-packs**. This specific project is required to complete the validation of
-your registry in Palette.
-
 ![Screenshot of Harbor project](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-project.webp)
 
 </TabItem>
