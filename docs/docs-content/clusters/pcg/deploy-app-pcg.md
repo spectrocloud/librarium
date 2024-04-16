@@ -179,7 +179,7 @@ environments.
 
    | **Parameter**                                            | **Value**                                                              | **Environment-Specific** |
    | -------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------ |
-   | **Datacenter**                                           | The vSphere Data center to target when deploying the PCG cluster.      | Yes                      |
+   | **Datacenter**                                           | The vSphere data center to target when deploying the PCG cluster.      | Yes                      |
    | **Folder**                                               | The vSphere folder to target when deploying the PCG cluster.           | Yes                      |
    | **Network**                                              | The port group to which the PCG cluster will be connected.             | Yes                      |
    | **Resource Pool**                                        | The vSphere resource pool to target when deploying the PCG cluster.    | Yes                      |
