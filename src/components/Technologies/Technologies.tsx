@@ -50,8 +50,47 @@ export default function Technologies({ data }: TechnologiesProps) {
     return sortedCategoriesMap;
   }, [data]);
 
-  const onSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
+  const filteredTechCards = useMemo(() => {
+    let categoryKeys: string[] = Array.from(categories.keys());
+    if (selectedFilters.category.length > 0) {
+      categoryKeys = categoryKeys.filter((category: string) => {
+        return selectedFilters.category.includes(category);
+      });
+    }
+    const selectedCategoryItems = new Map<string, any>();
+    categoryKeys.forEach((category) => {
+      let filteredCards = categories.get(category);
+      if (searchValue) {
+        const fuse = new Fuse(filteredCards, searchOptions);
+        filteredCards = fuse.search(searchValue).map(({ item }) => item);
+      }
+      if (selectedFilters.provider) {
+        filteredCards = filteredCards.filter((techCard: FrontMatterData) => {
+          return techCard.cloudTypes.includes("all") || techCard.cloudTypes.includes(selectedFilters.provider);
+        });
+      }
+
+      if (selectedFilters.additionalFilters?.length && selectedFilters.additionalFilters.includes("Verified")) {
+        filteredCards = filteredCards.filter((techCard: FrontMatterData) => {
+          return techCard.verified;
+        }) as FrontMatterData[];
+      }
+      if (selectedFilters.additionalFilters?.length && selectedFilters.additionalFilters.includes("Community")) {
+        filteredCards = filteredCards.filter((techCard: FrontMatterData) => {
+          return techCard.community;
+        });
+      }
+      selectedCategoryItems.set(category, filteredCards);
+    });
+    if (!selectedFilters.category.length && !selectedFilters.provider && !selectedFilters.additionalFilters.length && !searchValue) {
+      return categories;
+    } else {
+      return selectedCategoryItems;
+    }
+  }, [data, selectedFilters, searchValue]);
+
+  const onSearch = (value: string) => {
+    setSearchValue(value);
   };
   const renderPacks = (fields: FrontMatterData[]) => {
     return fields.map((field) => {
@@ -60,42 +99,16 @@ export default function Technologies({ data }: TechnologiesProps) {
     });
   };
   const renderPacksCategories = () => {
-    let categoryKeys: string[] = Array.from(categories.keys());
-    const categoryItems: JSX.Element[] = [];
-    if (selectedFilters.category.length > 0) {
-      categoryKeys = categoryKeys.filter((category: string) => {
-        return selectedFilters.category.includes(category as never);
-      });
-    }
-
+    const renderedCategoryItems: React.ReactNode[] = [];
+    let categoryKeys: string[] = Array.from(filteredTechCards.keys());
     categoryKeys.forEach((category) => {
-      let filteredTechCards = categories.get(category);
-      if (searchValue) {
-        const fuse = new Fuse(filteredTechCards, searchOptions);
-        filteredTechCards = fuse.search(searchValue).map(({ item }) => item);
-      }
-      if (selectedFilters.provider) {
-        filteredTechCards = filteredTechCards.filter((techCard: FrontMatterData) => {
-          return techCard.cloudTypes.includes("all") || techCard.cloudTypes.includes(selectedFilters.provider);
-        });
-      }
-
-      if (selectedFilters.additionalFilters?.length && selectedFilters.additionalFilters.includes("Verified")) {
-        filteredTechCards = filteredTechCards.filter((techCard: FrontMatterData) => {
-          return techCard.verified;
-        });
-      }
-      if (selectedFilters.additionalFilters?.length && selectedFilters.additionalFilters.includes("Community")) {
-        filteredTechCards = filteredTechCards.filter((techCard: FrontMatterData) => {
-          return techCard.community;
-        });
-      }
-      if (filteredTechCards.length) {
-        const obj = (<Collapse.Panel header={addPanelHeader(category)} key={category}>{renderPacks(filteredTechCards)}</Collapse.Panel>)
-        categoryItems.push(obj);
+      const categoryItems = filteredTechCards.get(category);
+      if (categoryItems.length) {
+        const obj = (<Collapse.Panel header={addPanelHeader(category)} key={category}>{renderPacks(categoryItems)}</Collapse.Panel>)
+        renderedCategoryItems.push(obj);
       }
     });
-    return categoryItems;
+    return renderedCategoryItems;
   };
   function addPanelHeader(category: string) {
     return (
