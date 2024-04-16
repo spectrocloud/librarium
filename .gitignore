@@ -37,6 +37,8 @@ palette-docs.pdf
 
 docs/api-content/api-docs/v1/*.mdx
 docs/api-content/api-docs/v1/sidebar.*
+docs/api-content/api-docs/edge-v1/*.mdx
+docs/api-content/api-docs/edge-v1/sidebar.*
 
 # Versions Content
 versions.json
@@ -53,3 +55,10 @@ staging_sidebars/
 ## Cosign
 
 cosign.key
+
+# Visual Compare
+screenshots/
+tests/screenshot.spec.ts-snapshots/
+test-results/
+playwright-report/
+artifact.zip

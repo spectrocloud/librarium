@@ -44,105 +44,98 @@ following the process described in the
 
 ## Deploy Workload Cluster
 
-3. Copy the required variables shown in the examples below to your terminal, add your environment-specific information,
-   and export the variables. The table describes the environment variables. For more information, review the
-   [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) guide.
+3.  Copy the required variables shown in the examples below to your terminal, add your environment-specific information,
+    and export the variables. The table describes the environment variables. For more information, review the
+    [Nutanix Getting Started](https://opendocs.nutanix.com/capx/v1.1.x/getting_started/) guide.
 
-   | **Variable**                          | **Description**                                                                                     |
-   | ------------------------------------- | --------------------------------------------------------------------------------------------------- |
-   | `NUTANIX_ENDPOINT`                    | The Prism Central IP address or FQDN.                                                               |
-   | `NUTANIX_USER`                        | The Prism Central user name.                                                                        |
-   | `NUTANIX_PASSWORD`                    | The Prism Central user password.                                                                    |
-   | `NUTANIX_INSECURE`                    | The SSL behavior you used in the `cloudClusterTemplate.yaml` file. The default behavior is `false`. |
-   | `NUTANIX_SSH_AUTHORIZED_KEY`          | Provide your public SSH key.                                                                        |
-   | `NUTANIX_PRISM_ELEMENT_CLUSTER_NAME`  | The Nutanix Prism Element cluster name.                                                             |
-   | `NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME` | The Nutanix CAPI OS Image                                                                           |
-   | `NUTANIX_SUBNET_NAME`                 | The subnet of the Nutanix workload cluster.                                                         |
-   | `KUBERNETES_VERSION`                  | The Kubernetes version the workload cluster uses. Precede the version with `v`.                     |
-   | `WORKER_MACHINE_COUNT`                | The number of nodes in the workload cluster.                                                        |
+    | **Variable**                          | **Description**                                                                                     |
+    | ------------------------------------- | --------------------------------------------------------------------------------------------------- |
+    | `NUTANIX_ENDPOINT`                    | The Prism Central IP address or FQDN.                                                               |
+    | `NUTANIX_USER`                        | The Prism Central user name.                                                                        |
+    | `NUTANIX_PASSWORD`                    | The Prism Central user password.                                                                    |
+    | `NUTANIX_INSECURE`                    | The SSL behavior you used in the `cloudClusterTemplate.yaml` file. The default behavior is `false`. |
+    | `NUTANIX_SSH_AUTHORIZED_KEY`          | Provide your public SSH key.                                                                        |
+    | `NUTANIX_PRISM_ELEMENT_CLUSTER_NAME`  | The Nutanix Prism Element cluster name.                                                             |
+    | `NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME` | The Nutanix CAPI OS Image                                                                           |
+    | `NUTANIX_SUBNET_NAME`                 | The subnet of the Nutanix workload cluster.                                                         |
+    | `KUBERNETES_VERSION`                  | The Kubernetes version the workload cluster uses. Precede the version with `v`.                     |
+    | `WORKER_MACHINE_COUNT`                | The number of nodes in the workload cluster.                                                        |
 
-   Copy the following Nutanix environment variables to your terminal, provide values, and export the variables.
+    Copy the following Nutanix environment variables to your terminal, provide values, and export the variables.
 
-   ```bash
-   export NUTANIX_ENDPOINT=""
-   export NUTANIX_USER=""
-   export NUTANIX_PASSWORD=""
-   export NUTANIX_INSECURE=false
-   export NUTANIX_SSH_AUTHORIZED_KEY=""
-   export NUTANIX_PRISM_ELEMENT_CLUSTER_NAME=""
-   export NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME=""
-   export NUTANIX_SUBNET_NAME=""
-   ```
+```bash
+export NUTANIX_ENDPOINT=""
+export NUTANIX_USER=""
+export NUTANIX_PASSWORD=""
+export NUTANIX_INSECURE=false
+export NUTANIX_SSH_AUTHORIZED_KEY=""
+export NUTANIX_PRISM_ELEMENT_CLUSTER_NAME=""
+export NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME=""
+export NUTANIX_SUBNET_NAME=""
+```
 
-   You can ensure the Nutanix variables were successfully exported by issuing the following command in your terminal.
+    You can ensure the Nutanix variables were successfully exported by issuing the following command in your terminal.
 
-   ```bash
-   env | grep "NUTANIX"
-   ```
+```bash
+env | grep "NUTANIX"
+```
 
-   Copy the following environment variables to your terminal, provide values, and export the variables.
+    Copy the following environment variables to your terminal, provide values, and export the variables.
 
-   ```bash
-   export KUBERNETES_VERSION="v1.22.9"
-   export WORKER_MACHINE_COUNT=1
-   ```
+```bash
+export KUBERNETES_VERSION="v1.22.9"
+export WORKER_MACHINE_COUNT=1
+```
 
-   To verify the KUBERNETES_VERSION and WORKER_MACHINE_COUNT variables were successfully exported, you can issue the
-   following command for each variable.
+    To verify the KUBERNETES_VERSION and WORKER_MACHINE_COUNT variables were successfully exported, you can issue the
+    following command for each variable.
 
-   ```bash
-   echo $variable_name
-   ```
+```bash
+echo $variable_name
+```
 
-4. Instantiate Nutanix Cluster API.
+4.  Instantiate Nutanix Cluster API.
 
-   :::info
+    ```bash
+    clusterctl init --infrastructure nutanix
+    ```
 
-   To prevent conflicts with the recent Nutanix CAPI provider updates, you need to instantiate Cluster API with this
-   exact version of the Nutanix infrastructure.
+5.  Deploy a workload cluster in Nutanix by issuing the following command. Replace `mytestcluster` with the cluster name
+    that you assigned to your workload cluster and `mytestnamespace` and with your namespace name. Provide the Nutanix
+    Prism Central IP address for CONTROL_PLANE_ENDPOINT_IP.
 
-   :::
+    ```bash
+    export TEST_CLUSTER_NAME=mytestcluster
+    export TEST_NAMESPACE=mytestnamespace
+    CONTROL_PLANE_ENDPOINT_IP=x.x.x.x clusterctl generate cluster ${TEST_CLUSTER_NAME} \
+      -i nutanix \
+      --target-namespace ${TEST_NAMESPACE}  \
+      > ./cluster.yaml
+    kubectl create namespace ${TEST_NAMESPACE}
+    kubectl apply --filename ./cluster.yaml --namespace ${TEST_NAMESPACE}
+    ```
 
-   ```bash
-   clusterctl init --infrastructure nutanix:v1.2.4
-   ```
+    The snippet below displays the output of the command.
 
-5. Deploy a workload cluster in Nutanix by issuing the following command. Replace `mytestcluster` with the cluster name
-   that you assigned to your workload cluster and `mytestnamespace` and with your namespace name. Provide the Nutanix
-   Prism Central IP address for CONTROL_PLANE_ENDPOINT_IP.
-
-   ```bash
-   export TEST_CLUSTER_NAME=mytestcluster
-   export TEST_NAMESPACE=mytestnamespace
-   CONTROL_PLANE_ENDPOINT_IP=x.x.x.x clusterctl generate cluster ${TEST_CLUSTER_NAME} \
-     -i nutanix \
-     --target-namespace ${TEST_NAMESPACE}  \
-     > ./cluster.yaml
-   kubectl create namespace ${TEST_NAMESPACE}
-   kubectl apply -filename ./cluster.yaml -namespace ${TEST_NAMESPACE}
-   ```
-
-   The snippet below displays the output of the command.
-
-   ```bash hideClipBoard
-   namespace/mytestnamespace created
-   configmap/user-ca-bundle created
-   secret/mytestcluster created
-   kubeadmconfigtemplate.bootstrap.cluster.x-k8s.io/mytestcluster-kcfg-0 created
-   cluster.cluster.x-k8s.io/mytestcluster created
-   machinedeployment.cluster.x-k8s.io/mytestcluster-wmd created
-   machinehealthcheck.cluster.x-k8s.io/mytestcluster-mhc created
-   kubeadmcontrolplane.controlplane.cluster.x-k8s.io/mytestcluster-kcp created
-   nutanixcluster.infrastructure.cluster.x-k8s.io/mytestcluster created
-   nutanixmachinetemplate.infrastructure.cluster.x-k8s.io/mytestcluster-mt-0 created
-   ```
+    ```bash hideClipBoard
+    namespace/mytestnamespace created
+    configmap/user-ca-bundle created
+    secret/mytestcluster created
+    kubeadmconfigtemplate.bootstrap.cluster.x-k8s.io/mytestcluster-kcfg-0 created
+    cluster.cluster.x-k8s.io/mytestcluster created
+    machinedeployment.cluster.x-k8s.io/mytestcluster-wmd created
+    machinehealthcheck.cluster.x-k8s.io/mytestcluster-mhc created
+    kubeadmcontrolplane.controlplane.cluster.x-k8s.io/mytestcluster-kcp created
+    nutanixcluster.infrastructure.cluster.x-k8s.io/mytestcluster created
+    nutanixmachinetemplate.infrastructure.cluster.x-k8s.io/mytestcluster-mt-0 created
+    ```
 
 ## Install CNI on Workload Cluster
 
 6. After your Nutanix workload cluster is deployed, retrieve its kubeconfig file with the command described below.
 
    ```bash
-   clusterctl get kubeconfig $TEST_CLUSTER_NAME > $TEST_CLUSTER_NAME.kubeconfig -namespace $TEST_NAMESPACE
+   clusterctl get kubeconfig $TEST_CLUSTER_NAME > $TEST_CLUSTER_NAME.kubeconfig --namespace $TEST_NAMESPACE
    ```
 
 7. Deploy a Container Network Interface (CNI) pod in the workload cluster to enable pod-to-pod communication. For more
@@ -179,8 +172,8 @@ Use the steps below to verify your virtual machines (VMs) are created.
 
 ## Cleanup
 
-With the PCG successfully installed in your Kubernetes workload cluster, you can delete the kind cluster that was used
-to bootstrap the workload cluster.
+Once you have successfully [installed a Nutanix PCG in Palette](/clusters/data-center/nutanix/install-pcg), delete the
+kind cluster you used to bootstrap the workload cluster.
 
 ```bash
 kind delete cluster --name pcg-pilot

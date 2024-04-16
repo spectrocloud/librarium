@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["system app", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/generic-vm-vsphere/blobs/sha256:3b121dca3cbc7fed0153d3e1c8c3df20076ec200e091085a3a281ba08cb2261e?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/generic-vm-vsphere/blobs/sha256:3b121dca3cbc7fed0153d3e1c8c3df20076ec200e091085a3a281ba08cb2261e?type=image.webp"
 tags: ["packs", "generic-vm-vsphere", "system app"]
 ---
 

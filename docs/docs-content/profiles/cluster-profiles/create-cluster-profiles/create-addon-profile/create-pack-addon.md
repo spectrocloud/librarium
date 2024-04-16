@@ -25,16 +25,16 @@ Use the following steps to create a cluster profile by adding one or more layers
 
 4. Fill out the following input values and ensure you select **Add-on** for the type. Click on **Next** to continue.
 
-| **Field**       | **Description**                                                                                                                                                                                                   |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Name**        | A custom name for the cluster profile.                                                                                                                                                                            |
-| **Version**     | Assign a version to the profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`.                                                   |
-| **Description** | Use the description to provide context about the profile.                                                                                                                                                         |
-| **Type**        | **Add-on**                                                                                                                                                                                                        |
-| **Tags**        | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`. |
+   | **Field**       | **Description**                                                                                                                                                                                                   |
+   | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**        | A custom name for the cluster profile.                                                                                                                                                                            |
+   | **Version**     | Assign a version to the profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`.                                                   |
+   | **Description** | Use the description to provide context about the profile.                                                                                                                                                         |
+   | **Type**        | **Add-on**                                                                                                                                                                                                        |
+   | **Tags**        | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`. |
 
-To learn more about creating multiple profile versions, check out
-[Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md).
+   To learn more about creating multiple profile versions, check out
+   [Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md).
 
 5. Select **Add New Pack**. In the next window that displays, choose a registry and select the pack to add to your
    profile. You can search packs by name.
@@ -45,7 +45,7 @@ To learn more about creating multiple profile versions, check out
    to the layer in Helm values.yaml form, and specify the layer
    [install order](./create-addon-profile.md#install-order).
 
-  <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.png) -->
+  <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.webp) -->
 
 7. If you want to add additional layers, repeat steps 5 and 6. Otherwise, click on **Next** to review the profile.
 

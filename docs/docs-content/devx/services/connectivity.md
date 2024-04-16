@@ -30,15 +30,15 @@ The API server communicates with the database, and the application sends request
 establish network connectivity, each layer needs to reference the output variable of the lower layer. The API will use
 the output variable Postgres exposes that contains the Kubernetes hostname.
 
-![Output Variables example](/devx-services-connectivity-output-variables-example.png)
+![Output Variables example](/devx-services-connectivity-output-variables-example.webp)
 
 The API server can consume the output variable `{{.spectro.app.$appDeploymentName.postgresql-3.POSTGRESMSTR_SVC}}` from
 the Postgres service layer to connect to the database. The output variable would be consumed as an environment variable.
 
-![The API layer consuming the DB output variable](/devx-services-connectivity-container-env-example.png)
+![The API layer consuming the DB output variable](/devx-services-connectivity-container-env-example.webp)
 
 The application would use the output variable `{{.spectro.app.$appDeploymentName.api.CONTAINER_SVC}}` from the API
 service layer to connect to the API. The output variable value can be referenced as a YAML value in the Helm manifest
 file.
 
-![The App layer consuming the API output variable](/devx-services-connectivity-helm-env-example.png)
+![The App layer consuming the API output variable](/devx-services-connectivity-helm-env-example.webp)

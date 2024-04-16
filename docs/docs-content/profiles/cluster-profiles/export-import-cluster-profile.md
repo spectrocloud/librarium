@@ -41,7 +41,7 @@ Use these steps to export the profile as a `.json` file.
 
 3. Click **Export Profile** at the bottom of the details panel. Palette downloads the profile as a `.json` file.
 
-   ![Screenshot of the Export Profile button.](/profiles_cluster-profiles_export-import-cluster-profiles_export-highlight.png)
+   ![Screenshot of the Export Profile button.](/profiles_cluster-profiles_export-import-cluster-profiles_export-highlight.webp)
 
 4. Verify that any custom macros used in the exported profile exist in the target environment before you import the
    profile. If they do not, create the macros in the target environment. For guidance, review
@@ -70,11 +70,11 @@ Use these steps to import the profile to one or more projects or tenants.
 
 5. In the slide panel that opens at right, click the **Upload file** button.
 
-![Screenshot of the slide panel with the Upload file button.](/profiles_cluster-profiles_upload-json.png)
+![Screenshot of the slide panel with the Upload file button.](/profiles_cluster-profiles_upload-json.webp)
 
 6. Navigate to the downloaded `.json` file and select it so that it opens in the slide panel as shown.
 
-![Screenshot of the slide panel with uploaded JSON.](/profiles_cluster-profiles_json-to-import.png)
+![Screenshot of the slide panel with uploaded JSON.](/profiles_cluster-profiles_json-to-import.webp)
 
 7. Update any pack YAML files that contain sensitive values, such as credentials or certificates.
 
@@ -86,13 +86,13 @@ Use these steps to import the profile to one or more projects or tenants.
 10. In the **Select repositories** window that displays when the profile is successfully validated, use the **drop-down
     Menus** to select one or more repositories in which profile packs exist so Palette can fetch them.
 
-:::warning
+    :::warning
 
-If any of the packs are missing in the target environment, profile import will not proceed.
+    If any of the packs are missing in the target environment, profile import will not proceed.
 
-:::
+    :::
 
-![Screenshot of the Select repositories window.](/profiles_cluster-profiles_import-select-repos.png)
+    ![Screenshot of the Select repositories window.](/profiles_cluster-profiles_import-select-repos.webp)
 
 11. Click the **Confirm** button to complete the import.
 

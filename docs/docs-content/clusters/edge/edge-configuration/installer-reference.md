@@ -28,9 +28,9 @@ The Edge Installer is configured with a set of default values.
 
 | Parameter             | Default                                        | Description                                                                                                                                                                                                           |
 | --------------------- | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `PaletteEndpoint`     | `api.console.spectrocloud.com`                 | The Palette API endpoint.                                                                                                                                                                                             |
-| `Prefix`              | `edge`                                         | The prefix prepended to the edge device hostname to form the unique identifier.                                                                                                                                       |
-| `RegistrationURL`     | `https://edge-registration-generic.vercel.app` | The URL that operators should use when registering the Edge host with Palette.                                                                                                                                        |
+| `paletteEndpoint`     | `api.console.spectrocloud.com`                 | The Palette API endpoint.                                                                                                                                                                                             |
+| `prefix`              | `edge`                                         | The prefix prepended to the edge device hostname to form the unique identifier.                                                                                                                                       |
+| `registrationURL`     | `https://edge-registration-generic.vercel.app` | The URL that operators should use when registering the Edge host with Palette.                                                                                                                                        |
 | `disableAutoRegister` | `false`                                        | Set to `true` if you want to disable auto registration. Refer to the [Register Edge Host](../site-deployment/site-installation/edge-host-registration.md) reference page to learn more about Edge host registrations. |
 
 The default values assume you are installing the Edge host in an environment without a network proxy, do not require
@@ -63,23 +63,37 @@ stylus:
 You can specify the mode the Edge Installer should prepare the installation for. The Edge Installer supports two
 different modes.
 
-<br />
-
 - Connected: The site has internet connectivity and the installation is initiated through Palette.
 
 - Air-Gapped: The site does not have internet connectivity. The Installation is initiated through the Palette Edge CLI.
 
-| Parameter          | Description                                                   |
-| ------------------ | ------------------------------------------------------------- |
-| `installationMode` | Allowed values are `connected`. Default value is `connected`. |
-
-<br />
+| Parameter          | Description                                                                |
+| ------------------ | -------------------------------------------------------------------------- |
+| `installationMode` | Allowed values are `connected` and `airgap`. Default value is `connected`. |
 
 ```yaml
 #cloud-config
 stylus:
   installationMode: "connected"
 ```
+
+### Initial Configuration
+
+You can configure the Edge Installer to enable the initial configuration in the Terminal User Interface (TUI) when you
+boot up the Edge host for the first time. For more information about initial configuration, refer to
+[Initial Edge Host Configuration](../site-deployment/initial-setup.md).
+
+| Parameter    | Description                                                           |
+| ------------ | --------------------------------------------------------------------- |
+| `includeTui` | Enable the initial Edge host configuration. Default value is `false`. |
+
+### Local UI
+
+You can change the port that the Edge management console is exposed on. The default port is 5080.
+
+| Parameter        | Description                                                                               |
+| ---------------- | ----------------------------------------------------------------------------------------- |
+| `emcServer.port` | Specifies the port that the Edge management console is exposed on. Default value is 5080. |
 
 ### External Registry
 
@@ -93,8 +107,6 @@ You can point the Edge Installer to a non-default registry to load content from 
 | `password`        | The password to authenticate with the registry.                                                                                                                                                                                                                                                                                   |
 | `insecure`        | Whether to allow insecure connections to the registry. Default value is `false`.                                                                                                                                                                                                                                                  |
 | `encodedPassword` | Specifies whether the password as given is base64 encoded.`true` means that the provided password is base64 encoded and that when using the password to authenticate, the password must be decoded first. `false` means the password is not encoded and must be used as is to authenticate with the registry. Default is `false`. |
-
-<br />
 
 ```yaml
 #cloud-config
@@ -146,7 +158,7 @@ Use the site network parameters to configure network settings so the edge host c
 | Parameter                | Description                                                                                                                           |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
 | `siteNetwork.httpProxy`  | The URL of the HTTP proxy endpoint.                                                                                                   |
-| `siteNetwork.httpSProxy` | The URL of the HTTPS proxy endpoint.                                                                                                  |
+| `siteNetwork.httpsProxy` | The URL of the HTTPS proxy endpoint.                                                                                                  |
 | `siteNetwork.noProxy`    | The list of IP addresses or CIDR ranges to exclude routing through the network proxy.                                                 |
 | `siteNetwork.interfaces` | The network settings respective to the interfaces. Review the [Network Parameters](#network-parameters) table below for more details. |
 | `siteNetwork.nameserver` | The IP address of the global DNS nameserver that requests should be routed to.                                                        |

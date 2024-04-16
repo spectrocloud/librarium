@@ -81,16 +81,16 @@ unavailable IP addresses for the worker nodes, or the inability to perform a Net
 7. If you encounter errors other than the ones mentioned in the previous step, it is possible that the cluster
    configuration or the DNS settings are not set correctly. You can review and edit the cluster configuration in the
    cluster settings. The screenshot below highlights the cluster configuration section in the cluster settings blade.
-   ![A screenshot highlighting the cluster configuration section in the cluster settings blade.](/troubleshooting-pcg-cluster_settings.png)
+   ![A screenshot highlighting the cluster configuration section in the cluster settings blade.](/troubleshooting-pcg-cluster_settings.webp)
 
 8. If the cluster settings look correct, ensure the search domain is correctly defined in the fault domain's DNS
    settings. The screenshot below highlights how you can review and edit the DNS mapping of an existing PCG cluster.
-   ![A screenshot highlighting the DNS mapping settings.](/troubleshooting-pcg-dns.png)
+   ![A screenshot highlighting the DNS mapping settings.](/troubleshooting-pcg-dns.webp)
 
 9. If the problem persists, download the cluster logs from Palette. The screenshot below will help you locate the button
    to download logs from the cluster details page.
 
-![A screenshot highlighting how to download the cluster logs from Palette.](/troubleshooting-pcg-download_logs.png)
+![A screenshot highlighting how to download the cluster logs from Palette.](/troubleshooting-pcg-download_logs.webp)
 
 10. Share the logs with our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com).
 
@@ -123,7 +123,7 @@ configuration or an error in the cloud-init process.
    - Download the PCG cluster's kubeconfig file from the **Overview** tab. Click on the kubeconfig file name to download
      it to your local machine, as highlighted in the screenshot below.
 
-     ![A screenshot highlighting the kubeconfig file to download from Palette.](/troubleshooting-pcg-download_kubeconfig.png)
+     ![A screenshot highlighting the kubeconfig file to download from Palette.](/troubleshooting-pcg-download_kubeconfig.webp)
 
    - After you download the PCG cluster's kubeconfig file, use the following commands to make a GET request to one of
      the
@@ -171,3 +171,47 @@ log.
 2. Contact your VMware administrator if you are missing any of the required permissions.
 
 3. Delete the existing PCG cluster and redeploy a new one so that the new permissions take effect.
+
+## Scenario - VMware Resources Remain After Cluster Deletion
+
+In the scenario where a VMWare workload cluster is deleted and later re-created with the same name, the resources from
+the previous cluster may not be fully cleaned up. This can cause the new cluster to fail to provision. To address this
+issue, you must manually clean up the resources from the previous cluster. Use the following steps for guidance.
+
+:::info
+
+If you are using the System PCG for VMware cluster deployments, follow the same steps below but target the self-hosted
+Palette or VerteX cluster instead when issuing the kubectl command. You will need access to the kubeconfig file for the
+self-hosted Palette or VerteX cluster. Reach out to your Palette system administrator for the kubeconfig file.
+
+:::
+
+### Debug Steps
+
+1. Open a terminal session and ensure you have the [kubectl command-line tool](https://kubernetes.io/docs/tasks/tools/)
+   installed.
+
+2. Download the kubeconfig file for the PCG cluster from Palette. The kubeconfig file contains the necessary
+   configuration details to access the Kubernetes cluster.
+
+   :::tip
+
+   You can find the kubeconfig file in the PCG cluster's details page in Palette. Navigate to the left **Main Menu** and
+   select **Tenant Settings**. From the **Tenant settings Menu**, select **Private Cloud Gateways**. Select the PCG
+   cluster that is deployed in the VMware environment to access the details page.
+
+   :::
+
+3. Setup kubectl to use the kubeconfig file you downloaded in the previous step. Check out the
+   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) page to learn how to set up kubectl.
+
+   ```bash
+   export KUBECONFIG=[path_to_kubeconfig]
+   ```
+
+4. Issue the following command to remove the remaining cluster resources. Replace `<cluster-name>` with the name of the
+   cluster you removed.
+
+   ```bash
+   kubectl delete VSphereFailureDomain  <cluster-name>
+   ```

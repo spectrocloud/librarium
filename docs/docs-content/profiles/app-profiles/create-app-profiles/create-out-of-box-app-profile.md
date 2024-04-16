@@ -70,7 +70,7 @@ Use the following steps to validate that your app profile is available and ready
 4. Hover your cursor over each profile layer to learn more about them, including the service name, version, and
    registry.
 
-   ![A view of a cursor triggering the info box for each app profile layer.](/devx_app-profile_create-app-profile_app-layer-infoboxes.png)
+   ![A view of a cursor triggering the info box for each app profile layer.](/devx_app-profile_create-app-profile_app-layer-infoboxes.webp)
 
    :::info
 

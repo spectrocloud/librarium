@@ -29,6 +29,13 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 
   The diagram below illustrates how MAAS works with Palette using a PCG.
 
-  ![Network flow from an architectural perspective of how MAAS works with Palette](/maas_cluster_architecture.png)
+  ![Network flow from an architectural perspective of how MAAS works with Palette](/maas_cluster_architecture.webp)
 
 Refer to the [PCG Architecture](../../pcg/architecture.md) section to learn more about the PCG architecture.
+
+## Custom MAAS Endpoint
+
+If the MAAS API server URL is not resolvable outside of the MAAS environment, you can specify a different URL in the
+cluster profile's Kubernetes YAML. This feature is only supported in Palette eXtented Kubernetes (PKX). For more
+information, refer to the [Custom MAAS Endpoint](../../../integrations/kubernetes.md#custom-maas-endpoint) section of
+the PXK reference page.

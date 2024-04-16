@@ -9,7 +9,9 @@ tags: ["clusters", "cluster management"]
 
 Palette allows you to update active clusters. You can update any layer of a cluster, including all infrastructure layers
 and add-on layers. Depending on the nature of the update, a cluster update could trigger different cluster repave
-operations.
+operations. For more information, refer to
+[Repave Behaviors and Configurations](./node-pool.md#repave-behavior-and-configuration) for non-Edge clusters and
+[Edge Cluster Upgrade Behavior](../edge/upgrade-behavior.md) for Edge clusters. operations.
 
 :::info
 
@@ -51,8 +53,18 @@ This is the recommended best practice for updating a cluster in Palette.
 
 6. Next to the name of the profile, click on the version number and select the new version you just published.
 
-7. Click **Save**. Depending on the changes you made to the profile, doing so might trigger a cluster repave warning.
-   Click **Continue** to confirm updating the cluster.
+7. Click **Review & Save**. Palette prompts you to preview the change summary.
+
+8. Click **Review changes in Editor**. Palette displays the changes, with the current configuration on the left and the
+   incoming changes on the right. Review the changes and click **Apply Changes**.
+
+   :::info
+
+   Make sure to preserve any existing cluster profile overrides.
+
+   :::
+
+   ![Palette Editor that displays changes coming from the profile version update.](/clusters_cluster-management_cluster-updates_preview-profile-ver-changes.webp)
 
 </TabItem>
 

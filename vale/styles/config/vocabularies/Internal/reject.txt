@@ -17,3 +17,4 @@ on-premises
 readme
 Readme
 OpenShit
+Palette Extended Kubernetes

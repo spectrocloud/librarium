@@ -26,50 +26,50 @@ Use the following steps to create a cluster profile by adding layers using Helm 
 
 4. Fill out the following input values and ensure you select **Add-on** for the type. Click on **Next** to continue.
 
-| **Field**       | **Description**                                                                                                                                                                                                   |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Name**        | A custom name for the cluster profile.                                                                                                                                                                            |
-| **Version**     | Assign a version to the profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`.                                                   |
-| **Description** | Use the description to provide context about the profile.                                                                                                                                                         |
-| **Type**        | **Add-on**                                                                                                                                                                                                        |
-| **Tags**        | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`. |
+   | **Field**       | **Description**                                                                                                                                                                                                   |
+   | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**        | A custom name for the cluster profile.                                                                                                                                                                            |
+   | **Version**     | Assign a version to the profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`.                                                   |
+   | **Description** | Use the description to provide context about the profile.                                                                                                                                                         |
+   | **Type**        | **Add-on**                                                                                                                                                                                                        |
+   | **Tags**        | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`. |
 
-To learn how to create multiple profile versions, check out
-[Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md).
+   To learn how to create multiple profile versions, check out
+   [Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md).
 
 5. Select **Add Helm Chart** and use the **drop-down Menu** to choose public or private packs.
 
 6. To add a chart from a public registry, choose a Helm chart from the list displayed on the next page. You can search
    charts by name. Pack details and the configuration file are displayed on the next page.
 
-To add a chart from a private registry, select a registry from the **drop-down Menu** and provide the chart name and
-version.
+   To add a chart from a private registry, select a registry from the **drop-down Menu** and provide the chart name and
+   version.
 
 7. Configure parameters as needed. In the configuration file, ensure you specify a namespace. Otherwise, the chart will
    deploy to the `Default` namespace.
 
-```yaml
-pack:
-  namespace: your_namespace_here
-```
+   ```yaml
+   pack:
+     namespace: your_namespace_here
+   ```
 
-Optionally, you can add configurable layer values and specify the layer
-[install order](./create-addon-profile.md#install-order).
+   Optionally, you can add configurable layer values and specify the layer
+   [install order](./create-addon-profile.md#install-order).
 
-:::warning
+   :::warning
 
-Palette requires a namespace using the `namespace` parameter in the configuration file to identify the namespace on the
-target cluster. For more information about customizing with namespaces, refer to
-[Profile Customization](../../../profile-customization.md).
+   Palette requires a namespace using the `namespace` parameter in the configuration file to identify the namespace on
+   the target cluster. For more information about customizing with namespaces, refer to
+   [Profile Customization](../../../profile-customization.md).
 
-For examples of pack structure for a Helm chart-based pack, review
-[Build a Pack](../../../../registries-and-packs/deploy-pack.md#build-a-pack), and select the appropriate tab.
+   For examples of pack structure for a Helm chart-based pack, review
+   [Build a Pack](../../../../registries-and-packs/deploy-pack.md#build-a-pack), and select the appropriate tab.
 
-:::
+   :::
 
 8. When you are done, click **Confirm & Create**, then click **Next** to review the profile.
 
-  <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.png) -->
+  <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.webp) -->
 
 9. Click **Finish Configuration** to create the cluster profile.
 

@@ -7,8 +7,13 @@ sidebar_position: 0
 tags: ["edge"]
 ---
 
-The Edge Installer supports using a custom configuration file in the format of a YAML that you can use to customize the
-installation process. You can provide the customized configuration to the Edge Installer as a user data file.
+The Edge Installer supports using a custom configuration file in the format of a YAML file named **user-data** that you
+can use to customize the installation. You can provide the customized configuration to the Edge Installer as a user data
+file. For more information on how to provide the configuration to the Edge Installer, refer to
+[Build Edge Installer ISO](./palette-canvos/build-installer-iso.md). Additionally, you can also provide the
+configuration during site deployment as site-specific configuration. This can replace, supplement, or override your
+installer configuration you provide to the installer ISO. For more information, refer to
+[Apply Site User Data](../site-deployment/site-installation/site-user-data.md).
 
 :::info
 
@@ -272,7 +277,7 @@ stages:
 If you don't need to apply any unique configurations on the device once it arrives at the physical site, then your site
 deployment flow would look like the following.
 
-![The flow of an install process not requiring additional customization](/clusters_site-deployment_prepare-edge-configuration_install-flow.png)
+![The flow of an install process not requiring additional customization](/clusters_site-deployment_prepare-edge-configuration_install-flow.webp)
 
 Should you need to apply different configurations once the device arrives at the physical site, you can use a secondary
 user data to support this use case.
@@ -284,7 +289,7 @@ organizations that need to change settings after powering on the Edge host at th
 To use additional user data, create a bootable device, such as a USB stick, that contains the user data in the form of
 an ISO image. The Edge Installer will consume the additional user data during the installation process.
 
-![The flow of an install process with an additional customization occurring at the physical site. The additional customization is using a USB stick to upload the new user data.](/clusters_site-deployment_prepare-edge-configuration_install-flow-with-more-user-data.png)
+![The flow of an install process with an additional customization occurring at the physical site. The additional customization is using a USB stick to upload the new user data.](/clusters_site-deployment_prepare-edge-configuration_install-flow-with-more-user-data.webp)
 
 When creating your Edge Installer, you can embed the user data into the installer image to eliminate providing it via a
 USB drive.
@@ -306,5 +311,11 @@ use case.
 
 ## Next Steps
 
-The last step of the EdgeForce workflow is to build the Edge artifacts. Check out the
-[Build Edge Artifacts](palette-canvos.md) guide to learn how to create the Edge artifacts.
+After you have finalized your Installer configuration, you can build the configuration into the Edge Installer ISO, or
+turn the **user-data** file into an ISO file to use before site deployment.
+
+- Check out the [Build Edge Installer ISO](palette-canvos/palette-canvos.md) guide to learn how to build the Edge
+  Installer ISO image.
+
+- Check out the [Apply Site User Data](../site-deployment/site-installation/site-user-data.md) guide to learn how to
+  provide site user data.

@@ -68,6 +68,10 @@ fully encrypted using the tenant's unique encryption key.
 Cluster Mode enables you to create, deploy, and manage Kubernetes clusters and applications. In Cluster Mode, you can
 deploy Kubernetes clusters to public cloud providers, on-prem data centers, and on the edge.
 
+## Cluster Definition
+
+A Cluster Definition contains one or more cluster profiles, including profile variables used in those profiles.
+
 ## Cluster Profile
 
 A Cluster Profile is a declarative model of a Kubernetes infrastructure stack. A Kubernetes infrastructure stack is
@@ -81,9 +85,15 @@ Monitoring (Prometheus), Security (Twistlock) pre-installed.
 
 The diagram below shows an example of a cluster profile:
 
-![cluster_profile_new](/cluster_profile_new.png)
+![cluster_profile_new](/cluster_profile_new.webp)
 
 For more information, check out [Cluster Profiles](profiles/cluster-profiles/cluster-profiles.md).
+
+## Cluster Profile Variable
+
+Cluster Profile Variables enable you to create placeholders for parameters in profile layer configurations, which you
+can then populate for individual clusters during deployment. Meaning you can use a single cluster profile to deploy
+multiple clusters with unique requirements for security, networking, resource allocation, and so on.
 
 ## Edge Appliances
 
@@ -108,6 +118,12 @@ Clusters on such edge appliances from its SaaS-based management console. Besides
 also provides end-to-end management of these clusters through operations such as scaling, upgrades, reconfiguration,
 etc.
 
+## Local UI
+
+Local UI is a browser-based tool that allows you to manage your Edge host and perform tasks such as creating local
+clusters, upload content bundles, and configure network settings. Local UI is a Tech Preview feature and should not be
+used in production workloads.
+
 ## Helm Charts
 
 Helm Charts are Kubernetes YAML manifests that describe a related set of Kubernetes resources into a single package.
@@ -117,6 +133,17 @@ chart registry on to Kubernetes clusters.
 ## Host Cluster
 
 A Kubernetes cluster that is managed by Palette. A host cluster may contain several Palette Virtual Clusters.
+
+## Kilo-Core-Hours (kCh)
+
+kCh, short for kilo-core-hours, represents a unit of computational time. This value is a product of the cluster node
+count, the number of CPUs per node, and the duration of time these nodes are in use. To improve readability, we divide
+the product by 1000.
+
+For instance, if you deploy a single-node cluster with 16 CPU cores for 24 hours, you will use about 0.39 kCh.
+Alternatively, if you deploy a three-node cluster that has 16 CPUs per node for 24 hours, you will use about 1.2 kCh.
+
+For more information, refer to the [Resource Usage Calculation](./introduction/resource-usage-estimation.md) page.
 
 ## Management Clusters
 
@@ -154,7 +181,7 @@ are not part of any Palette pack or a chart. Pack manifests provide a pass-throu
 through raw manifests. Pack Manifest layers can be added to a cluster profile stack built using Spectro Packs and
 Charts.
 
-## Palette Edge Manager (Local API)
+## Palette Edge Manager (Edge Host API)
 
 A cmd line API that supports TUI operations & site diagnostics. For Dark Site or Air Gapped environments Palette Edge
 Manager can be used to upload cluster configurations.
@@ -311,10 +338,10 @@ on the running cluster.
 
 ## System Administrator
 
-The self-hosted Palette or Palette VerteX user with access to the
-[system console](#system-console-on-prem-system-console).
+The self-hosted Palette or Palette VerteX user with access to the system console and can perform various operations
+based on their assigned role. Palette supports multiple system administrator roles.
 
-## System Console (On-prem System Console)
+## System Console
 
 The console is used to scale up the Enterprise cluster and manage it. The System console supports creating and
 activating a new tenant in a new instance. It Initiates the installation of a Palette Enterprise Cluster. The On-Prem

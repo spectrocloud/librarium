@@ -30,8 +30,6 @@ kubeadm
 upsize
 Alertmanager 
 alertmanager
-application
-Application
 grafana
 Grafana
 etcd
@@ -184,6 +182,9 @@ goroutines
 renegotiation
 renegotiations
 wpa_supplicant
+Earthfile
+ubuntu
+tgz
 Podman
 filepath
 Datagram
@@ -193,3 +194,16 @@ vApp
 PCGs
 vCPU
 vCPUs
+ORAS
+preload
+preloaded
+eXtented
+Palette eXtented Kubernetes
+Palette eXtented Kubernetes - Edge
+timeframe
+Luet
+rhel
+Ubuntu
+RHEL
+repave
+airgap
