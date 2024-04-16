@@ -40,3 +40,5 @@ existing Kubernetes cluster. Refer to the table below to learn more about the su
 - [Deploy a PCG to an Existing Kubernetes Cluster](./deploy-pcg-k8s.md)
 
 - [Manage a PCG](./manage-pcg/manage-pcg.md)
+
+- [Deploy App Workloads with a PCG](./deploy-app-pcg.md)
