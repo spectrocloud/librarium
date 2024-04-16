@@ -66,7 +66,7 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
 
 - Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
   generate a new registration token. For detailed instructions, refer to the
-  [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide.
+  [Create Registration Token](../site-installation/create-registration-token.md) guide.
 
 - A private external registry that stores all images required by your cluster.
 

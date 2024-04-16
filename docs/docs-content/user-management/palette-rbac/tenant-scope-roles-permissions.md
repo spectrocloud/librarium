@@ -11,7 +11,7 @@ tags: ["user-management", "rbac"]
 ## Global Tenant Scope
 
 Tenant is an isolated workspace within the Palette Console. Users and teams with specific roles can be associated with
-the [tenants](../../glossary-all.md#organization) and [projects](../../glossary-all#project) you create.
+the [tenants](../../glossary-all.md#organization) and [projects](../../glossary-all.md#project) you create.
 
 Each user is assigned a role and permissions, which apply to the scopes, resources, and resourceKey. The Permissions
 format is `resourceKey.operation`, where resourceKey refers to resource or the API functionality, and Operation refers
