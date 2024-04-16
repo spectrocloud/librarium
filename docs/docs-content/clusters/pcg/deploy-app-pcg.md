@@ -46,7 +46,7 @@ To complete this tutorial, you will need the following prerequisites in place.
 
     - A Palette account with [tenant admin](../../tenant-settings/tenant-settings.md) access.
     - A Palette API key. Refer to the [Create API Key](../../user-management/authentication/api-key/create-api-key.md) page for instructions on how to create an API key.
-    - A [VMware vSphere](https://docs.vmware.com/en/VMware-vSphere/index.html) user account with the required [permissions](../data-center/vmware.md#vsphere-permissions), [roles](../data-center/vmware.md#spectro-role-privileges), and [zone tagging](../data-center/vmware.md#zone-tagging) defined.
+    - A [VMware vSphere](https://docs.vmware.com/en/VMware-vSphere/index.html) user account with the [required permissions](../data-center/vmware/permissions.md).
     - A Linux x86-64 machine with access to a terminal and Internet, as well as connection to both Palette and VMware vSphere.
     - An SSH key pair. Use the [Create and Upload an SSH Key](../cluster-management/ssh-keys.md) guide to learn how to create an SSH key and upload it to Palette.
     - The following IP address requirements must be met in your VMware vSphere environment:
@@ -107,7 +107,9 @@ authenticated with Palette.
 Welcome to Spectro Cloud Palette
 ```
 
-The video below demonstrates Palette's authentication process. Ensure you utilize values specific to your environment, such as the correct Palette URL. Contact your Palette administrator for the correct URL if you use a self-hosted Palette or VerteX instance. 
+The video below demonstrates Palette's authentication process. Ensure you utilize values specific to your environment,
+such as the correct Palette URL. Contact your Palette administrator for the correct URL if you use a self-hosted Palette
+or VerteX instance.
 
 <Video title="palette-login-video" src="/videos/palette-login.mp4"></Video>
 
@@ -626,8 +628,8 @@ your VMware vSphere environment.
 ## Wrap-Up
 
 In this tutorial, you learned how to deploy a VMware PCG using the Palette CLI. Then, you used the PCG to support the
-deployment of a Kubernetes cluster with a sample application to your VMware vSphere environment. Next, you
-accessed the Hello Universe application landing page through the exposed service URL.
+deployment of a Kubernetes cluster with a sample application to your VMware vSphere environment. Next, you accessed the
+Hello Universe application landing page through the exposed service URL.
 
 A PCG is a powerful component that enables Palette to communicate with private clouds or data center environments
 residing in restricted networks that don't allow inbound connections from external sources. The PCG acts as an endpoint
