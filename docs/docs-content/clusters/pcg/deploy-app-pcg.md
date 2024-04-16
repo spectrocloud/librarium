@@ -38,7 +38,7 @@ or Terraform.
 The following diagram illustrates the components that will be deployed in this tutorial and how they communicate with
 each other.
 
-![An architecture diagram of PCG](/clusters_pcg_deploy-app-pcg_pcg-diagram.png)
+![An architecture diagram of PCG](/clusters_pcg_deploy-app-pcg_pcg-diagram.webp)
 
 ## Prerequisites
 
@@ -251,19 +251,19 @@ You can monitor the PCG cluster creation by logging into Palette and switching t
 click on **Tenant Settings** from the left **Main Menu** and select **Private Cloud Gateways**. Then, click on the PCG
 cluster you just created and check the deployment progress under the **Events** tab.
 
-![PCG Events page.](/clusters_pcg_deploy-app-pcg_pcg-events.png)
+![PCG Events page.](/clusters_pcg_deploy-app-pcg_pcg-events.webp)
 
 You can also track the PCG deployment progress from your terminal. Depending on the PCG size and infrastructure
 environment, the deployment might take up to 30 minutes. Upon completion, the local kind cluster is automatically
 deleted from your machine.
 
-![Palette CLI PCG deployment](/clusters_pcg_deploy-app-pcg_pcg-cli.png)
+![Palette CLI PCG deployment](/clusters_pcg_deploy-app-pcg_pcg-cli.webp)
 
 Next, log in to Palette as a tenant admin. Navigate to the left **Main Menu** and select **Tenant Settings**. Click on
 **Private Cloud Gateways** from the **Tenant Settings Menu** and select the PCG you just created. Ensure that the PCG
 cluster status is **Running** and **Healthy** before proceeding.
 
-![PCG Overview page.](/clusters_pcg_deploy-app-pcg_pcg-health.png)
+![PCG Overview page.](/clusters_pcg_deploy-app-pcg_pcg-health.webp)
 
 ## Create a Cluster Profile and Deploy a Cluster
 
@@ -327,7 +327,7 @@ Now, under **Pack Details**, click on **Values** and replace the predefined `192
 **addresses** line with a valid IP address or IP range from your VMware environment to be assigned to your load
 balancer. Next, click **Confirm & Create** to add the MetalLB pack.
 
-![Metallb Helm-based pack.](/clusters_pcg_deploy-app-pcg_metallb-pack.png)
+![Metallb Helm-based pack.](/clusters_pcg_deploy-app-pcg_metallb-pack.webp)
 
 Finally, click again on the **Add New Pack** button to add the Hello Universe pack.
 
@@ -342,7 +342,7 @@ Click on the **Confirm & Create** button and then click **Next**.
 Review the selected cluster layers and configurations. Click on **Finish Configuration** to complete the cluster profile
 creation.
 
-![Cluster profile review page.](/clusters_pcg_deploy-app-pcg_cluster-profile.png)
+![Cluster profile review page.](/clusters_pcg_deploy-app-pcg_cluster-profile.webp)
 
 ### Deploy a VMware Cluster
 
@@ -350,7 +350,7 @@ Navigate to the left **Main Menu** and select **Profiles**. Locate and click on 
 created. Next, click on the **Deploy** button and confirm by clicking **OK** to start the cluster deployment using the
 selected cluster profile.
 
-![Cluster profile page.](/clusters_pcg_deploy-app-pcg_deploy-profile.png)
+![Cluster profile page.](/clusters_pcg_deploy-app-pcg_deploy-profile.webp)
 
 **Basic Information**
 
@@ -403,13 +403,13 @@ binding. Utilize the default values, and click on the **Validate** button.
 The **Review** section allows you to review the cluster configuration before deploying the cluster. Click on **Finish
 Configuration** to start the cluster deployment, which may take up to 20 minutes.
 
-![Cluster review page.](/clusters_pcg_deploy-app-pcg_cluster-review.png)
+![Cluster review page.](/clusters_pcg_deploy-app-pcg_cluster-review.webp)
 
 Now, navigate to the left **Main Menu** and click on **Clusters**. While the deployment is in progress, Palette displays
 the cluster status as **Provisioning**. You can view detailed cluster information, including deployment status and event
 logs, by selecting your cluster.
 
-![Palette's Clusters page.](/clusters_pcg_deploy-app-pcg_cluster-provisioning.png)
+![Palette's Clusters page.](/clusters_pcg_deploy-app-pcg_cluster-provisioning.webp)
 
 </TabItem>
 
@@ -536,7 +536,7 @@ Apply complete! Resources: 5 added, 0 to changed, 0 to destroyed.
 Log in to Palette, navigate to the left **Main Menu**, and click on **Clusters**. While the deployment is in progress,
 Palette displays the cluster status as **Provisioning**.
 
-![Palette's Clusters page.](/clusters_pcg_deploy-app-pcg_cluster-provisioning.png)
+![Palette's Clusters page.](/clusters_pcg_deploy-app-pcg_cluster-provisioning.webp)
 
 You can select the **pcg-tutorial-cluster** to explore deployment status and event logs.
 
@@ -551,11 +551,11 @@ Once the cluster creation process has finished, log in to Palette, navigate to t
 displays **Running** and **Healthy**, you can access the application through the exposed service URL along with the
 displayed port number.
 
-![Healthy VMware cluster](/clusters_pcg_deploy-app-pcg_cluster-health.png)
+![Healthy VMware cluster](/clusters_pcg_deploy-app-pcg_cluster-health.webp)
 
 Click on the URL for port **:8080** to access the Hello Universe application landing page.
 
-![Hello Universe application](/clusters_pcg_deploy-app-pcg_hello-universe.png)
+![Hello Universe application](/clusters_pcg_deploy-app-pcg_hello-universe.webp)
 
 Once you have completed the steps and accessed the application, you have successfully deployed your first application to
 a VMware cluster managed by Palette.
@@ -575,7 +575,7 @@ In Palette, navigate to the left **Main Menu**, click on **Clusters** and select
 its details page. Next, click on the **Settings** button to expand the **drop-down Menu**, then select the **Delete
 Cluster**. Confirm the deletion by entering the cluster name when prompted.
 
-![Delete Palette cluster](/clusters_pcg_deploy-app-pcg_cluster-delete.png)
+![Delete Palette cluster](/clusters_pcg_deploy-app-pcg_cluster-delete.webp)
 
 The cluster status will change to **Deleting**, and the deletion process may take up to 15 minutes.
 
@@ -613,7 +613,7 @@ admin, navigate to the left **Main Menu** and select **Tenant Settings**. Next, 
 on **Private Cloud Gateways**. Identify the PCG you want to delete, click on the **Three-Dot Menu** at the end of the
 PCG row, and select **Delete**. Click **OK** to confirm the PCG deletion.
 
-![Delete PCG image](/clusters_pcg_deploy-app-pcg_pcg-delete.png)
+![Delete PCG image](/clusters_pcg_deploy-app-pcg_pcg-delete.webp)
 
 Palette will delete the PCG and the Palette services deployed on the PCG node. However, the underlying infrastructure
 resources, such as the virtual machine, must be removed manually from VMware vSphere.
@@ -623,7 +623,7 @@ the **Three-Dot Actions** button, select **Power**, and **Power Off** to power o
 powered off, click on the **Three-Dot Actions** button again and select **Delete from Disk** to remove the machine from
 your VMware vSphere environment.
 
-![Delete VMware VM](/clusters_pcg_deploy-app-pcg_vmware-delete.png)
+![Delete VMware VM](/clusters_pcg_deploy-app-pcg_vmware-delete.webp)
 
 ## Wrap-Up
 
