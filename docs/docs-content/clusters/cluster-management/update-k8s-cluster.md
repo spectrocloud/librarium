@@ -512,7 +512,7 @@ Select the **1.1.0** version. Click on **Save** to confirm your profile version 
 
 Palette has backup and restore capabilities available for your mission critical workloads. Ensure that you have adequate
 backups before you make any cluster profile version changes in your production environments. You can learn more in the
-[Backup and Restore](./backup-restore/backup-restore.md) section.
+[Backup and Restore](backup-restore/backup-restore.md) section.
 
 :::
 
@@ -1087,7 +1087,7 @@ To learn more about Palette, we encourage you to check out the reference resourc
 
 - [Palette Clusters](../clusters.md)
 
-- [Backup and Restore](./backup-restore)
+- [Backup and Restore](./backup-restore/backup-restore.md)
 
 - [Deploy a Custom Pack](../../registries-and-packs/deploy-pack.md)
 
