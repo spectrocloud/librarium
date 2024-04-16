@@ -27,10 +27,8 @@ Palette upgrade.
 
 - Access to the Palette airgap support Virtual Machine (VM) that you used for the initial Palette installation.
 
-- Refer to [Access Palette](/enterprise-version/#access-palette) to download the following from our support:
-  - The new airgap Palette installation bin.
-  - The OVA with the Operating System (OS) and Kubernetes distribution required for the Palette nodes (if the new
-    version of Palette requires a new version of the OS and Kubernetes).
+- Refer to [Access Palette](/enterprise-version/#access-palette) to download the new airgap Palette installation bin.
+
 - A diff or text comparison tool of your choice.
 
 ## Upgrade
