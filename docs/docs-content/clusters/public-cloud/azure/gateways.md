@@ -91,7 +91,7 @@ VNet contains the following network settings.
    #### Azure CNI:
 
    In Azure CNI network configuration, select the static
-   [virtual network created](gateways#create-a-virtual-network-in-the-azure-console) from the drop-down menu.
+   [virtual network created](#create-a-virtual-network-in-the-azure-console) from the drop-down menu.
 
 6. Security: For network security enable **Private cluster**.
 

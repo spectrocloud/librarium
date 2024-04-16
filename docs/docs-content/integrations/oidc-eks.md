@@ -29,4 +29,4 @@ thin layer that sits on top of OAuth 2.0 that adds login and profile information
 
 ## References
 
-https://aws.amazon.com/blogs/containers/introducing-oidc-identity-provider-authentication-amazon-eks/
+[AWS OIDC EKS Blog](https://aws.amazon.com/blogs/containers/introducing-oidc-identity-provider-authentication-amazon-eks/)

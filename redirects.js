@@ -156,14 +156,6 @@ const redirects = [
     to: `/devx/palette-virtual-clusters/`,
   },
   {
-    from: `/integrations/ubuntu-k3s/`,
-    to: `/integrations/ubuntu/`,
-  },
-  {
-    from: `/integrations/oidc-eks`,
-    to: `/integrations/kubernetes`,
-  },
-  {
     from: `/clusters/palette-virtual-clusters/add-virtual-cluster-to-host-cluster/`,
     to: `/clusters/palette-virtual-clusters/deploy-virtual-cluster/`,
   },
