@@ -71,9 +71,9 @@ To complete this guide, you will need the following items:
 
 Use the following instructions on your Linux machine, which this guide refers to as the development environment.
 
-1.  Visit the [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page and download the latest Palette Edge
-    CLI. You can download the Palette Edge CLI by clicking on the available URL or using the download URL in the
-    following command. Replace the `[PALETTE-EDGE-BINARY-URL]` placeholder with the download URL.
+1.  Visit the [Downloads](../../../palette-cli/install-palette-cli.md) page and download the latest Palette Edge CLI.
+    You can download the Palette Edge CLI by clicking on the available URL or using the download URL in the following
+    command. Replace the `[PALETTE-EDGE-BINARY-URL]` placeholder with the download URL.
 
 ```bash
 curl [PALETTE-EDGE-BINARY-URL] --output palette-edge
