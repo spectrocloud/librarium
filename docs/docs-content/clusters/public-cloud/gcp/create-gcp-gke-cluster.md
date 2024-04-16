@@ -89,11 +89,11 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 13. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following
     parameters.
 
-    | **Parameter** | **Description**                                                                                                                                                 |
-    | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Key**       | Custom key for the taint.                                                                                                                                       |
-    | **Value**     | Custom value for the taint key.                                                                                                                                 |
-    | **Effect**    | Choose the preferred pod scheduling effect from the **drop-down Menu**. Review the [Effect Table](create-gcp-iaas-cluster#effect-table) below for more details. |
+    | **Parameter** | **Description**                                                                                                                          |
+    | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Key**       | Custom key for the taint.                                                                                                                |
+    | **Value**     | Custom value for the taint key.                                                                                                          |
+    | **Effect**    | Choose the preferred pod scheduling effect from the **drop-down Menu**. Review the [Effect Table](#effect-table) below for more details. |
 
     #### Effect Table
 

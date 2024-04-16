@@ -85,10 +85,10 @@ to use a private registry for images other the provider images, refer to
 
 6. At the root level of YAML for your OS layer, add the `providerCredentials` field to provide the credentials you need
    to authenticate with your registry. For more information about the `providerCredentials` field, refer to
-   [Bring Your Own OS (BYOOS)](/docs/docs-content/integrations/byoos.md) pack page. The `providerCredentials.password`
-   field will be masked when you provide it in the YAML file. You can also use a macro to store your credentials instead
-   of providing it directly in the YAML file. For more information, refer to
-   [Macros Support](/docs/docs-content/clusters/cluster-management/macros.md):
+   [Bring Your Own OS (BYOOS)](../../../../integrations/byoos.md) pack page. The `providerCredentials.password` field
+   will be masked when you provide it in the YAML file. You can also use a macro to store your credentials instead of
+   providing it directly in the YAML file. For more information, refer to
+   [Macros Support](../../../cluster-management/macros.md):
 
    ```yaml {7-8}
    pack:

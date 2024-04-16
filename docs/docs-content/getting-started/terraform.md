@@ -554,8 +554,8 @@ podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.3
 In this tutorial, you created a cluster profile, which is a template that contains the core layers required to deploy a
 host cluster. You then deployed a host cluster onto your preferred cloud service provider using Terraform.
 
-We encourage you to check out the [Deploy an Application using Palette Dev Engine](../devx/apps/deploy-app) tutorial to
-learn more about Palette. Palette Dev Engine can help you deploy applications more quickly through the usage of
+We encourage you to check out the [Deploy an Application using Palette Dev Engine](../devx/apps/deploy-app.md) tutorial
+to learn more about Palette. Palette Dev Engine can help you deploy applications more quickly through the usage of
 [virtual clusters](../glossary-all.md#palette-virtual-cluster). Feel free to check out the reference links below to
 learn more about Palette.
 
