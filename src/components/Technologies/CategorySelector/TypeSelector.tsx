@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./CategorySelector.module.scss";
-import { Select } from "antd";
+import { Select, ConfigProvider, ThemeConfig, theme } from "antd";
 import { packTypeNames } from "../PackConstants";
+import { useColorMode } from "@docusaurus/theme-common";
 
 interface TypeSelectorProps {
   categories: string[];
@@ -23,6 +24,7 @@ export default function TypeSelector({ categories, selected = [""], selectCatego
 
   return (
     <div className={styles.wrapper}>
+
       <Select
         mode="multiple"
         allowClear

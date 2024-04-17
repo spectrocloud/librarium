@@ -6,9 +6,10 @@ import { PacksData, IntegrationsData, FrontMatterData } from "../Integrations/In
 import TechnologyCard from "./TechnologyCard";
 import PacksFilters from "./PacksFilters";
 import { packTypeNames } from "./PackConstants";
-import { Collapse } from "antd";
+import { Collapse, ConfigProvider, ThemeConfig, theme } from "antd";
 import "./technologies.antd.css";
 import IconMapper from "../IconMapper/IconMapper";
+import { useColorMode } from "@docusaurus/theme-common";
 
 const searchOptions = {
   threshold: 0.5,
@@ -20,6 +21,8 @@ interface TechnologiesProps {
 }
 
 export default function Technologies({ data }: TechnologiesProps) {
+  const { isDarkTheme } = useColorMode();
+  const { defaultAlgorithm, darkAlgorithm } = theme;
   const [selectedFilters, setSelectedFilters] = useState<{ category: string[], provider: string, additionalFilters: string[] }>({ category: [], provider: "", additionalFilters: [] })
   const [searchValue, setSearchValue] = useState("");
 
@@ -124,15 +127,21 @@ export default function Technologies({ data }: TechnologiesProps) {
       ...selectedSearchFilters
     }));
   };
+
+
   return (
     <div className={styles.wrapper}>
-      <PacksFilters categories={Array.from(categories.keys())} setSelectedSearchFilters={setSelectedSearchFilters} selectedFilters={selectedFilters} />
-      <Search onSearch={onSearch} placeholder={"Search for integration..."} />
-      <div className={styles.technologyWrapper}>
-        <Collapse expandIconPosition="end" >
-          {renderPacksCategories()}
-        </Collapse>
-      </div>
+      <ConfigProvider theme={{
+        algorithm: isDarkTheme ? darkAlgorithm : defaultAlgorithm,
+      }}>
+        <PacksFilters categories={Array.from(categories.keys())} setSelectedSearchFilters={setSelectedSearchFilters} selectedFilters={selectedFilters} />
+        <Search onSearch={onSearch} placeholder={"Search for integration..."} />
+        <div className={styles.technologyWrapper}>
+          <Collapse expandIconPosition="end" >
+            {renderPacksCategories()}
+          </Collapse>
+        </div>
+      </ConfigProvider>
     </div>
   );
 }

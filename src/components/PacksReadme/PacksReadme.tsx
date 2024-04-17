@@ -1,18 +1,16 @@
-import React, { useEffect, useState, useMemo, lazy, Suspense, ReactElement } from "react";
-import { IntegrationsData, PacksData } from "../Integrations/IntegrationTypes";
+import React, { useEffect, useState, useMemo, ReactElement } from "react";
 import styles from "./PacksReadme.module.scss";
-import { Select, List, Tabs } from "antd";
+import { Select, Tabs, ConfigProvider, theme } from "antd";
 import CustomLabel from "../Technologies/CategorySelector/CustomLabel";
 import PackCardIcon from "../Technologies/PackCardIcon";
 import Markdown from 'markdown-to-jsx';
 import "./PacksReadme.antd.css";
 import { usePluginData } from "@docusaurus/useGlobalData";
 import PacksIntegrationsPluginData from "../Integrations/IntegrationTypes";
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from "@docusaurus/useBaseUrl"
+import { useColorMode } from "@docusaurus/theme-common";
 
-
-interface TechnologiesProps {
-  data: PacksData | IntegrationsData;
-}
 interface PackReadmeProps {
   customDescription: string,
   packReadme: any,
@@ -25,6 +23,10 @@ interface PackReadmeProps {
 export default function PacksReadme() {
   const [selectedVersion, setSelectedVersion] = useState<string>("");
   const [md, setMd] = useState<ReactElement<any, any> | null>(null);
+  const empty_icon_light = useBaseUrl('/img/empty_icon_table_light.svg');
+  const empty_icon_dark = useBaseUrl('/img/empty_icon_table_dark.svg');
+  const { isDarkTheme } = useColorMode();
+  const { defaultAlgorithm, darkAlgorithm } = theme;
   const packName = new URLSearchParams(window.location.search).get("pack")
   useEffect(() => {
     const importComponent = async () => {
@@ -42,7 +44,6 @@ export default function PacksReadme() {
 
   const packData = useMemo(() => {
     const { packs } = usePluginData("plugin-packs-integrations") as PacksIntegrationsPluginData;
-
     const _packData = packs.filter((pack) => pack.fields.name === packName)[0];
     if (_packData) {
       setSelectedVersion(`${_packData.fields.versions[0].title}`);
@@ -78,25 +79,6 @@ export default function PacksReadme() {
     });
   }
 
-  function versionSupportedTextRender() {
-    if (selectedVersion) {
-      const listVersion = packData.versions?.find((ver) => ver.title === selectedVersion);
-      if (listVersion) {
-        return (
-          <>
-            <List
-              size="small"
-              header={<div>Versions Supported</div>}
-              dataSource={listVersion.children}
-              renderItem={(child: any) => <List.Item><div className={styles.bullets}>{child.title}</div></List.Item>}
-            />
-          </>
-        )
-      }
-    }
-    return null;
-  }
-
   function renderTabs() {
     let readme = "";
     if (Object.keys(packData.packReadme).length && md) {
@@ -125,46 +107,61 @@ export default function PacksReadme() {
             )
           })}
         </Tabs>
-      )
+      );
     } else if (Object.keys(packData.packReadme).length) {
       const packUid = packData.versions.find((ver) => ver.title === selectedVersion)?.packUid;
       readme = packUid ? packData.packReadme[packUid as keyof string] : "";
-      return (<Markdown children={readme} />)
+      return (<Markdown children={readme} />);
     } else if (md) {
       return md;
     } else {
-      return null;
+      return renderEmptyContent();
     }
-
+  }
+  function renderEmptyContent() {
+    return (
+      <div className={styles.emptyContent}>
+        <ThemedImage
+          alt="Docusaurus themed image"
+          sources={{
+            light: empty_icon_light,
+            dark: empty_icon_dark,
+          }}
+        />
+          <div className={styles.emptyContentTitle}>No content available</div>
+          <div className={styles.emptyContentDescription}>The content for this pack is not available.</div>
+      </div>
+    );
   }
   return (
     <div className={styles.wrapper}>
-      <div className={styles.description}>
-        <div className={styles.packdescfirstrow}>
-          <div className={styles.packname}>{packName}</div>
-          <div className={styles.versionselect}>
-            <CustomLabel label="Version" />
-            <Select
-              allowClear
-              placeholder="Search"
-              onChange={(item) => versionChange(item as string)}
-              value={selectedVersion === packData.versions[0]?.title ? `${selectedVersion} (latest)` : selectedVersion}
-            >
-              {getOptions()}
-            </Select>
+      <ConfigProvider theme={{
+        algorithm: isDarkTheme ? darkAlgorithm : defaultAlgorithm,
+      }}>
+        <div className={styles.description}>
+          <div className={styles.packdescfirstrow}>
+            <div className={styles.packname}>{packName}</div>
+            <div className={styles.versionselect}>
+              <CustomLabel label="Version" />
+              <Select
+                allowClear
+                placeholder="Search"
+                onChange={(item) => versionChange(item as string)}
+                value={selectedVersion === packData.versions[0]?.title ? `${selectedVersion} (latest)` : selectedVersion}
+              >
+                {getOptions()}
+              </Select>
+            </div>
+          </div>
+          <div className={styles.packdescription}>
+            <PackCardIcon title={packData.title} logoUrl={packData.logoUrl} type={packData.type} />
+            <div>{packData.customDescription}</div>
           </div>
         </div>
-        <div className={styles.packdescription}>
-          <PackCardIcon title={packData.title} logoUrl={packData.logoUrl} type={packData.type} />
-          <div>{packData.customDescription}</div>
+        <div>
+          {renderTabs()}
         </div>
-      </div>
-      <div className={styles.versionsection}>
-        {versionSupportedTextRender()}
-      </div>
-      <div>
-        {renderTabs()}
-      </div>
+      </ConfigProvider>
     </div>
   );
 }

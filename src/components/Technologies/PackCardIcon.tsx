@@ -6,14 +6,12 @@ import { Image } from "antd";
 interface PackCardIconProps {
   title?: string;
   logoUrl?: string;
-  type?: string;
+  type?: any;
 }
 
 export default function PackCardIcon({ title, logoUrl, type }: PackCardIconProps) {
   const [ isError, setIsError ] = useState(false);
-  console.log("type", type, "  title ", title);
   const handleImageError = (e: any) => {
-    console.log(`Failed to load e.target.src: ${e.target.src}`);
     e.target.style.display = "none";
     setIsError(true);
   };

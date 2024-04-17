@@ -1,6 +1,10 @@
 .customLabel {
   font-size: 14px;
   background-color: #dee1ea;
+  html[data-theme="dark"] & {
+    color: white;
+    background-color: #1c202b;
+  }
   height: 32px;
   align-self: center;
   padding-top: 5px;

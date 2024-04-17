@@ -12,15 +12,12 @@ interface PackFiltersProps {
 export default function PacksFilters({ categories, selectedFilters, setSelectedSearchFilters }: PackFiltersProps) {
   function setSelectedCategory(category: string[]) {
     setSelectedSearchFilters({ category: category });
-    console.log("category", category);
   }
   function setSelectedProvider(provider: string) {
     setSelectedSearchFilters({ provider: provider });
-    console.log("provider", provider);
   }
   function selectAdditionalFilters(additionalFilters: string[]) {
     setSelectedSearchFilters({ additionalFilters: additionalFilters });
-    console.log("additionalFilters", additionalFilters);
   }
   return (
     <div className={styles.wrapper}>

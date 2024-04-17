@@ -12,10 +12,6 @@ interface TechnologyCardProps {
 
 export default function TechnologyCard({ name, title, logoUrl, type }: TechnologyCardProps) {
   const history = useHistory();
-  const handleImageError = (e: any) => {
-    console.log(`Failed to load e.target.src: ${e.target.src}`);
-    e.target.src.display = "none"
-  };
   const handleClick = () => {
     history.push({
       pathname: `/integrations/packs/${name}`,

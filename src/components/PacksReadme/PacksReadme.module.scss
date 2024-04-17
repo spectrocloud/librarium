@@ -4,19 +4,40 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  .versionsection {
-    align-self: start;
-  }
-  .bullets::before {
-    content: "•";
-    padding-right: 8px;
-    font-size: 20px;
-    font-weight: bold;
+  .emptyContent {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    .emptyContentTitle {
+      font-size: 20px;
+      color: #545f7e;
+      font-weight: 500;
+      line-height: 24px;
+      html[data-theme="dark"] & {
+        color: #b5bdd4;
+        background-color: #111726;
+      }
+    }
+    .emptyContentDescription {
+      font-size: 16px;
+      color: #545f7e;
+      font-weight: 400;
+      line-height: 24px;
+      html[data-theme="dark"] & {
+        color: #b5bdd4;
+        background-color: #111726;
+      }
+      margin-top: 10px;
+    }
   }
   .description {
     display: flex;
     width: 100%;
     background-color: #edeef4;
+    html[data-theme="dark"] & {
+      background-color: #1c202b;
+    }
     flex-direction: column;
     padding: 10px;
     .packdescfirstrow {

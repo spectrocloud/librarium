@@ -2,6 +2,10 @@
   width: 100%;
   border: 0 none;
   background: white;
+  html[data-theme="dark"] & {
+    color: white;
+    background-color: #1c202b;
+  }
 }
 .ant-collapse-content-box {
   display: flex;

@@ -12,7 +12,7 @@ export default function CustomLabel({ label, className = "" }: CustomLabelProps)
   return (
     <>
       <div className={`${className} ${styles.customLabel}`}>
-        <Text>{label}</Text>
+        {label}
       </div>
     </>
   );
