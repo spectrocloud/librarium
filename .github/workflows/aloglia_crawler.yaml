@@ -1,15 +1,10 @@
 name: Algolia Crawler
 
-# on:
-#   workflow_run:
-#     workflows: ["Release to Production"]
-#     types: [completed]
-#   workflow_dispatch:
-
 on:
-  push:
-    branches:
-      - aloglia-index-research
+  workflow_run:
+    workflows: ["Release to Production"]
+    types: [completed]
+  workflow_dispatch:
 
 env:
   ALGOLIA_CRAWLER_USER_ID: ${{ secrets.ALGOLIA_CRAWLER_V3_USER_ID }}
@@ -24,23 +19,23 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # - name: Run scraper
-      #   env:
-      #     APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
-      #     API_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
-      #   run: docker run  -e APPLICATION_ID=$APPLICATION_ID  -e API_KEY=$API_KEY  -e "CONFIG=$(cat ./docsearch.config.json | jq -r tostring)" algolia/docsearch-scraper
+      - name: Run scraper
+        env:
+          APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          API_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+        run: docker run  -e APPLICATION_ID=$APPLICATION_ID  -e API_KEY=$API_KEY  -e "CONFIG=$(cat ./docsearch.config.json | jq -r tostring)" algolia/docsearch-scraper
 
       - name: Trigger DocSearch v3 Crawler
         run: |
           curl -H "Content-Type: application/json" -X POST --user ${ALGOLIA_CRAWLER_USER_ID}:${ALGOLIA_CRAWLER_API_KEY} "https://crawler.algolia.com/api/1/crawlers/${CRAWLER_ID}/reindex"
 
 
-      # - name: Slack Notification
-      #   if: ${{ failure() }}
-      #   uses: rtCamp/action-slack-notify@v2
-      #   env:
-      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-      #     SLACK_USERNAME: "spectromate"
-      #     SLACK_ICON_EMOJI: ":robot_panic:"
-      #     SLACK_COLOR: ${{ job.status }}
-      #     SLACK_MESSAGE: 'The Docs Algolia crawler job failed. Please check the GitHub Actions logs for more details.'
+      - name: Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: 'The Docs Algolia crawler job failed. Please check the GitHub Actions logs for more details.'

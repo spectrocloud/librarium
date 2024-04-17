@@ -376,7 +376,6 @@ const config = {
         searchParameters: {},
         // Optional: path for search page that enabled by default (`false` to disable it)
         searchPagePath: "search",
-        debug: true,
       },
       sidebar: {
         hideable: true,
