@@ -1,5 +1,7 @@
 .PHONY: initialize start commit build
 
+include .env
+
 IMAGE:=spectrocloud/librarium
 # Retrieve all modified files in the content folder and compare the difference between the master branch git tree blob AND this commit's git tree blob
 CHANGED_FILE=$(shell git diff-tree -r --no-commit-id --name-only master HEAD | grep content)
@@ -8,6 +10,7 @@ TEMP_DIR=$(shell $TMPDIR)
 
 CPUS := $(shell sysctl -n hw.ncpu | awk '{print int($$1 / 2)}')
 
+ALOGLIA_CONFIG=$(shell cat docsearch.dev.config.json | jq -r tostring)
 
 
 help: ## Display this help
@@ -199,3 +202,13 @@ verify-url-links-ci: ## Check for broken URLs in production in a GitHub Actions 
 format-images: ## Format images
 	@echo "formatting images in /static/assets/docs/images/ folder"
 	./scripts/compress-convert-images.sh
+
+###@ Aloglia Indexing
+
+update-dev-index: ## Update the Algolia index for the dev environment
+	@echo "updating Algolia index for dev environment"
+	docker run  -e APPLICATION_ID=${ALGOLIA_APP_ID}  -e API_KEY=${ALGOLIA_ADMIN_KEY} -e CONFIG='${ALOGLIA_CONFIG}'  algolia/docsearch-scraper
+
+remove-dev-index: ## Remove the Algolia index for the dev environment
+	@echo "removing Algolia index for dev environment"
+	algolia index delete dev-docusaurus-librarium --confirm
