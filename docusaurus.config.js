@@ -358,9 +358,9 @@ const config = {
       ],
       algolia: {
         // The application ID provided by Algolia
-        appId: "9AJ6SKEWEN",
+        appId: process.env.ALGOLIA_APP_ID,
         // Public API key: it is safe to commit it
-        apiKey: "ce2b4db7872279451d8b8964a2239e28",
+        apiKey: process.env.ALGOLIA_SEARCH_KEY,
         indexName: "spectrocloud",
         // Optional: see doc section below
         contextualSearch: true,
