@@ -3,12 +3,9 @@ title: "Example Usage"
 sidebar_label: "Example Usage"
 description: "Learn how to use the Spectro Cloud API through examples."
 icon: ""
-hide_table_of_contents: true
-
+hide_table_of_contents: false
 hiddenFromNav: false
 ---
-
-# Overview
 
 This workflow demonstrates how to use Spectro Cloud API. You can use the API to automate the provisioning of Kubernetes
 clusters and applications on Spectro Cloud.
@@ -17,8 +14,6 @@ The API is a RESTful API that uses JSON for serialization and supports HTTP Basi
 authentication. The API is available at `https://api.spectrocloud.com`.
 
 Use the following examples to familiarize yourself with the API.
-
-<br />
 
 :::warning
 
@@ -29,9 +24,7 @@ more about the Postman collection.
 
 :::
 
-<br />
-
-# Prerequisites
+## Prerequisites
 
 - You must have a Spectro Cloud account. If you do not have an account, you can create one at
   [https://console.spectrocloud.com](https://console.spectrocloud.com).
@@ -69,7 +62,7 @@ If you do not provide the projectUid header, then the assumed scope is of the te
 
 :::
 
-# Deploy a Cluster
+## Deploy a Cluster
 
 You can use the following endpoint to deploy a cluster. The provider value represents the cloud provider on which you
 want to deploy the cluster, such as public cloud or on-prem.
@@ -535,7 +528,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 </Tabs>
 
-# Cluster Nodes and Node Status
+## Cluster Nodes and Node Status
 
 You can use the following endpoint to retrieve the list of nodes in a cluster and their status.
 
@@ -993,7 +986,7 @@ async fn main() -> Result<(), reqwest::Error> {
 
 </Tabs>
 
-# Cluster Workloads
+## Cluster Workloads
 
 You can retrieve information about the active workloads on a cluster, such as the number of pods, nodes, and containers.
 Use the namespace filter to retrieve information about workloads in specific namespaces.
@@ -1249,7 +1242,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
 </Tabs>
 
-# Filter Clusters
+## Filter Clusters
 
 You can filter host clusters by specifying the tags you want to filter on.
 
@@ -1634,7 +1627,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 </Tabs>
 
-# Download Cluster Kubeconfig
+## Download Cluster Kubeconfig
 
 You can download the kubeconfig file of a host cluster. To download the kubeconfig file, you need to provide the cluster
 UID.
