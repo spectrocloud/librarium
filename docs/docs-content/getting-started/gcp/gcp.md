@@ -8,8 +8,8 @@ sidebar_custom_props:
 tags: ["getting-started", "gcp"]
 ---
 
-Palette supports integration with Google Cloud Platform (GCP). You can deploy and manage Host Clusters in GCP. To get
-started with GCP, start by adding your GCP account in Palette.
+Palette supports integration with [Google Cloud Platform](https://cloud.google.com/). You can deploy and manage
+[Host Clusters](../../glossary-all.md#host-cluster) in GCP.
 
 ## Get Started
 
