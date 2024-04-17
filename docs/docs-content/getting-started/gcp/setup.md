@@ -5,7 +5,7 @@ description: "Learn how to set up Palette with GCP."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["getting-started"]
+tags: ["getting-started", "gcp"]
 ---
 
 In this guide, you learn how to set up Palette for use with your AWS cloud account. These steps are required in order to

@@ -5,7 +5,7 @@ description: "Learn to deploy a Palette host cluster with Terraform."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 50
-tags: ["getting-started"]
+tags: ["getting-started", "aws"]
 ---
 
 The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider

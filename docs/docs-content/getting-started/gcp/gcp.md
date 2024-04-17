@@ -5,7 +5,7 @@ description: "Spectro Cloud Getting Started with GCP"
 hide_table_of_contents: false
 sidebar_custom_props:
   icon: ""
-tags: ["getting-started"]
+tags: ["getting-started", "gcp"]
 ---
 
 Palette supports integration with Google Cloud Platform (GCP). You can deploy and manage Host Clusters in GCP. To get

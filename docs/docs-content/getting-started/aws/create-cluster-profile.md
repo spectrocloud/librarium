@@ -5,7 +5,7 @@ description: "Learn to create a full cluster profile in Palette for AWS."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["getting-started"]
+tags: ["getting-started", "aws"]
 ---
 
 Palette offers profile-based management for Kubernetes, enabling consistency, repeatability, and operational efficiency
