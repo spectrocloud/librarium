@@ -6,6 +6,11 @@ on:
     types: [completed]
   workflow_dispatch:
 
+env:
+  ALGOLIA_CRAWLER_USER_ID: ${{ secrets.ALGOLIA_CRAWLER_V3_USER_ID }}
+  ALGOLIA_CRAWLER_API_KEY: ${{ secrets.ALGOLIA_CRAWLER_V3_API_KEY }}
+  CRAWLER_ID: ${{ secrets.ALGOLIA_CRAWLER_V3_ID }}
+
 jobs:
   docsearch:
     runs-on: ubuntu-latest
@@ -19,6 +24,11 @@ jobs:
           APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
           API_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
         run: docker run  -e APPLICATION_ID=$APPLICATION_ID  -e API_KEY=$API_KEY  -e "CONFIG=$(cat ./docsearch.config.json | jq -r tostring)" algolia/docsearch-scraper
+
+      - name: Trigger DocSearch v3 Crawler
+        run: |
+          curl -H "Content-Type: application/json" -X POST --user ${ALGOLIA_CRAWLER_USER_ID}:${ALGOLIA_CRAWLER_API_KEY} "https://crawler.algolia.com/api/1/crawlers/${CRAWLER_ID}/reindex"
+
 
       - name: Slack Notification
         if: ${{ failure() }}
