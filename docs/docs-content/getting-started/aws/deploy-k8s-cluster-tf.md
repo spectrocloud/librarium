@@ -329,8 +329,9 @@ data "spectrocloud_pack" "aws_k8s" {
 Using the data resource, you avoid manually typing in the parameter values required by the cluster profile's `pack {}`
 block.
 
-The **clusters.tf** file contains the definitions for deploying a host cluster to one of the public cloud providers. To create
-a host cluster, you must use a cluster resource for the cloud provider you are targeting. The following Terraform cluster resources are defined in this file.
+The **clusters.tf** file contains the definitions for deploying a host cluster to one of the public cloud providers. To
+create a host cluster, you must use a cluster resource for the cloud provider you are targeting. The following Terraform
+cluster resources are defined in this file.
 
 | Terraform Resource                                                                                                                    | Platform |
 | ------------------------------------------------------------------------------------------------------------------------------------- | -------- |
@@ -450,8 +451,8 @@ terraform apply -auto-approve
 ```
 
 To check out the cluster profile creation in Palette, log in to [Palette](https://console.spectrocloud.com), and from
-the left **Main Menu** click on **Profiles**. Locate the cluster profile named `tf-aws-profile`. Click
-on the cluster profile to review its details, such as layers, packs, and versions.
+the left **Main Menu** click on **Profiles**. Locate the cluster profile named `tf-aws-profile`. Click on the cluster
+profile to review its details, such as layers, packs, and versions.
 
 ![A view of the cluster profile](/getting-started/aws/getting-started_deploy-k8s-cluster-tf_profile_review.webp)
 

@@ -452,8 +452,8 @@ terraform apply -auto-approve
 ```
 
 To check out the cluster profile creation in Palette, log in to [Palette](https://console.spectrocloud.com), and from
-the left **Main Menu** click on **Profiles**. Locate the cluster profile with the name `tf-gcp-profile`. Click
-on the cluster profile to review its details, such as layers, packs, and versions.
+the left **Main Menu** click on **Profiles**. Locate the cluster profile with the name `tf-gcp-profile`. Click on the
+cluster profile to review its details, such as layers, packs, and versions.
 
 ![A view of the cluster profile](/getting-started/gcp/getting-started_deploy-k8s-cluster-tf_profile_review.webp)
 

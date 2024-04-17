@@ -28,7 +28,8 @@ The prerequisite steps to getting started with Palette on AWS are as follows.
     [Register and Manage AWS Accounts](../../clusters/public-cloud/aws/add-aws-accounts.md) page provides additional
     guidance.
 
-- Create an SSH key and upload it to Palette. Check out the [Create and Upload an SSH Key](../../clusters/cluster-management/ssh-keys.md) guide for more information.
+- Create an SSH key and upload it to Palette. Check out the
+  [Create and Upload an SSH Key](../../clusters/cluster-management/ssh-keys.md) guide for more information.
 
   - AWS users must create an AWS Key pair before following our tutorials. If you need additional guidance, check out the
     [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html)

@@ -236,9 +236,9 @@ The Spectro Cloud Terraform provider has several resources available for use. Wh
 all the different packs and versions to use and add a manifest or Helm chart.
 
 In the **cluster-profiles.tf** file, the cluster profile resource is declared three times. Each instance of the resource
-is for a specific cloud provider. Using the Azure cluster profile as an example, note how the **cluster-profiles.tf** file
-uses `pack {}` blocks to specify each layer of the profile. The order in which you arrange contents of the `pack {}`
-blocks plays an important role, as each layer maps to the core infrastructure in a cluster profile.
+is for a specific cloud provider. Using the Azure cluster profile as an example, note how the **cluster-profiles.tf**
+file uses `pack {}` blocks to specify each layer of the profile. The order in which you arrange contents of the
+`pack {}` blocks plays an important role, as each layer maps to the core infrastructure in a cluster profile.
 
 The first listed `pack {}` block must be the OS, followed by Kubernetes, the container network interface, and the
 container storage interface. The first `pack {}` block in the list equates to the bottom layer of the cluster profile.
@@ -331,7 +331,8 @@ Using the data resource, you avoid manually typing in the parameter values requi
 block.
 
 The **clusters.tf** file contains the definitions for deploying a host cluster to one of the cloud providers. To create
-a host cluster, you must use a cluster resource for the cloud provider you are targeting. The following Terraform cluster resources are defined in this file.
+a host cluster, you must use a cluster resource for the cloud provider you are targeting. The following Terraform
+cluster resources are defined in this file.
 
 | Terraform Resource                                                                                                                    | Platform |
 | ------------------------------------------------------------------------------------------------------------------------------------- | -------- |
@@ -460,8 +461,8 @@ terraform apply -auto-approve
 ```
 
 To check out the cluster profile creation in Palette, log in to [Palette](https://console.spectrocloud.com), and from
-the left **Main Menu** click on **Profiles**. Locate the cluster profile with the name
-`tf-azure-profile`. Click on the cluster profile to review its details, such as layers, packs, and versions.
+the left **Main Menu** click on **Profiles**. Locate the cluster profile with the name `tf-azure-profile`. Click on the
+cluster profile to review its details, such as layers, packs, and versions.
 
 ![A view of the cluster profile](/getting-started/azure/getting-started_deploy-k8s-cluster-tf_profile_review.webp)
 

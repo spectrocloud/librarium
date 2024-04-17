@@ -128,8 +128,7 @@ profile.
 ## Wrap-Up
 
 In this tutorial, you created a cluster profile, which is a template that contains the core layers required to deploy a
-host cluster using Microsoft Azure. You added
-a custom manifest to your profile to deploy a custom workload.
+host cluster using Microsoft Azure. You added a custom manifest to your profile to deploy a custom workload.
 
 We recommend that you continue to the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial to deploy this cluster
 profile to a host cluster onto Azure.

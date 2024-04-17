@@ -27,7 +27,8 @@ The prerequisite steps to getting started with Palette on GCP are as follows.
     [Register and Manage GCP Accounts](../../clusters/public-cloud/gcp/add-gcp-accounts.md) page provides additional
     guidance.
 
-- Create an SSH key and upload it to Palette. Check out the [Create and Upload an SSH Key](../../clusters/cluster-management/ssh-keys.md) guide for more information.
+- Create an SSH key and upload it to Palette. Check out the
+  [Create and Upload an SSH Key](../../clusters/cluster-management/ssh-keys.md) guide for more information.
 
 ## Validate
 

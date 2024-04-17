@@ -21,13 +21,15 @@ The prerequisite steps to getting started with Palette on AWS are as follows.
     [Roles and Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
     documentation for more information.
 
-- Sign up to a public cloud account from [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account).
+- Sign up to a public cloud account from
+  [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account).
 
   - Register the cloud account in Palette. The
-    [Register and Manage Azure Cloud Accounts](../../clusters/public-cloud/azure/azure-cloud.md) page provides additional
-    guidance.
+    [Register and Manage Azure Cloud Accounts](../../clusters/public-cloud/azure/azure-cloud.md) page provides
+    additional guidance.
 
-- Create an SSH key and upload it to Palette. Check out the [Create and Upload an SSH Key](../../clusters/cluster-management/ssh-keys.md) guide for more information.
+- Create an SSH key and upload it to Palette. Check out the
+  [Create and Upload an SSH Key](../../clusters/cluster-management/ssh-keys.md) guide for more information.
 
 ## Validate
 

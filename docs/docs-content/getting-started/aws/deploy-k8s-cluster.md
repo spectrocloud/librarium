@@ -8,8 +8,9 @@ sidebar_position: 30
 tags: ["getting-started", "aws"]
 ---
 
-This tutorial will teach you how to deploy a host cluster with Palette using Amazon Web Services (AWS). You will learn about _Cluster Mode_ and _Cluster Profiles_ and how these
-components enable you to deploy customized applications to Kubernetes with minimal effort.
+This tutorial will teach you how to deploy a host cluster with Palette using Amazon Web Services (AWS). You will learn
+about _Cluster Mode_ and _Cluster Profiles_ and how these components enable you to deploy customized applications to
+Kubernetes with minimal effort.
 
 As you navigate the tutorial, refer to this diagram to help you understand how Palette uses a cluster profile as a
 blueprint for the host cluster you deploy. Palette clusters have the same node pools you may be familiar with: _control
@@ -179,7 +180,8 @@ selection to remove the cluster profile.
 ## Wrap-Up
 
 In this tutorial, you used the cluster profile you created in the previous
-[Create a Cluster Profile](./create-cluster-profile.md) tutorial to deploy a host cluster onto AWS. After the cluster deployed, you verified the Hello Universe application was successfully deployed.
+[Create a Cluster Profile](./create-cluster-profile.md) tutorial to deploy a host cluster onto AWS. After the cluster
+deployed, you verified the Hello Universe application was successfully deployed.
 
 We recommend that you continue to the [Deploy Cluster Profile Updates](./update-k8s-cluster.md) tutorial to learn how to
 update your host cluster.
