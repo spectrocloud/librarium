@@ -1,5 +1,4 @@
 import React from "react";
-import { Typography } from "antd";
 import styles from "./CustomLabel.module.scss";
 
 interface CustomLabelProps {
@@ -8,7 +7,6 @@ interface CustomLabelProps {
 }
 
 export default function CustomLabel({ label, className = "" }: CustomLabelProps) {
-  const { Text } = Typography;
   return (
     <>
       <div className={`${className} ${styles.customLabel}`}>

@@ -86,7 +86,7 @@ export default function PacksReadme() {
       readme = packUid ? packData.packReadme[packUid] : "";
       const items = [
         {
-          label: `Pack details`,
+          label: `Readme`,
           key: '1',
           children: (<Markdown children={readme} />),
         },
