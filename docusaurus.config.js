@@ -128,7 +128,7 @@ const config = {
           editUrl: "https://github.com/spectrocloud/librarium/blob/master",
         },
         sitemap: {
-          changefreq: "weekly",
+          changefreq: "daily",
           priority: 0.5,
           ignorePatterns: ["/tags/**"],
           filename: "sitemap.xml",
@@ -376,6 +376,7 @@ const config = {
         searchParameters: {},
         // Optional: path for search page that enabled by default (`false` to disable it)
         searchPagePath: "search",
+        maxResultsPerGroup: 7,
       },
       sidebar: {
         hideable: true,
