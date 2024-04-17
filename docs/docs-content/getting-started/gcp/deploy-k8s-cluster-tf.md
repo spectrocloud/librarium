@@ -184,7 +184,7 @@ To help you get started with Terraform, the tutorial code is structured to suppo
 GCP, or AWS. Before you deploy a host cluster to your target provider, take a few moments to review the following files
 in the folder structure.
 
-- **providers.tf** - This file contains the Terraform providers that are used to support the deployment of the cluster.
+- **provider.tf** - This file contains the Terraform providers that are used to support the deployment of the cluster.
 
 - **inputs.tf** - This file contains all the Terraform variables for the deployment logic.
 
@@ -192,7 +192,7 @@ in the folder structure.
 
 - **cluster_profiles.tf** - This file contains the cluster profile definitions for each cloud provider.
 
-- **cluster.tf** - This file has all the required cluster configurations to deploy a host cluster to one of the cloud
+- **clusters.tf** - This file has all the required cluster configurations to deploy a host cluster to one of the cloud
   providers.
 
 - **terraform.tfvars** - Use this file to customize the deployment and target a specific cloud provider. This is the
@@ -452,14 +452,14 @@ terraform apply -auto-approve
 ```
 
 To check out the cluster profile creation in Palette, log in to [Palette](https://console.spectrocloud.com), and from
-the left **Main Menu** click on **Profiles**. Locate the cluster profile with the name pattern `tf-gcp-profile`. Click
+the left **Main Menu** click on **Profiles**. Locate the cluster profile with the name `tf-gcp-profile`. Click
 on the cluster profile to review its details, such as layers, packs, and versions.
 
-![A view of the cluster profile](/getting-started/aws/getting-started_deploy-k8s-cluster_profile_cluster_profile_review.webp)
+![A view of the cluster profile](/getting-started/gcp/getting-started_deploy-k8s-cluster-tf_profile_review.webp)
 
 You can also check the cluster creation process by navigating to the left **Main Menu** and selecting **Clusters**.
 
-![Update the cluster](/getting-started/aws/getting-started_deploy-k8s-cluster_create_cluster.webp)
+![Update the cluster](/getting-started/gcp/getting-started_deploy-k8s-cluster_new_cluster.webp)
 
 Select your cluster to review its details page, which contains the status, cluster profile, event logs, and more.
 
@@ -467,7 +467,7 @@ The cluster deployment may take several minutes depending on the cloud provider,
 cluster profile. You can learn more about the deployment progress by reviewing the event log. Click on the **Events**
 tab to check the event log.
 
-![Update the cluster](/getting-started/aws/getting-started_deploy-k8s-cluster_event_log.webp)
+![Update the cluster](/getting-started/gcp/getting-started_deploy-k8s-cluster_event_log.webp)
 
 ## Verify the Application
 
@@ -541,7 +541,7 @@ podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.3
 ## Wrap-Up
 
 In this tutorial, you created a cluster profile, which is a template that contains the core layers required to deploy a
-host cluster. You then deployed a host cluster onto your preferred cloud service provider using Terraform.
+host cluster. You then deployed a host cluster to GCP using Terraform.
 
 We encourage you to check out the [Deploy an Application using Palette Dev Engine](../../devx/apps/deploy-app) tutorial
 to learn more about Palette. Palette Dev Engine can help you deploy applications more quickly through the usage of

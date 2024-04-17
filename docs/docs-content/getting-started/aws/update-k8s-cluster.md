@@ -36,7 +36,7 @@ for use with your AWS cloud account.
 
 Follow the instructions of the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial to create a cluster profile and
 cluster with the [_hello-universe_](https://github.com/spectrocloud/hello-universe) application. Your cluster should be
-successfully provisioned and in a healthy state in the cloud of your choosing.
+successfully provisioned and in a healthy state.
 
 The cluster profile name is `aws-profile` and the cluster name is `aws-cluster`.
 
@@ -142,7 +142,7 @@ Click on **Confirm Updates** and close the editor.
 Click on **Save Changes** to confirm your updates.
 
 Deploy this cluster profile to a new cluster using the same steps outlined in the
-[Deploy a Cluster](./deploy-k8s-cluster.md) tutorial.
+[Deploy a Cluster](./deploy-k8s-cluster.md) tutorial. Name this cluster `aws-cluster-api`.
 
 Once you have completed these steps and the host cluster creation process has finished, navigate to the left **Main
 Menu** and select **Clusters** to view your deployed clusters. You should have two healthy clusters.
@@ -288,11 +288,16 @@ Navigate to the left **Main Menu** and select **Clusters**. Filter for the clust
 Select the **Profile** tab of this cluster. You can select a new version of your cluster profile by using the version
 dropdown.
 
-Select the **1.1.0** version. Click on **Save** to confirm your profile version selection.
+Select the **1.1.0** version.
 
 ![Image that shows how to select a new profile version for the cluster](/getting-started/aws/getting-started_update-k8s-cluster_profile-version-selection.webp)
 
-:::warning
+Click on **Review & Save** to confirm your profile version selection.
+
+The **Changes Summary** dialog appears to show your cluster changes. Click on **Review changes in Editor**. The
+`API_URI` environment variable appears in the editor. Click on **Apply Changes** to deploy the new profile version.
+
+![Image that shows the profile 1.1.0 differences](/getting-started/getting-started_update-k8s-cluster_profile-version-changes.webp)
 
 Palette has backup and restore capabilities available for your mission critical workloads. Ensure that you have adequate
 backups before you make any cluster profile version changes in your production environments. You can learn more in the
@@ -323,7 +328,14 @@ Navigate to the left **Main Menu** and select **Clusters**. Filter for the clust
 
 Select the **Profile** tab. This cluster is currently deployed using cluster profile version **1.1.0**. Select the
 option **1.0.0** in the version dropdown. This process is the reverse of what you have done in the previous section,
-[Version Cluster Profiles](#version-cluster-profiles). Click on **Save** to confirm your changes.
+[Version Cluster Profiles](#version-cluster-profiles).
+
+Click on **Review & Save** to confirm your changes. The **Changes Summary** dialog appears again.
+
+Click on **Review changes in Editor**. The editor shows that the incoming version no longer contains the `API_URI`
+environment variable.
+
+Click on **Apply Changes**. Select the **Overview** tab.
 
 Palette now makes the changes required for the cluster to return to the state specified in version **1.0.0** of your
 cluster profile. Once your changes have completed, Palette marks your layers with the green status indicator.

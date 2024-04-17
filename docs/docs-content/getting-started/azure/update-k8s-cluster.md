@@ -36,7 +36,7 @@ for use with your Azure cloud account.
 
 Follow the instructions of the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial to create a cluster profile and
 cluster with the [_hello-universe_](https://github.com/spectrocloud/hello-universe) application. Your cluster should be
-successfully provisioned and in a healthy state in the cloud of your choosing.
+successfully provisioned and in a healthy state.
 
 The cluster profile name is `azure-profile` and the cluster name is `azure-cluster`.
 
@@ -142,12 +142,12 @@ Click on **Confirm Updates** and close the editor.
 Click on **Save Changes** to confirm your updates.
 
 Deploy this cluster profile to a new cluster using the same steps outlined in the
-[Deploy a Cluster](./deploy-k8s-cluster.md) tutorial.
+[Deploy a Cluster](./deploy-k8s-cluster.md) tutorial. Name this cluster `azure-cluster-api`.
 
 Once you have completed these steps and the host cluster creation process has finished, navigate to the left **Main
 Menu** and select **Clusters** to view your deployed clusters. You should have two healthy clusters.
 
-![Image that shows the two clusters in the clusters list](/getting-started/getting-started_update-k8s-cluster_deployed-clusters-start-setup.webp)
+![Image that shows the two clusters in the clusters list](/getting-started/azure/getting-started_update-k8s-cluster_deployed-clusters-start-setup.webp)
 
 ## Tag and Filter Clusters
 
@@ -158,8 +158,8 @@ after it has been created.
 Adding tags to your clusters helps you find and identify your clusters, without having to rely on cluster naming. This
 is especially important when operating with many clusters or multiple cloud deployments.
 
-Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. Find the
-`azure-cluster` you deployed with the _hello-universe_ application. Click on it to view its **Overview** tab.
+Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. Find the `azure-cluster` you
+deployed with the _hello-universe_ application. Click on it to view its **Overview** tab.
 
 Click on the **Settings** drop-down Menu in the upper right corner and select **Cluster Settings**.
 
@@ -168,8 +168,8 @@ panel.
 
 ![Image that shows how to add a cluster tag](/getting-started/azure/getting-started_update-k8s-cluster_add-service-tag.webp)
 
-Repeat the steps above for the `azure-cluster-api` cluster you deployed with the _hello-universe-api_. Add
-the **service:hello-universe-backend** tag to it.
+Repeat the steps above for the `azure-cluster-api` cluster you deployed with the _hello-universe-api_. Add the
+**service:hello-universe-backend** tag to it.
 
 Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. Click on **Add Filter**, then
 select the **Add custom filter** option.
@@ -200,8 +200,8 @@ Select cluster to open its **Overview** tab. Make a note of the IP address of th
 in this cluster. You can find it by opening the **:3000** URL.
 
 Navigate to the left **Main Menu** and select **Profiles** to view the cluster profile page. Find the cluster profile
-corresponding to your _hello-universe-frontend_ cluster. It should be named
-`azure-profile`. Select it to view its details.
+corresponding to your _hello-universe-frontend_ cluster. It should be named `azure-profile`. Select it to view its
+details.
 
 ![Image that shows the frontend cluster profile with cluster linked to it](/getting-started/azure/getting-started_update-k8s-cluster_profile-with-cluster.webp)
 
@@ -288,9 +288,9 @@ Navigate to the left **Main Menu** and select **Clusters**. Filter for the clust
 Select the **Profile** tab of this cluster. You can select a new version of your cluster profile by using the version
 dropdown.
 
-Select the **1.1.0** version. Click on **Save** to confirm your profile version selection.
+Select the **1.1.0** version.
 
-![Image that shows how to select a new profile version for the cluster](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_profile-version-selection.webp)
+![Image that shows how to select a new profile version for the cluster](/getting-started/azure/getting-started_update-k8s-cluster_profile-version-selection.webp)
 
 Click **Review & Save**. Palette prompts you to preview the change summary.
 
@@ -332,7 +332,14 @@ Navigate to the left **Main Menu** and select **Clusters**. Filter for the clust
 
 Select the **Profile** tab. This cluster is currently deployed using cluster profile version **1.1.0**. Select the
 option **1.0.0** in the version dropdown. This process is the reverse of what you have done in the previous section,
-[Version Cluster Profiles](#version-cluster-profiles). Click on **Save** to confirm your changes.
+[Version Cluster Profiles](#version-cluster-profiles).
+
+Click on **Review & Save** to confirm your changes. The **Changes Summary** dialog appears again.
+
+Click on **Review changes in Editor**. The editor shows that the incoming version no longer contains the `API_URI`
+environment variable.
+
+Click on **Apply Changes**. Select the **Overview** tab.
 
 Palette now makes the changes required for the cluster to return to the state specified in version **1.0.0** of your
 cluster profile. Once your changes have completed, Palette marks your layers with the green status indicator.
@@ -430,9 +437,10 @@ Repeat the same steps to the delete the cluster profile named with the pattern `
 
 ## Wrap-Up
 
-In this tutorial, you created two clusters and cluster profiles. After the clusters deployed to Azure, you updated one cluster profile in through three different methods: create a new cluster profile version,
-update a cluster profile in place, and cluster profile overrides. After you made your changes, the Hello Universe
-application functioned as a three-tier application with a REST API backend server.
+In this tutorial, you created two clusters and cluster profiles. After the clusters deployed to Azure, you updated one
+cluster profile in through three different methods: create a new cluster profile version, update a cluster profile in
+place, and cluster profile overrides. After you made your changes, the Hello Universe application functioned as a
+three-tier application with a REST API backend server.
 
 Cluster profiles provide consistency during the cluster creation process, as well as when maintaining your clusters.
 They can be versioned to keep a record of previously working cluster states, giving you visibility when updating or
