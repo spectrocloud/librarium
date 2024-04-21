@@ -6,7 +6,7 @@ import { useColorMode } from "@docusaurus/theme-common";
 
 interface TypeSelectorProps {
   categories: string[];
-  selected: string[]; // Update the type to string[]
+  selected: string[];
   selectCategory: (category: string[]) => void;
 }
 
@@ -24,12 +24,11 @@ export default function TypeSelector({ categories, selected = [""], selectCatego
 
   return (
     <div className={styles.wrapper}>
-
       <Select
         mode="multiple"
         allowClear
         placeholder="Search"
-        onChange={(item) => selectCategory(item as string[])} // Cast item to string[]
+        onChange={(item) => selectCategory(item as string[])}
       >
         {getOptions(categories)}
       </Select>

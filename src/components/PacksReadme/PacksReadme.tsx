@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, ReactElement } from "react";
 import styles from "./PacksReadme.module.scss";
-import { Select, Tabs, ConfigProvider, theme } from "antd";
+import { Select, Tabs, ConfigProvider, theme, Space } from "antd";
 import CustomLabel from "../Technologies/CategorySelector/CustomLabel";
 import PackCardIcon from "../Technologies/PackCardIcon";
 import Markdown from 'markdown-to-jsx';
@@ -10,6 +10,7 @@ import PacksIntegrationsPluginData from "../Integrations/IntegrationTypes";
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from "@docusaurus/useBaseUrl"
 import { useColorMode } from "@docusaurus/theme-common";
+import { packTypeNames } from "../Technologies/PackConstants";
 
 interface PackReadmeProps {
   customDescription: string,
@@ -17,7 +18,8 @@ interface PackReadmeProps {
   versions: Array<any>,
   title: string,
   logoUrl: string,
-  type: string
+  type: string,
+  provider: Array<string>,
 }
 
 export default function PacksReadme() {
@@ -54,6 +56,7 @@ export default function PacksReadme() {
         title: _packData.fields.title,
         logoUrl: _packData.fields.logoUrl,
         type: _packData.fields.packType,
+        provider: _packData.fields.cloudTypes,
       };
       return packDataInfo;
     }
@@ -64,6 +67,7 @@ export default function PacksReadme() {
       title: "",
       logoUrl: "",
       type: "",
+      provider: [],
     };
   }, [packName]);
 
@@ -127,11 +131,20 @@ export default function PacksReadme() {
             light: empty_icon_light,
             dark: empty_icon_dark,
           }}
+          width={120}
+          height={120}
         />
-          <div className={styles.emptyContentTitle}>No content available</div>
-          <div className={styles.emptyContentDescription}>The content for this pack is not available.</div>
+        <div className={styles.emptyContentTitle}>No content available</div>
+        <div className={styles.emptyContentDescription}>The content for this pack is not available.</div>
       </div>
     );
+  }
+  function getProviders() {
+    if(packData.provider.includes("all")) {
+      return "All";
+    } else {
+      return packData.provider.join(", ");
+    }
   }
   return (
     <div className={styles.wrapper}>
@@ -139,8 +152,14 @@ export default function PacksReadme() {
         algorithm: isDarkTheme ? darkAlgorithm : defaultAlgorithm,
       }}>
         <div className={styles.description}>
-          <div className={styles.packdescfirstrow}>
+          <div className={styles.packdescfirstcol}>
             <div className={styles.packname}>{packName}</div>
+            <div className={styles.descriptioncontent}>
+              <PackCardIcon title={packData.title} logoUrl={packData.logoUrl} type={packData.type} />
+              <div>{packData.customDescription}</div>
+            </div>
+          </div>
+          <div className={styles.packdescsecondcol}>
             <div className={styles.versionselect}>
               <CustomLabel label="Version" />
               <Select
@@ -152,10 +171,14 @@ export default function PacksReadme() {
                 {getOptions()}
               </Select>
             </div>
-          </div>
-          <div className={styles.packdescription}>
-            <PackCardIcon title={packData.title} logoUrl={packData.logoUrl} type={packData.type} />
-            <div>{packData.customDescription}</div>
+            <div className={styles.packdesc}>
+              <div className={styles.packdescitem}>
+                {`Type: ${packTypeNames[packData.type as keyof typeof packTypeNames]}`}
+              </div>
+              <div className={styles.packdescitem}>
+                {`Cloud Providers: ${getProviders()}`}
+              </div>
+            </div>
           </div>
         </div>
         <div>

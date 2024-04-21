@@ -18,12 +18,13 @@ const searchOptions = {
 
 interface TechnologiesProps {
   data: PacksData[] | IntegrationsData[];
+  repositories: any[];
 }
 
-export default function Technologies({ data }: TechnologiesProps) {
+export default function Technologies({ data, repositories }: TechnologiesProps) {
   const { isDarkTheme } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
-  const [selectedFilters, setSelectedFilters] = useState<{ category: string[], provider: string, additionalFilters: string[] }>({ category: [], provider: "", additionalFilters: [] })
+  const [selectedFilters, setSelectedFilters] = useState<{ category: string[], registries: string[], provider: string, additionalFilters: string[] }>({ category: [], registries: [], provider: "", additionalFilters: [] })
   const [searchValue, setSearchValue] = useState("");
 
   const categories = useMemo(() => {
@@ -70,6 +71,11 @@ export default function Technologies({ data }: TechnologiesProps) {
       if (selectedFilters.provider) {
         filteredCards = filteredCards.filter((techCard: FrontMatterData) => {
           return techCard.cloudTypes.includes("all") || techCard.cloudTypes.includes(selectedFilters.provider);
+        });
+      }
+      if (selectedFilters.registries.length) {
+        filteredCards = filteredCards.filter((techCard: FrontMatterData) => {
+          return selectedFilters.registries.some((registry)=>techCard.registries.includes(registry));
         });
       }
 
@@ -134,7 +140,7 @@ export default function Technologies({ data }: TechnologiesProps) {
       <ConfigProvider theme={{
         algorithm: isDarkTheme ? darkAlgorithm : defaultAlgorithm,
       }}>
-        <PacksFilters categories={Array.from(categories.keys())} setSelectedSearchFilters={setSelectedSearchFilters} selectedFilters={selectedFilters} />
+        <PacksFilters categories={Array.from(categories.keys())} registries={repositories} setSelectedSearchFilters={setSelectedSearchFilters} selectedFilters={selectedFilters} />
         <Search onSearch={onSearch} placeholder={"Search for integration..."} />
         <div className={styles.technologyWrapper}>
           <Collapse expandIconPosition="end" >

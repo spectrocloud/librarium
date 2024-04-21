@@ -24,7 +24,7 @@ export default function CloudProviderSelecor({ selected="", selectCloudProvider 
     <div className={styles.wrapper}>
       <Select
         allowClear
-        onChange={(item) => selectCloudProvider(item as string)} // Cast item to string[]
+        onChange={(item) => selectCloudProvider(item as string)}
         placeholder="Search"
       >
         {getOptions()}

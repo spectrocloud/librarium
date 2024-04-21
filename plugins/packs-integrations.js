@@ -49,6 +49,7 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
           tags: [],
           slug: '/integrations/${packMDValue.spec.name}',
           id: 'integrations/${packMDValue.spec.name}',
+          registries: packMDValue.spec.registries.map((registry) => registry.uid),
           community: packMDValue.spec.registries[0].annotations?.source === "community",
           verified: packMDValue.spec.registries[0].annotations?.source === "spectrocloud",
           versions: getAggregatedVersions(packContent.tags, packValues, packName, layer)
@@ -175,10 +176,35 @@ async function fetchPackListItems(queryParams, packDataArr, counter) {
   }
 }
 
-async function pluginPacksAndIntegrationsData() {
+async function mapRepositories(repositories) {
+  const results = await api.get('v1/registries/pack');
+  const repoMap = repositories.reduce((acc, repository) => {
+    const repoObj = results.data?.items?.find((repo) => {
+      return repo.metadata.name === repository;
+    });
+    if (repoObj) {
+      acc.push({ name: repoObj.metadata.name, uid: repoObj.metadata.uid });
+    }
+    return acc;
+  }, []);
+  return repoMap;
+}
+
+function isSelectedRegistry(registries, selectedRepositories) {
+  if(!selectedRepositories || !selectedRepositories.length) {
+    return true;
+  }
+  return registries.some((registry) => {
+    return selectedRepositories.find((selRepo) => selRepo.uid === registry.uid);
+  });
+}
+
+async function pluginPacksAndIntegrationsData(context, options) {
   return {
     name: "plugin-packs-integrations",
     async loadContent() {
+      const repositories = options.repositories || [];
+      const mappedRepos = await mapRepositories(repositories);
       let packDataArr = await fetchPackListItems("?limit=100", [], 0);
       console.info("completed the fetch of all the names of the pack")
       packDataArr = packDataArr.filter((pack) => {
@@ -190,7 +216,7 @@ async function pluginPacksAndIntegrationsData() {
       let promises = new Array();
       for (let i = 0; i < packDataArr.length; i++) {
         const packData = packDataArr[i];
-        if (packData.spec.registries.length) {
+        if (packData.spec.registries.length && isSelectedRegistry(packData.spec.registries, mappedRepos)) {
           packMDMap[packData.spec.name] = packData;
           const cloudType = packData.spec.cloudTypes.includes("all") ? "aws" : packData.spec.cloudTypes[0];
           promises.push(`${packUrl}${packData.spec.name}/registries/${packData.spec.registries[0].uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`);
@@ -199,18 +225,18 @@ async function pluginPacksAndIntegrationsData() {
       const results = await callRateLimitAPI(promises);
       apiPacksData = results.filter(result => result.status === "fulfilled" && result.value?.data).map((pack) => pack.value?.data);
       console.info("completed the fetch of all the pack details");
-      return { packsPaletteData: packMDMap, packsPaletteDetailsData: apiPacksData, packsDescription: packDescription };
+      return { packsPaletteData: packMDMap, packsPaletteDetailsData: apiPacksData, packsDescription: packDescription, repositories: mappedRepos};
     },
     async contentLoaded({ allContent, content, actions }) {
       const { setGlobalData, addRoute } = actions;
-      const { packsPaletteData, packsPaletteDetailsData, packsDescription } = content;
+      const { packsPaletteData, packsPaletteDetailsData, packsDescription, repositories } = content;
       const integrationsData = generateIntegrationData(allContent);
       const customPacksData = generateCustomData(packsDescription);
       const unionPackData = combineAPICustomPackData(packsPaletteData, packsPaletteDetailsData, customPacksData);
       const routes = generateRoutes(packsPaletteData, unionPackData);
       console.info("completed the generation of the routes");
       routes.map(route => addRoute(route));
-      setGlobalData({ integrations: integrationsData, packs: unionPackData });
+      setGlobalData({ integrations: integrationsData, packs: unionPackData, repositories: repositories });
     },
   };
 }

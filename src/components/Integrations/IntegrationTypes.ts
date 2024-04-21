@@ -15,6 +15,7 @@ export interface FrontMatterData {
   readme: Map<string, string>;
   versions: VersionTemplate[];
   community: boolean;
+  registries: string[];
 }
 
 export interface VersionTemplate {
@@ -32,7 +33,13 @@ export interface IntegrationsData {
   fields: FrontMatterData;
 }
 
+export interface RepositoryData {
+  name: string;
+  uid: string;
+}
+
 export default interface PacksIntegrationsPluginData {
   integrations: PacksData[];
   packs: IntegrationsData[];
+  repositories: RepositoryData[];
 }
