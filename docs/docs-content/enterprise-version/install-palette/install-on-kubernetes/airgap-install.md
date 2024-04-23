@@ -4,7 +4,7 @@ title: "Airgap Install Instructions"
 description: "Learn how to deploy self-hosted Palette to a Kubernetes cluster using a Helm Chart."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 tags: ["self-hosted", "enterprise", "airgap"]
 keywords: ["self-hosted", "enterprise"]
 ---
@@ -693,82 +693,83 @@ your environment. Reach out to our support team if you need assistance.
 
     </Tabs>
 
-:::warning
+    :::warning
 
-Ensure you have configured the **values.yaml** file with the required parameters before proceeding to the next steps.
+    Ensure you have configured the **values.yaml** file with the required parameters before proceeding to the next
+    steps.
 
-:::
+    :::
 
 9.  This step is only required if you are installing Palette in an environment where a network proxy must be configured
     for Palette to access the internet. If you are not using a network proxy, skip to the next step.
 
-Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in the
-previous step.
+    Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in the
+    previous step.
 
-```shell
-helm upgrade --values palette/values.yaml \
-reach-system extras/reach-system/reach-system-*.tgz --install
-```
+    ```shell
+    helm upgrade --values palette/values.yaml \
+    reach-system extras/reach-system/reach-system-*.tgz --install
+    ```
 
-```shell hideClipboard
-Release "reach-system" does not exist. Installing it now.
-NAME: reach-system
-LAST DEPLOYED: Mon Jan 29 17:04:23 2024
-NAMESPACE: default
-STATUS: deployed
-REVISION: 1
-TEST SUITE: None
-```
+    ```shell hideClipboard
+    Release "reach-system" does not exist. Installing it now.
+    NAME: reach-system
+    LAST DEPLOYED: Mon Jan 29 17:04:23 2024
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    ```
 
 10. Install the Palette Helm Chart using the following command.
 
-```shell
- helm upgrade --values palette/values.yaml \
- hubble palette/spectro-mgmt-plane-*.tgz --install
-```
+    ```shell
+    helm upgrade --values palette/values.yaml \
+    hubble palette/spectro-mgmt-plane-*.tgz --install
+    ```
 
-```shell hideClipboard
-Release "hubble" does not exist. Installing it now.
-NAME: hubble
-LAST DEPLOYED: Mon Jan 29 17:07:51 2024
-NAMESPACE: default
-STATUS: deployed
-REVISION: 1
-TEST SUITE: None
-```
+    ```shell hideClipboard
+    Release "hubble" does not exist. Installing it now.
+    NAME: hubble
+    LAST DEPLOYED: Mon Jan 29 17:07:51 2024
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    ```
 
 11. Track the installation process using the command below. Palette is ready when the deployments in the namespaces
     `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` reach the _Ready_ state. The
     installation takes between two to three minutes to complete.
 
-```shell
-kubectl get pods --all-namespaces --watch
-```
+    ```shell
+    kubectl get pods --all-namespaces --watch
+    ```
 
-:::tip
+    :::tip
 
-For a more user-friendly experience, use the open-source tool [k9s](https://k9scli.io/) to monitor the installation
-process.
+    For a more user-friendly experience, use the open-source tool [k9s](https://k9scli.io/) to monitor the installation
+    process.
 
-:::
+    :::
 
 12. Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
     following command to retrieve the load balancer IP address. You may require the assistance of your network
     administrator to create the DNS record.
 
-```shell
-kubectl get service ingress-nginx-controller --namespace ingress-nginx \
- --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
-```
+    ```shell
+    kubectl get service ingress-nginx-controller --namespace ingress-nginx \
+    --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+    ```
 
-:::info
+    :::info
 
-As you create tenants in Palette, the tenant name is prefixed to the domain name you assigned to Palette. For example,
-if you create a tenant named `tenant1` and the domain name you assigned to Palette is `palette.example.com`, the tenant
-URL will be `tenant1.palette.example.com`. You can create an additional wildcard DNS record to map all tenant URLs to
-the Palette load balancer.
+    As you create tenants in Palette, the tenant name is prefixed to the domain name you assigned to Palette. For
+    example, if you create a tenant named `tenant1` and the domain name you assigned to Palette is
+    `palette.example.com`, the tenant URL will be `tenant1.palette.example.com`. You can create an additional wildcard
+    DNS record to map all tenant URLs to the Palette load balancer.
 
-:::
+    :::
 
 13. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
     system console, open a web browser and paste the custom domain URL in the address bar and append the value
@@ -776,35 +777,35 @@ the Palette load balancer.
     Alternatively, you can use the load balancer IP address with the appended value `/system` to access the system
     console.
 
-The first time you visit the Palette system console, a warning message about a not trusted SSL certificate may appear.
-This is expected, as you have not yet uploaded your SSL certificate to Palette. You can ignore this warning message and
-proceed.
+    The first time you visit the Palette system console, a warning message about a not trusted SSL certificate may
+    appear. This is expected, as you have not yet uploaded your SSL certificate to Palette. You can ignore this warning
+    message and proceed.
 
-![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
+    ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
 14. Log in to the system console using the following default credentials.
 
-| **Parameter** | **Value** |
-| ------------- | --------- |
-| Username      | `admin`   |
-| Password      | `admin`   |
+    | **Parameter** | **Value** |
+    | ------------- | --------- |
+    | Username      | `admin`   |
+    | Password      | `admin`   |
 
-After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be
-redirected to the Palette system console.
+    After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be
+    redirected to the Palette system console.
 
-11. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
+15. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
     [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to
     upload the SSL certificate files to Palette.
 
-:::warning
+    :::warning
 
-If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the
-[Configure Reverse Proxy](../../system-management/reverse-proxy.md) guide for instructions on how to configure a reverse
-proxy for Palette.
+    If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the
+    [Configure Reverse Proxy](../../system-management/reverse-proxy.md) guide for instructions on how to configure a
+    reverse proxy for Palette.
 
-:::
+    :::
 
 You now have a self-hosted instance of Palette installed in a Kubernetes cluster. Make sure you retain the
 **values.yaml** file as you may need it for future upgrades.
@@ -824,56 +825,57 @@ Use the following steps to validate the Palette installation.
    a list of deployments in the `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system`
    namespaces.
 
-```shell
-kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
-| grep -E '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\s'
-```
+   ```shell
+   kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
+   | grep -E '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\s'
+   ```
 
-````
+   Your output should look similar to the following.
 
-Your output should look similar to the following.
+   ```shell hideClipboard
+   cp-system       spectro-cp-ui-689984f88d-54wsw             Running
+   hubble-system   auth-85b748cbf4-6drkn                      Running
+   hubble-system   auth-85b748cbf4-dwhw2                      Running
+   hubble-system   cloud-fb74b8558-lqjq5                      Running
+   hubble-system   cloud-fb74b8558-zkfp5                      Running
+   hubble-system   configserver-685fcc5b6d-t8f8h              Running
+   hubble-system   event-68568f54c7-jzx5t                     Running
+   hubble-system   event-68568f54c7-w9rnh                     Running
+   hubble-system   foreq-6b689f54fb-vxjts                     Running
+   hubble-system   hashboard-897bc9884-pxpvn                  Running
+   hubble-system   hashboard-897bc9884-rmn69                  Running
+   hubble-system   hutil-6d7c478c96-td8q4                     Running
+   hubble-system   hutil-6d7c478c96-zjhk4                     Running
+   hubble-system   mgmt-85dbf6bf9c-jbggc                      Running
+   hubble-system   mongo-0                                    Running
+   hubble-system   mongo-1                                    Running
+   hubble-system   mongo-2                                    Running
+   hubble-system   msgbroker-6c9b9fbf8b-mcsn5                 Running
+   hubble-system   oci-proxy-7789cf9bd8-qcjkl                 Running
+   hubble-system   packsync-28205220-bmzcg                    Succeeded
+   hubble-system   spectrocluster-6c57f5775d-dcm2q            Running
+   hubble-system   spectrocluster-6c57f5775d-gmdt2            Running
+   hubble-system   spectrocluster-6c57f5775d-sxks5            Running
+   hubble-system   system-686d77b947-8949z                    Running
+   hubble-system   system-686d77b947-cgzx6                    Running
+   hubble-system   timeseries-7865bc9c56-5q87l                Running
+   hubble-system   timeseries-7865bc9c56-scncb                Running
+   hubble-system   timeseries-7865bc9c56-sxmgb                Running
+   hubble-system   user-5c9f6c6f4b-9dgqz                      Running
+   hubble-system   user-5c9f6c6f4b-hxkj6                      Running
+   ingress-nginx   ingress-nginx-controller-2txsv             Running
+   ingress-nginx   ingress-nginx-controller-55pk2             Running
+   ingress-nginx   ingress-nginx-controller-gmps9             Running
+   jet-system      jet-6599b9856d-t9mr4                       Running
+   ui-system       spectro-ui-76ffdf67fb-rkgx8                Running
+   ```
 
-```shell hideClipboard
-cp-system       spectro-cp-ui-689984f88d-54wsw             Running
-hubble-system   auth-85b748cbf4-6drkn                      Running
-hubble-system   auth-85b748cbf4-dwhw2                      Running
-hubble-system   cloud-fb74b8558-lqjq5                      Running
-hubble-system   cloud-fb74b8558-zkfp5                      Running
-hubble-system   configserver-685fcc5b6d-t8f8h              Running
-hubble-system   event-68568f54c7-jzx5t                     Running
-hubble-system   event-68568f54c7-w9rnh                     Running
-hubble-system   foreq-6b689f54fb-vxjts                     Running
-hubble-system   hashboard-897bc9884-pxpvn                  Running
-hubble-system   hashboard-897bc9884-rmn69                  Running
-hubble-system   hutil-6d7c478c96-td8q4                     Running
-hubble-system   hutil-6d7c478c96-zjhk4                     Running
-hubble-system   mgmt-85dbf6bf9c-jbggc                      Running
-hubble-system   mongo-0                                    Running
-hubble-system   mongo-1                                    Running
-hubble-system   mongo-2                                    Running
-hubble-system   msgbroker-6c9b9fbf8b-mcsn5                 Running
-hubble-system   oci-proxy-7789cf9bd8-qcjkl                 Running
-hubble-system   packsync-28205220-bmzcg                    Succeeded
-hubble-system   spectrocluster-6c57f5775d-dcm2q            Running
-hubble-system   spectrocluster-6c57f5775d-gmdt2            Running
-hubble-system   spectrocluster-6c57f5775d-sxks5            Running
-hubble-system   system-686d77b947-8949z                    Running
-hubble-system   system-686d77b947-cgzx6                    Running
-hubble-system   timeseries-7865bc9c56-5q87l                Running
-hubble-system   timeseries-7865bc9c56-scncb                Running
-hubble-system   timeseries-7865bc9c56-sxmgb                Running
-hubble-system   user-5c9f6c6f4b-9dgqz                      Running
-hubble-system   user-5c9f6c6f4b-hxkj6                      Running
-ingress-nginx   ingress-nginx-controller-2txsv             Running
-ingress-nginx   ingress-nginx-controller-55pk2             Running
-ingress-nginx   ingress-nginx-controller-gmps9             Running
-jet-system      jet-6599b9856d-t9mr4                       Running
-ui-system       spectro-ui-76ffdf67fb-rkgx8                Running
-```
+   ```
+
+   ```
 
 ## Next Steps
 
 You have successfully installed Palette in a Kubernetes cluster. Your next steps are to configure Palette for your
 organization. Start by creating the first tenant to host your users. Use the
 [Create a Tenant](../../system-management/tenant-management.md) page for instructions on how to create a tenant.
-````
