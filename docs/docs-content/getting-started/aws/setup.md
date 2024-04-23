@@ -32,15 +32,15 @@ The prerequisite steps to getting started with Palette on AWS are as follows.
 
 Palette needs access to your AWS cloud account in order to create and manage AWS clusters and resources.
 
-### Add Azure Cloud Account
+### Static Credentials Access
 
-import AzureCloud from "../../_partials/_azure-cloud-account-setup.mdx";
+import AWSCloud from "../../_partials/_aws-static-credentials-setup.mdx";
 
-<AzureCloud />
+<AWSCloud />
 
 ### Create and Upload an SSH Key
 
-import SSHKey from '../../_partials/_create-upload-ssh-key.mdx';
+import SSHKey from "../../_partials/_create-upload-ssh-key.mdx";
 
 <SSHKey />
 
