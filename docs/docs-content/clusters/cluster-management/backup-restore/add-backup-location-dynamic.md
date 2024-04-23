@@ -102,6 +102,9 @@ cloud account.
   [Troubleshooting key access](https://docs.aws.amazon.com/kms/latest/developerguide/policy-evaluation.html) guide to
   learn more about common KMS issues.
 
+- If you are using a custom Certificate Authority (CA) for SSL/TLS connections, provide the x509 certificate in
+  Privacy-Enhanced Mail (PEM) format to Palette.
+
   :::tip
 
   Use the IAM Policy Simulator to verify the IAM role has the necessary permissions to access a customer managed KMS
@@ -130,7 +133,7 @@ cloud account.
    | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Location Name**       | Provide a name of your choice.                                                                                                                                                                                                                                                                |
    | **Location Provider**   | Select AWS from the **drop-down** Menu.                                                                                                                                                                                                                                                       |
-   | **Certificate**         | Optional service provider x509 certificate.                                                                                                                                                                                                                                                   |
+   | **Certificate**         | Provide the CA bundle in PEM format if you are using a custom certificate bundle to establish SSL/TLS sessions.                                                                                                                                                                                   |
    | **S3 Bucket**           | The name of the S3 bucket you created in the object store. The bucket name must be DNS-compliant. For more information, refer to the [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) defined by AWS.                                      |
    | **Region**              | Region where the S3 bucket is hosted. You can check region codes in the [Service endpoints](https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_region) section in the AWS documentation.                                                                                                |
    | **S3 URL**              | Optional S3 URL. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL and enable the **Force S3 path style** checkbox. |
@@ -230,6 +233,9 @@ multiple cloud accounts.
   This is the AWS account where you want to create the backup location.
 
 - An S3 bucket in AWS Account B. The bucket will store the backup of your clusters or workspaces.
+
+- If you are using a custom Certificate Authority (CA) for SSL/TLS connections, provide the x509 certificate in
+  Privacy-Enhanced Mail (PEM) format to Palette.
 
 - The following IAM policy must be created in your AWS Account B. Replace the `BUCKET-NAME` placeholder in the policy
   below with your bucket name. Refer to the
