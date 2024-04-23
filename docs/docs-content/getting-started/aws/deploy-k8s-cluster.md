@@ -106,18 +106,6 @@ progress by reviewing the event log. Click on the **Events** tab to view the log
 
 ![Update the cluster](/getting-started/aws/getting-started_deploy-k8s-cluster_event_log.webp)
 
-<br />
-
-While you wait for the cluster deployment process to complete, feel free to check out a video where we discuss the
-growing pains of using Kubernetes and how Palette can help your address these pain points.
-
-<br />
-
-<YouTube
-  url="https://www.youtube.com/embed/wM3hcrHbAC0"
-  title="Three Common Kubernetes Growing Pains  - and how to solve them"
-/>
-
 ## Verify the Application
 
 Navigate to the left **Main Menu** and select **Clusters**.
