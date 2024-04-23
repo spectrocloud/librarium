@@ -1,15 +1,10 @@
 name: Nighly Docker Build
 
-# on:
-#   schedule:
-#     - cron: '15 22 * * 1-5'  # 22:15 UTC, Monday through Friday
-#   workflow_dispatch:
-
-
 on:
-  push:
-    branches:
-      - docker-fix
+  schedule:
+    - cron: '15 22 * * 1-5'  # 22:15 UTC, Monday through Friday
+  workflow_dispatch:
+
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
