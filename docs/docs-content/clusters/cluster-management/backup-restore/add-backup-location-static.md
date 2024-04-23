@@ -125,7 +125,7 @@ The following sections provide detailed instructions. Select the environment whe
    | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Location Name**       | Provide a name of your choice.                                                                                                                                                                                                                                                                                            |
    | **Location Provider**   | Select AWS from the **drop-down** Menu.                                                                                                                                                                                                                                                                                   |
-   | **Certificate**         | Optional Service provider certificate.                                                                                                                                                                                                                                                                                    |
+   | **Certificate**         | Provide the CA bundle in PEM format if you using a custom certificate bundle to establish SSL/TLS sessions.                                                                                                                                                                                                               |
    | **S3 Bucket**           | Name of the S3 bucket you created in the object store. The bucket name must be DNS-compliant. For more information, refer to the [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) defined by AWS.                                                                      |
    | **Region**              | Region where the S3 bucket is hosted. You can check the region code from the [Service endpoints](https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_region) section in the AWS documentation.                                                                                                                       |
    | **S3 URL**              | Optional bucket URL. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL. If you provided an S3 URL, enable the **Force S3 path style** checkbox. |
@@ -172,9 +172,6 @@ Use the following steps to validate adding the new backup location.
   storage bucket. Refer to the
   [IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles) document to learn about
   the available roles.
-
-- If you are using a custom Certificate Authority (CA) for SSL/TLS connections, provide the x509 certificate in
-  Privacy-Enhanced Mail (PEM) format to Palette.
 
 - JSON credentials for the service account. Refer to the
   [Create access credentials](https://developers.google.com/workspace/guides/create-credentials#service-account) to
@@ -254,15 +251,15 @@ Use the following steps to validate adding the new backup location.
 
 4. Fill out the following input fields. Refer to the table below to learn more.
 
-   | **Field**               | **Value**                                                                                                              |
-   | ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-   | **Location Name**       | Provide a name of your choice.                                                                                         |
-   | **Location Provider**   | Select MinIO from the drop-down field.                                                                                 |
-   | **Certificate**         | Service provider certificate, if your organization prefers it. Required for endpoints using a self-signed certificate. |
-   | **S3 Bucket**           | The name of the S3 bucket you created in the MinIO object store.                                                       |
-   | **Region**              | The region where the MinIO server is configured. Example: `us-east-1`                                                  |
-   | **S3 URL**              | The MinIO object storage console URL. Example: `http://12.123.234.567:0000`                                            |
-   | **Force S3 path style** | This value is required for MinIO.                                                                                      |
+   | **Field**               | **Value**                                                                                                                                                                        |
+   | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Location Name**       | Provide a name of your choice.                                                                                                                                                   |
+   | **Location Provider**   | Select MinIO from the drop-down field.                                                                                                                                           |
+   | **Certificate**         | Provide the CA bundle in PEM format if you using a custom certificate bundle to establish SSL/TLS sessions. certificate. Required for endpoints using a self-signed certificate. |
+   | **S3 Bucket**           | The name of the S3 bucket you created in the MinIO object store.                                                                                                                 |
+   | **Region**              | The region where the MinIO server is configured. Example: `us-east-1`                                                                                                            |
+   | **S3 URL**              | The MinIO object storage console URL. Example: `http://12.123.234.567:0000`                                                                                                      |
+   | **Force S3 path style** | This value is required for MinIO.                                                                                                                                                |
 
    <br />
 
@@ -321,9 +318,6 @@ guide to learn how to create an Azure storage account
 
   - Client ID
   - Client Secret
-
-- If you are using a custom Certificate Authority (CA) for SSL/TLS connections, provide the x509 certificate in
-  Privacy-Enhanced Mail (PEM) format to Palette
 
 Check out the
 [Work with Azure service principal using the Azure CLI](https://learn.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli#what-is-an-azure-service-principal)
