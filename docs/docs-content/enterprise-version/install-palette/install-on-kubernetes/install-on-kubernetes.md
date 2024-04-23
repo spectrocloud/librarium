@@ -18,4 +18,6 @@ To get started with Palette on Kubernetes, refer to the [Install Instructions](i
 
 - [Install Instructions](install.md)
 
+- [Airgap Install Instructions](airgap-install.md)
+
 - [Helm Configuration Reference](palette-helm-ref.md)

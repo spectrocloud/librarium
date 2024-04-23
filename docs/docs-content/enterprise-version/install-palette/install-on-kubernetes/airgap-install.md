@@ -1,15 +1,20 @@
 ---
-sidebar_label: "Install Instructions"
-title: "Install Instructions"
+sidebar_label: "Airgap Install Instructions"
+title: "Airgap Install Instructions"
 description: "Learn how to deploy self-hosted Palette to a Kubernetes cluster using a Helm Chart."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "enterprise", "airgap"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment.
+You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your airgap production
+environment.
+
+This installation method is common in secure environments with restricted network access that prohibits using Palette
+SaaS. Review our [architecture diagrams](../../../architecture/networking-ports.md) to ensure your Kubernetes cluster
+has the necessary network connectivity for self-hosted Palette to operate successfully.
 
 ## Prerequisites
 
@@ -124,13 +129,17 @@ your environment. Reach out to our support team if you need assistance.
     parameters before installing Palette. You can learn more about the parameters in the **values.yaml** file in the
     [Helm Configuration Reference](palette-helm-ref.md) page.
 
-    | **Parameter**                             | **Description**                                                                                                                                                | **Type** |
-    | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-    | `env.rootDomain`                          | The URL name or IP address you will use for the Palette installation.                                                                                          | string   |
-    | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for Palette FIPS packs. These credentials are provided by our support team.                                                       | object   |
-    | `scar`                                    | The Spectro Cloud Artifact Repository (SCAR) credentials for Palette FIPS images. These credentials are provided by our support team.                          | object   |
-    | `ingress.enabled`                         | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                          | boolean  |
-    | `reach-system`                            | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure Palette to use a network proxy in your environment | object   |
+    | **Parameter**                       | **Description**                                                                                                                                                                                   | **Type** |
+    | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+    | `env.rootDomain`                    | The URL name or IP address you will use for the Palette installation.                                                                                                                             | string   |
+    | `config.installationMode`           | The installation mode for Palette. The values can be `connected` or `airgap`. Set this value to `airgap`.                                                                                         | string   |
+    | `ociPackEcrRegistry`                | The OCI registry credentials for the Palette FIPS packs repository.                                                                                                                               | object   |
+    | `ociImageRegistry`                  | The OCI registry credentials for the Palette images repository.                                                                                                                                   | object   |
+    | `ociImageRegistry.mirrorRegistries` | Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images.                                                                             |
+    | `imageSwapConfig.isEKSCluster`      | Set this value to `false` if you are NOT installing Palette on an EKS cluster.                                                                                                                    | boolean  |
+    | `scar`                              | Specify your HTTP file server values. If your HTTP file server requires credentials ensure the provided values are base64 encoded. Example of the string "admin" in base64 encoding - `YWRtaW4=`. | object   |
+    | `ingress.enabled`                   | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                                                             | boolean  |
+    | `reach-system`                      | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters for Palette to use a network proxy in your environment                                             | object   |
 
     Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the
     following sections to review an example of the **values.yaml** file with the required parameters highlighted.
@@ -139,7 +148,7 @@ your environment. Reach out to our support team if you need assistance.
 
     <summary>Example - values.yaml</summary>
 
-    ```yaml {53,77-85,97-102}
+    ```yaml {23,53,77-85,87-95,97-102,109}
     #########################
     # Spectro Cloud Palette #
     #########################
@@ -162,7 +171,7 @@ your environment. Reach out to our support team if you need assistance.
       storageClass: "" # leave empty to use the default storage class
 
     config:
-      installationMode: "connected" #values can be connected or airgap.
+      installationMode: "airgap" #values can be connected or airgap.
 
       # SSO SAML Configuration (Optional for self-hosted type)
       sso:
@@ -217,29 +226,29 @@ your environment. Reach out to our support team if you need assistance.
       #    caCert: ""
 
       ociPackEcrRegistry:
-        endpoint: "15789037893.dkr.ecr.us-east-1.amazonaws.com" #<Contact Spectro Cloud Sales for More info>
-        name: "Palette Packs OCI" #<Contact Spectro Cloud Sales for More info>
+        endpoint: "123456789.dkr.ecr.us-east-1.amazonaws.com" #<Contact Spectro Cloud Sales for More info>
+        name: "Airgap Packs OCI" #<Contact Spectro Cloud Sales for More info>
         accessKey: "*************" #<Contact Spectro Cloud Sales for More info>
         secretKey: "*************" #<Contact Spectro Cloud Sales for More info>
-        baseContentPath: "production" #<Contact Spectro Cloud Sales for More info>
+        baseContentPath: "spectro-packs" #<Contact Spectro Cloud Sales for More info>
         isPrivate: true
-        insecureSkipVerify: false
+        insecureSkipVerify: true
         caCert: ""
 
-      # ociImageRegistry:
-      #   endpoint: "" #<Contact Spectro Cloud Sales for More info>
-      #   name: "" #<Contact Spectro Cloud Sales for More info>
-      #   password: "" #<Contact Spectro Cloud Sales for More info>
-      #   username: "" #<Contact Spectro Cloud Sales for More info>
-      #   baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
-      #   insecureSkipVerify: false
-      #   caCert: ""
-      #   mirrorRegistries: ""
+      ociImageRegistry:
+        endpoint: "public.ecr.aws/123456789" #<Contact Spectro Cloud Sales for More info>
+        name: "Airgap Image OCI" #<Contact Spectro Cloud Sales for More info>
+        password: "" #<Contact Spectro Cloud Sales for More info>
+        username: "" #<Contact Spectro Cloud Sales for More info>
+        baseContentPath: "spectro-images" #<Contact Spectro Cloud Sales for More info>
+        insecureSkipVerify: true
+        caCert: ""
+        mirrorRegistries: "docker.io::public.ecr.aws/v2/123456789/spectro-images,gcr.io::public.ecr.aws/v2/123456789/spectro-images,ghcr.io::public.ecr.aws/v2/123456789/spectro-images,k8s.gcr.io::public.ecr.aws/v2/123456789/spectro-images,registry.k8s.io::public.ecr.aws/v2/123456789/spectro-images,quay.io::public.ecr.aws/v2/123456789/spectro-images"
 
       scar:
-        endpoint: "https://saas-repo.console.spectrocloud.com"
-        username: "**********"
-        password: "**********"
+        endpoint: "http://10.15.20.15:2015"
+        username: "YWRtaW4="
+        password: "YWRtaW4="
         insecureSkipVerify: true
         caCert: ""
 
@@ -358,7 +367,7 @@ your environment. Reach out to our support team if you need assistance.
         http_proxy: ""
         https_proxy: ""
         no_proxy: ""
-        ca_crt_path: "" # Set the 'ca_crt_path' parameter to the location of the certificate file on each node. This file should contain the Proxy CA Certificate, in case the Proxy being used requires a certificate.
+        ca_crt_path: "" # Set the 'ca_crt_path' parameter to the location of the certificate file on each node.
       scheduleOnControlPlane: true
     ```
 
@@ -371,7 +380,49 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-5.  Install the Palette Helm Chart using the following command.
+5.  This step only applies to those who are installing an airgap Palette or who are using a self-hosted OCI registry
+    with registry caching enabled. Otherwise, skip to the next step.
+
+    Go ahead and install the image-swap chart using the following command. Point to the **values.yaml** file you
+    configured in the previous step.
+
+    ```shell
+    helm upgrade --values palette/values.yaml \
+    image-swap extras/image-swap/image-swap-*.tgz --install
+    ```
+
+    ```shell hideClipboard
+    Release "image-swap" does not exist. Installing it now.
+    NAME: image-swap
+    LAST DEPLOYED: Mon Jan 29 17:04:23 2024
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    ```
+
+6.  This step is only required if you are installing Palette in an environment where a network proxy must be configured
+    for Palette to access the internet. If you are not using a network proxy, skip to the next step.
+
+    Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in the
+    previous step.
+
+    ```shell
+    helm upgrade --values palette/values.yaml \
+    reach-system extras/reach-system/reach-system-*.tgz --install
+    ```
+
+    ```shell hideClipboard
+    Release "reach-system" does not exist. Installing it now.
+    NAME: reach-system
+    LAST DEPLOYED: Mon Jan 29 17:04:23 2024
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    ```
+
+7.  Install the Palette Helm Chart using the following command.
 
     ```shell
      helm upgrade --values palette/values.yaml \
@@ -388,7 +439,7 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-6.  Track the installation process using the command below. Palette is ready when the deployments in the namespaces
+8.  Track the installation process using the command below. Palette is ready when the deployments in the namespaces
     `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` reach the _Ready_ state. The
     installation takes between two to three minutes to complete.
 
@@ -403,7 +454,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-7.  Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
+9.  Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
     following command to retrieve the load balancer IP address. You may require the assistance of your network
     administrator to create the DNS record.
 
@@ -421,7 +472,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-8.  Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
+10. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
     system console, open a web browser and paste the custom domain URL in the address bar and append the value
     `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer.
     Alternatively, you can use the load balancer IP address with the appended value `/system` to access the system
@@ -433,17 +484,17 @@ your environment. Reach out to our support team if you need assistance.
 
     ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
-9.  Log in to the system console using the following default credentials.
+11. Log in to the system console using the following default credentials.
 
     | **Parameter** | **Value** |
     | ------------- | --------- |
     | Username      | `admin`   |
     | Password      | `admin`   |
 
-    After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be
-    redirected to the Palette system console.
+After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be
+redirected to the Palette system console.
 
-10. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
+11. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
     [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to
