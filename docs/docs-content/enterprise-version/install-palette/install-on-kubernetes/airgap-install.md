@@ -106,7 +106,20 @@ your environment. Reach out to our support team if you need assistance.
     cd palette-install/charts/release-*
     ```
 
-3.  Install Cert Manager using the following command. Replace the actual file name of the Cert Manager Helm Chart with
+3.  Open the file **extras/cert-manager/values.yaml** in a text editor and append the URL to your OCI registry that also
+    includes the namespace or project that is hosting the Spectro Cloud images. The URL should be in the format
+    `<registry-url>/<namespace>`. In the example configuration below, the value `my-oci-registry.com/spectro-images` is
+    prefixed to each URL. Save the file after you have appended the URL.
+
+    ```yaml hideClipboard
+    image:
+      cainjectorImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-cainjector:spectro-v1.11.0-20230427"
+      controllerImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-controller:spectro-v1.11.0-20230427"
+      webhookImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-webhook:spectro-v1.11.0-20230808"
+      amceResolverImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-acmesolver:spectro-v1.11.0-20230427"
+    ```
+
+4.  Install Cert Manager using the following command. Replace the actual file name of the Cert Manager Helm Chart with
     the one you downloaded, as the version number may be different.
 
     ```shell
@@ -124,29 +137,88 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-4.  Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml**
+5.  Open the file **extras/image-swap/values.yaml** in a text editor and append the URL to your OCI registry that also
+    includes the namespace or project that is hosting the Spectro Cloud images. The
+
+    ```yaml hideClipboard
+    config:
+      imageSwapImages:
+        imageSwapInitImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.2-spectro-4.1.1"
+        imageSwapImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.2-spectro-4.1.1"
+    ```
+
+6.  Next, update the `ociImageRegistry` section with the proper configuration values to your OCI registry. The
+    `ociImageRegistry` section should look similar to the following example.
+
+    :::info
+
+    Use the following `mirrorRegistries`placeholder string to replace the respective values of your OCI registry.
+
+    ```yaml
+    docker.io::OCI_URL/IMAGE_PROJECT,gcr.io::OCI_URL/IMAGE_PROJECT,ghcr.io::OCI_URL/IMAGE_PROJECT,k8s.gcr.io::OCI_URL/IMAGE_PROJECT,registry.k8s.io::OCI_URL/IMAGE_PROJECT,quay.io::OCI_URL/IMAGE_PROJECT"
+    ```
+
+    :::
+
+    ```yaml hideClipboard
+    ociImageRegistry:
+      endpoint: "my-oci-registry.com"
+      name: "Airgap Images OCI"
+      password: ""
+      username: ""
+      baseContentPath: "spectro-images" #
+      insecureSkipVerify: true
+      caCert: ""
+      mirrorRegistries: "docker.io::my-oci-registry.com/spectro-images,gcr.io::my-oci-registry.com/spectro-images,ghcr.io::my-oci-registry.com/spectro-images,k8s.gcr.io::my-oci-registry.com/spectro-images,registry.k8s.io::my-oci-registry.com/spectro-images,quay.io::my-oci-registry.com/spectro-images"
+    ```
+
+7.  Go ahead and install the image-swap chart using the following command. Point to the **values.yaml** file you
+    configured in the previous step.
+
+    ```shell
+    helm upgrade --values extras/image-swap/values.yaml \
+    image-swap extras/image-swap/image-swap-*.tgz --install
+    ```
+
+    ```shell hideClipboard
+    Release "image-swap" does not exist. Installing it now.
+    NAME: image-swap
+    LAST DEPLOYED: Mon Jan 29 17:04:23 2024
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    ```
+
+    :::tip
+
+    If you need to override the image-swap registry configuration post-deployment, refer to the
+    [Override Registry Configuration](../../system-management/registry-override.md) page for instructions.
+
+    :::
+
+8.  Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml**
     contains the default values for the Palette installation parameters, however, you must populate the following
     parameters before installing Palette. You can learn more about the parameters in the **values.yaml** file in the
     [Helm Configuration Reference](palette-helm-ref.md) page.
 
-    | **Parameter**                       | **Description**                                                                                                                                                                                   | **Type** |
-    | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-    | `env.rootDomain`                    | The URL name or IP address you will use for the Palette installation.                                                                                                                             | string   |
-    | `config.installationMode`           | The installation mode for Palette. The values can be `connected` or `airgap`. Set this value to `airgap`.                                                                                         | string   |
-    | `ociPackEcrRegistry`                | The OCI registry credentials for the Palette FIPS packs repository.                                                                                                                               | object   |
-    | `ociImageRegistry`                  | The OCI registry credentials for the Palette images repository.                                                                                                                                   | object   |
-    | `ociImageRegistry.mirrorRegistries` | Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images.                                                                             |
-    | `imageSwapConfig.isEKSCluster`      | Set this value to `false` if you are NOT installing Palette on an EKS cluster.                                                                                                                    | boolean  |
-    | `scar`                              | Specify your HTTP file server values. If your HTTP file server requires credentials ensure the provided values are base64 encoded. Example of the string "admin" in base64 encoding - `YWRtaW4=`. | object   |
-    | `ingress.enabled`                   | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                                                             | boolean  |
-    | `reach-system`                      | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters for Palette to use a network proxy in your environment                                             | object   |
+    Ensure you provide the proper `ociImageRegistry.mirrorRegistries` values if you are using a self-hosted OCI
+    registry. You can find the placeholder string in the `ociImageRegistry` section of the **values.yaml** file.
+
+    | **Parameter**                       | **Description**                                                                                                                                                                                                                                                                        | **Type** |
+    | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+    | `env.rootDomain`                    | The URL name or IP address you will use for the Palette installation.                                                                                                                                                                                                                  | string   |
+    | `config.installationMode`           | The installation mode for Palette. The values can be `connected` or `airgap`. Set this value to `airgap`.                                                                                                                                                                              | string   |
+    | `ociPackEcrRegistry`                | The OCI registry credentials for the Palette FIPS packs repository.                                                                                                                                                                                                                    | object   |
+    | `ociImageRegistry`                  | The OCI registry credentials for the Palette images repository.                                                                                                                                                                                                                        | object   |
+    | `ociImageRegistry.mirrorRegistries` | Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images. Do not use the same values you provided to the image-swap **values.yaml**. The placeholders require a `/v2/` endpoint otherwise container pull images will fail. |
+    | `imageSwapConfig.isEKSCluster`      | Set this value to `false` if you are NOT installing Palette on an EKS cluster.                                                                                                                                                                                                         | boolean  |
+    | `scar`                              | Specify your HTTP file server values. If your HTTP file server requires credentials ensure the provided values are base64 encoded. Example of the string "admin" in base64 encoding - `YWRtaW4=`.                                                                                      | object   |
+    | `ingress.enabled`                   | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                                                                                                                                                  | boolean  |
+    | `reach-system`                      | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters for Palette to use a network proxy in your environment                                                                                                                                  | object   |
 
     Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the
     following sections to review an example of the **values.yaml** file with the required parameters highlighted.
-
-    <details>
-
-    <summary>Example - values.yaml</summary>
 
     ```yaml {23,53,77-85,87-95,97-102,109}
     #########################
@@ -371,8 +443,6 @@ your environment. Reach out to our support team if you need assistance.
       scheduleOnControlPlane: true
     ```
 
-    </details>
-
     :::warning
 
     Ensure you have configured the **values.yaml** file with the required parameters before proceeding to the next
@@ -380,28 +450,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-5.  This step only applies to those who are installing an airgap Palette or who are using a self-hosted OCI registry
-    with registry caching enabled. Otherwise, skip to the next step.
-
-    Go ahead and install the image-swap chart using the following command. Point to the **values.yaml** file you
-    configured in the previous step.
-
-    ```shell
-    helm upgrade --values palette/values.yaml \
-    image-swap extras/image-swap/image-swap-*.tgz --install
-    ```
-
-    ```shell hideClipboard
-    Release "image-swap" does not exist. Installing it now.
-    NAME: image-swap
-    LAST DEPLOYED: Mon Jan 29 17:04:23 2024
-    NAMESPACE: default
-    STATUS: deployed
-    REVISION: 1
-    TEST SUITE: None
-    ```
-
-6.  This step is only required if you are installing Palette in an environment where a network proxy must be configured
+9.  This step is only required if you are installing Palette in an environment where a network proxy must be configured
     for Palette to access the internet. If you are not using a network proxy, skip to the next step.
 
     Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in the
@@ -422,7 +471,7 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-7.  Install the Palette Helm Chart using the following command.
+10. Install the Palette Helm Chart using the following command.
 
     ```shell
      helm upgrade --values palette/values.yaml \
@@ -439,7 +488,7 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-8.  Track the installation process using the command below. Palette is ready when the deployments in the namespaces
+11. Track the installation process using the command below. Palette is ready when the deployments in the namespaces
     `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` reach the _Ready_ state. The
     installation takes between two to three minutes to complete.
 
@@ -454,7 +503,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-9.  Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
+12. Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
     following command to retrieve the load balancer IP address. You may require the assistance of your network
     administrator to create the DNS record.
 
@@ -472,7 +521,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-10. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
+13. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
     system console, open a web browser and paste the custom domain URL in the address bar and append the value
     `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer.
     Alternatively, you can use the load balancer IP address with the appended value `/system` to access the system
@@ -484,7 +533,7 @@ your environment. Reach out to our support team if you need assistance.
 
     ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
-11. Log in to the system console using the following default credentials.
+14. Log in to the system console using the following default credentials.
 
     | **Parameter** | **Value** |
     | ------------- | --------- |

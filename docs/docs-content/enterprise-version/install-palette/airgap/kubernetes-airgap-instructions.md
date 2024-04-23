@@ -358,6 +358,5 @@ versions:
 ## Next Steps
 
 You are now ready to deploy the airgap Palette installation. You will specify your OCI registry and file server during
-the installation process. Refer to the
-[Kubernetes Install Instructions](../install-on-kubernetes/install-on-kubernetes.md) guide for detailed guidance on
-installing Palette.
+the installation process. Refer to the [Kubernetes Install Instructions](../install-on-kubernetes/airgap-install.md)
+guide for detailed guidance on installing Palette.

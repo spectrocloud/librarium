@@ -135,10 +135,6 @@ your environment. Reach out to our support team if you need assistance.
     Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the
     following sections to review an example of the **values.yaml** file with the required parameters highlighted.
 
-    <details>
-
-    <summary>Example - values.yaml</summary>
-
     ```yaml {53,77-85,97-102}
     #########################
     # Spectro Cloud Palette #
@@ -361,8 +357,6 @@ your environment. Reach out to our support team if you need assistance.
         ca_crt_path: "" # Set the 'ca_crt_path' parameter to the location of the certificate file on each node. This file should contain the Proxy CA Certificate, in case the Proxy being used requires a certificate.
       scheduleOnControlPlane: true
     ```
-
-    </details>
 
     :::warning
 
