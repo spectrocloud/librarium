@@ -8,10 +8,10 @@ sidebar_position: 10
 tags: ["getting-started", "gcp"]
 ---
 
-In this guide, you will learn how to set up Palette for use with your AWS cloud account. These steps are required in order to
-authenticate Palette and allow it to deploy host clusters.
+In this guide, you will learn how to set up Palette for use with your AWS cloud account. These steps are required in
+order to authenticate Palette and allow it to deploy host clusters.
 
-## Enablement
+## Prerequisites
 
 The prerequisite steps to getting started with Palette on GCP are as follows.
 
@@ -23,12 +23,25 @@ The prerequisite steps to getting started with Palette on GCP are as follows.
 
 - Sign up to a public cloud account from [GCP](https://cloud.google.com/docs/get-started).
 
-  - Register the cloud account in Palette. The
-    [Register and Manage GCP Accounts](../../clusters/public-cloud/gcp/add-gcp-accounts.md) page provides additional
-    guidance.
+- Access to a terminal window.
 
-- Create an SSH key and upload it to Palette. Check out the
-  [Create and Upload an SSH Key](../../clusters/cluster-management/ssh-keys.md) guide for more information.
+- The utility `ssh-keygen` or similar SSH key generator software.
+
+## Enablement
+
+Palette needs access to your GCP cloud account in order to create and manage GCP clusters and resources.
+
+### Add Cloud Account
+
+import GCPCloud from "../../_partials/_gcp-cloud-account-setup.mdx";
+
+<GCPCloud />
+
+### Create and Upload an SSH Key
+
+import SSHKey from '../../_partials/_create-upload-ssh-key.mdx';
+
+<SSHKey />
 
 ## Validate
 

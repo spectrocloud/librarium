@@ -8,10 +8,10 @@ sidebar_position: 10
 tags: ["getting-started", "azure"]
 ---
 
-In this guide, you will learn how to set up Palette for use with your AWS cloud account. These steps are required in order to
-authenticate Palette and allow it to deploy host clusters.
+In this guide, you will learn how to set up Palette for use with your AWS cloud account. These steps are required in
+order to authenticate Palette and allow it to deploy host clusters.
 
-## Enablement
+## Prerequisites
 
 The prerequisite steps to getting started with Palette on AWS are as follows.
 
@@ -24,12 +24,25 @@ The prerequisite steps to getting started with Palette on AWS are as follows.
 - Sign up to a public cloud account from
   [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account).
 
-  - Register the cloud account in Palette. The
-    [Register and Manage Azure Cloud Accounts](../../clusters/public-cloud/azure/azure-cloud.md) page provides
-    additional guidance.
+- Access to a terminal window.
 
-- Create an SSH key and upload it to Palette. Check out the
-  [Create and Upload an SSH Key](../../clusters/cluster-management/ssh-keys.md) guide for more information.
+- The utility `ssh-keygen` or similar SSH key generator software.
+
+## Enablement
+
+Palette needs access to your Azure cloud account in order to create and manage Azure clusters and resources.
+
+### Add Azure Cloud Account
+
+import AzureCloud from "../../_partials/_azure-cloud-account-setup.mdx";
+
+<AzureCloud />
+
+### Create and Upload an SSH Key
+
+import SSHKey from '../../_partials/_create-upload-ssh-key.mdx';
+
+<SSHKey />
 
 ## Validate
 
