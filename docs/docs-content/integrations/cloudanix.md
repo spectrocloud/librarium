@@ -128,4 +128,4 @@ data "spectrocloud_pack_simple" "cloudanix" {
 
 ## References
 
-- [Cloudanix Documentation](https://docs.cloudanix.com/introduction)
+- [Cloudanix Documentation](https://www.cloudanix.com/docs/introduction)

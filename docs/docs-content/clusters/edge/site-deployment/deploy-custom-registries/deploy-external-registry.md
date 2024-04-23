@@ -54,20 +54,19 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
   - 8 GB memory
   - 50 GB storage
 
-- [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the `git --version`
-  command.
+- [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
 
 - [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
   command to view the existing Docker version.
 
   - You should have root-level or `sudo` privileges on your Linux machine to create privileged containers.
 
-- A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for a
+- A [Palette](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for a
   [free trial](https://www.spectrocloud.com/free-tier/).
 
 - Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
   generate a new registration token. For detailed instructions, refer to the
-  [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide.
+  [Create Registration Token](../site-installation/create-registration-token.md) guide.
 
 - A private external registry that stores all images required by your cluster.
 

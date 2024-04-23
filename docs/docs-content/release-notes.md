@@ -11,12 +11,19 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## April 13, 2024 - Release 4.3.0
+## April 14, 2024 - Release 4.3.0 - 4.3.6
 
 This release contains several new exciting Technical Preview features, including the Edge Local UI and Cluster Profile
 variables. Other notable features include enhancements to the Palette CLI, support for deploying Konvoy clusters, Azure
 AKS support for VerteX, and adding multiple system administrators to the Palette and VerteX system consoles. Check out
 the following sections for a complete list of features, improvements, and known issues.
+
+### Security Notices
+
+- Kubernetes version 1.27.9 is deprecated due to a security vulnerability. We recommend upgrading to a newer version of
+  Kubernetes, such as 1.27.11, to avoid issues.
+
+- Review the [Security Bulletins](./security-bulletins/cve-reports.md) page for the latest security advisories.
 
 ### Palette
 
@@ -81,10 +88,15 @@ the following sections for a complete list of features, improvements, and known 
 - Cox Edge has been removed as a supported platform for Edge clusters. Cox stopped supporting the platform and is no
   longer available for new deployments. All Cox Edge-related resources and API endpoints have been removed.
 
-- PCG deployments using the Palette CLI for MAAS and VMware vSphere now use Kubernetes version 1.27.9. Palette CLI
+- PCG deployments using the Palette CLI for MAAS and VMware vSphere now use Kubernetes version 1.27.11. Palette CLI
   installs targeting an OpenStack environment will use Kubernetes version 1.24.10. Existing PCG clusters installed
   through Palette CLI will be eligible for a cluster profile update. We recommend you review the
   [Upgrade a PCG](./clusters/pcg/manage-pcg/pcg-upgrade.md) guide to learn more about updating a PCG.
+
+- Self-hosted Palette instances now use Kubernetes version 1.27.11. This new version of Kubernetes will cause node
+  repave events during the upgrade process. If you have multiple self-hosted Palette instances in a VMware environment,
+  take a moment and review the [Known Issues](#known-issues) section below for potential issues that may arise during
+  the upgrade process.
 
 #### Known Issues
 
@@ -96,10 +108,9 @@ the following sections for a complete list of features, improvements, and known 
   group with the same name already exists in the VPC, the cluster creation process fails. To avoid this, ensure that no
   security group with the same name exists in the VPC before creating a cluster.
 
-- K3s version 1.27.7 has been marked as _Disabled_ and is no longer available for new cluster profiles. This version has
-  a known issue that causes clusters to crash. Upgrade to a newer version of K3s to avoid the issue, such as versions
-  1.26.12, 1.28.5, and 1.27.9. You can learn more about the issue in the
-  [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047).
+- K3s version 1.27.7 has been marked as _Deprecated_. This version has a known issue that causes clusters to crash.
+  Upgrade to a newer version of K3s to avoid the issue, such as versions 1.26.12, 1.28.5, and 1.27.11. You can learn
+  more about the issue in the [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047).
 
 - When deploying a multi-node AWS EKS cluster with the Container Network Interface (CNI)
   [Calico](https://docs.spectrocloud.com/integrations/calico), the cluster deployments fail. A workaround is to use the
@@ -110,6 +121,18 @@ the following sections for a complete list of features, improvements, and known 
   during the cluster deletion process. Refer to the
   [VMware Resources Remain After Cluster Deletion](./troubleshooting/pcg.md#scenario---vmware-resources-remain-after-cluster-deletion)
   troubleshooting guide for resolution steps.
+
+  <!-- prettier-ignore -->
+
+- In a VMware environment, self-hosted Palette instances do not receive a unique cluster ID when deployed, which can
+  cause issues during a node repave event, such as a Kubernetes version upgrade. Specifically, Persistent Volumes (PVs)
+  and Persistent Volume Claims (PVCs) will experience start problems due to the lack of a unique cluster ID. To resolve
+  this issue, refer to the
+  [Volume Attachment Errors Volume in VMware Environment](./troubleshooting/palette-upgrade.md#volume-attachment-errors-volume-in-vmware-environment)
+  troubleshooting guide.
+
+- Day-2 operations related to infrastructure changes, such as modifying the node size, and node count, when using
+  MicroK8s are not taking effect.
 
 ### Edge
 
@@ -155,6 +178,22 @@ the following sections for a complete list of features, improvements, and known 
   [Harbor Edge](./integrations/harbor-edge.md#enable-image-download-from-outside-of-harbor) reference page to learn more
   about the feature.
 
+#### Known issues
+
+- If a cluster that uses the Rook-Ceph pack experiences network issues, it's possible for the file mount to become
+  unavailable and will remain unavailable even after network is restored. This a known issue disclosed in the
+  [Rook GitHub repository](https://github.com/rook/rook/issues/13818). To resolve this issue, refer to
+  [Rook-Ceph](./integrations/rook-ceph.md#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) pack
+  documentation.
+
+- Edge clusters on Edge hosts with ARM64 processors may experience instability issues that causes cluster failures.
+
+- During the cluster provisioning process of new edge clusters, the palette webhook pods may not always deploy
+  successfully, causing the cluster to be stuck in the provisioning phase. This issue does not impact deployed clusters.
+  Review the
+  [Palette Webhook Pods Fail to Start](./troubleshooting/edge.md#scenario---palette-webhook-pods-fail-to-start)
+  troubleshooting guide for resolution steps.
+
 ### Virtual Machine Orchestrator (VMO)
 
 #### Improvements
@@ -189,6 +228,11 @@ the following sections for a complete list of features, improvements, and known 
   also supports checking exposed service endpoints for approved ciphers and TLS versions. Images and service endpoints
   that are not compliant are reported with either a failed or unknown status. Refer to the
   [FIPS Validate](./palette-cli/commands/fips-validate.md) guide to learn more about the command.
+
+- VerteX instances now use Kubernetes version 1.27.11. This new version of Kubernetes will cause node repave events
+  during the upgrade process. If you have multiple self-hosted Palette instances in a VMware environment, take a moment
+  and review the Palette [Known Issues](#known-issues) section above for potential issues that may arise during the
+  upgrade process.
 
 #### Improvements
 
@@ -226,6 +270,9 @@ the following sections for a complete list of features, improvements, and known 
 
 #### Pack Notes
 
+- Several Kubernetes versions are [deprecated](./integrations/maintenance-policy.md#pack-deprecations) and removed in
+  this release. Review the [Deprecation](#deprecations-and-removals) section for a list of deprecated packs.
+
 - OpenStack support is limited to Palette eXtended Kubernetes (PXK) for version 1.24.x.
 
 - Local Path Provisioner CSI for Edge is now a [verified pack](./integrations/verified_packs.md).
@@ -234,11 +281,18 @@ the following sections for a complete list of features, improvements, and known 
 
 | Pack                                       | New Version |
 | ------------------------------------------ | ----------- |
-| K3s                                        | 1.29.0      |
+| K3s                                        | 1.26.14     |
+| K3s                                        | 1.27.11     |
+| K3s                                        | 1.28.7      |
+| K3s                                        | 1.29.2      |
 | Konvoy                                     | 1.27.6      |
 | Palette eXtended Kubernetes (PXK)          | 1.29.0      |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.0      |
 | RKE2                                       | 1.29.0      |
+| RKE2 - Edge                                | 1.26.14     |
+| RKE2 - Edge                                | 1.27.11     |
+| RKE2 - Edge                                | 1.28.7      |
+| RKE2 - Edge                                | 1.29.3      |
 
 #### CNI
 
@@ -288,15 +342,34 @@ the following sections for a complete list of features, improvements, and known 
 | Calico CNI                                 | 3.26.3      |
 | Konvoy                                     | 1.27.6      |
 | Palette eXtended Kubernetes (PXK)          | 1.26.12     |
-| Palette eXtended Kubernetes (PXK)          | 1.27.9      |
-| Palette eXtended Kubernetes (PXK)          | 1.28.5      |
+| Palette eXtended Kubernetes (PXK)          | 1.27.11     |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.26.12     |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.9      |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.28.5      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.11     |
 | RKE2 - Edge                                | 1.26.12     |
-| RKE2 - Edge                                | 1.27.9      |
-| RKE2 - Edge                                | 1.28.5      |
 
 #### Deprecations and Removals
 
-- Check out the [Deprecated Packs](integrations/deprecated-packs.md) page for a list of deprecated packs.
+- PXK, PXK-E, and RKE2, versions prior to 1.27.x are deprecated. We recommend upgrading to a newer version of Kubernetes
+  to support the latest features and security updates.
+
+- All Kubernetes pack versions prior to 1.25.0 are disabled across the following distributions:
+
+  - PXK,
+  - PXK-E
+  - K3s
+  - RKE2 - Edge
+  - GKE
+  - AKS
+
+  Kubernetes versions for GKE and AKS prior to verison 1.25 are removed as they are no longer available upstream. AKS
+  1.26 is deprecated as it reached End Of Life (EOL).
+
+  - Exceptions - OpenStack and PXK 1.24 packs have been reverted to _Deprecated_ state from _Disabled_ state. EKS 1.24
+    is also back in deprecated state as support has been extended by AWS.
+
+- An upstream issue in K3s could prevent clusters from starting up successfully when a node is rebooted. This issue can
+  be potentially be seen in patch versions 1.26.10, 1.26.4, 1.26.8 for 1.26, 1.27.2 ,1.27.5 and 1.27.7 for 1.27 and
+  1.28.2, 1.28.4 for 1.28. All these versions have been deprecated. We recommend you use Kubernetes versions 1.26.14,
+  1.27.11 or 1.28.7 as these versions contain the fix for the upstream issue.
+
+- Check out the [Deprecated Packs](integrations/deprecated-packs.md) page for a list of all deprecated packs.
