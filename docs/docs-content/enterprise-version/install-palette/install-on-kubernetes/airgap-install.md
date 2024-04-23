@@ -224,9 +224,9 @@ your environment. Reach out to our support team if you need assistance.
     <!-- prettier-ignore -->
     <Tabs>
 
-    <TabItem label="AWS ECR Registry" value="ecr">
+    <TabItem label="OCI Registry" value="oci">
 
-    ```yaml showLineNumbers {23,53,77-85,110-115}
+    ```yaml showLineNumbers {23,53,87-95,97-102,104-106,109}
     #########################
     # Spectro Cloud Palette #
     #########################
@@ -303,38 +303,25 @@ your environment. Reach out to our support team if you need assistance.
       #    insecureSkipVerify: false
       #    caCert: ""
 
-      ociPackEcrRegistry:
-        endpoint: "123456789.dkr.ecr.us-east-1.amazonaws.com" #<Contact Spectro Cloud Sales for More info>
-        name: "Airgap Packs OCI" #<Contact Spectro Cloud Sales for More info>
-        accessKey: "*************" #<Contact Spectro Cloud Sales for More info>
-        secretKey: "*************" #<Contact Spectro Cloud Sales for More info>
-        baseContentPath: "spectro-packs" #<Contact Spectro Cloud Sales for More info>
-        isPrivate: true
+      # ociPackEcrRegistry:
+      #   endpoint: "" #<Contact Spectro Cloud Sales for More info>
+      #   name: "" #<Contact Spectro Cloud Sales for More info>
+      #   accessKey: "" #<Contact Spectro Cloud Sales for More info>
+      #   secretKey: "" #<Contact Spectro Cloud Sales for More info>
+      #   baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
+      #   isPrivate: true
+      #   insecureSkipVerify: false
+      #   caCert: ""
+
+      ociImageRegistry:
+        endpoint: "my-oci-registry.com" #<Contact Spectro Cloud Sales for More info>
+        name: "Airgap Image OCI" #<Contact Spectro Cloud Sales for More info>
+        password: "" #<Contact Spectro Cloud Sales for More info>
+        username: "" #<Contact Spectro Cloud Sales for More info>
+        baseContentPath: "spectro-images" #<Contact Spectro Cloud Sales for More info>
         insecureSkipVerify: true
         caCert: ""
-
-      #  ociImageRegistry:
-      #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-      #    name: "" #<Contact Spectro Cloud Sales for More info>
-      #    password: "" #<Contact Spectro Cloud Sales for More info>
-      #    username: "" #<Contact Spectro Cloud Sales for More info>
-      #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
-      #    insecureSkipVerify: false
-      #    caCert: ""
-      #    mirrorRegistries: ""  # See instructions below.
-      #
-      # Instruction for mirrorRegistries.
-      # ----------------------------------
-      # Please provide the registry endpoint for the following registries, separated by double colons (::):
-      # docker.io
-      # gcr.io
-      # ghcr.io
-      # k8s.gcr.io
-      # registry.k8s.io
-      # quay.io
-      # For each registry, follow this example format:
-      # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>
-      # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
+        mirrorRegistries: "docker.io::my-oci-registry.com/v2/spectro-images,gcr.io::my-oci-registry.com/v2/spectro-images,ghcr.io::my-oci-registry.com/v2/spectro-images,k8s.gcr.io::my-oci-registry.com/v2/spectro-images,registry.k8s.io::my-oci-registry.com/v2/spectro-images,quay.io::my-oci-registry.com/v2/spectro-images"
 
       scar:
         endpoint: "http://10.15.20.15:2015"
@@ -344,8 +331,8 @@ your environment. Reach out to our support team if you need assistance.
         caCert: ""
 
       imageSwapImages:
-        imageSwapInitImage: "gcr.io/spectro-images-public/release-fips/thewebroot/imageswap-init:v1.5.2"
-        imageSwapImage: "gcr.io/spectro-images-public/release-fips/thewebroot/imageswap:v1.5.2"
+        imageSwapInitImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/thewebroot/imageswap-init:v1.5.2"
+        imageSwapImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/thewebroot/imageswap:v1.5.2"
 
       imageSwapConfig:
         isEKSCluster: true #If the Cluster you are trying to install is EKS cluster set value to true else set to false
@@ -464,9 +451,9 @@ your environment. Reach out to our support team if you need assistance.
 
     </TabItem>
 
-    <TabItem label="OCI Registry" value="oci">
+    <TabItem label="AWS ECR Registry" value="ecr">
 
-    ```yaml showLineNumbers {23,53,87-95,97-102,104-106,109}
+    ```yaml showLineNumbers {23,53,77-85,87-95,110-115}
     #########################
     # Spectro Cloud Palette #
     #########################
@@ -543,25 +530,38 @@ your environment. Reach out to our support team if you need assistance.
       #    insecureSkipVerify: false
       #    caCert: ""
 
-      # ociPackEcrRegistry:
-      #   endpoint: "" #<Contact Spectro Cloud Sales for More info>
-      #   name: "" #<Contact Spectro Cloud Sales for More info>
-      #   accessKey: "" #<Contact Spectro Cloud Sales for More info>
-      #   secretKey: "" #<Contact Spectro Cloud Sales for More info>
-      #   baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
-      #   isPrivate: true
-      #   insecureSkipVerify: false
-      #   caCert: ""
+      ociPackEcrRegistry:
+        endpoint: "123456789.dkr.ecr.us-east-1.amazonaws.com" #<Contact Spectro Cloud Sales for More info>
+        name: "Airgap Packs OCI" #<Contact Spectro Cloud Sales for More info>
+        accessKey: "*************" #<Contact Spectro Cloud Sales for More info>
+        secretKey: "*************" #<Contact Spectro Cloud Sales for More info>
+        baseContentPath: "spectro-packs" #<Contact Spectro Cloud Sales for More info>
+        isPrivate: true
+        insecureSkipVerify: true
+        caCert: ""
 
       ociImageRegistry:
-        endpoint: "my-oci-registry.com" #<Contact Spectro Cloud Sales for More info>
-        name: "Airgap Image OCI" #<Contact Spectro Cloud Sales for More info>
+        endpoint: "public.ecr.aws/123456789" #<Contact Spectro Cloud Sales for More info>
+        name: "Airgap Images OCI" #<Contact Spectro Cloud Sales for More info>
         password: "" #<Contact Spectro Cloud Sales for More info>
         username: "" #<Contact Spectro Cloud Sales for More info>
         baseContentPath: "spectro-images" #<Contact Spectro Cloud Sales for More info>
-        insecureSkipVerify: true
+        insecureSkipVerify: false
         caCert: ""
-        mirrorRegistries: "docker.io::my-oci-registry.com/v2/spectro-images,gcr.io::my-oci-registry.com/v2/spectro-images,ghcr.io::my-oci-registry.com/v2/spectro-images,k8s.gcr.io::my-oci-registry.com/v2/spectro-images,registry.k8s.io::my-oci-registry.com/v2/spectro-images,quay.io::my-oci-registry.com/v2/spectro-images"
+        mirrorRegistries: "docker.io::public.ecr.aws/123456789/v2/spectr-images,gcr.io::public.ecr.aws/123456789/v2/spectro-images,ghcr.io::public.ecr.aws/123456789/v2/spectro-images,k8s.gcr.io::public.ecr.aws/123456789/v2/spectro-images,registry.k8s.io::public.ecr.aws/123456789/v2/spectro-images,quay.io::public.ecr.aws/123456789/v2/spectro-imagesßßß"
+      #
+      # Instruction for mirrorRegistries.
+      # ----------------------------------
+      # Please provide the registry endpoint for the following registries, separated by double colons (::):
+      # docker.io
+      # gcr.io
+      # ghcr.io
+      # k8s.gcr.io
+      # registry.k8s.io
+      # quay.io
+      # For each registry, follow this example format:
+      # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>
+      # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
 
       scar:
         endpoint: "http://10.15.20.15:2015"
@@ -571,8 +571,8 @@ your environment. Reach out to our support team if you need assistance.
         caCert: ""
 
       imageSwapImages:
-        imageSwapInitImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/thewebroot/imageswap-init:v1.5.2"
-        imageSwapImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/thewebroot/imageswap:v1.5.2"
+        imageSwapInitImage: "public.ecr.aws/123456789/gcr.io/spectro-images-public/release-fips/thewebroot/imageswap-init:v1.5.2"
+        imageSwapImage: "public.ecr.aws/123456789/gcr.io/spectro-images-public/release-fips/thewebroot/imageswap:v1.5.2"
 
       imageSwapConfig:
         isEKSCluster: true #If the Cluster you are trying to install is EKS cluster set value to true else set to false
