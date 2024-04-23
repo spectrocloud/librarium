@@ -100,12 +100,12 @@ guide to learn how to create a new access key.
 
   :::tip
 
-Use the IAM Policy Simulator to verify the IAM role has the necessary permissions to access a customer managed KMS key.
-Refer to the
-[Testing IAM policies with the IAM policy simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html)
-guide to learn more.
+  Use the IAM Policy Simulator to verify the IAM role has the necessary permissions to access a customer managed KMS
+  key. Refer to the
+  [Testing IAM policies with the IAM policy simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html)
+  guide to learn more.
 
-:::
+  :::
 
 ### Add an AWS S3 Bucket
 
