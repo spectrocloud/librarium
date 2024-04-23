@@ -35,7 +35,7 @@ Use the steps below to add an AWS cloud account using static access credentials.
 
 #### Add AWS Account to Palette
 
-import StaticCredentials from '../../../_partials/_aws-static-credentials-setup.mdx';
+import StaticCredentials from "../../../_partials/_aws-static-credentials-setup.mdx";
 
 <StaticCredentials />
 

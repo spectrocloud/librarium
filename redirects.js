@@ -1,4 +1,4 @@
- const redirects = [
+const redirects = [
   {
     from: `/api/`,
     to: `/api/introduction/`,

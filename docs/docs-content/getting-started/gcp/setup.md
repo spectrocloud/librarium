@@ -39,7 +39,7 @@ import GCPCloud from "../../_partials/_gcp-cloud-account-setup.mdx";
 
 ### Create and Upload an SSH Key
 
-import SSHKey from '../../_partials/_create-upload-ssh-key.mdx';
+import SSHKey from "../../_partials/_create-upload-ssh-key.mdx";
 
 <SSHKey />
 

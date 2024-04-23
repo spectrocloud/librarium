@@ -24,10 +24,9 @@ authentication methods to register your cloud account.
 
 ## Add Azure Cloud Account
 
-import AzureCloud from '../../../_partials/_azure-cloud-account-setup.mdx';
+import AzureCloud from "../../../_partials/_azure-cloud-account-setup.mdx";
 
 <AzureCloud />
-
 
 ## Validate
 

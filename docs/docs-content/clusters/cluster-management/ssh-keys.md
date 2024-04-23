@@ -25,7 +25,7 @@ you need a public SSH key registered in Palette.
 
 ## Create and Upload an SSH Key
 
-import SSHKey from '../../_partials/_create-upload-ssh-key.mdx';
+import SSHKey from "../../_partials/_create-upload-ssh-key.mdx";
 
 <SSHKey />
 
