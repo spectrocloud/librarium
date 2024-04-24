@@ -11,6 +11,6 @@
   display: flex;
   flex-wrap: wrap;
 }
-.ant-select {
-  width: 200px
+.ant-menu-horizontal >.ant-menu-submenu:hover::after {
+  border-bottom-color: transparent !important
 }

@@ -1,22 +1,7 @@
 .ant-space-compact-block {
   flex-direction: row-reverse;
 }
-.ant-btn-compact-item {
-  background-color: #d9d9d9;
-  color: black;
-  html[data-theme="dark"] & {
-    color: white;
-    background-color: #1c202b;
-  }
-}
-.ant-btn {
-  background-color: #d9d9d9;
-  color: black;
-  html[data-theme="dark"] & {
-    color: white;
-    background-color: #1c202b;
-  }
-}
+
 .ant-menu-horizontal {
   background-color: #d9d9d9;
   color: black;
@@ -25,4 +10,7 @@
     background-color: #1c202b;
   }
   line-height: 32px;
+}
+.ant-tag {
+  font-size: 14px;
 }

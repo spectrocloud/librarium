@@ -17,7 +17,7 @@ export const packTypes = [
 
 type packType = typeof packTypes[number];
 
-export const packTypeNames: Record<packType, string> = {
+export const packTypeNames: Record<string, string> = {
   'app services': 'App Services',
   authentication: 'Authentication',
   ingress: 'Ingress',
@@ -34,20 +34,20 @@ export const packTypeNames: Record<packType, string> = {
   'system app': 'System App',
 } as const;
 
-export const cloudProviderTypes = {
-  aws: 'AWS IaaS',
-  eks: 'AWS EKS',
-  aks: 'Azure AKS',
-  gke: 'GCP GKE',
-  azure: 'Azure IaaS',
-  gcp: 'GCP IaaS',
-  vsphere: 'VMware',
-  openstack: 'OpenStack',
-  maas: 'MAAS',
-  tke: 'TKE',
-  'edge-native': 'Edge Native',
-  custom: 'Custom',
-} as const;
+export const cloudProviderTypes = [
+  { name: 'aws', displayName: 'AWS IaaS' },
+  { name: 'eks', displayName: 'AWS EKS' },
+  { name: 'azure', displayName: 'Azure IaaS' },
+  { name: 'aks', displayName: 'Azure AKS' },
+  { name: 'gcp', displayName: 'GCP IaaS' },
+  { name: 'gke', displayName: 'GCP GKE' },
+  { name: 'tke', displayName: 'TKE' },
+  { name: 'vsphere', displayName: 'VMware' },
+  { name: 'openstack', displayName: 'OpenStack' },
+  { name: 'maas', displayName: 'MAAS' },
+  { name: 'edge-native', displayName: 'Edge Native' },
+  { name: 'custom', displayName: 'Custom' },
+] as const;
 
 export const layerTypes = [
   'k8s',
@@ -68,3 +68,18 @@ export const addOnTypes = [
   'servicemesh',
   'system app',
 ] as const;
+
+export const cloudDisplayNames = {
+  aws: 'AWS',
+  eks: 'AWS EKS',
+  aks: 'Azure AKS',
+  gke: 'GCP GKE',
+  azure: 'Azure',
+  gcp: 'GCP',
+  vsphere: 'VMware',
+  openstack: 'OpenStack',
+  maas: 'MAAS',
+  tke: 'Tencent',
+  'edge-native': 'Edge Native',
+  custom: 'Custom',
+} as const;

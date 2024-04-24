@@ -17,11 +17,11 @@ export default function AdditionalFilters({ selectAdditionalFilters }: Additiona
   const [items, setItems] = useState<MenuItemProps[]>([
     {
       label: 'Verified',
-      key: 'Verified',
+      key: 'verified',
     },
     {
       label: 'Community',
-      key: 'Community',
+      key: 'community',
     }
   ]);
   const [selectedItems, setSelectedItems] = useState<MenuItemProps[]>([]);
@@ -39,7 +39,7 @@ export default function AdditionalFilters({ selectAdditionalFilters }: Additiona
     const selItem = items.find((item) => item.key === key);
     if (selItem) {
       const _selectedItems = [...selectedItems, selItem];
-      selectAdditionalFilters(_selectedItems.map((item) => item.label));
+      selectAdditionalFilters(_selectedItems.map((item) => item.key));
       setSelectedItems(_selectedItems);
       setItems(items.filter((item) => item.key !== key))
     }
@@ -49,16 +49,16 @@ export default function AdditionalFilters({ selectAdditionalFilters }: Additiona
     const newItems = selectedItems.filter((item) => item.key !== key);
     setSelectedItems(newItems);
     setItems([...items, selectedItems.find((item) => item.key === key)!]);
-    selectAdditionalFilters(newItems.map((item) => item.label));
+    selectAdditionalFilters(newItems.map((item) => item.key));
   };
 
   return (
     <div className={styles.wrapper}>
       <Space>
         {selectedItems.map((item) => (
-          <Tag key={item.key} closable onClose={()=>removeItem(item.key)}>{item.label}</Tag>
+          <Tag key={item.key} closable onClose={() => removeItem(item.key)}>{item.label}</Tag>
         ))}
-        <Menu onClick={({key}) => loadMenu(key)} mode="horizontal" items={additionalMenu} />
+        <Menu onClick={({ key }) => loadMenu(key)} mode="horizontal" items={additionalMenu} />
       </Space>
     </div>
   );

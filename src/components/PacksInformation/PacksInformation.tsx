@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from 'react-router-dom';
-import PacksReadme from "@site/src/components/PacksReadme";
+import PacksReadme from "@site/src/components/PacksReadme/PacksReadme";
 import { Switch, useRouteMatch, Redirect } from 'react-router-dom'
 
 export default function Packs(props: any) {

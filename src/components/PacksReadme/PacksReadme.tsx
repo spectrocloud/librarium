@@ -10,7 +10,7 @@ import PacksIntegrationsPluginData from "../Integrations/IntegrationTypes";
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from "@docusaurus/useBaseUrl"
 import { useColorMode } from "@docusaurus/theme-common";
-import { packTypeNames } from "../Technologies/PackConstants";
+import { packTypeNames, cloudDisplayNames } from "../Technologies/PackConstants";
 
 interface PackReadmeProps {
   customDescription: string,
@@ -20,6 +20,8 @@ interface PackReadmeProps {
   logoUrl: string,
   type: string,
   provider: Array<string>,
+  registries: Array<string>,
+  selectedRepositories: Array<any>,
 }
 
 export default function PacksReadme() {
@@ -45,7 +47,7 @@ export default function PacksReadme() {
   }, []);
 
   const packData = useMemo(() => {
-    const { packs } = usePluginData("plugin-packs-integrations") as PacksIntegrationsPluginData;
+    const { packs, repositories } = usePluginData("plugin-packs-integrations") as PacksIntegrationsPluginData;
     const _packData = packs.filter((pack) => pack.fields.name === packName)[0];
     if (_packData) {
       setSelectedVersion(`${_packData.fields.versions[0].title}`);
@@ -57,6 +59,8 @@ export default function PacksReadme() {
         logoUrl: _packData.fields.logoUrl,
         type: _packData.fields.packType,
         provider: _packData.fields.cloudTypes,
+        registries: _packData.fields.registries,
+        selectedRepositories: repositories,
       };
       return packDataInfo;
     }
@@ -68,6 +72,8 @@ export default function PacksReadme() {
       logoUrl: "",
       type: "",
       provider: [],
+      selectedRepositories: [],
+      registries: [],
     };
   }, [packName]);
 
@@ -75,7 +81,7 @@ export default function PacksReadme() {
     setSelectedVersion(version);
   }
 
-  function getOptions() {
+  function renderVersionOptions() {
     return packData.versions.map((_version) => {
       return (<Select.Option key={_version.title}>
         {_version.title}
@@ -112,39 +118,44 @@ export default function PacksReadme() {
           })}
         </Tabs>
       );
-    } else if (Object.keys(packData.packReadme).length) {
-      const packUid = packData.versions.find((ver) => ver.title === selectedVersion)?.packUid;
-      readme = packUid ? packData.packReadme[packUid as keyof string] : "";
-      return (<Markdown children={readme} />);
-    } else if (md) {
-      return md;
-    } else {
-      return renderEmptyContent();
     }
-  }
-  function renderEmptyContent() {
     return (
-      <div className={styles.emptyContent}>
-        <ThemedImage
-          alt="Docusaurus themed image"
-          sources={{
-            light: empty_icon_light,
-            dark: empty_icon_dark,
-          }}
-          width={120}
-          height={120}
-        />
-        <div className={styles.emptyContentTitle}>No content available</div>
-        <div className={styles.emptyContentDescription}>The content for this pack is not available.</div>
-      </div>
+      <>
+        {Object.keys(packData.packReadme).length ? (<Markdown children={readme} />)
+          : md ? md
+            : (<div className={styles.emptyContent}>
+              <ThemedImage
+                alt="Docusaurus themed image"
+                sources={{
+                  light: empty_icon_light,
+                  dark: empty_icon_dark,
+                }}
+                width={120}
+                height={120}
+              />
+              <div className={styles.emptyContentTitle}>No content available</div>
+              <div className={styles.emptyContentDescription}>The content for this pack is not available.</div>
+            </div>)}
+      </>
     );
   }
+
   function getProviders() {
-    if(packData.provider.includes("all")) {
+    if (packData.provider.includes("all")) {
       return "All";
     } else {
-      return packData.provider.join(", ");
+      return packData.provider.map((_provider) => cloudDisplayNames[_provider as keyof typeof cloudDisplayNames] || _provider).join(", ");
     }
+  }
+  function getRegistries() {
+    const consolidatedRegistries = packData.registries.reduce((accumulator: string[], registry) => {
+      const regObj = packData.selectedRepositories.find((repo) => repo.uid === registry);
+      if (regObj) {
+        accumulator.push(regObj.name);
+      }
+      return accumulator;
+    }, []);
+    return consolidatedRegistries.join(", ");
   }
   return (
     <div className={styles.wrapper}>
@@ -153,22 +164,23 @@ export default function PacksReadme() {
       }}>
         <div className={styles.description}>
           <div className={styles.packdescfirstcol}>
-            <div className={styles.packname}>{packName}</div>
+            <div className={styles.packname}>{packData.title}</div>
             <div className={styles.descriptioncontent}>
-              <PackCardIcon title={packData.title} logoUrl={packData.logoUrl} type={packData.type} />
-              <div>{packData.customDescription}</div>
+              <PackCardIcon className={styles.packicon} title={packData.title} logoUrl={packData.logoUrl} type={packData.type} />
+              <div className={styles.customdesc}>{packData.customDescription}</div>
             </div>
           </div>
           <div className={styles.packdescsecondcol}>
             <div className={styles.versionselect}>
               <CustomLabel label="Version" />
               <Select
+                className={styles.versionselectbox}
                 allowClear
                 placeholder="Search"
                 onChange={(item) => versionChange(item as string)}
                 value={selectedVersion === packData.versions[0]?.title ? `${selectedVersion} (latest)` : selectedVersion}
               >
-                {getOptions()}
+                {renderVersionOptions()}
               </Select>
             </div>
             <div className={styles.packdesc}>
@@ -178,10 +190,13 @@ export default function PacksReadme() {
               <div className={styles.packdescitem}>
                 {`Cloud Providers: ${getProviders()}`}
               </div>
+              <div className={styles.packdescitem}>
+                {`Registry: ${getRegistries()}`}
+              </div>
             </div>
           </div>
         </div>
-        <div>
+        <div className={styles.tabpane}>
           {renderTabs()}
         </div>
       </ConfigProvider>

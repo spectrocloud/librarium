@@ -3,6 +3,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  .tabpane {
+    padding-top: 15px;
+    font-size: 16px;
+  }
   .emptyContent {
     padding-top: 20px;
     display: flex;
@@ -44,8 +48,23 @@
       display: flex;
       flex-direction: column;
       width: 70%;
+      .packname {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+      }
       .descriptioncontent {
         display: flex;
+        height: 100%;
+        font-size: 14px;
+        font-weight: 400;
+        .packicon {
+          height: 100%;
+        }
+        .customdesc {
+          padding-top: 12px;
+          padding-left: 16px;
+        }
       }
     }
     .packdescsecondcol {
@@ -68,6 +87,9 @@
         html[data-theme="dark"] & {
           border: 1px solid #1f263c;
         }
+      }
+      .versionselectbox {
+        width: 300px;
       }
       .packdesc {
         display: flex;

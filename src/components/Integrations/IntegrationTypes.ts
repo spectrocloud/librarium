@@ -1,9 +1,7 @@
 export interface FrontMatterData {
   name: string;
-  sidebar_label: string;
   title: string;
   description: string;
-  hide_table_of_contents: boolean;
   type: string;
   category: string[];
   logoUrl: string;

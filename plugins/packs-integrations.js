@@ -33,18 +33,16 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
       const packType = packMDValue.spec.layer === "addon" ? packMDValue.spec.addonType : packMDValue.spec.layer;
       const layer = packMDValue.spec.layer === "addon" ? packMDValue.spec.addonType : packTypeNames[packMDValue.spec.layer];
       const packValues = packContent.packValues;
-      const packValueMap = {
+      return {
         fields: {
           name: packName,
           title: packMDValue.spec.displayName,
           description: customPacksData?.[packName],
           readme: getReadMeMap(packValues),
-          hide_table_of_contents: false,
           cloudTypes: packMDValue.spec.cloudTypes,
           type: 'integration',
           category: [layer],
           packType: packType,
-          sidebar_class_name: 'hide-from-sidebar',
           logoUrl: packMDValue.spec.registries[0].logoUrl,
           tags: [],
           slug: '/integrations/${packMDValue.spec.name}',
@@ -55,7 +53,6 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
           versions: getAggregatedVersions(packContent.tags, packValues, packName, layer)
         }
       };
-      return packValueMap;
     }
   });
 }

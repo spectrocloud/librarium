@@ -7,25 +7,25 @@ interface PackCardIconProps {
   title?: string;
   logoUrl?: string;
   type?: any;
+  className?: any;
 }
 
-export default function PackCardIcon({ title, logoUrl, type }: PackCardIconProps) {
-  const [ isError, setIsError ] = useState(false);
+export default function PackCardIcon({ title, logoUrl, type, className }: PackCardIconProps) {
+  const [isError, setIsError] = useState(false);
   const handleImageError = (e: any) => {
-    e.target.style.display = "none";
     setIsError(true);
   };
 
   return (
-    <div className={styles.imageWrapper}>
-      {isError ?(<IconMapper type={type} />) :
-      (<Image
-        preview={false}
-        height={52}
-        src={logoUrl}
-        alt={`${title} logo`}
-        onError={handleImageError}
-      />)
+    <div className={`${className} ${styles.imageWrapper}`}>
+      {isError || !logoUrl ? (<IconMapper type={type} />) :
+        (<Image
+          preview={false}
+          height={52}
+          src={logoUrl}
+          alt={`${title} logo`}
+          onError={handleImageError}
+        />)
       }
     </div>
   );
