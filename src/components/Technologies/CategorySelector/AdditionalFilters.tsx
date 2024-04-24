@@ -36,9 +36,9 @@ export default function AdditionalFilters({ selectAdditionalFilters }: Additiona
   ];
 
   const loadMenu = (key: string) => {
-    const selItem = items.find((item) => item.key === key);
-    if (selItem) {
-      const _selectedItems = [...selectedItems, selItem];
+    const _selectedItem = items.find((item) => item.key === key);
+    if (_selectedItem) {
+      const _selectedItems = [...selectedItems, _selectedItem];
       selectAdditionalFilters(_selectedItems.map((item) => item.key));
       setSelectedItems(_selectedItems);
       setItems(items.filter((item) => item.key !== key))
