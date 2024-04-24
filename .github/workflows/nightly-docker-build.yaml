@@ -5,6 +5,7 @@ on:
     - cron: '15 22 * * 1-5'  # 22:15 UTC, Monday through Friday
   workflow_dispatch:
 
+
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # We cannot use our production values for nightly Docker builds as that would leak our production secrets.
@@ -28,6 +29,7 @@ jobs:
 
       - name: Compile
         run: |
+          touch .env
           make build
 
 
