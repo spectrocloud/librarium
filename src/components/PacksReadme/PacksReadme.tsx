@@ -90,10 +90,9 @@ export default function PacksReadme() {
   }
 
   function renderTabs() {
-    let readme = "";
-    if (Object.keys(packData.packReadme).length && md) {
-      const packUid = packData.versions.find((ver) => ver.title === selectedVersion)?.packUid;
-      readme = packUid ? packData.packReadme[packUid] : "";
+    const packUid = packData.versions.find((ver) => ver.title === selectedVersion)?.packUid;
+    let readme = packUid ? packData.packReadme[packUid] : "";
+    if (readme && md) {
       const items = [
         {
           label: `Readme`,
@@ -121,7 +120,7 @@ export default function PacksReadme() {
     }
     return (
       <>
-        {Object.keys(packData.packReadme).length ? (<Markdown children={readme} />)
+        {readme ? (<Markdown children={readme} />)
           : md ? md
             : (<div className={styles.emptyContent}>
               <ThemedImage
