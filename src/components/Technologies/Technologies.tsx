@@ -13,7 +13,7 @@ import { useColorMode } from "@docusaurus/theme-common";
 
 const searchOptions = {
   threshold: 0.5,
-  keys: ["title"],
+  keys: ["fields.title"],
 };
 
 interface TechnologiesProps {
