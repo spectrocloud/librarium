@@ -19,10 +19,10 @@ To get started with Palette on Kubernetes, refer to the [Install Instructions](i
 Select the scenario and the corresponding guide to install Palette on Kubernetes. If you are installing Palette in an
 refer to the environment preparation guide before installing Palette.
 
-| Scenario                                                 | Environment Preparation Guide                                                | Install Guide                             |
-| -------------------------------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------- |
-| Install Palette on Kubernetes with internet connectivity | None                                                                         | [Install Instructions](install.md)        |
-| Install Palette on Kubernetes in an airgap environment   | [Kubernetes Airgap Preperation](../airgap/kubernetes-airgap-instructions.md) | [Airgap Install Instructions](install.md) |
+| Scenario                                                 | Environment Preparation Guide                                                | Install Guide                                      |
+| -------------------------------------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------- |
+| Install Palette on Kubernetes with internet connectivity | None                                                                         | [Install Instructions](install.md)                 |
+| Install Palette on Kubernetes in an airgap environment   | [Kubernetes Airgap Preperation](../airgap/kubernetes-airgap-instructions.md) | [Airgap Install Instructions](./airgap-install.md) |
 
 ## Resources
 
