@@ -168,13 +168,13 @@ Use the following instructions on your Linux machine, which this guide refers to
 
 14. Issue the command below to create the content bundle. The `build` command uses the following flags:
 
-    | **Command Flag**        | **Value**                                                                                                                                           |
-    | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | `--api-key`             | Spectro Cloud API key                                                                                                                               |
-    | `--project-id`          | Palette project ID                                                                                                                                  |
-    | `--cluster-profile-ids` | Cluster profile IDs. If you want to include multiple cluster profiles in the content bundle, add multiple cluster profile IDs separated by a comma. |
-    | `--palette-endpoint`    | Palette API endpoint. The default Palette API endpoint is `api.spectrocloud.com`                                                                    |
-    | `--outfile`             | Path to write the final content bundle.                                                                                                             |
+    | **Command Flag**        | **Value**                                                                                                                                          |
+    | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `--api-key`             | Spectro Cloud API key                                                                                                                              |
+    | `--project-id`          | Palette project ID                                                                                                                                 |
+    | `--cluster-profile-ids` | Cluster profile IDs. If you want to include multiple cluster profiles in the content bundle, add multiple cluster profile IDs separated by commas. |
+    | `--palette-endpoint`    | Palette API endpoint. The default Palette API endpoint is `api.spectrocloud.com`                                                                   |
+    | `--outfile`             | Path to write the final content bundle.                                                                                                            |
 
     You can issue `palette-edge build --help` to know about other available flags.
 
@@ -183,7 +183,9 @@ Use the following instructions on your Linux machine, which this guide refers to
     --project-id $PROJECT_ID \
     --cluster-profile-ids $PROFILE_ID \
     --palette-endpoint api.spectrocloud.com \
-    --outfile content
+    --outfile <bundle-name>.tar \
+    --include-palette-content \
+    --iso
     ```
 
 15. Use the command below to list all files in the current directory to verify that you created the content bundle
