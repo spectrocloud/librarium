@@ -11,18 +11,17 @@ keywords: ["self-hosted", "enterprise"]
 
 ![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_overview-order-diagram-focus.webp)
 
-This guide provides instructions to prepare your airgap environment for a Palette installation by completing the
-required preparatory steps 1 through 4 shown in the diagram. The respective installation guides for each platform cover
-the remaining installation process.
+This guide provides instructions on how to prepare your airgap environment before installing self-hosted Palette by
+completing the required preparatory steps one through four, as shown in the diagram.
 
-## Prepare Airgap Installation
+## Prepare for Airgap Installation
 
 Use the following steps to prepare your airgap environment for a Palette installation.
 
 :::tip
 
-Carefully review the [prerequisites](#prerequisites) section before proceeding. This will save you time and frustration.
-Each prerequisite listed is required for a successful installation.
+Carefully review the [prerequisites](#prerequisites) section before proceeding with the environment setup. Each
+prerequisite listed is required for a successful installation.
 
 :::
 
@@ -56,7 +55,7 @@ Each prerequisite listed is required for a successful installation.
 
   :::warning
 
-  Take the necessary steps to secure your file server and ensure it can automatically recover from a failure. The file
+  Take the necessary steps to secure your file server and ensure it can automatically recover from failure. The file
   server is a critical component of the airgap installation and must be available post-install for Palette to function
   properly.
 
@@ -78,112 +77,111 @@ Each prerequisite listed is required for a successful installation.
 
 Complete the following steps before deploying the airgap Palette installation.
 
-1. Log in to the OCI registry where you will host the Palette images and packages.
+1.  Log in to the OCI registry where you will host the Palette images and packages.
 
-2. Create a repository with the name `spectro-packs` and ensure the repository is private. This repository will host the
-   Palette Packs.
+2.  Create a repository with the name `spectro-packs` and ensure the repository is private. This repository will host
+    the Palette Packs.
 
-   - Refer to the [Create Projects](https://goharbor.io/docs/2.0.0/working-with-projects/create-projects/) guide for
-     information about creating a repository in Harbor.
-   - Refer to the [Create a repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html)
-     guide for information about creating a repository in AWS ECR.
+    - Refer to the [Create Projects](https://goharbor.io/docs/2.0.0/working-with-projects/create-projects/) guide for
+      information about creating a repository in Harbor.
+    - Refer to the [Create a repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html)
+      guide for information about creating a repository in AWS ECR.
 
-3. In your OCI registry, create another repository with the name `spectro-images` and ensure the repository is public.
-   The public repositry will host the images required by Palette.
+3.  In your OCI registry, create another repository with the name `spectro-images` and ensure the repository is public.
+    The public repositry will host the images required by Palette.
 
-4. Log in to the Linux environment where you will download the airgap binaries and complete the remaining steps,
-   including the Palette installation.
+4.  Log in to the Linux environment where you will download the airgap binaries and complete the remaining steps,
+    including the Palette installation.
 
-5. Authenticate with your OCI registry and acquire credentials to both repositories you created earlier. You will need
-   these credentials when deploying the airgap Palette installation.
+5.  Authenticate with your OCI registry and acquire credentials to both repositories you created earlier. You will need
+    these credentials when deploying the airgap Palette installation.
 
-  <Tabs groupId="oci-registry"> 
-  <TabItem label="Harbor" value="harbor">
+    <Tabs groupId="oci-registry">
 
-Use `oras` to log in to your OCI registry. Replace the values below with your environment configuration values. Check
-out the [oras login](https://oras.land/docs/commands/oras_login) documentation for information about additional CLI
-flags and examples.
+    <TabItem label="Harbor" value="harbor">
 
-```shell
-oras login X.X.X.X --user 'yourUserNameHere' --password 'yourPasswordHere'
-```
+    Use `oras` to log in to your OCI registry. Replace the values below with your environment configuration values.
+    Check out the [oras login](https://oras.land/docs/commands/oras_login) documentation for information about
+    additional CLI flags and examples.
 
-If you are using a Harbor registry with a self-signed certificate, you will need to add the `--insecure` flag to the
-`oras` command.
+    ```shell
+    oras login X.X.X.X --user 'yourUserNameHere' --password 'yourPasswordHere'
+    ```
 
-```shell
-oras login X.X.X.X --insecure --user 'yourUserNameHere' --password 'yourPasswordHere'
-```
+    If you are using a Harbor registry with a self-signed certificate, you will need to add the `--insecure` flag to the
+    `oras` command.
 
-  </TabItem>
-  <TabItem label="AWS ECR" value="aws-ecr">
+    ```shell
+    oras login X.X.X.X --insecure --user 'yourUserNameHere' --password 'yourPasswordHere'
+    ```
 
-You can acquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details page, click
-on the **View push commands** button to access the command. Refer to the
-[AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry)
-documentation for more information.
+    </TabItem>
 
-Below is the command you will use to authenticate to AWS ECR. The output of the `aws` command is passed to `oras` to
-authenticate with the ECR registry. Replace the values below with your environment configuration values.
+    <TabItem label="AWS ECR" value="aws-ecr">
 
-```shell
-aws ecr get-login-password --region xxxxx | oras login --username AWS --password-stdin 1234567890.dkr.ecr.us-east-1.amazonaws.com
-```
+    You can acquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details page,
+    click on the **View push commands** button to access the command. Refer to the
+    [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry)
+    documentation for more information.
 
-For the public image repository, use the `docker` CLI instead of using `oras`. Replace the values below with your
-environment configuration values.
+    Below is the command you will use to authenticate to AWS ECR. The output of the `aws` command is passed to `oras` to
+    authenticate with the ECR registry. Replace the values below with your environment configuration values.
 
-```shell
-aws ecr-public get-login-password --region xxxxx | docker login --username AWS --password-stdin public.ecr.aws/xxxxxxx
-```
+    ```shell
+    aws ecr get-login-password --region xxxxx | oras login --username AWS --password-stdin 1234567890.dkr.ecr.us-east-1.amazonaws.com
+    ```
 
-  </TabItem>
-  </Tabs>
+    For the public image repository, use the `docker` CLI instead of using `oras`. Replace the values below with your
+    environment configuration values.
 
-:::tip
+    ```shell
+    aws ecr-public get-login-password --region xxxxx | docker login --username AWS --password-stdin public.ecr.aws/xxxxxxx
+    ```
 
-Be aware of the timeout period for the authentication token. The process of uploading images and packages to the OCI
-registry can take a approximately an hour. If the authentication token expires, you will need to re-authenticate to the
-OCI registry and restart the upload process.
+    </TabItem>
 
-:::
+    </Tabs>
 
----
+    :::tip
 
-6. The airgap setup binary requires a set of environment variables to be available and populated. Depending on what OCI
-   registry you are using, the environment variables will be different. Select the OCI registry you are using and
-   populate the environment variables accordingly.
+    Be aware of the timeout period for the authentication token. The process of uploading images and packages to the OCI
+    registry can take a approximately an hour. If the authentication token expires, you will need to re-authenticate to
+    the OCI registry and restart the upload process.
 
-  <Tabs groupId="oci-registry">
-  <TabItem label="Harbor" value="harbor">
+    :::
 
-<br />
+6.  The airgap setup binary requires a set of environment variables to be available and populated. Depending on what OCI
+    registry you are using, the environment variables will be different. Select the OCI registry you are using and
+    populate the environment variables accordingly.
+
+    <Tabs groupId="oci-registry">
+
+    <TabItem label="Harbor" value="harbor">
 
     - `OCI_IMAGE_REGISTRY`: The IP address or domain name of the OCI registry.
     - `OCI_PACK_BASE`: The namespace or repository name that hosts the Palette packs.
     - `OCI_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
     - `OCI_IMAGE_BASE`: The namespace or repository name that hosts the Palette images.
 
-    ```shell
-    export OCI_IMAGE_REGISTRY=<harbor-endpoint>
-    export OCI_PACK_BASE=spectro-packs
-    export OCI_PACK_REGISTRY=<harbor-endpoint>
-    export OCI_IMAGE_BASE=spectro-images
-    ```
+      ```shell
+      export OCI_IMAGE_REGISTRY=<harbor-endpoint>
+      export OCI_PACK_BASE=spectro-packs
+      export OCI_PACK_REGISTRY=<harbor-endpoint>
+      export OCI_IMAGE_BASE=spectro-images
+      ```
 
-    Example
+      Consider the following example.
 
-    ```shell hideClipboard
-    export OCI_IMAGE_REGISTRY=example.internal.com
-    export OCI_PACK_BASE=spectro-packs
-    export OCI_PACK_REGISTRY=10.10.100.48
-    export OCI_IMAGE_BASE=spectro-images
-    ```
+      ```shell hideClipboard
+      export OCI_IMAGE_REGISTRY=example.internal.com
+      export OCI_PACK_BASE=spectro-packs
+      export OCI_PACK_REGISTRY=10.10.100.48
+      export OCI_IMAGE_BASE=spectro-images
+      ```
 
-  </TabItem>
-  <TabItem label="AWS ECR" value="aws-ecr">
+    </TabItem>
 
-<br />
+    <TabItem label="AWS ECR" value="aws-ecr">
 
     - `ECR_IMAGE_REGISTRY`: The IP address or domain name of the public OCI registry for images.
     - `ECR_IMAGE_BASE`: The namespace or repository name that hosts the Palette images.
@@ -192,57 +190,56 @@ OCI registry and restart the upload process.
     - `ECR_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
     - `ECR_PACK_REGISTRY_REGION`: The AWS region where the ECR registry is located.
 
+      ```shell
+      export ECR_IMAGE_REGISTRY=<ecr-endpoint>
+      export ECR_IMAGE_BASE=spectro-images
+      export ECR_IMAGE_REGISTRY_REGION=us-east-1
+      export ECR_PACK_REGISTRY=<ecr-endpoint>
+      export ECR_PACK_BASE=spectro-packs
+      export ECR_PACK_REGISTRY_REGION=us-east-1
+      ```
+
+      Consider the following example.
+
+      ```shell hideClipboard
+      export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
+      export ECR_IMAGE_BASE=spectro-images
+      export ECR_IMAGE_REGISTRY_REGION=us-east-1
+      export ECR_PACK_REGISTRY=123456789.dkr.ecr.us-east-1.amazonaws.com
+      export ECR_PACK_BASE=spectro-packs
+      export ECR_PACK_REGISTRY_REGION=us-east-1
+      ```
+
+    </TabItem>
+
+    </Tabs>
+
+7.  Download the airgap setup binary. Our support team will provide you with the proper version and the necessary
+    credentials. Replace the commands below with the recommended version and credentials provided by our support team.
+
     ```shell
-    export ECR_IMAGE_REGISTRY=<ecr-endpoint>
-    export ECR_IMAGE_BASE=spectro-images
-    export ECR_IMAGE_REGISTRY_REGION=us-east-1
-    export ECR_PACK_REGISTRY=<ecr-endpoint>
-    export ECR_PACK_BASE=spectro-packs
-    export ECR_PACK_REGISTRY_REGION=us-east-1
+    VERSION=X.X.X
     ```
 
-    Example
-
-    ```shell hideClipboard
-    export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
-    export ECR_IMAGE_BASE=spectro-images
-    export ECR_IMAGE_REGISTRY_REGION=us-east-1
-    export ECR_PACK_REGISTRY=123456789.dkr.ecr.us-east-1.amazonaws.com
-    export ECR_PACK_BASE=spectro-packs
-    export ECR_PACK_REGISTRY_REGION=us-east-1
+    ```shell
+    curl --user XXXXX:YYYYYYY https://software-private.spectrocloud.com/airgap/$VERSION/airgap-v$VERSION.bin  \
+    --output airgap-v$VERSION.bin
     ```
 
-  </TabItem>
-  </Tabs>
+8.  Update the airgap setup binary permissions to allow execution. Replace the file name below with the name of the
+    airgap setup binary you downloaded.
 
----
+    ```shell
+    chmod +x airgap-v$VERSION.bin
+    ```
 
-7. Download the airgap setup binary. Our support team will provide you with the proper version and the necessary
-   credentials. Replace the commands below with the recommended version and credentials provided by our support team.
+9.  Start the airgap setup binary. Replace the file name below with the name of the airgap setup binary you downloaded.
 
-```shell
-VERSION=X.X.X
-```
+    ```shell
+    ./airgap-v$VERSION.bin
+    ```
 
-```shell
-curl --user XXXXX:YYYYYYY https://software-private.spectrocloud.com/airgap/$VERSION/airgap-v$VERSION.bin  \
---output airgap-v$VERSION.bin
-```
-
-8. Update the airgap setup binary permissions to allow execution. Replace the file name below with the name of the
-   airgap setup binary you downloaded.
-
-```shell
-chmod +x airgap-v$VERSION.bin
-```
-
-9. Start the airgap setup binary. Replace the file name below with the name of the airgap setup binary you downloaded.
-
-```shell
-./airgap-v$VERSION.bin
-```
-
-Upon completion, a success message will be displayed. The output in the example below is condensed for brevity.
+    Upon completion, a success message will be displayed. The output in the example below is condensed for brevity.
 
     ```shell hideClipboard {10}
     Verifying archive integrity...  100%   MD5 checksums are OK. All good.
@@ -259,12 +256,12 @@ Upon completion, a success message will be displayed. The output in the example 
     Setup Completed
     ```
 
-:::info
+    :::info
 
-If you encounter an error during the airgap setup process, verify the required environment variables are set and
-populated correctly. If you are still having issues, reach out to our support team for assistance.
+    If you encounter an error during the airgap setup process, verify the required environment variables are set and
+    populated correctly. If you are still having issues, reach out to our support team for assistance.
 
-:::
+    :::
 
 10. Move the manifest file located in your temporary directory to the location of your file server. Unzip the manifest
     file to a folder accessible by the file server. Replace the file name below with the name of the manifest file
@@ -302,21 +299,21 @@ populated correctly. If you are still having issues, reach out to our support te
 12. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the
     upload process.
 
-In the example below, the `airgap-pack-aws-alb-2.5.1.bin` binary is downloaded and started.
+    In the example below, the `airgap-pack-aws-alb-2.5.1.bin` binary is downloaded and started.
 
-```shell
-chmod +x airgap-pack-aws-alb-2.5.1.bin && \
-./airgap-pack-aws-alb-2.5.1.bin
-```
+    ```shell
+    chmod +x airgap-pack-aws-alb-2.5.1.bin && \
+    ./airgap-pack-aws-alb-2.5.1.bin
+    ```
 
-```shell hideClipboard
-  Verifying archive integrity...  100%   MD5 checksums are OK. All good.
-  Uncompressing Airgap Pack - aws-alb Version 4.0.17  100%
-  Setting up Packs
-  - Pushing Pack aws-alb:2.5.1
-  Setting up Images
-  Setup Completed
-```
+    ```shell hideClipboard
+      Verifying archive integrity...  100%   MD5 checksums are OK. All good.
+      Uncompressing Airgap Pack - aws-alb Version 4.0.17  100%
+      Setting up Packs
+      - Pushing Pack aws-alb:2.5.1
+      Setting up Images
+      Setup Completed
+    ```
 
 13. Repeat step 12 for each pack you want to install.
 
@@ -339,22 +336,22 @@ Use the following steps to validate the airgap setup process completed successfu
    command to verify the file server can access the manifest content. Replace the hostname or IP address below with your
    file server hostname or IP address.
 
-```shell
-curl http://<hostname>:<port>/roar/nickfury/versions.yaml
-```
+   ```shell
+   curl http://<hostname>:<port>/roar/nickfury/versions.yaml
+   ```
 
-```yaml hideClipboard
-versions:
-  - version: "3.3"
-    filepath: "/roar/nickfury/3.3/version.yaml"
-    patchVersionsFilepath: "/roar/nickfury/3.3/versions.yaml"
-  - version: "3.4"
-    filepath: "/roar/nickfury/3.4/version.yaml"
-    patchVersionsFilepath: "/roar/nickfury/3.4/versions.yaml"
-  - version: "4.0"
-    filepath: "/roar/nickfury/4.0/version.yaml"
-    patchVersionsFilepath: "/roar/nickfury/4.0/versions.yaml"
-```
+   ```yaml hideClipboard
+   versions:
+     - version: "3.3"
+       filepath: "/roar/nickfury/3.3/version.yaml"
+       patchVersionsFilepath: "/roar/nickfury/3.3/versions.yaml"
+     - version: "3.4"
+       filepath: "/roar/nickfury/3.4/version.yaml"
+       patchVersionsFilepath: "/roar/nickfury/3.4/versions.yaml"
+     - version: "4.0"
+       filepath: "/roar/nickfury/4.0/version.yaml"
+       patchVersionsFilepath: "/roar/nickfury/4.0/versions.yaml"
+   ```
 
 ## Next Steps
 

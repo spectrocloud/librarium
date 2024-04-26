@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Airgap Install"
-title: "Airgap Install"
+sidebar_label: "Airgap Installation"
+title: "Airgap Installation"
 description: "Learn how to deploy self-hosted Palette in an airgapped environment."
 icon: ""
 hide_table_of_contents: false
@@ -26,10 +26,10 @@ is utilized for storing images and packs.
 
 ## Overview
 
-Before you can install Palette in an airgap environment, you must complete all the required pre-install steps. The
-following diagram outlines the major pre-install steps for an airgap installation.
+Before you can install Palette in an airgap environment, you must complete all the required pre-installation steps. The
+following diagram outlines the major pre-installation steps for an airgap installation.
 
-![An architecture diagram outlining the five different install phases](/enterprise-version_air-gap-repo_overview-order-diagram.webp)
+![An architecture diagram outlining the five different installation phases](/enterprise-version_air-gap-repo_overview-order-diagram.webp)
 
 1. Download the airgap setup binary from the URL provided by the support team. The airgap setup binary is a
    self-extracting archive that contains the Palette platform manifests, images, and required packs. The airgap setup

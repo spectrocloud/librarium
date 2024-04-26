@@ -4,7 +4,7 @@ title: "Environment Setup"
 description: "Learn how to install Palette in an air gap environment."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 0
 tags: ["self-hosted", "enterprise", "airgap", "vmware", "vsphere"]
 keywords: ["self-hosted", "enterprise"]
 ---
@@ -53,8 +53,6 @@ Palette.
   when provisioning workloads that require persistent storage. Refer to
   [Zone Tagging](../../install-on-vmware/vmware-system-requirements.md#zone-tagging) for information.
 
-<br />
-
 :::info
 
 Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not
@@ -63,8 +61,6 @@ remote data centers without a direct incoming connection to Palette. To learn ho
 the [VMware](../../../../clusters/pcg/deploy-pcg/vmware.md) guide.
 
 :::
-
-<br />
 
 ## Prepare for Airgap Installation
 
@@ -87,7 +83,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     distribution OVA required for the installation.
 
     ```url
-     https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12610-0.ova
+    https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12610-0.ova
     ```
 
     Place the OVA in the **spectro-templates** folder. Append the `r_` prefix, and remove the `.ova` suffix when
@@ -179,8 +175,9 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 17. If you want to assign a static IP address to the airgap support VM, you can do so now. Click on the box below to
     expand the instructions. Otherwise, proceed to the next step.
 
-  <details>
-  <summary>Assign a static IP address</summary>
+    <details>
+
+    <summary>Assign a static IP address</summary>
 
     Create an empty file to disable cloud-init from overriding the new network configurations you will add.
 
@@ -188,7 +185,8 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     sudo touch /etc/cloud/cloud-init.disabled
     ```
 
-    Issue the following command to update cloud-init. Select **VMware** from the wizard Menu when prompted. The command will disable cloud-init from managing the network configuration.
+    Issue the following command to update cloud-init. Select **VMware** from the wizard Menu when prompted. The command
+    will disable cloud-init from managing the network configuration.
 
     ```shell
     sudo dpkg-reconfigure cloud-init
@@ -200,7 +198,8 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     sudo vi /etc/netplan/01-netcfg.yaml
     ```
 
-    Modify the file to look like the example below. Replace the IP address, gateway, and DNS server with your network settings. Save the file and exit the text editor.
+    Modify the file to look like the example below. Replace the IP address, gateway, and DNS server with your network
+    settings. Save the file and exit the text editor.
 
     ```yaml
     network:
@@ -213,15 +212,15 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
             - 10.1.1.0/18
           gateway4: 2.2.2.2
           nameservers:
-              addresses: [1.1.1.1]
+            addresses: [1.1.1.1]
     ```
 
-:::tip
+    :::tip
 
-If you are working in Vim, press `i` to enter insert mode in the text editor. Press `esc` to exit insert mode. Type
-`:wq` to save the file and exit the text editor.
+    If you are working in Vim, press `i` to enter insert mode in the text editor. Press `esc` to exit insert mode. Type
+    `:wq` to save the file and exit the text editor.
 
-:::
+    :::
 
     Issue the following command to apply the changes.
 
@@ -229,7 +228,7 @@ If you are working in Vim, press `i` to enter insert mode in the text editor. Pr
     sudo netplan apply
     ```
 
-  </details>
+    </details>
 
 18. Switch to the `root` user account. You will need to use the `root` user account to complete the remaining steps.
 

@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Non-Airgap Install"
-title: "Non-Airgap Install"
+sidebar_label: "Non-Airgap Installation"
+title: "Install Non-Airgap Self-Hosted Palette"
 description: "Learn how to deploy self-hosted Palette to a Kubernetes cluster using a Helm Chart."
 icon: ""
 hide_table_of_contents: false
@@ -72,8 +72,6 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
 
 - Access to the Palette Helm Charts. Refer to the [Access Palette](../../enterprise-version.md#access-palette) for
   instructions on how to request access to the Helm Chart
-
-<br />
 
 :::warning
 
