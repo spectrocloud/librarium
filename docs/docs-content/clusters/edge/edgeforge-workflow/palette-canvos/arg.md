@@ -27,3 +27,10 @@ of both the provider images and the Edge Installer ISO. This page lists the para
 | `OS_VERSION`       | OS version. This applies to Ubuntu only.                                                                                                               | `20`, `22`.                                                                                     |
 | `PROXY_CERT_PATH`  | Absolute path of the SSL Proxy certificate in the PEM format.                                                                                          | Absolute path string.                                                                           |
 | `UPDATE_KERNEL`    | Determines whether to upgrade the Kernel version to the latest from the upstream OS provider.                                                          | `true`, `false`.                                                                                |
+
+| `IS_UKI` | Determines whether to build Unified Kernel Image (UKI). | `true`, `false` |
+
+| `UKI_SELF_SIGNED_KEYS` | Determines whether to use exported keys during Trusted Boot key generation. If you want to
+use exported keys, you must set this argument to `false`. | `true`, `false` |
+
+| `AUTO_ENROLL_SECUREBOOT_KEYS` | Determines whether to auto enroll keys used for Trusted Boot. | `true`, `false`
