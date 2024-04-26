@@ -13,8 +13,14 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
 environment.
 
 This installation method is common in secure environments with restricted network access that prohibits using Palette
-SaaS. Review our [architecture diagrams](../../../architecture/networking-ports.md) to ensure your Kubernetes cluster
+SaaS. Review our [architecture diagrams](../../../../architecture/networking-ports.md) to ensure your Kubernetes cluster
 has the necessary network connectivity for self-hosted Palette to operate successfully.
+
+:::warning
+
+Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps before proceeding with the installation.
+
+:::
 
 ## Prerequisites
 
@@ -38,7 +44,7 @@ has the necessary network connectivity for self-hosted Palette to operate succes
   to store persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
 
 - We recommended the following resources for Palette. Refer to the
-  [Palette size guidelines](../install-palette.md#size-guidelines) for additional sizing information.
+  [Palette size guidelines](../../install-palette.md#size-guidelines) for additional sizing information.
 
   - 8 CPUs per node.
 
@@ -75,7 +81,7 @@ has the necessary network connectivity for self-hosted Palette to operate succes
   certificate file in the base64 format. You will need this to enable Palette to communicate with the network proxy
   server.
 
-- Access to the Palette Helm Charts. Refer to the [Access Palette](../../enterprise-version.md#access-palette) for
+- Access to the Palette Helm Charts. Refer to the [Access Palette](../../../enterprise-version.md#access-palette) for
   instructions on how to request access to the Helm Chart
 
 <br />
@@ -193,14 +199,14 @@ your environment. Reach out to our support team if you need assistance.
     :::tip
 
     If you need to override the image-swap registry configuration post-deployment, refer to the
-    [Override Registry Configuration](../../system-management/registry-override.md) page for instructions.
+    [Override Registry Configuration](../../../system-management/registry-override.md) page for instructions.
 
     :::
 
 8.  Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml**
     contains the default values for the Palette installation parameters, however, you must populate the following
     parameters before installing Palette. You can learn more about the parameters in the **values.yaml** file in the
-    [Helm Configuration Reference](palette-helm-ref.md) page.
+    [Helm Configuration Reference](../palette-helm-ref.md) page.
 
         Ensure you provide the proper `ociImageRegistry.mirrorRegistries` values if you are using a self-hosted OCI
         registry. You can find the placeholder string in the `ociImageRegistry` section of the **values.yaml** file.
@@ -796,13 +802,13 @@ your environment. Reach out to our support team if you need assistance.
 15. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
-    [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to
-    upload the SSL certificate files to Palette.
+    [Configure HTTPS Encryption](../../../system-management/ssl-certificate-management.md) page for instructions on how
+    to upload the SSL certificate files to Palette.
 
     :::warning
 
     If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the
-    [Configure Reverse Proxy](../../system-management/reverse-proxy.md) guide for instructions on how to configure a
+    [Configure Reverse Proxy](../../../system-management/reverse-proxy.md) guide for instructions on how to configure a
     reverse proxy for Palette.
 
     :::
@@ -878,4 +884,4 @@ Use the following steps to validate the Palette installation.
 
 You have successfully installed Palette in a Kubernetes cluster. Your next steps are to configure Palette for your
 organization. Start by creating the first tenant to host your users. Use the
-[Create a Tenant](../../system-management/tenant-management.md) page for instructions on how to create a tenant.
+[Create a Tenant](../../../system-management/tenant-management.md) page for instructions on how to create a tenant.

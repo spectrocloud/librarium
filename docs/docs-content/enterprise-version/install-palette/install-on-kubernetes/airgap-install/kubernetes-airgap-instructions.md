@@ -1,10 +1,10 @@
 ---
-sidebar_label: "Kubernetes Airgap Instructions"
-title: "Kubernetes Airgap Instructions"
-description: "Learn how to install Palette in an air gap environment."
+sidebar_label: "Environment Setup"
+title: "Environment Setup"
+description: "Learn how to prepare Palette for an airgap install"
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 10
 tags: ["self-hosted", "enterprise", "airgap", "kubernetes"]
 keywords: ["self-hosted", "enterprise"]
 ---
@@ -296,7 +296,8 @@ populated correctly. If you are still having issues, reach out to our support te
 
 11. Review the additional packs available for download. The supplemental packs are optional and not required for a
     successful installation. However, to create cluster profiles you may require several of the packs available for
-    download. Refer to the [Additional Packs](supplemental-packs.md) resource for a list of available packs.
+    download. Refer to the [Additional Packs](../../airgap/supplemental-packs.md) resource for a list of available
+    packs.
 
 12. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the
     upload process.
@@ -358,5 +359,5 @@ versions:
 ## Next Steps
 
 You are now ready to deploy the airgap Palette installation. You will specify your OCI registry and file server during
-the installation process. Refer to the [Kubernetes Install Instructions](../install-on-kubernetes/airgap-install.md)
-guide for detailed guidance on installing Palette.
+the installation process. Refer to the [Install Palette](./airgap-install.md) guide for detailed guidance on installing
+Palette.

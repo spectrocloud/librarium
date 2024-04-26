@@ -408,6 +408,14 @@ const redirects = [
     from: "/projects/",
     to: "/tenant-settings/projects/",
   },
+  {
+    from: "/enterprise-version/install-palette/airgap/checklist/",
+    to: "/enterprise-version/install-palette/airgap/",
+  },
+  {
+    from: "/enterprise-version/install-palette/airgap/kubernetes-airgap-instructions/",
+    to: "/enterprise-version/install-palette/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/",
+  },
 ];
 
 module.exports = redirects;
