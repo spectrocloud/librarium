@@ -67,8 +67,8 @@ This guide explains how you can define and manage cluster profile variables.
 ### Enablement
 
 You can define profile variables both while creating and for the already created cluster profiles. To define profile
-variables [while creating a cluster profile](../create-cluster-profiles/create-cluster-profiles.md), start following
-this guide from step three at the **Profile Layers** stage of cluster profile creation.
+variables [while creating a cluster profile](../create-cluster-profiles/create-cluster-profiles.md), you need to be at
+the **Profile Layers** stage of cluster profile creation and start following this guide from step three.
 
 1.  Log in to Palette.
 
@@ -77,6 +77,9 @@ this guide from step three at the **Profile Layers** stage of cluster profile cr
 3.  In the upper-right corner, click **Variables** and, on the **Profile variables** pane, click **Create variable**.
 
     ![Palette with the Variables button highlighted.](/profiles_create-cluster-profiles_define-profile-variables_open-profile-variables.webp)
+
+    Alternatively, open a profile layer and, in the upper-right corner of its YAML configuration editor, select
+    **Variables**.
 
 4.  Enter the variable name in the `{{.spectro.var.<variable_name>}}` format. You will use this name when adding
     variables to layer configurations. The name must be unique within the parent cluster.
