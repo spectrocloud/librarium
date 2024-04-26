@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Airgap Install Instructions"
-title: "Airgap Install Instructions"
+sidebar_label: "Install Palette"
+title: "Install Palette"
 description: "Learn how to deploy self-hosted Palette to a Kubernetes cluster using a Helm Chart."
 icon: ""
 hide_table_of_contents: false

@@ -47,7 +47,7 @@ following diagram outlines the major pre-install steps for an airgap installatio
    is accessible from the airgap environment. You can use the same Linux VM from step 2 to host the manifest content or
    use a different web server.
 
-5. Install Palette using the Palette CLI or the Kubernetes Helm chart.
+5. Install Palette using the Kubernetes Helm chart.
 
 Configure your Palette environment
 

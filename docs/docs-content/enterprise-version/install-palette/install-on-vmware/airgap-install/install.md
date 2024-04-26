@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Instructions"
-title: "Install Palette on VMware"
+sidebar_label: "Install Palette"
+title: "Install Palette"
 description: "Learn how to install Palette on VMware."
 icon: ""
 sidebar_position: 10
@@ -11,18 +11,16 @@ keywords: ["self-hosted", "enterprise"]
 
 Palette can be installed on VMware vSphere with internet connectivity or in an airgap environment. When you install
 Palette, a three-node cluster is created. You use the interactive Palette CLI to install Palette on VMware vSphere.
-Refer to [Access Palette](../../enterprise-version.md#access-palette) for instructions on requesting repository access.
-
-## Prerequisites
+Refer to [Access Palette](../../../enterprise-version.md#access-palette) for instructions on requesting repository
+access.
 
 :::warning
 
-If you are installing Palette in an airgap environment, ensure you complete all the airgap pre-install steps before
-proceeding with the installation. Refer to the
-[VMware vSphere Airgap Instructions](../install-on-vmware//airgap-install/vmware-vsphere-airgap-instructions.md) guide
-for more information.
+Complete the [Environment Setup](./vmware-vsphere-airgap-instructions.md) steps before proceeding with the installation.
 
 :::
+
+## Prerequisites
 
 - An AMD64 Linux environment with connectivity to the VMware vSphere environment.
 
@@ -30,13 +28,13 @@ for more information.
   host.
 
 - Palette CLI installed and available. Refer to the Palette CLI
-  [Install](../../../palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
+  [Install](../../../../palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
 
-- Review the required VMware vSphere [permissions](vmware-system-requirements.md). Ensure you have created the proper
+- Review the required VMware vSphere [permissions](../vmware-system-requirements.md). Ensure you have created the proper
   custom roles and zone tags.
 
 - We recommended the following resources for Palette. Refer to the
-  [Palette size guidelines](../install-palette.md#size-guidelines) for additional sizing information.
+  [Palette size guidelines](../../install-palette.md#size-guidelines) for additional sizing information.
 
   - 8 CPUs per VM.
 
@@ -64,7 +62,7 @@ for more information.
   - x509 SSL certificate authority file in base64 format. This file is optional.
 
 - Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require
-  persistent storage. Refer to [Zone Tagging](../install-on-vmware/vmware-system-requirements.md) for information.
+  persistent storage. Refer to [Zone Tagging](../../install-on-vmware/vmware-system-requirements.md) for information.
 
 - Assigned IP addresses for application workload services, such as Load Balancer services.
 
@@ -77,7 +75,7 @@ for more information.
 Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not
 require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into
 remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install a
-PCG on VMware, check out the [VMware](../../../clusters/pcg/deploy-pcg/vmware.md) guide.
+PCG on VMware, check out the [VMware](../../../../clusters/pcg/deploy-pcg/vmware.md) guide.
 
 :::
 
@@ -90,19 +88,7 @@ video before you begin the installation process. Make sure to use values that ar
 the **three-dots Menu** in the lower right corner of the video to expand the video to full screen and to change the
 playback speed.
 
-<Tabs groupId="mode">
-<TabItem label="Non-Airgap" value="non-airgap">
-
-<Video title="palette-cli-install" src="/videos/palette-install.mp4"></Video>
-
-</TabItem>
-<TabItem label="Airgap" value="airgap">
-
 <Video title="palette-cli-install" src="/videos/palette-airgap-install.mp4"></Video>
-
-</TabItem>
-
-</Tabs>
 
 Use the following steps to install Palette.
 
@@ -120,8 +106,8 @@ Use the following steps to install Palette.
 
 4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
     should look like `r_u-2004-0-k-12610`. This naming convention is required for the install process to identify the
-    OVA. Refer to the [Supplement Packs](../airgap/supplemental-packs.md#additional-ovas) page for a list of additional
-    OVAs you can download and upload to your vCenter environment.
+    OVA. Refer to the [Supplement Packs](../../airgap/supplemental-packs.md#additional-ovas) page for a list of
+    additional OVAs you can download and upload to your vCenter environment.
 
     :::tip
 
@@ -135,7 +121,7 @@ Use the following steps to install Palette.
 
 5.  Open a terminal window and invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The
     interactive CLI prompts you for configuration details and then initiates the installation. For more information
-    about the `ec` subcommand, refer to [Palette Commands](../../../palette-cli/commands/commands.md).
+    about the `ec` subcommand, refer to [Palette Commands](../../../../palette-cli/commands/commands.md).
 
     ```bash
     palette ec install
@@ -154,10 +140,9 @@ Use the following steps to install Palette.
 
     :::info
 
-    If you are using the Palette CLI from inside an [airgap support VM](./airgap-install/airgap-install.md), the CLI
-    will automatically detect the airgap environment and prompt you to **Use local, air-gapped Spectro Cloud Artifact
-    Repository (SCAR) configuration**. Type `y` to use the local resources and skip filling in the repository URL and
-    credentials.
+    If you are using the Palette CLI from inside an airgap support VM, the CLI will automatically detect the airgap
+    environment and prompt you to **Use local, air-gapped Spectro Cloud Artifact Repository (SCAR) configuration**. Type
+    `y` to use the local resources and skip filling in the repository URL and credentials.
 
     :::
 
@@ -195,10 +180,9 @@ Use the following steps to install Palette.
 
 :::info
 
-If you are using the Palette CLI from inside an
-[airgap support VM](./airgap-install/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect the
-airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type `y` to use the local resources and
-skip filling in the OCI registry URL and credentials.
+If you are using the Palette CLI from inside an airgap support VM, the CLI will automatically detect the airgap
+environment and prompt you to **Use local, air-gapped Pack Registry?** Type `y` to use the local resources and skip
+filling in the OCI registry URL and credentials.
 
 :::
 
@@ -209,8 +193,8 @@ skip filling in the OCI registry URL and credentials.
 For self-hosted OCI registries, ensure you have the server Certificate Authority (CA) certificate file available on the
 host where you are using the Palette CLI. You will be prompted to provide the file path to the OCI CA certificate.
 Failure to provide the OCI CA certificate will result in self-linking errors. Refer to the
-[Self-linking Error](../../../troubleshooting/enterprise-install.md#scenario---self-linking-error) troubleshooting guide
-for more information.
+[Self-linking Error](../../../../troubleshooting/enterprise-install.md#scenario---self-linking-error) troubleshooting
+guide for more information.
 
 :::
 
@@ -390,11 +374,11 @@ type `:wq` to save and exit.
 20. After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
-    [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to
-    upload the SSL certificate files to Palette.
+    [Configure HTTPS Encryption](../../../system-management/ssl-certificate-management.md) page for instructions on how
+    to upload the SSL certificate files to Palette.
 
 21. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
-    [Tenant Management](../../system-management/tenant-management.md) guide.
+    [Tenant Management](../../../system-management/tenant-management.md) guide.
 
     ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.webp)
 
@@ -423,17 +407,17 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 
 You have successfully installed Palette in vSphere. Your next steps are to configure Palette for your organization.
 Start by creating the first tenant to host your users. Refer
-to [Create a Tenant](../../system-management/tenant-management.md) for instructions.
+to [Create a Tenant](../../../system-management/tenant-management.md) for instructions.
 
 After you create the tenant, you are ready to configure authentication types in tenant settings and create users and
 teams.
 
 ## Resources
 
-- [Palette CLI](../../../palette-cli/install-palette-cli.md#download-and-setup)
+- [Palette CLI](../../../../palette-cli/install-palette-cli.md#download-and-setup)
 
-- [VMware System Requirements](vmware-system-requirements.md)
+- [VMware System Requirements](../vmware-system-requirements.md)
 
-- [System Management](../../system-management/system-management.md)
+- [System Management](../../../system-management/system-management.md)
 
-- [Enterprise Install Troubleshooting](../../../troubleshooting/enterprise-install.md)
+- [Enterprise Install Troubleshooting](../../../../troubleshooting/enterprise-install.md)

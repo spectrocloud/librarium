@@ -1,11 +1,11 @@
 ---
-sidebar_label: "Airgap Resources"
-title: "Airgap Resources"
-description: "Airgap installation resources for Palette."
+sidebar_label: "Airgap Install"
+title: "Airgap Install"
+description: "Learn how to deploy self-hosted Palette in an airgapped environment."
 icon: ""
-sidebar_position: 10
 hide_table_of_contents: false
-tags: ["palette", "self-hosted", "airgap"]
+sidebar_position: 0
+tags: ["self-hosted", "enterprise", "airgap"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
@@ -49,29 +49,19 @@ following diagram outlines the major pre-install steps for an airgap installatio
 
 5. Install Palette using the Palette CLI or the Kubernetes Helm chart.
 
-6. Configure your Palette environment.
+Configure your Palette environment
 
 ## Get Started
 
-To get started with an airgap Palette installation, check out the respective platform guide.
-
-- [Kubernetes Airgap Instructions](../install-on-kubernetes/airgap-install/kubernetes-airgap-instructions.md)
-
-- [VMware vSphere Airgap Instructions](../install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions.md)
-
-Each platform guide provides detailed instructions on how to complete the pre-install steps.
-
-## Supported Platforms
-
-The following table outlines the platforms supported for airgap VerteX installation and the supported OCI registries.
-
-| **Platform**   | **OCI Registry** | **Supported** |
-| -------------- | ---------------- | ------------- |
-| Kubernetes     | Harbor           | ✅            |
-| Kubernetes     | AWS ECR          | ✅            |
-| VMware vSphere | Harbor           | ✅            |
-| VMware vSphere | AWS ECR          | ✅            |
+To get started with an airgap Palette installation, begin by reviewing the
+[Environment Setup](./vmware-vsphere-airgap-instructions.md) guide.
 
 ## Resources
 
-- [Additional Packs](supplemental-packs.md)
+- [Environment Setup](./vmware-vsphere-airgap-instructions.md)
+
+- [Airgap Install Checklist](./checklist.md)
+
+- [Airgap Install](./airgap-install.md)
+
+- [Additional Packs](../../airgap/supplemental-packs.md)

@@ -416,6 +416,10 @@ const redirects = [
     from: "/enterprise-version/install-palette/airgap/kubernetes-airgap-instructions/",
     to: "/enterprise-version/install-palette/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/",
   },
+  {
+    from: "/enterprise-version/install-palette/airgap/vmware-vsphere-airgap-instructions/",
+    to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+  },
 ];
 
 module.exports = redirects;
