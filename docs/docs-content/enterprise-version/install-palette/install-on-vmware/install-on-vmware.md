@@ -16,4 +16,6 @@ Refer to [Access Palette](../../enterprise-version.md#access-palette) for instru
 
 - [Install on VMware](install.md)
 
+- [Airgap Install](./airgap-install/airgap-install.md)
+
 - [VMware System Requirements](vmware-system-requirements.md)

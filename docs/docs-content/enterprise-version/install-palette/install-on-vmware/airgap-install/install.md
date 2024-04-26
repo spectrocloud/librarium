@@ -9,10 +9,10 @@ tags: ["palette", "self-hosted", "vmware"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-Palette can be installed on VMware vSphere with internet connectivity or in an airgap environment. When you install
-Palette, a three-node cluster is created. You use the interactive Palette CLI to install Palette on VMware vSphere.
-Refer to [Access Palette](../../../enterprise-version.md#access-palette) for instructions on requesting repository
-access.
+Palette can be installed on VMware vSphere in an airgap environment. When you install Palette, a three-node cluster is
+created. You use the interactive Palette CLI to install Palette on VMware vSphere. Refer to
+[Access Palette](../../../enterprise-version.md#access-palette) for instructions on requesting the required credentials
+and assets.
 
 :::warning
 
@@ -97,11 +97,11 @@ Use the following steps to install Palette.
     OVA in the `spectro-templates` folder.
 
     ```url
-     https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12610-0.ova
+     https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12711-0.ova
     ```
 
 4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
-    should look like `r_u-2004-0-k-12610`. This naming convention is required for the install process to identify the
+    should look like `r_u-2204-0-k-12711-0`. This naming convention is required for the install process to identify the
     OVA. Refer to the [Supplement Packs](../../airgap/supplemental-packs.md#additional-ovas) page for a list of
     additional OVAs you can download and upload to your vCenter environment.
 
@@ -128,11 +128,7 @@ Use the following steps to install Palette.
 7.  Type `y` if you want to use Ubuntu Pro. Otherwise, type `n`. If you choose to use Ubuntu Pro, you will be prompted
     to enter your Ubuntu Pro token.
 
-8.  Depending on that type of install of Palette you are using, the Spectro Cloud repository URL value will be
-    different.
-
-    - Non-Airgap: `https://saas-repo.console.spectrocloud.com`
-    - Airgap: The URL or IP address of the Spectro Cloud Repository that is provided to you by the airgap setup script
+8.  Provide the URL or IP address of the Spectro Cloud Repository that is provided to you by the airgap setup script
 
     <br />
 
@@ -165,27 +161,10 @@ Use the following steps to install Palette.
     | **Pod CIDR**                      | Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                     |
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                         |
 
-13. Select the tab below that matches your installation type for further guidance.
-
-    <Tabs groupId="mode">
-
-    <TabItem label="Non-Airgap" value="non-airgap">
-
-    Select `y` to use the Spectro Cloud repository and proceed to the next step.
-
-    </TabItem>
-
-    <TabItem label="Airgap" value="airgap">
-
-    :::info
-
-    If you are using the Palette CLI from inside an airgap support VM, the CLI will automatically detect the airgap
-    environment and prompt you to **Use local, air-gapped Pack Registry?** Type `y` to use the local resources and skip
-    filling in the OCI registry URL and credentials.
-
-    :::
-
-        Select the OCI registry type and provide the configuration values. Review the following table for more information.
+13. Fill out the registry configuration details. If you are using the Palette CLI from inside an airgap support VM, the
+    CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type
+    `y` to use the local resources and skip filling in the OCI registry URL and credentials. Otherwise, you will need to
+    provide the OCI registry configuration values for your pack and image registry.
 
     :::warning
 
@@ -223,10 +202,6 @@ Use the following steps to install Palette.
     and type `:wq` to save and exit.
 
     :::
-
-    </TabItem>
-
-    </Tabs>
 
 14. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following
     table.

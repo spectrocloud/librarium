@@ -50,14 +50,16 @@ following diagram outlines the major pre-installation steps.
 
 ## Get Started
 
-To get started with the airgap Palette installation, review [Environment Setup](./kubernetes-airgap-instructions.md)
-guide.
+To get started with the airgap Palette installation, start by reviewing the
+[Environment Setup](./kubernetes-airgap-instructions.md) page. The environment setup guide provides detailed
+instructions on how to prepare your airgap environment. After you have completed the environment setup, you can proceed
+with the [airgap installation](./install.md) guide.
 
 ## Resources
 
 - [Environment Setup](kubernetes-airgap-instructions.md)
 
-- [Airgap Installation Guide](airgap-install.md)
+- [Airgap Installation Guide](./install.md)
 
 - [Airgap Installation Checklist](checklist.md)
 

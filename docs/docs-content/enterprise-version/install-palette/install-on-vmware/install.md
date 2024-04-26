@@ -3,7 +3,7 @@ sidebar_label: "Non-Airgap Installation"
 title: "Install Palette on VMware"
 description: "Learn how to install Palette on VMware."
 icon: ""
-sidebar_position: 10
+sidebar_position: 20
 hide_table_of_contents: false
 tags: ["palette", "self-hosted", "vmware"]
 keywords: ["self-hosted", "enterprise"]
@@ -86,19 +86,7 @@ video before you begin the installation process. Make sure to use values that ar
 the **three-dots Menu** in the lower right corner of the video to expand the video to full screen and to change the
 playback speed.
 
-<Tabs groupId="mode">
-<TabItem label="Non-Airgap" value="non-airgap">
-
 <Video title="palette-cli-install" src="/videos/palette-install.mp4"></Video>
-
-</TabItem>
-<TabItem label="Airgap" value="airgap">
-
-<Video title="palette-cli-install" src="/videos/palette-airgap-install.mp4"></Video>
-
-</TabItem>
-
-</Tabs>
 
 Use the following steps to install Palette.
 
@@ -111,11 +99,11 @@ Use the following steps to install Palette.
     OVA in the `spectro-templates` folder.
 
     ```url
-     https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12610-0.ova
+     https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12711-0.ova
     ```
 
 4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
-    should look like `r_u-2004-0-k-12610`. This naming convention is required for the install process to identify the
+    should look like `r_u-2204-0-k-12711-0`. This naming convention is required for the install process to identify the
     OVA. Refer to the [Supplement Packs](../airgap/supplemental-packs.md#additional-ovas) page for a list of additional
     OVAs you can download and upload to your vCenter environment.
 
