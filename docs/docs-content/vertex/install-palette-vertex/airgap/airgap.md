@@ -57,6 +57,8 @@ To get started with an airgap VerteX installation, check out the respective plat
 
 - [Kubernetes Airgap Instructions](../install-on-kubernetes/airgap-install/airgap-install.md)
 
+- [VMware vSphere Airgap Instructions](../install-on-vmware/airgap-install/airgap-install.md)
+
 Each platform guide provides detailed instructions on how to complete the pre-install steps.
 
 ## Supported Platforms

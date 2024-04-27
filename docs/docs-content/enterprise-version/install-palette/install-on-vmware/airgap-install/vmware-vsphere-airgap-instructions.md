@@ -4,7 +4,7 @@ title: "Environment Setup"
 description: "Learn how to install Palette in an air gap environment."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 0
+sidebar_position: 20
 tags: ["self-hosted", "enterprise", "airgap", "vmware", "vsphere"]
 keywords: ["self-hosted", "enterprise"]
 ---

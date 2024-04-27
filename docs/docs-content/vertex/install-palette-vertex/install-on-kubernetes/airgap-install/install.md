@@ -4,7 +4,7 @@ title: "Install VerteX"
 description: "Learn how to deploy airgap VerteX to a Kubernetes cluster using a Helm Chart."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 30
 tags: ["vertex", "enterprise"]
 keywords: ["self-hosted", "vertex"]
 ---

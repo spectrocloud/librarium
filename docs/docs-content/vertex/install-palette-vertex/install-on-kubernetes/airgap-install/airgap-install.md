@@ -9,8 +9,8 @@ tags: ["vertex", "enterprise", "airgap", "kubernetes"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-You can install VerteX in an airgapped environment. An airgap environment lacks direct access to the internet and is
-intended for environments with strict security requirements.
+You can install VerteX in an airgap Kubernetes environment. An airgap environment lacks direct access to the internet
+and is intended for environments with strict security requirements.
 
 The installation process for an airgap environment is different due to the lack of internet access. Before the primary
 Palette installation steps, you must download the following artifacts.

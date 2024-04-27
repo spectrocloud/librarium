@@ -5,7 +5,7 @@ description:
   "An airgap installation of Palette requires a few steps to be completed before the installation can begin. This
   checklist will help you prepare for the installation."
 icon: ""
-sidebar_position: 30
+sidebar_position: 10
 hide_table_of_contents: false
 tags: ["palette", "self-hosted", "airgap"]
 keywords: ["self-hosted", "enterprise"]

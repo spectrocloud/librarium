@@ -1,32 +1,32 @@
 ---
 sidebar_label: "Airgap Installation"
 title: "Airgap Installation"
-description: "Learn how to deploy self-hosted Palette in an airgapped environment."
+description: "Learn how to deploy VerteX in an airgapped environment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
-tags: ["self-hosted", "enterprise", "airgap"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["vertex", "enterprise", "airgap", "vmware", "vsphere"]
+keywords: ["self-hosted", "vertex"]
 ---
 
-You can install Palette in an airgap VMware vSphere environment. An airgap environment lacks direct access to the
+You can install Palette VerteX in an airgap VMware vSphere environment. An airgap environment lacks direct access to the
 internet and is intended for environments with strict security requirements.
 
 The installation process for an airgap environment is different due to the lack of internet access. Before the primary
 Palette installation steps, you must download the following artifacts.
 
-- Palette platform manifests and required platform packages.
+- VerteX platform manifests and required platform packages.
 
 - Container images for core platform components and third-party dependencies.
 
-- Palette packs.
+- VerteX packs.
 
-The other significant change is that Palette's default public OCI registry is not used. Instead, a private OCI registry
+The other significant change is that VerteX's default public OCI registry is not used. Instead, a private OCI registry
 is utilized for storing images and packs.
 
 ## Overview
 
-Before you can install Palette in an airgap environment, you must complete all the required pre-installation steps. The
+Before you can install VerteX in an airgap environment, you must complete all the required pre-installation steps. The
 following diagram outlines the major pre-installation steps for an airgap installation.
 
 ![An architecture diagram outlining the five different installation phases](/enterprise-version_air-gap-repo_overview-order-diagram.webp)
@@ -62,6 +62,6 @@ To get started with an airgap Palette installation, begin by reviewing the
 
 - [Airgap Install Checklist](./checklist.md)
 
-- [Airgap Install](./airgap-install.md)
+- [Airgap Install](./install.md)
 
 - [Additional Packs](../../airgap/supplemental-packs.md)

@@ -4,7 +4,7 @@ title: "Environment Setup"
 description: "Learn how to prepare VerteX for an airgap install"
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 tags: ["vertex", "enterprise", "airgap", "kubernetes"]
 keywords: ["self-hosted", "vertex"]
 ---

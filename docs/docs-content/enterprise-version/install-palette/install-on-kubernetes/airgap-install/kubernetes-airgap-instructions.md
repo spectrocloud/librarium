@@ -4,7 +4,7 @@ title: "Environment Setup"
 description: "Learn how to prepare Palette for an airgap install"
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 tags: ["self-hosted", "enterprise", "airgap", "kubernetes"]
 keywords: ["self-hosted", "enterprise"]
 ---
