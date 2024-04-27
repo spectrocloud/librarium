@@ -230,7 +230,7 @@ environment. Reach out to our support team if you need assistance.
 
     <TabItem label="OCI Registry" value="oci">
 
-    ```yaml showLineNumbers {23,53,87-95,97-102,104-106,109}
+    ```yaml {23,53,87-95,97-102,104-106,109}
     #########################
     # Spectro Cloud Palette #
     #########################
@@ -457,7 +457,7 @@ environment. Reach out to our support team if you need assistance.
 
     <TabItem label="AWS ECR Registry" value="ecr">
 
-    ```yaml showLineNumbers {23,53,77-85,87-95,110-115}
+    ```yaml {23,53,77-85,87-95,110-115}
     #########################
     # Spectro Cloud Palette #
     #########################

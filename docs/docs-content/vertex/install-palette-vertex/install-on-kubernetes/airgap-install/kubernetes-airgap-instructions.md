@@ -1,10 +1,10 @@
 ---
-sidebar_label: "Kubernetes Airgap Instructions"
-title: "Kubernetes Airgap Instructions"
-description: "Learn how to install VerteX into an air gap environment."
+sidebar_label: "Environment Setup"
+title: "Environment Setup"
+description: "Learn how to prepare VerteX for an airgap install"
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 10
 tags: ["vertex", "enterprise", "airgap", "kubernetes"]
 keywords: ["self-hosted", "vertex"]
 ---
@@ -300,25 +300,26 @@ populated correctly. If you are still having issues, reach out to our support te
 
 12. Review the additional packs available for download. The supplemental packs are optional and not required for a
     successful installation. However, to create cluster profiles you may require several of the packs available for
-    download. Refer to the [Additional Packs](supplemental-packs.md) resource for a list of available packs.
+    download. Refer to the [Additional Packs](../../airgap/supplemental-packs.md) resource for a list of available
+    packs.
 
 13. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the
     upload process.
 
-In the example below, the `airgap-fips-pack-amazon-linux-eks-1.0.0.bin` binary is downloaded and started.
+    In the example below, the `airgap-fips-pack-amazon-linux-eks-1.0.0.bin` binary is downloaded and started.
 
-```shell
-chmod +x airgap-fips-pack-amazon-linux-eks-1.0.0.bin && \
-./airgap-fips-pack-amazon-linux-eks-1.0.0.bin
-```
+    ```shell
+    chmod +x airgap-fips-pack-amazon-linux-eks-1.0.0.bin && \
+    ./airgap-fips-pack-amazon-linux-eks-1.0.0.bin
+    ```
 
-```shell hideClipboard
-  Verifying archive integrity...  100%   MD5 checksums are OK. All good.
-  Uncompressing Airgap Pack - amazon-linux-eks Version 4.0.17  100%
-  Setting up Packs
-  - Pushing Pack amazon-linux-eks:1.0.0
-  Setup Completed
-```
+    ```shell hideClipboard
+      Verifying archive integrity...  100%   MD5 checksums are OK. All good.
+      Uncompressing Airgap Pack - amazon-linux-eks Version 4.0.17  100%
+      Setting up Packs
+      - Pushing Pack amazon-linux-eks:1.0.0
+      Setup Completed
+    ```
 
 14. Repeat step 13 for each pack you want to install.
 
@@ -361,6 +362,5 @@ versions:
 ## Next Steps
 
 You are now ready to deploy the airgap VerteX installation. The important difference is that you will specify your OCI
-registry and file server during the installation process. Refer to the
-[Kubernetes Install Instructions](../install-on-kubernetes/install-on-kubernetes.md) guide for detailed guidance on
-installing VerteX.
+registry and file server during the installation process. Refer to the [VerteX Install](./install.md) guide for detailed
+guidance on installing VerteX.

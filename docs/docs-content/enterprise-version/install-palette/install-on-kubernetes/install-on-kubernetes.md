@@ -17,7 +17,7 @@ To get started with Palette on Kubernetes, refer to the [Install Instructions](i
 ## Get Started
 
 Select the scenario and the corresponding guide to install Palette on Kubernetes. If you are installing Palette in an
-refer to the environment preparation guide before installing Palette.
+airgap environment, refer to the environment preparation guide before installing Palette.
 
 | Scenario                                                 | Environment Preparation Guide                                           | Install Guide                                              |
 | -------------------------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------- |
