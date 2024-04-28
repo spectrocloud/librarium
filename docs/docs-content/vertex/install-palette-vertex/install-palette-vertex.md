@@ -16,13 +16,15 @@ VerteX is available in the following modes:
 | VMware                 | Install Palette VerteX in VMware environment.                                | [Install on VMware](./install-on-vmware/install.md)         |
 | Kubernetes             | Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster. | [Install on Kubernetes](./install-on-kubernetes/install.md) |
 
+## Airgap Installation
+
 You can also install Palette VerteX in an airgap environment. For more information, refer to the
 [Airgap Installation](airgap/airgap.md) section.
 
-| **Supported Airgap Platform** | **Description**                                                                                                               |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Supported Airgap Platform** | **Description**                                                                                                               | **Install Guide**                                                          |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | VMware                        | Install Palette VerteX in VMware environment using your own OCI registry server.                                              |
-| Kubernetes                    | Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster with your own OCI registry server OR use AWS ECR. |
+| Kubernetes                    | Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster with your own OCI registry server OR use AWS ECR. | [Airgap Install](./install-on-kubernetes/airgap-install/airgap-install.md) |
 
 The next sections describe specific requirements for installing Palette VerteX.
 

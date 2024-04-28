@@ -82,3 +82,55 @@ $ curl --user XXXXX:YYYYY https://software-private.spectrocloud.com/airgap/packs
 All binaries require the OCI environment variables to be set and for the registry credentials to be available.
 
 :::
+
+## Additional OVAs
+
+The following table lists additional OVAs you may need depending on the Kubernetes version and distribution you want to
+use for the workload clusters.
+
+| **Kubernetes Version** | **OVA Name**            | **Download URL**                                                                           |
+| ---------------------- | ----------------------- | ------------------------------------------------------------------------------------------ |
+| Kubernetes 1.26.4      | u-2204-0-k-1264-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1264-0.ova`       |
+| Kubernetes 1.26.5      | u-2204-0-k-1265-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1265-0.ova`       |
+| Kubernetes 1.26.10     | u-2204-0-k-12610-0      | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12610-0.ova`      |
+| Kubernetes 1.26.12     | u-2204-0-k-12612-0      | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12612-0.ova`      |
+| Kubernetes 1.27.1      | u-2204-0-k-1271-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1271-0.ova`       |
+| Kubernetes 1.27.2      | u-2204-0-k-1272-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1272-0.ova`       |
+| Kubernetes 1.28.2      | u-2204-0-k-1282-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1282-0.ova`       |
+| Kubernetes 1.29.0      | u-2204-0-k-1290-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1290-0.ova`       |
+| RKE2 1.26.11           | u-2204-0-k-rke2-12611-0 | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-rke2-12611-0.ova` |
+| RKE2 1.26.12           | u-2204-0-k-rke2-12612-0 | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-rke2-12612-0.ova` |
+| RKE2 1.27.8            | u-2204-0-k-rke2-1278-0  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-rke2-1278-0.ova`  |
+| RKE2 1.27.9            | u-2204-0-k-rke2-1279-0  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-rke2-1279-0.ova`  |
+| RKE2 1.28.4            | u-2204-0-k-rke2-1284-0  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-rke2-1284-0.ova`  |
+| RKE2 1.28.5            | u-2204-0-k-rke2-1285-0  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-rke2-1285-0.ova`  |
+
+### Usage Instructions
+
+Use the provided download URL to download the OVA and upload it to your vSphere environment. The OVA must be uploaded to
+the `spectro-templates ` so Palette can access it.
+
+One additional note about uploaded OVAs, the OVA name must be prefixed with `r_` to be recognized by Palette. You can
+rename the OVA before you upload it or after you upload it to vSphere. Use the following command examples to download
+and rename the necessary OVA files with `curl` or `wget`.
+
+<Tabs>
+<TabItem label="curl" value="curl">
+
+```shell
+curl --output r_u-2204-0-k-12610-0.ova \
+https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12610-0.ova
+```
+
+</TabItem>
+
+<TabItem label="wget" value="wget">
+
+```shell
+wget --quiet --show-progress \
+--output-document=r_u-2204-0-k-12610-0.ova \
+https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12610-0.ova
+```
+
+</TabItem> 
+</Tabs>

@@ -1,21 +1,17 @@
 ---
 sidebar_label: "Checklist"
-title: "Checklist"
+title: "Airgap Installation Checklist"
 description:
   "An airgap installation of Palette requires a few steps to be completed before the installation can begin. This
   checklist will help you prepare for the installation."
 icon: ""
-sidebar_position: 40
+sidebar_position: 10
 hide_table_of_contents: false
 tags: ["palette", "self-hosted", "airgap"]
 ---
 
 Use the following checklist to ensure you have completed all the required steps before deploying the airgap Palette
 installation.
-
-<Tabs queryString="platform">
-
-<TabItem label="Kubernetes" value="k8s">
 
 - [ ] `oras` CLI v1.0.0 is installed and available.
 
@@ -44,22 +40,3 @@ installation.
 
 - [ ] Ensured the manifest content is hosted on an HTTP file server that is accessible from the environment you are
       installing Palette.
-
-</TabItem>
-
-<TabItem label="VMware vSphere" value="vsphere">
-
-- [ ] Create a vSphere VM and Template folder named `spectro-templates`.
-
-- [ ] Import the Operating System and Kubernetes distribution OVA required for the installation and place the OVA in the
-      `spectro-templates` folder.
-
-- [ ] Append the `r_` prefix and remove the `.ova` suffix from the OVA name after the import.
-
-- [ ] Start the airgap setup binary and verify the setup is completed successfully.
-
-- [ ] Review the list of [pack binaries](./supplemental-packs.md) to download and upload to your OCI registry.
-
-</TabItem>
-
-</Tabs>
