@@ -1,16 +1,16 @@
 ---
-sidebar_label: "Airgap Resources"
-title: "Airgap Resources"
-description: "Airgap installation resources for Palette."
+sidebar_label: "Airgap Installation"
+title: "Airgap Installation"
+description: "Learn how to deploy self-hosted Palette in an airgapped environment."
 icon: ""
-sidebar_position: 10
 hide_table_of_contents: false
-tags: ["palette", "self-hosted", "airgap"]
+sidebar_position: 0
+tags: ["self-hosted", "enterprise", "airgap"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-You can install Palette in an airgapped environment. An airgap environment lacks direct access to the internet and is
-intended for environments with strict security requirements.
+You can install Palette in an airgap VMware vSphere environment. An airgap environment lacks direct access to the
+internet and is intended for environments with strict security requirements.
 
 The installation process for an airgap environment is different due to the lack of internet access. Before the primary
 Palette installation steps, you must download the following artifacts.
@@ -26,10 +26,10 @@ is utilized for storing images and packs.
 
 ## Overview
 
-Before you can install Palette in an airgap environment, you must complete all the required pre-install steps. The
-following diagram outlines the major pre-install steps for an airgap installation.
+Before you can install Palette in an airgap environment, you must complete all the required pre-installation steps. The
+following diagram outlines the major pre-installation steps for an airgap installation.
 
-![An architecture diagram outlining the five different install phases](/enterprise-version_air-gap-repo_overview-order-diagram.webp)
+![An architecture diagram outlining the five different installation phases](/enterprise-version_air-gap-repo_overview-order-diagram.webp)
 
 1. Download the airgap setup binary from the URL provided by the support team. The airgap setup binary is a
    self-extracting archive that contains the Palette platform manifests, images, and required packs. The airgap setup
@@ -49,29 +49,19 @@ following diagram outlines the major pre-install steps for an airgap installatio
 
 5. Install Palette using the Palette CLI or the Kubernetes Helm chart.
 
-6. Configure your Palette environment.
+Configure your Palette environment
 
 ## Get Started
 
-To get started with an airgap Palette installation, check out the respective platform guide.
-
-- [Kubernetes Airgap Instructions](../install-on-kubernetes/airgap-install/kubernetes-airgap-instructions.md)
-
-- [VMware vSphere Airgap Instructions](../install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions.md)
-
-Each platform guide provides detailed instructions on how to complete the pre-install steps.
-
-## Supported Platforms
-
-The following table outlines the platforms supported for airgap VerteX installation and the supported OCI registries.
-
-| **Platform**   | **OCI Registry** | **Supported** |
-| -------------- | ---------------- | ------------- |
-| Kubernetes     | Harbor           | ✅            |
-| Kubernetes     | AWS ECR          | ✅            |
-| VMware vSphere | Harbor           | ✅            |
-| VMware vSphere | AWS ECR          | ✅            |
+To get started with an airgap Palette installation, begin by reviewing the
+[Environment Setup](./vmware-vsphere-airgap-instructions.md) guide.
 
 ## Resources
 
-- [Additional Packs](../airgap/supplemental-packs.md)
+- [Environment Setup](./vmware-vsphere-airgap-instructions.md)
+
+- [Airgap Install Checklist](./checklist.md)
+
+- [Airgap Install](./airgap-install.md)
+
+- [Additional Packs](../../airgap/supplemental-packs.md)
