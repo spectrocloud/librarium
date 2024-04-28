@@ -4,7 +4,7 @@ title: "Helm Configuration Reference"
 description: "Reference resource for the Palette VerteX Helm Chart installation parameters."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 tags: ["vertex", "helm"]
 ---
 
@@ -33,7 +33,7 @@ information, refer to the [Image Swap Configuration](#image-swap-configuration) 
 
 ## MongoDB
 
-Palette VerteX uses MongoDB Enterprise as its internal database and supports two modes of deployment: <br /> <br />
+Palette VerteX uses MongoDB Enterprise as its internal database and supports two modes of deployment:
 
 - MongoDB Enterprise deployed and active inside the cluster.
 
@@ -156,8 +156,6 @@ config:
     rootDomain: ""
 ```
 
-<br />
-
 :::warning
 
 As you create tenants in Palette VerteX, the tenant name is prefixed to the domain name you assigned to Palette VerteX.
@@ -202,8 +200,6 @@ Palette VerteX requires access to an OCI registry that contains all the required
 registry and configure Palette VerteX to reference the registry. Alternatively, you can use the public OCI registry
 provided by us, refer to the [`ociPackEcrRegistry`](#oci-ecr-registry) section to learn more about the publicly
 available OCI registry.
-
-<br />
 
 :::warning
 
@@ -304,8 +300,6 @@ SCAR credentials are required to download the necessary FIPS manifests. Our supp
 | `scar.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the SCAR connection. | Boolean  | `false`           |
 | `scar.caCert`             | The base64-encoded certificate authority (CA) certificate for SCAR.                            | String   | `""`              |
 
-<br />
-
 ```yaml
 config:
   scar:
@@ -328,8 +322,6 @@ chart to use this option, otherwise, Palette VerteX will ignore the configuratio
 | `imageSwapImage`               | The image swap image.                                                                                                   | String   | `gcr.io/spectro-images-public/thewebroot/imageswap:v1.5.2`      |
 | `imageSwapConfig`              | The image swap configuration for specific environments.                                                                 | String   | `""`                                                            |
 | `imageSwapConfig.isEKSCluster` | Specifies whether the cluster is an Amazon EKS cluster. Set to `false` if the Kubernetes cluster is not an EKS cluster. | Boolean  | `true`                                                          |
-
-<br />
 
 ```yaml
 config:
