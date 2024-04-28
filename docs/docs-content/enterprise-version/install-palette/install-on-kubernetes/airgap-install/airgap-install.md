@@ -13,7 +13,7 @@ You can install self-hosted Palette in an airgap Kubernetes environment. An airg
 the internet and is intended for environments with strict security requirements.
 
 The installation process for an airgap environment is different due to the lack of internet access. Before the primary
-Palette installation steps, you must download the following artifacts.
+Palette installation steps, you must download the following artifacts:
 
 - Palette platform manifests and required platform packages.
 
@@ -26,12 +26,12 @@ is utilized to store images and packs.
 
 ## Overview
 
-Before you can install Palette in an airgap environment, you must complete all the required pre-installation steps. The
-following diagram outlines the major pre-installation steps.
+Before you can install Palette in an airgap environment, you must first set up your environment as outlined in the
+following diagram.
 
 ![An architecture diagram outlining the five different installation phases](/enterprise-version_air-gap-repo_overview-order-diagram.webp)
 
-1. In an environment with internet access, download the airgap setup binary from the URL provided by the support team.
+1. In an environment with internet access, download the airgap setup binary from the URL provided by our support team.
    The airgap setup binary is a self-extracting archive that contains the Palette platform manifests, images, and
    required packs. The airgap setup binary is a single-use binary for uploading Palette images and packs to your OCI
    registry. You will not use the airgap setup binary again after the initial installation.
@@ -50,17 +50,16 @@ following diagram outlines the major pre-installation steps.
 
 ## Get Started
 
-To get started with the airgap Palette installation, start by reviewing the
-[Environment Setup](./kubernetes-airgap-instructions.md) page. The environment setup guide provides detailed
-instructions on how to prepare your airgap environment. After you have completed the environment setup, you can proceed
-with the [airgap installation](./install.md) guide.
+To get started with the airgap Palette installation, review the [Environment Setup](./kubernetes-airgap-instructions.md)
+page. The environment setup guide provides detailed instructions on how to prepare your airgap environment. After you
+have completed the environment setup, you can proceed with the [Install Palette](./install.md) guide.
 
 ## Resources
 
 - [Environment Setup](kubernetes-airgap-instructions.md)
 
-- [Airgap Installation Guide](./install.md)
+- [Install Palette](./install.md)
 
-- [Airgap Installation Checklist](checklist.md)
+- [Checklist](checklist.md)
 
 - [Additional Packs](../../airgap/supplemental-packs.md)

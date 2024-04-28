@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Checklist"
-title: "Checklist"
+title: "Airgap Installation Checklist"
 description:
   "An airgap installation of Palette requires a few steps to be completed before the installation can begin. This
   checklist will help you prepare for the installation."

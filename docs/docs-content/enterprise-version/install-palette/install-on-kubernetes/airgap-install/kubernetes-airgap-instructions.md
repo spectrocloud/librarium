@@ -67,7 +67,7 @@ prerequisite listed is required for a successful installation.
   - [Oras](https://oras.land/docs/installation.html) CLI v1.0.0 - This version is explicitly required for the setup
     script.
   - [zip](https://linux.die.net/man/3/zip) - Required for the setup script.
-  - [unzip](https://linux.die.net/man/1/unzip) - or equivalent for extracting the manifest content from the airgap setup
+  - [unzip](https://linux.die.net/man/1/unzip) - Or equivalent for extracting the manifest content from the airgap setup
     binary.
   - [jq](https://jqlang.github.io/jq/download/) - Command-line JSON processor installed and available.
   - [Docker](https://docs.docker.com/get-docker/) - The airgap setup binary requires Docker to be installed and
@@ -79,16 +79,15 @@ Complete the following steps before deploying the airgap Palette installation.
 
 1.  Log in to the OCI registry where you will host the Palette images and packages.
 
-2.  Create a repository with the name `spectro-packs` and ensure the repository is private. This repository will host
-    the Palette Packs.
+2.  Create a private repository named `spectro-packs`. This repository will host the Palette Packs.
 
     - Refer to the [Create Projects](https://goharbor.io/docs/2.0.0/working-with-projects/create-projects/) guide for
       information about creating a repository in Harbor.
     - Refer to the [Create a repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html)
       guide for information about creating a repository in AWS ECR.
 
-3.  In your OCI registry, create another repository with the name `spectro-images` and ensure the repository is public.
-    The public repositry will host the images required by Palette.
+3.  In your OCI registry, create a public repository named `spectro-images`. The public repositry will host the images
+    required by Palette.
 
 4.  Log in to the Linux environment where you will download the airgap binaries and complete the remaining steps,
     including the Palette installation.
@@ -124,7 +123,7 @@ Complete the following steps before deploying the airgap Palette installation.
     [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry)
     documentation for more information.
 
-    Below is the command you will use to authenticate to AWS ECR. The output of the `aws` command is passed to `oras` to
+    Use the following command to authenticate with AWS ECR. The output of the `aws` command is passed to `oras` to
     authenticate with the ECR registry. Replace the values below with your environment configuration values.
 
     ```shell
@@ -193,10 +192,10 @@ Complete the following steps before deploying the airgap Palette installation.
       ```shell
       export ECR_IMAGE_REGISTRY=<ecr-endpoint>
       export ECR_IMAGE_BASE=spectro-images
-      export ECR_IMAGE_REGISTRY_REGION=us-east-1
+      export ECR_IMAGE_REGISTRY_REGION=<ecr-region>
       export ECR_PACK_REGISTRY=<ecr-endpoint>
       export ECR_PACK_BASE=spectro-packs
-      export ECR_PACK_REGISTRY_REGION=us-east-1
+      export ECR_PACK_REGISTRY_REGION=<ecr-region>
       ```
 
       Consider the following example.
@@ -299,7 +298,8 @@ Complete the following steps before deploying the airgap Palette installation.
 12. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the
     upload process.
 
-    In the example below, the `airgap-pack-aws-alb-2.5.1.bin` binary is downloaded and started.
+    In the example below, the `airgap-pack-aws-alb-2.5.1.bin` binary permissions are updated to allow execution and the
+    binary is started.
 
     ```shell
     chmod +x airgap-pack-aws-alb-2.5.1.bin && \
@@ -355,6 +355,6 @@ Use the following steps to validate the airgap setup process completed successfu
 
 ## Next Steps
 
-You are now ready to deploy the airgap Palette installation. You will specify your OCI registry and file server during
+You are now ready to install the airgap self-hosted Palette. You will specify your OCI registry and file server during
 the installation process. Refer to the [Install Palette](./airgap-install.md) guide for detailed guidance on installing
 Palette.
