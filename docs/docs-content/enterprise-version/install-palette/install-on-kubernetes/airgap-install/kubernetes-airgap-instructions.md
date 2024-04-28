@@ -89,10 +89,37 @@ Complete the following steps before deploying the airgap Palette installation.
 3.  In your OCI registry, create a public repository named `spectro-images`. The public repositry will host the images
     required by Palette.
 
-4.  Log in to the Linux environment where you will download the airgap binaries and complete the remaining steps,
-    including the Palette installation.
+4.  Download the Certificate Authority (CA) for your OCI registry. You will need to provide the installation process the
+    CA, otherwise you may encounter errors when authenticating with the OCI registry which could result in an incomplete
+    install. Skip this step if you are using AWS ECR.
 
-5.  Authenticate with your OCI registry and acquire credentials to both repositories you created earlier. You will need
+5.  Log in to the Linux environment where you will download the airgap binaries. This step requires internet access.
+
+6.  Download the airgap setup binary. Our support team will provide you with the proper version and the necessary
+    credentials. Replace the commands below with the recommended version and credentials provided by our support team.
+
+    ```shell
+    VERSION=X.X.X
+    ```
+
+    ```shell
+    curl --user XXXXX:YYYYYYY https://software-private.spectrocloud.com/airgap/$VERSION/airgap-v$VERSION.bin  \
+    --output airgap-v$VERSION.bin
+    ```
+
+7.  Update the airgap setup binary permissions to allow execution. Replace the file name below with the name of the
+    airgap setup binary you downloaded.
+
+    ```shell
+    chmod +x airgap-v$VERSION.bin
+    ```
+
+8.  Copy or move the airgap binary to another Linux environment inside your airgap environment. Use any approved method
+    to transfer the binary to the airgap environment.
+
+9.  Log in to the Linux environment inside your airgap environment where you copied the airgap setup binary.
+
+10. Authenticate with your OCI registry and acquire credentials to both repositories you created earlier. You will need
     these credentials when deploying the airgap Palette installation.
 
     <Tabs groupId="oci-registry">
@@ -149,7 +176,7 @@ Complete the following steps before deploying the airgap Palette installation.
 
     :::
 
-6.  The airgap setup binary requires a set of environment variables to be available and populated. Depending on what OCI
+11. The airgap setup binary requires a set of environment variables to be available and populated. Depending on what OCI
     registry you are using, the environment variables will be different. Select the OCI registry you are using and
     populate the environment variables accordingly.
 
@@ -213,26 +240,7 @@ Complete the following steps before deploying the airgap Palette installation.
 
     </Tabs>
 
-7.  Download the airgap setup binary. Our support team will provide you with the proper version and the necessary
-    credentials. Replace the commands below with the recommended version and credentials provided by our support team.
-
-    ```shell
-    VERSION=X.X.X
-    ```
-
-    ```shell
-    curl --user XXXXX:YYYYYYY https://software-private.spectrocloud.com/airgap/$VERSION/airgap-v$VERSION.bin  \
-    --output airgap-v$VERSION.bin
-    ```
-
-8.  Update the airgap setup binary permissions to allow execution. Replace the file name below with the name of the
-    airgap setup binary you downloaded.
-
-    ```shell
-    chmod +x airgap-v$VERSION.bin
-    ```
-
-9.  Start the airgap setup binary. Replace the file name below with the name of the airgap setup binary you downloaded.
+12. Start the airgap setup binary. Replace the file name below with the name of the airgap setup binary you downloaded.
 
     ```shell
     ./airgap-v$VERSION.bin
@@ -262,7 +270,7 @@ Complete the following steps before deploying the airgap Palette installation.
 
     :::
 
-10. Move the manifest file located in your temporary directory to the location of your file server. Unzip the manifest
+13. Move the manifest file located in your temporary directory to the location of your file server. Unzip the manifest
     file to a folder accessible by the file server. Replace the file name below with the name of the manifest file
     provided to you by the airgap setup.
 
@@ -290,13 +298,14 @@ Complete the following steps before deploying the airgap Palette installation.
 
     :::
 
-11. Review the additional packs available for download. The supplemental packs are optional and not required for a
+14. Review the additional packs available for download. The supplemental packs are optional and not required for a
     successful installation. However, to create cluster profiles you may require several of the packs available for
     download. Refer to the [Additional Packs](../../airgap/supplemental-packs.md) resource for a list of available
     packs.
 
-12. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the
-    upload process.
+15. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the
+    upload process. This step requires internet access, so you may have to download the binaries on a separate machine
+    outside the airgap environment and transfer them to the airgap environment using an approved method.
 
     In the example below, the `airgap-pack-aws-alb-2.5.1.bin` binary permissions are updated to allow execution and the
     binary is started.
@@ -315,7 +324,7 @@ Complete the following steps before deploying the airgap Palette installation.
       Setup Completed
     ```
 
-13. Repeat step 12 for each pack you want to install.
+16. Repeat step 14 for each pack you want to install.
 
 You have now completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to
 ensure the airgap setup process completed successfully.

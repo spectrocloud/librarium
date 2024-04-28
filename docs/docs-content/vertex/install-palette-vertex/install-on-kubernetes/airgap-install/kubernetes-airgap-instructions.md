@@ -92,133 +92,12 @@ Complete the following steps before deploying the airgap VerteX installation.
 
 4. Download the Certificate Authority (CA) for your OCI registry. You will need to provide the installation process the
    CA, otherwise you may encounter errors when authenticating with the OCI registry which could result in an incomplete
-   install.
+   install. Skip this step if you are using AWS ECR.
 
-5. Log in to the Linux environment where you will download the airgap binaries and complete the remaining steps,
-   including the VerteX installation.
+5. Log in to the Linux environment where you will download the airgap binaries. This steps requires internet access to
+   download the airgap setup binary.
 
-6. Authenticate with your OCI registry and acquire credentials to both repositories you created earlier. You will need
-   these credentials when deploying the airgap VerteX installation.
-
-   <Tabs groupId="oci-registry">
-
-   <TabItem label="Harbor" value="harbor">
-
-   Use `oras` to log in to your OCI registry. Replace the values below with your environment configuration values. Check
-   out the [oras login](https://oras.land/docs/commands/oras_login) documentation for information about additional CLI
-   flags and examples.
-
-   ```shell
-   oras login X.X.X.X --user 'yourUserNameHere' --password 'yourPasswordHere'
-   ```
-
-   If you are using a Harbor registry with a self-signed certificate, you will need to add the `--insecure` flag to the
-   `oras` command.
-
-   ```shell
-   oras login X.X.X.X --insecure --user 'yourUserNameHere' --password 'yourPasswordHere'
-   ```
-
-   </TabItem>
-
-   <TabItem label="AWS ECR" value="aws-ecr">
-
-   You can acquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details page,
-   click on the **View push commands** button to access the command. Refer to the
-   [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry)
-   documentation for more information.
-
-   Use the following command to authenticate with AWS ECR. The output of the `aws` command is passed to `oras` to
-   authenticate with the ECR registry. Replace the values below with your environment configuration values.
-
-   ```shell
-   aws ecr get-login-password --region xxxxx | oras login --username AWS --password-stdin 1234567890.dkr.ecr.us-east-1.amazonaws.com
-   ```
-
-   For the public image repository, use the `docker` CLI instead of using `oras`. Replace the values below with your
-   environment configuration values.
-
-   ```shell
-   aws ecr-public get-login-password --region xxxxx | docker login --username AWS --password-stdin public.ecr.aws/xxxxxxx
-   ```
-
-   </TabItem>
-
-   </Tabs>
-
-   :::tip
-
-   Be aware of the timeout period for the authentication token. The process of uploading images and packages to the OCI
-   registry can take a approximately an hour. If the authentication token expires, you will need to re-authenticate to
-   the OCI registry and restart the upload process.
-
-   :::
-
-7. The airgap setup binary requires a set of environment variables to be available and populated. The environment
-   variables will be different depending on the OCI registry you are using. Select the OCI registry and populate the
-   environment variables accordingly.
-
-   <Tabs groupId="oci-registry">
-
-   <TabItem label="Harbor" value="harbor">
-
-   - `OCI_IMAGE_REGISTRY`: The IP address or domain name of the OCI registry.
-   - `OCI_PACK_BASE`: The namespace or repository name that hosts the VerteX Packs.
-   - `OCI_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
-   - `OCI_IMAGE_BASE`: The namespace or repository name that hosts the VerteX images.
-
-   ```shell
-   export OCI_IMAGE_REGISTRY=<harbor-endpoint>
-   export OCI_PACK_BASE=spectro-packs
-   export OCI_PACK_REGISTRY=<harbor-endpoint>
-   export OCI_IMAGE_BASE=spectro-images
-   ```
-
-   Example:
-
-   ```shell hideClipboard
-   export OCI_IMAGE_REGISTRY=example.internal.com
-   export OCI_PACK_BASE=spectro-packs
-   export OCI_PACK_REGISTRY=10.10.100.48
-   export OCI_IMAGE_BASE=spectro-images
-   ```
-
-   </TabItem>
-
-   <TabItem label="AWS ECR" value="aws-ecr">
-
-   - `ECR_IMAGE_REGISTRY`: The IP address or domain name of the public OCI registry for images.
-   - `ECR_IMAGE_BASE`: The namespace or repository name that hosts the VerteX images.
-   - `ECR_IMAGE_REGISTRY_REGION`: The AWS region where the ECR registry is located.
-   - `ECR_PACK_BASE`: The namespace or repository name that hosts the VerteX Packs.
-   - `ECR_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
-   - `ECR_PACK_REGISTRY_REGION`: The AWS region where the ECR registry is located.
-
-   ```shell
-   export ECR_IMAGE_REGISTRY=<ecr-endpoint>
-   export ECR_IMAGE_BASE=spectro-images
-   export ECR_IMAGE_REGISTRY_REGION=<ecr-region>
-   export ECR_PACK_REGISTRY=<ecr-endpoint>
-   export ECR_PACK_BASE=spectro-packs
-   export ECR_PACK_REGISTRY_REGION=<ecr-region>
-   ```
-
-   Example:
-
-   ```shell hideClipboard
-   export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
-   export ECR_IMAGE_BASE=spectro-images
-   export ECR_IMAGE_REGISTRY_REGION=us-east-1
-   export ECR_PACK_REGISTRY=123456789.dkr.ecr.us-east-1.amazonaws.com
-   export ECR_PACK_BASE=spectro-packs
-   export ECR_PACK_REGISTRY_REGION=us-east-1
-   ```
-
-   </TabItem>
-
-   </Tabs>
-
-8. Download the airgap setup binary. Our support team will provide you with the proper version and credentials. Replace
+6. Download the airgap setup binary. Our support team will provide you with the proper version and credentials. Replace
    the values in the commands below with our support team's recommended version and credentials.
 
    ```shell
@@ -230,14 +109,140 @@ Complete the following steps before deploying the airgap VerteX installation.
    --output airgap-fips-v$VERSION.bin
    ```
 
-9. Update the airgap setup binary permissions to allow execution. Replace the file name below with the name of the
+7. Update the airgap setup binary permissions to allow execution. Replace the file name below with the name of the
    airgap setup binary you downloaded.
 
    ```shell
    chmod +x airgap-fips-v$VERSION.bin
    ```
 
-10. Start the airgap setup binary. Replace the file name below with the name of the airgap setup binary you downloaded.
+8. Copy or move the airgap binary to another Linux environment inside your airgap environment. Use any approved method
+   to transfer the binary to the airgap environment.
+
+9. Log in to the Linux environment inside your airgap environment where you copied the airgap setup binary.
+
+10. Authenticate with your OCI registry and acquire credentials to both repositories you created earlier. You will need
+    these credentials when deploying the airgap VerteX installation.
+
+    <Tabs groupId="oci-registry">
+
+    <TabItem label="Harbor" value="harbor">
+
+    Use `oras` to log in to your OCI registry. Replace the values below with your environment configuration values.
+    Check out the [oras login](https://oras.land/docs/commands/oras_login) documentation for information about
+    additional CLI flags and examples.
+
+    ```shell
+    oras login X.X.X.X --user 'yourUserNameHere' --password 'yourPasswordHere'
+    ```
+
+    If you are using a Harbor registry with a self-signed certificate, you will need to add the `--insecure` flag to the
+    `oras` command.
+
+    ```shell
+    oras login X.X.X.X --insecure --user 'yourUserNameHere' --password 'yourPasswordHere'
+    ```
+
+    </TabItem>
+
+    <TabItem label="AWS ECR" value="aws-ecr">
+
+    You can acquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details page,
+    click on the **View push commands** button to access the command. Refer to the
+    [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry)
+    documentation for more information.
+
+    Use the following command to authenticate with AWS ECR. The output of the `aws` command is passed to `oras` to
+    authenticate with the ECR registry. Replace the values below with your environment configuration values.
+
+    ```shell
+    aws ecr get-login-password --region xxxxx | oras login --username AWS --password-stdin 1234567890.dkr.ecr.us-east-1.amazonaws.com
+    ```
+
+    For the public image repository, use the `docker` CLI instead of using `oras`. Replace the values below with your
+    environment configuration values.
+
+    ```shell
+    aws ecr-public get-login-password --region xxxxx | docker login --username AWS --password-stdin public.ecr.aws/xxxxxxx
+    ```
+
+    </TabItem>
+
+    </Tabs>
+
+    :::tip
+
+    Be aware of the timeout period for the authentication token. The process of uploading images and packages to the OCI
+    registry can take a approximately an hour. If the authentication token expires, you will need to re-authenticate to
+    the OCI registry and restart the upload process.
+
+    :::
+
+11. The airgap setup binary requires a set of environment variables to be available and populated. The environment
+    variables will be different depending on the OCI registry you are using. Select the OCI registry and populate the
+    environment variables accordingly.
+
+    <Tabs groupId="oci-registry">
+
+    <TabItem label="Harbor" value="harbor">
+
+    - `OCI_IMAGE_REGISTRY`: The IP address or domain name of the OCI registry.
+    - `OCI_PACK_BASE`: The namespace or repository name that hosts the VerteX Packs.
+    - `OCI_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
+    - `OCI_IMAGE_BASE`: The namespace or repository name that hosts the VerteX images.
+
+    ```shell
+    export OCI_IMAGE_REGISTRY=<harbor-endpoint>
+    export OCI_PACK_BASE=spectro-packs
+    export OCI_PACK_REGISTRY=<harbor-endpoint>
+    export OCI_IMAGE_BASE=spectro-images
+    ```
+
+    Example:
+
+    ```shell hideClipboard
+    export OCI_IMAGE_REGISTRY=example.internal.com
+    export OCI_PACK_BASE=spectro-packs
+    export OCI_PACK_REGISTRY=10.10.100.48
+    export OCI_IMAGE_BASE=spectro-images
+    ```
+
+    </TabItem>
+
+    <TabItem label="AWS ECR" value="aws-ecr">
+
+    - `ECR_IMAGE_REGISTRY`: The IP address or domain name of the public OCI registry for images.
+    - `ECR_IMAGE_BASE`: The namespace or repository name that hosts the VerteX images.
+    - `ECR_IMAGE_REGISTRY_REGION`: The AWS region where the ECR registry is located.
+    - `ECR_PACK_BASE`: The namespace or repository name that hosts the VerteX Packs.
+    - `ECR_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
+    - `ECR_PACK_REGISTRY_REGION`: The AWS region where the ECR registry is located.
+
+    ```shell
+    export ECR_IMAGE_REGISTRY=<ecr-endpoint>
+    export ECR_IMAGE_BASE=spectro-images
+    export ECR_IMAGE_REGISTRY_REGION=<ecr-region>
+    export ECR_PACK_REGISTRY=<ecr-endpoint>
+    export ECR_PACK_BASE=spectro-packs
+    export ECR_PACK_REGISTRY_REGION=<ecr-region>
+    ```
+
+    Example:
+
+    ```shell hideClipboard
+    export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
+    export ECR_IMAGE_BASE=spectro-images
+    export ECR_IMAGE_REGISTRY_REGION=us-east-1
+    export ECR_PACK_REGISTRY=123456789.dkr.ecr.us-east-1.amazonaws.com
+    export ECR_PACK_BASE=spectro-packs
+    export ECR_PACK_REGISTRY_REGION=us-east-1
+    ```
+
+    </TabItem>
+
+    </Tabs>
+
+12. Start the airgap setup binary. Replace the file name below with the name of the airgap setup binary you downloaded.
 
     ```shell
     ./airgap-fips-v$VERSION.bin
@@ -267,7 +272,7 @@ Complete the following steps before deploying the airgap VerteX installation.
 
     :::
 
-11. Move the manifest file located in your temporary directory to the location of your file server. Unzip the manifest
+13. Move the manifest file located in your temporary directory to the location of your file server. Unzip the manifest
     file to a folder accessible by the file server. Replace the file name below with the name of the manifest file
     provided to you by the airgap setup.
 
@@ -295,13 +300,14 @@ Complete the following steps before deploying the airgap VerteX installation.
 
     :::
 
-12. Review the additional packs available for download. The supplemental packs are optional and not required for a
+14. Review the additional packs available for download. The supplemental packs are optional and not required for a
     successful installation. However, to create cluster profiles you may require several of the packs available for
     download. Refer to the [Additional Packs](../../airgap/supplemental-packs.md) resource for a list of available
     packs.
 
-13. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the
-    upload process.
+15. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the
+    upload process. This step requires internet access, so you may have to download the binaries on a separate machine
+    outside the airgap environment and transfer them to the airgap environment using an approved method.
 
     In the example below, the `airgap-fips-pack-amazon-linux-eks-1.0.0.bin` binary permissions are updated to allow
     execution and the binary is started.
@@ -319,7 +325,7 @@ Complete the following steps before deploying the airgap VerteX installation.
       Setup Completed
     ```
 
-14. Repeat step 13 for each pack you want to install.
+16. Repeat step 13 for each pack you want to install.
 
 You now have completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to
 ensure the airgap setup process completed successfully.
