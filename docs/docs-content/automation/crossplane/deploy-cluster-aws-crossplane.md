@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Deploy an AWS Cluster with Crossplane"
 title: "Deploy an AWS Cluster with Crossplane"
-description: "Learn how to deploy a cluster using the Spectro Cloud Crossplane provider."
+description: "Learn how to deploy an AWS cluster using the Spectro Cloud Crossplane provider."
 hide_table_of_contents: false
 sidebar_position: 20
 tags: ["crossplane", "aws", "iac", "infrastructure as code"]
@@ -201,7 +201,7 @@ how to use Crossplane to deploy a Kubernetes cluster in AWS that is managed by P
 
 15. Paste the Kubernetes configuration below into the text editor window that opens. Save the file and exit.
 
-    ```bash
+    ```yaml
     apiVersion: cluster.palette.crossplane.io/v1alpha1
     kind: Profile
     metadata:
@@ -216,30 +216,328 @@ how to use Crossplane to deploy a Kubernetes cluster in AWS that is managed by P
           - name: "ubuntu-aws"
             tag: "22.04"
             registryUid: "5eecc89d0b150045ae661cef"
-            values: "# Spectro Golden images includes most of the hardening as per CIS Ubuntu Linux 22.04 LTS Server L1 v1.0.0 standards\n\n# Uncomment below section to\n# 1. Include custom files to be copied over to the nodes and/or\n# 2. Execute list of commands before or after kubeadm init/join is executed\n#\n#kubeadmconfig:\n#  preKubeadmCommands:\n#  - echo \"Executing pre kube admin config commands\"\n#  - update-ca-certificates\n#  - 'systemctl restart containerd; sleep 3'\n#  - 'while [ ! -S /var/run/containerd/containerd.sock ]; do echo \"Waiting for containerd...\"; sleep 1; done'\n#  postKubeadmCommands:\n#  - echo \"Executing post kube admin config commands\"\n#  files:\n#  - targetPath: /usr/local/share/ca-certificates/mycom.crt\n#    targetOwner: \"root:root\"\n#    targetPermissions: \"0644\"\n#    content: |\n#      -----BEGIN CERTIFICATE-----\n#      MIICyzCCAbOgAwIBAgIBADANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwprdWJl\n#      cm5ldGVzMB4XDTIwMDkyMjIzNDMyM1oXDTMwMDkyMDIzNDgyM1owFTETMBEGA1UE\n#      AxMKa3ViZXJuZXRlczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMdA\n#      nZYs1el/6f9PgV/aO9mzy7MvqaZoFnqO7Qi4LZfYzixLYmMUzi+h8/RLPFIoYLiz\n#      qiDn+P8c9I1uxB6UqGrBt7dkXfjrUZPs0JXEOX9U/6GFXL5C+n3AUlAxNCS5jobN\n#      fbLt7DH3WoT6tLcQefTta2K+9S7zJKcIgLmBlPNDijwcQsbenSwDSlSLkGz8v6N2\n#      7SEYNCV542lbYwn42kbcEq2pzzAaCqa5uEPsR9y+uzUiJpv5tDHUdjbFT8tme3vL\n#      9EdCPODkqtMJtCvz0hqd5SxkfeC2L+ypaiHIxbwbWe7GtliROvz9bClIeGY7gFBK\n#      jZqpLdbBVjo0NZBTJFUCAwEAAaMmMCQwDgYDVR0PAQH/BAQDAgKkMBIGA1UdEwEB\n#      /wQIMAYBAf8CAQAwDQYJKoZIhvcNAQELBQADggEBADIKoE0P+aVJGV9LWGLiOhki\n#      HFv/vPPAQ2MPk02rLjWzCaNrXD7aPPgT/1uDMYMHD36u8rYyf4qPtB8S5REWBM/Y\n#      g8uhnpa/tGsaqO8LOFj6zsInKrsXSbE6YMY6+A8qvv5lPWpJfrcCVEo2zOj7WGoJ\n#      ixi4B3fFNI+wih8/+p4xW+n3fvgqVYHJ3zo8aRLXbXwztp00lXurXUyR8EZxyR+6\n#      b+IDLmHPEGsY9KOZ9VLLPcPhx5FR9njFyXvDKmjUMJJgUpRkmsuU1mCFC+OHhj56\n#      IkLaSJf6z/p2a3YjTxvHNCqFMLbJ2FvJwYCRzsoT2wm2oulnUAMWPI10vdVM+Nc=\n#      -----END CERTIFICATE-----"
+            values:
+              "# Spectro Golden images includes most of the hardening as per CIS Ubuntu Linux 22.04 LTS Server L1 v1.0.0
+              standards\n\n# Uncomment below section to\n# 1. Include custom files to be copied over to the nodes
+              and/or\n# 2. Execute list of commands before or after kubeadm init/join is
+              executed\n#\n#kubeadmconfig:\n#  preKubeadmCommands:\n#  - echo \"Executing pre kube admin config
+              commands\"\n#  - update-ca-certificates\n#  - 'systemctl restart containerd; sleep 3'\n#  - 'while [ ! -S
+              /var/run/containerd/containerd.sock ]; do echo \"Waiting for containerd...\"; sleep 1;
+              done'\n#  postKubeadmCommands:\n#  - echo \"Executing post kube admin config commands\"\n#  files:\n#  -
+              targetPath: /usr/local/share/ca-certificates/mycom.crt\n#    targetOwner:
+              \"root:root\"\n#    targetPermissions: \"0644\"\n#    content: |\n#      -----BEGIN
+              CERTIFICATE-----\n#      MIICyzCCAbOgAwIBAgIBADANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwprdWJl\n#      cm5ldGVzMB4XDTIwMDkyMjIzNDMyM1oXDTMwMDkyMDIzNDgyM1owFTETMBEGA1UE\n#      AxMKa3ViZXJuZXRlczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMdA\n#      nZYs1el/6f9PgV/aO9mzy7MvqaZoFnqO7Qi4LZfYzixLYmMUzi+h8/RLPFIoYLiz\n#      qiDn+P8c9I1uxB6UqGrBt7dkXfjrUZPs0JXEOX9U/6GFXL5C+n3AUlAxNCS5jobN\n#      fbLt7DH3WoT6tLcQefTta2K+9S7zJKcIgLmBlPNDijwcQsbenSwDSlSLkGz8v6N2\n#      7SEYNCV542lbYwn42kbcEq2pzzAaCqa5uEPsR9y+uzUiJpv5tDHUdjbFT8tme3vL\n#      9EdCPODkqtMJtCvz0hqd5SxkfeC2L+ypaiHIxbwbWe7GtliROvz9bClIeGY7gFBK\n#      jZqpLdbBVjo0NZBTJFUCAwEAAaMmMCQwDgYDVR0PAQH/BAQDAgKkMBIGA1UdEwEB\n#      /wQIMAYBAf8CAQAwDQYJKoZIhvcNAQELBQADggEBADIKoE0P+aVJGV9LWGLiOhki\n#      HFv/vPPAQ2MPk02rLjWzCaNrXD7aPPgT/1uDMYMHD36u8rYyf4qPtB8S5REWBM/Y\n#      g8uhnpa/tGsaqO8LOFj6zsInKrsXSbE6YMY6+A8qvv5lPWpJfrcCVEo2zOj7WGoJ\n#      ixi4B3fFNI+wih8/+p4xW+n3fvgqVYHJ3zo8aRLXbXwztp00lXurXUyR8EZxyR+6\n#      b+IDLmHPEGsY9KOZ9VLLPcPhx5FR9njFyXvDKmjUMJJgUpRkmsuU1mCFC+OHhj56\n#      IkLaSJf6z/p2a3YjTxvHNCqFMLbJ2FvJwYCRzsoT2wm2oulnUAMWPI10vdVM+Nc=\n#      -----END
+              CERTIFICATE-----"
             uid: "63bd0373764141c6622c3062"
 
           - name: "kubernetes"
             tag: "1.29.0"
             uid: "661cc50b0aa79b77ade281f9"
             registryUid: "5eecc89d0b150045ae661cef"
-            values: "# spectrocloud.com/enabled-presets: Kube Controller Manager:loopback-ctrlmgr,Kube Scheduler:loopback-scheduler\npack:\n  content:\n    images:\n      - image: registry.k8s.io/coredns/coredns:v1.10.1\n      - image: registry.k8s.io/etcd:3.5.10-0\n      - image: registry.k8s.io/kube-apiserver:v1.29.0\n      - image: registry.k8s.io/kube-controller-manager:v1.29.0\n      - image: registry.k8s.io/kube-proxy:v1.29.0\n      - image: registry.k8s.io/kube-scheduler:v1.29.0\n      - image: registry.k8s.io/pause:3.9\n      - image: registry.k8s.io/pause:3.8\n  k8sHardening: True\n  #CIDR Range for Pods in cluster\n  # Note : This must not overlap with any of the host or service network\n  podCIDR: \"192.168.0.0/16\"\n  #CIDR notation IP range from which to assign service cluster IPs\n  # Note : This must not overlap with any IP ranges assigned to nodes for pods.\n  serviceClusterIpRange: \"10.96.0.0/12\"\n  # serviceDomain: \"cluster.local\"\n\n# KubeAdm customization for kubernetes hardening. Below config will be ignored if k8sHardening property above is disabled\nkubeadmconfig:\n  apiServer:\n    extraArgs:\n      # Note : secure-port flag is used during kubeadm init. Do not change this flag on a running cluster\n      secure-port: \"6443\"\n      anonymous-auth: \"true\"\n      profiling: \"false\"\n      disable-admission-plugins: \"AlwaysAdmit\"\n      default-not-ready-toleration-seconds: \"60\"\n      default-unreachable-toleration-seconds: \"60\"\n      enable-admission-plugins: \"AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurity\"\n      admission-control-config-file: \"/etc/kubernetes/pod-security-standard.yaml\"\n      audit-log-path: /var/log/apiserver/audit.log\n      audit-policy-file: /etc/kubernetes/audit-policy.yaml\n      audit-log-maxage: \"30\"\n      audit-log-maxbackup: \"10\"\n      audit-log-maxsize: \"100\"\n      authorization-mode: RBAC,Node\n      tls-cipher-suites: \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256\"\n    extraVolumes:\n      - name: audit-log\n        hostPath: /var/log/apiserver\n        mountPath: /var/log/apiserver\n        pathType: DirectoryOrCreate\n      - name: audit-policy\n        hostPath: /etc/kubernetes/audit-policy.yaml\n        mountPath: /etc/kubernetes/audit-policy.yaml\n        readOnly: true\n        pathType: File\n      - name: pod-security-standard\n        hostPath: /etc/kubernetes/pod-security-standard.yaml\n        mountPath: /etc/kubernetes/pod-security-standard.yaml\n        readOnly: true\n        pathType: File\n  controllerManager:\n    extraArgs:\n      profiling: \"false\"\n      terminated-pod-gc-threshold: \"25\"\n      use-service-account-credentials: \"true\"\n      feature-gates: \"RotateKubeletServerCertificate=true\"\n  scheduler:\n    extraArgs:\n      profiling: \"false\"\n  kubeletExtraArgs:\n    read-only-port : \"0\"\n    event-qps: \"0\"\n    feature-gates: \"RotateKubeletServerCertificate=true\"\n    protect-kernel-defaults: \"true\"\n    rotate-server-certificates: \"true\"\n    tls-cipher-suites: \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256\"\n  files:\n    - path: hardening/audit-policy.yaml\n      targetPath: /etc/kubernetes/audit-policy.yaml\n      targetOwner: \"root:root\"\n      targetPermissions: \"0600\"\n    - path: hardening/90-kubelet.conf\n      targetPath: /etc/sysctl.d/90-kubelet.conf\n      targetOwner: \"root:root\"\n      targetPermissions: \"0600\"\n    - targetPath: /etc/kubernetes/pod-security-standard.yaml\n      targetOwner: \"root:root\"\n      targetPermissions: \"0600\"\n      content: |\n        apiVersion: apiserver.config.k8s.io/v1\n        kind: AdmissionConfiguration\n        plugins:\n        - name: PodSecurity\n          configuration:\n            apiVersion: pod-security.admission.config.k8s.io/v1\n            kind: PodSecurityConfiguration\n            defaults:\n              enforce: \"baseline\"\n              enforce-version: \"v1.29\"\n              audit: \"baseline\"\n              audit-version: \"v1.29\"\n              warn: \"restricted\"\n              warn-version: \"v1.29\"\n              audit: \"restricted\"\n              audit-version: \"v1.29\"\n            exemptions:\n              # Array of authenticated usernames to exempt.\n              usernames: []\n              # Array of runtime class names to exempt.\n              runtimeClasses: []\n              # Array of namespaces to exempt.\n              namespaces: [kube-system]\n\n  preKubeadmCommands:\n    # For enabling 'protect-kernel-defaults' flag to kubelet, kernel parameters changes are required\n    - 'echo \"====> Applying kernel parameters for Kubelet\"'\n    - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'\n  #postKubeadmCommands:\n    #- 'echo \"List of post kubeadm commands to be executed\"'\n\n# Client configuration to add OIDC based authentication flags in kubeconfig\n#clientConfig:\n  #oidc-issuer-url: \"{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}\"\n  #oidc-client-id: \"{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}\"\n  #oidc-client-secret: oidc client secret\n  #oidc-extra-scope: profile,email"
+            values:
+              "# spectrocloud.com/enabled-presets: Kube Controller Manager:loopback-ctrlmgr,Kube
+              Scheduler:loopback-scheduler\npack:\n  content:\n    images:\n      - image:
+              registry.k8s.io/coredns/coredns:v1.10.1\n      - image: registry.k8s.io/etcd:3.5.10-0\n      - image:
+              registry.k8s.io/kube-apiserver:v1.29.0\n      - image:
+              registry.k8s.io/kube-controller-manager:v1.29.0\n      - image:
+              registry.k8s.io/kube-proxy:v1.29.0\n      - image: registry.k8s.io/kube-scheduler:v1.29.0\n      - image:
+              registry.k8s.io/pause:3.9\n      - image: registry.k8s.io/pause:3.8\n  k8sHardening: True\n  #CIDR Range
+              for Pods in cluster\n  # Note : This must not overlap with any of the host or service network\n  podCIDR:
+              \"192.168.0.0/16\"\n  #CIDR notation IP range from which to assign service cluster IPs\n  # Note : This
+              must not overlap with any IP ranges assigned to nodes for pods.\n  serviceClusterIpRange:
+              \"10.96.0.0/12\"\n  # serviceDomain: \"cluster.local\"\n\n# KubeAdm customization for kubernetes
+              hardening. Below config will be ignored if k8sHardening property above is
+              disabled\nkubeadmconfig:\n  apiServer:\n    extraArgs:\n      # Note : secure-port flag is used during
+              kubeadm init. Do not change this flag on a running cluster\n      secure-port:
+              \"6443\"\n      anonymous-auth: \"true\"\n      profiling: \"false\"\n      disable-admission-plugins:
+              \"AlwaysAdmit\"\n      default-not-ready-toleration-seconds:
+              \"60\"\n      default-unreachable-toleration-seconds: \"60\"\n      enable-admission-plugins:
+              \"AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurity\"\n      admission-control-config-file:
+              \"/etc/kubernetes/pod-security-standard.yaml\"\n      audit-log-path:
+              /var/log/apiserver/audit.log\n      audit-policy-file:
+              /etc/kubernetes/audit-policy.yaml\n      audit-log-maxage: \"30\"\n      audit-log-maxbackup:
+              \"10\"\n      audit-log-maxsize: \"100\"\n      authorization-mode: RBAC,Node\n      tls-cipher-suites:
+              \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256\"\n    extraVolumes:\n      -
+              name: audit-log\n        hostPath: /var/log/apiserver\n        mountPath:
+              /var/log/apiserver\n        pathType: DirectoryOrCreate\n      - name: audit-policy\n        hostPath:
+              /etc/kubernetes/audit-policy.yaml\n        mountPath: /etc/kubernetes/audit-policy.yaml\n        readOnly:
+              true\n        pathType: File\n      - name: pod-security-standard\n        hostPath:
+              /etc/kubernetes/pod-security-standard.yaml\n        mountPath:
+              /etc/kubernetes/pod-security-standard.yaml\n        readOnly: true\n        pathType:
+              File\n  controllerManager:\n    extraArgs:\n      profiling: \"false\"\n      terminated-pod-gc-threshold:
+              \"25\"\n      use-service-account-credentials: \"true\"\n      feature-gates:
+              \"RotateKubeletServerCertificate=true\"\n  scheduler:\n    extraArgs:\n      profiling:
+              \"false\"\n  kubeletExtraArgs:\n    read-only-port : \"0\"\n    event-qps: \"0\"\n    feature-gates:
+              \"RotateKubeletServerCertificate=true\"\n    protect-kernel-defaults:
+              \"true\"\n    rotate-server-certificates: \"true\"\n    tls-cipher-suites:
+              \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256\"\n  files:\n    -
+              path: hardening/audit-policy.yaml\n      targetPath: /etc/kubernetes/audit-policy.yaml\n      targetOwner:
+              \"root:root\"\n      targetPermissions: \"0600\"\n    - path: hardening/90-kubelet.conf\n      targetPath:
+              /etc/sysctl.d/90-kubelet.conf\n      targetOwner: \"root:root\"\n      targetPermissions: \"0600\"\n    -
+              targetPath: /etc/kubernetes/pod-security-standard.yaml\n      targetOwner:
+              \"root:root\"\n      targetPermissions: \"0600\"\n      content: |\n        apiVersion:
+              apiserver.config.k8s.io/v1\n        kind: AdmissionConfiguration\n        plugins:\n        - name:
+              PodSecurity\n          configuration:\n            apiVersion:
+              pod-security.admission.config.k8s.io/v1\n            kind:
+              PodSecurityConfiguration\n            defaults:\n              enforce:
+              \"baseline\"\n              enforce-version: \"v1.29\"\n              audit:
+              \"baseline\"\n              audit-version: \"v1.29\"\n              warn:
+              \"restricted\"\n              warn-version: \"v1.29\"\n              audit:
+              \"restricted\"\n              audit-version: \"v1.29\"\n            exemptions:\n              # Array of
+              authenticated usernames to exempt.\n              usernames: []\n              # Array of runtime class
+              names to exempt.\n              runtimeClasses: []\n              # Array of namespaces to
+              exempt.\n              namespaces: [kube-system]\n\n  preKubeadmCommands:\n    # For enabling
+              'protect-kernel-defaults' flag to kubelet, kernel parameters changes are required\n    - 'echo \"====>
+              Applying kernel parameters for Kubelet\"'\n    - 'sysctl -p
+              /etc/sysctl.d/90-kubelet.conf'\n  #postKubeadmCommands:\n    #- 'echo \"List of post kubeadm commands to
+              be executed\"'\n\n# Client configuration to add OIDC based authentication flags in
+              kubeconfig\n#clientConfig:\n  #oidc-issuer-url: \"{{
+              .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}\"\n  #oidc-client-id: \"{{
+              .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}\"\n  #oidc-client-secret:
+              oidc client secret\n  #oidc-extra-scope: profile,email"
 
           - name: "cni-calico"
             tag: "3.27.0"
             uid: "661cc4f20aa79b7543637fa9"
             registryUid: "5eecc89d0b150045ae661cef"
-            values: "pack:\n  content:\n    images:\n      - image: gcr.io/spectro-images-public/packs/calico/3.27.0/cni:v3.27.0\n      - image: gcr.io/spectro-images-public/packs/calico/3.27.0/node:v3.27.0\n      - image: gcr.io/spectro-images-public/packs/calico/3.27.0/kube-controllers:v3.27.0\n\nmanifests:\n  calico:\n    images:\n      cni: \"\"\n      node: \"\"\n      kubecontroller: \"\"\n    # IPAM type to use. Supported types are calico-ipam, host-local\n    ipamType: \"calico-ipam\"\n\n    calico_ipam:\n      assign_ipv4: true\n      assign_ipv6: false\n\n    # Should be one of CALICO_IPV4POOL_IPIP or CALICO_IPV4POOL_VXLAN  \n    encapsulationType: \"CALICO_IPV4POOL_IPIP\"\n\n    # Should be one of Always, CrossSubnet, Never\n    encapsulationMode: \"Always\"\n\n    env:\n      # Additional env variables for calico-node\n      calicoNode:\n        #IPV6: \"autodetect\"\n        #FELIX_IPV6SUPPORT: \"true\"\n        #CALICO_IPV6POOL_NAT_OUTGOING: \"true\"\n        #CALICO_IPV4POOL_CIDR: \"192.168.0.0/16\"\n        #IP_AUTODETECTION_METHOD: \"first-found\"\n\n      # Additional env variables for calico-kube-controller deployment\n      calicoKubeControllers:\n        #LOG_LEVEL: \"info\"\n        #SYNC_NODE_LABELS: \"true\""
+            values:
+              "pack:\n  content:\n    images:\n      - image:
+              gcr.io/spectro-images-public/packs/calico/3.27.0/cni:v3.27.0\n      - image:
+              gcr.io/spectro-images-public/packs/calico/3.27.0/node:v3.27.0\n      - image:
+              gcr.io/spectro-images-public/packs/calico/3.27.0/kube-controllers:v3.27.0\n\nmanifests:\n  calico:\n    images:\n      cni:
+              \"\"\n      node: \"\"\n      kubecontroller: \"\"\n    # IPAM type to use. Supported types are
+              calico-ipam, host-local\n    ipamType: \"calico-ipam\"\n\n    calico_ipam:\n      assign_ipv4:
+              true\n      assign_ipv6: false\n\n    # Should be one of CALICO_IPV4POOL_IPIP or
+              CALICO_IPV4POOL_VXLAN  \n    encapsulationType: \"CALICO_IPV4POOL_IPIP\"\n\n    # Should be one of Always,
+              CrossSubnet, Never\n    encapsulationMode: \"Always\"\n\n    env:\n      # Additional env variables for
+              calico-node\n      calicoNode:\n        #IPV6: \"autodetect\"\n        #FELIX_IPV6SUPPORT:
+              \"true\"\n        #CALICO_IPV6POOL_NAT_OUTGOING: \"true\"\n        #CALICO_IPV4POOL_CIDR:
+              \"192.168.0.0/16\"\n        #IP_AUTODETECTION_METHOD: \"first-found\"\n\n      # Additional env variables
+              for calico-kube-controller deployment\n      calicoKubeControllers:\n        #LOG_LEVEL:
+              \"info\"\n        #SYNC_NODE_LABELS: \"true\""
 
           - name: "csi-aws-ebs"
             tag: "1.26.1"
             uid: "661cc4f60aa79b75afba6d4b"
             registryUid: "5eecc89d0b150045ae661cef"
-            values: "pack:\n  content:\n    images:\n      - image: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/aws-ebs-csi-driver:v1.26.1\n      - image: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/external-provisioner:v3.6.3-eks-1-29-2\n      - image: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/external-attacher:v4.4.3-eks-1-29-2\n      - image: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/external-resizer:v1.9.3-eks-1-29-2\n      - image: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/livenessprobe:v2.11.0-eks-1-29-2\n      - image: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/node-driver-registrar:v2.9.3-eks-1-29-2\n      - image: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/external-snapshotter/csi-snapshotter:v6.3.3-eks-1-29-2\n      - image: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/volume-modifier-for-k8s:v0.1.3\n      - image: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/kubekins-e2e:v20231206-f7b83ffbe6-master\n    charts:\n      - repo: https://kubernetes-sigs.github.io/aws-ebs-csi-driver \n        name: aws-ebs-csi-driver\n        version: 2.26.1\n  namespace: \"kube-system\"\n\ncharts:\n  aws-ebs-csi-driver: \n    storageClasses: \n    # Default Storage Class\n      - name: spectro-storage-class\n      # annotation metadata\n        annotations:\n          storageclass.kubernetes.io/is-default-class: \"true\"\n      # label metadata\n      # labels:\n      #   my-label-is: supercool\n      # defaults to WaitForFirstConsumer\n        volumeBindingMode: WaitForFirstConsumer\n      # defaults to Delete\n        reclaimPolicy: Delete\n        parameters:\n        # File system type: xfs, ext2, ext3, ext4\n          csi.storage.k8s.io/fstype: \"ext4\"\n        # EBS volume type: io1, io2, gp2, gp3, sc1, st1, standard\n          type: \"gp2\"\n        # I/O operations per second per GiB. Required when io1 or io2 volume type is specified.\n        # iopsPerGB: \"\"\n        # Applicable only when io1 or io2 volume type is specified\n        # allowAutoIOPSPerGBIncrease: false\n        # I/O operations per second. Applicable only for gp3 volumes.\n        # iops: \"\"\n        # Throughput in MiB/s. Applicable only for gp3 volumes.\n        # throughput: \"\"\n        # Whether the volume should be encrypted or not\n        # encrypted: \"\"\n        # The full ARN of the key to use when encrypting the volume. When not specified, the default KMS key is used.\n        # kmsKeyId: \"\"\n    # Additional Storage Class \n      # - name: addon-storage-class\n      # annotations:\n      #   storageclass.kubernetes.io/is-default-class: \"false\"\n      # labels:\n      #   my-label-is: supercool\n      # volumeBindingMode: WaitForFirstConsumer\n      # reclaimPolicy: Delete\n      # parameters:\n        # csi.storage.k8s.io/fstype: \"ext4\"\n        # type: \"gp2\"\n        # iopsPerGB: \"\"\n        # allowAutoIOPSPerGBIncrease: false\n        # iops: \"\"\n        # throughput: \"\"\n        # encrypted: \"\"\n        # kmsKeyId: \"\"\n\n    image:\n      repository: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/aws-ebs-csi-driver\n      # Overrides the image tag whose default is v{{ .Chart.AppVersion }}\n      tag: \"\"\n      pullPolicy: IfNotPresent\n\n    # -- Custom labels to add into metadata\n    customLabels:\n      {}\n      # k8s-app: aws-ebs-csi-driver\n\n    sidecars:\n      provisioner:\n        env: []\n        image:\n          pullPolicy: IfNotPresent\n          repository: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/external-provisioner\n          tag: \"v3.6.3-eks-1-29-2\"\n        logLevel: 2\n        # Additional parameters provided by external-provisioner.\n        additionalArgs: []\n        # Grant additional permissions to external-provisioner\n        additionalClusterRoleRules:\n        resources: {}\n        # Tune leader lease election for csi-provisioner.\n        # Leader election is on by default.\n        leaderElection:\n          enabled: true\n          # Optional values to tune lease behavior.\n          # The arguments provided must be in an acceptable time.ParseDuration format.\n          # Ref: https://pkg.go.dev/flag#Duration\n          # leaseDuration: \"15s\"\n          # renewDeadline: \"10s\"\n          # retryPeriod: \"5s\"\n        securityContext:\n          readOnlyRootFilesystem: true\n          allowPrivilegeEscalation: false\n      attacher:\n        env: []\n        image:\n          pullPolicy: IfNotPresent\n          repository: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/external-attacher\n          tag: \"v4.4.3-eks-1-29-2\"\n        # Tune leader lease election for csi-attacher.\n        # Leader election is on by default.\n        leaderElection:\n          enabled: true\n          # Optional values to tune lease behavior.\n          # The arguments provided must be in an acceptable time.ParseDuration format.\n          # Ref: https://pkg.go.dev/flag#Duration\n          # leaseDuration: \"15s\"\n          # renewDeadline: \"10s\"\n          # retryPeriod: \"5s\"\n        logLevel: 2\n        # Additional parameters provided by external-attacher.\n        additionalArgs: []\n        # Grant additional permissions to external-attacher\n        additionalClusterRoleRules: []\n        resources: {}\n        securityContext:\n          readOnlyRootFilesystem: true\n          allowPrivilegeEscalation: false\n      snapshotter:\n        # Enables the snapshotter sidecar even if the snapshot CRDs are not installed\n        forceEnable: false\n        env: []\n        image:\n          pullPolicy: IfNotPresent\n          repository: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/external-snapshotter/csi-snapshotter\n          tag: \"v6.3.3-eks-1-29-2\"\n        logLevel: 2\n        # Additional parameters provided by csi-snapshotter.\n        additionalArgs: []\n        # Grant additional permissions to csi-snapshotter\n        additionalClusterRoleRules: []\n        resources: {}\n        securityContext:\n          readOnlyRootFilesystem: true\n          allowPrivilegeEscalation: false\n      livenessProbe:\n        image:\n          pullPolicy: IfNotPresent\n          repository: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/livenessprobe\n          tag: \"v2.11.0-eks-1-29-2\"\n        # Additional parameters provided by livenessprobe.\n        additionalArgs: []\n        resources: {}\n        securityContext:\n          readOnlyRootFilesystem: true\n          allowPrivilegeEscalation: false\n      resizer:\n        env: []\n        image:\n          pullPolicy: IfNotPresent\n          repository: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/external-resizer\n          tag: \"v1.9.3-eks-1-29-2\"\n        # Tune leader lease election for csi-resizer.\n        # Leader election is on by default.\n        leaderElection:\n          enabled: true\n          # Optional values to tune lease behavior.\n          # The arguments provided must be in an acceptable time.ParseDuration format.\n          # Ref: https://pkg.go.dev/flag#Duration\n          # leaseDuration: \"15s\"\n          # renewDeadline: \"10s\"\n          # retryPeriod: \"5s\"\n        logLevel: 2\n        # Additional parameters provided by external-resizer.\n        additionalArgs: []\n        # Grant additional permissions to external-resizer\n        additionalClusterRoleRules: []\n        resources: {}\n        securityContext:\n          readOnlyRootFilesystem: true\n          allowPrivilegeEscalation: false\n      nodeDriverRegistrar:\n        env: []\n        image:\n          pullPolicy: IfNotPresent\n          repository: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/node-driver-registrar\n          tag: \"v2.9.3-eks-1-29-2\"\n        logLevel: 2\n        # Additional parameters provided by node-driver-registrar.\n        additionalArgs: []\n        resources: {}\n        securityContext:\n          readOnlyRootFilesystem: true\n          allowPrivilegeEscalation: false\n        livenessProbe:\n          exec:\n            command:\n            - /csi-node-driver-registrar\n            - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)\n            - --mode=kubelet-registration-probe\n          initialDelaySeconds: 30\n          periodSeconds: 90\n          timeoutSeconds: 15\n      volumemodifier:\n        env: []\n        image:\n          pullPolicy: IfNotPresent\n          repository: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/volume-modifier-for-k8s\n          tag: \"v0.1.3\"\n        leaderElection:\n          enabled: true\n          # Optional values to tune lease behavior.\n          # The arguments provided must be in an acceptable time.ParseDuration format.\n          # Ref: https://pkg.go.dev/flag#Duration\n          # leaseDuration: \"15s\"\n          # renewDeadline: \"10s\"\n          # retryPeriod: \"5s\"\n        logLevel: 2\n        # Additional parameters provided by volume-modifier-for-k8s.\n        additionalArgs: []\n        resources: {}\n        securityContext:\n          readOnlyRootFilesystem: true\n          allowPrivilegeEscalation: false\n\n    proxy:\n      http_proxy:\n      no_proxy:\n\n    imagePullSecrets: []\n    nameOverride:\n    fullnameOverride:\n\n    awsAccessSecret:\n      name: aws-secret\n      keyId: key_id\n      accessKey: access_key\n\n    controller:\n      batching: true\n      volumeModificationFeature:\n        enabled: false\n      # Additional parameters provided by aws-ebs-csi-driver controller.\n      additionalArgs: []\n      sdkDebugLog: false\n      loggingFormat: text\n      affinity:\n        nodeAffinity:\n          preferredDuringSchedulingIgnoredDuringExecution:\n          - weight: 1\n            preference:\n              matchExpressions:\n              - key: eks.amazonaws.com/compute-type\n                operator: NotIn\n                values:\n                - fargate\n        podAntiAffinity:\n          preferredDuringSchedulingIgnoredDuringExecution:\n          - podAffinityTerm:\n              labelSelector:\n                matchExpressions:\n                - key: app\n                  operator: In\n                  values:\n                  - ebs-csi-controller\n              topologyKey: kubernetes.io/hostname\n            weight: 100\n      # The default filesystem type of the volume to provision when fstype is unspecified in the StorageClass.\n      # If the default is not set and fstype is unset in the StorageClass, then no fstype will be set\n      defaultFsType: ext4\n      env: []\n      # Use envFrom to reference ConfigMaps and Secrets across all containers in the deployment\n      envFrom: []\n      # If set, add pv/pvc metadata to plugin create requests as parameters.\n      extraCreateMetadata: true\n      # Extra volume tags to attach to each dynamically provisioned volume.\n      # ---\n      # extraVolumeTags:\n      #   key1: value1\n      #   key2: value2\n      extraVolumeTags: {}\n      httpEndpoint:\n      # (deprecated) The TCP network address where the prometheus metrics endpoint\n      # will run (example: `:8080` which corresponds to port 8080 on local host).\n      # The default is empty string, which means metrics endpoint is disabled.\n      # ---\n      enableMetrics: false\n      serviceMonitor:\n        # Enables the ServiceMonitor resource even if the prometheus-operator CRDs are not installed\n        forceEnable: false\n        # Additional labels for ServiceMonitor object\n        labels:\n          release: prometheus\n      # If set to true, AWS API call metrics will be exported to the following\n      # TCP endpoint: \"0.0.0.0:3301\"\n      # ---\n      # ID of the Kubernetes cluster used for tagging provisioned EBS volumes (optional).\n      k8sTagClusterId:\n      logLevel: 2\n      userAgentExtra: \"helm\"\n      nodeSelector: {}\n      podAnnotations: {}\n      podLabels: {}\n      priorityClassName: system-cluster-critical\n      # AWS region to use. If not specified then the region will be looked up via the AWS EC2 metadata\n      # service.\n      # ---\n      # region: us-east-1\n      region:\n      replicaCount: 2\n      updateStrategy:\n        type: RollingUpdate\n        rollingUpdate:\n          maxUnavailable: 1\n      # type: RollingUpdate\n      # rollingUpdate:\n      #   maxSurge: 0\n      #   maxUnavailable: 1\n      resources:\n        requests:\n          cpu: 10m\n          memory: 40Mi\n        limits:\n          cpu: 100m\n          memory: 256Mi\n      serviceAccount:\n      # A service account will be created for you if set to true. Set to false if you want to use your own.\n        create: true\n        name: ebs-csi-controller-sa\n        annotations: {}\n        ## Enable if EKS IAM for SA is used\n        # eks.amazonaws.com/role-arn: arn:<partition>:iam::<account>:role/ebs-csi-role\n        automountServiceAccountToken: true\n      tolerations:\n        - key: CriticalAddonsOnly\n          operator: Exists\n        - effect: NoExecute\n          operator: Exists\n          tolerationSeconds: 300\n      # TSCs without the label selector stanza\n      #\n      # Example:\n      #\n      # topologySpreadConstraints:\n      #  - maxSkew: 1\n      #    topologyKey: topology.kubernetes.io/zone\n      #    whenUnsatisfiable: ScheduleAnyway\n      #  - maxSkew: 1\n      #    topologyKey: kubernetes.io/hostname\n      #    whenUnsatisfiable: ScheduleAnyway\n      topologySpreadConstraints: []\n      # securityContext on the controller pod\n      securityContext:\n        runAsNonRoot: true\n        runAsUser: 1000\n        runAsGroup: 1000\n        fsGroup: 1000\n      # Add additional volume mounts on the controller with controller.volumes and controller.volumeMounts\n      volumes: []\n      # Add additional volumes to be mounted onto the controller:\n      # - name: custom-dir\n      #   hostPath:\n      #     path: /path/to/dir\n      #     type: Directory\n      volumeMounts: []\n      # And add mount paths for those additional volumes:\n      # - name: custom-dir\n      #   mountPath: /mount/path\n      # ---\n      # securityContext on the controller container (see sidecars for securityContext on sidecar containers)\n      containerSecurityContext:\n        readOnlyRootFilesystem: true\n        allowPrivilegeEscalation: false\n      initContainers: []\n      # containers to be run before the controller's container starts.\n      #\n      # Example:\n      #\n      # - name: wait\n      #   image: busybox\n      #   command: [ 'sh', '-c', \"sleep 20\" ]\n      # Enable opentelemetry tracing for the plugin running on the daemonset\n      otelTracing: {}\n      #  otelServiceName: ebs-csi-controller\n      #  otelExporterEndpoint: \"http://localhost:4317\"\n\n    node:\n      env: []\n      envFrom: []\n      kubeletPath: /var/lib/kubelet\n      loggingFormat: text\n      logLevel: 2\n      priorityClassName:\n      affinity:\n        nodeAffinity:\n          requiredDuringSchedulingIgnoredDuringExecution:\n            nodeSelectorTerms:\n            - matchExpressions:\n              - key: eks.amazonaws.com/compute-type\n                operator: NotIn\n                values:\n                - fargate\n              - key: node.kubernetes.io/instance-type\n                operator: NotIn\n                values:\n                - a1.medium\n                - a1.large\n                - a1.xlarge\n                - a1.2xlarge\n                - a1.4xlarge\n      nodeSelector: {}\n      podAnnotations: {}\n      podLabels: {}\n      tolerateAllTaints: true\n      tolerations:\n      - operator: Exists\n        effect: NoExecute\n        tolerationSeconds: 300\n      resources:\n        requests:\n          cpu: 10m\n          memory: 40Mi\n        limits:\n          cpu: 100m\n          memory: 256Mi\n      serviceAccount:\n        create: true\n        name: ebs-csi-node-sa\n        annotations: {}\n        ## Enable if EKS IAM for SA is used\n        # eks.amazonaws.com/role-arn: arn:<partition>:iam::<account>:role/ebs-csi-role\n        automountServiceAccountToken: true\n      # Enable the linux daemonset creation\n      enableLinux: true\n      enableWindows: false\n      # The \"maximum number of attachable volumes\" per node\n      volumeAttachLimit:\n      updateStrategy:\n        type: RollingUpdate\n        rollingUpdate:\n          maxUnavailable: \"10%\"\n      hostNetwork: false\n      # securityContext on the node pod\n      securityContext:\n        # The node pod must be run as root to bind to the registration/driver sockets\n        runAsNonRoot: false\n        runAsUser: 0\n        runAsGroup: 0\n        fsGroup: 0\n      # Add additional volume mounts on the node pods with node.volumes and node.volumeMounts\n      volumes: []\n      # Add additional volumes to be mounted onto the node pods:\n      # - name: custom-dir\n      #   hostPath:\n      #     path: /path/to/dir\n      #     type: Directory\n      volumeMounts: []\n      # And add mount paths for those additional volumes:\n      # - name: custom-dir\n      #   mountPath: /mount/path\n      # ---\n      # securityContext on the node container (see sidecars for securityContext on sidecar containers)\n      containerSecurityContext:\n        readOnlyRootFilesystem: true\n        privileged: true\n      # Enable opentelemetry tracing for the plugin running on the daemonset\n      otelTracing: {}\n      #  otelServiceName: ebs-csi-node\n      #  otelExporterEndpoint: \"http://localhost:4317\"\n\n    additionalDaemonSets:\n      # Additional node DaemonSets, using the node config structure\n      # See docs/additional-daemonsets.md for more information\n      #\n      # example:\n      #   nodeSelector:\n      #     node.kubernetes.io/instance-type: c5.large\n      #   volumeAttachLimit: 15\n\n    # Enable compatibility for the A1 instance family via use of an AL2-based image in a separate DaemonSet\n    # a1CompatibilityDaemonSet: true\n\n    #storageClasses: []\n    # Add StorageClass resources like:\n    # - name: ebs-sc\n    #   # annotation metadata\n    #   annotations:\n    #     storageclass.kubernetes.io/is-default-class: \"true\"\n    #   # label metadata\n    #   labels:\n    #     my-label-is: supercool\n    #   # defaults to WaitForFirstConsumer\n    #   volumeBindingMode: WaitForFirstConsumer\n    #   # defaults to Delete\n    #   reclaimPolicy: Retain\n    #   parameters:\n    #     encrypted: \"true\"\n\n    volumeSnapshotClasses: []\n    # Add VolumeSnapshotClass resources like:\n    # - name: ebs-vsc\n    #   # annotation metadata\n    #   annotations:\n    #     snapshot.storage.kubernetes.io/is-default-class: \"true\"\n    #   # label metadata\n    #   labels:\n    #     my-label-is: supercool\n    #   # deletionPolicy must be specified\n    #   deletionPolicy: Delete\n    #   parameters:\n\n    # Use old CSIDriver without an fsGroupPolicy set\n    # Intended for use with older clusters that cannot easily replace the CSIDriver object\n    # This parameter should always be false for new installations\n    useOldCSIDriver: false"
+            values:
+              "pack:\n  content:\n    images:\n      - image:
+              gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/aws-ebs-csi-driver:v1.26.1\n      - image:
+              gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/external-provisioner:v3.6.3-eks-1-29-2\n      -
+              image: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/external-attacher:v4.4.3-eks-1-29-2\n      -
+              image: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/external-resizer:v1.9.3-eks-1-29-2\n      -
+              image: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/livenessprobe:v2.11.0-eks-1-29-2\n      -
+              image:
+              gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/node-driver-registrar:v2.9.3-eks-1-29-2\n      -
+              image:
+              gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/external-snapshotter/csi-snapshotter:v6.3.3-eks-1-29-2\n      -
+              image: gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/volume-modifier-for-k8s:v0.1.3\n      -
+              image:
+              gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/kubekins-e2e:v20231206-f7b83ffbe6-master\n    charts:\n      -
+              repo: https://kubernetes-sigs.github.io/aws-ebs-csi-driver \n        name:
+              aws-ebs-csi-driver\n        version: 2.26.1\n  namespace:
+              \"kube-system\"\n\ncharts:\n  aws-ebs-csi-driver: \n    storageClasses: \n    # Default Storage
+              Class\n      - name: spectro-storage-class\n      # annotation
+              metadata\n        annotations:\n          storageclass.kubernetes.io/is-default-class: \"true\"\n      #
+              label metadata\n      # labels:\n      #   my-label-is: supercool\n      # defaults to
+              WaitForFirstConsumer\n        volumeBindingMode: WaitForFirstConsumer\n      # defaults to
+              Delete\n        reclaimPolicy: Delete\n        parameters:\n        # File system type: xfs, ext2, ext3,
+              ext4\n          csi.storage.k8s.io/fstype: \"ext4\"\n        # EBS volume type: io1, io2, gp2, gp3, sc1,
+              st1, standard\n          type: \"gp2\"\n        # I/O operations per second per GiB. Required when io1 or
+              io2 volume type is specified.\n        # iopsPerGB: \"\"\n        # Applicable only when io1 or io2 volume
+              type is specified\n        # allowAutoIOPSPerGBIncrease: false\n        # I/O operations per second.
+              Applicable only for gp3 volumes.\n        # iops: \"\"\n        # Throughput in MiB/s. Applicable only for
+              gp3 volumes.\n        # throughput: \"\"\n        # Whether the volume should be encrypted or
+              not\n        # encrypted: \"\"\n        # The full ARN of the key to use when encrypting the volume. When
+              not specified, the default KMS key is used.\n        # kmsKeyId: \"\"\n    # Additional Storage Class
+              \n      # - name: addon-storage-class\n      #
+              annotations:\n      #   storageclass.kubernetes.io/is-default-class: \"false\"\n      #
+              labels:\n      #   my-label-is: supercool\n      # volumeBindingMode: WaitForFirstConsumer\n      #
+              reclaimPolicy: Delete\n      # parameters:\n        # csi.storage.k8s.io/fstype: \"ext4\"\n        # type:
+              \"gp2\"\n        # iopsPerGB: \"\"\n        # allowAutoIOPSPerGBIncrease: false\n        # iops:
+              \"\"\n        # throughput: \"\"\n        # encrypted: \"\"\n        # kmsKeyId:
+              \"\"\n\n    image:\n      repository:
+              gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/aws-ebs-csi-driver\n      # Overrides the image tag
+              whose default is v{{ .Chart.AppVersion }}\n      tag: \"\"\n      pullPolicy: IfNotPresent\n\n    # --
+              Custom labels to add into metadata\n    customLabels:\n      {}\n      # k8s-app:
+              aws-ebs-csi-driver\n\n    sidecars:\n      provisioner:\n        env:
+              []\n        image:\n          pullPolicy: IfNotPresent\n          repository:
+              gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/external-provisioner\n          tag:
+              \"v3.6.3-eks-1-29-2\"\n        logLevel: 2\n        # Additional parameters provided by
+              external-provisioner.\n        additionalArgs: []\n        # Grant additional permissions to
+              external-provisioner\n        additionalClusterRoleRules:\n        resources: {}\n        # Tune leader
+              lease election for csi-provisioner.\n        # Leader election is on by
+              default.\n        leaderElection:\n          enabled: true\n          # Optional values to tune lease
+              behavior.\n          # The arguments provided must be in an acceptable time.ParseDuration
+              format.\n          # Ref: https://pkg.go.dev/flag#Duration\n          # leaseDuration:
+              \"15s\"\n          # renewDeadline: \"10s\"\n          # retryPeriod:
+              \"5s\"\n        securityContext:\n          readOnlyRootFilesystem:
+              true\n          allowPrivilegeEscalation: false\n      attacher:\n        env:
+              []\n        image:\n          pullPolicy: IfNotPresent\n          repository:
+              gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/external-attacher\n          tag:
+              \"v4.4.3-eks-1-29-2\"\n        # Tune leader lease election for csi-attacher.\n        # Leader election
+              is on by default.\n        leaderElection:\n          enabled: true\n          # Optional values to tune
+              lease behavior.\n          # The arguments provided must be in an acceptable time.ParseDuration
+              format.\n          # Ref: https://pkg.go.dev/flag#Duration\n          # leaseDuration:
+              \"15s\"\n          # renewDeadline: \"10s\"\n          # retryPeriod: \"5s\"\n        logLevel:
+              2\n        # Additional parameters provided by external-attacher.\n        additionalArgs: []\n        #
+              Grant additional permissions to external-attacher\n        additionalClusterRoleRules:
+              []\n        resources: {}\n        securityContext:\n          readOnlyRootFilesystem:
+              true\n          allowPrivilegeEscalation: false\n      snapshotter:\n        # Enables the snapshotter
+              sidecar even if the snapshot CRDs are not installed\n        forceEnable: false\n        env:
+              []\n        image:\n          pullPolicy: IfNotPresent\n          repository:
+              gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/external-snapshotter/csi-snapshotter\n          tag:
+              \"v6.3.3-eks-1-29-2\"\n        logLevel: 2\n        # Additional parameters provided by
+              csi-snapshotter.\n        additionalArgs: []\n        # Grant additional permissions to
+              csi-snapshotter\n        additionalClusterRoleRules: []\n        resources:
+              {}\n        securityContext:\n          readOnlyRootFilesystem: true\n          allowPrivilegeEscalation:
+              false\n      livenessProbe:\n        image:\n          pullPolicy: IfNotPresent\n          repository:
+              gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/livenessprobe\n          tag:
+              \"v2.11.0-eks-1-29-2\"\n        # Additional parameters provided by
+              livenessprobe.\n        additionalArgs: []\n        resources:
+              {}\n        securityContext:\n          readOnlyRootFilesystem: true\n          allowPrivilegeEscalation:
+              false\n      resizer:\n        env: []\n        image:\n          pullPolicy:
+              IfNotPresent\n          repository:
+              gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/external-resizer\n          tag:
+              \"v1.9.3-eks-1-29-2\"\n        # Tune leader lease election for csi-resizer.\n        # Leader election is
+              on by default.\n        leaderElection:\n          enabled: true\n          # Optional values to tune
+              lease behavior.\n          # The arguments provided must be in an acceptable time.ParseDuration
+              format.\n          # Ref: https://pkg.go.dev/flag#Duration\n          # leaseDuration:
+              \"15s\"\n          # renewDeadline: \"10s\"\n          # retryPeriod: \"5s\"\n        logLevel:
+              2\n        # Additional parameters provided by external-resizer.\n        additionalArgs: []\n        #
+              Grant additional permissions to external-resizer\n        additionalClusterRoleRules:
+              []\n        resources: {}\n        securityContext:\n          readOnlyRootFilesystem:
+              true\n          allowPrivilegeEscalation: false\n      nodeDriverRegistrar:\n        env:
+              []\n        image:\n          pullPolicy: IfNotPresent\n          repository:
+              gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/node-driver-registrar\n          tag:
+              \"v2.9.3-eks-1-29-2\"\n        logLevel: 2\n        # Additional parameters provided by
+              node-driver-registrar.\n        additionalArgs: []\n        resources:
+              {}\n        securityContext:\n          readOnlyRootFilesystem: true\n          allowPrivilegeEscalation:
+              false\n        livenessProbe:\n          exec:\n            command:\n            -
+              /csi-node-driver-registrar\n            -
+              --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)\n            -
+              --mode=kubelet-registration-probe\n          initialDelaySeconds: 30\n          periodSeconds:
+              90\n          timeoutSeconds: 15\n      volumemodifier:\n        env:
+              []\n        image:\n          pullPolicy: IfNotPresent\n          repository:
+              gcr.io/spectro-images-public/packs/csi-aws-ebs/1.26.1/volume-modifier-for-k8s\n          tag:
+              \"v0.1.3\"\n        leaderElection:\n          enabled: true\n          # Optional values to tune lease
+              behavior.\n          # The arguments provided must be in an acceptable time.ParseDuration
+              format.\n          # Ref: https://pkg.go.dev/flag#Duration\n          # leaseDuration:
+              \"15s\"\n          # renewDeadline: \"10s\"\n          # retryPeriod: \"5s\"\n        logLevel:
+              2\n        # Additional parameters provided by volume-modifier-for-k8s.\n        additionalArgs:
+              []\n        resources: {}\n        securityContext:\n          readOnlyRootFilesystem:
+              true\n          allowPrivilegeEscalation:
+              false\n\n    proxy:\n      http_proxy:\n      no_proxy:\n\n    imagePullSecrets:
+              []\n    nameOverride:\n    fullnameOverride:\n\n    awsAccessSecret:\n      name: aws-secret\n      keyId:
+              key_id\n      accessKey: access_key\n\n    controller:\n      batching:
+              true\n      volumeModificationFeature:\n        enabled: false\n      # Additional parameters provided by
+              aws-ebs-csi-driver controller.\n      additionalArgs: []\n      sdkDebugLog: false\n      loggingFormat:
+              text\n      affinity:\n        nodeAffinity:\n          preferredDuringSchedulingIgnoredDuringExecution:\n          -
+              weight: 1\n            preference:\n              matchExpressions:\n              - key:
+              eks.amazonaws.com/compute-type\n                operator:
+              NotIn\n                values:\n                -
+              fargate\n        podAntiAffinity:\n          preferredDuringSchedulingIgnoredDuringExecution:\n          -
+              podAffinityTerm:\n              labelSelector:\n                matchExpressions:\n                - key:
+              app\n                  operator: In\n                  values:\n                  -
+              ebs-csi-controller\n              topologyKey: kubernetes.io/hostname\n            weight: 100\n      #
+              The default filesystem type of the volume to provision when fstype is unspecified in the
+              StorageClass.\n      # If the default is not set and fstype is unset in the StorageClass, then no fstype
+              will be set\n      defaultFsType: ext4\n      env: []\n      # Use envFrom to reference ConfigMaps and
+              Secrets across all containers in the deployment\n      envFrom: []\n      # If set, add pv/pvc metadata to
+              plugin create requests as parameters.\n      extraCreateMetadata: true\n      # Extra volume tags to
+              attach to each dynamically provisioned volume.\n      # ---\n      # extraVolumeTags:\n      #   key1:
+              value1\n      #   key2: value2\n      extraVolumeTags: {}\n      httpEndpoint:\n      # (deprecated) The
+              TCP network address where the prometheus metrics endpoint\n      # will run (example: `:8080` which
+              corresponds to port 8080 on local host).\n      # The default is empty string, which means metrics
+              endpoint is disabled.\n      # ---\n      enableMetrics: false\n      serviceMonitor:\n        # Enables
+              the ServiceMonitor resource even if the prometheus-operator CRDs are not installed\n        forceEnable:
+              false\n        # Additional labels for ServiceMonitor object\n        labels:\n          release:
+              prometheus\n      # If set to true, AWS API call metrics will be exported to the following\n      # TCP
+              endpoint: \"0.0.0.0:3301\"\n      # ---\n      # ID of the Kubernetes cluster used for tagging provisioned
+              EBS volumes (optional).\n      k8sTagClusterId:\n      logLevel: 2\n      userAgentExtra:
+              \"helm\"\n      nodeSelector: {}\n      podAnnotations: {}\n      podLabels: {}\n      priorityClassName:
+              system-cluster-critical\n      # AWS region to use. If not specified then the region will be looked up via
+              the AWS EC2 metadata\n      # service.\n      # ---\n      # region:
+              us-east-1\n      region:\n      replicaCount: 2\n      updateStrategy:\n        type:
+              RollingUpdate\n        rollingUpdate:\n          maxUnavailable: 1\n      # type: RollingUpdate\n      #
+              rollingUpdate:\n      #   maxSurge: 0\n      #   maxUnavailable:
+              1\n      resources:\n        requests:\n          cpu: 10m\n          memory:
+              40Mi\n        limits:\n          cpu: 100m\n          memory: 256Mi\n      serviceAccount:\n      # A
+              service account will be created for you if set to true. Set to false if you want to use your
+              own.\n        create: true\n        name: ebs-csi-controller-sa\n        annotations: {}\n        ##
+              Enable if EKS IAM for SA is used\n        # eks.amazonaws.com/role-arn:
+              arn:<partition>:iam::<account>:role/ebs-csi-role\n        automountServiceAccountToken:
+              true\n      tolerations:\n        - key: CriticalAddonsOnly\n          operator: Exists\n        - effect:
+              NoExecute\n          operator: Exists\n          tolerationSeconds: 300\n      # TSCs without the label
+              selector stanza\n      #\n      # Example:\n      #\n      # topologySpreadConstraints:\n      #  -
+              maxSkew: 1\n      #    topologyKey: topology.kubernetes.io/zone\n      #    whenUnsatisfiable:
+              ScheduleAnyway\n      #  - maxSkew: 1\n      #    topologyKey:
+              kubernetes.io/hostname\n      #    whenUnsatisfiable: ScheduleAnyway\n      topologySpreadConstraints:
+              []\n      # securityContext on the controller pod\n      securityContext:\n        runAsNonRoot:
+              true\n        runAsUser: 1000\n        runAsGroup: 1000\n        fsGroup: 1000\n      # Add additional
+              volume mounts on the controller with controller.volumes and controller.volumeMounts\n      volumes:
+              []\n      # Add additional volumes to be mounted onto the controller:\n      # - name:
+              custom-dir\n      #   hostPath:\n      #     path: /path/to/dir\n      #     type:
+              Directory\n      volumeMounts: []\n      # And add mount paths for those additional volumes:\n      # -
+              name: custom-dir\n      #   mountPath: /mount/path\n      # ---\n      # securityContext on the controller
+              container (see sidecars for securityContext on sidecar
+              containers)\n      containerSecurityContext:\n        readOnlyRootFilesystem:
+              true\n        allowPrivilegeEscalation: false\n      initContainers: []\n      # containers to be run
+              before the controller's container starts.\n      #\n      # Example:\n      #\n      # - name:
+              wait\n      #   image: busybox\n      #   command: [ 'sh', '-c', \"sleep 20\" ]\n      # Enable
+              opentelemetry tracing for the plugin running on the daemonset\n      otelTracing:
+              {}\n      #  otelServiceName: ebs-csi-controller\n      #  otelExporterEndpoint:
+              \"http://localhost:4317\"\n\n    node:\n      env: []\n      envFrom: []\n      kubeletPath:
+              /var/lib/kubelet\n      loggingFormat: text\n      logLevel:
+              2\n      priorityClassName:\n      affinity:\n        nodeAffinity:\n          requiredDuringSchedulingIgnoredDuringExecution:\n            nodeSelectorTerms:\n            -
+              matchExpressions:\n              - key: eks.amazonaws.com/compute-type\n                operator:
+              NotIn\n                values:\n                - fargate\n              - key:
+              node.kubernetes.io/instance-type\n                operator:
+              NotIn\n                values:\n                - a1.medium\n                - a1.large\n                -
+              a1.xlarge\n                - a1.2xlarge\n                - a1.4xlarge\n      nodeSelector:
+              {}\n      podAnnotations: {}\n      podLabels: {}\n      tolerateAllTaints:
+              true\n      tolerations:\n      - operator: Exists\n        effect: NoExecute\n        tolerationSeconds:
+              300\n      resources:\n        requests:\n          cpu: 10m\n          memory:
+              40Mi\n        limits:\n          cpu: 100m\n          memory:
+              256Mi\n      serviceAccount:\n        create: true\n        name: ebs-csi-node-sa\n        annotations:
+              {}\n        ## Enable if EKS IAM for SA is used\n        # eks.amazonaws.com/role-arn:
+              arn:<partition>:iam::<account>:role/ebs-csi-role\n        automountServiceAccountToken: true\n      #
+              Enable the linux daemonset creation\n      enableLinux: true\n      enableWindows: false\n      # The
+              \"maximum number of attachable volumes\" per
+              node\n      volumeAttachLimit:\n      updateStrategy:\n        type:
+              RollingUpdate\n        rollingUpdate:\n          maxUnavailable: \"10%\"\n      hostNetwork:
+              false\n      # securityContext on the node pod\n      securityContext:\n        # The node pod must be run
+              as root to bind to the registration/driver sockets\n        runAsNonRoot: false\n        runAsUser:
+              0\n        runAsGroup: 0\n        fsGroup: 0\n      # Add additional volume mounts on the node pods with
+              node.volumes and node.volumeMounts\n      volumes: []\n      # Add additional volumes to be mounted onto
+              the node pods:\n      # - name: custom-dir\n      #   hostPath:\n      #     path:
+              /path/to/dir\n      #     type: Directory\n      volumeMounts: []\n      # And add mount paths for those
+              additional volumes:\n      # - name: custom-dir\n      #   mountPath: /mount/path\n      # ---\n      #
+              securityContext on the node container (see sidecars for securityContext on sidecar
+              containers)\n      containerSecurityContext:\n        readOnlyRootFilesystem: true\n        privileged:
+              true\n      # Enable opentelemetry tracing for the plugin running on the daemonset\n      otelTracing:
+              {}\n      #  otelServiceName: ebs-csi-node\n      #  otelExporterEndpoint:
+              \"http://localhost:4317\"\n\n    additionalDaemonSets:\n      # Additional node DaemonSets, using the node
+              config structure\n      # See docs/additional-daemonsets.md for more information\n      #\n      #
+              example:\n      #   nodeSelector:\n      #     node.kubernetes.io/instance-type:
+              c5.large\n      #   volumeAttachLimit: 15\n\n    # Enable compatibility for the A1 instance family via use
+              of an AL2-based image in a separate DaemonSet\n    # a1CompatibilityDaemonSet:
+              true\n\n    #storageClasses: []\n    # Add StorageClass resources like:\n    # - name: ebs-sc\n    #   #
+              annotation metadata\n    #   annotations:\n    #     storageclass.kubernetes.io/is-default-class:
+              \"true\"\n    #   # label metadata\n    #   labels:\n    #     my-label-is: supercool\n    #   # defaults
+              to WaitForFirstConsumer\n    #   volumeBindingMode: WaitForFirstConsumer\n    #   # defaults to
+              Delete\n    #   reclaimPolicy: Retain\n    #   parameters:\n    #     encrypted:
+              \"true\"\n\n    volumeSnapshotClasses: []\n    # Add VolumeSnapshotClass resources like:\n    # - name:
+              ebs-vsc\n    #   # annotation
+              metadata\n    #   annotations:\n    #     snapshot.storage.kubernetes.io/is-default-class:
+              \"true\"\n    #   # label metadata\n    #   labels:\n    #     my-label-is: supercool\n    #   #
+              deletionPolicy must be specified\n    #   deletionPolicy: Delete\n    #   parameters:\n\n    # Use old
+              CSIDriver without an fsGroupPolicy set\n    # Intended for use with older clusters that cannot easily
+              replace the CSIDriver object\n    # This parameter should always be false for new
+              installations\n    useOldCSIDriver: false"
 
       providerConfigRef:
         name: default
-
     ```
 
     The cluster profile contains the following core infrastructure layers.
@@ -277,13 +575,13 @@ how to use Crossplane to deploy a Kubernetes cluster in AWS that is managed by P
     Replace `<your-api-key>` with your Palette API key and `<aws-account-name>` with the name you called your AWS
     account when registering it with Palette.
 
-        ```bash
-        curl -L -X GET 'https://api.spectrocloud.com/v1/cloudaccounts/aws' \
-        -H 'Accept: application/json' \
-        -H 'ApiKey: <your-api-key>' | jq '.items[] | select(.metadata.name == "<aws-account-name>") | .metadata.uid'
-        ```
+    ```bash
+    curl -L -X GET 'https://api.spectrocloud.com/v1/cloudaccounts/aws' \
+    -H 'Accept: application/json' \
+    -H 'ApiKey: <your-api-key>' | jq '.items[] | select(.metadata.name == "<aws-account-name>") | .metadata.uid'
+    ```
 
-        Copy the API response containing your AWS cloud account ID.
+    Copy the API response containing your AWS cloud account ID.
 
 19. Create a file to store the AWS cluster configuration.
 
@@ -297,7 +595,7 @@ how to use Crossplane to deploy a Kubernetes cluster in AWS that is managed by P
     can also edit the region, availability zone, instance type, and number of nodes of your cluster according to your
     workload. Once you are done making the alterations, save and exit the file.
 
-    ```shell
+    ```yaml
     apiVersion: cluster.palette.crossplane.io/v1alpha1
     kind: Aws
     metadata:
