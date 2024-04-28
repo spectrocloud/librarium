@@ -1,11 +1,11 @@
 ---
-sidebar_label: "Non-Airgap Install"
-title: "Non-Airgap Install"
-description: "Learn how to deploy Palette VerteX on VMware."
+sidebar_label: "Install VerteX"
+title: "Install VerteX"
+description: "Learn how to install VerteX in an airgap VMware environment."
 icon: ""
+sidebar_position: 30
 hide_table_of_contents: false
-sidebar_position: 0
-tags: ["vertex", "vmware"]
+tags: ["vertex", "enterprise", "airgap", "vmware", "vsphere"]
 keywords: ["self-hosted", "vertex"]
 ---
 
@@ -16,21 +16,29 @@ Palette VerteX will be deployed.
 
 ## Prerequisites
 
+:::warning
+
+If you are installing Palette VerteX in an airgap environment, ensure you complete all the airgap pre-install steps
+before proceeding with the installation. Refer to the
+[VMware vSphere Airgap Instructions](./vmware-vsphere-airgap-instructions.md) guide for more information.
+
+:::
+
 - An AMD64 Linux environment with connectivity to the VMware vSphere environment.
 
 - [Docker](https://docs.docker.com/engine/install/) or equivalent container runtime installed and available on the Linux
   host.
 
-- Palette CLI installed and available. Refer to the Palette CLI
-  [Install](../../../palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
+- Palette CLI installed and available. Refer to the Palette CLI [Install](../../../../palette-cli/commands.md) page for
+  guidance.
 
 - An Ubuntu Pro Subscription and token. Ubuntu Pro provides access to FIPS 140-2 certified cryptographic packages.
 
-- Review the required VMware vSphere [permissions](vmware-system-requirements.md). Ensure you have created the proper
+- Review the required VMware vSphere [permissions](../vmware-system-requirements.md). Ensure you have created the proper
   custom roles and zone tags.
 
 - We recommended the following resources for Palette VerteX. Refer to the
-  [Palette VerteX size guidelines](../install-palette-vertex.md#instance-sizing) for additional sizing information.
+  [Palette VerteX size guidelines](../../install-palette-vertex.md#instance-sizing) for additional sizing information.
 
   - 8 CPUs per VM.
 
@@ -58,16 +66,8 @@ Palette VerteX will be deployed.
 
   - x509 SSL certificate authority file in base64 format. This file is optional.
 
-    :::warning
-
-    Palette VerteX does not support insecure connections. Ensure you have the Certificate Authority (CA) available, in
-    PEM format, when using a custom packs and image registry. Otherwise, VerteX will not be able to pull packs and
-    images from the registry. The Palette CLI will prompt you to provide the CA certificate file path when necessary.
-
-    :::
-
 - Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require
-  persistent storage. Refer to [Zone Tagging](vmware-system-requirements.md#zone-tagging) for information.
+  persistent storage. Refer to [Zone Tagging](../vmware-system-requirements.md#zone-tagging) for information.
 
 - Assigned IP addresses for application workload services, such as Load Balancer services.
 
@@ -78,7 +78,15 @@ Palette VerteX will be deployed.
 Self-hosted Palette VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do
 not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning
 into remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install
-a PCG on VMware, check out the [Deploy to VMware vSphere](../../../clusters/pcg/deploy-pcg/vmware.md) guide.
+a PCG on VMware, check out the [Deploy to VMware vSphere](../../../../clusters/pcg/deploy-pcg/vmware.md) guide.
+
+:::
+
+:::warning
+
+Palette VerteX does not support insecure connections. Ensure you have the Certificate Authority (CA) available, in PEM
+format, when using a custom packs and image registry. Otherwise, VerteX will not be able to pull packs and images from
+the registry. The Palette CLI will prompt you to provide the CA certificate file path when necessary.
 
 :::
 
@@ -89,7 +97,7 @@ video before you begin the installation process. Make sure to use values that ar
 the **three-dots Menu** in the lower right corner of the video to expand the video to full screen and to change the
 playback speed.
 
-<Video title="palette-cli-install" src="/videos/vertex-install.mp4"></Video>
+<Video title="palette-cli-install" src="/videos/vertex-airgap-install.mp4"></Video>
 
 Use the following steps to install Palette VerteX.
 
@@ -109,8 +117,8 @@ Use the following steps to install Palette VerteX.
 
 4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
     should look like `r_u-2204-0-k-12711-0`. This naming convention is required for the install process to identify the
-    OVA. Refer to the [Supplement Packs](../airgap/supplemental-packs.md#additional-ovas) page for a list of additional
-    OVAs you can download and upload to your vCenter environment.
+    OVA. Refer to the [Supplement Packs](../../airgap/supplemental-packs.md#additional-ovas) page for a list of
+    additional OVAs you can download and upload to your vCenter environment.
 
     :::tip
 
@@ -124,7 +132,7 @@ Use the following steps to install Palette VerteX.
 
 5.  Open a terminal window and invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The
     interactive CLI prompts you for configuration details and then initiates the installation. For more information
-    about the `ec` subcommand, refer to [Palette Commands](../../../palette-cli/commands.md#ec).
+    about the `ec` subcommand, refer to [Palette Commands](../../../../palette-cli/commands.md#ec).
 
         ```bash
         palette ec install
@@ -140,7 +148,17 @@ Use the following steps to install Palette VerteX.
 
     :::
 
-8.  The Spectro Cloud repository URL is `https://saas-repo-fips.console.spectrocloud.com`.
+8.  Specify the URL or IP address of the Spectro Cloud Repository that is provided to you by the airgap setup script.
+    Make sure to specify the file path to the CA certificate when prompted.
+
+    :::info
+
+    If you are using the Palette CLI from inside an [airgap support VM](./vmware-vsphere-airgap-instructions.md), the
+    CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Spectro Cloud
+    Artifact Repository (SCAR) configuration**. Type `y` to use the local resources and skip filling in the repository
+    URL and credentials.
+
+    :::
 
 9.  Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro
     Cloud repository. Airgap installations, provide the credentials to your private repository provided to you by the
@@ -152,7 +170,7 @@ Use the following steps to install Palette VerteX.
 
 12. When prompted, enter the information listed in each of the following tables.
 
-    #### Environment Configuration
+        #### Environment Configuration
 
     | **Parameter**                     | **Description**                                                                                                                                                                                                                                                                                                                |
     | :-------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -163,7 +181,49 @@ Use the following steps to install Palette VerteX.
     | **Pod CIDR**                      | Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                                      |
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                          |
 
-13. Select `y` to use the Spectro Cloud FIPS repository and proceed to the next step.
+13. Select the OCI registry type and provide the configuration values. Review the following table for more information.
+    If you are using the Palette CLI from inside an [airgap support VM](./vmware-vsphere-airgap-instructions.md), the
+    CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type
+    `y` to use the local resources and skip filling in the OCI registry URL and credentials.
+
+    :::warning
+
+    For self-hosted OCI registries, ensure you have the server Certificate Authority (CA) certificate file available on
+    the host where you are using the Palette CLI. You will be prompted to provide the file path to the OCI CA
+    certificate. Failure to provide the OCI CA certificate will result in self-linking errors. Refer to the
+    [Self-linking Error](../../../../troubleshooting/enterprise-install.md#scenario---self-linking-error)
+    troubleshooting guide for more information.
+
+    :::
+
+    #### Pack & Image Registry Configuration
+
+    | **Parameter**                                    | **Description**                                                                                                                                                                                                                                                                                                                                     |
+    | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Registry Type**                                | Specify the type of registry. Allowed values are `OCI` or `OCI ECR`. Airgap users, select `OCI`.                                                                                                                                                                                                                                                    |
+    | **Registry Name**                                | Enter the name of the registry.                                                                                                                                                                                                                                                                                                                     |
+    | **Registry Endpoint**                            | Enter the registry endpoint. Airgap users, provide the **Spectro Cloud Repository** URL or hostname shared by the airgap setup script.                                                                                                                                                                                                              |
+    | **Registry Base Path**                           | Enter the registry base path.                                                                                                                                                                                                                                                                                                                       |
+    | **Allow Insecure Connection**                    | Bypasses x509 verification. Type `n` to specify a certificate authority in the follow-up prompt. Airgap user, ensure you select `n`.                                                                                                                                                                                                                |
+    | **Registry CA certificate filepath**             | Specify the file path to the certificate authority. Use absolute paths. Airgap users, provide the filepath displayed by the aurgap setup script.                                                                                                                                                                                                    |
+    | **Registry Username** or **Registry Access Key** | Enter the registry username or the access key if using `OCI ECR`.                                                                                                                                                                                                                                                                                   |
+    | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`.                                                                                                                                                                                                                                                                                   |
+    | **Registry Region**                              | Enter the registry region. This option is only available if you are using `OCI ECR`.                                                                                                                                                                                                                                                                |
+    | **ECR Registry Private**                         | Type `y` if the registry is private. Otherwise, type `n`.                                                                                                                                                                                                                                                                                           |
+    | **Use Public Registry for Images**               | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. Airgap users, select `n` so that you can specify the values for the OCI registry that contains all the required images. |
+
+    When prompted to **Pull images from public registry**, type `n` and specify the OCI registry configuration values
+    for your image registry. If you are an [airgap support VM](./vmware-vsphere-airgap-instructions.md), the CLI will
+    automatically detect the airgap environment and prompt you to **Use local, air-gapped Image Registry?**. Type `y` to
+    use the local resources and skip filling in the OCI registry URL and credentials. Refer to the table above for more
+    information.
+
+    :::info
+
+    You will be provided with an opportunity to update the mirror registries values. To exit `vi` press the `Escape` key
+    and type `:wq` to save and exit.
+
+    :::
 
 14. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following
     table.
@@ -303,7 +363,7 @@ Use the following steps to install Palette VerteX.
     upload the SSL certificate files to Palette VerteX.
 
 20. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
-    [Tenant Management](../../system-management/tenant-management.md) guide.
+    [Tenant Management](../../../system-management/tenant-management.md) guide.
 
     ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.webp)
 
@@ -332,21 +392,21 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 
 You have successfully installed Palette VerteX in vSphere. Your next steps are to configure Palette VerteX for your
 organization. Start by creating the first tenant to host your users. Refer
-to [Create a Tenant](../../system-management/tenant-management.md) for instructions.
+to [Create a Tenant](../../../system-management/tenant-management.md) for instructions.
 
 After you create the tenant, you are ready to configure authentication types in tenant settings and create users and
 teams.
 
 ## Resources
 
-- [Airgap Instructions](./airgap-install/vmware-vsphere-airgap-instructions.md)
+- [Environment Setup](./vmware-vsphere-airgap-instructions.md)
 
-- [Create a Tenant](../../system-management/tenant-management.md)
+- [Create a Tenant](../../../system-management/tenant-management.md)
 
-- [Enterprise Install Troubleshooting](../../../troubleshooting/enterprise-install.md)
+- [Enterprise Install Troubleshooting](../../../../troubleshooting/enterprise-install.md)
 
-- [Palette CLI](../../../palette-cli/install-palette-cli.md#download-and-setup)
+- [Palette CLI](../../../../palette-cli/commands.md)
 
-- [System Management](../../system-management/system-management.md)
+- [System Management](../../../system-management/system-management.md)
 
-- [VMware System Requirements](vmware-system-requirements.md)
+- [VMware System Requirements](../vmware-system-requirements.md)
