@@ -9,12 +9,12 @@ tags: ["vertex", "enterprise"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-You can use the Palette VerteX Helm Chart to install VerteX in a multi-node Kubernetes cluster in your production
+You can use the Palette VerteX Helm Chart to install VerteX in a multi-node Kubernetes cluster in your airgap production
 environment.
 
 This installation method is common in secure environments with restricted network access that prohibits using VerteX
 SaaS. Review our [architecture diagrams](../../../../architecture/networking-ports.md) to ensure your Kubernetes cluster
-has the necessary network connectivity for VerteX to operate successfully..
+has the necessary network connectivity for VerteX to operate successfully.
 
 :::warning
 

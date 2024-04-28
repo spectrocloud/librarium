@@ -58,6 +58,14 @@ Palette VerteX will be deployed.
 
   - x509 SSL certificate authority file in base64 format. This file is optional.
 
+    :::warning
+
+    Palette VerteX does not support insecure connections. Ensure you have the Certificate Authority (CA) available, in
+    PEM format, when using a custom packs and image registry. Otherwise, VerteX will not be able to pull packs and
+    images from the registry. The Palette CLI will prompt you to provide the CA certificate file path when necessary.
+
+    :::
+
 - Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require
   persistent storage. Refer to [Zone Tagging](vmware-system-requirements.md#zone-tagging) for information.
 
@@ -71,14 +79,6 @@ Self-hosted Palette VerteX installations provide a system Private Cloud Gateway 
 not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning
 into remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install
 a PCG on VMware, check out the [Deploy to VMware vSphere](../../../clusters/pcg/deploy-pcg/vmware.md) guide.
-
-:::
-
-:::warning
-
-Palette VerteX does not support insecure connections. Ensure you have the Certificate Authority (CA) available, in PEM
-format, when using a custom packs and image registry. Otherwise, VerteX will not be able to pull packs and images from
-the registry. The Palette CLI will prompt you to provide the CA certificate file path when necessary.
 
 :::
 
