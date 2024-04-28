@@ -1,22 +1,18 @@
 ---
 sidebar_label: "Checklist"
-title: "Checklist"
+title: "Airgap Installation Checklist"
 description:
-  "An airgap installation of VerteX requires a few steps to be completed before the installation can begin. This
+  "An airgap installation of Palette requires a few steps to be completed before the installation can begin. This
   checklist will help you prepare for the installation."
 icon: ""
-sidebar_position: 40
+sidebar_position: 10
 hide_table_of_contents: false
-tags: ["vertex", "self-hosted", "airgap"]
-keywords: ["self-hosted", "vertex"]
+tags: ["palette", "self-hosted", "airgap"]
+keywords: ["self-hosted", "enterprise"]
 ---
 
 Use the following checklist to ensure you have completed all the required steps before deploying the airgap Palette
-VerteX installation.
-
-<Tabs queryString="platform">
-
-<TabItem label="Kubernetes" value="k8s">
+installation.
 
 - [ ] `oras` CLI v1.0.0 is installed and available.
 
@@ -39,30 +35,11 @@ VerteX installation.
 - [ ] Set the required environment variables for the airgap setup binary. The values are different depending on what
       type of OCI registry you use.
 
-- [ ] Start the airgap setup binary and verify the setup is completed successfully.
+- [ ] Start the airgap setup binary and verified the setup completed successfully.
 
 - [ ] Review the list of pack binaries to download and upload to your OCI registry.
 
 - [ ] Extract the manifest content from the airgap setup binary to an HTTP file server.
 
 - [ ] Ensure the manifest content is hosted on an HTTP file server accessible from the environment to which you are
-      installing VerteX.
-
-</TabItem>
-
-<TabItem label="VMware vSphere" value="vsphere">
-
-- [ ] Create a vSphere VM and Template folder named `spectro-templates`.
-
-- [ ] Import the Operating System and Kubernetes distribution OVA required for the installation and place the OVA in the
-      `spectro-templates` folder.
-
-- [ ] Append an `r_` prefix and remove the `.ova` suffix from the OVA name after the import.
-
-- [ ] Start the airgap setup binary and verify the setup is completed successfully.
-
-- [ ] Reviewe the list of [pack binaries](./supplemental-packs.md) to download and upload to your OCI registry.
-
-</TabItem>
-
-</Tabs>
+      installing Palette.
