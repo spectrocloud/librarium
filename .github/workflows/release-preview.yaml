@@ -43,6 +43,7 @@ jobs:
 
       - name: Build
         run: |
+          touch .env
           make build
 
       - name: Deploy Preview
