@@ -55,6 +55,7 @@ jobs:
 
       - name: Compile
         run: |
+          touch .env
           make versions-ci
           make build
 
