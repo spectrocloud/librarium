@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Non-Airgap Install"
-title: "Instructions"
+sidebar_label: "Non-Airgap Installation"
+title: "Install Non-Airgap Self-Hosted Palette VerteX"
 description: "Learn how to deploy self-hosted VerteX to a Kubernetes cluster using a Helm Chart."
 icon: ""
 hide_table_of_contents: false

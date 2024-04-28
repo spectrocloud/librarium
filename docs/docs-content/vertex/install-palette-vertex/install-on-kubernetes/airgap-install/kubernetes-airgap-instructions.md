@@ -12,8 +12,8 @@ keywords: ["self-hosted", "vertex"]
 ![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_overview-order-diagram-focus.webp)
 
 This guide provides instructions to prepare your airgap environment for a Palette VerteX installation by completing the
-required preparatory steps 1 through 4 shown in the diagram. The respective installation guides for each platform cover
-the remaining installation process
+required preparatory steps one through four shown in the diagram. The respective installation guides for each platform
+cover the remaining installation process.
 
 ## Prepare Airgap Installation
 
@@ -68,7 +68,7 @@ Each prerequisite is required for a successful installation.
   - [Oras](https://oras.land/docs/installation.html) CLI v1.0.0 - This version is explicitly required for the setup
     script.
   - [zip](https://linux.die.net/man/3/zip) - Required for the setup script.
-  - [unzip](https://linux.die.net/man/1/unzip) - or equivalent for extracting the manifest content from the airgap setup
+  - [unzip](https://linux.die.net/man/1/unzip) - Or equivalent for extracting the manifest content from the airgap setup
     binary.
   - [jq](https://jqlang.github.io/jq/download/) - Command-line JSON processor installed and available.
   - [Docker](https://docs.docker.com/get-docker/) - The airgap setup binary requires Docker to be installed and
@@ -80,16 +80,15 @@ Complete the following steps before deploying the airgap VerteX installation.
 
 1. Log in to the OCI registry where you will host the VerteX images and packages.
 
-2. Create a repository with the name `spectro-packs` and ensure the repository is private. This repository will host the
-   VerteX packs.
+2. Create a private repository named `spectro-packs`. This repository will host the VerteX packs.
 
    - Refer to the [Create Projects](https://goharbor.io/docs/2.0.0/working-with-projects/create-projects/) guide for
      information about creating a repository in Harbor.
    - Refer to the [Create a repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html)
      guide for information about creating a repository in AWS ECR.
 
-3. In your OCI registry, create another repository with the name `spectro-images` and ensure the repository is public.
-   The public repositry will host the images required by VerteX.
+3. In your OCI registry, create a public repository named `spectro-images`. The public repositry will host the images
+   required by VerteX.
 
 4. Download the Certificate Authority (CA) for your OCI registry. You will need to provide the installation process the
    CA, otherwise you may encounter errors when authenticating with the OCI registry which could result in an incomplete
@@ -101,152 +100,150 @@ Complete the following steps before deploying the airgap VerteX installation.
 6. Authenticate with your OCI registry and acquire credentials to both repositories you created earlier. You will need
    these credentials when deploying the airgap VerteX installation.
 
-  <Tabs groupId="oci-registry"> 
-  <TabItem label="Harbor" value="harbor">
+   <Tabs groupId="oci-registry">
 
-Use `oras` to log in to your OCI registry. Replace the values below with your environment configuration values. Check
-out the [oras login](https://oras.land/docs/commands/oras_login) documentation for information about additional CLI
-flags and examples.
+   <TabItem label="Harbor" value="harbor">
 
-```shell
-oras login X.X.X.X --user 'yourUserNameHere' --password 'yourPasswordHere'
-```
+   Use `oras` to log in to your OCI registry. Replace the values below with your environment configuration values. Check
+   out the [oras login](https://oras.land/docs/commands/oras_login) documentation for information about additional CLI
+   flags and examples.
 
-If you are using a Harbor registry with a self-signed certificate, you will need to add the `--insecure` flag to the
-`oras` command.
+   ```shell
+   oras login X.X.X.X --user 'yourUserNameHere' --password 'yourPasswordHere'
+   ```
 
-```shell
-oras login X.X.X.X --insecure --user 'yourUserNameHere' --password 'yourPasswordHere'
-```
+   If you are using a Harbor registry with a self-signed certificate, you will need to add the `--insecure` flag to the
+   `oras` command.
 
-  </TabItem>
-  <TabItem label="AWS ECR" value="aws-ecr">
+   ```shell
+   oras login X.X.X.X --insecure --user 'yourUserNameHere' --password 'yourPasswordHere'
+   ```
 
-You can acquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details page, click
-on the **View push commands** button to access the command. Refer to the
-[AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry)
-documentation for more information.
+   </TabItem>
 
-Below is the command you will use to authenticate to AWS ECR. The output of the `aws` command is passed to `oras` to
-authenticate with the ECR registry. Replace the values below with your environment configuration values.
+   <TabItem label="AWS ECR" value="aws-ecr">
 
-```shell
-aws ecr get-login-password --region xxxxx | oras login --username AWS --password-stdin 1234567890.dkr.ecr.us-east-1.amazonaws.com
-```
+   You can acquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details page,
+   click on the **View push commands** button to access the command. Refer to the
+   [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry)
+   documentation for more information.
 
-For the public image repository, use the `docker` CLI instead of using `oras`. Replace the values below with your
-environment configuration values.
+   Use the following command to authenticate with AWS ECR. The output of the `aws` command is passed to `oras` to
+   authenticate with the ECR registry. Replace the values below with your environment configuration values.
 
-```shell
-aws ecr-public get-login-password --region xxxxx | docker login --username AWS --password-stdin public.ecr.aws/xxxxxxx
-```
+   ```shell
+   aws ecr get-login-password --region xxxxx | oras login --username AWS --password-stdin 1234567890.dkr.ecr.us-east-1.amazonaws.com
+   ```
 
-  </TabItem>
-  </Tabs>
+   For the public image repository, use the `docker` CLI instead of using `oras`. Replace the values below with your
+   environment configuration values.
 
-:::tip
+   ```shell
+   aws ecr-public get-login-password --region xxxxx | docker login --username AWS --password-stdin public.ecr.aws/xxxxxxx
+   ```
 
-Be aware of the timeout period for the authentication token. The process of uploading images and packages to the OCI
-registry can take a approximately an hour. If the authentication token expires, you will need to re-authenticate to the
-OCI registry and restart the upload process.
+   </TabItem>
 
-:::
+   </Tabs>
 
----
+   :::tip
+
+   Be aware of the timeout period for the authentication token. The process of uploading images and packages to the OCI
+   registry can take a approximately an hour. If the authentication token expires, you will need to re-authenticate to
+   the OCI registry and restart the upload process.
+
+   :::
 
 7. The airgap setup binary requires a set of environment variables to be available and populated. The environment
    variables will be different depending on the OCI registry you are using. Select the OCI registry and populate the
    environment variables accordingly.
 
-  <Tabs groupId="oci-registry">
-  <TabItem label="Harbor" value="harbor">
+   <Tabs groupId="oci-registry">
 
-<br />
+   <TabItem label="Harbor" value="harbor">
 
-    - `OCI_IMAGE_REGISTRY`: The IP address or domain name of the OCI registry.
-    - `OCI_PACK_BASE`: The namespace or repository name that hosts the VerteX Packs.
-    - `OCI_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
-    - `OCI_IMAGE_BASE`: The namespace or repository name that hosts the VerteX images.
+   - `OCI_IMAGE_REGISTRY`: The IP address or domain name of the OCI registry.
+   - `OCI_PACK_BASE`: The namespace or repository name that hosts the VerteX Packs.
+   - `OCI_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
+   - `OCI_IMAGE_BASE`: The namespace or repository name that hosts the VerteX images.
 
-    ```shell
-    export OCI_IMAGE_REGISTRY=<harbor-endpoint>
-    export OCI_PACK_BASE=spectro-packs
-    export OCI_PACK_REGISTRY=<harbor-endpoint>
-    export OCI_IMAGE_BASE=spectro-images
-    ```
+   ```shell
+   export OCI_IMAGE_REGISTRY=<harbor-endpoint>
+   export OCI_PACK_BASE=spectro-packs
+   export OCI_PACK_REGISTRY=<harbor-endpoint>
+   export OCI_IMAGE_BASE=spectro-images
+   ```
 
-    Example
+   Example:
 
-    ```shell hideClipboard
-    export OCI_IMAGE_REGISTRY=example.internal.com
-    export OCI_PACK_BASE=spectro-packs
-    export OCI_PACK_REGISTRY=10.10.100.48
-    export OCI_IMAGE_BASE=spectro-images
-    ```
+   ```shell hideClipboard
+   export OCI_IMAGE_REGISTRY=example.internal.com
+   export OCI_PACK_BASE=spectro-packs
+   export OCI_PACK_REGISTRY=10.10.100.48
+   export OCI_IMAGE_BASE=spectro-images
+   ```
 
-  </TabItem>
-  <TabItem label="AWS ECR" value="aws-ecr">
+   </TabItem>
 
-<br />
+   <TabItem label="AWS ECR" value="aws-ecr">
 
-    - `ECR_IMAGE_REGISTRY`: The IP address or domain name of the public OCI registry for images.
-    - `ECR_IMAGE_BASE`: The namespace or repository name that hosts the VerteX images.
-    - `ECR_IMAGE_REGISTRY_REGION`: The AWS region where the ECR registry is located.
-    - `ECR_PACK_BASE`: The namespace or repository name that hosts the VerteX Packs.
-    - `ECR_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
-    - `ECR_PACK_REGISTRY_REGION`: The AWS region where the ECR registry is located.
+   - `ECR_IMAGE_REGISTRY`: The IP address or domain name of the public OCI registry for images.
+   - `ECR_IMAGE_BASE`: The namespace or repository name that hosts the VerteX images.
+   - `ECR_IMAGE_REGISTRY_REGION`: The AWS region where the ECR registry is located.
+   - `ECR_PACK_BASE`: The namespace or repository name that hosts the VerteX Packs.
+   - `ECR_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
+   - `ECR_PACK_REGISTRY_REGION`: The AWS region where the ECR registry is located.
 
-    ```shell
-    export ECR_IMAGE_REGISTRY=<ecr-endpoint>
-    export ECR_IMAGE_BASE=spectro-images
-    export ECR_IMAGE_REGISTRY_REGION=us-east-1
-    export ECR_PACK_REGISTRY=<ecr-endpoint>
-    export ECR_PACK_BASE=spectro-packs
-    export ECR_PACK_REGISTRY_REGION=us-east-1
-    ```
+   ```shell
+   export ECR_IMAGE_REGISTRY=<ecr-endpoint>
+   export ECR_IMAGE_BASE=spectro-images
+   export ECR_IMAGE_REGISTRY_REGION=<ecr-region>
+   export ECR_PACK_REGISTRY=<ecr-endpoint>
+   export ECR_PACK_BASE=spectro-packs
+   export ECR_PACK_REGISTRY_REGION=<ecr-region>
+   ```
 
-    Example
+   Example:
 
-    ```shell hideClipboard
-    export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
-    export ECR_IMAGE_BASE=spectro-images
-    export ECR_IMAGE_REGISTRY_REGION=us-east-1
-    export ECR_PACK_REGISTRY=123456789.dkr.ecr.us-east-1.amazonaws.com
-    export ECR_PACK_BASE=spectro-packs
-    export ECR_PACK_REGISTRY_REGION=us-east-1
-    ```
+   ```shell hideClipboard
+   export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
+   export ECR_IMAGE_BASE=spectro-images
+   export ECR_IMAGE_REGISTRY_REGION=us-east-1
+   export ECR_PACK_REGISTRY=123456789.dkr.ecr.us-east-1.amazonaws.com
+   export ECR_PACK_BASE=spectro-packs
+   export ECR_PACK_REGISTRY_REGION=us-east-1
+   ```
 
-  </TabItem>
-  </Tabs>
+   </TabItem>
 
----
+   </Tabs>
 
 8. Download the airgap setup binary. Our support team will provide you with the proper version and credentials. Replace
    the values in the commands below with our support team's recommended version and credentials.
 
-```shell
-VERSION=X.X.X
-```
+   ```shell
+   VERSION=X.X.X
+   ```
 
-```shell
-curl --user XXXXX:YYYYYYY https://software-private.spectrocloud.com/airgap-fips/$VERSION/airgap-fips-v$VERSION.bin  \
---output airgap-fips-v$VERSION.bin
-```
+   ```shell
+   curl --user XXXXX:YYYYYYY https://software-private.spectrocloud.com/airgap-fips/$VERSION/airgap-fips-v$VERSION.bin  \
+   --output airgap-fips-v$VERSION.bin
+   ```
 
 9. Update the airgap setup binary permissions to allow execution. Replace the file name below with the name of the
    airgap setup binary you downloaded.
 
-```shell
-chmod +x airgap-fips-v$VERSION.bin
-```
+   ```shell
+   chmod +x airgap-fips-v$VERSION.bin
+   ```
 
 10. Start the airgap setup binary. Replace the file name below with the name of the airgap setup binary you downloaded.
 
-```shell
-./airgap-fips-v$VERSION.bin
-```
+    ```shell
+    ./airgap-fips-v$VERSION.bin
+    ```
 
-Upon completion, a success message will be displayed. The output is condensed for brevity.
+    Upon completion, a success message will be displayed. The output is condensed for brevity.
 
     ```shell hideClipboard {10}
     Verifying archive integrity...  100%   MD5 checksums are OK. All good.
@@ -263,12 +260,12 @@ Upon completion, a success message will be displayed. The output is condensed fo
     Setup Completed
     ```
 
-:::info
+    :::info
 
-If you encounter an error during the airgap setup process, verify the required environment variables are set and
-populated correctly. If you are still having issues, reach out to our support team for assistance.
+    If you encounter an error during the airgap setup process, verify the required environment variables are set and
+    populated correctly. If you are still having issues, reach out to our support team for assistance.
 
-:::
+    :::
 
 11. Move the manifest file located in your temporary directory to the location of your file server. Unzip the manifest
     file to a folder accessible by the file server. Replace the file name below with the name of the manifest file
@@ -306,7 +303,8 @@ populated correctly. If you are still having issues, reach out to our support te
 13. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the
     upload process.
 
-    In the example below, the `airgap-fips-pack-amazon-linux-eks-1.0.0.bin` binary is downloaded and started.
+    In the example below, the `airgap-fips-pack-amazon-linux-eks-1.0.0.bin` binary permissions are updated to allow
+    execution and the binary is started.
 
     ```shell
     chmod +x airgap-fips-pack-amazon-linux-eks-1.0.0.bin && \
@@ -336,28 +334,28 @@ Use the following steps to validate the airgap setup process completed successfu
    installation process. The screenshot below is an example of a file server hosting the unzipped manifest content. The
    example is using Caddy as the file server.
 
-![Example of a file server hosting the unzipped manifest content](/enterprise-version_airgap_airgap-instructions_file-server-caddy.webp)
+   ![Example of a file server hosting the unzipped manifest content](/enterprise-version_airgap_airgap-instructions_file-server-caddy.webp)
 
 3. Ensure your file server is accessible from the environment you are installing VerteX. Use the following command to
    verify the manifest content is accessible from the file server. Replace the hostname or IP address below with your
    file server hostname or IP address.
 
-```shell
-curl http://<hostname>:<port>/roar/nickfury/versions.yaml
-```
+   ```shell
+   curl http://<hostname>:<port>/roar/nickfury/versions.yaml
+   ```
 
-```yaml hideClipboard
-versions:
-  - version: "3.3"
-    filepath: "/roar/nickfury/3.3/version.yaml"
-    patchVersionsFilepath: "/roar/nickfury/3.3/versions.yaml"
-  - version: "3.4"
-    filepath: "/roar/nickfury/3.4/version.yaml"
-    patchVersionsFilepath: "/roar/nickfury/3.4/versions.yaml"
-  - version: "4.0"
-    filepath: "/roar/nickfury/4.0/version.yaml"
-    patchVersionsFilepath: "/roar/nickfury/4.0/versions.yaml"
-```
+   ```yaml hideClipboard
+   versions:
+     - version: "3.3"
+       filepath: "/roar/nickfury/3.3/version.yaml"
+       patchVersionsFilepath: "/roar/nickfury/3.3/versions.yaml"
+     - version: "3.4"
+       filepath: "/roar/nickfury/3.4/version.yaml"
+       patchVersionsFilepath: "/roar/nickfury/3.4/versions.yaml"
+     - version: "4.0"
+       filepath: "/roar/nickfury/4.0/version.yaml"
+       patchVersionsFilepath: "/roar/nickfury/4.0/versions.yaml"
+   ```
 
 ## Next Steps
 

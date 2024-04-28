@@ -759,7 +759,7 @@ environment. Reach out to our support team if you need assistance.
 
 12. Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
     following command to retrieve the load balancer IP address. You may require the assistance of your network
-    administrator to create a DNS record.
+    administrator to create the DNS record.
 
     ```shell
     kubectl get service ingress-nginx-controller --namespace ingress-nginx \
