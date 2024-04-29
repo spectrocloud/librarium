@@ -1,6 +1,6 @@
 .PHONY: initialize start commit build
 
-include .env
+-include .env
 
 IMAGE:=spectrocloud/librarium
 # Retrieve all modified files in the content folder and compare the difference between the master branch git tree blob AND this commit's git tree blob
