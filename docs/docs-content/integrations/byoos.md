@@ -23,7 +23,6 @@ BYOOS pack can be used with both Edge and non-Edge environments.
 
 ## Versions Supported
 
-<br />
 <Tabs queryString="versions">
 
 <TabItem label="1.0.x" value="1.0.x">
@@ -33,8 +32,6 @@ BYOOS pack can be used with both Edge and non-Edge environments.
 <TabItem label="Edge" value="edge">
 
 ## Prerequisites
-
-<br />
 
 - The Edge Provider images you have created and uploaded to a container registry. Refer to the
   [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide for steps on how to
@@ -103,14 +100,9 @@ create Edge Artifacts.
 
 <TabItem label="Non-Edge" value="Non-Edge">
 
-</TabItem>
-</Tabs>
-
 ## Prerequisites
 
 To use the non-Edge BYOOS pack, you must have the following:
-
-<br />
 
 - A custom OS that you created. Refer to the
   [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide to learn how to
@@ -119,8 +111,6 @@ To use the non-Edge BYOOS pack, you must have the following:
 ## Parameters
 
 The following is a list of parameters required when using the BYOOS pack.
-
-<br />
 
 | Parameter         | Description                                                                                                                                                       | Type   |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
@@ -145,11 +135,7 @@ types and how to create a cluster profile.
 
 :::
 
-<br />
-
 Fill out the required parameters with information about your custom OS, such as the ID, OS distribution, and version.
-
-<br />
 
 ```yaml
 pack:
@@ -158,8 +144,6 @@ pack:
   osVersion: "8"
 ```
 
-<br />
-
 ![View of the cluster profile wizard](/clusters_byoos_image-builder_cluster-profile-byoos-yaml.webp)
 
 Check out the [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide to
@@ -167,12 +151,8 @@ learn to create a custom image for Palette.
 
 ---
 
-<br />
-
 Image creation tools are available to help you create custom OS images for the infrastructure provider you are using.
 The following is a list of commonly used tools for creating a custom OS:
-
-<br />
 
 - [AWS EC2 Image Builder](https://aws.amazon.com/image-builder/).
 
@@ -181,6 +161,9 @@ The following is a list of commonly used tools for creating a custom OS:
 - [HashiCorp Packer](https://developer.hashicorp.com/packer).
 
 - [Kubernetes Image Builder (KIB)](https://image-builder.sigs.k8s.io/introduction.html).
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 
@@ -192,8 +175,6 @@ The following is a list of commonly used tools for creating a custom OS:
 <TabItem label="Edge" value="edge">
 
 You can retrieve details about the BYOOS Edge OS agent pack using the following Terraform code.
-
-<br />
 
 ```hcl
 data "spectrocloud_registry" "public_registry" {
@@ -212,8 +193,6 @@ data "spectrocloud_pack_simple" "byoos" {
 <TabItem label="Non-Edge" value="non-Edge">
 
 You can retrieve details about the BYOOS pack by using the following Terraform code.
-
-<br />
 
 ```hcl
 data "spectrocloud_registry" "public_registry" {
