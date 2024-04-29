@@ -29,7 +29,7 @@ proceeding with the installation. Refer to the
   host.
 
 - Palette CLI installed and available. Refer to the Palette CLI
-  [Install](../../../palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
+  [Install](../../../automation/palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
 
 - Review the required VMware vSphere [permissions](vmware-system-requirements.md). Ensure you have created the proper
   custom roles and zone tags.
@@ -134,7 +134,7 @@ Use the following steps to install Palette.
 
 5.  Open a terminal window and invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The
     interactive CLI prompts you for configuration details and then initiates the installation. For more information
-    about the `ec` subcommand, refer to [Palette Commands](../../../palette-cli/commands/commands.md).
+    about the `ec` subcommand, refer to [Palette Commands](../../../automation/palette-cli/commands/commands.md).
 
     ```bash
     palette ec install
@@ -428,7 +428,7 @@ teams.
 
 ## Resources
 
-- [Palette CLI](../../../palette-cli/install-palette-cli.md#download-and-setup)
+- [Palette CLI](../../../automation/palette-cli/install-palette-cli.md#download-and-setup)
 
 - [VMware System Requirements](vmware-system-requirements.md)
 

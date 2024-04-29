@@ -74,16 +74,16 @@ the following sections for a complete list of features, improvements, and known 
 - The [Validator AWS](https://github.com/spectrocloud-labs/validator-plugin-aws) plugin now reports IAM permissions
   issues that are caused by
   [Service control policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html).
-  Refer to the Palette CLI [Validator](./palette-cli/commands/validator.md) page to learn how to use Validator with the
-  Palette CLI.
+  Refer to the Palette CLI [Validator](./automation/palette-cli/commands/validator.md) page to learn how to use
+  Validator with the Palette CLI.
 
 - Packs that are marked as _Disabled_ are no longer displayed in the cluster profile creation wizard. Existing cluster
   profiles containing disabled packs are not affected and continue to work as expected. Refer to the
   [maintenance policy](./integrations/maintenance-policy.md#pack-deprecations) page to learn more.
 
-- Several enhancements have been added to the Palette CLI [Validator](./palette-cli/commands/validator.md) command that
-  improves the user experience. The enhancements include a Validator upgrade feature, a describe subcommand that
-  displays results more clearly, an interactive re-configure option, the ability to restart the wizard, and more.
+- Several enhancements have been added to the Palette CLI [Validator](./automation/palette-cli/commands/validator.md)
+  command that improves the user experience. The enhancements include a Validator upgrade feature, a describe subcommand
+  that displays results more clearly, an interactive re-configure option, the ability to restart the wizard, and more.
 
 - Cox Edge has been removed as a supported platform for Edge clusters. Cox stopped supporting the platform and is no
   longer available for new deployments. All Cox Edge-related resources and API endpoints have been removed.
@@ -227,7 +227,7 @@ the following sections for a complete list of features, improvements, and known 
   `fips-validate` command. The command scans the cluster and reports the FIPS compliance status of images. The command
   also supports checking exposed service endpoints for approved ciphers and TLS versions. Images and service endpoints
   that are not compliant are reported with either a failed or unknown status. Refer to the
-  [FIPS Validate](./palette-cli/commands/fips-validate.md) guide to learn more about the command.
+  [FIPS Validate](./automation/palette-cli/commands/fips-validate.md) guide to learn more about the command.
 
 - VerteX instances now use Kubernetes version 1.27.11. This new version of Kubernetes will cause node repave events
   during the upgrade process. If you have multiple self-hosted Palette instances in a VMware environment, take a moment
