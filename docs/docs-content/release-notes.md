@@ -15,7 +15,7 @@ tags: ["release-notes"]
 
 ## Bug Fixes
 
-- Fixed an issue when using creating a DNS mapping for for the
+- Fixed an issue when using creating a DNS mapping for the
   [System PCG](./clusters/pcg/architecture.md#system-private-gateway) caused errors in the User Interface (UI) and
   prevented the mapping from being created. The issue has been resolved and you can now create DNS mappings for the
   System PCG without any issues.
