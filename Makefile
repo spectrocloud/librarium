@@ -1,5 +1,7 @@
 .PHONY: initialize start commit build
 
+-include .env
+
 IMAGE:=spectrocloud/librarium
 # Retrieve all modified files in the content folder and compare the difference between the master branch git tree blob AND this commit's git tree blob
 CHANGED_FILE=$(shell git diff-tree -r --no-commit-id --name-only master HEAD | grep content)
@@ -8,6 +10,7 @@ TEMP_DIR=$(shell $TMPDIR)
 
 CPUS := $(shell sysctl -n hw.ncpu | awk '{print int($$1 / 2)}')
 
+ALOGLIA_CONFIG=$(shell cat docsearch.dev.config.json | jq -r tostring)
 
 
 help: ## Display this help
@@ -39,7 +42,7 @@ clean-api: ## Clean API docs
 	@echo "cleaning api docs"
 	npm run clean-api-docs
 	# Remove the sidebar file as it's not removed by the clean-api command
-	rm -f docs/api-content/api-docs/v1/sidebar.ts
+	rm -f docs/api-content/api-docs/v1/sidebar.ts && rm -f docs/api-content/api-docs/edge-v1/sidebar.ts
 
 clean-visuals:
 	@echo "Cleaning visual regression tests"
@@ -156,21 +159,56 @@ pdf-local: ## Generate PDF from local docs
 
 ###@ URL Checks
 
-verify-url-links: ## Check for broken URLs in production
+verify-url-links:
+	@echo "Checking for broken external URLs in markdown files..."
 	rm link_report.csv || echo "No report exists. Proceeding to scan step"
-	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --retry --retry-errors-count 3 --skip "^http(?!.*spectrocloud\\.com).*$"" --skip "^https:\/\/docs\.spectrocloud\.com\/.*\/supplemental\-packs$"" --format csv > temp_report.csv && sleep 2
-	grep -E '^[^,]*,[[:space:]]*([4-9][0-9]{2}|[0-9]{4,}),' temp_report.csv > link_report.csv && rm temp_report.csv
-
+	@npx linkinator "docs/**/*.md" --markdown --recurse --timeout 60000 --retry --retry-errors-jitter --retry-errors-count 3 \
+		--skip "^https:\/\/docs\.spectrocloud\.com.*$$" \
+		--skip "^https:\/\/docs\.spectrocloud\.com\/.*\/supplemental\-packs$$" \
+		--skip "^http:\/\/docs\.spectrocloud\.com.*$$" \
+		--skip "^https:\/\/software-private\.spectrocloud\.com.*$$" \
+		--skip "^\/.*\.md$$" \
+		--skip "!\[.*\]\(.*\)$$" \
+		--skip "\.(jpg|jpeg|png|gif|webp)$$" \
+		--skip "https:\/\/linux\.die\.net\/man\/.*$$" \
+		--skip "https:\/\/mysql\.com\/.*\.*$$" \
+		--skip "https:\/\/dev\.mysql\.com\/doc/\.*$$" \
+		--format csv > temp_report.csv && sleep 2
+	@grep -E 'https?://' temp_report.csv > filtered_report.csv
+	@grep -E ',[[:space:]]*([4-9][0-9]{2}|[0-9]{4,}),' filtered_report.csv > link_report.csv && rm temp_report.csv filtered_report.csv
 
 verify-url-links-ci: ## Check for broken URLs in production in a GitHub Actions CI environment
+	@echo "Checking for broken external URLs in CI environment..."
 	rm link_report.json || echo "No report exists. Proceeding to scan step"
-	npx linkinator https://docs.spectrocloud.com/ --recurse --timeout 60000 --retry --retry-errors-count 3 --skip '^http(?!.*software-private.spectrocloud\\.com).*$'' --skip '^http(?!.*spectrocloud\\.com).*$'' --format json > temp_report.json
-	jq 'del(.links[] | select(.status <= 200))' temp_report.json > link_report.json
-	rm temp_report.json
-	mv link_report.json scripts/
+	@npx linkinator "docs/**/*.md" --markdown --recurse --timeout 60000 --retry --retry-errors-count 3 \
+		--skip "^https:\/\/docs\.spectrocloud\.com.*$$" \
+		--skip "^https:\/\/docs\.spectrocloud\.com\/.*\/supplemental\-packs$$" \
+		--skip "^http:\/\/docs\.spectrocloud\.com.*$$" \
+		--skip "^https:\/\/software-private\.spectrocloud\.com.*$$" \
+		--skip "^\/.*\.md$$" \
+		--skip "!\[.*\]\(.*\)$$" \
+		--skip "\.(jpg|jpeg|png|gif|webp)$$" \
+		--skip "https:\/\/linux\.die\.net\/man\/.*$$" \
+		--skip "https:\/\/mysql\.com\/.*\.*$$" \
+		--skip "https:\/\/dev\.mysql\.com\/doc/\.*$$" \
+		--format json > temp_report.json
+	@# Use jq to filter out links that do not start with http or https and keep only broken links
+	@jq '[.links[] | select(.url | test("^https?://")) | select(.status >= 400)]' temp_report.json > filtered_report.json
+	@rm temp_report.json
+	@mv filtered_report.json scripts/link_report.json
 
 ###@ Image Formatting
 
 format-images: ## Format images
 	@echo "formatting images in /static/assets/docs/images/ folder"
 	./scripts/compress-convert-images.sh
+
+###@ Aloglia Indexing
+
+update-dev-index: ## Update the Algolia index for the dev environment
+	@echo "updating Algolia index for dev environment"
+	docker run  -e APPLICATION_ID=${ALGOLIA_APP_ID}  -e API_KEY=${ALGOLIA_ADMIN_KEY} -e CONFIG='${ALOGLIA_CONFIG}'  algolia/docsearch-scraper
+
+remove-dev-index: ## Remove the Algolia index for the dev environment
+	@echo "removing Algolia index for dev environment"
+	algolia index delete dev-docusaurus-librarium --confirm

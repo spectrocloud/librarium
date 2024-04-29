@@ -11,427 +11,365 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## Feb 26, 2024 - Release 4.2.13
+## April 14, 2024 - Release 4.3.0 - 4.3.6
 
-### Bug Fixes
+This release contains several new exciting Technical Preview features, including the Edge Local UI and Cluster Profile
+variables. Other notable features include enhancements to the Palette CLI, support for deploying Konvoy clusters, Azure
+AKS support for VerteX, and adding multiple system administrators to the Palette and VerteX system consoles. Check out
+the following sections for a complete list of features, improvements, and known issues.
 
-- Fixed an issue where AWS VPC CNI would not work with Kubernetes 1.28 when using AWS EKS.
+### Security Notices
 
-- Fixed an issue with the Kubernetes Dashboard cookies and internal Palette ingress configuration that caused the
-  Kubernetes Dashboard to fail to load.
+- Kubernetes version 1.27.9 is deprecated due to a security vulnerability. We recommend upgrading to a newer version of
+  Kubernetes, such as 1.27.11, to avoid issues.
 
-- Fixed an issue with MicroK8s failing to launch pods due to a mismatch in node affinity labels.
-
-- Resolved an issue with MAAS clusters failing to deploy when the default image endpoint is not set in an airgap
-  environment
-
-- Resolved the remaining MAAS node upgrade issues 4.2.12 did not address.
-
-## Feb 16, 2024 - Release 4.2.12
-
-### Bug Fix - IaaS Cluster Repaves Causing Cluster Downtime
-
-#### Affected services
-
-IaaS clusters in Palette 4.2.x prior to 4.2.12, including Palette SaaS, self-hosted Palette/VerteX, as well as dedicated
-instances. Affected cluster types include the following:
-
-- AWS IaaS (not EKS)
-- Azure IaaS (not AKS)
-- Google IaaS (not GKE)
-- MAAS
-- vSphere
-- OpenStack
-
-Managed Kubernetes clusters on EKS, GKE and AKS are not affected. Edge clusters are not affected.
-
-#### Issue Summary
-
-We identified an issue related to cluster repaves in Palette 4.2.x. During a cluster upgrade that required a repave, the
-Palette Agent deployed within the clusters would delete all the worker nodes within a worker pool before provisioning
-new worker nodes. This results in the worker pool being down during an upgrade. All workloads within the pool will be
-offline during the upgrade.
-
-If the cluster is configured to enable updating worker pools in parallel, then this can result in all services on the
-cluster becoming unavailable.
-
-#### Customer Guidance
-
-This issue has been addressed in Palette 4.2.12 and its corresponding Palette Agent version 4.2.4. Use the following
-steps to identify whether your cluster uses an affected agent version.
-
-1. Log in to [Palette](https://console.spectrocloud.com/).
-2. From the left **Main Menu**, click on **Clusters**. Select your cluster to access the cluster details page.
-3. At the bottom of the cluster details page, the Palette agent version used by your cluster is displayed. If your Agent
-   version is any of the following versions, your cluster is still susceptible to this issue: 4.2.0, 4.2.1, 4.2.2,
-   4.2.3.
-
-:::warning
-
-Ensure that you do not initiate any cluster repaves as long as you are using an affected agent version. Changes in the
-OS or the Kubernetes layer would initiate an cluster repave attempt. When you get the cluster repave notification,
-reject the repave.
-
-:::
-
-**If you are not using an affected agent version**, no action is required on your part. If you plan to upgrade to 4.2.x
-in the future, ensure you upgrade to a version of Palette that's 4.2.12 or later.
-
-**If you are using an affected agent version**, first make sure that your Palette instance version is 4.2.12 or newer.
-Once you have confirmed your Palette version, unpause Agent upgrades for your cluster if they are paused. To learn how
-to toggle agent upgrades, refer to
-[Pause Platform Upgrades](./clusters/cluster-management/platform-settings/pause-platform-upgrades.md). In 5 - 10
-minutes, the Palette agent will upgrade to a new version that includes the bug fix. If the agent does not upgrade for an
-extended period of time, contact support@spectrocloud.com.
-
-## February 3, 2024 - Release 4.2.9
-
-### Bug Fixes
-
-- Fixed an issue that caused errors when creating pods after certificate renewals.
-- Resolved image pull errors from the AWS ECR registry.
-
-## January 25, 2024 - Release 4.2.7
-
-### Bug Fixes
-
-- Fixed an issue that caused MinIO S3 URL setting to be missing in backup location settings.
-- Fixed an issue that prohibited updating Helm packs in cluster profiles.
-- Fixed an issue that caused certain OCI registries created before the Palette 4.2 upgrade to be unlisted.
-- Fixed an issue that caused HTTP 400 errors when visiting the
-  [Kubernetes Dashboard](./integrations/kubernetes-dashboard.md). The issue was caused by an internal cookie size limit
-  that was insufficient for the Kubernetes Dashboard.
-
-## January 9, 2024 - Release 4.2.4
-
-### Bug Fixes
-
-- An invalid toggle User Interface option that appeared in the Edge cluster creation process when defining node groups
-  has been removed.
-
-## January 6, 2024 - Release 4.2.0
-
-Palette 4.2.0 is a release that includes new features and various improvements. New features include support for Nutanix
-clusters, automatic SSL certificate renewal, and enhanced cluster repave control and mitigation. Improvements include
-support for MicroK8S on MAAS clusters, several network enhancements for Edge deployments, a new differential editor that
-helps you identify cluster profile changes, and support for a local image registry for Edge clusters. Check out the
-notes below to learn more about the new features and improvements.
+- Review the [Security Bulletins](./security-bulletins/cve-reports.md) page for the latest security advisories.
 
 ### Palette
 
 #### Features
 
-- Palette now supports the cloud provider, [Nutanix](https://www.nutanix.com/), as a Technical Preview feature. You can
-  deploy Kubernetes clusters on Nutanix using Palette. Technical Preview features are subject to change as we continue
-  to improve the integration. Refer to the [Nutanix](./clusters/data-center/nutanix/nutanix.md) resource to learn more
-  about deploying Nutanix clusters with Palette.
+<!-- prettier-ignore -->
+- <TpBadge /> Cluster Profile variables, a new feature that allows you to define variables in a cluster profile. This
+  feature is in Tech Preview and is available only for Edge clusters using Local UI. Profile variables allow you to define variable
+  types, apply validation, and narrow the scope of variables to a cluster profile. 
+  Check out [Cluster Profile Variables](./profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) to learn more about
+  profile variables.
 
-- Automatic SSL certificate renewal is now supported for clusters deployed through Palette. In the past, this was a
-  manual action that had to be performed by the user, which also caused node repaves. Palette will now automatically
-  renew the certificate 30 days before the expiration date without triggering a node repave. This feature is available
-  in all supported infrastructure providers except for Edge. For more information, refer to the
-  [Certificate Management](./clusters/cluster-management/certificate-management.md) resource.
+- MAAS clusters using Palette eXtended Kubernetes (PXK) now support the ability to specify a custom MAAS API endpoint
+  URL and port during cluster creation. This feature allows you to use a custom DNS server or Virtual IP (VIP) that is
+  not resolvable outside of the MAAS network. Refer to the [PXK](./integrations/kubernetes.md#custom-maas-endpoint)
+  documentation for more details.
 
-- Enhanced cluster repave control and mitigation. In the Palette 4.1 release, repave notification warnings become
-  available through the User Console (UI). In this release, cluster administrators, project administrators, and tenant
-  administrators must acknowledge the repave notification and decide whether to proceed with the action. This feature
-  helps prevent accidental node upgrades that may cause downtime and provides a way to mitigate repaves by allowing
-  administrators to cancel the action that will trigger a repave.
+- Support for [Konvoy](./integrations/konvoy.md) is now available in Palette. You can create a custom image using the
+  Konvoy image builder project and use it to deploy a Konvoy cluster. Check out the
+  [Red Hat Linux Enterprise and Konvoy](./byoos/usecases/vmware/konvoy.md) guide to learn how to create a custom image
+  and deploy a Konvoy cluster.
 
-- A Pack's README file is displayed during the cluster profile creation and editing process. You can find additional
-  information about a pack in the [Packs List](./integrations/integrations.mdx) page.
-
-- Palette CLI now supports integration with [Validator](https://github.com/spectrocloud-labs/validator), an open-source
-  framework that you can use to validate your self-hosted Palette, VerteX, or workload cluster environment. Validator
-  performs Day 0-2 validation and configuration drift detection in a composable manner across various systems. Use the
-  `palette validator` command to verify your environment before installing a self-hosted instance of Palette or VerteX.
-  You can also use Validator to verify the environment requirements for deploying a cluster. For more information, refer
-  to the [Validator](./palette-cli/commands/validator.md) CLI reference.
-
-- Support for passkeys is now available for the self-hosted Palette admin user. When accessing the system console, you
-  can now use passkeys to authenticate to the admin user account. For more information, refer to the
-  [System Console Credentials](./enterprise-version/system-management/account-management/credentials.md) resource.
-
-- You can start a local Palette documentation server by using the Palette CLI's `docs` command. This feature is useful
-  when you want to access Palette documentation offline. For more information, refer to the
-  [Docs](./palette-cli/commands/docs.md) command page.
+- Multiple system administrators can now be added to the self-hosted Palette system console to help manage and maintain
+  the Palette instance. The feature helps organizations embrace the separation of duties by delegating different
+  responsibilities to system administrators. Refer to the
+  [System Administrators](./enterprise-version/system-management/account-management/account-management.md#system-administrators)
+  page to learn more about system administrators.
 
 #### Improvements
 
-- MicroK8S is now available for MAAS clusters. Create a cluster profile with MicroK8S as the Kubernetes pack to deploy a
-  MAAS cluster with MicroK8S.
+- <TpBadge /> Nutanix cluster deployments now display YAML variables and expose them as input fields in the User
+  Interface (UI) during the cluster deployment process. Previously, the UI did not display the YAML variables for
+  Nutanix clusters and users had to update the machine template YAML manually. You can learn more about Nutanix in the
+  [Create and Manage Nutanix Cluster](./clusters/data-center/nutanix/create-manage-nutanix-cluster.md) guide.
 
-- An improved differential editor is now available. The new editor provides a side-by-side comparison of the changes
-  that will be applied to the cluster profile. The editor also identifies the YAML customizations you have added and
-  guides you through carrying over the customizations to the new version of the YAML. The ability to undo changes and
-  accept all changes is also available.
+- The cluster deployment user flow experience has been improved to streamline the cluster creation process. You can now
+  select between IaaS and managed Kubernetes clusters from the initial platform selection screen. The update combines
+  the selection of platform and type of Kubernetes cluster while also detecting and notifying if a prerequisite is not
+  met.
 
-- When updating a deployed cluster profile or an active cluster's profile, the new differential editor is available to
-  help you identify the changes that will be applied to the cluster profile.
+- When installing a Private Cloud Gateway (PCG) or a self-hosted Palette instance through the Palette CLI, you can now
+  benefit from additional checks and user feedback that ensure the installation process is successful. This new feedback
+  experience gives you a better understanding of the components being installed and the progress of the installation. In
+  case of a failure, the failed component is highlighted, and an error message is displayed.
 
-- Private Cloud Gateway (PCG) deployments now use Kubernetes version 1.26. Previously, the default Kubernetes version
-  was 1.24. Use the latest version of the [Palette CLI](./spectro-downloads.md#palette-cli) to install PCG clusters.
-  Existing Private Cloud Gateway deployments will require a manual reconciliation of the cluster profile to update the
-  Kubernetes version to 1.26. Make sure you carry over any customizations the current cluster profile may have, such as
-  pod CIDR and service CIDR before updating the cluster profile with the new Kubernetes version. Refer to the
-  [Update a Cluster Profile](./profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md#update-the-pack-version)
-  guide to learn more on reconciling a cluster profile pack layer change.
+- Imported clusters now support updating network proxy configurations as a Day-2 operation.
+
+- The [Validator AWS](https://github.com/spectrocloud-labs/validator-plugin-aws) plugin now reports IAM permissions
+  issues that are caused by
+  [Service control policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html).
+  Refer to the Palette CLI [Validator](./palette-cli/commands/validator.md) page to learn how to use Validator with the
+  Palette CLI.
+
+- Packs that are marked as _Disabled_ are no longer displayed in the cluster profile creation wizard. Existing cluster
+  profiles containing disabled packs are not affected and continue to work as expected. Refer to the
+  [maintenance policy](./integrations/maintenance-policy.md#pack-deprecations) page to learn more.
+
+- Several enhancements have been added to the Palette CLI [Validator](./palette-cli/commands/validator.md) command that
+  improves the user experience. The enhancements include a Validator upgrade feature, a describe subcommand that
+  displays results more clearly, an interactive re-configure option, the ability to restart the wizard, and more.
+
+- Cox Edge has been removed as a supported platform for Edge clusters. Cox stopped supporting the platform and is no
+  longer available for new deployments. All Cox Edge-related resources and API endpoints have been removed.
+
+- PCG deployments using the Palette CLI for MAAS and VMware vSphere now use Kubernetes version 1.27.11. Palette CLI
+  installs targeting an OpenStack environment will use Kubernetes version 1.24.10. Existing PCG clusters installed
+  through Palette CLI will be eligible for a cluster profile update. We recommend you review the
+  [Upgrade a PCG](./clusters/pcg/manage-pcg/pcg-upgrade.md) guide to learn more about updating a PCG.
+
+- Self-hosted Palette instances now use Kubernetes version 1.27.11. This new version of Kubernetes will cause node
+  repave events during the upgrade process. If you have multiple self-hosted Palette instances in a VMware environment,
+  take a moment and review the [Known Issues](#known-issues) section below for potential issues that may arise during
+  the upgrade process.
 
 #### Known Issues
 
-- The ability to change the underlying node type of a node pool is not available for Google Cloud Platform GKE clusters.
+- Conducting cluster node scaling operations on a cluster undergoing a backup can lead to issues and potential
+  unresponsiveness. To avoid this, ensure no backup operations are in progress before scaling nodes or performing other
+  cluster operations that change the cluster state.
 
-- Clusters launched in VMware vSphere with the Container Network Interface (CNI) Cilium, lose node-to-node connectivity
-  when the vSphere adapter is configured to use VMXNET3. This is a known issue with Cilium and VMXNET3. Refer to the
-  [GitHub issue discussion](https://github.com/cilium/cilium/issues/21801) to learn more about this issue.
+- Palette automatically creates a security group for worker nodes using the format `<cluster-name>-node`. If a security
+  group with the same name already exists in the VPC, the cluster creation process fails. To avoid this, ensure that no
+  security group with the same name exists in the VPC before creating a cluster.
 
-- Enabling [passkeys](/enterprise-version/system-management/account-management/credentials.md) in a self-hosted Palette
-  instance will cause JSON Web Tokens (JWT) returned by the system API endpoint `/v1/auth/syslogin` to be invalid. Refer
-  to the
-  [Passkeys and API Access](./enterprise-version/system-management/account-management/credentials.md#passkeys-and-api-access)
-  resource for more information on accessing the system API when passkeys are enabled. This issue does not affect the
-  regular Palette API used by clusters and users.
+- K3s version 1.27.7 has been marked as _Deprecated_. This version has a known issue that causes clusters to crash.
+  Upgrade to a newer version of K3s to avoid the issue, such as versions 1.26.12, 1.28.5, and 1.27.11. You can learn
+  more about the issue in the [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047).
+
+- When deploying a multi-node AWS EKS cluster with the Container Network Interface (CNI)
+  [Calico](https://docs.spectrocloud.com/integrations/calico), the cluster deployments fail. A workaround is to use the
+  AWS VPC CNI in the interim while the issue is resolved.
+
+- If a Kubernetes cluster deployed onto VMware is deleted, and later re-created with the same name, the cluster creation
+  process fails. The issue is caused by existing resources remaining inside PCG, or System PCG, that are not cleaned up
+  during the cluster deletion process. Refer to the
+  [VMware Resources Remain After Cluster Deletion](./troubleshooting/pcg.md#scenario---vmware-resources-remain-after-cluster-deletion)
+  troubleshooting guide for resolution steps.
+
+  <!-- prettier-ignore -->
+
+- In a VMware environment, self-hosted Palette instances do not receive a unique cluster ID when deployed, which can
+  cause issues during a node repave event, such as a Kubernetes version upgrade. Specifically, Persistent Volumes (PVs)
+  and Persistent Volume Claims (PVCs) will experience start problems due to the lack of a unique cluster ID. To resolve
+  this issue, refer to the
+  [Volume Attachment Errors Volume in VMware Environment](./troubleshooting/palette-upgrade.md#volume-attachment-errors-volume-in-vmware-environment)
+  troubleshooting guide.
+
+- Day-2 operations related to infrastructure changes, such as modifying the node size, and node count, when using
+  MicroK8s are not taking effect.
 
 ### Edge
 
 #### Breaking Changes
 
-- Edge hostnames are not allowed to have special characters. Validation has been added to prevent issues arising from
-  using special characters in host names. Edge hostnames must comply with
-  [RFC1035](https://datatracker.ietf.org/doc/html/rfc1035), refer to the
-  [Edge Installer Configuration](./clusters/edge/edge-configuration/edge-configuration.md) and review the `name`
-  parameter for more information.
+- Edge hosts now require a minimum storage capacity of 100 GB. The previous minimum storage capacity was 60 GB. Refer to
+  the [Minimum Device Requirements](./clusters/edge/architecture.md#minimum-device-requirements) page to learn more
+  about the minimum requirements for Edge hosts.
 
 #### Features
 
-- Overlay support for DHCP is now available as a Tech Preview feature. Edge clusters can now establish an VxLAN overlay
-  network during cluster creation, and Edge hosts can self-discover the overlay network within a single ethernet
-  broadcast domain. Clusters using this feature will remain operational when the host IP addresses change unexpectedly.
-  Check out the [Enable Overlay Network](clusters/edge/networking/vxlan-overlay.md) resource for more information.
+- The Edge Local UI is a new feature that provides a local management interface for Edge clusters in an airgap
+  environment. The local UI is a web-based interface that allows you to manage Edge hosts in your network locally,
+  upload content bundles containing images, Helm charts, and packs, and create Edge clusters locally in disconnected
+  environments without connections to a Palette instance. To get started with local UI, refer to the
+  [Edge Local UI](./clusters/edge/local-ui/local-ui.md) documentation.
 
-- Local registry support is now available as a Tech Preview feature. You can deploy a self-hosted
-  [Harbor registry](https://goharbor.io) on your Edge cluster and use the registry to store images for your workloads
-  and initialize a cluster's other edge host nodes. Using a local registry can help you reduce the amount of data
-  transferred over the network, cache images locally, and provide a backup for when internet access is unavailable.
-
-- Edge Kubernetes network interface management support. You can now specify the network interface for your edge hosts
-  versus relying on the default interface selected by Kubernetes. This feature is useful when you have multiple network
-  interfaces on your edge hosts and want to use a specific interface for your workloads or if you are using the new
-  overlay support for DHCP. Check out the
-  [Create Cluster Definition](./clusters/edge/site-deployment/site-installation/cluster-deployment.md) resource for more
-  information on how to specify the network interface for your edge hosts during cluster deployment.
+<!-- prettier-ignore -->
+- <TpBadge /> Edge hosts using a local [image registry through Harbor](./integrations/harbor-edge.md) can now also use a
+  [private external image registry](./clusters/edge/site-deployment/deploy-custom-registries/deploy-external-registry.md) alongside the local
+  registry. The feature allows the cluster to pull image from a private external image registry and store them in the
+  local registry. Images for the add-on layers of the cluster will be pulled from the local registry, reducing bandwidth
+  needs and improving service availability.
 
 #### Improvements
+
+- Improved Edge cluster upgrade experience. In the past, most upgrades would trigger a repave when not always necessary.
+  The enhancement applies more intelligence to the upgrade process and determines if a reboot, service reload, or repave
+  is required. Refer to the [Edge Cluster Upgrade Behavior](./clusters/edge/upgrade-behavior.md) page to learn more
+  about the upgrade behavior.
 
 - New Edge clusters can now retrieve provider images from authenticated registries. Previously, only public registries
   were supported for non-airgapped clusters. Now, you can use authenticated registries to store your provider images and
   retrieve them during cluster deployment. For more information, refer to the
-  [Deploy Cluster with a Private Registry](clusters/edge/site-deployment/deploy-private-registry.md) guide.
+  [Deploy Cluster with a Private Registry](clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md)
+  guide.
 
-- Extended [kube-vip customization](https://kube-vip.io/docs/installation/flags/) is now available for new Edge
-  clusters. You can now specify additional kube-vip configuration parameters as part of the Kubernetes pack layer
-  configuration. To learn more about the available kube-vip configuration parameters, refer to the
-  [Publish Cluster Services with Kube-vip](clusters/edge/networking/kubevip.md) resource.
+- Edge hosts using RKE2 as the Kubernetes distribution can now use the
+  [network overlay](./clusters/edge/networking/vxlan-overlay.md) feature.
 
-#### Known Issues
+- Edge hosts using a local image registry through Harbor can now turn off image pulls from the local registry through
+  namespace annotations. Refer to the
+  [Harbor Edge](./integrations/harbor-edge.md#enable-image-download-from-outside-of-harbor) reference page to learn more
+  about the feature.
 
-- The following known issues apply to the VxLAN network overlay feature:
+#### Known issues
 
-  - When adding multiple nodes to an existing cluster with overlay enabled, failure to add one node will block the
-    addition of the other nodes.
+- If a cluster that uses the Rook-Ceph pack experiences network issues, it's possible for the file mount to become
+  unavailable and will remain unavailable even after network is restored. This a known issue disclosed in the
+  [Rook GitHub repository](https://github.com/rook/rook/issues/13818). To resolve this issue, refer to
+  [Rook-Ceph](./integrations/rook-ceph.md#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) pack
+  documentation.
 
-  - When deleting an Edge host from a cluster with overlay enabled, ensure the node doesn't have the `palette-webhook`
-    pod on it, or the node will be stuck in the deleting state. You can use the command
-    `kubectl get pods --all-namespaces --output wide` to identify which node the pod `palette-webhook` is on. Reach out
-    to our support team [support@spectrocloud.com](mailto:support@spectrocloud.com) if you need to remove a node with
-    the `palette-webhook` pod on it.
+- Edge clusters on Edge hosts with ARM64 processors may experience instability issues that causes cluster failures.
 
-- In a multi-node cluster with [PXK-E](./integrations/kubernetes-edge.md) as the Kubernetes distribution, you cannot
-  change the Network Interface Card (NIC). When you add an Edge host to such a cluster, leave the NIC field as its
-  default value.
-
-- The following known issues apply to [Harbor Edge Native Config](./integrations/harbor-edge.md) when deployed with the
-  [Longhorn](./integrations/longhorn.md) Container Storage Interface (CSI) driver:
-
-  - The Harbor job service pod is in a _Terminating_ and _ContainerCreating_ state in an Edge Native High Availability
-    (HA) cluster after a Day-2 operation.
-
-  - The Harbor database pod might fail to start due to file permission issues. This is a
-    [known issue](https://github.com/goharbor/harbor-helm/issues/1676) in the Harbor GitHub repository.
-
-  - A cluster may get stuck in the provisioning state. If this happens, remove the cluster and try again.
-
-### Palette Dev Engine (PDE)
-
-#### Improvements
-
-- The default deployed Kubernetes version for new virtual clusters is now v1.26.
+- During the cluster provisioning process of new edge clusters, the palette webhook pods may not always deploy
+  successfully, causing the cluster to be stuck in the provisioning phase. This issue does not impact deployed clusters.
+  Review the
+  [Palette Webhook Pods Fail to Start](./troubleshooting/edge.md#scenario---palette-webhook-pods-fail-to-start)
+  troubleshooting guide for resolution steps.
 
 ### Virtual Machine Orchestrator (VMO)
 
-#### Features
+#### Improvements
 
-- You can now deploy virtual machines using VMO on an Edge cluster. Edge clusters are useful when deploying Kubernetes
-  clusters in remote locations. Refer to the
-  [Create a VMO Profile](./vm-management/vm-packs-profiles/create-vmo-profile.md) to learn how to create an Edge cluster
-  profile for VMO.
+- Internal VMO components, including KubeVirt, KubeVirt Container Data Importer, and Snapshot Controller, have been
+  updated to ensure compatibility with the latest versions of KubeVirt and associated components.
 
 ### VerteX
 
 #### Features
 
-- Azure Government Cloud support is now available for VerteX. You can now deploy Azure IaaS clusters on Azure Government
-  accounts. The following Azure regions are available: US Gov Arizona, US Gov Texas, and US Gov Virginia. For more
-  information, refer to the [Supported Platforms](./vertex/supported-platforms.md) resource.
+- VerteX now supports deploying clusters on Azure Kubernetes Service (AKS). Refer to the
+  [Create and Manage Azure AKS Cluster](./clusters/public-cloud/azure/aks.md) guide to learn how to deploy an AKS
+  cluster.
 
-- Canonical MAAS support is now available for VerteX. You can now deploy Canonical MAAS clusters with VerteX. Refer to
-  the [MAAS](./clusters/data-center/maas/maas.md) resource for more information on deploying MAAS clusters.
+- Support for [Konvoy](./integrations/konvoy.md) is now available in VerteX. You can create a custom image using the
+  Konvoy image builder project and use it to deploy a Konvoy cluster. Check out the
+  [Red Hat Linux Enterprise and Konvoy](./byoos/usecases/vmware/konvoy.md) guide to learn how to create a custom image
+  and deploy a Konvoy cluster.
 
-- Support for passkeys is now available for the admin user. When accessing the system console, you can now use passkeys
-  to authenticate the admin user account. For more information, refer to the
-  [System Console Credentials](vertex/system-management/account-management/credentials.md) resource.
+- Support for TLS 1.3 is now available in VerteX. Clusters deployed through VerteX and the VerteX instance cluster
+  itself now support TLS 1.3.
+
+- Multiple system administrators can now be added to the VerteX system console to help manage and maintain the VerteX
+  instance. The feature helps organizations embrace the separation of duties by delegating different responsibilities to
+  system administrators. Refer to the
+  [System Administrators](./vertex/system-management/account-management/account-management.md#system-administrators)
+  page to learn more about system administrators.
+
+- The Palette CLI now supports the ability to scan deployed clusters and check for FIPS compliance using the
+  `fips-validate` command. The command scans the cluster and reports the FIPS compliance status of images. The command
+  also supports checking exposed service endpoints for approved ciphers and TLS versions. Images and service endpoints
+  that are not compliant are reported with either a failed or unknown status. Refer to the
+  [FIPS Validate](./palette-cli/commands/fips-validate.md) guide to learn more about the command.
+
+- VerteX instances now use Kubernetes version 1.27.11. This new version of Kubernetes will cause node repave events
+  during the upgrade process. If you have multiple self-hosted Palette instances in a VMware environment, take a moment
+  and review the Palette [Known Issues](#known-issues) section above for potential issues that may arise during the
+  upgrade process.
 
 #### Improvements
 
-- To better support airgap installs and customers in internet-restricted environments. You can now access Palette
-  documentation offline by using the Palette documentation container. For more information, refer to the
-  [Offline Documentation](./vertex/install-palette-vertex/airgap/offline-docs.md) page.
-
-#### Known Issues
-
-- Enabling [passkeys](./vertex/system-management/account-management/credentials.md#add-passkeys) in a VerteX instance
-  will cause JSON Web Tokens (JWT) returned by the system API endpoint `/v1/auth/syslogin` to be invalid. Refer to the
-  [Passkeys and API Access](./vertex/system-management/account-management/credentials.md#passkeys-and-api-access)
-  resource for more information on accessing the system API when passkeys are enabled. This issue does not affect the
-  regular VerteX API used by clusters and users.
+- Password enforcement for VerteX system administrators has been improved to comply with NIST password specifications,
+  NIST 800-53 and NIST 800-63B. Refer to
+  [Password Requirements and Security](./vertex/system-management/account-management/credentials.md#password-requirements-and-security)
+  page for more details.
 
 ### Terraform
 
-#### Breaking Changes
-
-- The parameter `cluster_context` is now a required attribute for the resource `spectrocloud_application`.
-
-- The resource `spectrocloud_cluster_edge_native` is deprecating the following arguments; `ssh_key`, and `host_uids`.
-
 #### Features
 
-- Version 0.17.2 of the
+- Version 0.18.0 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
 ### Docs and Education
 
-- The [Deploy a Custom Pack](./registries-and-packs/deploy-pack.md) tutorial has been updated to include instructions on
-  deploying a custom pack with a custom OCI Pack registry.
+- A new Getting Started experience is now available for new users. The new experience guides users through the key
+  Palette concepts and features to help them get started with Palette. Check out the
+  [Getting Started](./getting-started/getting-started.md) page to learn more.
 
-- The Palette Offline Documentation container image is now cryptographically signed. You can verify the authenticity of
-  the container image by using the [Cosign CLI](https://docs.sigstore.dev/signing/quickstart) and the public key. Refer
-  to the [Offline Documentation](./vertex/install-palette-vertex/airgap/offline-docs.md#container-image-authenticity)
-  page for more information.
+- A new tutorial [Deploy Cluster Profile Updates](./clusters/cluster-management/update-k8s-cluster.md) is now available
+  that guides you through the process of updating a cluster profile.
+
+- A new pack, [Hello Universe](https://github.com/spectrocloud/pack-central/tree/main/packs/hello-universe-1.1.1) is now
+  available in the Pack community repository.
+
+- A new documentation section for PCG has been added to the Palette documentation. The new section consolidates
+  information about the PCG and how to install and configure it. Refer to the
+  [Private Cloud Gateway](./clusters/pcg/pcg.md) page to learn more about PCG.
 
 ### Packs
 
+#### Pack Notes
+
+- Several Kubernetes versions are [deprecated](./integrations/maintenance-policy.md#pack-deprecations) and removed in
+  this release. Review the [Deprecation](#deprecations-and-removals) section for a list of deprecated packs.
+
+- OpenStack support is limited to Palette eXtended Kubernetes (PXK) for version 1.24.x.
+
+- Local Path Provisioner CSI for Edge is now a [verified pack](./integrations/verified_packs.md).
+
 #### Kubernetes
 
-| **Pack**                           | **New Version** |
-| :--------------------------------- | :-------------- |
-| Kubernetes Azure AKS               | 1.28.2          |
-| Kubernetes Amazon EKS              | 1.28.2          |
-| Kubernetes Cox Edge                | 1.28.2          |
-| Kubernetes Cox Edge                | 1.27.6          |
-| Kubernetes Cox Edge                | 1.26.9          |
-| Kubernetes Cox Edge                | 1.25.14         |
-| Kubernetes Google GKE              | 1.27.6          |
-| Kubernetes Google GKE              | 1.26.9          |
-| Kubernetes Google GKE              | 1.25.14         |
-| K3s                                | 1.28.2          |
-| K3s                                | 1.27.7          |
-| K3s                                | 1.26.10         |
-| K3s                                | 1.25.15         |
-| Palette eXtended Kubernetes - Edge | 1.28.2          |
-| Palette eXtended Kubernetes - Edge | 1.27.7          |
-| Palette eXtended Kubernetes - Edge | 1.26.10         |
-| Palette eXtended Kubernetes - Edge | 1.25.15         |
-| Palette eXtended Kubernetes        | 1.28.3          |
-| Palette eXtended Kubernetes        | 1.27.7          |
-| Palette eXtended Kubernetes        | 1.26.10         |
-| Palette eXtended Kubernetes        | 1.25.15         |
-| RKE2                               | 1.28.2          |
-| RKE2                               | 1.27.8          |
-| RKE2                               | 1.26.11         |
-| RKE2 - Edge                        | 1.28.4          |
-| RKE2 - Edge                        | 1.27.7          |
-| RKE2 - Edge                        | 1.26.10         |
-| RKE2 - Edge                        | 1.25.15         |
+| Pack                                       | New Version |
+| ------------------------------------------ | ----------- |
+| K3s                                        | 1.26.14     |
+| K3s                                        | 1.27.11     |
+| K3s                                        | 1.28.7      |
+| K3s                                        | 1.29.2      |
+| Konvoy                                     | 1.27.6      |
+| Palette eXtended Kubernetes (PXK)          | 1.29.0      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.0      |
+| RKE2                                       | 1.29.0      |
+| RKE2 - Edge                                | 1.26.14     |
+| RKE2 - Edge                                | 1.27.11     |
+| RKE2 - Edge                                | 1.28.7      |
+| RKE2 - Edge                                | 1.29.3      |
 
 #### CNI
 
-| **Pack**    | **New Version** |
-| :---------- | :-------------- |
-| AWS VPC CNI | 1.15.1          |
-| Calico CNI  | 3.26.3          |
-| Ciliium OSS | 1.14.3          |
-| Flannel CNI | 0.23.0          |
+| Pack        | New Version |
+| ----------- | ----------- |
+| AWS VPC CNI | 1.15.5      |
+| Calico      | 3.27.0      |
+| Cilium OSS  | 1.13.12     |
+| Cilium OSS  | 1.14.7      |
+| Cilium OSS  | 1.15.1      |
+| Flannel     | 0.24.0      |
 
 #### CSI
 
-| **Pack**              | **New Version** |
-| :-------------------- | :-------------- |
-| Azure Disk CSI Driver | 1.29.1          |
-| AWS EBS CSI           | 1.24.0          |
-| Longhorn CSI          | 1.5.3           |
-| Nutanix CSI           | 2.6.6           |
-| Portworx CSI          | 3.0.4           |
-| Rook Ceph CSI         | 1.12.7          |
+| Pack                                | New Version   |
+| ----------------------------------- | ------------- |
+| AWS EBS CSI                         | 1.26.1        |
+| GCE Persistent Disk Driver          | 1.12.4        |
+| Local Path Provisioner CSI for Edge | 0.0.25        |
+| Longhorn CSI                        | 1.6.0         |
+| Rook Ceph (manifests)               | 1.13.1        |
+| vSphere CSI                         | 3.1.0 , 3.1.2 |
 
 #### Add-on Packs
 
-| **Pack**                  | **New Version** |
-| :------------------------ | :-------------- |
-| External Secrets Operator | 0.9.7           |
-| Flux2                     | 2.10.2          |
-| Harbor Edge Native Config | 1.0.0           |
-| Istio                     | 1.17.2          |
-| Kong Ingress              | 2.32.0          |
-| MetalLB                   | 0.13.11         |
-| Nginx Ingress             | 1.9.4           |
-| Nvidia GPU Operator       | 23.9.1          |
-| Open Policy Agent         | 3.13.2          |
-| Prometheus Operator       | 51.0.3          |
-| Reloader                  | 1.0.43          |
-| Imageswap                 | 1.5.3           |
+| Pack                          | New Version |
+| ----------------------------- | ----------- |
+| AWS Application Load Balancer | 2.6.2       |
+| Cilium Tetragon               | 0.10.1      |
+| Cluster Autoscaler for AWS    | 1.27.5      |
+| Cluster Autoscaler for AWS    | 1.28.2      |
+| External DNS                  | 0.13.6      |
+| External Secrets Operator     | 0.9.11      |
+| HashiCorp Vault               | 0.27.0      |
+| Istio                         | 1.20.1      |
+| MetalLB                       | 0.13.12     |
+| Nginx Ingress                 | 1.9.5       |
+| Prometheus Grafana            | 55.8.3      |
 
 #### FIPS Packs
 
-| **Pack**                           | **New Version** |
-| :--------------------------------- | :-------------- |
-| Azure CSI Driver                   | 1.28.3          |
-| Palette eXtended Kubernetes        | 1.28.3          |
-| Palette eXtended Kubernetes        | 1.27.7          |
-| Palette eXtended Kubernetes        | 1.26.10         |
-| Palette eXtended Kubernetes        | 1.25.15         |
-| Palette eXtended Kubernetes - Edge | 1.27.2          |
-| Palette eXtended Kubernetes - Edge | 1.26.4          |
-| Palette eXtended Kubernetes - Edge | 1.25.9          |
-| RKE2                               | 1.28.6          |
-| RKE2                               | 1.27.8          |
-| RKE2                               | 1.26.11         |
-| RKE2 - Edge                        | 1.27.2          |
-| RKE2 - Edge                        | 1.26.4          |
-| RKE2 - Edge                        | 1.25.2          |
-
-#### Pack Notes
-
-- A Pack's README file is displayed during the cluster profile creation and editing process. You can find additional
-  information about a pack in the [Packs List](./integrations/integrations.mdx) page.
-- ArgoCD is now a verified pack, starting with version 5.46.8.
-- Spot.io is now a verified pack, starting with version 1.0.117.
-- Edge cluster nodes deployed in a single node configuration using RKE2 version 1.26.X must upgrade to the latest minor
-  version of 1.26.10 before upgrading to 1.27.7.
-- The prior issue related to Edge clusters deployed in a single node configuration using RKE2 version 1.26.X has been
-  resolved starting with version 1.26.10.
+| Pack                                       | New Version |
+| ------------------------------------------ | ----------- |
+| AKS                                        | 1.27        |
+| AKS                                        | 1.28        |
+| AWS EBS CSI                                | 1.26.1      |
+| Calico CNI                                 | 3.26.3      |
+| Konvoy                                     | 1.27.6      |
+| Palette eXtended Kubernetes (PXK)          | 1.26.12     |
+| Palette eXtended Kubernetes (PXK)          | 1.27.11     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.26.12     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.11     |
+| RKE2 - Edge                                | 1.26.12     |
 
 #### Deprecations and Removals
 
-- Check out the [Deprecated Packs](integrations/deprecated-packs.md) page for a list of deprecated packs.
+- PXK, PXK-E, and RKE2, versions prior to 1.27.x are deprecated. We recommend upgrading to a newer version of Kubernetes
+  to support the latest features and security updates.
+
+- All Kubernetes pack versions prior to 1.25.0 are disabled across the following distributions:
+
+  - PXK,
+  - PXK-E
+  - K3s
+  - RKE2 - Edge
+  - GKE
+  - AKS
+
+  Kubernetes versions for GKE and AKS prior to verison 1.25 are removed as they are no longer available upstream. AKS
+  1.26 is deprecated as it reached End Of Life (EOL).
+
+  - Exceptions - OpenStack and PXK 1.24 packs have been reverted to _Deprecated_ state from _Disabled_ state. EKS 1.24
+    is also back in deprecated state as support has been extended by AWS.
+
+- An upstream issue in K3s could prevent clusters from starting up successfully when a node is rebooted. This issue can
+  be potentially be seen in patch versions 1.26.10, 1.26.4, 1.26.8 for 1.26, 1.27.2 ,1.27.5 and 1.27.7 for 1.27 and
+  1.28.2, 1.28.4 for 1.28. All these versions have been deprecated. We recommend you use Kubernetes versions 1.26.14,
+  1.27.11 or 1.28.7 as these versions contain the fix for the upstream issue.
+
+- Check out the [Deprecated Packs](integrations/deprecated-packs.md) page for a list of all deprecated packs.

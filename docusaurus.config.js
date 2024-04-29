@@ -24,6 +24,7 @@ const config = {
   onBrokenLinks: "throw",
   onBrokenAnchors: "throw",
   onBrokenMarkdownLinks: "throw",
+  trailingSlash: true,
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
@@ -31,7 +32,7 @@ const config = {
     defaultLocale: "en",
     locales: ["en"],
   },
-  staticDirectories: ["static", "static/assets/docs/images", "static/assets"],
+  staticDirectories: ["static", "static/assets/docs/images", "static/assets", "static/img/"],
   headTags: [
     {
       tagName: "script",
@@ -127,7 +128,7 @@ const config = {
           editUrl: "https://github.com/spectrocloud/librarium/blob/master",
         },
         sitemap: {
-          changefreq: "weekly",
+          changefreq: "daily",
           priority: 0.5,
           ignorePatterns: ["/tags/**"],
           filename: "sitemap.xml",
@@ -149,6 +150,10 @@ const config = {
         docItemComponent: "@theme/ApiItem",
         lastVersion: "current",
         includeCurrentVersion: true,
+        admonitions: {
+          keywords: ["preview"],
+          extendDefaults: true,
+        },
         versions: {
           current: {
             label: "latest",
@@ -167,6 +172,19 @@ const config = {
           palette: {
             specPath: "docs/api-content/api-docs/v1/api.json",
             outputDir: "docs/api-content/api-docs/v1",
+            downloadUrl:
+              "https://github.com/spectrocloud/librarium/blob/master/docs/api-content/api-docs/palette-apis.json",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+            template: "api.mustache",
+            // Customize API MDX with mustache template
+            hideSendButton: true,
+          },
+          emc: {
+            specPath: "docs/api-content/api-docs/edge-v1/emc-api.json",
+            outputDir: "docs/api-content/api-docs/edge-v1",
             downloadUrl:
               "https://github.com/spectrocloud/librarium/blob/master/docs/api-content/api-docs/palette-apis.json",
             sidebarOptions: {
@@ -358,6 +376,7 @@ const config = {
         searchParameters: {},
         // Optional: path for search page that enabled by default (`false` to disable it)
         searchPagePath: "search",
+        maxResultsPerGroup: 7,
       },
       sidebar: {
         hideable: true,

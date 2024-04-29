@@ -70,8 +70,9 @@ with the original user data you use to build Edge artifacts and skip that step.
 
    :::
 
-3. Follow the rest of the steps in the guide [Build Edge Artifact](../edgeforge-workflow/palette-canvos.md). When
-   finished, identify the **palette-edge-installer.iso** file in the **build** folder.
+3. Follow the rest of the steps in the guide
+   [Build Edge Artifact](../edgeforge-workflow/palette-canvos/palette-canvos.md). When finished, identify the
+   **palette-edge-installer.iso** file in the **build** folder.
 4. Plug in your bootable device and flash it with the ISO image.
 5. Plug the bootable device into the Edge host and power on the Edge host. When the Edge host powers on, open the boot
    menu by pressing F10, and select the bootable device as your boot volume.

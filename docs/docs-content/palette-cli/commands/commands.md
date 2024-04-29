@@ -21,6 +21,8 @@ The following list contains all the supported Palette CLI subcommands. Click on 
 
 - [`ec`](ec.md) - Palette Enterprise Cluster installation & pre-validation.
 
+- [`fips-validate`](fips-validate.md) - Validate the FIPS compliance of your Kubernetes clusters.
+
 - [`import`](import.md) - Import clusters into Palette.
 
 - [`login`](login.md) - Login to Palette.
@@ -50,6 +52,8 @@ Palette CLI supports the following global flags.
 - [Docs](docs.md)
 
 - [EC](ec.md)
+
+- [FIPS Validate](fips-validate.md)
 
 - [Login](login.md)
 
