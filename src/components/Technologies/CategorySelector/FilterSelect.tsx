@@ -3,14 +3,11 @@ import { Select } from "antd";
 import filterStyles from "./CategorySelector.module.scss";
 interface FilterSelectProps {
   selectMode?: string;
-  options: any[];
-  setSelectedSearchFilters: (...args: any) => void;
+  options: { value: string, label: string }[];
+  onChange: (...args: any) => void;
 };
-interface SelectOption {
-  key: string,
-  name: string
-}
-export default function FilterSelect({ selectMode, options, setSelectedSearchFilters }: FilterSelectProps) {
+
+export default function FilterSelect({ selectMode, options, onChange }: FilterSelectProps) {
   return (
     <div className={filterStyles.wrapper}>
       <Select
@@ -18,12 +15,12 @@ export default function FilterSelect({ selectMode, options, setSelectedSearchFil
         mode={selectMode as "tags" | "multiple" | undefined}
         allowClear={true}
         placeholder="Search"
-        onChange={(item: any) => setSelectedSearchFilters(item)}
+        onChange={(item: any) => onChange(item)}
       >
-        {options.map((item: SelectOption) => {
+        {options.map((item) => {
           return (
-            <Select.Option key={item.key}>
-              {item.name}
+            <Select.Option value={item.value}>
+              {item.label}
             </Select.Option>
           )
         })}

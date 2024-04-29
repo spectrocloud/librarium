@@ -47,17 +47,17 @@ export default function PacksReadme() {
   }, []);
 
   const packData = useMemo(() => {
-    const _packData = packs.find((pack) => pack.name === packName);
-    if (_packData) {
+    const pack = packs.find((pack) => pack.name === packName);
+    if (pack) {
       const packDataInfo: PackReadmeProps = {
-        customDescription: _packData.description,
-        packReadme: _packData.readme,
-        versions: _packData.versions,
-        title: _packData.title,
-        logoUrl: _packData.logoUrl,
-        type: _packData.packType,
-        provider: _packData.cloudTypes,
-        registries: _packData.registries,
+        customDescription: pack.description,
+        packReadme: pack.readme,
+        versions: pack.versions,
+        title: pack.title,
+        logoUrl: pack.logoUrl,
+        type: pack.packType,
+        provider: pack.cloudTypes,
+        registries: pack.registries,
         selectedRepositories: repositories,
       };
       return packDataInfo;

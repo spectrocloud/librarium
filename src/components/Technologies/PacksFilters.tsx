@@ -30,9 +30,9 @@ export default function PacksFilters({ categories, registries, setSelectedSearch
         <FilterSelect
           selectMode="multiple"
           options={categories.map((category) => {
-            return { key: category, name: packTypeNames[category as keyof typeof packTypeNames] };
+            return { value: category, label: packTypeNames[category as keyof typeof packTypeNames] };
           })}
-          setSelectedSearchFilters={(items) => setSelectedSearchFilters({ category: items })}
+          onChange={(items) => setSelectedSearchFilters({ category: items })}
         />
       </div>
       <div className={styles.filterItems}>
@@ -40,18 +40,18 @@ export default function PacksFilters({ categories, registries, setSelectedSearch
         <FilterSelect
           selectMode="multiple"
           options={Array.from(registries).map((registry) => {
-            return { key: registry.uid, name: registry.name };
+            return { value: registry.uid, label: registry.name };
           })}
-          setSelectedSearchFilters={(items) => setSelectedSearchFilters({ registries: items })}
+          onChange={(items) => setSelectedSearchFilters({ registries: items })}
         />
       </div>
       <div className={styles.filterItems}>
         <CustomLabel label="Cloud Provider" />
         <FilterSelect
           options={cloudProviderTypes.map((provider) => {
-            return { key: provider.name, name: provider.displayName };
+            return { value: provider.name, label: provider.displayName };
           })}
-          setSelectedSearchFilters={(item) => {
+          onChange={(item) => {
             if(item) {
               setSelectedSearchFilters({ cloudTypes: [item] })
             } else {

@@ -1,5 +1,4 @@
 const { api, callRateLimitAPI } = require("../src/services/api");
-const { setTimeout } = require("timers/promises");
 const { packTypeNames, addOnTypes, layerTypes } = require("../src/constants//packs");
 const packDescription = require("../static/packs-data/packs_information.json");
 const { coerce, rcompare } = require('semver');
@@ -158,10 +157,10 @@ function generateRoutes(packDataMap, packsData) {
 
 async function fetchPackListItems(queryParams, packDataArr, counter) {
   const payload = { filter: { type: ["spectro", "oci"] } };
-  const response = await callRateLimitAPI(["/v1/packs/search" + queryParams], 'post', payload);
-  const tempPackArr = packDataArr.concat(response[0]?.value.data.items);
-  if (response[0]?.value.data.listmeta.continue) {
-    return fetchPackListItems("?limit=100&continue=" + response[0]?.value.data.listmeta.continue, tempPackArr, counter);
+  const response = await callRateLimitAPI("/v1/packs/search" + queryParams, 'post', payload);
+  const tempPackArr = packDataArr.concat(response?.data?.items);
+  if (response?.data?.listmeta?.continue) {
+    return fetchPackListItems("?limit=100&continue=" + response.data.listmeta.continue, tempPackArr, counter);
   } else {
     return tempPackArr;
   }
@@ -197,7 +196,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
       const repositories = options.repositories || [];
       const mappedRepos = await mapRepositories(repositories);
       let packDataArr = await fetchPackListItems("?limit=100", [], 0);
-      console.info("completed the fetch of all the names of the pack")
+      console.info("completed the fetch of all the names of the pack");
       packDataArr = packDataArr.filter((pack) => {
         return (((layerTypes.includes(pack.spec.layer) || (pack.spec.layer === "addon") && (addOnTypes.includes(pack.spec.addonType))) &&
           pack.spec.registries.length && isSelectedRegistry(pack.spec.registries, mappedRepos)))
@@ -205,12 +204,13 @@ async function pluginPacksAndIntegrationsData(context, options) {
       const packUrl = "v1/packs/";
       const packMDMap = new Map();
       let apiPacksData = [];
-      const urls = packDataArr.map((packData) => {
+      const promises = packDataArr.map((packData) => {
         packMDMap[packData.spec.name] = packData;
         const cloudType = packData.spec.cloudTypes.includes("all") ? "aws" : packData.spec.cloudTypes[0];
-        return (`${packUrl}${packData.spec.name}/registries/${packData.spec.registries[0].uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`);
-      })
-      const results = await callRateLimitAPI(urls, 'get', {});
+        const url = `${packUrl}${packData.spec.name}/registries/${packData.spec.registries[0].uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`;
+        return callRateLimitAPI(url, 'get', {});
+      });
+      const results = await Promise.allSettled(promises);
       apiPacksData = results.filter(result => result.status === "fulfilled" && result.value?.data).map((pack) => pack.value?.data);
       console.info("completed the fetch of all the pack details");
       return { packsPaletteData: packMDMap, packsPaletteDetailsData: apiPacksData, packsDescription: packDescription, repositories: mappedRepos };
