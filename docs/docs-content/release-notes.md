@@ -13,7 +13,7 @@ tags: ["release-notes"]
 
 ## April 29, 2024 - Release 4.3.7
 
-## Bug Fixes
+### Bug Fixes
 
 - Fixed an issue when using creating a DNS mapping for the
   [System PCG](./clusters/pcg/architecture.md#system-private-gateway) caused errors in the User Interface (UI) and
