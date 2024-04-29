@@ -21,6 +21,6 @@ managing Palette resources. These resources include cluster profiles, cloud acco
 
 ## Resources
 
-- Palette CLI
+- [Palette CLI](./palette-cli/install-palette-cli.md)
 - [Terraform Support](./terraform/terraform.md)
 - [Crossplane Support](./crossplane/crossplane.md)
