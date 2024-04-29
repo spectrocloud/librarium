@@ -1,7 +1,7 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import styles from "./Technologies.module.scss";
 import PackCardIcon from "./PackCardIcon";
+import Link from "@docusaurus/Link";
 
 interface TechnologyCardProps {
   name: string;
@@ -11,17 +11,12 @@ interface TechnologyCardProps {
 }
 
 export default function TechnologyCard({ name, title, logoUrl, type }: TechnologyCardProps) {
-  const history = useHistory();
-  const handleClick = () => {
-    history.push({
-      pathname: `/integrations/packs/${name}`,
-    });
-  };
-
   return (
-    <div className={styles.card} onClick={() => handleClick()}>
-      <PackCardIcon title={title} logoUrl={logoUrl} type={type} />
-      <div className={styles.title}>{title}</div>
+    <div className={styles.card}>
+      <Link to={`/integrations/packs/${name}`}>
+        <PackCardIcon title={title} logoUrl={logoUrl} type={type} />
+        <div className={styles.title}>{title}</div>
+      </Link>
     </div>
   );
 }

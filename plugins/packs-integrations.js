@@ -1,6 +1,6 @@
-const { api, callRateLimitAPI }  = require("../src/services/api");
+const { api, callRateLimitAPI } = require("../src/services/api");
 const { setTimeout } = require("timers/promises");
-const { packTypeNames, addOnTypes, layerTypes } = require("../src/components/Technologies/PackConstants");
+const { packTypeNames, addOnTypes, layerTypes } = require("../src/constants//packs");
 const packDescription = require("../static/packs-data/packs_information.json");
 const { coerce, rcompare } = require('semver');
 
@@ -34,24 +34,22 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
       const layer = packMDValue.spec.layer === "addon" ? packMDValue.spec.addonType : packTypeNames[packMDValue.spec.layer];
       const packValues = packContent.packValues;
       return {
-        fields: {
-          name: packName,
-          title: packMDValue.spec.displayName,
-          description: customPacksData?.[packName],
-          readme: getReadMeMap(packValues),
-          cloudTypes: packMDValue.spec.cloudTypes,
-          type: 'integration',
-          category: [layer],
-          packType: packType,
-          logoUrl: packMDValue.spec.registries[0].logoUrl,
-          tags: [],
-          slug: '/integrations/${packMDValue.spec.name}',
-          id: 'integrations/${packMDValue.spec.name}',
-          registries: packMDValue.spec.registries.map((registry) => registry.uid),
-          community: packMDValue.spec.registries[0].annotations?.source === "community",
-          verified: packMDValue.spec.registries[0].annotations?.source === "spectrocloud",
-          versions: getAggregatedVersions(packContent.tags, packValues, packName, layer)
-        }
+        name: packName,
+        title: packMDValue.spec.displayName,
+        description: customPacksData?.[packName],
+        readme: getReadMeMap(packValues),
+        cloudTypes: packMDValue.spec.cloudTypes,
+        type: 'integration',
+        category: [layer],
+        packType: packType,
+        logoUrl: packMDValue.spec.registries[0].logoUrl,
+        tags: [],
+        slug: '/integrations/${packMDValue.spec.name}',
+        id: 'integrations/${packMDValue.spec.name}',
+        registries: packMDValue.spec.registries.map((registry) => registry.uid),
+        community: packMDValue.spec.registries[0].annotations?.source === "community",
+        verified: packMDValue.spec.registries[0].annotations?.source === "spectrocloud",
+        versions: getAggregatedVersions(packContent.tags),
       };
     }
   });
@@ -102,9 +100,9 @@ function sortVersions(tags) {
   return sortedVersions;
 }
 
-function getAggregatedVersions(tags, packValues, packName, layer) {
-  const _sortedVersions = sortVersions(tags);
-  const roots = _sortedVersions
+function getAggregatedVersions(tags) {
+  const sortedVersions = sortVersions(tags);
+  const roots = sortedVersions
     .filter((version) => {
       return matchAmbiguousPatch(version.tag);
     })
@@ -115,7 +113,7 @@ function getAggregatedVersions(tags, packValues, packName, layer) {
         packUid: version.packUid,
       };
     });
-  _sortedVersions.forEach((version) => {
+  sortedVersions.forEach((version) => {
     const parentTags = version?.parentTags || [];
     const parent = parentTags.find(matchAmbiguousPatch);
 
@@ -159,15 +157,11 @@ function generateRoutes(packDataMap, packsData) {
 }
 
 async function fetchPackListItems(queryParams, packDataArr, counter) {
-  const payload = { filter: { type: ["spectro", "oci"]} };
-  counter += 1;
-  if (counter % 10 === 0) {
-    await setTimeout(2000);
-  }
-  const response = await api.post('/v1/packs/search' + queryParams, payload);
-  const tempPackArr = packDataArr.concat(response.data.items);
-  if (response.data.listmeta.continue) {
-    return fetchPackListItems("?limit=100&continue=" + response.data.listmeta.continue, tempPackArr, counter);
+  const payload = { filter: { type: ["spectro", "oci"] } };
+  const response = await callRateLimitAPI(["/v1/packs/search" + queryParams], 'post', payload);
+  const tempPackArr = packDataArr.concat(response[0]?.value.data.items);
+  if (response[0]?.value.data.listmeta.continue) {
+    return fetchPackListItems("?limit=100&continue=" + response[0]?.value.data.listmeta.continue, tempPackArr, counter);
   } else {
     return tempPackArr;
   }
@@ -188,7 +182,7 @@ async function mapRepositories(repositories) {
 }
 
 function isSelectedRegistry(registries, selectedRepositories) {
-  if(!selectedRepositories || !selectedRepositories.length) {
+  if (!selectedRepositories || !selectedRepositories.length) {
     return true;
   }
   return registries.some((registry) => {
@@ -205,24 +199,21 @@ async function pluginPacksAndIntegrationsData(context, options) {
       let packDataArr = await fetchPackListItems("?limit=100", [], 0);
       console.info("completed the fetch of all the names of the pack")
       packDataArr = packDataArr.filter((pack) => {
-        return layerTypes.includes(pack.spec.layer) || (pack.spec.layer === "addon" && addOnTypes.includes(pack.spec.addonType));
+        return (((layerTypes.includes(pack.spec.layer) || (pack.spec.layer === "addon") && (addOnTypes.includes(pack.spec.addonType))) &&
+          pack.spec.registries.length && isSelectedRegistry(pack.spec.registries, mappedRepos)))
       })
       const packUrl = "v1/packs/";
       const packMDMap = new Map();
       let apiPacksData = [];
-      let promises = new Array();
-      for (let i = 0; i < packDataArr.length; i++) {
-        const packData = packDataArr[i];
-        if (packData.spec.registries.length && isSelectedRegistry(packData.spec.registries, mappedRepos)) {
-          packMDMap[packData.spec.name] = packData;
-          const cloudType = packData.spec.cloudTypes.includes("all") ? "aws" : packData.spec.cloudTypes[0];
-          promises.push(`${packUrl}${packData.spec.name}/registries/${packData.spec.registries[0].uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`);
-        }
-      }
-      const results = await callRateLimitAPI(promises);
+      const urls = packDataArr.map((packData) => {
+        packMDMap[packData.spec.name] = packData;
+        const cloudType = packData.spec.cloudTypes.includes("all") ? "aws" : packData.spec.cloudTypes[0];
+        return (`${packUrl}${packData.spec.name}/registries/${packData.spec.registries[0].uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`);
+      })
+      const results = await callRateLimitAPI(urls, 'get', {});
       apiPacksData = results.filter(result => result.status === "fulfilled" && result.value?.data).map((pack) => pack.value?.data);
       console.info("completed the fetch of all the pack details");
-      return { packsPaletteData: packMDMap, packsPaletteDetailsData: apiPacksData, packsDescription: packDescription, repositories: mappedRepos};
+      return { packsPaletteData: packMDMap, packsPaletteDetailsData: apiPacksData, packsDescription: packDescription, repositories: mappedRepos };
     },
     async contentLoaded({ allContent, content, actions }) {
       const { setGlobalData, addRoute } = actions;

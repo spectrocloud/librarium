@@ -3,101 +3,123 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  .tabpane {
+
+  .tabPane {
     padding-top: 15px;
     font-size: 16px;
   }
+
   .emptyContent {
     padding-top: 20px;
     display: flex;
     flex-direction: column;
     text-align: center;
     align-items: center;
+
     .emptyContentTitle {
       padding-top: 15px;
       font-size: 20px;
       color: #545f7e;
       font-weight: 500;
       line-height: 24px;
+
       html[data-theme="dark"] & {
         color: #b5bdd4;
         background-color: #111726;
       }
     }
+
     .emptyContentDescription {
       font-size: 16px;
       color: #545f7e;
       font-weight: 400;
       line-height: 24px;
+
       html[data-theme="dark"] & {
         color: #b5bdd4;
         background-color: #111726;
       }
+
       margin-top: 10px;
     }
   }
+
   .description {
     display: flex;
     width: 100%;
     background-color: #edeef4;
+
     html[data-theme="dark"] & {
       background-color: #1c202b;
     }
+
     padding: 10px;
-    .packdescfirstcol {
+
+    .packDescFirstCol {
       display: flex;
       flex-direction: column;
       width: 70%;
-      .packname {
+
+      .packName {
         font-size: 16px;
         font-weight: 600;
         line-height: 20px;
       }
-      .descriptioncontent {
+
+      .descriptionContent {
         display: flex;
         height: 100%;
         font-size: 14px;
         font-weight: 400;
-        .packicon {
+
+        .packIcon {
           height: 100%;
         }
-        .customdesc {
+
+        .customDesc {
           padding-top: 12px;
           padding-left: 16px;
         }
       }
     }
-    .packdescsecondcol {
+
+    .packDescSecondCol {
       display: flex;
       flex-direction: column;
       width: 30%;
       padding: 10px;
       background-color: white;
       border: 1px solid #dee1ea;
+
       html[data-theme="dark"] & {
         background-color: black;
         border: 1px solid #1f263c;
       }
-      .versionselect {
+
+      .versionSelect {
         height: max-content;
         display: flex;
         flex-direction: row;
         padding: 10px;
         border: 1px solid #b6bed4;
+
         html[data-theme="dark"] & {
           border: 1px solid #1f263c;
         }
       }
-      .versionselectbox {
+
+      .versionSelectBox {
         width: 300px;
       }
-      .packdesc {
+
+      .packDesc {
         display: flex;
         flex-direction: column;
         font-size: 12px;
         font-weight: 400;
         line-height: 16px;
-        .packdescitem {
+
+        .packDescItem {
           padding-top: 8px;
           padding-left: 5px;
         }

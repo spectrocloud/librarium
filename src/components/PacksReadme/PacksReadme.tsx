@@ -10,7 +10,7 @@ import PacksIntegrationsPluginData from "../Integrations/IntegrationTypes";
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from "@docusaurus/useBaseUrl"
 import { useColorMode } from "@docusaurus/theme-common";
-import { packTypeNames, cloudDisplayNames } from "../Technologies/PackConstants";
+import { packTypeNames, cloudDisplayNames } from "../../constants/packs";
 
 interface PackReadmeProps {
   customDescription: string,
@@ -25,8 +25,8 @@ interface PackReadmeProps {
 }
 
 export default function PacksReadme() {
-  const [selectedVersion, setSelectedVersion] = useState<string>("");
-  const [md, setMd] = useState<ReactElement<any, any> | null>(null);
+  const { packs, repositories } = usePluginData("plugin-packs-integrations") as PacksIntegrationsPluginData;
+  const [customReadme, setCustomReadme] = useState<ReactElement<any, any> | null>(null);
   const empty_icon_light = useBaseUrl('/img/empty_icon_table_light.svg');
   const empty_icon_dark = useBaseUrl('/img/empty_icon_table_dark.svg');
   const { isDarkTheme } = useColorMode();
@@ -37,29 +37,27 @@ export default function PacksReadme() {
       try {
         const module = await import(`../../../docs/docs-content/integrations/${packName}.md`);
         const PackReadMeComponent = module.default;
-        setMd(<PackReadMeComponent />);
+        setCustomReadme(<PackReadMeComponent />);
       }
       catch (error) {
-        setMd(null);
+        setCustomReadme(null);
       }
     };
     importComponent();
   }, []);
 
   const packData = useMemo(() => {
-    const { packs, repositories } = usePluginData("plugin-packs-integrations") as PacksIntegrationsPluginData;
-    const _packData = packs.filter((pack) => pack.fields.name === packName)[0];
+    const _packData = packs.find((pack) => pack.name === packName);
     if (_packData) {
-      setSelectedVersion(`${_packData.fields.versions[0].title}`);
       const packDataInfo: PackReadmeProps = {
-        customDescription: _packData.fields.description,
-        packReadme: _packData.fields.readme,
-        versions: _packData.fields.versions,
-        title: _packData.fields.title,
-        logoUrl: _packData.fields.logoUrl,
-        type: _packData.fields.packType,
-        provider: _packData.fields.cloudTypes,
-        registries: _packData.fields.registries,
+        customDescription: _packData.description,
+        packReadme: _packData.readme,
+        versions: _packData.versions,
+        title: _packData.title,
+        logoUrl: _packData.logoUrl,
+        type: _packData.packType,
+        provider: _packData.cloudTypes,
+        registries: _packData.registries,
         selectedRepositories: repositories,
       };
       return packDataInfo;
@@ -76,6 +74,7 @@ export default function PacksReadme() {
       registries: [],
     };
   }, [packName]);
+  const [selectedVersion, setSelectedVersion] = useState<string>(packData.versions?.[0]?.title || "");
 
   function versionChange(version: string) {
     setSelectedVersion(version);
@@ -92,23 +91,23 @@ export default function PacksReadme() {
   function renderTabs() {
     const packUid = packData.versions.find((ver) => ver.title === selectedVersion)?.packUid;
     let readme = packUid ? packData.packReadme[packUid] : "";
-    if (readme && md) {
-      const items = [
-        {
-          label: `Readme`,
-          key: '1',
-          children: (<Markdown children={readme} />),
-        },
-        {
-          label: `Additional details`,
-          key: '2',
-          children: md,
-        },
-      ] as { label: string, key: string, children: JSX.Element }[];
+    const tabs = [
+      readme && {
+        label: `Readme`,
+        key: '1',
+        children: (<Markdown children={readme} />),
+      },
+      customReadme && {
+        label: `Additional details`,
+        key: '2',
+        children: customReadme,
+      },
+    ].filter(Boolean) as { label: string, key: string, children: JSX.Element }[];
 
+    if (tabs.length > 1) {
       return (
         <Tabs defaultActiveKey="1">
-          {items.map((item) => {
+          {tabs.map((item) => {
             return (
               <Tabs.TabPane tab={item.label} key={item.key}>
                 {item.children}
@@ -118,33 +117,30 @@ export default function PacksReadme() {
         </Tabs>
       );
     }
-    return (
-      <>
-        {readme ? (<Markdown children={readme} />)
-          : md ? md
-            : (<div className={styles.emptyContent}>
-              <ThemedImage
-                alt="Docusaurus themed image"
-                sources={{
-                  light: empty_icon_light,
-                  dark: empty_icon_dark,
-                }}
-                width={120}
-                height={120}
-              />
-              <div className={styles.emptyContentTitle}>No content available</div>
-              <div className={styles.emptyContentDescription}>The content for this pack is not available.</div>
-            </div>)}
-      </>
-    );
+    if (tabs.length === 1) {
+      return tabs[0].children;
+    }
+    return (<div className={styles.emptyContent}>
+      <ThemedImage
+        alt="Docusaurus themed image"
+        sources={{
+          light: empty_icon_light,
+          dark: empty_icon_dark,
+        }}
+        width={120}
+        height={120}
+      />
+      <div className={styles.emptyContentTitle}>No content available</div>
+      <div className={styles.emptyContentDescription}>The content for this pack is not available.</div>
+    </div>)
   }
 
   function getProviders() {
     if (packData.provider.includes("all")) {
       return "All";
-    } else {
-      return packData.provider.map((_provider) => cloudDisplayNames[_provider as keyof typeof cloudDisplayNames] || _provider).join(", ");
     }
+    return packData.provider.map((_provider) => cloudDisplayNames[_provider as keyof typeof cloudDisplayNames] || _provider).join(", ");
+
   }
   function getRegistries() {
     const consolidatedRegistries = packData.registries.reduce((accumulator: string[], registry) => {
@@ -162,18 +158,18 @@ export default function PacksReadme() {
         algorithm: isDarkTheme ? darkAlgorithm : defaultAlgorithm,
       }}>
         <div className={styles.description}>
-          <div className={styles.packdescfirstcol}>
-            <div className={styles.packname}>{packData.title}</div>
-            <div className={styles.descriptioncontent}>
-              <PackCardIcon className={styles.packicon} title={packData.title} logoUrl={packData.logoUrl} type={packData.type} />
-              <div className={styles.customdesc}>{packData.customDescription}</div>
+          <div className={styles.packDescFirstCol}>
+            <div className={styles.packName}>{packData.title}</div>
+            <div className={styles.descriptionContent}>
+              <PackCardIcon className={styles.packIcon} title={packData.title} logoUrl={packData.logoUrl} type={packData.type} />
+              <div className={styles.customDesc}>{packData.customDescription}</div>
             </div>
           </div>
-          <div className={styles.packdescsecondcol}>
-            <div className={styles.versionselect}>
+          <div className={styles.packDescSecondCol}>
+            <div className={styles.versionSelect}>
               <CustomLabel label="Version" />
               <Select
-                className={styles.versionselectbox}
+                className={styles.versionSelectBox}
                 allowClear
                 placeholder="Search"
                 onChange={(item) => versionChange(item as string)}
@@ -182,20 +178,20 @@ export default function PacksReadme() {
                 {renderVersionOptions()}
               </Select>
             </div>
-            <div className={styles.packdesc}>
-              <div className={styles.packdescitem}>
+            <div className={styles.packDesc}>
+              <div className={styles.packDescItem}>
                 {`Type: ${packTypeNames[packData.type as keyof typeof packTypeNames]}`}
               </div>
-              <div className={styles.packdescitem}>
+              <div className={styles.packDescItem}>
                 {`Cloud Providers: ${getProviders()}`}
               </div>
-              <div className={styles.packdescitem}>
+              <div className={styles.packDescItem}>
                 {`Registry: ${getRegistries()}`}
               </div>
             </div>
           </div>
         </div>
-        <div className={styles.tabpane}>
+        <div className={styles.tabPane}>
           {renderTabs()}
         </div>
       </ConfigProvider>

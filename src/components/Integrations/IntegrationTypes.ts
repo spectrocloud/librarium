@@ -23,21 +23,13 @@ export interface VersionTemplate {
   children: VersionTemplate[];
 }
 
-export interface PacksData {
-  fields: FrontMatterData;
-}
-
-export interface IntegrationsData {
-  fields: FrontMatterData;
-}
-
 export interface RepositoryData {
   name: string;
   uid: string;
 }
 
 export default interface PacksIntegrationsPluginData {
-  integrations: PacksData[];
-  packs: IntegrationsData[];
+  integrations: FrontMatterData[];
+  packs: FrontMatterData[];
   repositories: RepositoryData[];
 }

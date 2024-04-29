@@ -34,9 +34,9 @@ axiosRetry(api, {
 });
 
 
-function callRateLimitAPI(urls) {
+function callRateLimitAPI(urls, method, payload) {
   return Promise.allSettled(
-    urls.map(url => limit(() => (api.get(url)).catch(e => e)))
+    urls.map(url => limit(() => (api[method](url, payload)).catch(e => e)))
   );
 }
 
