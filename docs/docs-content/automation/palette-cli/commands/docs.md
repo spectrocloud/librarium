@@ -74,7 +74,7 @@ Started ghcr.io/spectrocloud/librarium:nightly at 127.0.0.1:8080
 ```
 
 Start the documentation site in the background and change container image to a self-hosted registry. Check put the
-[Offline Documentation](../../vertex/install-palette-vertex/airgap/offline-docs.md) to learn how to extract the
+[Offline Documentation](../../../vertex/install-palette-vertex/airgap/offline-docs.md) to learn how to extract the
 container image into a tarball which you can then load into another device and upload to a self-hosted registry.
 
 ```bash
