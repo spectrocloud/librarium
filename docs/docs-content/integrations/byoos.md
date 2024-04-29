@@ -112,11 +112,11 @@ To use the non-Edge BYOOS pack, you must have the following:
 
 The following is a list of parameters required when using the BYOOS pack.
 
-| Parameter         | Description                                                                                                                                                       | Type   |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-| `osImageOverride` | The image ID used as the base OS layer. This is the image ID as assigned in the infrastructure environment the image belongs to. Example: `ami-0f4804aff4cf9c5a2` | string |
-| `osName`          | The name of the OS distribution. Example: `rhel`                                                                                                                  | string |
-| `osVersion`       | The version of the OS distribution. Example: `"8"`                                                                                                                | string |
+| Parameter         | Description                                                                                                                                                                                                                                              | Type   |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| `osImageOverride` | The image ID used as the base OS layer. This is the image ID as assigned in the infrastructure environment the image belongs to. Example: `ami-0f4804aff4cf9c5a2`. Refer to the [Reference Custom Image](#reference-custom-image) section to learn more. | string |
+| `osName`          | The name of the OS distribution. Example: `rhel`                                                                                                                                                                                                         | string |
+| `osVersion`       | The version of the OS distribution. Example: `"8"`                                                                                                                                                                                                       | string |
 
 ## Usage
 
@@ -149,7 +149,16 @@ pack:
 Check out the [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide to
 learn to create a custom image for Palette.
 
----
+### Reference Custom Image
+
+Different infrastructure providers have different ways of referencing custom images. The following table provides
+examples of how to reference custom images for different infrastructure providers.
+
+| Provider       | Example Image ID                                            | osImageOverride Value                                       | Notes                                                                   |
+| -------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------------- |
+| AWS            | `ami-0f4804aff4cf9c5a2`                                     | `ami-0f4804aff4cf9c5a2`                                     | Ensure the AMI is available in the same region as the workload cluster. |
+| Azure          | `https://docs.blob.core.windows.net/vhds/ubuntu20-1243.vhd` | `https://docs.blob.core.windows.net/vhds/ubuntu20-1243.vhd` | You must reference the Azure blob URL of a Virtual Hard Disk (VHD).     |
+| Vmware vSphere | `r_u-2004-0-k-1243-0-new.ova`                               | `r_u-2004-0-k-1243-0-new.ova`                               | Palette and VerteX expect OVAs to have the `r_u-` prefix.               |
 
 Image creation tools are available to help you create custom OS images for the infrastructure provider you are using.
 The following is a list of commonly used tools for creating a custom OS:
