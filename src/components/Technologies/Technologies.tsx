@@ -145,7 +145,7 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
       <ConfigProvider theme={{
         algorithm: isDarkTheme ? darkAlgorithm : defaultAlgorithm,
       }}>
-        <PacksFilters categories={[...packTypes]} registries={repositories} setSelectedSearchFilters={setSelectedSearchFilters} />
+        <PacksFilters categories={[...packTypes]} registries={repositories} setSelectedSearchFilters={setSelectedSearchFilters} selectedFilters={selectedFilters} />
         <Search onSearch={setSearchValue} placeholder={"Search for integration..."} />
         <div className={styles.technologyWrapper}>
           <Collapse defaultActiveKey={Array.from(filteredTechCards.keys()) as string[]} expandIconPosition="end" >

@@ -157,7 +157,7 @@ function generateRoutes(packDataMap, packsData) {
 
 async function fetchPackListItems(queryParams, packDataArr, counter) {
   const payload = { filter: { type: ["spectro", "oci"] } };
-  const response = await callRateLimitAPI("/v1/packs/search" + queryParams, 'post', payload);
+  const response = await callRateLimitAPI(() => api.post(`/v1/packs/search${queryParams}`, payload));
   const tempPackArr = packDataArr.concat(response?.data?.items);
   if (response?.data?.listmeta?.continue) {
     return fetchPackListItems("?limit=100&continue=" + response.data.listmeta.continue, tempPackArr, counter);
@@ -208,7 +208,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
         packMDMap[packData.spec.name] = packData;
         const cloudType = packData.spec.cloudTypes.includes("all") ? "aws" : packData.spec.cloudTypes[0];
         const url = `${packUrl}${packData.spec.name}/registries/${packData.spec.registries[0].uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`;
-        return callRateLimitAPI(url, 'get', {});
+        return callRateLimitAPI(() => api.get(url));
       });
       const results = await Promise.allSettled(promises);
       apiPacksData = results.filter(result => result.status === "fulfilled" && result.value?.data).map((pack) => pack.value?.data);

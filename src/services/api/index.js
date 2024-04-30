@@ -34,8 +34,8 @@ axiosRetry(api, {
 });
 
 
-function callRateLimitAPI(url, method, payload) {
-  return limit(() => (api[method](url, payload)).catch(e => e));
+function callRateLimitAPI(delayedApiCall) {
+  return limit(delayedApiCall)
 }
 
 module.exports = { api, callRateLimitAPI };
