@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Deploy a GCP Cluster with Crossplane"
-title: "Deploy a GCP Cluster with Crossplane"
-description: "Learn how to deploy a GCP cluster using the Spectro Cloud Crossplane provider."
+sidebar_label: "Deploy a GCP IaaS Cluster with Crossplane"
+title: "Deploy a GCP IaaS Cluster with Crossplane"
+description: "Learn how to deploy a GCP IaaS cluster using the Spectro Cloud Crossplane provider."
 hide_table_of_contents: false
 sidebar_position: 30
 tags: ["crossplane", "gcp", "iac", "infrastructure as code"]
@@ -33,7 +33,7 @@ how to use Crossplane to deploy a Kubernetes cluster in GCP that is managed by P
   - [curl](https://curl.se/docs/install.html)
   - A text editor such as Vi or [Nano](https://www.nano-editor.org)
 
-## Deploy a GCP Cluster with Crossplane
+## Deploy a GCP IaaS Cluster with Crossplane
 
 1.  Open up a terminal session and set the kubectl context to your kind cluster. Replace `<kind-cluster-name>` with the
     name of your cluster.
@@ -379,7 +379,7 @@ how to use Crossplane to deploy a Kubernetes cluster in GCP that is managed by P
 
     ```bash
     kubectl wait --for=condition=Ready profile.cluster.palette.crossplane.io/gcp-crossplane-cluster-profile
-    clusterProfileId=$(kubectl get profile.cluster.palette.crossplane.io gcp-crossplane-cluster-profile -o jsonpath='{.status.atProvider.id}')
+    clusterProfileId=$(kubectl get profile.cluster.palette.crossplane.io gcp-crossplane-cluster-profile --output jsonpath='{.status.atProvider.id}')
     echo Cluster Profile ID: $clusterProfileId
     ```
 
@@ -388,14 +388,14 @@ how to use Crossplane to deploy a Kubernetes cluster in GCP that is managed by P
     account when registering it with Palette.
 
     ```bash
-    curl -L -X GET 'https://api.spectrocloud.com/v1/cloudaccounts/gcp' \
+    curl --location --request GET 'https://api.spectrocloud.com/v1/cloudaccounts/gcp' \
     -H 'Accept: application/json' \
     -H 'ApiKey: <your-api-key>' | jq '.items[] | select(.metadata.name == "<gcp-account-name>") | .metadata.uid'
     ```
 
     Copy the API response containing your GCP cloud account ID.
 
-19. Create a file to store the GCP cluster configuration.
+19. Create a file to store the GCP IaaS cluster configuration.
 
     ```bash
     vi crossplane-gcp/cluster-gcp.yaml
@@ -423,12 +423,12 @@ how to use Crossplane to deploy a Kubernetes cluster in GCP that is managed by P
               - us-east1-b
             count: 1
             instanceType: n1-standard-4
-            name: machinePool1
+            name: machinepool1
           - azs:
               - us-east1-b
             count: 1
             instanceType: n1-standard-4
-            name: masterPool1
+            name: controlplanepool
             controlPlane: true
         clusterProfile:
           - id: <cluster-profile-id>
@@ -437,7 +437,7 @@ how to use Crossplane to deploy a Kubernetes cluster in GCP that is managed by P
         name: default
     ```
 
-21. Create the GCP cluster.
+21. Create the GCP IaaS cluster.
 
     ```bash
     kubectl apply --filename crossplane-gcp/cluster-gcp.yaml

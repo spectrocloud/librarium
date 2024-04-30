@@ -30,6 +30,6 @@ page available in the Upbound Marketplace for a complete list of managed resourc
 
 For an end-to-end cluster provisioning example, access the guides provided below.
 
-- [Deploy an AWS Cluster with Crossplane](./deploy-cluster-aws-crossplane.md)
-- [Deploy an Azure Cluster with Crossplane](./deploy-cluster-azure-crossplane.md)
-- [Deploy a GCP Cluster with Crossplane](./deploy-cluster-gcp-crossplane.md)
+- [Deploy an AWS IaaS Cluster with Crossplane](./deploy-cluster-aws-crossplane.md)
+- [Deploy an Azure IaaS Cluster with Crossplane](./deploy-cluster-azure-crossplane.md)
+- [Deploy a GCP IaaS Cluster with Crossplane](./deploy-cluster-gcp-crossplane.md)

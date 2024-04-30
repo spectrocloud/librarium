@@ -32,7 +32,7 @@ Detailed documentation on supported data sources and resources are available in 
 
 ### Modules
 
-There are two modules available to help you provision Spectro Cloud infrastructure resources.
+Two modules are available to help you provision Spectro Cloud infrastructure resources.
 
 - [Palette Edge Native Terraform Module](https://registry.terraform.io/modules/spectrocloud/edge/spectrocloud/latest)
 - [Spectro Cloud Terraform Modules](https://registry.terraform.io/modules/spectrocloud/modules/spectrocloud/latest)
