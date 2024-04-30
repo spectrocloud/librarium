@@ -124,7 +124,7 @@ the **Profile Layers** stage of cluster profile creation and start following thi
 
 9.  Review the variable definition and behavior under **Preview**, and then select **Create**.
 
-    ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_variable-preview.png)
+    ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_variable-preview.webp)
 
 10. Navigate to the YAML configuration of the profile layer for which you want to add the variable. In the upper-right
     corner of its YAML configuration editor, select **Variables**.
@@ -136,7 +136,7 @@ the **Profile Layers** stage of cluster profile creation and start following thi
     Alternatively, you can start typing the profile variable name with `{{.spectro.var.}}`, and Palette will suggest
     profile variables that you can autocomplete.
 
-    ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_add-vars-to-yaml.png)
+    ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_add-vars-to-yaml.webp)
 
     :::tip
 
