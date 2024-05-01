@@ -18,7 +18,7 @@ env:
 
 
 concurrency:
-  group: "visual-comparison-${{ github.workflow }}"
+  group: "visual-comparison-${{ github.workflow }}-${{ github.head_ref }}"
   cancel-in-progress: true
 
 
