@@ -590,7 +590,7 @@ git checkout v4.0.6
     Do not edit or add any lines before this tagged comment.
 
     ```bash
-    echo 'RUN sudo zypper refresh && sudo zypper install -y wireguard-tools' >> Dockerfile
+    echo 'RUN sudo zypper refresh && sudo zypper install --non-interactive wireguard-tools' >> Dockerfile
     ```
 
     View the newly created file to ensure the instruction to install WireGuard is appended correctly.
@@ -852,7 +852,7 @@ git checkout v4.0.6
 
     | **Pack Type** | **Registry** | **Pack Name**         | **Pack Version** |
     | ------------- | ------------ | --------------------- | ---------------- |
-    | Kubernetes    | Public Repo  | Palette Optimized k3s | `1.27.x`         |
+    | Kubernetes    | Public Repo  | Palette Optimized K3s | `1.27.x`         |
 
 23. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
     your needs, such as Calico, Flannel, Cilium, or Custom CNI. For example, you can add the following network layer.
