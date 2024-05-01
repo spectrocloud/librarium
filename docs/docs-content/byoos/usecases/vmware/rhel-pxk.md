@@ -46,9 +46,9 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
 
 1. Open a teminal session and log in to the Linux VM.
 
-2. Download the RHEL ISO from the
+2. Download the x86_64 RHEL ISO from the
    [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download?source=sso). Make sure you download
-   the DVD ISO. This guide will use RHEL 8.8 as an example.
+   the x86_64 DVD ISO and not the x86_64 BOOT ISO. This guide will use RHEL 8.8 as an example.
 
    :::tip
 
@@ -134,11 +134,189 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
 
     :::
 
+11. Update the **packer/ova/vsphere.json** file with all the required vSphere details. Use the table below to learn more
+    about each required field.
+
+    | Field Name            | Description                                                                |
+    | --------------------- | -------------------------------------------------------------------------- |
+    | `cluster`             | The name of the vSphere cluster where the Packer VM will be created.       |
+    | `datacenter`          | The name of the vSphere datacenter where the Packer VM will be created.    |
+    | `datastore`           | The name of the vSphere datastore the Packer VM will use.                  |
+    | `folder`              | The name of the vSphere folder where the vSphere template will be created. |
+    | `insecure_connection` | Set to `true` if you are using a self-signed certificate for vCenter.      |
+    | `network`             | The name of the vSphere network the Packer VM will use.                    |
+    | `password`            | The password for the vSphere user.                                         |
+    | `resource_pool`       | The name of the vSphere resource pool the Packer VM will use.              |
+    | `username`            | The username for the vSphere user.                                         |
+    | `vcenter_server`      | The IP address or FQDN of the vCenter server.                              |
+
+    ```json {2,5,6,7,8,10-12,14-15}
+    {
+      "cluster": "",
+      "convert_to_template": "false",
+      "create_snapshot": "true",
+      "datacenter": "",
+      "datastore": "",
+      "folder": "",
+      "insecure_connection": "false",
+      "linked_clone": "true",
+      "network": "",
+      "password": "",
+      "resource_pool": "",
+      "template": "",
+      "username": "",
+      "vcenter_server": ""
+    }
+    ```
+
+    Below is an example of a filled out **packer/ova/vsphere.json** file.
+
+    ```json hideClipboard
+    {
+      "cluster": "Cluster2",
+      "convert_to_template": "false",
+      "create_snapshot": "true",
+      "datacenter": "Datacenter",
+      "datastore": "vsanDatastore2",
+      "folder": "sp-docs",
+      "insecure_connection": "true",
+      "linked_clone": "true",
+      "network": "VM-NETWORK-1",
+      "password": "*************",
+      "resource_pool": "rp-docs",
+      "template": "",
+      "username": "example@vsphere.local",
+      "vcenter_server": "example.vcenter.dev"
+    }
+    ```
+
+12. If you want to change the default Kubernetes version, modify the **packer/config/kubernetes.json** file. The
+    following properties can be modified:
+
+    | Field Name               | Description                                   |
+    | ------------------------ | --------------------------------------------- |
+    | `kubernetes_rpm_version` | The version of the Kubernetes RPM to install. |
+    | `kubernetes_semver`      | The Kubernetes version in semver format.      |
+    | `kubernetes_series`      | The Kubernetes series.                        |
+
+    <!-- prettier-ignore -->
+    <details>
+    <summary>FIPS Components</summary>
+
+    We maintain custom RPM repositories that are used to download FIPS compliant packages and images during the build.
+    The following properties are already set to download FIPS RPM packages and images.
+
+    ```json
+    "kubernetes_container_registry": "gcr.io/spectro-images-fips",
+    "kubernetes_rpm_gpg_key": "http://34.214.158.3/spectro_repo/gpg.key",
+    "kubernetes_rpm_repo": "http://34.214.158.3/spectro_repo/",
+    ```
+
+    </details>
+
+    In this guide, the Kubernetes version is set to `1.27.11`.
+
+    ```json
+    "kubernetes_rpm_version": "1.27.11",
+    "kubernetes_semver": "v1.27.11",
+    "kubernetes_series": "v1.27"
+    ```
+
+    :::warning
+
+    The Kubernetes version you specify must be available in Palette. You must also select the version specified when
+    creating a cluster profile that uses the custom image.
+
+    :::
+
+13. Build the RHEL image with PXK. Replace `RHSM_USER` and `RHSM_PASS` with your Red Hat subscription username and
+    password. The build may take up to an hour to complete depending on your environment.
+
+    ```bash
+    PACKER_FLAGS=-on-error=ask RHSM_USER=xxxxxxx RHSM_PASS=xxxxxxxxxxxx make build-node-ova-vsphere-rhel-8
+    ```
+
+    :::tip
+
+    You can set the RHEL credentials as environment variables to avoid providing them every time you issue the command.
+
+    ```shell
+    export RHSM_USER=xxxxxxx
+    export RHSM_PASS=xxxxxxxxxxxx
+    ```
+
+    :::
+
+    Upon completion, the following output is displayed. Make sure to note the name of the image.
+
+    ```shell hideClipboard {7}
+    ==> vsphere-iso.vsphere (shell-local): Running local shell script: /tmp/packer-shell3103701471
+    Build 'vsphere-iso.vsphere' finished after 31 minutes 15 seconds.
+
+    ==> Wait completed after 31 minutes 15 seconds
+
+    ==> Builds finished. The artifacts of successful builds are:
+    --> vsphere-iso.vsphere: rhel-8-kube-v1.27.11
+    --> vsphere-iso.vsphere: rhel-8-kube-v1.27.11
+    --> vsphere-iso.vsphere: rhel-8-kube-v1.27.11
+    --> vsphere-iso.vsphere: rhel-8-kube-v1.27.11
+    ```
+
+14. The custom RHEL image with PXK is now built and available in the VMware vSphere environment. You can use this image
+    to deploy a Kubernetes cluster. To use the image, create a cluster profile with and select the BYOOS pack. Refer to
+    the custom image in the cluster profile when populating the image details. You need to refer to the VM template path
+    of the image.
+
+    ```yaml hideClipboard
+    pack:
+      osImageOverride: "/Datacenter/vm/sp-docs/rhel-8-kube-v1.27.11"
+      osName: "rhel"
+      osVersion: "8.8"
+    ```
+
+    Using the following image, take note of the three numbers highlighted in the image name.
+
+    1. The BYOOS pack is selected as the operating system layer.
+    2. The custom RHEL image template is specified in the `osImageOverride` field.
+    3. The Kubernetes version is set to `1.27.11`, the same version specified in the `kubernetes.json` file.
+
+    ![A cluster profile using a custom RHEL image](/byoos_vmware_rhewl-pxk_cluster-profile.webp)
+
 </TabItem>
 </Tabs>
 
 ## Validate
 
+1. Log in to the VMware vSphere environment and navigate to the Inventory view.
+
+2. Select the **VMs and Templates** tab and verify the custom RHEL image with PXK is available.
+
+:::info
+
+You can verify the FIPS mode is enabled on the custom RHEL image by SSH in to a cluster node and issuing the following
+commands. Use the SSH key provided during the cluster creation process to log in to the node. The default user is
+`spectro`.
+
+```bash
+cat /proc/sys/crypto/fips_enabled
 ```
 
+If the output is `1`, then FIPS mode is enabled. If the output is `0`, the FIPS mode is disabled.
+
+```shell hideClipboard
+1
 ```
+
+Next, verify the kernel command line arguments to ensure FIPS is enabled.
+
+```bash
+cat /proc/cmdline
+```
+
+Verify `fips=1` is present in the output.
+
+```shell hideClipboard
+[iBOOT_IMAGE=(hd0,msdos1)/boot/vmlinuz-4.18.0-513.24.1.el8_9.x86_64 root=UUID=a0672ca4-19fb-45ae-8f15-5a9d0218644d ro crashkernel=auto fips=1]
+```
+
+:::
