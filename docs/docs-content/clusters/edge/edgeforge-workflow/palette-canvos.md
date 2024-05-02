@@ -375,9 +375,9 @@ customization.
     :::info
 
     The BYOOS pack's `system.uri` attribute references the Kubernetes version selected in the cluster profile by using
-    the `{{ .spectro.system.kubernetes.version }}` [macro](../../../cluster-management/macros.md). This is how the
-    provider images you created and pushed to a registry are tied to the OS and Kubernetes version you selected in the
-    **.arg** file.
+    the `{{ .spectro.system.kubernetes.version }}` [macro](../../../clusters/cluster-management/macros.md). This is how
+    the provider images you created and pushed to a registry are tied to the OS and Kubernetes version you selected in
+    the **.arg** file.
 
     :::
 
@@ -841,9 +841,9 @@ git checkout v4.0.6
     :::info
 
     The BYOOS pack's `system.uri` attribute references the Kubernetes version selected in the cluster profile by using
-    the `{{ .spectro.system.kubernetes.version }}` [macro](../../../cluster-management/macros.md). This is how the
-    provider images you created and pushed to a registry are tied to the OS and Kubernetes version you selected in the
-    **.arg** file.
+    the `{{ .spectro.system.kubernetes.version }}` [macro](../../../clusters/cluster-management/macros.md). This is how
+    the provider images you created and pushed to a registry are tied to the OS and Kubernetes version you selected in
+    the **.arg** file.
 
     :::
 
