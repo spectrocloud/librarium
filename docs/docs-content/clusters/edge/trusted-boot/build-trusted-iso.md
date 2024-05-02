@@ -11,7 +11,9 @@ This document guides you through the process of producing Edge artifacts that ar
 
 ## Prerequisites
 
-- You have generated
+- You have generated secure boot keys.
+- Both the **db.key** file and the **tpm2-pcr-private.pem** file are located in the **CanvOS/secure-boot/private-keys**
+  directory.
 
 ## Build Edge Artifacts with Trusted Boot
 
