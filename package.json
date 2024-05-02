@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@commitlint/cli": "^17.6.7",
-    "@commitlint/config-conventional": "^17.6.7",
+    "@commitlint/config-conventional": "^19.2.2",
     "@docusaurus/core": "^3.2.1",
     "@docusaurus/plugin-client-redirects": "^3.2.1",
     "@docusaurus/plugin-ideal-image": "^3.2.1",
