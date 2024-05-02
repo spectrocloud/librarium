@@ -1910,4 +1910,4 @@ data "spectrocloud_pack_simple" "portworx-operator" {
 
 - [Portworx Central](https://docs.portworx.com/portworx-central-on-prem/install/px-central.html)
 
-- [Flash Array License JSON](https://docs.portworx.com/portworx-enterprise/install-portworx/kubernetes/install-flasharray.html#create-a-json-configuration-file)
+- [Flash Array](https://docs.portworx.com/portworx-enterprise/install-portworx/kubernetes/flasharray)

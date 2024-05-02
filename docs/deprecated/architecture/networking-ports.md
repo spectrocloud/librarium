@@ -16,17 +16,47 @@ network communication and ports for each architecture.
 
 ## SaaS Network Communications and Ports
 
+<Tabs groupId="architecture">
+<TabItem label="gRPC" value="gRPC">
+
 The following ports must be reachable from a network perspective for Palette SaaS to function correctly.
 
 ![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram-grpc.webp "title=SaaS Network Diagram with ports")
 
+</TabItem>
+
+<TabItem label="NATS" value="nats">
+
+The following ports must be reachable from a network perspective for Palette SaaS to function correctly.
+
+![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram-nats.webp "title=SaaS Network Diagram with ports")
+
+</TabItem>
+
+</Tabs>
+
 ### SaaS Managed With Edge
 
+<Tabs groupId="architecture">
+<TabItem label="gRPC" value="gRPC">
+
 ![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge-grpc.webp)
+
+</TabItem>
+
+<TabItem label="NATS" value="nats">
+
+![SaaS network diagram displaying the network paths for edge](/architecture_networking-ports_saas-network-diagram-edge-nats.webp)
+
+</TabItem>
+</Tabs>
 
 ## Network Ports
 
 The following ports must be reachable from a network perspective for Palette to operate properly.
+
+<Tabs groupId="architecture">
+<TabItem label="gRPC" value="gRPC">
 
 ### Management Platform
 
@@ -44,6 +74,28 @@ The following ports must be reachable from a network perspective for Palette to 
 | HTTPS (tcp/443) | OUTBOUND  | gRPC, Registry (packs, integrations), Pack containers, Application Updates        |
 | NATS (tcp/4222) | OUTBOUND  | Registry (packs, integrations), Pack containers, Application Updates [Deprecated] |
 
+</TabItem>
+
+<TabItem label="NATS" value="nats">
+
+### Management Platform
+
+| **Port**        | **Direction** | **Purpose**                                            |
+| :-------------- | :------------ | :----------------------------------------------------- |
+| HTTPS (tcp/443) | INBOUND       | Browser/API access to management platform              |
+| NATS (tcp/4222) | INBOUND       | Agent running inside connecting to management platform |
+
+### Workload Cluster
+
+| **Port**        | **Direction** | **Purpose**                                                          |
+| :-------------- | :------------ | :------------------------------------------------------------------- |
+| HTTPS (tcp/443) | OUTBOUND      | API access to management platform                                    |
+| NATS (tcp/4222) | OUTBOUND      | Registry (packs, integrations), Pack containers, Application Updates |
+| NATS (tcp/4222) | OUTBOUND      | Registry (packs, integrations), Pack containers, Application Updates |
+
+</TabItem>
+</Tabs>
+
 :::info
 
 You can expose inbound port 22 for SSH if you would like to access your cluster nodes for troubleshooting remotely. This
@@ -53,9 +105,24 @@ is entirely optional and not required for Palette to operate appropriately.
 
 ## Self-Hosted Network Communications and Ports
 
+<Tabs groupId="architecture">
+<TabItem label="gRPC" value="gRPC">
+
 ![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram-grpc.webp)
 
+</TabItem>
+
+<TabItem label="NATS" value="nats">
+
+![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram-nats.webp)
+
+</TabItem>
+</Tabs>
+
 The following ports must be reachable from a network perspective for Palette self-hosted to function correctly.
+
+<Tabs groupId="architecture">
+<TabItem label="gRPC" value="gRPC">
 
 ### Management Platform
 
@@ -73,6 +140,30 @@ The following ports must be reachable from a network perspective for Palette sel
 | HTTPS (tcp/443) | OUTBOUND      | API access to management platform                                                               |
 | NATS (tcp/4222) | OUTBOUND      | Agent communication via message bus [Deprecated]                                                |
 | HTTPS (tcp/443) | OUTBOUND      | vSphere vCenter API, gRPC, Registry (packs, integrations), Pack containers, Application updates |
+
+</TabItem>
+
+<TabItem label="NATS" value="nats">
+
+### Management Platform
+
+| **Port**         | **Direction** | **Purpose**                                                                        |
+| :--------------- | :------------ | :--------------------------------------------------------------------------------- |
+| HTTPS (tcp/443)  | INBOUND       | Browser/API access to management platform                                          |
+| NATS (tcp/4222)  | INBOUND       | Message Bus for workload clusters                                                  |
+| HTTPS (tcp/443)  | OUTBOUND      | vSphere vCenter API, Registry (packs, integrations), Pack containers, app updates. |
+| HTTPS (tcp/6443) | OUTBOUND      | Workload K8s cluster API Server                                                    |
+
+### Workload Cluster
+
+| **Port**        | **Direction** | **Purpose**                                                                               |
+| :-------------- | :------------ | :---------------------------------------------------------------------------------------- |
+| HTTPS (tcp/443) | OUTBOUND      | API access to management platform                                                         |
+| NATS (tcp/4222) | OUTBOUND      | Agent communication via message bus                                                       |
+| HTTPS (tcp/443) | OUTBOUND      | vSphere vCenter API, Registry (packs, integrations), Pack containers, Application updates |
+
+</TabItem>
+</Tabs>
 
 :::info
 
