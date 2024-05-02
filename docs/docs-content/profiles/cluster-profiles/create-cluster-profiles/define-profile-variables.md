@@ -140,8 +140,8 @@ the **Profile Layers** stage of cluster profile creation and start following thi
 
     :::tip
 
-    To improve navigation, you can change the display order of variables. Select the **Variables Three-dot menu** >
-    **Reorder variables**, and drag and drop variables to change their display order. Then, select **Confirm order**.
+    To improve navigation, you can change the display order of variables. Select the **Variables three-dot menu**, then select
+    **Reorder variables**, and drag and drop variables to change their display order. Finally, select **Confirm order**.
 
     :::
 
@@ -194,11 +194,11 @@ variables in the new version.
 
    :::
 
-3. To edit a profile variable, in the **Three-dot menu** of the necessary variable, select **Edit** and make the
+3. To edit a profile variable, in the **three-dot menu** of the necessary variable, select **Edit** and make the
    necessary changes.
 
 4. To delete a profile variable, navigate to the profile layers that implement this variable and remove it from their
-   YAML configurations. Then, in the **Three-dot menu** of the necessary variable, select **Delete**.
+   YAML configuration. Then, in the **three-dot menu** of the necessary variable, select **Delete**.
 
 ### Validation
 
