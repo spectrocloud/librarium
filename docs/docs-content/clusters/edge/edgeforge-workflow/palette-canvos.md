@@ -678,7 +678,7 @@ git checkout v4.0.6
     ```
 
     If you want further customization, check the existing **user-data.template** file, and refer to the
-    [Edge Configuration Stages](../../edge-configuration/cloud-init.md) and
+    [Edge Configuration Stages](../edge-configuration/cloud-init.md) and
     [User Data Parameters](../../edge-configuration/installer-reference.md) documents to learn more.
 
 14. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
