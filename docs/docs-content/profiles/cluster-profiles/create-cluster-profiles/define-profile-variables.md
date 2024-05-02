@@ -81,7 +81,7 @@ the **Profile Layers** stage of cluster profile creation and start following thi
     :::tip
 
     Alternatively, open a profile layer and, in the upper-right corner of its YAML configuration editor, select
-    **Variables** > **Create variable**.
+    **Variables**, and then **Create variable**.
 
     :::
 
@@ -140,8 +140,9 @@ the **Profile Layers** stage of cluster profile creation and start following thi
 
     :::tip
 
-    To improve navigation, you can change the display order of variables. Select the **Variables three-dot menu**, then select
-    **Reorder variables**, and drag and drop variables to change their display order. Finally, select **Confirm order**.
+    To improve navigation, you can change the display order of variables. Select the **Variables three-dot menu**, then
+    select **Reorder variables**, and drag and drop variables to change their display order. Finally, select **Confirm
+    order**.
 
     :::
 
