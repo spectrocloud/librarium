@@ -34,8 +34,7 @@ console for all Edge hosts of your organization.
   - 8 GB memory
   - 50 GB storage
 
-- [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the `git --version`
-  command.
+- [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
 
 - [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
   command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
