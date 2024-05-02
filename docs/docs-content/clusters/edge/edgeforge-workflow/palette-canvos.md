@@ -671,16 +671,6 @@ git checkout v4.0.6
     EOF
     ```
 
-    :::info
-
-    If you need to pull images from a private image registry, you can supply the credentials for the registry in the
-    user data file in the `registryCredentials` field or in the cluster profile. Credentials specified in **user-data**
-    overwrites the credentials provided in the cluster profile. To learn how to provide credentials in cluster profiles,
-    refer to
-    [Deploy Cluster with a Private Registry](../../site-deployment/deploy-custom-registries/deploy-private-registry.md).
-
-    :::
-
     View the newly created user data file to ensure the token is set correctly.
 
     ```bash
