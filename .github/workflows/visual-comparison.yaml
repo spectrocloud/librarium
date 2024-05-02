@@ -18,7 +18,7 @@ env:
 
 
 concurrency:
-  group: "visual-comparison-${{ github.workflow }}"
+  group: "visual-comparison-${{ github.workflow }}-${{ github.head_ref }}"
   cancel-in-progress: true
 
 
@@ -53,7 +53,7 @@ jobs:
       - name: Setup Node.js Environment
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
           cache: "npm"
 
       - name: Post PR Comment
@@ -100,7 +100,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
           cache: "npm"
 
       - name: Install Dependencies
@@ -148,7 +148,7 @@ jobs:
     - name: Setup Node.js environment
       uses: actions/setup-node@v4
       with:
-        node-version: "18"
+        node-version: "20"
         cache: "npm"
 
     - name: Install Dependencies
