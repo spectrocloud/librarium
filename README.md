@@ -458,11 +458,11 @@ https://docusaurus.io/docs/markdown-features/code-blocks#highlighting-with-comme
 The copy button is shown by default in all code blocks. You can disable the copy button by passing in the parameter
 value `hideClipboard` in the markdown declaration of the code blocks.
 
-Example ![Example](static/assets/docs/images/hide_copy_button_example.png)
+Example ![Example](static/assets/docs/images/hide_copy_button_example.webp)
 
 Result
 
-![Result](static/assets/docs/images/hide_copy_button.png)
+![Result](/static/assets/docs/images/hide_copy_button.webp)
 
 ### Admonitions - Warning / Info / Tip / Danger
 
