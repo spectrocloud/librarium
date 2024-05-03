@@ -8,9 +8,7 @@ sidebar_position: 60
 tags: ["troubleshooting", "palette-upgrade"]
 ---
 
-# Palette Upgrades
-
-We recommend you review the [Release Notes](../release-notes.md) and the
+We recommend you review the [Release Notes](../release-notes/release-notes.md) and the
 [Upgrade Notes](../enterprise-version/upgrade/upgrade.md) before attempting to upgrade Palette. Use this information to
 address common issues that may occur during an upgrade.
 
