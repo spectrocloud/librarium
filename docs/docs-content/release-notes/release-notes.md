@@ -123,7 +123,7 @@ notes below to learn more about the new features and improvements.
 
 - Palette now supports the cloud provider, [Nutanix](https://www.nutanix.com/), as a Technical Preview feature. You can
   deploy Kubernetes clusters on Nutanix using Palette. Technical Preview features are subject to change as we continue
-  to improve the integration. Refer to the [Nutanix](./clusters/data-center/nutanix/nutanix.md) resource to learn more
+  to improve the integration. Refer to the [Nutanix](../clusters/data-center/nutanix/nutanix.md) resource to learn more
   about deploying Nutanix clusters with Palette.
 
 - Automatic SSL certificate renewal is now supported for clusters deployed through Palette. In the past, this was a
@@ -150,7 +150,7 @@ notes below to learn more about the new features and improvements.
 
 - Support for passkeys is now available for the self-hosted Palette admin user. When accessing the system console, you
   can now use passkeys to authenticate to the admin user account. For more information, refer to the
-  [System Console Credentials](./enterprise-version/system-management/account-management/credentials.md) resource.
+  [System Console Credentials](../enterprise-version/system-management/account-management/credentials.md) resource.
 
 - You can start a local Palette documentation server by using the Palette CLI's `docs` command. This feature is useful
   when you want to access Palette documentation offline. For more information, refer to the
