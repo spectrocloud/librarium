@@ -48,7 +48,7 @@ generation in an airgapped environment and move the private keys to a secure loc
 - You have exported the factory keys from the Edge device. For more information, refer to
   [Export Factory Keys](./export-keys.md).
 
-## Generate Keys for Trusted Boot
+## Generate Keys for Trusted Boot with Self-Signed Certificates
 
 1. Clone the **CanvOS** repository.
 
@@ -93,6 +93,11 @@ generation in an airgapped environment and move the private keys to a secure loc
    The key generation script also produces a folder named **enrollment**. This folder contains public keys that will be
    built into the Edge installer ISO, and eventually enrolled in your Edge device when you install Palette Edge with the
    ISO.
+
+## Generate Keys for Trusted Boot with a CA
+
+In addition to using self-signed certificates, Palette Edge allows you to use certificates issued by a Certificate
+Authority (CA) to generate Trusted Boot keys in the EdgeForge process.
 
 ## Validate
 

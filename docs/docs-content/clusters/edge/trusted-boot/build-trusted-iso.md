@@ -11,9 +11,10 @@ This document guides you through the process of producing Edge artifacts that ar
 
 ## Prerequisites
 
-- You have generated secure boot keys.
+- You have generated secure boot keys in the **secure-boot/enrollment** folder.
 - Both the **db.key** file and the **tpm2-pcr-private.pem** file are located in the **CanvOS/secure-boot/private-keys**
   directory.
+-
 
 ## Build Edge Artifacts with Trusted Boot
 
@@ -45,7 +46,7 @@ This document guides you through the process of producing Edge artifacts that ar
    [Edge Artifact Build Configurations](../edgeforge-workflow/palette-canvos/arg.md) for available configuration
    parameters.
 
-   To build an ISO image that supports Trusted Boot, you need to include the following parameters:
+   To build an ISO image that supports Trusted Boot, you need to include the following parameters in the **.arg** file:
 
    ```
    IS_UKI=true
@@ -56,13 +57,30 @@ This document guides you through the process of producing Edge artifacts that ar
 6. Create a file named **user-data**. This is the file with which you can configure the Edge installer. Refer to
    [Edge Installer Configuration](../edge-configuration/installer-reference.md) for available configuration parameters.
 
-   :::caution
+   :::warning
 
-   Ensure you have generated the Trusted Boot keys in the **secure-boot** folder before proceeding to the next step.
+   Ensure you have generated the Trusted Boot keys in the **secure-boot/enrollment** folder before proceeding to the
+   next step. If you build an ISO without using
 
    :::
 
-7. Issue the following command to build the ISO image.
+7. Customize the **Dockerfile**. You can install tools and dependencies and configure the image to meet your needs. Add
+   your customizations below the line tagged with the `Add any other image customizations here` comment in the
+   Dockerfile. Do not edit or add any lines before this tagged comment. For example, you can add the following line to
+   the **Dockerfile** to install WireGuard.
+
+   ```dockerfile
+   ...
+   ###########################Add any other image customizations here #######################
+
+   RUN sudo zypper refresh && sudo zypper install --non-interactive wireguard-tools
+   ```
+
+   :::warning
+
+   :::
+
+8. Issue the following command to build the ISO image.
 
    ```shell
    ./earthly.sh +iso
