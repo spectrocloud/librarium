@@ -393,10 +393,6 @@ const redirects = [
     to: "/clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry/",
   },
   {
-    from: "/clusters/edge/networking/local-registry",
-    to: "/clusters/edge/site-deployment/deploy-custom-registries/local-registry",
-  },
-  {
     from: "/clusters/edge/site-deployment/deploy-private-registry",
     to: "/clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry",
   },
