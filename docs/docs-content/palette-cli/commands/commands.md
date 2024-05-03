@@ -23,6 +23,8 @@ The following list contains all the supported Palette CLI subcommands. Click on 
 
 - [`fips-validate`](fips-validate.md) - Validate the FIPS compliance of your Kubernetes clusters.
 
+- [`import`](import.md) - Import clusters into Palette.
+
 - [`login`](login.md) - Login to Palette.
 
 - [`pcg`](pcg.md) - Private Cloud Gateway installation & pre-validation.
@@ -62,3 +64,5 @@ Palette CLI supports the following global flags.
 - [Project](project.md)
 
 - [Validator](validator.md)
+
+- [Import](import.md)

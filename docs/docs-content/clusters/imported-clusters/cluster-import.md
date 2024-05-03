@@ -21,13 +21,15 @@ Select the mode you want to use when importing a cluster into Palette.
 
 ### Prerequisites
 
-- Kubernetes version >= 1.19.X
+- Kubernetes version 1.19.X or later on the cluster you are importing.
 
 - Ensure your environment has network access to Palette SaaS or your self-hosted Palette instance.
 
 - Ensure [kubectl](https://kubernetes.io/docs/tasks/tools/) is installed and available in your local workstation.
 
 - Access to your cluster environment through kubectl.
+
+- Ensure you have `admin` or `cluster-admin` permissions on the cluster you are importing.
 
 ### Import a Cluster
 
@@ -122,13 +124,15 @@ You now have imported a cluster into Palette with full permissions.
 
 ### Prerequisites
 
-- Kubernetes version >= 1.19.X
+- Kubernetes version 1.19.X or later on the cluster you are importing.
 
 - Ensure your environment has network access to Palette SaaS or your self-hosted Palette instance.
 
 - Ensure [kubectl](https://kubernetes.io/docs/tasks/tools/) is installed and available in your local workstation.
 
 - Access to your cluster environment through kubectl.
+
+- Ensure you have `admin` or `cluster-admin` permissions on the cluster you are importing.
 
 ### Import a Cluster
 
