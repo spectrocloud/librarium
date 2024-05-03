@@ -80,7 +80,7 @@ in the future, ensure you upgrade to a version of Palette that's 4.2.12 or later
 **If you are using an affected agent version**, first make sure that your Palette instance version is 4.2.12 or newer.
 Once you have confirmed your Palette version, unpause Agent upgrades for your cluster if they are paused. To learn how
 to toggle agent upgrades, refer to
-[Pause Platform Upgrades](./clusters/cluster-management/platform-settings/pause-platform-upgrades.md). In 5 - 10
+[Pause Platform Upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md). In 5 - 10
 minutes, the Palette agent will upgrade to a new version that includes the bug fix. If the agent does not upgrade for an
 extended period of time, contact support@spectrocloud.com.
 
@@ -99,7 +99,7 @@ extended period of time, contact support@spectrocloud.com.
 - Fixed an issue that prohibited updating Helm packs in cluster profiles.
 - Fixed an issue that caused certain OCI registries created before the Palette 4.2 upgrade to be unlisted.
 - Fixed an issue that caused HTTP 400 errors when visiting the
-  [Kubernetes Dashboard](./integrations/kubernetes-dashboard.md). The issue was caused by an internal cookie size limit
+  [Kubernetes Dashboard](../integrations/kubernetes-dashboard.md). The issue was caused by an internal cookie size limit
   that was insufficient for the Kubernetes Dashboard.
 
 ## January 9, 2024 - Release 4.2.4
@@ -123,14 +123,14 @@ notes below to learn more about the new features and improvements.
 
 - Palette now supports the cloud provider, [Nutanix](https://www.nutanix.com/), as a Technical Preview feature. You can
   deploy Kubernetes clusters on Nutanix using Palette. Technical Preview features are subject to change as we continue
-  to improve the integration. Refer to the [Nutanix](./clusters/data-center/nutanix/nutanix.md) resource to learn more
+  to improve the integration. Refer to the [Nutanix](../clusters/data-center/nutanix/nutanix.md) resource to learn more
   about deploying Nutanix clusters with Palette.
 
 - Automatic SSL certificate renewal is now supported for clusters deployed through Palette. In the past, this was a
   manual action that had to be performed by the user, which also caused node repaves. Palette will now automatically
   renew the certificate 30 days before the expiration date without triggering a node repave. This feature is available
   in all supported infrastructure providers except for Edge. For more information, refer to the
-  [Certificate Management](./clusters/cluster-management/certificate-management.md) resource.
+  [Certificate Management](../clusters/cluster-management/certificate-management.md) resource.
 
 - Enhanced cluster repave control and mitigation. In the Palette 4.1 release, repave notification warnings become
   available through the User Console (UI). In this release, cluster administrators, project administrators, and tenant
@@ -139,22 +139,22 @@ notes below to learn more about the new features and improvements.
   administrators to cancel the action that will trigger a repave.
 
 - A Pack's README file is displayed during the cluster profile creation and editing process. You can find additional
-  information about a pack in the [Packs List](./integrations/integrations.mdx) page.
+  information about a pack in the [Packs List](../integrations/integrations.mdx) page.
 
 - Palette CLI now supports integration with [Validator](https://github.com/spectrocloud-labs/validator), an open-source
   framework that you can use to validate your self-hosted Palette, VerteX, or workload cluster environment. Validator
   performs Day 0-2 validation and configuration drift detection in a composable manner across various systems. Use the
   `palette validator` command to verify your environment before installing a self-hosted instance of Palette or VerteX.
   You can also use Validator to verify the environment requirements for deploying a cluster. For more information, refer
-  to the [Validator](./palette-cli/commands/validator.md) CLI reference.
+  to the [Validator](../palette-cli/commands/validator.md) CLI reference.
 
 - Support for passkeys is now available for the self-hosted Palette admin user. When accessing the system console, you
   can now use passkeys to authenticate to the admin user account. For more information, refer to the
-  [System Console Credentials](./enterprise-version/system-management/account-management/credentials.md) resource.
+  [System Console Credentials](../enterprise-version/system-management/account-management/credentials.md) resource.
 
 - You can start a local Palette documentation server by using the Palette CLI's `docs` command. This feature is useful
   when you want to access Palette documentation offline. For more information, refer to the
-  [Docs](./palette-cli/commands/docs.md) command page.
+  [Docs](../palette-cli/commands/docs.md) command page.
 
 #### Improvements
 
@@ -170,11 +170,11 @@ notes below to learn more about the new features and improvements.
   help you identify the changes that will be applied to the cluster profile.
 
 - Private Cloud Gateway (PCG) deployments now use Kubernetes version 1.26. Previously, the default Kubernetes version
-  was 1.24. Use the latest version of the [Palette CLI](./spectro-downloads.md#palette-cli) to install PCG clusters.
+  was 1.24. Use the latest version of the [Palette CLI](../spectro-downloads.md#palette-cli) to install PCG clusters.
   Existing Private Cloud Gateway deployments will require a manual reconciliation of the cluster profile to update the
   Kubernetes version to 1.26. Make sure you carry over any customizations the current cluster profile may have, such as
   pod CIDR and service CIDR before updating the cluster profile with the new Kubernetes version. Refer to the
-  [Update a Cluster Profile](./profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md#update-the-pack-version)
+  [Update a Cluster Profile](../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md#update-the-pack-version)
   guide to learn more on reconciling a cluster profile pack layer change.
 
 #### Known Issues
@@ -185,10 +185,10 @@ notes below to learn more about the new features and improvements.
   when the vSphere adapter is configured to use VMXNET3. This is a known issue with Cilium and VMXNET3. Refer to the
   [GitHub issue discussion](https://github.com/cilium/cilium/issues/21801) to learn more about this issue.
 
-- Enabling [passkeys](/enterprise-version/system-management/account-management/credentials.md) in a self-hosted Palette
-  instance will cause JSON Web Tokens (JWT) returned by the system API endpoint `/v1/auth/syslogin` to be invalid. Refer
-  to the
-  [Passkeys and API Access](./enterprise-version/system-management/account-management/credentials.md#passkeys-and-api-access)
+- Enabling [passkeys](../enterprise-version/system-management/account-management/credentials.md) in a self-hosted
+  Palette instance will cause JSON Web Tokens (JWT) returned by the system API endpoint `/v1/auth/syslogin` to be
+  invalid. Refer to the
+  [Passkeys and API Access](../enterprise-version/system-management/account-management/credentials.md#passkeys-and-api-access)
   resource for more information on accessing the system API when passkeys are enabled. This issue does not affect the
   regular Palette API used by clusters and users.
 
@@ -199,7 +199,7 @@ notes below to learn more about the new features and improvements.
 - Edge hostnames are not allowed to have special characters. Validation has been added to prevent issues arising from
   using special characters in host names. Edge hostnames must comply with
   [RFC1035](https://datatracker.ietf.org/doc/html/rfc1035), refer to the
-  [Edge Installer Configuration](./clusters/edge/edge-configuration/edge-configuration.md) and review the `name`
+  [Edge Installer Configuration](../clusters/edge/edge-configuration/edge-configuration.md) and review the `name`
   parameter for more information.
 
 #### Features
@@ -207,7 +207,7 @@ notes below to learn more about the new features and improvements.
 - Overlay support for DHCP is now available as a Tech Preview feature. Edge clusters can now establish an VxLAN overlay
   network during cluster creation, and Edge hosts can self-discover the overlay network within a single ethernet
   broadcast domain. Clusters using this feature will remain operational when the host IP addresses change unexpectedly.
-  Check out the [Enable Overlay Network](clusters/edge/networking/vxlan-overlay.md) resource for more information.
+  Check out the [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md) resource for more information.
 
 - Local registry support. You can deploy a self-hosted [Harbor registry](https://goharbor.io) on your Edge cluster and
   use the registry to store images for your workloads and initialize a cluster's other edge host nodes. Using a local
@@ -218,20 +218,20 @@ notes below to learn more about the new features and improvements.
   versus relying on the default interface selected by Kubernetes. This feature is useful when you have multiple network
   interfaces on your edge hosts and want to use a specific interface for your workloads or if you are using the new
   overlay support for DHCP. Check out the
-  [Create Cluster Definition](./clusters/edge/site-deployment/site-installation/cluster-deployment.md) resource for more
-  information on how to specify the network interface for your edge hosts during cluster deployment.
+  [Create Cluster Definition](../clusters/edge/site-deployment/site-installation/cluster-deployment.md) resource for
+  more information on how to specify the network interface for your edge hosts during cluster deployment.
 
 #### Improvements
 
 - New Edge clusters can now retrieve provider images from authenticated registries. Previously, only public registries
   were supported for non-airgapped clusters. Now, you can use authenticated registries to store your provider images and
   retrieve them during cluster deployment. For more information, refer to the
-  [Deploy Cluster with a Private Registry](clusters/edge/site-deployment/deploy-private-registry.md) guide.
+  [Deploy Cluster with a Private Registry](../clusters/edge/site-deployment/deploy-private-registry.md) guide.
 
 - Extended [kube-vip customization](https://kube-vip.io/docs/installation/flags/) is now available for new Edge
   clusters. You can now specify additional kube-vip configuration parameters as part of the Kubernetes pack layer
   configuration. To learn more about the available kube-vip configuration parameters, refer to the
-  [Publish Cluster Services with Kube-vip](clusters/edge/networking/kubevip.md) resource.
+  [Publish Cluster Services with Kube-vip](../clusters/edge/networking/kubevip.md) resource.
 
 #### Known Issues
 
@@ -246,12 +246,12 @@ notes below to learn more about the new features and improvements.
     to our support team [support@spectrocloud.com](mailto:support@spectrocloud.com) if you need to remove a node with
     the `palette-webhook` pod on it.
 
-- In a multi-node cluster with [PXK-E](./integrations/kubernetes-edge.md) as the Kubernetes distribution, you cannot
+- In a multi-node cluster with [PXK-E](../integrations/kubernetes-edge.md) as the Kubernetes distribution, you cannot
   change the Network Interface Card (NIC). When you add an Edge host to such a cluster, leave the NIC field as its
   default value.
 
-- The following known issues apply to [Harbor Edge Native Config](./integrations/harbor-edge.md) when deployed with the
-  [Longhorn](./integrations/longhorn.md) Container Storage Interface (CSI) driver:
+- The following known issues apply to [Harbor Edge Native Config](../integrations/harbor-edge.md) when deployed with the
+  [Longhorn](../integrations/longhorn.md) Container Storage Interface (CSI) driver:
 
   - The Harbor job service pod is in a _Terminating_ and _ContainerCreating_ state in an Edge Native High Availability
     (HA) cluster after a Day-2 operation.
@@ -273,8 +273,8 @@ notes below to learn more about the new features and improvements.
 
 - You can now deploy virtual machines using VMO on an Edge cluster. Edge clusters are useful when deploying Kubernetes
   clusters in remote locations. Refer to the
-  [Create a VMO Profile](./vm-management/vm-packs-profiles/create-vmo-profile.md) to learn how to create an Edge cluster
-  profile for VMO.
+  [Create a VMO Profile](../vm-management/vm-packs-profiles/create-vmo-profile.md) to learn how to create an Edge
+  cluster profile for VMO.
 
 ### VerteX
 
@@ -282,26 +282,26 @@ notes below to learn more about the new features and improvements.
 
 - Azure Government Cloud support is now available for VerteX. You can now deploy Azure IaaS clusters on Azure Government
   accounts. The following Azure regions are available: US Gov Arizona, US Gov Texas, and US Gov Virginia. For more
-  information, refer to the [Supported Platforms](./vertex/supported-platforms.md) resource.
+  information, refer to the [Supported Platforms](../vertex/supported-platforms.md) resource.
 
 - Canonical MAAS support is now available for VerteX. You can now deploy Canonical MAAS clusters with VerteX. Refer to
-  the [MAAS](./clusters/data-center/maas/maas.md) resource for more information on deploying MAAS clusters.
+  the [MAAS](../clusters/data-center/maas/maas.md) resource for more information on deploying MAAS clusters.
 
 - Support for passkeys is now available for the admin user. When accessing the system console, you can now use passkeys
   to authenticate the admin user account. For more information, refer to the
-  [System Console Credentials](vertex/system-management/account-management/credentials.md) resource.
+  [System Console Credentials](../vertex/system-management/account-management/credentials.md) resource.
 
 #### Improvements
 
 - To better support airgap installs and customers in internet-restricted environments. You can now access Palette
   documentation offline by using the Palette documentation container. For more information, refer to the
-  [Offline Documentation](./vertex/install-palette-vertex/airgap/offline-docs.md) page.
+  [Offline Documentation](../vertex/install-palette-vertex/airgap/offline-docs.md) page.
 
 #### Known Issues
 
-- Enabling [passkeys](./vertex/system-management/account-management/credentials.md#add-passkeys) in a VerteX instance
+- Enabling [passkeys](../vertex/system-management/account-management/credentials.md#add-passkeys) in a VerteX instance
   will cause JSON Web Tokens (JWT) returned by the system API endpoint `/v1/auth/syslogin` to be invalid. Refer to the
-  [Passkeys and API Access](./vertex/system-management/account-management/credentials.md#passkeys-and-api-access)
+  [Passkeys and API Access](../vertex/system-management/account-management/credentials.md#passkeys-and-api-access)
   resource for more information on accessing the system API when passkeys are enabled. This issue does not affect the
   regular VerteX API used by clusters and users.
 
@@ -322,12 +322,12 @@ notes below to learn more about the new features and improvements.
 
 ### Docs and Education
 
-- The [Deploy a Custom Pack](./registries-and-packs/deploy-pack.md) tutorial has been updated to include instructions on
-  deploying a custom pack with a custom OCI Pack registry.
+- The [Deploy a Custom Pack](../registries-and-packs/deploy-pack.md) tutorial has been updated to include instructions
+  on deploying a custom pack with a custom OCI Pack registry.
 
 - The Palette Offline Documentation container image is now cryptographically signed. You can verify the authenticity of
   the container image by using the [Cosign CLI](https://docs.sigstore.dev/signing/quickstart) and the public key. Refer
-  to the [Offline Documentation](./vertex/install-palette-vertex/airgap/offline-docs.md#container-image-authenticity)
+  to the [Offline Documentation](../vertex/install-palette-vertex/airgap/offline-docs.md#container-image-authenticity)
   page for more information.
 
 ### Packs
@@ -424,7 +424,7 @@ notes below to learn more about the new features and improvements.
 #### Pack Notes
 
 - A Pack's README file is displayed during the cluster profile creation and editing process. You can find additional
-  information about a pack in the [Packs List](./integrations/integrations.mdx) page.
+  information about a pack in the [Packs List](../integrations/integrations.mdx) page.
 - ArgoCD is now a verified pack, starting with version 5.46.8.
 - Spot.io is now a verified pack, starting with version 1.0.117.
 - Edge cluster nodes deployed in a single node configuration using RKE2 version 1.26.X must upgrade to the latest minor
@@ -434,4 +434,4 @@ notes below to learn more about the new features and improvements.
 
 #### Deprecations and Removals
 
-- Check out the [Deprecated Packs](integrations/deprecated-packs.md) page for a list of deprecated packs.
+- Check out the [Deprecated Packs](../integrations/deprecated-packs.md) page for a list of deprecated packs.
