@@ -15,9 +15,10 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
-- Fixed an issue when creating a DNS mapping for the [System PCG](./clusters/pcg/architecture.md#system-private-gateway)
-  that caused errors in the User Interface (UI) and prevented the mapping from being created. The issue has been
-  resolved, and you can now create DNS mappings for the System PCG without any issues.
+- Fixed an issue when creating a DNS mapping for the
+  [System PCG](../clusters/pcg/architecture.md#system-private-gateway) that caused errors in the User Interface (UI) and
+  prevented the mapping from being created. The issue has been resolved, and you can now create DNS mappings for the
+  System PCG without any issues.
 
 - Resolved an issue where complex pack presets would not get injected into the cluster profile layer's YAML file.
 
