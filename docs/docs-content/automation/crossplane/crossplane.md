@@ -15,9 +15,9 @@ infrastructure providers.
 These resources, called
 [Managed Resources (MR)](https://docs.crossplane.io/latest/concepts/managed-resources/#managed-resource-fields) within
 the Crossplane environment, are essentially Kubernetes Custom Resource Definitions (CRDs) that represent infrastructure
-resources as native Kubernetes objects. As Kubernetes objects, you can use standard commands like `kubectl describe` to
-interact with them. When users create a managed resource, Crossplane interacts with the infrastructure provider API to
-request the creation of the resource within the provider's environment.
+resources as native Kubernetes objects. Because they are Kubernetes objects, you can interact with them using standard
+commands like `kubectl describe`. When users create a managed resource, Crossplane interacts with the infrastructure
+provider API to request the creation of the resource within the provider's environment.
 
 ## Palette Provider
 
@@ -26,10 +26,14 @@ You can use the Palette Crossplane Provider to interact with the Palette API and
 Refer to the [Palette Provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/v0.12.0)
 page available in the Upbound Marketplace for a complete list of managed resources and examples.
 
-## Usage
+## Get Started
 
 For an end-to-end cluster provisioning example, access the guides provided below.
 
 - [Deploy an AWS IaaS Cluster with Crossplane](./deploy-cluster-aws-crossplane.md)
 - [Deploy an Azure IaaS Cluster with Crossplane](./deploy-cluster-azure-crossplane.md)
 - [Deploy a GCP IaaS Cluster with Crossplane](./deploy-cluster-gcp-crossplane.md)
+
+## Resources
+
+- [Crossplane Documentation](https://docs.crossplane.io/latest/)

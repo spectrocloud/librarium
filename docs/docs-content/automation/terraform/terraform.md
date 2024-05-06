@@ -41,9 +41,13 @@ Refer to the
 [Spectro Cloud Modules](https://github.com/spectrocloud/terraform-spectrocloud-modules#module-resources--requirements)
 README file to learn more about supported provider versions and other essential requirements.
 
-## Usage
+## Get Started
 
 For an end-to-end cluster provisioning example, refer to the
 [Deploy a Cluster](../../clusters/public-cloud/deploy-k8s-cluster.md) tutorial and the
 [end-to-end examples](https://github.com/spectrocloud/terraform-provider-spectrocloud/tree/main/examples/e2e) available
 in the Spectro Cloud Terraform Provider GitHub repository.
+
+## Resources
+
+- [Terraform Documentation](https://developer.hashicorp.com/terraform/docs)

@@ -28,7 +28,7 @@ how to use Crossplane to deploy a Kubernetes cluster in AWS that is managed by P
 - A Kubernetes cluster with at least 2 GB of RAM. This guide uses a [kind](https://kind.sigs.k8s.io) cluster as an
   example. Refer to the [kind Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/) to learn how to install kind
   and create a cluster.
-- The following software installed:
+- The following software is required and must be installed:
   - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
   - [Helm](https://helm.sh/docs/intro/install/) version v3.2.0 or later
   - [curl](https://curl.se/docs/install.html)
@@ -571,6 +571,11 @@ how to use Crossplane to deploy a Kubernetes cluster in AWS that is managed by P
     echo Cluster Profile ID: $clusterProfileId
     ```
 
+    ```text hideClipboard
+    profile.cluster.palette.crossplane.io/aws-crossplane-cluster-profile condition met
+    Cluster Profile ID: 6638e0eb8f42b99cb4d1d1bb
+    ```
+
 18. Next, get the ID of your AWS cloud account registered in Palette by invoking the `cloudaccounts` Palette API.
     Replace `<your-api-key>` with your Palette API key and `<aws-account-name>` with the name you called your AWS
     account when registering it with Palette.
@@ -579,6 +584,10 @@ how to use Crossplane to deploy a Kubernetes cluster in AWS that is managed by P
     curl --location --request GET 'https://api.spectrocloud.com/v1/cloudaccounts/aws' \
     -H 'Accept: application/json' \
     -H 'ApiKey: <your-api-key>' | jq '.items[] | select(.metadata.name == "<aws-account-name>") | .metadata.uid'
+    ```
+
+    ```text hideClipboard
+    "645981f0ab3ab8105fabc932"
     ```
 
     Copy the API response containing your AWS cloud account ID.
