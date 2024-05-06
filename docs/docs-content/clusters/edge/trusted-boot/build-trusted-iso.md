@@ -1,22 +1,21 @@
 ---
-sidebar_label: "Build Edge Artifacts with Trusted Boot"
-title: "Build Edge Artifacts with Trusted Boot"
-description: "Learn about how to build Edge Artifacts for Trusted Boot."
+sidebar_label: "Build Edge Installer ISO"
+title: "Build Edge Installer ISO with Trusted Boot"
+description: "Learn about how to build Edge Installer ISO for Trusted Boot."
 hide_table_of_contents: false
 sidebar_position: 10
 tags: ["edge"]
 ---
 
-This document guides you through the process of producing Edge artifacts that are secured by Trusted Boot.
+This document guides you through the process of producing Edge Installer ISO that are secured by Trusted Boot.
 
 ## Prerequisites
 
 - You have generated secure boot keys in the **secure-boot/enrollment** folder.
 - Both the **db.key** file and the **tpm2-pcr-private.pem** file are located in the **CanvOS/secure-boot/private-keys**
   directory.
--
 
-## Build Edge Artifacts with Trusted Boot
+## Build Edge Installer ISO with Trusted Boot
 
 1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS.git) GitHub repository containing the starter code.
 
@@ -60,7 +59,7 @@ This document guides you through the process of producing Edge artifacts that ar
    :::warning
 
    Ensure you have generated the Trusted Boot keys in the **secure-boot/enrollment** folder before proceeding to the
-   next step. If you build an ISO without using
+   next step. If you build an ISO without using these keys, your device will not be able to boot.
 
    :::
 

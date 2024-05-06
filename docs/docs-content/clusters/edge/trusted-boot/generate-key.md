@@ -1,5 +1,5 @@
 ---
-sidebar_label: "Generate Keys for Trusted Boot"
+sidebar_label: "Generate Keys"
 title: "Generate Keys for Trusted Boot"
 description: "Learn about how to generate keys for Trusted Boot."
 hide_table_of_contents: false
@@ -74,9 +74,17 @@ generation in an airgapped environment and move the private keys to a secure loc
    git checkout v4.4.0
    ```
 
-5. Create a directory called **secure-boot**, and then a subdirectory called **exported-keys** in the **secure-boot**
-   directory. Copy the keys you exported from your Edge device in [Export Factory Keys](./export-keys.md) to the
-   **exported-keys** directory.
+5. Issue the following command to create the folders for Trusted Boot keys.
+
+   ```shell
+   ./earthly.sh +secure-boot-dirs
+   ```
+
+   This will create a folder named **secure-boot** and three subdirectories: **exported-keys**, **private-keys** and
+   **public-keys**.
+
+   Copy the keys you exported from your Edge device in [Export Factory Keys](./export-keys.md) to the **exported-keys**
+   directory.
 
 6. Issue the following command to generate keys. Replace `org-name` with the name of your organization, and replace
    5475, the default expiration period in days, with the desired expiration period for your keys. We suggest that you

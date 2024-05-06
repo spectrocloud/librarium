@@ -1,5 +1,5 @@
 ---
-sidebar_label: "Installation with Trusted Boot"
+sidebar_label: "Installation"
 title: "Installation with Trusted Boot"
 description: "Learn about how to install Palette Edge with Trusted Boot on your Edge device."
 hide_table_of_contents: false
@@ -8,8 +8,8 @@ tags: ["edge"]
 ---
 
 This page guides you through installing Palette Edge with Trusted Boot enabled on an Edge device. Some of the steps
-included in this guide involve the BIOS interface of the Edge device which varies from machine to machine. We use the
-Intel NUC 13 Pro as an example.
+included in this guide involve the Basic Input/Output System (BIOS) interface of the Edge device which varies from
+machine to machine. This guide uses the Intel NUC 13 Pro as an example.
 
 ## Prerequisites
 
@@ -55,17 +55,17 @@ supports Secure Boot.
 7. When installation finishes, you will see the text "Installation has finished, rebooting in 5 seconds" on your screen.
    Remove the USB disk from your Edge device.
 
+8. After installation finishes, power up the device. Let your device automatically choose the boot volume. It should
+   boot directly to Edge device registration.
+
 ## Validate
 
-1. After installation finishes, power up the device. Let your device automatically choose the boot volume. It should
-   boot directly to registration.
-
-2. Press **Alt + right arrow key**, or **Ctrl + Alt + F1**. Replace **Alt** with **Options** on a Mac keyboard. This
+1. Press **Alt + right arrow key**, or **Ctrl + Alt + F1**. Replace **Alt** with **Options** on a Mac keyboard. This
    will bring up a terminal and allow you to log in with the credentials you configured with the **user-data** file.
 
    Alternatively, you can establish an SSH connection to your Edge device if you have network access to it.
 
-3. Issue the following command:
+2. Issue the following command:
 
    ```shell
    ls -ltr / run/cos/
@@ -83,16 +83,17 @@ supports Secure Boot.
    This confirms that your Edge device was booted with a Unified Kernel Image, a specific file format tailored to
    achieve a tamper-proof system and encryption of persistent partitions.
 
-4. Issue the following command:
+3. Issue the following command to verify disk encryption:
 
    ```shell
    lsblk
    ```
 
    You should see output similar to the following and verify that the **/oem** portion and various directories
-   containing sensitive user data are encrypted.
+   containing sensitive user data are encrypted. This means that if the boot process is ever altered by an unauthorized
+   party, they will not be able to gain access to the encrypted data.
 
-   ```
+   ```hideClipboard
    NAME          MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
     nvme0n1       259:0    0 476.9G  0 disk
     ├─nvme0n1p1   259:1    0    15G  0 part  /efi
@@ -131,3 +132,9 @@ supports Secure Boot.
                                             /home
                                             /usr/local
    ```
+
+## Next Steps
+
+After you have installed Palette Edge on your Edge device with Trusted Boot, you can proceed to cluster creation. The
+process of creating a cluster with Trusted Boot enabled is not different from creating a regular cluster. Refer to
+[Cluster Creation](../site-deployment/site-installation/cluster-deployment.md) for more information.

@@ -14,8 +14,22 @@ key that is in the signature database.
 
 ## Prerequisites
 
-- You have generated Trusted Boot keys and have stored the private **db.key** and **tpm2-pcr-private.pem** folder on the
-  machine where you are building the provider images.
+- You have generated Trusted Boot keys in the **secure-boot/enrollment** folder and have stored the private **db.key**
+  and **tpm2-pcr-private.pem** folder on the machine where you are building the provider images.
+
+- A physical or virtual Linux machine with AMD64 (also known as x86_64) processor architecture to build the Edge
+  artifacts. You can issue the following command in the terminal to check your processor architecture.
+
+  ```shell
+  uname -m
+  ```
+
+- [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the git --version
+  command.
+
+- [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the docker --version
+  command to view the existing Docker version. You should have root-level or sudo privileges on your Linux machine to
+  create privileged containers.
 
 ## Build Provider Images with Trusted Boot
 
@@ -87,13 +101,19 @@ key that is in the signature database.
    CUSTOM_TAG=$CUSTOM_TAG
    K8S_DISTRIBUTION=rke2
    ARCH=amd64
-   HTTPS_PROXY=
-   HTTP_PROXY=
-   PROXY_CERT_PATH=
    UPDATE_KERNEL=false
    IS_UKI=true
    EOF
    ```
+
+   The following table lists a few key arguments for you to pay close attention to.
+
+   | **Argument**       | **Description**                                                                                       | **Allowed Values**                         |
+   | ------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+   | `IS_UKI`           | Determines whether to build a provider image that supports Trusted Boot. You must set this to `true`. | `true`, `false`. Default is `false`.       |
+   | `K8S_DISTRIBUTION` | Kubernetes distribution.                                                                              | ` k3s`, `rke2`, `kubeadm`, `kubeadm-fips`. |
+   | `OS_DISTRIBUTION`  | OS distribution.                                                                                      | `ubuntu`, `opensuse-leap`, `rhel`.         |
+   | `OS_VERSION`       | OS version. This applies to Ubuntu only.                                                              | `20`, `22`.                                |
 
 10. Open the **Earthfile** in the CanvOS directory. Under `build-provider-images`, remove the lines containing
     Kubernetes versions that you do not need.
@@ -102,10 +122,10 @@ key that is in the signature database.
     start the build process.
 
     ```bash
-    sudo ./earthly.sh +build-provider-images
+    ./earthly.sh +build-provider-images
     ```
 
-    ```hideClipboard bash {2}
+    ```hideClipboard bash
     # Output condensed for readability
     ===================== Earthly Build SUCCESS =====================
     Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.

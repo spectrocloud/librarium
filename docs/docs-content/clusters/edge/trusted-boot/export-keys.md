@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Export Factory Keys"
-title: "Export Factory Keys"
-description: "Learn about how to export the factory keys from your Edge device. "
+sidebar_label: "Export Factory Keys with Command-line Tools"
+title: "Export Factory Keys with Command-line Tools"
+description: "Learn about how to export the factory keys from your Edge device using command-line tools. "
 hide_table_of_contents: false
 sidebar_position: 10
 tags: ["edge"]
@@ -11,8 +11,15 @@ Before generating keys for Trusted Boot, you should first export the factory key
 often used verify the authenticity of the firmware on your Edge device and need to be included in EdgeForge key
 generation to ensure that the firmware starts normally in the boot process.
 
-There are two ways to export factory keys. You can export them from the Unified Extensible Firmware Interface (UEFI) or
-Basic Input/Output System (BIOS) interface if the interface allows it. You can also export keys
+There are two ways to export factory keys. You can export them directly from the Unified Extensible Firmware Interface
+(UEFI) or Basic Input/Output System (BIOS) interface if the interface allows it. However, not every machine allows you
+to export the factory keys through the BIOS interface, and machines that do will have different steps from model to
+model.
+
+Another approach is to install a Linux or Windows Operating System (OS) on your system, and use command-line tools to
+export them. This approach is more broadly applicable because you can install an Linux on almost any machine.
+
+This page guides you through how to export your factory keys using command-line tools on Windows and Linux.
 
 ## Export Keys from Using the Command-line
 
@@ -65,26 +72,8 @@ command-line tools. T
 
 ### Validate
 
-1. Issue the `ls` command to confirm that the
+1. Issue the `ls` command to confirm that the keys have been exported. You should see
 
 2. You can also use the `cat` command to view the content of each key. The keys are in binary format, so a large part of
    the keys is illegible. However, you should be able to see strings interspersed in the content of the key that
    describes the entity that issued them.
-
-## Export Keys from BIOS/UEFI
-
-Certain BIOS/UEFI allows you to export the keys directly, so you do not need to rely on software in any particular OS to
-export keys. However, since BIOS and UEFI interfaces vary greatly on different devices, this guide only uses the Intel
-NUC 11 as an example.
-
-If you are using a different device, it's possible that your BIOS/UEFI interface is different and the steps to export
-the keys are different. In addition, it's also possible that your BIOS/UEFI interface does not support exporting keys.
-If that is the case, refer to the aforementioned method to export the keys using command-line tools.
-
-### Prerequisites
-
-- Your Edge device is a Intel NUC 11 device.
-
-### Instructions
-
-### Validate
