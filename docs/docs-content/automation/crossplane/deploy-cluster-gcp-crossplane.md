@@ -9,7 +9,7 @@ tags: ["crossplane", "gcp", "iac", "infrastructure as code"]
 
 Palette supports using [Crossplane](https://www.crossplane.io) to create and manage Kubernetes
 [host clusters](../../glossary-all.md#host-cluster) across major infrastructure providers. This section guides you on
-how to use Crossplane to deploy a Kubernetes cluster in GCP that is managed by Palette.
+how to use Crossplane to deploy a Palette-managed Kubernetes cluster in GCP.
 
 ## Prerequisites
 
@@ -22,8 +22,7 @@ how to use Crossplane to deploy a Kubernetes cluster in GCP that is managed by P
   page for guidance.
 - The GCP account must be registered in Palette. Follow the
   [Register and Manage GCP Accounts](../../clusters/public-cloud/gcp/add-gcp-accounts.md) guide to register your account
-  with Palette.
-- Access to a terminal.
+  in Palette.
 - A Kubernetes cluster with at least 2 GB of RAM. This guide uses a [kind](https://kind.sigs.k8s.io) cluster as an
   example. Refer to the [kind Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/) to learn how to install kind
   and create a cluster.
@@ -74,8 +73,8 @@ how to use Crossplane to deploy a Kubernetes cluster in GCP that is managed by P
     --create-namespace
     ```
 
-    You can verify the installation with the `kubectl get pods` command. The output must contain two pods listed with a
-    _Running_ status.
+    You can verify the installation with the `kubectl get pods` command. The output must contain two Crossplane pods in
+    the _Running_ status.
 
     ```bash
     kubectl get pods --namespace crossplane-system
@@ -93,7 +92,7 @@ how to use Crossplane to deploy a Kubernetes cluster in GCP that is managed by P
     mkdir crossplane-gcp
     ```
 
-5.  Use a text editor of your choice to create a file to store the Palette Crossplane provider configuration.
+5.  Use a text editor of your choice to create a file for the Palette Crossplane provider configuration.
 
     ```bash
     vi crossplane-gcp/provider-palette.yaml
@@ -389,8 +388,8 @@ how to use Crossplane to deploy a Kubernetes cluster in GCP that is managed by P
     ```
 
 18. Next, get the ID of your GCP cloud account registered in Palette by invoking the `cloudaccounts` Palette API.
-    Replace `<your-api-key>` with your Palette API key and `<gcp-account-name>` with the name you called your GCP
-    account when registering it with Palette.
+    Replace `<your-api-key>` with your Palette API key and `<gcp-account-name>` with the name under which you registered
+    your GCP account in Palette.
 
     ```bash
     curl --location --request GET 'https://api.spectrocloud.com/v1/cloudaccounts/gcp' \
@@ -410,11 +409,16 @@ how to use Crossplane to deploy a Kubernetes cluster in GCP that is managed by P
     vi crossplane-gcp/cluster-gcp.yaml
     ```
 
-20. Paste the cluster configuration displayed below into the text editor window that opens. Replace `<project-name>`
-    with the name of your GCP project. Additionally, replace `<cluster-profile-id>` and `<cloud-account-id>` with the
-    IDs obtained in steps **17** and **18** of this guide. You can also edit the region, availability zones, instance
-    type, and number of nodes of your cluster according to your workload. Once you are done making the alterations, save
-    and exit the file.
+20. Paste the cluster configuration displayed below into the text editor window that opens:
+
+    - Replace `<project-name>` with the name of your GCP project.
+    - Replace `<cluster-profile-id>` and `<cloud-account-id>` with the IDs obtained in steps **17** and **18** of this
+      guide.
+
+    Optionally, you can edit the region, availability zone, instance type, and number of nodes of your cluster according
+    to your workload.
+
+    Once you are done making the alterations, save and exit the file.
 
     ```yaml
     apiVersion: cluster.palette.crossplane.io/v1alpha1
@@ -468,7 +472,7 @@ how to use Crossplane to deploy a Kubernetes cluster in GCP that is managed by P
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left **Main Menu**, click on **Clusters**.
+2. From the left **Main Menu**, click **Clusters**.
 
-3. Verify the deployed cluster named `gcp-crossplane-cluster` is displayed and with a **Running** and **Healthy**
+3. Verify the deployed cluster named `gcp-crossplane-cluster` is displayed and has the **Running** and **Healthy**
    status.
