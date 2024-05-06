@@ -10,17 +10,50 @@ logoUrl: "https://registry.spectrocloud.com/v1/kubernetes-microk8s/blobs/sha256:
 tags: ["packs", "microk8s", "kubernetes"]
 ---
 
-MicroK8s is a Cloud Native Computing Foundation (CNCF) certified upstream Kubernetes deployment that runs entirely on
-your workstation or edge device. It runs all Kubernetes services natively without virtual machines and packs all the
-required libraries and binaries.
+[MicroK8s](https://microk8s.io) is a lightweight Cloud Native Computing Foundation (CNCF) certified Kubernetes
+distribution developed by [Canonical](https://canonical.com). It deploys all Kubernetes services in a single, fully
+contained package, while also offering out-the-box add-ons, such as DNS and Ingress.
+
+### Supported Cloud Types
+
+- AWS
+- MAAS
 
 ### Support Lifecycle
 
-We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until their official EOL. The EOL is set by
+We support other Kubernetes distributions such as K3s and RKE2 until their official End-of-Life (EOL). The EOL is set by
 the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. Refer to the
 [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
 
-## Prerequisites
+## Versions Supported
+
+<Tabs queryString="versions">
+
+<TabItem label="1.27.x" value="1.27.x">
+
+</TabItem>
+
+<TabItem label="1.26.x" value="1.26.x">
+
+</TabItem>
+
+<TabItem label="1.25.x" value="1.25.x">
+
+</TabItem>
+
+<TabItem label="Deprecated" value="Deprecated">
+
+:::warning
+
+All versions less than version 1.25 are considered deprecated. Upgrade to a newer version to take advantage of new
+features.
+
+:::
+
+</TabItem>
+</Tabs>
+
+### Prerequisites
 
 - One of the following Ubuntu environments to run commands:
 
@@ -29,7 +62,8 @@ the respective owner. Once we stop supporting the minor version, we initiate the
   - 18.04 LTS
   - 16.04 LTS
 
-  Or another operating system that supports snapd.
+  Or another operating system that supports
+  [`snapd`](https://snapcraft.io/docs/installing-snapd?_ga=2.225282521.230405086.1714510546-1705414294.1714510546).
 
 - At least 20 GB of disk space and 4 GB of memory.
 - An internet connection.
@@ -41,22 +75,7 @@ additional OS support and an offline deployment.
 
 :::
 
-## Versions Supported
-
-<Tabs queryString="versions">
-
-<TabItem label="1.25.x" value="1.25.x">
-
-- **1.25.0**
-
-</TabItem>
-
-<TabItem label="1.24.x" value="1.24.x">
-
-- **1.24.0**
-
-</TabItem>
-</Tabs>
+### Usage
 
 MicroK8s installs a minimal, lightweight Kubernetes you can run and use on almost any machine. When installing MicroK8s
 you can specify a channel made up of two components:
@@ -95,6 +114,22 @@ node:
 
 :::
 
+## Terraform
+
+You can reference the MicroK8s pack in Terraform with the following data resource.
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack" "k8s" {
+  name    = "kubernetes-microk8s"
+  version = "1.27"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+
 ## References
 
-- [MicroK8s ](https://microk8s.io/docs)
+- [MicroK8s](https://microk8s.io/docs)
