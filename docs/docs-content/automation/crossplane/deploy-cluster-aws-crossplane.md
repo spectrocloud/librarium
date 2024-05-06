@@ -9,7 +9,7 @@ tags: ["crossplane", "aws", "iac", "infrastructure as code"]
 
 Palette supports using [Crossplane](https://www.crossplane.io) to create and manage Kubernetes
 [host clusters](../../glossary-all.md#host-cluster) across major infrastructure providers. This section guides you on
-how to use Crossplane to deploy a Kubernetes cluster in AWS that is managed by Palette.
+how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
 
 ## Prerequisites
 
@@ -18,13 +18,12 @@ how to use Crossplane to deploy a Kubernetes cluster in AWS that is managed by P
   API key.
 - A public [AWS](https://repost.aws/knowledge-center/create-and-activate-aws-account) cloud account with the required
   [IAM Policies](../../clusters/public-cloud/aws/required-iam-policies.md).
-- An SSH key pair available in the region you want to deploy the cluster. Check out the
+- An SSH key pair available in the region where you want to deploy the cluster. Check out the
   [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html) for
   guidance.
 - The AWS account must be registered in Palette. Follow the
   [Add an AWS Account to Palette](../../clusters/public-cloud/aws/add-aws-accounts.md) guide to register your account
-  with Palette.
-- Access to a terminal.
+  in Palette.
 - A Kubernetes cluster with at least 2 GB of RAM. This guide uses a [kind](https://kind.sigs.k8s.io) cluster as an
   example. Refer to the [kind Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/) to learn how to install kind
   and create a cluster.
@@ -75,7 +74,7 @@ how to use Crossplane to deploy a Kubernetes cluster in AWS that is managed by P
     --create-namespace
     ```
 
-    You can verify the installation with the `kubectl get pods` command. The output must contain two pods listed with a
+    You can verify the installation with the `kubectl get pods` command. The output must contain two Crossplane pods in the
     _Running_ status.
 
     ```bash
@@ -94,7 +93,7 @@ how to use Crossplane to deploy a Kubernetes cluster in AWS that is managed by P
     mkdir crossplane-aws
     ```
 
-5.  Use a text editor of your choice to create a file to store the Palette Crossplane provider configuration.
+5.  Use a text editor of your choice to create a file for the Palette Crossplane provider configuration.
 
     ```bash
     vi crossplane-aws/provider-palette.yaml
@@ -577,8 +576,8 @@ how to use Crossplane to deploy a Kubernetes cluster in AWS that is managed by P
     ```
 
 18. Next, get the ID of your AWS cloud account registered in Palette by invoking the `cloudaccounts` Palette API.
-    Replace `<your-api-key>` with your Palette API key and `<aws-account-name>` with the name you called your AWS
-    account when registering it with Palette.
+    Replace `<your-api-key>` with your Palette API key and `<aws-account-name>` with the name under which you registered your AWS
+    account in Palette.
 
     ```bash
     curl --location --request GET 'https://api.spectrocloud.com/v1/cloudaccounts/aws' \
@@ -598,11 +597,16 @@ how to use Crossplane to deploy a Kubernetes cluster in AWS that is managed by P
     vi crossplane-aws/cluster-aws.yaml
     ```
 
-20. Paste the cluster configuration displayed below into the text editor window that opens. Replace `<ssh-key-name>`
-    with the name of the SSH key available in the region where you want to deploy the cluster. Additionally, replace
-    `<cluster-profile-id>` and `<cloud-account-id>` with the IDs obtained in steps **17** and **18** of this guide. You
-    can also edit the region, availability zone, instance type, and number of nodes of your cluster according to your
-    workload. Once you are done making the alterations, save and exit the file.
+20. Paste the cluster configuration displayed below into the text editor window that opens:
+- Replace `<ssh-key-name>`
+    with the name of the SSH key available in the region where you want to deploy the cluster.
+- Replace
+    `<cluster-profile-id>` and `<cloud-account-id>` with the IDs you obtained in steps 17 and 18. 
+Optionally, you
+    can edit the region, availability zone, instance type, and number of nodes of your cluster according to your
+    workload.
+    
+ Once you are done making the alterations, save and exit the file.
 
     ```yaml
     apiVersion: cluster.palette.crossplane.io/v1alpha1
@@ -656,7 +660,7 @@ how to use Crossplane to deploy a Kubernetes cluster in AWS that is managed by P
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left **Main Menu**, click on **Clusters**.
+2. From the left **Main Menu**, click **Clusters**.
 
-3. Verify the deployed cluster named `aws-crossplane-cluster` is displayed and with a **Running** and **Healthy**
+3. Verify the deployed cluster named `aws-crossplane-cluster` is displayed and has the **Running** and **Healthy**
    status.

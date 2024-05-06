@@ -24,11 +24,11 @@ provider API to request the creation of the resource within the provider's envir
 You can use the Palette Crossplane Provider to interact with the Palette API and create resources declaratively.
 
 Refer to the [Palette Provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/v0.12.0)
-page available in the Upbound Marketplace for a complete list of managed resources and examples.
+page for a complete list of managed resources and examples.
 
 ## Get Started
 
-For an end-to-end cluster provisioning example, access the guides provided below.
+For examples of end-to-end cluster provisioning with Crossplane, review the following guides:
 
 - [Deploy an AWS IaaS Cluster with Crossplane](./deploy-cluster-aws-crossplane.md)
 - [Deploy an Azure IaaS Cluster with Crossplane](./deploy-cluster-azure-crossplane.md)
