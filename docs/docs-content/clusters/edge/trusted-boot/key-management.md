@@ -16,7 +16,7 @@ Careful key management is the foundation of all security benefits provided by Tr
 Trusted Boot assumes that your keys are handled and stored securely. Ensure that you follow our recommendations to avoid
 compromising the security of your systems.
 
-![Relationship between Secure Boot Keys](/clusters_edge_trusted-boot_key-management_key-relationship.png)
+![Relationship between Secure Boot Keys](/clusters_edge_trusted-boot_key-management_key-relationship.webp)
 
 ## Platform Key (PK)
 
