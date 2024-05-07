@@ -17,7 +17,7 @@ you can access it using your browser.
 :::tip
 
 You can use the Palette CLI to download and start the offline documentation container with a single command. Check out
-the Palette CLI `docs` command [page](../../../palette-cli/commands/docs.md) for more information.
+the Palette CLI `docs` command [page](../../../automation/palette-cli/commands/docs.md) for more information.
 
 :::
 

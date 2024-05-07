@@ -11,8 +11,9 @@ The `ec` command installs a self-hosted Palette Enterprise Cluster (EC) in your 
 conducted through an interactive wizard that guides you through the various install configurations available. A local
 kind cluster is created to facilitate creating the Enterprise cluster in the target environment. You do not need to
 install kind or any other dependencies. The CLI includes all the required dependencies to set up the kind cluster. You
-can use the `ec` command to install a [self-hosted Palette](../../enterprise-version/install-palette/install-palette.md)
-instance or a self-hosted [VerteX](../../vertex/install-palette-vertex/install-palette-vertex.md) instance.
+can use the `ec` command to install a
+[self-hosted Palette](../../../enterprise-version/install-palette/install-palette.md) instance or a self-hosted
+[VerteX](../../../vertex/install-palette-vertex/install-palette-vertex.md) instance.
 
 The `ec` command exposes the following subcommand.
 
@@ -85,8 +86,8 @@ palette ec install --config-file ~/.palette/ec/ec-20230807143205/ec.yaml --updat
 
 ## Custom Value File
 
-You can customize the [Cluster Profile](../../glossary-all.md#cluster-profile) that makes up the Enterprise Cluster by
-providing a custom **values.yaml** file that contains values for the various Cluster Profile layers that make up the
+You can customize the [Cluster Profile](../../../glossary-all.md#cluster-profile) that makes up the Enterprise Cluster
+by providing a custom **values.yaml** file that contains values for the various Cluster Profile layers that make up the
 Enterprise Cluster. The custom **values.yaml** file is used to customize the Enterprise Cluster to your specific needs.
 This is an advanced feature and should only be used by advanced users or when explicitly instructed by our support team.
 
