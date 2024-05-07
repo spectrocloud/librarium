@@ -9,21 +9,21 @@ sidebar_custom_props:
 tags: ["automation"]
 ---
 
-This section contains documentation and guides essential for automating tasks with Palette. These resources cover the
-Palette CLI, Palette Terraform provider, and Palette Crossplane provider.
+This section contains documentation and guides for tools essential in automating tasks with Palette:
 
-The [Palette CLI](./palette-cli/palette-cli.md) has multiple functionalities that allow users to interact with Palette
-and create and manage resources, such as projects, virtual clusters, and more. The Palette CLI is the primary method for
-installing a self-hosted Palette instance and deploying a Private Cloud Gateway. You can leverage the Palette CLI in
-Continuous Delivery/Continuous Deployment (CI/CD) pipelines and other automation tasks.
+- Palette CLI - Enables users to interact with Palette and create and manage resources, such as projects, virtual
+  clusters, and more. The Palette CLI is the primary method for installing a
+  [self-hosted Palette](../enterprise-version/enterprise-version.md) instance and deploying a
+  [Private Cloud Gateway](../clusters/pcg/pcg.md).
 
-Palette also supports Infrastructure as Code (IaC) tools and workflows. We expose two providers to help you start
-managing Palette resources through automation. You can use our [Palette Terraform provider](./terraform/terraform.md) or
-our [Palette Crossplane provider](./crossplane/crossplane.md) to get started with IaC workflows. Use either provider to
-deploy and manage Palette resources such as cluster profiles, cloud accounts, clusters, and more.
+- Palette Terraform Provider - Allows users to use [Terraform](https://www.terraform.io) for automating the deployment
+  and management of Palette resources such as cluster profiles, cloud accounts, clusters, and more.
+
+- Palette Crossplane Provider - It allows users to use [Crossplane](https://docs.crossplane.io/v1.15/) to provision and
+  manage Palette resources through standard Kubernetes APIs.
 
 ## Resources
 
 - [Palette CLI](./palette-cli/install-palette-cli.md)
-- [Terraform Support](./terraform/terraform.md)
-- [Crossplane Support](./crossplane/crossplane.md)
+- [Palette Terraform Provider](./terraform/terraform.md)
+- [Palette Crossplane Provider](./crossplane/crossplane.md)

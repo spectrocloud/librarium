@@ -31,7 +31,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
   - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
   - [Helm](https://helm.sh/docs/intro/install/) version v3.2.0 or later
   - [curl](https://curl.se/docs/install.html)
-  - A text editor such as Vi or [Nano](https://www.nano-editor.org)
+  - A text editor such as Vi or [Nano](https://www.nano-editor.org). This guide uses Vi as an example.
 
 ## Deploy an AWS IaaS Cluster with Crossplane
 
@@ -550,9 +550,10 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
 
     :::tip
 
-    You can access the Palette UI and simulate creating a cluster profile to gather the packs' required values to create
-    a cluster profile through Crossplane. During the cluster profile creation, click the API button to display the API
-    payload. You will find the values of each pack's `name`, `tag`, `uid`, `registryUid`, and `values` parameters.
+    If you want to use different packs in your cluster profile, you can access the Palette UI and simulate creating a
+    cluster profile to gather the pack's required values. During the cluster profile creation, click the API button to
+    display the API payload. You will find the values of each packs' `name`, `tag`, `uid`, `registryUid`, and `values`
+    parameters.
 
     :::
 
