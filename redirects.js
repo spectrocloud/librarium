@@ -444,11 +444,6 @@ const redirects = [
   },
 
   {
-    from: "/palette-cli/commands/fips-validate/",
-    to: "/automation/palette-cli/commands/fips-validate/",
-  },
-
-  {
     from: "/palette-cli/commands/login/",
     to: "/automation/palette-cli/commands/login/",
   },
