@@ -150,8 +150,8 @@ the following sections for a complete list of features, improvements, and known 
 #### Breaking Changes
 
 - Edge hosts now require a minimum storage capacity of 100 GB. The previous minimum storage capacity was 60 GB. Refer to
-  the [Minimum Device Requirements](../clusters/edge/architecture.md#minimum-device-requirements) page to learn more
-  about the minimum requirements for Edge hosts.
+  the [Minimum Device Requirements](../clusters/edge/hardware-requirements.md) page to learn more about the minimum
+  requirements for Edge hosts.
 
 #### Features
 
