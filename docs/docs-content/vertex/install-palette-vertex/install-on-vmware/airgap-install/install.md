@@ -29,8 +29,8 @@ before proceeding with the installation. Refer to the
 - [Docker](https://docs.docker.com/engine/install/) or equivalent container runtime installed and available on the Linux
   host.
 
-- Palette CLI installed and available. Refer to the Palette CLI [Install](../../../../palette-cli/commands.md) page for
-  guidance.
+- Palette CLI installed and available. Refer to the Palette CLI
+  [Install](../../../../automation/palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
 
 - An Ubuntu Pro Subscription and token. Ubuntu Pro provides access to FIPS 140-2 certified cryptographic packages.
 
@@ -132,7 +132,7 @@ Use the following steps to install Palette VerteX.
 
 5.  Open a terminal window and invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The
     interactive CLI prompts you for configuration details and then initiates the installation. For more information
-    about the `ec` subcommand, refer to [Palette Commands](../../../../palette-cli/commands.md#ec).
+    about the `ec` subcommand, refer to [Palette Commands](../../../../automation/palette-cli/commands#ec).
 
         ```bash
         palette ec install
@@ -405,7 +405,7 @@ teams.
 
 - [Enterprise Install Troubleshooting](../../../../troubleshooting/enterprise-install.md)
 
-- [Palette CLI](../../../../palette-cli/commands.md)
+- [Palette CLI](../../../../automation/palette-cli/install-palette-cli.md#download-and-setup)
 
 - [System Management](../../../system-management/system-management.md)
 

@@ -46,8 +46,8 @@ The `ec` subcommand installs a self-hosted Palette Enterprise Cluster (EC) in yo
 is conducted through an interactive wizard that guides you through the various install configurations available. A local
 kind cluster is created to facilitate creating the Enterprise cluster in the target environment. You do not need to
 install kind or any other dependencies. The CLI includes all the required dependencies to stand up the kind cluster. You
-can use the `ec` command to install a [self-hosted Palette](../enterprise-version/install-palette/install-palette.md)
-instance or a self-hosted [VerteX](../vertex/install-palette-vertex/install-palette-vertex.md) instance.
+can use the `ec` command to install a [self-hosted Palette](../../enterprise-version/install-palette/install-palette.md)
+instance or a self-hosted [VerteX](../../vertex/install-palette-vertex/install-palette-vertex.md) instance.
 
 The `ec` subcommand exposes the following subcommand.
 
@@ -115,7 +115,7 @@ palette ec install --config-file ~/.palette/ec/ec-20230807143205/ec.yaml --updat
 
 ### Custom Value File
 
-You can customize the [Cluster Profile](../glossary-all.md#cluster-profile) that makes up the Enterprise Cluster by
+You can customize the [Cluster Profile](../../glossary-all.md#cluster-profile) that makes up the Enterprise Cluster by
 providing a custom **values.yaml** file that contains values for the various Cluster Profile layers that make up the
 Enterprise Cluster. The custom **values.yaml** file is used to customize the Enterprise Cluster to your specific needs.
 This is an advanced feature and should only be used by advanced users or when explicitly instructed by our support team.
@@ -279,7 +279,7 @@ dependencies to stand up the kind cluster.
 :::warning
 
 Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. You can
-find the newest version of the Palette CLI on the [Downloads](../spectro-downloads.md#palette-cli) page.
+find the newest version of the Palette CLI on the [Downloads](../../spectro-downloads.md#palette-cli) page.
 
 :::
 
@@ -307,7 +307,7 @@ by the `install` subcommand.
 :::warning
 
 Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. You can
-find the newest version of the Palette CLI on the [Downloads](../spectro-downloads.md#palette-cli) page.
+find the newest version of the Palette CLI on the [Downloads](../../spectro-downloads.md#palette-cli) page.
 
 :::
 
@@ -351,11 +351,11 @@ palette pcg install --config-file <path-to-config-file> --update-passwords
 
 ### Supported Environments
 
-| Platform  | Install Guide                                   |
-| --------- | ----------------------------------------------- |
-| MAAS      | [Link](../clusters/pcg/deploy-pcg/maas.md)      |
-| OpenStack | [Link](../clusters/pcg/deploy-pcg/openstack.md) |
-| VMware    | [Link](../clusters/pcg/deploy-pcg/vmware.md)    |
+| Platform  | Install Guide                                      |
+| --------- | -------------------------------------------------- |
+| MAAS      | [Link](../../clusters/pcg/deploy-pcg/maas.md)      |
+| OpenStack | [Link](../../clusters/pcg/deploy-pcg/openstack.md) |
+| VMware    | [Link](../../clusters/pcg/deploy-pcg/vmware.md)    |
 
 ## PDE
 

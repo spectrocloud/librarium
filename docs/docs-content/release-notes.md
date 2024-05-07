@@ -161,16 +161,18 @@ improvements in Palette 4.0.0.
   be removed in future releases. Review the [Maintenance Policy](integrations/maintenance-policy.md) documentation to
   learn more.
 
-- Self-hosted Palette now provides a new installation method using the [Palette CLI](palette-cli/palette-cli.md). You
-  can now install a self-hosted Palette through the Palette CLI. The CLI provides an interactive installation experience
-  allowing you to configure Palette's installation parameters. Check out the
-  [Install Enterprise Cluster](enterprise-version/install-palette/install-palette.md) documentation to learn more. The
-  previous installation method using the Palette OVA Installer is deprecated and unavailable in this release.
+- Self-hosted Palette now provides a new installation method using the
+  [Palette CLI](automation/palette-cli/palette-cli.md). You can now install a self-hosted Palette through the Palette
+  CLI. The CLI provides an interactive installation experience allowing you to configure Palette's installation
+  parameters. Check out the [Install Enterprise Cluster](enterprise-version/install-palette/install-palette.md)
+  documentation to learn more. The previous installation method using the Palette OVA Installer is deprecated and
+  unavailable in this release.
 
 - Private Cloud Gateway (PCG) deployments are now available through the Palette CLI. You can now install a PCG through
   the Palette CLI. The CLI provides an interactive installation experience allowing you to configure the PCG
-  installation parameters. Check out the Palette CLI [PCG install command](palette-cli/commands.md#pcg) documentation to
-  learn more. The previous installation method using the PCG Docker image is deprecated and unavailable in this release.
+  installation parameters. Check out the Palette CLI [PCG install command](automation/palette-cli/commands.md#pcg)
+  documentation to learn more. The previous installation method using the PCG Docker image is deprecated and unavailable
+  in this release.
 
 - You can now specify namespace labels and annotations in a Container Network Interface (CNI), Container Storage
   Interface (CSI), and Add-on pack's YAML configuration. This allows you to specify labels and annotations that are
@@ -186,7 +188,7 @@ improvements in Palette 4.0.0.
 
 - You can now install a self-hosted Palette through the Palette CLI. The CLI provides an interactive installation
   experience allowing you to configure Palette's installation parameters. Learn more about the Palette
-  [EC command](palette-cli/commands.md#ec) documentation.
+  [EC command](automation/palette-cli/commands.md#ec) documentation.
 
 - The login banner message in Palette is now also exposed in the Palette CLI. Users logging in to Palette through the
   CLI will receive the same message as those logging in through the UI. Refer to the
@@ -219,8 +221,8 @@ improvements in Palette 4.0.0.
 
 - The Palette PCG Docker installation method is deprecated and not available in this release. You can now install a PCG
   through the Palette CLI. The CLI provides an interactive installation experience allowing you to configure Palette's
-  installation parameters. Check out the Palette CLI [PCG install command](palette-cli/commands.md#pcg) documentation to
-  learn more.
+  installation parameters. Check out the Palette CLI [PCG install command](automation/palette-cli/commands.md#pcg)
+  documentation to learn more.
 
 #### Known Issues {#release-4-0-palette-known-issues}
 
@@ -272,8 +274,8 @@ improvements in Palette 4.0.0.
 
 - The Palette CLI now supports managing App Profiles and Apps in Palette Dev Engine (PDE). You can now create, update,
   and delete App Profiles and Apps directly from the CLI. Use the `palette pde app-profile` and `palette pde app`
-  commands to manage App Profiles and Apps. Refer to the [Palette CLI](palette-cli/commands.md) documentation or use the
-  `--help` flag to learn more.
+  commands to manage App Profiles and Apps. Refer to the [Palette CLI](automation/palette-cli/commands.md) documentation
+  or use the `--help` flag to learn more.
 
 ### Virtual Machine Orchestrator (VMO) {#release-4-0-vmo}
 

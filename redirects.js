@@ -412,6 +412,26 @@ const redirects = [
     from: "/vertex/install-palette-vertex/airgap/checklist/",
     to: "/vertex/install-palette-vertex/airgap/",
   },
+
+  {
+    from: "/terraform/",
+    to: "/automation/terraform/",
+  },
+
+  {
+    from: "/palette-cli/",
+    to: "/automation/palette-cli/",
+  },
+
+  {
+    from: "/palette-cli/install-palette-cli/",
+    to: "/automation/palette-cli/install-palette-cli/",
+  },
+
+  {
+    from: "/palette-cli/commands/",
+    to: "/automation/palette-cli/commands/",
+  },
 ];
 
 module.exports = redirects;
