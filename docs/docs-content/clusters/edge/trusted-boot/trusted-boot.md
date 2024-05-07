@@ -14,7 +14,7 @@ firmware. Trusted Boot consists of the following security measures:
   protect data stored on the disk from unauthorized access in the event of theft or loss of the device.
 - Secure boot: A security measure that ensures only properly signed and authenticated software is allowed to operate
   during the boot process of a device.
-- Measured boot. A security feature that works by measures each component of the boot process and recording these
+- Measured boot. A security feature that works by measuring each component of the boot process and recording these
   measurements in a
   [Trusted Platform Module (TPM)](https://www.intel.com/content/www/us/en/business/enterprise-computers/resources/trusted-platform-module.html),
   which can be used for later analysis.
@@ -24,6 +24,8 @@ your Edge device. In addition, the measurements stored in the TPM can be provide
 boot process is secure and unaltered. Since only when the boot process can be verified does the TPM release the key to
 decrypt the encrypted content, the sensitive data is not accessible in the case an Edge device is lost or stolen.
 
+![Boot Process for Trusted Boot](/cluster_edge_trusted-boot_boot-process.webp)
+
 ## Why Do You Need Trusted Boot?
 
 Edge devices are often deployed in locations with minimal security and high traffic, such as restaurants and coffee
@@ -31,12 +33,10 @@ shops, and are susceptible to physical attacks. If an attacker is able to inject
 physical attack, it has the potential to seriously compromise the security of your systems.
 
 Trusted Boot allows you to be confident that all software that is allowed to run on your Edge hosts is authenticated
-software verified through cryptographic signatures. In addition, you may need provide evidence of the integrity of your
-boot processes to meet certain compliance requirements. The Measured Boot aspect of Trusted Boot allows you to provide
-such evidence.
+software verified through cryptographic signatures.
 
-## Hardware and Firmware Requirements
+In the event that an Edge device is lost or stolen, Trusted Boot ensures that your user data remains encrypted.
 
-The following hardware and firmware requirements apply to devices in order to support Trusted Boot:
+## Resources
 
-- Edge host must have TPM 2.0.
+-

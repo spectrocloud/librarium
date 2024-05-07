@@ -11,6 +11,19 @@ This document guides you through the process of producing Edge Installer ISO tha
 
 ## Prerequisites
 
+- A physical or virtual Linux machine with _AMD64_ (also known as x86_64) processor architecture to build the Edge
+  artifacts. You can issue the following command in the terminal to check your processor architecture.
+
+  ```bash
+  uname -m
+  ```
+
+- Minimum hardware configuration of the Linux machine:
+
+  - 4 CPU
+  - 32 GB memory
+  - 50 GB storage
+
 - You have generated secure boot keys in the **secure-boot/enrollment** folder.
 - Both the **db.key** file and the **tpm2-pcr-private.pem** file are located in the **CanvOS/secure-boot/private-keys**
   directory.

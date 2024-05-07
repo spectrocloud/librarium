@@ -14,6 +14,19 @@ key that is in the signature database.
 
 ## Prerequisites
 
+- A physical or virtual Linux machine with _AMD64_ (also known as x86_64) processor architecture to build the Edge
+  artifacts. You can issue the following command in the terminal to check your processor architecture.
+
+  ```bash
+  uname -m
+  ```
+
+- Minimum hardware configuration of the Linux machine:
+
+  - 4 CPU
+  - 32 GB memory
+  - 50 GB storage
+
 - You have generated Trusted Boot keys in the **secure-boot/enrollment** folder and have stored the private **db.key**
   and **tpm2-pcr-private.pem** folder on the machine where you are building the provider images.
 
