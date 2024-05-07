@@ -34,7 +34,7 @@ to a bootable device, such as a USB stick.
     ```
 
     For example, you can include the following content in the **user-data** file to connect your Edge host to Wi-Fi.
-    Replace `wifi-network-name` with the name of your Wifi network and the `wifi-password` with the password of your
+    Replace `wifi-network-name` with the name of your Wi-Fi network and the `wifi-password` with the password of your
     network. This requires wpa_supplicant to be included in your base OS image. For more information, refer to
     [Connect Intel NUC Edge Host to Wifi](../../networking/connect-wifi.md).
 
@@ -97,7 +97,7 @@ to a bootable device, such as a USB stick.
 
     </Tabs>
 
-This generates an ISO file called **site-user-data.iso** in the current directory.
+    This generates an ISO file called **site-user-data.iso** in the current directory.
 
 4. Flash your bootable device such as a USB drive with the ISO file you just created.
 
