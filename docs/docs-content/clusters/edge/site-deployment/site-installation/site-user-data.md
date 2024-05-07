@@ -77,22 +77,24 @@ to a bootable device, such as a USB stick.
 
 3.  Create an ISO using the following command.
 
-   <Tabs>
+    <Tabs>
+
    <TabItem label="macOS/Linux" value="mac-linux">
 
     ```shell
     mkisofs -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
     ```
 
-   </TabItem>
+    </TabItem>
 
-   <TabItem label="Windows" value="windows">
+    <TabItem label="Windows" value="windows">
 
     ```shell
     genisoimage -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
     ```
 
-   </TabItem>
+    </TabItem>
+
     </Tabs>
 
 This generates an ISO file called **site-user-data.iso** in the current directory.
