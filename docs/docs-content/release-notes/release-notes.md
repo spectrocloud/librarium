@@ -146,7 +146,7 @@ notes below to learn more about the new features and improvements.
   performs Day 0-2 validation and configuration drift detection in a composable manner across various systems. Use the
   `palette validator` command to verify your environment before installing a self-hosted instance of Palette or VerteX.
   You can also use Validator to verify the environment requirements for deploying a cluster. For more information, refer
-  to the [Validator](../palette-cli/commands/validator.md) CLI reference.
+  to the [Validator](../automation/palette-cli/commands/validator.md) CLI reference.
 
 - Support for passkeys is now available for the self-hosted Palette admin user. When accessing the system console, you
   can now use passkeys to authenticate to the admin user account. For more information, refer to the
@@ -154,7 +154,7 @@ notes below to learn more about the new features and improvements.
 
 - You can start a local Palette documentation server by using the Palette CLI's `docs` command. This feature is useful
   when you want to access Palette documentation offline. For more information, refer to the
-  [Docs](../palette-cli/commands/docs.md) command page.
+  [Docs](../automation/palette-cli/commands/docs.md) command page.
 
 #### Improvements
 
