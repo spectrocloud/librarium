@@ -80,20 +80,7 @@ artifacts at the same time.
 
    - **earthly.sh** - Script to invoke the Earthfile, and generate target artifacts.
 
-6. Review the **.arg** file containing the customizable arguments, such as image tag, image registry, image repository,
-   and OS distribution. The table below shows all arguments, their default value, and allowed values.
-
-   | **Argument**       | **Description**                                                     | **Default Value**  | **Allowed Values**                                                                             |
-   | ------------------ | ------------------------------------------------------------------- | ------------------ | ---------------------------------------------------------------------------------------------- |
-   | `CUSTOM_TAG`       | Tag for the provider images                                         | demo               | Lowercase alphanumeric string without spaces.                                                  |
-   | `IMAGE_REGISTRY`   | Image registry name                                                 | ttl.sh             | Your image registry hostname, without `http` or `https` <br /> Example: docker.io/spectrocloud |
-   | `OS_DISTRIBUTION`  | OS Distribution                                                     | ubuntu             | ubuntu, opensuse-leap                                                                          |
-   | `IMAGE_REPO`       | Image repository name.<br /> It is the same as the OS distribution. | `$OS_DISTRIBUTION` | Your image repository name.                                                                    |
-   | `OS_VERSION`       | OS version, only applies to Ubuntu                                  | 22.04              | 20, 22.04                                                                                      |
-   | `K8S_DISTRIBUTION` | Kubernetes Distribution                                             | k3s                | k3s, rke2, kubeadm                                                                             |
-   | `ARCH`             | Architecture of the image.                                          | `amd64`            | `amd64`, `arm64`                                                                               |
-
-7. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
+6. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
    uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
    `CUSTOM_TAG` argument.
 
@@ -101,24 +88,26 @@ artifacts at the same time.
    export CUSTOM_TAG=palette-learn
    ```
 
-8. Use the command below to save the Docker Hub image registry hostname in the `IMAGE_REGISTRY` argument. Before you
-   execute the command, replace `[DOCKER-ID]` in the declaration below with your Docker ID. Your image registry hostname
+7. Use the command below to save the image registry hostname in the `IMAGE_REGISTRY` argument. Before you execute the
+   command, replace `[REGISTRY-HOSTNAME]` in the declaration below with your Docker ID. Your image registry hostname
    must comply with standard DNS rules and may not contain underscores.
 
    ```bash
-   export IMAGE_REGISTRY=docker.io/[DOCKER-ID]
+   export IMAGE_REGISTRY=[REGISTRY-HOSTNAME]
    ```
 
-9. Issue the following command to use the Ubuntu OS distribution and use the 22.04 version.
+8. Issue the following command to use the Ubuntu OS distribution and use the 22.04 version.
 
    ```bash
    export OS_DISTRIBUTION=ubuntu
    export OS_VERSION=22.04
    ```
 
-10. Issue the command below to create the **.arg** file containing the custom tag, Docker Hub image registry hostname,
-    and openSUSE Leap OS distribution. The **.arg** file uses the default values for the remaining arguments. You can
-    refer to the existing **.arg.template** file to learn more about the available customizable arguments.
+9. Open the **Earthfile** in the CanvOS directory. Under `build-provider-images`, remove the lines containing Kubernetes
+   versions that you do not need.
+
+10. Issue the command below to create an **.arg** file. The **.arg** file uses the default values for the remaining
+    arguments.
 
     ```bash
     cat << EOF > .arg
@@ -136,10 +125,9 @@ artifacts at the same time.
     EOF
     ```
 
-11. Open the **Earthfile** in the CanvOS directory. Under `build-provider-images`, remove the lines containing
-    Kubernetes versions that you do not need.
+    Refer to [Edge Artifact Build Configurations](./arg.md) for all available arguments.
 
-12. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
+11. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
     start the build process.
 
     ```bash
@@ -152,19 +140,18 @@ artifacts at the same time.
     Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
     ```
 
-13. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file.
+12. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file.
     Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
     ```bash
     docker login
     ```
 
-14. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
-    `[DOCKER-ID]` and version numbers in the command below with your Docker ID and respective Kubernetes versions that
-    the utility created.
+13. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
+    `[REGISTRY-HOSTNAME]` and version numbers in the command below.
 
     ```bash
-    docker push docker.io/[DOCKER-ID]/ubuntu:k3s-1.28.2-v4.3.0-palette-learn
+    docker push [REGISTRY-HOSTNAME]/ubuntu:k3s-1.28.2-v4.3.0-palette-learn
     ```
 
 ## Validate
