@@ -34,39 +34,38 @@ to a bootable device, such as a USB stick.
     ```
 
     For example, you can include the following content in the **user-data** file to connect your Edge host to Wi-Fi.
-    Replace `wifi-network-name` with the name of your Wifi network and the `wifi-password` with the password of your
-    network. This requires wpa_supplicant to be included in your base OS image. For more information, refer to
+    This requires wpa_supplicant to be included in your base OS image. For more information, refer to
     [Connect Intel NUC Edge Host to Wifi](../../networking/connect-wifi.md).
 
     ```yaml
     #cloud-config
     install:
-      bind_mounts:
-         - /var/lib/wpa
+    bind_mounts:
+       - /var/lib/wpa
 
     stages:
-      network.before:
-         - name: "Connect to wifi"
-            commands:
-            - |
-               # Find the first wireless network interface
-               wireless_interface=""
-               for interface in $(ip link | grep -oP '^\d+: \K[^:]+(?=:)')
-               do
-                  if [ -d "/sys/class/net/$interface/wireless" ]; then
-                        wireless_interface=$interface
-                        break
-                  fi
-               done
+    network.before:
+       - name: "Connect to wifi"
+          commands:
+          - |
+             # Find the first wireless network interface
+             wireless_interface=""
+             for interface in $(ip link | grep -oP '^\d+: \K[^:]+(?=:)')
+             do
+                if [ -d "/sys/class/net/$interface/wireless" ]; then
+                      wireless_interface=$interface
+                      break
+                fi
+             done
 
-               # Check if a wireless interface was found and connect it to WiFi
-               if [ -n "$wireless_interface" ]; then
-                  wpa_passphrase wifi-network-name wifi-password | tee /var/lib/wpa/wpa_supplicant.conf
-                  wpa_supplicant -B -c /var/lib/wpa/wpa_supplicant.conf -i $wireless_interface
-                  dhclient $wireless_interface
-               else
-                  echo "No wireless network interface found."
-               fi
+             # Check if a wireless interface was found and connect it to WiFi
+             if [ -n "$wireless_interface" ]; then
+                wpa_passphrase Madrid supersup | tee /var/lib/wpa/wpa_supplicant.conf
+                wpa_supplicant -B -c /var/lib/wpa/wpa_supplicant.conf -i $wireless_interface
+                dhclient $wireless_interface
+             else
+                echo "No wireless network interface found."
+             fi
     ```
 
 2.  Create an empty **meta-data** file:
