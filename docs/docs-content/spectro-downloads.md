@@ -81,7 +81,7 @@ lifecycle management of Kubernetes clusters in private cloud environments direct
 ## Palette CLI
 
 The Palette Command Line Interface (CLI) is a tool that you can use to interact with Palette programmatically. Check out
-the [Palette CLI](./palette-cli/palette-cli.md) document for installation guidance.
+the [Palette CLI](./automation/palette-cli/palette-cli.md) document for installation guidance.
 
 | Version | Operating System                                                                      | Checksum (SHA256)                                                  |
 | ------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |

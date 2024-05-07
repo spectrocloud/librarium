@@ -21,7 +21,7 @@ The complete list of subcommands is:
 
 - `pde` - Palette Developer Experience.
 
-# Global Flags
+## Global Flags
 
 Palette CLI supports the following global flags.
 
@@ -62,9 +62,9 @@ Use this command to change the target cluster group commands will target. You ca
 ### `login`
 
 Use this command to authenticate with Palette. This command requires a
-[Palette API key](../user-management/user-management.md#user-login). The `login` command has no subcommands but exposes
-a set of flags to help you log in to the correct Palette environment and scope. The following CLI flags are available
-for the `login` command.
+[Palette API key](../../user-management/user-authentication.md). The `login` command has no subcommands but exposes a
+set of flags to help you log in to the correct Palette environment and scope. The following CLI flags are available for
+the `login` command.
 
 <br />
 
