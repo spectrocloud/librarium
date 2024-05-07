@@ -23,6 +23,12 @@ repave schedule and methodology. Refer to
 
 ## Limitations
 
+:::warning
+
+Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before upgrading, you review the information provided in the [Kubernetes Upgrades](../../integrations/kubernetes-support.md#kubernetes-upgrades) section.
+
+:::
+
 - You cannot update a cluster while its status is still **Provisioning**.
 
 - You cannot change the Container Network Interface (CNI) of an Edge cluster. You must delete and re-create the cluster

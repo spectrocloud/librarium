@@ -16,7 +16,9 @@ The Palette eXtended Kubernetes - Edge (PXK-E) pack supports Kubernetes clusters
 isolated locations like grocery stores, restaurants, and similar locations, versus a data center or cloud environment.
 We offer PXK-E as a core pack in Palette.
 
-:::info
+:::warning
+
+Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before upgrading, you review the information provided in the [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) section.
 
 Review our [Maintenance Policy](maintenance-policy.md) to learn about pack update and deprecation schedules.
 
