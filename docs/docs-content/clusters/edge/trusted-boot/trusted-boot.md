@@ -33,10 +33,16 @@ shops, and are susceptible to physical attacks. If an attacker is able to inject
 physical attack, it has the potential to seriously compromise the security of your systems.
 
 Trusted Boot allows you to be confident that all software that is allowed to run on your Edge hosts is authenticated
-software verified through cryptographic signatures.
-
-In the event that an Edge device is lost or stolen, Trusted Boot ensures that your user data remains encrypted.
+software verified through cryptographic signatures. In the event that an Edge device is lost or stolen, the TPM will not
+release the key to decrypt the disk encryption if the boot process is tampered with, ensuring your user data remains
+encrypted.
 
 ## Resources
 
--
+- [Export Factory Keys](./export-keys.md)
+- [Generate Trusted Boot Keys](./generate-key.md)
+- [Key Management](./key-management.md)
+- [Build Installer ISO](./build-trusted-iso.md)
+- [Build Provider Images](./build-trusted-provider-image.md)
+- [Installation](./install.md)
+- [Update a Cluster](./upgrade-cluster.md)
