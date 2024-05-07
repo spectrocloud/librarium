@@ -77,41 +77,41 @@ to a bootable device, such as a USB stick.
 
 3.  Create an ISO using the following command.
 
-    <Tabs>
+      <Tabs>
 
-   <TabItem label="macOS/Linux" value="mac-linux">
+      <TabItem label="macOS/Linux" value="mac-linux">
 
     ```shell
     mkisofs -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
     ```
 
-    </TabItem>
+      </TabItem>
 
-    <TabItem label="Windows" value="windows">
+      <TabItem label="Windows" value="windows">
 
     ```shell
     genisoimage -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
     ```
 
-    </TabItem>
+      </TabItem>
 
-    </Tabs>
+      </Tabs>
 
     This generates an ISO file called **site-user-data.iso** in the current directory.
 
-4. Flash your bootable device such as a USB drive with the ISO file you just created.
+4.  Flash your bootable device such as a USB drive with the ISO file you just created.
 
-   :::info
+    :::info
 
-   You can use several software tools to create a bootable USB drive, such as
-   [balenaEtcher](https://www.balena.io/etcher). For a PXE server, there are open-source projects such as
-   [Fog](https://fogproject.org/download) or
-   [Windows Deployment Services](https://learn.microsoft.com/en-us/windows/deployment/wds-boot-support) for Windows.
+    You can use several software tools to create a bootable USB drive, such as
+    [balenaEtcher](https://www.balena.io/etcher). For a PXE server, there are open-source projects such as
+    [Fog](https://fogproject.org/download) or
+    [Windows Deployment Services](https://learn.microsoft.com/en-us/windows/deployment/wds-boot-support) for Windows.
 
-   :::
+    :::
 
-5. Once the Edge host arrives at the physical site. Load the USB drive to the Edge host before powering it on. The Edge
-   Installer will apply the new user data during the installation process.
+5.  Once the Edge host arrives at the physical site. Load the USB drive to the Edge host before powering it on. The Edge
+    Installer will apply the new user data during the installation process.
 
 ## Validate
 
