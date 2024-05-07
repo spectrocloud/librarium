@@ -24,6 +24,6 @@ This section contains documentation and guides for tools essential in automating
 
 ## Resources
 
-- [Palette CLI](./palette-cli/install-palette-cli.md)
+- [Palette CLI](./palette-cli/palette-cli.md)
 - [Palette Terraform Provider](./terraform/terraform.md)
 - [Palette Crossplane Provider](./crossplane/crossplane.md)
