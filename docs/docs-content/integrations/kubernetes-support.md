@@ -63,7 +63,8 @@ about our deprecation process in the [Pack Deprecation](./maintenance-policy.md#
 
 :::warning
 
-Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before upgrading, you review the information provided in this section.
+Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before
+upgrading, you review the information provided in this section.
 
 :::
 
