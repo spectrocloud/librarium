@@ -62,8 +62,8 @@ To complete this guide, you will need the following items:
 - You must have completed the [Build Edge Artifacts](palette-canvos.md) guide to build the provider images and create a
   cluster profile referencing one of the provider images.
 
-- A Spectro Cloud API key. Later in this guide, you will use this API key to authenticate the Palette Edge CLI utility
-  and allow it to interact with Palette. Refer to the
+- A Palette API key. Later in this guide, you will use this API key to authenticate the Palette Edge CLI utility and
+  allow it to interact with Palette. Refer to the
   [User Authentication](/docs/docs-content/user-management/authentication/api-key/create-api-key.md) guide to create a
   new API key.
 
@@ -175,8 +175,8 @@ Use the following instructions on your Linux machine, which this guide refers to
 
     For authenticated access to Helm charts, your must provide credentials with the following schema. Use a key at the
     root level of the JSON object named "helm" and set its value to a list. The list is a list of credentials for each
-    Helm chart repository. For each set of credentials, use an object in the list with the keys `endpoint`, `username`, and
-    `password`.
+    Helm chart repository. For each set of credentials, use an object in the list with the keys `endpoint`, `username`,
+    and `password`.
 
     ```json
     {
@@ -296,10 +296,10 @@ Use the following instructions on your Linux machine, which this guide refers to
 
     | **Command Flag**        | **Value**                                                                                                                                          |
     | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | `--api-key`             | Spectro Cloud API key.                                                                                                                              |
-    | `--project-id`          | Palette project ID.                                                                                                                                 |
+    | `--api-key`             | Palette API key.                                                                                                                                   |
+    | `--project-id`          | Palette project ID.                                                                                                                                |
     | `--cluster-profile-ids` | Cluster profile IDs. If you want to include multiple cluster profiles in the content bundle, add multiple cluster profile IDs separated by commas. |
-    | `--palette-endpoint`    | Palette API endpoint. The default Palette API endpoint is `api.spectrocloud.com`.                                                                   |
+    | `--palette-endpoint`    | Palette API endpoint. The default Palette API endpoint is `api.spectrocloud.com`.                                                                  |
     | `--outfile`             | Name of the content bundle. The final filename looks like the following: `core-<bundle-name>-random-string`.                                       |
     | `--cred-file-path`      | Path to the JSON file containing the credentials for a private registry.                                                                           |
 
