@@ -13,12 +13,12 @@ for the registry in the user data used to build your Edge Installer ISO.
 
 Once you specify an external registry, images for all elements of the cluster are expected to be in the external
 registry. This includes the provider images, images for the network and storage layer, and images for all application
-layers. All images specified in the cluster profile will have their registry URL replaced by the registry URL of the
+layers. All images specified in the cluster profile will have their registry URL prefixed by the registry URL of the
 external image registry. For example, if your OS pack specified that the provider images be downloaded from
 `quay.io/kairos/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1`, but in your user data, you have specified an external registry
-`10.10.254.254:8000/spectro-images`. The Palette agent will automatically download the image using the tag
-`10.10.254.254:8000/spectro-images/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1` instead of looking for the image in the
-`quay.io/kairos` registry.
+`10.10.254.254:8000/spectro-images/`. The Palette agent will automatically download the image using the tag
+`10.10.254.254:8000/spectro-images/quay.io/kairos/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1` instead of looking for the
+image in the `quay.io/kairos` registry.
 
 :::tip
 
@@ -114,7 +114,18 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
    [Upload Cluster Images to External Registry with Palette Edge CLI](./upload-images-to-registry.md) to learn how to
    use the Palette Edge CLI to upload all images in a cluster profile to an external registry.
 
-9. Follow the [Create Cluster Definition](../site-installation/cluster-deployment.md) guide and deploy your cluster.
+9. In the Kubernetes layer of your cluster profile, remove `AlwaysPullImages` from
+   `cluster.config.clusterConfiguration.apiServer.extraArgs.enable-admission-plugins` and add it to
+   `cluster.config.clusterConfiguration.apiServer.extraArgs.enable-admission-plugins`.
+
+   The resulting layer configuration should look like the following:
+
+   ```yaml
+   disable-admission-plugins: AlwaysPullImages,AlwaysAdmit
+   enable-admission-plugins: NamespaceLifecycle,ServiceAccount,NodeRestriction
+   ```
+
+10. Follow the [Create Cluster Definition](../site-installation/cluster-deployment.md) guide and deploy your cluster.
 
 ## Validate
 
