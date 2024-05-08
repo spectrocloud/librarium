@@ -1,7 +1,7 @@
 ---
 title: "Postman Collection"
 sidebar_label: "Postman Collection"
-description: "Palette API Postman Collection"
+description: "Spectro Cloud API Postman Collection"
 icon: ""
 hide_table_of_contents: true
 
@@ -35,7 +35,7 @@ Learn more about [authentication methods](/user-management/authentication/api-ke
 
 Use the following URL to import your configuration into Postman:
 
-https://raw.githubusercontent.com/spectrocloud/librarium/version-4-3/docs/api-content/api-docs/v1/api.json
+https://raw.githubusercontent.com/spectrocloud/librarium/master/docs/api-content/api-docs/palette-apis.json <br />
 
 1. Open the **Import** dialog.
 
