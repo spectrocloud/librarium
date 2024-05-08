@@ -60,7 +60,7 @@
     "sass": "^1.72.0"
   },
   "devDependencies": {
-    "@argos-ci/cli": "^1.0.12",
+    "@argos-ci/cli": "^2.0.1",
     "@argos-ci/playwright": "^2.0.0",
     "@playwright/test": "^1.42.1",
     "@semantic-release/changelog": "^6.0.1",
@@ -113,6 +113,6 @@
     ]
   },
   "engines": {
-    "node": ">=16.14"
+    "node": ">=20.12"
   }
 }

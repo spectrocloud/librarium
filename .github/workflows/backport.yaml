@@ -28,7 +28,7 @@ jobs:
           secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
       - name: Backport Action
-        uses: sqren/backport-github-action@v9.3.0-a
+        uses: sqren/backport-github-action@v9.3.1
         with:
         # We are using a PAT token through our Vault Operator to address the issue of PRs workflows not being triggered
         # Refer to issue https://github.com/sqren/backport-github-action/issues/79 for more details.

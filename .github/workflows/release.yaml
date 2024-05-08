@@ -48,13 +48,14 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
           cache: "npm"
 
       - run: npm ci
 
       - name: Compile
         run: |
+          touch .env
           make versions-ci
           make build
 
@@ -82,7 +83,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
           cache: "npm"
 
       - run: npm ci
@@ -125,7 +126,7 @@ jobs:
       - name: Setup Nodejs
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: "20"
           cache: "npm"
 
       - name: Install dependencies
