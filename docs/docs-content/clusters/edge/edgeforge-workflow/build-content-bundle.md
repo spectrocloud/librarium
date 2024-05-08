@@ -224,15 +224,15 @@ Creating a content bundle provides several benefits that may address common use 
     --include-palette-content \
    ```
 
-   | Flag                        | Description                                                                                                    |
-   | --------------------------- | -------------------------------------------------------------------------------------------------------------- |
-   | `--api-key`                 | Your Palette API key.                                                                                          |
-   | `--cluster-profile-ids`     | Comma-separated list of cluster profile IDs to download content for.                                           |
-   | `--cred-file-path`          | Path to the JSON file storing registry credentials if you are using a private registry.                        |
-   | `--include-palette-content` | Whether to include content necessary for Palette itself. Required for airgap installations.                 |
+   | Flag                        | Description                                                                                                             |
+   | --------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+   | `--api-key`                 | Your Palette API key.                                                                                                   |
+   | `--cluster-profile-ids`     | Comma-separated list of cluster profile IDs to download content for.                                                    |
+   | `--cred-file-path`          | Path to the JSON file storing registry credentials if you are using a private registry.                                 |
+   | `--include-palette-content` | Whether to include content necessary for Palette itself. Required for airgap installations.                             |
    | `--outfile`                 | Name of your content bundle. The final file name should have the following pattern: `core-<bundle-name>-random-string`. |
-   | `--palette-endpoint`        | API endpoint for your Palette instance.                                                                        |
-   | `--project-id`              | The ID of your Palette project.                                                                                |
+   | `--palette-endpoint`        | API endpoint for your Palette instance.                                                                                 |
+   | `--project-id`              | The ID of your Palette project.                                                                                         |
 
    The result is a content bundle that you can use to preload into your installer. For more information, refer to
    [Build Edge Artifacts with Content Bundle](./palette-canvos/build-artifacts.md) or
