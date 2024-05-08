@@ -175,8 +175,8 @@ Use the following instructions on your Linux machine, which this guide refers to
 
     For authenticated access to Helm charts, your must provide credentials with the following schema. Use a key at the
     root level of the JSON object named "helm" and set its value to a list. The list is a list of credentials for each
-    Helm chart repository. For each set of credentials, use an object in the list with the keys "endpoint", "username",
-    and "password".
+    Helm chart repository. For each set of credentials, use an object in the list with the keys `endpoint`, `username`, and
+    `password`.
 
     ```json
     {
@@ -210,8 +210,8 @@ Use the following instructions on your Linux machine, which this guide refers to
 
     For image registries, you must provide credentials with the following schema. Provide a key at the root level of the
     JSON object named "image" and set its value to a list. The list is a list of credentials for each Helm chart
-    repository. For each set of credentials, use an object in the list with the keys "endpoint", "username", and
-    "password".
+    repository. For each set of credentials, use an object in the list with the keys `endpoint`, `username`, and
+    `password`.
 
     ```json
     {
@@ -246,7 +246,7 @@ Use the following instructions on your Linux machine, which this guide refers to
     ```
 
     For Google Container Registry (GCR) access, you need to set the username field to `"_json_key"` and set the password
-    to an JSON object containing the following fields.
+    to a JSON object containing the following fields.
 
     | Field                         | Description                                                                                         |
     | ----------------------------- | --------------------------------------------------------------------------------------------------- |
@@ -296,10 +296,10 @@ Use the following instructions on your Linux machine, which this guide refers to
 
     | **Command Flag**        | **Value**                                                                                                                                          |
     | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | `--api-key`             | Spectro Cloud API key                                                                                                                              |
-    | `--project-id`          | Palette project ID                                                                                                                                 |
+    | `--api-key`             | Spectro Cloud API key.                                                                                                                              |
+    | `--project-id`          | Palette project ID.                                                                                                                                 |
     | `--cluster-profile-ids` | Cluster profile IDs. If you want to include multiple cluster profiles in the content bundle, add multiple cluster profile IDs separated by commas. |
-    | `--palette-endpoint`    | Palette API endpoint. The default Palette API endpoint is `api.spectrocloud.com`                                                                   |
+    | `--palette-endpoint`    | Palette API endpoint. The default Palette API endpoint is `api.spectrocloud.com`.                                                                   |
     | `--outfile`             | Name of the content bundle. The final filename looks like the following: `core-<bundle-name>-random-string`.                                       |
     | `--cred-file-path`      | Path to the JSON file containing the credentials for a private registry.                                                                           |
 
@@ -315,7 +315,7 @@ Use the following instructions on your Linux machine, which this guide refers to
     --cred-file-path filepath
     ```
 
-16. Use the command below to list all files in the current directory to verify that you created the content bundle
+16. Use the following command to list all files in the current directory to verify that you created the content bundle
     successfully. The content bundle will have the following naming convention, `content-[random-string]`, for example,
     **content-8e61a9e5**.
 

@@ -229,8 +229,8 @@ Creating a content bundle provides several benefits that may address common use 
    | `--api-key`                 | Your Palette API key.                                                                                          |
    | `--cluster-profile-ids`     | Comma-separated list of cluster profile IDs to download content for.                                           |
    | `--cred-file-path`          | Path to the JSON file storing registry credentials if you are using a private registry.                        |
-   | `--include-palette-content` | Whether to include necessary content for Palette itself. Required if for airgap installations.                 |
-   | `--outfile`                 | Name of your content bundle. The final file name looks like the following: `core-<bundle-name>-random-string`. |
+   | `--include-palette-content` | Whether to include content necessary for Palette itself. Required for airgap installations.                 |
+   | `--outfile`                 | Name of your content bundle. The final file name should have the following pattern: `core-<bundle-name>-random-string`. |
    | `--palette-endpoint`        | API endpoint for your Palette instance.                                                                        |
    | `--project-id`              | The ID of your Palette project.                                                                                |
 
