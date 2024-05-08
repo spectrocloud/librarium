@@ -118,7 +118,7 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
    `cluster.config.clusterConfiguration.apiServer.extraArgs.enable-admission-plugins` and add it to
    `cluster.config.clusterConfiguration.apiServer.extraArgs.enable-admission-plugins`.
 
-   The resulting layer configuration should look like the following:
+   The resulting layer configuration should look like the following.
 
    ```yaml
    disable-admission-plugins: AlwaysPullImages,AlwaysAdmit
