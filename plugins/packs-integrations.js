@@ -49,6 +49,7 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
         community: packMDValue.spec.registries[0].annotations?.source === "community",
         verified: packMDValue.spec.registries[0].annotations?.source === "spectrocloud",
         versions: getAggregatedVersions(packContent.tags),
+        deprecated: packMDValue.spec.registries[0].annotations?.disabled === "true",
       };
     }
   });
@@ -204,10 +205,12 @@ async function pluginPacksAndIntegrationsData(context, options) {
       const packUrl = "v1/packs/";
       const packMDMap = new Map();
       let apiPacksData = [];
+      const packuid = mappedRepos?.[0]?.uid;
       const promises = packDataArr.map((packData) => {
         packMDMap[packData.spec.name] = packData;
         const cloudType = packData.spec.cloudTypes.includes("all") ? "aws" : packData.spec.cloudTypes[0];
-        const url = `${packUrl}${packData.spec.name}/registries/${packData.spec.registries[0].uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`;
+        const packUid = packData.spec.registries.find((registry) => registry.uid === packuid);
+        const url = `${packUrl}${packData.spec.name}/registries/${packUid?.uid || packData.spec.registries[0].uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`;
         return callRateLimitAPI(() => api.get(url));
       });
       const results = await Promise.allSettled(promises);

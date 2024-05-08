@@ -4,6 +4,7 @@ import { Select, Tabs, ConfigProvider, theme, Space } from "antd";
 import CustomLabel from "../Technologies/CategorySelector/CustomLabel";
 import PackCardIcon from "../Technologies/PackCardIcon";
 import Markdown from 'markdown-to-jsx';
+import { useHistory } from "react-router-dom";
 import "./PacksReadme.antd.css";
 import { usePluginData } from "@docusaurus/useGlobalData";
 import PacksIntegrationsPluginData from "../Integrations/IntegrationTypes";
@@ -31,13 +32,20 @@ export default function PacksReadme() {
   const empty_icon_dark = useBaseUrl('/img/empty_icon_table_dark.svg');
   const { isDarkTheme } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
-  const packName = new URLSearchParams(window.location.search).get("pack")
+  const searchParams = new URLSearchParams(window.location.search);
+  const packName = searchParams.get("pack")
+  const version = searchParams.get("versions");
+  const history = useHistory();
   useEffect(() => {
     const importComponent = async () => {
       try {
         const module = await import(`../../../docs/docs-content/integrations/${packName}.md`);
         const PackReadMeComponent = module.default;
-        setCustomReadme(<PackReadMeComponent />);
+        setCustomReadme(
+          <div className={styles.customReadme}>
+            <PackReadMeComponent />
+          </div>
+        );
       }
       catch (error) {
         setCustomReadme(null);
@@ -74,10 +82,12 @@ export default function PacksReadme() {
       registries: [],
     };
   }, [packName]);
-  const [selectedVersion, setSelectedVersion] = useState<string>(packData.versions?.[0]?.title || "");
+  const [selectedVersion, setSelectedVersion] = useState<string>(version || packData.versions?.[0]?.title);
 
   function versionChange(version: string) {
+    history.replace({search: `?pack=${packName}&versions=${version}`});
     setSelectedVersion(version);
+
   }
 
   function renderVersionOptions() {
