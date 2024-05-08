@@ -333,13 +333,12 @@ Use the following instructions on your Linux machine, which this guide refers to
     ```hideClipboard bash
     # Sample output
     total 3981104
-    -rw-rw-r-- 1 jb jb 1598552722 Jul 26 18:20 app-content-8e61a9e5.zst
     -rw-rw-r-- 1 jb jb 2478086360 Jul 26 18:20 core-content-8e61a9e5.zst
     ```
 
 18. Issue the following command to build the Edge artifacts with your content bundle. The `+iso` option specifies the
-    build target. This command will generate an ISO image from the content bundle and other configurations you have
-    specified in the **.arg** and **user-data** files.
+    build target. This command will generate an ISO image containing the content bundle and other configurations you
+    have specified in the **.arg** and **user-data** files.
 
     ```bash
     sudo ./earthly.sh +iso
