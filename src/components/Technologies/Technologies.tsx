@@ -2,79 +2,157 @@ import React, { useState, useMemo } from "react";
 import Fuse from "fuse.js";
 import styles from "./Technologies.module.scss";
 import Search from "./Search";
-import CategorySelector from "./CategorySelector";
-import { PacksData, IntegrationsData } from "../Integrations/IntegrationTypes";
+import { FrontMatterData } from "../Integrations/IntegrationTypes";
 import TechnologyCard from "./TechnologyCard";
+import PacksFilters from "./PacksFilters";
+import { packTypeNames, packTypes } from "../../constants/packs";
+import { Collapse, ConfigProvider, theme } from "antd";
+import "./technologies.antd.css";
+import IconMapper from "../IconMapper/IconMapper";
+import { useColorMode } from "@docusaurus/theme-common";
 
 const searchOptions = {
   threshold: 0.5,
-  keys: ["fields.title"],
+  keys: ["title"],
 };
 
 interface TechnologiesProps {
-  data: PacksData[] | IntegrationsData[];
+  data: FrontMatterData[];
+  repositories: any[];
 }
 
-export default function Technologies({ data }: TechnologiesProps) {
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [searchValue, setSearchValue] = useState("");
+export default function Technologies({ data, repositories }: TechnologiesProps) {
+  const { isDarkTheme } = useColorMode();
+  const { defaultAlgorithm, darkAlgorithm } = theme;
+  const [selectedFilters, setSelectedFilters] = useState<{ category: any[], registries: any[], cloudTypes: any[], verified: any[], community: any[] }>({ category: [], registries: [], cloudTypes: [], verified: [], community: [] })
+  const [searchValue, setSearchValue] = useState<string>("");
 
-  const categories = useMemo(() => {
-    const categoriesSet = data.reduce(
-      (accumulator, technology) => {
-        const categories = technology.fields.category || [];
-        categories.forEach((category) => {
-          accumulator.add(category);
-        });
-        return accumulator;
-      },
-      new Set(["all"])
-    );
-    return new Set([...categoriesSet].sort());
-  }, [data]);
+  const filteredTechCards = useMemo(() => {
+    const selectedFiltersKeys = Object.keys(selectedFilters)
+    let filteredCards: any[] = [];
 
-  const technologies = useMemo(() => {
-    let technologies = [...data].sort((pack1, pack2) => {
-      const category1 = pack1.fields.category[0];
-      const category2 = pack2.fields.category[0];
-
-      if (category1 < category2) {
-        return -1;
+    const conditions = selectedFiltersKeys.reduce((acc, key) => {
+      const selectedFiltersValue = selectedFilters[key as keyof typeof selectedFilters];
+      if (selectedFiltersValue.length) {
+        let condition;
+        if (selectedFiltersValue && selectedFiltersValue.length) {
+          switch (key) {
+            case "category":
+              condition = (techCard: FrontMatterData) => {
+                return selectedFiltersValue.includes(techCard.packType);
+              }
+              break;
+            case "registries":
+              condition = (techCard: FrontMatterData) => {
+                return selectedFiltersValue.some((value) => techCard.registries.includes(value));
+              }
+              break;
+            case "cloudTypes":
+              condition = (techCard: FrontMatterData) => {
+                return selectedFiltersValue.some((value) => techCard.cloudTypes.includes("all") || techCard.cloudTypes.includes(value));
+              }
+              break;
+            case "verified":
+              condition = (techCard: FrontMatterData) => {
+                return techCard["verified"]
+              }
+              break;
+            case "community":
+              condition = (techCard: FrontMatterData) => {
+                return techCard["community"]
+              }
+              break;
+          }
+          if (condition) {
+            acc.push(condition)
+          }
+        }
       }
-
-      if (category1 > category2) {
-        return 1;
+      return acc;
+    }, new Array<any>());
+    filteredCards = data.filter((card) => {
+      if (conditions.length) {
+        return conditions.every((condition) => {
+          return condition(card);
+        })
+      } else {
+        return true;
       }
-
-      return 0;
-    });
-
+    })
     if (searchValue) {
-      const fuse = new Fuse(technologies, searchOptions);
-      technologies = fuse.search(searchValue).map(({ item }) => item);
+      const fuse = new Fuse(filteredCards, searchOptions);
+      filteredCards = fuse.search(searchValue).map(({ item }) => item);
     }
+    const categoriesMap = filteredCards.reduce((acc: Map<string, any>, technology: FrontMatterData) => {
+      let packType = technology.packType;
+      if (acc.has(packType)) {
+        acc.get(packType).push(technology);
+      } else {
+        acc.set(packType, [technology]);
+      }
+      return acc;
+    }, new Map<string, any>());
 
-    if (selectedCategory !== "all") {
-      technologies = technologies.filter(({ fields }) => fields.category.includes(selectedCategory)) || [];
-    }
+    const sortedCategoriesMap = new Map([...categoriesMap.entries()].sort((field1: string, field2: string) => {
+      const packType1: keyof typeof packTypeNames = field1;
+      const packType2: keyof typeof packTypeNames = field2;
+      return packTypeNames[field1[0]].localeCompare(packTypeNames[field2[0]]);
+    }));
+    const categoryKeys = Array.from(sortedCategoriesMap.keys()) as string[];
+    categoryKeys.forEach((category) => {
+      let techCards: any = sortedCategoriesMap.get(category);
+      techCards.sort((a: FrontMatterData, b: FrontMatterData) => {
+        return (a.title.localeCompare(b.title))
+      });
+    });
+    return sortedCategoriesMap;
+  }, [data, selectedFilters, searchValue]);
 
-    return technologies;
-  }, [data, searchValue, selectedCategory]);
-
-  const onSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
+  const renderPacksCategories = () => {
+    let categoryKeys: string[] = Array.from(filteredTechCards.keys()) as string[];
+    const renderedCategoryItems = categoryKeys.map((category) => {
+      const categoryItems = filteredTechCards.get(category) as FrontMatterData[];
+      if (categoryItems.length) {
+        const obj = (<Collapse.Panel header={addPanelHeader(category)} key={category}>{
+          categoryItems.map((field) => {
+            const { title, logoUrl, packType, name } = field;
+            return <TechnologyCard name={name} title={title} logoUrl={logoUrl} type={packType}></TechnologyCard>;
+          })
+        }</Collapse.Panel>)
+        return obj;
+      }
+    });
+    return renderedCategoryItems;
   };
+  function addPanelHeader(category: string) {
+    return (
+      <>
+        <IconMapper type={category} />
+        {packTypeNames[category as keyof typeof packTypeNames]}
+      </>
+    );
+  }
+
+  const setSelectedSearchFilters = (selectedSearchFilters: Record<string, any>) => {
+    setSelectedFilters((prevState) => ({
+      ...prevState,
+      ...selectedSearchFilters
+    }));
+  }
 
   return (
     <div className={styles.wrapper}>
-      <CategorySelector categories={[...categories]} selectCategory={setSelectedCategory} selected={selectedCategory} />
-      <Search onSearch={onSearch} placeholder={"Search for integration..."} />
-      <div className={styles.technologyWrapper}>
-        {technologies.map(({ fields }) => {
-          const { title, slug, logoUrl } = fields;
-          return <TechnologyCard title={title} slug={slug} logoUrl={logoUrl} key={slug}></TechnologyCard>;
-        })}
-      </div>
+      <ConfigProvider theme={{
+        algorithm: isDarkTheme ? darkAlgorithm : defaultAlgorithm,
+      }}>
+        <PacksFilters categories={[...packTypes]} registries={repositories} setSelectedSearchFilters={setSelectedSearchFilters} selectedFilters={selectedFilters} />
+        <Search onSearch={setSearchValue} placeholder={"Search for integration..."} />
+        <div className={styles.technologyWrapper}>
+          <Collapse defaultActiveKey={Array.from(filteredTechCards.keys()) as string[]} expandIconPosition="end" >
+            {renderPacksCategories()}
+          </Collapse>
+        </div>
+      </ConfigProvider>
     </div>
   );
 }

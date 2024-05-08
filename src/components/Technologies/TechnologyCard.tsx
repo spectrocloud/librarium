@@ -1,22 +1,22 @@
 import React from "react";
-import Link from "@docusaurus/Link";
 import styles from "./Technologies.module.scss";
+import PackCardIcon from "./PackCardIcon";
+import Link from "@docusaurus/Link";
 
 interface TechnologyCardProps {
+  name: string;
   title: string;
-  slug: string;
   logoUrl: string;
+  type: string;
 }
 
-export default function TechnologyCard({ title, slug, logoUrl }: TechnologyCardProps) {
+export default function TechnologyCard({ name, title, logoUrl, type }: TechnologyCardProps) {
   return (
-    <Link key={title} to={slug}>
-      <div className={styles.card}>
-        <div className={styles.imageWrapper}>
-          <img src={logoUrl} alt={`${title} logo`} />
-        </div>
+    <div className={styles.card}>
+      <Link to={`/integrations/packs/${name}`}>
+        <PackCardIcon title={title} logoUrl={logoUrl} type={type} />
         <div className={styles.title}>{title}</div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }

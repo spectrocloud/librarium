@@ -1,9 +1,11 @@
 .wrapper {
   padding: 15px 0;
   .technologyWrapper {
-    display: flex;
-    flex-wrap: wrap;
     margin-top: 32px;
+    svg {
+      vertical-align: bottom;
+      margin-right: 5px;
+    }
   }
   .imageWrapper {
     display: flex;
@@ -12,11 +14,6 @@
     height: 52px;
     width: 100%;
     margin: 5px 0 5px;
-  }
-
-  .imageWrapper > img {
-    max-height: 100%;
-    max-width: 100%;
   }
   .card {
     width: 120px;
@@ -34,6 +31,7 @@
       0px 0px 2px rgba(0, 0, 0, 0.2),
       0px 2px 0px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
+    cursor: pointer;
   }
 
   .title {
@@ -44,4 +42,14 @@
     text-align: center;
     word-break: break-word;
   }
+  .ant-collapse {
+    width: 100%;
+    border: 0 none;
+    background: white;
+  }
+}
+.ant-collapse {
+  width: 100%;
+  border: 0 none;
+  background: white;
 }

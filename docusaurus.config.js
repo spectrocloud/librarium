@@ -193,7 +193,7 @@ const config = {
         id: "enable-source-map",
       },
     ],
-    pluginPacksAndIntegrationsData,
+    [pluginPacksAndIntegrationsData, { repositories: ["Public Repo", "palette"] }],
     pluginImportFontAwesomeIcons,
     function () {
       return {

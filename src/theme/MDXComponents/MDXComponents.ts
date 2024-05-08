@@ -6,6 +6,7 @@ import Tooltip from "@site/src/components/Tooltip/Tooltip";
 import PointsOfInterest from "@site/src/components/PointOfInterest/index";
 import YouTube from "@site/src/components/Youtube/Youtube";
 import Packs from "@site/src/components/Integrations/Packs/Packs";
+import PacksInformation from "@site/src/components/PacksInformation/PacksInformation";
 import AppTiers from "@site/src/components/Integrations/AppTiers/AppTiers";
 import PacksTable from "@site/src/components/PacksTable/PacksTable";
 import TOCInline from "@theme/TOCInline";
@@ -20,6 +21,7 @@ export default {
   PointsOfInterest,
   YouTube,
   Packs,
+  PacksInformation,
   AppTiers,
   PacksTable,
   TOCInline,

@@ -1,0 +1,18 @@
+[
+  {
+    "name": "centos",
+    "description": "CentOS Linux distribution is a stable, predictable, manageable and reproducible platform derived from the sources of RedHat Enterprise Linux (RHEL). It provides a rich base platform for open source communities to build upon. Spectro Cloudprovides CentOS as a development framework for its users."
+  },
+  {
+    "name": "cni-flannel",
+    "description": "Flannel is a network layer, layer three, fabric for Kubernetes. It is designed to work with Linux routing infrastructure and creates a virtual network that gives each computing host a subnet. Flannel uses either the Kubernetes API or etcd directly to store the network configuration, the allocated subnets, and any auxiliary data such as the host’s public IP address."
+  },
+  {
+    "name": "cni-cilium",
+    "description": "The Cilium agent runs on all clusters and servers to provide networking, security and observability to the workload running on that node."
+  },
+  {
+    "name": "csi-rook",
+    "description": "Rook is a cloud-native storage orchestrator for Kubernetes, providing the platform, framework, and support for a diverse set of storage solutions to natively integrate with cloud-native environments. Rook turns storage"
+  }
+]
