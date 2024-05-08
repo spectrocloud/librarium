@@ -74,8 +74,6 @@ Creating a content bundle provides several benefits that may address common use 
 7. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last
    value in the URL. Repeat this step for all the cluster profiles you want to specify in the content bundle.
 
-   <br />
-
    ```text
    https://console.spectrocloud.com/projects/yourProjectId/profiles/cluster/<YourClusterProfileHere>
    ```
@@ -204,6 +202,8 @@ Creating a content bundle provides several benefits that may address common use 
 
    </Tabs>
 
+   After creating the file, use the `-cred-file-path filepath` flag to include the credentials in the command.
+
 9. Navigate back to your terminal window and issue the following command to create the content bundle. Replace the
    placeholder values with your actual values.
 
@@ -219,40 +219,29 @@ Creating a content bundle provides several benefits that may address common use 
     --project-id <PROJECT_ID> \
     --cluster-profile-ids <CLUSTER_PROFILE_ID1,CLUSTER_PROFILE_ID2...> \
     --palette-endpoint <Palette API Endpoint> \
-    --outfile <bundle-name>.tar \
+    --outfile <bundle-name> \
+    --cred-file-path <file-path> \
     --include-palette-content \
-    --iso
    ```
 
-   ```hideClipboard shell
-   # Output
-   INFO[0000] getting hubble export for build
-   INFO[0000] Fetching latest version for service 'stylus'
-   INFO[0000] stylus version: 3.4.3
-   INFO[0000] Fetching manifest for service stylus and version 3.4.3 for action resources
-   INFO[0000] Fetching manifest of service stylus and version '3.4.3' for action resources
-   INFO[0000] Fetching manifest from service stylus and version '3.4.3' for action resources with file name images.yaml
-   INFO[0000] Get manifest with file name: images.yaml
-   INFO[0000] Get manifest with file content: image: gcr.io/spectro-images-public/stylus:v3.4.3
-   INFO[0002] successfully pulled image : gcr.io/spectro-images-public/calico/cni:v3.25.0
-   ...
-   ...
-   INFO[0143] Total translation table size: 0
-   INFO[0143] Total rockridge attributes bytes: 272
-   INFO[0143] Total directory bytes: 0
-   INFO[0143] Path table size(bytes): 10
-   INFO[0143] Max brk space used 0
-   INFO[0143] 872027 extents written (1703 MB)
-   INFO[0144] ISO file created successfully
-   ```
+   | Flag                        | Description                                                                                                    |
+   | --------------------------- | -------------------------------------------------------------------------------------------------------------- |
+   | `--api-key`                 | Your Palette API key.                                                                                          |
+   | `--cluster-profile-ids`     | Comma-separated list of cluster profile IDs to download content for.                                           |
+   | `--cred-file-path`          | Path to the JSON file storing registry credentials if you are using a private registry.                        |
+   | `--include-palette-content` | Whether to include necessary content for Palette itself. Required if for airgap installations.                 |
+   | `--outfile`                 | Name of your content bundle. The final file name looks like the following: `core-<bundle-name>-random-string`. |
+   | `--palette-endpoint`        | API endpoint for your Palette instance.                                                                        |
+   | `--project-id`              | The ID of your Palette project.                                                                                |
 
-The result is a content bundle that you can use to preload into your installer. For more information, refer to
-[Build Edge Artifacts with Content Bundle](./palette-canvos/build-artifacts.md) or
-[Build Installer ISO](./palette-canvos/build-installer-iso.md). Our Tech Preview feature
-[local UI](../local-ui/local-ui.md) also allows you to upload content bundles to a disconnected Edge deployment.
+   The result is a content bundle that you can use to preload into your installer. For more information, refer to
+   [Build Edge Artifacts with Content Bundle](./palette-canvos/build-artifacts.md) or
+   [Build Installer ISO](./palette-canvos/build-installer-iso.md). Our Tech Preview feature
+   [local UI](../local-ui/local-ui.md) also allows you to upload content bundles to a disconnected Edge deployment.
 
-Alternatively, you can use the ISO version of the content bundle and transfer it to a USB drive to be used separately at
-the time of Edge host installation.
+   Alternatively, you can use the ISO version of the content bundle and transfer it to a USB drive to be used separately
+   at the time of Edge host installation using the `-iso` flag in your build command. Doing so will override the file
+   extension you provide using the `--outfile` flag.
 
 ## Validate
 

@@ -166,7 +166,133 @@ Use the following instructions on your Linux machine, which this guide refers to
     export PROFILE_ID=[USE-YOUR-PROFILE-ID_HERE]
     ```
 
-14. Issue the command below to create the content bundle. The `build` command uses the following flags:
+14. (Optional) If your cluster profile uses images or helm charts that are hosted on private registries that require
+    authentication, you must provide a JSON file that contains the necessary credentials to access the registry.
+
+    <Tabs>
+
+    <TabItem value="helm" label="Helm">
+
+    For authenticated access to Helm charts, your must provide credentials with the following schema. Use a key at the
+    root level of the JSON object named "helm" and set its value to a list. The list is a list of credentials for each
+    Helm chart repository. For each set of credentials, use an object in the list with the keys "endpoint", "username",
+    and "password".
+
+    ```json
+    {
+      "helm": [
+          {
+            "endpoint": <Registry URL>,
+            "username": <Registry username>,
+            "password": <Password>
+          }
+      ]
+    }
+    ```
+
+    For example, the following JSON code is a valid set of credentials.
+
+    ```json
+    {
+      "helm": [
+        {
+          "endpoint": "harbor.abcd.com",
+          "username": "admin",
+          "password": "xxxxxxxx"
+        }
+      ]
+    }
+    ```
+
+    </TabItem>
+
+    <TabItem value="image" label="Image">
+
+    For image registries, you must provide credentials with the following schema. Provide a key at the root level of the
+    JSON object named "image" and set its value to a list. The list is a list of credentials for each Helm chart
+    repository. For each set of credentials, use an object in the list with the keys "endpoint", "username", and
+    "password".
+
+    ```json
+    {
+      "image": [
+          {
+            "endpoint": <Registry URL>,
+            "username": <Registry username>,
+            "password": <Password>
+          }
+      ]
+    }
+    ```
+
+    For example, the following JSON code provides access to two registries `ttl.sh` and `docker.io` with two
+    username-password pairs.
+
+    ```json
+    {
+      "image": [
+        {
+          "endpoint": "ttl.sh",
+          "username": "admin",
+          "password": "Welc0me!123"
+        },
+        {
+          "endpoint": "docker.io",
+          "username": "akhileshpvt",
+          "password": "Lucent122333!"
+        }
+      ]
+    }
+    ```
+
+    For Google Container Registry (GCR) access, you need to set the username field to `"_json_key"` and set the password
+    to an JSON object containing the following fields.
+
+    | Field                         | Description                                                                                         |
+    | ----------------------------- | --------------------------------------------------------------------------------------------------- |
+    | `type`                        | The type of credential, which is `service_account` for Google Cloud service accounts.               |
+    | `project_id`                  | The project ID associated with your Google Cloud project. For example, `spectro-images`.            |
+    | `private_key_id`              | A unique identifier for the private key associated with the service account.                        |
+    | `private_key`                 | The private key that is used to authenticate to Google Cloud services, encapsulated in a PEM block. |
+    | `client_email`                | The email address associated with the service account, used for authentication.                     |
+    | `client_id`                   | The client ID associated with the service account.                                                  |
+    | `auth_uri`                    | The URI for the authentication provider, typically Google's OAuth 2.0 server.                       |
+    | `token_uri`                   | The URI for obtaining tokens from Google's OAuth 2.0 server.                                        |
+    | `auth_provider_x509_cert_url` | The URL of the public x509 certificate for the authentication provider.                             |
+    | `client_x509_cert_url`        | The URL of the public x509 certificate for the client (service account).                            |
+
+    For example, the following is a valid set of credentials for a GCR registry.
+
+    ```json
+    {
+      "image": [
+        {
+          "endpoint": "gcr.io",
+          "username": "_json_key",
+          "password": {
+            "type": "service_account",
+            "project_id": "spectro-images",
+            "private_key_id": "847c09190xxxxxxxxxxxxc4ebc",
+            "private_key": "-----BEGIN KEY-----MIIEvQIBADA ... -----Shortened for brevity",
+            "client_email": "xxx.iam.gserviceaccount.com",
+            "client_id": "115830xxxxxxx340453",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://oauth2.googleapis.com/token",
+            "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+            "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/spectro-images-viewer%40spectro-images.iam.gserviceaccount.com"
+          }
+        }
+      ]
+    }
+    ```
+
+    </TabItem>
+
+    </Tabs>
+
+    After creating the file, use the `-cred-file-path filepath` flag to include the credentials in the command.
+
+15. Issue the command below to create the content bundle. The `build` command uses the following flags:
 
     | **Command Flag**        | **Value**                                                                                                                                          |
     | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -185,10 +311,9 @@ Use the following instructions on your Linux machine, which this guide refers to
     --palette-endpoint api.spectrocloud.com \
     --outfile <bundle-name>.tar \
     --include-palette-content \
-    --iso
     ```
 
-15. Use the command below to list all files in the current directory to verify that you created the content bundle
+16. Use the command below to list all files in the current directory to verify that you created the content bundle
     successfully. The content bundle will have the following naming convention, `content-[random-string]`, for example,
     **content-8e61a9e5**.
 
@@ -196,7 +321,7 @@ Use the following instructions on your Linux machine, which this guide refers to
     ls -al
     ```
 
-16. List the files in the content bundle folder using the following command. The output will display the compressed core
+17. List the files in the content bundle folder using the following command. The output will display the compressed core
     and app content files.
 
     ```bash
@@ -210,7 +335,7 @@ Use the following instructions on your Linux machine, which this guide refers to
     -rw-rw-r-- 1 jb jb 2478086360 Jul 26 18:20 core-content-8e61a9e5.zst
     ```
 
-17. Issue the following command to build the Edge artifacts with your content bundle. The `+iso` option specifies the
+18. Issue the following command to build the Edge artifacts with your content bundle. The `+iso` option specifies the
     build target. This command will generate an ISO image from the content bundle and other configurations you have
     specified in the **.arg** and **user-data** files.
 
