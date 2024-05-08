@@ -44,7 +44,7 @@ This guide explains how you can define and manage cluster profile variables.
 - Palette does not support nesting profile variables within macros or other profile variables.
 
 - You cannot define profile variables for the `pack.content` and `system.uri` parameters because the
-  [Palette CLI](../../../palette-cli/palette-cli.md) populates them automatically.
+  [Palette CLI](../../../automation/palette-cli/palette-cli.md) populates them automatically.
 
 - Once you deploy a cluster from a profile with variables, you can neither edit nor delete the profile variables. To
   edit or delete them, [version the cluster profile](../modify-cluster-profiles/version-cluster-profile.md) and update
