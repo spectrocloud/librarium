@@ -132,7 +132,7 @@ Use the following steps to install Palette VerteX.
 
 5.  Open a terminal window and invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The
     interactive CLI prompts you for configuration details and then initiates the installation. For more information
-    about the `ec` subcommand, refer to [Palette Commands](../../../../automation/palette-cli/commands#ec).
+    about the `ec` subcommand, refer to [Palette Commands](../../../../automation/palette-cli/commands.md#ec).
 
         ```bash
         palette ec install

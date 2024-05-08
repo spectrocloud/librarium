@@ -78,7 +78,7 @@ To complete this tutorial, you will need the following prerequisites in place.
 ## Authenticate with Palette
 
 The initial step to deploy a PCG using Palette CLI involves authenticating with your Palette environment using the
-[`palette login`](../../automation/palette-cli/commands#login) command.
+[`palette login`](../../automation/palette-cli/commands.md#login) command.
 
 In your terminal, execute the following command.
 
@@ -240,7 +240,7 @@ VMware cloud account with the same name as the PCG.
 The following recording demonstrates the `pcg install` command with the `--config-only` flag. When using this flag, a
 reusable configuration file named **pcg.yaml** is created under the path **.palette/pcg**. You can then utilize this
 file to install a PCG with predefined values using the command `pcg install` with the `--config-file` flag. Refer to the
-[Palette CLI PCG Command](../../automation/palette-cli/commands#pcg) page for further information about the command.
+[Palette CLI PCG Command](../../automation/palette-cli/commands.md#pcg) page for further information about the command.
 
 <Video title="palette-pcg-config-only" src="/videos/palette-pcg.mp4"></Video>
 

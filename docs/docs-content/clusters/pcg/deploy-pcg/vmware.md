@@ -374,7 +374,7 @@ The following requirements apply to tags:
 
     The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the **pcg.yaml** file are encrypted and cannot be manually
     updated. To change these values, use the `palette pcg install --update-passwords` command. Refer to the
-    [PCG command](../../../automation/palette-cli/commands#pcg) reference page for more information.
+    [PCG command](../../../automation/palette-cli/commands.md#pcg) reference page for more information.
 
     :::
 
@@ -530,8 +530,9 @@ The following requirements apply to tags:
     You cannot modify a deployed PCG cluster. If you need to make changes to the PCG cluster, you must first delete the
     cluster and redeploy it. We recommend you save your PCG configuration file for future use. Use the `--config-only`
     flag to save the configuration file without deploying the PCG cluster. Refer to the
-    [Generate a Configuration File](../../../automation/palette-cli/commands#pcg) section to learn more. For additional
-    assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
+    [Generate a Configuration File](../../../automation/palette-cli/commands.md#pcg) section to learn more. For
+    additional assistance, visit our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals)
+    portal.
 
     :::
 
