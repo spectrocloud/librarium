@@ -462,11 +462,6 @@ const redirects = [
     from: "/palette-cli/commands/project/",
     to: "/automation/palette-cli/commands/project/",
   },
-
-  {
-    from: "/palette-cli/commands/validator/",
-    to: "/automation/palette-cli/commands/validator/",
-  },
 ];
 
 module.exports = redirects;
