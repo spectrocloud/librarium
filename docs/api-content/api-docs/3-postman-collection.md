@@ -8,7 +8,7 @@ hide_table_of_contents: true
 hiddenFromNav: false
 ---
 
-Palette provides a Postman collection for your convenience to help you interact with the Palette API.
+Spectro Cloud provides a Postman collection for your convenience to help you interact with the Palette API.
 
 ## Prerequisites
 
