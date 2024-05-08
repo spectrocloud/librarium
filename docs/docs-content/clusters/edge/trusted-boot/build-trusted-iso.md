@@ -28,7 +28,7 @@ This document guides you through the process of producing Edge Installer ISO tha
 - Both the **db.key** file and the **tpm2-pcr-private.pem** file are located in the **CanvOS/secure-boot/private-keys**
   directory.
 
-- Familiarity with the [EdgeForge Workflow](../edgeforge-workflow/).
+- Familiarity with the [EdgeForge Workflow](../edgeforge-workflow/edgeforge-workflow.md).
 
 ## Build Edge Installer ISO with Trusted Boot
 

@@ -44,7 +44,7 @@ key that is in the signature database.
   command to view the existing Docker version. You should have root-level or sudo privileges on your Linux machine to
   create privileged containers.
 
-- - Familiarity with the [EdgeForge Workflow](../edgeforge-workflow/).
+- Familiarity with the [EdgeForge Workflow](../edgeforge-workflow/edgeforge-workflow.md).
 
 ## Build Provider Images with Trusted Boot
 
