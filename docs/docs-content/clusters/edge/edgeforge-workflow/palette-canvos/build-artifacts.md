@@ -290,7 +290,7 @@ Use the following instructions on your Linux machine, which this guide refers to
 
     </Tabs>
 
-    After creating the file, use the `-cred-file-path filepath` flag to include the credentials in the command.
+    After creating the file, use the `--cred-file-path filepath` flag to include the credentials in the command.
 
 15. Issue the command below to create the content bundle. The `build` command uses the following flags:
 
@@ -300,7 +300,8 @@ Use the following instructions on your Linux machine, which this guide refers to
     | `--project-id`          | Palette project ID                                                                                                                                 |
     | `--cluster-profile-ids` | Cluster profile IDs. If you want to include multiple cluster profiles in the content bundle, add multiple cluster profile IDs separated by commas. |
     | `--palette-endpoint`    | Palette API endpoint. The default Palette API endpoint is `api.spectrocloud.com`                                                                   |
-    | `--outfile`             | Path to write the final content bundle.                                                                                                            |
+    | `--outfile`             | Name of the content bundle. The final filename looks like the following: `core-<bundle-name>-random-string`.                                       |
+    | `--cred-file-path`      | Path to the JSON file containing the credentials for a private registry.                                                                           |
 
     You can issue `palette-edge build --help` to know about other available flags.
 
@@ -309,8 +310,9 @@ Use the following instructions on your Linux machine, which this guide refers to
     --project-id $PROJECT_ID \
     --cluster-profile-ids $PROFILE_ID \
     --palette-endpoint api.spectrocloud.com \
-    --outfile <bundle-name>.tar \
+    --outfile <bundle-name> \
     --include-palette-content \
+    --cred-file-path filepath
     ```
 
 16. Use the command below to list all files in the current directory to verify that you created the content bundle
