@@ -163,8 +163,8 @@ documentation.
 
 - PDE now has a Command Line Interface (CLI) that you can use for programmatic access to PDE resources. Users can
   perform actions such as create, list, delete, resize, pause, and resume virtual cluster. You can also download the
-  kubeconfig file of a virtual cluster with the CLI. Refer to the [Palette CLI](palette-cli/install-palette-cli.md)
-  documentation page to learn more.
+  kubeconfig file of a virtual cluster with the CLI. Refer to the
+  [Palette CLI](automation/palette-cli/install-palette-cli.md) documentation page to learn more.
 
 ### Improvements
 
@@ -572,10 +572,10 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](clusters/edge/edge.md
 - The Kubernetes Packs for [Edge Native](clusters/edge/architecture.md) deployments disable a few items by default to
   allow users to install those items independently or to avoid duplication.
 
-- The latest Palette Terraform releases, [Module 0.4.1 and Module 0.10.1](terraform.md), support:
+- The latest Palette Terraform releases, [Module 0.4.1 and Module 0.10.1](automation/terraform/terraform.md), support:
   - Native Edge clusters
   - Palette Virtual Clusters
-  - Fixes towards [Enhancements](terraform.md)
+  - Fixes towards [Enhancements](automation/terraform/terraform.md)
 
 **Packs and Integrations**
 
@@ -628,7 +628,8 @@ Export of Profiles, Terraform Releases, and many exciting enhancements.
   projects, and tenants.
 - Palette customers can now provision the fully conformant Kubernetes distribution [RKE2](./integrations/rke2.md)
   focusing on security and compliance.
-- The latest Palette Terraform releases, [Module 0.2.3 and Module 0.3.0](./terraform.md#modules), focus on:
+- The latest Palette Terraform releases, [Module 0.2.3 and Module 0.3.0](./automation/terraform/terraform.md#modules),
+  focus on:
   - Cluster resource tagging
   - Static placement of AKS clusters
   - VMware cloud-type support of Terraform modules

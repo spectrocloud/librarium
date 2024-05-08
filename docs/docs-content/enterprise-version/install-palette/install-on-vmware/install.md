@@ -107,7 +107,7 @@ the data from the quick start mode is migrated to the enterprise cluster as part
 
 ## Resources
 
-- [Palette CLI](../../../palette-cli/install-palette-cli.md)
+- [Palette CLI](../../../automation/palette-cli/install-palette-cli.md)
 
 - [Airgap Install Instructions](airgap-instructions.md)
 
