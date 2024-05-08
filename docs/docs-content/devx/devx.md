@@ -73,8 +73,8 @@ programmatically using PDE.
 
 :::tip
 
-Check out the Palette CLI [install guide](../palette-cli/install-palette-cli.md) for more information on how to install
-and configure the CLI.
+Check out the Palette CLI [install guide](../automation/palette-cli/install-palette-cli.md) for more information on how
+to install and configure the CLI.
 
 :::
 
