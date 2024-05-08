@@ -18,7 +18,7 @@ external image registry. For example, if your OS pack specified that the provide
 `quay.io/kairos/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1`, but in your user data, you have specified an external registry
 `10.10.254.254:8000/spectro-images/`. The Palette agent will automatically download the image using the tag
 `10.10.254.254:8000/spectro-images/quay.io/kairos/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1` instead of looking for the
-image in the `quay.io/kairos` registry.
+image in the original registry.
 
 :::tip
 

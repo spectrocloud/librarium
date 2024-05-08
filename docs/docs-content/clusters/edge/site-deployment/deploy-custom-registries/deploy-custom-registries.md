@@ -37,12 +37,12 @@ After the provider images are downloaded, the Palette agent proceeds to download
 cluster from registries that are specified in each pack's YAML configuration. However, you can specify an _external
 registry_ as the registry from which all images used by the cluster will be downloaded, including the provider images.
 
-When an external registry is provided in the user data, the Palette agent will replace the registry URL of every image
-used by the cluster with the external registry. For example, if your OS pack specified that the provider images be
-downloaded from `quay.io/kairos/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1`, but in your user data, you have specified an
-external registry `10.10.254.254:8000/spectro-images`. The Palette agent will automatically download the image using the
-tag `10.10.254.254:8000/spectro-images/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1` instead of looking for the image in the
-`quay.io/kairos` registry.
+When an external registry is provided in the user data, the Palette agent will append the URL of the external registry
+to the URL of every image. For example, if your OS pack specified that the provider images be downloaded from
+`quay.io/kairos/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1`, but in your user data, you have specified an external registry
+`10.10.254.254:8000/spectro-images`. The Palette agent will automatically download the image using the tag
+`10.10.254.254:8000/spectro-images/quay.io/kairos/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1` instead of looking for the
+image in the original registry.
 
 If you want to use a private image registry for applications on your Edge cluster, you can instruct the Palette agent to
 download images from an _authenticated external registry_. You can specify an external registry in the user-data used to
