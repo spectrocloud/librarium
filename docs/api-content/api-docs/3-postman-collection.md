@@ -1,12 +1,12 @@
 ---
 title: "Postman Collection"
 sidebar_label: "Postman Collection"
-description: "Spectro Cloud API Postman Collection"
+description: "Palette API Postman Collection"
 icon: ""
 hide_table_of_contents: true
 ---
 
-Spectro Cloud provides a Postman collection for your convenience to help you interact with the Spectro Cloud API.
+Spectro Cloud provides a Postman collection for your convenience to help you interact with the Palette API.
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ the API request.
 
 ## Authentication
 
-Two forms of authentication are available to interact with the Spectro Cloud API:
+Two forms of authentication are available to interact with the Palette API:
 
 - An Authentication header with a token value.  
   or
@@ -41,7 +41,7 @@ documentation.
 
 Use the following URL to import your configuration into Postman:
 
-https://raw.githubusercontent.com/spectrocloud/librarium/master/docs/api-content/api-docs/palette-apis.json
+https://raw.githubusercontent.com/spectrocloud/librarium/version-3-4/docs/api-content/api-docs/palette-apis.json
 
 <br />
 
