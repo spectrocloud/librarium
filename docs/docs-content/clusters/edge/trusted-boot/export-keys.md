@@ -3,7 +3,7 @@ sidebar_label: "Export Factory Keys with Command-line Tools"
 title: "Export Factory Keys with Command-line Tools"
 description: "Learn about how to export the factory keys from your Edge device using command-line tools. "
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 0
 tags: ["edge"]
 ---
 

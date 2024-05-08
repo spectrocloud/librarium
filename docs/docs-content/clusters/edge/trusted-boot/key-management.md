@@ -3,7 +3,7 @@ sidebar_label: "Key Management"
 title: "Trusted Boot Key Management"
 description: "Learn about how to manage the keys used in Trusted Boot."
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 15
 tags: ["edge"]
 ---
 

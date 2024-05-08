@@ -3,7 +3,7 @@ sidebar_label: "Installation"
 title: "Installation with Trusted Boot"
 description: "Learn about how to install Palette Edge with Trusted Boot on your Edge device."
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 50
 tags: ["edge"]
 ---
 

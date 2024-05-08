@@ -3,7 +3,7 @@ sidebar_label: "Update Cluster"
 title: "Update Cluster with Trusted Boot"
 description: "Learn about Trusted Boot."
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 60
 tags: ["edge"]
 ---
 

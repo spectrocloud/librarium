@@ -3,7 +3,7 @@ sidebar_label: "Build Provider Images with Trusted Boot"
 title: "Build Provider Images with Trusted Boot"
 description: "Learn about how to build Edge Artifacts for Trusted Boot."
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 30
 tags: ["edge"]
 ---
 
@@ -43,6 +43,8 @@ key that is in the signature database.
 - [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the docker --version
   command to view the existing Docker version. You should have root-level or sudo privileges on your Linux machine to
   create privileged containers.
+
+- - Familiarity with the [EdgeForge Workflow](../edgeforge-workflow/).
 
 ## Build Provider Images with Trusted Boot
 
