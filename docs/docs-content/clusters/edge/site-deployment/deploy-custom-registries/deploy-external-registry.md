@@ -20,7 +20,7 @@ external image registry. For example, if your OS pack specified that the provide
 `10.10.254.254:8000/spectro-images/quay.io/kairos/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1` instead of looking for the
 image in the original registry.
 
-The provider image also includes core Kubernetes images such as for images api-server, etcd, kube-controller-manager,
+The provider image also includes core Kubernetes images such as images for api-server, etcd, and kube-controller-manager,
 which will be loaded directly from the provider image to containerd without fetching them from another registry.
 
 :::tip
