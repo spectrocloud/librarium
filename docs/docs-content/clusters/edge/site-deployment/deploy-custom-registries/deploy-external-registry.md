@@ -120,7 +120,7 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
 9. In the Kubernetes layer of your cluster profile, remove `AlwaysPullImages` from
    `cluster.config.clusterConfiguration.apiServer.extraArgs.enable-admission-plugins`.
 
-   For example, if the original `enable-admission-plugins` parameter is the following:
+   For example, if the original `enable-admission-plugins` parameter is the following.
 
    ```yaml
    enable-admission-plugins: AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction
