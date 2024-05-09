@@ -44,8 +44,9 @@ as `10.10.254.254:8000/spectro-images`, the Palette agent will automatically dow
 `10.10.254.254:8000/spectro-images/quay.io/kairos/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1` instead of looking for the
 image in the original registry.
 
-The provider image also includes core Kubernetes images such as images for api-server, etcd, and kube-controller-manager,
-which will be loaded directly from the provider image to containerd without fetching them from another registry.
+The provider image also includes core Kubernetes images such as images for api-server, etcd, and
+kube-controller-manager, which will be loaded directly from the provider image to containerd without fetching them from
+another registry.
 
 If you want to use a private image registry for applications on your Edge cluster, you can instruct the Palette agent to
 download images from an _authenticated external registry_. You can specify an external registry in the user-data used to
