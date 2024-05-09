@@ -110,8 +110,8 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
 
   useEffect(() => {
     const filters = localStorage.getItem("selectedFilters");
-    const _searchval = localStorage.getItem("searchValue") || "";
-    setSearchValue(_searchval);
+    const searchVal = localStorage.getItem("searchValue") || "";
+    setSearchValue(searchVal);
     if (filters) {
       setSelectedFilters(JSON.parse(filters));
     }
@@ -162,7 +162,7 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
         algorithm: isDarkTheme ? darkAlgorithm : defaultAlgorithm,
       }}>
         <PacksFilters categories={[...packTypes]} registries={repositories} setSelectedSearchFilters={setSelectedSearchFilters} selectedFilters={selectedFilters} />
-        <Search onSearch={onSearch} placeholder={"Search for integration..."} value={searchValue}/>
+        <Search onSearch={onSearch} placeholder={"Search for integration..."} value={searchValue} />
         <div className={styles.technologyWrapper}>
           <Collapse defaultActiveKey={Array.from(filteredTechCards.keys()) as string[]} expandIconPosition="end" >
             {renderPacksCategories()}

@@ -142,7 +142,7 @@ function generateCustomData(packsDescription) {
   return generatedCustomData;
 }
 
-function generateRoutes(packDataMap, packsData) {
+function generateRoutes(packDataMap) {
   return Object.keys(packDataMap).map((packName) => {
     return {
       path: `/integrations/packs/${packName}`,
@@ -224,7 +224,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
       const integrationsData = generateIntegrationData(allContent);
       const customPacksData = generateCustomData(packsDescription);
       const unionPackData = combineAPICustomPackData(packsPaletteData, packsPaletteDetailsData, customPacksData);
-      const routes = generateRoutes(packsPaletteData, unionPackData);
+      const routes = generateRoutes(packsPaletteData);
       console.info("completed the generation of the routes");
       routes.map(route => addRoute(route));
       setGlobalData({ integrations: integrationsData, packs: unionPackData, repositories: repositories });

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, ReactElement } from "react";
 import styles from "./PacksReadme.module.scss";
-import { Select, Tabs, ConfigProvider, theme, Space } from "antd";
+import { Select, Tabs, ConfigProvider, theme } from "antd";
 import CustomLabel from "../Technologies/CategorySelector/CustomLabel";
 import PackCardIcon from "../Technologies/PackCardIcon";
 import Markdown from 'markdown-to-jsx';
@@ -82,18 +82,18 @@ export default function PacksReadme() {
       registries: [],
     };
   }, [packName]);
-  const [selectedVersion, setSelectedVersion] = useState<string>(version || packData.versions?.[0]?.title);
+  const [selectedVersion, setSelectedVersion] = useState<string>(version || packData.versions?.[0]?.title || "");
 
   function versionChange(version: string) {
-    history.replace({search: `?pack=${packName}&versions=${version}`});
+    history.replace({ search: `?pack=${packName}&versions=${version}` });
     setSelectedVersion(version);
 
   }
 
   function renderVersionOptions() {
-    return packData.versions.map((_version) => {
-      return (<Select.Option key={_version.title}>
-        {_version.title}
+    return packData.versions.map((version) => {
+      return (<Select.Option key={version.title}>
+        {version.title}
       </Select.Option>)
     });
   }
