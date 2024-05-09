@@ -114,8 +114,8 @@ data "spectrocloud_pack" "hellouniverse" {
 The following parameters are applied to the **hello-universe.yaml** manifest through the **values.yaml** file. Users do
 not need to take any additional actions regarding these parameters.
 
-| **Parameter**                       | **Description**                                                                                                                                         | **Default Value**                                                                              | **Required** |
-| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ------------ | --- | --- |
+| **Parameter**                     | **Description**                                                                | **Default Value**                           | **Required** |
+| --------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------- | ------------ |
 | `manifests.namespace`               | The namespace in which the application will be deployed.                                                                                                | `hello-universe`                                                                               | Yes          |
 | `manifests.images.hellouniverse`    | The [`hello-universe`](https://github.com/spectrocloud/hello-universe) application image that will be utilized to create the front-end containers.      | `ghcr.io/spectrocloud/hello-universe:1.1.2`/ `ghcr.io/spectrocloud/hello-universe:1.1.2-proxy` | Yes          |
 | `manifests.images.hellouniverseapi` | The [`hello-universe-api`](https://github.com/spectrocloud/hello-universe-api) application image that will be utilized to create the API containers.    | `ghcr.io/spectrocloud/hello-universe-api:1.0.12`                                               | No           |
