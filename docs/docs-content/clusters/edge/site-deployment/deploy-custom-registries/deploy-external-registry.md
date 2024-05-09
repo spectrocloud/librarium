@@ -18,9 +18,10 @@ external image registry. For example, if your OS pack specified that the provide
 `quay.io/kairos/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1`, but in your user data, you have specified an external registry
 `10.10.254.254:8000/spectro-images/`. The Palette agent will automatically download the image using the tag
 `10.10.254.254:8000/spectro-images/quay.io/kairos/core-ubuntu-20-lts-rke2:v1.25.2-rke2r1` instead of looking for the
-image in the original registry. The provider image also includes core Kubernetes images for api-server, etcd,
-kube-controller-manager, which will be loaded directly from the provider image to containerd without fetching them from
-the Internet.
+image in the original registry.
+
+The provider image also includes core Kubernetes images such as for images api-server, etcd, kube-controller-manager,
+which will be loaded directly from the provider image to containerd without fetching them from another registry.
 
 :::tip
 
@@ -119,10 +120,15 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
 9. In the Kubernetes layer of your cluster profile, remove `AlwaysPullImages` from
    `cluster.config.clusterConfiguration.apiServer.extraArgs.enable-admission-plugins`.
 
+   For example, if the original `enable-admission-plugins` parameter is the following:
+
+   ```yaml
+   enable-admission-plugins: AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction
+   ```
+
    The resulting layer configuration should look like the following.
 
    ```yaml
-   disable-admission-plugins: AlwaysAdmit
    enable-admission-plugins: NamespaceLifecycle,ServiceAccount,NodeRestriction
    ```
 
