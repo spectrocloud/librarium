@@ -44,7 +44,7 @@ key that is in the signature database.
   command to view the existing Docker version. You should have root-level or sudo privileges on your Linux machine to
   create privileged containers.
 
-- Familiarity with the [EdgeForge Workflow](../edgeforge-workflow/edgeforge-workflow.md).
+- Familiarity with the [EdgeForge Workflow](../../edgeforge-workflow/edgeforge-workflow.md).
 
 ## Build Provider Images with Trusted Boot
 
@@ -105,7 +105,7 @@ key that is in the signature database.
 
 9. Issue the command below to create the **.arg** file containing the custom tag, Docker Hub image registry hostname,
    and Ubuntu OS distribution. The **.arg** file uses the default values for the remaining arguments. Refer to
-   [Edge Artifact Build Configurations](../edgeforge-workflow/palette-canvos/arg.md) for all available arguments.
+   [Edge Artifact Build Configurations](../../edgeforge-workflow/palette-canvos/arg.md) for all available arguments.
 
    ```bash
    cat << EOF > .arg

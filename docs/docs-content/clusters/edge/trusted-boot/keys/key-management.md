@@ -16,17 +16,7 @@ Careful key management is the foundation of all security benefits provided by Tr
 Trusted Boot assumes that your keys are handled and stored securely. Ensure that you follow our recommendations to avoid
 compromising the security of your systems.
 
-![Relationship between Secure Boot Keys](/clusters_edge_trusted-boot_key-management_key-relationship.webp)
-
 ## Platform Key (PK)
-
-The PK is at the top of the Secure Boot cryptographic key hierarchy. It's a key pair that has a private key and a public
-key.
-
-The private PK signs updates to the Key Exchange Key (KEK) variable, which contains a list of certificates, public keys,
-or signatures in a EFI Signature List (ESL). The public PK is used to verify whether updates to the KEK are signed with
-the authentic private key and can be trusted. It establishes a relationship of trust between the platform owner and the
-platform firmware. A system can only have one PK.
 
 The private PK must be stowed away in a secure location **immediately** after being generated. You do not need the PK
 private key during EdgeForge operations, installation, upgrades or deployments of your Edge hosts. The public PK key is
@@ -52,15 +42,6 @@ The following files are all part of the PK key.
 
 ## Key Exchange Key (KEK)
 
-The KEK is a list of certificates, public keys, or signatures in an ESL signed by a private PK key. Entires in the KEK
-set are used to update the signature database (db) and the forbidden signature database (dbx). Each entry in the KEK set
-has a corresponding private key. It establishes a relationship of trust between the firmware and the operating system
-(OS).
-
-Any private key corresponding to an entry in the KEK set can sign updates to the db. When there are updates to the db,
-the corresponding public key, certificate, or signature in the KEK set is used to verify that those updates are signed
-by the authentic private.
-
 The private KEK must be stowed away in a secure location **immediately** after being generated. You do not need the KEK
 private key during EdgeForge operations, installation, upgrades or deployments of your Edge hosts. The public KEK is
 required during the EdgeForge build process so that it can be embedded into the Edge Installer ISO and thereafter
@@ -75,18 +56,6 @@ installed on Edge hosts.
 | **KEK.auth** | This file contains signed data used for updating the Secure Boot variables in the UEFI firmware. | Store in the build pipeline for EdgeForge. |
 
 ## Signature Database (db) and Forbidden Signature Database (dbx)
-
-The db is used to validate signed EFI (Extensible Firmware Interface) binaries. The db may contain a mixed set of
-certificates, public keys, signatures or hashes of binary files. The signature stored in the EFI binary (or a hash of
-the binary if there is no signature) is compared against the entries in the database. The binary will be executed if one
-of the following conditions is met:
-
-- The EFI binary is unsigned and a SHA-256 hash of the image is in the db.
-- The EFI binary is signed, and the signature on the binary is in the db.
-- The EFI binary is signed, and the signing key is in the db.
-
-Similarly, dbx may contain a mixed set of certificates, signatures or hashes. Any EFI whose signatures, hashes, or
-signing key matches the entries in dbx is forbidden from being executed.
 
 Both the public and private DB keys should be stored securely in the build pipeline of your Edge artifacts, as they are
 needed during EdgeForge both during initial deployment and upgrades. The build pipeline itself should be heavily secured

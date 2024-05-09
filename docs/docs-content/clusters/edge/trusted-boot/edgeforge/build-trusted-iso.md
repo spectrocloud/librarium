@@ -28,7 +28,7 @@ This document guides you through the process of producing Edge Installer ISO tha
 - Both the **db.key** file and the **tpm2-pcr-private.pem** file are located in the **CanvOS/secure-boot/private-keys**
   directory.
 
-- Familiarity with the [EdgeForge Workflow](../edgeforge-workflow/edgeforge-workflow.md).
+- Familiarity with the [EdgeForge Workflow](../../edgeforge-workflow/edgeforge-workflow.md).
 
 ## Build Edge Installer ISO with Trusted Boot
 
@@ -57,7 +57,7 @@ This document guides you through the process of producing Edge Installer ISO tha
    ```
 
 5. Create a file named **.arg**. Refer to
-   [Edge Artifact Build Configurations](../edgeforge-workflow/palette-canvos/arg.md) for available configuration
+   [Edge Artifact Build Configurations](../../edgeforge-workflow/palette-canvos/arg.md) for available configuration
    parameters.
 
    To build an ISO image that supports Trusted Boot, you need to include the following parameters in the **.arg** file:
@@ -69,7 +69,8 @@ This document guides you through the process of producing Edge Installer ISO tha
    ```
 
 6. Create a file named **user-data**. This is the file with which you can configure the Edge installer. Refer to
-   [Edge Installer Configuration](../edge-configuration/installer-reference.md) for available configuration parameters.
+   [Edge Installer Configuration](../../edge-configuration/installer-reference.md) for available configuration
+   parameters.
 
    :::warning
 

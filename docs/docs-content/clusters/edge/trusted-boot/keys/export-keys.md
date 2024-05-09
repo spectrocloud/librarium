@@ -68,7 +68,7 @@ command-line tools. T
    contain all the allowed and forbidden public keys that can be used to verify different boot components.
 
 3. Copy the keys to a secure location, such as a USB storage device. You will need them during the key generation step
-   for Trusted Boot. Refer to [Generate Keys for Trusted Boot](./generate-key.md) for details.
+   for Trusted Boot. Refer to [Generate Keys for Trusted Boot](./generate-keys.md) for details.
 
 ### Validate
 

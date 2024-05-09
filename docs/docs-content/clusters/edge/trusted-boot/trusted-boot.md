@@ -39,10 +39,6 @@ encrypted.
 
 ## Resources
 
-- [Export Factory Keys](./export-keys.md)
-- [Generate Trusted Boot Keys](./generate-key.md)
-- [Key Management](./key-management.md)
-- [Build Installer ISO](./build-trusted-iso.md)
-- [Build Provider Images](./build-trusted-provider-image.md)
-- [Installation](./install.md)
-- [Update a Cluster](./upgrade-cluster.md)
+- [Keys](./keys/keys.md)
+- [EdgeForge](./edgeforge/edgeforge.md)
+- [Deployment and Day-2 Operations](./deployment-day2/deployment-day2.md)

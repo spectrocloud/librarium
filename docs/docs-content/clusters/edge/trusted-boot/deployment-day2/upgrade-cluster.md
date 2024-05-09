@@ -7,10 +7,11 @@ sidebar_position: 60
 tags: ["edge"]
 ---
 
-If you need to make changes to a deployed Edge cluster with Trusted Boot enabled, you can follow the regular cluster
-upgrade process. Refer to [Update a Cluster](../../cluster-management/cluster-updates.md) for more information. However,
-if the change you are making involves the Operating System (OS) layer and the Kubernetes layer. You will need to rebuild
-a provider image with the same Trusted Boot keys you used to build the Edge Installer ISO.
+If you need to make changes to a deployed Edge cluster with Trusted Boot enabled without touching the OS or the
+Kubernetes layer, you can follow the regular cluster upgrade process. Refer to
+[Update a Cluster](/docs/docs-content/clusters/cluster-management/cluster-updates.md) for more information. However, if
+the change you are making involves the Operating System (OS) layer and the Kubernetes layer. You will need to rebuild a
+provider image with the same Trusted Boot keys you used to build the Edge Installer ISO.
 
 This page guides you through the process of making an update to a cluster that involves the Operating System (OS) or
 Kubernetes layer of the cluster.
@@ -20,7 +21,7 @@ Kubernetes layer of the cluster.
 - You have built an Edge Installer ISO and used the ISO to deploy a cluster.
 
 - You have access to the machine where you built the Installer ISO, including all the content in the **secure-boot**
-  folder. Refer to [Build Edge Installer ISO with Trusted Boot](./build-trusted-iso.md) for details.
+  folder. Refer to [Build Edge Installer ISO with Trusted Boot](../edgeforge/build-trusted-iso.md) for details.
 
 :::warning
 
@@ -39,7 +40,7 @@ not be able to access any data in the persistent partitions.
 2. Ensure all keys that were used to build the ISO are present in the **secure-boot** folder.
 
 3. Edit the **.arg** file to make changes to the OS or Kubernetes layer. Refer to
-   [EdgeForge Build Configurations](../edgeforge-workflow/palette-canvos/arg.md) for more information.
+   [EdgeForge Build Configurations](../../edgeforge-workflow/palette-canvos/arg.md) for more information.
 
    In particular, pay attention to the following arguments.
 

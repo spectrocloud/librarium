@@ -13,8 +13,8 @@ machine to machine. This guide uses the Intel NUC 13 Pro as an example.
 
 ## Prerequisites
 
-- Edge Installer ISO file. Check out the [Build Edge Artifacts with Trusted Boot](./build-trusted-iso.md) to learn how
-  to create an Edge Installer ISO with Trusted Boot.
+- Edge Installer ISO file. Check out the [Build Edge Artifacts with Trusted Boot](../edgeforge/build-trusted-iso.md) to
+  learn how to create an Edge Installer ISO with Trusted Boot.
 - The ability to modify the boot order settings to boot from a USB drive and to enter the BIOS interface. Typically this
   requires you to have a wired keyboard and a monitor to display the interface connected to the Edge device.
 - A USB disk containing the installer ISO.
@@ -137,4 +137,4 @@ supports Secure Boot.
 
 After you have installed Palette Edge on your Edge device with Trusted Boot, you can proceed to cluster creation. The
 process of creating a cluster with Trusted Boot enabled is not different from creating a regular cluster. Refer to
-[Cluster Creation](../site-deployment/site-installation/cluster-deployment.md) for more information.
+[Cluster Creation](../../site-deployment/site-installation/cluster-deployment.md) for more information.

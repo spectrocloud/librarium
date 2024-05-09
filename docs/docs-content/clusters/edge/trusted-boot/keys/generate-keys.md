@@ -52,7 +52,8 @@ generating them.
 ## Generate Keys for Trusted Boot with Self-Signed Certificates
 
 If your environment does not require a Certificate Authority (CA), you can use self-signed certificates to generate the
-keys needed for Trusted Boot. Using self-signed certificates does not in itself make your systems less secure,
+keys needed for Trusted Boot. Using self-signed certificates does not in itself make your systems less secure, but it
+does make verifying the source of the certificate harder since there is no higher authority.
 
 ### Prerequisites
 
@@ -262,7 +263,7 @@ Follow the steps below to generate keys from certificates issued by your CA.
     UKI_BRING_YOUR_OWN_KEYS=true
     ```
 
-    Refer to [Edge Artifact Build Reference](../edgeforge-workflow/palette-canvos/arg.md) for a complete list of
+    Refer to [Edge Artifact Build Reference](../../edgeforge-workflow/palette-canvos/arg.md) for a complete list of
     available arguments.
 
 15. Issue the following command to generate Trusted Boot keys for enrollment. Replace `org-name` with the name of your
