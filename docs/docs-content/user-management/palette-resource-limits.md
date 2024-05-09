@@ -25,7 +25,7 @@ The following table lists the default resource limits for Palette:
 | Workspaces        | 50            | Tenant    |
 | Roles             | 100           | Tenant    |
 | Cloud Accounts    | 200           | Tenant    |
-| Cluster Profiles  | 200           | Tenant    |
+| Cluster Profiles (profile versions count as well) | 200           | Tenant    |
 | Registries        | 50            | Tenant    |
 | Private Gateway   | 50            | Tenant    |
 | API Keys          | 20            | User      |
