@@ -30,18 +30,6 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
   ![Architecture diagram of Edge](/native-edge.webp "#title=An architecture diagram of Palette and all of the components.")
 
-## Minimum Device Requirements
-
-The following minimum device requirements must be met to deploy an Edge host successfully.
-
-- 2 CPU
-
-- 8 GB Memory
-
-- 100 GB Storage
-
-If Trusted Platform Module (TPM) is used, it must be TPM 2.0 or greater.
-
 ## Supported Architectures
 
 Palette supports AMD64 and ARM64 (beta) architectures for Edge installations. However, we cannot guarantee that all

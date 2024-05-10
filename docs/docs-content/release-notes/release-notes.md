@@ -11,6 +11,17 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## April 29, 2024 - Release 4.3.7
+
+### Bug Fixes
+
+- Fixed an issue when creating a DNS mapping for the
+  [System PCG](../clusters/pcg/architecture.md#system-private-gateway) that caused errors in the User Interface (UI) and
+  prevented the mapping from being created. The issue has been resolved, and you can now create DNS mappings for the
+  System PCG without any issues.
+
+- Resolved an issue where complex pack presets would not get injected into the cluster profile layer's YAML file.
+
 ## April 14, 2024 - Release 4.3.0 - 4.3.6
 
 This release contains several new exciting Technical Preview features, including the Edge Local UI and Cluster Profile
@@ -139,8 +150,8 @@ the following sections for a complete list of features, improvements, and known 
 #### Breaking Changes
 
 - Edge hosts now require a minimum storage capacity of 100 GB. The previous minimum storage capacity was 60 GB. Refer to
-  the [Minimum Device Requirements](../clusters/edge/architecture.md#minimum-device-requirements) page to learn more
-  about the minimum requirements for Edge hosts.
+  the [Minimum Device Requirements](../clusters/edge/hardware-requirements.md) page to learn more about the minimum
+  requirements for Edge hosts.
 
 #### Features
 
