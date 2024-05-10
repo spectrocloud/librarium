@@ -48,19 +48,6 @@ capabilities may be needed. Refer to [Hardware Requirements](./hardware-requirem
 
 ARM64 support is only verified for the Nvidia Jetson Orin device family.
 
-## Supported Architectures
-
-Palette supports AMD64 and ARM64 (beta) architectures for Edge installations. However, we cannot guarantee that all
-hardware and software configurations will work due to the various options available in the market. We recommend that you
-test your hardware configuration before deploying to production.
-
-:::warning
-
-ARM64 support is a preview feature and requires Palette version 4.0.0 or later. ARM64 support is only verified for the
-Nvidia Jetson Orin device family.
-
-:::
-
 ## Palette Edge Distribution
 
 Palette provides the following distributions for edge installations.
