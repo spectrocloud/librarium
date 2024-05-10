@@ -37,8 +37,9 @@ ARM64 support is only verified for the Nvidia Jetson Orin device family.
 To enable Trusted Boot on your Edge host, your Edge host must meet the following additional requirements.
 
 - Trusted Platform Module (TPM) 2.0 or greater.
-- Secure boot UEFI firmware with ability to import custom keys.
-- Firmware minimum EFI boot size capability of 1000 megabytes. Contact sales@spectrocloud.com for details.
+- Secure boot Unified Extensible Firmware Interface (UEFI) firmware with ability to import custom keys.
+- Firmware minimum Extensible Firmware Interface (EFI) boot size capability of 1000 megabytes. Contact
+  sales@spectrocloud.com for details.
 
 ## Virtual Machine Operator (VMO)
 
