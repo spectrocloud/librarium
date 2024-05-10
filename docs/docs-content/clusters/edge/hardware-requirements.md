@@ -21,11 +21,11 @@ All Edge hosts must meet the following minimum hardware requirements.
 
 ### AMD64 Architecture Devices
 
-| Component | Requirement                                                                                                                                                          |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| CPU       | - Intel: i3, i5, i7, i9, Xeon series <br /> - AMD: Ryzen 3, 5, 7, 9, and Epyc series                                                                                 |
-| CPU Core  | Minimum two cores.                                                                                                                                                   |
-| Memory    | Minimum 8 GB.                                                                                                                                                        |
+| Component | Requirement                                                                                                                                               |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CPU       | - Intel: i3, i5, i7, i9, Xeon series <br /> - AMD: Ryzen 3, 5, 7, 9, and Epyc series                                                                      |
+| CPU Core  | Minimum two cores.                                                                                                                                        |
+| Memory    | Minimum 8 GB.                                                                                                                                             |
 | Storage   | Main drive requires a minimum of 100 GB storage to accommodate the Operating System (OS), Kubernetes, and workloads. The main drive must be an SSD drive. |
 
 ### ARM64 Architecture Devices
