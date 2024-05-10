@@ -32,15 +32,21 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 ## Minimum Device Requirements
 
-The following minimum device requirements must be met to deploy an Edge host successfully.
+All Edge hosts must meet the following minimum hardware requirements. For specific features, additional hardware
+capabilities may be needed. Refer to [Hardware Requirements](./hardware-requirements.md) for details.
 
-- 2 CPU
+### AMD64 Architecture Devices
 
-- 8 GB Memory
+| Component | Requirement                                                                                                                                               |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CPU       | - Intel: i3, i5, i7, i9, Xeon series <br /> - AMD: Ryzen 3, 5, 7, 9, and Epyc series                                                                      |
+| CPU Core  | Minimum two cores.                                                                                                                                        |
+| Memory    | Minimum 8 GB.                                                                                                                                             |
+| Storage   | Main drive requires a minimum of 100 GB storage to accommodate the Operating System (OS), Kubernetes, and workloads. The main drive must be an SSD drive. |
 
-- 100 GB Storage
+### ARM64 Architecture Devices
 
-If Trusted Platform Module (TPM) is used, it must be TPM 2.0 or greater.
+ARM64 support is only verified for the Nvidia Jetson Orin device family.
 
 ## Supported Architectures
 
