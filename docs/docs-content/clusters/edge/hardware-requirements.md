@@ -38,7 +38,7 @@ To enable Trusted Boot on your Edge host, your Edge host must meet the following
 
 - Trusted Platform Module (TPM) 2.0 or greater.
 - Secure boot UEFI firmware with ability to import custom keys.
-- Firmware minimum EFI boot size capability of 850 Megabytes. Contact sales@spectrocloud.com for details.
+- Firmware minimum EFI boot size capability of 1000 megabytes. Contact sales@spectrocloud.com for details.
 
 ## Virtual Machine Operator (VMO)
 
