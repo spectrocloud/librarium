@@ -8,12 +8,16 @@ tags: ["edge", "architecture"]
 ---
 
 An Edge host must meet the minimum hardware requirements to be deployed successfully. Certain features such as Virtual
-Machine Operator (VMO) also have specific hardware requirements. This page provides general guidance on the minimum
+Machine Operator (VMO) also require additional hardware capabilities. This page provides general guidance on the minimum
 hardware requirements for your Edge hosts.
+
+:::info
 
 Due to variations in hardware and firmware capabilities, in addition to different workloads required by each user, you
 should always verify and evaluate specific devices with Palette Edge as part of solution design. To learn more, contact
 Spectro Cloud sales at sales@spectrocloud.com.
+
+:::
 
 ## Minimum Requirements
 
