@@ -26,7 +26,7 @@ All Edge hosts must meet the following minimum hardware requirements.
 | CPU       | - Intel: i3, i5, i7, i9, Xeon series <br /> - AMD: Ryzen 3, 5, 7, 9, and Epyc series                                                                                 |
 | CPU Core  | Minimum two cores.                                                                                                                                                   |
 | Memory    | Minimum 8 GB.                                                                                                                                                        |
-| Storage   | Main drive requires a minimum of 100 GB storage to accommodate Operating System (OS), Kubernetes, and leave room for workloads. The main drive must be an SSD drive. |
+| Storage   | Main drive requires a minimum of 100 GB storage to accommodate the Operating System (OS), Kubernetes, and workloads. The main drive must be an SSD drive. |
 
 ### ARM64 Architecture Devices
 
@@ -45,7 +45,7 @@ To enable Trusted Boot on your Edge host, your Edge host must meet the following
 To operate VMO on edge clusters, the CPUs of the constituent Edge hosts must have the following virtualization
 technologies.
 
-- Intel: Intel Virtualization Technology for x86 (VT-d) / Intel Virtualization Technology for Directed I/O (VT-x)
+- Intel: Intel Virtualization Technology for x86 (VT-d) or Intel Virtualization Technology for Directed I/O (VT-x)
 - AMD: AMD Virtualization (AMD-V)
 
 For more information, refer to [Virtual Machine Orchestrator](../../vm-management/vm-management.md).
