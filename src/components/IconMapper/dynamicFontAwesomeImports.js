@@ -1,5 +1,4 @@
 import { faCubes } from '@fortawesome/free-solid-svg-icons';
-import { faTerminal } from '@fortawesome/free-solid-svg-icons';
 import { faPersonWalkingLuggage } from '@fortawesome/free-solid-svg-icons';
 import { faObjectGroup } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +13,7 @@ import { faPalette } from '@fortawesome/free-solid-svg-icons';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { faGavel } from '@fortawesome/free-solid-svg-icons';
+import { faTerminal } from '@fortawesome/free-solid-svg-icons';
 import { faTowerObservation } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faGears } from '@fortawesome/free-solid-svg-icons';
@@ -23,7 +23,6 @@ import { faShield } from '@fortawesome/free-solid-svg-icons';
 
 export const fontAwesomeIcons = {
   "cubes": faCubes,
-  "terminal": faTerminal,
   "person-walking-luggage": faPersonWalkingLuggage,
   "object-group": faObjectGroup,
   "envelope-open-text": faEnvelopeOpenText,
@@ -38,6 +37,7 @@ export const fontAwesomeIcons = {
   "book": faBook,
   "bookmark": faBookmark,
   "gavel": faGavel,
+  "terminal": faTerminal,
   "tower-observation": faTowerObservation,
   "lock": faLock,
   "gears": faGears,
