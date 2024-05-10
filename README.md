@@ -308,7 +308,9 @@ To add a Service to the Service List complete the following actions:
 
 ### Images or other assets
 
-All images must reside in the [`static/assets/docs/images`](./static/assets/docs/images/) folder.
+All images must reside in the [`static/assets/docs/images`](./static/assets/docs/images/) folder. All images must be in
+webp format. You can save png, jpg, or jpeg to the directory. The commit hook will convert the images to webp format. Or
+issue the command `make format-images` to convert the images to webp format.
 
 ```md
 ![alt text](/clusterprofiles.png "cluster profiles example")
@@ -456,11 +458,11 @@ https://docusaurus.io/docs/markdown-features/code-blocks#highlighting-with-comme
 The copy button is shown by default in all code blocks. You can disable the copy button by passing in the parameter
 value `hideClipboard` in the markdown declaration of the code blocks.
 
-Example ![Example](static/assets/docs/images/hide_copy_button_example.png)
+Example ![Example](static/assets/docs/images/hide_copy_button_example.webp)
 
 Result
 
-![Result](static/assets/docs/images/hide_copy_button.png)
+![Result](/static/assets/docs/images/hide_copy_button.webp)
 
 ### Admonitions - Warning / Info / Tip / Danger
 

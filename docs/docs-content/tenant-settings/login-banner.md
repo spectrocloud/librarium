@@ -39,7 +39,7 @@ self-hosted Palette use the tenant URL defined during the Palette installation.
 
 <br />
 
-![A view of the tenant settings platform page with an example login banner message.](/tenant-settings_login-banner_settings-page-view.png)
+![A view of the tenant settings platform page with an example login banner message.](/tenant-settings_login-banner_settings-page-view.webp)
 
 <br />
 
@@ -69,4 +69,4 @@ defined during the Palette installation.
 
 <br />
 
-![A view of a tenant login banner message](/tenant-settings_login-banner_tenant-banner-view.png)
+![A view of a tenant login banner message](/tenant-settings_login-banner_tenant-banner-view.webp)

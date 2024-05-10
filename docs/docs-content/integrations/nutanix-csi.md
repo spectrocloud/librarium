@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["storage", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.dev.spectrocloud.com/v1/nutanix-csi/blobs/sha256:7944cb5fecaaac0b5d5bf47a311ab80573147a34ac438954a70f97c69d65d733?type=image/png"
+logoUrl: "https://registry.dev.spectrocloud.com/v1/nutanix-csi/blobs/sha256:7944cb5fecaaac0b5d5bf47a311ab80573147a34ac438954a70f97c69d65d733?type=image.webp"
 tags: ["packs", "Nutanix", "Storage"]
 ---
 
@@ -36,9 +36,8 @@ platform with Kubernetes by implementing a node controller function.
 
 ## Parameters
 
-The table below lists commonly used parameters you can configure when adding the Nutanix CSI pack. Review the
-[Nutanix CSI Pack](https://github.com/spectrocloud/pax/edit/master/stable/storage/nutanix-csi-2.6.6/README.md) GitHub
-page for a complete parameters list.
+The table below lists commonly used parameters you can configure when adding the Nutanix CSI pack. Review the Nutanix
+CSI Pack README for a complete list of parameters.
 
 | **Parameter**                                   | **Description**                                                                                                        | **Default**      |
 | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------- |
@@ -102,4 +101,3 @@ data "spectrocloud_pack_simple" "nutanix-csi" {
 - [Nutanix Documentation](https://www.nutanixbible.com)
 - [Nutanix Cloud Controller Manager on GitHub](https://github.com/nutanix-cloud-native/cloud-provider-nutanix)
 - [Nutanix CSI Volume Driver Documentation](https://portal.nutanix.com/page/documents/details?targetId=CSI-Volume-Driver-v2_6:CSI-Volume-Driver-v2_6)
-- [Nutanix CSI Pack on GitHub](https://github.com/spectrocloud/pax/tree/master/stable/storage/nutanix-csi-2.6.6)

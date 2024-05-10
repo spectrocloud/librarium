@@ -23,7 +23,7 @@ tools that together work to create an artifact, or in simpler terms, a custom im
 You can use the custom images created by KIB with Palette, assuming the infrastructure provider is supported in Palette.
 Use the following diagram to understand how you can use KIB to create custom images that you can use with Palette.
 
-![A diagram displaying the steps for creating a custom image](/cluster-profiles_byoos_image-builder_workflow-diagram.png)
+![A diagram displaying the steps for creating a custom image](/cluster-profiles_byoos_image-builder_workflow-diagram.webp)
 
 <br />
 
@@ -277,7 +277,7 @@ create the image.
       osVersion: "8"
     ```
 
-![View of the cluster profile wizard](/clusters_byoos_image-builder_cluster-profile-byoos-yaml.png)
+![View of the cluster profile wizard](/clusters_byoos_image-builder_cluster-profile-byoos-yaml.webp)
 
 17. Click on **Next layer** to add the Kubernetes layer.
 

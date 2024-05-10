@@ -1,0 +1,132 @@
+name: Screenshot Capture
+# This workflow is triggered when a workflow run of the "Release to Production" workflow is completed or when manually triggered.
+# The primary purpose of this workflow is to take screenshots of the website using Playwright and upload them as artifacts.
+# The screenshots can be used to compare the visual appearance of the website before and after a release.
+# The workflow Visual Comparison uses these screenshots to generate a visual comparison report.
+
+on:
+  workflow_run:
+    workflows: ["Release to Production"]
+    types: [completed]
+  workflow_dispatch:
+
+
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  MENDABLE_API_KEY: ${{ secrets.MENDABLE_API_KEY }}
+  FULLSTORY_ORGID: ${{ secrets.FULLSTORY_ORGID }}
+  ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+  ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+  ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
+
+
+jobs:
+
+  create-assets:
+    name: asset-builds
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Build Website
+        run: make build
+
+      - name: Upload Build
+        uses: actions/upload-artifact@v4
+        with:
+          name: "build"
+          path: |
+            build/
+          if-no-files-found: error
+          retention-days: 1
+
+
+
+
+  visual-snapshots:
+    runs-on: ubuntu-latest
+    needs: [create-assets]
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [1, 2, 3, 4]
+        shardTotal: [4]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install Dependencies
+        uses: Wandalen/wretry.action@v3
+        with: 
+            command: npm ci
+            attempt_limit: 3
+            attempt_delay: 60000 # 1 minute
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: retry action
+        uses: Wandalen/wretry.action@v3
+        with: 
+          attempt_limit: 3
+          action: actions/download-artifact@v4
+          with: |
+            name: build
+            path: build
+          attempt_delay: 60000 # 1 minute
+
+      - name: Take Screenshots with Playwright
+        run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} || exit 0
+
+      - name: Upload Screenshots
+        uses: actions/upload-artifact@v4
+        id: screenshots
+        with:
+          name: screenshots-${{ matrix.shardIndex }}
+          path: |
+            screenshots/
+          if-no-files-found: error
+          retention-days: 1
+
+  merge-snapshots:
+    name: Merge Screenshots
+    runs-on: ubuntu-latest
+    needs: [visual-snapshots]
+    steps:
+
+    - name: Download blob reports from GitHub Actions Artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: screenshots
+        pattern: screenshots-*
+        merge-multiple: true
+
+    - name: Upload Screenshots
+      uses: actions/upload-artifact@v4
+      id: screenshots
+      with:
+        name: "screenshots"
+        path: |
+          screenshots/
+        if-no-files-found: error
+        retention-days: 3

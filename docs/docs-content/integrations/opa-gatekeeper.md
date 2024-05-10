@@ -7,7 +7,7 @@ type: "integration"
 category: ["security", "amd64", "arm64"]
 sidebar_class_name: "hide-from-sidebar"
 logoUrl:
-  'https://registry.dev.spectrocloud.com/v1/open-policy-agent/blobs/sha256:fcbad202dc9ca5e7a756562d8f9fc180ee77474034447dabc302d8a5a2bbe148?type=image/png"
+  'https://registry.dev.spectrocloud.com/v1/open-policy-agent/blobs/sha256:fcbad202dc9ca5e7a756562d8f9fc180ee77474034447dabc302d8a5a2bbe148?type=image.webp"
   alt="OpenPolicyAgent logo'
 tags: ["packs", "open-policy-agent", "security"]
 ---

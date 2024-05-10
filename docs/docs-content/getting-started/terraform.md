@@ -168,7 +168,7 @@ Before you can get started with the Terraform code, you need a Spectro Cloud API
 To create an API key, log in to [Palette](https://console.spectrocloud.com) and click on the user **User Menu** and
 select **My API Keys**.
 
-![Image that points to the user drop-down Menu and points to the API key link](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_create_api_key.png)
+![Image that points to the user drop-down Menu and points to the API key link](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_create_api_key.webp)
 
 Next, click on **Add New API Key**. Fill out the required input field, **API Key Name**, and the **Expiration Date**.
 Click on **Confirm** to create the API key. Copy the key value to your clipboard, as you will use it shortly.
@@ -466,11 +466,11 @@ To check out the cluster profile creation in Palette, log in to [Palette](https:
 the left **Main Menu** click on **Profiles**. Locate the cluster profile with the name pattern
 `tf-[cloud provier]-profile`. Click on the cluster profile to review its details, such as layers, packs, and versions.
 
-![A view of the cluster profile](/getting-started/aws/getting-started_deploy-k8s-cluster_profile_cluster_profile_review.png)
+![A view of the cluster profile](/getting-started/aws/getting-started_deploy-k8s-cluster_profile_cluster_profile_review.webp)
 
 You can also check the cluster creation process by navigating to the left **Main Menu** and selecting **Clusters**.
 
-![Update the cluster](/getting-started/aws/getting-started_deploy-k8s-cluster_create_cluster.png)
+![Update the cluster](/getting-started/aws/getting-started_deploy-k8s-cluster_create_cluster.webp)
 
 Select your cluster to review its details page, which contains the status, cluster profile, event logs, and more.
 
@@ -478,7 +478,7 @@ The cluster deployment may take several minutes depending on the cloud provider,
 cluster profile. You can learn more about the deployment progress by reviewing the event log. Click on the **Events**
 tab to check the event log.
 
-![Update the cluster](/getting-started/getting-started_deploy-k8s-cluster_event_log.png)
+![Update the cluster](/getting-started/getting-started_deploy-k8s-cluster_event_log.webp)
 
 ## Verify the Application
 
@@ -493,7 +493,7 @@ moments before clicking on the service URL to prevent the browser from caching a
 
 :::
 
-![Deployed application](/getting-started/getting-started_deploy-k8s-cluster_hello-universe-without-api.png)
+![Deployed application](/getting-started/getting-started_deploy-k8s-cluster_hello-universe-without-api.webp)
 
 Welcome to Hello Universe, a demo application to help you learn more about Palette and its features. Feel free to click
 on the logo to increase the counter and for a fun image change.
@@ -554,8 +554,8 @@ podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.3
 In this tutorial, you created a cluster profile, which is a template that contains the core layers required to deploy a
 host cluster. You then deployed a host cluster onto your preferred cloud service provider using Terraform.
 
-We encourage you to check out the [Deploy an Application using Palette Dev Engine](../devx/apps/deploy-app) tutorial to
-learn more about Palette. Palette Dev Engine can help you deploy applications more quickly through the usage of
+We encourage you to check out the [Deploy an Application using Palette Dev Engine](../devx/apps/deploy-app.md) tutorial
+to learn more about Palette. Palette Dev Engine can help you deploy applications more quickly through the usage of
 [virtual clusters](../glossary-all.md#palette-virtual-cluster). Feel free to check out the reference links below to
 learn more about Palette.
 

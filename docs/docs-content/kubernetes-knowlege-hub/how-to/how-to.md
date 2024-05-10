@@ -6,6 +6,7 @@ hide_table_of_contents: false
 hiddenFromNav: false
 sidebar_custom_props:
   icon: "book"
+unlisted: true
 tags: ["k8s-tips"]
 ---
 

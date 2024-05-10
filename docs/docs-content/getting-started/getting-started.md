@@ -35,7 +35,7 @@ and workflows you need to deploy and manage Kubernetes clusters through Palette.
 
 <div class="desktop-only-display">
 
-![Overview of the getting started journey rocket](/getting-started/getting-started_getting-started_journey-overview.png)
+![Overview of the getting started journey rocket](/getting-started/getting-started_getting-started_journey-overview.webp)
 
 </div>
 
@@ -92,6 +92,12 @@ Explore more through the following pages.
       description: "Deploy a Palette host cluster with Terraform.",
       buttonText: "Learn more",
       relativeURL: "./terraform",
+    },
+    {
+      title: "Additional Capabilities",
+      description: "Learn about Palette's additional capabilities.",
+      buttonText: "Learn more",
+      relativeURL: "./additional-capabilities",
     },
   ]}
 />

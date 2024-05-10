@@ -49,7 +49,7 @@ Postman imports your collection and lists it under Import Complete.
 
 <br />
 
-![Copy/paste the URL in the **Import** dialog as a link.](URL-as-a-link.png)
+![Copy/paste the URL in the **Import** dialog as a link.](/URL-as-a-link.webp)
 
 Find details about importing in Postman's
 [import/export](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/) tutorial.

@@ -16,12 +16,12 @@ The following Palette downloads are available:
 You can deploy a self-hosted Palette to your environment. Refer to the
 [Self-Hosted Installation](enterprise-version/install-palette/install-palette.md) documentation for additional guidance
 on how to install Palette. Palette VerteX installation guide can be found in the
-[Palette VerteX install](vertex/install-palette-vertex) document.
+[Palette VerteX install](./vertex/install-palette-vertex/install-palette-vertex.md) document.
 
 ## Palette CLI
 
 The Palette Command Line Interface (CLI) is a tool that you can use to interact with Palette programmatically. Check out
-the [Palette CLI](/palette-cli/install-palette-cli) document for installation guidance.
+the [Palette CLI](./automation/palette-cli/palette-cli.md) document for installation guidance.
 
 | Version | Operating System                                                                      | Checksum (SHA256)                                                  |
 | ------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |

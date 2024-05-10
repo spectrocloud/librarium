@@ -10,7 +10,7 @@ tags: ["pcg"]
 
 A Private Cloud Gateway (PCG) is a Palette infrastructure support component that enables the communication between
 Palette and a private cloud or private data center environment. The PCG is typically deployed into the private cloud
-environments through the [Palette CLI](../../palette-cli/install-palette-cli.md).
+environments through the [Palette CLI](../../automation/palette-cli/install-palette-cli.md).
 
 A PCG is necessary in private cloud environments where Palette does not have direct network access to the environment
 where workload clusters are deployed to. When the PCG is installed, it registers itself with a Palette instance and
@@ -40,3 +40,5 @@ existing Kubernetes cluster. Refer to the table below to learn more about the su
 - [Deploy a PCG to an Existing Kubernetes Cluster](./deploy-pcg-k8s.md)
 
 - [Manage a PCG](./manage-pcg/manage-pcg.md)
+
+- [Deploy App Workloads with a PCG](./deploy-app-pcg.md)

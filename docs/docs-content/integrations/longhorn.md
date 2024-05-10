@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["storage", "amd64", "fips"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/csi-longhorn/blobs/sha256:8257bd6697941139cea8ace907e25b3859cb8de48f965a5b6011d518cad0a2db?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/csi-longhorn/blobs/sha256:8257bd6697941139cea8ace907e25b3859cb8de48f965a5b6011d518cad0a2db?type=image.webp"
 tags: ["packs", "longhorn", "storage"]
 ---
 
@@ -123,7 +123,7 @@ when learning how to use Longhorn.
 
 - [How to Create Volumes](https://longhorn.io/docs/1.4.4/volumes-and-nodes/create-volumes/).
 
-- [Access the Longhorn UI](https://longhorn.io/docs/1.4.4/deploy/accessing-the-ui/)
+- [Access the Longhorn UI](https://longhorn.io/docs/latest/deploy/accessing-the-ui/#accessing-the-longhorn-ui)
 
 - [Longhorn Networking](https://longhorn.io/docs/1.4.4/references/networking/)
 
@@ -175,7 +175,7 @@ when learning how to use Longhorn.
 
 - [How to Create Volumes](https://longhorn.io/docs/1.4.4/volumes-and-nodes/create-volumes/).
 
-- [Access the Longhorn UI](https://longhorn.io/docs/1.4.4/deploy/accessing-the-ui/)
+- [Access the Longhorn UI](https://longhorn.io/docs/latest/deploy/accessing-the-ui/#accessing-the-longhorn-ui)
 
 - [Longhorn Networking](https://longhorn.io/docs/1.4.4/references/networking/)
 

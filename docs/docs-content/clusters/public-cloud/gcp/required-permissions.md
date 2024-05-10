@@ -7,6 +7,24 @@ sidebar_position: 40
 tags: ["public cloud", "gcp", "iam"]
 ---
 
+## Required API Services
+
+Ensure the following Google Cloud Platform (GCP) API services are enabled in your GCP project to deploy a host cluster:
+
+- [Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest)
+- [Compute Engine API](https://cloud.google.com/compute/docs/reference/rest/v1)
+- [Kubernetes Engine API](https://cloud.google.com/kubernetes-engine/docs/reference/rest)
+
+:::tip
+
+If you need help enabling a Google Cloud API service, check out the
+[Enable and disable APIs](https://support.google.com/googleapi/answer/6158841?hl=en) guide from the official Google
+Cloud documentation.
+
+:::
+
+## Required Permissions
+
 This table contains the required Google Cloud Platform (GCP) permissions to create a custom GCP role tailored for usage
 with Palette. When creating a custom role, ensure you include all the permissions listed below to prevent Palette from
 having issues when deploying a host cluster.
@@ -66,6 +84,16 @@ having issues when deploying a host cluster.
 | `compute.routes.delete`                                | Delete routes                                                                                   |
 | `compute.routes.get`                                   | Get route information                                                                           |
 | `compute.routes.list`                                  | List routes                                                                                     |
+| `compute.subnetworks.create`                           | Create subnetwork                                                                               |
+| `compute.subnetworks.delete`                           | Delete subnetwork                                                                               |
+| `compute.subnetworks.list`                             | List subnetworks                                                                                |
+| `compute.subnetworks.use`                              | Use subnetwork                                                                                  |
+| `compute.zones.list`                                   | List zones                                                                                      |
+| `container.clusters.create`                            | Create cluster                                                                                  |
+| `container.clusters.delete`                            | Delete cluster                                                                                  |
+| `container.clusters.get`                               | Get clusters                                                                                    |
+| `container.clusters.list`                              | List clusters                                                                                   |
+| `container.clusters.update`                            | Update cluster                                                                                  |
 | `resourcemanager.projects.get`                         | Get details of a specified Google Cloud project.                                                |
 | `resourcemanager.projects.list`                        | List all Google Cloud projects that the user has access to.                                     |
 | `storage.objects.get`                                  | Get details of a specified object in Google Cloud Storage.                                      |

@@ -16,7 +16,7 @@ platform, to familiarize the users with our Palette features.
 
 ## Start your Palette Experience
 
-![user-experience.png](/user-experience.png)
+![user-experience.webp](/user-experience.webp)
 
 The product tour is followed by a Palette experience session. Here we make sure that our users are guided through a
 successful deployment pipeline in their first use, instead of them just figuring things out along the way towards

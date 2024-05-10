@@ -28,9 +28,9 @@ The Edge Installer is configured with a set of default values.
 
 | Parameter             | Default                                        | Description                                                                                                                                                                                                           |
 | --------------------- | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `PaletteEndpoint`     | `api.console.spectrocloud.com`                 | The Palette API endpoint.                                                                                                                                                                                             |
-| `Prefix`              | `edge`                                         | The prefix prepended to the edge device hostname to form the unique identifier.                                                                                                                                       |
-| `RegistrationURL`     | `https://edge-registration-generic.vercel.app` | The URL that operators should use when registering the Edge host with Palette.                                                                                                                                        |
+| `paletteEndpoint`     | `api.spectrocloud.com`                         | The Palette API endpoint.                                                                                                                                                                                             |
+| `prefix`              | `edge`                                         | The prefix prepended to the edge device hostname to form the unique identifier.                                                                                                                                       |
+| `registrationURL`     | `https://edge-registration-generic.vercel.app` | The URL that operators should use when registering the Edge host with Palette.                                                                                                                                        |
 | `disableAutoRegister` | `false`                                        | Set to `true` if you want to disable auto registration. Refer to the [Register Edge Host](../site-deployment/site-installation/edge-host-registration.md) reference page to learn more about Edge host registrations. |
 
 The default values assume you are installing the Edge host in an environment without a network proxy, do not require
@@ -146,7 +146,7 @@ Use the site network parameters to configure network settings so the edge host c
 | Parameter                | Description                                                                                                                           |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
 | `siteNetwork.httpProxy`  | The URL of the HTTP proxy endpoint.                                                                                                   |
-| `siteNetwork.httpSProxy` | The URL of the HTTPS proxy endpoint.                                                                                                  |
+| `siteNetwork.httpsProxy` | The URL of the HTTPS proxy endpoint.                                                                                                  |
 | `siteNetwork.noProxy`    | The list of IP addresses or CIDR ranges to exclude routing through the network proxy.                                                 |
 | `siteNetwork.interfaces` | The network settings respective to the interfaces. Review the [Network Parameters](#network-parameters) table below for more details. |
 | `siteNetwork.nameserver` | The IP address of the global DNS nameserver that requests should be routed to.                                                        |

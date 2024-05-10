@@ -61,7 +61,7 @@ following information.
 
 - The number of app profiles available.
 
-![A view of the PDE dashboard with resources in use.](/docs_devx_pde-dashboard-utilization.png)
+![A view of the PDE dashboard with resources in use.](/docs_devx_pde-dashboard-utilization.webp)
 
 ## Automation Support
 
@@ -70,12 +70,12 @@ You can manage PDE resources through the [Palette API](/api/introduction),
 the Palette CLI. Download the Palette CLI from the [Downloads](../spectro-downloads.md#palette-cli) page to start
 programmatically using PDE.
 
-![A view of the Palette CLI menu from a terminal](/devx_devx_cli-display.png)
+![A view of the Palette CLI menu from a terminal](/devx_devx_cli-display.webp)
 
 :::tip
 
-Check out the Palette CLI [install guide](../palette-cli/install-palette-cli.md) for more information on how to install
-and configure the CLI.
+Check out the Palette CLI [install guide](../automation/palette-cli/install-palette-cli.md) for more information on how
+to install and configure the CLI.
 
 :::
 

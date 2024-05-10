@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Airgap"
-title: "Airgap"
-description: "Learn about Palette VerteX in an airgap environment and how to install Palette in an airgap environment."
+sidebar_label: "Airgap Resources"
+title: "Airgap Resources"
+description: "Airgap installation resources for Palette VerteX."
 icon: ""
 sidebar_position: 10
 hide_table_of_contents: false
@@ -29,7 +29,7 @@ is utilized for storing images and packs.
 Before you can install VerteX in an airgap environment, you must complete all the required pre-install steps. The
 following diagram outlines the major pre-install steps for an airgap installation.
 
-![An architecture diagram outlining the five different install phases](/enterprise-version_air-gap-repo_overview-order-diagram.png)
+![An architecture diagram outlining the five different install phases](/enterprise-version_air-gap-repo_overview-order-diagram.webp)
 
 1. Download the airgap setup binary from the URL provided by the support team. The airgap setup binary is a
    self-extracting archive that contains the Palette platform manifests, images, and required packs. The airgap setup
@@ -55,13 +55,11 @@ following diagram outlines the major pre-install steps for an airgap installatio
 
 To get started with an airgap VerteX installation, check out the respective platform guide.
 
-- [Kubernetes Airgap Instructions](kubernetes-airgap-instructions.md)
+- [Kubernetes Airgap Instructions](../install-on-kubernetes/airgap-install/airgap-install.md)
 
-- [VMware vSphere Airgap Instructions](vmware-vsphere-airgap-instructions.md)
+- [VMware vSphere Airgap Instructions](../install-on-vmware/airgap-install/airgap-install.md)
 
-Each platform guide provides detailed instructions on how to complete the pre-install steps. We also recommend you
-review the [Checklist](checklist.md) to ensure you have completed all the required steps before deploying the airgap
-VerteX installation.
+Each platform guide provides detailed instructions on how to complete the pre-install steps.
 
 ## Supported Platforms
 
@@ -75,12 +73,6 @@ The following table outlines the supported platforms for an airgap VerteX instal
 | VMware vSphere | AWS ECR          | ✅            |
 
 ## Resources
-
-- [Kubernetes Airgap Instructions](kubernetes-airgap-instructions.md)
-
-- [VMware vSphere Airgap Instructions](vmware-vsphere-airgap-instructions.md)
-
-- [Checklist](checklist.md)
 
 - [Additional Packs](supplemental-packs.md)
 

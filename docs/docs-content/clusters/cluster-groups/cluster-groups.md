@@ -13,7 +13,7 @@ users to deploy Palette virtual clusters. Downstream consumers can use the clust
 [_App Mode_](../../introduction/palette-modes.md#what-is-app-mode).
 
 You can create a cluster group under the Palette [tenant](../../glossary-all.md#tenant) scope. Alternatively, you can
-create a cluster group at the [project](../../projects.md) scope.
+create a cluster group at the [project](../../tenant-settings/projects/projects.md) scope.
 
 By default, Palette exposes a managed cluster group called _beehive_ that is available for users in app mode. This
 cluster group is managed by Palette and falls under the free tier. The beehive cluster group is located in the eastern
@@ -32,7 +32,7 @@ type cannot be added to a cluster group configured for the endpoint type load ba
 
 :::
 
-![An example cluster group made up of various clusters](/clusters_cluster-groups_index-page.png)
+![An example cluster group made up of various clusters](/clusters_cluster-groups_index-page.webp)
 
 ## Get Started
 

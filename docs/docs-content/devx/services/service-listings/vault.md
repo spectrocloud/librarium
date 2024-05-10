@@ -7,7 +7,7 @@ type: "appTier"
 category: ["security"]
 hiddenFromNav: false
 sidebar_position: 40
-logoUrl: "https://icon-library.com/images/padlock-icon-png/padlock-icon-png-29.jpg"
+logoUrl: "/assets/icons/lock.svg"
 ---
 
 ## Vault
@@ -23,7 +23,7 @@ Vault also tracks who has accessed which secrets and when, making it easier to m
 govern access to secrets, automate application delivery, and consume secrets programmatically.
 
 Vault is deployed behind the scenes through the use of the
-[Bank-Vaults Vault Operator Helm Chart](https://github.com/banzaicloud/bank-vaults/tree/main/charts/vault-operator).
+[Bank-Vaults Vault Operator Helm Chart](https://github.com/bank-vaults/bank-vaults).
 
 <br />
 
@@ -131,8 +131,8 @@ You can validate the Vault instance deployed successfully by using the following
    kubectl port-forward $(kubectl get pods --selector app.kubernetes.io/name=vault --all-namespaces --output jsonpath='{.items[0].metadata.name}') 8200:8200 --namespace $VAULT_NAMESPACE
    ```
 
-10. Open your browser and visit [https://localhost:8200/ui](https://localhost:8200/ui) to access the Vault UI. You will
-    receive a warning due to the usage of a self-signed certificate but you can ignore this warning.
+10. Open your browser and visit `https://localhost:8200/ui` to access the Vault UI. You will receive a warning due to
+    the usage of a self-signed certificate but you can ignore this warning.
 
 To acquire the Vault root token, review the [Vault Credentials](#vault-credentials) section.
 
@@ -201,4 +201,4 @@ integrating Vault with your applications, check out the
 
 - [HashiCorp Vault Tutorial](https://developer.hashicorp.com/vault/tutorials)
 
-- [Bank-Vaults Vault Operator Helm Chart](https://github.com/banzaicloud/bank-vaults/tree/main/charts/vault-operator)
+- [Bank-Vaults Vault Operator Helm Chart](https://github.com/bank-vaults/vault-helm-chart)

@@ -207,15 +207,15 @@ height is 40 pixels. It is preferable that the image be transparent.
 1. Export the URL of your self-hosted Palette or VerteX instance and the cloud type as environment variables.
    Additionally, export the path to the YAML templates and logo file.
 
-```bash
-export ENDPOINT="https://palette.example.com"
-export CLOUD_TYPE="nutanix"
-export cloudLogo="/path/to/the/file/cloud-logo.png"
-export infraComponents="/path/to/the/file/infrastructure-components.yaml"
-export cloudClusterTemplate="/path/to/the/file/cloudClusterTemplate.yaml"
-export controlPlanePoolTemplate="/path/to/the/file/controlPlanePoolTemplate.yaml"
-export workerPoolTemplate="/path/to/the/file/workerPoolTemplate.yaml"
-```
+   ```bash
+   export ENDPOINT="https://palette.example.com"
+   export CLOUD_TYPE="nutanix"
+   export cloudLogo="/path/to/the/file/cloud-logo.png"
+   export infraComponents="/path/to/the/file/infrastructure-components.yaml"
+   export cloudClusterTemplate="/path/to/the/file/cloudClusterTemplate.yaml"
+   export controlPlanePoolTemplate="/path/to/the/file/controlPlanePoolTemplate.yaml"
+   export workerPoolTemplate="/path/to/the/file/workerPoolTemplate.yaml"
+   ```
 
 :::warning
 
