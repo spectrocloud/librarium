@@ -41,7 +41,7 @@ For learning purposes, you will set up Virtual Machines (VMs) as Edge hosts and 
 provide a more accessible Edge learning experience, as you do not require connecting to physical Edge devices. The
 diagram below shows the main steps to prepare Edge hosts and deploy a cluster.
 
-![An overarching diagram showing the tutorial workflow.](/tutorials/edge/clusters_edge_deploy-cluster_overarching.png)
+![An overarching diagram showing the tutorial workflow.](/tutorials/edge/clusters_edge_deploy-cluster_overarching.webp)
 
 ## Prerequisites
 
@@ -78,7 +78,7 @@ To complete this tutorial, you will need the following:
   - 8 GB memory
   - 50 GB storage
 
-- [Git](https://cli.github.com/manual/installation). Ensure git installation by issuing the `git --version` command.
+- [Git](https://git-scm.com/downloads). Ensure git installation by issuing the `git --version` command.
 
 - [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
   command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
@@ -95,7 +95,7 @@ To complete this tutorial, you will need the following:
   The screenshot below shows a sample registration token in the **Tenant Settings** > **Registration Tokens** section in
   Palette.
 
-  ![A screenshot of a registration token in Palette](/tutorials/edge/clusters_edge_deploy-cluster_registration-token.png)
+  ![A screenshot of a registration token in Palette](/tutorials/edge/clusters_edge_deploy-cluster_registration-token.webp)
 
 ## Build Edge Artifacts
 
@@ -504,8 +504,15 @@ is an explanation of the options and sub-command used below:
 - The `--volume ` option mounts a local directory to our official tutorials container,
   `ghcr.io/spectrocloud/tutorials:1.0.7`.
 
-- The `sh -c "cd edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command
-  changes to the container's **edge/vmware/packer/** directory and invokes `packer build` to create the VM template. The
+- The
+  `sh -c "source /edge/vmware/clone_vm_template/setenv.sh && bash /edge/vmware/clone_vm_template/delete-packer-cache.sh"`
+  shell sub-command deletes any pre-existing **packer_cache**. A known
+  [issue](https://github.com/hashicorp/packer-plugin-vsphere/issues/55) with the Packer vSphere plugin causes checksum
+  logic to ignore previous builds, and reuse previously created ISO found in the **packer_cache** folder. The delete
+  script removes any existing packer cache to prevent re-using a previously created ISO.
+
+- The `cd /edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command changes to
+  the container's **/edge/vmware/packer/** directory and invokes `packer build` to create the VM template. The
   `packer build` command has the following options:
 
   - The `-force` flag destroys any existing template.
@@ -740,7 +747,7 @@ Before deploying a cluster, you must verify Edge host registration status in Pal
 Open a web browser and log in to [Palette](https://console.spectrocloud.com). Navigate to the left **Main Menu** and
 select **Clusters**. Click on the **Edge Hosts** tab and verify the three VMs you created are registered with Palette.
 
-![A screenshot showing the VMs automatically registered with Palette. ](/tutorials/edge/clusters_edge_deploy-cluster_edge-hosts.png)
+![A screenshot showing the VMs automatically registered with Palette. ](/tutorials/edge/clusters_edge_deploy-cluster_edge-hosts.webp)
 
 If the three Edge hosts are not displayed in the **Edge hosts** tab, the automatic registration failed. If this happens,
 you can manually register hosts by clicking the **Add Edge Hosts** button and pasting the Edge host ID. Repeat this host
@@ -760,9 +767,7 @@ User Interface (UI) to deploy a cluster that is made up of the three Edge hosts 
 
 Validate you are in the **Default** project scope before creating a cluster profile.
 
-<br />
-
-![A screenshot of Palette's Default scope selected.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_default-scope.png)
+![A screenshot of Palette's Default scope selected.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_default-scope.webp)
 
 <br />
 
@@ -839,9 +844,7 @@ options:
 The screenshot below shows you how to reference your provider OS image in a cluster profile by using the utility build
 output with the BYOOS pack.
 
-<br />
-
-![A screenshot of k3s OS layer in a cluster profile.](/tutorials/edge/clusters_edge_deploy-cluster_edit-profile.png)
+![A screenshot of k3s OS layer in a cluster profile.](/tutorials/edge/clusters_edge_deploy-cluster_edit-profile.webp)
 
 :::warning
 
@@ -877,7 +880,7 @@ infrastructure profile as a layered diagram.
 Finally, click on the **Add Manifest** button to add the
 [Hello Universe](https://github.com/spectrocloud/hello-universe#readme) application manifest.
 
-![A screenshot of the add Manifest button.](/tutorials/edge/clusters_edge_deploy-cluster_add-manifest.png)
+![A screenshot of the add Manifest button.](/tutorials/edge/clusters_edge_deploy-cluster_add-manifest.webp)
 
 Use the following values to add the Hello Universe manifest metadata.
 
@@ -932,7 +935,7 @@ spec:
 The screenshot below shows the manifest pasted into the text editor. Click on the **Confirm & Create** button to finish
 adding the manifest.
 
-![A screenshot of Hello Universe application manifest.](/tutorials/edge/clusters_edge_deploy-cluster_add-manifest-file.png)
+![A screenshot of Hello Universe application manifest.](/tutorials/edge/clusters_edge_deploy-cluster_add-manifest-file.webp)
 
 If there are no errors or compatibility issues, Palette displays the newly created full cluster profile for review.
 Verify the layers you added, and click on the **Next** button.
@@ -948,9 +951,7 @@ Review all layers and click **Finish Configuration** to create the cluster profi
 Click on the newly created cluster profile to view its details page. Click the **Deploy** button to deploy a new Edge
 cluster.
 
-<br />
-
-![Screenshot of the Profile Layers success.](/tutorials/edge/clusters_edge_deploy-cluster_profile-success.png)
+![Screenshot of the Profile Layers success.](/tutorials/edge/clusters_edge_deploy-cluster_profile-success.webp)
 
 The cluster deployment wizard displays the following sections.
 
@@ -997,22 +998,22 @@ Click **Next** to continue.
 ### Nodes configuration
 
 In this section, you will use the Edge hosts to create the cluster nodes. Use one of the Edge hosts as the control plane
-node and the remaining two as worker nodes. In this example, the control plane node is called the master pool, and the
-set of worker nodes is the worker pool.
+node and the remaining two as worker nodes. In this example, the control plane node is called the control plane pool,
+and the set of worker nodes is the worker pool.
 
-Provide the following details for the master pool.
+Provide the following details for the control plane pool.
 
-| **Field**                                           | **Value for the master-pool**                                                                                        |
+| **Field**                                           | **Value for the control-plane-pool**                                                                                 |
 | --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Node pool name                                      | master-pool                                                                                                          |
+| Node pool name                                      | control-plane-pool                                                                                                   |
 | Allow worker capability                             | Checked                                                                                                              |
 | Additional Labels (Optional)                        | None                                                                                                                 |
 | [Taints](../../cluster-management/taints.md#taints) | Off                                                                                                                  |
 | Pool Configuration > Edge Hosts                     | Choose one of the registered Edge hosts.<br />Palette will automatically display the Nic Name for the selected host. |
 
-The screenshot below shows an Edge host added to the master pool.
+The screenshot below shows an Edge host added to the control plane pool.
 
-![Screenshot of an Edge host added to the master pool.](/tutorials/edge/clusters_edge_deploy-cluster_add-master-node.png)
+![Screenshot of an Edge host added to the control plane pool.](/tutorials/edge/clusters_edge_deploy-cluster_add-master-node.webp)
 
 Similarly, provide details for the worker pool, and add the remaining two Edge hosts to the worker pool.
 
@@ -1025,7 +1026,7 @@ Similarly, provide details for the worker pool, and add the remaining two Edge h
 
 The screenshot below shows two Edge hosts added to the worker pool.
 
-![Screenshot of Edge hosts added to the worker pool.](/tutorials/edge/clusters_edge_deploy-cluster_add-worker-node.png)
+![Screenshot of Edge hosts added to the worker pool.](/tutorials/edge/clusters_edge_deploy-cluster_add-worker-node.webp)
 
 Click **Next** to continue.
 
@@ -1061,7 +1062,7 @@ on the port number to access the application.
 
 The screenshot below highlights the NodePort to access the application.
 
-![Screenshot of highlighted NodePort to access the application.](/tutorials/edge/clusters_edge_deploy-cluster_access-service.png)
+![Screenshot of highlighted NodePort to access the application.](/tutorials/edge/clusters_edge_deploy-cluster_access-service.webp)
 
 Clicking on the exposed NodePort displays the Hello Universe application.
 
@@ -1074,7 +1075,7 @@ public NodePort URL. This prevents the browser from caching an unresolved DNS re
 
 :::
 
-![Screenshot of successfully accessing the Hello Universe application.](/tutorials/edge/clusters_edge_deploy-cluster_hello-universe.png)
+![Screenshot of successfully accessing the Hello Universe application.](/tutorials/edge/clusters_edge_deploy-cluster_hello-universe.webp)
 
 You have successfully provisioned an Edge cluster and deployed the Hello Universe application on it.
 
@@ -1092,7 +1093,7 @@ hosts.
 In Palette, display the cluster details page. Click on the **Settings** button to expand the **drop-down Menu**, and
 select the **Delete Cluster** option, as shown in the screenshot below.
 
-![Screenshot of deleting a cluster.](/tutorials/edge/clusters_edge_deploy-cluster_delete-cluster.png)
+![Screenshot of deleting a cluster.](/tutorials/edge/clusters_edge_deploy-cluster_delete-cluster.webp)
 
 Palette prompts you to enter the cluster name and confirm the delete action. Type the cluster name to delete the
 cluster. The cluster status changes to **Deleting**. Deletion takes up to 10 minutes.
@@ -1100,7 +1101,7 @@ cluster. The cluster status changes to **Deleting**. Deletion takes up to 10 min
 After you delete the cluster, click **Profiles** on the left **Main Menu**, and select the profile to delete. Choose the
 **Delete** option in the **three-dot Menu**, as shown in the screenshot below.
 
-![Screenshot of deleting a cluster profile.](/tutorials/edge/clusters_edge_deploy-cluster_delete-profile.png)
+![Screenshot of deleting a cluster profile.](/tutorials/edge/clusters_edge_deploy-cluster_delete-profile.webp)
 
 Wait for Palette to successfully delete the resources.
 

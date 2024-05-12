@@ -58,7 +58,7 @@ profiles, check out [Version a Cluster Profile](version-cluster-profile.md).
 
 3. Check that profile details display your changes.
 
-To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-updates-to-clusters).
+To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-profile-updates-to-clusters).
 
 ## Update a Profile Layer
 
@@ -110,7 +110,7 @@ To learn how to apply the changes, review [Apply Profile Updates to Clusters](#a
 5. If you added, removed, or modified a manifest, click the layer in the stack that you updated and verify the manifest
    changes.
 
-To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-updates-to-clusters).
+To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-profile-updates-to-clusters).
 
 ## Update the Pack Version
 
@@ -157,14 +157,14 @@ Ensure you follow these practices when updating to a new pack version.
 
      #### Example of Difference Between Current and New Configurations
 
-     ![Screenshot that shows Palette's pack diff user interface with red highlight at left and green highlight at right](/integrations_pack_diffs.png)
+     ![Screenshot that shows Palette's pack diff user interface with red highlight at left and green highlight at right](/integrations_pack_diffs.webp)
 
    - _Contrasting shades_ of red and green highlight within the same line indicates differences occur in only part of
      the line.
 
      #### Example of Line Changes in Current and New Configurations
 
-     ![Screenshot that shows Palette's pack diff user interface with contrasting shades of red and green highlight in the same line](/integrations_pack_line_diffs.png)
+     ![Screenshot that shows Palette's pack diff user interface with contrasting shades of red and green highlight in the same line](/integrations_pack_line_diffs.webp)
 
 6. Check for red-highlight in the configuration that is missing in the new configuration.
 
@@ -183,7 +183,7 @@ Ensure you follow these practices when updating to a new pack version.
 
 10. Confirm your updates.
 
-To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-updates-to-clusters).
+To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-profile-updates-to-clusters).
 
 ### Validate
 

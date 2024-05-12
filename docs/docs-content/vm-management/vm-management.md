@@ -15,7 +15,7 @@ applications. This solution allows organizations to onboard, deploy, manage, and
 their containerized applications. Palette VM Orchestrator simplifies managing infrastructure, improves resource
 utilization, and removes the cost of having a hypervisor.
 
-![A drawing of VMs deployed to Palette](/docs_vm-mangement_vmo-diagram.png)
+![A drawing of VMs deployed to Palette](/docs_vm-mangement_vmo-diagram.webp)
 
 ## Use Cases
 
@@ -34,7 +34,7 @@ Palette Virtual Machine Orchestrator requires the following:
 
 - For data centers, production VMs are supported on bare metal Kubernetes clusters deployed on Canonical MAAS. To learn
   how to configure MAAS and create MAAS clusters in Palette, refer to the
-  [Install and Manage MAAS Gateway](../clusters/data-center/maas/install-manage-maas-pcg.md) guide.
+  [Deploy to MAAS](../clusters/data-center/maas/create-manage-maas-clusters.md) guide.
 
 - To use VMO on Edge, contact our support team by sending an email to
   [support@spectrocloud.com](mailto:support@spectrocloud.com)
@@ -66,7 +66,7 @@ organization's templates. To learn more about using and creating templates, revi
 
 ## Feature Gates
 
-Palette VM Orchestrator utilizes open-source KubeVirt as a component of the **Virtual Machnine Orchestrator** pack to
+Palette VM Orchestrator utilizes open-source KubeVirt as a component of the **Virtual Machine Orchestrator** pack to
 manage VMs and enables the following KubeVirt feature gates by default:
 
 - LiveMigration

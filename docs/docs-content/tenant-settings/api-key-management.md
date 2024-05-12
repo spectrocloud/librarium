@@ -11,22 +11,22 @@ tags: ["tenant-administration", "authentication", "api-key"]
 You can manage API keys for your Palette tenant. API keys are used to authenticate API requests to Palette. You can
 create, edit, revoke, and delete API keys for your tenant.
 
-Unlike regular user accounts, tenant administrators can view all API keys created for the tenant. Non-tenant users are
-limited to actions for their own API keys.
+Unlike user accounts, tenant administrators can view all API keys created for the tenant. Users are limited to actions
+for their own API keys.
 
 The following table describes the API key management tasks you can perform as a tenant administrator, and how they
-differ from non-tenant users.
+differ from users.
 
-| **Action**          | **Description**                                   | **Tenant Admin** | **Non-tenant User** |
-| ------------------- | ------------------------------------------------- | ---------------- | ------------------- |
-| **List**            | List all API keys in the tenant.                  | ✅               | ❌                  |
-| **Create**          | Create a new API key.                             | ✅               | ✅                  |
-| **Create for User** | Create a new API key for a different user.        | ✅               | ❌                  |
-| **Edit**            | Edit an existing API key.                         | ✅               | ✅                  |
-| **Revoke**          | Revoke an existing API key.                       | ✅               | ✅                  |
-| **Delete**          | Delete an existing API key.                       | ✅               | ✅                  |
-| **Reassign**        | Reassign an existing API key to a different user. | ❌               | ❌                  |
-| **View**            | View the sensitive API key value.                 | ❌               | ❌                  |
+| **Action**          | **Description**                                   | **Tenant Admin** | **User** |
+| ------------------- | ------------------------------------------------- | ---------------- | -------- |
+| **List**            | List all API keys in the tenant.                  | ✅               | ❌       |
+| **Create**          | Create a new API key.                             | ✅               | ✅       |
+| **Create for User** | Create a new API key for a different user.        | ✅               | ❌       |
+| **Edit**            | Edit an existing API key.                         | ✅               | ✅       |
+| **Revoke**          | Revoke an existing API key.                       | ✅               | ✅       |
+| **Delete**          | Delete an existing API key.                       | ✅               | ✅       |
+| **Reassign**        | Reassign an existing API key to a different user. | ❌               | ❌       |
+| **View**            | View the sensitive API key value.                 | ❌               | ❌       |
 
 :::warning
 

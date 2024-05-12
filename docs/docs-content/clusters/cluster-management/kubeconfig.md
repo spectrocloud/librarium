@@ -38,7 +38,7 @@ Palette exposes two kubeconfig files for each cluster deployed through Palette.
   [Kubeconfig Access Permissions](#kubeconfig-access-permissions) section to learn more about access permissions for the
   admin kubeconfig file.
 
-![The cluster details page with the two Kubeconfig files elements highlighted](/clusters_cluster--management_kubeconfig_cluster-details-kubeconfig-files.png)
+![The cluster details page with the two Kubeconfig files elements highlighted](/clusters_cluster--management_kubeconfig_cluster-details-kubeconfig-files.webp)
 
 ## Kubeconfig Access Permissions
 
@@ -50,10 +50,10 @@ Your assigned [Palette permissions](../../user-management/palette-rbac/project-s
 which clusters you can access and what operations you can perform on the cluster. The permissions assigned to you in
 Palette determine if you can download and access the kubeconfig files for a cluster.
 
-As a rule of thumb, users with the Palette role
-[_Cluster Admin_](../../user-management/palette-rbac/project-scope-roles-permissions#cluster) can access both kubeconfig
-files for all clusters in the project. Users with lower-level project roles such as the _Cluster Editor_ or the _Cluster
-Viewer_ may not be able to access the kubeconfig file of the cluster.
+As a rule, users with the Palette role
+[_Cluster Admin_](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster) can access the admin
+kubeconfig files for all clusters in the project. Users with lower-level project roles such as the _Cluster Editor_ or
+the _Cluster Viewer_ may not be able to access the kubeconfig file of the cluster.
 
 :::info
 
@@ -62,7 +62,7 @@ Palette has its own RBAC system that is separate from the
 permissions assigned to you in Palette determine what operations you can perform on the cluster. The permissions
 assigned to you in the host cluster through the Kubernetes RBAC system determine what operations you can perform inside
 the cluster and on its resources. Refer to the
-[Palette Roles and Kubernetes Roles](cluster-rbac#palette-roles-and-kubernetes-roles) for additional information.
+[Palette Roles and Kubernetes Roles](cluster-rbac.md#palette-roles-and-kubernetes-roles) for additional information.
 
 :::
 
@@ -97,6 +97,7 @@ the resource key _cluster_ to access both kubeconfig files for a cluster.
 | Yes                     | Yes                           | ✅                            | ✅                                  |
 | No                      | Yes                           | ✅                            | ✅                                  |
 | Yes                     | No                            | ✅                            | ✅                                  |
+| No                      | No                            | ❌                            | ✅                                  |
 
 ### Non-Cluster Admin
 
@@ -112,6 +113,7 @@ enabled and the Spectro Proxy disabled, the kubeconfig file is available.
 | Yes                     | Yes                           | ✅                            | ❌                                  |
 | No                      | Yes                           | ❌                            | ❌                                  |
 | Yes                     | No                            | ✅                            | ❌                                  |
+| No                      | No                            | ❌                            | ❌                                  |
 
 ## API Access
 

@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Helm Chart Install Reference"
-title: "Helm Chart Install References"
+sidebar_label: "Helm Configuration Reference"
+title: "Helm Chart Configuration Reference"
 description: "Reference for Palette Helm Chart installation parameters."
 icon: ""
 hide_table_of_contents: false
@@ -12,8 +12,6 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
 The Helm chart allows you to customize values in the **values.yaml** file. This reference lists and describes parameters
 available in the **values.yaml** file from the Helm Chart for your installation. To learn how to install Palette using
 the Helm Chart, refer to the [Palette Helm install](install.md) guide.
-
-<br />
 
 ### Required Parameters
 
@@ -34,7 +32,7 @@ information, refer to the [Image Swap Configuration](#image-swap-configuration) 
 
 ### MongoDB
 
-Palette uses MongoDB Enterprise as its internal database and supports two modes of deployment: <br /> <br />
+Palette uses MongoDB Enterprise as its internal database and supports two modes of deployment:
 
 - MongoDB Enterprise deployed and active inside the cluster.
 
@@ -157,8 +155,6 @@ config:
     rootDomain: ""
 ```
 
-<br />
-
 :::warning
 
 As you create tenants in Palette, the tenant name is prefixed to the domain name you assigned to Palette. For example,
@@ -188,8 +184,6 @@ Palette requires credentials to access the required Palette images. You can conf
 Palette to download the required images. You must configure at least one Open Container Initiative (OCI) registry for
 Palette. You must also provide the credentials for the Spectro Cloud Artifact Repository (SCAR) to download the required
 FIPS images.
-
-<br />
 
 #### OCI Registry
 
@@ -289,8 +283,6 @@ SCAR credentials are required to download the necessary FIPS manifests. Our supp
 | `scar.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the SCAR connection. | Boolean  | `false`           |
 | `scar.caCert`             | The base64-encoded certificate authority (CA) certificate for SCAR.                            | String   | `""`              |
 
-<br />
-
 ```yaml
 config:
   scar:
@@ -313,8 +305,6 @@ option, otherwise, Palette will ignore the configuration.
 | `imageSwapImage`               | The image swap image.                                                                                                   | String   | `gcr.io/spectro-images-public/thewebroot/imageswap:v1.5.2`      |
 | `imageSwapConfig`              | The image swap configuration for specific environments.                                                                 | String   | `""`                                                            |
 | `imageSwapConfig.isEKSCluster` | Specifies whether the cluster is an Amazon EKS cluster. Set to `false` if the Kubernetes cluster is not an EKS cluster. | Boolean  | `true`                                                          |
-
-<br />
 
 ```yaml
 config:
@@ -340,8 +330,6 @@ and is not required for most deployments. Speak with your support representative
 | `nats.natsUrl`      | The NATS URL. This can be a comma separated list of \<dns_name:port> mappings for the NATS load balancer service. For example, "message1.dev.spectrocloud.com:4222,message2.dev.spectrocloud.com:4222". This parameter is mandatory if `nats.internal` is set to `false`. If `nats.internal` is set to `true`, you can leave this parameter empty. | String   | `""`              |
 | `nats.annotations`  | A map of key-value pairs that specifies load balancer annotations for NATS. You can use annotations to change the behavior of the load balancer and the Nginx configuration. This is an advanced setting. We recommend you consult with your assigned support team representative prior to modification.                                           | Object   | `{}`              |
 | `nats.natsStaticIP` | Specify a static IP address for the NATS load balancer service. If empty, a dynamic IP address will be assigned to the load balancer.                                                                                                                                                                                                              | String   | `""`              |
-
-<br />
 
 ```yaml
 nats:

@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["operating system", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/ubuntu-vsphere/blobs/sha256:09a727f9005b79c69d8e60e12ce130880c63131315b49e7fb4cc44e53d34dc7a?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/ubuntu-vsphere/blobs/sha256:09a727f9005b79c69d8e60e12ce130880c63131315b49e7fb4cc44e53d34dc7a?type=image.webp"
 tags: ["packs", "ubuntu", "operating system"]
 ---
 
@@ -163,7 +163,7 @@ kubeadmconfig:
     - 'echo "====> Applying kernel parameters for Kubelet"'
     - "sysctl -p /etc/sysctl.d/90-kubelet.conf"
   postKubeadmCommands:
-    # Apply the privileged PodSecurityPolicy on the first master node ; Otherwise, CNI (and other) pods won't come up
+    # Apply the privileged PodSecurityPolicy on the first control plane node ; Otherwise, CNI (and other) pods won't come up
     - "export KUBECONFIG=/etc/kubernetes/admin.conf"
     # Sometimes api server takes a little longer to respond. Retry if applying the pod-security-policy manifest fails
     - '[ -f "$KUBECONFIG" ] && { echo " ====> Applying PodSecurityPolicy" ; until $(kubectl apply -f
@@ -325,7 +325,7 @@ Use the following steps to enable Ubuntu Pro.
 
 <br />
 
-![A view of the cluster profile creation wizard for Ubuntu Pro](/integrations_ubuntu_ubuntu-pro-preset-drawer.png)
+![A view of the cluster profile creation wizard for Ubuntu Pro](/integrations_ubuntu_ubuntu-pro-preset-drawer.webp)
 
 8. Click the **Ubuntu Advantage/Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
 
@@ -466,7 +466,7 @@ kubeadmconfig:
     - 'echo "====> Applying kernel parameters for Kubelet"'
     - "sysctl -p /etc/sysctl.d/90-kubelet.conf"
   postKubeadmCommands:
-    # Apply the privileged PodSecurityPolicy on the first master node ; Otherwise, CNI (and other) pods won't come up
+    # Apply the privileged PodSecurityPolicy on the first control plane node ; Otherwise, CNI (and other) pods won't come up
     - "export KUBECONFIG=/etc/kubernetes/admin.conf"
     # Sometimes api server takes a little longer to respond. Retry if applying the pod-security-policy manifest fails
     - '[ -f "$KUBECONFIG" ] && { echo " ====> Applying PodSecurityPolicy" ; until $(kubectl apply -f
@@ -634,7 +634,7 @@ Use the following steps to enable Ubuntu Pro.
 
 <br />
 
-![A view of the cluster profile creation wizard for Ubuntu Pro](/integrations_ubuntu_ubuntu-pro-preset-drawer.png)
+![A view of the cluster profile creation wizard for Ubuntu Pro](/integrations_ubuntu_ubuntu-pro-preset-drawer.webp)
 
 8. Click the **Ubuntu Advantage/Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
 
@@ -719,22 +719,6 @@ data "spectrocloud_registry" "public_registry" {
 
 data "spectrocloud_pack_simple" "ubuntu" {
   name    = "ubuntu-openstack"
-  version = "22.04"
-  type = "helm"
-  registry_uid = data.spectrocloud_registry.public_registry.id
-}
-```
-
-</TabItem>
-<TabItem label="Cox Edge" value="cox-edge">
-
-```hcl
-data "spectrocloud_registry" "public_registry" {
-  name = "Public Repo"
-}
-
-data "spectrocloud_pack_simple" "ubuntu" {
-  name    = "ubuntu-coxedge"
   version = "22.04"
   type = "helm"
   registry_uid = data.spectrocloud_registry.public_registry.id

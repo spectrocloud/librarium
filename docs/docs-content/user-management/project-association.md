@@ -27,7 +27,8 @@ To associate a user or team with a project, use the following steps.
 
 - Tenant Admin access.
 
-- An available project. Check out the [Create a Project](../projects.md) guide to learn how to create a project.
+- An available project. Check out the [Create a Project](../tenant-settings/projects/create-manage-projects.md) guide to
+  learn how to create a project.
 
 - A user or a team.
 

@@ -14,6 +14,8 @@ repository access.
 
 ## Resources
 
-- [Install on VMware](install.md)
+- [Non-Airgap Install on VMware](install.md)
+
+- [Airgap Installation](./airgap-install/airgap-install.md)
 
 - [VMware System Requirements](vmware-system-requirements.md)

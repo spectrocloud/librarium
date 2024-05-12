@@ -12,7 +12,7 @@ create a Kubernetes cluster in MAAS that is managed by Palette.
 ## Prerequisites
 
 - An installed PCG if you do not have a direct connection to the MAAS environment. Review
-  [Install and Manage MAAS Gateway](install-manage-maas-pcg.md) for guidance.
+  [Deploy to MAAS](../../pcg/deploy-pcg/maas.md) for guidance.
 
   If are self-hosting Palette and have a direct connection to the MAAS environment, you can select **Use System Private
   Gateway**. To learn more about when you would use Palette's PCG or the System Private Gateway, refer to the
@@ -52,11 +52,11 @@ To deploy a new MAAS cluster:
 
 9. Select a domain from the **Domain drop-down Menu** and click **Next**.
 
-10. Configure the master and worker node pools. The following input fields apply to MAAS master and worker node pools.
-    For a description of input fields that are common across target platforms refer to the
+10. Configure the control plane and worker node pools. The following input fields apply to MAAS control plane and worker
+    node pools. For a description of input fields that are common across target platforms refer to the
     [Node Pools](../../cluster-management/node-pool.md) management page. Click **Next** when you are done.
 
-    #### Master Pool configuration
+    #### Control Plane Pool configuration
 
     - Cloud configuration:
 

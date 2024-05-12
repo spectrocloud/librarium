@@ -102,6 +102,9 @@ cloud account.
   [Troubleshooting key access](https://docs.aws.amazon.com/kms/latest/developerguide/policy-evaluation.html) guide to
   learn more about common KMS issues.
 
+- If you are using a custom Certificate Authority (CA) for SSL/TLS connections, provide the x509 certificate in
+  Privacy-Enhanced Mail (PEM) format to Palette.
+
   :::tip
 
   Use the IAM Policy Simulator to verify the IAM role has the necessary permissions to access a customer managed KMS
@@ -122,7 +125,7 @@ cloud account.
 3. Click on the **Add New Backup Location** button. Palette will open a wizard to configure the new backup location, as
    highlighted in the screenshot below.
 
-   ![A screenshot highlighting the wizard and configuration fields to add a backup location in Palette.](/clusters_cluster-management_backup-restore_add_aws_account.png)
+   ![A screenshot highlighting the wizard and configuration fields to add a backup location in Palette.](/clusters_cluster-management_backup-restore_add_aws_account.webp)
 
 4. Fill out the input fields listed in the table.
 
@@ -130,7 +133,7 @@ cloud account.
    | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Location Name**       | Provide a name of your choice.                                                                                                                                                                                                                                                                |
    | **Location Provider**   | Select AWS from the **drop-down** Menu.                                                                                                                                                                                                                                                       |
-   | **Certificate**         | Optional service provider x509 certificate.                                                                                                                                                                                                                                                   |
+   | **Certificate**         | Provide the CA bundle in PEM format if you are using a custom certificate bundle to establish SSL/TLS sessions.                                                                                                                                                                               |
    | **S3 Bucket**           | The name of the S3 bucket you created in the object store. The bucket name must be DNS-compliant. For more information, refer to the [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) defined by AWS.                                      |
    | **Region**              | Region where the S3 bucket is hosted. You can check region codes in the [Service endpoints](https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_region) section in the AWS documentation.                                                                                                |
    | **S3 URL**              | Optional S3 URL. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL and enable the **Force S3 path style** checkbox. |
@@ -156,13 +159,13 @@ cloud account.
 
 <br />
 
-![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.png)
+![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
 
 7. Review the details of the newly created IAM role.
 
 <br />
 
-![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.png)
+![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.webp)
 
 8. Copy the IAM role Amazon Resource Name (ARN)
 
@@ -200,7 +203,7 @@ but the Palette instance is hosted in _AWS Account C_. In this scenario, Palette
 authentication method to add a backup location. The diagram below presents this scenario and shows the order of
 authentication you must follow.
 
-![A diagram highlighting the order of authentication required when the backup cloud account differs from the cluster deployment cloud account.](/clusters_cluster-management_backup-restore_separate-cloud-accounts.png)
+![A diagram highlighting the order of authentication required when the backup cloud account differs from the cluster deployment cloud account.](/clusters_cluster-management_backup-restore_separate-cloud-accounts.webp)
 
 A multi-cloud account scenario requires you to perform the following authentication steps.
 
@@ -230,6 +233,9 @@ multiple cloud accounts.
   This is the AWS account where you want to create the backup location.
 
 - An S3 bucket in AWS Account B. The bucket will store the backup of your clusters or workspaces.
+
+- If you are using a custom Certificate Authority (CA) for SSL/TLS connections, provide the x509 certificate in
+  Privacy-Enhanced Mail (PEM) format to Palette.
 
 - The following IAM policy must be created in your AWS Account B. Replace the `BUCKET-NAME` placeholder in the policy
   below with your bucket name. Refer to the
@@ -285,7 +291,7 @@ multiple cloud accounts.
 3. Click on the **Add New Backup Location** button. Palette will open a wizard to configure the new backup location, as
    shown in the screenshot below.
 
-   ![A screenshot highlighting the wizard and configuration fields to add a backup location in Palette.](/clusters_cluster-management_backup-restore_add_aws_account.png)
+   ![A screenshot highlighting the wizard and configuration fields to add a backup location in Palette.](/clusters_cluster-management_backup-restore_add_aws_account.webp)
 
 4. Fill out the input fields listed in the table below.
 
@@ -321,13 +327,13 @@ multiple cloud accounts.
 
 <br />
 
-![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.png)
+![A view of the IAM Role creation screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role.webp)
 
 7. Review the details of the newly created IAM role in AWS Account B.
 
 <br />
 
-![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.png)
+![A view of the IAM Role creation summary screen](/clusters_cluster-management_backup_restore_add-backup-location-dynamic_aws_create_role_summary.webp)
 
 8. In the IAM role's **Trust relationships** section, a relationship will already be defined for Palette so that Palette
    can assume this role under specified conditions.

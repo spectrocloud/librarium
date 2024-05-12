@@ -67,7 +67,9 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 | **Region**  | Choose the desired GCP region in which to deploy the cluster. |
 
 11. The Node configuration page is where you can specify the availability zones (AZ), instance types, disk size, and the
-    number of nodes. Configure the worker node pool.
+    number of nodes. Configure the worker node pool. The minimum number of CPUs and amount of memory depend on your
+    cluster profile, but in general you need at least 4 CPUs and 4 GB of memory both in the control plane pool and
+    across all worker pools.
 
 <br />
 
@@ -86,11 +88,11 @@ another worker pool with instance type g2-standard-4 to run GPU workloads.
 13. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following
     parameters.
 
-    | **Parameter** | **Description**                                                                                                                                                 |
-    | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Key**       | Custom key for the taint.                                                                                                                                       |
-    | **Value**     | Custom value for the taint key.                                                                                                                                 |
-    | **Effect**    | Choose the preferred pod scheduling effect from the **drop-down Menu**. Review the [Effect Table](create-gcp-iaas-cluster#effect-table) below for more details. |
+    | **Parameter** | **Description**                                                                                                                          |
+    | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Key**       | Custom key for the taint.                                                                                                                |
+    | **Value**     | Custom value for the taint key.                                                                                                          |
+    | **Effect**    | Choose the preferred pod scheduling effect from the **drop-down Menu**. Review the [Effect Table](#effect-table) below for more details. |
 
     #### Effect Table
 

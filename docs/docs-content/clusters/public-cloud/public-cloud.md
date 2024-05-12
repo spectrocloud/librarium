@@ -28,8 +28,6 @@ The following pages provide detailed instructions for setting up new workload cl
 
 - [Azure](azure/azure.md)
 
-- [Cox Edge](cox-edge/cox-edge.md)
-
 - [Google Cloud](gcp/gcp.md)
 
 - [Tencent](tke.md)

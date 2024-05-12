@@ -22,10 +22,16 @@ To learn more about the permissions and privileges available to the tenant role,
 
 :::
 
+## Projects
+
+A **Project** helps you organize the clusters and cluster resources in a logical grouping. The resources that are
+created within a project are scoped to that project and not available to other projects. You can also assign users and
+teams with specific roles to specific projects. Check out the [Projects](./projects/projects.md) page to learn more.
+
 Use the following resources to become familiar with the available tenant settings and how to change the tenant settings.
 
 ## Resources
 
 - [Login Banner](login-banner.md)
 
-<br />
+- [Projects](./projects/projects.md)

@@ -60,7 +60,12 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
 10. Fill out the following parameters and click on **Next** when you are done.
 
-<br />
+| **Parameter**        | **Description**                                                                                                                                                                             |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Project**          | The project to which the cluster belongs.                                                                                                                                                   |
+| **Region**           | Choose the desired GCP region to deploy the cluster.                                                                                                                                        |
+| **SSH Key**          | Choose the desired SSH key. Refer to the [SSH Keys](../../cluster-management/ssh-keys.md) guide to learn how to create an SSH key and upload the public key to Palette.                     |
+| **Static Placement** | Check the **Static Placement** box to deploy resources into a pre-existing VPC. Review the [Static Placement](#static-placement) table below to learn more about the required input fields. |
 
 | Parameter            | Description                                                                                                                                                                                                           |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -78,8 +83,9 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 | **Worker Network**: Select the worker network from the **drop-down Menu**.              |
 
 11. The Node configuration page is where you can specify the availability zones (AZ), instance types, disk size, and the
-    number of nodes. Configure the master and worker node pools. A master and a worker node pool are configured by
-    default.
+    number of nodes. Configure the control plane and worker node pools. A control plane and a worker node pool are
+    configured by default. The minimum number of CPUs and amount of memory depend on your cluster profile, but in
+    general you need at least 4 CPUs and 4 GB of memory both in the control plane pool and across all worker pools.
 
 <br />
 
@@ -98,11 +104,11 @@ another worker pool with instance type g2-standard-4 to leverage GPU workloads.
 13. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following
     parameters.
 
-    | **Parameter** | **Description**                                                                                                                                             |
-    | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Key**       | Custom key for the taint.                                                                                                                                   |
-    | **Value**     | Custom value for the taint key.                                                                                                                             |
-    | **Effect**    | Choose the preferred pod scheduling effect from the drop-down Menu. Review the [Effect Table](create-gcp-iaas-cluster#effect-table) below for more details. |
+    | **Parameter** | **Description**                                                                                                                      |
+    | ------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Key**       | Custom key for the taint.                                                                                                            |
+    | **Value**     | Custom value for the taint key.                                                                                                      |
+    | **Effect**    | Choose the preferred pod scheduling effect from the drop-down Menu. Review the [Effect Table](#effect-table) below for more details. |
 
     #### Effect Table
 

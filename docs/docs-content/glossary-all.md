@@ -81,7 +81,7 @@ Monitoring (Prometheus), Security (Twistlock) pre-installed.
 
 The diagram below shows an example of a cluster profile:
 
-![cluster_profile_new](/cluster_profile_new.png)
+![cluster_profile_new](/cluster_profile_new.webp)
 
 For more information, check out [Cluster Profiles](profiles/cluster-profiles/cluster-profiles.md).
 
@@ -117,6 +117,17 @@ chart registry on to Kubernetes clusters.
 ## Host Cluster
 
 A Kubernetes cluster that is managed by Palette. A host cluster may contain several Palette Virtual Clusters.
+
+## Kilo-Core-Hours (kCh)
+
+kCh, short for kilo-core-hours, represents a unit of computational time. This value is a product of the cluster node
+count, the number of CPUs per node, and the duration of time these nodes are in use. To improve readability, we divide
+the product by 1000.
+
+For instance, if you deploy a single-node cluster with 16 CPU cores for 24 hours, you will use about 0.39 kCh.
+Alternatively, if you deploy a three-node cluster that has 16 CPUs per node for 24 hours, you will use about 1.2 kCh.
+
+For more information, refer to the [Resource Usage Calculation](./introduction/resource-usage-estimation.md) page.
 
 ## Management Clusters
 
@@ -282,7 +293,7 @@ which users can bring up in their environment using Palette's pack registry soft
 
 Projects provide a way for grouping clusters together for logical separation. Role-based access controls within Palette
 are applied at the project level. [Users](#user) and [teams](#team) can be assigned one or more [roles](#role) within a
-project for granular control over [permissions](#permission) within the project scope.
+project for granular control over [permissions](#permissions) within the project scope.
 
 ## Public Pack Registry
 
@@ -299,7 +310,7 @@ pool. The process is fully automated and does not require manual intervention.
 
 ## Role
 
-A Role is a collection of [permissions](#permission). There are two kinds of roles in Palette: _tenant roles_ and
+A Role is a collection of [permissions](#permissions). There are two kinds of roles in Palette: _tenant roles_ and
 _project roles_. _Tenant roles_ are a collection of tenant-level permissions such as create a new user, add a new
 project, etc. _Project roles_ consist of permissions for various actions within the scope of a project such as create a
 cluster profile, create a cluster, etc.
@@ -328,7 +339,7 @@ it.Initial login:admin/admin.
 
 A Team is a group of [users](#user). Users can be part of one or more teams. Teams provide a convenient way to control
 platform access for a group of users. [Roles](#role) assigned to a team grant associated tenant or [project](#project)
-[permissions](#permission) to all users that are part of the team.
+[permissions](#permissions) to all users that are part of the team.
 
 ## Tenant
 
@@ -358,11 +369,11 @@ your cluster.
 
 ## Workload Cluster
 
-Workload / Tenant / Application Clusters are a collection of master and worker nodes that cooperate to execute container
-application workloads. Kubernetes clusters provisioned by users are referred to as Workload Clusters. These clusters are
-created within [projects](#project) and they are provisioned and managed in the user's cloud environment. Each cluster
-is provisioned from a [Cluster Profile](#cluster-profile) with additional configuration overrides and cloud-specific
-settings.
+Workload / Tenant / Application Clusters are a collection of control plane and worker nodes that cooperate to execute
+container application workloads. Kubernetes clusters provisioned by users are referred to as Workload Clusters. These
+clusters are created within [projects](#project) and they are provisioned and managed in the user's cloud environment.
+Each cluster is provisioned from a [Cluster Profile](#cluster-profile) with additional configuration overrides and
+cloud-specific settings.
 
 ## Workspace
 

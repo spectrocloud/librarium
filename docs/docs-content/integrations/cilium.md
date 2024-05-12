@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["network", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.dev.spectrocloud.com/v1/cni-cilium/blobs/sha256:dbc239ac739ea2939ef41dd0743b82281bc82c360326cd7c536f73f0053e2cd2?type=image/png"
+logoUrl: "https://registry.dev.spectrocloud.com/v1/cni-cilium/blobs/sha256:dbc239ac739ea2939ef41dd0743b82281bc82c360326cd7c536f73f0053e2cd2?type=image.webp"
 tags: ["packs", "cilium", "network"]
 ---
 

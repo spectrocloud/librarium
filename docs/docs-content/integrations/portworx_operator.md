@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["storage", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/csi-portworx/blobs/sha256:e27bc9aaf22835194ca38062061c29b5921734eed922e57d693d15818ade7486?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/csi-portworx/blobs/sha256:e27bc9aaf22835194ca38062061c29b5921734eed922e57d693d15818ade7486?type=image.webp"
 tags: ["packs", "portworx", "storage"]
 ---
 
@@ -533,7 +533,7 @@ vsphereSecret:
 
 To activate the Pure Flash Array integration, you will need to create a Kubernetes secret named `px-pure-secret` on your
 cluster containing your
-[Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/cloud-references/auto-disk-provisioning/pure-flash-array.html#deploy-portworx).
+[Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/install-portworx/kubernetes/flasharray/install-flasharray-on-cloud#create-a-json-configuration-file).
 The secret must be created in the namespace that contains the `StorageCluster` resource. The namespace is `portworx` by
 default.
 
@@ -1142,7 +1142,7 @@ vsphereSecret:
 
 To activate the Pure Flash Array integration, you will need to create a Kubernetes secret named `px-pure-secret` on your
 cluster containing your
-[Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/cloud-references/auto-disk-provisioning/pure-flash-array.html#deploy-portworx).
+[Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/install-portworx/kubernetes/flasharray/install-flasharray-on-cloud#create-a-json-configuration-file).
 The secret must be created in the namespace that contains the `StorageCluster` resource. The namespace is `kube-system`
 by default.
 
@@ -1733,7 +1733,7 @@ vsphereSecret:
 
 To activate the Pure Flash Array integration, you will need to create a Kubernetes secret named `px-pure-secret` on your
 cluster containing your
-[Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/cloud-references/auto-disk-provisioning/pure-flash-array.html#deploy-portworx).
+[Flash Array license JSON](https://docs.portworx.com/portworx-enterprise/install-portworx/kubernetes/flasharray/install-flasharray-on-cloud#create-a-json-configuration-file).
 The secret must be created in the namespace that contains the `StorageCluster` resource. The namespace is `kube-system`
 by default.
 
@@ -1916,4 +1916,4 @@ data "spectrocloud_pack_simple" "portworx-operator" {
 
 - [Portworx Central](https://docs.portworx.com/portworx-central-on-prem/install/px-central.html)
 
-- [Flash Array License JSON](https://docs.portworx.com/portworx-enterprise/cloud-references/auto-disk-provisioning/pure-flash-array.html#deploy-portworx)
+- [Flash Array](https://docs.portworx.com/portworx-enterprise/install-portworx/kubernetes/flasharray)

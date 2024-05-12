@@ -36,7 +36,7 @@ separating responsibilities and network restrictions.
 
 <br />
 
-![A diagram of Palette deployment models](/architecture_architecture-overview-deployment-models.png)
+![A diagram of Palette deployment models](/architecture_architecture-overview-deployment-models.webp)
 
 <br />
 

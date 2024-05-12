@@ -150,7 +150,7 @@ for item in $(git branch --format '%(refname:short)'); do
     rm api_versions.json
 
     # Remove API auto-generated files
-    npm run clean-api-docs
+    make clean-api
 
     # Switch back to the original branch
     git checkout $current_branch
@@ -187,3 +187,15 @@ fi
 mv $tempdir/temp.docusaurus.config.js $baseDir/docusaurus.config.js
 
 echo "Versioned documentation generated successfully"
+
+echo "Create the robots.txt file"
+
+# Invoke the generated_robots.sh script
+$baseDir/scripts/generate_robots.sh $baseDir/versions.json $baseDir/static
+
+if [ $? -ne 0 ]; then
+  echo "Error generating the robots.txt file"
+  exit 1
+fi
+
+echo "robots.txt file generated successfully"

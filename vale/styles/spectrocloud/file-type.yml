@@ -1,0 +1,22 @@
+extends: substitution
+message: "Incorrect file type reference. Use '%s'."
+level: error
+ignorecase: false
+swap:
+  csv file: CSV file
+  iso file: ISO file
+  iso image: ISO image
+  json file: JSON file
+  md file: Markdown file
+  pdf file: PDF file
+  png file: PNG file
+  py file: Python file
+  svg file: SVG file
+  tar file: TAR file
+  tf file: Terraform file
+  tgz file: TGZ file
+  txt file: text file
+  yaml file: YAML file
+  ZIP file: zip file
+  zst file: ZST file
+

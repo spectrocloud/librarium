@@ -51,6 +51,7 @@ jobs:
           reporter: github-pr-review
           vale_flags: --glob=*.{md} --minAlertLevel=error
           fail_on_error: false
+          version: 3.2.1
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
@@ -66,7 +67,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: "20"
           cache: "npm"
 
       - name: Prettier Check
@@ -84,7 +85,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: "20"
           cache: "npm"
 
       - run: npm ci

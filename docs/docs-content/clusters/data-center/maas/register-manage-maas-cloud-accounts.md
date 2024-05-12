@@ -14,16 +14,14 @@ additional cloud accounts that reference specific PCGs.
 ## Prerequisites
 
 - An installed PCG if you do not have a direct connection to the MAAS environment. Review
-  [Install and Manage MAAS Gateway](install-manage-maas-pcg.md) for guidance.
+  [Deploy to MAAS](../../pcg/deploy-pcg/maas.md) for guidance.
 
   If are self-hosting Palette and have a direct connection to the MAAS environment, you can select **Use System Private
   Gateway**. To learn more about when you would use Palette's PCG or the System Private Gateway, refer to the
-  [Architecture](architecture.md) page.
+  [PCG Architecture](../../pcg/architecture.md#pcg-deployment-options) page.
 
 - An active [MAAS API key](https://maas.io/docs/api-authentication-reference) which can be generated in the MAAS web
-  console under **My Preferences** > **API keys**. The following is an example key:
-
-  `APn53wz232ZwBMxDp5:MHZIbUp3e4DJTjZEKg:mdEv33WAG536MhNC8mIywNLtjcDTnFAQ`
+  console under **My Preferences**, and selecting **API keys**.
 
 For details, refer to the MAAS document on
 [how to add an API key](https://maas.io/docs/how-to-manage-user-accounts#heading--api-key).

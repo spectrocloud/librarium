@@ -33,7 +33,7 @@ page.
 4. Enable the **Allow non-FIPS features** option. When you enable this option, you are prompted to confirm the use of
    non-FIPS features for the tenant.
 
-![Diagram showing the Allow non-FIPS features toggle enabled.](/vertex_use-non-fips-settings_nonFips-features.png)
+![Diagram showing the Allow non-FIPS features toggle enabled.](/vertex_use-non-fips-settings_nonFips-features.webp)
 
 To disable the setting, toggle this option off and confirm you want to disable it.
 

@@ -25,6 +25,8 @@ jobs:
       # As of 8/8/2022 there is now way to enforce this beahvior in GitHub Actions CI.
       - run: exit 0
 
+
+
   image-optimizer:
     name: Image Optimization
     needs: [run-ci]
@@ -33,11 +35,22 @@ jobs:
       labels: docbot
     if: ${{ !github.event.pull_request.draft }}
     steps:
+
+      - name: Retrieve Credentials
+        id: import-secrets
+        uses: hashicorp/vault-action@v2.7.3
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Compress Images
         uses: calibreapp/image-actions@main
         with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          githubToken: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
           ignorePaths: "node_modules/**,build"

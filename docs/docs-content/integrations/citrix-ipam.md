@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["load balancers", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/lb-citrix-adc/blobs/sha256:17f8ebc0dc69d329a39e5d27fc0ce3574034d18ab1776fabda396c5403b0bd86?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/lb-citrix-adc/blobs/sha256:17f8ebc0dc69d329a39e5d27fc0ce3574034d18ab1776fabda396c5403b0bd86?type=image.webp"
 tags: ["packs", "citrix-ipam", "network"]
 ---
 
@@ -46,6 +46,6 @@ Integration deploys the following components:
 
 ## References
 
-- [Citrix IPAM Controller](https://developer-docs.citrix.com/projects/citrix-k8s-ingress-controller/en/latest/crds/vip)
+- [Citrix IPAM Controller](https://docs.netscaler.com/en-us/netscaler-k8s-ingress-controller/configure/ipam-for-ingress.html)
 
-- [Citrix Ingress controller](https://developer-docs.citrix.com/projects/citrix-k8s-ingress-controller/en/latest/network/type_loadbalancer/#expose-services-of-type-loadbalancer-using-an-ip-address-from-the-citrix-ipam-controller)
+- [Citrix Ingress controller](https://docs.netscaler.com/en-us/netscaler-k8s-ingress-controller/#expose-services-of-type-loadbalancer-using-an-ip-address-from-the-citrix-ipam-controller)

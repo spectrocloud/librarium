@@ -308,7 +308,9 @@ To add a Service to the Service List complete the following actions:
 
 ### Images or other assets
 
-All images must reside in the [`assets/docs/images`](./assets/docs/images/) folder.
+All images must reside in the [`static/assets/docs/images`](./static/assets/docs/images/) folder. All images must be in
+webp format. You can save png, jpg, or jpeg to the directory. The commit hook will convert the images to webp format. Or
+issue the command `make format-images` to convert the images to webp format.
 
 ```md
 ![alt text](/clusterprofiles.png "cluster profiles example")
@@ -398,8 +400,10 @@ In your markdown file, use the component and ensure you specify a URL.
 **x** and **y** properties refer to the coordinates of the point starting from the **top-left corner** of the markdown
 container.
 
-**Note**: **_x_**, **_y_**, **_description_** properties are **mandatory**. **_label_** and **_tooltipPlacement_**
-properties are optional.
+> [!NOTE]
+>
+> The **_x_**, **_y_**, and **_description_** properties are **mandatory**. The **_label_** and **_tooltipPlacement_**
+> properties are optional.
 
 If no label is specified, the default one is "+".
 
@@ -454,11 +458,11 @@ https://docusaurus.io/docs/markdown-features/code-blocks#highlighting-with-comme
 The copy button is shown by default in all code blocks. You can disable the copy button by passing in the parameter
 value `hideClipboard` in the markdown declaration of the code blocks.
 
-Example ![Example](static/assets/docs/images/hide_copy_button_example.png)
+Example ![Example](static/assets/docs/images/hide_copy_button_example.webp)
 
 Result
 
-![Result](static/assets/docs/images/hide_copy_button.png)
+![Result](/static/assets/docs/images/hide_copy_button.webp)
 
 ### Admonitions - Warning / Info / Tip / Danger
 
@@ -494,6 +498,36 @@ To add a video, use the following syntax. Ensure you capitalize the letter "V":
 
 ```
 <Video title="vsphere-pcg-creation" src="/cluster-creation-videos/vmware.mp4"></Video>
+```
+
+### Simple Card Grid
+
+This is a custom component that creates a grid of simple text cards with two columns, styled according to our color
+scheme. The rows of cards are dynamically created according to the list of specified cards.
+
+```js
+<SimpleCardGrid
+  cards={[
+    {
+      title: "Lorem Ipsum",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      buttonText: "Learn more",
+      relativeURL: "./link",
+    },
+    {
+      title: "Lorem Ipsum",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      buttonText: "Learn more",
+      relativeURL: "./link",
+    },
+    {
+      title: "Lorem Ipsum",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      buttonText: "Learn more",
+      relativeURL: "./link",
+    },
+  ]}
+/>
 ```
 
 ## Netlify Previews
@@ -573,7 +607,8 @@ We use [Prettier](https://prettier.io/) to maintain uniform and consistent forma
 commit changes, Prettier formats the staged files automatically. Then, once you create a pull request, it verifies that
 the formatting in all files complies with our Prettier configuration.
 
-> [!NOTE]  
+> [!NOTE]
+>
 > The build fails if the Code Formatting check doesn't pass.
 
 To manually check the formatting before pushing your work upstream, execute the following command in your terminal:
@@ -651,12 +686,16 @@ To create a new release, use the following steps:
 The semantic-release logic and the GitHub Actions in the [release.yaml](.github/workflows/release.yaml) will ensure the
 new release tag is created.
 
-> **Warning** Do not use `feat`,`perf` or `fix` or other semantic-release key words that trigger a version change. Use
-> the commit message prefix `docs: yourMessageHere` for regular documentation commits.
+> [!WARNING]
+>
+> Do not use `feat`,`perf`, `fix`, or other semantic-release key words that trigger a version change. Use the commit
+> message prefix `docs: yourMessageHere` for regular documentation commits.
 
 ## Versioning
 
-> [!NOTE] Detailed documentation for versioning can be found in the internal
+> [!NOTE]
+>
+> Detailed documentation for versioning can be found in the internal
 > [Versioning](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1962639377/Versioning) guide.
 
 All versioned content belongs to a specific version branch. The version branch name follows the naming convention
@@ -701,5 +740,7 @@ make build
 rm versions.json
 ```
 
-> [!WARNING] The `docuasurus.config.js` file is updated by the [`update_docusaurs_config.js`](./docusaurus.config.js)
-> script. DO NOT commit this file with the updated changes.
+> [!WARNING]
+>
+> The `docusaurus.config.js` file is updated by the [`update_docusaurus_config.js`](./docusaurus.config.js) script. DO
+> NOT commit this file with the updated changes.

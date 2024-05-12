@@ -32,7 +32,7 @@ utility to embed the content bundle and user data into the Edge installer ISO im
 The diagram below displays the overarching steps to build the Edge installer ISO using a content bundle. The diagram
 also highlights the primary prerequisites to create a content bundle.
 
-![An overarching diagram displaying the workflow in the current guide.](/clusters_edge_edge-forge-workflow_build-images_build-artifacts_overarching.png)
+![An overarching diagram displaying the workflow in the current guide.](/clusters_edge_edge-forge-workflow_build-images_build-artifacts_overarching.webp)
 
 ## Prerequisites
 
@@ -71,10 +71,9 @@ To complete this guide, you will need the following items:
 
 Use the following instructions on your Linux machine, which this guide refers to as the development environment.
 
-1.  Visit the [Downloads](../../../spectro-downloads#palette-edge-cli) page and download the latest Palette Edge CLI.
-    You can download the Palette Edge CLI by clicking on the available URL or using the download URL in the following
+1.  Visit the [Downloads](../../../spectro-downloads.md#palette-cli) page and download the latest Palette Edge CLI. You
+    can download the Palette Edge CLI by clicking on the available URL or using the download URL in the following
     command. Replace the `[PALETTE-EDGE-BINARY-URL]` placeholder with the download URL.
-    <br />
 
 ```bash
 curl [PALETTE-EDGE-BINARY-URL] --output palette-edge
@@ -142,7 +141,7 @@ export API_KEY=[USE-YOUR-API-KEY_HERE]
 7. Copy your Palette project ID. You will use this ID in a later step. The project ID is on the top-right corner of your
    Palette project overview page. Use the following screenshot to help you find your project ID.
 
-![A screenshot highlighting the project ID in Palette project overview page](/clusters_edge_edge-forge-workflow_build-images_build-project_id.png)
+![A screenshot highlighting the project ID in Palette project overview page](/clusters_edge_edge-forge-workflow_build-images_build-project_id.webp)
 
 8. Navigate to the left **Main Menu** and select **Profiles**.
 
@@ -154,7 +153,7 @@ export API_KEY=[USE-YOUR-API-KEY_HERE]
     your project ID and the cluster profile ID. For example, the screenshot below highlights the project ID and the
     cluster profile ID in a cluster details page URL.
 
-![A screenshot highlighting the cluster profile ID and project ID in the URL of the cluster details page.](/clusters_edge_edge-forge-workflow_build-images_build-artifacts_url.png)
+![A screenshot highlighting the cluster profile ID and project ID in the URL of the cluster details page.](/clusters_edge_edge-forge-workflow_build-images_build-artifacts_url.webp)
 
 11. Copy the cluster profile ID from the cluster details page URL for the next step.
 

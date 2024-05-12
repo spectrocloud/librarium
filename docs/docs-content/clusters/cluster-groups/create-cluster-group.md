@@ -74,9 +74,12 @@ Use the instructions below to create a cluster group.
 
    #### Palette Virtual Cluster Configuration
 
-   The configuration applied to all virtual clusters launched into the host clusters. Use the **Advanced Config** for
-   further customization. The request sizing applies to the maximum amount of resources a virtual cluster is allowed to
-   claim.
+   The configuration applied to all virtual clusters launched into the host clusters. Select the Kubernetes distribution
+   you want all virtual clusters to use. Use the **Advanced Config** for further customization.
+
+   ![A view of the Kubernetes distribution selection menu](/clusters_cluster-groups_create-cluster-group_virtual-cluster-distro.webp)
+
+   The request sizing applies to the maximum amount of resources a virtual cluster is allowed to claim.
 
    | **Palette Virtual Cluster Resource** | **Default** | **Minimum Limit** |
    | ------------------------------------ | ----------- | ----------------- |
@@ -107,8 +110,8 @@ Use the instructions below to create a cluster group.
 
    :::
 
-   To enable virtual clusters for OpenShift, review the OpenShit
-   [instructions below](#enable-virtual-cluster-for-openshift).
+   To enable virtual clusters for OpenShift, review the OpenShift
+   [instructions below](#enable-virtual-clusters-for-openshift).
 
 8. Click **Next** to complete the cluster group creation process.
 

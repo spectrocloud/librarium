@@ -208,3 +208,20 @@ p img.markdown-image {
   margin-right: auto;
   border-radius: 1vw;
 }
+
+.admonition-tech-preview {
+  border: 1px solid var(--custom-purple-important-color);
+  background-color: var(--custom-purple-alert-bg-color);
+}
+
+.desktop-only-display {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+// Reduce the spacing between lines in code blocks
+
+.theme-code-block code {
+  line-height: 1.6em;
+}

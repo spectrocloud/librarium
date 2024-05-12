@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["monitoring", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/outcold-monitoring/blobs/sha256:3140960d1f39649ad821cfc59450d3c164079b03d15387b2e638eae07442af41?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/outcold-monitoring/blobs/sha256:3140960d1f39649ad821cfc59450d3c164079b03d15387b2e638eae07442af41?type=image.webp"
 tags: ["packs", "outcold-monitoring", "monitoring"]
 ---
 
@@ -56,13 +56,12 @@ caPath =
 caName =
 ```
 
-## Components
+:::tip
 
-The following workloads gets deployed on collectorforkubernetes namespace, by default
+You can find a list of all deployed components in the
+[configuration reference](https://www.outcoldsolutions.com/docs/monitoring-kubernetes/v5/configuration/) page.
 
-- Collectorforkubernetes - Daemonset
-- Collectorforkubernetes Master - Daemonset
-- Collectorforkubernetes Addon - Deployment
+:::
 
 ## References
 

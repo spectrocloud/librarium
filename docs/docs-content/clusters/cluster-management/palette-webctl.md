@@ -53,7 +53,7 @@ kubelogin GitHub repository [README](https://github.com/int128/kubelogin#setup) 
 
 5. Click on the kubeconfig link to download the file.
 
-![Arrow pointing to the kubeconfig file](/clusters_cluster-management_palette-webctl_cluster-details-overview.png)
+![Arrow pointing to the kubeconfig file](/clusters_cluster-management_palette-webctl_cluster-details-overview.webp)
 
 6. Open a terminal window and set the `KUBECONFIG` environment variable to the file path of the **kubeconfig** file.
 

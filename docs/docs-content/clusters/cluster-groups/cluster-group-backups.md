@@ -14,8 +14,8 @@ group disable disk backups. You can back up all the volumes within a virtual clu
 ## Prerequisites
 
 - A project or tenant backup location. Refer to the
-  [cluster backup and restore](../cluster-management/backup-restore/backup-restore.md#get-started) document to learn how
-  to configure a backup location.
+  [cluster backup and restore](../cluster-management/backup-restore/backup-restore.md) document to learn how to
+  configure a backup location.
 
 - Cluster group modification [permissions](../../user-management/palette-rbac/palette-rbac.md).
 
@@ -83,10 +83,9 @@ You can validate that the disk backups are occurring by deploying a virtual clus
    how to deploy Palette Virtual clusters.
 
 3. Create a backup of your virtual cluster and include all disks. Use the
-   [Create a Cluster Backup](../cluster-management/backup-restore/backup-restore.md#get-started) guide for additional
-   guidance.
+   [Create a Cluster Backup](../cluster-management/backup-restore/backup-restore.md) guide for additional guidance.
 
 4. Access the backup location's blob storage and review the backup files.
 
 Example of a backup that includes the virtual cluster disks.
-![Example image of a backup that includes disks](/clusters_cluster-groups_cluster-group-backups_backup-overview.png)
+![Example image of a backup that includes disks](/clusters_cluster-groups_cluster-group-backups_backup-overview.webp)

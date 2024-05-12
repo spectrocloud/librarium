@@ -32,7 +32,7 @@ or Terraform.
 
 The following diagram illustrates the sequential steps required to successfully complete this tutorial.
 
-![Architecture Diagram of the Deploy a Custom Pack Tutorial](/tutorials/deploy-pack/registries-and-packs_deploy-pack_architecture-diagram.png)
+![Architecture Diagram of the Deploy a Custom Pack Tutorial](/tutorials/deploy-pack/registries-and-packs_deploy-pack_architecture-diagram.webp)
 
 ## Prerequisites {#prerequisites}
 
@@ -44,16 +44,16 @@ To complete this tutorial, ensure you have the following prerequisites in place:
   [Add an AWS Account to Palette](https://docs.spectrocloud.com/clusters/public-cloud/aws/add-aws-accounts) guide for
   instructions.
 - An SSH key available in the region where you plan to deploy the cluster.
-- [Docker Desktop](https://docs.docker.com/get-docker/) installed on your local machine to start the tutorial container.
-- Basic knowledge of Docker containers and Kubernetes manifest file attributes. Refer to the
+- [Docker](https://docs.docker.com/get-docker/) or [Podman](https://podman.io/docs/installation) installed on your local
+  machine to start the tutorial container.
+- Basic knowledge of containers and Kubernetes manifest file attributes. Refer to the
   [Docker Get Started](https://docs.docker.com/get-started/) guide and the
   [Learn Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/) tutorial to start learning.
 
 If you choose to use an OCI registry, you will need the following item.
 
-<!--- - An active OCI registry such as [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) or [Harbor](https://goharbor.io/).-->
-
-- An active OCI registry such as [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/).
+- An active OCI registry such as [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) or
+  [Harbor](https://goharbor.io/).
 
 If you opt for an ECR OCI registry, you will require the following.
 
@@ -73,18 +73,22 @@ If you opt for an ECR OCI registry, you will require the following.
 
 :::warning
 
-There could be AWS expenses associated with this tutorial. After completing the tutorial, make sure to delete the
-infrastructure to avoid additional charges.
+AWS expenses are associated with this tutorial. An estimated hourly cost is provided by Palette during the cluster
+creation step. After completing the tutorial, make sure to delete the infrastructure to avoid additional charges.
 
 :::
 
 ## Set Up the Tutorial Environment
 
-In this tutorial, you will work in a Docker container pre-configured with the necessary tools. Alternatively, you can
-choose to follow along with the tutorial in any `linux/amd64` or `x86_64` environment by installing the
+In this tutorial, you will work in a container pre-configured with the necessary tools. Alternatively, you can choose to
+follow along with the tutorial in any `linux/amd64` or `x86_64` environment by installing the
 [required tools](https://github.com/spectrocloud/tutorials/blob/main/docs/docker.md#docker) and cloning the
 [GitHub repository](https://github.com/spectrocloud/tutorials/) that contains the tutorial files. To initialize the
 tutorial container, follow the steps described below.
+
+<Tabs>
+
+<TabItem label="Docker" value="Docker">
 
 Start Docker Desktop on your local machine and ensure that the Docker daemon is available by issuing a command to list
 the currently active containers.
@@ -93,30 +97,53 @@ the currently active containers.
 docker ps
 ```
 
-Use the following command to download the `ghcr.io/spectrocloud/tutorials:1.0.11` image to your local machine. This
+Use the following command to download the `ghcr.io/spectrocloud/tutorials:1.1.2` image to your local machine. This
 Docker image includes the necessary tools.
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.0.11
+docker pull ghcr.io/spectrocloud/tutorials:1.1.2
 ```
 
 Next, start the container and open a bash session into it.
 
 ```bash
-docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.11 bash
+docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.2 bash
 ```
 
-If the port 7000 on your local machine is unavailable, you can use any other port of your choice.
+</TabItem>
 
-<br />
+<TabItem label="Podman" value="Podman">
+
+Ensure that Podman is available by issuing a command to list the currently active containers.
+
+```bash
+podman ps
+```
+
+Use the following command to download the `ghcr.io/spectrocloud/tutorials:1.1.2` image to your local machine. This image
+includes the necessary tools.
+
+```bash
+podman pull ghcr.io/spectrocloud/tutorials:1.1.2
+```
+
+Next, start the container and open a bash session into it.
+
+```bash
+podman run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.2 bash
+```
+
+</TabItem>
+
+</Tabs>
+
+If the port 7000 on your local machine is unavailable, you can use any other port of your choice.
 
 :::warning
 
 Do not exit the container until the tutorial is complete. Otherwise, you may lose your progress.
 
 :::
-
-<br />
 
 ## Build a Pack
 
@@ -125,13 +152,9 @@ Building a custom pack involves defining specific files. As outlined in the
 Helm charts. The file structure differs for manifest-based packs and Helm chart-based packs. Below is the reference file
 structure for each.
 
-<br />
-
 <Tabs>
 
 <TabItem label="Manifests-based pack" value="add_on_packs_manifests">
-
-<br />
 
 ```bash hideClipboard
 .
@@ -148,8 +171,6 @@ structure for each.
 </TabItem>
 
 <TabItem label="Helm charts-based pack" value="add_on_packs_helm_charts">
-
-<br />
 
 ```bash hideClipboard
 .
@@ -178,8 +199,6 @@ structure for each.
 
 </Tabs>
 
-<br />
-
 For your convenience, we provide you with the manifest-based pack files for the Hello Universe application. These files
 are located in the **packs/hello-universe-pack** folder.
 
@@ -200,8 +219,6 @@ Ensure you have the following files in the current directory.
 ├── logo.png            # Mandatory.
 └── README.md           # Optional.
 ```
-
-<br />
 
 ### Pack File Structure
 
@@ -224,8 +241,6 @@ Review each of the following five files in the **hello-universe-pack** folder.
   }
   ```
 
-  <br />
-
 - **values.yaml** - This file contains configurable parameters you can define while adding the current pack to a cluster
   profile. In the **values.yaml** file for this tutorial, the `pack/namespace` attribute specifies the namespace on the
   target cluster to deploy the pack. If the **values.yaml** specifies a namespace value, then Palette first checks to
@@ -239,8 +254,6 @@ Review each of the following five files in the **hello-universe-pack** folder.
   directory. For example, in the sample code snippet below, the `hello-universe` attribute exposes the `registry`,
   `repository`, and `tag` parameters.
 
-  <br />
-
   ```yaml
   pack:
     namespace: "hello-universe"
@@ -250,8 +263,6 @@ Review each of the following five files in the **hello-universe-pack** folder.
       repository: spectrocloud/hello-universe
       tag: 1.0.12
   ```
-
-  <br />
 
   Optionally, you can define _presets_, which are pack configuration values predefined in a file called **presets.yaml**
   within the pack. Once defined, the **Presets** field becomes visible in both the **Clusters** and **Profile** sections
@@ -263,26 +274,19 @@ Review each of the following five files in the **hello-universe-pack** folder.
   The example below shows the parameters you can configure in the **values.yaml** file for the `hello-universe` manifest
   during the creation of the cluster profile.
 
-![Screenshot of the configurable parameters in the values.yaml file.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-values-yaml.png)
+![Screenshot of the configurable parameters in the values.yaml file.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-values-yaml.webp)
 
 - **manifests** - This directory contains the manifest files for your Kubernetes application. This tutorial has only one
   manifest, **hello-universe.yaml**. Note that the **values.yaml** file has a corresponding `manifests/hello-universe`
   element with the same name as the YAML file.
 
-  <br />
-
 - **logo.png** - This file contains a logo that displays when you create a cluster profile.
-
-  <br />
 
 - **README.md** - This file may contain the pack description, purpose, authors, and other relevant information. The
   README in the current example introduces the application used in the pack.
-  <br />
 
 After completing the review of all files in the pack directory, the next step is to set up a registry server, publish
 the pack to the registry, and configure the registry in Palette.
-
-<br />
 
 ## Set Up the Registry Server
 
@@ -296,7 +300,9 @@ per the [Prerequisites](#prerequisites) section, ensure you have an active OCI r
 are available: **Amazon (ECR)** and **Basic**. To learn more about Amazon ECR, consult the
 [What is ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) user guide.
 
-<!-- For Basic OCI Authentication, this tutorial uses a [Harbor registry](https://goharbor.io/) as an example. However, you have the flexibility to opt for the OCI registry of your choice. Learn how to set up a Harbor registry server using the [Harbor Installation and Configuration](https://goharbor.io/docs/2.9.0/install-config/) guide.-->
+For Basic OCI Authentication, this tutorial uses a [Harbor registry](https://goharbor.io/) as an example. However, you
+have the flexibility to opt for the OCI registry of your choice. Learn how to set up a Harbor registry server using the
+[Harbor Installation and Configuration](https://goharbor.io/docs/2.9.0/install-config/) guide.
 
 The following sections will guide you through starting the registry server, authenticating, pushing your custom add-on
 pack, and, finally, configuring the registry server in Palette. Select the tab below corresponding to the registry type
@@ -307,8 +313,6 @@ you want to use.
 <Tabs groupId="registry-server">
 
 <TabItem label="Spectro Registry" value="Spectro_Registry">
-
-<br />
 
 Start the registry server by issuing the following command from the tutorial container bash session initialized in the
 [Set Up the Tutorial Environment](#set-up-the-tutorial-environment) section.
@@ -331,17 +335,15 @@ ngrok http 5000 --log-level debug
 This command reserves the current bash session and displays the status of each HTTP request made to the Ngrok server.
 The image below shows the registry server successfully exposed via Ngrok.
 
-![Screenshot of registry server exposed via ngrok](/tutorials/deploy-pack/registries-and-packs_deploy-pack_ngrok-start.png)
+![Screenshot of registry server exposed via ngrok](/tutorials/deploy-pack/registries-and-packs_deploy-pack_ngrok-start.webp)
 
 Check if the registry server is accessible from outside the tutorial container by visiting the `/health` endpoint. Open
-your browser and go to _https://Your-URL-Here/health_, replacing the base URL with the Ngrok URL output. You should get
+your browser and go to `https://Your-URL-Here/health`, replacing the base URL with the Ngrok URL output. You should get
 a `{"status":"UP"}` response.
 
 </TabItem>
 
 <TabItem label="ECR" value="ECR_Registry">
-
-<br />
 
 The initial step to creating the pack's repository in the ECR registry is to export your AWS credentials as environment
 variables for authentication.
@@ -383,40 +385,34 @@ Next, create the repository to store the Hello Universe pack.
 aws ecr create-repository --repository-name $REGISTRY_NAME/spectro-packs/archive/$NAME --region $AWS_DEFAULT_REGION
 ```
 
-<br />
-
 :::warning
 
 Make sure to include the **spectro-packs/archive** path in _all_ your repositories to meet Palette's requirements.
 
 :::
 
-<br />
-
 This configuration sets up the required environment and repositories for pushing the Hello Universe pack to your ECR
 Registry.
 
 </TabItem>
 
-<!-- <TabItem label="Basic" value="Basic_Registry">
+<TabItem label="Basic" value="Basic_Registry">
 
-<br />
+Once you have an active Harbor registry server, access its domain on your web browser and log in using your Harbor
+credentials. If you have kept the default credentials, the username and password are **admin** and **Harbor12345**,
+respectively.
 
-Once you have an active Harbor registry server, access its domain on your web browser and log in using your Harbor credentials. If you have kept the default credentials, the administrator username and password are **admin** and **Harbor12345**, respectively.
+![Screenshot of Harbor login](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-login.webp)
 
-![Screenshot of Harbor login](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-login.png)
+In the **Projects** section, click on **New Project**. A project in Harbor contains all repositories of an application.
+This tutorial uses **spectro-oci-registry** as the project name. Keep the default settings for the remaining
+configuration options and proceed by clicking **OK**.
 
+![Screenshot of Harbor project](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-project.webp)
 
-Next, go to the **Projects** section and click on **New Project**. A project in Harbor contains all repositories of an application. This tutorial uses **spectro-oci-registry** as the project name. Leave the other settings as default and click on **OK**.
-
-![Screenshot of Harbor project](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-project.png)
-
-
-</TabItem> -->
+</TabItem>
 
 </Tabs>
-
-<br />
 
 ### Log in to the Registry Server
 
@@ -424,14 +420,28 @@ Next, go to the **Projects** section and click on **New Project**. A project in 
 
 <TabItem label="Spectro Registry" value="Spectro_Registry">
 
-<br />
-
 Once the `/health` endpoint of the registry server displays an `UP` status, proceed to the authentication step. In a new
 terminal window, start another bash session in the tutorial container.
+
+<Tabs>
+
+<TabItem label="Docker" value="Docker">
 
 ```bash
 docker exec -it tutorialContainer bash
 ```
+
+</TabItem>
+
+<TabItem label="Podman" value="Podman">
+
+```bash
+podman exec -it tutorialContainer bash
+```
+
+</TabItem>
+
+</Tabs>
 
 Log in to the registry server using the Ngrok public URL assigned to you. Issue the following command, replacing the URL
 with your Ngrok URL. The `--insecure` flag indicates that the connection to the Spectro registry will be made without
@@ -443,16 +453,12 @@ spectro registry login  --insecure --default --username admin --password admin \
 58ec-174-119-143-38.ngrok-free.app
 ```
 
-<br />
-
 :::warning
 
 Do not include the "https://" or "http://" prefixes in the Ngrok URL. Using either of these prefixes will result in an
 authorization issue.
 
 :::
-
-<br />
 
 You will receive a `Login Succeeded` response upon successful login.
 
@@ -462,13 +468,9 @@ WARNING! Your password will be stored unencrypted in /root/.spectro/config.json.
 Login Succeeded
 ```
 
-<br />
-
 </TabItem>
 
 <TabItem label="ECR" value="ECR_Registry">
-
-<br />
 
 After you have created the repositories, authenticate to your ECR registry using the `aws ecr get-login-password`
 command. The ECR authorization token is then passed to the `oras login` command with **AWS** as username and the
@@ -487,11 +489,10 @@ Login Succeeded
 
 </TabItem>
 
-<!-- <TabItem label="Basic" value="Basic_Registry">
+<TabItem label="Basic" value="Basic_Registry">
 
-<br />
-
-After creating the project, proceed with the Harbor authentication. In the tutorial container bash session, export the `HARBOR_ADDRESS` variable, which will store your Harbor address. Do not include the "https://" prefix.
+After creating the projects, proceed with the Harbor authentication. In the tutorial container bash session, export the
+`HARBOR_ADDRESS` variable, which will store your Harbor address. Do not include the "https://" prefix.
 
 ```bash
 export HARBOR_ADDRESS=<Your_Harbor_Address>
@@ -503,27 +504,24 @@ Now, issue the command `oras login`.
 oras login $HARBOR_ADDRESS
 ```
 
-You will be prompted for your Harbor username and password. If the login is successful, you will receive the following confirmation message.
+You will be prompted for your Harbor username and password. If the login is successful, you will receive the following
+confirmation message.
 
-``` hideClipboard
+```hideClipboard
 Username: admin
 Password:
 Login Succeeded
 ```
 
-</TabItem> -->
+</TabItem>
 
 </Tabs>
-
-<br />
 
 ### Push the Pack to the Registry Server
 
 <Tabs groupId="registry-server">
 
 <TabItem label="Spectro Registry" value="Spectro_Registry">
-
-<br />
 
 Once you are logged in, push the pack to the registry server using the following command.
 
@@ -540,17 +538,13 @@ spectro pack ls
 
 Check if the pushed pack is listed, as shown in the image below.
 
-![Screenshot of spectro pack ls](/tutorials/deploy-pack/registries-and-packs_deploy-pack_pack-push.png)
+![Screenshot of spectro pack ls](/tutorials/deploy-pack/registries-and-packs_deploy-pack_pack-push.webp)
 
 For assistance with Spectro CLI commands, refer to the [Spectro CLI Commands](spectro-cli-reference.md#commands) guide.
-
-<br />
 
 </TabItem>
 
 <TabItem label="ECR" value="ECR_Registry">
-
-<br />
 
 Once you are authenticated to your ECR registry, navigate to the **packs** directory, which contains the pack folder,
 **hello-universe-pack**.
@@ -603,11 +597,10 @@ Universe pack in the repository.
 
 </TabItem>
 
-<!-- <TabItem label="Basic" value="Basic_Registry">
+<TabItem label="Basic" value="Basic_Registry">
 
-<br />
-
-Once you are authenticated to your Harbor registry, export the following variables, which you will use to create the Harbor repository and push the pack.
+Once you are authenticated to your Harbor registry, export the following variables, which you will use to create the
+Harbor repository and push the pack.
 
 - `HARBOR_PROJECT` - the name of your Harbor project. This tutorial uses **spectro-oci-registry**.
 - `NAME` - the pack's name, which must match the name in the **pack.json** file.
@@ -625,14 +618,15 @@ Next, navigate to the **packs** directory, which contains the pack folder, **hel
 cd /packs
 ```
 
-Before pushing the pack to the registry, compress the contents of the pack folder into an archive file. Issue the command below to create the archive file.
+Before pushing the pack to the registry, compress the contents of the pack folder into an archive file. Issue the
+command below to create the archive file.
 
 ```bash
 tar -czvf $NAME-$VERSION.tar.gz hello-universe-pack
 ```
 
-Harbor creates a repository when the user pushes an artifact to a project.
-Create a base path repository to store your pack repositories.
+Harbor creates a repository when the user pushes an artifact to a project. Create a base path repository to store your
+pack repositories.
 
 ```bash
 oras push $HARBOR_ADDRESS/$HARBOR_PROJECT/spectro-packs/archive
@@ -644,16 +638,16 @@ Now, proceed to create the pack repository and push the Hello Universe pack to t
 oras push $HARBOR_ADDRESS/$HARBOR_PROJECT/spectro-packs/archive/$NAME:$VERSION $NAME-$VERSION.tar.gz
 ```
 
-To confirm the presence of the pack in the repository, open your web browser, access your Harbor address, click on **Projects**, select the **spectro-oci-registry** project, and then click on the **spectro-oci-registry/spectro-packs/archive/hellouniverse** repository. You should see the pushed artifact, as shown in the image below.
+To confirm the presence of the pack in the repository, open your web browser, access your Harbor address, click on
+**Projects**, select the **spectro-oci-registry** project, and then click on the
+**spectro-oci-registry/spectro-packs/archive/hellouniverse** repository. You should verify the pushed artifact, as shown
+in the image below.
 
-![Screenshot of the Hello Universe Harbor Repository](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-repository.png)
+![Screenshot of the Hello Universe Harbor Repository](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-repository.webp)
 
-
-</TabItem> -->
+</TabItem>
 
 </Tabs>
-
-<br />
 
 ### Configure the Registry Server in Palette
 
@@ -661,19 +655,17 @@ To confirm the presence of the pack in the repository, open your web browser, ac
 
 <TabItem label="Spectro Registry" value="Spectro_Registry">
 
-<br />
-
 After pushing the pack to the registry server, follow the next steps to log in to Palette and add the registry server to
 it.
 
 Log in to [Palette](https://console.spectrocloud.com) and switch to the **Tenant Admin** view.
 
-![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.png)
+![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.webp)
 
 Navigate to the **Tenant Settings** > **Registries** > **Pack Registries** section and click on **Add New Pack
 Registry**. Palette will open a pop-up window prompting you for the required fields to configure a custom pack registry.
 
-![A screenshot highlighting the fields to configure a custom pack registry. ](/tutorials/deploy-pack/registries-and-packs_adding-a-custom-registry-tls_certificate.png)
+![A screenshot highlighting the fields to configure a custom pack registry. ](/tutorials/deploy-pack/registries-and-packs_adding-a-custom-registry-tls_certificate.webp)
 
 Provide the pack registry name, endpoint, and user credentials in the pop-up window. For consistency, we suggest using
 the registry name **spectro-pack-registry**. Use your Ngrok URL as the pack registry endpoint. Ensure to add "https://"
@@ -688,31 +680,27 @@ communicating with the pack registry server.
 Click on **Validate** to ensure the provided URL and credentials are correct, then click on **Confirm** to finish the
 registry server configuration.
 
-![Screenshot of registry server edit option in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-edit.png)
+![Screenshot of registry server edit option in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-edit.webp)
 
 Palette automatically syncs the registry server. However, you can sync it manually by clicking the **three-dot Menu**
 next to the registry server name and selecting **Sync**.
 
-![Screenshot of registry server sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-sync.png)
-
-<br />
+![Screenshot of registry server sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-sync.webp)
 
 </TabItem>
 
 <TabItem label="ECR" value="ECR_Registry">
 
-<br />
-
 After pushing the pack to the ECR registry, follow the next steps to log in to Palette and add the ECR registry to it.
 
 Log in to [Palette](https://console.spectrocloud.com) and switch to the **Tenant Admin** view.
 
-![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.png)
+![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.webp)
 
 Navigate to the **Tenant Settings** > **Registries** > **OCI Registries** section and click on **Add New OCI Registry**.
 Palette will open a pop-up window prompting you for the required fields to configure an OCI registry.
 
-![A screenshot highlighting the fields to configure an OCI registry. ](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry.png)
+![A screenshot highlighting the fields to configure an OCI registry. ](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry.webp)
 
 Provide the registry name. For consistency, we suggest using the registry name **ecr-registry**. Choose **Pack** as the
 provider and select **ECR** as the OCI authentication type. Complete the **Endpoint** field with your ECR registry URI.
@@ -725,53 +713,49 @@ option, choose **Credentials** as the AWS authentication method, and specify you
 Last, click on **Validate** to ensure the provided URL and credentials are correct. After validation, click on
 **Confirm** to finish the ECR registry configuration.
 
-![Screenshot of OCI registry fields in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry-edit.png)
+![Screenshot of OCI registry fields in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry-edit.webp)
 
 Palette automatically syncs the registry. However, you can sync it manually by clicking the **three-dot Menu** next to
 the registry name and selecting **Sync**.
 
-![Screenshot of OCI registry sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry-sync.png)
+![Screenshot of OCI registry sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_oci-registry-sync.webp)
 
 </TabItem>
 
-<!-- <TabItem label="Basic" value="Basic_Registry">
+<TabItem label="Basic" value="Basic_Registry">
 
-<br />
-
-After pushing the pack to the Harbor registry, follow the next steps to log in to Palette and add the Harbor registry to it.
-
+After pushing the pack to the Harbor registry, follow the next steps to log in to Palette and add the Harbor registry to
+it.
 
 Log in to [Palette](https://console.spectrocloud.com) and switch to the **Tenant Admin** view.
 
+![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.webp)
 
-![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.png)
+Navigate to the **Tenant Settings** > **Registries** > **OCI Registries** section and click on **Add New OCI Registry**.
+Palette will open a pop-up window prompting you for the required fields to configure an OCI registry.
 
+![A screenshot highlighting the fields to configure an OCI registry. ](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry.webp)
 
-Navigate to the **Tenant Settings** > **Registries** > **OCI Registries** section and click on **Add New OCI Registry**. Palette will open a pop-up window prompting you for the required fields to configure an OCI registry.
+Provide the registry name. For consistency, we suggest using the registry name **harbor-registry**. Choose **Pack** as
+the provider and select **Basic** as the OCI authentication type. Complete the **Endpoint** field with your Harbor
+registry address. Ensure to include "https://" as the prefix.
 
-![A screenshot highlighting the fields to configure an OCI registry. ](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry.png)
+Next, set the base content path as **spectro-oci-registry**, which corresponds to your Harbor project name. Then, enter
+your Harbor credentials in the **Username** and **Password** fields.
 
+Last, click on **Validate** to ensure the provided URL and credentials are correct. After validation, click on
+**Confirm** to complete the Harbor registry configuration.
 
-Provide the registry name. For consistency, we suggest using the registry name **harbor-registry**. Choose **Pack** as the provider and select **Basic** as the OCI authentication type. Complete the **Endpoint** field with your Harbor registry address. Ensure to include "https://" as the prefix.
+![Screenshot of OCI registry fields in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry-edit.webp)
 
-Next, set the base content path as **spectro-oci-registry**, which corresponds to your Harbor project name. Then, enter your Harbor credentials in the **Username** and **Password** fields.
+Palette automatically syncs the registry. However, you can sync it manually by clicking the **three-dot Menu** next to
+the registry name and selecting **Sync**.
 
-Last, click on **Validate** to ensure the provided URL and credentials are correct. After validation, click on **Confirm** to complete the Harbor registry configuration.
+![Screenshot of OCI registry sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry-sync.webp)
 
-
-![Screenshot of OCI registry fields in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry-edit.png)
-
-
-Palette automatically syncs the registry. However, you can sync it manually by clicking the **three-dot Menu** next to the registry name and selecting **Sync**.
-
-
-![Screenshot of OCI registry sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry-sync.png)
-
-</TabItem> -->
+</TabItem>
 
 </Tabs>
-
-<br />
 
 ## Create a Cluster Profile and Deploy a Cluster
 
@@ -782,13 +766,11 @@ tutorial provides two workflows from which you can choose: Palette User Interfac
 
 <TabItem label="UI Workflow" value="UI_Workflow">
 
-<br />
-
 ### Create a Cluster Profile
 
 Switch to the **Default** project scope for creating a cluster profile.
 
-![Screenshot of the Palette Default scope.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_default-scope.png)
+![Screenshot of the Palette Default scope.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_default-scope.webp)
 
 Next, select the **Profiles** section in the left **Menu** to create a cluster profile that combines the core
 infrastructure and add-on layers. Click on the **Add Cluster Profile** button.
@@ -807,8 +789,6 @@ Complete the wizard using the values provided below.
 
 Click on **Next** to continue.
 
-<br />
-
 #### Cloud Type
 
 In the **Cloud Type** section, select AWS as the infrastructure provider, and click on **Next** at the bottom to proceed
@@ -820,8 +800,6 @@ If you choose a different cloud provider, note that the options for core infrast
 **Profile Layers** section below, will differ from those presented in this tutorial.
 
 :::
-
-<br />
 
 #### Profile Layers
 
@@ -853,18 +831,12 @@ Click on the **Confirm & Create** button to finish adding the Spectro Proxy pack
 Now, click on the Kubernetes layer and add the following certificate Subject Alternative Name (SAN) value under the
 `apiServer` parameter section to configure the Spectro Proxy pack.
 
-<br />
-
 ```yaml
 certSANs:
   - "cluster-{{ .spectro.system.cluster.uid }}.{{ .spectro.system.reverseproxy.server }}"
 ```
 
-<br />
-
-![Screenshot of the certificate Subject Alternative Name.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-certsan.png)
-
-<br />
+![Screenshot of the certificate Subject Alternative Name.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-certsan.webp)
 
 Finally, add the Hello Universe pack. Click on **Add New Pack** and select the registry you created earlier in this
 tutorial. The table below specifies the registry name corresponding to the registry type. For example, if you created an
@@ -874,28 +846,23 @@ ECR registry, select **ecr-registry**.
 | ------------- | ----------------- | --------------------- | -------------- | ---------------- |
 | App Services  | Spectro Registry  | spectro-pack-registry | Hello Universe | `1.0.x`          |
 | App Services  | ECR               | ecr-registry          | Hello Universe | `1.0.x`          |
-
-<!--|App Services | Basic | harbor-registry | Hello Universe | `1.0.x` |-->
+| App Services  | Basic             | harbor-registry       | Hello Universe | `1.0.x`          |
 
 Click on the **Confirm & Create** button to finish adding the Hello Universe pack.
 
 If there are no errors or compatibility issues, Palette displays the cluster profile. Verify the layers you added, and
 click **Next**.
 
-![Screenshot of the Profile Layers success.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-layer.png)
+![Screenshot of the Profile Layers success.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_profile-layer.webp)
 
 #### Review
 
 Review the cluster layers and click on **Finish Configuration** to complete the creation of the cluster profile.
 
-<br />
-
 ### Create a Cluster
 
 Navigate to the **Profiles** page and select the recently created cluster profile. Click on the **Deploy** button to
 start the deployment of a new cluster.
-
-<br />
 
 #### Basic Information
 
@@ -910,19 +877,15 @@ For the first section, **Basic information**, use the following values.
 
 Click **Next** to proceed.
 
-<br />
-
 #### Parameters
 
 The **Parameters** section allows you to change the profile configurations. For example, by clicking on the **Hello
 Universe 1.0.x** layer, you can configure the `registry`, `repository`, and `tag` parameters defined in the
 **values.yaml** file.
 
-![Screenshot of the Cluster layers.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-layers.png)
+![Screenshot of the Cluster layers.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-layers.webp)
 
 Keep the default values and click **Next**.
-
-<br />
 
 #### Cluster config
 
@@ -938,39 +901,33 @@ Ensure that you have already created an SSH key in the AWS region where you plan
 
 Click **Next** to continue.
 
-<br />
-
 #### Nodes config
 
-In the **Nodes config** section, provide the details for the master and worker pools. For this tutorial, you can use the
-following minimal configuration:
+In the **Nodes config** section, provide the details for the control plane and worker pools. For this tutorial, you can
+use the following minimal configuration:
 
-| **Field**                   | **Value for the master-pool** | **Value for the worker-pool**                                             |
-| --------------------------- | ----------------------------- | ------------------------------------------------------------------------- |
-| Node pool name              | master-pool                   | worker-pool                                                               |
-| Number of nodes in the pool | `1`                           | `1`                                                                       |
-| Allow worker capability     | Checked                       | Not applicable                                                            |
-| Enable Autoscaler           | Not applicable                | No                                                                        |
-| Rolling update              | Not applicable                | Expand First. <br /> Launch a new node first, then shut down the old one. |
+| **Field**                   | **Value for the control-plane-pool** | **Value for the worker-pool**                                      |
+| --------------------------- | ------------------------------------ | ------------------------------------------------------------------ |
+| Node pool name              | control-plane-pool                   | worker-pool                                                        |
+| Number of nodes in the pool | `1`                                  | `1`                                                                |
+| Allow worker capability     | Checked                              | Not applicable                                                     |
+| Enable Autoscaler           | Not applicable                       | No                                                                 |
+| Rolling update              | Not applicable                       | Expand First. Launch a new node first, then shut down the old one. |
 
-Keep the **Cloud Configuration** the same for both master and worker pools.
+Keep the **Cloud Configuration** the same for both control plane and worker pools.
 
-| **Field**          | **Value**                                                                                                 |
-| ------------------ | --------------------------------------------------------------------------------------------------------- |
-| Instance Type      | General purpose `m4.xlarge` <br />A minimum allocation of four CPU cores is required for the master node. |
-| Availability zones | Choose any _one_ availability zone.<br /> This tutorial uses the `us-east-1a` availability zone.          |
-| Disk size          | 60 GiB                                                                                                    |
+| **Field**          | **Value**                                                                                                  |
+| ------------------ | ---------------------------------------------------------------------------------------------------------- |
+| Instance Type      | General purpose `m4.xlarge` A minimum allocation of four CPU cores is required for the control plane node. |
+| Availability zones | Choose any _one_ availability zone. This tutorial uses the `us-east-1a` availability zone.                 |
+| Disk size          | 60 GiB                                                                                                     |
 
 Click **Next** to continue.
-
-<br />
 
 #### Settings
 
 The **Settings** section displays options for OS patching, scheduled scans, scheduled backups, and cluster role binding.
 Use the default values, and click on the **Validate** button.
-
-<br />
 
 #### Review
 
@@ -981,8 +938,6 @@ complete the cluster deployment, which may take up to _20 minutes_.
 While the deployment is in progress, Palette displays the cluster status as **Provisioning**. While you wait for the
 cluster to finish deploying, you can explore the various tabs on the cluster page, such as **Overview**, **Workloads**,
 and **Events**.
-
-<br />
 
 </TabItem>
 
@@ -998,19 +953,31 @@ single source of truth for all infrastructure.
 Return to your tutorial container bash session to locate the starter Terraform files. If you have closed the terminal
 session, you can open another bash session in the tutorial container using the following command.
 
+<Tabs>
+
+<TabItem label="Docker" value="Docker">
+
 ```bash
 docker exec -it tutorialContainer bash
 ```
 
-<br />
+</TabItem>
+
+<TabItem label="Podman" value="Podman">
+
+```bash
+podman exec -it tutorialContainer bash
+```
+
+</TabItem>
+
+</Tabs>
 
 Navigate to the **/terraform/pack-tf** directory, which contains the Terraform code for this tutorial.
 
 ```bash
 cd /terraform/pack-tf
 ```
-
-<br />
 
 ### Set Up the Spectro Cloud API Key
 
@@ -1019,7 +986,7 @@ endpoint. To add a new API key, log in to Palette, click on the **User Menu** at
 Keys**, as shown in the screenshot below. Visit the
 [Create API Key](../user-management/authentication/api-key/create-api-key.md) guide for more information.
 
-![Screenshot of generating an API key in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_generate-api-key.png)
+![Screenshot of generating an API key in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_generate-api-key.webp)
 
 Below are the steps to add and export an API key:
 
@@ -1033,8 +1000,6 @@ Below are the steps to add and export an API key:
 ```bash
 export SPECTROCLOUD_APIKEY=<Your-Spectro-Cloud-API-key>
 ```
-
-<br />
 
 ### Review the Terraform Files
 
@@ -1051,19 +1016,13 @@ Ensure you have the following files in the current working directory.
 └── provider.tf		# Spectro Cloud Terraform provider
 ```
 
-<br />
-
 :::warning
 
 Note that the Terraform code will deploy the resources to **AWS**.
 
 :::
 
-<br />
-
 We recommend that you explore all Terraform files. Below is a high-level overview of each file.
-
-<br />
 
 - **profile.tf** - contains the configuration for the `spectrocloud_cluster_profile` resource. Review the core
   infrastructure layers that make up the `spectrocloud_cluster_profile` resource.
@@ -1106,12 +1065,11 @@ We recommend that you explore all Terraform files. Below is a high-level overvie
     deploy the cluster.
   - Next, provide your registry server name for the `spectro_pack_registry` variable. For example, you can use the
     **spectro-pack-registry** as the value if you have followed this tutorial's naming convention and used the Spectro
-    registry. If you used an ECR registry, set the registry server name to **ecr-registry**.
-    <!--Lastly, if you used a Harbor registry, set the registry server name to **harbor-registry**.-->
+    registry. If you used an ECR registry, set the registry server name to **ecr-registry**. Lastly, if you used a
+    Harbor registry, set the registry server name to **harbor-registry**.
 
   - Lastly, set the value of the `use_oci_registry` variable to either true or false. For instance, if you are not using
     an OCI registry, set this value to false. The default value is set to true.
-    <br />
 
   ```bash
   cluster_cloud_account_aws_name = "REPLACE ME"   # Name of the cloud account added to your Palette project settings.
@@ -1125,8 +1083,6 @@ We recommend that you explore all Terraform files. Below is a high-level overvie
 - **outputs.tf** - contains the output variables to expose information.
 
 - **provider.tf** - contains the provider configuration and version.
-
-<br />
 
 ### Deploy Terraform
 
@@ -1172,9 +1128,7 @@ Log in to [Palette](https://console.spectrocloud.com/) and navigate to the **Clu
 Menu**. Locate the **pack-tutorial-cluster** and check its status, which should appear as **Provisioning** according to
 the provided screenshot.
 
-![Screenshot of the successful Profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_verify-cluster.png)
-
-<br />
+![Screenshot of the successful Profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_verify-cluster.webp)
 
 </TabItem>
 
@@ -1185,13 +1139,11 @@ the provided screenshot.
 In Palette, navigate to the left **Main Menu** and select **Clusters**. Next, select your cluster to display the
 cluster's **Overview** page and monitor the provisioning progress.
 
-![Screenshot of the cluster health.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-health.png)
+![Screenshot of the cluster health.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-health.webp)
 
 Once the cluster status displays **Running** and **Healthy**, you can access the application through the exposed service
 URL along with the displayed port number. For the Hello Universe application, port 8080 is exposed. Click on the
 **Services** URL to access the application.
-
-<br />
 
 :::warning
 
@@ -1200,20 +1152,14 @@ the public load balancer URL, preventing the browser from caching an unresolved 
 
 :::
 
-<br />
-
-![Screenshot of the successful accessing the application using the load balancer URL.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_success.png)
-
-<br />
+![Screenshot of the successful accessing the application using the load balancer URL.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_success.webp)
 
 You can also look at real-time metrics, such as CPU and memory consumption, in the cluster's **Overview** tab in
 Palette.
 
-![Screenshot of the cluster metrics.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-metrics.png)
+![Screenshot of the cluster metrics.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_cluster-metrics.webp)
 
 By using your custom pack, you have successfully deployed the **Hello Universe** application to the cluster.
-
-<br />
 
 ## Cleanup
 
@@ -1221,13 +1167,9 @@ The following steps will guide you in cleaning up your environment. Follow the P
 Palette to deploy the cluster. Alternatively, use Terraform commands to delete the cluster if you used Terraform for
 deployment.
 
-<br />
-
 <Tabs groupId="deploy-cluster">
 
 <TabItem label="Palette UI" value="palette_ui_delete">
-
-<br />
 
 #### Delete the Cluster and Cluster Profile
 
@@ -1235,11 +1177,9 @@ Navigate to the **Cluster** section in Palette's left **Main Menu** and access t
 **pack-tutorial-cluster**. To delete the cluster, click on the **Settings** button to expand the **drop-down Menu**, and
 select the **Delete Cluster** option. Palette will prompt you to enter the cluster name and confirm the deletion.
 
-![Screenshot of deleting the cluster in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-cluster.png)
+![Screenshot of deleting the cluster in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-cluster.webp)
 
 The cluster status will display **Deleting**, and the deletion may take up to 10 minutes.
-
-<br />
 
 :::info
 
@@ -1249,22 +1189,16 @@ clusters that are stuck in the deletion phase for over 24 hours.
 
 :::
 
-<br />
-
 After deleting the cluster, proceed to delete the cluster profile. In the left **Main Menu**, click on **Profiles** and
 select the profile you want to delete. Next, click on the **Delete** option in the **three-dot Menu**.
 
-![Screenshot of deleting the profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-profile.png)
+![Screenshot of deleting the profile in Palette.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_delete-profile.webp)
 
 Wait for the resources to complete cleanup and ensure they are successfully deleted.
-
-<br />
 
 </TabItem>
 
 <TabItem label="Terraform" value="terraform_ui_delete">
-
-<br />
 
 #### Delete the Cluster and Cluster Profile
 
@@ -1282,20 +1216,16 @@ Wait for the resources to complete cleanup. Deleting the Terraform resources may
 Destroy complete! Resources: 2 destroyed.
 ```
 
-<br />
-
 </TabItem>
 
 </Tabs>
-
-<br />
 
 #### Delete the Registry Server
 
 After deleting the cluster and cluster profile, navigate to the **Tenant Settings** > **Registries** > **Pack
 Registries** section in Palette to remove the registry configuration.
 
-![Screenshot of registry server delete in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-delete.png)
+![Screenshot of registry server delete in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-delete.webp)
 
 Now, delete the registry server. If you used the Spectro registry, stop the registry server by closing the tutorial
 container bash session that serves the Ngrok reverse proxy server. If you used the ECR registry, you must first remove
@@ -1353,17 +1283,32 @@ The output should provide information regarding the deleted repositories.
 }
 ```
 
-<!--Finally, if you used a Basic registry, such as Harbor, delete your Harbor registry. If you hosted the Harbor registry on a virtual machine, for example, ensure to delete the virtual machine according to your setup.-->
+Last, if you used a Basic registry, such as Harbor, make sure to delete your Harbor registry server.
 
-At this point, you can close all the bash sessions. To remove the container and the image from the local machine, issue
+At this point, you can close all the bash sessions. To remove the container and the image from your local machine, issue
 the following commands.
+
+<Tabs>
+
+<TabItem label="Docker" value="Docker">
 
 ```bash
 docker container rm --force tutorialContainer
-docker image rm --force ghcr.io/spectrocloud/tutorials:1.0.11
+docker image rm --force ghcr.io/spectrocloud/tutorials:1.1.2
 ```
 
-<br />
+</TabItem>
+
+<TabItem label="Podman" value="Podman">
+
+```bash
+podman container rm --force tutorialContainer
+podman image rm --force ghcr.io/spectrocloud/tutorials:1.1.2
+```
+
+</TabItem>
+
+</Tabs>
 
 ## Wrap-Up
 
@@ -1387,4 +1332,4 @@ To learn more about packs in Palette, we encourage you to check out the referenc
 
 - [Pack Constraints](pack-constraints.md)
 
-- [Spectro Cloud OCI Registry](oci-registry.md)
+- [Spectro Cloud OCI Registry](./oci-registry/oci-registry.md)

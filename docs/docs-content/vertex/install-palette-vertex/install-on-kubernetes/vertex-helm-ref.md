@@ -4,7 +4,7 @@ title: "Helm Configuration Reference"
 description: "Reference resource for the Palette VerteX Helm Chart installation parameters."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 tags: ["vertex", "helm"]
 ---
 
@@ -33,7 +33,7 @@ information, refer to the [Image Swap Configuration](#image-swap-configuration) 
 
 ## MongoDB
 
-Palette VerteX uses MongoDB Enterprise as its internal database and supports two modes of deployment: <br /> <br />
+Palette VerteX uses MongoDB Enterprise as its internal database and supports two modes of deployment:
 
 - MongoDB Enterprise deployed and active inside the cluster.
 
@@ -156,8 +156,6 @@ config:
     rootDomain: ""
 ```
 
-<br />
-
 :::warning
 
 As you create tenants in Palette VerteX, the tenant name is prefixed to the domain name you assigned to Palette VerteX.
@@ -188,7 +186,13 @@ registries for Palette VerteX to download the required images. You must configur
 (OCI) registry for Palette VerteX. You must also provide the credentials for the Spectro Cloud Artifact Repository
 (SCAR) to download the required FIPS images.
 
-<br />
+:::warning
+
+Palette VerteX does not support insecure connections. Ensure you have the Certificate Authority (CA) available, in PEM
+format, when using a custom packs and image registry. Otherwise, VerteX will not be able to pull packs and images from
+the registry. Use the `caCert` parameter to provide the base64-encoded CA certificate.
+
+:::
 
 ### OCI Registry
 
@@ -197,8 +201,6 @@ registry and configure Palette VerteX to reference the registry. Alternatively, 
 provided by us, refer to the [`ociPackEcrRegistry`](#oci-ecr-registry) section to learn more about the publicly
 available OCI registry.
 
-<br />
-
 :::warning
 
 If you are using a self-hosted OCI registry, you must provide the required FIPS packs to the registry. Contact support
@@ -206,15 +208,15 @@ for additional guidance on how to add the required FIPS packs to your OCI regist
 
 :::
 
-| **Parameters**                       | **Description**                                                                                                | **Type** | **Default value** |
-| ------------------------------------ | -------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
-| `ociPackRegistry.endpoint`           | The endpoint URL for the registry.                                                                             | String   | `""`              |
-| `ociPackRegistry.name`               | The name of the registry.                                                                                      | String   | `""`              |
-| `ociPackRegistry.password`           | The base64-encoded password for the registry.                                                                  | String   | `""`              |
-| `ociPackRegistry.username`           | The username for the registry.                                                                                 | String   | `""`              |
-| `ociPackRegistry.baseContentPath`    | The base path for the registry.                                                                                | String   | `""`              |
-| `ociPackRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection.             | Boolean  | `false`           |
-| `ociPackRegistry.caCert`             | The registry's base64-encoded certificate authority (CA) certificate. Required for self-hosted OCI registries. | String   | `""`              |
+| **Parameters**                       | **Description**                                                                                                                                                              | **Type** | **Default value** |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
+| `ociPackRegistry.endpoint`           | The endpoint URL for the registry.                                                                                                                                           | String   | `""`              |
+| `ociPackRegistry.name`               | The name of the registry.                                                                                                                                                    | String   | `""`              |
+| `ociPackRegistry.password`           | The base64-encoded password for the registry.                                                                                                                                | String   | `""`              |
+| `ociPackRegistry.username`           | The username for the registry.                                                                                                                                               | String   | `""`              |
+| `ociPackRegistry.baseContentPath`    | The base path for the registry.                                                                                                                                              | String   | `""`              |
+| `ociPackRegistry.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the registry connection. VerteX requires the CA for registries that use a self-signed certificate. | Boolean  | `false`           |
+| `ociPackRegistry.caCert`             | The registry's base64-encoded certificate authority (CA) certificate. Required for self-hosted OCI registries.                                                               | String   | `""`              |
 
 ```yaml
 config:
@@ -298,8 +300,6 @@ SCAR credentials are required to download the necessary FIPS manifests. Our supp
 | `scar.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the SCAR connection. | Boolean  | `false`           |
 | `scar.caCert`             | The base64-encoded certificate authority (CA) certificate for SCAR.                            | String   | `""`              |
 
-<br />
-
 ```yaml
 config:
   scar:
@@ -322,8 +322,6 @@ chart to use this option, otherwise, Palette VerteX will ignore the configuratio
 | `imageSwapImage`               | The image swap image.                                                                                                   | String   | `gcr.io/spectro-images-public/thewebroot/imageswap:v1.5.2`      |
 | `imageSwapConfig`              | The image swap configuration for specific environments.                                                                 | String   | `""`                                                            |
 | `imageSwapConfig.isEKSCluster` | Specifies whether the cluster is an Amazon EKS cluster. Set to `false` if the Kubernetes cluster is not an EKS cluster. | Boolean  | `true`                                                          |
-
-<br />
 
 ```yaml
 config:

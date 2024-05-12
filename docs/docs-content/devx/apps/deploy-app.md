@@ -29,7 +29,7 @@ To complete this tutorial, you will need the following items.
 
 If you select the Terraform workflow, you will need the following software installed.
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) or another container management tool.
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) or [Podman](https://podman.io/docs/installation).
 
 There are no expenses associated with this tutorial as everything falls under the Palette Free Tier.
 
@@ -38,7 +38,7 @@ There are no expenses associated with this tutorial as everything falls under th
 The tutorial includes two scenarios, and for each scenario, you will deploy a separate Kubernetes environment. The
 following diagram illustrates the different layers that will power the tutorial environment.
 
-![Architecture diagram depicting two virtual clusters](/tutorials/deploy-app/devx_apps_deploy-apps_architecture-diagram.png)
+![Architecture diagram depicting two virtual clusters](/tutorials/deploy-app/devx_apps_deploy-apps_architecture-diagram.webp)
 
 The top layer is Palette, which is the product platform. Palette can be used in two modes: app mode or cluster mode.
 Each mode is intended for different use cases and personas, but for this tutorial, you will use app mode. For an
@@ -80,12 +80,12 @@ infrastructure as code and complete the tutorial using Terraform.
 
 Start by logging in to Palette. From the landing page, click on the user **drop-down Menu** and click on **App Mode**.
 
-![Image with an arrow pointing to the user drop-down Menu](/tutorials/deploy-app/devx_apps_deploy-apps_toggle-app-mode.png)
+![Image with an arrow pointing to the user drop-down Menu](/tutorials/deploy-app/devx_apps_deploy-apps_toggle-app-mode.webp)
 
 From the app mode landing page, navigate to the left **Main Menu** and click on **Virtual Clusters**. Next, click on the
 button **New Virtual Cluster**.
 
-![View of the virtual cluster list](/tutorials/deploy-app/devx_apps_deploy-apps_virtual-cluster-list.png)
+![View of the virtual cluster list](/tutorials/deploy-app/devx_apps_deploy-apps_virtual-cluster-list.webp)
 
 In the following screen, you will be prompted for the cluster group, virtual cluster name, and the cluster size in terms
 of CPU, memory, and storage. Select beehive for the cluster group, name the cluster `cluster-1`, and allocate 4 CPU, 4
@@ -100,7 +100,7 @@ of 12 CPU, 16 Gib memory, and 20 GiB of storage. Check out the
 It will take a few minutes for the virtual cluster to deploy. In the meantime, navigate to the left **Main Menu** and
 click on **App Profiles**.
 
-![The App Profile page with arrows guiding](/tutorials/deploy-app/devx_apps_deploy-apps_app-profiles.png)
+![The App Profile page with arrows guiding](/tutorials/deploy-app/devx_apps_deploy-apps_app-profiles.webp)
 
 App Profiles are templates that contain all the configurations and settings required to deploy applications to virtual
 clusters. App Profiles provide a way to drive consistency across virtual clusters as you can re-use app profiles and
@@ -115,7 +115,7 @@ such as databases and more. Click on **Container Deployment**.
 Name the container `ui`, select a public registry, and provide the image URL
 `ghcr.io/spectrocloud/hello-universe:1.0.12`. Change the network access to **Public** and add the port `8080`.
 
-![App Profile container creation page with details](/tutorials/deploy-app/devx_apps_deploy-apps_app-profile-creation.png)
+![App Profile container creation page with details](/tutorials/deploy-app/devx_apps_deploy-apps_app-profile-creation.webp)
 
 Click on **Review** once you have filled out the provided information. On the next page, click on the **Deploy New App**
 button.
@@ -141,7 +141,7 @@ navigating to the left **Main Menu** and selecting **Virtual Clusters**. Click o
 page. You can review cluster information, log events, access a remote shell session in the cluster, and more from the
 cluster details page.
 
-![Cluster details view displaying exposed services](/tutorials/deploy-app/devx_apps_deploy-apps_cluster-details-view.png)
+![Cluster details view displaying exposed services](/tutorials/deploy-app/devx_apps_deploy-apps_cluster-details-view.webp)
 
 When the application is deployed and ready for use, the **Services** row on the details page will automatically be
 updated by Palette with the app's public-facing URL. Click on the **:8080** link to view the application.
@@ -155,7 +155,7 @@ few moments before clicking on the service URL to prevent the browser from cachi
 
 :::
 
-![Hello Universe landing page displaying global clicks](/tutorials/deploy-app/devx_apps_deploy-apps_hello-universe.png)
+![Hello Universe landing page displaying global clicks](/tutorials/deploy-app/devx_apps_deploy-apps_hello-universe.webp)
 
 Welcome to [Hello Universe](https://github.com/spectrocloud/hello-universe), a demo application to help you learn more
 about Palette and its features. Feel free to click on the logo to increase the global counter and for a fun image
@@ -199,7 +199,7 @@ In the next screen, assign the following values to the Postgres database.
 
 - Version: `14`
 
-![Postgres service creation page](/tutorials/deploy-app/devx_apps_deploy-apps_postgres-service-create.png)
+![Postgres service creation page](/tutorials/deploy-app/devx_apps_deploy-apps_postgres-service-create.webp)
 
 Take note of the **Output Variables** section. The Postgres service exposes several output variables to help other
 applications connect with the database. In the next section, you will use these output variables and other output
@@ -266,7 +266,7 @@ the **Actions** button **+**. Select the **Container Deployment** to add the fin
 This time the UI will point to the API server that you manage. The API server has authentication enabled, so to ensure
 all API requests are accepted you will provide the UI with the anonymous token.
 
-![A diagram of the reverse proxy architecture](/tutorials/deploy-app/devx_apps_deploys-apps_reverse-proxy-diagram.png)
+![A diagram of the reverse proxy architecture](/tutorials/deploy-app/devx_apps_deploys-apps_reverse-proxy-diagram.webp)
 
 Provide the UI container with the following information.
 
@@ -310,7 +310,7 @@ must fill out all the required input fields.
 
 :::
 
-![App deployment cluster-2](/tutorials/deploy-app/devx_app_deploy-apps_cluster-2-deploy-app.png)
+![App deployment cluster-2](/tutorials/deploy-app/devx_app_deploy-apps_cluster-2-deploy-app.webp)
 
 The app profile deployment takes a few moments to finish. You can review the application's deployment progress by
 navigating to the left **Main Menu** and selecting **Virtual Clusters**. Click on **cluster-2** to view its details
@@ -318,11 +318,11 @@ page.
 
 Once the app is successfully deployed, the cluster details page will expose the public-facing URLs of the services.
 
-![Cluster 2's details page](/tutorials/deploy-app/devx_apps_deploy-apps_cluster-2-details-page.png)
+![Cluster 2's details page](/tutorials/deploy-app/devx_apps_deploy-apps_cluster-2-details-page.webp)
 
 Click on the UI’s service URL for port **8080** to access the Hello Universe application in a three-tier configuration.
 
-![View of the self-hosted version of Hello Universe](/tutorials/deploy-app/devx_apps_deploy-app_self-hosted-hello-universe.png)
+![View of the self-hosted version of Hello Universe](/tutorials/deploy-app/devx_apps_deploy-app_self-hosted-hello-universe.webp)
 
 The global counter is no longer available. Instead, you have a counter that starts at zero. Each time you click on the
 center image, the counter is incremented and stored in the Postgres database along with metadata. Also, remember that
@@ -334,7 +334,7 @@ To remove all resources created in this tutorial, begin by navigating to the lef
 each application, click on the **three-dots Menu** to expand the options menu and click on the **Delete** button. Repeat
 this process for each application.
 
-![Apps view with an arrow pointing towards the delete button](/tutorials/deploy-app/devx_apps_deploy-apps_delete-apps-view.png)
+![Apps view with an arrow pointing towards the delete button](/tutorials/deploy-app/devx_apps_deploy-apps_delete-apps-view.webp)
 
 Next, in the left **Main Menu**, click on the **Cluster** link to access the clusters page.
 
@@ -342,7 +342,7 @@ Click on **cluster-1** to access its details page. Click on **Settings** from th
 menu. Click on **Delete** to delete the cluster. You will be asked to enter the cluster name to confirm the delete
 action. Type the cluster name to proceed with the delete step. Repeat this process for cluster-2.
 
-![Delete a cluster view with arrow](/tutorials/deploy-app/devx_apps_deploy-apps_delete-cluster-view.png)
+![Delete a cluster view with arrow](/tutorials/deploy-app/devx_apps_deploy-apps_delete-cluster-view.webp)
 
 :::info
 
@@ -394,7 +394,7 @@ Download the tutorial image to your local machine.
 <br />
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.0.4
+docker pull ghcr.io/spectrocloud/tutorials:1.1.3
 ```
 
 Next, start the container, and open a bash session into it.
@@ -402,7 +402,47 @@ Next, start the container, and open a bash session into it.
 <br />
 
 ```shell
-docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.4 bash
+docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.3 bash
+```
+
+Navigate to the tutorial code.
+
+<br />
+
+```shell
+cd terraform/hello-universe-tf/
+```
+
+</TabItem>
+
+<TabItem label="Podman" value="Podman">
+
+If you are not running a Linux operating system, create and start the Podman Machine in your local environment.
+Otherwise, skip this step.
+
+```bash
+podman machine init
+podman machine start
+```
+
+Use the following command and ensure you receive an output displaying the installation information.
+
+```bash
+podman info
+```
+
+Download the tutorial image to your local machine. <br />
+
+```bash
+podman pull ghcr.io/spectrocloud/tutorials:1.1.3
+```
+
+Next, start the container, and open a bash session into it.
+
+<br />
+
+```shell
+podman run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.3 bash
 ```
 
 Navigate to the tutorial code.
@@ -458,7 +498,7 @@ Before you can get started with the Terraform code, you need a Spectro Cloud API
 
 To create an API key, log in to Palette, and click on the user **User Menu** and select **My API Keys**.
 
-![Image that points to the user drop-down Menu and points to the API key link](/tutorials/deploy-app/devx_apps_deploy-app_create-api-key.png)
+![Image that points to the user drop-down Menu and points to the API key link](/tutorials/deploy-app/devx_apps_deploy-app_create-api-key.webp)
 
 Next, click on **Add New API Key**. Fill out the required input field, **API Key Name**, and the **Expiration Date**.
 Click on **Confirm** to create the API key. Copy the key value to your clipboard, as you will use it shortly.
@@ -728,7 +768,7 @@ app profile through the UI. During the app profile creation process, click on th
 Review the payload's `values` attribute to find all of the properties of the service. You can copy the entire string and
 pass it to the resource `spectrocloud_application_profile` as an input for the `values` attribute.
 
-![UI's ability to display the API object](/tutorials/deploy-app/devx_apps_deploy-apps_ui-api-display.png)
+![UI's ability to display the API object](/tutorials/deploy-app/devx_apps_deploy-apps_ui-api-display.webp)
 
 The last Terraform resource to review before deploying the application is located in the **application.tf** file. The
 resource `spectrocloud_application.hello-universe-ui` is what creates the _app_. In Palette, an app combines a virtual
@@ -800,7 +840,7 @@ Log in to [Palette](https://console.spectrocloud.com), navigate to the left **Ma
 the **scenario-1** row, which takes you to the application’s overview page. Once you are on the scenario-1 overview
 page, click on the exposed URL for the service. A hyperlink for port 8080 is available.
 
-![scenario-1 overview page with an arrow pointing to the URL](/tutorials/deploy-app/devx_app_deploy-apps_scenario-1-overview.png)
+![scenario-1 overview page with an arrow pointing to the URL](/tutorials/deploy-app/devx_app_deploy-apps_scenario-1-overview.webp)
 
 <br />
 
@@ -814,7 +854,7 @@ few moments before clicking on the service URL to prevent the browser from cachi
 Welcome to Hello Universe, a demo application to help you learn more about Palette and its features. Feel free to click
 on the logo to increase the global counter and for a fun image change.
 
-![Hello Universe landing page displaying global clicks](/tutorials/deploy-app/devx_apps_deploy-apps_hello-universe.png)
+![Hello Universe landing page displaying global clicks](/tutorials/deploy-app/devx_apps_deploy-apps_hello-universe.webp)
 
 You have deployed your first app profile to Palette. Your first application is a single container application with no
 upstream dependencies. In a production environment, you often deploy applications that consume other services and
@@ -828,7 +868,7 @@ The second scenario contains two additional microservices, an API, and a Postgre
 a the global API for storing clicks, you will instead deploy your own API server and Postgres database. The following
 diagram illustrates the network connectivity path and behavior discussed.
 
-![A diagram of the three-tier architecture where the load balancer forwards all requests to the UI container OR the API container](/tutorials/deploy-app/devx_apps_deploys-apps_reverse-proxy-diagram.png)
+![A diagram of the three-tier architecture where the load balancer forwards all requests to the UI container OR the API container](/tutorials/deploy-app/devx_apps_deploys-apps_reverse-proxy-diagram.webp)
 
 To deploy the second scenario, you will again deploy the same three resource types previously discussed but another
 instance of them.
@@ -1211,7 +1251,7 @@ Log in to [Palette](https://console.spectrocloud.com) and navigate to the left *
 the **scenario-2** row. When you are on the scenario-2 overview page, click on the exposed URL for the service. A
 hyperlink for port 8080 and port 3000 is available.
 
-![A view of the scenario-2 overview page](/tutorials/deploy-app/devx_apps_deploy_scenario-2-overview.png)
+![A view of the scenario-2 overview page](/tutorials/deploy-app/devx_apps_deploy_scenario-2-overview.webp)
 
 Click on the UI’s service URL for port **8080** to access the Hello Universe application in a three-tier configuration.
 
@@ -1224,7 +1264,7 @@ few moments before clicking on the service URL to prevent the browser from cachi
 
 :::
 
-![View of the self-hosted hello universe app](/tutorials/deploy-app/devx_apps_deploy-app_self-hosted-hello-universe.png)
+![View of the self-hosted hello universe app](/tutorials/deploy-app/devx_apps_deploy-app_self-hosted-hello-universe.webp)
 
 The global counter is no longer available. Instead, you have a counter that starts at zero. Each time you click on the
 center image, the counter is incremented and stored in the Postgres database along with metadata.
@@ -1250,10 +1290,27 @@ the **Enter** key. Next, issue the following command to stop the container.
 
 <br />
 
+<Tabs>
+
+<TabItem label="Docker" value="Docker">
+
 ```shell
 docker stop tutorialContainer && \
-docker rmi --force ghcr.io/spectrocloud/tutorials:1.0.4
+docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.3
 ```
+
+</TabItem>
+
+<TabItem label="Podman" value="Podman">
+
+```shell
+podman stop tutorialContainer && \
+podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.3
+```
+
+</TabItem>
+
+</Tabs>
 
 :::info
 

@@ -29,7 +29,7 @@ jobs:
     - name: Setup Node.js environment
       uses: actions/setup-node@v3
       with:
-        node-version: "18"
+        node-version: "20"
         cache: "npm"
 
     - run: npm ci
@@ -45,7 +45,7 @@ jobs:
 
     - name: Deploy to Netlify
       id: netlify
-      uses: nwtgck/actions-netlify@v2.1.0
+      uses: nwtgck/actions-netlify@v3.0.0
       with:
         publish-dir: ./build
         deploy-message: 'Manual Netlify deployment from GitHub Actions -  ${{ github.sha }}'
