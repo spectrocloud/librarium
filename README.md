@@ -127,7 +127,7 @@ The **header** will have a search bar and some links to different other sections
 The page **content** will be displayed under the header and next to the sidebar. On it's right there will be a **table
 of contents** menu that will extract all of the headers inside the content and display them in a list. This will follow
 the user as he scroll the page. On top of the table of contents there will be a **github link** to the content of the
-file. This can be used by users to submit changes to different sections of our documentation
+file. This can be used by users to submit changes to different sections of our documentation.
 
 ### Main Pages
 
