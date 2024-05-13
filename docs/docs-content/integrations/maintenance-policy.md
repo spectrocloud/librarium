@@ -123,11 +123,12 @@ We adhere to the following stages of deprecation:
 
   The pack remains in _Disabled_ state for three months before it is deleted.
 
-- **Deleted**: When a pack is deleted, it is removed from Palette. You will not be able to deploy a new cluster profile
-  that contains the deleted pack, nor create a new cluster profile that references the deleted pack. We recommend that
-  you update your existing cluster profiles to use a newer version of the pack and apply the changes to your active
-  clusters. Active clusters will experience issues if a node is rebooted or if a new node is added to the cluster, as
-  the pack is no longer available in Palette.
+- **Deleted**: When a pack is deleted, it is removed from Palette. You will not be able to deploy a new cluster with a
+  cluster profile containing the deleted pack or create a new cluster profile referencing the deleted pack. We recommend
+  that you update your existing cluster profiles to use a newer version of the pack and apply the changes to your active
+  clusters. Active clusters using the deleted pack will typically not experience issues if a node is rebooted or if a
+  new node is added to the cluster. However, if problems exist with the deleted pack version, such as upstream bugs. In
+  that case, you may encounter issues if they affect scaling operations or other cluster operations.
 
 :::info
 
