@@ -1787,3 +1787,5 @@ data "spectrocloud_pack_simple" "k8s" {
 - [Kubernetes Documentation](https://kubernetes.io/docs/concepts/overview/)
 
 - [Image Swap with Palette](../clusters/cluster-management/image-swap.md)
+
+- [RHEL and PXK for Vmware](../byoos/usecases/vmware/rhel-pxk.md)
