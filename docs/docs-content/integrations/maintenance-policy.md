@@ -127,8 +127,8 @@ We adhere to the following stages of deprecation:
   cluster profile containing the deleted pack or create a new cluster profile referencing the deleted pack. We recommend
   that you update your existing cluster profiles to use a newer version of the pack and apply the changes to your active
   clusters. Active clusters using the deleted pack will typically not experience issues if a node is rebooted or if a
-  new node is added to the cluster. However, if there are any problems with the deleted pack version, such as upstream bugs,
-  you may encounter issues if they affect scaling or other cluster operations.
+  new node is added to the cluster. However, if there are any problems with the deleted pack version, such as upstream
+  bugs, you may encounter issues if they affect scaling or other cluster operations.
 
 :::info
 
