@@ -12,6 +12,7 @@ import TOCInline from "@theme/TOCInline";
 import { TechnicalPreviewReleaseNote as TpBadge } from "@site/src/components/Badges";
 import SimpleCardGrid from "@site/src/components/SimpleCardGrid/index";
 import ReleaseNotesVersions from "@site/src/components/ReleaseNotesVersions/index";
+import PartialsComponent from "@site/src/components/PartialsComponent";
 
 export default {
   ...MDXComponents,
@@ -28,4 +29,5 @@ export default {
   TpBadge,
   SimpleCardGrid,
   ReleaseNotesVersions,
+  PartialsComponent,
 };

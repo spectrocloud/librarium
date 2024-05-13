@@ -1,10 +1,10 @@
 {
   // This file is not used in compilation. It is here just for a nice editor experience.
   "extends": "@tsconfig/docusaurus/tsconfig.json",
-  "include": ["src", "declarations.d.ts", "utils"],
+  "include": ["src", "declarations.d.ts", "utils", "**/*.mdx",],
   "exclude": ["src/deprecated"],
   "compilerOptions": {
-    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "types": ["node", "jest", "@testing-library/jest-dom", "mdx"],
     "esModuleInterop": true,
     "target": "es6",
     "module": "Node16",
