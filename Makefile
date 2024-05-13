@@ -58,6 +58,7 @@ init: ## Initialize npm dependencies
 	npx husky install
 
 start: ## Start a local development server
+	make generate-partials
 	npm run start
 
 build: ## Run npm build
@@ -203,6 +204,11 @@ format-images: ## Format images
 	@echo "formatting images in /static/assets/docs/images/ folder"
 	./scripts/compress-convert-images.sh
 
+###@ Generate _partials/index.ts required to automatic partials usage.
+
+generate-partials: ## Generate
+	./scripts/generate-partials.sh
+	
 ###@ Aloglia Indexing
 
 update-dev-index: ## Update the Algolia index for the dev environment

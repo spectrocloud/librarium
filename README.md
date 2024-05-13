@@ -554,6 +554,64 @@ scheme. The rows of cards are dynamically created according to the list of speci
 />
 ```
 
+## Partials Component
+
+This is a custom component that allows you to create and use
+[Import Markdown](https://docusaurus.io/docs/3.2.1/markdown-features/react#importing-markdown).
+
+Partials must be created under the `_partials` folder. They must be named using an `_` prefix and the `*.mdx` filetype.
+Partials may be organised in any further subfolders as required. For example, you could create
+`_partials/public-cloud/_palette_setup.mdx`.
+
+In order to aid with organisation and categorization, partials must have a `partial_category` and `partial_name` defined
+in their frontmatter:
+
+```mdx
+---
+partial_category: public-cloud
+partial_name: palette-setup
+---
+
+This is how you set up Palette in {props.cloud}.
+```
+
+Partials are customized using properties which can be read using the `{props.field}` syntax.
+
+Once your partial has been created, run the `make generate-partials` command to make your partial available for use.
+This command will also be invoked during the `make start` and `make build` commands.
+
+Finally, you can reference your partial in any `*.md` file by using the `PartialsComponent`, together with the specified
+category and name of the partial:
+
+```md
+<PartialsComponent
+  category="public-cloud"
+  name="palette-setup"
+  cloud="AWS"
+/>
+```
+
+Note that the `cloud` field corresponds to the `{props.cloud}` reference in the `*.mdx` file.
+
+### Internal Links
+
+Due to the complexities of Docusaurus plugin rendering, links do not support versioning in `*.mdx` files. If you want to
+add an internal link you will have to use the `VersionedLink` component inside the `*.mdx` file.
+
+```mdx
+---
+partial_category: public-cloud
+partial_name: palette-setup
+---
+
+This is how you set up Palette in {props.cloud}.
+
+This is an <VersionedLink name="Internal Link" url="/getting-started/additional-capabilities"/>.
+```
+
+The path of the link should be the path of the destination file from the root directory, without any back operators
+`..`. External links can be referenced as usual.
+
 ## Netlify Previews
 
 By default Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. In
