@@ -63,6 +63,8 @@ We provide Ubuntu LTS and CentOS updates for IaaS clusters as follows:
 - **Patch and Minor versions**: Updated at runtime using Palette’s on-demand or scheduled OS upgrades and patch-on-boot
   capabilities.
 
+You can learn about our Kubernetes support lifecycle in the [Kubernetes Support Lifecycle](kubernetes-support.md) page.
+
 ### CNI Packs
 
 We provide CNI pack updates as follows:
@@ -118,18 +120,22 @@ We adhere to the following stages of deprecation:
 
 - **Deprecated**: When a pack or a pack version is deprecated, this indicates it will be removed in the future. You will
   still be able to create new cluster profiles using the pack and launch clusters using existing profiles that contain
-  the pack.
+  the pack. Active and deployed clusters are not affected as the pack is still available in Palette.
 
   The pack remains in _Deprecated_ state for three months before it moves to _Disabled_ state.
 
 - **Disabled**: When a pack is disabled, it is no longer available for selection in Palette. When creating new profiles,
-  you must use a newer version of the pack. You can still launch clusters using existing profiles that contain the
-  disabled pack.
+  you must use a newer version of the pack. You can still launch new clusters using existing profiles that contain the
+  disabled pack. Active and deployed clusters are not affected as the pack is still available in Palette.
 
   The pack remains in _Disabled_ state for three months before it is deleted.
 
-- **Deleted**: When a pack is deleted, it is removed from Palette. An active cluster that contains the deleted pack will
-  continue to operate. However, you will not be able to deploy a new cluster profile that contains the deleted pack.
+- **Deleted**: When a pack is deleted, it is removed from Palette. You will not be able to deploy a new cluster with a
+  cluster profile containing the deleted pack or create a new cluster profile referencing the deleted pack. We recommend
+  that you update your existing cluster profiles to use a newer version of the pack and apply the changes to your active
+  clusters. Active clusters using the deleted pack will typically not experience issues if a node is rebooted or if a
+  new node is added to the cluster. However, if there are any problems with the deleted pack version, such as upstream
+  bugs, you may encounter issues if they affect scaling or other cluster operations.
 
 :::info
 
