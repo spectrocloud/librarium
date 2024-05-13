@@ -2,8 +2,8 @@
 sidebar_label: "Order of Operations"
 title: "Order of Operations"
 description:
-  "Learn about the order of operations that make up the workload cluster provisioning process in Palette and how Cluster API
-  is used."
+  "Learn about the order of operations that make up the workload cluster provisioning process in Palette and how Cluster
+  API is used."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
@@ -16,13 +16,14 @@ and operating multiple Kubernetes clusters.
 :::info
 
 Check out the [Cluster API concepts](https://cluster-api.sigs.k8s.io/user/concepts) page for a detailed explanation of
-the components and concepts used in the Cluster API.
+the components and concepts used in the Cluster API. Cluster API is a Kubernetes sub-project and different from the
+[Kubernetes API](https://kubernetes.io/docs/concepts/overview/kubernetes-api/) that you use to interact with your
+Kubernetes clusters.
 
 :::
 
-Cluster API manages the lifecycle of a cluster. It helps in automating the process of cluster lifecycle management for
-platform operations. The Cluster API also helps ensure a consistent experience in cluster deployment across multiple
-infrastructure environments.
+Cluster API automates cluster lifecycle management for platform operations. It ensures a consistent experience in
+cluster deployment across different infrastructure environments.
 
 ## Workload Cluster Provisioning
 
@@ -61,26 +62,28 @@ clusters.
 
 ## Why Palette Pivots?
 
-Palette's decentralized model is based on a "decentralized management - local policy enforcement" scalable architecture.
+Palette's decentralized model is based on a "decentralized management" design with local policy enforcement that allows
+for a scalable architecture.
 
 ![distributed_orchestration.webp](/architecture_orchestartion-spectrocloud_distributed-flow.webp)
 
-As part of the workload for the Kubernetes cluster provisioning, only the first control-plane node is launched by the Cluster
-API active in the Palette management cluster. Once the control plane node is operational, Cluster API resources are
-_pivoted_ from the Palette management platform into the target workload cluster.
+As part of the workload for the Kubernetes cluster provisioning, only the first control-plane node is launched by the
+Cluster API active in the Palette management cluster. Once the control plane node is operational, Cluster API resources
+are _pivoted_ from the Palette management platform into the target workload cluster.
 
 The target workload cluster is responsible for provisioning and maintaining the remaining control plane and worker
 nodes. All Day-2 operations, which may result in node changes, including the operating system and Kubernetes upgrades,
-scaling, and Kubernetes SSL certificate rotation, are triggered by changes to Cluster API resources in the target
+node scaling, and Kubernetes SSL certificate rotation, are triggered by changes to Cluster API resources in the target
 workload cluster.
 
-Palette pivots these clusters for reasons such as:
+Palette pivots Cluster API resources from the Palette management platform to the workload clusters for reasons such as:
 
-- **Scalability** - The management platform scales to meet the demand of all your workload clusters as the number of
-  tenant clusters and nodes increase in size.
+- **Scalability** - The central management platform, Palette, can scale to meet the demand of all your workload clusters
+  as the number of workload clusters and nodes increase in size. The workload cluster manages its own lifecycle and
+  resources through guidance from the Palette management platform.
 
 - **Resiliency** - If the management platform were to experience an outage, the workload clusters would retain their
-  resiliency capabilities, such as auto-recovery, launching of new nodes on failures, auto-scaling, and other features.
+  capabilities, such as auto-recovery, launching of new nodes on failures, auto-scaling, and other features.
 
-- **Intermittent network resiliency** - The decentralized design supports use cases where the workload clusters can
-  still operate in intermittent and disconnected network availability situations.
+- **Network resiliency** - The decentralized design supports use cases where the workload clusters can still operate in
+  intermittent and disconnected network availability situations.
