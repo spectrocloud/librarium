@@ -13,3 +13,5 @@ use VMware vSphere as the infrastructure platform.
 ## Resources
 
 - [RHEL and Konvoy](./konvoy.md)
+
+- [RHEL and PXK](./rhel-pxk.md)
