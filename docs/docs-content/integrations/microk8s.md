@@ -20,6 +20,14 @@ We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until 
 the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. Refer to the
 [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
 
+:::warning
+
+Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before
+upgrading, you review the information provided in the [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades)
+section.
+
+:::
+
 ## Prerequisites
 
 - One of the following Ubuntu environments to run commands:
