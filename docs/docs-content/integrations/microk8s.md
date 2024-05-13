@@ -11,8 +11,8 @@ tags: ["packs", "microk8s", "kubernetes"]
 ---
 
 [MicroK8s](https://microk8s.io) is a lightweight Cloud Native Computing Foundation (CNCF) certified Kubernetes
-distribution developed by [Canonical](https://canonical.com). It deploys all Kubernetes services in a single,
-fully-contained package, while also offering out-of-the-box [add-ons](https://microk8s.io/docs/addons).
+distribution developed by [Canonical](https://canonical.com). It deploys all Kubernetes services in a single, fully
+contained package, while also offering out-of-the-box [add-ons](https://microk8s.io/docs/addons).
 
 Palette offers MicroK8s as an available Kubernetes distribution for creating clusters. You can use MicroK8s as the
 Kubernetes layer when creating a [cluster profile](../profiles/profiles.md) and then use the cluster profile to deploy a
@@ -67,8 +67,8 @@ installation was disabled due to Palette's requirement for a CNI layer to be pre
 
 #### Upgrade Strategy
 
-The upgrade strategy describes how to replace existing machines with new ones during upgrades. There are three types of
-strategy available:
+The upgrade strategy describes how to replace existing machines with new ones during upgrades. Three types of upgrade
+strategy are available:
 
 - `RollingUpgrade` - This is the default upgrade strategy. It deletes the current control plane machine before creating
   a new one.
@@ -82,8 +82,8 @@ parameter in the MicroK8s pack YAML file displayed under the **Pack Details** se
 
 :::warning
 
-When choosing `RollingUpgrade` as the upgrade strategy, the cluster must have three or more control plane nodes.
-Otherwise, the API server will be down during the upgrade, and the cluster will be unaccessible.
+When using `RollingUpgrade` as the upgrade strategy, the cluster must have at least three control plane nodes.
+Otherwise, the API server will be down during the upgrade, and the cluster will become inaccessible..
 
 :::
 
@@ -145,8 +145,8 @@ installation was disabled due to Palette's requirement for a CNI layer to be pre
 
 #### Upgrade Strategy
 
-The upgrade strategy describes how to replace existing machines with new ones during upgrades. There are three types of
-strategy available:
+The upgrade strategy describes how to replace existing machines with new ones during upgrades. Three types of upgrade
+strategy are available:
 
 - `RollingUpgrade` - This is the default upgrade strategy. It deletes the current control plane machine before creating
   a new one.
@@ -160,8 +160,8 @@ parameter in the MicroK8s pack YAML file displayed under the **Pack Details** se
 
 :::warning
 
-When choosing `RollingUpgrade` as the upgrade strategy, the cluster must have three or more control plane nodes.
-Otherwise, the API server will be down during the upgrade, and the cluster will be unaccessible.
+When using `RollingUpgrade` as the upgrade strategy, the cluster must have at least three control plane nodes.
+Otherwise, the API server will be down during the upgrade, and the cluster will become inaccessible.
 
 :::
 
@@ -228,8 +228,8 @@ installation was disabled due to Palette's requirement for a CNI layer to be pre
 
 #### Upgrade Strategy
 
-The upgrade strategy describes how to replace existing machines with new ones during upgrades. There are three types of
-strategy available:
+The upgrade strategy describes how to replace existing machines with new ones during upgrades. Three types of upgrade
+strategy are available:
 
 - `RollingUpgrade` - This is the default upgrade strategy. It deletes the current control plane machine before creating
   a new one.
@@ -243,8 +243,8 @@ parameter in the MicroK8s pack YAML file displayed under the **Pack Details** se
 
 :::warning
 
-When choosing `RollingUpgrade` as the upgrade strategy, the cluster must have three or more control plane nodes.
-Otherwise, the API server will be down during the upgrade, and the cluster will be unaccessible.
+When using `RollingUpgrade` as the upgrade strategy, the cluster must have at least three control plane nodes.
+Otherwise, the API server will be down during the upgrade, and the cluster will become inaccessible.
 
 :::
 
