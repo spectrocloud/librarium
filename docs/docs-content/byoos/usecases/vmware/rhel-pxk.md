@@ -10,9 +10,9 @@ tags: ["operating system", "byoos", "profiles", "pxk", "vmware"]
 
 You can create a custom VMware vSphere RHEL image with
 [Palette eXtended Kubernetes](../../../integrations/kubernetes.md) (PXK) and use it to deploy a Kubernetes cluster. You
-choose to build the custom RHEL image with PXK using FIPS or opt for a non-FIPS-compliant image. This workflow is built
+can choose to build the custom RHEL image with PXK using FIPS or opt for a non-FIPS-compliant image. This workflow is built
 on-top of the [Image Builder](https://github.com/kubernetes-sigs/image-builder) project. Check out the
-[Image Builder vSphere](https://image-builder.sigs.k8s.io/capi/providers/vsphere) section of the documentationto learn
+[Image Builder vSphere](https://image-builder.sigs.k8s.io/capi/providers/vsphere) section of the documentation to learn
 more about this workflow.
 
 Use the following steps to build a custom RHEL image with PXK for VMware vSphere and deploy a Kubernetes cluster.
@@ -30,10 +30,10 @@ Before you begin, ensure that you have the following prerequisites met.
 
   - 4 CPU
   - 8 GB of RAM
-  - 50 GB of free disk space
+  - 100 GB of free disk space
   - Internet access
   - Git installed.
-  - Ubuntu 20.04 LTS or later.
+  - Ubuntu 22.04 LTS or later.
 
 - The Linux VM must have connectivity to the internet and the VMware vSphere environment.
 
@@ -47,7 +47,7 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
 <Tabs>
 <TabItem value="fips" label="FIPS">
 
-1.  Open a teminal session and log in to the Linux VM.
+1.  Open a terminal session and log in to the Linux VM.
 
 2.  Download the x86_64 RHEL ISO from the
     [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download?source=sso). Make sure you download
@@ -73,7 +73,7 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
     sudo apt update && sudo apt install packer
     ```
 
-5.  Install anisble, make, jq, unzip, and python3.
+5.  Install `ansible`, `make`, `jq`, `unzip`, and `python3`.
 
     ```bash
     sudo apt-get install -y make unzip jq python3-pip git && \
@@ -92,7 +92,7 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
 7.  Clone the forked Image Builder that contains customizations for PXK and switch to the `rhel-pxk-fips` branch.
 
     ```bash
-     git clone git@github.com:spectrocloud/image-builder.git
+     git clone https://github.com/spectrocloud/image-builder.git
      cd image-builder/images/capi
      git checkout rhel-pxk-fips
     ```
@@ -318,7 +318,8 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
    sudo apt update && sudo apt install packer
    ```
 
-5. Install anisble, make, jq, unzip, and python3.
+5.  Install `ansible`, `make`, `jq`, `unzip`, and `python3`.
+
 
    ```bash
    sudo apt-get install -y make unzip jq python3-pip git && \
@@ -337,7 +338,7 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
 7. Clone the [Image Builder repository](https://github.com/kubernetes-sigs/image-builder).
 
    ```bash
-    git clone git@github.com:kubernetes-sigs/image-builder.git
+    git clone https://github.com/kubernetes-sigs/image-builder.git
     cd image-builder/images/capi
    ```
 
