@@ -8,7 +8,7 @@ tags: ["edge", "architecture"]
 ---
 
 An Edge host must meet the minimum hardware requirements to be deployed successfully. Certain features such as Virtual
-Machine Operator (VMO) also require additional hardware capabilities. This page provides general guidance on the minimum
+Machine Orchestrator (VMO) require additional hardware capabilities. This page provides general guidance on the minimum
 hardware requirements for your Edge hosts.
 
 :::info
