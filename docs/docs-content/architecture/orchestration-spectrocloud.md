@@ -50,7 +50,7 @@ The following diagram illustrates the order of operations that make up the workl
    MachineDeployment or VSphereMachineTemplate. The Cluster API active in CP-A will provision the remaining control
    plane and worker nodes.
 
-6. The Palette agent will install all the additional add-ons as the cluster cluster profile specifies.
+6. The Palette agent will install all the additional add-ons as the cluster profile specifies.
 
 :::info
 
