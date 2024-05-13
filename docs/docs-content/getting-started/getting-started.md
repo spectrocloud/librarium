@@ -10,7 +10,8 @@ tags: ["getting-started"]
 
 ### Partials test
 
-<PartialsComponent name="PaletteSetup" 
+<PartialsComponent 
+  name="PaletteSetup" 
   props={[
     {
       key:"cloud",

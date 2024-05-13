@@ -1,9 +1,6 @@
 import React from "react";
 import PaletteSetup from "./_partials/getting-started/_palette-setup.mdx"
 
-
-type PartialComponentProperty = {[key: string] : string}
-
 interface InputProperty {
     key: string,
     value: string,
@@ -28,24 +25,11 @@ export default function PartialsComponent(details : PartialsComponentDetails) : 
             concat(details.name).
             concat(". Check partial names in PartialsComponent."))
     }
-    // [
-        // {
-    //     key: "cloud", 
-    //     value : "AWS"
-    // },
-        // {
-    //     key: "version", 
-    //     value : "2.0"
-    // },
-    // ]
-    // console.log(details.props)
-    var propAttribute: PartialComponentProperty = {}
+
+    var propAttribute: {[key: string] : string} = {}
     details.props.map((val) => {
         propAttribute[val.key] = val.value
-    })
-    // {cloud:"AWS", version: "2.0"}
-    // console.log(propAttribute)
-    
+    })    
 
     return React.cloneElement(partials[details.name], propAttribute);
 }
