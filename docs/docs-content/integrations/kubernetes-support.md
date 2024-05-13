@@ -61,6 +61,13 @@ about our deprecation process in the [Pack Deprecation](./maintenance-policy.md#
 
 ## Kubernetes Upgrades
 
+:::warning
+
+Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before
+upgrading, you review the information provided in this section.
+
+:::
+
 The official guidelines for Kubernetes upgrades recommend upgrading one minor version at a time. For example, if you are
 using Kubernetes version 1.26, you should upgrade to 1.27, before upgrading to version 1.28. You can learn more about
 the official Kubernetes upgrade guidelines in the
