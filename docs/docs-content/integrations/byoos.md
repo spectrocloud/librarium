@@ -196,6 +196,7 @@ data "spectrocloud_pack_simple" "byoos" {
   version      = "1.0.0"
   type         = "helm"
   registry_uid = data.spectrocloud_registry.public_registry.id
+}
 ```
 
 </TabItem>
@@ -214,6 +215,7 @@ data "spectrocloud_pack_simple" "byoos" {
   version      = "1.0.0"
   type         = "helm"
   registry_uid = data.spectrocloud_registry.public_registry.id
+}
 ```
 
 </TabItem>
