@@ -10,8 +10,8 @@ tags: ["operating system", "byoos", "profiles", "pxk", "vmware"]
 
 You can create a custom VMware vSphere RHEL image with
 [Palette eXtended Kubernetes](../../../integrations/kubernetes.md) (PXK) and use it to deploy a Kubernetes cluster. You
-can choose to build the custom RHEL image with PXK using FIPS or opt for a non-FIPS-compliant image. This workflow is built
-on-top of the [Image Builder](https://github.com/kubernetes-sigs/image-builder) project. Check out the
+can choose to build the custom RHEL image with PXK using FIPS or opt for a non-FIPS-compliant image. This workflow is
+built on-top of the [Image Builder](https://github.com/kubernetes-sigs/image-builder) project. Check out the
 [Image Builder vSphere](https://image-builder.sigs.k8s.io/capi/providers/vsphere) section of the documentation to learn
 more about this workflow.
 
@@ -34,6 +34,14 @@ Before you begin, ensure that you have the following prerequisites met.
   - Internet access
   - Git installed.
   - Ubuntu 22.04 LTS or later.
+
+  <br />
+
+  :::info
+
+  You may choose to use a different Linux distribution, but the commands in this guide are specific to Ubuntu.
+
+  :::
 
 - The Linux VM must have connectivity to the internet and the VMware vSphere environment.
 
@@ -62,7 +70,7 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
 3.  Update the system and install the latest packages.
 
     ```bash
-    sudo apt update -y && sudo apt upgrade -y
+    sudo apt update --yes && sudo apt upgrade --yes
     ```
 
 4.  Install HashiCorp Packer.
@@ -76,13 +84,14 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
 5.  Install `ansible`, `make`, `jq`, `unzip`, and `python3`.
 
     ```bash
-    sudo apt-get install -y make unzip jq python3-pip git && \
-    sudo apt install -y software-properties-common
+    sudo apt-get install --yes make unzip jq python3-pip git && \
+    sudo apt install --yes software-properties-common
     sudo add-apt-repository --yes --update ppa:ansible/ansible
-    sudo apt install -y ansible
+    sudo apt install --yes ansible
     ```
 
-6.  Update the PATH environment variable to include Python.
+6.  Update the PATH environment variable to include Python. Make sure Python 3.10 or later is installed. Otherwise, you
+    will encounter an error during the build process.
 
     ```bash
     export PATH=$PATH:/usr/bin/python3 && \
@@ -113,7 +122,7 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
     :::tip
 
     If you encounter an error during the `make deps-ova` command, ensure you set the python3 path in the PATH
-    environment variable correctly.
+    environment variable correctly. Also, make sure Python 3.10 or later is installed
 
     :::
 
@@ -211,8 +220,8 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
 
     ```json
     "kubernetes_container_registry": "gcr.io/spectro-images-fips",
-    "kubernetes_rpm_gpg_key": "http://34.214.158.3/spectro_repo/gpg.key",
-    "kubernetes_rpm_repo": "http://34.214.158.3/spectro_repo/",
+    "kubernetes_rpm_gpg_key": "http://fips-rpms.spectrocloud.com/spectro_repo/gpg.key",
+    "kubernetes_rpm_repo": "http://fips-rpms.spectrocloud.com/spectro_repo/",
     ```
 
     </details>
@@ -292,7 +301,7 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
 
 </TabItem>
 <TabItem value="non-fips" label="Non-FIPS">
-1. Open a teminal session and log in to the Linux VM.
+1. Open a terminal session and log in to the Linux VM.
 
 2. Download the x86_64 RHEL ISO from the
    [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download?source=sso). Make sure you download
@@ -307,7 +316,7 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
 3. Update the system and install the latest packages.
 
    ```bash
-   sudo apt update -y && sudo apt upgrade -y
+   sudo apt update --yes && sudo apt upgrade --yes
    ```
 
 4. Install HashiCorp Packer.
@@ -318,17 +327,17 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
    sudo apt update && sudo apt install packer
    ```
 
-5.  Install `ansible`, `make`, `jq`, `unzip`, and `python3`.
-
+5. Install `ansible`, `make`, `jq`, `unzip`, and `python3`.
 
    ```bash
-   sudo apt-get install -y make unzip jq python3-pip git && \
-   sudo apt install -y software-properties-common
+   sudo apt-get install --yes make unzip jq python3-pip git && \
+   sudo apt install --yes software-properties-common
    sudo add-apt-repository --yes --update ppa:ansible/ansible
-   sudo apt install -y ansible
+   sudo apt install --yes ansible
    ```
 
-6. Update the PATH environment variable to include Python.
+6. Update the PATH environment variable to include Python. Make sure Python 3.10 or later is installed. Otherwise, you
+   will encounter an error during the build process.
 
    ```bash
    export PATH=$PATH:/usr/bin/python3 && \
@@ -358,7 +367,7 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
    :::tip
 
    If you encounter an error during the `make deps-ova` command, ensure you set the python3 path in the PATH environment
-   variable correctly.
+   variable correctly. Also, make sure Python 3.10 or later is installed.
 
    :::
 
