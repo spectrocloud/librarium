@@ -11,8 +11,7 @@ sidebar_position: 20
 
 Depending on what version of Palette you are using, the internal architecture and network communication will be
 different. Before Palette 4.0.0 the management platform communicated with the workload cluster via NATS. Starting with
-Palette 4.0.0, the management platform communicates with the workload cluster via gRPC. Use the tabs below to view the
-network communication and ports for each architecture.
+Palette 4.0.0, the management platform communicates with the workload cluster via gRPC.
 
 ## SaaS Network Communications and Ports
 
