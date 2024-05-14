@@ -32,7 +32,7 @@ To contribute, we recommend having the following software installed locally on y
 
 To get started with the Docker based local development approach ensure you are in the root context of this repository.
 
-Initailize the repository by issuing the following command:
+Initialize the repository by issuing the following command:
 
 ```shell
 make init
