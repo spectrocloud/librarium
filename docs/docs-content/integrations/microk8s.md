@@ -14,15 +14,15 @@ tags: ["packs", "microk8s", "kubernetes"]
 distribution developed by [Canonical](https://canonical.com). It deploys all Kubernetes services in a single, fully
 contained package, while also offering out-of-the-box [add-ons](https://microk8s.io/docs/addons).
 
-Palette offers MicroK8s as an available Kubernetes distribution for creating clusters. You can use MicroK8s as the
-Kubernetes layer when creating a [cluster profile](../profiles/profiles.md) and then use the cluster profile to deploy a
-cluster.
+Palette offers MicroK8s as Kubernetes distribution available for creating clusters. You can use MicroK8s as the
+Kubernetes layer when creating [cluster profiles](../profiles/profiles.md) and then use the cluster profiles to deploy
+clusters.
 
 ### Support Lifecycle
 
-We support other Kubernetes distributions, such as K3s and RKE2, until their official End-of-Life (EOL). The EOL is set
-by the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. Refer to the
-[Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
+We support different Kubernetes distributions, such as MicroK8s, K3s, and RKE2, until their official End-of-Life (EOL).
+The EOL is set by the respective owner. Once we stop supporting the minor version, we initiate the deprecation process.
+Refer to the [Kubernetes Support Lifecycle](kubernetes-support.md#other-kubernetes-distributions) guide to learn more.
 
 ## Versions Supported
 
@@ -36,20 +36,20 @@ by the respective owner. Once we stop supporting the minor version, we initiate 
 
 - Operating System (OS) pack layer and infrastructure provider dependencies as listed in the table below.
 
-| Infrastructure Platform | OS     | Version | Supported?         |
-| ----------------------- | ------ | ------- | ------------------ |
-| AWS                     | Ubuntu | 22.04   | :white_check_mark: |
-| MAAS                    | Ubuntu | 22.04   | :white_check_mark: |
+  | Infrastructure Platform | OS     | Version | Supported?         |
+  | ----------------------- | ------ | ------- | ------------------ |
+  | AWS                     | Ubuntu | 22.04   | :white_check_mark: |
+  | MAAS                    | Ubuntu | 22.04   | :white_check_mark: |
 
 ### Parameters
 
-| Parameter                        | Description                                                                                                                                                                                                                    |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `microk8sConfig.addons`          | A list of [MicroK8s addons](https://microk8s.io/docs/addons) you can set for your cluster. `Ingress` and `DNS` are mandatory and enabled by default.                                                                           |
-| `microk8sConfig.upgradeStrategy` | It describes how to replace existing machines of your cluster with new ones during upgrades. Values can be `RollingUpgrade` (default), `InPlaceUpgrade`, or `SmartUpgrade`. Refer to the [Usage](#usage) section for guidance. |
-| `microk8sConfig.bootCommands`    | A list of commands you can set to be executed during boot.                                                                                                                                                                     |
-| `microk8sConfig.preRunCommands`  | A list of commands you can set to be executed before installing MicroK8s in your cluster.                                                                                                                                      |
-| `microk8sConfig.postRunCommands` | A list of commands you can set to be executed after installing MicroK8s in your cluster.                                                                                                                                       |
+| Parameter                        | Description                                                                                                                                                                                                                 |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `microk8sConfig.addons`          | A list of [MicroK8s addons](https://microk8s.io/docs/addons) you can set for your cluster. `Ingress` and `DNS` are mandatory and enabled by default.                                                                        |
+| `microk8sConfig.upgradeStrategy` | It describes how to replace existing nodes of your cluster with new ones during upgrades. Values can be `RollingUpgrade` (default), `InPlaceUpgrade`, or `SmartUpgrade`. Refer to the [Usage](#usage) section for guidance. |
+| `microk8sConfig.bootCommands`    | A list of commands you can set to be executed during boot.                                                                                                                                                                  |
+| `microk8sConfig.preRunCommands`  | A list of commands you can set to be executed before installing MicroK8s in your cluster.                                                                                                                                   |
+| `microk8sConfig.postRunCommands` | A list of commands you can set to be executed after installing MicroK8s in your cluster.                                                                                                                                    |
 
 ### Usage
 
@@ -61,31 +61,33 @@ creation. Remember that the cloud type must be either AWS or MAAS, and the OS la
 :::info
 
 MicroK8s clusters use the [Calico CNI](https://microk8s.io/docs/change-cidr) by default. However, this default
-installation was disabled due to Palette's requirement for a CNI layer to be present in the cluster profiles.
+installation was disabled due to Palette's requirement for a CNI layer to be present in the cluster profiles. This way,
+users can choose their preferred CNI layer during the cluster profile creation.
 
 :::
 
 #### Upgrade Strategy
 
-The upgrade strategy describes how to replace existing machines with new ones during upgrades. Three types of upgrade
-strategy are available:
-
-- `RollingUpgrade` - This is the default upgrade strategy. It deletes the current control plane machine before creating
-  a new one.
-- `InPlaceUpgrade` - It performs an in-place upgrade of the control plane. For clusters with one control plane and one
-  worker node, `InPlaceUpgrade` temporarily causes the API server to be down.
-- `SmartUpgrade` - It does an in-place upgrade of the control plane on clusters with less than three control plane
-  nodes, and rolling upgrade on clusters with three or more control plane nodes.
+The upgrade strategy describes how to replace existing nodes with new ones during upgrades.
 
 You can specify the upgrade strategy during cluster profile creation by editing the value of the `upgradeStrategy`
 parameter in the MicroK8s pack YAML file displayed under the **Pack Details** section.
 
-:::warning
+Three types of upgrade strategy are available:
 
-When using `RollingUpgrade` as the upgrade strategy, the cluster must have at least three control plane nodes.
-Otherwise, the API server will be down during the upgrade, and the cluster will become inaccessible..
+- `RollingUpgrade` - The default upgrade strategy that deletes the current control plane node before creating a new one.
 
-:::
+  :::warning
+
+  When using the `RollingUpgrade` strategy, the cluster must have at least three control plane nodes. Otherwise, the API
+  server will be down during the upgrade, and the cluster will not be accessible.
+
+  :::
+
+- `InPlaceUpgrade` - Performs an in-place upgrade of the control plane. For clusters with one control plane and one
+  worker node, `InPlaceUpgrade` temporarily shuts down the API server.
+- `SmartUpgrade` - Performs an in-place upgrade of the control plane on clusters with fewer than three control plane
+  nodes, and a rolling upgrade on clusters with three or more control plane nodes.
 
 #### Using MicroK8s with the AWS EBS Pack
 
@@ -114,20 +116,20 @@ node:
 
 - Operating System (OS) pack layer and infrastructure provider dependencies as listed in the table below.
 
-| Infrastructure Platform | OS     | Version | Supported?         |
-| ----------------------- | ------ | ------- | ------------------ |
-| AWS                     | Ubuntu | 22.04   | :white_check_mark: |
-| MAAS                    | Ubuntu | 22.04   | :white_check_mark: |
+  | Infrastructure Platform | OS     | Version | Supported?         |
+  | ----------------------- | ------ | ------- | ------------------ |
+  | AWS                     | Ubuntu | 22.04   | :white_check_mark: |
+  | MAAS                    | Ubuntu | 22.04   | :white_check_mark: |
 
 ### Parameters
 
-| Parameter                        | Description                                                                                                                                                                                                                    |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `microk8sConfig.addons`          | A list of [MicroK8s addons](https://microk8s.io/docs/addons) you can set for your cluster. `Ingress` and `DNS` are mandatory and enabled by default.                                                                           |
-| `microk8sConfig.upgradeStrategy` | It describes how to replace existing machines of your cluster with new ones during upgrades. Values can be `RollingUpgrade` (default), `InPlaceUpgrade`, or `SmartUpgrade`. Refer to the [Usage](#usage) section for guidance. |
-| `microk8sConfig.bootCommands`    | A list of commands you can set to be executed during boot.                                                                                                                                                                     |
-| `microk8sConfig.preRunCommands`  | A list of commands you can set to be executed before installing MicroK8s in your cluster.                                                                                                                                      |
-| `microk8sConfig.postRunCommands` | A list of commands you can set to be executed after installing MicroK8s in your cluster.                                                                                                                                       |
+| Parameter                        | Description                                                                                                                                                                                                                 |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `microk8sConfig.addons`          | A list of [MicroK8s addons](https://microk8s.io/docs/addons) you can set for your cluster. `Ingress` and `DNS` are mandatory and enabled by default.                                                                        |
+| `microk8sConfig.upgradeStrategy` | It describes how to replace existing nodes of your cluster with new ones during upgrades. Values can be `RollingUpgrade` (default), `InPlaceUpgrade`, or `SmartUpgrade`. Refer to the [Usage](#usage) section for guidance. |
+| `microk8sConfig.bootCommands`    | A list of commands you can set to be executed during boot.                                                                                                                                                                  |
+| `microk8sConfig.preRunCommands`  | A list of commands you can set to be executed before installing MicroK8s in your cluster.                                                                                                                                   |
+| `microk8sConfig.postRunCommands` | A list of commands you can set to be executed after installing MicroK8s in your cluster.                                                                                                                                    |
 
 ### Usage
 
@@ -139,31 +141,33 @@ creation. Remember that the cloud type must be either AWS or MAAS, and the OS la
 :::info
 
 MicroK8s clusters use the [Calico CNI](https://microk8s.io/docs/change-cidr) by default. However, this default
-installation was disabled due to Palette's requirement for a CNI layer to be present in the cluster profiles.
+installation was disabled due to Palette's requirement for a CNI layer to be present in the cluster profiles. This way,
+users can choose their preferred CNI layer during the cluster profile creation.
 
 :::
 
 #### Upgrade Strategy
 
-The upgrade strategy describes how to replace existing machines with new ones during upgrades. Three types of upgrade
-strategy are available:
-
-- `RollingUpgrade` - This is the default upgrade strategy. It deletes the current control plane machine before creating
-  a new one.
-- `InPlaceUpgrade` - It performs an in-place upgrade of the control plane. For clusters with one control plane and one
-  worker node, `InPlaceUpgrade` temporarily causes the API server to be down.
-- `SmartUpgrade` - It does an in-place upgrade of the control plane on clusters with less than three control plane
-  nodes, and rolling upgrade on clusters with three or more control plane nodes.
+The upgrade strategy describes how to replace existing nodes with new ones during upgrades.
 
 You can specify the upgrade strategy during cluster profile creation by editing the value of the `upgradeStrategy`
 parameter in the MicroK8s pack YAML file displayed under the **Pack Details** section.
 
-:::warning
+Three types of upgrade strategy are available:
 
-When using `RollingUpgrade` as the upgrade strategy, the cluster must have at least three control plane nodes.
-Otherwise, the API server will be down during the upgrade, and the cluster will become inaccessible.
+- `RollingUpgrade` - The default upgrade strategy that deletes the current control plane node before creating a new one.
 
-:::
+  :::warning
+
+  When using the `RollingUpgrade` strategy, the cluster must have at least three control plane nodes. Otherwise, the API
+  server will be down during the upgrade, and the cluster will not be accessible.
+
+  :::
+
+- `InPlaceUpgrade` - Performs an in-place upgrade of the control plane. For clusters with one control plane and one
+  worker node, `InPlaceUpgrade` temporarily shuts down the API server.
+- `SmartUpgrade` - Performs an in-place upgrade of the control plane on clusters with fewer than three control plane
+  nodes, and a rolling upgrade on clusters with three or more control plane nodes.
 
 </TabItem>
 
@@ -175,20 +179,20 @@ Otherwise, the API server will be down during the upgrade, and the cluster will 
 
 - Operating System (OS) pack layer and infrastructure provider dependencies as listed in the table below.
 
-| Infrastructure Platform | OS     | Version | Supported?         |
-| ----------------------- | ------ | ------- | ------------------ |
-| AWS                     | Ubuntu | 22.04   | :white_check_mark: |
-| MAAS                    | Ubuntu | 22.04   | :white_check_mark: |
+  | Infrastructure Platform | OS     | Version | Supported?         |
+  | ----------------------- | ------ | ------- | ------------------ |
+  | AWS                     | Ubuntu | 22.04   | :white_check_mark: |
+  | MAAS                    | Ubuntu | 22.04   | :white_check_mark: |
 
 ### Parameters
 
-| Parameter                        | Description                                                                                                                                                                                                                    |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `microk8sConfig.addons`          | A list of [MicroK8s addons](https://microk8s.io/docs/addons) you can set for your cluster. `Ingress` and `DNS` are mandatory and enabled by default.                                                                           |
-| `microk8sConfig.upgradeStrategy` | It describes how to replace existing machines of your cluster with new ones during upgrades. Values can be `RollingUpgrade` (default), `InPlaceUpgrade`, or `SmartUpgrade`. Refer to the [Usage](#usage) section for guidance. |
-| `microk8sConfig.bootCommands`    | A list of commands you can set to be executed during boot.                                                                                                                                                                     |
-| `microk8sConfig.preRunCommands`  | A list of commands you can set to be executed before installing MicroK8s in your cluster.                                                                                                                                      |
-| `microk8sConfig.postRunCommands` | A list of commands you can set to be executed after installing MicroK8s in your cluster.                                                                                                                                       |
+| Parameter                        | Description                                                                                                                                                                                                                 |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `microk8sConfig.addons`          | A list of [MicroK8s addons](https://microk8s.io/docs/addons) you can set for your cluster. `Ingress` and `DNS` are mandatory and enabled by default.                                                                        |
+| `microk8sConfig.upgradeStrategy` | It describes how to replace existing nodes of your cluster with new ones during upgrades. Values can be `RollingUpgrade` (default), `InPlaceUpgrade`, or `SmartUpgrade`. Refer to the [Usage](#usage) section for guidance. |
+| `microk8sConfig.bootCommands`    | A list of commands you can set to be executed during boot.                                                                                                                                                                  |
+| `microk8sConfig.preRunCommands`  | A list of commands you can set to be executed before installing MicroK8s in your cluster.                                                                                                                                   |
+| `microk8sConfig.postRunCommands` | A list of commands you can set to be executed after installing MicroK8s in your cluster.                                                                                                                                    |
 
 :::tip
 
@@ -222,31 +226,33 @@ creation. Remember that the cloud type must be either AWS or MAAS, and the OS la
 :::info
 
 MicroK8s clusters use the [Calico CNI](https://microk8s.io/docs/change-cidr) by default. However, this default
-installation was disabled due to Palette's requirement for a CNI layer to be present in the cluster profiles.
+installation was disabled due to Palette's requirement for a CNI layer to be present in the cluster profiles. This way,
+users can choose their preferred CNI layer during the cluster profile creation.
 
 :::
 
 #### Upgrade Strategy
 
-The upgrade strategy describes how to replace existing machines with new ones during upgrades. Three types of upgrade
-strategy are available:
-
-- `RollingUpgrade` - This is the default upgrade strategy. It deletes the current control plane machine before creating
-  a new one.
-- `InPlaceUpgrade` - It performs an in-place upgrade of the control plane. For clusters with one control plane and one
-  worker node, `InPlaceUpgrade` temporarily causes the API server to be down.
-- `SmartUpgrade` - It does an in-place upgrade of the control plane on clusters with less than three control plane
-  nodes, and rolling upgrade on clusters with three or more control plane nodes.
+The upgrade strategy describes how to replace existing nodes with new ones during upgrades.
 
 You can specify the upgrade strategy during cluster profile creation by editing the value of the `upgradeStrategy`
 parameter in the MicroK8s pack YAML file displayed under the **Pack Details** section.
 
-:::warning
+Three types of upgrade strategy are available:
 
-When using `RollingUpgrade` as the upgrade strategy, the cluster must have at least three control plane nodes.
-Otherwise, the API server will be down during the upgrade, and the cluster will become inaccessible.
+- `RollingUpgrade` - The default upgrade strategy that deletes the current control plane node before creating a new one.
 
-:::
+  :::warning
+
+  When using the `RollingUpgrade` strategy, the cluster must have at least three control plane nodes. Otherwise, the API
+  server will be down during the upgrade, and the cluster will not be accessible.
+
+  :::
+
+- `InPlaceUpgrade` - Performs an in-place upgrade of the control plane. For clusters with one control plane and one
+  worker node, `InPlaceUpgrade` temporarily shuts down the API server.
+- `SmartUpgrade` - Performs an in-place upgrade of the control plane on clusters with fewer than three control plane
+  nodes, and a rolling upgrade on clusters with three or more control plane nodes.
 
 </TabItem>
 
