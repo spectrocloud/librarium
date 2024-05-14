@@ -1,5 +1,5 @@
 import React from "react";
-import { AllPartials, PartialsMapCategory } from "./PartialsMap"
+import { AllPartials, PartialsCategory } from "./PartialsCategories"
 
 interface InputProperty {
     key: string,
@@ -29,7 +29,7 @@ export default function PartialsComponent(details : PartialsComponentDetails) : 
             concat("."));
     }
     
-    const partialsMap = foundCategoryMap as PartialsMapCategory;
+    const partialsMap = foundCategoryMap as PartialsCategory;
     if (!partialsMap.map[details.name]) {
         throw new Error("No partial found for name ".
             concat(details.name).

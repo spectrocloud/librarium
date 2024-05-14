@@ -1,0 +1,5 @@
+import React from "react";
+
+export interface PartialsMap {
+    [key: string]: React.ReactElement;
+}

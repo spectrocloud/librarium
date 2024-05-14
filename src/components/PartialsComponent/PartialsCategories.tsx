@@ -1,17 +1,13 @@
-import React from "react";
-import { GettingStartedPartials } from "./maps/GettingStartedPartialsMap"
+import { GettingStartedPartials } from "./maps/GettingStartedPartials"
+import { PartialsMap } from "./maps/PartialsMap"
 
-export interface PartialsMap {
-    [key: string]: React.ReactElement;
-}
-
-export interface PartialsMapCategory {
+export interface PartialsCategory {
     category: string; 
     map: PartialsMap;
 }
 
 interface PartialsMapCategories {
-    maps: PartialsMapCategory[]
+    maps: PartialsCategory[]
 }
 
 // Maintain a map of existing partials 
@@ -21,4 +17,5 @@ export const AllPartials: PartialsMapCategories = {
             category: "GETTING-STARTED",
             map: GettingStartedPartials
         }
-    ]}; 
+    ]
+}; 
