@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Initial Edge Host Configuration"
-title: "Initial Edge Host Configuration"
+title: "Initial Edge Host Configuration with Palette TUI"
 description: "Instructions for configuring the Edge host when booting up the Edge host for the first time."
 hide_table_of_contents: false
 sidebar_position: 32
@@ -20,7 +20,7 @@ For more information about EdgeForge and site user data, refer to
 :::warning
 
 If you are upgrading to 4.3 from an older version, the initial configuration does not get triggered. If you want to
-perform the setup, you can issue the command `spectro-edge-console` in the terminal to trigger it manually.
+perform the setup, you can issue the command `palette-tui` in the terminal to trigger it manually.
 
 :::
 
@@ -40,10 +40,9 @@ perform the setup, you can issue the command `spectro-edge-console` in the termi
 1. Power up the Edge host. Do not make any input and allow Palette to choose the boot option automatically. If this is
    the first time you've started the Edge host since installation, you will be automatically directed to the TUI.
 
-   If you are accessing the Edge host with an SSH connection, you can issue the command `spectro-edge-console` to bring
-   up the TUI. You can also use the same command to bring up the TUI if you have gone through the initial setup in the
-   TUI and want to change any configuration. However, you can only do this before you have deployed a cluster on the
-   Edge host.
+   If you are accessing the Edge host with an SSH connection, you can issue the command `palette-tui` to bring up the
+   TUI. You can also use the same command to bring up the TUI if you have gone through the initial setup in the TUI and
+   want to change any configuration. However, you can only do this before you have deployed a cluster on the Edge host.
 
 2. If you have already configured a user in your **user-data** file in the EdgeForge step, this step will be skipped
    automatically.
