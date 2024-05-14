@@ -10,7 +10,8 @@ tags: ["getting-started"]
 
 ### Partials test
 
-<PartialsComponent 
+<PartialsComponent
+  category="GETTING-STARTED"
   name="PaletteSetup" 
   props={[
     {

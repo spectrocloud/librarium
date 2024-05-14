@@ -1,6 +1,5 @@
 import React from "react";
-// Import each partial here 
-import PaletteSetup from "./_partials/getting-started/_palette-setup.mdx"
+import { AllPartials, PartialsMapCategory } from "./PartialsMap"
 
 interface InputProperty {
     key: string,
@@ -8,25 +7,35 @@ interface InputProperty {
 }
 
 interface PartialsComponentDetails {
+    category: string;
     name: string;
     // Pass the key-value property pairs 
     props: InputProperty[];
 }
 
-interface PartialsMap {
-    [key: string]: React.ReactElement;
-}
- 
-// Maintain a map of existing partials 
-export const partials: PartialsMap = {
-    PaletteSetup: <PaletteSetup />,
-}; 
-
 export default function PartialsComponent(details : PartialsComponentDetails) : React.ReactElement {
-    if (!partials[details.name]) {
-        throw new Error("No partial found for ".
+
+    var foundCategoryMap = null;
+    AllPartials.maps.forEach((val) => {
+        if (val.category == details.category) {
+            foundCategoryMap = val;
+            return
+        }
+    })
+
+    if (!foundCategoryMap) {
+        throw new Error("No partial found for category".
             concat(details.name).
-            concat(". Check partial names in PartialsComponent."))
+            concat("."));
+    }
+    
+    const partialsMap = foundCategoryMap as PartialsMapCategory;
+    if (!partialsMap.map[details.name]) {
+        throw new Error("No partial found for name ".
+            concat(details.name).
+            concat("in category ").
+            concat(details.category).
+            concat(".="));
     }
 
     // Map elements to index signatures
@@ -35,6 +44,6 @@ export default function PartialsComponent(details : PartialsComponentDetails) : 
         propAttribute[val.key] = val.value
     })    
 
-    return React.cloneElement(partials[details.name], propAttribute);
+    return React.cloneElement(partialsMap.map[details.name], propAttribute);
 }
 
