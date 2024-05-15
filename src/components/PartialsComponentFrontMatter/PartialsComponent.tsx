@@ -20,16 +20,15 @@ interface PartialsComponentDetails {
 
 const AllPartials = importPartials()
 
-
 export default function PartialsComponentFrontMatter(details : PartialsComponentDetails) : React.ReactElement {
     var mapKey = getMapKey(details.category, details.name)
     
     if (!AllPartials[mapKey]) {
-        throw new Error("No partial found for name ".
-            concat(details.name).
-            concat(" in category ").
-            concat(details.category).
-            concat(".="));
+    throw new Error("No partial found for name ".
+        concat(details.name).
+        concat(" in category ").
+        concat(details.category).
+        concat(".="));
     }
 
     // Map elements to index signatures
@@ -39,8 +38,6 @@ export default function PartialsComponentFrontMatter(details : PartialsComponent
     })
 
     var cloned = React.createElement(AllPartials[mapKey], propAttribute);
-    console.log("Found NEW: ", AllPartials[mapKey]);
-    console.log("Cloned NEW: ", cloned);
     return cloned;
 }
 
@@ -64,12 +61,18 @@ function importPartials() : PartialsMap {
             var catFrontMatter = currentPartial["frontMatter"]["partial_category"];
             var nameFrontMatter = currentPartial["frontMatter"]["partial_name"];
 
-            pmap[getMapKey(catFrontMatter, nameFrontMatter)] = currentPartial.default as FunctionComponent;
+            var mapKey = getMapKey(catFrontMatter, nameFrontMatter)
+            if (pmap[mapKey]) {
+                throw new Error("Duplicate partial defined for name ".
+                    concat(nameFrontMatter).
+                    concat(" in category ").
+                    concat(catFrontMatter).
+                    concat(".="));
+            }
+
+            pmap[mapKey] = currentPartial.default as FunctionComponent;
         }
     }
-
-    console.log("Pmap: ", pmap)
-
     return pmap
 }
 
