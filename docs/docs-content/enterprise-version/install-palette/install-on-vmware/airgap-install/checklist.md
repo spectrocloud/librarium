@@ -25,3 +25,8 @@ installation.
 
 - [ ] Review the list of [pack binaries](../../airgap/supplemental-packs.md) to download and upload to your OCI
       registry.
+- [ ] If you have custom SSL certificates you want to include, copy the custom SSL certificates, in base64 PEM format,
+      to the support VM. The custom certificates must be placed in the **/opt/spectro/ssl** folder. Include the
+      following files:
+  - **server.crt**
+  - **server.key**
