@@ -32,6 +32,10 @@ Use the following resources to become familiar with the available tenant setting
 
 ## Resources
 
+- [API Key Management](api-key-management.md)
+
+- [Default Resource Limits](./palette-resource-limits.md)
+
 - [Login Banner](login-banner.md)
 
 - [Projects](./projects/projects.md)
