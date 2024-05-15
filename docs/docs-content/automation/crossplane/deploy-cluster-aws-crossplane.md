@@ -108,8 +108,15 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
     metadata:
       name: provider-palette
     spec:
-      package: crossplane-contrib/provider-palette:v0.12.0
+      package: xpkg.upbound.io/crossplane-contrib/provider-palette:v0.19.2
     ```
+
+    :::tip
+
+    Access the [Upbound Marketplace](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) to
+    get the latest version of the Palette Crossplane provider.
+
+    :::
 
 7.  Issue the command below to install the Palette Crossplane provider. Crossplane will install the CRDs that allow you
     to create Palette resources directly inside Kubernetes.
