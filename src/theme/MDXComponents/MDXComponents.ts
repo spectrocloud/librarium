@@ -13,6 +13,7 @@ import { TechnicalPreviewReleaseNote as TpBadge } from "@site/src/components/Bad
 import SimpleCardGrid from "@site/src/components/SimpleCardGrid/index";
 import ReleaseNotesVersions from "@site/src/components/ReleaseNotesVersions/index";
 import PartialsComponent from "@site/src/components/PartialsComponent";
+import PartialsComponentFrontMatter from "@site/src/components/PartialsComponentFrontMatter";
 
 export default {
   ...MDXComponents,
@@ -30,4 +31,5 @@ export default {
   SimpleCardGrid,
   ReleaseNotesVersions,
   PartialsComponent,
+  PartialsComponentFrontMatter: PartialsComponentFrontMatter,
 };

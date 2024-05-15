@@ -44,6 +44,10 @@ export default function PartialsComponent(details : PartialsComponentDetails) : 
         propAttribute[val.key] = val.value
     })    
 
-    return React.cloneElement(partialsMap.map[details.name], propAttribute);
+    var cloned = React.cloneElement(partialsMap.map[details.name], propAttribute)
+
+    console.log("Found ORIGINAL: ", partialsMap.map[details.name]);
+    console.log("Cloned ORIGINAL: ", cloned);
+    return cloned;
 }
 

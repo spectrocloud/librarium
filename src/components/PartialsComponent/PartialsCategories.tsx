@@ -1,3 +1,4 @@
+import { ClusterPartials } from "./maps/ClustersPartials"
 import { GettingStartedPartials } from "./maps/GettingStartedPartials"
 import { PartialsMap } from "./maps/PartialsMap"
 
@@ -16,6 +17,10 @@ export const AllPartials: PartialsMapCategories = {
         {
             category: "GETTING-STARTED",
             map: GettingStartedPartials
+        },
+        {
+            category: "CLUSTERS",
+            map: ClusterPartials
         }
     ]
 }; 
