@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Palette Resource Limits"
-title: "Default Palette Resource Limits"
+sidebar_label: "Resource Limits"
+title: "Default Resource Limits"
 description:
   "Understand the default resource limits for Palette and learn how to set resource limits for your Palette tenant."
 icon: ""
@@ -9,33 +9,31 @@ sidebar_position: 40
 tags: ["user-management"]
 ---
 
-## Default Palette Resource Limits
-
 Tenant admins can set and update resource limits for Palette. The resource limits determine the maximum number of
 resources that can be created in Palette. The resource limits are set at the tenant level and apply to all projects in
 the tenant.
 
 The following table lists the default resource limits for Palette:
 
-| **Resources**     | **Max Limit** | **Scope** |
-| ----------------- | ------------- | --------- |
-| Users             | 300           | Tenant    |
-| Teams             | 100           | Tenant    |
-| Projects          | 50            | Tenant    |
-| Workspaces        | 50            | Tenant    |
-| Roles             | 100           | Tenant    |
-| Cloud Accounts    | 200           | Tenant    |
-| Cluster Profiles (profile versions count as well) | 200           | Tenant    |
-| Registries        | 50            | Tenant    |
-| Private Gateway   | 50            | Tenant    |
-| API Keys          | 20            | User      |
-| Backup Locations  | 100           | Tenant    |
-| Certificates      | 20            | Tenant    |
-| Macros            | 200           | Project   |
-| SSH Keys          | 300           | Tenant    |
-| Alerts or Webhook | 100           | Project   |
-| Clusters          | 10,000        | Tenant    |
-| Edge Hosts        | 200           | Tenant    |
+| **Resources**                                       | **Max Limit** | **Scope** |
+| --------------------------------------------------- | ------------- | --------- |
+| Users                                               | 300           | Tenant    |
+| Teams                                               | 100           | Tenant    |
+| Projects                                            | 50            | Tenant    |
+| Workspaces                                          | 50            | Tenant    |
+| Roles                                               | 100           | Tenant    |
+| Cloud Accounts                                      | 200           | Tenant    |
+| Cluster Profiles including Cluster Profile versions | 200           | Tenant    |
+| Registries                                          | 50            | Tenant    |
+| Private Gateway                                     | 50            | Tenant    |
+| API Keys                                            | 20            | User      |
+| Backup Locations                                    | 100           | Tenant    |
+| Certificates                                        | 20            | Tenant    |
+| Macros                                              | 200           | Project   |
+| SSH Keys                                            | 300           | Tenant    |
+| Alerts or Webhook                                   | 100           | Project   |
+| Clusters                                            | 10,000        | Tenant    |
+| Edge Hosts                                          | 200           | Tenant    |
 
 ## Set Resource Limit
 
