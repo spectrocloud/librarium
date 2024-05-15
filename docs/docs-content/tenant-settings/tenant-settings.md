@@ -32,6 +32,8 @@ Use the following resources to become familiar with the available tenant setting
 
 ## Resources
 
+- [Default Resource Limits](./palette-resource-limits.md)
+
 - [Login Banner](login-banner.md)
 
 - [Projects](./projects/projects.md)
