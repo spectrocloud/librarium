@@ -1,5 +1,5 @@
 ---
-title: "Introduction - APIs"
+title: "Introduction"
 sidebar_label: "Introduction"
 description: "Palette API Introduction"
 hide_table_of_contents: false
@@ -8,8 +8,7 @@ sidebar_custom_props:
   icon: "graph"
 ---
 
-The API documentation section includes documentation for Palette API and Local Management API. Local Management API
-endpoints are Tech Preview features and should not be used in production workloads.
+The API documentation section includes documentation for Palette API and Local Management API.
 
 ## Palette API
 
@@ -155,8 +154,6 @@ The API response for the list includes the listMeta resource that contains the `
 you need to check whether the `continue` token value is present in the API response. For subsequent requests, use the
 `continue` token as a query parameter to paginate the remaining resource items.
 
-<br />
-
 ```json hideClipboard
     "listmeta": {
         "continue": "eyJvZmZzZXQiOjUwLCJjb3VudCI6MTE3LCJ0b2tlbiI6IiJ9",
@@ -166,11 +163,7 @@ you need to check whether the `continue` token value is present in the API respo
     }
 ```
 
-<br />
-
 Example of a subsequent request using the `continue` token.
-
-<br />
 
 ```shell hideClipboard
 curl --location 'https://api.spectrocloud.com/v1/packs?continue=eyJvZmZzZXQiOjUwLCJjb3VudCI6MTE3LCJ0b2tlbiI6IiJ9' \
