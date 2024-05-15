@@ -12,8 +12,8 @@ keywords: ["self-hosted", "enterprise"]
 Palette uses Secure Sockets Layer (SSL) certificates to secure internal and external communication with Hypertext
 Transfer Protocol Secure (HTTPS). External Palette endpoints, such as the
 [system console](../system-management/system-management.md#system-console),
-[Palette dashboard](../../getting-started/dashboard.md), Palette API, and gRPC endpoints, are enabled by default
-with HTTPS using an auto-generated self-signed certificate. You can replace the self-signed certificate with a custom SSL
+[Palette dashboard](../../getting-started/dashboard.md), Palette API, and gRPC endpoints, are enabled by default with
+HTTPS using an auto-generated self-signed certificate. You can replace the self-signed certificate with a custom SSL
 certificate to secure these endpoints.
 
 :::info
