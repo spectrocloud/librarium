@@ -660,9 +660,8 @@ Export of Profiles, Terraform Releases, and many exciting enhancements.
   [Google Identity](./user-management/saml-sso/saml-sso.md).
 - Palette enables the customers to optionally disable the [OIDC associate provider](/clusters/public-cloud/aws/eks) for
   EKS clusters if the service provider restricts the cluster deployment in OIDC enabled state.
-- Tenant administrators can now set the
-  [Palette resource limits](./user-management/palette-resource-limits.md#default-palette-resource-limits) though the
-  Palette console.
+- Tenant administrators can now set the [Palette resource limits](./tenant-settings/palette-resource-limits.md) though
+  the Palette console.
 - Palette provisions user's [infrastructure privacy](./clusters/public-cloud/azure/azure-cloud.md) for the Azure cloud
   account.
 
