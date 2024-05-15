@@ -479,6 +479,10 @@ const redirects = [
     from: "/palette-cli/commands/validator/",
     to: "/automation/palette-cli/commands/validator/",
   },
+  {
+    from: "/user-management/palette-resource-limits/",
+    to: "/tenant-settings/palette-resource-limits/",
+  },
 ];
 
 module.exports = redirects;
