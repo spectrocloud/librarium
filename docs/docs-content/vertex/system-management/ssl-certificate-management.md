@@ -18,7 +18,7 @@ certificate to secure these endpoints.
 
 :::info
 
-You can swap out the external endpoint certificate at any time without affecting the system's functionality.
+You can swap out the external endpoint certificate at any time without affecting the system functionality.
 
 :::
 

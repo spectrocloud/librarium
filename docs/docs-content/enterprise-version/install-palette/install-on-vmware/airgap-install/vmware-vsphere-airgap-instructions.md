@@ -243,7 +243,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     - **server.crt**
     - **server.key**
 
-    If you don't provide custom certificate then the airgap setup process will generate a self-signed certificate for
+    If you do not provide a custom SSL certificate, the airgap setup process will generate a self-signed certificate for
     you.
 
     :::warning
