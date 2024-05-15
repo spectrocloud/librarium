@@ -244,7 +244,7 @@ If you are working in Vim, press `i` to enter insert mode in the text editor. Pr
     - **server.crt**
     - **server.key**
 
-    If you do not provide a custom SSL certificat, the airgap setup process will generate a self-signed certificate for
+    If you do not provide a custom SSL certificate, the airgap setup process will generate a self-signed certificate for
     you.
 
     :::warning
