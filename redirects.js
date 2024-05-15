@@ -462,6 +462,10 @@ const redirects = [
     from: "/palette-cli/commands/project/",
     to: "/automation/palette-cli/commands/project/",
   },
+  {
+    from: "/user-management/palette-resource-limits/",
+    to: "/tenant-settings/palette-resource-limits/",
+  },
 ];
 
 module.exports = redirects;
