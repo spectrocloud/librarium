@@ -4,7 +4,7 @@ title: "API Key Management"
 description: "Learn how to set a login banner for your Palette tenant."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 0
+sidebar_position: 20
 tags: ["tenant-administration", "authentication", "api-key"]
 ---
 

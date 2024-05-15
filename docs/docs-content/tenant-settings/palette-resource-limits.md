@@ -1,17 +1,17 @@
 ---
-sidebar_label: "Resource Limits"
+sidebar_label: "Default Resource Limits"
 title: "Default Resource Limits"
 description:
   "Understand the default resource limits for Palette and learn how to set resource limits for your Palette tenant."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 40
-tags: ["user-management"]
+sidebar_position: 25
+tags: ["tenant-administration"]
 ---
 
-Tenant admins can set and update resource limits for Palette. The resource limits determine the maximum number of
-resources that can be created in Palette. The resource limits are set at the tenant level and apply to all projects in
-the tenant.
+Tenant administrators can set and update resource limits for Palette. The resource limits determine the maximum number
+of resources that can be created in Palette. The resource limits are set at the tenant level and apply to all projects
+in the tenant.
 
 The following table lists the default resource limits for Palette:
 
