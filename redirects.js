@@ -463,10 +463,6 @@ const redirects = [
     to: "/automation/palette-cli/commands/project/",
   },
   {
-    from: "/palette-cli/commands/validator/",
-    to: "/automation/palette-cli/commands/validator/",
-  },
-  {
     from: "/user-management/palette-resource-limits/",
     to: "/tenant-settings/palette-resource-limits/",
   },
