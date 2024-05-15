@@ -9,17 +9,16 @@ tags: ["vertex", "management"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-When you install Palette VerteX, a self-signed certificate is generated and used by default. You can upload your own SSL
-certificate to replace the default certificate.
-
-Palette VerteX uses SSL certificates to secure external communication. The internal components communication is by
-default secured and use HTTPS. External communication with Palette VerteX, such as the system console, gRPC endpoint,
-and API endpoint, requires you to upload an SSL certificate to enable HTTPS.
+Palette VerteX uses Secure Sockets Layer (SSL) certificates to secure internal and external communication with Hypertext
+Transfer Protocol Secure (HTTPS). External VerteX endpoints, such as the
+[system console](../system-management/system-management.md#system-console),
+[VerteX dashboard](../../getting-started/dashboard.md), the VerteX API, and the gRPC endpoint, are enabled by default
+with HTTPS using an auto-generated self-signed certificate. You can replace the self-signed certificate with your SSL
+certificate to secure these endpoints.
 
 :::info
 
-Enabling HTTPS is a non-disruptive operation. You can enable HTTPS at any time without affecting the system's
-functionality.
+You can swap out the external endpoint certificate at any time without affecting the system functionality.
 
 :::
 
@@ -68,5 +67,5 @@ You can validate that your certificate is uploaded correctly by using the follow
 2. Log back into the Palette VerteX system console. Ensure the connection is secure by checking the URL. The URL should
    start with `https://`.
 
-Palette VerteX is now using your uploaded certificate to create a secure HTTPS connection with external clients. Users
-can now securely access the system console, gRPC endpoint, and API endpoint.
+VerteX is now using your uploaded certificate to create a secure HTTPS connection with external clients. Users can now
+securely access the system console, VerteX dashboard, the gRPC endpoint, and the VerteX API endpoint.
