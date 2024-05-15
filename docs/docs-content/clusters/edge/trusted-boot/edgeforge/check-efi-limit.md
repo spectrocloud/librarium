@@ -18,6 +18,46 @@ ISO file.
 
 ## Prerequisites
 
-## Instructions
+## Check Bootable EFI Size Limit for Hardware
+
+1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS.git) GitHub repository containing the starter code.
+
+   ```bash
+   git clone https://github.com/spectrocloud/CanvOS.git
+   ```
+
+2. Change to the **CanvOS/** directory.
+
+   ```bash
+   cd CanvOS
+   ```
+
+3. View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
+
+   ```bash
+   git tag
+   ```
+
+4. Check out the newest available tag. This guide uses **v4.4.0** tag as an example.
+
+   ```shell
+   git checkout v4.4.0
+   ```
+
+5. Issue the following command to build the ISO image that is used to check your hardware EFI boot limit.
+
+   ```
+   ./earthly +iso-efi-size-check
+   ```
+
+   This will generate an ISO image located at **./build/efi-size-check.iso**.
+
+6. Flash the ISO onto a USB drive. You can use balena Etcher to flash volumes.
+
+7. 
+
+## Check EFI Size of Installer ISO
+
+## Check EFI Size of Provider Images
 
 ## Validate
