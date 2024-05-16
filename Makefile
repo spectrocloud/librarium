@@ -62,7 +62,6 @@ start: ## Start a local development server
 	npm run start
 
 build: ## Run npm build
-	make generate-partials
 	@echo "building site"
 	npm run clear
 	rm -rf build
@@ -208,9 +207,7 @@ format-images: ## Format images
 ###@ Generate _partials/index.ts required to automatic partials usage.
 
 generate-partials: ## Generate
-	@echo "Starting generation of _partials/index.ts."
 	./scripts/generate-partials.sh
-	@echo "Completed generation of _partials/index.ts."
 
 ###@ Aloglia Indexing
 
