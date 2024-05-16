@@ -62,6 +62,7 @@ start: ## Start a local development server
 	npm run start
 
 build: ## Run npm build
+	make generate-partials
 	@echo "building site"
 	npm run clear
 	rm -rf build
