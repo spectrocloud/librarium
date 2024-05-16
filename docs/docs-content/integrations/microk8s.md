@@ -75,8 +75,9 @@ parameter in the MicroK8s pack YAML file displayed under the **Pack Details** se
 
 :::warning
 
-Before upgrading your cluster, review the [Known Issues](#known-issues) section to learn about the limitations
-associated with MicroK8s upgrades.
+Before upgrading your cluster, review the [Known Issues](#known-issues) section and the
+[Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) page to learn about the limitations associated with
+MicroK8s upgrades.
 
 :::
 
@@ -108,10 +109,6 @@ node:
 ```
 
 ### Known Issues
-
-- Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that,
-  before upgrading, you review the information provided in the
-  [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) section.
 
 - At this time, MicroK8s only supports single-node control plane clusters. Therefore, the `InPlaceUpgrade` upgrade
   strategy is the only one available for use.
@@ -177,8 +174,9 @@ parameter in the MicroK8s pack YAML file displayed under the **Pack Details** se
 
 :::warning
 
-Before upgrading your cluster, review the [Known Issues](#known-issues) section to learn about the limitations
-associated with MicroK8s upgrades.
+Before upgrading your cluster, review the [Known Issues](#known-issues) section and the
+[Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) page to learn about the limitations associated with
+MicroK8s upgrades.
 
 :::
 
@@ -284,8 +282,9 @@ parameter in the MicroK8s pack YAML file displayed under the **Pack Details** se
 
 :::warning
 
-Before upgrading your cluster, review the [Known Issues](#known-issues) section to learn about the limitations
-associated with MicroK8s upgrades.
+Before upgrading your cluster, review the [Known Issues](#known-issues) section and the
+[Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) page to learn about the limitations associated with
+MicroK8s upgrades.
 
 :::
 
