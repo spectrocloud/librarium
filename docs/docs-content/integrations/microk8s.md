@@ -192,10 +192,6 @@ The MicroK8s pack supports three types of upgrade strategies:
 
 ### Known Issues
 
-- Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that,
-  before upgrading, you review the information provided in the
-  [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) section.
-
 - At this time, MicroK8s only supports single-node control plane clusters. Therefore, the `InPlaceUpgrade` upgrade
   strategy is the only one available for use.
 
@@ -299,10 +295,6 @@ The MicroK8s pack supports three types of upgrade strategies:
   nodes, and a rolling upgrade on clusters with three or more control plane nodes.
 
 ### Known Issues
-
-- Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that,
-  before upgrading, you review the information provided in the
-  [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) section.
 
 - At this time, MicroK8s only supports single-node control plane clusters. Therefore, the `InPlaceUpgrade` upgrade
   strategy is the only one available for use.
