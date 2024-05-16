@@ -62,3 +62,6 @@ tests/screenshot.spec.ts-snapshots/
 test-results/
 playwright-report/
 artifact.zip
+
+# Ignore _partials/index.ts
+_partials/index.ts

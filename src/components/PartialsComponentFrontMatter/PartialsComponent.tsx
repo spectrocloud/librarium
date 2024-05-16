@@ -44,34 +44,24 @@ export default function PartialsComponentFrontMatter(details : PartialsComponent
 function importPartials() : PartialsMap {
     const pmap : PartialsMap = {}
 
-    // Partials exported as default
-    const defaultModules = PartialModules.default
-    // The keys are the names of each imported module in _partials/index.ts
-    const categoryKeys = Object.keys(defaultModules);
+    // The keys are the names of each exported module in _partials/index.ts
+    const partialKeys = Object.keys(PartialModules);
 
-    for (const categoryKey of categoryKeys) {
-        var currentCategory = defaultModules[categoryKey];
+    for (const pkey of partialKeys) {
+        var currentPartial = PartialModules[pkey];
+        var catFrontMatter = currentPartial["frontMatter"]["partial_category"];
+        var nameFrontMatter = currentPartial["frontMatter"]["partial_name"];
 
-        // Each category contains its own partials exported as default in its own index.ts
-        const defaultPartials = currentCategory.default
-        // The keys are the names of each imported module in _partials/index.ts
-        const partialKeys = Object.keys(defaultPartials);
-        for (const partialKey of partialKeys) {
-            var currentPartial = defaultPartials[partialKey];
-            var catFrontMatter = currentPartial["frontMatter"]["partial_category"];
-            var nameFrontMatter = currentPartial["frontMatter"]["partial_name"];
-
-            var mapKey = getMapKey(catFrontMatter, nameFrontMatter)
-            if (pmap[mapKey]) {
-                throw new Error("Duplicate partial defined for name ".
-                    concat(nameFrontMatter).
-                    concat(" in category ").
-                    concat(catFrontMatter).
-                    concat(".="));
-            }
-
-            pmap[mapKey] = currentPartial.default as FunctionComponent;
+        var mapKey = getMapKey(catFrontMatter, nameFrontMatter)
+        if (pmap[mapKey]) {
+            throw new Error("Duplicate partial defined for name ".
+                concat(nameFrontMatter).
+                concat(" in category ").
+                concat(catFrontMatter).
+                concat(".="));
         }
+
+        pmap[mapKey] = currentPartial.default as FunctionComponent;
     }
     return pmap
 }
