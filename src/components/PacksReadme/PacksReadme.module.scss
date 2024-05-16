@@ -16,6 +16,46 @@
       }
     }
   }
+  .infoSection {
+    border: 1px solid #3f74be;
+    background-color: #dbecff;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px;
+    margin: 15px;
+    width: 100%;
+    html[data-theme="dark"] & {
+      border: 1px solid #72a8f5;
+      background-color: #192c47;
+    }
+    .infoHeading {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: #000000;
+      text-transform: uppercase;
+      padding-bottom: 10px;
+      html[data-theme="dark"] & {
+        color: #ffffff;
+      }
+      .infoIcon {
+        color: #3f74be;
+        padding-right: 10px;
+        font-size: 16px;
+        html[data-theme="dark"] & {
+          color: #72a8f5;
+        }
+      }
+    }
+    .content {
+      color: #545f7e;
+      html[data-theme="dark"] & {
+        color: #b5bdd4;
+      }
+    }
+  }
 
   .emptyContent {
     padding-top: 20px;

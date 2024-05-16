@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./PackFilters.module.scss";
 import CustomLabel from "./CategorySelector/CustomLabel";
-import AdditionalFilters from "./CategorySelector/AdditionalFilters";
 import FilterSelect from "./CategorySelector/FilterSelect";
+import "./packsFilters.antd.css";
 import { packTypeNames, cloudProviderTypes } from "../../constants/packs";
 interface PackFiltersProps {
   categories: string[];
@@ -12,22 +12,16 @@ interface PackFiltersProps {
 }
 
 export default function PacksFilters({ categories, registries, setSelectedSearchFilters, selectedFilters }: PackFiltersProps) {
-  const additionalFiltersProps: string[] = [
+  const sourceList: string[] = [
     "verified", "community"
   ];
-  function selectAdditionalFilters(additionalFilters: string[]) {
-    const mappedAdditionalFilters: { [key: string]: boolean[] } = additionalFiltersProps.reduce((accumulator, filter) => {
-      accumulator[filter] = additionalFilters.includes(filter) ? [true] : [];
-      return accumulator;
-    }, {} as { [key: string]: boolean[] }); // Add index signature
-    setSelectedSearchFilters(mappedAdditionalFilters);
-  }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.filterItems}>
         <CustomLabel label="Type" />
         <FilterSelect
-          selectMode="multiple" // Update the type of selectMode prop
+          selectMode="multiple"
           options={categories.map((category) => {
             return { value: category, label: packTypeNames[category as keyof typeof packTypeNames] };
           })}
@@ -63,7 +57,20 @@ export default function PacksFilters({ categories, registries, setSelectedSearch
         />
       </div>
       <div className={styles.filterItems}>
-        <AdditionalFilters selectAdditionalFilters={selectAdditionalFilters} />
+        <CustomLabel label="Source" />
+        <FilterSelect
+          options={sourceList.map((prop) => {
+            return { value: prop, label: prop };
+          })}
+          onChange={(item) => {
+            if (item) {
+              setSelectedSearchFilters({ source: [item] })
+            } else {
+              setSelectedSearchFilters({ source: [] })
+            }
+          }}
+          value={selectedFilters.source.length ? selectedFilters.source[0] : ""}
+        />
       </div>
     </div >
   );

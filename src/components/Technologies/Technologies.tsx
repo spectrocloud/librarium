@@ -24,9 +24,8 @@ interface TechnologiesProps {
 export default function Technologies({ data, repositories }: TechnologiesProps) {
   const { isDarkTheme } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
-  const [selectedFilters, setSelectedFilters] = useState<{ category: any[], registries: any[], cloudTypes: any[], verified: any[], community: any[] }>({ category: [], registries: [], cloudTypes: [], verified: [], community: [] })
+  const [selectedFilters, setSelectedFilters] = useState<{ category: any[], registries: any[], cloudTypes: any[], source: any[] }>({ category: [], registries: [], cloudTypes: [], source: [] })
   const [searchValue, setSearchValue] = useState<string>("");
-
   const filteredTechCards = useMemo(() => {
     const selectedFiltersKeys = Object.keys(selectedFilters)
     let filteredCards: any[] = [];
@@ -52,14 +51,9 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
                 return selectedFiltersValue.some((value) => techCard.cloudTypes.includes("all") || techCard.cloudTypes.includes(value));
               }
               break;
-            case "verified":
+            case "source":
               condition = (techCard: FrontMatterData) => {
-                return techCard["verified"]
-              }
-              break;
-            case "community":
-              condition = (techCard: FrontMatterData) => {
-                return techCard["community"]
+                return techCard[selectedFiltersValue[0] as keyof FrontMatterData];
               }
               break;
           }

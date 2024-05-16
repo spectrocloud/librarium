@@ -12,6 +12,7 @@ import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from "@docusaurus/useBaseUrl"
 import { useColorMode } from "@docusaurus/theme-common";
 import { packTypeNames, cloudDisplayNames } from "../../constants/packs";
+import { InfoCircleOutlined } from '@ant-design/icons';
 
 interface PackReadmeProps {
   customDescription: string,
@@ -23,6 +24,8 @@ interface PackReadmeProps {
   provider: Array<string>,
   registries: Array<string>,
   selectedRepositories: Array<any>,
+  disabled: boolean,
+  deprecated: boolean,
 }
 
 export default function PacksReadme() {
@@ -67,6 +70,8 @@ export default function PacksReadme() {
         provider: pack.cloudTypes,
         registries: pack.registries,
         selectedRepositories: repositories,
+        disabled: pack.disabled,
+        deprecated: pack.deprecated,
       };
       return packDataInfo;
     }
@@ -80,9 +85,15 @@ export default function PacksReadme() {
       provider: [],
       selectedRepositories: [],
       registries: [],
+      disabled: false,
+      deprecated: false,
     };
   }, [packName]);
   const [selectedVersion, setSelectedVersion] = useState<string>(version || packData.versions?.[0]?.title || "");
+  const infoContent = [
+    packData.disabled && "This pack is currently disabled.",
+    packData.deprecated && "This pack is deprecated.",
+  ].filter(Boolean) as string[];
 
   function versionChange(version: string) {
     history.replace({ search: `?pack=${packName}&versions=${version}` });
@@ -201,6 +212,15 @@ export default function PacksReadme() {
             </div>
           </div>
         </div>
+        {infoContent.length > 0 && (
+          <div className={styles.infoSection}>
+            <div className={styles.infoHeading}>
+              <InfoCircleOutlined className={styles.infoIcon} />
+              {"Info"}
+            </div>
+            <div className={styles.content}>{infoContent[0]}</div>
+          </div>
+        )}
         <div className={styles.tabPane}>
           {renderTabs()}
         </div>

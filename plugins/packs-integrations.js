@@ -49,7 +49,8 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
         community: packMDValue.spec.registries[0].annotations?.source === "community",
         verified: packMDValue.spec.registries[0].annotations?.source === "spectrocloud",
         versions: getAggregatedVersions(packContent.tags),
-        deprecated: packMDValue.spec.registries[0].annotations?.disabled === "true",
+        disabled: packMDValue.spec.registries[0].annotations?.disabled === "true",
+        deprecated: packMDValue.spec.registries[0].annotations?.system_state === "deprecated",
       };
     }
   });
