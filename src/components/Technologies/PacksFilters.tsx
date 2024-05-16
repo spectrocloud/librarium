@@ -11,10 +11,19 @@ interface PackFiltersProps {
   selectedFilters: any;
 }
 
+const sourceList: any[] = [
+  {
+    label: "Verified",
+    value: "verified"
+  },
+  {
+    label: "Community",
+    value: "community",
+  },
+];
+
 export default function PacksFilters({ categories, registries, setSelectedSearchFilters, selectedFilters }: PackFiltersProps) {
-  const sourceList: string[] = [
-    "verified", "community"
-  ];
+
 
   return (
     <div className={styles.wrapper}>
@@ -60,7 +69,7 @@ export default function PacksFilters({ categories, registries, setSelectedSearch
         <CustomLabel label="Source" />
         <FilterSelect
           options={sourceList.map((prop) => {
-            return { value: prop, label: prop };
+            return { value: prop.value, label: prop.label };
           })}
           onChange={(item) => {
             if (item) {
