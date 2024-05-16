@@ -70,50 +70,22 @@ users can choose their preferred CNI layer during the cluster profile creation.
 
 The upgrade strategy describes how to replace existing control plane nodes with new ones during upgrades.
 
-:::warning
-
-Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before
-upgrading, you review the information provided in the [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades)
-section.
-
-:::
-
 You can specify the upgrade strategy during cluster profile creation by editing the value of the `upgradeStrategy`
 parameter in the MicroK8s pack YAML file displayed under the **Pack Details** section.
 
 :::warning
 
-At this time, MicroK8s only supports single-node control plane clusters. Therefore, the `InPlaceUpgrade` upgrade
-strategy is the only one available for use.
+Before upgrading your cluster, review the [Known Issues](#known-issues) section to learn about the limitations
+associated with MicroK8s upgrades.
 
 :::
 
-Three types of upgrade strategies exist:
+The MicroK8s pack supports three types of upgrade strategies:
 
 - `InPlaceUpgrade` - Performs an in-place upgrade of the control plane. For clusters with one control plane and one
   worker node, `InPlaceUpgrade` temporarily shuts down the API server.
 
-  :::warning
-
-  When using the `InPlaceUpgrade` strategy for sequential upgrades, such as upgrading from 1.25.x to 1.26.x, and then to
-  1.27.x, the pod named `upgrade-pod` in the default namespace must be deleted after the first upgrade (1.25.x to
-  1.26.x) and before starting the second upgrade (1.26.x to 1.27.x). Access your cluster using its
-  [kubeconfig](../clusters/cluster-management/kubeconfig.md) file and issue the command below to delete the pod.
-
-  ```bash
-  kubectl delete pod upgrade-pod --namespace default
-  ```
-
-  :::
-
 - `RollingUpgrade` - The default upgrade strategy that deletes the current control plane node before creating a new one.
-
-  :::warning
-
-  When using the `RollingUpgrade` strategy, the cluster must have at least three control plane nodes. Otherwise, the API
-  server will be down during the upgrade, and the cluster will not be accessible.
-
-  :::
 
 - `SmartUpgrade` - Performs an in-place upgrade of the control plane on clusters with fewer than three control plane
   nodes, and a rolling upgrade on clusters with three or more control plane nodes.
@@ -134,6 +106,27 @@ node:
   env: []
   kubeletPath: /var/snap/microk8s/common/var/lib/kubelet
 ```
+
+### Known Issues
+
+- Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that,
+  before upgrading, you review the information provided in the
+  [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) section.
+
+- At this time, MicroK8s only supports single-node control plane clusters. Therefore, the `InPlaceUpgrade` upgrade
+  strategy is the only one available for use.
+
+- When using the `InPlaceUpgrade` strategy for sequential upgrades, such as upgrading from version 1.25.x to version
+  1.26.x, and then to version 1.27.x, the pod named `upgrade-pod` in the default namespace must be deleted after the
+  first upgrade (1.25.x to 1.26.x) and before starting the second upgrade (1.26.x to 1.27.x). Access your cluster using
+  its [kubeconfig](../clusters/cluster-management/kubeconfig.md) file and issue the command below to delete the pod.
+
+  ```bash
+  kubectl delete pod upgrade-pod --namespace default
+  ```
+
+- When using the `RollingUpgrade` strategy, the cluster must have at least three control plane nodes. Otherwise, the API
+  server will be down during the upgrade, and the cluster will not be accessible.
 
 </TabItem>
 
@@ -179,53 +172,46 @@ users can choose their preferred CNI layer during the cluster profile creation.
 
 The upgrade strategy describes how to replace existing control plane nodes with new ones during upgrades.
 
-:::warning
-
-Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before
-upgrading, you review the information provided in the [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades)
-section.
-
-:::
-
 You can specify the upgrade strategy during cluster profile creation by editing the value of the `upgradeStrategy`
 parameter in the MicroK8s pack YAML file displayed under the **Pack Details** section.
 
 :::warning
 
-At this time, MicroK8s only supports single-node control plane clusters. Therefore, the `InPlaceUpgrade` upgrade
-strategy is the only one available for use.
+Before upgrading your cluster, review the [Known Issues](#known-issues) section to learn about the limitations
+associated with MicroK8s upgrades.
 
 :::
 
-Three types of upgrade strategies exist:
+The MicroK8s pack supports three types of upgrade strategies:
 
 - `InPlaceUpgrade` - Performs an in-place upgrade of the control plane. For clusters with one control plane and one
   worker node, `InPlaceUpgrade` temporarily shuts down the API server.
 
-  :::warning
+- `RollingUpgrade` - The default upgrade strategy that deletes the current control plane node before creating a new one.
 
-  When using the `InPlaceUpgrade` strategy for sequential upgrades, such as upgrading from 1.25.x to 1.26.x, and then to
-  1.27.x, the pod named `upgrade-pod` in the default namespace must be deleted after the first upgrade (1.25.x to
-  1.26.x) and before starting the second upgrade (1.26.x to 1.27.x). Access your cluster using its
-  [kubeconfig](../clusters/cluster-management/kubeconfig.md) file and issue the command below to delete the pod.
+- `SmartUpgrade` - Performs an in-place upgrade of the control plane on clusters with fewer than three control plane
+  nodes, and a rolling upgrade on clusters with three or more control plane nodes.
+
+### Known Issues
+
+- Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that,
+  before upgrading, you review the information provided in the
+  [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) section.
+
+- At this time, MicroK8s only supports single-node control plane clusters. Therefore, the `InPlaceUpgrade` upgrade
+  strategy is the only one available for use.
+
+- When using the `InPlaceUpgrade` strategy for sequential upgrades, such as upgrading from version 1.25.x to version
+  1.26.x, and then to version 1.27.x, the pod named `upgrade-pod` in the default namespace must be deleted after the
+  first upgrade (1.25.x to 1.26.x) and before starting the second upgrade (1.26.x to 1.27.x). Access your cluster using
+  its [kubeconfig](../clusters/cluster-management/kubeconfig.md) file and issue the command below to delete the pod.
 
   ```bash
   kubectl delete pod upgrade-pod --namespace default
   ```
 
-  :::
-
-- `RollingUpgrade` - The default upgrade strategy that deletes the current control plane node before creating a new one.
-
-  :::warning
-
-  When using the `RollingUpgrade` strategy, the cluster must have at least three control plane nodes. Otherwise, the API
+- When using the `RollingUpgrade` strategy, the cluster must have at least three control plane nodes. Otherwise, the API
   server will be down during the upgrade, and the cluster will not be accessible.
-
-  :::
-
-- `SmartUpgrade` - Performs an in-place upgrade of the control plane on clusters with fewer than three control plane
-  nodes, and a rolling upgrade on clusters with three or more control plane nodes.
 
 </TabItem>
 
@@ -293,53 +279,46 @@ users can choose their preferred CNI layer during the cluster profile creation.
 
 The upgrade strategy describes how to replace existing control plane nodes with new ones during upgrades.
 
-:::warning
-
-Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before
-upgrading, you review the information provided in the [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades)
-section.
-
-:::
-
 You can specify the upgrade strategy during cluster profile creation by editing the value of the `upgradeStrategy`
 parameter in the MicroK8s pack YAML file displayed under the **Pack Details** section.
 
 :::warning
 
-At this time, MicroK8s only supports single-node control plane clusters. Therefore, the `InPlaceUpgrade` upgrade
-strategy is the only one available for use.
+Before upgrading your cluster, review the [Known Issues](#known-issues) section to learn about the limitations
+associated with MicroK8s upgrades.
 
 :::
 
-Three types of upgrade strategies exist:
+The MicroK8s pack supports three types of upgrade strategies:
 
 - `InPlaceUpgrade` - Performs an in-place upgrade of the control plane. For clusters with one control plane and one
   worker node, `InPlaceUpgrade` temporarily shuts down the API server.
 
-  :::warning
+- `RollingUpgrade` - The default upgrade strategy that deletes the current control plane node before creating a new one.
 
-  When using the `InPlaceUpgrade` strategy for sequential upgrades, such as upgrading from 1.25.x to 1.26.x, and then to
-  1.27.x, the pod named `upgrade-pod` in the default namespace must be deleted after the first upgrade (1.25.x to
-  1.26.x) and before starting the second upgrade (1.26.x to 1.27.x). Access your cluster using its
-  [kubeconfig](../clusters/cluster-management/kubeconfig.md) file and issue the command below to delete the pod.
+- `SmartUpgrade` - Performs an in-place upgrade of the control plane on clusters with fewer than three control plane
+  nodes, and a rolling upgrade on clusters with three or more control plane nodes.
+
+### Known Issues
+
+- Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that,
+  before upgrading, you review the information provided in the
+  [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) section.
+
+- At this time, MicroK8s only supports single-node control plane clusters. Therefore, the `InPlaceUpgrade` upgrade
+  strategy is the only one available for use.
+
+- When using the `InPlaceUpgrade` strategy for sequential upgrades, such as upgrading from version 1.25.x to version
+  1.26.x, and then to version 1.27.x, the pod named `upgrade-pod` in the default namespace must be deleted after the
+  first upgrade (1.25.x to 1.26.x) and before starting the second upgrade (1.26.x to 1.27.x). Access your cluster using
+  its [kubeconfig](../clusters/cluster-management/kubeconfig.md) file and issue the command below to delete the pod.
 
   ```bash
   kubectl delete pod upgrade-pod --namespace default
   ```
 
-  :::
-
-- `RollingUpgrade` - The default upgrade strategy that deletes the current control plane node before creating a new one.
-
-  :::warning
-
-  When using the `RollingUpgrade` strategy, the cluster must have at least three control plane nodes. Otherwise, the API
+- When using the `RollingUpgrade` strategy, the cluster must have at least three control plane nodes. Otherwise, the API
   server will be down during the upgrade, and the cluster will not be accessible.
-
-  :::
-
-- `SmartUpgrade` - Performs an in-place upgrade of the control plane on clusters with fewer than three control plane
-  nodes, and a rolling upgrade on clusters with three or more control plane nodes.
 
 </TabItem>
 
