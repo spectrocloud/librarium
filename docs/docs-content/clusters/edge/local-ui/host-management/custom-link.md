@@ -85,7 +85,9 @@ interface or open a new tab in your browser depending on how to configure the li
 
 6. You can add a group attribute to each link. Links sharing the same group are grouped together in the side bar.
 
-7. Compress the UI directory to a TAR file. The file must be named **ui.tar**.
+   ![A screenshot of the sidebar with with custom links](clusters_edge_localui_custom-link-sidebar.png)
+
+7. Archive the UI directory to a TAR file. The file must be named **ui.tar**.
 
 8. Follow the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide from step 3
    onwards to finish the EdgeForge process.
