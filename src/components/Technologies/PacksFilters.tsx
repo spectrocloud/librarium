@@ -68,9 +68,7 @@ export default function PacksFilters({ categories, registries, setSelectedSearch
       <div className={styles.filterItems}>
         <CustomLabel label="Source" />
         <FilterSelect
-          options={sourceList.map((prop) => {
-            return { value: prop.value, label: prop.label };
-          })}
+          options={sourceList}
           onChange={(item) => {
             if (item) {
               setSelectedSearchFilters({ source: [item] })
