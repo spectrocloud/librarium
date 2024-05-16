@@ -37,8 +37,7 @@ export default function PartialsComponentFrontMatter(details : PartialsComponent
         propAttribute[val.key] = val.value
     })
 
-    var cloned = React.createElement(AllPartials[mapKey], propAttribute);
-    return cloned;
+    return React.createElement(AllPartials[mapKey], propAttribute);
 }
 
 function importPartials() : PartialsMap {
@@ -52,13 +51,19 @@ function importPartials() : PartialsMap {
         var catFrontMatter = currentPartial["frontMatter"]["partial_category"];
         var nameFrontMatter = currentPartial["frontMatter"]["partial_name"];
 
+        if (!catFrontMatter || !nameFrontMatter) {
+            throw new Error("Please specify partial_category and partial_name for ".
+            concat(pkey).
+            concat("."));
+        }
+
         var mapKey = getMapKey(catFrontMatter, nameFrontMatter)
         if (pmap[mapKey]) {
             throw new Error("Duplicate partial defined for name ".
                 concat(nameFrontMatter).
                 concat(" in category ").
                 concat(catFrontMatter).
-                concat(".="));
+                concat("."));
         }
 
         pmap[mapKey] = currentPartial.default as FunctionComponent;
