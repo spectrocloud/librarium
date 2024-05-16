@@ -219,3 +219,9 @@ p img.markdown-image {
     display: none;
   }
 }
+
+// Reduce the spacing between lines in code blocks
+
+.theme-code-block code {
+  line-height: 1.6em;
+}

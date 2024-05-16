@@ -32,28 +32,21 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 ## Minimum Device Requirements
 
-The following minimum device requirements must be met to deploy an Edge host successfully.
+All Edge hosts must meet the following minimum hardware requirements. For specific features, additional hardware
+capabilities may be needed. Refer to [Hardware Requirements](./hardware-requirements.md) for details.
 
-- 2 CPU
+### AMD64 Architecture Devices
 
-- 8 GB Memory
+| Component | Requirement                                                                                                                                               |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CPU       | - Intel: i3, i5, i7, i9, Xeon series <br /> - AMD: Ryzen 3, 5, 7, 9, and Epyc series                                                                      |
+| CPU Core  | Minimum two cores.                                                                                                                                        |
+| Memory    | Minimum 8 GB.                                                                                                                                             |
+| Storage   | Main drive requires a minimum of 100 GB storage to accommodate the Operating System (OS), Kubernetes, and workloads. The main drive must be an SSD drive. |
 
-- 100 GB Storage
+### ARM64 Architecture Devices
 
-If Trusted Platform Module (TPM) is used, it must be TPM 2.0 or greater.
-
-## Supported Architectures
-
-Palette supports AMD64 and ARM64 (beta) architectures for Edge installations. However, we cannot guarantee that all
-hardware and software configurations will work due to the various options available in the market. We recommend that you
-test your hardware configuration before deploying to production.
-
-:::warning
-
-ARM64 support is a preview feature and requires Palette version 4.0.0 or later. ARM64 support is only verified for the
-Nvidia Jetson Orin device family.
-
-:::
+ARM64 support is only verified for the Nvidia Jetson Orin device family.
 
 ## Palette Edge Distribution
 
@@ -99,13 +92,13 @@ use any container network interface pack such as Flannel or others, as part of t
 
 The component metrics server is disabled to avoid duplicating it because Palette installs the metrics server by default.
 
-```
+```yaml
 cluster:
- config:
-   # disable the built in cni
-   flannel-backend: none
-   no-flannel: true
-   disable-network-policy: true
-   Disable:
-     - metrics-server
+  config:
+    # disable the built in cni
+    flannel-backend: none
+    no-flannel: true
+    disable-network-policy: true
+    Disable:
+      - metrics-server
 ```

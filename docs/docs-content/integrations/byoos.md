@@ -23,7 +23,6 @@ BYOOS pack can be used with both Edge and non-Edge environments.
 
 ## Versions Supported
 
-<br />
 <Tabs queryString="versions">
 
 <TabItem label="1.0.x" value="1.0.x">
@@ -33,8 +32,6 @@ BYOOS pack can be used with both Edge and non-Edge environments.
 <TabItem label="Edge" value="edge">
 
 ## Prerequisites
-
-<br />
 
 - The Edge Provider images you have created and uploaded to a container registry. Refer to the
   [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide for steps on how to
@@ -103,14 +100,9 @@ create Edge Artifacts.
 
 <TabItem label="Non-Edge" value="Non-Edge">
 
-</TabItem>
-</Tabs>
-
 ## Prerequisites
 
 To use the non-Edge BYOOS pack, you must have the following:
-
-<br />
 
 - A custom OS that you created. Refer to the
   [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide to learn how to
@@ -120,13 +112,11 @@ To use the non-Edge BYOOS pack, you must have the following:
 
 The following is a list of parameters required when using the BYOOS pack.
 
-<br />
-
-| Parameter         | Description                                                                                                                                                       | Type   |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-| `osImageOverride` | The image ID used as the base OS layer. This is the image ID as assigned in the infrastructure environment the image belongs to. Example: `ami-0f4804aff4cf9c5a2` | string |
-| `osName`          | The name of the OS distribution. Example: `rhel`                                                                                                                  | string |
-| `osVersion`       | The version of the OS distribution. Example: `"8"`                                                                                                                | string |
+| Parameter         | Description                                                                                                                                                                                                                                              | Type   |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| `osImageOverride` | The image ID used as the base OS layer. This is the image ID as assigned in the infrastructure environment the image belongs to. Example: `ami-0f4804aff4cf9c5a2`. Refer to the [Reference Custom Image](#reference-custom-image) section to learn more. | string |
+| `osName`          | The name of the OS distribution. Example: `rhel`                                                                                                                                                                                                         | string |
+| `osVersion`       | The version of the OS distribution. Example: `"8"`                                                                                                                                                                                                       | string |
 
 ## Usage
 
@@ -145,11 +135,7 @@ types and how to create a cluster profile.
 
 :::
 
-<br />
-
 Fill out the required parameters with information about your custom OS, such as the ID, OS distribution, and version.
-
-<br />
 
 ```yaml
 pack:
@@ -158,21 +144,25 @@ pack:
   osVersion: "8"
 ```
 
-<br />
-
 ![View of the cluster profile wizard](/clusters_byoos_image-builder_cluster-profile-byoos-yaml.webp)
 
 Check out the [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide to
 learn to create a custom image for Palette.
 
----
+### Reference Custom Image
 
-<br />
+Different infrastructure providers have different ways of referencing custom images. The following table provides
+examples of how to reference custom images for different infrastructure providers.
+
+| Provider       | Example Image ID                                            | osImageOverride Value                                       | Notes                                                                                                                |
+| -------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| AWS            | `ami-0f4804aff4cf9c5a2`                                     | `ami-0f4804aff4cf9c5a2`                                     | Ensure the AMI is available in the same region as the workload cluster.                                              |
+| Azure          | `https://docs.blob.core.windows.net/vhds/ubuntu20-1243.vhd` | `https://docs.blob.core.windows.net/vhds/ubuntu20-1243.vhd` | You must reference the Azure blob URL of a Virtual Hard Disk (VHD). Image Gallery ID reference is not supported.     |
+| Vmware vSphere | `r_u-2004-0-k-1243-0-new.ova`                               | `path/to/template/r_u-2004-0-k-1243-0-new.ova`              | Point to the path to where the custom template is located. Palette and VerteX expect OVAs to have the `r_u-` prefix. |
+| Vmware vSphere | `rhel-8-kube-v1.27.11`                                      | `path/to/template/rhel-8-kube-v1.27.11`                     | Point to the path to where the custom template is located.                                                           |
 
 Image creation tools are available to help you create custom OS images for the infrastructure provider you are using.
 The following is a list of commonly used tools for creating a custom OS:
-
-<br />
 
 - [AWS EC2 Image Builder](https://aws.amazon.com/image-builder/).
 
@@ -181,6 +171,9 @@ The following is a list of commonly used tools for creating a custom OS:
 - [HashiCorp Packer](https://developer.hashicorp.com/packer).
 
 - [Kubernetes Image Builder (KIB)](https://image-builder.sigs.k8s.io/introduction.html).
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 
@@ -193,8 +186,6 @@ The following is a list of commonly used tools for creating a custom OS:
 
 You can retrieve details about the BYOOS Edge OS agent pack using the following Terraform code.
 
-<br />
-
 ```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
@@ -205,6 +196,7 @@ data "spectrocloud_pack_simple" "byoos" {
   version      = "1.0.0"
   type         = "helm"
   registry_uid = data.spectrocloud_registry.public_registry.id
+}
 ```
 
 </TabItem>
@@ -212,8 +204,6 @@ data "spectrocloud_pack_simple" "byoos" {
 <TabItem label="Non-Edge" value="non-Edge">
 
 You can retrieve details about the BYOOS pack by using the following Terraform code.
-
-<br />
 
 ```hcl
 data "spectrocloud_registry" "public_registry" {
@@ -225,6 +215,7 @@ data "spectrocloud_pack_simple" "byoos" {
   version      = "1.0.0"
   type         = "helm"
   registry_uid = data.spectrocloud_registry.public_registry.id
+}
 ```
 
 </TabItem>

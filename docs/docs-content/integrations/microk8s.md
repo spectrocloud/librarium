@@ -70,6 +70,14 @@ users can choose their preferred CNI layer during the cluster profile creation.
 
 The upgrade strategy describes how to replace existing control plane nodes with new ones during upgrades.
 
+:::warning
+
+Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before
+upgrading, you review the information provided in the [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades)
+section.
+
+:::
+
 You can specify the upgrade strategy during cluster profile creation by editing the value of the `upgradeStrategy`
 parameter in the MicroK8s pack YAML file displayed under the **Pack Details** section.
 
