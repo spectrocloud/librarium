@@ -38,7 +38,18 @@ saepe ut fugit ea ut architecto quae consequatur.
 
 #### Known Issues
 
-- MicroK8s
+- At this time, [MicroK8s](../integrations/microk8s.md) does not support multi-node control plane clusters. Therefore,
+  the `InPlaceUpgrade` strategy is the only one available for use.
+
+- In clusters using [MicroK8s](../integrations/microk8s.md) as the Kubernetes distribution, the control plane node fails
+  to upgrade when using the `InPlaceUpgrade` strategy for sequential upgrades, such as upgrading from version 1.25.x to
+  version 1.26.x and then to version 1.27.x. Refer to the
+  [Control Plane Node Fails to Upgrade in Sequential MicroK8s Upgrades](../troubleshooting/pack-issues.md)
+  troubleshooting guide for resolution steps.
+
+- In clusters using [MicroK8s](../integrations/microk8s.md) as the Kubernetes distribution, using the `RollingUpgrade`
+  strategy for clusters with less than three control plane nodes may cause the API server to be down during the
+  upgrade, making the cluster inaccessible. A workaround is to deploy clusters with three or more control plane nodes.
 
 ### Edge
 
