@@ -83,6 +83,8 @@ saepe ut fugit ea ut architecto quae consequatur.
 
 ### Edge
 
+#### Features
+
 <!-- prettier-ignore -->
 - <TpBadge /> Trusted Boot is an exciting new Edge capability part of the [SENA
   framework](https://www.spectrocloud.com/product/sena). Trusted Boot is a hardware-based security feature that ensures that the system boots securely and that the boot process has
@@ -95,9 +97,10 @@ saepe ut fugit ea ut architecto quae consequatur.
   the booting system far more than other solutions. To learn more about Edge Trusted Boot, check out the
   [Edge Trusted Boot documentation](../clusters/edge/edge.md).
 
-#### Features
-
 #### Improvements
+
+<!-- prettier-ignore -->
+- <TpBadge /> Cluster Profile Variables
 
 #### Known Issues
 
@@ -121,7 +124,7 @@ saepe ut fugit ea ut architecto quae consequatur.
 
 #### Features
 
-- Version 0.19.0 of the
+- Version 0.20.0 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
