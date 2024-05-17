@@ -18,7 +18,9 @@ interface PartialsComponentDetails {
     props: InputProperty[];
 }
 
-const AllPartials = importPartials()
+// !!!!! DISABLED ONLY FOR TEAM DEMO !!!!
+// const AllPartials = importPartials()
+const AllPartials = {}
 
 export default function PartialsComponentFrontMatter(details : PartialsComponentDetails) : React.ReactElement {
     var mapKey = getMapKey(details.category, details.name)

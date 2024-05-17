@@ -10,7 +10,21 @@ tags: ["getting-started"]
 
 ### Partials test
 
-<PartialsComponent
+#### Approach 1
+
+<!-- import Setup from '../_partials/_getting-started_aws_palette-setup.mdx';
+
+<Setup cloud="AWS" version="2.0"/> -->
+
+#### Approach 2
+
+<!-- import Setup2 from '../../../_partials/getting-started/_palette-setup.mdx';
+
+<Setup2 cloud="AWS" version="2.0"/> -->
+
+#### Approach 3
+
+<!-- <PartialsComponent
   category="GETTING-STARTED"
   name="PaletteSetup" 
   props={[
@@ -23,9 +37,11 @@ tags: ["getting-started"]
       value:"2.0",
     }
   ]} 
-/>
+/> -->
 
-<PartialsComponentFrontMatter
+#### Approach 4
+
+<!-- <PartialsComponentFrontMatter
   category="clusters"
   name="cluster-profile" 
   props={[
@@ -38,7 +54,7 @@ tags: ["getting-started"]
       value:"2.0",
     }
   ]} 
-/>
+/> -->
 
 This page gives you an overview of how to get started with Spectro Cloud Palette and begin leveraging its Kubernetes
 full-stack management at scale. Palette's unique capabilities provide end-to-end declarative cluster management, cluster
@@ -65,7 +81,7 @@ The first step towards adopting Palette in your organization is to
 We have curated the pages in the Getting Started section to give you a gradual introduction to the fundamental concepts
 and workflows you need to deploy and manage Kubernetes clusters through Palette.
 
-<div class="desktop-only-display">
+<div className="desktop-only-display">
 
 ![Overview of the getting started journey rocket](/getting-started/getting-started_getting-started_journey-overview.webp)
 
