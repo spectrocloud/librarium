@@ -7,7 +7,7 @@ sidebar_position: 50
 tags: ["palette-cli"]
 ---
 
-The Palette CLI has built-in support for the open-source [Validator](https://github.com/spectrocloud-labs/validator)
+The Palette CLI has built-in support for the open-source [Validator](https://github.com/validator-labs/validator)
 framework and its plugins ecosystem. You can use the Validator to verify your environment is ready for an installation
 of self-hosted Palette, VerteX, or for deployment of Kubernetes clusters through Palette.
 
@@ -33,8 +33,8 @@ The Validator requires the following dependencies.
 
 Credentials and other permissions may be required depending on the Validator plugins you use. For example, the AWS
 plugin requires AWS credentials with elevated permissions to validate your AWS environment. Refer to the
-[Validator](https://github.com/spectrocloud-labs/validator) GitHub repository for more information about the Validator
-and its plugins.
+[Validator](https://github.com/validator-labs/validator) GitHub repository for more information about the Validator and
+its plugins.
 
 :::
 
@@ -48,7 +48,8 @@ will guide you through the installation process. You can also use a configuratio
 A [kind](https://kind.sigs.k8s.io/) cluster will be deployed as part of the Validator installation. The name of the kind
 cluster is `validator-kind-cluster`. You can find the `kind` binary installed in the `$HOME/.palette/bin` directory. You
 can install the Validator into an existing Kubernetes cluster by using the Helm chart. Refer to the
-[Validator Helm Install](https://github.com/spectrocloud-labs/validator#installation) steps for more information.
+[Validator Helm Install](https://github.com/validator-labs/validator?tab=readme-ov-file#installation) steps for more
+information.
 
 :::
 
@@ -432,7 +433,7 @@ from version `v0.0.30`.
 helmRelease:
   chart:
     name: validator
-    repository: https://spectrocloud-labs.github.io/validator
+    repository: https://validator-labs.github.io/validator
     version: v0.0.36
     insecureSkipVerify: true
   values: ""
@@ -448,7 +449,7 @@ palette validator upgrade \
 
 ```shell hideClipboard
 ==== Installing/upgrading validator Helm chart ====
-helm upgrade validator validator --repo https://spectrocloud-labs.github.io/validator --version v0.0.36 --insecure-skip-tls-verify --kubeconfig /tmp/2773008921 --namespace validator --install --create-namespace --values /tmp/1655869680
+helm upgrade validator validator --repo https://validator-labs.github.io/validator --version v0.0.36 --insecure-skip-tls-verify --kubeconfig /tmp/2773008921 --namespace validator --install --create-namespace --values /tmp/1655869680
 
 ==== Kubectl Command ====
 /home/ubuntu/.palette/bin/kubectl wait --for=condition=available --timeout=600s deployment/validator-controller-manager -n validator --kubeconfig=/home/ubuntu/.palette/validator/validator-20240311153652/kind-cluster.kubeconfig
