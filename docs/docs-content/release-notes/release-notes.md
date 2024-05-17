@@ -90,7 +90,7 @@ saepe ut fugit ea ut architecto quae consequatur.
   framework](https://www.spectrocloud.com/product/sena). Trusted Boot is a hardware-based security feature that ensures that the system boots securely and that the boot process has
   not been tampered with. Trusted Boot does several significant things, all working in concert, to enhance security: 
   - Ensures that only trusted software can boot on the system. Any modification to any part of the hard disk will be detected. 
-  - Encrypts all sensitive data using hardware security Trusted Platform Module (TPM). 
+  - Encrypts all sensitive data on disk using hardware security Trusted Platform Module (TPM). 
   - Ensures that the TPM will only decrypt sensitive data if the boot process is clean and untampered..
 
   Unlike similar solutions, Trusted Boot utilizes a secure boot, measured boot, and encryption to protect 
@@ -100,7 +100,17 @@ saepe ut fugit ea ut architecto quae consequatur.
 #### Improvements
 
 <!-- prettier-ignore -->
-- <TpBadge /> Cluster Profile Variables
+- <TpBadge /> The Cluster Profile Variables user experience has been improved. Users can now identify where a variable is used, preview the variable during creation time, and change the order of the variables displayed. An improved Day-2 management experience is also available. You can learn more about these new features in the [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) documentation.
+
+
+
+- Edge clusters managed by [LocalUI](../clusters/edge/local-ui/local-ui.md) now receive automatic SSL certificate updates for Kubernetes. Users can also manually trigger the SSL certificate update process. For more information, refer to the [LocalUI](../clusters/edge/local-ui/local-ui.md) documentation.
+
+- [LocalUI](../clusters/edge/local-ui/local-ui.md) now includes tools to help users troubleshoot network issues. The tools include ping and traceroute. For more information, refer to the [LocalUI](../clusters/edge/local-ui/local-ui.md) documentation.
+
+- Clusters managed by [LocalUI](../clusters/edge/local-ui/local-ui.md) now include a new feature that allows users to download diagnostic logs from the LocalUI interface. This feature reduces the friction of troubleshooting issues on the cluster as the need to SSH into the cluster is reduced.
+
+- Support for custom links, URLs, and static pages is now available in LocalUI. You can populate custom links in the left **Main Menu** of [LocalUI](../clusters/edge/local-ui/local-ui.md), which will either load content into in an iframe or act as en external link. You can also can host static pages from LocalUI. This is useful when you need to deploy and host custom or specific content for a site and want to avoid introducing additional services to host a static site
 
 #### Known Issues
 
