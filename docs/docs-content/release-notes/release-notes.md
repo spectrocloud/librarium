@@ -32,36 +32,80 @@ saepe ut fugit ea ut architecto quae consequatur.
 
 #### Features
 
+- The upgrade experience for MicroK8s has been improved by the introduction of new upgrade strategies. Users can now
+  choose between a RollingUpgrade, InPlaceUpgrade, or SmartUpgrade. To learn more about the new upgrade strategies,
+  refer to the [MicroK8s pack documentation](../integrations/microk8s.md).
+
 #### Improvements
+
+- You can now upload a custom pack to a self-hosted OCI registry multiple times by using different namespaces in the OCI
+  repository.
+
+- This release removes terminology that may be culturally insensitive or create a barrier to inclusion. We removed the
+  term "master" from our product and replaced it with "control-plane". This work aligns with the Linux Foundation
+  initiative for [Diversity & Inclusivity](https://www.linuxfoundation.org/about/diversity-inclusivity).
+
+#### Bug Fixes
+
+- The issue where Google GKE cluster deployments failed is now resolved. You can now deploy GKE clusters using the
+  latest available GKE versions.
 
 #### Deprecations and Removals
 
+- The term _master_ is removed from Palette and replaced with the term, _control plane_. This change is reflected in the
+  UI, API and documentation. The following API endpoints are affected as a the payload object `includeMasterMachines` is
+  deprecated and replaced with the new object, `includeControlPlaneMachines`:
+
+  - POST `/v1/dashboard/spectroclusters/resources/usage`
+  - POST `/v1/dashboard/spectroclusters/resources/cost`
+  - POST `/v1/dashboard/spectroclusters/{uid}/resources/consumption`
+  - POST `/v1/dashboard/spectroclusters/resources/consumption`
+  - GET `/v1/metrics/{resourceKind}/{resourceUid}/values`
+  - GET `/v1/metrics/{resourceKind}/values`
+
+  After six months, the `includeMasterMachines` object will be removed from the API. Use the
+  `includeControlPlaneMachines` object moving forward.
+
 #### Known Issues
 
-- MicroK8s
+- MicroK8s does not support a multi-node cluster deployment and is limited to a single-node cluster. As a result, the
+  only supported upgrade strategy is _InPlace_.
 
 ### Edge
 
-#### Breaking Changes
+<!-- prettier-ignore -->
+- <TpBadge /> Trusted Boot is an exciting new Edge capability part of the [SENA
+  framework](https://www.spectrocloud.com/product/sena). Trusted Boot is a hardware-based security feature that ensures that the system boots securely and that the boot process has
+  not been tampered with. Trusted Boot does several significant things, all working in concert, to enhance security: 
+  - Ensures that only trusted software can boot on the system. Any modification to any part of the hard disk will be detected. 
+  - Encrypts all sensitive data using hardware security Trusted Platform Module (TPM). 
+  - Ensures that the TPM will only decrypt sensitive data if the boot process is clean and untampered..
+
+  Unlike similar solutions, Trusted Boot utilizes a secure boot, measured boot, and encryption to protect 
+  the booting system far more than other solutions. To learn more about Edge Trusted Boot, check out the
+  [Edge Trusted Boot documentation](../clusters/edge/edge.md).
 
 #### Features
 
 #### Improvements
 
-#### Known issues
+#### Known Issues
 
 ### Virtual Machine Orchestrator (VMO)
 
 #### Improvements
 
-- Internal VMO components, including KubeVirt, KubeVirt Container Data Importer, and Snapshot Controller, have been
-  updated to ensure compatibility with the latest versions of KubeVirt and associated components.
+- The KubeVirt version in use is now v1.2.0. Other minor maintenance updates in support of Kubevirt 1.2.0 are also
+  included.
 
 ### VerteX
 
 #### Features
 
-#### Improvements
+- You can now deploy Palette VerteX using Red Hat Linux Enterprise (RHEL) as the Operating System (OS) for the VerteX
+  instance nodes. Using RHEL as the base OS is available for VerteX when deployed to a VMware vSphere environment using
+  the Palette CLI. A prompt will ask you to select the OS during the VerteX deployment process. Refer to the Palette
+  VerteX installation [guide](../vertex/install-palette-vertex/install-on-vmware/install.md) for more details.
 
 ### Terraform
 
@@ -74,88 +118,46 @@ saepe ut fugit ea ut architecto quae consequatur.
 
 ### Docs and Education
 
--
+- [Palette's Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/latest)
+  now has a dedicated documentation section. The new section also includes a few guides on how to deploy a Kubernetes
+  clusters using Crossplane. Check out the [Crossplane Provider](../automation/crossplane/crossplane.md) documentation
+  for more details.
 
 ### Packs
 
 #### Pack Notes
 
-- Several Kubernetes versions are [deprecated](../integrations/maintenance-policy.md#pack-deprecations) and removed in
-  this release. Review the [Deprecation](#deprecations-and-removals) section for a list of deprecated packs.
+- The BYOOS pack is now available for Palette VerteX deployments. This allows users to bring their own operating system
+  (OS) image to deploy VerteX instances. RHEL is the only custom OS supported for VerteX deployments at this time.
 
-- OpenStack support is limited to Palette eXtended Kubernetes (PXK) for version 1.24.x.
-
-- Local Path Provisioner CSI for Edge is now a [verified pack](../integrations/verified_packs.md).
+- MicroK8s now support of BootCommands, PreRunCommands and PostRunCommands. Our MicroK8s implementation now supports
+  boot, preRun and postRun commands on cloud-init. This allows users to execute custom commands before and after their
+  MicroK8s deployment processes, providing enhanced flexibility and control over deployment environments.
 
 #### Kubernetes
 
-| Pack                                       | New Version |
-| ------------------------------------------ | ----------- |
-| K3s                                        | 1.26.14     |
-| K3s                                        | 1.27.11     |
-| K3s                                        | 1.28.7      |
-| K3s                                        | 1.29.2      |
-| Konvoy                                     | 1.27.6      |
-| Palette eXtended Kubernetes (PXK)          | 1.29.0      |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.0      |
-| RKE2                                       | 1.29.0      |
-| RKE2 - Edge                                | 1.26.14     |
-| RKE2 - Edge                                | 1.27.11     |
-| RKE2 - Edge                                | 1.28.7      |
-| RKE2 - Edge                                | 1.29.3      |
+| Pack | New Version |
+| ---- | ----------- |
 
 #### CNI
 
-| Pack        | New Version |
-| ----------- | ----------- |
-| AWS VPC CNI | 1.15.5      |
-| Calico      | 3.27.0      |
-| Cilium OSS  | 1.13.12     |
-| Cilium OSS  | 1.14.7      |
-| Cilium OSS  | 1.15.1      |
-| Flannel     | 0.24.0      |
+| Pack | New Version |
+| ---- | ----------- |
 
 #### CSI
 
-| Pack                                | New Version   |
-| ----------------------------------- | ------------- |
-| AWS EBS CSI                         | 1.26.1        |
-| GCE Persistent Disk Driver          | 1.12.4        |
-| Local Path Provisioner CSI for Edge | 0.0.25        |
-| Longhorn CSI                        | 1.6.0         |
-| Rook Ceph (manifests)               | 1.13.1        |
-| vSphere CSI                         | 3.1.0 , 3.1.2 |
+| Pack | New Version |
+| ---- | ----------- |
 
 #### Add-on Packs
 
-| Pack                          | New Version |
-| ----------------------------- | ----------- |
-| AWS Application Load Balancer | 2.6.2       |
-| Cilium Tetragon               | 0.10.1      |
-| Cluster Autoscaler for AWS    | 1.27.5      |
-| Cluster Autoscaler for AWS    | 1.28.2      |
-| External DNS                  | 0.13.6      |
-| External Secrets Operator     | 0.9.11      |
-| HashiCorp Vault               | 0.27.0      |
-| Istio                         | 1.20.1      |
-| MetalLB                       | 0.13.12     |
-| Nginx Ingress                 | 1.9.5       |
-| Prometheus Grafana            | 55.8.3      |
+| Pack | New Version |
+| ---- | ----------- |
 
 #### FIPS Packs
 
-| Pack                                       | New Version |
-| ------------------------------------------ | ----------- |
-| AKS                                        | 1.27        |
-| AKS                                        | 1.28        |
-| AWS EBS CSI                                | 1.26.1      |
-| Calico CNI                                 | 3.26.3      |
-| Konvoy                                     | 1.27.6      |
-| Palette eXtended Kubernetes (PXK)          | 1.26.12     |
-| Palette eXtended Kubernetes (PXK)          | 1.27.11     |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.26.12     |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.11     |
-| RKE2 - Edge                                | 1.26.12     |
+| Pack | New Version |
+| ---- | ----------- |
 
 #### Deprecations and Removals
 
