@@ -73,7 +73,7 @@ To exit from the local development Docker container. Press `Ctrl + Z`.
 
 ## Local Development Setup (Non-Docker)
 
-Clone the repository and run the initialization script
+Clone the repository and run the initialization script.
 
 ```sh
 cd Work
