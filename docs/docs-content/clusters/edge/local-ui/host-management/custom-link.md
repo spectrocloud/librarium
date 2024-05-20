@@ -57,24 +57,48 @@ interface or open a new tab in your browser depending on how to configure the li
    cd CanvOS
    ```
 
-3. Create a directory called **ui.tar** at the path `CanvOS/ui.tar`.
+3. Create a directory called **ui** at the path `CanvOS/ui`.
 
 4. In the directory, create a file named **customizations.json**. This is the same file where you customize the theme of
-   the local UI. If the file is already present, there is no need to create a new one.
+   the local UI. If the file is already present, there is no need to create a new one. For more information about
+   customizing the theme of local UI, refer to [Customize Local UI Theme](./theming.md).
 
-5. Populate the file with the following schema:
+5. If you want local UI to host static web pages that you want your users to be able to access from the sidebar, put the
+   HTML files in the **ui** folder. The HTML file may link to JavaScript and CSS files. Ensure that your HTML file can
+   reference its assets. We suggest that you put all assets for specific web pages in one folder.
+
+   For example, you can put the following content inside the **ui** folder.
+
+   ```text
+   |-ui
+     |--customizations.json
+     |--it
+          |--index.html
+          |--index.js
+          |--index.css
+   ```
+
+   When using an URL to locate the local webpage, you can treat the **ui** folder as the root folder. For example, you
+   can locate the HTML file in the example with `/it/index.html`.
+
+6. Populate the file with the following schema. Each link requires one object with the `label` and `url` properties. If
+   you are using static web pages
 
    ```json
    {
      "links": [
        {
-         "label": "example",
+         "label": "Example",
          "url": "https:/www.example.com",
          "type": "iframe"
        },
        {
-         "label": "example",
-         "url": "https:/docs.examplee.com"
+         "label": "Doc",
+         "url": "https:/docs.example.com"
+       }
+       {
+        "label" : "IT",
+        "url": "/it/intex.html"
        }
      ]
    }
@@ -83,13 +107,13 @@ interface or open a new tab in your browser depending on how to configure the li
    Link objects with `"type": "iframe"` means the link will open within the local UI interface in an iframe. Link
    objects without `"type": "iframe"` will open a new tab instead.
 
-6. You can add a group attribute to each link. Links sharing the same group are grouped together in the side bar.
+7. You can add a group attribute to each link. Links sharing the same group are grouped together in the side bar.
 
-   ![A screenshot of the sidebar with with custom links](clusters_edge_localui_custom-link-sidebar.png)
+   ![A screenshot of the sidebar with with custom links](/clusters_edge_localui_custom-link-sidebar.png)
 
-7. Archive the UI directory to a TAR file. The file must be named **ui.tar**.
+8. Archive the UI directory to a TAR file. The file must be named **ui.tar**.
 
-8. Follow the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide from step 3
+9. Follow the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide from step 3
    onwards to finish the EdgeForge process.
 
 ### Validate
