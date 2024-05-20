@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## May 18, 2024 - Release 4.3.8
+## May 19, 2024 - Release 4.3.8
 
 ### Bug Fixes
 
