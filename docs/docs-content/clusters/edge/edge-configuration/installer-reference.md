@@ -87,7 +87,7 @@ boot up the Edge host for the first time. For more information about initial con
 | ------------ | --------------------------------------------------------------------- |
 | `includeTui` | Enable the initial Edge host configuration. Default value is `false`. |
 
-For example, the following configuration enables the Palette TUI:
+For example, the following configuration enables the Palette TUI.
 
 ```yaml {3}
 stylus:
