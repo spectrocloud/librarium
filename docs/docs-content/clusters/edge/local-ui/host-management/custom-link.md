@@ -109,7 +109,7 @@ interface or open a new tab in your browser depending on how to configure the li
 
 7. You can add a group attribute to each link. Links sharing the same group are grouped together in the side bar.
 
-   ![A screenshot of the sidebar with with custom links](/clusters_edge_localui_custom-link-sidebar.png)
+   ![A screenshot of the sidebar with with custom links](/clusters_edge_localui_custom-link-sidebar.webp)
 
 8. Archive the UI directory to a TAR file. The file must be named **ui.tar**.
 
