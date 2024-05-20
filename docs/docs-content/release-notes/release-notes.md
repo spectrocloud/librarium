@@ -28,13 +28,15 @@ saepe ut fugit ea ut architecto quae consequatur.
 
 - Google Cloud Platform (GCP) does not support the ability for users to specify a patch version for the Kubernetes
   version used in GKE clusters. In this release, Palette aligns with GCP's behavior and removes the ability to specify a
-  patch version when creating a cluster profile for GKE. Only the major and minor versions are available for selection.
+  patch version when creating a cluster profile for AKS, EKS, and GKE. Only the major and minor versions are available
+  for selection. The underlying cloud provider will automatically select the latest patch version available for the
+  selected major and minor version.
 
 #### Features
 
-- The upgrade experience for MicroK8s has been improved by the introduction of new upgrade strategies. Users can now
-  choose between a RollingUpgrade, InPlaceUpgrade, or SmartUpgrade. To learn more about the new upgrade strategies,
-  refer to the [MicroK8s pack documentation](../integrations/microk8s.md).
+- <TpBadge /> The upgrade experience for MicroK8s has been improved by the introduction of new upgrade strategies. Users
+  can now choose between a RollingUpgrade, InPlaceUpgrade, or SmartUpgrade. To learn more about the new upgrade
+  strategies, refer to the [MicroK8s pack documentation](../integrations/microk8s.md).
 
 #### Improvements
 
@@ -153,9 +155,12 @@ saepe ut fugit ea ut architecto quae consequatur.
 - The BYOOS pack is now available for Palette VerteX deployments. This allows users to bring their own operating system
   (OS) image to deploy VerteX instances. RHEL is the only custom OS supported for VerteX deployments at this time.
 
-- MicroK8s now support of BootCommands, PreRunCommands and PostRunCommands. Our MicroK8s implementation now supports
-  boot, preRun and postRun commands on cloud-init. This allows users to execute custom commands before and after their
-  MicroK8s deployment processes, providing enhanced flexibility and control over deployment environments.
+- MicroK8s now supports boot, preRun and postRun commands on cloud-init. This allows users to execute custom commands
+  before and after their MicroK8s deployment processes, providing enhanced flexibility and control over deployment
+  environments.
+
+- The Kubernetes pack parameter `k8sHardening` is removed and no longer used as the method for hardening images during
+  the image creation process. This change does not impact users.
 
 #### Kubernetes
 
