@@ -408,6 +408,94 @@ const redirects = [
     from: "/projects/",
     to: "/tenant-settings/projects/",
   },
+  {
+    from: "/enterprise-version/install-palette/airgap/checklist/",
+    to: "/enterprise-version/install-palette/airgap/",
+  },
+  {
+    from: "/enterprise-version/install-palette/airgap/kubernetes-airgap-instructions/",
+    to: "/enterprise-version/install-palette/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/",
+  },
+  {
+    from: "/enterprise-version/install-palette/airgap/vmware-vsphere-airgap-instructions/",
+    to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/airgap/kubernetes-airgap-instructions/",
+    to: "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/airgap/vmware-vsphere-airgap-instructions/",
+    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/airgap/checklist/",
+    to: "/vertex/install-palette-vertex/airgap/",
+  },
+
+  {
+    from: "/terraform/",
+    to: "/automation/terraform/",
+  },
+
+  {
+    from: "/palette-cli/",
+    to: "/automation/palette-cli/",
+  },
+
+  {
+    from: "/palette-cli/install-palette-cli/",
+    to: "/automation/palette-cli/install-palette-cli/",
+  },
+
+  {
+    from: "/palette-cli/commands/",
+    to: "/automation/palette-cli/commands/",
+  },
+
+  {
+    from: "/palette-cli/commands/docs/",
+    to: "/automation/palette-cli/commands/docs/",
+  },
+
+  {
+    from: "/palette-cli/commands/ec/",
+    to: "/automation/palette-cli/commands/ec/",
+  },
+
+  {
+    from: "/palette-cli/commands/fips-validate/",
+    to: "/automation/palette-cli/commands/fips-validate/",
+  },
+
+  {
+    from: "/palette-cli/commands/login/",
+    to: "/automation/palette-cli/commands/login/",
+  },
+
+  {
+    from: "/palette-cli/commands/pcg/",
+    to: "/automation/palette-cli/commands/pcg/",
+  },
+
+  {
+    from: "/palette-cli/commands/pde/",
+    to: "/automation/palette-cli/commands/pde/",
+  },
+
+  {
+    from: "/palette-cli/commands/project/",
+    to: "/automation/palette-cli/commands/project/",
+  },
+
+  {
+    from: "/palette-cli/commands/validator/",
+    to: "/automation/palette-cli/commands/validator/",
+  },
+  {
+    from: "/user-management/palette-resource-limits/",
+    to: "/tenant-settings/palette-resource-limits/",
+  },
 ];
 
 module.exports = redirects;

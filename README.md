@@ -73,7 +73,7 @@ To exit from the local development Docker container. Press `Ctrl + Z`.
 
 ## Local Development Setup (Non-Docker)
 
-Clone the repository and run the initialization script
+Clone the repository and run the initialization script.
 
 ```sh
 cd Work
@@ -127,7 +127,7 @@ The **header** will have a search bar and some links to different other sections
 The page **content** will be displayed under the header and next to the sidebar. On it's right there will be a **table
 of contents** menu that will extract all of the headers inside the content and display them in a list. This will follow
 the user as he scroll the page. On top of the table of contents there will be a **github link** to the content of the
-file. This can be used by users to submit changes to different sections of our documentation
+file. This can be used by users to submit changes to different sections of our documentation.
 
 ### Main Pages
 
@@ -458,11 +458,11 @@ https://docusaurus.io/docs/markdown-features/code-blocks#highlighting-with-comme
 The copy button is shown by default in all code blocks. You can disable the copy button by passing in the parameter
 value `hideClipboard` in the markdown declaration of the code blocks.
 
-Example ![Example](static/assets/docs/images/hide_copy_button_example.png)
+Example ![Example](static/assets/docs/images/hide_copy_button_example.webp)
 
 Result
 
-![Result](static/assets/docs/images/hide_copy_button.png)
+![Result](/static/assets/docs/images/hide_copy_button.webp)
 
 ### Admonitions - Warning / Info / Tip / Danger
 
@@ -768,7 +768,3 @@ make clean-versions
 >
 > The `docusaurus.config.js` file is updated by the [`update_docusaurus_config.js`](./docusaurus.config.js) script. DO
 > NOT commit this file with the updated changes.
-
-```
-
-```
