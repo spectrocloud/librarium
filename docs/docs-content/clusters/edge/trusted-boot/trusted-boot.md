@@ -10,6 +10,8 @@ tags: ["edge"]
 Trusted Boot is a security feature supported by Palette Edge running on Edge devices with supported hardware and
 firmware. Trusted Boot consists of the following security measures:
 
+![High level description diagram for Trusted Boot](/clusters_edge_trusted-boot_highlevel.png)
+
 - Full disk encryption (FDE): Encryption of the entire persistent partition of the disk drive. The purpose of FDE is to
   protect data stored on the disk from unauthorized access in the event of theft or loss of the device.
 - Secure boot: A security measure that ensures only properly signed and authenticated software is allowed to operate
