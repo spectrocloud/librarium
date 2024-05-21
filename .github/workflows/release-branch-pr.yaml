@@ -56,6 +56,7 @@ jobs:
         enable-pull-request-comment: true
         overwrites-pull-request-comment: true
         enable-commit-comment: true
+        alias: deploy-preview-${{ github.event.number }}
 
     - name: Post Netlify URL
       uses: mshick/add-pr-comment@v2
