@@ -78,8 +78,8 @@ interface or open a new tab in your browser depending on how to configure the li
           |--index.css
    ```
 
-   When using an URL to locate the local webpage, you can treat the **ui** folder as the root folder. For example, you
-   can locate the HTML file in the example with `/it/index.html`.
+   When using an URL to locate the local webpage, you can treat the **ui** folder as the root folder and you must use
+   absolute paths to locate your assets. For example, you can locate the HTML file in the example with `/it/index.html`.
 
 6. Populate the file with the following schema. Each link requires one object with the `label` and `url` properties. If
    you are using static web pages
