@@ -2,8 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 52px;
   margin: 5px 0 5px;
+  max-width: 52px;
+  max-height: 52px;
+  align-self: center;
   svg {
     width: 52px;
     height: 52px;

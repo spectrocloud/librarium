@@ -14,8 +14,10 @@ export default function TechnologyCard({ name, title, logoUrl, type }: Technolog
   return (
     <div className={styles.card}>
       <Link to={`/integrations/packs/${name}`}>
-        <PackCardIcon title={title} logoUrl={logoUrl} type={type} />
-        <div className={styles.title}>{title}</div>
+        <div className={styles.cardContent}>
+          <PackCardIcon title={title} logoUrl={logoUrl} type={type} />
+          <div className={styles.title}>{title}</div>
+        </div>
       </Link>
     </div>
   );

@@ -32,6 +32,10 @@
       0px 2px 0px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     cursor: pointer;
+    .cardContent {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   .title {

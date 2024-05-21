@@ -194,7 +194,7 @@ export default function PacksReadme() {
                 allowClear
                 placeholder="Search"
                 onChange={(item) => versionChange(item as string)}
-                value={selectedVersion === packData.versions[0]?.title ? `${selectedVersion} (latest)` : selectedVersion}
+                value={selectedVersion}
               >
                 {renderVersionOptions()}
               </Select>

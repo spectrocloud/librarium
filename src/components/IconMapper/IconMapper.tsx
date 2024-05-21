@@ -31,7 +31,7 @@ import AuthenticationIcon from '@site/static/assets/packs/authentication_layer.s
 import RegistryIcon from '@site/static/assets/packs/registry_layer.svg';
 import SystemAppIcon from '@site/static/assets/packs/system_app_layer.svg';
 import SecurityIcon from '@site/static/assets/packs/security_layer.svg';
-import AppServicesIcon from '@site/static/assets/packs/app_layer.svg';
+import AppServicesIcon from '@site/static/assets/packs/system_app_layer.svg';
 import MiscIcon from '@site/static/assets/packs/misc_layer.svg';
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { fontAwesomeIcons } from "./dynamicFontAwesomeImports";

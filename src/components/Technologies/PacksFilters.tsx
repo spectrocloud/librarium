@@ -62,7 +62,7 @@ export default function PacksFilters({ categories, registries, setSelectedSearch
               setSelectedSearchFilters({ cloudTypes: [] })
             }
           }}
-          value={selectedFilters.cloudTypes.length ? selectedFilters.cloudTypes[0] : ""}
+          value={selectedFilters.cloudTypes.length ? selectedFilters.cloudTypes[0] : undefined}
         />
       </div>
       <div className={styles.filterItems}>
@@ -76,7 +76,7 @@ export default function PacksFilters({ categories, registries, setSelectedSearch
               setSelectedSearchFilters({ source: [] })
             }
           }}
-          value={selectedFilters.source.length ? selectedFilters.source[0] : ""}
+          value={selectedFilters.source.length ? selectedFilters.source[0] : undefined}
         />
       </div>
     </div >
