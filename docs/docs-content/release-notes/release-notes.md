@@ -172,7 +172,7 @@ the following sections for a complete list of features, improvements, and known 
 
 - Improved Edge cluster upgrade experience. In the past, most upgrades would trigger a repave when not always necessary.
   The enhancement applies more intelligence to the upgrade process and determines if a reboot, service reload, or repave
-  is required. Refer to the [Edge Cluster Upgrade Behavior](../clusters/edge/upgrade-behavior.md) page to learn more
+  is required. Refer to the [Edge Cluster Upgrade Behavior](/clusters/edge/day2/upgrade-behavior.md) page to learn more
   about the upgrade behavior.
 
 - New Edge clusters can now retrieve provider images from authenticated registries. Previously, only public registries

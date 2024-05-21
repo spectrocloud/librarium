@@ -13,5 +13,5 @@ operations for your Palette Edge cluster.
 
 ## Resources
 
-- [Edge Cluster Upgrade Behavior](./upgrade-behavior.md)
-- [Renew Certificates](./certificate-renewal.md)
+- [Edge Cluster Upgrade Behavior](upgrade-behavior.md)
+- [Renew Certificates](certificate-renewal.md)

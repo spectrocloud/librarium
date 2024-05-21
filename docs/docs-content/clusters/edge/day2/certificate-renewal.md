@@ -112,6 +112,8 @@ Edge Management API.
      -H "Cookie: Authorization=*******"
    ```
 
+</TabItem>
+
 </Tabs>
 
 ### Validate
