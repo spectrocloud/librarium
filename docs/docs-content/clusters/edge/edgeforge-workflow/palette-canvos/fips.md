@@ -226,32 +226,12 @@ image with.
                   passwd: kairos
     ```
 
-    The command in the `install` block is required for FIPS installations. Configurations in the `stylus` block provides
+    The command in the `install` block is required for FIPS installations. Configurations in the `stylus` block provide
     the Edge Host with the registration token and the VerteX endpoint. And the configurations in the `stage` block
-    creates a system user that you can use to log in to the Operating System (OS).
+    create a system user that you can use to log in to the Operating System (OS).
 
 15. Add further customization to the **user-data** file as needed. This file configures the Edge Installer. Refer to
     [Installer Reference](../../edge-configuration/installer-reference.md) for more information.
-
-    For example, you can use the following user data to add a system user `kairos` to your Edge host and provide the
-    registration token to the Edge host.
-
-    ```yaml
-    #cloud-config
-    stylus:
-       site:
-         edgeHostToken: *********
-         paletteEndpoint: api.spectrocloud.com
-
-    stages:
-       initramfs:
-          - name: "Core system setup"
-          users:
-             kairos:
-               groups:
-               - admin
-               passwd: kairos
-    ```
 
 16. Issue the following command to build the Edge Installer ISO.
 
