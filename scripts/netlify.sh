@@ -1,13 +1,7 @@
 #!/bin/bash
 
-# List of branches to NOT create a Netlify preview
-# Master branch does not need a preview
-# Release branches get a preview through docs-latest.spectrocloud.com
-
-
-# List of branches to NOT create an automatic Netlify preview. This also includes branch-deploy previews.
-disallowed_branches=("master" "release-*")
-target_branch=$TARGET_BRANCH
+target_branch=$1
+context=$CONTEXT
 
 # Get current branch name
 current_branch=$(git branch --show-current)
@@ -15,59 +9,23 @@ current_branch=$(git branch --show-current)
 # Use HEAD if current_branch is empty
 [ -z "$current_branch" ] && current_branch="$HEAD"
 
-echo "Branch name: $current_branch"
-echo "Target branch: $target_branch"
-echo "Head" $HEAD
-echo "Branch" $BRANCH
-echo "Review ID": $REVIEW_ID
-echo "Context" $CONTEXT
+echo "Current branch name: $current_branch"
+echo "Target branch name: $target_branch"
+echo "Context: $context"
 
-# Initialize not_allowed flag
-not_allowed=0
+# Initialize allowed flag
+allowed=0
 
-# Compare current_branch against disallowed list
-for disallowed in "${disallowed_branches[@]}"
-do
-  if [[ "$disallowed" == *"*" ]]; then
-    # Handle wildcard match for current_branch
-    prefix="${disallowed%-*}"
-    if [[ "$current_branch" == "$prefix"* ]]; then
-      not_allowed=1
-      break
-    fi
-  else
-    # Exact match for current_branch
-    if [[ "$current_branch" == "$disallowed" ]]; then
-      not_allowed=1
-      break
-    fi
-  fi
-done
+# Check if context is branch-deploy and current branch matches version-*
+if [[ "$context" == "branch-deploy" && "$current_branch" == version-* ]]; then
+  allowed=1
+fi
 
-# Compare target_branch against disallowed list
-for disallowed in "${disallowed_branches[@]}"
-do
-  if [[ "$disallowed" == *"*" ]]; then
-    # Handle wildcard match for target_branch
-    prefix="${disallowed%-*}"
-    if [[ "$target_branch" == "$prefix"* ]]; then
-      not_allowed=1
-      break
-    fi
-  else
-    # Exact match for target_branch
-    if [[ "$target_branch" == "$disallowed" ]]; then
-      not_allowed=1
-      break
-    fi
-  fi
-done
-
-# Exit based on not_allowed flag
-if [ $not_allowed -eq 1 ]; then
-  echo "Not allowed to create a Netlify preview"
+# Exit based on allowed flag
+if [ $allowed -eq 1 ]; then
+  echo "Allowed to create a Netlify preview"
   exit 0
 else
-  echo "Allowed to create a Netlify preview"
+  echo "Not allowed to create a Netlify preview"
   exit 1
 fi
