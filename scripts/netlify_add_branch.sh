@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Check if SITE_ID is set
-if [ -z "$SITE_ID" ]; then
-  echo "Error: SITE_ID is not set."
+# Check if NETLIFY_SITE_ID is set
+if [ -z "$NETLIFY_SITE_ID" ]; then
+  echo "Error: NETLIFY_SITE_ID is not set."
   exit 1
 fi
 
-# Check if NETLIFY_TOKEN is set
-if [ -z "$NETLIFY_TOKEN" ]; then
-  echo "Error: NETLIFY_TOKEN is not set."
+# Check if NETLIFY_AUTH_TOKEN is set
+if [ -z "$NETLIFY_AUTH_TOKEN" ]; then
+  echo "Error: NETLIFY_AUTH_TOKEN is not set."
   exit 1
 fi
 
@@ -19,10 +19,10 @@ if [ -z "$GITHUB_BRANCH" ]; then
 fi
 
 # Extract the allowed branches list
-echo "Fetching allowed branches for site $SITE_ID..."
-allowed_branches=$(curl --location "https://api.netlify.com/api/v1/sites/$SITE_ID" \
+echo "Fetching allowed branches for site $NETLIFY_SITE_ID..."
+allowed_branches=$(curl --location "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID" \
   --header "Content-Type: application/json" \
-  --header "Authorization: Bearer $NETLIFY_TOKEN" | jq '.build_settings.allowed_branches')
+  --header "Authorization: Bearer $NETLIFY_AUTH_TOKEN" | jq '.build_settings.allowed_branches')
 
 if [ -z "$allowed_branches" ]; then
   echo "Error: Could not fetch allowed branches."
@@ -43,10 +43,10 @@ allowed_branches=$(echo $allowed_branches | jq --arg branch "$GITHUB_BRANCH" '. 
 echo "Updated allowed branches: $allowed_branches"
 
 # Update the build settings using the updated allowed branches
-echo "Updating build settings for site $SITE_ID..."
-curl --location --request PATCH "https://api.netlify.com/api/v1/sites/$SITE_ID" \
+echo "Updating build settings for site $NETLIFY_SITE_ID..."
+curl --location --request PATCH "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID" \
   --header "Content-Type: application/json" \
-  --header "Authorization: Bearer $NETLIFY_TOKEN" \
+  --header "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
   --data "{
       \"build_settings\": {
           \"branch\": \"master\",
