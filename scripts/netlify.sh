@@ -24,8 +24,8 @@ fi
 # Exit based on allowed flag
 if [ $allowed -eq 1 ]; then
   echo "Allowed to create a Netlify preview"
-  exit 0
+  exit 1
 else
   echo "Not allowed to create a Netlify preview"
-  exit 1
+  exit 0
 fi
