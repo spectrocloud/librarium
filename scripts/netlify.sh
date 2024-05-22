@@ -17,6 +17,9 @@ current_branch=$(git branch --show-current)
 
 echo "Branch name: $current_branch"
 echo "Target branch: $target_branch"
+echo "Head" $HEAD
+echo "Branch" $BRANCH
+echo "Review ID": $REVIEW_ID
 
 # Initialize not_allowed flag
 not_allowed=0
