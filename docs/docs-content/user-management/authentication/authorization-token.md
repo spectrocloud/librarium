@@ -18,9 +18,9 @@ TOKEN=abcd1234
 ```
 
 ```bash
-curl --location --request GET 'https://api.spectrocloud.com/v1/projects/alert' \
---header 'Authorization: $TOKEN' \
---header 'Content-Type: application/json'
+curl --location --request GET 'https://api.spectrocloud.com/v1/clusterprofiles/macros' \
+--header "Authorization: $TOKEN" \
+--header "Content-Type: application/json"
 ```
 
 To refresh the authorization token, use the `v1/auth/refresh` endpoint with a GET request.
