@@ -23,13 +23,13 @@ fi
 
 # Extract the allowed branches list
 echo "Fetching allowed branches for site $NETLIFY_SITE_ID..."
-response=$(curl --location --write-out "%{http_code}" --silent --output /tmp/curl_response \
+response=$(curl --location --write-out "HTTPSTATUS:%{http_code}" --silent --output /tmp/curl_response \
   "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID" \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer $NETLIFY_AUTH_TOKEN")
 
-http_code=$(tail -n1 <<< "$response")
-content=$(head -n-1 <<< "$response")
+http_code=$(grep -o "HTTPSTATUS:[0-9]*" <<< "$response" | cut -d: -f2)
+content=$(sed -e "s/HTTPSTATUS:[0-9]*$//" /tmp/curl_response)
 
 if [ "$http_code" -ne 200 ]; then
   handle_error "Failed to fetch allowed branches. HTTP status code: $http_code"
@@ -44,19 +44,19 @@ fi
 echo "Current allowed branches: $allowed_branches"
 
 # Check if the current GitHub branch is already in the allowed branches list
-if echo $allowed_branches | jq -e ". | index(\"$GITHUB_BRANCH\")" > /dev/null; then
+if echo "$allowed_branches" | jq -e ". | index(\"$GITHUB_BRANCH\")" > /dev/null; then
   echo "The branch $GITHUB_BRANCH is already in the allowed branches list."
   exit 0
 fi
 
 # Append the current GitHub branch to the allowed branches list
-allowed_branches=$(echo $allowed_branches | jq --arg branch "$GITHUB_BRANCH" '. + [$branch]') || handle_error "Could not append the branch to the allowed branches."
+allowed_branches=$(echo "$allowed_branches" | jq --arg branch "$GITHUB_BRANCH" '. + [$branch]') || handle_error "Could not append the branch to the allowed branches."
 
 echo "Updated allowed branches: $allowed_branches"
 
 # Update the build settings using the updated allowed branches
 echo "Updating build settings for site $NETLIFY_SITE_ID..."
-response=$(curl --location --write-out "%{http_code}" --silent --output /tmp/curl_response \
+response=$(curl --location --write-out "HTTPSTATUS:%{http_code}" --silent --output /tmp/curl_response \
   --request PATCH "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID" \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
@@ -67,11 +67,11 @@ response=$(curl --location --write-out "%{http_code}" --silent --output /tmp/cur
       }
   }")
 
-http_code=$(tail -n1 <<< "$response")
-content=$(head -n-1 <<< "$response")
+http_code=$(grep -o "HTTPSTATUS:[0-9]*" <<< "$response" | cut -d: -f2)
+content=$(sed -e "s/HTTPSTATUS:[0-9]*$//" /tmp/curl_response)
 
 if [ "$http_code" -ne 200 ]; then
   handle_error "Failed to update build settings. HTTP status code: $http_code"
 fi
 
-echo "Build settings updated successfully."
+echo "Netlify logic completed successfully."
