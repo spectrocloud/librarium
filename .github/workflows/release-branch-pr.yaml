@@ -37,9 +37,19 @@ jobs:
         node-version: "20"
         cache: "npm"
 
+    - name: Determine branch name
+      id: extract_branch
+      run: |
+        if [ "${{ github.event_name }}" = "pull_request" ]; then
+          echo "GITHUB_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
+        else
+          echo "GITHUB_BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV
+        fi
+
     - run: npm ci
 
-    - run: cd scripts && ./netlify_add_branch.sh
+    - name: Update Netlify for Collab Drawer
+      run: cd scripts && ./netlify_add_branch.sh
 
     # - name: Post Netlify progress
     #   uses: mshick/add-pr-comment@v2
