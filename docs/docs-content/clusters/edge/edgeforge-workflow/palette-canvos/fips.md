@@ -15,6 +15,13 @@ Both the Edge Installer ISO and the provider images must be FIPS-compliant.
 
 This page guides you through the process of building FIPS-compliant Edge Installer ISO and provider images.
 
+## Limitations
+
+- FIPS-compliant Edge installer does not work with secure boot. You need to disable secure boot first before installing
+  Palette on your device. The process to disable secure boot varies by device, but generally, you can press F2 upon
+  powering up the Edge host, and find the option to disable secure boot in the Basic Input/Output System (BIOS)
+  interface.
+
 ## Prerequisites
 
 - A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture to build the Edge
@@ -193,23 +200,58 @@ image with.
     | BASE_IMAGE       | The base image used by EdgeForge to build the Edge Installer and provider images. This must be the same image that you build in the previous step.                |
     | ISO_NAME         | The file name of the ISO file that will be generated.                                                                                                             |
 
-14. Create a file named **user-data**. Add the following blocks to the root level of the **user-data** file. Replace the
-    value for `edgeHostToken` with your VerteX registration token, and replace the value `paletteEndPoint` with the URL
-    of your VerteX instance.
+14. Create a file named **user-data**. It must have the `#cloud-init` header at the top of the file. Ensure you have the
+    following blocks at the root level of the **user-data** file. Replace the value for `edgeHostToken` with your VerteX
+    registration token, and replace the value `paletteEndPoint` with the URL of your VerteX instance. Replace the user
+    `kairos` and its password with your desired username and password.
 
     ```yaml
+    #cloud-init
     install:
-      grub_options:
-        extra_cmdline: "fips=1 selinux=0"
+       grub_options:
+         extra_cmdline: "fips=1 selinux=0"
 
     stylus:
-      site:
-        edgeHostToken: ********
-        paletteEndpoint: https://vertex.palette-devx.spectrocloud.com
+       site:
+         edgeHostToken: ********
+         paletteEndpoint: https://vertex.palette-devx.spectrocloud.com
+
+    stages:
+       initramfs:
+          - name: "Core system setup"
+            users:
+               kairos:
+                  groups:
+                  - admin
+                  passwd: kairos
     ```
+
+    The command in the `install` block is required for FIPS installations. Configurations in the `stylus` block provides
+    the Edge Host with the registration token and the VerteX endpoint. And the configurations in the `stage` block
+    creates a system user that you can use to log in to the Operating System (OS).
 
 15. Add further customization to the **user-data** file as needed. This file configures the Edge Installer. Refer to
     [Installer Reference](../../edge-configuration/installer-reference.md) for more information.
+
+    For example, you can use the following user data to add a system user `kairos` to your Edge host and provide the
+    registration token to the Edge host.
+
+    ```yaml
+    #cloud-config
+    stylus:
+       site:
+         edgeHostToken: *********
+         paletteEndpoint: api.spectrocloud.com
+
+    stages:
+       initramfs:
+          - name: "Core system setup"
+          users:
+             kairos:
+               groups:
+               - admin
+               passwd: kairos
+    ```
 
 16. Issue the following command to build the Edge Installer ISO.
 
@@ -247,7 +289,10 @@ FIPS-complaint provider images are built on top of the base OS image you have bu
 
 1. Follow the [Site Installation](../../site-deployment/stage.md) guide to install the Palette Edge on your Edge host.
 
-2. Issue the following command and ensure that the output is `1`. This means the OS is FIPS enabled.
+2. Press Fn + Ctrl + Cmd + F1 or Ctrl + Cmd + F1 keys on a mac keyboard and provide user credentials to log in to the
+   OS.
+
+3. Issue the following command and ensure that the output is `1`. This means the OS is FIPS enabled.
 
    ```shell
    cat /proc/sys/crypto/fips_enabled
