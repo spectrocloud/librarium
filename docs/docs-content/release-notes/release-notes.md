@@ -32,6 +32,12 @@ saepe ut fugit ea ut architecto quae consequatur.
   for selection. The underlying cloud provider will automatically select the latest patch version available for the
   selected major and minor version.
 
+- Validator Helm Charts have migrated from `https://github.com/spectrocloud-labs/validator` to
+  `https://github.com/validator-labs/validator`. Former versions of the Palette CLI will point to the former repository
+  when prompted for the Helm chart location and require a manual URL change. The new version of the Palette CLI will
+  point to the new repository. Refer to the [Validator](../automation/palette-cli/commands/validator.md) CLI page
+  documentation for more details.
+
 #### Features
 
 - <TpBadge /> The upgrade experience for MicroK8s has been improved by the introduction of new upgrade strategies. Users
