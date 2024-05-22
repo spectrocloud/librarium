@@ -33,6 +33,7 @@ if [[ "$context" == "branch-deploy" ]]; then
 fi
 
 # Exit based on allowed flag
+# Netlify has inverse exit codes. 1 is allowed, 0 is not allowed.
 if [ $allowed -eq 1 ]; then
   echo "Allowed to create a Netlify preview"
   exit 1

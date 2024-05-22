@@ -59,4 +59,3 @@ jobs:
         refresh-message-position: false
 
     - run: npm run build
-
