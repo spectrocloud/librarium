@@ -5,11 +5,26 @@ on:
     branches-ignore: [master, main, gh-pages]
 
 
+env:
+  NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+  NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+  GITHUB_BRANCH: ${{ github.event.ref }}
+
 concurrency:
   group: ${{ github.event.ref }}
   cancel-in-progress: true
 
 jobs:
+  update_netlify:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout GitHub Pages Branch
+        uses: actions/checkout@v4
+        
+      - name: Remove Branch From Netlify
+        run: cd scripts && ./netlify_remove_branch.sh 
+
   delete_reports:
     name: Delete Reports
     runs-on: ubuntu-latest

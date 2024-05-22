@@ -43,14 +43,14 @@ fi
 
 echo "Current allowed branches: $allowed_branches"
 
-# Check if the current GitHub branch is already in the allowed branches list
-if echo "$allowed_branches" | jq -e ". | index(\"$GITHUB_BRANCH\")" > /dev/null; then
-  echo "The branch $GITHUB_BRANCH is already in the allowed branches list."
+# Check if the current GitHub branch is in the allowed branches list
+if ! echo "$allowed_branches" | jq -e ". | index(\"$GITHUB_BRANCH\")" > /dev/null; then
+  echo "The branch $GITHUB_BRANCH is not in the allowed branches list."
   exit 0
 fi
 
-# Append the current GitHub branch to the allowed branches list
-allowed_branches=$(echo "$allowed_branches" | jq --arg branch "$GITHUB_BRANCH" '. + [$branch]') || handle_error "Could not append the branch to the allowed branches."
+# Remove the current GitHub branch from the allowed branches list
+allowed_branches=$(echo "$allowed_branches" | jq --arg branch "$GITHUB_BRANCH" 'del(.[] | select(. == $branch))') || handle_error "Could not remove the branch from the allowed branches."
 
 echo "Updated allowed branches: $allowed_branches"
 
@@ -74,4 +74,4 @@ if [ "$http_code" -ne 200 ]; then
   handle_error "Failed to update Netlify settings. HTTP status code: $http_code"
 fi
 
-echo "Netlify logic completed successfully."
+echo "Netlify logic updated successfully."

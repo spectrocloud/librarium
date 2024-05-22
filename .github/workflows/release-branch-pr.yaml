@@ -55,7 +55,7 @@ jobs:
       uses: mshick/add-pr-comment@v2
       with:
         message: |
-            🤖 Netlify configured to enable preview build for commit $GITHUB_BRANCH. Subsequent commits will automatically trigger a Netlify build preview.
+            🤖 Netlify configured to enable preview build for commit ${{env.GITHUB_BRANCH}}. Subsequent commits will automatically trigger a Netlify build preview.
         refresh-message-position: false
 
     - run: npm run build
