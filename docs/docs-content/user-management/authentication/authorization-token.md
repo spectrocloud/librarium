@@ -18,7 +18,7 @@ TOKEN=abcd1234
 ```
 
 ```bash
-curl --location --request GET 'https://api.spectrocloud.com/v1/clusterprofiles/macros' \
+curl --location --request GET 'https://api.spectrocloud.com/v1/projects/alerts' \
 --header "Authorization: $TOKEN" \
 --header "Content-Type: application/json"
 ```
