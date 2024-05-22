@@ -20,6 +20,7 @@ echo "Target branch: $target_branch"
 echo "Head" $HEAD
 echo "Branch" $BRANCH
 echo "Review ID": $REVIEW_ID
+echo "Context" $CONTEXT
 
 # Initialize not_allowed flag
 not_allowed=0
