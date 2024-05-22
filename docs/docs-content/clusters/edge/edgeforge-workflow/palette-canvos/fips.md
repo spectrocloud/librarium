@@ -200,7 +200,7 @@ image with.
     ```yaml
     install:
       grub_options:
-        extra_cmdline: "fips=1"
+        extra_cmdline: "fips=1 selinux=0"
 
     stylus:
       site:
