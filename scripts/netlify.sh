@@ -7,6 +7,7 @@
 
 # List of branches to NOT create an automatic Netlify preview. This also includes branch-deploy previews.
 disallowed_branches=("master" "release-*")
+target_branch=$TARGET_BRANCH
 
 # Get current branch name
 current_branch=$(git branch --show-current)
@@ -15,6 +16,7 @@ current_branch=$(git branch --show-current)
 [ -z "$current_branch" ] && current_branch="$HEAD"
 
 echo "Branch name: $current_branch"
+echo "Target branch: $target_branch"
 
 # Initialize not_allowed flag
 not_allowed=0
@@ -22,9 +24,38 @@ not_allowed=0
 # Compare current_branch against disallowed list
 for disallowed in "${disallowed_branches[@]}"
 do
-  if [[ "$current_branch" == $disallowed ]]; then
-    not_allowed=1
-    break
+  if [[ "$disallowed" == *"*" ]]; then
+    # Handle wildcard match for current_branch
+    prefix="${disallowed%-*}"
+    if [[ "$current_branch" == "$prefix"* ]]; then
+      not_allowed=1
+      break
+    fi
+  else
+    # Exact match for current_branch
+    if [[ "$current_branch" == "$disallowed" ]]; then
+      not_allowed=1
+      break
+    fi
+  fi
+done
+
+# Compare target_branch against disallowed list
+for disallowed in "${disallowed_branches[@]}"
+do
+  if [[ "$disallowed" == *"*" ]]; then
+    # Handle wildcard match for target_branch
+    prefix="${disallowed%-*}"
+    if [[ "$target_branch" == "$prefix"* ]]; then
+      not_allowed=1
+      break
+    fi
+  else
+    # Exact match for target_branch
+    if [[ "$target_branch" == "$disallowed" ]]; then
+      not_allowed=1
+      break
+    fi
   fi
 done
 

@@ -38,14 +38,16 @@ jobs:
 
     - run: npm ci
 
-    - name: Post Netlify progress
-      uses: mshick/add-pr-comment@v2
-      with:
-        message: |
-            🤖 Starting the Netlify preview build for commit ${{ github.sha }}. This may take a few minutes.
-        refresh-message-position: true
+    # - name: Post Netlify progress
+    #   uses: mshick/add-pr-comment@v2
+    #   with:
+    #     message: |
+    #         🤖 Starting the Netlify preview build for commit ${{ github.sha }}. This may take a few minutes.
+    #     refresh-message-position: true
 
-    - run: npm run build
+    -   run: |
+          echo "TARGET_BRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENVß
+    # - run: npm run build
 
     # - name: Deploy to Netlify
     #   id: netlify
