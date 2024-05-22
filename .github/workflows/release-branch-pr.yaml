@@ -47,24 +47,24 @@ jobs:
 
     - run: npm run build
 
-    - name: Deploy to Netlify
-      id: netlify
-      uses: nwtgck/actions-netlify@v3.0.0
-      with:
-        publish-dir: ./build
-        deploy-message: 'Manual Netlify deployment from GitHub Actions -  ${{ github.sha }}'
-        enable-pull-request-comment: true
-        overwrites-pull-request-comment: true
-        enable-commit-comment: true
-        alias: deploy-preview-${{ github.event.number }}
+    # - name: Deploy to Netlify
+    #   id: netlify
+    #   uses: nwtgck/actions-netlify@v3.0.0
+    #   with:
+    #     publish-dir: ./build
+    #     deploy-message: 'Manual Netlify deployment from GitHub Actions -  ${{ github.sha }}'
+    #     enable-pull-request-comment: true
+    #     overwrites-pull-request-comment: true
+    #     enable-commit-comment: true
+    #     alias: deploy-preview-${{ github.event.number }}
 
-    - name: Post Netlify URL
-      uses: mshick/add-pr-comment@v2
-      with:
-        message: |
-            🚀 Netlify preview deployed succesfully for commit ${{ github.sha }}. Click [here](${{steps.netlify.outputs.deploy-url}}) to preview the changes.
-        message-failure: |
-            👎 Uh oh! The Netlify Preview failed to deploy for commit ${{ github.sha }}. Please check the Netlify logs for more information.
-        refresh-message-position: true
-        update-only: true
+    # - name: Post Netlify URL
+    #   uses: mshick/add-pr-comment@v2
+    #   with:
+    #     message: |
+    #         🚀 Netlify preview deployed succesfully for commit ${{ github.sha }}. Click [here](${{steps.netlify.outputs.deploy-url}}) to preview the changes.
+    #     message-failure: |
+    #         👎 Uh oh! The Netlify Preview failed to deploy for commit ${{ github.sha }}. Please check the Netlify logs for more information.
+    #     refresh-message-position: true
+    #     update-only: true
 
