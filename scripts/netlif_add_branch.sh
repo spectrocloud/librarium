@@ -31,6 +31,12 @@ fi
 
 echo "Current allowed branches: $allowed_branches"
 
+# Check if the current GitHub branch is already in the allowed branches list
+if echo $allowed_branches | jq -e ". | index(\"$GITHUB_BRANCH\")" > /dev/null; then
+  echo "The branch $GITHUB_BRANCH is already in the allowed branches list."
+  exit 0
+fi
+
 # Append the current GitHub branch to the allowed branches list
 allowed_branches=$(echo $allowed_branches | jq --arg branch "$GITHUB_BRANCH" '. + [$branch]')
 

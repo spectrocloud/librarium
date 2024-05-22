@@ -15,7 +15,6 @@ current_branch=$(git branch --show-current)
 [ -z "$current_branch" ] && current_branch="$HEAD"
 
 echo "Current branch name: $current_branch"
-echo "Target branch name: $target_branch"
 echo "Context: $context"
 
 # Initialize allowed flag
