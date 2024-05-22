@@ -91,9 +91,9 @@ export default function PacksReadme() {
   }, [packName]);
   const [selectedVersion, setSelectedVersion] = useState<string>(version || packData.versions?.[0]?.title || "");
   let infoContent;
-  if(packData.disabled) {
+  if (packData.disabled) {
     infoContent = "This pack is currently disabled.";
-  } else if(packData.deprecated) {
+  } else if (packData.deprecated) {
     infoContent = "This pack is deprecated.";
   }
 
@@ -221,7 +221,7 @@ export default function PacksReadme() {
             </div>
             <div className={styles.content}>{infoContent}</div>
           </div>
-        ) : null }
+        ) : null}
         <div className={styles.tabPane}>
           {renderTabs()}
         </div>
