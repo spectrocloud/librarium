@@ -79,7 +79,7 @@ ISO file.
 
 9. Select the USB as the boot volume.
 
-10. As the Edge host boots up, you will see output similar to the following on the screen.
+10. As the Edge host boots up, the console will produce output similar to the following on the screen.
 
     ```shell
     BdsDxe: loading Boot0001 "UEFI QEMU DVD-ROM QM00003 " from PciRoot(0x0)/Pci(0x1,0x1)/Ata(Secondary,Master,0x0)
@@ -102,10 +102,10 @@ ISO file.
     ```
 
 11. Pay attention to the output on the screen. At a certain point, the output will break and produce a large number of
-    new lines before producing the same output as the beginning again. For example, you might see the following.
+    new lines before producing the same output as the beginning again.
 
     The last line before the white space indicates the upper bound of your EFI boot limit. For example, in the following
-    output, the EFI boot limit of your Edge host is between 600 and 700MB.
+    output, the EFI boot limit of your Edge host is between 600 and 700 MB.
 
     ```shell
     [ INFO]:  src/main.rs@056: Reading 600.00 MB bytes into buffer
@@ -138,8 +138,8 @@ ISO file.
 13. Issue the following command to mount the installer ISO to the directories you created in the previous step.
 
     ```shell
-    sudo mount -o loop build/palette-edge-installer.iso image/
-    sudo mount -o loop image/efiboot.img image-efi
+    sudo mount --options loop build/palette-edge-installer.iso image/
+    sudo mount --options loop image/efiboot.img image-efi
     ```
 
 14. Issue the following command to find out the size of the EFI file.
@@ -160,7 +160,7 @@ ISO file.
     provider image.
 
     ```shell
-    docker run -it image-tag ls -ltrh /trusted-boot/EFI/kairos
+    docker run --interactive --tty image-tag ls -ltrh /trusted-boot/EFI/kairos
     ```
 
     In the following example, the size of the EFI file in the provider image is 767 MB.

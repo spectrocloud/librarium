@@ -60,7 +60,7 @@ This document guides you through the process of producing Edge Installer ISO tha
    [Edge Artifact Build Configurations](../../edgeforge-workflow/palette-canvos/arg.md) for available configuration
    parameters.
 
-   To build an ISO image that supports Trusted Boot, you need to include the following parameters in the **.arg** file:
+   To build an ISO image that supports Trusted Boot, you need to include the following parameters in the **.arg** file.
 
    ```
    IS_UKI=true

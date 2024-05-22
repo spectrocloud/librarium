@@ -61,8 +61,8 @@ supports Secure Boot.
 6. When the keys are finished enrolling, the installation will start automatically. Installation typically takes about 5
    minutes, but can vary depending on your hardware.
 
-7. When installation finishes, you will see the text "Installation has finished, rebooting in 5 seconds" on your screen.
-   Remove the USB disk from your Edge device.
+7. When installation finishes, you will observe the text "Installation has finished, rebooting in 5 seconds" on your
+   screen. Remove the USB disk from your Edge device.
 
 8. After installation finishes, power up the device. Let your device automatically choose the boot volume. It should
    boot directly to Edge device registration.
@@ -74,13 +74,13 @@ supports Secure Boot.
 
    Alternatively, you can establish an SSH connection to your Edge device if you have network access to it.
 
-2. Issue the following command:
+2. Issue the following command.
 
    ```shell
    ls -ltr / run/cos/
    ```
 
-   You should receive an output that's similar to the following:
+   You should receive an output that's similar to the following.
 
    ```
    total 12
@@ -92,13 +92,13 @@ supports Secure Boot.
    This confirms that your Edge device was booted with a Unified Kernel Image, a specific file format tailored to
    achieve a tamper-proof system and encryption of persistent partitions.
 
-3. Issue the following command to verify disk encryption:
+3. Issue the following command to verify disk encryption.
 
    ```shell
    lsblk
    ```
 
-   You should see output similar to the following and verify that the **/oem** portion and various directories
+   You will observe output similar to the following and verify that the **/oem** portion and various directories
    containing sensitive user data are encrypted. This means that if the boot process is ever altered by an unauthorized
    party, they will not be able to gain access to the encrypted data.
 

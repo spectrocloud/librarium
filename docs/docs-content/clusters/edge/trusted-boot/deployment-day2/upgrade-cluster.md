@@ -66,7 +66,7 @@ not be able to access any data in the persistent partitions.
    You should also receive an output from the build command that contains the OS layer of your cluster profile. Copy and
    save it during the later steps.
 
-5. Issue the following command to push the image to hte repository you specified in **.arg**. Replace `IMAGE-TAG` with
+5. Issue the following command to push the image to the repository you specified in **.arg**. Replace `IMAGE-TAG` with
    the tag of the provider image you just built.
 
    ```shell

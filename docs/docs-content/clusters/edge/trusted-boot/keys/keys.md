@@ -26,7 +26,7 @@ platform firmware. A system can only have one PK.
 
 ## Key Exchange Key (KEK)
 
-The KEK is a list of certificates, public keys, or signatures in an ESL signed by a private PK key. Entires in the KEK
+The KEK is a list of certificates, public keys, or signatures in an ESL signed by a private PK key. Entries in the KEK
 set are used to update the signature database (db) and the forbidden signature database (dbx). Each entry in the KEK set
 has a corresponding private key. It establishes a relationship of trust between the firmware and the operating system
 (OS).
