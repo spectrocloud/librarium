@@ -14,11 +14,15 @@ echo "Target branch name: $target_branch"
 echo "Context: $context"
 
 # Initialize allowed flag
-allowed=0
+allowed=1
 
 # Check if context is branch-deploy and current branch matches version-*
-if [[ "$context" == "branch-deploy" && "$current_branch" == version-* ]]; then
-  allowed=1
+if [[ "$context" == "branch-deploy" ]]; then
+  if [[ "$current_branch" == version-* ]]; then
+    allowed=1
+  else
+    allowed=0
+  fi
 fi
 
 # Exit based on allowed flag
