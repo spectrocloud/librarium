@@ -107,9 +107,13 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
   useEffect(() => {
     const filters = localStorage.getItem(PACKLISTFILTERS);
     if (filters) {
-      const { selectedFilters, searchValue } = JSON.parse(filters);
-      setSelectedFilters(selectedFilters);
-      setSearchValue(searchValue || "");
+      try {
+        const { selectedFilters, searchValue } = JSON.parse(filters);
+        setSelectedFilters(selectedFilters);
+        setSearchValue(searchValue || "");
+      } catch (e) {
+        console.error("Error in parsing filters from local storage", e);
+      }
     }
   }, []);
 

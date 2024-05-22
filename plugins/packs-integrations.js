@@ -210,9 +210,13 @@ async function pluginPacksAndIntegrationsData(context, options) {
       const promises = packDataArr.map((packData) => {
         packMDMap[packData.spec.name] = packData;
         const cloudType = packData.spec.cloudTypes.includes("all") ? "aws" : packData.spec.cloudTypes[0];
-        const preferredRegistry = packData.spec.registries.find((registry) => registry.uid === preferredRegistryUid);
         //there is a scenario where the pack is not part of preferred registry, in that case, the item of the pack registries is sent to API request
-        const url = `${packUrl}${packData.spec.name}/registries/${preferredRegistry?.uid || packData.spec.registries[0].uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`;
+        const hasPreferredRegistry = packData.spec.registries.some((registry) => registry.uid === preferredRegistryUid);
+        let packRegistryUid = packData.spec.registries[0].uid
+        if (hasPreferredRegistry) {
+          packRegistryUid = preferredRegistryUid;
+        }
+        const url = `${packUrl}${packData.spec.name}/registries/${packRegistryUid}?cloudType=${cloudType}&layer=${packData.spec.layer}`;
         return callRateLimitAPI(() => api.get(url));
       });
       const results = await Promise.allSettled(promises);
