@@ -19,6 +19,15 @@ machine to machine. This guide uses the Intel NUC 13 Pro as an example.
   requires you to have a wired keyboard and a monitor to display the interface connected to the Edge device.
 - A USB disk containing the installer ISO.
 
+:::warning
+
+Before proceeding with installation, check the maximum EFI size that your Edge host is able to boot and compare it
+against the installer ISO and provider image. Once you enroll the keys, you will no longer be able to check the limit of
+your hardware. For more information, refer to
+[Check EFI Size and Edge Host Boot Limit](../edgeforge/check-efi-limit.md).
+
+:::
+
 ## Instructions
 
 ### Enroll Secure Boot Keys into Edge Device
