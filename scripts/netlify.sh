@@ -4,6 +4,9 @@
 # This script checks if a Netlify context is for branch-deploy. 
 # Netlify branch-deploy contexts are only allowed for branches that match version-*. This script is used in the Netlify build settings to determine if a preview should be created.
 # This script is created to prevent both a build-preview and a branch-deploy preview from being created for the same branch at the same time.
+# In the CI/CD pipeline, the scripts netlify_add_branch.sh and netlify_remove_branch.sh are used to manage the allowed branches list in the Netlify build settings.
+# The allowed branches list is used to determine which branches are allowed to create a Netlify preview for the purpose on enabling the Netlify Collab drawer.
+# By default, only deploy previews targeting the production branch are allowed, unless manually specified in the Netlify site settings. The scripts netlify_add_branch.sh and netlify_remove_branch.sh handle this responsiblity.
 
 target_branch=$1
 context=$CONTEXT
