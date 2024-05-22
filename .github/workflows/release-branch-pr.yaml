@@ -39,7 +39,7 @@ jobs:
 
     - run: npm ci
 
-    - run: ./scripts/netlify_add_branch.sh
+    - run: cd scripts && ./netlify_add_branch.sh
 
     # - name: Post Netlify progress
     #   uses: mshick/add-pr-comment@v2
