@@ -1,5 +1,10 @@
 #!/bin/bash
 
+############################################
+# This script checks if a Netlify context is for branch-deploy. 
+# Netlify branch-deploy contexts are only allowed for branches that match version-*. This script is used in the Netlify build settings to determine if a preview should be created.
+# This script is created to prevent both a build-preview and a branch-deploy preview from being created for the same branch at the same time.
+
 target_branch=$1
 context=$CONTEXT
 
