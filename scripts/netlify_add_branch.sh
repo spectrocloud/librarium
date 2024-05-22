@@ -1,32 +1,44 @@
 #!/bin/bash
 
+# Function to handle errors
+handle_error() {
+  echo "Error: $1"
+  exit 1
+}
+
 # Check if NETLIFY_SITE_ID is set
 if [ -z "$NETLIFY_SITE_ID" ]; then
-  echo "Error: NETLIFY_SITE_ID is not set."
-  exit 1
+  handle_error "NETLIFY_SITE_ID is not set."
 fi
 
 # Check if NETLIFY_AUTH_TOKEN is set
 if [ -z "$NETLIFY_AUTH_TOKEN" ]; then
-  echo "Error: NETLIFY_AUTH_TOKEN is not set."
-  exit 1
+  handle_error "NETLIFY_AUTH_TOKEN is not set."
 fi
 
 # Check if GITHUB_BRANCH is set
 if [ -z "$GITHUB_BRANCH" ]; then
-  echo "Error: GITHUB_BRANCH is not set."
-  exit 1
+  handle_error "GITHUB_BRANCH is not set."
 fi
 
 # Extract the allowed branches list
 echo "Fetching allowed branches for site $NETLIFY_SITE_ID..."
-allowed_branches=$(curl --location "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID" \
+response=$(curl --location --write-out "%{http_code}" --silent --output /tmp/curl_response \
+  "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID" \
   --header "Content-Type: application/json" \
-  --header "Authorization: Bearer $NETLIFY_AUTH_TOKEN" | jq '.build_settings.allowed_branches')
+  --header "Authorization: Bearer $NETLIFY_AUTH_TOKEN")
+
+http_code=$(tail -n1 <<< "$response")
+content=$(head -n-1 <<< "$response")
+
+if [ "$http_code" -ne 200 ]; then
+  handle_error "Failed to fetch allowed branches. HTTP status code: $http_code"
+fi
+
+allowed_branches=$(echo "$content" | jq '.build_settings.allowed_branches')
 
 if [ -z "$allowed_branches" ]; then
-  echo "Error: Could not fetch allowed branches."
-  exit 1
+  handle_error "Allowed branches list is empty."
 fi
 
 echo "Current allowed branches: $allowed_branches"
@@ -38,13 +50,14 @@ if echo $allowed_branches | jq -e ". | index(\"$GITHUB_BRANCH\")" > /dev/null; t
 fi
 
 # Append the current GitHub branch to the allowed branches list
-allowed_branches=$(echo $allowed_branches | jq --arg branch "$GITHUB_BRANCH" '. + [$branch]')
+allowed_branches=$(echo $allowed_branches | jq --arg branch "$GITHUB_BRANCH" '. + [$branch]') || handle_error "Could not append the branch to the allowed branches."
 
 echo "Updated allowed branches: $allowed_branches"
 
 # Update the build settings using the updated allowed branches
 echo "Updating build settings for site $NETLIFY_SITE_ID..."
-curl --location --request PATCH "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID" \
+response=$(curl --location --write-out "%{http_code}" --silent --output /tmp/curl_response \
+  --request PATCH "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID" \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
   --data "{
@@ -52,4 +65,13 @@ curl --location --request PATCH "https://api.netlify.com/api/v1/sites/$NETLIFY_S
           \"branch\": \"master\",
           \"allowed_branches\": $allowed_branches
       }
-  }"
+  }")
+
+http_code=$(tail -n1 <<< "$response")
+content=$(head -n-1 <<< "$response")
+
+if [ "$http_code" -ne 200 ]; then
+  handle_error "Failed to update build settings. HTTP status code: $http_code"
+fi
+
+echo "Build settings updated successfully."
