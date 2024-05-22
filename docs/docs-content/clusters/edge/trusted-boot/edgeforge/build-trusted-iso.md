@@ -63,8 +63,9 @@ This document guides you through the process of producing Edge Installer ISO tha
    To build an ISO image that supports Trusted Boot, you need to include the following parameters in the **.arg** file.
 
    ```
+   OS_DISTRIBUTION=ubuntu
+   OS_VERSION=23.10
    IS_UKI=true
-   UKI_SELF_SIGNED_KEYS=false
    AUTO_ENROLL_SECUREBOOT_KEYS=true
    ```
 

@@ -272,7 +272,7 @@ Follow the steps below to generate keys from certificates issued by your CA.
     can soft-brick the Edge host.
 
     ```
-    ./earthly.sh +uki-genkey --MY_ORG="org-name" --EXPIRATION_IN_DAYS=5475 --UKI_SELF_SIGNED_KEYS=false
+    ./earthly.sh +uki-genkey --MY_ORG="org-name" --EXPIRATION_IN_DAYS=5475
     ```
 
 ## Validate

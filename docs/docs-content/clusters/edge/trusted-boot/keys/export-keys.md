@@ -28,9 +28,9 @@ command-line tools. T
 
 ### Prerequisites
 
-- You Edge device uses either Windows or Ubuntu operating systems.
+- You Edge device uses either Windows or a Linux operating system.
 
-- If your Edge device uses Ubuntu, you need an internet connection to download the `efitools` command-line tool.
+- If your Edge device uses Linux, you need an internet connection to download the `efitools` command-line tool.
 
 ### Instructions
 

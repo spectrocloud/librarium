@@ -13,7 +13,7 @@ firmware. Trusted Boot consists of the following security measures:
 ![High level description diagram for Trusted Boot](/clusters_edge_trusted-boot_highlevel.webp)
 
 - Full Disk Encryption (FDE): Encryption of the entire persistent partition of the disk drive. The purpose of FDE is to
-  protect data stored on the disk from unauthorized access in the event of theft or loss of the device.
+  protect data stored on the disk from unauthorized access if the boot process was tempered with.
 - Secure boot: A security measure that ensures only properly signed and authenticated software is allowed to operate
   during the boot process of a device.
 - Measured boot. A security feature that works by measuring each component of the boot process and recording these

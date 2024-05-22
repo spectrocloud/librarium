@@ -96,7 +96,8 @@ key that is in the signature database.
    export IMAGE_REGISTRY=docker.io/[DOCKER-ID]
    ```
 
-8. Issue the following command to use the Ubuntu OS distribution and use the 23.10 version.
+8. Issue the following command to use the Ubuntu OS distribution and use the 23.10 version. Only Ubuntu 23.10 version is
+   supported.
 
    ```bash
    export OS_DISTRIBUTION=ubuntu
