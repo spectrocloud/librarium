@@ -21,6 +21,8 @@ interface TechnologiesProps {
   repositories: any[];
 }
 
+const PACKLISTFILTERS = "packListFilters";
+
 export default function Technologies({ data, repositories }: TechnologiesProps) {
   const { isDarkTheme } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
@@ -103,11 +105,11 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
   }, [data, selectedFilters, searchValue]);
 
   useEffect(() => {
-    const filters = localStorage.getItem("selectedFilters");
-    const searchVal = localStorage.getItem("searchValue") || "";
-    setSearchValue(searchVal);
+    const filters = localStorage.getItem(PACKLISTFILTERS);
     if (filters) {
-      setSelectedFilters(JSON.parse(filters));
+      const { selectedFilters, searchValue } = JSON.parse(filters);
+      setSelectedFilters(selectedFilters);
+      setSearchValue(searchValue || "");
     }
   }, []);
 
@@ -141,13 +143,23 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
       ...selectedFilters,
       ...selectedSearchFilters
     };
-    localStorage.setItem("selectedFilters", JSON.stringify(updatedFilters));
+    setFiltersInLocalStorage({
+      selectedFilters: updatedFilters,
+      searchValue: searchValue
+    })
     setSelectedFilters(updatedFilters);
   }
 
   const onSearch = (value: string) => {
-    localStorage.setItem("searchValue", value);
+    setFiltersInLocalStorage({
+      selectedFilters: selectedFilters,
+      searchValue: value
+    })
     setSearchValue(value);
+  }
+
+  const setFiltersInLocalStorage = (filters: any) => {
+    localStorage.setItem(PACKLISTFILTERS, JSON.stringify(filters));
   }
 
   return (

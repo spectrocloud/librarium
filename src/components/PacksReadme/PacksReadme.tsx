@@ -90,15 +90,13 @@ export default function PacksReadme() {
     };
   }, [packName]);
   const [selectedVersion, setSelectedVersion] = useState<string>(version || packData.versions?.[0]?.title || "");
-  const infoContent = [
-    packData.disabled && "This pack is currently disabled.",
-    packData.deprecated && "This pack is deprecated.",
-  ].filter(Boolean) as string[];
+  const infoContent = packData.disabled ? "This pack is currently disabled." : (
+    packData.deprecated ? "This pack is deprecated." : undefined
+  );
 
   function versionChange(version: string) {
     history.replace({ search: `?pack=${packName}&versions=${version}` });
     setSelectedVersion(version);
-
   }
 
   function renderVersionOptions() {
@@ -212,13 +210,13 @@ export default function PacksReadme() {
             </div>
           </div>
         </div>
-        {infoContent.length > 0 && (
+        {infoContent && (
           <div className={styles.infoSection}>
             <div className={styles.infoHeading}>
               <InfoCircleOutlined className={styles.infoIcon} />
               {"Info"}
             </div>
-            <div className={styles.content}>{infoContent[0]}</div>
+            <div className={styles.content}>{infoContent}</div>
           </div>
         )}
         <div className={styles.tabPane}>
