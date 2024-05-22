@@ -15,6 +15,7 @@ env:
   ALGOLIA_ADMIN_KEY: ${{ secrets.DEV_ALGOLIA_ADMIN_KEY }}
   ALGOLIA_APP_ID: ${{ secrets.DEV_GATSBY_ALGOLIA_APP_ID }}
   ALGOLIA_SEARCH_KEY: ${{ secrets.DEV_GATSBY_ALGOLIA_SEARCH_KEY }}
+  GITHUB_BRANCH: ${{ github.ref_name }} 
 
 
 concurrency:
