@@ -202,7 +202,7 @@ image with.
 
 14. Create a file named **user-data**. It must have the `#cloud-init` header at the top of the file. Ensure you have the
     following blocks at the root level of the **user-data** file. Replace the value for `edgeHostToken` with your VerteX
-    registration token, and replace the value `paletteEndPoint` with the URL of your VerteX instance. Replace the user
+    registration token, and replace the value `paletteEndPoint` with the URL of your Palette instance. Replace the user
     `kairos` and its password with your desired username and password.
 
     ```yaml
@@ -227,7 +227,7 @@ image with.
     ```
 
     The command in the `install` block is required for FIPS installations. Configurations in the `stylus` block provide
-    the Edge Host with the registration token and the VerteX endpoint. And the configurations in the `stage` block
+    the Edge Host with the registration token and the Palette endpoint. And the configurations in the `stage` block
     create a system user that you can use to log in to the Operating System (OS).
 
 15. Add further customization to the **user-data** file as needed. This file configures the Edge Installer. Refer to
