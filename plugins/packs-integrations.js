@@ -49,6 +49,8 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
         community: packMDValue.spec.registries[0].annotations?.source === "community",
         verified: packMDValue.spec.registries[0].annotations?.source === "spectrocloud",
         versions: getAggregatedVersions(packContent.tags),
+        disabled: packMDValue.spec.registries[0].annotations?.disabled === "true",
+        deprecated: packMDValue.spec.registries[0].annotations?.system_state === "deprecated",
       };
     }
   });
@@ -141,7 +143,7 @@ function generateCustomData(packsDescription) {
   return generatedCustomData;
 }
 
-function generateRoutes(packDataMap, packsData) {
+function generateRoutes(packDataMap) {
   return Object.keys(packDataMap).map((packName) => {
     return {
       path: `/integrations/packs/${packName}`,
@@ -204,10 +206,17 @@ async function pluginPacksAndIntegrationsData(context, options) {
       const packUrl = "v1/packs/";
       const packMDMap = new Map();
       let apiPacksData = [];
+      const preferredRegistryUid = mappedRepos?.[0]?.uid;
       const promises = packDataArr.map((packData) => {
         packMDMap[packData.spec.name] = packData;
         const cloudType = packData.spec.cloudTypes.includes("all") ? "aws" : packData.spec.cloudTypes[0];
-        const url = `${packUrl}${packData.spec.name}/registries/${packData.spec.registries[0].uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`;
+        //there is a scenario where the pack is not part of preferred registry, in that case, the item of the pack registries is sent to API request
+        const hasPreferredRegistry = packData.spec.registries.some((registry) => registry.uid === preferredRegistryUid);
+        let packRegistryUid = packData.spec.registries[0].uid
+        if (hasPreferredRegistry) {
+          packRegistryUid = preferredRegistryUid;
+        }
+        const url = `${packUrl}${packData.spec.name}/registries/${packRegistryUid}?cloudType=${cloudType}&layer=${packData.spec.layer}`;
         return callRateLimitAPI(() => api.get(url));
       });
       const results = await Promise.allSettled(promises);
@@ -221,7 +230,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
       const integrationsData = generateIntegrationData(allContent);
       const customPacksData = generateCustomData(packsDescription);
       const unionPackData = combineAPICustomPackData(packsPaletteData, packsPaletteDetailsData, customPacksData);
-      const routes = generateRoutes(packsPaletteData, unionPackData);
+      const routes = generateRoutes(packsPaletteData);
       console.info("completed the generation of the routes");
       routes.map(route => addRoute(route));
       setGlobalData({ integrations: integrationsData, packs: unionPackData, repositories: repositories });

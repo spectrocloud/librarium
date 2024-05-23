@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useMemo, ReactElement } from "react";
 import styles from "./PacksReadme.module.scss";
-import { Select, Tabs, ConfigProvider, theme, Space } from "antd";
+import { Select, Tabs, ConfigProvider, theme } from "antd";
 import CustomLabel from "../Technologies/CategorySelector/CustomLabel";
 import PackCardIcon from "../Technologies/PackCardIcon";
 import Markdown from 'markdown-to-jsx';
+import { useHistory } from "react-router-dom";
 import "./PacksReadme.antd.css";
 import { usePluginData } from "@docusaurus/useGlobalData";
 import PacksIntegrationsPluginData from "../Integrations/IntegrationTypes";
@@ -11,6 +12,7 @@ import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from "@docusaurus/useBaseUrl"
 import { useColorMode } from "@docusaurus/theme-common";
 import { packTypeNames, cloudDisplayNames } from "../../constants/packs";
+import { InfoCircleOutlined } from '@ant-design/icons';
 
 interface PackReadmeProps {
   customDescription: string,
@@ -22,6 +24,8 @@ interface PackReadmeProps {
   provider: Array<string>,
   registries: Array<string>,
   selectedRepositories: Array<any>,
+  disabled: boolean,
+  deprecated: boolean,
 }
 
 export default function PacksReadme() {
@@ -31,13 +35,20 @@ export default function PacksReadme() {
   const empty_icon_dark = useBaseUrl('/img/empty_icon_table_dark.svg');
   const { isDarkTheme } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
-  const packName = new URLSearchParams(window.location.search).get("pack")
+  const searchParams = new URLSearchParams(window.location.search);
+  const packName = searchParams.get("pack")
+  const version = searchParams.get("versions");
+  const history = useHistory();
   useEffect(() => {
     const importComponent = async () => {
       try {
         const module = await import(`../../../docs/docs-content/integrations/${packName}.md`);
         const PackReadMeComponent = module.default;
-        setCustomReadme(<PackReadMeComponent />);
+        setCustomReadme(
+          <div className={styles.customReadme}>
+            <PackReadMeComponent />
+          </div>
+        );
       }
       catch (error) {
         setCustomReadme(null);
@@ -59,6 +70,8 @@ export default function PacksReadme() {
         provider: pack.cloudTypes,
         registries: pack.registries,
         selectedRepositories: repositories,
+        disabled: pack.disabled,
+        deprecated: pack.deprecated,
       };
       return packDataInfo;
     }
@@ -72,18 +85,27 @@ export default function PacksReadme() {
       provider: [],
       selectedRepositories: [],
       registries: [],
+      disabled: false,
+      deprecated: false,
     };
   }, [packName]);
-  const [selectedVersion, setSelectedVersion] = useState<string>(packData.versions?.[0]?.title || "");
+  const [selectedVersion, setSelectedVersion] = useState<string>(version || packData.versions?.[0]?.title || "");
+  let infoContent;
+  if (packData.disabled) {
+    infoContent = "This pack is currently disabled.";
+  } else if (packData.deprecated) {
+    infoContent = "This pack is deprecated.";
+  }
 
   function versionChange(version: string) {
+    history.replace({ search: `?pack=${packName}&versions=${version}` });
     setSelectedVersion(version);
   }
 
   function renderVersionOptions() {
-    return packData.versions.map((_version) => {
-      return (<Select.Option key={_version.title}>
-        {_version.title}
+    return packData.versions.map((version) => {
+      return (<Select.Option key={version.title}>
+        {version.title}
       </Select.Option>)
     });
   }
@@ -173,7 +195,7 @@ export default function PacksReadme() {
                 allowClear
                 placeholder="Search"
                 onChange={(item) => versionChange(item as string)}
-                value={selectedVersion === packData.versions[0]?.title ? `${selectedVersion} (latest)` : selectedVersion}
+                value={selectedVersion}
               >
                 {renderVersionOptions()}
               </Select>
@@ -191,6 +213,15 @@ export default function PacksReadme() {
             </div>
           </div>
         </div>
+        {infoContent ? (
+          <div className={styles.infoSection}>
+            <div className={styles.infoHeading}>
+              <InfoCircleOutlined className={styles.infoIcon} />
+              {"Info"}
+            </div>
+            <div className={styles.content}>{infoContent}</div>
+          </div>
+        ) : null}
         <div className={styles.tabPane}>
           {renderTabs()}
         </div>

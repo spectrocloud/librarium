@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./Search.module.scss";
 import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -6,12 +6,15 @@ import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 interface IntegrationSearchProps {
   onSearch: (searchString: string) => void;
   placeholder: string;
+  value?: string;
 }
 
-export default function IntegrationSearch({ onSearch, placeholder }: IntegrationSearchProps) {
+export default function IntegrationSearch({ onSearch, placeholder, value = "" }: IntegrationSearchProps) {
   const [inputValue, setInputValue] = useState("");
   const ref = useRef<HTMLInputElement>(null);
-
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
   return (
     <div className={styles.searchWrapper}>
       <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />

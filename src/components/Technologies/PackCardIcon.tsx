@@ -21,7 +21,6 @@ export default function PackCardIcon({ title, logoUrl, type, className }: PackCa
       {isError || !logoUrl ? (<IconMapper type={type} />) :
         (<Image
           preview={false}
-          height={52}
           src={logoUrl}
           alt={`${title} logo`}
           onError={handleImageError}

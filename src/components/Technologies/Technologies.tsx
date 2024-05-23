@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Fuse from "fuse.js";
 import styles from "./Technologies.module.scss";
 import Search from "./Search";
@@ -21,12 +21,13 @@ interface TechnologiesProps {
   repositories: any[];
 }
 
+const PACKLISTFILTERS = "packListFilters";
+
 export default function Technologies({ data, repositories }: TechnologiesProps) {
   const { isDarkTheme } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
-  const [selectedFilters, setSelectedFilters] = useState<{ category: any[], registries: any[], cloudTypes: any[], verified: any[], community: any[] }>({ category: [], registries: [], cloudTypes: [], verified: [], community: [] })
+  const [selectedFilters, setSelectedFilters] = useState<{ category: any[], registries: any[], cloudTypes: any[], source: any[] }>({ category: [], registries: [], cloudTypes: [], source: [] })
   const [searchValue, setSearchValue] = useState<string>("");
-
   const filteredTechCards = useMemo(() => {
     const selectedFiltersKeys = Object.keys(selectedFilters)
     let filteredCards: any[] = [];
@@ -52,14 +53,9 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
                 return selectedFiltersValue.some((value) => techCard.cloudTypes.includes("all") || techCard.cloudTypes.includes(value));
               }
               break;
-            case "verified":
+            case "source":
               condition = (techCard: FrontMatterData) => {
-                return techCard["verified"]
-              }
-              break;
-            case "community":
-              condition = (techCard: FrontMatterData) => {
-                return techCard["community"]
+                return techCard[selectedFiltersValue[0] as keyof FrontMatterData];
               }
               break;
           }
@@ -108,6 +104,19 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
     return sortedCategoriesMap;
   }, [data, selectedFilters, searchValue]);
 
+  useEffect(() => {
+    const filters = localStorage.getItem(PACKLISTFILTERS);
+    if (filters) {
+      try {
+        const { selectedFilters, searchValue } = JSON.parse(filters);
+        setSelectedFilters(selectedFilters);
+        setSearchValue(searchValue || "");
+      } catch (e) {
+        console.error("Error in parsing filters from local storage", e);
+      }
+    }
+  }, []);
+
   const renderPacksCategories = () => {
     let categoryKeys: string[] = Array.from(filteredTechCards.keys()) as string[];
     const renderedCategoryItems = categoryKeys.map((category) => {
@@ -134,10 +143,27 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
   }
 
   const setSelectedSearchFilters = (selectedSearchFilters: Record<string, any>) => {
-    setSelectedFilters((prevState) => ({
-      ...prevState,
+    const updatedFilters = {
+      ...selectedFilters,
       ...selectedSearchFilters
-    }));
+    };
+    setFiltersInLocalStorage({
+      selectedFilters: updatedFilters,
+      searchValue: searchValue
+    })
+    setSelectedFilters(updatedFilters);
+  }
+
+  const onSearch = (value: string) => {
+    setFiltersInLocalStorage({
+      selectedFilters: selectedFilters,
+      searchValue: value
+    })
+    setSearchValue(value);
+  }
+
+  const setFiltersInLocalStorage = (filters: any) => {
+    localStorage.setItem(PACKLISTFILTERS, JSON.stringify(filters));
   }
 
   return (
@@ -146,7 +172,7 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
         algorithm: isDarkTheme ? darkAlgorithm : defaultAlgorithm,
       }}>
         <PacksFilters categories={[...packTypes]} registries={repositories} setSelectedSearchFilters={setSelectedSearchFilters} selectedFilters={selectedFilters} />
-        <Search onSearch={setSearchValue} placeholder={"Search for integration..."} />
+        <Search onSearch={onSearch} placeholder={"Search for integration..."} value={searchValue} />
         <div className={styles.technologyWrapper}>
           <Collapse defaultActiveKey={Array.from(filteredTechCards.keys()) as string[]} expandIconPosition="end" >
             {renderPacksCategories()}
