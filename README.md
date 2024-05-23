@@ -24,7 +24,7 @@ To contribute, we recommend having the following software installed locally on y
 
 - git configured and access to github repository
 
-- Node.js v18 and npm.
+- Node.js v20 and npm.
 
 - [Vale](https://vale.sh/docs/vale-cli/installation/)
 
