@@ -5,7 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start --host 0.0.0.0 --port 9000",
-    "build": "npm run generate-api-docs && docusaurus build",
+    "build": "npm run generate-api-docs && npm run generate-partials && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -18,6 +18,7 @@
     "generate-api-docs": "npm run run-api-parser && docusaurus gen-api-docs palette && docusaurus gen-api-docs emc",
     "clean-api-docs": "docusaurus clean-api-docs palette && docusaurus clean-api-docs emc",
     "run-api-parser": "node utils/api-parser/index.js",
+    "generate-partials": "./scripts/generate-partials.sh",
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css}\"",
