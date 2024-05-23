@@ -28,7 +28,10 @@ Palette upgrade.
 - Access to the Palette airgap support Virtual Machine (VM) that you used for the initial Palette installation.
 
 - Refer to [Access Palette](../../enterprise-version.md#access-palette) to download the new airgap Palette installation
-  bin and, if necessary, receive a link to the new OS and Kubernetes OVA.
+  bin.
+
+- Contact our Support Team at support@spectrocloud.com to learn if the new version of Palette requires a new OS and
+  Kubernetes OVA. If necessary, they will provide you with a link to the OVA, which you will use to upgrade Palette.
 
 - A diff or text comparison tool of your choice.
 
@@ -66,7 +69,7 @@ steps one through four. Otherwise, start at step five.
 
      :::info
 
-     It's important that you follow this naming convention. Otherwise, Palette will not be able to identify the OS and
+     It is important that you follow this naming convention. Otherwise, Palette will not be able to identify the OS and
      Kubernetes OVA and you will not be able to upgrade your Palette instance.
 
      :::
@@ -118,8 +121,8 @@ steps one through four. Otherwise, start at step five.
    curl --user <username>:<password> --output airgap-4.2.12.bin https://software.spectrocloud.com/airgap-v4.2.12.bin
    ```
 
-8. Refer to the [Additional Packs](../../install-palette/airgap/supplemental-packs.md) page and update the packages you
-   are currently using. You must update each package separately.
+8. Refer to the [Additional Packs](../../install-palette/airgap/supplemental-packs.md) page and update the packs you are
+   currently using. You must update each pack separately.
 
 9. Use the following command template to execute the new Palette airgap installation bin.
 
@@ -175,9 +178,9 @@ steps one through four. Otherwise, start at step five.
 
     ![Self-hosted Palette system console with Update Management open and the Update button highlighted.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_update.webp)
 
-16. In the **Palette version update** preview modal, from the left menu, select the **Kubernetes** layer. The **Incoming
-    changes** pane displays the changes that the upgrade introduces. The **Current configuration** pane displays your
-    current layer configuration.
+16. In the **Palette version update** preview modal, from the left **Main Menu**, select the **Kubernetes** layer. The
+    **Incoming changes** pane displays the changes that the upgrade introduces. The **Current configuration** pane
+    displays your current layer configuration.
 
     :::info
 

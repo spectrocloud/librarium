@@ -29,8 +29,11 @@ Palette VerteX upgrade.
 - Access to the Palette VerteX airgap support Virtual Machine (VM) that you used for the initial Palette VerteX
   installation.
 
-- Refer to [Access Palette VerteX](../../vertex.md#access-palette-vertex) to download the new airgap Palette
+- Refer to [Access Palette VerteX](../../vertex.md#access-palette-vertex) to download the new airgap Palette VerteX
   installation bin and, if necessary, receive a link to the new OS and Kubernetes OVA.
+
+- Contact our Support Team at support@spectrocloud.com to learn if the new version of Palette VerteX requires a new OS
+  and Kubernetes OVA. If necessary, they will provide you with a link to the OVA, which you will use to upgrade Palette.
 
 - A diff or text comparison tool of your choice.
 
@@ -68,7 +71,7 @@ one through four. Otherwise, start at step five.
 
      :::info
 
-     It's important that you follow this naming convention. Otherwise, VerteX will not be able to identify the OS and
+     It is important that you follow this naming convention. Otherwise, VerteX will not be able to identify the OS and
      Kubernetes OVA and you will not be able to upgrade your VerteX instance.
 
      :::
@@ -121,8 +124,8 @@ one through four. Otherwise, start at step five.
    curl --user <username>:<password> --output airgap-4.2.12.bin https://software.spectrocloud.com/airgap-v4.2.12.bin
    ```
 
-8. Refer to the [Additional Packs](../../install-palette-vertex/airgap/supplemental-packs.md) page and update the
-   packages you are currently using. You must update each package separately.
+8. Refer to the [Additional Packs](../../install-palette-vertex/airgap/supplemental-packs.md) page and update the packs
+   you are currently using. You must update each pack separately.
 
 9. Use the following command template to execute the new Palette VerteX airgap installation bin.
 
@@ -178,9 +181,9 @@ one through four. Otherwise, start at step five.
 
     ![Self-hosted Palette VerteX system console with Update Management open and the Update button highlighted.](/enterprise-version_upgrade-upgrade_vmware_non-airgap_update.webp)
 
-16. In the **Palette version update** preview modal, from the left menu, select the **Kubernetes** layer. The **Incoming
-    changes** pane displays the changes that the upgrade introduces. The **Current configuration** pane displays your
-    current layer configuration.
+16. In the **Palette version update** preview modal, from the left **Main Menu**, select the **Kubernetes** layer. The
+    **Incoming changes** pane displays the changes that the upgrade introduces. The **Current configuration** pane
+    displays your current layer configuration.
 
     :::info
 
