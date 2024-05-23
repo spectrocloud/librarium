@@ -51,13 +51,20 @@ This page guides you through the process of building FIPS-compliant Edge Install
   command to check the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
   create privileged containers.
 
-- A [VerteX](/docs/docs-content/vertex/vertex.md) account. Refer to
+- A [VerteX](/docs/docs-content/vertex/vertex.md) or Palette account. Refer to
   [Palette VerteX](/docs/docs-content/vertex/vertex.md#access-palette-vertex) for information on how to set up a VerteX
   account.
 
-- VerteX registration token for pairing Edge hosts with VerteX. You will need tenant admin access to VerteX to generate
-  a new registration token. For detailed instructions, refer to the
+- VerteX registration token for pairing Edge hosts with VerteX or a Palette registration token. You will need tenant
+  admin access to VerteX to generate a new registration token. For detailed instructions, refer to the
   [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide.
+
+:::warning
+
+You can deploy a FIPS-compliant Edge host to Palette, but this solution will not be FIPS-compliant end-to-end because
+Palette is not FIPS compliant. If you need a FIPS-compliant solution, you need to use VerteX.
+
+:::
 
 ## Build FIPS-Enabled Edge Artifacts
 
@@ -215,6 +222,7 @@ image with.
        site:
          edgeHostToken: ********
          paletteEndpoint: https://vertex.palette-devx.spectrocloud.com
+         projectName: Default
 
     stages:
        initramfs:
