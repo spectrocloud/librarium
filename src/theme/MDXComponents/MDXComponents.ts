@@ -11,6 +11,8 @@ import PacksTable from "@site/src/components/PacksTable/PacksTable";
 import TOCInline from "@theme/TOCInline";
 import SimpleCardGrid from "@site/src/components/SimpleCardGrid/index";
 import ReleaseNotesVersions from "@site/src/components/ReleaseNotesVersions/index";
+import PartialsComponent from "@site/src/components/PartialsComponent";
+import VersionedLink from "@site/src/components/VersionedLink";
 
 export default {
   ...MDXComponents,
@@ -26,4 +28,6 @@ export default {
   TOCInline,
   SimpleCardGrid,
   ReleaseNotesVersions,
+  PartialsComponent,
+  VersionedLink,
 };
