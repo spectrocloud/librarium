@@ -63,5 +63,8 @@ test-results/
 playwright-report/
 artifact.zip
 
+# Netlify 
+
+.netlify/
 # Ignore _partials/index.ts
 _partials/index.ts
