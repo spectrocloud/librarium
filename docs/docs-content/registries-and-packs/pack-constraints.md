@@ -484,7 +484,7 @@ machine pool will be validated. In the case of daemon sets, the pods are schedul
 nodes, and the framework validates both control plane and worker machine pool configurations before the cluster is
 submitted for deployment.
 
-- `master` - pods are scheduled only on control plane nodes
+- `control-plane` - pods are scheduled only on control plane nodes
 - `worker` - pods are scheduled only on worker nodes
 - `all` - pods are scheduled on both control plane and worker nodes
 
