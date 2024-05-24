@@ -212,7 +212,7 @@ const config = {
         id: "enable-source-map",
       },
     ],
-    [pluginPacksAndIntegrationsData, { repositories: ["Public Repo", "palette"] }],
+    [pluginPacksAndIntegrationsData, { repositories: ["Palette Registry", "Palette Community Registry"] }],
     pluginImportFontAwesomeIcons,
     function () {
       return {
