@@ -198,7 +198,7 @@ detailing of the Tencent TKE cluster provisioning through Palette:
    "OsName": "ubuntu18.04.1x86_64 GPU"
    ```
 
-   :::warning
+   <!-- :::warning
 
    While adding Add-on packs to the Cluster Profile, make sure that Persistent Volume Claim size is >=10 GB and in
    multiples of 10.
@@ -214,7 +214,7 @@ detailing of the Tencent TKE cluster provisioning through Palette:
      size: 20Gi
    ```
 
-   :::
+   ::: -->
 
 10. Click **Next** to continue.
 
