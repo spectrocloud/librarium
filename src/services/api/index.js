@@ -4,7 +4,7 @@ import { pRateLimit } from "p-ratelimit";
 
 const api = axios.create({
   baseURL: "https://api.spectrocloud.com",
-  timeout: 10000,
+  timeout: 30000,
   headers: {
     "Content-Type": "application/json",
     ApiKey: process.env.API_KEY,
