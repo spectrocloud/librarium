@@ -1,36 +1,49 @@
 const { api, callRateLimitAPI } = require("../src/services/api");
 const { packTypeNames, addOnTypes, layerTypes } = require("../src/constants//packs");
 const packDescription = require("../static/packs-data/packs_information.json");
-const { coerce, rcompare } = require('semver');
+const { coerce, rcompare } = require("semver");
+import logger from "@docusaurus/logger";
 
 function generateIntegrationData(allContent) {
-  const packsData = allContent["docusaurus-plugin-content-docs"].default.loadedVersions[0].docs
-    .filter((doc) => {
-      return doc.frontMatter.type === "appTier";
-    })
-    .map((doc) => {
-      return { fields: { ...doc.frontMatter, slug: doc.slug, id: doc.id } };
-    });
+  const docsPluginContent = allContent["docusaurus-plugin-content-docs"]?.default;
+
+  if (!docsPluginContent || !docsPluginContent.loadedVersions || !docsPluginContent.loadedVersions[0]?.docs) {
+    logger.error("Invalid docsPluginContent structure:" + docsPluginContent);
+    return [];
+  }
+
+  const packsData = docsPluginContent.loadedVersions[0].docs
+    .filter((doc) => doc.frontMatter?.type === "appTier")
+    .map((doc) => ({
+      fields: { ...doc.frontMatter, slug: doc.slug, id: doc.id },
+    }));
+
   return packsData;
 }
 
 function getReadMeMap(packValues) {
-  const generatedReadMeData = packValues.reduce((packValuesMap, packValue) =>
-    Object.assign(packValuesMap, { [packValue.packUid]: packValue.readme }), {});
+  const generatedReadMeData = packValues.reduce(
+    (packValuesMap, packValue) => Object.assign(packValuesMap, { [packValue.packUid]: packValue.readme }),
+    {}
+  );
   return generatedReadMeData;
 }
 
 function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPacksData) {
   const filteredPalattePackData = packsPaletteDetailsData.filter((packContent) => {
     const packName = packContent.name;
-    return ((packsMData[packName].spec.layer === "addon" && packsMData[packName].spec.addonType) || packsMData[packName].spec.layer !== "addon");
+    return (
+      (packsMData[packName].spec.layer === "addon" && packsMData[packName].spec.addonType) ||
+      packsMData[packName].spec.layer !== "addon"
+    );
   });
   return filteredPalattePackData.map((packContent) => {
     const packName = packContent.name;
     if (packsMData[packName]) {
       const packMDValue = packsMData[packName];
       const packType = packMDValue.spec.layer === "addon" ? packMDValue.spec.addonType : packMDValue.spec.layer;
-      const layer = packMDValue.spec.layer === "addon" ? packMDValue.spec.addonType : packTypeNames[packMDValue.spec.layer];
+      const layer =
+        packMDValue.spec.layer === "addon" ? packMDValue.spec.addonType : packTypeNames[packMDValue.spec.layer];
       const packValues = packContent.packValues;
       return {
         name: packName,
@@ -38,13 +51,13 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
         description: customPacksData?.[packName],
         readme: getReadMeMap(packValues),
         cloudTypes: packMDValue.spec.cloudTypes,
-        type: 'integration',
+        type: "integration",
         category: [layer],
         packType: packType,
         logoUrl: packMDValue.spec.registries[0].logoUrl,
         tags: [],
-        slug: '/integrations/${packMDValue.spec.name}',
-        id: 'integrations/${packMDValue.spec.name}',
+        slug: "/integrations/${packMDValue.spec.name}",
+        id: "integrations/${packMDValue.spec.name}",
         registries: packMDValue.spec.registries.map((registry) => registry.uid),
         community: packMDValue.spec.registries[0].annotations?.source === "community",
         verified: packMDValue.spec.registries[0].annotations?.source === "spectrocloud",
@@ -83,7 +96,6 @@ function sortVersions(tags) {
     let version1 = sanitizeVersion(pack1.version);
     let version2 = sanitizeVersion(pack2.version);
 
-
     if (coerce(version1) !== null) {
       version1 = coerce(version1).version;
     }
@@ -120,9 +132,7 @@ function getAggregatedVersions(tags) {
 
     if (!parent) return;
 
-    const parentVersion = roots.find(
-      (rootVersion) => rootVersion.title === parent
-    );
+    const parentVersion = roots.find((rootVersion) => rootVersion.title === parent);
 
     if (parentVersion) {
       parentVersion.children = parentVersion.children || [];
@@ -137,9 +147,11 @@ function getAggregatedVersions(tags) {
 }
 
 function generateCustomData(packsDescription) {
-  const generatedCustomData = packsDescription.reduce((obj, desc) =>
-    Object.assign(obj, { [desc.name]: desc.description }), {});
-  console.info("completed custom data description generation");
+  const generatedCustomData = packsDescription.reduce(
+    (obj, desc) => Object.assign(obj, { [desc.name]: desc.description }),
+    {}
+  );
+  logger.info("Completed custom data description generation");
   return generatedCustomData;
 }
 
@@ -148,12 +160,12 @@ function generateRoutes(packDataMap) {
     return {
       path: `/integrations/packs/${packName}`,
       exact: false,
-      component: '@site/src/components/PacksInformation',
+      component: "@site/src/components/PacksInformation",
       metadata: {
-        sourceFilePath: '../docs/docs-content/integrations/packs.mdx',
+        sourceFilePath: "../docs/docs-content/integrations/packs.mdx",
       },
       data: packName,
-    }
+    };
   });
 }
 
@@ -169,7 +181,7 @@ async function fetchPackListItems(queryParams, packDataArr, counter) {
 }
 
 async function mapRepositories(repositories) {
-  const results = await api.get('v1/registries/pack');
+  const results = await api.get("v1/registries/pack");
   const repoMap = repositories.reduce((acc, repository) => {
     const repoObj = results.data?.items?.find((repo) => {
       return repo.metadata.name === repository;
@@ -198,11 +210,15 @@ async function pluginPacksAndIntegrationsData(context, options) {
       const repositories = options.repositories || [];
       const mappedRepos = await mapRepositories(repositories);
       let packDataArr = await fetchPackListItems("?limit=100", [], 0);
-      console.info("completed the fetch of all the names of the pack");
+      logger.info("Completed the fetch of all the names of the pack");
       packDataArr = packDataArr.filter((pack) => {
-        return (((layerTypes.includes(pack.spec.layer) || (pack.spec.layer === "addon") && (addOnTypes.includes(pack.spec.addonType))) &&
-          pack.spec.registries.length && isSelectedRegistry(pack.spec.registries, mappedRepos)))
-      })
+        return (
+          (layerTypes.includes(pack.spec.layer) ||
+            (pack.spec.layer === "addon" && addOnTypes.includes(pack.spec.addonType))) &&
+          pack.spec.registries.length &&
+          isSelectedRegistry(pack.spec.registries, mappedRepos)
+        );
+      });
       const packUrl = "v1/packs/";
       const packMDMap = new Map();
       let apiPacksData = [];
@@ -212,7 +228,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
         const cloudType = packData.spec.cloudTypes.includes("all") ? "aws" : packData.spec.cloudTypes[0];
         //there is a scenario where the pack is not part of preferred registry, in that case, the item of the pack registries is sent to API request
         const hasPreferredRegistry = packData.spec.registries.some((registry) => registry.uid === preferredRegistryUid);
-        let packRegistryUid = packData.spec.registries[0].uid
+        let packRegistryUid = packData.spec.registries[0].uid;
         if (hasPreferredRegistry) {
           packRegistryUid = preferredRegistryUid;
         }
@@ -220,20 +236,44 @@ async function pluginPacksAndIntegrationsData(context, options) {
         return callRateLimitAPI(() => api.get(url));
       });
       const results = await Promise.allSettled(promises);
-      apiPacksData = results.filter(result => result.status === "fulfilled" && result.value?.data).map((pack) => pack.value?.data);
-      console.info("completed the fetch of all the pack details");
-      return { packsPaletteData: packMDMap, packsPaletteDetailsData: apiPacksData, packsDescription: packDescription, repositories: mappedRepos };
+      apiPacksData = results
+        .filter((result) => result.status === "fulfilled" && result.value?.data)
+        .map((pack) => pack.value?.data);
+      logger.info("Completed the fetch of all the pack details");
+      return {
+        packsPaletteData: packMDMap,
+        packsPaletteDetailsData: apiPacksData,
+        packsDescription: packDescription,
+        repositories: mappedRepos,
+      };
     },
-    async contentLoaded({ allContent, content, actions }) {
+    async allContentLoaded({ allContent, actions }) {
       const { setGlobalData, addRoute } = actions;
-      const { packsPaletteData, packsPaletteDetailsData, packsDescription, repositories } = content;
-      const integrationsData = generateIntegrationData(allContent);
+      const packsPluginContent = allContent["plugin-packs-integrations"]?.default;
+
+      if (!packsPluginContent) {
+        logger.error("No packsPluginContent found in allContent.");
+        return;
+      }
+
+      const { packsPaletteData, packsPaletteDetailsData, packsDescription, repositories } = packsPluginContent;
+
+      const integrationsData = generateIntegrationData(packsPluginContent);
       const customPacksData = generateCustomData(packsDescription);
       const unionPackData = combineAPICustomPackData(packsPaletteData, packsPaletteDetailsData, customPacksData);
       const routes = generateRoutes(packsPaletteData);
-      console.info("completed the generation of the routes");
-      routes.map(route => addRoute(route));
-      setGlobalData({ integrations: integrationsData, packs: unionPackData, repositories: repositories });
+
+      logger.info("Completed the generation of the routes");
+
+      routes.forEach((route) => addRoute(route));
+
+      setGlobalData({
+        integrations: integrationsData,
+        packs: unionPackData,
+        repositories: repositories,
+      });
+
+      logger.success("Packs data loaded successfully");
     },
   };
 }
