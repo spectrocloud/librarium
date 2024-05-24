@@ -7,12 +7,13 @@ sidebar_position: 20
 tags: ["edge"]
 ---
 
-During EdgeForge, you are able to customize the Operating System (ISO) used by the Installer ISO image. This allows you
-to add various utilities that can be useful in setting up your Edge host and getting it ready for cluster creation.
+During EdgeForge, you are able to customize the resulting installed Operating System (OS) of your Edge host. This allows
+you to add various utilities that can be useful in setting up your Edge host and getting it ready for cluster creation
+as well as using those utilities for host maintenance.
 
-However, if you want to use Trusted Boot, the firmware can impose limitations on the maximum size of a bootable Extensible Firmware Interface
-(EFI) file. This means that you can no longer add such utilities to your OS as freely as before. If the EFI becomes too
-large in size, the Edge host might not be able to boot it.
+However, if you want to use Trusted Boot, the firmware can impose limitations on the maximum size of a bootable
+Extensible Firmware Interface (EFI) file. This means that you can no longer add such utilities to your OS as freely as
+before. If the EFI becomes too large in size, the Edge host might not be able to boot it.
 
 If you would like to add software that can be used after ISO installation, you can instead use the approach described in
 this guide to add the compiled static binaries of the software packages to the persistent partition of the installation
@@ -53,7 +54,9 @@ after. Because the content is placed in the persistent partitions, it will be en
    git checkout v4.4.0
    ```
 
-5. Copy the static binaries of the software package you'd like to add to the Edge host to **overlay/files-iso/**.
+5. Copy the static binaries of the software package you'd like to add to the Edge host to **overlay/files-iso/**.t
+   **overlay/files-iso** will be mounted at **/run/initramfs/live/** during installation, enabling the installer to copy
+   files from there into place during installation.
 
 6. In your **user-data**, add the following section, and replace `YOUR_FILE` with the name of the static binary file. If
    you have multiple files, you should add multiple lines, one line for each file.

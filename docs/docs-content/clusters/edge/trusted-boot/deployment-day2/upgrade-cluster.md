@@ -18,10 +18,17 @@ Kubernetes layer of the cluster.
 
 ## Prerequisites
 
-- You have built an Edge Installer ISO with Trusted Boot enabled and used the ISO to deploy a cluster. The Edge hosts have keys enrolled.
+- You have built an Edge Installer ISO with Trusted Boot enabled and used the ISO to deploy a cluster. The Edge hosts
+  have keys enrolled.
 
-- You have access to the machine where you built the Installer ISO, including all the content in the **secure-boot**
-  folder. Refer to [Build Edge Installer ISO with Trusted Boot](../edgeforge/build-trusted-iso.md) for details.
+- You have access to the original keys that were used to build the original ISO and provider images. Refer to
+  [Build Edge Installer ISO with Trusted Boot](../edgeforge/build-trusted-iso.md) for details.
+
+- The machine used to build the provider imaged must meet the minimum hardware requirements:
+
+  - 4 CPUs
+  - 32 GB RAM
+  - 100 GB storage
 
 :::warning
 
@@ -73,29 +80,8 @@ not be able to access any data in the persistent partitions.
    docker push [IMAGE-TAG]
    ```
 
-### Update cluster profile
-
-6. Log in to [Palette](https://console.spectrocloud.com).
-
-7. Navigate to the left **Main Menu** and select **Profiles**.
-
-8. Create a new version of the profile you want to update. For more information, refer to
-   [Version a Cluster Profile](/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
-
-9. Copy the output from the build command you issued from previous steps. Update the OS layer with the new values.
-
-10. Apply updates to any other layer as needed.
-
-11. Navigate to the left **Main Menu** and select **Cluster**.
-
-12. Select the cluster you want to update, and navigate to the **Profile** tab of the cluster.
-
-13. Next to the name of the profile, click on the version number and select the new version you just published.
-
-14. Click **Review & Save**. Palette prompts you to preview the change summary.
-
-15. Click **Review changes in Editor**. Palette displays the changes, with the current configuration on the left and the
-    incoming changes on the right. Review the changes and click **Apply Changes**.
+6. Update the cluster profile to use the new provider image you have built. For more information, refer to
+   [Update a Cluster](../../../cluster-management/cluster-updates.md).
 
 ## Validate
 

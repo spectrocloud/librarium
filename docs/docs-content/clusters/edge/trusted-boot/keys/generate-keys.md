@@ -27,7 +27,8 @@ in which Trusted Boot EdgeForge and deployment process.
 
 All security provided by Trusted Boot assumes that the private keys are kept secure. We suggest that you perform key
 generation in an airgapped environment and move the PK and KEK private keys to a secure location immediately after
-generating them. In addition, any build pipelines that are created for the purposes of building ISOs and provider images must be secured, as they will by necessity contain the PCR and db private keys.
+generating them. In addition, any build pipelines that are created for the purposes of building ISOs and provider images
+must be secured, as they will by necessity contain the PCR and db private keys.
 
 :::
 
@@ -52,7 +53,8 @@ generating them. In addition, any build pipelines that are created for the purpo
 ## Generate Keys for Trusted Boot with Self-Signed Certificates
 
 If your environment does not require a Certificate Authority (CA), you can use self-signed certificates to generate the
-keys needed for Trusted Boot. Using self-signed certificates may make verifying the source of the certificate harder because there is no higher authority.
+keys needed for Trusted Boot. Using self-signed certificates may make verifying the source of the certificate harder
+because there is no higher authority.
 
 ### Prerequisites
 
@@ -130,7 +132,7 @@ keys needed for Trusted Boot. Using self-signed certificates may make verifying 
 
 ### Validate
 
-Check the content of the **secure-boot/enrollment** directory. You should see the following nine files.
+Check the content of the **secure-boot/enrollment** directory. You should observe the following nine files.
 
 ```
 $ ls secure-boot/enrollment/
@@ -266,9 +268,9 @@ Follow the steps below to generate keys from certificates issued by your CA.
     available arguments.
 
 15. Issue the following command to generate Trusted Boot keys for enrollment. Replace `org-name` with the name of your
-    organization, and replace 5475, the default expiration period in days, with the desired expiration period for your
-    keys. We suggest that you specify a long expiration date, since if the keys expire before you can replace them, it
-    can soft-brick the Edge host.
+    organization, and replace 5475, the default expiration period in days (15 years), with the desired expiration period
+    for your keys. We suggest that you specify a long expiration date, since if the keys expire before you can replace
+    them, it can soft-brick the Edge host.
 
     ```
     ./earthly.sh +uki-genkey --MY_ORG="org-name" --EXPIRATION_IN_DAYS=5475
@@ -276,7 +278,7 @@ Follow the steps below to generate keys from certificates issued by your CA.
 
 ## Validate
 
-Check the content of the **secure-boot/enrollment** directory. You should see the following nine files.
+Check the content of the **secure-boot/enrollment** directory. You should observe the following nine files.
 
 ```
 $ ls secure-boot/enrollment/

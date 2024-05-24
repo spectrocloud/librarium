@@ -42,23 +42,50 @@ certificates, public keys, signatures or hashes of binary files. The signature s
 the binary if there is no signature) is compared against the entries in the database. The binary will be executed if one
 of the following conditions is met:
 
-- The EFI binary is unsigned and a SHA-256 hash of the image is in the db.
-- The EFI binary is signed, and the signature on the binary is in the db.
 - The EFI binary is signed, and the signing key is in the db.
+- The EFI binary is signed, and the signature on the binary is in the db.
+- The EFI binary is unsigned and a SHA-256 hash of the image is in the db.
 
 Similarly, dbx may contain a mixed set of certificates, signatures or hashes. Any EFI whose signatures, hashes, or
 signing key matches the entries in dbx is forbidden from being executed.
 
 ## Platform Configuration Registers (PCR) Policy Key
 
-The PCR policy key is a private key that is used to decrypt the sensitive user date in your Edge device's persistent
-partitions. The public key and the signature is generated automatically during the EdgeForge process and added inside
-the EFI files. The public key will encrypt the persistent partitions containing sensitive user data.
+The PCR policy key pair is in charge of signing the pre-calculated measurements of the boot process and involved in disk
+encryption. The private PCR policy key signs the pre-calculated measurement during EdgeForge. The public key is embeded
+in the UKI image.
+
+During EdgeForge, each boot component is hashed and these hash values, or measurements, are signed by the PCR private
+key. The signed measurements are embedded in the UKI image, along with the public key of the PCR policy key pair.
+
+During installation, encrypted partitions are setup using a Disk Encryption Key (DEK), which is itself encrypted by the
+TPM and stored in a secure blob. The public key embeded in the ISO is used to form a binding policy with the secure
+blob. The binding policy states that in order to decrypt the secure blob containing the DEK, the PCR 11 measurements
+must match a signed, precalculated set of measurements present in the boot image.
+
+During the boot process before the encrypted disk partition is mounted, the TPM will perform the following:
+
+- Verify the public key in the image is valid (by checking digest of the key vs binding policy)
+- Verify the signature on the pre-calculated measurements using the public key
+- Compare the precalculated measurements vs the actual PCR 11 measurements.
+
+If all thre verifications are successfull, TPM will decrypt the secure blob, release DEK, and the OS can use it to
+decrypt the encrypted partitions of the disk.
+
+## Disk Encryption Key (DEK)
+
+The disk encryption key (DEK) is generated during installation, encrypted by the TPM with an internal key, and sealed
+inside the TPM. You will never interact with the DEK itself.
+
+During the boot process, the boot process is measured against the pre-calculated measurements and the signature on the
+pre-calculated measurements is verified by the PCR public key. If the measurements match and the signature is valid, the
+TPM will decrypt the DEK, release it and the OS can use it to decrypt the encrypted portion of the disk.
 
 ## Factory Keys
 
-Factory keys refer to the secure boot keys that are stored on the device that is set to factory settings. They may
-include PK, KEK, and db keys. Factory keys are often used to authenticate the firmware of a device.
+Factory keys refer to the secure boot keys that are stored on the device that is set to factory settings. In EdgeForge,
+these keys are stored in the folder **exported-keys**. They may include PK, KEK, and db keys. Factory keys are often
+used to authenticate the firmware of a device. For more information, refer to [Export Factory Keys](export-keys.md).
 
 ## Resources
 

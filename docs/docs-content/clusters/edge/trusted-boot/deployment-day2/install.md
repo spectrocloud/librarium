@@ -22,8 +22,8 @@ machine to machine. This guide uses the Intel NUC 13 Pro as an example.
 :::warning
 
 Before proceeding with installation, check the maximum EFI size that your Edge host is able to boot and compare it
-against the installer ISO and provider image. Once you enroll the keys, you will no longer be able to check the limit of
-your hardware. For more information, refer to
+against the installer ISO and provider image. With secure boot enabled and keys enrolled, you won't be able to boot from
+the EFI size checking ISO unless you disable secure boot or clear the keys. For more information, refer to
 [Check EFI Size and Edge Host Boot Limit](../edgeforge/check-efi-limit.md).
 
 :::
@@ -38,19 +38,30 @@ supports Secure Boot.
 
 1. Insert the USB disk into the Edge device.
 
-2. Power up your Edge device and enter the BIOS interface. Oftentimes you can accomplish this by pressing F2 on the
-   keyboard immediately after powering up the deice and before you select a boot volume, as is the case in Intel NUC 13
-   Pro. However, the exact method might be different on your Edge device. Consult the manufacturer of your Edge device
-   to find out how to enter the BIOS interface.
+2. Power up your Edge device and enter the BIOS interface. Oftentimes you can accomplish this by pressing F2, F1, or F10
+   on the keyboard immediately after powering up the deice and before you select a boot volume, as is the case in Intel
+   NUC 13 Pro. However, the exact method might be different on your Edge device. Consult the manufacturer of your Edge
+   device to find out how to enter the BIOS interface.
 
 3. From the BIOS menu, select the **Boot** tab. Then select **Secure Boot**.
 
 4. From the **Secure Boot Menu**, make sure that secure boot is enabled. Then select **Restore to Setup Mode**. Two
    dialogue boxes will pop up to confirm this operation. Select **Yes** to confirm. This will make the device restart.
 
-   If you set the `AUTO_ENROLL_SECUREBOOT_KEYS` argument to `true` when you built the installation ISO, key enrollment
-   will begin automatically once the device restarts. You can skip the following steps to proceed to
-   [Install Palette Edge with Trusted Boot](#install-palette-edge-with-trusted-boot).
+   :::info
+
+   **User Mode** and **Setup Mode** are UEFI terms. Setting secure boot mode to **Setup Mode** means clearing the keys
+   that are currently in the device. This allows you to enroll your own keys, while **User Mode** means you have
+   enrolled your own keys.
+
+   In some BIOS, the same actions or functionality might be named differently in the BIOS interface. Consult the
+   manufacturer of your Edge host to find out how to clear the keys and enroll your own keys.
+
+   :::
+
+If you set the `AUTO_ENROLL_SECUREBOOT_KEYS` argument to `true` when you built the installation ISO, key enrollment will
+begin automatically once the device restarts. You can skip the following steps to proceed to
+[Install Palette Edge with Trusted Boot](#install-palette-edge-with-trusted-boot).
 
 5. If you did not set `AUTO_ENROLL_SECUREBOOT_KEYS` to `true` when you built the ISO, you will need to select the
    **Enroll Secure Boot keys: Auto** option in the boot menu when the Edge device restarts. This will start the key
@@ -58,8 +69,8 @@ supports Secure Boot.
 
 ### Install Palette Edge with Trusted Boot
 
-6. When the keys are finished enrolling, the installation will start automatically. Installation typically takes about 5
-   minutes, but can vary depending on your hardware.
+6. When the keys are finished enrolling, the installation will start automatically after a reboot. Installation
+   typically takes about 5 minutes, but can vary depending on your hardware.
 
 7. When installation finishes, you will observe the text "Installation has finished, rebooting in 5 seconds" on your
    screen. Remove the USB disk from your Edge device.
@@ -68,6 +79,10 @@ supports Secure Boot.
    boot directly to Edge device registration.
 
 ## Validate
+
+Use the following steps to validate that Trusted Boot has been enabled on your Edge host. This requires you to have
+configured a user on your Edge host. Refer to [Installer Reference](../../edge-configuration/installer-reference.md) for
+more information.
 
 1. Press **Alt + right arrow key**, or **Ctrl + Alt + F1**. Replace **Alt** with **Options** on a Mac keyboard. This
    will bring up a terminal and allow you to log in with the credentials you configured with the **user-data** file.

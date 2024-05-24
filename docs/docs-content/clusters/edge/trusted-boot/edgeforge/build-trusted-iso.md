@@ -22,7 +22,7 @@ This document guides you through the process of producing Edge Installer ISOs th
 
   - 4 CPU
   - 32 GB memory
-  - 50 GB storage
+  - 100 GB storage
 
 - You have generated secure boot keys in the **secure-boot/enrollment** folder.
 - Both the **db.key** file and the **tpm2-pcr-private.pem** file are located in the **CanvOS/secure-boot/private-keys**
@@ -56,11 +56,11 @@ This document guides you through the process of producing Edge Installer ISOs th
    git checkout v4.4.0
    ```
 
-5. Create a file named **.arg**. Refer to
+5. Create a file named **.arg**. You can use the **.arg.template** file in the repository as a starting point. Refer to
    [Edge Artifact Build Configurations](../../edgeforge-workflow/palette-canvos/arg.md) for available configuration
    parameters.
 
-   To build an ISO image that supports Trusted Boot, you need to include the following parameters in the **.arg** file.
+   To build an ISO image that supports Trusted Boot, include the following parameters in the **.arg** file.
 
    ```
    OS_DISTRIBUTION=ubuntu
@@ -69,14 +69,23 @@ This document guides you through the process of producing Edge Installer ISOs th
    AUTO_ENROLL_SECUREBOOT_KEYS=true
    ```
 
-6. Create a file named **user-data**. This is the file with which you can configure the Edge installer. Refer to
+   :::info
+
+   It is not necessary to include `AUTO_ENROLL_SECUREBOOT_KEYS=true`. If you do not include it, you will need to
+   manually confirm the enrollment of the keys during install time. For more information, refer to
+   [Installation with Trusted Boot](..//deployment-day2/install.md).
+
+   :::
+
+6. Create a file named **user-data**. You can use the **user-data.template** file in the repository as a starting point.
+   This is the file with which you can configure the Edge installer. Refer to
    [Edge Installer Configuration](../../edge-configuration/installer-reference.md) for available configuration
    parameters.
 
    :::warning
 
    Ensure you have generated the Trusted Boot keys in the **secure-boot/enrollment** folder before proceeding to the
-   next step. If you build an ISO without using these keys, your device will not be able to boot.
+   next step. If you build an ISO without the keys in the folder, the key enrollment will not happen.
 
    :::
 

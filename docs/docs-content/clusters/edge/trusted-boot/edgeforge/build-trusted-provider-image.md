@@ -9,8 +9,9 @@ tags: ["edge"]
 
 This page guides you through the process of creating provider images for Edge clusters with Trusted Boot enabled.
 Provider images are Kairos-based container images for each supported Operating System (OS) and Kubernetes combination.
+
 Since provider images contain the OS, which is a part of the boot process, the provider image needs to be signed by a
-key that is in the signature database.
+key that is in the signature database. This is important both during installation and upgrades.
 
 ## Prerequisites
 

@@ -10,7 +10,8 @@ tags: ["edge"]
 
 When you use Trusted Boot, your OS becomes part of the Extensible Firmware Interface (EFI) file that gets loaded by the
 firmware of the Edge host and booted directly. This means that the EFI file may grow quite large due to the size of the
-OS and any customizations you may make, and you must ensure that your Edge host has the capacity to boot the large EFI file.
+OS and any customizations you may make, and you must ensure that your Edge host has the capacity to boot the large EFI
+file.
 
 This page guides you through how to estimate the bootable EFI limit of your Edge host as well as the EFI size of your
 installer ISO. You need to ensure that the bootable EFI size limit is greater than the size of the EFI partition in your
@@ -24,7 +25,7 @@ ISO file.
   - Processor architecture: X86_64
   - Minimum CPU: 4
   - Minimum RAM: 8
-  - Minimum Storage: 150 GB
+  - Minimum Storage: 100 GB
 
 - Your Edge host supports Unified Extensible Firmware Interface (UEFI) boot options.
 
@@ -102,10 +103,11 @@ ISO file.
     ```
 
 11. Pay attention to the output on the screen. At a certain point, the output will break and produce a large number of
-    new lines before producing the same output as the beginning again.
+    new lines before producing the same output as the beginning again. In some hardware, the Edge host will reboot and
+    start the process again.
 
-    The last line before the white space indicates the upper bound of your EFI boot limit. For example, in the following
-    output, the EFI boot limit of your Edge host is between 600 and 700 MB.
+    The last line before the white space or reboot indicates the upper bound of your EFI boot limit. For example, in the
+    following output, the EFI boot limit of your Edge host is between 600 and 700 MB.
 
     ```shell
     [ INFO]:  src/main.rs@056: Reading 600.00 MB bytes into buffer
