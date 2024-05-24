@@ -51,7 +51,7 @@ connectivity.
    64 bytes from 10.10.153.43: icmp_seq=6 ttl=112 time=7.160 ms
    ```
 
-   If ping produces output containing messages such as "Destination Host Unreachable" or "100% packet loss", then you
+   If ping produces output containing messages such as "Destination Host Unreachable" or "100% packet loss," then you
    are you connected to the endpoint.
 
 ### Validate
@@ -107,5 +107,5 @@ Traceroute is useful for you to determine at which point along the path the pack
 ### Validate
 
 Depending on the endpoint you are trying to reach, you can use different methods to validate the results. For example,
-if you are seeing issues near the DNS server, you can try to specify a well-known DNS server such as 8.8.8.8 (Google) to
-see if it improves the connection. If it does, you can validate the results of traceroute.
+if you are observing issues near the DNS server, you can try to specify a well-known DNS server such as 8.8.8.8 (Google)
+to see if it improves the connection. If it does, you can validate the results of traceroute.
