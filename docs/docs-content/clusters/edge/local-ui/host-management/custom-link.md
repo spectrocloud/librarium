@@ -111,6 +111,14 @@ interface or open a new tab in your browser depending on how to configure the li
    }
    ```
 
+   :::warning
+
+   Some websites and domains are not accessible if they are configured as iframes due to security configurations.
+   Confirm whether the sites you are configuring can be loaded through iframes before configuring them. If they cannot
+   be loaded as iframes, do not use the `type: iframe` property and open them in a new tab instead.
+
+   :::
+
    Link objects with `"type": "iframe"` means the link will open within the local UI interface in an iframe. Link
    objects without `"type": "iframe"` will open a new tab instead.
 
