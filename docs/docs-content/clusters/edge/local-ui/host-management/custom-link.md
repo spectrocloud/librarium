@@ -95,41 +95,53 @@ interface or open a new tab in your browser depending on how to configure the li
    {
      "links": [
        {
-         "label": "Example",
-         "url": "https:/www.example.com",
+         "label": "Google",
+         "url": "https:/www.google.com",
          "type": "iframe"
        },
        {
-         "label": "Doc",
-         "url": "https:/docs.example.com"
-       }
+         "label": "Google 2",
+         "url": "https:/www.google.com"
+       },
        {
-        "label" : "IT",
-        "url": "/it/intex.html"
+         "label": "Docs",
+         "url": "https:/docs.googlee.com",
+         "group": "Example"
+       },
+       {
+         "label": "Maps",
+         "url": "/it/index.html",
+         "group": "Example"
        }
      ]
    }
    ```
 
-   :::warning
-
-   Some websites and domains are not accessible if they are configured as iframes due to security configurations.
-   Confirm whether the sites you are configuring can be loaded through iframes before configuring them. If they cannot
-   be loaded as iframes, do not use the `type: iframe` property and open them in a new tab instead.
-
-   :::
-
    Link objects with `"type": "iframe"` means the link will open within the local UI interface in an iframe. Link
    objects without `"type": "iframe"` will open a new tab instead.
+
+   :::warning
+
+   Some websites and domains cannot be embedded as iframes due to security configurations. Confirm whether the sites you
+   can be loaded through iframes before configuring them. If they cannot be loaded as iframes, do not use the
+   `type: iframe` property.
+
+   :::
 
 8. You can add a group attribute to each link. Links sharing the same group are grouped together in the side bar.
 
    ![A screenshot of the sidebar with custom links](/clusters_edge_localui_custom-link-sidebar.webp)
 
-9. Archive the UI directory to a TAR file. The file must be named **ui.tar**.
+9. Ensure you include all the links you want to add to the sidebar before proceeding. You cannot add new links to the
+   sidebar without rebuilding the installer ISO.
 
-10. Follow the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide from step 3
-    onwards to finish the EdgeForge process.
+10. Archive the UI directory to a TAR file. The file must be named **ui.tar** and must be placed at the root directory
+    of CanvOS.
+
+11. Follow the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide from step onward
+    to finish the EdgeForge process. As long as the **ui.tar** file is at the root directory of **CanvOS** and the
+    installation mode is set to airgap as required by local UI, the custom links will be added to the sidebar when you
+    log in to local UI.
 
 ### Validate
 
