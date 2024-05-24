@@ -224,17 +224,21 @@ async function pluginPacksAndIntegrationsData(context, options) {
       console.info("completed the fetch of all the pack details");
       return { packsPaletteData: packMDMap, packsPaletteDetailsData: apiPacksData, packsDescription: packDescription, repositories: mappedRepos };
     },
-    async contentLoaded({ allContent, content, actions }) {
+    async contentLoaded({ content, actions }) {
       const { setGlobalData, addRoute } = actions;
       const { packsPaletteData, packsPaletteDetailsData, packsDescription, repositories } = content;
-      const integrationsData = generateIntegrationData(allContent);
       const customPacksData = generateCustomData(packsDescription);
       const unionPackData = combineAPICustomPackData(packsPaletteData, packsPaletteDetailsData, customPacksData);
       const routes = generateRoutes(packsPaletteData);
       console.info("completed the generation of the routes");
       routes.map(route => addRoute(route));
-      setGlobalData({ integrations: integrationsData, packs: unionPackData, repositories: repositories });
+      setGlobalData({ packs: unionPackData, repositories: repositories });
     },
+    async allContentLoaded({ allContent, actions }) {
+      const { setGlobalData } = actions;
+      const integrationsData = generateIntegrationData(allContent);
+      setGlobalData({ integrations: integrationsData })
+    }
   };
 }
 
