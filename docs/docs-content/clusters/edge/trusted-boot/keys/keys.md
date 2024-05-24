@@ -59,17 +59,17 @@ During EdgeForge, each boot component is hashed and these hash values, or measur
 key. The signed measurements are embedded in the UKI image, along with the public key of the PCR policy key pair.
 
 During installation, encrypted partitions are setup using a Disk Encryption Key (DEK), which is itself encrypted by the
-TPM and stored in a secure blob. The public key embeded in the ISO is used to form a binding policy with the secure
-blob. The binding policy states that in order to decrypt the secure blob containing the DEK, the PCR 11 measurements
-must match a signed, precalculated set of measurements present in the boot image.
+TPM and stored in a secure blob. The PCR public key embedded in the ISO is used to form a binding policy. The binding
+policy states that in order to decrypt the secure blob containing the DEK, the PCR measurements must match precalculated
+set of measurements signed by the corresponding PCR private key.
 
 During the boot process before the encrypted disk partition is mounted, the TPM will perform the following:
 
 - Verify the public key in the image is valid (by checking digest of the key vs binding policy)
 - Verify the signature on the pre-calculated measurements using the public key
-- Compare the precalculated measurements vs the actual PCR 11 measurements.
+- Compare the precalculated measurements vs the actual PCR measurements.
 
-If all thre verifications are successfull, TPM will decrypt the secure blob, release DEK, and the OS can use it to
+If all three verifications are successful, TPM will decrypt the secure blob, release DEK, and the OS can use it to
 decrypt the encrypted partitions of the disk.
 
 ## Disk Encryption Key (DEK)
@@ -77,9 +77,9 @@ decrypt the encrypted partitions of the disk.
 The disk encryption key (DEK) is generated during installation, encrypted by the TPM with an internal key, and sealed
 inside the TPM. You will never interact with the DEK itself.
 
-During the boot process, the boot process is measured against the pre-calculated measurements and the signature on the
-pre-calculated measurements is verified by the PCR public key. If the measurements match and the signature is valid, the
-TPM will decrypt the DEK, release it and the OS can use it to decrypt the encrypted portion of the disk.
+During the boot process, the TPM will perform a series of verifications. If all of them are successful, the TPM will
+release decrypt and release the DEK to the OS, so it can use it to decrypt the encrypted partitions. Refer to the
+[PCR Policy Key](#platform-configuration-registers-pcr-policy-key) section for details.
 
 ## Factory Keys
 
