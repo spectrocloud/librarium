@@ -40,10 +40,7 @@ Palette paid subscriptions cover access to our Support team and product updates.
 
 ## Use Verified Packs
 
-Palette comes with a default pack registry that is available to all SaaS tenants, and non-airgap self-hosted Palette
-environments. The [Default Registries](../registries-and-packs/registries/registries.md#default-registries) table has
-the details of the Palette registry. You can use verified packs in your cluster profiles without any special
-configuration.
+Use the following steps to create a cluster profile by adding one or more layers using verified packs.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -55,8 +52,8 @@ configuration.
 
 5. Select **Add-on** for the cluster profile type. Click on **Next** to continue.
 
-6. Select **Add New Pack**. In the next window that displays, choose the **Palette Registry** and select the pack to add
-   to your profile. You can search packs by name.
+6. Select **Add New Pack**. In the next window that displays, choose the **Palette Registry** and select the pack with
+   the verified badge to add to your profile. You can search packs by name.
 
 ![A screenshot of selecting Palette Registry](/integrations_verified-packs_add-pack.webp)
 

@@ -11,11 +11,21 @@ tags: ["packs", "community"]
 Palette Community Packs are packs that are created and maintained by the Spectro Cloud community. They provide important
 integrations with Spectro Cloud Palette.
 
+We welcome all contributions to the Spectro Cloud community packs, either by adding new packs or updating existing
+packs. You can read our
+[Contribution Guidelines](https://github.com/spectrocloud/pack-central?tab=readme-ov-file#contributing) in the community
+packs repository. Check out the [Deploy a Custom Pack](../registries-and-packs/deploy-pack.md) tutorial to learn more about how to build and deploy your own
+custom pack.
+
+Palette comes with a default community pack registry hosted by Spectro Cloud that is available to all SaaS tenants, and
+non-airgap self-hosted Palette environments. The
+[Default Registries](../registries-and-packs/registries/registries.md#default-registries) table has the details of the
+community registry.
+
 :::warning
 
-We provide community packs to facilitate collaborations and contributions from the wider community. All community packs
-are reviewed and accepted by Spectro Cloud. However, unlike [Verified Packs](./verified_packs.md), community packs are
-not maintained and updated regularly.
+All community packs are reviewed and accepted by Spectro Cloud. However, unlike [Verified Packs](./verified_packs.md),
+community packs are not maintained and updated regularly.
 
 :::
 
@@ -24,13 +34,14 @@ not maintained and updated regularly.
 - Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the
   [Roles and Permissions](../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
   documentation for more information.
+- Ensure that the Palette Community Registry is available. Depending on the configuration of your Palette environment,
+  you may need to add it yourself. Refer to the
+  [Use non-FIPS Packs](../vertex/system-management/enable-non-fips-settings/use-non-fips-addon-packs.md) guide for
+  guidance.
 
 ## Use Community Packs
 
-Palette comes with a default community pack registry that is available to all SaaS tenants, and non-airgap self-hosted
-Palette environments. The [Default Registries](../registries-and-packs/registries/registries.md#default-registries)
-table has the details of the community registry. You can use community packs in your cluster profiles without any
-special configuration.
+Use the following steps to create a cluster profile by adding one or more layers using community packs.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -66,8 +77,3 @@ You now have an add-on cluster profile that contains one or more community packs
 ## Next Steps
 
 Now you can use the add-on profile with other profiles and across multiple environments, projects, and tenants.
-
-We welcome all contributions to the Spectro Cloud community packs, either by adding new packs or updating existing
-packs. You can read our
-[Contribution Guidelines](https://github.com/spectrocloud/pack-central?tab=readme-ov-file#contributing) in the community
-packs repository.
