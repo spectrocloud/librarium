@@ -27,7 +27,7 @@ cluster using Local UI.
 
 - You have uploaded the necessary software artifacts to the Edge host or included the artifacts in the Edge Installer
   ISO during EdgeForge. For more information, refer to [Upload Content Bundle](./upload-content-bundle.md) and
-  [Build Edge Artifacts with Content Bundle](../../edgeforge-workflow/palette-canvos/build-artifacts.md).
+  [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md).
 
 ## Create Local Cluster
 
