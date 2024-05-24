@@ -74,7 +74,7 @@ You now have an add-on cluster profile that contains one or more verified packs.
 
 2. Navigate to left **Main Menu** and select **Profiles**.
 
-3. Select your cluster profile to review its layers or make changes.
+3. Select your cluster profile to review its layers or make changes if needed.
 
 ## Next Steps
 
