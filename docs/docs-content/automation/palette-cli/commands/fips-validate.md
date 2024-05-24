@@ -35,7 +35,7 @@ The `fips-validate` command requires the following prerequisites:
 
 - Ensure you have access to the kubeconfig file for the cluster that you want to validate. The file needs to be
   accessible from the machine where you issue the `fips-validate` command. Refer to the
-  [Set up Kubectl](../../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide to learn how to
+  [Set up Kubectl](../../../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide to learn how to
   get the kubeconfig file for your cluster.
 
 - Sufficient permissions to create a new namespace and deploy resources in the namespace. We recommend using an elevated

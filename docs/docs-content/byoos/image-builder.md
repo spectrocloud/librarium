@@ -277,6 +277,15 @@ create the image.
       osVersion: "8"
     ```
 
+    :::info
+
+    Depending on what platform you are targeting, the value you provide for `osImageOverride` may differ. For example,
+    for AWS, the value is the AMI ID. For vSphere, the value is VM template path and name. Refer to the
+    [Reference Custom Image](../integrations/byoos.md?edge-non-edge=Non-Edge#reference-custom-image) section of the
+    BYOOS page for examples.
+
+    :::
+
 ![View of the cluster profile wizard](/clusters_byoos_image-builder_cluster-profile-byoos-yaml.webp)
 
 17. Click on **Next layer** to add the Kubernetes layer.

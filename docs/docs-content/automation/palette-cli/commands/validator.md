@@ -7,7 +7,7 @@ sidebar_position: 50
 tags: ["palette-cli"]
 ---
 
-The Palette CLI has built-in support for the open-source [Validator](https://github.com/spectrocloud-labs/validator)
+The Palette CLI has built-in support for the open-source [Validator](https://github.com/validator-labs/validator)
 framework and its plugins ecosystem. You can use the Validator to verify your environment is ready for an installation
 of self-hosted Palette, VerteX, or for deployment of Kubernetes clusters through Palette.
 
@@ -33,8 +33,8 @@ The Validator requires the following dependencies.
 
 Credentials and other permissions may be required depending on the Validator plugins you use. For example, the AWS
 plugin requires AWS credentials with elevated permissions to validate your AWS environment. Refer to the
-[Validator](https://github.com/spectrocloud-labs/validator) GitHub repository for more information about the Validator
-and its plugins.
+[Validator](https://github.com/validator-labs/validator) GitHub repository for more information about the Validator and
+its plugins.
 
 :::
 
@@ -48,7 +48,8 @@ will guide you through the installation process. You can also use a configuratio
 A [kind](https://kind.sigs.k8s.io/) cluster will be deployed as part of the Validator installation. The name of the kind
 cluster is `validator-kind-cluster`. You can find the `kind` binary installed in the `$HOME/.palette/bin` directory. You
 can install the Validator into an existing Kubernetes cluster by using the Helm chart. Refer to the
-[Validator Helm Install](https://github.com/spectrocloud-labs/validator#installation) steps for more information.
+[Validator Helm Install](https://github.com/validator-labs/validator?tab=readme-ov-file#installation) steps for more
+information.
 
 :::
 
@@ -296,17 +297,17 @@ requirements.
 Each plugin may have its own set of failures. Resolving failures will depend on the plugin and the failure. Use the
 error output to help you address the failure. Below are some tips to help you resolve failures.
 
-| **Plugin** | **Failure Scenario**              | **Guidance**                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| ---------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AWS        | Missing IAM permissions           | The IAM role used by Palette is missing one or more required IAM permissions. Refer to [Required IAM Policies](../../clusters/public-cloud/aws/required-iam-policies.md) for a comprehensive list of required IAM permissions and attach the missing permissions or policies.                                                                                                                                                                                     |
-| AWS        | Insufficient Service Quota Buffer | The usage quota for a service or multiple service quotas is above the specified buffer. Refer to AWS [Service Quotas](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html) documentation to review the default limits. Use the [Service Quotas](https://console.aws.amazon.com/servicequotas/) console to request an increase to your account, or remove resources to reduce the usage.                                                    |
-| Network    | TCP connection error              | The Validator could not establish a Transmission Control Protocol (TCP) connection to the specified host and port. Ensure the host and port are accessible from the Validator's current network. If the current network is not in scope, ensure you conduct the test from a network in scope. Refer to the [Network Ports](../../architecture/networking-ports.md) resource for a list of Palette required ports.                                                 |
-| Network    | Unable to connect                 | This could be caused by several issues. If you require network connections to use a proxy server, specify the usage of a network proxy and provide the required proxy server information.                                                                                                                                                                                                                                                                         |
-| Network    | Unable to resolve DNS             | The Validator was unable to resolve the specified DNS name. Ensure the DNS name is valid and accessible from the Validator's current network default DNS resolver. Use network tools such as `dig` and `nslookup` to debug DNS issues.                                                                                                                                                                                                                            |
-| Network    | Insufficient IP Addresses         | The Validator was unable to find a sufficient number of IP addresses in the specified IP range. Ensure the IP range is valid and has enough IP addresses to satisfy the Validator's requirements. Discuss these findings with your network administrator.                                                                                                                                                                                                         |
-| vSphere    | Missing permissions               | The user account used by Palette or VerteX is missing one or more required permissions. Refer to [Palette Required vSphere Permissions](../../enterprise-version/install-palette/install-on-vmware/vmware-system-requirements.md#vsphere-permissions), or the [VerteX Required vSphere Permissions](../../vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements.md#vsphere-permissions) resource for information about required permissions. |
-| vSphere    | Missing tags                      | Kubernetes regions and zone tags are missing from the vSphere environment. Refer to [Palette Required vSphere Tags](../../enterprise-version/install-palette/install-on-vmware/vmware-system-requirements.md#zone-tagging), or the [VerteX Required vSphere Tags](../../vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements.md#zone-tagging) resource for information about zone tags.                                                     |
-| vSphere    | Folder missing or not accessible  | The `spectro-templates` folder is missing or not accessible. Ensure the folder exists and the user account used by Palette or VerteX has read access to the folder. The `spectro-templates` folder is used by Palette and VerteX to download OVAs during the install.                                                                                                                                                                                             |
+| **Plugin** | **Failure Scenario**              | **Guidance**                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ---------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AWS        | Missing IAM permissions           | The IAM role used by Palette is missing one or more required IAM permissions. Refer to [Required IAM Policies](../../../clusters/public-cloud/aws/required-iam-policies.md) for a comprehensive list of required IAM permissions and attach the missing permissions or policies.                                                                                                                                                                                        |
+| AWS        | Insufficient Service Quota Buffer | The usage quota for a service or multiple service quotas is above the specified buffer. Refer to AWS [Service Quotas](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html) documentation to review the default limits. Use the [Service Quotas](https://console.aws.amazon.com/servicequotas/) console to request an increase to your account, or remove resources to reduce the usage.                                                          |
+| Network    | TCP connection error              | The Validator could not establish a Transmission Control Protocol (TCP) connection to the specified host and port. Ensure the host and port are accessible from the Validator's current network. If the current network is not in scope, ensure you conduct the test from a network in scope. Refer to the [Network Ports](../../../architecture/networking-ports.md) resource for a list of Palette required ports.                                                    |
+| Network    | Unable to connect                 | This could be caused by several issues. If you require network connections to use a proxy server, specify the usage of a network proxy and provide the required proxy server information.                                                                                                                                                                                                                                                                               |
+| Network    | Unable to resolve DNS             | The Validator was unable to resolve the specified DNS name. Ensure the DNS name is valid and accessible from the Validator's current network default DNS resolver. Use network tools such as `dig` and `nslookup` to debug DNS issues.                                                                                                                                                                                                                                  |
+| Network    | Insufficient IP Addresses         | The Validator was unable to find a sufficient number of IP addresses in the specified IP range. Ensure the IP range is valid and has enough IP addresses to satisfy the Validator's requirements. Discuss these findings with your network administrator.                                                                                                                                                                                                               |
+| vSphere    | Missing permissions               | The user account used by Palette or VerteX is missing one or more required permissions. Refer to [Palette Required vSphere Permissions](../../../enterprise-version/install-palette/install-on-vmware/vmware-system-requirements.md#vsphere-permissions), or the [VerteX Required vSphere Permissions](../../../vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements.md#vsphere-permissions) resource for information about required permissions. |
+| vSphere    | Missing tags                      | Kubernetes regions and zone tags are missing from the vSphere environment. Refer to [Palette Required vSphere Tags](../../../enterprise-version/install-palette/install-on-vmware/vmware-system-requirements.md#zone-tagging), or the [VerteX Required vSphere Tags](../../../vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements.md#zone-tagging) resource for information about zone tags.                                                     |
+| vSphere    | Folder missing or not accessible  | The `spectro-templates` folder is missing or not accessible. Ensure the folder exists and the user account used by Palette or VerteX has read access to the folder. The `spectro-templates` folder is used by Palette and VerteX to download OVAs during the install.                                                                                                                                                                                                   |
 
 Every 30 seconds, the Validator will continuously re-issue a validation and update the `ValidationResult` CR with the
 result of the validation. The validation results are hashed, and result events are only emitted if the result has
@@ -432,7 +433,7 @@ from version `v0.0.30`.
 helmRelease:
   chart:
     name: validator
-    repository: https://spectrocloud-labs.github.io/validator
+    repository: https://validator-labs.github.io/validator
     version: v0.0.36
     insecureSkipVerify: true
   values: ""
@@ -448,7 +449,7 @@ palette validator upgrade \
 
 ```shell hideClipboard
 ==== Installing/upgrading validator Helm chart ====
-helm upgrade validator validator --repo https://spectrocloud-labs.github.io/validator --version v0.0.36 --insecure-skip-tls-verify --kubeconfig /tmp/2773008921 --namespace validator --install --create-namespace --values /tmp/1655869680
+helm upgrade validator validator --repo https://validator-labs.github.io/validator --version v0.0.36 --insecure-skip-tls-verify --kubeconfig /tmp/2773008921 --namespace validator --install --create-namespace --values /tmp/1655869680
 
 ==== Kubectl Command ====
 /home/ubuntu/.palette/bin/kubectl wait --for=condition=available --timeout=600s deployment/validator-controller-manager -n validator --kubeconfig=/home/ubuntu/.palette/validator/validator-20240311153652/kind-cluster.kubeconfig

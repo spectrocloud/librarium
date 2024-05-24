@@ -236,7 +236,25 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     sudo --login
     ```
 
-19. Start the airgap initialization process by issuing the following command. The script requires the hostname or IP
+19. If you have custom SSL certificates you want to apply to the image and pack registry, and the Spectro Cloud
+    Repository, copy the custom SSL certificates, in base64 PEM format, to the airgap support VM. The custom
+    certificates must be placed in the **/opt/spectro/ssl** folder. Include the following files:
+
+    - **server.crt**
+    - **server.key**
+
+    If you do not provide a custom SSL certificate, the airgap setup process will generate a self-signed certificate for
+    you.
+
+    :::warning
+
+    The custom SSL certificates must be in base64 PEM format. If you have custom SSL certificates in a different format,
+    convert them to base64 PEM format before copying them to the support VM. The airgap setup process also expects the
+    files to be named **server.crt** and **server.key**.
+
+    :::
+
+20. Start the airgap initialization process by issuing the following command. The script requires the hostname or IP
     address of the airgap support VM. Choose the preferred method for your environment. Be aware that the script will
     generate a self-signed certificate for the value you provide.
 
@@ -317,10 +335,10 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
         </TabItem>
         </Tabs>
 
-20. The output of the script contains credentials and values you will need when completing the installation with the
+21. The output of the script contains credentials and values you will need when completing the installation with the
     Palette CLI. If you need to review this information in the future, invoke the script again.
 
-21. Review the [Additional Packs](../../airgap/supplemental-packs.md) page and identify any additional packs you want to
+22. Review the [Additional Packs](../../airgap/supplemental-packs.md) page and identify any additional packs you want to
     add to your OCI registry. By default, the installation includes only the minimum required packs. You can also add
     additional packs after the installation is complete.
 

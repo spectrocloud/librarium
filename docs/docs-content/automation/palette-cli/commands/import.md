@@ -8,8 +8,8 @@ tags: ["palette-cli"]
 ---
 
 The `import` command imports a cluster into Palette in full permission mode based on local kubeconfig files. Refer to
-the [Imported Clusters](../../clusters/imported-clusters/cluster-import.md) reference page to learn more about imported
-clusters.
+the [Imported Clusters](../../../clusters/imported-clusters/cluster-import.md) reference page to learn more about
+imported clusters.
 
 ## Prerequisites
 

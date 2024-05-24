@@ -15,6 +15,13 @@ Both the Edge Installer ISO and the provider images must be FIPS-compliant.
 
 This page guides you through the process of building FIPS-compliant Edge Installer ISO and provider images.
 
+## Limitations
+
+- FIPS-compliant Edge installer does not work with secure boot. You need to disable secure boot first before installing
+  Palette on your device. The process to disable secure boot varies by device, but generally, you can press F2 upon
+  powering up the Edge host, and find the option to disable secure boot in the Basic Input/Output System (BIOS)
+  interface.
+
 ## Prerequisites
 
 - A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture to build the Edge
@@ -38,20 +45,26 @@ This page guides you through the process of building FIPS-compliant Edge Install
 
   Contact your system administrator for access to the subscription credentials.
 
-- [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the `git --version`
-  command.
+- [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
 
 - [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
   command to check the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
   create privileged containers.
 
-- A [VerteX](/docs/docs-content/vertex/vertex.md) account. Refer to
+- A [VerteX](/docs/docs-content/vertex/vertex.md) or Palette account. Refer to
   [Palette VerteX](/docs/docs-content/vertex/vertex.md#access-palette-vertex) for information on how to set up a VerteX
   account.
 
-- VerteX registration token for pairing Edge hosts with VerteX. You will need tenant admin access to VerteX to generate
-  a new registration token. For detailed instructions, refer to the
+- VerteX registration token for pairing Edge hosts with VerteX or a Palette registration token. You will need tenant
+  admin access to VerteX to generate a new registration token. For detailed instructions, refer to the
   [Create Registration Token](/clusters/edge/site-deployment/site-installation/create-registration-token) guide.
+
+:::warning
+
+You can deploy a FIPS-compliant Edge host to Palette, but this solution will not be FIPS-compliant end-to-end because
+Palette is not FIPS compliant. If you need a FIPS-compliant solution, you need to use VerteX.
+
+:::
 
 ## Build FIPS-Enabled Edge Artifacts
 
@@ -69,10 +82,12 @@ This page guides you through the process of building FIPS-compliant Edge Install
    cd CanvOS
    ```
 
-3. Ensure that you are using the **main** branch of the repository.
+3. View the available tags and check out the latest tag or any specific version of your choosing. This guide uses
+   **v4.3.2** as an example.
 
    ```bash
    git tag
+   git checkout v4.3.2
    ```
 
 ### Build FIPS-Compliant Base OS Image
@@ -192,20 +207,36 @@ image with.
     | BASE_IMAGE       | The base image used by EdgeForge to build the Edge Installer and provider images. This must be the same image that you build in the previous step.                |
     | ISO_NAME         | The file name of the ISO file that will be generated.                                                                                                             |
 
-14. Create a file named **user-data**. Add the following blocks to the root level of the **user-data** file. Replace the
-    value for `edgeHostToken` with your VerteX registration token, and replace the value `paletteEndPoint` with the URL
-    of your VerteX instance.
+14. Create a file named **user-data**. It must have the `#cloud-init` header at the top of the file. Ensure you have the
+    following blocks at the root level of the **user-data** file. Replace the value for `edgeHostToken` with your VerteX
+    registration token, and replace the value `paletteEndPoint` with the URL of your Palette instance. Replace the user
+    `kairos` and its password with your desired username and password.
 
     ```yaml
+    #cloud-init
     install:
-      grub_options:
-        extra_cmdline: "fips=1"
+       grub_options:
+         extra_cmdline: "fips=1 selinux=0"
 
     stylus:
-      site:
-        edgeHostToken: ********
-        paletteEndpoint: https://vertex.palette-devx.spectrocloud.com
+       site:
+         edgeHostToken: ********
+         paletteEndpoint: https://vertex.palette-devx.spectrocloud.com
+         projectName: Default
+
+    stages:
+       initramfs:
+          - name: "Core system setup"
+            users:
+               kairos:
+                  groups:
+                  - admin
+                  passwd: kairos
     ```
+
+    The command in the `install` block is required for FIPS installations. Configurations in the `stylus` block provide
+    the Edge Host with the registration token and the Palette endpoint. And the configurations in the `stage` block
+    create a system user that you can use to log in to the Operating System (OS).
 
 15. Add further customization to the **user-data** file as needed. This file configures the Edge Installer. Refer to
     [Installer Reference](../../edge-configuration/installer-reference.md) for more information.
@@ -246,7 +277,10 @@ FIPS-complaint provider images are built on top of the base OS image you have bu
 
 1. Follow the [Site Installation](../../site-deployment/stage.md) guide to install the Palette Edge on your Edge host.
 
-2. Issue the following command and ensure that the output is `1`. This means the OS is FIPS enabled.
+2. Press Fn + Ctrl + Cmd + F1 or Ctrl + Cmd + F1 keys on a mac keyboard and provide user credentials to log in to the
+   OS.
+
+3. Issue the following command and ensure that the output is `1`. This means the OS is FIPS enabled.
 
    ```shell
    cat /proc/sys/crypto/fips_enabled
