@@ -78,7 +78,7 @@ The disk encryption key (DEK) is generated during installation, encrypted by the
 inside the TPM. You will never interact with the DEK itself.
 
 During the boot process, the TPM will perform a series of verifications. If all of them are successful, the TPM will
-release decrypt and release the DEK to the OS, so it can use it to decrypt the encrypted partitions. Refer to the
+decrypt and release the DEK to the OS, so it can use it to decrypt the encrypted partitions. Refer to the
 [PCR Policy Key](#platform-configuration-registers-pcr-policy-key) section for details.
 
 ## Factory Keys
