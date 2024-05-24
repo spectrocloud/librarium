@@ -170,28 +170,61 @@ saepe ut fugit ea ut architecto quae consequatur.
 
 #### Kubernetes
 
-| Pack | New Version |
-| ---- | ----------- |
+| Pack       | New Version |
+| ---------- | ----------- |
+| Kubernetes | 1.29        |
+| GKE        | 1.29        |
 
 #### CNI
 
-| Pack | New Version |
-| ---- | ----------- |
+| Pack               | New Version |
+| ------------------ | ----------- |
+| AWS VPC CNI (Helm) | 1.17.1      |
+| Calico             | 3.27.2      |
+| Calico Azure       | 3.27.2      |
+| Cilium OSS         | 1.15.3      |
+| Flannel            | 0.24.3      |
 
 #### CSI
 
-| Pack | New Version |
-| ---- | ----------- |
+| Pack                    | New Version |
+| ----------------------- | ----------- |
+| Amazon EFS              | 1.7.6       |
+| Azure Disk CSI Driver   | 1.30.0      |
+| GCE Persistent Disk CSI | 1.13.2      |
+| Portworx Operator       | 3.1.0       |
 
 #### Add-on Packs
 
-| Pack | New Version |
-| ---- | ----------- |
+| Pack                         | New Version |
+| ---------------------------- | ----------- |
+| AWS Application Loadbalancer | 2.7.2       |
+| AWS Cluster Autoscaler Helm  | 1.29.2      |
+| Amazon EFS                   | 1.7.6       |
+| Cisco AppDynamics Collectors | 1.21.1264   |
+| Cisco AppDynamics Operators  | 1.21.368    |
+| ECK Operator                 | 2.12.1      |
+| ECK Stack                    | 0.10.0      |
+| MetalLB (Helm)               | 0.14.3      |
+| Nginx                        | 1.10.0      |
+| OpenPolicyAgent              | 3.15.1      |
+| Portworx Operator            | 3.1.0       |
+| Prometheus - Grafana         | 57.0.1      |
+| Strimzi Kafka                | 0.4.0       |
+| unCtl                        | 1.1.0       |
 
 #### FIPS Packs
 
-| Pack | New Version |
-| ---- | ----------- |
+| Pack                                     | New Version                 |
+| ---------------------------------------- | --------------------------- |
+| AWS VPC CNI (Helm)                       | 1.1.17                      |
+| Calico Azure                             | 3.26.3                      |
+| Cilium                                   | 1.14.3                      |
+| Longhorn                                 | 1.5.3                       |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.29.5                      |
+| Palette Optimized RKE2                   | 1.29.4                      |
+| Palette eXtended Kubernetes              | 1.29.4                      |
+| RKE2                                     | 1.29.4-rke2r1-build20240416 |
 
 #### Deprecations and Removals
 
