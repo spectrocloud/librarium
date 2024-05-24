@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Instructions"
-title: "Instructions"
+sidebar_label: "Non-Airgap Installation"
+title: "Install Non-Airgap Self-Hosted Palette VerteX"
 description: "Learn how to deploy self-hosted VerteX to a Kubernetes cluster using a Helm Chart."
 icon: ""
 hide_table_of_contents: false
@@ -17,14 +17,6 @@ SaaS. Review our [architecture diagrams](../../../architecture/networking-ports.
 has the necessary network connectivity for VerteX to operate successfully.
 
 ## Prerequisites
-
-:::warning
-
-If you are installing VerteX in an airgap environment, ensure you complete all the airgap pre-install steps before
-proceeding with the installation. Refer to the
-[Kubernetes Airgap Instructions](../airgap/kubernetes-airgap-instructions.md) guide for more information.
-
-:::
 
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) is installed and available.
 
@@ -139,10 +131,6 @@ your environment. Reach out to our support team if you need assistance.
     parameters before installing VerteX. You can learn more about the parameters in the **values.yaml** file in the
     [Helm Configuration Reference](vertex-helm-ref.md) page.
 
-    <Tabs groupId="mode">
-
-    <TabItem label="Non-Airgap" value="non-airgap">
-
     | **Parameter**                             | **Description**                                                                                                                                               | **Type** |
     | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
     | `env.rootDomain`                          | The URL name or IP address you will use for the VerteX installation.                                                                                          | string   |
@@ -151,16 +139,19 @@ your environment. Reach out to our support team if you need assistance.
     | `ingress.enabled`                         | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                         | boolean  |
     | `reach-system`                            | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure VerteX to use a network proxy in your environment | object   |
 
-    Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the
-    following sections to review an example of the **values.yaml** file with the required parameters highlighted.
+    Save the **values.yaml** file after you have populated the required parameters mentioned in the table.
 
-    <details>
+    Select one of the following tabs to review an example of the **values.yaml** file with the required parameters
+    highlighted.
 
-    <summary>Example - values.yaml</summary>
+    <!-- prettier-ignore -->
+    <Tabs>
+
+    <TabItem label="AWS ECR Registry" value="ecr">
 
     ```yaml {53,77-85,97-102}
     #########################
-    # Spectro Cloud VerteX #
+    # Spectro Cloud Palette #
     #########################
     # MongoDB Configuration
     mongo:
@@ -243,7 +234,7 @@ your environment. Reach out to our support team if you need assistance.
         baseContentPath: "production-fips" #<Contact Spectro Cloud Sales for More info>
         isPrivate: true
         insecureSkipVerify: false
-        caCert: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURqekNDQW5lZ0F3SUJBZ0lVZTVMdXBBZGljd0Z1SFJpWWMyWEgzNTFEUzJJd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk1qY3hNREV6TVRNeU5ERXlXakI3TVFzd0NRWURWUVFHRXdKVlV6RUxNQWtHCkExVUVDQk1DUTBFeEV6QVJCZ05WQkFjVENsTmhiblJoUTJ4aGNtRXhGVEFUQmdOVkJBb1RERk53WldOMGNtOUQKYkc5MVpERUxNQWtHQTFVRUN4TUNTVlF4SmpBa0JnTlZCQU1USFhCeWIzaDVMbk5oYlhCc1pTNXpjR1ZqZEhKdgpZMnh2ZFdRdVkyOXRNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQV"
+        caCert: ""
 
       # ociImageRegistry:
       #   endpoint: "" #<Contact Spectro Cloud Sales for More info>
@@ -368,54 +359,24 @@ your environment. Reach out to our support team if you need assistance.
       ui:
         nocUI:
           enable: true
-          mapBoxAccessToken: "" # Leave Empty to use Default Access Token from VerteX
+          mapBoxAccessToken: "" # Leave Empty to use Default Access Token from Palette
           mapBoxStyledLayerID: "" # Leave Empty to use Default Style Layer ID
 
-    reach-system:
-      reachSystem:
-        enabled: false
-        proxySettings:
-          http_proxy: ""
-          https_proxy: ""
-          no_proxy: ""
-          ca_crt_path: ""
+    reachSystem:
+      enabled: false
+      proxySettings:
+        http_proxy: ""
+        https_proxy: ""
+        no_proxy: ""
+        ca_crt_path: "" # Set the 'ca_crt_path' parameter to the location of the certificate file on each node. This file should contain the Proxy CA Certificate, in case the Proxy being used requires a certificate.
+      scheduleOnControlPlane: true
     ```
-
-    </details>
 
     </TabItem>
 
-    <TabItem label="Airgap" value="airgap">
+    <TabItem label="OCI Registry" value="oci">
 
-    | **Parameter**                             | **Description**                                                                                                                                                                                     | **Type** |
-    | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-    | `env.rootDomain`                          | The URL name or IP address you will use for the VerteX installation.                                                                                                                                | string   |
-    | `config.installationMode`                 | The installation mode for VerteX. The values can be `connected` or `airgap`. Set this value to `airgap`.                                                                                            | string   |
-    | `ociPackEcrRegistry` or `ociPackRegistry` | The OCI registry credentials for the VerteX FIPS packs repository. If you are using a Harbor registry, use the `ociPackRegistry` parameter block but ensure you have the OCI registry CA available. | object   |
-    | `ociImageRegistry`                        | The OCI registry credentials for the VerteX images repository.                                                                                                                                      | object   |
-    | `ociImageRegistry.ca`                     | If you are using a self-hosted OCI, such as Harbor, ensure you provide the CA in PEM format. If you are using AWS ECR, you can leave this parameter empty.                                          | string   |
-    | `ociImageRegistry.mirrorRegistries`       | Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images.                                                                               |
-    | `imageSwapConfig.isEKSCluster`            | Set this value to `false` if you are NOT installing VerteX on an EKS cluster.                                                                                                                       | boolean  |
-    | `scar`                                    | Specify your HTTP file server values. If your HTTP file server requires credentials ensure the provided values are base64 encoded. Example of the string "admin" in base64 encoding - `YWRtaW4=`.   | object   |
-    | `ingress.enabled`                         | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                                                               | boolean  |
-    | `reach-system`                            | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters for VerteX to use a network proxy in your environment                                                | object   |
-
-    Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Expand the
-    following sections to review an example of the **values.yaml** file with the required parameters highlighted.
-
-    :::warning
-
-    Palette VerteX does not support insecure connections. Ensure you have the Certificate Authority (CA) available, in
-    PEM format, when using a custom packs and image registry. Otherwise, VerteX will not be able to pull packs and
-    images from the registry. Use the `caCert` parameter to provide the base64-encoded CA certificate.
-
-    :::
-
-    <details>
-
-    <summary>Example - values.yaml</summary>
-
-    ```yaml {23,53,77-85,87-95,97-102,109}
+    ```yaml {53,68-75,110-115}
     #########################
     # Spectro Cloud VerteX #
     #########################
@@ -438,7 +399,7 @@ your environment. Reach out to our support team if you need assistance.
       storageClass: "" # leave empty to use the default storage class
 
     config:
-      installationMode: "airgap" #values can be connected or airgap.
+      installationMode: "connected" #values can be connected or airgap.
 
       # SSO SAML Configuration (Optional for self-hosted type)
       sso:
@@ -475,47 +436,60 @@ your environment. Reach out to our support team if you need assistance.
       cluster:
         stableEndpointAccess: false
 
-      #  registry:
-      #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-      #    name: "" #<Contact Spectro Cloud Sales for More info>
-      #    password: "" #<Contact Spectro Cloud Sales for More info>
-      #    username: "" #<Contact Spectro Cloud Sales for More info>
-      #    insecureSkipVerify: false
-      #    caCert: ""
+        #  registry:
+        #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+        #    name: "" #<Contact Spectro Cloud Sales for More info>
+        #    password: "" #<Contact Spectro Cloud Sales for More info>
+        #    username: "" #<Contact Spectro Cloud Sales for More info>
+        #    insecureSkipVerify: false
+        #    caCert: ""
 
-      #  ociPackRegistry:
-      #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-      #    name: "" #<Contact Spectro Cloud Sales for More info>
-      #    password: "" #<Contact Spectro Cloud Sales for More info>
-      #    username: "" #<Contact Spectro Cloud Sales for More info>
-      #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
-      #    insecureSkipVerify: false
-      #    caCert: ""
+        ociPackRegistry:
+          endpoint: "example.harbor.org" #<Contact Spectro Cloud Sales for More info>
+          name: "VerteX Packs OCI" #<Contact Spectro Cloud Sales for More info>
+          password: "**************" #<Contact Spectro Cloud Sales for More info>
+          username: "**************" #<Contact Spectro Cloud Sales for More info>
+          baseContentPath: "spectro-packs" #<Contact Spectro Cloud Sales for More info>
+          insecureSkipVerify: false
+          caCert: ""
 
-      ociPackEcrRegistry:
-        endpoint: "123456789.dkr.ecr.us-east-1.amazonaws.com" #<Contact Spectro Cloud Sales for More info>
-        name: "Airgap Packs OCI" #<Contact Spectro Cloud Sales for More info>
-        accessKey: "*************" #<Contact Spectro Cloud Sales for More info>
-        secretKey: "*************" #<Contact Spectro Cloud Sales for More info>
-        baseContentPath: "spectro-packs" #<Contact Spectro Cloud Sales for More info>
-        isPrivate: true
-        insecureSkipVerify: false
-        caCert: ""
+      # ociPackEcrRegistry:
+      #  endpoint: "" #<Contact Spectro Cloud Sales for More info>
+      #  name: "" #<Contact Spectro Cloud Sales for More info>
+      #  accessKey: "" #<Contact Spectro Cloud Sales for More info>
+      #  secretKey: "" #<Contact Spectro Cloud Sales for More info>
+      #  baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
+      #  isPrivate: true
+      #  insecureSkipVerify: false
+      #  caCert: ""
 
-      ociImageRegistry:
-        endpoint: "public.ecr.aws/123456789" #<Contact Spectro Cloud Sales for More info>
-        name: "Airgap Image OCI" #<Contact Spectro Cloud Sales for More info>
-        password: "" #<Contact Spectro Cloud Sales for More info>
-        username: "" #<Contact Spectro Cloud Sales for More info>
-        baseContentPath: "spectro-images" #<Contact Spectro Cloud Sales for More info>
-        insecureSkipVerify: true
-        caCert: ""
-        mirrorRegistries: "docker.io::public.ecr.aws/v2/123456789/spectro-images,gcr.io::public.ecr.aws/v2/123456789/spectro-images,ghcr.io::public.ecr.aws/v2/123456789/spectro-images,k8s.gcr.io::public.ecr.aws/v2/123456789/spectro-images,registry.k8s.io::public.ecr.aws/v2/123456789/spectro-images,quay.io::public.ecr.aws/v2/123456789/spectro-images"
+      # ociImageRegistry:
+      #   endpoint: "" #<Contact Spectro Cloud Sales for More info>
+      #   name: "" #<Contact Spectro Cloud Sales for More info>
+      #   password: "" #<Contact Spectro Cloud Sales for More info>
+      #   username: "" #<Contact Spectro Cloud Sales for More info>
+      #   baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
+      #   insecureSkipVerify: false
+      #   caCert: ""
+      #   mirrorRegistries: ""
+
+      # Instruction for mirrorRegistries.
+      # ----------------------------------
+      # Please provide the registry endpoint for the following registries, separated by double colons (::):
+      # docker.io
+      # gcr.io
+      # ghcr.io
+      # k8s.gcr.io
+      # registry.k8s.io
+      # quay.io
+      # For each registry, follow this example format:
+      # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>
+      # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
 
       scar:
-        endpoint: "http://10.15.20.15:2015"
-        username: "YWRtaW4="
-        password: "YWRtaW4="
+        endpoint: "https://saas-repo-fips.console.spectrocloud.com"
+        username: "**********"
+        password: "**********"
         insecureSkipVerify: true
         caCert: ""
 
@@ -625,47 +599,31 @@ your environment. Reach out to our support team if you need assistance.
       ui:
         nocUI:
           enable: true
-          mapBoxAccessToken: "" # Leave Empty to use Default Access Token from VerteX
+          mapBoxAccessToken: "" # Leave Empty to use Default Access Token from Palette
           mapBoxStyledLayerID: "" # Leave Empty to use Default Style Layer ID
 
-    reach-system:
-      reachSystem:
-        enabled: false
-        proxySettings:
-          http_proxy: ""
-          https_proxy: ""
-          no_proxy: ""
-          ca_crt_path: ""
+    reachSystem:
+      enabled: false
+      proxySettings:
+        http_proxy: ""
+        https_proxy: ""
+        no_proxy: ""
+        ca_crt_path: "" # Set the 'ca_crt_path' parameter to the location of the certificate file on each node. This file should contain the Proxy CA Certificate, in case the Proxy being used requires a certificate.
+      scheduleOnControlPlane: true
     ```
-
-    </details>
 
     </TabItem>
 
     </Tabs>
 
-5.  This step only applies to those who are installing an airgap VerteX or who are using a self-hosted OCI registry with
-    registry caching enabled. Otherwise, skip to the next step.
+    :::warning
 
-    Go ahead and install the image-swap chart using the following command. Point to the **values.yaml** file you
-    configured in the previous step.
+    Ensure you have configured the **values.yaml** file with the required parameters before proceeding to the next
+    steps.
 
-    ```shell
-    helm upgrade --values vertex/values.yaml \
-    image-swap extras/image-swap/image-swap-*.tgz --install
-    ```
+    :::
 
-    ```shell hideClipboard
-    Release "image-swap" does not exist. Installing it now.
-    NAME: image-swap
-    LAST DEPLOYED: Mon Jan 29 17:04:23 2024
-    NAMESPACE: default
-    STATUS: deployed
-    REVISION: 1
-    TEST SUITE: None
-    ```
-
-6.  This step is only required if you are installing Palette in an environment where a network proxy must be configured
+5.  This step is only required if you are installing Palette in an environment where a network proxy must be configured
     for Palette to access the internet. If you are not using a network proxy, skip to the next step.
 
     Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in the
@@ -686,7 +644,7 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-7.  Install the Palette Helm Chart using the following command.
+6.  Install the Palette Helm Chart using the following command.
 
     ```shell
      helm upgrade --values vertex/values.yaml \
@@ -703,7 +661,7 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-8.  Track the installation process using the command below. VerteX is ready when the deployments in the namespaces
+7.  Track the installation process using the command below. VerteX is ready when the deployments in the namespaces
     `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` reach the _Ready_ state. The
     installation takes between two to three minutes to complete.
 
@@ -718,7 +676,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-9.  Create a DNS CNAME record that is mapped to the VerteX `ingress-nginx-controller` load balancer. You can use the
+8.  Create a DNS CNAME record that is mapped to the VerteX `ingress-nginx-controller` load balancer. You can use the
     following command to retrieve the load balancer IP address. You may require the assistance of your network
     administrator to create the DNS record.
 
@@ -736,7 +694,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-10. Use the custom domain name or the IP address of the load balancer to visit the VerteX system console. To access the
+9.  Use the custom domain name or the IP address of the load balancer to visit the VerteX system console. To access the
     system console, open a web browser and paste the custom domain URL in the address bar and append the value
     `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer.
     Alternatively, you can use the load balancer IP address with the appended value `/system` to access the system
@@ -748,7 +706,7 @@ your environment. Reach out to our support team if you need assistance.
 
     ![Screenshot of the VerteX system console showing Username and Password fields.](/vertex_install-on-kubernetes_install_system-console.webp)
 
-11. Log in to the system console using the following default credentials.
+10. Log in to the system console using the following default credentials.
 
     | **Parameter** | **Value** |
     | ------------- | --------- |

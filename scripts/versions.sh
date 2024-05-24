@@ -25,7 +25,7 @@ fi
 echo "Temp directory: $tempdir"
 echo "Base directory: $baseDir"
 # List of version branches to exclude
-exclude_branches=(version-3-4 version-4-0) # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD A SPACE INSTEAD AND THE NEW VERSION STRING.
+exclude_branches=(version-3-4 version-4-0 version-4-1) # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD A SPACE INSTEAD AND THE NEW VERSION STRING.
 # exclude_branches=("version-3-4")
 
 # Save the current branch name
@@ -150,7 +150,7 @@ for item in $(git branch --format '%(refname:short)'); do
     rm api_versions.json
 
     # Remove API auto-generated files
-    npm run clean-api-docs
+    make clean-api
 
     # Switch back to the original branch
     git checkout $current_branch

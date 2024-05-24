@@ -42,7 +42,7 @@ the Kubernetes clusters after deployment. The following is a typical pack struct
 | `charts/`       | mandatory       | Mandatory for Helm chart-based packs. Contains the Helm charts to be deployed for the pack.                     |
 | `manifests/`    | mandatory       | Mandatory for Manifest-based packs. Contains the manifest files to be deployed for the pack.                    |
 | `ansible-roles` | optional        | Ansible roles used to install the pack.                                                                         |
-| `logo.webp`     | optional        | Contains the pack logo.                                                                                         |
+| `logo.png`      | optional        | Contains the pack logo.                                                                                         |
 | `README.md`     | optional        | The pack description.                                                                                           |
 
 Let's look at the examples below to better understand pack structure.
@@ -68,7 +68,7 @@ pack-level **values.yaml** file and individual chart-level **values.yaml** files
 │       ├── Chart.yaml
 │       ├── templates/
 │       └── values.yaml
-├── logo.webp
+├── logo.png
 ├── pack.json
 └── values.yaml
 ```
@@ -85,7 +85,7 @@ This example shows the structure of a Manifest-based pack, _kubeflow-1.2.0_, mad
 ├── manifests/
 │   ├── kubeflow-kfdef.yaml
 │   └── kubeflow-operator.yaml
-├── logo.webp
+├── logo.png
 ├── pack.json
 └── values.yaml
 ```

@@ -46,6 +46,6 @@ Integration deploys the following components:
 
 ## References
 
-- [Citrix IPAM Controller](https://developer-docs.citrix.com/projects/citrix-k8s-ingress-controller/en/latest/crds/vip)
+- [Citrix IPAM Controller](https://docs.netscaler.com/en-us/netscaler-k8s-ingress-controller/configure/ipam-for-ingress.html)
 
-- [Citrix Ingress controller](https://developer-docs.citrix.com/projects/citrix-k8s-ingress-controller/en/latest/network/type_loadbalancer/#expose-services-of-type-loadbalancer-using-an-ip-address-from-the-citrix-ipam-controller)
+- [Citrix Ingress controller](https://docs.netscaler.com/en-us/netscaler-k8s-ingress-controller/#expose-services-of-type-loadbalancer-using-an-ip-address-from-the-citrix-ipam-controller)

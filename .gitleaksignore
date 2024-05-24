@@ -103,3 +103,10 @@ fd60bdc4fdfe8b66925db07865cb530eab4978df:docs/docs-content/integrations/kubernet
 511e735952ff4babb08c522a7febdd856740c3f9:docs/docs-content/vertex/system-management/reverse-proxy.md:private-key:141
 511e735952ff4babb08c522a7febdd856740c3f9:docs/docs-content/vertex/system-management/reverse-proxy.md:private-key:167
 511e735952ff4babb08c522a7febdd856740c3f9:docs/docs-content/vertex/system-management/reverse-proxy.md:private-key:239
+9e62b4b635976b0ab93d4dddcf29d33365664091:docs/docs-content/integrations/kubernetes.md:generic-api-key:391
+9e62b4b635976b0ab93d4dddcf29d33365664091:docs/docs-content/integrations/kubernetes.md:generic-api-key:759
+9e62b4b635976b0ab93d4dddcf29d33365664091:docs/docs-content/integrations/kubernetes.md:generic-api-key:1125
+e4040084011d4d7935a589959b96ebc5cfba7a94:docs/docs-content/integrations/kubernetes.md:generic-api-key:759
+e4040084011d4d7935a589959b96ebc5cfba7a94:docs/docs-content/integrations/kubernetes.md:generic-api-key:1125
+e4040084011d4d7935a589959b96ebc5cfba7a94:docs/docs-content/integrations/kubernetes.md:generic-api-key:391
+87bf9f7353f94ac2ecf85da3be3412202de7b72f:docusaurus.config.js:generic-api-key:363

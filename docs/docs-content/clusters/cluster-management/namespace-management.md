@@ -16,7 +16,7 @@ namespaces are:
   of resources – without having to set up multiple physical clusters.
 
 - You can configure Role-Based Access Control (RBAC) based on namespaces. For information about configuring namespaces
-  and RBAC, check out [RBAC and NS Support](cluster-rbac).
+  and RBAC, check out [RBAC and NS Support](cluster-rbac.md).
 
 - Namespaces can be used for different purposes such as testing, development, and production.
 

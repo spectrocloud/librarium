@@ -164,7 +164,7 @@ structure for each.
     ├── manifest-1.yaml
     ├── manifest-2.yaml
 │   └── manifest-3.yaml
-├── logo.webp            # Mandatory.
+├── logo.png            # Mandatory.
 └── README.md           # Optional.
 ```
 
@@ -191,7 +191,7 @@ structure for each.
 │   │   │   └── template-2.yaml
 │   │   └── values.yaml # Chart-level values.yaml file.
 │   └── chart-2.tgz
-├── logo.webp            # Mandatory.
+├── logo.png            # Mandatory.
 └── README.md           # Optional.
 ```
 
@@ -216,7 +216,7 @@ Ensure you have the following files in the current directory.
 ├── values.yaml         # Mandatory.
 ├── manifests           # Mandatory.
 │   └── hello-universe.yaml
-├── logo.webp            # Mandatory.
+├── logo.png            # Mandatory.
 └── README.md           # Optional.
 ```
 
@@ -279,7 +279,7 @@ Review each of the following five files in the **hello-universe-pack** folder.
   manifest, **hello-universe.yaml**. Note that the **values.yaml** file has a corresponding `manifests/hello-universe`
   element with the same name as the YAML file.
 
-- **logo.webp** - This file contains a logo that displays when you create a cluster profile.
+- **logo.png** - This file contains a logo that displays when you create a cluster profile.
 
 - **README.md** - This file may contain the pack description, purpose, authors, and other relevant information. The
   README in the current example introduces the application used in the pack.
@@ -336,7 +336,7 @@ The image below shows the registry server successfully exposed via Ngrok.
 ![Screenshot of registry server exposed via ngrok](/tutorials/deploy-pack/registries-and-packs_deploy-pack_ngrok-start.webp)
 
 Check if the registry server is accessible from outside the tutorial container by visiting the `/health` endpoint. Open
-your browser and go to _https://Your-URL-Here/health_, replacing the base URL with the Ngrok URL output. You should get
+your browser and go to `https://Your-URL-Here/health`, replacing the base URL with the Ngrok URL output. You should get
 a `{"status":"UP"}` response.
 
 </TabItem>
@@ -405,9 +405,6 @@ respectively.
 In the **Projects** section, click on **New Project**. A project in Harbor contains all repositories of an application.
 This tutorial uses **spectro-oci-registry** as the project name. Keep the default settings for the remaining
 configuration options and proceed by clicking **OK**.
-
-Next, create another project called **spectro-packs**. This specific project is required to complete the validation of
-your registry in Palette.
 
 ![Screenshot of Harbor project](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-project.webp)
 

@@ -76,7 +76,7 @@ To complete this tutorial, you will need the following:
   - 8 GB memory
   - 50 GB storage
 
-- [Git](https://cli.github.com/manual/installation). Ensure git installation by issuing the `git --version` command.
+- [Git](https://git-scm.com/downloads). Ensure git installation by issuing the `git --version` command.
 
 - [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
   command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
@@ -184,8 +184,8 @@ View the newly created file to ensure the arguments are defined per your require
 cat .arg
 ```
 
-Refer to the [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md) guide to learn more about customizing
-arguments.
+Refer to the [Build Edge Artifacts](../edgeforge-workflow/palette-canvos/palette-canvos.md) guide to learn more about
+customizing arguments.
 
 ## Create User Data
 
@@ -262,7 +262,7 @@ will fail silently.
 You can exclude image versions you do not need from the build process by commenting out the lines in the
 `build-provider-images` parameter in the file **Earthfile** in the **CanvOS** repository. This speeds up build process
 and reduces the amount of space required for the build process. For an example of excluding a version from build, refer
-to [Build Edge Artifacts guide](../edgeforge-workflow/palette-canvos.md).
+to [Build Edge Artifacts guide](../edgeforge-workflow/palette-canvos/palette-canvos.md).
 
 :::
 
@@ -367,7 +367,8 @@ docker push ttl.sh/ubuntu:k3s-1.27.5-v4.1.2-demo
 As a reminder, [ttl.sh](https://ttl.sh/) is a short-lived image registry. If you do not use these provider images in
 your cluster profile within 24 hours of pushing to _ttl.sh_, they will expire and must be re-pushed. If you want to use
 a different image registry, refer to the Advanced workflow in the
-[Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md) guide to learn how to use another registry.
+[Build Edge Artifacts](../edgeforge-workflow/palette-canvos/palette-canvos.md) guide to learn how to use another
+registry.
 
 :::
 
@@ -487,7 +488,7 @@ is an explanation of the options and sub-command used below:
 - The
   `sh -c "source /edge/vmware/clone_vm_template/setenv.sh && bash /edge/vmware/clone_vm_template/delete-packer-cache.sh"`
   shell sub-command deletes any pre-existing **packer_cache**. A known
-  [issue]((https://github.com/hashicorp/packer-plugin-vsphere/issues/55) with the Packer vSphere plugin causes checksum
+  [issue](https://github.com/hashicorp/packer-plugin-vsphere/issues/55) with the Packer vSphere plugin causes checksum
   logic to ignore previous builds, and reuse previously created ISO found in the **packer_cache** folder. The delete
   script removes any existing packer cache to prevent re-using a previously created ISO.
 
@@ -1055,7 +1056,7 @@ In addition, you can use Palette to manage the entire lifecycle of Edge clusters
 
 To learn more about Edge, check out the resources below.
 
-- [Build Edge Artifacts](../edgeforge-workflow/palette-canvos.md)
+- [Build Edge Artifacts](../edgeforge-workflow/palette-canvos/palette-canvos.md)
 
 - [Build Content Bundle](../edgeforge-workflow/build-content-bundle.md)
 

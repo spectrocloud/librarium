@@ -88,7 +88,7 @@ unseal Vault. You can do so by following these steps:
    kubectl port-forward $APP_NAME 8200:8200 --namespace $VAULT_NAMESPACE
    ```
 
-8. Open your browser and access the [Vault UI](https://localhost:8200/ui). You will receive a warning due to using a
+8. Open your browser and access the Vault UI at `https://localhost:8200/ui`. You will receive a warning due to using a
    self-signed certificate, but you can ignore this warning. Follow the prompts on the UI to initialize your root token.
 
 :::tip

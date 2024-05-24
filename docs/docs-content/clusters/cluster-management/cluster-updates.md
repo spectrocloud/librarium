@@ -9,7 +9,9 @@ tags: ["clusters", "cluster management"]
 
 Palette allows you to update active clusters. You can update any layer of a cluster, including all infrastructure layers
 and add-on layers. Depending on the nature of the update, a cluster update could trigger different cluster repave
-operations.
+operations. For more information, refer to
+[Repave Behaviors and Configurations](./node-pool.md#repave-behavior-and-configuration) for non-Edge clusters and
+[Edge Cluster Upgrade Behavior](../edge/upgrade-behavior.md) for Edge clusters. operations.
 
 :::info
 
@@ -20,6 +22,14 @@ repave schedule and methodology. Refer to
 :::
 
 ## Limitations
+
+:::warning
+
+Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before
+upgrading, you review the information provided in the
+[Kubernetes Upgrades](../../integrations/kubernetes-support.md#kubernetes-upgrades) section.
+
+:::
 
 - You cannot update a cluster while its status is still **Provisioning**.
 

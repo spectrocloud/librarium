@@ -4,6 +4,6 @@
     "allowJs": true
   },
   "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts", "src/**/*.tsx", "./.eslintrc.js", "*.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "./.eslintrc.js", "*.d.ts", "visuals/**/*.ts", "playwright.config.ts"],
   "exclude": ["**/node_modules", "deprecated"]
 }

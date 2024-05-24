@@ -296,7 +296,7 @@ _Manifests_ and _Ansible_ roles need to be explicitly templatized if parameter c
             <templatized role2 parameters>
 ```
 
-4. A pack must have the logo file named `logo.webp` and must be copied into the pack directory.
+4. A pack must have the logo file named `logo.png` and must be copied into the pack directory.
 
 5. Login to the pack registry using the following command:
 
@@ -467,7 +467,7 @@ final directory structure of for the pack would be as follows:
 
 ```
 ./pack.json
-./logo.webp
+./logo.png
 ./values.yaml
 ./harden_os
 ./harden_os/tasks

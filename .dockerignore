@@ -5,3 +5,7 @@ CHANGES
 .cache
 prow/
 .env
+screenshots/
+tests/screenshot.spec.ts-snapshots/
+tests-results/
+playwright-report/

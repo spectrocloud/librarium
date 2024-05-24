@@ -4,7 +4,7 @@ title: "Add Tenant-Level Registry"
 description: "Learn how to add a tenant-level registry in Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 10
 tags: ["enterprise", "management", "registry"]
 ---
 

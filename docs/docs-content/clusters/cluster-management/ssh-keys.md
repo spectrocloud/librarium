@@ -12,10 +12,10 @@ describes creating and managing SSH Keys in the Palette Management Console.
 
 ## Scope of SSH Key
 
-Palette groups clusters for logical separation into [Projects](../../projects.md). Users and teams can be assigned roles
-within a project for granular control over permissions within the project scope. SSH key authentication is scoped to a
-project. Multiple users can gain access to a single project. To access a cluster with SSH, you need a public SSH key
-registered in Palette.
+Palette groups clusters for logical separation into [Projects](../../tenant-settings/projects/projects.md). Users and
+teams can be assigned roles within a project for granular control over permissions within the project scope. SSH key
+authentication is scoped to a project. Multiple users can gain access to a single project. To access a cluster with SSH,
+you need a public SSH key registered in Palette.
 
 ## Prerequisites
 

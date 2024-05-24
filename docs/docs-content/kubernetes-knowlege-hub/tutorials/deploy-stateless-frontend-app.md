@@ -10,6 +10,7 @@ hide_table_of_contents: false
 sidebar_position: 0
 hiddenFromNav: false
 tags: ["tutorial", "k8s-tips"]
+unlisted: true
 ---
 
 # Deploy a Stateless Frontend App with Kubernetes

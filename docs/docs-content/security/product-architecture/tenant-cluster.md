@@ -1,7 +1,9 @@
 ---
 sidebar_label: "Tenant Cluster Security"
 title: "Tenant Cluster Security"
-description: "Lorem ipsum dolor"
+description:
+  "Learn how Palette ensures security for workload clusters, also known as tenant clusters, and what you are responsible
+  for."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 40

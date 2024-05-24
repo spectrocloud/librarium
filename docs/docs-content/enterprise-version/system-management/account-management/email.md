@@ -4,7 +4,7 @@ title: "Update Email Address"
 description: "Update and manage the email address of the admin user."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 30
 tags: ["vertex", "management", "account", "credentials"]
 keywords: ["self-hosted", "palette"]
 ---

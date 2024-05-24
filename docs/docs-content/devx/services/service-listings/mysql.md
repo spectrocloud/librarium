@@ -10,10 +10,9 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/mysql-operator/blobs/sha256:2
 tags: ["devx", "app mode", "pde", "databases"]
 ---
 
-[MySQL](https://www.mysql.com/) is an open-source relational database management system commonly used in web
-applications and other software that requires a database. It is known for its reliability, ease of use, and flexibility.
-MySQL is covered under the GNU license and uses structured query language (SQL) to manage data with the following
-properties:
+[MySQL](https://mysql.com/) is an open-source relational database management system commonly used in web applications
+and other software that requires a database. It is known for its reliability, ease of use, and flexibility. MySQL is
+covered under the GNU license and uses structured query language (SQL) to manage data with the following properties:
 
 - Creates a database for storing and manipulating data and defining the relationship of each table.
 
@@ -120,17 +119,14 @@ kubectl get secret app-tarfful-mysql-2-user \
 #### Output
 
 ```shell hideClipboard
-,U31nQ@T2tN4uM
+****************
 ```
 
 ## Next Steps
 
 You can add MySQL to your application profile and start integrating MySQL with your applications. To learn more about
-integrating MySQL with your applications, check out the [MySQL](https://redis.io/docs/manual/) documentation from
-Oracle.
+integrating MySQL with your applications, check out the [MySQL](https://dev.mysql.com/doc/) documentation from Oracle.
 
 ## Resources
 
 - [MySQL Documentation](https://dev.mysql.com/doc/)
-
-- [MySQL Tutorial](https://dev.mysql.com/doc/refman/8.0/en/tutorial.html)

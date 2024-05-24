@@ -57,8 +57,21 @@ Select the appropriate tab below based on the environment in which your VertX cl
 3. Navigate to the folder where you have the image-swap Helm chart available. You may have to extract the Helm chart if
    it is in a compressed format to access the **values.yaml** file.
 
-4. Open the **values.yaml** file and populate the `ociImageRegistry` section with your OCI registry values. Refer to the
-   table below for a description of each parameter.
+4. Open the file **values.yaml** in a text editor and append the URL to your OCI registry that also includes the
+   namespace or project that is hosting the Spectro Cloud images. The URL should be in the format
+   `<registry-url>/<namespace>`. In the example configuration below, the value `my-oci-registry.com/spectro-images` is
+   prefixed to each URL. Save the file after you have appended the URL.
+
+   ```yaml hideClipboard
+   image:
+     cainjectorImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-cainjector:spectro-v1.11.0-20230427"
+     controllerImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-controller:spectro-v1.11.0-20230427"
+     webhookImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-webhook:spectro-v1.11.0-20230808"
+     amceResolverImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-acmesolver:spectro-v1.11.0-20230427"
+   ```
+
+5. Next, update the`ociImageRegistry` section with your OCI registry values. Refer to the table below for a description
+   of each parameter.
 
    ```yaml
    ociImageRegistry:
@@ -90,8 +103,8 @@ Select the appropriate tab below based on the environment in which your VertX cl
    ```yaml
    config:
      imageSwapImages:
-       imageSwapInitImage: "gcr.io/spectro-images-public/thewebroot/imageswap-init:v1.5.2"
-       imageSwapImage: "gcr.io/spectro-images-public/thewebroot/imageswap:v1.5.2"
+       imageSwapInitImage: "harbor.example.org/airgap-images/gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.2-spectro-4.1.1"
+       imageSwapImage: "harbor.example.org/airgap-images/gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.2-spectro-4.1.1"
 
      imageSwapConfig:
        isEKSCluster: true #If the Cluster you are trying to install is EKS cluster set value to true else set to false
@@ -109,7 +122,7 @@ Select the appropriate tab below based on the environment in which your VertX cl
 
     </details>
 
-5. Once you have configured the `ociImageRegistry` section, issue the following command from the folder where you have
+6. Once you have configured the `ociImageRegistry` section, issue the following command from the folder where you have
    the image-swap Helm chart available to deploy the image-swap Helm chart. You may have to modify the command below
    based on the location of **values.yaml** file and the compressed Helm chart file.
 
@@ -127,13 +140,13 @@ Select the appropriate tab below based on the environment in which your VertX cl
    TEST SUITE: None
    ```
 
-6. Create an empty YAML file with the name **registry-secret.yaml**. Use the following command to create the file.
+7. Create an empty YAML file with the name **registry-secret.yaml**. Use the following command to create the file.
 
    ```shell
    touch registry-secret.yaml
    ```
 
-7. Open the **registry-secret.yaml** file and copy the placeholder configuration below.
+8. Open the **registry-secret.yaml** file and copy the placeholder configuration below.
 
    ```yaml
     ---
@@ -161,7 +174,7 @@ Select the appropriate tab below based on the environment in which your VertX cl
 
    :::
 
-8. Replace the placeholder values with the actual values for your custom image registry. Use the same values that you
+9. Replace the placeholder values with the actual values for your custom image registry. Use the same values that you
    used in the `ociImageRegistry` section of the **values.yaml** file for the image-swap Helm chart. Refer to the table
    below for a description of each parameter.
 
@@ -200,12 +213,12 @@ Select the appropriate tab below based on the environment in which your VertX cl
 
       </details>
 
-9. Once you have created the YAML file and configured the parameter values, issue the following command to create the
-   Kubernetes secret containing the image registry configuration.
+10. Once you have created the YAML file and configured the parameter values, issue the following command to create the
+    Kubernetes secret containing the image registry configuration.
 
-   ```shell
-   kubectl create --filename registry-secret.yaml
-   ```
+    ```shell
+    kubectl create --filename registry-secret.yaml
+    ```
 
 </TabItem>
 <TabItem label="Non-Airgap" value="non-airgap">
