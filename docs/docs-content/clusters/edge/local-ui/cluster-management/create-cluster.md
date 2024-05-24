@@ -58,7 +58,7 @@ cluster using Local UI.
 6. If your selected cluster profile has profile variables, you will now be prompted to enter the values for those
    profile variables. The variables with default values will be auto-populated unless the variable value is masked when
    you defined the variable. For more information on cluster profile variables, refer to
-   [Define and Manage Profile Variables](docs/docs-content/profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md).
+   [Define and Manage Profile Variables](../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md).
 
    Enter the values for the profile variables and click **Next**.
 

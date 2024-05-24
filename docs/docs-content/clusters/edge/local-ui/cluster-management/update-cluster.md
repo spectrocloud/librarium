@@ -42,7 +42,7 @@ how to update an existing cluster in local UI.
    changes are displayed on the right.
 
    For more information on cluster profile variables, refer to
-   [Define and Manage Profile Variables](docs/docs-content/profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md).
+   [Define and Manage Profile Variables](../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md).
 
 6. Click each profile variable and review the changes. You can specify values for new profile variables, override the
    incoming default values, or leave the incoming changes as is, depending on your local cluster configuration.
