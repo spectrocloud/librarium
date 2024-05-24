@@ -9,8 +9,8 @@ tags: ["edge"]
 ---
 
 When you use Trusted Boot, your OS becomes part of the Extensible Firmware Interface (EFI) file that gets loaded by the
-firmware of the Edge host and booted directly. This means that the EFI file will grow quite large due to the size of the
-OS, and you must ensure that your Edge host has the capacity to boot the large EFI file.
+firmware of the Edge host and booted directly. This means that the EFI file may grow quite large due to the size of the
+OS and any customizations you may make, and you must ensure that your Edge host has the capacity to boot the large EFI file.
 
 This page guides you through how to estimate the bootable EFI limit of your Edge host as well as the EFI size of your
 installer ISO. You need to ensure that the bootable EFI size limit is greater than the size of the EFI partition in your
@@ -31,7 +31,7 @@ ISO file.
 - You have already built the installer ISO file that you will use to install Palette on your Edge host. For more
   information, refer to [Build Installer ISO with Trusted Boot](./build-trusted-iso.md).
 
-- You can only perform the action in this guide **prior to** enrolling keys in your Edge host. The ISO that is used to
+- You can only perform the actions in this guide **prior to** enrolling keys in your Edge host. The ISO that is used to
   check the EFI boot limit will not have your keys on it. If your device has already enrolled your custom keys and have
   secure boot enabled, the Edge host will not be able to boot from the unsigned volume.
 

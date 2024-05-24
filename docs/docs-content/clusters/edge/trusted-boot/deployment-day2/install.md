@@ -49,7 +49,7 @@ supports Secure Boot.
    dialogue boxes will pop up to confirm this operation. Select **Yes** to confirm. This will make the device restart.
 
    If you set the `AUTO_ENROLL_SECUREBOOT_KEYS` argument to `true` when you built the installation ISO, key enrollment
-   will begin automatically once the device restarts. You can skip the following steps in proceed to
+   will begin automatically once the device restarts. You can skip the following steps to proceed to
    [Install Palette Edge with Trusted Boot](#install-palette-edge-with-trusted-boot).
 
 5. If you did not set `AUTO_ENROLL_SECUREBOOT_KEYS` to `true` when you built the ISO, you will need to select the
@@ -145,5 +145,5 @@ supports Secure Boot.
 ## Next Steps
 
 After you have installed Palette Edge on your Edge device with Trusted Boot, you can proceed to cluster creation. The
-process of creating a cluster with Trusted Boot enabled is not different from creating a regular cluster. Refer to
+process of creating a cluster with Trusted Boot enabled is identical to creating a regular cluster. Refer to
 [Cluster Creation](../../site-deployment/site-installation/cluster-deployment.md) for more information.

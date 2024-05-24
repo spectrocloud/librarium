@@ -9,10 +9,10 @@ tags: ["edge"]
 
 Trusted Boot works by signing the Edge Installer image and provider images with cryptographic keys, and only allowing
 images signed with the trusted keys to operate during the Edge host boot process. This page guides you through the
-process of generating keys to be used in building Edge artifacts.
+process of generating keys to be used when building Edge artifacts.
 
-The key generation process produces three pairs of keys and a platform Configuration Register (PCR) policy private key,
-and each pair of keys fulfill different purposes. The following table provides a brief overview of which keys are used
+The key generation process produces three pairs of keys and a Platform Configuration Register (PCR) policy private key,
+and each pair of keys fulfills different purposes. The following table provides a brief overview of which keys are used
 in which Trusted Boot EdgeForge and deployment process.
 
 | Keys                     | Key Generation | Build Installer ISO | Building Provider Images | Installation |
@@ -27,7 +27,7 @@ in which Trusted Boot EdgeForge and deployment process.
 
 All security provided by Trusted Boot assumes that the private keys are kept secure. We suggest that you perform key
 generation in an airgapped environment and move the PK and KEK private keys to a secure location immediately after
-generating them.
+generating them. In addition, any build pipelines that are created for the purposes of building ISOs and provider images must be secured, as they will by necessity contain the PCR and db private keys.
 
 :::
 
@@ -52,8 +52,7 @@ generating them.
 ## Generate Keys for Trusted Boot with Self-Signed Certificates
 
 If your environment does not require a Certificate Authority (CA), you can use self-signed certificates to generate the
-keys needed for Trusted Boot. Using self-signed certificates does not in itself make your systems less secure, but it
-does make verifying the source of the certificate harder since there is no higher authority.
+keys needed for Trusted Boot. Using self-signed certificates may make verifying the source of the certificate harder because there is no higher authority.
 
 ### Prerequisites
 
@@ -114,7 +113,7 @@ does make verifying the source of the certificate harder since there is no highe
 7. Issue the following command to generate keys. Replace `org-name` with the name of your organization, and replace
    5475, the default expiration period in days, with the desired expiration period for your keys. We suggest that you
    specify a long expiration date, since if the keys expire before you can replace them, it can soft-brick the Edge
-   host.
+   host. Although the default is 15 years, you may wish to make this longer.
 
    ```shell
    ./earthly.sh +uki-genkey --MY_ORG="org-name" --EXPIRATION_IN_DAYS=5475 --UKI_SELF_SIGNED_KEYS=false
@@ -127,7 +126,7 @@ does make verifying the source of the certificate harder since there is no highe
    built into the Edge installer ISO, and eventually enrolled in your Edge device when you install Palette Edge with the
    ISO.
 
-8. Remove **PK.key** and **KEK.key** out of the **private-keys** folder and keep them offline in a safe location.
+8. Remove **PK.key** and **KEK.key** from the **private-keys** folder and keep them offline in a safe location.
 
 ### Validate
 
@@ -211,7 +210,7 @@ Follow the steps below to generate keys from certificates issued by your CA.
    openssl req -new -config db_request.conf  -keyout db.key  -out CSR_db.req
    ```
 
-8. Use the request files to request certificates from your CA. If you have access to the CA's private key and root
+8. Use the request files to request certificates from your CA. If you have access to the CA private key and root
    certificate, you can use `openssl` to issue these certificates.
 
    ```shell
@@ -220,7 +219,7 @@ Follow the steps below to generate keys from certificates issued by your CA.
    openssl x509 -req -in CSR_db.req -CA path-to-ca-root-cert -CAkey path-to-ca-private-key -CAcreateserial -out db.pem -days 5475 -sha256
    ```
 
-9. Generate another key for disk encryption.
+9. Generate the PCR private key for disk encryption.
 
    ```
    openssl genrsa -out tpm2-pcr-private.pem 2048

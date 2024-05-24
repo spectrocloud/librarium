@@ -8,7 +8,7 @@ tags: ["edge"]
 ---
 
 All security features of Trusted Boot rely on cryptographic keys. Secure Boot relies on the chain of trust between
-Platform Key (PK), Key Exchange Keys (KEK), and signature database (db) keys to achieve a temper proof boot process.
+Platform Key (PK), Key Exchange Keys (KEK), and signature database (db) keys to achieve a tamper proof boot process.
 Full Disk Encryption also replies on a key pair. This section talks about the different keys used in Trusted Boot, their
 roles, and best practices to manage them securely.
 

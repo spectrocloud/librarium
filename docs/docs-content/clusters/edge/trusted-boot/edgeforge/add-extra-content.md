@@ -10,14 +10,14 @@ tags: ["edge"]
 During EdgeForge, you are able to customize the Operating System (ISO) used by the Installer ISO image. This allows you
 to add various utilities that can be useful in setting up your Edge host and getting it ready for cluster creation.
 
-However, if you want to use Trusted Boot, there is a limitation to the size of a bootable Extensible Firmware Interface
+However, if you want to use Trusted Boot, the firmware can impose limitations on the maximum size of a bootable Extensible Firmware Interface
 (EFI) file. This means that you can no longer add such utilities to your OS as freely as before. If the EFI becomes too
-large in size, the Edge host might not be able to boot.
+large in size, the Edge host might not be able to boot it.
 
 If you would like to add software that can be used after ISO installation, you can instead use the approach described in
 this guide to add the compiled static binaries of the software packages to the persistent partition of the installation
 partition instead of to the OS image itself. You will be able to access the content both before cluster formation and
-after.
+after. Because the content is placed in the persistent partitions, it will be encrypted by default.
 
 ## Prerequisites
 
@@ -47,13 +47,13 @@ after.
    git tag
    ```
 
-4. Check out the newest available tag. This guide uses **v4.4.0** tag as an example.
+4. Check out the latest available tag. This guide uses **v4.4.0** tag as an example.
 
    ```shell
    git checkout v4.4.0
    ```
 
-5. Copy the static binaries of the software package you'd like to add to the Edge host to **overlay/files-iso**.
+5. Copy the static binaries of the software package you'd like to add to the Edge host to **overlay/files-iso/**.
 
 6. In your **user-data**, add the following section, and replace `YOUR_FILE` with the name of the static binary file. If
    you have multiple files, you should add multiple lines, one line for each file.

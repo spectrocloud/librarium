@@ -7,7 +7,7 @@ sidebar_position: 20
 tags: ["edge"]
 ---
 
-This document guides you through the process of producing Edge Installer ISO that are secured by Trusted Boot.
+This document guides you through the process of producing Edge Installer ISOs that are secured by Trusted Boot.
 
 ## Prerequisites
 

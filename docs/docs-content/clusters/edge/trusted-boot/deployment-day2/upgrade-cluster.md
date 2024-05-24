@@ -10,15 +10,15 @@ tags: ["edge"]
 If you need to make changes to a deployed Edge cluster with Trusted Boot enabled without touching the OS or the
 Kubernetes layer, you can follow the regular cluster upgrade process. Refer to
 [Update a Cluster](/docs/docs-content/clusters/cluster-management/cluster-updates.md) for more information. However, if
-the change you are making involves the Operating System (OS) layer and the Kubernetes layer. You will need to rebuild a
-provider image with the same Trusted Boot keys you used to build the Edge Installer ISO.
+the change you are making involves the Operating System (OS) layer and the Kubernetes layer, you will need to build a
+new provider image with the same Trusted Boot keys you used to build the Edge Installer ISO.
 
 This page guides you through the process of making an update to a cluster that involves the Operating System (OS) or
 Kubernetes layer of the cluster.
 
 ## Prerequisites
 
-- You have built an Edge Installer ISO and used the ISO to deploy a cluster.
+- You have built an Edge Installer ISO with Trusted Boot enabled and used the ISO to deploy a cluster. The Edge hosts have keys enrolled.
 
 - You have access to the machine where you built the Installer ISO, including all the content in the **secure-boot**
   folder. Refer to [Build Edge Installer ISO with Trusted Boot](../edgeforge/build-trusted-iso.md) for details.

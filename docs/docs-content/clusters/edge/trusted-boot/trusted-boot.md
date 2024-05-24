@@ -12,7 +12,7 @@ firmware. Trusted Boot consists of the following security measures:
 
 ![High level description diagram for Trusted Boot](/clusters_edge_trusted-boot_highlevel.webp)
 
-- Full Disk Encryption (FDE): Encryption of the entire persistent partition of the disk drive. The purpose of FDE is to
+- Full Disk Encryption (FDE): Encryption of all persistent partitions of the disk drive. The purpose of FDE is to
   protect data stored on the disk from unauthorized access if the boot process was tempered with.
 - Secure boot: A security measure that ensures only properly signed and authenticated software is allowed to operate
   during the boot process of a device.
@@ -32,7 +32,7 @@ decrypt the encrypted content, the sensitive data is not accessible in the case 
 
 Edge devices are often deployed in locations with minimal security and high traffic, such as restaurants and coffee
 shops, and are susceptible to physical attacks. If an attacker is able to inject malware into the Edge host through a
-physical attack, it has the potential to seriously compromise the security of your systems.
+physical attack, it has the potential to compromise the security of your operations.
 
 Trusted Boot allows you to be confident that all software that is allowed to operate on your Edge hosts is authenticated
 software verified through cryptographic signatures. In the event that an Edge device is lost or stolen, the TPM will not
