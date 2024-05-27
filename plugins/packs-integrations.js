@@ -9,7 +9,7 @@ function generateIntegrationData(allContent) {
       return doc.frontMatter.type === "appTier";
     })
     .map((doc) => {
-      return { fields: { ...doc.frontMatter, slug: doc.slug, id: doc.id } };
+      return { ...doc.frontMatter, slug: doc.slug, id: doc.id };
     });
   return packsData;
 }
