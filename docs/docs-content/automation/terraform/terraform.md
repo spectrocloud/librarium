@@ -17,18 +17,27 @@ expectations before deployment, and applies the changes to managed resources acc
 ## Spectro Cloud Provider
 
 Palette and Palette VerteX API can be used with the Spectro Cloud Terraform provider. The provider is available in the
-HashiCorp Terraform registry as the
-[Spectro Cloud Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+HashiCorp Terraform registry and offers detailed
+[documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) on supported data sources
+and resources.
 
 ### Release Notes
 
 Information about the latest changes in the Spectro Cloud provider can be found in the
 [release notes](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
-### Provider Documentation
+### Government Cloud Support
 
-Detailed documentation on supported data sources and resources are available in the Terraform Spectro Cloud Provider
-[documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) page.
+The Spectro Cloud Terraform provider supports deploying resources to government clouds that meet strict security and
+compliance requirements:
+
+- [AWS GovCloud](https://aws.amazon.com/govcloud-us/) - To leverage the government partition, set `partition` as
+  `aws-us-gov` when creating an
+  [AWS cloud account](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cloudaccount_aws).
+
+- [Azure Government](https://learn.microsoft.com/en-us/azure/azure-government/documentation-government-welcome) - To
+  leverage the government partition, set `cloud` as `AzureUSGovernmentCloud` when creating an
+  [Azure cloud account](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cloudaccount_azure).
 
 ### Modules
 
