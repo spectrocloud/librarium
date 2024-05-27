@@ -231,6 +231,12 @@ height is 40 pixels. It is preferable that the image be transparent.
 2. To acquire system administrator credentials, use the `/v1/auth/syslogin` endpoint. Issue the `curl` command below and
    ensure you replace the credentials with your system console credentials.
 
+   :::warning
+
+   Only an Operations Administrator is allowed to register a Nutanix cloud.
+
+   :::
+
    ```bash
    curl --location "${ENDPOINT}/v1/auth/syslogin" \
    --header 'Content-Type: application/json' \
@@ -249,14 +255,14 @@ height is 40 pixels. It is preferable that the image be transparent.
    }
    ```
 
-3. Copy the authorization token, assign it to a `TOKEN` shell variable, and export it. Replace the authorization value
+4. Copy the authorization token, assign it to a `TOKEN` shell variable, and export it. Replace the authorization value
    below with the value from the output.
 
    ```bash
    export TOKEN="**********"
    ```
 
-4. Register the Nutanix cloud type in Palette using the `/v1/clouds/cloudTypes/register` endpoint.
+5. Register the Nutanix cloud type in Palette using the `/v1/clouds/cloudTypes/register` endpoint.
 
    ```bash
    curl --location --request POST "${ENDPOINT}/v1/clouds/cloudTypes/register" \
@@ -275,7 +281,7 @@ height is 40 pixels. It is preferable that the image be transparent.
         }'
    ```
 
-5. Upload the Nutanix cloud logo.
+6. Upload the Nutanix cloud logo.
 
    ```bash
    curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/logo" \
@@ -283,7 +289,7 @@ height is 40 pixels. It is preferable that the image be transparent.
         --form "fileName=@${cloudLogo}"
    ```
 
-6. Register the cloud provider.
+7. Register the cloud provider.
 
    ```bash
    curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/cloudProvider" \
@@ -292,7 +298,7 @@ height is 40 pixels. It is preferable that the image be transparent.
         --form "fileName=@${infraComponents}"
    ```
 
-7. Register the cluster template.
+8. Register the cluster template.
 
    ```bash
    curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/clusterTemplate" \
@@ -301,7 +307,7 @@ height is 40 pixels. It is preferable that the image be transparent.
         --form "fileName=@${cloudClusterTemplate}"
    ```
 
-8. Register the control plane pool template.
+9. Register the control plane pool template.
 
    ```bash
    curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/controlPlanePoolTemplate" \
@@ -310,7 +316,7 @@ height is 40 pixels. It is preferable that the image be transparent.
          --form "fileName=@${controlPlanePoolTemplate}"
    ```
 
-9. Register the worker pool template.
+10. Register the worker pool template.
 
    ```bash
    curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/workerPoolTemplate" \
@@ -319,7 +325,7 @@ height is 40 pixels. It is preferable that the image be transparent.
         --form "fileName=@${workerPoolTemplate}"
    ```
 
-10. Register the cloud account keys.
+11. Register the cloud account keys.
 
     ```bash
     curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/cloudAccountKeys" \
