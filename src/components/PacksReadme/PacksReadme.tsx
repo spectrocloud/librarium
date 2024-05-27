@@ -31,14 +31,14 @@ interface PackReadmeProps {
 export default function PacksReadme() {
   const { packs, repositories } = usePluginData("plugin-packs-integrations") as PacksIntegrationsPluginData;
   const [customReadme, setCustomReadme] = useState<ReactElement<any, any> | null>(null);
+  const [packName, setPackName] = useState<string>("");
   const empty_icon_light = useBaseUrl('/img/empty_icon_table_light.svg');
   const empty_icon_dark = useBaseUrl('/img/empty_icon_table_dark.svg');
   const { isDarkTheme } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
-  const searchParams = new URLSearchParams(window.location.search);
-  const packName = searchParams.get("pack")
-  const version = searchParams.get("versions");
+  const [selectedVersion, setSelectedVersion] = useState<string>("");
   const history = useHistory();
+
   useEffect(() => {
     const importComponent = async () => {
       try {
@@ -89,7 +89,11 @@ export default function PacksReadme() {
       deprecated: false,
     };
   }, [packName]);
-  const [selectedVersion, setSelectedVersion] = useState<string>(version || packData.versions?.[0]?.title || "");
+  useEffect(() => {
+    const searchParams = window ? new URLSearchParams(window.location.search) : null;
+    setPackName(searchParams?.get("pack") || "");
+    setSelectedVersion(searchParams?.get("versions") || "");
+  }, [packData]);
   let infoContent;
   if (packData.disabled) {
     infoContent = "This pack is currently disabled.";
@@ -98,7 +102,7 @@ export default function PacksReadme() {
   }
 
   function versionChange(version: string) {
-    history.replace({ search: `?pack=${packName}&versions=${version}` });
+    history.replace({ search: `?pack=${packName}&versions=${selectedVersion}` });
     setSelectedVersion(version);
   }
 
