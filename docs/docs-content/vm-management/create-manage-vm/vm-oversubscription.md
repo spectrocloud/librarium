@@ -18,8 +18,6 @@ simultaneously.
 The hypervisor automatically overcommits CPU and memory. This means that more virtualized CPU and memory can be
 allocated to VMs than there are physical resources on the system.
 
-<br />
-
 ## CPU Overcommit
 
 Kubevirt offers the `cpuAllocationRatio` in its Custom Resource Definitions (CRD). This ratio is used to normalize the
@@ -37,8 +35,6 @@ to [Dedicated CPU Resources](https://kubevirt.io/user-guide/virtual_machines/ded
 [Resources Requests and Limits](https://kubevirt.io/user-guide/virtual_machines/virtual_hardware/#resources-requests-and-limits)
 Kubevirt documentation.
 
-<br />
-
 :::warning
 
 - We do not recommend overcommitting CPUs in a production environment without extensive testing. Applications that use
@@ -52,8 +48,6 @@ Kubevirt documentation.
 
 :::
 
-<br />
-
 ## Memory Overcommit
 
 KubeVirt allows you to assign more or less memory to a VM than a VM requests to Kubernetes. You may want to overcommit
@@ -65,30 +59,26 @@ To learn about options for memory overcommitment, refer to
 
 You can make several changes to reduce the memory footprint and overcommit the per-VMI memory overhead.
 
-<br />
-
 - Enable guest overhead overcommit by setting `spec.domain.resources.overcommitGuestOverhead` to true.
 
 - Enable guest memory by setting `spec.domain.memory.guest` to a value higher than
   `spec.domain.resources.requests.memory`, as shown in the example.
 
-```yaml
-apiVersion: kubevirt.io/v1alpha3
-kind: VirtualMachineInstance
-metadata:
-  name: testvmi-nocloud
-spec:
-  terminationGracePeriodSeconds: 30
-  domain:
-    resources:
-      overcommitGuestOverhead: true
-      requests:
-        memory: 1024M
-    memory:
-      guest: 2048M
-```
-
-<br />
+  ```yaml
+  apiVersion: kubevirt.io/v1alpha3
+  kind: VirtualMachineInstance
+  metadata:
+    name: testvmi-nocloud
+  spec:
+    terminationGracePeriodSeconds: 30
+    domain:
+      resources:
+        overcommitGuestOverhead: true
+        requests:
+          memory: 1024M
+      memory:
+        guest: 2048M
+  ```
 
 - Enable implicit memory overcommit by setting `spec.configuration.developerConfiguration.memoryOvercommit` in the
   KubeVirt CRD to a percentage of the desired memory overcommit.

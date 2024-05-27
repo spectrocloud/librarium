@@ -28,16 +28,16 @@ select in the Kubernetes layer of the infrastructure profile.
    [Configure OIDC Identify Provider](../../integrations/kubernetes.md#configure-oidc-identity-provider) to learn more
    about OIDC options.
 
-Selecting **None** or **Palette** will display the Virtual Machine dashboard in a tab.
+   Selecting **None** or **Palette** will display the Virtual Machine dashboard in a tab.
 
-Selecting **Inherit from Tenant** or **Custom** will display a link to the dashboard on the cluster overview page.
+   Selecting **Inherit from Tenant** or **Custom** will display a link to the dashboard on the cluster overview page.
 
-:::warning
+   :::warning
 
-We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
-rely on OIDC.
+   We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
+   rely on OIDC.
 
-:::
+   :::
 
 5. Click **Confirm Updates**.
 

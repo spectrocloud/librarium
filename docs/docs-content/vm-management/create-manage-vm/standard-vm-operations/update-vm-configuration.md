@@ -33,15 +33,9 @@ supported.
    The interface type determines out-of-the-box operating system (OS) support and disk performance. Choose from the
    following:
 
-   <br />
-
    - **virtio**: Optimized for best performance, but the operating system may require additional Virtio drivers.
 
-   <br />
-
    - **sata**: Most operating systems support Serial ATA (SATA). However it offers lower performance.
-
-   <br />
 
    - **scsi**: A paravirtualized Internet Small Computer System Interface (iSCSI) HDD driver that offers similar
      functionality to the virtio-block device but with some additional enhancements. In particular, this driver supports
@@ -52,8 +46,6 @@ supported.
 ## Validate
 
 The **Disks** tab lists the newly added disk as `PersistingHotplug`.
-
-<br />
 
 ## Add Network Interfaces
 
@@ -84,8 +76,6 @@ created a default `NetworkAttachmentDefinition` CRD. For more information, refer
 4. Review the parameters and update as needed. Interface types are: **Masquerade**, **Bridge**, and **SR-IOV**.
 
 5. Click **Add** when you are done.
-
-<br />
 
 :::info
 

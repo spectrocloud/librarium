@@ -29,13 +29,9 @@ can use to transfer files to and from a VM. Its usage is similar to the ssh comm
 
 2. Assign the execute permission to the virtctl command.
 
-<br />
-
-```shell
-chmod +x virtctl
-```
-
-<br />
+   ```shell
+   chmod +x virtctl
+   ```
 
 3. Next, log in to [Palette](https://console.spectrocloud.com) to connect your host cluster with the virtctl CLI.
 
@@ -52,30 +48,24 @@ chmod +x virtctl
 
    Example:
 
-```shell
-export KUBECONFIG=~/Downloads/dev-cluster.kubeconfig
-```
-
-<br />
+   ```shell
+   export KUBECONFIG=~/Downloads/dev-cluster.kubeconfig
+   ```
 
 9. Issue the `virtctl ssh <virtual_machinename>` or `virtctl vnc <virtual_machinename>` command to display the login
    screen.
 
    Example:
 
-```shell
-virtctl ssh ubuntu
-```
-
-<br />
+   ```shell
+   virtctl ssh ubuntu
+   ```
 
 You can now issue virtctl commands against the VM in your Kubernetes cluster.
 
 ## Validate
 
 Verify you have access to your virtual machine by issuing virtctl commands against it, as shown in the example below.
-
-<br />
 
 ```bash
 virtctl guestosinfo
