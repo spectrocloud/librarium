@@ -15,11 +15,11 @@ You can add storage and additional network interfaces to your virtual machines (
 KubeVirt allows hot plugging additional storage into a running VM. Both block and file system volume types are
 supported.
 
-## Prerequisites
+### Prerequisites
 
 - A deployed VM.
 
-## Add a Disk
+### Add a Disk
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -43,7 +43,7 @@ supported.
 
 5. Click **Add** when you are done.
 
-## Validate
+### Validate
 
 The **Disks** tab lists the newly added disk as `PersistingHotplug`.
 
@@ -61,11 +61,11 @@ Kubernetes. If you use Multus as your network, ensure that Multus is installed a
 created a default `NetworkAttachmentDefinition` CRD. For more information, refer to the
 [Multus CNI](/integrations/multus-cni) guide.
 
-## Prerequisites
+### Prerequisites
 
 - A deployed VM.
 
-## Add an Interface
+### Add an Interface
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -84,10 +84,10 @@ binding.
 
 :::
 
-## Validate
+### Validate
 
 The **Network Interfaces** tab lists the newly added interface.
 
-# Resources
+## Resources
 
 - [Multus CNI](../../../integrations/multus-cni.md)

@@ -46,7 +46,7 @@ is placed into maintenance or upgraded, all VM instances require a `LiveMigrate`
 
 5. Click **Migrate Node to Node**.
 
-## Validate
+### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -66,12 +66,12 @@ need to be resolved. To learn more, check out the
 [Safely Drain a Node](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service)
 Kubernetes resource.
 
-## Prerequisites
+### Prerequisites
 
 - Ensure `LiveMigrate` is set as the eviction strategy for all affected VMs. When the host is put in maintenance mode,
   this feature allows for a smooth and uninterrupted migration process.
 
-## Evacuate VMs in Palette
+### Evacuate VMs in Palette
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -89,7 +89,7 @@ Kubernetes resource.
 
    :::
 
-## Validate
+### Validate
 
 You can validate evacuation completed by following the steps below.
 
@@ -133,7 +133,7 @@ You can validate evacuation completed by following the steps below.
 
    :::
 
-## Validate
+### Validate
 
 1. Using kubectl, log in to a machine that has access to the kubernetes cluster.
 
