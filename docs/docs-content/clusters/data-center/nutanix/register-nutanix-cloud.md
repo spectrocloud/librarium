@@ -198,12 +198,18 @@ Use the steps below to confirm you have the required files and verify the requir
 Follow the steps below from your terminal to set the environment variables and invoke the APIs required to register a
 Nutanix cloud to Palette. Alternatively, you can use an API platform such as [Postman](https://www.postman.com/).
 
-:::warning
+## Prerequisites
 
-The logo file must not exceed 100KB in size. To ensure image quality ensure at least one dimension in either width or
-height is 40 pixels. It is preferable that the image be transparent.
+- You have completed the steps in [Customize YAML Configuration Files](#customize-yaml-configuration-files).
 
-:::
+- Only an
+  [Operations Administrator](../../../enterprise-version/system-management/account-management/account-management.md#operations-administrator)
+  is allowed to register a Nutanix cloud.
+
+- The logo file must not exceed 100KB in size. To ensure image quality ensure at least one dimension in either width or
+  height is 40 pixels. It is preferable that the image be transparent.
+
+## Enablement
 
 1. Export the URL of your self-hosted Palette or VerteX instance and the cloud type as environment variables.
    Additionally, export the path to the YAML templates and logo file.
@@ -314,9 +320,9 @@ height is 40 pixels. It is preferable that the image be transparent.
 
    ```bash
    curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/workerPoolTemplate" \
-        --header "Content-Type: multipart/form-data" \
-        --header "Authorization: ${TOKEN}" \
-        --form "fileName=@${workerPoolTemplate}"
+       --header "Content-Type: multipart/form-data" \
+       --header "Authorization: ${TOKEN}" \
+       --form "fileName=@${workerPoolTemplate}"
    ```
 
 10. Register the cloud account keys.
