@@ -72,24 +72,25 @@ interface or open a new tab in your browser depending on how to configure the li
 
 6. If you want local UI to host static web pages that you want your users to be able to access from the sidebar, put the
    HTML files in the **ui** folder. The HTML file may link to JavaScript and CSS files. Ensure that your HTML file can
-   reference its assets. We suggest that you put all assets for specific web pages in one folder.
+   reference its assets. We suggest that you put all assets for specific web pages in one folder. The hosted static
+   sites are exposed through HTTPS with a self-signed certificate.
 
    For example, you can put the following content inside the **ui** folder.
 
    ```text
    |-ui
      |--customizations.json
-     |--it
+     |--app
           |--index.html
           |--index.js
           |--index.css
    ```
 
    When using an URL to locate the local webpage, you can treat the **ui** folder as the root folder and you must use
-   absolute paths to locate your assets. For example, you can locate the HTML file in the example with `/it/index.html`.
+   absolute paths to locate your assets. For example, you can locate the HTML file in the example with
+   `/app/index.html`.
 
-7. Populate the file with the following schema. Each link requires one object with the `label` and `url` properties. If
-   you are using static web pages
+7. Populate the file with the following schema. Each link requires one object with the `label` and `url` properties.
 
    ```json
    {
@@ -110,7 +111,7 @@ interface or open a new tab in your browser depending on how to configure the li
        },
        {
          "label": "Maps",
-         "url": "/it/index.html",
+         "url": "/app/index.html",
          "group": "Example"
        }
      ]
