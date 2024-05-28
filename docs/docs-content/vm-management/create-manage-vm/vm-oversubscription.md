@@ -31,8 +31,8 @@ Kubernetes for each VM.
 
 Certain workloads that require a predictable latency and enhanced performance would benefit from obtaining dedicated CPU
 resources. KubeVirt relies on the Kubernetes CPU manager to pin vCPUs to the physical host’s CPUs. To learn more, refer
-to [Dedicated CPU Resources](https://kubevirt.io/user-guide/virtual_machines/dedicated_cpu_resources/) and
-[Resources Requests and Limits](https://kubevirt.io/user-guide/virtual_machines/virtual_hardware/#resources-requests-and-limits)
+to [Dedicated CPU Resources](https://kubevirt.io/user-guide/compute/dedicated_cpu_resources/) and
+[Resources Requests and Limits](https://kubevirt.io/user-guide/compute/virtual_hardware/#resources-requests-and-limits)
 Kubevirt documentation.
 
 :::warning
@@ -55,7 +55,7 @@ VM memory if you have a cluster or a few nodes that are dedicated to running VMs
 makes use of all the memory in the nodes regardless of reserved or requested memory from the system.
 
 To learn about options for memory overcommitment, refer to
-[Node Overcommit](https://kubevirt.io/user-guide/operations/node_overcommit/) KubeVirt resource.
+[Node Overcommit](https://kubevirt.io/user-guide/compute/node_overcommit/) KubeVirt resource.
 
 You can make several changes to reduce the memory footprint and overcommit the per-VMI memory overhead.
 
@@ -85,8 +85,8 @@ You can make several changes to reduce the memory footprint and overcommit the p
 
 ## Resources
 
-- [Dedicated CPU Resources](https://kubevirt.io/user-guide/virtual_machines/dedicated_cpu_resources/)
+- [Dedicated CPU Resources](https://kubevirt.io/user-guide/compute/dedicated_cpu_resources/)
 
-- [Resources Requests and Limits](https://kubevirt.io/user-guide/virtual_machines/virtual_hardware/#resources-requests-and-limits)
+- [Resources Requests and Limits](https://kubevirt.io/user-guide/compute/virtual_hardware/#resources-requests-and-limits)
 
-- [Node Overcommit](https://kubevirt.io/user-guide/operations/node_overcommit/)
+- [Node Overcommit](https://kubevirt.io/user-guide/compute/node_overcommit/)
