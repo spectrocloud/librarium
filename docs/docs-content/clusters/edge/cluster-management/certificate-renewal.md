@@ -33,7 +33,7 @@ follow the steps below to check when the next automatic renewal will happen.
 
 ### Check Next Auto Renewal Time
 
-1. Log in to local UI.
+1. Log in to [local UI](../local-ui/host-management/access-console.md).
 
 2. From the left **Main Menu**, select **Cluster**.
 
@@ -68,7 +68,7 @@ Edge Management API.
 
 <TabItem label="Local UI" value="ui">
 
-1. Log in to local UI.
+1. Log in to [local UI](../local-ui/host-management/access-console.md).
 
 2. From the left **Main Menu**, select **Cluster**.
 
