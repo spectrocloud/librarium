@@ -16,8 +16,6 @@ snapshot of an active VM, the controller checks for the QEMU guest agent in the 
 controller freezes the VM file system before it takes the snapshot and unfreezes the file system afterwards. This
 provides for crash consistency.
 
-<br />
-
 :::info
 
 For optimal snapshots, we recommend taking snapshots of online VMs that have the QEMU Guest Agent installed. If the
@@ -28,8 +26,6 @@ Snapshots** tab. The `vmSnapshot Status` will display if the snapshot was taken 
 participation.
 
 :::
-
-<br />
 
 You can take a snapshot of an online VM that has hotplugged disks. Only persistent hotplugged disks will be included in
 the snapshot. Only disks with a snapshot-supported storage class defined are included in snapshots. If no eligible disk
@@ -67,8 +63,6 @@ The default time for a snapshot is five minutes. If the snapshot has not success
 status will display as **Failed**. The VM will be unfrozen and the snapshot content will be cleaned up if necessary. The
 snapshot will remain in **Failed** state until you delete it. You can change the default snapshot time to meet your
 workload requirements.
-
-<br />
 
 :::warning
 
