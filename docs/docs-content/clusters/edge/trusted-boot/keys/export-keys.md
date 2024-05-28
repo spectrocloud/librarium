@@ -73,7 +73,7 @@ command-line tools.
 
 ### Validate
 
-1. Issue the `ls` command to confirm that the keys have been exported. You should observe three files from the output:
+1. Issue the `ls` command to confirm that the keys have been exported. You should observe three files from the output.
 
    ```
    $ ls

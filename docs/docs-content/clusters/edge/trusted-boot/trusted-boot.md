@@ -26,8 +26,6 @@ on your Edge device. In addition, the measurements stored in the TPM can be prov
 boot process is secure and unaltered. Since only when the boot process can be verified does the TPM release the key to
 decrypt the encrypted content, the sensitive data is not accessible in the case an Edge device is lost or stolen.
 
-![Boot Process for Trusted Boot](/cluster_edge_trusted-boot_boot-process.webp)
-
 ## Why Do You Need Trusted Boot?
 
 Edge devices are often deployed in locations with minimal security and high traffic, such as restaurants and coffee
