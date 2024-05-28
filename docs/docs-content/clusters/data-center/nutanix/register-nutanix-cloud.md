@@ -318,14 +318,14 @@ Nutanix cloud to Palette. Alternatively, you can use an API platform such as [Po
 
 9. Register the worker pool template.
 
-```bash
-curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/workerPoolTemplate" \
-     --header "Content-Type: multipart/form-data" \
-     --header "Authorization: ${TOKEN}" \
-     --form "fileName=@${workerPoolTemplate}"
-```
+   ```bash
+   curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/workerPoolTemplate" \
+       --header "Content-Type: multipart/form-data" \
+       --header "Authorization: ${TOKEN}" \
+       --form "fileName=@${workerPoolTemplate}"
+   ```
 
-11. Register the cloud account keys.
+10. Register the cloud account keys.
 
     ```bash
     curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/cloudAccountKeys" \
