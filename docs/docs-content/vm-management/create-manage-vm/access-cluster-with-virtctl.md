@@ -17,9 +17,9 @@ can use to transfer files to and from a VM. Its usage is similar to the ssh comm
 
 ## Prerequisites
 
-- An active virtual cluster with Palette Virtual Machine Orchestrator (VMO).
+- An active cluster with Palette Virtual Machine Orchestrator (VMO).
 
-- Access to the virtual cluster.
+- Access to the cluster.
 
 ## Download and Connect virtctl
 
