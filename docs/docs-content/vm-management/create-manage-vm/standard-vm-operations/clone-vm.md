@@ -14,8 +14,6 @@ and identifiers as the parent VM. After you clone a VM, it as a separate virtual
 Cloning is a quick way to create a new virtual machine that shares the same properties as the parent. You may want to
 clone a VM for the following reasons:
 
-<br />
-
 - Software testing - developers can clone an active VM to test new changes to their code.
 
 - Forensics - security administators can clone an infected machine and connect it to an air-gaped network to investigate
