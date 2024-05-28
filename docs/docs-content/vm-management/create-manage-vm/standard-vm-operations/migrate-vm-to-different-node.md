@@ -46,7 +46,7 @@ is placed into maintenance or upgraded, all VM instances require a `LiveMigrate`
 
 5. Click **Migrate Node to Node**.
 
-## Validate
+### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -66,12 +66,12 @@ need to be resolved. To learn more, check out the
 [Safely Drain a Node](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service)
 Kubernetes resource.
 
-## Prerequisites
+### Prerequisites
 
 - Ensure `LiveMigrate` is set as the eviction strategy for all affected VMs. When the host is put in maintenance mode,
   this feature allows for a smooth and uninterrupted migration process.
 
-## Evacuate VMs in Palette
+### Evacuate VMs in Palette
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -83,19 +83,15 @@ Kubernetes resource.
 4. Turn off maintenance mode by clicking the **three-dot Menu** in the row of the evacuated node and select **Turn off
    maintenance mode**.
 
-   <br />
+   :::warning
 
-:::warning
+   Maintenance mode reduces cluster capacity. Be sure to turn off maintenance mode after maintenance completes.
 
-Maintenance mode reduces cluster capacity. Be sure to turn off maintenance mode after maintenance completes.
+   :::
 
-:::
-
-## Validate
+### Validate
 
 You can validate evacuation completed by following the steps below.
-
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -105,16 +101,12 @@ You can validate evacuation completed by following the steps below.
 
 ## Evacuate VMs Manually
 
-<br />
-
 1. Obtain the kubeconfig file from Palette, and set the KUBECONFIG environment variable to access it so you can issue
    kubectl commands to the cluster. To learn how, refer to
    [Set up Kubectl](../../../clusters/cluster-management/palette-webctl.md#set-up-kubectl).
 
 2. Issue the following command to mark the node as _un-schedulable_. This alerts the Kubernetes scheduler not to
    schedule any new pods on that node but allows existing pods on the node to continue to operate.
-
-   <br />
 
    Example:
 
@@ -135,22 +127,18 @@ You can validate evacuation completed by following the steps below.
 
    **node-name**: The name of the node that you wish to drain.
 
-   <br />
+   :::info
 
-:::info
+   The kubectl `drain` command should only be issued to a single node at a time.
 
-The kubectl `drain` command should only be issued to a single node at a time.
+   :::
 
-:::
-
-## Validate
+### Validate
 
 1. Using kubectl, log in to a machine that has access to the kubernetes cluster.
 
 2. Issue the following command to verify the pods are rescheduled on a different node by verifying the name and IP
    address of the new node changed.
-
-   <br />
 
    ```bash
    kubectl get pods --output wide
