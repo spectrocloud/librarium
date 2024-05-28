@@ -108,4 +108,4 @@ Traceroute is useful for you to determine at which point along the path the pack
 
 Depending on the endpoint you are trying to reach, you can use different methods to validate the results. For example,
 if you are observing issues near the DNS server, you can try to specify a well-known DNS server such as 8.8.8.8 (Google)
-to see if it improves the connection. If it does, you can validate the results of traceroute.
+to test if it improves the connection. If it does, you can validate the results of traceroute.
