@@ -7,23 +7,22 @@ sidebar_position: 80
 tags: ["edge"]
 ---
 
-Local UI includes the ping and trace-route diagnostic tools. These tools have the same functionality as the command-line
-tools ping and trace-route, but in a web interface. You can use these diagnostic tools to help troubleshoot network
+Local UI includes the ping and traceroute diagnostic tools. These tools have the same functionality as the command-line
+tools, but are accessible through a web interface. You can use these diagnostic tools to help troubleshoot network
 issues without having to establish an SSH connection to your Edge host.
 
-In air-gapped environments, you can use thee tools to verify connection to an endpoint within the network. For
-air-gapped clusters with proxy or in connected environments, you can use these tools verify connection to an endpoint
-outside the network, based on the scope of the connectivity. These tools are useful to check if the Edge Host can
-connect to the internet or an external registry or to make sure it's an air-gapped environment with no external
-connectivity.
+In air-gapped environments, you can use these tools to verify the connection to an endpoint within the network. For
+air-gapped clusters with proxy or in connected environments, you can use these tools to verify the connection to an endpoint
+outside the network, based on the scope of the connectivity. For example, these tools are useful to check if the Edge Host can
+connect to the internet or an external registry or to make sure there is no external connectivity in an air-gapped environment.
 
-## Use ping to test network connection
+## Use Ping to Test Network Connection
 
 ### Prerequisites
 
 - You have access to local UI.
 
-### Use ping to check connection to a specific endpoint
+### Use Ping to Check Connection to a Specific Endpoint
 
 1. Log in to the [local UI](./access-console.md).
 
@@ -33,7 +32,7 @@ connectivity.
 
 4. Click on **Ping**.
 
-5. In the endpoint field, enter the endpoint you'd like to test the connection to. For example, if you want to make sure
+5. In the **endpoint** field, enter the endpoint you would like to test the connection to. For example, if you want to make sure
    your Edge host has connection to a image registry within your network at 10.10.153.43:8000, you would enter
    10.10.153.43:8000.
 
@@ -52,7 +51,7 @@ connectivity.
    ```
 
    If ping produces output containing messages such as "Destination Host Unreachable" or "100% packet loss," then you
-   are you connected to the endpoint.
+   are not connected to the endpoint.
 
 ### Validate
 
@@ -62,7 +61,7 @@ the results of ping.
 
 ## Use Traceroute to Test Network Connection
 
-Traceroute is similar to ping, but it produces more detailed output in that it displays the route to a destination.
+The traceroute diagnostic tool is similar to ping, but it produces more detailed output in that it displays the route to a destination.
 Traceroute is useful for you to determine at which point along the path the packets are being delayed or lost.
 
 ### Prerequisites
@@ -79,8 +78,8 @@ Traceroute is useful for you to determine at which point along the path the pack
 
 4. Click on **Traceroute**.
 
-5. In the endpoint field, enter the endpoint you'd like to test the connection to. For example, if you are having DNS
-   issues and want to test your connection to your DNS server at 203.0.113.4. You would input 203.0.113.4.
+5. In the **endpoint** field, enter the endpoint you would like to test the connection to. For example, if you are having DNS
+   issues and want to test your connection to your DNS server at 203.0.113.4, you would input 203.0.113.4.
 
 6. Click **Run**.
 
@@ -100,12 +99,12 @@ Traceroute is useful for you to determine at which point along the path the pack
    ```
 
    Hops one through four produced normal responses, possibly indicating that the network between the host and your
-   Internet Service Provider (ISP) has no issues. Hops five through seven received no response. And hop eight received
+   Internet Service Provider (ISP) has no issues. Hops five through seven received no response. Finally, hop eight received
    only one response out of three requests, and the one response took significantly longer. This often indicates that
    there are some network issues at or near the DNS server.
 
 ### Validate
 
 Depending on the endpoint you are trying to reach, you can use different methods to validate the results. For example,
-if you are observing issues near the DNS server, you can try to specify a well-known DNS server such as 8.8.8.8 (Google)
-to test if it improves the connection. If it does, you can validate the results of traceroute.
+if you are observing issues near the DNS server, you can try to specify a well-known DNS server such as 8.8.8.8 (Google Public DNS)
+to test if it improves the connection. If it does, this can help validate the initial traceroute results pointed towards a DNS issue.
