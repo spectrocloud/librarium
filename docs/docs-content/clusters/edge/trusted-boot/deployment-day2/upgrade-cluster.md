@@ -24,7 +24,7 @@ Kubernetes layer of the cluster.
 - You have access to the original keys that were used to build the original ISO and provider images. Refer to
   [Build Edge Installer ISO with Trusted Boot](../edgeforge/build-trusted-iso.md) for details.
 
-- The machine used to build the provider imaged must meet the minimum hardware requirements:
+- The machine used to build the provider image must meet the minimum hardware requirements:
 
   - 4 CPUs
   - 32 GB RAM
@@ -33,7 +33,7 @@ Kubernetes layer of the cluster.
 :::warning
 
 Ensure that the keys in the **secure-boot** folder contains all the keys that were used to produce the ISO, including
-the keys in each subdirectory. If you are missing any of the keys, your Edge device will either not be able to boot, or
+the keys in each subdirectory. If you are missing any of the keys, your Edge host will either not be able to boot, or
 not be able to access any data in the persistent partitions.
 
 :::

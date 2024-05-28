@@ -8,8 +8,8 @@ tags: ["edge"]
 ---
 
 Before generating keys for Trusted Boot, you should first export the factory keys on your Edge device. These keys are
-often used to verify the authenticity of the Option ROMs (peripheral firmware) on your Edge device. These keys need to
-be included during EdgeForge key generation in order to ensure that the firmware starts normally at boot time.
+often used to verify the authenticity of the peripheral firmware on your Edge device. These keys need to be included
+during EdgeForge key generation in order to ensure that the firmware starts normally at boot time.
 
 You have two options to export factory keys. You can export them directly from the Unified Extensible Firmware Interface
 (UEFI) or Basic Input/Output System (BIOS) interface if the interface allows it. However, not every machine allows you

@@ -52,7 +52,7 @@ signing key matches the entries in dbx is forbidden from being executed.
 ## Platform Configuration Registers (PCR) Policy Key
 
 The PCR policy key pair is in charge of signing the pre-calculated measurements of the boot process and involved in disk
-encryption. The private PCR policy key signs the pre-calculated measurement during EdgeForge. The public key is embeded
+encryption. The private PCR policy key signs the pre-calculated measurement during EdgeForge. The public key is embedded
 in the UKI image.
 
 During EdgeForge, each boot component is hashed and these hash values, or measurements, are signed by the PCR private

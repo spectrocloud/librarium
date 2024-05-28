@@ -112,6 +112,15 @@ because there is no higher authority.
 6. Copy the keys you exported from your Edge device in [Export Factory Keys](./export-keys.md) to the **exported-keys**
    directory.
 
+   :::danger
+
+   If this is not the first time you have generated keys, make sure that **secure-boot** folder has no existing keys
+   except for the exported keys you just copied before proceeding to the next step. Issuing the key generation command
+   will overwrite all existing keys silently. Ensure that you have backed up all your existing keys before generating
+   new ones.
+
+   :::
+
 7. Issue the following command to generate keys. Replace `org-name` with the name of your organization, and replace
    5475, the default expiration period in days, with the desired expiration period for your keys. We suggest that you
    specify a long expiration date, since if the keys expire before you can replace them, it can soft-brick the Edge

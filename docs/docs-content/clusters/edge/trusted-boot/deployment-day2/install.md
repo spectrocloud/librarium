@@ -39,7 +39,7 @@ supports Secure Boot.
 1. Insert the USB disk into the Edge device.
 
 2. Power up your Edge device and enter the BIOS interface. Oftentimes you can accomplish this by pressing F2, F1, or F10
-   on the keyboard immediately after powering up the deice and before you select a boot volume, as is the case in Intel
+   on the keyboard immediately after powering up the device and before you select a boot volume, as is the case in Intel
    NUC 13 Pro. However, the exact method might be different on your Edge device. Consult the manufacturer of your Edge
    device to find out how to enter the BIOS interface.
 
@@ -54,14 +54,15 @@ supports Secure Boot.
    that are currently in the device. This allows you to enroll your own keys, while **User Mode** means you have
    enrolled your own keys.
 
-   In some BIOS, the same actions or functionality might be named differently in the BIOS interface. Consult the
+   On some Edge hosts, the same actions or functionality might be named differently in the BIOS interface. Consult the
    manufacturer of your Edge host to find out how to clear the keys and enroll your own keys.
 
    :::
 
-If you set the `AUTO_ENROLL_SECUREBOOT_KEYS` argument to `true` when you built the installation ISO, key enrollment will
-begin automatically once the device restarts. You can skip the following steps to proceed to
-[Install Palette Edge with Trusted Boot](#install-palette-edge-with-trusted-boot).
+   If you set the `AUTO_ENROLL_SECUREBOOT_KEYS` argument to `true` when you built the installation ISO, key enrollment
+   will begin automatically the first time the device boots from the installer ISO. You can skip the following steps to
+   proceed to [Install Palette Edge with Trusted Boot](#install-palette-edge-with-trusted-boot). In Virtual Machines
+   (VM), keys will always be auto-enrolled.
 
 5. If you did not set `AUTO_ENROLL_SECUREBOOT_KEYS` to `true` when you built the ISO, you will need to select the
    **Enroll Secure Boot keys: Auto** option in the boot menu when the Edge device restarts. This will start the key
@@ -92,7 +93,7 @@ more information.
 2. Issue the following command.
 
    ```shell
-   ls -ltr / run/cos/
+   ls -ltr /run/cos/
    ```
 
    You should receive an output that's similar to the following.
