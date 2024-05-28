@@ -170,10 +170,11 @@ saepe ut fugit ea ut architecto quae consequatur.
 
 #### Kubernetes
 
-| Pack       | New Version |
-| ---------- | ----------- |
-| Kubernetes | 1.29        |
-| GKE        | 1.29        |
+| Pack                                     | New Version                              |
+| ---------------------------------------- | ---------------------------------------- |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.27.11 <br /> 1.28.9                    |
+| Kubernetes                               | 1.29                                     |
+| GKE                                      | 1.26 <br /> 1.27 <br /> 1.28 <br /> 1.29 |
 
 #### CNI
 
@@ -192,7 +193,7 @@ saepe ut fugit ea ut architecto quae consequatur.
 | Amazon EFS              | 1.7.6       |
 | Azure Disk CSI Driver   | 1.30.0      |
 | GCE Persistent Disk CSI | 1.13.2      |
-| Portworx Operator       | 3.1.0       |
+| Portworx /w Operator    | 3.1.0       |
 
 #### Add-on Packs
 
@@ -201,30 +202,24 @@ saepe ut fugit ea ut architecto quae consequatur.
 | AWS Application Loadbalancer | 2.7.2       |
 | AWS Cluster Autoscaler Helm  | 1.29.2      |
 | Amazon EFS                   | 1.7.6       |
-| Cisco AppDynamics Collectors | 1.21.1264   |
-| Cisco AppDynamics Operators  | 1.21.368    |
-| ECK Operator                 | 2.12.1      |
-| ECK Stack                    | 0.10.0      |
 | MetalLB (Helm)               | 0.14.3      |
 | Nginx                        | 1.10.0      |
 | OpenPolicyAgent              | 3.15.1      |
-| Portworx Operator            | 3.1.0       |
+| Portworx /w Operator         | 3.1.0       |
 | Prometheus - Grafana         | 57.0.1      |
-| Strimzi Kafka                | 0.4.0       |
-| unCtl                        | 1.1.0       |
 
 #### FIPS Packs
 
-| Pack                                     | New Version                 |
-| ---------------------------------------- | --------------------------- |
-| AWS VPC CNI (Helm)                       | 1.1.17                      |
-| Calico Azure                             | 3.26.3                      |
-| Cilium                                   | 1.14.3                      |
-| Longhorn                                 | 1.5.3                       |
-| Palette eXtended Kubernetes Edge (PXK-E) | 1.29.5                      |
-| Palette Optimized RKE2                   | 1.29.4                      |
-| Palette eXtended Kubernetes              | 1.29.4                      |
-| RKE2                                     | 1.29.4-rke2r1-build20240416 |
+| Pack                                     | New Version                                                                                                                           |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| AWS VPC CNI (Helm)                       | 1.1.17                                                                                                                                |
+| Calico Azure                             | 3.25.1 <br /> 3.26.3                                                                                                                  |
+| Cilium                                   | 1.13.4 <br /> 1.14.3                                                                                                                  |
+| Longhorn                                 | 1.4.1 <br /> 1.5.3                                                                                                                    |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.24.13 <br /> 1.25.9 <br /> 1.26.15 <br /> 1.27.14 <br /> 1.28.10 <br /> 1.29.5                                                      |
+| Palette Optimized RKE2                   | 1.24.6 <br /> 1.26.15 <br /> 1.27.13 <br /> 1.28.9 <br /> 1.29.4                                                                      |
+| Palette eXtended Kubernetes              | 1.27.13 <br /> 1.27.2 <br /> 1.28.9 <br /> 1.29.4                                                                                     |
+| RKE2                                     | 1.27.13-rke2r1-build20240416 <br /> 1.28.9-rke2r1-build20240416 <br /> 1.29.0-rke2r1-build20231213 <br /> 1.29.4-rke2r1-build20240416 |
 
 #### Deprecations and Removals
 
