@@ -198,12 +198,18 @@ Use the steps below to confirm you have the required files and verify the requir
 Follow the steps below from your terminal to set the environment variables and invoke the APIs required to register a
 Nutanix cloud to Palette. Alternatively, you can use an API platform such as [Postman](https://www.postman.com/).
 
-:::warning
+## Prerequisites
 
-The logo file must not exceed 100KB in size. To ensure image quality ensure at least one dimension in either width or
-height is 40 pixels. It is preferable that the image be transparent.
+- You have completed the steps in [Customize YAML Configuration Files](#customize-yaml-configuration-files).
 
-:::
+- Only an
+  [Operations Administrator](../../../enterprise-version/system-management/account-management/account-management.md#operations-administrator)
+  is allowed to register a Nutanix cloud.
+
+- The logo file must not exceed 100KB in size. To ensure image quality ensure at least one dimension in either width or
+  height is 40 pixels. It is preferable that the image be transparent.
+
+## Enablement
 
 1. Export the URL of your self-hosted Palette or VerteX instance and the cloud type as environment variables.
    Additionally, export the path to the YAML templates and logo file.
@@ -231,12 +237,6 @@ height is 40 pixels. It is preferable that the image be transparent.
 2. To acquire system administrator credentials, use the `/v1/auth/syslogin` endpoint. Issue the `curl` command below and
    ensure you replace the credentials with your system console credentials.
 
-   :::warning
-
-   Only an Operations Administrator is allowed to register a Nutanix cloud.
-
-   :::
-
    ```bash
    curl --location "${ENDPOINT}/v1/auth/syslogin" \
    --header 'Content-Type: application/json' \
@@ -255,14 +255,14 @@ height is 40 pixels. It is preferable that the image be transparent.
    }
    ```
 
-4. Copy the authorization token, assign it to a `TOKEN` shell variable, and export it. Replace the authorization value
+3. Copy the authorization token, assign it to a `TOKEN` shell variable, and export it. Replace the authorization value
    below with the value from the output.
 
    ```bash
    export TOKEN="**********"
    ```
 
-5. Register the Nutanix cloud type in Palette using the `/v1/clouds/cloudTypes/register` endpoint.
+4. Register the Nutanix cloud type in Palette using the `/v1/clouds/cloudTypes/register` endpoint.
 
    ```bash
    curl --location --request POST "${ENDPOINT}/v1/clouds/cloudTypes/register" \
@@ -281,7 +281,7 @@ height is 40 pixels. It is preferable that the image be transparent.
         }'
    ```
 
-6. Upload the Nutanix cloud logo.
+5. Upload the Nutanix cloud logo.
 
    ```bash
    curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/logo" \
@@ -289,7 +289,7 @@ height is 40 pixels. It is preferable that the image be transparent.
         --form "fileName=@${cloudLogo}"
    ```
 
-7. Register the cloud provider.
+6. Register the cloud provider.
 
    ```bash
    curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/cloudProvider" \
@@ -298,7 +298,7 @@ height is 40 pixels. It is preferable that the image be transparent.
         --form "fileName=@${infraComponents}"
    ```
 
-8. Register the cluster template.
+7. Register the cluster template.
 
    ```bash
    curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/clusterTemplate" \
@@ -307,7 +307,7 @@ height is 40 pixels. It is preferable that the image be transparent.
         --form "fileName=@${cloudClusterTemplate}"
    ```
 
-9. Register the control plane pool template.
+8. Register the control plane pool template.
 
    ```bash
    curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/controlPlanePoolTemplate" \
@@ -316,14 +316,14 @@ height is 40 pixels. It is preferable that the image be transparent.
          --form "fileName=@${controlPlanePoolTemplate}"
    ```
 
-10. Register the worker pool template.
+9. Register the worker pool template.
 
-   ```bash
-   curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/workerPoolTemplate" \
-        --header "Content-Type: multipart/form-data" \
-        --header "Authorization: ${TOKEN}" \
-        --form "fileName=@${workerPoolTemplate}"
-   ```
+```bash
+curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/templates/workerPoolTemplate" \
+     --header "Content-Type: multipart/form-data" \
+     --header "Authorization: ${TOKEN}" \
+     --form "fileName=@${workerPoolTemplate}"
+```
 
 11. Register the cloud account keys.
 
