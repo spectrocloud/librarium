@@ -87,7 +87,7 @@ more KubeVirt feature gates, you can modify the `kubevirt.kubevirtResource.addit
 **Virtual Machine Orchestrator** manifest.
 
 For more information on KubeVirt feature gates, refer to the
-[KubeVirt user guide](https://kubevirt.io/user-guide/operations/activating_feature_gates/).
+[KubeVirt user guide](https://kubevirt.io/user-guide/cluster_admin/activating_feature_gates/).
 
 ## Kubevirt Plugins
 
@@ -118,4 +118,4 @@ VMO includes the following KubeVirt plugins:
 
 - [VM Roles and Permissions](vm-roles-permissions.md)
 
-- [KubeVirt user guide](https://kubevirt.io/user-guide/operations/activating_feature_gates/)
+- [KubeVirt user guide](https://kubevirt.io/user-guide/)
