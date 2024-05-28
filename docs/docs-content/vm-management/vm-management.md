@@ -118,4 +118,4 @@ VMO includes the following KubeVirt plugins:
 
 - [VM Roles and Permissions](vm-roles-permissions.md)
 
-- [KubeVirt user guide](https://kubevirt.io/user-guide/operations/activating_feature_gates/)
+- [KubeVirt user guide](https://kubevirt.io/user-guide/)
