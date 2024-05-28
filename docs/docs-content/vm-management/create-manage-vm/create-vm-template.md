@@ -18,8 +18,6 @@ Although Palette provides out-of-the box templates, we recommend that you create
 
 Create a template by adding a YAML file as a manifest in an add-on profile.
 
-<br />
-
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, click **Profiles** and click the **Add Cluster Profile** button.
@@ -36,8 +34,6 @@ Create a template by adding a YAML file as a manifest in an add-on profile.
 7. Click **Confirm and Create**, then click **Next**.
 
 8. Click **Finish Configuration**.
-
-<br />
 
 #### Example YAML for a VM template
 
