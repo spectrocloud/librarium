@@ -27,8 +27,6 @@ containerized applications.
 
 You can create a VM three ways:
 
-<br />
-
 - Deploy a VM from a template. Palette provides out-of-the-box templates, or your organization may provide templates.
   For the latter, refer to the [Create a VM Template](create-vm-template.md) guide.
 
@@ -45,8 +43,6 @@ inside a VM and provides runtime information.
 Additionally, Virtio is a virtualization standard for network and disk device drivers where only the guest's device
 driver knows it is deployed in a virtual environment, and cooperates with the hypervisor. This enables guests to receive
 high performance network and disk operations and provides most of the performance benefits of paravirtualization.
-
-<br />
 
 :::warning
 
