@@ -11,6 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May 19, 2024 - Release 4.3.8
+
+### Bug Fixes
+
+- Fixed the issue where deployments with a large number of cluster profile add-on layers caused extended cluster
+  deployment times.
+
 ## April 29, 2024 - Release 4.3.7
 
 ### Bug Fixes

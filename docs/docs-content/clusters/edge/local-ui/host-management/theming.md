@@ -61,7 +61,7 @@ console for all Edge hosts of your organization.
    cd CanvOS
    ```
 
-3. Create a directory called **ui.tar** at the path `CanvOS/ui.tar`.
+3. Create a directory called **ui** at the path `CanvOS/ui`.
 
 4. In the directory, create a file named **customizations.json**.
 
