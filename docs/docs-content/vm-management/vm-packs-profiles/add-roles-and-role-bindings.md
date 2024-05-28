@@ -69,17 +69,17 @@ You can verify role creation and role binding is successful by following the ste
 
 5. Use the following commands to review details about the role and to ensure the role binding was successful.
 
-#### Cluster Role:
+   **Cluster Role:**
 
-```shell
-kubectl get clusterrole <yourRoleNameHere> --output yaml
-```
+   ```shell
+   kubectl get clusterrole <yourRoleNameHere> --output yaml
+   ```
 
-#### Role
+   **Role:**
 
-```shell
-kubectl get role <yourRoleNameHere> --namespace <namespace> --show-kind --export
-```
+   ```shell
+   kubectl get role <yourRoleNameHere> --namespace <namespace> --show-kind --export
+   ```
 
 ## Next Steps
 
