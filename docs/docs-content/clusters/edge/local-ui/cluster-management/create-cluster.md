@@ -42,7 +42,7 @@ cluster using Local UI.
 
    | Parameter    | Description                                             |
    | ------------ | ------------------------------------------------------- |
-   | Cluster bane | Name of the cluster.                                    |
+   | Cluster name | Name of the cluster.                                    |
    | Tags         | Key-value pairs to provide metadata about your cluster. |
 
 5. If you built a cluster definition into your Edge installer ISO, you can either choose to use the embedded config or
