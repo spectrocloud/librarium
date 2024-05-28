@@ -216,8 +216,8 @@ saepe ut fugit ea ut architecto quae consequatur.
 | Calico Azure                             | 3.25.1 <br /> 3.26.3                                                                                                                  |
 | Cilium                                   | 1.13.4 <br /> 1.14.3                                                                                                                  |
 | Longhorn                                 | 1.4.1 <br /> 1.5.3                                                                                                                    |
-| Palette eXtended Kubernetes Edge (PXK-E) | 1.24.13 <br /> 1.25.9 <br /> 1.26.15 <br /> 1.27.14 <br /> 1.28.10 <br /> 1.29.5                                                      |
-| Palette Optimized RKE2                   | 1.24.6 <br /> 1.26.15 <br /> 1.27.13 <br /> 1.28.9 <br /> 1.29.4                                                                      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.27.14 <br /> 1.28.10 <br /> 1.29.5                                                                                                  |
+| Palette Optimized RKE2                   | 1.27.13 <br /> 1.28.9 <br /> 1.29.4                                                                                                   |
 | Palette eXtended Kubernetes              | 1.27.13 <br /> 1.27.2 <br /> 1.28.9 <br /> 1.29.4                                                                                     |
 | RKE2                                     | 1.27.13-rke2r1-build20240416 <br /> 1.28.9-rke2r1-build20240416 <br /> 1.29.0-rke2r1-build20231213 <br /> 1.29.4-rke2r1-build20240416 |
 
