@@ -12,9 +12,10 @@ tools, but are accessible through a web interface. You can use these diagnostic 
 issues without having to establish an SSH connection to your Edge host.
 
 In air-gapped environments, you can use these tools to verify the connection to an endpoint within the network. For
-air-gapped clusters with proxy or in connected environments, you can use these tools to verify the connection to an endpoint
-outside the network, based on the scope of the connectivity. For example, these tools are useful to check if the Edge Host can
-connect to the internet or an external registry or to make sure there is no external connectivity in an air-gapped environment.
+air-gapped clusters with proxy or in connected environments, you can use these tools to verify the connection to an
+endpoint outside the network, based on the scope of the connectivity. For example, these tools are useful to check if
+the Edge Host can connect to the internet or an external registry or to make sure there is no external connectivity in
+an air-gapped environment.
 
 ## Use Ping to Test Network Connection
 
@@ -32,8 +33,8 @@ connect to the internet or an external registry or to make sure there is no exte
 
 4. Click on **Ping**.
 
-5. In the **endpoint** field, enter the endpoint you would like to test the connection to. For example, if you want to make sure
-   your Edge host has connection to a image registry within your network at 10.10.153.43:8000, you would enter
+5. In the **endpoint** field, enter the endpoint you would like to test the connection to. For example, if you want to
+   make sure your Edge host has connection to a image registry within your network at 10.10.153.43:8000, you would enter
    10.10.153.43:8000.
 
 6. Click **Run**.
@@ -56,13 +57,14 @@ connect to the internet or an external registry or to make sure there is no exte
 ### Validate
 
 Depending on the endpoint you are trying to test, you can use other tools to validate the results of ping. For example,
-if you are trying to reach a REST API endpoint, you can use `curl` to make an HTTP request to the endpoint to validate
-the results of ping.
+if you are trying to reach a REST API endpoint, you can use curl to make an HTTP request to the endpoint to validate the
+results of ping.
 
 ## Use Traceroute to Test Network Connection
 
-The traceroute diagnostic tool is similar to ping, but it produces more detailed output in that it displays the route to a destination.
-Traceroute is useful for you to determine at which point along the path the packets are being delayed or lost.
+The traceroute diagnostic tool is similar to ping, but it produces more detailed output in that it displays the route to
+a destination. Traceroute is useful for you to determine at which point along the path the packets are being delayed or
+lost.
 
 ### Prerequisites
 
@@ -78,8 +80,8 @@ Traceroute is useful for you to determine at which point along the path the pack
 
 4. Click on **Traceroute**.
 
-5. In the **endpoint** field, enter the endpoint you would like to test the connection to. For example, if you are having DNS
-   issues and want to test your connection to your DNS server at 203.0.113.4, you would input 203.0.113.4.
+5. In the **endpoint** field, enter the endpoint you would like to test the connection to. For example, if you are
+   having DNS issues and want to test your connection to your DNS server at 203.0.113.4, you would input 203.0.113.4.
 
 6. Click **Run**.
 
@@ -99,12 +101,13 @@ Traceroute is useful for you to determine at which point along the path the pack
    ```
 
    Hops one through four produced normal responses, possibly indicating that the network between the host and your
-   Internet Service Provider (ISP) has no issues. Hops five through seven received no response. Finally, hop eight received
-   only one response out of three requests, and the one response took significantly longer. This often indicates that
-   there are some network issues at or near the DNS server.
+   Internet Service Provider (ISP) has no issues. Hops five through seven received no response. Finally, hop eight
+   received only one response out of three requests, and the one response took significantly longer. This often
+   indicates that there are some network issues at or near the DNS server.
 
 ### Validate
 
 Depending on the endpoint you are trying to reach, you can use different methods to validate the results. For example,
-if you are observing issues near the DNS server, you can try to specify a well-known DNS server such as 8.8.8.8 (Google Public DNS)
-to test if it improves the connection. If it does, this can help validate the initial traceroute results pointed towards a DNS issue.
+if you are observing issues near the DNS server, you can try to specify a well-known DNS server such as 8.8.8.8 (Google
+Public DNS) to test if it improves the connection. If it does, this can help validate the initial traceroute results
+pointed towards a DNS issue.
