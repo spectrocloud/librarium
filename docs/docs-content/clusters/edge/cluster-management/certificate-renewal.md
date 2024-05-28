@@ -7,7 +7,7 @@ sidebar_position: 80
 tags: ["edge", "architecture"]
 ---
 
-Kubernetes uses certificates to secure the communication between different components of a cluster. Using these
+Kubernetes uses SSL certificates to secure the communication between different components of a cluster. Using these
 certificates allows Kubernetes to secure API connections, verify the authenticity of the nodes, and encrypt connections.
 All certificates have an expiry date, and need to be renewed periodically.
 
@@ -22,8 +22,8 @@ air-gapped cluster means a cluster that has no connection to a Palette instance.
 
 ## Automatic Renewal
 
-Palette Edge will automatically renew all certificates used by your cluster for you 30 days before they expire. You can
-follow the steps below to check when the next automatic renewal will happen.
+Palette Edge will automatically renew all control plane certificates your cluster uses for you 30 days before they
+expire. You can follow the steps below to check when the next automatic renewal will happen.
 
 ### Prerequisite
 
@@ -110,7 +110,7 @@ Edge Management API.
 
    ```shell
    curl -X POST "https://edge-host-ip:5080/v1/edge-mgmt/cluster/renew-certificates" \
-     -H "Cookie: Authorization=*******"
+     --header "Authorization: *******"
    ```
 
    This will renew all certificates on the control plane nodes.

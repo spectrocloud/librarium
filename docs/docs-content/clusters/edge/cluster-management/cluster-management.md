@@ -3,7 +3,7 @@ sidebar_label: "Cluster Management"
 title: "Cluster Management for Edge Clusters"
 description: "Learn about the different available day-2 operations for Edge clusters."
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 55
 tags: ["edge", "architecture"]
 ---
 
