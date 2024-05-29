@@ -170,11 +170,15 @@ saepe ut fugit ea ut architecto quae consequatur.
 
 #### Kubernetes
 
-| Pack                                     | New Version                              |
-| ---------------------------------------- | ---------------------------------------- |
-| Palette eXtended Kubernetes Edge (PXK-E) | 1.27.11 <br /> 1.28.9                    |
-| Kubernetes                               | 1.29                                     |
-| GKE                                      | 1.26 <br /> 1.27 <br /> 1.28 <br /> 1.29 |
+| Pack                                     | New Version |
+| ---------------------------------------- | ----------- |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.27.11     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.28.9      |
+| Kubernetes Azure AKS                     | 1.29        |
+| Kubernetes Google GKE                    | 1.26        |
+| Kubernetes Google GKE                    | 1.27        |
+| Kubernetes Google GKE                    | 1.28        |
+| Kubernetes Google GKE                    | 1.29        |
 
 #### CNI
 
@@ -210,16 +214,29 @@ saepe ut fugit ea ut architecto quae consequatur.
 
 #### FIPS Packs
 
-| Pack                                     | New Version                                                                                                                           |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| AWS VPC CNI (Helm)                       | 1.1.17                                                                                                                                |
-| Calico Azure                             | 3.25.1 <br /> 3.26.3                                                                                                                  |
-| Cilium                                   | 1.13.4 <br /> 1.14.3                                                                                                                  |
-| Longhorn                                 | 1.4.1 <br /> 1.5.3                                                                                                                    |
-| Palette eXtended Kubernetes Edge (PXK-E) | 1.27.14 <br /> 1.28.10 <br /> 1.29.5                                                                                                  |
-| Palette Optimized RKE2                   | 1.27.13 <br /> 1.28.9 <br /> 1.29.4                                                                                                   |
-| Palette eXtended Kubernetes              | 1.27.13 <br /> 1.27.2 <br /> 1.28.9 <br /> 1.29.4                                                                                     |
-| RKE2                                     | 1.27.13-rke2r1-build20240416 <br /> 1.28.9-rke2r1-build20240416 <br /> 1.29.0-rke2r1-build20231213 <br /> 1.29.4-rke2r1-build20240416 |
+| Pack                                     | New Version |
+| ---------------------------------------- | ----------- |
+| AWS VPC CNI (Helm)                       | 1.1.17      |
+| Calico Azure                             | 3.25.1      |
+| Calico Azure                             | 3.26.3      |
+| Cilium                                   | 1.13.4      |
+| Cilium                                   | 1.14.3      |
+| Longhorn                                 | 1.4.1       |
+| Longhorn                                 | 1.5.3       |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.27.14     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.28.10     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.29.5      |
+| Palette Optimized RKE2                   | 1.27.13     |
+| Palette Optimized RKE2                   | 1.28.9      |
+| Palette Optimized RKE2                   | 1.29.4      |
+| Palette eXtended Kubernetes              | 1.27.13     |
+| Palette eXtended Kubernetes              | 1.27.2      |
+| Palette eXtended Kubernetes              | 1.28.9      |
+| Palette eXtended Kubernetes              | 1.29.4      |
+| RKE2                                     | 1.27.13     |
+| RKE2                                     | 1.28.9      |
+| RKE2                                     | 1.29.0      |
+| RKE2                                     | 1.29.4      |
 
 #### Deprecations and Removals
 
