@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Verified Packs"
 title: "Verified Packs"
-description: "Identify Verified Packs in Palette, which undergo active maintenance."
+description: "Learn what verified packs are and how to use them in Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20

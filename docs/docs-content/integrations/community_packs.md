@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Community Packs"
 title: "Community Packs"
-description: "Identify Community Packs in Palette, which are not actively maintenance."
+description: "Learn what community packs are and how to use them in Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
@@ -24,8 +24,10 @@ community registry.
 
 :::warning
 
-All community packs are reviewed and accepted by Spectro Cloud. However, unlike [Verified Packs](./verified_packs.md),
-community packs are not maintained and updated regularly.
+All community packs are reviewed, and if they have followed the
+[contribution guidelines](https://github.com/spectrocloud/pack-central?tab=readme-ov-file#pull-request-guidelines), they
+are accepted by Spectro Cloud. However, unlike [Verified Packs](./verified_packs.md), Spectro Cloud does not actively
+maintain and update community packs. Therefore, updates to these packs depend on community contributors.
 
 :::
 
