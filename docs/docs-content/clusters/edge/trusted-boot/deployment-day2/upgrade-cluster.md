@@ -16,6 +16,12 @@ new provider image with the same Trusted Boot keys you used to build the Edge In
 This page guides you through the process of making an update to a cluster that involves the Operating System (OS) or
 Kubernetes layer of the cluster.
 
+## Limitation
+
+- Palette does not stop the upgrade if the provider image that is not recognized by secure boot. If you upgrade to using
+  an unrecognized image, you will receive a secure boot violation. This will require you to choose the recovery option
+  from the GRand Unified Bootloader (GRUB) menu to return the Edge host to boot using the previous image.
+
 ## Prerequisites
 
 - You have built an Edge Installer ISO with Trusted Boot enabled and used the ISO to deploy a cluster. The Edge hosts

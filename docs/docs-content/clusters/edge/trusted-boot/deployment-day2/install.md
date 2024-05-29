@@ -76,8 +76,15 @@ supports Secure Boot.
 7. When installation finishes, you will observe the text "Installation has finished, rebooting in 5 seconds" on your
    screen. Remove the USB disk from your Edge device.
 
-8. After installation finishes, power up the device. Let your device automatically choose the boot volume. It should
-   boot directly to Edge device registration.
+   :::info
+
+   If you have more than one boot devices, it is good security practice to go into the BIOS again and ensure that the
+   target installation disk is prioritized in the boot sequence.
+
+   :::
+
+8. After installation finishes, power up the device. Let your device automatically choose the option from the GRand
+   Unified Bootloader (GRUB) menu. It should boot directly to Edge device registration.
 
 ## Validate
 
