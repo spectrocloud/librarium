@@ -16,7 +16,7 @@ allows the Virtual Machine (VM) to add and remove virtual CPUs while the VM is r
 
 ## Prerequisites
 
-- A VM deployed and running in Palette.
+- A VM deployed and active in Palette.
 
 ## Enable CPU Hotplug
 
