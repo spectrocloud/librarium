@@ -708,7 +708,7 @@ your environment. Reach out to our support team if you need assistance.
 
 10. Log in to the system console using the following default credentials. Refer to the
     [password requirements](../../system-management/account-management/credentials.md#password-requirements-and-security)
-    documentation page to learn more password requirements.
+    documentation page to learn more about password requirements.
 
     | **Parameter** | **Value** |
     | ------------- | --------- |
@@ -719,7 +719,7 @@ your environment. Reach out to our support team if you need assistance.
     redirected to the VerteX system console. Use the username `admin` and your new password to log in to the system
     console. You can create additional system administrator accounts and assign roles to users in the system console.
     Refer to the [Account Management](../../system-management/account-management/account-management.md) documentation
-    page for more information. page for more information.
+    page for more information.
 
 11. After login, a summary page is displayed. VerteX is installed with a self-signed SSL certificate. To assign a
     different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority

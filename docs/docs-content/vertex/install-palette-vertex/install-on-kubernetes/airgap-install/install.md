@@ -796,7 +796,7 @@ environment. Reach out to our support team if you need assistance.
 
 14. Log in to the system console using the following default credentials. Refer to the
     [password requirements](../../../system-management/account-management/credentials.md#password-requirements-and-security)
-    documentation page to learn more password requirements.
+    documentation page to learn more about password requirements.
 
     | **Parameter** | **Value** |
     | ------------- | --------- |
