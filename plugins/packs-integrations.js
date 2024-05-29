@@ -169,14 +169,17 @@ async function fetchPackListItems(queryParams, packDataArr, counter) {
 }
 
 async function mapRepositories(repositories) {
-  const results = await api.get('v1/registries/pack');
+  const urls = ["v1/registries/oci/summary", "v1/registries/pack"];
+  const results = await callRateLimitAPI(() => Promise.all(urls.map((url) => api.get(url))));
   const repoMap = repositories.reduce((acc, repository) => {
-    const repoObj = results.data?.items?.find((repo) => {
-      return repo.metadata.name === repository;
+    results.forEach((result) => {
+      const repoObj = result.data?.items?.find((repo) => {
+        return repo.metadata.name === repository;
+      });
+      if (repoObj) {
+        acc.push({ name: repoObj.metadata.name, uid: repoObj.metadata.uid });
+      }
     });
-    if (repoObj) {
-      acc.push({ name: repoObj.metadata.name, uid: repoObj.metadata.uid });
-    }
     return acc;
   }, []);
   return repoMap;
