@@ -65,8 +65,15 @@ supports Secure Boot.
    (VM), keys will always be auto-enrolled.
 
 5. If you did not set `AUTO_ENROLL_SECUREBOOT_KEYS` to `true` when you built the ISO, you will need to select the
-   **Enroll Secure Boot keys: Auto** option in the boot menu when the Edge device restarts. This will start the key
+   **Enroll Secure Boot keys: Auto** option in the GRUB menu when the Edge host restarts. This will start the key
    enrollment process.
+
+   :::warning
+
+   There is currently a known issue where if `AUTO_ENROLL_SECUREBOOT_KEYS` is set to `false`, it's possible for manual
+   key enrollment to take a few attempts to be successful.
+
+   :::
 
 ### Install Palette Edge with Trusted Boot
 
