@@ -3,7 +3,7 @@ sidebar_label: "Build Content Bundle"
 title: "Build Content Bundle"
 description: "Learn about building your edge content bundles in order to optimize cluster deployments"
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 45
 tags: ["edge"]
 ---
 
@@ -16,9 +16,8 @@ building these content bundles.
 :::warning
 
 Currently, the content bundles include Helm charts and Packs. However, keep in mind that the container images of the
-Helm Charts and Packs are extracted and predeployed into the container runtime [containerd](https://containerd.io/) for
-optimization. In the future, Palette will include a built-in OCI registry to host Helm Charts and other artifacts to
-avoid downloading these from the internet if included in a content bundle
+Helm Charts and Packs are extracted and pre-deployed into the container runtime [containerd](https://containerd.io/) for
+optimization.
 
 :::
 
@@ -248,13 +247,6 @@ Creating a content bundle provides several benefits that may address common use 
 
 11. Navigate back to your terminal window and issue the following command to create the content bundle. Replace the
     placeholder values with your actual values.
-
-    :::info
-
-    There are several Spectro Cloud CLI flags that you can use to customize the content bundle. Use the command
-    `./palette-edge build --help` to learn more about the available flags.
-
-    :::
 
     ```shell
     ./palette-edge build --api-key <API_KEY> \
