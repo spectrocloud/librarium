@@ -8,7 +8,7 @@ hide_table_of_contents: false
 toc_min_heading_level: 2
 toc_max_heading_level: 2
 sidebar_position: 50
-tags: ["pcg"]
+tags: ["pcg", "tutorial"]
 ---
 
 Palette Private Cloud Gateway (PCG) is a crucial infrastructure support component that acts as a bridge between your
