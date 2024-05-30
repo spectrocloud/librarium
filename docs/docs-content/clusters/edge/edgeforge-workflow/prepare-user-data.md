@@ -276,7 +276,7 @@ stages:
 
 Palette Edge allows you to create bind mounts from your Edge host to your cluster through the installer configuration
 file named **user-data**, which allows your cluster to use directories or files from your Edge host directly within your
-Kubernetes cluster. This setup is useful for scenarios where your applications running in the cluster need direct access
+Kubernetes cluster. This setup is useful for scenarios where your applications are active in the cluster and need direct access
 to files or directories on the Edge host.
 
 Several packs require you set up bind mounts in order to function. For example, the Calico pack requires the folder
