@@ -39,7 +39,8 @@ The pack has two presets that provide the following two configurations:
 
 - If you are using Rook on Edge, the Edge host needs to be created with at least two hard disks.
 
-- You have created a bind mount for the `/var/lib/rook` folder on the Edge host. For more information, refer to
+- If you are using Rook on Edge, you must have create a bind mount for the `/var/lib/rook` folder on the Edge host. For
+  more information, refer to
   [Create Bind Mounts](../clusters/edge/edgeforge-workflow/prepare-user-data.md#create-bind-mounts).
 
 ## Parameters
@@ -145,7 +146,8 @@ clusters.
 - If you are using Rook on Edge, the Edge host needs to be created with at least two hard disks. The actual required
   number of disks depend on your cluster configuration.
 
-- You have created a bind mount for the `/var/lib/rook` folder on the Edge host. For more information, refer to
+- If you are using Rook on Edge, you must have create a bind mount for the `/var/lib/rook` folder on the Edge host. For
+  more information, refer to
   [Create Bind Mounts](../clusters/edge/edgeforge-workflow/prepare-user-data.md#create-bind-mounts).
 
 ## Parameters
@@ -251,7 +253,8 @@ clusters.
 - If you are using Rook on Edge, the Edge host needs to be created with at least two hard disks. The actual required
   number of disks depend on your cluster configuration.
 
-- You have created a bind mount for the `/var/lib/rook` folder on the Edge host. For more information, refer to
+- If you are using Rook on Edge, you must have create a bind mount for the `/var/lib/rook` folder on the Edge host. For
+  more information, refer to
   [Create Bind Mounts](../clusters/edge/edgeforge-workflow/prepare-user-data.md#create-bind-mounts).
 
 ## Parameters
