@@ -60,7 +60,7 @@ Creating a content bundle provides several benefits that may address common use 
 1. Download Palette Edge Content CLI and assign the executable bit to the CLI.
 
    ```shell
-   VERSION=4.1.2
+   VERSION=4.3.0
    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
    chmod +x palette-edge
    ```
@@ -73,32 +73,33 @@ Creating a content bundle provides several benefits that may address common use 
    mv palette-edge /usr/local/bin
    ```
 
-3. Verify the installation of the Palette Edge CLI by issuing the following command. The output will display information
-   about the currently supported OS and Kubernetes distributions.
+3. Verify the installation of the Palette Edge CLI by issuing the following command. The output will display a list of
+   available commands and flags for the CLI.
 
    ```bash
-   palette-edge show
+   palette-edge --help
    ```
 
    ```hideClipboard bash
-   # Sample output
-   ┌────────────────────────────────────────────────────────────────────────┐
-   | OS Flavor     | Description        | Base Image URI                    |
-   | opensuse-leap | Opensuse Leap 15.4 | quay.io/kairos/core-opensuse-leap |
-   | ubuntu-20     | Ubuntu 20.4 LTS    | quay.io/kairos/core-ubuntu-20-lts |
-   | ubuntu-22     | Ubuntu 22.4 LTS    | quay.io/kairos/core-ubuntu-22-lts |
-   └────────────────────────────────────────────────────────────────────────┘
-   ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
-   | K8S Flavor | Description        | Supported Versions                                        |
-   | k3s        | Rancher K3s        | 1.25.2-k3s1,1.24.6-k3s1,1.23.12-k3s1,1.22.15-k3s1         |
-   | kubeadm    | Kubernetes kubeadm | 1.25.2,1.24.6,1.23.12,1.22.15                             |
-   | rke2       | Rancher RK2        | 1.25.2-rke2r1,1.24.6-rke2r1,1.23.12-rke2r1,1.22.15-rke2r1 |
-   └─────────────────────────────────────────────────────────────────────────────────────────────┘
-   ┌─────────────────────────────────┐
-   | Component             | Version |
-   | Spectro Agent Version | v3.4.3  |
-   | Kairos Version        | v2.0.3  |
-   └─────────────────────────────────┘
+    Usage:
+      palette-edge-cli [command]
+
+    Available Commands:
+      build            Build the content
+      build-from-local
+      deploy
+      help             Help about any command
+      show             Display all the preset default values and supported OS and K8S flavors
+      upload
+
+    Flags:
+          --config string    config file (default is $HOME/.palette-edge-cli.yaml)
+          --debug            set to enable debug logging [default: false]
+      -h, --help             help for palette-edge-cli
+          --logfile string   log file name
+          --trace            set to enable trace logging [default: false]
+
+    Use "palette-edge-cli [command] --help" for more information about a command.
    ```
 
 4. Log in to [Palette](https://console.spectrocloud.com).
