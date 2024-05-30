@@ -45,36 +45,34 @@ This guide demonstrates how to implement your own disk and VM templates using Ku
       [CDI DataVolumes documentation](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md#source)
       for other possible `source` values.
 
-    <br />
+      ```yaml {7,15,17,18}
+      apiVersion: cdi.kubevirt.io/v1beta1
+      kind: DataVolume
+      metadata:
+        name: "template-ubuntu-2204"
+        namespace: "vmo-golden-images"
+        annotations:
+          cdi.kubevirt.io/storage.deleteAfterCompletion: "false"
+      spec:
+        storage:
+          accessModes:
+            - ReadWriteMany
+          resources:
+            requests:
+              storage: 50Gi
+          volumeMode: Block # or "Filesystem", depending on the CSI used
+        source:
+          registry:
+            url: "docker://gcr.io/spectro-images-public/release/vm-dashboard/os/ubuntu-container-disk:22.04"
+      ```
 
-    ```yaml {7,15,17,18}
-    apiVersion: cdi.kubevirt.io/v1beta1
-    kind: DataVolume
-    metadata:
-      name: "template-ubuntu-2204"
-      namespace: "vmo-golden-images"
-      annotations:
-        cdi.kubevirt.io/storage.deleteAfterCompletion: "false"
-    spec:
-      storage:
-        accessModes:
-          - ReadWriteMany
-        resources:
-          requests:
-            storage: 50Gi
-        volumeMode: Block # or "Filesystem", depending on the CSI used
-      source:
-        registry:
-          url: "docker://gcr.io/spectro-images-public/release/vm-dashboard/os/ubuntu-container-disk:22.04"
-    ```
+      :::warning
 
-    :::warning
+      When the `Filesystem` mode is selected, the CDI will automatically apply a small overhead factor to the Persistent
+      Volume Claim (PVC) size to account for the storage space lost due to the filesystem overhead. As a result, the PVC
+      for such a template will be slightly larger. Any clones made from this PVC will also use this larger minimum size.
 
-    When the `Filesystem` mode is selected, the CDI will automatically apply a small overhead factor to the Persistent
-    Volume Claim (PVC) size to account for the storage space lost due to the filesystem overhead. As a result, the PVC
-    for such a template will be slightly larger. Any clones made from this PVC will also use this larger minimum size.
-
-    :::
+      :::
 
 2.  Create another manifest in this cluster profile and add the following code snippet.
 
@@ -86,96 +84,92 @@ This guide demonstrates how to implement your own disk and VM templates using Ku
     - `spec.dataVolumeTemplates.spec.pvc` that creates a new target PVC with the specified `accessMode` and `volumeMode`
       characteristics. The size of the new PVC must be the same or larger as the source PVC.
 
-    <br />
+      :::warning
 
-    :::warning
+      To enable CSI-assisted cloning, you must fulfill a few
+      [prerequisites](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/csi-cloning.md#prerequisites).
+      For instance, the source and target PVCs must share the same Storage Class and Volume Mode. The CDI will
+      automatically fall back to slower host-assisted cloning if you don't meet these requirements.
 
-    To enable CSI-assisted cloning, you must fulfill a few
-    [prerequisites](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/csi-cloning.md#prerequisites).
-    For instance, the source and target PVCs must share the same Storage Class and Volume Mode. The CDI will
-    automatically fall back to slower host-assisted cloning if you don't meet these requirements.
+      :::
 
-    :::
-
-    <br />
-
-    ```yaml {9,10,14}
-    apiVersion: spectrocloud.com/v1
-    kind: VmTemplate
-    metadata:
-      name: ubuntu-2204
-    spec:
-      dataVolumeTemplates:
-        - metadata:
-            name: ubuntu-2204
-          spec:
-            source:
+      ```yaml {9,10,14}
+      apiVersion: spectrocloud.com/v1
+      kind: VmTemplate
+      metadata:
+        name: ubuntu-2204
+      spec:
+        dataVolumeTemplates:
+          - metadata:
+              name: ubuntu-2204
+            spec:
+              source:
+                pvc:
+                  name: template-ubuntu-2204
+                  namespace: vmo-golden-images
               pvc:
-                name: template-ubuntu-2204
-                namespace: vmo-golden-images
-            pvc:
-              accessModes:
-                - ReadWriteMany
+                accessModes:
+                  - ReadWriteMany
+                resources:
+                  requests:
+                    storage: 50Gi
+                volumeMode: Block # or "Filesystem", depending on the CSI used
+        template:
+          metadata:
+            annotations:
+              descheduler.alpha.kubernetes.io/evict: "true"
+          spec:
+            domain:
+              cpu:
+                cores: 2
+                sockets: 1
+                threads: 1
+              devices:
+                disks:
+                  - disk:
+                      bus: virtio
+                    name: datavolume-os
+                  - disk:
+                      bus: virtio
+                    name: cloudinitdisk
+                interfaces:
+                  - masquerade: {}
+                    name: default
+                    model: virtio
+              machine:
+                type: q35
               resources:
+                limits:
+                  memory: 2Gi
                 requests:
-                  storage: 50Gi
-              volumeMode: Block # or "Filesystem", depending on the CSI used
-      template:
-        metadata:
-          annotations:
-            descheduler.alpha.kubernetes.io/evict: "true"
-        spec:
-          domain:
-            cpu:
-              cores: 2
-              sockets: 1
-              threads: 1
-            devices:
-              disks:
-                - disk:
-                    bus: virtio
-                  name: datavolume-os
-                - disk:
-                    bus: virtio
-                  name: cloudinitdisk
-              interfaces:
-                - masquerade: {}
-                  name: default
-                  model: virtio
-            machine:
-              type: q35
-            resources:
-              limits:
-                memory: 2Gi
-              requests:
-                memory: 2Gi
-          networks:
-            - name: default
-              pod: {}
-          volumes:
-            - dataVolume:
-                name: ubuntu-2204
-              name: datavolume-os
-            - cloudInitNoCloud:
-                userData: |
-                  #cloud-config
-                  ssh_pwauth: True
-                  chpasswd: { expire: False }
-                  password: spectro
-                  disable_root: false
-                  runcmd:
-                    - apt-get update
-                    - apt-get install -y qemu-guest-agent
-                    - systemctl start qemu-guest-agent
-              name: cloudinitdisk
-    ```
+                  memory: 2Gi
+            networks:
+              - name: default
+                pod: {}
+            volumes:
+              - dataVolume:
+                  name: ubuntu-2204
+                name: datavolume-os
+              - cloudInitNoCloud:
+                  userData: |
+                    #cloud-config
+                    ssh_pwauth: True
+                    chpasswd: { expire: False }
+                    password: spectro
+                    disable_root: false
+                    runcmd:
+                      - apt-get update
+                      - apt-get install -y qemu-guest-agent
+                      - systemctl start qemu-guest-agent
+                name: cloudinitdisk
+      ```
 
-    :::tip
+      :::tip
 
-    To enable CSI-assisted cloning into larger PVCs than the source PVC, set `allowVolumeExpansion : true` on your
-    defined Storage Class.
+      To enable CSI-assisted cloning into larger PVCs than the source PVC, set `allowVolumeExpansion : true` on your
+      defined Storage Class.
 
-    :::
+      :::
 
 3.  When the CDI clones a PVC, it runs under the `default` service account in the namespace of the target PVC. When the
     source PVC is in a different namespace, you must give the required permissions to the service account. The
@@ -207,115 +201,113 @@ This guide demonstrates how to implement your own disk and VM templates using Ku
     - The storage class supports the `Block` volume mode with the `ReadWriteMany` access mode.
     - The storage class uses `csi-clone` for cloning operations.
 
-    <br />
+      ```yaml {4,8,10,11}
+      apiVersion: cdi.kubevirt.io/v1beta1
+      kind: StorageProfile
+      metadata:
+        name: ceph-block
+      spec:
+        claimPropertySets:
+          - accessModes:
+              - ReadWriteMany
+            volumeMode: Block
+        cloneStrategy: csi-clone
+      ```
 
-    ```yaml {4,8,10,11}
-    apiVersion: cdi.kubevirt.io/v1beta1
-    kind: StorageProfile
-    metadata:
-      name: ceph-block
-    spec:
-      claimPropertySets:
-        - accessModes:
-            - ReadWriteMany
-          volumeMode: Block
-      cloneStrategy: csi-clone
-    ```
+      Expand the following section to learn how you can use storage profiles for CSI-assisted cloning.
 
-    Expand the following section to learn how you can use storage profiles for CSI-assisted cloning.
+        <details>
 
-    <details>
+          <summary>Storage Profiles in VM Templates</summary>
 
-    <summary>Storage Profiles in VM Templates</summary>
+          If Storage Profiles are not manually defined, the CDI will automatically generate one for every Storage Class
+          based on the information in its internal database. We recommend verifying that these parameters are accurate for
+          your use case and, if not, overwriting them to define a Storage Profile manually.
 
-    If Storage Profiles are not manually defined, the CDI will automatically generate one for every Storage Class based
-    on the information in its internal database. We recommend verifying that these parameters are accurate for your use
-    case and, if not, overwriting them to define a Storage Profile manually.
+          Per the
+          [CDI documentation](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md#storage),
+          you can optionally replace the target `pvc` sections in your `vmTemplate` resources with a `storage` section once
+          you have defined a storage profile.
 
-    Per the
-    [CDI documentation](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md#storage),
-    you can optionally replace the target `pvc` sections in your `vmTemplate` resources with a `storage` section once
-    you have defined a storage profile.
+          Using storage instead of PVC will automatically discover default values for `accessMode`, `volumeMode` and,
+          optionally, even the size from the source PVC and its associated storage profile.
 
-    Using storage instead of PVC will automatically discover default values for `accessMode`, `volumeMode` and,
-    optionally, even the size from the source PVC and its associated storage profile.
+          A benefit of `storage` over `pvc` is that the CDI will automatically calculate the size overhead for `Filesystem`
+          mode storage classes, allowing the VM template to use the original disk size instead of the one adjusted for the
+          filesystem overhead.
 
-    A benefit of `storage` over `pvc` is that the CDI will automatically calculate the size overhead for `Filesystem`
-    mode storage classes, allowing the VM template to use the original disk size instead of the one adjusted for the
-    filesystem overhead.
+          If you want to use this template, replace the contents of the manifest you added in step two with the following
+          snippet.
 
-    If you want to use this template, replace the contents of the manifest you added in step two with the following
-    snippet.
-
-    ```yaml {14}
-    apiVersion: spectrocloud.com/v1
-    kind: VmTemplate
-    metadata:
-      name: ubuntu-2204
-    spec:
-      dataVolumeTemplates:
-        - metadata:
+          ```yaml {14}
+          apiVersion: spectrocloud.com/v1
+          kind: VmTemplate
+          metadata:
             name: ubuntu-2204
           spec:
-            source:
-              pvc:
-                name: template-ubuntu-2204
-                namespace: vmo-golden-images
-            storage:
-              resources:
-                requests:
-                  storage: 50Gi
-      template:
-        metadata:
-          annotations:
-            descheduler.alpha.kubernetes.io/evict: "true"
-        spec:
-          domain:
-            cpu:
-              cores: 2
-              sockets: 1
-              threads: 1
-            devices:
-              disks:
-                - disk:
-                    bus: virtio
-                  name: datavolume-os
-                - disk:
-                    bus: virtio
-                  name: cloudinitdisk
-              interfaces:
-                - masquerade: {}
-                  name: default
-                  model: virtio
-            machine:
-              type: q35
-            resources:
-              limits:
-                memory: 2Gi
-              requests:
-                memory: 2Gi
-          networks:
-            - name: default
-              pod: {}
-          volumes:
-            - dataVolume:
-                name: ubuntu-2204
-              name: datavolume-os
-            - cloudInitNoCloud:
-                userData: |
-                  #cloud-config
-                  ssh_pwauth: True
-                  chpasswd: { expire: False }
-                  password: spectro
-                  disable_root: false
-                  runcmd:
-                    - apt-get update
-                    - apt-get install -y qemu-guest-agent
-                    - systemctl start qemu-guest-agent
-              name: cloudinitdisk
-    ```
+            dataVolumeTemplates:
+              - metadata:
+                  name: ubuntu-2204
+                spec:
+                  source:
+                    pvc:
+                      name: template-ubuntu-2204
+                      namespace: vmo-golden-images
+                  storage:
+                    resources:
+                      requests:
+                        storage: 50Gi
+            template:
+              metadata:
+                annotations:
+                  descheduler.alpha.kubernetes.io/evict: "true"
+              spec:
+                domain:
+                  cpu:
+                    cores: 2
+                    sockets: 1
+                    threads: 1
+                  devices:
+                    disks:
+                      - disk:
+                          bus: virtio
+                        name: datavolume-os
+                      - disk:
+                          bus: virtio
+                        name: cloudinitdisk
+                    interfaces:
+                      - masquerade: {}
+                        name: default
+                        model: virtio
+                  machine:
+                    type: q35
+                  resources:
+                    limits:
+                      memory: 2Gi
+                    requests:
+                      memory: 2Gi
+                networks:
+                  - name: default
+                    pod: {}
+                volumes:
+                  - dataVolume:
+                      name: ubuntu-2204
+                    name: datavolume-os
+                  - cloudInitNoCloud:
+                      userData: |
+                        #cloud-config
+                        ssh_pwauth: True
+                        chpasswd: { expire: False }
+                        password: spectro
+                        disable_root: false
+                        runcmd:
+                          - apt-get update
+                          - apt-get install -y qemu-guest-agent
+                          - systemctl start qemu-guest-agent
+                    name: cloudinitdisk
+          ```
 
-    </details>
+        </details>
 
 5.  Click on **Confirm & Create**.
 
