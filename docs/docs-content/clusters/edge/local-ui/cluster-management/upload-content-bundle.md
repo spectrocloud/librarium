@@ -3,7 +3,7 @@ sidebar_label: "Upload Content Bundle"
 title: "Upload Content Bundle"
 description: "Instructions for building and uploading content to Edge hosts."
 hide_table_of_contents: false
-sidebar_position: 32
+sidebar_position: 60
 tags: ["edge"]
 ---
 
