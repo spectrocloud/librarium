@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Community Packs"
 title: "Community Packs"
-description: "Learn what community packs are and how to use them in Palette."
+description: "Learn what are community packs and how to use them in Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
@@ -17,8 +17,8 @@ packs. You can read our
 packs repository. Check out the [Deploy a Custom Pack](../registries-and-packs/deploy-pack.md) tutorial to learn more
 about how to build and deploy your own custom pack.
 
-Palette comes with a default community pack registry hosted by Spectro Cloud that is available to all SaaS tenants, and
-non-airgap self-hosted Palette environments. The
+Palette comes with a default community pack registry hosted by Spectro Cloud that is available to multi-tenant SaaS
+deployments, and non-airgap self-hosted Palette environments. The
 [Default Registries](../registries-and-packs/registries/registries.md#default-registries) table has the details of the
 community registry.
 
