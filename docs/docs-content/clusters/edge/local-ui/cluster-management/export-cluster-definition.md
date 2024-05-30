@@ -142,6 +142,17 @@ Silicon, use the API approach instead.
     | `--include-palette-content` | Whether to include content necessary for Palette itself. Required for airgap installations.                                                                                                                                         |
     | `--outfile`                 | Name of your content bundle. The final file name should have the following pattern: `core-<bundle-name>-random-string`.                                                                                                             |
 
+### Validate
+
+1. Log in to the [local UI](../host-management/access-console.md).
+
+2. From the left **Main Menu**, click on **Cluster**.
+
+3. Try creating a cluster with the exported cluster definition. For more information, refer to
+   [Create a Local Cluster](../cluster-management/create-cluster.md).
+
+4. A successful cluster definition export will display the correct profile layers from the cluster creation view.
+
 ## Export Cluster Definition with Palette API
 
 ### Prerequisites
