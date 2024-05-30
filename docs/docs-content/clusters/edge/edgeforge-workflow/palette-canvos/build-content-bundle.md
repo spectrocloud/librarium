@@ -188,12 +188,12 @@ Creating a content bundle provides several benefits that may address common use 
         {
           "endpoint": "ttl.sh",
           "username": "admin",
-          "password": "Welc0me!123"
+          "password": "*********"
         },
         {
           "endpoint": "docker.io",
           "username": "akhileshpvt",
-          "password": "Lucent122333!"
+          "password": "*********"
         }
       ]
     }
