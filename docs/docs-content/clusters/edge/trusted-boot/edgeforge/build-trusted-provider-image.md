@@ -26,7 +26,7 @@ key that is in the signature database. This is important both during installatio
 
   - 4 CPU
   - 32 GB memory
-  - 50 GB storage
+  - 150 GB storage
 
 - You have generated Trusted Boot keys in the **secure-boot/enrollment** folder and have stored the private **db.key**
   and **tpm2-pcr-private.pem** folder on the machine where you are building the provider images.

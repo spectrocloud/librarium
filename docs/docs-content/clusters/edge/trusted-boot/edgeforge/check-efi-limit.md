@@ -4,7 +4,7 @@ title: "Check EFI Size and Device Limit with Trusted Boot"
 description:
   "Learn about how to check the EFI size limit of your Edge host and avoid creating an EFI that is too large to boot."
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 50
 tags: ["edge"]
 ---
 

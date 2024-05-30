@@ -3,7 +3,7 @@ sidebar_label: "Add Static Binaries to Persistent Partition"
 title: "Add Static Binaries to Persistent Partition with Trusted Boot"
 description: "Learn about how to add content to the persistent partition of your Edge host with Trusted Boot."
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 60
 tags: ["edge"]
 ---
 
@@ -25,6 +25,19 @@ after. Because the content is placed in the persistent partitions, it will be en
 - The approach described in this guide is based on EdgeForge. You should become familiar with
   [how to use EdgeForge to build ISO with Trusted Boot](./build-trusted-iso.md) before using this approach to add
   software packages to your Edge host.
+
+- A physical or virtual Linux machine with _AMD64_ (also known as x86_64) processor architecture to build the Edge
+  artifacts. You can issue the following command in the terminal to check your processor architecture.
+
+  ```bash
+  uname -m
+  ```
+
+- Minimum hardware configuration of the Linux machine:
+
+  - 4 CPU
+  - 32 GB memory
+  - 100 GB storage
 
 - Static compiled binaries of the software package you are adding to the Edge host.
 

@@ -1,5 +1,5 @@
 ---
-sidebar_label: "Keys"
+sidebar_label: "Trusted Boot Keys"
 title: "Trusted Boot Keys"
 description: "An overview of keys in Trusted Boot."
 hide_table_of_contents: false
