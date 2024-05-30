@@ -20,8 +20,6 @@ organization's administrator provides.
 
 These steps will help guide you to deploy a VM from an out-of-the-box VM template.
 
-<br />
-
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, click **Clusters** and select the cluster in which you deploy VMs.
@@ -37,16 +35,10 @@ These steps will help guide you to deploy a VM from an out-of-the-box VM templat
 
 7. You can deploy from a template or create an empty VM as follows:
 
-   <br />
-
    - To deploy from a template, select one of the VM templates. These can be Palette's out-of-the-box templates or
      templates that you or your administrator created.
 
-   <br />
-
    - To create an empty VM, close the templates choice page and install the OS using a different method.
-
-   <br />
 
 8. Give the VM a name and specify memory and CPUs.
 
@@ -62,8 +54,6 @@ These steps will help guide you to deploy a VM from an out-of-the-box VM templat
 VM status will display as **Starting** for several minutes while the required resources are built and the image is
 pulled from the registry. If you did not enable the checkbox to start the VM automatically, VM status displays as
 **Stopped** until the VM is fully deployed.
-
-<br />
 
 :::warning
 
