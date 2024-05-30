@@ -25,8 +25,8 @@ community registry.
 :::warning
 
 All community packs are reviewed, and if they have followed the
-[contribution guidelines](https://github.com/spectrocloud/pack-central?tab=readme-ov-file#pull-request-guidelines), they
-are accepted by Spectro Cloud. However, unlike [Verified Packs](./verified_packs.md), Spectro Cloud does not actively
+[Contribution Guidelines](https://github.com/spectrocloud/pack-central?tab=readme-ov-file#contributing), they are
+accepted by Spectro Cloud. However, unlike [Verified Packs](./verified_packs.md), Spectro Cloud does not actively
 maintain and update community packs. Therefore, updates to these packs depend on community contributors.
 
 :::
