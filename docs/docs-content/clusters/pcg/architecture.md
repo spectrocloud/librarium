@@ -14,9 +14,9 @@ in a private network that blocks connections originating externally. The PCG con
 endpoint, allowing you to target the environment when deploying clusters in Palette.
 
 When installed, the PCG registers with the self-hosted or SaaS Palette instance you specify, enabling secure
-communication between the Palette control management plane and the private cloud environment. The PCG enables the
-deployment and removal of Kubernetes clusters in private cloud environments through the Palette user interface, API,
-CLI, or Terraform provider.
+communication between the Palette management plane and the private cloud environment. The PCG enables the deployment and
+removal of Kubernetes clusters in private cloud environments through the Palette user interface, API, CLI, or Terraform
+provider.
 
 ![An architecture diagram of PCG](/clusters_pcg_architecture_overview_diagram.webp)
 
