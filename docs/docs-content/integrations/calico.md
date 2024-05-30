@@ -46,7 +46,7 @@ Limitations: AWS, VMWare supports IP-in-IP encapsulation type. Azure supports VX
 ### Prerequisites
 
 - You have created a bind mount for the `/var/lib/calico` folder on the Edge host. For more information, refer to
-  [Create Bind Mounts](#create-bind-mounts).
+  [Create Bind Mounts](#create-bind-mounts-for-edge-deployments).
 
 ### Parameters
 
@@ -92,7 +92,7 @@ install:
 ### Prerequisites
 
 - You have created a bind mount for the `/var/lib/calico` folder on the Edge host. For more information, refer to
-  [Create Bind Mounts](#create-bind-mounts).
+  [Create Bind Mounts](#create-bind-mounts-for-edge-deployments).
 
 ### Parameters
 
@@ -139,7 +139,7 @@ install:
 ### Prerequisites
 
 - You have created a bind mount for the `/var/lib/calico` folder on the Edge host. For more information, refer to
-  [Create Bind Mounts](#create-bind-mounts).
+  [Create Bind Mounts](#create-bind-mounts-for-edge-deployments).
 
 ### Parameters
 
@@ -186,7 +186,7 @@ install:
 ### Prerequisites
 
 - You have created a bind mount for the `/var/lib/calico` folder on the Edge host. For more information, refer to
-  [Create Bind Mounts](#create-bind-mounts).
+  [Create Bind Mounts](#create-bind-mounts-for-edge-deployments).
 
 ### Parameters
 
