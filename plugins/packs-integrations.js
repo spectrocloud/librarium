@@ -169,9 +169,12 @@ async function fetchPackListItems(queryParams, packDataArr, counter) {
 }
 
 async function mapRepositories(repositories) {
-  const results = await api.get('v1/registries/pack');
+  const ociRegistries = await api.get("v1/registries/oci/summary");
+  const packRegistries = await api.get("v1/registries/pack");
+  const mergedRegistries = [ociRegistries.data?.items || [], packRegistries.data?.items || []];
+  const results = mergedRegistries.flat();
   const repoMap = repositories.reduce((acc, repository) => {
-    const repoObj = results.data?.items?.find((repo) => {
+    const repoObj = results.find((repo) => {
       return repo.metadata.name === repository;
     });
     if (repoObj) {
