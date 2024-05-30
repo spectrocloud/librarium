@@ -114,7 +114,8 @@ Creating a content bundle provides several benefits that may address common use 
 8. Click on the cluster profile you want to include in the content bundle.
 
 9. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last
-   value in the URL. Repeat this step for all the cluster profiles you want to specify in the content bundle.
+   value in the URL. Refer to the [Project](../../../../tenant-settings/projects/projects.md#project-id) page for
+   details. Repeat this step for all the cluster profiles you want to specify in the content bundle.
 
    ```text
    https://console.spectrocloud.com/projects/yourProjectId/profiles/cluster/<YourClusterProfileHere>
@@ -297,7 +298,7 @@ Creating a content bundle provides several benefits that may address common use 
      --cluster-definition-profile-ids <CLUSTER_PROFILE_IDS>
     ```
 
-    Compared with the previous command, this command has two additional flags:
+    Compared with the previous command, this command has two additional flags.
 
     | Flag                               | Description                                                           |
     | ---------------------------------- | --------------------------------------------------------------------- |

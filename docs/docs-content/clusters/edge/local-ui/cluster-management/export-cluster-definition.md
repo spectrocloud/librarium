@@ -106,8 +106,7 @@ Silicon, use the API approach instead.
     --project-id <projectId> \
     --palette-endpoint <paletteEndpoint> \
     --cluster-definition-name <clusterDefinitionName> \
-    --cluster-definition-profile-ids <clusterDefinitionProfileId1,clusterDefinitionProfileId2,...> \
-    --cloud-type edge-native
+    --cluster-definition-profile-ids <clusterDefinitionProfileId1,clusterDefinitionProfileId2,...>
     ```
 
     | Flag                               | Description                                                           |
