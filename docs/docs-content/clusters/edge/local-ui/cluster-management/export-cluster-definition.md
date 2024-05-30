@@ -56,7 +56,7 @@ Silicon, use the API approach instead.
    available commands and flags for the CLI.
 
    ```bash
-   ppalette-edge --help
+   palette-edge --help
    ```
 
    ```hideClipboard bash
