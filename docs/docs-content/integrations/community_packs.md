@@ -17,11 +17,6 @@ packs. You can read our
 packs repository. Check out the [Deploy a Custom Pack](../registries-and-packs/deploy-pack.md) tutorial to learn more
 about how to build and deploy your own custom pack.
 
-Palette comes with a default community pack registry hosted by Spectro Cloud that is available to multi-tenant SaaS
-deployments, and non-airgap self-hosted Palette environments. The
-[Default Registries](../registries-and-packs/registries/registries.md#default-registries) table has the details of the
-community registry.
-
 :::warning
 
 All community packs are reviewed, and if they have followed the
@@ -31,15 +26,26 @@ maintain and update community packs. Therefore, updates to these packs depend on
 
 :::
 
+### Supported Environments
+
+Palette comes with a default community pack registry hosted by Spectro Cloud that is available to all multi-tenant SaaS
+deployments. For different deployment models, the registry must be added manually. Refer to the table below to check if
+your environment includes the Palette Community Registry. If your environment does not include the registry, contact our
+[support team](https://www.spectrocloud.com/contact) for assistance with the installation.
+
+| **Environment**           | **Palette Community Registry Support** |
+| ------------------------- | -------------------------------------- |
+| Palette Multi-Tenant SaaS | :white_check_mark:                     |
+| Palette Dedicated SaaS    | :x:                                    |
+| Palette VerteX            | :x:                                    |
+| Self-Hosted Palette       | :x:                                    |
+
 ## Prerequisites
 
 - Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the
   [Roles and Permissions](../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
   documentation for more information.
-- Ensure that the Palette Community Registry is available. Depending on the configuration of your Palette environment,
-  you may need to add it yourself. Refer to the
-  [Use non-FIPS Packs](../vertex/system-management/enable-non-fips-settings/use-non-fips-addon-packs.md) guide for
-  guidance.
+- Ensure that the community registry is available in your Palette [environment](#supported-environments).
 
 ## Use Community Packs
 
