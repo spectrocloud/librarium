@@ -276,12 +276,13 @@ stages:
 
 Palette Edge allows you to create bind mounts from your Edge host to your cluster through the installer configuration
 file named **user-data**, which allows your cluster to use directories or files from your Edge host directly within your
-Kubernetes cluster. This setup is useful for scenarios where your applications are active in the cluster and need direct access
-to files or directories on the Edge host.
+Kubernetes cluster. This setup is useful for scenarios where your applications are active in the cluster and need direct
+access to files or directories on the Edge host.
 
-Several packs require you set up bind mounts in order to function. For example, the Calico pack requires the folder
-`/var/lib/calico` to be mounted. You can use the `install.bind_mounts` parameter to specify folders to be mounted. For
-example, the following user data mounts the `/var/lib/calico` folder.
+Several packs require you set up bind mounts in order to function. For example, the
+[Portworx pack](../../../integrations/portworx.md) requires several folders to be mounted on Edge deployments. You can
+use the `install.bind_mounts` parameter to specify folders to be mounted. For example, the following user data mounts
+three folders required by Portworx from the Edge host to the cluster.
 
 ```yaml
 #cloud-config
@@ -299,7 +300,9 @@ stylus:
 
 install:
   bind_mounts:
-    - /var/lib/calico
+    - /etc/pwx
+    - /var/lib/osd
+    - /var/cores
 ```
 
 ## Multiple User Data Use Case
