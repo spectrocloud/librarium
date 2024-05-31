@@ -99,6 +99,10 @@ Silicon, use the API approach instead.
    https://console.spectrocloud.com/projects/yourProjectId/profiles/cluster/<YourClusterProfileHere>
    ```
 
+   Make sure the combination of profiles you choose to export can be used to provision a cluster together. This means
+   that you cannot include more than one profile that has infrastructure layers and cannot have duplicate packs between
+   the profiles.
+
 10. Issue the following command to export the cluster definition.
 
     ```shell
