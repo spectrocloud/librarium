@@ -28,14 +28,15 @@ maintain and update community packs. Therefore, updates to these packs depend on
 
 ### Supported Environments
 
-Palette comes with a default community pack registry hosted by Spectro Cloud that is available to all multi-tenant SaaS
-deployments. For different deployment models, the registry must be added manually. Refer to the table below to check if
-your environment includes the Palette Community Registry. If your environment does not include the registry, contact our
-[support team](https://www.spectrocloud.com/contact) for assistance with the installation.
+Palette comes with a default community pack registry hosted by Spectro Cloud that is available to all tenants in the
+[Multi-tenant SaaS](../architecture/architecture-overview.md) architecture. For different deployment models, the
+registry must be added manually. Refer to the table below to check if your environment includes the Palette Community
+Registry. If your environment does not include the registry, contact our
+[support team](https://www.spectrocloud.com/contact) for assistance.
 
 | **Environment**           | **Palette Community Registry Support** |
 | ------------------------- | -------------------------------------- |
-| Palette Multi-Tenant SaaS | :white_check_mark:                     |
+| Palette Multi-tenant SaaS | :white_check_mark:                     |
 | Palette Dedicated SaaS    | :x:                                    |
 | Palette VerteX            | :x:                                    |
 | Self-Hosted Palette       | :x:                                    |
