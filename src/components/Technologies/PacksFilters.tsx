@@ -13,6 +13,10 @@ interface PackFiltersProps {
 
 const sourceList: any[] = [
   {
+    label: "All",
+    value: "all"
+  },
+  {
     label: "Verified",
     value: "verified"
   },

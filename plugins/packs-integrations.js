@@ -20,18 +20,23 @@ function getReadMeMap(packValues) {
   return generatedReadMeData;
 }
 
-function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPacksData) {
+function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPacksData, repositories) {
   const filteredPalattePackData = packsPaletteDetailsData.filter((packContent) => {
     const packName = packContent.name;
     return ((packsMData[packName].spec.layer === "addon" && packsMData[packName].spec.addonType) || packsMData[packName].spec.layer !== "addon");
   });
+  const preferredRegistryUid = repositories?.[0]?.uid;
   return filteredPalattePackData.map((packContent) => {
     const packName = packContent.name;
     if (packsMData[packName]) {
       const packMDValue = packsMData[packName];
+      const preferredRegistry = packMDValue.spec.registries.find((registry) => registry.uid === preferredRegistryUid);
+      const latestPackVersion = preferredRegistry ? preferredRegistry.latestVersion : packMDValue.spec.registries[0].latestVersion;
       const packType = packMDValue.spec.layer === "addon" ? packMDValue.spec.addonType : packMDValue.spec.layer;
       const layer = packMDValue.spec.layer === "addon" ? packMDValue.spec.addonType : packTypeNames[packMDValue.spec.layer];
       const packValues = packContent.packValues;
+      const allSupportedVersions = getAggregatedVersions(packContent.tags);
+      const latestPackTagVersion = allSupportedVersions.find((version) => version.value === latestPackVersion);
       return {
         name: packName,
         title: packMDValue.spec.displayName,
@@ -48,9 +53,10 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
         registries: packMDValue.spec.registries.map((registry) => registry.uid),
         community: packMDValue.spec.registries[0].annotations?.source === "community",
         verified: packMDValue.spec.registries[0].annotations?.source === "spectrocloud",
-        versions: getAggregatedVersions(packContent.tags),
+        versions: allSupportedVersions,
         disabled: packMDValue.spec.registries[0].annotations?.disabled === "true",
         deprecated: packMDValue.spec.registries[0].annotations?.system_state === "deprecated",
+        latestVersion: latestPackTagVersion?.title,
       };
     }
   });
@@ -231,7 +237,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
       const { setGlobalData, addRoute } = actions;
       const { packsPaletteData, packsPaletteDetailsData, packsDescription, repositories } = content;
       const customPacksData = generateCustomData(packsDescription);
-      const unionPackData = combineAPICustomPackData(packsPaletteData, packsPaletteDetailsData, customPacksData);
+      const unionPackData = combineAPICustomPackData(packsPaletteData, packsPaletteDetailsData, customPacksData, repositories);
       const routes = generateRoutes(packsPaletteData);
       console.info("completed the generation of the routes");
       routes.map(route => addRoute(route));
