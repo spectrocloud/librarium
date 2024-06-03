@@ -10,42 +10,21 @@ logoUrl: "https://registry.spectrocloud.com/v1/kubernetes-microk8s/blobs/sha256:
 tags: ["packs", "microk8s", "kubernetes"]
 ---
 
-MicroK8s is a Cloud Native Computing Foundation (CNCF) certified upstream Kubernetes deployment that runs entirely on
-your workstation or edge device. It runs all Kubernetes services natively without virtual machines and packs all the
-required libraries and binaries.
+[MicroK8s](https://microk8s.io) is a lightweight Cloud Native Computing Foundation (CNCF) certified Kubernetes
+distribution developed by [Canonical](https://canonical.com). It deploys all Kubernetes services in a single, fully
+contained package, while also offering out-of-the-box [add-ons](https://microk8s.io/docs/addons).
+
+Palette offers MicroK8s as Kubernetes distribution available for creating clusters. You can use MicroK8s as the
+Kubernetes layer when creating [cluster profiles](../profiles/profiles.md) and then use the cluster profiles to deploy
+clusters.
 
 ### Support Lifecycle
 
-We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until their official EOL. The EOL is set by
-the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. Refer to the
-[Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
+We support different Kubernetes distributions, such as MicroK8s, K3s, and RKE2, until their official End-of-Life (EOL).
+The EOL is set by the respective owner. Once we stop supporting the minor version, we initiate the deprecation process.
+Refer to the [Kubernetes Support Lifecycle](kubernetes-support.md#other-kubernetes-distributions) guide to learn more.
 
-:::warning
-
-Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before
-upgrading, you review the information provided in the [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades)
-section.
-
-:::
-
-## Prerequisites
-
-- One of the following Ubuntu environments to run commands:
-
-  - 22.04 LTS
-  - 20.04 LTS
-  - 18.04 LTS
-  - 16.04 LTS
-
-  Or another operating system that supports snapd.
-
-- At least 20 GB of disk space and 4 GB of memory.
-- An internet connection.
-
-:::info
-
-If your environment doesn't meet these requirements, there are alternative ways to install MicroK8s, including
-additional OS support and an offline deployment.
+:::preview
 
 :::
 
@@ -53,56 +32,269 @@ additional OS support and an offline deployment.
 
 <Tabs queryString="versions">
 
-<TabItem label="1.25.x" value="1.25.x">
+<!-- <TabItem label="1.28.x" value="1.28.x">
 
-- **1.25.0**
+### Prerequisites
 
-</TabItem>
+- A minimum of 20 GB of disk space and 4 GB of memory.
 
-<TabItem label="1.24.x" value="1.24.x">
+- Operating System (OS) pack layer and infrastructure provider dependencies as listed in the table below.
 
-- **1.24.0**
+  | Infrastructure Platform | OS     | Version | Supported?         |
+  | ----------------------- | ------ | ------- | ------------------ |
+  | AWS                     | Ubuntu | 22.04   | :white_check_mark: |
+  | MAAS                    | Ubuntu | 22.04   | :white_check_mark: |
 
-</TabItem>
-</Tabs>
+### Parameters
 
-MicroK8s installs a minimal, lightweight Kubernetes you can run and use on almost any machine. When installing MicroK8s
-you can specify a channel made up of two components:
+| Parameter                        | Description                                                                                                                                                                                                                 |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `microk8sConfig.addons`          | A list of [MicroK8s addons](https://microk8s.io/docs/addons) you can set for your cluster. `Ingress` and `DNS` are mandatory and enabled by default.                                                                        |
+| `microk8sConfig.upgradeStrategy` | It describes how to replace existing nodes of your cluster with new ones during upgrades. Values can be `RollingUpgrade` (default), `InPlaceUpgrade`, or `SmartUpgrade`. Refer to the [Usage](#usage) section for guidance. |
+| `microk8sConfig.bootCommands`    | A list of commands you can set to be executed during boot.                                                                                                                                                                  |
+| `microk8sConfig.preRunCommands`  | A list of commands you can set to be executed before installing MicroK8s in your cluster.                                                                                                                                   |
+| `microk8sConfig.postRunCommands` | A list of commands you can set to be executed after installing MicroK8s in your cluster.                                                                                                                                    |
 
-- **Track**: denotes the upstream Kubernetes version.
-- **Risk level**: indicates the maturity level of the release, such as stable and edge.
+### Usage
 
-MicroK8s comes with its own packaged version of the `kubectl` command for operating Kubernetes. This avoids interfering
-with any version that may already be on the host machine. You can run it in a terminal like this: <br />
+To use MicroK8s, select it as the Kubernetes distribution when choosing the Kubernetes layer during the cluster profile
+creation. Remember that the cloud type must be either AWS or MAAS, and the OS layer must be Ubuntu 22.04.
 
-```yaml
-microk8s kubectl
-```
+![A view of the cluster profile Kubernetes selection screen](/integrations_microk8s_cluster-profile-view.webp)
 
-If you are using or want to use a different kubectl command, you can configure it for your Linux, Mac, or Windows
-operating system.
+:::info
 
-<br />
+MicroK8s clusters use the [Calico CNI](https://microk8s.io/docs/change-cidr) by default. However, this default
+installation was disabled due to Palette's requirement for a CNI layer to be present in the cluster profiles. This way,
+users can choose their preferred CNI layer during the cluster profile creation.
+
+:::
+
+#### Upgrade Strategy
+
+The upgrade strategy describes how to replace existing control plane nodes with new ones during upgrades.
+
+You can specify the upgrade strategy during cluster profile creation by editing the value of the `upgradeStrategy`
+parameter in the MicroK8s pack YAML file displayed under the **Pack Details** section.
 
 :::warning
 
-When you deploy AWS EBS pack with MicroK8s, you need to change EBS CSI pack
-`node.kubelet`` values from `/var/lib/kubelet`to`/var/snap/microk8s/common/var/lib/kubelet`.
+Before upgrading your cluster, review the [Known Issues](../release-notes/known-issues.md) and the
+[Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) pages to learn about the limitations associated with
+MicroK8s upgrades.
 
-```yaml
+:::
+
+The MicroK8s pack supports three types of upgrade strategies:
+
+- `InPlaceUpgrade` - Performs an in-place upgrade of the control plane. For clusters with one control plane and one
+  worker node, `InPlaceUpgrade` temporarily shuts down the API server.
+
+- `RollingUpgrade` - The default upgrade strategy that deletes the current control plane node before creating a new one.
+
+- `SmartUpgrade` - Performs an in-place upgrade of the control plane on clusters with fewer than three control plane
+  nodes, and a rolling upgrade on clusters with three or more control plane nodes.
+
+#### Using MicroK8s with the AWS EBS Pack
+
+When using the [AWS EBS pack](./aws-ebs.md) with MicroK8s, you need to change the EBS CSI pack `node.kubelet` parameter
+from `/var/lib/kubelet` to `/var/snap/microk8s/common/var/lib/kubelet`.
+
+```yaml {3}
 node:
   env: []
   kubeletPath: /var/lib/kubelet
 ```
 
-```yaml
+```yaml {3}
 node:
   env: []
   kubeletPath: /var/snap/microk8s/common/var/lib/kubelet
 ```
 
+</TabItem> -->
+
+<TabItem label="1.27.x" value="1.27.x">
+
+### Prerequisites
+
+- A minimum of 20 GB of disk space and 4 GB of memory.
+
+- Operating System (OS) pack layer and infrastructure provider dependencies as listed in the table below.
+
+  | Infrastructure Platform | OS     | Version | Supported?         |
+  | ----------------------- | ------ | ------- | ------------------ |
+  | AWS                     | Ubuntu | 22.04   | :white_check_mark: |
+  | MAAS                    | Ubuntu | 22.04   | :white_check_mark: |
+
+### Parameters
+
+| Parameter                        | Description                                                                                                                                                                                                                 |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `microk8sConfig.addons`          | A list of [MicroK8s addons](https://microk8s.io/docs/addons) you can set for your cluster. `Ingress` and `DNS` are mandatory and enabled by default.                                                                        |
+| `microk8sConfig.upgradeStrategy` | It describes how to replace existing nodes of your cluster with new ones during upgrades. Values can be `RollingUpgrade` (default), `InPlaceUpgrade`, or `SmartUpgrade`. Refer to the [Usage](#usage) section for guidance. |
+| `microk8sConfig.bootCommands`    | A list of commands you can set to be executed during boot.                                                                                                                                                                  |
+| `microk8sConfig.preRunCommands`  | A list of commands you can set to be executed before installing MicroK8s in your cluster.                                                                                                                                   |
+| `microk8sConfig.postRunCommands` | A list of commands you can set to be executed after installing MicroK8s in your cluster.                                                                                                                                    |
+
+### Usage
+
+To use MicroK8s, select it as the Kubernetes distribution when choosing the Kubernetes layer during the cluster profile
+creation. Remember that the cloud type must be either AWS or MAAS, and the OS layer must be Ubuntu 22.04.
+
+![A view of the cluster profile Kubernetes selection screen](/integrations_microk8s_cluster-profile-view.webp)
+
+:::info
+
+MicroK8s clusters use the [Calico CNI](https://microk8s.io/docs/change-cidr) by default. However, this default
+installation was disabled due to Palette's requirement for a CNI layer to be present in the cluster profiles. This way,
+users can choose their preferred CNI layer during the cluster profile creation.
+
 :::
+
+#### Upgrade Strategy
+
+The upgrade strategy describes how to replace existing control plane nodes with new ones during upgrades.
+
+You can specify the upgrade strategy during cluster profile creation by editing the value of the `upgradeStrategy`
+parameter in the MicroK8s pack YAML file displayed under the **Pack Details** section.
+
+:::warning
+
+Before upgrading your cluster, review the [Known Issues](../release-notes/known-issues.md) and the
+[Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) pages to learn about the limitations associated with
+MicroK8s upgrades.
+
+:::
+
+The MicroK8s pack supports three types of upgrade strategies:
+
+- `InPlaceUpgrade` - Performs an in-place upgrade of the control plane. For clusters with one control plane and one
+  worker node, `InPlaceUpgrade` temporarily shuts down the API server.
+
+- `RollingUpgrade` - The default upgrade strategy that deletes the current control plane node before creating a new one.
+
+- `SmartUpgrade` - Performs an in-place upgrade of the control plane on clusters with fewer than three control plane
+  nodes, and a rolling upgrade on clusters with three or more control plane nodes.
+
+</TabItem>
+
+<TabItem label="1.26.x" value="1.26.x">
+
+### Prerequisites
+
+- A minimum of 20 GB of disk space and 4 GB of memory.
+
+- Operating System (OS) pack layer and infrastructure provider dependencies as listed in the table below.
+
+  | Infrastructure Platform | OS     | Version | Supported?         |
+  | ----------------------- | ------ | ------- | ------------------ |
+  | AWS                     | Ubuntu | 22.04   | :white_check_mark: |
+  | MAAS                    | Ubuntu | 22.04   | :white_check_mark: |
+
+### Parameters
+
+| Parameter                        | Description                                                                                                                                                                                                                 |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `microk8sConfig.addons`          | A list of [MicroK8s addons](https://microk8s.io/docs/addons) you can set for your cluster. `Ingress` and `DNS` are mandatory and enabled by default.                                                                        |
+| `microk8sConfig.upgradeStrategy` | It describes how to replace existing nodes of your cluster with new ones during upgrades. Values can be `RollingUpgrade` (default), `InPlaceUpgrade`, or `SmartUpgrade`. Refer to the [Usage](#usage) section for guidance. |
+| `microk8sConfig.bootCommands`    | A list of commands you can set to be executed during boot.                                                                                                                                                                  |
+| `microk8sConfig.preRunCommands`  | A list of commands you can set to be executed before installing MicroK8s in your cluster.                                                                                                                                   |
+| `microk8sConfig.postRunCommands` | A list of commands you can set to be executed after installing MicroK8s in your cluster.                                                                                                                                    |
+
+:::tip
+
+Even though the `microk8sConfig.bootCommands`, `microk8sConfig.preRunCommands`, and `microk8sConfig.postRunCommands`
+parameters are not visible in the YAML file displayed for the MicroK8s pack during cluster profile creation, you can
+manually add them to the pack settings according to the example below.
+
+```yaml
+microk8sConfig:
+  addons:
+    - dns
+    - ingress
+  upgradeStrategy: RollingUpgrade
+  bootCommands:
+    - 'echo "===> bootCommands1" > /home/ubuntu/myfile1.txt'
+  preRunCommands:
+    - 'echo "===> preRunCommands1" > /home/ubuntu/myfile3.txt'
+  postRunCommands:
+    - 'echo "List of postRun commands to be executed"'
+```
+
+:::
+
+### Usage
+
+To use MicroK8s, select it as the Kubernetes distribution when choosing the Kubernetes layer during the cluster profile
+creation. Remember that the cloud type must be either AWS or MAAS, and the OS layer must be Ubuntu 22.04.
+
+![A view of the cluster profile Kubernetes selection screen](/integrations_microk8s_cluster-profile-view.webp)
+
+:::info
+
+MicroK8s clusters use the [Calico CNI](https://microk8s.io/docs/change-cidr) by default. However, this default
+installation was disabled due to Palette's requirement for a CNI layer to be present in the cluster profiles. This way,
+users can choose their preferred CNI layer during the cluster profile creation.
+
+:::
+
+#### Upgrade Strategy
+
+The upgrade strategy describes how to replace existing control plane nodes with new ones during upgrades.
+
+You can specify the upgrade strategy during cluster profile creation by editing the value of the `upgradeStrategy`
+parameter in the MicroK8s pack YAML file displayed under the **Pack Details** section.
+
+:::warning
+
+Before upgrading your cluster, review the [Known Issues](../release-notes/known-issues.md) and the
+[Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) pages to learn about the limitations associated with
+MicroK8s upgrades.
+
+:::
+
+The MicroK8s pack supports three types of upgrade strategies:
+
+- `InPlaceUpgrade` - Performs an in-place upgrade of the control plane. For clusters with one control plane and one
+  worker node, `InPlaceUpgrade` temporarily shuts down the API server.
+
+- `RollingUpgrade` - The default upgrade strategy that deletes the current control plane node before creating a new one.
+
+- `SmartUpgrade` - Performs an in-place upgrade of the control plane on clusters with fewer than three control plane
+  nodes, and a rolling upgrade on clusters with three or more control plane nodes.
+
+</TabItem>
+
+<TabItem label="Deprecated" value="Deprecated">
+
+:::warning
+
+All versions less than version 1.26.x are considered deprecated. Upgrade to a newer version to take advantage of new
+features.
+
+:::
+
+</TabItem>
+</Tabs>
+
+## Terraform
+
+You can reference the MicroK8s pack in Terraform with the following data resource.
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack" "k8s" {
+  name    = "kubernetes-microk8s"
+  version = "1.28"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
 
 ## References
 
-- [MicroK8s ](https://microk8s.io/docs)
+- [MicroK8s Documentation](https://microk8s.io/docs)
+- [MicroK8s GitHub Repository](https://github.com/canonical/microk8s)
