@@ -31,17 +31,15 @@ To get started with a cluster import, refer to the [Import a Cluster](cluster-im
 To determine Palette's control over the imported cluster, you can choose the management mode you prefer. Refer to the
 table below for more information on each mode.
 
-| Mode            | Description                                                                                                                                                              |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Read-only       | This mode allows you to access information about the cluster, such as event logs, cost, and health checks. The read-only mode does not support Day-2 activities.         |
-| Full Permission | This mode provides full cluster management, depending on the cluster, generic, or cloud-specific. This mode also supports the ability to deploy add-on cluster profiles. |
+| Mode            | Description                                                                                                                                                                                            |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Read-only       | This mode allows you to access information about the cluster, such as event logs, cost, and health checks. The read-only mode does not support Day-2 activities, nor custom HTTP proxy configurations. |
+| Full Permission | This mode provides full cluster management, depending on the cluster, generic, or cloud-specific. This mode also supports the ability to deploy add-on cluster profiles.                               |
 
 ## Supported Infrastructure Providers
 
 The following infrastructure providers are supported for cluster imports. If an environment is not listed below, select
 the **Generic** type when importing a cluster.
-
-<br />
 
 | Infrastructure Provider | Type           |
 | ----------------------- | -------------- |
@@ -66,12 +64,11 @@ target import cluster and the Palette instance.
 
 A few restrictions apply to all cluster imports that you need to be aware of before importing a cluster.
 
-<br />
-
 | Limitation                 | Description                                                                                                                                        |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Full Cluster Profile usage | You cannot use a full cluster profile. You are limited to using add-on profiles when deploying cluster profiles to imported clusters.              |
 | Kubeconfig file access     | You cannot download the cluster's kubeconfig file from Palette. You must use the underlying infrastructure provider to access the kubeconfig file. |
+| HTTP Proxy Configuration   | You cannot configure HTTP proxy settings for imported clusters with read-only mode. Import the cluster using Full Permission mode.                 |
 
 <br />
 
