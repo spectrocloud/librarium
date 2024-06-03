@@ -23,6 +23,15 @@ echo "Context: $context"
 # Initialize allowed flag
 allowed=1
 
+# Check if context is production and current branch is master or main. If so, set allowed flag 0 and exit.
+# This is to prevent a builds for the production branch from creating a branch-deploy preview.
+if [[ "$context" == "production" ]]; then
+  if [[ "$current_branch" == "master" || "$current_branch" == "main" ]]; then
+    allowed=0
+  fi
+fi
+
+
 # Check if context is branch-deploy and current branch matches version-*
 if [[ "$context" == "branch-deploy" ]]; then
   if [[ "$current_branch" == version-* ]]; then
