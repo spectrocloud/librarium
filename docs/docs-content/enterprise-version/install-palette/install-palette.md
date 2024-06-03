@@ -64,11 +64,15 @@ active nodes and pods at any given time.
 
 ## Proxy Requirements
 
+Palette connects to the internet to download images and packages. If your environment uses a proxy server, ensure the
+following domains and ports are accessible. The proxy server should meet the following requirements:
+
 - A proxy used for outgoing connections should support both HTTP and HTTPS traffic.
 
 - Allow connectivity to domains and ports in the table.
 
-  <br />
+- Review the [gRPC and Proxies](../../architecture/grps-proxy.md) page to learn more about Palette's support for gRPC in
+  a proxy environment.
 
   | **Top-Level Domain**      | **Port** | **Description**                                       |
   | ------------------------- | -------- | ----------------------------------------------------- |
@@ -84,6 +88,9 @@ active nodes and pods at any given time.
   | quay.io                   | 443      | Common third-party container images                   |
   | grafana.com               | 443      | Grafana container images and manifests                |
   | github.com                | 443      | Common third party content                            |
+  | k8s.gcr.io                | 443      | Kubernetes images [deprecated]                        |
+  | registry.k8s.io           | 443      | Kubernetes images                                     |
+  | docker.pkg.dev            | 443      | Common third party content                            |
 
 ## Resources
 
