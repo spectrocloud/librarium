@@ -32,7 +32,7 @@ Refer to the [Kubernetes Support Lifecycle](kubernetes-support.md#other-kubernet
 
 <Tabs queryString="versions">
 
-<TabItem label="1.28.x" value="1.28.x">
+<!-- <TabItem label="1.28.x" value="1.28.x">
 
 ### Prerequisites
 
@@ -112,7 +112,7 @@ node:
   kubeletPath: /var/snap/microk8s/common/var/lib/kubelet
 ```
 
-</TabItem>
+</TabItem> -->
 
 <TabItem label="1.27.x" value="1.27.x">
 
