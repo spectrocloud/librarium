@@ -55,9 +55,9 @@ the data from the quick start mode is migrated to the enterprise cluster as part
      - Static IP gateway: &lt;Gateway IP Address&gt; (e.g: 192.168.0.1) required only for static IP allocation.
      - Static IP DNS: &lt;Name servers&gt; Comma separated DNS addresses (e.g: 8.8.8.8, 192.168.0.8), required only for
        static IP allocation.
-     - HTTP Proxy: &lt;endpoint for the http proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_. An
+     - HTTP Proxy: &lt;endpoint for the http proxy server&gt;, e.g: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`. An
        optional setting, required only if a proxy is used for outbound connections.
-     - HTTPS Proxy: &lt;endpoint for the https proxy server&gt;, e.g: _http://USERNAME:PASSWORD@PROXYIP:PROXYPORT_. An
+     - HTTPS Proxy: &lt;endpoint for the https proxy server&gt;, e.g: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`. An
        optional setting, required only if a proxy is used for outbound connections.
      - NO Proxy: &lt;comma-separated list of vCenter server, local network CIDR, hostnames, domain names that should be
        excluded from proxying&gt;, e.g: _vcenter.company.com_,10.10.0.0/16.
