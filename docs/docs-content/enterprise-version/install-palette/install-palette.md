@@ -85,7 +85,7 @@ following domains and ports are accessible. The proxy server should meet the fol
   | docker.com                | 443      | Common third party container images                   |
   | raw.githubusercontent.com | 443      | Common third party content                            |
   | projectcalico.org         | 443      | Calico container images                               |
-  | quay.io                   | 443      | Common third-party container images                   |
+  | quay.io                   | 443      | Common third party container images                   |
   | grafana.com               | 443      | Grafana container images and manifests                |
   | github.com                | 443      | Common third party content                            |
   | k8s.gcr.io                | 443      | Kubernetes images [deprecated]                        |
