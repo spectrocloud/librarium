@@ -170,7 +170,7 @@ You now have imported a cluster into Palette with full permissions.
    helm install my-release bitnami/metrics-server
    ```
 
-8. To install the Palette agent, issue the command displayed in the cluster details page **Install the** read-only agent
+8. To install the Palette agent, issue the command displayed in the cluster details page **Install the read-only agent**
    section against the Kubernetes cluster you want to import. The command is customized for your cluster as it contains
    the assigned cluster ID. Below is an example output of the install command.
 
