@@ -85,10 +85,6 @@ saepe ut fugit ea ut architecto quae consequatur.
   [Control Plane Node Fails to Upgrade in Sequential MicroK8s Upgrades](../troubleshooting/pack-issues.md)
   troubleshooting guide for resolution steps.
 
-- In clusters using [MicroK8s](../integrations/microk8s.md) as the Kubernetes distribution, using the `RollingUpgrade`
-  strategy for clusters with less than three control plane nodes may cause the API server to be down during the
-  upgrade, making the cluster inaccessible. A workaround is to deploy clusters with three or more control plane nodes.
-
 ### Edge
 
 #### Features
