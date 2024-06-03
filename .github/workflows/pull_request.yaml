@@ -68,6 +68,8 @@ jobs:
           node-version: "20"
           cache: "npm"
 
+      - run: npm ci
+
       - name: Prettier Check
         run: npx prettier . --check
 
