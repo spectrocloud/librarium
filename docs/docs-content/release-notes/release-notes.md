@@ -107,7 +107,6 @@ saepe ut fugit ea ut architecto quae consequatur.
 - <TpBadge /> The Cluster Profile Variables user experience has been improved. Users can now identify where a variable is used, preview the variable during creation time, and change the order of the variables displayed. An improved Day-2 management experience is also available. You can learn more about these new features in the [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) documentation.
 
 
-
 - Edge clusters managed by [LocalUI](../clusters/edge/local-ui/local-ui.md) now receive automatic SSL certificate updates for Kubernetes. Users can also manually trigger the SSL certificate update process. For more information, refer to the [LocalUI](../clusters/edge/local-ui/local-ui.md) documentation.
 
 - [LocalUI](../clusters/edge/local-ui/local-ui.md) now includes tools to help users troubleshoot network issues. The tools include ping and traceroute. For more information, refer to the [LocalUI](../clusters/edge/local-ui/local-ui.md) documentation.
