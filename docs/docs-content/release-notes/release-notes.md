@@ -13,10 +13,12 @@ tags: ["release-notes"]
 
 ## Jun 1, 2024 - Release 4.4.0 - 4.4.X
 
-Sit et beatae expedita rerum odit ullam quos id non voluptas quae et nisi. Est commodi excepturi accusamus sed incidunt
-doloribus. Praesentium qui accusantium amet. Eaque voluptates impedit sint amet omnis delectus velit tempora eos maxime
-laudantium corporis iure. Nesciunt nihil et asperiores dolore suscipit dolor architecto. Fugit distinctio iste maxime
-saepe ut fugit ea ut architecto quae consequatur.
+This release contains various new features and improvements. One new feature is the introduction of Trusted Boot for
+Edge. Trusted Boot is a hardware-based security feature that ensures that the system boots securely and that the boot
+process has not been tampered with. We also improved the MicroK8s experience by exposing lifecycle commands. Other
+improvements include enhancements to the Cluster Profile Variables user experience, automatic SSL certificate updates
+Edge clusters in airgap environments, and new network troubleshooting tools in LocalUI. Check out the full release notes
+to learn more about this release's new features and improvements.
 
 ### Security Notices
 
