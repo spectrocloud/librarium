@@ -26,14 +26,14 @@ platform firmware. A system can only have one PK.
 
 ## Key Exchange Key (KEK)
 
-The KEK is a list of certificates, public keys, or signatures in an ESL signed by a private PK key. Entries in the KEK
-set are used to update the signature database (DB) and the forbidden signature database (DBX). Each entry in the KEK set
+The KEK is a set of certificates, public keys, or signatures in an ESL signed by a private PK key. Entries in the KEK
+set are used to update the Signature Database (DB) and the Forbidden Signature Database (DBX). Each entry in the KEK set
 has a corresponding private key. It establishes a relationship of trust between the firmware and the operating system
 (OS).
 
 Any private key corresponding to an entry in the KEK set can sign updates to the DB. When there are updates to the DB,
 the corresponding public key, certificate, or signature in the KEK set is used to verify that those updates are signed
-by the authentic private.
+by the authentic private key.
 
 ## Signature Database (DB) and Forbidden Signature Database (DBX)
 
@@ -64,9 +64,9 @@ TPM and stored in a secure blob. The PCR public key embedded in the ISO is used 
 policy states that in order to decrypt the secure blob containing the DEK, the PCR measurements must match precalculated
 set of measurements signed by the corresponding PCR private key.
 
-During the boot process before the encrypted disk partition is mounted, the TPM will perform the following:
+During the boot process, before the encrypted disk partition is mounted, the TPM will perform the following:
 
-- Verify the public key in the image is valid (by checking digest of the key vs binding policy)
+- Verify the public key in the image is valid
 - Verify the signature on the pre-calculated measurements using the public key
 - Compare the precalculated measurements vs the actual PCR measurements
 
@@ -84,9 +84,9 @@ decrypt and release the DEK to the OS, so it can use it to decrypt the encrypted
 
 ## Factory Keys
 
-Factory keys refer to the secure boot keys that are stored on the device that is set to factory settings. In EdgeForge,
-these keys are stored in the folder **exported-keys**. They may include PK, KEK, and DB keys. Factory keys are often
-used to authenticate the firmware of a device. For more information, refer to [Export Factory Keys](export-keys.md).
+Factory keys refer to the secure boot keys that are stored on the device in factory settings. In EdgeForge, these keys
+are stored in the folder **exported-keys**. They may include PK, KEK, and DB keys. Factory keys are often used to
+authenticate the firmware of a device. For more information, refer to [Export Factory Keys](export-keys.md).
 
 ## Resources
 

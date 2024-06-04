@@ -26,10 +26,10 @@ in which Trusted Boot EdgeForge and deployment process. For more information, re
 
 :::warning
 
-All security provided by Trusted Boot assumes that the private keys are kept secure. We suggest that you perform key
-generation in an airgapped environment and move the PK and KEK private keys to a secure location immediately after
+All security provided by Trusted Boot assumes that the private keys are kept secure. We recommend that you perform key
+generation in an air-gapped environment and move the PK and KEK private keys to a secure location immediately after
 generating them. In addition, any build pipelines that are created for the purposes of building ISOs and provider images
-must be secured, as they will by necessity contain the PCR and DB private keys.
+must be secured, as they must contain the PCR and DB private keys.
 
 :::
 
@@ -56,15 +56,15 @@ must be secured, as they will by necessity contain the PCR and DB private keys.
 
 - [openssl](https://www.openssl.org/) must be installed on your Linux machine.
 
-<Tabs>
-
 ## Instructions
+
+<Tabs>
 
 <TabItem value="self-signed" label="Generate Keys Using Self-Signed Certificates">
 
 If your environment does not require a Certificate Authority (CA), you can use self-signed certificates to generate the
-keys needed for Trusted Boot. Using self-signed certificates may make verifying the source of the certificate harder
-because there is no higher authority.
+keys needed for Trusted Boot. Using self-signed certificates may make verifying the source of the certificate more
+difficult because there is no higher authority.
 
 1. Clone the **CanvOS** repository.
 
@@ -179,9 +179,12 @@ soft-brick your Edge host.
    cd sb-private-ca
    ```
 
-6. Review the three configuration files in the directory. These files are configuration files that you can use to
-   generate certificate requests and key pairs. Each file configures the generation of the PK, KEK, and DB key as well
-   as their corresponding certificate request.
+6. Review the three configuration files in the directory. These files are configuration files that you will use to
+   generate Certificate Signing Requests (CSR) and key pairs. Each file configures the generation of the PK, KEK, and DB
+   key as well as their CSR.
+
+   The `[req]` and `req_ext` sections contain specifications of the CSR to be generated. And the `[req_dn]` section
+   records the Distinguished Name (DN) of the entity to whom the certificate will be issued.
 
    ```
    [ req ]
@@ -206,8 +209,8 @@ soft-brick your Edge host.
    subjectKeyIdentifier   = hash
    ```
 
-   Edit the conf files default `[req_dn]` section and update the values to reflect your organization and location. Only
-   modify the `req_dn` section, which records the distinguished name of the certificate owner. Do not modify any other
+   Edit the default `[req_dn]` section of each configuration file and update the values to reflect your organization and
+   location. Only modify the `req_dn` section, which records the DN of the certificate owner. Do not modify any other
    sections.
 
 7. After you are done editing the configuration files, issue the following command to generate three pairs of keys, and
@@ -227,6 +230,17 @@ soft-brick your Edge host.
    openssl x509 -req -in CSR_KEK.req -CA path-to-ca-root-cert -CAkey path-to-ca-private-key -CAcreateserial -out KEK.pem -days 5475 -sha256
    openssl x509 -req -in CSR_db.req -CA path-to-ca-root-cert -CAkey path-to-ca-private-key -CAcreateserial -out db.pem -days 5475 -sha256
    ```
+
+   Replace `path-to-ca-root-cert` with the path to the root certificate of the CA and replace `path-to-ca-private-key`
+   with the path to the CA's private key. You may also choose to change the validity period of the certificates. The
+   default is 15 years (5475 days).
+
+   :::danger
+
+   Specify a distant expiration date. If the keys expire before you can replace them, it can soft-brick the Edge host.
+   Although the default is 15 years, you may choose to make this longer.
+
+   :::
 
 9. Generate the PCR private key for disk encryption.
 

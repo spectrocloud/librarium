@@ -18,13 +18,12 @@ firmware. Trusted Boot consists of the following security measures:
   during the boot process of a device.
 - Measured boot. A security feature that works by measuring each component of the boot process and recording these
   measurements in a
-  [Trusted Platform Module (TPM)](https://www.intel.com/content/www/us/en/business/enterprise-computers/resources/trusted-platform-module.html),
-  which can be used for later analysis.
+  [Trusted Platform Module (TPM)](https://www.intel.com/content/www/us/en/business/enterprise-computers/resources/trusted-platform-module.html).
+  Only when it receives measurements with a valid signature does the TPM release the key to decrypt encrypted content.
 
 Together, these measures allow Trusted Boot to ensure the authenticity of the boot processes that are allowed to operate
-on your Edge device. In addition, the measurements stored in the TPM can be provided to third parties to prove that your
-boot process is secure and unaltered. Only when the boot process can be verified does the TPM release the key to decrypt
-the encrypted content, and the sensitive data is not accessible in the case an Edge device is lost or stolen.
+on your Edge device. Only when the boot process can be verified does the TPM release the key to decrypt the encrypted
+content, and the sensitive data is not accessible if the boot process is tempered with.
 
 ## Why Do You Need Trusted Boot?
 
@@ -40,37 +39,39 @@ encrypted.
 ## Next Steps
 
 To get started with Trusted Boot, we recommend you start by familiarizing yourself with the concepts related to Trusted
-Boot, especially the keys used by Trusted Boot and how to manage them. You should also refer to the hardware
-requirements for an Edge host to be able to use Trusted Boot:
+Boot, especially the keys used by Trusted Boot and how to manage them. In addition, Trusted Boot has additional hardware
+requirements compared with Edge hosts that do not have workloads with Trusted Boot. You should ensure that you use Edge
+hosts that meet the minimum hardware requirements.
 
 - [Trusted Boot Keys](./keys/keys.md)
 - [Key Management](./keys/key-management.md)
 - [Hardware Requirements](../hardware-requirements.md#trusted-boot)
 
-After understanding the concepts, you can proceed to generate the keys to be used by your Edge host. You need start by
-exporting the existing keys on your Edge host and then use those exported keys to generate new keys to be used by
-Trusted Boot. You can generate keys using a self-signed certificate, or an existing Certificate Authority (CA).
+After understanding the core concepts, you can proceed to generate the keys to be used by your Edge host. You need to
+start by exporting the existing keys on your Edge host and then use those exported keys to generate new keys to be used
+by Trusted Boot. You can generate keys using a self-signed certificate, or an existing Certificate Authority (CA).
 
 - [Export Factory Keys](./keys/export-keys.md)
 - [Generate Trusted Boot Keys](./keys/generate-keys.md)
 
 With the keys ready, you can proceed to build the necessary Edge artifacts to install Palette on your Edge host and
-provision your cluster. The EdgeForge process for Trusted Boot is similar to the EdgeForge process without Trusted Boot.
-We recommend you familiar with the EdgeForge workflow first before building Edge artifacts with Trusted Boot enabled.
+provision your cluster. The EdgeForge process with Trusted Boot is similar to the EdgeForge process without Trusted
+Boot. We recommend you familiar with the EdgeForge workflow first before building Edge artifacts with Trusted Boot
+enabled.
 
-- [EdgeForge Workflow](../edgeforge-workflow/edgeforge-workflow.md)
-- [EdgeForge with Trusted Boot](./edgeforge/edgeforge.md)
+- [EdgeForge Workflow without Trusted Boot](../edgeforge-workflow/edgeforge-workflow.md)
+- [EdgeForge Workflow with Trusted Boot](./edgeforge/edgeforge.md)
 
-After the artifacts have been built, you should check the boot size limit of your Edge host before installing Palette on
-your Edge host. Trusted Boot uses the Unified Kernel Image (UKI), which is a single file that encompasses the Operating
+After you build the artifacts, you should check the boot size limit of your Edge host before installing Palette on your
+Edge host. Trusted Boot uses the Unified Kernel Image (UKI), which is a single file that encompasses the Operating
 System (OS) and other needed bits in order to boot the full system. As a result, the Extensible Firmware Interface (EFI)
-file can grow quite large and can pose a limitation depending on your hardware conditions.
+file, which contains the UKI, can grow quite large and can pose a limitation depending on your hardware conditions.
 
 - [Check Device Boot Limit](./edgeforge/check-efi-limit.md)
 
-If you find that the EFI file inside the EdgeForge artifacts are bigger than your boot limit, you may need to either
-choose a device with a higher boot limit or decrease the size of the EFI file. One way to do this is to avoid installing
-software packages to the OS image and instead use static binaries of the packages you need.
+If you find that the EFI file inside the EdgeForge artifacts is bigger than your boot limit, you may need to either
+choose a device with a higher boot limit or decrease the size of the EFI file. One way to do decrease the EFI file size
+is to avoid installing software packages to the OS image and instead use static binaries of the packages you need.
 
 - [Add Static Binaries to Persistent Partition](./edgeforge/add-extra-content.md)
 

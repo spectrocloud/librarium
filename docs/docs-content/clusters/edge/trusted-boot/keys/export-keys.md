@@ -18,15 +18,9 @@ to export the factory keys through the BIOS interface, and machines that do will
 model.
 
 Another approach is to boot from a Linux with LiveCD or a Windows Operating System (OS) on your Edge host, and use
-command-line tools to export them. This approach is more broadly applicable because you can install an Linux on almost
-any machine.
+command-line tools to export them. This approach is more broadly applicable and consistent across different Edge hosts.
 
 This page guides you through how to export your factory keys using command-line tools on Windows and Linux.
-
-## Export Keys from Using the Command-line
-
-You can export the Key Exchange Key (KEK), the Signature Database (DB), and the forbidden signature database (DBX) with
-command-line tools.
 
 ### Prerequisites
 
@@ -38,7 +32,8 @@ command-line tools.
 
 1. Turn on the Edge device.
 
-2. Open a terminal session on the device, and issue the following commands to export the keys.
+2. Open a terminal session on the Edge host, or a Powershell session on Windows, and issue the following commands to
+   export the keys.
 
    <Tabs>
 
@@ -54,8 +49,6 @@ command-line tools.
    </TabItem>
 
    <TabItem label="Windows" value="windows">
-
-   Issue the following commands in the Powershell session.
 
    ```shell
    Get-SecureBootUEFI –Name KEK –OutputFilePath KEK
@@ -76,7 +69,7 @@ command-line tools.
 
 ### Validate
 
-1. Issue the `ls` command to confirm that the keys have been exported. You should observe three files from the output.
+1. Issue the `ls` command to confirm that the keys have been exported. The output should include the following files.
 
    ```
    $ ls
