@@ -37,6 +37,57 @@ software verified through cryptographic signatures. In the event that an Edge de
 release the key to decrypt the disk encryption if the boot process is tampered with, ensuring your user data remains
 encrypted.
 
+## Next Steps
+
+To get started with Trusted Boot, we recommend you start by familiarizing yourself with the concepts related to Trusted
+Boot, especially the keys used by Trusted Boot and how to manage them. You should also refer to the hardware
+requirements for an Edge host to be able to use Trusted Boot:
+
+- [Trusted Boot Keys](./keys/keys.md)
+- [Key Management](./keys/key-management.md)
+- [Hardware Requirements](../hardware-requirements.md#trusted-boot)
+
+After understanding the concepts, you can proceed to generate the keys to be used by your Edge host. You need start by
+exporting the existing keys on your Edge host and then use those exported keys to generate new keys to be used by
+Trusted Boot. You can generate keys using a self-signed certificate, or an existing Certificate Authority (CA).
+
+- [Export Factory Keys](./keys/export-keys.md)
+- [Generate Trusted Boot Keys](./keys/generate-keys.md)
+
+With the keys ready, you can proceed to build the necessary Edge artifacts to install Palette on your Edge host and
+provision your cluster. The EdgeForge process for Trusted Boot is similar to the EdgeForge process without Trusted Boot.
+We recommend you familiar with the EdgeForge workflow first before building Edge artifacts with Trusted Boot enabled.
+
+- [EdgeForge Workflow](../edgeforge-workflow/edgeforge-workflow.md)
+- [EdgeForge with Trusted Boot](./edgeforge/edgeforge.md)
+
+After the artifacts have been built, you should check the boot size limit of your Edge host before installing Palette on
+your Edge host. Trusted Boot uses the Unified Kernel Image (UKI), which is a single file that encompasses the Operating
+System (OS) and other needed bits in order to boot the full system. As a result, the Extensible Firmware Interface (EFI)
+file can grow quite large and can pose a limitation depending on your hardware conditions.
+
+- [Check Device Boot Limit](./edgeforge/check-efi-limit.md)
+
+If you find that the EFI file inside the EdgeForge artifacts are bigger than your boot limit, you may need to either
+choose a device with a higher boot limit or decrease the size of the EFI file. One way to do this is to avoid installing
+software packages to the OS image and instead use static binaries of the packages you need.
+
+- [Add Static Binaries to Persistent Partition](./edgeforge/add-extra-content.md)
+
+Having ensured that your hardware meets the boot size requirement, you can proceed to install Palette Edge on your Edge
+host. The installation process is similar to the regular installation workflow, but requires a few additional steps to
+prepare the Edge host for secure boot key enrollment.
+
+- [Installation with Trusted Boot](./deployment-day2/install.md)
+
+After installation, the registration process and the process to create a cluster from your Edge host are identical to
+Edge hosts without Trusted Boot. The upgrade process, however, requires you to use the same keys to build new provider
+images.
+
+- [Edge Host Registration](../site-deployment/site-installation/edge-host-registration.md)
+- [Create Cluster Definition](../site-deployment/site-installation/cluster-deployment.md)
+- [Upgrade Cluster with Trusted Boot](./deployment-day2/upgrade-cluster.md)
+
 ## Resources
 
 - [Keys](./keys/keys.md)
