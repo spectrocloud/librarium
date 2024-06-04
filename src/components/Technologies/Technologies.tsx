@@ -26,7 +26,7 @@ const PACKLISTFILTERS = "packListFilters";
 export default function Technologies({ data, repositories }: TechnologiesProps) {
   const { isDarkTheme } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
-  const [selectedFilters, setSelectedFilters] = useState<{ category: any[], registries: any[], cloudTypes: any[], source: any[] }>({ category: [], registries: [], cloudTypes: [], source: [] })
+  const [selectedFilters, setSelectedFilters] = useState<{ category: any[], registries: any[], cloudTypes: any[], source: any[] }>({ category: [], registries: [], cloudTypes: [], source: ["all"] })
   const [searchValue, setSearchValue] = useState<string>("");
   const filteredTechCards = useMemo(() => {
     const selectedFiltersKeys = Object.keys(selectedFilters)
@@ -54,8 +54,10 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
               }
               break;
             case "source":
-              condition = (techCard: FrontMatterData) => {
-                return techCard[selectedFiltersValue[0] as keyof FrontMatterData];
+              if(!selectedFiltersValue.includes("all")) {
+                condition = (techCard: FrontMatterData) => {
+                  return techCard[selectedFiltersValue[0] as keyof FrontMatterData];
+                }
               }
               break;
           }
@@ -114,6 +116,11 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
       } catch (e) {
         console.error("Error in parsing filters from local storage", e);
       }
+    } else {
+      setFiltersInLocalStorage({
+        selectedFilters: selectedFilters,
+        searchValue: ""
+      })
     }
   }, []);
 

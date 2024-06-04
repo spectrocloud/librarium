@@ -16,6 +16,7 @@ export interface FrontMatterData {
   registries: string[];
   disabled: boolean;
   deprecated: boolean;
+  latestVersion: string;
 }
 
 export interface VersionTemplate {

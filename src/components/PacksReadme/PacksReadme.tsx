@@ -26,6 +26,7 @@ interface PackReadmeProps {
   selectedRepositories: Array<any>,
   disabled: boolean,
   deprecated: boolean,
+  latestVersion: string,
 }
 
 export default function PacksReadme() {
@@ -72,6 +73,7 @@ export default function PacksReadme() {
         selectedRepositories: repositories,
         disabled: pack.disabled,
         deprecated: pack.deprecated,
+        latestVersion: pack.latestVersion,
       };
       return packDataInfo;
     }
@@ -87,12 +89,18 @@ export default function PacksReadme() {
       registries: [],
       disabled: false,
       deprecated: false,
+      latestVersion: "",
     };
   }, [packName]);
   useEffect(() => {
     const searchParams = window ? new URLSearchParams(window.location.search) : null;
     setPackName(searchParams?.get("pack") || "");
-    setSelectedVersion(searchParams?.get("versions") || "");
+    const urlParamVersion = searchParams?.get("versions");
+    const version = urlParamVersion || packData?.latestVersion || packData?.versions[0]?.title || "";
+    if(!urlParamVersion) {
+      history.replace({ search: `?pack=${packName}&versions=${version}` });
+    }
+    setSelectedVersion(version);
   }, [packData]);
   let infoContent;
   if (packData.disabled) {
@@ -102,7 +110,7 @@ export default function PacksReadme() {
   }
 
   function versionChange(version: string) {
-    history.replace({ search: `?pack=${packName}&versions=${selectedVersion}` });
+    history.replace({ search: `?pack=${packName}&versions=${version}` });
     setSelectedVersion(version);
   }
 
