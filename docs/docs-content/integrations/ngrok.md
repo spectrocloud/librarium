@@ -51,11 +51,8 @@ To deploy the ngrok Ingress Controller, you need to set, at minimum, the followi
 | `kubernetes-ingress-controller.rules.host.backend.service.name`        | The name you've given to the application for which the ngrok Ingress Controller should handle traffic.                                                                                                                                                        |
 | `kubernetes-ingress-controller.rules.host.backend.service.port.number` | The port number for the deployed `service.name`.                                                                                                                                                                                                              |
 
-Review the
-[common overrides](https://github.com/ngrok/kubernetes-ingress-controller/blob/main/docs/deployment-guide/common-helm-k8s-overrides.md)
-document for more details on parameters. Refer to the
-[user guide](https://github.com/ngrok/kubernetes-ingress-controller/tree/main/docs/user-guide) for advanced
-configurations.
+Review the [common overrides](https://ngrok.com/docs/k8s/deployment-guide/#common-helm-k8s-overrides) document for more
+details on parameters. Refer to the [user guide](https://ngrok.com/docs/k8s/user-guide/) for advanced configurations.
 
 :::warning
 
