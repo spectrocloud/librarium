@@ -1,20 +1,20 @@
-import axios from 'axios';
-import axiosRetry from 'axios-retry';
-import { pRateLimit } from 'p-ratelimit';
+import axios from "axios";
+import axiosRetry from "axios-retry";
+import { pRateLimit } from "p-ratelimit";
 
 const api = axios.create({
-  baseURL: 'https://console.spectrocloud.com',
-  timeout: 10000,
+  baseURL: "https://console.spectrocloud.com",
+  timeout: 20000,
   headers: {
-    'Content-Type': 'application/json',
-    "ApiKey": process.env.API_KEY,
-  }
+    "Content-Type": "application/json",
+    ApiKey: process.env.API_KEY,
+  },
 });
 
 const limit = pRateLimit({
-  interval: 2000,             // 1000 ms == 1 second
-  rate: 10,                   // 10 API calls per interval
-  concurrency: 10,            // no more than 10 running at once
+  interval: 2000, // 1000 ms == 1 second
+  rate: 10, // 10 API calls per interval
+  concurrency: 10, // no more than 10 running at once
 });
 
 axiosRetry(api, {
@@ -33,9 +33,8 @@ axiosRetry(api, {
   },
 });
 
-
 function callRateLimitAPI(delayedApiCall) {
-  return limit(delayedApiCall)
+  return limit(delayedApiCall);
 }
 
 module.exports = { api, callRateLimitAPI };

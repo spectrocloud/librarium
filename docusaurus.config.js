@@ -212,7 +212,10 @@ const config = {
         id: "enable-source-map",
       },
     ],
-    [pluginPacksAndIntegrationsData, { repositories: ["Public Repo", "palette"] }],
+    [
+      pluginPacksAndIntegrationsData,
+      { repositories: ["Palette Registry", "Spectro Addon Repo", "Palette Community Registry"] },
+    ],
     pluginImportFontAwesomeIcons,
     function () {
       return {
