@@ -26,11 +26,10 @@ saepe ut fugit ea ut architecto quae consequatur.
 
 #### Breaking Changes
 
-- Google Cloud Platform (GCP) does not support the ability for users to specify a patch version for the Kubernetes
-  version used in GKE clusters. In this release, Palette aligns with GCP's behavior and removes the ability to specify a
-  patch version when creating a cluster profile for AKS, EKS, and GKE. Only the major and minor versions are available
-  for selection. The underlying cloud provider will automatically select the latest patch version available for the
-  selected major and minor version.
+- In this release, Palette aligns Google Cloud Platform GKE behavior with Azure AKS and AWS EKS and removes the ability
+  to specify a patch version when creating a cluster profile for AKS, EKS, and GKE. Only the major and minor versions
+  are available for selection. The underlying cloud provider will automatically select the latest patch version
+  available for the selected major and minor version.
 
 - Validator Helm Charts have migrated from `https://github.com/spectrocloud-labs/validator` to
   `https://github.com/validator-labs/validator`. Former versions of the Palette CLI will point to the former repository
@@ -40,9 +39,10 @@ saepe ut fugit ea ut architecto quae consequatur.
 
 #### Features
 
-- <TpBadge /> The upgrade experience for MicroK8s has been improved by the introduction of new upgrade strategies. Users
-  can now choose between a RollingUpgrade, InPlaceUpgrade, or SmartUpgrade. To learn more about the new upgrade
-  strategies, refer to the [MicroK8s pack documentation](../integrations/microk8s.md).
+- <TpBadge /> The MicroK8s pack layer now expose `bootCommands`, `preRunCommands` and `postRunCommands`. You can use
+  these commands to customize and configure MicroK8s as needed. MicroK8s is delivered as a Technical Preview for AWS and
+  Canonical MAAS in this release. To learn more, refer to the MicroK8s pack
+  [documentation](../integrations/microk8s.md).
 
 #### Improvements
 
@@ -76,7 +76,8 @@ saepe ut fugit ea ut architecto quae consequatur.
 
 #### Known Issues
 
-- RKE2 and Palette eXtended Kubernetes (PXK) 1.29.4 have a known issue that prevent its usage with Canonical MAAS. Support will be added in an upcoming release.
+- An issue prevents RKE2 and Palette eXtended Kubernetes (PXK) on version 1.29.4 from operating correctly with Canonical
+  MAAS. A temporary workaround is using a version lower than 1.29.4 when using MAAS..
 
 - [MicroK8s](../integrations/microk8s.md) does not support a multi-node cluster deployment and is limited to a
   single-node cluster. As a result, the only supported upgrade strategy is InPlaceUpgrade.
@@ -155,6 +156,9 @@ saepe ut fugit ea ut architecto quae consequatur.
 
 #### Pack Notes
 
+- Cluster Autoscaler version 1.29.2 is a Helm based pack. Previous version were manifest based. Upgrades to the new
+  version require you to select the new Helm based pack.
+
 - The BYOOS pack is now available for Palette VerteX deployments. This allows users to bring their own operating system
   (OS) image to deploy VerteX instances. RHEL is the only custom OS supported for VerteX deployments at this time.
 
@@ -165,17 +169,31 @@ saepe ut fugit ea ut architecto quae consequatur.
 - The Kubernetes pack parameter `k8sHardening` is removed and no longer used as the method for hardening images during
   the image creation process. This change does not impact users.
 
+- Cluster Autoscaler is now a verified pack. Refer to the [Verified Packs](../integrations/verified_packs.md) page for
+  more details on verified packs.
+
 #### Kubernetes
 
 | Pack                                     | New Version |
 | ---------------------------------------- | ----------- |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.26.15     |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.27.11     |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.28.9      |
+| Palette eXtended Kubernetes              | 1.27.13     |
+| Palette eXtended Kubernetes              | 1.28.9      |
+| Palette eXtended Kubernetes              | 1.29.4      |
 | Kubernetes Azure AKS                     | 1.29        |
 | Kubernetes Google GKE                    | 1.26        |
 | Kubernetes Google GKE                    | 1.27        |
 | Kubernetes Google GKE                    | 1.28        |
 | Kubernetes Google GKE                    | 1.29        |
+| RKE2                                     | 1.27.13     |
+| RKE2                                     | 1.28.9      |
+| RKE2                                     | 1.29.4      |
+| RKE2 - Edge                              | 1.26.15     |
+| RKE2 - Edge                              | 1.27.13     |
+| RKE2 - Edge                              | 1.28.9      |
+| RKE2 - Edge                              | 1.29.4      |
 
 #### CNI
 
@@ -191,49 +209,57 @@ saepe ut fugit ea ut architecto quae consequatur.
 
 | Pack                    | New Version |
 | ----------------------- | ----------- |
-| Amazon EFS              | 1.7.6       |
+| AWS EFS                 | 1.7.6       |
+| AWS EBS CSI             | 1.28.0      |
 | Azure Disk CSI Driver   | 1.30.0      |
 | GCE Persistent Disk CSI | 1.13.2      |
 | Portworx /w Operator    | 3.1.0       |
 
 #### Add-on Packs
 
-| Pack                         | New Version |
-| ---------------------------- | ----------- |
-| AWS Application Loadbalancer | 2.7.2       |
-| AWS Cluster Autoscaler Helm  | 1.29.2      |
-| Amazon EFS                   | 1.7.6       |
-| MetalLB (Helm)               | 0.14.3      |
-| Nginx                        | 1.10.0      |
-| OpenPolicyAgent              | 3.15.1      |
-| Portworx /w Operator         | 3.1.0       |
-| Prometheus - Grafana         | 57.0.1      |
+| Pack                          | New Version |
+| ----------------------------- | ----------- |
+| AWS Application Loadbalancer  | 2.7.2       |
+| AWS Cluster Autoscaler (Helm) | 1.29.2      |
+| MetalLB (Helm)                | 0.14.3      |
+| Nginx                         | 1.10.0      |
+| OpenPolicyAgent               | 3.15.1      |
+| Portworx /w Operator          | 3.1.0       |
+| Prometheus - Grafana          | 57.0.1      |
 
 #### FIPS Packs
 
 | Pack                                     | New Version |
 | ---------------------------------------- | ----------- |
+| AWS EBS CSI                              | 1.28.0      |
 | AWS VPC CNI (Helm)                       | 1.1.17      |
 | Calico Azure                             | 3.25.1      |
 | Calico Azure                             | 3.26.3      |
 | Cilium                                   | 1.13.4      |
 | Cilium                                   | 1.14.3      |
+| Cilium                                   | 1.14.5      |
 | Longhorn                                 | 1.4.1       |
 | Longhorn                                 | 1.5.3       |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.26.15     |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.27.14     |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.28.10     |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.29.5      |
 | Palette Optimized RKE2                   | 1.27.13     |
 | Palette Optimized RKE2                   | 1.28.9      |
 | Palette Optimized RKE2                   | 1.29.4      |
-| Palette eXtended Kubernetes              | 1.27.13     |
-| Palette eXtended Kubernetes              | 1.27.2      |
-| Palette eXtended Kubernetes              | 1.28.9      |
-| Palette eXtended Kubernetes              | 1.29.4      |
+| Palette eXtended Kubernetes (PXK)        | 1.27.13     |
+| Palette eXtended Kubernetes (PXK)        | 1.27.2      |
+| Palette eXtended Kubernetes (PXK)        | 1.28.9      |
+| Palette eXtended Kubernetes (PXK)        | 1.29.4      |
 | RKE2                                     | 1.27.13     |
 | RKE2                                     | 1.28.9      |
 | RKE2                                     | 1.29.0      |
 | RKE2                                     | 1.29.4      |
+| RKE2 - Edge                              | 1.27.13     |
+| RKE2 - Edge                              | 1.28.9      |
+| RKE2 - Edge                              | 1.29.4      |
+| vSphere CSI                              | 3.1.0       |
+| vSphere CSI                              | 3.1.2       |
 
 #### Deprecations and Removals
 
