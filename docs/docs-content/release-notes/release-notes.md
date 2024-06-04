@@ -120,8 +120,6 @@ to learn more about this release's new features and improvements.
 
 - Support for custom links, URLs, and static pages is now available in LocalUI. You can populate custom links in the left **Main Menu** of [LocalUI](../clusters/edge/local-ui/local-ui.md), which will either load content into in an iframe or act as en external link. You can also can host static pages from LocalUI. This is useful when you need to deploy and host custom or specific content for a site and want to avoid introducing additional services to host a static site
 
-#### Known Issues
-
 ### Virtual Machine Orchestrator (VMO)
 
 #### Improvements
@@ -138,14 +136,15 @@ to learn more about this release's new features and improvements.
   the Palette CLI. A prompt will ask you to select the OS during the VerteX deployment process. Refer to the Palette
   VerteX installation [guide](../vertex/install-palette-vertex/install-on-vmware/install.md) for more details.
 
-### Terraform
+### Automation
 
-#### Features
-
-- Version 0.20.0 of the
+- Terraform version 0.20.0 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
+- Palette Crossplane provider version 0.20.0 is available. For more details, refer to the provider
+  [release page](https://github.com/crossplane-contrib/provider-palette/releases)
 
 ### Docs and Education
 
@@ -154,12 +153,14 @@ to learn more about this release's new features and improvements.
   clusters using Crossplane. Check out the [Crossplane Provider](../automation/crossplane/crossplane.md) documentation
   for more details.
 
+-
+
 ### Packs
 
 #### Pack Notes
 
-- Cluster Autoscaler version 1.29.2 is a Helm based pack. Previous version were manifest based. Upgrades to the new
-  version require you to select the new Helm based pack.
+- Cluster Autoscaler version 1.29.2 is a Helm-based pack. Previous versions of the pack were manifest-based. Upgrades to
+  the new version requires you to select the new Helm-based pack.
 
 - The BYOOS pack is now available for Palette VerteX deployments. This allows users to bring their own operating system
   (OS) image to deploy VerteX instances. RHEL is the only custom OS supported for VerteX deployments at this time.
