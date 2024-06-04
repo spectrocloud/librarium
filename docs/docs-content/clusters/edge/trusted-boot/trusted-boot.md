@@ -7,7 +7,7 @@ sidebar_position: 10
 tags: ["edge"]
 ---
 
-Trusted Boot is a security feature supported by Palette Edge running on Edge devices with supported hardware and
+Trusted Boot is a security feature supported by Palette Edge available on Edge devices with supported hardware and
 firmware. Trusted Boot consists of the following security measures:
 
 ![High level description diagram for Trusted Boot](/clusters_edge_trusted-boot_highlevel.webp)
@@ -23,8 +23,8 @@ firmware. Trusted Boot consists of the following security measures:
 
 Together, these measures allow Trusted Boot to ensure the authenticity of the boot processes that are allowed to operate
 on your Edge device. In addition, the measurements stored in the TPM can be provided to third parties to prove that your
-boot process is secure and unaltered. Since only when the boot process can be verified does the TPM release the key to
-decrypt the encrypted content, the sensitive data is not accessible in the case an Edge device is lost or stolen.
+boot process is secure and unaltered. Only when the boot process can be verified does the TPM release the key to decrypt
+the encrypted content, and the sensitive data is not accessible in the case an Edge device is lost or stolen.
 
 ## Why Do You Need Trusted Boot?
 

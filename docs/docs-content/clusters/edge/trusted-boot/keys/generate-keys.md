@@ -13,14 +13,15 @@ process of generating keys to be used when building Edge artifacts.
 
 The key generation process produces three pairs of keys and a Platform Configuration Register (PCR) policy private key,
 and each pair of keys fulfills different purposes. The following table provides a brief overview of which keys are used
-in which Trusted Boot EdgeForge and deployment process.
+in which Trusted Boot EdgeForge and deployment process. For more information, refer to
+[EdgeForge with Trusted Boot](../edgeforge/edgeforge.md).
 
 | Keys                     | Key Generation | Build Installer ISO | Building Provider Images | Installation |
 | ------------------------ | -------------- | ------------------- | ------------------------ | ------------ |
 | PK & KEK (private)       | ✅             | Not needed          | Not needed               | Not needed   |
 | PK & KEK (public)        |                | ✅                  | Not needed               | ✅           |
-| DB (public)              |                | ✅                  | ✅                       | Not needed   |
-| DB (private)             |                | ✅                  | ✅                       | Not needed   |
+| db (public)              |                | ✅                  | ✅                       | Not needed   |
+| db (private)             |                | ✅                  | ✅                       | Not needed   |
 | PCR policy Key (private) |                | ✅                  | Not needed               | ✅           |
 
 :::warning
@@ -32,7 +33,7 @@ must be secured, as they will by necessity contain the PCR and db private keys.
 
 :::
 
-### Prerequisites
+## Prerequisites
 
 - A physical or virtual Linux machine with _AMD64_ (also known as x86_64) processor architecture to build the Edge
   artifacts. You can issue the following command in the terminal to check your processor architecture.
@@ -49,32 +50,21 @@ must be secured, as they will by necessity contain the PCR and db private keys.
 
 - You have exported the factory keys from the Edge device. For more information, refer to
   [Export Factory Keys](./export-keys.md).
+
+- [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the git --version
+  command.
+
+- [openssl](https://www.openssl.org/) must be installed on your Linux machine.
+
+<Tabs>
+
+<TabItem value="self-signed" label="Self-Signed Certificates">
 
 ## Generate Keys for Trusted Boot with Self-Signed Certificates
 
 If your environment does not require a Certificate Authority (CA), you can use self-signed certificates to generate the
 keys needed for Trusted Boot. Using self-signed certificates may make verifying the source of the certificate harder
 because there is no higher authority.
-
-### Prerequisites
-
-- A physical or virtual Linux machine with _AMD64_ (also known as x86_64) processor architecture to build the Edge
-  artifacts. You can issue the following command in the terminal to check your processor architecture.
-
-  ```bash
-  uname -m
-  ```
-
-- Minimum hardware configuration of the Linux machine:
-
-  - 4 CPU
-  - 8 GB memory
-  - 50 GB storage
-
-- You have exported the factory keys from the Edge device. For more information, refer to
-  [Export Factory Keys](./export-keys.md).
-
-### Instructions
 
 1. Clone the **CanvOS** repository.
 
@@ -122,9 +112,14 @@ because there is no higher authority.
    :::
 
 7. Issue the following command to generate keys. Replace `org-name` with the name of your organization, and replace
-   5475, the default expiration period in days, with the desired expiration period for your keys. We suggest that you
-   specify a long expiration date, since if the keys expire before you can replace them, it can soft-brick the Edge
-   host. Although the default is 15 years, you may wish to make this longer.
+   5475, the default expiration period in days, with the desired expiration period for your keys.
+
+   :::danger
+
+   Specify a distant expiration date. If the keys expire before you can replace them, it can soft-brick the Edge host.
+   Although the default is 15 years, you may choose to make this longer.
+
+   :::
 
    ```shell
    ./earthly.sh +uki-genkey --MY_ORG="org-name" --EXPIRATION_IN_DAYS=5475 --UKI_SELF_SIGNED_KEYS=false
@@ -139,19 +134,24 @@ because there is no higher authority.
 
 8. Remove **PK.key** and **KEK.key** from the **private-keys** folder and keep them offline in a safe location.
 
-### Validate
+</TabItem>
 
-Check the content of the **secure-boot/enrollment** directory. You should observe the following nine files.
+<TabItem value="CA-Signed">
 
-```
-$ ls secure-boot/enrollment/
-KEK.auth  KEK.der  KEK.esl  PK.auth  PK.der  PK.esl  db.auth  db.der  db.esl
-```
+</TabItem>
 
 ## Generate Keys for Trusted Boot with a CA
 
 Palette Edge allows you to use certificates issued by a CA to generate Trusted Boot keys in the EdgeForge process.
 Follow the steps below to generate keys from certificates issued by your CA.
+
+:::danger
+
+If you are using an existing CA to generate keys, ensure that CA's root certificate has a distant expiration date. If
+the root certificate itself expires, all certificates signed by the CA will no longer be valid. This can possibly
+soft-brick your Edge host.
+
+:::
 
 1. Clone the **CanvOS** repository.
 
@@ -183,8 +183,9 @@ Follow the steps below to generate keys from certificates issued by your CA.
    cd sb-private-ca
    ```
 
-6. Review the three configuration files in the directory. Each file configures the generation of the PK, KEK, and db key
-   as well as their corresponding certificate request.
+6. Review the three configuration files in the directory. These files are configuration files that you can use to
+   generate certificate requests and key pairs. Each file configures the generation of the PK, KEK, and db key as well
+   as their corresponding certificate request.
 
    ```
    [ req ]
@@ -209,8 +210,9 @@ Follow the steps below to generate keys from certificates issued by your CA.
    subjectKeyIdentifier   = hash
    ```
 
-   Edit the conf files to specify the subject of the request files. Only modify the `req_dn` section, which records the
-   distinguished name of the certificate owner. Do not modify any other sections.
+   Edit the conf files default `[req_dn]` section and update the values to reflect your organization and location. Only
+   modify the `req_dn` section, which records the distinguished name of the certificate owner. Do not modify any other
+   sections.
 
 7. After you are done editing the configuration files, issue the following command to generate three pairs of keys, and
    a certificate request for each pair.
@@ -284,6 +286,8 @@ Follow the steps below to generate keys from certificates issued by your CA.
     ```
     ./earthly.sh +uki-genkey --MY_ORG="org-name" --EXPIRATION_IN_DAYS=5475
     ```
+
+</Tabs>
 
 ## Validate
 

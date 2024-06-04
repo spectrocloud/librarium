@@ -30,6 +30,8 @@ the EFI size checking ISO unless you disable secure boot or clear the keys. For 
 
 ## Instructions
 
+Follow these steps to install Palette Edge with Trusted Boot on your Edge Host.
+
 ### Enroll Secure Boot Keys into Edge Device
 
 The following steps are written for the Intel NUC 13 Pro device. If you are using a different device, the exact sequence
@@ -91,7 +93,9 @@ supports Secure Boot.
    :::
 
 8. After installation finishes, power up the device. Let your device automatically choose the option from the GRand
-   Unified Bootloader (GRUB) menu. It should boot directly to Edge device registration.
+   Unified Bootloader (GRUB) Menu. It should boot directly to Edge device registration. Refer to
+   [Edge Host Registration](../../site-deployment/site-installation/edge-host-registration.md) to learn more about Edge
+   host registration.
 
 ## Validate
 
@@ -128,9 +132,9 @@ more information.
    lsblk
    ```
 
-   You will observe output similar to the following and verify that the **/oem** portion and various directories
-   containing sensitive user data are encrypted. This means that if the boot process is ever altered by an unauthorized
-   party, they will not be able to gain access to the encrypted data.
+   An output similar to the following is displayed. Verify that the **/oem** portion and various directories containing
+   sensitive user data are of the `crypt` type and are encrypted. This means that if the boot process is ever altered by
+   an unauthorized party, they will not be able to gain access to the encrypted data.
 
    ```hideClipboard
    NAME          MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS

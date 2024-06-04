@@ -23,3 +23,5 @@ details.
 
 - [Build Edge Installer ISO with Trusted Boot](./build-trusted-iso.md)
 - [Build Provider Images with Trusted Boot](./build-trusted-provider-image.md)
+- [Check EFI Size and Edge Host Boot Limit](./check-efi-limit.md)
+- [Add Static Binaries to Persistent Partition](./add-extra-content.md)

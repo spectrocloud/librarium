@@ -41,6 +41,9 @@ after. Because the content is placed in the persistent partitions, it will be en
 
 - Static compiled binaries of the software package you are adding to the Edge host.
 
+- [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the git --version
+  command.
+
 ## Instructions
 
 1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS.git) GitHub repository containing the starter code.
@@ -67,7 +70,7 @@ after. Because the content is placed in the persistent partitions, it will be en
    git checkout v4.4.0
    ```
 
-5. Copy the static binaries of the software package you'd like to add to the Edge host to **overlay/files-iso/**.t
+5. Copy the static binaries of the software package you'd like to add to the Edge host to **overlay/files-iso/**.
    **overlay/files-iso** will be mounted at **/run/initramfs/live/** during installation, enabling the installer to copy
    files from there into place during installation.
 
@@ -110,7 +113,12 @@ after. Because the content is placed in the persistent partitions, it will be en
          - if [ -e /dev/mapper/persistent ]; then cryptsetup close /dev/mapper/persistent; fi
    ```
 
-7. Follow [Build Installer ISO with Trusted Boot](./build-trusted-iso.md) to build the installer ISO.
+7. You have now configured the installer to copy the static binaries you provided to the `/usr/local/bin` folder and
+   added the folder to the `PATH` variable. This allows you to refer to the binaries
+
+   You can perform further customization of the Installer ISO in your **user-data** file as well as the build script
+   used to build the Installer ISO with the **.arg** file before starting the build. Follow
+   [Build Installer ISO with Trusted Boot](./build-trusted-iso.md) to build the installer ISO.
 
 ## Validate
 

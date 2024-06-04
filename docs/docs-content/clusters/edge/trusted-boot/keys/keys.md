@@ -9,7 +9,7 @@ tags: ["edge"]
 
 All security features of Trusted Boot rely on cryptographic keys. Secure Boot relies on the chain of trust between
 Platform Key (PK), Key Exchange Keys (KEK), and signature database (db) keys to achieve a tamper proof boot process.
-Full Disk Encryption also replies on a key pair. This section talks about the different keys used in Trusted Boot, their
+Full Disk Encryption also relies on a key pair. This section talks about the different keys used in Trusted Boot, their
 roles, and best practices to manage them securely.
 
 ![Relationship between Secure Boot Keys](/clusters_edge_trusted-boot_key-management_key-relationship.webp)
@@ -56,7 +56,8 @@ encryption. The private PCR policy key signs the pre-calculated measurement duri
 in the UKI image.
 
 During EdgeForge, each boot component is hashed and these hash values, or measurements, are signed by the PCR private
-key. The signed measurements are embedded in the UKI image, along with the public key of the PCR policy key pair.
+key. The signed measurements are embedded in the UKI image, along with the public key of the PCR policy key pair. For
+more information about EdgeForge, refer to [EdgeForge with Trusted Boot](../edgeforge/edgeforge.md).
 
 During installation, encrypted partitions are setup using a Disk Encryption Key (DEK), which is itself encrypted by the
 TPM and stored in a secure blob. The PCR public key embedded in the ISO is used to form a binding policy. The binding
@@ -67,7 +68,7 @@ During the boot process before the encrypted disk partition is mounted, the TPM 
 
 - Verify the public key in the image is valid (by checking digest of the key vs binding policy)
 - Verify the signature on the pre-calculated measurements using the public key
-- Compare the precalculated measurements vs the actual PCR measurements.
+- Compare the precalculated measurements vs the actual PCR measurements
 
 If all three verifications are successful, TPM will decrypt the secure blob, release DEK, and the OS can use it to
 decrypt the encrypted partitions of the disk.

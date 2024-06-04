@@ -9,9 +9,9 @@ tags: ["edge"]
 
 If you need to make changes to a deployed Edge cluster with Trusted Boot enabled without touching the OS or the
 Kubernetes layer, you can follow the regular cluster upgrade process. Refer to
-[Update a Cluster](/docs/docs-content/clusters/cluster-management/cluster-updates.md) for more information. However, if
-the change you are making involves the Operating System (OS) layer and the Kubernetes layer, you will need to build a
-new provider image with the same Trusted Boot keys you used to build the Edge Installer ISO.
+[Update a Cluster](../../../cluster-management/cluster-updates.md) for more information. However, if the change you are
+making involves the Operating System (OS) layer and the Kubernetes layer, you will need to build a new provider image
+with the same Trusted Boot keys you used to build the Edge Installer ISO.
 
 This page guides you through the process of making an update to a cluster that involves the Operating System (OS) or
 Kubernetes layer of the cluster.
@@ -36,23 +36,88 @@ Kubernetes layer of the cluster.
   - 32 GB RAM
   - 100 GB storage
 
-:::warning
-
-Ensure that the keys in the **secure-boot** folder contains all the keys that were used to produce the ISO, including
-the keys in each subdirectory. If you are missing any of the keys, your Edge host will either not be able to boot, or
-not be able to access any data in the persistent partitions.
-
-:::
-
 ## Instructions
 
 ### Build New Provider Image
 
-1. Change into the **CanvOS** folder where the Edge Installer ISO was built.
+1. If you have access to the original **CanvOS** folder where they provider images were made, and all the necessary keys
+   are available to you in their original folders, skip to step 5.
 
-2. Ensure all keys that were used to build the ISO are present in the **secure-boot** folder.
+2. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
 
-3. Edit the **.arg** file to make changes to the OS or Kubernetes layer. Refer to
+   ```bash
+   git clone https://github.com/spectrocloud/CanvOS.git
+   ```
+
+3. Change to the **CanvOS/** directory.
+
+   ```bash
+   cd CanvOS
+   ```
+
+4. View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
+
+   ```bash
+   git tag
+   ```
+
+5. Check out the newest available tag. This guide uses the tag **v4.4.0** as an example.
+
+   ```shell
+   git checkout v4.4.0
+   ```
+
+6. Move all keys into folders where they are expected. Ensure all keys that were used to build the ISO are present in
+   the **secure-boot** folder. The following files and folder structure are expected with the following file
+   permissions.
+
+   ```
+    ls -llR secure-boot/
+    secure-boot/:
+    total 16
+    drwx------ 2 ubuntu ubuntu 4096 Apr 24 21:08 enrollment
+    drwxrwxr-x 2 ubuntu ubuntu 4096 May 13 21:25 exported-keys
+    drwxr-xr-x 2 ubuntu ubuntu 4096 Jun  3 21:34 private-keys
+    drwxr-xr-x 2 ubuntu ubuntu 4096 Apr 24 21:08 public-keys
+
+    secure-boot/enrollment:
+    total 48
+    -rw-r--r-- 1 ubuntu ubuntu 3666 Apr 24 21:08 KEK.auth
+    -rw-r--r-- 1 ubuntu ubuntu 2283 Apr 24 21:08 KEK.der
+    -rw-r--r-- 1 ubuntu ubuntu 2371 Apr 24 21:08 KEK.esl
+    -rw-r--r-- 1 ubuntu ubuntu 2106 Apr 24 21:08 PK.auth
+    -rw-r--r-- 1 ubuntu ubuntu  767 Apr 24 21:08 PK.der
+    -rw-r--r-- 1 ubuntu ubuntu  811 Apr 24 21:08 PK.esl
+    -rw-r--r-- 1 ubuntu ubuntu 6474 Apr 24 21:08 db.auth
+    -rw-r--r-- 1 ubuntu ubuntu 5003 Apr 24 21:08 db.der
+    -rw-r--r-- 1 ubuntu ubuntu 5179 Apr 24 21:08 db.esl
+
+    secure-boot/exported-keys:
+    total 12
+    -rw------- 1 root root 1560 May 13 21:25 KEK
+    -rw------- 1 root root 4368 May 13 21:25 db
+
+    secure-boot/private-keys:
+    total 16
+    -rw------- 1 ubuntu ubuntu 1704 Apr 24 21:08 db.key
+    -rw------- 1 ubuntu ubuntu 1675 Apr 24 21:08 tpm2-pcr-private.pem
+
+    secure-boot/public-keys:
+    total 12
+    -rw-r--r-- 1 ubuntu ubuntu 1094 Apr 24 21:08 KEK.pem
+    -rw-r--r-- 1 ubuntu ubuntu 1094 Apr 24 21:08 PK.pem
+    -rw-r--r-- 1 ubuntu ubuntu 1094 Apr 24 21:08 db.pem
+   ```
+
+   :::warning
+
+   Ensure that the keys in the **secure-boot** folder contains all the keys that were used to produce the ISO, including
+   the keys in each subdirectory. If you are missing any of the keys, your Edge host will either not be able to boot, or
+   not be able to access any data in the persistent partitions.
+
+   :::
+
+7. Edit the **.arg** file to make changes to the OS or Kubernetes layer. Refer to
    [EdgeForge Build Configurations](../../edgeforge-workflow/palette-canvos/arg.md) for more information.
 
    In particular, pay attention to the following arguments.
@@ -64,7 +129,7 @@ not be able to access any data in the persistent partitions.
    | `OS_DISTRIBUTION`  | OS distribution.                                                                                      | `ubuntu`, `opensuse-leap`, `rhel`.         |
    | `OS_VERSION`       | OS version. This applies to Ubuntu only.                                                              | `20`, `22`.                                |
 
-4. Issue the following command to build the provider image.
+8. Issue the following command to build the provider image.
 
    ```shell
    ./earthly.sh +build-provider-images
@@ -79,15 +144,15 @@ not be able to access any data in the persistent partitions.
    You should also receive an output from the build command that contains the OS layer of your cluster profile. Copy and
    save it during the later steps.
 
-5. Issue the following command to push the image to the repository you specified in **.arg**. Replace `IMAGE-TAG` with
+9. Issue the following command to push the image to the repository you specified in **.arg**. Replace `IMAGE-TAG` with
    the tag of the provider image you just built.
 
    ```shell
    docker push [IMAGE-TAG]
    ```
 
-6. Update the cluster profile to use the new provider image you have built. For more information, refer to
-   [Update a Cluster](../../../cluster-management/cluster-updates.md).
+10. Update the cluster profile to use the new provider image you have built. For more information, refer to
+    [Update a Cluster](../../../cluster-management/cluster-updates.md).
 
 ## Validate
 

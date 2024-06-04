@@ -8,9 +8,9 @@ tags: ["edge"]
 ---
 
 Several key pairs are used in Trusted Boot during installer ISO generation, upgrade image generation, as well as
-installation. Each pair of keys serves a different purpose, is used during different stages of Edge artifact building
-and deployment, and needs to be secured differently. This page discusses the different key pairs used by Trusted Boot
-and how to secure them.
+installation. Each key pair serves a different purpose and is used during different stages of Edge artifact building and
+deployment. Each key pair needs to be secured differently. This page discusses the different key pairs used by Trusted
+Boot and how to secure them.
 
 Careful key management is the foundation of all security benefits provided by Trusted Boot. All security provided by
 Trusted Boot assumes that your keys are handled and stored securely. Ensure that you follow our recommendations to avoid
@@ -21,7 +21,7 @@ compromising the security of your systems.
 The private PK must be stowed away in a secure location **immediately** after being generated. You do not need the PK
 private key during EdgeForge operations, installation, upgrades or deployments of your Edge hosts. The public PK key is
 required during the EdgeForge build process so that it can be embedded into the Edge Installer ISO and thereafter
-installed on Edge hosts.
+installed on Edge hosts. For mor information, refer to [EdgeForge with Trusted Boot](../edgeforge/edgeforge.md).
 
 :::danger
 
@@ -76,7 +76,7 @@ possible, the build pipeline should utilize an HSM (Hardware Security Module).
 The PCR policy key pair is in charge of signing the pre-calculated measurements of the boot process and involved in disk
 encryption. The private PCR policy key needs to be stored securely in the build pipeline so it can sign the
 pre-calculated measurement during EdgeForge. The public key is generated and embedded in the UKI image automatically,
-and you never need to handle the public key.
+and you do not need to handle the public key.
 
 | Filename                 | Description                 | Key Management Recommendation              |
 | ------------------------ | --------------------------- | ------------------------------------------ |

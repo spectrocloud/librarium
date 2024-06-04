@@ -26,9 +26,12 @@ This document guides you through the process of producing Edge Installer ISOs th
 
 - You have generated secure boot keys in the **secure-boot/enrollment** folder.
 - Both the **db.key** file and the **tpm2-pcr-private.pem** file are located in the **CanvOS/secure-boot/private-keys**
-  directory.
+  directory. For more information, refer to [Generate Trusted Boot Keys](../keys/generate-keys.md).
 
 - Familiarity with the [EdgeForge Workflow](../../edgeforge-workflow/edgeforge-workflow.md).
+
+- [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the git --version
+  command.
 
 ## Build Edge Installer ISO with Trusted Boot
 
@@ -85,7 +88,8 @@ This document guides you through the process of producing Edge Installer ISOs th
    :::warning
 
    Ensure you have generated the Trusted Boot keys in the **secure-boot/enrollment** folder before proceeding to the
-   next step. If you build an ISO without the keys in the folder, the key enrollment will not happen.
+   next step. If you build an ISO without the keys in the folder, the key enrollment will not happen. For more
+   information, refer to [Generate Trusted Boot Keys](../keys/generate-keys.md).
 
    :::
 

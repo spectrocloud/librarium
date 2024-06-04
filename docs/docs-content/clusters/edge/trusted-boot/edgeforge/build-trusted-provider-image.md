@@ -29,7 +29,8 @@ key that is in the signature database. This is important both during installatio
   - 150 GB storage
 
 - You have generated Trusted Boot keys in the **secure-boot/enrollment** folder and have stored the private **db.key**
-  and **tpm2-pcr-private.pem** folder on the machine where you are building the provider images.
+  and **tpm2-pcr-private.pem** folder on the machine where you are building the provider images. For more information,
+  refer to [Generate Trusted Boot Keys](../keys/generate-keys.md).
 
 - A physical or virtual Linux machine with AMD64 (also known as x86_64) processor architecture to build the Edge
   artifacts. You can issue the following command in the terminal to check your processor architecture.
@@ -97,8 +98,9 @@ key that is in the signature database. This is important both during installatio
    export IMAGE_REGISTRY=docker.io/[DOCKER-ID]
    ```
 
-8. Issue the following command to use the Ubuntu OS distribution and use the 23.10 version. Only Ubuntu 23.10 version is
-   supported.
+8. Issue the following command to configure OS distribution and version. You can find all supported OS distribution and
+   versions in the [**README.md**](https://github.com/spectrocloud/CanvOS/blob/main/README.md) of the **CanvOS**
+   repository.
 
    ```bash
    export OS_DISTRIBUTION=ubuntu

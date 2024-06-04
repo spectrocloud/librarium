@@ -36,6 +36,9 @@ ISO file.
   check the EFI boot limit will not have your keys on it. If your device has already enrolled your custom keys and have
   secure boot enabled, the Edge host will not be able to boot from the unsigned volume.
 
+- [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the git --version
+  command.
+
 ## Check Bootable EFI Size Limit for Hardware
 
 1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS.git) GitHub repository containing the starter code.
@@ -181,6 +184,39 @@ ISO file.
     MB, and the EFI of the provider image is 767 MB. The hardware limit is smaller than the EFI of both the ISO and the
     provider image. Therefore, the Edge host will not be able to boot and an Edge host with a higher EFI boot limit is
     needed.
+
+    To resolve this issue, you can acquire a device that has a higher boot limit, or make the EFI of the ISO smaller by
+    removing unnecessary layers of your base image by editing the **Dockerfile** in the **CanvOS** repository. For
+    example, if you have the following Dockerfile.
+
+    ```dockerfile {22}
+    ARG BASE
+    FROM $BASE
+
+    ARG OS_DISTRIBUTION
+    ARG PROXY_CERT_PATH
+    ARG HTTP_PROXY
+    ARG HTTPS_PROXY
+    ARG NO_PROXY
+
+    COPY sc.cr[t] /tmp/sc.crt
+    RUN if [ "${OS_DISTRIBUTION}" = "ubuntu" ] && [ "${PROXY_CERT_PATH}" != "" ]; then \
+        cp /tmp/sc.crt /etc/ssl/certs && \
+        update-ca-certificates; \
+        fi
+    RUN if [ "${OS_DISTRIBUTION}" = "opensuse-leap" ] && [ "${PROXY_CERT_PATH}" != "" ]; then \
+        cp /tmp/sc.crt /usr/share/pki/trust/anchors && \
+        update-ca-certificates; \
+        fi
+
+    ###########################Add any other image customizations here #######################
+
+    RUN apt-get update && apt-get install nginx -y
+    ```
+
+    You can remove the last line of the **Dockerfile** to reduce the EFI size. If you want to include software packages
+    in your built ISO without increasing the EFI size, refer to
+    [Add Static Binaries to Persistent Partition](./add-extra-content.md).
 
 ## Validate
 
