@@ -14,5 +14,9 @@
   {
     "name": "csi-rook",
     "description": "Rook is a cloud-native storage orchestrator for Kubernetes, providing the platform, framework, and support for a diverse set of storage solutions to natively integrate with cloud-native environments. Rook turns storage"
+  },
+  {
+    "name": "hello-universe",
+    "description": "Hello Universe is a demo web application utilized to help users learn more about Palette and its features. It functions as a standalone front-end application and provides users with a local click counter and funny Spectro Cloud-themed images."
   }
 ]
