@@ -20,8 +20,8 @@ in which Trusted Boot EdgeForge and deployment process. For more information, re
 | ------------------------ | -------------- | ------------------- | ------------------------ | ------------ |
 | PK & KEK (private)       | ✅             | Not needed          | Not needed               | Not needed   |
 | PK & KEK (public)        |                | ✅                  | Not needed               | ✅           |
-| db (public)              |                | ✅                  | ✅                       | Not needed   |
-| db (private)             |                | ✅                  | ✅                       | Not needed   |
+| DB (public)              |                | ✅                  | ✅                       | Not needed   |
+| DB (private)             |                | ✅                  | ✅                       | Not needed   |
 | PCR policy Key (private) |                | ✅                  | Not needed               | ✅           |
 
 :::warning
@@ -29,7 +29,7 @@ in which Trusted Boot EdgeForge and deployment process. For more information, re
 All security provided by Trusted Boot assumes that the private keys are kept secure. We suggest that you perform key
 generation in an airgapped environment and move the PK and KEK private keys to a secure location immediately after
 generating them. In addition, any build pipelines that are created for the purposes of building ISOs and provider images
-must be secured, as they will by necessity contain the PCR and db private keys.
+must be secured, as they will by necessity contain the PCR and DB private keys.
 
 :::
 
@@ -58,9 +58,9 @@ must be secured, as they will by necessity contain the PCR and db private keys.
 
 <Tabs>
 
-<TabItem value="self-signed" label="Self-Signed Certificates">
+## Instructions
 
-## Generate Keys for Trusted Boot with Self-Signed Certificates
+<TabItem value="self-signed" label="Generate Keys Using Self-Signed Certificates">
 
 If your environment does not require a Certificate Authority (CA), you can use self-signed certificates to generate the
 keys needed for Trusted Boot. Using self-signed certificates may make verifying the source of the certificate harder
@@ -136,11 +136,7 @@ because there is no higher authority.
 
 </TabItem>
 
-<TabItem value="CA-Signed">
-
-</TabItem>
-
-## Generate Keys for Trusted Boot with a CA
+<TabItem value="CA-Signed" label="Generate Keys Using an Existing CA">
 
 Palette Edge allows you to use certificates issued by a CA to generate Trusted Boot keys in the EdgeForge process.
 Follow the steps below to generate keys from certificates issued by your CA.
@@ -184,7 +180,7 @@ soft-brick your Edge host.
    ```
 
 6. Review the three configuration files in the directory. These files are configuration files that you can use to
-   generate certificate requests and key pairs. Each file configures the generation of the PK, KEK, and db key as well
+   generate certificate requests and key pairs. Each file configures the generation of the PK, KEK, and DB key as well
    as their corresponding certificate request.
 
    ```
@@ -286,6 +282,8 @@ soft-brick your Edge host.
     ```
     ./earthly.sh +uki-genkey --MY_ORG="org-name" --EXPIRATION_IN_DAYS=5475
     ```
+
+</TabItem>
 
 </Tabs>
 

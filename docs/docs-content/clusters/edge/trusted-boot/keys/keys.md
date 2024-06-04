@@ -8,7 +8,7 @@ tags: ["edge"]
 ---
 
 All security features of Trusted Boot rely on cryptographic keys. Secure Boot relies on the chain of trust between
-Platform Key (PK), Key Exchange Keys (KEK), and signature database (db) keys to achieve a tamper proof boot process.
+Platform Key (PK), Key Exchange Keys (KEK), and signature database (DB) keys to achieve a tamper proof boot process.
 Full Disk Encryption also relies on a key pair. This section talks about the different keys used in Trusted Boot, their
 roles, and best practices to manage them securely.
 
@@ -27,27 +27,27 @@ platform firmware. A system can only have one PK.
 ## Key Exchange Key (KEK)
 
 The KEK is a list of certificates, public keys, or signatures in an ESL signed by a private PK key. Entries in the KEK
-set are used to update the signature database (db) and the forbidden signature database (dbx). Each entry in the KEK set
+set are used to update the signature database (DB) and the forbidden signature database (DBX). Each entry in the KEK set
 has a corresponding private key. It establishes a relationship of trust between the firmware and the operating system
 (OS).
 
-Any private key corresponding to an entry in the KEK set can sign updates to the db. When there are updates to the db,
+Any private key corresponding to an entry in the KEK set can sign updates to the DB. When there are updates to the DB,
 the corresponding public key, certificate, or signature in the KEK set is used to verify that those updates are signed
 by the authentic private.
 
-## Signature Database (db) and Forbidden Signature Database (dbx)
+## Signature Database (DB) and Forbidden Signature Database (DBX)
 
-The db is used to validate signed EFI (Extensible Firmware Interface) binaries. The db may contain a mixed set of
-certificates, public keys, signatures or hashes of binary files. The signature stored in the EFI binary (or a hash of
-the binary if there is no signature) is compared against the entries in the database. The binary will be executed if one
-of the following conditions is met:
+The DB validates signed EFI (Extensible Firmware Interface) binaries. The DB may contain a mixed set of certificates,
+public keys, signatures or hashes of binary files. The signature stored in the EFI binary (or a hash of the binary if
+there is no signature) is compared against the entries in the database. The binary will be executed if one of the
+following conditions is met:
 
-- The EFI binary is signed, and the signing key is in the db.
-- The EFI binary is signed, and the signature on the binary is in the db.
-- The EFI binary is unsigned and a SHA-256 hash of the image is in the db.
+- The EFI binary is signed, and the signing key is in the DB.
+- The EFI binary is signed, and the signature on the binary is in the DB.
+- The EFI binary is unsigned and a SHA-256 hash of the image is in the DB.
 
-Similarly, dbx may contain a mixed set of certificates, signatures or hashes. Any EFI whose signatures, hashes, or
-signing key matches the entries in dbx is forbidden from being executed.
+Similarly, DBX may contain a mixed set of certificates, signatures or hashes. Any EFI whose signatures, hashes, or
+signing key matches the entries in DBX is forbidden from being executed.
 
 ## Platform Configuration Registers (PCR) Policy Key
 
@@ -85,7 +85,7 @@ decrypt and release the DEK to the OS, so it can use it to decrypt the encrypted
 ## Factory Keys
 
 Factory keys refer to the secure boot keys that are stored on the device that is set to factory settings. In EdgeForge,
-these keys are stored in the folder **exported-keys**. They may include PK, KEK, and db keys. Factory keys are often
+these keys are stored in the folder **exported-keys**. They may include PK, KEK, and DB keys. Factory keys are often
 used to authenticate the firmware of a device. For more information, refer to [Export Factory Keys](export-keys.md).
 
 ## Resources
