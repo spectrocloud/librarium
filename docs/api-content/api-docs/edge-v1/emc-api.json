@@ -11,7 +11,7 @@
   ],
   "swagger": "2.0",
   "info": {
-    "title": "Edge Management APIs",
+    "title": "Local Management APIs",
     "version": "v1"
   },
   "paths": {
@@ -19,10 +19,42 @@
       "post": {
         "description": "Creates a cluster with the provided cluster configuration",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Creates a cluster with the provided cluster configuration",
         "operationId": "v1CreateCluster",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterConfiguration"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "description": "Updates a cluster with the provided cluster configuration",
+        "tags": [
+          "cluster"
+        ],
+        "summary": "Updates a cluster with the provided cluster configuration",
+        "operationId": "v1UpdateCluster",
         "parameters": [
           {
             "name": "body",
@@ -53,7 +85,7 @@
       "get": {
         "description": "list the details of the cluster’s packs.",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "list the details of the cluster’s packs.",
         "operationId": "v1ClusterApplications",
@@ -85,11 +117,35 @@
         }
       }
     },
+    "/v1/edge-mgmt/cluster/certificates": {
+      "get": {
+        "description": "Get Cluster Certificates Info",
+        "tags": [
+          "cluster"
+        ],
+        "summary": "Get Cluster Certificates Info",
+        "operationId": "v1CertificateDetails",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CertificateDetails"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
     "/v1/edge-mgmt/cluster/details": {
       "get": {
         "description": "Get Edge Cluster details",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Get Edge Cluster details",
         "operationId": "v1ClusterGet",
@@ -119,7 +175,7 @@
       "get": {
         "description": "List cluster events",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "List cluster events",
         "operationId": "v1GetClusterEvents",
@@ -156,7 +212,7 @@
       "put": {
         "description": "Updates a cluster with the provided cluster configuration",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Updates a cluster with the provided cluster configuration",
         "operationId": "v1UpdateClusterProfiles",
@@ -190,7 +246,7 @@
       "post": {
         "description": "Validate cluster profile variables",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Validate cluster profile variables",
         "operationId": "v1ValidateClusterProfileVariables",
@@ -224,7 +280,7 @@
       "get": {
         "description": "Get Harbor Content Details",
         "tags": [
-          "edge-mgmt"
+          "content"
         ],
         "summary": "List existing Harbor Content Details",
         "operationId": "v1HarborContentsDetails",
@@ -242,7 +298,7 @@
       "get": {
         "description": "Get Harbor Content Sync Status",
         "tags": [
-          "edge-mgmt"
+          "content"
         ],
         "summary": "List Harbor Content Sync Status",
         "operationId": "v1HarborContentsSyncStatusDetails",
@@ -260,7 +316,7 @@
       "get": {
         "description": "Gets the harbor health status",
         "tags": [
-          "edge-mgmt"
+          "content"
         ],
         "summary": "Gets the harbor health status",
         "operationId": "V1HarborHealth",
@@ -280,11 +336,35 @@
         }
       }
     },
+    "/v1/edge-mgmt/cluster/renew-certificates": {
+      "post": {
+        "description": "Renew Cluster Certificates",
+        "tags": [
+          "cluster"
+        ],
+        "summary": "Renew Cluster Certificates",
+        "operationId": "v1RenewCerts",
+        "responses": {
+          "201": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
     "/v1/edge-mgmt/cluster/settings": {
       "put": {
         "description": "Update cluster settings",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Update cluster settings",
         "operationId": "v1EdgeNativeClusterSettings",
@@ -324,7 +404,7 @@
       "get": {
         "description": "parses the cluster-config archive.",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "parses the cluster-config archive.",
         "operationId": "V1ClusterConfigArchiveEmbedded",
@@ -348,7 +428,7 @@
       "get": {
         "description": "parses the cluster-config archive if it exists.",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "parses the cluster-config archive if it exists.",
         "operationId": "v1ClusterConfigArchiveOverriden",
@@ -372,7 +452,7 @@
       "get": {
         "description": "Get K8s Cluster Nodes",
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "A list of the K8s Cluster Nodes",
         "operationId": "v1ClusterNodes",
@@ -392,11 +472,73 @@
         }
       }
     },
+    "/v1/edge-mgmt/edgehosts/connectivity/ping": {
+      "get": {
+        "description": "Ping an endpoint",
+        "tags": [
+          "troubleshoot"
+        ],
+        "summary": "Ping an endpoint",
+        "operationId": "v1PingHost",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "endpoint",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1PingResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/connectivity/traceroute": {
+      "get": {
+        "description": "Display route that IP packets take to a network host",
+        "tags": [
+          "troubleshoot"
+        ],
+        "summary": "Display route that IP packets take to a network host",
+        "operationId": "v1TraceRouteHost",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "endpoint",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1TraceRouteResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
     "/v1/edge-mgmt/edgehosts/current": {
       "get": {
         "description": "Get edge host details",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Get edge host info",
         "operationId": "v1EdgeHostInfo",
@@ -426,7 +568,7 @@
       "post": {
         "description": "Reboot edge host",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Reboot edge host",
         "operationId": "v1EdgeHostActionReboot",
@@ -450,13 +592,16 @@
       "post": {
         "description": "Reset edge host",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Reset edge host",
         "operationId": "v1EdgeHostActionReset",
         "responses": {
           "202": {
-            "description": "Accepted response with message"
+            "description": "Accepted response with message",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
           },
           "500": {
             "description": "Internal server error.",
@@ -477,7 +622,7 @@
       "post": {
         "description": "Shutdown edge host",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Shutdown edge host",
         "operationId": "v1EdgeHostActionShutdown",
@@ -504,7 +649,7 @@
           "multipart/form-data"
         ],
         "tags": [
-          "edge-mgmt"
+          "cluster"
         ],
         "summary": "Uploads the cluster config archive and extracts it to the required location on the edge host.",
         "operationId": "V1ClusterConfigUpload",
@@ -540,7 +685,7 @@
           "multipart/form-data"
         ],
         "tags": [
-          "edge-mgmt"
+          "content"
         ],
         "summary": "Uploads an archive file and extracts it to the required location on the edge host.",
         "operationId": "V1ContentUpload",
@@ -573,7 +718,7 @@
       "get": {
         "description": "Get edge host configurations.",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Get edge host configurations.",
         "operationId": "V1EdgeHostConfigurationsGet",
@@ -600,7 +745,7 @@
       },
       "put": {
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Update Edge Host configurations",
         "operationId": "V1EdgeHostConfigurationsUpdate",
@@ -641,7 +786,7 @@
       "get": {
         "description": "Edge host configurations status",
         "tags": [
-          "edge-mgmt"
+          "host"
         ],
         "summary": "Edge host configurations status",
         "operationId": "v1EdgeHostConfigurationStatus",
@@ -661,11 +806,157 @@
         }
       }
     },
+    "/v1/edge-mgmt/edgehosts/current/download-logs": {
+      "get": {
+        "description": "Downloads the logs of the edge host as a tar file.",
+        "produces": [
+          "application/x-tar",
+          "application/json"
+        ],
+        "tags": [
+          "host"
+        ],
+        "summary": "Download edge host Logs",
+        "operationId": "v1EdgeHostDownloadLogs",
+        "responses": {
+          "200": {
+            "description": "A tar file containing the logs of the edge host.",
+            "schema": {
+              "type": "file",
+              "format": "binary"
+            },
+            "headers": {
+              "Content-Disposition": {
+                "type": "string",
+                "description": "Specifies the filename for the downloaded file."
+              }
+            }
+          },
+          "404": {
+            "description": "resource not found",
+            "schema": {
+              "$ref": "#/definitions/v1NotFoundResponseWithMessage"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/error-logs": {
+      "get": {
+        "description": "List last 'logCount' edge host error logs",
+        "tags": [
+          "host"
+        ],
+        "summary": "List last 'logCount' edge host error logs",
+        "operationId": "V1EdgeHostErrorLogs",
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "Number of logs to be fetched",
+            "name": "logCount",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Events"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/generate-logs": {
+      "post": {
+        "description": "Start edge host log collection",
+        "tags": [
+          "host"
+        ],
+        "summary": "Start edge host log collection",
+        "operationId": "v1EdgeHostGenerateLogs",
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/generate-logs-status": {
+      "get": {
+        "description": "Edge host log collection status",
+        "tags": [
+          "host"
+        ],
+        "summary": "Edge host log collection status",
+        "operationId": "v1EdgeHostGenerateLogsStatus",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeHostGenerateLogsStatus"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/events/lifecycle": {
+      "get": {
+        "description": "Get life cycle events of cluster and edge host",
+        "tags": [
+          "events"
+        ],
+        "summary": "Get life cycle events of cluster and edge host",
+        "operationId": "v1GetLifecycleEvents",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1LifecycleEvents"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
     "/v1/ping": {
       "get": {
         "description": "Ping Service",
         "tags": [
-          "ping"
+          "troubleshoot"
         ],
         "summary": "Ping Service",
         "operationId": "V1Ping",
@@ -689,7 +980,7 @@
       "get": {
         "description": "Get current logged in user's information",
         "tags": [
-          "users"
+          "user"
         ],
         "summary": "Get current logged in user's information",
         "operationId": "V1CurrentUser",
@@ -707,13 +998,45 @@
             }
           }
         }
+      },
+      "patch": {
+        "description": "Patches the current logged in user's configuration",
+        "tags": [
+          "user"
+        ],
+        "summary": "Patches the current logged in user's configuration",
+        "operationId": "v1PatchCurrentUser",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UserSpec"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
       }
     },
     "/v1/users/default/login": {
       "post": {
         "description": "Authenticates the user with the specified credentials",
         "tags": [
-          "users"
+          "user"
         ],
         "summary": "Authenticates the user with the specified credentials",
         "operationId": "V1UserLogin",
@@ -766,7 +1089,7 @@
     "/v1/users/default/logout": {
       "post": {
         "tags": [
-          "users"
+          "user"
         ],
         "summary": "Logs out the user from the system",
         "operationId": "V1UserLogout",
@@ -799,7 +1122,7 @@
       "post": {
         "description": "Resets the user's password",
         "tags": [
-          "users"
+          "user"
         ],
         "summary": "Resets the user's password",
         "operationId": "V1UserPasswordReset",
@@ -838,7 +1161,7 @@
     "/v1/users/default/token/renewal": {
       "post": {
         "tags": [
-          "users"
+          "user"
         ],
         "summary": "Refreshes the authentication token of the user",
         "operationId": "V1UserTokenRenewal",
@@ -929,6 +1252,26 @@
     "v1BadRequest": {
       "description": "Bad request"
     },
+    "v1CA": {
+      "type": "object",
+      "properties": {
+        "childCerts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ChildCerts"
+          }
+        },
+        "expirationDate": {
+          "type": "string"
+        },
+        "issueDate": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
     "v1CPU": {
       "type": "object",
       "properties": {
@@ -936,6 +1279,40 @@
           "description": "Cpu cores defines the number of cpu cores on the edge host.",
           "type": "integer",
           "format": "int32"
+        }
+      }
+    },
+    "v1CertificateDetails": {
+      "type": "object",
+      "properties": {
+        "certificates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1CA"
+          }
+        },
+        "earliestAutoRenewalTime": {
+          "type": "string"
+        },
+        "needsRenewal": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1ChildCerts": {
+      "type": "object",
+      "properties": {
+        "expirationDate": {
+          "type": "string"
+        },
+        "issueDate": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeName": {
+          "type": "string"
         }
       }
     },
@@ -1221,6 +1598,12 @@
         "uid": {
           "type": "string"
         },
+        "variables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Variable"
+          }
+        },
         "version": {
           "type": "string"
         }
@@ -1280,6 +1663,10 @@
         "health": {
           "$ref": "#/definitions/v1Health"
         },
+        "isRebootPending": {
+          "type": "boolean",
+          "default": false
+        },
         "k8sVersion": {
           "type": "string"
         },
@@ -1324,6 +1711,51 @@
           "type": "string"
         },
         "type": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ConditionCategoryOrder": {
+      "properties": {
+        "category": {
+          "description": "Name of the parent category for the conditions list.",
+          "type": "string"
+        },
+        "conditionsOrder": {
+          "description": "Order or sequence of all the conditions in this category.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ConditionOrder"
+          }
+        },
+        "order": {
+          "description": "Order or sequence of the category in comparison to all the categories.",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1ConditionOrder": {
+      "properties": {
+        "order": {
+          "description": "Order or sequence of the condition in comparison to all the conditions.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "reason": {
+          "description": "Unique, one word reason for the condition's last transition.",
+          "type": "string"
+        },
+        "reasonLabel": {
+          "description": "Readable label for the reason.",
+          "type": "string"
+        },
+        "type": {
+          "description": "Type of the condition.",
+          "type": "string"
+        },
+        "typeLabel": {
+          "description": "Readable label for the type.",
           "type": "string"
         }
       }
@@ -1444,6 +1876,24 @@
         },
         "noProxy": {
           "type": "string"
+        }
+      }
+    },
+    "v1EdgeHostGenerateLogsStatus": {
+      "description": "Edge host log collection status",
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Unknown",
+            "InProgress",
+            "Completed",
+            "Failed"
+          ]
         }
       }
     },
@@ -1738,7 +2188,7 @@
           "$ref": "#/definitions/v1UpdateStrategy"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       }
@@ -1836,7 +2286,7 @@
       "type": "object",
       "properties": {
         "addresses": {
-          "description": "Addresses is a map of PCI device entry name to its addresses.\nExample entry would be \"11:00.0 VGA compatible controller [0300]: NVIDIA\nCorporation Device [10de:1eb1] (rev a1)\"- > 0000_11_00_0\" The address is\nBDF (Bus Device Function) identifier format seperated by underscores. The\nfirst 4 bits are almost always 0000. In the above example 11 is Bus, 00\nis Device,0 is function. The values of these addreses are expected in hexadecimal\nformat\n",
+          "description": "Addresses is a map of PCI device entry name to its addresses.\nExample entry would be \"11:00.0 VGA compatible controller [0300]: NVIDIA\nCorporation Device [10de:1eb1] (rev a1)\"- \u003e 0000_11_00_0\" The address is\nBDF (Bus Device Function) identifier format seperated by underscores. The\nfirst 4 bits are almost always 0000. In the above example 11 is Bus, 00\nis Device,0 is function. The values of these addreses are expected in hexadecimal\nformat\n",
           "type": "object",
           "additionalProperties": {
             "type": "string"
@@ -2035,6 +2485,30 @@
     "v1InternalServerError": {
       "description": "Internal Server Error"
     },
+    "v1LifecycleEvents": {
+      "description": "events representing lifecycle of cluster and edge host",
+      "type": "object",
+      "properties": {
+        "clusterEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Condition"
+          }
+        },
+        "edgeHostEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Condition"
+          }
+        },
+        "expectedOrder": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ConditionCategoryOrder"
+          }
+        }
+      }
+    },
     "v1LoginSuccess": {
       "description": "System login success response",
       "type": "object",
@@ -2172,6 +2646,14 @@
     },
     "v1NotFound": {
       "description": "Resource not found"
+    },
+    "v1NotFoundResponseWithMessage": {
+      "description": "Resource not found with message",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
     },
     "v1OS": {
       "type": "object",
@@ -2399,16 +2881,40 @@
         }
       }
     },
+    "v1PingResponse": {
+      "type": "object",
+      "properties": {
+        "pingHostStatus": {
+          "type": "string"
+        }
+      }
+    },
     "v1Port": {
       "description": "Port provides details about port.",
       "type": "object",
       "properties": {
+        "appProtocol": {
+          "description": "App protocol of the port.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the port.",
+          "type": "string"
+        },
+        "nodePort": {
+          "description": "NodePort number.",
+          "type": "integer"
+        },
         "port": {
           "description": "Port number.",
           "type": "integer"
         },
         "protocol": {
           "description": "Protocol of the port.",
+          "type": "string"
+        },
+        "targetPort": {
+          "description": "number or string of the target port .",
           "type": "string"
         }
       }
@@ -2518,11 +3024,19 @@
       "type": "string",
       "format": "date-time"
     },
+    "v1TraceRouteResponse": {
+      "type": "object",
+      "properties": {
+        "traceRouteStatus": {
+          "type": "string"
+        }
+      }
+    },
     "v1Unauthorized": {
       "description": "Unauthorized"
     },
     "v1UpdateStrategy": {
-      "description": "UpdatesStrategy will be used to translate to RollingUpdateStrategy of a MachineDeployment We'll start with default values for the translation, can expose more details later Following is details of parameters translated from the type ScaleOut => maxSurge=1, maxUnavailable=0 ScaleIn => maxSurge=0, maxUnavailable=1",
+      "description": "UpdatesStrategy will be used to translate to RollingUpdateStrategy of a MachineDeployment We'll start with default values for the translation, can expose more details later Following is details of parameters translated from the type ScaleOut =\u003e maxSurge=1, maxUnavailable=0 ScaleIn =\u003e maxSurge=0, maxUnavailable=1",
       "type": "object",
       "properties": {
         "type": {
@@ -2539,8 +3053,15 @@
       "description": "Current user information",
       "type": "object",
       "properties": {
+        "sshKeys": {
+          "description": "Current user's ssh keys",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "userName": {
-          "description": "Current user name",
+          "description": "Current user's username",
           "type": "string"
         }
       }
@@ -2650,6 +3171,9 @@
         },
         "required": {
           "type": "boolean"
+        },
+        "value": {
+          "type": "string"
         }
       }
     }
@@ -2661,24 +3185,5 @@
       "name": "Authorization",
       "in": "header"
     }
-  },
-  "tags": [
-    {
-      "name": "edge-mgmt",
-      "x-displayName": "Edge Mgmt"
-    },
-    {
-      "name": "ping",
-      "x-displayName": "Ping"
-    },
-    {
-      "name": "users",
-      "x-displayName": "Users"
-    }
-  ],
-  "servers": [
-    {
-      "url": "https://edge-host-ip:5080"
-    }
-  ]
+  }
 }
