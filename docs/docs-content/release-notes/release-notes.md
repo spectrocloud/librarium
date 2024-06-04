@@ -76,6 +76,8 @@ saepe ut fugit ea ut architecto quae consequatur.
 
 #### Known Issues
 
+- RKE2 and Palette eXtended Kubernetes (PXK) 1.29.4 have a known issue that prevent its usage with Canonical MAAS. Support will be added in an upcoming release.
+
 - [MicroK8s](../integrations/microk8s.md) does not support a multi-node cluster deployment and is limited to a
   single-node cluster. As a result, the only supported upgrade strategy is InPlaceUpgrade.
 
