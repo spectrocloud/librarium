@@ -76,7 +76,7 @@ parameter in the MicroK8s pack YAML file displayed under the **Pack Details** se
 
 :::warning
 
-Before upgrading your cluster, review the [Known Issues](../release-notes/known-issues.md) and the
+Before upgrading your cluster, review the [Known Issues](https://docs.spectrocloud.com/release-notes/known-issues/) and the
 [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) pages to learn about the limitations associated with
 MicroK8s upgrades.
 
@@ -155,9 +155,9 @@ parameter in the MicroK8s pack YAML file displayed under the **Pack Details** se
 
 :::warning
 
-Before upgrading your cluster, review the [Known Issues](../release-notes/known-issues.md) and the
-[Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) pages to learn about the limitations associated with
-MicroK8s upgrades.
+Before upgrading your cluster, review the [Known Issues](https://docs.spectrocloud.com/release-notes/known-issues/) and
+the [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) pages to learn about the limitations associated
+with MicroK8s upgrades.
 
 :::
 
@@ -217,9 +217,9 @@ parameter in the MicroK8s pack YAML file displayed under the **Pack Details** se
 
 :::warning
 
-Before upgrading your cluster, review the [Known Issues](../release-notes/known-issues.md) and the
-[Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) pages to learn about the limitations associated with
-MicroK8s upgrades.
+Before upgrading your cluster, review the [Known Issues](https://docs.spectrocloud.com/release-notes/known-issues/) and
+the [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) pages to learn about the limitations associated
+with MicroK8s upgrades.
 
 :::
 
