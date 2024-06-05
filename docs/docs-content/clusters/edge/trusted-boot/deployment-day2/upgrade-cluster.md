@@ -73,42 +73,45 @@ the cluster.
    the **secure-boot** folder. The following files and folder structure are expected with the following file
    permissions.
 
+   ```shell
+   ls -llR secure-boot/
    ```
-    ls -llR secure-boot/
-    secure-boot/:
-    total 16
-    drwx------ 2 ubuntu ubuntu 4096 Apr 24 21:08 enrollment
-    drwxrwxr-x 2 ubuntu ubuntu 4096 May 13 21:25 exported-keys
-    drwxr-xr-x 2 ubuntu ubuntu 4096 Jun  3 21:34 private-keys
-    drwxr-xr-x 2 ubuntu ubuntu 4096 Apr 24 21:08 public-keys
 
-    secure-boot/enrollment:
-    total 48
-    -rw-r--r-- 1 ubuntu ubuntu 3666 Apr 24 21:08 KEK.auth
-    -rw-r--r-- 1 ubuntu ubuntu 2283 Apr 24 21:08 KEK.der
-    -rw-r--r-- 1 ubuntu ubuntu 2371 Apr 24 21:08 KEK.esl
-    -rw-r--r-- 1 ubuntu ubuntu 2106 Apr 24 21:08 PK.auth
-    -rw-r--r-- 1 ubuntu ubuntu  767 Apr 24 21:08 PK.der
-    -rw-r--r-- 1 ubuntu ubuntu  811 Apr 24 21:08 PK.esl
-    -rw-r--r-- 1 ubuntu ubuntu 6474 Apr 24 21:08 db.auth
-    -rw-r--r-- 1 ubuntu ubuntu 5003 Apr 24 21:08 db.der
-    -rw-r--r-- 1 ubuntu ubuntu 5179 Apr 24 21:08 db.esl
+   ```shell hideClipboard
+   secure-boot/:
+   total 16
+   drwx------ 2 ubuntu ubuntu 4096 Apr 24 21:08 enrollment
+   drwxrwxr-x 2 ubuntu ubuntu 4096 May 13 21:25 exported-keys
+   drwxr-xr-x 2 ubuntu ubuntu 4096 Jun  3 21:34 private-keys
+   drwxr-xr-x 2 ubuntu ubuntu 4096 Apr 24 21:08 public-keys
 
-    secure-boot/exported-keys:
-    total 12
-    -rw------- 1 root root 1560 May 13 21:25 KEK
-    -rw------- 1 root root 4368 May 13 21:25 db
+   secure-boot/enrollment:
+   total 48
+   -rw-r--r-- 1 ubuntu ubuntu 3666 Apr 24 21:08 KEK.auth
+   -rw-r--r-- 1 ubuntu ubuntu 2283 Apr 24 21:08 KEK.der
+   -rw-r--r-- 1 ubuntu ubuntu 2371 Apr 24 21:08 KEK.esl
+   -rw-r--r-- 1 ubuntu ubuntu 2106 Apr 24 21:08 PK.auth
+   -rw-r--r-- 1 ubuntu ubuntu  767 Apr 24 21:08 PK.der
+   -rw-r--r-- 1 ubuntu ubuntu  811 Apr 24 21:08 PK.esl
+   -rw-r--r-- 1 ubuntu ubuntu 6474 Apr 24 21:08 db.auth
+   -rw-r--r-- 1 ubuntu ubuntu 5003 Apr 24 21:08 db.der
+   -rw-r--r-- 1 ubuntu ubuntu 5179 Apr 24 21:08 db.esl
 
-    secure-boot/private-keys:
-    total 16
-    -rw------- 1 ubuntu ubuntu 1704 Apr 24 21:08 db.key
-    -rw------- 1 ubuntu ubuntu 1675 Apr 24 21:08 tpm2-pcr-private.pem
+   secure-boot/exported-keys:
+   total 12
+   -rw------- 1 root root 1560 May 13 21:25 KEK
+   -rw------- 1 root root 4368 May 13 21:25 db
 
-    secure-boot/public-keys:
-    total 12
-    -rw-r--r-- 1 ubuntu ubuntu 1094 Apr 24 21:08 KEK.pem
-    -rw-r--r-- 1 ubuntu ubuntu 1094 Apr 24 21:08 PK.pem
-    -rw-r--r-- 1 ubuntu ubuntu 1094 Apr 24 21:08 db.pem
+   secure-boot/private-keys:
+   total 16
+   -rw------- 1 ubuntu ubuntu 1704 Apr 24 21:08 db.key
+   -rw------- 1 ubuntu ubuntu 1675 Apr 24 21:08 tpm2-pcr-private.pem
+
+   secure-boot/public-keys:
+   total 12
+   -rw-r--r-- 1 ubuntu ubuntu 1094 Apr 24 21:08 KEK.pem
+   -rw-r--r-- 1 ubuntu ubuntu 1094 Apr 24 21:08 PK.pem
+   -rw-r--r-- 1 ubuntu ubuntu 1094 Apr 24 21:08 db.pem
    ```
 
    :::warning
@@ -147,7 +150,8 @@ the cluster.
    save it during the later steps.
 
 9. Issue the following command to push the image to the repository you specified in **.arg**. Replace `IMAGE-TAG` with
-   the tag of the provider image you just built.
+   the tag of the provider image you just built. Depending on the repository you used, you may be required to
+   authenticate yourself before pushing to the repository.
 
    ```shell
    docker push [IMAGE-TAG]
