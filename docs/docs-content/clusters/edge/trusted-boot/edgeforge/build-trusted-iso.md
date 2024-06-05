@@ -30,8 +30,7 @@ This document guides you through the process of producing Edge Installer ISOs th
 
 - Familiarity with the [EdgeForge Workflow](../../edgeforge-workflow/edgeforge-workflow.md).
 
-- [Git](https://www.git-scm.com/downloads). You can ensure git installation by issuing the git --version
-  command.
+- [Git](https://www.git-scm.com/downloads). You can ensure git installation by issuing the git --version command.
 
 - Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
   generate a new registration token. For detailed instructions, refer to the

@@ -39,8 +39,7 @@ ISO file.
   check the EFI boot limit will not have your keys on it. If your device has already enrolled your custom keys and have
   secure boot enabled, the Edge host will not be able to boot from the unsigned volume.
 
-- [Git](https://www.git-scm.com/downloads). You can ensure git installation by issuing the git --version
-  command.
+- [Git](https://www.git-scm.com/downloads). You can ensure git installation by issuing the git --version command.
 
 ## Instructions
 
