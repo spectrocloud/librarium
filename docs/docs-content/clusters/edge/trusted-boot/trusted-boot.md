@@ -40,6 +40,11 @@ software verified through cryptographic signatures. In the event that an Edge de
 release the key to decrypt the disk encryption if the boot process is tampered with, ensuring your user data remains
 encrypted.
 
+## Limitation
+
+- Trusted Boot is only supported for clusters with a connection to a Palette instance. Air-gapped clusters cannot be
+  deployed to an Edge host with Trusted Boot enabled.
+
 ## Next Steps
 
 To get started with Trusted Boot, we recommend you start by familiarizing yourself with the concepts related to Trusted

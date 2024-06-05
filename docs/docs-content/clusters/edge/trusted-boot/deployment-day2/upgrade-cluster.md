@@ -35,7 +35,7 @@ the cluster.
 
   - 4 CPUs
   - 32 GB RAM
-  - 100 GB storage
+  - 150 GB storage
 
 - [Git](https://www.git-scm.com/downloads). You can ensure git installation by issuing the git --version command.
 

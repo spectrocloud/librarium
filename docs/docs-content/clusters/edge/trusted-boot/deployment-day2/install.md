@@ -181,7 +181,7 @@ more information.
 
 After you have installed Palette Edge on your Edge device with Trusted Boot, the next step is to register the Edge host
 and create your cluster. The process of creating a cluster with Trusted Boot enabled is identical to creating a regular
-cluster.
+cluster. However, air-gapped clusters are not supported.
 
 - [Edge Host Registration](../../site-deployment/site-installation/edge-host-registration.md)
 - [Cluster Creation](../../site-deployment/site-installation/cluster-deployment.md)

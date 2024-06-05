@@ -35,7 +35,8 @@ This page guides you through the process of building FIPS-compliant Edge Install
 
   - 4 CPU
   - 8 GB memory
-  - 50 GB storage
+  - 150 GB storage. If you plan on using a content bundle, the actual storage will depend on the size of the content
+    bundle you will use to build the Edge installer ISO image.
 
 - Depending on the Operating System (OS) you want to use on your Edge host, you will need the following subscription
   credentials:

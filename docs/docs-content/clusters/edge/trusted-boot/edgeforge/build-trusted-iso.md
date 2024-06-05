@@ -9,6 +9,11 @@ tags: ["edge"]
 
 This document guides you through the process of producing Edge Installer ISOs that are secured by Trusted Boot.
 
+## Limitation
+
+- Trusted Boot is only supported for clusters with a connection to a Palette instance. Therefore, you cannot set
+  `installationMode` to `airgap` in the **user-data** file.
+
 ## Prerequisites
 
 - A physical or virtual Linux machine with _AMD64_ (also known as x86_64) processor architecture to build the Edge

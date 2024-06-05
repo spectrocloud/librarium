@@ -58,7 +58,8 @@ process.
 
   - 4 CPU
   - 8 GB memory
-  - 50 GB storage
+  - 150 GB storage. If you plan on using a content bundle, the actual storage will depend on the size of the content
+    bundle you will use to build the Edge installer ISO image.
 
 ## Instructions
 

@@ -56,7 +56,7 @@ To complete this guide, you will need the following items:
 
   - 4 CPU
   - 8 GB memory
-  - 100 GB storage. The actual storage will depend on the size of the content bundle you will use to build the Edge
+  - 150 GB storage. The actual storage will depend on the size of the content bundle you will use to build the Edge
     installer ISO image.
 
 - You must have completed the [Build Edge Artifacts](palette-canvos.md) guide to build the provider images and create a
