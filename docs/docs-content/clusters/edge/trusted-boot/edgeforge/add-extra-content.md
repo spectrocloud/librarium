@@ -15,7 +15,7 @@ However, if you want to use Trusted Boot, the firmware can impose limitations on
 Extensible Firmware Interface (EFI) file. This means that you can no longer add such utilities to your OS as freely as
 before. If the EFI becomes too large in size, the Edge host might not be able to boot it.
 
-If you would like to add software that can be used after ISO installation, you can instead use the approach described in
+If you would like to add software that can be used after the ISO installation, you can instead use the approach described in
 this guide to add the compiled static binaries of the software packages to the persistent partition of the installation
 partition instead of to the OS image itself. You will be able to access the content both before cluster formation and
 after. Because the content is placed in the persistent partitions, it will be encrypted by default.

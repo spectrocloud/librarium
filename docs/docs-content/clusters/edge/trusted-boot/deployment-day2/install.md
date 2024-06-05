@@ -61,7 +61,7 @@ supports Secure Boot.
 
    :::
 
-   If you set the `AUTO_ENROLL_SECUREBOOT_KEYS` argument to `true` when you built the installation ISO, key enrollment
+In the **.arg** file, if you set the `AUTO_ENROLL_SECUREBOOT_KEYS` argument to `true` when you built the installation ISO, key enrollment
    will begin automatically the first time the device boots from the installer ISO. You can skip the following steps to
    proceed to [Install Palette Edge with Trusted Boot](#install-palette-edge-with-trusted-boot). In Virtual Machines
    (VM), keys will always be auto-enrolled.

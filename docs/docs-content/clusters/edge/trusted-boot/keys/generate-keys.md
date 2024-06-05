@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Generate Keys"
 title: "Generate Keys for Trusted Boot"
-description: "Learn about how to generate keys for Trusted Boot."
+description: "Learn how to generate keys for Trusted Boot."
 hide_table_of_contents: false
 sidebar_position: 10
 tags: ["edge"]
