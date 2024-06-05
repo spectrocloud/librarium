@@ -116,7 +116,7 @@ formation and after. Because the content is placed in the persistent partitions,
    ```
 
 7. You have now configured the installer to copy the static binaries you provided to the `/usr/local/bin` folder, which
-   is included in the the `PATH` variable.
+   is included in the `PATH` variable.
 
    You can perform further customization of the Installer ISO in your **user-data** file and customize the build script
    with the **.arg** file before starting the build. Follow
