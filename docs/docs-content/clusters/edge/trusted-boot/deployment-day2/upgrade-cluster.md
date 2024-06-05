@@ -37,7 +37,7 @@ the cluster.
   - 32 GB RAM
   - 100 GB storage
 
-- [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the git --version
+- [Git](https://www.git-scm.com/downloads). You can ensure git installation by issuing the git --version
   command.
 
 ## Instructions

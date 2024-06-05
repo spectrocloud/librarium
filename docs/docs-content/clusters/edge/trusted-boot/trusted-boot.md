@@ -51,7 +51,7 @@ hosts that meet the minimum hardware requirements.
 - [Key Management](./keys/key-management.md)
 - [Hardware Requirements](../hardware-requirements.md#trusted-boot)
 
-After understanding the core concepts, you can proceed to generate the keys to be used by your Edge host. You need to
+After understanding the core concepts, you can proceed to generate the keys that will be used by your Edge host. You need to
 start by exporting the existing keys on your Edge host and then use those exported keys to generate new keys to be used
 by Trusted Boot. You can generate keys using a self-signed certificate, or an existing Certificate Authority (CA).
 
@@ -60,7 +60,7 @@ by Trusted Boot. You can generate keys using a self-signed certificate, or an ex
 
 With the keys ready, you can proceed to build the necessary Edge artifacts to install Palette on your Edge host and
 provision your cluster. The EdgeForge process with Trusted Boot is similar to the EdgeForge process without Trusted
-Boot. We recommend you familiar with the EdgeForge workflow first before building Edge artifacts with Trusted Boot
+Boot. We recommend you become familiar with the EdgeForge workflow first before building Edge artifacts with Trusted Boot
 enabled.
 
 - [EdgeForge Workflow without Trusted Boot](../edgeforge-workflow/edgeforge-workflow.md)
