@@ -59,6 +59,6 @@ manifests:
 
 ## References
 
-- [Installing KubeVirt on Kubernetes](https://KubeVirt.io/user-guide/operations/installation/#installing-KubeVirt-on-kubernetes)
+- [Installing KubeVirt on Kubernetes](https://kubevirt.io/user-guide/cluster_admin/installation/#installing-kubevirt-on-kubernetes)
 
 - [GitHub KubeVirt](https://github.com/KubeVirt/KubeVirt/releases/tag/v0.51.0)
