@@ -25,6 +25,10 @@ Together, these measures allow Trusted Boot to ensure the authenticity of the bo
 on your Edge device. Only when the boot process can be verified does the TPM release the key to decrypt the encrypted
 content, and the sensitive data is not accessible if the boot process is tempered with.
 
+:::preview
+
+:::
+
 ## Why Do You Need Trusted Boot?
 
 Edge devices are often deployed in locations with minimal security and high traffic, such as restaurants and coffee
