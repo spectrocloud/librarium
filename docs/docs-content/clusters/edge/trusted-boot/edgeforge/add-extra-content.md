@@ -13,7 +13,9 @@ as well as using those utilities for host maintenance.
 
 However, if you want to use Trusted Boot, the firmware can impose limitations on the maximum size of a bootable
 Extensible Firmware Interface (EFI) file. This means that you can no longer add such utilities to your OS as freely as
-before. If the EFI becomes too large in size, the Edge host might not be able to boot it.
+before. If the EFI becomes too large in size, the Edge host might not be able to boot it. Refer to
+[Check EFI Boot Size Limit](./check-efi-limit.md) to learn how to determine if your Edge host is capable of booting the
+Edge artifacts.
 
 If you would like to add software that can be used after the ISO installation, you can instead use the approach
 described in this guide to add the compiled static binaries of the software packages to the persistent partition of the
