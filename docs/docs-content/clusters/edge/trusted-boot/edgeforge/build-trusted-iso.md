@@ -37,7 +37,7 @@ This document guides you through the process of producing Edge Installer ISOs th
   generate a new registration token. For detailed instructions, refer to the
   [Create Registration Token](../../site-deployment/site-installation/create-registration-token.md) guide.
 
-## Build Edge Installer ISO with Trusted Boot
+## Instructions
 
 1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS.git) GitHub repository containing the starter code.
 

@@ -49,7 +49,7 @@ key that is in the signature database (DB). This is important both during instal
 
 - Familiarity with the [EdgeForge Workflow](../../edgeforge-workflow/edgeforge-workflow.md).
 
-## Build Provider Images with Trusted Boot
+## Instructions
 
 1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
 

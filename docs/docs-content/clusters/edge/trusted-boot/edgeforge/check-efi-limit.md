@@ -42,7 +42,11 @@ ISO file.
 - [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the git --version
   command.
 
-## Check Bootable EFI Size Limit for Hardware
+## Instructions
+
+Follow the instructions below to determine if your Edge host is capable of booting the ISO and the provider image.
+
+### Check Bootable EFI Size Limit for Hardware
 
 1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS.git) GitHub repository containing the starter code.
 
@@ -135,7 +139,7 @@ ISO file.
     src/main.rs@056: Reading 100.00 MB bytes into buffer [ INFO]: src/main.rs@065: Successfully read 100.00 MB into buffer
     ```
 
-## Check EFI Size of Installer ISO
+### Check EFI Size of Installer ISO
 
 12. From the **CanvOS** directory, issue the following commands to make two directories.
 
@@ -163,7 +167,7 @@ ISO file.
     -rwxr-xr-x 1 root root 722M May 14 18:52 image-efi/EFI/kairos/norole_install-mode_stylus.registration.efi
     ```
 
-## Check EFI Size of Provider Images
+### Check EFI Size of Provider Images
 
 15. Issue the following command to find the size of your provider image. Replace `image-tag` with the tag of your
     provider image.
@@ -179,7 +183,7 @@ ISO file.
     -rw-r--r-- 1 root root 767M Apr 16  2020 norole.efi
     ```
 
-## Compare Hardware Boot Limit with EFI Size
+### Compare Hardware Boot Limit with EFI Size
 
 16. To ensure that the Edge host is able to boot, the hardware limit must be greater than the EFI size of both the ISO
     and the provider image.
@@ -221,6 +225,9 @@ ISO file.
     You can remove the last line of the **Dockerfile** to reduce the EFI size. If you want to include software packages
     in your built ISO without increasing the EFI size, refer to
     [Add Static Binaries to Persistent Partition](./add-extra-content.md).
+
+    If you cannot make the EFI file size small enough to meet the boot limit, contact sales@spectrocloud.com for
+    customized solutions.
 
 ## Validate
 

@@ -70,8 +70,8 @@ file, which contains the UKI, can grow quite large and can pose a limitation dep
 - [Check Device Boot Limit](./edgeforge/check-efi-limit.md)
 
 If you find that the EFI file inside the EdgeForge artifacts is bigger than your boot limit, you may need to either
-choose a device with a higher boot limit or decrease the size of the EFI file. One way to do decrease the EFI file size
-is to avoid installing software packages to the OS image and instead use static binaries of the packages you need.
+choose a device with a higher boot limit or decrease the size of the EFI file. One way to decrease the EFI file size is
+to avoid installing software packages to the OS image and instead use static binaries of the packages you need.
 
 - [Add Static Binaries to Persistent Partition](./edgeforge/add-extra-content.md)
 

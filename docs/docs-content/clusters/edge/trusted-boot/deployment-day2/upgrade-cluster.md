@@ -37,9 +37,10 @@ the cluster.
   - 32 GB RAM
   - 100 GB storage
 
-## Instructions
+- [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the git --version
+  command.
 
-### Build New Provider Image
+## Instructions
 
 1. If you have access to the original **CanvOS** folder where they provider images were made, and all the necessary keys
    are available to you in their original folders, skip to step 5.
