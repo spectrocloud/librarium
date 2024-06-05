@@ -30,7 +30,7 @@ This document guides you through the process of producing Edge Installer ISOs th
 
 - Familiarity with the [EdgeForge Workflow](../../edgeforge-workflow/edgeforge-workflow.md).
 
-- [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the git --version
+- [Git](https://www.git-scm.com/downloads). You can ensure git installation by issuing the git --version
   command.
 
 - Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
@@ -113,7 +113,7 @@ This document guides you through the process of producing Edge Installer ISOs th
 
    Adding software dependencies in the Dockerfile will cause the size of the Extensible Firmware Interface (EFI) file to
    grow. Most hardware has a limit on the size of the EFI that it can boot. Make sure you do not include too many
-   dependencies can cause the EFI file to grow larger than the boot limit. For more information, refer to
+   dependencies that can cause the EFI file to grow larger than the boot limit. For more information, refer to
    [Check EFI Boot Limit](./check-efi-limit.md).
 
    Instead of adding software packages through the Dockerfile to the OS layer, you can add compiled static binaries to

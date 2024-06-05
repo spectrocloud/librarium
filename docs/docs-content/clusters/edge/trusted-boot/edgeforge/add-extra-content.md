@@ -43,7 +43,7 @@ formation and after. Because the content is placed in the persistent partitions,
 
 - Static compiled binaries of the software package you are adding to the Edge host.
 
-- [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the git --version
+- [Git](https://www.git-scm.com/downloads). You can ensure git installation by issuing the git --version
   command.
 
 ## Instructions
