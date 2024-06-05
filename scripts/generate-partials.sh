@@ -12,6 +12,9 @@ rm -f _partials/index.ts
 mkdir -p _partials
 touch _partials/index.ts
 
+# Make the versioned partials folder to satisfy compiler.
+mkdir -p versioned_partials
+
 # Create the file and add the generated warning.
 echo "// This file is generated. DO NOT EDIT!" >> _partials/index.ts
 
@@ -20,7 +23,8 @@ echo "// This file is generated. DO NOT EDIT!" >> _partials/index.ts
 find _partials -name "*.mdx" -print0 | while read -d $'\0' path
 do
     module_name=$(basename ${path} .mdx | tr -d '_' | tr -d '-')
-    echo "export * as ${module_name}${RANDOM} from '@site/${path}';" >> _partials/index.ts
+    file_name=$(basename ${path})
+    echo "export * as ${module_name}${RANDOM} from './${file_name}';" >> _partials/index.ts
 done
 
 echo "Completed generation of _partials/index.ts."
