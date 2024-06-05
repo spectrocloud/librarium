@@ -7,20 +7,21 @@ sidebar_position: 60
 tags: ["edge"]
 ---
 
-If you need to make changes to a deployed Edge cluster with Trusted Boot enabled without touching the OS or the
-Kubernetes layer, you can follow the regular cluster upgrade process. Refer to
+If you need to make changes to a deployed Edge cluster with Trusted Boot enabled without modifying the Operating System
+(OS) or the Kubernetes layer, you can follow the regular cluster upgrade process. Refer to
 [Update a Cluster](../../../cluster-management/cluster-updates.md) for more information. However, if the change you are
-making involves the Operating System (OS) layer and the Kubernetes layer, you will need to build a new provider image
-with the same Trusted Boot keys you used to build the Edge Installer ISO.
+making involves the OS layer or the Kubernetes layer, you will need to build a new provider image with the same Trusted
+Boot keys you used to build the Edge Installer ISO.
 
-This page guides you through the process of making an update to a cluster that involves the Operating System (OS) or
-Kubernetes layer of the cluster.
+This page guides you through the process of making an update to a cluster that involves the OS or Kubernetes layer of
+the cluster.
 
 ## Limitation
 
 - Palette does not stop the upgrade if the provider image that is not recognized by secure boot. If you upgrade to using
   an unrecognized image, you will receive a secure boot violation. This will require you to choose the recovery option
-  from the GRand Unified Bootloader (GRUB) menu to return the Edge host to boot using the previous image.
+  from the GRand Unified Bootloader (GRUB) menu to return the Edge host to boot using the previous image or reinstall
+  Palette Edge.
 
 ## Prerequisites
 
@@ -122,12 +123,12 @@ Kubernetes layer of the cluster.
 
    In particular, pay attention to the following arguments.
 
-   | **Argument**       | **Description**                                                                                       | **Allowed Values**                         |
-   | ------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-   | `IS_UKI`           | Determines whether to build a provider image that supports Trusted Boot. You must set this to `true`. | `true`, `false`. Default is `false`.       |
-   | `K8S_DISTRIBUTION` | Kubernetes distribution.                                                                              | ` k3s`, `rke2`, `kubeadm`, `kubeadm-fips`. |
-   | `OS_DISTRIBUTION`  | OS distribution.                                                                                      | `ubuntu`, `opensuse-leap`, `rhel`.         |
-   | `OS_VERSION`       | OS version. This applies to Ubuntu only.                                                              | `20`, `22`.                                |
+   | **Argument**       | **Description**                                                                                       | **Allowed Values**                   |
+   | ------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------ |
+   | `IS_UKI`           | Determines whether to build a provider image that supports Trusted Boot. You must set this to `true`. | `true`, `false`. Default is `false`. |
+   | `K8S_DISTRIBUTION` | Kubernetes distribution.                                                                              | `rke2`                               |
+   | `OS_DISTRIBUTION`  | OS distribution.                                                                                      | `ubuntu`                             |
+   | `OS_VERSION`       | OS version. This applies to Ubuntu only.                                                              | `23.10`                              |
 
 8. Issue the following command to build the provider image.
 

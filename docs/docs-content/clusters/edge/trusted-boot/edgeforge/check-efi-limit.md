@@ -8,10 +8,10 @@ sidebar_position: 50
 tags: ["edge"]
 ---
 
-When you use Trusted Boot, your OS becomes part of the Extensible Firmware Interface (EFI) file that gets loaded by the
-firmware of the Edge host and booted directly. This means that the EFI file may grow quite large due to the size of the
-OS and any customizations you may make, and you must ensure that your Edge host has the capacity to boot the large EFI
-file.
+When you use Trusted Boot, your Operating System (OS) becomes part of the Extensible Firmware Interface (EFI) file that
+gets loaded by the firmware of the Edge host and booted directly. This means that the EFI file may grow quite large due
+to the size of the OS and any customizations you may make, and you must ensure that your Edge host has the capacity to
+boot the large EFI file.
 
 This page guides you through how to estimate the bootable EFI limit of your Edge host as well as the EFI size of your
 installer ISO. You need to ensure that the bootable EFI size limit is greater than the size of the EFI partition in your
@@ -27,10 +27,13 @@ ISO file.
   - Minimum RAM: 8
   - Minimum Storage: 100 GB
 
-- Your Edge host supports Unified Extensible Firmware Interface (UEFI) boot options.
+- The ability to modify the boot order settings to boot from a USB drive and to enter the BIOS interface. Typically this
+  requires you to have a wired keyboard and a monitor to display the interface connected to the Edge device.
 
-- You have already built the installer ISO file that you will use to install Palette on your Edge host. For more
-  information, refer to [Build Installer ISO with Trusted Boot](./build-trusted-iso.md).
+- Your Edge host supports UEFI boot options.
+
+- You have already built the installer ISO file as well as the provider image that you will use to provision clusters on
+  your Edge host. For more information, refer to [EdgeForge with Trusted Boot](../edgeforge/edgeforge.md).
 
 - You can only perform the actions in this guide **prior to** enrolling keys in your Edge host. The ISO that is used to
   check the EFI boot limit will not have your keys on it. If your device has already enrolled your custom keys and have
@@ -78,8 +81,8 @@ ISO file.
 
 7. Plug the USB drive into your Edge host. Have a keyboard ready and connected to the Edge host before you boot it up.
 
-8. Boot up the Edge host. Use the keyboard to enter the boot menu. Usually you can press the F10 key to enter the boot
-   menu, but the exact key varies by hardware.
+8. Boot up the Edge host. Use the keyboard to enter the boot menu. Usually you can press the F1, F2, or F10 key to enter
+   the boot menu, but the exact key varies by hardware.
 
 9. Select the USB as the boot volume.
 
@@ -105,9 +108,10 @@ ISO file.
     [ INFO]:  src/main.rs@056: Reading 700.00 MB bytes into buffer
     ```
 
-11. Pay attention to the output on the screen. At a certain point, the output will break and produce a large number of
-    new lines before producing the same output as the beginning again. In some hardware, the Edge host will reboot and
-    start the process again.
+11. Pay close attention to the output on the screen. At a certain point, the output will break and produce a large
+    number of new lines before producing the same output as the beginning again. In some hardware, the Edge host will
+    reboot and start the process again, so you will need to monitor the output closely to catch the last line before the
+    reboot happens.
 
     The last line before the white space or reboot indicates the upper bound of your EFI boot limit. For example, in the
     following output, the EFI boot limit of your Edge host is between 600 and 700 MB.
@@ -186,7 +190,7 @@ ISO file.
     needed.
 
     To resolve this issue, you can acquire a device that has a higher boot limit, or make the EFI of the ISO smaller by
-    removing unnecessary layers of your base image by editing the **Dockerfile** in the **CanvOS** repository. For
+    removing inessential layers of your base image by editing the **Dockerfile** in the **CanvOS** repository. For
     example, if you have the following Dockerfile.
 
     ```dockerfile {22}

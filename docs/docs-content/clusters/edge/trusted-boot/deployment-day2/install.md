@@ -45,7 +45,7 @@ supports Secure Boot.
    NUC 13 Pro. However, the exact method might be different on your Edge device. Consult the manufacturer of your Edge
    device to find out how to enter the BIOS interface.
 
-3. From the BIOS menu, select the **Boot** tab. Then select **Secure Boot**.
+3. From the BIOS interface, select the **Boot** tab. Then select **Secure Boot**.
 
 4. From the **Secure Boot Menu**, make sure that secure boot is enabled. Then select **Restore to Setup Mode**. Two
    dialogue boxes will pop up to confirm this operation. Select **Yes** to confirm. This will make the device restart.
@@ -82,12 +82,12 @@ supports Secure Boot.
 6. When the keys are finished enrolling, the installation will start automatically after a reboot. Installation
    typically takes about 5 minutes, but can vary depending on your hardware.
 
-7. When installation finishes, you will observe the text "Installation has finished, rebooting in 5 seconds" on your
-   screen. Remove the USB disk from your Edge device.
+7. When installation finishes, the terminal will display the text "Installation has finished, rebooting in 5 seconds" on
+   your screen. Remove the USB disk from your Edge device.
 
    :::info
 
-   If you have more than one boot devices, it is good security practice to go into the BIOS again and ensure that the
+   If you have more than one boot device, it is good security practice to go into the BIOS again and ensure that the
    target installation disk is prioritized in the boot sequence.
 
    :::
@@ -123,8 +123,9 @@ more information.
    -rw-r--r--  1 root root 534 Apr 30 15:59 cos-layout.env
    ```
 
-   This confirms that your Edge device was booted with a Unified Kernel Image, a specific file format tailored to
-   achieve a tamper-proof system and encryption of persistent partitions.
+   This confirms that your Edge device was booted with a Unified Kernel Image (UKI), a specific file format tailored to
+   achieve a tamper-proof system and encryption of persistent partitions. You can confirm that the device was booted
+   from a UKI by the text `uki_boot_mode`.
 
 3. Issue the following command to verify disk encryption.
 
@@ -178,6 +179,9 @@ more information.
 
 ## Next Steps
 
-After you have installed Palette Edge on your Edge device with Trusted Boot, you can proceed to cluster creation. The
-process of creating a cluster with Trusted Boot enabled is identical to creating a regular cluster. Refer to
-[Cluster Creation](../../site-deployment/site-installation/cluster-deployment.md) for more information.
+After you have installed Palette Edge on your Edge device with Trusted Boot, the next step is to register the Edge host
+and create your cluster. The process of creating a cluster with Trusted Boot enabled is identical to creating a regular
+cluster.
+
+- [Edge Host Registration](../../site-deployment/site-installation/edge-host-registration.md)
+- [Cluster Creation](../../site-deployment/site-installation/cluster-deployment.md)

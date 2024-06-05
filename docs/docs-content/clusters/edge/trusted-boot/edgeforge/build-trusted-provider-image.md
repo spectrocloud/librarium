@@ -9,9 +9,10 @@ tags: ["edge"]
 
 This page guides you through the process of creating provider images for Edge clusters with Trusted Boot enabled.
 Provider images are Kairos-based container images for each supported Operating System (OS) and Kubernetes combination.
+For more information about Kairos, refer to [Kairos documentation](https://kairos.io/).
 
 Since provider images contain the OS, which is a part of the boot process, the provider image needs to be signed by a
-key that is in the signature database. This is important both during installation and upgrades.
+key that is in the signature database (DB). This is important both during installation and upgrades.
 
 ## Prerequisites
 
@@ -107,8 +108,8 @@ key that is in the signature database. This is important both during installatio
    export OS_VERSION=23.10
    ```
 
-9. Issue the command below to create the **.arg** file containing the custom tag, Docker Hub image registry hostname,
-   and Ubuntu OS distribution. The **.arg** file uses the default values for the remaining arguments. Refer to
+9. Issue the command below to create the **.arg** file containing the custom tag, image registry hostname, and Ubuntu OS
+   distribution. The **.arg** file uses the default values for the remaining arguments. Refer to
    [Edge Artifact Build Configurations](../../edgeforge-workflow/palette-canvos/arg.md) for all available arguments.
 
    ```bash
@@ -158,8 +159,7 @@ key that is in the signature database. This is important both during installatio
     ```
 
 13. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
-    `[DOCKER-ID]` and version numbers in the command below with your Docker ID and respective Kubernetes versions that
-    the utility created.
+    `[DOCKER-ID]` and version numbers in the command below with your Docker ID and respective Kubernetes versions.
 
     ```bash
     docker push docker.io/[DOCKER-ID]/ubuntu:rke2-1.28.2-v4.4.0-trusted-boot

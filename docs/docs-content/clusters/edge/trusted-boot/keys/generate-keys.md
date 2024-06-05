@@ -237,8 +237,8 @@ soft-brick your Edge host.
 
    :::danger
 
-   Specify a distant expiration date. If the keys expire before you can replace them, it can soft-brick the Edge host.
-   Although the default is 15 years, you may choose to make this longer.
+   Specify a distant expiration date. If the certificates expire before you can replace them, it can soft-brick the Edge
+   host. Although the default is 15 years, you may choose to make this longer.
 
    :::
 
@@ -290,8 +290,15 @@ soft-brick your Edge host.
 
 15. Issue the following command to generate Trusted Boot keys for enrollment. Replace `org-name` with the name of your
     organization, and replace 5475, the default expiration period in days (15 years), with the desired expiration period
-    for your keys. We suggest that you specify a long expiration date, since if the keys expire before you can replace
+    for your keys. We recommend that you specify a long expiration date, since if the keys expire before you can replace
     them, it can soft-brick the Edge host.
+
+    :::danger
+
+    Specify a distant expiration date. If the certificates expire before you can replace them, it can soft-brick the
+    Edge host. Although the default is 15 years, you may choose to make this longer.
+
+    :::
 
     ```
     ./earthly.sh +uki-genkey --MY_ORG="org-name" --EXPIRATION_IN_DAYS=5475

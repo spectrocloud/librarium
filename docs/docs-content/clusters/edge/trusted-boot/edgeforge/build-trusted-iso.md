@@ -33,6 +33,10 @@ This document guides you through the process of producing Edge Installer ISOs th
 - [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the git --version
   command.
 
+- Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
+  generate a new registration token. For detailed instructions, refer to the
+  [Create Registration Token](../../site-deployment/site-installation/create-registration-token.md) guide.
+
 ## Build Edge Installer ISO with Trusted Boot
 
 1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS.git) GitHub repository containing the starter code.
@@ -106,6 +110,15 @@ This document guides you through the process of producing Edge Installer ISOs th
    ```
 
    :::warning
+
+   Adding software dependencies in the Dockerfile will cause the size of the Extensible Firmware Interface (EFI) file to
+   grow. Most hardware has a limit on the size of the EFI that it can boot. Make sure you do not include too many
+   dependencies can cause the EFI file to grow larger than the boot limit. For more information, refer to
+   [Check EFI Boot Limit](./check-efi-limit.md).
+
+   Instead of adding software packages through the Dockerfile to the OS layer, you can add compiled static binaries to
+   the persistent partition instead, which does not increase the size of the EFI file. Refer to
+   [Add Static Binaries to Persistent Partition](./add-extra-content.md) for more information.
 
    :::
 

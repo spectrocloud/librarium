@@ -18,10 +18,10 @@ compromising the security of your systems.
 
 ## Platform Key (PK)
 
-The private PK must be stowed away in a secure location **immediately** after being generated. You do not need the PK
+The private PK must be stowed away in a secure location _immediately_ after being generated. You do not need the PK
 private key during EdgeForge operations, installation, upgrades or deployments of your Edge hosts. The public PK key is
 required during the EdgeForge build process so that it can be embedded into the Edge Installer ISO and thereafter
-installed on Edge hosts. For mor information, refer to [EdgeForge with Trusted Boot](../edgeforge/edgeforge.md).
+installed on Edge hosts. For more information, refer to [EdgeForge with Trusted Boot](../edgeforge/edgeforge.md).
 
 :::danger
 
@@ -61,7 +61,7 @@ Both the public and private DB keys should be stored securely in the build pipel
 needed during EdgeForge both during initial deployment and upgrades. The build pipeline itself should be heavily secured
 with limited access. The DB private key must not be stored in repositories that are exposed publicly. Ideally, Edge host
 artifacts should be generated in an air-gapped environment to reduce potential exposure of the DB private key. If
-possible, the build pipeline should utilize an HSM (Hardware Security Module).
+possible, the build pipeline should utilize an Hardware Security Module (HSM).
 
 | Filename    | Description                                                                                      | Key Management Recommendation              |
 | ----------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------ |
