@@ -12,7 +12,7 @@ Provider images are Kairos-based container images for each supported Operating S
 For more information about Kairos, refer to [Kairos documentation](https://kairos.io/).
 
 Since provider images contain the OS, which is a part of the boot process, the provider image needs to be signed by a
-key that is in the signature database (DB). This is important both during installation and upgrades.
+key that is in the Signature Database (DB). This is important both during installation and upgrades.
 
 ## Prerequisites
 
