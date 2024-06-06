@@ -29,6 +29,15 @@ cluster using Local UI.
   ISO during EdgeForge. For more information, refer to [Upload Content Bundle](./upload-content-bundle.md) and
   [Build Edge Artifacts with Content Bundle](../../edgeforge-workflow/palette-canvos/build-artifacts.md).
 
+- You must ensure that the Edge host has a stable IP address. You have the following options to achieve a stable IP
+  address:
+
+  - Using a static IP address. Contact your network administrator to assign the Edge host a static IP address.
+  - Use Dynamic Host Configuration Protocol (DHCP) reservations to reserve an IP address in a DHCP network. Contact your
+    network administrator to reserve IP addresses for your Edge hosts in a DHCP network.
+  - Enable network overlay on your Edge cluster. You must do this during cluster creation. For more information about
+    network overlay, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md).
+
 ## Create Local Cluster
 
 1. Log into the local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more

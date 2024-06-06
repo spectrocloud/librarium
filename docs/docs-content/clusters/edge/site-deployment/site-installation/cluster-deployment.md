@@ -8,8 +8,15 @@ tags: ["edge"]
 ---
 
 To complete the Edge Installation process, an Edge host must become a member of a host cluster. You can add an Edge host
-to an existing host cluster of type Edge Native, or you can create a new host cluster for Edge hosts and make the Edge
-host a member.
+to an existing Edge cluster, or you can create a new host cluster for Edge hosts and make the Edge host a member.
+
+:::info
+
+Procedures described on this page apply to Edge hosts with a connection to a Palette instance only. To learn how to
+create a cluster using an Edge host that does not have a connection to a Palette instance (an air-gapped Edge host),
+refer to [Create Cluster with Local UI](../../local-ui/cluster-management/create-cluster.md).
+
+:::
 
 Select the workflow that best fits your needs.
 
@@ -27,7 +34,18 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
 ### Prerequisites
 
-- A registered Edge host.
+- One or more registered Edge host. For more information about Edge host registration, refer to
+  [Edge Host Registration](./edge-host-registration.md).
+
+- If you are using more than one Edge host to form a cluster, the hosts in the same cluster must be on the same network.
+
+- You must ensure that the Edge hosts have stable IP addresses. You have many options to do this, including the
+  following:
+  - Using static IP addresses. Contact your network administrator to assign the Edge host a static IP address.
+  - Use Dynamic Host Configuration Protocol (DHCP) reservations to reserve an IP address in a DHCP network. Contact your
+    network administrator to reserve IP addresses for your Edge hosts in a DHCP network.
+  - Enable network overlay on your Edge cluster. You must do this during cluster creation. For more information about
+    network overlay, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md).
 
 ### Create Cluster
 
@@ -185,15 +203,26 @@ node pool.
 
 ### Prerequisites
 
-- A registered Edge host.
+- An existing Edge cluster.
 
-- A host cluster of type Edge Native.
+- One or more registered Edge host on the same network as your existing cluster. For more information about Edge host
+  registration, refer to [Edge Host Registration](./edge-host-registration.md).
+
+- You must ensure that the Edge hosts have stable IP addresses. You have the following options to do achieve stable IP
+  addressing for Edge hosts:
+
+  - Using static IP addresses. Contact your network administrator to assign the Edge host a static IP address.
+  - Use Dynamic Host Configuration Protocol (DHCP) reservations to reserve an IP address in a DHCP network. Contact your
+    network administrator to reserve IP addresses for your Edge hosts in a DHCP network.
+  - Enable network overlay on your Edge cluster. You must do this during cluster creation and cannot enable it for an
+    existing cluster that did not have network overlay. For more information about network overlay, refer to
+    [Enable Overlay Network](../../networking/vxlan-overlay.md).
 
 :::warning
 
 When adding a new Edge host to an existing cluster, ensure you are not creating a scenario where
 [etcd](https://etcd.io/) could fail in establishing a quorum. Quorum failures typically result when there is an even
-number of nodes. To learn more, check out the resource from the etcd documentation titled
+number of control plane nodes. To learn more, check out the resource from the etcd documentation titled
 [Why an odd number of cluster members](https://etcd.io/docs/v3.3/faq/#why-an-odd-number-of-cluster-members).
 
 :::
