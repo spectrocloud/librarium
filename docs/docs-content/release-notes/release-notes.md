@@ -90,6 +90,10 @@ to learn more about this release's new features and improvements.
   [Control Plane Node Fails to Upgrade in Sequential MicroK8s Upgrades](../troubleshooting/pack-issues.md)
   troubleshooting guide for resolution steps.
 
+- If you did not configure the Trusted Boot keys to auto-enroll, manual enrollment could take several times to be
+  successful. For more information about key enrollment, refer to
+  [Enroll Trusted Boot Keys in Edge Host](../clusters/edge/trusted-boot/deployment-day2/install.md#enroll-secure-boot-keys-into-edge-device).
+
 ### Edge
 
 #### Features
