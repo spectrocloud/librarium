@@ -258,6 +258,14 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
+      announcementBar: {
+        id: "docs_announcement_bar",
+        content:
+          'The 2024 State of Production Kubernetes report is now available and it\'s full of insights and goodies. Click <a target="_blank" rel="noopener noreferrer" href="https://www.spectrocloud.com/news/2024-state-of-production-kubernetes">here to get your own copy.</a>',
+        backgroundColor: "#FBB117",
+        textColor: "#091E42",
+        isCloseable: false,
+      },
       colorMode: {
         respectPrefersColorScheme: true,
       },
