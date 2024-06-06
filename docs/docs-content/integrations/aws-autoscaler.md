@@ -43,9 +43,9 @@ failures. The Kubernetes clusters are resized under the following conditions:
 
 :::warning
 
-Existing cluster profiles that use the manifest-based Cluster Autoscaler pack version 1.28.x or earlier cannot upgrade
-to version 1.29.x based on Helm. To use version 1.29.x, you must remove the old version of the pack from the cluster
-profile and then add the new one.
+Existing cluster profiles that use the manifest-based Cluster Autoscaler pack version 1.28.x or earlier cannot be
+upgraded directly to version 1.29.x of the pack based on Helm. To use version 1.29.x, you must first remove the old
+version of the pack from the cluster profile and then add the new one.
 
 :::
 
@@ -115,7 +115,7 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
    ![A snapshot displaying the ARN added to the Kubernetes pack's manifest.](/integrations_aws-cluster-autoscaler_k8s-manifest.webp)
 
    For example, the code block below displays the updated `managedMachinePool.roleAdditionalPolicies` section with a
-   sample policy ARN, `"arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"`.
+   sample policy ARN.
 
    ```yaml
    managedMachinePool:
@@ -139,9 +139,9 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
 
    :::warning
 
-   The **values.yaml** file of the Cluster Autoscaler pack also includes a section for setting the minimum and maximum
-   size of the autoscaling groups. However, this section should not be used, and this configuration must be done from
-   the Palette UI, following step **5** of this guide.
+   The **values.yaml** file of the Cluster Autoscaler pack includes a section for setting the minimum and maximum size
+   of the autoscaling groups. However, this section should not be used, and this configuration must be done from the
+   Palette UI, according to step **5** of this guide.
 
    :::
 
@@ -267,7 +267,7 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
    ![A snapshot displaying the ARN added to the Kubernetes pack's manifest.](/integrations_aws-cluster-autoscaler_k8s-manifest.webp)
 
    For example, the code block below displays the updated `managedMachinePool.roleAdditionalPolicies` section with a
-   sample policy ARN, `"arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"`.
+   sample policy ARN.
 
    ```yaml
    managedMachinePool:
@@ -411,7 +411,7 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
    ![A snapshot displaying the ARN added to the Kubernetes pack's manifest.](/integrations_aws-cluster-autoscaler_k8s-manifest.webp)
 
    For example, the code block below displays the updated `managedMachinePool.roleAdditionalPolicies` section with a
-   sample policy ARN, `"arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"`.
+   sample policy ARN.
 
    ```yaml
    managedMachinePool:
@@ -555,7 +555,7 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
    ![A snapshot displaying the ARN added to the Kubernetes pack's manifest.](/integrations_aws-cluster-autoscaler_k8s-manifest.webp)
 
    For example, the code block below displays the updated `managedMachinePool.roleAdditionalPolicies` section with a
-   sample policy ARN, `"arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"`.
+   sample policy ARN.
 
    ```yaml
    managedMachinePool:
@@ -699,7 +699,7 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
    ![A snapshot displaying the ARN added to the Kubernetes pack's manifest.](/integrations_aws-cluster-autoscaler_k8s-manifest.webp)
 
    For example, the code block below displays the updated `managedMachinePool.roleAdditionalPolicies` section with a
-   sample policy ARN, `"arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"`.
+   sample policy ARN.
 
    ```yaml
    managedMachinePool:
