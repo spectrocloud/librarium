@@ -33,7 +33,7 @@ The integration between Palette and Azure AKS unlocks the following capabilities
 
 - Palette platform enables effortless deployment and management of containerized applications with fully managed AKS.
 
-- Palette provides you with a with serverless Kubernetes experience, an integrated continuous integration and continuous
+- Palette provides you with a serverless Kubernetes experience, an integrated continuous integration and continuous
   delivery (CI/CD) experience, and enterprise-grade security and governance.
 
 - Palette helps you unite the development and operations to a single platform. This unification helps you achieve faster
