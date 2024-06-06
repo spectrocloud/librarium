@@ -289,7 +289,7 @@ data "spectrocloud_registry" "public_registry" {
 
 data "spectrocloud_pack" "k8s" {
   name    = "kubernetes-microk8s"
-  version = "1.28"
+  version = "1.27"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
