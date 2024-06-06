@@ -127,14 +127,14 @@ to learn more about this release's new features and improvements.
 - The KubeVirt version in use is now v1.2.0. Other minor maintenance updates in support of Kubevirt 1.2.0 are also
   included.
 
-### VerteX
+<!-- ### VerteX
 
 #### Features
 
 - You can now deploy Palette VerteX using Red Hat Linux Enterprise (RHEL) as the Operating System (OS) for the VerteX
   instance nodes. Using RHEL as the base OS is available for VerteX when deployed to a VMware vSphere environment using
   the Palette CLI. A prompt will ask you to select the OS during the VerteX deployment process. Refer to the Palette
-  VerteX installation [guide](../vertex/install-palette-vertex/install-on-vmware/install.md) for more details.
+  VerteX installation [guide](../vertex/install-palette-vertex/install-on-vmware/install.md) for more details. -->
 
 ### Automation
 
