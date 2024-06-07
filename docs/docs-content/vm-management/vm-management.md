@@ -37,7 +37,7 @@ Palette Virtual Machine Orchestrator requires the following:
   [Deploy to MAAS](../clusters/data-center/maas/create-manage-maas-clusters.md) guide.
 
 - For Edge deployment, your Edge cluster profile must have a CSI pack. For more information, refer to
-  [Create VMO Profile](./vm-packs-profiles/create-vmo-profile.md#create-the-profile) in the **Edge** tab.
+  [Create VMO Profile](./create-vmo-profile.md#create-the-profile) in the **Edge** tab.
 
 - VMs with Persistent Volume Claim (PVC) must have a StorageClass that supports `ReadWriteMany` (`RWX`) access mode for
   seamless live migration to a different node - either when triggered manually or during a Kubernetes upgrades.
@@ -55,18 +55,18 @@ Palette Virtual Machine Orchestrator requires the following:
 To get started, review [Virtual Machine Orchestrator Pack](vm-packs-profiles/vm-packs-profiles.md) to learn about its
 components.
 
-Review [Create a VMO Profile](vm-packs-profiles/create-vmo-profile.md) and
-[Add Roles and Role Bindings](vm-packs-profiles/add-roles-and-role-bindings.md) to learn how to create the cluster
-profile and add roles and permissions that allow users to create and manage Virtual Machines (VMs).
+Review [Create a VMO Profile](./create-vmo-profile.md) and
+[Add Roles and Role Bindings](./rbac/add-roles-and-role-bindings.md) to learn how to create the cluster profile and add
+roles and permissions that allow users to create and manage Virtual Machines (VMs).
 
 Palette VM Orchestrator provides various methods to quickly deploy VMs from out-of-the-box templates or from your
 organization's templates. To learn more about using and creating templates, review
-[Deploy VM From a Template](create-manage-vm/standard-vm-operations/deploy-vm-from-template.md) and
-[Create a VM Template](create-manage-vm/create-vm-template.md).
+[Deploy VM From a Template](create-manage-vm/deploy-vm-from-template.md) and
+[Create a VM Template](create-manage-vm/advanced-topics/create-vm-template.md).
 
 While you can import template disks from external locations when deploying a VM, it can be inefficient. Instead, you can
 leverage the `DataVolume` resource to import template disks once and then clone them when deploying new VMs. Review the
-[Create Disk Templates](create-manage-vm/create-disk-templates.md) guide for more information.
+[Create Disk Templates](create-manage-vm/advanced-topics/create-disk-templates.md) guide for more information.
 
 ## Feature Gates
 
@@ -102,20 +102,18 @@ VMO includes the following KubeVirt plugins:
 
 - [Virtual Machine Orchestrator Pack](vm-packs-profiles/vm-packs-profiles.md)
 
-- [Create a VMO Profile](vm-packs-profiles/create-vmo-profile.md)
+- [Create a VMO Profile](./create-vmo-profile.md)
 
-- [Add Roles and Role Bindings](vm-packs-profiles/add-roles-and-role-bindings.md)
+- [Add Roles and Role Bindings](./rbac/add-roles-and-role-bindings.md)
 
 - [Create and Manage VMs](create-manage-vm/create-manage-vm.md)
 
-- [Standard VM Operations](create-manage-vm/standard-vm-operations/standard-vm-operations.md)
+- [Deploy VM from a Template](create-manage-vm/deploy-vm-from-template.md)
 
-- [Deploy VM from a Template](create-manage-vm/standard-vm-operations/deploy-vm-from-template.md)
+- [Create a VM Template](create-manage-vm/advanced-topics/create-vm-template.md)
 
-- [Create a VM Template](create-manage-vm/create-vm-template.md)
+- [Create Disk Templates](create-manage-vm/advanced-topics/create-disk-templates.md)
 
-- [Create Disk Templates](create-manage-vm/create-disk-templates.md)
-
-- [VM Roles and Permissions](vm-roles-permissions.md)
+- [VM Roles and Permissions](./rbac/vm-roles-permissions.md)
 
 - [KubeVirt user guide](https://kubevirt.io/user-guide/)

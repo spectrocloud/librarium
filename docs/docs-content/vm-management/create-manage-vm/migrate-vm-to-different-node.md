@@ -15,7 +15,7 @@ node to another without any noticeable downtime.
 Successful live migrations rely on appropriately configured storage and networking, and live migration must be enabled
 as a feature gate. Live migration is enabled by default in the `feature-gates` section of the KubeVirt configuration
 file that is part of the **Virtual Machine Orchestrator** pack. Refer to
-[Feature Gates](../../vm-management.md#feature-gates) for more information.
+[Feature Gates](../vm-management.md#feature-gates) for more information.
 
 Live migration is used with rolling Kubernetes upgrades and workload balancing. To avoid interrupting a VM when a node
 is placed into maintenance or upgraded, all VM instances require a `LiveMigrate` eviction strategy.
@@ -103,7 +103,7 @@ You can validate evacuation completed by following the steps below.
 
 1. Obtain the kubeconfig file from Palette, and set the KUBECONFIG environment variable to access it so you can issue
    kubectl commands to the cluster. To learn how, refer to
-   [Set up Kubectl](../../../clusters/cluster-management/palette-webctl.md#set-up-kubectl).
+   [Set up Kubectl](../../clusters/cluster-management/palette-webctl.md#set-up-kubectl).
 
 2. Issue the following command to mark the node as _un-schedulable_. This alerts the Kubernetes scheduler not to
    schedule any new pods on that node but allows existing pods on the node to continue to operate.

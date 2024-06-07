@@ -28,7 +28,7 @@ containerized applications.
 You can create a VM three ways:
 
 - Deploy a VM from a template. Palette provides out-of-the-box templates, or your organization may provide templates.
-  For the latter, refer to the [Create a VM Template](create-vm-template.md) guide.
+  For the latter, refer to the [Create a VM Template](./advanced-topics/create-vm-template.md) guide.
 
 - Create an empty VM and install the Operating System (OS) using a standard method, such as a Preboot Execution
   Environment (PXE) or optical disk image (ISO).
@@ -53,8 +53,6 @@ also recommend installing VirtIO drivers to ensure you can use the paravirtualiz
 
 ## Resources
 
-- [Standard VM Operations](standard-vm-operations/standard-vm-operations.md)
+- [Deploy VM from a Template](deploy-vm-from-template.md)
 
-- [Deploy VM from a Template](standard-vm-operations/deploy-vm-from-template.md)
-
-- [Create a VM Template](create-vm-template.md)
+- [Create a VM Template](./advanced-topics/create-vm-template.md)

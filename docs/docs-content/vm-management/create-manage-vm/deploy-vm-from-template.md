@@ -14,7 +14,7 @@ organization's administrator provides.
 ## Prerequisites
 
 - Configured Virtual Machine Orchestrator profile applied to your cluster. Review
-  [Create a VMO Profile](../../vm-packs-profiles/create-vmo-profile.md) to configure the dashboard.
+  [Create a VMO Profile](../create-vmo-profile.md) to configure the dashboard.
 
 ## Deploy VM from a Template
 
@@ -81,4 +81,4 @@ Try installing your applications. If you did not install the QEMU guest agent as
 install it now. The guest agent displays additional details in the **Virtual Machines** > **Details** tab.
 
 You can update the VM configuration from the VM console or from tabs when you click on the VM. Learn about updates you
-can make in the [Update VM Configuration](update-vm-configuration.md) guide.
+can make in the [Update VM Configuration](./update-vm-configuration.md) guide.
