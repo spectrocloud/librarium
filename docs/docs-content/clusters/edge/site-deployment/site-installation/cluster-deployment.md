@@ -39,13 +39,13 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
 - If you are using more than one Edge host to form a cluster, the hosts in the same cluster must be on the same network.
 
-- You must ensure that the Edge hosts have stable IP addresses. You have many options to do this, including the
-  following:
-  - Using static IP addresses. Contact your network administrator to assign the Edge host a static IP address.
+- You must ensure that the Edge hosts have stable IP addresses. You have the following options to do achieve stable IP
+  addressing for Edge hosts:
+  - Use static IP addresses. Contact your network administrator to assign the Edge host a static IP address.
   - Use Dynamic Host Configuration Protocol (DHCP) reservations to reserve an IP address in a DHCP network. Contact your
     network administrator to reserve IP addresses for your Edge hosts in a DHCP network.
-  - Enable network overlay on your Edge cluster. You must do this during cluster creation. For more information about
-    network overlay, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md).
+  - Enable network overlay on your Edge cluster. Network overlay can only be enabled during cluster creation. For more
+    information about network overlay, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md).
 
 ### Create Cluster
 
@@ -211,12 +211,11 @@ node pool.
 - You must ensure that the Edge hosts have stable IP addresses. You have the following options to do achieve stable IP
   addressing for Edge hosts:
 
-  - Using static IP addresses. Contact your network administrator to assign the Edge host a static IP address.
+  - Use static IP addresses. Contact your network administrator to assign the Edge host a static IP address.
   - Use Dynamic Host Configuration Protocol (DHCP) reservations to reserve an IP address in a DHCP network. Contact your
     network administrator to reserve IP addresses for your Edge hosts in a DHCP network.
-  - Enable network overlay on your Edge cluster. You must do this during cluster creation and cannot enable it for an
-    existing cluster that did not have network overlay. For more information about network overlay, refer to
-    [Enable Overlay Network](../../networking/vxlan-overlay.md).
+  - Your Edge cluster has enabled network overlay. Network overlay can only be enabled during cluster creation. For more
+    information about network overlay, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md).
 
 :::warning
 

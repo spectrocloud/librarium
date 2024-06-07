@@ -32,11 +32,11 @@ cluster using Local UI.
 - You must ensure that the Edge host has a stable IP address. You have the following options to achieve a stable IP
   address:
 
-  - Using a static IP address. Contact your network administrator to assign the Edge host a static IP address.
+  - Use a static IP address. Contact your network administrator to assign the Edge host a static IP address.
   - Use Dynamic Host Configuration Protocol (DHCP) reservations to reserve an IP address in a DHCP network. Contact your
     network administrator to reserve IP addresses for your Edge hosts in a DHCP network.
-  - Enable network overlay on your Edge cluster. You must do this during cluster creation. For more information about
-    network overlay, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md).
+  - Enable network overlay on your Edge cluster. Network overlay can only be enabled during cluster creation. For more
+    information about network overlay, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md).
 
 ## Create Local Cluster
 
