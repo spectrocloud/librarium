@@ -23,7 +23,16 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
 ### Prerequisites
 
-- A registered Edge host.
+- One or more registered Edge host. For more information about Edge host registration, refer to
+  [Edge Host Registration](./edge-host-registration.md).
+
+- If you are using more than one Edge host to form a cluster, the hosts in the same cluster must be on the same network.
+
+- You must ensure that the Edge hosts have stable IP addresses. You have the following options to do achieve stable IP
+  addressing for Edge hosts:
+  - Use static IP addresses. Contact your network administrator to assign the Edge host a static IP address.
+  - Use Dynamic Host Configuration Protocol (DHCP) reservations to reserve an IP address in a DHCP network. Contact your
+    network administrator to reserve IP addresses for your Edge hosts in a DHCP network.
 
 ### Create Cluster
 
@@ -84,9 +93,16 @@ node pool.
 
 ### Prerequisites
 
-- A registered Edge host.
+An existing Edge cluster.
 
-- A host cluster of type Edge Native.
+- One or more registered Edge host on the same network as your existing cluster. For more information about Edge host
+  registration, refer to [Edge Host Registration](./edge-host-registration.md).
+
+- You must ensure that the Edge hosts have stable IP addresses. You have the following options to do achieve stable IP
+  addressing for Edge hosts:
+  - Use static IP addresses. Contact your network administrator to assign the Edge host a static IP address.
+  - Use Dynamic Host Configuration Protocol (DHCP) reservations to reserve an IP address in a DHCP network. Contact your
+    network administrator to reserve IP addresses for your Edge hosts in a DHCP network.
 
 :::warning
 
