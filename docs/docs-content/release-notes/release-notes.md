@@ -156,14 +156,19 @@ features and improvements.
 - Palette Crossplane provider version 0.20.0 is available. For more details, refer to the provider
   [release page](https://github.com/crossplane-contrib/provider-palette/releases)
 
+- The Terraform data resources,
+  [`spectrocloud_pack`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/pack),
+  and
+  [`spectrocloud_pack_simple`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/pack_simple)
+  will both require the attribute `registry_uid` to be set the next Terraform release, 0.21.0. We recommend you start
+  using this attribute in your Terraform configurations to avoid issues in the future.
+
 ### Docs and Education
 
 - [Palette's Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/latest)
   now has a dedicated documentation section. The new section also includes a few guides on how to deploy a Kubernetes
   clusters using Crossplane. Check out the [Crossplane Provider](../automation/crossplane/crossplane.md) documentation
   for more details.
-
--
 
 ### Packs
 
