@@ -35,15 +35,17 @@ export default function PacksReadme() {
   const [packName, setPackName] = useState<string>("");
   const empty_icon_light = useBaseUrl('/img/empty_icon_table_light.svg');
   const empty_icon_dark = useBaseUrl('/img/empty_icon_table_dark.svg');
-  const { isDarkTheme } = useColorMode();
+  const { colorMode } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
   const [selectedVersion, setSelectedVersion] = useState<string>("");
   const history = useHistory();
-
   useEffect(() => {
+    const searchParams = window ? new URLSearchParams(window.location.search) : null;
+    const pckName = searchParams?.get("pack") || "";
+    setPackName(pckName);
     const importComponent = async () => {
       try {
-        const module = await import(`../../../docs/docs-content/integrations/${packName}.md`);
+        const module = await import(`../../../docs/docs-content/integrations/${pckName}.md`);
         const PackReadMeComponent = module.default;
         setCustomReadme(
           <div className={styles.customReadme}>
@@ -94,7 +96,6 @@ export default function PacksReadme() {
   }, [packName]);
   useEffect(() => {
     const searchParams = window ? new URLSearchParams(window.location.search) : null;
-    setPackName(searchParams?.get("pack") || "");
     const urlParamVersion = searchParams?.get("versions");
     const version = urlParamVersion || packData?.latestVersion || packData?.versions[0]?.title || "";
     if(!urlParamVersion) {
@@ -189,7 +190,7 @@ export default function PacksReadme() {
   return (
     <div className={styles.wrapper}>
       <ConfigProvider theme={{
-        algorithm: isDarkTheme ? darkAlgorithm : defaultAlgorithm,
+        algorithm: colorMode === "dark" ? darkAlgorithm : defaultAlgorithm,
       }}>
         <div className={styles.description}>
           <div className={styles.packDescFirstCol}>

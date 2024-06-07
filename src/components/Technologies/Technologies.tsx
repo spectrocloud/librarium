@@ -24,7 +24,7 @@ interface TechnologiesProps {
 const PACKLISTFILTERS = "packListFilters";
 
 export default function Technologies({ data, repositories }: TechnologiesProps) {
-  const { isDarkTheme } = useColorMode();
+  const { colorMode } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
   const [selectedFilters, setSelectedFilters] = useState<{ category: any[], registries: any[], cloudTypes: any[], source: any[] }>({ category: [], registries: [], cloudTypes: [], source: ["all"] })
   const [searchValue, setSearchValue] = useState<string>("");
@@ -54,7 +54,7 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
               }
               break;
             case "source":
-              if(!selectedFiltersValue.includes("all")) {
+              if (!selectedFiltersValue.includes("all")) {
                 condition = (techCard: FrontMatterData) => {
                   return techCard[selectedFiltersValue[0] as keyof FrontMatterData];
                 }
@@ -176,7 +176,7 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
   return (
     <div className={styles.wrapper}>
       <ConfigProvider theme={{
-        algorithm: isDarkTheme ? darkAlgorithm : defaultAlgorithm,
+        algorithm: colorMode === "dark" ? darkAlgorithm : defaultAlgorithm,
       }}>
         <PacksFilters categories={[...packTypes]} registries={repositories} setSelectedSearchFilters={setSelectedSearchFilters} selectedFilters={selectedFilters} />
         <Search onSearch={onSearch} placeholder={"Search for integration..."} value={searchValue} />
