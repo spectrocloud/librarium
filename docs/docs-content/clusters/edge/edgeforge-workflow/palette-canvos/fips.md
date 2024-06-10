@@ -103,6 +103,16 @@ image with.
 
 <TabItem label="Red Hat Enterprise Linux" value="rhel">
 
+:::warning
+
+When you create a cluster with an Edge host that operates the FIPS-compliant RHEL Operating System (OS), you may
+encounter an error where the `systemd-resolved.service` service enters the **failed** state. This prevents the
+nameserver from being configured, which will result in cluster deployment failure. Refer to
+[TroubleShooting](../../../../troubleshooting/edge.md#scenario---systemd-resolvedservice-enters-failed-state) for a
+workaround.
+
+:::
+
 5. Change into the **rhel-fips** directory.
 
 6. In the file **Dockerfile**, provide your RHEL subscription username and password.
