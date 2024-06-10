@@ -59,7 +59,7 @@ Address Translation (NAT) behind the pod IP.
 Multus is a secondary network that uses Multus-CNI. Multus allows you to attach multiple network interfaces to pods in
 Kubernetes. If you use Multus as your network, ensure that Multus is installed across your cluster and that you have
 created a default `NetworkAttachmentDefinition` CRD. For more information, refer to the
-[Multus CNI](../../integrations/multus-cni) guide.
+[Multus CNI](../../integrations/multus-cni.md) guide.
 
 ### Prerequisites
 
