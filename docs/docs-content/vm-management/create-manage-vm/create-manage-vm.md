@@ -54,8 +54,9 @@ also recommend installing VirtIO drivers to ensure you can use the para-virtuali
 
 ## VM Management
 
-After creating your VMs, you can make updates, take snapshots, or migrate them to a different node. Refer to the
-following resources to learn about VM management.
+After creating your VMs, you can make updates to the VM such as adding disk storage and adding network interfaces. You
+can also take snapshots of the VMs and use those snapshots to provision other VMs. You can also migrate them to a
+different node. Refer to the following resources to learn about VM management.
 
 - [Migrate VM to Different Node](./migrate-vm-to-different-node.md)
 - [Update VM Configuration](./update-vm-configuration.md)

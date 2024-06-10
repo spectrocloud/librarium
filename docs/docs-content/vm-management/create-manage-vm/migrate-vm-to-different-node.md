@@ -7,7 +7,7 @@ sidebar_position: 20
 tags: ["vmo"]
 ---
 
-Palette supports virtual machine (VM) migration to another physical host in the cluster. This is known as _live
+Palette supports Virtual Machine (VM) migration to another physical host in the cluster. This is known as _live
 migration_. During live migration, the VM and its memory, storage, and CPU resources are moved from one cluster compute
 node to another without any noticeable downtime.
 
@@ -19,7 +19,11 @@ file that is part of the **Virtual Machine Orchestrator** pack. Refer to
 Live migration is used with rolling Kubernetes upgrades and workload balancing. To avoid interrupting a VM when a node
 is placed into maintenance or upgraded, all VM instances require a `LiveMigrate` eviction strategy.
 
-## Prerequisites
+## Migrate VM to a Different Node
+
+Follow the instructions below to migrate VMs to a different node.
+
+### Prerequisites
 
 - All VM instances must have an eviction strategy set as `evictionStrategy: LiveMigrate` to ensure that a VM is not
   interrupted if the node is placed into maintenance. This is configured automatically in the KubeVirt configuration
@@ -33,7 +37,7 @@ is placed into maintenance or upgraded, all VM instances require a `LiveMigrate`
 - A VM’s pod network cannot use a Bridge interface. Disable the default Bridge interface on the pod network. However,
   other interfaces such as those that Multus grants, may use a bridge interface for live migration.
 
-## Migrate VM to a Different Node
+### Instructions
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -70,7 +74,11 @@ Kubernetes resource.
 - Ensure `LiveMigrate` is set as the eviction strategy for all affected VMs. When the host is put in maintenance mode,
   this feature allows for a smooth and uninterrupted migration process.
 
-### Evacuate VMs in Palette
+### Instructions
+
+<Tabs>
+
+<TabItem value="vm-palette" label="Evacuate VMs using Palette">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -88,20 +96,12 @@ Kubernetes resource.
 
    :::
 
-### Validate
+</TabItem>
 
-You can validate evacuation completed by following the steps below.
+<TabItem value="vm-manual" label="Evacuate VMs Manually">
 
-1. Log in to [Palette](https://console.spectrocloud.com).
-
-2. From the left **Main Menu**, choose **Clusters**.
-
-3. Verify the **Health** column displays the **Maintenance mode: Completed** icon.
-
-## Evacuate VMs Manually
-
-1. Obtain the kubeconfig file from Palette, and set the KUBECONFIG environment variable to access it so you can issue
-   kubectl commands to the cluster. To learn how, refer to
+1. Obtain the kubeconfig file from Palette, and set the `KUBECONFIG` environment variable to access it so you can issue
+   kubectl commands to the cluster. For more information, refer to
    [Set up Kubectl](../../clusters/cluster-management/palette-webctl.md#set-up-kubectl).
 
 2. Issue the following command to mark the node as _un-schedulable_. This alerts the Kubernetes scheduler not to
@@ -132,9 +132,30 @@ You can validate evacuation completed by following the steps below.
 
    :::
 
+</TabItem>
+
+</Tabs>
+
 ### Validate
 
-1. Using kubectl, log in to a machine that has access to the kubernetes cluster.
+<Tabs>
+
+<TabItem group="palette" value="Palette">
+
+You can validate evacuation completed by following the steps below.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, choose **Clusters**.
+
+3. Verify the **Health** column displays the **Maintenance mode: Completed** icon.
+
+</TabItem>
+
+<TabItem group="kubectl" value="kubectl">
+
+1. Using kubectl, log in to a machine that has access to the Kubernetes cluster. For more information, refer to
+   [Access Cluster with Kubectl](../../clusters/cluster-management/palette-webctl.md).
 
 2. Issue the following command to verify the pods are rescheduled on a different node by verifying the name and IP
    address of the new node changed.
@@ -142,6 +163,10 @@ You can validate evacuation completed by following the steps below.
    ```bash
    kubectl get pods --output wide
    ```
+
+</TabItem>
+
+</Tabs>
 
 ## Resources
 
