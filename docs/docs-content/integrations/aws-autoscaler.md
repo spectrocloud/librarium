@@ -105,7 +105,7 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
 
 2. Copy the IAM policy
    [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html). Your policy ARN
-   should be similar to `arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler`.
+   should be similar to `arn:aws:iam::123456789:policy/PaletteEKSClusterAutoscaler`.
 
 3. During the cluster profile creation, modify the `managedMachinePool.roleAdditionalPolicies` section in the
    **values.yaml** file of the Kubernetes pack with the created IAM policy ARN. Palette will attach the IAM policy to
@@ -122,7 +122,7 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
      # roleName: {{ name of the self-managed role | format "${string}" }}
      # A list of additional policies to attach to the node group role
      roleAdditionalPolicies:
-       - "arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"
+       - "arn:aws:iam::123456789:policy/PaletteEKSClusterAutoscaler"
    ```
 
    :::tip
@@ -257,7 +257,7 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
 
 2. Copy the IAM policy
    [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html). Your policy ARN
-   should be similar to `arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler`.
+   should be similar to `arn:aws:iam::123456789:policy/PaletteEKSClusterAutoscaler`.
 
 3. During the cluster profile creation, modify the `managedMachinePool.roleAdditionalPolicies` section in the
    **values.yaml** file of the Kubernetes pack with the created IAM policy ARN. Palette will attach the IAM policy to
@@ -274,7 +274,7 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
      # roleName: {{ name of the self-managed role | format "${string}" }}
      # A list of additional policies to attach to the node group role
      roleAdditionalPolicies:
-       - "arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"
+       - "arn:aws:iam::123456789:policy/PaletteEKSClusterAutoscaler"
    ```
 
    :::tip
@@ -401,7 +401,7 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
 
 2. Copy the IAM policy
    [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html). Your policy ARN
-   should be similar to `arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler`.
+   should be similar to `arn:aws:iam::123456789:policy/PaletteEKSClusterAutoscaler`.
 
 3. During the cluster profile creation, modify the `managedMachinePool.roleAdditionalPolicies` section in the
    **values.yaml** file of the Kubernetes pack with the created IAM policy ARN. Palette will attach the IAM policy to
@@ -418,7 +418,7 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
      # roleName: {{ name of the self-managed role | format "${string}" }}
      # A list of additional policies to attach to the node group role
      roleAdditionalPolicies:
-       - "arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"
+       - "arn:aws:iam::123456789:policy/PaletteEKSClusterAutoscaler"
    ```
 
    :::tip
@@ -545,7 +545,7 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
 
 2. Copy the IAM policy
    [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html). Your policy ARN
-   should be similar to `arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler`.
+   should be similar to `arn:aws:iam::123456789:policy/PaletteEKSClusterAutoscaler`.
 
 3. During the cluster profile creation, modify the `managedMachinePool.roleAdditionalPolicies` section in the
    **values.yaml** file of the Kubernetes pack with the created IAM policy ARN. Palette will attach the IAM policy to
@@ -562,7 +562,7 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
      # roleName: {{ name of the self-managed role | format "${string}" }}
      # A list of additional policies to attach to the node group role
      roleAdditionalPolicies:
-       - "arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"
+       - "arn:aws:iam::123456789:policy/PaletteEKSClusterAutoscaler"
    ```
 
    :::tip
@@ -689,7 +689,7 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
 
 2. Copy the IAM policy
    [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html). Your policy ARN
-   should be similar to `arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler`.
+   should be similar to `arn:aws:iam::123456789:policy/PaletteEKSClusterAutoscaler`.
 
 3. During the cluster profile creation, modify the `managedMachinePool.roleAdditionalPolicies` section in the
    **values.yaml** file of the Kubernetes pack with the created IAM policy ARN. Palette will attach the IAM policy to
@@ -706,7 +706,7 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
      # roleName: {{ name of the self-managed role | format "${string}" }}
      # A list of additional policies to attach to the node group role
      roleAdditionalPolicies:
-       - "arn:aws:iam::650628870702:policy/PaletteEKSClusterAutoscaler"
+       - "arn:aws:iam::123456789:policy/PaletteEKSClusterAutoscaler"
    ```
 
    :::tip
@@ -816,8 +816,8 @@ data "spectrocloud_registry" "public_registry" {
 
 data "spectrocloud_pack_simple" "aws-cluster-autoscaler" {
  name    = "aws-cluster-autoscaler"
- version = "1.28.2"
- type = "spectro"
+ version = "1.29.2"
+ type = "helm"
  registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
