@@ -2,7 +2,6 @@
 sidebar_label: "Migrate a VM"
 title: "Migrate a VM to a Different Node"
 description: "Learn how to migrate a VM to another physical host in the cluster using Palette."
-icon: " "
 hide_table_of_contents: false
 sidebar_position: 20
 tags: ["vmo"]

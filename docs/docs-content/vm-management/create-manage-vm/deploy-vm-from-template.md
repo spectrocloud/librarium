@@ -2,7 +2,6 @@
 sidebar_label: "Deploy VM From a Template"
 title: "Deploy VM From a Template"
 description: "Learn how to deploy a VM from a template using Palette Virtual Machine Orchestrator"
-icon: " "
 hide_table_of_contents: false
 sidebar_position: 0
 tags: ["vmo"]
