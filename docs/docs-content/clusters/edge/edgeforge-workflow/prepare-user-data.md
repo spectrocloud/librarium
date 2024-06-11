@@ -199,11 +199,12 @@ stylus:
     initramfs:
       - users:
           kairos:
-          groups:
-            - sudo
-          passwd: kairos
-  install:
-    poweroff: true
+            groups:
+              - sudo
+            passwd: kairos
+
+install:
+  poweroff: true
 ```
 
 ### Apply Proxy & Certificate Settings
@@ -213,41 +214,32 @@ This example showcases how you can include network settings in a user data confi
 ```yaml
 stylus:
   site:
-      paletteEndpoint: api.spectrocloud.com
-      edgeHostToken: <yourRegistrationToken>
-      projectName: edge-sites
-      tags:
-        city: chicago
-        building: building-1
-        zip-code: 95135
-  stages:
-  initramfs:
-      - users:
-          kairos:
-          groups:
-              - sudo
-          passwd: kairos
-  install:
-  poweroff: true
+    paletteEndpoint: api.spectrocloud.com
+    edgeHostToken: <yourRegistrationToken>
+    projectName: edge-sites
+    tags:
+      city: chicago
+      building: building-1
+      zip-code: 95135
 
-  network:
+    network:
       httpProxy: http://proxy.example.com
       httpsProxy: https://proxy.example.com
       noProxy: 10.10.128.10,10.0.0.0/8
       nameserver: 1.1.1.1
       # configure interface specific info. If omitted all interfaces will default to dhcp
       interfaces:
-          enp0s3:
-              # type of network dhcp or static
-              type: static
-              # Ip address including the mask bits
-              ipAddress: 10.0.10.25/24
-              # Gateway for the static ip.
-              gateway: 10.0.10.1
-              # interface specific nameserver
-              nameserver: 10.10.128.8
-          enp0s4:
-              type: dhcp
+        enp0s3:
+          # type of network dhcp or static
+          type: static
+          # Ip address including the mask bits
+          ipAddress: 10.0.10.25/24
+          # Gateway for the static ip.
+          gateway: 10.0.10.1
+          # interface specific nameserver
+          nameserver: 10.10.128.8
+        enp0s4:
+          type: dhcp
     caCerts:
       - |
         ------BEGIN CERTIFICATE------
@@ -259,6 +251,16 @@ stylus:
         *****************************
         *****************************
         ------END CERTIFICATE------
+  stages:
+    initramfs:
+      - users:
+          kairos:
+            groups:
+              - sudo
+            passwd: kairos
+
+install:
+  poweroff: true
 ```
 
 ### Load Content From External Registry
