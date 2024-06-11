@@ -144,7 +144,7 @@ vSphere version you are using to view the required privileges for the Spectro ro
 
 </TabItem>
 
-<TabItem label="6.0.x" value="6.0.x">
+<TabItem label="6.7U3" value="6.7U3">
 
 | **vSphere Object**         | **Privileges**                                     |
 | -------------------------- | -------------------------------------------------- |
@@ -250,7 +250,7 @@ Virtual Machines.
 
 </TabItem>
 
-<TabItem label="6.0.x" value="6.0.x">
+<TabItem label="6.7U3" value="6.7U3">
 
 | **vSphere Object**         | **Privileges**                                                                                                                    |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
