@@ -158,11 +158,11 @@ stylus:
   initramfs:
     - users:
         kairos:
-        groups:
-          - sudo
-        passwd: kairos
+          groups:
+            - sudo
+          passwd: kairos
   install:
-  poweroff: true
+    poweroff: true
 ```
 
 **Site** - supplied at the edge location through a bootable USB drive. If specified, the `projectName` value overrides
@@ -221,7 +221,6 @@ stylus:
       city: chicago
       building: building-1
       zip-code: 95135
-
     network:
       httpProxy: http://proxy.example.com
       httpsProxy: https://proxy.example.com
