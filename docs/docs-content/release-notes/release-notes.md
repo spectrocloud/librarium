@@ -101,6 +101,11 @@ features and improvements.
   successful. For more information about key enrollment, refer to
   [Enroll Trusted Boot Keys in Edge Host](../clusters/edge/trusted-boot/deployment-day2/install.md#enroll-secure-boot-keys-into-edge-device).
 
+- Edge hosts with FIPS-compliant RHEL Operating System (OS) distribution may encounter the error where the
+  `systemd-resolved.service` service enters the **failed** state. This prevents the nameserver from being configured,
+  which will result in cluster deployment failure. Refer to
+  [TroubleShooting](../troubleshooting/edge.md#scenario---systemd-resolvedservice-enters-failed-state) for a workaround.
+
 ### Edge
 
 #### Features
