@@ -80,8 +80,12 @@ features and improvements.
   - GET `/v1/metrics/{resourceKind}/{resourceUid}/values`
   - GET `/v1/metrics/{resourceKind}/values`
 
+  :::warning
+
   After six months, the `includeMasterMachines` object will be removed from the API. Use the
   `includeControlPlaneMachines` object moving forward.
+
+  :::
 
 #### Known Issues
 
@@ -89,7 +93,7 @@ features and improvements.
   MAAS. A temporary workaround is using a version lower than 1.29.4 when using MAAS..
 
 - [MicroK8s](../integrations/microk8s.md) does not support a multi-node cluster deployment and is limited to a
-  single-node cluster. As a result, the only supported upgrade strategy is InPlaceUpgrade.
+  single-node cluster. As a result, the only supported upgrade strategy is `InPlaceUpgrade`.
 
 - Clusters using [MicroK8s](../integrations/microk8s.md) as the Kubernetes distribution, the control plane node fails to
   upgrade when using the `InPlaceUpgrade` strategy for sequential upgrades, such as upgrading from version 1.25.x to
@@ -116,7 +120,7 @@ features and improvements.
   not been tampered with. Trusted Boot does several significant things, all working in concert, to enhance security: 
   - Ensures that only trusted software can boot on the system. Any modification to any part of the hard disk will be detected. 
   - Encrypts all sensitive data on disk using hardware security Trusted Platform Module (TPM). 
-  - Ensures that the TPM will only decrypt sensitive data if the boot process is clean and untampered..
+  - Ensures that the TPM will only decrypt sensitive data if the boot process is clean and untampered.
 
   Unlike similar solutions, Trusted Boot utilizes a secure boot, measured boot, and encryption to protect 
   the booting system far more than other solutions. To learn more about Edge Trusted Boot, check out the
@@ -181,14 +185,14 @@ features and improvements.
 #### Pack Notes
 
 - Cluster Autoscaler version 1.29.2 is a Helm-based pack. Previous versions of the pack were manifest-based. Upgrades to
-  the new version requires you to select the new Helm-based pack.
+  the new version require you to select the new Helm-based pack.
 
-- The BYOOS pack is now available for Palette VerteX deployments. This allows users to bring their own operating system
+- The BYOOS pack is now available for Palette VerteX deployments. This allows users to bring their own Operating System
   (OS) image to deploy VerteX instances. RHEL is the only custom OS supported for VerteX deployments at this time.
 
-- MicroK8s now supports boot, preRun and postRun commands on cloud-init. This allows users to execute custom commands
-  before and after their MicroK8s deployment processes, providing enhanced flexibility and control over deployment
-  environments.
+- MicroK8s now supports boot, `preRun` and `postRun` commands on cloud-init. This allows users to execute custom
+  commands before and after their MicroK8s deployment processes, providing enhanced flexibility and control over
+  deployment environments.
 
 - The Kubernetes pack parameter `k8sHardening` is removed and no longer used as the method for hardening images during
   the image creation process. This change does not impact users.
