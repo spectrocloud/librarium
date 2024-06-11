@@ -11,14 +11,16 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## Jun 1, 2024 - Release 4.4.0 - 4.4.X
+## Jun 15, 2024 - Release 4.4.0 - 4.4.X
 
-This release contains various new features and improvements. One new feature is the introduction of Trusted Boot for
-Edge. Trusted Boot is a hardware-based security feature that ensures that the system boots securely and that the boot
-process has not been tampered with. We also improved the MicroK8s experience by exposing lifecycle commands. Other
-improvements include enhancements to the Cluster Profile Variables user experience, automatic SSL certificate updates
-Edge clusters in airgap environments, and new network troubleshooting tools in LocalUI. Check out the full release notes
-to learn more about this release's new features and improvements.
+<!-- prettier-ignore -->
+This release contains various new features and improvements. One new feature is the introduction of
+[Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) for Edge. Trusted Boot is a hardware-based security
+feature that ensures that the system boots securely and that the boot process has not been tampered with. We also
+improved the MicroK8s experience by exposing lifecycle commands. Other improvements include enhancements to the Cluster
+Profile Variables user experience, automatic SSL certificate updates Edge clusters in airgap environments, and new
+network troubleshooting tools in LocalUI. Check out the full release notes to learn more about this release's new
+features and improvements.
 
 ### Security Notices
 
@@ -38,6 +40,11 @@ to learn more about this release's new features and improvements.
   when prompted for the Helm chart location and require a manual URL change. The new version of the Palette CLI will
   point to the new repository. Refer to the [Validator](../automation/palette-cli/commands/validator.md) CLI page
   documentation for more details.
+
+- Due to the removal of GKE Kubernetes patch versions, it's critical you update existing cluster profiles to use the new
+  GKE Kubernetes packs to avoid issues. Active clusters using old GKE Kubernetes pack versions may encounter problems
+  like pods failing to start and scaling issues. We recommend deploying new clusters with the updated GKE cluster
+  profile and migrating workloads.
 
 #### Features
 
@@ -99,7 +106,7 @@ to learn more about this release's new features and improvements.
 #### Features
 
 <!-- prettier-ignore -->
-- <TpBadge /> Trusted Boot is an exciting new Edge capability part of the [SENA
+- <TpBadge /> [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) is an exciting new Edge capability part of the [SENA
   framework](https://www.spectrocloud.com/product/sena). Trusted Boot is a hardware-based security feature that ensures that the system boots securely and that the boot process has
   not been tampered with. Trusted Boot does several significant things, all working in concert, to enhance security: 
   - Ensures that only trusted software can boot on the system. Any modification to any part of the hard disk will be detected. 
@@ -108,7 +115,7 @@ to learn more about this release's new features and improvements.
 
   Unlike similar solutions, Trusted Boot utilizes a secure boot, measured boot, and encryption to protect 
   the booting system far more than other solutions. To learn more about Edge Trusted Boot, check out the
-  [Edge Trusted Boot documentation](../clusters/edge/edge.md).
+  [Edge Trusted Boot documentation](../clusters/edge/trusted-boot/trusted-boot.md).
 
 #### Improvements
 
@@ -116,13 +123,13 @@ to learn more about this release's new features and improvements.
 - <TpBadge /> The Cluster Profile Variables user experience has been improved. Users can now identify where a variable is used, preview the variable during creation time, and change the order of the variables displayed. An improved Day-2 management experience is also available. You can learn more about these new features in the [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) documentation.
 
 
-- Edge clusters managed by [LocalUI](../clusters/edge/local-ui/local-ui.md) now receive automatic SSL certificate updates for Kubernetes. Users can also manually trigger the SSL certificate update process. For more information, refer to the [LocalUI](../clusters/edge/local-ui/local-ui.md) documentation.
+- Edge clusters managed by [LocalUI](../clusters/edge/local-ui/local-ui.md) now receive automatic SSL certificate updates for Kubernetes. Users can also manually trigger the SSL certificate update process. For more information, refer to the [Renew Certificates for Airgap Clusters](../clusters/edge/cluster-management/certificate-renewal.md) guide.
 
 - [LocalUI](../clusters/edge/local-ui/local-ui.md) now includes tools to help users troubleshoot network issues. The tools include ping and traceroute. For more information, refer to the [LocalUI](../clusters/edge/local-ui/local-ui.md) documentation.
 
 - Clusters managed by [LocalUI](../clusters/edge/local-ui/local-ui.md) now include a new feature that allows users to download diagnostic logs from the LocalUI interface. This feature reduces the friction of troubleshooting issues on the cluster as the need to SSH into the cluster is reduced.
 
-- Support for custom links, URLs, and static pages is now available in LocalUI. You can populate custom links in the left **Main Menu** of [LocalUI](../clusters/edge/local-ui/local-ui.md), which will either load content into in an iframe or act as en external link. You can also can host static pages from LocalUI. This is useful when you need to deploy and host custom or specific content for a site and want to avoid introducing additional services to host a static site
+- Support for custom links, URLs, and static pages is now available in LocalUI. You can populate custom links in the left **Main Menu** of [LocalUI](../clusters/edge/local-ui/host-management/custom-link.md), which will either load content into in an iframe or act as en external link. You can also can host static pages from LocalUI. This is useful when you need to deploy and host custom or specific content for a site and want to avoid introducing additional services to host a static site
 
 ### Virtual Machine Orchestrator (VMO)
 
@@ -131,14 +138,14 @@ to learn more about this release's new features and improvements.
 - The KubeVirt version in use is now v1.2.0. Other minor maintenance updates in support of Kubevirt 1.2.0 are also
   included.
 
-### VerteX
+<!-- ### VerteX
 
 #### Features
 
 - You can now deploy Palette VerteX using Red Hat Linux Enterprise (RHEL) as the Operating System (OS) for the VerteX
   instance nodes. Using RHEL as the base OS is available for VerteX when deployed to a VMware vSphere environment using
   the Palette CLI. A prompt will ask you to select the OS during the VerteX deployment process. Refer to the Palette
-  VerteX installation [guide](../vertex/install-palette-vertex/install-on-vmware/install.md) for more details.
+  VerteX installation [guide](../vertex/install-palette-vertex/install-on-vmware/install.md) for more details. -->
 
 ### Automation
 
@@ -150,14 +157,19 @@ to learn more about this release's new features and improvements.
 - Palette Crossplane provider version 0.20.0 is available. For more details, refer to the provider
   [release page](https://github.com/crossplane-contrib/provider-palette/releases)
 
+- The Terraform data resources,
+  [`spectrocloud_pack`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/pack),
+  and
+  [`spectrocloud_pack_simple`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/pack_simple)
+  will both require the attribute `registry_uid` to be set the next Terraform release, 0.21.0. We recommend you start
+  using this attribute in your Terraform configurations to avoid issues in the future.
+
 ### Docs and Education
 
 - [Palette's Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/latest)
   now has a dedicated documentation section. The new section also includes a few guides on how to deploy a Kubernetes
   clusters using Crossplane. Check out the [Crossplane Provider](../automation/crossplane/crossplane.md) documentation
   for more details.
-
--
 
 ### Packs
 

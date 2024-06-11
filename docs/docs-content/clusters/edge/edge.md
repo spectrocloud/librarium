@@ -28,9 +28,12 @@ The following are some highlights of the comprehensive Palette Edge Solution:
 
 - Low touch, plug-and-play setup
 
-- Immutable update for Kubernetes and operating system (OS) with zero downtime
+- Immutable update for Kubernetes and Operating System (OS) with zero downtime
 
 - Distro-agnostic Kubernetes and OS
+
+- Edge artifacts hardened by default according to
+  [Center for Internet Security (CIS) standards](https://www.cisecurity.org/cis-benchmarks).
 
 - Secured remote troubleshooting
 

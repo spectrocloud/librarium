@@ -17,6 +17,9 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 - Configurable Kubernetes API servers to work with virtual IP address (VIP) or Dynamic DNS.
 
+- Edge artifacts hardened by default according to
+  [Center for Internet Security (CIS) standards](https://www.cisecurity.org/cis-benchmarks).
+
 - Edge supports adding multiple devices to the site to form a multi-node Kubernetes cluster.
 
 - Operating system (OS) images are derived from immutable container-based OS images provided by the
