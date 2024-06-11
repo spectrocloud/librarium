@@ -18,6 +18,8 @@ to a bootable device, such as a USB stick.
 
 - A bootable device such as a USB drive, or a Preboot Execution Environment (PXE) server.
 
+- An Edge host with Palette Edge installed. Refer to [Installation](../stage.md) for more information.
+
 - `mkisofs`, or `genisoimage`, or similar ISO management software.
 
   - `cdrtools` or `wodim` for Windows.

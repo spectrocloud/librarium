@@ -12,15 +12,13 @@ To create a registration token, use the following steps.
 
 ## Prerequisites
 
-- Tenant admin access.
-
-<br />
+- You Palette account has Tenant Admin access.
 
 ## Create Token
 
 1. Log into [Palette](https://console.spectrocloud.com) as a tenant admin.
 
-2. Switch to the tenant scope.
+2. Switch to the **Tenant Admin** scope.
 
 3. Navigate to the left **Main Menu** and select **Settings**.
 
@@ -40,8 +38,6 @@ To create a registration token, use the following steps.
 
 7. Save the **Token** value.
 
-<br />
-
 ## Validate
 
 1. Log into [Palette](https://console.spectrocloud.com) as a tenant admin.
@@ -53,8 +49,6 @@ To create a registration token, use the following steps.
 4. Select **Registration Tokens** in the **Tenant Settings Menu**.
 
 5. Validate the tenant registration token is available
-
-<br />
 
 ## Next Steps
 
