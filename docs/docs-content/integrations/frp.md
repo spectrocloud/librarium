@@ -177,6 +177,64 @@ public endpoints. Any user with access to the internet can connect to the cluste
 ## Versions Supported
 
 <Tabs queryString="versions">
+<TabItem label="1.5.x" value="1.5.x">
+
+## Prerequisites
+
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro
+  Cloud reverse proxy.
+
+## Parameters
+
+The Spectro Proxy supports the following parameters.
+
+| Parameter  | Description                                            | Default                                     |
+| ---------- | ------------------------------------------------------ | ------------------------------------------- |
+| namespace  | The Kubernetes namespace to install the Spectro Proxy. | `cluster-{{ .spectro.system.cluster.uid }}` |
+| server     | The Kubernetes server.                                 | `{{ .spectro.system.reverseproxy.server }}` |
+| clusterUid | The Kubernetes cluster identifier.                     | `{{ .spectro.system.cluster.uid }}`         |
+| subdomain  | The Kubernetes cluster subdomain identifier.           | `cluster-{{ .spectro.system.cluster.uid }}` |
+
+Image Pull Policy configurations
+
+| Parameter                | Description                                                 | Default        |
+| ------------------------ | ----------------------------------------------------------- | -------------- |
+| frpcInit.imagePullPolicy | The image pull policy for the Spectro Proxy init container. | `IfNotPresent` |
+| frpc.imagePullSecrets    | The image pull secrets for the Spectro Proxy container.     | `IfNotPresent` |
+
+The Kubernetes dashboard integration supports the following parameters.
+
+| Parameter       | Description                                 | Default |
+| --------------- | ------------------------------------------- | ------- |
+| enabled         | Enable the dashboard.                       | `false` |
+| useInsecurePort | Use unsecure port (HTTP) for communication. | `false` |
+
+The VMware dashboard integration supports the following parameters.
+
+| Parameter | Description           | Default |
+| --------- | --------------------- | ------- |
+| enabled   | Enable the dashboard. | `false` |
+
+## Usage
+
+To use this pack, you have to add it to your cluster profile. You can also add the Spectro Proxy pack when you create
+the cluster profile. Check out the
+[Create Cluster Profile](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide to learn
+more about cluster profile creation.
+
+The kubeconfig file generated for the host cluster is updated with the Spectro Proxy server's address. Refer to the
+[Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) guide to learn how to download the
+kubeconfig file and access the cluster.
+
+:::warning
+
+Be aware that if this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have
+to re-download the kubeconfig file to pick up the new configuration changes. This will also result in Kubernetes control
+plane nodes getting repaved.
+
+:::
+
+</TabItem>
 
 <TabItem label="1.4.x" value="1.4.x">
 

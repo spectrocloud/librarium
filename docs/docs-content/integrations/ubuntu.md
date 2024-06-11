@@ -48,6 +48,9 @@ Review [Maintenance Policy](maintenance-policy.md#os-packs) to learn about pack 
 
 | Kubernetes Version | Supports Kubernetes |
 | ------------------ | ------------------- |
+| 1.29               | ✅                  |
+| 1.28               | ✅                  |
+| 1.27               | ✅                  |
 | 1.26               | ✅                  |
 | 1.25               | ✅                  |
 | 1.24               | ❌                  |
