@@ -130,9 +130,9 @@ stages:
   initramfs:
     - users:
         kairos:
-        groups:
-          - sudo
-        passwd: kairos
+          groups:
+            - sudo
+          passwd: kairos
 ```
 
 **Site** - supplied at the edge location through a bootable USB drive. If specified, the `projectName` value overrides
@@ -175,9 +175,9 @@ stages:
   initramfs:
     - users:
         kairos:
-        groups:
-          - sudo
-        passwd: kairos
+          groups:
+            - sudo
+          passwd: kairos
 ```
 
 ### Apply Proxy & Certificate Settings
@@ -232,9 +232,9 @@ stages:
   initramfs:
     - users:
         kairos:
-        groups:
-          - sudo
-        passwd: kairos
+          groups:
+            - sudo
+          passwd: kairos
 ```
 
 ### Load Content From External Registry
