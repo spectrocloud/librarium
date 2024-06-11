@@ -80,6 +80,8 @@ features and improvements.
   - GET `/v1/metrics/{resourceKind}/{resourceUid}/values`
   - GET `/v1/metrics/{resourceKind}/values`
 
+  <br />
+
   :::warning
 
   After six months, the `includeMasterMachines` object will be removed from the API. Use the
