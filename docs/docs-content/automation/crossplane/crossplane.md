@@ -23,7 +23,7 @@ provider API to request the creation of the resource within the provider's envir
 
 You can use the Palette Crossplane Provider to interact with the Palette API and create resources declaratively.
 
-Refer to the [Palette Provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/v0.12.0)
+Refer to the [Palette Provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/latest)
 page for a complete list of managed resources and examples.
 
 ## Get Started
