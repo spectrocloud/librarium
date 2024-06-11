@@ -14,6 +14,7 @@ import SimpleCardGrid from "@site/src/components/SimpleCardGrid/index";
 import ReleaseNotesVersions from "@site/src/components/ReleaseNotesVersions/index";
 import PartialsComponent from "@site/src/components/PartialsComponent";
 import VersionedLink from "@site/src/components/VersionedLink";
+import DemoComponent from "@site/src/components/StorylaneDemo";
 
 export default {
   ...MDXComponents,
@@ -32,4 +33,5 @@ export default {
   ReleaseNotesVersions,
   PartialsComponent,
   VersionedLink,
+  DemoComponent
 };
