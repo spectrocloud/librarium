@@ -11,8 +11,9 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## Jun 1, 2024 - Release 4.4.0 - 4.4.X
+## Jun 15, 2024 - Release 4.4.0 - 4.4.X
 
+<!-- prettier-ignore -->
 This release contains various new features and improvements. One new feature is the introduction of
 [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) for Edge. Trusted Boot is a hardware-based security
 feature that ensures that the system boots securely and that the boot process has not been tampered with. We also
