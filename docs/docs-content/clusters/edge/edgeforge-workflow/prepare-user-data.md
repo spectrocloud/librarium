@@ -130,9 +130,9 @@ stages:
   initramfs:
     - users:
         kairos:
-        groups:
-          - sudo
-        passwd: kairos
+          groups:
+            - sudo
+          passwd: kairos
 ```
 
 **Site** - supplied at the edge location through a bootable USB drive. If specified, the `projectName` value overrides
@@ -175,9 +175,9 @@ stages:
   initramfs:
     - users:
         kairos:
-        groups:
-          - sudo
-        passwd: kairos
+          groups:
+            - sudo
+          passwd: kairos
 ```
 
 ### Apply Proxy & Certificate Settings
@@ -188,52 +188,52 @@ This example showcases how you can include network settings in a user data confi
 #cloud-config
 stylus:
   site:
-      paletteEndpoint: api.spectrocloud.com
-      edgeHostToken: <yourRegistrationToken>
-      projectName: edge-sites
-      tags:
-        city: chicago
-        building: building-1
-        zip-code: 95135
+    paletteEndpoint: api.spectrocloud.com
+    edgeHostToken: <yourRegistrationToken>
+    projectName: edge-sites
+    tags:
+      city: chicago
+      building: building-1
+      zip-code: 95135
   network:
-      httpProxy: http://proxy.example.com
-      httpsProxy: https://proxy.example.com
-      noProxy: 10.10.128.10,10.0.0.0/8
-      nameserver: 1.1.1.1
-      # configure interface specific info. If omitted all interfaces will default to dhcp
-      interfaces:
-          enp0s3:
-              # type of network dhcp or static
-              type: static
-              # Ip address including the mask bits
-              ipAddress: 10.0.10.25/24
-              # Gateway for the static ip.
-              gateway: 10.0.10.1
-              # interface specific nameserver
-              nameserver: 10.10.128.8
-          enp0s4:
-              type: dhcp
-    caCerts:
-      - |
-        ------BEGIN CERTIFICATE------
-        *****************************
-        *****************************
-        ------END CERTIFICATE------
-      - |
-        ------BEGIN CERTIFICATE------
-        *****************************
-        *****************************
-        ------END CERTIFICATE------
+    httpProxy: http://proxy.example.com
+    httpsProxy: https://proxy.example.com
+    noProxy: 10.10.128.10,10.0.0.0/8
+    nameserver: 1.1.1.1
+    # configure interface specific info. If omitted all interfaces will default to dhcp
+    interfaces:
+      enp0s3:
+        # type of network dhcp or static
+        type: static
+        # Ip address including the mask bits
+        ipAddress: 10.0.10.25/24
+        # Gateway for the static ip.
+        gateway: 10.0.10.1
+        # interface specific nameserver
+        nameserver: 10.10.128.8
+      enp0s4:
+        type: dhcp
+  caCerts:
+    - |
+      ------BEGIN CERTIFICATE------
+      *****************************
+      *****************************
+      ------END CERTIFICATE------
+    - |
+      ------BEGIN CERTIFICATE------
+      *****************************
+      *****************************
+      ------END CERTIFICATE------
 
 install:
   poweroff: true
 
 stages:
   initramfs:
-      - users:
-          kairos:
+    - users:
+        kairos:
           groups:
-              - sudo
+            - sudo
           passwd: kairos
 ```
 
