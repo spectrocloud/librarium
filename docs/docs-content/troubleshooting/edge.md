@@ -14,7 +14,7 @@ The following are common scenarios that you may encounter when using Edge.
 
 If you need to override or reconfigure the read-only file system, you can do so using the following steps.
 
-## Debug Steps
+### Debug Steps
 
 1. Power on the Edge host.
 
@@ -145,8 +145,10 @@ nameserver from being configured, which will result in cluster deployment failur
 
 ### Debug Steps
 
-1. Establish an SSH connection to the Edge host. Or alternatively, press the keys **Fn + Ctrl +Cmd + F1** on a keyboard
-   that is connected to the Edge host to log in to the terminal.
+1. Establish an SSH connection to the Edge host. A
+
+   Alternatively, press the keys **Fn + Ctrl +Cmd + F1** on a keyboard that is connected to the Edge host to log in to
+   the terminal. If you are on Windows, press **Fn + Ctrl + Alt + F1**.
 
 2. Issue the following command.
 
