@@ -18,8 +18,8 @@ This release contains various new features and improvements. One new feature is 
 [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) for Edge. Trusted Boot is a hardware-based security
 feature that ensures that the system boots securely and that the boot process has not been tampered with. We also
 improved the MicroK8s experience by exposing lifecycle commands. Other improvements include enhancements to the Cluster
-Profile Variables user experience, automatic SSL certificate updates Edge clusters in airgap environments, and new
-network troubleshooting tools in LocalUI. Check out the full release notes to learn more about this release's new
+Profile Variables user experience, automatic SSL certificate updates for Edge clusters in airgap environments, and new
+network troubleshooting tools in local UI. Check out the full release notes to learn more about this release's new
 features and improvements.
 
 ### Security Notices
@@ -48,7 +48,7 @@ features and improvements.
 
 #### Features
 
-- <TpBadge /> The MicroK8s pack layer now expose `bootCommands`, `preRunCommands` and `postRunCommands`. You can use
+- <TpBadge /> The MicroK8s pack layer now exposes `bootCommands`, `preRunCommands` and `postRunCommands`. You can use
   these commands to customize and configure MicroK8s as needed. MicroK8s is delivered as a Technical Preview for AWS and
   Canonical MAAS in this release. To learn more, refer to the MicroK8s pack
   [documentation](../integrations/microk8s.md).
@@ -115,7 +115,7 @@ features and improvements.
 #### Features
 
 <!-- prettier-ignore -->
-- <TpBadge /> [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) is an exciting new Edge capability part of the [SENA
+- <TpBadge /> [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) is an exciting new Edge capability developed as part of the [SENA
   framework](https://www.spectrocloud.com/product/sena). Trusted Boot is a hardware-based security feature that ensures that the system boots securely and that the boot process has
   not been tampered with. Trusted Boot does several significant things, all working in concert, to enhance security: 
   - Ensures that only trusted software can boot on the system. Any modification to any part of the hard disk will be detected. 
@@ -134,11 +134,11 @@ features and improvements.
 
 - Edge clusters managed by [LocalUI](../clusters/edge/local-ui/local-ui.md) now receive automatic SSL certificate updates for Kubernetes. Users can also manually trigger the SSL certificate update process. For more information, refer to the [Renew Certificates for Airgap Clusters](../clusters/edge/cluster-management/certificate-renewal.md) guide.
 
-- [LocalUI](../clusters/edge/local-ui/local-ui.md) now includes tools to help users troubleshoot network issues. The tools include ping and traceroute. For more information, refer to the [LocalUI](../clusters/edge/local-ui/local-ui.md) documentation.
+- [Local UI](../clusters/edge/local-ui/local-ui.md) now includes tools to help users troubleshoot network issues. The tools include ping and traceroute. For more information, refer to the [local UI](../clusters/edge/local-ui/local-ui.md) documentation.
 
-- Clusters managed by [LocalUI](../clusters/edge/local-ui/local-ui.md) now include a new feature that allows users to download diagnostic logs from the LocalUI interface. This feature reduces the friction of troubleshooting issues on the cluster as the need to SSH into the cluster is reduced.
+- Clusters managed by [local UI](../clusters/edge/local-ui/local-ui.md) now include a new feature that allows users to download diagnostic logs from the local UI. This feature reduces the friction of troubleshooting issues on the cluster as the need to SSH into the cluster is reduced.
 
-- Support for custom links, URLs, and static pages is now available in LocalUI. You can populate custom links in the left **Main Menu** of [LocalUI](../clusters/edge/local-ui/host-management/custom-link.md), which will either load content into in an iframe or act as en external link. You can also can host static pages from LocalUI. This is useful when you need to deploy and host custom or specific content for a site and want to avoid introducing additional services to host a static site
+- Support for custom links, URLs, and static pages is now available in local UI. You can populate custom links in the left **Main Menu** of [local UI](../clusters/edge/local-ui/host-management/custom-link.md), which will either load content into in an iframe or act as en external link. You can also can host static pages in local UI. This is useful when you need to deploy and host custom or specific content for a site and want to avoid introducing additional services to host a static site.
 
 ### Virtual Machine Orchestrator (VMO)
 
@@ -164,12 +164,12 @@ features and improvements.
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
 - Palette Crossplane provider version 0.20.0 is available. For more details, refer to the provider
-  [release page](https://github.com/crossplane-contrib/provider-palette/releases)
+  [release page](https://github.com/crossplane-contrib/provider-palette/releases).
 
 - The Terraform data resources,
-  [`spectrocloud_pack`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/pack),
+  [`spectrocloud_pack`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/pack)
   and
-  [`spectrocloud_pack_simple`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/pack_simple)
+  [`spectrocloud_pack_simple`](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/pack_simple),
   will both require the attribute `registry_uid` to be set the next Terraform release, 0.21.0. We recommend you start
   using this attribute in your Terraform configurations to avoid issues in the future.
 
