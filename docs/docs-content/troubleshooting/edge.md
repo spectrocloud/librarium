@@ -145,7 +145,7 @@ nameserver from being configured, which will result in cluster deployment failur
 
 ### Debug Steps
 
-1. Establish an SSH connection to the Edge host. A
+1. Establish an SSH connection to the Edge host. 
 
    Alternatively, press the keys **Fn + Ctrl +Cmd + F1** on a keyboard that is connected to the Edge host to log in to
    the terminal. If you are on Windows, press **Fn + Ctrl + Alt + F1**.
