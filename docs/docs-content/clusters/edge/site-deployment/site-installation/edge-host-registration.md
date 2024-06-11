@@ -196,8 +196,9 @@ App is built on Next.js and deployed using the Vercel platform.
 
 Use the following steps to enable this workflow.
 
-1. Clone the Spectro Cloud Edge Registration application repository. Contact our sales team at
-   [sales@spectrocloud.com](mailto:sales@spectrocloud.com) to gain access.
+1. Clone the Spectro Cloud
+   [Edge Registration application repository](https://github.com/spectrocloud/edge-registration-app). This is a private
+   repository. Contact our sales team at [sales@spectrocloud.com](mailto:sales@spectrocloud.com) to gain access.
 
 2. Configure Vercel or your hosting provider to [automatically deploy](https://vercel.com/docs/concepts/deployments/git)
    pull requests against the main branch.
