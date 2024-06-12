@@ -561,13 +561,16 @@ category and name of the partial:
 
 ```md
 <PartialsComponent
-  category="public-cloud"
-  name="palette-setup"
-  cloud="AWS"
+  category="example-cat"
+  name="example-name"
+  message="Hello!"
 />
 ```
 
-Note that the `cloud` field corresponds to the `{props.cloud}` reference in the `*.mdx` file.
+The snippet above will work with the example partial we have in our repository, so you can use it for testing.
+
+Note that the `message` field corresponds to the `{props.message}` reference in the `_partials/_partial_example.mdx`
+file.
 
 ### Internal Links
 
