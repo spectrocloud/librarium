@@ -1,8 +1,15 @@
 const { api, callRateLimitAPI } = require("../src/services/api");
-const { packTypeNames, addOnTypes, layerTypes } = require("../src/constants//packs");
+const { packTypeNames, addOnTypes, layerTypes } = require("../src/constants/packs");
 const packDescription = require("../static/packs-data/packs_information.json");
 const { coerce, rcompare } = require("semver");
+const path = require('path');;
+const mime = require('mime-types');
+const BASE_URL = require('../static/scripts/constants.js').BASE_URL;
+const fetch = require('node-fetch');
+const { existsSync, promises, open, mkdirSync, writeFile, close, createWriteStream } = require("node:fs");
 
+const dirname = ".docusaurus/packs-integrations/"
+const filename = "api_pack_response.json";
 function generateIntegrationData(allContent) {
   const packsData = allContent["docusaurus-plugin-content-docs"].default.loadedVersions[0].docs
     .filter((doc) => {
@@ -14,22 +21,45 @@ function generateIntegrationData(allContent) {
   return packsData;
 }
 
-function getReadMeMap(packValues) {
-  const generatedReadMeData = packValues.reduce(
-    (packValuesMap, packValue) => Object.assign(packValuesMap, { [packValue.packUid]: packValue.readme }),
-    {}
-  );
+function getPackUidMap(registries) {
+  let generatedReadMeData = {};
+  registries.forEach((registry) => {
+    const proccessedPackReadMeDetails = registry.packValues.reduce((packValuesMap, packValue) =>
+      Object.assign(packValuesMap, { [packValue.packUid]: { registryUid: registry.registryUid, readme: packValue.readme, deprecated: packValue.annotations?.system_state === "deprecated" } }), {});
+    generatedReadMeData = Object.assign(generatedReadMeData, proccessedPackReadMeDetails);
+  });
   return generatedReadMeData;
 }
 
-function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPacksData, repositories) {
-  const filteredPalattePackData = packsPaletteDetailsData.filter((packContent) => {
-    const packName = packContent.name;
-    return (
-      (packsMData[packName].spec.layer === "addon" && packsMData[packName].spec.addonType) ||
-      packsMData[packName].spec.layer !== "addon"
-    );
+function filterBasedOnRegistriesInConfig(packRegistries, configRepositories) {
+  //Filter the pack registries based on the selected registries given in the docusaurus config file
+  return packRegistries.filter((registry) => {
+    return configRepositories.find((repo) => repo.uid === registry.registryUid);
   });
+}
+
+function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPacksData, repositories, logoPathMap) {
+  const filteredPalattePackDataMap = packsPaletteDetailsData.reduce((acc, packContent) => {
+    const packName = packContent.name;
+    //filtered the packs based on the selected registries given in the docusaurus config file
+    if (
+      (packsMData[packName].spec.layer === "addon" && packsMData[packName].spec.addonType) ||
+      packsMData[packName].spec.layer !== "addon" && repositories.find((repo) => repo.uid === packContent.registryUid)
+    ) {
+      if (Object.hasOwnProperty.call(acc, packName)) {
+        const packValues = acc[packName];
+        packValues.registries.push(packContent);
+      } else {
+        const packData = {
+          name: packName,
+          registries: [packContent],
+        };
+        acc[packName] = packData;
+      }
+    }
+    return acc;
+  }, {});
+  const filteredPalattePackData = Object.values(filteredPalattePackDataMap);
   const preferredRegistryUid = repositories?.[0]?.uid;
   return filteredPalattePackData.map((packContent) => {
     const packName = packContent.name;
@@ -42,19 +72,21 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
       const packType = packMDValue.spec.layer === "addon" ? packMDValue.spec.addonType : packMDValue.spec.layer;
       const layer =
         packMDValue.spec.layer === "addon" ? packMDValue.spec.addonType : packTypeNames[packMDValue.spec.layer];
-      const packValues = packContent.packValues;
-      const allSupportedVersions = getAggregatedVersions(packContent.tags);
+      const selectedRegistries = filterBasedOnRegistriesInConfig(packContent.registries, repositories);
+      const packDetailsMap = getPackUidMap(selectedRegistries);
+      //union of all the versions of all the supported registries of a pack.
+      const allSupportedVersions = getAggregatedVersions(selectedRegistries, repositories, packDetailsMap, packName);
       const latestPackTagVersion = allSupportedVersions.find((version) => version.value === latestPackVersion);
       return {
         name: packName,
         title: packMDValue.spec.displayName,
         description: customPacksData?.[packName],
-        readme: getReadMeMap(packValues),
+        packUidMap: packDetailsMap,
         cloudTypes: packMDValue.spec.cloudTypes,
         type: "integration",
         category: [layer],
         packType: packType,
-        logoUrl: packMDValue.spec.registries[0].logoUrl,
+        logoUrl: logoPathMap[packName],
         tags: [],
         slug: "/integrations/${packMDValue.spec.name}",
         id: "integrations/${packMDValue.spec.name}",
@@ -114,7 +146,56 @@ function sortVersions(tags) {
   return sortedVersions;
 }
 
-function getAggregatedVersions(tags) {
+function getAggregatedVersions(registries, repositories, packUidMap, packName) {
+  const prefferedRegistryUid = repositories?.[0]?.uid;
+  //if a pack has multiple registries, then the versions of the pack are aggregated based on the selected registries
+  //if a same version in multiple registries, the preferred registry is the higher precendence.
+  const aggregatedTags = registries.reduce((previousVersions, registry) => {
+    const computedVersions = getComputedVersions(registry.tags);
+    if (previousVersions.length) {
+      const versionTags = new Set(previousVersions.map(verssion => verssion.title));
+      const computedCommonVersions = computedVersions.filter((version) => versionTags.has(version.title));
+      if (computedCommonVersions.length) {
+        //merging the non-overlapping Tags in the previous computed versions and current computing versions
+        const mergedNonOverlappingParentVersions = [...(computedVersions.filter((version) => !versionTags.has(version.title))), ...(previousVersions.filter((version) => !versionTags.has(version.title)))];
+        computedCommonVersions.forEach((commonVersion) => {
+          //Take PreviousVersion Parent version tag from the iterated overlapping tag title
+          const previousVersiontagdata = previousVersions.find(prevVersion => prevVersion.title === commonVersion.title);
+          const previousVersionChildrenSet = new Set(previousVersiontagdata.children.map(verssion => verssion.title));
+          const commonComputedChildren = commonVersion.children.filter((child) => previousVersionChildrenSet.has(child.title));
+          if (commonComputedChildren.length) {
+            //merge non overlapping children in each parent version
+            const mergedNonOverlappingChildren = [...(commonVersion.children.filter((child) => !previousVersionChildrenSet.has(child.title))), ...(previousVersiontagdata.children.filter((child) => !previousVersionChildrenSet.has(child.title)))];
+            commonComputedChildren.forEach((childComputedVersion) => {
+              const previousVersionChild = previousVersiontagdata.children.find(prevChildVersion => prevChildVersion.title === childComputedVersion.title)
+              const childPreviousVersionPackUid = previousVersionChild.packUid;
+              const previousVersionRegistryUid = packUidMap[childPreviousVersionPackUid]?.registryUid;
+              //while doing union of both versions of pack of the registries, not belong to the preferred registry,
+              //then either of the registry is considered.
+              if (previousVersionRegistryUid !== prefferedRegistryUid) {
+                previousVersionChild.packUid = childComputedVersion.packUid;
+              }
+            })
+            //merging non-overlapping children with the previous version children
+            previousVersiontagdata.children = [...previousVersiontagdata.children, ...mergedNonOverlappingChildren];
+          } else {
+            previousVersiontagdata.children = [...previousVersiontagdata.children, ...commonVersion.children];
+          }
+        });
+        //merging the non-overlapping tags with the previous Versions
+        previousVersions = [...previousVersions, ...mergedNonOverlappingParentVersions];
+      } else {
+        previousVersions = [...previousVersions, ...computedVersions];
+      }
+    } else {
+      previousVersions = [...previousVersions, ...computedVersions];
+    }
+    return previousVersions;
+  }, []);
+  return aggregatedTags;
+}
+
+function getComputedVersions(tags) {
   const sortedVersions = sortVersions(tags);
   const roots = sortedVersions
     .filter((version) => {
@@ -130,11 +211,8 @@ function getAggregatedVersions(tags) {
   sortedVersions.forEach((version) => {
     const parentTags = version?.parentTags || [];
     const parent = parentTags.find(matchAmbiguousPatch);
-
     if (!parent) return;
-
     const parentVersion = roots.find((rootVersion) => rootVersion.title === parent);
-
     if (parentVersion) {
       parentVersion.children = parentVersion.children || [];
       parentVersion.children.push({
@@ -198,13 +276,60 @@ async function mapRepositories(repositories) {
   return repoMap;
 }
 
-function isSelectedRegistry(registries, selectedRepositories) {
-  if (!selectedRepositories || !selectedRepositories.length) {
-    return true;
+async function fetchLogoUrl(url, packName, counter) {
+  let fileDownloaded;
+  if (counter % 10 === 0) {
+    await setTimeout(2000);
   }
-  return registries.some((registry) => {
-    return selectedRepositories.find((selRepo) => selRepo.uid === registry.uid);
+  const destination = path.resolve(dirname, packName);
+  const options = {
+    headers: {
+      "Content-Disposition": "attachment",
+      "ApiKey": process.env.API_KEY,
+    }
+  }
+  const res = await fetch(url, options);
+  await new Promise((resolve, reject) => {
+    const type = res.headers.get('Content-Type')
+    if (mime.extension(type) !== "html") {
+      const fileStream = createWriteStream(`${destination}.${mime.extension(type)}`);
+      res.body.pipe(fileStream);
+      res.body.on("error", (err) => {
+        reject(err);
+      });
+      fileStream.on("finish", function () {
+        resolve();
+        fileDownloaded = `${packName}.${mime.extension(type)}`;
+      });
+    }
   });
+  return fileDownloaded;
+}
+
+async function getLogoUrl(registries, packName, logoUrlMap, counter) {
+  let logoUrl;
+  for (let i = 0; i < registries.length; i++) {
+    const registry = registries[i];
+    if (!logoUrl && !Object.hasOwnProperty.call(logoUrlMap, packName)) {
+      try {
+        let url = registry.logoUrl;
+        if (!url) {
+          url = `${BASE_URL}/v1/packs/${registry.latestPackUid}/logo`
+        } else {
+          url = url.startsWith("https") ? url : (url.startsWith("/") ? `${BASE_URL}${url}` : `${BASE_URL}/${url}`);
+        }
+        counter++;
+        const downloadUrl = await fetchLogoUrl(url, packName, counter);
+        if (downloadUrl) {
+          logoUrl = registry.logoUrl;
+          logoUrlMap[packName] = downloadUrl;
+        }
+      } catch (e) {
+        console.error("An error occurred while fetching the logoUrl: ", e);
+      }
+    }
+  }
+  return counter;
 }
 
 async function pluginPacksAndIntegrationsData(context, options) {
@@ -213,53 +338,89 @@ async function pluginPacksAndIntegrationsData(context, options) {
     async loadContent() {
       const repositories = options.repositories || [];
       const mappedRepos = await mapRepositories(repositories);
-      let packDataArr = await fetchPackListItems("?limit=100", [], 0);
-      console.info("completed the fetch of all the names of the pack");
-      packDataArr = packDataArr.filter((pack) => {
-        return (
-          (layerTypes.includes(pack.spec.layer) ||
-            (pack.spec.layer === "addon" && addOnTypes.includes(pack.spec.addonType))) &&
-          pack.spec.registries.length &&
-          isSelectedRegistry(pack.spec.registries, mappedRepos)
-        );
-      });
-      const packUrl = "v1/packs/";
-      const packMDMap = new Map();
-      let apiPacksData = [];
-      const preferredRegistryUid = mappedRepos?.[0]?.uid;
-      const promises = packDataArr.map((packData) => {
-        packMDMap[packData.spec.name] = packData;
-        const cloudType = packData.spec.cloudTypes.includes("all") ? "aws" : packData.spec.cloudTypes[0];
-        //there is a scenario where the pack is not part of preferred registry, in that case, the item of the pack registries is sent to API request
-        const hasPreferredRegistry = packData.spec.registries.some((registry) => registry.uid === preferredRegistryUid);
-        let packRegistryUid = packData.spec.registries[0].uid;
-        if (hasPreferredRegistry) {
-          packRegistryUid = preferredRegistryUid;
+      let apiPackResponse = {};
+      let isFileExists = false;
+      if (existsSync(dirname) && existsSync(`${dirname}${filename}`)) {
+        isFileExists = true;
+      }
+      let logoUrlMap = {};
+      if (!isFileExists) {
+        if (!existsSync(dirname)) {
+          mkdirSync(dirname, { recursive: true });
         }
-        const url = `${packUrl}${packData.spec.name}/registries/${packRegistryUid}?cloudType=${cloudType}&layer=${packData.spec.layer}`;
-        return callRateLimitAPI(() => api.get(url));
-      });
-      const results = await Promise.allSettled(promises);
-      apiPacksData = results
-        .filter((result) => result.status === "fulfilled" && result.value?.data)
-        .map((pack) => pack.value?.data);
-      console.info("completed the fetch of all the pack details");
+        let packDataArr = await fetchPackListItems("?limit=100", [], 0);
+        console.info("completed the fetch of all the names of the pack");
+        packDataArr = packDataArr.filter((pack) => {
+          return (
+            layerTypes.includes(pack.spec.layer) ||
+            (pack.spec.layer === "addon" && addOnTypes.includes(pack.spec.addonType)) &&
+            pack.spec.registries.length
+          );
+        });
+        const packUrl = "v1/packs/";
+        const packMDMap = new Map();
+        let apiPacksData = [];
+        let counter = 0;
+        const promisesPackDetails = packDataArr.map((packData) => {
+          packMDMap[packData.spec.name] = packData;
+          const cloudType = packData.spec.cloudTypes.includes("all") ? "aws" : packData.spec.cloudTypes[0];
+          const registryPackData = [];
+          for (const registry of packData.spec.registries) {
+            const url = `${packUrl}${packData.spec.name}/registries/${registry.uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`
+            registryPackData.push(callRateLimitAPI(() => api.get(url)));
+          }
+          counter = getLogoUrl(packData.spec.registries, packData.spec.name, logoUrlMap, counter);
+          return registryPackData;
+        });
+        const flatted = promisesPackDetails.flat();
+        const results = await Promise.allSettled(flatted);
+        apiPacksData = results
+          .filter((result) => result.status === "fulfilled" && result.value?.data)
+          .map((result) => result.value.data);
+        console.info("completed the fetch of all the pack details");
+        apiPackResponse.apiPacksData = apiPacksData;
+        apiPackResponse.packMDMap = packMDMap;
+        apiPackResponse.logoUrlMap = logoUrlMap;
+        open(`${dirname}${filename}`, 'w+', (err, fd) => {
+          try {
+            writeFile(`${dirname}${filename}`, JSON.stringify(apiPackResponse), (err) => {
+              if (err) {
+                console.error("An error occurred while writing the JSON file:", err);
+              }
+            });
+          } finally {
+            close(fd, (err1) => {
+              if (err1) console.error("An error occurred while closing the file:", err1);
+            });
+          }
+        })
+      } else {
+        try {
+          const data = await promises.readFile(`${dirname}${filename}`);
+          apiPackResponse = JSON.parse(data);
+        }
+        catch (e) {
+          console.error("An error occurred while reading the JSON file:", e);
+        }
+      }
       return {
-        packsPaletteData: packMDMap,
-        packsPaletteDetailsData: apiPacksData,
+        packsPaletteData: apiPackResponse.packMDMap,
+        packsPaletteDetailsData: apiPackResponse.apiPacksData,
         packsDescription: packDescription,
         repositories: mappedRepos,
+        logoFilesPathMap: apiPackResponse.logoUrlMap,
       };
     },
     async contentLoaded({ content, actions }) {
       const { setGlobalData, addRoute } = actions;
-      const { packsPaletteData, packsPaletteDetailsData, packsDescription, repositories } = content;
+      const { packsPaletteData, packsPaletteDetailsData, packsDescription, repositories, logoFilesPathMap } = content;
       const customPacksData = generateCustomData(packsDescription);
       const unionPackData = combineAPICustomPackData(
         packsPaletteData,
         packsPaletteDetailsData,
         customPacksData,
-        repositories
+        repositories,
+        logoFilesPathMap
       );
       const routes = generateRoutes(packsPaletteData);
       console.info("completed the generation of the routes");

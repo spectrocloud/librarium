@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, ReactElement } from "react";
 import styles from "./PacksReadme.module.scss";
-import { Select, Tabs, ConfigProvider, theme } from "antd";
+import { Select, Tabs, ConfigProvider, theme, TreeSelect } from "antd";
 import CustomLabel from "../Technologies/CategorySelector/CustomLabel";
 import PackCardIcon from "../Technologies/PackCardIcon";
 import Markdown from 'markdown-to-jsx';
@@ -16,7 +16,7 @@ import { InfoCircleOutlined } from '@ant-design/icons';
 
 interface PackReadmeProps {
   customDescription: string,
-  packReadme: any,
+  packUidMap: any,
   versions: Array<any>,
   title: string,
   logoUrl: string,
@@ -25,7 +25,6 @@ interface PackReadmeProps {
   registries: Array<string>,
   selectedRepositories: Array<any>,
   disabled: boolean,
-  deprecated: boolean,
   latestVersion: string,
 }
 
@@ -33,6 +32,7 @@ export default function PacksReadme() {
   const { packs, repositories } = usePluginData("plugin-packs-integrations") as PacksIntegrationsPluginData;
   const [customReadme, setCustomReadme] = useState<ReactElement<any, any> | null>(null);
   const [packName, setPackName] = useState<string>("");
+  const [selectedPackUid, setSelectedPackUid] = useState<string>("");
   const empty_icon_light = useBaseUrl('/img/empty_icon_table_light.svg');
   const empty_icon_dark = useBaseUrl('/img/empty_icon_table_dark.svg');
   const { colorMode } = useColorMode();
@@ -65,7 +65,7 @@ export default function PacksReadme() {
     if (pack) {
       const packDataInfo: PackReadmeProps = {
         customDescription: pack.description,
-        packReadme: pack.readme,
+        packUidMap: pack.packUidMap,
         versions: pack.versions,
         title: pack.title,
         logoUrl: pack.logoUrl,
@@ -74,14 +74,13 @@ export default function PacksReadme() {
         registries: pack.registries,
         selectedRepositories: repositories,
         disabled: pack.disabled,
-        deprecated: pack.deprecated,
         latestVersion: pack.latestVersion,
       };
       return packDataInfo;
     }
     return {
       customDescription: "",
-      packReadme: {},
+      packUidMap: {},
       versions: [],
       title: "",
       logoUrl: "",
@@ -90,7 +89,6 @@ export default function PacksReadme() {
       selectedRepositories: [],
       registries: [],
       disabled: false,
-      deprecated: false,
       latestVersion: "",
     };
   }, [packName]);
@@ -98,34 +96,49 @@ export default function PacksReadme() {
     const searchParams = window ? new URLSearchParams(window.location.search) : null;
     const urlParamVersion = searchParams?.get("versions");
     const version = urlParamVersion || packData?.latestVersion || packData?.versions[0]?.title || "";
-    if(!urlParamVersion) {
+    if (!urlParamVersion) {
       history.replace({ search: `?pack=${packName}&versions=${version}` });
+    }
+    if (version && !version.endsWith(".x")) {
+      const tag = packData?.versions.find((tagVersion) => tagVersion.title === version.replace(/.\d+$/, ".x"))
+      const queryParamVersionData = tag && tag.children.find((child: any) => child.title === version);
+      setSelectedPackUid(queryParamVersionData?.packUid || "");
     }
     setSelectedVersion(version);
   }, [packData]);
   let infoContent;
   if (packData.disabled) {
     infoContent = "This pack is currently disabled.";
-  } else if (packData.deprecated) {
+  } else if (selectedPackUid && packData.packUidMap[selectedPackUid]?.deprecated) {
     infoContent = "This pack is deprecated.";
   }
 
-  function versionChange(version: string) {
+  function versionChange(item: string) {
+    const [version, packUid] = item.split("===");
     history.replace({ search: `?pack=${packName}&versions=${version}` });
     setSelectedVersion(version);
+    setSelectedPackUid(packUid);
   }
 
   function renderVersionOptions() {
-    return packData.versions.map((version) => {
-      return (<Select.Option key={version.title}>
-        {version.title}
-      </Select.Option>)
-    });
+    return packData.versions.map((tagVersion) => {
+      return ({
+        value: tagVersion.title,
+        title: tagVersion.title,
+        selectable: false,
+        children:
+          tagVersion.children.map((child: any) => {
+            return ({
+              value: `${child.title}===${child.packUid}`,
+              title: (<span>{child.title}</span>)
+            })
+          })
+      })
+    })
   }
 
   function renderTabs() {
-    const packUid = packData.versions.find((ver) => ver.title === selectedVersion)?.packUid;
-    let readme = packUid ? packData.packReadme[packUid] : "";
+    let readme = selectedPackUid ? packData.packUidMap[selectedPackUid]?.readme : "";
     const tabs = [
       readme && {
         label: `Readme`,
@@ -174,10 +187,13 @@ export default function PacksReadme() {
     if (packData.provider.includes("all")) {
       return "All";
     }
-    return packData.provider.map((_provider) => cloudDisplayNames[_provider as keyof typeof cloudDisplayNames] || _provider).join(", ");
-
+    return packData.provider.map((provider) => cloudDisplayNames[provider as keyof typeof cloudDisplayNames] || provider).join(", ");
   }
   function getRegistries() {
+    if (selectedVersion && !selectedVersion.endsWith(".x")) {
+      const registerUid = packData.packUidMap[selectedPackUid]?.registryUid || "";
+      return packData.selectedRepositories.find((registry) => registry.uid === registerUid)?.name || "";
+    }
     const consolidatedRegistries = packData.registries.reduce((accumulator: string[], registry) => {
       const regObj = packData.selectedRepositories.find((repo) => repo.uid === registry);
       if (regObj) {
@@ -187,6 +203,7 @@ export default function PacksReadme() {
     }, []);
     return consolidatedRegistries.join(", ");
   }
+
   return (
     <div className={styles.wrapper}>
       <ConfigProvider theme={{
@@ -203,15 +220,17 @@ export default function PacksReadme() {
           <div className={styles.packDescSecondCol}>
             <div className={styles.versionSelect}>
               <CustomLabel label="Version" />
-              <Select
+              <TreeSelect
                 className={styles.versionSelectBox}
-                allowClear
-                placeholder="Search"
-                onChange={(item) => versionChange(item as string)}
+                showSearch
                 value={selectedVersion}
-              >
-                {renderVersionOptions()}
-              </Select>
+                dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+                placeholder="Search"
+                allowClear
+                treeDefaultExpandAll
+                onChange={(item) => versionChange(item as string)}
+                treeData={renderVersionOptions()}
+              />
             </div>
             <div className={styles.packDesc}>
               <div className={styles.packDescItem}>
