@@ -195,7 +195,7 @@ The Spectro Proxy supports the following parameters.
 | clusterUid | The Kubernetes cluster identifier.                     | `{{ .spectro.system.cluster.uid }}`         |
 | subdomain  | The Kubernetes cluster subdomain identifier.           | `cluster-{{ .spectro.system.cluster.uid }}` |
 
-Image Pull Policy configurations
+Image Pull Policy configurations.
 
 | Parameter                | Description                                                 | Default        |
 | ------------------------ | ----------------------------------------------------------- | -------------- |
@@ -228,9 +228,9 @@ kubeconfig file and access the cluster.
 
 :::warning
 
-If this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have
-to re-download the kubeconfig file to pick up the new configuration changes. This will also result in the Kubernetes control
-plane nodes getting repaved.
+If this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have to
+re-download the kubeconfig file to pick up the new configuration changes. This will also result in the Kubernetes
+control plane nodes getting repaved.
 
 :::
 

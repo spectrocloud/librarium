@@ -56,20 +56,20 @@ the [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubern
 
 ## Parameters
 
-| Parameter                                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pack.palette.config.oidcidentityProvider`  | OIDC identity provider configuration.                                                                                                                                                                                                                                                                                                                                                                                               |
-| `pack.podCIDR`                              | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`.                                                                                                                                                                                                                                                                                                                      |
-| `pack.serviceClusterIpRange`                | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`.                                                                                                                                                                                                                                                                                           |
+| Parameter                                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pack.palette.config.oidcidentityProvider`  | OIDC identity provider configuration.                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `pack.podCIDR`                              | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`.                                                                                                                                                                                                                                                                                                                         |
+| `pack.serviceClusterIpRange`                | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`.                                                                                                                                                                                                                                                                                              |
 | `pack.serviceDomain`                        | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after the cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](kubernetes-generic.md?platform=AKS&versions=k8s_v1.27#change-cluster-dns-service-domain) section. |
-| `kubeadmconfig.apiServer.extraArgs`         | A list of additional `apiServer` flags you can set.                                                                                                                                                                                                                                                                                                                                                                                   |
-| `kubeadmconfig.apiServer.extraVolumes`      | A list of additional volumes to mount on `apiServer`.                                                                                                                                                                                                                                                                                                                                                                                 |
-| `kubeadmconfig.controllerManager.extraArgs` | A list of additional `ControllerManager` flags to set.                                                                                                                                                                                                                                                                                                                                                                                |
-| `kubeadmconfig.scheduler.extraArgs`         | A list of additional Kube scheduler flags to set.                                                                                                                                                                                                                                                                                                                                                                                   |
-| `kubeadmconfig.kubeletExtraArgs`            | A list of kubelet arguments to set and copy to the nodes.                                                                                                                                                                                                                                                                                                                                                                           |
-| `kubeadmconfig.files`                       | A list of additional files to copy to the nodes.                                                                                                                                                                                                                                                                                                                                                                                    |
-| `kubeadmconfig.preKubeadmCommands`          | A list of additional commands to invoke **before** running kubeadm commands.                                                                                                                                                                                                                                                                                                                                                        |
-| `kubeadmconfig.postKubeadmCommands`         | A list of additional commands to invoke **after** running kubeadm commands.                                                                                                                                                                                                                                                                                                                                                         |
+| `kubeadmconfig.apiServer.extraArgs`         | A list of additional `apiServer` flags you can set.                                                                                                                                                                                                                                                                                                                                                                                     |
+| `kubeadmconfig.apiServer.extraVolumes`      | A list of additional volumes to mount on `apiServer`.                                                                                                                                                                                                                                                                                                                                                                                   |
+| `kubeadmconfig.controllerManager.extraArgs` | A list of additional `ControllerManager` flags to set.                                                                                                                                                                                                                                                                                                                                                                                  |
+| `kubeadmconfig.scheduler.extraArgs`         | A list of additional Kube scheduler flags to set.                                                                                                                                                                                                                                                                                                                                                                                       |
+| `kubeadmconfig.kubeletExtraArgs`            | A list of kubelet arguments to set and copy to the nodes.                                                                                                                                                                                                                                                                                                                                                                               |
+| `kubeadmconfig.files`                       | A list of additional files to copy to the nodes.                                                                                                                                                                                                                                                                                                                                                                                        |
+| `kubeadmconfig.preKubeadmCommands`          | A list of additional commands to invoke **before** running kubeadm commands.                                                                                                                                                                                                                                                                                                                                                            |
+| `kubeadmconfig.postKubeadmCommands`         | A list of additional commands to invoke **after** running kubeadm commands.                                                                                                                                                                                                                                                                                                                                                             |
 
 ## Usage
 
@@ -153,11 +153,11 @@ The Kubeadm config is updated with hardening improvements that do the following:
         audit-policy-file: /etc/kubernetes/audit-policy.yaml
     ```
 
-  - **Restricted**: A heavily restricted policy that follows the best practices of Pod hardening. This policy is set to warn
-    and audit and identifies Pods that require privileged access.
+  - **Restricted**: A heavily restricted policy that follows the best practices of Pod hardening. This policy is set to
+    warn and audit and identifies Pods that require privileged access.
 
-    You can enforce these policies at the Cluster or Namespace level. For workloads that require privileged
-    access, you can relax `PodSecurity` enforcement by adding these labels in the Namespace:
+    You can enforce these policies at the Cluster or Namespace level. For workloads that require privileged access, you
+    can relax `PodSecurity` enforcement by adding these labels in the Namespace:
 
     ```yaml
     pod-security.kubernetes.io/enforce: privileged
@@ -174,8 +174,8 @@ You can configure an OpenID Connect (OIDC) identity provider to authenticate use
 an authentication layer on top of OAuth 2.0, an authorization framework that allows users to authenticate to a cluster
 without using a password.
 
-OIDC requires a _Role Binding_ for the users or groups you want to provide cluster access. You must create a Role Binding
-to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a
+OIDC requires a _Role Binding_ for the users or groups you want to provide cluster access. You must create a Role
+Binding to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a
 [default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the
 `cluster-admin` role. To learn how to create a Role Binding through Palette, refer to
 [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
@@ -198,36 +198,36 @@ to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS 
 1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the
    `identityProvider` value with your OIDC provider name.
 
-```yaml
-pack:
-  palette:
-    config:
-      oidc:
-        identityProvider: yourIdentityProviderNameHere
-```
+   ```yaml
+   pack:
+     palette:
+       config:
+         oidc:
+           identityProvider: yourIdentityProviderNameHere
+   ```
 
 2. Add the following `kubeadmconfig` parameters. Replace the values with your OIDC provider values.
 
-```yaml
-kubeadmconfig:
-  apiServer:
-    extraArgs:
-      oidc-issuer-url: "provider URL"
-      oidc-client-id: "client-id"
-      oidc-groups-claim: "groups"
-      oidc-username-claim: "email"
-```
+   ```yaml
+   kubeadmconfig:
+     apiServer:
+       extraArgs:
+         oidc-issuer-url: "provider URL"
+         oidc-client-id: "client-id"
+         oidc-groups-claim: "groups"
+         oidc-username-claim: "email"
+   ```
 
 3. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines.
 
-```yaml
-kubeadmconfig:
-  clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-    oidc-extra-scope: profile,email,openid
-```
+   ```yaml
+   kubeadmconfig:
+     clientConfig:
+       oidc-issuer-url: "<OIDC-ISSUER-URL>"
+       oidc-client-id: "<OIDC-CLIENT-ID>"
+       oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+       oidc-extra-scope: profile,email,openid
+   ```
 
 </TabItem>
 
@@ -238,27 +238,27 @@ Follow these steps to configure OIDC for managed EKS clusters.
 1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack,
    and enter your third-party provider details.
 
-```yaml
-oidcIdentityProvider:
-  identityProviderConfigName: "Spectro-docs"
-  issuerUrl: "issuer-url"
-  clientId: "user-client-id-from-Palette"
-  usernameClaim: "email"
-  usernamePrefix: "-"
-  groupsClaim: "groups"
-  groupsPrefix: ""
-  requiredClaims:
-```
+   ```yaml
+   oidcIdentityProvider:
+     identityProviderConfigName: "Spectro-docs"
+     issuerUrl: "issuer-url"
+     clientId: "user-client-id-from-Palette"
+     usernameClaim: "email"
+     usernamePrefix: "-"
+     groupsClaim: "groups"
+     groupsPrefix: ""
+     requiredClaims:
+   ```
 
 2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
 
-```yaml
-clientConfig:
-  oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
-  oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
-  oidc-client-secret: yourSecretKeyHere
-  oidc-extra-scope: profile,email
-```
+   ```yaml
+   clientConfig:
+     oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
+     oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
+     oidc-client-secret: yourSecretKeyHere
+     oidc-extra-scope: profile,email
+   ```
 
 3. Provide third-party OIDC IDP details.
 
@@ -429,36 +429,36 @@ to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS 
 1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the
    `identityProvider` value with your OIDC provider name.
 
-```yaml
-pack:
-  palette:
-    config:
-      oidc:
-        identityProvider: yourIdentityProviderNameHere
-```
+   ```yaml
+   pack:
+     palette:
+       config:
+         oidc:
+           identityProvider: yourIdentityProviderNameHere
+   ```
 
 2. Add the following `kubeadmconfig` parameters. Replace the values with your OIDC provider values.
 
-```yaml
-kubeadmconfig:
-  apiServer:
-    extraArgs:
-      oidc-issuer-url: "provider URL"
-      oidc-client-id: "client-id"
-      oidc-groups-claim: "groups"
-      oidc-username-claim: "email"
-```
+   ```yaml
+   kubeadmconfig:
+     apiServer:
+       extraArgs:
+         oidc-issuer-url: "provider URL"
+         oidc-client-id: "client-id"
+         oidc-groups-claim: "groups"
+         oidc-username-claim: "email"
+   ```
 
 3. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines.
 
-```yaml
-kubeadmconfig:
-  clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-    oidc-extra-scope: profile,email,openid
-```
+   ```yaml
+   kubeadmconfig:
+     clientConfig:
+       oidc-issuer-url: "<OIDC-ISSUER-URL>"
+       oidc-client-id: "<OIDC-CLIENT-ID>"
+       oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+       oidc-extra-scope: profile,email,openid
+   ```
 
 </TabItem>
 
@@ -469,27 +469,27 @@ Follow these steps to configure OIDC for managed EKS clusters.
 1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack,
    and enter your third-party provider details.
 
-```yaml
-oidcIdentityProvider:
-  identityProviderConfigName: "Spectro-docs"
-  issuerUrl: "issuer-url"
-  clientId: "user-client-id-from-Palette"
-  usernameClaim: "email"
-  usernamePrefix: "-"
-  groupsClaim: "groups"
-  groupsPrefix: ""
-  requiredClaims:
-```
+   ```yaml
+   oidcIdentityProvider:
+     identityProviderConfigName: "Spectro-docs"
+     issuerUrl: "issuer-url"
+     clientId: "user-client-id-from-Palette"
+     usernameClaim: "email"
+     usernamePrefix: "-"
+     groupsClaim: "groups"
+     groupsPrefix: ""
+     requiredClaims:
+   ```
 
 2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
 
-```yaml
-clientConfig:
-  oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
-  oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
-  oidc-client-secret: yourSecretKeyHere
-  oidc-extra-scope: profile,email
-```
+   ```yaml
+   clientConfig:
+     oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
+     oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
+     oidc-client-secret: yourSecretKeyHere
+     oidc-extra-scope: profile,email
+   ```
 
 3. Provide third-party OIDC IDP details.
 
@@ -660,36 +660,36 @@ to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS 
 1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile. Replace the
    `identityProvider` value with your OIDC provider name.
 
-```yaml
-pack:
-  palette:
-    config:
-      oidc:
-        identityProvider: yourIdentityProviderNameHere
-```
+   ```yaml
+   pack:
+     palette:
+       config:
+         oidc:
+           identityProvider: yourIdentityProviderNameHere
+   ```
 
 2. Add the following `kubeadmconfig` parameters. Replace the values with your OIDC provider values.
 
-```yaml
-kubeadmconfig:
-  apiServer:
-    extraArgs:
-      oidc-issuer-url: "provider URL"
-      oidc-client-id: "client-id"
-      oidc-groups-claim: "groups"
-      oidc-username-claim: "email"
-```
+   ```yaml
+   kubeadmconfig:
+     apiServer:
+       extraArgs:
+         oidc-issuer-url: "provider URL"
+         oidc-client-id: "client-id"
+         oidc-groups-claim: "groups"
+         oidc-username-claim: "email"
+   ```
 
 3. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines.
 
-```yaml
-kubeadmconfig:
-  clientConfig:
-    oidc-issuer-url: "<OIDC-ISSUER-URL>"
-    oidc-client-id: "<OIDC-CLIENT-ID>"
-    oidc-client-secret: "<OIDC-CLIENT-SECRET>"
-    oidc-extra-scope: profile,email,openid
-```
+   ```yaml
+   kubeadmconfig:
+     clientConfig:
+       oidc-issuer-url: "<OIDC-ISSUER-URL>"
+       oidc-client-id: "<OIDC-CLIENT-ID>"
+       oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+       oidc-extra-scope: profile,email,openid
+   ```
 
 </TabItem>
 
