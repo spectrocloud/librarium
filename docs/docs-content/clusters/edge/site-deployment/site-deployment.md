@@ -20,7 +20,7 @@ Review the following guides in sequential order to successfully deploy an Edge h
 
 1. [Model Edge Native Cluster Profile](../site-deployment/model-profile.md)
 
-2. [Prepare Edge Hosts for Installation](../site-deployment/stage.md)
+2. [Installation](../site-deployment/stage.md)
 
 3. [Perform Site Install](../site-deployment/site-installation/site-installation.md)
 
