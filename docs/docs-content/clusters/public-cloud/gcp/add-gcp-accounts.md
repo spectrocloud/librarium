@@ -44,9 +44,7 @@ account in Palette.
 
 ## Create Account
 
-import GCPCloud from "../../../_partials/_gcp-cloud-account-setup.mdx";
-
-<GCPCloud />
+<PartialsComponent category="palette-setup" name="gcp-cloud-account" />
 
 ## Validate
 

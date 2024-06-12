@@ -34,15 +34,11 @@ Palette needs access to your AWS cloud account in order to create and manage AWS
 
 ### Static Credentials Access
 
-import AWSCloud from "../../_partials/_aws-static-credentials-setup.mdx";
-
-<AWSCloud />
+<PartialsComponent category="palette-setup" name="aws-static-credentials" />
 
 ### Create and Upload an SSH Key
 
-import SSHKey from "../../_partials/_create-upload-ssh-key.mdx";
-
-<SSHKey />
+<PartialsComponent category="palette-setup" name="generate-ssh-key" />
 
 ## Validate
 

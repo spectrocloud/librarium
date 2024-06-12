@@ -25,10 +25,7 @@ you need a public SSH key registered in Palette.
 
 ## Create and Upload an SSH Key
 
-import SSHKey from "../../_partials/_create-upload-ssh-key.mdx";
-
-<SSHKey />
-
+<PartialsComponent category="palette-setup" name="generate-ssh-key" />
 ## Validate
 
 You can validate that the SSH public key is available in Palette by attempting to deploy a host cluster. During the host

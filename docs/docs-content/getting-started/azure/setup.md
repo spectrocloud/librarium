@@ -34,15 +34,11 @@ Palette needs access to your Azure cloud account in order to create and manage A
 
 ### Add Azure Cloud Account
 
-import AzureCloud from "../../_partials/_azure-cloud-account-setup.mdx";
-
-<AzureCloud />
+<PartialsComponent category="palette-setup" name="azure-cloud-account" />
 
 ### Create and Upload an SSH Key
 
-import SSHKey from "../../_partials/_create-upload-ssh-key.mdx";
-
-<SSHKey />
+<PartialsComponent category="palette-setup" name="generate-ssh-key" />
 
 ## Validate
 

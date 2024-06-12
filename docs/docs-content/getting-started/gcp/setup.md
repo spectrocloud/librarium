@@ -33,15 +33,11 @@ Palette needs access to your GCP cloud account in order to create and manage GCP
 
 ### Add Cloud Account
 
-import GCPCloud from "../../_partials/_gcp-cloud-account-setup.mdx";
-
-<GCPCloud />
+<PartialsComponent category="palette-setup" name="gcp-cloud-account" />
 
 ### Create and Upload an SSH Key
 
-import SSHKey from "../../_partials/_create-upload-ssh-key.mdx";
-
-<SSHKey />
+<PartialsComponent category="palette-setup" name="generate-ssh-key" />
 
 ## Validate
 
