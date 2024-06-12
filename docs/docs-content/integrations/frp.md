@@ -228,8 +228,8 @@ kubeconfig file and access the cluster.
 
 :::warning
 
-Be aware that if this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have
-to re-download the kubeconfig file to pick up the new configuration changes. This will also result in Kubernetes control
+If this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have
+to re-download the kubeconfig file to pick up the new configuration changes. This will also result in the Kubernetes control
 plane nodes getting repaved.
 
 :::

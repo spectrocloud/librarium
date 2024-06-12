@@ -42,7 +42,7 @@ the [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubern
 
 ## Prerequisites
 
-- A minimum of 4 CPU and 4GB Memory.
+- A minimum of 4 CPU and 4 GB memory.
 
 - Users or groups mapped to a Kubernetes RBAC role.
 
@@ -59,12 +59,12 @@ the [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubern
 | Parameter                                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `pack.palette.config.oidcidentityProvider`  | OIDC identity provider configuration.                                                                                                                                                                                                                                                                                                                                                                                               |
-| `pack.podCIDR`                              | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`                                                                                                                                                                                                                                                                                                                      |
-| `pack.serviceClusterIpRange`                | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`                                                                                                                                                                                                                                                                                           |
-| `pack.serviceDomain`                        | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](kubernetes-generic.md?platform=AKS&versions=k8s_v1.27#change-cluster-dns-service-domain) section. |
-| `kubeadmconfig.apiServer.extraArgs`         | A list of additional apiServer flags you can set.                                                                                                                                                                                                                                                                                                                                                                                   |
-| `kubeadmconfig.apiServer.extraVolumes`      | A list of additional volumes to mount on apiServer.                                                                                                                                                                                                                                                                                                                                                                                 |
-| `kubeadmconfig.controllerManager.extraArgs` | A list of additional ControllerManager flags to set.                                                                                                                                                                                                                                                                                                                                                                                |
+| `pack.podCIDR`                              | The CIDR range for Pods in cluster. This should match the networking layer property. Default: `192.168.0.0/16`.                                                                                                                                                                                                                                                                                                                      |
+| `pack.serviceClusterIpRange`                | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`.                                                                                                                                                                                                                                                                                           |
+| `pack.serviceDomain`                        | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after the cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](kubernetes-generic.md?platform=AKS&versions=k8s_v1.27#change-cluster-dns-service-domain) section. |
+| `kubeadmconfig.apiServer.extraArgs`         | A list of additional `apiServer` flags you can set.                                                                                                                                                                                                                                                                                                                                                                                   |
+| `kubeadmconfig.apiServer.extraVolumes`      | A list of additional volumes to mount on `apiServer`.                                                                                                                                                                                                                                                                                                                                                                                 |
+| `kubeadmconfig.controllerManager.extraArgs` | A list of additional `ControllerManager` flags to set.                                                                                                                                                                                                                                                                                                                                                                                |
 | `kubeadmconfig.scheduler.extraArgs`         | A list of additional Kube scheduler flags to set.                                                                                                                                                                                                                                                                                                                                                                                   |
 | `kubeadmconfig.kubeletExtraArgs`            | A list of kubelet arguments to set and copy to the nodes.                                                                                                                                                                                                                                                                                                                                                                           |
 | `kubeadmconfig.files`                       | A list of additional files to copy to the nodes.                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -106,7 +106,7 @@ pack:
 
 :::warning
 
-You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the
+You can specify the service domain only at cluster creation. After the cluster creation completes, you cannot update the
 value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`.
 
 :::
@@ -119,12 +119,12 @@ API documentation.
 
 The Kubeadm config is updated with hardening improvements that do the following:
 
-- Meet CIS standards for operating systems (OS).
+- Meet CIS standards for Operating Systems (OS).
 
 - Enable a Kubernetes audit policy in the pack. The audit policy is hidden, and you cannot customize the default audit
   policy. If you want to apply your custom audit policy, refer to the
   [Enable Audit Logging](../audit-logs/kube-api-audit-logging.md) guide to learn how to create your custom audit policy
-  by adjusting API server flags.
+  by adjusting the API server flags.
 
 - Replace a deprecated PodSecurityPolicy (PSP) with one that offers three built-in policy profiles for broad security
   coverage:
@@ -153,10 +153,10 @@ The Kubeadm config is updated with hardening improvements that do the following:
         audit-policy-file: /etc/kubernetes/audit-policy.yaml
     ```
 
-  - **Restricted**: A heavily restricted policy that follows Pod hardening best practices. This policy is set to warn
+  - **Restricted**: A heavily restricted policy that follows the best practices of Pod hardening. This policy is set to warn
     and audit and identifies Pods that require privileged access.
 
-    You can enforce these policies at the cluster level or the Namespace level. For workloads that require privileged
+    You can enforce these policies at the Cluster or Namespace level. For workloads that require privileged
     access, you can relax `PodSecurity` enforcement by adding these labels in the Namespace:
 
     ```yaml
@@ -174,10 +174,10 @@ You can configure an OpenID Connect (OIDC) identity provider to authenticate use
 an authentication layer on top of OAuth 2.0, an authorization framework that allows users to authenticate to a cluster
 without using a password.
 
-OIDC requires a _RoleBinding_ for the users or groups you want to provide cluster access. You must create a RoleBinding
+OIDC requires a _Role Binding_ for the users or groups you want to provide cluster access. You must create a Role Binding
 to a Kubernetes role that is available in the cluster. The Kubernetes role can be a custom role you created or a
 [default Kubernetes role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), such as the
-`cluster-admin` role. To learn how to create a RoleBinding through Palette, refer to
+`cluster-admin` role. To learn how to create a Role Binding through Palette, refer to
 [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
 
 #### Configure Custom OIDC
