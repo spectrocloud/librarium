@@ -15,13 +15,16 @@ choose the desired Operating System (OS), Kubernetes, Container Network Interfac
 types, refer to [Cluster Profiles](../cluster-profiles.md).
 
 In this tutorial, you create a full profile directly from the Palette dashboard. Then, you add a layer to your cluster
-profile by using a manifest to deploy a web application. Adding custom manifests to your cluster profile allows you to
-customize and configure clusters based on specific requirements.
+profile by using a [community pack](../../integrations/community_packs.md) to deploy a web application.
 
 ## Prerequisites
 
 - Follow the steps described in the [Set up Palette with AWS](./setup.md) guide to authenticate Palette for use with
   your AWS cloud account.
+- Ensure that the [Palette Community Registry](../../registries-and-packs/registries-and-packs.md#default-registries) is
+  available in your Palette environment. Refer to the
+  [Add OCI Packs Registry](../../registries-and-packs/registries/oci-registry/add-oci-packs.md) guide for additional
+  guidance.
 
 ## Create a Full Cluster Profile
 
@@ -62,66 +65,22 @@ Click on **Confirm** after you have completed filling out all the core layers.
 The review section gives an overview of the cluster profile configuration you selected. Click on **Finish
 Configuration** to create the cluster profile.
 
-## Add a Manifest
+## Add a Pack
 
 Navigate to the left **Main Menu** and select **Profiles**. Select the cluster profile you created earlier.
 
-Click on **Add Manifest** at the top of the page and fill out the following input fields.
+Click on **Add New Pack** at the top of the page.
 
-- **Layer name** - The name of the layer. Assign the name **application**.
-- **Manifests** - Add your manifest by giving it a name and clicking the **New Manifest** button. Assign a name to the
-  internal manifest and click on the blue button. An empty editor will be displayed on the right side of the screen.
+Select the **Palette Community Registry** from the **Registry** dropdown. Then, click on the latest **Hello Universe**
+pack with version **v1.1.2**.
 
-![Screenshot of unopened manifest editor](/getting-started/aws/getting-started_create-cluster-profile_manifest_blue_btn.webp)
+![Screenshot of hello universe pack](/getting-started/aws/getting-started_create-cluster-profile_add-pack.webp)
 
-In the manifest editor, insert the following content.
+Once you have selected the pack, Palette will display its README, which provides you with additional guidance for usage
+and configuration options. The pack you added will deploy the
+[_hello-universe_](https://github.com/spectrocloud/hello-universe) application.
 
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello-universe-service
-spec:
-  type: LoadBalancer
-  ports:
-    - protocol: TCP
-      port: 8080
-      targetPort: 8080
-  selector:
-    app: hello-universe
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: hello-universe-deployment
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: hello-universe
-  template:
-    metadata:
-      labels:
-        app: hello-universe
-    spec:
-      containers:
-        - name: hello-universe
-          image: ghcr.io/spectrocloud/hello-universe:1.1.0
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 8080
-```
-
-The code snippet you added will deploy the [_hello-universe_](https://github.com/spectrocloud/hello-universe)
-application. You may have noticed that the code snippet you added is a Kubernetes configuration. Manifest files are a
-method you can use to achieve more granular customization of your Kubernetes cluster. You can add any valid Kubernetes
-configuration to a manifest file.
-
-![Screenshot of manifest in the editor](/getting-started/aws/getting-started_create-cluster-profile_manifest.webp)
-
-The manifest defines a replica set for the application to simulate a distributed environment with a web application
-deployed to Kubernetes. The application is assigned a load balancer. Using a load balancer, you can expose a single
-access point and distribute the workload to both containers.
+![Screenshot of pack readme](/getting-started/aws/getting-started_create-cluster-profile_pack-readme.webp)
 
 Click on **Confirm & Create** to save the manifest. Click on **Save Changes** to save this new layer to the cluster
 profile.
@@ -129,6 +88,6 @@ profile.
 ## Wrap-Up
 
 In this tutorial, you created a cluster profile, which is a template that contains the core layers required to deploy a
-host cluster using Amazon Web Services (AWS). You added a custom manifest to your profile to deploy a custom workload.
-We recommend that you continue to the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial to deploy this cluster
-profile to a host cluster onto AWS.
+host cluster using Amazon Web Services (AWS). You added a community pack to your profile to deploy a custom workload. We
+recommend that you continue to the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial to deploy this cluster profile
+to a host cluster onto AWS.
