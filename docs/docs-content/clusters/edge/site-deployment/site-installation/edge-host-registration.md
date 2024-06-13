@@ -196,8 +196,8 @@ App is built on Next.js and deployed using the Vercel platform.
 
 Use the following steps to enable this workflow.
 
-1. Contact [Spectro Cloud Support](support@spectrocloud.com) for access to the Palette Edge Registration App repository.
-   Clone the repository.
+1. Contact [Spectro Cloud Support](mailto:support@spectrocloud.com) for access to the Palette Edge Registration App
+   repository. Clone the repository.
 
 2. Configure Vercel or your hosting provider to [automatically deploy](https://vercel.com/docs/concepts/deployments/git)
    pull requests against the main branch.
