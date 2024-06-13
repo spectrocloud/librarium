@@ -21,7 +21,7 @@ profile by using a [community pack](../../integrations/community_packs.md) to de
 
 - Follow the steps described in the [Set up Palette with GCP](./setup.md) guide to authenticate Palette for use with
   your GCP cloud account.
-- Ensure that the [Palette Community Registry](../../registries-and-packs/registries-and-packs.md#default-registries) is
+- Ensure that the [Palette Community Registry](../../registries-and-packs/registries/registries.md#default-registries) is
   available in your Palette environment. Refer to the
   [Add OCI Packs Registry](../../registries-and-packs/registries/oci-registry/add-oci-packs.md) guide for additional
   guidance.
