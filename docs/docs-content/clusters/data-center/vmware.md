@@ -441,7 +441,7 @@ it to create nodes.
 |                            | ShallowRekey                                   |
 
 </TabItem>
-<TabItem label="6.7" value="6.7" >
+<TabItem label="6.7U3" value="6.7U3">
 
 <br />
 
