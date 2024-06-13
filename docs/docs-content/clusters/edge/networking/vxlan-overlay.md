@@ -53,12 +53,6 @@ server. The region experiences a bad weather event that causes a sustained outag
 - When adding multiple Edge hosts to an existing cluster with overlay enabled, failure to add one host will block the
   addition of the other hosts.
 
-- When a cluster has overlay enabled, you cannot delete an Edge host that has the `palette-webhook` pod on it, or the
-  Edge host will be stuck in the deleting state. You can use the command
-  `kubectl get pods --all-namespaces --output wide` to identify which node `palette-webhook` is on. If you need to
-  remove an Edge host that has the `palette-webhook` pod on it, please reach out to our support team by opening a ticket
-  through our [support page](http://support.spectrocloud.io/).
-
 ## Prerequisites
 
 - At least one Edge host registered with your Palette account.
