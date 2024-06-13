@@ -242,13 +242,6 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     If you do not provide a custom SSL certificate, the airgap setup process will generate a self-signed certificate for
     you.
 
-    Select the tab below for detailed instructions on how to update the SSL certificates for the Pack Registry and the
-    Spectro Cloud Repository.
-
-    <!-- prettier-ignore -->
-    <Tabs>
-    <TabItem label="Pack Registry" value="pack_registry">
-
     :::warning
 
     Three items you need to keep in mind when providing custom SSL certificates:
@@ -260,7 +253,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     - The custom certificate's Fully Qualified Domain Name (FQDN) must match the hostname or IP address you provide for
       the airgap support VM. Otherwise, the airgap setup process will fail due to a certificate mismatch.
 
-    - The custom SSL certificates must have the following permissions bits set:
+    - The custom SSL certificates files must have the following permissions bits set:
 
       - **server.crt**: 644
       - **server.key**: 600
@@ -279,45 +272,6 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     ```shell
     chown -R 10000:10000 /data/secret/cert/*
     ```
-
-    </TabItem>
-    <!-- prettier-ignore -->
-    <TabItem label="Spectro Cloud Artifact Registry" value="scar_registry">
-
-    :::warning
-
-    Three items you need to keep in mind when providing custom SSL certificates:
-
-    - The custom SSL certificates must be in base64 PEM format. If you have custom SSL certificates in a different
-      format, convert them to base64 PEM format before copying them to the support VM. The airgap setup process also
-      expects the files to be named **server.crt** and **server.key**.
-
-    - The custom certificate's Fully Qualified Domain Name (FQDN) must match the hostname or IP address you provide for
-      the airgap support VM. Otherwise, the airgap setup process will fail due to a certificate mismatch.
-
-    - The custom SSL certificates must have the following permissions bits set:
-
-      - **server.crt**: 644
-      - **server.key**: 600
-
-    :::
-
-    The custom certificates must be placed in the **/opt/spectro/ssl** folder. Include the following files:
-
-    - **server.crt**
-    - **server.key**
-
-    Copy the custom SSL certificates to the **/usr/local/share/ca-certificates/** directory. Issue the following
-    commands to copy the custom SSL certificates to the directory.
-
-    ```shell
-    cp /opt/spectro/ssl/server.crt /usr/local/share/ca-certificates/ && \
-    update-ca-certificates
-    ```
-
-    </TabItem>
-
-    </Tabs>
 
 20. Start the airgap initialization process by issuing the following command. The script requires the hostname or IP
     address of the airgap support VM. Choose the preferred method for your environment. Be aware that the script will
