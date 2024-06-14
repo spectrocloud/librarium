@@ -52,5 +52,10 @@ To create a registration token, use the following steps.
 
 ## Next Steps
 
-The next stage in the Edge host site installation process is registering the Edge host. Go ahead and review the
-instructions in the [Register Edge Host](edge-host-registration.md) guide.
+If you have not built the Edge artifacts required to install Palette Edge on an Edge host, refer to
+[EdgeForge Workflow](../../edgeforge-workflow/edgeforge-workflow.md) to learn how to build the necessary artifacts and
+use your registration token to configure the installer.
+
+If you have already built the Edge artifacts and are currently performing an on-site deployment, you can put the
+registration token in the site user data. Refer to [Apply Site User Data](../site-installation/site-user-data.md) for
+more information.

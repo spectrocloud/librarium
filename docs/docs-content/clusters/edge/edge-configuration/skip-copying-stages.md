@@ -10,35 +10,36 @@ tags: ["edge"]
 ---
 
 Suppose you must add sensitive information, such as credentials, in your user data configuration file. In the Edge
-deployment lifecycle, you have two opportunities to apply user data to edge hosts. The first is during the installation
-phase, where you install Palette Edge onto the Edge host. The second opportunity is during the on-site deployment phase,
-where you can provide supplementary user-data configurations if needed. The diagram below highlights the two mentioned
-phases in the Edge lifecycle.
+deployment lifecycle, you have two opportunities to apply user data to Edge hosts. The first is during the EdgeForge
+phase, where you create the Edge Installer ISO which contains the user data; the Edge installer will apply the user data
+to the Edge host during installation. The second opportunity is during the on-site deployment phase, where you can
+provide supplementary user-data configurations if needed. The diagram below highlights the two mentioned phases in the
+Edge lifecycle.
 
 ![A diagram highlighting the two stages in the edge deployment lifecycle where you can apply user data.](/edge_edge-configuration_cloud-init_user-data.webp)
 
-- **Installation Phase** - In the installation phase, you prepare your Edge hosts using the organization-level
-  configurations. The configurations include the Edge Installer, the user data, and, optionally, a content bundle. You
+- **EdgeForge Phase** - In the EdgeForge phase, you build the Edge Installer ISO using organization-level
+  configurations. The configurations include the installer itself, the user data, and, optionally, a content bundle. You
   boot the Edge hosts using the Edge Installer and apply the configurations. All the configurations, including the user
-  data, are copied to the edge host during installation.
+  data, are copied to the Edge host during installation.
 
-  Once the edge hosts are prepared with installation, you ship your devices to the site for on-site deployment. Refer to
+  Once the Edge hosts are prepared with installation, you ship your devices to the site for on-site deployment. Refer to
   the [Installation](../site-deployment/stage.md) guide for more information.
 
-- **Site Installation Phase** - In the site installation phase, you use supplementary user data to apply site-specific
-  configurations to the edge hosts. The user data is copied to the edge host during the installation unless you follow
+- **On-site Deployment Phase** - In the on-site deployment phase, you use supplementary user data to apply site-specific
+  configurations to the Edge hosts. The user data is copied to the Edge host during the installation unless you follow
   the specific naming convention for your user data stages as described below.
 
 Refer to the [Multiple User Data Use Case](../edgeforge-workflow/prepare-user-data.md#multiple-user-data-use-case) guide
 to understand the use cases for applying supplementary user data. If you need to apply a supplementary user data, refer
-to the [Deploy Edge Hosts On-site](../site-deployment/site-installation/site-installation.md) guide to learn the site
-installation process in detail.
+to the [Deploy Edge Hosts On-site](../site-deployment/site-installation/site-installation.md) guide to learn the on-site
+deployment process in detail.
 
 In both steps mentioned above, the Edge Installer copies the user data configuration file provided to the
-**/run/stylus/userdata** file or the **/oem/userdata** file on the edge hosts. If you want to prevent some user data
-stages from getting copied to the edge host's storage, you can use a specific naming convention to disable the default
+**/run/stylus/userdata** file or the **/oem/userdata** file on the Edge hosts. If you want to prevent some user data
+stages from getting copied to the Edge host's storage, you can use a specific naming convention to disable the default
 copy behavior. However, be aware that different persistence behaviors apply depending on which stage of the Edge
-deployment life cycle you provide sensitive data in the user data configuration file. Refer to the
+deployment lifecycle you provide sensitive data in the user data configuration file. Refer to the
 [Sensitive Information in the Site Installation](#sensitive-information-in-the-site-installation) section below to learn
 more.
 
@@ -47,7 +48,7 @@ more.
 In the installation step, the Edge Installer copies and persists _all_ your user data stages into the configuration
 files on the Edge hosts. Copying sensitive information to the Edge hosts may pose security risks. Therefore, we
 recommend you avoid inserting sensitive information in the user data configuration file provided in the installation
-phase. Use a supplementary user data configuration file and apply it at the site installation phase.
+phase. Use a supplementary user data configuration file and apply it at the on-site deployment phase.
 
 :::tip
 

@@ -16,46 +16,47 @@ To better understand the Edge installation process, review the order of operatio
 
 1. Boot device with Edge Installer.
 
-2. Edge Installer gets copied to disk.
+2. Edge Installer installs Palette Edge onto the Edge host.
 
-3. Device powers off or reboots based on the user data configuration.
+3. Device powers off or reboots to registration mode based on the user data configuration.
 
-4. Upon boot up or reboot, cloud-init stages that are specified in the Edge Installer configuration file take effect.
+4. Upon boot up or reboot, cloud-init stages that are specified in the user data configuration file take effect.
 
-5. Edge Host Registers with Palette.
+5. Edge Host Registers with Palette and is ready to be part of a cluster.
 
-6. Device pairs with Palette.
+6. User provisions the Edge host as part of a cluster in Palette.
 
-7. Edge Installer identifies cloud-init stages as specified in the OS pack.
+7. Edge host identifies cloud-init stages as specified in the OS pack.
 
-8. Operating System (OS) is installed on the device.
+8. Operating System (OS) is installed on the Edge host.
 
 9. Device reboots.
 
 10. OS cloud-init stages are applied in the proper order.
 
-11. Edge Host is ready for use.
+11. Edge Host becomes a node in an active cluster.
 
 ![The boot order sequence, listing 9 steps that flow in a sequential order.](/clusters_edge_cloud-init_boot-order-squence.webp)
 
-The Edge installation process accepts two types of configurations that you can use to customize the installation: Edge
-Installer Configuration and Edge OS Configuration.
+Palette Edge allows you to use cloud-init stages to declaratively configure your Operating System (CS) of your Edge host
+both using installer configuration and in the the OS pack. For more information about cloud-init stages, refer to
+[Cloud-init Stages](./cloud-init.md).
 
 ## Edge Installer Configuration
 
 The Edge installation process expects you to specify installation parameters. You can supply the install parameters in
-multiple stages. You can provide common installation configurations for all your sites during the manufacturing or
-staging phases.
+multiple stages. You can provide common installation configurations during EdgeForge for all your sites during the
+manufacturing or installation phases.
 
-You can also specify additional location-specific configurations at the site during the installation. The install
-configurations provided in various stages are merged to create the edge host's final configuration.
+You can also specify additional location-specific configurations at the site during on-site deployment. The install
+configurations provided in various stages are merged to create the Edge host's final configuration.
 
 ## Edge OS Configuration
 
-The Edge installation process supports the ability for you to customize your operating system (OS) through the usage of
-cloud-init stages. You can supply Edge configurations during the edge host installation with the Edge Installer and at
-the Operating System (OS) layer by customizing the OS pack. Once the edge host installation process is complete, the OS
-stages take effect during the boot-up process.
+During cluster deployment, Palette supports the ability for you to customize your operating system (OS) through the
+usage of cloud-init stages. You can supply Edge configurations during the edge host installation with the Edge Installer
+and at the Operating System (OS) layer by customizing the OS pack. Once the edge host installation process is complete,
+the OS stages take effect during the boot-up process.
 
 To effectively use the Edge Installer, we recommend you review the Edge
 [installer configuration](installer-reference.md) page so you gain an overview of all the available parameters.

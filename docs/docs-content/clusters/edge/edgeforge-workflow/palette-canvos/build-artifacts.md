@@ -359,9 +359,11 @@ palette-edge-installer.iso
 palette-edge-installer.iso.sha256
 ```
 
-To validate, you can prepare an edge device using the Edge installer ISO. You can follow the
-[Prepare Edge Host for Installation](../../site-deployment/stage.md) guide if you prepare a bare metal machine or a
-VMware VM as a host. Below are the high-level steps for your reference:
+To validate, you can proceed to installation using the Edge installer ISO. You can follow the
+[Installation](../../site-deployment/stage.md) guide if you prepare a bare metal machine. For installation and
+deployment on Virtual Machines (VM), refer to
+[Deployment to Virtual Machines](../../site-deployment/virtual-deployment/). Below are the high-level steps for your
+reference:
 
 1. Create a bootable USB flash drive using any third-party software. Most software that creates a bootable USB drive
    will validate the ISO image.
@@ -373,7 +375,7 @@ VMware VM as a host. Below are the high-level steps for your reference:
 3. Flash the edge device with a bootable USB drive.
 
 4. The last step is to power on the edge device and start the installation process. For more information, refer to the
-   [Perform Site Install](../../site-deployment/site-installation/site-installation.md) documentation.
+   [Deploy Edge Host On-Site](../../site-deployment/site-installation/site-installation.md) documentation.
 
 ## Next Steps
 
@@ -387,6 +389,6 @@ detailed walkthrough on deploying an Edge cluster in a VMware environment.
 
 Check out the reference resources below to learn more about preparing an Edge host.
 
-- [Prepare Edge Host for Installation](../../site-deployment/stage.md)
+- [Installation](../../site-deployment/stage.md)
 
 - [Perform Site Install](../../site-deployment/site-installation/site-installation.md)

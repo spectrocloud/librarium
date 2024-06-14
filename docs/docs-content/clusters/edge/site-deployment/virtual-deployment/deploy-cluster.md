@@ -1062,6 +1062,6 @@ To learn more about Edge, check out the resources below.
 
 - [Model Edge Native Cluster Profile](../../site-deployment/model-profile.md)
 
-- [Prepare Edge Hosts for Installation](../../site-deployment/stage.md)
+- [Installation](../../site-deployment/stage.md)
 
 - [Perform Site Install](../../site-deployment/site-installation/site-installation.md)

@@ -14,3 +14,10 @@ stages, as described in the table.
 | Apply Site User Data | As described in the [Multiple User Data Use Case](../../edgeforge-workflow/prepare-user-data.md#multiple-user-data-use-case), you can apply a secondary Edge Installer configuration user date to apply additional settings or override global values. This is optional but may be required for certain use cases. Refer to the [Apply Site User Data](site-user-data.md) guide to learn more. | No       |
 | Registration         | The Edge host is registered with Palette. Refer to [Register Edge Host](edge-host-registration.md) for guidance. Once registered, the Edge host will remain available in your Palette account until it becomes part of a cluster.                                                                                                                                                              | Yes      |
 | Cluster Provisioning | The Edge host boots into the specified provider Operating System (OS) and proceeds with the cluster deployment. You can find the instructions in the [Create Cluster Definition](cluster-deployment.md) resource.                                                                                                                                                                              | Yes      |
+
+## Resources
+
+- [Apply Site User Data](site-user-data.md)
+- [Create Edge Registration Token](./create-registration-token.md)
+- [Edge Host Registration](./edge-host-registration.md)
+- [Create Cluster Definition](cluster-deployment.md)

@@ -18,8 +18,8 @@ Use the following steps to provision a VM as an Edge host using an Open Virtuali
 
 - Physical access to the Edge host.
 
-- An Edge Installer OVF template. Check out the [Prepare Edge Hosts for Installation](../stage.md) for guidance on how
-  to create an Edge Installer OVF template.
+- An Edge Installer OVF template. Check out the [Installation](../stage.md) for guidance on how to create an Edge
+  Installer OVF template.
 
 ## Site Install
 

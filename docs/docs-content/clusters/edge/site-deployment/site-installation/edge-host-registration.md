@@ -26,7 +26,7 @@ are registered under the default project chosen for the registration token. You 
 specifying the project in the Edge Installer [user data](../../edge-configuration/installer-reference.md) configuration
 file.
 
-By default, devices automatically register during the site installation process when a tenant registration token value
+By default, devices automatically register during the on-site deployment process when a tenant registration token value
 is present. Set the parameter `disableAutoRegister` to `true` in the Edge Installer configuration to disable auto
 registration and require manual device registration.
 

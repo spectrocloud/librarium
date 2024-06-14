@@ -19,4 +19,4 @@ through the entire lifecycle of Edge deployment using virtual machines on VMware
 
 - [Deploy an Edge Cluster on VMware](./deploy-cluster.md)
 - [Create an Edge OVF Template](./create-ovf-template.md)
-- [Provision an Edge Host VM]
+- [Provision an Edge Host VM](./vm-edge-host.md)

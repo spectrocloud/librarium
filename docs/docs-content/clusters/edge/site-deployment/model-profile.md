@@ -188,6 +188,4 @@ You can view your newly created cluster profile on the **Cluster Profiles** page
 ## Next Steps
 
 Your next step in the deployment lifecycle is to prepare the Edge host for the installation. Use the
-[Prepare Edge Hosts for Installation](../site-deployment/stage.md) guide to continue.
-
-<br />
+[Installation](../site-deployment/stage.md) guide to continue.

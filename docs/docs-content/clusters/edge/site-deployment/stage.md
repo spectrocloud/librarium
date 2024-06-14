@@ -50,6 +50,6 @@ The following items are optional and not required but may apply to your use case
 
 ### Validate
 
-You can validate that the Edge host is ready for the site installation by simulating a site deployment on one of the
-Edge hosts. The simulation process will require you to complete the installation process and reset the device after the
-validation.
+You can validate that the Edge host is ready for the on-site deployment by simulating an on-site deployment on one of
+the Edge hosts. The simulation process will require you to complete the installation process and reset the device after
+the validation.
