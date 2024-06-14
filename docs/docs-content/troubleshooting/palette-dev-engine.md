@@ -81,8 +81,8 @@ following steps to resolve the issue.
    deployment.apps/cluster-management-agent scaled
    ```
 
-4. Edit the `palette-controller-manager` deployment and under the resources section for the `manager` and `atop` update
-   the following `ephemeral-storage` value.
+4. Edit the `palette-controller-manager` deployment and under the resources section for the `manager` and `atop` add the
+   `ephemeral-storage` field and the `1Gi` value.
 
    ```yaml {4}
    name: manager
