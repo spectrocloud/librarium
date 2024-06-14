@@ -10,20 +10,22 @@ interface PackCardIconProps {
 }
 
 export default function PackCardIcon({ title, logoUrl, type, className }: PackCardIconProps) {
-  const [icon, setIcon] = useState<ReactElement<any, any> | null>(null);
+  const [icon, setIcon] = useState<ReactElement >();
   useEffect(() => {
     if (logoUrl) {
       import(`@site/.docusaurus/packs-integrations/${logoUrl}`).then((image) => {
-        setIcon(<Image preview={false} img={image.default}/>)
+        setIcon(<Image img={image.default}/>)
       }).catch((e) => {
         setIcon(<IconMapper type={type} />);
       });
+    } else {
+      setIcon(<IconMapper type={type} />);
     }
   },[logoUrl]);
 
   return (
     <div className={`${className} ${styles.imageWrapper}`}>
-      {icon ? icon : <IconMapper type={type} />}
+      {icon}
     </div>
   );
 }

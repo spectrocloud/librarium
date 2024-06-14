@@ -52,8 +52,7 @@ export default function PacksReadme() {
             <PackReadMeComponent />
           </div>
         );
-      }
-      catch (error) {
+      } catch (error) {
         setCustomReadme(null);
       }
     };

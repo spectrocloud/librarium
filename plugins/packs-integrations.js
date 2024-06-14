@@ -4,12 +4,20 @@ const packDescription = require("../static/packs-data/packs_information.json");
 const { coerce, rcompare } = require("semver");
 const path = require('path');;
 const mime = require('mime-types');
+import { setTimeout } from "timers/promises";
 const BASE_URL = require('../static/scripts/constants.js').BASE_URL;
 const fetch = require('node-fetch');
 const { existsSync, promises, open, mkdirSync, writeFile, close, createWriteStream } = require("node:fs");
 
-const dirname = ".docusaurus/packs-integrations/"
+const dirname = ".docusaurus/packs-integrations/";
 const filename = "api_pack_response.json";
+const options = {
+  headers: {
+    "Content-Disposition": "attachment",
+    "ApiKey": process.env.API_KEY,
+  }
+}
+let counter = 0;
 function generateIntegrationData(allContent) {
   const packsData = allContent["docusaurus-plugin-content-docs"].default.loadedVersions[0].docs
     .filter((doc) => {
@@ -42,10 +50,9 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
   const filteredPalattePackDataMap = packsPaletteDetailsData.reduce((acc, packContent) => {
     const packName = packContent.name;
     //filtered the packs based on the selected registries given in the docusaurus config file
-    if (
-      (packsMData[packName].spec.layer === "addon" && packsMData[packName].spec.addonType) ||
-      packsMData[packName].spec.layer !== "addon" && repositories.find((repo) => repo.uid === packContent.registryUid)
-    ) {
+    if
+      (repositories.find((repo) => repo.uid === packContent.registryUid) && ((packsMData[packName].spec.layer === "addon" && packsMData[packName].spec.addonType) ||
+        packsMData[packName].spec.layer !== "addon")) {
       if (Object.hasOwnProperty.call(acc, packName)) {
         const packValues = acc[packName];
         packValues.registries.push(packContent);
@@ -276,22 +283,11 @@ async function mapRepositories(repositories) {
   return repoMap;
 }
 
-async function fetchLogoUrl(url, packName, counter) {
-  let fileDownloaded;
-  if (counter % 10 === 0) {
-    await setTimeout(2000);
-  }
-  const destination = path.resolve(dirname, packName);
-  const options = {
-    headers: {
-      "Content-Disposition": "attachment",
-      "ApiKey": process.env.API_KEY,
-    }
-  }
-  const res = await fetch(url, options);
-  await new Promise((resolve, reject) => {
-    const type = res.headers.get('Content-Type')
+async function write(res, packName, logoUrlMap) {
+  return new Promise((resolve, reject) => {
+    const type = res.headers.get('Content-Type');
     if (mime.extension(type) !== "html") {
+      const destination = path.resolve(dirname, packName);
       const fileStream = createWriteStream(`${destination}.${mime.extension(type)}`);
       res.body.pipe(fileStream);
       res.body.on("error", (err) => {
@@ -299,37 +295,40 @@ async function fetchLogoUrl(url, packName, counter) {
       });
       fileStream.on("finish", function () {
         resolve();
-        fileDownloaded = `${packName}.${mime.extension(type)}`;
+        logoUrlMap[packName] = `${packName}.${mime.extension(type)}`;
       });
+    } else {
+      reject("Invalid Mime type for the logo");
     }
   });
-  return fileDownloaded;
 }
 
-async function getLogoUrl(registries, packName, logoUrlMap, counter) {
-  let logoUrl;
-  for (let i = 0; i < registries.length; i++) {
-    const registry = registries[i];
-    if (!logoUrl && !Object.hasOwnProperty.call(logoUrlMap, packName)) {
+async function getLogoUrl(packsAllData, logoUrlMap) {
+  for (let j = 0; j < packsAllData.length; j++) {
+    const registries = packsAllData[j].spec.registries;
+    const packName = packsAllData[j].spec.name;
+    for (let i = 0; i < registries.length; i++) {
+      const registry = registries[i];
       try {
         let url = registry.logoUrl;
         if (!url) {
-          url = `${BASE_URL}/v1/packs/${registry.latestPackUid}/logo`
+          url = `${BASE_URL}/v1/packs/${registry.latestPackUid}/logo`;
         } else {
           url = url.startsWith("https") ? url : (url.startsWith("/") ? `${BASE_URL}${url}` : `${BASE_URL}/${url}`);
         }
-        counter++;
-        const downloadUrl = await fetchLogoUrl(url, packName, counter);
-        if (downloadUrl) {
-          logoUrl = registry.logoUrl;
-          logoUrlMap[packName] = downloadUrl;
+        if (!Object.hasOwnProperty.call(logoUrlMap, packName)) {
+          const res = await fetch(url, options);
+          await write(res, packName, logoUrlMap);
+          counter++;
+          if (counter % 10 === 0) {
+            await setTimeout(1000);
+          }
         }
       } catch (e) {
-        console.error("An error occurred while fetching the logoUrl: ", e);
+        console.error("An error occurred while downloading the image: ", e);
       }
     }
   }
-  return counter;
 }
 
 async function pluginPacksAndIntegrationsData(context, options) {
@@ -360,7 +359,6 @@ async function pluginPacksAndIntegrationsData(context, options) {
         const packUrl = "v1/packs/";
         const packMDMap = new Map();
         let apiPacksData = [];
-        let counter = 0;
         const promisesPackDetails = packDataArr.map((packData) => {
           packMDMap[packData.spec.name] = packData;
           const cloudType = packData.spec.cloudTypes.includes("all") ? "aws" : packData.spec.cloudTypes[0];
@@ -369,7 +367,6 @@ async function pluginPacksAndIntegrationsData(context, options) {
             const url = `${packUrl}${packData.spec.name}/registries/${registry.uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`
             registryPackData.push(callRateLimitAPI(() => api.get(url)));
           }
-          counter = getLogoUrl(packData.spec.registries, packData.spec.name, logoUrlMap, counter);
           return registryPackData;
         });
         const flatted = promisesPackDetails.flat();
@@ -378,6 +375,10 @@ async function pluginPacksAndIntegrationsData(context, options) {
           .filter((result) => result.status === "fulfilled" && result.value?.data)
           .map((result) => result.value.data);
         console.info("completed the fetch of all the pack details");
+        console.info("Starting the fetch of all the logos");
+        //Fetch logos
+        await getLogoUrl(packDataArr, logoUrlMap);
+        console.info("completed the fetch of all the logos");
         apiPackResponse.apiPacksData = apiPacksData;
         apiPackResponse.packMDMap = packMDMap;
         apiPackResponse.logoUrlMap = logoUrlMap;
