@@ -362,8 +362,8 @@ palette-edge-installer.iso.sha256
 To validate, you can proceed to installation using the Edge installer ISO. You can follow the
 [Installation](../../site-deployment/stage.md) guide if you prepare a bare metal machine. For installation and
 deployment on Virtual Machines (VM), refer to
-[Deployment to Virtual Machines](../../site-deployment/virtual-deployment/). Below are the high-level steps for your
-reference:
+[Deployment to Virtual Machines](../../site-deployment/virtual-deployment/virtual-deployment.md). Below are the
+high-level steps for your reference:
 
 1. Create a bootable USB flash drive using any third-party software. Most software that creates a bootable USB drive
    will validate the ISO image.
