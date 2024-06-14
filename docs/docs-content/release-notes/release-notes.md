@@ -149,7 +149,9 @@ features and improvements.
 - During the platform upgrade from Palette 4.3 to 4.4,
   [Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md) may encounter a scenario where
   the pod `palette-controller-manager` is not upgraded to the newer version of Palette. The virtual cluster will
-  continue to be operational, and this does not impact its functionality.
+  continue to be operational, and this does not impact its functionality. Refer to the
+  [Controller Manager Pod Not Upgraded](../troubleshooting/palette-dev-engine.md#scenario---controller-manager-pod-not-upgraded)
+  troubleshooting guide for resolution steps.
 
 ### Virtual Machine Orchestrator (VMO)
 
