@@ -29,6 +29,6 @@ the [Palette CLI](./automation/palette-cli/palette-cli.md) document for installa
 
 ## Palette Edge CLI
 
-| Version | Operating System | Checksum (SHA256)                                                  |
-| ------- | ---------------- | ------------------------------------------------------------------ |
-| 4.4.2   | [Linux-amd64]    | `86d2f9239d2b8517dc6d750631a3a328136a5d49a8ec042899879e9bd25a396e` |
+| Version | Operating System                                                                      | Checksum (SHA256)                                                  |
+| ------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| 4.4.2   | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.4.2/cli/linux/palette-edge) | `86d2f9239d2b8517dc6d750631a3a328136a5d49a8ec042899879e9bd25a396e` |
