@@ -5,7 +5,9 @@ nonword: true
 level: error
 scope: raw
 tokens:
-  - '(?<!:)[:][\n]{2,}[^-\n]'
+  - '(?<!:):\n(?!\s*[-*])[\n]{1,}[^-\n]'
 exceptions:
   - '`[^`]*:[^`]*`'
+  - ':::'
+
 
