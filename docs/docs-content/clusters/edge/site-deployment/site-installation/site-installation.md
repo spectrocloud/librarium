@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Perform Site Deployment"
-title: "Perform Site Deployment"
-description: "Learn how to deploy the an Edge cluster on your Edge host on site."
+sidebar_label: "Deploy Edge Hosts On-Site"
+title: "Deploy Edge Hosts On-Site"
+description: "Learn how to deploy the an Edge cluster on your Edge host on-site."
 hide_table_of_contents: false
 tags: ["edge"]
 ---

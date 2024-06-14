@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Deployment to Virtual Machines"
-title: "Deployment to Virtual Machines"
+sidebar_label: "Deploy Edge Hosts as Virtual Machines"
+title: "Deploy Edge Hosts as Virtual Machines"
 description: "Learn about how to deploy Palette Edge on virtual Edge hosts."
 hide_table_of_contents: false
 sidebar_position: 0

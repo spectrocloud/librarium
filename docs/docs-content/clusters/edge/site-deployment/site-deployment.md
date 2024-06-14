@@ -22,7 +22,9 @@ Review the following guides in sequential order to successfully deploy an Edge h
 
 2. [Installation](../site-deployment/stage.md)
 
-3. [Perform Site Install](../site-deployment/site-installation/site-installation.md)
+3. [Deployment On-site](./site-installation/site-installation.md)
+
+4. [Cluster Definition](./site-installation/cluster-deployment.md)
 
 :::info
 
@@ -32,16 +34,24 @@ by people with different roles. The Palette Edge lifecycle is explained in detai
 
 :::
 
+## Deployment to Virtual Machines
+
+You can deploy Edge Hosts as Virtual Machines (VM). The VMs function exactly like a physical Edge host, and are
+particularly useful in testing and learning environments. Refer to
+[Create Edge OVF Templates](./virtual-deployment/create-ovf-template.md) and
+[Provision Edge Host VMs](./virtual-deployment/vm-edge-host.md) to learn how to create Open Virtualization Format (OVF)
+templates and provision Edge hosts using the templates. Or check out the
+[Deploy Edge Cluster on VMware](./virtual-deployment/deploy-cluster.md) for an end-to-end tutorial to learn the Palette
+Edge deployment lifecycle using VMs.
+
 ## Resources
 
 - [Model Cluster Profile](model-profile.md)
 
-- [Prepare Edge Hosts for Installation](stage.md)
+- [Installation](stage.md)
 
-- [Perform Site Install](site-installation/site-installation.md)
+- [Deploy Edge Hosts On-site](site-installation/site-installation.md)
 
-- [Register Edge Host](site-installation/edge-host-registration.md)
-
-- [Create Cluster Definition](site-installation/cluster-deployment.md)
+- [Deploy Edge Hosts as Virtual Machines](./virtual-deployment/virtual-deployment.md)
 
 - [Deployment with Custom Registries](./deploy-custom-registries/deploy-custom-registries.md)
