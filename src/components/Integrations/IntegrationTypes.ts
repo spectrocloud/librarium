@@ -10,12 +10,11 @@ export interface FrontMatterData {
   packType: string;
   verified: boolean;
   cloudTypes: string[];
-  readme: Map<string, string>;
+  packUidMap: Map<string, any>;
   versions: VersionTemplate[];
   community: boolean;
   registries: string[];
   disabled: boolean;
-  deprecated: boolean;
   latestVersion: string;
 }
 

@@ -1,14 +1,15 @@
 import axios from "axios";
 import axiosRetry from "axios-retry";
 import { pRateLimit } from "p-ratelimit";
+import { BASE_URL } from "../../../static/scripts/constants";
 
 const api = axios.create({
-  baseURL: "https://console.spectrocloud.com",
+  baseURL: BASE_URL,
   timeout: 20000,
   headers: {
-    "Content-Type": "application/json",
-    ApiKey: process.env.API_KEY,
-  },
+    'Content-Type': 'application/json',
+    "ApiKey": process.env.API_KEY,
+  }
 });
 
 const limit = pRateLimit({
@@ -36,5 +37,7 @@ axiosRetry(api, {
 function callRateLimitAPI(delayedApiCall) {
   return limit(delayedApiCall);
 }
+
+
 
 module.exports = { api, callRateLimitAPI };
