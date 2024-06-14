@@ -80,7 +80,7 @@
     "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/react": "^14.1.2",
     "@tsconfig/docusaurus": "^1.0.5",
-    "@types/jest": "^29.5.3",
+    "@types/jest": "^29.5.12",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
     "babel-jest": "^29.6.2",
