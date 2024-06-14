@@ -44,7 +44,7 @@ following steps to resolve the issue.
 
 ### Debug Steps
 
-1. Ensure you can connect to the virtual cluster using the cluster's kubeconfig file. Refer to the
+1. Ensure you can connect to the host cluster using the cluster's kubeconfig file. Refer to the
    [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) guide for additional guidance.
 
 2. Identify the namespace where the virtual cluster is active. Use the virtual cluster's ID to identify the correct
