@@ -142,6 +142,15 @@ features and improvements.
 
 - Support for custom links, URLs, and static pages is now available in local UI. You can populate custom links in the left **Main Menu** of [local UI](../clusters/edge/local-ui/host-management/custom-link.md), which will either load content into in an iframe or act as en external link. You can also can host static pages in local UI. This is useful when you need to deploy and host custom or specific content for a site and want to avoid introducing additional services to host a static site.
 
+### Palette Dev Engine (PDE)
+
+#### Known Issues
+
+- During the platform upgrade from Palette 4.3 to 4.4,
+  [Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md) may encounter a scenario where
+  the pod palette-controller-manager is not upgraded to the newer version of Palette. The virtual cluster will continue
+  to be operational, and this does not impact its functionality.
+
 ### Virtual Machine Orchestrator (VMO)
 
 #### Improvements
