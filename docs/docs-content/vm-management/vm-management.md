@@ -31,14 +31,14 @@ You will benefit from Palette VMO in the following cases:
 
 ## Get Started
 
-To get started with Palette VMO, review the [Architecture](./architecture.md) page to learn about the VMO pack and the
-different components involved in building a full-fledged VMO solution. Then, review the
+To get started with Palette VMO, review the [Architecture](./architecture.md) page to learn about the different
+components involved in building a full-fledged VMO solution. Then, review the
 [Create a VMO Profile](./create-vmo-profile.md) guide to prepare everything you need to deploy your first VMO cluster.
 
-Then, refer to the [Create and Manage VMs](./create-manage-vm/create-manage-vm.md) section for information on deploying
-VMs from existing Palette templates and performing standard VM operations. Alternatively, review the
-[Advanced Topics](./create-manage-vm/advanced-topics/advanced-topics.md) section to understand how you can create VM and
-disk templates, configure the VM resources, and perform other advanced operations.
+Once your VMO cluster is up and running, refer to the [Create and Manage VMs](./create-manage-vm/create-manage-vm.md)
+section for information on deploying VMs from existing Palette templates and performing standard VM operations.
+Alternatively, review the [Advanced Topics](./create-manage-vm/advanced-topics/advanced-topics.md) section to understand
+how you can create VM and disk templates, manage the VM resources, and perform other advanced operations.
 
 Finally, refer to the [Role-based access control (RBAC)](./rbac/rbac.md) section for information on configuring roles
 and permissions for your VMs.
