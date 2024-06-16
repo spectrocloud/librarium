@@ -3,7 +3,7 @@ sidebar_label: "Upload Content Bundle"
 title: "Upload Content Bundle"
 description: "Instructions for building and uploading content to Edge hosts."
 hide_table_of_contents: false
-sidebar_position: 32
+sidebar_position: 60
 tags: ["edge"]
 ---
 
@@ -23,9 +23,9 @@ console.
 - An Edge host with installed with Edge Installer 4.3 or later using the `airgapped` install mode.
 
 - You have built a content bundle that's necessary for provisioning a cluster using your intended cluster profile. For
-  more information, refer to [Build Content Bundles](../../edgeforge-workflow/build-content-bundle.md). Ensure that you
-  include the `--include-palette-content` flag when building the content bundle to include images for Palette
-  components.
+  more information, refer to [Build Content Bundles](../../edgeforge-workflow/palette-canvos/build-content-bundle.md).
+  Ensure that you include the `--include-palette-content` flag when building the content bundle to include images for
+  Palette components.
 
 - Network access to the Edge host's port where the local UI is exposed. The default port is 5080.
 
