@@ -20,9 +20,9 @@ connections to a Palette instance.
 
 :::warning
 
-Local UI on works for Edge deployment in disconnected environments. A disconnected environment means that the Edge host
-does not have a connection to a Palette instance. Do not use the local UI if your cluster has a connection to a Palette
-instance.
+Local UI only works for Edge deployments in disconnected environments. A disconnected environment means that the Edge
+host does not have a connection to a Palette instance. Do not use the local UI if your cluster has a connection to a
+Palette instance.
 
 :::
 

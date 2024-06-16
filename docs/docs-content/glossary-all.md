@@ -257,6 +257,12 @@ most desired versions of the base operating system and Kubernetes distribution.
 **Examples**: (Ubuntu20.0.4+CNCFK8s1.21.3, SLES+K3S). We also encourage our customers to build their own Operating
 system.
 
+## Palette Terminal User Interface (TUI)
+
+Palette TUI is a terminal user interface that allows users to configure host and network settings for their Edge hosts.
+Palette TUI is not enabled by default, and must have the `stylus.includeTui` parameter set to true for it to be enabled
+automatically.
+
 ## Palette Upgrade Controller
 
 A Kubernetes controller to be installed into the workload cluster to facilitate upgrades to new P6OS image.

@@ -95,13 +95,13 @@ use any container network interface pack such as Flannel or others, as part of t
 
 The component metrics server is disabled to avoid duplicating it because Palette installs the metrics server by default.
 
-```
+```yaml
 cluster:
- config:
-   # disable the built in cni
-   flannel-backend: none
-   no-flannel: true
-   disable-network-policy: true
-   Disable:
-     - metrics-server
+  config:
+    # disable the built in cni
+    flannel-backend: none
+    no-flannel: true
+    disable-network-policy: true
+    Disable:
+      - metrics-server
 ```

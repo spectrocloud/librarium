@@ -67,8 +67,8 @@ This guide explains how you can define and manage cluster profile variables.
 ### Enablement
 
 You can define profile variables both while creating and for the already created cluster profiles. To define profile
-variables [while creating a cluster profile](../create-cluster-profiles/create-cluster-profiles.md), start following
-this guide from step three at the **Profile Layers** stage of cluster profile creation.
+variables [while creating a cluster profile](../create-cluster-profiles/create-cluster-profiles.md), you need to be at
+the **Profile Layers** stage of cluster profile creation and start following this guide from step three.
 
 1.  Log in to Palette.
 
@@ -77,6 +77,13 @@ this guide from step three at the **Profile Layers** stage of cluster profile cr
 3.  In the upper-right corner, click **Variables** and, on the **Profile variables** pane, click **Create variable**.
 
     ![Palette with the Variables button highlighted.](/profiles_create-cluster-profiles_define-profile-variables_open-profile-variables.webp)
+
+    :::tip
+
+    Alternatively, open a profile layer and, in the upper-right corner of its YAML configuration editor, select
+    **Variables**, and then **Create variable**.
+
+    :::
 
 4.  Enter the variable name in the `{{.spectro.var.<variable_name>}}` format. You will use this name when adding
     variables to layer configurations. The name must be unique within the parent cluster.
@@ -115,12 +122,14 @@ this guide from step three at the **Profile Layers** stage of cluster profile cr
 
     :::
 
-9.  Click **Create**.
+9.  Review the variable definition and behavior under **Preview**, and then select **Create**.
 
-10. On the **Profile variables** pane, next to your variable, click the **Copy to clipboard** icon to copy the variable
-    name.
+    ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_variable-preview.webp)
 
-11. Navigate to the YAML configuration of the profile layer for which you want to add the variable.
+10. Navigate to the YAML configuration of the profile layer for which you want to add the variable. In the upper-right
+    corner of its YAML configuration editor, select **Variables**.
+
+11. Next to the variable you want to add, click the **Copy to clipboard** icon to copy its name.
 
 12. Paste the variable in the `parameter: "{{.spectro.var.variable_name}}"` format and click **Confirm Updates**.
 
@@ -128,6 +137,14 @@ this guide from step three at the **Profile Layers** stage of cluster profile cr
     profile variables that you can autocomplete.
 
     ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_add-vars-to-yaml.webp)
+
+    :::tip
+
+    To improve navigation, you can change the display order of variables. Select the **Variables three-dot menu**, then
+    select **Reorder variables**, and drag and drop variables to change their display order. Finally, select **Confirm
+    order**.
+
+    :::
 
 13. Repeat the steps described in this guide to define more variables and add them to the necessary cluster profile
     layers.
@@ -142,7 +159,9 @@ this guide from step three at the **Profile Layers** stage of cluster profile cr
 3. In the upper-right corner, click **Variables** and, on the **Profile variables** pane, check that the necessary
    variables are defined.
 
-4. Open the necessary profile layers and check that their YAML configuration contains the expected variables.
+4. Hover over the **[Count] layers** pill next to the variables to review the profile layers where they are used.
+
+5. Open the necessary profile layers and check that their YAML configuration contains the expected variables.
 
 ## Manage Profile Variables
 
@@ -166,16 +185,21 @@ variables in the new version.
 
 1. Log in to Palette.
 
-2. Navigate to the cluster profile for which you want to update profile variables.
+2. Navigate to the cluster profile for which you want to update profile variables and, in the upper-right corner, click
+   **Variables**.
 
-3. In the upper-right corner, click **Variables**.
+   :::tip
 
-4. To edit a profile variable, in the right **Three-dot menu** of the necessary variable, click **Edit** and make the
-   necessary changes. Note that you cannot edit the **Variable**, **Format**, **Custom input validation**, **Required**,
-   **Mask value**, and **Read-only** fields.
+   Alternatively, open a profile layer and, in the upper-right corner of its YAML configuration editor, select
+   **Variables**.
 
-5. To delete a profile variable, in the right **Three-dot menu** of the necessary variable, click **Delete**. Then,
-   navigate to the profile layers that implement this variable and manually remove it from their YAML configurations.
+   :::
+
+3. To edit a profile variable, in the **three-dot menu** of the necessary variable, select **Edit** and make the
+   necessary changes.
+
+4. To delete a profile variable, navigate to the profile layers that implement this variable and remove it from their
+   YAML configuration. Then, in the **three-dot menu** of the necessary variable, select **Delete**.
 
 ### Validation
 

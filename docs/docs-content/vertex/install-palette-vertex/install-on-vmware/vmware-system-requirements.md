@@ -23,6 +23,11 @@ Start by reviewing the required action items below:
 3. Create node zones and regions for your Kubernetes clusters. Refer to the [Zone Tagging](#zone-tagging) section to
    ensure that the required tags are created in vSphere to ensure proper resource allocation across fault domains.
 
+4. If you are deploying VerteX with Red Hat Enterprise Linux (RHEL). Ensure you create a custom image containing your
+   RHEL subscription credentials and the desired Kubernetes version. This image template must be uploaded to the vSphere
+   `spectro-templates` folder. Instructions for creating the custom RHEL image with Kubernetes are available in the
+   [RHEL and PXK](../../../byoos/usecases/vmware/rhel-pxk.md) guide.
+
 :::info
 
 The permissions listed in this page are also needed for deploying a Private Cloud Gateway (PCG) and workload cluster in
