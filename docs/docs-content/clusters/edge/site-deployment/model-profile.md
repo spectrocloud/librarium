@@ -56,49 +56,48 @@ needs.
 
 9. Click on the code editor button **\</\>** to open up the editor
 
-<br />
-
 ![A view of the Kubernetes pack editor with a YAML configuration](/clusters_site-deployment_model-profile_byoos-pack-yaml.webp)
 
 10. Update the `system.uri` parameter in the pack editor. Use the custom OS image you created in the EdgeForge process.
     Refer to the EdgeForge [Build Images](../edgeforge-workflow/palette-canvos/palette-canvos.md) guide if you are
     missing a custom OS image. The following is an example configuration using a custom OS image.
 
-```yaml
-pack:
-content:
-  images:
-    - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
-    # - image: example.io/my-other-images/example:v1.0.0
-    # - image: example.io/my-super-other-images/example:v1.0.0
-  #drain:
-  #cordon: true
-  #timeout: 60 # The length of time to wait before giving up, zero means infinite
-  #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
-  #ignoreDaemonSets: true
-  #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
-  #force: true # Continue even if there are pods that do not declare a controller
-  #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
-  #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
+    ```yaml
+    pack:
+    content:
+      images:
+        - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
+        # - image: example.io/my-other-images/example:v1.0.0
+        # - image: example.io/my-super-other-images/example:v1.0.0
+      #drain:
+      #cordon: true
+      #timeout: 60 # The length of time to wait before giving up, zero means infinite
+      #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
+      #ignoreDaemonSets: true
+      #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
+      #force: true # Continue even if there are pods that do not declare a controller
+      #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
+      #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
 
-options:
-  system.uri: example.io/my-images/example-custom-os:v1.4.5
-```
+    options:
+      system.uri: example.io/my-images/example-custom-os:v1.4.5
+    ```
 
-<br />
+    :::info
 
-:::info
+    You can customize the node drainage behavior and specify additional images that you may have created that are part
+    of the content bundle. Specify any additional image required by the cluster profile in the `images` section. Add an
+    `- image: ` entry for each image you need to specify. Refer to the [BYOOS Pack](../../../integrations/byoos.md)
+    resource to learn more about the pack details.
 
-You can customize the node drainage behavior and specify additional images that you may have created that are part of
-the content bundle. Specify any additional image required by the cluster profile in the `images` section. Add an
-`- image: ` entry for each image you need to specify. Refer to the [BYOOS Pack](../../../integrations/byoos.md) resource
-to learn more about the pack details.
+    :::
 
-:::
+11. Specify any cloud-init stages in your OS pack. Cloud-init stages allow you to configure your OS declaratively. For
+    more information about cloud-init stages, refer to [Cloud-init Stages](../edge-configuration/cloud-init.md).
 
-11. Click on the **Next layer** button to continue.
+12. Click on the **Next layer** button to continue.
 
-12. Complete the cluster profile creation process by filling out the remaining layers.
+13. Complete the cluster profile creation process by filling out the remaining layers.
 
 You have successfully created a cluster profile that you can use to deploy Edge clusters.
 
