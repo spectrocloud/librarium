@@ -15,7 +15,7 @@ different organizations or teams need to perform specific tasks.
 A connected cluster is a cluster that is managed by a Palette instance. The Palette instance could be the public Palette
 SaaS or a self-hosted instance. The following diagram represents the deployment lifecycle of a connected cluster.
 
-![A flow of the lifecycle, starting with model, staging, install, and finally register. Once all phases are complete the cluster provision occurs.](/native-edge-deployment-lifecycle.webp)
+![A flow of the lifecycle for connected clusters: modeling, EdgeForge, installation, on-site deployment, cluster formation, and cluster management. ](/native-edge-deployment-lifecycle.webp)
 
 1. **Modeling**. App owners build and test the applications in test environments and model application profiles in
    Palette for a cluster installation. For more information, refer to
@@ -30,8 +30,8 @@ SaaS or a self-hosted instance. The following diagram represents the deployment 
    hosts. The Edge hosts are then shipped to edge sites. For more information, refer to
    [Installation](./site-deployment/site-installation/site-installation.md).
 
-4. **Registration**. Edge hosts need to be registered with Palette. In this phase, the site operator powers on the Edge
-   host, which will boot to registration. The site operator also applies site-specific properties such as static IP
+4. **On-site Deployment**. Edge hosts need to be registered with Palette. In this phase, the site operator powers on the
+   Edge host, which will boot to registration. The site operator also applies site-specific properties such as static IP
    address, network proxy, and SSL certificates with site user data or Palette Terminal User Interface (TUI). For more
    information, refer to [Edge Host Registration](./site-deployment/site-installation/edge-host-registration.md).
 
@@ -53,8 +53,13 @@ will be ready to be centrally managed for cluster formation.
 
 An air-gapped cluster is a cluster that does not have a connection to a Palette instance. The deployment lifecycle for
 air-gapped Edge hosts is slightly different from connected Edge hosts. Since there is no Palette instance and each Edge
-host is managed locally, there is no registration phase. In addition, you need to provide the images that are required
-for deployment to the Edge host through a content bundle or through an external registry.
+host is managed locally, there is no Edge host registration during the on-site deployment phase.
+
+In addition, you need to provide the images that are required for deployment to the Edge host through a content bundle
+or through an external registry. After a cluster is formed, you manage the cluster locally with local UI instead of
+using through a Palette instance.
+
+![A flow of the lifecycle for air-gapped clusters: modeling, EdgeForge, installation, on-site deployment, cluster formation, and cluster management. ](/native-edge-deployment-lifecycle-airgap.webp)
 
 The following are the phases of the deployment lifecycle of air-gapped Edge hosts:
 
@@ -72,13 +77,17 @@ The following are the phases of the deployment lifecycle of air-gapped Edge host
    site locations. For more information, refer to [Build Content Bundle](./edgeforge-workflow/build-content-bundle.md)
    and [Export Cluster Definition](./local-ui/cluster-management/export-cluster-definition.md).
 
-3. **Installation**. Site operators use the Palette Edge Installer built in the previous stage to install Palette Edge
-   onto the Edge hosts. In this phase, the site operator applies site-specific properties such as static IP address,
-   network proxy, and certificate.
+3. **Installation**. IT/Ops use the installer prepared in the EdgeForge phase and installs Palette Edge onto the Edge
+   hosts. The Edge hosts are then shipped to edge sites.
 
-4. **Cluster formation**. Air-gapped Edge hosts do not have a connection to Palette and therefore does not require
-   registration. If the Edge host is installed with a content bundle and cluster definition, the site operator can power
-   on the Edge host and create a cluster using the local UI. For more information, refer to
+4. **On-site deployment**. Air-gapped Edge hosts do not have a connection to Palette and therefore does not require
+   registration. Site operator powers on the Edge host, which will boot up and serve the local UI and the Edge
+   Management API instead of to the registration screen. The site operator also applies site-specific properties such as
+   static IP address, network proxy, and SSL certificates with site user data or Palette Terminal User Interface (TUI).
+   For more information, refer to [Access Local UI](./local-ui/host-management/access-console.md).
+
+5. **Cluster formation**. If the Edge host is installed with a content bundle and cluster definition, the site operator
+   can power on the Edge host and create a cluster using the local UI. For more information, refer to
    [Create a Cluster with Local UI](./local-ui/cluster-management/create-cluster.md).
 
    If the Edge host is missing either the content bundle or the cluster definition, you can still build a content bundle
@@ -87,11 +96,14 @@ The following are the phases of the deployment lifecycle of air-gapped Edge host
    pull images from a private external registry, then cluster formation does not require a content bundle, but it will
    still require a cluster definition. For more information about using
 
-5. **Cluster management**. In this phase, the IT/Ops teams perform maintenance and update activities on your active
+6. **Cluster management**. In this phase, the IT/Ops teams perform maintenance and update activities on your active
    clusters. Using the local Harbor registry, you can provide images that can be used to upgrade your cluster. For more
    information, refer to [Enable Local Harbor Registry](./site-deployment/deploy-custom-registries/local-registry.md).
 
 ## Next Steps
 
-Now that you have an understanding of the deployment lifecycle, start the deployment of your Edge host by reviewing the
-[Site Deployment](site-deployment/site-deployment.md) instructions.
+Now that you have an understanding of the deployment lifecycle, start the deployment of your Edge host by modeling a
+cluster profile for your Edge cluster to use and start building the required Edge artifacts for deployment.
+
+- [Model Cluster Profile](./site-deployment/model-profile.md).
+- [EdgeForge](./edgeforge-workflow/)
