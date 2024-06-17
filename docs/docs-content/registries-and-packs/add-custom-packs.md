@@ -220,7 +220,7 @@ The following is the JSON schema for packs. Review the schema to ensure your JSO
       "properties": {
         "scheduleType": {
           "type": "string",
-          "enum": ["all", "master", "worker"]
+          "enum": ["all", "control-plane", "worker"]
         },
         "resourceRequestParamRef": {
           "type": "string"
