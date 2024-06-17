@@ -40,7 +40,7 @@ key that is in the Signature Database (DB). This is important both during instal
   uname -m
   ```
 
-- [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the git --version
+- [Git](https://github.com/git-guides/install-git). You can ensure git installation by issuing the git --version
   command.
 
 - [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the docker --version
