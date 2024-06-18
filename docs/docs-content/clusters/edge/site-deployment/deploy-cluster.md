@@ -502,14 +502,11 @@ is an explanation of the options and sub-command used below:
 - The `--env-file` option reads the **.packerenv** file.
 
 - The `--volume ` option mounts a local directory to our official tutorials container,
-  `ghcr.io/spectrocloud/tutorials:1.0.10`.
+  `ghcr.io/spectrocloud/tutorials:1.1.5`.
 
-- The
-  `sh -c "source /edge/vmware/clone_vm_template/setenv.sh && bash /edge/vmware/clone_vm_template/delete-packer-cache.sh"`
-  shell sub-command deletes any pre-existing **packer_cache**. A known
-  [issue](https://github.com/hashicorp/packer-plugin-vsphere/issues/55) with the Packer vSphere plugin causes checksum
-  logic to ignore previous builds, and reuse previously created ISO found in the **packer_cache** folder. The delete
-  script removes any existing packer cache to prevent re-using a previously created ISO.
+- The `sh -c "source /edge/vmware/clone_vm_template/setenv.sh "` shell sub-command defines the GOVC environment
+  variables, the number of VMs, a prefix string for the VM name, and the VM template name. Most of the GOVC environment
+  variables refer to the variables you have defined in the **.goenv** file.
 
 - The `cd /edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command changes to
   the container's **/edge/vmware/packer/** directory and invokes `packer build` to create the VM template. The
@@ -549,7 +546,7 @@ is an explanation of the options and sub-command used below:
 
   Should you need to change the VM template name or VM settings defined in the **vsphere.hcl** file, or review the
   Packer script, you must open a bash session into the container using the
-  `docker run -it --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.0.10 bash`
+  `docker run -it --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.1.5 bash`
   command, and change to the **edge/vmware/packer/** directory to make the modifications. After you finish the
   modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command to trigger the Packer
   build process.
@@ -565,8 +562,8 @@ docker run --interactive --tty --rm \
   --env-file .packerenv \
   --env-file .goenv \
   --volume "${ISOFILEPATH}:/edge/vmware/packer/build" \
-  ghcr.io/spectrocloud/tutorials:1.0.10 \
-  sh -c "source /edge/vmware/clone_vm_template/setenv.sh && bash /edge/vmware/clone_vm_template/delete-packer-cache.sh && cd /edge/vmware/packer/ && packer init build.pkr.hcl && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
+  ghcr.io/spectrocloud/tutorials:1.1.5 \
+  sh -c "source /edge/vmware/clone_vm_template/setenv.sh && cd /edge/vmware/packer/ && packer init build.pkr.hcl && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
 ```
 
 Depending on your machine and network, the build process can take 7-10 minutes to finish.
@@ -596,7 +593,7 @@ GOVC requires the same VMware vCenter details as the environment variables you d
 The next step is to use the following `docker run` command to clone the VM template and provision three VMs. Here is an
 explanation of the options and sub-command used below:
 
-- The `--env-file` option reads the **.goenv** file in our official `ghcr.io/spectrocloud/tutorials:1.0.10` tutorials
+- The `--env-file` option reads the **.goenv** file in our official `ghcr.io/spectrocloud/tutorials:1.1.5` tutorials
   container.
 
 - The `sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"` shell sub-command changes to the container's
@@ -605,7 +602,6 @@ explanation of the options and sub-command used below:
 The **edge/vmware/clone_vm_template/** directory in the container has the following files:
 
 - **deploy-edge-host.sh** - Provisions the VMs.
-- **delete-packer-cache.sh** - Delete any cached ISO files.
 - **delete-edge-host.sh** - Deletes the VMs.
 
 - **setenv.sh** - Defines the GOVC environment variables, the number of VMs, a prefix string for the VM name, and the VM
@@ -639,7 +635,7 @@ export GOVC_FOLDER="${vcenter_folder}"
 Suppose you have changed the VM template name in the previous step or need to change the number of VMs to provision. In
 that case, you must modify the **setenv.sh** script. To do so, you can reuse the container bash session from the
 previous step if it is still active, or you can open another bash session into the container using the
-`docker run -it --env-file .goenv ghcr.io/spectrocloud/tutorials:1.0.10 bash` command. If you use an existing container
+`docker run -it --env-file .goenv ghcr.io/spectrocloud/tutorials:1.1.5 bash` command. If you use an existing container
 bash session, create the **.goenv** file described above and source it in your container environment. Next, change to
 the **edge/vmware/clone_vm_template/** directory to modify the **setenv.sh** script, and issue the
 `./deploy-edge-host.sh` command to deploy the VMs.
@@ -651,7 +647,7 @@ Issue the following command to clone the VM template and provision three VMs.
 ```bash
 docker run -it --rm \
   --env-file .goenv \
-  ghcr.io/spectrocloud/tutorials:1.0.10 \
+  ghcr.io/spectrocloud/tutorials:1.1.5 \
   sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"
 ```
 
@@ -1006,7 +1002,7 @@ following command to delete the Edge hosts.
 
 ```bash
 docker run --interactive --tty --rm --env-file .goenv \
-  ghcr.io/spectrocloud/tutorials:1.0.10 \
+  ghcr.io/spectrocloud/tutorials:1.1.5 \
   sh -c "cd edge/vmware/clone_vm_template/ && ./delete-edge-host.sh"
 ```
 
