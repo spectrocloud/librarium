@@ -26,128 +26,16 @@ explore each cluster update method and learn how to apply these changes using Pa
 
 ## Prerequisites
 
-This tutorial builds upon the resources and steps outlined in the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial
-for creating initial clusters.
+To complete this tutorial, follow the steps described in the [Set up Palette with AWS](./setup.md) guide to authenticate
+Palette for use with your AWS cloud account.
 
-To complete it, follow the steps described in the [Set up Palette with AWS](./setup.md) guide to authenticate Palette
-for use with your AWS cloud account.
-
-## Set Up Clusters
-
-Follow the instructions of the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial to create a cluster profile and
-cluster with the [_hello-universe_](https://github.com/spectrocloud/hello-universe) application. Your cluster should be
-successfully provisioned and in a healthy state.
+Follow the instructions of the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial to deploy a cluster with the
+[_hello-universe_](https://github.com/spectrocloud/hello-universe) application. Your cluster should be successfully
+provisioned and in a healthy state.
 
 The cluster profile name is `aws-profile` and the cluster name is `aws-cluster`.
 
-Navigate to the left **Main Menu** and select **Profiles** to view the cluster profile page. Find the cluster profile
-corresponding to your cluster in the list of profiles. Click on the **three-dot Menu** and select **Clone**.
-
-A dialog appears to confirm the details of the cloned cluster profile. Fill in the **Name** input using the pattern
-`aws-profile-api`. Click on **Confirm** to create the profile.
-
-The list of cluster profiles appears. Select the cloned cluster profile to view its details.
-
-Select the **hello-universe** manifest. The editor appears. In the manifest editor, replace the existing code with the
-following content.
-
-```yaml
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: hello-universe-api
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello-universe-api-service
-  namespace: hello-universe-api
-spec:
-  type: LoadBalancer
-  ports:
-    - protocol: TCP
-      port: 3000
-      targetPort: 3000
-  selector:
-    app: hello-universe-api
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello-universe-db-service
-  namespace: hello-universe-api
-spec:
-  type: ClusterIP
-  ports:
-    - protocol: TCP
-      port: 5432
-      targetPort: 5432
-  selector:
-    app: hello-universe-db
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: hello-universe-api-deployment
-  namespace: hello-universe-api
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: hello-universe-api
-  template:
-    metadata:
-      labels:
-        app: hello-universe-api
-    spec:
-      containers:
-        - name: hello-universe-api
-          image: ghcr.io/spectrocloud/hello-universe-api:1.0.9
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 3000
-          env:
-            - name: DB_HOST
-              value: "hello-universe-db-service.hello-universe-api.svc.cluster.local"
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: hello-universe-db-deployment
-  namespace: hello-universe-api
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: hello-universe-db
-  template:
-    metadata:
-      labels:
-        app: hello-universe-db
-    spec:
-      containers:
-        - name: hello-universe-db
-          image: ghcr.io/spectrocloud/hello-universe-db:1.0.0
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 5432
-```
-
-The code snippet you added deploys the [_hello-universe-api_](https://github.com/spectrocloud/hello-universe-api) and
-[_hello-universe-db_](https://github.com/spectrocloud/hello-universe-db) applications. These applications serve as the
-API server and database for the [_hello-universe_](https://github.com/spectrocloud/hello-universe) application.
-
-Click on **Confirm Updates** and close the editor.
-
-Click on **Save Changes** to confirm your updates.
-
-Deploy this cluster profile to a new cluster using the same steps outlined in the
-[Deploy a Cluster](./deploy-k8s-cluster.md) tutorial. Name this cluster `aws-cluster-api`.
-
-Once you have completed these steps and the host cluster creation process has finished, navigate to the left **Main
-Menu** and select **Clusters** to view your deployed clusters. You should have two healthy clusters.
-
-![Image that shows the two clusters in the clusters list](/getting-started/aws/getting-started_update-k8s-cluster_deployed-clusters-start-setup.webp)
+![Cluster details page with service URL highlighted](/getting-started/aws/getting-started_deploy-k8s-cluster_service_url.webp)
 
 ## Tag and Filter Clusters
 
@@ -167,9 +55,6 @@ Fill **service:hello-universe-frontend** in the **Tags (Optional)** input box. C
 panel.
 
 ![Image that shows how to add a cluster tag](/getting-started/aws/getting-started_update-k8s-cluster_add-service-tag.webp)
-
-Repeat the steps above for the `aws-cluster-api` cluster you deployed with the _hello-universe-api_. Add the
-**service:hello-universe-backend** tag to it.
 
 Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. Click on **Add Filter**, then
 select the **Add custom filter** option.
@@ -192,16 +77,9 @@ adding or removing layers and pack configuration updates.
 The version number of a given profile must be unique and use the semantic versioning format `major.minor.patch`. If you
 do not specify a version for your cluster profile, it defaults to **1.0.0**.
 
-Navigate to the left **Main Menu** and select **Clusters**. Filter for the cluster with the
-**service:hello-universe-backend** tag. You can review how to filter your clusters in the
-[Tag and Filter Clusters](#tag-and-filter-clusters) section.
-
-Select cluster to open its **Overview** tab. Make a note of the IP address of the **hello-universe-api-service** present
-in this cluster. You can find it by opening the **:3000** URL.
-
 Navigate to the left **Main Menu** and select **Profiles** to view the cluster profile page. Find the cluster profile
-corresponding to your _hello-universe-frontend_ cluster. It should be named using the pattern `aws-profile`. Select it
-to view its details.
+corresponding to your _hello-universe-frontend_ cluster. It should be named `aws-profile`. Select it to view its
+details.
 
 ![Image that shows the frontend cluster profile with cluster linked to it](/getting-started/aws/getting-started_update-k8s-cluster_profile-with-cluster.webp)
 
@@ -219,64 +97,21 @@ profile. This profile version is not deployed to any host clusters.
 ![Image that shows cluster profile version 1.1.0](/getting-started/aws/getting-started_update-k8s-cluster_new-version-overview.webp)
 
 The version **1.1.0** has the same layers as the version **1.0.0** it was created from. Click on the **hello-universe**
-manifest layer. The manifest editor appears.
+pack layer. The pack manifest appears.
 
-Replace the code in the editor with the following content.
+Click on **Presets** on the right-hand side. This pack has two configured presets:
 
-```yaml {41,42,43}
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: hello-universe
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello-universe-service
-  namespace: hello-universe
-spec:
-  type: LoadBalancer
-  ports:
-    - protocol: TCP
-      port: 8080
-      targetPort: 8080
-  selector:
-    app: hello-universe
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: hello-universe-deployment
-  namespace: hello-universe
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: hello-universe
-  template:
-    metadata:
-      labels:
-        app: hello-universe
-    spec:
-      containers:
-        - name: hello-universe
-          image: ghcr.io/spectrocloud/hello-universe:1.1.0
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 8080
-          env:
-            - name: API_URI
-              value: "http://REPLACE_ME:3000"
-```
+1. **Disable Hello Universe API** configures the [_hello-universe_](https://github.com/spectrocloud/hello-universe)
+   application as a standalone frontend application. This is the default preset selection.
+2. **Enable Hello Universe API** configures the [_hello-universe_](https://github.com/spectrocloud/hello-universe)
+   application as a three-tier application with a frontend, API server, and Postgres database.
 
-The code snippet you added deploys the [_hello-universe_](https://github.com/spectrocloud/hello-universe) application
-with the extra environment variable `API_URI`. This environment variable allows you to specify a hostname and port for
-the _hello-universe_ API server. Check out the
-[_hello-universe_ readme](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#connecting-to-api-server) to
-learn more about how to expand the capabilities of the _hello-universe_ application with an API Server.
+Select the **Enable Hello Universe API** preset. The pack manifest changes according to this preset.
 
-Replace the _REPLACE_ME_ placeholder in the code snippet provided with the IP address of the
-_hello-universe-api-service_ that you made a note of earlier.
+The pack manifest has requires two values to be replaced for the authorization token and for the database password.
+Replace these values with your own base64 encoded values. The
+[_hello-universe_](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer) repository
+provides a token that you can use.
 
 Click on **Confirm Updates**. The manifest editor closes.
 
@@ -294,10 +129,12 @@ Select the **1.1.0** version.
 
 Click on **Review & Save** to confirm your profile version selection.
 
-The **Changes Summary** dialog appears to show your cluster changes. Click on **Review changes in Editor**. The
-`API_URI` environment variable appears in the editor. Click on **Apply Changes** to deploy the new profile version.
+The **Changes Summary** dialog appears to show your cluster changes. Click on **Review changes in Editor**. The pack
+manifest changes appear in the editor. Click on **Apply Changes** to deploy the new profile version.
 
 ![Image that shows the profile 1.1.0 differences](/getting-started/getting-started_update-k8s-cluster_profile-version-changes.webp)
+
+:::warning
 
 Palette has backup and restore capabilities available for your mission critical workloads. Ensure that you have adequate
 backups before you make any cluster profile version changes in your production environments. You can learn more in the
@@ -306,12 +143,13 @@ backups before you make any cluster profile version changes in your production e
 :::
 
 Palette now makes the required changes to your cluster according to the specifications of the configured cluster profile
-version. Once your changes have completed, Palette marks your layers with the green status indicator.
+version. Once your changes have completed, Palette marks your layers with the green status indicator. The Hello Universe
+three-tier application will be successfully deployed.
 
 ![Image that shows completed cluster profile updates](/getting-started/aws/getting-started_update-k8s-cluster_completed-cluster-updates.webp)
 
-Click on the URL for port **:8080** to access the Hello Universe application. The landing page of the application
-indicates that it is connected to the API server.
+Click on the URL for port **:8080** on the **ui** service to access the Hello Universe application. The landing page of
+the application indicates that it is connected to the API server.
 
 ![Image that shows hello-universe with API server](/getting-started/getting-started_update-k8s-cluster_hello-universe-with-api.webp)
 
@@ -332,16 +170,16 @@ option **1.0.0** in the version dropdown. This process is the reverse of what yo
 
 Click on **Review & Save** to confirm your changes. The **Changes Summary** dialog appears again.
 
-Click on **Review changes in Editor**. The editor shows that the incoming version no longer contains the `API_URI`
-environment variable.
+Click on **Review changes in Editor**. The editor shows that the incoming version no longer contains the three-tier
+application configuration.
 
 Click on **Apply Changes**. Select the **Overview** tab.
 
 Palette now makes the changes required for the cluster to return to the state specified in version **1.0.0** of your
 cluster profile. Once your changes have completed, Palette marks your layers with the green status indicator.
 
-Click on the URL for port **:8080** to access the Hello Universe application. The landing page of the application
-indicates that the application has returned to its original state and is no longer connected to the API server.
+Click on the URL for port **:8080** on **hello-universe-service** to access the Hello Universe application. The landing
+page indicates that the application is deployed as a standalone frontend.
 
 ## Pending Updates
 
@@ -354,15 +192,15 @@ The previous state of the cluster profile will not be saved once it is overwritt
 Navigate to the left **Main Menu** and select **Clusters**. Filter for the cluster with the tag
 **service:hello-universe-frontend**. Select it to view its **Overview** tab.
 
-Select the **Profile** tab. Then, select the **hello-universe** manifest. Change the `replicas` field to `1` on line
-`19`. Click on **Save**. The editor closes.
+Select the **Profile** tab. Then, select the **hello-universe** manifest. Change the `replicas` field to `2` on line
+`14`. Click on **Save**. The editor closes.
 
 This cluster now contains an override over its cluster profile. Palette uses the configuration you have just provided
 for the single cluster over its cluster profile and begins making the appropriate changes.
 
 Once these changes are complete, select the **Workloads** tab. Then, select the **hello-universe** namespace.
 
-One replica of the **hello-universe-deployment** is available, instead of the two specified by your cluster profile.
+Two replicas of the **hello-universe-deployment** are available, instead of the one specified by your cluster profile.
 Your override has been successfully applied.
 
 Navigate to the left **Main Menu** and select **Profiles** to view the cluster profile page. Find the cluster profile
@@ -370,14 +208,13 @@ corresponding to your _hello-universe-frontend_ cluster. It is named `aws-profil
 
 Click on it to view its details. Select **1.0.0** in the version dropdown.
 
-Select the **hello-universe** manifest. The editor appears. Change the `replicas` field to `3` on line `19`. Click on
+Select the **hello-universe** pack. The editor appears. Change the `replicas` field to `3` on line `14`. Click on
 **Confirm Updates**. The editor closes.
 
 Click on **Save Changes** to confirm the changes you have made to your profile.
 
-Navigate to the left **Main Menu** and select **Clusters**. Filter for the clusters with the **service** tag. Both of
-your clusters match this filter. Palette indicates that the cluster associated with the cluster profile you updated has
-updates available.
+Navigate to the left **Main Menu** and select **Clusters**. Filter for the with the **service:hello-universe-frontend**
+tag. Palette indicates that the cluster associated with the cluster profile you updated has updates available.
 
 ![Image that shows the pending updates ](/getting-started/aws/getting-started_update-k8s-cluster_pending-update-clusters-view.webp)
 
@@ -386,12 +223,12 @@ Select this cluster to open its **Overview** tab. Click on **Updates** to begin 
 ![Image that shows the Updates Available button](/getting-started/aws/getting-started_update-k8s-cluster_updates-available-button-cluster-overview.webp)
 
 A dialog appears which shows the changes made in this update. Review the changes and ensure the only change is the
-`replicas` field value. The pending update maintains the override you have made and sets the `replicas` field to `1`.
+`replicas` field value. The pending update removes your cluster override and sets the `replicas` field to `3`. At this
+point, you can choose to apply the pending changes or keep it by modifying the right-hand side of the dialog.
 
 ![Image that shows the available updates dialog ](/getting-started/aws/getting-started_update-k8s-cluster_available-updates-dialog.webp)
 
-Set the value of `replicas` to `3` in the right-hand dialog. This removes your cluster override. Click on **Confirm
-updates** once you have finished reviewing your changes.
+Click on **Confirm updates** once you have finished reviewing your changes.
 
 Palette updates your cluster according to cluster profile specifications. Once these changes are complete, select the
 **Workloads** tab. Then, select the **hello-universe** namespace.
@@ -410,10 +247,8 @@ Click on **Settings** to expand the menu, and select **Delete Cluster**.
 
 ![Delete cluster](/getting-started/aws/getting-started_deploy-k8s-cluster_delete-cluster-button.webp)
 
-You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name to proceed with
-the delete step. The deletion process takes several minutes to complete.
-
-Repeat the same steps for the other cluster.
+You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name `aws-cluster` to
+proceed with the delete step. The deletion process takes several minutes to complete.
 
 <br />
 
@@ -431,11 +266,9 @@ Once the cluster is deleted, navigate to the left **Main Menu** and click on **P
 created and click on the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the
 selection to remove the cluster profile.
 
-Repeat the same steps to the delete the cluster profile named with the pattern `aws-profile-api`.
-
 ## Wrap-Up
 
-In this tutorial, you created two clusters and cluster profiles. After the clusters deployed to AWS, you updated one
+In this tutorial, you created deployed cluster profile updates. After the cluster was deployed to AWS, you updated the
 cluster profile in through three different methods: create a new cluster profile version, update a cluster profile in
 place, and cluster profile overrides. After you made your changes, the Hello Universe application functioned as a
 three-tier application with a REST API backend server.
