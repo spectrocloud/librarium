@@ -188,7 +188,7 @@ review detailed logs.
 4. Review the **Cluster Status**. Ensure the **Cluster Status** field displays **Running**.
 
 You can also use the command `kubectl get nodes` to review the status of all nodes in the cluster. Check out the
-[Access Cluster with CLI](../../../cluster-management/palette-webctl.md) guide to learn how to use `kubectl` with a host
+[Access Cluster with CLI](../../cluster-management/palette-webctl.md) guide to learn how to use `kubectl` with a host
 cluster.
 
 ## Add an Edge Host to a Host Cluster
@@ -198,7 +198,7 @@ node pool.
 
 ### Limitations
 
-- In a multi-node cluster with [PXK-E](../../../../integrations/kubernetes-edge.md) as its Kubernetes layer, you cannot
+- In a multi-node cluster with [PXK-E](../../../integrations/kubernetes-edge.md) as its Kubernetes layer, you cannot
   change custom Network Interface Card (NIC). When you add an Edge host to such a cluster, leave the NIC field as its
   default value.
 
