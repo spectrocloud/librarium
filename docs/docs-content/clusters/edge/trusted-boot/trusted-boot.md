@@ -96,7 +96,7 @@ Edge hosts without Trusted Boot. The upgrade process, however, requires you to u
 images.
 
 - [Edge Host Registration](../site-deployment/site-installation/edge-host-registration.md)
-- [Create Cluster Definition](../site-deployment/site-installation/cluster-deployment.md)
+- [Create Cluster Definition](../site-deployment/cluster-deployment.md)
 - [Upgrade Cluster with Trusted Boot](./deployment-day2/upgrade-cluster.md)
 
 ## Resources

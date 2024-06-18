@@ -189,7 +189,7 @@ address in the overlay CIDR range will be used as the Overlay VIP. This VIP is t
 cluster.
 
 12. Finish the rest of the cluster configurations and click **Finish Configuration** to deploy the cluster. For more
-    information, refer to [Create Cluster Definition](../site-deployment/site-installation/cluster-deployment.md).
+    information, refer to [Create Cluster Definition](../site-deployment/cluster-deployment.md).
 
 ## Validate
 

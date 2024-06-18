@@ -38,7 +38,7 @@ SaaS or a self-hosted instance. The following diagram represents the deployment 
 
 5. **Cluster formation**. One an Edge host is registered with Palette, the Edge host can be used to form a new cluster
    or be added to an existing cluster. Each cluster uses a cluster profile modeled in the **Modeling** stage. For more
-   information, refer to [Cluster Definition](./site-deployment/site-installation/cluster-deployment.md).
+   information, refer to [Cluster Definition](./site-deployment/cluster-deployment.md).
 
 6. **Cluster management**. In this phase, the IT/Ops team performs maintenance and update activities on your active
    clusters. Using versioned cluster profiles, Palette allows you to centrally managed all your Edge clusters and

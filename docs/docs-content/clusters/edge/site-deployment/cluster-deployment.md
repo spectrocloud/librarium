@@ -3,18 +3,19 @@ sidebar_label: "Create Cluster Definition"
 title: "Create Cluster Definition"
 description: "Define your Edge cluster using the Edge hosts that are registered and available."
 hide_table_of_contents: false
-sidebar_position: 40
+sidebar_position: 70
 tags: ["edge"]
 ---
 
-To complete the Edge Installation process, an Edge host must become a member of a host cluster. You can add an Edge host
-to an existing Edge cluster, or you can create a new host cluster for Edge hosts and make the Edge host a member.
+Once the Edge host has been deployed and registered with Palette, it is ready to be assigned to a host cluster. You can
+add an Edge host to an existing Edge cluster, or you can create a new host cluster for Edge hosts and make the Edge host
+a member. This applies both to Edge hosts deployed to a physical site and Edge hosts deployed as Virtual Machines (VM).
 
 :::info
 
 Procedures described on this page apply to Edge hosts with a connection to a Palette instance only. To learn how to
 create a cluster using an Edge host that does not have a connection to a Palette instance (an air-gapped Edge host),
-refer to [Create Cluster with Local UI](../../local-ui/cluster-management/create-cluster.md).
+refer to [Create Cluster with Local UI](../local-ui/cluster-management/create-cluster.md).
 
 :::
 
@@ -35,7 +36,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 ### Prerequisites
 
 - One or more registered Edge host. For more information about Edge host registration, refer to
-  [Edge Host Registration](./edge-host-registration.md).
+  [Edge Host Registration](./site-installation/edge-host-registration.md).
 
 - If you are using more than one Edge host to form a cluster, the hosts in the same cluster must be on the same network.
 
@@ -45,7 +46,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
   - Use Dynamic Host Configuration Protocol (DHCP) reservations to reserve an IP address in a DHCP network. Contact your
     network administrator to reserve IP addresses for your Edge hosts in a DHCP network.
   - Enable network overlay on your Edge cluster. Network overlay can only be enabled during cluster creation. For more
-    information about network overlay, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md).
+    information about network overlay, refer to [Enable Overlay Network](../networking/vxlan-overlay.md).
 
 ### Create Cluster
 
@@ -60,7 +61,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 5. Give the cluster a name, description, and tags. Click on **Next**.
 
 6. Select a cluster profile. If you don't have a cluster profile for Edge Native, refer to the
-   [Create Edge Native Cluster Profile](../model-profile.md) guide. Click on **Next** after you have selected a cluster
+   [Create Edge Native Cluster Profile](./model-profile.md) guide. Click on **Next** after you have selected a cluster
    profile.
 
 7. Review your cluster profile values and make changes as needed. Click on **Next**.
@@ -206,7 +207,7 @@ node pool.
 - An existing Edge cluster.
 
 - One or more registered Edge host on the same network as your existing cluster. For more information about Edge host
-  registration, refer to [Edge Host Registration](./edge-host-registration.md).
+  registration, refer to [Edge Host Registration](./site-installation/edge-host-registration.md).
 
 - You must ensure that the Edge hosts have stable IP addresses. You have the following options to do achieve stable IP
   addressing for Edge hosts:
@@ -215,7 +216,7 @@ node pool.
   - Use Dynamic Host Configuration Protocol (DHCP) reservations to reserve an IP address in a DHCP network. Contact your
     network administrator to reserve IP addresses for your Edge hosts in a DHCP network.
   - Your Edge cluster has enabled network overlay. Network overlay can only be enabled during cluster creation. For more
-    information about network overlay, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md).
+    information about network overlay, refer to [Enable Overlay Network](../networking/vxlan-overlay.md).
 
 :::warning
 
@@ -348,5 +349,4 @@ cluster overview page displays a summary of the progress. Use the **Events** tab
 4. Review the **Cluster Status**. Ensure the **Cluster Status** field displays **Running**.
 
 You can also use the command `kubectl get nodes` to review the status of all nodes in the cluster. Check out the
-[Access Cluster with CLI](../../../cluster-management/palette-webctl.md) to learn how to use `kubectl` with a host
-cluster.
+[Access Cluster with CLI](../../cluster-management/palette-webctl.md) to learn how to use `kubectl` with a host cluster.

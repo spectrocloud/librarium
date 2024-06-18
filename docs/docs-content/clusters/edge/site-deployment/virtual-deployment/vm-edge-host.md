@@ -71,4 +71,4 @@ cluster.
 Your Edge host is now registered with Palette. The next step is to provision create a cluster with this Edge host or add
 it to an existing cluster. The steps for creating a cluster with a virtual Edge host is identical to creating a cluster
 with a physical Edge host. To learn how to create a cluster or add the Edge host to an existing cluster, refer to
-[Create Cluster Definition](../site-installation/cluster-deployment.md).
+[Create Cluster Definition](../cluster-deployment.md).

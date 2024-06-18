@@ -24,7 +24,7 @@ Review the following guides in sequential order to successfully deploy an Edge h
 
 3. [Deployment On-site](./site-installation/site-installation.md)
 
-4. [Cluster Definition](./site-installation/cluster-deployment.md)
+4. [Cluster Definition](./cluster-deployment.md)
 
 :::info
 

@@ -246,5 +246,5 @@ Your Edge host is displayed and marked as **Registered** in the Edge hosts list.
 ## Next Steps
 
 The next step in the installation process is to add the Edge host to a cluster or to create an Edge Native host cluster.
-Check out the [Create Cluster Definition](cluster-deployment.md) guide to complete the last step of the installation
+Check out the [Create Cluster Definition](../cluster-deployment.md) guide to complete the last step of the installation
 process.
