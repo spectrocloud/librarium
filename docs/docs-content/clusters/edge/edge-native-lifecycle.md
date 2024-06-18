@@ -74,8 +74,9 @@ The following are the phases of the deployment lifecycle of air-gapped Edge host
    The IT/Ops teams can also create a content bundle containing all the necessary assets needed to provision their
    cluster and a cluster definition that reflects the cluster profile designed in the **Modeling** stage. Both the
    content bundle and the cluster definition can be included in the installer. The installer is then exported to all the
-   site locations. For more information, refer to [Build Content Bundle](./edgeforge-workflow/build-content-bundle.md)
-   and [Export Cluster Definition](./local-ui/cluster-management/export-cluster-definition.md).
+   site locations. For more information, refer to
+   [Build Content Bundle](./edgeforge-workflow/palette-canvos/build-content-bundle.md) and
+   [Export Cluster Definition](./local-ui/cluster-management/export-cluster-definition.md).
 
 3. **Installation**. IT/Ops use the installer prepared in the EdgeForge phase and installs Palette Edge onto the Edge
    hosts. The Edge hosts are then shipped to edge sites.

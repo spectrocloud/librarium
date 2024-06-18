@@ -1054,7 +1054,7 @@ To learn more about Edge, check out the resources below.
 
 - [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md)
 
-- [Build Content Bundle](../../edgeforge-workflow/build-content-bundle.md)
+- [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md)
 
 - [Model Edge Native Cluster Profile](../../site-deployment/model-profile.md)
 
