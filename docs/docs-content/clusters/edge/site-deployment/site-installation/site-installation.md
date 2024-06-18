@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Deploy Edge Clusters On-Site"
-title: "Deploy Edge Clusters On-Site"
+sidebar_label: "Deploy Edge Hosts On-Site"
+title: "Deploy Edge Hosts On-Site"
 description: "Learn how to deploy the an Edge cluster on your Edge host on-site."
 hide_table_of_contents: false
 tags: ["edge"]

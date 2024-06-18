@@ -7,13 +7,13 @@ sidebar_position: 20
 tags: ["edge"]
 ---
 
-The Edge host deployment process consists of four phases described in the following table.
+The Edge cluster deployment process consists of four phases described in the following table.
 
 | Phase                 | Description                                                                                                                                                                        |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Model Cluster Profile | The process of creating a [cluster profile](../../../profiles/cluster-profiles/cluster-profiles.md) for the host cluster that will be made up of Edge hosts.                       |
 | Installation          | The Edge Installer in a portable storage device installs Palette Edge onto the Edge host's hard disk. Refer to [Installation](/clusters/edge/site-deployment/stage) to learn more. |
-| Registration          | The Edge host is registered with Palette. The Edge host will remain in this phase until the registration process is complete.                                                      |
+| On-site Deployment    | Site operators power on the Edge host, applies site-specific settings, performs initial configurations, and registers Edge host with Palette.                                      |
 | Cluster Provisioning  | The Edge host boots into the specified provider OS and proceeds with the cluster deployment.                                                                                       |
 
 Review the following guides in sequential order to successfully deploy an Edge host.
@@ -22,7 +22,7 @@ Review the following guides in sequential order to successfully deploy an Edge h
 
 2. [Installation](../site-deployment/stage.md)
 
-3. [Deployment On-site](./site-installation/site-installation.md)
+3. [On-site Deployment](./site-installation/site-installation.md)
 
 4. [Cluster Definition](./cluster-deployment.md)
 
