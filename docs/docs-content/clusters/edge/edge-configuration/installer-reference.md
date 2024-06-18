@@ -77,8 +77,8 @@ stylus:
 
 ## Initial Configuration
 
-You can configure the Edge Installer to enable the initial configuration in the Terminal User Interface (TUI) when you
-boot up the Edge host for the first time. For more information about initial configuration, refer to
+You can configure the Edge Installer to enable the initial configuration in the Palette Terminal User Interface (TUI)
+when you boot up the Edge host for the first time. For more information about initial configuration, refer to
 [Initial Edge Host Configuration](../site-deployment/site-installation/initial-setup.md).
 
 | Parameter    | Description                                                                       |
