@@ -33,7 +33,7 @@ greater than 1 has the effect of requesting less CPU from Kubernetes for each VM
 
 ### Instructions
 
-1. 
+1.
 
 Certain workloads that require a predictable latency and enhanced performance would benefit from obtaining dedicated CPU
 resources. KubeVirt relies on the Kubernetes CPU manager to pin vCPUs to the physical host’s CPUs. To learn more, refer
