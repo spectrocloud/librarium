@@ -13,8 +13,8 @@ node to another without any noticeable downtime.
 
 Successful live migrations rely on appropriately configured storage and networking, and live migration must be enabled
 as a feature gate. Live migration is enabled by default in the `feature-gates` section of the KubeVirt configuration
-file that is part of the **Virtual Machine Orchestrator** pack. Refer to
-[Feature Gates](../vm-management.md#feature-gates) for more information.
+file that is part of the **Virtual Machine Orchestrator** pack. Refer to [Feature Gates](../vm-management.md) for more
+information.
 
 Live migration is used with rolling Kubernetes upgrades and workload balancing. To avoid interrupting a VM when a node
 is placed into maintenance or upgraded, all VM instances require a `LiveMigrate` eviction strategy.

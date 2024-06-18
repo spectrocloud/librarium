@@ -335,6 +335,6 @@ This guide demonstrates how to implement your own disk and VM templates using Ku
 
 To learn more about the Palette VMO, we encourage you to check out the reference resources below.
 
-- [Virtual Machine Orchestrator Pack](../../vm-packs-profiles/vm-packs-profiles.md)
+- [Palette VMO](../../vm-management.md)
 
 - [Deploy VM From a Template](../deploy-vm-from-template.md)

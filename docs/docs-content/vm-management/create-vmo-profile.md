@@ -4,13 +4,13 @@ title: "Create a VMO Profile"
 description: "Learn how to create a cluster profile to utilize Palette Virtual Machine Orchestrator capabilities."
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 5
+sidebar_position: 10
 tags: ["vmo"]
 ---
 
 The **Virtual Machine Orchestrator** pack conveniently includes several components and automatically installs the
 [Spectro Proxy](../integrations/frp.md) pack when you use the default profile configuration. To learn about pack
-components, refer to [Virtual Machine Orchestrator Pack](./vm-packs-profiles/vm-packs-profiles.md).
+components, refer to [Palette VMO](./vm-management.md).
 
 ## Limitations
 

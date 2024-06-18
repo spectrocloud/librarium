@@ -7,8 +7,8 @@ sidebar_position: 0
 tags: ["VMO", "architecture"]
 ---
 
-Palette Virtual Machine Orchestrator (VMO) is a composite solution that includes a variety of tools and technologies for
-deploying and managing Virtual Machines (VMs) alongside containerized applications.
+Palette Virtual Machine Orchestrator (VMO) is a composite solution that includes the Palette VMO pack and a variety of
+tools and technologies for deploying and managing Virtual Machines (VMs) alongside containerized applications.
 
 This page offers a reference architecture you can implement to create a standard, repeatable, and highly scalable VMO
 solution that can be further adapted and customized to fit specific environments.
@@ -17,21 +17,25 @@ solution that can be further adapted and customized to fit specific environments
 
 As referenced in the diagram, Palette VMO leverages the following core technologies:
 
-- **Pure Storage FlashArray** for storage, orchestrated by **Portworx Enterprise** as the Container Storage Interface
-  (CSI). Note that, as the bare metal servers contain internal disks, this is not a hyperconverged configuration.
+- [**Pure Storage FlashArray**](https://www.purestorage.com/products.html) for storage orchestrated by
+  [**Portworx Enterprise**](https://portworx.com/services/kubernetes-storage/) as the Container Storage Interface (CSI).
+  Note that, as the bare metal servers contain internal disks, this is not a hyper-converged configuration.
 
-- **Canonical MAAS** to automate the Operating System (OS) and Kubernetes deployment on bare metal.
+- [**Canonical MAAS**](https://maas.io/) to automate the Operating System (OS) and Kubernetes deployment on bare metal.
 
-- **Cilium** to provide network services to containerized workloads. You can also use Cilium with VMs that do not need
-  to be exposed on a VLAN, but could be exposed on the pod overlay network instead (in the case of hybrid workloads).
+- [**Cilium**](https://cilium.io/) to provide network services to containerized workloads. You can also use Cilium with
+  VMs that do not need to be exposed on a VLAN but could be exposed on the pod overlay network instead (in the case of
+  hybrid workloads).
 
-- **Multus** to enable VLAN network access to the VMs.
+- [**Multus**](https://github.com/k8snetworkplumbingwg/multus-cni) to enable VLAN network access to the VMs.
 
-- **MetalLB** to provide IPs for Kubernetes service resources of type `LoadBalancer`.
+- [**MetalLB**](https://metallb.universe.tf/) to provide IPs for Kubernetes service resources of type `LoadBalancer`.
 
-- **Nginx** to provide Ingress services to KubeVirt, Prometheus, and application workloads.
+- [**Nginx**](https://nginx.org/en/) to provide Ingress services to [KubeVirt](https://kubevirt.io/), Prometheus, and
+  application workloads.
 
-- **Prometheus** to collect metrics and **Grafana** to graph the metrics into monitoring dashboards.
+- [**Prometheus**](https://prometheus.io/) to collect metrics and [**Grafana**](https://grafana.com/) to graph the
+  metrics into monitoring dashboards.
 
 ## Hardware Resources
 
@@ -46,21 +50,21 @@ Refer to the following table for the minimum and recommended hardware specificat
 | **Storage Adapters** | 2 x 16 Gbps FC                                     | 2 x 16 Gbps FC                               |                                                                                  |
 | **Server**           | Local disk for the OS boot (SAN boot is supported) | Local disk for the OS boot                   | Boot from SAN requires special consideration due to the multipath configuration. |
 
-Typically, the cluster control plane nodes do not run any VMO workloads. As a result, the control plane nodes can have
-lighter hardware specifications. Meaning, a server with 4 cores and 8 GB RAM is sufficient for a minimum-specification
-control plane node.
+Typically, the cluster control plane nodes do not run any VMO workloads. As a result, they can have lighter hardware
+specifications. For example, a server with 4 cores and 8 GB RAM is sufficient for a minimum-specification control plane
+node.
 
-You can increase the hardware specifications based on the total number of control plane and worker nodes that you want
-to have in the cluster. Refer to the following table for guidance on the control plane node sizing. Note that these
-recommendations assume that each cluster has at least three control plane nodes.
+You can increase the hardware specifications based on the total number of control plane and worker nodes you want in the
+cluster. Refer to the following table for guidance on control plane node sizing. Note that these recommendations assume
+that each cluster has at least three control plane nodes.
 
 :::info
 
 A Palette VMO cluster should consist of at least 10 worker nodes to ensure sufficient resource distribution. The
 [Portworx Sharedv4 service pod anti-hyperconvergence](https://docs.portworx.com/portworx-enterprise/concepts/shared-volumes#sharedv4-service-pod-anti-hyperconvergence)
-setting, which is necessary for seamless storage fallover, requires two nodes to host its persistent storage, and these
-two nodes cannot run any VMs. As a result, your VMO cluster needs to have enough nodes, so that there are always at
-least two nodes available for the storage failover workload.
+setting, which is necessary for seamless storage failover, requires two nodes to host its persistent storage, and these
+two nodes cannot run any VMs. As a result, your VMO cluster needs to have enough nodes so that there are always at least
+two nodes available for the storage failover workload.
 
 :::
 
@@ -111,14 +115,14 @@ how you can adapt the recommended software resources, get in touch with our
 
 ## Network Configuration
 
-Compared to the standard Kubernetes clusters, networking for Palette VMO can require additional configuration especially
-if your VMs will need to be accessible on the existing VLANs. As this configuration requires bypassing the typical
+Compared to the standard Kubernetes clusters, networking for Palette VMO can require additional configuration,
+especially if your VMs need to be accessible on the existing VLANs. As this configuration requires bypassing the typical
 Kubernetes pod networking stack, we use Multus for networking in Palette VMO.
 
-This also implies additional requirements for the work node host network configuration, in order to have valid network
-targets for the VMs.
+This also implies additional requirements for the host network configuration of worker nodes in order to have valid
+network targets for the VMs.
 
-Refer to the following table for an example network configuration.
+Refer to the following table for an example of network configuration.
 
 | Network                     | VLAN ID       | Network CIDR   | Gateway    |
 | --------------------------- | ------------- | -------------- | ---------- |
@@ -131,10 +135,10 @@ Refer to the following table for an example network configuration.
 
 MetalLB can use the **End-user Access** network to publish non-virtualized apps in the following ways:
 
-- As a network, on which to advertise IP addresses, as
+- As a network on which to advertise IP addresses, as
   [Layer 2 advertisements](https://metallb.universe.tf/concepts/layer2/).
 
-- As a BGP network, where it can
+- As a BGP network where it can
   [advertise BGP addresses](https://access.redhat.com/webassets/avalon/d/OpenShift_Container_Platform-4.10-Networking-en-US/images/afe4598d665b24b7a193bfd5b4440d48/209_OpenShift_BGP_0122.png)
   to BGP routers.
 
@@ -143,12 +147,12 @@ You can select either approach depending on your network equipment.
 :::tip
 
 We recommend using a dedicated VLAN for end-user access and not sharing it with VLANs used by VMs. While it is possible
-to share the same VLAN for VMs and containers, you must be cautios when this VLAN also has the default gateway.
+to share the same VLAN for VMs and containers, you must be cautious when this VLAN also has the default gateway.
 
 :::
 
-Refer to the following table for an example host network configuration, which uses a total of 4 NICs in 2 bonds and fits
-with our recommended VMO network configuration.
+Refer to the following table for an example of a host network configuration, which uses a total of 4 NICs in 2 bonds and
+fits with our recommended VMO network configuration.
 
 | Interface        | Type   | Contents             | VLAN   | CIDR           | Gateway    |
 | ---------------- | ------ | -------------------- | ------ | -------------- | ---------- |
@@ -162,7 +166,7 @@ The **br0** bridge interface is used as a master interface by Multus to automati
 this scenario, the master interface must be a bridge, as no other type will work.
 
 This setup also assumes that the physical servers (the worker nodes) have four physical network interfaces that are
-connected to the switch as described in the following table.
+connected to the switch, as described in the following table.
 
 | Physical Port     | Name in OS | Purpose                                              | Switchport Configuration |
 | ----------------- | ---------- | ---------------------------------------------------- | ------------------------ |
@@ -173,22 +177,22 @@ connected to the switch as described in the following table.
 
 For PXE boot, you can use both an untagged or native VLAN 0 network and a tagged network, such as VLAN 5. However, to
 ensure a successful PXE boot on a tagged network, we recommend setting the native VLAN network to the tagged VLAN ID on
-the switchport (in our example, this would be 5), so that the PXE boot can work with untagged traffic.
+the switch port (in our example, this would be 5), so that the PXE boot can work with untagged traffic.
 
-Alternatively, if the serves supports UEFI PXE boot and allows directly setting the VLAN ID for PXE boot, you can also
-use this option. In this case, you need to adjust the configuration for **bond_mgmt** to run the `192.168.0.0/22` on a
-**bond_mgmt.5** subinterface. However, because it is difficult to achieve PXE boot on a tagged VLAN, we recommend using
-a native, or untagged, VLAN for PXE.
+Alternatively, if the server supports UEFI PXE boot and allows you to set the VLAN ID for PXE boot directly, you can
+also use this option. In this case, you need to adjust the configuration for **bond_mgmt** to run the `192.168.0.0/22`
+on a **bond_mgmt.5** subinterface. However, because it is difficult to achieve PXE boot on a tagged VLAN, we recommend
+using a native or untagged VLAN for PXE.
 
 The **bond_data.20** subinterface provides outbound connectivity, as it has the default gateway. This is the primary way
-to publish services from container workloads to the end users. If there are any specific datacenter networks you want to
-reach over the **bond_mgmt.10** subinterface instead, you can configure them through static routes on the
+to publish services from container workloads to the end users. If there are any specific datacenter networks that you
+want to reach over the **bond_mgmt.10** subinterface instead, you can configure them through static routes on the
 `172.16.0.0/22` subnet in Canonical MAAS. Those routes will be automatically applied by MAAS upon server installation.
 
-For publishing workloads from VMs, you have the wollowing ways:
+For publishing workloads from VMs, you have the following ways:
 
-- Running the VM on the pod network like containers, and publishing the individual VM ports as Kubernetes services on
-  the ** bond_data.20** network. In this case, you can use MetalLB to assign IP addresses.
+- Running the VM on the pod network like containers and publishing the individual VM ports as Kubernetes services on the
+  ** bond_data.20** network. In this case, you can use MetalLB to assign IP addresses.
 
 - Placing the entire VM on a VLAN and using Multus to assign the VM to a VLAN on top of the **br0** interface. In this
   case, it's the responsibility of the VM (for static IPs) or the network (for DHCP) to assign IP addresses.
@@ -205,7 +209,7 @@ networks and VLANs are used, consider the following network configuration exampl
 | **bond0.20** | VLAN   | bond0                | 20     | 10.20.30.0/16  | 10.20.30.1 |
 | **br0**      | Bridge | bond0                | Native | 192.168.0.0/22 |            |
 
-For this setup, it is assumed that the physical servers (worker nodes) are connected to the switch as described in the
+For this setup, it is assumed that the physical servers (worker nodes) are connected to the switch, as described in the
 following table.
 
 | Physical Port     | Name in OS | Purpose                                                                  | Switchport Configuration       |
@@ -214,7 +218,7 @@ following table.
 | **NIC 1, Port 2** | enp2s0     | Management network <br /> Data network                                   | Trunk (allowing 0, 10, 20-100) |
 
 In this configuration, VLANs 10 (mgmt) and 20 (data) are not available for use by VMs on the **br0** interface because
-the VLAN subinterfaces on the bridge master interface are mutually exclusive with VLAN subinterfaces on the bridge.
+the VLAN subinterfaces on the bridge master interface and VLAN subinterfaces on the bridge are mutually exclusive.
 
 If you need to run VMs on the same VLAN as either the mgmt (10) or the data (20) VLAN, you can facilitate this by
 changing the network configuration as follows.
@@ -232,11 +236,11 @@ virtual machines to also run on VLAN 20 without conflicts.
 ## Storage Configuration
 
 This section provides the minimum requirements for Kubernetes storage on KubeVirt, as well as an example implementation
-based on Portworx and Pure Flash Array that was validated for this reference architecture.
+based on Portworx and Pure Flash Array, which were validated for this reference architecture.
 
 :::info
 
-While we have validated the Portworx and Pure Flash Array solution, it is not the only viable approach. You can also
+While we have validated the Portworx and Pure Flash Array solution, there are other viable approaches. You can also
 configure a reliable VMO cluster with other storage solutions, such as NetApp, DellEMC PowerFlex, and Rook-Ceph.
 
 :::
@@ -267,18 +271,43 @@ the storage is provided by aggregating local disks in servers (or LUNs from trad
 distributed storage logic on top of it, similar to VMware vSAN. When using this approach for Palette-managed clusters,
 you need to take additional steps to prevent data loss during Kubernetes upgrades.
 
-When upgrading OS and Kubernetes versions, Palette used the repave method. Under the repave method, a cluster node is
-gracefully removed from the cluster, and then replaced by a new node with upgraded OS and Kubernetes. To learn more
-about the repave method, refer to
+When upgrading OS and Kubernetes versions, Palette used the repave method. During the repave, a cluster node is
+gracefully removed from the cluster and then replaced by a new node with the upgraded OS and Kubernetes. To learn more
+about the repave behavior in Palette, refer to
 [Repave Behavior and Configuration](https://docs.spectrocloud.com/clusters/cluster-management/node-pool/#repave-behavior-and-configuration).
 
-This presents a challenge for hyper-converged clusters, because every node repave causes a significant amount of storage
-I/O as the data from the lost node is being rebuilt. To ensure that bare metal Palette clusters with hyper-converged
-storage can successfully perform repaves without storage issues, you need to set a fixed worker node pool in Canonical
-MAAS. Refer to our
+This presents a challenge for hyper-converged clusters because every node repave causes a significant amount of storage
+input and output as the data from the lost node is rebuilt onto the new node. To ensure that bare metal Palette clusters
+with hyper-converged storage can successfully perform repaves without storage issues, you need to set a fixed worker
+node pool in Canonical MAAS. Refer to our
 [Reliable Distributed Storage for Bare-Metal CAPI Clusters](https://thenewstack.io/reliable-distributed-storage-for-bare-metal-capi-clusters/)
-article for example storage implementation.
+article for an example storage implementation.
 
 ### Example Solution
 
+For our validated Palette VMO architecture, we've selected Portworx as the CSI for the back-end Pure Storage
+[FlashArray//C](https://www.purestorage.com/products/unified-block-file-storage/flasharray-c.html#specifications), as it
+provides some unique benefits with regard to performance, efficiency, and ease of management:
+
+- Both products are made and maintained by the same company, and therefore
+  [work well together](https://docs.portworx.com/cloud-references/auto-disk-provisioning/pure-flash-array/#architecture).
+  Portworks is the [designated CSI](https://github.com/purestorage/pso-csi/tree/master#readme) for managing Pure Storage
+  arrays from Kubernetes.
+
+- Portworx provides NFS-based shared volumes (RWX) based on storage pools that are backed by FlashArray storage.
+
+- As Portworx is initialized on each worker node, it automatically requests a LUN from FlashArray to join the shared
+  cluster storage pool. Persistent volumes are then served from the shared storage pool.
+
+- FlashArray performs deduplication on the back end to increase storage efficiency. Since Portworx creates two copies of
+  the data for resiliency, the deduplication on the back-end array restores some of that capacity.
+
+- Portworx can automatically reassign LUNs from FlashArray to other Kubernetes nodes, allowing cluster repaves to happen
+  without rebuilding any data.
+
 ## Next Steps
+
+Now that you understand the architecture behind Palette VMO and how the different technologies work together to enable
+clusters capable of combining VMs and containerized applications, continue exploring VMO by reviewing our
+[Create a VMO Profile](./create-vmo-profile.md) and [Create and Manage VMO Cluster](./create-manage-vmo-cluster.md)
+guides.
