@@ -1029,7 +1029,7 @@ template, right-click on it and choose **Delete** option from the **drop-down Me
 
 Switch to the **Storage** view in your vSphere client. To delete the **palette-edge-installer.iso** file from the
 **packer_cache/** directory in the VMware vCenter datastore, right-click on it and choose **Delete** option from the
-**drop-down Menu**. <br />
+**drop-down Menu**.
 
 ## Wrap-Up
 

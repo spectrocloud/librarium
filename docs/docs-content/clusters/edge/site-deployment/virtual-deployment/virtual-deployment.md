@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Deploy Edge Hosts as Virtual Machines"
-title: "Deploy Edge Hosts as Virtual Machines"
+sidebar_label: "Deploy Edge Clusters with Virtual Machines"
+title: "Deploy Edge Clusters with Virtual Machines"
 description: "Learn about how to deploy Palette Edge on virtual Edge hosts."
 hide_table_of_contents: false
 sidebar_position: 0

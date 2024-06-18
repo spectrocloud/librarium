@@ -54,7 +54,7 @@ phase. Use a supplementary user data configuration file and apply it at the on-s
 
 Alternatively, you can use take advantage of our Trusted Boot feature. Trusted Boot ensures that your user data remains
 encrypted and cannot be decrypted if the boot process is tempered with. For more information about Trusted Boot, refer
-to Trusted Boot documentation.
+to [Trusted Boot](../trusted-boot/trusted-boot.md).
 
 :::
 

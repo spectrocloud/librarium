@@ -21,7 +21,7 @@ Use the following steps to provision a VM as an Edge host using an Open Virtuali
 - An Edge Installer OVF template. Check out the [Installation](../stage.md) for guidance on how to create an Edge
   Installer OVF template.
 
-## Site Install
+## Instructions
 
 Perform the following steps to proceed with the installation at the site in your VMware environment.
 

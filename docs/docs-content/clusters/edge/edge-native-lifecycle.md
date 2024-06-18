@@ -21,10 +21,11 @@ SaaS or a self-hosted instance. The following diagram represents the deployment 
    Palette for a cluster installation. For more information, refer to
    [Model Cluster Profile](./site-deployment/model-profile.md).
 
-2. **EdgeForge**. IT/Ops teams prepare an Edge host installer variant from Palette's base installer. In this phase,
-   available customizations that are common to all edge locations are applied to the base installer. This includes
-   specifying or overriding properties such as Palette endpoints, registration tokens, default OS users, and default
-   network settings. For more information, refer to [EdgeForge Workflow](./edgeforge-workflow/edgeforge-workflow.md).
+2. **EdgeForge**.IT/Ops teams build the Palette Edge Installer and the provider images, which contain the OS and
+   Kubernetes layer of their cluster. The Edge Installer build process expects a configuration file called
+   **user-data**, which specifies properties such as Palette endpoints, registration tokens, default OS users, and
+   default network settings. For more information, refer to
+   [EdgeForge Workflow](./edgeforge-workflow/edgeforge-workflow.md).
 
 3. **Installation**. IT/Ops use the installer prepared in the EdgeForge phase and installs Palette Edge onto the Edge
    hosts. The Edge hosts are then shipped to edge sites. For more information, refer to
@@ -55,9 +56,9 @@ An air-gapped cluster is a cluster that does not have a connection to a Palette 
 air-gapped Edge hosts is slightly different from connected Edge hosts. Since there is no Palette instance and each Edge
 host is managed locally, there is no Edge host registration during the on-site deployment phase.
 
-In addition, you need to provide the images that are required for deployment to the Edge host through a content bundle
-or through an external registry. After a cluster is formed, you manage the cluster locally with local UI instead of
-using through a Palette instance.
+In addition, you need to provide the Edge host with the images that are required for cluster deployment through a
+content bundle or through an external registry. After a cluster is formed, you manage the cluster locally with local UI
+instead of using through a Palette instance.
 
 ![A flow of the lifecycle for air-gapped clusters: modeling, EdgeForge, installation, on-site deployment, cluster formation, and cluster management. ](/native-edge-deployment-lifecycle-airgap.webp)
 

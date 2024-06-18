@@ -1,13 +1,13 @@
 ---
-sidebar_label: "Deploy Edge Hosts On-Site"
-title: "Deploy Edge Hosts On-Site"
+sidebar_label: "Deploy Edge Clusters On-Site"
+title: "Deploy Edge Clusters On-Site"
 description: "Learn how to deploy the an Edge cluster on your Edge host on-site."
 hide_table_of_contents: false
 tags: ["edge"]
 ---
 
-After installation, the Edge host is ready to be deployed to your Edge site. The Edge host site deployment has three
-stages, as described in the table.
+After installation, the Edge host is ready to be deployed to your Edge site. The Edge host site deployment has the
+following stages, as described in the table.
 
 | Phase                | Description                                                                                                                                                                                                                                                                                                                                                                                    | Required |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
