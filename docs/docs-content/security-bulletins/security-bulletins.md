@@ -9,26 +9,26 @@ sidebar_custom_props:
 tags: ["security", "cve"]
 ---
 
-The following are security advisories for Palette and other Spectro Cloud-related resources.
+We aim to provide you with the most up-to-date information about the security of our products and services. No matter
+how carefully engineered the services are, from time to time, it may be necessary to notify you of security and privacy
+events with our services, including the security notifications we receive related to the third-party components we
+utilize in our products and services.
 
-Our security advisories follow the
-[CVSS standards](https://www.first.org/cvss/v3.1/specification-document#Qualitative-Severity-Rating-Scale).
+## Security Bulletins
 
-| Rating   | CVSS Score |
-| -------- | ---------- |
-| None     | 0.0        |
-| Low      | 0.1 - 3.9  |
-| Medium   | 4.0 - 6.9  |
-| High     | 7.0 - 8.9  |
-| Critical | 9.0 - 10.0 |
+We release security bulletins on a monthly and ad-hoc basis addressing security vulnerabilities in our software or
+related third-party components, describing their remediation when available, and providing links to the applicable
+updates for affected software when available.
 
-You can review Common Vulnerabilities and Exposures (CVE) for Palette in [CVE Reports](cve-reports.md). An index of all
-Palette-related CVEs is availaable in the [CVE Index](cve-index.md).
+## Security Advisories
+
+Security Advisories are a supplement to the Security Bulletins. They address security changes that may not require a
+security bulletin but may still affect our customers' overall security. Security Advisories are a way for us to
+communicate security information to you about issues that may not be classified as vulnerabilities and may not require a
+security bulletin.
 
 ## Resources
 
 - [CVE Reports](cve-reports.md)
 
 - [CVE Index](cve-index.md)
-
-<br />
