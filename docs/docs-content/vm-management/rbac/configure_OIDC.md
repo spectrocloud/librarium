@@ -54,5 +54,4 @@ select in the Kubernetes layer of the infrastructure profile.
 
 ## Next Steps
 
-You are now ready to create the VMO profile. Refer to
-[Create the VMO Profile](../vm-packs-profiles/create-vmo-profile.md) for guidance.
+You are now ready to create the VMO profile. Refer to [Create the VMO Profile](../create-vmo-profile.md) for guidance.

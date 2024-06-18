@@ -181,15 +181,15 @@ const redirects = [
   },
   {
     from: `/vm-management/vm-packs-profiles/enable-vm-dashboard/`,
-    to: `/vm-management/vm-packs-profiles/add-roles-and-role-bindings/`,
+    to: `/vm-management/rbac/add-roles-and-role-bindings/`,
   },
   {
     from: `/vm-management/vm-packs-profiles/vm-dashboard/`,
-    to: `/vm-management/create-manage-vm/standard-vm-operations/`,
+    to: `/vm-management/create-manage-vm`,
   },
   {
     from: `/vm-management/vm-packs-profiles/create-vm-dashboard-profile/`,
-    to: `/vm-management/vm-packs-profiles/create-vmo-profile/`,
+    to: `/vm-management/create-vmo-profile/`,
   },
   {
     from: `/knowledgebase/`,

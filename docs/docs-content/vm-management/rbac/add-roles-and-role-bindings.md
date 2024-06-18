@@ -13,14 +13,14 @@ tags: ["vmo"]
 You must configure permissions for actions that users can perform on Virtual Machines (VMs) deployed using Palette
 Virtual Machine Orchestrator (VMO), such as cloning, updating, and migrating VMs. You can do this by creating roles and
 cluster role bindings to determine access permissions. Refer to
-[VM User Roles and Permissions](../vm-roles-permissions.md) for a list of Cluster Roles and equivalent Palette Roles. To
+[VM User Roles and Permissions](./vm-roles-permissions.md) for a list of Cluster Roles and equivalent Palette Roles. To
 learn more about Cluster RBAC in Palette, review the
 [RBAC and NS Support](../../clusters/cluster-management/cluster-rbac.md) guide.
 
 ## Prerequisites
 
 - A cluster profile with the **Virtual Machine Orchestrator** add-on pack configured. Check out the
-  [Create a VMO Profile](../vm-packs-profiles/create-vmo-profile.md) guide to learn more.
+  [Create a VMO Profile](../create-vmo-profile.md) guide to learn more.
 
 - Additional cluster roles, based on the user's persona, must be associated with the user by specifying a cluster role
   binding or a namespace-restricted role binding:
@@ -43,7 +43,7 @@ learn more about Cluster RBAC in Palette, review the
 
 3. Click on **Settings** and choose **RBAC** to add role bindings. Refer to
    [Create a Role Binding](../../clusters/cluster-management/cluster-rbac.md#create-role-bindings) for guidance. Refer
-   to [VM User Roles and Permissions](../vm-roles-permissions.md) for a list of Cluster Roles and equivalent Palette
+   to [VM User Roles and Permissions](./vm-roles-permissions.md) for a list of Cluster Roles and equivalent Palette
    Roles.
 
    If you have OpenID Connect (OIDC) configured at the Kubernetes layer of your cluster profile, you can create a role
@@ -83,10 +83,9 @@ You can verify role creation and role binding is successful by following the ste
 
 ## Next Steps
 
-Now you are ready to deploy a VM. Review the
-[Deploy VM From a Template](../create-manage-vm/standard-vm-operations/deploy-vm-from-template.md) guide to get started
-with the deployment process.
+Now you are ready to deploy a VM. Review the [Deploy VM From a Template](../create-manage-vm/deploy-vm-from-template.md)
+guide to get started with the deployment process.
 
 ## Resources
 
-- [VM User Roles and Permissions](../vm-roles-permissions.md)
+- [VM User Roles and Permissions](./vm-roles-permissions.md)

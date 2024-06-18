@@ -1,5 +1,5 @@
 ---
-sidebar_label: "VM Performance"
+sidebar_label: "Over-commit Resources to Enhance VM Performance"
 title: "VM Performance"
 description: "Learn how to improve VM performance by maximizing virtual machine CPU and memory using Palette."
 icon: " "
@@ -15,19 +15,25 @@ VM workloads typically have varying resource demands and peak utilization patter
 possible to allocate them flexibly and take advantage of the fact that not all VMs will require their maximum allocation
 simultaneously.
 
-The hypervisor automatically overcommits CPU and memory. This means that more virtualized CPU and memory can be
+The hypervisor automatically over-commits CPU and memory. This means that more virtualized CPU and memory can be
 allocated to VMs than there are physical resources on the system.
 
-## CPU Overcommit
+## Over-commit CPUs
 
 Kubevirt offers the `cpuAllocationRatio` in its Custom Resource Definitions (CRD). This ratio is used to normalize the
 amount of CPU time the pod will request based on the number of virtual CPUs (vCPUs).
 
 Using the following algorithm, when `cpuAllocationRatio` is set to 1, the full amount of vCPUs are requested for the
-pod: `pod CPU request = number of vCPUs * 1/cpuAllocationRatio`.
+pod: `pod CPU request = number of vCPUs * 1/cpuAllocationRatio`. The `cpuAllocationRatio` is global, so setting it to
+greater than 1 has the effect of requesting less CPU from Kubernetes for each VM.
 
-The `cpuAllocationRatio` is global, so setting it to greater than 1 has the effect of requesting less CPU from
-Kubernetes for each VM.
+### Prerequisites
+
+- An active VMO cluster in Palette.
+
+### Instructions
+
+1. 
 
 Certain workloads that require a predictable latency and enhanced performance would benefit from obtaining dedicated CPU
 resources. KubeVirt relies on the Kubernetes CPU manager to pin vCPUs to the physical host’s CPUs. To learn more, refer

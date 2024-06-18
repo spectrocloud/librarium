@@ -19,9 +19,9 @@ Use the following steps to connect to your host cluster with the kubectl CLI.
 
 If you are using Palette Virtual Machine (VM) Management, you can find steps on how to connect to your virtual machines
 with the [virtctl CLI](https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/) in the
-[Access VM Cluster with virtctl](../../vm-management/create-manage-vm/access-cluster-with-virtctl.md) guide. The virtctl
-CLI facilitates some of the VM operations you will perform, such as copying, pasting, or transferring files to and from
-a virtual machine using Secure Copy Protocol (SCP).
+[Access VM Cluster with virtctl](../../vm-management/create-manage-vm/advanced-topics/access-cluster-with-virtctl.md)
+guide. The virtctl CLI facilitates some of the VM operations you will perform, such as copying, pasting, or transferring
+files to and from a virtual machine using Secure Copy Protocol (SCP).
 
 :::
 
