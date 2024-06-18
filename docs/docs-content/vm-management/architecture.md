@@ -185,7 +185,7 @@ on a **bond_mgmt.5** subinterface. However, because it is difficult to achieve P
 using a native or untagged VLAN for PXE.
 
 The **bond_data.20** subinterface provides outbound connectivity, as it has the default gateway. This is the primary way
-to publish services from container workloads to the end users. If there are any specific datacenter networks that you
+to publish services from container workloads to the end users. If there are any specific data-center networks that you
 want to reach over the **bond_mgmt.10** subinterface instead, you can configure them through static routes on the
 `172.16.0.0/22` subnet in Canonical MAAS. Those routes will be automatically applied by MAAS upon server installation.
 
@@ -291,7 +291,7 @@ provides some unique benefits with regard to performance, efficiency, and ease o
 
 - Both products are made and maintained by the same company, and therefore
   [work well together](https://docs.portworx.com/cloud-references/auto-disk-provisioning/pure-flash-array/#architecture).
-  Portworks is the [designated CSI](https://github.com/purestorage/pso-csi/tree/master#readme) for managing Pure Storage
+  Portworx is the [designated CSI](https://github.com/purestorage/pso-csi/tree/master#readme) for managing Pure Storage
   arrays from Kubernetes.
 
 - Portworx provides NFS-based shared volumes (RWX) based on storage pools that are backed by FlashArray storage.
