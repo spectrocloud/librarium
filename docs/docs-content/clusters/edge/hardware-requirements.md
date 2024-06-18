@@ -36,6 +36,16 @@ All Edge hosts must meet the following minimum hardware requirements.
 
 ARM64 support is only verified for the Nvidia Jetson Orin device family.
 
+## Trusted Boot
+
+To use Trusted Boot, your Edge host must meet the following additional requirements:
+
+- Edge host must have a Trusted Plat Module (TPM) 2.0 or later.
+- Edge host must support Unified Extensible Firmware Interface (UEFI) boot options.
+- Edge host must be capable of booting Extensible Firmware Interface (EFI) files of size 850 MB or greater. Refer to
+  [Check Hardware EFI Boot Limit](/docs/docs-content/clusters/edge/trusted-boot/edgeforge/check-efi-limit.md) for a
+  rough estimate of your EFI boot limit. For a more precise determination, contact sales@spectrocloud.com.
+
 ## Virtual Machine Operator (VMO)
 
 To operate VMO on edge clusters, the CPUs of the constituent Edge hosts must have the following virtualization

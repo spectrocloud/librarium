@@ -81,9 +81,9 @@ You can configure the Edge Installer to enable the initial configuration in the 
 boot up the Edge host for the first time. For more information about initial configuration, refer to
 [Initial Edge Host Configuration](../site-deployment/site-installation/initial-setup.md).
 
-| Parameter    | Description                                                           |
-| ------------ | --------------------------------------------------------------------- |
-| `includeTui` | Enable the initial Edge host configuration. Default value is `false`. |
+| Parameter    | Description                                                                       |
+| ------------ | --------------------------------------------------------------------------------- |
+| `includeTui` | Enable Palette TUI for initial Edge host configuration. Default value is `false`. |
 
 For example, the following configuration enables the Palette TUI.
 
