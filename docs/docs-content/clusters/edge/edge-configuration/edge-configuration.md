@@ -6,62 +6,129 @@ hide_table_of_contents: false
 tags: ["edge"]
 ---
 
-The Edge Installer is responsible for preparing the Edge host to be ready for workloads. The Edge Installer supports the
-ability to specify a user data configuration file. You can use this configuration file to customize the installation and
-ensure your Edge host has all the required dependencies and settings to work properly in your environment.
+The Edge Installer is responsible for preparing the Edge host to be ready for assignment to cluster workloads. The Edge
+Installer supports the ability to specify a configuration file named **user-data**. You can use this configuration file
+to customize the installation and ensure your Edge host has all the required dependencies and settings to work properly
+in your environment. For more information about all the available parameters in the installer configuration, refer to
+[Installer Reference](./installer-reference.md).
 
-To better understand the Edge installation process, review the order of operations.
+To better understand the Edge installation process, review the order of operations from installation to Edge host
+registration.
 
-### Order of Operations:
+### Order of Operations
 
 1. Boot device with Edge Installer.
 
-2. Edge Installer gets copied to disk.
+2. Edge Installer installs Palette Edge onto the Edge host.
 
-3. Device powers off or reboots based on the user data configuration.
+3. Device powers off or reboots to registration mode based on the user data configuration.
 
-4. Upon boot up or reboot, cloud-init stages that are specified in the Edge Installer configuration file take effect.
+4. Upon boot up or reboot, cloud-init stages that are specified in the user data configuration file take effect.
 
-5. Edge Host Registers with Palette.
+5. Edge Host Registers with Palette and is ready to be part of a cluster.
 
-6. Device pairs with Palette.
+![The boot order sequence, listing steps that flow in a sequential order.](/clusters_edge_cloud-init_boot-order-squence.webp)
 
-7. Edge Installer identifies cloud-init stages as specified in the OS pack.
-
-8. Operating System (OS) is installed on the device.
-
-9. Device reboots.
-
-10. OS cloud-init stages are applied in the proper order.
-
-11. Edge Host is ready for use.
-
-![The boot order sequence, listing 9 steps that flow in a sequential order.](/clusters_edge_cloud-init_boot-order-squence.webp)
-
-The Edge installation process accepts two types of configurations that you can use to customize the installation: Edge
-Installer Configuration and Edge OS Configuration.
+Palette Edge allows you to use cloud-init stages to declaratively configure your Operating System (OS) of your Edge host
+both using installer configuration **user-data** and in the OS pack. For more information about cloud-init stages, refer
+to [Cloud-init Stages](./cloud-init.md).
 
 ## Edge Installer Configuration
 
 The Edge installation process expects you to specify installation parameters. You can supply the install parameters in
-multiple stages. You can provide common installation configurations for all your sites during the manufacturing or
-staging phases.
+multiple stages. You can provide common installation configurations during EdgeForge for all your sites during the
+manufacturing or provide site-specific configuration during on-site deployment. For more information, refer to
+[Prepare User Data](../edgeforge-workflow/prepare-user-data.md) and
+[Apply Site User Data](../site-deployment/site-installation/site-user-data.md). The install configurations provided in
+various stages are merged to create the Edge host's final configuration.
 
-You can also specify additional location-specific configurations at the site during the installation. The install
-configurations provided in various stages are merged to create the edge host's final configuration.
+## Installer Example Configuration
 
-## Edge OS Configuration
+The following example shows how user data configuration is used to customize the Edge host installation process.
 
-The Edge installation process supports the ability for you to customize your operating system (OS) through the usage of
-cloud-init stages. You can supply Edge configurations during the edge host installation with the Edge Installer and at
-the Operating System (OS) layer by customizing the OS pack. Once the edge host installation process is complete, the OS
-stages take effect during the boot-up process.
+```yaml
+#cloud-config
+stylus:
+  site:
+    paletteEndpoint: api.spectrocloud.com
+    edgeHostToken: yourEdgeRegistrationTokenHere
+    projectUid: 12345677788
+    tags:
+      env: east
+      terraform_managed: true
+      os: ubuntu
+    name: edge-59d3f182-35fe-4e10-b0a0-d7f761f1a142
 
-To effectively use the Edge Installer, we recommend you review the Edge
-[installer configuration](installer-reference.md) page so you gain an overview of all the available parameters.
+    network:
+      httpProxy: http://proxy.example.com
+      httpsProxy: https://proxy.example.com
+      noProxy: 10.10.128.10,10.0.0.0/8
+      nameserver: 1.1.1.1
+      interfaces:
+        enp0s3:
+          type: static
+          ipAddress: 10.0.10.25/24
+          gateway: 10.0.10.1
+          nameserver: 10.10.128.8
+        enp0s4:
+          type: dhcp
+    caCerts:
+      - |
+        ------BEGIN CERTIFICATE------
+        *****************************
+        *****************************
+        ------END CERTIFICATE------
+      - |
+        ------BEGIN CERTIFICATE------
+        *****************************
+        *****************************
+        ------END CERTIFICATE------
+```
+
+:::info
+
+Check out the [Prepare User Data](../edgeforge-workflow/prepare-user-data.md) resource for more examples.
+
+:::
+
+## Additional Configurations
+
+The Edge Installer will honor other Kairos parameters, such as `install`, and `options`. To learn more about Kairos
+parameters, refer to the [Kairos configuration](https://kairos.io/docs/reference/configuration/) page.
+
+The following is an example Edge installer configuration that is using the `install` parameter block to power off the
+device upon completion of the installation process.
+
+```yaml
+#cloud-config
+stylus:
+  site:
+    paletteEndpoint: api.spectrocloud.com
+    registrationURL: https://edge-registration.vercel.app
+    projectUid: yourProjectIdHere
+    edgeHostToken: yourEdgeRegistrationTokenHere
+    tags:
+      myTag: myValue
+      myOtherTag: myOtherValue
+    tagsFromScript:
+      scriptName: /etc/palette/tags.sh
+      timeout: 30
+  reboot: false
+
+stages:
+  initramfs:
+    - users:
+        palette:
+          groups:
+            - sudo
+          passwd: palette
+
+install:
+  poweroff: true
+```
 
 ## Resources
 
-- [Edge OS Configuration: Cloud-Init Stages](cloud-init.md)
+- [Cloud-Init Stages](cloud-init.md)
 
 - [Edge Install Configuration](installer-reference.md)

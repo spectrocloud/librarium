@@ -200,8 +200,8 @@ experience problems with Kubernetes.
 9.  Flash your external volume with the Edge installer ISO image. You can use [balena etcher](https://etcher.balena.io/)
     or any other tool of your choice to flash your volume.
 
-10. Plug the external volume into your Edge device and boot up the device using the volume to prepare your Edge device
-    for installation. For more information, refer to [Prepare Edge Host for Installation](../site-deployment/stage.md).
+10. Plug the external volume into your Edge device and boot up the device using the volume to install Palette Edge on
+    your Edge host. For more information, refer to [Installation](../site-deployment/stage.md).
 
 11. Remove the volume and boot up your device again to register your Edge host. If the Edge host has internet access, it
     will start up Tailscale and register your device with Tailscale.

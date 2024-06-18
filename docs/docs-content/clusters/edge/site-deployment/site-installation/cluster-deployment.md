@@ -3,7 +3,7 @@ sidebar_label: "Create Cluster Definition"
 title: "Create Cluster Definition"
 description: "Define your Edge cluster using the Edge hosts that are registered and available."
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 40
 tags: ["edge"]
 ---
 

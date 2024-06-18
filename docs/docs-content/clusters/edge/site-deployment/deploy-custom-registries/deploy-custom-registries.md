@@ -3,7 +3,7 @@ sidebar_label: "Deployment with Custom Image Registries"
 title: "Deployment with Custom Image Registries"
 description: "Registry options for deploying Edge clusters."
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 100
 tags: ["edge"]
 ---
 
