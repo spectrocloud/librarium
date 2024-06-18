@@ -30,7 +30,7 @@ registration.
 ![The boot order sequence, listing steps that flow in a sequential order.](/clusters_edge_cloud-init_boot-order-squence.webp)
 
 Palette Edge allows you to use cloud-init stages to declaratively configure your Operating System (OS) of your Edge host
-both using installer configuration and in the the OS pack. For more information about cloud-init stages, refer to
+both using installer configuration and in the OS pack. For more information about cloud-init stages, refer to
 [Cloud-init Stages](./cloud-init.md).
 
 ## Edge Installer Configuration

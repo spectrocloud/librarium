@@ -44,7 +44,7 @@ template.
    docker-compose-plugin
    ```
 
-   If you need a graphical user interface (GUI), add `x11-apps` to the `apt install` command.
+   If you need a Graphical User Interface (GUI), add `x11-apps` to the `apt install` command.
 
    ```shell
    apt install x11-apps

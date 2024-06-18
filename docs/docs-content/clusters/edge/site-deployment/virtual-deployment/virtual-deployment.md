@@ -7,7 +7,7 @@ sidebar_position: 0
 tags: ["edge"]
 ---
 
-Palette Edge supports deployment to virtual machines (VM). You can install Palette Edge on a VM, register it with
+Palette Edge supports deployment to Virtual Machines (VM). You can install Palette Edge on a VM, register it with
 Palette and deploy clusters on it just like a physical Edge host. This allows you to simulate your deployment operation
 before devoting physical resources.
 

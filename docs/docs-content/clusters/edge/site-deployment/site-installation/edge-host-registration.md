@@ -63,8 +63,8 @@ stylus:
 
 - An Edge host with Palette Edge installed. For more information, refer to [Installation](../stage.md).
 
-- The Edge host has a connection to your Palette instance. If you are are using Palette SaaS, this means the Edge host
-  must have an internet connection.
+- The Edge host has a connection to your Palette instance. If you are using Palette SaaS, this means the Edge host must
+  have an internet connection.
 
 - You have provided the registration token in one of the following ways. For more information about creating
   registration tokens, refer to the [Create a Registration Token](create-registration-token.md) guide.
@@ -75,7 +75,7 @@ stylus:
 
 #### Instructions
 
-1. If you have already provided the registration token to your Edge host, skip this tep.
+1. If you have already provided the registration token to your Edge host, skip this step.
 
    If you are providing the Edge registration token through site user data. Plug in the storage device that is flashed
    with the user data ISO.
@@ -106,8 +106,8 @@ Use the following steps to manually register an Edge host in Palette.
 
 - An Edge host with Palette Edge installed. For more information, refer to [Installation](../stage.md).
 
-- The Edge host has a connection to your Palette instance. If you are are using Palette SaaS, this means the Edge host
-  must have an internet connection.
+- The Edge host has a connection to your Palette instance. If you are using Palette SaaS, this means the Edge host must
+  have an internet connection.
 
 - You have provided the registration token in one of the following ways. For more information about creating
   registration tokens, refer to the [Create a Registration Token](create-registration-token.md) guide.
