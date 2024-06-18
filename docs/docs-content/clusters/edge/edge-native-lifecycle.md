@@ -108,4 +108,4 @@ Now that you have an understanding of the deployment lifecycle, start the deploy
 cluster profile for your Edge cluster to use and start building the required Edge artifacts for deployment.
 
 - [Model Cluster Profile](./site-deployment/model-profile.md).
-- [EdgeForge](./edgeforge-workflow/)
+- [EdgeForge](./edgeforge-workflow/edgeforge-workflow.md)
