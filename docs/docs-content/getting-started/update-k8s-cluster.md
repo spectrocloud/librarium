@@ -314,17 +314,11 @@ Select the **1.1.0** version.
 Click **Review & Save**. Palette prompts you to preview the change summary.
 
 Click **Review changes in Editor**. Palette displays the changes, with the current configuration on the left and the
-incoming changes on the right.
+incoming configuration on the right.
 
-:::info
+Click **Apply Changes**.
 
-Make sure to preserve any existing cluster profile overrides.
-
-:::
-
-After reviewing the changes, click **Apply Changes**.
-
-![Palette Editor that displays changes coming from the profile version update.](/clusters_cluster-management_cluster-updates_preview-profile-ver-changes.webp)
+![Palette Editor that displays changes coming from the profile version update.](/getting-started/getting-started_update-k8s-cluster_editor-changes.webp)
 
 :::warning
 
@@ -403,17 +397,19 @@ updates available.
 
 ![Image that shows the pending updates ](/getting-started/getting-started_update-k8s-cluster_pending-update-clusters-view.webp)
 
-Select this cluster to open its **Overview** tab. Click on **Updates Available** to begin the cluster update.
+Select this cluster to open its **Overview** tab. Click on **Updates** to begin the cluster update.
 
-![Image that shows the Updates Available button](/getting-started/getting-started_update-k8s-cluster_updates-available-button-cluster-overview.webp)
+![Image that shows the Updates button](/getting-started/getting-started_update-k8s-cluster_updates-available-button-cluster-overview.webp)
 
-A dialog appears which shows the changes made in this update. Review the changes and ensure the only change is the
-`replicas` field value. The pending update maintains the override you have made and sets the `replicas` field to `1`.
+A dialog appears which shows the changes made in this update. Click on **Review changes in Editor**. As previouslym
+Palette displays the changes, with the current configuration on the left and the incoming configuration on the right.
+
+Review the changes and ensure the only change is the `replicas` field value. You can choose to maintain your cluster
+override or apply the incoming cluster profile update.
 
 ![Image that shows the available updates dialog ](/getting-started/getting-started_update-k8s-cluster_available-updates-dialog.webp)
 
-Set the value of `replicas` to `3` in the right-hand dialog. This removes your cluster override. Click on **Confirm
-updates** once you have finished reviewing your changes.
+Click on **Apply Changes** once you have finished reviewing your changes. This removes your cluster override.
 
 Palette updates your cluster according to cluster profile specifications. Once these changes are complete, select the
 **Workloads** tab. Then, select the **hello-universe** namespace.
@@ -437,8 +433,6 @@ the delete step. The deletion process takes several minutes to complete.
 
 Repeat the same steps for the other cluster.
 
-<br />
-
 :::info
 
 If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for a force delete. To trigger a force
@@ -446,8 +440,6 @@ delete, navigate to the cluster’s details page, click on **Settings**, then se
 automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
 
 :::
-
-<br />
 
 Once the cluster is deleted, navigate to the left **Main Menu** and click on **Profiles**. Find the cluster profile you
 created and click on the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the
