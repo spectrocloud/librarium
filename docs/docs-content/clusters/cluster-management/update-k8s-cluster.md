@@ -944,7 +944,7 @@ Select this cluster to open its **Overview** tab. Click on **Updates** to begin 
 
 ![Image that shows the Updates button](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_updates-available-button-cluster-overview.webp)
 
-A dialog appears which shows the changes made in this update. Click on **Review changes in Editor**. As previouslym
+A dialog appears which shows the changes made in this update. Click on **Review changes in Editor**. As previously,
 Palette displays the changes, with the current configuration on the left and the incoming configuration on the right.
 
 Review the changes and ensure the only change is the `replicas` field value. You can choose to maintain your cluster
@@ -1019,7 +1019,7 @@ Select this cluster to open its **Overview** tab. Click on **Updates** to begin 
 
 ![Image that shows the Updates button](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_updates-available-button-cluster-overview.webp)
 
-A dialog appears which shows the changes made in this update. Click on **Review changes in Editor**. As previouslym
+A dialog appears which shows the changes made in this update. Click on **Review changes in Editor**. As previously,
 Palette displays the changes, with the current configuration on the left and the incoming configuration on the right.
 
 Review the changes and ensure the only change is the `replicas` field value. You can choose to maintain your cluster
