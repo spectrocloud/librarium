@@ -181,7 +181,7 @@ const config = {
             },
             template: "api.mustache",
             // Customize API MDX with mustache template
-            hideSendButton: true,
+            hideSendButton: false,
           },
           emc: {
             specPath: "docs/api-content/api-docs/edge-v1/emc-api.json",
