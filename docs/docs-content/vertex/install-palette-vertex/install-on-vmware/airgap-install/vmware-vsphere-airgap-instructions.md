@@ -216,12 +216,12 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
               addresses: [1.1.1.1]
     ```
 
-:::tip
+    :::tip
 
-If you are working in Vim, press `i` to enter insert mode in the text editor. Press `esc` to exit insert mode. Type
-`:wq` to save the file and exit the text editor.
+    If you are working in Vim, press `i` to enter insert mode in the text editor. Press `esc` to exit insert mode. Type
+    `:wq` to save the file and exit the text editor.
 
-:::
+    :::
 
     Issue the following command to apply the changes.
 
