@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["ingress", "amd64", "arm64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/nginx/blobs/sha256:a36bf7e8023f018298ddbf0c82a49c38e872db4b0e480a39c285ae002916a83f?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/nginx/blobs/sha256:a36bf7e8023f018298ddbf0c82a49c38e872db4b0e480a39c285ae002916a83f?type=image.webp"
 tags: ["packs", "nginx", "network"]
 ---
 

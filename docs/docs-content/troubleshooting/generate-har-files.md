@@ -45,7 +45,7 @@ contain.
         2. Click the **Clear network log** icon that follows it to clear the current network log.
         3. Select the **Preserve log** and **Disable cache** checkboxes.
 
-       ![View of the configured Chrome Developer Tools](/troubleshooting_generate-har-files_chrome-dev-tools-settings.png.png)
+       ![View of the configured Chrome Developer Tools](/troubleshooting_generate-har-files_chrome-dev-tools-settings.webp)
 
     4. On the page, reproduce the issues you've encountered.
     5. In the network log, right-click any item and select **Save all as HAR with content**.
@@ -60,7 +60,7 @@ contain.
        2. Next to the **All** drop-down menu, click the **Other filter options** icon > **Preserve Log**.
        3. Select the **Disable Caches** checkbox.
 
-       ![View of the configured Safari Web Inspector](/troubleshooting_generate-har-files_safari-web-inspector.png)
+       ![View of the configured Safari Web Inspector](/troubleshooting_generate-har-files_safari-web-inspector.webp)
 
     4. On the page, reproduce the issues you've encountered.
     5. In the **Network** tab menu, select **Export**.
@@ -80,7 +80,7 @@ contain.
        2. If the icon next to the **Filter URLs** field displays a play button, click it to start recording network activity.
        3. Click the **Network Settings** icon > **Persist Logs**.
 
-       ![View of the configured Firefox DevTools](/troubleshooting_generate-har-files_firefox-devtools.png)
+       ![View of the configured Firefox DevTools](/troubleshooting_generate-har-files_firefox-devtools.webp)
 
     4. On the page, reproduce the issues you've encountered.
     5. In the network log, right-click any item and select **Save All As HAR**.

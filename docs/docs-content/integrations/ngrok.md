@@ -4,9 +4,9 @@ title: "ngrok"
 description: "Learn about using ngrok Kubernetes Ingress to access applications in Palette."
 hide_table_of_contents: true
 type: "integration"
-category: ["ingress", "kubernetes", "amd64", "community"]
+category: ["ingress", "amd64", "community"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/ngrok-ingress-controller/blobs/sha256:a723399d53d716c5441d57d021a7975d961e5b7db79ccb2bc10f7524ba7e67c1?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/ngrok-ingress-controller/blobs/sha256:a723399d53d716c5441d57d021a7975d961e5b7db79ccb2bc10f7524ba7e67c1?type=image.webp"
 tags: ["packs", "ngrok", "network", "kubernetes"]
 ---
 
@@ -22,7 +22,7 @@ lowest latency. The ngrok Ingress Controller for Kubernetes equips you to serve 
 configure networking details such as ELBs, IPs, network interfaces, or VPC routing, radically simplifying ingress into
 Kubernetes.
 
-# Versions Supported
+## Versions Supported
 
 - 0.9.0
 
@@ -51,11 +51,8 @@ To deploy the ngrok Ingress Controller, you need to set, at minimum, the followi
 | `kubernetes-ingress-controller.rules.host.backend.service.name`        | The name you've given to the application for which the ngrok Ingress Controller should handle traffic.                                                                                                                                                        |
 | `kubernetes-ingress-controller.rules.host.backend.service.port.number` | The port number for the deployed `service.name`.                                                                                                                                                                                                              |
 
-Review the
-[common overrides](https://github.com/ngrok/kubernetes-ingress-controller/blob/main/docs/deployment-guide/common-helm-k8s-overrides.md)
-document for more details on parameters. Refer to the
-[user guide](https://github.com/ngrok/kubernetes-ingress-controller/tree/main/docs/user-guide) for advanced
-configurations.
+Review the [common overrides](https://ngrok.com/docs/k8s/deployment-guide/#common-helm-k8s-overrides) document for more
+details on parameters. Refer to the [user guide](https://ngrok.com/docs/k8s/user-guide/) for advanced configurations.
 
 :::warning
 

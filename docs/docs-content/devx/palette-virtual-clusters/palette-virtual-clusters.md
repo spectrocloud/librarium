@@ -66,7 +66,7 @@ cluster already running on it. The info box displays the recommended minimum CPU
 cluster. The color-coded bar summarizes the used, allocated, and available CPU, storage, and memory within the Cluster
 Group. Users can use this information to plan resource utilization per available resources.
 
-![color-tracking.png](/color-tracking.png)
+![color-tracking.webp](/color-tracking.webp)
 
 ## Palette Virtual Cluster Pause and Resume
 

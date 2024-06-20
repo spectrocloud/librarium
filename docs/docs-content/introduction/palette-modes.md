@@ -14,7 +14,7 @@ Palette supports two consumption modes - each aimed at different use cases and, 
 modes are _App Mode_ and _Cluster Mode_. These modes can be used separately but often work together by sharing resources
 or relying on resources that each provides.
 
-![App Mode and Cluster Mode](/docs_introduction_palette-modes.png)
+![App Mode and Cluster Mode](/docs_introduction_palette-modes.webp)
 
 ### What is Cluster Mode?
 

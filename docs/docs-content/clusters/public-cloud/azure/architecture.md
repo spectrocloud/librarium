@@ -25,7 +25,7 @@ The following are some architectural highlights of Azure clusters deployed by Pa
 - None of the control plane nodes and worker nodes have public IPs attached. The Kubernetes API Server endpoint is
   accessed through a public load balancer.
 
-![An Azure IaaS architecture diagram](/clusters_azure_architecture_iaas-overview.png)
+![An Azure IaaS architecture diagram](/clusters_azure_architecture_iaas-overview.webp)
 
 ## AKS Architecture
 
@@ -45,7 +45,7 @@ The integration between Palette and Azure AKS unlocks the following capabilities
 - Leverage extensive authentication and authorization capabilities by using Azure Active Directory and dynamic rules
   enforcement, across multiple clusters with Azure Policy.
 
-![An Azure AKS architecture diagram](/clusters_azure_architecture_aks-diagram.png)
+![An Azure AKS architecture diagram](/clusters_azure_architecture_aks-diagram.webp)
 
 ## Azure Storage
 
@@ -78,9 +78,9 @@ to attach a custom storage account or container to the Azure cluster that contai
 
 ## Network Access
 
-Clusters that use a Palette self-hosted [Private Cloud Gateway](gateways.md) (PCG), should use a custom storage account
-and container that are restricted to the VNet that the PCG and cluster are located in. Ensure you disable public access
-and use private access for the Azure storage account.
+Clusters that use a Palette self-hosted [Private Cloud Gateway](../../pcg/architecture.md) (PCG), should use a custom
+storage account and container that are restricted to the VNet that the PCG and cluster are located in. Ensure you
+disable public access and use private access for the Azure storage account.
 
 ## Pricing Options
 

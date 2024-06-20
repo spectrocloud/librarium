@@ -51,7 +51,7 @@ Replace `{your-okta-account-id}` with your Okta account ID.
 
 <br />
 
-![Configure General Settings](/oidc-okta-images/oidc-okta_okta-general-settings.png)
+![Configure General Settings](/oidc-okta-images/oidc-okta_okta-general-settings.webp)
 
 <br />
 
@@ -60,7 +60,7 @@ Replace `{your-okta-account-id}` with your Okta account ID.
 
 <br />
 
-![Copy Callback URL](/oidc-okta-images/oidc-okta_copy-callback-url.png)
+![Copy Callback URL](/oidc-okta-images/oidc-okta_copy-callback-url.webp)
 
 <br />
 
@@ -69,7 +69,7 @@ Replace `{your-okta-account-id}` with your Okta account ID.
 
 <br />
 
-![Paste Redirect URI](/oidc-okta-images/oidc-okta_paste-redirect-uri.png)
+![Paste Redirect URI](/oidc-okta-images/oidc-okta_paste-redirect-uri.webp)
 
 <br />
 
@@ -78,7 +78,7 @@ Replace `{your-okta-account-id}` with your Okta account ID.
 
 <br />
 
-![Copy Logout URL](/oidc-okta-images/oidc-okta_copy-logout-url.png)
+![Copy Logout URL](/oidc-okta-images/oidc-okta_copy-logout-url.webp)
 
 <br />
 
@@ -87,7 +87,7 @@ Replace `{your-okta-account-id}` with your Okta account ID.
 
 <br />
 
-![Paste Logout URI](/oidc-okta-images/oidc-okta_paste-logout-uri.png)
+![Paste Logout URI](/oidc-okta-images/oidc-okta_paste-logout-uri.webp)
 
 <br />
 
@@ -110,7 +110,7 @@ Replace `{your-okta-account-id}` with your Okta account ID.
 
 <br />
 
-![Configure Assignments](/oidc-okta-images/oidc-okta_assignments.png)
+![Configure Assignments](/oidc-okta-images/oidc-okta_assignments.webp)
 
 <br />
 
@@ -121,7 +121,7 @@ Replace `{your-okta-account-id}` with your Okta account ID.
 
 <br />
 
-![Copy Client ID](/oidc-okta-images/oidc-okta_copy-client-id.png)
+![Copy Client ID](/oidc-okta-images/oidc-okta_copy-client-id.webp)
 
 <br />
 
@@ -130,7 +130,7 @@ Replace `{your-okta-account-id}` with your Okta account ID.
 
 <br />
 
-![Copy Shared Secret](/oidc-okta-images/oidc-okta_copy-shared-secret.png)
+![Copy Shared Secret](/oidc-okta-images/oidc-okta_copy-shared-secret.webp)
 
 <br />
 
@@ -147,7 +147,7 @@ OIDC claims required by Palette and Kubernetes.
 
 <br />
 
-![Add Authorization Server](/oidc-okta-images/oidc-okta_add-authz-server.png)
+![Add Authorization Server](/oidc-okta-images/oidc-okta_add-authz-server.webp)
 
 <br />
 
@@ -156,7 +156,7 @@ OIDC claims required by Palette and Kubernetes.
 
 <br />
 
-![Name Authorization Server](/oidc-okta-images/oidc-okta_name-authz-server.png)
+![Name Authorization Server](/oidc-okta-images/oidc-okta_name-authz-server.webp)
 
 <br />
 
@@ -164,7 +164,7 @@ OIDC claims required by Palette and Kubernetes.
 
 <br />
 
-![Add Claims](/oidc-okta-images/oidc-okta_add-claims.png)
+![Add Claims](/oidc-okta-images/oidc-okta_add-claims.webp)
 
 15. Enter the required information from the following tables below and click **Create**. Use this flow to create three
     claims in total. First, create two claims for the user information.
@@ -188,7 +188,7 @@ OIDC claims required by Palette and Kubernetes.
 
 <br />
 
-![Claims Result](/oidc-okta-images/oidc-okta_claims-result.png)
+![Claims Result](/oidc-okta-images/oidc-okta_claims-result.webp)
 
 <br />
 
@@ -198,7 +198,7 @@ OIDC claims required by Palette and Kubernetes.
 
 <br />
 
-![Get Issuer URI](/oidc-okta-images/oidc-okta_get-issuer-uri.png)
+![Get Issuer URI](/oidc-okta-images/oidc-okta_get-issuer-uri.webp)
 
 <br />
 
@@ -206,7 +206,7 @@ OIDC claims required by Palette and Kubernetes.
 
 <br />
 
-![Add Access Policy](/oidc-okta-images/oidc-okta_add-access-policy.png)
+![Add Access Policy](/oidc-okta-images/oidc-okta_add-access-policy.webp)
 
 <br />
 
@@ -216,7 +216,7 @@ OIDC claims required by Palette and Kubernetes.
 
 <br />
 
-![Name Access Policy](/oidc-okta-images/oidc-okta_name-access-policy.png)
+![Name Access Policy](/oidc-okta-images/oidc-okta_name-access-policy.webp)
 
 <br />
 
@@ -224,7 +224,7 @@ OIDC claims required by Palette and Kubernetes.
 
 <br />
 
-![Add Policy Rule](/oidc-okta-images/oidc-okta_add-policy-rule.png)
+![Add Policy Rule](/oidc-okta-images/oidc-okta_add-policy-rule.webp)
 
 <br />
 
@@ -233,7 +233,7 @@ OIDC claims required by Palette and Kubernetes.
 
 <br />
 
-![Configure Policy Rule](/oidc-okta-images/oidc-okta_configure-policy-rule.png)
+![Configure Policy Rule](/oidc-okta-images/oidc-okta_configure-policy-rule.webp)
 
 <br />
 
@@ -259,7 +259,7 @@ Navigate to **Tenant Settings** --> **SSO** and click on **OIDC**. Enter the fol
 
 <br />
 
-![Enable Palette OIDC SSO](/oidc-okta-images/oidc-okta_configure-palette-oidc.png)
+![Enable Palette OIDC SSO](/oidc-okta-images/oidc-okta_configure-palette-oidc.webp)
 
 <br />
 
@@ -279,7 +279,7 @@ it **Tenant Admin** permissions. You can repeat this for any other team that you
 
 <br />
 
-![Create Palette Team](/oidc-okta-images/oidc-okta_create-team.png)
+![Create Palette Team](/oidc-okta-images/oidc-okta_create-team.webp)
 
 <br />
 
@@ -288,7 +288,7 @@ it **Tenant Admin** permissions. You can repeat this for any other team that you
 
 <br />
 
-![Name Palette Team](/oidc-okta-images/oidc-okta_name-team.png)
+![Name Palette Team](/oidc-okta-images/oidc-okta_name-team.webp)
 
 <br />
 
@@ -298,7 +298,7 @@ it **Tenant Admin** permissions. You can repeat this for any other team that you
 
 <br />
 
-![Palette Tenant Roles](/oidc-okta-images/oidc-okta_tenant-roles.png)
+![Palette Tenant Roles](/oidc-okta-images/oidc-okta_tenant-roles.webp)
 
 <br />
 
@@ -306,7 +306,7 @@ it **Tenant Admin** permissions. You can repeat this for any other team that you
 
 <br />
 
-![Add Tenant Role](/oidc-okta-images/oidc-okta_add-tenant-role.png)
+![Add Tenant Role](/oidc-okta-images/oidc-okta_add-tenant-role.webp)
 
 <br />
 
@@ -325,7 +325,7 @@ You have now successfully configured Palette SSO based on OIDC with Okta.
 
 <br />
 
-![User Logout](/oidc-okta-images/oidc-okta_user-logout.png)
+![User Logout](/oidc-okta-images/oidc-okta_user-logout.webp)
 
 <br />
 
@@ -336,7 +336,7 @@ You have now successfully configured Palette SSO based on OIDC with Okta.
 
 <br />
 
-![User SSO Login](/oidc-okta-images/oidc-okta_palette-login.png)
+![User SSO Login](/oidc-okta-images/oidc-okta_palette-login.webp)
 
 <br />
 

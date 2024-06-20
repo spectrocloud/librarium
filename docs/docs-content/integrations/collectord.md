@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["monitoring", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/outcold-monitoring/blobs/sha256:3140960d1f39649ad821cfc59450d3c164079b03d15387b2e638eae07442af41?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/outcold-monitoring/blobs/sha256:3140960d1f39649ad821cfc59450d3c164079b03d15387b2e638eae07442af41?type=image.webp"
 tags: ["packs", "outcold-monitoring", "monitoring"]
 ---
 

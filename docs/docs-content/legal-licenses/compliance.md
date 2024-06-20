@@ -9,7 +9,7 @@ tags: ["compliance", "soc2", "fips"]
 
 ## ISO 27001
 
-![ISO 27001 logo](/legal-licenses_compliance_iso-27001.png "#width=300px")
+![ISO 27001 logo](/legal-licenses_compliance_iso-27001.webp "#width=300px")
 
 The International Organization for Standardization 27001 Standard (ISO 27001) is one of the leading international
 standards focused on information security. Spectro Cloud has obtained the ISO 27001 Certification and undergoes periodic
@@ -33,7 +33,7 @@ Below are some reasons why an ISO 27001 Certification is important:
 
 ## SOC 2 Type II
 
-![soc2.png](/soc2.png "#width=180px")
+![soc2.webp](/soc2.webp "#width=180px")
 
 The American Institute of Certified Public Accountants (AICPA) Service Organization Controls (SOC) Attestation provides
 assurances over control environments. Spectro Cloud’s SOC 2 Type II audit report provides assurances of our
@@ -50,7 +50,7 @@ organization’s security and availability.
 
 ## FIPS 140-2
 
-![FIPS-Compliance](/docs_compliance_compliance_fips-logo.png "#width=180px")
+![FIPS-Compliance](/docs_compliance_compliance_fips-logo.webp "#width=180px")
 
 Spectro Cloud is validated against FIPS 140-2 with
 [Certificate number 4349](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4349) in

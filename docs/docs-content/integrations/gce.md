@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["storage", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.dev.spectrocloud.com/v1/csi-gcp/blobs/sha256:af4cf7923e75f0ca1fe109f423ff0551855019edfc1d8772653cede454ef87ea?type=image/png"
+logoUrl: "https://registry.dev.spectrocloud.com/v1/csi-gcp/blobs/sha256:af4cf7923e75f0ca1fe109f423ff0551855019edfc1d8772653cede454ef87ea?type=image.webp"
 tags: ["packs", "storage", "gce-persistent-disk"]
 ---
 

@@ -20,11 +20,7 @@ from central computing and improving overall application performance. Industries
 manufacturing, oil and gas, cruise ships, healthcare, and 5G telecommunication providers typically have use cases that
 require content data and processing to be closer to their applications.
 
-<br />
-
-![A drawing of Edge architecture with humans interacting](/clusters_edge_edge-arch-drawing.png)
-
-<br />
+![A drawing of Edge architecture with humans interacting](/clusters_edge_edge-arch-drawing.webp)
 
 The following are some highlights of the comprehensive Palette Edge Solution:
 
@@ -32,11 +28,12 @@ The following are some highlights of the comprehensive Palette Edge Solution:
 
 - Low touch, plug-and-play setup
 
-- Support for AMD64 and ARM64 architectures
-
-- Immutable update for Kubernetes and operating system (OS) with zero downtime
+- Immutable update for Kubernetes and Operating System (OS) with zero downtime
 
 - Distro-agnostic Kubernetes and OS
+
+- Edge artifacts hardened by default according to
+  [Center for Internet Security (CIS) standards](https://www.cisecurity.org/cis-benchmarks).
 
 - Secured remote troubleshooting
 
@@ -45,8 +42,8 @@ The following are some highlights of the comprehensive Palette Edge Solution:
 - Support for pre-provisioned and on-site device registration
 
 Palette's Edge solution is designed for sites that typically have one or more small devices, such as
-[Intel NUC](https://www.intel.com/content/www/us/en/products/docs/boards-kits/nuc/what-is-nuc-article.html). An instance
-of Palette optimized for edge computing is installed in the device along with the operating system and Kubernetes.
+[Asus NUC](https://www.asus.com/us/displays-desktops/nucs/nuc-mini-pcs). An instance of Palette optimized for edge
+computing is installed in the device along with the operating system and Kubernetes.
 
 :::info
 
@@ -81,4 +78,8 @@ specific challenges with additional software.
 
 - [Site Deployment](site-deployment/site-deployment.md)
 
+- [Trusted Boot](trusted-boot/trusted-boot.md)
+
 - [Networking](networking/networking.md)
+
+- [Third-Party Integration](third-party-integrations/third-party-integrations.md)

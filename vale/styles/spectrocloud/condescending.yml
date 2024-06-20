@@ -1,0 +1,17 @@
+extends: existence
+message: Using '%s' may come across as condescending.
+link: https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Simplicity-Assumption
+level: error
+ignorecase: true
+tokens:
+  - obvious
+  - obviously
+  - simple
+  - simply
+  - easy
+  - easily
+  - of course
+  - clearly
+  - everyone knows
+  - common sense
+  - common knowledge

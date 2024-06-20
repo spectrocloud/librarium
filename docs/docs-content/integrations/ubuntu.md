@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["operating system", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/ubuntu-vsphere/blobs/sha256:09a727f9005b79c69d8e60e12ce130880c63131315b49e7fb4cc44e53d34dc7a?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/ubuntu-vsphere/blobs/sha256:09a727f9005b79c69d8e60e12ce130880c63131315b49e7fb4cc44e53d34dc7a?type=image.webp"
 tags: ["packs", "ubuntu", "operating system"]
 ---
 
@@ -48,6 +48,9 @@ Review [Maintenance Policy](maintenance-policy.md#os-packs) to learn about pack 
 
 | Kubernetes Version | Supports Kubernetes |
 | ------------------ | ------------------- |
+| 1.29               | ✅                  |
+| 1.28               | ✅                  |
+| 1.27               | ✅                  |
 | 1.26               | ✅                  |
 | 1.25               | ✅                  |
 | 1.24               | ❌                  |
@@ -325,7 +328,7 @@ Use the following steps to enable Ubuntu Pro.
 
 <br />
 
-![A view of the cluster profile creation wizard for Ubuntu Pro](/integrations_ubuntu_ubuntu-pro-preset-drawer.png)
+![A view of the cluster profile creation wizard for Ubuntu Pro](/integrations_ubuntu_ubuntu-pro-preset-drawer.webp)
 
 8. Click the **Ubuntu Advantage/Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
 
@@ -634,7 +637,7 @@ Use the following steps to enable Ubuntu Pro.
 
 <br />
 
-![A view of the cluster profile creation wizard for Ubuntu Pro](/integrations_ubuntu_ubuntu-pro-preset-drawer.png)
+![A view of the cluster profile creation wizard for Ubuntu Pro](/integrations_ubuntu_ubuntu-pro-preset-drawer.webp)
 
 8. Click the **Ubuntu Advantage/Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
 

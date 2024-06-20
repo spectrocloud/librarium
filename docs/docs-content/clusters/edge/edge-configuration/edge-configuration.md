@@ -36,7 +36,7 @@ To better understand the Edge installation process, review the order of operatio
 
 11. Edge Host is ready for use.
 
-![The boot order sequence, listing 9 steps that flow in a sequential order.](/clusters_edge_cloud-init_boot-order-squence.png)
+![The boot order sequence, listing 9 steps that flow in a sequential order.](/clusters_edge_cloud-init_boot-order-squence.webp)
 
 The Edge installation process accepts two types of configurations that you can use to customize the installation: Edge
 Installer Configuration and Edge OS Configuration.

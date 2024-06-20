@@ -27,7 +27,7 @@ The following are some architectural highlights of the Amazon Web Services (AWS)
 - The Kubernetes API Server endpoint is accessible through an Elastic Load Balancing (ELB), which load balances across
   all the control plane nodes.
 
-  ![A diagram of AWS architecture](/clusters_aws_architecture_aws_cluster_architecture.png)
+  ![A diagram of AWS architecture](/clusters_aws_architecture_aws_cluster_architecture.webp)
 
 ## AWS EKS Architecture
 
@@ -42,7 +42,7 @@ highlights pertaining to EKS when managed by Palette.
 
 - Spot instance support
 
-![eks_cluster_architecture.png](/clusters_aws_create-and-manage-aws-eks-cluster_architecture.png)
+![eks_cluster_architecture.webp](/clusters_aws_create-and-manage-aws-eks-cluster_architecture.webp)
 
 ### Disable OIDC Associate Provider
 

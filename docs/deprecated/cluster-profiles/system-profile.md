@@ -59,16 +59,16 @@ environments, projects and tenants.
 
 ### System Profile dashboard
 
-![system-profile-1.png](/system-profile-1.png)
+![system-profile-1.webp](/system-profile-1.webp)
 
 ### Add a new pack while creating the system profile
 
-![system-profile-2.png](/system-profile-2.png)
+![system-profile-2.webp](/system-profile-2.webp)
 
 ### Add a new manifest while creating the system profile
 
-![system-profile-3.png](/system-profile-3.png)
+![system-profile-3.webp](/system-profile-3.webp)
 
 ### Download system profile
 
-![system-profile-4.png](/system-profile-4.png)
+![system-profile-4.webp](/system-profile-4.webp)

@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["network", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/cni-flannel/blobs/sha256:24e56da9fc207788ba520cd00e31af042cfc9b00a3c21a5ad40a4dd592500589?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/cni-flannel/blobs/sha256:24e56da9fc207788ba520cd00e31af042cfc9b00a3c21a5ad40a4dd592500589?type=image.webp"
 tags: ["packs", "flannel", "cni"]
 ---
 

@@ -16,19 +16,19 @@ The following Palette downloads are available:
 You can deploy a self-hosted Palette to your environment. Refer to the
 [Self-Hosted Installation](enterprise-version/install-palette/install-palette.md) documentation for additional guidance
 on how to install Palette. Palette VerteX installation guide can be found in the
-[Palette VerteX install](vertex/install-palette-vertex) document.
+[Palette VerteX install](./vertex/install-palette-vertex/install-palette-vertex.md) document.
 
 ## Palette CLI
 
 The Palette Command Line Interface (CLI) is a tool that you can use to interact with Palette programmatically. Check out
-the [Palette CLI](/palette-cli/install-palette-cli) document for installation guidance.
+the [Palette CLI](./automation/palette-cli/palette-cli.md) document for installation guidance.
 
 | Version | Operating System                                                                      | Checksum (SHA256)                                                  |
 | ------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| 4.2.2   | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.2.2/linux/cli/palette) | `ea57325f5c741eff080b3fbf29ed69f878e9d1b0f680265fd0e63fe595fa49eb` |
+| 4.4.0   | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.4.0/linux/cli/palette) | `9e515f4f78b235a0022d1f10099f0e819fa28ceb356d4a97a34bb4e251a81ea1` |
 
 ## Palette Edge CLI
 
 | Version | Operating System                                                                      | Checksum (SHA256)                                                  |
 | ------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| 4.2.3   | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.2.3/cli/linux/palette-edge) | `5f781b6e1332972130f53783684a16c34a1d6bb57f5fcadc818f562690c6a044` |
+| 4.4.2   | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.4.2/cli/linux/palette-edge) | `86d2f9239d2b8517dc6d750631a3a328136a5d49a8ec042899879e9bd25a396e` |

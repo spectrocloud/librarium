@@ -25,4 +25,4 @@ possible pack statuses.
 
 The following image shows the pack status for a cluster profile.
 
-![An image of a cluster profile with various pack statuses.](/pack_status.png)
+![An image of a cluster profile with various pack statuses.](/pack_status.webp)

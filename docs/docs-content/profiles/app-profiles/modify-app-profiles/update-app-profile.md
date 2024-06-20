@@ -30,12 +30,12 @@ previous update. You can apply updates to Apps individually at any time.
 4. Click on **Settings** and choose **Basic Information** in the slide-out panel. You can modify the name, description,
    and tags.
 
-:::info
+   :::info
 
-Updated tags are not propagated to previously created Apps. However, tag changes will apply to new Apps you deploy that
-use the updated profile.
+   Updated tags are not propagated to previously created Apps. However, tag changes will apply to new Apps you deploy
+   that use the updated profile.
 
-:::
+   :::
 
 5. Save your changes.
 

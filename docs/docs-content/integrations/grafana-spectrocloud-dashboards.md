@@ -5,7 +5,7 @@ description: "Learn more about the Spectro Cloud Grafana dashboard and how to us
 type: "integration"
 category: ["monitoring", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/spectrocloud-grafana-dashboards/blobs/sha256:a48c9929480a8c463e409e7563279f97d80e674c5cc91cb81c47454aea2c203d?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/spectrocloud-grafana-dashboards/blobs/sha256:a48c9929480a8c463e409e7563279f97d80e674c5cc91cb81c47454aea2c203d?type=image.webp"
 tags: ["packs", "spectrocloud-grafana-dashboards", "monitoring"]
 ---
 
@@ -23,7 +23,7 @@ information is exposed by the Spectro Cloud Grafana Dashboards. <br /> <br />
 
 <br />
 
-![A grafana dashboard view of the cluster metric displaying pack status](/clusters_cluster-management_grafana_spectro_metrics.png)
+![A grafana dashboard view of the cluster metric displaying pack status](/clusters_cluster-management_grafana_spectro_metrics.webp)
 
 ## Versions Supported
 

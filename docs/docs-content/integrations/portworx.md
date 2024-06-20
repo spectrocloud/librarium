@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["storage", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/csi-portworx/blobs/sha256:e27bc9aaf22835194ca38062061c29b5921734eed922e57d693d15818ade7486?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/csi-portworx/blobs/sha256:e27bc9aaf22835194ca38062061c29b5921734eed922e57d693d15818ade7486?type=image.webp"
 tags: ["packs", "portworx", "storage"]
 ---
 
@@ -72,7 +72,7 @@ The default installation of Portworx will deploy the following components in the
 - [Lighthouse](https://portworx.com/blog/manage-portworx-clusters-using-lighthouse/)
 
 - [Stork](https://github.com/libopenstorage/stork) and
-  [Stork on Portworx](https://docs.portworx.com/portworx-install-with-kubernetes/storage-operations/stork/)
+  [Stork on Portworx](https://docs.portworx.com/portworx-enterprise/platform/openshift/ocp-gcp/operations/storage-operations/stork.html)
 
 - Storage class making use of portworx-volume provisioner.
 
@@ -525,8 +525,6 @@ manifests:
 
 - [Portworx Install with Kubernetes](https://docs.portworx.com/portworx-install-with-kubernetes/)
 
-- [Lighthouse](https://legacy-docs.portworx.com/enterprise/lighthouse-new.html)
-
 - [Installation Prerequisites](https://docs.portworx.com/install-portworx/prerequisites/)
 
-- [Install Portworx on AWS ASG using the DaemonSet](https://docs.portworx.com/install-portworx/cloud/aws/aws-asg/daemonset/)
+- [Install Portworx on AWS ASG](https://docs.portworx.com/portworx-enterprise/install-portworx/kubernetes/aws/aws-asg)

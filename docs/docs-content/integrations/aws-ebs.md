@@ -5,7 +5,7 @@ description: "AWS EBS storage add on into Spectro Cloud"
 type: "integration"
 category: ["storage", "amd64", "fips"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/csi-aws/blobs/sha256:f86813591b3b63b3afcf0a604a7c8c715660448585e89174908f3c6a421ad8d8?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/csi-aws/blobs/sha256:f86813591b3b63b3afcf0a604a7c8c715660448585e89174908f3c6a421ad8d8?type=image.webp"
 tags: ["packs", "aws-ebs", "storage"]
 ---
 

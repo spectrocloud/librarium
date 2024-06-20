@@ -6,7 +6,7 @@ type: "integration"
 hide_table_of_contents: true
 category: ["monitoring", "amd64", "arm64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/prometheus-operator/blobs/sha256:64589616d7f667e5f1d7e3c9a39e32c676e03518a318924e123738693e104ce0?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/prometheus-operator/blobs/sha256:64589616d7f667e5f1d7e3c9a39e32c676e03518a318924e123738693e104ce0?type=image.webp"
 tags: ["packs", "prometheus-operator", "monitoring"]
 ---
 
@@ -93,7 +93,7 @@ Use the `grafana.adminPassword` parameter to assign a password to the Grafana ad
 Additional parameters you should be aware of can be found by expanding the **Presets** options. You can modify the
 preset settings when you create the profile or when you deploy the cluster and review the cluster profile.
 
-![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
+![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.webp)
 
 Review the usage section below to learn more about each preset option.
 
@@ -314,7 +314,7 @@ Use the `grafana.adminPassword` parameter to assign a password to the Grafana ad
 Additional parameters you should be aware of can be found by expanding the **Presets** options. You can modify the
 preset settings when you create the profile or when you deploy the cluster and review the cluster profile.
 
-![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
+![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.webp)
 
 Review the usage section below to learn more about each preset option.
 
@@ -535,7 +535,7 @@ Use the `grafana.adminPassword` parameter to assign a password to the Grafana ad
 Additional parameters you should be aware of can be found by expanding the **Presets** options. You can modify the
 preset settings when you create the profile or when you deploy the cluster and review the cluster profile.
 
-![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
+![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.webp)
 
 Review the usage section below to learn more about each preset option.
 
@@ -756,7 +756,7 @@ Use the `grafana.adminPassword` parameter to assign a password to the Grafana ad
 Additional parameters you should be aware of can be found by expanding the **Presets** options. You can modify the
 preset settings when you create the profile or when you deploy the cluster and review the cluster profile.
 
-![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
+![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.webp)
 
 Review the usage section below to learn more about each preset option.
 
@@ -934,7 +934,7 @@ The Prometheus Operator pack installs the following dependencies:
 ## Parameters
 
 The Prometheus operator supports all the parameters exposed by the kube-prometheus-stack Helm Chart. Refer to the
-[kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stackn)
+[kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
 documentation for details.
 
 The Prometheus Operator pack has one parameter you must initialize `grafana.adminPassword`:
@@ -953,7 +953,7 @@ Use the `grafana.adminPassword` parameter to assign a password to the Grafana ad
 Additional parameters you should be aware of can be found by expanding the **Presets** options. You can modify the
 preset settings when you create the profile or when you deploy the cluster and review the cluster profile.
 
-![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
+![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.webp)
 
 Review the usage section below to learn more about each preset option.
 
@@ -1083,7 +1083,7 @@ The Prometheus Operator pack installs the following dependencies:
 ## Parameters
 
 The Prometheus operator supports all the parameters exposed by the kube-prometheus-stack Helm Chart. Refer to the
-[kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stackn)
+[kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
 documentation for details.
 
 The Prometheus Operator pack has one parameter you must initialize `grafana.adminPassword`:
@@ -1102,7 +1102,7 @@ Use the `grafana.adminPassword` parameter to assign a password to the Grafana ad
 Additional parameters you should be aware of can be found by expanding the **Presets** options. You can modify the
 preset settings when you create the profile or when you deploy the cluster and review the cluster profile.
 
-![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.png)
+![A view of the pack's preset drawer expanded with radio buttons](/integrations_prometheus-operator_operator-preset-view-expanded.webp)
 
 Review the usage section below to learn more about each preset option.
 

@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["service mesh", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/istio/blobs/sha256:c80cf596d4859261ab892e987f835bd11161bd139dd8e4147b652c6b93924cb2?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/istio/blobs/sha256:c80cf596d4859261ab892e987f835bd11161bd139dd8e4147b652c6b93924cb2?type=image.webp"
 tags: ["packs", "istio", "network"]
 ---
 

@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["storage", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.dev.spectrocloud.com/v1/csi-openstack-cinder/blobs/sha256:ebb9650566d2cdfe9b0fc7d474a1cdcd562a9020807e49f891df199379ab8961?type=image/png"
+logoUrl: "https://registry.dev.spectrocloud.com/v1/csi-openstack-cinder/blobs/sha256:ebb9650566d2cdfe9b0fc7d474a1cdcd562a9020807e49f891df199379ab8961?type=image.webp"
 tags: ["packs", "openstack-cinder", "storage"]
 ---
 

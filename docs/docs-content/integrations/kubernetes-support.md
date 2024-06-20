@@ -46,7 +46,7 @@ deprecation process.
 The diagram below illustrates the support lifecycle of a Kubernetes version. A deprecated Kubernetes version will no
 longer receive updates.
 
-![Diagram of the Kubernetes Support Lifecycle. PXK and CNCF is supported for 14 months. After that, normal deprecation flow is initiated.](/integrations_kubernetes-support_support-cycle.png)
+![Diagram of the Kubernetes Support Lifecycle. PXK and CNCF is supported for 14 months. After that, normal deprecation flow is initiated.](/integrations_kubernetes-support_support-cycle.webp)
 
 Additional support may be extended for PXK and PXK-E. Discuss this with our support team if you need extended support.
 You can contact our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com).
@@ -57,9 +57,16 @@ We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until 
 the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. You can learn more
 about our deprecation process in the [Pack Deprecation](./maintenance-policy.md#pack-deprecations) section.
 
-![Diagram of other Kubernetes Support Lifecycle. Other distros are supported until their EOL. After that, normal deprecation flow is initiated.](/integrations_kubernetes-support_support-cycle_other.png)
+![Diagram of other Kubernetes Support Lifecycle. Other distros are supported until their EOL. After that, normal deprecation flow is initiated.](/integrations_kubernetes-support_support-cycle_other.webp)
 
 ## Kubernetes Upgrades
+
+:::warning
+
+Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before
+upgrading, you review the information provided in this section.
+
+:::
 
 The official guidelines for Kubernetes upgrades recommend upgrading one minor version at a time. For example, if you are
 using Kubernetes version 1.26, you should upgrade to 1.27, before upgrading to version 1.28. You can learn more about

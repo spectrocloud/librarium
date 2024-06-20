@@ -18,8 +18,6 @@ Although Palette provides out-of-the box templates, we recommend that you create
 
 Create a template by adding a YAML file as a manifest in an add-on profile.
 
-<br />
-
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, click **Profiles** and click the **Add Cluster Profile** button.
@@ -37,8 +35,6 @@ Create a template by adding a YAML file as a manifest in an add-on profile.
 
 8. Click **Finish Configuration**.
 
-<br />
-
 #### Example YAML for a VM template
 
 ```yaml
@@ -55,7 +51,7 @@ metadata:
 spec:
   description: This is Fedora 36 image
   displayName: Fedora 36
-  icon: "https://s3.amazonaws.com/manifests.spectrocloud.com/logos/fedora.png"
+  icon: "https://s3.amazonaws.com/manifests.spectrocloud.com/logos/fedora.webp"
   running: false
   template:
     spec:

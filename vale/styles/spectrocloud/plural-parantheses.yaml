@@ -1,0 +1,12 @@
+extends: existence
+message: "Don't use plurals in parentheses such as in '%s'. Write the plural form of the word instead."
+link: "https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Parentheses"
+level: error
+nonword: true
+action:
+  name: edit
+  params:
+    - trim_right
+    - "(s)"
+tokens:
+  - '\b\w+\(s\)'

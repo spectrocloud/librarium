@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["storage", "amd64", "community"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/csi-trident/blobs/sha256:d4dd2ecf2e6f67876b8dab57ecfdf17591824c21e8d0d44fab0aaef9ddd3b931?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/csi-trident/blobs/sha256:d4dd2ecf2e6f67876b8dab57ecfdf17591824c21e8d0d44fab0aaef9ddd3b931?type=image.webp"
 tags: ["packs", "trident", "storage"]
 ---
 

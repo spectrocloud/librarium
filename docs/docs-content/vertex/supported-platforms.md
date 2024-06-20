@@ -48,6 +48,7 @@ VerteX supports the following Azure services.
 | **Service** | **Azure Gov Support?** |
 | ----------- | ---------------------- |
 | **IaaS**    | ✅                     |
+| **AKS**     | ✅                     |
 
 All Azure Government regions are supported with the exception of Department of Defense regions. Refer to the
 [official Azure Government documentation](https://learn.microsoft.com/en-us/azure/azure-government/documentation-government-overview-dod)
@@ -57,8 +58,8 @@ to learn more about the available regions.
 
 The following versions of VMware vSphere are supported in VerteX.
 
-| **Version**     | **Supported?** |
-| --------------- | -------------- |
-| **vSphere 6.7** | ✅             |
-| **vSphere 7.0** | ✅             |
-| **vSphere 8.0** | ✅             |
+| **Version**       | **Supported?** |
+| ----------------- | -------------- |
+| **vSphere 6.7U3** | ✅             |
+| **vSphere 7.0**   | ✅             |
+| **vSphere 8.0**   | ✅             |

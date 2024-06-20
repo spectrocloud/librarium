@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["authentication", "amd64", "fips", "network"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.dev.spectrocloud.com/v1/spectro-proxy/blobs/sha256:b6081bca439eeb01a8d43b3cb6895df4c088f80af978856ddc0da568e5c09365?type=image/png"
+logoUrl: "https://registry.dev.spectrocloud.com/v1/spectro-proxy/blobs/sha256:b6081bca439eeb01a8d43b3cb6895df4c088f80af978856ddc0da568e5c09365?type=image.webp"
 tags: ["packs", "spectro-proxy", "network"]
 ---
 
@@ -59,6 +59,13 @@ is in the same network as the cluster, the user may be able to access the host c
 However, if the user is on a different network, the host cluster's network configuration may limit the user's ability to
 connect to the host cluster and may require the use of a forward proxy.
 
+:::warning
+
+The Spectro Proxy pack does not support Edge deployments in airgapped environments where the Edge host does not have
+outbound access to the internet.
+
+:::
+
 From a network configuration perspective, a cluster can be in a private or a public network. Host clusters deployed in a
 network that does not allow inbound internet access are considered private. Whereas the clusters deployed in a network
 with both inbound and outbound access to the internet are considered public. The following are the three possible
@@ -70,7 +77,7 @@ network connectivity scenarios:
 
 - The cluster is in a public network.
 
-![An overview of the three different connectivity scenarios](/integrations_frp_conection_overview.png)
+![An overview of the three different connectivity scenarios](/integrations_frp_conection_overview.webp)
 
 The following table summarizes the network connectivity requirements for each scenario and whether the Spectro Proxy is
 required.
@@ -120,7 +127,7 @@ endpoints. The user is in a different network than the cluster.
 3. The Spectro Proxy server forwards the request to the cluster's API server located in a different network. The
    cluster's API server authenticates the request and replies with the proper response.
 
-![Private cluster in a different network.](/integrations_frp_conection_private-different-network.png)
+![Private cluster in a different network.](/integrations_frp_conection_private-different-network.webp)
 
 Depending on what type of infrastructure provider you are deploying the host cluster in, you may have to specify the
 Spectro Proxy server's SSL certificate in the Kubernetes cluster's configuration. Refer to the [Usage](#usage) section
@@ -141,7 +148,7 @@ Users in the same network as the cluster do not require the Spectro Proxy server
 
 :::
 
-![Private cluster in the same network.](/integrations_frp_conection_private-same-network.png)
+![Private cluster in the same network.](/integrations_frp_conection_private-same-network.webp)
 
 </TabItem>
 
@@ -159,7 +166,7 @@ When a cluster has public endpoints, you can query the cluster's Kubernetes API 
 access. The following diagram displays the network connection flow of a user attempting to connect to a cluster with
 public endpoints. Any user with access to the internet can connect to the cluster's API server.
 
-![A public cluster connection path](/integrations_frp_conection_public_connection.png)
+![A public cluster connection path](/integrations_frp_conection_public_connection.webp)
 
 </TabItem>
 
@@ -170,6 +177,64 @@ public endpoints. Any user with access to the internet can connect to the cluste
 ## Versions Supported
 
 <Tabs queryString="versions">
+<TabItem label="1.5.x" value="1.5.x">
+
+## Prerequisites
+
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro
+  Cloud reverse proxy.
+
+## Parameters
+
+The Spectro Proxy supports the following parameters.
+
+| Parameter  | Description                                            | Default                                     |
+| ---------- | ------------------------------------------------------ | ------------------------------------------- |
+| namespace  | The Kubernetes namespace to install the Spectro Proxy. | `cluster-{{ .spectro.system.cluster.uid }}` |
+| server     | The Kubernetes server.                                 | `{{ .spectro.system.reverseproxy.server }}` |
+| clusterUid | The Kubernetes cluster identifier.                     | `{{ .spectro.system.cluster.uid }}`         |
+| subdomain  | The Kubernetes cluster subdomain identifier.           | `cluster-{{ .spectro.system.cluster.uid }}` |
+
+Image Pull Policy configurations.
+
+| Parameter                | Description                                                 | Default        |
+| ------------------------ | ----------------------------------------------------------- | -------------- |
+| frpcInit.imagePullPolicy | The image pull policy for the Spectro Proxy init container. | `IfNotPresent` |
+| frpc.imagePullSecrets    | The image pull secrets for the Spectro Proxy container.     | `IfNotPresent` |
+
+The Kubernetes dashboard integration supports the following parameters.
+
+| Parameter       | Description                                 | Default |
+| --------------- | ------------------------------------------- | ------- |
+| enabled         | Enable the dashboard.                       | `false` |
+| useInsecurePort | Use unsecure port (HTTP) for communication. | `false` |
+
+The VMware dashboard integration supports the following parameters.
+
+| Parameter | Description           | Default |
+| --------- | --------------------- | ------- |
+| enabled   | Enable the dashboard. | `false` |
+
+## Usage
+
+To use this pack, you have to add it to your cluster profile. You can also add the Spectro Proxy pack when you create
+the cluster profile. Check out the
+[Create Cluster Profile](../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide to learn
+more about cluster profile creation.
+
+The kubeconfig file generated for the host cluster is updated with the Spectro Proxy server's address. Refer to the
+[Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) guide to learn how to download the
+kubeconfig file and access the cluster.
+
+:::warning
+
+If this pack is added as a Day-2 operation, meaning not during the cluster creation process, you will have to
+re-download the kubeconfig file to pick up the new configuration changes. This will also result in the Kubernetes
+control plane nodes getting repaved.
+
+:::
+
+</TabItem>
 
 <TabItem label="1.4.x" value="1.4.x">
 

@@ -25,7 +25,7 @@ fi
 echo "Temp directory: $tempdir"
 echo "Base directory: $baseDir"
 # List of version branches to exclude
-exclude_branches=(version-3-4 version-4-0) # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD A SPACE INSTEAD AND THE NEW VERSION STRING.
+exclude_branches=(version-3-4 version-4-0 version-4-1 version-4-2) # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD A SPACE INSTEAD AND THE NEW VERSION STRING.
 # exclude_branches=("version-3-4")
 
 # Save the current branch name
@@ -53,12 +53,15 @@ for b in $branches; do
   git fetch origin $b:$b
 done
 
+# Make sure we are in a clean state for repeatable runs.
+make clean-versions
 
 # Remove the existing versioned directories in the temp directory.
 rm -rf $tempdir/staging_docs
 rm -rf $tempdir/staging_api_docs
 rm -rf $tempdir/staging_sidebars
 rm -rf $tempdir/staging_api_docs_sidebars
+rm -rf $tempdir/staging_partials
 rm -rf $tempdir/temp_versions.json
 rm -rf $tempdir/temp_api_versions.json
 
@@ -68,6 +71,7 @@ mkdir -p $tempdir/staging_docs
 mkdir -p $tempdir/staging_api_docs
 mkdir -p $tempdir/staging_sidebars
 mkdir -p $tempdir/staging_api_docs_sidebars
+mkdir -p $tempdir/staging_partials
 touch $tempdir/temp_versions.json
 touch $tempdir/temp_api_versions.json
 echo '[]' > $tempdir/temp_versions.json  # Initialize as an empty array if it doesn't exist
@@ -119,6 +123,9 @@ for item in $(git branch --format '%(refname:short)'); do
     # Pull the latest changes 
     git pull origin $item
 
+    # Generate the partials once we are on the version branch
+    make generate-partials
+
     # Run the npm command
     echo "Running: npm run docusaurus docs:version $extracted_versionX"
     npm run docusaurus docs:version $extracted_versionX
@@ -139,6 +146,8 @@ for item in $(git branch --format '%(refname:short)'); do
     cp -R api_versioned_docs/version-$extracted_versionX $tempdir/staging_api_docs/
     cp -R api_versioned_sidebars/version-$extracted_versionX $tempdir/staging_api_docs_sidebars/ || true
     cp api_versioned_sidebars/version-$extracted_versionX-sidebars.json $tempdir/staging_api_docs_sidebars/version-$extracted_versionX-sidebars.json
+    # Copy the partials folder
+    cp -R _partials $tempdir/staging_partials/version-$extracted_versionX
 
 
     rm -rf versioned_docs/
@@ -150,7 +159,7 @@ for item in $(git branch --format '%(refname:short)'); do
     rm api_versions.json
 
     # Remove API auto-generated files
-    npm run clean-api-docs
+    make clean-api
 
     # Switch back to the original branch
     git checkout $current_branch
@@ -163,6 +172,7 @@ cp -R $tempdir/staging_docs $baseDir/versioned_docs
 cp -R $tempdir/staging_sidebars $baseDir/versioned_sidebars
 cp -R $tempdir/staging_api_docs $baseDir/api_versioned_docs
 cp -R $tempdir/staging_api_docs_sidebars $baseDir/api_versioned_sidebars
+cp -R $tempdir/staging_partials/. $baseDir/versioned_partials
 
 # Remove the existing versions.json if it exists
 [ -e versions.json ] && rm versions.json
@@ -187,3 +197,15 @@ fi
 mv $tempdir/temp.docusaurus.config.js $baseDir/docusaurus.config.js
 
 echo "Versioned documentation generated successfully"
+
+echo "Create the robots.txt file"
+
+# Invoke the generated_robots.sh script
+$baseDir/scripts/generate_robots.sh $baseDir/versions.json $baseDir/static
+
+if [ $? -ne 0 ]; then
+  echo "Error generating the robots.txt file"
+  exit 1
+fi
+
+echo "robots.txt file generated successfully"

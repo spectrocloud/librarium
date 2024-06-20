@@ -5,6 +5,7 @@ description: "Kubernetes Knowledge Hub Repository"
 hide_table_of_contents: true
 sidebar_custom_props:
   icon: "bookmark"
+unlisted: true
 ---
 
 # Welcome to the Spectro Cloud Knowledge Portal

@@ -18,7 +18,7 @@ Use the following steps to connect to your host cluster with the kubectl CLI.
 :::info
 
 If you are using Palette Virtual Machine (VM) Management, you can find steps on how to connect to your virtual machines
-with the [virtctl CLI](https://kubevirt.io/user-guide/operations/virtctl_client_tool/) in the
+with the [virtctl CLI](https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/) in the
 [Access VM Cluster with virtctl](../../vm-management/create-manage-vm/access-cluster-with-virtctl.md) guide. The virtctl
 CLI facilitates some of the VM operations you will perform, such as copying, pasting, or transferring files to and from
 a virtual machine using Secure Copy Protocol (SCP).
@@ -53,7 +53,7 @@ kubelogin GitHub repository [README](https://github.com/int128/kubelogin#setup) 
 
 5. Click on the kubeconfig link to download the file.
 
-![Arrow pointing to the kubeconfig file](/clusters_cluster-management_palette-webctl_cluster-details-overview.png)
+![Arrow pointing to the kubeconfig file](/clusters_cluster-management_palette-webctl_cluster-details-overview.webp)
 
 6. Open a terminal window and set the `KUBECONFIG` environment variable to the file path of the **kubeconfig** file.
 

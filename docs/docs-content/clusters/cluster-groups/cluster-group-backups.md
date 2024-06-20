@@ -88,4 +88,4 @@ You can validate that the disk backups are occurring by deploying a virtual clus
 4. Access the backup location's blob storage and review the backup files.
 
 Example of a backup that includes the virtual cluster disks.
-![Example image of a backup that includes disks](/clusters_cluster-groups_cluster-group-backups_backup-overview.png)
+![Example image of a backup that includes disks](/clusters_cluster-groups_cluster-group-backups_backup-overview.webp)

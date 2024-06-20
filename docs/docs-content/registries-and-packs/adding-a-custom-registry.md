@@ -257,7 +257,7 @@ Once you deploy the pack registry server, use the following steps to configure t
 3. Click on the **Add New Pack Registry**. Palette will open a pop-up window asking for the fields to configure a pack
    registry server, as highlighted in the screenshot below.
 
-![A screenshot highlighting the fields to configure a custom pack registry. ](/registries-and-packs_adding-a-custom-registry-tls_certificate.png)
+![A screenshot highlighting the fields to configure a custom pack registry. ](/registries-and-packs_adding-a-custom-registry-tls_certificate.webp)
 
 4. Provide the pack registry server name, endpoint, and user credentials in the pop-up window. Ensure to use an
    "https://" prefix in the pack registry server endpoint.

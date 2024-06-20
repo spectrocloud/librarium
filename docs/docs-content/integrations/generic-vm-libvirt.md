@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["system app", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/generic-vm-libvirt/blobs/sha256:23e1ba27947158ccf1ae36913601011508a55103ce1bdb517a175d752fb35eea?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/generic-vm-libvirt/blobs/sha256:23e1ba27947158ccf1ae36913601011508a55103ce1bdb517a175d752fb35eea?type=image.webp"
 tags: ["packs", "generic-vm-libvirt", "system app"]
 ---
 

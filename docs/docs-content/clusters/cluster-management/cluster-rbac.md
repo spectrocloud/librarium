@@ -141,12 +141,12 @@ You can create role bindings during the cluster creation process or after the ho
 For a new cluster, you can modify the cluster settings at the end of the cluster creation process. RBAC is one of the
 cluster settings you can modify. Select **RBAC** from the left **Settings Menu**.
 
-![A view of the cluster settings page when creating a cluster](/clusters_cluster-management_cluster-rbac_cluster-creation-settings.png)
+![A view of the cluster settings page when creating a cluster](/clusters_cluster-management_cluster-rbac_cluster-creation-settings.webp)
 
 To create or modify a role binding for an active cluster. Navigate to the cluster details page and click on
 **Settings**. Select **RBAC** from the left **Settings Menu**.
 
-![A view of the cluster settings page for an active cluster](/clusters_cluster-management_cluster-rbac_cluster-settings.png)
+![A view of the cluster settings page for an active cluster](/clusters_cluster-management_cluster-rbac_cluster-settings.webp)
 
 The RBAC settings view contains two tabs:
 

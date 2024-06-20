@@ -12,8 +12,6 @@ configuration options through the usage of environment variables.
 
 The configuration file is divided into keys and values. The following is an example of a YAML configuration.
 
-<br />
-
 ```yaml
 version: 0.1
 log:
@@ -26,19 +24,13 @@ The key `version` has a number value. The `log` key has a value with multiple ke
 
 To override the value of `log.level` you can specify an environment variable named `REGISTRY_LOG_LEVEL`.
 
-<br />
-
 ```shell
 export REGISTRY_LOG_LEVEL=debug
 ```
 
-<br />
-
 ## Default Configuration
 
 The docker image for the registry contains the following default configuration values.
-
-<br />
 
 ```yaml
 version: 0.1
@@ -72,8 +64,6 @@ For example, you can start the docker container image with the following environ
 the basic auth realm and logging level. In the following example, the `-e` flag is used to provide environment variables
 to the container.
 
-<br />
-
 ```bash
 docker run -d \
     --rm \
@@ -83,13 +73,11 @@ docker run -d \
     -e REGISTRY_LOG_LEVEL=debug \
     -e REGISTRY_AUTH=htpasswd \
     -e REGISTRY_AUTH_HTPASSWD_REALM="My Enterprise Realm" \
-    gcr.io/spectro-images-public/release/spectro-registry:3.4.0
+    gcr.io/spectro-images-public/release/spectro-registry:4.0.2
 ```
 
 Alternatively, you can start the container by mounting a directory with a new configuration file and pointing the server
 command to the configuration file.
-
-<br />
 
 ```shell
 docker run -d \
@@ -97,7 +85,7 @@ docker run -d \
     -p 443:5000 \
     --name spectro-registry \
     --volume $(pwd)/myconfig.yml:/etc/myconfig.yml \
-    gcr.io/spectro-images-public/release/spectro-registry:3.4.0 \
+    gcr.io/spectro-images-public/release/spectro-registry:4.0.2 \
     serve /etc/spectropaxconfig/myconfig.yml
 ```
 
@@ -118,8 +106,6 @@ storage:
 
 If you are using S3 Storage, ensure you specify the required S3 parameters.
 
-<br />
-
 ```yaml
 storage:
   cache:
@@ -139,8 +125,6 @@ storage:
 You can also use ephemeral storage. We recommend using ephemeral storage for testing purposes. Production environments
 should use object storage or a file system.
 
-<br />
-
 ```yaml
 storage: inmemory
 ```
@@ -149,8 +133,6 @@ storage: inmemory
 
 You can configure basic HTTP Auth. Basic Auth requires providing the pack registry server with an httppasswd file
 containing the credentials.
-
-<br />
 
 ```yaml
 auth:
@@ -167,16 +149,12 @@ The following options are available for modifying HTTP transport:
 
 For serving content on all interfaces on port 5000:
 
-<br />
-
 ```yaml
 http:
   addr: :5000
 ```
 
 Alternatively, the server can bind to a single IP and different port:
-
-<br />
 
 ```yaml
 http:
@@ -186,8 +164,6 @@ http:
 ### HTTP Headers
 
 The following headers are the default, and can be overridden:
-
-<br />
 
 ```yaml
 http:
@@ -209,8 +185,6 @@ validation by the Let's Encrypt services. Check out the
 [Deploy Pack Registry Server with Let's Encrypt](adding-a-custom-registry.md#deploy-pack-registry-server-with-lets-encrypt)
 guide to learn more.
 
-<br />
-
 ```yaml
 http:
   addr: :5000
@@ -226,8 +200,6 @@ Let's Encrypt limits the number of free certificates issued for each domain for 
 volume where the certificates are permanently stored. Use the option `cachefile` to enable this behavior.
 
 You can specify custom certificates by providing the file path to the certificate files.
-
-<br />
 
 ```yaml
 http:

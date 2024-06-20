@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["storage", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.dev.spectrocloud.com/v1/csi-aws-efs/blobs/sha256:5d1eb98bb847489f341beda1407c14442854ab8e5910d0cc8da1a63636057927?type=image/png"
+logoUrl: "https://registry.dev.spectrocloud.com/v1/csi-aws-efs/blobs/sha256:5d1eb98bb847489f341beda1407c14442854ab8e5910d0cc8da1a63636057927?type=image.webp"
 tags: ["packs", "aws-efs", "storage"]
 ---
 

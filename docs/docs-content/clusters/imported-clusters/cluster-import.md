@@ -21,13 +21,15 @@ Select the mode you want to use when importing a cluster into Palette.
 
 ### Prerequisites
 
-- Kubernetes version >= 1.19.X
+- Kubernetes version 1.19.X or later on the cluster you are importing.
 
 - Ensure your environment has network access to Palette SaaS or your self-hosted Palette instance.
 
 - Ensure [kubectl](https://kubernetes.io/docs/tasks/tools/) is installed and available in your local workstation.
 
 - Access to your cluster environment through kubectl.
+
+- Ensure you have `admin` or `cluster-admin` permissions on the cluster you are importing.
 
 ### Import a Cluster
 
@@ -44,6 +46,9 @@ Select the mode you want to use when importing a cluster into Palette.
      list doesn't contain your specific environment, but be aware of the limitations with generic clusters.
    - Proxy - Optional and only available for generic clusters. Specify a network proxy address or DNS value.
    - No Proxy - Optional and only available for generic clusters. Specify a no proxy address or DNS value.
+   - Host Path - Used to specify the Certificate Authority (CA) file path for the cluster. This is the location on the
+     physical host machine where the CA file is stored.
+   - Container Mount Path - Used to specify the container mount path where the CA file is mounted in the container.
 
 5. Select **Full-permission mode** and click on **Create & Open Cluster Instance** to start the import.
 
@@ -52,7 +57,7 @@ Select the mode you want to use when importing a cluster into Palette.
 
    <br />
 
-   ![A view of the cluster details page with the sidebar instructions box](/clusters_imported-clusters_full-permissions-instructions.png)
+   ![A view of the cluster details page with the sidebar instructions box](/clusters_imported-clusters_full-permissions-instructions.webp)
 
    <br />
 
@@ -101,7 +106,7 @@ Select the mode you want to use when importing a cluster into Palette.
 
    <br />
 
-   ![A view of an imported cluster's details page](/clusters_imported-clusters_full-permissions.png)
+   ![A view of an imported cluster's details page](/clusters_imported-clusters_full-permissions.webp)
 
    <br />
 
@@ -122,13 +127,16 @@ You now have imported a cluster into Palette with full permissions.
 
 ### Prerequisites
 
-- Kubernetes version >= 1.19.X
+- Kubernetes version 1.19.X or later on the cluster you are importing.
 
 - Ensure your environment has network access to Palette SaaS or your self-hosted Palette instance.
 
 - Ensure [kubectl](https://kubernetes.io/docs/tasks/tools/) is installed and available in your local workstation.
 
 - Access to your cluster environment through kubectl.
+
+- The cluster does not require a network proxy to communicate with Palette. Network proxy configurations are not
+  supported in read-only mode. Use full permissions mode if you need to configure a network proxy.
 
 ### Import a Cluster
 
@@ -143,37 +151,30 @@ You now have imported a cluster into Palette with full permissions.
    - Cluster Name - The name of the cluster you want to import.
    - Cloud Type - Select the infrastructure environment your cluster resides in. Select **Generic** if the environment
      list doesn't contain your specific environment but be aware of the limitations with generic clusters.
-   - Proxy - Optional and only available for generic clusters. Specify a network proxy address or DNS value.
-   - No Proxy - Optional and only available for generic clusters. Specify a no proxy address or DNS value.
+     - Host Path - Used to specify the Certificate Authority (CA) file path for the cluster. This is the location on the
+       physical host machine where the CA file is stored.
+   - Container Mount Path - Used to specify the container mount path where the CA file is mounted in the container.
 
 5. Select **Read-only mode** and click on **Create & Open Cluster Instance** to start the import action.
 
 6. You will be redirected to the cluster details page. A set of instructions with commands is displayed on the
    right-hand side of the screen. You will need to issue the following commands to complete the import process.
 
-   <br />
-
-   ![A view of the cluster details page with the sidebar instructions box](/clusters_imported-clusters_read-only-instructions.png)
-
-   <br />
+   ![A view of the cluster details page with the sidebar instructions box](/clusters_imported-clusters_read-only-instructions.webp)
 
 7. We recommend you install the metrics server so that Palette can expose and provide you with information about the
    cluster. Installing the metrics server is not required but is needed for Palette to expose cluster metrics. Open a
    terminal session and issue the commands below against the Kubernetes cluster you want to import if you want to enable
    the metrics server.
 
-   <br />
-
    ```shell
    helm repo add bitnami https://charts.bitnami.com/bitnami && \
    helm install my-release bitnami/metrics-server
    ```
 
-8. To install the Palette agent, issue the command displayed in the cluster details page **Install the** read-only
-   agent\*\* section against the Kubernetes cluster you want to import. The command is customized for your cluster as it
-   contains the assigned cluster ID. Below is an example output of the install command.
-
-   <br />
+8. To install the Palette agent, issue the command displayed in the cluster details page **Install the read-only agent**
+   section against the Kubernetes cluster you want to import. The command is customized for your cluster as it contains
+   the assigned cluster ID. Below is an example output of the install command.
 
    ```hideClipboard shell
    kubectl apply --filename https://api.spectrocloud.com/v1/spectroclusters/6491d4a94c39ad82d3cc30ae/import/manifest
@@ -200,11 +201,7 @@ You now have imported a cluster into Palette with full permissions.
 9. Once the Palette agent completes the initialization, the side view drawer on the right will disappear, and your
    cluster will transition to a status of **Running** after a few moments.
 
-   <br />
-
-   ![A view of an imported cluster's details page](/clusters_imported-clusters_read-only.png)
-
-   <br />
+   ![A view of an imported cluster's details page](/clusters_imported-clusters_read-only.webp)
 
 You now have imported a cluster into Palette in read-only mode. Keep in mind that a cluster imported in read-only mode
 has limited capabilities. You can migrate to full permissions anytime by clicking **Migrate To Full Permissions**.

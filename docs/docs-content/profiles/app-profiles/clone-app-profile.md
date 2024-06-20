@@ -26,17 +26,17 @@ You can clone an app profile across multiple projects within the same [tenant](.
 
 5. Provide the following information for the app profile you want to clone and click **Confirm**.
 
-| **Parameter**              | **Description**                                                                                                                                                            |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Name**                   | A custom name for the cloned app profile.                                                                                                                                  |
-| **Profile Version**        | Assign a version number for the cloned app profile. You can create multiple versions of an App Profile using the format `major.minor.patch`. The default value is `1.0.0`. |
-| **Source Profile Version** | The version number of the source profile.                                                                                                                                  |
-| **Target Project**         | The target project to which the profile will be cloned. Select the project name from the **drop-down Menu**.                                                               |
+   | **Parameter**              | **Description**                                                                                                                                                            |
+   | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**                   | A custom name for the cloned app profile.                                                                                                                                  |
+   | **Profile Version**        | Assign a version number for the cloned app profile. You can create multiple versions of an App Profile using the format `major.minor.patch`. The default value is `1.0.0`. |
+   | **Source Profile Version** | The version number of the source profile.                                                                                                                                  |
+   | **Target Project**         | The target project to which the profile will be cloned. Select the project name from the **drop-down Menu**.                                                               |
 
-To learn how to create multiple profile versions that use the same name, check out
-[Version an App Profile](../app-profiles/modify-app-profiles/version-app-profile.md).
+   To learn how to create multiple profile versions that use the same name, check out
+   [Version an App Profile](../app-profiles/modify-app-profiles/version-app-profile.md).
 
-You can now use the app profile when deploying virtual clusters in the target project or tenant.
+   You can now use the app profile when deploying virtual clusters in the target project or tenant.
 
 ## Validate
 

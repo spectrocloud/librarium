@@ -6,7 +6,7 @@ hide_table_of_contents: true
 type: "integration"
 category: ["security", "amd64", "arm64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/vault/blobs/sha256:1abda0173be1fd4ddfeccd2ff15089edd38a25e433ad7bb562a770d92992c7af?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/vault/blobs/sha256:1abda0173be1fd4ddfeccd2ff15089edd38a25e433ad7bb562a770d92992c7af?type=image.webp"
 tags: ["packs", "vault", "security"]
 ---
 
@@ -88,7 +88,7 @@ unseal Vault. You can do so by following these steps:
    kubectl port-forward $APP_NAME 8200:8200 --namespace $VAULT_NAMESPACE
    ```
 
-8. Open your browser and access the [Vault UI](https://localhost:8200/ui). You will receive a warning due to using a
+8. Open your browser and access the Vault UI at `https://localhost:8200/ui`. You will receive a warning due to using a
    self-signed certificate, but you can ignore this warning. Follow the prompts on the UI to initialize your root token.
 
 :::tip

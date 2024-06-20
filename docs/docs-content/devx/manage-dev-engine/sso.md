@@ -34,7 +34,7 @@ To learn more about the Sign-In Flow, refer to the
 
 3. Next, click the **Auth Providers** tab and toggle the **Enable Provider Login** button on.
 
-![The Auth providers tenant settings page with an arrow toward the toggle button.](/devx_manage-dev-engine_sso_display-oidc-page.png)
+![The Auth providers tenant settings page with an arrow toward the toggle button.](/devx_manage-dev-engine_sso_display-oidc-page.webp)
 
 4. Select one of the supported Social Sign-In providers, and confirm your change.
 
@@ -43,7 +43,7 @@ To learn more about the Sign-In Flow, refer to the
 You can validate SSO is enabled by attempting to log into your Palette tenant through SSO. Select the third-party
 provider you enabled for SSO.
 
-![Palette's login view with the SSO providers highlighted.](/devx_manage-dev-engine_sso_palette-login-view.png)
+![Palette's login view with the SSO providers highlighted.](/devx_manage-dev-engine_sso_palette-login-view.webp)
 
 ## Disable SSO
 

@@ -16,7 +16,7 @@ namespaces are:
   of resources – without having to set up multiple physical clusters.
 
 - You can configure Role-Based Access Control (RBAC) based on namespaces. For information about configuring namespaces
-  and RBAC, check out [RBAC and NS Support](cluster-rbac).
+  and RBAC, check out [RBAC and NS Support](cluster-rbac.md).
 
 - Namespaces can be used for different purposes such as testing, development, and production.
 
@@ -53,7 +53,7 @@ The following steps will guide you on how to create a namespace.
 
    The **Settings** pane displays with **RBAC** preselected and the **Namespaces** tab opened by default.
 
-   ![Cluster Settings pane with three arrows that point respectively to Namespace Name field, Add to List button, and the location where the namespace is listed](/clusters_cluster-management_namespace-create.png)
+   ![Cluster Settings pane with three arrows that point respectively to Namespace Name field, Add to List button, and the location where the namespace is listed](/clusters_cluster-management_namespace-create.webp)
 
 5. Type a unique namespace name in the **Namespace name or Regex** field and click **Add to List** at right.
 
@@ -105,7 +105,7 @@ You can assign resource quotas for resource sharing among multiple users who hav
 
 6. Select the namespace listed in the **Workspace Quota** section.
 
-![Cluster Settings pane displaying Workspace Quota section of Namespaces tab](/clusters_cluster-management_ns-resource-quota.png)
+![Cluster Settings pane displaying Workspace Quota section of Namespaces tab](/clusters_cluster-management_ns-resource-quota.webp)
 
 <br />
 

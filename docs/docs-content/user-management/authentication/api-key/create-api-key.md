@@ -45,7 +45,7 @@ below to learn more about creating an API key as a tenant admin.
 
 2. Navigate to the **User Menu**, and select **My API Keys**.
 
-   ![Image that points to the user drop-down Menu and points to the API key link](/tutorials/deploy-app/devx_apps_deploy-app_create-api-key.png)
+   ![Image that points to the user drop-down Menu and points to the API key link](/tutorials/deploy-app/devx_apps_deploy-app_create-api-key.webp)
 
 3. Click on **Add New API key**.
 

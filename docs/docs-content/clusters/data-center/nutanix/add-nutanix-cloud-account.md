@@ -31,15 +31,15 @@ Once the Private Cloud Gateway (PCG) is installed, the Nutanix cloud account mus
 
 6. Fill out the following input values and click **Confirm** to continue.
 
-| **Field**                 | **Description**                                                                                             |
-| ------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| **Name**                  | A custom name for the account.                                                                              |
-| **Private Cloud Gateway** | Select the PCG from the list of deployed PCGs in your setup.                                                |
-| **NUTANIX_USER**          | The Prism Central user name.                                                                                |
-| **NUTANIX_PASSWORD**      | The Prism Central user password.                                                                            |
-| **NUTANIX_ENDPOINT**      | The Prism Central IP address or the fully qualified domain name (FQDN) assigned to Prism.                   |
-| **NUTANIX_PORT**          | Specify the default port you assigned in the `cloudClusterTemplate.yaml` file. The default value is `9440`. |
-| **NUTANIX_INSECURE**      | Specify the SSL behavior you used in the `cloudClusterTemplate.yaml` file. The default behavior is `false`. |
+   | **Field**                 | **Description**                                                                                             |
+   | ------------------------- | ----------------------------------------------------------------------------------------------------------- |
+   | **Name**                  | A custom name for the account.                                                                              |
+   | **Private Cloud Gateway** | Select the PCG from the list of deployed PCGs in your setup.                                                |
+   | **NUTANIX_USER**          | The Prism Central user name.                                                                                |
+   | **NUTANIX_PASSWORD**      | The Prism Central user password.                                                                            |
+   | **NUTANIX_ENDPOINT**      | The Prism Central IP address or the fully qualified domain name (FQDN) assigned to Prism.                   |
+   | **NUTANIX_PORT**          | Specify the default port you assigned in the `cloudClusterTemplate.yaml` file. The default value is `9440`. |
+   | **NUTANIX_INSECURE**      | Specify the SSL behavior you used in the `cloudClusterTemplate.yaml` file. The default behavior is `false`. |
 
 ## Validate
 

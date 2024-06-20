@@ -55,4 +55,6 @@ installer image, credentials, and an endpoint URL to access the FIPS registry.
 
 - [System Management](system-management/system-management.md)
 
+- [Upgrade Notes](upgrade/upgrade.md)
+
 - [Enterprise Install Troubleshooting](../troubleshooting/enterprise-install.md)

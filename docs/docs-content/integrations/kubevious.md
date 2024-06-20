@@ -6,7 +6,7 @@ type: "integration"
 hide_table_of_contents: true
 category: ["monitoring", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/kubevious/blobs/sha256:5e33d7b51b1317a834b4552d96fc1cc8463000a7eedbcb4b784ea07236f3d7f7?type=image/png"
+logoUrl: "https://registry.spectrocloud.com/v1/kubevious/blobs/sha256:5e33d7b51b1317a834b4552d96fc1cc8463000a7eedbcb4b784ea07236f3d7f7?type=image.webp"
 tags: ["packs", "kubevious", "monitoring"]
 ---
 
