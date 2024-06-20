@@ -192,8 +192,8 @@ The previous state of the cluster profile will not be saved once it is overwritt
 Navigate to the left **Main Menu** and select **Clusters**. Filter for the cluster with the tag
 **service:hello-universe-frontend**. Select it to view its **Overview** tab.
 
-Select the **Profile** tab. Then, select the **hello-universe** manifest. Change the `replicas` field to `2` on line
-`14`. Click on **Save**. The editor closes.
+Select the **Profile** tab. Then, select the **hello-universe** pack. Change the `replicas` field to `2` on line `14`.
+Click on **Save**. The editor closes.
 
 This cluster now contains an override over its cluster profile. Palette uses the configuration you have just provided
 for the single cluster over its cluster profile and begins making the appropriate changes.
@@ -250,8 +250,6 @@ Click on **Settings** to expand the menu, and select **Delete Cluster**.
 You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name `aws-cluster` to
 proceed with the delete step. The deletion process takes several minutes to complete.
 
-<br />
-
 :::info
 
 If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for a force delete. To trigger a force
@@ -260,8 +258,6 @@ automatically removes clusters stuck in the cluster deletion phase for over 24 h
 
 :::
 
-<br />
-
 Once the cluster is deleted, navigate to the left **Main Menu** and click on **Profiles**. Find the cluster profile you
 created and click on the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the
 selection to remove the cluster profile.
@@ -269,7 +265,7 @@ selection to remove the cluster profile.
 ## Wrap-Up
 
 In this tutorial, you created deployed cluster profile updates. After the cluster was deployed to AWS, you updated the
-cluster profile in through three different methods: create a new cluster profile version, update a cluster profile in
+cluster profile through three different methods: create a new cluster profile version, update a cluster profile in
 place, and cluster profile overrides. After you made your changes, the Hello Universe application functioned as a
 three-tier application with a REST API backend server.
 
