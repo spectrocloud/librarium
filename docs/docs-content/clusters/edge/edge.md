@@ -78,4 +78,8 @@ specific challenges with additional software.
 
 - [Site Deployment](site-deployment/site-deployment.md)
 
+- [Trusted Boot](trusted-boot/trusted-boot.md)
+
 - [Networking](networking/networking.md)
+
+- [Third-Party Integration](third-party-integrations/third-party-integrations.md)

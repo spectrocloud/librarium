@@ -58,8 +58,8 @@ to learn more about the available regions.
 
 The following versions of VMware vSphere are supported in VerteX.
 
-| **Version**     | **Supported?** |
-| --------------- | -------------- |
-| **vSphere 6.7** | ✅             |
-| **vSphere 7.0** | ✅             |
-| **vSphere 8.0** | ✅             |
+| **Version**       | **Supported?** |
+| ----------------- | -------------- |
+| **vSphere 6.7U3** | ✅             |
+| **vSphere 7.0**   | ✅             |
+| **vSphere 8.0**   | ✅             |
