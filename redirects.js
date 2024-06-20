@@ -504,6 +504,10 @@ const redirects = [
     from: "/clusters/edge/edgeforge-workflow/palette-canvos/build-artifacts",
     to: "/clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle",
   },
+  {
+    from: "/security-bulletins/index/",
+    to: "/unlisted/index/",
+  },
 ];
 
 module.exports = redirects;

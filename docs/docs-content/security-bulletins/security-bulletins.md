@@ -29,6 +29,4 @@ security bulletin.
 
 ## Resources
 
-- [CVE Reports](cve-reports.md)
-
-- [CVE Index](cve-index.md)
+- [Security Bulletins](cve-reports.md)
