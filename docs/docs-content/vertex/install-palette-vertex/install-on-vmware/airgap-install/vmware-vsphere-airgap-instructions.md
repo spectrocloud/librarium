@@ -179,8 +179,9 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 17. If you want to assign a static IP address to the airgap support VM, you can do so now. Click on the box below to
     expand the instructions. Otherwise, proceed to the next step.
 
-  <details>
-  <summary>Assign a static IP address</summary>
+    <details>
+
+    <summary>Assign a static IP address</summary>
 
     Create an empty file to disable cloud-init from overriding the new network configurations you will add.
 
@@ -188,7 +189,8 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     sudo touch /etc/cloud/cloud-init.disabled
     ```
 
-    Issue the following command to update cloud-init. Select **VMware** from the wizard Menu when prompted. The command will disable cloud-init from managing the network configuration.
+    Issue the following command to update cloud-init. Select **VMware** from the wizard Menu when prompted. The command
+    will disable cloud-init from managing the network configuration.
 
     ```shell
     sudo dpkg-reconfigure cloud-init
@@ -200,7 +202,8 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     sudo vi /etc/netplan/01-netcfg.yaml
     ```
 
-    Modify the file to look like the example below. Replace the IP address, gateway, and DNS server with your network settings. Save the file and exit the text editor.
+    Modify the file to look like the example below. Replace the IP address, gateway, and DNS server with your network
+    settings. Save the file and exit the text editor.
 
     ```yaml
     network:
@@ -213,7 +216,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
             - 10.1.1.0/18
           gateway4: 2.2.2.2
           nameservers:
-              addresses: [1.1.1.1]
+            addresses: [1.1.1.1]
     ```
 
     :::tip
@@ -229,7 +232,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     sudo netplan apply
     ```
 
-  </details>
+    </details>
 
 18. Switch to the `root` user account. You will need to use the `root` user account to complete the remaining steps.
 
