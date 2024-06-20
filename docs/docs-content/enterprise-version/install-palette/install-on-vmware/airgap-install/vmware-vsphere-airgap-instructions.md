@@ -248,7 +248,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
     - The custom SSL certificates must be in base64 PEM format. If you have custom SSL certificates in a different
       format, convert them to base64 PEM format before copying them to the support VM. The airgap setup process also
-      expects the files to be named **server.crt** and **server.key**.
+      expects the certificate files to be named **server.crt** and **server.key**.
 
     - The custom certificate's Fully Qualified Domain Name (FQDN) must match the hostname or IP address you provide for
       the airgap support VM. Otherwise, the airgap setup process will fail due to a certificate mismatch.
