@@ -88,6 +88,7 @@ required environment variables. The values are not important for local developme
 ```shell
 ALGOLIA_APP_ID=1234567890
 ALGOLIA_SEARCH_KEY=1234567890
+ALGOLIA_INDEX_NAME=spectrocloud
 ```
 
 ## Documentation Content
