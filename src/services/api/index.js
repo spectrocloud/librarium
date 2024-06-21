@@ -5,11 +5,11 @@ import { BASE_URL } from "../../../static/scripts/constants";
 
 const api = axios.create({
   baseURL: BASE_URL,
-  timeout: 20000,
+  timeout: 120000, // 2 minutes
   headers: {
-    'Content-Type': 'application/json',
-    "ApiKey": process.env.API_KEY,
-  }
+    "Content-Type": "application/json",
+    ApiKey: process.env.API_KEY,
+  },
 });
 
 const limit = pRateLimit({
@@ -37,7 +37,5 @@ axiosRetry(api, {
 function callRateLimitAPI(delayedApiCall) {
   return limit(delayedApiCall);
 }
-
-
 
 module.exports = { api, callRateLimitAPI };
