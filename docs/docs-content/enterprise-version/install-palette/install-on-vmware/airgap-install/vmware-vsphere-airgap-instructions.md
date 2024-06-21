@@ -265,14 +265,6 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     - **server.crt**
     - **server.key**
 
-    You also need to update the permissions for the **/data/secret/cert/** directory. This folder is mounted to Harbor
-    during the airgap setup process and must have access to the custom SSL certificates. Use the following command to
-    ensure the permissions are set correctly.
-
-    ```shell
-    chown -R 10000:10000 /data/secret/cert/*
-    ```
-
 20. Start the airgap initialization process by issuing the following command. The script requires the hostname or IP
     address of the airgap support VM. Choose the preferred method for your environment. Be aware that the script will
     generate a self-signed certificate for the value you provide.
