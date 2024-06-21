@@ -136,3 +136,25 @@ issues or not being available. Use the following steps to troubleshoot and resol
 
 7. If you continue to encounter issues, contact our support team by emailing
    [support@spectrocloud.com](mailto:support@spectrocloud.com) so that we can provide you with further guidance.
+
+## Scenario - systemd-resolved.service Enters Failed State
+
+When you create a cluster with an Edge host that operates the FIPS-compliant RHEL Operating System (OS), you may
+encounter an error where the `systemd-resolved.service` process enters the **failed** state. This prevents the
+nameserver from being configured, which will result in cluster deployment failure.
+
+### Debug Steps
+
+1. Establish an SSH connection to the Edge host.
+
+   Alternatively, press the keys **Fn + Ctrl +Cmd + F1** on a keyboard that is connected to the Edge host to log in to
+   the terminal. If you are on Windows, press **Fn + Ctrl + Alt + F1**.
+
+2. Issue the following command.
+
+   ```shell
+   chmod a+rwxt /var/tmp
+   systemctl enable --now systemd-resolved.service
+   ```
+
+   This will start the `systemd-resolved.service` process and move the cluster creation process forward.
