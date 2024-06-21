@@ -66,3 +66,6 @@ artifact.zip
 
 # Ignore _partials/index.ts
 _partials/index.ts
+
+# Ignore statoc/img/packs
+static/img/packs

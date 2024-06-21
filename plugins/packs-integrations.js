@@ -10,6 +10,7 @@ const fetch = require('node-fetch');
 const { existsSync, promises, open, mkdirSync, writeFile, close, createWriteStream } = require("node:fs");
 
 const dirname = ".docusaurus/packs-integrations/";
+const logoDirname = "static/img/packs/";
 const filename = "api_pack_response.json";
 const options = {
   headers: {
@@ -287,7 +288,7 @@ async function write(res, packName, logoUrlMap) {
   return new Promise((resolve, reject) => {
     const type = res.headers.get('Content-Type');
     if (mime.extension(type) !== "html") {
-      const destination = path.resolve(dirname, packName);
+      const destination = path.resolve(logoDirname, packName);
       const fileStream = createWriteStream(`${destination}.${mime.extension(type)}`);
       res.body.pipe(fileStream);
       res.body.on("error", (err) => {
@@ -377,6 +378,9 @@ async function pluginPacksAndIntegrationsData(context, options) {
         console.info("completed the fetch of all the pack details");
         console.info("Starting the fetch of all the logos");
         //Fetch logos
+        if (!existsSync(logoDirname)) {
+          mkdirSync(logoDirname, { recursive: true });
+        }
         await getLogoUrl(packDataArr, logoUrlMap);
         console.info("completed the fetch of all the logos");
         apiPackResponse.apiPacksData = apiPacksData;
