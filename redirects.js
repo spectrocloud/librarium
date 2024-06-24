@@ -80,10 +80,6 @@ const redirects = [
     to: `/introduction/dashboard`,
   },
   {
-    from: `/getting-started/cluster-profiles`,
-    to: `/getting-started/introduction`,
-  },
-  {
     from: `/clusters/public-cloud/eks`,
     to: `/clusters/public-cloud/aws/eks`,
   },
