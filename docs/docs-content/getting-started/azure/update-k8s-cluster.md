@@ -137,7 +137,7 @@ incoming configuration on the right.
 
 Click **Apply Changes**.
 
-![Palette Editor that displays changes coming from the profile version update.](/getting-started/getting-started_update-k8s-cluster_editor-changes.webp)
+![Image that shows the profile 1.1.0 differences](/getting-started/getting-started_update-k8s-cluster_profile-version-changes.webp)
 
 :::warning
 
