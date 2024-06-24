@@ -708,7 +708,7 @@ partial_name: palette-setup
 
 This is how you set up Palette in {props.cloud}.
 
-This is a <VersionedLink text="Internal Link" url="/getting-started/additional-capabilities"/>`.
+This is an <VersionedLink text="Internal Link" url="/getting-started/additional-capabilities"/>.
 ```
 
 The path of the link should be the path of the destination file from the root directory, without any back operators
