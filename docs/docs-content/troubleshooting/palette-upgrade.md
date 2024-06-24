@@ -180,7 +180,7 @@ ConfigMap value is incorrect, use the following steps to resolve the issue.
 1. Open up a terminal session in an environment that has network access to the Kubernetes cluster. Refer to the
    [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) for additional guidance.
 
-2. Verify the MongoDB pods are not starting correctly by issuing the following command.
+2. Verify the pods in the `hubble-system` namespace are not starting correctly by issuing the following command.
 
    ```shell
    kubectl get pods --namespace=hubble-system

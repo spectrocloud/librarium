@@ -12,10 +12,11 @@ This page offers version-specific reference to help you prepare for upgrading se
 
 ## Upgrade VerteX 4.3.x to 4.4.x
 
-Prior to upgrading VMware vSphere VerteX installations from version 4.3.x to 4.4.x, complete the steps outlined in
-[Mongo DNS Configmap Value is Incorrect](../../troubleshooting/palette-upgrade.md#mongo-dns-configmap-value-is-incorrect).
-Addressing the [known issue](./../../release-notes/known-issues.md#active-known-issues) will prevent system pods from
-experiencing _CrashLoopBackOff_ errors after the upgrade.
+<!-- prettier-ignore -->
+Prior to upgrading VMware vSphere VerteX installations from version 4.3.x to 4.4.x, complete the
+steps outlined in 
+[Mongo DNS ConfigMap Issue](../../troubleshooting/palette-upgrade md#mongo-dns-configmap-value-is-incorrect) guide.
+Addressing this Mongo DNS issue will prevent system pods from experiencing _CrashLoopBackOff_ errors after the upgrade.
 
 After the upgrade, if Enterprise Cluster backups are stuck, refer to the
 [Enterprise Backup Stuck](../../troubleshooting/enterprise-install.md#scenario-enterprise-backup-stuck) troubleshooting
