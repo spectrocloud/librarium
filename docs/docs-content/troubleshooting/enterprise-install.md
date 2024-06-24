@@ -48,7 +48,7 @@ you continue to encounter issues, contact our support team by emailing
 
 ## Scenario - Enterprise Backup Stuck
 
-In the scenario where an enterprise backup is stuck, a restart of the mangement pod may resolve the issue. Use the
+In the scenario where an enterprise backup is stuck, a restart of the management pod may resolve the issue. Use the
 following steps to restart the management pod.
 
 ### Debug Steps
