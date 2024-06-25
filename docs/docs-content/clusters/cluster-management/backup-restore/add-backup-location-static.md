@@ -99,6 +99,9 @@ The following sections provide detailed instructions. Select the environment whe
   [Troubleshooting key access](https://docs.aws.amazon.com/kms/latest/developerguide/policy-evaluation.html) guide to
   learn more about common KMS issues.
 
+- If you are using a custom Certificate Authority (CA) for SSL/TLS connections, provide the x509 certificate in
+  Privacy-Enhanced Mail (PEM) format to Palette.
+
   :::tip
 
   Use the IAM Policy Simulator to verify the IAM role has the necessary permissions to access a customer managed KMS
@@ -122,7 +125,7 @@ The following sections provide detailed instructions. Select the environment whe
    | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Location Name**       | Provide a name of your choice.                                                                                                                                                                                                                                                                                            |
    | **Location Provider**   | Select AWS from the **drop-down** Menu.                                                                                                                                                                                                                                                                                   |
-   | **Certificate**         | Optional Service provider certificate.                                                                                                                                                                                                                                                                                    |
+   | **Certificate**         | Provide the CA bundle in PEM format if you are using a custom certificate bundle to establish SSL/TLS sessions.                                                                                                                                                                                                           |
    | **S3 Bucket**           | Name of the S3 bucket you created in the object store. The bucket name must be DNS-compliant. For more information, refer to the [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) defined by AWS.                                                                      |
    | **Region**              | Region where the S3 bucket is hosted. You can check the region code from the [Service endpoints](https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_region) section in the AWS documentation.                                                                                                                       |
    | **S3 URL**              | Optional bucket URL. If you choose to provide a value, refer to the [Methods for accessing a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html#virtual-host-style-url-ex) guide to determine the bucket URL. If you provided an S3 URL, enable the **Force S3 path style** checkbox. |
@@ -234,7 +237,9 @@ Use the following steps to validate adding the new backup location.
   [MinIO official documentation](https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management/minio-user-management.html#access-keys)
   to learn about creating access keys.
 
-- An optional service provider x509 certificate.
+- If you are using a custom Certificate Authority (CA) for SSL/TLS connections, provide the x509 certificate in
+  Privacy-Enhanced Mail (PEM) format to Palette. This is required if the MinIO endpoint is using a self-signed
+  certificate.
 
 ### Add a MinIO Bucket
 
@@ -246,15 +251,15 @@ Use the following steps to validate adding the new backup location.
 
 4. Fill out the following input fields. Refer to the table below to learn more.
 
-   | **Field**               | **Value**                                                                   |
-   | ----------------------- | --------------------------------------------------------------------------- |
-   | **Location Name**       | Provide a name of your choice.                                              |
-   | **Location Provider**   | Select MinIO from the drop-down field.                                      |
-   | **Certificate**         | Service provider certificate, if your organization prefers it.              |
-   | **S3 Bucket**           | The name of the S3 bucket you created in the MinIO object store.            |
-   | **Region**              | The region where the MinIO server is configured. Example: `us-east-1`       |
-   | **S3 URL**              | The MinIO object storage console URL. Example: `http://12.123.234.567:0000` |
-   | **Force S3 path style** | This value is required for MinIO.                                           |
+   | **Field**               | **Value**                                                                                                                                                                       |
+   | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Location Name**       | Provide a name of your choice.                                                                                                                                                  |
+   | **Location Provider**   | Select MinIO from the drop-down field.                                                                                                                                          |
+   | **Certificate**         | Provide the CA bundle in PEM format if you are using a custom certificate bundle to establish SSL/TLS sessions. This is required for endpoints using a self-signed certificate. |
+   | **S3 Bucket**           | The name of the S3 bucket you created in the MinIO object store.                                                                                                                |
+   | **Region**              | The region where the MinIO server is configured. Example: `us-east-1`                                                                                                           |
+   | **S3 URL**              | The MinIO object storage console URL. Example: `http://12.123.234.567:0000`                                                                                                     |
+   | **Force S3 path style** | This value is required for MinIO.                                                                                                                                               |
 
    <br />
 
@@ -310,6 +315,7 @@ guide to learn how to create an Azure storage account
 
 - An Azure service principal with sufficient permissions to perform the required read and write operations on the
   container. You will need the values of the following items:
+
   - Client ID
   - Client Secret
 

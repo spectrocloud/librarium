@@ -17,13 +17,15 @@ VerteX is available in the following modes:
 | VMware                 | Install Palette VerteX in VMware environment.                                | [Install on VMware](./install-on-vmware/install.md)         |
 | Kubernetes             | Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster. | [Install on Kubernetes](./install-on-kubernetes/install.md) |
 
+## Airgap Installation
+
 You can also install Palette VerteX in an airgap environment. For more information, refer to the
 [Airgap Installation](airgap/airgap.md) section.
 
-| **Supported Airgap Platform** | **Description**                                                                                                               |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Supported Airgap Platform** | **Description**                                                                                                               | **Install Guide**                                                          |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | VMware                        | Install Palette VerteX in VMware environment using your own OCI registry server.                                              |
-| Kubernetes                    | Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster with your own OCI registry server OR use AWS ECR. |
+| Kubernetes                    | Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster with your own OCI registry server OR use AWS ECR. | [Airgap Install](./install-on-kubernetes/airgap-install/airgap-install.md) |
 
 The next sections describe specific requirements for installing Palette VerteX.
 
@@ -64,11 +66,15 @@ number of active nodes and pods at any given time.
 
 ## Proxy Requirements
 
+VerteX connects to the internet to download images and packages. If your environment uses a proxy server, ensure the
+following domains and ports are accessible. The proxy server should meet the following requirements:
+
 - A proxy used for outgoing connections should support both HTTP and HTTPS traffic.
 
 - Allow connectivity to domains and ports in the table.
 
-  <br />
+- Review the [gRPC and Proxies](../../architecture/grps-proxy.md) page to learn more about VerteX's support for gRPC in
+  a proxy environment.
 
   | **Top-Level Domain**      | **Port** | **Description**                                       |
   | ------------------------- | -------- | ----------------------------------------------------- |
@@ -81,9 +87,12 @@ number of active nodes and pods at any given time.
   | docker.com                | 443      | Common third party container images                   |
   | raw.githubusercontent.com | 443      | Common third party content                            |
   | projectcalico.org         | 443      | Calico container images                               |
-  | quay.io                   | 443      | Common 3rd party container images                     |
+  | quay.io                   | 443      | Common third party container images                   |
   | grafana.com               | 443      | Grafana container images and manifests                |
   | github.com                | 443      | Common third party content                            |
+  | k8s.gcr.io                | 443      | Kubernetes images [deprecated]                        |
+  | registry.k8s.io           | 443      | Kubernetes images                                     |
+  | docker.pkg.dev            | 443      | Common third party content                            |
 
 ## Resources
 

@@ -9,8 +9,6 @@ tags: ["vmo"]
 
 Palette Virtual Machine Orchestrator (VMO) supports standard VM power operations:
 
-<br />
-
 - **Start**
 
 - **Stop**
@@ -25,8 +23,6 @@ of each listed VM.
 
 When you select a VM from the **Clusters** > **Virtual Machines** tab, the following tabs display. Tabs are specific to
 the selected VM.
-
-<br />
 
 - **Overview**: Provides general information about the VM, such as its IP address, operating system, creation date and
   time zone, status, active users, whether the guest agent is installed or not, the quantity of Network Interface Cards

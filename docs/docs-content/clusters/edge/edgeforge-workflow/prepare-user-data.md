@@ -130,9 +130,9 @@ stages:
   initramfs:
     - users:
         kairos:
-        groups:
-          - sudo
-        passwd: kairos
+          groups:
+            - sudo
+          passwd: kairos
 ```
 
 **Site** - supplied at the edge location through a bootable USB drive. If specified, the `projectName` value overrides
@@ -175,9 +175,9 @@ stages:
   initramfs:
     - users:
         kairos:
-        groups:
-          - sudo
-        passwd: kairos
+          groups:
+            - sudo
+          passwd: kairos
 ```
 
 ### Apply Proxy & Certificate Settings
@@ -188,52 +188,52 @@ This example showcases how you can include network settings in a user data confi
 #cloud-config
 stylus:
   site:
-      paletteEndpoint: api.spectrocloud.com
-      edgeHostToken: <yourRegistrationToken>
-      projectName: edge-sites
-      tags:
-        city: chicago
-        building: building-1
-        zip-code: 95135
+    paletteEndpoint: api.spectrocloud.com
+    edgeHostToken: <yourRegistrationToken>
+    projectName: edge-sites
+    tags:
+      city: chicago
+      building: building-1
+      zip-code: 95135
   network:
-      httpProxy: http://proxy.example.com
-      httpsProxy: https://proxy.example.com
-      noProxy: 10.10.128.10,10.0.0.0/8
-      nameserver: 1.1.1.1
-      # configure interface specific info. If omitted all interfaces will default to dhcp
-      interfaces:
-          enp0s3:
-              # type of network dhcp or static
-              type: static
-              # Ip address including the mask bits
-              ipAddress: 10.0.10.25/24
-              # Gateway for the static ip.
-              gateway: 10.0.10.1
-              # interface specific nameserver
-              nameserver: 10.10.128.8
-          enp0s4:
-              type: dhcp
-    caCerts:
-      - |
-        ------BEGIN CERTIFICATE------
-        *****************************
-        *****************************
-        ------END CERTIFICATE------
-      - |
-        ------BEGIN CERTIFICATE------
-        *****************************
-        *****************************
-        ------END CERTIFICATE------
+    httpProxy: http://proxy.example.com
+    httpsProxy: https://proxy.example.com
+    noProxy: 10.10.128.10,10.0.0.0/8
+    nameserver: 1.1.1.1
+    # configure interface specific info. If omitted all interfaces will default to dhcp
+    interfaces:
+      enp0s3:
+        # type of network dhcp or static
+        type: static
+        # Ip address including the mask bits
+        ipAddress: 10.0.10.25/24
+        # Gateway for the static ip.
+        gateway: 10.0.10.1
+        # interface specific nameserver
+        nameserver: 10.10.128.8
+      enp0s4:
+        type: dhcp
+  caCerts:
+    - |
+      ------BEGIN CERTIFICATE------
+      *****************************
+      *****************************
+      ------END CERTIFICATE------
+    - |
+      ------BEGIN CERTIFICATE------
+      *****************************
+      *****************************
+      ------END CERTIFICATE------
 
 install:
   poweroff: true
 
 stages:
   initramfs:
-      - users:
-          kairos:
+    - users:
+        kairos:
           groups:
-              - sudo
+            - sudo
           passwd: kairos
 ```
 
@@ -270,6 +270,39 @@ stages:
           groups:
             - sudo
           passwd: kairos
+```
+
+### Create Bind Mounts
+
+Palette Edge allows you to create bind mounts from your Edge host to your cluster through the installer configuration
+file named **user-data**, which allows your cluster to use directories or files from your Edge host directly within your
+Kubernetes cluster. This setup is useful for scenarios where your applications are active in the cluster and need direct
+access to files or directories on the Edge host.
+
+Several packs require you set up bind mounts in order to function. For example, the
+[Portworx pack](../../../integrations/portworx.md) requires several folders to be mounted on Edge deployments. You can
+use the `install.bind_mounts` parameter to specify folders to be mounted. For example, the following user data mounts
+three folders required by Portworx from the Edge host to the cluster.
+
+```yaml
+#cloud-config
+stylus:
+  site:
+    debug: true
+    insecureSkipVerify: false
+    paletteEndpoint: api.console.spectrocloud.com
+    name: edge-appliance-1
+    caCerts:
+      - |
+        -----BEGIN CERTIFICATE-----
+
+        -----END CERTIFICATE-----
+
+install:
+  bind_mounts:
+    - /etc/pwx
+    - /var/lib/osd
+    - /var/cores
 ```
 
 ## Multiple User Data Use Case

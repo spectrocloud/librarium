@@ -220,6 +220,14 @@ p img.markdown-image {
   }
 }
 
+// Allow hiding directories in docs-content
+
 .hidden-category {
   display: none !important;
+}
+
+// Reduce the spacing between lines in code blocks
+
+.theme-code-block code {
+  line-height: 1.6em;
 }

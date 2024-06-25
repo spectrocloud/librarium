@@ -28,7 +28,7 @@ The Edge Installer is configured with a set of default values.
 
 | Parameter             | Default                                        | Description                                                                                                                                                                                                           |
 | --------------------- | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `paletteEndpoint`     | `api.console.spectrocloud.com`                 | The Palette API endpoint.                                                                                                                                                                                             |
+| `paletteEndpoint`     | `api.spectrocloud.com`                         | The Palette API endpoint.                                                                                                                                                                                             |
 | `prefix`              | `edge`                                         | The prefix prepended to the edge device hostname to form the unique identifier.                                                                                                                                       |
 | `registrationURL`     | `https://edge-registration-generic.vercel.app` | The URL that operators should use when registering the Edge host with Palette.                                                                                                                                        |
 | `disableAutoRegister` | `false`                                        | Set to `true` if you want to disable auto registration. Refer to the [Register Edge Host](../site-deployment/site-installation/edge-host-registration.md) reference page to learn more about Edge host registrations. |
@@ -79,13 +79,22 @@ stylus:
 
 ### Initial Configuration
 
-You can configure the Edge Installer to enable the initial configuration in the Terminal User Interface (TUI) when you
-boot up the Edge host for the first time. For more information about initial configuration, refer to
+You can configure the Edge Installer to enable the initial configuration in the Palette Terminal User Interface (TUI)
+when you boot up the Edge host for the first time. For more information about initial configuration, refer to
 [Initial Edge Host Configuration](../site-deployment/initial-setup.md).
 
-| Parameter    | Description                                                           |
-| ------------ | --------------------------------------------------------------------- |
-| `includeTui` | Enable the initial Edge host configuration. Default value is `false`. |
+| Parameter    | Description                                                                       |
+| ------------ | --------------------------------------------------------------------------------- |
+| `includeTui` | Enable Palette TUI for initial Edge host configuration. Default value is `false`. |
+
+For example, the following configuration enables the Palette TUI.
+
+```yaml {3}
+stylus:
+  installationMode: airgap
+  includeTui: true
+  skipStylusUpgrade: true
+```
 
 ### Local UI
 

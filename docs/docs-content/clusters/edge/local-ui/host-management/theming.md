@@ -34,8 +34,7 @@ console for all Edge hosts of your organization.
   - 8 GB memory
   - 50 GB storage
 
-- [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the `git --version`
-  command.
+- [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
 
 - [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
   command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
@@ -62,9 +61,10 @@ console for all Edge hosts of your organization.
    cd CanvOS
    ```
 
-3. Create a directory called **ui.tar** at the path `CanvOS/ui.tar`.
+3. Create a directory called **ui** at the path `CanvOS/ui`.
 
-4. In the directory, create a file named **customizations.json**.
+4. In the directory, create a file named **customizations.json**. This is the same file you can use to add custom links
+   to your sidebar. For more information, refer to [Add Custom Links to Local UI](./custom-link.md).
 
 5. Upload a logo you'd like to use for the local UI to the **ui** directory. All file types are allowed. We recommend
    you limit the height of the logo image to between 64 px and 120 px. If you don't upload a logo, the local UI will use

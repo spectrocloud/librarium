@@ -1,6 +1,6 @@
 .PHONY: initialize start commit build
 
-include .env
+-include .env
 
 IMAGE:=spectrocloud/librarium
 # Retrieve all modified files in the content folder and compare the difference between the master branch git tree blob AND this commit's git tree blob
@@ -35,7 +35,7 @@ deep-clean: ## Clean all artifacts
 
 clean-versions: ## Clean Docusarus content versions
 	@echo "cleaning versions"
-	rm -rf api_versions.json versions.json versioned_docs versioned_sidebars api_versioned_sidebars api_versioned_docs
+	rm -rf api_versions.json versions.json versioned_docs versioned_sidebars api_versioned_sidebars api_versioned_docs versioned_partials
 	git checkout -- docusaurus.config.js static/robots.txt
 
 clean-api: ## Clean API docs
@@ -58,6 +58,7 @@ init: ## Initialize npm dependencies
 	npx husky install
 
 start: ## Start a local development server
+	make generate-partials
 	npm run start
 
 build: ## Run npm build
@@ -203,6 +204,11 @@ format-images: ## Format images
 	@echo "formatting images in /static/assets/docs/images/ folder"
 	./scripts/compress-convert-images.sh
 
+###@ Generate _partials/index.ts required to automatic partials usage.
+
+generate-partials: ## Generate
+	./scripts/generate-partials.sh
+	
 ###@ Aloglia Indexing
 
 update-dev-index: ## Update the Algolia index for the dev environment
