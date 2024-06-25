@@ -150,8 +150,8 @@ IDs. Use the following steps to correctly identify the issue and resolve it.
 
     :::warning
 
-    Once you see that the pod has come up correctly, wait for at least five minutes for the replication to complete
-    before proceeding with the other pods.
+    Once the pod is in the **Running** status, wait for at least five minutes for the replication to complete before
+    proceeding with the other pods.
 
     :::
 
