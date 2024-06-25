@@ -17,9 +17,7 @@ address common issues that may occur during an upgrade.
 If you receive the following error message when attempting to upgrade to Palette versions greater than Palette 3.4.X in
 a Kubernetes environment, use the debugging steps to address the issue.
 
-<br />
-
-```hideClipboard text
+```text hideClipboard
 Error: UPGRADE FAILED: failed to create resource: admission webhook "validate.nginx.ingress.kubernetes.io" denied the request: host "_" and path "/v1/oidc" is already defined in ingress default/hubble-auth-oidc-ingress-resource
 ```
 
@@ -30,8 +28,6 @@ Error: UPGRADE FAILED: failed to create resource: admission webhook "validate.ng
 
 2. Identify all Ingress resources that belong to _Hubble_ - an internal Palette component.
 
-   <br />
-
    ```shell
    kubectl get ingress --namespace default
    ```
@@ -39,15 +35,11 @@ Error: UPGRADE FAILED: failed to create resource: admission webhook "validate.ng
 3. Remove each Ingress resource listed in the output that starts with the name Hubble. Use the following command to
    delete an Ingress resource. Replace `REPLACE_ME` with the name of the Ingress resource you are removing.
 
-   <br />
-
    ```shell
    kubectl delete ingress --namespace default <REPLACE_ME>
    ```
 
 4. Restart the upgrade process.
-
-<br />
 
 ## Volume Attachment Errors Volume in VMware Environment
 
@@ -155,6 +147,13 @@ IDs. Use the following steps to correctly identify the issue and resolve it.
     mongo-1   0/2     ContainerCreating   0          4s
     mongo-2   2/2     Running             0          68s
     ```
+
+    :::warning
+
+    Once you see that the pod has come up correctly, wait for at least five minutes for the replication to complete
+    before proceeding with the other pods.
+
+    :::
 
     Palette will proceed with the upgrade and attempt to upgrade the remaining MongoDB pods. Repeat the steps for each
     of the MongoDB pods that are not starting correctly due to the volume attachment error.
