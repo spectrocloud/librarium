@@ -180,18 +180,18 @@ ConfigMap value is incorrect, use the following steps to resolve the issue.
 1. Open up a terminal session in an environment that has network access to the Kubernetes cluster. Refer to the
    [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) for additional guidance.
 
-2. Verify the pods in the `hubble-system` namespace are not starting correctly by issuing the following command.
+2. Verify that the pods in the `hubble-system` namespace are not starting correctly by issuing the following command.
 
    ```shell
    kubectl get pods --namespace=hubble-system
    ```
 
-3. Verify the configmap for the _configserver_ in the _hubble-system_ namespace contains the incorrect host value
+3. Verify that the configmap for the _configserver_ in the _hubble-system_ namespace contains the incorrect host value
    `mongo-1.mongohubble-system.svc.cluster`. Use the following command to describe the configmap and search for the host
    value.
 
    ```shell
-   kubectl describe configmap configserver --namespace hubble-system |grep host
+   kubectl describe configmap configserver --namespace hubble-system | grep host
    ```
 
    ```shell hideClipboard

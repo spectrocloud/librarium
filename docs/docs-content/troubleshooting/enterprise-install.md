@@ -60,7 +60,7 @@ following steps to restart the management pod.
    `hubble-system` namespace and filter for the `mgmt` pod.
 
    ```shell
-   kubectl get pods --namespace hubble-system|grep mgmt
+   kubectl get pods --namespace hubble-system | grep mgmt
    ```
 
    ```shell hideClipboard
