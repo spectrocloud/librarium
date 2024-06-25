@@ -144,7 +144,7 @@ IDs. Use the following steps to correctly identify the issue and resolve it.
     ```shell {4} hideClipboard
     NAME      READY   STATUS              RESTARTS   AGE
     mongo-0   2/2     Running             0          18h
-    mongo-1   0/2     ContainerCreating   0          4s
+    mongo-1   2/2     Running             0          18h
     mongo-2   2/2     Running             0          68s
     ```
 
