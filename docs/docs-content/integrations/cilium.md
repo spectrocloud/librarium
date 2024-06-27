@@ -22,18 +22,24 @@ policies are applied and updated independent of the application code or containe
 The Cilium agent runs on all clusters and servers to provide networking, security and observability to the workload
 running on that node.
 
-## Prerequisite
-
-- If the user is going for the BYO (Bring your own) Operating system use case then, HWE (Hardware Enabled) Kernel or a
-  Kernel that supports [eBPF](https://ebpf.io/) modules needs to be provisioned.
-
-**Palette OS images are by default provisioned with the above pre-requisite.**
-
 ## Versions Supported
 
 <Tabs>
+<TabItem label="1.15.x" value="1.15.x">
+
+## Prerequisite
+
+- If you are using Bring Your Own Operating System (BYOOS) use case then, HWE (Hardware Enabled) Kernel or a Kernel that
+  supports [eBPF](https://ebpf.io/) modules needs to be provisioned.
+
+</TabItem>
 
 <TabItem label="1.14.x" value="1.14.x">
+
+## Prerequisite
+
+- If you are using Bring Your Own Operating System (BYOOS) use case then, HWE (Hardware Enabled) Kernel or a Kernel that
+  supports [eBPF](https://ebpf.io/) modules needs to be provisioned.
 
 </TabItem>
 <TabItem label="Deprecated" value="Deprecated">
@@ -43,6 +49,43 @@ All versions below version 1.14.x are deprecated. We recommend you to upgrade to
 </TabItem>
 
 </Tabs>
+
+## Troubleshooting
+
+Review the following common issues and solutions when using the Cilium network pack.
+
+### I/O Timeout Error on VMware
+
+If you are deploying a cluster to a VMware environment using the VXLAN tunnel protocol, you may encounter an I/O timeout
+errors. This is due to a known bug in the VXMNET3 adapter that results in VXLAN traffic to get dropped. This is caused
+by the hardware segmentation offload provided by the VMXNET3 driver. You can learn more about this issue in the Cilium's
+[GitHub issue #21801](https://github.com/cilium/cilium/issues/21801).
+
+You can workaround the issue by using one of the two following methods:
+
+- Option 1: Set a different tunnel protocol in the Ciliium configuration. You can set the tunnel protocol to `geneve`.
+
+  ```yaml
+  tunnelProtocol: "geneve"
+  ```
+
+- Option 2: Modify the Operating System (OS) layer of your cluster profile to automatically disable UDP Segmentation
+  Offloading (USO).
+
+  ```yaml
+  kubeadmconfig:
+    preKubeadmCommands:
+      # Disable hardware segmentation offloading due to VMXNET3 issue
+      - |
+        install -m 0755 /dev/null /usr/lib/networkd-dispatcher/routable.d/10-disable-offloading
+        cat <<EOF > /usr/lib/networkd-dispatcher/routable.d/10-disable-offloading
+        #!/bin/sh
+        ethtool -K eth0 tx-udp_tnl-segmentation off
+        ethtool -K eth0 tx-udp_tnl-csum-segmentation off
+        ethtool --offload eth0 rx off tx off
+        EOF
+        systemctl restart systemd-networkd
+  ```
 
 ## References
 
