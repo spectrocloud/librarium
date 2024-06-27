@@ -8,9 +8,9 @@ sidebar_position: 30
 tags: ["getting-started", "gcp"]
 ---
 
-This tutorial will teach you how to deploy a host cluster with Palette using Google Cloud Platform (GCP). You will learn
-about _Cluster Mode_ and _Cluster Profiles_ and how these components enable you to deploy customized applications to
-Kubernetes with minimal effort.
+This tutorial will teach you how to deploy a host cluster with Palette using VMware vSphere and a Private Cloud Gateway
+(PCG). You will learn about _Cluster Mode_ and _Cluster Profiles_ and how these components enable you to deploy
+customized applications to Kubernetes with minimal effort.
 
 As you navigate the tutorial, refer to this diagram to help you understand how Palette uses a cluster profile as a
 blueprint for the host cluster you deploy. Palette clusters have the same node pools you may be familiar with: _control
@@ -22,11 +22,14 @@ plane nodes_ and _worker nodes_ where you will deploy applications. The result i
 
 To complete this tutorial, you will need the following.
 
-- Follow the steps described in the [Set up Palette with GCP](./setup.md) guide to authenticate Palette for use with
-  your GCP cloud account.
+- Follow the steps described in the [Set up Palette with VMware](./setup.md) guide to authenticate Palette for use with
+  your VMware user account.
+
+- A successfully deployed PCG. Follow the steps described in the [Deploy a PCG with Palette CLI](./deploy-pcg.md)
+  tutorial to deploy a PCG using the Palette CLI.
 
 - A Palette cluster profile. Follow the [Create a Cluster Profile](./create-cluster-profile.md) tutorial to create the
-  required GCP cluster profile.
+  required VMware cluster profile.
 
 ## Deploy a Cluster
 
@@ -36,77 +39,72 @@ Navigate to the left **Main Menu** and select **Clusters**. Click on **Create Cl
 
 ![Palette clusters overview page](/getting-started/getting-started_deploy-k8s-cluster_new_cluster.webp)
 
-Palette will prompt you to select the type of cluster. Select **GCP IaaS** and click the **Start GCP IaaS
-Configuration** button. Use the following steps to create a host cluster in Google Cloud.
+Palette will prompt you to select the type of cluster. Select **VMware** and click the **Start VMware Configuration**
+button. Use the following steps to create a host cluster in VMware.
 
 In the **Basic information** section, insert the general information about the cluster, such as the **Cluster name**,
-**Description**, **Tags**, and **Cloud account**. Click on **Next**.
+**Description** and **Tags**.
 
-![Palette clusters basic information](/getting-started/gcp/getting-started_deploy-k8s-cluster_basic_info.webp)
+Select the VMware cloud account that was registered with Palette during the PCG creation. The cloud account has the same
+name as the PCG. In this tutorial, the cloud account is called `gateway-tutorial`.
 
-Click on **Add Cluster Profile**. A list is displayed of available profiles you can choose to deploy to GCP. Select the
-cluster profile you created in the [Create a Cluster Profile](./create-cluster-profile.md) tutorial, named
-**gcp-profile**, and click on **Confirm**.
+Click on **Next**.
+
+![Palette clusters basic information](/getting-started/vmware/getting-started_deploy-k8s-cluster_basic_info.webp)
+
+Click on **Add Cluster Profile**. A list is displayed of available profiles you can choose to deploy to VMware. Select
+the cluster profile you created in the [Create a Cluster Profile](./create-cluster-profile.md) tutorial, named
+**vmware-profile**, and click on **Confirm**.
 
 The **Parameters** section displays all the layers in the cluster profile.
 
-![Palette clusters basic information](/getting-started/gcp/getting-started_deploy-k8s-cluster_clusters_parameters.webp)
+![Palette clusters basic information](/getting-started/vmware/getting-started_deploy-k8s-cluster_clusters_parameters.webp)
 
 Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format. Each
 pack contains a set of default values. You can change the manifest values if needed. Click on **Next** to proceed.
 
-The **Cluster config** section allows you to select the **Project**, **Region**, and **SSH Key** to apply to the host
-cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/clusters/cluster-management/ssh-keys)
-guide for information about uploading an SSH key.
-
-After selecting a **Project**, **Region**, and **SSH Key**, click on **Next**.
+The **Cluster Config** section allows you to provide specific information about your VMware vSphere environment. First,
+select the **Datacenter** and **Deployment Folder** where the cluster nodes will be launched. Next, select the **Image
+Template Folder** to which the Spectro templates are imported, and choose **DHCP** as the **Network Type**. Finally,
+provide the **SSH key** for accessing the cluster nodes. Proceed by clicking **Next** to advance to the **Nodes
+Configuration** section.
 
 The **Nodes config** section allows you to configure the nodes that make up the control plane and worker nodes of the
 host cluster.
 
-Before you proceed to the next section, review the following parameters.
+Provide the details for the nodes of the control plane and worker pools.
 
-Refer to the [Node Pool](../../clusters/cluster-management/node-pool.md) guide for a list and description of parameters.
+| **Field**                   | **Control Plane Pool** | **Worker Pool** |
+| --------------------------- | ---------------------- | --------------- |
+| Node pool name              | control-plane-pool     | worker-pool     |
+| Number of nodes in the pool | `1`                    | `1`             |
+| Allow worker capability     | No                     | Not applicable  |
+| Enable Autoscaler           | Not applicable         | No              |
+| Rolling update              | Not applicable         | Expand First    |
 
-Before you proceed to next section, review the following parameters.
-
-- **Number of nodes in the pool** - This option sets the number of control plane or worker nodes in the control plane or
-  worker pool. For this tutorial, set the count to one for the control plane pool and two for the worker pool.
-
-- **Allow worker capability** - This option allows the control plane node to also accept workloads. This is useful when
-  spot instances are used as worker nodes. You can check this box if you want to.
-
-- **Instance Type** - Select the compute type for the node pool. Each instance type displays the amount of CPU, RAM, and
-  hourly cost of the instance. Select **n1-standard-4**.
-
-- **Disk size** - Set the disk size to **60**.
-
-- **Availability zones** - Used to specify the availability zones in which the node pool can place nodes. Select an
-  availability zone.
-
-![Palette clusters nodes configuration](/getting-started/gcp/getting-started_deploy-k8s-cluster_cluster_nodes_config.webp)
+Keep the **Cloud Configuration** settings the same for both pools, with **CPU** set to 4 cores, **memory** allocated at
+8 GB, and **disk** space at 60 GB. Next, populate the **Compute cluster**, **Resource Pool**, **Datastore**, and
+**Network** fields according to your VMware vSphere environment. Click **Next** to proceed.
 
 Select **Next** to proceed with the cluster deployment.
 
-In the **Settings** section, you can configure advanced options such as when to patch the OS, enable security scans,
-manage backups, add Role-Based Access Control (RBAC) bindings, and more.
-
-For this tutorial, you can use the default settings. Click on **Validate** to continue.
+The **Settings** section offers advanced options for OS patching, scheduled scans, scheduled backups, and cluster role
+binding. For this tutorial, you can use the default settings. Click on **Validate** to continue.
 
 The **Review** section allows you to review the cluster configuration before deploying the cluster. Review all the
 settings and click on **Finish Configuration** to deploy the cluster.
 
-![Newly created GCP cluster](/getting-started/gcp/getting-started_deploy-k8s-cluster_profile_review.webp)
+![Newly created cluster](/getting-started/vmware/getting-started_deploy-k8s-cluster_profile_review.webp)
 
 Navigate to the left **Main Menu** and select **Clusters**.
 
-![Update the cluster](/getting-started/gcp/getting-started_deploy-k8s-cluster_new_cluster.webp)
+![Update the cluster](/getting-started/vmware/getting-started_deploy-k8s-cluster_new_cluster.webp)
 
 The cluster deployment process can take 15 to 30 min. The deployment time varies depending on the cloud provider,
 cluster profile, cluster size, and the node pool configurations provided. You can learn more about the deployment
 progress by reviewing the event log. Click on the **Events** tab to view the log.
 
-![Update the cluster](/getting-started/gcp/getting-started_deploy-k8s-cluster_event_log.webp)
+![Update the cluster](/getting-started/vmware/getting-started_deploy-k8s-cluster_event_log.webp)
 
 ## Verify the Application
 
@@ -116,7 +114,7 @@ Select your cluster to view its **Overview** tab. When the application is deploy
 indicated in the **Services** field, Palette exposes the service URL. Click on the URL for port **:8080** to access the
 Hello Universe application.
 
-![Cluster details page with service URL highlighted](/getting-started/gcp/getting-started_deploy-k8s-cluster_service_url.webp)
+![Cluster details page with service URL highlighted](/getting-started/vmware/getting-started_deploy-k8s-cluster_service_url.webp)
 
 <br />
 
@@ -146,7 +144,7 @@ delete to access its details page.
 
 Click on **Settings** to expand the menu, and select **Delete Cluster**.
 
-![Delete cluster](/getting-started/gcp/getting-started_deploy-k8s-cluster_delete-cluster-button.webp)
+![Delete cluster](/getting-started/vmware/getting-started_deploy-k8s-cluster_delete-cluster-button.webp)
 
 You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name to proceed with
 the delete step. The deletion process takes several minutes to complete.
@@ -167,11 +165,13 @@ Once the cluster is deleted, navigate to the left **Main Menu** and click on **P
 created and click on the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the
 selection to remove the cluster profile.
 
+<PartialsComponent category="pcg-vmware" name="delete-pcg-ui" />
+
 ## Wrap-Up
 
 In this tutorial, you used the cluster profile you created in the previous
-[Create a Cluster Profile](./create-cluster-profile.md) tutorial to deploy a host cluster onto your preferred cloud
-service provider. After the cluster deployed, you verified the Hello Universe application was successfully deployed.
+[Create a Cluster Profile](./create-cluster-profile.md) tutorial to deploy a host cluster onto VMware vSphere. After the
+cluster deployed, you verified the Hello Universe application was successfully deployed.
 
 We recommend that you continue to the [Deploy Cluster Profile Updates](./update-k8s-cluster.md) tutorial to learn how to
 update your host cluster.
