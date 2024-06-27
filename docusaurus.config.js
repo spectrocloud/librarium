@@ -301,7 +301,7 @@ const config = {
             activeBaseRegex: "^(?!/api/).*$",
           },
           {
-            to: "/",
+            to: "/tutorials",
             type: "docSidebar",
             sidebarId: "tutorialSidebar",
             label: "Tutorials",
