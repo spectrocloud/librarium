@@ -180,7 +180,7 @@ execute and will return an error.
 
 :::
 
-When you use the `--validate` flag, the standard installation wizard will proceed unless the `--config-only` flag is
+When you use the `--validate` flag, the standard installation wizard will proceed unless the `--config-file` flag is
 provided. Once all user inputs are provided, the validation will begin. A kind cluster will be created that contains the
 necessary components to conduct the validation checks. The Validator plugins will trigger the validation checks. The
 validation results will be displayed in the terminal. Below is an example of the validation results.
