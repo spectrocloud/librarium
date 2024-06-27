@@ -26,7 +26,7 @@ explore each cluster update method and learn how to apply these changes using Pa
 
 ## Prerequisites
 
-To complete this tutorial, follow the steps described in the [Set up Palette with AWS](./setup.md) guide to authenticate
+To complete this tutorial, follow the steps described in the [Set up Palette with GCP](./setup.md) guide to authenticate
 Palette for use with your AWS cloud account.
 
 Follow the instructions of the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial to deploy a cluster with the

@@ -32,21 +32,21 @@ To complete this tutorial, you will need the following.
 
 The following steps will guide you through deploying the cluster infrastructure.
 
-Navigate to the left **Main Menu** and select **Cluster**. From the clusters page, click on **Add New Cluster**.
+Navigate to the left **Main Menu** and select **Clusters**. Click on **Create Cluster**.
 
 ![Palette clusters overview page](/getting-started/getting-started_deploy-k8s-cluster_new_cluster.webp)
 
-Palette will prompt you to either deploy a new cluster or import an existing one. Click on **Deploy New Cluster** to
-access the cluster deployment wizard. Select **AWS** and click the **Start AWS Configuration** button. Use the following
-steps to create a host cluster in AWS.
+Palette will prompt you to select the type of cluster. Select **AWS IaaS** and click the **Start AWS IaaS
+Configuration** button. Use the following steps to create a host cluster in AWS.
 
 In the **Basic information** section, insert the general information about the cluster, such as the Cluster name,
 Description, Tags, and Cloud account. Click on **Next**.
 
 ![Palette clusters basic information](/getting-started/aws/getting-started_deploy-k8s-cluster_clusters_basic_info.webp)
 
-A list is displayed of available profiles you can choose to deploy to AWS. Select the cluster profile you created in the
-[Create a Cluster Profile](./create-cluster-profile.md) tutorial, named **aws-profile**, and click on **Next**.
+Click on **Add Cluster Profile**. A list is displayed of available profiles you can choose to deploy to AWS. Select the
+cluster profile you created in the [Create a Cluster Profile](./create-cluster-profile.md) tutorial, named
+**aws-profile**, and click on **Confirm**.
 
 The **Parameters** section displays all the layers in the cluster profile.
 

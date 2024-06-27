@@ -32,11 +32,11 @@ To complete this tutorial, you will need the following.
 
 The following steps will guide you through deploying the cluster infrastructure.
 
-Navigate to the left **Main Menu** and select **Clusters**. Click on **Add New Cluster**.
+Navigate to the left **Main Menu** and select **Clusters**. Click on **Create Cluster**.
 
 ![Palette clusters overview page](/getting-started/getting-started_deploy-k8s-cluster_new_cluster.webp)
 
-Click on **Deploy New Cluster** to access the cluster deployment wizard. Select **Azure** and click the **Start Azure
+Palette will prompt you to select the type of cluster. Select **Azure IaaS** and click the **Start Azure IaaS
 Configuration** button. Use the following steps to create a host cluster in Azure.
 
 In the **Basic information** section, insert the general information about the cluster, such as the Cluster name,
@@ -44,8 +44,9 @@ Description, Tags, and Cloud account. Click on **Next**.
 
 ![Palette clusters basic information](/getting-started/azure/getting-started_deploy-k8s-cluster_clusters_basic_info.webp)
 
-A list is displayed of available profiles you can choose to deploy to Azure. Select the cluster profile you created in
-the [Create a Cluster Profile](./create-cluster-profile.md) tutorial, named **azure-profile**, and click on **Next**.
+Click on **Add Cluster Profile**. A list is displayed of available profiles you can choose to deploy to Azure. Select
+the cluster profile you created in the [Create a Cluster Profile](./create-cluster-profile.md) tutorial, named
+**azure-profile**, and click on **Confirm**.
 
 The **Parameters** section displays all the layers in the cluster profile.
 
