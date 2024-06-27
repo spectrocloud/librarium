@@ -29,7 +29,7 @@ running on that node.
 
 ## Prerequisite
 
-- If you are using Bring Your Own Operating System (BYOOS) use case then, HWE (Hardware Enabled) Kernel or a Kernel that
+- If you are using Bring Your Own Operating System (BYOOS), then HWE (Hardware Enabled) Kernel or a Kernel that
   supports [eBPF](https://ebpf.io/) modules needs to be provisioned.
 
 </TabItem>
@@ -38,7 +38,7 @@ running on that node.
 
 ## Prerequisite
 
-- If you are using Bring Your Own Operating System (BYOOS) use case then, HWE (Hardware Enabled) Kernel or a Kernel that
+- If you are using Bring Your Own Operating System (BYOOS), then HWE (Hardware Enabled) Kernel or a Kernel that
   supports [eBPF](https://ebpf.io/) modules needs to be provisioned.
 
 </TabItem>
@@ -57,13 +57,13 @@ Review the following common issues and solutions when using the Cilium network p
 ### I/O Timeout Error on VMware
 
 If you are deploying a cluster to a VMware environment using the VXLAN tunnel protocol, you may encounter I/O timeout
-errors. This is due to a known bug in the VXMNET3 adapter that results in VXLAN traffic being dropped. The hardware
-segmentation offload provided by the VMXNET3 driver causes this. You can learn more about this issue in the Cilium's
+errors. This is due to a known bug in the VXMNET3 adapter that results in VXLAN traffic being dropped.
+You can learn more about this issue in Cilium's
 [GitHub issue #21801](https://github.com/cilium/cilium/issues/21801).
 
-You can workaround the issue by using one of the two following methods:
+You can work around the issue by using one of the two following methods:
 
-- Option 1: Set a different tunnel protocol in the Ciliium configuration. You can set the tunnel protocol to `geneve`.
+- Option 1: Set a different tunnel protocol in the Cilium configuration. You can set the tunnel protocol to `geneve`.
 
   ```yaml
   charts:
