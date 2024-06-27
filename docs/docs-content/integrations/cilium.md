@@ -56,9 +56,9 @@ Review the following common issues and solutions when using the Cilium network p
 
 ### I/O Timeout Error on VMware
 
-If you are deploying a cluster to a VMware environment using the VXLAN tunnel protocol, you may encounter an I/O timeout
-errors. This is due to a known bug in the VXMNET3 adapter that results in VXLAN traffic to get dropped. This is caused
-by the hardware segmentation offload provided by the VMXNET3 driver. You can learn more about this issue in the Cilium's
+If you are deploying a cluster to a VMware environment using the VXLAN tunnel protocol, you may encounter I/O timeout
+errors. This is due to a known bug in the VXMNET3 adapter that results in VXLAN traffic being dropped. The hardware
+segmentation offload provided by the VMXNET3 driver causes this. You can learn more about this issue in the Cilium's
 [GitHub issue #21801](https://github.com/cilium/cilium/issues/21801).
 
 You can workaround the issue by using one of the two following methods:
@@ -66,7 +66,9 @@ You can workaround the issue by using one of the two following methods:
 - Option 1: Set a different tunnel protocol in the Ciliium configuration. You can set the tunnel protocol to `geneve`.
 
   ```yaml
-  tunnelProtocol: "geneve"
+  charts:
+    cilium:
+      tunnelProtocol: "geneve"
   ```
 
 - Option 2: Modify the Operating System (OS) layer of your cluster profile to automatically disable UDP Segmentation
