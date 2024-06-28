@@ -572,8 +572,8 @@ resource "spectrocloud_cluster_profile" "azure-profile" {
 
 The cluster profile resources also specify packs for each of their layers using the
 [_pack_](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/cluster_profile#nested-schema-for-pack)
-nested schema. Check out the [Deploy a Custom Pack](../../../registries-and-packs/deploy-pack.md) tutorial to learn more
-about creating your own packs.
+nested schema. Check out the [Deploy a Custom Pack](../../../tutorials/profiles/packs-registries/deploy-pack.md)
+tutorial to learn more about creating your own packs.
 
 The **cluster_profiles.tf** file also contains 3 resources that have been commented out, one for each public cloud
 provider. They are named using the pattern `[cloud provider]-profile-3tier`. Uncomment the cluster profile resource for
@@ -1102,7 +1102,7 @@ To learn more about Palette, we encourage you to check out the reference resourc
 
 - [Backup and Restore](../../../clusters/cluster-management/backup-restore/backup-restore.md)
 
-- [Deploy a Custom Pack](../../../registries-and-packs/deploy-pack.md)
+- [Deploy a Custom Pack](../../../tutorials/profiles/packs-registries/deploy-pack.md)
 
 - [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)
 

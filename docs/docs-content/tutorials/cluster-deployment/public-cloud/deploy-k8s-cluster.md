@@ -1380,10 +1380,11 @@ Palette assures consistency across cluster deployments through cluster profiles.
 deploy applications to a Kubernetes environment with little or no prior Kubernetes knowledge. In a matter of minutes,
 you were able to provision a new Kubernetes cluster and deploy an application.
 
-We encourage you to check out the [Deploy an Application using Palette Dev Engine](../../../devx/apps/deploy-app.md)
-tutorial to learn more about Palette. Palette Dev Engine can help you deploy applications more quickly through the usage
-of [virtual clusters](../../../glossary-all.md#palette-virtual-cluster). Feel free to check out the reference links
-below to learn more about Palette.
+We encourage you to check out the
+[Deploy an Application using Palette Dev Engine](../../../tutorials/cluster-deployment/pde/deploy-app.md) tutorial to
+learn more about Palette. Palette Dev Engine can help you deploy applications more quickly through the usage of
+[virtual clusters](../../../glossary-all.md#palette-virtual-cluster). Feel free to check out the reference links below
+to learn more about Palette.
 
 - [Palette Modes](../../../introduction/palette-modes.md)
 
