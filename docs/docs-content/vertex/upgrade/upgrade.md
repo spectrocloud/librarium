@@ -42,7 +42,6 @@ Before upgrading Palette VerteX to a new major version, you must first update it
 
 Refer to the respective guide for guidance on upgrading your self-hosted Palette VerteX instance.
 
-- [Upgrade Notes](upgrade-notes.md)
 - [Non-Airgap VMware](upgrade-vmware/non-airgap.md)
 - [Airgap VMware](upgrade-vmware/airgap.md)
 - [Non-Airgap Kubernetes](upgrade-k8s/non-airgap.md)

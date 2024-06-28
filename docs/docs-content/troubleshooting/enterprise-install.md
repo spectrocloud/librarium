@@ -45,35 +45,3 @@ This error may occur if the self-hosted pack registry specified in the installat
 After a few moments, a system profile will be created and Palette or VerteX will be able to self-link successfully. If
 you continue to encounter issues, contact our support team by emailing
 [support@spectrocloud.com](mailto:support@spectrocloud.com) so that we can provide you with further guidance.
-
-## Scenario - Enterprise Backup Stuck
-
-In the scenario where an enterprise backup is stuck, a restart of the management pod may resolve the issue. Use the
-following steps to restart the management pod.
-
-### Debug Steps
-
-1. Open up a terminal session in an environment that has network access to the Kubernetes cluster. Refer to the
-   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) for additional guidance.
-
-2. Identify the `mgmt` pod in the `hubble-system` namespace. Use the following command to list all pods in the
-   `hubble-system` namespace and filter for the `mgmt` pod.
-
-   ```shell
-   kubectl get pods --namespace hubble-system | grep mgmt
-   ```
-
-   ```shell hideClipboard
-   mgmt-f7f97f4fd-lds69                   1/1     Running   0             45m
-   ```
-
-3. Restart the `mgmt` pod by deleting it. Use the following command to delete the `mgmt` pod. Replace `<mgmt-pod-name>`
-   with the actual name of the `mgmt` pod that you identified in step 2.
-
-   ```shell
-   kubectl delete pod <mgmt-pod-name> --namespace hubble-system
-   ```
-
-   ```shell hideClipboard
-   pod "mgmt-f7f97f4fd-lds69" deleted
-   ```
