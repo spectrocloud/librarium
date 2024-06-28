@@ -6,38 +6,23 @@ pagination_next: null
 ---
 
 This documentation section provides hands-on tutorials you can complete in your environment to learn more about Palette
-and VerteX. Here, you will find tutorials covering the fundamentals of Palette to help you become a proficient power
-user and advanced topics that require more time and attention to comprehend. These tutorials will enable you to maximize
+and VerteX. Here, you will find tutorials covering the aspects of Palette you need to become a proficient user, as well
+as advanced topics that require more time and attention to comprehend. These tutorials will enable you to maximize
 Palette's ability to manage Kubernetes at scale. Check out the sections below to learn more about crucial Palette
 concepts.
 
-### Profiles
-
-Palette provides profiles, which allow you to specify layers for your workloads using packs, Helm charts, Zarf packages,
-or cluster manifests. Packs serve as blueprints to the provisioning and deployment process, as they contain the versions
-of the container images that Palette will install for you. Profiles are used to ensure consistency across workload
-cluster deployments and Palette Virtual Clusters. Simultaneously, they offer the flexibility to tailor deployments to
-your specific needs.
-
-### Cluster Deployment
-
-Kubernetes clusters in Palette are instantiated from cluster profiles. A cluster definition in Palette consists of a
-reference to a cluster profile, cloud configuration, as well as the cluster size and placement configuration. Refer to
-the [Architecture Overview](../architecture/architecture-overview.md) reference page to learn more about cluster
-creation tasks.
-
-### Cluster Management
-
-Palette supports several Day-2 operations to manage the end-to-end lifecycle of Kubernetes clusters launched through
-Palette. It also provides several capabilities across new and imported clusters to perform ongoing management operations
-like backup/restore and to keep your clusters secure, compliant, and up to date. Additionally, Palette gives you
-visibility into the workloads active inside your cluster and cluster costs.
-
-### Edge
-
-Edge clusters are Kubernetes clusters set up on Edge hosts installed in isolated locations like grocery stores and
-restaurants versus a data center or cloud environment. These Edge hosts can be bare metal machines or virtual machines
-and are managed by operators at remote sites.
+- **Profiles** - Palette profiles allow you to specify layers for your workloads using packs, Helm charts, Zarf
+  packages, or cluster manifests. Packs serve as blueprints to the provisioning and deployment process, as they contain
+  the versions of the container images that Palette will install for you.
+- **Cluster Deployment** - Kubernetes clusters in Palette are instantiated from cluster profiles. A cluster definition
+  in Palette consists of a reference to a cluster profile, cloud configuration, as well as the cluster size and
+  placement configuration.
+- **Cluster Management** - Palette supports several Day-2 operations to manage the end-to-end lifecycle of Kubernetes
+  clusters. It also provides several capabilities across new and imported clusters to perform ongoing management
+  operations like backup/restore and to keep your clusters secure, compliant, and up to date.
+- **Edge** - Edge clusters are Kubernetes clusters set up on Edge hosts installed in isolated locations like grocery
+  stores and restaurants versus a data center or cloud environment. These Edge hosts can be bare metal machines or
+  virtual machines and are managed by operators at remote sites.
 
 <div align="center" className="desktop-only-display">
   <img src="/tutorials/tutorials_landing-page-intro.webp" width="75%" />
