@@ -511,11 +511,17 @@ Select the **1.1.0** version.
 Click **Review & Save**. Palette prompts you to preview the change summary.
 
 Click **Review changes in Editor**. Palette displays the changes, with the current configuration on the left and the
-incoming configuration on the right. The editor shows that the `API_URI` variable is added to the cluster profile.
+incoming changes on the right.
 
-Click **Apply Changes**.
+:::info
 
-![Palette Editor that displays changes coming from the profile version update.](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_editor-changes.webp)
+Make sure to preserve any existing cluster profile overrides.
+
+:::
+
+After reviewing the changes, click **Apply Changes**.
+
+![Palette Editor that displays changes coming from the profile version update.](/clusters_cluster-management_cluster-updates_preview-profile-ver-changes.webp)
 
 :::warning
 
@@ -940,19 +946,17 @@ updates available.
 
 ![Image that shows the pending updates ](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_pending-update-clusters-view.webp)
 
-Select this cluster to open its **Overview** tab. Click on **Updates** to begin the cluster update.
+Select this cluster to open its **Overview** tab. Click on **Updates Available** to begin the cluster update.
 
-![Image that shows the Updates button](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_updates-available-button-cluster-overview.webp)
+![Image that shows the Updates Available button](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_updates-available-button-cluster-overview.webp)
 
-A dialog appears which shows the changes made in this update. Click on **Review changes in Editor**. As previously,
-Palette displays the changes, with the current configuration on the left and the incoming configuration on the right.
-
-Review the changes and ensure the only change is the `replicas` field value. You can choose to maintain your cluster
-override or apply the incoming cluster profile update.
+A dialog appears which shows the changes made in this update. Review the changes and ensure the only change is the
+`replicas` field value. The pending update maintains the override you have made and sets the `replicas` field to `1`.
 
 ![Image that shows the available updates dialog ](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_available-updates-dialog.webp)
 
-Click on **Apply Changes** once you have finished reviewing your changes. This removes your cluster override.
+Set the value of `replicas` to `3` in the right-hand dialog. This removes your cluster override. Click on **Confirm
+updates** once you have finished reviewing your changes.
 
 Palette updates your cluster according to cluster profile specifications. Once these changes are complete, select the
 **Workloads** tab. Then, select the **hello-universe** namespace.
@@ -1015,19 +1019,17 @@ an update available.
 
 ![Image that shows the pending updates ](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_pending-update-clusters-view.webp)
 
-Select this cluster to open its **Overview** tab. Click on **Updates** to begin the cluster update.
+Select this cluster to open its **Overview** tab. Click on **Updates Available** to begin the cluster update.
 
-![Image that shows the Updates button](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_updates-available-button-cluster-overview.webp)
+![Image that shows the Updates Available button](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_updates-available-button-cluster-overview.webp)
 
-A dialog appears which shows the changes made in this update. Click on **Review changes in Editor**. As previously,
-Palette displays the changes, with the current configuration on the left and the incoming configuration on the right.
+A dialog appears which shows the changes made in this update. Review the changes and ensure the only change is the
+`replicas` field value. The pending update maintains the override you have made and sets the `replicas` field to `1`.
 
-Review the changes and ensure the only change is the `replicas` field value. You can choose to maintain your cluster
-override or apply the incoming cluster profile update.
+![Image that shows the available updates dialog ](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_tf-available-updates-dialog.webp)
 
-![Image that shows the available updates dialog ](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_available-updates-dialog.webp)
-
-Click on **Apply Changes** once you have finished reviewing your changes. This removes your cluster override.
+Set the value of `replicas` to `3` in the right hand dialog. This removes your cluster override. Click on **Confirm
+updates** once you have finished reviewing your changes.
 
 Palette updates your cluster according to cluster profile specifications. Once these changes are complete, select the
 **Workloads** tab. Then, select the **hello-universe** namespace.
