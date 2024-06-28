@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, ReactElement } from "react";
 import styles from "./PacksReadme.module.scss";
-import { Select, Tabs, ConfigProvider, theme, TreeSelect } from "antd";
+import { Tabs, ConfigProvider, theme, TreeSelect } from "antd";
 import CustomLabel from "../Technologies/CategorySelector/CustomLabel";
 import PackCardIcon from "../Technologies/PackCardIcon";
 import Markdown from 'markdown-to-jsx';
@@ -110,7 +110,7 @@ export default function PacksReadme() {
       setSelectedPackUid(packDataObj.childPackUid || "");
     }
     if (!urlParamVersion) {
-      history.replace({ search: `?pack=${packName}&version=${version}&parent=${packDataObj?.parentVersio || ""}` });
+      history.replace({ search: `?pack=${packName}&version=${version}&parent=${packDataObj?.parentVersion || ""}` });
     }
     setSelectedVersion(version);
   }, [packData]);
