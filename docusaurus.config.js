@@ -256,6 +256,7 @@ const config = {
   themes: ["docusaurus-theme-openapi-docs"],
   customFields: {
     // Put your custom environment here
+    mendableKey: process.env.MENDABLE_API_KEY,
   },
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -372,7 +373,7 @@ const config = {
         appId: process.env.ALGOLIA_APP_ID,
         // Public API key: it is safe to commit it
         apiKey: process.env.ALGOLIA_SEARCH_KEY,
-        indexName: process.env.ALGOLIA_INDEX_NAME,
+        indexName: "prod-docusaurus-librarium",
         // Optional: see doc section below
         contextualSearch: true,
         // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.

@@ -19,11 +19,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # - name: Run scraper
-      #   env:
-      #     APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
-      #     API_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
-      #   run: docker run  -e APPLICATION_ID=$APPLICATION_ID  -e API_KEY=$API_KEY  -e "CONFIG=$(cat ./docsearch.config.json | jq -r tostring)" algolia/docsearch-scraper
+      - name: Run scraper
+        env:
+          APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          API_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+        run: docker run  -e APPLICATION_ID=$APPLICATION_ID  -e API_KEY=$API_KEY  -e "CONFIG=$(cat ./docsearch.config.json | jq -r tostring)" algolia/docsearch-scraper
 
       - name: Trigger DocSearch v3 Crawler
         run: |
