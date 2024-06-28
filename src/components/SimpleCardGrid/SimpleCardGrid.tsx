@@ -40,36 +40,31 @@ export default function SimpleCardGrid({ cards = [], hideNumber = false }: Simpl
 }
 
 function SimpleCard({ title, index, description, buttonText, relativeURL, hideNumber }: SimpleCard) {
-  console.log(hideNumber)
-    return (
-      <a href={relativeURL}>
-        <div className={styles.simpleCard}>
-          <div className={styles.simpleCardHeader}>
-            <SimpleCardNumber
-             hideNumber={hideNumber}
-             index={index}
-            />
-            <div className={styles.simpleCardTitle}>{title}</div>
-          </div>
-          <div className={styles.simpleCardBody}>
-            <p className={styles.simpleCardDescription}>{description}</p>
-          </div>
-          <div className={styles.simpleCardFooter}>
-            <button className={styles.simpleCardFooterBtn}>
-              {buttonText}
-              <SimpleCardFooterArrow index={index} />
-            </button>
-          </div>
+  console.log(hideNumber);
+  return (
+    <a href={relativeURL}>
+      <div className={styles.simpleCard}>
+        <div className={styles.simpleCardHeader}>
+          <SimpleCardNumber hideNumber={hideNumber} index={index} />
+          <div className={styles.simpleCardTitle}>{title}</div>
         </div>
-      </a>
-    ); 
+        <div className={styles.simpleCardBody}>
+          <p className={styles.simpleCardDescription}>{description}</p>
+        </div>
+        <div className={styles.simpleCardFooter}>
+          <button className={styles.simpleCardFooterBtn}>
+            {buttonText}
+            <SimpleCardFooterArrow index={index} />
+          </button>
+        </div>
+      </div>
+    </a>
+  );
 }
 
-function SimpleCardNumber({index, hideNumber} : SimpleCardNumber) {
+function SimpleCardNumber({ index, hideNumber }: SimpleCardNumber) {
   if (!hideNumber) {
-    return (
-      <div className={styles.simpleCardIndex}>{index}</div>
-    );
+    return <div className={styles.simpleCardIndex}>{index}</div>;
   }
-  return (<div />);
+  return <div />;
 }
