@@ -51,7 +51,7 @@ must be secured, as they must contain the PCR and DB private keys.
 - You have exported the factory keys from the Edge device. For more information, refer to
   [Export Factory Keys](./export-keys.md).
 
-- [Git](https://github.com/git-guides/install-git). You can ensure git installation by issuing the git --version
+- [Git](https://cli.github.com/manual/installation). You can ensure git installation by issuing the git --version
   command.
 
 - [openssl](https://www.openssl.org/) must be installed on your Linux machine.
