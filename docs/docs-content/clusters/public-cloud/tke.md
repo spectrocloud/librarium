@@ -40,96 +40,98 @@ detailing of the Tencent TKE cluster provisioning through Palette:
 
 **Last Update**: April 26, 2022
 
-```json
+```yaml
 {
   "version": "2.0",
-  "statement": [
-    {
-      "effect": "allow",
-      "action": [
-        "as:CreateLaunchConfiguration",
-        "as:CreateAutoScalingGroup",
-        "as:DescribeLaunchConfigurations",
-        "as:DescribeAutoScalingInstances",
-        "as:DescribeAutoScalingActivities",
-        "as:DescribeAutoScalingGroups",
-        "as:ModifyDesiredCapacity",
-        "as:ModifyAutoScalingGroup",
-        "as:DescribeAutoScalingGroups",
-        "as:DescribeAutoScalingGroupLastActivities",
-        "cam:GetRole",
-        "cam:GetPolicy",
-        "cam:DeletePolicyVersion",
-        "cam:CreatePolicyVersion",
-        "cam:ListGroupsForConsole",
-        "cam:ListPolicies",
-        "cam:ListMaskedSubAccounts",
-        "cvm:DescribeSecurityGroupLimits",
-        "cvm:DescribeSecurityGroups",
-        "cvm:CreateSecurityGroup",
-        "cvm:DescribeInstances",
-        "cvm:DescribeInstancesStatus",
-        "cvm:DescribeSecurityGroupAssociateInstances",
-        "cvm:DescribeSecurityGroupLimits",
-        "cvm:DescribeSecurityGroupPolicys",
-        "cvm:DescribeImages",
-        "cvm:DescribeCbsStorages",
-        "cvm:RunInstances",
-        "cvm:DescribeKeyPairs",
-        "cvm:DescribeAddresses",
-        "cvm:ModifySingleSecurityGroupPolicy",
-        "cvm:CreateSecurityGroupPolicy",
-        "cvm:DeleteSecurityGroupPolicy",
-        "clb:DescribeLoadBalancers",
-        "cloudaudit:DescribeEvents",
-        "cloudaudit:DescribeEvents",
-        "ecdn:PurgePathCache",
-        "ecdn:PurgeUrlsCache",
-        "ecdn:PushUrlsCache",
-        "monitor:DescribeDashboardMetricData",
-        "tke:CreateCluster",
-        "tke:DescribeClusters",
-        "tke:DescribeClusterEndpointStatus",
-        "tke:DescribeClusterEndpointVipStatus",
-        "tke:DescribeClusterSecurity",
-        "tke:CreateClusterEndpointVip",
-        "tke:CreateClusterEndpoint",
-        "tke:DeleteClusterEndpointVip",
-        "tke:DeleteClusterEndpoint",
-        "tke:DeleteCluster",
-        "tke:DescribeClusterAsGroupOption",
-        "tke:DescribeClusterInstances",
-        "tag:DescribeResourceTagsByResourceIds",
-        "tag:DescribeTagValues",
-        "tag:TagResources",
-        "tag:DescribeTagKeys",
-        "vpc:DescribeSubnetEx",
-        "vpc:DescribeVpcEx",
-        "vpc:DescribeVpcLimits",
-        "vpc:DescribeRouteTable",
-        "vpc:DescribeNatGateways",
-        "vpc:DescribeCcns",
-        "vpc:DescribeCcnAttachedInstances",
-        "vpc:DescribeLocalGateway",
-        "vpc:DescribeHaVips",
-        "vpc:Describe.webpw",
-        "vpc:DescribeDirectConnectGateways",
-        "vpc:DescribeVpcPeeringConnections",
-        "vpc:DescribeCustomerGateways",
-        "vpc:DescribeRoutes",
-        "vpc:ModifyNatGatewayAttribute",
-        "vpc:ResetNatGatewayConnection",
-        "vpc:DescribeAddress",
-        "vpc:DescribeTemplateLimits",
-        "vpc:DescribeAddressGroups",
-        "vpc:DescribeService",
-        "vpc:DescribeServiceGroups",
-        "vpc:DescribeNetworkAcls",
-        "vpc:DescribeNetworkInterfaces"
-      ],
-      "resource": ["*"]
-    }
-  ]
+  "statement":
+    [
+      {
+        "effect": "allow",
+        "action":
+          [
+            "as:CreateLaunchConfiguration",
+            "as:CreateAutoScalingGroup",
+            "as:DescribeLaunchConfigurations",
+            "as:DescribeAutoScalingInstances",
+            "as:DescribeAutoScalingActivities",
+            "as:DescribeAutoScalingGroups",
+            "as:ModifyDesiredCapacity",
+            "as:ModifyAutoScalingGroup",
+            "as:DescribeAutoScalingGroups",
+            "as:DescribeAutoScalingGroupLastActivities",
+            "cam:GetRole",
+            "cam:GetPolicy",
+            "cam:DeletePolicyVersion",
+            "cam:CreatePolicyVersion",
+            "cam:ListGroupsForConsole",
+            "cam:ListPolicies",
+            "cam:ListMaskedSubAccounts",
+            "cvm:DescribeSecurityGroupLimits",
+            "cvm:DescribeSecurityGroups",
+            "cvm:CreateSecurityGroup",
+            "cvm:DescribeInstances",
+            "cvm:DescribeInstancesStatus",
+            "cvm:DescribeSecurityGroupAssociateInstances",
+            "cvm:DescribeSecurityGroupLimits",
+            "cvm:DescribeSecurityGroupPolicys",
+            "cvm:DescribeImages",
+            "cvm:DescribeCbsStorages",
+            "cvm:RunInstances",
+            "cvm:DescribeKeyPairs",
+            "cvm:DescribeAddresses",
+            "cvm:ModifySingleSecurityGroupPolicy",
+            "cvm:CreateSecurityGroupPolicy",
+            "cvm:DeleteSecurityGroupPolicy",
+            "clb:DescribeLoadBalancers",
+            "cloudaudit:DescribeEvents",
+            "cloudaudit:DescribeEvents",
+            "ecdn:PurgePathCache",
+            "ecdn:PurgeUrlsCache",
+            "ecdn:PushUrlsCache",
+            "monitor:DescribeDashboardMetricData",
+            "tke:CreateCluster",
+            "tke:DescribeClusters",
+            "tke:DescribeClusterEndpointStatus",
+            "tke:DescribeClusterEndpointVipStatus",
+            "tke:DescribeClusterSecurity",
+            "tke:CreateClusterEndpointVip",
+            "tke:CreateClusterEndpoint",
+            "tke:DeleteClusterEndpointVip",
+            "tke:DeleteClusterEndpoint",
+            "tke:DeleteCluster",
+            "tke:DescribeClusterAsGroupOption",
+            "tke:DescribeClusterInstances",
+            "tag:DescribeResourceTagsByResourceIds",
+            "tag:DescribeTagValues",
+            "tag:TagResources",
+            "tag:DescribeTagKeys",
+            "vpc:DescribeSubnetEx",
+            "vpc:DescribeVpcEx",
+            "vpc:DescribeVpcLimits",
+            "vpc:DescribeRouteTable",
+            "vpc:DescribeNatGateways",
+            "vpc:DescribeCcns",
+            "vpc:DescribeCcnAttachedInstances",
+            "vpc:DescribeLocalGateway",
+            "vpc:DescribeHaVips",
+            "vpc:Describe.webpw",
+            "vpc:DescribeDirectConnectGateways",
+            "vpc:DescribeVpcPeeringConnections",
+            "vpc:DescribeCustomerGateways",
+            "vpc:DescribeRoutes",
+            "vpc:ModifyNatGatewayAttribute",
+            "vpc:ResetNatGatewayConnection",
+            "vpc:DescribeAddress",
+            "vpc:DescribeTemplateLimits",
+            "vpc:DescribeAddressGroups",
+            "vpc:DescribeService",
+            "vpc:DescribeServiceGroups",
+            "vpc:DescribeNetworkAcls",
+            "vpc:DescribeNetworkInterfaces",
+          ],
+        "resource": ["*"],
+      },
+    ],
 }
 ```
 
@@ -195,6 +197,24 @@ detailing of the Tencent TKE cluster provisioning through Palette:
    ```yaml
    "OsName": "ubuntu18.04.1x86_64 GPU"
    ```
+
+   :::warning
+
+   While adding Add-on packs to the Cluster Profile, make sure that Persistent Volume Claim size is >=10 GB and in
+   multiples of 10.
+
+   Example:
+
+   ```yaml
+   master:
+   persistence:
+     enabled: true
+     accessModes:
+       - ReadWriteOnce
+     size: 20Gi
+   ```
+
+   :::
 
 10. Click **Next** to continue.
 

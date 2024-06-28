@@ -3,7 +3,7 @@ sidebar_label: "Create Local Cluster"
 title: "Create Local Cluster"
 description: "Instructions for creating a locally manageg cluster in Edge Host Management Console."
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 32
 tags: ["edge"]
 ---
 
@@ -16,7 +16,7 @@ cluster using Local UI.
 
 ## Limitations
 
-- You can only create single-node clusters consisting solely of the Edge host you create the cluster from. You cannot
+- You can only create single node clusters consisting solely of the Edge host you create the cluster from. You cannot
   include other Edge hosts in the same local or remote network.
 
 ## Prerequisites
@@ -27,7 +27,7 @@ cluster using Local UI.
 
 - You have uploaded the necessary software artifacts to the Edge host or included the artifacts in the Edge Installer
   ISO during EdgeForge. For more information, refer to [Upload Content Bundle](./upload-content-bundle.md) and
-  [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md).
+  [Build Edge Artifacts with Content Bundle](../../edgeforge-workflow/palette-canvos/build-artifacts.md).
 
 - You must ensure that the Edge host has a stable IP address. You have the following options to achieve a stable IP
   address:
@@ -43,7 +43,7 @@ cluster using Local UI.
 1. Log into the local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more
    information, refer to [Access Local UI](../host-management/access-console.md).
 
-2. From the left **Main Menu**, click **Cluster**.
+2. From the left **Main Menu**, click **Clusters**.
 
 3. Click **Create cluster**.
 
@@ -66,10 +66,7 @@ cluster using Local UI.
 
 6. If your selected cluster profile has profile variables, you will now be prompted to enter the values for those
    profile variables. The variables with default values will be auto-populated unless the variable value is masked when
-   you defined the variable. For more information on cluster profile variables, refer to
-   [Define and Manage Profile Variables](../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md).
-
-   Enter the values for the profile variables and click **Next**.
+   you defined the variable. Enter the values for the profile variables and click **Next**.
 
 7. In the **Cluster Config** step, enter a virtual IP address to be used by your cluster. Optionally, you can also
    specify a Network Time Protocol server and an SSH public key.
@@ -94,4 +91,4 @@ cluster using Local UI.
 
 1. Log in to the local UI.
 
-2. Click **Cluster**. Verify that your cluster has entered the running status.
+2. Click **Clusters**. Verify that you cluster has entered the running status.

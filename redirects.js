@@ -496,14 +496,6 @@ const redirects = [
     from: "/user-management/palette-resource-limits/",
     to: "/tenant-settings/palette-resource-limits/",
   },
-  {
-    from: "/clusters/edge/edgeforge-workflow/build-content-bundle",
-    to: "/clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle",
-  },
-  {
-    from: "/clusters/edge/edgeforge-workflow/palette-canvos/build-artifacts",
-    to: "/clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle",
-  },
 ];
 
 module.exports = redirects;

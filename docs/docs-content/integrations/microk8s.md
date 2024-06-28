@@ -51,9 +51,6 @@ Refer to the [Kubernetes Support Lifecycle](kubernetes-support.md#other-kubernet
 | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `microk8sConfig.addons`          | A list of [MicroK8s addons](https://microk8s.io/docs/addons) you can set for your cluster. `Ingress` and `DNS` are mandatory and enabled by default.                                                                        |
 | `microk8sConfig.upgradeStrategy` | It describes how to replace existing nodes of your cluster with new ones during upgrades. Values can be `RollingUpgrade` (default), `InPlaceUpgrade`, or `SmartUpgrade`. Refer to the [Usage](#usage) section for guidance. |
-| `microk8sConfig.bootCommands`    | A list of commands you can set to be executed during boot.                                                                                                                                                                  |
-| `microk8sConfig.preRunCommands`  | A list of commands you can set to be executed before installing MicroK8s in your cluster.                                                                                                                                   |
-| `microk8sConfig.postRunCommands` | A list of commands you can set to be executed after installing MicroK8s in your cluster.                                                                                                                                    |
 
 ### Usage
 
@@ -133,9 +130,6 @@ node:
 | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `microk8sConfig.addons`          | A list of [MicroK8s addons](https://microk8s.io/docs/addons) you can set for your cluster. `Ingress` and `DNS` are mandatory and enabled by default.                                                                        |
 | `microk8sConfig.upgradeStrategy` | It describes how to replace existing nodes of your cluster with new ones during upgrades. Values can be `RollingUpgrade` (default), `InPlaceUpgrade`, or `SmartUpgrade`. Refer to the [Usage](#usage) section for guidance. |
-| `microk8sConfig.bootCommands`    | A list of commands you can set to be executed during boot.                                                                                                                                                                  |
-| `microk8sConfig.preRunCommands`  | A list of commands you can set to be executed before installing MicroK8s in your cluster.                                                                                                                                   |
-| `microk8sConfig.postRunCommands` | A list of commands you can set to be executed after installing MicroK8s in your cluster.                                                                                                                                    |
 
 ### Usage
 
@@ -198,31 +192,6 @@ The MicroK8s pack supports three types of upgrade strategies:
 | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `microk8sConfig.addons`          | A list of [MicroK8s addons](https://microk8s.io/docs/addons) you can set for your cluster. `Ingress` and `DNS` are mandatory and enabled by default.                                                                        |
 | `microk8sConfig.upgradeStrategy` | It describes how to replace existing nodes of your cluster with new ones during upgrades. Values can be `RollingUpgrade` (default), `InPlaceUpgrade`, or `SmartUpgrade`. Refer to the [Usage](#usage) section for guidance. |
-| `microk8sConfig.bootCommands`    | A list of commands you can set to be executed during boot.                                                                                                                                                                  |
-| `microk8sConfig.preRunCommands`  | A list of commands you can set to be executed before installing MicroK8s in your cluster.                                                                                                                                   |
-| `microk8sConfig.postRunCommands` | A list of commands you can set to be executed after installing MicroK8s in your cluster.                                                                                                                                    |
-
-:::tip
-
-Even though the `microk8sConfig.bootCommands`, `microk8sConfig.preRunCommands`, and `microk8sConfig.postRunCommands`
-parameters are not visible in the YAML file displayed for the MicroK8s pack during cluster profile creation, you can
-manually add them to the pack settings according to the example below.
-
-```yaml
-microk8sConfig:
-  addons:
-    - dns
-    - ingress
-  upgradeStrategy: RollingUpgrade
-  bootCommands:
-    - 'echo "===> bootCommands1" > /home/ubuntu/myfile1.txt'
-  preRunCommands:
-    - 'echo "===> preRunCommands1" > /home/ubuntu/myfile3.txt'
-  postRunCommands:
-    - 'echo "List of postRun commands to be executed"'
-```
-
-:::
 
 ### Usage
 

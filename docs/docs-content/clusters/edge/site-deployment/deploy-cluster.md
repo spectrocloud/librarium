@@ -496,7 +496,7 @@ is an explanation of the options and sub-command used below:
   - The `-force` flag destroys any existing template.
   - The `--var-file` option reads the **vsphere.hcl** file from the container. This file contains the VM template name,
     VM configuration, and ISO file name to use. The VM configuration conforms to the
-    [minimum device requirements](../hardware-requirements.md).
+    [minimum device requirements](../architecture.md#minimum-device-requirements).
 
   The **vsphere.hcl** file content is shown below for your reference. This tutorial does not require you to modify these
   configurations.
@@ -1054,7 +1054,7 @@ To learn more about Edge, check out the resources below.
 
 - [Build Edge Artifacts](../edgeforge-workflow/palette-canvos/palette-canvos.md)
 
-- [Build Content Bundle](../edgeforge-workflow/palette-canvos/build-content-bundle.md)
+- [Build Content Bundle](../edgeforge-workflow/build-content-bundle.md)
 
 - [Model Edge Native Cluster Profile](../site-deployment/model-profile.md)
 

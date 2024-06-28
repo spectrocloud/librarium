@@ -208,4 +208,3 @@ RHEL
 repave
 airgap
 Crossplane
-traceroute

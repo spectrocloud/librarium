@@ -18,137 +18,115 @@ Set BorderRadius 10
 
 Show
 Type "palette ec install"
-Enter 1
+Enter
 Sleep 3s
-# Palette VerteX
 Down 1
-Sleep 1s
 Enter
 Sleep 2s
-Enter 1
-Sleep  2s
 Type "y"
 Sleep 2s
-# Ubuntu Pro Token. This is not required for a normal Palette installation.
-Type "${UBUNTU_PRO}" 
-Enter 1
+Type "${UBUNTU_PRO}" # Ubuntu Pro Token. This is not required for a normal Palette installation.
+Enter
 Type "${PROD_FIPS_SCAR_URL}"
 Enter
 Type@200ms "username"
 Hide
 Backspace 15
 Type "${PROD_FIPS_SCAR_USERNAME}"
-Enter 1
+Enter
 Show
 Sleep 2s
-# FIPS Packs Repository Password
-Type "${PROD_FIPS_SCAR_PASSWORD}" 
+Type "${PROD_FIPS_SCAR_PASSWORD}" # FIPS Packs Repository Password
 Enter
 Sleep 2s
-# Allow Insecure Connection
-Type "y" 
+Type "y" # Allow Insecure Connection
 Sleep 2s
-Enter 1
+Enter
 Sleep 3s
-# Select VMware vSphere
+Enter # Select VMware vSphere
+Sleep 2s
+Enter  # Cluster Name
+Sleep 2s
+Enter  # HTTPS Proxy
+Sleep 2s
+Enter  # HTTP Proxy
+Sleep 2s
+Escape
+Type ":wq"
+Sleep 2s
 Enter
 Sleep 2s
-# Cluster Name
+Enter # Proxy CA Cert
+Sleep 2s
+Enter # POD CIDR
+Sleep 2s
+Enter # Service IP Range
+Sleep 2s
+Type "y" # Use default pack registry
 Enter
-Sleep 2s
-# HTTPS Proxy
-Enter 
-Sleep 2s
-# HTTP Proxy
-Enter
-Sleep 2s
-# POD CIDR
-Enter
-Sleep 2s
-# Use default pack registry
-Type "y"
-Enter 1
 Sleep 2s
 Type "vcenter.spectrocloud.dev"
 Enter
 Sleep 2s
 Type "${VCENTER_USER}"
-Enter 1
+Enter
 Sleep 2s
 Type "${VCENTER_PASSWORD}"
 Enter
 Sleep 2s
-# Allow insecure connection
-Type "y"
-Sleep 5s
-# Select Datacenter
-Enter 
-Sleep 4s
-# Select Folder
-Type "sp-karl" 
-Enter 1
-Sleep 3s
-Type "spectro-templates"
-Sleep 1s
+Type "y" # Allow insecure connection
 Enter
-# Select Cluster
-Enter 
-Sleep 3s
-# VM-NETWORK
-Down 1
-Sleep 1s
-Enter 1
 Sleep 4s
-# Resource Pool
+Enter # Select Datacenter
+Sleep 3s
+Type "sp-karl" # Select Folder
+Enter
+Sleep 3s
 Down 1
-Enter 
+Enter # Select Cluster
 Sleep 3s
-# Storage Policy
-Enter 
+Down 1 # VM Network
+Enter
+Sleep 4s
+Enter # Resource Pool
 Sleep 3s
-# Select Datastore
-Enter 
+Enter # Storage Policy
+Sleep 3s
+Enter # Select Datastore
 Sleep 2s
-# Add another fault domain
-Type "n"
-Sleep 3s
+Type "n" # Add another fault domain
+Sleep 2s
 Enter
+Sleep 2s 
+Enter # NTP Servers
 Sleep 2s
 Type "dd"
 Type "i"
-Type@10ms "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCawOoc0B3UMrOrydXn7VC+f9gJytuE0gIrm8RHow/NDIkQnzqIQPbbjxOr39vSCirNcXWqqDFsfeitfavzFKnFQf0UdfK9XivLY1nw1fpImZrGzVoyCUef44lsFr3M8+CcTDvmPybOvZH1nmJxP39BuzsmcqrFTzw5BLj0j391QxiP68K7iOOfSrpJlditBwq55++CQ8fwqdvEOLd/ebjEt1rZ6AXPV8k3pvkuWAfRJAZ+LelXFcN6/RNb8brdIrW/IllAHTspb7VlvOoKtOpqsy3dp7Rom0WlxlkZwbiFmbxAOL7UpvDLBMtDMchYqQekthD+/Lkm5VK+w2RZbyJ"
+Type "ssh-rsa AAAAB3NzaC1yc2EAA...."
 Escape
 Sleep 3s
 Type@500ms ":wq"
-Enter 1
-Sleep 2s
-# IP Start Range
-Type "${NON_AIRGAP_IP_START_RANGE}"
 Enter
 Sleep 2s
-# IP End Range
-Type "${NON_AIRGAP_IP_END_RANGE}"
-Enter 1
-Sleep 2s
-# Network Prefix
-Enter 
-Sleep 2s
-# Gateway
-Type "${NON_AIRGAP_GATEWAY}" 
-Enter
-# DNS Server
-Type "${NON_AIRGAP_DNS_SERVER}"
-Enter
-# Name Server Domain
-Type "spectrocloud.dev" 
+Type "${NON_AIRGAP_IP_START_RANGE}" # IP Start Range
 Enter
 Sleep 2s
-# Medium VM Size
-Down 1 
-Enter 1
+Type "${NON_AIRGAP_IP_END_RANGE}" # IP End Range
+Enter
 Sleep 2s
-# Node Affinity
-Type "y" 
+Enter # Network Prefix
+Sleep 2s
+Type "${NON_AIRGAP_GATEWAY}" # Gateway
+Enter
+Type "${NON_AIRGAP_DNS_SERVER}" # DNS Server
+Enter
+Type "spectrocloud.dev" # Name Server Domain
+Enter
+Sleep 2s
+Down 1 # Medium VM Size
+Enter
+Sleep 2s
+Type "y" # Node Affinity
 Enter
 
 Sleep 35s

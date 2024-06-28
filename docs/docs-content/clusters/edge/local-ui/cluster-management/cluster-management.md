@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Cluster Operations"
-title: "Cluster Operations"
-description: "Learn about the various cluster operations you can perform from the local UI."
+sidebar_label: "Cluster Management"
+title: "Cluster Management"
+description: "Instructions for cluster management with Local UI."
 hide_table_of_contents: false
 sidebar_position: 32
 tags: ["edge"]

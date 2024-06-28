@@ -35,8 +35,7 @@ This page guides you through the process of building FIPS-compliant Edge Install
 
   - 4 CPU
   - 8 GB memory
-  - 150 GB storage. If you plan on using a content bundle, the actual storage will depend on the size of the content
-    bundle you will use to build the Edge installer ISO image.
+  - 50 GB storage
 
 - Depending on the Operating System (OS) you want to use on your Edge host, you will need the following subscription
   credentials:
@@ -102,16 +101,6 @@ image with.
 <Tabs>
 
 <TabItem label="Red Hat Enterprise Linux" value="rhel">
-
-:::warning
-
-When you create a cluster with an Edge host that operates the FIPS-compliant RHEL Operating System (OS), you may
-encounter an error where the `systemd-resolved.service` service enters the **failed** state. This prevents the
-nameserver from being configured, which will result in cluster deployment failure. Refer to
-[TroubleShooting](../../../../troubleshooting/edge.md#scenario---systemd-resolvedservice-enters-failed-state) for a
-workaround.
-
-:::
 
 5. Change into the **rhel-fips** directory.
 
