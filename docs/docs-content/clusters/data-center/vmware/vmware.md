@@ -40,16 +40,6 @@ of the PCG architecture page for more information.
 After you have deployed the PCG, you can proceed to create and manage VMware clusters in Palette. Refer to the
 [Create and Manage VMware Clusters](create-manage-vmware-clusters.md) guide for detailed instructions.
 
-## Supported Versions
-
-The following versions of VMware vSphere are supported in Palette.
-
-| **Version**       | **Supported** |
-| ----------------- | ------------- |
-| **vSphere 6.7U3** | ✅            |
-| **vSphere 7.0**   | ✅            |
-| **vSphere 8.0**   | ✅            |
-
 ## Resources
 
 - [Architecture](architecture.md)
