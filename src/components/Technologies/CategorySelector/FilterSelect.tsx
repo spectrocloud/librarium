@@ -1,6 +1,7 @@
 import React from "react";
 import { Select, SelectProps } from "antd";
 import filterStyles from "./CategorySelector.module.scss";
+import "./filterSelect.antd.css";
 
 interface FilterSelectProps {
   selectMode?: SelectProps["mode"];
@@ -22,7 +23,7 @@ export default function FilterSelect({ selectMode, options, onChange, value }: F
       >
         {options.map((item) => {
           return (
-            <Select.Option value={item.value}>
+            <Select.Option value={item.value} key={item.value}>
               {item.label}
             </Select.Option>
           )

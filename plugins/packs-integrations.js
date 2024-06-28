@@ -2,9 +2,9 @@ const { api, callRateLimitAPI } = require("../src/services/api");
 const { packTypeNames, addOnTypes, layerTypes } = require("../src/constants/packs");
 const packDescription = require("../static/packs-data/packs_information.json");
 const { coerce, rcompare } = require("semver");
-const path = require('path');;
+const path = require('path');
 const mime = require('mime-types');
-import { setTimeout } from "timers/promises";
+const { setTimeout } = require("timers/promises");
 const BASE_URL = require('../static/scripts/constants.js').BASE_URL;
 const fetch = require('node-fetch');
 const { existsSync, promises, open, mkdirSync, writeFile, close, createWriteStream } = require("node:fs");
@@ -84,7 +84,6 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
       const packDetailsMap = getPackUidMap(selectedRegistries);
       //union of all the versions of all the supported registries of a pack.
       const allSupportedVersions = getAggregatedVersions(selectedRegistries, repositories, packDetailsMap, packName);
-      const latestPackTagVersion = allSupportedVersions.find((version) => version.value === latestPackVersion);
       return {
         name: packName,
         title: packMDValue.spec.displayName,
@@ -104,7 +103,7 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
         versions: allSupportedVersions,
         disabled: packMDValue.spec.registries[0].annotations?.disabled === "true",
         deprecated: packMDValue.spec.registries[0].annotations?.system_state === "deprecated",
-        latestVersion: latestPackTagVersion?.title,
+        latestVersion: latestPackVersion,
       };
     }
   });
@@ -242,16 +241,19 @@ function generateCustomData(packsDescription) {
   return generatedCustomData;
 }
 
-function generateRoutes(packDataMap) {
-  return Object.keys(packDataMap).map((packName) => {
+function generateRoutes(packsAllData) {
+  return packsAllData.map((pack) => {
+   const parentVersion = pack.versions.find((version) => {
+      return version.children.find((child) => child.title === pack.latestVersion);
+    });
     return {
-      path: `/integrations/packs/${packName}`,
+      path: `/integrations/packs?pack=${pack.name}&version=${pack.latestVersion}&parent=${parentVersion?.title || pack.latestVersion}`,
       exact: false,
       component: "@site/src/components/PacksInformation",
       metadata: {
         sourceFilePath: "../docs/docs-content/integrations/packs.mdx",
       },
-      data: packName,
+      data: {name: pack.name, version: pack.latestVersion},
     };
   });
 }
@@ -326,7 +328,6 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
           }
         }
       } catch (e) {
-        console.error("An error occurred while downloading the image: ", e);
       }
     }
   }
@@ -427,7 +428,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
         repositories,
         logoFilesPathMap
       );
-      const routes = generateRoutes(packsPaletteData);
+      const routes = generateRoutes(unionPackData);
       console.info("completed the generation of the routes");
       routes.map((route) => addRoute(route));
       setGlobalData({ packs: unionPackData, repositories: repositories });
