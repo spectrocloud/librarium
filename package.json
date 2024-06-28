@@ -35,6 +35,7 @@
     "react-live": ">=3.1.1 <4.0.0"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.8.3",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@docusaurus/core": "^3.4.0",
@@ -47,6 +48,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mdx-js/react": "^3.0.0",
     "antd": "^5.6.2",
+    "axios-retry": "^3.8.0",
     "babel-plugin-macros": "^3.1.0",
     "clsx": "^1.2.1",
     "docusaurus-plugin-image-zoom": "^1.0.1",
@@ -54,11 +56,17 @@
     "docusaurus-plugin-sass": "^0.2.5",
     "docusaurus-theme-openapi-docs": "^3.0.0-beta.10",
     "fuse.js": "^6.6.2",
+    "markdown-to-jsx": "^7.0.0",
+    "node-fetch": "^3.1.0",
+    "p-ratelimit":"^1.0.1",
     "prism-react-renderer": "^2.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-markdown": "9.0.1",
+    "remark-gfm": "4.0.0",
     "react-select": "^5.8.0",
-    "sass": "^1.72.0"
+    "sass": "^1.72.0",
+    "semver": "^7.3.7"
   },
   "devDependencies": {
     "@argos-ci/cli": "^2.0.1",
