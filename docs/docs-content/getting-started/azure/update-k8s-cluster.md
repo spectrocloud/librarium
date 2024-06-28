@@ -156,7 +156,7 @@ three-tier application will be successfully deployed.
 Click on the URL for port **:8080** on the **ui** service to access the Hello Universe application. The landing page of
 the application indicates that it is connected to the API server.
 
-![Image that shows hello-universe with API server](/getting-started/getting-started_update-k8s-cluster_hello-universe-with-api.webp)
+![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/getting-started/getting-started_deploy-k8s-cluster_hello-universe-with-api.webp)
 
 ## Roll Back Cluster Profiles
 

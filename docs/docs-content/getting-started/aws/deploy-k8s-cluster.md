@@ -127,7 +127,7 @@ moments before clicking on the service URL to prevent the browser from caching a
 
 <br />
 
-![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/getting-started/getting-started_deploy-k8s-cluster_hello-universe-without-api.webp)
+![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/getting-started/getting-started_deploy-k8s-cluster_hello-universe-with-api.webp)
 
 Welcome to Hello Universe, a demo application to help you learn more about Palette and its features. Feel free to click
 on the logo to increase the counter and for a fun image change.
