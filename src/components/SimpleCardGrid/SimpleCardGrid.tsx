@@ -16,9 +16,10 @@ interface SimpleCard {
   hideNumber?: boolean;
 }
 
-interface SimpleCardNumber {
+interface SimpleCardHeader {
   index?: number;
   hideNumber?: boolean;
+  title: string;
 }
 
 export default function SimpleCardGrid({ cards = [], hideNumber = false }: SimpleCardProps) {
@@ -44,10 +45,7 @@ function SimpleCard({ title, index, description, buttonText, relativeURL, hideNu
   return (
     <a href={relativeURL}>
       <div className={styles.simpleCard}>
-        <div className={styles.simpleCardHeader}>
-          <SimpleCardNumber hideNumber={hideNumber} index={index} />
-          <div className={styles.simpleCardTitle}>{title}</div>
-        </div>
+        <SimpleCardHeader index={index} title={title} hideNumber={hideNumber} />
         <div className={styles.simpleCardBody}>
           <p className={styles.simpleCardDescription}>{description}</p>
         </div>
@@ -62,9 +60,18 @@ function SimpleCard({ title, index, description, buttonText, relativeURL, hideNu
   );
 }
 
-function SimpleCardNumber({ index, hideNumber }: SimpleCardNumber) {
+function SimpleCardHeader({ index, hideNumber, title }: SimpleCardHeader) {
   if (!hideNumber) {
-    return <div className={styles.simpleCardIndex}>{index}</div>;
+    return (
+      <div className={styles.simpleCardHeader}>
+        <div className={styles.simpleCardIndex}>{index}</div>
+        <div className={styles.simpleCardTitle}>{title}</div>
+      </div>
+    );
   }
-  return <div />;
+  return (
+    <div className={styles.simpleCardHeaderNoGap}>
+      <div className={styles.simpleCardTitle}>{title}</div>
+    </div>
+  );
 }
