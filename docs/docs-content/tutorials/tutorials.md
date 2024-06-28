@@ -28,7 +28,7 @@ creation tasks.
 Palette supports several Day-2 operations to manage the end-to-end lifecycle of Kubernetes clusters launched through
 Palette. It also provides several capabilities across new and imported clusters to perform ongoing management operations
 like backup/restore and to keep your clusters secure, compliant, and up to date. Additionally, Palette gives you
-visibility into the workloads running inside your cluster and cluster costs.
+visibility into the workloads active inside your cluster and cluster costs.
 
 ### Edge
 
