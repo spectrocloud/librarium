@@ -25,7 +25,7 @@ To interact with the API, you will need the following:
 
 Two forms of authentication are available to interact with the Spectro Cloud API:
 
-- An Authentication header with a token value.  
+- An Authentication header with a token value.
   or
 - An API Key with an ApiKey value.
 
