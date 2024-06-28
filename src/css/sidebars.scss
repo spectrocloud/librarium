@@ -15,16 +15,9 @@
   text-transform: uppercase;
 
   .category-icon {
-    margin-right: 8px;
+    margin-right: 12px;
   }
 }
-
-// .category::after {
-//   content: attr(category-name);
-//   color: var(--custom-sidebar-item-color);
-//   font-size: 15px;
-//   text-transform: uppercase;
-// }
 
 .category-divider {
   margin-top: 2px;
