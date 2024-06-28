@@ -5,8 +5,7 @@ sidebar_position: 0
 pagination_next: null
 ---
 
-The tutorials section provides you with hands-on tutorials using Spectro Cloud Palette. It covers everything you need to
-begin leveraging its Kubernetes full-stack management at scale. It covers the following key components.
+This documentation section provides hands-on tutorials you can complete in your environment to learn more about Palette and VerteX. Here, you will find tutorials covering the fundamentals of Palette to help you become a proficient power user and advanced topics that require more time and attention to comprehend. These tutorials will enable you to maximize Palette's ability to manage Kubernetes at scale. Check out the sections below to learn more about crucial Palette concepts.
 
 ### Profiles
 
