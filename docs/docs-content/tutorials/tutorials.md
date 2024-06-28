@@ -45,6 +45,7 @@ and are managed by operators at remote sites.
 Explore more through the following tutorials.
 
 <SimpleCardGrid
+  hideNumber="true"
   cards={[
     {
       title: "Deploy a Custom Pack",
