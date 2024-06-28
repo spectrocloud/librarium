@@ -237,26 +237,20 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     ```
 
 19. If you have custom SSL certificates you want to apply to the image and pack registry, and the Spectro Cloud
-    Repository, copy the custom SSL certificates, in base64 PEM format, to the airgap support VM.
+    Repository, copy the custom SSL certificates, in base64 PEM format, to the airgap support VM. The custom
+    certificates must be placed in the **/opt/spectro/ssl** folder. Include the following files:
+
+    - **server.crt**
+    - **server.key**
 
     If you do not provide a custom SSL certificate, the airgap setup process will generate a self-signed certificate for
     you.
 
     :::warning
 
-    Three items you need to keep in mind when providing custom SSL certificates:
-
-    - The custom SSL certificates must be in base64 PEM format. If you have custom SSL certificates in a different
-      format, convert them to base64 PEM format before copying them to the support VM. The airgap setup process also
-      expects the certificate files to be named **server.crt** and **server.key**.
-
-    - The custom certificate's Fully Qualified Domain Name (FQDN) must match the hostname or IP address you provide for
-      the airgap support VM. Otherwise, the airgap setup process will fail due to a certificate mismatch.
-
-    - The custom SSL certificates files must have the following permissions bits set:
-
-      - **server.crt**: 644
-      - **server.key**: 600
+    The custom SSL certificates must be in base64 PEM format. If you have custom SSL certificates in a different format,
+    convert them to base64 PEM format before copying them to the support VM. The airgap setup process also expects the
+    files to be named **server.crt** and **server.key**.
 
     :::
 
