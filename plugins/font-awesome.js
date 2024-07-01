@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const sidebars = require("../sidebars")
+const sidebars = require("../sidebars");
 
 const assetIcons = {
   about: true,
@@ -51,15 +51,15 @@ async function pluginImportFontAwesomeIcons() {
         }
       });
 
-      sidebars?.tutorialSidebar?.forEach((sidebarItem)=>{
-        if(sidebarItem?.customProps?.icon){
-          appFontAwesomeIcons[sidebarItem?.customProps?.icon] = sidebarItem?.customProps?.icon
+      sidebars?.tutorialSidebar?.forEach((sidebarItem) => {
+        if (sidebarItem?.customProps?.icon) {
+          appFontAwesomeIcons[sidebarItem?.customProps?.icon] = sidebarItem?.customProps?.icon;
         }
-      })
+      });
 
-      icons.forEach((icon)=>{
-        appFontAwesomeIcons[icon] = icon
-      })
+      icons.forEach((icon) => {
+        appFontAwesomeIcons[icon] = icon;
+      });
       // Create an array to hold all the import statements
       const importsArray = [];
 
