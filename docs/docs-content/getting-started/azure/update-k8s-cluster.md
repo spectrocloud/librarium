@@ -27,7 +27,10 @@ cluster update method and learn how to apply these changes using Palette.
 ## Prerequisites
 
 To complete this tutorial, follow the steps described in the [Set up Palette with Azure](./setup.md) guide to
-authenticate Palette for use with your AWS cloud account.
+authenticate Palette for use with your Azure cloud account.
+
+Additionally, you should install Kubectl locally. Use the Kubernetes
+[Install Tools](https://kubernetes.io/docs/tasks/tools/) page for further guidance.
 
 Follow the instructions of the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial to deploy a cluster with the
 [_hello-universe_](https://github.com/spectrocloud/hello-universe) application. Your cluster should be successfully
@@ -96,27 +99,16 @@ profile. This profile version is not deployed to any host clusters.
 
 ![Image that shows cluster profile version 1.1.0](/getting-started/azure/getting-started_update-k8s-cluster_new-version-overview.webp)
 
-The version **1.1.0** has the same layers as the version **1.0.0** it was created from. Click on the **hello-universe**
-manifest layer. The manifest editor appears.
+The version **1.1.0** has the same layers as the version **1.0.0** it was created from.
 
-The version **1.1.0** has the same layers as the version **1.0.0** it was created from. Click on the **hello-universe**
-pack layer. The pack manifest appears.
+Click on **Add New Pack**. Select the **Public Repo** registry and scroll down to the **Monitoring** section. Find the
+**Kubecost** pack and select it. Alternatively, you can user the search function with the pack name **Kubecost**.
 
-Click on **Presets** on the right-hand side. This pack has two configured presets:
+![Image that shows how to select the Kubecost pack](/getting-started/azure/getting-started_update-k8s-cluster_select-kubecost-pack.webp)
 
-1. **Disable Hello Universe API** configures the [_hello-universe_](https://github.com/spectrocloud/hello-universe)
-   application as a standalone frontend application. This is the default preset selection.
-2. **Enable Hello Universe API** configures the [_hello-universe_](https://github.com/spectrocloud/hello-universe)
-   application as a three-tier application with a frontend, API server, and Postgres database.
+Once selected, the pack manifest is displayed in the manifest editor.
 
-Select the **Enable Hello Universe API** preset. The pack manifest changes according to this preset.
-
-The pack manifest has requires two values to be replaced for the authorization token and for the database password.
-Replace these values with your own base64 encoded values. The
-[_hello-universe_](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer) repository
-provides a token that you can use.
-
-Click on **Confirm Updates**. The manifest editor closes.
+Click on **Confirm & Create**. The manifest editor closes.
 
 Click on **Save Changes** to finish the configuration of this cluster profile version.
 
@@ -130,14 +122,7 @@ Select the **1.1.0** version.
 
 ![Image that shows how to select a new profile version for the cluster](/getting-started/azure/getting-started_update-k8s-cluster_profile-version-selection.webp)
 
-Click **Review & Save**. Palette prompts you to preview the change summary.
-
-Click **Review changes in Editor**. Palette displays the changes, with the current configuration on the left and the
-incoming configuration on the right.
-
-Click **Apply Changes**.
-
-![Image that shows the profile 1.1.0 differences](/getting-started/getting-started_update-k8s-cluster_profile-version-changes.webp)
+Click on **Save** to confirm your profile version selection.
 
 :::warning
 
@@ -148,15 +133,38 @@ backups before you make any cluster profile version changes in your production e
 :::
 
 Palette now makes the required changes to your cluster according to the specifications of the configured cluster profile
-version. Once your changes have completed, Palette marks your layers with the green status indicator. The Hello Universe
-three-tier application will be successfully deployed.
+version. Once your changes have completed, Palette marks your layers with the green status indicator. The Kubecost pack
+will be successfully deployed.
 
 ![Image that shows completed cluster profile updates](/getting-started/azure/getting-started_update-k8s-cluster_completed-cluster-updates.webp)
 
-Click on the URL for port **:8080** on the **ui** service to access the Hello Universe application. The landing page of
-the application indicates that it is connected to the API server.
+Download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file for your cluster from the Palette UI. This file enables you
+and other users to issue kubectl commands against the host cluster.
 
-![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/getting-started/getting-started_deploy-k8s-cluster_hello-universe-with-api.webp)
+![Image that the kubeconfig file](/getting-started/azure/getting-started_update-k8s-cluster_download-kubeconfig.webp)
+
+Open a terminal window and set the environment variable `KUBECONFIG` to point to kubeconfig file you downloaded.
+
+```shell
+export KUBECONFIG=~/Downloads/admin.azure-cluster.kubeconfig
+```
+
+Forward the Kubecost UI to your local network. The Kubecost dashboard is not exposed by default, so the command below
+will allow you to access it locally.
+
+```shell
+kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
+```
+
+Open your browser window and navigate to `http://localhost:9090`. The Kubecost UI provides you with a variety of cost
+visualization tools. Read more about
+[Navigating the Kubecost UI](https://docs.kubecost.com/using-kubecost/navigating-the-kubecost-ui) to make the most of
+the cost analyzer.
+
+![Image that shows the Kubecost UI](/getting-started/getting-started_update-k8s-cluster_kubecost-ui.webp)
+
+Once you are done exploring locally, you can stop the `kubectl port-forward` command by closing the terminal window it
+is executing from.
 
 ## Roll Back Cluster Profiles
 
@@ -183,8 +191,7 @@ Click on **Apply Changes**. Select the **Overview** tab.
 Palette now makes the changes required for the cluster to return to the state specified in version **1.0.0** of your
 cluster profile. Once your changes have completed, Palette marks your layers with the green status indicator.
 
-Click on the URL for port **:8080** on **hello-universe-service** to access the Hello Universe application. The landing
-page indicates that the application is deployed as a standalone frontend.
+![Cluster details page with service URL highlighted](/getting-started/azure/getting-started_deploy-k8s-cluster_service_url.webp)
 
 ## Pending Updates
 
@@ -197,7 +204,7 @@ The previous state of the cluster profile will not be saved once it is overwritt
 Navigate to the left **Main Menu** and select **Clusters**. Filter for the cluster with the tag
 **service:hello-universe-frontend**. Select it to view its **Overview** tab.
 
-Select the **Profile** tab. Then, select the **hello-universe** pack. Change the `replicas` field to `2` on line `14`.
+Select the **Profile** tab. Then, select the **hello-universe** pack. Change the `replicas` field to `2` on line `15`.
 Click on **Save**. The editor closes.
 
 This cluster now contains an override over its cluster profile. Palette uses the configuration you have just provided
@@ -205,15 +212,15 @@ for the single cluster over its cluster profile and begins making the appropriat
 
 Once these changes are complete, select the **Workloads** tab. Then, select the **hello-universe** namespace.
 
-Two replicas of the **hello-universe-deployment** are available, instead of the one specified by your cluster profile.
-Your override has been successfully applied.
+Two **ui** pods are available, instead of the one specified by your cluster profile. Your override has been successfully
+applied.
 
 Navigate to the left **Main Menu** and select **Profiles** to view the cluster profile page. Find the cluster profile
 corresponding to your _hello-universe-frontend_ cluster, named `azure-profile`.
 
 Click on it to view its details. Select **1.0.0** in the version dropdown.
 
-Select the **hello-universe** pack. The editor appears. Change the `replicas` field to `3` on line `14`. Click on
+Select the **hello-universe** pack. The editor appears. Change the `replicas` field to `3` on line `15`. Click on
 **Confirm Updates**. The editor closes.
 
 Click on **Save Changes** to confirm the changes you have made to your profile.
@@ -240,8 +247,7 @@ Click on **Apply Changes** once you have finished reviewing your changes. This r
 Palette updates your cluster according to cluster profile specifications. Once these changes are complete, select the
 **Workloads** tab. Then, select the **hello-universe** namespace.
 
-Three replicas of the **hello-universe-deployment** are available. The cluster profile update is now reflected by your
-cluster.
+Three **ui** pods are available. The cluster profile update is now reflected by your cluster.
 
 ## Cleanup
 

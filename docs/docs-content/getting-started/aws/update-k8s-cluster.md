@@ -134,7 +134,7 @@ backups before you make any cluster profile version changes in your production e
 
 Palette now makes the required changes to your cluster according to the specifications of the configured cluster profile
 version. Once your changes have completed, Palette marks your layers with the green status indicator. The Kubecost pack
-will be successfully applied.
+will be successfully deployed.
 
 ![Image that shows completed cluster profile updates](/getting-started/aws/getting-started_update-k8s-cluster_completed-cluster-updates.webp)
 

@@ -48,18 +48,18 @@ Click on **Add Cluster Profile**. A list is displayed of available profiles you 
 cluster profile you created in the [Create a Cluster Profile](./create-cluster-profile.md) tutorial, named
 **aws-profile**, and click on **Confirm**.
 
-The **Parameters** section displays all the layers in the cluster profile.
+The **Cluster Profile** section displays all the layers in the cluster profile.
 
 ![Palette clusters parameters](/getting-started/aws/getting-started_deploy-k8s-cluster_clusters_creation_parameters.webp)
 
 Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format. Each
 pack contains a set of default values. You can change the manifest values if needed. Click on **Next** to proceed.
 
-The **Cluster config** section allows you to select the **Region** in which to deploy the host cluster and specify other
+The **Cluster Config** section allows you to select the **Region** in which to deploy the host cluster and specify other
 options such as the **SSH Key Pair** to assign to the cluster. All clusters require you to select an SSH key. After you
 have selected the **Region** and your **SSH Key Pair Name**, click on **Next**.
 
-The **Nodes config** section allows you to configure the nodes that make up the control plane and worker nodes of the
+The **Nodes Config** section allows you to configure the nodes that make up the control plane and worker nodes of the
 host cluster.
 
 Before you proceed to next section, review the following parameters.
@@ -86,7 +86,7 @@ Before you proceed to next section, review the following parameters.
 
 Select **Next** to proceed with the cluster deployment.
 
-In the **Settings** section, you can configure advanced options such as when to patch the OS, enable security scans,
+In the **Cluster Settings** section, you can configure advanced options such as when to patch the OS, enable security scans,
 manage backups, add role-based access control (RBAC) bindings, and more.
 
 For this tutorial, you can use the default settings. Click on **Validate** to continue.
