@@ -43,7 +43,7 @@ repeat this for any other team that you configured with group claims.
 
 3.  The list of teams displays again. Select the newly created **Okta Team** team to review its details. To give this
     team administrative access to the entire tenant and all the projects in it, assign the **Tenant Admin** role. Select
-    **Tenant Roles** and click **+ Add Tenant Role**:
+    **Tenant Roles** and click **+ Add Tenant Role**.
 
     ![Palette Tenant Roles](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_tenant-roles.webp)
 
