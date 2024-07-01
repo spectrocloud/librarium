@@ -7,7 +7,7 @@ export default function Packs(props: any) {
     <>
       {props?.route?.data ?
         (<Switch>
-          <Redirect to={`/integrations/packs?pack=${props.route.data.name}&version=${props.route.data.version}`} />
+          <Redirect to={`/integrations/packs?pack=${props.route.data.name}&version=${props.route.data.version}&parent=${props.route.data.parent}`} />
         </Switch>) : (
           <PacksReadme />
         )

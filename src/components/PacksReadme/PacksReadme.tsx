@@ -95,22 +95,18 @@ export default function PacksReadme() {
     const searchParams = window ? new URLSearchParams(window.location.search) : null;
     const urlParamVersion = searchParams?.get("version");
     const version = urlParamVersion || packData?.latestVersion || packData?.versions[0]?.title || "";
-    let packDataObj;
+    let parentVersionObj: any;
     if (version && !version.endsWith(".x")) {
-      packDataObj = packData?.versions.reduce((acc, tagVersion) => {
-        let childVersion;
-        if (childVersion = tagVersion.children.find((child:any) => child.title === version)) {
-          acc = {
-            childPackUid: childVersion.packUid,
-            parentVersion: tagVersion.title,
-          }
-        }
-        return acc;
-      }, {});
-      setSelectedPackUid(packDataObj.childPackUid || "");
+      parentVersionObj = getParentVersion(version);
+      const packDataObj = parentVersionObj?.children.find((child: any) => child.title === version);
+      setSelectedPackUid(packDataObj?.packUid || "");
     }
     if (!urlParamVersion) {
-      history.replace({ search: `?pack=${packName}&version=${version}&parent=${packDataObj?.parentVersion || ""}` });
+      let path = `?pack=${packName}&version=${version}`;
+      if (parentVersionObj && parentVersionObj.title) {
+        path = `${path}&parent=${parentVersionObj.title}`;
+      }
+      history.replace({ search: path });
     }
     setSelectedVersion(version);
   }, [packData]);
@@ -123,13 +119,14 @@ export default function PacksReadme() {
 
   function versionChange(item: string) {
     const [version, packUid] = item.split("===");
-    history.replace({ search: `?pack=${packName}&version=${version}&parent=${getParentVersion(version)}` });
+    const parentVersion = getParentVersion(version)?.title || "";
+    history.replace({ search: `?pack=${packName}&version=${version}&parent=${parentVersion}` });
     setSelectedVersion(version);
     setSelectedPackUid(packUid);
   }
 
   function getParentVersion(version: string) {
-    return packData.versions.find((tagVersion) => tagVersion.children.find((child: any) => child.title === version))?.title || "";
+    return packData.versions.find((tagVersion) => tagVersion.children.find((child: any) => child.title === version));
   }
 
   function renderVersionOptions() {

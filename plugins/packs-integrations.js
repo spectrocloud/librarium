@@ -246,14 +246,18 @@ function generateRoutes(packsAllData) {
    const parentVersion = pack.versions.find((version) => {
       return version.children.find((child) => child.title === pack.latestVersion);
     });
+    let path = `/integrations/packs?pack=${pack.name}&version=${pack.latestVersion}`;
+    if (parentVersion && parentVersion.title) {
+      path = `${path}&parent=${parentVersion.title}`;
+    }
     return {
-      path: `/integrations/packs?pack=${pack.name}&version=${pack.latestVersion}&parent=${parentVersion?.title || pack.latestVersion}`,
+      path: path,
       exact: false,
       component: "@site/src/components/PacksInformation",
       metadata: {
         sourceFilePath: "../docs/docs-content/integrations/packs.mdx",
       },
-      data: {name: pack.name, version: pack.latestVersion},
+      data: {name: pack.name, version: pack.latestVersion, parent: parentVersion?.title},
     };
   });
 }
