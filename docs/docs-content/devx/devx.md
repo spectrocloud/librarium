@@ -33,12 +33,12 @@ try so that you can learn how to use App Mode with Palette Dev Engine.
 
 App Mode is available for the following Palette and VerteX platforms.
 
-| Platform                   | Supported | Version                                                            |
-| -------------------------- | --------- | ------------------------------------------------------------------ |
-| Palette SaaS               | ✅        | `v3.0.0` or greater.                                               |
-| Self-hosted Palette        | ✅        | `v3.4.0` or greater.                                               |
-| Palette Airgap Self-hosted | ✅        | `v4.0.0` or greater.                                               |
-| VerteX                     | :warning: | `v4.0.0` or greater. Be aware that App Mode is not FIPS compliant. |
+| Platform                   | Supported | Version                                                                                                                                            |
+| -------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Palette SaaS               | ✅        | `v3.0.0` or greater.                                                                                                                               |
+| Self-hosted Palette        | ✅        | `v3.4.0` or greater.                                                                                                                               |
+| Palette Airgap Self-hosted | ✅        | `v4.0.0` or greater.                                                                                                                               |
+| VerteX                     | :warning: | `v4.0.0` or greater. Be aware that App Mode is not FIPS compliant. Container deployment based workflows are not supported for airgap environments. |
 
 ## Manage Resources
 
