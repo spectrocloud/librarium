@@ -85,8 +85,8 @@ Before you proceed to next section, review the following parameters.
 
 ![Palette clusters nodes configuration](/getting-started/azure/getting-started_deploy-k8s-cluster_cluster_nodes_config.webp)
 
-In the **Cluster Settings** section, you can configure advanced options such as when to patch the OS, enable security scans,
-manage backups, add Role-Based Access Control (RBAC) bindings, and more.
+In the **Cluster Settings** section, you can configure advanced options such as when to patch the OS, enable security
+scans, manage backups, add Role-Based Access Control (RBAC) bindings, and more.
 
 For this tutorial, you can use the default settings. Click on **Validate** to continue.
 
@@ -131,8 +131,8 @@ moments before clicking on the service URL to prevent the browser from caching a
 Welcome to Hello Universe, a demo application to help you learn more about Palette and its features. Feel free to click
 on the logo to increase the counter and for a fun image change.
 
-You have deployed your first application to a cluster managed by Palette. Your first application is a single container
-application with no upstream dependencies.
+You have deployed your first application to a cluster managed by Palette. Your first application is a three-tier
+application with a frontend, API server, and Postgres database.
 
 ## Cleanup
 
