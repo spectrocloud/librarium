@@ -33,18 +33,18 @@ try so that you can learn how to use App Mode with Palette Dev Engine.
 
 App Mode is available for the following Palette and VerteX platforms.
 
-| Platform                   | Supported | Version                                                            |
-| -------------------------- | --------- | ------------------------------------------------------------------ |
-| Palette SaaS               | ✅        | `v3.0.0` or greater.                                               |
-| Self-hosted Palette        | ✅        | `v3.4.0` or greater.                                               |
-| Palette Airgap Self-hosted | ✅        | `v4.0.0` or greater.                                               |
-| VerteX                     | :warning: | `v4.0.0` or greater. Be aware that App Mode is not FIPS compliant. |
+| Platform                   | Supported | Version                                                                                                                                            |
+| -------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Palette SaaS               | ✅        | `v3.0.0` or greater.                                                                                                                               |
+| Self-hosted Palette        | ✅        | `v3.4.0` or greater.                                                                                                                               |
+| Palette Airgap Self-hosted | ✅        | `v4.0.0` or greater.                                                                                                                               |
+| VerteX                     | :warning: | `v4.0.0` or greater. Be aware that App Mode is not FIPS compliant. Container deployment based workflows are not supported for airgap environments. |
 
 ## Manage Resources
 
 The PDE dashboard provides a snapshot of resource utilization in your PDE environment. You can keep track of the
 resource utilization in your PDE environment without having to navigate to different views. The dashboard displays the
-following information. <br />
+following information.
 
 - The number of apps deployed.
 
@@ -76,8 +76,6 @@ Check out the Palette CLI [install guide](../automation/palette-cli/install-pale
 to install and configure the CLI.
 
 :::
-
-<br />
 
 ## PDE Visual Studio Code Extension
 
