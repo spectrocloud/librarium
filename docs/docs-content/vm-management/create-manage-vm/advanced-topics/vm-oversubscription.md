@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Over-commit Resources to Enhance VM Performance"
-title: "VM Performance"
+title: "Over-commit Resources to Enhance VM Performance"
 description: "Learn how to improve VM performance by maximizing virtual machine CPU and memory using Palette."
 icon: " "
 hide_table_of_contents: false
@@ -23,30 +23,36 @@ allocated to VMs than there are physical resources on the system.
 Kubevirt offers the `cpuAllocationRatio` in its Custom Resource Definitions (CRD). This ratio is used to normalize the
 amount of CPU time the pod will request based on the number of virtual CPUs (vCPUs).
 
-Using the following algorithm, when `cpuAllocationRatio` is set to 1, the full amount of vCPUs are requested for the
-pod: `pod CPU request = number of vCPUs * 1/cpuAllocationRatio`. The `cpuAllocationRatio` is global, so setting it to
-greater than 1 has the effect of requesting less CPU from Kubernetes for each VM.
-
 ### Prerequisites
 
 - An active VMO cluster in Palette.
 
-### Instructions
+### Procedure
 
-1.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-Certain workloads that require a predictable latency and enhanced performance would benefit from obtaining dedicated CPU
-resources. KubeVirt relies on the Kubernetes CPU manager to pin vCPUs to the physical host’s CPUs. To learn more, refer
-to [Dedicated CPU Resources](https://kubevirt.io/user-guide/compute/dedicated_cpu_resources/) and
-[Resources Requests and Limits](https://kubevirt.io/user-guide/compute/virtual_hardware/#resources-requests-and-limits)
-Kubevirt documentation.
+2. From the left **Main Menu**, click on **Profiles**.
+
+3. Select the profile you use to create the cluster with the VMO pack.
+
+4. Select the VMO add-on layer of the cluster profile.
+
+5. Using the following algorithm, when `cpuAllocationRatio` is set to 1, the full amount of vCPUs are requested for the
+   pod: `pod CPU request = number of vCPUs * 1/cpuAllocationRatio`. The `cpuAllocationRatio` is global, so setting it to
+   greater than 1 has the effect of requesting less CPU from Kubernetes for each VM.
+
+   Certain workloads that require a predictable latency and enhanced performance would benefit from obtaining dedicated
+   CPU resources. KubeVirt relies on the Kubernetes CPU manager to pin vCPUs to the physical host’s CPUs. To learn more,
+   refer to [Dedicated CPU Resources](https://kubevirt.io/user-guide/compute/dedicated_cpu_resources/) and
+   [Resources Requests and Limits](https://kubevirt.io/user-guide/compute/virtual_hardware/#resources-requests-and-limits)
+   Kubevirt documentation.
 
 :::warning
 
-- We do not recommend overcommitting CPUs in a production environment without extensive testing. Applications that use
-  100 percent of processing resources may become unstable in overcommitted environments.
+- We do not recommend over-committing CPUs in a production environment without extensive testing. Applications that use
+  100 percent of processing resources may become unstable in over-committed environments.
 
-- Ensure you don't overcommit guest VMs on more than the physical number of processing cores. For example, a guest VM
+- Ensure you don't over-commit guest VMs on more than the physical number of processing cores. For example, a guest VM
   with four vCPUs should only be deployed on a host physical machine with a quad-core processor instead of a dual-core
   processor.
 
@@ -54,7 +60,7 @@ Kubevirt documentation.
 
 :::
 
-## Memory Overcommit
+## Over-Commit Memory
 
 KubeVirt allows you to assign more or less memory to a VM than a VM requests to Kubernetes. You may want to overcommit
 VM memory if you have a cluster or a few nodes that are dedicated to running VMs. In this case, overcommitting memory
@@ -63,9 +69,13 @@ makes use of all the memory in the nodes regardless of reserved or requested mem
 To learn about options for memory overcommitment, refer to
 [Node Overcommit](https://kubevirt.io/user-guide/compute/node_overcommit/) KubeVirt resource.
 
-You can make several changes to reduce the memory footprint and overcommit the per-VMI memory overhead.
+### Prerequisites
 
-- Enable guest overhead overcommit by setting `spec.domain.resources.overcommitGuestOverhead` to true.
+### Procedure
+
+You can make several changes to reduce the memory footprint and over-commit the per-VMI memory overhead.
+
+- Enable guest overhead over-commit by setting `spec.domain.resources.overcommitGuestOverhead` to true.
 
 - Enable guest memory by setting `spec.domain.memory.guest` to a value higher than
   `spec.domain.resources.requests.memory`, as shown in the example.

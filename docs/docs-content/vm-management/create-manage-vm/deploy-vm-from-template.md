@@ -15,6 +15,17 @@ organization's administrator provides.
 - Configured Virtual Machine Orchestrator profile applied to your cluster. Review
   [Create a VMO Profile](../create-vmo-profile.md) to configure the dashboard.
 
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro
+  Cloud reverse proxy.
+
+- Users or groups must be mapped to a Virtual Machine RBAC role. You can create a custom role through a manifest and use
+  Palette's RoleBinding feature to associate users and groups with the role. Refer to the
+  [Create Role Bindings](../../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
+
+- A namespace for VMs. Although you can deploy VMs from the default namespace, we recommend creating at least one
+  namespace dedicated to VMs as a way to organize and manage them. To learn how to create a namespace, check out
+  [Create a Namespace](../../clusters/cluster-management/namespace-management.md#create-a-namespace).
+
 ## Deploy VM from a Template
 
 These steps will help guide you to deploy a VM from an out-of-the-box VM template.

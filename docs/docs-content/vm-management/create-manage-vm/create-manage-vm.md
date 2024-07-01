@@ -9,19 +9,6 @@ tags: ["vmo"]
 Palette Virtual Machine Orchestrator (VMO) allows you to deploy and manage Virtual Machines (VMs) alongside
 containerized applications.
 
-## Prerequisites
-
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro
-  Cloud reverse proxy.
-
-- Users or groups must be mapped to a Virtual Machine RBAC role. You can create a custom role through a manifest and use
-  Palette's RoleBinding feature to associate users and groups with the role. Refer to the
-  [Create Role Bindings](../../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn more.
-
-- A namespace for VMs. Although you can deploy VMs from the default namespace, we recommend creating at least one
-  namespace dedicated to VMs as a way to organize and manage them. To learn how to create a namespace, check out
-  [Create a Namespace](../../clusters/cluster-management/namespace-management.md#create-a-namespace).
-
 ## VM Creation
 
 You can create a VM in one of the following ways:
