@@ -5,10 +5,10 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
     branches:
       - "release-[0-9]-[0-9]"
+      - "release-[0-9]-[0-9]-[a-z]"
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  MENDABLE_API_KEY: ${{ secrets.MENDABLE_API_KEY }}
   NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
   NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
   FULLSTORY_ORGID: ${{ secrets.FULLSTORY_ORGID }}
