@@ -42,7 +42,9 @@ different elements of the configuration.
 
 :::
 
-# Configuration Examples
+## Configuration Examples
+
+The following examples demonstrate how to configure the image swap functionality in the Kubernetes pack YAML.
 
 ### Override a Specific Registry
 

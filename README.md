@@ -26,7 +26,7 @@ To contribute, we recommend having the following software installed locally on y
 
 - Node.js v20 and npm.
 
-- [Vale](https://vale.sh/docs/vale-cli/installation/)
+- [Vale](https://vale.sh/docs/vale-cli/installation/), version 3.6.0 or higher.
 
 ## Local Development (Docker)
 

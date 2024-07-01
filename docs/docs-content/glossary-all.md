@@ -27,12 +27,12 @@ Profile allow creators to integrate various services or tiers, required to run a
 and more into a single deliverable. App Profiles provide a way to drive consistency across virtual clusters. You can
 create as many profiles as required, with multiple tiers serving different functionalities per use case.
 
-## Air-Gapped
+## Airgapped
 
-Palette on-prem installation supports Air-Gapped, a security measure in which its management platform is installed on
-VMware environments with no direct or indirect connectivity to any other devices or networks of the outside world. This
-feature provides airtight security to the platform without the risk of compromise or disaster. In addition, it ensures
-the total isolation of a given system from other networks, especially those that are not secure.
+Self-hosted Palette installation supports airgap install, a security measure in which its management platform is
+installed in a VMware environments with no direct or indirect, internet connectivity to any other devices or networks of
+the outside world. This feature provides airtight security to the platform without the risk of compromise or disaster.
+In addition, it ensures the total isolation of a given system from other networks, especially those that are not secure.
 
 ## Attach Manifests
 
@@ -42,11 +42,11 @@ Resource Definitions may need to be installed for the integration or add-on to f
 additional raw manifests attached to a cluster profile layer built using a Palette Pack or a Chart. Multiple Attach
 Manifests can be added to a layer in a cluster profile.
 
-## Bring Your Own Operating System (BYO-OS)
+## Bring Your Own Operating System (BYOOS)
 
 A feature in Palette that allows you to bring your own operating system and use it with your Kubernetes clusters. With
-the BYO-OS pack, you can reference your own OS images, configure the necessary drivers, and customize the OS to meet
-your specific requirements. BYO-OS gives you greater flexibility, control, and customization options when it comes to
+the BYOOS pack, you can reference your own OS images, configure the necessary drivers, and customize the OS to meet your
+specific requirements. BYO-OS gives you greater flexibility, control, and customization options when it comes to
 managing your Kubernetes clusters. It is especially useful for enterprises and organizations with strict requirements
 around security, compliance, or specific hardware configurations.
 
@@ -75,17 +75,13 @@ A Cluster Definition contains one or more cluster profiles, including profile va
 ## Cluster Profile
 
 A Cluster Profile is a declarative model of a Kubernetes infrastructure stack. A Kubernetes infrastructure stack is
-broken into multiple layers, from core layers like base OS, Kubernetes, storage, network, to additional add-on layers
-such as load balancer, ingress controller, logging, monitoring, security, etc. For each layer, Palette provides multiple
-out-of-the-box options and versions. The cluster profile is essentially a configuration of end-to-end Kubernetes stacks
-and settings that you create based on your needs, which you can reuse every time you need to deploy a cluster matching
-that configuration. For example, let us say for AI/ML you need a cluster with a base OS with an NVIDIA driver installed
-and Kubeflow installed in the cluster, but for a production cluster, you need a different stack with Logging (EFK),
-Monitoring (Prometheus), Security (Twistlock) pre-installed.
-
-The diagram below shows an example of a cluster profile:
-
-![cluster_profile_new](/cluster_profile_new.webp)
+broken into multiple layers, from core layers like base Operating System (OS), Kubernetes, storage, network, to
+additional add-on layers such as load balancer, ingress controller, logging, monitoring, security, etc. For each layer,
+Palette provides multiple out-of-the-box options and versions. The cluster profile is essentially a configuration of
+end-to-end Kubernetes stacks and settings that you create based on your needs, which you can reuse every time you need
+to deploy a cluster matching that configuration. For example, let us say for AI/ML you need a cluster with a base OS
+with an NVIDIA driver installed and Kubeflow installed in the cluster, but for a production cluster, you need a
+different stack with Logging (EFK), Monitoring (Prometheus), Security (Twistlock) pre-installed.
 
 For more information, check out [Cluster Profiles](profiles/cluster-profiles/cluster-profiles.md).
 
