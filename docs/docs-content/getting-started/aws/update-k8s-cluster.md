@@ -138,8 +138,8 @@ will be successfully deployed.
 
 ![Image that shows completed cluster profile updates](/getting-started/aws/getting-started_update-k8s-cluster_completed-cluster-updates.webp)
 
-Download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file for your cluster from the Palette UI. This file enables you
-and other users to issue kubectl commands against the host cluster.
+Download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file for your cluster from the Palette UI.
+This file enables you and other users to issue kubectl commands against the host cluster.
 
 ![Image that the kubeconfig file](/getting-started/aws/getting-started_update-k8s-cluster_download-kubeconfig.webp)
 
@@ -181,12 +181,7 @@ Select the **Profile** tab. This cluster is currently deployed using cluster pro
 option **1.0.0** in the version dropdown. This process is the reverse of what you have done in the previous section,
 [Version Cluster Profiles](#version-cluster-profiles).
 
-Click on **Review & Save** to confirm your changes. The **Changes Summary** dialog appears again.
-
-Click on **Review changes in Editor**. The editor shows that the incoming version no longer contains the three-tier
-application configuration.
-
-Click on **Apply Changes**. Select the **Overview** tab.
+Click on **Save** to confirm your changes.
 
 Palette now makes the changes required for the cluster to return to the state specified in version **1.0.0** of your
 cluster profile. Once your changes have completed, Palette marks your layers with the green status indicator.
@@ -240,7 +235,7 @@ point, you can choose to apply the pending changes or keep it by modifying the r
 
 ![Image that shows the available updates dialog ](/getting-started/aws/getting-started_update-k8s-cluster_available-updates-dialog.webp)
 
-Click on **Confirm updates** once you have finished reviewing your changes.
+Click on \*Apply Changes\*\* once you have finished reviewing your changes.
 
 Palette updates your cluster according to cluster profile specifications. Once these changes are complete, select the
 **Workloads** tab. Then, select the **hello-universe** namespace.

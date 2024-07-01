@@ -56,5 +56,4 @@ You can verify your account is added.
 
 Now that you set up Palette for use with Azure, you can start deploying Kubernetes clusters to your Azure account. To
 learn how to get started with deploying Kubernetes clusters to Azure, we recommend that you continue to the
-[Create a Cluster Profile](./create-cluster-profile.md) tutorial to create a full cluster profile for your host
-cluster.
+[Create a Cluster Profile](./create-cluster-profile.md) tutorial to create a full cluster profile for your host cluster.
