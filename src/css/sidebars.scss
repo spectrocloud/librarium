@@ -12,10 +12,11 @@
 .category {
   color: var(--custom-sidebar-item-color);
   font-size: 14px;
+}
 
-  .category-icon {
-    margin-right: 12px;
-  }
+.category-icon {
+  margin-right: 12px;
+  border-bottom: 2px solid white;
 }
 
 .category-divider {
