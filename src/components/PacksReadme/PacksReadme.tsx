@@ -100,15 +100,8 @@ export default function PacksReadme() {
       parentVersionObj = getParentVersion(version);
       const packDataObj = parentVersionObj?.children.find((child: any) => child.title === version);
       setSelectedPackUid(packDataObj?.packUid || "");
+      setSelectedVersion(version);
     }
-    if (!urlParamVersion) {
-      let path = `?pack=${packName}&version=${version}`;
-      if (parentVersionObj && parentVersionObj.title) {
-        path = `${path}&parent=${parentVersionObj.title}`;
-      }
-      history.replace({ search: path });
-    }
-    setSelectedVersion(version);
   }, [packData]);
   let infoContent;
   if (packData.disabled) {
