@@ -13,7 +13,7 @@ Palette supports integration with [Microsoft Azure](https://azure.microsoft.com/
 
 ## Get Started
 
-In this section, you learn how to create a cluster profile. Then, you deploy a cluster to AWS by using Palette. Once
+In this section, you learn how to create a cluster profile. Then, you deploy a cluster to Azure by using Palette. Once
 your cluster is deployed, you can update it using cluster profile updates.
 
 <SimpleCardGrid
