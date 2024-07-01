@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const sidebars = require("../sidebars");
 
 const assetIcons = {
   about: true,
@@ -21,6 +22,9 @@ const assetIcons = {
   workspaces: true,
   terraform: true,
 };
+
+// add fontawesome icon names to dynamically populate in the dynamicFontAwesomeimports
+const icons = [];
 
 function capitalize(str) {
   return str[0].toUpperCase() + str.slice(1);
@@ -47,6 +51,15 @@ async function pluginImportFontAwesomeIcons() {
         }
       });
 
+      sidebars?.tutorialSidebar?.forEach((sidebarItem) => {
+        if (sidebarItem?.customProps?.icon) {
+          appFontAwesomeIcons[sidebarItem?.customProps?.icon] = sidebarItem?.customProps?.icon;
+        }
+      });
+
+      icons.forEach((icon) => {
+        appFontAwesomeIcons[icon] = icon;
+      });
       // Create an array to hold all the import statements
       const importsArray = [];
 

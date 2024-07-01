@@ -4,6 +4,7 @@ import SimpleCardFooterArrow from "./SimpleCardFooterArrow";
 
 interface SimpleCardProps {
   cards?: SimpleCard[];
+  hideNumber?: boolean;
 }
 
 interface SimpleCard {
@@ -12,9 +13,16 @@ interface SimpleCard {
   description: string;
   buttonText: string;
   relativeURL: string;
+  hideNumber?: boolean;
 }
 
-export default function SimpleCardGrid({ cards = [] }: SimpleCardProps) {
+interface SimpleCardHeader {
+  index?: number;
+  hideNumber?: boolean;
+  title: string;
+}
+
+export default function SimpleCardGrid({ cards = [], hideNumber = false }: SimpleCardProps) {
   return (
     <div className={styles.simpleCardGrid}>
       {cards.map((card, index) => (
@@ -25,20 +33,19 @@ export default function SimpleCardGrid({ cards = [] }: SimpleCardProps) {
           buttonText={card.buttonText}
           relativeURL={card.relativeURL}
           key={`simpleCard-${index}`}
+          hideNumber={hideNumber}
         />
       ))}
     </div>
   );
 }
 
-function SimpleCard({ title, index, description, buttonText, relativeURL }: SimpleCard) {
+function SimpleCard({ title, index, description, buttonText, relativeURL, hideNumber }: SimpleCard) {
+  console.log(hideNumber);
   return (
     <a href={relativeURL}>
       <div className={styles.simpleCard}>
-        <div className={styles.simpleCardHeader}>
-          <div className={styles.simpleCardIndex}>{index}</div>
-          <div className={styles.simpleCardTitle}>{title}</div>
-        </div>
+        <SimpleCardHeader index={index} title={title} hideNumber={hideNumber} />
         <div className={styles.simpleCardBody}>
           <p className={styles.simpleCardDescription}>{description}</p>
         </div>
@@ -50,5 +57,21 @@ function SimpleCard({ title, index, description, buttonText, relativeURL }: Simp
         </div>
       </div>
     </a>
+  );
+}
+
+function SimpleCardHeader({ index, hideNumber, title }: SimpleCardHeader) {
+  if (!hideNumber) {
+    return (
+      <div className={styles.simpleCardHeader}>
+        <div className={styles.simpleCardIndex}>{index}</div>
+        <div className={styles.simpleCardTitle}>{title}</div>
+      </div>
+    );
+  }
+  return (
+    <div className={styles.simpleCardHeaderNoGap}>
+      <div className={styles.simpleCardTitle}>{title}</div>
+    </div>
   );
 }
