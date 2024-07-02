@@ -55,8 +55,8 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
    :::info
 
    The user `kairos` always exists in the OS. If you configured the username and password in your user data, you can use
-   this user to log in to the OS as well as the local UI. However, you cannot create this user during initial
-   configuration as this user already exists.
+   this user to log in to the OS as well as Local UI. However, you cannot create this user during initial configuration
+   as this user already exists.
 
    :::
 
