@@ -175,9 +175,6 @@ existing host cluster.
 
 #### Prerequisites
 
-- A tenant registration token is required. Refer to the [Create a Registration Token](create-registration-token.md)
-  guide for more information.
-
 - Access to the Spectro Cloud GitHub repository that hosts the Palette Edge Registration App. Contact our sales team at
   [sales@spectrocloud.com](mailto:sales@spectrocloud.com) to gain access.
 

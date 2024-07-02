@@ -512,6 +512,10 @@ const redirects = [
     from: "/clusters/edge/site-deployment/deploy-cluster",
     to: "/clusters/edge/site-deployment/virtual-deployment/deploy-cluster",
   },
+  {
+    from: "/clusters/edge/site-deployment/site-installation/cluster-deployment",
+    to: "/clusters/edge/site-deployment/cluster-deployment",
+  },
 ];
 
 module.exports = redirects;
