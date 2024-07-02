@@ -6,10 +6,9 @@ import { FrontMatterData } from "../Integrations/IntegrationTypes";
 import TechnologyCard from "./TechnologyCard";
 import PacksFilters from "./PacksFilters";
 import { packTypeNames, packTypes } from "../../constants/packs";
-import { Collapse, ConfigProvider, theme } from "antd";
+import { Collapse} from "antd";
 import "./technologies.antd.css";
 import IconMapper from "../IconMapper/IconMapper";
-import { useColorMode } from "@docusaurus/theme-common";
 
 const searchOptions = {
   threshold: 0.5,
@@ -24,8 +23,6 @@ interface TechnologiesProps {
 const PACKLISTFILTERS = "packListFilters";
 
 export default function Technologies({ data, repositories }: TechnologiesProps) {
-  const { colorMode } = useColorMode();
-  const { defaultAlgorithm, darkAlgorithm } = theme;
   const [selectedFilters, setSelectedFilters] = useState<{ category: any[], registries: any[], cloudTypes: any[], source: any[] }>({ category: [], registries: [], cloudTypes: [], source: ["all"] })
   const [searchValue, setSearchValue] = useState<string>("");
   const filteredTechCards = useMemo(() => {
@@ -131,8 +128,8 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
       if (categoryItems.length) {
         const obj = (<Collapse.Panel header={addPanelHeader(category)} key={category}>{
           categoryItems.map((field) => {
-            const { title, logoUrl, packType, name } = field;
-            return <TechnologyCard name={name} title={title} logoUrl={logoUrl} type={packType}></TechnologyCard>;
+            const { title, logoUrl, packType, name, latestVersion, versions } = field;
+            return <TechnologyCard name={name} title={title} logoUrl={logoUrl} type={packType} version={latestVersion} versions={versions}></TechnologyCard>
           })
         }</Collapse.Panel>)
         return obj;
@@ -175,17 +172,13 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
 
   return (
     <div className={styles.wrapper}>
-      <ConfigProvider theme={{
-        algorithm: colorMode === "dark" ? darkAlgorithm : defaultAlgorithm,
-      }}>
-        <PacksFilters categories={[...packTypes]} registries={repositories} setSelectedSearchFilters={setSelectedSearchFilters} selectedFilters={selectedFilters} />
-        <Search onSearch={onSearch} placeholder={"Search for integration..."} value={searchValue} />
-        <div className={styles.technologyWrapper}>
-          <Collapse defaultActiveKey={Array.from(filteredTechCards.keys()) as string[]} expandIconPosition="end" >
-            {renderPacksCategories()}
-          </Collapse>
-        </div>
-      </ConfigProvider>
+      <PacksFilters categories={[...packTypes]} registries={repositories} setSelectedSearchFilters={setSelectedSearchFilters} selectedFilters={selectedFilters} />
+      <Search onSearch={onSearch} placeholder={"Search for integration..."} value={searchValue} />
+      <div className={styles.technologyWrapper}>
+        <Collapse defaultActiveKey={Array.from(filteredTechCards.keys()) as string[]} expandIconPosition="end" >
+          {renderPacksCategories()}
+        </Collapse>
+      </div>
     </div>
   );
 }

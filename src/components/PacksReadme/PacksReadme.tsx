@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, ReactElement } from "react";
 import styles from "./PacksReadme.module.scss";
-import { Select, Tabs, ConfigProvider, theme, TreeSelect } from "antd";
+import { Tabs, ConfigProvider, theme, TreeSelect } from "antd";
 import CustomLabel from "../Technologies/CategorySelector/CustomLabel";
 import PackCardIcon from "../Technologies/PackCardIcon";
 import Markdown from 'markdown-to-jsx';
@@ -93,17 +93,15 @@ export default function PacksReadme() {
   }, [packName]);
   useEffect(() => {
     const searchParams = window ? new URLSearchParams(window.location.search) : null;
-    const urlParamVersion = searchParams?.get("versions");
+    const urlParamVersion = searchParams?.get("version");
     const version = urlParamVersion || packData?.latestVersion || packData?.versions[0]?.title || "";
-    if (!urlParamVersion) {
-      history.replace({ search: `?pack=${packName}&versions=${version}` });
-    }
+    let parentVersionObj: any;
     if (version && !version.endsWith(".x")) {
-      const tag = packData?.versions.find((tagVersion) => tagVersion.title === version.replace(/.\d+$/, ".x"))
-      const queryParamVersionData = tag && tag.children.find((child: any) => child.title === version);
-      setSelectedPackUid(queryParamVersionData?.packUid || "");
+      parentVersionObj = getParentVersion(version);
+      const packDataObj = parentVersionObj?.children.find((child: any) => child.title === version);
+      setSelectedPackUid(packDataObj?.packUid || "");
+      setSelectedVersion(version);
     }
-    setSelectedVersion(version);
   }, [packData]);
   let infoContent;
   if (packData.disabled) {
@@ -114,9 +112,14 @@ export default function PacksReadme() {
 
   function versionChange(item: string) {
     const [version, packUid] = item.split("===");
-    history.replace({ search: `?pack=${packName}&versions=${version}` });
+    const parentVersion = getParentVersion(version)?.title || "";
+    history.replace({ search: `?pack=${packName}&version=${version}&parent=${parentVersion}` });
     setSelectedVersion(version);
     setSelectedPackUid(packUid);
+  }
+
+  function getParentVersion(version: string) {
+    return packData.versions.find((tagVersion) => tagVersion.children.find((child: any) => child.title === version));
   }
 
   function renderVersionOptions() {
@@ -205,58 +208,55 @@ export default function PacksReadme() {
 
   return (
     <div className={styles.wrapper}>
-      <ConfigProvider theme={{
-        algorithm: colorMode === "dark" ? darkAlgorithm : defaultAlgorithm,
-      }}>
-        <div className={styles.description}>
-          <div className={styles.packDescFirstCol}>
-            <div className={styles.packName}>{packData.title}</div>
-            <div className={styles.descriptionContent}>
-              <PackCardIcon className={styles.packIcon} title={packData.title} logoUrl={packData.logoUrl} type={packData.type} />
-              <div className={styles.customDesc}>{packData.customDescription}</div>
-            </div>
+      <div className={styles.description}>
+        <div className={styles.packDescFirstCol}>
+          <div className={styles.packName}>{packData.title}</div>
+          <div className={styles.descriptionContent}>
+            <PackCardIcon className={styles.packIcon} logoUrl={packData.logoUrl} type={packData.type} />
+            <div className={styles.customDesc}>{packData.customDescription}</div>
           </div>
-          <div className={styles.packDescSecondCol}>
-            <div className={styles.versionSelect}>
-              <CustomLabel label="Version" />
-              <TreeSelect
-                className={styles.versionSelectBox}
-                showSearch
-                value={selectedVersion}
-                dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
-                placeholder="Search"
-                allowClear
-                treeDefaultExpandAll
-                onChange={(item) => versionChange(item as string)}
-                treeData={renderVersionOptions()}
-              />
+        </div>
+        <div className={styles.packDescSecondCol}>
+          <div className={styles.versionSelect}>
+            <CustomLabel label="Version" />
+            <TreeSelect
+              className={styles.versionSelectBox}
+              showSearch
+              value={selectedVersion}
+              dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+              placeholder="Search"
+              treeDefaultExpandAll
+              onChange={(item) => versionChange(item as string)}
+              treeData={renderVersionOptions()}
+            />
+          </div>
+          <div className={styles.packDesc}>
+            <div className={styles.packDescItem}>
+              {`Type: ${packTypeNames[packData.type as keyof typeof packTypeNames]}`}
             </div>
-            <div className={styles.packDesc}>
-              <div className={styles.packDescItem}>
-                {`Type: ${packTypeNames[packData.type as keyof typeof packTypeNames]}`}
-              </div>
-              <div className={styles.packDescItem}>
-                {`Cloud Providers: ${getProviders()}`}
-              </div>
-              <div className={styles.packDescItem}>
-                {`Registry: ${getRegistries()}`}
-              </div>
+            <div className={styles.packDescItem}>
+              {`Cloud Providers: ${getProviders()}`}
+            </div>
+            <div className={styles.packDescItem}>
+              {`Registry: ${getRegistries()}`}
             </div>
           </div>
         </div>
-        {infoContent ? (
-          <div className={styles.infoSection}>
-            <div className={styles.infoHeading}>
-              <InfoCircleOutlined className={styles.infoIcon} />
-              {"Info"}
-            </div>
-            <div className={styles.content}>{infoContent}</div>
+      </div>
+      {infoContent ? (
+        <div className={styles.infoSection}>
+          <div className={styles.infoHeading}>
+            <InfoCircleOutlined className={styles.infoIcon} />
+            {"Info"}
           </div>
-        ) : null}
-        <div className={styles.tabPane}>
+          <div className={styles.content}>{infoContent}</div>
+        </div>
+      ) : null}
+      <div className={styles.tabPane}>
+        <ConfigProvider theme={{algorithm: colorMode === "dark" ? darkAlgorithm : defaultAlgorithm}}>
           {renderTabs()}
-        </div>
-      </ConfigProvider>
+        </ConfigProvider>
+      </div>
     </div>
   );
 }
