@@ -88,8 +88,8 @@ Keep the **Cloud Configuration** settings the same for both pools, with **CPU** 
 
 Select **Next** to proceed with the cluster deployment.
 
-The **Cluster Settings** section offers advanced options for OS patching, scheduled scans, scheduled backups, and cluster role
-binding. For this tutorial, you can use the default settings. Click on **Validate** to continue.
+The **Cluster Settings** section offers advanced options for OS patching, scheduled scans, scheduled backups, and
+cluster role binding. For this tutorial, you can use the default settings. Click on **Validate** to continue.
 
 The **Review** section allows you to review the cluster configuration before deploying the cluster. Review all the
 settings and click on **Finish Configuration** to deploy the cluster.

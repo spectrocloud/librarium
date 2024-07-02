@@ -242,6 +242,10 @@ Palette updates your cluster according to cluster profile specifications. Once t
 
 Three **ui** pods are available. The cluster profile update is now reflected by your cluster.
 
+## Cluster Observability
+
+<PartialsComponent category="getting-started" name="cluster-observability" />
+
 ## Cleanup
 
 Use the following steps to remove all the resources you created for the tutorial.
