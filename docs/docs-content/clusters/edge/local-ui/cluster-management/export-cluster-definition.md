@@ -123,7 +123,7 @@ Silicon, use the API approach instead.
 
 11. (Optional) You can also build a content bundle together with your cluster definition in a single command by adding a
     few additional flags to the command. Content bundles are archives of all the required container images required for
-    one or more cluster profiles. You can upload a content bundle to your Edge host through the local UI, and use the
+    one or more cluster profiles. You can upload a content bundle to your Edge host through Local UI, and use the
     resources in the content bundle to provision clusters without a connection to external networks. For more
     information, refer to [Build Content Bundles](../../edgeforge-workflow/palette-canvos/build-content-bundle.md).
 
@@ -148,7 +148,7 @@ Silicon, use the API approach instead.
 
 ### Validate
 
-1. Log in to the [local UI](../host-management/access-console.md).
+1. Log in to [Local UI](../host-management/access-console.md).
 
 2. From the left **Main Menu**, click on **Cluster**.
 
@@ -237,7 +237,7 @@ Silicon, use the API approach instead.
 
 ### Validate
 
-1. Log in to the [local UI](../host-management/access-console.md).
+1. Log in to [Local UI](../host-management/access-console.md).
 
 2. From the left **Main Menu**, click on **Cluster**.
 
@@ -249,7 +249,7 @@ Silicon, use the API approach instead.
 ## Next Steps
 
 You can build the cluster definition into the Edge Installer ISO, or upload the cluster definition to an existing Edge
-deployment using the local UI during cluster creation.
+deployment using Local UI during cluster creation.
 
 - [Build Edge Installer ISO](../../edgeforge-workflow/palette-canvos/build-installer-iso.md)
 
