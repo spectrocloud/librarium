@@ -31,10 +31,10 @@ SaaS or a self-hosted instance. The following diagram represents the deployment 
    hosts. The Edge hosts are then shipped to edge sites. For more information, refer to
    [Installation](./site-deployment/site-installation/site-installation.md).
 
-4. **On-site deployment**. Edge hosts need to be registered with Palette. In this phase, the site operator powers on the
-   Edge host, which will boot to registration. The site operator also applies site-specific properties such as static IP
-   address, network proxy, and SSL certificates with site user data or Palette Terminal User Interface (TUI). For more
-   information, refer to [Deploy Edge Hosts On-Site](./site-deployment/site-installation/site-installation.md).
+4. **On-site deployment**. Edge hosts need to be registered with Palette. In this phase, the field technician powers on
+   the Edge host, which will boot to registration. The field technician also applies site-specific properties such as
+   static IP address, network proxy, and SSL certificates with site user data or Palette Terminal User Interface (TUI).
+   For more information, refer to [Deploy Edge Hosts On-Site](./site-deployment/site-installation/site-installation.md).
 
 5. **Cluster formation**. One an Edge host is registered with Palette, the Edge host can be used to form a new cluster
    or be added to an existing cluster. Each cluster uses a cluster profile modeled in the **Modeling** stage. For more
@@ -46,8 +46,8 @@ SaaS or a self-hosted instance. The following diagram represents the deployment 
    [Update a Cluster](../cluster-management/cluster-updates.md).
 
 If the edge location configuration is known and predictable, then the IT/Ops team can combine EdgeForge, installation,
-and registration into one step and ship the fully configured Edge hosts to the edge location. The site operator at the
-edge location only needs to hook up the power and network cables without further device configuration. The Edge host
+and registration into one step and ship the fully configured Edge hosts to the edge location. The field technician at
+the edge location only needs to hook up the power and network cables without further device configuration. The Edge host
 will be ready to be centrally managed for cluster formation.
 
 ## Airgapped Clusters
@@ -84,12 +84,12 @@ The following are the phases of the deployment lifecycle of airgapped Edge hosts
 
 4. **On-site deployment**. Airgapped Edge hosts do not have a connection to Palette and therefore does not require
    registration. Site operator powers on the Edge host, which will boot up and serve the local UI and the Edge
-   Management API instead of to the registration screen. The site operator also applies site-specific properties such as
-   static IP address, network proxy, and SSL certificates with site user data or Palette Terminal User Interface (TUI).
-   For more information, refer to [Access Local UI](./local-ui/host-management/access-console.md).
+   Management API instead of to the registration screen. The field technician also applies site-specific properties such
+   as static IP address, network proxy, and SSL certificates with site user data or Palette Terminal User Interface
+   (TUI). For more information, refer to [Access Local UI](./local-ui/host-management/access-console.md).
 
-5. **Cluster formation**. If the Edge host is installed with a content bundle and cluster definition, the site operator
-   can power on the Edge host and create a cluster using the local UI. For more information, refer to
+5. **Cluster formation**. If the Edge host is installed with a content bundle and cluster definition, the field
+   technician can power on the Edge host and create a cluster using the local UI. For more information, refer to
    [Create a Cluster with Local UI](./local-ui/cluster-management/create-cluster.md).
 
    If the Edge host is missing either the content bundle or the cluster definition, you can still build a content bundle
