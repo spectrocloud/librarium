@@ -42,7 +42,7 @@ Navigate to the left **Main Menu** and select **Clusters**. Click on **Create Cl
 Palette will prompt you to select the type of cluster. Select **VMware** and click the **Start VMware Configuration**
 button. Use the following steps to create a host cluster in VMware.
 
-In the **Basic information** section, insert the general information about the cluster, such as the **Cluster name**,
+In the **Basic Information** section, insert the general information about the cluster, such as the **Cluster name**,
 **Description** and **Tags**.
 
 Select the VMware cloud account that was registered with Palette during the PCG creation. The cloud account has the same
@@ -56,7 +56,7 @@ Click on **Add Cluster Profile**. A list is displayed of available profiles you 
 the cluster profile you created in the [Create a Cluster Profile](./create-cluster-profile.md) tutorial, named
 **vmware-profile**, and click on **Confirm**.
 
-The **Parameters** section displays all the layers in the cluster profile.
+The **Cluster Profile** section displays all the layers in the cluster profile.
 
 ![Palette clusters basic information](/getting-started/vmware/getting-started_deploy-k8s-cluster_clusters_parameters.webp)
 
@@ -69,7 +69,7 @@ Template Folder** to which the Spectro templates are imported, and choose **DHCP
 provide the **SSH key** for accessing the cluster nodes. Proceed by clicking **Next** to advance to the **Nodes
 Configuration** section.
 
-The **Nodes config** section allows you to configure the nodes that make up the control plane and worker nodes of the
+The **Nodes Config** section allows you to configure the nodes that make up the control plane and worker nodes of the
 host cluster.
 
 Provide the details for the nodes of the control plane and worker pools.
@@ -88,7 +88,7 @@ Keep the **Cloud Configuration** settings the same for both pools, with **CPU** 
 
 Select **Next** to proceed with the cluster deployment.
 
-The **Settings** section offers advanced options for OS patching, scheduled scans, scheduled backups, and cluster role
+The **Cluster Settings** section offers advanced options for OS patching, scheduled scans, scheduled backups, and cluster role
 binding. For this tutorial, you can use the default settings. Click on **Validate** to continue.
 
 The **Review** section allows you to review the cluster configuration before deploying the cluster. Review all the
@@ -127,13 +127,13 @@ moments before clicking on the service URL to prevent the browser from caching a
 
 <br />
 
-![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/getting-started/getting-started_deploy-k8s-cluster_hello-universe-without-api.webp)
+![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/getting-started/getting-started_deploy-k8s-cluster_hello-universe-with-api.webp)
 
 Welcome to Hello Universe, a demo application to help you learn more about Palette and its features. Feel free to click
 on the logo to increase the counter and for a fun image change.
 
-You have deployed your first application to a cluster managed by Palette. Your first application is a single container
-application with no upstream dependencies.
+You have deployed your first application to a cluster managed by Palette. Your first application is a three-tier
+application with a frontend, API server, and Postgres database.
 
 ## Cleanup
 
