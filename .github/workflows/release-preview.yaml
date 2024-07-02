@@ -11,12 +11,12 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_S3_SECRET_KEY }}
   AWS_DEFAULT_REGION: us-east-1
   APPZI_TOKEN: ${{ secrets.APPZI_TOKEN }}
-  MENDABLE_API_KEY: ${{ secrets.MENDABLE_API_KEY }}
   FULLSTORY_ORGID: ${{ secrets.FULLSTORY_ORGID }}
   ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
   ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
   ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
+  API_KEY: ${{ secrets.PALETTE_API_KEY }}
 
 
 concurrency:
