@@ -13,6 +13,15 @@ For more information about EdgeForge, refer to [EdgeForge Workflow](../edgeforge
 You can ship your Edge hosts after you complete this step. Use the following steps to prepare your Edge host for
 installation.
 
+:::tip
+
+Consider implementing a staging checklist to ready the Edge hosts to be shipped on-site. You can include items such as
+running some hardware testing, validate Basic Input/Output System (BIOS) and firmware settings, and labeling the Edge
+hosts. This allows you to be more confident that your Edge hosts will be less likely to require intervention down the
+road.
+
+:::
+
 ### Prerequisites
 
 - Edge Installer ISO file. Check out the [EdgeForge Workflow](/clusters/edge/edgeforge-workflow/palette-canvos/) to

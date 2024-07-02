@@ -31,10 +31,10 @@ SaaS or a self-hosted instance. The following diagram represents the deployment 
    hosts. The Edge hosts are then shipped to edge sites. For more information, refer to
    [Installation](./site-deployment/site-installation/site-installation.md).
 
-4. **On-site Deployment**. Edge hosts need to be registered with Palette. In this phase, the site operator powers on the
+4. **On-site deployment**. Edge hosts need to be registered with Palette. In this phase, the site operator powers on the
    Edge host, which will boot to registration. The site operator also applies site-specific properties such as static IP
    address, network proxy, and SSL certificates with site user data or Palette Terminal User Interface (TUI). For more
-   information, refer to [Edge Host Registration](./site-deployment/site-installation/edge-host-registration.md).
+   information, refer to [Deploy Edge Hosts On-Site](./site-deployment/site-installation/site-installation.md).
 
 5. **Cluster formation**. One an Edge host is registered with Palette, the Edge host can be used to form a new cluster
    or be added to an existing cluster. Each cluster uses a cluster profile modeled in the **Modeling** stage. For more
@@ -50,19 +50,19 @@ and registration into one step and ship the fully configured Edge hosts to the e
 edge location only needs to hook up the power and network cables without further device configuration. The Edge host
 will be ready to be centrally managed for cluster formation.
 
-## Air-gapped Clusters
+## Airgapped Clusters
 
-An air-gapped cluster is a cluster that does not have a connection to a Palette instance. The deployment lifecycle for
-air-gapped Edge hosts is slightly different from connected Edge hosts. Since there is no Palette instance and each Edge
+An airgapped cluster is a cluster that does not have a connection to a Palette instance. The deployment lifecycle for
+airgapped Edge hosts is slightly different from connected Edge hosts. Since there is no Palette instance and each Edge
 host is managed locally, there is no Edge host registration during the on-site deployment phase.
 
 In addition, you need to provide the Edge host with the images that are required for cluster deployment through a
 content bundle or through an external registry. After a cluster is formed, you manage the cluster locally with local UI
 instead of using through a Palette instance.
 
-![A flow of the lifecycle for air-gapped clusters: modeling, EdgeForge, installation, on-site deployment, cluster formation, and cluster management. ](/native-edge-deployment-lifecycle-airgap.webp)
+![A flow of the lifecycle for airgapped clusters: modeling, EdgeForge, installation, on-site deployment, cluster formation, and cluster management. ](/cluster_edge_edge-deployment-lifecycle-airgap.webp)
 
-The following are the phases of the deployment lifecycle of air-gapped Edge hosts:
+The following are the phases of the deployment lifecycle of airgapped Edge hosts:
 
 1. **Modeling**. App owners build and test the applications in test environments and model application profiles in
    Palette for a cluster installation.
@@ -82,7 +82,7 @@ The following are the phases of the deployment lifecycle of air-gapped Edge host
 3. **Installation**. IT/Ops use the installer prepared in the EdgeForge phase and installs Palette Edge onto the Edge
    hosts. The Edge hosts are then shipped to edge sites.
 
-4. **On-site deployment**. Air-gapped Edge hosts do not have a connection to Palette and therefore does not require
+4. **On-site deployment**. Airgapped Edge hosts do not have a connection to Palette and therefore does not require
    registration. Site operator powers on the Edge host, which will boot up and serve the local UI and the Edge
    Management API instead of to the registration screen. The site operator also applies site-specific properties such as
    static IP address, network proxy, and SSL certificates with site user data or Palette Terminal User Interface (TUI).
