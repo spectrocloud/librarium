@@ -15,8 +15,8 @@ optionality, masking, and so on, to ensure scalable, error-free cluster deployme
 
 :::preview
 
-This is a Tech Preview feature currently available in the [local UI](../../../clusters/edge/local-ui/local-ui.md). Do
-not use this feature in production workloads, as it is subject to change.
+This is a Tech Preview feature currently available in [Local UI](../../../clusters/edge/local-ui/local-ui.md). Do not
+use this feature in production workloads, as it is subject to change.
 
 :::
 
@@ -39,7 +39,7 @@ This guide explains how you can define and manage cluster profile variables.
 
 ## Limitations
 
-- Cluster profile variables are currently available only in the [local UI](../../../clusters/edge/local-ui/local-ui.md).
+- Cluster profile variables are currently available only in [Local UI](../../../clusters/edge/local-ui/local-ui.md).
 
 - Palette does not support nesting profile variables within macros or other profile variables.
 

@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Network Diagnostic Tools"
 title: "Network Diagnostic Tools"
-description: "Instructions for using diagnostic tools within the local UI."
+description: "Instructions for using diagnostic tools within Local UI."
 hide_table_of_contents: false
 sidebar_position: 80
 tags: ["edge"]
@@ -21,11 +21,11 @@ an air-gapped environment.
 
 ### Prerequisites
 
-- You have access to local UI.
+- You have access to Local UI.
 
 ### Use Ping to Check Connection to a Specific Endpoint
 
-1. Log in to the [local UI](./access-console.md).
+1. Log in to [Local UI](./access-console.md).
 
 2. From the left **Main Menu**, click **Diagnostics**.
 
@@ -68,11 +68,11 @@ lost.
 
 ### Prerequisites
 
-- You have access to local UI.
+- You have access to Local UI.
 
 ### Use Traceroute to Check Connection to a Specific Endpoint
 
-1. Log in to the [local UI](./access-console.md).
+1. Log in to [Local UI](./access-console.md).
 
 2. From the left **Main Menu**, click **Diagnostics**.
 

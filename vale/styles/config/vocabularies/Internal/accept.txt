@@ -209,3 +209,4 @@ repave
 airgap
 Crossplane
 traceroute
+Local UI

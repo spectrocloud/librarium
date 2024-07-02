@@ -281,7 +281,7 @@ Creating a content bundle provides several benefits that may address common use 
 
 12. (Optional) You can download the cluster definition and the content bundle in a single step. A cluster definition
     contains one or more cluster profiles, including the profile variables used in the profiles. In air-gapped Edge
-    deployments, cluster definitions are required to provision a cluster from local UI. For more information, refer to
+    deployments, cluster definitions are required to provision a cluster from Local UI. For more information, refer to
     [Create a Cluster with Local UI](../../local-ui/cluster-management/create-cluster.md).
 
     To download the cluster definition together with content bundle, provide the following flags to the build command.

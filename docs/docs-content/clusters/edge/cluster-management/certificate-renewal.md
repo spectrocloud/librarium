@@ -28,12 +28,12 @@ expire. You can follow the steps below to check when the next automatic renewal 
 ### Prerequisite
 
 - You have an active cluster in a air-gapped Edge host.
-- You have access to the local UI for the Edge host. For more information, refer to
+- You have access to Local UI for the Edge host. For more information, refer to
   [Access Local UI](../local-ui/host-management/access-console.md).
 
 ### Check Next Auto Renewal Time
 
-1. Log in to [local UI](../local-ui/host-management/access-console.md).
+1. Log in to [Local UI](../local-ui/host-management/access-console.md).
 
 2. From the left **Main Menu**, select **Cluster**.
 
@@ -53,13 +53,13 @@ issue date of certificates.
 
 ## Manual Renewal
 
-You can also manually renew your certificates whenever you want. You can do this through the local UI or through the
-Edge Management API.
+You can also manually renew your certificates whenever you want. You can do this through Local UI or through the Edge
+Management API.
 
 ### Prerequisite
 
 - You have an active cluster in a air-gapped Edge host.
-- You have access to the local UI for the Edge host. For more information, refer to
+- You have access to Local UI for the Edge host. For more information, refer to
   [Access Local UI](../local-ui/host-management/access-console.md).
 
 ### Manually Renew Certificates
@@ -68,7 +68,7 @@ Edge Management API.
 
 <TabItem label="Local UI" value="ui">
 
-1. Log in to [local UI](../local-ui/host-management/access-console.md).
+1. Log in to [Local UI](../local-ui/host-management/access-console.md).
 
 2. From the left **Main Menu**, select **Cluster**.
 

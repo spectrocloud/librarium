@@ -7,7 +7,7 @@ sidebar_position: 30
 tags: ["edge"]
 ---
 
-You can create and manage a single-node cluster locally from the local UI. This page guides you through how to create a
+You can create and manage a single-node cluster locally from Local UI. This page guides you through how to create a
 cluster using Local UI.
 
 :::preview
@@ -21,9 +21,9 @@ cluster using Local UI.
 
 ## Prerequisites
 
-- Network access to the Edge device’s IP and port where the local UI is exposed. The default port is 5080.
+- Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
 
-- Credentials to log into the local UI. Any OS user can be used to log in to the local UI.
+- Credentials to log into Local UI. Any OS user can be used to log in to Local UI.
 
 - You have uploaded the necessary software artifacts to the Edge host or included the artifacts in the Edge Installer
   ISO during EdgeForge. For more information, refer to [Upload Content Bundle](./upload-content-bundle.md) and
@@ -40,8 +40,8 @@ cluster using Local UI.
 
 ## Create Local Cluster
 
-1. Log into the local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more
-   information, refer to [Access Local UI](../host-management/access-console.md).
+1. Log into Local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more information,
+   refer to [Access Local UI](../host-management/access-console.md).
 
 2. From the left **Main Menu**, click **Cluster**.
 
@@ -92,6 +92,6 @@ cluster using Local UI.
 
 ## Validate
 
-1. Log in to the local UI.
+1. Log in to Local UI.
 
 2. Click **Cluster**. Verify that your cluster has entered the running status.
