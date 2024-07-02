@@ -58,6 +58,10 @@ server. The region experiences a bad weather event that causes a sustained outag
 - At least one Edge host registered with your Palette account.
 - Your cluster profile must have K3s or RKE2 as its Kubernetes distribution.
 - All Edge hosts must be on the same Layer-2 network.
+- Broadcast messages must be allowed between all Edge hosts participating in the cluster.
+  - For Virtual Machine (VM) Edge hosts in VMware, this means features such as promiscuous mode must be enabled to allow
+    broadcasts between hosts.
+  - Switches cannot implement features that block broadcast between ports where Edge hosts are connected.
 - If you are launching your Edge hosts in virtual machine environments and you are using either Cilium or Flannel as
   your container network interface (CNI), ensure that you add the following commands in the **user-data** file at the
   boot stage. Replace `INTERFACE_NAME` with the name of the network interface on your Edge host.
