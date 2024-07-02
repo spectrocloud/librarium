@@ -24,6 +24,9 @@ is to power on the Edge host and connect it to the on-site network.
 | Initial Edge Host Configuration | When you power up the Edge host for the first time after installation, you can use the the Palette Terminal User Interface (TUI) to configure settings such as host name, static IP, and an Operating System (OS) user. For more information, refer to [Initial Edge Host Configuration](./initial-setup.md)                                                                                   | No                         |
 | Registration                    | The Edge host is registered with Palette. Refer to [Register Edge Host](edge-host-registration.md) for guidance. Once registered, the Edge host will remain available in your Palette account until it becomes part of a cluster.                                                                                                                                                              | Yes for connected clusters |
 
+Once an Edge host is registered with Palette, you can then proceed to allocate the Edge host to a cluster. For more
+information, refer to [Create Cluster Definition](../cluster-deployment.md).
+
 ## Resources
 
 - [Apply Site User Data](site-user-data.md)
