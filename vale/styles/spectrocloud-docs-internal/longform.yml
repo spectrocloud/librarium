@@ -1,3 +1,6 @@
+# Copyright (c) Spectro Cloud
+# SPDX-License-Identifier: Apache-2.0
+
 ---
 extends: existence
 message: "Avoid using the short form of commands. Replace the short form flag in '%s' with the corresponding long form flag."

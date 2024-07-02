@@ -1,3 +1,6 @@
+# Copyright (c) Spectro Cloud
+# SPDX-License-Identifier: Apache-2.0
+
 extends: existence
 message: "Don't use plurals in parentheses such as in '%s'. Write the plural form of the word instead."
 link: "https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Parentheses"

@@ -1,3 +1,6 @@
+# Copyright (c) Spectro Cloud
+# SPDX-License-Identifier: Apache-2.0
+
 extends: substitution
 message: "Incorrect file type reference. Use '%s'."
 level: error

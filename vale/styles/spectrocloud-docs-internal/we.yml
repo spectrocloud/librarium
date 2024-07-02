@@ -1,0 +1,15 @@
+# Copyright (c) Spectro Cloud
+# SPDX-License-Identifier: Apache-2.0
+
+extends: existence
+message: "Try to avoid using first-person plural. Avoid terms such as  '%s'. Address the user directly."
+link: "https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Active-voice"
+level: warning
+ignorecase: true
+tokens:
+  - ours?
+  - us
+  - let's
+  - we can
+exceptions:
+  - we recommend

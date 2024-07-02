@@ -1,3 +1,6 @@
+# Copyright (c) Spectro Cloud
+# SPDX-License-Identifier: Apache-2.0
+
 extends: existence
 message: "Avoid directing the reader to previous parts of the document. You mentioned '%s'."
 level: error

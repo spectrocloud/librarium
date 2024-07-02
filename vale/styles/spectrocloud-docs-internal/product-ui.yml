@@ -1,3 +1,6 @@
+# Copyright (c) Spectro Cloud
+# SPDX-License-Identifier: Apache-2.0
+
 extends: substitution
 message: "Use the approved UI element term '%s' instead of '%s'"
 ignorecase: true

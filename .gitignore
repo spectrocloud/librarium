@@ -30,6 +30,9 @@ node_modules
 vale/styles/alex/
 vale/styles/Google/
 vale/styles/write-good/
+.vale-config/
+vale/styles/spectrocloud/
+vale/styles/config/vocabularies/spectrocloud-vocab
 .idea/
 link_report.*
 *-creds.tape

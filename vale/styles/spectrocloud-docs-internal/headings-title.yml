@@ -1,0 +1,9 @@
+# Copyright (c) Spectro Cloud
+# SPDX-License-Identifier: Apache-2.0
+
+extends: existence
+message: "Avoid using a noun that starts with an -ing in headings. Your heading starts with a word ending in '%s'."
+level: error
+scope: heading
+raw:
+  - "ing\\b"

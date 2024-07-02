@@ -1,3 +1,6 @@
+# Copyright (c) Spectro Cloud
+# SPDX-License-Identifier: Apache-2.0
+
 extends: existence
 message: "Avoid using 'spectrocloud' outside of a URL format. Use 'Spectro Cloud' instead."
 level: error

@@ -1,13 +1,16 @@
+# Copyright (c) Spectro Cloud
+# SPDX-License-Identifier: Apache-2.0
+
 extends: conditional
 message: "Use title case to define the acronym '%s'."
-link: 'https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Acronyms'
+link: "https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Acronyms"
 level: error
 ignorecase: false
 scope: text
-# Match two to five capital letters surrounded by brackets 
+# Match two to five capital letters surrounded by brackets
 # to detect an acronym definition.
-first: '[(][A-Z]{2,5}[)]'
-# Match two to five capitalised words separated by any number of dashes 
+first: "[(][A-Z]{2,5}[)]"
+# Match two to five capitalised words separated by any number of dashes
 # or whitespaces before the acronym definition.
 second: '(\b(([A-Z][a-z]+)[\-\s ]{1,}){2,5})([(][A-Z]{2,5}[)])'
 exceptions:
@@ -32,7 +35,6 @@ exceptions:
   - (JPEG)
   - (JPG)
   - (JSON)
-  - (OS)
   - (OSS)
   - (PDF)
   - (PNG)

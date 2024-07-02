@@ -37,23 +37,8 @@ jobs:
       - run: exit 0
 
   vale:
-    name: Writing Checks
     needs: [run-ci]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Vale Check
-        uses: errata-ai/vale-action@reviewdog
-        with:
-          filter_mode: added
-          reporter: github-pr-review
-          vale_flags: --glob=*.{md} --minAlertLevel=error
-          fail_on_error: false
-          version: 3.5.0
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    uses: spectrocloud/spectro-vale-pkg/.github/workflows/vale.yml@main
 
   prettier:
     name: Check Code Formatting
