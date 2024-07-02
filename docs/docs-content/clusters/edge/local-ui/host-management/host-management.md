@@ -7,15 +7,15 @@ sidebar_position: 32
 tags: ["edge"]
 ---
 
-Local UI allows you to manage your Edge host. You can configure use the local UI to shut down, reboot, and reset your
-Edge host to factory default. You can also update credentials, update the local UI's branding and configure HTTP proxy
-for your Edge host from the L=local UI.
+Local UI allows you to manage your Edge host. You can configure Local UI to shut down, reboot, and reset your Edge host
+to a factory default. You can also update credentials, update Local UI's branding and configure HTTP proxy for your Edge
+host from Local UI.
 
 :::preview
 
 :::
 
-Refer to the following resources to learn how to configure your Edge host using the local UI:
+Refer to the following resources to learn how to configure your Edge host using Local UI:
 
 - [Access Local UI](./access-console.md)
 

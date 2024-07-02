@@ -7,7 +7,7 @@ sidebar_position: 60
 tags: ["edge"]
 ---
 
-You can build a content bundle and upload it to an Edge host through the local UI. The content you upload can include
+You can build a content bundle and upload it to an Edge host through Local UI. The content you upload can include
 images, helm charts, and packs. This allows you to provision clusters locally using the content you upload to the Edge
 host when the host does not have a connection to a central Palette instance or an image repository.
 
@@ -27,11 +27,11 @@ console.
   Ensure that you include the `--include-palette-content` flag when building the content bundle to include images for
   Palette components.
 
-- Network access to the Edge host's port where the local UI is exposed. The default port is 5080.
+- Network access to the Edge host's port where Local UI is exposed. The default port is 5080.
 
 ## Upload Content
 
-1. Log in to the [local UI](../host-management/access-console.md#log-in-to-local-ui).
+1. Log in to [Local UI](../host-management/access-console.md#log-in-to-local-ui).
 
 2. From the left **Main Menu**, click **Content**.
 
