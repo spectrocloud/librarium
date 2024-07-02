@@ -30,21 +30,12 @@ features and improvements.
 
 #### Breaking Changes
 
-- In this release, Palette aligns Google Cloud Platform GKE behavior with Azure AKS and AWS EKS and removes the ability
-  to specify a patch version when creating a cluster profile for AKS, EKS, and GKE. Only the major and minor versions
-  are available for selection. The underlying cloud provider will automatically select the latest patch version
-  available for the selected major and minor version.
-
-- Validator Helm Charts have migrated from `https://github.com/spectrocloud-labs/validator` to
-  `https://github.com/validator-labs/validator`. Former versions of the Palette CLI will point to the former repository
-  when prompted for the Helm chart location and require a manual URL change. The new version of the Palette CLI will
-  point to the new repository. Refer to the [Validator](../automation/palette-cli/commands/validator.md) CLI page
-  documentation for more details.
-
-- Due to the removal of GKE Kubernetes patch versions, it's critical you update existing cluster profiles to use the new
-  GKE Kubernetes packs to avoid issues. Active clusters using old GKE Kubernetes pack versions may encounter problems
-  like pods failing to start and scaling issues. We recommend deploying new clusters with the updated GKE cluster
-  profile and migrating workloads.
+- The folder structure of the files you use to customize Local UI for Edge hosts has changed. The main directory is
+  renamed from **ui** to **local-ui** and some files must be placed in a directory named **ui** under the **local-ui**
+  directory. The name of the of the TAR file expected by EdgeForge for your customizations to take effect has also
+  changed from **ui.tar** to **local-ui.tar**. For more information, refer to
+  [Customize Local UI Theme](../clusters/edge/local-ui/host-management/theming.md) and
+  [Add Custom Links to Local UI](../clusters/edge/local-ui/host-management/custom-link.md).
 
 #### Features
 

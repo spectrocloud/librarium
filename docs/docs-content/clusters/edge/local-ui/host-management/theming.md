@@ -61,14 +61,16 @@ console for all Edge hosts of your organization.
    cd CanvOS
    ```
 
-3. Create a directory called **ui** at the path `CanvOS/ui`.
+3. Create a directory called **local-ui** at the path **CanvOS/local-ui**. Then under the **local-ui** directory, create
+   a directory named **ui**.
 
-4. In the directory, create a file named **customizations.json**. This is the same file you can use to add custom links
-   to your sidebar. For more information, refer to [Add Custom Links to Local UI](./custom-link.md).
+4. In the **ui** directory, create a file named **customizations.json**. This is the same file you can use to add custom
+   links to your sidebar. If the file is already present, there is no need to create a new one. For more information,
+   refer to [Add Custom Links to Local UI](./custom-link.md).
 
-5. Upload a logo you'd like to use for the local UI to the **ui** directory. All file types are allowed. We recommend
-   you limit the height of the logo image to between 64 px and 120 px. If you don't upload a logo, the local UI will use
-   the Spectro Cloud logo.
+5. Upload a logo you'd like to use for Local UI to the **ui** directory. All file types are allowed. We recommend you
+   limit the height of the logo image to between 64 px and 120 px. If you don't upload a logo, Local UI will use the
+   Spectro Cloud logo.
 
 6. Populate the file with the following schema:
 
@@ -78,18 +80,18 @@ console for all Edge hosts of your organization.
        "brand": "#4A8FF1",
        "sidebar": "#2B323C"
      },
-     "logo": "/logo.webp"
+     "logo": "logo.webp"
    }
    ```
 
-   The sidebar color controls the color of the sidebar. This is also the color of the background in the local UI login
-   screen. We suggest you choose a color that contrasts well against your logo as the logo as the color will serve as
-   the background for your logo. The **brand** color controls the color of buttons and checkboxes in the UI. The
+   The `colors.sidebar` controls the color of the sidebar. This is also the color of the background in the Local UI
+   login screen. We suggest you choose a color that contrasts well against your logo as the logo as the color will serve
+   as the background for your logo. The **brand** color controls the color of buttons and checkboxes in the UI. The
    following image displays the default logo, brand, and sidebar color.
 
    ![A screenshot of the local UI showing the elements controlled by the color properties and the location of the logo](/cluster_edge_emc_theming.webp)
 
-7. Compress the UI directory to a TAR file. The file must be named **ui.tar**.
+7. Compress the UI directory to a TAR file. The file must be named **local-ui.tar**.
 
 8. Follow the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide from step 3
    onwards to finish the EdgeForge process.
