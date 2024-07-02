@@ -13,8 +13,8 @@ Palette supports using [VMware](https://www.vmware.com) as a data center provide
 
 ## Get Started
 
-In this section, you learn how to create a cluster profile. Then, you deploy a cluster to VMware vSphere using Palette. Once
-your cluster is deployed, you can update it using cluster profile updates.
+In this section, you learn how to create a cluster profile. Then, you deploy a cluster to VMware vSphere using Palette.
+Once your cluster is deployed, you can update it using cluster profile updates.
 
 <SimpleCardGrid
   cards={[
