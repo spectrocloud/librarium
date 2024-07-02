@@ -12,7 +12,7 @@ Palette and deploy clusters on it just like a physical Edge host. This allows yo
 before devoting physical resources.
 
 In addition, thanks to the flexibility of virtual environments, deployment to VMs can also be a way of learning how to
-work with Palette Edge. Checkout the [Deploy an Edge Cluster on VMware](./deploy-cluster.md) tutorial, which guides you
+work with Palette Edge. Check out the [Deploy an Edge Cluster on VMware](./deploy-cluster.md) tutorial, which guides you
 through the entire lifecycle of Edge deployment using virtual machines on VMware.
 
 Once an Edge host is registered with Palette, you can then proceed to allocate the Edge host to a cluster. For more

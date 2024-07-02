@@ -23,7 +23,7 @@ template.
 
 ### Instructions
 
-1. Log in to vCenter Server by Using the vSphere Client.
+1. Log in to the vCenter Server by using the vSphere Client.
 
 2. Prepare a build server by launching a VM with Ubuntu version 20.04 or greater in your VMware environment.
 

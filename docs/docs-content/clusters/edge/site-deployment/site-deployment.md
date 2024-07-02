@@ -36,7 +36,7 @@ by people with different roles. The Palette Edge lifecycle is explained in detai
 
 ## Deployment to Virtual Machines
 
-You can deploy Edge Hosts as Virtual Machines (VM). The VMs function exactly like a physical Edge host, and are
+You can deploy Edge Hosts as Virtual Machines (VM). The VMs function similarly to a physical Edge host and are
 particularly useful in testing and learning environments. Refer to
 [Create Edge OVF Templates](./virtual-deployment/create-ovf-template.md) and
 [Provision Edge Host VMs](./virtual-deployment/vm-edge-host.md) to learn how to create Open Virtualization Format (OVF)

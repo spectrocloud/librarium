@@ -43,7 +43,7 @@ deployment lifecycle you provide sensitive data in the user data configuration f
 [Sensitive Information in the Site Installation](#sensitive-information-in-the-site-installation) section below to learn
 more.
 
-## Sensitive Information during Installation
+## Sensitive Information During Installation
 
 In the installation step, the Edge Installer copies and persists _all_ your user data stages into the configuration
 files on the Edge hosts. Copying sensitive information to the Edge hosts may pose security risks. Therefore, we

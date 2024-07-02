@@ -14,7 +14,7 @@ Use the following steps to provision a VM as an Edge host using an Open Virtuali
 
 - Access to Palette and the ability to register an Edge host.
 
-- Access to network information about the physical site, specifically the network Virtual IP (VIP) address .
+- Access to network information about the physical site, specifically the network Virtual IP (VIP) address.
 
 - Physical access to the Edge host.
 
@@ -25,7 +25,7 @@ Use the following steps to provision a VM as an Edge host using an Open Virtuali
 
 Perform the following steps to proceed with the installation at the site in your VMware environment.
 
-1. Log in to vCenter Server using the vSphere Client.
+1. Log in to the vCenter Server using the vSphere Client.
 
 2. Navigate to **VMs and Templates** and right-click on the desired folder, then select the option **Deploy VM(s) from
    this OVF template**.
