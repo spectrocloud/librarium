@@ -75,6 +75,12 @@ A successful sign-out takes you back to the login page. You need to enter your c
 
 - Credentials to log in to the local UI. Any OS user can be used to log into the local UI.
 
+- The `stylus.disablePasswordUpdate` parameter is not set to `true` in the installer configuration user data. The
+  default value of the parameter is `false`.
+  - If the ability to change the password is disabled from Local UI, you can still log in to the terminal or use the API
+    to update the password. For more information, refer to
+    [Edge Management API](../../../../../api-content/api-docs/1-introduction.md)
+
 ### Instructions
 
 1. [Log in](#log-in-to-local-ui) to the local UI.

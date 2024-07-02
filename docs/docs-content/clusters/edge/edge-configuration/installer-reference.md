@@ -100,9 +100,20 @@ stylus:
 
 You can change the port that the Edge management console is exposed on. The default port is 5080.
 
-| Parameter        | Description                                                                               |
-| ---------------- | ----------------------------------------------------------------------------------------- |
-| `emcServer.port` | Specifies the port that the Edge management console is exposed on. Default value is 5080. |
+| Parameter               | Description                                                                                                                                                                       |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `emcServer.port`        | Specifies the port that Local UI is exposed on. Default value is 5080.                                                                                                            |
+| `disablePasswordUpdate` | Disables the ability to update Operating System (OS) user password from Local UI if set to true. Updating the password through the OS and API is still allowed. Default is false. |
+
+For example, the following configuration changes the default port for Local UI to 5081 and disables the ability to
+update the OS user password from Local UI.
+
+```yaml
+stylus:
+  emcServer:
+    port: 5081
+  disablePasswordUpdate: true
+```
 
 ### External Registry
 
@@ -221,8 +232,6 @@ stylus:
         regex: "edge.*"
 ```
 
-<br />
-
 :::warning
 
 The length of the UID truncates to a maximum allowed length of 128 characters. The following characters are unsupported:
@@ -249,8 +258,6 @@ You can also specify tags through alternative methods that are more dynamic, suc
 a script that returns a JSON object. You can combine the various methods to provide tags to the Edge host. The following
 sections describe the various methods you can use to provide tags dynamically to the Edge host.
 
-<br />
-
 :::info
 
 The order of precedence for tags is as follows:
@@ -266,8 +273,6 @@ specify the same tag in a `tagsFromFile`, the tag from the `tag` object is what 
 
 :::
 
-<br />
-
 ### Tags From a File
 
 You can specify tags from a file by using the `tagsFromFile` parameter object. The `tagsFromFile` parameter object
@@ -278,8 +283,6 @@ accepts the following parameters.
 | `fileName`  | The path to the file containing the tags.              | `''`          |
 | `delimiter` | The delimiter used to separate the key-value pairs.    | `\n`          |
 | `separator` | The separator used to separate the key from the value. | `:`           |
-
-<br />
 
 ```yaml
 #cloud-config
@@ -298,20 +301,14 @@ Example:
 You can specify different delimiters and separators to parse the content depending on how the content is formatted.
 Assume the file **/etc/palette/tags.txt** contains the following content.
 
-<br />
-
 ```text hideClipboard
 Location:Mumbai,India; Latitude:48.856614; Longitude:2.352221; owner:p78125d
 ```
-
-<br />
 
 ### Tags From a Script
 
 You can specify tags from a script by using the `tagsFromScript` parameter object. The script must be executable and
 return a JSON object that contains the tags in the following format.
-
-<br />
 
 ```json hideClipboard
 {
@@ -320,8 +317,6 @@ return a JSON object that contains the tags in the following format.
 ```
 
 Example:
-
-<br />
 
 ```json
 {
@@ -337,8 +332,6 @@ The `tagsFromScript` parameter object accepts the following parameters.
 | `scriptName` | The path to the script that returns a JSON object. | `''`          |
 | `timeout`    | The timeout value in seconds.                      | `60`          |
 
-<br />
-
 ```yaml
 #cloud-config
 stylus:
@@ -353,8 +346,6 @@ stylus:
 ## Installer Example Configuration
 
 The following example shows how user data configuration is used to customize the Edge host installation process.
-
-<br />
 
 ```yaml
 #cloud-config
@@ -395,8 +386,6 @@ stylus:
         ------END CERTIFICATE------
 ```
 
-<br />
-
 :::info
 
 Check out the [Prepare User Data](../edgeforge-workflow/prepare-user-data.md) resource for more examples.
@@ -410,8 +399,6 @@ parameters, refer to the [Kairos configuration](https://kairos.io/docs/reference
 
 The following is an example Edge installer configuration that is using the `install` parameter block to power off the
 device upon completion of the installation process.
-
-<br />
 
 ```yaml
 #cloud-config
