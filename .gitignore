@@ -27,11 +27,14 @@ node_modules
 *DS_Store
 *.env
 *.csv
+
+# Vale
 vale/styles/alex/
 vale/styles/Google/
 vale/styles/write-good/
 .vale-config/
 vale/styles/spectrocloud/
+vale/styles/spectrocloud-docs-internal/
 vale/styles/config/vocabularies/spectrocloud-vocab
 .idea/
 link_report.*
