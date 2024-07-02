@@ -69,3 +69,9 @@ artifact.zip
 .netlify/
 # Ignore _partials/index.ts
 _partials/index.ts
+
+
+.vale-config/
+vale/styles/spectrocloud/
+vale/styles/spectrocloud-docs-internal/
+vale/styles/config/vocabularies/spectrocloud-vocab
