@@ -246,9 +246,9 @@ function generateRoutes(packsAllData) {
    const parentVersion = pack.versions.find((version) => {
       return version.children.find((child) => child.title === pack.latestVersion);
     });
-    let path = `/integrations/packs?pack=${pack.name}&version=${pack.latestVersion}`;
+    let path = `/integrations/packs/${pack.name}/${pack.latestVersion}`
     if (parentVersion && parentVersion.title) {
-      path = `${path}&parent=${parentVersion.title}`;
+      path = `${path}/${parentVersion.title}`;
     }
     return {
       path: path,
