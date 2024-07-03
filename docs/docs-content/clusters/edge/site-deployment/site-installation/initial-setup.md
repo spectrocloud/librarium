@@ -3,7 +3,7 @@ sidebar_label: "Initial Edge Host Configuration"
 title: "Initial Edge Host Configuration with Palette TUI"
 description: "Instructions for configuring the Edge host when booting up the Edge host for the first time."
 hide_table_of_contents: false
-sidebar_position: 32
+sidebar_position: 15
 tags: ["edge"]
 ---
 
@@ -14,8 +14,7 @@ This includes the configuration of an OS user, machine hostname, IP address, and
 You may already have specified some of these configurations in the **user-data** file in the EdgeForge process or have
 supplied them with site-specific **user-data**, and can either keep them as they are or update them during this step.
 For more information about EdgeForge and site user data, refer to
-[EdgeForge Workflow](../edgeforge-workflow/edgeforge-workflow.md) and
-[Apply Site User Data](./site-installation/site-user-data.md).
+[EdgeForge Workflow](../../edgeforge-workflow/edgeforge-workflow.md) and [Apply Site User Data](./site-user-data.md).
 
 :::warning
 
@@ -31,7 +30,7 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
 - The Edge host must not have an active cluster deployed on it.
 
 - The Edge installer ISO used to install Palette on the Edge host must
-  [enable initial configuration](../edge-configuration/installer-reference.md#initial-configuration).
+  [enable initial configuration](../../edge-configuration/installer-reference.md#initial-configuration).
 
 - A keyboard or another input device connected to the Edge host.
 
@@ -55,8 +54,8 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
    :::info
 
    The user `kairos` always exists in the OS. If you configured the username and password in your user data, you can use
-   this user to log in to the OS as well as the local UI. However, you cannot create this user during initial
-   configuration as this user already exists.
+   this user to log in to the OS as well as Local UI. However, you cannot create this user during initial configuration
+   as this user already exists.
 
    :::
 

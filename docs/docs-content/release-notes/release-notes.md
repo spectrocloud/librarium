@@ -33,7 +33,7 @@ This release contains various new features and improvements. One new feature is 
 feature that ensures that the system boots securely and that the boot process has not been tampered with. We also
 improved the MicroK8s experience by exposing lifecycle commands. Other improvements include enhancements to the Cluster
 Profile Variables user experience, automatic SSL certificate updates for Edge clusters in airgap environments, and new
-network troubleshooting tools in local UI. Check out the full release notes to learn more about this release's new
+network troubleshooting tools in Local UI. Check out the full release notes to learn more about this release's new
 features and improvements.
 
 ### Security Notices
@@ -150,11 +150,11 @@ features and improvements.
 
 - Edge clusters managed by [LocalUI](../clusters/edge/local-ui/local-ui.md) now receive automatic SSL certificate updates for Kubernetes. Users can also manually trigger the SSL certificate update process. For more information, refer to the [Renew Certificates for Airgap Clusters](../clusters/edge/cluster-management/certificate-renewal.md) guide.
 
-- [Local UI](../clusters/edge/local-ui/local-ui.md) now includes tools to help users troubleshoot network issues. The tools include ping and traceroute. For more information, refer to the [local UI](../clusters/edge/local-ui/local-ui.md) documentation.
+- [Local UI](../clusters/edge/local-ui/local-ui.md) now includes tools to help users troubleshoot network issues. The tools include ping and traceroute. For more information, refer to the [Local UI](../clusters/edge/local-ui/local-ui.md) documentation.
 
-- Clusters managed by [local UI](../clusters/edge/local-ui/local-ui.md) now include a new feature that allows users to download diagnostic logs from the local UI. This feature reduces the friction of troubleshooting issues on the cluster as the need to SSH into the cluster is reduced.
+- Clusters managed by [Local UI](../clusters/edge/local-ui/local-ui.md) now include a new feature that allows users to download diagnostic logs from Local UI. This feature reduces the friction of troubleshooting issues on the cluster as the need to SSH into the cluster is reduced.
 
-- Support for custom links, URLs, and static pages is now available in local UI. You can populate custom links in the left **Main Menu** of [local UI](../clusters/edge/local-ui/host-management/custom-link.md), which will either load content into in an iframe or act as en external link. You can also can host static pages in local UI. This is useful when you need to deploy and host custom or specific content for a site and want to avoid introducing additional services to host a static site.
+- Support for custom links, URLs, and static pages is now available in Local UI. You can populate custom links in the left **Main Menu** of [Local UI](../clusters/edge/local-ui/host-management/custom-link.md), which will either load content into in an iframe or act as en external link. You can also can host static pages in Local UI. This is useful when you need to deploy and host custom or specific content for a site and want to avoid introducing additional services to host a static site.
 
 ### Palette Dev Engine (PDE)
 
