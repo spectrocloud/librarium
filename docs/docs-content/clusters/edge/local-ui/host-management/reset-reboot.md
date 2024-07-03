@@ -45,8 +45,8 @@ Edge host is rebooting.
 
 ## Reset Edge Host to Factory Default
 
-You can reset an Edge host to factory default from the local UI. This restores the Edge host to the state right after
-the [initial configuration](../../site-deployment/site-installation/initial-setup.md) is completed in the Terminal User
+You can reset an Edge host to factory default from Local UI. This restores the Edge host to the state right after the
+[initial configuration](../../site-deployment/site-installation/initial-setup.md) is completed in the Terminal User
 Interface (TUI). Reset to factory default removes all workloads, content, and cluster definition from the Edge host.
 This includes content bundles that were built into the ISO image during EdgeForge.
 

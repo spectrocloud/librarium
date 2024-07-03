@@ -57,7 +57,7 @@ airgapped Edge hosts is slightly different from connected Edge hosts. Since ther
 host is managed locally, there is no Edge host registration during the on-site deployment phase.
 
 In addition, you need to provide the Edge host with the images that are required for cluster deployment through a
-content bundle or through an external registry. After a cluster is formed, you manage the cluster locally with local UI
+content bundle or through an external registry. After a cluster is formed, you manage the cluster locally with Local UI
 instead of using through a Palette instance.
 
 ![A flow of the lifecycle for airgapped clusters: modeling, EdgeForge, installation, on-site deployment, cluster formation, and cluster management. ](/cluster_edge_edge-deployment-lifecycle-airgap.webp)
@@ -83,18 +83,18 @@ The following are the phases of the deployment lifecycle of airgapped Edge hosts
    hosts. The Edge hosts are then shipped to edge sites.
 
 4. **On-site deployment**. Airgapped Edge hosts do not have a connection to Palette and therefore does not require
-   registration. Site operator powers on the Edge host, which will boot up and serve the local UI and the Edge
-   Management API instead of to the registration screen. The field technician also applies site-specific properties such
-   as static IP address, network proxy, and SSL certificates with site user data or Palette Terminal User Interface
-   (TUI). For more information, refer to [Access Local UI](./local-ui/host-management/access-console.md).
+   registration. Site operator powers on the Edge host, which will boot up and serve Local UI and the Edge Management
+   API instead of to the registration screen. The field technician also applies site-specific properties such as static
+   IP address, network proxy, and SSL certificates with site user data or Palette Terminal User Interface (TUI). For
+   more information, refer to [Access Local UI](./local-ui/host-management/access-console.md).
 
 5. **Cluster formation**. If the Edge host is installed with a content bundle and cluster definition, the field
-   technician can power on the Edge host and create a cluster using the local UI. For more information, refer to
+   technician can power on the Edge host and create a cluster using Local UI. For more information, refer to
    [Create a Cluster with Local UI](./local-ui/cluster-management/create-cluster.md).
 
    If the Edge host is missing either the content bundle or the cluster definition, you can still build a content bundle
-   or export the cluster definition and upload them to the Edge host through the local UI. For more information, refer
-   to [Upload Content Bundle](./local-ui/cluster-management/upload-content-bundle.md). If the Edge host is configured to
+   or export the cluster definition and upload them to the Edge host through Local UI. For more information, refer to
+   [Upload Content Bundle](./local-ui/cluster-management/upload-content-bundle.md). If the Edge host is configured to
    pull images from a private external registry, then cluster formation does not require a content bundle, but it will
    still require a cluster definition. For more information about using
 
