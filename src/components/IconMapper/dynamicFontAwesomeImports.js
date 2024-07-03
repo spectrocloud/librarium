@@ -10,6 +10,7 @@ import { faNetworkWired } from '@fortawesome/free-solid-svg-icons';
 import { faServer } from '@fortawesome/free-solid-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faWarehouse } from '@fortawesome/free-solid-svg-icons';
+import { faFlagCheckered } from '@fortawesome/free-solid-svg-icons';
 import { faPalette } from '@fortawesome/free-solid-svg-icons';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
@@ -20,9 +21,8 @@ import { faGears } from '@fortawesome/free-solid-svg-icons';
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { faShield } from '@fortawesome/free-solid-svg-icons';
-import { faLayerGroup } from '@fortawesome/free-solid-svg-icons';
-import { faRocket } from '@fortawesome/free-solid-svg-icons';
-import { faBarsProgress } from '@fortawesome/free-solid-svg-icons';
+import { faBundles } from '@fortawesome/free-solid-svg-icons';
+import { faClusters } from '@fortawesome/free-solid-svg-icons';
 import { faMicrochip } from '@fortawesome/free-solid-svg-icons';
 
 export const fontAwesomeIcons = {
@@ -38,6 +38,7 @@ export const fontAwesomeIcons = {
   "server": faServer,
   "users": faUsers,
   "warehouse": faWarehouse,
+  "flag-checkered": faFlagCheckered,
   "palette": faPalette,
   "book": faBook,
   "bookmark": faBookmark,
@@ -48,8 +49,7 @@ export const fontAwesomeIcons = {
   "screwdriver-wrench": faScrewdriverWrench,
   "eye-slash": faEyeSlash,
   "shield": faShield,
-  "layer-group": faLayerGroup,
-  "rocket": faRocket,
-  "bars-progress": faBarsProgress,
+  "bundles": faBundles,
+  "clusters": faClusters,
   "microchip": faMicrochip
 };
