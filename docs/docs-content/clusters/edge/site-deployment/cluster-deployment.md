@@ -39,8 +39,9 @@ Use the following steps to create a new host cluster so that you can add Edge ho
   [Edge Host Registration](./site-installation/edge-host-registration.md).
 
 - If you are using more than one Edge host to form a cluster, the hosts in the same cluster must be on the same network.
-
-- You must ensure that the Edge hosts have stable IP addresses. You have the following options to do achieve stable IP
+- 1 IP address is required for the cluster's Virtual IP address (VIP).
+- You require at least 1 IP address for each Edge host.
+- You must ensure that the Edge hosts have stable IP addresses. You have the following options to achieve stable IP
   addressing for Edge hosts:
   - Use static IP addresses. Contact your network administrator to assign the Edge host a static IP address.
   - Use Dynamic Host Configuration Protocol (DHCP) reservations to reserve an IP address in a DHCP network. Contact your
