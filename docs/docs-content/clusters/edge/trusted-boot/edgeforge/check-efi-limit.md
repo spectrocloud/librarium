@@ -233,4 +233,4 @@ Follow the instructions below to determine if your Edge host is capable of booti
 If the hardware EFI boot limit is greater than the EFI size of both the ISO and the provider image. Proceed to install
 Palette on the Edge host and provision a cluster. For more information, refer to
 [Installation with Trusted Boot](../deployment-day2/install.md) and
-[Cluster Creation](../../site-deployment/site-installation/cluster-deployment.md) for more information.
+[Cluster Creation](../../site-deployment/cluster-deployment.md) for more information.
