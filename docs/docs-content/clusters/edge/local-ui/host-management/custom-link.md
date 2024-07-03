@@ -7,9 +7,9 @@ sidebar_position: 100
 tags: ["edge"]
 ---
 
-Palette allows you to add custom links to the sidebar of local UI. These links allow you to integrate your own web
-applications with the local UI. When you click on a custom link, it can either open the page within the local UI
-interface or open a new tab in your browser depending on how to configure the links.
+Palette allows you to add custom links to the sidebar of Local UI. These links allow you to integrate your own web
+applications with Local UI. When you click on a custom link, it can either open the page within the Local UI interface
+or open a new tab in your browser depending on how to configure the links.
 
 :::preview
 
@@ -67,10 +67,10 @@ interface or open a new tab in your browser depending on how to configure the li
 4. Create a directory called **ui** at the path `CanvOS/ui`.
 
 5. In the directory, create a file named **customizations.json**. This is the same file where you customize the theme of
-   the local UI. If the file is already present, there is no need to create a new one. For more information about
-   customizing the theme of local UI, refer to [Customize Local UI Theme](./theming.md).
+   Local UI. If the file is already present, there is no need to create a new one. For more information about
+   customizing the theme of Local UI, refer to [Customize Local UI Theme](./theming.md).
 
-6. If you want local UI to host static web pages that you want your users to be able to access from the sidebar, put the
+6. If you want Local UI to host static web pages that you want your users to be able to access from the sidebar, put the
    HTML files in the **ui** folder. The HTML file may link to JavaScript and CSS files. Ensure that your HTML file can
    reference its assets. We suggest that you put all assets for specific web pages in one folder. The hosted static
    sites are exposed through HTTPS with a self-signed certificate.
@@ -118,7 +118,7 @@ interface or open a new tab in your browser depending on how to configure the li
    }
    ```
 
-   Link objects with `"type": "iframe"` means the link will open within the local UI interface in an iframe. Link
+   Link objects with `"type": "iframe"` means the link will open within the Local UI interface in an iframe. Link
    objects without `"type": "iframe"` will open a new tab instead.
 
    :::warning
@@ -141,8 +141,8 @@ interface or open a new tab in your browser depending on how to configure the li
 
 11. Follow the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide from step onward
     to finish the EdgeForge process. As long as the **ui.tar** file is at the root directory of **CanvOS** and the
-    installation mode is set to airgap as required by local UI, the custom links will be added to the sidebar when you
-    log in to local UI.
+    installation mode is set to airgap as required by Local UI, the custom links will be added to the sidebar when you
+    log in to Local UI.
 
 ### Validate
 
