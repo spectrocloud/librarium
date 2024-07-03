@@ -12,3 +12,4 @@ docs/api-content/**/*.json
 # Troublesome files
 tsconfig.json
 src/components/IconMapper/dynamicFontAwesomeImports.js
+_partials/
