@@ -74,12 +74,7 @@ describe("CustomTable", () => {
       />
     );
     const { container } = render(
-      <CustomTable
-        columns={sampleColumns}
-        dataSource={dataSource}
-        pagination={{ pageSize: 2 }}
-        loading={true}
-      />
+      <CustomTable columns={sampleColumns} dataSource={dataSource} pagination={{ pageSize: 2 }} loading={true} />
     );
     const loader = container.querySelector(`.${styles.loader}`);
     expect(loader).toBeInTheDocument();

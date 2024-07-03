@@ -1,12 +1,6 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2015: true,
-    node: true,
-  },
-  settings: {
-    "import/resolver": "webpack",
-  },
+  env: { browser: true, es2015: true, node: true },
+  settings: { "import/resolver": "webpack" },
   extends: ["eslint:recommended", "plugin:react/recommended", "prettier"],
   overrides: [
     {
@@ -30,21 +24,10 @@ module.exports = {
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-unsafe-assignment": "off",
       },
-      overrides: [
-        {
-          files: ["*.js", "*.jsx"],
-          extends: ["plugin:@typescript-eslint/disable-type-checked"],
-        },
-      ],
+      overrides: [{ files: ["*.js", "*.jsx"], extends: ["plugin:@typescript-eslint/disable-type-checked"] }],
     },
   ],
-  parserOptions: {
-    sourceType: "module",
-    ecmaVersion: 2020,
-  },
+  parserOptions: { sourceType: "module", ecmaVersion: 2020 },
   plugins: ["react"],
-  rules: {
-    "no-unused-vars": 1,
-    "react/prop-types": 0,
-  },
+  rules: { "no-unused-vars": 1, "react/prop-types": 0 },
 };

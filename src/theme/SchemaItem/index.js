@@ -31,13 +31,9 @@ function SchemaItem({
     <span className="openapi-schema__required">required</span>
   ));
 
-  const renderDeprecated = guard(deprecated, () => (
-    <span className="openapi-schema__deprecated">deprecated</span>
-  ));
+  const renderDeprecated = guard(deprecated, () => <span className="openapi-schema__deprecated">deprecated</span>);
 
-  const renderNullable = guard(nullable, () => (
-    <span className="openapi-schema__nullable">nullable</span>
-  ));
+  const renderNullable = guard(nullable, () => <span className="openapi-schema__nullable">nullable</span>);
 
   const renderSchemaDescription = guard(schemaDescription, (description) => (
     <div>
@@ -100,11 +96,7 @@ function SchemaItem({
     </div>
   );
 
-  return (
-    <div className="openapi-schema__list-item">
-      {collapsible ? collapsibleSchemaContent : schemaContent}
-    </div>
-  );
+  return <div className="openapi-schema__list-item">{collapsible ? collapsibleSchemaContent : schemaContent}</div>;
 }
 
 export default SchemaItem;

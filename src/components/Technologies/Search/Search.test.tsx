@@ -4,9 +4,7 @@ import Search from "./Search";
 
 describe("Search component", () => {
   it("should render correctly", () => {
-    const { container } = render(
-      <Search placeholder={"Search for integration..."} onSearch={jest.fn()} />
-    );
+    const { container } = render(<Search placeholder={"Search for integration..."} onSearch={jest.fn()} />);
     expect(container).toBeInTheDocument();
   });
 
@@ -22,9 +20,7 @@ describe("Search component", () => {
   });
 
   it("should clear input and focus when clicking clear icon", () => {
-    const { container } = render(
-      <Search placeholder={"Search for integration..."} onSearch={jest.fn()} />
-    );
+    const { container } = render(<Search placeholder={"Search for integration..."} onSearch={jest.fn()} />);
     const input = screen.getByPlaceholderText("Search for integration...") as HTMLInputElement;
 
     fireEvent.change(input, {

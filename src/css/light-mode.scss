@@ -26,6 +26,21 @@ html[data-theme="light"] {
   --ifm-color-warning-dark: #a8882f;
   --ifm-alert-padding-horizontal: 1.5rem;
   --custom-table-header-color: #f7f7f7;
+  --custom-purple-important-color: #7d77ca;
+  --custom-purple-alert-bg-color: #dcdaf9;
+  --simpleCardPrimary: #4a8ff1;
+  --simpleCardPrimaryHover: #3f74be;
+  --simpleCardSecondary: #dbecff;
+  --simpleCardSecondaryHover: #c3e0ff;
+  --simpleCardSubtle: #545f7e;
+  --simpleCardButtonIcon: #545f7e;
+  --simpleCardBorder: #dee1ea;
+  --custom-release-notes-background-color: var(--ifm-background-color);
+  --custom-release-notes-background-font-color: var(--ifm-dropdown-link-color);
+  --custom-release-notes-active-option-hover: var(--ifm-dropdown-hover-background-color);
+  --custom-release-notes-selected-background: #bec0c4;
+  --custom-release-notes-option-font-color: black;
+  --custom-release-notes-menu-padding: white;
 
   .theme-doc-sidebar-item-category-level-1 .menu__list-item {
     .menu__link:hover {

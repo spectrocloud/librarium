@@ -7,11 +7,7 @@ interface CategorySelectorProps {
   selectCategory: (category: string) => void;
 }
 
-export default function CategorySelector({
-  categories,
-  selected = "all",
-  selectCategory,
-}: CategorySelectorProps) {
+export default function CategorySelector({ categories, selected = "all", selectCategory }: CategorySelectorProps) {
   return (
     <div className={styles.wrapper}>
       {categories.map((category, index) => (

@@ -23,7 +23,7 @@ const customMdxComponents = {
       />
     );
   },
-  video: Video,
+  Video: Video,
 };
 
 export default customMdxComponents;

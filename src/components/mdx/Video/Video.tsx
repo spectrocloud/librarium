@@ -1,6 +1,6 @@
 import React from "react";
 
-const Video = (props: any): JSX.Element => {
+const Video = (props: any): React.JSX.Element => {
   return (
     <video
       {...props}

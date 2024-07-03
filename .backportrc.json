@@ -8,7 +8,5 @@
   "autoMerge": true,
   "autoMergeMethod": "squash",
 
-  "branchLabelMapping": {
-    "^backport-(.+)$": "$1"
-  }
+  "branchLabelMapping": { "^backport-(.+)$": "$1" }
 }

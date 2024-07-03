@@ -1,15 +1,9 @@
 import React, { useEffect, useMemo } from "react";
 import clsx from "clsx";
-import {
-  ThemeClassNames,
-  useThemeConfig,
-  usePrevious,
-  Collapsible,
-  useCollapsible,
-} from "@docusaurus/theme-common";
+import { ThemeClassNames, useThemeConfig, usePrevious, Collapsible, useCollapsible } from "@docusaurus/theme-common";
 import {
   isActiveSidebarItem,
-  findFirstCategoryLink,
+  findFirstSidebarItemLink,
   useDocSidebarItemsExpandedState,
   isSamePath,
 } from "@docusaurus/theme-common/internal";
@@ -45,11 +39,11 @@ function useCategoryHrefWithSSRFallback(item) {
       return item.href;
     }
     // In these cases, it's not necessary to render a fallback
-    // We skip the "findFirstCategoryLink" computation
+    // We skip the "findFirstSidebarItemLink" computation
     if (isBrowser || !item.collapsible) {
       return undefined;
     }
-    return findFirstCategoryLink(item);
+    return findFirstSidebarItemLink(item);
   }, [item, isBrowser]);
 }
 function CollapseButton({ categoryLabel, onClick }) {
@@ -69,14 +63,7 @@ function CollapseButton({ categoryLabel, onClick }) {
     />
   );
 }
-export default function DocSidebarItemCategory({
-  item,
-  onItemClick,
-  activePath,
-  level,
-  index,
-  ...props
-}) {
+export default function DocSidebarItemCategory({ item, onItemClick, activePath, level, index, ...props }) {
   const { items, label, collapsible, className, href } = item;
   const {
     docs: {

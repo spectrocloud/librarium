@@ -4,8 +4,6 @@ import { usePluginData } from "@docusaurus/useGlobalData";
 import PacksIntegrationsPluginData from "../IntegrationTypes";
 
 export default function AppTiers() {
-  const { integrations } = usePluginData(
-    "plugin-packs-integrations"
-  ) as PacksIntegrationsPluginData;
+  const { integrations } = usePluginData("plugin-packs-integrations") as PacksIntegrationsPluginData;
   return <Integrations data={integrations} />;
 }

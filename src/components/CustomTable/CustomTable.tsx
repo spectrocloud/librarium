@@ -41,10 +41,7 @@ const CustomTable = <T,>({
     <div>
       {!loading ? (
         <>
-          <div
-            style={{ overflowY: "auto", height: `${scrollY}px` }}
-            className={styles.tableWrapper}
-          >
+          <div style={{ overflowY: "auto", height: `${scrollY}px` }} className={styles.tableWrapper}>
             <table className={className}>
               <thead>
                 <tr>
@@ -60,9 +57,7 @@ const CustomTable = <T,>({
                   <tr key={index}>
                     {columns.map((col, index) => (
                       <td key={index}>
-                        {col.render
-                          ? col.render(row[col.dataIndex], row)
-                          : (row[col.dataIndex] as React.ReactNode)}
+                        {col.render ? col.render(row[col.dataIndex], row) : (row[col.dataIndex] as React.ReactNode)}
                       </td>
                     ))}
                   </tr>
@@ -80,9 +75,7 @@ const CustomTable = <T,>({
             </button>
             {[...Array(totalPages).keys()].map((page, index) => (
               <button
-                className={`${styles.paginationButton} ${
-                  currentPage === index + 1 ? styles.activePage : ""
-                } `}
+                className={`${styles.paginationButton} ${currentPage === index + 1 ? styles.activePage : ""} `}
                 key={index}
                 onClick={() => setCurrentPage(index + 1)}
               >
