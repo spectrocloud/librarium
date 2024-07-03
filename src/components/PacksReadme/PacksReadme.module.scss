@@ -105,6 +105,7 @@
       flex-direction: column;
       width: 30%;
       padding: 10px;
+      overflow-x: auto;
 
       .versionSelect {
         height: max-content;
@@ -167,7 +168,6 @@
 }
 [data-theme="light"] .emptyContentTitle {
   color: #545f7e;
-  background-color: black;
 }
 [data-theme="dark"] .infoIcon {
   color: #72a8f5;
