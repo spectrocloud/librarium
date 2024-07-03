@@ -133,7 +133,7 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
    enable-admission-plugins: NamespaceLifecycle,ServiceAccount,NodeRestriction
    ```
 
-10. Follow the [Create Cluster Definition](../site-installation/cluster-deployment.md) guide and deploy your cluster.
+10. Follow the [Create Cluster Definition](../cluster-deployment.md) guide and deploy your cluster.
 
 ## Validate
 

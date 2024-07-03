@@ -27,7 +27,7 @@ This page guides you through how access the console, and log in, and manage your
   [Installer Configuration](../../edge-configuration/installer-reference.md).
 
 - You have completed or skipped the initial configuration of the Edge host. For more information, refer to
-  [Edge Host Initial Configuration](../../site-deployment/initial-setup.md).
+  [Edge Host Initial Configuration](../../site-deployment/site-installation/initial-setup.md).
 
 - Network access to the Edge host's port where Local UI is exposed. The default port is 5080.
 

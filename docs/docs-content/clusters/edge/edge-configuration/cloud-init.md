@@ -7,8 +7,8 @@ sidebar_position: 0
 tags: ["edge"]
 ---
 
-The installation process supports all the cloud-init stages exposed by
-[Kairos](https://kairos.io/docs/architecture/cloud-init/). Kairos is an open-source project that is used to create
+Palette Edge supports all the cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/)
+both during installation and during cluster deployment. Kairos is an open-source project that is used to create
 immutable images, Kairos is a container layer that enables you to specify dependencies and create resources before
 locking down the image.
 
@@ -48,7 +48,7 @@ Each stage has a before and after hook you can use to achieve more granular cust
 ## Where to Apply Cloud-Init Stages?
 
 You may ask yourself where to use cloud-init stages, as both the Edge Installer and the OS pack support the usage of
-cloud-init stages. Use the following statements to help you decide. <br />
+cloud-init stages. Use the following statements to help you decide.
 
 - If you need to apply a set of configurations to a specific site, then use the Edge Installer user data configuration
   file and its cloud-init stages to provide site settings to that specific site.
@@ -60,8 +60,6 @@ cloud-init stages. Use the following statements to help you decide. <br />
 
 To help you become familiar with the cloud-init stages and better understand how to use them to achieve your goals,
 check out the following use cases.
-
-<br />
 
 :::warning
 
@@ -198,8 +196,6 @@ apt-get update && apt-get install netplan.io -y
 
 You can use the `before-install` stage to remove partitions if needed.
 
-<br />
-
 ```yaml
 stages:
   before-install:
@@ -212,8 +208,6 @@ stages:
 
 This is an example of installing third-party software or tooling.
 
-<br />
-
 ```yaml
 stages:
   after-install-chroot:
@@ -224,10 +218,10 @@ stages:
 
 #### Pass Sensitive Information
 
-If you need to transmit sensitive information, such as credentials, during the site installation phase, you can make the
-Edge installer skip copying specific stages to the edge hosts. The Edge installer will skip copying the stages that
-follow the `skip-copy-[string]` naming convention. Refer to the
-[Sensitive Information in the User Data Stages](skip-copying-stages.md) guide to learn more. <br />
+If you need to transmit sensitive information, such as credentials, during the installation phase, you can make the Edge
+installer skip copying specific stages to the Edge hosts. The Edge installer will skip copying the stages that follow
+the `skip-copy-[string]` naming convention. Refer to the
+[Sensitive Information in the User Data Stages](skip-copying-stages.md) guide to learn more.
 
 ```yaml
 stages:
@@ -242,8 +236,6 @@ stages:
 
 This is an Edge Installer user data configuration that configures the user `kairos` and prepares the edge host by
 providing network settings and adding SSL certificates.
-
-<br />
 
 ```yaml
 stages:
@@ -289,12 +281,10 @@ stylus:
 You can also customize the device by using the OS cloud-init stages. As mentioned previously, use OS cloud-init stages
 to apply common configurations to many edge hosts.
 
-<br />
-
 #### Assign User to Group
 
 In this example snippet, the OS pack is using the cloud-init stage `initramfs` to assign a default password to the user
-`kairos` and add the user to the `sudo` group. <br />
+`kairos` and add the user to the `sudo` group.
 
 ```yaml
 stages:
@@ -309,7 +299,7 @@ stages:
 #### Custom Commands
 
 This is an example of moving files to a different location prior to another stage or boot-up process that requires the
-file. <br />
+file.
 
 ```yaml
 stages:
@@ -324,8 +314,6 @@ stages:
 #### Update Network Settings
 
 The network settings will get updated when the `network` stage takes effect.
-
-<br />
 
 ```yaml
 stages:

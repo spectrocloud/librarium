@@ -184,4 +184,4 @@ and create your cluster. The process of creating a cluster with Trusted Boot ena
 cluster. However, air-gapped clusters are not supported.
 
 - [Edge Host Registration](../../site-deployment/site-installation/edge-host-registration.md)
-- [Cluster Creation](../../site-deployment/site-installation/cluster-deployment.md)
+- [Cluster Creation](../../site-deployment/cluster-deployment.md)
