@@ -25,6 +25,12 @@ Once your cluster is deployed, you can update it using cluster profile updates.
       relativeURL: "./setup",
     },
     {
+      title: "Deploy a PCG",
+      description: "Learn to deploy a PCG with Palette CLI.",
+      buttonText: "Learn more",
+      relativeURL: "./deploy-pcg",
+    },
+    {
       title: "Create a Cluster Profile",
       description: "Create a full cluster profile in Palette.",
       buttonText: "Learn more",
