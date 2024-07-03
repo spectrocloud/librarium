@@ -7,8 +7,8 @@ sidebar_position: 40
 tags: ["edge"]
 ---
 
-You can update existing local clusters from the local UI by uploading a new cluster profile version. This guide explains
-how to update an existing cluster in local UI.
+You can update existing local clusters from Local UI by uploading a new cluster profile version. This guide explains how
+to update an existing cluster in Local UI.
 
 :::preview
 
@@ -16,16 +16,16 @@ how to update an existing cluster in local UI.
 
 ## Prerequisites
 
-- Network access to the Edge device’s IP and port where the local UI is exposed. The default port is 5080.
+- Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
 
-- Credentials to log into the local UI. Any OS user can be used to log in to the local UI.
+- Credentials to log into Local UI. Any OS user can be used to log in to Local UI.
 
-- A local cluster created in local UI. For more information, refer to [Create Local Cluster](create-cluster.md).
+- A local cluster created in Local UI. For more information, refer to [Create Local Cluster](create-cluster.md).
 
 ## Update Local Cluster
 
-1. Log into the local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more
-   information, refer to [Access Local UI](../host-management/access-console.md).
+1. Log into Local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more information,
+   refer to [Access Local UI](../host-management/access-console.md).
 
 2. From the left **Main Menu**, select **Cluster**, and then select the **Configuration** tab.
 
@@ -49,7 +49,7 @@ how to update an existing cluster in local UI.
 
    :::info
 
-   If your current cluster configuration overrides the default profile variable values, local UI will preserve your
+   If your current cluster configuration overrides the default profile variable values, Local UI will preserve your
    configuration in case the update introduces new defaults. To use the new default values, click **Use default** in the
    respective profile variable field.
 
@@ -64,7 +64,7 @@ how to update an existing cluster in local UI.
 
 ## Validate
 
-1. Log in to the local UI.
+1. Log in to Local UI.
 
 2. From the left **Main Menu**, select **Cluster**.
 
