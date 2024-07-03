@@ -1,14 +1,9 @@
 .privacy-settings {
   display: flex;
   align-items: center;
-
-  .privacy-icon {
-    margin-left: 2px;
-    margin-right: 18px;
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-  }
+  border-top: 1px solid var(--custom-sidebar-item-color);
+  border-radius: 0px;
+  margin-right: 12px;
 }
 
 .category > .menu__list-item-collapsible {
