@@ -46,7 +46,7 @@ function processSwaggerFile(filePath, baseUrl) {
       jsonData.servers = [
         {
           // url: "https://api.spectrocloud.com",
-          url: "https://stage.spectrocloud.com",
+          url: "https://rc42.rc.spectrocloud.com",
         },
       ];
 
