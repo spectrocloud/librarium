@@ -82,6 +82,12 @@ Explore more through the following pages.
       relativeURL: "./gcp",
     },
     {
+      title: "Deploy a Cluster to VMware",
+      description: "Deploy and update a Palette host cluster to VMware vSphere.",
+      buttonText: "Learn more",
+      relativeURL: "./vmware",
+    },
+    {
       title: "Additional Capabilities",
       description: "Learn about Palette's additional capabilities.",
       buttonText: "Learn more",

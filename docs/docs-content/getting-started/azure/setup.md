@@ -8,7 +8,7 @@ sidebar_position: 10
 tags: ["getting-started", "azure"]
 ---
 
-In this guide, you will learn how to set up Palette for use with your AWS cloud account. These steps are required in
+In this guide, you will learn how to set up Palette for use with your Azure cloud account. These steps are required in
 order to authenticate Palette and allow it to deploy host clusters.
 
 ## Prerequisites
@@ -55,6 +55,5 @@ You can verify your account is added.
 ## Next Steps
 
 Now that you set up Palette for use with Azure, you can start deploying Kubernetes clusters to your Azure account. To
-learn how to get started with deploying Kubernetes clusters to AWS, we recommend that you continue to the
-[Create a Cluster Profile](./create-cluster-profile.md) tutorial to create a full cluster profile for your s host
-cluster.
+learn how to get started with deploying Kubernetes clusters to Azure, we recommend that you continue to the
+[Create a Cluster Profile](./create-cluster-profile.md) tutorial to create a full cluster profile for your host cluster.

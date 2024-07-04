@@ -13,7 +13,7 @@ Palette supports integration with [Google Cloud Platform](https://cloud.google.c
 
 ## Get Started
 
-In this section, you learn how to create a cluster profile. Then, you deploy a cluster to AWS by using Palette. Once
+In this section, you learn how to create a cluster profile. Then, you deploy a cluster to GCP by using Palette. Once
 your cluster is deployed, you can update it using cluster profile updates.
 
 <SimpleCardGrid
