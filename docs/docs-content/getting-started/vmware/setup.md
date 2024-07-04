@@ -47,8 +47,8 @@ You can verify your Palette API key is added.
 
 ## Next Steps
 
-Now that you set up Palette for use with VMware vSphere, you can start deploying Kubernetes clusters to your VMware user
-account.
+Now that you set up Palette for use with VMware vSphere, you can start deploying a Private Cloud Gateway (PCG), which is
+the bridge between Palette and you private cloud environment.
 
 To learn how to get started with deploying Kubernetes clusters to VMware virtual machines, we recommend that you
 continue to the [Deploy a PCG with Palette CLI](./deploy-pcg.md) tutorial.

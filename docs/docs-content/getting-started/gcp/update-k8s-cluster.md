@@ -149,8 +149,9 @@ Open a terminal window and set the environment variable `KUBECONFIG` to point to
 export KUBECONFIG=~/Downloads/admin.gcp-cluster.kubeconfig
 ```
 
-Forward the Kubecost UI to your local network. The Kubecost dashboard is not exposed externally by default, so the command below
-will allow you to access it locally on port **9090**. If port 9090 is already taken, you can choose a different one.
+Forward the Kubecost UI to your local network. The Kubecost dashboard is not exposed externally by default, so the
+command below will allow you to access it locally on port **9090**. If port 9090 is already taken, you can choose a
+different one.
 
 ```shell
 kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
