@@ -70,35 +70,7 @@ Ensure you save the API key in a secure location. You will not be able to view t
 </TabItem>
 <TabItem label="Tenant" value="tenant">
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
-
-2. Switch to the **Tenant Admin** scope
-
-3. Navigate to the left **Main Menu** and select **Tenant Settings**.
-
-4. From the **Tenant Settings Menu**, select **API Keys**.
-
-5. Click on **Add New API key**.
-
-6. Fill out the following input fields:
-
-| **Input Field**     | **Description**                                                                                                   |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| **API Key Name**    | Assign a name to the API key.                                                                                     |
-| **Description**     | Provide a description for the API key.                                                                            |
-| **User Name**       | Select the user to assign the API key.                                                                            |
-| **Expiration Date** | Select an expiration date from the available options. You can also specify a custom date by selecting **Custom**. |
-
-5. Click the **Generate** button.
-
-6. Copy the API key and save it in a secure location, such as a password manager. Share the API key with the user you
-   created the API key for.
-
-:::warning
-
-Ensure you save the API key in a secure location. You will not be able to view the API key again.
-
-:::
+<PartialsComponent category="palette-setup" name="create-tenant-api-key" />
 
 </TabItem>
 
