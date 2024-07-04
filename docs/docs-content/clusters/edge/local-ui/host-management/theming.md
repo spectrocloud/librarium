@@ -7,7 +7,7 @@ sidebar_position: 100
 tags: ["edge"]
 ---
 
-Palette offers the option to customize the local UI web interface. You can change the color of the sidebar as well as
+Palette offers the option to customize the Local UI web interface. You can change the color of the sidebar as well as
 using your own logo. You can do this before deployment during the EdgeForge process to standardize the look feel of the
 console for all Edge hosts of your organization.
 
@@ -87,9 +87,10 @@ console for all Edge hosts of your organization.
    The `colors.sidebar` controls the color of the sidebar. This is also the color of the background in the Local UI
    login screen. We suggest you choose a color that contrasts well against your logo as the logo as the color will serve
    as the background for your logo. The **brand** color controls the color of buttons and checkboxes in the UI. The
+
    following image displays the default logo, brand, and sidebar color.
 
-   ![A screenshot of the local UI showing the elements controlled by the color properties and the location of the logo](/cluster_edge_emc_theming.webp)
+   ![A screenshot of Local UI showing the elements controlled by the color properties and the location of the logo](/cluster_edge_emc_theming.webp)
 
 7. Compress the UI directory to a TAR file. The file must be named **local-ui.tar**.
 

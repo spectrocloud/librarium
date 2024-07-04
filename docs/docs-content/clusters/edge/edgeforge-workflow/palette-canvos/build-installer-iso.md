@@ -33,8 +33,8 @@ You can build the following content into the Edge installer ISO to customize you
   profiles. Content bundles are optional to include in an installer ISO.
 - Cluster definition (Tech Preview). Cluster definitions contains cluster profiles and any profile variables used in the
   profiles. When you include a cluster definition during the Edge Installer ISO build process, you can create a new
-  cluster that uses your imported cluster definition in your Edge host using the local UI. Cluster definitions are
-  optional to include in an installer ISO.
+  cluster that uses your imported cluster definition in your Edge host using Local UI. Cluster definitions are optional
+  to include in an installer ISO.
 
   :::preview
 
@@ -133,7 +133,7 @@ Installer ISO, you can provision a cluster using the images in your content bund
 image registry.
 
 If you do not include content bundle in your Edge Installer ISO, you can still build content bundles and upload them to
-a disconnected Edge host instance via the [local UI](../../local-ui/local-ui.md). For more information, refer to
+a disconnected Edge host instance via [Local UI](../../local-ui/local-ui.md). For more information, refer to
 [Upload Content Bundle](../../local-ui/cluster-management/upload-content-bundle.md).
 
 8. Refer to [Build Content Bundle](build-content-bundle.md) to learn how to build content bundles for your ISO image.
@@ -152,7 +152,7 @@ cluster profile and any dynamic values used in the cluster profiles. Cluster def
 API endpoint.
 
 If you do not include cluster definitions in your Edge Installer ISO, you can still import the cluster definition from
-the local UI once you finish installing Palette on the Edge host.
+Local UI once you finish installing Palette on the Edge host.
 
 11. Refer to [Export Cluster Definition](../../local-ui/cluster-management/export-cluster-definition.md) to learn how to
     export cluster definitions.
