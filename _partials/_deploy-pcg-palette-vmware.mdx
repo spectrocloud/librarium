@@ -1,0 +1,157 @@
+---
+partial_category: pcg-vmware
+partial_name: deploy-pcg-palette-cli
+---
+
+After authenticating with Palette, you can proceed with the PCG creation process. Issue the command below to start the
+PCG installation.
+
+```bash
+palette pcg install
+```
+
+The `palette pcg install` command will prompt you for information regarding your PCG cluster, vSphere environment, and
+resource configurations. The following tables display the required parameters along with the values that will be used in
+this tutorial. Enter the provided values when prompted. If a parameter is specific to your environment, such as your
+vSphere endpoint, enter the corresponding value according to your environment. For detailed information about each
+parameter, refer to the <VersionedLink text="Deploy a PCG to VMware vSphere" url="/clusters/pcg/deploy-pcg/vmware"/>
+guide.
+
+:::info
+
+The PCG to be deployed in this tutorial is intended for educational purposes only and is not recommended for production
+environments.
+
+:::
+
+1. **PCG General Information**
+
+   Configure the PCG general information, including the **Cloud Type** and **Private Cloud Gateway Name**, as shown in
+   the table below.
+
+   | **Parameter**                                        | **Value**          | **Environment-Specific** |
+   | :--------------------------------------------------- | ------------------ | ------------------------ |
+   | **Management Plane Type**                            | `Palette`          | No                       |
+   | **Enable Ubuntu Pro (required for production)**      | `N`                | No                       |
+   | **Select an image registry type**                    | `Default`          | No                       |
+   | **Cloud Type**                                       | `VMware vSphere`   | No                       |
+   | **Private Cloud Gateway Name**                       | `gateway-tutorial` | No                       |
+   | **Share PCG Cloud Account across platform Projects** | `Y`                | No                       |
+
+2. **Environment Configuration**
+
+   Enter the environment configuration information, such as the **Pod CIDR** and **Service IP Range** according to the
+   table below.
+
+   | **Parameter**        | **Value**                                                                                                           | **Environment-Specific** |
+   | :------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------ |
+   | **HTTPS Proxy**      | Skip.                                                                                                               | No                       |
+   | **HTTP Proxy**       | Skip.                                                                                                               | No                       |
+   | **Pod CIDR**         | `172.16.0.0/20`. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.     | No                       |
+   | **Service IP Range** | `10.155.0.0/24`. The service IP addresses should be unique and not overlap with any machine IPs in the environment. | No                       |
+
+3. **vSphere Account Information**
+
+   Enter the information specific to your vSphere account.
+
+   | **Parameter**                                            | **Value**                                                                                                                                                                                                          | **Environment-Specific** |
+   | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ |
+   | **vSphere Endpoint**                                     | Your vSphere endpoint. You can specify a Full Qualified Domain Name (FQDN) or an IP address. Make sure you specify the endpoint without the HTTP scheme `https://` or `http://`. Example: `vcenter.mycompany.com`. | Yes                      |
+   | **vSphere Username**                                     | Your vSphere account username.                                                                                                                                                                                     | Yes                      |
+   | **vSphere Password**                                     | Your vSphere account password.                                                                                                                                                                                     | Yes                      |
+   | **Allow Insecure Connection (Bypass x509 Verification)** | `Y`. Enabling this option bypasses x509 CA verification. In production environments, enter `N` if using a custom registry with self-signed SSL certificates. Otherwise, enter `Y`.                                 | No                       |
+
+4. **vSphere Cluster Configuration**
+
+   Enter the PCG cluster configuration information. For example, specify the vSphere **Resource Pool** to be targeted by
+   the PCG cluster.
+
+   | **Parameter**                                            | **Value**                                                              | **Environment-Specific** |
+   | -------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------ |
+   | **Datacenter**                                           | The vSphere data center to target when deploying the PCG cluster.      | Yes                      |
+   | **Folder**                                               | The vSphere folder to target when deploying the PCG cluster.           | Yes                      |
+   | **Network**                                              | The port group to which the PCG cluster will be connected.             | Yes                      |
+   | **Resource Pool**                                        | The vSphere resource pool to target when deploying the PCG cluster.    | Yes                      |
+   | **Cluster**                                              | The vSphere compute cluster to use for the PCG deployment.             | Yes                      |
+   | **Select specific Datastore or use a VM Storage Policy** | `Datastore`                                                            | No                       |
+   | **Datastore**                                            | The vSphere datastore to use for the PCG deployment.                   | Yes                      |
+   | **Add another Fault Domain**                             | `N`                                                                    | No                       |
+   | **NTP Servers**                                          | Skip.                                                                  | No                       |
+   | **SSH Public Keys**                                      | Provide a public OpenSSH key to be used to connect to the PCG cluster. | Yes                      |
+
+5. **PCG Cluster Size**
+
+   This tutorial will deploy a one-node PCG with dynamic IP placement (DDNS). If needed, you can convert a single-node
+   PCG to a multi-node PCG to provide additional capacity. Refer to the
+   <VersionedLink text="Increase PCG Node Count" url="/clusters/pcg/manage-pcg/scale-pcg-nodes" /> guide for more
+   information.
+
+   | **Parameter**       | **Value**                                                                    | **Environment-Specific** |
+   | ------------------- | ---------------------------------------------------------------------------- | ------------------------ |
+   | **Number of Nodes** | `1`                                                                          | No                       |
+   | **Placement Type**  | `DDNS`                                                                       | No                       |
+   | **Search domains**  | Comma-separated list of DNS search domains. For example, `spectrocloud.dev`. | Yes                      |
+
+6. **Cluster Settings**
+
+   Set the parameter **Patch OS on boot** to `N`, meaning the OS of the PCG hosts will not be patched on the first boot.
+
+   | **Parameter**        | **Value** | **Environment-Specific** |
+   | -------------------- | --------- | ------------------------ |
+   | **Patch OS on boot** | `N`       | No                       |
+
+7. **vSphere Machine Configuration**
+
+   Set the size of the PCG as small (**S**) as this PCG will not be used in production environments.
+
+   | **Parameter** | **Value**                                     | **Environment-Specific** |
+   | ------------- | --------------------------------------------- | ------------------------ |
+   | **S**         | `4 CPU, 4 GB of Memory, and 60 GB of Storage` | No                       |
+
+8. **Node Affinity Configuration Information**
+
+   Set **Node Affinity** to `N`, indicating no affinity between Palette pods and control plane nodes.
+
+   | **Parameter**     | **Value** | **Environment-Specific** |
+   | ----------------- | --------- | ------------------------ |
+   | **Node Affinity** | `N`       | No                       |
+
+After answering the prompts of the `pcg install` command, a new PCG configuration file is generated, and its location is
+displayed on the console.
+
+```text hideClipboard
+==== PCG config saved ==== Location: /home/ubuntu/.palette/pcg/pcg-20240313152521/pcg.yaml
+```
+
+Next, Palette CLI will create a local [kind](https://kind.sigs.k8s.io/) cluster that will be used to bootstrap the PCG
+cluster deployment in your VMware environment. Once installed, the PCG registers itself with Palette and creates a
+VMware cloud account with the same name as the PCG.
+
+The following recording demonstrates the `pcg install` command with the `--config-only` flag. When using this flag, a
+reusable configuration file named **pcg.yaml** is created under the path **.palette/pcg**. You can then utilize this
+file to install a PCG with predefined values using the command `pcg install` with the `--config-file` flag. Refer to the
+<VersionedLink text="Palette CLI PCG Command" url="/automation/palette-cli/commands/pcg" /> page for further information
+about the command.
+
+<Video title="palette-pcg-config-only" src="/videos/palette-pcg.mp4"></Video>
+
+<br />
+<br />
+
+You can monitor the PCG cluster creation by logging into Palette and switching to the **Tenant Admin** scope. Next,
+click on **Tenant Settings** from the left **Main Menu** and select **Private Cloud Gateways**. Then, click on the PCG
+cluster you just created and check the deployment progress under the **Events** tab.
+
+![PCG Events page.](/clusters_pcg_deploy-app-pcg_pcg-events.webp)
+
+You can also track the PCG deployment progress from your terminal. Depending on the PCG size and infrastructure
+environment, the deployment might take up to 30 minutes. Upon completion, the local kind cluster is automatically
+deleted from your machine.
+
+![Palette CLI PCG deployment](/clusters_pcg_deploy-app-pcg_pcg-cli.webp)
+
+Next, log in to Palette as a tenant admin. Navigate to the left **Main Menu** and select **Tenant Settings**. Click on
+**Private Cloud Gateways** from the **Tenant Settings Menu** and select the PCG you just created. Ensure that the PCG
+cluster status is **Running** and **Healthy** before proceeding.
+
+![PCG Overview page.](/clusters_pcg_deploy-app-pcg_pcg-health.webp)

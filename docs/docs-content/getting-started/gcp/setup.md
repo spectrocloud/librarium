@@ -8,7 +8,7 @@ sidebar_position: 10
 tags: ["getting-started", "gcp"]
 ---
 
-In this guide, you will learn how to set up Palette for use with your AWS cloud account. These steps are required in
+In this guide, you will learn how to set up Palette for use with your GCP cloud account. These steps are required in
 order to authenticate Palette and allow it to deploy host clusters.
 
 ## Prerequisites

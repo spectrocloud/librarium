@@ -32,34 +32,34 @@ To complete this tutorial, you will need the following.
 
 The following steps will guide you through deploying the cluster infrastructure.
 
-Navigate to the left **Main Menu** and select **Cluster**. From the clusters page, click on **Add New Cluster**.
+Navigate to the left **Main Menu** and select **Clusters**. Click on **Create Cluster**.
 
 ![Palette clusters overview page](/getting-started/getting-started_deploy-k8s-cluster_new_cluster.webp)
 
-Palette will prompt you to either deploy a new cluster or import an existing one. Click on **Deploy New Cluster** to
-access the cluster deployment wizard. Select **AWS** and click the **Start AWS Configuration** button. Use the following
-steps to create a host cluster in AWS.
+Palette will prompt you to select the type of cluster. Select **AWS IaaS** and click the **Start AWS IaaS
+Configuration** button. Use the following steps to create a host cluster in AWS.
 
 In the **Basic information** section, insert the general information about the cluster, such as the Cluster name,
 Description, Tags, and Cloud account. Click on **Next**.
 
 ![Palette clusters basic information](/getting-started/aws/getting-started_deploy-k8s-cluster_clusters_basic_info.webp)
 
-A list is displayed of available profiles you can choose to deploy to AWS. Select the cluster profile you created in the
-[Create a Cluster Profile](./create-cluster-profile.md) tutorial, named **aws-profile**, and click on **Next**.
+Click on **Add Cluster Profile**. A list is displayed of available profiles you can choose to deploy to AWS. Select the
+cluster profile you created in the [Create a Cluster Profile](./create-cluster-profile.md) tutorial, named
+**aws-profile**, and click on **Confirm**.
 
-The **Parameters** section displays all the layers in the cluster profile.
+The **Cluster Profile** section displays all the layers in the cluster profile.
 
 ![Palette clusters parameters](/getting-started/aws/getting-started_deploy-k8s-cluster_clusters_creation_parameters.webp)
 
 Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format. Each
 pack contains a set of default values. You can change the manifest values if needed. Click on **Next** to proceed.
 
-The **Cluster config** section allows you to select the **Region** in which to deploy the host cluster and specify other
+The **Cluster Config** section allows you to select the **Region** in which to deploy the host cluster and specify other
 options such as the **SSH Key Pair** to assign to the cluster. All clusters require you to select an SSH key. After you
 have selected the **Region** and your **SSH Key Pair Name**, click on **Next**.
 
-The **Nodes config** section allows you to configure the nodes that make up the control plane and worker nodes of the
+The **Nodes Config** section allows you to configure the nodes that make up the control plane and worker nodes of the
 host cluster.
 
 Before you proceed to next section, review the following parameters.
@@ -86,8 +86,8 @@ Before you proceed to next section, review the following parameters.
 
 Select **Next** to proceed with the cluster deployment.
 
-In the **Settings** section, you can configure advanced options such as when to patch the OS, enable security scans,
-manage backups, add role-based access control (RBAC) bindings, and more.
+In the **Cluster Settings** section, you can configure advanced options such as when to patch the OS, enable security
+scans, manage backups, add role-based access control (RBAC) bindings, and more.
 
 For this tutorial, you can use the default settings. Click on **Validate** to continue.
 
@@ -127,13 +127,13 @@ moments before clicking on the service URL to prevent the browser from caching a
 
 <br />
 
-![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/getting-started/getting-started_deploy-k8s-cluster_hello-universe-without-api.webp)
+![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/getting-started/getting-started_deploy-k8s-cluster_hello-universe-with-api.webp)
 
 Welcome to Hello Universe, a demo application to help you learn more about Palette and its features. Feel free to click
 on the logo to increase the counter and for a fun image change.
 
-You have deployed your first application to a cluster managed by Palette. Your first application is a single container
-application with no upstream dependencies.
+You have deployed your first application to a cluster managed by Palette. Your first application is a three-tier
+application with a frontend, API server, and Postgres database.
 
 ## Cleanup
 
