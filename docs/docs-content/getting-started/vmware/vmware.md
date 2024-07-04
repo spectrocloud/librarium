@@ -8,8 +8,8 @@ sidebar_custom_props:
 tags: ["getting-started", "vmware"]
 ---
 
-Palette supports using [VMware](https://www.vmware.com) as a data center provider. You can deploy and manage
-[Host Clusters](../../glossary-all.md#host-cluster) on VMware virtual machines.
+Palette supports integration with [VMware](https://www.vmware.com). You can deploy and manage
+[Host Clusters](../../glossary-all.md#host-cluster) on VMware.
 
 ## Get Started
 

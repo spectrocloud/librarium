@@ -102,7 +102,7 @@ profile. This profile version is not deployed to any host clusters.
 The version **1.1.0** has the same layers as the version **1.0.0** it was created from.
 
 Click on **Add New Pack**. Select the **Public Repo** registry and scroll down to the **Monitoring** section. Find the
-**Kubecost** pack and select it. Alternatively, you can user the search function with the pack name **Kubecost**.
+**Kubecost** pack and select it. Alternatively, you can use the search function with the pack name **Kubecost**.
 
 ![Image that shows how to select the Kubecost pack](/getting-started/gcp/getting-started_update-k8s-cluster_select-kubecost-pack.webp)
 
@@ -143,14 +143,14 @@ This file enables you and other users to issue kubectl commands against the host
 
 ![Image that the kubeconfig file](/getting-started/gcp/getting-started_update-k8s-cluster_download-kubeconfig.webp)
 
-Open a terminal window and set the environment variable `KUBECONFIG` to point to kubeconfig file you downloaded.
+Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
 
 ```shell
 export KUBECONFIG=~/Downloads/admin.gcp-cluster.kubeconfig
 ```
 
-Forward the Kubecost UI to your local network. The Kubecost dashboard is not exposed by default, so the command below
-will allow you to access it locally.
+Forward the Kubecost UI to your local network. The Kubecost dashboard is not exposed externally by default, so the command below
+will allow you to access it locally on port **9090**. If port 9090 is already taken, you can choose a different one.
 
 ```shell
 kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
