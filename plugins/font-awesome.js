@@ -52,7 +52,7 @@ async function pluginImportFontAwesomeIcons() {
       });
 
       sidebars?.tutorialSidebar?.forEach((sidebarItem) => {
-        if (sidebarItem?.customProps?.icon) {
+        if (sidebarItem?.customProps?.icon && !assetIcons[sidebarItem?.customProps?.icon]) {
           appFontAwesomeIcons[sidebarItem?.customProps?.icon] = sidebarItem?.customProps?.icon;
         }
       });
