@@ -82,14 +82,33 @@ and configuration options. The pack you added will deploy the
 
 ![Screenshot of pack readme](/getting-started/gcp/getting-started_create-cluster-profile_pack-readme.webp)
 
-Click on **Confirm & Create** to save the manifest. Click on **Save Changes** to save this new layer to the cluster
-profile.
+Click on **Values** to edit the pack manifest. Click on **Presets** on the right-hand side.
+
+This pack has two configured presets:
+
+1. **Disable Hello Universe API** configures the [_hello-universe_](https://github.com/spectrocloud/hello-universe)
+   application as a standalone frontend application. This is the default preset selection.
+2. **Enable Hello Universe API** configures the [_hello-universe_](https://github.com/spectrocloud/hello-universe)
+   application as a three-tier application with a frontend, API server, and Postgres database.
+
+Select the **Enable Hello Universe API** preset. The pack manifest changes according to this preset.
+
+![Screenshot of pack presets](/getting-started/gcp/getting-started_create-cluster-profile_pack-presets.webp)
+
+The pack requires two values to be replaced for the authorization token and for the database password when using this
+preset. Replace these values with your own base64 encoded values. The
+[_hello-universe_](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer) repository
+provides a token that you can use.
+
+Click on **Confirm Updates**. The manifest editor closes.
+
+Click on **Confirm & Create** to save the manifest. Then, click on **Save Changes** to save this new layer to the
+cluster profile.
 
 ## Wrap-Up
 
 In this tutorial, you created a cluster profile, which is a template that contains the core layers required to deploy a
-host cluster using Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) cloud providers. You added
-a community pack to your profile to deploy a custom workload.
+host cluster using GCP. You added a community pack to your profile to deploy a custom workload.
 
 We recommend that you continue to the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial to deploy this cluster
-profile to a host cluster onto your preferred cloud service provider.
+profile to a host cluster onto GCP.
