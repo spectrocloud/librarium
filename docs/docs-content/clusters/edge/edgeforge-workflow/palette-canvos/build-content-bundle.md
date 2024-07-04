@@ -257,18 +257,20 @@ Creating a content bundle provides several benefits that may address common use 
      --palette-endpoint <PALETTE_API_ENDPOINT> \
      --outfile <BUNDLE_NAME> \
      --cred-file-path <FILE_PATH> \
+     --private-key <PRIVATE_KEY_PATH>\
      --include-palette-content
     ```
 
-    | Flag                        | Description                                                                                                             |
-    | --------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-    | `--api-key`                 | Your Palette API key.                                                                                                   |
-    | `--cluster-profile-ids`     | Comma-separated list of cluster profile IDs to download content for.                                                    |
-    | `--cred-file-path`          | Path to the JSON file storing registry credentials if you are using a private registry.                                 |
-    | `--include-palette-content` | Whether to include content necessary for Palette itself. Required for airgap installations.                             |
-    | `--outfile`                 | Name of your content bundle. The final file name should have the following pattern: `core-<bundle-name>-random-string`. |
-    | `--palette-endpoint`        | API endpoint for your Palette instance.                                                                                 |
-    | `--project-id`              | The ID of your Palette project.                                                                                         |
+    | Flag                        | Description                                                                                                                                                                                                                                                                  |
+    | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `--api-key`                 | Your Palette API key.                                                                                                                                                                                                                                                        |
+    | `--cluster-profile-ids`     | Comma-separated list of cluster profile IDs to download content for.                                                                                                                                                                                                         |
+    | `--cred-file-path`          | Path to the JSON file storing registry credentials if you are using a private registry.                                                                                                                                                                                      |
+    | `--include-palette-content` | Whether to include content necessary for Palette itself. Required for airgap installations.                                                                                                                                                                                  |
+    | `--outfile`                 | Name of your content bundle. The final file name should have the following pattern: `core-<bundle-name>-random-string`.                                                                                                                                                      |
+    | `--palette-endpoint`        | API endpoint for your Palette instance.                                                                                                                                                                                                                                      |
+    | `--project-id`              | The ID of your Palette project.                                                                                                                                                                                                                                              |
+    | `--private-key`             | The path to the private key used to sign the content bundle and cluster definition if it is present. This is necessary if your Edge host has an embedded corresponding public key. For more information, refer to [Embed Public Key in Edge Artifacts](./signed-content.md). |
 
     The result is a content bundle that you can use to preload into your installer. The content bundle will be a zst
     file in a folder that starts with **content-** followed by a random string. For more information about how to use a
@@ -295,7 +297,7 @@ Creating a content bundle provides several benefits that may address common use 
      --cred-file-path <FILE_PATH> \
      --include-palette-content \
      --cluster-definition-name <CLUSTER_DEFINITION_FILENAME> \
-     --cluster-definition-profile-ids <CLUSTER_PROFILE_IDS>
+     --cluster-definition-profile-ids <CLUSTER_PROFILE_IDS> |
     ```
 
     Compared with the previous command, this command has two additional flags.

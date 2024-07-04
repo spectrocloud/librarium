@@ -61,6 +61,8 @@ process.
   - 150 GB storage. If you plan on using a content bundle, the actual storage will depend on the size of the content
     bundle you will use to build the Edge installer ISO image.
 
+- [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
+
 ## Instructions
 
 Use the following instructions to build the Edge Installer ISO. The optional steps can be completed any order.
@@ -116,9 +118,14 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
    EOF
    ```
 
+7. (Optional) You can embed a public key in your Edge installer ISO. If you choose to add a public key to your ISO or
+   provider image, then only content that is signed by the corresponding private key can be uploaded to the Edge host
+   through Local UI. This includes both the content bundle and cluster definition. For more information, refer to
+   [Embed Public Key in Edge Artifacts](./signed-content.md).
+
 ### Prepare User Data
 
-7. Refer to [Prepare User Data](./../prepare-user-data.md) to prepare the **user-data** file in the root directory of
+8. Refer to [Prepare User Data](./../prepare-user-data.md) to prepare the **user-data** file in the root directory of
    the **CanvOS** directory.
 
    User data contains installer configuration and is required for an installer ISO. If you do not supply user data
@@ -136,14 +143,24 @@ If you do not include content bundle in your Edge Installer ISO, you can still b
 a disconnected Edge host instance via [Local UI](../../local-ui/local-ui.md). For more information, refer to
 [Upload Content Bundle](../../local-ui/cluster-management/upload-content-bundle.md).
 
-8. Refer to [Build Content Bundle](build-content-bundle.md) to learn how to build content bundles for your ISO image.
+9. Refer to [Build Content Bundle](build-content-bundle.md) to learn how to build content bundles for your ISO image.
    Since you are including the content bundle in the Installer ISO, you should choose either the zst format or the tar
    format for the content bundle. Do not build the content bundle as an ISO image.
 
-9. When the content bundle build finishes, the output will be in a directory named **content-XXXXXX**, where XXXXXX is a
-   random alphanumerical string. Inside the directory is the content bundle file.
+   :::info
 
-10. Place the directory containing the content bundle file in the root directory of the **CanvOS** directory.
+   If you are including a content bundle in your ISO build and you are embedding a public key in your ISO, you do not
+   need to make sure that the content bundle is signed by the corresponding private key. This is because the public key
+   and the content bundle are expected to be provided by the same entity during build time, and therefore verification
+   is not needed. Content bundles that are uploaded through Local UI after an Edge host has been installed must have the
+   correct signature in order to be accepted by the Edge host.
+
+   :::
+
+10. When the content bundle build finishes, the output will be in a directory named **content-XXXXXX**, where XXXXXX is
+    a random alphanumerical string. Inside the directory is the content bundle file.
+
+11. Place the directory containing the content bundle file in the root directory of the **CanvOS** directory.
 
 ### Prepare Cluster Definition (Tech Preview)
 
@@ -154,12 +171,12 @@ API endpoint.
 If you do not include cluster definitions in your Edge Installer ISO, you can still import the cluster definition from
 Local UI once you finish installing Palette on the Edge host.
 
-11. Refer to [Export Cluster Definition](../../local-ui/cluster-management/export-cluster-definition.md) to learn how to
+12. Refer to [Export Cluster Definition](../../local-ui/cluster-management/export-cluster-definition.md) to learn how to
     export cluster definitions.
 
-12. Put the cluster definition tgz file in the **CanvOS/** directory.
+13. Put the cluster definition tgz file in the **CanvOS/** directory.
 
-13. In the **.arg** file, add an argument `CLUSTERCONFIG` and set it to the name of the cluster configuration file. For
+14. In the **.arg** file, add an argument `CLUSTERCONFIG` and set it to the name of the cluster configuration file. For
     example:
 
     ```
@@ -168,14 +185,14 @@ Local UI once you finish installing Palette on the Edge host.
 
 ### Build Edge Installer ISO
 
-14. Ensure that all components of the ISO you want to include are in the **CanvOS/** directory:
+15. Ensure that all components of the ISO you want to include are in the **CanvOS/** directory:
 
     - **.args** file: **CanvOS/.args**
     - User data: **CanvOS/user-data**
     - Content bundle: **CanvOS/content-XXXXX/core-spectro-content**
     - Cluster definition: **CanvOS/cluster-name-XXXX.tgz**
 
-15. Issue the following command to build the ISO image.
+16. Issue the following command to build the ISO image.
 
     ```shell
     ./earthly.sh +iso
