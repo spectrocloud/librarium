@@ -10,8 +10,8 @@ tags: ["edge"]
 Content bundles are archives of all the required container images required for one or more cluster profiles. The content
 bundle includes Helm charts, Packs, and manifest files needed to deploy your Edge host cluster. In addition to core
 container images, the content bundle can include artifacts from your applications that you wish to deploy to the Edge
-cluster. [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) are the primary source for building
-these content bundles.
+cluster. [Cluster Profiles](../../../../profiles/cluster-profiles/cluster-profiles.md) are the primary source for
+building these content bundles.
 
 :::warning
 

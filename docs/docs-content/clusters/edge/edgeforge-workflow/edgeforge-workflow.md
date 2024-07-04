@@ -33,17 +33,17 @@ build a content bundle and build the content bundle into your Edge Installer ISO
 ISO allows you to create clusters without a connection to a Palette instance. Refer to the following guides to build
 Edge Artifacts with content bundles:
 
-- [Build Content Bundle](./build-content-bundle.md)
+- [Build Content Bundle](./palette-canvos/build-content-bundle.md)
 
 - [Build Edge Artifacts with Content Bundles](./palette-canvos/build-artifacts.md)
 
 The following table lists the combination of our guides you can follow to build Edge artifacts with or without preloaded
 content.
 
-| Edge Artifacts have preloaded content? | Option 1                                                                                                                                                                                  | Option 2                                                                                                                             |
-| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| No                                     | [Build Provider Images](./palette-canvos//build-provider-images.md) + [Build Installer ISO](./palette-canvos//build-installer-iso.md)                                                     | [Build Edge Artifacts](./palette-canvos/palette-canvos.md)                                                                           |
-| Yes                                    | [Build Provider Images](./palette-canvos//build-provider-images.md) + [Build Installer ISO](./palette-canvos//build-installer-iso.md) + [Build Content Bundle](./build-content-bundle.md) | [Build Content Bundle](./build-content-bundle.md) + [Build Edge Artifacts with Content Bundles](./palette-canvos/build-artifacts.md) |
+| Edge Artifacts have preloaded content? | Option 1                                                                                                                                                                                                 | Option 2                                                                                                                                            |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| No                                     | [Build Provider Images](./palette-canvos//build-provider-images.md) + [Build Installer ISO](./palette-canvos//build-installer-iso.md)                                                                    | [Build Edge Artifacts](./palette-canvos/palette-canvos.md)                                                                                          |
+| Yes                                    | [Build Provider Images](./palette-canvos//build-provider-images.md) + [Build Installer ISO](./palette-canvos//build-installer-iso.md) + [Build Content Bundle](./palette-canvos/build-content-bundle.md) | [Build Content Bundle](./palette-canvos/build-content-bundle.md) + [Build Edge Artifacts with Content Bundles](./palette-canvos/build-artifacts.md) |
 
 ## Edge Artifacts
 
@@ -111,7 +111,7 @@ the Edge Installer ISO during EdgeForge. This allows the Edge host to provision 
 external image registry. Refer to the following guides on how to build a content bundle and how to use them during the
 EdgeForge process:
 
-- [Build Content Bundle](./build-content-bundle.md)
+- [Build Content Bundle](./palette-canvos/build-content-bundle.md)
 
 - [Build Edge Artifacts with Content Bundles](./palette-canvos/build-artifacts.md)
 

@@ -135,9 +135,9 @@ If you do not include content bundle in your Edge Installer ISO, you can still b
 a disconnected Edge host instance via the [local UI](../../local-ui/local-ui.md). For more information, refer to
 [Upload Content Bundle](../../local-ui/cluster-management/upload-content-bundle.md).
 
-8. Refer to [Build Content Bundle](../build-content-bundle.md) to learn how to build content bundles for your ISO image.
-   Since you are including the content bundle in the Installer ISO, you should choose either the zst format or the tar
-   format for the content bundle. Do not build the content bundle as an ISO image.
+8. Refer to [Build Content Bundle](../palette-canvos/build-content-bundle.md) to learn how to build content bundles for
+   your ISO image. Since you are including the content bundle in the Installer ISO, you should choose either the zst
+   format or the tar format for the content bundle. Do not build the content bundle as an ISO image.
 
 9. When the content bundle build finishes, the output will be in a directory named **content-XXXXXX**, where XXXXXX is a
    random alphanumerical string. Inside the directory is the content bundle file.
