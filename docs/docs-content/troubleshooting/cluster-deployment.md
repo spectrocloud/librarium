@@ -17,8 +17,6 @@ The following steps will help you troubleshoot errors in the event issues arise 
 An instance is launched and terminated every 30 minutes prior to completion of its deployment, and the **Events Tab**
 lists errors with the following message:
 
-<br />
-
 ```hideClipboard bash
 Failed to update kubeadmControlPlane Connection timeout connecting to Kubernetes Endpoint
 ```
