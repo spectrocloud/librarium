@@ -57,17 +57,19 @@ inaccessible. This issue occurs because `cloud-controller-manager` creates a def
 and an associated public IP, which conflicts with the existing network configuration.
 
 While this issue has been resolved for Palette-managed Azure clusters, you need to manually delete the incorrectly
-created `kubernetes` load balancer and the associated public IP address from your Azure account.
+created `kubernetes` load balancer and the associated public IP address from the Azure resource group to which your
+cluster was deployed.
 
 ### Debug Steps
 
-1. Open a terminal session and use the following command to log in to your Azure account.
+1. Open a terminal session and use the following command to authenticate your Azure CLI session.
 
    ```shell
    az login
    ```
 
-2. Use the following command to list load balancers in your resource group and locate the `kubernetes` load balancer.
+2. Use the following command to list load balancers in the resource group to which your cluster was deployed and locate
+   the `kubernetes` load balancer.
 
    ```shell
    az network lb list --resource-group <resource-group> --output table
@@ -82,14 +84,14 @@ created `kubernetes` load balancer and the associated public IP address from you
    eastus      kubernetes                     Succeeded            palette-tutorials  e78e47d8-bda5-4f0b-a694-b41443b2b2f5
    ```
 
-3. Use the following command to delete the `kubernetes` load balancer from your resource group.
+3. Use the following command to delete the `kubernetes` load balancer.
 
    ```shell
    az network lb delete --name kubernetes --resource-group <resource-group>
    ```
 
-4. Use the following command to list public IP addresses in your resource group and locate the `kubernetes-<hash>` load
-   balancer.
+4. Use the following command to list public IP addresses in the the resource group to which your cluster was deployed
+   and locate the `kubernetes-<hash>` load balancer.
 
    ```shell
    az network public-ip list --resource-group <resource-group> --output table
@@ -104,7 +106,7 @@ created `kubernetes` load balancer and the associated public IP address from you
    kubernetes-a98181bf0e90b4425b80d11c21ba766f  palette-tutorials  eastus      231      4.255.120.41   4                       Succeeded
    ```
 
-5. Use the following command to delete the `kubernetes-<hash>` public IP from your resource group.
+5. Use the following command to delete the `kubernetes-<hash>` public IP.
 
    ```shell
    az network public-ip delete --name kubernetes-<hash> --resource-group <resource-group>
