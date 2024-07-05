@@ -16,8 +16,6 @@ private data center environment.
 
 The following are the high-level steps of deploying a PCG in a private data center environment:
 
-<br />
-
 1. Initiate the installation in Palette. In this step, you get a pairing code and an installer image.
 2. Deploy the PCG installer in the data center environment.
 3. Configure the cloud gateway in Palette, and launch the PCG cluster.
@@ -25,8 +23,6 @@ The following are the high-level steps of deploying a PCG in a private data cent
 While deploying a PCG, you may encounter one of the following scenarios during the above-mentioned steps. Some scenarios
 below apply to all data center environments, whereas others apply to a specific data center environment, such as VMware.
 Each scenario covers a specific problem, including an overview, possible causes, and debugging steps.
-
-<br />
 
 ## Scenario - Jet CrashLoopBackOff
 
@@ -36,15 +32,11 @@ one of the internal Palette components may undergo a _CrashLoopBackOff_ state.
 The internal component, _Jet_, will transition to a healthy state once the PCG cluster is successfully registered with
 Palette.
 
-<br />
-
 ## Debug Steps
 
 Wait 10-15 minutes for the PCG installation to finish so that the internal component receives the required authorization
 token from Palette. Once the internal component is authorized, the PCG cluster will complete the initialization
 successfully.
-
-<br />
 
 ## Scenario - PCG Installer VM Unable to Register With Palette
 
@@ -56,30 +48,24 @@ If the installer fails to register with Palette within the expected timeframe, i
 The error can occur due to network connectivity issues, incorrect pairing code, or an incorrect endpoint configuration
 for Palette in the PCG installer template settings.
 
-<br />
-
 ## Debug Steps
-
-<br />
 
 1. SSH into the PCG installer VM using the username `ubuntu` and the SSH key you provided during the OVA import.
 
 2. Inspect the log file located at **/var/log/cloud-init-output.log**.
 
-<br />
+   ```bash
+   cat /var/log/cloud-init-output.log
+   ```
 
-```bash
-cat /var/log/cloud-init-output.log
-```
+   The **cloud-init-output.log** file will contain error messages if there are failures with connecting to Palette,
+   authenticating, or downloading installation artifacts. A common cause for these errors is incorrect values provided
+   to the OVF template deployment wizard, such as the Palette endpoint or a mistyped pairing code.
 
-The **cloud-init-output.log** file will contain error messages if there are failures with connecting to Palette,
-authenticating, or downloading installation artifacts. A common cause for these errors is incorrect values provided to
-the OVF template deployment wizard, such as the Palette endpoint or a mistyped pairing code.
+   The screenshot below highlights the OVF template properties you must carefully configure and verify before deploying
+   a PCG installer VM.
 
-The screenshot below highlights the OVF template properties you must carefully configure and verify before deploying a
-PCG installer VM.
-
-![A screenshot displaying the OVF template properties you  configure while deploying the PCG installer VM](/troubleshooting-pcg-template_properties.webp)
+   ![A screenshot displaying the OVF template properties you  configure while deploying the PCG installer VM](/troubleshooting-pcg-template_properties.webp)
 
 3. Double-check the accuracy of the pairing code used for the PCG installer VM. A pairing code is a unique
    authentication code Palette generates for each PCG installer instance. Confirm that it matches the value you copied
@@ -98,42 +84,38 @@ PCG installer VM.
 
 6. If the problem persists, issue the following command in the PCG installer VM to create a script to generate a log
    bundle.
-   <br />
 
-```bash
-cat > pcg-debug.sh << 'EOF'
-#!/bin/bash
-DESTDIR="/tmp/"
-CONTAINER_LOGS_DIR="/var/log/containers/"
-CLOUD_INIT_OUTPUT_LOG="/var/log/cloud-init-output.log"
-CLOUD_INIT_LOG="/var/log/cloud-init.log"
-KERN_LOG="/var/log/kern.log"
-KUBELET_LOG="/tmp/kubelet.log"
-SYSLOGS="/var/log/syslog*"
-FILENAME=spectro-logs-$(date +%-Y%-m%-d)-$(date +%-HH%-MM%-SS).tgz
-journalctl -u kubelet > $KUBELET_LOG
-tar --create --gzip -h --file=$DESTDIR$FILENAME $CONTAINER_LOGS_DIR $CLOUD_INIT_LOG $CLOUD_INIT_OUTPUT_LOG $KERN_LOG $KUBELET_LOG $SYSLOGS
-retVal=$?
-if [ $retVal -eq 1 ]; then
-    echo "Error creating spectro logs package"
-else
-    echo "Successfully extracted spectro cloud logs: $DESTDIR$FILENAME"
-fi
-EOF
-```
+   ```bash
+   cat > pcg-debug.sh << 'EOF'
+   #!/bin/bash
+   DESTDIR="/tmp/"
+   CONTAINER_LOGS_DIR="/var/log/containers/"
+   CLOUD_INIT_OUTPUT_LOG="/var/log/cloud-init-output.log"
+   CLOUD_INIT_LOG="/var/log/cloud-init.log"
+   KERN_LOG="/var/log/kern.log"
+   KUBELET_LOG="/tmp/kubelet.log"
+   SYSLOGS="/var/log/syslog*"
+   FILENAME=spectro-logs-$(date +%-Y%-m%-d)-$(date +%-HH%-MM%-SS).tgz
+   journalctl -u kubelet > $KUBELET_LOG
+   tar --create --gzip -h --file=$DESTDIR$FILENAME $CONTAINER_LOGS_DIR $CLOUD_INIT_LOG $CLOUD_INIT_OUTPUT_LOG $KERN_LOG $KUBELET_LOG $SYSLOGS
+   retVal=$?
+   if [ $retVal -eq 1 ]; then
+       echo "Error creating spectro logs package"
+   else
+       echo "Successfully extracted spectro cloud logs: $DESTDIR$FILENAME"
+   fi
+   EOF
+   ```
 
 7. Start the script to generate a log archive. By default, the script places the log archive in the **/tmp/** folder.
    The log archive file name starts with the prefix **spectro-logs-** followed by a timestamp value.
-   <br />
 
-```shell
-chmod +x pcg-debug.sh && ./pcg-debug.sh
-```
+   ```shell
+   chmod +x pcg-debug.sh && ./pcg-debug.sh
+   ```
 
 8. Contact our support team by emailing [support@spectrocloud.com](mailto:support@spectrocloud.com) and attach the logs
    archive to the ticket so the support team can troubleshoot the issue and provide you with further guidance.
-
-<br />
 
 ## Scenario - PCG Installer VM IP Address Assignment Error
 
@@ -145,11 +127,7 @@ The selected IP allocation scheme specified in the network settings of the PCG i
 address to the PCG installer VM. The IP allocation scheme offers two options - static IP or DHCP. You must check the
 selected IP allocation scheme for troubleshooting.
 
-<br />
-
 ## Debug Steps
-
-<br />
 
 1. If you chose the static IP allocation scheme, ensure you have correctly provided the values for the gateway IP
    address, DNS addresses, and static IP subnet prefix. Check that the subnet prefix you provided allows the creation of
@@ -175,8 +153,6 @@ selected IP allocation scheme for troubleshooting.
 8. If the problem persists, email the log files to our support team at
    [support@spectrocloud.com](mailto:support@spectrocloud.com).
 
-<br />
-
 ## Scenario - PCG Installer Deployment Failed
 
 When deploying the PCG installer in VMware, you deploy the OVF template and power on the PCG installer VM. If the VM
@@ -186,14 +162,10 @@ Palette.
 The PCG installer deployment can fail due to internet connectivity or internal misconfigurations, such as an incorrect
 pairing code.
 
-<br />
-
 ## Debug Steps
 
 If the PCG installer VM has a public IP address assigned, you can access the PCG installer's deployment status and
 system logs from the monitoring console. Follow the steps below to review the deployment status and logs.
-
-<br />
 
 1. Open a web browser on your local machine and visit the `https://[IP-ADDRESS]:5080` URL. Replace the `[IP-ADDRESS]`
    placeholder with your PCG installer VM's public IP address.
@@ -207,12 +179,12 @@ system logs from the monitoring console. Follow the steps below to review the de
    highlighted in the screenshot below. The monitoring console allows you to check the high-level status and download
    the individual log files.
 
-![A screenshot of the monitoring console of the PCG installer.](/troubleshooting-pcg-monitoring_console.webp)
+   ![A screenshot of the monitoring console of the PCG installer.](/troubleshooting-pcg-monitoring_console.webp)
 
 4. If any of the statuses is not **Done** after waiting for a while, download the concerned logs. The screenshot below
    displays the **Logs** tab in the monitoring console.
 
-![A screenshot of the logs in the monitoring console of the PCG installer.](/troubleshooting-pcg-monitoring_logs.webp)
+   ![A screenshot of the logs in the monitoring console of the PCG installer.](/troubleshooting-pcg-monitoring_logs.webp)
 
 5. Examine the log files for potential errors and root causes.
 
@@ -223,8 +195,6 @@ system logs from the monitoring console. Follow the steps below to review the de
      import.
    - Use the ping command to check if the VM can reach a public IP address. For example, ping well-known public IPs like
      Google's public DNS server (8.8.8.8) or any other public IP address.
-
-     <br />
 
      ```bash
      ping 8.8.8.8
@@ -240,7 +210,6 @@ system logs from the monitoring console. Follow the steps below to review the de
 
 8. If the problem persists, email the log files to our support team at
    [support@spectrocloud.com](mailto:support@spectrocloud.com).
-   <br />
 
 ## Scenario - PCG Cluster Provisioning Stalled or Failed
 
@@ -250,11 +219,7 @@ minutes to finish the PCG cluster deployment.
 However, if the PCG cluster provisioning gets stuck, it could hint at incorrect cloud gateway configurations,
 unavailable IP addresses for the worker nodes, or the inability to perform a Network Time Protocol (NTP) sync.
 
-<br />
-
 ## Debug Steps
-
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -289,7 +254,6 @@ unavailable IP addresses for the worker nodes, or the inability to perform a Net
    ![A screenshot highlighting how to download the cluster logs from Palette.](/troubleshooting-pcg-download_logs.webp)
 
 10. Share the logs with our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com).
-    <br />
 
 ## Scenario - No Progress After Creating the Container Manager
 
@@ -303,11 +267,7 @@ installation artifacts. Another potential reason is that the PCG installer may n
 store the installation artifacts in the **spectro-templates** folder. The installer downloads the images for the worker
 nodes and stores them in the **spectro-templates** folder during the cluster provisioning.
 
-<br />
-
 ## Debug Steps
-
-<br />
 
 1. Check the outbound internet connectivity from the PCG installer VM. Internet connectivity is needed to communicate
    with the Palette API endpoint, `https://api.spectrocloud.com`, or your self-hosted Palette's API endpoint. Use the
@@ -317,8 +277,6 @@ nodes and stores them in the **spectro-templates** folder during the cluster pro
      import.
    - Use the ping command to check if the VM can reach a public IP address. For example, ping well-known public IPs like
      Google's public DNS server (8.8.8.8) or any other public IP address.
-
-     <br />
 
      ```bash
      ping 8.8.8.8
@@ -333,7 +291,6 @@ nodes and stores them in the **spectro-templates** folder during the cluster pro
    and delete the PCG installer VM and relaunch a new one in a network that supports outbound internet connections.
 
 3. Ensure you have the necessary write permissions for the **spectro-templates** folder in the data center environment.
-   <br />
 
 ## Scenario - Failed to Deploy Image
 
@@ -345,11 +302,7 @@ the events displays the `Failed to deploy image: Failed to create govomiClient` 
 The error can occur if there is a preceding "https://" or "http://" string in the vCenter server URL or if the PCG
 installer VM lacks outbound internet connectivity.
 
-<br />
-
 ## Debug Steps
-
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -389,8 +342,6 @@ installer VM lacks outbound internet connectivity.
    - Use the ping command to check if the VM can reach a public IP address. For example, ping well-known public IPs like
      Google's public DNS server (8.8.8.8) or any other public IP address.
 
-     <br />
-
      ```bash
      ping 8.8.8.8
      ```
@@ -402,7 +353,6 @@ installer VM lacks outbound internet connectivity.
 8. Check for any network restrictions or firewall rules in the data center's network settings that may block
    communication. Adjust the proxy settings, if applicable, to fix the connectivity. Alternatively, you can power down
    and delete the PCG installer VM and relaunch a new one in a network that supports outbound internet connections.
-   <br />
 
 ## Scenario - No Route to the Kubernetes API Server
 
@@ -414,11 +364,7 @@ the events displays the `No route to host.` error.
 The error indicates an issue with the PCG cluster nodes attempting to connect to the cluster's Kubernetes API server.
 This issue can occur due to improper networking configuration or an error in the cloud-init process.
 
-<br />
-
 ## Debug Steps
-
-<br />
 
 1. Check the data center network settings. Ensure no network restrictions, firewalls, or security groups block
    communication between the nodes and the API server.
@@ -449,8 +395,6 @@ This issue can occur due to improper networking configuration or an error in the
      `/readyz` or `'/livez'`. Replace `[path_to_kubeconfig]` placeholder with the path to the kubeconfig file you
      downloaded in the previous step. A status code `ok` or `200` indicates the Kubernetes API server is healthy.
 
-     <br />
-
      ```bash
      kubectl --kubeconfig [path_to_kubeconfig] get --raw='/readyz'
      ```
@@ -459,13 +403,9 @@ This issue can occur due to improper networking configuration or an error in the
      the `verbose` parameter. The output will display the individual health checks so you can decide on further
      debugging steps based on the failed checks.
 
-     <br />
-
      ```bash
      kubectl --kubeconfig [path_to_kubeconfig] get --raw='/readyz?verbose'
      ```
-
-     <br />
 
 5. If the PCG installer VM has a public IP address assigned, SSH into the VM using the username `ubuntu` and the public
    SSH key you provided during the OVA import.
@@ -473,7 +413,6 @@ This issue can occur due to improper networking configuration or an error in the
 6. Navigate to the **/var/log** directory containing the log files.
 
 7. Examine the cloud-init and system logs for potential errors or warnings.
-   <br />
 
 ## Scenario - Permission Denied to Provision
 
@@ -486,11 +425,7 @@ You must have the necessary permissions to provision a PCG cluster in the VMware
 adequate permissions, the PCG cluster provisioning will fail, and you will get the above-mentioned error in the events
 log.
 
-<br />
-
 ## Debug Steps
-
-<br />
 
 1. Ensure you have all the permissions listed in the
    [VMware Privileges](../clusters/data-center/vmware.md#vmware-privileges) section before proceeding to provision a PCG
@@ -499,5 +434,3 @@ log.
 2. Contact your VMware administrator if you are missing any of the required permissions.
 
 3. Delete the existing PCG cluster and redeploy a new one so that the new permissions take effect.
-
-<br />
