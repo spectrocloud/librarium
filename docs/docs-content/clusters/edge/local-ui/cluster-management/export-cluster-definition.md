@@ -39,7 +39,7 @@ Silicon, use the API approach instead.
 1. Download Palette Edge Content CLI and assign the executable bit to the CLI.
 
    ```shell
-   VERSION=4.1.2
+   VERSION=4.4.2
    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
    chmod +x palette-edge
    ```
