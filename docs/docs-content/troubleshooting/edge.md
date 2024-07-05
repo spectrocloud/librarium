@@ -16,15 +16,13 @@ If you need to override or reconfigure the read-only file system, you can do so 
 
 ## Debug Steps
 
-<br />
-
 1. Power on the Edge host.
 
 2. Press the keyboard key `E` after highlighting the menu in `grubmenu`.
 
 3. Type `rd.cos.debugrw` and press `Enter`.
 
-![The grub menu displays with the command rd.cos.debugrw typed in the terminal.](/troubleshooting_edge_grub-menu.webp)
+   ![The grub menu displays with the command rd.cos.debugrw typed in the terminal.](/troubleshooting_edge_grub-menu.webp)
 
 4. Press `Ctrl+X` to boot the system.
 
