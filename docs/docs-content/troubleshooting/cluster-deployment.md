@@ -51,19 +51,19 @@ why a service may fail are:
 4.  If the Kubelet service does not work as expected, do the following. If the service operates correctly, you can skip
     this step.
 
-5.  Navigate to the **/var/log/** folder.
+    1.  Navigate to the **/var/log/** folder.
 
-    ```shell
-    cd /var/log/
-    ```
+        ```shell
+        cd /var/log/
+        ```
 
-6.  Scan the **cloud-init-output** file for any errors. Take note of any errors and address them.
+    2.  Scan the **cloud-init-output** file for any errors. Take note of any errors and address them.
 
-    ```
-    cat cloud-init-output.log
-    ```
+        ```
+        cat cloud-init-output.log
+        ```
 
-7.  If the kubelet service works as expected, do the following.
+5.  If the kubelet service works as expected, do the following.
 
     - Export the kubeconfig file.
 
@@ -105,7 +105,7 @@ why a service may fail are:
 
         :::
 
-8.  Check stdout for errors. You can also open a support ticket. Visit our
+6.  Check stdout for errors. You can also open a support ticket. Visit our
     [support page](http://support.spectrocloud.io/).
 
 ## Deployment Violates Pod Security
