@@ -14,7 +14,9 @@ content that is uploaded to your Edge host can be verified with cryptographic ke
 EdgeForge gives you the option to embed public keys in the installer ISO and provider images. When an Edge host has an
 embedded public keys, all content uploaded to the Edge host, including content bundles and cluster definitions must
 contain a signature from the corresponding private key. This allows you to be confident that all content uploaded to
-your Edge hosts come from a trusted source.
+your Edge hosts come from a trusted source. For more information about content bundles and cluster definitions, refer to
+[Build Content Bundle](./build-content-bundle.md) and
+[Export Cluster Definition](../../local-ui/cluster-management/export-cluster-definition.md).
 
 ## Limitations
 
