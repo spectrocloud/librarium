@@ -49,8 +49,6 @@ resulted in a node repave. The API payload is incomplete for brevity.
 
 For detailed information, review the cluster upgrades [page](../clusters/clusters.md).
 
-<br />
-
 ## Clusters
 
 ## Scenario - vSphere Cluster and Stale ARP Table
@@ -65,8 +63,6 @@ This is done automatically without any user action.
 You can verify the cleaning process by issuing the following command on non-VIP nodes and observing that the ARP cache
 is never older than 300 seconds.
 
-<br />
-
 ```shell
 watch ip -statistics neighbour
 ```
@@ -78,8 +74,6 @@ Amazon EKS
 [Runbook](https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-awssupport-troubleshooteksworkernode.html)
 for troubleshooting guidance.
 
-<br />
-
 ## Palette Agents Workload Payload Size Issue
 
 A cluster comprised of many nodes can create a situation where the workload report data the agent sends to Palette
@@ -90,8 +84,6 @@ If you encounter this scenario, you can configure the cluster to stop sending wo
 the workload report feature, create a _configMap_ with the following configuration. Use a cluster profile manifest layer
 to create the configMap.
 
-<br />
-
 ```shell
 apiVersion: v1
 kind: ConfigMap
@@ -101,8 +93,6 @@ metadata:
 data:
   feature.workloads: disable
 ```
-
-<br />
 
 ## OS Patch Fails
 
@@ -129,39 +119,39 @@ To resolve this issue, use the following steps:
 
 7. SSH into one of the cluster nodes and issue the following command.
 
-```shell
-rm /var/cache/debconf/config.dat && \
-dpkg --configure -a
-```
+   ```shell
+   rm /var/cache/debconf/config.dat && \
+   dpkg --configure -a
+   ```
 
 8. A prompt may appear asking you to select the boot device. Select the appropriate boot device and press **Enter**.
 
-:::tip
+   :::tip
 
-If you are unsure of the boot device, use a disk utility such as `lsblk` or `fdisk` to identify the boot device. Below
-is an example of using `lsblk` to identify the boot device. The output is abbreviated for brevity.
+   If you are unsure of the boot device, use a disk utility such as `lsblk` or `fdisk` to identify the boot device.
+   Below is an example of using `lsblk` to identify the boot device. The output is abbreviated for brevity.
 
-```shell
-lsblk --output NAME,TYPE,MOUNTPOINT
-```
+   ```shell
+   lsblk --output NAME,TYPE,MOUNTPOINT
+   ```
 
-```shell {10} hideClipboard
-NAME    TYPE MOUNTPOINT
-fd0     disk
-loop0   loop /snap/core20/1974
-...
-loop10  loop /snap/snapd/20092
-loop11  loop /snap/snapd/20290
-sda     disk
-├─sda1  part /
-├─sda14 part
-└─sda15 part /boot/efi
-sr0     rom
-```
+   ```shell {10} hideClipboard
+   NAME    TYPE MOUNTPOINT
+   fd0     disk
+   loop0   loop /snap/core20/1974
+   ...
+   loop10  loop /snap/snapd/20092
+   loop11  loop /snap/snapd/20290
+   sda     disk
+   ├─sda1  part /
+   ├─sda14 part
+   └─sda15 part /boot/efi
+   sr0     rom
+   ```
 
-The highlighted line displays the boot device. In this example, the boot device is `sda15`, mounted at `/boot/efi`. The
-boot device may be different for your node.
+   The highlighted line displays the boot device. In this example, the boot device is `sda15`, mounted at `/boot/efi`.
+   The boot device may be different for your node.
 
-:::
+   :::
 
 9. Repeat the previous step for all nodes in the cluster.
