@@ -501,10 +501,6 @@ const redirects = [
     to: "/clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle",
   },
   {
-    from: "/clusters/edge/edgeforge-workflow/palette-canvos/build-artifacts",
-    to: "/clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle",
-  },
-  {
     from: "/clusters/edge/site-deployment/initial-setup",
     to: "/clusters/edge/site-deployment/site-installation/initial-setup",
   },
