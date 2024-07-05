@@ -50,6 +50,66 @@ For detailed information, review the cluster upgrades [page](../clusters/cluster
 
 ## Clusters
 
+## Scenario - Incorrect LoadBalancer `kubernetes` Created by Azure Cloud Controller Manager
+
+The `cloud-controller-manager` introduced in Azure Kubernetes v.1.29.x can make your existing external service IP
+inaccessible. This issue occurs because `cloud-controller-manager` creates a default load balancer named `kubernetes`
+and an associated public IP, which conflicts with the existing network configuration.
+
+While this issue has been resolved for Palette-managed Azure clusters, you need to manually delete the incorrectly
+created `kubernetes` load balancer and public IP address from your Azure account.
+
+### Debug Steps
+
+1. Open a terminal session and use the following command to log in to your Azure account.
+
+   ```shell
+   az login
+   ```
+
+2. Use the following command to list load balancers in your resurce group and locate the `kubernetes` load balancer.
+
+   ```shell
+   az network lb list --resource-group <resource-group> --output table
+   ```
+
+   ```shell
+   Location    Name                           ProvisioningState    ResourceGroup      ResourceGuid
+   ----------  -----------------------------  -------------------  -----------------  ------------------------------------
+   eastus      docs-azure-k8s-1-29            Succeeded            palette-tutorials  b375387f-0549-4186-9d47-f2607064b51b
+   eastus      docs-azure-k8s-1-29-public-lb  Succeeded            palette-tutorials  0b7a9738-1caf-46bd-b334-0f34dd736fad
+   //highlight-next-line
+   eastus      kubernetes                     Succeeded            palette-tutorials  e78e47d8-bda5-4f0b-a694-b41443b2b2f5
+   ```
+
+3. Use the following command to delete the `kubernetes` load balancer from your resource group.
+
+   ```shell
+   az network lb delete --name kubernetes --resource-group <resource-group>
+   ```
+
+4. Use the following command to list public IP addresses in your resource group and locate the `kubernetes-<hash>` load
+   balancer.
+
+   ```shell
+   az network public-ip list --resource-group <resource-group> --output table
+   ```
+
+   ```shell
+   Name                                         ResourceGroup      Location    Zones    Address        IdleTimeoutInMinutes    ProvisioningState
+   -------------------------------------------  -----------------  ----------  -------  -------------  ----------------------  -------------------
+   pip-docs-azure-k8s-1-29-apiserver            palette-tutorials  eastus      123      48.217.216.43  4                       Succeeded
+   pip-docs-azure-k8s-1-29-node-outbound        palette-tutorials  eastus      312      48.217.222.29  4                       Succeeded
+   //highlight-next-line
+   kubernetes-a98181bf0e90b4425b80d11c21ba766f  palette-tutorials  eastus      231      4.255.120.41   4                       Succeeded
+   ```
+
+5. Use the following command to delete the `kubernetes-<hash>` public IP from your resource group.
+
+   ```shell
+   az network public-ip delete --name kubernetes-<hash> --resource-group <resource-group>
+   ```
+
 ## Scenario - vSphere Cluster and Stale ARP Table
 
 Sometimes vSphere clusters encounter issues where nodes with an assigned Virtual IP Address (VIP) cannot contact the
