@@ -27,8 +27,6 @@ selected IP allocation scheme specified in the network settings of the PCG insta
 node. The IP allocation scheme offers two options - static IP or DHCP. You must check the selected IP allocation scheme
 for troubleshooting.
 
-<br />
-
 ## Debug Steps
 
 1. If you chose the static IP allocation scheme, ensure you have correctly provided the values for the gateway IP
@@ -63,8 +61,6 @@ minutes to finish the PCG cluster deployment.
 However, if the PCG cluster provisioning gets stuck, it could hint at incorrect cloud gateway configurations,
 unavailable IP addresses for the worker nodes, or the inability to perform a Network Time Protocol (NTP) sync.
 
-<br />
-
 ## Debug Steps
 
 1. Log in to [Palette](https://console.spectrocloud.com).
@@ -96,7 +92,7 @@ unavailable IP addresses for the worker nodes, or the inability to perform a Net
 9. If the problem persists, download the cluster logs from Palette. The screenshot below will help you locate the button
    to download logs from the cluster details page.
 
-![A screenshot highlighting how to download the cluster logs from Palette.](/troubleshooting-pcg-download_logs.webp)
+   ![A screenshot highlighting how to download the cluster logs from Palette.](/troubleshooting-pcg-download_logs.webp)
 
 10. Share the logs with our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com).
 
@@ -105,8 +101,6 @@ unavailable IP addresses for the worker nodes, or the inability to perform a Net
 If one of the event logs displays the `No route to host.` error. The error indicates an issue with the PCG cluster nodes
 attempting to connect to the cluster's Kubernetes API server. This issue can occur due to improper networking
 configuration or an error in the cloud-init process.
-
-<br />
 
 ## Debug Steps
 
@@ -139,8 +133,6 @@ configuration or an error in the cloud-init process.
      `/readyz` or `'/livez'`. Replace `[path_to_kubeconfig]` placeholder with the path to the kubeconfig file you
      downloaded in the previous step. A status code `ok` or `200` indicates the Kubernetes API server is healthy.
 
-     <br />
-
      ```bash
      kubectl --kubeconfig [path_to_kubeconfig] get --raw='/readyz'
      ```
@@ -162,20 +154,16 @@ configuration or an error in the cloud-init process.
 
 7. Examine the cloud-init and system logs for potential errors or warnings.
 
-   <br />
-
 8. If the problem persists, reach out to our support team at
    [support@spectrocloud.com](mailto:support@spectrocloud.com).
 
 ## Scenario - Permission Denied to Provision
 
-if you receive the event log message "Permission to perform this operation denied" error.
+If you receive the event log message "Permission to perform this operation denied" error.
 
 You must have the necessary permissions to provision a PCG cluster in the VMware environment. If you do not have
 adequate permissions, the PCG cluster provisioning will fail, and you will get the above-mentioned error in the events
 log.
-
-<br />
 
 1. Ensure you have all the permissions listed in the [VMware Privileges](../clusters/pcg/deploy-pcg/vmware.md) section
    before proceeding to provision a PCG cluster.
