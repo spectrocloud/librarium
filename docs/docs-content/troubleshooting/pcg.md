@@ -96,7 +96,7 @@ unavailable IP addresses for the worker nodes, or the inability to perform a Net
 9. If the problem persists, download the cluster logs from Palette. The screenshot below will help you locate the button
    to download logs from the cluster details page.
 
-![A screenshot highlighting how to download the cluster logs from Palette.](/troubleshooting-pcg-download_logs.webp)
+   ![A screenshot highlighting how to download the cluster logs from Palette.](/troubleshooting-pcg-download_logs.webp)
 
 10. Share the logs with our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com).
 
