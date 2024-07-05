@@ -57,7 +57,7 @@ inaccessible. This issue occurs because `cloud-controller-manager` creates a def
 and an associated public IP, which conflicts with the existing network configuration.
 
 While this issue has been resolved for Palette-managed Azure clusters, you need to manually delete the incorrectly
-created `kubernetes` load balancer and public IP address from your Azure account.
+created `kubernetes` load balancer and the associated public IP address from your Azure account.
 
 ### Debug Steps
 
@@ -67,7 +67,7 @@ created `kubernetes` load balancer and public IP address from your Azure account
    az login
    ```
 
-2. Use the following command to list load balancers in your resurce group and locate the `kubernetes` load balancer.
+2. Use the following command to list load balancers in your resource group and locate the `kubernetes` load balancer.
 
    ```shell
    az network lb list --resource-group <resource-group> --output table
