@@ -10,8 +10,8 @@ tags: ["edge"]
 Content bundles are archives of all the required container images required for one or more cluster profiles. The content
 bundle includes Helm charts, Packs, and manifest files needed to deploy your Edge host cluster. In addition to core
 container images, the content bundle can include artifacts from your applications that you wish to deploy to the Edge
-cluster. [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) are the primary source for building
-these content bundles.
+cluster. [Cluster Profiles](../../../../profiles/cluster-profiles/cluster-profiles.md) are the primary source for
+building these content bundles.
 
 :::warning
 
@@ -41,10 +41,11 @@ Creating a content bundle provides several benefits that may address common use 
 
 - Linux Machine (Physical or VM) with an AMD64 architecture.
 
-- Palette API key. Refer to the [User Authentication](../../../user-management/authentication/api-key/create-api-key.md)
-  resource to learn how to create a Palette API key.
+- Palette API key. Refer to the
+  [User Authentication](../../../../user-management/authentication/api-key/create-api-key.md) resource to learn how to
+  create a Palette API key.
 
-- An Edge Native cluster profile. Refer to [Create Edge Native Cluster Profile](../site-deployment/model-profile.md)
+- An Edge Native cluster profile. Refer to [Create Edge Native Cluster Profile](../../site-deployment/model-profile.md)
   guide to learn how to create an Edge Native cluster profile. You may also have other add-on profiles that you wish to
   attach to your cluster.
 
@@ -235,9 +236,9 @@ Creating a content bundle provides several benefits that may address common use 
    | `--project-id`              | The ID of your Palette project.                                                                                         |
 
    The result is a content bundle that you can use to preload into your installer. For more information, refer to
-   [Build Edge Artifacts with Content Bundle](./palette-canvos/build-artifacts.md) or
-   [Build Installer ISO](./palette-canvos/build-installer-iso.md). Our Tech Preview feature
-   [local UI](../local-ui/local-ui.md) also allows you to upload content bundles to a disconnected Edge deployment.
+   [Build Edge Artifacts with Content Bundle](./build-artifacts.md) or [Build Installer ISO](./build-installer-iso.md).
+   Our Tech Preview feature [local UI](../../local-ui/local-ui.md) also allows you to upload content bundles to a
+   disconnected Edge deployment.
 
    Alternatively, you can use the ISO version of the content bundle and transfer it to a USB drive to be used separately
    at the time of Edge host installation using the `-iso` flag in your build command. Doing so will override the file
@@ -251,4 +252,4 @@ creates a bootable device will validate the ISO image before the flash process.
 ## Next Steps
 
 Your next step is to build the Edge artifacts so that you can deploy an Edge host. To create an Edge artifacts, check
-out the [Build Images](../edgeforge-workflow/palette-canvos/palette-canvos.md) guide.
+out the [Build Images](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide.

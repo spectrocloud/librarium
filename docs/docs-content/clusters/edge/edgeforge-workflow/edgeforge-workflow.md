@@ -33,17 +33,17 @@ build a content bundle and build the content bundle into your Edge Installer ISO
 ISO allows you to create clusters without a connection to a Palette instance. Refer to the following guides to build
 Edge Artifacts with content bundles:
 
-- [Build Content Bundle](./build-content-bundle.md)
+- [Build Content Bundle](./palette-canvos/build-content-bundle.md)
 
 - [Build Edge Artifacts with Content Bundles](./palette-canvos/build-artifacts.md)
 
 The following table lists the combination of our guides you can follow to build Edge artifacts with or without preloaded
 content.
 
-| Edge Artifacts have preloaded content? | Option 1                                                                                                                                                                                  | Option 2                                                                                                                             |
-| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| No                                     | [Build Provider Images](./palette-canvos//build-provider-images.md) + [Build Installer ISO](./palette-canvos//build-installer-iso.md)                                                     | [Build Edge Artifacts](./palette-canvos/palette-canvos.md)                                                                           |
-| Yes                                    | [Build Provider Images](./palette-canvos//build-provider-images.md) + [Build Installer ISO](./palette-canvos//build-installer-iso.md) + [Build Content Bundle](./build-content-bundle.md) | [Build Content Bundle](./build-content-bundle.md) + [Build Edge Artifacts with Content Bundles](./palette-canvos/build-artifacts.md) |
+| Edge Artifacts have preloaded content? | Option 1                                                                                                                                                                                                 | Option 2                                                                                                                                            |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| No                                     | [Build Provider Images](./palette-canvos//build-provider-images.md) + [Build Installer ISO](./palette-canvos//build-installer-iso.md)                                                                    | [Build Edge Artifacts](./palette-canvos/palette-canvos.md)                                                                                          |
+| Yes                                    | [Build Provider Images](./palette-canvos//build-provider-images.md) + [Build Installer ISO](./palette-canvos//build-installer-iso.md) + [Build Content Bundle](./palette-canvos/build-content-bundle.md) | [Build Content Bundle](./palette-canvos/build-content-bundle.md) + [Build Edge Artifacts with Content Bundles](./palette-canvos/build-artifacts.md) |
 
 ## Edge Artifacts
 
@@ -90,7 +90,7 @@ Palette provides these artifacts out-of-the-box. All the container images are ho
 registries, or a private self-hosted OCI registry and automatically downloaded during installation. You can use the
 default Palette container registries to familiarize yourself with the installation process. However, in a typical
 production scenario, you would need to customize these artifacts to suit your specific needs or perform some
-[content bundle](../edgeforge-workflow/build-content-bundle.md) optimization.
+[content bundle](../edgeforge-workflow/palette-canvos/build-content-bundle.md) optimization.
 
 ![A diagram breaking up the internal components of the Edge Provider container images](/clusters_edge_edgeforge-workflow_provider-diagram.webp)
 
@@ -111,7 +111,7 @@ the Edge Installer ISO during EdgeForge. This allows the Edge host to provision 
 external image registry. Refer to the following guides on how to build a content bundle and how to use them during the
 EdgeForge process:
 
-- [Build Content Bundle](./build-content-bundle.md)
+- [Build Content Bundle](./palette-canvos/build-content-bundle.md)
 
 - [Build Edge Artifacts with Content Bundles](./palette-canvos/build-artifacts.md)
 
@@ -146,7 +146,7 @@ scenario, use the CLIs to help you with the customization.
 
 ## Resources
 
-- [Build Preloaded Content Bundles](build-content-bundle.md)
+- [Build Preloaded Content Bundles](./palette-canvos/build-content-bundle.md)
 
 - [Build Edge Installer ISO](./palette-canvos/build-installer-iso.md)
 
