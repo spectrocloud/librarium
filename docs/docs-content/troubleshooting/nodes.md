@@ -90,8 +90,8 @@ cluster was deployed.
    az network lb delete --name kubernetes --resource-group <resource-group>
    ```
 
-4. Use the following command to list public IP addresses in the the resource group to which your cluster was deployed
-   and locate the `kubernetes-<hash>` load balancer.
+4. Use the following command to list public IP addresses in the resource group to which your cluster was deployed and
+   locate the `kubernetes-<hash>` load balancer.
 
    ```shell
    az network public-ip list --resource-group <resource-group> --output table
