@@ -5,12 +5,6 @@ title: "Deploy an Edge Cluster on VMware"
 description:
   "Learn how to deploy an Edge host using VMware as the deployment platform. You will learn how to use the Edge
   Installer ISO, create a cluster profile, and deploy a Kubernetes cluster to the Edge host on VMware."
-<<<<<<<< HEAD:docs/docs-content/tutorials/edge/deploy-cluster.md
-========
-icon: ""
-hide_table_of_contents: false
-sidebar_position: 10
->>>>>>>> master:docs/docs-content/clusters/edge/site-deployment/virtual-deployment/deploy-cluster.md
 tags: ["edge", "tutorial"]
 category: ["tutorial"]
 ---
@@ -67,6 +61,8 @@ To complete this tutorial, you will need the following:
   uname -m
   ```
 
+  <br />
+
   :::warning
 
   The Linux machine must have network connectivity to your VMware vCenter environment.
@@ -90,13 +86,8 @@ To complete this tutorial, you will need the following:
 
 - A Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
   generate a new registration token. For detailed instructions, refer to the
-<<<<<<<< HEAD:docs/docs-content/tutorials/edge/deploy-cluster.md
   [Create Registration Token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) guide.
   Copy the newly created token to a clipboard or notepad file to use later in this tutorial.
-========
-  [Create Registration Token](../site-installation/create-registration-token.md) guide. Copy the newly created token to
-  a clipboard or notepad file to use later in this tutorial.
->>>>>>>> master:docs/docs-content/clusters/edge/site-deployment/virtual-deployment/deploy-cluster.md
 
   The screenshot below shows a sample registration token in the **Tenant Settings** > **Registration Tokens** section in
   Palette.
@@ -192,13 +183,8 @@ View the newly created file to ensure the arguments are defined per your require
 cat .arg
 ```
 
-<<<<<<<< HEAD:docs/docs-content/tutorials/edge/deploy-cluster.md
 Refer to the [Build Edge Artifacts](../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide to
 learn more about customizing arguments.
-========
-Refer to the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide to learn more about
-customizing arguments.
->>>>>>>> master:docs/docs-content/clusters/edge/site-deployment/virtual-deployment/deploy-cluster.md
 
 ## Create User Data
 
@@ -258,6 +244,8 @@ users:
     passwd: kairos
 ```
 
+<br />
+
 ## Build Artifacts
 
 The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
@@ -273,11 +261,7 @@ will fail silently.
 You can exclude image versions you do not need from the build process by commenting out the lines in the
 `build-provider-images` parameter in the file **Earthfile** in the **CanvOS** repository. This speeds up build process
 and reduces the amount of space required for the build process. For an example of excluding a version from build, refer
-<<<<<<<< HEAD:docs/docs-content/tutorials/edge/deploy-cluster.md
 to [Build Edge Artifacts guide](../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md).
-========
-to [Build Edge Artifacts guide](../../edgeforge-workflow/palette-canvos/palette-canvos.md).
->>>>>>>> master:docs/docs-content/clusters/edge/site-deployment/virtual-deployment/deploy-cluster.md
 
 :::
 
@@ -382,13 +366,8 @@ docker push ttl.sh/ubuntu:k3s-1.27.5-v4.1.2-demo
 As a reminder, [ttl.sh](https://ttl.sh/) is a short-lived image registry. If you do not use these provider images in
 your cluster profile within 24 hours of pushing to _ttl.sh_, they will expire and must be re-pushed. If you want to use
 a different image registry, refer to the Advanced workflow in the
-<<<<<<<< HEAD:docs/docs-content/tutorials/edge/deploy-cluster.md
 [Build Edge Artifacts](../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide to learn how to
 use another registry.
-========
-[Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide to learn how to use another
-registry.
->>>>>>>> master:docs/docs-content/clusters/edge/site-deployment/virtual-deployment/deploy-cluster.md
 
 :::
 
@@ -503,7 +482,7 @@ is an explanation of the options and sub-command used below:
 - The `--env-file` option reads the **.packerenv** file.
 
 - The `--volume ` option mounts a local directory to our official tutorials container,
-  `ghcr.io/spectrocloud/tutorials:1.1.6`.
+  `ghcr.io/spectrocloud/tutorials:1.1.5`.
 
 - The `sh -c "source /edge/vmware/clone_vm_template/setenv.sh "` shell sub-command defines the GOVC environment
   variables, the number of VMs, a prefix string for the VM name, and the VM template name. Most of the GOVC environment
@@ -516,11 +495,7 @@ is an explanation of the options and sub-command used below:
   - The `-force` flag destroys any existing template.
   - The `--var-file` option reads the **vsphere.hcl** file from the container. This file contains the VM template name,
     VM configuration, and ISO file name to use. The VM configuration conforms to the
-<<<<<<<< HEAD:docs/docs-content/tutorials/edge/deploy-cluster.md
     [minimum device requirements](../../clusters/edge/hardware-requirements.md).
-========
-    [minimum device requirements](../../architecture.md#minimum-device-requirements).
->>>>>>>> master:docs/docs-content/clusters/edge/site-deployment/virtual-deployment/deploy-cluster.md
 
   The **vsphere.hcl** file content is shown below for your reference. This tutorial does not require you to modify these
   configurations.
@@ -551,7 +526,7 @@ is an explanation of the options and sub-command used below:
 
   Should you need to change the VM template name or VM settings defined in the **vsphere.hcl** file, or review the
   Packer script, you must open a bash session into the container using the
-  `docker run -it --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.1.6 bash`
+  `docker run -it --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.1.5 bash`
   command, and change to the **edge/vmware/packer/** directory to make the modifications. After you finish the
   modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command to trigger the Packer
   build process.
@@ -567,8 +542,8 @@ docker run --interactive --tty --rm \
   --env-file .packerenv \
   --env-file .goenv \
   --volume "${ISOFILEPATH}:/edge/vmware/packer/build" \
-  ghcr.io/spectrocloud/tutorials:1.1.6 \
-  sh -c "source /edge/vmware/clone_vm_template/setenv.sh && bash /edge/vmware/clone_vm_template/delete-packer-cache.sh && cd /edge/vmware/packer/ && packer init build.pkr.hcl && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
+  ghcr.io/spectrocloud/tutorials:1.1.5 \
+  sh -c "source /edge/vmware/clone_vm_template/setenv.sh && cd /edge/vmware/packer/ && packer init build.pkr.hcl && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
 ```
 
 Depending on your machine and network, the build process can take 7-10 minutes to finish.
@@ -598,7 +573,7 @@ GOVC requires the same VMware vCenter details as the environment variables you d
 The next step is to use the following `docker run` command to clone the VM template and provision three VMs. Here is an
 explanation of the options and sub-command used below:
 
-- The `--env-file` option reads the **.goenv** file in our official `ghcr.io/spectrocloud/tutorials:1.1.6` tutorials
+- The `--env-file` option reads the **.goenv** file in our official `ghcr.io/spectrocloud/tutorials:1.1.5` tutorials
   container.
 
 - The `sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"` shell sub-command changes to the container's
@@ -640,7 +615,7 @@ export GOVC_FOLDER="${vcenter_folder}"
 Suppose you have changed the VM template name in the previous step or need to change the number of VMs to provision. In
 that case, you must modify the **setenv.sh** script. To do so, you can reuse the container bash session from the
 previous step if it is still active, or you can open another bash session into the container using the
-`docker run -it --env-file .goenv ghcr.io/spectrocloud/tutorials:1.1.6 bash` command. If you use an existing container
+`docker run -it --env-file .goenv ghcr.io/spectrocloud/tutorials:1.1.5 bash` command. If you use an existing container
 bash session, create the **.goenv** file described above and source it in your container environment. Next, change to
 the **edge/vmware/clone_vm_template/** directory to modify the **setenv.sh** script, and issue the
 `./deploy-edge-host.sh` command to deploy the VMs.
@@ -652,7 +627,7 @@ Issue the following command to clone the VM template and provision three VMs.
 ```bash
 docker run -it --rm \
   --env-file .goenv \
-  ghcr.io/spectrocloud/tutorials:1.1.6 \
+  ghcr.io/spectrocloud/tutorials:1.1.5 \
   sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"
 ```
 
@@ -692,11 +667,7 @@ select **Clusters**. Click on the **Edge Hosts** tab and verify the three VMs yo
 If the three Edge hosts are not displayed in the **Edge hosts** tab, the automatic registration failed. If this happens,
 you can manually register hosts by clicking the **Add Edge Hosts** button and pasting the Edge host ID. Repeat this host
 registration process for each of the three VMs. If you need help, the detailed instructions are available in the
-<<<<<<<< HEAD:docs/docs-content/tutorials/edge/deploy-cluster.md
 [Register Edge Host](../../clusters/edge/site-deployment/site-installation/edge-host-registration.md) guide.
-========
-[Register Edge Host](../../site-deployment/site-installation/edge-host-registration.md) guide.
->>>>>>>> master:docs/docs-content/clusters/edge/site-deployment/virtual-deployment/deploy-cluster.md
 
 ## Deploy a Cluster
 
@@ -735,12 +706,7 @@ section.
 
 ### Profile Layers
 
-<<<<<<<< HEAD:docs/docs-content/tutorials/edge/deploy-cluster.md
 In the **Profile Layers** section, add the following [BYOS Edge OS](../../integrations/byoos.md) pack to the OS layer.
-========
-In the **Profile Layers** section, add the following [BYOS Edge OS](../../../../integrations/byoos.md) pack to the OS
-layer.
->>>>>>>> master:docs/docs-content/clusters/edge/site-deployment/virtual-deployment/deploy-cluster.md
 
 | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
 | ------------- | ------------ | ------------- | ---------------- |
@@ -793,12 +759,8 @@ Click on the **Next layer** button to add the following Kubernetes layer to your
 
 Select the K3s version 1.27.x. 1.27.X because earlier in this tutorial, you pushed a provider image compatible with K3s
 v1.27.5 to the _ttl.sh_ image registry. The `system.uri` attribute of the BYOOS pack will reference the Kubernetes
-<<<<<<<< HEAD:docs/docs-content/tutorials/edge/deploy-cluster.md
 version you select using the `{{ .spectro.system.kubernetes.version }}`
 [macro](../../clusters/cluster-management/macros.md).
-========
-version you select using the `{{ .spectro.system.kubernetes.version }}` [macro](../../../cluster-management/macros.md).
->>>>>>>> master:docs/docs-content/clusters/edge/site-deployment/virtual-deployment/deploy-cluster.md
 
 Click on the **Next layer** button, and add the following network layer. This example uses the Calico Container Network
 Interface (CNI). However, you can choose a different CNI pack that fits your needs, such as Flannel, Cilium, or Custom
@@ -923,7 +885,6 @@ and the set of worker nodes is the worker pool.
 
 Provide the following details for the control plane pool.
 
-<<<<<<<< HEAD:docs/docs-content/tutorials/edge/deploy-cluster.md
 | **Field**                                                    | **Value for the control-plane-pool**                                                                                 |
 | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
 | Node pool name                                               | control-plane-pool                                                                                                   |
@@ -931,15 +892,6 @@ Provide the following details for the control plane pool.
 | Additional Labels (Optional)                                 | None                                                                                                                 |
 | [Taints](../../clusters/cluster-management/taints.md#taints) | Off                                                                                                                  |
 | Pool Configuration > Edge Hosts                              | Choose one of the registered Edge hosts.<br />Palette will automatically display the Nic Name for the selected host. |
-========
-| **Field**                                              | **Value for the control-plane-pool**                                                                                                          |
-| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| Node pool name                                         | control-plane-pool                                                                                                                            |
-| Allow worker capability                                | Checked                                                                                                                                       |
-| Additional Labels (Optional)                           | None                                                                                                                                          |
-| [Taints](../../../cluster-management/taints.md#taints) | Off                                                                                                                                           |
-| Pool Configuration > Edge Hosts                        | Choose one of the registered Edge hosts.<br />Palette will automatically display the Network Interface Card (NIC) Name for the selected host. |
->>>>>>>> master:docs/docs-content/clusters/edge/site-deployment/virtual-deployment/deploy-cluster.md
 
 The screenshot below shows an Edge host added to the control plane pool.
 
@@ -1030,7 +982,7 @@ following command to delete the Edge hosts.
 
 ```bash
 docker run --interactive --tty --rm --env-file .goenv \
-  ghcr.io/spectrocloud/tutorials:1.1.6 \
+  ghcr.io/spectrocloud/tutorials:1.1.5 \
   sh -c "cd edge/vmware/clone_vm_template/ && ./delete-edge-host.sh"
 ```
 
@@ -1076,7 +1028,7 @@ template, right-click on it and choose **Delete** option from the **drop-down Me
 
 Switch to the **Storage** view in your vSphere client. To delete the **palette-edge-installer.iso** file from the
 **packer_cache/** directory in the VMware vCenter datastore, right-click on it and choose **Delete** option from the
-**drop-down Menu**.
+**drop-down Menu**. <br />
 
 ## Wrap-Up
 
@@ -1099,7 +1051,6 @@ In addition, you can use Palette to manage the entire lifecycle of Edge clusters
 
 To learn more about Edge, check out the resources below.
 
-<<<<<<<< HEAD:docs/docs-content/tutorials/edge/deploy-cluster.md
 - [Build Edge Artifacts](../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md)
 
 - [Build Content Bundle](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md)
@@ -1109,14 +1060,3 @@ To learn more about Edge, check out the resources below.
 - [Prepare Edge Hosts for Installation](../../clusters/edge/site-deployment/stage.md)
 
 - [Perform Site Install](../../clusters/edge/site-deployment/site-installation/site-installation.md)
-========
-- [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md)
-
-- [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md)
-
-- [Model Edge Native Cluster Profile](../../site-deployment/model-profile.md)
-
-- [Installation](../../site-deployment/stage.md)
-
-- [Perform Site Install](../../site-deployment/site-installation/site-installation.md)
->>>>>>>> master:docs/docs-content/clusters/edge/site-deployment/virtual-deployment/deploy-cluster.md
