@@ -81,9 +81,9 @@ with the original user data you use to build Edge artifacts and skip that step.
 
 ### Validate
 
-You can validate that the Edge host is ready for the site installation by powering on the Edge host and simulating a
-site deployment. The simulation process will require you to complete the installation process and reset the device after
-the validation.
+You can validate that the Edge host is ready for the on-site deployment by powering on the Edge host and simulating an
+on-site deployment. The simulation process will require you to complete the installation process and reset the device
+after the validation.
 
 ## Supply Site-Specific User Data
 
