@@ -508,7 +508,7 @@ const redirects = [
   // Redirects for tutorials that were removed from docs
   {
     from: "/registries-and-packs/deploy-pack",
-    to: "/tutorials/profiles/packs-registries/deploy-pack",
+    to: "/tutorials/profiles/deploy-pack",
   },
   {
     from: "/clusters/pcg/deploy-app-pcg",

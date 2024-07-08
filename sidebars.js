@@ -58,7 +58,7 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Profiles",
+      label: "Profiles and Packs",
       className: "category",
       collapsed: false,
       collapsible: false,

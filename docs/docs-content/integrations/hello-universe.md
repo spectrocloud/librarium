@@ -174,6 +174,6 @@ data "spectrocloud_pack" "hellouniverse" {
 
 - [Hello Universe GitHub Repository](https://github.com/spectrocloud/hello-universe)
 
-- [Deploy a Custom Pack Tutorial](../tutorials/profiles/packs-registries/deploy-pack.md)
+- [Deploy a Custom Pack Tutorial](../tutorials/profiles/deploy-pack.md)
 
 - [Registries and Packs](../registries-and-packs/registries-and-packs.md)
