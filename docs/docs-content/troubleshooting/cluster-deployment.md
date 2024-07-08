@@ -87,9 +87,11 @@ why a service may fail are:
    - If all the pods are operating correctly, verify their connection with the Palette API.
 
      - For clusters using Gateway, verify the connection between the Installer and Gateway instance:
+
        ```shell
        curl -k https://<KUBE_API_SERVER_IP>:6443
        ```
+
      - For Public Clouds that do not use Gateway, verify the connection between the public Internet and the Kube
        endpoint:
 
