@@ -38,7 +38,10 @@ Palette needs access to your AWS cloud account in order to create and manage AWS
 
 ### Create a Palette API Key
 
-<PartialsComponent category="palette-setup" name="create-palette-api-key" />
+Follow the steps below to create a Palette API key. This is required for the
+[Cluster Management with Terraform](./deploy-manage-k8s-cluster-tf.md) tutorial.
+
+<PartialsComponent category="palette-setup" name="create-tenant-api-key" />
 
 ## Validate
 
