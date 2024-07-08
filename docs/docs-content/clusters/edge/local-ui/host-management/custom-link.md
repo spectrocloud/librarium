@@ -148,7 +148,7 @@ or open a new tab in your browser depending on how to configure the links.
 11. Follow the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide from step onward
     to finish the EdgeForge process. As long as the **local-ui.tar** file is at the root directory of **CanvOS** and the
     installation mode is set to airgap as required by local UI, the custom links will be added to the sidebar when you
-    log in to local UI.
+    log in to Local UI.
 
 
 ### Validate
