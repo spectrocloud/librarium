@@ -19,9 +19,8 @@ Autoscaling is not supported for Azure IaaS clusters.
 ## Limitations
 
 - If the `fullyPrivateAddressing` parameter is set to `true`, the control plane and worker nodes in your cluster must
-  still have access to the internet. Namely, they must allow egress traffic to the internet and be able to access the
-  [Microsoft Container Registry](https://mcr.microsoft.com/) in order to download updates, patches, and the necessary
-  container images.
+  still have outbound access to the internet, including the [Microsoft Container Registry](https://mcr.microsoft.com/),
+  to download updates, patches, and the necessary container images.
 
 - Once the `fullyPrivateAddressing` parameter is set for your cluster, you cannot change its value. Changing the
   parameter value will result in errors until you return the value to its original configuration.
@@ -105,8 +104,8 @@ Use the following steps to deploy an Azure cluster.
    Consider the following limitations:
 
    - If the `fullyPrivateAddressing` parameter is set to `true`, the control plane and worker nodes in your cluster must
-     still have access to the internet. Namely, they must allow outbound traffic to the internet and access the
-     [Microsoft Container Registry](https://mcr.microsoft.com/) in order to download updates, patches, and the necessary
+     still have outbound access to the internet, including the
+     [Microsoft Container Registry](https://mcr.microsoft.com/), to download updates, patches, and the necessary
      container images.
 
    - Once the `fullyPrivateAddressing` parameter is set for your cluster, you cannot change its value. Changing the
