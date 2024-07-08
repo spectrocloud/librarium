@@ -10,13 +10,9 @@ sidebar_position: 20
 Palette supports creating and managing Kubernetes clusters deployed to an Azure account. This section guides you on how
 to create an IaaS Kubernetes cluster in Azure that Palette manages.
 
-:::warning
-
-Autoscaling is not supported for Azure IaaS clusters.
-
-:::
-
 ## Limitations
+
+- Autoscaling is not supported for Azure IaaS clusters.
 
 - If the `fullyPrivateAddressing` parameter is set to `true`, the control plane and worker nodes in your cluster must
   still have outbound access to the internet, including the [Microsoft Container Registry](https://mcr.microsoft.com/),
