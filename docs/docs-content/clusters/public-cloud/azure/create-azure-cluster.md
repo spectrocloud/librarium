@@ -10,11 +10,16 @@ sidebar_position: 20
 Palette supports creating and managing Kubernetes clusters deployed to an Azure account. This section guides you on how
 to create an IaaS Kubernetes cluster in Azure that Palette manages.
 
-:::warning
+## Limitations
 
-Autoscaling is not supported for Azure IaaS clusters.
+- Autoscaling is not supported for Azure IaaS clusters.
 
-:::
+- If the `fullyPrivateAddressing` parameter is set to `true`, the control plane and worker nodes in your cluster must
+  still have outbound access to the internet, including the [Microsoft Container Registry](https://mcr.microsoft.com/),
+  to download updates, patches, and the necessary container images.
+
+- Once the `fullyPrivateAddressing` parameter is set for your cluster, you cannot change its value. Changing the
+  parameter value will result in errors until you return the value to its original configuration.
 
 ## Prerequisites
 
@@ -78,21 +83,47 @@ Use the following steps to deploy an Azure cluster.
 
 8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
 
-   You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out
-   [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider) for more
-   information.
+9. To ensure that clusters with [static placement](#static-placement-settings) remain fully private, with no public IPs
+   created for the control plane and worker nodes, add the following configuration to your Kubernetes layer.
+
+   ```yaml
+   cloud:
+     azure:
+       fullyPrivateAddressing: true
+   ```
+
+   If you set the `fullyPrivateAddressing` property to `false` or leave it blank, Palette will create outbound load
+   balancers for the control plane and worker nodes and assign public IPs to them.
 
    :::warning
 
-   All the OIDC options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a
-   Kubernetes role to users and groups, refer to
-   [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
+   Consider the following limitations:
+
+   - If the `fullyPrivateAddressing` parameter is set to `true`, the control plane and worker nodes in your cluster must
+     still have outbound access to the internet, including the
+     [Microsoft Container Registry](https://mcr.microsoft.com/), to download updates, patches, and the necessary
+     container images.
+
+   - Once the `fullyPrivateAddressing` parameter is set for your cluster, you cannot change its value. Changing the
+     parameter value will result in errors until you return the value to its original configuration.
 
    :::
 
-9. Click **Next** to continue.
+10. To configure custom OpenID Connect (OIDC) for Azure clusters, refer to our
+    [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider) guide for
+    information on how to update the Kubernetes layer.
 
-10. Provide the cluster configuration information listed in the following table. If you are utilizing your own VNet,
+    :::warning
+
+    All the OIDC options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a
+    Kubernetes role to users and groups, refer to
+    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
+
+    :::
+
+11. Click **Next** to continue.
+
+12. Provide the cluster configuration information listed in the following table. If you are utilizing your own VNet,
     ensure you also provide information listed in the Static Placement Settings table. If you have custom storage
     accounts or containers available, you can attach them to the cluster. To learn more about attaching custom storage
     to a cluster, check out [Azure storage](../azure/architecture.md#azure-storage).
@@ -129,9 +160,9 @@ Use the following steps to deploy an Azure cluster.
     | **Control Plane Subnet**   | Select the control plane subnet.                            |
     | **Worker Subnet**          | Select the worker network.                                  |
 
-11. Click **Next** to continue.
+13. Click **Next** to continue.
 
-12. Provide the following node pool and cloud configuration information. To learn more about node pools, review the
+14. Provide the following node pool and cloud configuration information. To learn more about node pools, review the
     [Node Pool](../../cluster-management/node-pool.md) guide.
 
     :::info
@@ -186,24 +217,24 @@ Use the following steps to deploy an Azure cluster.
     | **Disk size**          | You can choose disk size based on your requirements. The default size is 60.                                                                                                                                                                                                                                                                                                                                                         |
     | **Availability zones** | The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so.                                                                                                                                                                                                                     |
 
-13. Click **Next** to continue.
+15. Click **Next** to continue.
 
-14. Specify your preferred **OS Patching Schedule**.
+16. Specify your preferred **OS Patching Schedule**.
 
-15. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
+17. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
     Kubernetes configuration security, penetration testing, and conformance testing.
 
-16. Schedule any backups you want Palette to perform. Review
+18. Schedule any backups you want Palette to perform. Review
     [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
-17. Role-Based Access Control (RBAC) configuration is required when you configure custom OIDC. You must map a set of
+19. Role-Based Access Control (RBAC) configuration is required when you configure custom OIDC. You must map a set of
     users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
     [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
     [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
 
-18. Click **Validate** and review the cluster configuration and settings summary.
+20. Click **Validate** and review the cluster configuration and settings summary.
 
-19. Click **Finish Configuration** to deploy the cluster. Provisioning Azure clusters can take several minutes.
+21. Click **Finish Configuration** to deploy the cluster. Provisioning Azure clusters can take several minutes.
 
 The cluster details page contains the status and details of the deployment. Use this page to track the deployment
 progress.
