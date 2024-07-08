@@ -24,9 +24,9 @@ The prerequisite steps to getting started with Palette on AWS are as follows.
 - Sign up to a public cloud account from
   [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account).
 
-- Access to a terminal window.
-
-- The utility `ssh-keygen` or similar SSH key generator software.
+- An SSH key pair available in the region where you want to deploy the cluster. Check out the
+  [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html) for
+  guidance.
 
 ## Enablement
 
@@ -36,9 +36,9 @@ Palette needs access to your AWS cloud account in order to create and manage AWS
 
 <PartialsComponent category="palette-setup" name="aws-static-credentials" />
 
-### Create and Upload an SSH Key
+### Create a Palette API Key
 
-<PartialsComponent category="palette-setup" name="generate-ssh-key" />
+<PartialsComponent category="palette-setup" name="create-palette-api-key" />
 
 ## Validate
 
