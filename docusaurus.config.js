@@ -8,6 +8,7 @@ const redirects = require("./redirects");
 const ArchivedVersions = require("./archiveVersions.json");
 const { pluginPacksAndIntegrationsData } = require("./plugins/packs-integrations");
 const { pluginImportFontAwesomeIcons } = require("./plugins/font-awesome");
+import path from "path";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -252,11 +253,18 @@ const config = {
   themes: ["docusaurus-theme-openapi-docs"],
   customFields: {
     // Put your custom environment here
-    mendableKey: process.env.MENDABLE_API_KEY,
   },
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
+      announcementBar: {
+        id: "docs_announcement_bar",
+        content:
+          'The 2024 State of Production Kubernetes report is now available and it\'s full of insights and goodies. Click <a target="_blank" rel="noopener noreferrer" href="https://www.spectrocloud.com/news/2024-state-of-production-kubernetes">here to get your own copy.</a>',
+        backgroundColor: "#FBB117",
+        textColor: "#091E42",
+        isCloseable: false,
+      },
       colorMode: {
         respectPrefersColorScheme: true,
       },
@@ -361,7 +369,7 @@ const config = {
         appId: process.env.ALGOLIA_APP_ID,
         // Public API key: it is safe to commit it
         apiKey: process.env.ALGOLIA_SEARCH_KEY,
-        indexName: "prod-docusaurus-librarium",
+        indexName: process.env.ALGOLIA_INDEX_NAME,
         // Optional: see doc section below
         contextualSearch: true,
         // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
@@ -412,3 +420,13 @@ const config = {
     },
 };
 module.exports = config;
+
+export default function (context, options) {
+  return {
+    name: "@docusaurus/plugin-content-docs",
+    getPathsToWatch() {
+      const contentPath = path.resolve(context.siteDir, options.path);
+      return [`${contentPath}/_partials/*/*.{mdx}`];
+    },
+  };
+}

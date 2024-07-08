@@ -7,7 +7,7 @@ sidebar_position: 30
 tags: ["data center", "vmware"]
 ---
 
-Palette supports usning VMware as a data center provider. With this, you can deploy and manage Kubernetes clusters on
+Palette supports using VMware as a data center provider. With this, you can deploy and manage Kubernetes clusters on
 VMware virtual machines. For this to work, Palette uses a [Private Cloud Gateway (PCG)](../../pcg/architecture.md),
 which creates a secure connection from the internal network to the internet-accessible Palette instance, ultimately
 bypassing the need to create firewall rules or other network configurations allowing external connections to the
@@ -39,6 +39,16 @@ of the PCG architecture page for more information.
 
 After you have deployed the PCG, you can proceed to create and manage VMware clusters in Palette. Refer to the
 [Create and Manage VMware Clusters](create-manage-vmware-clusters.md) guide for detailed instructions.
+
+## Supported Versions
+
+The following versions of VMware vSphere are supported in Palette.
+
+| **Version**       | **Supported** |
+| ----------------- | ------------- |
+| **vSphere 6.7U3** | ✅            |
+| **vSphere 7.0**   | ✅            |
+| **vSphere 8.0**   | ✅            |
 
 ## Resources
 

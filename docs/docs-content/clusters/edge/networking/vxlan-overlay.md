@@ -53,17 +53,15 @@ server. The region experiences a bad weather event that causes a sustained outag
 - When adding multiple Edge hosts to an existing cluster with overlay enabled, failure to add one host will block the
   addition of the other hosts.
 
-- When a cluster has overlay enabled, you cannot delete an Edge host that has the `palette-webhook` pod on it, or the
-  Edge host will be stuck in the deleting state. You can use the command
-  `kubectl get pods --all-namespaces --output wide` to identify which node `palette-webhook` is on. If you need to
-  remove an Edge host that has the `palette-webhook` pod on it, please reach out to our support team by opening a ticket
-  through our [support page](http://support.spectrocloud.io/).
-
 ## Prerequisites
 
 - At least one Edge host registered with your Palette account.
-- Your cluster profile must have K3s as its Kubernetes distribution.
+- Your cluster profile must have K3s or RKE2 as its Kubernetes distribution.
 - All Edge hosts must be on the same Layer-2 network.
+- Broadcast messages must be allowed between all Edge hosts participating in the cluster.
+  - For Virtual Machine (VM) Edge hosts in VMware, this means features such as promiscuous mode must be enabled to allow
+    broadcasts between hosts.
+  - Switches cannot implement features that block broadcast between ports where Edge hosts are connected.
 - If you are launching your Edge hosts in virtual machine environments and you are using either Cilium or Flannel as
   your container network interface (CNI), ensure that you add the following commands in the **user-data** file at the
   boot stage. Replace `INTERFACE_NAME` with the name of the network interface on your Edge host.
@@ -195,7 +193,7 @@ address in the overlay CIDR range will be used as the Overlay VIP. This VIP is t
 cluster.
 
 12. Finish the rest of the cluster configurations and click **Finish Configuration** to deploy the cluster. For more
-    information, refer to [Create Cluster Definition](../site-deployment/site-installation/cluster-deployment.md).
+    information, refer to [Create Cluster Definition](../site-deployment/cluster-deployment.md).
 
 ## Validate
 

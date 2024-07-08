@@ -11,7 +11,7 @@ Palette allows you to update active clusters. You can update any layer of a clus
 and add-on layers. Depending on the nature of the update, a cluster update could trigger different cluster repave
 operations. For more information, refer to
 [Repave Behaviors and Configurations](./node-pool.md#repave-behavior-and-configuration) for non-Edge clusters and
-[Edge Cluster Upgrade Behavior](../edge/upgrade-behavior.md) for Edge clusters. operations.
+[Edge Cluster Upgrade Behavior](../edge/cluster-management/upgrade-behavior.md) for Edge clusters.
 
 :::info
 
@@ -23,11 +23,19 @@ repave schedule and methodology. Refer to
 
 ## Limitations
 
+:::warning
+
+Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before
+upgrading, you review the information provided in the
+[Kubernetes Upgrades](../../integrations/kubernetes-support.md#kubernetes-upgrades) section.
+
+:::
+
 - You cannot update a cluster while its status is still **Provisioning**.
 
 - You cannot change the Container Network Interface (CNI) of an Edge cluster. You must delete and re-create the cluster
   instead. For more information about creating an Edge cluster, refer to
-  [Create Cluster Definition](../edge/site-deployment/site-installation/cluster-deployment.md).
+  [Create Cluster Definition](../edge/site-deployment/cluster-deployment.md).
 
 ## Prerequisites
 
@@ -47,7 +55,7 @@ This is the recommended best practice for updating a cluster in Palette.
 3. Create a new version of the profile you want to update. For more information, refer to
    [Version a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
 
-4. Navigate to the left **Main Menu** and select **Cluster**.
+4. Navigate to the left **Main Menu** and select **Clusters**.
 
 5. Select the cluster you want to update, and navigate to the **Profile** tab of the cluster.
 
@@ -56,11 +64,12 @@ This is the recommended best practice for updating a cluster in Palette.
 7. Click **Review & Save**. Palette prompts you to preview the change summary.
 
 8. Click **Review changes in Editor**. Palette displays the changes, with the current configuration on the left and the
-   incoming changes on the right. Review the changes and click **Apply Changes**.
+   incoming configuration on the right. Review the changes and click **Apply Changes**.
 
    :::info
 
-   Make sure to preserve any existing cluster profile overrides.
+   Make sure to preserve any existing cluster profile overrides by using the editor on the right. Otherwise, the
+   incoming configuration will be applied as indicated.
 
    :::
 

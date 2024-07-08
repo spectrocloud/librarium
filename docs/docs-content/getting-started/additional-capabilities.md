@@ -38,8 +38,8 @@ to tens of thousands of locations while enforcing policies locally within each c
 
 Edge clusters are Kubernetes clusters set up on Edge hosts. These hosts can be bare metal or virtual machines located in
 isolated locations. Palette deploys and manages workload clusters at the Edge, and the services continue operating even
-when the connection to the management plane is lost. You can manage Edge clusters locally on-site through the local UI,
-or centrally through the Palette management plane. Palette Edge is able to meet your needs, regardless of the network
+when the connection to the management plane is lost. You can manage Edge clusters locally on-site through Local UI, or
+centrally through the Palette management plane. Palette Edge is able to meet your needs, regardless of the network
 topology your deployments face. Check out the [Palette Edge](../clusters/edge/edge.md) page to learn more about Edge and
 its features.
 

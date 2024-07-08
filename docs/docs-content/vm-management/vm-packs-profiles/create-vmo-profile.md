@@ -160,7 +160,7 @@ components, refer to [Virtual Machine Orchestrator Pack](../vm-packs-profiles/vm
 12. Review the profile and click **Finish Configuration**.
 
 13. Add the add-on profile when you create a cluster. For more information, refer to
-    [Create Cluster Definition](../../clusters/edge/site-deployment/site-installation/cluster-deployment.md).
+    [Create Cluster Definition](../../clusters/edge/site-deployment/cluster-deployment.md).
 
 </TabItem>
 
@@ -183,7 +183,7 @@ You can validate the profile is created.
 
 ## Next Steps
 
-You will need to configure roles and role bindings to give users access virtual clusters. You can use VM user roles and
+You will need to configure roles and role bindings to give users access to clusters. You can use VM user roles and
 permissions or standard Kubernetes roles. For configuration guidance, refer to
 [Add Roles and Role Bindings](add-roles-and-role-bindings.md). The
 [VM User Roles and Permissions](../vm-roles-permissions.md) reference lists Cluster Roles and equivalent Palette Roles.

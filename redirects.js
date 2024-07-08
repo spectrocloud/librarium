@@ -432,6 +432,90 @@ const redirects = [
     from: "/vertex/install-palette-vertex/airgap/checklist/",
     to: "/vertex/install-palette-vertex/airgap/",
   },
+
+  {
+    from: "/terraform/",
+    to: "/automation/terraform/",
+  },
+
+  {
+    from: "/palette-cli/",
+    to: "/automation/palette-cli/",
+  },
+
+  {
+    from: "/palette-cli/install-palette-cli/",
+    to: "/automation/palette-cli/install-palette-cli/",
+  },
+
+  {
+    from: "/palette-cli/commands/",
+    to: "/automation/palette-cli/commands/",
+  },
+
+  {
+    from: "/palette-cli/commands/docs/",
+    to: "/automation/palette-cli/commands/docs/",
+  },
+
+  {
+    from: "/palette-cli/commands/ec/",
+    to: "/automation/palette-cli/commands/ec/",
+  },
+
+  {
+    from: "/palette-cli/commands/fips-validate/",
+    to: "/automation/palette-cli/commands/fips-validate/",
+  },
+
+  {
+    from: "/palette-cli/commands/login/",
+    to: "/automation/palette-cli/commands/login/",
+  },
+
+  {
+    from: "/palette-cli/commands/pcg/",
+    to: "/automation/palette-cli/commands/pcg/",
+  },
+
+  {
+    from: "/palette-cli/commands/pde/",
+    to: "/automation/palette-cli/commands/pde/",
+  },
+
+  {
+    from: "/palette-cli/commands/project/",
+    to: "/automation/palette-cli/commands/project/",
+  },
+
+  {
+    from: "/palette-cli/commands/validator/",
+    to: "/automation/palette-cli/commands/validator/",
+  },
+  {
+    from: "/user-management/palette-resource-limits/",
+    to: "/tenant-settings/palette-resource-limits/",
+  },
+  {
+    from: "/clusters/edge/edgeforge-workflow/build-content-bundle",
+    to: "/clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle",
+  },
+  {
+    from: "/clusters/edge/edgeforge-workflow/palette-canvos/build-artifacts",
+    to: "/clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle",
+  },
+  {
+    from: "/clusters/edge/site-deployment/initial-setup",
+    to: "/clusters/edge/site-deployment/site-installation/initial-setup",
+  },
+  {
+    from: "/clusters/edge/site-deployment/deploy-cluster",
+    to: "/clusters/edge/site-deployment/virtual-deployment/deploy-cluster",
+  },
+  {
+    from: "/clusters/edge/site-deployment/site-installation/cluster-deployment",
+    to: "/clusters/edge/site-deployment/cluster-deployment",
+  },
 ];
 
 module.exports = redirects;

@@ -8,8 +8,7 @@ tags: ["edge"]
 ---
 
 You can provide site-specific Edge Installer configuration user data if you need to apply new values or override default
-values from the Edge Installer user data you created in the [Prepare Edge Hosts for Installation](../stage.md) step or,
-as often referenced, the _Installer Handoff_ phase.
+values from the Edge Installer user data you created in [EdgeForge](../../edgeforge-workflow/prepare-user-data.md).
 
 Use the following steps to create an ISO file containing the additional user data. You will load the newly created ISO
 to a bootable device, such as a USB stick.
@@ -17,6 +16,8 @@ to a bootable device, such as a USB stick.
 ## Prerequisites
 
 - A bootable device such as a USB drive, or a Preboot Execution Environment (PXE) server.
+
+- An Edge host with Palette Edge installed. Refer to [Installation](../stage.md) for more information.
 
 - `mkisofs`, or `genisoimage`, or similar ISO management software.
 
@@ -34,38 +35,39 @@ to a bootable device, such as a USB stick.
     ```
 
     For example, you can include the following content in the **user-data** file to connect your Edge host to Wi-Fi.
-    This requires wpa_supplicant to be included in your base OS image. For more information, refer to
+    Replace `wifi-network-name` with the name of your Wi-Fi network and the `wifi-password` with the password of your
+    network. This requires wpa_supplicant to be included in your base OS image. For more information, refer to
     [Connect Intel NUC Edge Host to Wifi](../../networking/connect-wifi.md).
 
     ```yaml
     #cloud-config
     install:
-    bind_mounts:
-       - /var/lib/wpa
+      bind_mounts:
+         - /var/lib/wpa
 
     stages:
-    network.before:
-       - name: "Connect to wifi"
-          commands:
-          - |
-             # Find the first wireless network interface
-             wireless_interface=""
-             for interface in $(ip link | grep -oP '^\d+: \K[^:]+(?=:)')
-             do
-                if [ -d "/sys/class/net/$interface/wireless" ]; then
-                      wireless_interface=$interface
-                      break
-                fi
-             done
+      network.before:
+         - name: "Connect to wifi"
+            commands:
+            - |
+               # Find the first wireless network interface
+               wireless_interface=""
+               for interface in $(ip link | grep -oP '^\d+: \K[^:]+(?=:)')
+               do
+                  if [ -d "/sys/class/net/$interface/wireless" ]; then
+                        wireless_interface=$interface
+                        break
+                  fi
+               done
 
-             # Check if a wireless interface was found and connect it to WiFi
-             if [ -n "$wireless_interface" ]; then
-                wpa_passphrase Madrid supersup | tee /var/lib/wpa/wpa_supplicant.conf
-                wpa_supplicant -B -c /var/lib/wpa/wpa_supplicant.conf -i $wireless_interface
-                dhclient $wireless_interface
-             else
-                echo "No wireless network interface found."
-             fi
+               # Check if a wireless interface was found and connect it to WiFi
+               if [ -n "$wireless_interface" ]; then
+                  wpa_passphrase wifi-network-name wifi-password | tee /var/lib/wpa/wpa_supplicant.conf
+                  wpa_supplicant -B -c /var/lib/wpa/wpa_supplicant.conf -i $wireless_interface
+                  dhclient $wireless_interface
+               else
+                  echo "No wireless network interface found."
+               fi
     ```
 
 2.  Create an empty **meta-data** file:
@@ -76,39 +78,41 @@ to a bootable device, such as a USB stick.
 
 3.  Create an ISO using the following command.
 
-   <Tabs>
-   <TabItem label="macOS/Linux" value="mac-linux">
+      <Tabs>
+
+      <TabItem label="macOS/Linux" value="mac-linux">
 
     ```shell
     mkisofs -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
     ```
 
-   </TabItem>
+      </TabItem>
 
-   <TabItem label="Windows" value="windows">
+      <TabItem label="Windows" value="windows">
 
     ```shell
     genisoimage -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
     ```
 
-   </TabItem>
-    </Tabs>
+      </TabItem>
 
-This generates an ISO file called **site-user-data.iso** in the current directory.
+      </Tabs>
 
-4. Flash your bootable device such as a USB drive with the ISO file you just created.
+    This generates an ISO file called **site-user-data.iso** in the current directory.
 
-   :::info
+4.  Flash your bootable device such as a USB drive with the ISO file you just created.
 
-   You can use several software tools to create a bootable USB drive, such as
-   [balenaEtcher](https://www.balena.io/etcher). For a PXE server, there are open-source projects such as
-   [Fog](https://fogproject.org/download) or
-   [Windows Deployment Services](https://learn.microsoft.com/en-us/windows/deployment/wds-boot-support) for Windows.
+    :::info
 
-   :::
+    You can use several software tools to create a bootable USB drive, such as
+    [balenaEtcher](https://www.balena.io/etcher). For a PXE server, there are open-source projects such as
+    [Fog](https://fogproject.org/download) or
+    [Windows Deployment Services](https://learn.microsoft.com/en-us/windows/deployment/wds-boot-support) for Windows.
 
-5. Once the Edge host arrives at the physical site. Load the USB drive to the Edge host before powering it on. The Edge
-   Installer will apply the new user data during the installation process.
+    :::
+
+5.  Once the Edge host arrives at the physical site. Load the USB drive to the Edge host before powering it on. The Edge
+    Installer will apply the new user data during the installation process.
 
 ## Validate
 

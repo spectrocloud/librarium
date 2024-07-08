@@ -24,7 +24,7 @@ To contribute, we recommend having the following software installed locally on y
 
 - git configured and access to github repository
 
-- Node.js v18 and npm.
+- Node.js v20 and npm.
 
 - [Vale](https://vale.sh/docs/vale-cli/installation/)
 
@@ -73,7 +73,7 @@ To exit from the local development Docker container. Press `Ctrl + Z`.
 
 ## Local Development Setup (Non-Docker)
 
-Clone the repository and run the initialization script
+Clone the repository and run the initialization script.
 
 ```sh
 cd Work
@@ -88,6 +88,7 @@ required environment variables. The values are not important for local developme
 ```shell
 ALGOLIA_APP_ID=1234567890
 ALGOLIA_SEARCH_KEY=1234567890
+ALGOLIA_INDEX_NAME=spectrocloud
 ```
 
 ## Documentation Content
@@ -127,7 +128,7 @@ The **header** will have a search bar and some links to different other sections
 The page **content** will be displayed under the header and next to the sidebar. On it's right there will be a **table
 of contents** menu that will extract all of the headers inside the content and display them in a list. This will follow
 the user as he scroll the page. On top of the table of contents there will be a **github link** to the content of the
-file. This can be used by users to submit changes to different sections of our documentation
+file. This can be used by users to submit changes to different sections of our documentation.
 
 ### Main Pages
 
@@ -458,11 +459,11 @@ https://docusaurus.io/docs/markdown-features/code-blocks#highlighting-with-comme
 The copy button is shown by default in all code blocks. You can disable the copy button by passing in the parameter
 value `hideClipboard` in the markdown declaration of the code blocks.
 
-Example ![Example](static/assets/docs/images/hide_copy_button_example.png)
+Example ![Example](static/assets/docs/images/hide_copy_button_example.webp)
 
 Result
 
-![Result](static/assets/docs/images/hide_copy_button.png)
+![Result](/static/assets/docs/images/hide_copy_button.webp)
 
 ### Admonitions - Warning / Info / Tip / Danger
 
@@ -553,6 +554,67 @@ scheme. The rows of cards are dynamically created according to the list of speci
   ]}
 />
 ```
+
+## Partials Component
+
+This is a custom component that allows you to create and use
+[Import Markdown](https://docusaurus.io/docs/3.2.1/markdown-features/react#importing-markdown).
+
+Partials must be created under the `_partials` folder. They must be named using an `_` prefix and the `*.mdx` filetype.
+Partials may be organised in any further subfolders as required. For example, you could create
+`_partials/public-cloud/_palette_setup.mdx`.
+
+In order to aid with organisation and categorization, partials must have a `partial_category` and `partial_name` defined
+in their frontmatter:
+
+```mdx
+---
+partial_category: public-cloud
+partial_name: palette-setup
+---
+
+This is how you set up Palette in {props.cloud}.
+```
+
+Partials are customized using properties which can be read using the `{props.field}` syntax.
+
+Once your partial has been created, run the `make generate-partials` command to make your partial available for use.
+This command will also be invoked during the `make start` and `make build` commands.
+
+Finally, you can reference your partial in any `*.md` file by using the `PartialsComponent`, together with the specified
+category and name of the partial:
+
+```md
+<PartialsComponent
+  category="example-cat"
+  name="example-name"
+  message="Hello!"
+/>
+```
+
+The snippet above will work with the example partial we have in our repository, so you can use it for testing.
+
+Note that the `message` field corresponds to the `{props.message}` reference in the `_partials/_partial_example.mdx`
+file.
+
+### Internal Links
+
+Due to the complexities of Docusaurus plugin rendering, links do not support versioning in `*.mdx` files. If you want to
+add an internal link you will have to use the `VersionedLink` component inside the `*.mdx` file.
+
+```mdx
+---
+partial_category: public-cloud
+partial_name: palette-setup
+---
+
+This is how you set up Palette in {props.cloud}.
+
+This is an <VersionedLink name="Internal Link" url="/getting-started/additional-capabilities"/>.
+```
+
+The path of the link should be the path of the destination file from the root directory, without any back operators
+`..`. External links can be referenced as usual.
 
 ## Netlify Previews
 
@@ -768,7 +830,3 @@ make clean-versions
 >
 > The `docusaurus.config.js` file is updated by the [`update_docusaurus_config.js`](./docusaurus.config.js) script. DO
 > NOT commit this file with the updated changes.
-
-```
-
-```

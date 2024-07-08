@@ -177,11 +177,17 @@ download the images and upload them to the external registry.
 
 8. Issue the following command to download the images as a content bundle. The command produces a ZST file as output.
    Replace the `******` after the `--api-key` flag with your Palette API key. Replace `project-ID` with the ID of your
-   project in Palette, and `profile-ID` with the ID of your profile.
+   project in Palette, `palette-api-endpoint` with your Palette API endpoint, and `profile-ID` with the ID of your
+   profile.
 
    ```shell
-    ./palette-edge build --api-key ****** --project-id project-ID --cluster-profile-ids profile-ID \
-        --outfile output-file-name --cred-file-path registry-creds.json --include-palette-content
+    ./palette-edge build --api-key ****** \
+    --project-id project-ID \
+    --cluster-profile-ids profile-ID \
+    --palette-endpoint palette-API-endpoint \
+    --outfile output-file-name \
+    --cred-file-path registry-creds.json \
+    --include-palette-content
    ```
 
 9. Issue the following command to upload the images to the external registry. Replace `path-to-content-bundle` with the
@@ -189,7 +195,7 @@ download the images and upload them to the external registry.
    registry. Replace `username` and `******` with the username and password used to access the external registry.
 
    ```shell
-   ./palette-edge-cli deploy --export path-to-content-bundle --registry registry-URL \
+   ./palette-edge deploy --export path-to-content-bundle --url registry-URL \
     --username username --password ******
    ```
 

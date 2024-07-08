@@ -3,11 +3,11 @@ sidebar_label: "Create Local Cluster"
 title: "Create Local Cluster"
 description: "Instructions for creating a locally manageg cluster in Edge Host Management Console."
 hide_table_of_contents: false
-sidebar_position: 32
+sidebar_position: 30
 tags: ["edge"]
 ---
 
-You can create and manage a single-node cluster locally from the local UI. This page guides you through how to create a
+You can create and manage a single-node cluster locally from Local UI. This page guides you through how to create a
 cluster using Local UI.
 
 :::preview
@@ -16,25 +16,34 @@ cluster using Local UI.
 
 ## Limitations
 
-- You can only create single node clusters consisting solely of the Edge host you create the cluster from. You cannot
+- You can only create single-node clusters consisting solely of the Edge host you create the cluster from. You cannot
   include other Edge hosts in the same local or remote network.
 
 ## Prerequisites
 
-- Network access to the Edge device’s IP and port where the local UI is exposed. The default port is 5080.
+- Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
 
-- Credentials to log into the local UI. Any OS user can be used to log in to the local UI.
+- Credentials to log into Local UI. Any OS user can be used to log in to Local UI.
 
 - You have uploaded the necessary software artifacts to the Edge host or included the artifacts in the Edge Installer
   ISO during EdgeForge. For more information, refer to [Upload Content Bundle](./upload-content-bundle.md) and
-  [Build Edge Artifacts with Content Bundle](../../edgeforge-workflow/palette-canvos/build-artifacts.md).
+  [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md).
+
+- You must ensure that the Edge host has a stable IP address. You have the following options to achieve a stable IP
+  address:
+
+  - Use a static IP address. Contact your network administrator to assign the Edge host a static IP address.
+  - Use Dynamic Host Configuration Protocol (DHCP) reservations to reserve an IP address in a DHCP network. Contact your
+    network administrator to reserve IP addresses for your Edge hosts in a DHCP network.
+  - Enable network overlay on your Edge cluster. Network overlay can only be enabled during cluster creation. For more
+    information about network overlay, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md).
 
 ## Create Local Cluster
 
-1. Log into the local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more
-   information, refer to [Access Local UI](../host-management/access-console.md).
+1. Log into Local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more information,
+   refer to [Access Local UI](../host-management/access-console.md).
 
-2. From the left **Main Menu**, click **Clusters**.
+2. From the left **Main Menu**, click **Cluster**.
 
 3. Click **Create cluster**.
 
@@ -42,7 +51,7 @@ cluster using Local UI.
 
    | Parameter    | Description                                             |
    | ------------ | ------------------------------------------------------- |
-   | Cluster bane | Name of the cluster.                                    |
+   | Cluster name | Name of the cluster.                                    |
    | Tags         | Key-value pairs to provide metadata about your cluster. |
 
 5. If you built a cluster definition into your Edge installer ISO, you can either choose to use the embedded config or
@@ -57,7 +66,10 @@ cluster using Local UI.
 
 6. If your selected cluster profile has profile variables, you will now be prompted to enter the values for those
    profile variables. The variables with default values will be auto-populated unless the variable value is masked when
-   you defined the variable. Enter the values for the profile variables and click **Next**.
+   you defined the variable. For more information on cluster profile variables, refer to
+   [Define and Manage Profile Variables](../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md).
+
+   Enter the values for the profile variables and click **Next**.
 
 7. In the **Cluster Config** step, enter a virtual IP address to be used by your cluster. Optionally, you can also
    specify a Network Time Protocol server and an SSH public key.
@@ -80,6 +92,6 @@ cluster using Local UI.
 
 ## Validate
 
-1. Log in to the local UI.
+1. Log in to Local UI.
 
-2. Click **Clusters**. Verify that you cluster has entered the running status.
+2. Click **Cluster**. Verify that your cluster has entered the running status.
