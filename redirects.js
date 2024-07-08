@@ -500,11 +500,6 @@ const redirects = [
     from: "/clusters/edge/edgeforge-workflow/build-content-bundle",
     to: "/clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle",
   },
-  {
-    from: "/clusters/edge/edgeforge-workflow/palette-canvos/build-artifacts",
-    to: "/clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle",
-  },
-
   // Redirects for tutorials that were removed from docs
   {
     from: "/registries-and-packs/deploy-pack",
