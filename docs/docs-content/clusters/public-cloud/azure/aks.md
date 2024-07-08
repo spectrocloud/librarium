@@ -79,23 +79,24 @@ explains how you can create an Azure AKS cluster managed by Palette.
 
     ```yaml
     pack:
-      podCIDR: "<pod-cidr>" # E.g., "192.168.0.0/16"
-      serviceClusterIpRange: "<service-cidr>" # E.g., "10.96.0.0/12"
+      podCIDR: "<pod-cidr>"
+      serviceClusterIpRange: "<service-cidr>"
     ```
 
 8.  If you want to [use a managed identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity), populate
     the following configuration template and add the configuration to your Kubernetes cluster profile layer.
 
-    ```yaml
-    managedControlPlane:
-      userAssignedIdentities:
-        - providerID: "<provider-id>" # User-assigned identity ID in the format: azure:///subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
-        - providerID: "<provider-id-2>"
-    ```
+    - `providerID` – User-assigned identity ID in the format
+      `azure:///subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}`
 
-:::note Potentially deprecated
+      ```yaml
+      managedControlPlane:
+        userAssignedIdentities:
+          - providerID: "<provider-id>"
+          - providerID: "<provider-id-2>"
+      ```
 
-8.  If you want to integrate with Microsoft Entra ID (formerly Azure Active Directory), populate the following
+9.  If you want to integrate with Microsoft Entra ID (formerly Azure Active Directory), populate the following
     configuration template and add the configuration to your Kubernetes cluster profile layer.
 
     ```yaml
@@ -103,13 +104,11 @@ explains how you can create an Azure AKS cluster managed by Palette.
       aadProfile:
         managed: true
         adminGroupObjectIDs:
-          - <admin-group-object-id> # E.g., xxxxx-xxxxx-xxxx-xxxxx-xxxxx
+          - <admin-group-object-id>
           - <admin-group-object-id-2>
     ```
 
-:::
-
-9.  If you want to add a custom AKS add-on profile, populate the following configuration template and add the
+10. If you want to add a custom AKS add-on profile, populate the following configuration template and add the
     configuration to your Kubernetes cluster profile layer.
 
     ```yaml
@@ -121,20 +120,23 @@ explains how you can create an Azure AKS cluster managed by Palette.
             mapString: string
     ```
 
-    Consider the following example configuration for `omsagent` for reference.
+    Consider the following example configuration for `omsagent` for reference, where:
 
-    ```yaml
-    managedControlPlane:
-      addonProfiles:
-        - name: omsagent
-          enabled: true
-          config:
-            logAnalyticsWorkspaceResourceID: "<log-analytics-workspace-resource-id>" # The Log Analytics workspace resource ID, in the format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceID}
-    ```
+    - `logAnalyticsWorkspaceResourceID` is the Log Analytics workspace resource ID, in the format
+      `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}`
 
-10. Click **Next** to continue.
+      ```yaml
+      managedControlPlane:
+        addonProfiles:
+          - name: omsagent
+            enabled: true
+            config:
+              logAnalyticsWorkspaceResourceID: "<log-analytics-workspace-resource-id>"
+      ```
 
-11. Palette displays the cluster profile layers. Review the profile layers and customize parameters as desired in the
+11. Click **Next** to continue.
+
+12. Palette displays the cluster profile layers. Review the profile layers and customize parameters as desired in the
     YAML files that display when you select a layer.
 
     You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out
@@ -149,9 +151,9 @@ explains how you can create an Azure AKS cluster managed by Palette.
 
     :::
 
-12. Click **Next** to continue.
+13. Click **Next** to continue.
 
-13. Configure your Azure AKS cluster using the following table for reference.
+14. Configure your Azure AKS cluster using the following table for reference.
 
     :::warning
 
@@ -186,9 +188,9 @@ explains how you can create an Azure AKS cluster managed by Palette.
     | **Control Plane Subnet**   | Select the control plane subnet.                            |
     | **Worker Subnet**          | Select the worker network.                                  |
 
-14. Click **Next** to continue.
+15. Click **Next** to continue.
 
-15. Provide the following node pool and cloud configuration information. To learn more about node pools, review the
+16. Provide the following node pool and cloud configuration information. To learn more about node pools, review the
     [Node Pool](../../cluster-management/node-pool.md) guide.
 
     #### System Node Pool
@@ -248,24 +250,24 @@ explains how you can create an Azure AKS cluster managed by Palette.
     | **Managed disk**  | Choose a storage option. For more information, refer to Microsoft's [Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) reference. For information about Solid State Drive (SSD) disks, refer to [Standard SSD Disks for Azure Virtual Machine Workloads](https://azure.microsoft.com/en-us/blog/preview-standard-ssd-disks-for-azure-virtual-machine-workloads/) reference. |
     | **Disk size**     | You can choose disk size based on your requirements. The default size is **60**.                                                                                                                                                                                                                                                                                                                                                     |
 
-16. Click **Next** to continue.
+17. Click **Next** to continue.
 
-17. Specify your preferred **OS Patching Schedule**.
+18. Specify your preferred **OS Patching Schedule**.
 
-18. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
+19. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
     Kubernetes configuration security, penetration testing, and conformance testing.
 
-19. Schedule any backups you want Palette to perform. Review
+20. Schedule any backups you want Palette to perform. Review
     [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
-20. If you're using custom OIDC, configure the Role-Based Access Control (RBAC). You must map a set of users or groups
+21. If you're using custom OIDC, configure the Role-Based Access Control (RBAC). You must map a set of users or groups
     to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
     [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
     [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
 
-21. Click **Validate** and review the cluster configuration and settings summary.
+22. Click **Validate** and review the cluster configuration and settings summary.
 
-22. Click **Finish Configuration** to deploy the cluster. Provisioning Azure AKS clusters can take several minutes.
+23. Click **Finish Configuration** to deploy the cluster. Provisioning Azure AKS clusters can take several minutes.
 
 The cluster details page contains the status and details of the deployment. Use this page to track the deployment
 progress.
