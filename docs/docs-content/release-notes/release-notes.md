@@ -24,9 +24,18 @@ tags: ["release-notes"]
 
 #### Improvements
 
-- The Palette UI has been updated to improve the user experience for the project settings page and the tenant settings
-  page. The new **Settings Menu** enhances usability and reduces visual clutter. You can now collapse and expand
-  categories within the menu.
+- The Palette UI has been updated to improve the user experience for the project and tenant settings pages. The new
+  **Settings Menu** enhances usability and reduces visual clutter. You can now collapse and expand categories within the
+  **Settings Menu**.
+
+- Improvements to the Palette agent has reduced the frequency and bandwidth of agent communication with the Palette
+  management platform. This change reduces the resource consumption by the Palette agent in a cluster and the bandwidth
+  usage between the agent and the Palette management platform.
+
+- Palette API responses now includ the header`Cache-Control`. This header provides information on how long the response
+  can be cached and helps improve the performance of the Palette UI.
+
+- Self-Hosted Palette and Private Cloud Gateway (PCG) instances now use the vSphere CSI version 3.2.0.
 
 ### Edge
 
@@ -42,6 +51,81 @@ tags: ["release-notes"]
 #### Features
 
 - A new Palette API endpoint, `v1/edgehosts/tags`, is available to retrieve all tags associated with Edge clusters.
+
+### Automation
+
+- Terraform version 0.21.0 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
+- The Palette CLI now supports automatic validation when deploying a self-hosted VerteX or Palette instance. Use the
+  `--validate` flag to validate the deployment configuration before deploying the instance. Refer to the
+  [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section of the Palette EC
+  command documentation to learn more.
+
+### Docs and Education
+
+- Palette tutorials now have a dedicated view in the documentation. The [Tutorials](../tutorials/tutorials.md) page
+  provides a list of tutorials to help you get started with Palette and its features, and other advanced topics.
+
+### Packs
+
+#### Kubernetes
+
+| Pack                                       | New Version |
+| ------------------------------------------ | ----------- |
+| K3s                                        | 1.27.15     |
+| K3s                                        | 1.28.11     |
+| K3s                                        | 1.29.6      |
+| Palette eXtended Kubernetes (PXK)          | 1.27.15     |
+| Palette eXtended Kubernetes (PXK)          | 1.28.11     |
+| Palette eXtended Kubernetes (PXK)          | 1.29.6      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.15     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.28.11     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.6      |
+| RKE2                                       | 1.27.14     |
+| RKE2                                       | 1.28.10     |
+| RKE2                                       | 1.29.5      |
+| RKE2 - Edge                                | 1.27.14     |
+| RKE2 - Edge                                | 1.28.10     |
+| RKE2 - Edge                                | 1.29.5      |
+
+#### CNI
+
+| Pack   | New Version |
+| ------ | ----------- |
+| Calico | 3.28.0      |
+
+#### CSI
+
+| Pack        | New Version |
+| ----------- | ----------- |
+| AWS EFS     | 2.0.4       |
+| Rook Ceph   | 1.14.0      |
+| vSphere CSI | 3.2.0       |
+
+#### Add-on Packs
+
+| Pack                      | New Version |
+| ------------------------- | ----------- |
+| External Secrets Operator | 0.9.16      |
+| Kong                      | 2.38.0      |
+| Reloader                  | 1.0.74      |
+| Reloader                  | 1.0.107     |
+
+#### FIPS
+
+| Pack        | New Version |
+| ----------- | ----------- |
+| Calico      | 3.28.0      |
+| Flannel     | 0.24.3      |
+| RKE2        | 1.27.14     |
+| RKE2        | 1.28.10     |
+| RKE2        | 1.29.5      |
+| RKE2 - Edge | 1.27.14     |
+| RKE2 - Edge | 1.28.10     |
+| RKE2 - Edge | 1.29.5      |
 
 ## Jul 7, 2024 - Release 4.4.7
 
