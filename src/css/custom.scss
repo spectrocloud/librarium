@@ -11,6 +11,7 @@
 @import "./dark-mode.scss";
 @import "./reset.scss";
 @import "./table.scss";
+@import "./sidebars.scss";
 
 html {
   // mendable widget inline style affects fonts
@@ -37,6 +38,7 @@ html {
   --ifm-alert-shadow: unset;
   --openapi-demo-font-size-code: 10px;
   --openapi-demo-font-size-input: 10px;
+  --custom-sidebar-item-color: #aeb1be;
 }
 
 .markdown h1:first-child {
@@ -218,6 +220,12 @@ p img.markdown-image {
   @media (max-width: 768px) {
     display: none;
   }
+}
+
+// Allow hiding directories in docs-content
+
+.hidden-category {
+  display: none !important;
 }
 
 // Reduce the spacing between lines in code blocks
