@@ -53,9 +53,9 @@ you pin a column, it will always be visible.
 
 ## Organize Edge Host Grid View
 
-There are many ways in which you can customize and organize the grid view of your Edge hosts. You can reorder the
-columns, remove certain columns from view, pin a column, filter Edge hosts by attribute, and order the Edge hosts
-alphanumerically by a column.
+You can customize and organize the grid view of your Edge hosts in a number of ways. You can reorder the columns, 
+remove certain columns from view, pin a column, filter Edge hosts by attribute, and order the Edge hosts alphanumerically 
+by a column.
 
 ### Prerequisites
 
