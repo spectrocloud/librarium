@@ -11,6 +11,21 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## Jul 13, 2024 - Release 4.4.X
+
+### Palette
+
+### Edge
+
+#### Breaking Changes
+
+- A change in the EdgeForge process affects the Local UI customization process when using the CanvOS utility. In the
+  past, placing a folder named **ui** at the root level of the CanvOS project was required. Moving forward, the **ui**
+  folder will be placed in the **local-ui/** folder. This change is to align with the new CanvOS project structure. If
+  you are using the EdgeForge process to create Edge artifacts, ensure you update the location of the **ui** folder in
+  your CanvOS project. Refer to the Local UI [Custom Links](../clusters/edge/local-ui/host-management/custom-link.md)
+  and [Customize Local UI Theme](../clusters/edge/local-ui/host-management/theming.md) to learn more about the changes.
+
 ## Jul 7, 2024 - Release 4.4.7
 
 #### Bug Fixes
