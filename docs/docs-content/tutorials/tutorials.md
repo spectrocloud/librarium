@@ -39,7 +39,7 @@ Explore more through the following tutorials.
       title: "Deploy a Custom Pack",
       description: "Learn how to deploy applications to a Kubernetes cluster using Palette's custom packs.",
       buttonText: "Learn more",
-      relativeURL: "./profiles/packs-registries/deploy-pack/",
+      relativeURL: "./profiles/deploy-pack/",
     },
     {
       title: "Deploy a Cluster",
