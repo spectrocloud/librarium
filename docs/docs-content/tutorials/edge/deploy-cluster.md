@@ -495,7 +495,7 @@ is an explanation of the options and sub-command used below:
   - The `-force` flag destroys any existing template.
   - The `--var-file` option reads the **vsphere.hcl** file from the container. This file contains the VM template name,
     VM configuration, and ISO file name to use. The VM configuration conforms to the
-    [minimum device requirements](../../clusters/edge/hardware-requirements.md).
+    [minimum device requirements](../../clusters/edge/architecture.md#minimum-device-requirements).
 
   The **vsphere.hcl** file content is shown below for your reference. This tutorial does not require you to modify these
   configurations.
