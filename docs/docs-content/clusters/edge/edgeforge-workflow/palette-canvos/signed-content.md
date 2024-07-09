@@ -17,7 +17,7 @@ your Edge hosts come from a trusted source. For more information about content b
 
 ## Limitations
 
-- This feature is only available to Edge hosts without a connection to Palette.
+- This feature is only available to airgapped Edge hosts without a connection to Palette.
 
 ## Prerequisites
 
@@ -125,6 +125,8 @@ your Edge hosts come from a trusted source. For more information about content b
    created with a provider image with no keys, then the existing key will be removed.
 
 ## Validate
+
+Depending on the Edge artifact you have built, the validation steps are slightly different.
 
 <Tabs>
 

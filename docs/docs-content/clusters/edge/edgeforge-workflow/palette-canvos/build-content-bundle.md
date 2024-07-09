@@ -297,7 +297,7 @@ Creating a content bundle provides several benefits that may address common use 
      --cred-file-path <FILE_PATH> \
      --include-palette-content \
      --cluster-definition-name <CLUSTER_DEFINITION_FILENAME> \
-     --cluster-definition-profile-ids <CLUSTER_PROFILE_IDS> |
+     --cluster-definition-profile-ids <CLUSTER_PROFILE_IDS>
     ```
 
     Compared with the previous command, this command has two additional flags.

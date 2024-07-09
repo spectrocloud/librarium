@@ -149,11 +149,13 @@ a disconnected Edge host instance via [Local UI](../../local-ui/local-ui.md). Fo
 
    :::info
 
-   If you are including a content bundle in your ISO build and you are embedding a public key in your ISO, you do not
-   need to make sure that the content bundle is signed by the corresponding private key. This is because the public key
-   and the content bundle are expected to be provided by the same entity during build time, and therefore verification
-   is not needed. Content bundles that are uploaded through Local UI after an Edge host has been installed must have the
-   correct signature in order to be accepted by the Edge host.
+   If you are embedding a public key in your ISO, you do not need to sign the content bundle with the corresponding
+   private key when building the content bundle.
+
+   This is because the public key and the content bundle are provided by the same entity during build time, and
+   therefore verification is not needed. However, after the build is completed and an Edge host has already been
+   installed, content bundles that are uploaded through Local UI must have the correct signature in order to be accepted
+   by the Edge host.
 
    :::
 
