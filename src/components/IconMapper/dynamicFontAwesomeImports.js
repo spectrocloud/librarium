@@ -21,7 +21,6 @@ import { faGears } from '@fortawesome/free-solid-svg-icons';
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { faShield } from '@fortawesome/free-solid-svg-icons';
-import { faMicrochip } from '@fortawesome/free-solid-svg-icons';
 
 export const fontAwesomeIcons = {
   "cubes": faCubes,
@@ -46,6 +45,5 @@ export const fontAwesomeIcons = {
   "gears": faGears,
   "screwdriver-wrench": faScrewdriverWrench,
   "eye-slash": faEyeSlash,
-  "shield": faShield,
-  "microchip": faMicrochip
+  "shield": faShield
 };
