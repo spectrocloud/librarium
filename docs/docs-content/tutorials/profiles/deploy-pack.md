@@ -1,13 +1,12 @@
 ---
 sidebar_label: "Deploy a Custom Pack"
 title: "Deploy a Custom Pack"
-description: "How to create and deploy a custom pack using the manifest files or Helm charts in Spectro Cloud."
-icon: ""
-hide_table_of_contents: false
-toc_min_heading_level: 2
-toc_max_heading_level: 2
-sidebar_position: 40
+description:
+  "Learn how to deploy applications to a Kubernetes cluster using Palette's custom packs, hosted in either the Spectro
+  registry or an OCI registry."
+sidebar_position: 0
 tags: ["packs", "tutorial"]
+category: ["tutorial"]
 ---
 
 Custom add-on packs allow you to deploy Kubernetes applications in clusters and reuse them in multiple deployments. This
@@ -142,12 +141,10 @@ Spectro Cloud resources, which you will use later in this tutorial.
 
 ## Build a Pack
 
-Building a custom pack requires defining specific files. As outlined in the
-[Adding Add-on Packs](adding-add-on-packs.md) guide, you can define a custom pack in two ways: using manifest files or
-Helm charts. The file structure varies for manifest-based packs and Helm chart-based packs. Below is the reference file
-structure for each:
-
-<br />
+Building a custom pack involves defining specific files. As outlined in the
+[Adding Add-on Packs](../../registries-and-packs/adding-add-on-packs.md) guide, there are two ways to define a custom
+pack: using manifest files or Helm charts. The file structure differs for manifest-based packs and Helm chart-based
+packs. Below is the reference file structure for each.
 
 <Tabs>
 
@@ -231,10 +228,10 @@ Ensure you have the following files in the current directory.
 
 Go ahead and review each of the following five files in the pack.
 
-- **pack.json** - This file contains the pack metadata such as `addonType`, `cloudTypes`, and the `kubeManifests` array
-  that contains the list of manifest files: `layer`, `name`, and `version`. Refer to the
-  [JSON Schema](add-custom-packs.md#json-schema) for a list of attributes and respective data types. The schema
-  validation will happen when you push a pack to the registry.
+- **pack.json** - This file contains the pack metadata such as `addonType`, `cloudTypes`, and the `kubeManifests` array.
+  The array consists of a list of manifest files: `layer`, `name`, and `version`. Refer to the
+  [JSON Schema](../../registries-and-packs/add-custom-packs.md#json-schema) for a list of attributes and respective data
+  types. The schema validation happens when you push a pack to the registry.
 
   ```json
   {
@@ -274,7 +271,12 @@ Go ahead and review each of the following five files in the pack.
       tag: 1.0.12
   ```
 
-  <br />
+  Optionally, you can define _presets_, which are pack configuration values predefined in a file called **presets.yaml**
+  within the pack. Once defined, the **Presets** field becomes visible in both the **Clusters** and **Profile** sections
+  of the Palette UI. Users can select any preset from the available pack presets, and upon selection, the predefined
+  values of the chosen preset are applied to the pack. Refer
+  to [Pack Presets](../../registries-and-packs/pack-constraints.md#preset-attributes) for details and examples of how to
+  define presets.
 
   You can optionally define _presets_, which are predefined values to use in the **values.yaml**. You define presets in
   a separate **presets.yaml** file. The presets become available when you create the cluster profile. Presets facilitate
@@ -309,9 +311,9 @@ that registry, where you can access it directly from Palette.
 
 ## Set Up the Registry Server
 
-The tutorials environment already has the Spectro registry service and other necessary tools available. The following
-sections will guide you to start the registry server, expose the service to the external world using
-[Ngrok](https://ngrok.com/) reverse proxy, and log in to the registry server to push your custom add-on pack to it.
+You can set up a registry server using either the Spectro registry or an OCI-compliant registry. Palette supports all
+OCI-compliant registries, and you can refer to the
+[Spectro Cloud OCI Registry](../../registries-and-packs/oci-registry/oci-registry.md) resource for more information.
 
 ### Start and Expose the Registry Server
 
@@ -324,8 +326,8 @@ container.
 registry serve /etc/spectro/config.yml > /var/log/registry.log 2>&1 &
 ```
 
-The registry server will start in HTTP mode (not HTTPS). Refer to the
-[Add a Custom Registry](adding-a-custom-registry.md) guide to learn more about deploying an HTTPS registry server.
+The registry server starts in HTTP mode. If you want to deploy an HTTPS registry server, refer to the
+[Add a Custom Registry](../../registries-and-packs/adding-a-custom-registry.md) guide.
 
 Next, expose the registry server to the public so that you can configure it later in Palette. Use Ngrok reverse proxy to
 expose the registry server listening on port 5000 via an HTTP tunnel using the following command.
@@ -419,7 +421,8 @@ Verify the pack you pushed is listed, as shown in the screenshot below.
 
 ![Screenshot of spectro pack ls](/tutorials/deploy-pack/registries-and-packs_deploy-pack_pack-push.webp)
 
-<br />
+For assistance with Spectro CLI commands, refer to the
+[Spectro CLI Commands](../../registries-and-packs/spectro-cli-reference.md#commands) guide.
 
 If you need help with the Spectro CLI commands, such as deleting a pack, refer to the
 [Spectro CLI commands](spectro-cli-reference.md#commands) guide.
@@ -581,7 +584,7 @@ Now you are ready to add the add-on layers. Click the **Add New Pack** button.
 
 Add the Spectro Proxy pack to enable a reverse proxy to connect to the cluster's API. Adding this pack is _optional_,
 but it will help connect your local machine to the cluster's API for debugging. Refer to the
-[Spectro Proxy](../integrations/frp.md) guide for more details.
+[Spectro Proxy](../../integrations/frp.md) guide for more details.
 
 | **Pack Type**  | **Registry** | **Pack Name** | **Pack Version** |
 | -------------- | ------------ | ------------- | ---------------- |
@@ -831,8 +834,7 @@ We recommend you explore all Terraform files. Below is a high-level overview of 
   | Storage       | Public Repo  | `csi-aws-ebs` | `1.16.x`      | `1.16.0`    |
 
   Note that using this Terraform code will deploy the resources to AWS. To deploy your resource to Azure or Google
-  Cloud, use the layer details outlined in [Cloud Service Provider Configurations]
-  (https://github.com/spectrocloud/tutorials/tree/main/terraform/pack-tf/README.md#cloud-service-provider-configurations).
+  Cloud, use the layer details outlined in [Cloud Service Provider Configurations] (https://github.com/spectrocloud/tutorials/tree/main/terraform/pack-tf/README.md#cloud-service-provider-configurations).
 
 - **inputs.tf** - contains the variables used in the tutorial such as the names of cluster profile, cluster, cloud
   account, SSH key name, AWS region, pack name, and registry server.
@@ -1111,8 +1113,8 @@ deployment scripts. All you need to do is maintain the cluster profiles.
 
 To learn more about packs in Palette, we encourage you to check out the reference resources below.
 
-- [Custom OS Pack](../integrations/byoos.md)
+- [Custom OS Pack](../../integrations/byoos.md)
 
-- [Add-on Packs](adding-add-on-packs.md)
+- [Add-on Packs](../../registries-and-packs/adding-add-on-packs.md)
 
-- [Pack Constraints](pack-constraints.md)
+- [Pack Constraints](../../registries-and-packs/pack-constraints.md)

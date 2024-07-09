@@ -324,8 +324,7 @@ to allow users greater flexibility and more control over the installation proces
 
 Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other highlights include a streamlined
 experience for installing the Kubernetes Dashboard in a cluster, a new security scan, auto registration capabilities for
-edge devices, new [out-of-the-box services](devx/services/service-listings/service-listings.mdx, and many other product
-enhancements.
+edge devices, new [out-of-the-box services](devx/services/service-listings/service-listings.mdx, and many other product enhancements.
 
 ### Palette
 
