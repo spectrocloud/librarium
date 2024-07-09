@@ -14,17 +14,15 @@ allows you to create and manage Palette resources using Infrastructure as Code (
 provisioning of resources, collaborate in infrastructure changes, and maintain a single source of truth for your
 infrastructure.
 
-This tutorial will teach you how to use Terraform to deploy and update a host cluster to Amazon Web Services (AWS). You
-will learn how to create different versions of a cluster profile with different demo applications, update the deployed
-cluster with the new profile version, and then perform a cluster profile rollback.
+This tutorial will teach you how to use Terraform to deploy and update an Amazon Web Services (AWS) host cluster. You
+will learn how to create two versions of a cluster profile with different demo applications, update the deployed cluster
+with the new profile version, and then perform a cluster profile rollback.
 
 ## Prerequisites
 
 To complete this tutorial, you will need the following items in place:
 
 - Tenant admin access to Palette.
-- A public cloud account from
-  [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account).
 - Follow the steps described in the [Set up Palette with AWS](./setup.md) guide to authenticate Palette for use with
   your AWS cloud account and create a Palette API key.
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) or [Podman](https://podman.io/docs/installation)
@@ -394,7 +392,7 @@ Success! 16 passed, 0 failed.
 ## Input Variables
 
 To deploy a cluster using Terraform, you must first modify the **terraform.tfvars** file. Open it in the editor of your
-choice. The tutorial container includes [Nano](https://www.nano-editor.org).
+choice. The tutorial container includes the editor [Nano](https://www.nano-editor.org).
 
 The file is structured with different sections. Each provider has a section with variables that need to be filled in,
 identified by the placeholder `REPLACE_ME`. Additionally, there is a toggle variable named `deploy-<cloud-provider>`
@@ -715,7 +713,7 @@ delete the cluster. Palette automatically removes clusters stuck in the cluster 
 :::
 
 If you are using the tutorial container, type `exit` in your terminal session and press the **Enter** key. Next, issue
-the following command to stop the container.
+the following command to stop and remove the container.
 
 <Tabs>
 
