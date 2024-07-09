@@ -8,9 +8,6 @@ sidebar_position: 50
 tags: ["edge"]
 ---
 
-Edge hosts are often deployed in remote locations with minimal security. Therefore, it is important to ensure that all
-content that is uploaded to your Edge host can be verified with cryptographic keys.
-
 EdgeForge gives you the option to embed public keys in the installer ISO and provider images. When an Edge host has an
 embedded public keys, all content uploaded to the Edge host, including content bundles and cluster definitions must
 contain a signature from the corresponding private key. This allows you to be confident that all content uploaded to
@@ -26,6 +23,10 @@ your Edge hosts come from a trusted source. For more information about content b
 
 - Embedding public keys is part of the EdgeForge process. Become familiar with EdgeForge before proceeding with this
   guide. For more information, refer to [EdgeForge](../edgeforge-workflow.md).
+
+- [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
+
+- [openssl](https://www.openssl.org/docs). You can ensure openssl installation by issuing the `openssl --help` command.
 
 - An RSA key pair. Both the public and private key must be in PEM format. You can use `openssl` to convert keys from
   other formats into PEM. For more information, refer to
@@ -44,8 +45,6 @@ your Edge hosts come from a trusted source. For more information about content b
   - 8 GB memory
   - 150 GB storage. If you plan on using a content bundle, the actual storage will depend on the size of the content
     bundle you will use to build the Edge installer ISO image.
-
-- [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
 
 ## Embed a Public Key in Edge Artifacts
 
@@ -76,7 +75,8 @@ your Edge hosts come from a trusted source. For more information about content b
 5. In **CanvOS**, create a file named **.edge_custom_config,yaml**.
 
 6. Populate the YAML file with the following content. Replace the value for `base64EncodedValue` with the base64 encoded
-   value of your public key.
+   value of your public key. The PEM format is base64 encoded. If you have your public key in the PEM format, you only
+   need to copy the base64 portion of the key, without the header nor footer.
 
    ```yaml
    content:
@@ -106,6 +106,15 @@ your Edge hosts come from a trusted source. For more information about content b
 
 8. Finish the rest of the EdgeForge process to build either the installer ISO or provider images. For more information,
    refer to [Build Installer ISO](./build-installer-iso.md) and [Build Provider Images](./build-provider-images.md).
+
+   :::info
+
+   When building the installer ISO, you must set the `installationMode` parameter to `airgap` in your Edge installer
+   configuration user data. This ensures that your Edge host does not try to register itself with Palette, as this
+   feature is not available to connected clusters. For more information, refer to
+   [Installer Reference](../../edge-configuration/installer-reference.md#install-mode).
+
+   :::
 
 ## Rotate or Remove Key
 
