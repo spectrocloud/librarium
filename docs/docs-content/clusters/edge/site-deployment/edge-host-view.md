@@ -47,15 +47,15 @@ you pin a column, it will always be visible.
 | CPU          | The number of cores that the CPU of the Edge host has.                                                                                                                                                                                                                                | Yes              |
 | Memory       | The amount of RAM that an Edge host has.                                                                                                                                                                                                                                              | Yes              |
 | OS           | The operating system of the Edge host. If it is already part of a cluster, this column will show the tag of the provider image used to form the cluster.                                                                                                                              | Yes              |
-| IP Address   | The IP address of the Edge host.                                                                                                                                                                                                                                                      | NO               |
-| MAC Address  | The MAC address of the Edge host.                                                                                                                                                                                                                                                     | NO               |
-| Architecture | The architecture of the Edge host's processor. Possible values are **AMD64** and **ARM64**.                                                                                                                                                                                           | NO               |
+| IP Address   | The IP address of the Edge host.                                                                                                                                                                                                                                                      | No               |
+| MAC Address  | The MAC address of the Edge host.                                                                                                                                                                                                                                                     | No               |
+| Architecture | The architecture of the Edge host's processor. Possible values are **AMD64** and **ARM64**.                                                                                                                                                                                           | No               |
 
 ## Organize Edge Host Grid View
 
-You can customize and organize the grid view of your Edge hosts in a number of ways. You can reorder the columns, 
-remove certain columns from view, pin a column, filter Edge hosts by attribute, and order the Edge hosts alphanumerically 
-by a column.
+You can customize and organize the grid view of your Edge hosts in a number of ways. You can reorder the columns, remove
+certain columns from view, pin a column, filter Edge hosts by attribute, and order the Edge hosts alphanumerically by a
+column.
 
 ### Prerequisites
 
