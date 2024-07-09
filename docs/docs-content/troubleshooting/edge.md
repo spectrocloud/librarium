@@ -13,7 +13,7 @@ The following are common scenarios that you may encounter when using Edge.
 ## Scenario - IP Address not Assigned to Edge Host
 
 When you add a new VMware vSphere Edge host to an Edge cluster, the IP address may fail to be assigned to the Edge host
-upon its reboot.
+after a reboot.
 
 ### Debug Steps
 
@@ -26,7 +26,7 @@ upon its reboot.
    networkctl reload
    ```
 
-   This command restarts the Edge host network and allows the Edge host to receive an IP address correctly.
+   This command restarts the Edge host network and allows the Edge host to receive an IP address.
 
 ## Scenario - Override or Reconfigure Read-only File System Stage
 
