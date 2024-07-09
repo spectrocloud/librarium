@@ -614,24 +614,24 @@ from the left **Main Menu**.
 Select the cluster named `aws-cluster`. Click on the **Events** tab. Note how a cluster reconciliation action was
 triggered due to cluster profile changes.
 
-![Image that shows the cluster profile reconciliation behavior](/getting-started/aws/getting-started_update-k8s-cluster_reconciliation.webp)
+![Image that shows the cluster profile reconciliation behavior](/getting-started/aws/getting-started_deploy-manage-k8s-cluster_reconciliation.webp)
 
 Next, click on the **Profile** tab. Observe that the cluster is now using version `1.1.0` of the `tf-aws-profile`
 cluster profile.
 
-![Image that shows the new cluster profile version with Kubecost](/getting-started/aws/getting-started_update-k8s-cluster_profile-with-cluster.webp)
+![Image that shows the new cluster profile version with Kubecost](/getting-started/aws/getting-started_deploy-manage-k8s-cluster_profile-with-cluster.webp)
 
 Once the changes have been completed, Palette marks the cluster layers with a green status indicator. Click the
 **Overview** tab to verify that the Kubecost pack was successfully deployed.
 
-![Image that shows the cluster with Kubecost](/getting-started/aws/getting-started_update-k8s-cluster_profile-with-kubecost.webp)
+![Image that shows the cluster with Kubecost](/getting-started/aws/getting-started_deploy-manage-k8s-cluster_profile-with-kubecost.webp)
 
 Next, download the
 [kubeconfig](https://deploy-preview-3173--docs-spectrocloud.netlify.app/clusters/cluster-management/kubeconfig/) file
 for your cluster from the Palette UI. This file enables you and other users to issue `kubectl` commands against the host
 cluster.
 
-![Image that shows the cluster's kubeconfig file location](/getting-started/aws/getting-started_update-k8s-cluster_kubeconfig.webp)
+![Image that shows the cluster's kubeconfig file location](/getting-started/aws/getting-started_deploy-manage-k8s-cluster_kubeconfig.webp)
 
 Open a new terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
 
@@ -652,7 +652,7 @@ information about your cluster. Read more about
 [Navigating the Kubecost UI](https://docs.kubecost.com/using-kubecost/navigating-the-kubecost-ui) to make the most of
 the cost analyzer pack.
 
-![Image that shows the Kubecost UI](/getting-started/aws/getting-started_update-k8s-cluster_kubecost.webp)
+![Image that shows the Kubecost UI](/getting-started/aws/getting-started_deploy-manage-k8s-cluster_kubecost.webp)
 
 Once you are done exploring the Kubecost dashboard, stop the `kubectl port-forward` command by closing the terminal
 window it is executing from.
@@ -689,7 +689,7 @@ terraform apply -auto-approve
 Palette now makes the changes required for the cluster to return to the state specified in version `1.0.0` of your
 cluster profile. Once your changes have completed, Palette marks your layers with the green status indicator.
 
-![Image that shows the cluster using version 1.0.0 of the cluster profile](/getting-started/aws/getting-started_update-k8s-cluster_profile-without-kubecost.webp)
+![Image that shows the cluster using version 1.0.0 of the cluster profile](/getting-started/aws/getting-started_deploy-manage-k8s-cluster_profile-without-kubecost.webp)
 
 ## Cleanup
 
