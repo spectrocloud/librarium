@@ -11,12 +11,12 @@ tags: ["getting-started", "aws", "terraform"]
 
 The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider
 allows you to create and manage Palette resources using Infrastructure as Code (IaC). With IaC, you can automate the
-provisioning of resources, collaborate in infrastructure changes, and maintain a single source of truth for your
+provisioning of resources, collaborate on changes, and maintain a single source of truth for your
 infrastructure.
 
 This tutorial will teach you how to use Terraform to deploy and update an Amazon Web Services (AWS) host cluster. You
 will learn how to create two versions of a cluster profile with different demo applications, update the deployed cluster
-with the new profile version, and then perform a cluster profile rollback.
+with the new cluster profile version, and then perform a rollback.
 
 ## Prerequisites
 
@@ -42,8 +42,7 @@ downloading a container image that includes the tutorial code and all dependenci
 
 <TabItem label="Docker" value="docker">
 
-Start Docker Desktop and ensure that the Docker daemon is available by issuing a command to list the currently active
-containers.
+Start Docker Desktop and ensure that the Docker daemon is available by issuing the following command.
 
 ```bash
 docker ps
@@ -214,14 +213,14 @@ provider "spectrocloud" {
 
 #### Cluster Profile
 
-The next file you should become familiar with is the **cluster-profiles.tf** file. The `spectrocloud_cluster_profile`
+The next file you should become familiar with is the **cluster_profiles.tf** file. The `spectrocloud_cluster_profile`
 resource allows you to create a cluster profile and customize its layers. You can specify the packs and versions to use
 or add a manifest or Helm chart.
 
 The cluster profile resource is declared eight times in the **cluster-profiles.tf** file, with each pair of resources
 being designated for a specific provider. In this tutorial, two versions of the AWS cluster profile are deployed:
 version `1.0.0` deploys the [Hello Universe](https://github.com/spectrocloud/hello-universe) pack, while version `1.1.0`
-additionally deploys the [Kubecost](https://www.kubecost.com/) pack.
+deploys the [Kubecost](https://www.kubecost.com/) pack along with the [Hello Universe](https://github.com/spectrocloud/hello-universe) application.
 
 The cluster profiles include layers for the Operating System (OS), Kubernetes, container network interface, and
 container storage interface. The first `pack {}` block in the list equates to the bottom layer of the cluster profile.
@@ -301,7 +300,7 @@ resource "spectrocloud_cluster_profile" "aws-profile" {
 
 #### Data Resources
 
-You may have noticed that each `pack {}` block contains references to a data resource.
+Each `pack {}` block contains references to a data resource.
 [Data resources](https://developer.hashicorp.com/terraform/language/data-sources) are used to perform read actions in
 Terraform. The Spectro Cloud Terraform provider exposes several data resources to help you make your Terraform code more
 dynamic. The data resource used in the cluster profile is `spectrocloud_pack`. This resource enables you to query
@@ -383,7 +382,7 @@ Issue the following command in your terminal.
 terraform test
 ```
 
-The output should be similar to the following.
+A successful test run will output the following.
 
 ```text hideClipboard
 Success! 16 passed, 0 failed.
@@ -567,9 +566,9 @@ resource "spectrocloud_cluster_profile" "aws-profile" {
 ```
 
 Open the **terraform.tfvars** file, set the `deploy-aws-kubecost` variable to true, and save the file. Once applied,
-this action will make the host cluster use version `1.1.0` of the cluster profile with the Kubecost pack.
+the host cluster will use version `1.1.0` of the cluster profile with the Kubecost pack.
 
-The snippet below displays a segment of the Terraform resource that creates the cluster profile version `1.1.0`. Note
+The snippet below displays the segment of the Terraform resource that creates the cluster profile version `1.1.0`. Note
 how the name `tf-aws-profile` is the same as in the first cluster profile resource, but the version is different.
 
 ```hcl {4,9}
@@ -661,7 +660,7 @@ One of the key advantages of using cluster profile versions is that they make it
 previously known working states. The ability to roll back to a previously working cluster profile in one action shortens
 the time to recovery in the event of an incident.
 
-The process to roll back to a previous version using Terraform is similar to the process for applying a new version.
+The process of rolling back to a previous version using Terraform is similar to the process of applying a new version.
 
 Open the **terraform.tfvars** file, set the `deploy-aws-kubecost` variable to false, and save the file. Once applied,
 this action will make the active cluster use version **1.0.0** of the cluster profile again.
