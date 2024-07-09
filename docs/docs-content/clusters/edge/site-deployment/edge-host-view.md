@@ -73,6 +73,8 @@ There are many ways in which you can customize and organizae the grid view of yo
    | Filter Edge Hosts by Attribute | At the top of the grid, click on **Tags**, **Status**, and **Architecture** depending on the attribute you want to filter by, and then choose the value you want to filter by.  |
    | Order by a Column              | Click on the label row of the column you want to order by alphanumeric order. You can click it again to change the sort order. You can only sort by one column at a time.       |
 
+![A screen shot of the Edge host grid view complete with arrows pointing to the elements referred to by the preceding table](clusters_edge_site-deployment_edge-grid-view.webp)
+
 ### Validate
 
 After taking the action to customize the grid view, the modified view will be reflected immediately. Confirm that the
