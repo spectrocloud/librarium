@@ -12,8 +12,8 @@ The following are common scenarios that you may encounter when using Edge.
 
 ## Scenario - IP Address not Assigned to Edge Host
 
-After adding an Edge host to a cluster and performing a VMware vSphere upgrade, the IP address may fail to be assigned
-to the Edge host upon its reboot.
+When you add an Edge host to a cluster and perform a VMware vSphere upgrade, the IP address may fail to be assigned to
+the Edge host upon its reboot.
 
 ### Debug Steps
 
