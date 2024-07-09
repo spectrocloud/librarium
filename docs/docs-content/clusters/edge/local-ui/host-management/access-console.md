@@ -95,8 +95,6 @@ You can change the password of an OS user through Local UI, through the terminal
 
   :::
 
-- If you are changing
-
 ### Instructions
 
 <Tabs>
