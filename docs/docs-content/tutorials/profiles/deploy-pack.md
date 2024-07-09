@@ -289,8 +289,7 @@ the pack to the registry, and configure the registry in Palette.
 
 You can set up a registry server using either the Spectro registry or an OCI-compliant registry. Palette supports all
 OCI-compliant registries, and you can refer to the
-[Spectro Cloud OCI Registry](../../registries-and-packs/registries/oci-registry/oci-registry.md) resource for more
-information.
+[Spectro Cloud OCI Registry](../../registries-and-packs/oci-registry/oci-registry.md) resource for more information.
 
 The tutorial environment already includes the Spectro registry service and other necessary tools. For OCI registries, as
 per the [Prerequisites](#prerequisites) section, ensure you have an active OCI registry. Two types of OCI authentication
@@ -1330,4 +1329,4 @@ To learn more about packs in Palette, we encourage you to check out the referenc
 
 - [Pack Constraints](../../registries-and-packs/pack-constraints.md)
 
-- [OCI Registry](../../registries-and-packs/registries/oci-registry/oci-registry.md)
+- [OCI Registry](../../registries-and-packs/oci-registry/oci-registry.md)
