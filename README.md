@@ -602,8 +602,16 @@ To add tutorials to an existing category, create a new **.md** file in the respe
 
 ## Partials Component
 
-This is a custom component that allows you to create and use
-[Import Markdown](https://docusaurus.io/docs/3.2.1/markdown-features/react#importing-markdown).
+This is a custom component that allows you to create and use Docusaurus'
+[Import Markdown](https://docusaurus.io/docs/markdown-features/react#importing-markdown) functionality.
+
+> [!IMPORTANT]  
+> Docusaurus does not provide the ability to dynamically configure table of contents. See
+> [this issue](https://github.com/facebook/docusaurus/issues/6201) for more information. This means that you should
+> avoid adding headings to partials that you intend to use with the Partials Component.
+>
+> If you require headings, then you should import your partials using the guidance on the Docusaurus
+> [Import Markdown](https://docusaurus.io/docs/markdown-features/react#importing-markdown) page.
 
 Partials must be created under the `_partials` folder. They must be named using an `_` prefix and the `*.mdx` filetype.
 Partials may be organised in any further subfolders as required. For example, you could create
@@ -655,7 +663,7 @@ partial_name: palette-setup
 
 This is how you set up Palette in {props.cloud}.
 
-This is an <VersionedLink name="Internal Link" url="/getting-started/additional-capabilities"/>.
+This is a <VersionedLink text="Internal Link" url="/getting-started/additional-capabilities"/>`.
 ```
 
 The path of the link should be the path of the destination file from the root directory, without any back operators
