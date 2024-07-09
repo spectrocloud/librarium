@@ -239,8 +239,7 @@ VMware cloud account with the same name as the PCG.
 The following recording demonstrates the `pcg install` command with the `--config-only` flag. When using this flag, a
 reusable configuration file named **pcg.yaml** is created under the path **.palette/pcg**. You can then utilize this
 file to install a PCG with predefined values using the command `pcg install` with the `--config-file` flag. Refer to the
-[Palette CLI PCG Command](../../../automation/palette-cli/commands/pcg.md) page for further information about the
-command.
+[Palette CLI PCG Command](../../../automation/palette-cli/commands.md#pcg).
 
 <Video title="palette-pcg-config-only" src="/videos/palette-pcg.mp4"></Video>
 

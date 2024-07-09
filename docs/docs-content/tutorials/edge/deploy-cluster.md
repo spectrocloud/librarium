@@ -857,7 +857,8 @@ Click on the **Next layer** button to add the following Kubernetes layer to your
 
 Select the K3s version 1.25.x. 1.25.X because earlier in this tutorial, you pushed a provider image compatible with K3s
 v1.25.2 to the _ttl.sh_ image registry. The `system.uri` attribute of the BYOOS pack will reference the Kubernetes
-version you select using the `{{ .spectro.system.kubernetes.version }}` [macro](../../cluster-management/macros.md).
+version you select using the `{{ .spectro.system.kubernetes.version }}`
+[macro](../../clusters/cluster-management/macros.md).
 
 Click on the **Next layer** button, and add the following network layer. This example uses the Calico Container Network
 Interface (CNI). However, you can choose a different CNI pack that fits your needs, such as Flannel, Cilium, or Custom
