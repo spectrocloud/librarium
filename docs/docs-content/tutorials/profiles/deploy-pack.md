@@ -281,7 +281,8 @@ Go ahead and review each of the following five files in the pack.
   You can optionally define _presets_, which are predefined values to use in the **values.yaml**. You define presets in
   a separate **presets.yaml** file. The presets become available when you create the cluster profile. Presets facilitate
   configuring the profile and avoid errors that can happen by manually editing the **values.yaml** file. Refer
-  [Pack Presets](pack-constraints.md#pack-presets) for details and examples of how to define presets.
+  [Pack Presets](../../registries-and-packs/pack-constraints.md#pack-presets) for details and examples of how to define
+  presets.
 
   The example below shows the parameters you can configure in the **values.yaml** for the `hello-universe` manifest when
   you create the cluster profile.
@@ -313,7 +314,7 @@ that registry, where you can access it directly from Palette.
 
 You can set up a registry server using either the Spectro registry or an OCI-compliant registry. Palette supports all
 OCI-compliant registries, and you can refer to the
-[Spectro Cloud OCI Registry](../../registries-and-packs/oci-registry/oci-registry.md) resource for more information.
+[Spectro Cloud OCI Registry](../../registries-and-packs/oci-registry.md) resource for more information.
 
 ### Start and Expose the Registry Server
 
@@ -425,7 +426,7 @@ For assistance with Spectro CLI commands, refer to the
 [Spectro CLI Commands](../../registries-and-packs/spectro-cli-reference.md#commands) guide.
 
 If you need help with the Spectro CLI commands, such as deleting a pack, refer to the
-[Spectro CLI commands](spectro-cli-reference.md#commands) guide.
+[Spectro CLI commands](../../registries-and-packs/spectro-cli-reference.md#commands) guide.
 
 <br />
 
@@ -488,7 +489,7 @@ provided you configure the following two items:
   The AWS cloud account name in this tutorial example is **spectro-cloud**. You can choose another name if desired. The
   screenshot below shows how to add and verify the AWS cloud account with your project. Navigate to **Project
   Settings** > **Cloud Accounts** > **AWS** > **Add AWS Account** in Palette. Check out the
-  [Register and Manage AWS Accounts](../clusters/public-cloud/aws/add-aws-accounts.md) guide for additional help.
+  [Register and Manage AWS Accounts](../../clusters/public-cloud/aws/add-aws-accounts.md) guide for additional help.
 
   <br />
 

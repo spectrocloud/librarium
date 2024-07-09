@@ -275,7 +275,7 @@ documentation.
 ### Education
 
 - Learn how to create a custom pack and how to deploy the custom pack to a Palette registry server with the
-  [Create and Deploy a Custom Add-On Pack](registries-and-packs/deploy-pack.md) tutorial.
+  [Create and Deploy a Custom Add-On Pack](tutorials/profiles/deploy-pack.md) tutorial.
 
 - An introductory tutorial on deploying a Palette-managed cluster to public cloud providers is now available. Learn to
   deploy a host cluster with Palette using the Palette user interface or Terraform. Check out the

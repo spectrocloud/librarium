@@ -349,7 +349,3 @@ selection to remove the cluster profile.
 In this tutorial, you used the cluster profile you created in the previous
 [Create a Cluster Profile](./create-cluster-profile.md) tutorial to deploy a host cluster onto your preferred cloud
 service provider. After the cluster deployed, you verified the Hello Universe application was successfully deployed.
-
-We recommend that you continue to the
-[Deploy Cluster Profile Updates](../tutorials/cluster-management/update-maintain/update-k8s-cluster.md) tutorial to
-learn how to update your host cluster.
