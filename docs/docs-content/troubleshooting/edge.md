@@ -10,6 +10,24 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - IP Address not Assigned to Edge Host
+
+When you add a new VMware vSphere Edge host to an Edge cluster, the IP address may fail to be assigned to the Edge host
+after a reboot.
+
+### Debug Steps
+
+1. Access the Edge host through the
+   [vSphere Web Console](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-92986CAA-4FDE-4AA0-A9E9-084FF9E03323.html).
+
+2. Issue the following command.
+
+   ```bash
+   networkctl reload
+   ```
+
+   This command restarts the Edge host network and allows the Edge host to receive an IP address.
+
 ## Scenario - Override or Reconfigure Read-only File System Stage
 
 If you need to override or reconfigure the read-only file system, you can do so using the following steps.
