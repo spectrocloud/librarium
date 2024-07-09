@@ -8,7 +8,7 @@ sidebar_custom_props:
   icon: "graph"
 ---
 
-The API documentation section includes documentation for Palette API and Local Management API.
+The API documentation section includes documentation for Palette API and Edge Management API.
 
 ## Palette API
 
@@ -260,14 +260,20 @@ The API rate limits are as follows:
 | /v1/clusterprofiles/:uid/validate/packs                                                 | 50                     | 5              | 250                |
 | /v1/spectroclusters/:uid/profiles                                                       | 50                     | 5              | 250                |
 
-## Local Management API
+## Edge Management API
 
 An Edge host has its own set of API endpoints. These API endpoints are available on each Edge host instead of on a
-Palette instance. You can use Local Management API endpoints to programmatically perform tasks such as retrieve
+Palette instance. You can use Edge Management API endpoints to programmatically perform tasks such as retrieve
 information about Edge clusters, retrieve the list of available images on your Edge host, and create local clusters
 using embedded cluster definitions.
 
-You can find the Open API Swagger specification for the Local Management API at the following location:
+:::warning
+
+The Edge Management API endpoints are only available to airgapped Edge hosts without a connection to Palette.
+
+:::
+
+You can find the Open API Swagger specification for the Edge Management API at the following location:
 https://raw.githubusercontent.com/spectrocloud/librarium/version-4-3/docs/api-content/api-docs/edge-v1/emc-api.json
 
 :::preview
@@ -297,16 +303,15 @@ If your credentials are valid, you will receive a authorization token.
         "Authorization": "******"
     }
 }
-
 ```
 
-Include this token in the header of your subsequent requests to the Local Management API to authenticate your requests.
+Include this token in the header of your subsequent requests to the Edge Management API to authenticate your requests.
 For example, the following request retrieves information about the Edge host such as the processor architecture and the
 host name.
 
 ```shell
 curl --location 'https://10.10.135.182:5080/v1/edge-mgmt/edgehosts/current' \
---header 'Authorization: *******'
+--header 'Cookie: Authorization=*******'
 ```
 
 ```hideClipboard
