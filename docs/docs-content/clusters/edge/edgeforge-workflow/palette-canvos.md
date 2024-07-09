@@ -882,8 +882,8 @@ process means installing the necessary tools and configurations on a host machin
 
 After building the Edge artifacts and creating an Edge cluster profile, the next step is to use the Edge installer ISO
 image to prepare your Edge host. To learn more about utilizing Edge artifacts to prepare Edge hosts and deploy
-Palette-managed Edge clusters, we encourage you to check out the reference resources below. <br />
+Palette-managed Edge clusters, we encourage you to check out the reference resources below.
 
-- [Deploy an Edge Cluster on VMware](../site-deployment/deploy-cluster.md)
+- [Deploy an Edge Cluster on VMware](../../../tutorials/edge/deploy-cluster.md)
 
 - [Prepare Edge Host for Installation](../site-deployment/stage.md)

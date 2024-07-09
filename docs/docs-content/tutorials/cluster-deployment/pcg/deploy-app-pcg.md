@@ -1,14 +1,12 @@
 ---
+sidebar_position: 0
 sidebar_label: "Deploy App Workloads with a PCG"
 title: "Deploy App Workloads with a PCG"
 description:
   "Learn how to deploy a Private Cloud Gateway (PCG) to connect your data center or private cloud environment to
   Palette. This tutorial teaches you how to launch a PCG, create a data center cluster, and deploy a demo application."
-hide_table_of_contents: false
-toc_min_heading_level: 2
-toc_max_heading_level: 2
-sidebar_position: 50
 tags: ["pcg", "tutorial"]
+category: ["tutorial"]
 ---
 
 Palette Private Cloud Gateway (PCG) is a crucial infrastructure support component that acts as a bridge between your
@@ -24,11 +22,11 @@ either deploy or delete Kubernetes clusters within the environment. This connect
 that is encrypted using the Transport Layer Security (TLS) protocol. Once a cluster is deployed, the PCG is no longer
 involved in the communication between Palette and the deployed cluster. The cluster then communicates directly with
 Palette through the Palette agent available within each cluster, which originates all network requests outbound toward
-Palette. Refer to the [PCG Architecture](./architecture.md) section for more information.
+Palette. Refer to the [PCG Architecture](../../../clusters/pcg/architecture.md) section for more information.
 
 A PCG comprises a cluster of nodes and can be deployed using two methods. The first method uses the Palette CLI to
 deploy a PCG in one of the three supported infrastructure environments; MAAS, OpenStack, or VMware vSphere. The other
-method manually deploys a PCG [onto an existing Kubernetes cluster](./deploy-pcg-k8s.md).
+method manually deploys a PCG [onto an existing Kubernetes cluster](../../../clusters/pcg/deploy-pcg-k8s.md).
 
 In this tutorial, you will deploy a VMware PCG using Palette CLI. Next, you will learn how to deploy a VMware cluster
 with a sample Kubernetes application called
@@ -44,13 +42,13 @@ each other.
 
 To complete this tutorial, you will need the following prerequisites in place.
 
-    - A Palette account with [tenant admin](../../tenant-settings/tenant-settings.md) access.
-    - A Palette API key. Refer to the [Create API Key](../../user-management/authentication/api-key/create-api-key.md) page for instructions on how to create an API key.
-    - A [VMware vSphere](https://docs.vmware.com/en/VMware-vSphere/index.html) user account with the [required permissions](../data-center/vmware/permissions.md).
+    - A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+    - A Palette API key. Refer to the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md) page for instructions on how to create an API key.
+    - A [VMware vSphere](https://docs.vmware.com/en/VMware-vSphere/index.html) user account with the [required permissions](../../../clusters/data-center/vmware/permissions.md).
     - A Linux x86-64 machine with access to a terminal and Internet, as well as connection to both Palette and VMware vSphere.
-    - An SSH key pair. Use the [Create and Upload an SSH Key](../cluster-management/ssh-keys.md) guide to learn how to create an SSH key and upload it to Palette.
+    - An SSH key pair. Use the [Create and Upload an SSH Key](../../../clusters/cluster-management/ssh-keys.md) guide to learn how to create an SSH key and upload it to Palette.
     - The following IP address requirements must be met in your VMware vSphere environment:
-        - One IP address available for the single-node PCG deployment. Refer to the [PCG Sizing](./manage-pcg/scale-pcg-nodes.md) section for more information on sizing.
+        - One IP address available for the single-node PCG deployment. Refer to the [PCG Sizing](../../../clusters/pcg/manage-pcg/scale-pcg-nodes.md) section for more information on sizing.
         - One IP address reserved for cluster repave operations.
         - One IP address for the Virtual IP (VIP).
         - DNS must be able to resolve the domain `api.spectrocloud.com`.
@@ -69,7 +67,7 @@ To complete this tutorial, you will need the following prerequisites in place.
         :::
 
     - Ensure the following software is installed and available on your Linux machine.
-      - [Palette CLI](../../automation/palette-cli/install-palette-cli.md).
+      - [Palette CLI](../../../automation/palette-cli/install-palette-cli.md).
       - [Docker](https://docs.docker.com/desktop).
       - [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation).
       - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
@@ -78,7 +76,7 @@ To complete this tutorial, you will need the following prerequisites in place.
 ## Authenticate with Palette
 
 The initial step to deploy a PCG using Palette CLI involves authenticating with your Palette environment using the
-[`palette login`](../../automation/palette-cli/commands.md#login) command.
+[`palette login`](../../../automation/palette-cli/commands.md#login) command.
 
 In your terminal, execute the following command.
 
@@ -89,7 +87,8 @@ palette login
 Once issued, you will be prompted for several parameters to complete the authentication. The table below outlines the
 required parameters along with the values that will be utilized in this tutorial. If a parameter is specific to your
 environment and Palette account, such as your Palette API key, ensure to input the value according to your environment.
-Check out the [Deploy a PCG to VMware vSphere](../pcg/deploy-pcg/vmware.md) guide for more information. option.
+Check out the [Deploy a PCG to VMware vSphere](../../../clusters/pcg/deploy-pcg/vmware.md) guide for more information.
+option.
 
 | **Parameter**                  | **Value**                                                                                                                                                                                                                                                            | **Environment-Specific** |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
@@ -98,7 +97,7 @@ Check out the [Deploy a PCG to VMware vSphere](../pcg/deploy-pcg/vmware.md) guid
 | **Spectro Cloud API Key**      | Enter your Palette API Key.                                                                                                                                                                                                                                          | Yes                      |
 | **Spectro Cloud Organization** | Select your Palette Organization name.                                                                                                                                                                                                                               | Yes                      |
 | **Spectro Cloud Project**      | `None (TenantAdmin)`                                                                                                                                                                                                                                                 | No                       |
-| **Acknowledge**                | Accept the login banner message. [Login banner](../../tenant-settings/login-banner.md) messages are only displayed if the tenant admin enabled a login banner.                                                                                                       | Yes                      |
+| **Acknowledge**                | Accept the login banner message. [Login banner](../../../tenant-settings/login-banner.md) messages are only displayed if the tenant admin enabled a login banner.                                                                                                    | Yes                      |
 
 After accepting the login banner message, you will receive the following output confirming you have successfully
 authenticated with Palette.
@@ -126,7 +125,7 @@ The `palette pcg install` command will prompt you for information regarding your
 resource configurations. The following tables display the required parameters along with the values that will be used in
 this tutorial. Enter the provided values when prompted. If a parameter is specific to your environment, such as your
 vSphere endpoint, enter the corresponding value according to your environment. For detailed information about each
-parameter, refer to the [Deploy a PCG to VMware vSphere](../pcg/deploy-pcg/vmware.md) guide.
+parameter, refer to the [Deploy a PCG to VMware vSphere](../../../clusters/pcg/deploy-pcg/vmware.md) guide.
 
 :::info
 
@@ -194,7 +193,7 @@ environments.
 
    This tutorial will deploy a one-node PCG with dynamic IP placement (DDNS). If needed, you can convert a single-node
    PCG to a multi-node PCG to provide additional capacity. Refer to the
-   [Increase PCG Node Count](./manage-pcg/scale-pcg-nodes.md) guide for more information.
+   [Increase PCG Node Count](../../../clusters/pcg/manage-pcg/scale-pcg-nodes.md) guide for more information.
 
    | **Parameter**       | **Value**                                                                    | **Environment-Specific** |
    | ------------------- | ---------------------------------------------------------------------------- | ------------------------ |
@@ -240,7 +239,8 @@ VMware cloud account with the same name as the PCG.
 The following recording demonstrates the `pcg install` command with the `--config-only` flag. When using this flag, a
 reusable configuration file named **pcg.yaml** is created under the path **.palette/pcg**. You can then utilize this
 file to install a PCG with predefined values using the command `pcg install` with the `--config-file` flag. Refer to the
-[Palette CLI PCG Command](../../automation/palette-cli/commands.md#pcg) page for further information about the command.
+[Palette CLI PCG Command](../../../automation/palette-cli/commands/pcg.md) page for further information about the
+command.
 
 <Video title="palette-pcg-config-only" src="/videos/palette-pcg.mp4"></Video>
 
@@ -314,7 +314,7 @@ complete the core infrastructure stack.
 
 Next, click on the **Add New Pack** button to include add-on layers to your cluster profile.
 
-Add the **MetalLB (Helm)** pack to your profile. The [MetalLB](../../integrations/metallb.md) pack provides a
+Add the **MetalLB (Helm)** pack to your profile. The [MetalLB](../../../integrations/metallb.md) pack provides a
 load-balancer implementation for your Kubernetes cluster, as VMware does not offer a load balancer solution natively.
 The load balancer is required to help the _LoadBalancer_ service specified in the Hello Universe application manifest
 obtain an IP address, so that you can access the application from your browser.
@@ -455,10 +455,10 @@ overview of each file.
   | lb-metallb-helm    | 0.13.x  | Load Balancer    |
   | hello-universe     | 1.1.x   | App Service      |
 
-  The [MetalLB](../../integrations/metallb.md) pack provides a load-balancer implementation for your Kubernetes cluster,
-  as VMware does not offer a load balancer solution natively. The load balancer is required to help the _LoadBalancer_
-  service specified in the Hello Universe application manifest obtain an IP address, so that you can access the
-  application on your browser.
+  The [MetalLB](../../../integrations/metallb.md) pack provides a load-balancer implementation for your Kubernetes
+  cluster, as VMware does not offer a load balancer solution natively. The load balancer is required to help the
+  _LoadBalancer_ service specified in the Hello Universe application manifest obtain an IP address, so that you can
+  access the application on your browser.
 
 - **cluster.tf** - Configuration for the `spectrocloud_cluster_vsphere` resource.
 
@@ -638,7 +638,7 @@ in environments like VMware vSphere without the need to configure complex firewa
 
 We encourage you to check out the reference resources below to learn more about PCGs.
 
-- [Private Cloud Gateway](./pcg.md)
-- [PCG Architecture](architecture.md)
-- [Deploy a PCG to VMware vSphere](./deploy-pcg/vmware.md)
-- [Manage PCG](./manage-pcg/manage-pcg.md)
+- [Private Cloud Gateway](../../../clusters/pcg/pcg.md)
+- [PCG Architecture](../../../clusters/pcg/architecture.md)
+- [Deploy a PCG to VMware vSphere](../../../clusters/pcg/deploy-pcg/vmware.md)
+- [Manage PCG](../../../clusters/pcg/manage-pcg/manage-pcg.md)

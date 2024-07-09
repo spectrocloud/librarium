@@ -317,8 +317,8 @@ improvements in Palette 4.0.0.
 ### Education {#release-4-0-education-features}
 
 - A new Edge tutorial is available to learn how to deploy an Edge cluster using Palette with VMware. The
-  [Deploy an Edge Cluster on VMware](clusters/edge/site-deployment/deploy-cluster.md) provides an end-to-end tutorial
-  that walks you through creating Edge artifacts, creating a Cluster Profile, and deploying an Edge cluster on VMware.
+  [Deploy an Edge Cluster on VMware](tutorials/edge/deploy-cluster.md) provides an end-to-end tutorial that walks you
+  through creating Edge artifacts, creating a Cluster Profile, and deploying an Edge cluster on VMware.
 
 - The documentation site for Palette now provides a chatbot capable of answering your questions about Palette. The
   chatbot is available in the bottom right corner of the documentation site. You can ask the chatbot questions about
