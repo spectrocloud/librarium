@@ -267,7 +267,11 @@ Palette instance. You can use Edge Management API endpoints to programmatically 
 information about Edge clusters, retrieve the list of available images on your Edge host, and create local clusters
 using embedded cluster definitions.
 
-These APIs are only available to airgapped Edge hosts without a connection to Palette.
+:::warning
+
+The Edge Management API endpoints are only available to airgapped Edge hosts without a connection to Palette.
+
+:::
 
 You can find the Open API Swagger specification for the Edge Management API at the following location:
 https://raw.githubusercontent.com/spectrocloud/librarium/version-4-3/docs/api-content/api-docs/edge-v1/emc-api.json
