@@ -11,8 +11,7 @@ tags: ["getting-started", "aws", "terraform"]
 
 The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider
 allows you to create and manage Palette resources using Infrastructure as Code (IaC). With IaC, you can automate the
-provisioning of resources, collaborate on changes, and maintain a single source of truth for your
-infrastructure.
+provisioning of resources, collaborate on changes, and maintain a single source of truth for your infrastructure.
 
 This tutorial will teach you how to use Terraform to deploy and update an Amazon Web Services (AWS) host cluster. You
 will learn how to create two versions of a cluster profile with different demo applications, update the deployed cluster
@@ -48,13 +47,7 @@ Start Docker Desktop and ensure that the Docker daemon is available by issuing t
 docker ps
 ```
 
-Use the following command to download the tutorial image. This image includes the required software and Terraform files.
-
-```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.1.7
-```
-
-Next, start the container and open a bash session into it.
+Next, download the tutorial image, start the container, and open a bash session into it.
 
 ```shell
 docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.7 bash
@@ -76,8 +69,8 @@ Do not exit the container until the tutorial is complete. Otherwise, you may los
 
 <TabItem label="Podman" value="podman">
 
-If you are not running a Linux operating system, create and start the Podman Machine in your local environment.
-Otherwise, skip this step.
+If you are not using a Linux operating system, create and start the Podman Machine in your local environment. Otherwise,
+skip this step.
 
 ```bash
 podman machine init
@@ -90,13 +83,7 @@ Use the following command and ensure you receive an output displaying the instal
 podman info
 ```
 
-Download the tutorial image.
-
-```bash
-podman pull ghcr.io/spectrocloud/tutorials:1.1.7
-```
-
-Next, start the container and open a bash session into it.
+Next, download the tutorial image, start the container, and open a bash session into it.
 
 ```shell
 podman run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.7 bash
@@ -220,7 +207,8 @@ or add a manifest or Helm chart.
 The cluster profile resource is declared eight times in the **cluster-profiles.tf** file, with each pair of resources
 being designated for a specific provider. In this tutorial, two versions of the AWS cluster profile are deployed:
 version `1.0.0` deploys the [Hello Universe](https://github.com/spectrocloud/hello-universe) pack, while version `1.1.0`
-deploys the [Kubecost](https://www.kubecost.com/) pack along with the [Hello Universe](https://github.com/spectrocloud/hello-universe) application.
+deploys the [Kubecost](https://www.kubecost.com/) pack along with the
+[Hello Universe](https://github.com/spectrocloud/hello-universe) application.
 
 The cluster profiles include layers for the Operating System (OS), Kubernetes, container network interface, and
 container storage interface. The first `pack {}` block in the list equates to the bottom layer of the cluster profile.
@@ -382,7 +370,7 @@ Issue the following command in your terminal.
 terraform test
 ```
 
-A successful test run will output the following.
+A successful test execution will output the following.
 
 ```text hideClipboard
 Success! 16 passed, 0 failed.
@@ -475,8 +463,8 @@ environment variable. This step allows the Terraform code to authenticate with t
 export SPECTROCLOUD_APIKEY=<Your-Spectro-Cloud-API-key>
 ```
 
-Next, issue the following command to initialize Terraform. The `init` command downloads the plugins and providers
-defined in the **provider.tf** file.
+Next, issue the following command to initialize Terraform. The `init` command initializes the working directory that
+contains the Terraform files.
 
 ```shell
 terraform init
@@ -565,8 +553,8 @@ resource "spectrocloud_cluster_profile" "aws-profile" {
   version     = "1.0.0"
 ```
 
-Open the **terraform.tfvars** file, set the `deploy-aws-kubecost` variable to true, and save the file. Once applied,
-the host cluster will use version `1.1.0` of the cluster profile with the Kubecost pack.
+Open the **terraform.tfvars** file, set the `deploy-aws-kubecost` variable to true, and save the file. Once applied, the
+host cluster will use version `1.1.0` of the cluster profile with the Kubecost pack.
 
 The snippet below displays the segment of the Terraform resource that creates the cluster profile version `1.1.0`. Note
 how the name `tf-aws-profile` is the same as in the first cluster profile resource, but the version is different.
