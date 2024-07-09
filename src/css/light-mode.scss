@@ -52,6 +52,10 @@ html[data-theme="light"] {
     }
   }
 
+  .category > .menu__list-item-collapsible:hover {
+    background: none;
+  }
+
   .menu__list-item-collapsible:hover {
     background: #f7f9ff;
   }
