@@ -41,7 +41,6 @@ export default function SimpleCardGrid({ cards = [], hideNumber = false }: Simpl
 }
 
 function SimpleCard({ title, index, description, buttonText, relativeURL, hideNumber }: SimpleCard) {
-  console.log(hideNumber);
   return (
     <a href={relativeURL}>
       <div className={styles.simpleCard}>

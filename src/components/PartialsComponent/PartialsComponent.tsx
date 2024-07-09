@@ -20,7 +20,8 @@ export default function PartialsComponent(details: ComponentProperties): React.R
 
   // Construct the map key including the version
   const mapKey = getMapKey(ver, details.category, details.name);
-  if (!AllPartials[mapKey]) {
+  const foundPartial = AllPartials[mapKey];
+  if (!foundPartial) {
     throw new Error(
       "No partial found for name "
         .concat(details.name)
@@ -42,7 +43,7 @@ export default function PartialsComponent(details: ComponentProperties): React.R
     propAttribute[key] = details[key];
   }
 
-  return React.createElement(AllPartials[mapKey], propAttribute);
+  return React.createElement(foundPartial, propAttribute);
 }
 
 function getMapKey(ver: string, category: string, name: string): string {
