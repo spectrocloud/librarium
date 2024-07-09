@@ -15,6 +15,19 @@ tags: ["release-notes"]
 
 ### Palette
 
+#### Features
+
+- This release introduces a system-wide control User Interface (UI) for feature flags. System administrators can now
+  turn features on or off through the system console. Once a feature flag is enabled, all tenants will have access to
+  the feature. Check out the [Feature Flags](../enterprise-version/system-management/system-management.md) documentation
+  to learn more.
+
+#### Improvements
+
+- The Palette UI has been updated to improve the user experience for the project settings page and the tenant settings
+  page. The new **Settings Menu** enhances usability and reduces visual clutter. You can now collapse and expand
+  categories within the menu.
+
 ### Edge
 
 #### Breaking Changes
@@ -25,6 +38,10 @@ tags: ["release-notes"]
   you are using the EdgeForge process to create Edge artifacts, ensure you update the location of the **ui** folder in
   your CanvOS project. Refer to the Local UI [Custom Links](../clusters/edge/local-ui/host-management/custom-link.md)
   and [Customize Local UI Theme](../clusters/edge/local-ui/host-management/theming.md) to learn more about the changes.
+
+#### Features
+
+- A new Palette API endpoint, `v1/edgehosts/tags`, is available to retrieve all tags associated with Edge clusters.
 
 ## Jul 7, 2024 - Release 4.4.7
 
