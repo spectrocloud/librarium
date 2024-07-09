@@ -57,7 +57,7 @@ target cluster. For more information about customizing with namespaces, refer to
 [Profile Customization](../../../profile-customization.md).
 
 For examples of pack structure for a manifest-based pack, review
-[Build a Pack](../../../../registries-and-packs/deploy-pack.md#build-a-pack), and select the appropriate tab.
+[Build a Pack](../../../../tutorials/profiles/deploy-pack.md#build-a-pack), and select the appropriate tab.
 
 :::
 

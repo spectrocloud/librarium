@@ -275,7 +275,7 @@ documentation.
 ### Education
 
 - Learn how to create a custom pack and how to deploy the custom pack to a Palette registry server with the
-  [Create and Deploy a Custom Add-On Pack](registries-and-packs/deploy-pack.md) tutorial.
+  [Create and Deploy a Custom Add-On Pack](tutorials/profiles/deploy-pack.md) tutorial.
 
 - An introductory tutorial on deploying a Palette-managed cluster to public cloud providers is now available. Learn to
   deploy a host cluster with Palette using the Palette user interface or Terraform. Check out the
@@ -324,8 +324,7 @@ to allow users greater flexibility and more control over the installation proces
 
 Release 3.2 introduces support for a new public cloud provider, Cox Edge. Other highlights include a streamlined
 experience for installing the Kubernetes Dashboard in a cluster, a new security scan, auto registration capabilities for
-edge devices, new [out-of-the-box services](devx/services/service-listings/service-listings.mdx, and many other product
-enhancements.
+edge devices, new [out-of-the-box services](devx/services/service-listings/service-listings.mdx, and many other product enhancements.
 
 ### Palette
 

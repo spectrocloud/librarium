@@ -24,8 +24,11 @@ each mode.
 
 :::
 
-To get started with App Mode, give the tutorial [Deploy an Application using Palette Dev Engine](apps/deploy-app.md) a
-try so that you can learn how to use App Mode with Palette Dev Engine.
+## Get Started
+
+To get started with App Mode, give the tutorial
+[Deploy an Application using Palette Dev Engine](../tutorials/cluster-deployment/pde/deploy-app.md) a try so that you
+can learn how to use App Mode with Palette Dev Engine.
 
 ## Supported Platforms
 
@@ -74,8 +77,9 @@ to install and configure the CLI.
 
 :::
 
-To get started with App Mode, give the tutorial [Deploy an Application using Palette Dev Engine](apps/deploy-app.md) a
-try so that you can learn how to use App Mode with Palette Dev Engine.
+To get started with App Mode, give the tutorial
+[Deploy an Application using Palette Dev Engine](../tutorials/cluster-deployment/pde/deploy-app.md) a try so that you
+can learn how to use App Mode with Palette Dev Engine.
 
 ## Resources
 

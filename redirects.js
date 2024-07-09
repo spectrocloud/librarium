@@ -388,6 +388,16 @@ const redirects = [
     from: "/user-management/palette-resource-limits/",
     to: "/tenant-settings/palette-resource-limits/",
   },
+
+  // Redirects for tutorials that were removed from docs
+  {
+    from: "/registries-and-packs/deploy-pack",
+    to: "/tutorials/profiles/deploy-pack",
+  },
+  {
+    from: "/devx/apps/deploy-app",
+    to: "/tutorials/cluster-deployment/pde/deploy-app",
+  },
 ];
 
 module.exports = redirects;
