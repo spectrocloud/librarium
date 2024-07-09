@@ -311,7 +311,7 @@ host name.
 
 ```shell
 curl --location 'https://10.10.135.182:5080/v1/edge-mgmt/edgehosts/current' \
---header 'Cookie: Authorization=*******'
+--header 'Authorization=*******'
 ```
 
 ```hideClipboard

@@ -10,7 +10,6 @@ import { faNetworkWired } from '@fortawesome/free-solid-svg-icons';
 import { faServer } from '@fortawesome/free-solid-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faWarehouse } from '@fortawesome/free-solid-svg-icons';
-import { faFlagCheckered } from '@fortawesome/free-solid-svg-icons';
 import { faPalette } from '@fortawesome/free-solid-svg-icons';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
@@ -35,7 +34,6 @@ export const fontAwesomeIcons = {
   "server": faServer,
   "users": faUsers,
   "warehouse": faWarehouse,
-  "flag-checkered": faFlagCheckered,
   "palette": faPalette,
   "book": faBook,
   "bookmark": faBookmark,
