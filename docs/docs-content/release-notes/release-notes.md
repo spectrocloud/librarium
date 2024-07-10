@@ -77,16 +77,16 @@ tags: ["release-notes"]
   section to learn more about the limitations of connected Edge hosts.
 
 - Local UI now supports signed content bundles and cluster definitions. You can embed a public key in your Edge
-  Installer ISO or provider image. Local UI can verify the content bundle and cluster definition cryptographically
-  during uploads to ensure you are fulfilling compliance requirements. Refer to the
+  Installer ISO or provider image. Local UI can use the key to verify the content bundle and cluster definition
+  cryptographically during uploads to ensure you are fulfilling compliance requirements. Refer to the
   [Build Content Bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) guide to learn
   more.
 
 #### Improvements
 
-- You can now disable password changes of Operating System (OS) users from Local UI. You can still update the OS user
-  password from the OS or the Edge Management API. Check out the
-  [Access Local U](../clusters/edge/local-ui/host-management/access-console.md) page to learn more.
+- You can now disable password changes of Operating System (OS) users from Local UI. When password updates from Local UI
+  are disabled, you can still update the OS user password from the OS or the Edge Management API. Check out the
+  [Access Local UI](../clusters/edge/local-ui/host-management/access-console.md) page to learn more.
 
 - Several enhancements have been made to the UI for Edge host management in the context of cluster creation and updates.
   The new changes ensure a consistent and user-friendly experience that involves new designs for the edge host selection
