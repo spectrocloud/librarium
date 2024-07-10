@@ -64,12 +64,12 @@ or open a new tab in your browser depending on how to configure the links.
    git checkout v4.4.0
    ```
 
-4. Create a directory called **local-ui** at the path **CanvOS/local-ui**. Then under the **local-ui** directory, create
+4. Create a directory called **local-ui** at the path **CanvOS/local-ui**. Then, under the **local-ui** directory, create
    a directory named **ui**.
 
-5. In the **CanvOS/local-ui/ui** directory, create an file named **customizations.json**. This is the same file where
-   you customize the theme of Local UI. If the file is already present, there is no need to create a new one. For more
-   information about customizing the theme of Local UI, refer to [Customize Local UI Theme](./theming.md).
+5. In the **CanvOS/local-ui/ui** directory, create a file named **customizations.json**. This is the same file where
+   you customize the Local UI theme. If the file is already present, there is no need to create a new one. For more
+   information about customizing the Local UI theme, refer to [Customize Local UI Theme](./theming.md).
 
 6. If you want Local UI to host static web pages that you want your users to be able to access from the sidebar, create
    another folder for your website under the **local-ui** folder and put all assets for your web pages in that folder.
@@ -92,7 +92,7 @@ or open a new tab in your browser depending on how to configure the links.
           |--index.css
    ```
 
-   When using an URL to locate the local webpage, you can treat the **local-ui** folder as the root folder and you must
+   When using a URL to locate the local webpage, you can treat the **local-ui** folder as the root folder and you must
    use absolute paths to locate your assets. For example, from **customizations.json**, you can locate the HTML file in
    the example with `/app/index.html`.
 

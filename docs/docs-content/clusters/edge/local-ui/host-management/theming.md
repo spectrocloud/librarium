@@ -84,7 +84,7 @@ console for all Edge hosts of your organization.
    }
    ```
 
-   The `colors.sidebar` controls the color of the sidebar. This is also the color of the background in the Local UI
+   The `colors.sidebar` property controls the color of the sidebar. This is also the color of the background in the Local UI
    login screen. We suggest you choose a color that contrasts well against your logo as the logo as the color will serve
    as the background for your logo. The **brand** color controls the color of buttons and checkboxes in the UI. The
 
