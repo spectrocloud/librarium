@@ -79,21 +79,38 @@ You can change the password of an OS user through Local UI, through the terminal
 
 - Depending on how you want to change the password, additional prerequisites are required.
 
+  <Tabs>
+
+  <TabItem value="Local UI">
+
   - Through Local UI: The `stylus.disablePasswordUpdate` parameter is not set to `true` in the installer configuration
-    user data. The default value of the parameter is `false`.
+    user data. The default value of the parameter is `false`. For more information, refer to
+    [Installer Reference](../../edge-configuration/installer-reference.md#local-ui).
 
-  - Through the terminal: A keyboard connected to the Edge host for input.
+  </TabItem>
 
-  - Through the API: [curl] is installed on the machine you plan to use to change the password. You also need to be able
-    access port 5080 of your Edge host from the machine.
+  <TabItem value="Terminal">
 
-  :::info
+  - None.
 
-  If the ability to change the password is disabled from Local UI, you can still log in to the terminal or use the
-  Palette API to update the password. For more information about resetting passwords with Palette API, refer to
-  [Resets User Password](/api/edge-v1/v-1-user-password-reset/).
+  </TabItem>
 
-  :::
+  <TabItem value="API">
+
+  - Through the API: [curl](https://curl.se/docs/install.html) is installed on the machine you plan to use to change the
+    password.
+
+  </TabItem>
+
+  </Tabs>
+
+:::info
+
+If the ability to change the password is disabled from Local UI, you can still log in to the terminal or use the Palette
+API to update the password. For more information about resetting passwords with Palette API, refer to
+[Resets User Password](/api/edge-v1/v-1-user-password-reset/).
+
+:::
 
 ### Instructions
 
@@ -113,15 +130,18 @@ You can change the password of an OS user through Local UI, through the terminal
 
 <TabItem value="Terminal">
 
-1. Press **Alt + right arrow key**, or **Ctrl + Alt + F1**. Replace **Alt** with **Options** on a Mac keyboard. This
-   will bring up the login screen for you to log in to the terminal. Alternatively, establish an SSH connection to the
-   Edge host.
+1. Power up the Edge host.
 
-2. Issue the command `passwd`.
+2. Press **Alt + right arrow key**, or **Ctrl + Alt + F1** on a keyboard connected to the Edge host. Replace **Alt**
+   with **Options** on a Mac keyboard. This will bring up the login screen for you to log in to the terminal.
 
-3. Enter your current password to authenticate.
+   Alternatively, establish an SSH connection to the Edge host.
 
-4. Enter your new password and hit **Enter**. Enter the new password again to confirm.
+3. Issue the command `passwd`.
+
+4. Enter your current password to authenticate.
+
+5. Enter your new password and hit **Enter**. Enter the new password again to confirm.
 
 </TabItem>
 
@@ -133,11 +153,11 @@ You can change the password of an OS user through Local UI, through the terminal
 
    ```bash
    curl --location 'https://edge-host-ip:5080/v1/users/default/login' \
-    --header 'Content-Type: application/json' \
-    --data '{
-        "username": "******",
-        "password": "******"
-    }'
+   --header 'Content-Type: application/json' \
+   --data '{
+       "username": "******",
+       "password": "******"
+   }'
    ```
 
    If your credentials are valid, you will receive a authorization token.
@@ -164,6 +184,8 @@ You can change the password of an OS user through Local UI, through the terminal
    }'
    --header 'Authorization: *******'
    ```
+
+   For more information about the API endpoint, refer to [Reset User Password](/api/edge-v1/v-1-user-password-reset/).
 
 </TabItem>
 
