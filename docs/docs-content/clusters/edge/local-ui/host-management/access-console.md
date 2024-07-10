@@ -79,12 +79,12 @@ You can change the password of an OS user through Local UI, through the terminal
 
 - Depending on how you want to change the password, additional prerequisites are required.
 
-  <Tabs>
+  <Tabs groupId="access-method">
 
   <TabItem value="Local UI">
 
-  - Through Local UI: The `stylus.disablePasswordUpdate` parameter is not set to `true` in the installer configuration
-    user data. The default value of the parameter is `false`. For more information, refer to
+  - Through Local UI: The `stylus.disablePasswordUpdate` parameter is set to `false` in the installer configuration user
+    data. The default value of the parameter is `false`. For more information, refer to
     [Installer Reference](../../edge-configuration/installer-reference.md#local-ui).
 
   </TabItem>
@@ -97,8 +97,8 @@ You can change the password of an OS user through Local UI, through the terminal
 
   <TabItem value="API">
 
-  - Through the API: [curl](https://curl.se/docs/install.html) is installed on the machine you plan to use to change the
-    password.
+  - Through the API: [curl](https://curl.se/docs/install.html) or another similar tool you can use to make HTTP requests
+    is installed on the machine you use to access the Edge Management API.
 
   </TabItem>
 
@@ -113,7 +113,7 @@ API to update the password.
 
 ### Instructions
 
-<Tabs>
+<Tabs groupId="access-method">
 
 <TabItem value="Local UI">
 
