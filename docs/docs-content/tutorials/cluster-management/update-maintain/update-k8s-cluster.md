@@ -1,21 +1,20 @@
 ---
+sidebar_position: 0
 sidebar_label: "Deploy Cluster Profile Updates"
 title: "Deploy Cluster Profile Updates"
 description:
   "Learn how to update your deployed clusters using Palette Cluster Profiles. This tutorial teaches you how to: create
   Cluster Profile versions, apply cluster updates and roll back to previous versions. Get started with the basics of
   cluster maintenance in Azure with this hands-on exercise."
-icon: ""
-hide_table_of_contents: false
 tags: ["cluster profiles", "tutorial"]
-sidebar_position: 240
+category: ["tutorial"]
 ---
 
 Palette provides cluster profiles, which allow you to specify layers for your workloads using packs, Helm charts, Zarf
 packages, or cluster manifests. Packs serve as blueprints to the provisioning and deployment process, as they contain
 the versions of the container images that Palette will install for you. Cluster profiles provide consistency across
 environments during the cluster creation process, as well as when maintaining your clusters. Check out the
-[cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) section to learn more about how to create and
+[cluster profiles](../../../profiles/cluster-profiles/cluster-profiles.md) section to learn more about how to create and
 use them. Once provisioned, there are three main ways to update your Palette deployments.
 
 | Method                   | Description                                                                        | Cluster application process                                                                                                                                                                                |
@@ -31,8 +30,8 @@ apply these changes using either Palette or Terraform.
 ## Prerequisites
 
 This tutorial builds upon the resources and steps outlined in the
-[Deploy a Cluster](../public-cloud/deploy-k8s-cluster.md) tutorial for creating initial clusters. To complete it, you
-will need the following items.
+[Deploy a Cluster](../../../clusters/public-cloud/deploy-k8s-cluster.md) tutorial for creating initial clusters. To
+complete it, you will need the following items.
 
 <Tabs groupId="tutorial">
 <TabItem label="UI workflow" value="UI">
@@ -46,12 +45,12 @@ will need the following items.
 - Register the [cloud account with Palette](https://console.spectrocloud.com/auth/signup). Use the following resource
   for additional guidance.
 
-  - [Register and Manage AWS Accounts](../public-cloud/aws/add-aws-accounts.md)
-  - [Register and Manage Azure Cloud Accounts](../public-cloud/azure/azure-cloud.md)
-  - [Register and Manage GCP Accounts](../public-cloud/gcp/add-gcp-accounts.md)
+  - [Register and Manage AWS Accounts](../../../clusters/public-cloud/aws/add-aws-accounts.md)
+  - [Register and Manage Azure Cloud Accounts](../../../clusters/public-cloud/azure/azure-cloud.md)
+  - [Register and Manage GCP Accounts](../../../clusters/public-cloud/gcp/add-gcp-accounts.md)
 
-- An SSH Key Pair. Use the [Create and Upload an SSH Key](../cluster-management/ssh-keys.md) guide to learn how to
-  create an SSH key and upload it to Palette.
+- An SSH Key Pair. Use the [Create and Upload an SSH Key](../../../clusters/cluster-management/ssh-keys.md) guide to
+  learn how to create an SSH key and upload it to Palette.
 
   - AWS users must create an AWS Key pair before starting the tutorial. If you need additional guidance, check out the
     [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html)
@@ -70,13 +69,13 @@ will need the following items.
   - [GCP](https://cloud.google.com/docs/get-started)
 - Register the [cloud account with Palette](https://console.spectrocloud.com/auth/signup). Use the following resource
   for additional guidance.
-  - [Register and Manage AWS Accounts](../public-cloud/aws/add-aws-accounts.md)
-  - [Register and Manage Azure Cloud Accounts](../public-cloud/azure/azure-cloud.md)
-  - [Register and Manage GCP Accounts](../public-cloud/gcp/add-gcp-accounts.md)
+  - [Register and Manage AWS Accounts](../../../clusters/public-cloud/aws/add-aws-accounts.md)
+  - [Register and Manage Azure Cloud Accounts](../../../clusters/public-cloud/azure/azure-cloud.md)
+  - [Register and Manage GCP Accounts](../../../clusters/public-cloud/gcp/add-gcp-accounts.md)
 - Install the [Terraform CLI](https://developer.hashicorp.com/terraform/install) v1.4.0 or greater according to the
   setup steps for your operating system.
-- A Spectro Cloud API key is required to interact with the Palette API. Use the [Create API Key] guide to learn how to
-  create one.
+- A Spectro Cloud API key is required to interact with the Palette API. Use the
+  [Create API Key](../../../user-management/authentication/api-key/create-api-key.md) guide to learn how to create one.
 
 In your terminal session, issue the following command to export the API key as an environment variable. Replace the
 placeholder `YourAPIKeyHere` with your previously copied API key.
@@ -117,9 +116,10 @@ cd terraform/iaas-cluster-update-tf/
 <Tabs groupId="tutorial">
 <TabItem label="UI workflow" value="UI">
 
-Follow the instructions of the [Deploy a Cluster](../public-cloud/deploy-k8s-cluster.md#ui-workflow) tutorial to create
-a cluster profile and cluster with the [_hello-universe_](https://github.com/spectrocloud/hello-universe) application.
-Your cluster should be successfully provisioned and in a healthy state in the cloud of your choosing.
+Follow the instructions of the [Deploy a Cluster](../../../clusters/public-cloud/deploy-k8s-cluster.md#ui-workflow)
+tutorial to create a cluster profile and cluster with the
+[_hello-universe_](https://github.com/spectrocloud/hello-universe) application. Your cluster should be successfully
+provisioned and in a healthy state in the cloud of your choosing.
 
 The cluster profile name follows the pattern `[cloud provider]-profile`. The cluster name follows the pattern
 `[cloud provider]-cluster`. This tutorial uses Azure for illustration purposes.
@@ -233,7 +233,7 @@ Click on **Confirm Updates** and close the editor.
 Click on **Save Changes** to confirm your updates.
 
 Deploy this cluster profile to a new cluster using the same steps outlined in the
-[Deploy a Cluster](../public-cloud/deploy-k8s-cluster.md#ui-workflow) tutorial.
+[Deploy a Cluster](../../../clusters/public-cloud/deploy-k8s-cluster.md#ui-workflow) tutorial.
 
 Once you have completed these steps and the host cluster creation process has finished, navigate to the left **Main
 Menu** and select **Clusters** to view your deployed clusters. You should have two healthy clusters.
@@ -245,9 +245,9 @@ Menu** and select **Clusters** to view your deployed clusters. You should have t
 <TabItem label="Terraform workflow" value="Terraform">
 
 Open the **terraform.tfvars** file in the editor of your choice and set variables required for the cloud provider you
-will use for your clusters. Check out the [Deploy a Cluster](../public-cloud/deploy-k8s-cluster.md#deploy-cluster)
-tutorial for guidance how to provide the required cloud credentials and configuration. This tutorial uses Azure for
-demonstration purposes.
+will use for your clusters. Check out the
+[Deploy a Cluster](../../../clusters/public-cloud/deploy-k8s-cluster.md#deploy-cluster) tutorial for guidance how to
+provide the required cloud credentials and configuration. This tutorial uses Azure for demonstration purposes.
 
 When you are done making the required changes, issue the following command to initialize Terraform.
 
@@ -521,7 +521,7 @@ Click **Apply Changes**.
 
 Palette has backup and restore capabilities available for your mission critical workloads. Ensure that you have adequate
 backups before you make any cluster profile version changes in your production environments. You can learn more in the
-[Backup and Restore](backup-restore/backup-restore.md) section.
+[Backup and Restore](../../../clusters/cluster-management/backup-restore/backup-restore.md) section.
 
 :::
 
@@ -572,7 +572,7 @@ resource "spectrocloud_cluster_profile" "azure-profile" {
 
 The cluster profile resources also specify packs for each of their layers using the
 [_pack_](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/cluster_profile#nested-schema-for-pack)
-nested schema. Check out the [Deploy a Custom Pack](../../registries-and-packs/deploy-pack.md) tutorial to learn more
+nested schema. Check out the [Deploy a Custom Pack](../../../tutorials/profiles/deploy-pack.md) tutorial to learn more
 about creating your own packs.
 
 The **cluster_profiles.tf** file also contains 3 resources that have been commented out, one for each public cloud
@@ -1096,13 +1096,13 @@ rolling back workloads across your environments.
 
 To learn more about Palette, we encourage you to check out the reference resources below.
 
-- [Cluster Profiles](../../profiles/cluster-profiles/cluster-profiles.md)
+- [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md)
 
-- [Palette Clusters](../clusters.md)
+- [Palette Clusters](../../../clusters/clusters.md)
 
-- [Backup and Restore](./backup-restore/backup-restore.md)
+- [Backup and Restore](../../../clusters/cluster-management/backup-restore/backup-restore.md)
 
-- [Deploy a Custom Pack](../../registries-and-packs/deploy-pack.md)
+- [Deploy a Custom Pack](../../../tutorials/profiles/deploy-pack.md)
 
 - [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)
 

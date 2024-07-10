@@ -11,7 +11,7 @@
   ],
   "swagger": "2.0",
   "info": {
-    "title": "Edge Management APIs",
+    "title": "Local Management APIs",
     "version": "v1"
   },
   "paths": {
@@ -564,6 +564,42 @@
         }
       }
     },
+    "/v1/edge-mgmt/edgehosts/current/actions/content/signing-public-key": {
+      "get": {
+        "description": "Get the base64 encoded key used to verify the signed content.",
+        "tags": [
+          "content"
+        ],
+        "summary": "Get the public key used to verify the signed content.",
+        "operationId": "V1GetContentSigningPublicKey",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1ContentSigningKey"
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
     "/v1/edge-mgmt/edgehosts/current/actions/reboot": {
       "post": {
         "description": "Reboot edge host",
@@ -656,10 +692,16 @@
         "parameters": [
           {
             "type": "file",
-            "description": "The archive file to be uploaded.",
+            "description": "The clusterconfig file to be uploaded.",
             "name": "uploadFile",
             "in": "formData",
             "required": true
+          },
+          {
+            "type": "file",
+            "description": "The signature for the corresponding cluster config to be uploaded.",
+            "name": "signature",
+            "in": "formData"
           }
         ],
         "responses": {
@@ -696,6 +738,12 @@
             "name": "uploadFile",
             "in": "formData",
             "required": true
+          },
+          {
+            "type": "file",
+            "description": "The signature for the corresponding archive file to be uploaded.",
+            "name": "signature",
+            "in": "formData"
           }
         ],
         "responses": {
@@ -947,6 +995,30 @@
             "description": "Internal server error",
             "schema": {
               "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/settings": {
+      "get": {
+        "description": "Get general settings",
+        "tags": [
+          "settings"
+        ],
+        "summary": "Get general settings",
+        "operationId": "v1Settings",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Settings"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
             }
           }
         }
@@ -1679,11 +1751,21 @@
             "$ref": "#/definitions/v1ClusterNodePoolStatus"
           }
         },
+        "ntpServersApplied": {
+          "type": "boolean",
+          "default": false,
+          "x-isnullable": false
+        },
         "services": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1Service"
           }
+        },
+        "sshKeysApplied": {
+          "type": "boolean",
+          "default": false,
+          "x-isnullable": false
         }
       }
     },
@@ -1775,6 +1857,21 @@
         "Connected",
         "Airgap"
       ]
+    },
+    "v1ContentSigningKey": {
+      "type": "object",
+      "properties": {
+        "creationTimestamp": {
+          "description": "CreationTimestamp is the timestamp when the resource was created.",
+          "$ref": "#/definitions/v1Time"
+        },
+        "description": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        }
+      }
     },
     "v1DNS": {
       "type": "object",
@@ -2086,12 +2183,6 @@
           "type": "string",
           "default": ""
         },
-        "isTwoNodeCandidate": {
-          "description": "Enable this flag to support 2-Node HA mode. True indicates this edgehost which act as the recovery node. It is a immutable field can be set only during cluster provisioning.",
-          "type": "boolean",
-          "default": false,
-          "x-omitempty": false
-        },
         "nic": {
           "description": "Edge native nic",
           "$ref": "#/definitions/v1Nic"
@@ -2103,6 +2194,14 @@
         "staticIP": {
           "description": "Deprecated. Edge host static IP",
           "type": "string"
+        },
+        "twoNodeCandidatePriority": {
+          "description": "Set the edgehost candidate priority as primary or secondary, if the edgehost is nominated as two node candidate",
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary"
+          ]
         }
       }
     },
@@ -2751,6 +2850,9 @@
         "name": {
           "type": "string"
         },
+        "values": {
+          "type": "string"
+        },
         "version": {
           "type": "string"
         }
@@ -2827,6 +2929,9 @@
           "type": "string"
         },
         "type": {
+          "type": "string"
+        },
+        "values": {
           "type": "string"
         },
         "version": {
@@ -2985,6 +3090,22 @@
         }
       }
     },
+    "v1Settings": {
+      "type": "object",
+      "properties": {
+        "hasHarborPack": {
+          "type": "boolean",
+          "default": false
+        },
+        "installationMode": {
+          "type": "string",
+          "enum": [
+            "airgap",
+            "connected"
+          ]
+        }
+      }
+    },
     "v1State": {
       "type": "string",
       "enum": [
@@ -3053,6 +3174,11 @@
       "description": "Current user information",
       "type": "object",
       "properties": {
+        "disablePasswordUpdate": {
+          "description": "Flag to indicate if the user is allowed to update the password",
+          "type": "boolean",
+          "default": false
+        },
         "sshKeys": {
           "description": "Current user's ssh keys",
           "type": "array",
