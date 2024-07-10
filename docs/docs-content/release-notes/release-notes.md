@@ -70,22 +70,23 @@ tags: ["release-notes"]
 
 - A new Palette API endpoint, `v1/edgehosts/tags`, is available to retrieve all tags associated with Edge clusters.
 
-- [Local UI](../clusters/edge/local-ui/local-ui.md) now supports some operations on connected Edge hosts (non-airgap).
-  In the past, Local UI only supported airgap Edge hosts and clusters. The new functionality now allows you to perform
-  some actions from the Local UI and Palette. Refer to
+- [The Edge Management API](/api/category/edge-management-api-v1/) now supports some operations on connected Edge hosts
+  (non-airgap). In the past, the Edge Management API only supported airgap Edge hosts and clusters. The new
+  functionality now allows you to perform some actions using the Edge Management API on connected Edge hosts. Refer to
   [List of Endpoints Unavailable to Connected Edge Hosts](/api/introduction/#list-of-endpoints-unavailable-to-connected-edge-hosts)
   section to learn more about the limitations of connected Edge hosts.
 
-- Local UI now supported signed content bundles containing cluster configuration and content archives. Local UI can
-  verify the content bundle cryptographically during uploads to ensure you are fulfilling compliance requirements. Refer
-  to the [Build Content Bundle](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) guide to
-  learn more.
+- Local UI now supports signed content bundles and cluster definitions. You can embed a public key in your Edge
+  Installer ISO or provider image. Local UI can verify the content bundle and cluster definition cryptographically
+  during uploads to ensure you are fulfilling compliance requirements. Refer to the
+  [Build Content Bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) guide to learn
+  more.
 
 #### Improvements
 
-- Local UI no longer allows password changes from the UI. You can now only update the Local UI password from the OS or
-  the Edge Management API. Check out the [Access Local U](../clusters/edge/local-ui/host-management/access-console.md)
-  page to learn more.
+- You can now disable password changes of Operating System (OS) users from Local UI. You can still update the OS user
+  password from the OS or the Edge Management API. Check out the
+  [Access Local U](../clusters/edge/local-ui/host-management/access-console.md) page to learn more.
 
 - Several enhancements have been made to the UI for Edge host management in the context of cluster creation and updates.
   The new changes ensure a consistent and user-friendly experience that involves new designs for the edge host selection
