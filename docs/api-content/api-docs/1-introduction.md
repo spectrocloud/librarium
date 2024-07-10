@@ -398,12 +398,12 @@ curl --location 'https://10.10.135.182:5080/v1/edge-mgmt/edgehosts/current' \
 
 ### List of Endpoints Unavailable to Connected Edge Hosts
 
-Most Edge Management APIs endpoints are available for Edge hosts with or without a connection to Palette. However, some
+Most Edge Management API endpoints are available for Edge hosts with or without a connection to Palette. However, some
 endpoints are not available to connected Edge hosts and are available to airgapped Edge hosts only. Specifically,
 endpoints that create or update clusters, create or update cluster profile variables, and update cluster settings are
-unavailable as those operations must be performed from Palette.
+unavailable, as those operations must be performed from Palette.
 
-The following is a list of endpoints that are only available to disconnected Edge hosts:
+The following is a list of endpoints that are only available to Edge hosts that are not connected to Palette:
 
 - `POST https://edge-host-ip:5080/v1/edge-mgmt/cluster`
 - `PATCH https://edge-host-ip:5080/v1/edge-mgmt/cluster`
