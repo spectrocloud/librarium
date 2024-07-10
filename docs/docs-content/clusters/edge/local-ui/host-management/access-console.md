@@ -91,7 +91,7 @@ You can change the password of an OS user through Local UI, through the terminal
 
   If the ability to change the password is disabled from Local UI, you can still log in to the terminal or use the
   Palette API to update the password. For more information about resetting passwords with Palette API, refer to
-  [Resets User Password](https://docs.spectrocloud.com/api/edge-v1/v-1-user-password-reset/).
+  [Resets User Password](/api/edge-v1/v-1-user-password-reset/).
 
   :::
 
