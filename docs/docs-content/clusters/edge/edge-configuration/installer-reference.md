@@ -108,6 +108,7 @@ For example, the following configuration changes the default port for Local UI t
 update the OS user password from Local UI.
 
 ```yaml
+#cloud-config
 stylus:
   emcServer:
     port: 5081
