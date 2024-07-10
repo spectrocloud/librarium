@@ -52,6 +52,17 @@ tags: ["release-notes"]
 
 - A new Palette API endpoint, `v1/edgehosts/tags`, is available to retrieve all tags associated with Edge clusters.
 
+- [Local UI](../clusters/edge/local-ui/local-ui.md) now supports some operations on connected Edge hosts (non-airgap).
+  In the past, Local UI only supported airgap Edge hosts and clusters. The new functionality now allows you to perform
+  some actions from the Local UI and Palette. Refer to
+  [List of Endpoints Unavailable to Connected Edge Hosts](/api/introduction/#list-of-endpoints-unavailable-to-connected-edge-hosts)
+  section to learn more about the limitations of connected Edge hosts.
+
+- Local UI now supported signed content bundles containing cluster configuration and content archives. Local UI can
+  verify the content bundle cryptographically during uploads to ensure you are fulfilling compliance requirements. Refer
+  to the [Build Content Bundle](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) guide to
+  learn more.
+
 ### Automation
 
 - Terraform version 0.21.0 of the
