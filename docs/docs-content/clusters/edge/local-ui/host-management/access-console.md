@@ -128,15 +128,15 @@ You can change the password of an OS user through Local UI, through the terminal
 <TabItem value="API">
 
 1. Use the POST /v1/users/default/login endpoint to generate an authentication token with your OS username and password.
-   The following curl command is an example. Replace edge-host-ip with the IP of your Edge host and replace os-username
-   and os-password with your OS user credentials.
+   The following curl command is an example. Replace `edge-host-ip` with the IP of your Edge host and replace
+   os-username and os-password with your OS user credentials.
 
    ```bash
    curl --location 'https://edge-host-ip:5080/v1/users/default/login' \
     --header 'Content-Type: application/json' \
     --data '{
-        "username": "os-username",
-        "password": "os-password"
+        "username": "******",
+        "password": "******"
     }'
    ```
 
@@ -159,8 +159,8 @@ You can change the password of an OS user through Local UI, through the terminal
    -H 'Content-Type: application/json' \
    -H 'Accept: application/json' \
    --data-raw '{
-   "newPassword": "string",
-   "oldPassword": "string"
+   "newPassword": "******",
+   "oldPassword": "******"
    }'
    --header 'Authorization: *******'
    ```
