@@ -271,7 +271,7 @@ specify the same tag in a `tagsFromFile`, the tag from the `tag` object is what 
 
 :::
 
-### Tags From a File
+## Tags From a File
 
 You can specify tags from a file by using the `tagsFromFile` parameter object. The `tagsFromFile` parameter object
 accepts the following parameters.
@@ -303,7 +303,7 @@ Assume the file **/etc/palette/tags.txt** contains the following content.
 Location:Mumbai,India; Latitude:48.856614; Longitude:2.352221; owner:p78125d
 ```
 
-### Tags From a Script
+## Tags From a Script
 
 You can specify tags from a script by using the `tagsFromScript` parameter object. The script must be executable and
 return a JSON object that contains the tags in the following format.
@@ -339,89 +339,4 @@ stylus:
     tagsFromScript:
       scriptName: "/etc/palette/tags.py"
       timeout: 60
-```
-
-## Installer Example Configuration
-
-The following example shows how user data configuration is used to customize the Edge host installation process.
-
-```yaml
-#cloud-config
-stylus:
-  site:
-    paletteEndpoint: api.spectrocloud.com
-    edgeHostToken: yourEdgeRegistrationTokenHere
-    projectUid: 12345677788
-    tags:
-      env: east
-      terraform_managed: true
-      os: ubuntu
-    name: edge-59d3f182-35fe-4e10-b0a0-d7f761f1a142
-
-    network:
-      httpProxy: http://proxy.example.com
-      httpsProxy: https://proxy.example.com
-      noProxy: 10.10.128.10,10.0.0.0/8
-      nameserver: 1.1.1.1
-      interfaces:
-        enp0s3:
-          type: static
-          ipAddress: 10.0.10.25/24
-          gateway: 10.0.10.1
-          nameserver: 10.10.128.8
-        enp0s4:
-          type: dhcp
-    caCerts:
-      - |
-        ------BEGIN CERTIFICATE------
-        *****************************
-        *****************************
-        ------END CERTIFICATE------
-      - |
-        ------BEGIN CERTIFICATE------
-        *****************************
-        *****************************
-        ------END CERTIFICATE------
-```
-
-:::info
-
-Check out the [Prepare User Data](../edgeforge-workflow/prepare-user-data.md) resource for more examples.
-
-:::
-
-## Additional Configurations
-
-The Edge Installer will honor other Kairos parameters, such as `install`, and `options`. To learn more about Kairos
-parameters, refer to the [Kairos configuration](https://kairos.io/docs/reference/configuration/) page.
-
-The following is an example Edge installer configuration that is using the `install` parameter block to power off the
-device upon completion of the installation process.
-
-```yaml
-#cloud-config
-stylus:
-  site:
-    paletteEndpoint: api.spectrocloud.com
-    registrationURL: https://edge-registration.vercel.app
-    projectUid: yourProjectIdHere
-    edgeHostToken: yourEdgeRegistrationTokenHere
-    tags:
-      myTag: myValue
-      myOtherTag: myOtherValue
-    tagsFromScript:
-      scriptName: /etc/palette/tags.sh
-      timeout: 30
-  reboot: false
-
-stages:
-  initramfs:
-    - users:
-        palette:
-          groups:
-            - sudo
-          passwd: palette
-
-install:
-  poweroff: true
 ```
