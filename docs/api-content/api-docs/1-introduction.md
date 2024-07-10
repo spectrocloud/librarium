@@ -8,7 +8,7 @@ sidebar_custom_props:
   icon: "graph"
 ---
 
-The API documentation section includes documentation for Palette API and Local Management API.
+The API documentation section includes documentation for Palette API and Edge Management API.
 
 ## Palette API
 
@@ -260,14 +260,14 @@ The API rate limits are as follows:
 | /v1/clusterprofiles/:uid/validate/packs                                                 | 50                     | 5              | 250                |
 | /v1/spectroclusters/:uid/profiles                                                       | 50                     | 5              | 250                |
 
-## Local Management API
+## Edge Management API
 
 An Edge host has its own set of API endpoints. These API endpoints are available on each Edge host instead of on a
-Palette instance. You can use Local Management API endpoints to programmatically perform tasks such as retrieve
+Palette instance. You can use Edge Management API endpoints to programmatically perform tasks such as retrieve
 information about Edge clusters, retrieve the list of available images on your Edge host, and create local clusters
 using embedded cluster definitions.
 
-You can find the Open API Swagger specification for the Local Management API at the following location:
+You can find the Open API Swagger specification for the Edge Management API at the following location:
 https://raw.githubusercontent.com/spectrocloud/librarium/version-4-3/docs/api-content/api-docs/edge-v1/emc-api.json
 
 :::preview
@@ -395,3 +395,19 @@ curl --location 'https://10.10.135.182:5080/v1/edge-mgmt/edgehosts/current' \
     }
 }
 ```
+
+### List of Endpoints Unavailable to Connected Edge Hosts
+
+Most Edge Management API endpoints are available for Edge hosts with or without a connection to Palette. However, some
+endpoints are not available to connected Edge hosts and are available to airgapped Edge hosts only. Specifically,
+endpoints that create or update clusters, create or update cluster profile variables, and update cluster settings are
+unavailable, as those operations must be performed from Palette.
+
+The following is a list of endpoints that are only available to Edge hosts that are not connected to Palette:
+
+- `POST https://edge-host-ip:5080/v1/edge-mgmt/cluster`
+- `PATCH https://edge-host-ip:5080/v1/edge-mgmt/cluster`
+- `PUT https://edge-host-ip:5080/v1/edge-mgmt/cluster`
+- `PUT https://edge-host-ip:5080/v1/edge-mgmt/cluster/profiles`
+- `PUT https://edge-host-ip:5080/v1/edge-mgmt/cluster/settings`
+- `POST https://edge-host-ip:5080/v1/edge-mgmt/cluster/profiles/variables/validate`
