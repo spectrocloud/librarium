@@ -7,24 +7,24 @@ sidebar_position: 20
 tags: ["edge"]
 ---
 
-The Edge host deployment process consists of four phases described in the following table.
+The Edge cluster deployment process consists of four phases described in the following table.
 
-| Phase                 | Description                                                                                                                                                                                                                                                  |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Model Cluster Profile | The process of creating a [cluster profile](../../../profiles/cluster-profiles/cluster-profiles.md) for the host cluster that will be made up of Edge hosts.                                                                                                 |
-| Install Handoff       | The Edge Installer is copied over from a portable storage device to the Edge host's hard disk. This step is typically performed in the preparation step. Refer to [Prepare Edge Hosts for Installation](/clusters/edge/site-deployment/stage) to learn more. |
-| Registration          | The Edge host is registered with Palette. The Edge host will remain in this phase until the registration process is complete.                                                                                                                                |
-| Cluster Provisioning  | The Edge host boots into the specified provider OS and proceeds with the cluster deployment.                                                                                                                                                                 |
+| Phase                 | Description                                                                                                                                                                        |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Model Cluster Profile | The process of creating a [cluster profile](../../../profiles/cluster-profiles/cluster-profiles.md) for the host cluster that will be made up of Edge hosts.                       |
+| Installation          | The Edge Installer in a portable storage device installs Palette Edge onto the Edge host's hard disk. Refer to [Installation](/clusters/edge/site-deployment/stage) to learn more. |
+| On-site Deployment    | Site operators power on the Edge host, applies site-specific settings, performs initial configurations, and registers Edge host with Palette.                                      |
+| Cluster Provisioning  | The Edge host boots into the specified provider OS and proceeds with the cluster deployment.                                                                                       |
 
 Review the following guides in sequential order to successfully deploy an Edge host.
 
-<br />
-
 1. [Model Edge Native Cluster Profile](../site-deployment/model-profile.md)
 
-2. [Prepare Edge Hosts for Installation](../site-deployment/stage.md)
+2. [Installation](../site-deployment/stage.md)
 
-3. [Perform Site Install](../site-deployment/site-installation/site-installation.md)
+3. [On-site Deployment](./site-installation/site-installation.md)
+
+4. [Cluster Definition](./cluster-deployment.md)
 
 :::info
 
@@ -34,16 +34,26 @@ by people with different roles. The Palette Edge lifecycle is explained in detai
 
 :::
 
+## Deployment to Virtual Machines
+
+You can deploy Edge Hosts as Virtual Machines (VM). The VMs function similarly to a physical Edge host and are
+particularly useful in testing and learning environments. Refer to
+[Create Edge OVF Templates](./virtual-deployment/create-ovf-template.md) and
+[Provision Edge Host VMs](./virtual-deployment/vm-edge-host.md) to learn how to create Open Virtualization Format (OVF)
+templates and provision Edge hosts using the templates. Or check out the
+[Deploy Edge Cluster on VMware](../../../tutorials/edge/deploy-cluster.md) for an end-to-end tutorial to learn the
+Palette Edge deployment lifecycle using VMs.
+
 ## Resources
 
 - [Model Cluster Profile](model-profile.md)
 
-- [Prepare Edge Hosts for Installation](stage.md)
+- [Installation](stage.md)
 
-- [Perform Site Install](site-installation/site-installation.md)
+- [Deploy Edge Hosts On-site](site-installation/site-installation.md)
 
-- [Register Edge Host](site-installation/edge-host-registration.md)
+- [Deploy Edge Hosts as Virtual Machines](./virtual-deployment/virtual-deployment.md)
 
-- [Create Cluster Definition](site-installation/cluster-deployment.md)
+- [Edge Host Grid View](./edge-host-view.md)
 
 - [Deployment with Custom Registries](./deploy-custom-registries/deploy-custom-registries.md)

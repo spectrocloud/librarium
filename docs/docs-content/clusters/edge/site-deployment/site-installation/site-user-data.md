@@ -8,8 +8,7 @@ tags: ["edge"]
 ---
 
 You can provide site-specific Edge Installer configuration user data if you need to apply new values or override default
-values from the Edge Installer user data you created in the [Prepare Edge Hosts for Installation](../stage.md) step or,
-as often referenced, the _Installer Handoff_ phase.
+values from the Edge Installer user data you created in [EdgeForge](../../edgeforge-workflow/prepare-user-data.md).
 
 Use the following steps to create an ISO file containing the additional user data. You will load the newly created ISO
 to a bootable device, such as a USB stick.
@@ -17,6 +16,8 @@ to a bootable device, such as a USB stick.
 ## Prerequisites
 
 - A bootable device such as a USB drive, or a Preboot Execution Environment (PXE) server.
+
+- An Edge host with Palette Edge installed. Refer to [Installation](../stage.md) for more information.
 
 - `mkisofs`, or `genisoimage`, or similar ISO management software.
 

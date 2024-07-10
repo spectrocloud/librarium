@@ -2006,12 +2006,20 @@
     "v1AuthCertsGet": {
       "description": "Auth certs get",
       "properties": {
+        "apiDomain": {
+          "type": "string",
+          "x-omitempty": false
+        },
         "caCert": {
           "type": "string",
           "x-omitempty": false
         },
         "insecureSkipVerify": {
           "type": "boolean",
+          "x-omitempty": false
+        },
+        "rootDomain": {
+          "type": "string",
           "x-omitempty": false
         }
       }
@@ -7769,6 +7777,14 @@
         }
       }
     },
+    "v1ClusterType": {
+      "default": "PureManage",
+      "enum": [
+        "PureManage",
+        "PureAttach"
+      ],
+      "type": "string"
+    },
     "v1ClusterUpgradeSettingsEntity": {
       "properties": {
         "spectroComponents": {
@@ -8820,694 +8836,6 @@
           "type": "string"
         }
       },
-      "type": "object"
-    },
-    "v1CoxEdgeAccount": {
-      "description": "CoxEdge cloud account information",
-      "properties": {
-        "apiVersion": {
-          "description": "Cloud account api version",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Cloud account kind",
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1CoxEdgeCloudAccount"
-        },
-        "status": {
-          "$ref": "#/definitions/v1CloudAccountStatus"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeAccounts": {
-      "properties": {
-        "items": {
-          "items": {
-            "$ref": "#/definitions/v1CoxEdgeAccount"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "listmeta": {
-          "$ref": "#/definitions/v1ListMetaData"
-        }
-      },
-      "required": [
-        "items"
-      ],
-      "type": "object"
-    },
-    "v1CoxEdgeBaseUrls": {
-      "description": "List of CoxEdge base urls",
-      "properties": {
-        "baseUrls": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
-      },
-      "required": [
-        "baseUrls"
-      ],
-      "type": "object"
-    },
-    "v1CoxEdgeCloudAccount": {
-      "description": "CoxEdge cloud account",
-      "properties": {
-        "apiBaseUrl": {
-          "description": "The base url - used to make api calls",
-          "type": "string"
-        },
-        "apiKey": {
-          "description": "CoxEdge cloud account ApiKey",
-          "type": "string"
-        },
-        "environment": {
-          "description": "The environment belonging to the organization",
-          "type": "string"
-        },
-        "organizationId": {
-          "description": "The Id of organization",
-          "type": "string"
-        },
-        "service": {
-          "description": "The service for which the organization is allowed to provision resources",
-          "type": "string"
-        }
-      },
-      "required": [
-        "apiBaseUrl",
-        "apiKey"
-      ],
-      "type": "object"
-    },
-    "v1CoxEdgeCloudClusterConfigEntity": {
-      "description": "CoxEdge cloud cluster config entity",
-      "properties": {
-        "clusterConfig": {
-          "$ref": "#/definitions/v1CoxEdgeClusterConfig"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeCloudConfig": {
-      "description": "CoxEdgeCloudConfig is the Schema for the coxedgecloudconfigs API",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1CoxEdgeCloudConfigSpec"
-        },
-        "status": {
-          "$ref": "#/definitions/v1CoxEdgeCloudConfigStatus"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeCloudConfigSpec": {
-      "description": "CoxEdgeCloudConfigSpec defines the cloud configuration input by user This will translate to clusterspec/machinespec for cluster-api",
-      "properties": {
-        "cloudAccountRef": {
-          "$ref": "#/definitions/v1ObjectReference",
-          "description": "cloudAccountRef should point to the secret which contains GcpCloudAccount"
-        },
-        "clusterConfig": {
-          "$ref": "#/definitions/v1CoxEdgeClusterConfig"
-        },
-        "machinePoolConfig": {
-          "items": {
-            "$ref": "#/definitions/v1CoxEdgeMachinePoolConfig"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeCloudConfigStatus": {
-      "description": "CoxEdgeCloudConfigStatus defines the observed state of CoxEdgeCloudConfig The cloudimage info built by Mold is stored here image should be mapped to a specific machinepool",
-      "properties": {
-        "conditions": {
-          "description": "spectroAnsibleProvisioner: should be added only once, subsequent recocile will use the same provisioner SpectroAnsiblePacker bool `json:\"spectroAnsiblePacker,omitempty\"`",
-          "items": {
-            "$ref": "#/definitions/v1ClusterCondition"
-          },
-          "type": "array"
-        },
-        "imageID": {
-          "description": "For mold controller to identify if is there any changes in Pack",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeClusterConfig": {
-      "description": "Cluster level configuration for coxedge cloud and applicable for all the machine pools",
-      "properties": {
-        "coxEdgeLoadBalancerConfig": {
-          "$ref": "#/definitions/v1CoxEdgeLoadBalancerConfig"
-        },
-        "coxEdgeWorkerLoadBalancerConfig": {
-          "$ref": "#/definitions/v1CoxEdgeLoadBalancerConfig"
-        },
-        "environment": {
-          "type": "string"
-        },
-        "organizationId": {
-          "type": "string"
-        },
-        "sshAuthorizedKeys": {
-          "description": "CoxEdge ssh authorized keys",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
-      },
-      "required": [
-        "sshAuthorizedKeys",
-        "coxEdgeLoadBalancerConfig"
-      ],
-      "type": "object"
-    },
-    "v1CoxEdgeCredentials": {
-      "description": "CoxEdge credentials to get organizations",
-      "properties": {
-        "apiBaseUrl": {
-          "description": "CoxEdge baseUrl - for api calls",
-          "type": "string"
-        },
-        "apiKey": {
-          "description": "CoxEdge ApiKey - secret for api calls",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeDeployment": {
-      "properties": {
-        "cpuUtilization": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "enableAutoScaling": {
-          "type": "boolean"
-        },
-        "instancesPerPop": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "maxInstancesPerPop": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "minInstancesPerPop": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "pops": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
-      }
-    },
-    "v1CoxEdgeEnvironment": {
-      "description": "CoxEdge environment entity",
-      "properties": {
-        "id": {
-          "description": "CoxEdge environment id",
-          "type": "string"
-        },
-        "isDeleted": {
-          "description": "CoxEdge environment state",
-          "type": "boolean"
-        },
-        "name": {
-          "description": "CoxEdge environment name",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeEnvironments": {
-      "description": "List of CoxEdge environments",
-      "properties": {
-        "environments": {
-          "items": {
-            "$ref": "#/definitions/v1CoxEdgeEnvironment"
-          },
-          "type": "array"
-        }
-      },
-      "required": [
-        "environments"
-      ],
-      "type": "object"
-    },
-    "v1CoxEdgeEnvironmentsRequest": {
-      "description": "Request payload to get CoxEdge environments",
-      "properties": {
-        "credentials": {
-          "$ref": "#/definitions/v1CoxEdgeCredentials"
-        },
-        "organizationId": {
-          "description": "CoxEdge organizationId",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeInstanceTypes": {
-      "description": "List of CoxEdge instance types",
-      "properties": {
-        "instanceTypes": {
-          "items": {
-            "$ref": "#/definitions/v1InstanceType"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeLoadBalancerConfig": {
-      "description": "CoxEdge loadbalancer config",
-      "properties": {
-        "pops": {
-          "description": "CoxEdge PoPs - geographical location for the loadbalancer",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeLoadPersistentStorage": {
-      "description": "CoxEdge load persistent storage",
-      "properties": {
-        "path": {
-          "description": "Coxedge load persistent storage path",
-          "type": "string"
-        },
-        "size": {
-          "description": "Coxedge load persistent storage size",
-          "format": "int64",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeMachine": {
-      "description": "CoxEdge cloud VM definition",
-      "properties": {
-        "apiVersion": {
-          "type": "string"
-        },
-        "kind": {
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1CoxEdgeMachineSpec"
-        },
-        "status": {
-          "$ref": "#/definitions/v1CloudMachineStatus"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeMachinePoolCloudConfigEntity": {
-      "properties": {
-        "deployments": {
-          "items": {
-            "$ref": "#/definitions/v1CoxEdgeDeployment"
-          },
-          "type": "array"
-        },
-        "persistentStorages": {
-          "description": "Array of coxedge load persistent storages",
-          "items": {
-            "$ref": "#/definitions/v1CoxEdgeLoadPersistentStorage"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "securityGroupRules": {
-          "items": {
-            "$ref": "#/definitions/v1CoxEdgeSecurityGroupRule"
-          },
-          "type": "array"
-        },
-        "spec": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeMachinePoolConfig": {
-      "properties": {
-        "additionalLabels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "additionalLabels",
-          "type": "object"
-        },
-        "additionalTags": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
-          "type": "object"
-        },
-        "deployments": {
-          "items": {
-            "$ref": "#/definitions/v1CoxEdgeDeployment"
-          },
-          "type": "array"
-        },
-        "instanceConfig": {
-          "$ref": "#/definitions/v1InstanceConfig"
-        },
-        "isControlPlane": {
-          "description": "whether this pool is for control plane",
-          "type": "boolean"
-        },
-        "labels": {
-          "description": "labels for this pool, example: control-plane/worker, gpu, windows",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "machinePoolProperties": {
-          "$ref": "#/definitions/v1MachinePoolProperties"
-        },
-        "maxSize": {
-          "description": "max size of the pool, for scaling",
-          "format": "int32",
-          "type": "integer"
-        },
-        "minSize": {
-          "description": "min size of the pool, for scaling",
-          "format": "int32",
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "nodeRepaveInterval": {
-          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
-          "format": "int32",
-          "type": "integer"
-        },
-        "persistentStorages": {
-          "description": "Array of coxedge load persistent storages",
-          "items": {
-            "$ref": "#/definitions/v1CoxEdgeLoadPersistentStorage"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "securityGroupRules": {
-          "items": {
-            "$ref": "#/definitions/v1CoxEdgeSecurityGroupRule"
-          },
-          "type": "array"
-        },
-        "size": {
-          "description": "size of the pool, number of machines",
-          "format": "int32",
-          "type": "integer"
-        },
-        "spec": {
-          "type": "string"
-        },
-        "taints": {
-          "description": "control plane or worker taints",
-          "items": {
-            "$ref": "#/definitions/v1Taint"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "updateStrategy": {
-          "$ref": "#/definitions/v1UpdateStrategy",
-          "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
-        },
-        "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
-          "type": "boolean"
-        }
-      },
-      "required": [
-        "isControlPlane"
-      ],
-      "type": "object"
-    },
-    "v1CoxEdgeMachinePoolConfigEntity": {
-      "properties": {
-        "cloudConfig": {
-          "$ref": "#/definitions/v1CoxEdgeMachinePoolCloudConfigEntity"
-        },
-        "poolConfig": {
-          "$ref": "#/definitions/v1MachinePoolConfigEntity"
-        }
-      },
-      "required": [
-        "cloudConfig"
-      ],
-      "type": "object"
-    },
-    "v1CoxEdgeMachineSpec": {
-      "description": "CoxEdge cloud VM definition spec",
-      "properties": {
-        "addAnycastIpAddress": {
-          "type": "boolean"
-        },
-        "deployments": {
-          "items": {
-            "$ref": "#/definitions/v1CoxEdgeDeployment"
-          },
-          "type": "array"
-        },
-        "image": {
-          "type": "string"
-        },
-        "persistentStorages": {
-          "items": {
-            "$ref": "#/definitions/v1CoxEdgeLoadPersistentStorage"
-          },
-          "type": "array"
-        },
-        "ports": {
-          "items": {
-            "$ref": "#/definitions/v1CoxEdgePort"
-          },
-          "type": "array"
-        },
-        "providerId": {
-          "type": "string"
-        },
-        "specs": {
-          "type": "string"
-        },
-        "sshAuthorizedKeys": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeMachines": {
-      "description": "CoxEdge machine list",
-      "properties": {
-        "items": {
-          "items": {
-            "$ref": "#/definitions/v1CoxEdgeMachine"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "listmeta": {
-          "$ref": "#/definitions/v1ListMetaData"
-        }
-      },
-      "required": [
-        "items"
-      ],
-      "type": "object"
-    },
-    "v1CoxEdgeOrganization": {
-      "description": "CoxEdge Organization entity",
-      "properties": {
-        "id": {
-          "description": "CoxEdge organization id",
-          "type": "string"
-        },
-        "isDeleted": {
-          "description": "CoxEdge organization state",
-          "type": "boolean"
-        },
-        "name": {
-          "description": "CoxEdge organization name",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeOrganizations": {
-      "description": "List of CoxEdge organizations",
-      "properties": {
-        "organizations": {
-          "items": {
-            "$ref": "#/definitions/v1CoxEdgeOrganization"
-          },
-          "type": "array"
-        }
-      },
-      "required": [
-        "organizations"
-      ],
-      "type": "object"
-    },
-    "v1CoxEdgePort": {
-      "description": "CoxEdge network port",
-      "properties": {
-        "protocol": {
-          "type": "string"
-        },
-        "publicPort": {
-          "type": "string"
-        },
-        "publicPortDesc": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeRegion": {
-      "description": "CoxEdge region entity",
-      "properties": {
-        "code": {
-          "description": "Code of the CoxEdge region",
-          "type": "string"
-        },
-        "location": {
-          "$ref": "#/definitions/v1ClusterLocation"
-        },
-        "name": {
-          "description": "Name of the CoxEdge region",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeRegions": {
-      "description": "List of CoxEdge regions",
-      "properties": {
-        "regions": {
-          "items": {
-            "$ref": "#/definitions/v1CoxEdgeRegion"
-          },
-          "type": "array"
-        }
-      },
-      "required": [
-        "regions"
-      ],
-      "type": "object"
-    },
-    "v1CoxEdgeSecurityGroupRule": {
-      "properties": {
-        "action": {
-          "enum": [
-            "block",
-            "allow"
-          ],
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "portRange": {
-          "type": "string"
-        },
-        "protocol": {
-          "enum": [
-            "TCP",
-            "UDP",
-            "TCP_UDP",
-            "ESP",
-            "AH",
-            "ICMP",
-            "GRE"
-          ],
-          "type": "string"
-        },
-        "source": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      }
-    },
-    "v1CoxEdgeService": {
-      "description": "CoxEdge service entity",
-      "properties": {
-        "code": {
-          "description": "CoxEdge service code",
-          "type": "string"
-        },
-        "id": {
-          "description": "CoxEdge service id",
-          "type": "string"
-        },
-        "name": {
-          "description": "CoxEdge service name",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1CoxEdgeServices": {
-      "description": "List of CoxEdge services",
-      "properties": {
-        "services": {
-          "items": {
-            "$ref": "#/definitions/v1CoxEdgeService"
-          },
-          "type": "array"
-        }
-      },
-      "required": [
-        "services"
-      ],
       "type": "object"
     },
     "v1CustomAccount": {
@@ -19430,6 +18758,20 @@
       },
       "type": "object"
     },
+    "v1OidcIssuerTls": {
+      "properties": {
+        "caCertificateBase64": {
+          "type": "string",
+          "x-omitempty": false
+        },
+        "insecureSkipVerify": {
+          "default": false,
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      },
+      "type": "object"
+    },
     "v1OidcLogins": {
       "description": "loginsDetails",
       "properties": {
@@ -23569,9 +22911,6 @@
         "azure": {
           "$ref": "#/definitions/v1PublicCloudRateConfig"
         },
-        "coxedge": {
-          "$ref": "#/definitions/v1PublicCloudRateConfig"
-        },
         "custom": {
           "items": {
             "$ref": "#/definitions/v1CustomCloudRateConfig"
@@ -25660,6 +24999,9 @@
               "$ref": "#/definitions/v1ClusterConfigEntity",
               "description": "General cluster configuration like health, patching settings, namespace resource allocation, rbac"
             },
+            "clusterType": {
+              "$ref": "#/definitions/v1ClusterType"
+            },
             "machinepoolconfig": {
               "items": {
                 "$ref": "#/definitions/v1AwsMachinePoolConfigEntity"
@@ -26432,6 +25774,20 @@
       },
       "type": "object"
     },
+    "v1SpectroClusterOidcIssuerTlsSpec": {
+      "properties": {
+        "caCertificateBase64": {
+          "type": "string",
+          "x-omitempty": false
+        },
+        "insecureSkipVerify": {
+          "default": false,
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      },
+      "type": "object"
+    },
     "v1SpectroClusterOidcSpec": {
       "properties": {
         "clientId": {
@@ -26441,6 +25797,9 @@
         "clientSecret": {
           "type": "string",
           "x-omitempty": false
+        },
+        "issuerTls": {
+          "$ref": "#/definitions/v1SpectroClusterOidcIssuerTlsSpec"
         },
         "issuerUrl": {
           "description": "the issuer is the URL identifier for the service",
@@ -27522,69 +26881,6 @@
         },
         "startTime": {
           "$ref": "#/definitions/v1Time"
-        }
-      },
-      "type": "object"
-    },
-    "v1SpectroCoxEdgeClusterEntity": {
-      "description": "CoxEdge cluster request payload for create and update",
-      "properties": {
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta"
-        },
-        "spec": {
-          "properties": {
-            "cloudAccountUid": {
-              "description": "Cloud account uid to be used for cluster provisioning",
-              "type": "string"
-            },
-            "cloudConfig": {
-              "$ref": "#/definitions/v1CoxEdgeClusterConfig"
-            },
-            "cloudType": {
-              "type": "string"
-            },
-            "clusterConfig": {
-              "$ref": "#/definitions/v1ClusterConfigEntity",
-              "description": "General cluster configuration like health, patching settings, namespace resource allocation, rbac"
-            },
-            "machinepoolconfig": {
-              "items": {
-                "$ref": "#/definitions/v1CoxEdgeMachinePoolConfigEntity"
-              },
-              "type": "array"
-            },
-            "policies": {
-              "$ref": "#/definitions/v1SpectroClusterPolicies"
-            },
-            "profiles": {
-              "items": {
-                "$ref": "#/definitions/v1SpectroClusterProfileEntity"
-              },
-              "type": "array"
-            }
-          },
-          "required": [
-            "cloudType",
-            "cloudAccountUid",
-            "cloudConfig"
-          ],
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "v1SpectroCoxEdgeClusterRateEntity": {
-      "description": "Cox Edge cluster request payload for estimating rate",
-      "properties": {
-        "cloudConfig": {
-          "$ref": "#/definitions/v1CoxEdgeClusterConfig"
-        },
-        "machinepoolconfig": {
-          "items": {
-            "$ref": "#/definitions/v1CoxEdgeMachinePoolConfigEntity"
-          },
-          "type": "array"
         }
       },
       "type": "object"
@@ -30087,6 +29383,11 @@
           "format": "int64",
           "type": "number",
           "x-omitempty": false
+        },
+        "maxLimit": {
+          "format": "int64",
+          "type": "number",
+          "x-omitempty": false
         }
       }
     },
@@ -31129,6 +30430,9 @@
           "type": "boolean",
           "x-omitempty": false
         },
+        "issuerTls": {
+          "$ref": "#/definitions/v1OidcIssuerTls"
+        },
         "issuerUrl": {
           "description": "the issuer is the URL identifier for the service",
           "type": "string",
@@ -31208,6 +30512,11 @@
           "type": "string"
         },
         "limit": {
+          "format": "int64",
+          "type": "number",
+          "x-omitempty": false
+        },
+        "maxLimit": {
           "format": "int64",
           "type": "number",
           "x-omitempty": false
@@ -45871,68 +45180,6 @@
         ]
       }
     },
-    "/v1/cloudconfigs/coxedge/{configUid}/machinePools/{machinePoolName}/machines": {
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine pool name",
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "v1CloudConfigsCoxEdgePoolMachinesAdd",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeMachine"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Adds the machine to cloud config's machine pool",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
     "/v1/cloudconfigs/edge-native/{configUid}": {
       "get": {
         "operationId": "v1CloudConfigsEdgeNativeGet",
@@ -53851,447 +53098,6 @@
         ]
       }
     },
-    "/v1/clouds/coxedge/account/validate": {
-      "post": {
-        "operationId": "V1CoxEdgeAccountValidate",
-        "parameters": [
-          {
-            "description": "Request payload to validate CoxEdge cloud account",
-            "in": "body",
-            "name": "account",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeCloudAccount"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Validate the specified CoxEdge account credentials",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/coxedge/default/baseurls": {
-      "get": {
-        "operationId": "V1CoxEdgeBaseUrls",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeBaseUrls"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of default base urls",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/coxedge/environments": {
-      "get": {
-        "operationId": "V1CoxEdgeEnvironmentsGet",
-        "parameters": [
-          {
-            "description": "Uid for the specific CoxEdge cloud account",
-            "in": "query",
-            "name": "cloudAccountUid",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "OrganizationId for the specific CoxEdge account",
-            "in": "query",
-            "name": "organizationId",
-            "type": "string"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of CoxEdge environments",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeEnvironments"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of environments for the specified account",
-        "tags": [
-          "v1"
-        ]
-      },
-      "post": {
-        "operationId": "V1CoxEdgeEnvironments",
-        "parameters": [
-          {
-            "description": "Request payload to get CoxEdge environments",
-            "in": "body",
-            "name": "spec",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeEnvironmentsRequest"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of CoxEdge environments",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeEnvironments"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of environments for baseUrl and apiKey",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/coxedge/organizations": {
-      "get": {
-        "operationId": "V1CoxEdgeOrganizationsGet",
-        "parameters": [
-          {
-            "description": "Uid for the specific CoxEdge cloud account",
-            "in": "query",
-            "name": "cloudAccountUid",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of CoxEdge organizations",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeOrganizations"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of organizations for the specified account",
-        "tags": [
-          "v1"
-        ]
-      },
-      "post": {
-        "operationId": "V1CoxEdgeOrganizations",
-        "parameters": [
-          {
-            "description": "Request payload to get CoxEdge organizations",
-            "in": "body",
-            "name": "spec",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeCredentials"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of CoxEdge organizations",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeOrganizations"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of organizations for baseUrl and apiKey",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/coxedge/regions": {
-      "get": {
-        "operationId": "V1CoxEdgeRegions",
-        "parameters": [
-          {
-            "description": "Uid for the specific AWS cloud account",
-            "in": "query",
-            "name": "cloudAccountUid",
-            "type": "string"
-          },
-          {
-            "description": "CoxEdge organization id",
-            "in": "query",
-            "name": "organizationId",
-            "type": "string"
-          },
-          {
-            "description": "CoxEdge service name",
-            "in": "query",
-            "name": "service",
-            "type": "string"
-          },
-          {
-            "description": "CoxEdge environment name",
-            "in": "query",
-            "name": "environment",
-            "type": "string"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeRegions"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of CoxEdge regions for the specified account",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/coxedge/regions/{region}/instancetypes": {
-      "get": {
-        "operationId": "V1CoxEdgeInstanceTypes",
-        "parameters": [
-          {
-            "description": "Region for which CoxEdge instances are listed",
-            "in": "path",
-            "name": "region",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "Filter for instances having cpu greater than or equal",
-            "format": "double",
-            "in": "query",
-            "name": "cpuGtEq",
-            "type": "number"
-          },
-          {
-            "description": "Filter for instances having memory greater than or equal",
-            "format": "double",
-            "in": "query",
-            "name": "memoryGtEq",
-            "type": "number"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeInstanceTypes"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of CoxEdge instance types",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
-    "/v1/clouds/coxedge/services": {
-      "get": {
-        "operationId": "V1CoxEdgeServicesGet",
-        "parameters": [
-          {
-            "description": "Uid for the specific CoxEdge cloud account",
-            "in": "query",
-            "name": "cloudAccountUid",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "OrganizationId for the specific CoxEdge account",
-            "in": "query",
-            "name": "organizationId",
-            "type": "string"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of CoxEdge services",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeServices"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of services for the specified account",
-        "tags": [
-          "v1"
-        ]
-      },
-      "post": {
-        "operationId": "V1CoxEdgeServices",
-        "parameters": [
-          {
-            "description": "Request payload to get CoxEdge services",
-            "in": "body",
-            "name": "spec",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeCredentials"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeServices"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of services for baseUrl and apiKey",
-        "tags": [
-          "v1"
-        ]
-      }
-    },
     "/v1/clouds/eks/properties/validate": {
       "post": {
         "operationId": "V1EksPropertiesValidate",
@@ -58499,10 +57305,10 @@
         "operationId": "v1DashboardAppDeployments",
         "parameters": [
           {
-            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 20.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "format": "int64",
             "in": "query",
-            "maximum": 20,
+            "maximum": 50,
             "name": "limit",
             "type": "integer"
           },
@@ -58560,10 +57366,10 @@
         "operationId": "v1DashboardAppProfiles",
         "parameters": [
           {
-            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 20.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "format": "int64",
             "in": "query",
-            "maximum": 20,
+            "maximum": 50,
             "name": "limit",
             "type": "integer"
           },
@@ -58866,10 +57672,10 @@
         "operationId": "v1ClusterProfilesFilterSummary",
         "parameters": [
           {
-            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 20.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "format": "int64",
             "in": "query",
-            "maximum": 20,
+            "maximum": 50,
             "name": "limit",
             "type": "integer"
           },
@@ -59001,10 +57807,10 @@
         "operationId": "v1DashboardEdgehostsSearch",
         "parameters": [
           {
-            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 20.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "format": "int64",
             "in": "query",
-            "maximum": 20,
+            "maximum": 50,
             "name": "limit",
             "type": "integer"
           },
@@ -59095,10 +57901,10 @@
         "operationId": "v1DashboardPcgsSearchSummary",
         "parameters": [
           {
-            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 20.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "format": "int64",
             "in": "query",
-            "maximum": 20,
+            "maximum": 50,
             "name": "limit",
             "type": "integer"
           },
@@ -59350,10 +58156,10 @@
         "operationId": "v1SpectroClustersFilterSummary",
         "parameters": [
           {
-            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 20.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "format": "int64",
             "in": "query",
-            "maximum": 20,
+            "maximum": 50,
             "name": "limit",
             "type": "integer"
           },
@@ -59658,10 +58464,10 @@
         "operationId": "v1DashboardSpectroClustersRepaveList",
         "parameters": [
           {
-            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 20.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "format": "int64",
             "in": "query",
-            "maximum": 20,
+            "maximum": 50,
             "name": "limit",
             "type": "integer"
           },
@@ -59843,10 +58649,10 @@
         "operationId": "v1SpectroClustersSearchFilterSummary",
         "parameters": [
           {
-            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 20.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
             "format": "int64",
             "in": "query",
-            "maximum": 20,
+            "maximum": 50,
             "name": "limit",
             "type": "integer"
           },
@@ -69231,6 +68037,39 @@
         ]
       }
     },
+    "/v1/spectroclusters/config/edgeInstaller": {
+      "get": {
+        "operationId": "v1SpectroClustersConfigEdgeInstaller",
+        "parameters": [
+          {
+            "description": "Scope the request to the specified project uid",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterEdgeInstallerConfig"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Cluster configuration for the edge installer",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
     "/v1/spectroclusters/edge-native": {
       "post": {
         "operationId": "v1SpectroClustersEdgeNativeCreate",
@@ -73329,6 +72168,7 @@
         {
           "in": "query",
           "name": "image",
+          "required": true,
           "type": "string"
         }
       ]
@@ -80501,6 +79341,32 @@
           }
         ],
         "summary": "Retrieves a list of users summary with provided filter spec",
+        "tags": [
+          "v1"
+        ]
+      }
+    },
+    "/v1/users/system/features": {
+      "get": {
+        "description": "Returns the users system feature",
+        "operationId": "v1UsersSystemFeature",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1SystemFeatures"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the users system feature",
         "tags": [
           "v1"
         ]
