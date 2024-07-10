@@ -41,8 +41,8 @@ you pin a column, it will always be visible.
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
 | Machine ID   | The Unique Identifier (UID) of your Edge host. You can set this attribute with the `prefix` and the `name` parameter to set this attribute for your Edge host during installation. Refer to [Installer Reference](../edge-configuration/installer-reference.md) for more information. | Yes              |
 | Status       | The status of your Edge host. It has three possible values: **Ready** means the Edge host is ready to be assigned to a workload; **In-Use** means the Edge host is already part of an active cluster; **Unpaired** means the Edge host has not been paired with Palette.              | Yes              |
-| Health       | The health status of your Edge host. Once paired, an Edge host communicates its health status periodically with Palette. Possible values are **Healthy**, **Unhealthy**, and a grey icon for unpaired Edge hosts.                                                                      | Yes              |
-| Tags         | Tags for your Edge hosts. Each tag is a key-value pair. You can use tags to help organize your Edge hosts and filter them by tags and their values.                                                                                                                             | No               |
+| Health       | The health status of your Edge host. Once paired, an Edge host communicates its health status periodically with Palette. Possible values are **Healthy**, **Unhealthy**, and a grey icon for unpaired Edge hosts.                                                                     | Yes              |
+| Tags         | Tags for your Edge hosts. Each tag is a key-value pair. You can use tags to help organize your Edge hosts and filter them by tags and their values.                                                                                                                                   | No               |
 | Cluster      | The cluster that the Edge host belongs to.                                                                                                                                                                                                                                            | Yes              |
 | CPU          | The number of cores that the CPU of the Edge host has.                                                                                                                                                                                                                                | Yes              |
 | Memory       | The amount of RAM that an Edge host has.                                                                                                                                                                                                                                              | Yes              |
@@ -54,8 +54,7 @@ you pin a column, it will always be visible.
 ## Organize Edge Host Grid View
 
 You can customize and organize the grid view of your Edge hosts in a number of ways. You can reorder the columns, hide
-certain columns, pin a column, filter Edge hosts by attribute, and order the Edge hosts alphanumerically by a
-column.
+certain columns, pin a column, filter Edge hosts by attribute, and order the Edge hosts alphanumerically by a column.
 
 ### Prerequisites
 
@@ -74,17 +73,17 @@ column.
 
 4. The following table lists the actions you can take to customize the grid view.
 
-   | Action                         | Description                                                                                                                                                                     |
-   | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Action                         | Description                                                                                                                                                                          |
+   | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
    | Reorder Columns                | Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, drag and drop the six dots icon to the left of each list item to reorder the columns. |
-   | Remove Column From View        | Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, uncheck the columns you want to hide from view.                                  |
-   | Pin a Column                   | Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, click on the pin icon to the right of the list item you want to pin.             |
-   | Filter Edge Hosts by Attribute | At the top of the grid, click on **Tags**, **Status**, and **Architecture** depending on the attribute you want to filter by, and then choose the value you want to filter by.  |
-   | Order by a Column              | Click on the label row of the column you want to order by alphanumeric order. You can click it again to change the sort order. You can only sort by one column at a time.       |
+   | Remove Column From View        | Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, uncheck the columns you want to hide from view.                                       |
+   | Pin a Column                   | Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, click on the pin icon to the right of the list item you want to pin.                  |
+   | Filter Edge Hosts by Attribute | At the top of the grid, click on **Tags**, **Status**, and **Architecture** depending on the attribute you want to filter by, and then choose the value you want to filter by.       |
+   | Order by a Column              | Click on the label row of the column you want to order by alphanumeric order. You can click it again to change the sort order. You can only sort by one column at a time.            |
 
 ![A screenshot of the Edge host grid view complete with arrows pointing to the elements referred to by the preceding table](/clusters_edge_site-deployment_edge-grid-view.webp)
 
 ### Validate
 
-After customizing the grid view, the modified view will be reflected immediately. Confirm that the
-modified view is consistent with the customization you made.
+After customizing the grid view, the modified view will be reflected immediately. Confirm that the modified view is
+consistent with the customization you made.
