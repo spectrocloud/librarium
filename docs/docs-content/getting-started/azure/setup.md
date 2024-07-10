@@ -13,16 +13,13 @@ order to authenticate Palette and allow it to deploy host clusters.
 
 ## Prerequisites
 
-The prerequisite steps to getting started with Palette on AWS are as follows.
+The prerequisite steps to getting started with Palette on Azure are as follows.
 
-- Sign up to [Palette](https://www.spectrocloud.com/get-started).
-
-  - Your Palette account role must have the `clusterProfile.create` permission to create a cluster profile. Refer to the
-    [Roles and Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
-    documentation for more information.
+- Sign up to [Palette](https://www.spectrocloud.com/get-started) as a tenant admin.
 
 - Sign up to a public cloud account from
-  [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account).
+  [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account). The Azure cloud account must have
+  the [required permissions](../../clusters/public-cloud/azure/required-permissions.md).
 
 - Access to a terminal window.
 
@@ -38,7 +35,17 @@ Palette needs access to your Azure cloud account in order to create and manage A
 
 ### Create and Upload an SSH Key
 
+Follow the steps below to create an SSH key using the terminal and upload it to Palette. This step is not required for
+the [Cluster Management with Terraform](./deploy-manage-k8s-cluster-tf.md) tutorial.
+
 <PartialsComponent category="palette-setup" name="generate-ssh-key" />
+
+### Create a Palette API Key
+
+Follow the steps below to create a Palette API key. This is required for the
+[Cluster Management with Terraform](./deploy-manage-k8s-cluster-tf.md) tutorial.
+
+<PartialsComponent category="palette-setup" name="create-tenant-api-key" />
 
 ## Validate
 
