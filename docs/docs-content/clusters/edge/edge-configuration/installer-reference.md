@@ -424,4 +424,3 @@ stages:
 install:
   poweroff: true
 ```
-
