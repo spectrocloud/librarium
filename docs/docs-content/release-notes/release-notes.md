@@ -63,12 +63,21 @@ tags: ["release-notes"]
   to the [Build Content Bundle](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) guide to
   learn more.
 
+#### Improvements
+
+- Local UI no longer allows password changes from the UI. You can now only update the Local UI password from the OS or
+  the Edge Management API. Check out the [Access Local U](../clusters/edge/local-ui/host-management/access-console.md)
+  page to learn more.
+
 ### Automation
 
-- Terraform version 0.21.0 of the
+- Terraform version 0.20.7 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
+- Palette Crossplane provider version 0.20.7 is available. For more details, refer to the provider
+  [release page](https://github.com/crossplane-contrib/provider-palette/releases).
 
 - The Palette CLI now supports automatic validation when deploying a self-hosted VerteX or Palette instance. Use the
   `--validate` flag to validate the deployment configuration before deploying the instance. Refer to the
