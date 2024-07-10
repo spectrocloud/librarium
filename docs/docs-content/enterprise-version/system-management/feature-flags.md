@@ -9,4 +9,6 @@ tags: ["self-hosted", "management", "feature-flags"]
 keywords: ["self-hosted", "palette", "feature-flags"]
 ---
 
-<PartialsComponent category="feature-flags" name="feature-flags-overview" edition="Palette" />
+import FeatureFlagsPartial from "../../../../_partials/feature_flags/_feature_flags_overview.mdx";
+
+<FeatureFlagsPartial name="feature-flags-overview" edition="Palette" />

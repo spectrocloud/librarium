@@ -9,4 +9,6 @@ tags: ["vertex", "management", "feature-flags"]
 keywords: ["self-hosted", "vertex", "feature-flags"]
 ---
 
-<PartialsComponent category="feature-flags" name="feature-flags-overview" edition="VerteX" />
+import FeatureFlagsPartial from "../../../../_partials/feature_flags/_feature_flags_overview.mdx";
+
+<FeatureFlagsPartial name="feature-flags-overview" edition="VerteX" />
