@@ -41,8 +41,8 @@ particularly useful in testing and learning environments. Refer to
 [Create Edge OVF Templates](./virtual-deployment/create-ovf-template.md) and
 [Provision Edge Host VMs](./virtual-deployment/vm-edge-host.md) to learn how to create Open Virtualization Format (OVF)
 templates and provision Edge hosts using the templates. Or check out the
-[Deploy Edge Cluster on VMware](./virtual-deployment/deploy-cluster.md) for an end-to-end tutorial to learn the Palette
-Edge deployment lifecycle using VMs.
+[Deploy Edge Cluster on VMware](../../../tutorials/edge/deploy-cluster.md) for an end-to-end tutorial to learn the
+Palette Edge deployment lifecycle using VMs.
 
 ## Resources
 
@@ -53,5 +53,7 @@ Edge deployment lifecycle using VMs.
 - [Deploy Edge Hosts On-site](site-installation/site-installation.md)
 
 - [Deploy Edge Hosts as Virtual Machines](./virtual-deployment/virtual-deployment.md)
+
+- [Edge Host Grid View](./edge-host-view.md)
 
 - [Deployment with Custom Registries](./deploy-custom-registries/deploy-custom-registries.md)

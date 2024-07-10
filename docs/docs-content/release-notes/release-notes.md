@@ -11,7 +11,21 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## Jun 15, 2024 - Release 4.4.0 - 4.4.4
+## Jul 7, 2024 - Release 4.4.7
+
+#### Bug Fixes
+
+- Fixed an issue where Edge hosts would lose the local network configuration after adding a node to the cluster.
+
+- Fixed an issue where cluster profile manifest layers were switched, and as a result, different manifest layer YAML
+  files were applied at the wrong time.
+
+- Fixed an issue occurring with self-hosted Palette and VerteX upgrading to 4.4. x. Mongo DNS was incorrectly configured
+  in the configserver ConfigMap, resulting in pod errors.
+
+- Fixed an issue where the airgap setup script failed to push all the compressed images to the local registry.
+
+## Jun 15, 2024 - Release 4.4.0 - 4.4.6
 
 <!-- prettier-ignore -->
 This release contains various new features and improvements. One new feature is the introduction of
