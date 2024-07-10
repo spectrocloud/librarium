@@ -74,9 +74,8 @@ or open a new tab in your browser depending on how to configure the links.
 6. If you want Local UI to host static web pages that you want your users to be able to access from the sidebar, create
    another folder for your website under the **local-ui** folder and put all assets for your web pages in that folder.
 
-
-   Choose a name that describes the web pages. For example, if your website has content related to human resources, you
-   can name the folder **hr** and create the folder at **local-ui/hr**.
+   Choose a name that describes the web pages. For example, if your website has content related to an application, you
+   can name the folder **app** and create the folder at **local-ui/app**.
 
    The HTML files may link to JavaScript and CSS files. Ensure that your HTML file can reference its assets. The hosted
    static sites are exposed through HTTPS with a self-signed certificate.
@@ -130,8 +129,8 @@ or open a new tab in your browser depending on how to configure the links.
 
    :::warning
 
-   Some websites and domains cannot be embedded as iframes due to security configurations. Confirm whether the sites can
-   be loaded through iframes first. If they cannot be loaded as iframes, do not use the `type: iframe` property.
+   Some websites and domains cannot be embedded as iframes due to security. Confirm whether the sites can be loaded
+   through iframes first. If they cannot be loaded as iframes, do not use the `type: iframe` property.
 
    :::
 
@@ -147,9 +146,8 @@ or open a new tab in your browser depending on how to configure the links.
 
 11. Follow the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide from step onward
     to finish the EdgeForge process. As long as the **local-ui.tar** file is at the root directory of **CanvOS** and the
-    installation mode is set to airgap as required by local UI, the custom links will be added to the sidebar when you
+    installation mode is set to airgap as required by Local UI, the custom links will be added to the sidebar when you
     log in to Local UI.
-
 
 ### Validate
 
