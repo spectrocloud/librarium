@@ -13,7 +13,9 @@ tags: ["release-notes"]
 
 ## Jul 13, 2024 - Release 4.4.X
 
-### Palette
+<!-- Custom heading applied due to linking of the Palette section in the VerteX section -->
+
+### Palette {#release-4-4-a}
 
 #### Features
 
@@ -94,6 +96,13 @@ tags: ["release-notes"]
 - EdgeForge now supports creating base images for Edge hosts using Ubuntu 24.04 UKI. To learn more about creating base
   images, refer to the [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md)
   guide.
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features and improvements in this release. Refer to the [Palette](#jul-13-2024---release-44x)
+  section for more details.
 
 ### Automation
 
