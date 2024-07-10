@@ -64,11 +64,15 @@ or open a new tab in your browser depending on how to configure the links.
    git checkout v4.4.0
    ```
 
-4. Create a directory called **local-ui** at the path **CanvOS/local-ui**. Then, under the **local-ui** directory, create
-   a directory named **ui**.
+4. Create a directory called **local-ui** at the path **CanvOS/local-ui**. Then, under the **local-ui** directory,
+   create a directory named **ui**. You can issue the following command to create both directories.
 
-5. In the **CanvOS/local-ui/ui** directory, create a file named **customizations.json**. This is the same file where
-   you customize the Local UI theme. If the file is already present, there is no need to create a new one. For more
+   ```shell
+   mkdir -p local-ui/ui
+   ```
+
+5. In the **CanvOS/local-ui/ui** directory, create a file named **customizations.json**. This is the same file where you
+   customize the Local UI theme. If the file is already present, there is no need to create a new one. For more
    information about customizing the Local UI theme, refer to [Customize Local UI Theme](./theming.md).
 
 6. If you want Local UI to host static web pages that you want your users to be able to access from the sidebar, create
@@ -143,6 +147,10 @@ or open a new tab in your browser depending on how to configure the links.
 
 10. Archive the **local-ui** directory to a TAR file. The file must be named **local-ui.tar** and must be placed at the
     root directory of CanvOS.
+
+    ```shell
+    tar cvf local-ui.tar local-ui
+    ```
 
 11. Follow the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide from step onward
     to finish the EdgeForge process. As long as the **local-ui.tar** file is at the root directory of **CanvOS** and the
