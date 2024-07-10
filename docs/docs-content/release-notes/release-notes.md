@@ -22,11 +22,26 @@ tags: ["release-notes"]
   the feature. Check out the [Feature Flags](../enterprise-version/system-management/feature-flags.md) documentation to
   learn more.
 
+- Palette now supports specifying a custom Certificate Authority (CA) when enabling OIDC integration. You now use
+  self-signed root certificates from internal identity providers when configuring OIDC integration. To learn more, refer
+  to the [Enable SSO with Custom CA](../user-management/saml-sso/saml-sso.md) guide.
+
+- You can now deploy a cluster on Azure and only use private IP addresses for the control plane and worker nodes. When
+  deploying the cluster, this new behavior requires using a Private Cloud Gateway (PCG) and static placement selection.
+  To learn more about deploying a cluster with private IP addresses, refer to the
+  [Deploy a Cluster with Private IP Addresses](../clusters/public-cloud/azure/create-azure-cluster.md) guide.
+
 #### Improvements
 
 - The Palette UI has been updated to improve the user experience for the project and tenant settings pages. The new
   **Settings Menu** enhances usability and reduces visual clutter. You can now collapse and expand categories within the
   **Settings Menu**.
+
+- Self-hosted Palette and PCG instances deployed to Azure through a Helm Chart now accept proxy configurations for
+  outbound traffic. The proxy configuration is set in the **values.yaml** file during the deployment process. Refer to
+  the
+  [Self-Hosted Helm Chart Configuration Reference](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md#reach-system)
+  or the [Deploy a PCG to an Existing Kubernetes Cluster](../clusters/pcg/deploy-pcg-k8s.md) guide to learn more.
 
 - Improvements to the Palette agent has reduced the frequency and bandwidth of agent communication with the Palette
   management platform. This change reduces the resource consumption by the Palette agent in a cluster and the bandwidth
@@ -35,7 +50,8 @@ tags: ["release-notes"]
 - Palette API responses now includ the header`Cache-Control`. This header provides information on how long the response
   can be cached and helps improve the performance of the Palette UI.
 
-- Self-Hosted Palette and Private Cloud Gateway (PCG) instances now use the vSphere CSI version 3.2.0.
+- Self-Hosted Palette and Private Cloud Gateway (PCG) instances deployed on VMware vSphere now use the vSphere CSI
+  driver version 3.2.0. The new version will automatically get picked up during an upgrade.
 
 ### Edge
 
