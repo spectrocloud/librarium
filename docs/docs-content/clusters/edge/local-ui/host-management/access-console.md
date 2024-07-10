@@ -174,10 +174,10 @@ API to update the password.
    token. You do not need to provide a username.
 
    ```bash
-   curl -L -X POST 'https://edge-host-ip:5080/v1/users/default/password/reset' \
+   curl --location 'https://edge-host-ip:5080/v1/users/default/password/reset' \
    -H 'Content-Type: application/json' \
    -H 'Accept: application/json' \
-   --data-raw '{
+   --data '{
    "newPassword": "******",
    "oldPassword": "******"
    }'
