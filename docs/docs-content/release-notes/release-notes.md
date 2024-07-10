@@ -19,8 +19,8 @@ tags: ["release-notes"]
 
 - This release introduces a system-wide control User Interface (UI) for feature flags. System administrators can now
   turn features on or off through the system console. Once a feature flag is enabled, all tenants will have access to
-  the feature. Check out the [Feature Flags](../enterprise-version/system-management/system-management.md) documentation
-  to learn more.
+  the feature. Check out the [Feature Flags](../enterprise-version/system-management/feature-flags.md) documentation to
+  learn more.
 
 #### Improvements
 
@@ -68,6 +68,16 @@ tags: ["release-notes"]
 - Local UI no longer allows password changes from the UI. You can now only update the Local UI password from the OS or
   the Edge Management API. Check out the [Access Local U](../clusters/edge/local-ui/host-management/access-console.md)
   page to learn more.
+
+- Several enhancements have been made to the UI for Edge host management in the context of cluster creation and updates.
+  The new changes ensure a consistent and user-friendly experience that involves new designs for the edge host selection
+  screen during cluster creation and updates and a redesign that incorporates a customizable, powerful grid view and
+  provides a better user experience for large-scale environments with many edge hosts. Check out the
+  [Edge Host Grid View](../clusters/edge/site-deployment/edge-host-view.md) page to learn more.
+
+- EdgeForge now supports creating base images for Edge hosts using Ubuntu 24.04 UKI. To learn more about creating base
+  images, refer to the [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md)
+  guide.
 
 ### Automation
 
