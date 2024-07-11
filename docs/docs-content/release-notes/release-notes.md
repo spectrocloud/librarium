@@ -11,6 +11,178 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## Jul 13, 2024 - Release 4.4.X
+
+<!-- Custom heading applied due to linking of the Palette section in the VerteX section -->
+
+### Palette {#release-4-4-a}
+
+#### Features
+
+- This release introduces a system-wide control User Interface (UI) for feature flags. System administrators can now
+  turn features on or off through the system console. Once a feature flag is enabled, all tenants will have access to
+  the feature. Check out the [Feature Flags](../enterprise-version/system-management/feature-flags.md) documentation to
+  learn more.
+
+- Palette now supports specifying a custom Certificate Authority (CA) when enabling OIDC integration. You now use
+  self-signed root certificates from internal identity providers when configuring OIDC integration. To learn more, refer
+  to the [Enable SSO with Custom CA](../user-management/saml-sso/saml-sso.md) guide.
+
+- You can now deploy a cluster on Azure and only use private IP addresses for the control plane and worker nodes. When
+  deploying the cluster, this new behavior requires using a Private Cloud Gateway (PCG) and static placement selection.
+  To learn more about deploying a cluster with private IP addresses, refer to the
+  [Deploy a Cluster with Private IP Addresses](../clusters/public-cloud/azure/create-azure-cluster.md) guide.
+
+#### Improvements
+
+- The Palette UI has been updated to improve the user experience for the project and tenant settings pages. The new
+  **Settings Menu** enhances usability and reduces visual clutter. You can now collapse and expand categories within the
+  **Settings Menu**.
+
+- Self-hosted Palette and PCG instances deployed to Azure through a Helm Chart now accept proxy configurations for
+  outbound traffic. The proxy configuration is set in the **values.yaml** file during the deployment process. Refer to
+  the
+  [Self-Hosted Helm Chart Configuration Reference](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md#reach-system)
+  or the [Deploy a PCG to an Existing Kubernetes Cluster](../clusters/pcg/deploy-pcg-k8s.md) guide to learn more.
+
+- Improvements to the Palette agent has reduced the frequency and bandwidth of agent communication with the Palette
+  management platform. This change reduces the resource consumption by the Palette agent in a cluster and the bandwidth
+  usage between the agent and the Palette management platform.
+
+- Palette API responses now include the header `Cache-Control`. This header provides information on how long the
+  response can be cached and helps improve the performance of the Palette UI.
+
+- Self-Hosted Palette and Private Cloud Gateway (PCG) instances deployed on VMware vSphere now use the vSphere CSI
+  driver version 3.2.0. The new version will automatically get picked up during an upgrade.
+
+### Edge
+
+#### Breaking Changes
+
+- A change in the EdgeForge process affects the Local UI customization process when using the CanvOS utility. In the
+  past, placing a folder named **ui** at the root level of the CanvOS project was required. Moving forward, the **ui**
+  folder will be placed in the **local-ui/** folder. This change is to align with the new CanvOS project structure. If
+  you are using the EdgeForge process to create Edge artifacts, ensure you update the location of the **ui** folder in
+  your CanvOS project. Refer to the Local UI [Custom Links](../clusters/edge/local-ui/host-management/custom-link.md)
+  and [Customize Local UI Theme](../clusters/edge/local-ui/host-management/theming.md) to learn more about the changes.
+
+#### Features
+
+- A new Palette API endpoint, `v1/edgehosts/tags`, is available to retrieve all tags associated with Edge clusters.
+
+- [The Edge Management API](/api/category/edge-management-api-v1/) now supports some operations on connected Edge hosts
+  (non-airgap). In the past, the Edge Management API only supported airgap Edge hosts and clusters. The new
+  functionality now allows you to perform some actions using the Edge Management API on connected Edge hosts. Refer to
+  [List of Endpoints Unavailable to Connected Edge Hosts](/api/introduction/#list-of-endpoints-unavailable-to-connected-edge-hosts)
+  section to learn more about the limitations of connected Edge hosts.
+
+- Local UI now supports signed content bundles and cluster definitions. You can embed a public key in your Edge
+  Installer ISO or provider image. Local UI can use the key to verify the content bundle and cluster definition
+  cryptographically during uploads to ensure you are fulfilling compliance requirements. Refer to the
+  [Build Content Bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) guide to learn
+  more.
+
+#### Improvements
+
+- You can now disable password changes of Operating System (OS) users from Local UI. When password updates from Local UI
+  are disabled, you can still update the OS user password from the OS or the Edge Management API. Check out the
+  [Access Local UI](../clusters/edge/local-ui/host-management/access-console.md) page to learn more.
+
+- Several enhancements have been made to the UI for Edge host management in the context of cluster creation and updates.
+  These changes ensure a consistent and user-friendly experience, including new designs for the Edge host selection
+  screen and a customizable, powerful grid view. This redesign provides a better user experience for managing many edge
+  hosts in large-scale environments. Check out the
+  [Edge Host Grid View](../clusters/edge/site-deployment/edge-host-view.md) page to learn more.
+
+- EdgeForge now supports creating base images for Edge hosts using Ubuntu 24.04 UKI. To learn more about creating base
+  images, refer to the [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md)
+  guide.
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features and improvements in this release. Refer to the [Palette](#jul-13-2024---release-44x)
+  section for more details.
+
+### Automation
+
+- Terraform version 0.20.7 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
+- Palette Crossplane provider version 0.20.7 is available. For more details, refer to the provider
+  [release page](https://github.com/crossplane-contrib/provider-palette/releases).
+
+- The Palette CLI now supports automatic validation when deploying a self-hosted VerteX or Palette instance. Use the
+  `--validate` flag to validate the deployment configuration before deploying the instance. Refer to the
+  [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section of the Palette EC
+  command documentation to learn more.
+
+### Docs and Education
+
+- Palette tutorials now have a dedicated view in the documentation. The [Tutorials](../tutorials/tutorials.md) page
+  provides a list of tutorials to help you get started with Palette and its features, and other advanced topics.
+
+### Packs
+
+#### Kubernetes
+
+| Pack                                       | New Version |
+| ------------------------------------------ | ----------- |
+| K3s                                        | 1.27.15     |
+| K3s                                        | 1.28.11     |
+| K3s                                        | 1.29.6      |
+| Palette eXtended Kubernetes (PXK)          | 1.27.15     |
+| Palette eXtended Kubernetes (PXK)          | 1.28.11     |
+| Palette eXtended Kubernetes (PXK)          | 1.29.6      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.15     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.28.11     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.6      |
+| RKE2                                       | 1.27.14     |
+| RKE2                                       | 1.28.10     |
+| RKE2                                       | 1.29.5      |
+| RKE2 - Edge                                | 1.27.14     |
+| RKE2 - Edge                                | 1.28.10     |
+| RKE2 - Edge                                | 1.29.5      |
+
+#### CNI
+
+| Pack   | New Version |
+| ------ | ----------- |
+| Calico | 3.28.0      |
+
+#### CSI
+
+| Pack        | New Version |
+| ----------- | ----------- |
+| AWS EFS     | 2.0.4       |
+| Rook Ceph   | 1.14.0      |
+| vSphere CSI | 3.2.0       |
+
+#### Add-on Packs
+
+| Pack                      | New Version |
+| ------------------------- | ----------- |
+| External Secrets Operator | 0.9.16      |
+| Kong                      | 2.38.0      |
+| Reloader                  | 1.0.74      |
+| Reloader                  | 1.0.107     |
+
+#### FIPS
+
+| Pack        | New Version |
+| ----------- | ----------- |
+| Calico      | 3.28.0      |
+| Flannel     | 0.24.3      |
+| RKE2        | 1.27.14     |
+| RKE2        | 1.28.10     |
+| RKE2        | 1.29.5      |
+| RKE2 - Edge | 1.27.14     |
+| RKE2 - Edge | 1.28.10     |
+| RKE2 - Edge | 1.29.5      |
+
 ## Jul 7, 2024 - Release 4.4.7
 
 #### Bug Fixes
