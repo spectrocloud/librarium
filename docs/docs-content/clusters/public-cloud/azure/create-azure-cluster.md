@@ -56,6 +56,9 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
   - Managed Disks
   - Virtual Network Address Translation (NAT) Gateway
 
+- To enable the `fullyPrivateAddressing` parameter, you need a self-hosted Private Cloud Gateway (PCG) deployed in
+  Azure. For more information on deploying PCGs, refer to [Private Cloud Gateway](../../pcg/pcg.md).
+
 ## Deploy an Azure Cluster
 
 Use the following steps to deploy an Azure cluster.
