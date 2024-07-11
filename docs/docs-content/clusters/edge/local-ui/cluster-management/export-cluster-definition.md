@@ -115,13 +115,14 @@ Silicon, use the API approach instead.
     --cluster-definition-profile-ids <clusterDefinitionProfileId1,clusterDefinitionProfileId2,...>
     ```
 
-    | Flag                               | Description                                                           |
-    | ---------------------------------- | --------------------------------------------------------------------- |
-    | `--api-key`                        | Your Palette API key.                                                 |
-    | `--palette-endpoint`               | API endpoint for your Palette instance.                               |
-    | `--project-id`                     | The ID of your Palette project.                                       |
-    | `--cluster-definition-name`        | Filename of the cluster definition tgz file.                          |
-    | `--cluster-definition-profile-ids` | List of cluster profile IDs to be included in the cluster definition. |
+    | Flag                               | Description                                                                                                                                                                                                                                                                                                        |
+    | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | `--api-key`                        | Your Palette API key.                                                                                                                                                                                                                                                                                              |
+    | `--palette-endpoint`               | API endpoint for your Palette instance.                                                                                                                                                                                                                                                                            |
+    | `--project-id`                     | The ID of your Palette project.                                                                                                                                                                                                                                                                                    |
+    | `--cluster-definition-name`        | Filename of the cluster definition tgz file.                                                                                                                                                                                                                                                                       |
+    | `--cluster-definition-profile-ids` | List of cluster profile IDs to be included in the cluster definition.                                                                                                                                                                                                                                              |
+    | `--private-key`                    | The path to the private key used to sign the cluster definition and content bundle if it is present. This is necessary if your Edge host has an embedded corresponding public key. For more information, refer to [Embed Public Key in Edge Artifacts](../../edgeforge-workflow/palette-canvos/signed-content.md). |
 
 11. (Optional) You can also build a content bundle together with your cluster definition in a single command by adding a
     few additional flags to the command. Content bundles are archives of all the required container images required for
