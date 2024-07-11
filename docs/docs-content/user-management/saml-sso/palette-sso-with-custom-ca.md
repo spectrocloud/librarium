@@ -31,7 +31,7 @@ with a custom CA certificate.
 
 4. In the **Identity Provider CA Certificate** field, enter your custom CA x509 certificate in the PEM format.
 
-   ![Palette that displays the OIDC configuration under SSO settings in the Tenant Settings menu. The Custom CA Certification field is highlighted.](/user-management_saml-sso_palette-sso-with-custom-ca_enter-cert.png)
+   ![Palette that displays the OIDC configuration under SSO settings in the Tenant Settings menu. The Custom CA Certification field is highlighted.](/user-management_saml-sso_palette-sso-with-custom-ca_enter-cert.webp)
 
 5. Optionally, select the **Insecure Skip TLS Verify** checkbox to skip the TLS verification.
 
