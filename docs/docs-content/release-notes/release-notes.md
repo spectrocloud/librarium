@@ -49,8 +49,8 @@ tags: ["release-notes"]
   management platform. This change reduces the resource consumption by the Palette agent in a cluster and the bandwidth
   usage between the agent and the Palette management platform.
 
-- Palette API responses now include the header `Cache-Control`. This header provides information on how long the response
-  can be cached and helps improve the performance of the Palette UI.
+- Palette API responses now include the header `Cache-Control`. This header provides information on how long the
+  response can be cached and helps improve the performance of the Palette UI.
 
 - Self-Hosted Palette and Private Cloud Gateway (PCG) instances deployed on VMware vSphere now use the vSphere CSI
   driver version 3.2.0. The new version will automatically get picked up during an upgrade.
@@ -89,9 +89,9 @@ tags: ["release-notes"]
   [Access Local UI](../clusters/edge/local-ui/host-management/access-console.md) page to learn more.
 
 - Several enhancements have been made to the UI for Edge host management in the context of cluster creation and updates.
-  The new changes ensure a consistent and user-friendly experience that involves new designs for the edge host selection
-  screen during cluster creation and updates and a redesign that incorporates a customizable, powerful grid view and
-  provides a better user experience for large-scale environments with many edge hosts. Check out the
+  These changes ensure a consistent and user-friendly experience, including new designs for the Edge host selection
+  screen and a customizable, powerful grid view. This redesign provides a better user experience for managing many edge
+  hosts in large-scale environments. Check out the
   [Edge Host Grid View](../clusters/edge/site-deployment/edge-host-view.md) page to learn more.
 
 - EdgeForge now supports creating base images for Edge hosts using Ubuntu 24.04 UKI. To learn more about creating base
