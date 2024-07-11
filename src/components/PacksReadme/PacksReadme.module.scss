@@ -130,6 +130,25 @@
         }
       }
     }
+    @media (max-width: 768px) {
+      .packDescFirstCol {
+        width: 100%;
+        padding-bottom: 12px;
+      }
+      .packDescSecondCol {
+        width: 100%;
+        .versionSelectBox {
+          width: 200px;
+        }
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    .description {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
   }
 }
 [data-theme="dark"] .description {
@@ -167,7 +186,6 @@
 }
 [data-theme="light"] .emptyContentTitle {
   color: #545f7e;
-  background-color: black;
 }
 [data-theme="dark"] .infoIcon {
   color: #72a8f5;
