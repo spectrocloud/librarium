@@ -39,15 +39,23 @@ Use the following steps to create a new host cluster so that you can add Edge ho
   [Edge Host Registration](./site-installation/edge-host-registration.md).
 
 - If you are using more than one Edge host to form a cluster, the hosts in the same cluster must be on the same network.
-- 1 IP address is required for the cluster's Virtual IP address (VIP).
-- You require at least 1 IP address for each Edge host.
+- One IP address is required for the cluster's Virtual IP (VIP) address .
+- At least one IP address is required for each Edge host.
 - You must ensure that the Edge hosts have stable IP addresses. You have the following options to achieve stable IP
   addressing for Edge hosts:
+
   - Use static IP addresses. Contact your network administrator to assign the Edge host a static IP address.
   - Use Dynamic Host Configuration Protocol (DHCP) reservations to reserve an IP address in a DHCP network. Contact your
     network administrator to reserve IP addresses for your Edge hosts in a DHCP network.
   - Enable network overlay on your Edge cluster. Network overlay can only be enabled during cluster creation. For more
     information about network overlay, refer to [Enable Overlay Network](../networking/vxlan-overlay.md).
+
+    :::warning
+
+    If any of your your Edge hosts has more than one Network Interface Card (NIC), you must either use static IP
+    addresses or use network overlay. DHCP is not supported.
+
+    :::
 
 ### Create Cluster
 
