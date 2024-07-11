@@ -36,10 +36,12 @@ Silicon, use the API approach instead.
 
 ### Instructions
 
-1. Download Palette Edge Content CLI and assign the executable bit to the CLI.
+1. Download Palette Edge CLI and assign the executable bit to the CLI. Refer to
+   [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to use the right
+   Palette Edge CLI version. This guide uses 4.4.2 as an example.
 
    ```shell
-   VERSION=4.1.2
+   VERSION=4.4.2
    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
    chmod +x palette-edge
    ```
@@ -123,7 +125,7 @@ Silicon, use the API approach instead.
 
 11. (Optional) You can also build a content bundle together with your cluster definition in a single command by adding a
     few additional flags to the command. Content bundles are archives of all the required container images required for
-    one or more cluster profiles. You can upload a content bundle to your Edge host through the local UI, and use the
+    one or more cluster profiles. You can upload a content bundle to your Edge host through Local UI, and use the
     resources in the content bundle to provision clusters without a connection to external networks. For more
     information, refer to [Build Content Bundles](../../edgeforge-workflow/palette-canvos/build-content-bundle.md).
 
@@ -148,7 +150,7 @@ Silicon, use the API approach instead.
 
 ### Validate
 
-1. Log in to the [local UI](../host-management/access-console.md).
+1. Log in to [Local UI](../host-management/access-console.md).
 
 2. From the left **Main Menu**, click on **Cluster**.
 
@@ -237,7 +239,7 @@ Silicon, use the API approach instead.
 
 ### Validate
 
-1. Log in to the [local UI](../host-management/access-console.md).
+1. Log in to [Local UI](../host-management/access-console.md).
 
 2. From the left **Main Menu**, click on **Cluster**.
 
@@ -249,7 +251,7 @@ Silicon, use the API approach instead.
 ## Next Steps
 
 You can build the cluster definition into the Edge Installer ISO, or upload the cluster definition to an existing Edge
-deployment using the local UI during cluster creation.
+deployment using Local UI during cluster creation.
 
 - [Build Edge Installer ISO](../../edgeforge-workflow/palette-canvos/build-installer-iso.md)
 

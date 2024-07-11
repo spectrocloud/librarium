@@ -57,10 +57,12 @@ Creating a content bundle provides several benefits that may address common use 
 
 ## Create Content Bundle
 
-1. Download Palette Edge Content CLI and assign the executable bit to the CLI.
+1. Download Palette Edge CLI and assign the executable bit to the CLI. Refer to
+   [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to use the right
+   Palette Edge CLI version. This guide uses 4.4.2 as an example.
 
    ```shell
-   VERSION=4.3.0
+   VERSION=4.4.2
    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
    chmod +x palette-edge
    ```
@@ -281,7 +283,7 @@ Creating a content bundle provides several benefits that may address common use 
 
 12. (Optional) You can download the cluster definition and the content bundle in a single step. A cluster definition
     contains one or more cluster profiles, including the profile variables used in the profiles. In air-gapped Edge
-    deployments, cluster definitions are required to provision a cluster from local UI. For more information, refer to
+    deployments, cluster definitions are required to provision a cluster from Local UI. For more information, refer to
     [Create a Cluster with Local UI](../../local-ui/cluster-management/create-cluster.md).
 
     To download the cluster definition together with content bundle, provide the following flags to the build command.
