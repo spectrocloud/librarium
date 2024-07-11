@@ -52,8 +52,8 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
     :::warning
 
-    If any of your your Edge hosts has more than one Network Interface Card (NIC), you must either use static IP
-    addresses or use network overlay. DHCP is not supported.
+    If any of your Edge hosts have more than one Network Interface Card (NIC), you must either use static IP addresses
+    or use network overlay. DHCP is not supported.
 
     :::
 
