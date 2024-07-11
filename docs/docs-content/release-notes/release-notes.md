@@ -49,7 +49,7 @@ tags: ["release-notes"]
   management platform. This change reduces the resource consumption by the Palette agent in a cluster and the bandwidth
   usage between the agent and the Palette management platform.
 
-- Palette API responses now include the header`Cache-Control`. This header provides information on how long the response
+- Palette API responses now include the header `Cache-Control`. This header provides information on how long the response
   can be cached and helps improve the performance of the Palette UI.
 
 - Self-Hosted Palette and Private Cloud Gateway (PCG) instances deployed on VMware vSphere now use the vSphere CSI
