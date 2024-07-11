@@ -285,5 +285,5 @@ Cluster profiles provide consistency during the cluster creation process, as wel
 They can be versioned to keep a record of previously working cluster states, giving you visibility when updating or
 rolling back workloads across your environments.
 
-We recommend that you continue to the [Deploy a Cluster with Terraform](./deploy-k8s-cluster-tf.md) page to learn about
-how you can use Palette with Terraform.
+We recommend that you continue to the [Cluster Management with Terraform](./deploy-manage-k8s-cluster-tf.md) page to
+learn about how you can use Palette with Terraform.

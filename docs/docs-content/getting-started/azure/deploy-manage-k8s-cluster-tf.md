@@ -619,10 +619,8 @@ Once the changes have been completed, Palette marks the cluster layers with a gr
 
 ![Image that shows the cluster with Kubecost](/getting-started/azure/getting-started_deploy-manage-k8s-cluster_profile-with-kubecost.webp)
 
-Next, download the
-[kubeconfig](https://deploy-preview-3173--docs-spectrocloud.netlify.app/clusters/cluster-management/kubeconfig/) file
-for your cluster from the Palette UI. This file enables you and other users to issue `kubectl` commands against the host
-cluster.
+Next, download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file for your cluster from the Palette
+UI. This file enables you and other users to issue `kubectl` commands against the host cluster.
 
 ![Image that shows the cluster's kubeconfig file location](/getting-started/azure/getting-started_deploy-manage-k8s-cluster_kubeconfig.webp)
 

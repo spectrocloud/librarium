@@ -1,19 +1,19 @@
 ---
 sidebar_label: "Cluster Management with Terraform"
 title: "Cluster Management with Terraform"
-description: "Learn how to deploy and update a Palette host cluster to AWS with Terraform."
+description: "Learn how to deploy and update a Palette host cluster to GCP with Terraform."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 50
 toc_max_heading_level: 2
-tags: ["getting-started", "aws", "terraform"]
+tags: ["getting-started", "gcp", "terraform"]
 ---
 
 The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider
 allows you to create and manage Palette resources using Infrastructure as Code (IaC). With IaC, you can automate the
 provisioning of resources, collaborate on changes, and maintain a single source of truth for your infrastructure.
 
-This tutorial will teach you how to use Terraform to deploy and update an Amazon Web Services (AWS) host cluster. You
+This tutorial will teach you how to use Terraform to deploy and update a Google Cloud Platform (GCP) host cluster. You
 will learn how to create two versions of a cluster profile with different demo applications, update the deployed cluster
 with the new cluster profile version, and then perform a rollback.
 
@@ -21,8 +21,8 @@ with the new cluster profile version, and then perform a rollback.
 
 To complete this tutorial, you will need the following items in place:
 
-- Follow the steps described in the [Set up Palette with AWS](./setup.md) guide to authenticate Palette for use with
-  your AWS cloud account and create a Palette API key.
+- Follow the steps described in the [Set up Palette with GCP](./setup.md) guide to authenticate Palette for use with
+  your GCP cloud account and create a Palette API key.
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) or [Podman](https://podman.io/docs/installation)
   installed if you choose to follow along using the tutorial container.
 - If you choose to clone the repository instead of using the tutorial container, make sure you have the following
@@ -135,7 +135,7 @@ cd /terraform/getting-started-deployment-tf
 ## Resources Review
 
 To help you get started with Terraform, the tutorial code is structured to support deploying a cluster to either AWS,
-Azure, GCP, or VMware vSphere. Before you deploy a host cluster to AWS, review the following files in the folder
+Azure, GCP, or VMware vSphere. Before you deploy a host cluster to GCP, review the following files in the folder
 structure.
 
 | **File**                | **Description**                                                                                                        |
@@ -204,7 +204,7 @@ resource allows you to create a cluster profile and customize its layers. You ca
 or add a manifest or Helm chart.
 
 The cluster profile resource is declared eight times in the **cluster-profiles.tf** file, with each pair of resources
-being designated for a specific provider. In this tutorial, two versions of the AWS cluster profile are deployed:
+being designated for a specific provider. In this tutorial, two versions of the GCP cluster profile are deployed:
 version `1.0.0` deploys the [Hello Universe](https://github.com/spectrocloud/hello-universe) pack, while version `1.1.0`
 deploys the [Kubecost](https://www.kubecost.com/) pack along with the
 [Hello Universe](https://github.com/spectrocloud/hello-universe) application.
@@ -215,62 +215,62 @@ Ensure you define the bottom layer of the cluster profile - the OS layer - first
 order in which you arrange the contents of the `pack {}` blocks plays an important role in the cluster profile creation.
 The table below displays the packs deployed in each version of the cluster profile.
 
-| **Pack Type** | **Pack Name**   | **Version** | **Cluster Profile v1.0.0** | **Cluster Profile v1.1.0** |
-| ------------- | --------------- | ----------- | -------------------------- | -------------------------- |
-| OS            | `ubuntu-aws`    | `22.04`     | :white_check_mark:         | :white_check_mark:         |
-| Kubernetes    | `kubernetes`    | `1.29.0`    | :white_check_mark:         | :white_check_mark:         |
-| Network       | `cni-calico`    | `3.27.0`    | :white_check_mark:         | :white_check_mark:         |
-| Storage       | `csi-aws-ebs`   | `1.26.1`    | :white_check_mark:         | :white_check_mark:         |
-| App Services  | `hellouniverse` | `1.1.2`     | :white_check_mark:         | :white_check_mark:         |
-| App Services  | `cost-analyzer` | `1.103.3`   | :x:                        | :white_check_mark:         |
+| **Pack Type** | **Pack Name**    | **Version** | **Cluster Profile v1.0.0** | **Cluster Profile v1.1.0** |
+| ------------- | ---------------- | ----------- | -------------------------- | -------------------------- |
+| OS            | `ubuntu-gcp`     | `22.04`     | :white_check_mark:         | :white_check_mark:         |
+| Kubernetes    | `kubernetes`     | `1.28.3`    | :white_check_mark:         | :white_check_mark:         |
+| Network       | `cni-calico`     | `3.27.0`    | :white_check_mark:         | :white_check_mark:         |
+| Storage       | `csi-gcp-driver` | `1.12.4`    | :white_check_mark:         | :white_check_mark:         |
+| App Services  | `hellouniverse`  | `1.1.2`     | :white_check_mark:         | :white_check_mark:         |
+| App Services  | `cost-analyzer`  | `1.103.3`   | :x:                        | :white_check_mark:         |
 
 The Hello Universe pack has two configured [presets](../../glossary-all.md#presets). The first preset deploys a
 standalone frontend application, while the second one deploys a three-tier application with a frontend, API server, and
 Postgres database. This tutorial deploys the three-tier version of the
 [Hello Universe](https://github.com/spectrocloud/hello-universe) pack. The preset selection in the Terraform code is
 specified within the Hello Universe pack block with the `values` field and by using the **values-3tier.yaml** file.
-Below is an example of version `1.0.0` of the AWS cluster profile Terraform resource.
+Below is an example of version `1.0.0` of the GCP cluster profile Terraform resource.
 
 ```hcl
-resource "spectrocloud_cluster_profile" "aws-profile" {
-  count = var.deploy-aws ? 1 : 0
+resource "spectrocloud_cluster_profile" "gcp-profile" {
+  count = var.deploy-gcp ? 1 : 0
 
-  name        = "tf-aws-profile"
-  description = "A basic cluster profile for AWS"
-  tags        = concat(var.tags, ["env:aws"])
-  cloud       = "aws"
+  name        = "tf-gcp-profile"
+  description = "A basic cluster profile for GCP"
+  tags        = concat(var.tags, ["env:GCP"])
+  cloud       = "gcp"
   type        = "cluster"
   version     = "1.0.0"
 
   pack {
-    name   = data.spectrocloud_pack.aws_ubuntu.name
-    tag    = data.spectrocloud_pack.aws_ubuntu.version
-    uid    = data.spectrocloud_pack.aws_ubuntu.id
-    values = data.spectrocloud_pack.aws_ubuntu.values
+    name   = data.spectrocloud_pack.gcp_ubuntu.name
+    tag    = data.spectrocloud_pack.gcp_ubuntu.version
+    uid    = data.spectrocloud_pack.gcp_ubuntu.id
+    values = data.spectrocloud_pack.gcp_ubuntu.values
     type   = "spectro"
   }
 
   pack {
-    name   = data.spectrocloud_pack.aws_k8s.name
-    tag    = data.spectrocloud_pack.aws_k8s.version
-    uid    = data.spectrocloud_pack.aws_k8s.id
-    values = data.spectrocloud_pack.aws_k8s.values
+    name   = data.spectrocloud_pack.gcp_k8s.name
+    tag    = data.spectrocloud_pack.gcp_k8s.version
+    uid    = data.spectrocloud_pack.gcp_k8s.id
+    values = data.spectrocloud_pack.gcp_k8s.values
     type   = "spectro"
   }
 
   pack {
-    name   = data.spectrocloud_pack.aws_cni.name
-    tag    = data.spectrocloud_pack.aws_cni.version
-    uid    = data.spectrocloud_pack.aws_cni.id
-    values = data.spectrocloud_pack.aws_cni.values
+    name   = data.spectrocloud_pack.gcp_cni.name
+    tag    = data.spectrocloud_pack.gcp_cni.version
+    uid    = data.spectrocloud_pack.gcp_cni.id
+    values = data.spectrocloud_pack.gcp_cni.values
     type   = "spectro"
   }
 
   pack {
-    name   = data.spectrocloud_pack.aws_csi.name
-    tag    = data.spectrocloud_pack.aws_csi.version
-    uid    = data.spectrocloud_pack.aws_csi.id
-    values = data.spectrocloud_pack.aws_csi.values
+    name   = data.spectrocloud_pack.gcp_csi.name
+    tag    = data.spectrocloud_pack.gcp_csi.version
+    uid    = data.spectrocloud_pack.gcp_csi.id
+    values = data.spectrocloud_pack.gcp_csi.values
     type   = "spectro"
   }
 
@@ -298,12 +298,12 @@ Terraform. The Spectro Cloud Terraform provider exposes several data resources t
 dynamic. The data resource used in the cluster profile is `spectrocloud_pack`. This resource enables you to query
 Palette for information about a specific pack, such as its unique ID, registry ID, available versions, and YAML values.
 
-Below is the data resource used to query Palette for information about the Kubernetes pack for version `1.29.0`.
+Below is the data resource used to query Palette for information about the Kubernetes pack for version `1.28.3`.
 
 ```hcl
-data "spectrocloud_pack" "aws_k8s" {
-  name    = "kubernetes"
-  version = "1.29.0"
+data "spectrocloud_pack" "gcp_k8s" {
+  name         = "kubernetes"
+  version      = "1.28.3"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
@@ -314,48 +314,48 @@ Using the data resource helps you avoid manually entering the parameter values r
 #### Cluster
 
 The **clusters.tf** file contains the definitions required for deploying a host cluster to one of the infrastructure
-providers. To create an AWS host cluster, you must set the `deploy-aws` variable in the **terraform.tfvars** file to
+providers. To create a GCP host cluster, you must set the `deploy-gcp` variable in the **terraform.tfvars** file to
 true.
 
 When deploying a cluster using Terraform, you must provide the same parameters as those available in the Palette UI for
 the cluster deployment step, such as the instance size and number of nodes. You can learn more about each parameter by
 reviewing the
-[AWS cluster resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_aws)
+[GCP cluster resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_gcp)
 documentation.
 
 ```hcl
-resource "spectrocloud_cluster_aws" "aws-cluster" {
-  count = var.deploy-aws ? 1 : 0
+resource "spectrocloud_cluster_gcp" "gcp-cluster" {
+  count = var.deploy-gcp ? 1 : 0
 
-  name             = "aws-cluster"
-  tags             = concat(var.tags, ["env:aws"])
-  cloud_account_id = data.spectrocloud_cloudaccount_aws.account[0].id
+  name             = "gcp-cluster"
+  tags             = concat(var.tags, ["env:gcp"])
+  cloud_account_id = data.spectrocloud_cloudaccount_gcp.account[0].id
 
   cloud_config {
-    region       = var.aws-region
-    ssh_key_name = var.aws-key-pair-name
+    project = var.gcp_project_name
+    region  = var.gcp-region
   }
 
   cluster_profile {
-    id = var.deploy-aws && var.deploy-aws-kubecost ? resource.spectrocloud_cluster_profile.aws-profile-kubecost[0].id : resource.spectrocloud_cluster_profile.aws-profile[0].id
+    id = var.deploy-gcp && var.deploy-gcp-kubecost ? resource.spectrocloud_cluster_profile.gcp-profile-kubecost[0].id : resource.spectrocloud_cluster_profile.gcp-profile[0].id
   }
 
   machine_pool {
     control_plane           = true
     control_plane_as_worker = true
     name                    = "control-plane-pool"
-    count                   = var.aws_control_plane_nodes.count
-    instance_type           = var.aws_control_plane_nodes.instance_type
-    disk_size_gb            = var.aws_control_plane_nodes.disk_size_gb
-    azs                     = var.aws_control_plane_nodes.availability_zones
+    count                   = var.gcp_control_plane_nodes.count
+    instance_type           = var.gcp_control_plane_nodes.instance_type
+    disk_size_gb            = var.gcp_control_plane_nodes.disk_size_gb
+    azs                     = var.gcp_control_plane_nodes.availability_zones
   }
 
   machine_pool {
     name          = "worker-pool"
-    count         = var.aws_worker_nodes.count
-    instance_type = var.aws_worker_nodes.instance_type
-    disk_size_gb  = var.aws_worker_nodes.disk_size_gb
-    azs           = var.aws_worker_nodes.availability_zones
+    count         = var.gcp_worker_nodes.count
+    instance_type = var.gcp_worker_nodes.instance_type
+    disk_size_gb  = var.gcp_worker_nodes.disk_size_gb
+    azs           = var.gcp_worker_nodes.availability_zones
   }
 
   timeouts {
@@ -416,43 +416,36 @@ db_password     = "REPLACE ME"     # The database password to connect to the API
 auth_token      = "REPLACE ME"     # The auth token for the API connection.
 ```
 
-Locate the AWS provider section and change `deploy-aws = false` to `deploy-aws = true`. Additionally, replace all
-occurrences of `REPLACE_ME` with their corresponding values, such as those for the `aws-cloud-account-name`,
-`aws-region`, `aws-key-pair-name`, and `availability_zones` variables. You can also update the values for the nodes in
+Locate the GCP provider section and change `deploy-gcp = false` to `deploy-gcp = true`. Additionally, replace all
+occurrences of `REPLACE_ME` with their corresponding values, such as those for the `gcp-cloud-account-name`,
+`gcp-region`, `gcp_project_name`, and `availability_zones` variables. You can also update the values for the nodes in
 the control plane or worker node pools as needed.
-
-:::warning
-
-Ensure that the SSH key pair specified in `aws-key-pair-name` is available in the same region specified by `aws-region`.
-For example, if `aws-region` is set to `us-east-1`, use the name of a key pair that exists in the `us-east-1` region.
-
-:::
 
 ```hcl {4,7-9,16,24}
 ###########################
-# AWS Deployment Settings
-###########################
-deploy-aws          = false # Set to true to deploy to AWS.
-deploy-aws-kubecost = false # Set to true to deploy to AWS and include Kubecost to your cluster profile.
+# GCP Deployment Settings
+############################
+deploy-gcp          = false # Set to true to deploy to GCP.
+deploy-gcp-kubecost = false # Set to true to deploy to GCP and include Kubecost to your cluster profile.
 
-aws-cloud-account-name = "REPLACE ME"
-aws-region             = "REPLACE ME"
-aws-key-pair-name      = "REPLACE ME"
+gcp-cloud-account-name = "REPLACE ME"
+gcp-region             = "REPLACE ME"
+gcp_project_name       = "REPLACE ME"
 
-aws_control_plane_nodes = {
+gcp_control_plane_nodes = {
   count              = "1"
   control_plane      = true
-  instance_type      = "m4.xlarge"
+  instance_type      = "n1-standard-4"
   disk_size_gb       = "60"
-  availability_zones = ["REPLACE ME"] # If you want to deploy to multiple AZs, add them here. Example: ["us-east-1a", "us-east-1b"].
+  availability_zones = ["REPLACE ME"] # If you want to deploy to multiple AZs, add them here. Example: ["us-central1-a", "us-central1-b"].
 }
 
-aws_worker_nodes = {
+gcp_worker_nodes = {
   count              = "1"
   control_plane      = false
-  instance_type      = "m4.xlarge"
+  instance_type      = "n1-standard-4"
   disk_size_gb       = "60"
-  availability_zones = ["REPLACE ME"] # If you want to deploy to multiple AZs, add them here. Example: ["us-east-1a", "us-east-1b"].
+  availability_zones = ["REPLACE ME"] # If you want to deploy to multiple AZs, add them here. Example: ["us-central1-a", "us-central1-b"].
 }
 ```
 
@@ -484,7 +477,7 @@ Issue the `plan` command to preview the resources that Terraform will create.
 terraform plan
 ```
 
-The output indicates that three new resources will be created: two versions of the AWS cluster profile and the host
+The output indicates that three new resources will be created: two versions of the GCP cluster profile and the host
 cluster. The host cluster will use version `1.0.0` of the cluster profile.
 
 ```shell
@@ -498,14 +491,14 @@ terraform apply -auto-approve
 ```
 
 To check that the cluster profile was created correctly, log in to [Palette](https://console.spectrocloud.com), and
-click **Profiles** from the left **Main Menu**. Locate the cluster profile named `tf-aws-profile`. Click on the cluster
+click **Profiles** from the left **Main Menu**. Locate the cluster profile named `tf-gcp-profile`. Click on the cluster
 profile to review its layers and versions.
 
-![A view of the cluster profile](/getting-started/aws/getting-started_deploy-manage-k8s-cluster-tf_profile_review.webp)
+![A view of the cluster profile](/getting-started/gcp/getting-started_deploy-manage-k8s-cluster-tf_profile_review.webp)
 
 You can also check the cluster creation process by selecting **Clusters** from the left **Main Menu**.
 
-![Update the cluster](/getting-started/aws/getting-started_deploy-manage-k8s-cluster-tf_create_cluster.webp)
+![Update the cluster](/getting-started/gcp/getting-started_deploy-manage-k8s-cluster-tf_create_cluster.webp)
 
 Select your cluster to review its details page, which contains the status, cluster profile, event logs, and more.
 
@@ -513,7 +506,7 @@ The cluster deployment may take 15 to 30 minutes depending on the cloud provider
 node pool configurations provided. You can learn more about the deployment progress by reviewing the event log. Click on
 the **Events** tab to check the log.
 
-![Update the cluster](/getting-started/aws/getting-started_deploy-manage-k8s-cluster-tf_event_log.webp)
+![Update the cluster](/getting-started/gcp/getting-started_deploy-manage-k8s-cluster-tf_event_log.webp)
 
 ### Verify the Application
 
@@ -530,7 +523,7 @@ moments before clicking on the service URL to prevent the browser from caching a
 
 :::
 
-![Deployed application](/getting-started/aws/getting-started_deploy-manage-k8s-cluster_hello-universe-w-api.webp)
+![Deployed application](/getting-started/gcp/getting-started_deploy-manage-k8s-cluster_hello-universe-w-api.webp)
 
 Welcome to Hello Universe, a demo application developed to help you learn more about Palette and its features. Feel free
 to click on the logo to increase the counter and for a fun image change.
@@ -542,35 +535,35 @@ This provides you with better change visibility and control over the layers in y
 commonly used for adding or removing layers and pack configuration updates.
 
 The version number of a given profile must be unique and use the semantic versioning format `major.minor.patch`. In this
-tutorial, you used Terraform to deploy two versions of an AWS cluster profile. The snippet below displays a segment of
+tutorial, you used Terraform to deploy two versions of a GCP cluster profile. The snippet below displays a segment of
 the Terraform cluster profile resource version `1.0.0` that was deployed.
 
 ```hcl {4,9}
-resource "spectrocloud_cluster_profile" "aws-profile" {
-  count = var.deploy-aws ? 1 : 0
+resource "spectrocloud_cluster_profile" "gcp-profile" {
+  count = var.deploy-gcp ? 1 : 0
 
-  name        = "tf-aws-profile"
-  description = "A basic cluster profile for AWS"
-  tags        = concat(var.tags, ["env:aws"])
-  cloud       = "aws"
+  name        = "tf-gcp-profile"
+  description = "A basic cluster profile for GCP"
+  tags        = concat(var.tags, ["env:GCP"])
+  cloud       = "gcp"
   type        = "cluster"
   version     = "1.0.0"
 ```
 
-Open the **terraform.tfvars** file, set the `deploy-aws-kubecost` variable to true, and save the file. Once applied, the
+Open the **terraform.tfvars** file, set the `deploy-gcp-kubecost` variable to true, and save the file. Once applied, the
 host cluster will use version `1.1.0` of the cluster profile with the Kubecost pack.
 
 The snippet below displays the segment of the Terraform resource that creates the cluster profile version `1.1.0`. Note
-how the name `tf-aws-profile` is the same as in the first cluster profile resource, but the version is different.
+how the name `tf-gcp-profile` is the same as in the first cluster profile resource, but the version is different.
 
 ```hcl {4,9}
-resource "spectrocloud_cluster_profile" "aws-profile-kubecost" {
-  count = var.deploy-aws-kubecost ? 1 : 0
+resource "spectrocloud_cluster_profile" "gcp-profile-kubecost" {
+  count = var.deploy-gcp ? 1 : 0
 
-  name        = "tf-aws-profile"
-  description = "A basic cluster profile for AWS with Kubecost"
-  tags        = concat(var.tags, ["env:aws"])
-  cloud       = "aws"
+  name        = "tf-gcp-profile"
+  description = "A basic cluster profile for GCP with Kubecost"
+  tags        = concat(var.tags, ["env:GCP"])
+  cloud       = "gcp"
   type        = "cluster"
   version     = "1.1.0"
 ```
@@ -600,30 +593,30 @@ profile version.
 To visualize the reconciliation behavior, log in to [Palette](https://console.spectrocloud.com), and click **Clusters**
 from the left **Main Menu**.
 
-Select the cluster named `aws-cluster`. Click on the **Events** tab. Note how a cluster reconciliation action was
+Select the cluster named `gcp-cluster`. Click on the **Events** tab. Note how a cluster reconciliation action was
 triggered due to cluster profile changes.
 
-![Image that shows the cluster profile reconciliation behavior](/getting-started/aws/getting-started_deploy-manage-k8s-cluster_reconciliation.webp)
+![Image that shows the cluster profile reconciliation behavior](/getting-started/gcp/getting-started_deploy-manage-k8s-cluster_reconciliation.webp)
 
-Next, click on the **Profile** tab. Observe that the cluster is now using version `1.1.0` of the `tf-aws-profile`
+Next, click on the **Profile** tab. Observe that the cluster is now using version `1.1.0` of the `tf-gcp-profile`
 cluster profile.
 
-![Image that shows the new cluster profile version with Kubecost](/getting-started/aws/getting-started_deploy-manage-k8s-cluster_profile-with-cluster.webp)
+![Image that shows the new cluster profile version with Kubecost](/getting-started/gcp/getting-started_deploy-manage-k8s-cluster_profile-with-cluster.webp)
 
 Once the changes have been completed, Palette marks the cluster layers with a green status indicator. Click the
 **Overview** tab to verify that the Kubecost pack was successfully deployed.
 
-![Image that shows the cluster with Kubecost](/getting-started/aws/getting-started_deploy-manage-k8s-cluster_profile-with-kubecost.webp)
+![Image that shows the cluster with Kubecost](/getting-started/gcp/getting-started_deploy-manage-k8s-cluster_profile-with-kubecost.webp)
 
 Next, download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file for your cluster from the Palette
 UI. This file enables you and other users to issue `kubectl` commands against the host cluster.
 
-![Image that shows the cluster's kubeconfig file location](/getting-started/aws/getting-started_deploy-manage-k8s-cluster_kubeconfig.webp)
+![Image that shows the cluster's kubeconfig file location](/getting-started/gcp/getting-started_deploy-manage-k8s-cluster_kubeconfig.webp)
 
 Open a new terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
 
 ```bash
-export KUBECONFIG=~/Downloads/admin.aws-cluster.kubeconfig
+export KUBECONFIG=~/Downloads/admin.gcp-cluster.kubeconfig
 ```
 
 Forward the Kubecost UI to your local network. The Kubecost dashboard is not exposed externally by default, so the
@@ -639,7 +632,7 @@ information about your cluster. Read more about
 [Navigating the Kubecost UI](https://docs.kubecost.com/using-kubecost/navigating-the-kubecost-ui) to make the most of
 the cost analyzer pack.
 
-![Image that shows the Kubecost UI](/getting-started/aws/getting-started_deploy-manage-k8s-cluster_kubecost.webp)
+![Image that shows the Kubecost UI](/getting-started/gcp/getting-started_deploy-manage-k8s-cluster_kubecost.webp)
 
 Once you are done exploring the Kubecost dashboard, stop the `kubectl port-forward` command by closing the terminal
 window it is executing from.
@@ -652,7 +645,7 @@ the time to recovery in the event of an incident.
 
 The process of rolling back to a previous version using Terraform is similar to the process of applying a new version.
 
-Open the **terraform.tfvars** file, set the `deploy-aws-kubecost` variable to false, and save the file. Once applied,
+Open the **terraform.tfvars** file, set the `deploy-gcp-kubecost` variable to false, and save the file. Once applied,
 this action will make the active cluster use version **1.0.0** of the cluster profile again.
 
 In the terminal window, issue the following command to plan the changes.
@@ -676,7 +669,7 @@ terraform apply -auto-approve
 Palette now makes the changes required for the cluster to return to the state specified in version `1.0.0` of your
 cluster profile. Once your changes have completed, Palette marks your layers with the green status indicator.
 
-![Image that shows the cluster using version 1.0.0 of the cluster profile](/getting-started/aws/getting-started_deploy-manage-k8s-cluster_profile-without-kubecost.webp)
+![Image that shows the cluster using version 1.0.0 of the cluster profile](/getting-started/gcp/getting-started_deploy-manage-k8s-cluster_profile-without-kubecost.webp)
 
 ## Cleanup
 
@@ -729,7 +722,7 @@ podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.7
 ## Wrap-Up
 
 In this tutorial, you learned how to create different versions of a cluster profile using Terraform. You deployed a host
-AWS cluster and then updated it to use a different version of a cluster profile. Finally, you learned how to perform
+GCP cluster and then updated it to use a different version of a cluster profile. Finally, you learned how to perform
 cluster profile roll backs.
 
 We encourage you to check out the
