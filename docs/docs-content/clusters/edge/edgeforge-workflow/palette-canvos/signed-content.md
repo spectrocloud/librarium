@@ -124,6 +124,15 @@ your Edge hosts come from a trusted source. For more information about content b
    If a cluster is created with a provider image with a new key, the new key will replace the old key. If a cluster is
    created with a provider image with no keys, then the existing key will be removed.
 
+   :::warning
+
+   In the process of rotating the keys, you will need to build a new content bundle with the provider image that
+   contains the new key. When you build this content bundle, you still need to sign it with the existing key, which
+   secures the key rotation process. If you need to create a new cluster definition, you will also need to sign it with
+   the existing key. The new key will only take effect after the cluster is operational with the new provider image.
+
+   :::
+
 ## Validate
 
 Depending on the Edge artifact you have built, the validation steps are slightly different.
