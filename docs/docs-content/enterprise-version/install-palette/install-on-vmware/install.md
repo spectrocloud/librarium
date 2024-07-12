@@ -345,7 +345,48 @@ Use the following steps to install Palette.
     export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
     ```
 
-17. Copy the URL to the browser to access the system console. You will be prompted to reset the password.
+17. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
+    in the environment where you initiated the installation.
+
+    Issue the following command to list all instances of `kind` that exist in the environment.
+
+    ```shell
+    docker images
+    ```
+
+    ```shell
+    REPOSITORY     TAG        IMAGE ID       CREATED        SIZE
+    kindest/node   v1.26.13   131ad18222cc   5 months ago   910MB
+    ```
+
+    Then, use the following command template to remove all instances of `kind`.
+
+    ```shell
+    docker image rm kindest/node:<version>
+    ```
+
+    Consider the following example for reference.
+
+    ```shell
+    docker image rm kindest/node:v1.26.13
+    ```
+
+    ```shell
+    Untagged: kindest/node:v1.26.13
+    Untagged: kindest/node@sha256:15ae92d507b7d4aec6e8920d358fc63d3b980493db191d7327541fbaaed1f789
+    Deleted: sha256:131ad18222ccb05561b73e86bb09ac3cd6475bb6c36a7f14501067cba2eec785
+    Deleted: sha256:85a1a4dfc468cfeca99e359b74231e47aedb007a206d0e2cae2f8290e7290cfd
+    ```
+
+18. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
+    you will be prompted to create a new password. Enter a new password and save your changes. Refer to the
+    [password requirements](../../system-management/account-management/credentials.md#password-requirements-and-security)
+    documentation page to learn more about the password requirements.
+
+    Use the username `admin` and your new password to log in to the system console. You can create additional system
+    administrator accounts and assign roles to users in the system console. Refer to the
+    [Account Management](../../system-management/account-management/account-management.md) documentation page for more
+    information.
 
     :::info
 
@@ -357,7 +398,7 @@ Use the following steps to install Palette.
 
     ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
-18. Copy the URL and paste it in your browser's URL field to access the system console. You will be prompted to reset
+19. Copy the URL and paste it in your browser's URL field to access the system console. You will be prompted to reset
     the password.
 
     :::info
@@ -368,17 +409,17 @@ Use the following steps to install Palette.
 
     :::
 
-19. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
+20. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
     you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to
     the Palette system console.
 
-20. After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
+21. After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
     [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to
     upload the SSL certificate files to Palette.
 
-21. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
+22. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../system-management/tenant-management.md) guide.
 
     ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.webp)
