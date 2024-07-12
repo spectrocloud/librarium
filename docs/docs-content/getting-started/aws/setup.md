@@ -13,9 +13,7 @@ order to authenticate Palette and allow it to deploy host clusters.
 
 ## Prerequisites
 
-The prerequisite steps to getting started with Palette on AWS are as follows.
-
-- Sign up to [Palette](https://www.spectrocloud.com/get-started) as a tenant admin.
+- A Palette account with [tenant admin](../../tenant-settings/tenant-settings.md) access.
 
 - Sign up to a public cloud account from
   [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account). The AWS cloud account

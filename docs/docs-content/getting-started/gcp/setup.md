@@ -13,9 +13,7 @@ steps are required in order to authenticate Palette and allow it to deploy host 
 
 ## Prerequisites
 
-The prerequisite steps to getting started with Palette on GCP are as follows.
-
-- Sign up to [Palette](https://www.spectrocloud.com/get-started) as a tenant admin.
+- A Palette account with [tenant admin](../../tenant-settings/tenant-settings.md) access.
 
 - Sign up to a service account from [GCP](https://cloud.google.com/docs/get-started). The GCP account must have the
   required [IAM permissions](../../clusters/public-cloud/gcp/required-permissions.md).

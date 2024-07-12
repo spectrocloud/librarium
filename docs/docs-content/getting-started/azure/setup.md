@@ -13,9 +13,7 @@ order to authenticate Palette and allow it to deploy host clusters.
 
 ## Prerequisites
 
-The prerequisite steps to getting started with Palette on Azure are as follows.
-
-- Sign up to [Palette](https://www.spectrocloud.com/get-started) as a tenant admin.
+- A Palette account with [tenant admin](../../tenant-settings/tenant-settings.md) access.
 
 - Sign up to a public cloud account from
   [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account). The Azure cloud account must have
