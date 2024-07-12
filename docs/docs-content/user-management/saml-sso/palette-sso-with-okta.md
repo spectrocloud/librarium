@@ -19,6 +19,12 @@ The following steps will guide you on how to enable Palette SSO with
 
 ## Prerequisites
 
+:::info
+
+For Okta OIDC to work correctly with Palette, you must enable HTTPS and configure TLS.
+
+:::
+
 - You need to have either a free or paid subscription with Okta. Okta provides free
   [developer subscriptions](https://developer.okta.com/signup/) for testing purposes.
 

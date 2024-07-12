@@ -21,6 +21,12 @@ purposes of this guide, please consider Microsoft Entra ID and Azure Active Dire
 ID securely manages anything to do with the user's information, access, and the trust relationships between parties in a
 flow. It authenticates the user's identity, grants and revokes access to resources, and issues tokens.
 
+:::info
+
+For Microsoft Entra ID to work correctly with Palette, you must enable HTTPS and configure TLS.
+
+:::
+
 This document will guide you on deploying and enabling SSO with Microsoft Entra based on OIDC for integration with
 Palette and Kubernetes clusters.
 

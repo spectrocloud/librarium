@@ -21,6 +21,12 @@ for OIDC-based SSO in your Kubernetes cluster.
 
 ## Prerequisites
 
+:::info
+
+For OneLogin to work correctly with Palette, you must enable HTTPS and configure TLS.
+
+:::
+
 - An active OneLogin subscription and administrator-level permissions. If you are using this for testing purposes,
   OneLogin provides a [developer subscription](https://developers.onelogin.com/).
 

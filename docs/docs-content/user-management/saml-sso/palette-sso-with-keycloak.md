@@ -21,24 +21,30 @@ up Keycloak as an OIDC provider for Palette.
 
 ## Prerequisites
 
-1. Access to Palette as a Tenant Admin.
+:::info
 
-2. The Keycloak service must be exposed on an external IP address, preferably with a domain name. Refer to the
-   [Configuring Keycloak for production](https://www.keycloak.org/server/configuration-production) guide for more
-   information.
+For Keycloak to work correctly with Palette, you must enable HTTPS and configure TLS.
 
-3. Deploy a Kubernetes cluster with load balancer resources available. You will also need a set of open IP addresses for
-   the Keycloak service.
+:::
 
-   :::tip
+- Access to Palette as a Tenant Admin.
 
-   You can deploy a Kubernetes cluster in a public cloud with load balancer resources using Palette. You can also deploy
-   to an on-prem or edge environment and use the MetalLB pack to expose a load balancer service. Check out the
-   [Deploy a Cluster](../../clusters/public-cloud/deploy-k8s-cluster.md) guide for more information.
+- The Keycloak service must be exposed on an external IP address, preferably with a domain name. Refer to the
+  [Configuring Keycloak for production](https://www.keycloak.org/server/configuration-production) guide for more
+  information.
 
-   :::
+- Deploy a Kubernetes cluster with load balancer resources available. You will also need a set of open IP addresses for
+  the Keycloak service.
 
-4. Kubectl installed and configured to access your Kubernetes cluster.
+  :::tip
+
+  You can deploy a Kubernetes cluster in a public cloud with load balancer resources using Palette. You can also deploy
+  to an on-prem or edge environment and use the MetalLB pack to expose a load balancer service. Check out the
+  [Deploy a Cluster](../../clusters/public-cloud/deploy-k8s-cluster.md) guide for more information.
+
+  :::
+
+- Kubectl installed and configured to access your Kubernetes cluster.
 
 ## Enable SSO with Keycloak
 

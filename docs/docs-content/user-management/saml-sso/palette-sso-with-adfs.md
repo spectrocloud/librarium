@@ -26,6 +26,12 @@ standard that Palette employs. You can only use the OIDC-based approach for Micr
 
 ## Prerequisites
 
+:::info
+
+For Microsoft AD FS to work correctly with Palette, you must enable HTTPS and configure TLS.
+
+:::
+
 In order to setup OIDC-based SSO with Microsoft AD FS, you need to use one of the following versions:
 
 - Microsoft AD FS 2022 (comes with Windows Server 2022)

@@ -20,6 +20,12 @@ the following protocols for authentication and authorization.
 
 Check out the following resources to enable SSO in Palette with the supported Identity Providers (IDP).
 
+:::info
+
+For an SSO provider to work correctly with Palette, you must enable HTTPS and configure TLS.
+
+:::
+
 ## Resources
 
 - [Enable SSO with Microsoft Active Directory Federation Service (AD FS)](palette-sso-with-adfs.md)
