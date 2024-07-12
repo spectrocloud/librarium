@@ -256,6 +256,49 @@ You can also track the PCG deployment progress from your terminal. Depending on 
 environment, the deployment might take up to 30 minutes. Upon completion, the local kind cluster is automatically
 deleted from your machine.
 
+:::tip
+
+To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed in
+the environment where you initiated the installation.
+
+<details>
+
+<summary>Remove `kind` Images</summary>
+
+Issue the following command to list all instances of `kind` that exist in the environment.
+
+```shell
+docker images
+```
+
+```shell
+REPOSITORY     TAG        IMAGE ID       CREATED        SIZE
+kindest/node   v1.26.13   131ad18222cc   5 months ago   910MB
+```
+
+Then, use the following command template to remove all instances of `kind`.
+
+```shell
+docker image rm kindest/node:<version>
+```
+
+Consider the following example for reference.
+
+```shell
+docker image rm kindest/node:v1.26.13
+```
+
+```shell
+Untagged: kindest/node:v1.26.13
+Untagged: kindest/node@sha256:15ae92d507b7d4aec6e8920d358fc63d3b980493db191d7327541fbaaed1f789
+Deleted: sha256:131ad18222ccb05561b73e86bb09ac3cd6475bb6c36a7f14501067cba2eec785
+Deleted: sha256:85a1a4dfc468cfeca99e359b74231e47aedb007a206d0e2cae2f8290e7290cfd
+```
+
+</details>
+
+:::
+
 ![Palette CLI PCG deployment](/clusters_pcg_deploy-app-pcg_pcg-cli.webp)
 
 Next, log in to Palette as a tenant admin. Navigate to the left **Main Menu** and select **Tenant Settings**. Click on
