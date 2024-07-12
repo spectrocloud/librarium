@@ -2,11 +2,11 @@ const { api, callRateLimitAPI } = require("../src/services/api");
 const { packTypeNames, addOnTypes, layerTypes } = require("../src/constants/packs");
 const packDescription = require("../static/packs-data/packs_information.json");
 const { coerce, rcompare } = require("semver");
-const path = require('path');
-const mime = require('mime-types');
+const path = require("path");
+const mime = require("mime-types");
 const { setTimeout } = require("timers/promises");
-const BASE_URL = require('../static/scripts/constants.js').BASE_URL;
-const fetch = require('node-fetch');
+const BASE_URL = require("../static/scripts/constants.js").BASE_URL;
+const fetch = require("node-fetch");
 const { existsSync, promises, open, mkdirSync, writeFile, close, createWriteStream } = require("node:fs");
 
 const dirname = ".docusaurus/packs-integrations/";
@@ -15,9 +15,9 @@ const filename = "api_pack_response.json";
 const options = {
   headers: {
     "Content-Disposition": "attachment",
-    "ApiKey": process.env.API_KEY,
-  }
-}
+    ApiKey: process.env.PALETTE_API_KEY,
+  },
+};
 let counter = 0;
 function generateIntegrationData(allContent) {
   const packsData = allContent["docusaurus-plugin-content-docs"].default.loadedVersions[0].docs
@@ -33,8 +33,17 @@ function generateIntegrationData(allContent) {
 function getPackUidMap(registries) {
   let generatedReadMeData = {};
   registries.forEach((registry) => {
-    const proccessedPackReadMeDetails = registry.packValues.reduce((packValuesMap, packValue) =>
-      Object.assign(packValuesMap, { [packValue.packUid]: { registryUid: registry.registryUid, readme: packValue.readme, deprecated: packValue.annotations?.system_state === "deprecated" } }), {});
+    const proccessedPackReadMeDetails = registry.packValues.reduce(
+      (packValuesMap, packValue) =>
+        Object.assign(packValuesMap, {
+          [packValue.packUid]: {
+            registryUid: registry.registryUid,
+            readme: packValue.readme,
+            deprecated: packValue.annotations?.system_state === "deprecated",
+          },
+        }),
+      {}
+    );
     generatedReadMeData = Object.assign(generatedReadMeData, proccessedPackReadMeDetails);
   });
   return generatedReadMeData;
@@ -51,9 +60,11 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
   const filteredPalattePackDataMap = packsPaletteDetailsData.reduce((acc, packContent) => {
     const packName = packContent.name;
     //filtered the packs based on the selected registries given in the docusaurus config file
-    if
-      (repositories.find((repo) => repo.uid === packContent.registryUid) && ((packsMData[packName].spec.layer === "addon" && packsMData[packName].spec.addonType) ||
-        packsMData[packName].spec.layer !== "addon")) {
+    if (
+      repositories.find((repo) => repo.uid === packContent.registryUid) &&
+      ((packsMData[packName].spec.layer === "addon" && packsMData[packName].spec.addonType) ||
+        packsMData[packName].spec.layer !== "addon")
+    ) {
       if (Object.hasOwnProperty.call(acc, packName)) {
         const packValues = acc[packName];
         packValues.registries.push(packContent);
@@ -160,21 +171,33 @@ function getAggregatedVersions(registries, repositories, packUidMap, packName) {
   const aggregatedTags = registries.reduce((previousVersions, registry) => {
     const computedVersions = getComputedVersions(registry.tags);
     if (previousVersions.length) {
-      const versionTags = new Set(previousVersions.map(verssion => verssion.title));
+      const versionTags = new Set(previousVersions.map((verssion) => verssion.title));
       const computedCommonVersions = computedVersions.filter((version) => versionTags.has(version.title));
       if (computedCommonVersions.length) {
         //merging the non-overlapping Tags in the previous computed versions and current computing versions
-        const mergedNonOverlappingParentVersions = [...(computedVersions.filter((version) => !versionTags.has(version.title))), ...(previousVersions.filter((version) => !versionTags.has(version.title)))];
+        const mergedNonOverlappingParentVersions = [
+          ...computedVersions.filter((version) => !versionTags.has(version.title)),
+          ...previousVersions.filter((version) => !versionTags.has(version.title)),
+        ];
         computedCommonVersions.forEach((commonVersion) => {
           //Take PreviousVersion Parent version tag from the iterated overlapping tag title
-          const previousVersiontagdata = previousVersions.find(prevVersion => prevVersion.title === commonVersion.title);
-          const previousVersionChildrenSet = new Set(previousVersiontagdata.children.map(verssion => verssion.title));
-          const commonComputedChildren = commonVersion.children.filter((child) => previousVersionChildrenSet.has(child.title));
+          const previousVersiontagdata = previousVersions.find(
+            (prevVersion) => prevVersion.title === commonVersion.title
+          );
+          const previousVersionChildrenSet = new Set(previousVersiontagdata.children.map((verssion) => verssion.title));
+          const commonComputedChildren = commonVersion.children.filter((child) =>
+            previousVersionChildrenSet.has(child.title)
+          );
           if (commonComputedChildren.length) {
             //merge non overlapping children in each parent version
-            const mergedNonOverlappingChildren = [...(commonVersion.children.filter((child) => !previousVersionChildrenSet.has(child.title))), ...(previousVersiontagdata.children.filter((child) => !previousVersionChildrenSet.has(child.title)))];
+            const mergedNonOverlappingChildren = [
+              ...commonVersion.children.filter((child) => !previousVersionChildrenSet.has(child.title)),
+              ...previousVersiontagdata.children.filter((child) => !previousVersionChildrenSet.has(child.title)),
+            ];
             commonComputedChildren.forEach((childComputedVersion) => {
-              const previousVersionChild = previousVersiontagdata.children.find(prevChildVersion => prevChildVersion.title === childComputedVersion.title)
+              const previousVersionChild = previousVersiontagdata.children.find(
+                (prevChildVersion) => prevChildVersion.title === childComputedVersion.title
+              );
               const childPreviousVersionPackUid = previousVersionChild.packUid;
               const previousVersionRegistryUid = packUidMap[childPreviousVersionPackUid]?.registryUid;
               //while doing union of both versions of pack of the registries, not belong to the preferred registry,
@@ -182,7 +205,7 @@ function getAggregatedVersions(registries, repositories, packUidMap, packName) {
               if (previousVersionRegistryUid !== prefferedRegistryUid) {
                 previousVersionChild.packUid = childComputedVersion.packUid;
               }
-            })
+            });
             //merging non-overlapping children with the previous version children
             previousVersiontagdata.children = [...previousVersiontagdata.children, ...mergedNonOverlappingChildren];
           } else {
@@ -243,10 +266,10 @@ function generateCustomData(packsDescription) {
 
 function generateRoutes(packsAllData) {
   return packsAllData.map((pack) => {
-   const parentVersion = pack.versions.find((version) => {
+    const parentVersion = pack.versions.find((version) => {
       return version.children.find((child) => child.title === pack.latestVersion);
     });
-    let path = `/integrations/packs/${pack.name}/${pack.latestVersion}`
+    let path = `/integrations/packs/${pack.name}/${pack.latestVersion}`;
     if (parentVersion && parentVersion.title) {
       path = `${path}/${parentVersion.title}`;
     }
@@ -257,7 +280,7 @@ function generateRoutes(packsAllData) {
       metadata: {
         sourceFilePath: "../docs/docs-content/integrations/packs.mdx",
       },
-      data: {name: pack.name, version: pack.latestVersion, parent: parentVersion?.title},
+      data: { name: pack.name, version: pack.latestVersion, parent: parentVersion?.title },
     };
   });
 }
@@ -292,7 +315,7 @@ async function mapRepositories(repositories) {
 
 async function write(res, packName, logoUrlMap) {
   return new Promise((resolve, reject) => {
-    const type = res.headers.get('Content-Type');
+    const type = res.headers.get("Content-Type");
     if (mime.extension(type) !== "html") {
       const destination = path.resolve(logoDirname, packName);
       const fileStream = createWriteStream(`${destination}.${mime.extension(type)}`);
@@ -321,7 +344,7 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
         if (!url) {
           url = `${BASE_URL}/v1/packs/${registry.latestPackUid}/logo`;
         } else {
-          url = url.startsWith("https") ? url : (url.startsWith("/") ? `${BASE_URL}${url}` : `${BASE_URL}/${url}`);
+          url = url.startsWith("https") ? url : url.startsWith("/") ? `${BASE_URL}${url}` : `${BASE_URL}/${url}`;
         }
         if (!Object.hasOwnProperty.call(logoUrlMap, packName)) {
           const res = await fetch(url, options);
@@ -331,8 +354,7 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
             await setTimeout(1000);
           }
         }
-      } catch (e) {
-      }
+      } catch (e) {}
     }
   }
 }
@@ -358,8 +380,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
         packDataArr = packDataArr.filter((pack) => {
           return (
             layerTypes.includes(pack.spec.layer) ||
-            (pack.spec.layer === "addon" && addOnTypes.includes(pack.spec.addonType)) &&
-            pack.spec.registries.length
+            (pack.spec.layer === "addon" && addOnTypes.includes(pack.spec.addonType) && pack.spec.registries.length)
           );
         });
         const packUrl = "v1/packs/";
@@ -370,7 +391,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
           const cloudType = packData.spec.cloudTypes.includes("all") ? "aws" : packData.spec.cloudTypes[0];
           const registryPackData = [];
           for (const registry of packData.spec.registries) {
-            const url = `${packUrl}${packData.spec.name}/registries/${registry.uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`
+            const url = `${packUrl}${packData.spec.name}/registries/${registry.uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`;
             registryPackData.push(callRateLimitAPI(() => api.get(url)));
           }
           return registryPackData;
@@ -391,7 +412,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
         apiPackResponse.apiPacksData = apiPacksData;
         apiPackResponse.packMDMap = packMDMap;
         apiPackResponse.logoUrlMap = logoUrlMap;
-        open(`${dirname}${filename}`, 'w+', (err, fd) => {
+        open(`${dirname}${filename}`, "w+", (err, fd) => {
           try {
             writeFile(`${dirname}${filename}`, JSON.stringify(apiPackResponse), (err) => {
               if (err) {
@@ -403,13 +424,12 @@ async function pluginPacksAndIntegrationsData(context, options) {
               if (err1) console.error("An error occurred while closing the file:", err1);
             });
           }
-        })
+        });
       } else {
         try {
           const data = await promises.readFile(`${dirname}${filename}`);
           apiPackResponse = JSON.parse(data);
-        }
-        catch (e) {
+        } catch (e) {
           console.error("An error occurred while reading the JSON file:", e);
         }
       }

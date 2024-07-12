@@ -8,7 +8,7 @@ const api = axios.create({
   timeout: 120000, // 2 minutes
   headers: {
     "Content-Type": "application/json",
-    ApiKey: process.env.API_KEY,
+    ApiKey: process.env.PALETTE_API_KEY,
   },
 });
 

@@ -89,7 +89,12 @@ required environment variables. The values are not important for local developme
 ALGOLIA_APP_ID=1234567890
 ALGOLIA_SEARCH_KEY=1234567890
 ALGOLIA_INDEX_NAME=spectrocloud
+PALETTE_API_KEY=""
 ```
+
+> [!IMPORTANT] You need a Palette API key to start the local development server. Refer to the
+> [Create API Key](https://docs.spectrocloud.com/user-management/authentication/api-key/create-api-key/) guide to learn
+> how to create a Palette API key.
 
 ## Documentation Content
 
