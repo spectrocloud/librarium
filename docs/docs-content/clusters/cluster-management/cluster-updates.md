@@ -35,7 +35,7 @@ upgrading, you review the information provided in the
 
 - You cannot change the Container Network Interface (CNI) of an Edge cluster. You must delete and re-create the cluster
   instead. For more information about creating an Edge cluster, refer to
-  [Create Cluster Definition](../edge/site-deployment/site-installation/cluster-deployment.md).
+  [Create Cluster Definition](../edge/site-deployment/cluster-deployment.md).
 
 ## Prerequisites
 
