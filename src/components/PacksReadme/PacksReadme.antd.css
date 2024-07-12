@@ -1,0 +1,12 @@
+.ant-list-header {
+  padding-bottom: 0px;
+  font-size: 16px;
+  font-weight: bold;
+}
+p {
+  font-size: 16px;
+}
+[data-theme = "dark"] .ant-select-tree-list-holder-inner {
+  background-color: #1f1f1f;
+  color: whitesmoke;
+}

@@ -1,0 +1,49 @@
+[data-theme = "dark"] .ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector {
+  border: 1px solid #424242;
+  background: #141414;
+}
+[data-theme = "dark"] .ant-select-selection-placeholder {
+  color: #6a6d76;
+}
+[data-theme = "dark"] .ant-select-arrow {
+  color: #6a6d76;
+}
+[data-theme = "dark"] .ant-select-item-option {
+  color: whitesmoke;
+}
+[data-theme = "dark"] .rc-virtual-list {
+  background-color: #1f1f1f;
+}
+[data-theme = "dark"] .ant-select-dropdown {
+  background-color: #1f1f1f;
+}
+[data-theme = "dark"] .ant-select-dropdown .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background-color: #111a2c;
+  color: whitesmoke;
+}
+[data-theme = "dark"] .ant-select-dropdown .ant-select-item-option-selected:not(.ant-select-item-option-disabled) .ant-select-item-option-state {
+  color: #1668dc;
+}
+[data-theme = "dark"] .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  background-color: #1f1f1f;
+}
+[data-theme = "dark"] .ant-select-multiple {
+  .ant-select-selection-item {
+    color: #d6d0d0;
+    background-color: #313131;
+  }
+  .ant-select-selection-overflow .ant-select-selection-item-remove {
+    color: #d6d0d0;
+  }
+}
+[dark-theme = "dark"] .ant-select-multiple .ant-select-selection-overflow .ant-select-selection-item-remove {
+  color: #d6d0d0;
+}
+[data-theme = "dark"] .ant-select-clear {
+  color: #b1adad;
+  background-color: #1f1f1f;
+}
+[data-theme = "dark"] .ant-select-single .ant-select-selector {
+  color: #d6d0d0;
+  background-color: #1f1f1f;
+}

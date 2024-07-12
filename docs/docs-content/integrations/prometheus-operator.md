@@ -39,9 +39,7 @@ more about the remote monitoring feature.
 
 ## Versions Supported
 
-<br />
-
-<Tabs queryString="versions">
+<Tabs queryString="parent">
 <TabItem label="51.0.x" value="51.0.x">
 
 ## Prerequisites

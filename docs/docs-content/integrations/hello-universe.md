@@ -30,7 +30,7 @@ The three-tier application configuration is only supported by version 1.1.2 of t
 
 ## Versions Supported
 
-<Tabs queryString="versions">
+<Tabs queryString="parent">
 
 <TabItem label="1.1.2" value="1.1.2">
 
