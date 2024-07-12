@@ -39,6 +39,8 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 
 - Palette or Palette VerteX version 4.0.X or greater.
 
+- For Microsoft Entra ID to work correctly with Palette, you must enable HTTPS and configure TLS.
+
 - A [Microsoft Entra ID](https://entra.microsoft.com/#home) subscription. You will need an account with one of the
   following roles: Global Administrator, Cloud Application Administrator, or Application Administrator. Alternatively,
   you may be the owner of the service principal.
@@ -118,7 +120,7 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
     | **Directory (tenant) ID**   | The Directory ID is the unique identifier for your Azure AD tenant.                                        |
     | **Secret Value**            | The Secret Value is the value of the client secret you created in the previous steps.                      |
 
-      <details>
+    <details>
 
     <summary>Additional Redirect URLs</summary>
 
@@ -130,7 +132,7 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
           | `http://localhost:8000` | UsUseing kubectl with the kube-login plugin from a workstation |
           | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Use OIDC to authenticate and log in to the Kubernetes Dashboard |
 
-      </details>
+    </details>
 
 #### Configure Microsoft Entra ID with Users and Groups
 
@@ -275,6 +277,8 @@ Use the following steps to enable OIDC in Kubernetes clusters with Microsoft Ent
 ### Prerequisites
 
 - Palette or Palette VerteX version 4.0.X or greater.
+
+- For Microsoft Entra ID to work correctly with Palette, you must enable HTTPS and configure TLS.
 
 - OIDC configured in Palette with Microsoft Entra ID. Refer to the
   [Enable OIDC SSO in Palette](#enable-oidc-sso-in-palette) section for detailed guidance on how to configure OIDC in
