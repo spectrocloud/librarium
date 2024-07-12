@@ -21,12 +21,6 @@ purposes of this guide, please consider Microsoft Entra ID and Azure Active Dire
 ID securely manages anything to do with the user's information, access, and the trust relationships between parties in a
 flow. It authenticates the user's identity, grants and revokes access to resources, and issues tokens.
 
-:::info
-
-For Microsoft Entra ID to work correctly with Palette, you must enable HTTPS and configure TLS.
-
-:::
-
 This document will guide you on deploying and enabling SSO with Microsoft Entra based on OIDC for integration with
 Palette and Kubernetes clusters.
 
@@ -44,6 +38,8 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 ### Prerequisites
 
 - Palette or Palette VerteX version 4.0.X or greater.
+
+- For Microsoft Entra ID to work correctly with Palette, you must enable HTTPS and configure TLS.
 
 - A [Microsoft Entra ID](https://entra.microsoft.com/#home) subscription. You will need an account with one of the
   following roles: Global Administrator, Cloud Application Administrator, or Application Administrator. Alternatively,
@@ -281,6 +277,8 @@ Use the following steps to enable OIDC in Kubernetes clusters with Microsoft Ent
 ### Prerequisites
 
 - Palette or Palette VerteX version 4.0.X or greater.
+
+- For Microsoft Entra ID to work correctly with Palette, you must enable HTTPS and configure TLS.
 
 - OIDC configured in Palette with Microsoft Entra ID. Refer to the
   [Enable OIDC SSO in Palette](#enable-oidc-sso-in-palette) section for detailed guidance on how to configure OIDC in

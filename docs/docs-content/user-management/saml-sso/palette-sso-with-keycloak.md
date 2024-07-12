@@ -21,13 +21,9 @@ up Keycloak as an OIDC provider for Palette.
 
 ## Prerequisites
 
-:::info
-
-For Keycloak to work correctly with Palette, you must enable HTTPS and configure TLS.
-
-:::
-
 - Access to Palette as a Tenant Admin.
+
+- For Keycloak to work correctly with Palette, you must enable HTTPS and configure TLS.
 
 - The Keycloak service must be exposed on an external IP address, preferably with a domain name. Refer to the
   [Configuring Keycloak for production](https://www.keycloak.org/server/configuration-production) guide for more
