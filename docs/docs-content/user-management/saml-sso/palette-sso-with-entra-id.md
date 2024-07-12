@@ -118,7 +118,7 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
     | **Directory (tenant) ID**   | The Directory ID is the unique identifier for your Azure AD tenant.                                        |
     | **Secret Value**            | The Secret Value is the value of the client secret you created in the previous steps.                      |
 
-      <details>
+    <details>
 
     <summary>Additional Redirect URLs</summary>
 
@@ -130,7 +130,7 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
           | `http://localhost:8000` | UsUseing kubectl with the kube-login plugin from a workstation |
           | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Use OIDC to authenticate and log in to the Kubernetes Dashboard |
 
-      </details>
+    </details>
 
 #### Configure Microsoft Entra ID with Users and Groups
 
