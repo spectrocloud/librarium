@@ -8,7 +8,9 @@ const { setTimeout } = require("timers/promises");
 const BASE_URL = require("../static/scripts/constants.js").BASE_URL;
 const fetch = require("node-fetch");
 const { existsSync, promises, open, mkdirSync, writeFile, close, createWriteStream } = require("node:fs");
+import logger from "@docusaurus/logger";
 
+const filterLimit = 50; //Limit for fetching the packs from the Palette API
 const dirname = ".docusaurus/packs-integrations/";
 const logoDirname = "static/img/packs/";
 const filename = "api_pack_response.json";
@@ -260,7 +262,7 @@ function generateCustomData(packsDescription) {
     (obj, desc) => Object.assign(obj, { [desc.name]: desc.description }),
     {}
   );
-  console.info("completed custom data description generation");
+  logger.info("Completed generating custom data description.");
   return generatedCustomData;
 }
 
@@ -290,7 +292,11 @@ async function fetchPackListItems(queryParams, packDataArr, counter) {
   const response = await callRateLimitAPI(() => api.post(`/v1/packs/search${queryParams}`, payload));
   const tempPackArr = packDataArr.concat(response?.data?.items);
   if (response?.data?.listmeta?.continue) {
-    return fetchPackListItems("?limit=50&continue=" + response.data.listmeta.continue, tempPackArr, counter);
+    return fetchPackListItems(
+      `?limit=${filterLimit}&continue=` + response.data.listmeta.continue,
+      tempPackArr,
+      counter
+    );
   } else {
     return tempPackArr;
   }
@@ -375,8 +381,8 @@ async function pluginPacksAndIntegrationsData(context, options) {
         if (!existsSync(dirname)) {
           mkdirSync(dirname, { recursive: true });
         }
-        let packDataArr = await fetchPackListItems("?limit=100", [], 0);
-        console.info("completed the fetch of all the names of the pack");
+        let packDataArr = await fetchPackListItems("?limit=50", [], 0);
+        logger.info("All production packs are identified and a list of packs to be fetched is prepared");
         packDataArr = packDataArr.filter((pack) => {
           return (
             layerTypes.includes(pack.spec.layer) ||
@@ -401,14 +407,14 @@ async function pluginPacksAndIntegrationsData(context, options) {
         apiPacksData = results
           .filter((result) => result.status === "fulfilled" && result.value?.data)
           .map((result) => result.value.data);
-        console.info("completed the fetch of all the pack details");
-        console.info("Starting the fetch of all the logos");
+        logger.info("Completed fetching all the packs and their details");
+        logger.info("Fetching the logo for each pack");
         //Fetch logos
         if (!existsSync(logoDirname)) {
           mkdirSync(logoDirname, { recursive: true });
         }
         await getLogoUrl(packDataArr, logoUrlMap);
-        console.info("completed the fetch of all the logos");
+        logger.info("Completed fetching all pack logos");
         apiPackResponse.apiPacksData = apiPacksData;
         apiPackResponse.packMDMap = packMDMap;
         apiPackResponse.logoUrlMap = logoUrlMap;
@@ -416,12 +422,12 @@ async function pluginPacksAndIntegrationsData(context, options) {
           try {
             writeFile(`${dirname}${filename}`, JSON.stringify(apiPackResponse), (err) => {
               if (err) {
-                console.error("An error occurred while writing the JSON file:", err);
+                logger.error("An error occurred while writing the JSON file:", err);
               }
             });
           } finally {
             close(fd, (err1) => {
-              if (err1) console.error("An error occurred while closing the file:", err1);
+              if (err1) logger.error("An error occurred while closing the file:", err1);
             });
           }
         });
@@ -430,9 +436,10 @@ async function pluginPacksAndIntegrationsData(context, options) {
           const data = await promises.readFile(`${dirname}${filename}`);
           apiPackResponse = JSON.parse(data);
         } catch (e) {
-          console.error("An error occurred while reading the JSON file:", e);
+          logger.error("An error occurred while reading the JSON file:", e);
         }
       }
+      logger.info(`The number of packs identified are ${Object.keys(apiPackResponse.packMDMap).length}`);
       return {
         packsPaletteData: apiPackResponse.packMDMap,
         packsPaletteDetailsData: apiPackResponse.apiPacksData,
@@ -453,9 +460,10 @@ async function pluginPacksAndIntegrationsData(context, options) {
         logoFilesPathMap
       );
       const routes = generateRoutes(unionPackData);
-      console.info("completed the generation of the routes");
+      logger.info("Completed generating routes for all the packs");
       routes.map((route) => addRoute(route));
       setGlobalData({ packs: unionPackData, repositories: repositories });
+      logger.success("Packs data successfully loaded 📦");
     },
     async allContentLoaded({ allContent, actions }) {
       const { setGlobalData } = actions;
