@@ -14,13 +14,9 @@ with a custom CA certificate.
 
 ## Prerequisites
 
-:::info
-
-For an SSO provider to work correctly with Palette, you must enable HTTPS and configure TLS.
-
-:::
-
 - Palette account with Tenant Admin access.
+
+- For an SSO provider to work correctly with Palette, you must enable HTTPS and configure TLS.
 
 - Existing SSO configuration with an SSO provider supported in Palette. Refer to [SAML and OIDC SSO Setup](saml-sso.md)
   for links to provider-specific guides.
