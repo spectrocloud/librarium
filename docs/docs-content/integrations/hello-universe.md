@@ -30,7 +30,7 @@ The three-tier application configuration is only supported by version 1.1.2 of t
 
 ## Versions Supported
 
-<Tabs queryString="versions">
+<Tabs queryString="parent">
 
 <TabItem label="1.1.2" value="1.1.2">
 
@@ -174,6 +174,6 @@ data "spectrocloud_pack" "hellouniverse" {
 
 - [Hello Universe GitHub Repository](https://github.com/spectrocloud/hello-universe)
 
-- [Deploy a Custom Pack Tutorial](../registries-and-packs/deploy-pack.md)
+- [Deploy a Custom Pack Tutorial](../tutorials/profiles/deploy-pack.md)
 
 - [Registries and Packs](../registries-and-packs/registries-and-packs.md)

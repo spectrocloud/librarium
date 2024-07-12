@@ -72,3 +72,8 @@ _partials/index.ts
 
 # Ignore statoc/img/packs
 static/img/packs
+
+.vale-config/
+vale/styles/spectrocloud/
+vale/styles/spectrocloud-docs-internal/
+vale/styles/config/vocabularies/spectrocloud-vocab

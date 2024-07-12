@@ -161,7 +161,7 @@ Toggle the **Enable** button to enable the use of Ingress.
 
 #### Thanos SideCar
 
-[Thanos](https://prometheus-operator.dev/docs/operator/thanos/) is an open-source system for running large-scale,
+[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open-source system for running large-scale,
 distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods in
 object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale
 horizontally without the risk of using up local storage space.
@@ -192,7 +192,7 @@ charts:
 
 By default, Thanos Ruler event data is saved in object storage specified for Thanos, but you can specify a different
 object storage for event data. Refer to the
-[Thanos Ruler](https://prometheus-operator.dev/docs/operator/thanos/?#thanos-ruler) resource to learn more.
+[Thanos Ruler](https://prometheus-operator.dev/docs/platform/thanos/#thanos-ruler) resource to learn more.
 
 <br />
 
@@ -382,7 +382,7 @@ Toggle the **Enable** button to enable the use of Ingress.
 
 #### Thanos SideCar
 
-[Thanos](https://prometheus-operator.dev/docs/operator/thanos/) is an open-source system for running large-scale,
+[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open-source system for running large-scale,
 distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods in
 object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale
 horizontally without the risk of using up local storage space.
@@ -413,7 +413,7 @@ charts:
 
 By default, Thanos Ruler event data is saved in object storage specified for Thanos, but you can specify a different
 object storage for event data. Refer to the
-[Thanos Ruler](https://prometheus-operator.dev/docs/operator/thanos/?#thanos-ruler) resource to learn more.
+[Thanos Ruler](https://prometheus-operator.dev/docs/platform/thanos/#thanos-ruler) resource to learn more.
 
 <br />
 
@@ -603,7 +603,7 @@ Toggle the **Enable** button to enable the use of Ingress.
 
 #### Thanos SideCar
 
-[Thanos](https://prometheus-operator.dev/docs/operator/thanos/) is an open-source system for running large-scale,
+[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open-source system for running large-scale,
 distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods in
 object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale
 horizontally without the risk of using up local storage space.
@@ -634,7 +634,7 @@ charts:
 
 By default, Thanos Ruler event data is saved in object storage specified for Thanos, but you can specify a different
 object storage for event data. Refer to the
-[Thanos Ruler](https://prometheus-operator.dev/docs/operator/thanos/?#thanos-ruler) resource to learn more.
+[Thanos Ruler](https://prometheus-operator.dev/docs/platform/thanos/#thanos-ruler) resource to learn more.
 
 <br />
 
@@ -824,7 +824,7 @@ Toggle the **Enable** button to enable the use of Ingress.
 
 #### Thanos SideCar
 
-[Thanos](https://prometheus-operator.dev/docs/operator/thanos/) is an open-source system for running large-scale,
+[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open-source system for running large-scale,
 distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods in
 object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale
 horizontally without the risk of using up local storage space.
@@ -855,7 +855,7 @@ charts:
 
 By default, Thanos Ruler event data is saved in object storage specified for Thanos, but you can specify a different
 object storage for event data. Refer to the
-[Thanos Ruler](https://prometheus-operator.dev/docs/operator/thanos/?#thanos-ruler) resource to learn more.
+[Thanos Ruler](https://prometheus-operator.dev/docs/platform/thanos/#thanos-ruler) resource to learn more.
 
 <br />
 
@@ -1007,7 +1007,7 @@ Toggle the **Enable** button to enable the use of Ingress.
 
 #### Thanos SideCar
 
-[Thanos](https://prometheus-operator.dev/docs/operator/thanos/) is an open-source system for running large-scale,
+[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open-source system for running large-scale,
 distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods in
 object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale
 horizontally without the risk of using up local storage space.
@@ -1038,7 +1038,7 @@ charts:
 
 By default, Thanos Ruler event data is saved in object storage specified for Thanos, but you can specify a different
 object storage for event data. Refer to the
-[Thanos Ruler](https://prometheus-operator.dev/docs/operator/thanos/?#thanos-ruler) resource to learn more.
+[Thanos Ruler](https://prometheus-operator.dev/docs/platform/thanos/#thanos-ruler) resource to learn more.
 
 <br />
 
@@ -1148,7 +1148,7 @@ Toggle the **Enable** button to enable the use of Ingress.
 
 #### Thanos SideCar
 
-[Thanos](https://prometheus-operator.dev/docs/operator/thanos/) is an open-source system for running large-scale,
+[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open-source system for running large-scale,
 distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods in
 object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale
 horizontally without the risk of using up local storage space.
@@ -1178,7 +1178,7 @@ charts:
 #### Thanos Ruler Object Store
 
 You can specify a different object storage to store the Thanos Ruler event data. Defaults to the object storage
-specified for Thanos. Refer to the [Thanos Ruler](https://prometheus-operator.dev/docs/operator/thanos/?#thanos-ruler)
+specified for Thanos. Refer to the [Thanos Ruler](https://prometheus-operator.dev/docs/platform/thanos/#thanos-ruler)
 resource to learn more.
 
 <br />

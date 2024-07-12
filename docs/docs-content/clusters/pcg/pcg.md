@@ -41,4 +41,4 @@ existing Kubernetes cluster. Refer to the table below to learn more about the su
 
 - [Manage a PCG](./manage-pcg/manage-pcg.md)
 
-- [Deploy App Workloads with a PCG](./deploy-app-pcg.md)
+- [Deploy App Workloads with a PCG](../../tutorials/cluster-deployment/pcg/deploy-app-pcg.md)
