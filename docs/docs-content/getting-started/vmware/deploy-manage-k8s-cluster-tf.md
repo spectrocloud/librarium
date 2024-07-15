@@ -464,7 +464,7 @@ replace all occurrences of `REPLACE_ME` with the required variable values.
 - **metallb_ip** - Range of IP addresses for your MetalLB load balancer. If using static IP placement, this range must
   be included in the PCG's static IP pool range.
 - **pcg_name** - Name of the PCG that will be used to deploy the Palette cluster.
-- **datacenter_name** - Name of the datacenter in vSphere.
+- **datacenter_name** - Name of the data center in vSphere.
 - **folder_name** - Name of the folder in vSphere.
 - **search_domain** - Name of the network search domain.
 - **vsphere_cluster** - Name of the cluster as it appears in vSphere.
