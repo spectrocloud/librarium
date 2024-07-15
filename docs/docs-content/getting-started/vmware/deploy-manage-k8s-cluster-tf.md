@@ -525,6 +525,13 @@ terraform init
 Terraform has been successfully initialized!
 ```
 
+:::warning
+
+Before deploying the resources, ensure that there are no active clusters named `vmware-cluster` or cluster profiles
+named `tf-vmware-profile` in your Palette project.
+
+:::
+
 Issue the `plan` command to preview the resources that Terraform will create.
 
 ```shell
