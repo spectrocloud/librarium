@@ -3,29 +3,29 @@ import styles from "./PacksReadme.module.scss";
 import { Tabs, ConfigProvider, theme, TreeSelect } from "antd";
 import CustomLabel from "../Technologies/CategorySelector/CustomLabel";
 import PackCardIcon from "../Technologies/PackCardIcon";
-import Markdown from 'markdown-to-jsx';
+import Markdown from "markdown-to-jsx";
 import { useHistory } from "react-router-dom";
 import "./PacksReadme.antd.css";
 import { usePluginData } from "@docusaurus/useGlobalData";
 import PacksIntegrationsPluginData from "../Integrations/IntegrationTypes";
-import ThemedImage from '@theme/ThemedImage';
-import useBaseUrl from "@docusaurus/useBaseUrl"
+import ThemedImage from "@theme/ThemedImage";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
 import { packTypeNames, cloudDisplayNames } from "../../constants/packs";
-import { InfoCircleOutlined } from '@ant-design/icons';
+import { InfoCircleOutlined } from "@ant-design/icons";
 
 interface PackReadmeProps {
-  customDescription: string,
-  packUidMap: any,
-  versions: Array<any>,
-  title: string,
-  logoUrl: string,
-  type: string,
-  provider: Array<string>,
-  registries: Array<string>,
-  selectedRepositories: Array<any>,
-  disabled: boolean,
-  latestVersion: string,
+  customDescription: string;
+  packUidMap: any;
+  versions: Array<any>;
+  title: string;
+  logoUrl: string;
+  type: string;
+  provider: Array<string>;
+  registries: Array<string>;
+  selectedRepositories: Array<any>;
+  disabled: boolean;
+  latestVersion: string;
 }
 
 export default function PacksReadme() {
@@ -33,8 +33,8 @@ export default function PacksReadme() {
   const [customReadme, setCustomReadme] = useState<ReactElement<any, any> | null>(null);
   const [packName, setPackName] = useState<string>("");
   const [selectedPackUid, setSelectedPackUid] = useState<string>("");
-  const empty_icon_light = useBaseUrl('/img/empty_icon_table_light.svg');
-  const empty_icon_dark = useBaseUrl('/img/empty_icon_table_dark.svg');
+  const empty_icon_light = useBaseUrl("/img/empty_icon_table_light.svg");
+  const empty_icon_dark = useBaseUrl("/img/empty_icon_table_dark.svg");
   const { colorMode } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
   const [selectedVersion, setSelectedVersion] = useState<string>("");
@@ -124,35 +124,34 @@ export default function PacksReadme() {
 
   function renderVersionOptions() {
     return packData.versions.map((tagVersion) => {
-      return ({
+      return {
         value: tagVersion.title,
         title: tagVersion.title,
         selectable: false,
-        children:
-          tagVersion.children.map((child: any) => {
-            return ({
-              value: `${child.title}===${child.packUid}`,
-              title: (<span>{child.title}</span>)
-            })
-          })
-      })
-    })
+        children: tagVersion.children.map((child: any) => {
+          return {
+            value: `${child.title}===${child.packUid}`,
+            title: <span>{child.title}</span>,
+          };
+        }),
+      };
+    });
   }
 
   function renderTabs() {
     let readme = selectedPackUid ? packData.packUidMap[selectedPackUid]?.readme : "";
     const tabs = [
       readme && {
-        label: `Readme`,
-        key: '1',
-        children: (<Markdown children={readme} />),
+        label: `README`,
+        key: "1",
+        children: <Markdown children={readme} />,
       },
       customReadme && {
-        label: `Additional details`,
-        key: '2',
+        label: `Additional Details`,
+        key: "2",
         children: customReadme,
       },
-    ].filter(Boolean) as { label: string, key: string, children: JSX.Element }[];
+    ].filter(Boolean) as { label: string; key: string; children: JSX.Element }[];
 
     if (tabs.length > 1) {
       return (
@@ -162,7 +161,7 @@ export default function PacksReadme() {
               <Tabs.TabPane tab={item.label} key={item.key}>
                 {item.children}
               </Tabs.TabPane>
-            )
+            );
           })}
         </Tabs>
       );
@@ -170,26 +169,30 @@ export default function PacksReadme() {
     if (tabs.length === 1) {
       return tabs[0].children;
     }
-    return (<div className={styles.emptyContent}>
-      <ThemedImage
-        alt="Docusaurus themed image"
-        sources={{
-          light: empty_icon_light,
-          dark: empty_icon_dark,
-        }}
-        width={120}
-        height={120}
-      />
-      <div className={styles.emptyContentTitle}>No content available</div>
-      <div className={styles.emptyContentDescription}>The content for this pack is not available.</div>
-    </div>)
+    return (
+      <div className={styles.emptyContent}>
+        <ThemedImage
+          alt="Docusaurus themed image"
+          sources={{
+            light: empty_icon_light,
+            dark: empty_icon_dark,
+          }}
+          width={120}
+          height={120}
+        />
+        <div className={styles.emptyContentTitle}>No content available</div>
+        <div className={styles.emptyContentDescription}>The content for this pack is not available.</div>
+      </div>
+    );
   }
 
   function getProviders() {
     if (packData.provider.includes("all")) {
       return "All";
     }
-    return packData.provider.map((provider) => cloudDisplayNames[provider as keyof typeof cloudDisplayNames] || provider).join(", ");
+    return packData.provider
+      .map((provider) => cloudDisplayNames[provider as keyof typeof cloudDisplayNames] || provider)
+      .join(", ");
   }
   function getRegistries() {
     if (selectedVersion && !selectedVersion.endsWith(".x")) {
@@ -223,7 +226,7 @@ export default function PacksReadme() {
               className={styles.versionSelectBox}
               showSearch
               value={selectedVersion}
-              dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+              dropdownStyle={{ maxHeight: 400, overflow: "auto" }}
               placeholder="Search"
               treeDefaultExpandAll
               onChange={(item) => versionChange(item as string)}
@@ -234,12 +237,8 @@ export default function PacksReadme() {
             <div className={styles.packDescItem}>
               {`Type: ${packTypeNames[packData.type as keyof typeof packTypeNames]}`}
             </div>
-            <div className={styles.packDescItem}>
-              {`Cloud Providers: ${getProviders()}`}
-            </div>
-            <div className={styles.packDescItem}>
-              {`Registry: ${getRegistries()}`}
-            </div>
+            <div className={styles.packDescItem}>{`Cloud Providers: ${getProviders()}`}</div>
+            <div className={styles.packDescItem}>{`Registry: ${getRegistries()}`}</div>
           </div>
         </div>
       </div>
@@ -253,7 +252,7 @@ export default function PacksReadme() {
         </div>
       ) : null}
       <div className={styles.tabPane}>
-        <ConfigProvider theme={{algorithm: colorMode === "dark" ? darkAlgorithm : defaultAlgorithm}}>
+        <ConfigProvider theme={{ algorithm: colorMode === "dark" ? darkAlgorithm : defaultAlgorithm }}>
           {renderTabs()}
         </ConfigProvider>
       </div>
