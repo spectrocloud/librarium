@@ -13,16 +13,11 @@ order to authenticate Palette and allow it to deploy host clusters.
 
 ## Prerequisites
 
-The prerequisite steps to getting started with Palette on AWS are as follows.
-
-- Sign up to [Palette](https://www.spectrocloud.com/get-started).
-
-  - Your Palette account role must have the `clusterProfile.create` permission to create a cluster profile. Refer to the
-    [Roles and Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
-    documentation for more information.
+- A Palette account with [tenant admin](../../tenant-settings/tenant-settings.md) access.
 
 - Sign up to a public cloud account from
-  [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account).
+  [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account). The AWS cloud account
+  must have the required [IAM policies](../../clusters/public-cloud/aws/required-iam-policies.md).
 
 - An SSH key pair available in the region where you want to deploy the cluster. Check out the
   [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html) for
