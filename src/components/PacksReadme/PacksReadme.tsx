@@ -12,7 +12,7 @@ import ThemedImage from "@theme/ThemedImage";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
 import { packTypeNames, cloudDisplayNames } from "../../constants/packs";
-import { InfoCircleOutlined } from "@ant-design/icons";
+import Admonition from "@theme/Admonition";
 
 interface PackReadmeProps {
   customDescription: string;
@@ -103,11 +103,11 @@ export default function PacksReadme() {
       setSelectedVersion(version);
     }
   }, [packData]);
-  let infoContent;
+  let warningContent;
   if (packData.disabled) {
-    infoContent = "This pack is currently disabled.";
+    warningContent = "This pack is disabled. Upgrade to a newer version to take advantage of new features.";
   } else if (selectedPackUid && packData.packUidMap[selectedPackUid]?.deprecated) {
-    infoContent = "This pack is deprecated.";
+    warningContent = "This pack is deprecated. Upgrade to a newer version to take advantage of new features.";
   }
 
   function versionChange(item: string) {
@@ -242,15 +242,13 @@ export default function PacksReadme() {
           </div>
         </div>
       </div>
-      {infoContent ? (
-        <div className={styles.infoSection}>
-          <div className={styles.infoHeading}>
-            <InfoCircleOutlined className={styles.infoIcon} />
-            {"Info"}
-          </div>
-          <div className={styles.content}>{infoContent}</div>
-        </div>
-      ) : null}
+      <div className={styles.warningSection}>
+        {warningContent ? (
+          <Admonition type="warning" icon="⚠️" title="Warning">
+            {warningContent}
+          </Admonition>
+        ) : null}
+      </div>
       <div className={styles.tabPane}>
         <ConfigProvider theme={{ algorithm: colorMode === "dark" ? darkAlgorithm : defaultAlgorithm }}>
           {renderTabs()}

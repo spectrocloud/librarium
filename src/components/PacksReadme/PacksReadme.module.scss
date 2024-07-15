@@ -19,27 +19,8 @@
     }
   }
 
-  .infoSection {
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 400;
-    padding: 10px;
-    margin: 15px;
-    width: 100%;
-
-    .infoHeading {
-      display: flex;
-      align-items: center;
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      padding-bottom: 10px;
-
-      .infoIcon {
-        padding-right: 10px;
-        font-size: 16px;
-      }
-    }
+  .warningSection {
+    margin-top: 1em;
   }
 
   .emptyContent {
@@ -157,14 +138,6 @@
 [data-theme="light"] .description {
   background-color: #edeef4;
 }
-[data-theme="dark"] .infoSection {
-  border: 1px solid #72a8f5;
-  background-color: #192c47;
-}
-[data-theme="light"] .infoSection {
-  border: 1px solid #3f74be;
-  background-color: #dbecff;
-}
 [data-theme="dark"] .packDescSecondCol {
   background-color: black;
   border: 1px solid #1f263c;
@@ -186,18 +159,6 @@
 }
 [data-theme="light"] .emptyContentTitle {
   color: #545f7e;
-}
-[data-theme="dark"] .infoIcon {
-  color: #72a8f5;
-}
-[data-theme="light"] .infoIcon {
-  color: #3f74be;
-}
-[data-theme="dark"] .infoHeading {
-  color: #ffffff;
-}
-[data-theme="light"] .infoHeading {
-  color: #000000;
 }
 [data-theme="light"] .content {
   color: #545f7e;
