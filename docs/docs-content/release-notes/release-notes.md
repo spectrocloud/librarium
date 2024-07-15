@@ -11,11 +11,11 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## Jul 13, 2024 - Release 4.4.X
+## Jul 13, 2024 - Release 4.4.8
 
 <!-- Custom heading applied due to linking of the Palette section in the VerteX section -->
 
-### Palette {#release-4-4-a}
+### Palette {#release-4-4-8}
 
 #### Features
 
@@ -54,6 +54,11 @@ tags: ["release-notes"]
 
 - Self-Hosted Palette and Private Cloud Gateway (PCG) instances deployed on VMware vSphere now use the vSphere CSI
   driver version 3.2.0. The new version will automatically get picked up during an upgrade.
+
+### Bug Fixes
+
+- The issue preventing RKE2 and PXK clusters using Kubernetes version 1.29.4 from deploying on MAAS successfully is now
+  resolved. Remove any existing MAAS Kubernetes 1.29.4 images from your environment to pull in the updated images.
 
 ### Edge
 
@@ -102,7 +107,7 @@ tags: ["release-notes"]
 
 #### Features
 
-- Includes all Palette features and improvements in this release. Refer to the [Palette](#jul-13-2024---release-44x)
+- Includes all Palette features and improvements in this release. Refer to the [Palette](#jul-13-2024---release-448)
   section for more details.
 
 ### Automation
