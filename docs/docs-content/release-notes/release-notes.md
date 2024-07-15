@@ -107,8 +107,8 @@ tags: ["release-notes"]
 
 #### Features
 
-- Includes all Palette features and improvements in this release. Refer to the [Palette](#jul-13-2024---release-448)
-  section for more details.
+- Includes all Palette features and improvements in this release. Refer to the [Palette](#release-4-4-8) section for
+  more details.
 
 ### Automation
 
