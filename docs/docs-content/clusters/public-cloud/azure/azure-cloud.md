@@ -47,6 +47,14 @@ Use the following steps to add an Azure or Azure Government account in Palette o
 | **Disable Properties**            | This option prevents Palette and VerteX from creating Azure Virtual Networks (VNets) and other network resources on your behalf for static placement deployments. If you enable this option, all users must manually specify a pre-existing VNet, subnets, and security groups when creating clusters. |
 | **Connect Private Cloud Gateway** | Select this option to connect to a Private Cloud Gateway (PCG) if you have a PCG deployed in your environment. Refer to the PCG [Architecture](../../pcg/architecture.md) page to learn more about a PCG.                                                                                              |
 
+:::info
+
+If you want to provide network proxy configurations to your Kubernets clusters deployed through Palette, you must use a
+PCG cluster. Check out the [Proxy Configuration](./architecture.md#proxy-configuration) section in the Architecture page
+for more information.
+
+:::
+
 6. After providing the required values, click the **Validate** button. If the client secret you provided is correct, a
    _Credentials validated_ success message with a green check is displayed.
 
