@@ -13,9 +13,8 @@ order to authenticate Palette and allow it to deploy host clusters.
 
 ## Prerequisites
 
-The prerequisite steps to getting started with Palette on VMware are as follows.
-
 - A Palette account with [tenant admin](../../tenant-settings/tenant-settings.md) access.
+
 - A [VMware vSphere](https://docs.vmware.com/en/VMware-vSphere/index.html) user account with the
   [required permissions](../../clusters/data-center/vmware/permissions.md).
 
@@ -28,6 +27,9 @@ Palette needs access to your VMware user account in order to create and manage V
 <PartialsComponent category="palette-setup" name="create-tenant-api-key" />
 
 ### Create and Upload an SSH Key
+
+Follow the steps below to create an SSH key using the terminal and upload it to Palette. This step is optional for the
+[Cluster Management with Terraform](./deploy-manage-k8s-cluster-tf.md) tutorial.
 
 <PartialsComponent category="palette-setup" name="generate-ssh-key" />
 
@@ -48,7 +50,7 @@ You can verify your Palette API key is added.
 ## Next Steps
 
 Now that you set up Palette for use with VMware vSphere, you can start deploying a Private Cloud Gateway (PCG), which is
-the bridge between Palette and you private cloud environment.
+the bridge between Palette and your private infrastructure environment.
 
 To learn how to get started with deploying Kubernetes clusters to VMware virtual machines, we recommend that you
 continue to the [Deploy a PCG with Palette CLI](./deploy-pcg.md) tutorial.

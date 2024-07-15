@@ -55,11 +55,9 @@ The **Cluster Profile** section displays all the layers in the cluster profile.
 Each layer has a pack manifest file with the deploy configurations. The pack manifest file is in a YAML format. Each
 pack contains a set of default values. You can change the manifest values if needed. Click on **Next** to proceed.
 
-The **Cluster Config** section allows you to select the **Project**, **Region**, and **SSH Key** to apply to the host
-cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/clusters/cluster-management/ssh-keys)
-guide for information about uploading an SSH key.
+The **Cluster Config** section allows you to select the **Project** and **Region** to apply to the host cluster.
 
-After selecting a **Project**, **Region**, and **SSH Key**, click on **Next**.
+After selecting a **Project** and a **Region**, click on **Next**.
 
 The **Nodes Config** section allows you to configure the nodes that make up the control plane and worker nodes of the
 host cluster.

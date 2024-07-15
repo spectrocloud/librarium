@@ -43,10 +43,10 @@ your cluster is deployed, you can update it using cluster profile updates.
       relativeURL: "./update-k8s-cluster",
     },
     {
-      title: "Deploy a Cluster with Terraform",
-      description: "Deploy a Palette host cluster with Terraform.",
+      title: "Cluster Management with Terraform",
+      description: "Deploy and update a Palette host cluster with Terraform.",
       buttonText: "Learn more",
-      relativeURL: "./deploy-k8s-cluster-tf",
+      relativeURL: "./deploy-manage-k8s-cluster-tf",
     },
   ]}
 />

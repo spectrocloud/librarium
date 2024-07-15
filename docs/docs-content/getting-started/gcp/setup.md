@@ -8,24 +8,15 @@ sidebar_position: 10
 tags: ["getting-started", "gcp"]
 ---
 
-In this guide, you will learn how to set up Palette for use with your GCP cloud account. These steps are required in
-order to authenticate Palette and allow it to deploy host clusters.
+In this guide, you will learn how to set up Palette for use with your Google Cloud Platform (GCP) cloud account. These
+steps are required in order to authenticate Palette and allow it to deploy host clusters.
 
 ## Prerequisites
 
-The prerequisite steps to getting started with Palette on GCP are as follows.
+- A Palette account with [tenant admin](../../tenant-settings/tenant-settings.md) access.
 
-- Sign up to [Palette](https://www.spectrocloud.com/get-started).
-
-  - Your Palette account role must have the `clusterProfile.create` permission to create a cluster profile. Refer to the
-    [Roles and Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
-    documentation for more information.
-
-- Sign up to a public cloud account from [GCP](https://cloud.google.com/docs/get-started).
-
-- Access to a terminal window.
-
-- The utility `ssh-keygen` or similar SSH key generator software.
+- Sign up to a service account from [GCP](https://cloud.google.com/docs/get-started). The GCP account must have the
+  required [IAM permissions](../../clusters/public-cloud/gcp/required-permissions.md).
 
 ## Enablement
 
@@ -35,9 +26,12 @@ Palette needs access to your GCP cloud account in order to create and manage GCP
 
 <PartialsComponent category="palette-setup" name="gcp-cloud-account" />
 
-### Create and Upload an SSH Key
+### Create a Palette API Key
 
-<PartialsComponent category="palette-setup" name="generate-ssh-key" />
+Follow the steps below to create a Palette API key. This is required for the
+[Cluster Management with Terraform](./deploy-manage-k8s-cluster-tf.md) tutorial.
+
+<PartialsComponent category="palette-setup" name="create-tenant-api-key" />
 
 ## Validate
 

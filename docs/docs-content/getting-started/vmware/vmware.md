@@ -43,10 +43,10 @@ Once your cluster is deployed, you can update it using cluster profile updates.
       relativeURL: "./deploy-k8s-cluster",
     },
     {
-      title: "Deploy Cluster Profile Updates",
-      description: "Update your deployed clusters using Palette Cluster Profiles.",
+      title: "Cluster Management with Terraform",
+      description: "Deploy and update a Palette host cluster with Terraform.",
       buttonText: "Learn more",
-      relativeURL: "./update-k8s-cluster",
+      relativeURL: "./deploy-manage-k8s-cluster-tf",
     },
   ]}
 />
