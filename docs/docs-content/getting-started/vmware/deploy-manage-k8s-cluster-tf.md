@@ -585,9 +585,9 @@ to click on the logo to increase the counter and for a fun image change.
 
 ## Version Cluster Profiles
 
-As previously mentioned, Palette supports the creation of multiple cluster profile versions using the same profile name.
-This provides you with better change visibility and control over the layers in your host clusters. Profile versions are
-commonly used for adding or removing layers and pack configuration updates.
+Palette supports the creation of multiple cluster profile versions using the same profile name. This provides you with
+better change visibility and control over the layers in your host clusters. Profile versions are commonly used for
+adding or removing layers and pack configuration updates.
 
 The version number of a given profile must be unique and use the semantic versioning format `major.minor.patch`. In this
 tutorial, you used Terraform to deploy two versions of a VMware vSphere cluster profile. The snippet below displays a
