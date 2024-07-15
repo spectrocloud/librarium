@@ -680,7 +680,7 @@ the resources you created through Terraform.
 terraform destroy --auto-approve
 ```
 
-Output:
+A successful execution of `terraform destroy` will output the following.
 
 ```shell
 Destroy complete! Resources: 3 destroyed.
