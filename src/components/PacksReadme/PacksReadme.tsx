@@ -190,6 +190,7 @@ export default function PacksReadme() {
     if (packData.provider.includes("all")) {
       return "All";
     }
+
     return packData.provider
       .map((provider) => cloudDisplayNames[provider as keyof typeof cloudDisplayNames] || provider)
       .join(", ");
