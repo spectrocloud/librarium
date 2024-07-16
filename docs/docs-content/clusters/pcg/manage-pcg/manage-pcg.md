@@ -14,7 +14,7 @@ topics to learn more about managing a PCG.
 
 - [Create and Manage IPAM Node Pools](./create-manage-node-pool.md)
 
-- [Enable and Mange Proxy Configurations](./configure-proxy.md)
+- [Enable and Manage Proxy Configurations](./configure-proxy.md)
 
 - [Increase PCG Node Count](./scale-pcg-nodes.md)
 

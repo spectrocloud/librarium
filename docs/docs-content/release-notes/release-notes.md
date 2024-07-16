@@ -24,6 +24,12 @@ tags: ["release-notes"]
   the feature. Check out the [Feature Flags](../enterprise-version/system-management/feature-flags.md) documentation to
   learn more.
 
+- Kubernetes clusters deployed on Azure can now use network proxy configurations. To use this new feature, you must
+  deploy a PCG in your Azure environment and configure the PCG to use your network proxy server. Once the PCG is
+  deployed and configured with the proxy server details, newly deployed Azure clusters will inherit the proxy
+  configurations from the PCG. To learn more, refer to the
+  [Proxy Configuration](../clusters/public-cloud/azure/architecture.md#proxy-configuration) guide.
+
 - Palette now supports specifying a custom Certificate Authority (CA) when enabling OIDC integration. You now use
   self-signed root certificates from internal identity providers when configuring OIDC integration. To learn more, refer
   to the [Enable SSO with Custom CA](../user-management/saml-sso/saml-sso.md) guide.

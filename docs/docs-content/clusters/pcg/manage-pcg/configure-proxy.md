@@ -1,5 +1,5 @@
 ---
-sidebar_label: "Enable and Mange Proxy Configurations"
+sidebar_label: "Enable and Manage Proxy Configurations"
 title: "Enable and Mange Proxy Configurations"
 description:
   "Learn how to add and manage proxy configurations for a Private Cloud Gateway (PCG) deployed in to an existing
