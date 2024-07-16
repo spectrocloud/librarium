@@ -145,7 +145,7 @@ export default function PacksReadme() {
   }
 
   function renderTabs() {
-    let readme = selectedPackUid ? packData.packUidMap[selectedPackUid]?.readme : "";
+    const readme = selectedPackUid ? packData.packUidMap[selectedPackUid]?.readme : "";
     const tabs = [
       readme && {
         label: `README`,
@@ -236,13 +236,13 @@ export default function PacksReadme() {
               dropdownStyle={{ maxHeight: 400, overflow: "auto" }}
               placeholder="Search"
               treeDefaultExpandAll
-              onChange={(item) => versionChange(item as string)}
+              onChange={(item) => versionChange(item)}
               treeData={renderVersionOptions()}
             />
           </div>
           <div className={styles.packDesc}>
             <div className={styles.packDescItem}>
-              {`Type: ${packTypeNames[packData.type as keyof typeof packTypeNames]}`}
+              {`Type: ${packTypeNames[packData.type]}`}
             </div>
             <div className={styles.packDescItem}>{`Cloud Providers: ${getProviders()}`}</div>
             <div className={styles.packDescItem}>{`Registry: ${getRegistries()}`}</div>

@@ -79,7 +79,7 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
       filteredCards = fuse.search(searchValue).map(({ item }) => item);
     }
     const categoriesMap = filteredCards.reduce((acc: Map<string, any>, technology: FrontMatterData) => {
-      let packType = technology.packType;
+      const packType = technology.packType;
       if (acc.has(packType)) {
         acc.get(packType).push(technology);
       } else {
@@ -95,7 +95,7 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
     }));
     const categoryKeys = Array.from(sortedCategoriesMap.keys()) as string[];
     categoryKeys.forEach((category) => {
-      let techCards: any = sortedCategoriesMap.get(category);
+      const techCards: any = sortedCategoriesMap.get(category);
       techCards.sort((a: FrontMatterData, b: FrontMatterData) => {
         return (a.title.localeCompare(b.title))
       });
@@ -122,7 +122,7 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
   }, []);
 
   const renderPacksCategories = () => {
-    let categoryKeys: string[] = Array.from(filteredTechCards.keys()) as string[];
+    const categoryKeys: string[] = Array.from(filteredTechCards.keys()) as string[];
     const renderedCategoryItems = categoryKeys.map((category) => {
       const categoryItems = filteredTechCards.get(category) as FrontMatterData[];
       if (categoryItems.length) {
@@ -141,7 +141,7 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
     return (
       <>
         <IconMapper type={category} />
-        {packTypeNames[category as keyof typeof packTypeNames]}
+        {packTypeNames[category]}
       </>
     );
   }

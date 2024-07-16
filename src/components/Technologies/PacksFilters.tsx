@@ -36,7 +36,7 @@ export default function PacksFilters({ categories, registries, setSelectedSearch
         <FilterSelect
           selectMode="multiple"
           options={categories.map((category) => {
-            return { value: category, label: packTypeNames[category as keyof typeof packTypeNames] };
+            return { value: category, label: packTypeNames[category] };
           })}
           onChange={(items) => setSelectedSearchFilters({ category: items })}
           value={selectedFilters.category}
