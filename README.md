@@ -465,7 +465,7 @@ Result
 
 ![Result](/static/assets/docs/images/hide_copy_button.webp)
 
-### Admonitions - Warning / Info / Tip / Danger / Tech Preview /
+### Admonitions - Warning / Info / Tip / Danger / Tech Preview / Further Guidance
 
 :::warning
 
@@ -507,7 +507,7 @@ https://docusaurus.io/docs/markdown-features/admonitions
 
 The content must have a new line at the beginning and at the end of the tag.
 
-For guidance on using specific admonitions, refer to
+For guidance on using admonitions, refer to
 [Spectro Cloud Internal Style Guide: Admonitions/Callouts](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Admonitions%2FCallouts).
 
 ### Video
