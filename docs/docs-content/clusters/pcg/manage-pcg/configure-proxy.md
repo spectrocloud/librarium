@@ -1,15 +1,15 @@
 ---
 sidebar_label: "Enable and Manage Proxy Configurations"
-title: "Enable and Mange Proxy Configurations"
+title: "Enable and Manage Proxy Configurations"
 description:
-  "Learn how to add and manage proxy configurations for a Private Cloud Gateway (PCG) deployed in to an existing
+  "Learn how to add and manage proxy configurations for a Private Cloud Gateway (PCG) deployed into an existing
   Kubernetes cluster."
 hide_table_of_contents: false
 sidebar_position: 14
 tags: ["pcg", "proxy"]
 ---
 
-You can add and manage proxy configurations for a Private Cloud Gateway (PCG) deployed in to an existing Kubernetes
+You can add and manage proxy configurations for a Private Cloud Gateway (PCG) deployed into an existing Kubernetes
 cluster. By default, a PCG deployed onto an existing Kubernetes cluster does not have a proxy configuration. If your
 infrastructure environment requires a proxy configuration, use the instructions in this guide to add and manage proxy
 configurations for a PCG deployed in a Kubernetes cluster and to ensure workload clusters deployed through Palette
@@ -17,9 +17,9 @@ inherit the proxy configuration from the PCG cluster.
 
 :::info
 
-You workload clusters deployed through Palette will inherit proxy configuration from the PCG cluster. The PCG is not
-used as a network proxy for deployed workload clusters. The PCG does also not provide connectivity to the internet for
-the workload clusters. Individual workload clusters must have their own proxy configurations to access the internet.
+Your workload clusters deployed through Palette will inherit proxy configuration from the PCG cluster. The PCG is not
+used as a network proxy for deployed workload clusters. The PCG also does not provide internet connectivity for the
+workload clusters. Individual workload clusters must have their proxy configurations to access the internet.
 
 :::
 
@@ -27,7 +27,7 @@ Use the following steps to add and manage proxy configurations for a PCG.
 
 ## Prerequisites
 
-- A PCG is deployed into an existing Kubernetes cluster, active, and in a healthy state. Refer to
+- A PCG is deployed into an active Kubernetes cluster, which is active and healthy. Refer to
   [Deploy a PCG to an Existing Kubernetes Cluster](../deploy-pcg-k8s.md) for additional guidance.
 
   :::warning
@@ -40,10 +40,10 @@ Use the following steps to add and manage proxy configurations for a PCG.
 - The kubeconfig file for the Kubernetes cluster where the PCG is deployed. The Kubconfig file is used to authenticate
   with the Kubernetes cluster and deploy the Reach service.
 
-- Admin access to the Kubernetes cluster where the PCG is deployed. The Reach Helm Chart will create namespace, service
-  accounts, and roles in the cluster.
+- Admin access to the Kubernetes cluster where the PCG is deployed. The Reach Helm Chart will create a namespace,
+  service accounts, and roles in the cluster.
 
-- The extract utility `zip` and `tar` is installed on the machine you are using to deploy the Helm chart.
+- The extract utilities `zip` and `tar` are installed on the machine you are using to deploy the Helm chart.
 
 - Tenant administrator access.
 
@@ -51,20 +51,19 @@ Use the following steps to add and manage proxy configurations for a PCG.
 
 - The deployed PCG must have network connectivity to the proxy server.
 
-- The Kubernetes cluster where the PCG is deployed must have the proxy configuration set up. This includes any
-  Certificate Authority (CA) certificates required to authenticate the proxy server. This step varies depending on the
-  platform where the Kubernetes cluster is deployed. Some platforms, such as managed Kubernetes services, may require
-  additional steps. Below is a list of helpful links to set up proxy configurations for some common Kubernetes
-  platforms:
+- The Kubernetes cluster where the PCG is deployed must have the proxy configuration. This includes any Certificate
+  Authority (CA) certificates are required to authenticate the proxy server. This step varies depending on the platform
+  where the Kubernetes cluster is deployed. Some platforms, such as managed Kubernetes services, may require additional
+  steps. Below is a list of helpful links to set up proxy configurations for some common Kubernetes platforms:
 
   - [Amazon EKS](https://repost.aws/knowledge-center/eks-http-proxy-containerd-automation)
   - [Azure AKS](https://learn.microsoft.com/en-us/azure/aks/http-proxy)
-  - [Google GKE](https://cloud.google.com/kubernetes-engine/docs/archive/creating-kubernetes-engine-private-clusters-with-net-proxies)
+  - [vSphere](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-configuration/GUID-7576FBBE-8B67-4D3F-B859-C9688E9442D7.html)
 
     :::warning
 
-    This feature has only been tested with Azure. If you are using a different cloud provider, contact our support team
-    for additional guidance.
+    This feature has only been tested on AWS, Azure, and VMware vSphere. If you are using a different cloud provider,
+    contact our support team for additional guidance.
 
     :::
 
@@ -74,12 +73,12 @@ Use the following steps to add and manage proxy configurations for a PCG.
 
 - `cert-manager` is not already deployed in the Kubernetes cluster where the PCG is deployed. If `cert-manager` is
   already deployed, make sure you edit the deployment to use the
-  `- --feature-gates=AdditionalCertificateOutputFormats=true` flag. Otherwise, the Reach service will not be able to
-  manage the proxy configurations.
+  `- --feature-gates=AdditionalCertificateOutputFormats=true` flag. Otherwise, the Reach service cannot manage the proxy
+  configurations.
 
 ## Enable Proxy
 
-1. Open a terminal session and navigate to the folder you have the Reach Helm Chart zip file downloaded to.
+1. Open a terminal session and navigate to the folder where you downloaded the Reach Helm Chart zip file.
 
 2. Unzip the downloaded artifact you received from the support team.
 
@@ -165,18 +164,19 @@ Use the following steps to add and manage proxy configurations for a PCG.
    TEST SUITE: None
    ```
 
-Once the Reach service is deployed, the PCG will use the proxy configuration provided in the Reach Helm Chart. If the
-cloud account is configured to use the PCG, the proxy configuration will be inherited by the workload clusters deployed
+Once the Reach service is deployed, the PCG will use the proxy configuration in the Reach Helm Chart. If the cloud
+account is configured to use the PCG, the proxy configuration will be inherited by the workload clusters deployed
 through Palette.
 
 ## Validate
 
-To validate the Reach service is deployed and the proxy configuration is enabled for the PCG, use the following steps.
+Use the following steps to validate that the Reach service is deployed and that the proxy configuration is enabled for
+the PCG.
 
 1. Open a terminal session.
 
-2. Issue the following command against the Kubernetes cluster where the PCG is deployed to verify the Reach service pod
-   is active.
+2. Issue the following command against the Kubernetes cluster where the PCG is deployed. Verify the pods are active and
+   healthy.
 
    ```shell
    kubectl get pods --namespace reach-system
@@ -189,8 +189,8 @@ To validate the Reach service is deployed and the proxy configuration is enabled
    reach-controller-manager-995c74db5-frb5j            2/2     Running   0          2m
    ```
 
-3. After you configure you configure your cloud account to use the PCG. You can verify deployed clusters inherit the
-   proxy configuration from the PCG. To verify the proxy configuration is inherited by the workload clusters, deploy a
+3. After you configure your cloud account to use the PCG. You can verify that deployed clusters inherit the proxy
+   configuration from the PCG. To verify the proxy configuration is inherited by the workload clusters, deploy a
    workload cluster through Palette. SSH into a node in the workload cluster and issue the following command to verify
    the proxy configuration is inherited.
 
