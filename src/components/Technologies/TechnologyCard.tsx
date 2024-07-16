@@ -3,6 +3,12 @@ import styles from "./Technologies.module.scss";
 import PackCardIcon from "./PackCardIcon";
 import Link from "@docusaurus/Link";
 
+interface Version {
+  title: string;
+  children: {
+    title: string;
+  }[];
+}
 interface TechnologyCardProps {
   name?: string;
   title: string;
@@ -10,11 +16,12 @@ interface TechnologyCardProps {
   type?: string;
   slug?: string;
   version?: string;
-  versions?: any;
+  versions?: Version[];
 }
 
 export default function TechnologyCard({ name, title, logoUrl, type, slug, version, versions }: TechnologyCardProps) {
-  const parentVersion = versions?.find((tagVersion: any) => tagVersion.children.find((child: any) => child.title === version))?.title || "";
+  const parentVersion =
+    versions?.find((tagVersion) => tagVersion.children.find((child) => child.title === version))?.title || "";
   return (
     <div className={styles.card}>
       <Link to={slug || `/integrations/packs?pack=${name}&version=${version}&parent=${parentVersion}`}>
