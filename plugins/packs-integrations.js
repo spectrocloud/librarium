@@ -166,7 +166,7 @@ function sortVersions(tags) {
   return sortedVersions;
 }
 
-function getAggregatedVersions(registries, repositories, packUidMap, packName) {
+function getAggregatedVersions(registries, repositories, packUidMap) {
   const prefferedRegistryUid = repositories?.[0]?.uid;
   //if a pack has multiple registries, then the versions of the pack are aggregated based on the selected registries
   //if a same version in multiple registries, the preferred registry is the higher precendence.
@@ -360,7 +360,12 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
             await setTimeout(1000);
           }
         }
-      } catch (e) {}
+      } catch (e) {
+        logger.error(
+          `An error occurred while fetching the logo for the pack, ${packName}. Additional context follows : \n`,
+          e
+        );
+      }
     }
   }
 }

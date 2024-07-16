@@ -28,6 +28,10 @@ interface PackReadmeProps {
   latestVersion: string;
 }
 
+interface MarkdownFile {
+  default: React.FC;
+}
+
 export default function PacksReadme() {
   const { packs, repositories } = usePluginData("plugin-packs-integrations") as PacksIntegrationsPluginData;
   const [customReadme, setCustomReadme] = useState<ReactElement<any, any> | null>(null);
@@ -45,7 +49,7 @@ export default function PacksReadme() {
     setPackName(pckName);
     const importComponent = async () => {
       try {
-        const module = await import(`../../../docs/docs-content/integrations/${pckName}.md`);
+        const module: MarkdownFile = await import(`../../../docs/docs-content/integrations/${pckName}.md`);
         const PackReadMeComponent = module.default;
         setCustomReadme(
           <div className={styles.customReadme}>
@@ -56,7 +60,9 @@ export default function PacksReadme() {
         setCustomReadme(null);
       }
     };
-    importComponent();
+    importComponent().catch((e) => {
+      console.error("Error importing custom readme component for pack. Additional information follows: \n", e);
+    });
   }, []);
 
   const packData = useMemo(() => {
