@@ -12,8 +12,8 @@ installation, carefully review the [Prerequisites](#prerequisites) section.
 
 :::further
 
-For detailed guidance on how to deploy app workloads with a PCG, refer to our
-[Deploy App Workloads with a PCG](../../../tutorials/cluster-deployment/pcg/deploy-app-pcg.md) tutorial.
+Refer to our [Deploy App Workloads with a PCG](../../../tutorials/cluster-deployment/pcg/deploy-app-pcg.md) tutorial for
+detailed guidance on how to deploy app workloads with a PCG.
 
 :::
 
