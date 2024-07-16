@@ -102,7 +102,7 @@ const config = {
             },
           },
           admonitions: {
-            keywords: ["further"],
+            keywords: ["preview", "further"],
             extendDefaults: true,
           },
           // exclude: ["api/v1/palette-apis-3-4"],
@@ -145,7 +145,7 @@ const config = {
         lastVersion: "current",
         includeCurrentVersion: true,
         admonitions: {
-          keywords: ["further"],
+          keywords: ["preview", "further"],
           extendDefaults: true,
         },
         versions: {
