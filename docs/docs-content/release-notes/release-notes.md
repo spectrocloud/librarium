@@ -24,9 +24,9 @@ tags: ["release-notes"]
   the feature. Check out the [Feature Flags](../enterprise-version/system-management/feature-flags.md) documentation to
   learn more.
 
-- Kubernetes clusters deployed on Azure can now use network proxy configurations. To use this new feature, you must
+- Kubernetes clusters deployed to Azure can now use network proxy configurations. To use this new feature, you must
   deploy a PCG in your Azure environment and configure the PCG to use your network proxy server. Once the PCG is
-  deployed and configured with the proxy server details, newly deployed Azure clusters will inherit the proxy
+  deployed and configured with the proxy server details, the newly deployed Azure clusters will inherit the proxy
   configurations from the PCG. To learn more, refer to the
   [Proxy Configuration](../clusters/public-cloud/azure/architecture.md#proxy-configuration) guide.
 

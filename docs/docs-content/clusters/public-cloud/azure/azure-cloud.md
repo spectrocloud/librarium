@@ -49,7 +49,7 @@ Use the following steps to add an Azure or Azure Government account in Palette o
 
 :::info
 
-If you want to provide network proxy configurations to your Kubernetes clusters deployed through Palette, you must use a
+If you want to provide network proxy configurations to the Kubernetes clusters deployed through Palette, you must use a
 PCG cluster. Check out the [Proxy Configuration](./architecture.md#proxy-configuration) section in the Architecture page
 for more information.
 

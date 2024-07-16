@@ -170,12 +170,12 @@ you use any of the following tags.
 
 You can enable your Azure clusters to use a proxy server for outbound traffic. To use your proxy server with Azure
 clusters, you must deploy a Private Cloud Gateway (PCG) in your Azure environment. The PCG must be configured with the
-proxy server details. Once the PCG is deployed and configured with the proxy server details, newly deployed Azure
+proxy server details. Once the PCG is deployed and configured with the proxy server details, the newly deployed Azure
 clusters will inherit the proxy configurations from the PCG.
 
 :::tip
 
-We recommend you review the [gRPC and Proxies](../../../architecture/grps-proxy.md) to be aware of network proxies
+We recommend you review the [gRPC and Proxies](../../../architecture/grps-proxy.md) to be aware of network proxies that
 Palette supports. Palette uses gRPC to communicate with clusters, and depending on the proxy server you use, you may
 need to configure the proxy server to support gRPC.
 
