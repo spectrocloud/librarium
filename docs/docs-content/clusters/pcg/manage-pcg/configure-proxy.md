@@ -37,7 +37,7 @@ Use the following steps to add and manage proxy configurations for a PCG.
 
   :::
 
-- The Kubeconfig file for the Kubernetes cluster where the PCG is deployed. The Kubconfig file is used to authenticate
+- The kubeconfig file for the Kubernetes cluster where the PCG is deployed. The Kubconfig file is used to authenticate
   with the Kubernetes cluster and deploy the Reach service.
 
 - Admin access to the Kubernetes cluster where the PCG is deployed. The Reach Helm Chart will create namespace, service
@@ -68,7 +68,7 @@ Use the following steps to add and manage proxy configurations for a PCG.
 
     :::
 
-- Download the Reach Helm Chart provided by our suppor team. The Reach Helm Chart is used to deploy the Reach service
+- Download the Reach Helm Chart provided by our support team. The Reach Helm Chart is used to deploy the Reach service
   into the Kubernetes cluster where the PCG is deployed. The Reach service is used to manage proxy configurations for
   the PCG. Contact our support team to obtain the Reach Helm Chart.
 
@@ -123,8 +123,8 @@ Use the following steps to add and manage proxy configurations for a PCG.
 
    A note on the `no_proxy` field: The `no_proxy` field is a comma-separated list of URLs that should bypass the proxy.
    Depending on your environment, you may need to add additional URLs to this list. The list provided in the code
-   snippet below is a generic list that should work for most environments. The IP adderess `169.254.169.254,` is
-   required to be added to the `no_proxy` list. Otherwise, pods will not be able to start up successfully.
+   snippet below is a generic list that should work for most environments. The IP address `169.254.169.254,` is required
+   to be added to the `no_proxy` list. Otherwise, pods will not be able to start up successfully.
 
    ```
    aks.io,.amazonaws.com,.azure.com,.capz.io,.cluster.local,.gcr.io,.hubble-system,.kube-system,.kvdb,.microsoftonline.com,.privatelink.eastus.azmk8s.io,.spectrocloud.com,.spectrocloud.dev,.svc,.windows.net,10.0.0.0/8,10.10.128.10,10.10.192.1/18,10.96.0.0/12,127.0.0.1,169.254.169.254,.privatelink.eastus.azmk8s.io,.azure.com,.aks.io,.capz.io,.spectrocloud.com,gcr.io,windows.net,.windows.net,.microsoftonline.com,.amazonaws.com,.gcr.io,192.168.0.0/16,gcr.io,kubernetes,localhost,portworx-service,prometheus-operator-prometheus,windows.net
@@ -175,8 +175,8 @@ To validate the Reach service is deployed and the proxy configuration is enabled
 
 1. Open a terminal session.
 
-2. Issue the following command command against the Kubernetes cluster where the PCG is deployed to verify the Reach
-   service pod is active.
+2. Issue the following command against the Kubernetes cluster where the PCG is deployed to verify the Reach service pod
+   is active.
 
    ```shell
    kubectl get pods --namespace reach-system
