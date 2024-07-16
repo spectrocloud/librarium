@@ -4,7 +4,6 @@ import AdmonitionTypeFurtherGuidance from "./Type/FurtherGuidance";
 
 const AdmonitionTypes = {
   ...DefaultAdmonitionTypes,
-  preview: AdmonitionTypeTechPreview,
   further: AdmonitionTypeFurtherGuidance,
 };
 
