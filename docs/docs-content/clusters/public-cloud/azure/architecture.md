@@ -173,6 +173,14 @@ clusters, you must deploy a Private Cloud Gateway (PCG) in your Azure environmen
 proxy server details. Once the PCG is deployed and configured with the proxy server details, newly deployed Azure
 clusters will inherit the proxy configurations from the PCG.
 
+:::tip
+
+We recommend you review the [gRPC and Proxies](../../../architecture/grps-proxy.md) to be aware of network proxies
+Palette supports. Palette uses gRPC to communicate with clusters, and depending on the proxy server you use, you may
+need to configure the proxy server to support gRPC.
+
+:::
+
 Use the four resource links below to enable and manage proxy configurations for your Azure cluster.
 
 1. Deploy a PCG cluster to an existing Kubernetes cluster inside your Azure environment. For additional guidance, refer
