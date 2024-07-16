@@ -334,7 +334,7 @@ async function write(res, packName, logoUrlMap) {
         logoUrlMap[packName] = `${packName}.${mime.extension(type)}`;
       });
     } else {
-      reject("Invalid Mime type for the logo");
+      reject(`Invalid MIME type received for the logo ${packName}`);
     }
   });
 }
@@ -362,6 +362,8 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
         }
       } catch (e) {
         // Intentionally ignoring errors here to continue processing other logos
+        // Enable the below line to log the error, if needed, for debugging.
+        // logger.error(e);
       }
     }
   }
