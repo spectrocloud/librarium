@@ -194,7 +194,13 @@ Use the four resource links below to enable and manage proxy configurations for 
    [Add Azure Cloud Account](./azure-cloud.md) guide for instructions on how to do this.
 
 4. Deploy an Azure cluster and use static placement so that you can specify the VNet with the proper network
-   configuration. If you do not use static placement, the Azure cluster will be deployed with the network resources
-   created by Palette, which may not have the proper network configuration. For instructions on how to deploy an Azure
-   cluster, refer to the [Create and Manage IaaS Cluster](./create-azure-cluster.md) guide or the
+   configuration. For instructions on how to deploy an Azure cluster, refer to the
+   [Create and Manage IaaS Cluster](./create-azure-cluster.md) guide or the
    [Create and Manage Azure AKS Cluster](./azure.md) guide.
+
+   :::warning
+
+   If you do not use static placement, the Azure cluster will be deployed with the network resources created by Palette,
+   which may not have the proper network configuration to use the proxy server.
+
+   :::
