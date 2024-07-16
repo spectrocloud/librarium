@@ -19,6 +19,8 @@ The following steps will guide you on how to enable Palette SSO with
 
 ## Prerequisites
 
+- For Okta OIDC to work correctly with Palette, you must enable HTTPS and configure TLS.
+
 - You need to have either a free or paid subscription with Okta. Okta provides free
   [developer subscriptions](https://developer.okta.com/signup/) for testing purposes.
 
@@ -182,9 +184,7 @@ You have now completed all configuration steps in Okta.
 23. When all the information has been entered, click **Enable** to activate SSO. You will receive a message stating
     **OIDC configured successfully**.
 
-###
-
-Create Teams in Palette
+### Create Teams in Palette
 
 The remaining step is to create teams in Palette for the group that you allowed to be passed in the OIDC ticket in Okta,
 and give them the appropriate permissions. For this example, you will create the `palette-tenant-admins` team and give
@@ -193,54 +193,54 @@ it **Tenant Admin** permissions. You can repeat this for any other team that you
 24. Open a web browser and navigate to your Palette subscription. Navigate to **Tenant Settings** --> **Users & Teams**
     --> **Teams** tab, and click **+ Create Team**.
 
-![Create Palette Team](/oidc-okta-images/oidc-okta_create-team.webp)
+    ![Create Palette Team](/oidc-okta-images/oidc-okta_create-team.webp)
 
 25. Specify `palette-tenant-admins` in the **Team name** field. You don't need to set any members now, as this will
     happen automatically from the SSO. Click **Confirm** to create the team.
 
-![Name Palette Team](/oidc-okta-images/oidc-okta_name-team.webp)
+    ![Name Palette Team](/oidc-okta-images/oidc-okta_name-team.webp)
 
 26. The list of teams displays again. Select the newly created **palette-tenant-admins** team to review its details. To
     give this team administrative access to the entire tenant and all the projects in it, assign the **Tenant Admin**
     role. Select **Tenant Roles** and click **+ Add Tenant Role**:
 
-![Palette Tenant Roles](/oidc-okta-images/oidc-okta_tenant-roles.webp)
+    ![Palette Tenant Roles](/oidc-okta-images/oidc-okta_tenant-roles.webp)
 
 27. Click on **Tenant Admin** to enable the role. Click **Confirm** to add the role.
 
-![Add Tenant Role](/oidc-okta-images/oidc-okta_add-tenant-role.webp)
+    ![Add Tenant Role](/oidc-okta-images/oidc-okta_add-tenant-role.webp)
 
-You will receive a message stating **Roles have been updated**. Repeat this procedure for any other teams while ensuring
-they are given the appropriate access permissions.
+    You will receive a message stating **Roles have been updated**. Repeat this procedure for any other teams while
+    ensuring they are given the appropriate access permissions.
 
 28. Click the **X** next to **Team Details** in the top left corner to exit this screen.
 
 You have now successfully configured Palette SSO based on OIDC with Okta.
 
-### Validate
+## Validate
 
 1. Log in to Palette through SSO as a user that is a member of the `palette-tenant-admins` group in Okta to verify that
    users are automatically added to the `palette-tenant-admins` group in Palette. If you're still logged into Palette
    with a non-SSO user, log out by selecting **Logout** in the **User Drop-down Menu** at the top right.
 
-![User Logout](/oidc-okta-images/oidc-okta_user-logout.webp)
+   ![User Logout](/oidc-okta-images/oidc-okta_user-logout.webp)
 
 2. The Palette login screen now displays a **Sign in** button and no longer presents a username and password field.
    Below the **Sign In** button, there is an **SSO issues? --> Use your password** link. This link can be used to bypass
    SSO and log in with a local Palette account in case there is an issue with SSO and you need to access Palette without
    SSO. Click on the **Sign in** button to log in via SSO.
 
-![User SSO Login](/oidc-okta-images/oidc-okta_palette-login.webp)
+   ![User SSO Login](/oidc-okta-images/oidc-okta_palette-login.webp)
 
 3. If this is the first time you are logging in with SSO, you will be redirected to the Okta login page. Depending on
    your organization's SSO settings, this could be a simple login form or require MFA (Multi-Factor Authentication).
 
-:::info
+   :::info
 
-Make sure you log in as a user that is a member of the `palette-tenant-admins` group in Okta. Once authenticated, you
-will automatically be redirected back to Palette and logged into Palette as that user.
+   Make sure you log in as a user that is a member of the `palette-tenant-admins` group in Okta. Once authenticated, you
+   will automatically be redirected back to Palette and logged into Palette as that user.
 
-:::
+   :::
 
 4. You are now automatically added to the `palette-tenant-admins` team in Palette. To verify, navigate to the left
    **Main Menu**, select **Tenant Settings** --> **Users & Teams** --> **Teams** tab. Click the

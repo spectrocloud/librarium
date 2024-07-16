@@ -23,12 +23,12 @@ on how to install Palette. Palette VerteX installation guide can be found in the
 The Palette Command Line Interface (CLI) is a tool that you can use to interact with Palette programmatically. Check out
 the [Palette CLI](./automation/palette-cli/palette-cli.md) document for installation guidance.
 
-| Version | Operating System                                                                      | Checksum (SHA256)                                                  |
-| ------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| 4.4.0   | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.4.0/linux/cli/palette) | `9e515f4f78b235a0022d1f10099f0e819fa28ceb356d4a97a34bb4e251a81ea1` |
+| Version | Operating System                                                                      | Checksum (SHA256) |
+| ------- | ------------------------------------------------------------------------------------- | ----------------- |
+| 4.4.8   | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.4.0/linux/cli/palette) | ``                |
 
 ## Palette Edge CLI
 
-| Version | Operating System                                                                      | Checksum (SHA256)                                                  |
-| ------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| 4.4.2   | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.4.2/cli/linux/palette-edge) | `86d2f9239d2b8517dc6d750631a3a328136a5d49a8ec042899879e9bd25a396e` |
+| Version | Operating System                                                                      | Checksum (SHA256) |
+| ------- | ------------------------------------------------------------------------------------- | ----------------- |
+| 4.4.8   | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.4.2/cli/linux/palette-edge) | ``                |

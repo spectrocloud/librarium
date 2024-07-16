@@ -9,8 +9,6 @@ hiddenFromNav: false
 tags: ["user-management", "saml-sso"]
 ---
 
-## Enable SSO with Microsoft Active Directory Federation Service (AD FS)
-
 Single sign-on (SSO) is an authentication method that enables users to log in to multiple applications and websites with
 one set of credentials. SSO works upon a trust relationship established and maintained between the service provider (SP)
 and an identity provider (IdP) using certificates. Palette supports SSO based on either SAML or OIDC.
@@ -28,21 +26,23 @@ standard that Palette employs. You can only use the OIDC-based approach for Micr
 
 ## Prerequisites
 
-In order to setup OIDC-based SSO with Microsoft AD FS, you need to use one of the following versions:
+- For Microsoft AD FS to work correctly with Palette, you must enable HTTPS and configure TLS.
 
-- Microsoft AD FS 2022 (comes with Windows Server 2022)
-- Microsoft AD FS 2019 (comes with Windows Server 2019)
-- Microsoft AD FS 2016 (comes with Windows Server 2016)
+- In order to setup OIDC-based SSO with Microsoft AD FS, you need to use one of the following versions:
 
-If you need to be able to your AD FS service from outside your corporate network, you will also need an AD FS Reverse
-Proxy. An official Microsoft tutorial for setting up an AD FS Reverse Proxy is not available, but you can use this blog
-post from
-[Matrixpost](https://blog.matrixpost.net/set-up-active-directory-federation-services-ad-fs-5-0-adfs-reverse-proxy-part-2/)
-for additional guidance.
+  - Microsoft AD FS 2022 (comes with Windows Server 2022)
+  - Microsoft AD FS 2019 (comes with Windows Server 2019)
+  - Microsoft AD FS 2016 (comes with Windows Server 2016)
+
+- If you need to be able to your AD FS service from outside your corporate network, you will also need an AD FS Reverse
+  Proxy. An official Microsoft tutorial for setting up an AD FS Reverse Proxy is not available, but you can use this
+  blog post from
+  [Matrixpost](https://blog.matrixpost.net/set-up-active-directory-federation-services-ad-fs-5-0-adfs-reverse-proxy-part-2/)
+  for additional guidance.
 
 ## Enablement
 
-## Create the AD FS Application Group for Palette
+### Create the AD FS Application Group for Palette
 
 1. Open the AD FS Management console on your Windows Server and add a new Application Group for Palette:
 
@@ -144,8 +144,8 @@ for additional guidance.
     - **Given Name** --> `given_name`
     - **Surname** --> `family_name`
 
-You can select the items on the left from the list. You will need to type the items on the right manually. Ensure you
-use all lowercase characters for the values on the right:
+    You can select the items on the left from the list. You will need to type the items on the right manually. Ensure
+    you use all lowercase characters for the values on the right:
 
     ![Set LDAP Claims](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_set-ldap-claims.webp)
 
@@ -196,7 +196,7 @@ use all lowercase characters for the values on the right:
 27. When all the information has been entered, click **Enable** to enable SSO. You will receive a message stating **OIDC
     configured successfully**.
 
-## Create Teams in Palette
+### Create Teams in Palette
 
 The remaining step is to create teams in Palette for the group claims that you configured in AD FS, and give them the
 appropriate permissions. For this example, you will create the `Admins` team and give it **Tenant Admin** permissions.
@@ -222,8 +222,8 @@ You can repeat this for any other team that you configured with group claims.
 
     ![Add Tenant Role](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-tenant-role.webp)
 
-You will receive a message stating **Roles have been updated**. Repeat this procedure for any other teams, taking care
-to ensure they are given the appropriate permissions.
+    You will receive a message stating **Roles have been updated**. Repeat this procedure for any other teams, taking
+    care to ensure they are given the appropriate permissions.
 
 31. Click the **X** next to **Team Details** in the top left corner to exit this screen.
 
@@ -234,26 +234,26 @@ You have now successfully configured Palette SSO based on OIDC with Microsoft AD
 1. Log in to Palette through SSO as a user that is a member of the `SpectroTeam - Admins` group in Active Directory to
    verify that users are automatically added to the `Admins` group in Palette.
 
-If you're still logged into Palette with a non-SSO user, log out by selecting **Logout** in the **User Menu** at top
-right.
+   If you're still logged into Palette with a non-SSO user, log out by selecting **Logout** in the **User Menu** at top
+   right.
 
-    ![User Logout](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_user-logout.webp)
+   ![User Logout](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_user-logout.webp)
 
 2. The Palette login screen now displays a **Sign in** button and no longer presents a username and password field.
    Below the **Sign In** button, there is an **SSO issues? --> Use your password** link. This link can be used to bypass
    SSO and log in with a local Palette account in case there is an issue with SSO and you need to access Palette without
    SSO.
 
-Click on the **Sign in** button to log in via SSO.
+   Click on the **Sign in** button to log in via SSO.
 
-    ![User SSO Login](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_palette-login.webp)
+   ![User SSO Login](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_palette-login.webp)
 
 3. If this is the first time you are logging in with SSO, you will be redirected to the Microsoft AD FS login page.
    Depending on your organization's SSO settings, this could be a simple login form or require MFA (Multi-Factor
    Authentication).
 
-Make sure you log in as a user that is a member of the `SpectroTeam - Admins` group in Active Directory. Once
-authenticated, you will automatically be redirected back to Palette and logged into Palette as that user.
+   Make sure you log in as a user that is a member of the `SpectroTeam - Admins` group in Active Directory. Once
+   authenticated, you will automatically be redirected back to Palette and logged into Palette as that user.
 
 4. You are now automatically added to the `Admins` team in Palette. To verify, navigate to the left **Main Menu**,
    select **Tenant Settings** --> **Users & Teams** --> **Teams** tab. Click the **Admins** team and view the team
@@ -261,7 +261,7 @@ authenticated, you will automatically be redirected back to Palette and logged i
 
    ![Palette Team Members](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_team-members.webp)
 
-The user you logged in as has automatically been added to this team.
+   The user you logged in as has automatically been added to this team.
 
 ## Resources
 

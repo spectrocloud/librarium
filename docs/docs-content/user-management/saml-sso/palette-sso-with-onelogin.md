@@ -21,13 +21,15 @@ for OIDC-based SSO in your Kubernetes cluster.
 
 ## Prerequisites
 
+- For OneLogin to work correctly with Palette, you must enable HTTPS and configure TLS.
+
 - An active OneLogin subscription and administrator-level permissions. If you are using this for testing purposes,
   OneLogin provides a [developer subscription](https://developers.onelogin.com/).
 
 - For OIDC-based SSO in your Kubernetes cluster, you will need to install
   [kubelogin](https://github.com/int128/kubelogin) on your local workstation to retrieve access tokens for your cluster.
 
-## Setup
+## Enable SSO with OneLogin
 
 Use the following steps to configure OneLogin as a third-party IdP in Palette.
 
@@ -154,7 +156,7 @@ You now have a working configuration for OneLogin as a third-party IdP in Palett
 [Create Teams in Palette](#create-teams-in-palette) section to learn how to create teams in Palette and map them to
 groups in OneLogin.
 
-## Validate
+### Validate
 
 Use the following steps to validate the configuration.
 
@@ -168,7 +170,7 @@ Use the following steps to validate the configuration.
    permissions inherited from the Palette team you are a member of. If you cannot sign in, you can use the username and
    password method.
 
-   [SSO Login Screen](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_login-screen.webp)
+   ![SSO Login Screen](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_login-screen.webp)
 
 3. To check which teams you are mapped to, navigate to the left **Main Menu** and select **Users & Teams**. In the
    **Users** tab, find your user name to review the teams you are a member of.

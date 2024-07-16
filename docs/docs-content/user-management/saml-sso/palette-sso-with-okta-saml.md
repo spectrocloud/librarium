@@ -19,6 +19,8 @@ The following steps will guide you on how to enable Palette SSO with
 
 ## Prerequisites
 
+- For Okta SAML to work correctly with Palette, you must enable HTTPS and configure TLS.
+
 - You need to have either a free or paid subscription with Okta. Okta provides free
   [developer subscriptions](https://developer.okta.com/signup/) for testing purposes.
 
@@ -51,14 +53,14 @@ repeat this for any other team that you configured with group claims.
 
     ![Add Tenant Role](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-tenant-role.webp)
 
-You will receive a message stating **Roles have been updated**. Repeat this procedure for any other teams, taking care
-to ensure they are given the appropriate permissions.
+    You will receive a message stating **Roles have been updated**. Repeat this procedure for any other teams, taking
+    care to ensure they are given the appropriate permissions.
 
-5. Click the **X** next to **Team Details** in the top left corner to exit this screen.
+5.  Click the **X** next to **Team Details** in the top left corner to exit this screen.
 
 ### Create the Okta Application
 
-1. Log in to your Okta Admin console and navigate to **Applications** --> **Applications**. Click the **Create App
+6. Log in to your Okta Admin console and navigate to **Applications** --> **Applications**. Click the **Create App
    Integration** button.
 
    :::info
@@ -68,43 +70,45 @@ to ensure they are given the appropriate permissions.
 
    :::
 
-2. In the screen that opens, select **SAML 2.0** for the sign-in method. Then click **Next**.
+7. In the screen that opens, select **SAML 2.0** for the sign-in method. Then click **Next**.
 
    ![Create Okta Application](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_create-application.webp)
 
-3. The following screen allows you to configure the new App Integration. On the **App name** field, change the name from
+8. The following screen allows you to configure the new App Integration. On the **App name** field, change the name from
    `My Web App` to `Spectro Cloud Palette SAML`. If desired, you can also upload a logo for the application.
 
    ![Configure Okta General Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_general-settings.webp)
 
-4. Open a web browser and navigate to your Palette subscription. Navigate to **Tenant Settings** --> **SSO** and click
+9. Open a web browser and navigate to your Palette subscription. Navigate to **Tenant Settings** --> **SSO** and click
    **SAML**. Click the button next to **Login URL** to copy the value to the clipboard.
 
-5. Set the value of **Service** to **Okta**.
+10. Set the value of **Service** to **Okta**.
 
-   ![Configure General SSO Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml.webp)
+![Configure General SSO Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml.webp)
 
-6. Switch back to your Okta Admin console and paste the copied value to the **Single sign-on URL** and **Audience URI
-   (SP Entity ID)**.
+    Under **Attribute Statements (Optional)** specify the below values.
 
-7. Specify values within **Attribute Statements** and **Group Attribute Statements** to link user values from Okta to
-   SpectroCloud.
+    | Name        | Name Format   | Value            |
+    | ----------- | ------------- | ---------------- |
+    | `FirstName` | `Unspecified` | `user.firstName` |
+    | `LastName`  | `Unspecified` | `user.lastName`  |
+    | `Email`     | `Unspecified` | `user.email`     |
 
-   Under **Attribute Statements (Optional)** specify the below values.
+Under **Attribute Statements (Optional)** specify the below values.
 
-   | Name        | Name Format   | Value            |
-   | ----------- | ------------- | ---------------- |
-   | `FirstName` | `Unspecified` | `user.firstName` |
-   | `LastName`  | `Unspecified` | `user.lastName`  |
-   | `Email`     | `Unspecified` | `user.email`     |
+| Name        | Name Format   | Value            |
+| ----------- | ------------- | ---------------- |
+| `FirstName` | `Unspecified` | `user.firstName` |
+| `LastName`  | `Unspecified` | `user.lastName`  |
+| `Email`     | `Unspecified` | `user.email`     |
 
-   Under **Group Attribute Statements (Optional)** specify the below values.
+Under **Group Attribute Statements (Optional)** specify the below values.
 
-   | Name          | Name Format   | Filter          | Value |
-   | ------------- | ------------- | --------------- | ----- |
-   | `SpectroTeam` | `Unspecified` | `Matches Regex` | Blank |
+| Name          | Name Format   | Filter          | Value |
+| ------------- | ------------- | --------------- | ----- |
+| `SpectroTeam` | `Unspecified` | `Matches Regex` | Blank |
 
-   ![Configure Attribute Statements](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_attribute-statements.webp)
+![Configure Attribute Statements](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_attribute-statements.webp)
 
 8. Finish the creation of the application with default values.
 
@@ -124,7 +128,7 @@ to ensure they are given the appropriate permissions.
 12. When all the information has been entered, click Enable to activate SSO. You will receive a message stating SAML
     configured successfully.
 
-### Validate
+## Validate
 
 1. Log in to Palette through SSO as an Okta user who is a member of the Okta application to verify SSO. If you are still
    logged into Palette with a non-SSO user, log out by selecting **Logout** in the **User Menu** at the top right.

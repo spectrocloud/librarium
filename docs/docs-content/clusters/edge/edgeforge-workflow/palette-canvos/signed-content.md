@@ -66,10 +66,10 @@ your Edge hosts come from a trusted source. For more information about content b
    git tag
    ```
 
-4. Check out the latest available tag. This guide uses the tag v4.4.a as an example.
+4. Check out the latest available tag. This guide uses the tag v4.4.8 as an example.
 
    ```
-   git checkout v4.4.a
+   git checkout v4.4.8
    ```
 
 5. In **CanvOS**, create a file named **.edge_custom_config.yaml**.
