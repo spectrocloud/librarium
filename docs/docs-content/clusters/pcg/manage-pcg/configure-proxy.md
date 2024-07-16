@@ -17,9 +17,9 @@ inherit the proxy configuration from the PCG cluster.
 
 :::info
 
-Workload clusters deployed through Palette will inherit proxy configuration from the PCG cluster. The PCG is not
-used as a network proxy for deployed workload clusters and does not provide internet connectivity for the
-workload clusters. Individual workload clusters must have their own proxy configurations to access the internet.
+Workload clusters deployed through Palette will inherit proxy configuration from the PCG cluster. The PCG is not used as
+a network proxy for deployed workload clusters and does not provide internet connectivity for the workload clusters.
+Individual workload clusters must have their own proxy configurations to access the internet.
 
 :::
 
@@ -33,7 +33,8 @@ Use the following steps to add and manage proxy configurations for a PCG.
   :::warning
 
   If you deployed a [PCG through the Palette CLI](../pcg.md#supported-environments), refer to the respective platform
-  installation guide for instructions on how to configure proxy settings during the installation process through the CLI.
+  installation guide for instructions on how to configure proxy settings during the installation process through the
+  CLI.
 
   :::
 
@@ -52,9 +53,10 @@ Use the following steps to add and manage proxy configurations for a PCG.
 - The deployed PCG must have network connectivity to the proxy server.
 
 - The Kubernetes cluster where the PCG is deployed must have the proxy configuration. This includes any Certificate
-  Authority (CA) certificates that are required to authenticate with the proxy server. This step varies depending on the platform
-  where the Kubernetes cluster is deployed. Some platforms, such as managed Kubernetes services, may require additional
-  steps. Below is a list of helpful links to set up proxy configurations for some common Kubernetes platforms:
+  Authority (CA) certificates that are required to authenticate with the proxy server. This step varies depending on the
+  platform where the Kubernetes cluster is deployed. Some platforms, such as managed Kubernetes services, may require
+  additional steps. Below is a list of helpful links to set up proxy configurations for some common Kubernetes
+  platforms:
 
   - [Amazon EKS](https://repost.aws/knowledge-center/eks-http-proxy-containerd-automation)
   - [Azure AKS](https://learn.microsoft.com/en-us/azure/aks/http-proxy)
@@ -106,8 +108,8 @@ Use the following steps to add and manage proxy configurations for a PCG.
    cd extras/reach-system/ && tar -xvzf reach-system-*.tgz
    ```
 
-6. Open the **reach-system/values.yaml** file in a text editor. Fill out the
-   following YAML fields with the proxy configuration details:
+6. Open the **reach-system/values.yaml** file in a text editor. Fill out the following YAML fields with the proxy
+   configuration details:
 
    - `reachSystem.enabled`: Set this field to `true` to enable the Reach service.
    - `reachSystem.proxySettings.http_proxy`: The HTTP proxy URL, including the port number.
@@ -175,8 +177,8 @@ the PCG.
 
 1. Open a terminal session.
 
-2. Issue the following command against the Kubernetes cluster where the PCG is deployed. Verify that the pods are active and
-   healthy.
+2. Issue the following command against the Kubernetes cluster where the PCG is deployed. Verify that the pods are active
+   and healthy.
 
    ```shell
    kubectl get pods --namespace reach-system
@@ -189,8 +191,8 @@ the PCG.
    reach-controller-manager-995c74db5-frb5j            2/2     Running   0          2m
    ```
 
-3. After configuring your cloud account to use the PCG, you can verify that the deployed workload clusters inherit the proxy
-   configuration from the PCG. To verify the proxy configuration is inherited by the workload clusters, deploy a
+3. After configuring your cloud account to use the PCG, you can verify that the deployed workload clusters inherit the
+   proxy configuration from the PCG. To verify the proxy configuration is inherited by the workload clusters, deploy a
    workload cluster through Palette. SSH into a node in the workload cluster and issue the following command to verify
    the proxy configuration is inherited.
 
