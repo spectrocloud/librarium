@@ -361,10 +361,7 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
           }
         }
       } catch (e) {
-        logger.error(
-          `An error occurred while fetching the logo for the pack, ${packName}. Additional context follows : \n`,
-          e
-        );
+        // Intentionally ignoring errors here to continue processing other logos
       }
     }
   }
