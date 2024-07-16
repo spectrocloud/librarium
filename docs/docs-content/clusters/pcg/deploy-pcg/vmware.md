@@ -10,6 +10,13 @@ tags: ["pcg"]
 This guide provides you with the steps to deploy a PCG cluster to a VMware vSphere environment. Before you begin the
 installation, carefully review the [Prerequisites](#prerequisites) section.
 
+:::further
+
+Refer to our [Deploy App Workloads with a PCG](../../../tutorials/cluster-deployment/pcg/deploy-app-pcg.md) tutorial for
+detailed guidance on how to deploy app workloads with a PCG.
+
+:::
+
 ## Prerequisites
 
 :::info
