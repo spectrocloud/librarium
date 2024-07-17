@@ -94,17 +94,17 @@ the currently active containers.
 docker ps
 ```
 
-Use the following command to download the `ghcr.io/spectrocloud/tutorials:1.1.2` image to your local machine. This
+Use the following command to download the `ghcr.io/spectrocloud/tutorials:1.1.7` image to your local machine. This
 Docker image includes the necessary tools.
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.1.2
+docker pull ghcr.io/spectrocloud/tutorials:1.1.7
 ```
 
 Next, start the container and open a bash session into it.
 
 ```bash
-docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.2 bash
+docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.7 bash
 ```
 
 </TabItem>
@@ -117,17 +117,17 @@ Ensure that Podman is available by issuing a command to list the currently activ
 podman ps
 ```
 
-Use the following command to download the `ghcr.io/spectrocloud/tutorials:1.1.2` image to your local machine. This image
+Use the following command to download the `ghcr.io/spectrocloud/tutorials:1.1.7` image to your local machine. This image
 includes the necessary tools.
 
 ```bash
-podman pull ghcr.io/spectrocloud/tutorials:1.1.2
+podman pull ghcr.io/spectrocloud/tutorials:1.1.7
 ```
 
 Next, start the container and open a bash session into it.
 
 ```bash
-podman run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.2 bash
+podman run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.7 bash
 ```
 
 </TabItem>
@@ -1292,7 +1292,7 @@ the following commands.
 
 ```bash
 docker container rm --force tutorialContainer
-docker image rm --force ghcr.io/spectrocloud/tutorials:1.1.2
+docker image rm --force ghcr.io/spectrocloud/tutorials:1.1.7
 ```
 
 </TabItem>
@@ -1301,7 +1301,7 @@ docker image rm --force ghcr.io/spectrocloud/tutorials:1.1.2
 
 ```bash
 podman container rm --force tutorialContainer
-podman image rm --force ghcr.io/spectrocloud/tutorials:1.1.2
+podman image rm --force ghcr.io/spectrocloud/tutorials:1.1.7
 ```
 
 </TabItem>

@@ -392,7 +392,7 @@ docker version
 Download the tutorial image to your local machine. <br />
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.1.3
+docker pull ghcr.io/spectrocloud/tutorials:1.1.7
 ```
 
 Next, start the container, and open a bash session into it.
@@ -400,7 +400,7 @@ Next, start the container, and open a bash session into it.
 <br />
 
 ```shell
-docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.3 bash
+docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.7 bash
 ```
 
 Navigate to the tutorial code.
@@ -432,7 +432,7 @@ podman info
 Download the tutorial image to your local machine. <br />
 
 ```bash
-podman pull ghcr.io/spectrocloud/tutorials:1.1.3
+podman pull ghcr.io/spectrocloud/tutorials:1.1.7
 ```
 
 Next, start the container, and open a bash session into it.
@@ -440,7 +440,7 @@ Next, start the container, and open a bash session into it.
 <br />
 
 ```shell
-podman run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.3 bash
+podman run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.7 bash
 ```
 
 Navigate to the tutorial code.
@@ -1249,7 +1249,7 @@ the **Enter** key. Next, issue the following command to stop the container.
 
 ```shell
 docker stop tutorialContainer && \
-docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.3
+docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.7
 ```
 
 </TabItem>
@@ -1258,7 +1258,7 @@ docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.3
 
 ```shell
 podman stop tutorialContainer && \
-podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.3
+podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.7
 ```
 
 </TabItem>
