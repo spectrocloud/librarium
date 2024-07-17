@@ -521,6 +521,14 @@ const redirects = [
     from: "/clusters/edge/site-deployment/deploy-cluster",
     to: "/tutorials/edge/deploy-cluster",
   },
+  {
+    from: "/security-bulletins/index/",
+    to: "/unlisted/index/",
+  },
+  {
+    from: "/security-bulletins/cve-reports/",
+    to: "/security-bulletins/reports/",
+  },
 ];
 
 module.exports = redirects;
