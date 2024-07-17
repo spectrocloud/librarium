@@ -7,12 +7,12 @@ sidebar_position: 100
 tags: ["clusters", "cluster management"]
 ---
 
-Taints provide nodes with the ability to repel a set of pods, allowing you to create nodes dedicated to certain workloads. Tolerations are
-applied to pods and allow the pods to schedule onto nodes with matching taints. Once configured, nodes do not accept any
-pods that do not tolerate the taints.
+Taints provide nodes with the ability to repel a set of pods, allowing you to create nodes dedicated to certain
+workloads. Tolerations are applied to pods and allow the pods to schedule onto nodes with matching taints. Once
+configured, nodes do not accept any pods that do not tolerate the taints.
 
-Palette allows you to apply taints during cluster provisioning. Once the cluster is in a healthy state, taints can
-be modified on the **Nodes** tab of the cluster details page.
+Palette allows you to apply taints during cluster provisioning. Once the cluster is in a healthy state, taints can be
+modified on the **Nodes** tab of the cluster details page.
 
 This guide covers the Palette UI flow.
 
@@ -69,8 +69,8 @@ Taints can also be applied to node pools using the Spectro Cloud
 
    :::info
 
-   When using packs or Helm charts, tolerations can only be specified if they are exposed
-   for configuration in the `values.yaml` file.
+   When using packs or Helm charts, tolerations can only be specified if they are exposed for configuration in the
+   `values.yaml` file.
 
    :::
 

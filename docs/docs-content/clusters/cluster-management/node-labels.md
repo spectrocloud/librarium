@@ -86,8 +86,8 @@ Node labels can also be applied to node pools using the Spectro Cloud
 
 :::info
 
-Node labels can also be updated on a deployed cluster by editing a worker node pool from the **Nodes** tab of the cluster
-details page.
+Node labels can also be updated on a deployed cluster by editing a worker node pool from the **Nodes** tab of the
+cluster details page.
 
 :::
 
