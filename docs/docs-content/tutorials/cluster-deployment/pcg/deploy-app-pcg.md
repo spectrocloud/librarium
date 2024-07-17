@@ -357,10 +357,11 @@ complete the core infrastructure stack.
 
 Next, click on the **Add New Pack** button to include add-on layers to your cluster profile.
 
-Add the **MetalLB (Helm)** pack to your profile. The [MetalLB](../../../integrations/metallb.md) pack provides a
-load-balancer implementation for your Kubernetes cluster, as VMware does not offer a load balancer solution natively.
-The load balancer is required to help the _LoadBalancer_ service specified in the Hello Universe application manifest
-obtain an IP address, so that you can access the application from your browser.
+Add the **MetalLB (Helm)** pack to your profile. The
+<VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm"/> pack provides a load-balancer
+implementation for your Kubernetes cluster, as VMware does not offer a load balancer solution natively. The load
+balancer is required to help the _LoadBalancer_ service specified in the Hello Universe application manifest obtain an
+IP address, so that you can access the application from your browser.
 
 | Pack Name       | Version | Layer         |
 | --------------- | ------- | ------------- |
@@ -498,10 +499,10 @@ overview of each file.
   | lb-metallb-helm    | 0.13.x  | Load Balancer    |
   | hello-universe     | 1.1.x   | App Service      |
 
-  The [MetalLB](../../../integrations/metallb.md) pack provides a load-balancer implementation for your Kubernetes
-  cluster, as VMware does not offer a load balancer solution natively. The load balancer is required to help the
-  _LoadBalancer_ service specified in the Hello Universe application manifest obtain an IP address, so that you can
-  access the application on your browser.
+  The <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm"/> pack provides a load-balancer
+  implementation for your Kubernetes cluster, as VMware does not offer a load balancer solution natively. The load
+  balancer is required to help the _LoadBalancer_ service specified in the Hello Universe application manifest obtain an
+  IP address, so that you can access the application on your browser.
 
 - **cluster.tf** - Configuration for the `spectrocloud_cluster_vsphere` resource.
 

@@ -17,6 +17,42 @@
   },
   {
     "name": "hello-universe",
-    "description": "Hello Universe is a demo web application utilized to help users learn more about Palette and its features. It functions as a standalone front-end application and provides users with a local click counter and funny Spectro Cloud-themed images."
+    "description": "Hello Universe is a demo web application used to help users learn more about Palette and its features. It includes a click counter and funny Spectro Cloud-themed images."
+  },
+  {
+    "name": "cost-analyzer",
+    "description": "Kubecost is a cost monitoring and optimization application that offers real-time cost visibility and insights for Kubernetes clusters."
+  },
+  {
+    "name": "aws-cluster-autoscaler",
+    "description": "The AWS Cluster Autoscaler pack monitors the cluster workload and utilizes AWS autoscaling groups to dynamically provision or shut down nodes, maximizing the cluster's performance and making it more resilient to failures."
+  },
+  {
+    "name": "crossplane",
+    "description": "Crossplane transforms Kubernetes clusters into universal control planes, extending the Kubernetes API and enabling infrastructure resource provisioning and management across major infrastructure providers."
+  },
+  {
+    "name": "kubernetes-microk8s",
+    "description": "MicroK8s is a lightweight CNCF-certified Kubernetes distribution developed by Canonical. It deploys all Kubernetes services in a single, fully contained package and offers out-of-the-box add-ons."
+  },
+  {
+    "name": "edge-microk8s",
+    "description": "MicroK8s is a lightweight CNCF-certified Kubernetes distribution developed by Canonical. It deploys all Kubernetes services in a single, fully contained package and offers out-of-the-box add-ons."
+  },
+  {
+    "name": "lb-metallb",
+    "description": "MetalLB is a load balancer implementation for bare metal Kubernetes clusters that use standard routing protocols."
+  },
+  {
+    "name": "lb-metallb-helm",
+    "description": "MetalLB is a load balancer implementation for bare metal Kubernetes clusters that use standard routing protocols."
+  },
+  {
+    "name": "ngrok-ingress-controller",
+    "description": "The ngrok Ingress Controller provides secure internet access to Kubernetes workloads by offloading network ingress and middleware execution to ngrok's platform."
+  },
+  {
+    "name": "nutanix-csi",
+    "description": "The Nutanix CSI pack uses Nutanix Volumes and Nutanix Files to provide persistent storage for stateful applications."
   }
 ]
