@@ -18,7 +18,7 @@ our software and services.
 
 :::tip
 
-You can find all security bulletins in the [Security Bulletins](../security-bulletins/cve-reports.md) section.
+You can find all security bulletins in the [Security Bulletins](../security-bulletins/security-bulletins.md) section.
 
 :::
 
