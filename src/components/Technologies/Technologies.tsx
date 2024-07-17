@@ -6,7 +6,7 @@ import { FrontMatterData } from "../Integrations/IntegrationTypes";
 import TechnologyCard from "./TechnologyCard";
 import PacksFilters from "./PacksFilters";
 import { packTypeNames, packTypes } from "../../constants/packs";
-import { Collapse} from "antd";
+import { Collapse } from "antd";
 import "./technologies.antd.css";
 import IconMapper from "../IconMapper/IconMapper";
 
@@ -20,15 +20,53 @@ interface TechnologiesProps {
   repositories: any[];
 }
 
+interface Version {
+  title: string;
+  children: {
+    title: string;
+  }[];
+}
+
+interface PackListFiltersCards {
+  category: string[];
+  cloudTypes: string[];
+  source: string[];
+  community: boolean;
+  deprecated: boolean;
+  disabled: boolean;
+  id: string;
+  latestVersion: string;
+  logoUrl: string;
+  name: string;
+  packType: string;
+  packUidMap: {
+    [key: string]: {
+      deprecated: boolean;
+      registryUid: string;
+    };
+  };
+  registries: string[];
+  slug: string;
+  tags: string[];
+  type: string;
+  verified: boolean;
+  versions: Version[];
+}
+
 const PACKLISTFILTERS = "packListFilters";
 
 export default function Technologies({ data, repositories }: TechnologiesProps) {
-  const [selectedFilters, setSelectedFilters] = useState<{ category: any[], registries: any[], cloudTypes: any[], source: any[] }>({ category: [], registries: [], cloudTypes: [], source: ["all"] })
+  const [selectedFilters, setSelectedFilters] = useState<{
+    category: string[];
+    registries: string[];
+    cloudTypes: string[];
+    source: string[];
+  }>({ category: [], registries: [], cloudTypes: [], source: ["all"] });
+
   const [searchValue, setSearchValue] = useState<string>("");
   const filteredTechCards = useMemo(() => {
-    const selectedFiltersKeys = Object.keys(selectedFilters)
+    const selectedFiltersKeys = Object.keys(selectedFilters);
     let filteredCards: any[] = [];
-
     const conditions = selectedFiltersKeys.reduce((acc, key) => {
       const selectedFiltersValue = selectedFilters[key as keyof typeof selectedFilters];
       if (selectedFiltersValue.length) {
@@ -38,28 +76,30 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
             case "category":
               condition = (techCard: FrontMatterData) => {
                 return selectedFiltersValue.includes(techCard.packType);
-              }
+              };
               break;
             case "registries":
               condition = (techCard: FrontMatterData) => {
                 return selectedFiltersValue.some((value) => techCard.registries.includes(value));
-              }
+              };
               break;
             case "cloudTypes":
               condition = (techCard: FrontMatterData) => {
-                return selectedFiltersValue.some((value) => techCard.cloudTypes.includes("all") || techCard.cloudTypes.includes(value));
-              }
+                return selectedFiltersValue.some(
+                  (value) => techCard.cloudTypes.includes("all") || techCard.cloudTypes.includes(value)
+                );
+              };
               break;
             case "source":
               if (!selectedFiltersValue.includes("all")) {
                 condition = (techCard: FrontMatterData) => {
                   return techCard[selectedFiltersValue[0] as keyof FrontMatterData];
-                }
+                };
               }
               break;
           }
           if (condition) {
-            acc.push(condition)
+            acc.push(condition);
           }
         }
       }
@@ -69,11 +109,12 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
       if (conditions.length) {
         return conditions.every((condition) => {
           return condition(card);
-        })
+        });
       } else {
         return true;
       }
-    })
+    });
+    console.log("filteredCards", filteredCards);
     if (searchValue) {
       const fuse = new Fuse(filteredCards, searchOptions);
       filteredCards = fuse.search(searchValue).map(({ item }) => item);
@@ -88,16 +129,18 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
       return acc;
     }, new Map<string, any>());
 
-    const sortedCategoriesMap = new Map([...categoriesMap.entries()].sort((field1: string, field2: string) => {
-      const packType1: keyof typeof packTypeNames = field1;
-      const packType2: keyof typeof packTypeNames = field2;
-      return packTypeNames[field1[0]].localeCompare(packTypeNames[field2[0]]);
-    }));
+    const sortedCategoriesMap = new Map(
+      [...categoriesMap.entries()].sort((field1: string, field2: string) => {
+        const packType1: keyof typeof packTypeNames = field1;
+        const packType2: keyof typeof packTypeNames = field2;
+        return packTypeNames[field1[0]].localeCompare(packTypeNames[field2[0]]);
+      })
+    );
     const categoryKeys = Array.from(sortedCategoriesMap.keys()) as string[];
     categoryKeys.forEach((category) => {
       const techCards: any = sortedCategoriesMap.get(category);
       techCards.sort((a: FrontMatterData, b: FrontMatterData) => {
-        return (a.title.localeCompare(b.title))
+        return a.title.localeCompare(b.title);
       });
     });
     return sortedCategoriesMap;
@@ -116,8 +159,8 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
     } else {
       setFiltersInLocalStorage({
         selectedFilters: selectedFilters,
-        searchValue: ""
-      })
+        searchValue: "",
+      });
     }
   }, []);
 
@@ -126,12 +169,23 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
     const renderedCategoryItems = categoryKeys.map((category) => {
       const categoryItems = filteredTechCards.get(category) as FrontMatterData[];
       if (categoryItems.length) {
-        const obj = (<Collapse.Panel header={addPanelHeader(category)} key={category}>{
-          categoryItems.map((field) => {
-            const { title, logoUrl, packType, name, latestVersion, versions } = field;
-            return <TechnologyCard name={name} title={title} logoUrl={logoUrl} type={packType} version={latestVersion} versions={versions}></TechnologyCard>
-          })
-        }</Collapse.Panel>)
+        const obj = (
+          <Collapse.Panel header={addPanelHeader(category)} key={category}>
+            {categoryItems.map((field) => {
+              const { title, logoUrl, packType, name, latestVersion, versions } = field;
+              return (
+                <TechnologyCard
+                  name={name}
+                  title={title}
+                  logoUrl={logoUrl}
+                  type={packType}
+                  version={latestVersion}
+                  versions={versions}
+                ></TechnologyCard>
+              );
+            })}
+          </Collapse.Panel>
+        );
         return obj;
       }
     });
@@ -149,33 +203,38 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
   const setSelectedSearchFilters = (selectedSearchFilters: Record<string, any>) => {
     const updatedFilters = {
       ...selectedFilters,
-      ...selectedSearchFilters
+      ...selectedSearchFilters,
     };
     setFiltersInLocalStorage({
       selectedFilters: updatedFilters,
-      searchValue: searchValue
-    })
+      searchValue: searchValue,
+    });
     setSelectedFilters(updatedFilters);
-  }
+  };
 
   const onSearch = (value: string) => {
     setFiltersInLocalStorage({
       selectedFilters: selectedFilters,
-      searchValue: value
-    })
+      searchValue: value,
+    });
     setSearchValue(value);
-  }
+  };
 
   const setFiltersInLocalStorage = (filters: any) => {
     localStorage.setItem(PACKLISTFILTERS, JSON.stringify(filters));
-  }
+  };
 
   return (
     <div className={styles.wrapper}>
-      <PacksFilters categories={[...packTypes]} registries={repositories} setSelectedSearchFilters={setSelectedSearchFilters} selectedFilters={selectedFilters} />
+      <PacksFilters
+        categories={[...packTypes]}
+        registries={repositories}
+        setSelectedSearchFilters={setSelectedSearchFilters}
+        selectedFilters={selectedFilters}
+      />
       <Search onSearch={onSearch} placeholder={"Search for integration..."} value={searchValue} />
       <div className={styles.technologyWrapper}>
-        <Collapse defaultActiveKey={Array.from(filteredTechCards.keys()) as string[]} expandIconPosition="end" >
+        <Collapse defaultActiveKey={Array.from(filteredTechCards.keys()) as string[]} expandIconPosition="end">
           {renderPacksCategories()}
         </Collapse>
       </div>
