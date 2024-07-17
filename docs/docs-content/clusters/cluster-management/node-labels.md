@@ -7,9 +7,9 @@ sidebar_position: 95
 tags: ["clusters", "cluster management"]
 ---
 
-Node labels provide the ability to specify which nodes pods should run on. This ability can be useful in scenarios where
-pods should be co-located or executed on dedicated hardware. Labels are optional configurations, as the scheduler will
-automatically place pods across nodes.
+Node labels provide the ability to specify which nodes pods should be scheduled on. This ability can be useful in
+scenarios where pods should be co-located or executed on dedicated hardware. Labels are optional configurations, as the
+scheduler will automatically place pods across nodes.
 
 Palette allows you to apply node labels during cluster provisioning, and can also be modified after the cluster is
 deployed. This guide covers the Palette UI flow.
@@ -26,7 +26,7 @@ Node labels can also be applied to node pools using the Spectro Cloud
 - A [Spectro Cloud](https://console.spectrocloud.com) account with the permissions to create cluster profiles and manage
   clusters. Refer to the [Roles and Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md)
   guide for more information.
-- [Kubectl](https://kubernetes.io/docs/reference/kubectl/) or [K9s](https://k9scli.io/) installed locally.
+- [kubectl](https://kubernetes.io/docs/reference/kubectl/) or [K9s](https://k9scli.io/) installed locally.
 
 ## Enablement
 
@@ -102,7 +102,7 @@ You can follow these steps to validate that your taints and tolerations are appl
 
 3. Select the cluster you deployed, and download the [kubeconfig](./kubeconfig.md) file.
 
-![Screenshot of Kubeconfig file download](/clusters_cluster-management_node-labels_kubeconfig-download.webp)
+![Screenshot of kubeconfig file download](/clusters_cluster-management_node-labels_kubeconfig-download.webp)
 
 4. Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
 
@@ -114,7 +114,7 @@ You can follow these steps to validate that your taints and tolerations are appl
    tolerations can be scheduled on nodes with configured taints.
 
    ```
-   kubectl get pods --all-namespaces -o wide --watch
+   kubectl get pods --all-namespaces --output wide --watch
    ```
 
    :::tip

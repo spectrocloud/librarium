@@ -26,7 +26,7 @@ Taints can also be applied to node pools using the Spectro Cloud
 - A [Spectro Cloud](https://console.spectrocloud.com) account with the permissions to create cluster profiles and manage
   clusters. Refer to the [Roles and Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md)
   guide for more information.
-- [Kubectl](https://kubernetes.io/docs/reference/kubectl/) or [K9s](https://k9scli.io/) installed locally.
+- [kubectl](https://kubernetes.io/docs/reference/kubectl/) or [K9s](https://k9scli.io/) installed locally.
 
 ## Enablement
 
@@ -47,7 +47,7 @@ Taints can also be applied to node pools using the Spectro Cloud
 
    - Specify a custom **key** and custom **value**.
    - Palette supports the `Equal` **operator**.
-   - The **effect** defines what will happen to the pods that do not tolerate a taint. There are three allowed taint
+   - The **effect** defines what will happen to the pods that do not tolerate a taint. Kubernetes provides three taint
      effects.
 
      | **Effect**         | **Description**                                                                                                                      |
@@ -119,7 +119,7 @@ You can follow these steps to validate that your taints and tolerations are appl
 
 3. Select the cluster you deployed, and download the [kubeconfig](./kubeconfig.md) file.
 
-![Screenshot of Kubeconfig file download](/clusters_cluster-management_taints_kubeconfig-download.webp)
+![Screenshot of kubeconfig file download](/clusters_cluster-management_taints_kubeconfig-download.webp)
 
 4. Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
 
@@ -131,7 +131,7 @@ You can follow these steps to validate that your taints and tolerations are appl
    tolerations can be scheduled on nodes with configured taints.
 
    ```
-   kubectl get pods --all-namespaces -o wide --watch
+   kubectl get pods --all-namespaces --output wide --watch
    ```
 
    :::tip
