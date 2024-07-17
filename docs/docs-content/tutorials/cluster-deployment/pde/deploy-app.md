@@ -1221,19 +1221,13 @@ the **Enter** key. Next, issue the following command to stop the container.
 
 <TabItem label="Docker" value="Docker">
 
-```shell
-docker stop tutorialContainer && \
-docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.7
-```
+<PartialsComponent category="tutorials" name="stop-tutorials-container-docker"/>
 
 </TabItem>
 
 <TabItem label="Podman" value="Podman">
 
-```shell
-podman stop tutorialContainer && \
-podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.7
-```
+<PartialsComponent category="tutorials" name="stop-tutorials-container-podman"/>
 
 </TabItem>
 

@@ -1290,19 +1290,13 @@ the following commands.
 
 <TabItem label="Docker" value="Docker">
 
-```bash
-docker container rm --force tutorialContainer
-docker image rm --force ghcr.io/spectrocloud/tutorials:1.1.7
-```
+<PartialsComponent category="tutorials" name="stop-tutorials-container-docker"/>
 
 </TabItem>
 
 <TabItem label="Podman" value="Podman">
 
-```bash
-podman container rm --force tutorialContainer
-podman image rm --force ghcr.io/spectrocloud/tutorials:1.1.7
-```
+<PartialsComponent category="tutorials" name="stop-tutorials-container-podman"/>
 
 </TabItem>
 
