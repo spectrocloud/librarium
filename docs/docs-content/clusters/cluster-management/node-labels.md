@@ -1,31 +1,25 @@
 ---
 sidebar_label: "Node Labels"
 title: "Node Labels"
-description:
-  "Learn how to apply labels to Palette clusters, and how to specify Namespace labels and annotations to Add-on packs
-  and packs for Container Storage Interface (CSI) and Container Network Interface (CNI) drivers."
+description: "Learn how to apply node labels to Palette clusters."
 hide_table_of_contents: false
 sidebar_position: 95
 tags: ["clusters", "cluster management"]
 ---
 
-You can constrain a Pod to only run on a particular set of Node(s). There are several ways to do this and the
-recommended approaches such as, nodeSelector, node affinity, etc all use label selectors to facilitate the selection.
-Generally, such constraints are unnecessary, as the scheduler will automatically do a reasonable placement (e.g. spread
-your pods across nodes so as not place the pod on a node with insufficient free resources, etc.) but there are some
-circumstances where you may want to control which node the pod deploys to - for example to ensure that a pod ends up on
-a machine with an SSD attached to it, or to co-locate pods from two different services that communicate a lot into the
-same availability zone.
+Node labels provide the ability to specify which nodes pods should run on. This ability can be useful in scenarios where
+pods should be co-located or executed on dedicated hardware. Labels are optional configurations, as the scheduler will
+automatically place pods across nodes.
 
-Palette enables our users to Label the nodes of a control plane and worker pool by using key/value pairs. These labels
-do not directly imply anything to the semantics of the core system but are intended to be used by users to drive use
-cases where pod affinity to specific nodes is desired. Labels can be attached to node pools in a cluster during creation
-and can be subsequently added and modified at any time. Each node pool can have a set of key/value labels defined. The
-key must be unique across all node pools for a given cluster.
+Palette allows you to apply node labels during cluster provisioning, and can also be modified after the cluster is
+deployed. This guide covers the Palette UI flow.
 
-Labels are optional and can be specified in the **Additional Labels** field of the node pool configuration form. Specify
-one or more values as 'key:value'. You can specify labels initially during cluster provisioning and update them any time
-by editing a node pool from the **Nodes** tab of the cluster details page.
+:::info
+
+Node labels can also be applied to node pools using the Spectro Cloud
+[Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
+:::
 
 ## Prerequisites
 
@@ -47,18 +41,24 @@ by editing a node pool from the **Nodes** tab of the cluster details page.
 4. Add a manifest to your cluster profile with a custom workload of your choice. Refer to the
    [Add a Manifest](../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md).
 
-5. Specify pod tolerations in the pod specification of your workload. Palette supports the `Equal` toleration operator.
-   The toleration effect can be `NoExecute`, `NoSchedule` or `PreferNoSchedule`. Refer to the
-   [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) page for more
-   details.
+5. Specify a node selector in the pod specification of your manifest. Refer to the
+   [Assign Pods to Nodes](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/) official
+   documentation page for more details.
 
    ```yaml
-   tolerations:
-     - key: "key1"
-       operator: "Equal"
-       value: "value1"
-       effect: "NoExecute"
+   nodeSelector:
+     key1: value1
    ```
+
+   :::info
+
+   You can also specify a node by name by using the `nodeName: name` option on your pod specification. We recommend
+   using a node selector, as it provides a more scalable and robust solution.
+
+   When using packs or Helm charts, the `nodeSelector` or `nodeName` options can only be specified if they are exposed
+   in the `values.yaml` file.
+
+   :::
 
 6. Save the changes made to your cluster profile.
 
@@ -70,15 +70,15 @@ by editing a node pool from the **Nodes** tab of the cluster details page.
 
 10. On the **Cluster Profile** tab, select the cluster profile you previously created. Click **Next**.
 
-11. Select a **Region** and SSH Key on the **Cluster Config** tab and click **Next**.
+11. Select a **Subscription**, **Region**, and **SSH Key** on the **Cluster Config** tab. Click **Next**.
 
 12. On the **Nodes Config** tab, configure your control plane pool and worker pools by providing the instance type,
     availability zones and disk size.
 
-13. The control plane pool and worker pool provide the **Taints (Optional)** section. Click on **Add New Taint** and
-    provide the values specified in your cluster profile. Click on **Next**.
+13. The control plane pool and worker pool provide the **Additional Labels (Optional)** section. Specify labels in the
+    `key:value` format. Click on **Next**.
 
-![Screenshot of adding taints during cluster creation](/clusters_cluster-management_taints_cluster-creation-taints.webp)
+![Screenshot of adding node labels during cluster creation](/clusters_cluster-management_node-labels_cluster-creation-labels.webp)
 
 14. Accept the default settings on the **Cluster Settings** tab and click on **Validate**.
 
@@ -102,7 +102,7 @@ You can follow these steps to validate that your taints and tolerations are appl
 
 3. Select the cluster you deployed, and download the [kubeconfig](./kubeconfig.md) file.
 
-![Screenshot of Kubeconfig file download](/clusters_cluster-management_taints_kubeconfig-download.webp)
+![Screenshot of Kubeconfig file download](/clusters_cluster-management_node-labels_kubeconfig-download.webp)
 
 4. Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
 

@@ -11,7 +11,7 @@ Taints provide nodes with the ability to repel a set of pods, allowing you to cr
 applied to pods and allow the pods to schedule onto nodes with matching taints. Once configured, nodes do not accept any
 pods that do not tolerate the taints.
 
-Palette enables taints to be applied to a node pools during the initial cluster provisioning, and can also be modified
+Palette enables taints to be applied to node pools during the initial cluster provisioning, and can also be modified
 after the cluster is deployed. This guide covers the Palette UI flow.
 
 :::info
@@ -41,7 +41,7 @@ Taints can also be applied to node pools using the Spectro Cloud
 4. Add a manifest to your cluster profile with a custom workload of your choice. Refer to the
    [Add a Manifest](../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md).
 
-5. Specify pod tolerations in the pod specification of your workload. Refer to the
+5. Specify pod tolerations in the pod specification of your manifest. Refer to the
    [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) official
    documentation page for more details.
 
