@@ -16,9 +16,9 @@ utilize in our products and services.
 
 ## Security Bulletins
 
-We release [security bulletins](./cve-reports.md) on a monthly and ad-hoc basis addressing security vulnerabilities in
-our software or related third-party components, describing their remediation when available, and providing links to the
-applicable updates for affected software when available.
+We release [security bulletins](./reports/reports.md) on a monthly and ad-hoc basis addressing security vulnerabilities
+in our software or related third-party components, describing their remediation when available, and providing links to
+the applicable updates for affected software when available.
 
 ## Security Advisories
 
@@ -29,4 +29,4 @@ security bulletin.
 
 ## Resources
 
-- [Security Bulletins](cve-reports.md)
+- [Security Bulletins](./reports/reports.md)

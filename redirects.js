@@ -529,6 +529,10 @@ const redirects = [
     from: "/security-bulletins/index/",
     to: "/unlisted/index/",
   },
+  {
+    from: "/security-bulletins/cve-reports/",
+    to: "/security-bulletins/reports/",
+  },
 ];
 
 module.exports = redirects;
