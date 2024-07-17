@@ -7,12 +7,14 @@ sidebar_position: 100
 tags: ["clusters", "cluster management"]
 ---
 
-Taints provide nodes with the ability to repel a set of pods, allowing you to create dedicated nodes. Tolerations are
+Taints provide nodes with the ability to repel a set of pods, allowing you to create nodes dedicated to certain workloads. Tolerations are
 applied to pods and allow the pods to schedule onto nodes with matching taints. Once configured, nodes do not accept any
 pods that do not tolerate the taints.
 
-Palette enables taints to be applied to node pools during the initial cluster provisioning, and can also be modified
-after the cluster is deployed. This guide covers the Palette UI flow.
+Palette allows you to apply taints during cluster provisioning. Once the cluster is in a healthy state, taints can
+be modified on the **Nodes** tab of the cluster details page.
+
+This guide covers the Palette UI flow.
 
 :::info
 
@@ -39,9 +41,10 @@ Taints can also be applied to node pools using the Spectro Cloud
    more information.
 
 4. Add a manifest to your cluster profile with a custom workload of your choice. Refer to the
-   [Add a Manifest](../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md).
+   [Add a Manifest](../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md)
+   for additional guidance.
 
-5. Specify pod tolerations in the pod specification of your manifest. Refer to the
+5. Add pod tolerations to the pod specification of your manifest. Refer to the
    [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) official
    documentation page for more details.
 
@@ -66,7 +69,8 @@ Taints can also be applied to node pools using the Spectro Cloud
 
    :::info
 
-   When using packs or Helm charts, tolerations can only be specified if they are exposed in the `values.yaml` file.
+   When using packs or Helm charts, tolerations can only be specified if they are exposed
+   for configuration in the `values.yaml` file.
 
    :::
 
@@ -80,13 +84,13 @@ Taints can also be applied to node pools using the Spectro Cloud
 
 10. On the **Cluster Profile** tab, select the cluster profile you previously created. Click **Next**.
 
-11. Select a **Region** and **SSH Key** on the **Cluster Config** tab and click **Next**.
+11. Select a **Subscription**, **Region**, and **SSH Key** on the **Cluster Config** tab. Click **Next**.
 
 12. On the **Nodes Config** tab, configure your control plane pool and worker pools by providing the instance type,
     availability zones and disk size.
 
 13. The control plane pool and worker pool provide the **Taints (Optional)** section. Click on **Add New Taint** and
-    provide the toleration values specified in your cluster profile. Click on **Next**.
+    fill in the toleration values specified in your cluster profile. Click on **Next**.
 
 ![Screenshot of adding taints during cluster creation](/clusters_cluster-management_taints_cluster-creation-taints.webp)
 

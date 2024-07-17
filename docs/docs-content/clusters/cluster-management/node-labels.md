@@ -7,12 +7,14 @@ sidebar_position: 95
 tags: ["clusters", "cluster management"]
 ---
 
-Node labels provide the ability to specify which nodes pods should be scheduled on. This ability can be useful in
-scenarios where pods should be co-located or executed on dedicated hardware. Labels are optional configurations, as the
+Node labels provide pods the ability to specify which nodes they should be scheduled on. This ability can be useful in
+scenarios where pods should be co-located or executed on dedicated resources. Labels are optional configurations, as the
 scheduler will automatically place pods across nodes.
 
-Palette allows you to apply node labels during cluster provisioning, and can also be modified after the cluster is
-deployed. This guide covers the Palette UI flow.
+Palette allows you to apply node labels during cluster provisioning. Once the cluster is in a healthy state, labels can
+be modified on the **Nodes** tab of the cluster details page.
+
+This guide covers the Palette UI flow.
 
 :::info
 
@@ -34,14 +36,15 @@ Node labels can also be applied to node pools using the Spectro Cloud
 
 2. Navigate to the left **Main Menu** and select **Profiles**.
 
-3. Create a cluster profile to deploy to a cloud of your choosing. Refer to the
+3. Create a cluster profile to deploy to your environment. Refer to the
    [Create a Full Profile](../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md) guide for
    more information.
 
 4. Add a manifest to your cluster profile with a custom workload of your choice. Refer to the
-   [Add a Manifest](../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md).
+   [Add a Manifest](../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md)
+   for additional guidance.
 
-5. Specify a node selector in the pod specification of your manifest. Refer to the
+5. Add a node selector to the pod specification of your manifest. Refer to the
    [Assign Pods to Nodes](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/) official
    documentation page for more details.
 
@@ -56,7 +59,7 @@ Node labels can also be applied to node pools using the Spectro Cloud
    using a node selector, as it provides a more scalable and robust solution.
 
    When using packs or Helm charts, the `nodeSelector` or `nodeName` options can only be specified if they are exposed
-   in the `values.yaml` file.
+   for configuration in the `values.yaml` file.
 
    :::
 
@@ -75,10 +78,18 @@ Node labels can also be applied to node pools using the Spectro Cloud
 12. On the **Nodes Config** tab, configure your control plane pool and worker pools by providing the instance type,
     availability zones and disk size.
 
-13. The control plane pool and worker pool provide the **Additional Labels (Optional)** section. Specify labels in the
-    `key:value` format. Click on **Next**.
+13. The control plane pool and worker pool provide the **Additional Labels (Optional)** section. Palette accepts labels
+    in the `key:value` format. Fill in the labels corresponding to the values provided in your pod specification node
+    selector. Click on **Next**.
 
 ![Screenshot of adding node labels during cluster creation](/clusters_cluster-management_node-labels_cluster-creation-labels.webp)
+
+:::info
+
+Node labels can also be updated on a deployed cluster by editing a worker node pool from the **Nodes** tab of the cluster
+details page.
+
+:::
 
 14. Accept the default settings on the **Cluster Settings** tab and click on **Validate**.
 
@@ -94,7 +105,7 @@ Cloud Platform (GCP) cloud providers.
 
 ## Validate
 
-You can follow these steps to validate that your taints and tolerations are applied successfully.
+You can follow these steps to validate that your node labels are applied successfully.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -110,8 +121,8 @@ You can follow these steps to validate that your taints and tolerations are appl
    export KUBECONFIG=~/Downloads/admin.azure-cluster.kubeconfig
    ```
 
-5. Confirm the cluster deployment process has scheduled your pods as expected. Remember that only pods with matching
-   tolerations can be scheduled on nodes with configured taints.
+5. Confirm the cluster deployment process has scheduled your pods as expected. Remember that only pods will be scheduled
+   on nodes with labels matching their node selectors.
 
    ```
    kubectl get pods --all-namespaces --output wide --watch
