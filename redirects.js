@@ -466,7 +466,6 @@ const redirects = [
     from: "/user-management/palette-resource-limits/",
     to: "/tenant-settings/palette-resource-limits/",
   },
-
   // Redirects for tutorials that were removed from docs
   {
     from: "/registries-and-packs/deploy-pack",
@@ -487,6 +486,14 @@ const redirects = [
   {
     from: "/clusters/edge/site-deployment/deploy-cluster",
     to: "/tutorials/edge/deploy-cluster",
+  },
+  {
+    from: "/security-bulletins/index/",
+    to: "/unlisted/index/",
+  },
+  {
+    from: "/security-bulletins/cve-reports/",
+    to: "/security-bulletins/reports/",
   },
 ];
 
