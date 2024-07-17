@@ -32,7 +32,7 @@ Click on the CVE ID to view the full details of the vulnerability.
 
 | CVE ID                                          | Initial Pub Date | Modified Date | Impacted Product & Version | Vulnerability Type                      | CVSS Severity                                            | Status        |
 | ----------------------------------------------- | ---------------- | ------------- | -------------------------- | --------------------------------------- | -------------------------------------------------------- | ------------- |
-| [CVe-2023-52425](./cve-2023-52425.md)           | 02/04/2024       | 06/14/2024    | Palette 4.4.8              | Third-party component: vSphere-CSI      | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2023-52425)   | :mag: Ongoing |
+| [CVE-2023-52425](./cve-2023-52425.md)           | 02/04/2024       | 06/14/2024    | Palette 4.4.8              | Third-party component: vSphere-CSI      | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2023-52425)   | :mag: Ongoing |
 | [CVE-2024-21626](./cve-2024-21626.md)           | 1/3/24           | 2/18/24       | Palette 4.4.8              | Third-party component: kube-proxy       | [8.6](https://nvd.nist.gov/vuln/detail/CVE-2024-21626)   | :mag: Ongoing |
 | [CVE-2022-41723](./cve-2022-41723.md)           | 2/28/23          | 11/25/23      | Palette 4.4.8              | Third-party component: CoreDNS          | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2022-41723)   | :mag: Ongoing |
 | [GHSA-m425-mq94-257g](./ghsa-m425-mq94-257g.md) | 10/25/23         | 10/25/23      | Palette 4.4.8              | Third-party component: CoreDNS          | [7.5](https://github.com/advisories/GHSA-m425-mq94-257g) | :mag: Ongoing |
