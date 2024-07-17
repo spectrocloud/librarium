@@ -61,8 +61,6 @@ To complete this tutorial, you will need the following:
   uname -m
   ```
 
-  <br />
-
   :::warning
 
   The Linux machine must have network connectivity to your VMware vCenter environment.
@@ -217,6 +215,9 @@ stylus:
 users:
   - name: kairos
     passwd: kairos
+
+install:
+  poweroff: true
 EOF
 ```
 
