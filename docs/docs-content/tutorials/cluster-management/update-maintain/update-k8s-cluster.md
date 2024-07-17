@@ -96,7 +96,7 @@ Change the directory to the tutorial folder.
 cd tutorials/
 ```
 
-<PartialsComponent category="tutorials" name="checkout-tutorials-tag"/>
+<PartialsComponent category="tutorials" name="checkout-tutorials-tag" />
 
 Change the directory to the tutorial code.
 

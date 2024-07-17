@@ -1290,13 +1290,13 @@ the following commands.
 
 <TabItem label="Docker" value="Docker">
 
-<PartialsComponent category="tutorials" name="stop-tutorials-container-docker"/>
+<PartialsComponent category="tutorials" name="stop-tutorials-container-docker" />
 
 </TabItem>
 
 <TabItem label="Podman" value="Podman">
 
-<PartialsComponent category="tutorials" name="stop-tutorials-container-podman"/>
+<PartialsComponent category="tutorials" name="stop-tutorials-container-podman" />
 
 </TabItem>
 

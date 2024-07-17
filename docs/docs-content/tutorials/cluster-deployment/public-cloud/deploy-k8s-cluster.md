@@ -828,9 +828,9 @@ displaying the version number.
 docker version
 ```
 
-<PartialsComponent category="tutorials" name="download-tutorials-image-docker"/>
+<PartialsComponent category="tutorials" name="download-tutorials-image-docker" />
 
-<PartialsComponent category="tutorials" name="run-tutorials-container-docker"/>
+<PartialsComponent category="tutorials" name="run-tutorials-container-docker" />
 
 Navigate to the tutorial code.
 
@@ -856,9 +856,9 @@ Use the following command and ensure you receive an output displaying the instal
 podman info
 ```
 
-<PartialsComponent category="tutorials" name="download-tutorials-image-podman"/>
+<PartialsComponent category="tutorials" name="download-tutorials-image-podman" />
 
-<PartialsComponent category="tutorials" name="run-tutorials-container-podman"/>
+<PartialsComponent category="tutorials" name="run-tutorials-container-podman" />
 
 Navigate to the tutorial code.
 
@@ -882,7 +882,7 @@ Change the directory to the tutorial folder.
 cd tutorials/
 ```
 
-<PartialsComponent category="tutorials" name="checkout-tutorials-tag"/>
+<PartialsComponent category="tutorials" name="checkout-tutorials-tag" />
 
 Change the directory to the tutorial code.
 
@@ -1332,13 +1332,13 @@ the **Enter** key. Next, issue the following command to stop the container.
 
 <TabItem label="Docker" value="docker">
 
-<PartialsComponent category="tutorials" name="stop-tutorials-container-docker"/>
+<PartialsComponent category="tutorials" name="stop-tutorials-container-docker" />
 
 </TabItem>
 
 <TabItem label="Podman" value="podman">
 
-<PartialsComponent category="tutorials" name="stop-tutorials-container-podman"/>
+<PartialsComponent category="tutorials" name="stop-tutorials-container-podman" />
 
 </TabItem>
 
