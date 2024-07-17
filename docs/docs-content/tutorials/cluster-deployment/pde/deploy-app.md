@@ -389,19 +389,9 @@ displaying the version number.
 docker version
 ```
 
-Download the tutorial image to your local machine. <br />
+<PartialsComponent category="tutorials" name="download-tutorials-image-docker"/>
 
-```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.1.7
-```
-
-Next, start the container, and open a bash session into it.
-
-<br />
-
-```shell
-docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.7 bash
-```
+<PartialsComponent category="tutorials" name="run-tutorials-container-docker"/>
 
 Navigate to the tutorial code.
 
@@ -429,19 +419,9 @@ Use the following command and ensure you receive an output displaying the instal
 podman info
 ```
 
-Download the tutorial image to your local machine. <br />
+<PartialsComponent category="tutorials" name="download-tutorials-image-podman"/>
 
-```bash
-podman pull ghcr.io/spectrocloud/tutorials:1.1.7
-```
-
-Next, start the container, and open a bash session into it.
-
-<br />
-
-```shell
-podman run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.7 bash
-```
+<PartialsComponent category="tutorials" name="run-tutorials-container-podman"/>
 
 Navigate to the tutorial code.
 
@@ -471,13 +451,7 @@ Change directory to the tutorial folder.
 cd tutorials/
 ```
 
-Check out the following git tag.
-
-<br />
-
-```shell
-git checkout v1.0.4
-```
+<PartialsComponent category="tutorials" name="checkout-tutorials-tag"/>
 
 Change directory to the tutorial code.
 
