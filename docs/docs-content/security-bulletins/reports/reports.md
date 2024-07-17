@@ -12,8 +12,7 @@ tags: ["security", "cve"]
 # Security Bulletins
 
 The vulnerabilities reported in this Security Bulletin include vulnerabilities within the Palette VerteX airgap solution
-and third-party component vulnerabilities, which we have become aware of. Some of the listed vulnerabilities below have
-been fixed in new versions of our products and released in the last month. These vulnerabilities are discovered via our
+and third-party component vulnerabilities, which we have become aware of. These vulnerabilities are discovered via our
 Bug Bounty program, our security monitoring program, or reported to us by our supply chain.
 
 :::info
