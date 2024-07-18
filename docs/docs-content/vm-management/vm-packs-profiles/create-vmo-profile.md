@@ -109,7 +109,8 @@ components, refer to [Virtual Machine Orchestrator Pack](../vm-packs-profiles/vm
 
 9.  If your cluster profile does include a load balancer such as MetalLB, no changes are required and you can skip this
     step. For more information about MetalLB, refer to
-    <VersionedLink text="MetalLB pack documentation" url="/integrations/packs/?pack=lb-metallb-helm"/>.
+
+    <VersionedLink text="MetalLB pack documentation" url="/integrations/packs/?pack=lb-metallb-helm" />.
 
     If your cluster profile does not include a load balancer, update the services
     `charts.virtual-machine-orchestrator.kubevirt` and `charts.virtual-machine-orchestrator.cdi` to type ClusterIP in
