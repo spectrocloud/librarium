@@ -389,21 +389,9 @@ displaying the version number.
 docker version
 ```
 
-Download the tutorial image to your local machine.
+<PartialsComponent category="tutorials" name="download-tutorials-image-docker" />
 
-<br />
-
-```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.1.3
-```
-
-Next, start the container, and open a bash session into it.
-
-<br />
-
-```shell
-docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.3 bash
-```
+<PartialsComponent category="tutorials" name="run-tutorials-container-docker" />
 
 Navigate to the tutorial code.
 
@@ -431,19 +419,9 @@ Use the following command and ensure you receive an output displaying the instal
 podman info
 ```
 
-Download the tutorial image to your local machine. <br />
+<PartialsComponent category="tutorials" name="download-tutorials-image-podman" />
 
-```bash
-podman pull ghcr.io/spectrocloud/tutorials:1.1.3
-```
-
-Next, start the container, and open a bash session into it.
-
-<br />
-
-```shell
-podman run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.3 bash
-```
+<PartialsComponent category="tutorials" name="run-tutorials-container-podman" />
 
 Navigate to the tutorial code.
 
@@ -473,13 +451,7 @@ Change directory to the tutorial folder.
 cd tutorials/
 ```
 
-Check out the following git tag.
-
-<br />
-
-```shell
-git checkout v1.0.4
-```
+<PartialsComponent category="tutorials" name="checkout-tutorials-tag" />
 
 Change directory to the tutorial code.
 
@@ -1294,19 +1266,13 @@ the **Enter** key. Next, issue the following command to stop the container.
 
 <TabItem label="Docker" value="Docker">
 
-```shell
-docker stop tutorialContainer && \
-docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.3
-```
+<PartialsComponent category="tutorials" name="stop-tutorials-container-docker" />
 
 </TabItem>
 
 <TabItem label="Podman" value="Podman">
 
-```shell
-podman stop tutorialContainer && \
-podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.3
-```
+<PartialsComponent category="tutorials" name="stop-tutorials-container-podman" />
 
 </TabItem>
 
