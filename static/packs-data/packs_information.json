@@ -20,6 +20,10 @@
     "description": "AppDynamics Operator is a Kubernetes-native component designed to manage and automate the deployment and configuration of AppDynamics monitoring agents within Kubernetes environments."
   },
   {
+    "name": "argo-rollouts",
+    "description": "Argo Rollouts is a Kubernetes controller and set of CRDs which provide advanced deployment capabilities such as blue-green, canary, canary analysis, experimentation, and progressive delivery features to Kubernetes."
+  },
+  {
     "name": "centos",
     "description": "CentOS Linux distribution is a stable, predictable, manageable and reproducible platform derived from the sources of RedHat Enterprise Linux (RHEL). It provides a rich base platform for open source communities to build upon. Spectro Cloudprovides CentOS as a development framework for its users."
   },
