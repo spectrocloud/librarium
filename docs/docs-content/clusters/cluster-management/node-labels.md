@@ -8,8 +8,17 @@ tags: ["clusters", "cluster management"]
 ---
 
 Node labels provide pods the ability to specify which nodes they should be scheduled on. This ability can be useful in
-scenarios where pods should be co-located or executed on dedicated resources. Labels are optional configurations, as the
-scheduler will automatically place pods across nodes.
+scenarios where pods should be co-located or executed on dedicated nodes. A common usecase of node labels is to ensure
+that certain workloads only run on certain hardware configurations. Labels are optional configurations, as the scheduler
+will automatically place pods across nodes.
+
+:::tip
+
+You can think of node labels as having the opposite effect to [Taints and Tolerations](./taints.md). Taints allow you to
+mark nodes as not accepting certain pods, while node labels allow you to specify that your pods should only be scheduled
+on certain nodes.
+
+:::
 
 Palette allows you to apply node labels during cluster provisioning. Once the cluster is in a healthy state, labels can
 be modified on the **Nodes** tab of the cluster details page.

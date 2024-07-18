@@ -7,9 +7,18 @@ sidebar_position: 100
 tags: ["clusters", "cluster management"]
 ---
 
-Taints provide nodes with the ability to repel a set of pods, allowing you to create nodes dedicated to certain
-workloads. Tolerations are applied to pods and allow the pods to schedule onto nodes with matching taints. Once
-configured, nodes do not accept any pods that do not tolerate the taints.
+Taints provide nodes with the ability to repel a set of pods, allowing you to mark nodes as unavailable for certain
+pods. A common usecase of taints is to prevent pods from being scheduled on nodes undergoing maintenance. Tolerations
+are applied to pods and allow the pods to schedule onto nodes with matching taints. Once configured, nodes do not accept
+any pods that do not tolerate the taints.
+
+:::tip
+
+You can think of taints as having the opposite effect to [Node Labels](./node-labels.md). Taints allow you to mark nodes
+as not accepting certain pods, while node labels allow you to specify that your pods should only be scheduled on certain
+nodes.
+
+:::
 
 Palette allows you to apply taints during cluster provisioning. Once the cluster is in a healthy state, taints can be
 modified on the **Nodes** tab of the cluster details page.
