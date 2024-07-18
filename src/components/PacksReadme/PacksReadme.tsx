@@ -134,15 +134,6 @@ export default function PacksReadme() {
     }
   }, [packData]);
 
-  let warningContent: ReactElement | undefined;
-  if (packData.disabled) {
-    warningContent = <span>This pack is disabled. Upgrade to a newer version to take advantage of new features.</span>;
-  } else if (selectedPackUid && packData.packUidMap[selectedPackUid]?.deprecated) {
-    warningContent = (
-      <span>This pack is deprecated. Upgrade to a newer version to take advantage of new features.</span>
-    );
-  }
-
   function versionChange(item: string) {
     const [version, packUid] = item.split("===");
     const parentVersion = getParentVersion(version)?.title || "";
@@ -239,6 +230,8 @@ export default function PacksReadme() {
     return consolidatedRegistries.join(", ");
   }
 
+  console.log("packData", packData);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.description}>
@@ -271,9 +264,15 @@ export default function PacksReadme() {
         </div>
       </div>
       <div className={styles.warningSection}>
-        {warningContent ? (
+        {packData.disabled ? (
           <Admonition type="warning" icon="⚠️" title="Warning">
-            {warningContent}
+            Pack version <strong>v{selectedVersion}</strong> is disabled. Upgrade to a newer version to take advantage
+            of new features.
+          </Admonition>
+        ) : selectedPackUid && packData.packUidMap[selectedPackUid]?.deprecated ? (
+          <Admonition type="warning" icon="⚠️" title="Warning">
+            Pack version <strong>v{selectedVersion}</strong> is deprecated. Upgrade to a newer version to take advantage
+            of new features.
           </Admonition>
         ) : null}
       </div>
