@@ -1,64 +1,155 @@
 ---
-sidebar_label: "Node Labels and Taints"
-title: "Node Labels and Taints"
-description:
-  "Learn how to apply labels and taints to nodes in a cluster, and how to specify Namespace labels and annotations to
-  Add-on packs and packs for Container Storage Interface (CSI) and Container Network Interface (CNI) drivers."
+sidebar_label: "Taints and Tolerations"
+title: "Taints and Tolerations"
+description: "Learn how to apply taints and tolerations Palette clusters."
 hide_table_of_contents: false
 sidebar_position: 100
 tags: ["clusters", "cluster management"]
 ---
 
-## Taints
+Taints provide nodes with the ability to repel a set of pods, allowing you to mark nodes as unavailable for certain
+pods. A common use case of taints is to prevent pods from being scheduled on nodes undergoing maintenance. Tolerations
+are applied to pods and allow the pods to schedule onto nodes with matching taints. Once configured, nodes do not accept
+any pods that do not tolerate the taints.
 
-Node affinity is a property of Pods that attracts them to a set of nodes (either as a preference or a hard requirement.
-Taints are the opposite -- they allow a node to repel a set of pods.
+:::tip
 
-Tolerations are applied to pods and allow (but do not require) the pods to schedule onto nodes with matching taints.
+You can think of taints as having the opposite effect to [Node Labels](./node-labels.md). Taints allow you to mark nodes
+as not accepting certain pods, while node labels allow you to specify that your pods should only be scheduled on certain
+nodes.
 
-Taints and tolerations work together to ensure that pods are not scheduled onto inappropriate nodes. One or more taints
-are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints.
+:::
 
-Palette enables Taints to be applied to a node pool to restrict a set of intolerant pods getting scheduled to a Palette
-node pool. Taints can be applied during initial provisioning of the cluster and modified later.
+Palette allows you to apply taints during cluster provisioning. Once the cluster is in a healthy state, taints can be
+modified on the **Nodes** tab of the cluster details page.
 
-### Apply Taints to Nodes
+This guide covers the Palette UI flow.
 
-Taints can be applied to worker pools while creating a new cluster from the node pool configuration page as follows:
+:::info
 
-- Enable the “Taint” select button.
-- To apply the Taint, set the following parameters:
-  - Key: Custom key for the Taint
-  - Value: Custom value for the Taint key
-  - Effect: The effects define what will happen to the pods that do not tolerate a Taint. There are 3 Taint effects:
-    - NoSchedule: A pod that cannot tolerate the node Taint, should not be scheduled to the node.
-    - PreferNoSchedule: The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.
-    - NoExecute: New pods will not be scheduled on the node, and existing pods on the node, if any will be evicted if
-      they do not tolerate the Taint.
+Taints can also be applied to node pools using the Spectro Cloud
+[Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
-Eg: Key = key1; Value = value1; Effect = NoSchedule
+:::
 
-Taints can also be updated on a running cluster by editing a worker node pool from the 'Nodes' tab of the cluster
-details page.
+## Prerequisites
 
-## Labels
+- A [Palette](https://console.spectrocloud.com) account with the permissions to create cluster profiles and manage
+  clusters. Refer to the [Roles and Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md)
+  guide for more information.
+- [kubectl](https://kubernetes.io/docs/reference/kubectl/) or [K9s](https://k9scli.io/) installed locally.
 
-You can constrain a Pod to only run on a particular set of Node(s). There are several ways to do this and the
-recommended approaches such as, nodeSelector, node affinity, etc all use label selectors to facilitate the selection.
-Generally, such constraints are unnecessary, as the scheduler will automatically do a reasonable placement (e.g. spread
-your pods across nodes so as not place the pod on a node with insufficient free resources, etc.) but there are some
-circumstances where you may want to control which node the pod deploys to - for example to ensure that a pod ends up on
-a machine with an SSD attached to it, or to co-locate pods from two different services that communicate a lot into the
-same availability zone.
+## Enablement
 
-Palette enables our users to Label the nodes of a control plane and worker pool by using key/value pairs. These labels
-do not directly imply anything to the semantics of the core system but are intended to be used by users to drive use
-cases where pod affinity to specific nodes is desired. Labels can be attached to node pools in a cluster during creation
-and can be subsequently added and modified at any time. Each node pool can have a set of key/value labels defined. The
-key must be unique across all node pools for a given cluster.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-### Apply Labels to Nodes
+2. Navigate to the left **Main Menu** and select **Profiles**.
 
-Labels are optional and can be specified in the **Additional Labels** field of the node pool configuration form. Specify
-one or more values as 'key:value'. You can specify labels initially during cluster provisioning and update them any time
-by editing a node pool from the **Nodes** tab of the cluster details page.
+3. Create a cluster profile to deploy to your environment. Refer to the
+   [Create a Full Profile](../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md) guide for
+   more information.
+
+4. Add a manifest to your cluster profile with a custom workload of your choice. Refer to the
+   [Add a Manifest](../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md)
+   for additional guidance.
+
+5. Add pod tolerations to the pod specification of your manifest. Refer to the
+   [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) official
+   documentation page for more details.
+
+   - Specify a custom **key** and custom **value**.
+   - Palette supports the `Equal` **operator**.
+   - The **effect** defines what will happen to the pods that do not tolerate a taint. Kubernetes provides three taint
+     effects.
+
+     | **Effect**         | **Description**                                                                                                                      |
+     | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+     | `NoSchedule`       | Pods that cannot tolerate the node taint will not be scheduled to the node.                                                          |
+     | `PreferNoSchedule` | The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.                                          |
+     | `NoExecute`        | New pods will not be scheduled on the node, and existing pods on the node, if any,will be evicted if they do not tolerate the taint. |
+
+     ```yaml
+     tolerations:
+     - key: "key1"
+        operator: "Equal"
+        value: "value1"
+        effect: "NoExecute"
+     ```
+
+     :::info
+
+     When using packs or Helm charts, tolerations can only be specified if they are exposed for configuration in the
+     `values.yaml` file.
+
+     :::
+
+6. Save the changes made to your cluster profile.
+
+7. Navigate to the left **Main Menu** and select **Clusters**.
+
+8. Click on **Add New Cluster**.
+
+9. Fill in the **Basic Information** for your cluster and click **Next**.
+
+10. On the **Cluster Profile** tab, select the cluster profile you previously created. Click **Next**.
+
+11. Select a **Subscription**, **Region**, and **SSH Key** on the **Cluster Config** tab. Click **Next**.
+
+12. On the **Nodes Config** tab, configure your control plane pool and worker pools by providing the instance type,
+    availability zones and disk size.
+
+13. The control plane pool and worker pool provide the **Taints (Optional)** section. Click on **Add New Taint** and
+    fill in the toleration values specified in your cluster profile. Click on **Next**.
+
+    ![Screenshot of adding taints during cluster creation](/clusters_cluster-management_taints_cluster-creation-taints.webp)
+
+    :::info
+
+    Taints can also be updated on a deployed cluster by editing a worker node pool from the **Nodes** tab of the cluster
+    details page.
+
+    :::
+
+14. Accept the default settings on the **Cluster Settings** tab and click on **Validate**.
+
+15. Click on **Finish Configuration** and deploy your cluster.
+
+    :::further
+
+    Refer to our [Deploy a Cluster](../../tutorials/cluster-deployment/public-cloud/deploy-k8s-cluster.md) tutorial for
+    detailed guidance on how to deploy a cluster with Palette using Amazon Web Services (AWS), Microsoft Azure, or
+    Google Cloud Platform (GCP) cloud providers.
+
+    :::
+
+## Validate
+
+You can follow these steps to validate that your taints and tolerations are applied successfully.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Navigate to the left **Main Menu** and select **Clusters**.
+
+3. Select the cluster you deployed, and download the `kubeconfig` file.
+
+   ![Screenshot of kubeconfig file download](/clusters_cluster-management_taints_kubeconfig-download.webp)
+
+4. Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
+
+   ```
+   export KUBECONFIG=~/Downloads/admin.azure-cluster.kubeconfig
+   ```
+
+5. Confirm the cluster deployment process has scheduled your pods as expected. Remember that only pods with matching
+   tolerations can be scheduled on nodes with configured taints.
+
+   ```
+   kubectl get pods --all-namespaces --output wide --watch
+   ```
+
+   :::tip
+
+   For a more user-friendly experience, consider using [K9s](https://k9scli.io/) or a similar tool to explore your
+   cluster workloads.
+
+   :::
