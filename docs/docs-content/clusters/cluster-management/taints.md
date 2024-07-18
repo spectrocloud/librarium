@@ -8,7 +8,7 @@ tags: ["clusters", "cluster management"]
 ---
 
 Taints provide nodes with the ability to repel a set of pods, allowing you to mark nodes as unavailable for certain
-pods. A common usecase of taints is to prevent pods from being scheduled on nodes undergoing maintenance. Tolerations
+pods. A common use case of taints is to prevent pods from being scheduled on nodes undergoing maintenance. Tolerations
 are applied to pods and allow the pods to schedule onto nodes with matching taints. Once configured, nodes do not accept
 any pods that do not tolerate the taints.
 
