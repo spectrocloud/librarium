@@ -13,7 +13,8 @@ You can add storage and additional network interfaces to your virtual machines (
 ## Add Disk Storage
 
 KubeVirt allows hot plugging additional storage into a running VM. Both block and file system volume types are
-supported.
+supported. Disks are "hot plugged" into your VMs, meaning that you do not need to power off the VM in order to add
+disks.
 
 ### Prerequisites
 
@@ -31,17 +32,33 @@ supported.
    network interface.
 
    The interface type determines out-of-the-box operating system (OS) support and disk performance. Choose from the
-   following:
+   following.
 
-   - **virtio**: Optimized for best performance, but the operating system may require additional Virtio drivers.
+   | Interface type | Description                                                                                                                                                                                                                                                                                                      |
+   | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | virtio         | Optimized for best performance, but the operating system may require additional Virtio drivers.                                                                                                                                                                                                                  |
+   | sata           | Most operating systems support Serial ATA (SATA). However it offers lower performance.                                                                                                                                                                                                                           |
+   | scsi           | A paravirtualized Internet Small Computer System Interface (iSCSI) HDD driver that offers similar functionality to the virtio-block device but with some additional enhancements. In particular, this driver supports adding hundreds of devices and names devices using the standard SCSI device naming scheme. |
 
-   - **sata**: Most operating systems support Serial ATA (SATA). However it offers lower performance.
+5. Next, specify the access mode for your disk.
 
-   - **scsi**: A paravirtualized Internet Small Computer System Interface (iSCSI) HDD driver that offers similar
-     functionality to the virtio-block device but with some additional enhancements. In particular, this driver supports
-     adding hundreds of devices and names devices using the standard SCSI device naming scheme.
+   | Access mode           | Description                                                                  |
+   | --------------------- | ---------------------------------------------------------------------------- |
+   | Read-Write-Once (RWO) | Ensures that only one client can write to the volume at any given time.      |
+   | Read-Write-Many (RWX) | Allows multiple clients to read from and write to the volume simultaneously. |
+   | Read-Only-Many (ROX)  | Permits multiple clients to read data only.                                  |
 
-5. Click **Add** when you are done.
+6. Specify the volume mode for your disk.
+
+   | Volume mode | Description                                                                                                                          |
+   | ----------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+   | Filesystem  | The volume is formatted with a filesystem. The OS manages the volume using a directory structure, where files are stored in folders. |
+   | Block       | The volume is presented as a raw block device. The OS manages the volume at the block level, without any filesystem structure.       |
+
+7. If you'd like to allocate storage to the VM right away, check **Enable preallocation**. Otherwise, the storage is
+   allocated to your VM as data is written to the storage.
+
+8. Click **Add** when you are done.
 
 ### Validate
 
@@ -63,7 +80,7 @@ created a default `NetworkAttachmentDefinition` CRD. For more information, refer
 
 ### Prerequisites
 
-- A deployed VM.
+- A deployed VM that in i
 
 ### Add an Interface
 
