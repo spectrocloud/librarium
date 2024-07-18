@@ -33,11 +33,11 @@
   },
   {
     "name": "kubernetes-microk8s",
-    "description": "MicroK8s is a lightweight CNCF-certified Kubernetes distribution developed by Canonical. It deploys all Kubernetes services in a single, fully contained package and offers out-of-the-box add-ons."
+    "description": "MicroK8s is a lightweight Kubernetes distribution developed by Canonical. It deploys all Kubernetes services in a single, fully contained package and offers out-of-the-box add-ons."
   },
   {
     "name": "edge-microk8s",
-    "description": "MicroK8s is a lightweight CNCF-certified Kubernetes distribution developed by Canonical. It deploys all Kubernetes services in a single, fully contained package and offers out-of-the-box add-ons."
+    "description": "MicroK8s is a lightweight Kubernetes distribution developed by Canonical. It deploys all Kubernetes services in a single, fully contained package and offers out-of-the-box add-ons."
   },
   {
     "name": "lb-metallb",
@@ -54,5 +54,45 @@
   {
     "name": "nutanix-csi",
     "description": "The Nutanix CSI pack uses Nutanix Volumes and Nutanix Files to provide persistent storage for stateful applications."
+  },
+  {
+    "name": "argo-cd",
+    "description": "Argo CD is a declarative continuous delivery tool for Kubernetes. It automates the deployment of the desired application states in the specified target environments using Git repositories as the source of truth."
+  },
+  {
+    "name": "cni-cilium-oss",
+    "description": "Cilium is an open-source software for securing and observing network connectivity between cloud-native container workloads."
+  },
+  {
+    "name": "cni-cilium",
+    "description": "Cilium is an open-source software for securing and observing network connectivity between cloud-native container workloads."
+  },
+  {
+    "name": "edge-k3s",
+    "description": "K3s is a lightweight distribution of Kubernetes that is specifically designed for resource-constrained environments and Internet of Things (IoT) applications."
+  },
+  {
+    "name": "edge-k8s",
+    "description": "Palette eXtended Kubernetes - Edge (PXK-E) is a customized version of the open-source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes distribution is customized and optimized for edge computing environments and can be deployed through Palette."
+  },
+  {
+    "name": "edge-native-byoi",
+    "description": "The Bring Your Own Operating System (BYOOS) pack enables you to use a custom Operating System (OS) with Palette Edge clusters."
+  },
+  {
+    "name": "generic-byoi",
+    "description": "The Bring Your Own Operating System (BYOOS) pack enables you to use a custom Operating System (OS) with Palette clusters."
+  },
+  {
+    "name": "harbor-edge-native-config",
+    "description": "Harbor is an open-source registry that secures artifacts with policies and role-based access control. You can install Harbor on your Edge clusters and use it to store all the images used by the cluster, including your provider images and packs."
+  },
+  {
+    "name": "harbor",
+    "description": "Harbor is an open-source registry that secures artifacts with policies and role-based access control. You can install Harbor on your clusters and use it to store all the images and packs used by the cluster."
+  },
+  {
+    "name": "nginx",
+    "description": "The NGNIX pack is an Ingress Controller implementation that uses NGINX as a reverse proxy and load balancer. It provides services with externally reachable URLs, offers SSL/TLS termination, load balances traffic, and supports name-based virtual hosting."
   }
 ]

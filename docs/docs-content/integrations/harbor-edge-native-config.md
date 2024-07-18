@@ -10,65 +10,20 @@ logoUrl: "https://registry.spectrocloud.com/v1/harbor/blobs/sha256:5cf19a83449d4
 tags: ["packs", "harbor-edge-native-config", "system-app"]
 ---
 
-Harbor is an open-source registry that secures artifacts with policies and role-based access control. You can install
-Harbor on your Edge clusters and use it to store all the images used by the cluster, including your provider images and
-all packs used by your cluster. After the initial download, the cluster can pull images from Harbor instead of an
-external registry, allowing your cluster to reboot containers or add new nodes without a connection to the external
-network.
-
-:::preview
-
-:::
-
 ## Versions Supported
 
-:::info
+<Tabs queryString="parent">
+<TabItem value="1.0.x" label="1.0.0">
 
 The Harbor Edge-Native Config pack is a system application pack. When you provision a cluster with a profile that
 includes this pack, Palette automatically chooses the latest version of Harbor supported by Palette to install on the
 cluster. You cannot manually choose a version of this pack.
 
-:::
-
-<Tabs>
-<TabItem value="1.0.0" label="1.0.0">
-
-### Prerequisites
-
-- All Edge devices in your cluster must have at least 4 CPUs and 8 GB of RAM.
-
-  - For single-node clusters, where there is only one Edge host handling both control plane and worker capabilities,
-    your Edge host must have at least 6 CPUs and 12 GB of RAM.
-
-- At least 300 GB of persistent storage volume for the cluster. The actual volume required depends on the size of the
-  images used by your cluster.
-
-- A Container Storage Interface (CSI) pack is required in your cluster profile.
-
-- In the YAML file for the Kubernetes layer of your cluster, ensure that `AlwaysPullImages` is not in the list
-  `enable-admission-plugins`.
-
-### Parameters
-
-:::tip
-
-You can use a macro to avoid providing credentials in plain text. For more information about macros, refer to
-[Macros guide](../clusters/cluster-management/macros.md).
+:::preview
 
 :::
 
-| **Parameter**                           | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `harbor-config.auth.password`           | Specifies the password used with the default user name `admin` to authenticate with the Harbor image registry. You cannot change the username. If you don't provide password, a random password is generated and saved to a secret in the cluster named `registry-info` in the `cluster_CLUSTER_UID` namespace, where `CLUSTER_UID` is the unique ID for your cluster. You find this namespace by listing all namespaces in your cluster. This password is automatically configured to be used internally inside the cluster for image pulls, and you would only need it for accessing the Harbor registry from outside the cluster. |
-| `harbor-config.auth.certs`              | Specifies the certificate and private key used for authentication with Harbor. The common name or subject alternative name must include the host name `spectro.registry.local` and the Edge cluster's virtual IP address. If you don't provide a certificate or private key, Palette generates a certificate and a private key to use internally within the cluster. You can find the certificate in a secret named `harbor-tls` in the `harbor` namespace.                                                                                                                                                                          |
-| `harbor-config.service.serviceType`     | Specifies the service type for the Harbor service. The default service type is NodePort.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `harbor-config.service.harbor`          | Specifies the ports that harbor is exposed on.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| `harbor-config.storage`                 | Specifies the size of the Harbor's persistent volume claim in GB. You can configure persistent volume claims for `registry`, `jobService`, `database`, `redis`, and `trivy`.                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| `harbor-config.service.metrics.enabled` | Specify whether to enable metrics on Harbor. For more information about the kinds of metrics that are exposed, refer to [Harbor metrics documentation](https://goharbor.io/docs/main/administration/metrics/).                                                                                                                                                                                                                                                                                                                                                                                                                       |
-
-### Usage
-
-#### Enable Harbor to Protect Against Outage
+## Enable Harbor to Protect Against Outage
 
 You can use Harbor in an Edge cluster that is connected to external networks. Harbor stores all container images
 downloaded from the internet and future image pulls from the cluster will be from the local harbor registry. If your
@@ -76,7 +31,7 @@ cluster experiences an internet outage, it can still reboot containers or add ne
 Harbor. For more information, refer to
 [Deploy a Cluster with a Local Harbor Registry](../clusters/edge/site-deployment/deploy-custom-registries/local-registry.md).
 
-#### Log in to Harbor Web UI
+## Log in to Harbor Web UI
 
 With Harbor enabled on your Edge cluster, you can log in to Harbor via its web UI. By default, the Harbor service is
 accessible as a NodePort-type service with HTTPS enabled on port `30003`. You can use the following steps to log in to
@@ -100,7 +55,7 @@ Harbor via the web UI.
 6. Type in `admin` as the username and your password to log in to Harbor. If you don't know your password, refer to
    [Retrieve Harbor Credentials](#retrieve-harbor-credentials) to retrieve your password.
 
-#### Retrieve Harbor Credentials
+## Retrieve Harbor Credentials
 
 During cluster creation, Palette creates two secrets that store the password used to authenticate the `admin` user in
 Harbor and the X509 certificate used for TLS. You can access both of these credentials using the following steps:
@@ -145,7 +100,7 @@ kubectl get secret harbor-tls --namespace harbor --output jsonpath="{.data.tls\.
 </TabItem>
 </Tabs>
 
-#### Push and Pull Images to Harbor
+## Push and Pull Images to Harbor
 
 You can use the following steps to push images to and pull images from the Harbor registry.
 
@@ -215,7 +170,7 @@ docker push 10.10.137.220:30003/spectro-images/alpine:latest
   </TabItem>
   </Tabs>
 
-#### Enable Image Download from Outside of Harbor
+## Enable Image Download from Outside of Harbor
 
 If a cluster is configured with the Harbor Edge-Native Config pack, it will assume that all images will be stored in
 Harbor once they are initially downloaded. However, it is important to note that only the images that are part of the
@@ -282,19 +237,28 @@ through the command-line.
 5. Deploy the resources into the namespace. Since the namespace has the label `stylus.io/imageswap=disable`, the Palette
    agent will pull the image from registiries you specify instead of from the Harbor registry.
 
-</TabItem>
-</Tabs>
+## Troubleshooting
 
-### Known Issues
+### Scenario - Harbor DB Pod Fails to Start
 
-The following known issues exist in the Harbor 1.0.0 release.
+When you start a cluster with the Harbor pack, the **harbor-database** pod might fail to start and get stuck on the
+**CrashLoopBackoff** state. It's possible that this is due to known issue with the Harbor pack related to file
+permissions. The workaround is to delete the pod and a new pod will be automatically created.
 
-- The Harbor database pod might fail to start due to file permission issues. This is a
-  [known issue](https://github.com/goharbor/harbor-helm/issues/1676) in the Harbor GitHub repository. Refer to the
-  [Troubleshooting section](#scenario---harbor-db-pod-fails-to-start) for a workaround.
+#### Debug Steps
 
-- A cluster may get stuck in the provisioning state if it uses Longhorn as its storage layer. If this happens, remove
-  the cluster and try again.
+1. Issue the following command to identify the pods with names that start with `harbor-database`.
+
+```shell
+kubectl get pods --namespace harbor --output wide
+```
+
+2. Delete the pod you identified in the previous step. Replace `POD_NAME` with the name of the pods. If there are
+   multiple pods, use the command for each pod.
+
+```shell
+kubectl delete pod POD_NAME --namespace harbor
+```
 
 </TabItem>
 </Tabs>
@@ -322,6 +286,14 @@ kubectl get pods --namespace harbor --output wide
 kubectl delete pod POD_NAME --namespace harbor
 ```
 
+### Scenario - Cluster Stuck in the Provisioning State
+
+A cluster may get stuck in the provisioning state if it uses Longhorn as its storage layer. If this happens, remove the
+cluster and try again.
+
+</TabItem>
+</Tabs>
+
 ## Terraform
 
 You can reference the Harbor Edge-Native Config pack in Terraform with a data resource.
@@ -338,9 +310,3 @@ data "spectrocloud_pack_simple" "harbor-edge-native-config" {
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
-
-## Resources
-
-- [Deploy a Cluster with a Local Harbor Registry](../clusters/edge/site-deployment/deploy-custom-registries/local-registry.md)
-
-- [Harbor documentation](https://goharbor.io/docs/2.4.0/install-config/)
