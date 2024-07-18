@@ -9,8 +9,8 @@ tags: ["clusters", "cluster management"]
 
 Node labels provide pods the ability to specify which nodes they should be scheduled on. This ability can be useful in
 scenarios where pods should be co-located or executed on dedicated nodes. A common use case of node labels is to ensure
-that certain workloads only execute on certain hardware configurations. Labels are optional configurations, as the scheduler
-will automatically place pods across nodes.
+that certain workloads only execute on certain hardware configurations. Labels are optional configurations, as the
+scheduler will automatically place pods across nodes.
 
 :::tip
 
