@@ -24,6 +24,22 @@
     "description": "Argo Rollouts is a Kubernetes controller and set of CRDs which provide advanced deployment capabilities such as blue-green, canary, canary analysis, experimentation, and progressive delivery features to Kubernetes."
   },
   {
+    "name": "avi",
+    "description": "AVI AKO is a Kubernetes operator which works as an ingress controller and performs Avi-specific functions in a Kubernetes environment with the Avi Controller. AKO is deployed as a pod in the cluster and translates the required Kubernetes objects to Avi objects and automates the implementation of ingresses/routes/services on the Service Engines (SE) via the Avi Controller."
+  },
+  {
+    "name": "avi-ako",
+    "description": "AVI AKO is a Kubernetes operator which works as an ingress controller and performs Avi-specific functions in a Kubernetes environment with the Avi Controller. AKO is deployed as a pod in the cluster and translates the required Kubernetes objects to Avi objects and automates the implementation of ingresses/routes/services on the Service Engines (SE) via the Avi Controller."
+  },
+  {
+    "name": "aws-alb",
+    "description": "AWS Load Balancer Controller is a controller to help manage Elastic Load Balancers for a Kubernetes cluster. AWS Load Balancer Controller satisfies Kubernetes Ingress resources by provisioning Application Load Balancers. It also satisfies Kubernetes Service resources by provisioning Network Load Balancers."
+  },
+  {
+    "name": "csi-aws-efs",
+    "description": "The Amazon Elastic File System Container Storage Interface (CSI) Driver implements the CSI specification for container orchestrators to manage the lifecycle of Amazon EFS file systems. Amazon EFS CSI driver supports dynamic provisioning and static provisioning. "
+  },
+  {
     "name": "centos",
     "description": "CentOS Linux distribution is a stable, predictable, manageable and reproducible platform derived from the sources of RedHat Enterprise Linux (RHEL). It provides a rich base platform for open source communities to build upon. Spectro Cloudprovides CentOS as a development framework for its users."
   },
