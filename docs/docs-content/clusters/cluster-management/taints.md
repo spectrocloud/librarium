@@ -130,7 +130,7 @@ You can follow these steps to validate that your taints and tolerations are appl
 
 2. Navigate to the left **Main Menu** and select **Clusters**.
 
-3. Select the cluster you deployed, and download the [kubeconfig](./kubeconfig.md) file.
+3. Select the cluster you deployed, and download the `kubeconfig` file.
 
    ![Screenshot of kubeconfig file download](/clusters_cluster-management_taints_kubeconfig-download.webp)
 
