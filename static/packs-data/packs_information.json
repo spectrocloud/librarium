@@ -1,5 +1,25 @@
 [
   {
+    "name": "amazon-linux-eks",
+    "description": "The Amazon EKS optimized Amazon Linux AMI is built on top of Amazon Linux 2 (AL2) and Amazon Linux 2023 (AL2023). This image is configured to serve as the base image for Amazon EKS nodes."
+  },
+  {
+    "name": "ambassador",
+    "description": "Ambassador is a Kubernetes-native API gateway built on the Envoy Proxy. Ambassador simplifies the process of exposing, securing, and managing traffic to services in Kubernetes clusters, reducing challenges to implement complex networking scenarios in cloud-native environments."
+  },
+  {
+    "name": "antrea",
+    "description": "Antrea is a Kubernetes networking solution intended to be Kubernetes native. It operates at Layer 3/4 to provide networking and security services for a Kubernetes cluster, leveraging Open vSwitch as the networking data plane."
+  },
+  {
+    "name": "appdynamics-collector",
+    "description": "AppDynamics Collector is a component within the AppDynamics platform that gathers and processes telemetry data from applications, databases, or other monitored systems, and sends this data to the AppDynamics backend for analysis and visualization."
+  },
+  {
+    "name": "appdynamics-operator",
+    "description": "AppDynamics Operator is a Kubernetes-native component designed to manage and automate the deployment and configuration of AppDynamics monitoring agents within Kubernetes environments."
+  },
+  {
     "name": "centos",
     "description": "CentOS Linux distribution is a stable, predictable, manageable and reproducible platform derived from the sources of RedHat Enterprise Linux (RHEL). It provides a rich base platform for open source communities to build upon. Spectro Cloudprovides CentOS as a development framework for its users."
   },
