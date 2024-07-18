@@ -96,11 +96,7 @@ Change the directory to the tutorial folder.
 cd tutorials/
 ```
 
-Check out the following git tag.
-
-```shell
-git checkout v1.1.3
-```
+<PartialsComponent category="tutorials" name="checkout-tutorials-tag" />
 
 Change the directory to the tutorial code.
 
