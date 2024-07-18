@@ -59,20 +59,20 @@ Taints can also be applied to node pools using the Spectro Cloud
      | `PreferNoSchedule` | The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.                                          |
      | `NoExecute`        | New pods will not be scheduled on the node, and existing pods on the node, if any,will be evicted if they do not tolerate the taint. |
 
-   ```yaml
-   tolerations:
+     ```yaml
+     tolerations:
      - key: "key1"
-       operator: "Equal"
-       value: "value1"
-       effect: "NoExecute"
-   ```
+        operator: "Equal"
+        value: "value1"
+        effect: "NoExecute"
+     ```
 
-   :::info
+     :::info
 
-   When using packs or Helm charts, tolerations can only be specified if they are exposed for configuration in the
-   `values.yaml` file.
+     When using packs or Helm charts, tolerations can only be specified if they are exposed for configuration in the
+     `values.yaml` file.
 
-   :::
+     :::
 
 6. Save the changes made to your cluster profile.
 
@@ -92,26 +92,26 @@ Taints can also be applied to node pools using the Spectro Cloud
 13. The control plane pool and worker pool provide the **Taints (Optional)** section. Click on **Add New Taint** and
     fill in the toleration values specified in your cluster profile. Click on **Next**.
 
-![Screenshot of adding taints during cluster creation](/clusters_cluster-management_taints_cluster-creation-taints.webp)
+    ![Screenshot of adding taints during cluster creation](/clusters_cluster-management_taints_cluster-creation-taints.webp)
 
-:::info
+    :::info
 
-Taints can also be updated on a deployed cluster by editing a worker node pool from the **Nodes** tab of the cluster
-details page.
+    Taints can also be updated on a deployed cluster by editing a worker node pool from the **Nodes** tab of the cluster
+    details page.
 
-:::
+    :::
 
 14. Accept the default settings on the **Cluster Settings** tab and click on **Validate**.
 
 15. Click on **Finish Configuration** and deploy your cluster.
 
-:::further
+    :::further
 
-Refer to our [Deploy a Cluster](../../tutorials/cluster-deployment/public-cloud/deploy-k8s-cluster.md) tutorial for
-detailed guidance on how to deploy a cluster with Palette using Amazon Web Services (AWS), Microsoft Azure, or Google
-Cloud Platform (GCP) cloud providers.
+    Refer to our [Deploy a Cluster](../../tutorials/cluster-deployment/public-cloud/deploy-k8s-cluster.md) tutorial for
+    detailed guidance on how to deploy a cluster with Palette using Amazon Web Services (AWS), Microsoft Azure, or
+    Google Cloud Platform (GCP) cloud providers.
 
-:::
+    :::
 
 ## Validate
 
@@ -123,7 +123,7 @@ You can follow these steps to validate that your taints and tolerations are appl
 
 3. Select the cluster you deployed, and download the [kubeconfig](./kubeconfig.md) file.
 
-![Screenshot of kubeconfig file download](/clusters_cluster-management_taints_kubeconfig-download.webp)
+   ![Screenshot of kubeconfig file download](/clusters_cluster-management_taints_kubeconfig-download.webp)
 
 4. Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
 

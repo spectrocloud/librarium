@@ -82,26 +82,26 @@ Node labels can also be applied to node pools using our
     in the `key:value` format. Fill in the labels corresponding to the values provided in your pod specification node
     selector. Click on **Next**.
 
-![Screenshot of adding node labels during cluster creation](/clusters_cluster-management_node-labels_cluster-creation-labels.webp)
+    ![Screenshot of adding node labels during cluster creation](/clusters_cluster-management_node-labels_cluster-creation-labels.webp)
 
-:::info
+    :::info
 
-Node labels can also be updated on a deployed cluster by editing a worker node pool from the **Nodes** tab of the
-cluster details page.
+    Node labels can also be updated on a deployed cluster by editing a worker node pool from the **Nodes** tab of the
+    cluster details page.
 
-:::
+    :::
 
 14. Accept the default settings on the **Cluster Settings** tab and click on **Validate**.
 
 15. Click on **Finish Configuration** and deploy your cluster.
 
-:::further
+    :::further
 
-Refer to our [Deploy a Cluster](../../tutorials/cluster-deployment/public-cloud/deploy-k8s-cluster.md) tutorial for
-detailed guidance on how to deploy a cluster with Palette using Amazon Web Services (AWS), Microsoft Azure, or Google
-Cloud Platform (GCP) cloud providers.
+    Refer to our [Deploy a Cluster](../../tutorials/cluster-deployment/public-cloud/deploy-k8s-cluster.md) tutorial for
+    detailed guidance on how to deploy a cluster with Palette using Amazon Web Services (AWS), Microsoft Azure, or
+    Google Cloud Platform (GCP) cloud providers.
 
-:::
+    :::
 
 ## Validate
 
@@ -113,7 +113,7 @@ You can follow these steps to validate that your node labels are applied success
 
 3. Select the cluster you deployed, and download the [kubeconfig](./kubeconfig.md) file.
 
-![Screenshot of kubeconfig file download](/clusters_cluster-management_node-labels_kubeconfig-download.webp)
+   ![Screenshot of kubeconfig file download](/clusters_cluster-management_node-labels_kubeconfig-download.webp)
 
 4. Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
 
