@@ -32,6 +32,10 @@
     "description": "AVI AKO is a Kubernetes operator which works as an ingress controller and performs Avi-specific functions in a Kubernetes environment with the Avi Controller. AKO is deployed as a pod in the cluster and translates the required Kubernetes objects to Avi objects and automates the implementation of ingresses/routes/services on the Service Engines (SE) via the Avi Controller."
   },
   {
+    "name": "aws-eks-calico",
+    "description": "Calico is a networking and security solution that enables Kubernetes workloads and non-Kubernetes/legacy workloads to communicate seamlessly and securely. Calico consists of networking to secure network communication, and advanced network policy to secure cloud-native microservices/applications at scale."
+  },
+  {
     "name": "aws-alb",
     "description": "AWS Load Balancer Controller is a controller to help manage Elastic Load Balancers for a Kubernetes cluster. AWS Load Balancer Controller satisfies Kubernetes Ingress resources by provisioning Application Load Balancers. It also satisfies Kubernetes Service resources by provisioning Network Load Balancers."
   },
@@ -42,6 +46,34 @@
   {
     "name": "cni-calico",
     "description": "Calico is a networking and security solution that enables Kubernetes workloads and non-Kubernetes/legacy workloads to communicate seamlessly and securely. Calico consists of networking to secure network communication, and advanced network policy to secure cloud-native microservices/applications at scale."
+  },
+  {
+    "name": "cni-calico-azure",
+    "description": "Calico is a networking and security solution that enables Kubernetes workloads and non-Kubernetes/legacy workloads to communicate seamlessly and securely. Calico consists of networking to secure network communication, and advanced network policy to secure cloud-native microservices/applications at scale."
+  },
+  {
+    "name": "",
+    "description": ""
+  },
+  {
+    "name": "",
+    "description": ""
+  },
+  {
+    "name": "",
+    "description": ""
+  },
+  {
+    "name": "",
+    "description": ""
+  },
+  {
+    "name": "",
+    "description": ""
+  },
+  {
+    "name": "",
+    "description": ""
   },
   {
     "name": "centos",
