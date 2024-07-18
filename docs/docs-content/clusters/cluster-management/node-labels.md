@@ -18,14 +18,14 @@ This guide covers the Palette UI flow.
 
 :::info
 
-Node labels can also be applied to node pools using the Spectro Cloud
+Node labels can also be applied to node pools using our
 [Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 :::
 
 ## Prerequisites
 
-- A [Spectro Cloud](https://console.spectrocloud.com) account with the permissions to create cluster profiles and manage
+- A [Palette](https://console.spectrocloud.com) account with the permissions to create cluster profiles and manage
   clusters. Refer to the [Roles and Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md)
   guide for more information.
 - [kubectl](https://kubernetes.io/docs/reference/kubectl/) or [K9s](https://k9scli.io/) installed locally.
