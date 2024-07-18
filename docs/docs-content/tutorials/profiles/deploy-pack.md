@@ -65,13 +65,11 @@ currently active containers.
 docker ps
 ```
 
-Download the `ghcr.io/spectrocloud/tutorials:1.0.4` image to your local machine. The Docker image includes the necessary
-tools.
-
-<br />
+Use the following command to download the `ghcr.io/spectrocloud/tutorials:1.1.7` image to your local machine. This
+Docker image includes the necessary tools.
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.0.4
+docker pull ghcr.io/spectrocloud/tutorials:1.1.7
 ```
 
 Next, start the container, and open a bash session into it.
@@ -79,7 +77,7 @@ Next, start the container, and open a bash session into it.
 <br />
 
 ```bash
-docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.0.4 bash
+docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.7 bash
 ```
 
 If port 7000 on your local machine is unavailable, you can use any other port of your choice.
@@ -1091,10 +1089,7 @@ following commands:
 
 <br />
 
-```bash
-docker container rm --force tutorialContainer
-docker image rm --force ghcr.io/spectrocloud/tutorials:1.0.3
-```
+<PartialsComponent category="tutorials" name="stop-tutorials-container-docker" />
 
 <br />
 
