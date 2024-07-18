@@ -5,5 +5,5 @@ import PacksIntegrationsPluginData from "../IntegrationTypes";
 
 export default function Packs() {
   const { packs, repositories } = usePluginData("plugin-packs-integrations") as PacksIntegrationsPluginData;
-  return <Integrations data={packs} repositories={repositories}/>;
+  return <Integrations data={packs} repositories={repositories} />;
 }

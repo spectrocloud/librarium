@@ -3,7 +3,15 @@
     "noEmit": true,
     "allowJs": true
   },
-  "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts", "src/**/*.tsx", "./.eslintrc.js", "*.d.ts", "visuals/**/*.ts", "playwright.config.ts"],
+  "extends": ["./tsconfig.json"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "./.eslintrc.js",
+    "*.d.ts",
+    "visuals/**/*.ts",
+    "playwright.config.ts",
+    "_partials/*.ts"
+  ],
   "exclude": ["**/node_modules", "deprecated"]
 }

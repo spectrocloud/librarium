@@ -14,22 +14,18 @@ export default function PackCardIcon({ appType, logoUrl, type, className }: Pack
   useEffect(() => {
     if (logoUrl) {
       try {
-        if(appType === "app") {
+        if (appType === "app") {
           setIcon(<img src={logoUrl} />);
         } else {
           setIcon(<Image img={require(`/static/img/packs/${logoUrl}`)} />);
         }
       } catch (e) {
-        type ? setIcon(<IconMapper type={type} />) : setIcon(null)
+        type ? setIcon(<IconMapper type={type} />) : setIcon(null);
       }
     } else {
-      type ? setIcon(<IconMapper type={type} />) : setIcon(null)
+      type ? setIcon(<IconMapper type={type} />) : setIcon(null);
     }
   }, [logoUrl]);
 
-  return (
-    <div className={`${className} ${styles.imageWrapper}`}>
-      {icon}
-    </div>
-  );
+  return <div className={`${className} ${styles.imageWrapper}`}>{icon}</div>;
 }

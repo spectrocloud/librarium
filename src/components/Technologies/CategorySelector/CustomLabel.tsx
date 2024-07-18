@@ -9,9 +9,7 @@ interface CustomLabelProps {
 export default function CustomLabel({ label, className = "" }: CustomLabelProps) {
   return (
     <>
-      <div className={`${className} ${styles.customLabel}`}>
-        {label}
-      </div>
+      <div className={`${className} ${styles.customLabel}`}>{label}</div>
     </>
   );
 }

@@ -5,17 +5,17 @@ import "./filterSelect.antd.css";
 
 interface FilterSelectProps {
   selectMode?: SelectProps["mode"];
-  options: { value: string, label: string }[];
+  options: { value: string; label: string }[];
   onChange: (...args: any) => void;
   value: SelectProps["value"];
-};
+}
 
 export default function FilterSelect({ selectMode, options, onChange, value }: FilterSelectProps) {
   return (
     <div className={filterStyles.wrapper}>
       <Select
         className={filterStyles.selectBox}
-        mode={selectMode as "tags" | "multiple" | undefined}
+        mode={selectMode}
         allowClear={true}
         placeholder="Search"
         onChange={onChange}
@@ -26,7 +26,7 @@ export default function FilterSelect({ selectMode, options, onChange, value }: F
             <Select.Option value={item.value} key={item.value}>
               {item.label}
             </Select.Option>
-          )
+          );
         })}
       </Select>
     </div>

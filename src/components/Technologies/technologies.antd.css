@@ -6,8 +6,8 @@
   display: flex;
   flex-wrap: wrap;
 }
-.ant-menu-horizontal >.ant-menu-submenu:hover::after {
-  border-bottom-color: transparent !important
+.ant-menu-horizontal > .ant-menu-submenu:hover::after {
+  border-bottom-color: transparent !important;
 }
 [data-theme="dark"] .ant-collapse-header-text {
   color: whitesmoke;

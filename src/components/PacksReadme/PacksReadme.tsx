@@ -16,14 +16,39 @@ import Admonition from "@theme/Admonition";
 
 interface PackReadmeProps {
   customDescription: string;
-  packUidMap: any;
-  versions: Array<any>;
+  packUidMap: Record<string, { deprecated?: boolean; readme?: string; registryUid?: string }>;
+  versions: Version[];
   title: string;
   logoUrl: string;
   type: string;
   provider: Array<string>;
   registries: Array<string>;
-  selectedRepositories: Array<any>;
+  selectedRepositories: Array<{ uid: string; name: string }>;
+  disabled: boolean;
+  latestVersion: string;
+}
+interface MarkdownFile {
+  default: React.FC;
+}
+
+interface Version {
+  title: string;
+  children: Array<{
+    title: string;
+    packUid: string;
+  }>;
+}
+
+interface PackData {
+  customDescription: string;
+  packUidMap: Record<string, { deprecated?: boolean; readme?: string; registryUid?: string }>;
+  versions: Version[];
+  title: string;
+  logoUrl: string;
+  type: string;
+  provider: Array<string>;
+  registries: Array<string>;
+  selectedRepositories: Array<{ uid: string; name: string }>;
   disabled: boolean;
   latestVersion: string;
 }
@@ -39,13 +64,14 @@ export default function PacksReadme() {
   const { defaultAlgorithm, darkAlgorithm } = theme;
   const [selectedVersion, setSelectedVersion] = useState<string>("");
   const history = useHistory();
+
   useEffect(() => {
     const searchParams = window ? new URLSearchParams(window.location.search) : null;
     const pckName = searchParams?.get("pack") || "";
     setPackName(pckName);
     const importComponent = async () => {
       try {
-        const module = await import(`../../../docs/docs-content/integrations/${pckName}.md`);
+        const module: MarkdownFile = await import(`../../../docs/docs-content/integrations/${pckName}.md`);
         const PackReadMeComponent = module.default;
         setCustomReadme(
           <div className={styles.customReadme}>
@@ -56,10 +82,12 @@ export default function PacksReadme() {
         setCustomReadme(null);
       }
     };
-    importComponent();
+    importComponent().catch((e) => {
+      console.error("Error importing custom readme component for pack. Additional information follows: \n", e);
+    });
   }, []);
 
-  const packData = useMemo(() => {
+  const packData: PackData = useMemo(() => {
     const pack = packs.find((pack) => pack.name === packName);
     if (pack) {
       const packDataInfo: PackReadmeProps = {
@@ -91,24 +119,20 @@ export default function PacksReadme() {
       latestVersion: "",
     };
   }, [packName]);
+
   useEffect(() => {
     const searchParams = window ? new URLSearchParams(window.location.search) : null;
     const urlParamVersion = searchParams?.get("version");
     const version = urlParamVersion || packData?.latestVersion || packData?.versions[0]?.title || "";
-    let parentVersionObj: any;
     if (version && !version.endsWith(".x")) {
-      parentVersionObj = getParentVersion(version);
-      const packDataObj = parentVersionObj?.children.find((child: any) => child.title === version);
-      setSelectedPackUid(packDataObj?.packUid || "");
-      setSelectedVersion(version);
+      const parentVersionObj = getParentVersion(version);
+      const packDataObj = parentVersionObj?.children.find((child) => child.title === version);
+      if (packDataObj) {
+        setSelectedPackUid(packDataObj.packUid);
+        setSelectedVersion(version);
+      }
     }
   }, [packData]);
-  let warningContent;
-  if (packData.disabled) {
-    warningContent = "This pack is disabled. Upgrade to a newer version to take advantage of new features.";
-  } else if (selectedPackUid && packData.packUidMap[selectedPackUid]?.deprecated) {
-    warningContent = "This pack is deprecated. Upgrade to a newer version to take advantage of new features.";
-  }
 
   function versionChange(item: string) {
     const [version, packUid] = item.split("===");
@@ -119,32 +143,28 @@ export default function PacksReadme() {
   }
 
   function getParentVersion(version: string) {
-    return packData.versions.find((tagVersion) => tagVersion.children.find((child: any) => child.title === version));
+    return packData.versions.find((tagVersion) => tagVersion.children.find((child) => child.title === version));
   }
 
   function renderVersionOptions() {
-    return packData.versions.map((tagVersion) => {
-      return {
-        value: tagVersion.title,
-        title: tagVersion.title,
-        selectable: false,
-        children: tagVersion.children.map((child: any) => {
-          return {
-            value: `${child.title}===${child.packUid}`,
-            title: <span>{child.title}</span>,
-          };
-        }),
-      };
-    });
+    return packData.versions.map((tagVersion) => ({
+      value: tagVersion.title,
+      title: tagVersion.title,
+      selectable: false,
+      children: tagVersion.children.map((child) => ({
+        value: `${child.title}===${child.packUid}`,
+        title: <span>{child.title}</span>,
+      })),
+    }));
   }
 
   function renderTabs() {
-    let readme = selectedPackUid ? packData.packUidMap[selectedPackUid]?.readme : "";
+    const readme = selectedPackUid ? packData.packUidMap[selectedPackUid]?.readme : "";
     const tabs = [
       readme && {
         label: `README`,
         key: "1",
-        children: <Markdown children={readme} />,
+        children: <Markdown>{readme}</Markdown>,
       },
       customReadme && {
         label: `Additional Details`,
@@ -156,13 +176,11 @@ export default function PacksReadme() {
     if (tabs.length > 1) {
       return (
         <Tabs defaultActiveKey="1">
-          {tabs.map((item) => {
-            return (
-              <Tabs.TabPane tab={item.label} key={item.key}>
-                {item.children}
-              </Tabs.TabPane>
-            );
-          })}
+          {tabs.map((item) => (
+            <Tabs.TabPane tab={item.label} key={item.key}>
+              {item.children}
+            </Tabs.TabPane>
+          ))}
         </Tabs>
       );
     }
@@ -195,12 +213,14 @@ export default function PacksReadme() {
       .map((provider) => cloudDisplayNames[provider as keyof typeof cloudDisplayNames] || provider)
       .join(", ");
   }
+
   function getRegistries() {
     if (selectedVersion && !selectedVersion.endsWith(".x")) {
-      const registerUid = packData.packUidMap[selectedPackUid]?.registryUid || "";
-      return packData.selectedRepositories.find((registry) => registry.uid === registerUid)?.name || "";
+      const registryUid = packData.packUidMap[selectedPackUid]?.registryUid || "";
+      const registry = packData.selectedRepositories.find((registry) => registry.uid === registryUid);
+      return registry ? registry.name : "";
     }
-    const consolidatedRegistries = packData.registries.reduce((accumulator: string[], registry) => {
+    const consolidatedRegistries = packData.registries.reduce<string[]>((accumulator, registry) => {
       const regObj = packData.selectedRepositories.find((repo) => repo.uid === registry);
       if (regObj) {
         accumulator.push(regObj.name);
@@ -209,6 +229,8 @@ export default function PacksReadme() {
     }, []);
     return consolidatedRegistries.join(", ");
   }
+
+  console.log("packData", packData);
 
   return (
     <div className={styles.wrapper}>
@@ -230,23 +252,27 @@ export default function PacksReadme() {
               dropdownStyle={{ maxHeight: 400, overflow: "auto" }}
               placeholder="Search"
               treeDefaultExpandAll
-              onChange={(item) => versionChange(item as string)}
+              onChange={(item) => versionChange(item)}
               treeData={renderVersionOptions()}
             />
           </div>
           <div className={styles.packDesc}>
-            <div className={styles.packDescItem}>
-              {`Type: ${packTypeNames[packData.type as keyof typeof packTypeNames]}`}
-            </div>
+            <div className={styles.packDescItem}>{`Type: ${packTypeNames[packData.type]}`}</div>
             <div className={styles.packDescItem}>{`Cloud Providers: ${getProviders()}`}</div>
             <div className={styles.packDescItem}>{`Registry: ${getRegistries()}`}</div>
           </div>
         </div>
       </div>
       <div className={styles.warningSection}>
-        {warningContent ? (
+        {packData.disabled ? (
           <Admonition type="warning" icon="⚠️" title="Warning">
-            {warningContent}
+            Pack version <strong>v{selectedVersion}</strong> is disabled. Upgrade to a newer version to take advantage
+            of new features.
+          </Admonition>
+        ) : selectedPackUid && packData.packUidMap[selectedPackUid]?.deprecated ? (
+          <Admonition type="warning" icon="⚠️" title="Warning">
+            Pack version <strong>v{selectedVersion}</strong> is deprecated. Upgrade to a newer version to take advantage
+            of new features.
           </Admonition>
         ) : null}
       </div>

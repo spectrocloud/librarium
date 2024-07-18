@@ -358,7 +358,8 @@ complete the core infrastructure stack.
 Next, click on the **Add New Pack** button to include add-on layers to your cluster profile.
 
 Add the **MetalLB (Helm)** pack to your profile. The
-<VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm"/> pack provides a load-balancer
+
+<VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm" /> pack provides a load-balancer
 implementation for your Kubernetes cluster, as VMware does not offer a load balancer solution natively. The load
 balancer is required to help the _LoadBalancer_ service specified in the Hello Universe application manifest obtain an
 IP address, so that you can access the application from your browser.

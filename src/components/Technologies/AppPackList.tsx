@@ -70,9 +70,9 @@ export default function Technologies({ data }: TechnologiesProps) {
       <CategorySelector categories={[...categories]} selectCategory={setSelectedCategory} selected={selectedCategory} />
       <Search onSearch={onSearch} placeholder={"Search for integration..."} />
       <div className={styles.technologyWrapper}>
-        {technologies.map(( field ) => {
+        {technologies.map((field) => {
           const { title, slug, logoUrl } = field;
-          return <TechnologyCard title={title} slug={slug} logoUrl={logoUrl}></TechnologyCard>;
+          return <TechnologyCard title={title} slug={slug} logoUrl={logoUrl} key={slug}></TechnologyCard>;
         })}
       </div>
     </div>
