@@ -18,7 +18,7 @@ disks.
 
 ### Prerequisites
 
-- A deployed VM.
+- A deployed VM in an active cluster that has the Virtual Machine Orchestrator (VMO) pack.
 
 ### Add a Disk
 
@@ -80,7 +80,9 @@ created a default `NetworkAttachmentDefinition` CRD. For more information, refer
 
 ### Prerequisites
 
-- A deployed VM that in i
+- A deployed VM in an active cluster that has the Virtual Machine Orchestrator (VMO) pack.
+
+- The VM must be in the **Stopped** state.
 
 ### Add an Interface
 
