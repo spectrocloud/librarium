@@ -81,13 +81,8 @@ out-of-the-box options and versions. The cluster profile is essentially a config
 and settings that you create based on your needs, which you can reuse every time you need to deploy a cluster matching
 that configuration. For example, let us say for AI/ML you need a cluster with a base OS with an NVIDIA driver installed
 and Kubeflow installed in the cluster, but for a production cluster, you need a different stack with Logging (EFK),
-Monitoring (Prometheus), Security (Twistlock) pre-installed.
-
-The diagram below shows an example of a cluster profile:
-
-![cluster_profile_new](/cluster_profile_new.webp)
-
-For more information, check out [Cluster Profiles](profiles/cluster-profiles/cluster-profiles.md).
+Monitoring (Prometheus), Security (Twistlock) pre-installed. For more information, check out
+[Cluster Profiles](profiles/cluster-profiles/cluster-profiles.md).
 
 ## Cluster Profile Variable
 
