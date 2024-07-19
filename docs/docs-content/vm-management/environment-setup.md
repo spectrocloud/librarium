@@ -24,7 +24,7 @@ cluster.
 | **Storage Adapters** | 2 x 16 Gbps FC                                     | 2 x 16 Gbps FC                               |                                                                                  |
 | **Disks**            | Local disk for the OS boot (SAN boot is supported) | Local disk for the OS boot                   | Boot from SAN requires special consideration due to the multipath configuration. |
 
-Typically, the cluster control plane nodes do not run any VMO workloads. As a result, they can have lighter hardware
+Typically, the cluster control plane nodes do not operate any VMO workloads. As a result, they can have lighter hardware
 specifications. For example, a server with 4 cores and 8 GB RAM is sufficient for a minimum-specification control plane
 node.
 
@@ -88,8 +88,8 @@ fits with our recommended VMO network configuration.
 | **bond_data.20** | VLAN   | bond_data            | 20     | 10.20.30.0/16  | 10.20.30.1 |
 | **br0**          | Bridge | bond_data            | Native |                |            |
 
-The **br0** bridge interface is used as a master interface by Multus to automatically create VLAN interfaces for VMs. In
-this scenario, the master interface must be a bridge, as no other type will work.
+The **br0** bridge interface is used as a primary interface by Multus to automatically create VLAN interfaces for VMs.
+In this scenario, the primary interface must be a bridge, as no other type will work.
 
 This setup also assumes that the physical servers (the worker nodes) have four physical network interfaces that are
 connected to the switch, as described in the following table.
@@ -106,9 +106,9 @@ ensure a successful PXE boot on a tagged network, we recommend setting the nativ
 the switch port (in our example, this would be 5), so that the PXE boot can work with untagged traffic.
 
 Alternatively, if the server supports UEFI PXE boot and allows you to set the VLAN ID for PXE boot directly, you can
-also use this option. In this case, you need to adjust the configuration for **bond_mgmt** to run the `192.168.0.0/22`
-on a **bond_mgmt.5** subinterface. However, because it is difficult to achieve PXE boot on a tagged VLAN, we recommend
-using a native or untagged VLAN for PXE.
+also use this option. In this case, you need to adjust the configuration for **bond_mgmt** to operate the
+`192.168.0.0/22` CIDR on a **bond_mgmt.5** subinterface. However, because it is difficult to achieve PXE boot on a
+tagged VLAN, we recommend using a native or untagged VLAN for PXE.
 
 The **bond_data.20** subinterface provides outbound connectivity, as it has the default gateway. This is the primary way
 to publish services from container workloads to the end users. If there are any specific data-center networks that you
@@ -144,7 +144,7 @@ following table.
 | **NIC 1, Port 2** | enp2s0     | Management network <br /> Data network                                   | Trunk (allowing 0, 10, 20-100) |
 
 In this configuration, VLANs 10 (mgmt) and 20 (data) are not available for use by VMs on the **br0** interface because
-the VLAN subinterfaces on the bridge master interface and VLAN subinterfaces on the bridge are mutually exclusive.
+the VLAN subinterfaces on the bridge primary interface and VLAN subinterfaces on the bridge are mutually exclusive.
 
 If you need to run VMs on the same VLAN as either the mgmt (10) or the data (20) VLAN, you can facilitate this by
 changing the network configuration as follows.
