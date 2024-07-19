@@ -40,25 +40,74 @@ settings.
     the application.
 
     You must apply the label to every specific job, deployment, or daemon set, etc., that needs to use the proxy
-    servers.
+    servers. For example, if you have a Kafka deployment that requires access to the internet through your proxy, you
+    need to apply the label to the Kafka deployment.
 
-</TabItem>
+    ```yaml {7}
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+    name: kafka
+    labels:
+    app: kafka
+    spectrocloud.com/connection: proxy
+    ```
 
-<TabItem value="Self-Hosted Palette Non-Edge">
+    </TabItem>
 
-1. If you are using a self-hosted Palette instance, you have the opportunity to configure proxy settings during
-   installation. For more information, refer to
+    <TabItem value="Self-Hosted Palette Non-Edge">
 
-2. If you did not configure proxy settings during installation, you need to install Reach on your Palette/VerteX
-   instance and use Reach to provide the proxy configuration.
+    1. If you are using a self-hosted Palette instance, you have the opportunity to configure proxy settings during
+       installation. For more information, refer to
 
-3. Once
+    2. If you did not configure proxy settings during installation, you need to install Reach on your Palette/VerteX
+       instance and use Reach to provide the proxy configuration.
 
-</TabItem>
+    3. Once you have configured proxy settings through Reach for your instance, you still need to specify which
+       applications will use the proxy settings. You can do this by applying the `spectrocloud.com/connection: proxy`
+       label to the pack that contains the application.
 
-<TabItem value="Edge">
+       You must apply the label to every specific job, deployment, or daemon set, etc., that needs to use the proxy
+       servers. For example, if you have a Kafka deployment that requires access to the internet through your proxy, you
+       need to apply the label to the Kafka deployment.
 
-</TabItem>
+       ```yaml {7}
+       apiVersion: apps/v1
+       kind: Deployment
+       metadata:
+       name: kafka
+       labels:
+       app: kafka
+       spectrocloud.com/connection: proxy
+       ```
+
+    </TabItem>
+
+    <TabItem value="Edge">
+
+    1. For Edge clusters, you specify the proxy settings during installation in your Edge installer **user-data**. If
+       your Edge host is deployed in airgap mode, you may also specify the proxy settings in Local UI. For more
+       information, refer to [Configure HTTP-Proxy in Local UI](../edge/local-ui/host-management/configure-proxy.md).
+
+    2. Once you have configured proxy settings for your Edge host, you still need to specify which applications will use
+       the proxy settings. You can do this by applying the `spectrocloud.com/connection: proxy` label to the pack that
+       contains the application.
+
+       You must apply the label to every specific job, deployment, or daemon set, etc., that needs to use the proxy
+       servers. For example, if you have a Kafka deployment that requires access to the internet through your proxy, you
+       need to apply the label to the Kafka deployment.
+
+       ```yaml {7}
+       apiVersion: apps/v1
+       kind: Deployment
+       metadata:
+       name: kafka
+       labels:
+       app: kafka
+       spectrocloud.com/connection: proxy
+       ```
+
+    </TabItem>
 
 <Tabs>
 
