@@ -205,7 +205,7 @@ Use the four resource links below to enable and manage proxy configurations for 
        "spectrocloud.com/connection": "proxy"
    ```
 
-5. Deploy an Azure cluster, use your newly created cluster profile containing the required namespace labels, and use
+5. Deploy your newly created cluster profile containing the required namespace labels to an Azure cluster, and use
    static placement so that you can specify the VNet with the proper network configuration. For instructions on how to
    deploy an Azure cluster, refer to the [Create and Manage IaaS Cluster](./create-azure-cluster.md) guide or the
    [Create and Manage Azure AKS Cluster](./azure.md) guide.
