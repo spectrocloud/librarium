@@ -11,7 +11,8 @@ tags: ["vmo"]
 ---
 
 Palette Virtual Machine Orchestrator (VMO) provides a unified platform for deploying, managing, and scaling Virtual
-Machines (VMs) and containerized applications within Kubernetes clusters deployed on bare-metal servers in data centers.
+Machines (VMs) and containerized applications within Kubernetes clusters. Palette VMO supports deployment to edge
+devices and bare metal servers in data centers.
 
 Palette VMO simplifies infrastructure management, improves resource utilization, and eliminates hypervisor costs.
 
@@ -31,9 +32,9 @@ You will benefit from Palette VMO in the following cases:
 
 ## Get Started
 
-To get started with Palette VMO, review the [Architecture](./architecture.md) page to learn about the different
-components involved in building a full-fledged VMO solution. Then, review the
-[Create a VMO Profile](./create-vmo-profile.md) guide to prepare everything you need to deploy your first VMO cluster.
+To get started with Palette VMO, review the [Architecture](./architecture.md) page to learn about the components
+involved in enabling VMO for your infrastructure. Then, review the [Create a VMO Profile](./create-vmo-profile.md) guide
+to prepare everything you need to deploy your first VMO cluster.
 
 Once your VMO cluster is up and running, refer to the [Create and Manage VMs](./create-manage-vm/create-manage-vm.md)
 section for information on deploying VMs from existing Palette templates and performing standard VM operations.
