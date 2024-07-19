@@ -193,9 +193,21 @@ Use the four resource links below to enable and manage proxy configurations for 
    Cloud Gateway** option and select the PCG cluster you deployed. Refer to the
    [Add Azure Cloud Account](./azure-cloud.md) guide for instructions on how to do this.
 
-4. Deploy an Azure cluster and use static placement so that you can specify the VNet with the proper network
-   configuration. For instructions on how to deploy an Azure cluster, refer to the
-   [Create and Manage IaaS Cluster](./create-azure-cluster.md) guide or the
+4. [Create a cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md) for the
+   Azure cluster you will deploy. Any pack layer that needs to use proxy configurations should include a namespace label
+   with the value `spectrocloud.com/connection: proxy`. You can find more information about namespace labels in the
+   [Profile Customization](../../../profiles/profile-customization.md#pack-labels-and-annotations) page.
+
+   ```yaml {3,4}
+   pack:
+     namespace: "example"
+     namespaceLabels:
+       "spectrocloud.com/connection": "proxy"
+   ```
+
+5. Deploy your newly created cluster profile containing the required namespace labels to an Azure cluster, and use
+   static placement so that you can specify the VNet with the proper network configuration. For instructions on how to
+   deploy an Azure cluster, refer to the [Create and Manage IaaS Cluster](./create-azure-cluster.md) guide or the
    [Create and Manage Azure AKS Cluster](./azure.md) guide.
 
    :::warning
