@@ -28,7 +28,7 @@ components, refer to [Palette VMO](./vm-management.md).
 
 - A Palette permission key `create` for the resource `clusterProfile`.
 
-- If you are creating an Edge cluster profile, your profile must have a Container Storage Interface pack.
+- If you are creating an Edge cluster profile, your profile must have a Container Storage Interface (CSI) pack.
 
 ## Create the Profile
 
