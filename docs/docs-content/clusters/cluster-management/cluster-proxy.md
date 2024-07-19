@@ -36,14 +36,23 @@ settings.
     settings for a PCG.
 
 2.  Once you have configured proxy settings for your PCG, you still need to specify which applications will use the
-    proxy settings. You can do this by applying the `spectrocloud.com/connection: proxy`
+    proxy settings. You can do this by applying the `spectrocloud.com/connection: proxy` label to the pack that contains
+    the application.
+
+    You must apply the label to every specific job, deployment, or daemon set, etc., that needs to use the proxy
+    servers.
 
 </TabItem>
 
 <TabItem value="Self-Hosted Palette Non-Edge">
 
-If you are using a self-hosted Palette instance, you have the opportunity to configure proxy settings during
-installation.
+1. If you are using a self-hosted Palette instance, you have the opportunity to configure proxy settings during
+   installation. For more information, refer to
+
+2. If you did not configure proxy settings during installation, you need to install Reach on your Palette/VerteX
+   instance and use Reach to provide the proxy configuration.
+
+3. Once
 
 </TabItem>
 
