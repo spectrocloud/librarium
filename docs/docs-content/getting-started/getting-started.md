@@ -4,7 +4,7 @@ title: "Getting Started"
 description: "Spectro Cloud Getting Started"
 hide_table_of_contents: true
 sidebar_custom_props:
-  icon: "overview"
+  icon: "flag-checkered"
 tags: ["getting-started"]
 ---
 

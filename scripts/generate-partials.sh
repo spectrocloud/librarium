@@ -12,15 +12,21 @@ rm -f _partials/index.ts
 mkdir -p _partials
 touch _partials/index.ts
 
+# Make the versioned partials folder to satisfy compiler.
+mkdir -p versioned_partials
+
+# Make _partials the current working directory. All paths will be relative to it now.
+cd _partials
+
 # Create the file and add the generated warning.
-echo "// This file is generated. DO NOT EDIT!" >> _partials/index.ts
+echo "// This file is generated. DO NOT EDIT!" >> index.ts
 
 # Find all the MDX files recursively in the _partials folder.
 # Loop through each file.
-find _partials -name "*.mdx" -print0 | while read -d $'\0' path
+find . -name "*.mdx" -print0 | while read -d $'\0' path
 do
     module_name=$(basename ${path} .mdx | tr -d '_' | tr -d '-')
-    echo "export * as ${module_name}${RANDOM} from '@site/${path}';" >> _partials/index.ts
+    echo "export * as ${module_name}${RANDOM} from '${path}';" >> index.ts
 done
 
 echo "Completed generation of _partials/index.ts."

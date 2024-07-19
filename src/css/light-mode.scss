@@ -26,8 +26,6 @@ html[data-theme="light"] {
   --ifm-color-warning-dark: #a8882f;
   --ifm-alert-padding-horizontal: 1.5rem;
   --custom-table-header-color: #f7f7f7;
-  --custom-purple-important-color: #7d77ca;
-  --custom-purple-alert-bg-color: #dcdaf9;
   --simpleCardPrimary: #4a8ff1;
   --simpleCardPrimaryHover: #3f74be;
   --simpleCardSecondary: #dbecff;
@@ -41,6 +39,8 @@ html[data-theme="light"] {
   --custom-release-notes-selected-background: #bec0c4;
   --custom-release-notes-option-font-color: black;
   --custom-release-notes-menu-padding: white;
+  --custom-purple-alert-bg-color: #dcdaf9;
+  --custom-byzantine-alert-bg-color: #f8d6f2;
 
   .theme-doc-sidebar-item-category-level-1 .menu__list-item {
     .menu__link:hover {
@@ -50,6 +50,10 @@ html[data-theme="light"] {
       color: var(--ifm-color-primary);
       border-radius: 0;
     }
+  }
+
+  .category > .menu__list-item-collapsible:hover {
+    background: none;
   }
 
   .menu__list-item-collapsible:hover {

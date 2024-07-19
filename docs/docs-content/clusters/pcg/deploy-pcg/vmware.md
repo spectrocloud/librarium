@@ -10,6 +10,13 @@ tags: ["pcg"]
 This guide provides you with the steps to deploy a PCG cluster to a VMware vSphere environment. Before you begin the
 installation, carefully review the [Prerequisites](#prerequisites) section.
 
+:::further
+
+Refer to our [Deploy App Workloads with a PCG](../../../tutorials/cluster-deployment/pcg/deploy-app-pcg.md) tutorial for
+detailed guidance on how to deploy app workloads with a PCG.
+
+:::
+
 ## Prerequisites
 
 :::info
@@ -144,7 +151,7 @@ vSphere version you are using to view the required privileges for the Spectro ro
 
 </TabItem>
 
-<TabItem label="6.0.x" value="6.0.x">
+<TabItem label="6.7U3" value="6.7U3">
 
 | **vSphere Object**         | **Privileges**                                     |
 | -------------------------- | -------------------------------------------------- |
@@ -250,7 +257,7 @@ Virtual Machines.
 
 </TabItem>
 
-<TabItem label="6.0.x" value="6.0.x">
+<TabItem label="6.7U3" value="6.7U3">
 
 | **vSphere Object**         | **Privileges**                                                                                                                    |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -535,6 +542,39 @@ The following requirements apply to tags:
     [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) portal.
 
     :::
+
+13. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
+    in the environment where you initiated the installation.
+
+    Issue the following command to list all instances of `kind` that exist in the environment.
+
+    ```shell
+    docker images
+    ```
+
+    ```shell
+    REPOSITORY     TAG        IMAGE ID       CREATED        SIZE
+    kindest/node   v1.26.13   131ad18222cc   5 months ago   910MB
+    ```
+
+    Then, use the following command template to remove all instances of `kind`.
+
+    ```shell
+    docker image rm kindest/node:<version>
+    ```
+
+    Consider the following example for reference.
+
+    ```shell
+    docker image rm kindest/node:v1.26.13
+    ```
+
+    ```shell
+    Untagged: kindest/node:v1.26.13
+    Untagged: kindest/node@sha256:15ae92d507b7d4aec6e8920d358fc63d3b980493db191d7327541fbaaed1f789
+    Deleted: sha256:131ad18222ccb05561b73e86bb09ac3cd6475bb6c36a7f14501067cba2eec785
+    Deleted: sha256:85a1a4dfc468cfeca99e359b74231e47aedb007a206d0e2cae2f8290e7290cfd
+    ```
 
 ## Validate
 

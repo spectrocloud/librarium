@@ -72,10 +72,71 @@ explains how you can create an Azure AKS cluster managed by Palette.
     | **Tags**          | Assign any desired cluster tags. Tags on a cluster are propagated to the Virtual Machines (VMs) deployed to the target environments. Example: `region:us-west`.              |
     | **Cloud Account** | If you have already added your Azure account in Palette, select it from the **drop-down Menu**. Otherwise, click **Add New Account** and add your Azure account information. |
 
-6.  Under **Managed Kubernetes**, select **Azure AKS** and select your Azure AKS cluster profile. Click **Next** to
-    continue.
+6.  Under **Managed Kubernetes**, select **Azure AKS** and select your Azure AKS cluster profile.
 
-7.  Palette displays the cluster profile layers. Review the profile layers and customize parameters as desired in the
+7.  If you want to configure Pod and Service CIDR, populate the following configuration template and add the
+    configuration to your Kubernetes cluster profile layer.
+
+    ```yaml
+    pack:
+      podCIDR: "<pod-cidr>"
+      serviceClusterIpRange: "<service-cidr>"
+    ```
+
+8.  If you want to [use a managed identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity), populate
+    the following configuration template and add the configuration to your Kubernetes cluster profile layer.
+
+    - `providerID` – User-assigned identity ID in the format
+      `azure:///subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}`
+
+      ```yaml
+      managedControlPlane:
+        userAssignedIdentities:
+          - providerID: "<provider-id>"
+          - providerID: "<provider-id-2>"
+      ```
+
+9.  If you want to integrate with Microsoft Entra ID (formerly Azure Active Directory), populate the following
+    configuration template and add the configuration to your Kubernetes cluster profile layer.
+
+    ```yaml
+    managedControlPlane:
+      aadProfile:
+        managed: true
+        adminGroupObjectIDs:
+          - <admin-group-object-id>
+          - <admin-group-object-id-2>
+    ```
+
+10. If you want to add a custom AKS add-on profile, populate the following configuration template and add the
+    configuration to your Kubernetes cluster profile layer.
+
+    ```yaml
+    managedControlPlane:
+      addonProfiles:
+        - name: add-on
+          enabled: true
+          config:
+            mapString: string
+    ```
+
+    Consider the following example configuration for `omsagent` for reference, where:
+
+    - `logAnalyticsWorkspaceResourceID` is the Log Analytics workspace resource ID, in the format
+      `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}`
+
+      ```yaml
+      managedControlPlane:
+        addonProfiles:
+          - name: omsagent
+            enabled: true
+            config:
+              logAnalyticsWorkspaceResourceID: "<log-analytics-workspace-resource-id>"
+      ```
+
+11. Click **Next** to continue.
+
+12. Palette displays the cluster profile layers. Review the profile layers and customize parameters as desired in the
     YAML files that display when you select a layer.
 
     You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out
@@ -90,9 +151,9 @@ explains how you can create an Azure AKS cluster managed by Palette.
 
     :::
 
-8.  Click **Next** to continue.
+13. Click **Next** to continue.
 
-9.  Configure your Azure AKS cluster using the following table for reference.
+14. Configure your Azure AKS cluster using the following table for reference.
 
     :::warning
 
@@ -127,9 +188,9 @@ explains how you can create an Azure AKS cluster managed by Palette.
     | **Control Plane Subnet**   | Select the control plane subnet.                            |
     | **Worker Subnet**          | Select the worker network.                                  |
 
-10. Click **Next** to continue.
+15. Click **Next** to continue.
 
-11. Provide the following node pool and cloud configuration information. To learn more about node pools, review the
+16. Provide the following node pool and cloud configuration information. To learn more about node pools, review the
     [Node Pool](../../cluster-management/node-pool.md) guide.
 
     #### System Node Pool
@@ -154,7 +215,7 @@ explains how you can create an Azure AKS cluster managed by Palette.
     | **Enable Autoscaler**           | Whether Palette should scale the pool horizontally based on its per-node workload counts. If enabled, instead of the **Number of nodes in the pool** parameter, you will have to configure the **Minimum size** and **Maximum size** parameters, which will allow AKS to adjust the node pool size based on the workload. You can set the node count to a minimum of zero and a maximum of 1000. Setting both parameters to the same value results in a static node count. |
     | **System Node Pool**            | Sets the pool to be a system node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                    |
     | **Number of nodes in the pool** | A statically defined number of nodes in the system pool.                                                                                                                                                                                                                                                                                                                                                                                                                   |
-    | **Additional Labels**           | Optional node labels in the key-value format. To learn more, review [Apply Labels to Nodes](../../cluster-management/taints.md#labels). Example: `environment:production`.                                                                                                                                                                                                                                                                                                 |
+    | **Additional Labels**           | Optional node labels in the key-value format. To learn more, review [Node Labels](../../cluster-management/node-labels.md). Example: `environment:production`.                                                                                                                                                                                                                                                                                                             |
 
     #### System Node Pool Cloud Configuration
 
@@ -170,14 +231,14 @@ explains how you can create an Azure AKS cluster managed by Palette.
 
     The following table describes how to configure a worker node pool.
 
-    | **Parameter**                   | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-    | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-    | **Node pool name**              | A descriptive name for the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-    | **Enable Autoscaler**           | Whether Palette should scale the pool horizontally based on its per-node workload counts. If enabled, instead of the **Number of nodes in the pool** parameter, you will have to configure the **Minimum size** and **Maximum size** parameters, which will allow AKS to adjust the node pool size based on the workload. You can set the node count to a minimum of zero and a maximum of 1000. Setting both parameters to the same value results in a static node count.                                                                                                                                                                                                                                                                       |
-    | **System Node Pool**            | Sets the pool to be a system node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-    | **Number of nodes in the pool** | A statically defined number of nodes in the system pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-    | **Additional Labels**           | Optional node labels in the key-value format. To learn more, review [Apply Labels to Nodes](../../cluster-management/taints.md#labels). Example: `environment:production`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-    | **Taints**                      | You can apply optional taint labels to a worker node pool. Review the [Node Pool](../../cluster-management/node-pool.md) and [Apply Taints to Nodes](../../cluster-management/taints.md#apply-taints-to-nodes) guides to learn more.<br/><br/>Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />- **NoSchedule**—Pods are not scheduled onto nodes with this taint.<br />- **PreferNoSchedule**—Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />- **NoExecute**—Existing pods on nodes with this taint are evicted. |
+    | **Parameter**                   | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+    | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Node pool name**              | A descriptive name for the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+    | **Enable Autoscaler**           | Whether Palette should scale the pool horizontally based on its per-node workload counts. If enabled, instead of the **Number of nodes in the pool** parameter, you will have to configure the **Minimum size** and **Maximum size** parameters, which will allow AKS to adjust the node pool size based on the workload. You can set the node count to a minimum of zero and a maximum of 1000. Setting both parameters to the same value results in a static node count.                                                                                                                                                                                                                                                  |
+    | **System Node Pool**            | Sets the pool to be a system node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | **Number of nodes in the pool** | A statically defined number of nodes in the system pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+    | **Additional Labels**           | Optional node labels in the key-value format. To learn more, review [Node Labels](../../cluster-management/node-labels.md). Example: `environment:production`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+    | **Taints**                      | You can apply optional taint labels to a worker node pool. Review the [Node Pool](../../cluster-management/node-pool.md) and [Taints and Tolerations](../../cluster-management/taints.md) guides to learn more.<br/><br/>Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />- **NoSchedule**—Pods are not scheduled onto nodes with this taint.<br />- **PreferNoSchedule**—Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />- **NoExecute**—Existing pods on nodes with this taint are evicted. |
 
     #### Worker Node Pool Cloud Configuration
 
@@ -189,24 +250,24 @@ explains how you can create an Azure AKS cluster managed by Palette.
     | **Managed disk**  | Choose a storage option. For more information, refer to Microsoft's [Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) reference. For information about Solid State Drive (SSD) disks, refer to [Standard SSD Disks for Azure Virtual Machine Workloads](https://azure.microsoft.com/en-us/blog/preview-standard-ssd-disks-for-azure-virtual-machine-workloads/) reference. |
     | **Disk size**     | You can choose disk size based on your requirements. The default size is **60**.                                                                                                                                                                                                                                                                                                                                                     |
 
-12. Click **Next** to continue.
+17. Click **Next** to continue.
 
-13. Specify your preferred **OS Patching Schedule**.
+18. Specify your preferred **OS Patching Schedule**.
 
-14. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
+19. Enable any scan options you want Palette to perform, and select a scan schedule. Palette provides support for
     Kubernetes configuration security, penetration testing, and conformance testing.
 
-15. Schedule any backups you want Palette to perform. Review
+20. Schedule any backups you want Palette to perform. Review
     [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
-16. If you're using custom OIDC, configure the Role-Based Access Control (RBAC). You must map a set of users or groups
+21. If you're using custom OIDC, configure the Role-Based Access Control (RBAC). You must map a set of users or groups
     to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
     [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
     [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
 
-17. Click **Validate** and review the cluster configuration and settings summary.
+22. Click **Validate** and review the cluster configuration and settings summary.
 
-18. Click **Finish Configuration** to deploy the cluster. Provisioning Azure AKS clusters can take several minutes.
+23. Click **Finish Configuration** to deploy the cluster. Provisioning Azure AKS clusters can take several minutes.
 
 The cluster details page contains the status and details of the deployment. Use this page to track the deployment
 progress.

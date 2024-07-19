@@ -32,7 +32,7 @@ The following are some highlights of the comprehensive Palette Edge Solution:
 
 - Distro-agnostic Kubernetes and OS
 
-- Edge artifacts hardened by default according to
+- Edge artifacts hardened according to
   [Center for Internet Security (CIS) standards](https://www.cisecurity.org/cis-benchmarks).
 
 - Secured remote troubleshooting
@@ -78,4 +78,8 @@ specific challenges with additional software.
 
 - [Site Deployment](site-deployment/site-deployment.md)
 
+- [Trusted Boot](trusted-boot/trusted-boot.md)
+
 - [Networking](networking/networking.md)
+
+- [Third-Party Integration](third-party-integrations/third-party-integrations.md)

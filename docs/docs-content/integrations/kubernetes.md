@@ -87,7 +87,7 @@ four months. Once we stop supporting the minor version, we initiate the deprecat
 
 - Operating System (OS) dependencies as listed in the table.
 
-  | OS Distribution | OS Version | Supports Kubernetes 1.27.x |
+  | OS Distribution | OS Version | Supports Kubernetes 1.29.x |
   | --------------- | ---------- | -------------------------- |
   | CentOS          | 7.7        | ✅                         |
   | Ubuntu          | 22.04      | ✅                         |
@@ -455,12 +455,11 @@ cloud:
 
 - Operating System (OS) dependencies as listed in the table.
 
-  | OS Distribution | OS Version | Supports Kubernetes 1.27.x |
+  | OS Distribution | OS Version | Supports Kubernetes 1.28.x |
   | --------------- | ---------- | -------------------------- |
   | CentOS          | 7.7        | ✅                         |
   | Ubuntu          | 22.04      | ✅                         |
   | Ubuntu          | 20.04      | ❌                         |
-  | Ubuntu          | 18.04      | ❌                         |
 
 ## Parameters
 
@@ -828,7 +827,6 @@ cloud:
   | CentOS          | 7.7        | ✅                         |
   | Ubuntu          | 22.04      | ✅                         |
   | Ubuntu          | 20.04      | ❌                         |
-  | Ubuntu          | 18.04      | ❌                         |
 
 ## Parameters
 
@@ -1177,7 +1175,7 @@ data "spectrocloud_registry" "public_registry" {
 
 data "spectrocloud_pack_simple" "k8s" {
   name    = "kubernetes"
-  version = "1.26.4"
+  version = "1.29.4"
   type = "helm"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }

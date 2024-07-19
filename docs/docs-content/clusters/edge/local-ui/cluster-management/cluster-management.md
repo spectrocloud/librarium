@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Cluster Management"
-title: "Cluster Management"
-description: "Instructions for cluster management with Local UI."
+sidebar_label: "Cluster Operations"
+title: "Cluster Operations"
+description: "Learn about the various cluster operations you can perform from Local UI."
 hide_table_of_contents: false
 sidebar_position: 32
 tags: ["edge"]
@@ -15,7 +15,7 @@ bundle of one or more cluster profiles and their profile variables, from Palette
 
 :::
 
-Refer to the following resources to learn how to upload content and create a cluster using the local UI:
+Refer to the following resources to learn how to upload content and create a cluster using Local UI:
 
 - [Upload Content Bundle](./upload-content-bundle.md)
 

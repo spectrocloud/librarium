@@ -7,7 +7,7 @@ sidebar_position: 100
 tags: ["edge"]
 ---
 
-Palette offers the option to customize the local UI web interface. You can change the color of the sidebar as well as
+Palette offers the option to customize the Local UI web interface. You can change the color of the sidebar as well as
 using your own logo. You can do this before deployment during the EdgeForge process to standardize the look feel of the
 console for all Edge hosts of your organization.
 
@@ -63,11 +63,12 @@ console for all Edge hosts of your organization.
 
 3. Create a directory called **ui** at the path `CanvOS/ui`.
 
-4. In the directory, create a file named **customizations.json**.
+4. In the directory, create a file named **customizations.json**. This is the same file you can use to add custom links
+   to your sidebar. For more information, refer to [Add Custom Links to Local UI](./custom-link.md).
 
-5. Upload a logo you'd like to use for the local UI to the **ui** directory. All file types are allowed. We recommend
-   you limit the height of the logo image to between 64 px and 120 px. If you don't upload a logo, the local UI will use
-   the Spectro Cloud logo.
+5. Upload a logo you'd like to use for Local UI to the **ui** directory. All file types are allowed. We recommend you
+   limit the height of the logo image to between 64 px and 120 px. If you don't upload a logo, Local UI will use the
+   Spectro Cloud logo.
 
 6. Populate the file with the following schema:
 
@@ -81,12 +82,12 @@ console for all Edge hosts of your organization.
    }
    ```
 
-   The sidebar color controls the color of the sidebar. This is also the color of the background in the local UI login
+   The sidebar color controls the color of the sidebar. This is also the color of the background in the Local UI login
    screen. We suggest you choose a color that contrasts well against your logo as the logo as the color will serve as
    the background for your logo. The **brand** color controls the color of buttons and checkboxes in the UI. The
    following image displays the default logo, brand, and sidebar color.
 
-   ![A screenshot of the local UI showing the elements controlled by the color properties and the location of the logo](/cluster_edge_emc_theming.webp)
+   ![A screenshot of Local UI showing the elements controlled by the color properties and the location of the logo](/cluster_edge_emc_theming.webp)
 
 7. Compress the UI directory to a TAR file. The file must be named **ui.tar**.
 

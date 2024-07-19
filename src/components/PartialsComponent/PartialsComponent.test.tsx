@@ -15,10 +15,16 @@ const Partial: React.FunctionComponent<{}> = ({}) => (
 
 jest.mock("./PartialsImporter", () => {
   return jest.fn(() => {
-    const mapKey = category.concat("#").concat(name);
-    const pmap: PartialsMap = {};
-    pmap[mapKey] = Partial as FunctionComponent;
-    return pmap;
+    const allPartials: PartialsMap = {};
+    const mapKey = "current".concat("#").concat(category).concat("#").concat(name);
+    allPartials[mapKey] = Partial as FunctionComponent;
+    return allPartials;
+  });
+});
+
+jest.mock("./GetVersion", () => {
+  return jest.fn(() => {
+    return "current";
   });
 });
 
@@ -35,7 +41,7 @@ describe("Partials Component", () => {
 
   it("partial does not exist", () => {
     expect(() => render(<PartialsComponent category="unknownCat" name="unknownName" propTest={propValue} />)).toThrow(
-      "No partial found for name unknownName in category unknownCat."
+      "No partial found for name unknownName in category unknownCat for version current."
     );
   });
 });

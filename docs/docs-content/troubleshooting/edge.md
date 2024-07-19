@@ -10,11 +10,29 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - IP Address not Assigned to Edge Host
+
+When you add a new VMware vSphere Edge host to an Edge cluster, the IP address may fail to be assigned to the Edge host
+after a reboot.
+
+### Debug Steps
+
+1. Access the Edge host through the
+   [vSphere Web Console](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-92986CAA-4FDE-4AA0-A9E9-084FF9E03323.html).
+
+2. Issue the following command.
+
+   ```bash
+   networkctl reload
+   ```
+
+   This command restarts the Edge host network and allows the Edge host to receive an IP address.
+
 ## Scenario - Override or Reconfigure Read-only File System Stage
 
 If you need to override or reconfigure the read-only file system, you can do so using the following steps.
 
-## Debug Steps
+### Debug Steps
 
 1. Power on the Edge host.
 
@@ -42,23 +60,23 @@ adjust the values of related environment variables in the KubeVip DaemonSet with
 
 2. Issue the following command:
 
-```shell
-kubectl edit ds kube-vip-ds --namespace kube-system
-```
+   ```shell
+   kubectl edit ds kube-vip-ds --namespace kube-system
+   ```
 
 3. In the `env` of the KubeVip service, modify the environment variables to have the following corresponding values.
 
-```yaml {4-9}
-env:
-  - name: vip_leaderelection
-    value: "true"
-  - name: vip_leaseduration
-    value: "30"
-  - name: vip_renewdeadline
-    value: "20"
-  - name: vip_retryperiod
-    value: "4"
-```
+   ```yaml {4-9}
+   env:
+     - name: vip_leaderelection
+       value: "true"
+     - name: vip_leaseduration
+       value: "30"
+     - name: vip_renewdeadline
+       value: "20"
+     - name: vip_retryperiod
+       value: "4"
+   ```
 
 4. Within a minute, the old Pods in unknown state will be terminated and Pods will come up with the updated values.
 
@@ -136,3 +154,25 @@ issues or not being available. Use the following steps to troubleshoot and resol
 
 7. If you continue to encounter issues, contact our support team by emailing
    [support@spectrocloud.com](mailto:support@spectrocloud.com) so that we can provide you with further guidance.
+
+## Scenario - systemd-resolved.service Enters Failed State
+
+When you create a cluster with an Edge host that operates the RHEL Operating System (OS), you may encounter an error
+where the `systemd-resolved.service` process enters the **failed** state. This prevents the nameserver from being
+configured, which will result in cluster deployment failure.
+
+### Debug Steps
+
+1. Establish an SSH connection to the Edge host.
+
+   Alternatively, press the keys **Fn + Ctrl +Cmd + F1** on a keyboard that is connected to the Edge host to log in to
+   the terminal. If you are on Windows, press **Fn + Ctrl + Alt + F1**.
+
+2. Issue the following command.
+
+   ```shell
+   chmod a+rwxt /var/tmp
+   systemctl enable --now systemd-resolved.service
+   ```
+
+   This will start the `systemd-resolved.service` process and move the cluster creation process forward.

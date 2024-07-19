@@ -27,9 +27,6 @@
     "V1AwsPropertiesValidateSpec": {
       "description": "AWS properties validate spec",
       "properties": {
-        "cloudAccountUid": {
-          "type": "string"
-        },
         "region": {
           "type": "string"
         },
@@ -2267,11 +2264,9 @@
       "description": "Aws cloud account information",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the account.",
           "type": "string"
         },
         "metadata": {
@@ -2415,11 +2410,11 @@
       "description": "AwsCloudConfig is the Schema for the awscloudconfigs API",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
           "type": "string"
         },
         "kind": {
-          "description": "Cloud type of the cloud config",
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
           "type": "string"
         },
         "metadata": {
@@ -2813,11 +2808,9 @@
       "description": "AWS cloud VM definition",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the machine.",
           "type": "string"
         },
         "metadata": {
@@ -2935,7 +2928,7 @@
           "x-omitempty": false
         },
         "labels": {
-          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "description": "labels for this pool, example: control-plane/worker, gpu, windows",
           "items": {
             "type": "string"
           },
@@ -2984,7 +2977,7 @@
           "type": "object"
         },
         "taints": {
-          "description": "master or worker taints",
+          "description": "control plane or worker taints",
           "items": {
             "$ref": "#/definitions/v1Taint"
           },
@@ -2996,7 +2989,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -3489,11 +3482,11 @@
       "description": "Azure account information",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
+          "description": "Cloud account api version",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the account.",
+          "description": "Cloud account kind",
           "type": "string"
         },
         "metadata": {
@@ -3590,11 +3583,11 @@
       "description": "AzureCloudConfig is the Schema for the azurecloudconfigs API",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
           "type": "string"
         },
         "kind": {
-          "description": "Cloud type of the cloud config",
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
           "type": "string"
         },
         "metadata": {
@@ -3805,11 +3798,9 @@
       "description": "Azure cloud VM definition",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the machine.",
           "type": "string"
         },
         "metadata": {
@@ -3886,7 +3877,7 @@
           "x-omitempty": false
         },
         "labels": {
-          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "description": "labels for this pool, example: control-plane/worker, gpu, windows",
           "items": {
             "type": "string"
           },
@@ -3930,7 +3921,7 @@
           "description": "SpotVMOptions allows the ability to specify the Machine should use a Spot VM"
         },
         "taints": {
-          "description": "master or worker taints",
+          "description": "control plane or worker taints",
           "items": {
             "$ref": "#/definitions/v1Taint"
           },
@@ -3942,7 +3933,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -4522,6 +4513,10 @@
     "v1BrokerToken": {
       "description": "Response for broker login request",
       "properties": {
+        "maxAllowedClients": {
+          "description": "maximum number of clients that can subscribe to the subject",
+          "type": "integer"
+        },
         "msgCtxData": {
           "additionalProperties": {
             "type": "string"
@@ -4636,11 +4631,6 @@
         "country": {
           "description": "Country name the card belongs",
           "type": "string"
-        },
-        "expMonth": {
-          "description": "Expiry month of the card",
-          "format": "uint64",
-          "type": "number"
         },
         "expYear": {
           "description": "Expiry year of the card",
@@ -5476,30 +5466,6 @@
         },
         "machineManagementConfig": {
           "$ref": "#/definitions/v1MachineManagementConfig"
-        },
-        "resources": {
-          "$ref": "#/definitions/v1ClusterResourcesEntity"
-        },
-        "updateWorkerPoolsInParallel": {
-          "type": "boolean"
-        }
-      },
-      "type": "object"
-    },
-    "v1ClusterConfigParamEntity": {
-      "properties": {
-        "clusterMetaAttribute": {
-          "description": "ClusterMetaAttribute can be used to set additional cluster metadata information.",
-          "type": "string"
-        },
-        "controlPlaneHealthCheckTimeout": {
-          "type": "string"
-        },
-        "hostClusterConfig": {
-          "$ref": "#/definitions/v1HostClusterConfig"
-        },
-        "location": {
-          "$ref": "#/definitions/v1ClusterLocation"
         },
         "resources": {
           "$ref": "#/definitions/v1ClusterResourcesEntity"
@@ -6412,6 +6378,15 @@
         }
       }
     },
+    "v1ClusterNotificationStatus": {
+      "description": "Cluster notifications status",
+      "properties": {
+        "isAvailable": {
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      }
+    },
     "v1ClusterNotificationUpdateEntity": {
       "description": "Cluster input for notification update",
       "properties": {
@@ -6507,11 +6482,11 @@
       "description": "ClusterProfile is the Schema for the clusterprofiles API",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
           "type": "string"
         },
         "kind": {
-          "description": "Cloud type of the cloud config",
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
           "type": "string"
         },
         "metadata": {
@@ -8851,11 +8826,11 @@
       "description": "CoxEdge cloud account information",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
+          "description": "Cloud account api version",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the account.",
+          "description": "Cloud account kind",
           "type": "string"
         },
         "metadata": {
@@ -8946,11 +8921,11 @@
       "description": "CoxEdgeCloudConfig is the Schema for the coxedgecloudconfigs API",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
           "type": "string"
         },
         "kind": {
-          "description": "Cloud type of the cloud config",
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
           "type": "string"
         },
         "metadata": {
@@ -9166,11 +9141,9 @@
       "description": "CoxEdge cloud VM definition",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the machine.",
           "type": "string"
         },
         "metadata": {
@@ -9243,7 +9216,7 @@
           "type": "boolean"
         },
         "labels": {
-          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "description": "labels for this pool, example: control-plane/worker, gpu, windows",
           "items": {
             "type": "string"
           },
@@ -9293,7 +9266,7 @@
           "type": "string"
         },
         "taints": {
-          "description": "master or worker taints",
+          "description": "control plane or worker taints",
           "items": {
             "$ref": "#/definitions/v1Taint"
           },
@@ -9305,7 +9278,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -9541,11 +9514,11 @@
       "description": "Custom account information",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
+          "description": "Cloud account api version",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the account.",
+          "description": "Cloud account kind",
           "type": "string"
         },
         "metadata": {
@@ -9618,7 +9591,7 @@
       "description": "CustomCloudConfig is the Schema for the custom cloudconfigs API",
       "properties": {
         "kind": {
-          "description": "Cloud type of the cloud config",
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
           "type": "string"
         },
         "metadata": {
@@ -9857,11 +9830,9 @@
       "description": "Custom cloud VM definition",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the machine.",
           "type": "string"
         },
         "metadata": {
@@ -9892,7 +9863,7 @@
           "x-omitempty": false
         },
         "taints": {
-          "description": "Master or worker taints",
+          "description": "control plane or worker taints",
           "items": {
             "$ref": "#/definitions/v1Taint"
           },
@@ -9900,7 +9871,7 @@
           "uniqueItems": true
         },
         "useControlPlaneAsWorker": {
-          "description": "If IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "If IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -9939,7 +9910,7 @@
           "type": "integer"
         },
         "taints": {
-          "description": "master or worker taints",
+          "description": "control plane or worker taints",
           "items": {
             "$ref": "#/definitions/v1Taint"
           },
@@ -9947,7 +9918,7 @@
           "uniqueItems": true
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         },
@@ -10538,92 +10509,6 @@
       ],
       "type": "object"
     },
-    "v1EdgeCloudClusterConfigEntity": {
-      "description": "Edge cloud cluster config entity",
-      "properties": {
-        "clusterConfig": {
-          "$ref": "#/definitions/v1EdgeClusterConfig"
-        }
-      },
-      "type": "object"
-    },
-    "v1EdgeCloudConfig": {
-      "description": "EdgeCloudConfig is the Schema for the Edgecloudconfigs API",
-      "properties": {
-        "apiVersion": {
-          "description": "Deprecated. Not used for the resource info. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Cloud type of the cloud config",
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1EdgeCloudConfigSpec"
-        },
-        "status": {
-          "$ref": "#/definitions/v1EdgeCloudConfigStatus"
-        }
-      },
-      "type": "object"
-    },
-    "v1EdgeCloudConfigSpec": {
-      "description": "EdgeCloudConfigSpec defines the desired state of EdgeCloudConfig",
-      "properties": {
-        "clusterConfig": {
-          "$ref": "#/definitions/v1EdgeClusterConfig"
-        },
-        "machinePoolConfig": {
-          "items": {
-            "$ref": "#/definitions/v1EdgeMachinePoolConfig"
-          },
-          "type": "array"
-        }
-      },
-      "required": [
-        "clusterConfig",
-        "machinePoolConfig"
-      ],
-      "type": "object"
-    },
-    "v1EdgeCloudConfigStatus": {
-      "properties": {
-        "conditions": {
-          "items": {
-            "$ref": "#/definitions/v1ClusterCondition"
-          },
-          "type": "array"
-        },
-        "nodeImage": {
-          "type": "string"
-        },
-        "sourceImageId": {
-          "description": "SourceImageId can be from packref's annotations or from pack.json",
-          "type": "string"
-        },
-        "useCapiImage": {
-          "description": "PackerVariableDigest string `json:\"packerDigest,omitempty\"` If no ansible roles found in Packs then Mold should tell Drive to use capi image and not create custom image, because there is nothing to add",
-          "type": "boolean"
-        }
-      },
-      "type": "object"
-    },
-    "v1EdgeClusterConfig": {
-      "description": "EdgeClusterConfig defines Edge Cluster specific Spec",
-      "properties": {
-        "sshKeys": {
-          "description": "SSHKeys specifies a list of ssh authorized keys to access the vms as a 'spectro' user",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
     "v1EdgeHost": {
       "description": "EdgeHost is the underlying appliance",
       "properties": {
@@ -10773,7 +10658,7 @@
           "$ref": "#/definitions/v1ServiceSpec"
         },
         "type": {
-          "description": "Cloudtype of the provisioned edge host",
+          "description": "Deprecated. Cloudtype of the provisioned edge host",
           "enum": [
             "libvirt",
             "vsphere",
@@ -11158,259 +11043,13 @@
       ],
       "type": "object"
     },
-    "v1EdgeInstanceType": {
-      "description": "EdgeInstanceType defines the instance configuration for a docker container node",
+    "v1EdgeHostsTags": {
       "properties": {
-        "memoryInMB": {
-          "description": "MemoryinMB is the memory in megabytes",
-          "format": "int32",
-          "type": "integer"
-        },
-        "numCPUs": {
-          "description": "NumCPUs is the number of CPUs",
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "required": [
-        "numCPUs",
-        "memoryInMB"
-      ],
-      "type": "object"
-    },
-    "v1EdgeMachine": {
-      "description": "Edge cloud VM definition",
-      "properties": {
-        "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Deprecated. Cloud type of the machine.",
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1EdgeMachineSpec"
-        },
-        "status": {
-          "$ref": "#/definitions/v1CloudMachineStatus"
-        }
-      },
-      "type": "object"
-    },
-    "v1EdgeMachinePoolCloudConfigEntity": {
-      "properties": {
-        "edgeHosts": {
-          "items": {
-            "$ref": "#/definitions/v1EdgeMachinePoolHostEntity"
-          },
-          "type": "array",
-          "uniqueItems": true
-        }
-      },
-      "required": [
-        "edgeHosts"
-      ]
-    },
-    "v1EdgeMachinePoolConfig": {
-      "properties": {
-        "additionalLabels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "additionalLabels",
-          "type": "object"
-        },
-        "additionalTags": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
-          "type": "object"
-        },
-        "hosts": {
-          "items": {
-            "$ref": "#/definitions/v1EdgeMachinePoolHost"
-          },
-          "type": "array"
-        },
-        "isControlPlane": {
-          "description": "whether this pool is for control plane",
-          "type": "boolean"
-        },
-        "labels": {
-          "description": "labels for this pool, example: master/worker, gpu, windows",
+        "tags": {
           "items": {
             "type": "string"
           },
           "type": "array"
-        },
-        "machinePoolProperties": {
-          "$ref": "#/definitions/v1MachinePoolProperties"
-        },
-        "maxSize": {
-          "description": "max size of the pool, for scaling",
-          "format": "int32",
-          "type": "integer"
-        },
-        "minSize": {
-          "description": "min size of the pool, for scaling",
-          "format": "int32",
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "nodeRepaveInterval": {
-          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
-          "format": "int32",
-          "type": "integer"
-        },
-        "size": {
-          "description": "size of the pool, number of machines",
-          "format": "int32",
-          "type": "integer"
-        },
-        "taints": {
-          "description": "master or worker taints",
-          "items": {
-            "$ref": "#/definitions/v1Taint"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "updateStrategy": {
-          "$ref": "#/definitions/v1UpdateStrategy",
-          "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
-        },
-        "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
-          "type": "boolean"
-        }
-      },
-      "required": [
-        "hosts"
-      ],
-      "type": "object"
-    },
-    "v1EdgeMachinePoolConfigEntity": {
-      "properties": {
-        "cloudConfig": {
-          "$ref": "#/definitions/v1EdgeMachinePoolCloudConfigEntity"
-        },
-        "poolConfig": {
-          "$ref": "#/definitions/v1MachinePoolConfigEntity"
-        }
-      },
-      "type": "object"
-    },
-    "v1EdgeMachinePoolHost": {
-      "description": "EdgeHost of Edge clusters",
-      "properties": {
-        "hostAddress": {
-          "description": "HostAddress is a FQDN or IP address of the Host",
-          "type": "string"
-        },
-        "hostIdentity": {
-          "$ref": "#/definitions/v1EdgeMachinePoolHostIdentity",
-          "description": "HostIdentity is the identity to access the edge host"
-        },
-        "hostName": {
-          "description": "HostName is the name of the EdgeHost",
-          "type": "string"
-        },
-        "hostUid": {
-          "description": "HostUid is the ID of the EdgeHost",
-          "type": "string"
-        }
-      },
-      "required": [
-        "hostUid",
-        "hostAddress"
-      ],
-      "type": "object"
-    },
-    "v1EdgeMachinePoolHostEntity": {
-      "properties": {
-        "hostUid": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "hostUid"
-      ]
-    },
-    "v1EdgeMachinePoolHostIdentity": {
-      "properties": {
-        "caCert": {
-          "description": "CACert is the client CA certificate",
-          "type": "string"
-        },
-        "socketPath": {
-          "description": "SocketPath is an optional path to the socket on the host, if not using defaults",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1EdgeMachineSpec": {
-      "description": "Edge cloud VM definition spec",
-      "properties": {
-        "bootstrapped": {
-          "type": "boolean"
-        },
-        "customImage": {
-          "type": "string"
-        },
-        "edgeHostUid": {
-          "type": "string"
-        },
-        "instanceType": {
-          "$ref": "#/definitions/v1EdgeInstanceType"
-        },
-        "loadBalancerConfigured": {
-          "type": "boolean"
-        },
-        "mounts": {
-          "items": {
-            "$ref": "#/definitions/v1EdgeMount"
-          },
-          "type": "array",
-          "uniqueItems": true
-        }
-      },
-      "type": "object"
-    },
-    "v1EdgeMachines": {
-      "description": "Edge machine list",
-      "properties": {
-        "items": {
-          "items": {
-            "$ref": "#/definitions/v1EdgeMachine"
-          },
-          "type": "array",
-          "uniqueItems": true
-        }
-      },
-      "required": [
-        "items"
-      ],
-      "type": "object"
-    },
-    "v1EdgeMount": {
-      "description": "Edge mounts",
-      "properties": {
-        "containerPath": {
-          "type": "string"
-        },
-        "hostPath": {
-          "type": "string"
-        },
-        "readonly": {
-          "type": "boolean"
         }
       },
       "type": "object"
@@ -11612,11 +11251,9 @@
       "description": "EdgeNative cloud VM definition",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the machine.",
           "type": "string"
         },
         "metadata": {
@@ -11673,7 +11310,7 @@
           "type": "boolean"
         },
         "labels": {
-          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "description": "labels for this pool, example: control-plane/worker, gpu, windows",
           "items": {
             "default": "",
             "type": "string"
@@ -11711,7 +11348,7 @@
           "type": "integer"
         },
         "taints": {
-          "description": "master or worker taints",
+          "description": "control plane or worker taints",
           "items": {
             "$ref": "#/definitions/v1Taint"
           },
@@ -11722,7 +11359,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -12056,11 +11693,11 @@
       "description": "EksCloudConfig is the Schema for the ekscloudconfigs API",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
           "type": "string"
         },
         "kind": {
-          "description": "Cloud type of the cloud config",
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
           "type": "string"
         },
         "metadata": {
@@ -12280,7 +11917,7 @@
           "x-omitempty": false
         },
         "labels": {
-          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "description": "labels for this pool, example: control-plane/worker, gpu, windows",
           "items": {
             "type": "string"
           },
@@ -12329,7 +11966,7 @@
           "type": "object"
         },
         "taints": {
-          "description": "master or worker taints",
+          "description": "control plane or worker taints",
           "items": {
             "$ref": "#/definitions/v1Taint"
           },
@@ -12341,7 +11978,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -12483,6 +12120,21 @@
       ],
       "type": "object"
     },
+    "v1EventsObjectsEntity": {
+      "properties": {
+        "resourceType": {
+          "type": "string"
+        },
+        "resourceUid": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "resourceType",
+        "resourceUid"
+      ],
+      "type": "object"
+    },
     "v1EventsRelatedObjectsEntity": {
       "properties": {
         "relatedObjectUids": {
@@ -12550,6 +12202,83 @@
       },
       "required": [
         "namespace"
+      ],
+      "type": "object"
+    },
+    "v1Feature": {
+      "description": "Feature response",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1FeatureSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1FeatureFlagPing": {
+      "properties": {
+        "msg": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1FeatureSpec": {
+      "description": "Feature spec",
+      "properties": {
+        "description": {
+          "description": "Feature description",
+          "type": "string"
+        },
+        "docLink": {
+          "description": "Feature doc link",
+          "type": "string"
+        },
+        "key": {
+          "description": "Feature key",
+          "type": "string"
+        }
+      }
+    },
+    "v1FeatureUpdate": {
+      "description": "Feature update spec",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMetaInputEntity"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1FeatureUpdateSpec"
+        }
+      }
+    },
+    "v1FeatureUpdateSpec": {
+      "description": "Feature update spec",
+      "properties": {
+        "description": {
+          "description": "Feature description",
+          "type": "string"
+        },
+        "docLink": {
+          "description": "Feature doc link",
+          "type": "string"
+        }
+      }
+    },
+    "v1Features": {
+      "properties": {
+        "items": {
+          "description": "List of features",
+          "items": {
+            "$ref": "#/definitions/v1Feature"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "items"
       ],
       "type": "object"
     },
@@ -12867,11 +12596,11 @@
       "description": "GCP account information",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
+          "description": "Cloud account api version",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the account.",
+          "description": "Cloud account kind",
           "type": "string"
         },
         "metadata": {
@@ -12890,11 +12619,11 @@
       "description": "GCP account information",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
+          "description": "Cloud account api version",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the account.",
+          "description": "Cloud account kind",
           "type": "string"
         },
         "metadata": {
@@ -13010,11 +12739,11 @@
       "description": "GcpCloudConfig is the Schema for the gcpcloudconfigs API",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
           "type": "string"
         },
         "kind": {
-          "description": "Cloud type of the cloud config",
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
           "type": "string"
         },
         "metadata": {
@@ -13166,11 +12895,9 @@
       "description": "GCP cloud VM definition",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the machine.",
           "type": "string"
         },
         "metadata": {
@@ -13250,7 +12977,7 @@
           "type": "boolean"
         },
         "labels": {
-          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "description": "labels for this pool, example: control-plane/worker, gpu, windows",
           "items": {
             "type": "string"
           },
@@ -13299,7 +13026,7 @@
           "type": "object"
         },
         "taints": {
-          "description": "master or worker taints",
+          "description": "control plane or worker taints",
           "items": {
             "$ref": "#/definitions/v1Taint"
           },
@@ -13311,7 +13038,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -13519,6 +13246,10 @@
         "credentials": {
           "$ref": "#/definitions/v1.GcpAccountEntitySpec",
           "description": "GCP cloud account credentials"
+        },
+        "projectId": {
+          "description": "GCP project id",
+          "type": "string"
         }
       },
       "required": [
@@ -13674,11 +13405,9 @@
       "description": "Generic cloud VM definition",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the machine.",
           "type": "string"
         },
         "metadata": {
@@ -13702,7 +13431,7 @@
           "type": "boolean"
         },
         "labels": {
-          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "description": "labels for this pool, example: control-plane/worker, gpu, windows",
           "items": {
             "type": "string"
           },
@@ -13722,7 +13451,7 @@
           "type": "integer"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -14060,11 +13789,9 @@
       "description": "Helm registry information",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "metadata": {
@@ -15367,11 +15094,11 @@
       "description": "LibvirtCloudConfig is the Schema for the libvirtcloudconfigs API",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
           "type": "string"
         },
         "kind": {
-          "description": "Cloud type of the cloud config",
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
           "type": "string"
         },
         "metadata": {
@@ -15567,11 +15294,9 @@
       "description": "Libvirt cloud VM definition",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the machine.",
           "type": "string"
         },
         "metadata": {
@@ -15646,7 +15371,7 @@
           "type": "boolean"
         },
         "labels": {
-          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "description": "labels for this pool, example: control-plane/worker, gpu, windows",
           "items": {
             "type": "string"
           },
@@ -15698,7 +15423,7 @@
           "type": "integer"
         },
         "taints": {
-          "description": "master or worker taints",
+          "description": "control plane or worker taints",
           "items": {
             "$ref": "#/definitions/v1Taint"
           },
@@ -15710,7 +15435,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
           "type": "boolean"
         },
         "xslTemplate": {
@@ -16170,11 +15895,9 @@
       "description": "Maas cloud account information",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the account.",
           "type": "string"
         },
         "metadata": {
@@ -16243,11 +15966,11 @@
       "description": "MaasCloudConfig is the Schema for the maascloudconfigs API",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
           "type": "string"
         },
         "kind": {
-          "description": "Cloud type of the cloud config",
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
           "type": "string"
         },
         "metadata": {
@@ -16397,11 +16120,9 @@
       "description": "Maas cloud VM definition",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the machine.",
           "type": "string"
         },
         "metadata": {
@@ -16419,7 +16140,7 @@
     "v1MaasMachineConfigEntity": {
       "properties": {
         "azs": {
-          "description": "for master pool, this will be the failure domains for kcp",
+          "description": "for control plane pool, this will be the failure domains for kcp",
           "items": {
             "type": "string"
           },
@@ -16494,7 +16215,7 @@
           "type": "boolean"
         },
         "labels": {
-          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "description": "labels for this pool, example: control-plane/worker, gpu, windows",
           "items": {
             "type": "string"
           },
@@ -16537,7 +16258,7 @@
           "type": "array"
         },
         "taints": {
-          "description": "master or worker taints",
+          "description": "control plane or worker taints",
           "items": {
             "$ref": "#/definitions/v1Taint"
           },
@@ -16549,7 +16270,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -16786,7 +16507,7 @@
       "type": "object"
     },
     "v1MachineCertificate": {
-      "description": "K8 Certificates for master nodes",
+      "description": "K8 Certificates for control plane nodes",
       "properties": {
         "certificateAuthorities": {
           "description": "Applicable certificate authorities",
@@ -16802,7 +16523,7 @@
       "type": "object"
     },
     "v1MachineCertificates": {
-      "description": "K8 Certificates for all the cluster's master nodes",
+      "description": "K8 Certificates for all the cluster's control plane nodes",
       "properties": {
         "machineCertificates": {
           "items": {
@@ -16898,7 +16619,7 @@
       "properties": {
         "osPatchConfig": {
           "$ref": "#/definitions/v1OsPatchConfig",
-          "description": "Os patch config contains properties to patch node os with latest security packages. If OsPatchConfig is not provided then node os will not be patched with latest security updates."
+          "description": "OS patch config contains properties to patch node os with latest security packages. \nIf OsPatchConfig is not provided then node os will not be patched with latest security updates.\nNote: For edge based cluster (like edge-native type) the osPatchConfig is NOT applicable, the values will be ignored.\n"
         }
       },
       "type": "object"
@@ -16926,7 +16647,7 @@
           "x-omitempty": false
         },
         "labels": {
-          "description": "Labels for this machine pool, example: master/worker, gpu, windows",
+          "description": "Labels for this machine pool, example: control-plane/worker, gpu, windows",
           "items": {
             "type": "string"
           },
@@ -16959,7 +16680,7 @@
           "type": "integer"
         },
         "taints": {
-          "description": "Master or worker taints",
+          "description": "control plane or worker taints",
           "items": {
             "$ref": "#/definitions/v1Taint"
           },
@@ -16971,7 +16692,7 @@
           "description": "Rolling update strategy for this machine pool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "If IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "If IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -17004,7 +16725,7 @@
           "x-omitempty": false
         },
         "labels": {
-          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "description": "labels for this pool, example: control-plane/worker, gpu, windows",
           "items": {
             "type": "string"
           },
@@ -19359,34 +19080,34 @@
           "additionalProperties": {
             "type": "string"
           },
-          "description": "Annotations are system generated key value metadata for the resource. As an input certain annotations like description can be set.",
+          "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations",
           "type": "object"
         },
         "creationTimestamp": {
           "$ref": "#/definitions/v1Time",
-          "description": "CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value.\nPopulated by the system. Read-only."
+          "description": "CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.\n\nPopulated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata"
         },
         "deletionTimestamp": {
           "$ref": "#/definitions/v1Time",
-          "description": "This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client.\nPopulated by the system. Read-only."
+          "description": "DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested.\n\nPopulated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata"
         },
         "labels": {
           "additionalProperties": {
             "type": "string"
           },
-          "description": "Labels are key value data to organize and categorize resources. Providing spectro__tag as value for a label is considered as a kubernetes compliant tag",
+          "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels",
           "type": "object"
         },
         "lastModifiedTimestamp": {
           "$ref": "#/definitions/v1Time",
-          "description": "LastModifiedTimestamp is a timestamp representing the server time when this object was last modified. It is not guaranteed to be set in happens-before order across separate operations. \nClients may not set this value. Populated by the system. Read-only."
+          "description": "LastModifiedTimestamp is a timestamp representing the server time when this object was last modified. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.\n\nPopulated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata"
         },
         "name": {
-          "description": "Name of the resource.",
+          "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names",
           "type": "string"
         },
         "uid": {
-          "description": "UID is the unique identifier generated for the resource. This is not an input field for any request.",
+          "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids",
           "type": "string"
         }
       },
@@ -19399,18 +19120,18 @@
           "additionalProperties": {
             "type": "string"
           },
-          "description": "Annotations are system generated key value metadata for the resource. As an input certain annotations like description can be set.",
+          "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations",
           "type": "object"
         },
         "labels": {
           "additionalProperties": {
             "type": "string"
           },
-          "description": "Labels are key value data to organize and categorize resources. Providing spectro__tag as value for a label is considered as a kubernetes compliant tag",
+          "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels",
           "type": "object"
         },
         "name": {
-          "description": "Name of the resource.",
+          "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names",
           "type": "string"
         }
       },
@@ -19460,11 +19181,11 @@
           "type": "string"
         },
         "name": {
-          "description": "Name of the referent.",
+          "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
           "type": "string"
         },
         "uid": {
-          "description": "UID of the referent.",
+          "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids",
           "type": "string"
         }
       },
@@ -19795,11 +19516,11 @@
       "description": "OpenStack account information",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
+          "description": "Cloud account api version",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the account.",
+          "description": "Cloud account kind",
           "type": "string"
         },
         "metadata": {
@@ -19914,11 +19635,11 @@
       "description": "OpenStackCloudConfig is the Schema for the OpenStackcloudconfigs API",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
           "type": "string"
         },
         "kind": {
-          "description": "Cloud type of the cloud config",
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
           "type": "string"
         },
         "metadata": {
@@ -20112,11 +19833,9 @@
       "description": "OpenStack cloud VM definition",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the machine.",
           "type": "string"
         },
         "metadata": {
@@ -20134,7 +19853,7 @@
     "v1OpenStackMachineConfigEntity": {
       "properties": {
         "azs": {
-          "description": "for master pool, this will be the failure domains for kcp",
+          "description": "for control plane pool, this will be the failure domains for kcp",
           "items": {
             "type": "string"
           },
@@ -20152,7 +19871,7 @@
     "v1OpenStackMachinePoolCloudConfigEntity": {
       "properties": {
         "azs": {
-          "description": "for master pool, this will be the failure domains for kcp",
+          "description": "for control plane pool, this will be the failure domains for kcp",
           "items": {
             "type": "string"
           },
@@ -20192,7 +19911,7 @@
           "type": "object"
         },
         "azs": {
-          "description": "for master pool, this will be the failure domains for kcp",
+          "description": "for control plane pool, this will be the failure domains for kcp",
           "items": {
             "type": "string"
           },
@@ -20219,7 +19938,7 @@
           "type": "boolean"
         },
         "labels": {
-          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "description": "labels for this pool, example: control-plane/worker, gpu, windows",
           "items": {
             "type": "string"
           },
@@ -20255,7 +19974,7 @@
           "$ref": "#/definitions/v1OpenStackResource"
         },
         "taints": {
-          "description": "master or worker taints",
+          "description": "control plane or worker taints",
           "items": {
             "$ref": "#/definitions/v1Taint"
           },
@@ -20267,7 +19986,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -20685,6 +20404,9 @@
           },
           "type": "array",
           "uniqueItems": true
+        },
+        "notifications": {
+          "$ref": "#/definitions/v1ClusterNotificationStatus"
         },
         "state": {
           "type": "string"
@@ -21403,11 +21125,11 @@
       "description": "Pack metadata object",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
+          "description": "Pack api version",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Not used for the resource info.",
+          "description": "Pack kind",
           "type": "string"
         },
         "metadata": {
@@ -21744,11 +21466,9 @@
       "description": "Pack registry information",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "metadata": {
@@ -21987,11 +21707,11 @@
       "description": "Pack summary object",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
+          "description": "Pack api version",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Not used for the resource info.",
+          "description": "Pack kind",
           "type": "string"
         },
         "metadata": {
@@ -24200,7 +23920,11 @@
         "endTime": {
           "$ref": "#/definitions/v1Time"
         },
+        "includeControlPlaneMachines": {
+          "type": "boolean"
+        },
         "includeMasterMachines": {
+          "description": "Deprecated. Use includeControlPlaneMachines",
           "type": "boolean"
         },
         "namespaces": {
@@ -24358,7 +24082,11 @@
         "endTime": {
           "$ref": "#/definitions/v1Time"
         },
+        "includeControlPlaneMachines": {
+          "type": "boolean"
+        },
         "includeMasterMachines": {
+          "description": "Deprecated. Use includeControlPlaneMachines",
           "type": "boolean"
         },
         "namespaces": {
@@ -24741,7 +24469,11 @@
         "endTime": {
           "$ref": "#/definitions/v1Time"
         },
+        "includeControlPlaneMachines": {
+          "type": "boolean"
+        },
         "includeMasterMachines": {
+          "description": "Deprecated. Use includeControlPlaneMachines",
           "type": "boolean"
         },
         "namespaces": {
@@ -25594,11 +25326,9 @@
       "description": "Service manifest information",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "metadata": {
@@ -25660,11 +25390,9 @@
       "description": "Service version information",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "metadata": {
@@ -26071,11 +25799,11 @@
       "description": "SpectroCluster is the Schema for the spectroclusters API",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
           "type": "string"
         },
         "kind": {
-          "description": "Cloud type of the cloud config",
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
           "type": "string"
         },
         "metadata": {
@@ -26683,15 +26411,6 @@
       },
       "type": "object"
     },
-    "v1SpectroClusterNotifications": {
-      "description": "Spectro cluster notifications",
-      "properties": {
-        "isAvailable": {
-          "type": "boolean",
-          "x-omitempty": false
-        }
-      }
-    },
     "v1SpectroClusterOidcClaims": {
       "properties": {
         "Email": {
@@ -26906,6 +26625,12 @@
         "uid": {
           "description": "Cluster profile uid",
           "type": "string"
+        },
+        "variables": {
+          "items": {
+            "$ref": "#/definitions/v1SpectroClusterVariable"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -27266,6 +26991,16 @@
       },
       "type": "object"
     },
+    "v1SpectroClusterState": {
+      "description": "Spectrocluster state entity",
+      "properties": {
+        "state": {
+          "description": "Spectrocluster state",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1SpectroClusterStatus": {
       "description": "SpectroClusterStatus",
       "properties": {
@@ -27336,6 +27071,15 @@
       },
       "type": "object"
     },
+    "v1SpectroClusterStatusEntity": {
+      "description": "Spectrocluster status entity",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/v1SpectroClusterState"
+        }
+      },
+      "type": "object"
+    },
     "v1SpectroClusterSummary": {
       "description": "Spectro cluster summary",
       "properties": {
@@ -27401,7 +27145,7 @@
               "$ref": "#/definitions/v1SpectroClusterMetrics"
             },
             "notifications": {
-              "$ref": "#/definitions/v1SpectroClusterNotifications"
+              "$ref": "#/definitions/v1ClusterNotificationStatus"
             },
             "repave": {
               "$ref": "#/definitions/v1ClusterRepaveStatus"
@@ -27481,7 +27225,7 @@
           "$ref": "#/definitions/v1SpectroClusterMetrics"
         },
         "notifications": {
-          "$ref": "#/definitions/v1SpectroClusterNotifications"
+          "$ref": "#/definitions/v1ClusterNotificationStatus"
         },
         "packs": {
           "items": {
@@ -27622,6 +27366,23 @@
           "uniqueItems": true
         }
       },
+      "type": "object"
+    },
+    "v1SpectroClusterVariable": {
+      "description": "Variable with value which will be used within the packs of cluster profile",
+      "properties": {
+        "name": {
+          "description": "Variable name",
+          "type": "string"
+        },
+        "value": {
+          "description": "Actual value of the variable to be used within the cluster",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
       "type": "object"
     },
     "v1SpectroClusters": {
@@ -27870,74 +27631,6 @@
       },
       "type": "object"
     },
-    "v1SpectroEdgeClusterEntity": {
-      "description": "Edge cluster request payload for create and update",
-      "properties": {
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta"
-        },
-        "spec": {
-          "properties": {
-            "cloudConfig": {
-              "$ref": "#/definitions/v1EdgeClusterConfig"
-            },
-            "clusterConfig": {
-              "$ref": "#/definitions/v1ClusterConfigEntity",
-              "description": "General cluster configuration like health, patching settings, namespace resource allocation, rbac"
-            },
-            "machinepoolconfig": {
-              "items": {
-                "$ref": "#/definitions/v1EdgeMachinePoolConfigEntity"
-              },
-              "type": "array"
-            },
-            "policies": {
-              "$ref": "#/definitions/v1SpectroClusterPolicies"
-            },
-            "profiles": {
-              "items": {
-                "$ref": "#/definitions/v1SpectroClusterProfileEntity"
-              },
-              "type": "array"
-            }
-          },
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "v1SpectroEdgeClusterImportEntity": {
-      "description": "Spectro Edge cluster import request payload",
-      "properties": {
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMetaInputEntity"
-        },
-        "spec": {
-          "properties": {
-            "clusterConfig": {
-              "$ref": "#/definitions/v1ImportClusterConfig"
-            }
-          },
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "v1SpectroEdgeClusterRateEntity": {
-      "description": "Edge cluster request payload for estimating rate",
-      "properties": {
-        "cloudConfig": {
-          "$ref": "#/definitions/v1EdgeClusterConfig"
-        },
-        "machinepoolconfig": {
-          "items": {
-            "$ref": "#/definitions/v1EdgeMachinePoolConfigEntity"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
     "v1SpectroEdgeNativeClusterEntity": {
       "description": "EdgeNative cluster create or update request payload",
       "properties": {
@@ -27950,7 +27643,7 @@
               "$ref": "#/definitions/v1EdgeNativeClusterConfig"
             },
             "clusterConfig": {
-              "$ref": "#/definitions/v1ClusterConfigParamEntity",
+              "$ref": "#/definitions/v1ClusterConfigEntity",
               "description": "General cluster configuration like health, patching settings, namespace resource allocation, rbac"
             },
             "machinepoolconfig": {
@@ -29844,6 +29537,65 @@
           "type": "string"
         }
       }
+    },
+    "v1SystemFeature": {
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1SystemFeaturesSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1SystemFeatures": {
+      "properties": {
+        "items": {
+          "description": "List of system features",
+          "items": {
+            "$ref": "#/definitions/v1SystemFeature"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "type": "object"
+    },
+    "v1SystemFeaturesOperation": {
+      "properties": {
+        "isAllowed": {
+          "description": "Flag which specifies if feature is allowed or not",
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      },
+      "type": "object"
+    },
+    "v1SystemFeaturesSpec": {
+      "properties": {
+        "description": {
+          "description": "Feature description",
+          "type": "string"
+        },
+        "docLink": {
+          "description": "Feature doc link",
+          "type": "string"
+        },
+        "isAllowed": {
+          "description": "Flag which specifies if feature is allowed or not",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "key": {
+          "description": "Unique Feature key",
+          "type": "string"
+        }
+      },
+      "type": "object"
     },
     "v1SystemFtpSpec": {
       "description": "system ftp config spec",
@@ -31842,11 +31594,11 @@
       "description": "Tencent cloud account information",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
+          "description": "Cloud account api version",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the account.",
+          "description": "Cloud account kind",
           "type": "string"
         },
         "metadata": {
@@ -32041,11 +31793,9 @@
       "description": "Tencent cloud VM definition",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the machine.",
           "type": "string"
         },
         "metadata": {
@@ -32124,7 +31874,7 @@
           "type": "boolean"
         },
         "labels": {
-          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "description": "labels for this pool, example: control-plane/worker, gpu, windows",
           "items": {
             "type": "string"
           },
@@ -32169,7 +31919,7 @@
           "type": "object"
         },
         "taints": {
-          "description": "master or worker taints",
+          "description": "control plane or worker taints",
           "items": {
             "$ref": "#/definitions/v1Taint"
           },
@@ -32180,7 +31930,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -33856,11 +33606,11 @@
       "description": "VirtualCloudConfig is the Schema for the virtual cloudconfigs API",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
           "type": "string"
         },
         "kind": {
-          "description": "Cloud type of the cloud config",
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
           "type": "string"
         },
         "metadata": {
@@ -34049,7 +33799,7 @@
           "type": "boolean"
         },
         "labels": {
-          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "description": "labels for this pool, example: control-plane/worker, gpu, windows",
           "items": {
             "type": "string"
           },
@@ -34080,7 +33830,7 @@
           "type": "integer"
         },
         "taints": {
-          "description": "master or worker taints",
+          "description": "control plane or worker taints",
           "items": {
             "$ref": "#/definitions/v1Taint"
           },
@@ -34092,7 +33842,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
           "type": "boolean"
         }
       },
@@ -37433,11 +37183,11 @@
       "description": "VSphere account information",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
+          "description": "Cloud account api version",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the account.",
+          "description": "Cloud account kind",
           "type": "string"
         },
         "metadata": {
@@ -37508,11 +37258,11 @@
       "description": "VsphereCloudConfig is the Schema for the vspherecloudconfigs API",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
           "type": "string"
         },
         "kind": {
-          "description": "Cloud type of the cloud config",
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
           "type": "string"
         },
         "metadata": {
@@ -37889,11 +37639,9 @@
       "description": "vSphere cloud VM definition",
       "properties": {
         "apiVersion": {
-          "description": "Deprecated. Not used for the resource info.",
           "type": "string"
         },
         "kind": {
-          "description": "Deprecated. Cloud type of the machine.",
           "type": "string"
         },
         "metadata": {
@@ -37948,7 +37696,7 @@
           "x-omitempty": false
         },
         "labels": {
-          "description": "labels for this pool, example: master/worker, gpu, windows",
+          "description": "labels for this pool, example: control-plane/worker, gpu, windows",
           "items": {
             "type": "string"
           },
@@ -37988,7 +37736,7 @@
           "type": "integer"
         },
         "taints": {
-          "description": "master or worker taints",
+          "description": "control plane or worker taints",
           "items": {
             "$ref": "#/definitions/v1Taint"
           },
@@ -38000,7 +37748,7 @@
           "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
           "type": "boolean",
           "x-omitempty": false
         }
@@ -39212,61 +38960,10 @@
     }
   },
   "info": {
-    "title": "Palette APIs - 4.3",
+    "title": "Palette APIs - 4.4",
     "version": "v1"
   },
   "paths": {
-    "/cluster/{uid}/manifest": {
-      "get": {
-        "description": "Deprecated",
-        "operationId": "v1SpectroClustersUidInstallerManifest",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "produces": [
-          "application/octet-stream"
-        ],
-        "responses": {
-          "200": {
-            "description": "download file",
-            "headers": {
-              "Content-Disposition": {
-                "type": "string"
-              }
-            },
-            "schema": {
-              "format": "binary",
-              "type": "string"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the specified cluster's installer manifest file",
-        "tags": [
-          "cluster"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
     "/v1/apiKeys": {
       "get": {
         "operationId": "v1ApiKeysList",
@@ -41166,40 +40863,6 @@
         ]
       }
     },
-    "/v1/auth/org/{orgName}/switch": {
-      "post": {
-        "description": "Creates a request to switch to the same user's other organization. Only possible if user belongs to multiple organization",
-        "operationId": "V1AuthOrgSwitch",
-        "parameters": [
-          {
-            "default": true,
-            "description": "Describes a way to set cookie from backend for switched organization",
-            "in": "query",
-            "name": "setCookie",
-            "type": "boolean"
-          },
-          {
-            "description": "Organization name for which switch request has to be created",
-            "in": "path",
-            "name": "orgName",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1UserToken"
-            }
-          }
-        },
-        "summary": "Creates a request to switch organization",
-        "tags": [
-          "auth"
-        ]
-      }
-    },
     "/v1/auth/org/{org}/oidc/callback": {
       "get": {
         "description": "Returns the Authorization token for the palette. This is called by the IDP as a callback url after IDP authenticates the user with its server.",
@@ -42389,228 +42052,6 @@
           }
         ],
         "summary": "Updates the specified account by cloud type",
-        "tags": [
-          "cloudaccounts"
-        ]
-      }
-    },
-    "/v1/cloudaccounts/coxedge": {
-      "get": {
-        "operationId": "v1CloudAccountsCoxEdgeList",
-        "parameters": [
-          {
-            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
-            "in": "query",
-            "name": "fields",
-            "type": "string"
-          },
-          {
-            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
-            "in": "query",
-            "name": "filters",
-            "type": "string"
-          },
-          {
-            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
-            "in": "query",
-            "name": "orderBy",
-            "type": "string"
-          },
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of cloud account items",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeAccounts"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of CoxEdge cloud accounts",
-        "tags": [
-          "cloudaccounts"
-        ]
-      },
-      "post": {
-        "operationId": "v1CloudAccountsCoxEdgeCreate",
-        "parameters": [
-          {
-            "description": "Request payload to validate CoxEdge cloud account",
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeAccount"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Creates an CoxEdge cloud account",
-        "tags": [
-          "cloudaccounts"
-        ]
-      }
-    },
-    "/v1/cloudaccounts/coxedge/{uid}": {
-      "delete": {
-        "operationId": "v1CloudAccountsCoxEdgeDelete",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Deletes the specified CoxEdge account",
-        "tags": [
-          "cloudaccounts"
-        ]
-      },
-      "get": {
-        "operationId": "v1CloudAccountsCoxEdgeGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeAccount"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the specified CoxEdge account",
-        "tags": [
-          "cloudaccounts"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "CoxEdge cloud account uid",
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudAccountsCoxEdgeUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeAccount"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the specified CoxEdge account",
         "tags": [
           "cloudaccounts"
         ]
@@ -46430,301 +45871,7 @@
         ]
       }
     },
-    "/v1/cloudconfigs/coxedge/{configUid}": {
-      "get": {
-        "operationId": "v1CloudConfigsCoxEdgeGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeCloudConfig"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the specified CoxEdge cloud config",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/cloudconfigs/coxedge/{configUid}/clusterConfig": {
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsCoxEdgeUidClusterConfigUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeCloudClusterConfigEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the cluster configuration information",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/coxedge/{configUid}/machinePools": {
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "v1CloudConfigsCoxEdgeMachinePoolCreate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeMachinePoolConfigEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Creates a CoxEdge cloud config's machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/coxedge/{configUid}/machinePools/{machinePoolName}": {
-      "delete": {
-        "operationId": "v1CloudConfigsCoxEdgeMachinePoolDelete",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Deletes the specified machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine pool name",
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsCoxEdgeMachinePoolUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeMachinePoolConfigEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the specified CoxEdge cloud config's machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
     "/v1/cloudconfigs/coxedge/{configUid}/machinePools/{machinePoolName}/machines": {
-      "get": {
-        "operationId": "v1CloudConfigsCoxEdgePoolMachinesList",
-        "parameters": [
-          {
-            "description": "Set of fields to be presented in the response with values. The fields are comma separated. Eg: metadata.uid,metadata.name",
-            "in": "query",
-            "name": "fields",
-            "type": "string"
-          },
-          {
-            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
-            "in": "query",
-            "name": "filters",
-            "type": "string"
-          },
-          {
-            "description": "Specify the fields with sort order. 1 indicates ascending and -1 for descending. Eg: orderBy=metadata.name=1,metadata.uid=-1",
-            "in": "query",
-            "name": "orderBy",
-            "type": "string"
-          },
-          {
-            "default": 50,
-            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
-            "format": "int64",
-            "in": "query",
-            "name": "limit",
-            "type": "integer"
-          },
-          {
-            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
-            "format": "int64",
-            "in": "query",
-            "name": "offset",
-            "type": "integer"
-          },
-          {
-            "description": "continue token to paginate the subsequent data items",
-            "in": "query",
-            "name": "continue",
-            "type": "string"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of CoxEdge machine items",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeMachines"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of CoxEdge machines",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
       "parameters": [
         {
           "description": "Cluster's cloud config uid",
@@ -46781,125 +45928,6 @@
           }
         ],
         "summary": "Adds the machine to cloud config's machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/coxedge/{configUid}/machinePools/{machinePoolName}/machines/{machineUid}": {
-      "delete": {
-        "operationId": "v1CloudConfigsCoxEdgePoolMachinesUidDelete",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Deletes the specified CoxEdge machine",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "get": {
-        "operationId": "v1CloudConfigsCoxEdgePoolMachinesUidGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeMachine"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the specified CoxEdge machine",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine pool name",
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine uid",
-          "in": "path",
-          "name": "machineUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsCoxEdgePoolMachinesUidUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1CoxEdgeMachine"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the specified machine to the cloud config's machine pool",
         "tags": [
           "cloudconfigs"
         ]
@@ -47313,442 +46341,6 @@
             "name": "body",
             "schema": {
               "$ref": "#/definitions/v1EdgeNativeMachine"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the specified machine to cloud config's machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/edge/{configUid}": {
-      "get": {
-        "operationId": "v1CloudConfigsEdgeGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1EdgeCloudConfig"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the specified edge cloud config",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/cloudconfigs/edge/{configUid}/clusterConfig": {
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsEdgeUidClusterConfig",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1EdgeCloudClusterConfigEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the cluster configuration information",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/edge/{configUid}/machinePools": {
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "v1CloudConfigsEdgeMachinePoolCreate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1EdgeMachinePoolConfigEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Creates a edge cloud config's machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/edge/{configUid}/machinePools/{machinePoolName}": {
-      "delete": {
-        "operationId": "v1CloudConfigsEdgeMachinePoolDelete",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Deletes the specified machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine pool name",
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsEdgeMachinePoolUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1EdgeMachinePoolConfigEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the specified Edge cloud config's machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/edge/{configUid}/machinePools/{machinePoolName}/machines": {
-      "get": {
-        "operationId": "v1CloudConfigsEdgePoolMachinesList",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of Edge machine items",
-            "schema": {
-              "$ref": "#/definitions/v1EdgeMachines"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of Edge machines",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine pool name",
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "v1CloudConfigsEdgePoolMachinesAdd",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1EdgeMachine"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Adds the Edge machine to cloud config's machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/edge/{configUid}/machinePools/{machinePoolName}/machines/{machineUid}": {
-      "delete": {
-        "operationId": "v1CloudConfigsEdgePoolMachinesUidDelete",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Deletes the specified Edge machine",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "get": {
-        "operationId": "v1CloudConfigsEdgePoolMachinesUidGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1EdgeMachine"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the specified Edge machine",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine pool name",
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine uid",
-          "in": "path",
-          "name": "machineUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsEdgePoolMachinesUidUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1EdgeMachine"
             }
           },
           {
@@ -49718,442 +48310,6 @@
           }
         ],
         "summary": "Updates the specified machine to the cloud config's machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/libvirt/{configUid}": {
-      "get": {
-        "operationId": "v1CloudConfigsLibvirtGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1LibvirtCloudConfig"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the specified libvirt cloud config",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/cloudconfigs/libvirt/{configUid}/clusterConfig": {
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsLibvirtUidClusterConfig",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1LibvirtCloudClusterConfigEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the cluster configuration information",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/libvirt/{configUid}/machinePools": {
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "v1CloudConfigsLibvirtMachinePoolCreate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1LibvirtMachinePoolConfigEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Creates a libvirt cloud config's machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/libvirt/{configUid}/machinePools/{machinePoolName}": {
-      "delete": {
-        "operationId": "v1CloudConfigsLibvirtMachinePoolDelete",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Deletes the specified machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine pool name",
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsLibvirtMachinePoolUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1LibvirtMachinePoolConfigEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the specified Libvirt cloud config's machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/libvirt/{configUid}/machinePools/{machinePoolName}/machines": {
-      "get": {
-        "operationId": "v1CloudConfigsLibvirtPoolMachinesList",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of Libvirt machine items",
-            "schema": {
-              "$ref": "#/definitions/v1LibvirtMachines"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of Libvirt machines",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine pool name",
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "post": {
-        "operationId": "v1CloudConfigsLibvirtPoolMachinesAdd",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1LibvirtMachine"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Adds the Libvirt machine to cloud config's machine pool",
-        "tags": [
-          "cloudconfigs"
-        ]
-      }
-    },
-    "/v1/cloudconfigs/libvirt/{configUid}/machinePools/{machinePoolName}/machines/{machineUid}": {
-      "delete": {
-        "operationId": "v1CloudConfigsLibvirtPoolMachinesUidDelete",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was deleted successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Deletes the specified Libvirt machine",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "get": {
-        "operationId": "v1CloudConfigsLibvirtPoolMachinesUidGet",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1LibvirtMachine"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the specified Libvirt machine",
-        "tags": [
-          "cloudconfigs"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster's cloud config uid",
-          "in": "path",
-          "name": "configUid",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine pool name",
-          "in": "path",
-          "name": "machinePoolName",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "description": "Machine uid",
-          "in": "path",
-          "name": "machineUid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "put": {
-        "operationId": "v1CloudConfigsLibvirtPoolMachinesUidUpdate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1LibvirtMachine"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Updates the specified machine to cloud config's machine pool",
         "tags": [
           "cloudconfigs"
         ]
@@ -58270,6 +56426,10 @@
       },
       "parameters": [
         {
+          "enum": [
+            "system",
+            "tenant"
+          ],
           "in": "path",
           "name": "scope",
           "required": true,
@@ -61025,6 +59185,67 @@
       }
     },
     "/v1/dashboard/projects": {
+      "get": {
+        "description": "Deprecated: Use POST /v1/dashboard/projects",
+        "operationId": "v1ProjectsSummary",
+        "parameters": [
+          {
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "continue token to paginate the subsequent data items",
+            "in": "query",
+            "name": "continue",
+            "type": "string"
+          },
+          {
+            "default": 60,
+            "description": "Metric period in minutes defines latest metrics by period",
+            "format": "int32",
+            "in": "query",
+            "name": "metricPeriod",
+            "type": "integer"
+          },
+          {
+            "description": "Scope the request to the specified project uid",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of project summary items",
+            "schema": {
+              "$ref": "#/definitions/v1ProjectsSummary"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Retrieves a list of project summary",
+        "tags": [
+          "dashboard"
+        ]
+      },
       "post": {
         "operationId": "v1ProjectsFilterSummary",
         "parameters": [
@@ -61118,6 +59339,68 @@
           }
         ],
         "summary": "Retrieves a list of projects metadata",
+        "tags": [
+          "dashboard"
+        ]
+      }
+    },
+    "/v1/dashboard/spectroclusters": {
+      "post": {
+        "description": "Deprecated: Use POST /v1/dashboard/spectroclusters/search",
+        "operationId": "v1SpectroClustersFilterSummary",
+        "parameters": [
+          {
+            "description": "limit is a maximum number of responses to return for a list call. Maximum value of the limit is 20.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "format": "int64",
+            "in": "query",
+            "maximum": 20,
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "format": "int64",
+            "in": "query",
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "description": "continue token to paginate the subsequent data items",
+            "in": "query",
+            "name": "continue",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterSummarySpec"
+            }
+          },
+          {
+            "description": "Scope the request to the specified project uid",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cluster summary items",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClustersSummary"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Retrieves a list of cluster summary with provided filter spec Supported filter fields - [\"cpuUsage\", \"memoryUsage\", \"clusterName\", \"tags\", \"healthState\", \"clusterStates\", \"isDeleted\", \"environments\", \"metricPeriod\"] Supported sort fields - [\"environment\", \"clusterName\", \"memoryUsage\", \"healthState\", \"creationTimestamp\", \"lastModifiedTimestamp\"]",
         "tags": [
           "dashboard"
         ]
@@ -63014,6 +61297,48 @@
       }
     },
     "/v1/edgehosts": {
+      "get": {
+        "description": "Deprecated. Use POST /v1/dashboard/edgehosts/search , to retrieve all the edgehosts without pagination use GET /v1/edgehosts/metadata.",
+        "operationId": "v1EdgeHostDevicesList",
+        "parameters": [
+          {
+            "enum": [
+              "libvirt",
+              "edge-native",
+              "vsphere"
+            ],
+            "in": "query",
+            "name": "type",
+            "type": "string"
+          },
+          {
+            "description": "Scope the request to the specified project uid",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of edge host device items",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeHostDevices"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Retrieve the Complete Edgehost Metadata List",
+        "tags": [
+          "edgehosts"
+        ]
+      },
       "post": {
         "operationId": "v1EdgeHostDevicesCreate",
         "parameters": [
@@ -63145,6 +61470,39 @@
           }
         ],
         "summary": "Registers the edge host device",
+        "tags": [
+          "edgehosts"
+        ]
+      }
+    },
+    "/v1/edgehosts/tags": {
+      "get": {
+        "operationId": "v1EdgeHostsTagsGet",
+        "parameters": [
+          {
+            "description": "Scope the request to the specified project uid",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of edge hosts tags",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeHostsTags"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Retrieves a list of edge hosts tags",
         "tags": [
           "edgehosts"
         ]
@@ -64343,6 +62701,85 @@
         }
       ]
     },
+    "/v1/features": {
+      "get": {
+        "operationId": "v1FeaturesList",
+        "parameters": [
+          {
+            "description": "Scope the request to the specified project uid",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1Features"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Retrieves the list of features",
+        "tags": [
+          "features"
+        ]
+      }
+    },
+    "/v1/features/{uid}": {
+      "parameters": [
+        {
+          "description": "Specify the feature uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1FeaturesUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1FeatureUpdate"
+            }
+          },
+          {
+            "description": "Scope the request to the specified project uid",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Update a feature",
+        "tags": [
+          "features"
+        ]
+      }
+    },
     "/v1/filters": {
       "get": {
         "operationId": "v1FiltersList",
@@ -64633,9 +63070,16 @@
           },
           {
             "default": false,
-            "description": "includeMasterMachines in boolean, group the data point by including master nodes if set to true",
+            "description": "Deprecated. includeMasterMachines in boolean, group the data point by including control plane nodes if set to true",
             "in": "query",
             "name": "includeMasterMachines",
+            "type": "boolean"
+          },
+          {
+            "default": false,
+            "description": "includeControlPlaneMachines in boolean, group the data point by including control plane nodes if set to true",
+            "in": "query",
+            "name": "includeControlPlaneMachines",
             "type": "boolean"
           },
           {
@@ -64780,9 +63224,16 @@
           },
           {
             "default": false,
-            "description": "includeMasterMachines in boolean, group the data point by including master nodes if set to true",
+            "description": "Deprecated. includeMasterMachines in boolean, group the data point by including control plane nodes if set to true",
             "in": "query",
             "name": "includeMasterMachines",
+            "type": "boolean"
+          },
+          {
+            "default": false,
+            "description": "includeControlPlaneMachines in boolean, group the data point by including control plane nodes if set to true",
+            "in": "query",
+            "name": "includeControlPlaneMachines",
             "type": "boolean"
           },
           {
@@ -70173,54 +68624,6 @@
         ]
       }
     },
-    "/v1/spectroclusters/agents/{messageKey}/notify": {
-      "post": {
-        "operationId": "V1SpectroClustersAgentsNotify",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "messageKey",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClustersAgentsNotifyEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Ok response without content",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
     "/v1/spectroclusters/aks": {
       "post": {
         "operationId": "v1SpectroClustersAksCreate",
@@ -70828,222 +69231,6 @@
         ]
       }
     },
-    "/v1/spectroclusters/config/edgeInstaller": {
-      "get": {
-        "operationId": "v1SpectroClustersConfigEdgeInstaller",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1ClusterEdgeInstallerConfig"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Cluster configuration for the edge installer",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
-    "/v1/spectroclusters/coxedge": {
-      "post": {
-        "operationId": "v1SpectroClustersCoxEdgeCreate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroCoxEdgeClusterEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Creates a CoxEdge cluster",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
-    "/v1/spectroclusters/coxedge/rate": {
-      "post": {
-        "operationId": "v1SpectroClustersCoxEdgeRate",
-        "parameters": [
-          {
-            "default": "hourly",
-            "enum": [
-              "hourly",
-              "monthly",
-              "yearly"
-            ],
-            "in": "query",
-            "name": "periodType",
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroCoxEdgeClusterRateEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Azure Cluster estimated rate response",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClusterRate"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Get Cox Edge cluster estimated rate information",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
-    "/v1/spectroclusters/coxedge/validate": {
-      "post": {
-        "operationId": "v1SpectroClustersCoxEdgeValidate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroCoxEdgeClusterEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Azure Cluster validation response",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClusterValidatorResponse"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Validates Cox Edge cluster create operation",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
-    "/v1/spectroclusters/edge": {
-      "post": {
-        "operationId": "v1SpectroClustersEdgeCreate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroEdgeClusterEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Creates a Edge cluster",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
     "/v1/spectroclusters/edge-native": {
       "post": {
         "operationId": "v1SpectroClustersEdgeNativeCreate",
@@ -71222,143 +69409,6 @@
           }
         ],
         "summary": "Validates edge-native cluster create operation",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
-    "/v1/spectroclusters/edge/import": {
-      "post": {
-        "operationId": "v1SpectroClustersEdgeImport",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroEdgeClusterImportEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Imports an Edge cluster",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
-    "/v1/spectroclusters/edge/rate": {
-      "post": {
-        "operationId": "v1SpectroClustersEdgeRate",
-        "parameters": [
-          {
-            "default": "hourly",
-            "enum": [
-              "hourly",
-              "monthly",
-              "yearly"
-            ],
-            "in": "query",
-            "name": "periodType",
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroEdgeClusterRateEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Edge Cluster estimated rate response",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClusterRate"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Get edge cluster estimated rate information",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
-    "/v1/spectroclusters/edge/validate": {
-      "post": {
-        "operationId": "v1SpectroClustersEdgeValidate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroEdgeClusterEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "edge Cluster validation response",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClusterValidatorResponse"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Validates edge cluster create operation",
         "tags": [
           "spectroclusters"
         ]
@@ -72108,189 +70158,6 @@
           }
         ],
         "summary": "Validates GKE cluster create operation",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
-    "/v1/spectroclusters/libvirt": {
-      "post": {
-        "operationId": "v1SpectroClustersLibvirtCreate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroLibvirtClusterEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Creates a Libvirt cluster",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
-    "/v1/spectroclusters/libvirt/import": {
-      "post": {
-        "operationId": "v1SpectroClustersLibvirtImport",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroLibvirtClusterImportEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created successfully",
-            "headers": {
-              "AuditUid": {
-                "description": "Audit uid for the request",
-                "type": "string"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/v1Uid"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Imports a libvirt cluster",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
-    "/v1/spectroclusters/libvirt/rate": {
-      "post": {
-        "operationId": "v1SpectroClustersLibvirtRate",
-        "parameters": [
-          {
-            "default": "hourly",
-            "enum": [
-              "hourly",
-              "monthly",
-              "yearly"
-            ],
-            "in": "query",
-            "name": "periodType",
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroLibvirtClusterRateEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Libvirt Cluster estimated rate response",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClusterRate"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Get libvirt cluster estimated rate information",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
-    "/v1/spectroclusters/libvirt/validate": {
-      "post": {
-        "operationId": "v1SpectroClustersLibvirtValidate",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroLibvirtClusterEntity"
-            }
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Libvirt Cluster validation response",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClusterValidatorResponse"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Validates libvirt cluster create operation",
         "tags": [
           "spectroclusters"
         ]
@@ -74560,48 +72427,6 @@
         }
       ]
     },
-    "/v1/spectroclusters/{uid}/edge/edgeHosts": {
-      "get": {
-        "operationId": "v1EdgeClustersHostsList",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of edge host device",
-            "schema": {
-              "$ref": "#/definitions/v1EdgeHostDevices"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of edge host of libvirt cluster",
-        "tags": [
-          "spectroclusters"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster uid",
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
     "/v1/spectroclusters/{uid}/features/backup": {
       "delete": {
         "operationId": "v1ClusterFeatureBackupScheduleReset",
@@ -76075,7 +73900,7 @@
             "Authorization": []
           }
         ],
-        "summary": "Sets the cluster master nodes Kubernetes certificates for renewal",
+        "summary": "Sets the cluster control plane nodes Kubernetes certificates for renewal",
         "tags": [
           "spectroclusters"
         ]
@@ -76109,48 +73934,6 @@
           }
         ],
         "summary": "Returns the specified cluster's kube config file",
-        "tags": [
-          "spectroclusters"
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Cluster uid",
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ]
-    },
-    "/v1/spectroclusters/{uid}/libvirt/edgeHosts": {
-      "get": {
-        "operationId": "v1LibvirtClustersHostsList",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of edge host devices",
-            "schema": {
-              "$ref": "#/definitions/v1EdgeHostDevices"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves a list of edge hosts of the libvirt cluster",
         "tags": [
           "spectroclusters"
         ]
@@ -76651,92 +74434,6 @@
           }
         ],
         "summary": "Patch update specified cluster's packs status",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
-    "/v1/spectroclusters/{uid}/packs/{packName}/config": {
-      "get": {
-        "description": "Deprecated",
-        "operationId": "v1SpectroClustersUidPacksConfigGet",
-        "parameters": [
-          {
-            "description": "cluster uid",
-            "in": "path",
-            "name": "uid",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "pack name",
-            "in": "path",
-            "name": "packName",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "An array of cluster pack values",
-            "schema": {
-              "$ref": "#/definitions/v1SpectroClusterPackConfigList"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the specified cluster's pack configuration",
-        "tags": [
-          "spectroclusters"
-        ]
-      }
-    },
-    "/v1/spectroclusters/{uid}/profile": {
-      "parameters": [
-        {
-          "in": "path",
-          "name": "uid",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "patch": {
-        "operationId": "v1SpectroClustersPatchProfile",
-        "parameters": [
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The resource was updated successfully"
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Replaces the specified cluster profile for the cluster",
         "tags": [
           "spectroclusters"
         ]
@@ -77327,6 +75024,48 @@
         ]
       }
     },
+    "/v1/spectroclusters/{uid}/status": {
+      "get": {
+        "operationId": "v1SpectroClustersUidStatus",
+        "parameters": [
+          {
+            "description": "Scope the request to the specified project uid",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterStatusEntity"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Get the cluster's status",
+        "tags": [
+          "spectroclusters"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Cluster uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
     "/v1/spectroclusters/{uid}/status/condition": {
       "parameters": [
         {
@@ -77812,6 +75551,48 @@
           "spectroclusters"
         ]
       }
+    },
+    "/v1/spectroclusters/{uid}/variables": {
+      "get": {
+        "operationId": "v1SpectroClustersUidVariablesGet",
+        "parameters": [
+          {
+            "description": "Scope the request to the specified project uid",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Variables"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Retrieve a list of variables associated with the cluster",
+        "tags": [
+          "spectroclusters"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Cluster uid for which variables need to be retrieved",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
     },
     "/v1/spectroclusters/{uid}/vms": {
       "get": {
@@ -82507,32 +80288,6 @@
         ]
       }
     },
-    "/v1/users/me": {
-      "get": {
-        "description": "Returns a User with permissions with scopes",
-        "operationId": "v1UsersMeGet",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1UserMe"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Returns the specified User ACL information",
-        "tags": [
-          "users"
-        ]
-      }
-    },
     "/v1/users/meta": {
       "get": {
         "operationId": "v1UsersMetadata",
@@ -84315,10 +82070,6 @@
   "swagger": "2.0",
   "tags": [
     {
-      "name": "cluster",
-      "x-displayName": "Cluster"
-    },
-    {
       "name": "apiKeys",
       "x-displayName": "Api Keys"
     },
@@ -84373,6 +82124,10 @@
     {
       "name": "events",
       "x-displayName": "Events"
+    },
+    {
+      "name": "features",
+      "x-displayName": "Features"
     },
     {
       "name": "filters",

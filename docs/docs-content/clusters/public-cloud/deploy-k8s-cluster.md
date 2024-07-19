@@ -29,8 +29,8 @@ to Kubernetes with minimal effort.
 
 As you navigate the tutorial, refer to this diagram to help you understand how Palette uses a cluster profile as a
 blueprint for the host cluster you deploy. Palette clusters have the same node pools you may be familiar with: control
-plane nodes, often called _master nodes_, and _worker nodes_ where you will deploy applications. The result is a host
-cluster that Palette manages.
+plane nodes, often called _control plane nodes_, and _worker nodes_ where you will deploy applications. The result is a
+host cluster that Palette manages.
 
 ![A view of Palette managing the Kubernetes lifecycle](/tutorials/deploy-clusters/clusters_public-cloud_deploy-k8s-cluster_application.webp)
 
@@ -828,17 +828,9 @@ displaying the version number.
 docker version
 ```
 
-Download the tutorial image to your local machine.
+<PartialsComponent category="tutorials" name="download-tutorials-image-docker" />
 
-```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.1.3
-```
-
-Next, start the container, and open a bash session into it.
-
-```shell
-docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.3 bash
-```
+<PartialsComponent category="tutorials" name="run-tutorials-container-docker" />
 
 Navigate to the tutorial code.
 
@@ -864,17 +856,9 @@ Use the following command and ensure you receive an output displaying the instal
 podman info
 ```
 
-Download the tutorial image to your local machine.
+<PartialsComponent category="tutorials" name="download-tutorials-image-podman" />
 
-```bash
-podman pull ghcr.io/spectrocloud/tutorials:1.1.3
-```
-
-Next, start the container, and open a bash session into it.
-
-```shell
-podman run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.3 bash
-```
+<PartialsComponent category="tutorials" name="run-tutorials-container-podman" />
 
 Navigate to the tutorial code.
 
@@ -898,11 +882,7 @@ Change the directory to the tutorial folder.
 cd tutorials/
 ```
 
-Check out the following git tag.
-
-```shell
-git checkout v1.1.3
-```
+<PartialsComponent category="tutorials" name="checkout-tutorials-tag" />
 
 Change the directory to the tutorial code.
 
@@ -1352,19 +1332,13 @@ the **Enter** key. Next, issue the following command to stop the container.
 
 <TabItem label="Docker" value="docker">
 
-```shell
-docker stop tutorialContainer && \
-docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.3
-```
+<PartialsComponent category="tutorials" name="stop-tutorials-container-docker" />
 
 </TabItem>
 
 <TabItem label="Podman" value="podman">
 
-```shell
-podman stop tutorialContainer && \
-podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.3
-```
+<PartialsComponent category="tutorials" name="stop-tutorials-container-podman" />
 
 </TabItem>
 
@@ -1380,8 +1354,9 @@ Palette assures consistency across cluster deployments through cluster profiles.
 deploy applications to a Kubernetes environment with little or no prior Kubernetes knowledge. In a matter of minutes,
 you were able to provision a new Kubernetes cluster and deploy an application.
 
-We encourage you to check out the [Deploy an Application using Palette Dev Engine](/devx/apps/deploy-app) tutorial to
-learn more about Palette. Palette Dev Engine can help you deploy applications more quickly through the usage of
+We encourage you to check out the
+[Deploy an Application using Palette Dev Engine](/tutorials/cluster-deployment/pde/deploy-app) tutorial to learn more
+about Palette. Palette Dev Engine can help you deploy applications more quickly through the usage of
 [virtual clusters](../../glossary-all.md#palette-virtual-cluster). Feel free to check out the reference links below to
 learn more about Palette.
 

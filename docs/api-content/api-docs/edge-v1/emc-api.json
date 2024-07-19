@@ -47,6 +47,38 @@
             }
           }
         }
+      },
+      "patch": {
+        "description": "Updates a cluster with the provided cluster configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Updates a cluster with the provided cluster configuration",
+        "operationId": "v1UpdateCluster",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterConfiguration"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
       }
     },
     "/v1/edge-mgmt/cluster/applications": {
@@ -80,6 +112,30 @@
             "description": "generic error response",
             "schema": {
               "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/certificates": {
+      "get": {
+        "description": "Get Cluster Certificates Info",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get Cluster Certificates Info",
+        "operationId": "v1CertificateDetails",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CertificateDetails"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
             }
           }
         }
@@ -280,6 +336,30 @@
         }
       }
     },
+    "/v1/edge-mgmt/cluster/renew-certificates": {
+      "post": {
+        "description": "Renew Cluster Certificates",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Renew Cluster Certificates",
+        "operationId": "v1RenewCerts",
+        "responses": {
+          "201": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
     "/v1/edge-mgmt/cluster/settings": {
       "put": {
         "description": "Update cluster settings",
@@ -392,6 +472,68 @@
         }
       }
     },
+    "/v1/edge-mgmt/edgehosts/connectivity/ping": {
+      "get": {
+        "description": "Ping an endpoint",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Ping an endpoint",
+        "operationId": "v1PingHost",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "endpoint",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1PingResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/connectivity/traceroute": {
+      "get": {
+        "description": "Display route that IP packets take to a network host",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Display route that IP packets take to a network host",
+        "operationId": "v1TraceRouteHost",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "endpoint",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1TraceRouteResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
     "/v1/edge-mgmt/edgehosts/current": {
       "get": {
         "description": "Get edge host details",
@@ -456,7 +598,10 @@
         "operationId": "v1EdgeHostActionReset",
         "responses": {
           "202": {
-            "description": "Accepted response with message"
+            "description": "Accepted response with message",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
           },
           "500": {
             "description": "Internal server error.",
@@ -661,6 +806,152 @@
         }
       }
     },
+    "/v1/edge-mgmt/edgehosts/current/download-logs": {
+      "get": {
+        "description": "Downloads the logs of the edge host as a tar file.",
+        "produces": [
+          "application/x-tar",
+          "application/json"
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Download edge host Logs",
+        "operationId": "v1EdgeHostDownloadLogs",
+        "responses": {
+          "200": {
+            "description": "A tar file containing the logs of the edge host.",
+            "schema": {
+              "type": "file",
+              "format": "binary"
+            },
+            "headers": {
+              "Content-Disposition": {
+                "type": "string",
+                "description": "Specifies the filename for the downloaded file."
+              }
+            }
+          },
+          "404": {
+            "description": "resource not found",
+            "schema": {
+              "$ref": "#/definitions/v1NotFoundResponseWithMessage"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/error-logs": {
+      "get": {
+        "description": "List last 'logCount' edge host error logs",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "List last 'logCount' edge host error logs",
+        "operationId": "V1EdgeHostErrorLogs",
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "Number of logs to be fetched",
+            "name": "logCount",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Events"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/generate-logs": {
+      "post": {
+        "description": "Start edge host log collection",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Start edge host log collection",
+        "operationId": "v1EdgeHostGenerateLogs",
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/generate-logs-status": {
+      "get": {
+        "description": "Edge host log collection status",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Edge host log collection status",
+        "operationId": "v1EdgeHostGenerateLogsStatus",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeHostGenerateLogsStatus"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/events/lifecycle": {
+      "get": {
+        "description": "Get life cycle events of cluster and edge host",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get life cycle events of cluster and edge host",
+        "operationId": "v1GetLifecycleEvents",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1LifecycleEvents"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
     "/v1/ping": {
       "get": {
         "description": "Ping Service",
@@ -704,6 +995,38 @@
             "description": "Server Error",
             "schema": {
               "$ref": "#/definitions/v1InternalServerError"
+            }
+          }
+        }
+      },
+      "patch": {
+        "description": "Patches the current logged in user's configuration",
+        "tags": [
+          "users"
+        ],
+        "summary": "Patches the current logged in user's configuration",
+        "operationId": "v1PatchCurrentUser",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UserSpec"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
             }
           }
         }
@@ -929,6 +1252,26 @@
     "v1BadRequest": {
       "description": "Bad request"
     },
+    "v1CA": {
+      "type": "object",
+      "properties": {
+        "childCerts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ChildCerts"
+          }
+        },
+        "expirationDate": {
+          "type": "string"
+        },
+        "issueDate": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
     "v1CPU": {
       "type": "object",
       "properties": {
@@ -936,6 +1279,40 @@
           "description": "Cpu cores defines the number of cpu cores on the edge host.",
           "type": "integer",
           "format": "int32"
+        }
+      }
+    },
+    "v1CertificateDetails": {
+      "type": "object",
+      "properties": {
+        "certificates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1CA"
+          }
+        },
+        "earliestAutoRenewalTime": {
+          "type": "string"
+        },
+        "needsRenewal": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1ChildCerts": {
+      "type": "object",
+      "properties": {
+        "expirationDate": {
+          "type": "string"
+        },
+        "issueDate": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeName": {
+          "type": "string"
         }
       }
     },
@@ -1221,6 +1598,12 @@
         "uid": {
           "type": "string"
         },
+        "variables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Variable"
+          }
+        },
         "version": {
           "type": "string"
         }
@@ -1280,6 +1663,10 @@
         "health": {
           "$ref": "#/definitions/v1Health"
         },
+        "isRebootPending": {
+          "type": "boolean",
+          "default": false
+        },
         "k8sVersion": {
           "type": "string"
         },
@@ -1324,6 +1711,51 @@
           "type": "string"
         },
         "type": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ConditionCategoryOrder": {
+      "properties": {
+        "category": {
+          "description": "Name of the parent category for the conditions list.",
+          "type": "string"
+        },
+        "conditionsOrder": {
+          "description": "Order or sequence of all the conditions in this category.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ConditionOrder"
+          }
+        },
+        "order": {
+          "description": "Order or sequence of the category in comparison to all the categories.",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1ConditionOrder": {
+      "properties": {
+        "order": {
+          "description": "Order or sequence of the condition in comparison to all the conditions.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "reason": {
+          "description": "Unique, one word reason for the condition's last transition.",
+          "type": "string"
+        },
+        "reasonLabel": {
+          "description": "Readable label for the reason.",
+          "type": "string"
+        },
+        "type": {
+          "description": "Type of the condition.",
+          "type": "string"
+        },
+        "typeLabel": {
+          "description": "Readable label for the type.",
           "type": "string"
         }
       }
@@ -1444,6 +1876,24 @@
         },
         "noProxy": {
           "type": "string"
+        }
+      }
+    },
+    "v1EdgeHostGenerateLogsStatus": {
+      "description": "Edge host log collection status",
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Unknown",
+            "InProgress",
+            "Completed",
+            "Failed"
+          ]
         }
       }
     },
@@ -2035,6 +2485,30 @@
     "v1InternalServerError": {
       "description": "Internal Server Error"
     },
+    "v1LifecycleEvents": {
+      "description": "events representing lifecycle of cluster and edge host",
+      "type": "object",
+      "properties": {
+        "clusterEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Condition"
+          }
+        },
+        "edgeHostEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Condition"
+          }
+        },
+        "expectedOrder": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ConditionCategoryOrder"
+          }
+        }
+      }
+    },
     "v1LoginSuccess": {
       "description": "System login success response",
       "type": "object",
@@ -2172,6 +2646,14 @@
     },
     "v1NotFound": {
       "description": "Resource not found"
+    },
+    "v1NotFoundResponseWithMessage": {
+      "description": "Resource not found with message",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
     },
     "v1OS": {
       "type": "object",
@@ -2399,16 +2881,40 @@
         }
       }
     },
+    "v1PingResponse": {
+      "type": "object",
+      "properties": {
+        "pingHostStatus": {
+          "type": "string"
+        }
+      }
+    },
     "v1Port": {
       "description": "Port provides details about port.",
       "type": "object",
       "properties": {
+        "appProtocol": {
+          "description": "App protocol of the port.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the port.",
+          "type": "string"
+        },
+        "nodePort": {
+          "description": "NodePort number.",
+          "type": "integer"
+        },
         "port": {
           "description": "Port number.",
           "type": "integer"
         },
         "protocol": {
           "description": "Protocol of the port.",
+          "type": "string"
+        },
+        "targetPort": {
+          "description": "number or string of the target port .",
           "type": "string"
         }
       }
@@ -2518,6 +3024,14 @@
       "type": "string",
       "format": "date-time"
     },
+    "v1TraceRouteResponse": {
+      "type": "object",
+      "properties": {
+        "traceRouteStatus": {
+          "type": "string"
+        }
+      }
+    },
     "v1Unauthorized": {
       "description": "Unauthorized"
     },
@@ -2539,8 +3053,15 @@
       "description": "Current user information",
       "type": "object",
       "properties": {
+        "sshKeys": {
+          "description": "Current user's ssh keys",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "userName": {
-          "description": "Current user name",
+          "description": "Current user's username",
           "type": "string"
         }
       }
@@ -2650,6 +3171,9 @@
         },
         "required": {
           "type": "boolean"
+        },
+        "value": {
+          "type": "string"
         }
       }
     }
