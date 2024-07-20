@@ -56,8 +56,6 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 2.  Navigate to the left **Main Menu** and select **Tenant Settings**. From the **Tenant Menu**, select **SSO**, then
     **Configure**, and lastly, click on the **OIDC** tab.
 
-    ![A view of the callback URL field](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-oidcallback.webp)
-
 3.  Copy the **Callback URL** to your clipboard. This URL will be used in the next step to configure Microsoft Entra ID.
 
 4.  In a separate browser tab, log in to the Microsoft Entra ID Admin console and open the

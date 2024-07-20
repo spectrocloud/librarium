@@ -71,9 +71,7 @@ standard that Palette employs. You can only use the OIDC-based approach for Micr
    ![Paste Redirect URI](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_paste-redirect-uri.webp)
 
 7. Switch back to Palette in the web browser and click the button next to **Logout URL** to copy this value to the
-   clipboard:
-
-   ![Copy Logout URL](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_copy-logout-url.webp)
+   clipboard.
 
 8. Switch back to your AD FS Management console and paste the copied value into the **Redirect URI** field, then click
    **Add** to add it to the list:

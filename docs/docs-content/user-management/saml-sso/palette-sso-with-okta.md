@@ -64,8 +64,6 @@ The following steps will guide you on how to enable Palette SSO with
 6. Switch back to Palette in the web browser and click the button next to **Logout URL** to copy the value to the
    clipboard.
 
-   ![Copy Logout URL](/oidc-okta-images/oidc-okta_copy-logout-url.webp)
-
 7. Switch back to your Okta Admin console and paste the copied value into the **Redirect URI** field, then click **Add**
    to add it to the list:
 

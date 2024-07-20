@@ -167,8 +167,6 @@ up Keycloak as an OIDC provider for Palette.
 15. Scroll down to the bottom of the page, and click on **Enable**. If all values are correct, you will receive green
     message stating "OIDC configured successfully" at the top right corner.
 
-    ![alt_text](/keycloak/user-management_saml-sso_keycloak-09-palette-oidc-enabled.webp "Palette OIDC Enabled")
-
 16. Navigate back to the Keycloak admin console. In the left **Main Menu**, select **Users**. Fill in first name, second
     name, and the email address of the admin user.
 
