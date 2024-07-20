@@ -180,6 +180,7 @@ tags: ["release-notes"]
 | Kong                      | 2.38.0      |
 | Reloader                  | 1.0.74      |
 | Reloader                  | 1.0.107     |
+| Spectro Proxy             | 1.5.3       |
 
 #### FIPS
 
