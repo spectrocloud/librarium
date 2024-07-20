@@ -99,9 +99,21 @@ stylus:
 
 You can change the port that the Edge management console is exposed on. The default port is 5080.
 
-| Parameter        | Description                                                                               |
-| ---------------- | ----------------------------------------------------------------------------------------- |
-| `emcServer.port` | Specifies the port that the Edge management console is exposed on. Default value is 5080. |
+| Parameter               | Description                                                                                                                                                     | Default Value |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `emcServer.port`        | Specifies the port that Local UI is exposed on.                                                                                                                 | 5080          |
+| `disablePasswordUpdate` | Disables the ability to update Operating System (OS) user password from Local UI if set to true. Updating the password through the OS and API is still allowed. | False         |
+
+For example, the following configuration changes the default port for Local UI to 5081 and disables the ability to
+update the OS user password from Local UI.
+
+```yaml
+#cloud-config
+stylus:
+  emcServer:
+    port: 5081
+  disablePasswordUpdate: true
+```
 
 ## External Registry
 
