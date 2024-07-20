@@ -210,8 +210,6 @@ Use the following steps to validate the SSO configuration.
    Click on the **OIDC** tab to access the OIDC configuration page. Scroll down to the **SSO Admins** section and select
    the **admins** team from the **Default Team** drop-down Menu. Click on **Save**.
 
-   ![alt_text](/keycloak/user-management_saml-sso_keycloak-16-palette-sso-admins.webp "Palette SSO Admins")
-
 5. Navigate back to the Keycloak admin console. From the left **Main Menu** click on **Users**. Create a user and ensure
    the field **Username**, **Email**, and **First Name** are filled out. Click on **Save** to save the user.
 
