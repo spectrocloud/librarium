@@ -165,3 +165,54 @@ you use any of the following tags.
 - `microsoft`
 
 - `windows`
+
+## Proxy Configuration
+
+You can enable your Azure clusters to use a proxy server for outbound traffic. To use your proxy server with Azure
+clusters, you must deploy a Private Cloud Gateway (PCG) in your Azure environment. The PCG must be configured with the
+proxy server details. Once the PCG is deployed and configured with the proxy server details, the newly deployed Azure
+clusters will inherit the proxy configurations from the PCG.
+
+:::tip
+
+We recommend you review the [gRPC and Proxies](../../../architecture/grps-proxy.md) to be aware of network proxies that
+Palette supports. Palette uses gRPC to communicate with clusters, and depending on the proxy server you use, you may
+need to configure the proxy server to support gRPC.
+
+:::
+
+Use the four resource links below to enable and manage proxy configurations for your Azure cluster.
+
+1. Deploy a PCG cluster to an existing Kubernetes cluster inside your Azure environment. For additional guidance, refer
+   to the [Deploy a PCG to an Existing Kubernetes Cluster](../../pcg/deploy-pcg-k8s.md) guide.
+
+2. Configure the PCG with the proxy server details. For instructions on how to do this, refer to the
+   [Enable and Manage Proxy Configurations](../../pcg/manage-pcg/configure-proxy.md) guide.
+
+3. Configure your Azure account to use the PCG. When adding an Azure account to Palette, select the **Connect Private
+   Cloud Gateway** option and select the PCG cluster you deployed. Refer to the
+   [Add Azure Cloud Account](./azure-cloud.md) guide for instructions on how to do this.
+
+4. [Create a cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md) for the
+   Azure cluster you will deploy. Any pack layer that needs to use proxy configurations should include a namespace label
+   with the value `spectrocloud.com/connection: proxy`. You can find more information about namespace labels in the
+   [Profile Customization](../../../profiles/profile-customization.md#pack-labels-and-annotations) page.
+
+   ```yaml {3,4}
+   pack:
+     namespace: "example"
+     namespaceLabels:
+       "spectrocloud.com/connection": "proxy"
+   ```
+
+5. Deploy your newly created cluster profile containing the required namespace labels to an Azure cluster, and use
+   static placement so that you can specify the VNet with the proper network configuration. For instructions on how to
+   deploy an Azure cluster, refer to the [Create and Manage IaaS Cluster](./create-azure-cluster.md) guide or the
+   [Create and Manage Azure AKS Cluster](./azure.md) guide.
+
+   :::warning
+
+   If you do not use static placement, the Azure cluster will be deployed with the network resources created by Palette,
+   which may not have the proper network configuration to use the proxy server.
+
+   :::

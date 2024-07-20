@@ -64,8 +64,6 @@ The following steps will guide you on how to enable Palette SSO with
 6. Switch back to Palette in the web browser and click the button next to **Logout URL** to copy the value to the
    clipboard.
 
-   ![Copy Logout URL](/oidc-okta-images/oidc-okta_copy-logout-url.webp)
-
 7. Switch back to your Okta Admin console and paste the copied value into the **Redirect URI** field, then click **Add**
    to add it to the list:
 
@@ -121,10 +119,10 @@ OIDC claims required by Palette and Kubernetes.
 15. Enter the required information from the following tables below and click **Create**. Use this flow to create three
     claims in total. First, create two claims for the user information.
 
-    | Claim Name   | Include in token type | Value Type | Value            | Disable claim | Include In |
-    | ------------ | --------------------- | ---------- | ---------------- | ------------- | ---------- |
-    | u_first_name | ID Token (Always)     | Expression | `user.firstName` | Unchecked     | Any scope  |
-    | u_last_name  | ID Token (Always)     | Expression | `user.lastName`  | Unchecked     | Any scope  |
+    | Claim Name     | Include in token type | Value Type | Value            | Disable claim | Include In |
+    | -------------- | --------------------- | ---------- | ---------------- | ------------- | ---------- |
+    | `u_first_name` | ID Token (Always)     | Expression | `user.firstName` | Unchecked     | Any scope  |
+    | `u_last_name`  | ID Token (Always)     | Expression | `user.lastName`  | Unchecked     | Any scope  |
 
 16. Next, create a claim for group membership. The example below will include the names of any groups that the Okta user
     is a member of, that start with `palette-`, in the `groups` claim of the ticket. For Palette SSO, Palette will make
@@ -132,12 +130,12 @@ OIDC claims required by Palette and Kubernetes.
 
     | Claim Name | Include in token type | Value Type | Filter                  | Disable claim | Include In |
     | ---------- | --------------------- | ---------- | ----------------------- | ------------- | ---------- |
-    | groups     | ID Token (Always)     | Groups     | Starts with: `palette-` | Unchecked     | Any scope  |
+    | `groups`   | ID Token (Always)     | Groups     | Starts with: `palette-` | Unchecked     | Any scope  |
 
     ![Claims Result](/oidc-okta-images/oidc-okta_claims-result.webp)
 
-17. Click **\<-- Back to Authorization Servers** at the top of the page to navigate back to the list of all servers. The
-    authorization server you created is displayed in the list. Select the **Issuer URI** shown and copy it to the
+17. Click on **\<-- Back to Authorization Servers** at the top of the page to navigate back to the list of all servers.
+    The authorization server you created is displayed in the list. Select the **Issuer URI** shown and copy it to the
     clipboard. Save this value as you will use it in a later step.
 
     ![Get Issuer URI](/oidc-okta-images/oidc-okta_get-issuer-uri.webp)
@@ -165,9 +163,9 @@ You have now completed all configuration steps in Okta.
 
 ### Enable OIDC SSO in Palette
 
-22. Open a web browser and navigate to your [Palette](https://console.spectrocloud.com) subscription.
-
-    Navigate to **Tenant Settings** --> **SSO** and click on **OIDC**. Enter the following information.
+22. Open a web browser and navigate to your [Palette](https://console.spectrocloud.com) subscription. From the left
+    **Main Menu**, select **Tenant Settings** and click on **SSO**. Next click on **OIDC**. Enter the following
+    information.
 
     | Parameter     | Value                                                                                                                                                                                                                         |
     | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -181,7 +179,7 @@ You have now completed all configuration steps in Okta.
     | Last Name     | Set this to `u_last_name`.                                                                                                                                                                                                    |
     | Spectro Team  | Keep `groups` as the default.                                                                                                                                                                                                 |
 
-    ![Enable Palette OIDC SSO](/oidc-okta-images/oidc-okta_configure-palette-oidc.webp)
+![Enable Palette OIDC SSO](/oidc-okta-images/oidc-okta_configure-palette-oidc.webp)
 
 23. When all the information has been entered, click **Enable** to activate SSO. You will receive a message stating
     **OIDC configured successfully**.

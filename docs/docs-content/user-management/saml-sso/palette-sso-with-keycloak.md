@@ -162,17 +162,15 @@ up Keycloak as an OIDC provider for Palette.
     | **Client ID**     | The client ID you created in the previous steps. In this guide, the name `palette` was used.                                               |
     | **Client Secret** | The client secret you retrieved in the previous step.                                                                                      |
 
-    ![alt_text](/keycloak/user-management_saml-sso_keycloak-08-palette-callback.webp "Palette Callback")
+    ![View of the Palette SSO screen](/keycloak/user-management_saml-sso_keycloak-08-palette-callback.webp "Palette Callback")
 
 15. Scroll down to the bottom of the page, and click on **Enable**. If all values are correct, you will receive green
     message stating "OIDC configured successfully" at the top right corner.
 
-    ![alt_text](/keycloak/user-management_saml-sso_keycloak-09-palette-oidc-enabled.webp "Palette OIDC Enabled")
-
 16. Navigate back to the Keycloak admin console. In the left **Main Menu**, select **Users**. Fill in first name, second
     name, and the email address of the admin user.
 
-    ![alt_text](/keycloak/user-management_saml-sso_keycloak-10-keycloak-admin.webp "Keycloak Admin")
+    ![View of the Keycloack admin portal screen](/keycloak/user-management_saml-sso_keycloak-10-keycloak-admin.webp "Keycloak Admin")
 
 You have now configured SSO for Palette with Keycloak. You can now log in to Palette using the admin user you created in
 Keycloak. Use the validation steps below to validate the SSO configuration. Check out the
@@ -187,9 +185,9 @@ Use the following steps to validate the SSO configuration.
 2. Sign in to Palette using the admin user you created in Keycloak. You will be redirected to the Keycloak login page.
    Enter the credentials for the admin user you created in Keycloak.
 
-   ![alt_text](/keycloak/user-management_saml-sso_keycloak-11-palette-sso.webp "Palette SSO")
+   ![Image of Palette's main login screen](/keycloak/user-management_saml-sso_keycloak-11-palette-sso.webp "Palette SSO")
 
-   ![Keycloak Admin console](/keycloak//user-management_palette-rback_keycloak_login.webp)
+   ![Image of the Keycloak Admin console](/keycloak//user-management_palette-rback_keycloak_login.webp)
 
 3. Upon successful authentication, you will be redirected to Palette. You will be logged in to Palette as the admin user
    you created in Keycloak.
@@ -199,29 +197,27 @@ Use the following steps to validate the SSO configuration.
 1. Log in to Palette as a Tenant Admin. Navigate to the left **Main Menu** and select **Users & Teams**. Click on the
    **Teams** tab to access the Teams page. Click on the **Create Team** button to create a new team.
 
-   ![alt_text](/keycloak/user-management_saml-sso_keycloak-14-palette-groups.webp "Palette groups")
+   ![Image of the Palette Tenant menu with Users & Teams highlighted](/keycloak/user-management_saml-sso_keycloak-14-palette-groups.webp "Palette groups")
 
 2. Provide a team name, such as `admins` but leave the **Members** field empty. Click on **Confirm** to create the team.
 
 3. Next, select the **admins** row to access the team settings page. Click on **New Project Role** and add the **Project
    Admin** role to the **Default** project. Click on **Confirm** to save the changes.
 
-   ![alt_text](/keycloak/user-management_saml-sso_keycloak-15-palette-project.webp "Palette Project")
+   ![Image of project roles highlighted](/keycloak/user-management_saml-sso_keycloak-15-palette-project.webp "Palette Project")
 
 4. From the left **Main Menu**, select **Tenant Settings**. Next, click on **SSO** to access the SSO configuration page.
    Click on the **OIDC** tab to access the OIDC configuration page. Scroll down to the **SSO Admins** section and select
    the **admins** team from the **Default Team** drop-down Menu. Click on **Save**.
 
-   ![alt_text](/keycloak/user-management_saml-sso_keycloak-16-palette-sso-admins.webp "Palette SSO Admins")
-
 5. Navigate back to the Keycloak admin console. From the left **Main Menu** click on **Users**. Create a user and ensure
    the field **Username**, **Email**, and **First Name** are filled out. Click on **Save** to save the user.
 
-   ![alt_text](/keycloak/user-management_saml-sso_keycloak-17-keycloak-user.webp "Keycloak user")
+   ![Keycloak's management portal with the User view in focus](/keycloak/user-management_saml-sso_keycloak-17-keycloak-user.webp "Keycloak user")
 
 6. Next, click on the **Credentials** tab and assign the user password.
 
-   ![alt_text](/keycloak/user-management_saml-sso_keycloak-18-keycloak-password.webp "Keycloak password")
+   ![Keycloak's management portal with the User view in focus that lists all current users](/keycloak/user-management_saml-sso_keycloak-18-keycloak-password.webp "Keycloak password")
 
 Repeat the steps above for all users you want to add to the **admins** team. You can now log in to Palette with the
 users you created in Keycloak. The users will be assigned the **Project Admin** role for the **Default** project. Check

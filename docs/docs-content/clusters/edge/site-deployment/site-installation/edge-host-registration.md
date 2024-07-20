@@ -242,6 +242,9 @@ Your Edge host is displayed and marked as **Registered** in the Edge hosts list.
 
 ## Next Steps
 
+After an Edge host is registered, it will show up in the **Edge Hosts** tab in a grid view. For more information, refer
+to [Edge Host Grid View](../edge-host-view.md).
+
 The next step in the installation process is to add the Edge host to a cluster or to create an Edge Native host cluster.
 Check out the [Create Cluster Definition](../cluster-deployment.md) guide to complete the last step of the installation
 process.
