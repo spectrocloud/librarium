@@ -49,11 +49,11 @@ standard that Palette employs. You can only use the OIDC-based approach for Micr
    ![Add AD FS Application Group](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-application-group.webp)
 
 2. Provide a suitable name for the application group and select **Server Application** from the list of templates. Then
-   click **Next**:
+   click **Next**.
 
    ![Name Application Group](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_name-application-group.webp)
 
-3. The next screen displays the **Client Identifier** for this Application Group:
+3. The next screen displays the **Client Identifier** for this Application Group.
 
    ![Get Client Identifier](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_get-client-identifier.webp)
 
@@ -61,22 +61,19 @@ standard that Palette employs. You can only use the OIDC-based approach for Micr
    configuration later.
 
 5. Open a web browser and navigate to your Palette subscription. Navigate to **Tenant Settings** --> **SSO** and click
-   **OIDC**. Click the button next to **Callback URL** to copy this value to the clipboard:
+   **OIDC**. Click the button next to **Callback URL** to copy this value to the clipboard.
 
-   ![Copy Callback URL](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_copy-callback-url.webp)
+   ![Copy Callback URL](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_callbackurl.webp)
 
 6. Switch back to your AD FS Management console and paste the copied value into the **Redirect URI** field, then click
-   **Add** to add it to the list:
+   **Add** to add it to the list.
 
    ![Paste Redirect URI](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_paste-redirect-uri.webp)
 
 7. Switch back to Palette in the web browser and click the button next to **Logout URL** to copy this value to the
-   clipboard:
-
-   ![Copy Logout URL](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_copy-logout-url.webp)
-
+   clipboard.
 8. Switch back to your AD FS Management console and paste the copied value into the **Redirect URI** field, then click
-   **Add** to add it to the list:
+   **Add** to add it to the list.
 
    ![Paste Logout URI](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_paste-logout-uri.webp)
 
@@ -91,29 +88,29 @@ standard that Palette employs. You can only use the OIDC-based approach for Micr
 
 10. When you have completed entering redirect URIs, click **Next**. On the next page of the wizard, select **Generate a
     shared secret** and click **Copy to clipboard** to copy the secret value and save it somewhere. You will need to
-    enter this value into the Palette SSO configuration later:
+    enter this value into the Palette SSO configuration later.
 
     ![Copy Shared Secret](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_copy-shared-secret.webp)
 
 11. Click **Next** and on the Summary screen, click **Next** again to complete the wizard. You need to add another
-    application to the application group. Select the newly created application group and click **Properties**:
+    application to the application group. Select the newly created application group and click **Properties**.
 
     ![Open Application Group](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_open-oidc-app.webp)
 
 12. In the Properties screen, click **Add application...**. In the wizard that opens, select **Web API** and click
-    **Next**:
+    **Next**.
 
     ![Add Web API application](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-web-api.webp)
 
 13. In the **Identifier** field, add the following entries:
 
-- The **Client Identifier** value you saved when creating the application group.
-- The base URL of your Palette tenant. This is equal to the URL shown by your browser when logged into Palette minus the
-  path. Example `https://johndoe-spectrocloud.console.spectrocloud.com`.
+    - The **Client Identifier** value you saved when creating the application group.
+    - The base URL of your Palette tenant. This is equal to the URL shown by your browser when logged into Palette minus
+      the path. Example `https://johndoe-spectrocloud.console.spectrocloud.com`.
 
-  ![Find Base URL](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_base-url.webp)
+    ![Find Base URL](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_base-url.webp)
 
-  ![Add Web API Identifiers](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-identifiers.webp)
+    ![Add Web API Identifiers](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-identifiers.webp)
 
 14. Click **Next** when done. On the next screen, select a suitable policy for who can use this SSO and under what
     circumstances. If you're not sure which policy to choose, select **Permit everyone**, then click **Next**:
@@ -123,7 +120,7 @@ standard that Palette employs. You can only use the OIDC-based approach for Micr
 15. On the next screen, by default only the **openid** scope is ticked. However, to include the user's groups in the
     OIDC claim, you need to also enable the **allatclaims** scope. If your AD FS server does not yet have an
     **allatclaims** scope in the list, click **New scope...** and type `allatclaims` in the Name field, then click
-    **OK** to add it. Ensure both scopes are enabled and then click **Next**:
+    **OK** to add it. Ensure both scopes are enabled and then click **Next**.
 
     ![Enable Permitted Scopes](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_enable-scopes.webp)
 
@@ -152,7 +149,7 @@ standard that Palette employs. You can only use the OIDC-based approach for Micr
 
     ![Set LDAP Claims](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_set-ldap-claims.webp)
 
-20. Click **Finish** to add the rule. Now click on **Add Rule...** again to add the second rule:
+20. Click **Finish** to add the rule. Now click on **Add Rule...** again to add the second rule.
 
     ![Add Issuance Transform Rule 2](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-transform-rule-2.webp)
 
@@ -171,15 +168,16 @@ standard that Palette employs. You can only use the OIDC-based approach for Micr
     save the changes to the application group.
 
 24. Take note of your AD FS identifier, you will need this for Palette in the next step. Typically this is your AD FS
-    name plus `/adfs`. You can also take the Federation Service identifier and remove `/services/trust` from that URL:
+    name plus `/adfs`. You can also take the Federation Service identifier and remove `/services/trust` from that URL.
 
     ![Note AD FS Name](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_note-adfs-name.webp)
 
-### Enable OIDC SSO in Palette
+## Enable OIDC SSO in Palette
 
 25. Open a web browser and navigate to your [Palette](https://console.spectrocloud.com) subscription.
 
-    Navigate to **Tenant Settings** --> **SSO** and click on **OIDC**. Enter the following information.
+26. Navigate to left **Main Menu** and select **Tenant Settings**. Next, click on **SSO** and select the **OIDC** tab.
+    Enter the following information.
 
     | Parameter     | Value                                                                                                                                                                                                                       |
     | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -195,7 +193,7 @@ standard that Palette employs. You can only use the OIDC-based approach for Micr
 
     ![Enable Palette OIDC SSO](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_configure-palette-oidc.webp)
 
-26. When all the information has been entered, click **Enable** to enable SSO. You will receive a message stating **OIDC
+27. When all the information has been entered, click **Enable** to enable SSO. You will receive a message stating **OIDC
     configured successfully**.
 
 ### Create Teams in Palette
@@ -216,7 +214,7 @@ You can repeat this for any other team that you configured with group claims.
 
 29. The list of teams displays again. Select the newly created **Admins** team to review its details. To give this team
     administrative access to the entire tenant and all the projects in it, assign the **Tenant Admin** role. Select
-    **Tenant Roles** and click **+ Add Tenant Role**:
+    **Tenant Roles** and click **+ Add Tenant Role**.
 
     ![Palette Tenant Roles](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_tenant-roles.webp)
 

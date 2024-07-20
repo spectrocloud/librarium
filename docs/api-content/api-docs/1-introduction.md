@@ -267,14 +267,8 @@ Palette instance. You can use Edge Management API endpoints to programmatically 
 information about Edge clusters, retrieve the list of available images on your Edge host, and create local clusters
 using embedded cluster definitions.
 
-:::warning
-
-The Edge Management API endpoints are only available to airgapped Edge hosts without a connection to Palette.
-
-:::
-
 You can find the Open API Swagger specification for the Edge Management API at the following location:
-https://raw.githubusercontent.com/spectrocloud/librarium/version-4-3/docs/api-content/api-docs/edge-v1/emc-api.json
+https://raw.githubusercontent.com/spectrocloud/librarium/version-4-4/docs/api-content/api-docs/edge-v1/emc-api.json
 
 :::preview
 
@@ -400,3 +394,19 @@ curl --location 'https://10.10.135.182:5080/v1/edge-mgmt/edgehosts/current' \
     }
 }
 ```
+
+### List of Endpoints Unavailable to Connected Edge Hosts
+
+Most Edge Management API endpoints are available for Edge hosts with or without a connection to Palette. However, some
+endpoints are not available to connected Edge hosts and are available to airgapped Edge hosts only. Specifically,
+endpoints that create or update clusters, create or update cluster profile variables, and update cluster settings are
+unavailable, as those operations must be performed from Palette.
+
+The following is a list of endpoints that are only available to Edge hosts that are not connected to Palette:
+
+- `POST https://edge-host-ip:5080/v1/edge-mgmt/cluster`
+- `PATCH https://edge-host-ip:5080/v1/edge-mgmt/cluster`
+- `PUT https://edge-host-ip:5080/v1/edge-mgmt/cluster`
+- `PUT https://edge-host-ip:5080/v1/edge-mgmt/cluster/profiles`
+- `PUT https://edge-host-ip:5080/v1/edge-mgmt/cluster/settings`
+- `POST https://edge-host-ip:5080/v1/edge-mgmt/cluster/profiles/variables/validate`
