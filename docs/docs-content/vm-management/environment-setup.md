@@ -42,7 +42,7 @@ as worker nodes.
 | **Storage Adapters** | 2 x 16 Gbps FC                                                                                     | 2 x 16 Gbps FC                                     | Storage adapters must support the FC protocol, a high-speed network protocol used for data transfer. |
 | **Disks**            | Local disk for the OS boot (SAN boot is supported)                                                 | Local disk for the OS boot                         | Boot from SAN requires special consideration due to the multi-path configuration.                    |
 
-You can increase the hardware specifications based on the total number of control plane and worker nodes you want in the
+The CPU and RAM requirements for control plane nodes increase with the number of worker nodes and namespaces in the
 cluster. Refer to the following table for guidance on control plane node sizing.
 
 ::: warning
