@@ -181,7 +181,7 @@ verify-url-links:
 verify-url-links-ci: ## Check for broken URLs in production in a GitHub Actions CI environment
 	@echo "Checking for broken external URLs in CI environment..."
 	rm link_report.json || echo "No report exists. Proceeding to scan step"
-	@npx linkinator "docs/**/*.md" --markdown --recurse --timeout 60000 --retry --retry-errors-count 3 \
+	@npx linkinator "docs/**/*.md" --markdown --recurse --timeout 60000 --retry-errors-jitter --retry --retry-errors-count 5 \
 		--skip "^https:\/\/docs\.spectrocloud\.com.*$$" \
 		--skip "^https:\/\/docs\.spectrocloud\.com\/.*\/supplemental\-packs$$" \
 		--skip "^http:\/\/docs\.spectrocloud\.com.*$$" \

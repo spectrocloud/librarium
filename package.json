@@ -91,6 +91,7 @@
     "jest-config-docusaurus": "^0.1.1",
     "jest-environment-jsdom": "^29.6.2",
     "jest-fetch-mock": "^3.0.3",
+    "linkinator": "^6.1.1",
     "lint-staged": "^13.2.3",
     "netlify-cli": "^17.31.0",
     "prettier": "3.3.2",
