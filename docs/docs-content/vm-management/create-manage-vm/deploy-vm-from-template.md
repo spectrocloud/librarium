@@ -15,7 +15,7 @@ organization's administrator provides.
 - An active cluster with the Virtual Machine Orchestrator (VMO) pack. Review
   [Create a VMO Profile](../create-vmo-profile.md) to configure the dashboard.
 
-  - If this is an Edge cluster with VMs as Edge hosts, such as a VM in VMWare vCenter, the VM Edge host must support
+  - If this is an Edge cluster with VMs as Edge hosts, such as a VM in VMware vCenter, the VM Edge host must support
     hardware-assisted virtualization to the guest Operating System (OS).
 
 - Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro

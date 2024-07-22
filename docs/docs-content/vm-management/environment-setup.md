@@ -122,7 +122,7 @@ also use this option. In this case, you need to adjust the configuration for **b
 tagged VLAN, we recommend using a native or untagged VLAN for PXE.
 
 The **bond_data.20** subinterface provides outbound connectivity, as it has the default gateway. This is the primary way
-to publish services from container workloads to the end users. If there are any specific data-center networks that you
+to publish services from container workloads to the end users. If there are any specific data center networks that you
 want to reach over the **bond_management.10** subinterface instead, you can configure them through static routes on the
 `172.16.0.0/22` subnet in Canonical MAAS. Those routes will be automatically applied by MAAS upon server installation.
 

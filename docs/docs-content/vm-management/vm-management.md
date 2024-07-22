@@ -22,7 +22,7 @@ Palette VMO simplifies infrastructure management, improves resource utilization,
 
 You will benefit from Palette VMO in the following cases:
 
-- You are planning to shift from VMs to containers gradually and want to continue running both during the transition.
+- You are planning to gradually shift from VMs to containers and want to continue using both during the transition.
 
 - Your established infrastructure combines containers and VMs, and you want to manage them more effectively.
 
@@ -36,7 +36,7 @@ To get started with Palette VMO, review the [Architecture](./architecture.md) pa
 involved in enabling VMO for your infrastructure. Then, review the [Create a VMO Profile](./create-vmo-profile.md) guide
 to prepare everything you need to deploy your first VMO cluster.
 
-Once your VMO cluster is up and running, refer to the [Create and Manage VMs](./create-manage-vm/create-manage-vm.md)
+Once your VMO cluster is up and healthy, refer to the [Create and Manage VMs](./create-manage-vm/create-manage-vm.md)
 section for information on deploying VMs from existing Palette templates and performing standard VM operations.
 Alternatively, review the [Advanced Topics](./create-manage-vm/advanced-topics/advanced-topics.md) section to understand
 how you can create VM and disk templates, manage the VM resources, and perform other advanced operations.
