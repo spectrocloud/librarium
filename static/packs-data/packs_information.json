@@ -44,6 +44,46 @@
     "description": "The Amazon Elastic File System Container Storage Interface (CSI) Driver implements the CSI specification for container orchestrators to manage the lifecycle of Amazon EFS file systems. Amazon EFS CSI driver supports dynamic provisioning and static provisioning. "
   },
   {
+    "name": "aws-eks-oidc",
+    "description": "The AWS EKS OIDC pack provides the necessary configurations to configure your Identity Provider with the OIDC identity provider for Amazon EKS clusters."
+  },
+  {
+    "name": "aws-ssm-agent",
+    "description": "The AWS SSM Agent pack installs the Amazon Session Manager Agent on the nodes of your Amazon Kubernetes cluster. The agent enables you to manage your interact and automate takss through the AWS Systems Manager."
+  },
+  {
+    "name": "canonical-apache2",
+    "description": "The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows. The goal of this project is to provide a secure, efficient and extensible server that provides HTTP services in sync with the current HTTP standards."
+  },
+  {
+    "name": "canonical-charms-deployer",
+    "description": "Juju is an open source orchestration engine for software operators that enables the deployment, integration and lifecycle management of applications at any scale, on any infrastructure using charms. A charm is an operator - business logic encapsulated in reusable software packages that automate every aspect of an application's life."
+  },
+  {
+    "name": "canonical-juju-olm",
+    "description": "The Juju controller is used to manage the software deployed through Juju, from deployment to upgrades to day-two operations. One Juju controller can manage multiple projects or workspaces, which in Juju are known as models"
+  },
+  {
+    "name": "canonical-mysql",
+    "description": "MySQL is a fast, multi-threaded, multi-user, and robust SQL database server. It is intended for mission-critical, heavy-load production systems and mass-deployed software. This pack uses the Canonical MySQL Docker image to deploy a MySQL database."
+  },
+  {
+    "name": "canonical-postgres",
+    "description": "PostgreSQL is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance. This pack uses the Canonical PostgreSQL Docker image to deploy a PostgreSQL database."
+  },
+  {
+    "name": "canonical-redis",
+    "description": "Redis is an in-memory data store used by millions of developers as a cache, vector database, document database, streaming engine, and message broker. Redis has built-in replication and different levels of on-disk persistence. It supports complex data types (for example, strings, hashes, lists, sets, sorted sets, and JSON), with atomic operations defined on those data types. This pack uses the Canonical Redis Docker image to deploy a Redis database."
+  },
+  {
+    "name": "calico-network-policy",
+    "description": "Calico network policy provides a richer set of policy capabilities than what Kubernetes provides out-of-the-box. The Nework Policy provider includes: policy ordering/priority, deny rules, and more flexible match rules. While Kubernetes network policy applies only to pods, Calico network policy can be applied to multiple types of endpoints including pods, VMs, and host interfaces. Finally, when used with Istio service mesh, Calico network policy supports securing applications layers 5-7 match criteria, and cryptographic identity."
+  },
+  {
+    "name": "calico-networking",
+    "description": "Calico network policy provides a richer set of policy capabilities than what Kubernetes provides out-of-the-box. The Nework Policy provider includes: policy ordering/priority, deny rules, and more flexible match rules. While Kubernetes network policy applies only to pods, Calico network policy can be applied to multiple types of endpoints including pods, VMs, and host interfaces. Finally, when used with Istio service mesh, Calico network policy supports securing applications layers 5-7 match criteria, and cryptographic identity."
+  },
+  {
     "name": "cni-calico",
     "description": "Calico is a networking and security solution that enables Kubernetes workloads and non-Kubernetes/legacy workloads to communicate seamlessly and securely. Calico consists of networking to secure network communication, and advanced network policy to secure cloud-native microservices/applications at scale."
   },
