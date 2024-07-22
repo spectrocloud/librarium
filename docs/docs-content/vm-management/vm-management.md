@@ -41,7 +41,7 @@ section for information on deploying VMs from existing Palette templates and per
 Alternatively, review the [Advanced Topics](./create-manage-vm/advanced-topics/advanced-topics.md) section to understand
 how you can create VM and disk templates, manage the VM resources, and perform other advanced operations.
 
-Finally, refer to the [Role-based access control (RBAC)](./rbac/rbac.md) section for information on configuring roles
+Finally, refer to the [Role-based Access Control (RBAC)](./rbac/rbac.md) section for information on configuring roles
 and permissions for your VMs.
 
 ## Resources

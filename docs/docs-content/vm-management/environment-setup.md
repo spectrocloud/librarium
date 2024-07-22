@@ -12,25 +12,36 @@ resources.
 
 ## Hardware Resources
 
+The following sections list the hardware requirements for worker nodes and control plane nodes in a VMO cluster.
+
+### Worker Nodes
+
 Refer to the following table for the minimum and recommended hardware specifications for the worker nodes of the
 cluster.
 
-| Component            | Minimum                                            | Recommended                                        | Comments                                                                         |
-| -------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------------------------------------- |
-| **Server**           | 2U Rackmount Chassis                               | 2U Rackmount Chassis                               | Needs to fit FC adapters and have sufficient NICs.                               |
-| **CPU**              | Intel or AMD x64 CPU with 8 cores                  | Intel or AMD x64 CPU with 8 cores                  |                                                                                  |
-| **RAM**              | 24 GB                                              | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.   |
-| **Network Adapters** | 2 x 10 Gbps <br /> (data + management)             | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                  |
-| **Storage Adapters** | 2 x 16 Gbps FC                                     | 2 x 16 Gbps FC                                     |                                                                                  |
-| **Disks**            | Local disk for the OS boot (SAN boot is supported) | Local disk for the OS boot                         | Boot from SAN requires special consideration due to the multipath configuration. |
+| Component            | Minimum                                            | Recommended                                        | Comments                                                                                             |
+| -------------------- | -------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Server**           | 2U Rackmount Chassis                               | 2U Rackmount Chassis                               | Needs to fit Fiber Channel (FC) adapters and have sufficient Network Interface Cards (NIC).          |
+| **CPU**              | Intel or AMD x64 CPU with 8 cores                  | Intel or AMD x64 CPU with 8 cores                  |                                                                                                      |
+| **RAM**              | 24 GB                                              | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                       |
+| **Network Adapters** | 2 x 10 Gbps <br /> (data + management)             | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                      |
+| **Storage Adapters** | 2 x 16 Gbps FC                                     | 2 x 16 Gbps FC                                     | Storage adapters must support the FC protocol, a high-speed network protocol used for data transfer. |
+| **Disks**            | Local disk for the OS boot (SAN boot is supported) | Local disk for the OS boot                         | Boot from SAN requires special consideration due to the multi-path configuration.                    |
+
+### Control Plane Nodes
 
 Typically, the cluster control plane nodes do not operate any VMO workloads. As a result, they can have lighter hardware
 specifications. For example, a server with 4 cores and 8 GB RAM is sufficient for a minimum-specification control plane
 node.
 
 You can increase the hardware specifications based on the total number of control plane and worker nodes you want in the
-cluster. Refer to the following table for guidance on control plane node sizing. Note that these recommendations assume
-that each cluster has at least three control plane nodes.
+cluster. Refer to the following table for guidance on control plane node sizing.
+
+::: warning
+
+These recommendations assume that each cluster has at least three control plane nodes.
+
+:::
 
 | Worker Nodes | Namespaces | CPU Cores | Memory (GB) |
 | ------------ | ---------- | --------- | ----------- |

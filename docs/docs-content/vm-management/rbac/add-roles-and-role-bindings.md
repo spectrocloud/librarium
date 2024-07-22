@@ -14,8 +14,8 @@ You must configure permissions for actions that users can perform on Virtual Mac
 Virtual Machine Orchestrator (VMO), such as cloning, updating, and migrating VMs. You can do this by creating roles and
 cluster role bindings to determine access permissions. Refer to
 [VM User Roles and Permissions](./vm-roles-permissions.md) for a list of Cluster Roles and equivalent Palette Roles. To
-learn more about Cluster RBAC in Palette, review the
-[RBAC and NS Support](../../clusters/cluster-management/cluster-rbac.md) guide.
+learn more about role-based access control (RBAC) in Palette, review the
+[RBAC and Namespace Support](../../clusters/cluster-management/cluster-rbac.md) guide.
 
 ## Prerequisites
 
