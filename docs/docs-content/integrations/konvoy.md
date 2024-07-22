@@ -30,8 +30,8 @@ then use it to create a cluster.
 
 - Users or groups mapped to a Kubernetes RBAC role.
 
-- Konvoy requires the [BYOOS](./byoos.md) pack to reference the image created through the Konvoy image builder project.
-  Refer to the [Usage](#usage) section for more information.
+- Konvoy requires the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=generic-byoi"/> pack to reference the
+  image created through the Konvoy image builder project. Refer to the [Usage](#usage) section for more information.
 
 - Operating System (OS) dependencies as listed in the table.
 
@@ -64,9 +64,12 @@ Palette supports the following infrastructure platforms and Operating Systems (O
 
 ## Usage
 
+<!-- prettier-ignore-start -->
+
 To use Konvoy, you must use the [Konvoy image builder project](https://github.com/mesosphere/konvoy-image-builder) to
-create a custom image. The custom image contains the underlying OS and Kubernetes components. You can then use the
-[BYOOS](./byoos.md) pack to reference the custom image when creating a cluster profile.
+create a custom image. The custom image contains the underlying OS and Kubernetes components. You can then use the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=generic-byoi" /> pack to reference the custom image when
+creating a cluster profile.
+<!-- prettier-ignore-end -->
 
 :::info
 

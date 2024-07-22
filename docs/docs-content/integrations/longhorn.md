@@ -202,9 +202,13 @@ state.
 
     </Tabs>
 
-    Refer to [Harbor Edge-Native Config](./harbor-edge.md#log-in-to-harbor-web-ui) pack documentation to learn how to
+<!-- prettier-ignore-start -->
+
+    Refer to <VersionedLink text="Harbor Edge-Native Config" url="/integrations/packs/?pack=harbor-edge-native-config#log-in-to-harbor-web-ui"/> pack documentation to learn how to
     find the node IP and port of the Harbor registry. If you have given the registry a domain name, you can use the
     domain name instead of the node IP.
+
+<!-- prettier-ignore-end -->
 
 </TabItem>
 
@@ -320,9 +324,11 @@ state.
 
     </Tabs>
 
-    Refer to [Harbor Edge-Native Config](./harbor-edge.md#log-in-to-harbor-web-ui) pack documentation to learn how to
-    find the node IP and port of the Harbor registry. If you have given the registry a domain name, you can use the
-    domain name instead of the node IP.
+<!-- prettier-ignore-start -->
+
+    Refer to <VersionedLink text="Harbor Edge-Native Config" url="/integrations/packs/?pack=harbor-edge-native-config#log-in-to-harbor-web-ui"/> pack documentation to learn how to find the node IP and port of the Harbor registry. If you have given the registry a domain name, you can use the domain name instead of the node IP.
+
+<!-- prettier-ignore-end -->
 
 </TabItem>
 </Tabs>

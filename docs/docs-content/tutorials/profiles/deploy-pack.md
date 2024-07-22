@@ -1324,7 +1324,7 @@ deployment scripts. All you need to do is maintain the cluster profiles.
 
 To learn more about packs in Palette, we encourage you to check out the reference resources below.
 
-- [Custom OS Pack](../../integrations/byoos.md)
+- <VersionedLink text="Custom OS Pack" url="/integrations/packs/?pack=generic-byoi" />
 
 - [Add-on Packs](../../registries-and-packs/adding-add-on-packs.md)
 
