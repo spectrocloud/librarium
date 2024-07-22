@@ -15,13 +15,24 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
-- Fixed an issue that sometimes would cause three-node Edge clusters with the local Harbor registry enabled to be stuck
-  in the **Provisioning** state.
-
-- Fixed an issue that prevented users from adding new DNS mappings to a System Private Gateway.
+- Fixed an issue that sometimes would cause Edge clusters with three control plane nodes and one worker node with the
+  local Harbor registry enabled to be stuck in the **Provisioning** state.
 
 - Resolved several CVEs in the previous release. For a complete list of current CVEs, refer to
   [CVE Report](../security-bulletins/reports/reports.md).
+
+- Resolved a VerteX issue that sometimes would prevent users from updating the profile of an active cluster.
+
+- Addressed an issue that prevented cluster profiles from being created after performing a database restore operation on
+  a self-hosted Palette instance.
+
+- Resolved the issue that caused VerteX enterprise cluster to be unable to complete backup operations.
+
+- Fixed a VerteX issue that caused cluster deployments failures to AWS EKS.
+
+- Fixed an issue that caused the Palette agents to upgrade to 4.4 even when platform upgrades are paused.
+
+- Resolved an issue that prevented users from updating system profiles using the System Console.
 
 ## May 19, 2024 - Release 4.3.8
 
