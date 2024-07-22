@@ -32,4 +32,6 @@ Check out the following resources to enable SSO in Palette with the supported Id
 
 - [Palette SSO with Keycloak](palette-sso-with-keycloak.md)
 
-- [Palette SSO with Microsoft Entra ID](./palette-sso-with-entra-id.md)
+- [Palette SSO with Microsoft Entra ID](palette-sso-with-entra-id.md)
+
+- [Palette SSO with Custom CA](palette-sso-with-custom-ca.md)

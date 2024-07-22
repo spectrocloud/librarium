@@ -61,8 +61,6 @@ To complete this tutorial, you will need the following:
   uname -m
   ```
 
-  <br />
-
   :::warning
 
   The Linux machine must have network connectivity to your VMware vCenter environment.
@@ -198,13 +196,7 @@ placeholder with your actual registration token.
 export token=[your_token_here]
 ```
 
-Use the following command to create the **user-data** file containing the tenant registration token. You can click on
-the _Points of Interest_ numbers below to learn more about the main attributes relevant to this example.
-
-<PointsOfInterest points={[
-  { x: 250, y: 160, label: 1, description: "Stores the registration token and lets the agent use the auto-registration functionality and authenticate with the provided token.", tooltipPlacement: "rightTop", },
-  { x: 600, y: 300, label: 2, description: "Sets the login credentials for Edge hosts. The login credentials allow you to SSH log in to the edge host for debugging purposes.", tooltipPlacement: "rightTop", }
-]}>
+Use the following command to create the **user-data** file containing the tenant registration token.
 
 ```shell
 cat << EOF > user-data
@@ -217,12 +209,21 @@ stylus:
 users:
   - name: kairos
     passwd: kairos
+
+install:
+  poweroff: true
 EOF
 ```
 
-</PointsOfInterest>
+:::warning
 
-Review the newly created user data file. <br />
+Ensure that you include the `install.poweroff.true` parameter. This ensures that the Edge host will power off after
+installation. If you do not include this parameter, this could lead to a VM you will use in a subsequent step to refuse
+to power off automatically and cause a timeout error unless you manually shut down the VM.
+
+:::
+
+Review the newly created user data file.
 
 ```bash
 cat user-data
@@ -243,8 +244,6 @@ users:
   - name: kairos
     passwd: kairos
 ```
-
-<br />
 
 ## Build Artifacts
 
@@ -885,13 +884,13 @@ and the set of worker nodes is the worker pool.
 
 Provide the following details for the control plane pool.
 
-| **Field**                                                    | **Value for the control-plane-pool**                                                                                 |
-| ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
-| Node pool name                                               | control-plane-pool                                                                                                   |
-| Allow worker capability                                      | Checked                                                                                                              |
-| Additional Labels (Optional)                                 | None                                                                                                                 |
-| [Taints](../../clusters/cluster-management/taints.md#taints) | Off                                                                                                                  |
-| Pool Configuration > Edge Hosts                              | Choose one of the registered Edge hosts.<br />Palette will automatically display the Nic Name for the selected host. |
+| **Field**                                             | **Value for the control-plane-pool**                                                                                 |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Node pool name                                        | control-plane-pool                                                                                                   |
+| Allow worker capability                               | Checked                                                                                                              |
+| Additional Labels (Optional)                          | None                                                                                                                 |
+| [Taints](../../clusters/cluster-management/taints.md) | Off                                                                                                                  |
+| Pool Configuration > Edge Hosts                       | Choose one of the registered Edge hosts.<br />Palette will automatically display the Nic Name for the selected host. |
 
 The screenshot below shows an Edge host added to the control plane pool.
 

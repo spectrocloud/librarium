@@ -26,7 +26,7 @@ To contribute, we recommend having the following software installed locally on y
 
 - Node.js v20 and npm.
 
-- [Vale](https://vale.sh/docs/vale-cli/installation/)
+- [Vale](https://vale.sh/docs/vale-cli/installation/), version 3.6.0 or higher.
 
 ## Local Development (Docker)
 
@@ -470,9 +470,15 @@ Result
 
 ![Result](/static/assets/docs/images/hide_copy_button.webp)
 
-### Admonitions - Warning / Info / Tip / Danger
+### Admonitions - Warning / Info / Tip / Danger / Tech Preview / Further Guidance
 
 :::warning
+
+Some **content** with _Markdown_ `syntax`.
+
+:::
+
+:::info
 
 Some **content** with _Markdown_ `syntax`.
 
@@ -490,9 +496,24 @@ Some **content** with _Markdown_ `syntax`.
 
 :::
 
+:::preview
+
+Some **content** with _Markdown_ `syntax`.
+
+:::
+
+:::further
+
+Some **content** with _Markdown_ `syntax`.
+
+:::
+
 https://docusaurus.io/docs/markdown-features/admonitions
 
 The content must have a new line at the beginning and at the end of the tag.
+
+For guidance on using admonitions, refer to
+[Spectro Cloud Internal Style Guide: Admonitions/Callouts](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1765933057/Spectro+Cloud+Internal+Style+Guide#Admonitions%2FCallouts).
 
 ### Video
 

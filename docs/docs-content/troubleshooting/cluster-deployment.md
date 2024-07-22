@@ -58,7 +58,8 @@ why a service may fail are:
       ```
 
    2. Scan the **cloud-init-output** file for any errors. Take note of any errors and address them.
-      ```
+
+      ```shell
       cat cloud-init-output.log
       ```
 
