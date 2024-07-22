@@ -181,7 +181,7 @@ need to configure the proxy server to support gRPC.
 
 :::
 
-Use the four resource links below to enable and manage proxy configurations for your Azure cluster.
+Use the following resource links below to enable and manage proxy configurations for your Azure cluster.
 
 1. Deploy a PCG cluster to an existing Kubernetes cluster inside your Azure environment. For additional guidance, refer
    to the [Deploy a PCG to an Existing Kubernetes Cluster](../../pcg/deploy-pcg-k8s.md) guide.
