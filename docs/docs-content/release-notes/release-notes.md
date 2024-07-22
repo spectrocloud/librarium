@@ -11,6 +11,18 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## July 25th, 2024 - Release 4.3.11
+
+### Bug Fixes
+
+- Fixed an issue that sometimes would cause three-node Edge clusters with the local Harbor registry enabled to be stuck
+  in the **Provisioning** state.
+
+- Fixed an issue that prevented users from adding new DNS mappings to a System Private Gateway.
+
+- Resolved several CVEs in the previous release. For a complete list of current CVEs, refer to
+  [CVE Report](../security-bulletins/reports/reports.md).
+
 ## May 19, 2024 - Release 4.3.8
 
 ### Bug Fixes
