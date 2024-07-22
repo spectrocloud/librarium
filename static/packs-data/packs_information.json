@@ -84,6 +84,58 @@
     "description": "Calico network policy provides a richer set of policy capabilities than what Kubernetes provides out-of-the-box. The Nework Policy provider includes: policy ordering/priority, deny rules, and more flexible match rules. While Kubernetes network policy applies only to pods, Calico network policy can be applied to multiple types of endpoints including pods, VMs, and host interfaces. Finally, when used with Istio service mesh, Calico network policy supports securing applications layers 5-7 match criteria, and cryptographic identity."
   },
   {
+    "name": "centos-aws",
+    "description": "CentOS Linux distribution is a stable, predictable, manageable and reproducible platform derived from the sources of RedHat Enterprise Linux (RHEL). It provides a rich base platform for open-source communities to build upon."
+  },
+  {
+    "name": "centos-azure",
+    "description": "CentOS Linux distribution is a stable, predictable, manageable and reproducible platform derived from the sources of RedHat Enterprise Linux (RHEL). It provides a rich base platform for open-source communities to build upon."
+  },
+  {
+    "name": "centos-gcp",
+    "description": "CentOS Linux distribution is a stable, predictable, manageable and reproducible platform derived from the sources of RedHat Enterprise Linux (RHEL). It provides a rich base platform for open-source communities to build upon."
+  },
+  {
+    "name": "centos-vsphere",
+    "description": "CentOS Linux distribution is a stable, predictable, manageable and reproducible platform derived from the sources of RedHat Enterprise Linux (RHEL). It provides a rich base platform for open-source communities to build upon."
+  },
+  {
+    "name": "centos-libvirt",
+    "description": "CentOS Linux distribution is a stable, predictable, manageable and reproducible platform derived from the sources of RedHat Enterprise Linux (RHEL). It provides a rich base platform for open-source communities to build upon."
+  },
+  {
+    "name": "ceph-rbd",
+    "description": "A Container Storage Interface (CSI) driver, provisioner, snapshotter, resizer and attacher for Ceph RBD."
+  },
+  {
+    "name": "ceph-rbd-addon",
+    "description": "A Container Storage Interface (CSI) driver, provisioner, snapshotter, resizer and attacher for Ceph RBD."
+  },
+  {
+    "name": "cisco-appdynamics-collectors",
+    "description": "AppDynamics Collector is a component within the AppDynamics platform that gathers and processes telemetry data from applications, databases, or other monitored systems, and sends this data to the AppDynamics backend for analysis and visualization."
+  },
+  {
+    "name": "cisco-appdynamics-operators",
+    "description": "AppDynamics Operator is a Kubernetes-native component designed to manage and automate the deployment and configuration of AppDynamics monitoring agents within Kubernetes environments."
+  },
+  {
+    "name": "cloudanix",
+    "description": "The Cloudanix pack is an add-on security pack that provides a dashboard to help you detect threats and unusual behavior in your Kubernetes clusters. Cloudanix detects the following: Files added or modified in sensitive directories.  SSH into a container. Modifications to shell configuration files. Attempts to read sensitive files that contain credential information. And identitfy crypto mining."
+  },
+  {
+    "name": "cni-azure",
+    "description": "The Azure CNI plugin provides network support to Azure Kubernetes Service (AKS) clusters. The plugin is responsible for setting up the network interfaces on the nodes and pods, and for managing the IP addresses. The CNI ensures every pod gets an IP address from the subnet and can be accessed directly."
+  },
+  {
+    "name": "cni-aws-vpc-eks",
+    "description": "The Amazon Virtual Private Cloud (VPC) CNI plugin for Kubernetes. This plugin provides pod networking through Elastic Network Interfaces (ENI) for clusters deployed on AWS."
+  },
+  {
+    "name": "cni-aws-vpc-eks-helm",
+    "description": "The Amazon Virtual Private Cloud (VPC) CNI plugin for Kubernetes. This plugin provides pod networking through Elastic Network Interfaces (ENI) for clusters deployed on AWS."
+  },
+  {
     "name": "cni-calico",
     "description": "Calico is a networking and security solution that enables Kubernetes workloads and non-Kubernetes/legacy workloads to communicate seamlessly and securely. Calico consists of networking to secure network communication, and advanced network policy to secure cloud-native microservices/applications at scale."
   },
@@ -92,11 +144,11 @@
     "description": "Calico is a networking and security solution that enables Kubernetes workloads and non-Kubernetes/legacy workloads to communicate seamlessly and securely. Calico consists of networking to secure network communication, and advanced network policy to secure cloud-native microservices/applications at scale."
   },
   {
-    "name": "",
-    "description": ""
+    "name": "certmanager",
+    "description": "cert-manager adds certificates and certificate issuers as resource types in Kubernetes clusters, simplifying obtaining, renewing, and using those certificates. It can issue certificates from various supported sources, including Let’s Encrypt, HashiCorp Vault, Venafi, and private PKI. It also takes care of the certificate validity and attempts to renew certificates before expiry."
   },
   {
-    "name": "",
+    "name": "cisco-appdynamics-collectors",
     "description": ""
   },
   {

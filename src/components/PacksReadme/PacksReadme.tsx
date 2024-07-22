@@ -230,8 +230,6 @@ export default function PacksReadme() {
     return consolidatedRegistries.join(", ");
   }
 
-  console.log("packData", packData);
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.description}>
