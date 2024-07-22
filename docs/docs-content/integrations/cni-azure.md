@@ -17,7 +17,7 @@ tags: ["packs", "azure-cni", "cni", "network"]
 
 :::warning
 
-Make sure to use Azure CNI with the Windows operating system as the kubenet is not available for the Windows
+Make sure to use Azure CNI with the Windows Operating System as the kubenet CNI is not available for the Windows
 environment.
 
 :::
@@ -25,20 +25,20 @@ environment.
 ### Azure CNI Policy Support
 
 Network Policy is a Kubernetes specification that defines access policies for communication between pods. By default,
-AKS cluster pods can send and receive traffic without limitations. However, to ensure security, rules to control traffic
-flow can be defined. Network Policies define an ordered set of rules to send and receive traffic and applies them to a
-collection of pods that match one or more label selectors. Palette enables Network Policies to be included as part of a
-wider manifest that also creates a deployment or service. Palette leverages two (2) Network Policies from Azure CNI:
+Azure AKS cluster pods can send and receive traffic without limitations. However, to ensure security, rules to control
+traffic flow can be defined. Network Policies define an ordered set of rules to send and receive traffic and applies
+them to a collection of pods that match one or more label selectors. Palette supports Network Policies to be included as
+part of a wider manifest that also creates a deployment or service. Palette leverages two Network Policies from Azure
+CNI:
 
 - **azure**: Azure's own implementation, called
   [Azure Network Policy](https://learn.microsoft.com/en-us/azure/virtual-network/kubernetes-network-policies).
 
-- **calico**: An open-source network and network security solution founded by [Tigera](https://www.tigera.io/).
+- **calico**: An open-source network and network security solution developed by [Tigera](https://www.tigera.io/).
 
 - **none**: No network policy is applied. Use this option if you do not want to apply any network policy.
 
-Palette users can choose any one of the above Network Policies and provide it to the pack YAML file as `networkPolicy`
-as given below.
+Update the pack YAML's `networkPolicy` field to apply the desired network policy. The default value is `calico`.
 
 ```yaml
 pack:
@@ -55,3 +55,21 @@ If you are comparing Azure Network Policy with other Network Policy engines, ref
 </TabItem>
 
 </Tabs>
+
+## Terraform
+
+Use the following Terraform snippet to reference the Azure CNI pack in your Terraform template. Update the version
+number as needed.
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "calico" {
+  name    = "cni-azure"
+  version = "1.4.0"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
