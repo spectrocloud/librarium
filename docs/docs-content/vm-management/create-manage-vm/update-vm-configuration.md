@@ -12,7 +12,7 @@ You can add storage and additional network interfaces to your virtual machines (
 
 ## Add Disk Storage
 
-KubeVirt allows hot plugging additional storage into a running VM. Both block and file system volume types are
+KubeVirt allows hot plugging additional storage into an active VM. Both block and file system volume types are
 supported. Disks are "hot plugged" into your VMs, meaning that you do not need to power off the VM in order to add
 disks.
 

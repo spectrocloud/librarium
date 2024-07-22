@@ -14,6 +14,9 @@ on top of an existing data center or edge cluster.
 
 ![Diagram that explains the architecture behind Palette VMO.](/vm-management_architecture_vmo-architecture.webp)
 
+For more detailed information about the technical architecture of VMO, refer to
+[Palette VMO Reference Architecture](https://www.spectrocloud.com/resources/whitepaper/vmo-architecture-pdf).
+
 ## Palette VMO Components
 
 By default, Palette VMO includes the following components:

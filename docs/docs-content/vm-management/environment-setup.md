@@ -19,20 +19,28 @@ The following sections list the hardware requirements for worker nodes and contr
 Refer to the following table for the minimum and recommended hardware specifications for the worker nodes of the
 cluster.
 
-| Component            | Minimum                                            | Recommended                                        | Comments                                                                                             |
-| -------------------- | -------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| **Server**           | 2U Rackmount Chassis                               | 2U Rackmount Chassis                               | Needs to fit Fiber Channel (FC) adapters and have sufficient Network Interface Cards (NIC).          |
-| **CPU**              | Intel or AMD x64 CPU with 8 cores                  | Intel or AMD x64 CPU with 8 cores                  |                                                                                                      |
-| **RAM**              | 24 GB                                              | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                       |
-| **Network Adapters** | 2 x 10 Gbps <br /> (data + management)             | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                      |
-| **Storage Adapters** | 2 x 16 Gbps FC                                     | 2 x 16 Gbps FC                                     | Storage adapters must support the FC protocol, a high-speed network protocol used for data transfer. |
-| **Disks**            | Local disk for the OS boot (SAN boot is supported) | Local disk for the OS boot                         | Boot from SAN requires special consideration due to the multi-path configuration.                    |
+| Component            | Minimum                                                                                            | Recommended                                        | Comments                                                                                             |
+| -------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Form Factor**      | The server must fit Fiber Channel (FC) adapters and have sufficient Network Interface Cards (NIC). | 2U Rackmount Chassis                               |                                                                                                      |
+| **CPU**              | Intel or AMD x64 CPU with 8 cores                                                                  | Intel or AMD x64 CPU with 8 cores                  |                                                                                                      |
+| **RAM**              | 24 GB                                                                                              | 256 GB or more                                     | Assumes the deployment of 20 VMs per node multiplied by the median RAM per VM.                       |
+| **Network Adapters** | 2 x 10 Gbps <br /> (data + management)                                                             | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                      |
+| **Storage Adapters** | 2 x 16 Gbps FC                                                                                     | 2 x 16 Gbps FC                                     | Storage adapters must support the FC protocol, a high-speed network protocol used for data transfer. |
+| **Disks**            | Local disk for the OS boot (SAN boot is supported)                                                 | Local disk for the OS boot                         | Boot from SAN requires special consideration due to the multi-path configuration.                    |
 
 ### Control Plane Nodes
 
 Typically, the cluster control plane nodes do not operate any VMO workloads. As a result, they can have lighter hardware
-specifications. For example, a server with 4 cores and 8 GB RAM is sufficient for a minimum-specification control plane
-node.
+specifications in terms of CPU and RAM. For example, a server with 4 cores and 8 GB RAM is sufficient for a
+minimum-specification control plane node. The rest of the hardware requirements for control plane nodes remain the same
+as worker nodes.
+
+| Component            | Minimum                                                                                            | Recommended                                        | Comments                                                                                             |
+| -------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Form Factor**      | The server must fit Fiber Channel (FC) adapters and have sufficient Network Interface Cards (NIC). | 2U Rackmount Chassis                               |                                                                                                      |
+| **Network Adapters** | 2 x 10 Gbps <br /> (data + management)                                                             | 2 x 10 Gbps (data) <br /> 2 x 10 Gbps (management) | Pod overlay operates on the management network.                                                      |
+| **Storage Adapters** | 2 x 16 Gbps FC                                                                                     | 2 x 16 Gbps FC                                     | Storage adapters must support the FC protocol, a high-speed network protocol used for data transfer. |
+| **Disks**            | Local disk for the OS boot (SAN boot is supported)                                                 | Local disk for the OS boot                         | Boot from SAN requires special consideration due to the multi-path configuration.                    |
 
 You can increase the hardware specifications based on the total number of control plane and worker nodes you want in the
 cluster. Refer to the following table for guidance on control plane node sizing.
@@ -128,8 +136,8 @@ want to reach over the **bond_management.10** subinterface instead, you can conf
 
 For publishing workloads from VMs, you have the following ways:
 
-- Running the VM on the pod network like containers and publishing the individual VM ports as Kubernetes services on the
-  **bond_data.20** network. In this case, you can use MetalLB to assign IP addresses.
+- Operating the VM on the pod network like containers and publishing the individual VM ports as Kubernetes services on
+  the **bond_data.20** network. In this case, you can use MetalLB to assign IP addresses.
 
 - Placing the entire VM on a VLAN and using Multus to assign the VM to a VLAN on top of the **br0** interface. In this
   case, it's the responsibility of the VM (for static IPs) or the network (for DHCP) to assign IP addresses.
