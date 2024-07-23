@@ -12,3 +12,8 @@ docs/api-content/**/*.json
 # Troublesome files
 tsconfig.json
 src/components/IconMapper/dynamicFontAwesomeImports.ts
+src/components/IconMapper/dynamicFontAwesomeImports.js
+docs/docs-content/security-bulletins/cve-reports.md
+
+# Ignore partials
+_partials/

@@ -181,15 +181,15 @@ const redirects = [
   },
   {
     from: `/vm-management/vm-packs-profiles/enable-vm-dashboard/`,
-    to: `/vm-management/vm-packs-profiles/add-roles-and-role-bindings/`,
+    to: `/vm-management/rbac/add-roles-and-role-bindings/`,
   },
   {
     from: `/vm-management/vm-packs-profiles/vm-dashboard/`,
-    to: `/vm-management/create-manage-vm/standard-vm-operations/`,
+    to: `/vm-management/create-manage-vm`,
   },
   {
     from: `/vm-management/vm-packs-profiles/create-vm-dashboard-profile/`,
-    to: `/vm-management/vm-packs-profiles/create-vmo-profile/`,
+    to: `/vm-management/create-vmo-profile/`,
   },
   {
     from: `/knowledgebase/`,
@@ -504,7 +504,6 @@ const redirects = [
     from: "/clusters/edge/edgeforge-workflow/palette-canvos/build-artifacts",
     to: "/clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle",
   },
-
   // Redirects for tutorials that were removed from docs
   {
     from: "/registries-and-packs/deploy-pack",
@@ -525,6 +524,14 @@ const redirects = [
   {
     from: "/clusters/edge/site-deployment/deploy-cluster",
     to: "/tutorials/edge/deploy-cluster",
+  },
+  {
+    from: "/security-bulletins/index/",
+    to: "/unlisted/index/",
+  },
+  {
+    from: "/security-bulletins/cve-reports/",
+    to: "/security-bulletins/reports/",
   },
 ];
 
