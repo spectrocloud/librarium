@@ -135,9 +135,9 @@ components, refer to [Palette VMO](./vm-management.md).
         targetPort: 8443
     ```
 
-          </TabItem>
+    </TabItem>
 
-          <TabItem value="kubevirt" label="kubevirt">
+    <TabItem value="kubevirt" label="kubevirt">
 
     ```yaml {7}
     kubevirt:
@@ -151,7 +151,7 @@ components, refer to [Palette VMO](./vm-management.md).
         targetPort: 8443
     ```
 
-          </TabItem>
+    </TabItem>
 
     </Tabs>
 
