@@ -38,6 +38,8 @@ tags: ["release-notes"]
 - Resolved an issue that prevented users from updating system profiles using the System Console in a self-hosted
   instance of Palette.
 
+### Improvement
+
 - Added the **Error** status to backup operations in the System Console in self-hosted instances of Palette.
 
 ## May 19, 2024 - Release 4.3.8
