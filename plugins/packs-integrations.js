@@ -7,6 +7,7 @@ const mime = require("mime-types");
 const { setTimeout } = require("timers/promises");
 const BASE_URL = require("../static/scripts/constants.js").BASE_URL;
 const fetch = require("node-fetch");
+const excludeList = require("../static/packs-data/exclude_packs.json");
 const { existsSync, promises, open, mkdirSync, writeFile, close, createWriteStream } = require("node:fs");
 import logger from "@docusaurus/logger";
 
@@ -386,6 +387,16 @@ async function pluginPacksAndIntegrationsData(context, options) {
           mkdirSync(dirname, { recursive: true });
         }
         let packDataArr = await fetchPackListItems("?limit=50", [], 0);
+
+        // Filter out the packs from the exclude list.
+        packDataArr = packDataArr.filter((pack) => {
+          if (excludeList.includes(pack.spec.name)) {
+            // Only uncomment if debugging is required
+            // logger.warn(`Pack ${pack.spec.name} is excluded from the list`);
+            return false;
+          }
+          return true;
+        });
         logger.info("All production packs are identified and a list of packs to be fetched is prepared");
         packDataArr = packDataArr.filter((pack) => {
           return (
