@@ -19,16 +19,16 @@ This guide demonstrates how to implement your own disk and VM templates using Ku
 
 ## Prerequisites
 
-- A VMO profile. Check out the [Create a VMO Profile](../vm-packs-profiles/create-vmo-profile.md) guide to learn how you
-  can create this profile.
+- A VMO profile. Check out the [Create a VMO Profile](../../create-vmo-profile.md) guide to learn how you can create
+  this profile.
 - A cluster deployed with this VMO profile. Check out the
-  [Deploy a Cluster](../../clusters/public-cloud/deploy-k8s-cluster.md) tutorial for detailed steps on how you can
+  [Deploy a Cluster](../../../clusters/public-cloud/deploy-k8s-cluster.md) tutorial for detailed steps on how you can
   deploy clusters to a public cloud.
 
 ## Create a Template
 
 1.  Create a new **Add-on Profile** with the following manifest. Check out the
-    [Add a Manifest](../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md)
+    [Add a Manifest](../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md)
     guide for more information.
 
     The provided manifest defines a `DataVolume` that imports the example disk template for Ubuntu 22.04 into the
@@ -173,7 +173,7 @@ This guide demonstrates how to implement your own disk and VM templates using Ku
 
 3.  When the CDI clones a PVC, it runs under the `default` service account in the namespace of the target PVC. When the
     source PVC is in a different namespace, you must give the required permissions to the service account. The
-    [VMO pack](../vm-management.md) version 4.2.0 (or higher) does this automatically through its default pack
+    [VMO pack](../../vm-management.md) version 4.2.0 (or higher) does this automatically through its default pack
     specification. This configuration uses the `vmEnabledNamespaces` option to specify the namespaces for which the
     permissions are configured.
 
@@ -327,7 +327,7 @@ This guide demonstrates how to implement your own disk and VM templates using Ku
     ![Add-on Profile](/create-disk-templates-guide/vm-management_create-manage-vm_create-disk-templates_add-on-disk-template-profile.webp)
 
 4.  Once the cluster updates, this VM template is available to the VMs you create on your cluster. Check out the
-    [Deploy VM From a Template](./standard-vm-operations/deploy-vm-from-template.md) guide for more information.
+    [Deploy VM From a Template](../deploy-vm-from-template.md) guide for more information.
 
     ![Create VM from template](/create-disk-templates-guide/vm-management_create-manage-vm_create-disk-templates_create-vm-from-template.webp)
 
@@ -335,8 +335,6 @@ This guide demonstrates how to implement your own disk and VM templates using Ku
 
 To learn more about the Palette VMO, we encourage you to check out the reference resources below.
 
-- [Virtual Machine Orchestrator Pack](../vm-packs-profiles/vm-packs-profiles.md)
+- [Palette VMO](../../vm-management.md)
 
-- [Standard VM Operations](../create-manage-vm/standard-vm-operations/standard-vm-operations.md)
-
-- [Deploy VM From a Template](../create-manage-vm/standard-vm-operations/deploy-vm-from-template.md)
+- [Deploy VM From a Template](../deploy-vm-from-template.md)

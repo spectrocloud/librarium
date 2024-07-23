@@ -26,7 +26,7 @@ allows the Virtual Machine (VM) to add and remove virtual CPUs while the VM is r
 
 3. Select the **Virtual Machines** tab, then select the necessary VM and open its **YAML** tab.
 
-   ![Palette with the VM YAML editor displayed.](/vm-management_create-manage-vm_standard-vm-operations_enable-cpu-hotplug_vm-yaml-editor.webp)
+   ![Palette with the VM YAML editor displayed.](/vm-management_create-manage-vm_enable-cpu-hotplug_vm-yaml-editor.webp)
 
 4. In the VM YAML configuration editor, navigate to the VM object configuration and update the number of CPU sockets.
    Consider the following example for reference.
