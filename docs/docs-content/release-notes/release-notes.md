@@ -22,9 +22,9 @@ tags: ["release-notes"]
   [CVE Report](../security-bulletins/reports/reports.md).
 
 - Fixed an issue that caused clusters to experience problems in communicating with Palette through gPRC using domain
-  names and port 443, resulting in clusters appearing in **Unhealthy** state.
+  names and port 443, resulting in clusters appearing in an **Unhealthy** state.
 
-- Resolved a VerteX issue that sometimes would prevent users from updating the profile of an active cluster.
+- Resolved a VerteX issue that sometimes would prevent users from updating the cluster profile of an active cluster.
 
 - Addressed an issue that prevented cluster profiles from being created after performing a database restore operation on
   a self-hosted Palette instance.
