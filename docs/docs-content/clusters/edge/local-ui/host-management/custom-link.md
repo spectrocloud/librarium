@@ -64,31 +64,41 @@ or open a new tab in your browser depending on how to configure the links.
    git checkout v4.4.0
    ```
 
-4. Create a directory called **ui** at the path `CanvOS/ui`.
+4. Create a directory called **local-ui** at the path **CanvOS/local-ui**. Then, under the **local-ui** directory,
+   create a directory named **ui**. You can issue the following command to create both directories.
 
-5. In the directory, create a file named **customizations.json**. This is the same file where you customize the theme of
-   Local UI. If the file is already present, there is no need to create a new one. For more information about
-   customizing the theme of Local UI, refer to [Customize Local UI Theme](./theming.md).
+   ```shell
+   mkdir -p local-ui/ui
+   ```
 
-6. If you want Local UI to host static web pages that you want your users to be able to access from the sidebar, put the
-   HTML files in the **ui** folder. The HTML file may link to JavaScript and CSS files. Ensure that your HTML file can
-   reference its assets. We suggest that you put all assets for specific web pages in one folder. The hosted static
-   sites are exposed through HTTPS with a self-signed certificate.
+5. In the **CanvOS/local-ui/ui** directory, create a file named **customizations.json**. This is the same file where you
+   customize the Local UI theme. If the file is already present, there is no need to create a new one. For more
+   information about customizing the Local UI theme, refer to [Customize Local UI Theme](./theming.md).
 
-   For example, you can put the following content inside the **ui** folder.
+6. If you want Local UI to host static web pages that you want your users to be able to access from the sidebar, create
+   another folder for your website under the **local-ui** folder and put all assets for your web pages in that folder.
+
+   Choose a name that describes the web pages. For example, if your website has content related to an application, you
+   can name the folder **app** and create the folder at **local-ui/app**.
+
+   The HTML files may link to JavaScript and CSS files. Ensure that your HTML file can reference its assets. The hosted
+   static sites are exposed through HTTPS with a self-signed certificate.
+
+   For example, you can put the following content inside the **local-ui** folder.
 
    ```text
-   |-ui
-     |--customizations.json
+   |-local-ui
+     |--ui
+         |--customizations.json
      |--app
           |--index.html
           |--index.js
           |--index.css
    ```
 
-   When using an URL to locate the local webpage, you can treat the **ui** folder as the root folder and you must use
-   absolute paths to locate your assets. For example, you can locate the HTML file in the example with
-   `/app/index.html`.
+   When using a URL to locate the local webpage, you can treat the **local-ui** folder as the root folder and you must
+   use absolute paths to locate your assets. For example, from **customizations.json**, you can locate the HTML file in
+   the example with `/app/index.html`.
 
 7. Populate the file with the following schema. Each link requires one object with the `label` and `url` properties.
 
@@ -123,9 +133,8 @@ or open a new tab in your browser depending on how to configure the links.
 
    :::warning
 
-   Some websites and domains cannot be embedded as iframes due to security configurations. Confirm whether the sites you
-   can be loaded through iframes before configuring them. If they cannot be loaded as iframes, do not use the
-   `type: iframe` property.
+   Some websites and domains cannot be embedded as iframes due to security. Confirm whether the sites can be loaded
+   through iframes first. If they cannot be loaded as iframes, do not use the `type: iframe` property.
 
    :::
 
@@ -136,11 +145,15 @@ or open a new tab in your browser depending on how to configure the links.
 9. Ensure you include all the links you want to add to the sidebar before proceeding. You cannot add new links to the
    sidebar without rebuilding the installer ISO.
 
-10. Archive the UI directory to a TAR file. The file must be named **ui.tar** and must be placed at the root directory
-    of CanvOS.
+10. Archive the **local-ui** directory to a TAR file. The file must be named **local-ui.tar** and must be placed at the
+    root directory of CanvOS.
+
+    ```shell
+    tar cvf local-ui.tar local-ui
+    ```
 
 11. Follow the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide from step onward
-    to finish the EdgeForge process. As long as the **ui.tar** file is at the root directory of **CanvOS** and the
+    to finish the EdgeForge process. As long as the **local-ui.tar** file is at the root directory of **CanvOS** and the
     installation mode is set to airgap as required by Local UI, the custom links will be added to the sidebar when you
     log in to Local UI.
 
