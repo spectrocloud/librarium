@@ -208,7 +208,7 @@ Use the following steps to validate the SSO configuration.
    ![Image of project roles highlighted](/keycloak/user-management_saml-sso_keycloak-15-palette-project.webp "Palette Project")
 
 
-### Syncing Keycloak Groups and Palette Teams
+### Sync Keycloak Groups and Palette Teams
 
 1. Switch back to the Keycloak admin console and modify the **profile** Client Scope. Navigate to the left **Main Menu** and
    select **Client Scope**. Click on the **Profile** button.
@@ -229,7 +229,7 @@ Use the following steps to validate the SSO configuration.
 
 You have now ensured that the groups for the Keycloak user are within the token attributes, ensure the Keycloak group and the Palette group match.
 
-### Using Default Teams
+### Default Teams
 
 1. From the left **Main Menu**, select **Tenant Settings**. Next, click on **SSO** to access the SSO configuration page.
    Click on the **OIDC** tab to access the OIDC configuration page. Scroll down to the **SSO Admins** section and select
