@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Take a VM Snapshot"
 title: "Take a Snapshot of the VM"
-description: "Learn how to snapshot a VM using Palette Virtual Machine Orchestrator.."
+description: "Learn how to snapshot a VM using Palette Virtual Machine Orchestrator."
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 30
@@ -33,7 +33,7 @@ is found, the **Snapshot** action is not possible.
 
 ## Prerequisites
 
-- A deployed VM.
+- A deployed VM in an active cluster in Palette with the Virtual Machine Orchestrator (VMO) pack.
 
 ## Take a Snapshot
 
