@@ -160,6 +160,18 @@
     "description": "Romana is a new Software Defined Network (SDN) solution specifically designed for the Cloud Native architectural style. The result of this focus is that Romana cloud networks are less expensive to build, simpler to operate and deliver higher performance than cloud networks built using alternative SDN designs."
   },
   {
+    "name": "cni-tke-global-router",
+    "description": "This pack deploys the TKE Global Router CNI plugin, which provides a global routing solution for Kubernetes clusters. The plugin is designed to work with the TKE Global Router controller to provide a global routing solution for Kubernetes clusters."
+  },
+  {
+    "name": "cni-vpc-native-gke",
+    "description": "This pack deploys the GKE Container Network Interface (CNI) that provides network support to Google Kubernetes Engine (GKE) clusters. The CNI plugin is responsible for setting up the network interfaces on the nodes and pods, and for managing the IP addresses."
+  },
+  {
+    "name": "cni-weavenet",
+    "description": "WeaveNet, a Kubernetes CNI plugin, uniquely creates a resilient virtual network for pod communication across clusters with zero configuration. It supports encryption, network policies, multicast, and automatic IP allocation, making it ideal for secure and scalable environments."
+  },
+  {
     "name": "centos",
     "description": "CentOS Linux distribution is a stable, predictable, manageable and reproducible platform derived from the sources of RedHat Enterprise Linux (RHEL). It provides a rich base platform for open source communities to build upon. Spectro Cloudprovides CentOS as a development framework for its users."
   },
@@ -178,6 +190,10 @@
   {
     "name": "hello-universe",
     "description": "Hello Universe is a demo web application used to help users learn more about Palette and its features. It includes a click counter and funny Spectro Cloud-themed images."
+  },
+  {
+    "name": "cockroachdb-operator",
+    "description": "The CockroachDB Kubernetes Operator deploys CockroachDB on a Kubernetes cluster. You can use the Operator to manage the configuration of an active CockroachDB cluster."
   },
   {
     "name": "cost-analyzer",
