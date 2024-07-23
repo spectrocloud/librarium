@@ -160,7 +160,7 @@ settings can introduce misconfigurations. Carefully review the changes you make 
 12. Review the profile and click **Finish Configuration**.
 
 13. Add the add-on profile when you create a cluster. For more information, refer to
-    [Create Cluster Definition](../../clusters/edge/site-deployment/site-installation/cluster-deployment.md).
+    [Create Cluster Definition](../clusters/edge/site-deployment/site-installation/cluster-deployment.md).
 
 </TabItem>
 

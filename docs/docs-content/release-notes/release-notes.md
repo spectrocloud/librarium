@@ -272,9 +272,8 @@ notes below to learn more about the new features and improvements.
 #### Features
 
 - You can now deploy virtual machines using VMO on an Edge cluster. Edge clusters are useful when deploying Kubernetes
-  clusters in remote locations. Refer to the
-  [Create a VMO Profile](../vm-management/vm-packs-profiles/create-vmo-profile.md) to learn how to create an Edge
-  cluster profile for VMO.
+  clusters in remote locations. Refer to the [Create a VMO Profile](../vm-management/create-vmo-profile.md) to learn how
+  to create an Edge cluster profile for VMO.
 
 ### VerteX
 
