@@ -2,7 +2,6 @@
 sidebar_label: "Deploy VM From a Template"
 title: "Deploy VM From a Template"
 description: "Learn how to deploy a VM from a template using Palette Virtual Machine Orchestrator"
-icon: " "
 hide_table_of_contents: false
 sidebar_position: 0
 tags: ["vmo"]
@@ -13,8 +12,23 @@ organization's administrator provides.
 
 ## Prerequisites
 
-- Configured Virtual Machine Orchestrator profile applied to your cluster. Review
-  [Create a VMO Profile](../../vm-packs-profiles/create-vmo-profile.md) to configure the dashboard.
+- An active cluster with the Virtual Machine Orchestrator (VMO) pack. Review
+  [Create a VMO Profile](../create-vmo-profile.md) to configure the dashboard.
+
+  - If this is an Edge cluster with VMs as Edge hosts, such as a VM in VMware vCenter, the VM Edge host must support
+    hardware-assisted virtualization to the guest Operating System (OS).
+
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro
+  Cloud reverse proxy.
+
+- Users or groups must be mapped to a Virtual Machine Role-Based Access Control (RBAC) role. You can create a custom
+  role through a manifest and use Palette's RoleBinding feature to associate users and groups with the role. Refer to
+  the [Create Role Bindings](../../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide to learn
+  more.
+
+- A namespace for VMs. Although you can deploy VMs from the default namespace, we recommend creating at least one
+  namespace dedicated to VMs as a way to organize and manage them. To learn how to create a namespace, check out
+  [Create a Namespace](../../clusters/cluster-management/namespace-management.md#create-a-namespace).
 
 ## Deploy VM from a Template
 
@@ -30,8 +44,7 @@ These steps will help guide you to deploy a VM from an out-of-the-box VM templat
 
 5. From the **Virtual Machines** tab that appears, click **New Virtual Machine**.
 
-6. Click the **New Virtual Machine** button. Available templates are displayed based on supported Operating Systems
-   (OS).
+6. Click the **New Virtual Machine** button. Available templates are displayed based on supported OS.
 
 7. You can deploy from a template or create an empty VM as follows:
 
@@ -81,4 +94,4 @@ Try installing your applications. If you did not install the QEMU guest agent as
 install it now. The guest agent displays additional details in the **Virtual Machines** > **Details** tab.
 
 You can update the VM configuration from the VM console or from tabs when you click on the VM. Learn about updates you
-can make in the [Update VM Configuration](update-vm-configuration.md) guide.
+can make in the [Update VM Configuration](./update-vm-configuration.md) guide.
