@@ -45,7 +45,7 @@ as worker nodes.
 The CPU and RAM requirements for control plane nodes increase with the number of worker nodes and namespaces in the
 cluster. Refer to the following table for guidance on control plane node sizing.
 
-::: warning
+:::warning
 
 These recommendations assume that each cluster has at least three control plane nodes.
 
