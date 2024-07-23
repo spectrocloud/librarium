@@ -198,8 +198,7 @@ export default function PacksReadme() {
           width={120}
           height={120}
         />
-        <div className={styles.emptyContentTitle}>No content available</div>
-        <div className={styles.emptyContentDescription}>The content for this pack is not available.</div>
+        <div className={styles.emptyContentTitle}>No README found</div>
       </div>
     );
   }

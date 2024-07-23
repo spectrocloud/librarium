@@ -112,6 +112,10 @@
     "description": "A Container Storage Interface (CSI) driver, provisioner, snapshotter, resizer and attacher for Ceph RBD."
   },
   {
+    "name": "certmanager",
+    "description": "cert-manager adds certificates and certificate issuers as resource types in Kubernetes clusters, simplifying obtaining, renewing, and using those certificates. It can issue certificates from various supported sources, including Let’s Encrypt, HashiCorp Vault, Venafi, and private PKI. It also takes care of the certificate validity and attempts to renew certificates before expiry."
+  },
+  {
     "name": "cisco-appdynamics-collectors",
     "description": "AppDynamics Collector is a component within the AppDynamics platform that gathers and processes telemetry data from applications, databases, or other monitored systems, and sends this data to the AppDynamics backend for analysis and visualization."
   },
@@ -144,28 +148,16 @@
     "description": "Calico is a networking and security solution that enables Kubernetes workloads and non-Kubernetes/legacy workloads to communicate seamlessly and securely. Calico consists of networking to secure network communication, and advanced network policy to secure cloud-native microservices/applications at scale."
   },
   {
-    "name": "certmanager",
-    "description": "cert-manager adds certificates and certificate issuers as resource types in Kubernetes clusters, simplifying obtaining, renewing, and using those certificates. It can issue certificates from various supported sources, including Let’s Encrypt, HashiCorp Vault, Venafi, and private PKI. It also takes care of the certificate validity and attempts to renew certificates before expiry."
+    "name": "cni-kubenet",
+    "description": "Kubenet, a basic Kubernetes network plugin, configures pod network interfaces and routes using CNI plugins. It assigns IP addresses from a node-specific subnet, enabling pod-to-pod communication within nodes and relies on host network configurations for inter-node traffic."
   },
   {
-    "name": "cisco-appdynamics-collectors",
-    "description": ""
+    "name": "cni-multus",
+    "description": "Multus CNI is a container network interface plugin for Kubernetes that enables attaching multiple network interfaces to pods. Typically, in Kubernetes each pod only has one network interface,apart from a loopback. With Multus you can create a multi-homed pod that has multiple interfaces. This is accomplished by Multus acting as a meta-plugin, a CNI plugin that can call multiple other CNI plugins."
   },
   {
-    "name": "",
-    "description": ""
-  },
-  {
-    "name": "",
-    "description": ""
-  },
-  {
-    "name": "",
-    "description": ""
-  },
-  {
-    "name": "",
-    "description": ""
+    "name": "cni-romana",
+    "description": "Romana is a new Software Defined Network (SDN) solution specifically designed for the Cloud Native architectural style. The result of this focus is that Romana cloud networks are less expensive to build, simpler to operate and deliver higher performance than cloud networks built using alternative SDN designs."
   },
   {
     "name": "centos",
