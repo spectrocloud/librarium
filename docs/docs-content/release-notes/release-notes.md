@@ -21,6 +21,9 @@ tags: ["release-notes"]
 - Resolved several CVEs in the previous release. For a complete list of current CVEs, refer to
   [CVE Report](../security-bulletins/reports/reports.md).
 
+- Fixed an issue that caused clusters to experience problems in communicating with Palette through gPRC using domain
+  names and port 443, resulting in clusters appearing in **Unhealthy** state.
+
 - Resolved a VerteX issue that sometimes would prevent users from updating the profile of an active cluster.
 
 - Addressed an issue that prevented cluster profiles from being created after performing a database restore operation on
@@ -32,7 +35,10 @@ tags: ["release-notes"]
 
 - Fixed an issue that caused the Palette agents to upgrade to 4.4 even when platform upgrades are paused.
 
-- Resolved an issue that prevented users from updating system profiles using the System Console.
+- Resolved an issue that prevented users from updating system profiles using the System Console in a self-hosted
+  instance of Palette.
+
+- Added the **Error** status to backup operations in the System Console in self-hosted instances of Palette.
 
 ## May 19, 2024 - Release 4.3.8
 
