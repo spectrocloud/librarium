@@ -32,6 +32,9 @@ components, refer to [Palette VMO](./vm-management.md).
 
 ## Create the Profile
 
+<Tabs>
+<TabItem value="non-edge" label="Non-edge">
+
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. Select **Profiles** in the left **Main Menu** and click the **Add Cluster Profile** button.
@@ -42,12 +45,7 @@ components, refer to [Palette VMO](./vm-management.md).
 
 5. In the following screen, click **Add New Pack**.
 
-6. Use the information below to find the **Virtual Machine Orchestrator** pack:
-
-   - **Pack Type**: System App
-   - **Registry**: Public Repo
-   - **Pack Name**: Virtual Machine Orchestrator
-   - **Pack Version**: 1.0 or higher
+6. Locate the **Virtual Machine Orchestrator** pack and add it to your profile.
 
 7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the
    **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere. Check
@@ -162,7 +160,7 @@ components, refer to [Palette VMO](./vm-management.md).
 12. Review the profile and click **Finish Configuration**.
 
 13. Add the add-on profile when you create a cluster. For more information, refer to
-    [Create Cluster Definition](../../clusters/edge/site-deployment/site-installation/cluster-deployment.md).
+    [Create Cluster Definition](../clusters/edge/site-deployment/site-installation/cluster-deployment.md).
 
 </TabItem>
 
