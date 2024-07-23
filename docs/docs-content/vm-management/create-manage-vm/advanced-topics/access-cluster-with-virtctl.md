@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Access VM Cluster with virtctl"
-title: "Set up virtctl"
+sidebar_label: "Access VM Cluster with Virtctl"
+title: "Set up Virtctl"
 description: "Set up KubeVirt virtctl to facilitate VM operations in Palette Virtual Machine Orchestrator"
 icon: " "
 hide_table_of_contents: false
