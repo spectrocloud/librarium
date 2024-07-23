@@ -54,4 +54,6 @@ Palette Edge deployment lifecycle using VMs.
 
 - [Deploy Edge Hosts as Virtual Machines](./virtual-deployment/virtual-deployment.md)
 
+- [Edge Host Grid View](./edge-host-view.md)
+
 - [Deployment with Custom Registries](./deploy-custom-registries/deploy-custom-registries.md)
