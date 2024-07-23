@@ -94,5 +94,81 @@
   {
     "name": "nginx",
     "description": "The NGNIX pack is an Ingress Controller implementation that uses NGINX as a reverse proxy and load balancer. It provides services with externally reachable URLs, offers SSL/TLS termination, load balances traffic, and supports name-based virtual hosting."
+  },
+  {
+    "name": "local-ai",
+    "description": "LocalAI is an open-source alternative to OpenAI that enables you to run LLMs and generate images and audio locally using consumer-grade hardware. It supports multiple model families."
+  },
+  {
+    "name": "minio",
+    "description": "MinIO is a Kubernetes-native high-performance object store with an S3-compatible API."
+  },
+  {
+    "name": "nvidia-gpu-operator",
+    "description": "The NVIDIA GPU Operator automates the management of the NVIDIA software components required for GPU provisioning. This allows Kubernetes cluster administrators to manage GPU nodes in the same way as CPU nodes."
+  },
+  {
+    "name": "oam-app-controller",
+    "description": "The OAM App Controller is a set of packs used for deploying Open Application Model (OAM) applications. It comprises the App-core, Flux2, and Zot packs."
+  },
+  {
+    "name": "opensuse-k3s",
+    "description": "SUSE K3s is a SUSE offering for K3s, a lightweight yet powerful certified Kubernetes distribution designed for production workloads across resource-restrained, remote locations or on Edge IoT devices."
+  },
+  {
+    "name": "open-policy-agent",
+    "description": "Open Policy Agent (OPA) Gatekeeper provides an admission control system based on policies or rules implemented through parameterized and admin configurable constraints."
+  },
+  {
+    "name": "outcold-monitoring",
+    "description": "Outcold Solutions is a Kubernetes monitoring solution integrated with Splunk. It includes capabilities for log aggregation, cluster health monitoring, application monitoring, and security auditing."
+  },
+  {
+    "name": "kubesec",
+    "description": "Kubesec provides security risk analysis for Kubernetes resources. It identifies misconfigurations and generates recommendations to improve the security of Pods, Deployments, and other resources."
+  },
+  {
+    "name": "kubevious",
+    "description": "Kubevious is a cloud-native best practices and configuration validation enforcement tool for Kubernetes clusters and applications. It detects and enforces custom policies and conditions within your clusters."
+  },
+  {
+    "name": "kubevirt",
+    "description": "KubeVirt is a virtual machine management add-on that allows the management of virtual machine workloads alongside container workloads within a Kubernetes cluster."
+  },
+  {
+    "name": "kubevirt-cdi",
+    "description": "The KubeVirt Containerized Data Importer (CDI) provides facilities for enabling Persistent Volume Claims (PVCs) to be used as disks for KubeVirt VMs via DataVolumes."
+  },
+  {
+    "name": "kubewatch",
+    "description": "Kubewatch is a Kubernetes watcher that monitors the cluster for resource changes and publishes notifications to available collaboration hubs and notification channels."
+  },
+  {
+    "name": "lb-citrix-adc",
+    "description": "Citrix ADC is an application delivery controller (ADC) solution that offers IP address management and load-balancing capabilities for external services deployed on Kubernetes clusters, particularly suited for on-premise deployments."
+  },
+  {
+    "name": "linkerd",
+    "description": "Linkerd is a service mesh for Kubernetes that provides runtime debugging, observability, reliability, and security without requiring code changes."
+  },
+  {
+    "name": "newrelic",
+    "description": "New Relic is an observability platform designed to provide real-time insights into the performance and behavior of digital systems. It allows you to monitor applications, infrastructure, web browsers, and other components."
+  },
+  {
+    "name": "permission-manager",
+    "description": "The Permission Manager pack provides a graphical user interface for RBAC management in Kubernetes. It allows you to create users, assign namespaces and permissions, and distribute Kubeconfig YAML files."
+  },
+  {
+    "name": "palette-upgrader",
+    "description": "The Palette Upgrader pack enables you to manage the Palette upgrade version of Edge-virtual clusters."
+  },
+  {
+    "name": "pfsense-vm-libvirt",
+    "description": "pfSense is an open-source customized distribution of the FreeBSD operating system designed for use as a firewall and router in libvirt VMs."
+  },
+  {
+    "name": "pfsense-vm-vsphere",
+    "description": "pfSense is an open-source customized distribution of the FreeBSD operating system designed for use as a firewall and router in vSphere VMs."
   }
 ]
