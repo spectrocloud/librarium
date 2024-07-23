@@ -4,13 +4,13 @@ title: "Create a VMO Profile"
 description: "Learn how to create a cluster profile to utilize Palette Virtual Machine Orchestrator capabilities."
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 5
+sidebar_position: 10
 tags: ["vmo"]
 ---
 
 The **Virtual Machine Orchestrator** pack conveniently includes several components and automatically installs the
-[Spectro Proxy](../../integrations/frp.md) pack when you use the default profile configuration. To learn about pack
-components, refer to [Virtual Machine Orchestrator Pack](../vm-packs-profiles/vm-packs-profiles.md).
+[Spectro Proxy](../integrations/frp.md) pack when you use the default profile configuration. To learn about pack
+components, refer to [Palette VMO](./vm-management.md).
 
 ## Limitations
 
@@ -28,7 +28,7 @@ components, refer to [Virtual Machine Orchestrator Pack](../vm-packs-profiles/vm
 
 - A Palette permission key `create` for the resource `clusterProfile`.
 
-- If you are creating an Edge cluster profile, your profile must have a Container Storage Interface pack.
+- If you are creating an Edge cluster profile, your profile must have a Container Storage Interface (CSI) pack.
 
 ## Create the Profile
 
@@ -49,8 +49,8 @@ components, refer to [Virtual Machine Orchestrator Pack](../vm-packs-profiles/vm
 
 7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the
    **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere. Check
-   out the [Spectro Proxy](../../integrations/frp.md) guide to learn more. Changing the default may require some
-   additional configuration.
+   out the [Spectro Proxy](../integrations/frp.md) guide to learn more. Changing the default may require some additional
+   configuration.
 
    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
@@ -68,7 +68,7 @@ settings can introduce misconfigurations. Carefully review the changes you make 
 10. Review the profile and click **Finish Configuration**.
 
 11. Apply the profile to your cluster. For more information, refer to
-    [Create a Cluster](../../clusters/public-cloud/deploy-k8s-cluster.md).
+    [Create a Cluster](../clusters/public-cloud/deploy-k8s-cluster.md).
 
 </TabItem>
 
@@ -89,7 +89,7 @@ settings can introduce misconfigurations. Carefully review the changes you make 
 7.  Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the
     **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere.
     Changing the default may require some additional configuration. Check out the
-    [Spectro Proxy](../../integrations/frp.md) guide to learn more
+    [Spectro Proxy](../integrations/frp.md) guide to learn more
 
     The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
@@ -108,7 +108,7 @@ settings can introduce misconfigurations. Carefully review the changes you make 
     ```
 
 9.  If your cluster profile does include a load balancer such as MetalLB, no changes are required and you can skip this
-    step. For more information about MetalLB, refer to [MetalLB pack documentation](../../integrations/metallb.md).
+    step. For more information about MetalLB, refer to [MetalLB pack documentation](../integrations/metallb.md).
 
     If your cluster profile does not include a load balancer, update the services
     `charts.virtual-machine-orchestrator.kubevirt` and `charts.virtual-machine-orchestrator.cdi` to type ClusterIP in
@@ -185,13 +185,14 @@ You can validate the profile is created.
 
 You will need to configure roles and role bindings to give users access to clusters. You can use VM user roles and
 permissions or standard Kubernetes roles. For configuration guidance, refer to
-[Add Roles and Role Bindings](add-roles-and-role-bindings.md). The
-[VM User Roles and Permissions](../vm-roles-permissions.md) reference lists Cluster Roles and equivalent Palette Roles.
+[Add Roles and Role Bindings](./rbac/add-roles-and-role-bindings.md). The
+[VM User Roles and Permissions](./rbac/vm-roles-permissions.md) reference lists Cluster Roles and equivalent Palette
+Roles.
 
 If you have OpenID Connect (OIDC) configured at the Kubernetes layer of your cluster profile, you can create a role
 binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. To learn more,
-review [Use RBAC with OIDC](../../integrations/kubernetes.md#use-rbac-with-oidc).
+review [Use RBAC with OIDC](../integrations/kubernetes.md#use-rbac-with-oidc).
 
 ## Resources
 
-- [Add Roles and Role Bindings](add-roles-and-role-bindings.md)
+- [Add Roles and Role Bindings](./rbac/add-roles-and-role-bindings.md)
