@@ -85,8 +85,8 @@ part of this project.
 
 ## Import a Cluster Profile
 
-Palette provides three resource contexts. They help you customize your environment to your organizational needs,
-as well as control the scope of your settings.
+Palette provides three resource contexts. They help you customize your environment to your organizational needs, as well
+as control the scope of your settings.
 
 | Context | Description                                                                              |
 | ------- | ---------------------------------------------------------------------------------------- |
@@ -241,8 +241,7 @@ The cluster update completes when the Palette UI marks the cluster profile layer
 
 ![Kubernetes upgrade applied](/getting-started/aws/getting-started_scale-secure-cluster_kubernetes-upgrade-applied.webp)
 
-Click on the URL for port **:8080** to access the application
-and verify that your upgraded cluster is functional.
+Click on the URL for port **:8080** to access the application and verify that your upgraded cluster is functional.
 
 ## Scan Clusters
 
@@ -254,7 +253,7 @@ vulnerabilities. You can perform four types of scans on your cluster.
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Kubernetes Configuration Security | This scan examines the compliance of deployed security features against the CIS Kubernetes Benchmarks, which are consensus-driven security guidelines for Kubernetes. By default, the test set will execute based on the cluster Kubernetes version.                     |
 | Kubernetes Penetration Testing    | This scan evaluates Kubernetes-related open-ports for any configuration issues that can leave the tenant clusters exposed to attackers. It hunts for security issues in your clusters and increases visibility of the security controls in your Kubernetes environments. |
-| Kubernetes Conformance Testing    | This scan validates your Kubernetes configuration to ensure that it conforms to CNCF specifications. Palette leverages an open-source tool called Sonobuoy to perform this scan.                                                                                    |
+| Kubernetes Conformance Testing    | This scan validates your Kubernetes configuration to ensure that it conforms to CNCF specifications. Palette leverages an open-source tool called Sonobuoy to perform this scan.                                                                                         |
 | Software Bill of Materials (SBOM) | This scan details the various third-party components and dependencies used by your workloads and helps to manage security and compliance risks associated with those components.                                                                                         |
 
 Navigate to the left **Main Menu** and select **Clusters**. Select your cluster to view its **Overview** tab.
@@ -361,12 +360,12 @@ Navigate back to the Palette UI in your browser. Select the **Nodes** tab.
 Click on **New Node Pool**. The **Add node pool** dialog appears. This workflow allows you to create a new worker pool
 for your cluster. Fill in the following configuration.
 
-| Field                 | Value                              | Description                                                                                                                                                                                                                                                                                 |
-| --------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Node pool name**    | `worker-pool-2`                    | The name of your worker pool.                                                                                                                                                                                                                                                               |
+| Field                 | Value                              | Description                                                                                                                                                                                                                                                                                  |
+| --------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Node pool name**    | `worker-pool-2`                    | The name of your worker pool.                                                                                                                                                                                                                                                                |
 | **Enable Autoscaler** | Enabled                            | Whether Palette should scale the pool horizontally based on its per-node workload counts. The **Minimum size** parameter specifies the lower bound of nodes in the pool and the **Maximum size** specifies the upper bound. By default, **Minimum size** is `1` and **Maximum size** is `3`. |
-| **Instance Type**     | `m4.2xlarge`                       | Set the compute size equal to the already provisioned nodes.                                                                                                                                                                                                                                |
-| **Availability Zone** | _Availability zone of your choice_ | Set the availability zone the same as the already provisioned nodes.                                                                                                                                                                                                                        |
+| **Instance Type**     | `m4.2xlarge`                       | Set the compute size equal to the already provisioned nodes.                                                                                                                                                                                                                                 |
+| **Availability Zone** | _Availability zone of your choice_ | Set the availability zone the same as the already provisioned nodes.                                                                                                                                                                                                                         |
 
 Click on **Confirm**. The dialog closes. Palette begins provisioning your node pool. Once the process completes, your
 three node pools appear in a healthy state.
@@ -476,10 +475,10 @@ pop-up box will ask you to confirm the action. Confirm the deletion.
 ## Wrap-up
 
 In this tutorial, you learned how to perform very important operations relating to the scalability and availability of
-your clusters. First, you created a project and team. Then, you imported a cluster profike and deployed a host AWS
-cluster. Then, you upgraded the Kubernetes version of your cluster using cluster profile versions and scanned your
-clusters using Palette's scanning capabilities. Finally, you scaled your cluster's nodes and used taints to select which
-Hello Universe pods execute on them.
+your clusters. First, you created a project and team. Then, you imported a cluster profile and deployed a host AWS
+cluster. Then, you upgraded th Kubernetes version of your cluster and scanned your clusters using Palette's scanning
+capabilities. Finally, you scaled your cluster's nodes and used taints to select which Hello Universe pods execute on
+them.
 
 We encourage you to check out the [Additional Capabilities](../additional-capabilities.md) to explore other Palette
 functionality.
