@@ -897,3 +897,17 @@ Palette-managed Edge clusters, we encourage you to check out the reference resou
 - [Deploy an Edge Cluster on VMware](../../../../tutorials/edge/deploy-cluster.md)
 
 - [Installation](../../site-deployment/stage.md)
+
+## Resources
+
+- [Edge Artifact Build Configurations](./arg.md)
+
+- [Build Installer ISO](./build-installer-iso.md)
+
+- [Build Provider Images](./build-provider-images.md)
+
+- [Build FIPS-Compliant Edge Artifacts](./fips.md)
+
+- [Build Content Bundles](./build-content-bundle.md)
+
+- [Edge Artifact Build Configurations](./signed-content.md)

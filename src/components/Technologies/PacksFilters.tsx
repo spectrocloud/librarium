@@ -4,21 +4,39 @@ import CustomLabel from "./CategorySelector/CustomLabel";
 import FilterSelect from "./CategorySelector/FilterSelect";
 import "./packsFilters.antd.css";
 import { packTypeNames, cloudProviderTypes } from "../../constants/packs";
+
 interface PackFiltersProps {
   categories: string[];
-  registries: any[];
-  setSelectedSearchFilters: (...args: any[]) => void;
-  selectedFilters: any;
+  registries: registry[];
+  setSelectedSearchFilters: (filters: SelectedFilters) => void;
+  selectedFilters: SelectedFilters;
 }
 
-const sourceList: any[] = [
+interface registry {
+  uid: string;
+  name: string;
+}
+
+interface sources {
+  label: string;
+  value: string;
+}
+
+interface SelectedFilters {
+  category: string[];
+  registries: string[];
+  cloudTypes: string[];
+  source: string[];
+}
+
+const sourceList: sources[] = [
   {
     label: "All",
-    value: "all"
+    value: "all",
   },
   {
     label: "Verified",
-    value: "verified"
+    value: "verified",
   },
   {
     label: "Community",
@@ -26,19 +44,22 @@ const sourceList: any[] = [
   },
 ];
 
-export default function PacksFilters({ categories, registries, setSelectedSearchFilters, selectedFilters }: PackFiltersProps) {
-
-
+export default function PacksFilters({
+  categories,
+  registries,
+  setSelectedSearchFilters,
+  selectedFilters,
+}: PackFiltersProps) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.filterItems}>
         <CustomLabel label="Type" />
         <FilterSelect
           selectMode="multiple"
-          options={categories.map((category) => {
-            return { value: category, label: packTypeNames[category as keyof typeof packTypeNames] };
+          options={categories.map((category: string) => {
+            return { value: category, label: packTypeNames[category] };
           })}
-          onChange={(items) => setSelectedSearchFilters({ category: items })}
+          onChange={(items) => setSelectedSearchFilters({ ...selectedFilters, category: items as string[] })}
           value={selectedFilters.category}
         />
       </div>
@@ -46,10 +67,10 @@ export default function PacksFilters({ categories, registries, setSelectedSearch
         <CustomLabel label="Registry" />
         <FilterSelect
           selectMode="multiple"
-          options={Array.from(registries).map((registry) => {
+          options={registries.map((registry) => {
             return { value: registry.uid, label: registry.name };
           })}
-          onChange={(items) => setSelectedSearchFilters({ registries: items })}
+          onChange={(items) => setSelectedSearchFilters({ ...selectedFilters, registries: items as string[] })}
           value={selectedFilters.registries}
         />
       </div>
@@ -60,11 +81,10 @@ export default function PacksFilters({ categories, registries, setSelectedSearch
             return { value: provider.name, label: provider.displayName };
           })}
           onChange={(item) => {
-            if (item) {
-              setSelectedSearchFilters({ cloudTypes: [item] })
-            } else {
-              setSelectedSearchFilters({ cloudTypes: [] })
-            }
+            setSelectedSearchFilters({
+              ...selectedFilters,
+              cloudTypes: item ? [item as string] : [],
+            });
           }}
           value={selectedFilters.cloudTypes.length ? selectedFilters.cloudTypes[0] : undefined}
         />
@@ -74,15 +94,14 @@ export default function PacksFilters({ categories, registries, setSelectedSearch
         <FilterSelect
           options={sourceList}
           onChange={(item) => {
-            if (item) {
-              setSelectedSearchFilters({ source: [item] })
-            } else {
-              setSelectedSearchFilters({ source: [] })
-            }
+            setSelectedSearchFilters({
+              ...selectedFilters,
+              source: item ? [item as string] : [],
+            });
           }}
           value={selectedFilters.source.length ? selectedFilters.source[0] : undefined}
         />
       </div>
-    </div >
+    </div>
   );
 }

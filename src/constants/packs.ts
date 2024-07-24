@@ -15,7 +15,7 @@ export const packTypes = [
   "system app",
 ] as const;
 
-type packType = (typeof packTypes)[number];
+// type packType = (typeof packTypes)[number];
 
 export const packTypeNames: Record<string, string> = {
   "app services": "App Services",

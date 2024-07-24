@@ -7,6 +7,7 @@ const mime = require("mime-types");
 const { setTimeout } = require("timers/promises");
 const BASE_URL = require("../static/scripts/constants.js").BASE_URL;
 const fetch = require("node-fetch");
+const excludeList = require("../static/packs-data/exclude_packs.json");
 const { existsSync, promises, open, mkdirSync, writeFile, close, createWriteStream } = require("node:fs");
 import logger from "@docusaurus/logger";
 
@@ -166,7 +167,7 @@ function sortVersions(tags) {
   return sortedVersions;
 }
 
-function getAggregatedVersions(registries, repositories, packUidMap, packName) {
+function getAggregatedVersions(registries, repositories, packUidMap) {
   const prefferedRegistryUid = repositories?.[0]?.uid;
   //if a pack has multiple registries, then the versions of the pack are aggregated based on the selected registries
   //if a same version in multiple registries, the preferred registry is the higher precendence.
@@ -334,7 +335,7 @@ async function write(res, packName, logoUrlMap) {
         logoUrlMap[packName] = `${packName}.${mime.extension(type)}`;
       });
     } else {
-      reject("Invalid Mime type for the logo");
+      reject(`Invalid MIME type received for the logo ${packName}`);
     }
   });
 }
@@ -360,7 +361,11 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
             await setTimeout(1000);
           }
         }
-      } catch (e) {}
+      } catch (e) {
+        // Intentionally ignoring errors here to continue processing other logos
+        // Enable the below line to log the error, if needed, for debugging.
+        // logger.error(e);
+      }
     }
   }
 }
@@ -382,6 +387,16 @@ async function pluginPacksAndIntegrationsData(context, options) {
           mkdirSync(dirname, { recursive: true });
         }
         let packDataArr = await fetchPackListItems("?limit=50", [], 0);
+
+        // Filter out the packs from the exclude list.
+        packDataArr = packDataArr.filter((pack) => {
+          if (excludeList.includes(pack.spec.name)) {
+            // Only uncomment if debugging is required
+            // logger.warn(`Pack ${pack.spec.name} is excluded from the list`);
+            return false;
+          }
+          return true;
+        });
         logger.info("All production packs are identified and a list of packs to be fetched is prepared");
         packDataArr = packDataArr.filter((pack) => {
           return (

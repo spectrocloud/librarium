@@ -280,11 +280,9 @@ heading. Include two lines between each item.
 
 - [Create and Manage VMs](/vm-management/create-manage-vm)
 
-- [Deploy VM from a Template](/vm-management/create-manage-vm/standard-vm-operations/deploy-vm-from-template)
+- [Deploy VM from a Template](/vm-management/create-manage-vm/deploy-vm-from-template)
 
 - [Create a VM Template](/vm-management/create-manage-vm/create-vm-template)
-
-- [Standard VM Operations](/vm-management/create-manage-vm/standard-vm-operations)
 
 - [VM Roles and Permissions](/vm-management/vm-roles-permissions)
 
