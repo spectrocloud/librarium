@@ -22,7 +22,7 @@ deployed cluster and scale up your cluster nodes.
 To complete this tutorial, follow the steps described in the [Set up Palette with AWS](./setup.md) guide to authenticate
 Palette for use with your AWS cloud account.
 
-Additionally, you should install Kubectl locally. Use the Kubernetes
+Additionally, you should install kubectl locally. Use the Kubernetes
 [Install Tools](https://kubernetes.io/docs/tasks/tools/) page for further guidance.
 
 ## Create Palette Projects
@@ -85,7 +85,7 @@ part of this project.
 
 ## Import a Cluster Profile
 
-Palette provides three resource contexts. They make it easy to customize your environment to your organizational needs,
+Palette provides three resource contexts. They help you customize your environment to your organizational needs,
 as well as control the scope of your settings.
 
 | Context | Description                                                                              |
@@ -121,7 +121,7 @@ Select the cluster profile to view its details. The cluster profile summary appe
 This cluster profile deploys the [Hello Universe](https://github.com/spectrocloud/hello-universe) application using a
 pack. Click on the **hellouniverse 1.1.3** layer. The pack manifest editor appears.
 
-Click on **Presets** on the right-hand side. This pack has two configured presets:
+Click on **Presets** on the right-hand side. This pack has the following two configured presets.
 
 1. **Disable Hello Universe API** configures the [_hello-universe_](https://github.com/spectrocloud/hello-universe)
    application as a standalone frontend application. This is the default preset selection.
@@ -185,7 +185,7 @@ Select the **kubernetes 1.27.x** layer of the profile. The pack manifest editor 
 Click on the **Pack Version** dropdown. All of the available versions of the **Palette eXtended Kubernetes** pack
 appear. The cluster profile is configured to use the latest patch version of **Kubernetes 1.27**.
 
-![Cluster profile with all kubernetes versions](/getting-started/aws/getting-started_scale-secure-cluster_kubernetes-versions.webp)
+![Cluster profile with all Kubernetes versions](/getting-started/aws/getting-started_scale-secure-cluster_kubernetes-versions.webp)
 
 The official guidelines for Kubernetes upgrades recommend upgrading one minor version at a time. For example, if you are
 using Kubernetes version 1.26, you should upgrade to 1.27, before upgrading to version 1.28. You can learn more about
@@ -241,12 +241,12 @@ The cluster update completes when the Palette UI marks the cluster profile layer
 
 ![Kubernetes upgrade applied](/getting-started/aws/getting-started_scale-secure-cluster_kubernetes-upgrade-applied.webp)
 
-There are no user-facing changes to the Hello Universe UI. Click on the URL for port **:8080** to access the application
+Click on the URL for port **:8080** to access the application
 and verify that your upgraded cluster is functional.
 
 ## Scan Clusters
 
-Palette provides compliance, security, conformance, and software bill of materials (SBOM) scans on tenant clusters.
+Palette provides compliance, security, conformance, and Software Bill of Materials (SBOM) scans on tenant clusters.
 These scans ensure cluster adherence to specific compliance and security standards, as well as detect potential
 vulnerabilities. You can perform four types of scans on your cluster.
 
@@ -254,13 +254,13 @@ vulnerabilities. You can perform four types of scans on your cluster.
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Kubernetes Configuration Security | This scan examines the compliance of deployed security features against the CIS Kubernetes Benchmarks, which are consensus-driven security guidelines for Kubernetes. By default, the test set will execute based on the cluster Kubernetes version.                     |
 | Kubernetes Penetration Testing    | This scan evaluates Kubernetes-related open-ports for any configuration issues that can leave the tenant clusters exposed to attackers. It hunts for security issues in your clusters and increases visibility of the security controls in your Kubernetes environments. |
-| Kubernetes Conformance Testing    | This scan validates your Kubernetes configuration to ensure that it is conformant to CNCF specifications. Palette leverages an open-source tool called Sonobuoy to perform this scan.                                                                                    |
+| Kubernetes Conformance Testing    | This scan validates your Kubernetes configuration to ensure that it conforms to CNCF specifications. Palette leverages an open-source tool called Sonobuoy to perform this scan.                                                                                    |
 | Software Bill of Materials (SBOM) | This scan details the various third-party components and dependencies used by your workloads and helps to manage security and compliance risks associated with those components.                                                                                         |
 
 Navigate to the left **Main Menu** and select **Clusters**. Select your cluster to view its **Overview** tab.
 
-Select the **Scan** tab. The list of all the available cluster scans appears. Palette indicates that you have not run
-any scans on your cluster yet.
+Select the **Scan** tab. The list of all the available cluster scans appears. Palette indicates that you have never
+scanned your cluster.
 
 ![Scans never performed on the cluster](/getting-started/aws/getting-started_scale-secure-cluster_never-scanned-cluster.webp)
 
@@ -316,7 +316,7 @@ node.
 
 Select the **Overview** tab. Download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file.
 
-![Kubeconfig download](/getting-started/aws/getting-started_scale-secure-cluster_download-kubeconfig.webp)
+![kubeconfig download](/getting-started/aws/getting-started_scale-secure-cluster_download-kubeconfig.webp)
 
 Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
 
@@ -364,7 +364,7 @@ for your cluster. Fill in the following configuration.
 | Field                 | Value                              | Description                                                                                                                                                                                                                                                                                 |
 | --------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Node pool name**    | `worker-pool-2`                    | The name of your worker pool.                                                                                                                                                                                                                                                               |
-| **Enable Autoscaler** | Enabled                            | Whether Palette should scale the pool horizontally based on its per-node workload counts. The **Minimum size** parameter specifies the lower bound of nodes in the pool and th **Maximum size** specifies the upper bound. By default, **Minimum size** is `1` and **Maximum size** is `3`. |
+| **Enable Autoscaler** | Enabled                            | Whether Palette should scale the pool horizontally based on its per-node workload counts. The **Minimum size** parameter specifies the lower bound of nodes in the pool and the **Maximum size** specifies the upper bound. By default, **Minimum size** is `1` and **Maximum size** is `3`. |
 | **Instance Type**     | `m4.2xlarge`                       | Set the compute size equal to the already provisioned nodes.                                                                                                                                                                                                                                |
 | **Availability Zone** | _Availability zone of your choice_ | Set the availability zone the same as the already provisioned nodes.                                                                                                                                                                                                                        |
 
@@ -432,9 +432,6 @@ accordingly through its provisioned node pools. Refer to the
 
 ### Verify the Application
 
-There are no user-facing changes to the Hello Universe UI. Click on the URL for port **:8080** to access the application
-and verify that your upgraded cluster is functional.
-
 Select the **Overview** tab. Click on the URL for port **:8080** to access the Hello Universe application and verify
 that the application is functioning correctly.
 
@@ -478,7 +475,7 @@ pop-up box will ask you to confirm the action. Confirm the deletion.
 
 ## Wrap-up
 
-In this tutorial, you learned how to perform very important operations relating to the scalability and availablity of
+In this tutorial, you learned how to perform very important operations relating to the scalability and availability of
 your clusters. First, you created a project and team. Then, you imported a cluster profike and deployed a host AWS
 cluster. Then, you upgraded the Kubernetes version of your cluster using cluster profile versions and scanned your
 clusters using Palette's scanning capabilities. Finally, you scaled your cluster's nodes and used taints to select which
