@@ -476,7 +476,7 @@ pop-up box will ask you to confirm the action. Confirm the deletion.
 
 In this tutorial, you learned how to perform very important operations relating to the scalability and availability of
 your clusters. First, you created a project and team. Then, you imported a cluster profile and deployed a host AWS
-cluster. Then, you upgraded th Kubernetes version of your cluster and scanned your clusters using Palette's scanning
+cluster. Then, you upgraded the Kubernetes version of your cluster and scanned your clusters using Palette's scanning
 capabilities. Finally, you scaled your cluster's nodes and used taints to select which Hello Universe pods execute on
 them.
 
