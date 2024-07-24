@@ -272,6 +272,54 @@
     "description": "Rook is a cloud-native storage orchestrator for Kubernetes, providing the platform, framework, and support for a diverse set of storage solutions to natively integrate with cloud-native environments. Rook turns storage"
   },
   {
+    "name": "csi-tke",
+    "description": "The TKE CSI Driver provides support for Kubernetes clusters to use Tencent Cloud Block Storage."
+  },
+  {
+    "name": "csi-topolvm",
+    "description": "TopoLVM is a CSI plugin using LVM for Kubernetes. It can be considered as a specific implementation of local persistent volumes using CSI and LVM. TopoLVM supports dynamic volume provisioning from PVC, flexible volume capacity management, and enhances the scheduler to prefer nodes having a larger storage capacity."
+  },
+  {
+    "name": "csi-topolvm-addon",
+    "description": "TopoLVM is a CSI plugin using LVM for Kubernetes. It can be considered as a specific implementation of local persistent volumes using CSI and LVM. TopoLVM supports dynamic volume provisioning from PVC, flexible volume capacity management, and enhances the scheduler to prefer nodes having a larger storage capacity."
+  },
+  {
+    "name": "csi-trident",
+    "description": "Trident is a fully supported open source project maintained by NetApp. It has been designed from the ground up to help you meet your containerized applications' persistence demands using industry-standard interfaces, such as the Container Storage Interface (CSI)."
+  },
+  {
+    "name": "csi-trident-addon",
+    "description": "Trident is a fully supported open source project maintained by NetApp. It has been designed from the ground up to help you meet your containerized applications' persistence demands using industry-standard interfaces, such as the Container Storage Interface (CSI)."
+  },
+  {
+    "name": "csi-vsphere-csi",
+    "description": "The vSphere CSI Driver is a Kubernetes plugin that allows persistent storage for containerized workloads running on vSphere infrastructure. It enables dynamic provisioning of storage volumes and provides features like snapshots, cloning, and dynamic expansion of volumes. The vSphere CSI Driver replaces the in-tree vSphere volume plugin and offers integration with vSphere with better scale and performance."
+  },
+  {
+    "name": "csi-vsphere",
+    "description": "The vSphere CSI Driver is a Kubernetes plugin that allows persistent storage for containerized workloads running on vSphere infrastructure. It enables dynamic provisioning of storage volumes and provides features like snapshots, cloning, and dynamic expansion of volumes. The vSphere CSI Driver replaces the in-tree vSphere volume plugin and offers integration with vSphere with better scale and performance."
+  },
+  {
+    "name": "csi-vsphere-volume",
+    "description": "The Vsphere CSI Volume plugin uses in-tree vSphere volumes to provide persistent storage for containerized workloads deployed on vSphere infrastructure."
+  },
+  {
+    "name": "csm-operator-addon",
+    "description": "The Dell Container Storage Modules Operator is a Kubernetes Operator, which can be used to install and manage the CSI Drivers and CSM Modules provided by Dell for various storage platforms."
+  },
+  {
+    "name": "custom_os",
+    "description": "This pack supports the deployment of Operating Systems for additional infrastructure platforms, such as Nutanix."
+  },
+  {
+    "name": "db-postgresql",
+    "description": "PostgreSQL is a free and open-source relational database management system (RDBMS) emphasizing extensibility and SQL compliance. PostgreSQL features transactions with atomicity, consistency, isolation, durability (ACID) properties, automatically updatable views, materialized views, triggers, foreign keys, and stored procedures. It is supported on all major operating systems and handles a range of workloads from single machines to data warehouses or web services with many concurrent users."
+  },
+  {
+    "name": "dex",
+    "description": "Dex is an identity service to drive authentication for Kubernetes API Server through the OpenID Connect plugin. Clients such as kubectl can act on behalf of users who can log in to the cluster through any identity provider that dex supports."
+  },
+  {
     "name": "hello-universe",
     "description": "Hello Universe is a demo web application used to help users learn more about Palette and its features. It includes a click counter and funny Spectro Cloud-themed images."
   },
@@ -330,5 +378,9 @@
   {
     "name": "nutanix-csi",
     "description": "The Nutanix CSI pack uses Nutanix Volumes and Nutanix Files to provide persistent storage for stateful applications."
+  },
+  {
+    "name": "spectro-proxy",
+    "description": "Spectro Proxy is a pack that enables the use of a reverse proxy with a Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. The reverse proxy managed by Spectro Cloud is also known as the forward reverse proxy (FRP)."
   }
 ]

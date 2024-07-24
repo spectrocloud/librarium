@@ -12,8 +12,9 @@ logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d8
 tags: ["packs", "spectro-k8s-dashboard", "monitoring"]
 ---
 
+<!-- prettier-ignore -->
 Spectro Kubernetes Dashboard is a web-based UI for Kubernetes clusters that auto-enables the Kubernetes Dashboard using
-secure ports and conveniently includes the [Spectro Proxy](frp.md) pack.
+secure ports and conveniently includes the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack.
 
 ## Versions Supported
 
@@ -23,8 +24,8 @@ secure ports and conveniently includes the [Spectro Proxy](frp.md) pack.
 
 ## Prerequisites
 
-- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the
-  [Spectro Proxy](frp.md) reverse proxy.
+<!-- prettier-ignore -->
+- Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> reverse proxy.
 
 - Users or groups must be mapped to a Kubernetes RBAC role, either a _Role_ or a _ClusterRole_. You can create a custom
   role through a manifest and use Palette's roleBinding feature to associate users or groups with the role. Refer to the
@@ -75,7 +76,8 @@ Spectro Kubernetes Dashboard has the following Access options.
 
 - **Proxied**: This option is useful for access to the Kubernetes Dashboard from anywhere and leverages the Spectro
   Proxy pack, which gets installed automatically. The Service resource for the Kubernetes Dashboard will be configured
-  as ClusterIP and is only accessible through the proxy. To learn more, check out the [Spectro Proxy](frp.md) guide.
+  as ClusterIP and is only accessible through the proxy. To learn more, check out the
+  <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
 
 - **Direct**: This option is meant for a private configuration where a proxy is not implemented or not desired. The
   Service resource for the Kubernetes Dashboard will be configured as LoadBalancer, which you can access directly. This

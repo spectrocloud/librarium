@@ -5,5 +5,6 @@
   "csi-portworx-aws",
   "csi-portworx-vsphere",
   "csi-rook-ceph-helm",
-  "csi-rook-ceph-helm-addon"
+  "csi-rook-ceph-helm-addon",
+  "calico-networking"
 ]
