@@ -8,9 +8,10 @@ sidebar_position: 60
 tags: ["getting-started", "aws", "tutorial"]
 ---
 
-Palette has a rich set of native features to help with the automation of important Day-2 operations. Upgrading and
-maintaining a deployed cluster is typically complex because you need to maintain availability. Palette provides
-out-of-the-box functionality for patching and upgrades, observability, granular RBAC, backup and security scans.
+Palette has in-built features to help with the automation of Day-2 operations. Upgrading and maintaining a deployed
+cluster is typically complex because you need to consider any possible impact on service availability. Palette provides
+out-of-the-box functionality for upgrades, observability, granular Role Based Access Control (RBAC), backup and security
+scans.
 
 This tutorial will teach you how to use the Palette UI to perform scale and maintenance tasks on your clusters. You will
 learn how to create Palette projects and teams, import a cluster profile, safely upgrade the Kubernetes version of a
@@ -26,13 +27,10 @@ Additionally, you should install Kubectl locally. Use the Kubernetes
 
 ## Create Palette Projects
 
-Palette projects help you group resources and manage user access control through Role Based Access Control (RBAC). You
-can assign users and teams with specific roles to specific projects. All resources created within a project are scoped
-to that project and only available to that project, but a tenant can have multiple projects.
-
-Palette projects help you organize and manage cluster resources. For example, you can create a project for each team, or
-create a project for each infrastructure environment. The flexibility of projects allow you to provide logical groupings
-to your resources.
+Palette projects help you organize and manage cluster resources, providing logical groupings. They also allow you to
+manage user access control through Role Based Access Control (RBAC). You can assign users and teams with specific roles
+to specific projects. All resources created within a project are scoped to that project and only available to that
+project, but a tenant can have multiple projects.
 
 Log in to [Palette](https://console.spectrocloud.com).
 
@@ -52,15 +50,14 @@ Fill out the input fields with values from the table below to create a project.
 | Description | A brief description of the project. | Project for Scale, Upgrade, and Secure Clusters tutorial. |
 | Tags        | Add tags to the project.            | `env:dev`                                                 |
 
-Click **Confirm** to create the project.
+Click **Confirm** to create the project. Once Palette finishes creating the project, a new card appears on the
+**Projects** page.
 
-Once Palette finishes creating it, the project appears as a card on the **Projects** page.
+Navigate to the left **Main Menu** and click on **Users & Teams**.
 
-Navigate to the left **Main Menu** and click on **Users&Teams**. Select the **Teams** tab. Then, click on **Create
-Team**.
+Select the **Teams** tab. Then, click on **Create Team**.
 
-Fill in the **Team Name** with **scale-secure-tutorial-team**. Click on **Confirm**. You should use this project for all
-the resources you create in this tutorial.
+Fill in the **Team Name** with **scale-secure-tutorial-team**. Click on **Confirm**.
 
 Once Palette creates the team, select it from the **Teams** list. The **Team Details** pane opens.
 
@@ -91,42 +88,40 @@ part of this project.
 Palette provides three resource contexts. They make it easy to customize your environment to your organizational needs,
 as well as control the scope of your settings.
 
-| Context | Description                                                                               |
-| ------- | ----------------------------------------------------------------------------------------- |
-| System  | Resources are available at the system level and are applied to all tenants in the system. |
-| Tenant  | Resources are available at the tenant level and to all projects belonging to the tenant.  |
-| Project | Resources are available within a project and not available to other projects.             |
+| Context | Description                                                                              |
+| ------- | ---------------------------------------------------------------------------------------- |
+| System  | Resources are available at the system level and to all tenants in the system.            |
+| Tenant  | Resources are available at the tenant level and to all projects belonging to the tenant. |
+| Project | Resources are available within a project and not available to other projects.            |
 
-All of the resources you have created so far as part of your Getting Started journey have used the **Project** context.
-They are only visible in the **Default** project or by selecting the **Tenant Admin** scope. Therefore, you will need to
-create a new cluster profile in **Project-ScaleSecureTutorial**.
+All of the resources you have created as part of your Getting Started journey have used the **Project** context. They
+are only visible in the **Default** project. Therefore, you will need to create a new cluster profile in
+**Project-ScaleSecureTutorial**.
 
 Navigate to the left **Main Menu** and click on **Profiles**. Click on **Import Cluster Profile**. The **Import Cluster
 Profile** pane opens.
 
-Paste the following in the page. Click **Validate**.
+Paste the following in the text editor. Click on **Validate**. The **Select repositories** dialog appears.
 
 **TODO: Replace when the pack is published!**
 
 <PartialsComponent category="getting-started" name="import-hello-uni-aws" />
 
-Click on **Confirm** on the **Select repositories** dialog. Then, click on **Confirm** on the **Import Cluster Profile**
-pane. Palette creates a new cluster profile named **aws-profile**.
+Click on **Confirm**. Then, click on **Confirm** on the **Import Cluster Profile** pane. Palette creates a new cluster
+profile named **aws-profile**.
 
 On the **Profiles** list, select **Project** from the **Contexts** drop-down. Your newly created cluster profile
-appears. The Palette UI confirms that the cluster profile was created in the scope of the
+displays. The Palette UI confirms that the cluster profile was created in the scope of the
 **Project-ScaleSecureTutorial**.
 
 ![Image that shows the cluster profile ](/getting-started/aws/getting-started_scale-secure-cluster_cluster-profile-created.webp)
 
-Click on the cluster profile to view its details. This cluster profile deploye the
-[Hello Universe](https://github.com/spectrocloud/hello-universe) application using a pack.
+Select the cluster profile to view its details. The cluster profile summary appears.
 
-Click on the **hellouniverse1.1.3** layer. The pack manifest editor appears.
+This cluster profile deploys the [Hello Universe](https://github.com/spectrocloud/hello-universe) application using a
+pack. Click on the **hellouniverse 1.1.3** layer. The pack manifest editor appears.
 
-Click on **Presets** on the right-hand side.
-
-This pack has two configured presets:
+Click on **Presets** on the right-hand side. This pack has two configured presets:
 
 1. **Disable Hello Universe API** configures the [_hello-universe_](https://github.com/spectrocloud/hello-universe)
    application as a standalone frontend application. This is the default preset selection.
@@ -142,8 +137,7 @@ preset. Replace these values with your own base64 encoded values. The
 [_hello-universe_](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer) repository
 provides a token that you can use.
 
-Click on **Confirm Updates**. The manifest editor closes. Then, click on **Save Changes** to save the changes made to
-the cluster profile.
+Click on **Confirm Updates**. The manifest editor closes. Then, click on **Save Changes** to save your updates.
 
 ## Deploy a Cluster
 
@@ -152,13 +146,8 @@ Navigate to the left **Main Menu** and select **Clusters**. Click on **Create Cl
 Palette will prompt you to select the type of cluster. Select **AWS IaaS** and click the **Start AWS IaaS
 Configuration** button. Use the following steps to create a host cluster in AWS.
 
-In the **Basic information** section, insert the general information about the cluster, such as the Cluster name,
-Description, Tags, and Cloud account. Click on **Next**.
-
-Click on **Add Cluster Profile**. Select the cluster profile you created in the
-[Import a Cluster Profile](#import-a-cluster-profile) section, named **aws-profile**, and click on **Confirm**.
-
-Continue with the rest of the cluster deployment flow. Refer to the
+Continue with the rest of the cluster deployment flow using the cluster profile you created in the
+[Import a Cluster Profile](#import-a-cluster-profile) section, named **aws-profile**. Refer to the
 [Deploy a Cluster](./deploy-k8s-cluster.md#deploy-a-cluster) tutorial for additional guidance or if you need a refresher
 of the Palette deployment flow.
 
@@ -166,21 +155,22 @@ of the Palette deployment flow.
 
 Navigate to the left **Main Menu** and select **Clusters**.
 
-Select your cluster to view its **Overview** tab. When the application is deployed and ready for network traffic,
-indicated in the **Services** field, Palette exposes the service URL. Click on the URL for port **:8080** to access the
-Hello Universe application.
+Select your cluster to view its **Overview** tab.
+
+When the application is deployed and ready for network traffic, Palette exposes the service URL in the **Services**
+field. Click on the URL for port **:8080** to access the Hello Universe application.
 
 ![Cluster details page with service URL highlighted](/getting-started/aws/getting-started_scale-secure-cluster_service_url.webp)
 
 ## Upgrade Kubernetes Versions
 
-Regularly upgrading your Kubernetes version is an important part of maitaining a good security posture. New versions may
-contain important patches to security vulnerabilities and bugs that could affect the integrity and availability of your
-clusters.
+Regularly upgrading your Kubernetes version is an important part of maintaining a good security posture. New versions
+may contain important patches to security vulnerabilities and bugs that could affect the integrity and availability of
+your clusters.
 
 Palette supports three minor Kubernetes versions at any given time. We support the current release and the three
 previous minor version releases, also known as N-3. For example, if the current release is 1.29, we support 1.28, 1.27,
-and 1.26. This approach is similar to the lifecycle established by the Kubernetes community.
+and 1.26.
 
 Navigate to the left **Main Menu** and click on **Profiles**. Select the cluster profile that you used to deploy your
 cluster, named **aws-profile**. The cluster profile details page appears.
@@ -192,25 +182,23 @@ with the same layers as version **1.0.0**.
 
 Select the **kubernetes 1.27.x** layer of the profile. The pack manifest editor appears.
 
-Click on the **Pack Version** dropdown. All of the versions of the **Palette eXtended Kubernetes** pack appear. The
-cluster profile is configured to use the latest patch version of **Kubernetes 1.27**.
+Click on the **Pack Version** dropdown. All of the available versions of the **Palette eXtended Kubernetes** pack
+appear. The cluster profile is configured to use the latest patch version of **Kubernetes 1.27**.
 
 ![Cluster profile with all kubernetes versions](/getting-started/aws/getting-started_scale-secure-cluster_kubernetes-versions.webp)
 
 The official guidelines for Kubernetes upgrades recommend upgrading one minor version at a time. For example, if you are
 using Kubernetes version 1.26, you should upgrade to 1.27, before upgrading to version 1.28. You can learn more about
 the official Kubernetes upgrade guidelines in the
-[Version Skew Policy](https://kubernetes.io/releases/version-skew-policy/) page. We recommend following the official
-guidelines for all Kubernetes upgrades.
+[Version Skew Policy](https://kubernetes.io/releases/version-skew-policy/) page.
 
-Select **1.28.x** from the version dropdown. This selection follows the Kubernetes upgrade guidelines the cluster
-profile is using **1.27.x**, which is one minor patch behind the current selection.
+Select **1.28.x** from the version dropdown. This selection follows the Kubernetes upgrade guidelines as the cluster
+profile is using **1.27.x**.
 
-The manifest editor highlights the changes made by this upgrade. Once you have verified that the upgrade changes image
+The manifest editor highlights the changes made by this upgrade. Once you have verified that the upgrade changes
 versions as expected, click on **Confirm changes**.
 
-Click on **Confirm Updates**. Then, click on **Save Changes** to persist the updates you have made to this cluster
-profile version.
+Click on **Confirm Updates**. Then, click on **Save Changes** to persist your updates.
 
 Navigate to the left **Main Menu** and select **Clusters**. Select your cluster to view its **Overview** tab.
 
@@ -228,21 +216,23 @@ Once you upgrade your cluster to a new Kubernetes version, you will not be able 
 
 :::
 
-![Changes editor with kubernetes upgrade](/getting-started/aws/getting-started_scale-secure-cluster_change-review-editor.webp)
-
 Palette begins the cluster update. As the infrastructure layer of the cluster has been modified, Kubernetes needs to
 replace its nodes. This is known as a repave. Check out the
 [Node Pools](../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) page to learn more about
 repave behavior and configuration.
 
 Click on the **Nodes** tab. You can follow along with the node upgrades on this screen. Palette will replace the nodes
-runing the old Kubernetes version with newly upgraded ones. This will cause outages to your application.
+configured with the old Kubernetes version with newly upgraded ones.
 
 ![Node repaves in progress](/getting-started/aws/getting-started_scale-secure-cluster_node-repaves.webp)
+
+:::tip
 
 We recommend using cluster profile versions to safely upgrade any layer of your cluster profile and maintain the
 security of your clusters. Refer to the [Deploy Cluster Profile Updates](./update-k8s-cluster.md) tutorial if you need a
 refresher on the three ways you can apply changes to your clusters.
+
+:::
 
 ### Verify the Application
 
@@ -251,27 +241,21 @@ The cluster update completes when the Palette UI marks the cluster profile layer
 
 ![Kubernetes upgrade applied](/getting-started/aws/getting-started_scale-secure-cluster_kubernetes-upgrade-applied.webp)
 
-Hello Universe will again be available on your cluster once the Kubernetes upgrade completes. There are no user-facing
-changes in its UI.
-
-Click on the URL for port **:8080** to access the Hello Universe application and verify that your upgraded cluster is
-functional again.
+There are no user-facing changes to the Hello Universe UI. Click on the URL for port **:8080** to access the application
+and verify that your upgraded cluster is functional.
 
 ## Scan Clusters
 
-Palette provides a way to run compliance, security, conformance, and software bill of materials (SBOM) scans on tenant
-clusters. These scans ensure cluster adherence to specific compliance and security standards. The scans also detect
-potential vulnerabilities by performing penetration tests. You can perform four types of scans on your cluster.
+Palette provides compliance, security, conformance, and software bill of materials (SBOM) scans on tenant clusters.
+These scans ensure cluster adherence to specific compliance and security standards, as well as detect potential
+vulnerabilities. You can perform four types of scans on your cluster.
 
-| Scan                              | Description                                                                                                                                                                                                                                                                         |
-| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Kubernetes Configuration Security | This scan examines the compliance of deployed security features against the CIS Kubernetes Benchmarks, which are consensus-driven security guidelines for Kubernetes. By default, the test set will execute based on the cluster Kubernetes version.                                |
-| Kubernetes Penetration Testing    | This scan evaluates Kubernetes-related open-ports for any configuration issues that can leave the tenant clusters exposed to attackers. It hunts for security issues in your Kubernetes clusters and increases visibility of the security controls in your Kubernetes environments. |
-| Kubernetes Conformance Testing    | This scan validates your Kubernetes configuration to ensure that it is conformant to CNCF specifications. Palette leverages an open-source tool called Sonobuoy to perform this scan.                                                                                               |
-| Software Bill of Materials (SBOM) | This scan details the various third-party components and dependencies used in the software and helps to manage security and compliance risks associated with those components.                                                                                                      |
-
-Each scan generates reports with details specific to the type of scan. You can initiate multiple scans of each type over
-time.
+| Scan                              | Description                                                                                                                                                                                                                                                              |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Kubernetes Configuration Security | This scan examines the compliance of deployed security features against the CIS Kubernetes Benchmarks, which are consensus-driven security guidelines for Kubernetes. By default, the test set will execute based on the cluster Kubernetes version.                     |
+| Kubernetes Penetration Testing    | This scan evaluates Kubernetes-related open-ports for any configuration issues that can leave the tenant clusters exposed to attackers. It hunts for security issues in your clusters and increases visibility of the security controls in your Kubernetes environments. |
+| Kubernetes Conformance Testing    | This scan validates your Kubernetes configuration to ensure that it is conformant to CNCF specifications. Palette leverages an open-source tool called Sonobuoy to perform this scan.                                                                                    |
+| Software Bill of Materials (SBOM) | This scan details the various third-party components and dependencies used by your workloads and helps to manage security and compliance risks associated with those components.                                                                                         |
 
 Navigate to the left **Main Menu** and select **Clusters**. Select your cluster to view its **Overview** tab.
 
@@ -280,7 +264,7 @@ any scans on your cluster yet.
 
 ![Scans never performed on the cluster](/getting-started/aws/getting-started_scale-secure-cluster_never-scanned-cluster.webp)
 
-Click **Run Scan** on the **Kubernetes configuration security**, **Kubernetes penetration testing** scans. Palette
+Click **Run Scan** on the **Kubernetes configuration security** and **Kubernetes penetration testing** scans. Palette
 schedules and executes these scans on your cluster, which may take a few minutes. Once they complete, you can download
 the report in PDF, CSV or view the results directly in the Palette UI.
 
@@ -298,16 +282,16 @@ Once the scan completes, click on the scan report to view it within the Palette 
 your workloads rely on are evaluated for potential security vulnerabilities. Reviewing the SBOM enables organizations to
 track vulnerabilities, perform regular software maintenance, and ensure compliance with regulatory requirements.
 
-:::tip
+:::info
 
 The scan reports highlight any failed checks, based on Kubernetes community standards and CNCF requirements. We
-recommend that you prioritise the rectification of any issues that Palette scans identify.
+recommend that you prioritise the rectification of any identified issues.
 
 :::
 
-As you have seen so far, Palette scans are crucial when maintaining your security posture. Therefore, you should
-periodically scan your clusters. Palette provides the ability to schedule your scans. In addition, it keeps a history of
-previous scans for comparison purposes.
+As you have seen so far, Palette scans are crucial when maintaining your security posture. Palette provides the ability
+to schedule your scans and periodically evaluate your clusters. In addition, it keeps a history of previous scans for
+comparison purposes.
 
 Click on **Settings**. Then, select **Cluster Settings**. The **Settings** pane appears.
 
@@ -330,14 +314,14 @@ node.
 
 ![Node pools](/getting-started/aws/getting-started_scale-secure-cluster_current-node-pools.webp)
 
-Download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file from this screen.
+Select the **Overview** tab. Download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file.
 
 ![Kubeconfig download](/getting-started/aws/getting-started_scale-secure-cluster_download-kubeconfig.webp)
 
-Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
+Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
 
 ```shell
-export KUBECONFIG=~/Downloads/admin.azure-cluster.kubeconfig
+export KUBECONFIG=~/Downloads/admin.aws-cluster.kubeconfig
 ```
 
 Execute the following command in your terminal to view the nodes of your cluster.
@@ -347,8 +331,8 @@ kubectl get nodes
 ```
 
 The output reveals two nodes, one for the worker pool and one for the control plane. Make a note of the name of your
-worker node, the node that does not have the `control-plane` role. In the example below, `ip-10-0-1-133.ec2.internal` is
-the name of the worker node.
+worker node, which isthe node that does not have the `control-plane` role. In the example below,
+`ip-10-0-1-133.ec2.internal` is the name of the worker node.
 
 ```shell
 NAME                         STATUS   ROLES           AGE   VERSION
@@ -363,7 +347,7 @@ where these pods have been scheduled.
 kubectl get pods --namespace hello-universe --output wide
 ```
 
-The output verifies that all of the pods have been scheduled on the worker node you made a node of previously
+The output verifies that all of the pods have been scheduled on the worker node you made a note of previously.
 
 ```shell
 NAME                        READY   STATUS    RESTARTS      AGE   NODE
@@ -371,6 +355,8 @@ api-7db799cf85-5w5l6        1/1     Running   1 (20m ago)   20m   ip-10-0-1-133.
 postgres-698d7ff8f4-vbktf   1/1     Running   0             20m   ip-10-0-1-133.ec2.internal
 ui-5f777c76df-pplcv         1/1     Running   0             20m   ip-10-0-1-133.ec2.internal
 ```
+
+Navigate back to the Palette UI in your browser. Select the **Nodes** tab.
 
 Click on **New Node Pool**. The **Add node pool** dialog appears. This workflow allows you to create a new worker pool
 for your cluster. Fill in the following configuration.
@@ -382,20 +368,17 @@ for your cluster. Fill in the following configuration.
 | **Instance Type**     | `m4.2xlarge`                       | Set the compute size equal to the already provisioned nodes.                                                                                                                                                                                                                                |
 | **Availability Zone** | _Availability zone of your choice_ | Set the availability zone the same as the already provisioned nodes.                                                                                                                                                                                                                        |
 
-Click on **Confirm**. The dialog closes.
-
-Palette begins provisioning your node pool. Once the process completes, your three node pools appear in a healthy state.
+Click on **Confirm**. The dialog closes. Palette begins provisioning your node pool. Once the process completes, your
+three node pools appear in a healthy state.
 
 ![New worker pool provisioned](/getting-started/aws/getting-started_scale-secure-cluster_third-node-pool.webp)
 
-At this point, your second worker pool is idle. The Kubernetes scheduler does not have any reason to move the pods
-belonging to Hello Universe to the new worker node. One way to create dedicated nodes is through the use of Kubernetes
-taints and tolerations.
+It is common to assign node pools as dedicated to a particular type of workload. One way to specify this is through the
+use of Kubernetes taints and tolerations.
 
 Taints provide nodes with the ability to repel a set of pods, allowing you to mark nodes as unavailable for certain
 pods. Tolerations are applied to pods and allow the pods to schedule onto nodes with matching taints. Once configured,
-nodes do not accept any pods that do not tolerate the taints. Refer to the
-[Taints and Tolerations](../../clusters/cluster-management/taints.md) guide to learn more.
+nodes do not accept any pods that do not tolerate the taints.
 
 Navigate to the left **Main Menu** and select **Profiles**. Select the cluster profile deployed to your cluster, named
 `aws-profile`. Ensure that the **1.1.0** version is selected.
@@ -405,28 +388,28 @@ Click on the **hellouniverse 1.1.3** layer. The manifest editor appears. Set the
 `manifests.hello-universe.ui.effect` field on line 22 to `NoExecute`. This toleration describes that the UI pods of
 Hello Universe will tolerate the taint with the key `app`, value `ui` and effect `NoExecute`.
 
-Click on **Confirm Updates**. The manifest editor closes. Then, click on **Save Changes** to persist your changes to the
-cluster profile.
+Click on **Confirm Updates**. The manifest editor closes. Then, click on **Save Changes** to persist your changes.
 
-Navigate to the left **Main Menu** and select **Clusters**. Select the cluster you have been using so far, named
-**aws-cluster**.
+Navigate to the left **Main Menu** and select **Clusters**. Select your deployed cluster, named **aws-cluster**.
 
-Due to the changes you have made to the cluster profile, this cluster has a pending update. Click on **Updates** to
-apply this update to your cluster. The **Changes Summary** dialog appears.
+Due to the changes you have made to the cluster profile, this cluster has a pending update. Click on **Updates**. The
+**Changes Summary** dialog appears.
 
 Click on **Review Changes in Editor**. The **Review Update Changes** dialog appears. The toleration changes appear as
-incoming configuration. Click on **Apply Changes** to confirm that the update is applied to your cluster.
+incoming configuration.
+
+Click on **Apply Changes** to apply the update to your cluster.
 
 Select the **Nodes** tab. Click on **Edit** on the first worker pool, named **worker-pool**. The **Edit node pool**
 dialog appears.
 
 Click on **Add New Taint** in the **Taints** section. Fill in `app` for the **Key**, `ui` for the **Value** and select
-`NoExecute` for the **Effect**. These values match the toleration you specified earlier on the Hello Universe UI pods.
+`NoExecute` for the **Effect**. These values match the toleration you specified in your cluster profile earlier.
 
-Click on **Confirm** to save your changes. Palette begins to apply your cluster update. The nodes in the `worker-pool`
-can now only execute the UI pods that have a toleration matching the configured taint.
+Click on **Confirm** to save your changes. The nodes in the `worker-pool` can now only execute the UI pods that have a
+toleration matching the configured taint.
 
-Switch back to your terminal. Execute the following command one more to verify where the Hello Universe pods have been
+Switch back to your terminal. Execute the following command again to verify where the Hello Universe pods have been
 scheduled.
 
 ```shell
@@ -443,13 +426,14 @@ postgres-698d7ff8f4-vbktf   1/1     Running   0             20m   ip-10-0-1-32.e
 ui-5f777c76df-pplcv         1/1     Running   0             20m   ip-10-0-1-133.ec2.internal
 ```
 
-Taints and tolerations are a common of creating nodes dedicated to certain workloads, once the cluster has scaled
-accordingly through its provisioned node pools.
+Taints and tolerations are a common way of creating nodes dedicated to certain workloads, once the cluster has scaled
+accordingly through its provisioned node pools. Refer to the
+[Taints and Tolerations](../../clusters/cluster-management/taints.md) guide to learn more.
 
 ### Verify the Application
 
-Hello Universe will again be available on your cluster once the workloads are rescheduled to the other node. There are
-no user-facing changes in its UI.
+There are no user-facing changes to the Hello Universe UI. Click on the URL for port **:8080** to access the application
+and verify that your upgraded cluster is functional.
 
 Select the **Overview** tab. Click on the URL for port **:8080** to access the Hello Universe application and verify
 that the application is functioning correctly.
@@ -463,7 +447,7 @@ delete to access its details page.
 
 Click on **Settings** to expand the menu, and select **Delete Cluster**.
 
-![Delete cluster](/getting-started/aws/getting-started_deploy-k8s-cluster_delete-cluster-button.webp)
+![Delete cluster](/getting-started/aws/getting-started_scale-secure-cluster_delete-cluster-button.webp)
 
 You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name `aws-cluster` to
 proceed with the delete step. The deletion process takes several minutes to complete.
@@ -484,23 +468,21 @@ Click on the **drop-down Menu** at the top of the page and switch to **Tenant Ad
 
 Navigate to the left **Main Menu** and click on **Projects**.
 
-Click on the **three-dot Menu** of the **Project-ScaleSecureTutorial** and select **Delete**.
-
-A pop-up box will ask you to confirm the action. Confirm the deletion.
+Click on the **three-dot Menu** of the **Project-ScaleSecureTutorial** and select **Delete**. A pop-up box will ask you
+to confirm the action. Confirm the deletion.
 
 Navigate to the left **Main Menu** and click on **Users & Teams**. Select the **Teams** tab.
 
-Click on **scale-secure-tutorial-team** list entry. The **Team Details** pane appears. Click on **Delete Team**.
-
-A pop-up box will ask you to confirm the action. Confirm the deletion.
+Click on **scale-secure-tutorial-team** list entry. The **Team Details** pane appears. Click on **Delete Team**. A
+pop-up box will ask you to confirm the action. Confirm the deletion.
 
 ## Wrap-up
 
 In this tutorial, you learned how to perform very important operations relating to the scalability and availablity of
-your clusters. First, you created a dedicated project and team. Then, you imported a cluster profike and deployed a host
-AWS cluster. Then, you upgraded the Kubernetes version of your cluster using cluster profile versions and scanned your
+your clusters. First, you created a project and team. Then, you imported a cluster profike and deployed a host AWS
+cluster. Then, you upgraded the Kubernetes version of your cluster using cluster profile versions and scanned your
 clusters using Palette's scanning capabilities. Finally, you scaled your cluster's nodes and used taints to select which
 Hello Universe pods execute on them.
 
 We encourage you to check out the [Additional Capabilities](../additional-capabilities.md) to explore other Palette
-functionality not covered so far.
+functionality.
