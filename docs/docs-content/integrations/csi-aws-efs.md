@@ -13,6 +13,88 @@ tags: ["packs", "aws-efs", "storage"]
 ## Versions Supported
 
 <Tabs queryString="parent">
+<TabItem label="2.0.x" value="2.0.x">
+
+### Policy Information
+
+You must create a policy that allows you to use EFS from your IAM account. You can use the following JSON to create the
+policy.
+
+```yaml
+{
+  "Version": "2012-10-17",
+  "Statement":
+    [
+      {
+        "Effect": "Allow",
+        "Action": ["elasticfilesystem:DescribeAccessPoints", "elasticfilesystem:DescribeFileSystems"],
+        "Resource": "*",
+      },
+      {
+        "Effect": "Allow",
+        "Action": ["elasticfilesystem:CreateAccessPoint"],
+        "Resource": "*",
+        "Condition": { "StringLike": { "aws:RequestTag/efs.csi.aws.com/cluster": "true" } },
+      },
+      {
+        "Effect": "Allow",
+        "Action": "elasticfilesystem:DeleteAccessPoint",
+        "Resource": "*",
+        "Condition": { "StringEquals": { "aws:ResourceTag/efs.csi.aws.com/cluster": "true" } },
+      },
+    ],
+}
+```
+
+### Storage Class
+
+Palette creates storage classes named _spectro-storage-class_. You can view a list of storage classes using this kubectl
+command:
+
+```bash
+kubectl get storageclass
+```
+
+### PersistentVolumeClaim
+
+A PersistentVolumeClaim (PVC) is a request made by a pod for a certain amount of storage from the cluster. It acts as a
+link between the pod and the storage resource, allowing the pod to use the storage. You can learn details about a PVC,
+as shown in the following output, when you use the `kubectl describe pvc` command.
+
+```bash
+kubectl describe pvc my-efs-volume
+```
+
+```shell hideClipboard
+Name:          efs
+Namespace:     default
+StorageClass:  aws-efs
+Status:        Pending
+
+Volume:
+
+Labels:<none>
+
+Annotations:   kubectl.kubernetes.io/last-applied-configuration:
+{"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{"volume.beta.kubernetes.io/
+storage-class":"aws-efs"},"name":"..."}
+
+volume.beta.kubernetes.io/storage-class: aws-efs
+
+Finalizers:    [kubernetes.io/pvc-protection]
+
+Capacity:
+
+Access Modes:
+
+Events:
+| Type    | Reason             | Age                | From                        | Message                  |
+| ------- | ------------------ | ------------------ | --------------------------- | ------------------------ |
+| Warning | ProvisioningFailed | 43s (x12 over 11m) | persistentvolume-controller | no volume plugin matched |
+Mounted By:  <none>
+```
+
+</TabItem>
 <TabItem label="1.7.x" value="1.7.x">
 
 ### Policy Information

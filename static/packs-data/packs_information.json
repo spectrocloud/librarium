@@ -184,6 +184,38 @@
     "description": "The Cilium agent runs on all clusters and servers to provide networking, security and observability to the workload running on that node."
   },
   {
+    "name": "csi-azure",
+    "description": "Azure Disk CSI Driver allows Kubernetes to access Azure Disk volumes. The driver is implemented as a Container Storage Interface (CSI) plugin."
+  },
+  {
+    "name": "csi-gcp",
+    "description": "The Google Compute Engine Persistent Disk (GCE PD) Container Storage Interface (CSI) Storage Plugin. You can use the GCE PD CSI driver to manage the lifecycle of GCE PD volumes."
+  },
+  {
+    "name": "csi-gcp-driver",
+    "description": "The Google Compute Engine Persistent Disk (GCE PD) Container Storage Interface (CSI) Storage Plugin. You can use the GCE PD CSI driver to manage the lifecycle of GCE PD volumes. This pack supports Google IaaS clusters."
+  },
+  {
+    "name": "gke-csi-gcp-driver",
+    "description": "The Google Compute Engine Persistent Disk (GCE PD) Container Storage Interface (CSI) Storage Plugin. You can use the GCE PD CSI driver to manage the lifecycle of GCE PD volumes. This pack supports Google GKE clusters."
+  },
+  {
+    "name": "csi-local-path-provisioner",
+    "description": "Local Path Provisioner provides a way for the Kubernetes users to utilize the local storage in each node. Based on the user configuration, the Local Path Provisioner will create either hostPath or local based persistent volume on the node automatically"
+  },
+  {
+    "name": "csi-local-path-provisioner-addon",
+    "description": "Local Path Provisioner provides a way for the Kubernetes users to utilize the local storage in each node. Based on the user configuration, the Local Path Provisioner will create either hostPath or local based persistent volume on the node automatically"
+  },
+  {
+    "name": "csi-longhorn",
+    "description": "Longhorn is a lightweight distributed block storage system for cloud native storage Kubernetes that allows you to replicate storage to Kubernetes clusters. Once Longhorn is installed, it adds persistent volume support to the Kubernetes cluster using containers and microservices."
+  },
+  {
+    "name": "csi-longhorn-addon",
+    "description": "Longhorn is a lightweight distributed block storage system for cloud native storage Kubernetes that allows you to replicate storage to Kubernetes clusters. Once Longhorn is installed, it adds persistent volume support to the Kubernetes cluster using containers and microservices."
+  },
+  {
     "name": "csi-rook",
     "description": "Rook is a cloud-native storage orchestrator for Kubernetes, providing the platform, framework, and support for a diverse set of storage solutions to natively integrate with cloud-native environments. Rook turns storage"
   },
@@ -208,8 +240,20 @@
     "description": "Consul is a service networking solution that enables teams to manage secure network connectivity between services and across on-prem and multi-cloud environments and runtimes. Consul offers service discovery, service mesh, traffic management, and automated updates to network infrastructure devices."
   },
   {
+    "name": "cos-gke",
+    "description": "Container-Optimized OS is an operating system image for your Compute Engine VMs that is optimized for deploying Docker containers. With Container-Optimized OS, you can bring up your Docker containers on Google Cloud Platform quickly, efficiently, and securely. Container-Optimized OS is maintained by Google and is based on the open source Chromium OS project."
+  },
+  {
     "name": "crossplane",
     "description": "Crossplane transforms Kubernetes clusters into universal control planes, extending the Kubernetes API and enabling infrastructure resource provisioning and management across major infrastructure providers."
+  },
+  {
+    "name": "csi-aws",
+    "description": "This Container Storage Interface (CSI) driver, provisioner, snapshotter, resizer, and attacher for Amazon Elastic Block Store (EBS) volumes enables Kubernetes to manage the lifecycle of EBS volumes."
+  },
+  {
+    "name": "csi-aws-ebs",
+    "description": "The Amazon Elastic Block Store Container Storage Interface (CSI) Driver provides a CSI interface used by Container Orchestrators to manage the lifecycle of Amazon EBS volumes."
   },
   {
     "name": "kubernetes-microk8s",
