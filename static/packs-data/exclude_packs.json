@@ -1,1 +1,9 @@
-["palette-upgrader", "csi-aws-new"]
+[
+  "palette-upgrader",
+  "csi-aws-new",
+  "csi-portworx-gcp",
+  "csi-portworx-aws",
+  "csi-portworx-vsphere",
+  "csi-rook-ceph-helm",
+  "csi-rook-ceph-helm-addon"
+]

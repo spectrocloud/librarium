@@ -1,85 +1,12 @@
 ---
-sidebar_label: "Portworx /w Operator"
-title: "Portworx Operator"
-description: "Portworx storage CSI for all use cases"
-hide_table_of_contents: true
-type: "integration"
-category: ["storage", "amd64"]
-sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/csi-portworx/blobs/sha256:e27bc9aaf22835194ca38062061c29b5921734eed922e57d693d15818ade7486?type=image.webp"
-tags: ["packs", "portworx", "storage"]
+partial_category: packs
+partial_name: portworx-operator
 ---
-
-[Portworx](https://portworx.com/) is a software-defined persistent storage solution designed and purpose-built for
-applications deployed as containers via container orchestrators such as Kubernetes. You can include Portworx in your
-Kubernetes cluster by using the Portworx Operator pack.
 
 ## Versions Supported
 
-<Tabs groupId="versions">
+<Tabs groupId="parent">
 <TabItem label="3.0.x" value="3.x">
-
-## Prerequisites
-
-Portworx Operator has the following prerequisites for installation. You can learn more about all the required Portworx
-requirements in the [Portworx documentation](https://docs.portworx.com/install-portworx/prerequisites).
-
-- The Kubernetes cluster must have at least three nodes of the type bare metal or virtual machine.
-
-- Storage drives must be unmounted block storage. You can use either, raw disks, drive partitions, LVM, or cloud block
-  storage.
-
-- The backing drive must be at least 8 GB in size.
-
-- The following disk folder require enough space to store Portworx metadata:
-
-  - **/var** - 2 GB
-
-  - **/opt** - 3 GB
-
-- The operating system root partition must be at least 64 GB is the minimum.
-
-- The minimum hardware requirements for each node are:
-
-  - 4 CPU cores
-
-  - 8 GB RAM
-
-  - 50 GB disk space
-
-  - 1 Gbps network connectivity
-
-- A Linux kernel version of 3.10 or higher is required.
-
-* Docker version 1.13.1 or higher is required.
-
-- Ensure you use a
-  [supported Kubernetes version](https://docs.portworx.com/portworx-enterprise/install-portworx/prerequisites#supported-kubernetes-versions).
-
-- Identify and set up the type of storage you want to use.
-
-:::warning
-
-Starting with Portworx version 3.x.x and greater. Lighthouse is no longer available in the pack itself. Instead you can
-install [Portworx Central](https://docs.portworx.com/portworx-central-on-prem/install/px-central.html), which provides
-monitoring capabilities.
-
-:::
-
-## Parameters
-
-The following parameters are highlighted for this version of the pack and provide a preset option when configured
-through the UI. These parameters are not exhaustive and you can configure additional parameters as needed.
-
-| Parameter                              | Description                                                                                                                                                                                                               | Default      |
-| :------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------- |
-| `portworx-generic.activateLicense`     | Set to `true` to activate the Portworx license.                                                                                                                                                                           | `true`       |
-| `portworx-generic.license.type`        | Allowed values are: `essentials`, `saas`, `enterprise`. If you want to deploy the PX Enterprise Trial version, or need manual offline activation, select the **PX Enterprise** type and set `activateLicense` to `false`. | `essentials` |
-| `portworx-generic.Storagecluster.spec` | Define the storage type and behavior for Portworx.Refer to the Storage Specification section below to learn more.                                                                                                         | `{}`         |
-| `portworx-generic.externalKvdb`        | Define the external Key Value Database (KVDB) configuration for Portworx. Refer to the Integration With External etcd section below to learn more.                                                                        | `{}`         |
-| `portworx-generic.storageCluster.env`  | Specify environment variables, such as HTTP Proxy settings, for Portworx.                                                                                                                                                 | `{}`         |
-
-## Usage
 
 The default installation of Portworx /w Operator will deploy the following components in the Kubernetes cluster:
 
@@ -692,68 +619,6 @@ Use the following steps to integrate Portworx to an external etcd server by foll
 
 <TabItem label="2.13.X" value="2.13.x">
 
-## Prerequisites
-
-Portworx Operator has the following prerequisites for installation. You can learn more about all the required Portworx
-requirements in the [Portworx documentation](https://docs.portworx.com/install-portworx/prerequisites).
-
-- The Kubernetes cluster must have at least three nodes of the type bare metal or virtual machine.
-
-- Storage drives must be unmounted block storage. You can use either, raw disks, drive partitions, LVM, or cloud block
-  storage.
-
-- The backing drive must be at least 8 GB in size.
-
-- The following disk folder require enough space to store Portworx metadata:
-
-  - **/var** - 2 GB
-
-  - **/opt** - 3 GB
-
-- The operating system root partition must be at least 64 GB is the minimum.
-
-- The minimum hardware requirements for each node are:
-
-  - 4 CPU cores
-
-  - 8 GB RAM
-
-  - 50 GB disk space
-
-  - 1 Gbps network connectivity
-
-- A Linux kernel version of 3.10 or higher is required.
-
-* Docker version 1.13.1 or higher is required.
-
-- Ensure you use a
-  [supported Kubernetes version](https://docs.portworx.com/portworx-enterprise/install-portworx/prerequisites#supported-kubernetes-versions).
-
-- Identify and set up the type of storage you want to use.
-
-:::warning
-
-Starting with Portworx version 3.x.x and greater. Lighthouse is no longer available in the pack itself. Instead you can
-install [Portworx Central](https://docs.portworx.com/portworx-central-on-prem/install/px-central.html), which provides
-monitoring capabilities.
-
-:::
-
-## Parameters
-
-The following parameters are highlighted for this version of the pack and provide a preset option when configured
-through the UI. These parameters are not exhaustive and you can configure additional parameters as needed.
-
-| Parameter                              | Description                                                                                                                                                                                                           | Default      |
-| :------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
-| `portworx-generic.activateLicense`     | Set to `true` to activate the Portworx license.                                                                                                                                                                       | `true`       |
-| `portworx-generic.license.type`        | Allowed values are: `essentials`, `saas`, `enterprise`. If you want to deploy the PX Enterprise Trial version, or need manual offline activation, select **PX Enterprise** type and set `activateLicense` to `false`. | `essentials` |
-| `portworx-generic.Storagecluster.spec` | Define the storage type and behavior for Portworx.Refer to the Storage Specification section below to learn more.                                                                                                     | `{}`         |
-| `portworx-generic.externalKvdb`        | Define the external Key Value Database (KVDB) configuration for Portworx. Refer to the Integration With External etcd section below to learn more.                                                                    | `{}`         |
-| `portworx-generic.storageCluster.env`  | Specify environment variables, such as HTTP Proxy settings, for Portworx.                                                                                                                                             | `{}`         |
-
-## Usage
-
 The default installation of Portworx /w Operator will deploy the following components in the Kubernetes cluster:
 
 - Portworx Operator
@@ -1281,68 +1146,6 @@ Use the following steps to integrate Portworx to an external etcd server by foll
 
 <TabItem label="2.12.X" value="2.12.x">
 
-## Prerequisites
-
-Portworx Operator has the following prerequisites for installation. You can learn more about all the required Portworx
-requirements in the [Portworx documentation](https://docs.portworx.com/install-portworx/prerequisites).
-
-- The Kubernetes cluster must have at least three nodes of the type bare metal or virtual machine.
-
-- Storage drives must be unmounted block storage. You can use either, raw disks, drive partitions, LVM, or cloud block
-  storage.
-
-- The backing drive must be at least 8 GB in size.
-
-- The following disk folder require enough space to store Portworx metadata:
-
-  - **/var** - 2 GB
-
-  - **/opt** - 3 GB
-
-- The operating system root partition must be at least 64 GB is the minimum.
-
-- The minimum hardware requirements for each node are:
-
-  - 4 CPU cores
-
-  - 8 GB RAM
-
-  - 50 GB disk space
-
-  - 1 Gbps network connectivity
-
-- A Linux kernel version of 3.10 or higher is required.
-
-* Docker version 1.13.1 or higher is required.
-
-- Ensure you use a
-  [supported Kubernetes version](https://docs.portworx.com/portworx-enterprise/install-portworx/prerequisites#supported-kubernetes-versions).
-
-- Identify and set up the type of storage you want to use.
-
-:::warning
-
-Starting with Portworx version 3.x.x and greater. Lighthouse is no longer available in the pack itself. Instead you can
-install [Portworx Central](https://docs.portworx.com/portworx-central-on-prem/install/px-central.html), which provides
-monitoring capabilities.
-
-:::
-
-## Parameters
-
-The following parameters are highlighted for this version of the pack and provide a preset option when configured
-through the UI. These parameters are not exhaustive and you can configure additional parameters as needed.
-
-| Parameter                              | Description                                                                                                                                                                                                      | Default      |
-| :------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
-| `portworx-generic.activateLicense`     | Set to `true` to activate the Portworx license.                                                                                                                                                                  | `true`       |
-| `portworx-generic.license.type`        | Allowed values are: `essentials`, `saas`, `enterprise`. If you want to deploy the PX Enterprise Trial version, or need manual offline activation, select **PX Enterprise** and set `activateLicense` to `false`. | `essentials` |
-| `portworx-generic.Storagecluster.spec` | Define the storage type and behavior for Portworx.Refer to the Storage Specification section below to learn more.                                                                                                | `{}`         |
-| `portworx-generic.externalKvdb`        | Define the external Key Value Database (KVDB) configuration for Portworx. Refer to the Integration With External etcd section below to learn more.                                                               | `{}`         |
-| `portworx-generic.storageCluster.env`  | Specify environment variables, such as HTTP Proxy settings, for Portworx.                                                                                                                                        | `{}`         |
-
-## Usage
-
 The default installation of Portworx /w Operator will deploy the following components in the Kubernetes cluster:
 
 - Portworx Operator
@@ -1867,47 +1670,4 @@ certificates will not be imported correctly and will result in Portworx deployme
 
 </TabItem>
 
-<TabItem label="Deprecated" value="deprecated">
-
-:::warning
-
-All versions less than 2.12.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
-
-:::
-
-<br />
-
-</TabItem>
-
 </Tabs>
-
-## Terraform
-
-Use the following Terraform code to interact with the Portworx Operator pack in your Terraform scripts.
-
-```hcl
-data "spectrocloud_registry" "public_registry" {
-  name = "Public Repo"
-}
-
-data "spectrocloud_pack_simple" "portworx-operator" {
-  name    = "csi-portworx-generic"
-  version = "3.0.0"
-  type = "operator-instance"
-  registry_uid = data.spectrocloud_registry.public_registry.id
-}
-```
-
-## References
-
-- [Portworx Install with Kubernetes](https://docs.portworx.com/portworx-install-with-kubernetes/)
-
-- [Installation Prerequisites](https://docs.portworx.com/install-portworx/prerequisites/)
-
-- [Portworx Supported Kubernetes versions](https://docs.portworx.com/portworx-enterprise/install-portworx/prerequisites#supported-kubernetes-versions)
-
-- [Stork](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/stork.html)
-
-- [Portworx Central](https://docs.portworx.com/portworx-central-on-prem/install/px-central.html)
-
-- [Flash Array](https://docs.portworx.com/portworx-enterprise/install-portworx/kubernetes/flasharray)
