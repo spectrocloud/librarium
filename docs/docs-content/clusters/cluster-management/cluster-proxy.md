@@ -17,11 +17,9 @@ on your environment.
 
 After the cluster is configured to use the proxy server, you can proceed to configure the applications inside the
 cluster to use the proxy server. You can do this by applying the `spectrocloud.com/connection: proxy` label to the
-specific job, deployment, or daemon set to instruct application to use the proxy settings of the cluster.
+specific job, deployment, or daemon set to instruct an application to use the proxy settings of the cluster.
 
 ## Prerequisites
-
-- An active cluster in Palette.
 
 - An active proxy server reachable by your cluster.
 
@@ -34,7 +32,7 @@ specific job, deployment, or daemon set to instruct application to use the proxy
 1.  If you are using Palette SaaS, and your cluster does not have direct access to the internet, then the communication
     between Palette SaaS and your cluster must go through a Private Cloud Gateway (PCG). For more information about
     PCGs, refer to [Private Cloud Gateway](../pcg/pcg.md). You must configure proxy settings for the PCG, and then
-    cluster created by cloud accounts configured to use the PCG will inherit its proxy settings.
+    clusters created by cloud accounts configured to use the PCG will inherit its proxy settings.
 
     If you are provisioning the PCG using the Palette CLI, you can configure the proxy settings during the PCG
     installation through the Palette CLI's interactive prompts. If you are using Helm to provision a PCG or have an
@@ -42,11 +40,11 @@ specific job, deployment, or daemon set to instruct application to use the proxy
     [Enable and Manage Proxy Configurations for PCG](../pcg/manage-pcg/configure-proxy.md) to learn how to install Reach
     on a PCG cluster and use it to configure proxy settings.
 
-2.  Once you have configured proxy settings through Reach for your PCG, you can proceed to creating your cluster using a
+2.  Once you have configured proxy settings through Reach for your PCG, you can proceed to create your cluster using a
     cloud account associated with the PCG. The cluster will inherit proxy settings from the PCG automatically.
 
     However, you still need to specify which applications will use the proxy settings. You can do this by applying the
-    `spectrocloud.com/connection: proxy` label to the deployment, job, or daemon set in the pack that contains operates
+    `spectrocloud.com/connection: proxy` label to the deployment, job, or daemon set in the pack that contains your
     application.
 
     You must apply the label to every specific job, deployment, or daemon set that needs to use the proxy servers. For
@@ -78,14 +76,14 @@ specific job, deployment, or daemon set to instruct application to use the proxy
     [Self Hosted Palette - Installation](../../enterprise-version/install-palette/install-on-kubernetes/install.md) to
     learn how to specify proxy settings during installation. If you used Helm charts for installation, refer to
     [Enable and Manage Proxy Configurations](../pcg/manage-pcg/add-dns-mapping.md) to learn how to install reach and use
-    it to configure proxy settings. The process to install Reach on a self-hosted Palette instance is the same as the
-    process to install Reach on a PCG cluster.
+    it to configure proxy settings. The process to install Reach on an existing self-hosted Palette instance is the same
+    as the process to install Reach on an existing PCG cluster.
 
 2.  Once you have configured proxy settings through Reach for your self-hosted Palette instance, you can proceed to
-    creating your cluster. The cluster will inherit proxy settings from the Palette instance automatically.
+    create your cluster. The cluster will inherit proxy settings from the Palette instance automatically.
 
     However, you still need to specify which applications will use the proxy settings. You can do this by applying the
-    `spectrocloud.com/connection: proxy` label to the deployment, job, or daemon set in the pack that contains operates
+    `spectrocloud.com/connection: proxy` label to the deployment, job, or daemon set in the pack that contains the
     application.
 
     You must apply the label to every specific job, deployment, or daemon set that needs to use the proxy servers. For
@@ -121,7 +119,7 @@ specific job, deployment, or daemon set to instruct application to use the proxy
     use the proxy settings you configured for the Edge host.
 
     However, you still need to specify which applications will use the proxy settings. You can do this by applying the
-    `spectrocloud.com/connection: proxy` label to the deployment, job, or daemon set in the pack that contains operates
+    `spectrocloud.com/connection: proxy` label to the deployment, job, or daemon set in the pack that contains the
     application.
 
     You must apply the label to every specific job, deployment, or daemon set that needs to use the proxy servers. For
@@ -159,9 +157,8 @@ specific job, deployment, or daemon set to instruct application to use the proxy
    kubectl get pod pod-name -o jsonpath='{.spec.containers[*].env}' --namespace your-namespace | jq .
    ```
 
-   The command will yield output similar to the following. If the output includes the proxy settings you configured for
-   your PCG or self-hosted Palette instance, you can validate that the application is using the inherited proxy
-   settings.
+   The command will yield output similar to the following. If the output includes the proxy settings you configured, you
+   can validate that the application is configured to use the proxy server.
 
    ```json
    [
