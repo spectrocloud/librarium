@@ -121,7 +121,7 @@ The Kubernetes configuration file is where you can do the following:
   [Configure Custom OIDC](kubernetes-edge.md#configure-custom-oidc).
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
-  information, refer to the [Spectro Proxy](frp.md) guide.
+  information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
 
 #### Configuration Changes
 
@@ -506,7 +506,7 @@ The Kubernetes configuration file is where you can do the following:
   [Configure Custom OIDC](kubernetes-edge.md#configure-custom-oidc).
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
-  information, refer to the [Spectro Proxy](frp.md) guide.
+  information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
 
 #### Configuration Changes
 
@@ -891,7 +891,7 @@ The Kubeadm configuration file is where you can do the following:
   [Configure Custom OIDC](kubernetes-edge.md#configure-custom-oidc).
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
-  information, refer to the [Spectro Proxy](frp.md) guide.
+  information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
 
 #### Configuration Changes
 

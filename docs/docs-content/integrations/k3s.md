@@ -174,7 +174,8 @@ more guidance.
 
 You can use a reverse proxy with a K3s Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of
 a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more
-information, refer to the [Spectro Proxy](frp.md) pack guide.
+information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
+guide.
 
 </TabItem>
 
@@ -319,7 +320,8 @@ more guidance.
 
 You can use a reverse proxy with a K3s Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of
 a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more
-information, refer to the [Spectro Proxy](frp.md) pack guide.
+information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
+guide.
 
 </TabItem>
 <TabItem label="1.27.X" value="k3s_1.27">
@@ -463,7 +465,8 @@ more guidance.
 
 You can use a reverse proxy with a K3s Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of
 a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more
-information, refer to the [Spectro Proxy](frp.md) pack guide.
+information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
+guide.
 
 </TabItem>
 

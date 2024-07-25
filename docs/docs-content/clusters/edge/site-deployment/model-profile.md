@@ -164,7 +164,7 @@ You now have a cluster profile you can use for deploying Edge hosts.
 
 Consider creating additional profiles with out-of-the-box packs for monitoring, security, authentication, or other
 capabilities. If you need remote access to the cluster, consider adding the
-[Spectro Proxy](../../../integrations/frp.md) pack to one of the add-on profiles.
+<VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack to one of the add-on profiles.
 
 Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on
 profiles. Check out the guide for adding a [Helm](../../../registries-and-packs/registries/helm-charts.md) or
