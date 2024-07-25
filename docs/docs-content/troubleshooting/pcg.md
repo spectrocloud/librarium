@@ -216,6 +216,11 @@ self-hosted Palette or VerteX cluster. Reach out to your Palette system administ
    kubectl delete VSphereFailureDomain  <cluster-name>
    ```
 
+## Scenario - vSphere Controller Pod Fails to Start in Single Node PCG Cluster
+
+In a single-node PCG cluster, the vSphere controller pod may fail to start due to no matching node affinity rules. If
+you encounter this issue, follow the steps below to resolve it.
+
 ### Debug Steps
 
 1. Connect to the PCG cluster using the `kubectl` command-line tool. You can find the kubeconfig file in the PCG
