@@ -121,14 +121,8 @@ Select the cluster profile to view its details. The cluster profile summary appe
 This cluster profile deploys the [Hello Universe](https://github.com/spectrocloud/hello-universe) application using a
 pack. Click on the **hellouniverse 1.1.3** layer. The pack manifest editor appears.
 
-Click on **Presets** on the right-hand side. This pack has the following two configured presets.
-
-1. **Disable Hello Universe API** configures the [_hello-universe_](https://github.com/spectrocloud/hello-universe)
-   application as a standalone frontend application. This is the default preset selection.
-2. **Enable Hello Universe API** configures the [_hello-universe_](https://github.com/spectrocloud/hello-universe)
-   application as a three-tier application with a frontend, API server, and Postgres database.
-
-Select the **Enable Hello Universe API** preset. The pack manifest changes according to this preset.
+Click on **Presets** on the right-hand side. You can learn more about the pack presets on the pack README, which is
+available in the Palette UI. Select the **Enable Hello Universe API** preset. The pack manifest changes accordingly.
 
 ![Screenshot of pack presets](/getting-started/aws/getting-started_scale-secure-cluster_pack-presets.webp)
 
@@ -143,8 +137,8 @@ Click on **Confirm Updates**. The manifest editor closes. Then, click on **Save 
 
 Navigate to the left **Main Menu** and select **Clusters**. Click on **Create Cluster**.
 
-Palette will prompt you to select the type of cluster. Select **AWS IaaS** and click the **Start AWS IaaS
-Configuration** button. Use the following steps to create a host cluster in AWS.
+Palette will prompt you to select the type of cluster. Select **AWS IaaS** and click on **Start AWS IaaS
+Configuration**.
 
 Continue with the rest of the cluster deployment flow using the cluster profile you created in the
 [Import a Cluster Profile](#import-a-cluster-profile) section, named **aws-profile**. Refer to the
@@ -171,6 +165,20 @@ your clusters.
 Palette supports three minor Kubernetes versions at any given time. We support the current release and the three
 previous minor version releases, also known as N-3. For example, if the current release is 1.29, we support 1.28, 1.27,
 and 1.26.
+
+:::warning
+
+Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade.
+
+:::
+
+We recommend using cluster profile versions to safely upgrade any layer of your cluster profile and maintain the
+security of your clusters. Expand the following section to learn how to create a new cluster profile version with a
+Kubernetes upgrade.
+
+<details>
+
+<summary>Upgrade Kubernetes using Cluster Profile Versions</summary>
 
 Navigate to the left **Main Menu** and click on **Profiles**. Select the cluster profile that you used to deploy your
 cluster, named **aws-profile**. The cluster profile details page appears.
@@ -210,38 +218,25 @@ Change the cluster profile version by selecting **1.1.0** from the version drop-
 Click on **Review changes in Editor**. The **Review Update Changes** dialog displays the same Kubernetes version
 upgrades as the cluster profile editor previously did. Click on **Update**.
 
-:::warning
+</details>
 
-Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade.
-
-:::
-
-Palette begins the cluster update. As the infrastructure layer of the cluster has been modified, Kubernetes needs to
+Upgrading the Kubernetes version of your cluster modifies an infrastructure layer. Therefore, Kubernetes needs to
 replace its nodes. This is known as a repave. Check out the
 [Node Pools](../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) page to learn more about
 repave behavior and configuration.
 
-Click on the **Nodes** tab. You can follow along with the node upgrades on this screen. Palette will replace the nodes
+Click on the **Nodes** tab. You can follow along with the node upgrades on this screen. Palette replaces the nodes
 configured with the old Kubernetes version with newly upgraded ones.
 
 ![Node repaves in progress](/getting-started/aws/getting-started_scale-secure-cluster_node-repaves.webp)
 
-:::tip
-
-We recommend using cluster profile versions to safely upgrade any layer of your cluster profile and maintain the
-security of your clusters. Refer to the [Deploy Cluster Profile Updates](./update-k8s-cluster.md) tutorial if you need a
-refresher on the three ways you can apply changes to your clusters.
-
-:::
-
 ### Verify the Application
 
 The cluster update completes when the Palette UI marks the cluster profile layers as green and the cluster is in a
-**Healthy** state. The cluster **Overview** page also displays the Kubernetes version as **1.28**.
+**Healthy** state. The cluster **Overview** page also displays the Kubernetes version as **1.28**. Click on the URL for
+port **:8080** to access the application and verify that your upgraded cluster is functional.
 
 ![Kubernetes upgrade applied](/getting-started/aws/getting-started_scale-secure-cluster_kubernetes-upgrade-applied.webp)
-
-Click on the URL for port **:8080** to access the application and verify that your upgraded cluster is functional.
 
 ## Scan Clusters
 
@@ -277,8 +272,8 @@ your report into. Refer to the
 [Configure an SBOM Scan](../../clusters/cluster-management/compliance-scan.md#configure-an-sbom-scan) guide to learn
 more about the configuration options of this scan.
 
-Once the scan completes, click on the scan report to view it within the Palette UI. The third-party dependencies that
-your workloads rely on are evaluated for potential security vulnerabilities. Reviewing the SBOM enables organizations to
+Once the scan completes, click on the report to view it within the Palette UI. The third-party dependencies that your
+workloads rely on are evaluated for potential security vulnerabilities. Reviewing the SBOM enables organizations to
 track vulnerabilities, perform regular software maintenance, and ensure compliance with regulatory requirements.
 
 :::info
@@ -290,7 +285,11 @@ recommend that you prioritise the rectification of any identified issues.
 
 As you have seen so far, Palette scans are crucial when maintaining your security posture. Palette provides the ability
 to schedule your scans and periodically evaluate your clusters. In addition, it keeps a history of previous scans for
-comparison purposes.
+comparison purposes. Expand the following section to learn how to configure scan schedules for your cluster.
+
+<details>
+
+<summary>Configure Cluster Scan Schedules</summary>
 
 Click on **Settings**. Then, select **Cluster Settings**. The **Settings** pane appears.
 
@@ -300,6 +299,10 @@ to be lowest. Otherwise, the scans may impact the performance of your nodes.
 
 ![Scan schedules](/getting-started/aws/getting-started_scale-secure-cluster_scans-schedules.webp)
 
+Palette will automatically scan your cluster according to your configured schedule.
+
+</details>
+
 ## Scale a Cluster
 
 A node pool is a group of nodes within a cluster that all have the same configuration. You can use node pools for
@@ -308,10 +311,7 @@ development workloads. You can update node pools for active clusters or create a
 
 Navigate to the left **Main Menu** and select **Clusters**. Select your cluster to view its **Overview** tab.
 
-Select the **Nodes** tab. Your cluster has a **control-plane-pool** and a **worker-pool**. Each pool contains a single
-node.
-
-![Node pools](/getting-started/aws/getting-started_scale-secure-cluster_current-node-pools.webp)
+Select the **Nodes** tab. Your cluster has a **control-plane-pool** and a **worker-pool**. Each pool contains one node.
 
 Select the **Overview** tab. Download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file.
 
@@ -330,7 +330,7 @@ kubectl get nodes
 ```
 
 The output reveals two nodes, one for the worker pool and one for the control plane. Make a note of the name of your
-worker node, which isthe node that does not have the `control-plane` role. In the example below,
+worker node, which is the node that does not have the `control-plane` role. In the example below,
 `ip-10-0-1-133.ec2.internal` is the name of the worker node.
 
 ```shell
@@ -372,15 +372,36 @@ three node pools appear in a healthy state.
 
 ![New worker pool provisioned](/getting-started/aws/getting-started_scale-secure-cluster_third-node-pool.webp)
 
-It is common to assign node pools as dedicated to a particular type of workload. One way to specify this is through the
-use of Kubernetes taints and tolerations.
+Navigate back to your terminal and execute the following command in your terminal to view the nodes of your cluster.
+
+```shell
+kubectl get nodes
+```
+
+The output reveals three nodes, two for worker pools and one for the control plane. Make a note of the names of your
+worker nodes. In the example below, `ip-10-0-1-133.ec2.internal` and `ip-10-0-1-32.ec2.internal` are the worker nodes.
+
+```shell
+NAME                         STATUS   ROLES           AGE   VERSION
+ip-10-0-1-32.ec2.internal    Ready    <none>          16m   v1.28.11
+ip-10-0-1-133.ec2.internal   Ready    <none>          46m   v1.28.11
+ip-10-0-1-95.ec2.internal    Ready    control-plane   51m   v1.28.11
+```
+
+It is common to dedicate node pools to a particular type of workload. One way to specify this is through the use of
+Kubernetes taints and tolerations.
 
 Taints provide nodes with the ability to repel a set of pods, allowing you to mark nodes as unavailable for certain
 pods. Tolerations are applied to pods and allow the pods to schedule onto nodes with matching taints. Once configured,
 nodes do not accept any pods that do not tolerate the taints.
 
-Navigate to the left **Main Menu** and select **Profiles**. Select the cluster profile deployed to your cluster, named
-`aws-profile`. Ensure that the **1.1.0** version is selected.
+The animation below provides a visual representation of how taints and tolerations can be used to specify which
+workloads execute on which nodes.
+
+![Taints repel pods to a new node](/getting-started/getting-started_scale-secure-cluster_taints-in-action.gif)
+
+Switch back to Palette in your web browser. Navigate to the left **Main Menu** and select **Profiles**. Select the
+cluster profile deployed to your cluster, named `aws-profile`. Ensure that the **1.1.0** version is selected.
 
 Click on the **hellouniverse 1.1.3** layer. The manifest editor appears. Set the
 `manifests.hello-universe.ui.useTolerations` field on line 20 to `true`. Then, set the
