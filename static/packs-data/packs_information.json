@@ -170,5 +170,73 @@
   {
     "name": "pfsense-vm-vsphere",
     "description": "pfSense is an open-source customized distribution of the FreeBSD operating system designed for use as a firewall and router in vSphere VMs."
+  },
+  {
+    "name": "datadog",
+    "description": "Datadog is an observability platform that offers a variety of application monitoring capabilities for servers, databases, tools, and services."
+  },
+  {
+    "name": "prismacloud",
+    "description": "Prisma Cloud Compute is a cloud workload protection platform (CWPP) that protects hosts, containers, and serverless deployments in any cloud at every stage of the software lifecycle. It provides security for tenant workloads regardless of the underlying compute technology or cloud environment."
+  },
+  {
+    "name": "prometheus-agent",
+    "description": "Prometheus is an open-source monitoring and alerting system that is designed to collect and analyze metrics from various systems and services. The Prometheus Agent pack works together with the Prometheus Operator pack."
+  },
+  {
+    "name": "prometheus-operator",
+    "description": "The Prometheus Operator is a tool that simplifies the deployment and management of Prometheus in a Kubernetes cluster. It automates tasks such as configuring Prometheus, creating and managing Prometheus rules and alerts and scaling Prometheus instances based on demand."
+  },
+  {
+    "name": "qualys-agent",
+    "description": "Qualys Cloud Agent is a lightweight cloud security agent that enables real-time, global visibility of IT assets and response."
+  },
+  {
+    "name": "rbac-manager",
+    "description": "Fairwinds RBAC Manager is an operator that supports declarative configuration for RBAC with new custom resources, simplifying authorization in Kubernetes."
+  },
+  {
+    "name": "registry-creds",
+    "description": "The Registry Credentials pack allows you to refresh AWS ECR, Google Registry, and Azure Container Registry credentials inside your Kubernetes cluster using ImagePullSecrets."
+  },
+  {
+    "name": "reloader",
+    "description": "Reloader is a Kubernetes controller that monitors changes in ConfigMaps and Secrets and performs rolling upgrades on Pods with their associated Deployments, StatefulSets, DaemonSets, and DeploymentConfigs."
+  },
+  {
+    "name": "rhel-vmware",
+    "description": "Red Hat Enterprise Linux (RHEL) is an enterprise Linux operating system (OS) developed by Red Hat. The RHEL pack is designed for VMware clusters."
+  },
+  {
+    "name": "sapp-hipster",
+    "description": "Hipster Commerce is a demo e-commerce application used to showcase Palette."
+  },
+  {
+    "name": "seccomp",
+    "description": "Seccomp (Secure Computing Mode) is a security mechanism for Linux processes that filters system calls (syscalls) based on a set of defined rules. You can apply seccomp profiles to containerized workloads to enhance the security of the application deployment."
+  },
+  {
+    "name": "signalfx",
+    "description": "SignalFx is a cloud monitoring platform for infrastructure, microservices, and applications. It allows you to monitor and observe data in real-time, regardless of the data source or type of application."
+  },
+  {
+    "name": "slem-rke2",
+    "description": "RKE2 is a fully conformant Kubernetes distribution by Rancher, focusing on security and compliance within the U.S. Federal Government sector. SLE Micro RKE2 is the RKE2 Kubernetes distribution suited for the SUSE Linux Enterprise (SLE) Micro edge operating system."
+  },
+  {
+    "name": "spectro-byo-manifest",
+    "description": "The BYO Manifest add-on pack enables you to add your own Kubernetes manifest to the pack's values field, allowing you to deploy your own custom applications."
+  },
+  {
+    "name": "spectro-cluster-metrics",
+    "description": "The Spectro Cluster Metrics pack collects cluster metrics and displays them in an intuitive dashboard."
+  },
+  {
+    "name": "spectrocloud-grafana-dashboards",
+    "description": "The Spectro Cloud Grafana Dashboards is an add-on pack that exposes internal cluster resource metrics. You can access the cluster information exposed by the pack in Grafana by visiting the Spectro Cloud/Spectro Clusters dashboard."
+  },
+  {
+    "name": "spectro-grafana-dashboards",
+    "description": "The Spectro Cloud Grafana Dashboards is an add-on pack that exposes internal cluster resource metrics. You can access the cluster information exposed by the pack in Grafana by visiting the Spectro Cloud/Spectro Clusters dashboard."
   }
 ]
