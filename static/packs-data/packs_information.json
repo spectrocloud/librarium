@@ -396,6 +396,98 @@
     "description": "Spectro Proxy is a pack that enables the use of a reverse proxy with a Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. The reverse proxy managed by Spectro Cloud is also known as the forward reverse proxy (FRP)."
   },
   {
+    "name": "spectro-k8s-dashboard",
+    "description": "This pack deployes the Kubernetes Dashboard, and the Spectro Proxy if needed. The pack reduces the complexity of deploying the Kubernetes Dashboard by creating required resources and roles."
+  },
+  {
+    "name": "spectro-rbac",
+    "description": "The Spectro RBAC pack is a helper pack to create roleBindings and clusterRoleBindings for a user or service account in a Kubernetes cluster."
+  },
+  {
+    "name": "spectro-namespace-labeler",
+    "description": "The Spectro Namespace Labeler pack is a helper pack to add labels to a namespace in a Kubernetes cluster."
+  },
+  {
+    "name": "spectro-nodes-task-handler",
+    "description": "The Spectro Nodes Task Handler pack is tool you can use to perform tasks on nodes in a Kubernetes cluster post-initailization. For example, you can use it to install software, or modify default settings, and more."
+  },
+  {
+    "name": "spectro-pack-status-check",
+    "description": "This pack invokes a script that reads a timeout from the YAML file provided, calculates the number of attempts, and repeatedly checks the status of specified Kubernetes resources against expected conditions. If a resource meets the condition within the attempts, it exits successfully; otherwise, it fa"
+  },
+  {
+    "name": "spegel",
+    "description": "Spegel is a local OCI registry mirror for Kubernets clusters. You can use it to locally cache images from external registries with no explicit configuration, and more."
+  },
+  {
+    "name": "splunk",
+    "description": "This pack deploys Splunk Connect for Kubernetes. Splunk Connect for Kubernetes provides a way to import and search your Kubernetes logging, object, and metrics data in your Splunk platform deployment."
+  },
+  {
+    "name": "spotinst-kubernetes-cluster-controller",
+    "description": "Ocean automates cloud infrastructure for containers. It continuously analyzes how your containers are using infrastructure, automatically scaling compute resources to maximize utilization and availability and utilizing the optimal blend of spot, reserved, and on-demand compute instances. Ocean eliminates the need to manage and operate cloud infrastructure."
+  },
+  {
+    "name": "sr-iov",
+    "description": "SR-IOV is a CNI plugin that enables the configuration and usage of SR-IOV VF networks in containers and orchestrators like Kubernetes."
+  },
+  {
+    "name": "strimzi-kafka",
+    "description": "Strimzi provides a way to deploy an Apache Kafka® cluster on Kubernetes in various deployment configurations. "
+  },
+  {
+    "name": "suc",
+    "description": "System Upgrade Controller, is a general-purpose, Kubernetes-native upgrade controller for Kubernetes nodes developed by Rancher. It introduces a new CRD, the Plan, for defining any and all of your upgrade policie and requirements. A Plan is an outstanding intent to mutate nodes in your cluster."
+  },
+  {
+    "name": "sumologic",
+    "description": "The Sumo Logic Kubernetes app provides visibility into the worker nodes that comprise a cluster, as well as application logs of the worker nodes. The app is a single-pane-of-glass through which you can monitor and troubleshoot container health, replication, load balancing, pod state and hardware resource allocation."
+  },
+  {
+    "name": "sysdig",
+    "description": "Sysdig is a monitoring, security, and troubleshooting platform for cloud-native applications. Sysdig provides deep visibility into containerized applications, allowing you to monitor, secure, and troubleshoot your Kubernetes environment."
+  },
+  {
+    "name": "stormforge-optimize-live",
+    "description": "StormForge Optimize Live is a Kubernetes-native performance optimization platform that uses machine learning to automatically tune your applications for performance, cost, and resource efficiency."
+  },
+  {
+    "name": "tekton-chains",
+    "descriptions": "Tekton Chains is a Kubernetes Custom Resource Definition (CRD) controller that allows you to manage your supply chain security in Tekton. In its default mode of operation, Chains works by observing all TaskRuns executions in your cluster. When TaskRuns complete, Chains takes a snapshot of them. Chains then converts this snapshot to one or more standard payload formats, signs them and stores where specified."
+  },
+  {
+    "name": "tekton-operator",
+    "description": "Tekton Operator is a Kubernetes extension that can install, upgrade and manage TektonCD Pipelines, Dashboard, Triggers and other components, on any Kubernetes Cluster."
+  },
+  {
+    "name": "tetragon",
+    "description": "Tetragon is a flexible Kubernetes-aware security observability and runtime enforcement tool that applies policy and filtering directly with eBPF, allowing for reduced observation overhead, tracking of any process, and real-time enforcement of policies."
+  },
+  {
+    "name": "tke-managed-os",
+    "description": "TKE Managed OS is a pack that provides a managed operating system for Tencent Kubernetes Engine (TKE) clusters. The pack includes the operating system and the necessary configurations to deploy the TKE cluster."
+  },
+  {
+    "name": "thanos",
+    "description": "Thanos is a set of components that can be composed into a highly available metric system with unlimited storage capacity, which can be added seamlessly on top of existing Prometheus deployments. Thanos leverages the Prometheus 2.0 storage format to cost-efficiently store historical metric data in any object storage while retaining fast query latencies."
+  },
+  {
+    "name": "triliovault",
+    "description": "Trilio for Kubernetes is a data protection and backup solution specifically designed for Kubernetes environments. Trilio provides backup and recovery capabilities tailored for these dynamic, container-based infrastructures."
+  },
+  {
+    "name": "trivy",
+    "description": "Trivy is a simple and comprehensive vulnerability, misconfiguration, secret scanner for containers and other artifacts. Trivy detects vulnerabilities of OS packages and language-specific packages. In addition, Trivy scans Infrastructure as Code (IaC) files such as Terraform and Kubernetes, to detect potential configuration issues that expose your deployments to the risk of attack."
+  },
+  {
+    "name": "trow",
+    "description": "Trow is an image management service for Kubernetes that allows you to store, manage, and distribute container images in your cluster. Trow provides a secure, private registry for your Kubernetes cluster, allowing you to store images locally and distribute them across your cluster."
+  },
+  {
+    "name": "Twistlock",
+    "description": "Twistlock is a comprehensive container security solution designed specifically for Kubernetes and other container environments. Twistlock provides end-to-end security for containerized applications running on Kubernetes, covering the entire container lifecycle from development to production."
+  },
+  {
     "name": "ubuntu-aws",
     "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
   },
@@ -444,7 +536,24 @@
     "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
   },
   {
-    "vault": "Vault is a tool developed by HashiCorp that helps organizations manage and protect sensitive data and secrets. It uses identity-based security to authenticate and authorize access to secrets, such as passwords, API keys, and encryption keys, using authentication and authorization methods. Vault also protects data in-transit and at rest, and can help prevent credential exposure and unauthorized users."
+    "name": "unctl",
+    "description": "unctl is a versatile command-line tool designed to perform a wide range of checks and inspections on various components of your infrastructure. It provides a unified interface to assess the health and performance of different services and platforms, and goes beyond mere diagnosis."
+  },
+  {
+    "name": "vault",
+    "description": "Vault is a tool developed by HashiCorp that helps organizations manage and protect sensitive data and secrets. It uses identity-based security to authenticate and authorize access to secrets, such as passwords, API keys, and encryption keys, using authentication and authorization methods. Vault also protects data in-transit and at rest, and can help prevent credential exposure and unauthorized users."
+  },
+  {
+    "name": "velero",
+    "description": "Velero is an open source tool to safely backup and restore, perform disaster recovery, and migrate Kubernetes cluster resources and persistent volumes."
+  },
+  {
+    "name": "virtual-machine-orchestrator",
+    "description": "The Palette Virtual Machine Orchestrator (VMO) pack consolidates all components that you need to deploy and manage Virtual Machines (VMs) alongside containers in a Kubernetes host cluster. You can deploy VMO as an add-on cluster profile on top of an existing data center or edge cluster."
+  },
+  {
+    "name": "volume-snapshot-controller",
+    "description": "The Volume Snapshot Controller is a Kubernetes controller that can take snapshots of a persistent volume. A snapshot can be used either to rehydrate a new volume, pre-populated with the snapshot data, or to restore an existing volume to a previous state (represented by the snapshot)."
   },
   {
     "name": "wordpress-chart",

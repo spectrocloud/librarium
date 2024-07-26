@@ -8,5 +8,8 @@
   "csi-rook-ceph-helm-addon",
   "calico-networking",
   "ubuntu-k3s",
-  "ubuntu-coxedge"
+  "ubuntu-coxedge",
+  "edge-os",
+  "spectro-zen-of-k8s",
+  "spectro-mgmt"
 ]
