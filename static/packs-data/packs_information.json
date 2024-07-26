@@ -248,6 +248,18 @@
     "description": "The Portworx CSI Driver provides a standardized way to manage storage resources in containerized environments. This driver supports the full range of Portworx features and most of the CSI specifications, facilitating seamless integration and management of storage across different platforms."
   },
   {
+    "name": "kubernetes",
+    "description": "Palette eXtended Kubernetes (PXK) is a customized version of the open-source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure providers, public cloud providers, and private data center providers. This is the default distribution when deploying a Kubernetes cluster through Palette."
+  },
+  {
+    "name": "edge-k8s",
+    "description": "Palette eXtended Kubernetes (PXK-E) is a customized version of the open-source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes for Edge devices. This Kubernetes version can be deployed Edge hosts. This is the default distribution when deploying Edge Kubernetes cluster through Palette."
+  },
+  {
+    "name": "edge-native-opensuse",
+    "description": "openSUSE is a free and open-source Linux distribution developed by the openSUSE project."
+  },
+  {
     "name": "portworx-add-on",
     "description": "The Portworx CSI Driver provides a standardized way to manage storage resources in containerized environments. This driver supports the full range of Portworx features and most of the CSI specifications, facilitating seamless integration and management of storage across different platforms."
   },
@@ -382,5 +394,60 @@
   {
     "name": "spectro-proxy",
     "description": "Spectro Proxy is a pack that enables the use of a reverse proxy with a Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. The reverse proxy managed by Spectro Cloud is also known as the forward reverse proxy (FRP)."
+  },
+  {
+    "name": "ubuntu-aws",
+    "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
+  },
+  {
+    "name": "ubuntu-azure",
+    "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
+  },
+  {
+    "name": "ubuntu-gcp",
+    "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
+  },
+  {
+    "name": "ubuntu-aks",
+    "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
+  },
+  {
+    "name": "ubuntu-eks",
+    "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
+  },
+  {
+    "name": "ubuntu-gke",
+    "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
+  },
+  {
+    "name": "ubuntu-maas",
+    "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
+  },
+  {
+    "name": "ubuntu-edge",
+    "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
+  },
+  {
+    "name": "ubuntu-libvirt",
+    "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
+  },
+  {
+    "name": "ubuntu-openstack",
+    "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
+  },
+  {
+    "name": "ubuntu-vsphere",
+    "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
+  },
+  {
+    "name": "edge-native-ubuntu",
+    "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
+  },
+  {
+    "vault": "Vault is a tool developed by HashiCorp that helps organizations manage and protect sensitive data and secrets. It uses identity-based security to authenticate and authorize access to secrets, such as passwords, API keys, and encryption keys, using authentication and authorization methods. Vault also protects data in-transit and at rest, and can help prevent credential exposure and unauthorized users."
+  },
+  {
+    "name": "wordpress-chart",
+    "description": "WordPress is an open-source web content management system. It was originally created as a tool to publish blogs but has evolved to support publishing other web content, including more traditional websites, mailing lists and Internet forum, media galleries, membership sites, learning management systems, and online stores. "
   }
 ]

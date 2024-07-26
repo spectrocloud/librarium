@@ -129,8 +129,7 @@ endpoints. The user is in a different network than the cluster.
 ![Private cluster in a different network.](/integrations_frp_conection_private-different-network.webp)
 
 Depending on what type of infrastructure provider you are deploying the host cluster in, you may have to specify the
-Spectro Proxy server's SSL certificate in the Kubernetes cluster's configuration. Refer to the [Usage](#usage) section
-below for more information.
+Spectro Proxy server's SSL certificate in the Kubernetes cluster's configuration.
 
 </TabItem>
 
