@@ -62,7 +62,7 @@ specific job, deployment, or daemon set to instruct an application to use the pr
 
 </TabItem>
 
-<Tabs group="scenario">
+</Tabs group="scenario">
 
 ## Configure Applications to Use Proxy Server
 
