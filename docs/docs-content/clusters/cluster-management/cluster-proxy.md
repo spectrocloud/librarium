@@ -50,13 +50,15 @@ specific job, deployment, or daemon set to instruct an application to use the pr
   [Self-Hosted Palette Installation](../../enterprise-version/install-palette/install-palette.md) for additional
   guidance.
 
-- The is configured to use the proxy server that you intend for your applications to use for outbound communications.
+- The self-hosted Palette instance is configured to use the proxy server that you intend for your applications to use
+  for outbound communications.
 
 </TabItem>
 
 <TabItem value="Edge">
 
-- An Edge host that has network access to the proxy server.
+- An Edge host that is configured to use the proxy server that you intend for your applications to use for outbound
+  communications.
 
 </TabItem>
 
