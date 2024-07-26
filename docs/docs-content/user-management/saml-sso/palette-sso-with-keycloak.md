@@ -137,7 +137,6 @@ up Keycloak as an OIDC provider for Palette.
 
     ![Client Authentication creation screen number two](/keycloak/user-management_saml-sso_keycloak-05-client-authentication.webp "Client Authentication")
 
-
 11. Fill out the following fields with the instructions provided in the table.
 
     | **Field**                           | **Description**                                                                                                                                                                                                                    |
@@ -207,11 +206,10 @@ Use the following steps to validate the SSO configuration.
 
    ![alt_text](/keycloak/user-management_saml-sso_keycloak-15-palette-project.webp "Palette Project")
 
-
 ### Sync Keycloak Groups and Palette Teams
 
-1. Switch back to the Keycloak admin console and modify the **profile** Client Scope. Navigate to the left **Main Menu** and
-   select **Client Scope**. Click on the **Profile** button.
+1. Switch back to the Keycloak admin console and modify the **profile** Client Scope. Navigate to the left **Main Menu**
+   and select **Client Scope**. Click on the **Profile** button.
 
    ![Image of keycloak mappers highlighted](/keycloak/user-management_oidc-sso-keycloak-19-keycloak-client-scopes.webp "Palette Project")
 
@@ -227,7 +225,8 @@ Use the following steps to validate the SSO configuration.
 
 6. Save the add mapper page.
 
-You have now ensured that the groups for the Keycloak user are within the token attributes, ensure the Keycloak group and the Palette group match.
+You have now ensured that the groups for the Keycloak user are within the token attributes, ensure the Keycloak group
+and the Palette group match.
 
 ### Default Teams
 
@@ -249,7 +248,6 @@ users you created in Keycloak. The users will be assigned the **Project Admin** 
 out the
 [Creating users](https://www.keycloak.org/docs/latest/server_admin/index.html#proc-creating-user_server_administration_guide)
 guide to learn how to create users in Keycloak.
-
 
 ## Resources
 
