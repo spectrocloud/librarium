@@ -206,16 +206,40 @@ Use the following steps to validate the SSO configuration.
 
    ![Image of project roles highlighted](/keycloak/user-management_saml-sso_keycloak-15-palette-project.webp "Palette Project")
 
-4. From the left **Main Menu**, select **Tenant Settings**. Next, click on **SSO** to access the SSO configuration page.
+### Sync Keycloak Groups and Palette Teams
+
+1. Switch back to the Keycloak admin console and modify the **profile** Client Scope. Navigate to the left **Main Menu**
+   and select **Client Scope**. Click on the **Profile** button.
+
+   ![Image of keycloak mappers highlighted](/keycloak/user-management_oidc-sso-keycloak-19-keycloak-client-scopes.webp "Palette Project")
+
+2. Within the **profile** Client scope details, click **Mappers**, then **Add mapper** and **By configuration**.
+
+3. Navigate to **Group Membership** in the Configure a new mapper modal.
+
+4. Next, ensure the **Name** and **Token Claim Name** fields are both **groups**.
+
+   ![Image of keycloak client scopes highlighted](/keycloak/user-management_oidc-sso-keycloak-20-keycloak-mapper.webp "Palette Project")
+
+5. Deselect the radio button for **Full group path**.
+
+6. Save the add mapper page.
+
+You have now ensured that the groups for the Keycloak user are within the token attributes, ensure the Keycloak group
+and the Palette group match.
+
+### Default Teams
+
+1. From the left **Main Menu**, select **Tenant Settings**. Next, click on **SSO** to access the SSO configuration page.
    Click on the **OIDC** tab to access the OIDC configuration page. Scroll down to the **SSO Admins** section and select
    the **admins** team from the **Default Team** drop-down Menu. Click on **Save**.
 
-5. Navigate back to the Keycloak admin console. From the left **Main Menu** click on **Users**. Create a user and ensure
+2. Navigate back to the Keycloak admin console. From the left **Main Menu** click on **Users**. Create a user and ensure
    the field **Username**, **Email**, and **First Name** are filled out. Click on **Save** to save the user.
 
    ![Keycloak's management portal with the User view in focus](/keycloak/user-management_saml-sso_keycloak-17-keycloak-user.webp "Keycloak user")
 
-6. Next, click on the **Credentials** tab and assign the user password.
+3. Next, click on the **Credentials** tab and assign the user password.
 
    ![Keycloak's management portal with the User view in focus that lists all current users](/keycloak/user-management_saml-sso_keycloak-18-keycloak-password.webp "Keycloak password")
 
