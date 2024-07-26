@@ -11,7 +11,7 @@ const excludeList = require("../static/packs-data/exclude_packs.json");
 const { existsSync, promises, open, mkdirSync, writeFile, close, createWriteStream } = require("node:fs");
 import logger from "@docusaurus/logger";
 
-const filterLimit = 50; //Limit for fetching the packs from the Palette API
+const filterLimit = 100; //Limit for fetching the packs from the Palette API
 const dirname = ".docusaurus/packs-integrations/";
 const logoDirname = "static/img/packs/";
 const filename = "api_pack_response.json";
@@ -386,7 +386,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
         if (!existsSync(dirname)) {
           mkdirSync(dirname, { recursive: true });
         }
-        let packDataArr = await fetchPackListItems("?limit=50", [], 0);
+        let packDataArr = await fetchPackListItems(`?limit=${filterLimit}`, [], 0);
 
         // Filter out the packs from the exclude list.
         packDataArr = packDataArr.filter((pack) => {

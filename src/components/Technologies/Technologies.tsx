@@ -111,7 +111,11 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
 
     const sortedCategoriesMap = new Map(
       [...categoriesMap.entries()].sort(([key1], [key2]) => {
-        return packTypeNames[key1].localeCompare(packTypeNames[key2]);
+        const name1 = packTypeNames[key1];
+        const name2 = packTypeNames[key2];
+        if (!name1) return 1;
+        if (!name2) return -1;
+        return name1.localeCompare(name2);
       })
     );
 
