@@ -23,6 +23,45 @@ specific job, deployment, or daemon set to instruct an application to use the pr
 
 - An active proxy server reachable by your cluster.
 
+<Tabs group="scenario">
+
+<TabItem value="Palette SaaS Non-Edge">
+
+- A PCG is deployed into an active and healthy Kubernetes cluster. Refer to
+  [Deploy a PCG to an Existing Kubernetes Cluster](../deploy-pcg-k8s.md) for additional guidance.
+
+  :::warning
+
+  If you deployed a [PCG through the Palette CLI](../pcg.md#supported-environments), refer to the respective platform
+  installation guide for instructions on how to configure proxy settings during the installation process through the
+  CLI.
+
+  :::
+
+- The PCG is configured to use the proxy server that you intend for your applications to use for outbound
+  communications. For more information, refer to
+  [Enabled and Manage Proxy Configurations](../pcg/manage-pcg/configure-proxy.md).
+
+</TabItem>
+
+<TabItem value="Self-Hosted Palette Non-Edge">
+
+- A self-hosted Palette instance is deployed into an active and healthy Kubernetes cluster. Refer to
+  [Self-Hosted Palette Installation](../../enterprise-version/install-palette/install-palette.md) for additional
+  guidance.
+
+- The is configured to use the proxy server that you intend for your applications to use for outbound communications.
+
+</TabItem>
+
+<TabItem value="Edge">
+
+- An Edge host that has network access to the proxy server.
+
+</TabItem>
+
+<Tabs group="scenario">
+
 ## Configure Applications to Use Proxy Server
 
 <Tabs>
