@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## July 25th, 2024 - Release 4.3.11
+## July 27th, 2024 - Release 4.3.11
 
 ### Bug Fixes
 
