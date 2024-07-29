@@ -57,8 +57,8 @@ specific job, deployment, or daemon set to instruct an application to use the pr
 
 <TabItem value="Edge">
 
-- An Edge host that is configured to use the proxy server that you intend for your applications to use for outbound
-  communications.
+- Your Edge host is configured to use the proxy server that you intend for your applications to use for outbound
+  communications. Refer to [Edge Host Installation](../edge/site-deployment/stage.md) for more information.
 
 </TabItem>
 
