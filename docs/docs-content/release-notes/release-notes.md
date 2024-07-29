@@ -116,6 +116,10 @@ tags: ["release-notes"]
 - Includes all Palette features and improvements in this release. Refer to the [Palette](#release-4-4-8) section for
   more details.
 
+#### Bug Fixes
+
+- Resolved the issue that made VerteX enterprise clusters unable to complete backup operations.
+
 ### Automation
 
 - Terraform version 0.20.7 of the
