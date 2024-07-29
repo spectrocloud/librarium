@@ -11,6 +11,10 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## Aug 17, 2024 - Release 4.4.X
+
+TBA
+
 ## Jul 20, 2024 - Release 4.4.11
 
 <!-- Custom heading applied due to linking of the Palette section in the VerteX section -->
