@@ -125,9 +125,9 @@ To get started with remote monitoring, check out the
 
 ## Palette Resources Monitoring
 
-You can access internal Palette metrics in Grafana by adding the
-[Prometheus Cluster Metrics](prometheus-cluster-metrics.md) pack to all your client clusters. Refer to the
-[Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md) guide to learn more.
+<!-- prettier-ignore-start -->
+You can access internal Palette metrics in Grafana by adding the <VersionedLink text="Spectro Cluster Metrics" url="/integrations/packs/?pack=spectro-cluster-metrics"/> pack to all your client clusters. Refer to the [Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md) guide to learn more.
+<!-- prettier-ignore-end -->
 
 ## Persistent Storage
 
@@ -269,9 +269,9 @@ To get started with remote monitoring, check out the
 
 ## Palette Resources Monitoring
 
-You can access internal Palette metrics in Grafana by adding the
-[Prometheus Cluster Metrics](prometheus-cluster-metrics.md) pack to all your client clusters. Refer to the
-[Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md) guide to learn more.
+<!-- prettier-ignore-start -->
+You can access internal Palette metrics in Grafana by adding the <VersionedLink text="Spectro Cluster Metrics" url="/integrations/packs/?pack=spectro-cluster-metrics"/> pack to all your client clusters. Refer to the [Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md) guide to learn more.
+<!-- prettier-ignore-end -->
 
 ## Persistent Storage
 
@@ -405,17 +405,19 @@ service. Use the generated service URL to provide other Kubernetes clusters with
 The remote monitoring feature is configured with defaults to help you consume this feature out-of-the-box. You can
 change any configuration related to remote monitoring to fine-tune settings for your environment.
 
-Refer to the [Prometheus Remote Write Tuning](https://prometheus.io/docs/practices/remote_write/) resource to learn more
+<!-- prettier-ignore-start -->
+Refer to the <VersionedLink text="Spectro Cluster Metrics" url="/integrations/packs/?pack=spectro-cluster-metrics"/> resource to learn more
 about the available configuration options.
+<!-- prettier-ignore-end -->
 
 To get started with remote monitoring, check out the
 [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md) guide.
 
 ## Palette Resources Monitoring
 
-You can access internal Palette metrics in Grafana by adding the
-[Prometheus Cluster Metrics](prometheus-cluster-metrics.md) pack to all your client clusters. Refer to the
-[Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md) guide to learn more.
+<!-- prettier-ignore-start -->
+You can access internal Palette metrics in Grafana by adding the <VersionedLink text="Spectro Cluster Metrics" url="/integrations/packs/?pack=spectro-cluster-metrics"/> pack to all your client clusters. Refer to the [Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md) guide to learn more.
+<!-- prettier-ignore-end -->
 
 ## Persistent Storage
 
@@ -557,9 +559,10 @@ To get started with remote monitoring, check out the
 
 ## Palette Resources Monitoring
 
-You can access internal Palette metrics in Grafana by adding the
-[Prometheus Cluster Metrics](prometheus-cluster-metrics.md) pack to all your client clusters. Refer to the
+<!-- prettier-ignore-start -->
+You can access internal Palette metrics in Grafana by adding the <VersionedLink text="Spectro Cluster Metrics" url="/integrations/packs/?pack=spectro-cluster-metrics"/> pack to all your client clusters. Refer to the
 [Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md) guide to learn more.
+<!-- prettier-ignore-end -->
 
 ## Dependencies
 

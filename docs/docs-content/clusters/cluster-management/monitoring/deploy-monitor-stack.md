@@ -131,8 +131,8 @@ You can choose to deploy the monitoring stack with or without authentication.
 
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
-    - **Pack Name**: Spectrocloud Grafana Dashboards
-    - **Pack Version**: 1.0.X or newer
+    - **Pack Name**: Spectro Grafana Dashboards
+    - **Pack Version**: 4.0.X or newer
 
 18. Use the default values. Confirm your changes by selecting **Confirm & Create**.
 

@@ -229,11 +229,11 @@
   },
   {
     "name": "spectro-cluster-metrics",
-    "description": "The Spectro Cluster Metrics pack collects cluster metrics and displays them in an intuitive dashboard."
+    "description": "The Spectro Cluster Metrics pack exposes Palette-specific host cluster metrics to Prometheus. You can use this data to learn about the state of your clusters, resource utilization, and more."
   },
   {
     "name": "spectrocloud-grafana-dashboards",
-    "description": "The Spectro Cloud Grafana Dashboards is an add-on pack that exposes internal cluster resource metrics. You can access the cluster information exposed by the pack in Grafana by visiting the Spectro Cloud/Spectro Clusters dashboard."
+    "description": "The Spectro Cloud Grafana Dashboards is a demo add-on pack that exposes internal cluster resource metrics. You can access the cluster information exposed by the pack in Grafana by visiting the Spectro Cloud/Spectro Clusters dashboard."
   },
   {
     "name": "spectro-grafana-dashboards",
