@@ -185,7 +185,7 @@ specific job, deployment, or daemon set to instruct an application to use the pr
 
 </TabItem>
 
-<Tabs>
+</Tabs>
 
 ## Validate
 
