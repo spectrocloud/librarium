@@ -251,6 +251,13 @@ Palette VerteX upgrade.
     unzip spectro-manifests-<file-id>.zip -d /target/folder
     ```
 
+    :::warning
+
+    Do not remove or replace the existing files inside your target folder that is served by the file server. The
+    previous content is necessary for the upgrade process.
+
+    :::
+
 8.  Refer to the [Additional Packs](../../install-palette-vertex/airgap/supplemental-packs.md) page and update the
     packages you are currently using. You must update each package separately.
 
