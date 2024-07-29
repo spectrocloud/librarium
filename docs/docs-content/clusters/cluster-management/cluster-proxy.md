@@ -19,6 +19,14 @@ After the cluster is configured to use the proxy server, you can proceed to conf
 cluster to use the proxy server. You can do this by applying the `spectrocloud.com/connection: proxy` label to the
 specific job, deployment, or daemon set to instruct an application to use the proxy settings of the cluster.
 
+:::tip
+
+We recommend you review the [gRPC and Proxies](../../architecture/grps-proxy.md) article to be aware of network proxies
+that Palette supports. Palette uses gRPC to communicate with clusters, and depending on the proxy server you use, you
+may need to configure the proxy server to support gRPC.
+
+:::
+
 ## Prerequisites
 
 - An active proxy server reachable by your cluster.
@@ -28,19 +36,16 @@ specific job, deployment, or daemon set to instruct an application to use the pr
 <TabItem value="Palette SaaS Non-Edge">
 
 - A PCG is deployed into an active and healthy Kubernetes cluster. Refer to
-  [Deploy a PCG to an Existing Kubernetes Cluster](../pcg/deploy-pcg-k8s.md) for additional guidance.
-
-  :::warning
-
-  If you deployed a [PCG through the Palette CLI](../pcg/pcg.md#supported-environments), refer to the respective
-  platform installation guide for instructions on how to configure proxy settings during the installation process
-  through the CLI.
-
-  :::
+  [Deploy a PCG to an Existing Kubernetes Cluster](../pcg/deploy-pcg-k8s.md) for or
+  [Deploy a PCG with Palette CLI](../pcg/deploy-pcg/deploy-pcg.md) additional guidance.
 
 - The PCG is configured to use the proxy server that you intend for your applications to use for outbound
   communications. For more information, refer to
   [Enabled and Manage Proxy Configurations](../pcg/manage-pcg/configure-proxy.md).
+
+  - If you deployed a [PCG through the Palette CLI](../pcg/pcg.md#supported-environments), refer to the respective
+    platform installation guide for instructions on how to configure proxy settings during the installation process
+    through the CLI.
 
 </TabItem>
 
@@ -70,10 +75,10 @@ specific job, deployment, or daemon set to instruct an application to use the pr
 
 <TabItem value="Palette SaaS Non-Edge">
 
-1.  If you are using Palette SaaS, and your cluster does not have direct access to the internet, then the communication
-    between Palette SaaS and your cluster must go through a Private Cloud Gateway (PCG). For more information about
-    PCGs, refer to [Private Cloud Gateway](../pcg/pcg.md). You must configure proxy settings for the PCG, and then
-    clusters created by cloud accounts configured to use the PCG will inherit its proxy settings.
+1.  If you are using Palette SaaS, you must deploy a Private Cloud Gateway (PCG) and configure it to use a proxy server
+    before you can configure cluster applications to use the proxy server. For more information about PCGs, refer to
+    [Private Cloud Gateway](../pcg/pcg.md). You must configure proxy settings for the PCG, and then clusters created by
+    cloud accounts configured to use the PCG will inherit its proxy settings.
 
     If you are provisioning the PCG using the Palette CLI, you can configure the proxy settings during the PCG
     installation through the Palette CLI's interactive prompts. If you are using Helm to provision a PCG or have an
@@ -81,12 +86,20 @@ specific job, deployment, or daemon set to instruct an application to use the pr
     [Enable and Manage Proxy Configurations for PCG](../pcg/manage-pcg/configure-proxy.md) to learn how to install Reach
     on a PCG cluster and use it to configure proxy settings.
 
-2.  Once you have configured proxy settings through Reach for your PCG, you can proceed to create your cluster using a
-    cloud account associated with the PCG. The cluster will inherit proxy settings from the PCG automatically.
+2.  If you deployed the PCG using the Palette CLI, the cloud account is created automatically. You can skip this step.
 
-    However, you still need to specify which applications will use the proxy settings. You can do this by applying the
-    `spectrocloud.com/connection: proxy` label to the deployment, job, or daemon set in the pack that contains your
-    application.
+    Once you have deployed the PCG, you must create a new cloud account associated with the PCG. Refer to the following
+    resources to learn how to create a cloud account:
+
+    - [Add an AWS Account to Palette](../public-cloud/aws/add-aws-accounts.md)
+    - [Register and Manage Azure Cloud Account](../public-cloud/azure/azure-cloud.md)
+    - [Register and Manage GCP Accounts](../public-cloud/gcp/add-gcp-accounts.md)
+
+3.  Create a cluster profile that contains your application. Refer to
+    [Create a Cluster Profile](../../profiles/cluster-profiles/cluster-profiles.md) for additional guidance.
+
+    In your cluster profile, apply the `spectrocloud.com/connection: proxy` label to the deployment, job, or daemon set
+    in the pack that contains your application.
 
     You must apply the label to every specific job, deployment, or daemon set that needs to use the proxy servers. For
     example, if you have a Kafka deployment that requires access to the internet through your proxy, you need to apply
@@ -105,8 +118,12 @@ specific job, deployment, or daemon set to instruct an application to use the pr
             spectrocloud.com/connection: proxy
     ```
 
-3.  Continue with the cluster creation process and provision your cluster. For more information, refer to
-    [Clusters](../clusters.md) and choose the infrastructure provider of your choice.
+4.  Start creating your cluster using the cloud account associated with the PCG. The cluster will inherit proxy settings
+    from the PCG automatically. Refer to the following resources on cluster creation.
+
+    - [Create and Manage AWS Cluster](../public-cloud/aws/create-cluster.md)
+    - [Create and Manage Azure IaaS Cluster](../public-cloud/azure/create-azure-cluster.md)
+    - [Create and Manage GCP IaaS Cluster](../public-cloud/gcp/create-gcp-iaas-cluster.md)
 
 </TabItem>
 
@@ -116,16 +133,15 @@ specific job, deployment, or daemon set to instruct an application to use the pr
     installation. If you are using the Palette CLI for installation, refer to
     [Self Hosted Palette - Installation](../../enterprise-version/install-palette/install-on-kubernetes/install.md) to
     learn how to specify proxy settings during installation. If you used Helm charts for installation, refer to
-    [Enable and Manage Proxy Configurations](../pcg/manage-pcg/add-dns-mapping.md) to learn how to install reach and use
+    [Enable and Manage Proxy Configurations](../pcg/manage-pcg/configure-proxy.md) to learn how to install reach and use
     it to configure proxy settings. The process to install Reach on an existing self-hosted Palette instance is the same
     as the process to install Reach on an existing PCG cluster.
 
-2.  Once you have configured proxy settings through Reach for your self-hosted Palette instance, you can proceed to
-    create your cluster. The cluster will inherit proxy settings from the Palette instance automatically.
+2.  Create a cluster profile that contains your application. Refer to
+    [Create a Cluster Profile](../../profiles/cluster-profiles/cluster-profiles.md) for additional guidance.
 
-    However, you still need to specify which applications will use the proxy settings. You can do this by applying the
-    `spectrocloud.com/connection: proxy` label to the deployment, job, or daemon set in the pack that contains the
-    application.
+    In your cluster profile, apply the `spectrocloud.com/connection: proxy` label to the deployment, job, or daemon set
+    in the pack that contains your application.
 
     You must apply the label to every specific job, deployment, or daemon set that needs to use the proxy servers. For
     example, if you have a Kafka deployment that requires access to the internet through your proxy, you need to apply
@@ -144,8 +160,12 @@ specific job, deployment, or daemon set to instruct an application to use the pr
             spectrocloud.com/connection: proxy
     ```
 
-3.  Continue with the cluster creation process and provision your cluster. For more information, refer to
-    [Clusters](../clusters.md) and choose the infrastructure provider of your choice.
+3.  Start creating your cluster using the cluster profile. The cluster will inherit proxy settings from the PCG
+    automatically. Refer to the following resources on cluster creation.
+
+    - [Create and Manage AWS Cluster](../public-cloud/aws/create-cluster.md)
+    - [Create and Manage Azure IaaS Cluster](../public-cloud/azure/create-azure-cluster.md)
+    - [Create and Manage GCP IaaS Cluster](../public-cloud/gcp/create-gcp-iaas-cluster.md)
 
 </TabItem>
 
@@ -156,12 +176,11 @@ specific job, deployment, or daemon set to instruct an application to use the pr
     deployed in airgap mode, you may also specify the proxy settings in Local UI. For more information, refer to
     [Configure HTTP-Proxy in Local UI](../edge/local-ui/host-management/configure-proxy.md).
 
-2.  Once you have configured proxy settings for your Edge host, you can proceed to create your cluster. The cluster will
-    use the proxy settings you configured for the Edge host.
+2.  Create a cluster profile that contains your application. Refer to
+    [Create a Cluster Profile](../../profiles/cluster-profiles/cluster-profiles.md) for additional guidance.
 
-    However, you still need to specify which applications will use the proxy settings. You can do this by applying the
-    `spectrocloud.com/connection: proxy` label to the deployment, job, or daemon set in the pack that contains the
-    application.
+    In your cluster profile, apply the `spectrocloud.com/connection: proxy` label to the deployment, job, or daemon set
+    in the pack that contains your application.
 
     You must apply the label to every specific job, deployment, or daemon set that needs to use the proxy servers. For
     example, if you have a Kafka deployment that requires access to the internet through your proxy, you need to apply
@@ -180,7 +199,7 @@ specific job, deployment, or daemon set to instruct an application to use the pr
             spectrocloud.com/connection: proxy
     ```
 
-3.  Continue with the cluster creation process and provision your cluster. For more information, refer to
+3.  Create a cluster using the cluster profile. For more information, refer to
     [Create Cluster Definition](../edge/site-deployment/cluster-deployment.md).
 
 </TabItem>
