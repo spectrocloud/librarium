@@ -131,7 +131,7 @@ specific job, deployment, or daemon set to instruct an application to use the pr
     example, if you have a Kafka deployment that requires access to the internet through your proxy, you need to apply
     the label to the Kafka deployment.
 
-    ```yaml {7}
+    ```yaml {10}
     apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -167,7 +167,7 @@ specific job, deployment, or daemon set to instruct an application to use the pr
     example, if you have a Kafka deployment that requires access to the internet through your proxy, you need to apply
     the label to the Kafka deployment.
 
-    ```yaml {7}
+    ```yaml {10}
     apiVersion: apps/v1
     kind: Deployment
     metadata:
