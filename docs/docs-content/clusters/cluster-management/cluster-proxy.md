@@ -43,9 +43,9 @@ may need to configure the proxy server to support gRPC.
   communications. For more information, refer to
   [Enabled and Manage Proxy Configurations](../pcg/manage-pcg/configure-proxy.md).
 
-  - If you deployed a [PCG through the Palette CLI](../pcg/pcg.md#supported-environments), refer to the respective
-    platform installation guide for instructions on how to configure proxy settings during the installation process
-    through the CLI.
+  - If you deployed a PCG through the Palette CLI, refer to
+    [the respective platform installation guide](../pcg/pcg.md#supported-environments) for instructions on how to
+    configure proxy settings during the installation process through the CLI.
 
 </TabItem>
 
