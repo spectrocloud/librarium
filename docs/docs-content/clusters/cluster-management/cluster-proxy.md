@@ -23,7 +23,7 @@ specific job, deployment, or daemon set to instruct an application to use the pr
 
 - An active proxy server reachable by your cluster.
 
-<Tabs group="scenario">
+<Tabs groupId="scenario">
 
 <TabItem value="Palette SaaS Non-Edge">
 
@@ -66,7 +66,7 @@ specific job, deployment, or daemon set to instruct an application to use the pr
 
 ## Configure Applications to Use Proxy Server
 
-<Tabs group="scenario">
+<Tabs groupId="scenario">
 
 <TabItem value="Palette SaaS Non-Edge">
 
