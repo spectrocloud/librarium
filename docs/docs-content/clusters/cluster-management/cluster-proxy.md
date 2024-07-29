@@ -36,8 +36,8 @@ may need to configure the proxy server to support gRPC.
 <TabItem value="Palette SaaS Non-Edge">
 
 - A PCG is deployed into an active and healthy Kubernetes cluster. Refer to
-  [Deploy a PCG to an Existing Kubernetes Cluster](../pcg/deploy-pcg-k8s.md) for or
-  [Deploy a PCG with Palette CLI](../pcg/deploy-pcg/deploy-pcg.md) additional guidance.
+  [Deploy a PCG to an Existing Kubernetes Cluster](../pcg/deploy-pcg-k8s.md) or
+  [Deploy a PCG with Palette CLI](../pcg/deploy-pcg/deploy-pcg.md) for additional guidance.
 
 - The PCG is configured to use the proxy server that you intend for your applications to use for outbound
   communications. For more information, refer to
