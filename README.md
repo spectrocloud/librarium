@@ -719,6 +719,10 @@ This is a <VersionedLink text="Internal Link" url="/getting-started/additional-c
 The path of the link should be the path of the destination file from the root directory, without any back operators
 `..`. External links can be referenced as usual.
 
+## Packs Component
+
+The packs component is a custom component that displays all packs available in Palette SaaS by querying the Palette API.
+
 ## Netlify Previews
 
 By default Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. In
