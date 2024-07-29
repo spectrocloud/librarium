@@ -62,11 +62,11 @@ specific job, deployment, or daemon set to instruct an application to use the pr
 
 </TabItem>
 
-</Tabs group="scenario">
+</Tabs>
 
 ## Configure Applications to Use Proxy Server
 
-<Tabs>
+<Tabs group="scenario">
 
 <TabItem value="Palette SaaS Non-Edge">
 
