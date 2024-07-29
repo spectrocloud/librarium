@@ -77,7 +77,7 @@ specific job, deployment, or daemon set to instruct an application to use the pr
 
     If you are provisioning the PCG using the Palette CLI, you can configure the proxy settings during the PCG
     installation through the Palette CLI's interactive prompts. If you are using Helm to provision a PCG or have an
-    existing PCG that is not yet configured to use proxy, refer to to
+    existing PCG that is not yet configured to use proxy, refer to
     [Enable and Manage Proxy Configurations for PCG](../pcg/manage-pcg/configure-proxy.md) to learn how to install Reach
     on a PCG cluster and use it to configure proxy settings.
 
@@ -195,7 +195,7 @@ specific job, deployment, or daemon set to instruct an application to use the pr
    `your-namespace` with the namespace where the pod resides.
 
    ```
-   kubectl get pod pod-name -o jsonpath='{.spec.containers[*].env}' --namespace your-namespace | jq .
+   kubectl get pod pod-name --output jsonpath='{.spec.containers[*].env}' --namespace your-namespace | jq .
    ```
 
    The command will yield output similar to the following. If the output includes the proxy settings you configured, you
