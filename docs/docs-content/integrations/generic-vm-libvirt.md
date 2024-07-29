@@ -10,29 +10,15 @@ logoUrl: "https://registry.spectrocloud.com/v1/generic-vm-libvirt/blobs/sha256:2
 tags: ["packs", "generic-vm-libvirt", "system app"]
 ---
 
-Generic-VM-Libvirt is a Palette Add-on pack used to simplify deploying the virtual machine applications from a cluster
-profile or a system profile. Generic-VM-Libvirt extracts all Terraform constructs inside the pack and exposes nothing
-but the values. Users will then have the ability to modify the add-on pack for the different applications.
+## Versions Supported
 
-## Version Supported
-
-<Tabs queryString="versions">
+<Tabs queryString="parent">
 <TabItem label="1.0.x" value="1.0.x">
 
-- **1.0.2**
-- **1.0.0**
-
-</TabItem>
-</Tabs>
-
-<br />
-
-## Configuring Palette Generic VM Libvirt Add-on
+### Configure VM Libvirt Add-on
 
 To configure the Generic-VM-Libvirt add-on pack for the application cluster, begin by editing the manifest namespace
 value.
-
-`cluster-{{ .spectro.system.cluster.uid }}`
 
 **Example**
 
@@ -41,21 +27,15 @@ namespace: jet-system
 ```
 
 If multiple instances of this pack have to be deployed on the cluster for different virtual machine applications, then
-modify '`spectrocloud.com/display-name`' and '`releaseNameOverride`' with distinctive names to make it unique across all
-the packs in the cluster.
-
-<br />
+modify `spectrocloud.com/display-name` and `releaseNameOverride` with distinctive names to make it unique across all the
+packs in the cluster.
 
 ```yaml
 spectrocloud.com/display-name: vm-app-1
 releaseNameOverride:
 ```
 
-<br />
-
-## Generic-VM-Libvirt Pack Manifest
-
-<br />
+### Generic-VM-Libvirt Pack Manifest
 
 ```yaml
 pack:
@@ -174,22 +154,18 @@ charts:
     #     echo "I am post exec"
 ```
 
-## Virtual Machine Hooks
+### Virtual Machine Hooks
 
 The Generic-VM-Libvirt pack supports various hooks, while deploying VM applications and supports multiple use-cases of
 customizing workflow, as customers require.
 
-<br />
-
-## Using preExecCmd and postExecCmd
+#### preExecCmd and postExecCmd
 
 The **preExecCmd** and **postExecCmd** commands will be executed in every pod reconciliation. The loop runs at
 approximately a 2-minute interval.
 
 If you want to run the command or script only, whenever the virtual machine is getting created or after the virtual
 machine is destroyed, use **preVMInitCmd** and **postVMInitCmd**, respectively.
-
-<br />
 
 ```yaml
 preExecCmd: "bash /var/files/pre-exec.sh"
@@ -199,16 +175,12 @@ preExecCmd: "bash /var/files/pre-exec.sh"
 postExecCmd: "bash /var/files/pre-exec.sh"
 ```
 
-<br />
-
-## Using preVMInitCmd and postVMInitCmd
+#### preVMInitCmd and postVMInitCmd
 
 The **preVMInitCmd** command is executed, only when the virtual machine is being created or recreated. Likewise, the
 **postVMInitCmd** command is executed only after the virtual machine is created or recreated.
 
 **Note**: These commands will not be executed in each reconciliation.
-
-<br />
 
 ```yaml
 preVMInitCmd: "echo 'Hey! Hang on tight. I am gonna create a VM.'"
@@ -218,21 +190,15 @@ preVMInitCmd: "echo 'Hey! Hang on tight. I am gonna create a VM.'"
 postVMInitCmd: "echo 'Ooho! VM is created.'"
 ```
 
-<br />
-
-## Using preVMDestroyCmd
+### preVMDestroyCmd
 
 Any command or script provided in this virtual machine hook will execute before the VM gets destroyed. It will be
 executed only when the VM is being deleted. A virtual machine deletion can happen for any reason, like changing anything
 in cloud-init or removing the pack from the profile.
 
-<br />
-
 ```yaml
 preVMDestroyCmd: ""
 ```
-
-<br />
 
 :::info
 
@@ -240,19 +206,13 @@ During a first-time deployment, <b> preVMDestroyCmd</b> will not be invoked. How
 cloud-init, then the VM resource will be recreated, preVMDestroyCmd will be invoked before deleting the VM, and once
 preVMDestroyCmd is executed successfully, only then will the VM resource be deleted.
 
-<br />
-<br />
 Once the virtual machine is deleted and before another virtual machine is created, <b>preVMInitCmd</b> will be invoked.
 
 :::
 
-<br />
-
-## Files
+### Files
 
 Files presented in this section will be added to the pod, where the pre-and-post exec hooks are executed.
-
-<br />
 
 ```yaml
 files:
@@ -270,15 +230,11 @@ extraDomainHclConfig: |
   }
 ```
 
-<br />
-
-## Mounts
+### Mounts
 
 Mount the data inside the existing configuration maps or secrets into the pod as files, where pre-and-post hooks are
 executed. This allows the data present in the configuration map or the secrets file to be accessible while running
 pre-and-post exec hooks.
-
-<br />
 
 ```yaml
 mounts:
@@ -294,15 +250,11 @@ mounts:
       path: /data/system-config-2
 ```
 
-<br />
-
-## Environment Variables
+### Environment Variables
 
 The ENVS section can inject data inside the existing config maps or secrets into the pod as environment variables, where
 pre-and post-hooks are executed so that data present in the config map or the secret file can be accessed while running
 pre-and-post exec hooks.
-
-<br />
 
 ```yaml
 envs:
@@ -316,6 +268,22 @@ envs:
       dataKey: "db.password"
 ```
 
-## References
+</TabItem>
+</Tabs>
 
-- [Libvirt Apps](https://libvirt.org/apps.html)
+## Terraform
+
+You can retrieve details about the Generic-VM-Libvirt pack by using the following Terraform code.
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "gatekeeper" {
+  name    = "generic-vm-libvirt"
+  version = "1.0.6"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```

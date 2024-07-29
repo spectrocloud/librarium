@@ -24,7 +24,6 @@ import OsIcon from "@site/static/assets/packs/os_layer.svg";
 import ServiceMeshIcon from "@site/static/assets/packs/service_mesh_layer.svg";
 import MonitoringIcon from "@site/static/assets/packs/monitoring_layer.svg";
 import CsiIcon from "@site/static/assets/packs/csi_layer.svg";
-import IntegrationIcon from "@site/static/assets/packs/integration_layer.svg";
 import LoggingIcon from "@site/static/assets/packs/logging_layer.svg";
 import LoadBalancerIcon from "@site/static/assets/packs/load_balancer_layer.svg";
 import IngressIcon from "@site/static/assets/packs/ingress_layer.svg";
