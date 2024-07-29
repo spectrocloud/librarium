@@ -28,13 +28,13 @@ specific job, deployment, or daemon set to instruct an application to use the pr
 <TabItem value="Palette SaaS Non-Edge">
 
 - A PCG is deployed into an active and healthy Kubernetes cluster. Refer to
-  [Deploy a PCG to an Existing Kubernetes Cluster](../deploy-pcg-k8s.md) for additional guidance.
+  [Deploy a PCG to an Existing Kubernetes Cluster](../pcg/deploy-pcg-k8s.md) for additional guidance.
 
   :::warning
 
-  If you deployed a [PCG through the Palette CLI](../pcg.md#supported-environments), refer to the respective platform
-  installation guide for instructions on how to configure proxy settings during the installation process through the
-  CLI.
+  If you deployed a [PCG through the Palette CLI](../pcg/pcg.md#supported-environments), refer to the respective
+  platform installation guide for instructions on how to configure proxy settings during the installation process
+  through the CLI.
 
   :::
 
