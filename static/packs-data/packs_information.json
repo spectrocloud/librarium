@@ -428,6 +428,14 @@
     "description": "Generic-VM-vSphere is a Palette Add-on pack used to simplify deploying the virtual machine resource from a cluster profile or a system profile. Generic-VM-vSphere extracts all Terraform constructs inside the pack and exposes nothing but the values. Users will then have the ability to modify the add-on pack for the different applications."
   },
   {
+    "name": "gloo",
+    "descrption": "Gloo Gateway is a feature-rich, fast, and flexible Kubernetes-native ingress controller and next-generation API gateway that is built on top of Envoy proxy and the Kubernetes Gateway API. It excels in function-level routing, supports legacy apps, microservices and serverless, offers robust discovery capabilities, integrates seamlessly with open-source projects, and is designed to support hybrid applications with various technologies, architectures, protocols, and clouds."
+  },
+  {
+    "name": "gvisor",
+    "description": "gVisor is an open-source Linux-compatible sandbox that can be deployed anywhere existing container tooling does. It enables cloud-native container security and portability. gVisor leverages years of experience isolating production workloads at Google."
+  },
+  {
     "name": "kubernetes-microk8s",
     "description": "MicroK8s is a lightweight CNCF-certified Kubernetes distribution developed by Canonical. It deploys all Kubernetes services in a single, fully contained package and offers out-of-the-box add-ons."
   },

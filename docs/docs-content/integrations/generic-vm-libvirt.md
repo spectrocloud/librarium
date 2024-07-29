@@ -20,10 +20,8 @@ tags: ["packs", "generic-vm-libvirt", "system app"]
 To configure the Generic-VM-Libvirt add-on pack for the application cluster, begin by editing the manifest namespace
 value.
 
-**Example**
-
 ```yaml
-namespace: jet-system
+namespace: cluster-{{ .spectro.system.cluster.uid }}
 ```
 
 If multiple instances of this pack have to be deployed on the cluster for different virtual machine applications, then
