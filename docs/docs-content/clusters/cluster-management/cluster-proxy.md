@@ -3,7 +3,7 @@ sidebar_label: "Configure Applications to Use Proxy Server"
 title: "Configure Applications to Use Proxy Server"
 description: "Guide to configure configurations in a cluster to use a proxy server."
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 201
 tags: ["clusters", "cluster management", "proxy"]
 ---
 
