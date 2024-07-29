@@ -12,7 +12,7 @@ Palette offers profile-based management for Kubernetes, enabling consistency, re
 across multiple clusters. A cluster profile allows you to customize the cluster infrastructure stack, allowing you to
 choose the desired Operating System (OS), Kubernetes, Container Network Interfaces (CNI), Container Storage Interfaces
 (CSI). You can further customize the stack with add-on application layers. For more information about cluster profile
-types, refer to [Cluster Profiles](../cluster-profiles.md).
+types, refer to [Cluster Profiles](../introduction.md#cluster-profiles).
 
 In this tutorial, you create a full profile directly from the Palette dashboard. Then, you add a layer to your cluster
 profile by using a [community pack](../../integrations/community_packs.md) to deploy a web application.
