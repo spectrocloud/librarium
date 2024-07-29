@@ -387,6 +387,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
         if (!existsSync(dirname)) {
           mkdirSync(dirname, { recursive: true });
         }
+        logger.info("Fetching the list of packs from the Palette API");
         let packDataArr = await fetchPackListItems(`?limit=${filterLimit}`, [], 0);
 
         // Filter out the packs from the exclude list.
@@ -398,7 +399,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
           }
           return true;
         });
-        logger.info("All production packs are identified and a list of packs to be fetched is prepared");
+        logger.info("Downloading each pack's details and README");
         packDataArr = packDataArr.filter((pack) => {
           return (
             layerTypes.includes(pack.spec.layer) ||

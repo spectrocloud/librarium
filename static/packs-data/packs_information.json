@@ -372,6 +372,38 @@
     "description": "MicroK8s is a lightweight CNCF-certified Kubernetes distribution developed by Canonical. It deploys all Kubernetes services in a single, fully contained package and offers out-of-the-box add-ons."
   },
   {
+    "name": "kubernetes-aks",
+    "description": "Kubernetes is a portable, extensible, open source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available."
+  },
+  {
+    "name": "kubernetes-eks",
+    "description": "Kubernetes is a portable, extensible, open source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available."
+  },
+  {
+    "name": "kubernetes-gke",
+    "description": "Kubernetes is a portable, extensible, open source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available."
+  },
+  {
+    "name": "kubernetes-konvoy",
+    "description": "Konvoy is built using upstream Kubernetes combined with all other required technologies and add-ons such as networking, storage, monitoring, logging, lifecycle management, using best of breed open source CNCF technologies. Konvoy comes with operational, security leading practices, testing and support for all of those technologies, and it works on virtual, bare metal, and public cloud infrastructure."
+  },
+  {
+    "name": "kubernetes-tke",
+    "description": "Kubernetes is a portable, extensible, open source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available."
+  },
+  {
+    "name": "kubernetes-custom",
+    "description": "Kubernetes is a portable, extensible, open source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available."
+  },
+  {
+    "name": "kubernetes-rke2",
+    "description": "RKE2, also known as RKE Government, is Rancher's next-generation Kubernetes distribution. RKE2 is a fully conformant Kubernetes distribution that focuses security and compliance within the U.S. Federal Government sector."
+  },
+  {
+    "name": "edge-rke2",
+    "description": "RKE2, also known as RKE Government, is Rancher's next-generation Kubernetes distribution. RKE2 is a fully conformant Kubernetes distribution that focuses security and compliance within the U.S. Federal Government sector."
+  },
+  {
     "name": "edge-microk8s",
     "description": "MicroK8s is a lightweight CNCF-certified Kubernetes distribution developed by Canonical. It deploys all Kubernetes services in a single, fully contained package and offers out-of-the-box add-ons."
   },
