@@ -145,7 +145,7 @@
   },
   {
     "name": "lb-citrix-adc",
-    "description": "Citrix ADC is an application delivery controller (ADC) solution that offers IP address management and load-balancing capabilities for external services deployed on Kubernetes clusters, particularly suited for on-premise deployments."
+    "description": "Citrix ADC is an application delivery controller (ADC) solution that offers IP address management and load balancing capabilities for external services deployed on Kubernetes clusters, particularly suited for on-premise deployments."
   },
   {
     "name": "linkerd",
@@ -238,5 +238,45 @@
   {
     "name": "spectro-grafana-dashboards",
     "description": "The Spectro Cloud Grafana Dashboards is an add-on pack that exposes internal cluster resource metrics. You can access the cluster information exposed by the pack in Grafana by visiting the Spectro Cloud/Spectro Clusters dashboard."
+  },
+  {
+    "name": "heartbeat",
+    "description": "Heartbeat is a lightweight daemon that periodically checks the status of your services and determines whether they are reachable."
+  },
+  {
+    "name": "image-swap",
+    "description": "The ImageSwap pack is a webhook that allows you to define mappings to automatically swap image definitions within Kubernetes Pods with a different registry."
+  },
+  {
+    "name": "istio",
+    "description": "Istio is an open-source service mesh that layers transparently onto existing distributed applications. It helps you to secure, connect, and monitor services."
+  },
+  {
+    "name": "k8gb",
+    "description": "k8gb is an open-source global load balancing solution for Kubernetes. It focuses on load balancing traffic across geographically dispersed Kubernetes clusters using different load balancing strategies."
+  },
+  {
+    "name": "k8sgpt-operator",
+    "description": "The K8sGPT Operator enables K8sGPT within a Kubernetes cluster. K8sGPT is a tool that continuously scans your Kubernetes clusters for anomalies. It analyzes cluster data and uses AI engines to provide insights and recommendations."
+  },
+  {
+    "name": "konvoy-defaultstorageclass",
+    "description": "The Konvoy Default Storage Class pack enables users to specify a default storage class for applications that require persistent storage."
+  },
+  {
+    "name": "konvoy-nvidia",
+    "description": "The NVIDIA GPU Plugin pack enables the NVIDIA device plugin in Konvoy clusters."
+  },
+  {
+    "name": "konvoy-opsportal",
+    "description": "Konvoy Operations Portal is a web application that provides an overview of cluster status and shortcuts to several dashboards for add-on services, such as Grafana."
+  },
+  {
+    "name": "kong",
+    "description": "Kong Ingress Controller allows you to run Kong Gateway as a Kubernetes Ingress to handle inbound requests for a Kubernetes cluster."
+  },
+  {
+    "name": "k8s-dashboard",
+    "description": "Kubernetes Dashboard is a web-based Kubernetes UI that allows users to monitor and manage clusters and deployed workloads."
   }
 ]
