@@ -9,8 +9,6 @@ vale/
 
 docs/api-content/**/*.json
 
-_partials
-
 # Troublesome files
 tsconfig.json
 src/components/IconMapper/dynamicFontAwesomeImports.js
