@@ -77,8 +77,7 @@ may need to configure the proxy server to support gRPC.
 
 1.  If you are using Palette SaaS, you must deploy a Private Cloud Gateway (PCG) and configure it to use a proxy server
     before you can configure cluster applications to use the proxy server. For more information about PCGs, refer to
-    [Private Cloud Gateway](../pcg/pcg.md). You must configure proxy settings for the PCG, and then clusters created by
-    cloud accounts configured to use the PCG will inherit its proxy settings.
+    [Private Cloud Gateway](../pcg/pcg.md).
 
     If you are provisioning the PCG using the Palette CLI, you can configure the proxy settings during the PCG
     installation through the Palette CLI's interactive prompts. If you are using Helm to provision a PCG or have an
@@ -118,8 +117,8 @@ may need to configure the proxy server to support gRPC.
             spectrocloud.com/connection: proxy
     ```
 
-4.  Start creating your cluster using the cloud account associated with the PCG. The cluster will inherit proxy settings
-    from the PCG automatically. Refer to the following resources on cluster creation.
+4.  Start creating your cluster using the cloud account associated with the PCG. Refer to the following resources on
+    cluster creation.
 
     - [Create and Manage AWS Cluster](../public-cloud/aws/create-cluster.md)
     - [Create and Manage Azure IaaS Cluster](../public-cloud/azure/create-azure-cluster.md)
@@ -160,8 +159,7 @@ may need to configure the proxy server to support gRPC.
             spectrocloud.com/connection: proxy
     ```
 
-3.  Start creating your cluster using the cluster profile. The cluster will inherit proxy settings from the PCG
-    automatically. Refer to the following resources on cluster creation.
+3.  Start creating your cluster using the cluster profile. Refer to the following resources on cluster creation.
 
     - [Create and Manage AWS Cluster](../public-cloud/aws/create-cluster.md)
     - [Create and Manage Azure IaaS Cluster](../public-cloud/azure/create-azure-cluster.md)
