@@ -91,6 +91,9 @@ for more information.
 
 - Assigned IP addresses for application workload services, such as Load Balancer services.
 
+- Ensure Palette has access to the required domains and ports. Refer to the
+  [Required Domains](../install-palette-vertex.md#proxy-requirements) section for more information.
+
 - Shared Storage between VMware vSphere hosts.
 
 :::info
