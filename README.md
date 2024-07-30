@@ -721,7 +721,94 @@ The path of the link should be the path of the destination file from the root di
 
 ## Packs Component
 
-The packs component is a custom component that displays all packs available in Palette SaaS by querying the Palette API.
+The packs component is a custom component that displays all packs available in Palette SaaS by querying the Palette API
+at `api.spectrocloud.com`. The component is powered by a [custom plugin](./plugins/packs-integrations.js) that fetches
+the data before a build or a local development server start.
+
+> [!INFO] Once all the packs are fetched, the data is stored `.docusarus/packs-integration/api_pack_response.json`. The
+> logos are stored in `static/img/packs/`. If remove the `.docusarus` folder, the packs will be fetched again.
+> Otherwise, the download operation will be skipped in future local development server starts. If you want to remove the
+> packs data and trigger a new fetch, you can issue the following command `make clean-packs`.
+
+Pack descriptions are stored in JSON file maintained by the documentation team. The JSON file is located at
+[`/static/packs-data/packs_information.json`](./static/packs-data/packs_information.json). To add an entry for a new
+pack, add the following JSON object to the file.
+
+```json
+{
+  "name": "insert the name of the pack. DO NOT USE THE DISPLAY NAME",
+  "description": "insert description here"
+}
+```
+
+Some things to keep in mind related to descriptions. If the local development server is active, the changes to the JSON
+file will not be reflected in the packs component. You will need to stop the local development server and restart it to
+observe the changes. The same applies to the build process. The other item to keep in mind is to reference a pack by its
+name and not the display name. The display name is the name that is displayed in the packs component. The name is the
+name of the pack as it is stored in the Palette API.
+
+#### README Content
+
+The packs component will display a Pack's README file if it exists. The README content comes from the Palette API.
+Depending on what content is available, the packs component will display the README content, the additional details
+content, or a message indicating that no content is available. Refer to the table below for the different scenarios.
+
+| README Available | Additional Details File Available | Content Displayed                                        |
+| ---------------- | --------------------------------- | -------------------------------------------------------- |
+| Yes              | Yes                               | Both README and Additional Details content is displayed. |
+| Yes              | No                                | Only the README content is displayed.                    |
+| No               | Yes                               | Only the Additional Details content is displayed.        |
+| No               | No                                | A message indicating that no content is available.       |
+
+#### Additonal Details Content
+
+To display the Additional Details content, create a markdown file with the same name as the pack in the the
+[`docs/docs-content/integrations/`](./docs/docs-content/integrations/) content folder. For example, if the pack name is
+`ubuntu-aws`, you would create a markdown file called `ubuntu-aws.md`. The additional details content requires you to
+follow the [Packs layout guide](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1802797059/Packs).
+
+If you want to add content specific to a version, you must inclue the following heading and tabs in the markdown file.
+
+<!-- prettier-ignore -->
+```md
+## Versions Supported
+
+<Tabs queryString="parent"> -> Tabs for different versions
+<TabItem label="1.1.x" value="1.1.2">
+ Insert content here as needed. Create more `TabItem` components as needed.
+</TabItem>
+</Tabs>
+```md
+
+
+> [!WARNING]
+> Make sure the `Tabs` component has the `queryString` prop set to `parent`. This is required for the component to work. The `Tabs` component must also have a `## Versions Supported` heading. If you do not follow this format, the content will not be displayed correctly, and as a result, actual tabs will be displayed, and the pack will lose the ability to automatically display the content for the select version the user has specified in the version drop-down.
+
+The packs component will always display the top level tab content, so if you are adding content for a new version, make sure the new `TabItem` component is the first one in the list. If a new pack version does not have a respective tag, the latest version content will be displayed automatically. 
+
+#### Links
+
+When authoring additional details content, you have to use the `<VersionedLink />` component to link to other documentation pages. The component is required to ensure that the links are versioned correctly. Refer to the [Internal Links](#internal-links) section for more information.
+
+If you want to link to a heading inside the pack component, you have to use the `<VersionedLink />` and include the path to the component followed by the heading id. The following is an example of how to link to a heading inside the pack component. Take note of the `#` symbol followed by the heading id. 
+
+```md
+<VersionedLink text="Change Cluster DNS Service Domain" url="/integrations/packs/?pack=kubernetes-eks#change-cluster-dns-service-domain" />
+```
+
+Omit the `version=xxxx&parent=xxxx` value that is part of the query string. If you include the `version` and `parent`
+values, the link will not work as expected.
+
+### Link to a Pack
+
+To link to a pack, you also have to use the `<VersionedLink />` component. The following is an example of how to link to
+a pack.
+
+```md
+<VersionedLink text="Change Cluster DNS Service Domain" url="/integrations/packs/?pack=kubernetes-eks" />
+```
+
+If you do not use the `<VersionedLink />` component, the link will not be versioned correctly and the build will fail.
 
 ## Netlify Previews
 
@@ -748,7 +835,9 @@ documentation.
 Next, download the required Vale plugins.
 
 ```
+
 make sync-vale
+
 ```
 
 To execute the writing check, issue the command below. The command below will identify files that are modified by
@@ -756,7 +845,9 @@ comparing the current git branch against the `master` branch. Ensure your local 
 accurate results.
 
 ```
+
 make check-writing
+
 ```
 
 You may also use the Vale CLI to directly scan a file and receive feedback.
