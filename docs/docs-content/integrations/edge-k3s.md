@@ -53,10 +53,13 @@ When you add the K3s pack to a cluster profile, Palette displays the OIDC IDP op
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
 
+<!-- prettier-ignore-start -->
+
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
-  specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
+specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
   <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=edge-k8s#configure-custom-oidc" />. This
   setting displays in the YAML file as `none`.
+<!-- prettier-ignore-end -->
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper
   permissions to view and access the project's resources is able to use kubectl CLI to access cluster. This setting
@@ -119,9 +122,11 @@ more guidance.
 
 ## Add a Certificate for Reverse Proxy
 
+<!-- prettier-ignore-start -->
 You can use a reverse proxy with a K3s Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of
 a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more
-information, refer to the [Spectro Proxy](frp.md) pack guide.
+information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy"/> pack guide.
+<!-- prettier-ignore-end -->
 
 </TabItem>
 
@@ -136,10 +141,13 @@ When you add the K3s pack to a cluster profile, Palette displays the OIDC IDP op
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
 
+<!-- prettier-ignore-start -->
+
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
-  specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
+specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
   <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=edge-k8s#configure-custom-oidc" />. This
   setting displays in the YAML file as `none`.
+<!-- prettier-ignore-end -->
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper
   permissions to view and access the project's resources is able to use kubectl CLI to access cluster. This setting
@@ -202,9 +210,11 @@ more guidance.
 
 ## Add a Certificate for Reverse Proxy
 
+<!-- prettier-ignore-start -->
 You can use a reverse proxy with a K3s Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of
 a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more
-information, refer to the [Spectro Proxy](frp.md) pack guide.
+information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy"/> pack guide.
+<!-- prettier-ignore-end -->
 
 </TabItem>
 <TabItem label="1.27.X" value="k3s_1.27">
@@ -218,10 +228,13 @@ When you add the K3s pack to a cluster profile, Palette displays the OIDC IDP op
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
 
+<!-- prettier-ignore-start -->
+
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
-  specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
+specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
   <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=edge-k8s#configure-custom-oidc" />. This
   setting displays in the YAML file as `none`.
+<!-- prettier-ignore-end -->
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper
   permissions to view and access the project's resources is able to use kubectl CLI to access cluster. This setting
@@ -285,9 +298,11 @@ more guidance.
 
 ## Add a Certificate for Reverse Proxy
 
+<!-- prettier-ignore-start -->
 You can use a reverse proxy with a K3s Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of
 a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. For more
-information, refer to the [Spectro Proxy](frp.md) pack guide.
+information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy"/> pack guide.
+<!-- prettier-ignore-end -->
 
 </TabItem>
 

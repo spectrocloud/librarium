@@ -277,9 +277,7 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
 <!-- prettier-ignore-start -->
 
 14. The custom RHEL image with PXK is now built and available in the VMware vSphere environment. You can use this image
-    to deploy a Kubernetes cluster. To use the image, create a cluster profile with and select the
-    <VersionedLink text="BYOOS Pack" url="/integrations/packs/?pack=generic-byoi" />. Refer to the custom image in the
-    cluster profile when populating the image details. You need to refer to the VM template path of the image.
+    to deploy a Kubernetes cluster. To use the image, create a cluster profile with and select the <VersionedLink text="BYOOS Pack" url="/integrations/packs/?pack=generic-byoi" />. Refer to the custom image in the cluster profile when populating the image details. You need to refer to the VM template path of the image.
 
         ```yaml hideClipboard
         pack:
@@ -301,7 +299,7 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
         Use the cluster profile to deploy a Kubernetes cluster in your VMware vSphere environment with the custom RHEL
         image.
 
-    <!-- prettier-ignore-end -->
+<!-- prettier-ignore-end -->
 
 </TabItem>
 <TabItem value="non-fips" label="Non-FIPS">

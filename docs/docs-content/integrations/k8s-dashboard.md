@@ -28,11 +28,12 @@ To learn more about it and start using it, check out the [Spectro Kubernetes Das
 
 ## Access Kubernetes Dashboard
 
-The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the
-Kubernetes dashboard. You must configure the Spectro Proxy pack.
+<!-- prettier-ignore-start -->
+The Kubernetes Dashboard pack requires the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy"/> pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 When connected to the cluster remotely, issue the following command to establish a connection to deploy the Kubernetes
 Dashboard on port 8080.
+<!-- prettier-ignore-end -->
 
 ```bash
 kubectl port-forward -namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
@@ -106,11 +107,12 @@ To learn more about it and start using it, check out the [Spectro Kubernetes Das
 
 ## Access Kubernetes Dashboard
 
-The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the
-Kubernetes dashboard. You must configure the Spectro Proxy pack.
+<!-- prettier-ignore-start -->
+The Kubernetes Dashboard pack requires the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy"/> pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
-When connected to the cluster remotely, run the following command to establish a connection to deploy the Kubernetes
+When connected to the cluster remotely, issue the following command to establish a connection to deploy the Kubernetes
 Dashboard on port 8080.
+<!-- prettier-ignore-end -->
 
 ```bash
 kubectl port-forward -namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
@@ -183,11 +185,12 @@ To learn more about it and start using it, check out the [Spectro Kubernetes Das
 
 ## Access Kubernetes Dashboard
 
-The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the
-Kubernetes dashboard. You must configure the Spectro Proxy pack.
+<!-- prettier-ignore-start -->
+The Kubernetes Dashboard pack requires the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy"/> pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
-When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes
+When connected to the cluster remotely, issue the following command to establish a connection to deploy the Kubernetes
 Dashboard on port 8080.
+<!-- prettier-ignore-end -->
 
 ```bash
 kubectl port-forward -namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
@@ -334,11 +337,12 @@ To learn more about it and start using it, check out the [Spectro Kubernetes Das
 
 ## Access Kubernetes Dashboard
 
-The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the
-Kubernetes dashboard. You must configure the Spectro Proxy pack.
+<!-- prettier-ignore-start -->
+The Kubernetes Dashboard pack requires the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy"/> pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes
 Dashboard on port 80.
+<!-- prettier-ignore-end -->
 
 ```bash
 kubectl port-forward -namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
@@ -411,11 +415,12 @@ To learn more about it and start using it, check out the [Spectro Kubernetes Das
 
 ## Access Kubernetes Dashboard
 
-The Kubernetes Dashboard pack requires the [Spectro Proxy](frp.md) pack, which serves as a reverse proxy to expose the
-Kubernetes dashboard. You must configure the Spectro Proxy pack.
+<!-- prettier-ignore-start -->
+The Kubernetes Dashboard pack requires the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy"/> pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes
 Dashboard on port 80.
+<!-- prettier-ignore-end -->
 
 ```bash
 kubectl port-forward -namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
