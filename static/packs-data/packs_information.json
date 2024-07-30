@@ -278,5 +278,41 @@
   {
     "name": "k8s-dashboard",
     "description": "Kubernetes Dashboard is a web-based Kubernetes UI that allows users to monitor and manage clusters and deployed workloads."
+  },
+  {
+    "name": "kotsadm",
+    "description": "Kotsadm is an admin console designed for managing Kubernetes Off-The-Shelf (KOTS) software. Once deployed, Kotsadm enables administrators to configure, install, and update applications using step-through configuration and automated preflight checks."
+  },
+  {
+    "name": "kube-bench",
+    "description": "kube-bench is a tool that checks whether Kubernetes is deployed securely by running the checks documented in the CIS Kubernetes Benchmark."
+  },
+  {
+    "name": "kubeflow",
+    "description": "Kubeflow is the machine learning toolkit for Kubernetes. It helps make the deployment of machine learning (ML) workflows on Kubernetes simple, portable, and scalable."
+  },
+  {
+    "name": "kubeflow-full",
+    "description": "The Kubeflow Full pack offers the complete suite of Kubeflow components bundled together."
+  },
+  {
+    "name": "kubeflow-pipelines",
+    "description": "Kubeflow Pipelines is a platform for building and deploying portable, scalable machine learning (ML) workflows based on Docker containers."
+  },
+  {
+    "name": "kubeflow-serving",
+    "description": "The Kubeflow Serving pack provides a Kubernetes Custom Resource Definition (CRD) for serving predictive and generative Machine Learning (ML) models."
+  },
+  {
+    "name": "kubeflow-training",
+    "description": "The Kubeflow Training Operator is a Kubernetes-native project for fine-tuning and scalable distributed training of Machine Learning (ML) models created with various ML frameworks. It allows you to use Kubernetes workloads to train your large models via Kubernetes Custom Resources APIs or using the Training Operator Python Software Development Toolkit (SDK)."
+  },
+  {
+    "name": "kubehunter",
+    "description": "Kube-hunter searches for security weaknesses in Kubernetes clusters. It is designed to increase awareness and visibility of security issues in Kubernetes environments."
+  },
+  {
+    "name": "kubebench",
+    "description": "kube-bench is a tool that checks whether Kubernetes is deployed securely by running the checks documented in the CIS Kubernetes Benchmark."
   }
 ]

@@ -29,6 +29,6 @@ To help you get started with deploying a monitoring stack to your Palette enviro
 
 - [Prometheus Agent Pack](../../../integrations/prometheus-agent.md)
 
-- [Prometheus Cluster Metrics](../../../integrations/prometheus-cluster-metrics.md)
+- <VersionedLink text="Spectro Cluster Metrics" url="/integrations/packs/?pack=spectro-cluster-metrics" />
 
 - <VersionedLink text="Spectro Cloud Grafana Dashboards" url="/integrations/packs/?pack=spectro-grafana-dashboards" />
