@@ -58,7 +58,7 @@ The Kubernetes configuration file is where you can do the following:
 - Manually configure a third-party OIDC IDP. For more information, check out <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=edge-k8s#configure-custom-oidc" />.
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
-  information, refer to the [Spectro Proxy](frp.md) guide.
+  information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
 
 The PXK-E Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the
 `identityProvider` parameter.
@@ -423,7 +423,7 @@ The Kubernetes configuration file is where you can do the following:
 - Manually configure a third-party OIDC IDP. For more information, check out <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=edge-k8s#configure-custom-oidc" />.
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
-  information, refer to the [Spectro Proxy](frp.md) guide.
+  information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
 
 The PXK-E Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the
 `identityProvider` parameter.
@@ -788,7 +788,7 @@ The Kubernetes configuration file is where you can do the following:
 - Manually configure a third-party OIDC IDP. For more information, check out <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=edge-k8s#configure-custom-oidc" />.
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
-  information, refer to the [Spectro Proxy](frp.md) guide.
+  information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
 
 The PXK-E Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the
 `identityProvider` parameter.

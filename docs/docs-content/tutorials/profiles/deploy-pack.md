@@ -816,9 +816,9 @@ diagram. You can select any layer to make further edits or change the version if
 
 Next, proceed to include the add-on layers. Click on the **Add New Pack** button.
 
+<!-- prettier-ignore -->
 Add the Spectro Proxy pack to enable a reverse proxy to connect to the cluster's API. Adding this pack is _optional_,
-but it will help connect your local machine to the cluster's API for debugging. Refer to the
-[Spectro Proxy](../../integrations/frp.md) guide for more details.
+but it will help connect your local machine to the cluster's API for debugging. Refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide for more details.
 
 | **Pack Type**  | **Registry** | **Pack Name** | **Pack Version** |
 | -------------- | ------------ | ------------- | ---------------- |

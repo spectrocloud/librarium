@@ -13,9 +13,8 @@ export const packTypes = [
   "servicemesh",
   "csi",
   "system app",
+  "integration",
 ] as const;
-
-// type packType = (typeof packTypes)[number];
 
 export const packTypeNames: Record<string, string> = {
   "app services": "App Services",
@@ -32,6 +31,7 @@ export const packTypeNames: Record<string, string> = {
   servicemesh: "Service Mesh",
   csi: "Storage",
   "system app": "System App",
+  integration: "Integration",
 } as const;
 
 export const cloudProviderTypes = [
@@ -62,6 +62,8 @@ export const addOnTypes = [
   "security",
   "servicemesh",
   "system app",
+  "integreation",
+  "integration",
 ] as const;
 
 export const cloudDisplayNames = {

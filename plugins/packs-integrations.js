@@ -11,7 +11,7 @@ const excludeList = require("../static/packs-data/exclude_packs.json");
 const { existsSync, promises, open, mkdirSync, writeFile, close, createWriteStream } = require("node:fs");
 import logger from "@docusaurus/logger";
 
-const filterLimit = 50; //Limit for fetching the packs from the Palette API
+const filterLimit = 100; //Limit for fetching the packs from the Palette API
 const dirname = ".docusaurus/packs-integrations/";
 const logoDirname = "static/img/packs/";
 const filename = "api_pack_response.json";
@@ -115,6 +115,7 @@ function combineAPICustomPackData(packsMData, packsPaletteDetailsData, customPac
         community: packMDValue.spec.registries[0].annotations?.source === "community",
         verified: packMDValue.spec.registries[0].annotations?.source === "spectrocloud",
         versions: allSupportedVersions,
+        // disabled: packMDValue.spec.registries[0].annotations?.disabled === "true",
         disabled: packMDValue.spec.registries[0].annotations?.disabled === "true",
         deprecated: packMDValue.spec.registries[0].annotations?.system_state === "deprecated",
         latestVersion: latestPackVersion,
@@ -386,7 +387,8 @@ async function pluginPacksAndIntegrationsData(context, options) {
         if (!existsSync(dirname)) {
           mkdirSync(dirname, { recursive: true });
         }
-        let packDataArr = await fetchPackListItems("?limit=50", [], 0);
+        logger.info("Fetching the list of packs from the Palette API");
+        let packDataArr = await fetchPackListItems(`?limit=${filterLimit}`, [], 0);
 
         // Filter out the packs from the exclude list.
         packDataArr = packDataArr.filter((pack) => {
@@ -397,7 +399,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
           }
           return true;
         });
-        logger.info("All production packs are identified and a list of packs to be fetched is prepared");
+        logger.info("Downloading each pack's details and README");
         packDataArr = packDataArr.filter((pack) => {
           return (
             layerTypes.includes(pack.spec.layer) ||

@@ -59,6 +59,7 @@ export const icons: IconsMap = {
   teams: <TeamsIcon />,
   workspaces: <WorkspacesIcon />,
   terraform: <TerraformIcon />,
+  integration: <SystemAppIcon />,
   k8s: <K8sIcon />,
   cni: <CniIcon />,
   os: <OsIcon />,

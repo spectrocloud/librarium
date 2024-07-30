@@ -84,10 +84,6 @@ const redirects = [
     to: `/clusters/public-cloud/azure/aks/`,
   },
   {
-    from: `/integrations/minio-operator/`,
-    to: `/integrations/`,
-  },
-  {
     from: `/knowledgebase/how-to/reverse-proxy-dashboard/`,
     to: `/clusters/cluster-management/kubernetes-dashboard/`,
   },
@@ -164,16 +160,8 @@ const redirects = [
     to: `/clusters/edge/edgeforge-workflow/palette-canvos/`,
   },
   {
-    from: `/integrations/ubuntu-k3s/`,
-    to: `/integrations/ubuntu/`,
-  },
-  {
     from: `/clusters/brownfield-clusters/`,
     to: `/clusters/imported-clusters/`,
-  },
-  {
-    from: `/integrations/oidc-eks/`,
-    to: `/integrations/kubernetes/`,
   },
   {
     from: `/clusters/palette-virtual-clusters/add-virtual-cluster-to-host-cluster/`,
@@ -298,10 +286,6 @@ const redirects = [
   {
     from: `/devx/app-profile/services/service-listings/cockroach-db/`,
     to: `/devx/services/service-listings/cockroach-db/`,
-  },
-  {
-    from: `/integrations/EKS-D/`,
-    to: `/integrations/`,
   },
   {
     from: `/enterprise-version/on-prem-system-requirements/`,
