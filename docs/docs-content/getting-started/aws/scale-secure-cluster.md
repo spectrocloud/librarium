@@ -103,8 +103,6 @@ Profile** pane opens.
 
 Paste the following in the text editor. Click on **Validate**. The **Select repositories** dialog appears.
 
-**TODO: Replace when the pack is published!**
-
 <PartialsComponent category="getting-started" name="import-hello-uni-aws" />
 
 Click on **Confirm**. Then, click on **Confirm** on the **Import Cluster Profile** pane. Palette creates a new cluster
@@ -226,7 +224,8 @@ replace its nodes. This is known as a repave. Check out the
 the repave behavior and configuration.
 
 Click on the **Nodes** tab. You can follow along with the node upgrades on this screen. Palette replaces the nodes
-configured with the old Kubernetes version with newly upgraded ones.
+configured with the old Kubernetes version with newly upgraded ones. This may lead to some application level outages, as
+Kubernetes swaps the workloads to the upgraded nodes.
 
 ![Node repaves in progress](/getting-started/aws/getting-started_scale-secure-cluster_node-repaves.webp)
 
@@ -248,7 +247,7 @@ vulnerabilities. You can perform four types of scans on your cluster.
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Kubernetes Configuration Security | This scan examines the compliance of deployed security features against the CIS Kubernetes Benchmarks, which are consensus-driven security guidelines for Kubernetes. By default, the test set will execute based on the cluster Kubernetes version.                     |
 | Kubernetes Penetration Testing    | This scan evaluates Kubernetes-related open-ports for any configuration issues that can leave the tenant clusters exposed to attackers. It hunts for security issues in your clusters and increases visibility of the security controls in your Kubernetes environments. |
-| Kubernetes Conformance Testing    | This scan validates your Kubernetes configuration to ensure that it conforms to CNCF specifications. Palette leverages an open-source tool called [Sonobuoy](https://sonobuoy.io) to perform this scan.                                                                                         |
+| Kubernetes Conformance Testing    | This scan validates your Kubernetes configuration to ensure that it conforms to CNCF specifications. Palette leverages an open-source tool called [Sonobuoy](https://sonobuoy.io) to perform this scan.                                                                  |
 | Software Bill of Materials (SBOM) | This scan details the various third-party components and dependencies used by your workloads and helps to manage security and compliance risks associated with those components.                                                                                         |
 
 Navigate to the left **Main Menu** and select **Clusters**. Select your cluster to view its **Overview** tab.
@@ -406,7 +405,17 @@ cluster profile deployed to your cluster, named `aws-profile`. Ensure that the *
 Click on the **hellouniverse 1.1.3** layer. The manifest editor appears. Set the
 `manifests.hello-universe.ui.useTolerations` field on line 20 to `true`. Then, set the
 `manifests.hello-universe.ui.effect` field on line 22 to `NoExecute`. This toleration describes that the UI pods of
-Hello Universe will tolerate the taint with the key `app`, value `ui` and effect `NoExecute`.
+Hello Universe will tolerate the taint with the key `app`, value `ui` and effect `NoExecute`. The tolerations of the UI
+pods should be as below.
+
+```yaml
+ui:
+  useTolerations: true
+  tolerations:
+  effect: NoExecute
+  key: app
+  value: ui
+```
 
 Click on **Confirm Updates**. The manifest editor closes. Then, click on **Save Changes** to persist your changes.
 
@@ -425,6 +434,8 @@ dialog appears.
 
 Click on **Add New Taint** in the **Taints** section. Fill in `app` for the **Key**, `ui` for the **Value** and select
 `NoExecute` for the **Effect**. These values match the toleration you specified in your cluster profile earlier.
+
+![Add taint to worker pool](/getting-started/aws/getting-started_scale-secure-cluster_add-taint.webp)
 
 Click on **Confirm** to save your changes. The nodes in the `worker-pool` can now only execute the UI pods that have a
 toleration matching the configured taint.
