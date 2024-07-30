@@ -750,6 +750,22 @@ stop and restart the local development server to observe the changes. The same a
 thing to remember is to reference a pack by the name used in the Palette API, not the display name. You can find the
 pack's name in the description component or by looking at the URL of the pack's page.
 
+#### Exluding Packs
+
+You can specify a list of packs to exclude from the packs component. To exclude a pack, add the pack name to the
+[exclude_packs.json](./static/packs-data/exclude_packs.json) file.
+
+<!-- prettier-ignore -->
+```json
+[
+  "palette-upgrader", 
+  "csi-aws-new", 
+  "inser-pack-name-here"
+]
+```
+
+Excluded packs are not displayed in the packs component.
+
 #### README Content
 
 The pack component will display a Pack's README file if it exists. The README content comes from the Palette API.
