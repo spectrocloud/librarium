@@ -21,14 +21,21 @@ To help you get started with deploying a monitoring stack to your Palette enviro
 
 ## Resources
 
+<!-- prettier-ignore-start -->
+
 - [Deploy Monitoring Stack](deploy-monitor-stack.md)
 
 - [Enable Monitoring on Host Cluster](deploy-agent.md)
 
-- [Prometheus Operator Pack](../../../integrations/prometheus-operator.md)
+- <VersionedLink text="Prometheus Operator Pack" url="/integrations/packs/?pack=prometheus-operator" />
 
-- [Prometheus Agent Pack](../../../integrations/prometheus-agent.md)
 
-- <VersionedLink text="Spectro Cluster Metrics" url="/integrations/packs/?pack=spectro-cluster-metrics" />
+- <VersionedLink text="Prometheus Agent Pack" url="/integrations/packs/?pack=prometheus-agent" />
 
-- <VersionedLink text="Spectro Cloud Grafana Dashboards" url="/integrations/packs/?pack=spectro-grafana-dashboards" />
+
+- <VersionedLink text="Spectro Cluster Metrics Pack" url="/integrations/packs/?pack=spectro-cluster-metrics" />
+
+
+- <VersionedLink text="Spectro Cloud Grafana Dashboards Pack" url="/integrations/packs/?pack=spectro-grafana-dashboards" />
+
+<!-- prettier-ignore-end -->
