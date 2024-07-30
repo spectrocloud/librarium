@@ -655,7 +655,8 @@ To add tutorials to an existing category, create a new **.md** file in the respe
 This is a custom component that allows you to create and use Docusaurus'
 [Import Markdown](https://docusaurus.io/docs/markdown-features/react#importing-markdown) functionality.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
+>
 > Docusaurus does not provide the ability to dynamically configure table of contents. See
 > [this issue](https://github.com/facebook/docusaurus/issues/6201) for more information. This means that you should
 > avoid adding headings to partials that you intend to use with the Partials Component.
@@ -725,10 +726,12 @@ The packs component is a custom component that displays all packs available in P
 at `api.spectrocloud.com`. The component is powered by a [custom plugin](./plugins/packs-integrations.js) that fetches
 the data before a build or a local development server start.
 
-> [!INFO] Once all the packs are fetched, the data is stored `.docusarus/packs-integration/api_pack_response.json`. The
-> logos are stored in `static/img/packs/`. If remove the `.docusarus` folder, the packs will be fetched again.
-> Otherwise, the download operation will be skipped in future local development server starts. If you want to remove the
-> packs data and trigger a new fetch, you can issue the following command `make clean-packs`.
+> [!INFO]
+>
+> Once all the packs are fetched, the data is stored `.docusarus/packs-integration/api_pack_response.json`. The logos
+> are stored in `static/img/packs/`. If remove the `.docusarus` folder, the packs will be fetched again. Otherwise, the
+> download operation will be skipped in future local development server starts. If you want to remove the packs data and
+> trigger a new fetch, you can issue the following command `make clean-packs`.
 
 Pack descriptions are stored in JSON file maintained by the documentation team. The JSON file is located at
 [`/static/packs-data/packs_information.json`](./static/packs-data/packs_information.json). To add an entry for a new
@@ -778,19 +781,28 @@ If you want to add content specific to a version, you must inclue the following 
  Insert content here as needed. Create more `TabItem` components as needed.
 </TabItem>
 </Tabs>
-```md
-
+```
 
 > [!WARNING]
-> Make sure the `Tabs` component has the `queryString` prop set to `parent`. This is required for the component to work. The `Tabs` component must also have a `## Versions Supported` heading. If you do not follow this format, the content will not be displayed correctly, and as a result, actual tabs will be displayed, and the pack will lose the ability to automatically display the content for the select version the user has specified in the version drop-down.
+>
+> Make sure the `Tabs` component has the `queryString` prop set to `parent`. This is required for the component to work.
+> The `Tabs` component must also have a `## Versions Supported` heading. If you do not follow this format, the content
+> will not be displayed correctly, and as a result, actual tabs will be displayed, and the pack will lose the ability to
+> automatically display the content for the select version the user has specified in the version drop-down.
 
-The packs component will always display the top level tab content, so if you are adding content for a new version, make sure the new `TabItem` component is the first one in the list. If a new pack version does not have a respective tag, the latest version content will be displayed automatically. 
+The packs component will always display the top level tab content, so if you are adding content for a new version, make
+sure the new `TabItem` component is the first one in the list. If a new pack version does not have a respective tag, the
+latest version content will be displayed automatically.
 
 #### Links
 
-When authoring additional details content, you have to use the `<VersionedLink />` component to link to other documentation pages. The component is required to ensure that the links are versioned correctly. Refer to the [Internal Links](#internal-links) section for more information.
+When authoring additional details content, you have to use the `<VersionedLink />` component to link to other
+documentation pages. The component is required to ensure that the links are versioned correctly. Refer to the
+[Internal Links](#internal-links) section for more information.
 
-If you want to link to a heading inside the pack component, you have to use the `<VersionedLink />` and include the path to the component followed by the heading id. The following is an example of how to link to a heading inside the pack component. Take note of the `#` symbol followed by the heading id. 
+If you want to link to a heading inside the pack component, you have to use the `<VersionedLink />` and include the path
+to the component followed by the heading id. The following is an example of how to link to a heading inside the pack
+component. Take note of the `#` symbol followed by the heading id.
 
 ```md
 <VersionedLink text="Change Cluster DNS Service Domain" url="/integrations/packs/?pack=kubernetes-eks#change-cluster-dns-service-domain" />
