@@ -731,9 +731,9 @@ the data before a build or a local development server start.
 > The data is stored in the file `.docusarus/packs-integration/api_pack_response.json` once all the packs are fetched.
 > The logos are stored in `static/img/packs/`. If you remove the `.docusarus` folder, the plugin will fetch the packs
 > again. If the pack's data is present, the plugin will skip re-downloading the data. If you want to remove the packs
-> data and trigger a new fetch, you > can issue the following command `make clean-packs`.
+> data and trigger a new fetch, you can issue the following command `make clean-packs`.
 
-Pack descriptions are stored in JSON file maintained by the documentation team. The JSON file is located at
+Pack descriptions are stored in a JSON file maintained by the documentation team. The JSON file is located at
 [`/static/packs-data/packs_information.json`](./static/packs-data/packs_information.json). To add an entry for a new
 pack, add the following JSON object to the file.
 
@@ -745,17 +745,16 @@ pack, add the following JSON object to the file.
 ```
 
 Some things to keep in mind related to descriptions. If the local development server is active and you make changes to
-the `/static/packs-data/packs_information.json`file. The changes will not be reflected in the pack component. You must
-stop and restart the local development server to observe the changes. The same applies to the build process. The other
-item to remember is to reference a pack by its name, not the display name. The name is the pack's name, and it is
-referenced in the Palette API. You can find the name in the description component or by looking at the URL of the pack's
-page.
+the `/static/packs-data/packs_information.json`file, the changes will not be reflected in the pack component. You must
+stop and restart the local development server to observe the changes. The same applies to the build process. Another
+thing to remember is to reference a pack by the name used in the Palette API, not the display name. You can find the
+pack's name in the description component or by looking at the URL of the pack's page.
 
 #### README Content
 
 The pack component will display a Pack's README file if it exists. The README content comes from the Palette API.
 Depending on the available content, the packs component will display the README content, the additional details content,
-or a message indicating no available content. Refer to the table below for the different scenarios.
+or a message indicating that no content is available. Refer to the table below for the different scenarios.
 
 | README Available | Additional Details File Available | Content Displayed                                        |
 | ---------------- | --------------------------------- | -------------------------------------------------------- |
@@ -771,7 +770,7 @@ To display the Additional Details content, create a markdown file with the same 
 `ubuntu-aws`, you would create a markdown file called `ubuntu-aws.md`. The additional details content requires you to
 follow the [Packs layout guide](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1802797059/Packs).
 
-If you want to add content specific to a version, include the heading and tabs component in the markdown file
+If you want to add content specific to a version, include the following heading and tabs component in the markdown file.
 
 <!-- prettier-ignore -->
 ```md
@@ -786,7 +785,7 @@ If you want to add content specific to a version, include the heading and tabs c
 
 > [!WARNING]
 >
-> Ensure `Tabs` component has the `queryString` prop set to `parent`. This is required for the component to work. The
+> Ensure the`Tabs` component has the `queryString` prop set to `parent`. This is required for the component to work. The
 > `Tabs` component must also have a `## Versions Supported` heading. If you do not follow this format, the content will
 > not be displayed correctly, and as a result, actual tabs will be displayed, and the pack will lose the ability to
 > automatically display the content for the select version the user has specified in the version drop-down.
@@ -801,9 +800,9 @@ When authoring additional details content, you must use the `<VersionedLink />` 
 pages. The component is required to ensure that the links are versioned correctly. Refer to the
 [Internal Links](#internal-links) section for more information.
 
-If you want to link to a heading inside the pack component, must also use the `<VersionedLink />` and include the path
-to the component followed by the heading id. The following is an example of how to link to a heading inside the pack
-component. Take note of the `#` symbol followed by the heading id.
+If you want to link to a heading inside the pack component, you must also use the `<VersionedLink />` and include the
+path to the component followed by the heading id. The following is an example of how to link to a heading inside the
+pack component. Take note of the `#` symbol followed by the heading id.
 
 ```md
 <VersionedLink text="Change Cluster DNS Service Domain" url="/integrations/packs/?pack=kubernetes-eks#change-cluster-dns-service-domain" />
