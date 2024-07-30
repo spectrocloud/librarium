@@ -729,9 +729,9 @@ the data before a build or a local development server start.
 > [!NOTE]
 >
 > The data is stored in the file `.docusarus/packs-integration/api_pack_response.json` once all the packs are fetched.
-> The logos are stored in `static/img/packs/`. If you remove the `.docusarus` > folder, the plugin will fetch the packs
+> The logos are stored in `static/img/packs/`. If you remove the `.docusarus` folder, the plugin will fetch the packs
 > again. If the pack's data is present, the plugin will skip re-downloading the data. If you want to remove the packs
-> data and trigger a new fetch, you > can issue the following command `make clean-packs
+> data and trigger a new fetch, you > can issue the following command `make clean-packs`.
 
 Pack descriptions are stored in JSON file maintained by the documentation team. The JSON file is located at
 [`/static/packs-data/packs_information.json`](./static/packs-data/packs_information.json). To add an entry for a new
