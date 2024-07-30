@@ -34,7 +34,7 @@ project, but a tenant can have multiple projects.
 
 Log in to [Palette](https://console.spectrocloud.com).
 
-Click on the **drop-down Menu** at the top of the page and switch to **Tenant Admin** scope. Palette provides the
+Click on the **drop-down Menu** at the top of the page and switch to the **Tenant Admin** scope. Palette provides the
 **Default** project out-of-the-box.
 
 ![Image that shows how to select tenant admin scope](/getting-started/getting-started_scale-secure-cluster_switch-tenant-admin-scope.webp)
@@ -223,7 +223,7 @@ upgrades as the cluster profile editor previously did. Click on **Update**.
 Upgrading the Kubernetes version of your cluster modifies an infrastructure layer. Therefore, Kubernetes needs to
 replace its nodes. This is known as a repave. Check out the
 [Node Pools](../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) page to learn more about
-repave behavior and configuration.
+the repave behavior and configuration.
 
 Click on the **Nodes** tab. You can follow along with the node upgrades on this screen. Palette replaces the nodes
 configured with the old Kubernetes version with newly upgraded ones.
@@ -248,7 +248,7 @@ vulnerabilities. You can perform four types of scans on your cluster.
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Kubernetes Configuration Security | This scan examines the compliance of deployed security features against the CIS Kubernetes Benchmarks, which are consensus-driven security guidelines for Kubernetes. By default, the test set will execute based on the cluster Kubernetes version.                     |
 | Kubernetes Penetration Testing    | This scan evaluates Kubernetes-related open-ports for any configuration issues that can leave the tenant clusters exposed to attackers. It hunts for security issues in your clusters and increases visibility of the security controls in your Kubernetes environments. |
-| Kubernetes Conformance Testing    | This scan validates your Kubernetes configuration to ensure that it conforms to CNCF specifications. Palette leverages an open-source tool called Sonobuoy to perform this scan.                                                                                         |
+| Kubernetes Conformance Testing    | This scan validates your Kubernetes configuration to ensure that it conforms to CNCF specifications. Palette leverages an open-source tool called [Sonobuoy](https://sonobuoy.io) to perform this scan.                                                                                         |
 | Software Bill of Materials (SBOM) | This scan details the various third-party components and dependencies used by your workloads and helps to manage security and compliance risks associated with those components.                                                                                         |
 
 Navigate to the left **Main Menu** and select **Clusters**. Select your cluster to view its **Overview** tab.
@@ -279,7 +279,7 @@ track vulnerabilities, perform regular software maintenance, and ensure complian
 :::info
 
 The scan reports highlight any failed checks, based on Kubernetes community standards and CNCF requirements. We
-recommend that you prioritise the rectification of any identified issues.
+recommend that you prioritize the rectification of any identified issues.
 
 :::
 
@@ -437,7 +437,7 @@ kubectl get pods --namespace hello-universe --output wide
 ```
 
 The output verifies that the UI pods have remained scheduled on their original node named `ip-10-0-1-133.ec2.internal`,
-while the other two pods have been moved to the second worker pool named `ip-10-0-1-32.ec2.internal`.
+while the other two pods have been moved to the node of the second worker pool named `ip-10-0-1-32.ec2.internal`.
 
 ```shell
 NAME                        READY   STATUS    RESTARTS      AGE   NODE
@@ -496,10 +496,10 @@ pop-up box will ask you to confirm the action. Confirm the deletion.
 ## Wrap-up
 
 In this tutorial, you learned how to perform very important operations relating to the scalability and availability of
-your clusters. First, you created a project and team. Then, you imported a cluster profile and deployed a host AWS
+your clusters. First, you created a project and team. Next, you imported a cluster profile and deployed a host AWS
 cluster. Then, you upgraded the Kubernetes version of your cluster and scanned your clusters using Palette's scanning
 capabilities. Finally, you scaled your cluster's nodes and used taints to select which Hello Universe pods execute on
 them.
 
 We encourage you to check out the [Additional Capabilities](../additional-capabilities.md) to explore other Palette
-functionality.
+functionalities.
