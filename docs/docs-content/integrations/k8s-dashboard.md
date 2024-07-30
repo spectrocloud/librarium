@@ -12,31 +12,28 @@ logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d8
 tags: ["packs", "kubernetes-dashboard", "monitoring"]
 ---
 
-The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) add-on pack is a general-purpose, web-based UI that
-allows you to manage clusters and the applications deployed in them.
-
 ## Versions Supported
 
 <Tabs queryString="parent">
 
 <TabItem label="2.7.x" value="2.7.x">
 
-To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find
-the Kubernetes Dashboard pack.
+:::warning
 
-- **Pack Type**: Monitoring
-- **Registry**: Public Repo
-- **Pack Name**: Kubernetes Dashboard
-- **Pack Version**: 2.0.x or higher
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized
+experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack.
+To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
 
-<!-- prettier-ignore -->
-The Kubernetes Dashboard pack requires the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack, which serves as a reverse
-proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+:::
 
-### Access Kubernetes Dashboard
+## Access Kubernetes Dashboard
+
+<!-- prettier-ignore-start -->
+The Kubernetes Dashboard pack requires the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy"/> pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 When connected to the cluster remotely, issue the following command to establish a connection to deploy the Kubernetes
 Dashboard on port 8080.
+<!-- prettier-ignore-end -->
 
 ```bash
 kubectl port-forward -namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
@@ -69,7 +66,7 @@ namespace:  20 bytes
 token:      eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1bTg3RWM4Y1c3NnhkQ3dXbXNDUXQydVpYQklRUWoxa1BaS0ctVkVTSDQifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZC10b2tlbi1oNGxuZiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjAwZTcyOWYxLTY2MzgtNGU2OC04ZGY1LWFmYTJlMmUzODA5NSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDprdWJlcm5ldGVzLWRhc2hib2FyZCJ9.JU4GOJNjGpkHabUyxBt_2rvtXNjpR3w238BF2oMCQUNf_ZkUGSMeAAgIKxbAuk62dtJNDaRh5yAZ9J5KthMcU6k4qVmodUOJdlvigBVNjTDEhPM-sqJus62HMtwjpvm0CX-aP_A_BqHs2yJ3OgXSX0uHmkUO1FMoZSVaRpOvx7f5bPswxd87L3npuZt4p-NJIX32-DGjBnxdANAHcWil3YHIUbDgQIdjDfN6stGU_JByvzfCJpNCWWDinr772W7iZ3uA28F8uGS0ZMd1E5e1moEFBY8BM015Qxg2Y_k7lmv9S8GMkBJyTiJNiqnwLwfsiE1ycE4Tgq_vuQfFToIMNw
 ```
 
-### Configure Ingress
+## Configure Ingress
 
 Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
@@ -85,30 +82,37 @@ controller exposes.
 Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn
 more about which hostname to use.
 
-### Configure LoadBalancer
+## Configure LoadBalancer
 
 Use the `service.loadBalancerIP` and `service.externalPort` parameters to connect to the Kubernetes Dashboard.
+
+## Troubleshooting
+
+### Scenario - Kubernetes Dashboard not Accessible
+
+If the Kubernetes Dashboard is not accessible, check the dashboard pod for errors and ensure the dashboard service is in
+the **Running** state.
 
 </TabItem>
 
 <TabItem label="2.6.x" value="2.6.x">
 
-To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find
-the Kubernetes Dashboard pack.
+:::warning
 
-- **Pack Type**: Monitoring
-- **Registry**: Public Repo
-- **Pack Name**: Kubernetes Dashboard
-- **Pack Version**: 2.0.x or higher
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized
+experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack.
+To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
 
-<!-- prettier-ignore -->
-The Kubernetes Dashboard pack requires the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack, which serves as a reverse
-proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+:::
 
-### Access Kubernetes Dashboard
+## Access Kubernetes Dashboard
 
-When connected to the cluster remotely, run the following command to establish a connection to deploy the Kubernetes
+<!-- prettier-ignore-start -->
+The Kubernetes Dashboard pack requires the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy"/> pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+
+When connected to the cluster remotely, issue the following command to establish a connection to deploy the Kubernetes
 Dashboard on port 8080.
+<!-- prettier-ignore-end -->
 
 ```bash
 kubectl port-forward -namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
@@ -140,7 +144,7 @@ namespace:  20 bytes
 token:      eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1bTg3RWM4Y1c3NnhkQ3dXbXNDUXQydVpYQklRUWoxa1BaS0ctVkVTSDQifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZC10b2tlbi1oNGxuZiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjAwZTcyOWYxLTY2MzgtNGU2OC04ZGY1LWFmYTJlMmUzODA5NSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDprdWJlcm5ldGVzLWRhc2hib2FyZCJ9.JU4GOJNjGpkHabUyxBt_2rvtXNjpR3w238BF2oMCQUNf_ZkUGSMeAAgIKxbAuk62dtJNDaRh5yAZ9J5KthMcU6k4qVmodUOJdlvigBVNjTDEhPM-sqJus62HMtwjpvm0CX-aP_A_BqHs2yJ3OgXSX0uHmkUO1FMoZSVaRpOvx7f5bPswxd87L3npuZt4p-NJIX32-DGjBnxdANAHcWil3YHIUbDgQIdjDfN6stGU_JByvzfCJpNCWWDinr772W7iZ3uA28F8uGS0ZMd1E5e1moEFBY8BM015Qxg2Y_k7lmv9S8GMkBJyTiJNiqnwLwfsiE1ycE4Tgq_vuQfFToIMNw
 ```
 
-### Configure Ingress
+## Configure Ingress
 
 Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
@@ -156,30 +160,37 @@ controller exposes.
 Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn
 more about which hostname to use.
 
-### Configure LoadBalancer
+## Configure LoadBalancer
 
 Use the `service.loadBalancerIP` and `service.externalPort` parameters to connect to the Kubernetes Dashboard.
+
+## Troubleshooting
+
+### Scenario - Kubernetes Dashboard not Accessible
+
+If the Kubernetes Dashboard is not accessible, check the dashboard pod for errors and ensure the dashboard service is in
+the **Running** state.
 
 </TabItem>
 
 <TabItem label="2.5.x" value="2.5.x">
 
-To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find
-the Kubernetes Dashboard pack.
+:::warning
 
-- **Pack Type**: Monitoring
-- **Registry**: Public Repo
-- **Pack Name**: Kubernetes Dashboard
-- **Pack Version**: 2.0.x or higher
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized
+experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack.
+To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
 
-<!-- prettier-ignore -->
-The Kubernetes Dashboard pack requires the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack, which serves as a reverse
-proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+:::
 
-### Access Kubernetes Dashboard
+## Access Kubernetes Dashboard
 
-When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes
+<!-- prettier-ignore-start -->
+The Kubernetes Dashboard pack requires the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy"/> pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+
+When connected to the cluster remotely, issue the following command to establish a connection to deploy the Kubernetes
 Dashboard on port 8080.
+<!-- prettier-ignore-end -->
 
 ```bash
 kubectl port-forward -namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
@@ -211,7 +222,7 @@ namespace:  20 bytes
 token:      eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1bTg3RWM4Y1c3NnhkQ3dXbXNDUXQydVpYQklRUWoxa1BaS0ctVkVTSDQifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZC10b2tlbi1oNGxuZiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjAwZTcyOWYxLTY2MzgtNGU2OC04ZGY1LWFmYTJlMmUzODA5NSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDprdWJlcm5ldGVzLWRhc2hib2FyZCJ9.JU4GOJNjGpkHabUyxBt_2rvtXNjpR3w238BF2oMCQUNf_ZkUGSMeAAgIKxbAuk62dtJNDaRh5yAZ9J5KthMcU6k4qVmodUOJdlvigBVNjTDEhPM-sqJus62HMtwjpvm0CX-aP_A_BqHs2yJ3OgXSX0uHmkUO1FMoZSVaRpOvx7f5bPswxd87L3npuZt4p-NJIX32-DGjBnxdANAHcWil3YHIUbDgQIdjDfN6stGU_JByvzfCJpNCWWDinr772W7iZ3uA28F8uGS0ZMd1E5e1moEFBY8BM015Qxg2Y_k7lmv9S8GMkBJyTiJNiqnwLwfsiE1ycE4Tgq_vuQfFToIMNw
 ```
 
-### Configure Ingress
+## Configure Ingress
 
 Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
@@ -227,27 +238,30 @@ controller exposes.
 Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn
 more about which hostname to use.
 
-### Configure LoadBalancer
+## Configure LoadBalancer
 
 Use the `service.loadBalancerIP` and `service.externalPort` parameters to connect to the Kubernetes Dashboard.
+
+## Troubleshooting
+
+### Scenario - Kubernetes Dashboard not Accessible
+
+If the Kubernetes Dashboard is not accessible, check the dashboard pod for errors and ensure the dashboard service is in
+the **Running** state.
 
 </TabItem>
 
 <TabItem label="2.4.x" value="2.4.x">
 
-To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find
-the Kubernetes Dashboard pack.
+:::warning
 
-- **Pack Type**: Monitoring
-- **Registry**: Public Repo
-- **Pack Name**: Kubernetes Dashboard
-- **Pack Version**: 2.0.x or higher
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized
+experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack.
+To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
 
-<!-- prettier-ignore -->
-The Kubernetes Dashboard pack requires the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack, which serves as a reverse
-proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+:::
 
-### Access Kubernetes Dashboard
+## Access Kubernetes Dashboard
 
 When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes
 Dashboard on port 80.
@@ -282,7 +296,7 @@ namespace:  20 bytes
 token:      eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1bTg3RWM4Y1c3NnhkQ3dXbXNDUXQydVpYQklRUWoxa1BaS0ctVkVTSDQifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZC10b2tlbi1oNGxuZiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjAwZTcyOWYxLTY2MzgtNGU2OC04ZGY1LWFmYTJlMmUzODA5NSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDprdWJlcm5ldGVzLWRhc2hib2FyZCJ9.JU4GOJNjGpkHabUyxBt_2rvtXNjpR3w238BF2oMCQUNf_ZkUGSMeAAgIKxbAuk62dtJNDaRh5yAZ9J5KthMcU6k4qVmodUOJdlvigBVNjTDEhPM-sqJus62HMtwjpvm0CX-aP_A_BqHs2yJ3OgXSX0uHmkUO1FMoZSVaRpOvx7f5bPswxd87L3npuZt4p-NJIX32-DGjBnxdANAHcWil3YHIUbDgQIdjDfN6stGU_JByvzfCJpNCWWDinr772W7iZ3uA28F8uGS0ZMd1E5e1moEFBY8BM015Qxg2Y_k7lmv9S8GMkBJyTiJNiqnwLwfsiE1ycE4Tgq_vuQfFToIMNw
 ```
 
-### Configure Ingress
+## Configure Ingress
 
 Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
@@ -298,30 +312,37 @@ controller exposes.
 Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn
 more about which hostname to use.
 
-### Configure LoadBalancer
+## Configure LoadBalancer
 
 Use the `service.loadBalancerIP` and `service.externalPort` parameters to connect to the Kubernetes Dashboard.
+
+## Troubleshooting
+
+### Scenario - Kubernetes Dashboard not Accessible
+
+If the Kubernetes Dashboard is not accessible, check the dashboard pod for errors and ensure the dashboard service is in
+the **Running** state.
 
 </TabItem>
 
 <TabItem label="2.1.x" value="2.1.x">
 
-To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find
-the Kubernetes Dashboard pack.
+:::warning
 
-- **Pack Type**: Monitoring
-- **Registry**: Public Repo
-- **Pack Name**: Kubernetes Dashboard
-- **Pack Version**: 2.0.x or higher
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized
+experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack.
+To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
 
-<!-- prettier-ignore -->
-The Kubernetes Dashboard pack requires the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack, which serves as a reverse
-proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+:::
 
-### Access Kubernetes Dashboard
+## Access Kubernetes Dashboard
+
+<!-- prettier-ignore-start -->
+The Kubernetes Dashboard pack requires the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy"/> pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes
 Dashboard on port 80.
+<!-- prettier-ignore-end -->
 
 ```bash
 kubectl port-forward -namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
@@ -353,7 +374,7 @@ namespace:  20 bytes
 token:      eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1bTg3RWM4Y1c3NnhkQ3dXbXNDUXQydVpYQklRUWoxa1BaS0ctVkVTSDQifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZC10b2tlbi1oNGxuZiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjAwZTcyOWYxLTY2MzgtNGU2OC04ZGY1LWFmYTJlMmUzODA5NSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDprdWJlcm5ldGVzLWRhc2hib2FyZCJ9.JU4GOJNjGpkHabUyxBt_2rvtXNjpR3w238BF2oMCQUNf_ZkUGSMeAAgIKxbAuk62dtJNDaRh5yAZ9J5KthMcU6k4qVmodUOJdlvigBVNjTDEhPM-sqJus62HMtwjpvm0CX-aP_A_BqHs2yJ3OgXSX0uHmkUO1FMoZSVaRpOvx7f5bPswxd87L3npuZt4p-NJIX32-DGjBnxdANAHcWil3YHIUbDgQIdjDfN6stGU_JByvzfCJpNCWWDinr772W7iZ3uA28F8uGS0ZMd1E5e1moEFBY8BM015Qxg2Y_k7lmv9S8GMkBJyTiJNiqnwLwfsiE1ycE4Tgq_vuQfFToIMNw
 ```
 
-### Configure Ingress
+## Configure Ingress
 
 Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
@@ -369,32 +390,37 @@ controller exposes.
 Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn
 more about which hostname to use.
 
-### Configure LoadBalancer
+## Configure LoadBalancer
 
 Use the `service.loadBalancerIP` and `service.externalPort` parameters to connect to the Kubernetes Dashboard.
+
+## Troubleshooting
+
+### Scenario - Kubernetes Dashboard not Accessible
+
+If the Kubernetes Dashboard is not accessible, check the dashboard pod for errors and ensure the dashboard service is in
+the **Running** state.
 
 </TabItem>
 
 <TabItem label="2.0.x" value="02.0.x">
 
-## Usage
+:::warning
 
-To use the Kubernetes Dashboard pack, you have to add it to your cluster profile. Use the following information to find
-the Kubernetes Dashboard pack.
+Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized
+experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack.
+To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
 
-- **Pack Type**: Monitoring
-- **Registry**: Public Repo
-- **Pack Name**: Kubernetes Dashboard
-- **Pack Version**: 2.0.x or higher
+:::
 
-<!-- prettier-ignore -->
-The Kubernetes Dashboard pack requires the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack, which serves as a reverse
-proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
+## Access Kubernetes Dashboard
 
-### Access Kubernetes Dashboard
+<!-- prettier-ignore-start -->
+The Kubernetes Dashboard pack requires the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy"/> pack, which serves as a reverse proxy to expose the Kubernetes dashboard. You must configure the Spectro Proxy pack.
 
 When connected to the cluster remotely, run the following command to establish a connection to to deploy the Kubernetes
 Dashboard on port 80.
+<!-- prettier-ignore-end -->
 
 ```bash
 kubectl port-forward -namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
@@ -426,7 +452,7 @@ namespace:  20 bytes
 token:      eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1bTg3RWM4Y1c3NnhkQ3dXbXNDUXQydVpYQklRUWoxa1BaS0ctVkVTSDQifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZC10b2tlbi1oNGxuZiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjAwZTcyOWYxLTY2MzgtNGU2OC04ZGY1LWFmYTJlMmUzODA5NSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDprdWJlcm5ldGVzLWRhc2hib2FyZCJ9.JU4GOJNjGpkHabUyxBt_2rvtXNjpR3w238BF2oMCQUNf_ZkUGSMeAAgIKxbAuk62dtJNDaRh5yAZ9J5KthMcU6k4qVmodUOJdlvigBVNjTDEhPM-sqJus62HMtwjpvm0CX-aP_A_BqHs2yJ3OgXSX0uHmkUO1FMoZSVaRpOvx7f5bPswxd87L3npuZt4p-NJIX32-DGjBnxdANAHcWil3YHIUbDgQIdjDfN6stGU_JByvzfCJpNCWWDinr772W7iZ3uA28F8uGS0ZMd1E5e1moEFBY8BM015Qxg2Y_k7lmv9S8GMkBJyTiJNiqnwLwfsiE1ycE4Tgq_vuQfFToIMNw
 ```
 
-### Configure Ingress
+## Configure Ingress
 
 Use the following steps to configure ingress for the Kubernetes Dashboard pack.
 
@@ -442,32 +468,31 @@ controller exposes.
 Typically you would point a DNS CNAME record to the ingress controller IP. Talk to your system administrator to learn
 more about which hostname to use.
 
-### Configure LoadBalancer
+## Configure LoadBalancer
 
 Use the `service.loadBalancerIP` and `service.externalPort` parameters to connect to the Kubernetes Dashboard.
+
+## Troubleshooting
+
+### Scenario - Kubernetes Dashboard not Accessible
+
+If the Kubernetes Dashboard is not accessible, check the dashboard pod for errors and ensure the dashboard service is in
+the **Running** state.
 
 </TabItem>
 
 </Tabs>
 
-# Troubleshooting
+## Terraform
 
-- If the Kubernetes Dashboard is not accessible, check the dashboard pod for errors and ensure the dashboard service is
-  in the **Running** state.
-
-- When the namespace is customized while deploying the Kubernetes Dashboard, replace the namespace values in the
-  commands shown above.
-
-# Terraform
-
-You can reference the Kubernetes Dashboard pack in Terraform with a data resource.
+You can reference the Kubernetes Dashboard pack in Terraform with the following data resource.
 
 ```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
 
-data "spectrocloud_pack_simple" "spectro-proxy" {
+data "spectrocloud_pack" "k8s-dashboard" {
   name    = "k8s-dashboard"
   version = "2.7.0"
   type = "monitoring"

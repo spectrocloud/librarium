@@ -437,7 +437,7 @@
   },
   {
     "name": "kubernetes-microk8s",
-    "description": "MicroK8s is a lightweight CNCF-certified Kubernetes distribution developed by Canonical. It deploys all Kubernetes services in a single, fully contained package and offers out-of-the-box add-ons."
+    "description": "MicroK8s is a lightweight Kubernetes distribution developed by Canonical. It deploys all Kubernetes services in a single, fully contained package and offers out-of-the-box add-ons."
   },
   {
     "name": "kubernetes-aks",
@@ -473,7 +473,7 @@
   },
   {
     "name": "edge-microk8s",
-    "description": "MicroK8s is a lightweight CNCF-certified Kubernetes distribution developed by Canonical. It deploys all Kubernetes services in a single, fully contained package and offers out-of-the-box add-ons."
+    "description": "MicroK8s is a lightweight Kubernetes distribution developed by Canonical. It deploys all Kubernetes services in a single, fully contained package and offers out-of-the-box add-ons."
   },
   {
     "name": "lb-metallb",
@@ -492,12 +492,272 @@
     "description": "The Nutanix CSI pack uses Nutanix Volumes and Nutanix Files to provide persistent storage for stateful applications."
   },
   {
+    "name": "argo-cd",
+    "description": "Argo CD is a declarative continuous delivery tool for Kubernetes. It automates the deployment of the desired application states in the specified target environments using Git repositories as the source of truth."
+  },
+  {
+    "name": "cni-cilium-oss",
+    "description": "Cilium is an open-source software for securing and observing network connectivity between cloud-native container workloads."
+  },
+  {
+    "name": "cni-cilium",
+    "description": "Cilium is an open-source software for securing and observing network connectivity between cloud-native container workloads."
+  },
+  {
+    "name": "edge-k3s",
+    "description": "K3s is a lightweight distribution of Kubernetes that is specifically designed for resource-constrained environments and Internet of Things (IoT) applications."
+  },
+  {
+    "name": "edge-k8s",
+    "description": "Palette eXtended Kubernetes - Edge (PXK-E) is a customized version of the open-source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes distribution is customized and optimized for edge computing environments and can be deployed through Palette."
+  },
+  {
+    "name": "edge-native-byoi",
+    "description": "The Bring Your Own Operating System (BYOOS) pack enables you to use a custom Operating System (OS) with Palette Edge clusters."
+  },
+  {
+    "name": "generic-byoi",
+    "description": "The Bring Your Own Operating System (BYOOS) pack enables you to use a custom Operating System (OS) with Palette clusters."
+  },
+  {
+    "name": "harbor-edge-native-config",
+    "description": "Harbor is an open-source registry that secures artifacts with policies and role-based access control. You can install Harbor on your Edge clusters and use it to store all the images used by the cluster, including your provider images and packs."
+  },
+  {
+    "name": "harbor",
+    "description": "Harbor is an open-source registry that secures artifacts with policies and role-based access control. You can install Harbor on your clusters and use it to store all the images and packs used by the cluster."
+  },
+  {
+    "name": "nginx",
+    "description": "The NGNIX pack is an Ingress Controller implementation that uses NGINX as a reverse proxy and load balancer. It provides services with externally reachable URLs, offers SSL/TLS termination, load balances traffic, and supports name-based virtual hosting."
+  },
+  {
+    "name": "local-ai",
+    "description": "LocalAI is an open-source alternative to OpenAI that enables you to run LLMs and generate images and audio locally using consumer-grade hardware. It supports multiple model families."
+  },
+  {
+    "name": "minio",
+    "description": "MinIO is a Kubernetes-native high-performance object store with an S3-compatible API."
+  },
+  {
+    "name": "nvidia-gpu-operator",
+    "description": "The NVIDIA GPU Operator automates the management of the NVIDIA software components required for GPU provisioning. This allows Kubernetes cluster administrators to manage GPU nodes in the same way as CPU nodes."
+  },
+  {
+    "name": "oam-app-controller",
+    "description": "The OAM App Controller is a set of packs used for deploying Open Application Model (OAM) applications. It comprises the App-core, Flux2, and Zot packs."
+  },
+  {
+    "name": "opensuse-k3s",
+    "description": "SUSE K3s is a SUSE offering for K3s, a lightweight yet powerful certified Kubernetes distribution designed for production workloads across resource-restrained, remote locations or on Edge IoT devices."
+  },
+  {
+    "name": "open-policy-agent",
+    "description": "Open Policy Agent (OPA) Gatekeeper provides an admission control system based on policies or rules implemented through parameterized and admin configurable constraints."
+  },
+  {
+    "name": "outcold-monitoring",
+    "description": "Outcold Solutions is a Kubernetes monitoring solution integrated with Splunk. It includes capabilities for log aggregation, cluster health monitoring, application monitoring, and security auditing."
+  },
+  {
+    "name": "kubesec",
+    "description": "Kubesec provides security risk analysis for Kubernetes resources. It identifies misconfigurations and generates recommendations to improve the security of Pods, Deployments, and other resources."
+  },
+  {
+    "name": "kubevious",
+    "description": "Kubevious is a cloud-native best practices and configuration validation enforcement tool for Kubernetes clusters and applications. It detects and enforces custom policies and conditions within your clusters."
+  },
+  {
+    "name": "kubevirt",
+    "description": "KubeVirt is a virtual machine management add-on that allows the management of virtual machine workloads alongside container workloads within a Kubernetes cluster."
+  },
+  {
+    "name": "kubevirt-cdi",
+    "description": "The KubeVirt Containerized Data Importer (CDI) provides facilities for enabling Persistent Volume Claims (PVCs) to be used as disks for KubeVirt VMs via DataVolumes."
+  },
+  {
+    "name": "kubewatch",
+    "description": "Kubewatch is a Kubernetes watcher that monitors the cluster for resource changes and publishes notifications to available collaboration hubs and notification channels."
+  },
+  {
+    "name": "lb-citrix-adc",
+    "description": "Citrix ADC is an application delivery controller (ADC) solution that offers IP address management and load balancing capabilities for external services deployed on Kubernetes clusters, particularly suited for on-premise deployments."
+  },
+  {
+    "name": "linkerd",
+    "description": "Linkerd is a service mesh for Kubernetes that provides runtime debugging, observability, reliability, and security without requiring code changes."
+  },
+  {
+    "name": "newrelic",
+    "description": "New Relic is an observability platform designed to provide real-time insights into the performance and behavior of digital systems. It allows you to monitor applications, infrastructure, web browsers, and other components."
+  },
+  {
+    "name": "permission-manager",
+    "description": "The Permission Manager pack provides a graphical user interface for RBAC management in Kubernetes. It allows you to create users, assign namespaces and permissions, and distribute Kubeconfig YAML files."
+  },
+  {
+    "name": "palette-upgrader",
+    "description": "The Palette Upgrader pack enables you to manage the Palette upgrade version of Edge-virtual clusters."
+  },
+  {
+    "name": "pfsense-vm-libvirt",
+    "description": "pfSense is an open-source customized distribution of the FreeBSD operating system designed for use as a firewall and router in libvirt VMs."
+  },
+  {
+    "name": "pfsense-vm-vsphere",
+    "description": "pfSense is an open-source customized distribution of the FreeBSD operating system designed for use as a firewall and router in vSphere VMs."
+  },
+  {
+    "name": "datadog",
+    "description": "Datadog is an observability platform that offers a variety of application monitoring capabilities for servers, databases, tools, and services."
+  },
+  {
+    "name": "prismacloud",
+    "description": "Prisma Cloud Compute is a cloud workload protection platform (CWPP) that protects hosts, containers, and serverless deployments in any cloud at every stage of the software lifecycle. It provides security for tenant workloads regardless of the underlying compute technology or cloud environment."
+  },
+  {
+    "name": "prometheus-agent",
+    "description": "Prometheus is an open-source monitoring and alerting system that is designed to collect and analyze metrics from various systems and services. The Prometheus Agent pack works together with the Prometheus Operator pack."
+  },
+  {
+    "name": "prometheus-operator",
+    "description": "The Prometheus Operator is a tool that simplifies the deployment and management of Prometheus in a Kubernetes cluster. It automates tasks such as configuring Prometheus, creating and managing Prometheus rules and alerts and scaling Prometheus instances based on demand."
+  },
+  {
+    "name": "qualys-agent",
+    "description": "Qualys Cloud Agent is a lightweight cloud security agent that enables real-time, global visibility of IT assets and response."
+  },
+  {
+    "name": "rbac-manager",
+    "description": "Fairwinds RBAC Manager is an operator that supports declarative configuration for RBAC with new custom resources, simplifying authorization in Kubernetes."
+  },
+  {
+    "name": "registry-creds",
+    "description": "The Registry Credentials pack allows you to refresh AWS ECR, Google Registry, and Azure Container Registry credentials inside your Kubernetes cluster using ImagePullSecrets."
+  },
+  {
+    "name": "reloader",
+    "description": "Reloader is a Kubernetes controller that monitors changes in ConfigMaps and Secrets and performs rolling upgrades on Pods with their associated Deployments, StatefulSets, DaemonSets, and DeploymentConfigs."
+  },
+  {
+    "name": "rhel-vmware",
+    "description": "Red Hat Enterprise Linux (RHEL) is an enterprise Linux operating system (OS) developed by Red Hat. The RHEL pack is designed for VMware clusters."
+  },
+  {
+    "name": "sapp-hipster",
+    "description": "Hipster Commerce is a demo e-commerce application used to showcase Palette."
+  },
+  {
+    "name": "seccomp",
+    "description": "Seccomp (Secure Computing Mode) is a security mechanism for Linux processes that filters system calls (syscalls) based on a set of defined rules. You can apply seccomp profiles to containerized workloads to enhance the security of the application deployment."
+  },
+  {
+    "name": "signalfx",
+    "description": "SignalFx is a cloud monitoring platform for infrastructure, microservices, and applications. It allows you to monitor and observe data in real-time, regardless of the data source or type of application."
+  },
+  {
+    "name": "slem-rke2",
+    "description": "RKE2 is a fully conformant Kubernetes distribution by Rancher, focusing on security and compliance within the U.S. Federal Government sector. SLE Micro RKE2 is the RKE2 Kubernetes distribution suited for the SUSE Linux Enterprise (SLE) Micro edge operating system."
+  },
+  {
+    "name": "spectro-byo-manifest",
+    "description": "The BYO Manifest add-on pack enables you to add your own Kubernetes manifest to the pack's values field, allowing you to deploy your own custom applications."
+  },
+  {
+    "name": "spectro-cluster-metrics",
+    "description": "The Spectro Cluster Metrics pack exposes Palette-specific host cluster metrics to Prometheus. You can use this data to learn about the state of your clusters, resource utilization, and more."
+  },
+  {
+    "name": "spectrocloud-grafana-dashboards",
+    "description": "The Spectro Cloud Grafana Dashboards is a demo add-on pack that exposes internal cluster resource metrics. You can access the cluster information exposed by the pack in Grafana by visiting the Spectro Cloud/Spectro Clusters dashboard."
+  },
+  {
+    "name": "spectro-grafana-dashboards",
+    "description": "The Spectro Cloud Grafana Dashboards is an add-on pack that exposes internal cluster resource metrics. You can access the cluster information exposed by the pack in Grafana by visiting the Spectro Cloud/Spectro Clusters dashboard."
+  },
+  {
+    "name": "heartbeat",
+    "description": "Heartbeat is a lightweight daemon that periodically checks the status of your services and determines whether they are reachable."
+  },
+  {
+    "name": "image-swap",
+    "description": "The ImageSwap pack is a webhook that allows you to define mappings to automatically swap image definitions within Kubernetes Pods with a different registry."
+  },
+  {
+    "name": "istio",
+    "description": "Istio is an open-source service mesh that layers transparently onto existing distributed applications. It helps you to secure, connect, and monitor services."
+  },
+  {
+    "name": "k8gb",
+    "description": "k8gb is an open-source global load balancing solution for Kubernetes. It focuses on load balancing traffic across geographically dispersed Kubernetes clusters using different load balancing strategies."
+  },
+  {
+    "name": "k8sgpt-operator",
+    "description": "The K8sGPT Operator enables K8sGPT within a Kubernetes cluster. K8sGPT is a tool that continuously scans your Kubernetes clusters for anomalies. It analyzes cluster data and uses AI engines to provide insights and recommendations."
+  },
+  {
+    "name": "konvoy-defaultstorageclass",
+    "description": "The Konvoy Default Storage Class pack enables users to specify a default storage class for applications that require persistent storage."
+  },
+  {
+    "name": "konvoy-nvidia",
+    "description": "The NVIDIA GPU Plugin pack enables the NVIDIA device plugin in Konvoy clusters."
+  },
+  {
+    "name": "konvoy-opsportal",
+    "description": "Konvoy Operations Portal is a web application that provides an overview of cluster status and shortcuts to several dashboards for add-on services, such as Grafana."
+  },
+  {
+    "name": "kong",
+    "description": "Kong Ingress Controller allows you to run Kong Gateway as a Kubernetes Ingress to handle inbound requests for a Kubernetes cluster."
+  },
+  {
+    "name": "k8s-dashboard",
+    "description": "Kubernetes Dashboard is a web-based Kubernetes UI that allows users to monitor and manage clusters and deployed workloads."
+  },
+  {
+    "name": "kotsadm",
+    "description": "Kotsadm is an admin console designed for managing Kubernetes Off-The-Shelf (KOTS) software. Once deployed, Kotsadm enables administrators to configure, install, and update applications using step-through configuration and automated preflight checks."
+  },
+  {
+    "name": "kube-bench",
+    "description": "kube-bench is a tool that checks whether Kubernetes is deployed securely by running the checks documented in the CIS Kubernetes Benchmark."
+  },
+  {
+    "name": "kubeflow",
+    "description": "Kubeflow is the machine learning toolkit for Kubernetes. It helps make the deployment of machine learning (ML) workflows on Kubernetes simple, portable, and scalable."
+  },
+  {
+    "name": "kubeflow-full",
+    "description": "The Kubeflow Full pack offers the complete suite of Kubeflow components bundled together."
+  },
+  {
+    "name": "kubeflow-pipelines",
+    "description": "Kubeflow Pipelines is a platform for building and deploying portable, scalable machine learning (ML) workflows based on Docker containers."
+  },
+  {
+    "name": "kubeflow-serving",
+    "description": "The Kubeflow Serving pack provides a Kubernetes Custom Resource Definition (CRD) for serving predictive and generative Machine Learning (ML) models."
+  },
+  {
+    "name": "kubeflow-training",
+    "description": "The Kubeflow Training Operator is a Kubernetes-native project for fine-tuning and scalable distributed training of Machine Learning (ML) models created with various ML frameworks. It allows you to use Kubernetes workloads to train your large models via Kubernetes Custom Resources APIs or using the Training Operator Python Software Development Toolkit (SDK)."
+  },
+  {
+    "name": "kubehunter",
+    "description": "Kube-hunter searches for security weaknesses in Kubernetes clusters. It is designed to increase awareness and visibility of security issues in Kubernetes environments."
+  },
+  {
+    "name": "kubebench",
+    "description": "kube-bench is a tool that checks whether Kubernetes is deployed securely by running the checks documented in the CIS Kubernetes Benchmark."
+  },
+  {
     "name": "spectro-proxy",
     "description": "Spectro Proxy is a pack that enables the use of a reverse proxy with a Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. The reverse proxy managed by Spectro Cloud is also known as the forward reverse proxy (FRP)."
   },
   {
     "name": "spectro-k8s-dashboard",
-    "description": "This pack deployes the Kubernetes Dashboard, and the Spectro Proxy if needed. The pack reduces the complexity of deploying the Kubernetes Dashboard by creating required resources and roles."
+    "description": "This pack deploys the Kubernetes Dashboard, and the Spectro Proxy if needed. The pack reduces the complexity of deploying the Kubernetes Dashboard by creating required resources and roles."
   },
   {
     "name": "spectro-rbac",

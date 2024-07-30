@@ -16,55 +16,6 @@ The Palette eXtended Kubernetes - Edge (PXK-E) pack supports Kubernetes clusters
 isolated locations like grocery stores, restaurants, and similar locations, versus a data center or cloud environment.
 We offer PXK-E as a core pack in Palette.
 
-:::warning
-
-Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before
-upgrading, you review the information provided in the [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades)
-section.
-
-Review our [Maintenance Policy](maintenance-policy.md) to learn about pack update and deprecation schedules.
-
-:::
-
-## What is PXK-E?
-
-PXK-E is a customized version of the open-source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes.
-This Kubernetes distribution is customized and optimized for edge computing environments and can be deployed through
-Palette. PXK-E is the Kubernetes distribution Palette defaults to when deploying Edge clusters.
-
-PXK-E differs from the upstream open-source Kubernetes version by optimizing for operations in an edge computing
-environment. PXK-E also differentiates itself by using the Kairos open-source project as the base operating system (OS).
-PXK-E’s use of Kairos means the OS is immutable, which significantly improves the security posture and reduces potential
-attack surfaces.
-
-Another differentiator of PXK-E is the carefully reviewed and applied hardening of the OS and Kubernetes. The hardening
-ranges from removing unused OS kernel modules to using an OS configuration that follows industry best practices. Our
-custom Kubernetes configuration addresses common deployment security pitfalls and implements industry best practices.
-
-With PXK-E, you can manage automatic OS upgrades while retaining immutability and the flexibility to roll out changes
-safely. The A/B partition architecture of Kairos allows for new OS and dependency versions to be installed in a separate
-partition and mounted at runtime. You can fall back to use the previous partition if issues are identified in the new
-partition.
-
-PXK-E manages the underlying OS and the Kubernetes layer together, which reduces the challenge of upgrading and
-maintaining two separate components.
-
-PXK-E allows you to apply different flavors of container storage interfaces (CSI) and container network interfaces
-(CNI). Other open-source Kubernetes distributions such as MicroK8s, RKE2, and K3s come with a default CSI and CNI. There
-is additional complexity and overhead when you want to consume different interface plugins with traditional Kubernetes
-distributions. Using PXK-E, you select the interface plugin you want to apply without additional overhead and
-complexity.
-
-There are no changes to the Kubernetes source code used in PXK-E, and it follows the same versioning schema as the
-upstream open-source Kubernetes distribution.
-
-:::info
-
-We also offer Palette eXtended Kubernetes (PXK) for cloud and data center deployments. For more information, refer to
-the [Palette eXtended Kubernetes](kubernetes.md) guide to learn more about PXK.
-
-:::
-
 ### PXK and Palette VerteX
 
 The PXK-E used in [Palette VerteX](../vertex/vertex.md) is compiled and linked with our
@@ -83,50 +34,35 @@ We support PXK-E for N-3 Kubernetes minor versions for a duration of 14 months. 
 four months. Once we stop supporting the minor version, we initiate the deprecation process. Refer to the
 [Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
 
-# Versions Supported
+:::warning
 
-<Tabs queryString="versions">
+Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before
+upgrading, you review the information provided in the [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades)
+section.
+
+Review our [Maintenance Policy](maintenance-policy.md) to learn about pack update and deprecation schedules.
+
+:::
+
+## Versions Supported
+
+<Tabs queryString="parent">
 
 <TabItem label="1.29.x" value="k8s_v1.29">
 
-## Prerequisites
+## Custom Kubernetes Configuration
 
-- A minimum of 2 CPU and 4 GB Memory.
-
-## Parameters
-
-| Parameter                                                            | Description                                                                                                                                                                                                                                                                                |
-| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `cluster.config.clusterConfiguration.apiServer.extraArgs`            | This parameter contains extra arguments for the Kubernetes API server, such as enabling audit logging, enabling certain authorization modes, and setting profiling and secure-port.                                                                                                        |
-| `cluster.config.clusterConfiguration.apiServer.extraVolumes`         | This parameter describes extra volumes for the Kubernetes API server, such as `audit-log` and `audit-policy`.                                                                                                                                                                              |
-| `cluster.config.clusterConfiguration.controllerManager.extraArgs`    | This parameter describes extra arguments for the Kubernetes Controller Manager, such as enabling certain feature gates and setting profiling.                                                                                                                                              |
-| `cluster.config.clusterConfiguration.etcd.local.dataDir`             | This parameter specifies the data directory for etcd, the distributed key-value store that Kubernetes uses to persist cluster state.                                                                                                                                                       |
-| `cluster.config.clusterConfiguration.networking.podSubnet`           | The IP subnet range to assign to pods. Default: 192.168.0.0/16                                                                                                                                                                                                                             |
-| `cluster.config.clusterConfiguration.networking.serviceSubnet`       | The IP subnet range to assign to services. Default: 192.169.0.0/16                                                                                                                                                                                                                         |
-| `cluster.config.clusterConfiguration.scheduler.extraArgs`            | This parameter contains extra arguments for the Kubernetes scheduler, such as disabling profiling.                                                                                                                                                                                         |
-| `cluster.config.initConfiguration.nodeRegistration.kubeletExtraArgs` | This parameter contains extra arguments for kubelet during node registration, such as setting feature gates, protecting kernel defaults, and disabling the read-only port.                                                                                                                 |
-| `pack.palette.config.oidc.identityProvider`                          | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK-E pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](#configure-custom-oidc). |
-
-You can add cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open-source
-project. For more information, check out the [Cloud Init Stages](../clusters/edge/edge-configuration/cloud-init.md)
-reference.
-
-You can also use pack settings described in the [Palette eXtended Kubernetes](kubernetes.md) guide.
-
-## Usage
-
+<!-- prettier-ignore-start -->
 The Kubernetes configuration file is where you can do the following:
 
-- Manually configure a third-party OIDC IDP. For more information, check out
-  [Configure Custom OIDC](kubernetes-edge.md#configure-custom-oidc).
+- Manually configure a third-party OIDC IDP. For more information, check out <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=edge-k8s#configure-custom-oidc" />.
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
   information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
 
-#### Configuration Changes
-
 The PXK-E Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the
 `identityProvider` parameter.
+<!-- prettier-ignore-end -->
 
 ```yaml
 pack:
@@ -136,7 +72,7 @@ pack:
         identityProvider: <your_idp_selection>
 ```
 
-#### Example Kubernetes Configuration File
+Below is an example of a Kubernetes configuration file.
 
 ```yaml
 cluster:
@@ -398,25 +334,30 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 role to users and groups, refer to
 [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
 
+<!-- prettier-ignore-start -->
+
 You can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to
-a role. To learn more, review [Use RBAC with OIDC](kubernetes-edge.md#use-rbac-with-oidc). You can also configure OIDC
-for virtual clusters. For guidance, refer to
+a role. To learn more, review
+<VersionedLink text="Use RBAC with OIDC" url="/integrations/packs/?pack=edge-k8s#use-rbac-with-oidc" />. You can also
+configure OIDC for virtual clusters. For guidance, refer to
 [Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
   specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
-  [Configure Custom OIDC](kubernetes-edge.md#configure-custom-oidc). This setting displays in the YAML file as `none`.
+  <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=edge-k8s#configure-custom-oidc" />. This
+  setting displays in the YAML file as `none`.
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper
   permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting
   displays in the YAML file as `palette`.
 
 - **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure
-  OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
-  **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
-  information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
+OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
+**OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
+information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
+<!-- prettier-ignore-end -->
 
 :::info
 
@@ -474,44 +415,19 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 <TabItem label="1.28.x" value="k8s_v1.28">
 
-## Prerequisites
+## Custom Kubernetes Configuration
 
-- A minimum of 2 CPU and 4 GB Memory.
-
-## Parameters
-
-| Parameter                                                            | Description                                                                                                                                                                                                                                                                                |
-| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `cluster.config.clusterConfiguration.apiServer.extraArgs`            | This parameter contains extra arguments for the Kubernetes API server, such as enabling audit logging, enabling certain authorization modes, and setting profiling and secure-port.                                                                                                        |
-| `cluster.config.clusterConfiguration.apiServer.extraVolumes`         | This parameter describes extra volumes for the Kubernetes API server, such as `audit-log` and `audit-policy`.                                                                                                                                                                              |
-| `cluster.config.clusterConfiguration.controllerManager.extraArgs`    | This parameter describes extra arguments for the Kubernetes Controller Manager, such as enabling certain feature gates and setting profiling.                                                                                                                                              |
-| `cluster.config.clusterConfiguration.etcd.local.dataDir`             | This parameter specifies the data directory for etcd, the distributed key-value store that Kubernetes uses to persist cluster state.                                                                                                                                                       |
-| `cluster.config.clusterConfiguration.networking.podSubnet`           | The IP subnet range to assign to pods. Default: 192.168.0.0/16                                                                                                                                                                                                                             |
-| `cluster.config.clusterConfiguration.networking.serviceSubnet`       | The IP subnet range to assign to services. Default: 192.169.0.0/16                                                                                                                                                                                                                         |
-| `cluster.config.clusterConfiguration.scheduler.extraArgs`            | This parameter contains extra arguments for the Kubernetes scheduler, such as disabling profiling.                                                                                                                                                                                         |
-| `cluster.config.initConfiguration.nodeRegistration.kubeletExtraArgs` | This parameter contains extra arguments for kubelet during node registration, such as setting feature gates, protecting kernel defaults, and disabling the read-only port.                                                                                                                 |
-| `pack.palette.config.oidc.identityProvider`                          | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK-E pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](#configure-custom-oidc). |
-
-You can add cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open-source
-project. For more information, check out the [Cloud Init Stages](../clusters/edge/edge-configuration/cloud-init.md)
-reference.
-
-You can also use pack settings described in the [Palette eXtended Kubernetes](kubernetes.md) guide.
-
-## Usage
-
+<!-- prettier-ignore-start -->
 The Kubernetes configuration file is where you can do the following:
 
-- Manually configure a third-party OIDC IDP. For more information, check out
-  [Configure Custom OIDC](kubernetes-edge.md#configure-custom-oidc).
+- Manually configure a third-party OIDC IDP. For more information, check out <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=edge-k8s#configure-custom-oidc" />.
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
   information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
 
-#### Configuration Changes
-
 The PXK-E Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the
 `identityProvider` parameter.
+<!-- prettier-ignore-end -->
 
 ```yaml
 pack:
@@ -521,7 +437,7 @@ pack:
         identityProvider: <your_idp_selection>
 ```
 
-#### Example Kubernetes Configuration File
+Below is an example of a Kubernetes configuration file.
 
 ```yaml
 cluster:
@@ -783,25 +699,30 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 role to users and groups, refer to
 [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
 
+<!-- prettier-ignore-start -->
+
 You can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to
-a role. To learn more, review [Use RBAC with OIDC](kubernetes-edge.md#use-rbac-with-oidc). You can also configure OIDC
-for virtual clusters. For guidance, refer to
+a role. To learn more, review
+<VersionedLink text="Use RBAC with OIDC" url="/integrations/packs/?pack=edge-k8s#use-rbac-with-oidc" />. You can also
+configure OIDC for virtual clusters. For guidance, refer to
 [Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
   specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
-  [Configure Custom OIDC](kubernetes-edge.md#configure-custom-oidc). This setting displays in the YAML file as `none`.
+  <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=edge-k8s#configure-custom-oidc" />. This
+  setting displays in the YAML file as `none`.
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper
   permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting
   displays in the YAML file as `palette`.
 
 - **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure
-  OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
-  **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
-  information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
+OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
+**OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
+information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
+<!-- prettier-ignore-end -->
 
 :::info
 
@@ -859,44 +780,19 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 <TabItem label="1.27.x" value="k8s_v1.27">
 
-## Prerequisites
+## Custom Kubernetes Configuration
 
-- A minimum of 2 CPU and 4 GB Memory.
+<!-- prettier-ignore-start -->
+The Kubernetes configuration file is where you can do the following:
 
-## Parameters
-
-| Parameter                                                            | Description                                                                                                                                                                                                                                                                                |
-| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `cluster.config.clusterConfiguration.apiServer.extraArgs`            | This parameter contains extra arguments for the Kubernetes API server, such as enabling audit logging, enabling certain authorization modes, and setting profiling and secure-port.                                                                                                        |
-| `cluster.config.clusterConfiguration.apiServer.extraVolumes`         | This parameter describes extra volumes for the Kubernetes API server, such as `audit-log` and `audit-policy`.                                                                                                                                                                              |
-| `cluster.config.clusterConfiguration.controllerManager.extraArgs`    | This parameter describes extra arguments for the Kubernetes Controller Manager, such as enabling certain feature gates and setting profiling.                                                                                                                                              |
-| `cluster.config.clusterConfiguration.etcd.local.dataDir`             | This parameter specifies the data directory for etcd, the distributed key-value store that Kubernetes uses to persist cluster state.                                                                                                                                                       |
-| `cluster.config.clusterConfiguration.networking.podSubnet`           | The IP subnet range to assign to pods. Default: 192.168.0.0/16                                                                                                                                                                                                                             |
-| `cluster.config.clusterConfiguration.networking.serviceSubnet`       | The IP subnet range to assign to services. Default: 192.169.0.0/16                                                                                                                                                                                                                         |
-| `cluster.config.clusterConfiguration.scheduler.extraArgs`            | This parameter contains extra arguments for the Kubernetes scheduler, such as disabling profiling.                                                                                                                                                                                         |
-| `cluster.config.initConfiguration.nodeRegistration.kubeletExtraArgs` | This parameter contains extra arguments for kubelet during node registration, such as setting feature gates, protecting kernel defaults, and disabling the read-only port.                                                                                                                 |
-| `pack.palette.config.oidc.identityProvider`                          | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK-E pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](#configure-custom-oidc). |
-
-You can add cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open-source
-project. For more information, check out the [Cloud Init Stages](../clusters/edge/edge-configuration/cloud-init.md)
-reference.
-
-You can also use pack settings described in the [Palette eXtended Kubernetes](kubernetes.md) guide.
-
-## Usage
-
-The Kubeadm configuration file is where you can do the following:
-
-- Manually configure a third-party OIDC IDP. For more information, check out
-  [Configure Custom OIDC](kubernetes-edge.md#configure-custom-oidc).
+- Manually configure a third-party OIDC IDP. For more information, check out <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=edge-k8s#configure-custom-oidc" />.
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
   information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
 
-#### Configuration Changes
-
 The PXK-E Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the
 `identityProvider` parameter.
+<!-- prettier-ignore-end -->
 
 ```yaml
 pack:
@@ -906,7 +802,7 @@ pack:
         identityProvider: <your_idp_selection>
 ```
 
-#### Example Kubeadm Configuration File
+Below is an example of a Kubernetes configuration file.
 
 ```yaml
 cluster:
@@ -1168,25 +1064,32 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 role to users and groups, refer to
 [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
 
+<!-- prettier-ignore-start -->
+
 You can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to
-a role. To learn more, review [Use RBAC with OIDC](kubernetes-edge.md#use-rbac-with-oidc). You can also configure OIDC
-for virtual clusters. For guidance, refer to
-[Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
+a role. To learn more, review
+
+<VersionedLink text="Use RBAC with OIDC" url="/integrations/packs/?pack=edge-k8s#use-rbac-with-oidc" />. You can also
+configure OIDC for virtual clusters. For guidance, refer to [Configure OIDC for a Virtual
+Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
   specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
-  [Configure Custom OIDC](kubernetes-edge.md#configure-custom-oidc). This setting displays in the YAML file as `none`.
+
+  <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=edge-k8s#configure-custom-oidc" />. This
+  setting displays in the YAML file as `none`.
 
 - **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper
   permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting
   displays in the YAML file as `palette`.
 
 - **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure
-  OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
-  **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
-  information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
+OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
+**OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
+information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
+<!-- prettier-ignore-end -->
 
 :::info
 
@@ -1242,16 +1145,6 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 ![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.webp)
 
 </TabItem>
-
-<TabItem label="Deprecated" value="deprecated">
-
-:::warning
-
-All versions less than v1.27.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
-
-:::
-
-</TabItem>
 </Tabs>
 
 ## Terraform
@@ -1265,16 +1158,8 @@ data "spectrocloud_registry" "public_registry" {
 
 data "spectrocloud_pack_simple" "edge-k8s" {
   name    = "edge-k8s"
-  version = "1.26.4"
+  version = "1.29.0"
   type = "helm"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
-
-## Resources
-
-- [Kubernetes](https://kubernetes.io/)
-
-- [Kubernetes Documentation](https://kubernetes.io/docs/concepts/overview/)
-
-- [Image Swap with Palette](../clusters/cluster-management/image-swap.md)

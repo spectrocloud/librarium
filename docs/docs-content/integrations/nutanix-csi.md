@@ -58,7 +58,7 @@ You can reference the Nutanix CSI pack in Terraform with the following data reso
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
-data "spectrocloud_pack_simple" "nutanix-csi" {
+data "spectrocloud_pack" "nutanix-csi" {
   name    = "nutanix-csi"
   version = "2.6.6"
   type = "helm"
