@@ -11,7 +11,14 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## July 27th, 2024 - Release 4.3.11
+## July 30, 2024 - Release 4.3.11
+
+:::info
+
+This patch release will not be applied to Palette SaaS. It will be applied to dedicated SaaS environments only. If you
+are interested in upgrading to this patch release, please reach out to our support team at support@spectrocloud.com.
+
+:::
 
 ### Bug Fixes
 
