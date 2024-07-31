@@ -33,7 +33,7 @@ We support the following use cases:
 
 :::tip
 
-You can use the [Validator](https://github.com/spectrocloud-labs/validator) with the
+You can use [Validator](https://github.com/spectrocloud-labs/validator) with the
 [Azure plugin](https://github.com/spectrocloud-labs/validator-plugin-azure) to verify you have setup the correct
 permissions. The Validator Azure plugin requires the following permissions:
 
@@ -41,8 +41,9 @@ permissions. The Validator Azure plugin requires the following permissions:
 - Microsoft.Authorization/roleAssignments/read
 - Microsoft.Authorization/roleDefinitions/read
 
-You can use the Validator with the Palette CLI. Check out the Palette CLI
-[Validator](../../../automation/palette-cli/commands/validator.md) command reference page for more information.
+You can use Validator with the Palette CLI. Check out the Palette CLI
+[Validator](../../../automation/palette-cli/commands/ec.md#validate-environment) command reference page for more
+information.
 
 :::
 
