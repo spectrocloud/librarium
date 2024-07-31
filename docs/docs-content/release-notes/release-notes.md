@@ -13,7 +13,16 @@ tags: ["release-notes"]
 
 ## Aug 17, 2024 - Release 4.4.X
 
-TBA
+<!-- Replace heading ID with the release version below -->
+
+### Palette {#release-4-4-REPLACE_ME}
+
+#### Breaking Changes
+
+- The Palette CLI no longer has the `validator` command. To validate your self-hosted Palette or VerteX deployment, use
+  the `ec` command instead with the `--validate` flag. Refer to the
+  [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section of the Palette EC
+  command documentation to learn more.
 
 ## Jul 20, 2024 - Release 4.4.11
 
