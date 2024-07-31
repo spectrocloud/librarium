@@ -744,5 +744,5 @@ Azure cluster and then updated it to use a different version of a cluster profil
 cluster profile roll backs.
 
 We encourage you to check out the
-[Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest) provider page to
-learn more about the Palette resources you can deploy using Terraform.
+[Scale, Upgrade, and Secure Clusters](./scale-secure-cluster.md) tutorial
+to learn how to perform common Day-2 operations on your deployed clusters.

@@ -740,5 +740,5 @@ AWS cluster and then updated it to use a different version of a cluster profile.
 cluster profile roll backs.
 
 We encourage you to check out the
-[Scale, Upgrade, and Secure Clusters](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest) tutorial
+[Scale, Upgrade, and Secure Clusters](./scale-secure-cluster.md) tutorial
 to learn how to perform common Day-2 operations on your deployed clusters.
