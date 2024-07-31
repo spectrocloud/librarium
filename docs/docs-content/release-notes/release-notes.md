@@ -11,6 +11,44 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## July 30, 2024 - Release 4.3.11
+
+:::info
+
+This patch release will not be applied to Palette SaaS. It will be applied to dedicated SaaS environments only. If you
+are interested in upgrading to this patch release, please reach out to our support team at support@spectrocloud.com.
+
+:::
+
+### Bug Fixes
+
+- Fixed an issue that sometimes would cause Edge clusters with three control plane nodes and one worker node with the
+  local Harbor registry enabled to be stuck in the **Provisioning** state.
+
+- Resolved several CVEs in the previous release. For a complete list of current CVEs, refer to
+  [CVE Report](../security-bulletins/reports/reports.md).
+
+- Fixed an issue that caused clusters to experience problems in communicating with Palette through gPRC using domain
+  names and port 443, resulting in clusters appearing in an **Unhealthy** state.
+
+- Resolved a VerteX issue that sometimes would prevent users from updating the cluster profile of an active cluster.
+
+- Addressed an issue that prevented cluster profiles from being created after performing a database restore operation on
+  a self-hosted Palette instance.
+
+- Resolved the issue that caused VerteX enterprise cluster to be unable to complete backup operations.
+
+- Fixed a VerteX issue that caused cluster deployments failures to AWS EKS.
+
+- Fixed an issue that caused the Palette agents to upgrade to 4.4 even when platform upgrades are paused.
+
+- Resolved an issue that prevented users from updating system profiles using the System Console in a self-hosted
+  instance of Palette.
+
+### Improvement
+
+- Added the **Error** status to backup operations in the System Console in self-hosted instances of Palette.
+
 ## May 19, 2024 - Release 4.3.8
 
 ### Bug Fixes
