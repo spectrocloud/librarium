@@ -48,5 +48,11 @@ Once your cluster is deployed, you can update it using cluster profile updates.
       buttonText: "Learn more",
       relativeURL: "./deploy-manage-k8s-cluster-tf",
     },
+    {
+      title: "Scale, Upgrade, and Secure Clusters",
+      description: "Learn how to scale, upgrade, and secure Palette host clusters deployed to VMware.",
+      buttonText: "Learn more",
+      relativeURL: "./scale-secure-cluster",
+    },
   ]}
 />
