@@ -4,7 +4,7 @@ title: "Create Images with Image Builder"
 description: "Learn how to use the Image Builder project to create images for Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 0
+sidebar_position: 10
 tags: ["operating system", "byoos", "profiles", "cluster profiles"]
 ---
 
