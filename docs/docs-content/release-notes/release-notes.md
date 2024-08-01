@@ -15,6 +15,13 @@ tags: ["release-notes"]
 
 TBA
 
+## Jul 31, 2024 - Release 4.4.12
+
+#### Bug Fixes
+
+- Fixed an issue where the Palette agent would fail to pull Helm charts from private registries when initializing Edge
+  clusters.
+
 ## Jul 20, 2024 - Release 4.4.11
 
 <!-- Custom heading applied due to linking of the Palette section in the VerteX section -->
