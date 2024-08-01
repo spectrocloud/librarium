@@ -490,7 +490,7 @@ const redirects = [
 
   {
     from: "/palette-cli/commands/validator/",
-    to: "/automation/palette-cli/commands/validator/",
+    to: "/automation/palette-cli/commands/ec/",
   },
   {
     from: "/user-management/palette-resource-limits/",
@@ -532,6 +532,10 @@ const redirects = [
   {
     from: "/security-bulletins/cve-reports/",
     to: "/security-bulletins/reports/",
+  },
+  {
+    from: "/automation/palette-cli/commands/validator/",
+    to: "/automation/palette-cli/commands/ec/",
   },
 ];
 
