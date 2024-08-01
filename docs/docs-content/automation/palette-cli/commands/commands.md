@@ -31,7 +31,7 @@ The following list contains all the supported Palette CLI subcommands. Click on 
 
 - [`pde`](pde.md) - Palette Developer Experience.
 
-- [`project`](project.md) - Manage Palette Projects.docs
+- [`project`](project.md) - Manage Palette Projects.
 
 ## Global Flags
 
