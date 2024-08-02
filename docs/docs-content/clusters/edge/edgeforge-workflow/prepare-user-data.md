@@ -15,18 +15,75 @@ configuration during site deployment as site-specific configuration. This can re
 installer configuration you provide to the installer ISO. For more information, refer to
 [Apply Site User Data](../site-deployment/site-installation/site-user-data.md).
 
-:::info
+This article guides you through several important configurations in the **user-data** file. However, you can use many
+additional parameters to further customize your installation. Review the Edge
+[Install Configuration](../edge-configuration/installer-reference.md) resource to learn more about all the supported
+configuration parameters you can use in the configuration user data.
 
-Review the Edge [Install Configuration](../edge-configuration/installer-reference.md) resource to learn more about all
-the supported configuration parameters you can use in the configuration user data.
-
-:::
+:::tip
 
 You can also use the Operating System (OS) pack to apply additional customization using cloud-init stages. Both the Edge
 Installer configuration file and the OS pack support the usage of cloud-init stages. Refer to the
 [Cloud-Init Stages](../edge-configuration/cloud-init.md) to learn more.
 
-## User Data Samples
+:::
+
+## Prerequisites
+
+## Prepare User Data
+
+1. From the **CanvOS** directory, copy the **user-data.template** file and name the copy **user-data**. This is a
+   template that you can use as a starting point to build your own user data file.
+
+### Configure Installation Mode
+
+2. Decide whether you want to deploy an Edge host that is connected to a Palette instance. The default configuration is
+   a connected Edge host. If you want to deploy an Edge host that is not connected to a Palette instance, you need to
+   change the installation mode to `airgap`. Add the `installationMode` parameter to under the `stylus` parameter.
+
+   ```yaml
+   #cloud-init
+   stylus:
+     installationMode: airgap
+   ```
+
+3. If you want to deploy the Edge host in `airgap` mode, skip this step.
+
+   If you want to deploy the Edge host in connected mode, you need to provide the Palette endpoint, in addition to
+   either a registration token or QR code registration configuration. For more information about Edge host registration,
+   refer to [Edge Host Registration](../site-deployment/site-installation/edge-host-registration.md).
+
+### Configure Users
+
+4. If you would like to have SSH access to your Edge host, you must configure Operating System (OS) users on your Edge
+   host. You can do this using the `stages` block.
+
+### Configure Cloud Init Stages (Optional)
+
+### Configure Proxy Settings (Optional)
+
+5. Optionally, you can configure HTTP/HTTPS proxy settings for your Edge host. This instructs the Edge host OS as well
+   as the Palette agent to use the proxy server for outbound communications. Use the parameters from the table below to
+   configure proxy settings for your Edge host.
+
+   | Parameter                | Description                                                                           |
+   | ------------------------ | ------------------------------------------------------------------------------------- |
+   | `siteNetwork.httpProxy`  | The URL of the HTTP proxy endpoint.                                                   |
+   | `siteNetwork.httpsProxy` | The URL of the HTTPS proxy endpoint.                                                  |
+   | `siteNetwork.noProxy`    | The list of IP addresses or CIDR ranges to exclude routing through the network proxy. |
+
+## Validate
+
+You can use the `+validate-user-data` build target of EdgeForge to validate that your user data follows the expected
+schema. You need to perform this action on an AMD64 (also known as x86_64) machine.
+
+From the **CanvOS** directory, issue the following command to validate your user data.
+
+```shell
+sudo ./earthly.sh +validate-user-data
+```
+
+## Full User Data Samples
 
 You may encounter the following scenarios when creating an Edge Installer configuration user data file. Use these
 examples as a starting point to help you create user data configurations that fit your needs.

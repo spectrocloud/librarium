@@ -75,6 +75,44 @@ stylus:
   installationMode: "connected"
 ```
 
+## Install Parameters
+
+| Parameter                                      | Description                                                                                         | Default |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------------- | ------- |
+| `install.bind_mounts`                          | The list of folders to bind mount from the installer to the Edge host                               | None    |
+| `install.grub_options`                         | GRUB options for the installer.                                                                     | None    |
+| `install.grub_options.extra_cmdline`           | Extra command options.                                                                              | None    |
+| `install.partitions.persistent`                | A persistent partition object. Accepts two parameters as follows in this table.                     | None    |
+| `install.partitions.persistent.size`           | The size of the persistent partition                                                                | None    |
+| `install.partitions.persistent.fs`             | The type of the file system for the persistent partition                                            | None    |
+| `install.partitions.extra-partitions`          | The list of extra partitions to create. Each list item accepts parameters as follows in this table. | None    |
+| `install.partitions.extra-partitions[*].name`  | The name of the extra partition                                                                     | None    |
+| `install.partitions.extra-partitions[*].size`  | The size of the extra partition                                                                     | None    |
+| `install.partitions.extra-partitions[*].fs`    | The file system of the extra partition                                                              | None    |
+| `install.partitions.extra-partitions[*].label` | The label of the extra partition                                                                    | None    |
+| `install.poweroff`                             | Whether to power off the Edge host after installation is complete.                                  | `False` |
+| `install.reboot`                               | Whether to reboot the Edge host after installation is complete                                      | `False` |
+
+## Cloud Init Stages
+
+| Parameter                          | Description                                                                                                                         | Default |
+| ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `stages.initramfs.users`           | The list of users to create at the `initramfs` stage. Each list item accepts parameters as follows in this table.                   | None    |
+| `stages.initramfs.users[*].groups` | The list of groups that the user belongs to.                                                                                        | None    |
+| `stages.initramfs.users[*].passwd` | The password of the user.                                                                                                           | None    |
+| `stages.rootfs`                    | The `rootfs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)               | None    |
+| `stages.boot`                      | The `boot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                 | None    |
+| `stages.fs`                        | The `fs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                   | None    |
+| `stages.network`                   | The `network` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)              | None    |
+| `stages.reconcile`                 | The `reconcile` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)            | None    |
+| `stages.after-install`             | The `after-install` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)        | None    |
+| `stages.after-install-chroot`      | The `after-install-chroot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md) | None    |
+| `stages.after-reset`               | The `after-reset` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)          | None    |
+| `stages.after-reset-chroot`        | The `after-reset-chroot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)   | None    |
+| `stages.before-install`            | The `before-install` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)       | None    |
+| `stages.before-upgrade`            | The `before-upgrade` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)       | None    |
+| `stages.before-reset`              | The `before-reset` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)         | None    |
+
 ## Initial Configuration
 
 You can configure the Edge Installer to enable the initial configuration in the Palette Terminal User Interface (TUI)
@@ -175,25 +213,25 @@ system file.
 
 Use the site network parameters to configure network settings so the edge host can communicate with Palette.
 
-| Parameter                | Description                                                                                                                           |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `siteNetwork.httpProxy`  | The URL of the HTTP proxy endpoint.                                                                                                   |
-| `siteNetwork.httpsProxy` | The URL of the HTTPS proxy endpoint.                                                                                                  |
-| `siteNetwork.noProxy`    | The list of IP addresses or CIDR ranges to exclude routing through the network proxy.                                                 |
-| `siteNetwork.interfaces` | The network settings respective to the interfaces. Review the [Network Parameters](#network-parameters) table below for more details. |
-| `siteNetwork.nameserver` | The IP address of the global DNS nameserver that requests should be routed to.                                                        |
+| Parameter                        | Description                                                                                                                           |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `stylus.site.network.httpProxy`  | The URL of the HTTP proxy endpoint.                                                                                                   |
+| `stylus.site.network.httpsProxy` | The URL of the HTTPS proxy endpoint.                                                                                                  |
+| `stylus.site.network.noProxy`    | The list of IP addresses or CIDR ranges to exclude routing through the network proxy.                                                 |
+| `stylus.site.network.interfaces` | The network settings respective to the interfaces. Review the [Network Parameters](#network-parameters) table below for more details. |
+| `stylus.site.network.nameserver` | The IP address of the global DNS nameserver that requests should be routed to.                                                        |
 
 ## Network Parameters
 
 Network settings specific to the network interface of the edge host. You can configure multiple interfaces.
 
-| Parameter                     | Description                                                                                        |
-| ----------------------------- | -------------------------------------------------------------------------------------------------- |
-| `networkInterface.ipAddress`  | The assigned IP address to the network interface.                                                  |
-| `networkInterface.mask`       | The network mask for the assigned IP address.                                                      |
-| `networkInterface.type`       | Defines how the IP address is assigned. Allowed values are `dhcp` or `static`. Defaults to `dhcp`. |
-| `networkInterface.gateway`    | The network gateway IP address.                                                                    |
-| `networkInterface.nameserver` | The IP address of the DNS nameserver this interface should route requests to.                      |
+| Parameter                                              | Description                                                                                        |
+| ------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| `stylus.site.network.interfaces.[NIC-NAME].ipAddress`  | The assigned IP address to the network interface.                                                  |
+| `stylus.site.network.interfaces.[NIC-NAME].mask`       | The network mask for the assigned IP address.                                                      |
+| `stylus.site.network.interfaces.[NIC-NAME].type`       | Defines how the IP address is assigned. Allowed values are `dhcp` or `static`. Defaults to `dhcp`. |
+| `stylus.site.network.interfaces.[NIC-NAME].gateway`    | The network gateway IP address.                                                                    |
+| `stylus.site.network.interfaces.[NIC-NAME].nameserver` | The IP address of the DNS nameserver this interface should route requests to.                      |
 
 ## Device ID (UID) Parameters
 
@@ -213,10 +251,10 @@ of the default path **/sys/class/dmi/id/product_uuid**, you can use the board Se
 **/sys/class/dmi/id/board_serial** by applying a `regex` parameter. Refer to the
 [regex syntax](https://github.com/google/re2/wiki/Syntax) reference guide to learn more.
 
-| Parameter | Description                                      |
-| --------- | ------------------------------------------------ |
-| `name`    | The path of the file containing the UID.         |
-| `regex`   | The regular expression pattern to match the UID. |
+| Parameter                             | Description                                      |
+| ------------------------------------- | ------------------------------------------------ |
+| `stylus.site.deviceUIDPaths[*].name`  | The path of the file containing the UID.         |
+| `stylus.site.deviceUIDPaths[*].regex` | The regular expression pattern to match the UID. |
 
 You can use the `regex` parameter to remove unsupported characters from attributes to Refer to the warning box below for
 a list of unsupported characters.
@@ -276,11 +314,11 @@ specify the same tag in a `tagsFromFile`, the tag from the `tag` object is what 
 You can specify tags from a file by using the `tagsFromFile` parameter object. The `tagsFromFile` parameter object
 accepts the following parameters.
 
-| Parameter   | Description                                            | Default Value |
-| ----------- | ------------------------------------------------------ | ------------- |
-| `fileName`  | The path to the file containing the tags.              | `''`          |
-| `delimiter` | The delimiter used to separate the key-value pairs.    | `\n`          |
-| `separator` | The separator used to separate the key from the value. | `:`           |
+| Parameter                                 | Description                                            | Default Value |
+| ----------------------------------------- | ------------------------------------------------------ | ------------- |
+| `stylus.site.tags.tagsFromFile.fileName`  | The path to the file containing the tags.              | `''`          |
+| `stylus.site.tags.tagsFromFile.delimiter` | The delimiter used to separate the key-value pairs.    | `\n`          |
+| `stylus.site.tags.tagsFromFile.separator` | The separator used to separate the key from the value. | `:`           |
 
 ```yaml
 #cloud-config
@@ -325,10 +363,10 @@ Example:
 
 The `tagsFromScript` parameter object accepts the following parameters.
 
-| Parameter    | Description                                        | Default Value |
-| ------------ | -------------------------------------------------- | ------------- |
-| `scriptName` | The path to the script that returns a JSON object. | `''`          |
-| `timeout`    | The timeout value in seconds.                      | `60`          |
+| Parameter                                    | Description                                        | Default Value |
+| -------------------------------------------- | -------------------------------------------------- | ------------- |
+| `stylus.site.tags.tagsFromScript.scriptName` | The path to the script that returns a JSON object. | `''`          |
+| `stylus.site.tags.tagsFromScript.timeout`    | The timeout value in seconds.                      | `60`          |
 
 ```yaml
 #cloud-config
