@@ -97,7 +97,7 @@ the following sections for a complete list of features, improvements, and known 
   not resolvable outside of the MAAS network. Refer to the [PXK](../integrations/kubernetes.md#custom-maas-endpoint)
   documentation for more details.
 
-- Support for [Konvoy](../integrations/konvoy.md) is now available in Palette. You can create a custom image using the
+- Support for <VersionedLink text="Konvoy" url="/integrations/packs/?pack=kubernetes-konvoy"/> is now available in Palette. You can create a custom image using the
   Konvoy image builder project and use it to deploy a Konvoy cluster. Check out the
   [Red Hat Linux Enterprise and Konvoy](../byoos/usecases/vmware/konvoy.md) guide to learn how to create a custom image
   and deploy a Konvoy cluster.
@@ -168,9 +168,13 @@ the following sections for a complete list of features, improvements, and known 
   Upgrade to a newer version of K3s to avoid the issue, such as versions 1.26.12, 1.28.5, and 1.27.11. You can learn
   more about the issue in the [K3s GitHub issue](https://github.com/k3s-io/k3s/issues/9047).
 
+<!-- prettier-ignore-start -->
+
 - When deploying a multi-node AWS EKS cluster with the Container Network Interface (CNI)
-  [Calico](../integrations/calico.md), the cluster deployments fail. A workaround is to use the AWS VPC CNI in the
-  interim while the issue is resolved.
+  <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico"/>, the cluster deployments fail. A workaround
+  is to use the AWS VPC CNI in the interim while the issue is resolved.
+
+<!-- prettier-ignore-end -->
 
 - If a Kubernetes cluster deployed onto VMware is deleted, and later re-created with the same name, the cluster creation
   process fails. The issue is caused by existing resources remaining inside PCG, or System PCG, that are not cleaned up
@@ -207,7 +211,7 @@ the following sections for a complete list of features, improvements, and known 
   [Edge Local UI](../clusters/edge/local-ui/local-ui.md) documentation.
 
 <!-- prettier-ignore -->
-- <TpBadge /> Edge hosts using a local [image registry through Harbor](../integrations/harbor-edge.md) can now also use a
+- <TpBadge /> Edge hosts using a local <VersionedLink text="image registry through Harbor" url="/integrations/packs/?pack=harbor-edge-native-config"/> can now also use a
   [private external image registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-external-registry.md) alongside the local
   registry. The feature allows the cluster to pull image from a private external image registry and store them in the
   local registry. Images for the add-on layers of the cluster will be pulled from the local registry, reducing bandwidth
@@ -229,17 +233,18 @@ the following sections for a complete list of features, improvements, and known 
 - Edge hosts using RKE2 as the Kubernetes distribution can now use the
   [network overlay](../clusters/edge/networking/vxlan-overlay.md) feature.
 
+<!-- prettier-ignore -->
 - Edge hosts using a local image registry through Harbor can now turn off image pulls from the local registry through
-  namespace annotations. Refer to the
-  [Harbor Edge](../integrations/harbor-edge.md#enable-image-download-from-outside-of-harbor) reference page to learn
+  namespace annotations. Refer to the <VersionedLink text="Harbor Edge" url="/integrations/packs/?pack=harbor-edge-native-config" /> reference page to learn
   more about the feature.
 
 #### Known issues
 
+<!-- prettier-ignore -->
 - If a cluster that uses the Rook-Ceph pack experiences network issues, it's possible for the file mount to become
   unavailable and will remain unavailable even after network is restored. This a known issue disclosed in the
   [Rook GitHub repository](https://github.com/rook/rook/issues/13818). To resolve this issue, refer to
-  [Rook-Ceph](../integrations/rook-ceph.md#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) pack
+  <VersionedLink text="Rook-Ceph" url="/integrations/packs/?pack=csi-rook-ceph"/> pack
   documentation.
 
 - Edge clusters on Edge hosts with ARM64 processors may experience instability issues that causes cluster failures.
@@ -265,10 +270,10 @@ the following sections for a complete list of features, improvements, and known 
   [Create and Manage Azure AKS Cluster](../clusters/public-cloud/azure/aks.md) guide to learn how to deploy an AKS
   cluster.
 
-- Support for [Konvoy](../integrations/konvoy.md) is now available in VerteX. You can create a custom image using the
-  Konvoy image builder project and use it to deploy a Konvoy cluster. Check out the
-  [Red Hat Linux Enterprise and Konvoy](../byoos/usecases/vmware/konvoy.md) guide to learn how to create a custom image
-  and deploy a Konvoy cluster.
+- Support for <VersionedLink text="Konvoy" url="/integrations/packs/?pack=kubernetes-konvoy"/> is now available in
+  VerteX. You can create a custom image using the Konvoy image builder project and use it to deploy a Konvoy cluster.
+  Check out the [Red Hat Linux Enterprise and Konvoy](../byoos/usecases/vmware/konvoy.md) guide to learn how to create a
+  custom image and deploy a Konvoy cluster.
 
 - Support for TLS 1.3 is now available in VerteX. Clusters deployed through VerteX and the VerteX instance cluster
   itself now support TLS 1.3.
