@@ -251,9 +251,7 @@ When you add the PXK pack to a cluster profile, Palette displays the OIDC IDP op
 
 All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes
 role to users and groups, refer to
-[Create Role Bindings](/clusters/cluster-management/cluster-rbac#create-role-bindings). You can also configure OIDC for
-virtual clusters. For guidance, refer to
-[Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
+[Create Role Bindings](/clusters/cluster-management/cluster-rbac#create-role-bindings).
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
 

@@ -28,7 +28,7 @@ In Edge deployments, Calico requires a bind mount on the host machine. Without t
 Calico pods to be stuck in the init state. Use the following example to create a bind mount from `/var/lib/calico` on
 the Edge host. When you build an installer ISO with the `bind_mounts` block, the folders specified in the block will be
 mounted. For more information about building the installer ISO, refer to
-[Build Installer ISO](../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md).
+[Build Installer ISO](../clusters/edge/edgeforge-workflow/build-content-bundle.md).
 
 ```yaml
 #cloud-config
@@ -59,7 +59,7 @@ In Edge deployments, Calico requires a bind mount on the host machine. Without t
 Calico pods to be stuck in the init state. Use the following example to create a bind mount from `/var/lib/calico` on
 the Edge host. When you build an installer ISO with the `bind_mounts` block, the folders specified in the block will be
 mounted. For more information about building the installer ISO, refer to
-[Build Installer ISO](../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md).
+[Build Installer ISO](../clusters/edge/edgeforge-workflow/build-content-bundle.md).
 
 ```yaml
 #cloud-config
@@ -89,7 +89,7 @@ In Edge deployments, Calico requires a bind mount on the host machine. Without t
 Calico pods to be stuck in the init state. Use the following example to create a bind mount from `/var/lib/calico` on
 the Edge host. When you build an installer ISO with the `bind_mounts` block, the folders specified in the block will be
 mounted. For more information about building the installer ISO, refer to
-[Build Installer ISO](../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md).
+[Build Installer ISO](../clusters/edge/edgeforge-workflow/build-content-bundle.md).
 
 ```yaml
 #cloud-config
@@ -120,7 +120,7 @@ In Edge deployments, Calico requires a bind mount on the host machine. Without t
 Calico pods to be stuck in the init state. Use the following example to create a bind mount from `/var/lib/calico` on
 the Edge host. When you build an installer ISO with the `bind_mounts` block, the folders specified in the block will be
 mounted. For more information about building the installer ISO, refer to
-[Build Installer ISO](../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md).
+[Build Installer ISO](../clusters/edge/edgeforge-workflow/build-content-bundle.md).
 
 ```yaml
 #cloud-config
@@ -151,7 +151,7 @@ In Edge deployments, Calico requires a bind mount on the host machine. Without t
 Calico pods to be stuck in the init state. Use the following example to create a bind mount from `/var/lib/calico` on
 the Edge host. When you build an installer ISO with the `bind_mounts` block, the folders specified in the block will be
 mounted. For more information about building the installer ISO, refer to
-[Build Installer ISO](../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md).
+[Build Installer ISO](../clusters/edge/edgeforge-workflow/build-content-bundle.md).
 
 ```yaml {14-16}
 #cloud-config

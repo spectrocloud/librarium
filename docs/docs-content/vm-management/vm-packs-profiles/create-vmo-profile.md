@@ -8,10 +8,10 @@ sidebar_position: 0
 tags: ["vmo"]
 ---
 
+<!-- prettier-ignore -->
 The **Virtual Machine Orchestrator** pack that you use to create a cluster profile conveniently includes several
-components and automatically installs the [Spectro Proxy](../../integrations/frp.md) pack when you use the default
-profile configuration. To learn about pack components, refer to
-[Virtual Machine Orchestrator Pack](../vm-packs-profiles/vm-packs-profiles.md).
+components and automatically installs the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack when you use the default profile configuration. To learn
+about pack components, refer to [Virtual Machine Orchestrator Pack](../vm-packs-profiles/vm-packs-profiles.md).
 
 ## Limitations
 

@@ -16,18 +16,6 @@ The Palette eXtended Kubernetes - Edge (PXK-E) pack supports Kubernetes clusters
 isolated locations like grocery stores, restaurants, and similar locations, versus a data center or cloud environment.
 We offer PXK-E as a core pack in Palette.
 
-### PXK and Palette VerteX
-
-The PXK-E used in [Palette VerteX](../vertex/vertex.md) is compiled and linked with our
-[NIST-certified FIPS crypto module](../legal-licenses/compliance.md#fips-140-2). PXK-E is by default enabled with
-[Ubuntu Pro](https://ubuntu.com/pro) with FIPS mode enabled. Additionally, the Operating System (OS) is hardened based
-on the NIST-800 standard. Refer to the
-[Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/fips.md) guide to learn more on how to build
-the PXK-E image with FIPS mode enabled.
-
-The combined usage of PXK-E and Palette VerteX provides a secure and FIPS-compliant experience as the Kubernetes
-distribution, OS, and management platform VerteX is FIPS-compliant.
-
 ### Support Lifecycle
 
 We support PXK-E for N-3 Kubernetes minor versions for a duration of 14 months. The duration exceeds the official EOL by

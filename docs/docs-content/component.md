@@ -131,43 +131,6 @@ This page lists the version details of various Palette components and their resp
 
 ---
 
-# Kubernetes Versions
-
-- Kubernetes: Refer to the Kubernetes [pack documentation](integrations/kubernetes.md).
-
-# Operating System Layer Versions
-
-| Operating System | Versions |
-| ---------------- | -------- |
-| Ubuntu           | 22.04    |
-| Ubuntu           | 20.04    |
-| Ubuntu           | 18.04    |
-| CentOS           | 7.7      |
-| CentOS           | 7.9      |
-| CentOS           | 8.0      |
-| OpenSuSE         | 14.4     |
-
-## Network Layer Versions
-
-- Calico: Refer to the Calico [pack documentation](integrations/calico.md).
-
-- Cilium: Refer to the Cilium [pack documentation](integrations/cilium.md).
-
-| Cilium Enterprise | Versions |
-| ----------------- | -------- |
-| 1.10.x            | 1.10.8   |
-
-## Storage Layer Version
-
-- Azure Disk: Refer to the [pack documentation](integrations/azure-disk.md).
-- GCE Persistent Disk: Refer to the [pack documentation](integrations/gce.md).
-- NFS Subdir External Provisioner: Refer to the [pack documentation](integrations/nfs-subdir-external.md).
-- Open Stack Cinder: Refer to the [pack documentation](integrations/openstack-cinder.md).
-- Portworx: Refer to the [pack documentation](integrations/portworx.md).
-- Rook Ceph: Refer to the [pack documentation](integrations/rook-ceph.md).
-- vSphere CSI: Refer to the [pack documentation](integrations/vsphere-csi.md).
-- vSphere Volume: Refer to the [pack documentation](integrations/vsphere-volume.md).
-
 ## Resources
 
 - [Packs List](integrations/integrations.mdx)

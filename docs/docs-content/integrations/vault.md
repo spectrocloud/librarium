@@ -18,42 +18,39 @@ tags: ["packs", "vault", "security"]
 HashiCorp provides documentation for many uses cases for Vault. For examples, refer to
 [HashiCorp Vault documentation](https://developer.hashicorp.com/vault/docs/use-cases).
 
-<TabItem label="0.6.x" value="0.6.x">
+#### Initialize and Unseal Vault
 
-- **0.6.0**
+If you enabled dev server mode, you do not need to initialize Vault and it is already unsealed. Use the root token you
+configured in the `values.yaml` file to sign in to Vault directly.
 
-</TabItem>
+Before any operation can be performed on Vault, you need to initialize the first root token and keys that can be used to
+unseal Vault. You can do so by following these steps:
 
-<TabItem label="0.3.x" value="0.3.x">
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-- **0.3.1**
+2. Navigate to the left **Main Menu** and select **Clusters**.
 
-</TabItem>
-</Tabs>
+3. Select the cluster that has Vault installed to view its details page.
 
-## Components
+4. Download the cluster **kubeconfig** file.
 
-Vault integration has the following components:
+5. Set up your local kubectl environment to use the **kubeconfig** file you downloaded. Review the
+   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) guide for additional guidance.
 
-- Vault server.
-- UI (Optional).
-- [Agent injector](https://www.vaultproject.io/docs/platform/k8s/injector/) (Optional).
+6. You need to get the Vault namespace and application name. Issue the following command to get the unique values.
 
-## Supported Use cases
+   <br />
 
-1. Running a Vault Service:
-   - Vault is set up to run in **Dev mode** by default and so, Vault will be unsealed and initialized.
-   - For production use cases, we recommend disabling Dev mode and enable HA.
-   - Also, see [Production Checklist](https://www.vaultproject.io/docs/platform/k8s/helm/run#architecture)
-     recommendations.
-1. Injecting application secrets from an external Vault into pods (**Agent Injector**).
-   - For running agent injector alone in the cluster, use v0.6.0 of Vault pack.
-   - Make sure to set `injector.externalVaultAddr` to point to the external Vault server.
+   ```shell
+   VAULT_NAMESPACE=$(kubectl get pods --selector app.kubernetes.io/name=vault --all-namespaces --output jsonpath='{.items[0].metadata.namespace}') && \
+   APP_NAME=$(echo "$VAULT_NAMESPACE" | sed 's/-ns$//')
+   ```
 
-## How secrets are injected in deployments?
+7. Set up port forwarding by issuing the following command so you can access the Vault UI:
 
-In Kubernetes clusters with Vault integrated, secrets can be injected into the application pods by adding the following
-annotations:
+   ```
+   kubectl port-forward $APP_NAME 8200:8200 --namespace $VAULT_NAMESPACE
+   ```
 
 8. Open your browser and access the Vault UI at `https://localhost:8200/ui`. You will receive a warning due to using a
    self-signed certificate, but you can ignore this warning. Follow the prompts on the UI to initialize your root token.

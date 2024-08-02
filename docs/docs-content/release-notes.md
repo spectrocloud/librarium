@@ -503,9 +503,9 @@ profiles, and more.
 
 #### Features:
 
-- Palette supports the provision of [MicroK8s clusters](integrations/microk8s.md). Microk8s deployments are quick and
-  ideal when creating disposal Kubernetes clusters. The MicroK8s pack supports automatic updates, security
-  configuration, and the ability to self-update Kubernetes dependencies.
+- Palette supports the provision of MicroK8s clusters. Microk8s deployments are quick and ideal when creating disposal
+  Kubernetes clusters. The MicroK8s pack supports automatic updates, security configuration, and the ability to
+  self-update Kubernetes dependencies.
 
 #### [Spectro Image Updates](spectro-downloads.md):
 
