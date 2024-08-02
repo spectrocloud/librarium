@@ -31,7 +31,7 @@ a virtual machine using Secure Copy Protocol (SCP).
   guidance.
 
 - A host cluster that is either publicly accessible OR a private host cluster that has the
-  [Spectro Proxy](../../integrations/frp.md) installed.
+  <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> installed.
 
 :::warning
 

@@ -6,58 +6,34 @@ hide_table_of_contents: true
 type: "integration"
 category: ["system app", "amd64"]
 sidebar_class_name: "hide-from-sidebar"
-logoUrl: "https://registry.spectrocloud.com/v1/generic-vm-vsphere/blobs/sha256:3b121dca3cbc7fed0153d3e1c8c3df20076ec200e091085a3a281ba08cb2261e?type=image.webp"
 tags: ["packs", "generic-vm-vsphere", "system app"]
 ---
 
-Generic-VM-vSphere is a Palette Add-on pack used to simplify deploying the virtual machine resource from a cluster
-profile or a system profile. Generic-VM-vSphere extracts all Terraform constructs inside the pack and exposes nothing
-but the values. Users will then have the ability to modify the add-on pack for the different applications.
+## Versions Supported
 
-<br />
-
-## Version Supported
-
-<Tabs queryString="versions">
+<Tabs queryString="parent">
 <TabItem label="1.0.x" value="1.0.x">
 
-- **1.0.4**
-- **1.0.0**
-
-</TabItem>
-</Tabs>
-
-<br />
-
-## Configuring Generic-VM-vSphere
+### Configure Generic-VM-vSphere
 
 To configure the Generic-VM-vSphere Add-on pack for the application cluster, the namespace value should be as follows:
 
 `cluster-{{ .spectro.system.cluster.uid }}`
-
-<br />
 
 ```yaml
 namespace: cluster-{{ .spectro.system.cluster.uid }}
 ```
 
 If multiple instances of this pack has to be deployed on the cluster for different virtual machine applications, then
-modify '`spectrocloud.com/display-name`' and '`releaseNameOverride`' with different names to make it unique across all
-the packs in the cluster.
-
-<br />
+modify `spectrocloud.com/display-name` and `releaseNameOverride` with different names to make it unique across all the
+packs in the cluster.
 
 ```yaml
 spectrocloud.com/display-name: vm-app-1
 releaseNameOverride:
 ```
 
-<br />
-<br />
-
-## Generic-VM-vSphere Pack Manifest
-
-<br />
+### Generic-VM-vSphere Pack Manifest
 
 ```yaml
 pack:
@@ -198,34 +174,30 @@ charts:
     #     echo "I am post exec"
 ```
 
-## Virtual Machine Hooks
+### Virtual Machine Hooks
 
 The Generic-VM-vSphere pack supports various hooks while deploying VM applications and supports multiple use-cases of
 customizing workflow, as customers require.
 
-<br />
-
-## Using extraVMHclConfig
+#### extraVMHclConfig
 
 The extraVMHclConfig command can be used to provide an extra configuration in the virtual machine and the configuration
 file should be provided in HashiCorp Configuration Language (HCL) format.
 
-```terraform
-# extraVMHclConfig: |
-#   cdrom {
-#     client_device = true
-#   }
+```hcl
+extraVMHclConfig: |
+  cdrom {
+    client_device = true
+   }
 ```
 
-## Using preExecCmd and postExecCmd
+#### preExecCmd and postExecCmd
 
 The **preExecCmd** and **postExecCmd** commands will be executed in every pod reconciliation. The loop runs at
 approximately a 2-minute interval.
 
 **preExecCMD** and **postVMInitCmd** are used to execute commands or scripts prior to virtual machine creation and after
 virtual machine creation respectively.
-
-<br />
 
 ```yaml
 preExecCmd: "bash /var/files/pre-exec.sh"
@@ -235,16 +207,16 @@ preExecCmd: "bash /var/files/pre-exec.sh"
 postExecCmd: "bash /var/files/pre-exec.sh"
 ```
 
-<br />
-
-## Using preVMInitCmd and postVMInitCmd
+#### preVMInitCmd and postVMInitCmd
 
 The **preVMInitCmd** command is executed, only when the virtual machine is being created or recreated. Likewise, the
 **postVMInitCmd** command is executed only after the virtual machine is created or recreated.
 
-**Note**: These commands will not be executed in each reconciliation.
+:::info
 
-<br />
+These commands will not be executed in each reconciliation.
+
+:::
 
 ```yaml
 preVMInitCmd: "echo 'Hey! Hang on tight. I am gonna create a VM.'"
@@ -254,44 +226,31 @@ preVMInitCmd: "echo 'Hey! Hang on tight. I am gonna create a VM.'"
 postVMInitCmd: "echo 'Ooho! VM is created.'"
 ```
 
-<br />
-
-## Using preVMDestroyCmd
+#### preVMDestroyCmd
 
 Any command or script provided in this virtual machine hook will execute before the virtual machine is destroyed. It
 will be executed only when the VM is getting deleted. A virtual machine deletion can happen for any reason, like
 changing anything in cloud-init or removing the pack from the profile.
 
-<br />
-
 ```yaml
 preVMDestroyCmd: ""
 ```
 
-<br />
-
 :::info
 
-During a first-time deployment, <b> preVMDestroyCmd</b> won't be invoked. However, if there is any change in cloud-init,
-then the VM resource will be recreated, preVMDestroyCmd will be invoked before deleting the VM, and once preVMDestroyCmd
-is executed successfully, only then the VM resource will be deleted.
+During a first-time deployment, `preVMDestroyCmd` won't be invoked. However, if there is any change in cloud-init, then
+the VM resource will be recreated, preVMDestroyCmd will be invoked before deleting the VM, and once preVMDestroyCmd is
+executed successfully, only then the VM resource will be deleted.
 
-<br />
-<br />
-Once the VM is deleted and before another virtual machine is created, <b>preVMInitCmd</b> will be invoked.
+Once the VM is deleted and before another virtual machine is created, `preVMInitCmd` will be invoked.
 
 :::
 
-<br />
-<br />
-
-## Mounts
+### Mounts
 
 Mount the data inside the existing configuration map or secret into the pod as files, where pre-and-post hooks are
 executed. This allows the data present in the configuration map or the secrets file to be accessible while running
 pre-and-post exec hooks.
-
-<br />
 
 ```yaml
 mounts:
@@ -307,15 +266,11 @@ mounts:
   #       path: /data/system-config-2
 ```
 
-<br />
-
-## Environment Variables
+### Environment Variables
 
 The ENVS section can inject data inside the existing config maps or secrets into the pod as environment variables, where
 pre-and post-hooks are executed so that data present in the config map or the secret file can be accessed while running
 pre-and-post exec hooks.
-
-<br />
 
 ```yaml
 envs:
@@ -329,14 +284,10 @@ envs:
     #       dataKey: "db.password"
 ```
 
-<br />
-
-## Files
+### Files
 
 Files present in this section will be added to the pod and will be accessible while executing pre-and-post execution
-hooks and absolute file path would be '/var/files/\<file_name>'.
-
-<br />
+hooks and absolute file path would be `/var/files/file_name`.
 
 ```yaml
 files:
@@ -350,4 +301,22 @@ files:
 #     echo "I am post exec"
 ```
 
-<br />
+</TabItem>
+</Tabs>
+
+## Terraform
+
+You can retrieve details about the Generic-VM-Libvirt pack by using the following Terraform code.
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "gatekeeper" {
+  name    = "generic-vm-vsphere"
+  version = "1.0.10"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```

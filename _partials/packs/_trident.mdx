@@ -1,0 +1,231 @@
+---
+partial_category: packs
+partial_name: trident
+---
+
+## Versions Supported
+
+<Tabs queryString="parent">
+<TabItem label="23.07.x" value="trident_23.07">
+
+After deploying Trident, you will need to create a backend and a storage class before you can start provisioning volumes
+and mounting those to any pods.
+
+### Create a Storage Backend
+
+Trident supports multiple storage backends. Select a supported backend that fits your needs. You can find example of
+different backends by reviewing the driver manifests examples in the official Trident
+[repository](https://github.com/NetApp/trident/tree/master/trident-installer/sample-input/backends-samples). If you
+decide to use one of the example configurations, make sure you update the configuration with your credentials and
+environment configurations.
+
+The example below creates a backend with the ONTAP-NAS driver.
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: backend-ontap-nas-secret
+  namespace: trident
+type: Opaque
+stringData:
+  username: [USERNAME]
+  password: [PASSWORD]
+---
+apiVersion: trident.netapp.io/v1
+kind: TridentBackendConfig
+metadata:
+  name: backend-ontap-nas
+  namespace: trident
+spec:
+  version: 1
+  storageDriverName: ontap-nas
+  managementLIF: [ONTAP_MANAGEMENT_LIF_IP]
+  dataLIF: [DATA_LIF_IP]
+  backendName: ontap-nas
+  autoExportCIDRs:
+    - [x.x.x.x/xx]
+  autoExportPolicy: true
+  svm: [SVM]
+  credentials:
+    name: backend-ontap-nas-secret
+```
+
+#### Create a Storage Class
+
+Kubernetes supports the ability to bind statically or dynamically provisioned volumes to pods. Statically provisioned
+volumes are manually created by a user and then referenced in a deployment. Astra Trident allows you to leverage your
+NetApp storage. You must create a storage class before you can request dynamically provisioned volumes.
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: trident-csi
+  namespace: trident
+provisioner: csi.trident.netapp.io
+parameters:
+  backendType: "ontap-nas"
+  csi.storage.k8s.io/fstype: ext4
+```
+
+#### Provision Volumes
+
+An example of provisioning a Persistent Volume Claim (PVC).
+
+```yaml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: trident-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: trident-csi
+```
+
+#### Deploy a Pod and Mount the Volume.
+
+The following code snippet is an example of a pod deployment. The pod contains an Nginx container, with a claim to the
+previously created PVC. Once deployed, the PVC with its bound Persistent Volume (PV), will mount to the pod and provide
+persistent storage to this application.
+
+```yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: example-pv-pod
+  namespace: trident
+spec:
+  volumes:
+    - name: example-pv-vol
+      persistentVolumeClaim:
+        claimName: trident-pvc
+  containers:
+    - name: example-pv-pod
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: example-pv-vol
+```
+
+</TabItem>
+
+<TabItem label="23.01.x" value="trident_23.01">
+
+After deploying Trident, you will need to create a backend and a storage class before you can start provisioning volumes
+and mounting those to any pods.
+
+### Create a Storage Backend
+
+Trident supports multiple storage backends. Select a supported backend that fits your needs. You can find example of
+different backends by reviewing the driver manifests examples in the official Trident
+[repository](https://github.com/NetApp/trident/tree/master/trident-installer/sample-input/backends-samples). If you
+decide to use one of the example configurations, make sure you update the configuration with your credentials and
+environment configurations.
+
+The example below creates a backend with the ONTAP-NAS driver.
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: backend-ontap-nas-secret
+  namespace: trident
+type: Opaque
+stringData:
+  username: [USERNAME]
+  password: [PASSWORD]
+---
+apiVersion: trident.netapp.io/v1
+kind: TridentBackendConfig
+metadata:
+  name: backend-ontap-nas
+  namespace: trident
+spec:
+  version: 1
+  storageDriverName: ontap-nas
+  managementLIF: [ONTAP_MANAGEMENT_LIF_IP]
+  dataLIF: [DATA_LIF_IP]
+  backendName: ontap-nas
+  autoExportCIDRs:
+    - [x.x.x.x/xx]
+  autoExportPolicy: true
+  svm: [SVM]
+  credentials:
+    name: backend-ontap-nas-secret
+```
+
+#### Create a Storage Class
+
+Kubernetes supports the ability to bind statically or dynamically provisioned volumes to Pods. Statically provisioned
+volumes are manually created by a user and then referenced in a deployment. Astra Trident allows you to leverage your
+NetApp storage. You must create a storage class before you can request dynamically provisioned volumes.
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: trident-csi
+  namespace: trident
+provisioner: csi.trident.netapp.io
+parameters:
+  backendType: "ontap-nas"
+  csi.storage.k8s.io/fstype: ext4
+```
+
+#### Provision Volumes
+
+An example of provisioning a Persistent Volume Claim (PVC).
+
+```yaml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: trident-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: trident-csi
+```
+
+#### Deploy a Pod and Mount the Volume.
+
+The following code snippet is an example of a pod deployment. The pod contains an Nginx container, with a claim to the
+previously created PVC. Once deployed, the PVC with its bound Persistent Volume (PV), will mount to the pod and provide
+persistent storage to this application.
+
+```yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: example-pv-pod
+  namespace: trident
+spec:
+  volumes:
+    - name: example-pv-vol
+      persistentVolumeClaim:
+        claimName: trident-pvc
+  containers:
+    - name: example-pv-pod
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: example-pv-vol
+```
+
+</TabItem>
+
+</Tabs>
