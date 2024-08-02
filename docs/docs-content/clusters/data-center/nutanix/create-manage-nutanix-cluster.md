@@ -25,7 +25,8 @@ section guides you in creating and updating a Kubernetes cluster in a Nutanix cl
   [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md).
   At the **Cloud Type** step of profile creation, select **Nutanix** listed under the **Tech Preview**. Select the
   custom packs provided at the OS and Kubernetes layers. Palette provides out-of-the-box packs for the network and
-  storage profile layers, including the [**Nutanix CSI**](../../../integrations/nutanix-csi.md) storage pack.
+  storage profile layers, including the <VersionedLink text="Nutanix CSI" url="/integrations/packs/?pack=nutanix-csi"/>
+  storage pack.
 
 - A Nutanix Prism Central account with _Prism Admin_ role.
 
