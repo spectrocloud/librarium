@@ -137,6 +137,7 @@ const FilteredTable: React.FC = () => {
   const [deprecatedPacks, setDeprecatedPacks] = useState<Pack[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     fetch("/packs-data/packs_report.json")
@@ -163,15 +164,20 @@ const FilteredTable: React.FC = () => {
       });
   }, []);
 
-  const handleSearch = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    // Delay the update to the search value by 300ms to debounce the search
-    const timer = setTimeout(() => {
-      setSearchValue(value);
-    }, 300);
+  const handleSearch = useCallback(
+    (searchString: string) => {
+      if (timer) {
+        clearTimeout(timer);
+      }
 
-    return () => clearTimeout(timer);
-  }, []);
+      const newTimer = setTimeout(() => {
+        setSearchValue(searchString);
+      }, 300);
+
+      setTimer(newTimer);
+    },
+    [timer]
+  );
 
   const filteredPacks = searchValue
     ? deprecatedPacks.filter((pack) => pack.displayName.toLowerCase().includes(searchValue.toLowerCase()))

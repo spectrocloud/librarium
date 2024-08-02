@@ -5,6 +5,11 @@ declare module "*.module.scss" {
   export default classes;
 }
 
+declare module "*.md" {
+  const value: string; // markdown is just a string
+  export default value;
+}
+
 declare module "*.scss" {
   const src: string;
   export default src;
