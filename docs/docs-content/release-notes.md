@@ -626,8 +626,9 @@ Export of Profiles, Terraform Releases, and many exciting enhancements.
 - Palette enables the reuse and sharing of large profiles with many add-ons and integrations to be
   [exported and imported](profiles/cluster-profiles/export-import-cluster-profile.md) across multiple environments,
   projects, and tenants.
-- Palette customers can now provision the fully conformant Kubernetes distribution [RKE2](./integrations/rke2.md)
-  focusing on security and compliance.
+  <!-- prettier-ignore -->
+- Palette customers can now provision the fully conformant Kubernetes distribution
+  <VersionedLink text="RKE2" url="/integrations/packs.?pack=kubernetes-rke2" /> focusing on security and compliance.
 - The latest Palette Terraform releases, [Module 0.2.3 and Module 0.3.0](./automation/terraform/terraform.md#modules),
   focus on:
   - Cluster resource tagging
