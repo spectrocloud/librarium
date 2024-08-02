@@ -79,7 +79,7 @@ registry URL and the credentials needed to authenticate with the registry in the
     <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi" /> pack page. The
     `providerCredentials.password` field will be masked when you provide it in the YAML file. You can also use a macro
     to store your credentials instead of providing it directly in the YAML file. For more information, refer to
-    [Macros Support](../../../cluster-management/macros.md):
+    [Macros Support](../../cluster-management/macros.md):
     <!-- prettier-ignore-end -->
 
         ```yaml {7-8}

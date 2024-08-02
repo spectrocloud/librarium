@@ -14,7 +14,7 @@ allows your Edge cluster to reboot containers or add new nodes without being con
 
 If you specified the installation mode of the Edge Installer to be `airgap`, any images that were included in the Edge
 Installer ISO will also be loaded into the Harbor registry. For more information about building content bundles, refer
-to [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
+to [Build Content Bundle](../edgeforge-workflow/build-content-bundle.md) and
 [Build Edge Artifacts with Content Bundles](../../edgeforge-workflow/palette-canvos/palette-canvos.md).
 
 <!-- prettier-ignore-start -->
