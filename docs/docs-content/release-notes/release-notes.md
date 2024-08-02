@@ -245,9 +245,9 @@ notes below to learn more about the new features and improvements.
     to our support team [support@spectrocloud.com](mailto:support@spectrocloud.com) if you need to remove a node with
     the `palette-webhook` pod on it.
 
-- In a multi-node cluster with [PXK-E](../integrations/kubernetes-edge.md) as the Kubernetes distribution, you cannot
-  change the Network Interface Card (NIC). When you add an Edge host to such a cluster, leave the NIC field as its
-  default value.
+- In a multi-node cluster with <VersionedLink text="PXK-E" url="/integrations/packs/?pack=edge-k8s" /> as the Kubernetes
+  distribution, you cannot change the Network Interface Card (NIC). When you add an Edge host to such a cluster, leave
+  the NIC field as its default value.
 
 - The following known issues apply to [Harbor Edge Native Config](../integrations/harbor-edge.md) when deployed with the
   [Longhorn](../integrations/longhorn.md) Container Storage Interface (CSI) driver:
