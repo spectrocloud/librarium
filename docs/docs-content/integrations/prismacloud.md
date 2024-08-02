@@ -10,21 +10,18 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/prismacloud/blobs/sha256:9ddb
 tags: ["packs", "prismacloud", "security"]
 ---
 
-Prisma Cloud Compute is a cloud workload protection platform (CWPP) offering protection for hosts, containers, and
-server-less deployments in any cloud, and across the software lifecycle. Prisma Cloud Compute is cloud-native and
-API-enabled. It can protect tenant workloads, regardless of the underlying compute technology or the cloud deployment.
+## Terraform
 
-## Versions Supported
+You can reference the Prisma Cloud Compute pack in Terraform with the following data resource.
 
-<Tabs queryString="versions">
-
-<TabItem label="20.9.x" value="20.9.x">
-
-**20.9.0**
-
-</TabItem>
-</Tabs>
-
-## References
-
-- [Prisma Cloud Compute Documentation](https://docs.paloaltonetworks.com/prisma/prisma-cloud)
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+data "spectrocloud_pack" "prisma" {
+  name    = "prismacloud"
+  version = "20.09.0"
+  type = "manifest"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```

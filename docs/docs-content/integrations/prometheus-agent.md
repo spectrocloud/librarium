@@ -10,38 +10,19 @@ logoUrl: "https://registry.spectrocloud.com/v1/prometheus-operator/blobs/sha256:
 tags: ["packs", "prometheus-agent", "monitoring"]
 ---
 
-Prometheus is an open-source monitoring and alerting system that is designed to collect and analyze metrics from various
-systems and services.
-
-Prometheus is built around a time-series database that stores metrics data. It uses a flexible querying language called
-PromQL to extract and process metrics data. Prometheus also has a powerful alerting system that can be used to send
-notifications when specific conditions are met.
-
-Prometheus can be used to monitor a wide range of systems and services, including servers, containers, databases, and
-applications. It can be deployed in a variety of environments, including on-prem, cloud, and hybrid setups.
-
-The Prometheus Agent pack works in tandem with the [Prometheus Operator pack](prometheus-operator.md). Check out the
-guides [Deploy Monitoring Stack](../clusters/cluster-management/monitoring/deploy-monitor-stack.md) and
-[Enable Monitoring on Host Cluster](../clusters/cluster-management/monitoring/deploy-agent.md) to learn how to create a
-monitoring stack with Prometheus for your Palette environment.
-
 ## Versions Supported
 
-**19.0.X**
+<Tabs queryString="parent">
 
-## Prerequisites
+<TabItem label="19.0.x" value="19.0.x">
 
-- A host cluster that has the [Prometheus Operator pack](prometheus-operator.md) installed.
-
-## Parameters
+## Configure the Prometheus Agent Pack
 
 The Prometheus agent supports all the parameters exposed by the Prometheus Helm Chart. Refer to the
 [Prometheus Helm Chart](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus#configuration)
 documentation for details.
 
 From a Palette perspective, you must provide a value for the `remoteWrite.url` parameter shown in the following example.
-
-<br />
 
 ```yaml
 charts:
@@ -60,8 +41,6 @@ The following image displays a host cluster with the Prometheus Operator pack in
 
 ![A view of the cluster details page with a highlighted box around the Prometheus service URL](/integrations_prometheus-agent_cluster-detail-view.webp)
 
-<br />
-
 :::warning
 
 The Prometheus server URL must be in the format `http://HOST:PORT/api/v1/write`. Example:
@@ -71,8 +50,6 @@ The Prometheus server URL must be in the format `http://HOST:PORT/api/v1/write`.
 
 If the Prometheus server is configured with authentication, add the authentication parameters. Replace `<USERNAME>` and
 `<PASSWORD>` with the actual credential values.
-
-<br />
 
 ```yaml
 charts:
@@ -86,13 +63,7 @@ charts:
             password: <PASSWORD>
 ```
 
-## Usage
-
-The Prometheus agent pack works out-of-the-box and only requires you to provide a Prometheus server URL. Add the
-Prometheus agent pack to a cluster profile to get started with Prometheus. You can create a new cluster profile that has
-the Prometheus agent as an add-on pack or you can update an existing cluster profile by adding the Prometheus agent
-pack. For guidance, review
-[Update a Cluster Profile](../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md).
+## Access the Grafana Dashboard
 
 Log in to the Grafana dashboard to view and create dashboards. You can find the Grafana dashboard URL by reviewing the
 details of the Kubernetes cluster hosting the Prometheus server. Use the URL exposed by the
@@ -116,8 +87,6 @@ The following dashboards are available by default:
 
 - Kubernetes/Views/Pods: A view of all the pods in a node with the Prometheus agent installed.
 
-<br />
-
 :::info
 
 Use the filters to narrow down the information displayed. All Palette dashboards include the **project** and **cluster**
@@ -128,27 +97,23 @@ filter.
 We encourage you to check out the [Grafana](https://grafana.com/tutorials/) tutorials and learning resources to learn
 more about Grafana.
 
+</TabItem>
+
+</Tabs>
+
 ## Terraform
 
-You can retrieve details about the Prometheus agent pack by using the following Terraform code.
+You can reference the Prometheus Agent pack in Terraform with the following data resource.
 
 ```hcl
 data "spectrocloud_registry" "public_registry" {
   name = "Public Repo"
 }
 
-data "spectrocloud_pack_simple" "pack-info" {
+data "spectrocloud_pack" "prometheus" {
   name         = "prometheus-agent"
   version      = "19.0.2"
   type         = "helm"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
-
-# References
-
-- [Prometheus Operator pack](prometheus-operator.md)
-
-- [Prometheus Helm Chart](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus#configuration)
-
-- [Grafana Tutorials](https://grafana.com/tutorials/)
