@@ -130,9 +130,10 @@ To create a role binding the role must exist inside the host cluster. You can us
 [default cluster roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) provided by
 Kubernetes. The alternative to default cluster roles is to create a role by using a manifest in the cluster profile.
 
+<!-- prettier-ignore -->
 If you have OpenID Connect (OIDC) configured at the Kubernetes layer of your cluster profile, you can create a role
 binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. To learn more,
-review [Use RBAC with OIDC](../../integrations/kubernetes-generic.md#configure-custom-oidc).
+review <VersionedLink text="Use RBAC with OIDC" url="/integrations/packs/?pack=kubernetes-aws" />.
 
 ### Enablement
 

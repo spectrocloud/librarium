@@ -334,9 +334,8 @@ edge devices, new [out-of-the-box services](devx/services/service-listings/servi
 - Palette introduces a new user sign-in flow for users who previously created an account through SSO and who are a
   member of different organizations. Palette prompts you to select the organization to log in to. If you need help
   remembering, you can retrieve it using “Forgot your organization name?”.
-- Palette now provides a streamlined experience for users when installing
-  [Kubernetes dashboard](integrations/spectro-k8s-dashboard.md). When adding Kubernetes dashboard as a pack, Palette
-  displays relevant configuration items directly in the pack UI.
+- Palette now provides a streamlined experience for users when installing Kubernetes dashboard. When adding Kubernetes
+  dashboard as a pack, Palette displays relevant configuration items directly in the pack UI.
 - Palette now auto-cleans deleted clusters, deployments, cluster profiles, cloud accounts, edge hosts, and other
   resources. Users can expect auto cleanup to take approximately 15 minutes.
 - Additional filtering options are available to apply to clusters. Users can filter by region and country with
@@ -503,9 +502,9 @@ profiles, and more.
 
 #### Features:
 
-- Palette supports the provision of [MicroK8s clusters](integrations/microk8s.md). Microk8s deployments are quick and
-  ideal when creating disposal Kubernetes clusters. The MicroK8s pack supports automatic updates, security
-  configuration, and the ability to self-update Kubernetes dependencies.
+- Palette supports the provision of MicroK8s clusters. Microk8s deployments are quick and ideal when creating disposal
+  Kubernetes clusters. The MicroK8s pack supports automatic updates, security configuration, and the ability to
+  self-update Kubernetes dependencies.
 
 #### [Spectro Image Updates](spectro-downloads.md):
 
@@ -554,8 +553,9 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](clusters/edge/edge.md
 - Palette enterprise mode production clusters can be backed up to
   [Azure Blob storage](clusters/cluster-management/backup-restore/backup-restore.md) for convenient restoration.
 
-- Palette provisions cluster monitoring with [Kubernetes Dashboard](integrations/spectro-k8s-dashboard.md) exposed to
-  external traffic using [Spectro Proxy](integrations/frp.md) pack with RBAC authentication.
+<!-- prettier-ignore -->
+- Palette provisions cluster monitoring with Kubernetes Dashboard exposed to
+  external traffic using <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack with RBAC authentication.
 
 **Enhancements**
 
@@ -625,8 +625,9 @@ Export of Profiles, Terraform Releases, and many exciting enhancements.
 - Palette enables the reuse and sharing of large profiles with many add-ons and integrations to be
   [exported and imported](profiles/cluster-profiles/export-import-cluster-profile.md) across multiple environments,
   projects, and tenants.
-- Palette customers can now provision the fully conformant Kubernetes distribution [RKE2](./integrations/rke2.md)
-  focusing on security and compliance.
+  <!-- prettier-ignore -->
+- Palette customers can now provision the fully conformant Kubernetes distribution
+  <VersionedLink text="RKE2" url="/integrations/packs.?pack=kubernetes-rke2" /> focusing on security and compliance.
 - The latest Palette Terraform releases, [Module 0.2.3 and Module 0.3.0](./automation/terraform/terraform.md#modules),
   focus on:
   - Cluster resource tagging
@@ -716,9 +717,8 @@ Advantage, Cluster Migration from Private Cloud Gateway, enhanced Workspace, and
   time, users can grant additional permissions to manage Day 2 operations.
 - Palette now supports [Windows worker nodes](/clusters/public-cloud/azure) in addition to the Linux worker nodes for
   Azure Kubernetes Services (AKS) clusters.
-- Palette ensures Security and OS patching benefits with
-  [Canonical's Ubuntu Advantage](./integrations/ubuntu.md#ubuntu-pro) for Infrastructure subscription with Ubuntu as an
-  OS layer for multiple operating environments.
+- Palette ensures Security and OS patching benefits with Canonical's Ubuntu Advantage for Infrastructure subscription
+  with Ubuntu as an OS layer for multiple operating environments.
 - Automatically scale the workload resources of your Azure Kubernetes Services (AKS) clusters with
   [AKS Autoscaler](/clusters/public-cloud/azure) to meet the dynamic user workloads.
 - Palette leverages the Container Storage Interface (CSI) and Container Network Interface (CNI) layers using Helm Chart
@@ -731,8 +731,7 @@ Advantage, Cluster Migration from Private Cloud Gateway, enhanced Workspace, and
 
 **Enhancements:**
 
-- Palette [Azure CNI Pack](./integrations/azure-cni.md) ensures advanced traffic flow control using Calico Policies for
-  AKS clusters.
+- Palette Azure CNI Pack ensures advanced traffic flow control using Calico Policies for AKS clusters.
 - Palette supports the [migration of Private Cloud Gateway (PCG)](clusters/clusters.md) traffic from unhealthy to
   healthy PCG without compromising service availability.
 - Palette Workspace upgraded with
@@ -763,7 +762,7 @@ added Parameters capabilities.
 
 - Palette covers a long list of
   [parameters](https://github.com/kubernetes-sigs/aws-ebs-csi-driver#createvolume-parameters) and customization
-  capabilities for the [csi-aws-1.0.0](./integrations/aws-ebs.md) pack manifest.
+  capabilities for the csi-aws-1.0.0 pack manifest.
 
 **Enhancement:**
 
@@ -811,7 +810,7 @@ offerings, many enhancements, and bug fixes.
 
 **Packs and Integrations:**
 
-- [Ubuntu 20.04](/integrations/ubuntu)- A long term support release of highly popular Ubuntu Linux Operating System.
+- Ubuntu 20.04- A long term support release of highly popular Ubuntu Linux Operating System.
 - Imageswap-webhook—a mutating webhook integration that intercepts pod requests and changes to the container image
   location.
 
@@ -1069,8 +1068,7 @@ Other new features:
   automatic payments using credit/debit cards.
 - Pack constraints have been enabled to reduce the chances of cluster deployment failures that might occur due to
   incorrect values being set.
-- Compatibility for Portworx version 2.6.1, Calico version 3.16, and for newer versions for
-  [Kubernetes](/integrations/kubernetes/).
+- Compatibility for Portworx version 2.6.1, Calico version 3.16, and for newer versions for Kubernetes.
 
 ## December 03, 2020 - Hotfix 1.5.7
 

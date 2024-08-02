@@ -21,6 +21,4 @@ compatibility with your existing applications. The OS you bring can be commercia
 
 - [Create Images with Image Builder](../byoos/image-builder.md)
 
-- [BYOOS Pack](../integrations/byoos.md)
-
-<br />
+- <VersionedLink text="BYOOS Pack" url="/integrations/packs/?pack=generic-byoi" />

@@ -7,9 +7,11 @@ sidebar_position: 10
 tags: ["edge"]
 ---
 
+<!-- prettier-ignore -->
 Edge supports the ability for you to specify a custom Operating System (OS) for your Edge host runtime. Building a
 system using your choice of OS requires creating a [Kairos-base](https://kairos.io/) image with your custom OS. The
-Palette feature, [Bring Your Own OS (BYOOS)](/integrations/byoos) allows you to use a custom OS in a cluster profile.
+Palette feature, <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=edge-native-byoi" />
+allows you to use a custom OS in a cluster profile.
 
 As an example, the following steps will guide you on how to build a Kairos-based Red Hat Enterprise Linux (RHEL) image.
 Use the same steps for any other operating system.
@@ -20,8 +22,7 @@ Use the same steps for any other operating system.
 
 BYOOS gives you the flexibility to tailor and manage the OS layer in your cluster profiles, ensuring that clusters
 perform optimally to meet your environment needs. To learn how to use your own OS images with an Edge cluster profile,
-refer to the
-[Model Edge Native Cluster Profile](https://docs.spectrocloud.com/clusters/edge/site-deployment/model-profile) guide.
+refer to the [Model Edge Native Cluster Profile](../site-deployment/model-profile.md) guide.
 
 :::
 
@@ -92,17 +93,11 @@ docker push [your image repository]/rhel8-kairos:1.0
 
 ---
 
-<br />
-
-Your image will be used in the [Build Images](/clusters/edge/edgeforge-workflow/build-images) step and become part of
-your Edge artifact. The custom OS you created will also be used in the OS layer of the cluster profile by using the
-[Bring Your Own OS (BYOOS)](/integrations/byoos) pack.
-
-<br />
+<!-- prettier-ignore -->
+Your image will be used in the [Build Images](build-images.md) step and become part of
+your Edge artifact. The custom OS you created will also be used in the OS layer of the cluster profile by using the <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=edge-native-byoi" /> pack.
 
 ## Next Steps
 
 Your next step is to evaluate if you need to create a content bundle. To create a content bundle, check out the
-[Build Content Bundle](/clusters/edge/edgeforge-workflow/build-content-bundle) guide.
-
-<br />
+[Build Content Bundle](build-content-bundle.md) guide.

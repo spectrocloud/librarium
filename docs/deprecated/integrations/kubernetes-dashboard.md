@@ -62,9 +62,10 @@ when used with the default settings. To learn more, check out
 
 :::warning
 
+<!-- prettier-ignore -->
 Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized
 experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack.
-To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
+To learn more about it and start using it, check out the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack.
 
 :::
 
@@ -289,9 +290,10 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 :::warning
 
+<!-- prettier-ignore -->
 Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized
 experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack.
-To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
+To learn more about it and start using it, check out the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack.
 
 :::
 
@@ -403,9 +405,10 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 :::warning
 
+<!-- prettier-ignore -->
 Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized
 experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack.
-To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
+To learn more about it and start using it, check out the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack.
 
 :::
 
@@ -517,9 +520,10 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 :::warning
 
+<!-- prettier-ignore -->
 Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized
 experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack.
-To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
+To learn more about it and start using it, check out the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack.
 
 :::
 
@@ -631,9 +635,10 @@ Use the `service.loadBalancerIP` and `service.externalPort` parameters to connec
 
 :::warning
 
+<!-- prettier-ignore -->
 Starting with Kubernetes Dashboard version 2.7.0, the **Connect** button is no longer available. For an optimized
 experience, we recommend you use the pre-configured version of this dashboard, called Spectro Kubernetes Dashboard pack.
-To learn more about it and start using it, check out the [Spectro Kubernetes Dashboard](spectro-k8s-dashboard.md) guide.
+To learn more about it and start using it, check out the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack.
 
 :::
 

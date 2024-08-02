@@ -1,0 +1,293 @@
+---
+partial_category: packs
+partial_name: ubuntu
+---
+
+:::info
+
+<!-- prettier-ignore -->
+
+Review the <VersionedLink text="Maintenance Policy" url="/integrations/maintenance-policy/#os-packs" /> page to learn about our pack update and deprecation schedules.
+
+
+:::
+
+## Version Supported
+
+<Tabs queryString="parent">
+<TabItem label="22.04 LTS" value="22.04.x">
+
+<!-- prettier-ignore -->
+
+To use the Ubuntu OS pack, add the pack to your cluster profile when you select the OS layer. Refer to the <VersionedLink text="Create an Infrastructure Profile" url="/profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile" />
+guide to learn more.
+
+
+#### Add Custom Files
+
+You can create custom files that you define in the `files` section that precedes the `preKubeadmCommands` and
+`postKubeadmCommands` sections. The files are invoked during runtime.
+
+```yaml
+kubeadmconfig:
+  files:
+    - targetPath: /usr/local/share/ca-certificates/mycom.crt
+      targetOwner: "root:root"
+      targetPermissions: "0644"
+      content: |
+        -----BEGIN CERTIFICATE-----
+        MIICyzCCAbOgAwIBAgIBADANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwprdWJl
+        cm5ldGVzMB4XDTIwMDkyMjIzNDMyM1oXDTMwMDkyMDIzNDgyM1owFTETMBEGA1UE
+        AxMKa3ViZXJuZXRlczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMdA
+        nZYs1el/6f9PgV/aO9mzy7MvqaZoFnqO7Qi4LZfYzixLYmMUzi+h8/RLPFIoYLiz
+        qiDn+P8c9I1uxB6UqGrBt7dkXfjrUZPs0JXEOX9U/6GFXL5C+n3AUlAxNCS5jobN
+        fbLt7DH3WoT6tLcQefTta2K+9S7zJKcIgLmBlPNDijwcQsbenSwDSlSLkGz8v6N2
+        7SEYNCV542lbYwn42kbcEq2pzzAaCqa5uEPsR9y+uzUiJpv5tDHUdjbFT8tme3vL
+        9EdCPODkqtMJtCvz0hqd5SxkfeC2L+ypaiHIxbwbWe7GtliROvz9bClIeGY7gFBK
+        jZqpLdbBVjo0NZBTJFUCAwEAAaMmMCQwDgYDVR0PAQH/BAQDAgKkMBIGA1UdEwEB
+        /wQIMAYBAf8CAQAwDQYJKoZIhvcNAQELBQADggEBADIKoE0P+aVJGV9LWGLiOhki
+        HFv/vPPAQ2MPk02rLjWzCaNrXD7aPPgT/1uDMYMHD36u8rYyf4qPtB8S5REWBM/Y
+        g8uhnpa/tGsaqO8LOFj6zsInKrsXSbE6YMY6+A8qvv5lPWpJfrcCVEo2zOj7WGoJ
+        ixi4B3fFNI+wih8/+p4xW+n3fvgqVYHJ3zo8aRLXbXwztp00lXurXUyR8EZxyR+6
+        b+IDLmHPEGsY9KOZ9VLLPcPhx5FR9njFyXvDKmjUMJJgUpRkmsuU1mCFC+OHhj56
+        IkLaSJf6z/p2a3YjTxvHNCqFMLbJ2FvJwYCRzsoT2wm2oulnUAMWPI10vdVM+Nc=
+        -----END CERTIFICATE-----
+  preKubeadmCommands:
+    - echo "Executing pre kube admin config commands"
+    - update-ca-certificates
+    - "systemctl restart containerd; sleep 3"
+    - 'while [ ! -S /var/run/containerd/containerd.sock ]; do echo "Waiting for containerd..."; sleep 1; done'
+  postKubeadmCommands:
+    - echo "Executing post kube admin config commands"
+```
+
+In the next example, a configuration file is added to a folder.
+
+```yaml
+kubeadmconfig:
+  files:
+    - targetPath: /etc/containerd/config.toml
+      targetOwner: "root:root"
+      targetPermissions: "0644"
+      content: |
+        version = 2
+        imports = ["/etc/containerd/conf.d/*.toml"]
+        [plugins]
+          [plugins."io.containerd.grpc.v1.cri"]
+            sandbox_image = "registry.k8s.io/pause:3.9"
+            device_ownership_from_security_context = true
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+            runtime_type = "io.containerd.runc.v2"
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+            SystemdCgroup = true
+  preKubeadmCommands:
+    - 'echo "====> Applying pre Kubeadm commands"'
+  postKubeadmCommands:
+    - 'echo "====> Applying post Kubeadm commands"'
+```
+
+### Ubuntu Pro
+
+Ubuntu Pro is a security and maintenance subscription offering from Canonical that offers long-term security support and
+many other security hardening features. Ubuntu Pro offers several more benefits than the free Ubuntu offering:
+
+- Extended Security Maintenance
+
+- Kernel Livepatch service to avoid reboots
+
+- FIPS 140-2 Level 1 certified crypto modules
+
+- Common Criteria EAL2
+
+For more information, refer to the [Ubuntu Pro](https://ubuntu.com/pro) documentation from Canonical.
+
+You can enable Ubuntu Pro when deploying clusters with Palette. To enable Ubuntu Pro, select Ubuntu as the OS layer for
+a cluster profile and expand the **Preset Menu** to reveal the Ubuntu Pro parameters.
+
+| Parameter        | Description                                                                                                                                                                                                                                                         | Default Value |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| **token**        | The Canonical subscription token for Ubuntu Pro. Refer to the Ubuntu Pro [subscribe page](https://ubuntu.com/pro/subscribe) to aquire a subscription token.                                                                                                         | `""`          |
+| **esm-apps**     | Expanded Security Maintenance (ESM) for Applications. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more.                                                                                                                       | Disabled      |
+| **livepatch**    | Canonical Livepatch service. Refer to the Ubuntu [Livepatch](https://ubuntu.com/security/livepatch) documenation for more details.                                                                                                                                  | Disabled      |
+| **fips**         | Federal Information Processing Standards (FIPS) 140 validated cryptography for Linux workloads on Ubuntu. This installs NIST-certified core packages. Refer to the Ubuntu [FIPS](https://ubuntu.com/security/certifications/docs/2204) documentation to learn more. | Disabled      |
+| **fips-updates** | Install NIST-certified core packages with priority security updates. Refer to the Ubuntu [FIPS Updates](https://ubuntu.com/security/certifications/docs/fips-updates) documentation to learn more.                                                                  | Disabled      |
+| **cis**          | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with certified content based on published CIS benchmarks. Refer to the Ubuntu [CIS](https://ubuntu.com/security/certifications/docs/2204/usg/cis) documentation to learn more.     | Disabled      |
+
+Use the following steps to enable Ubuntu Pro.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Navigate to the left **Main Menu** and select **Profiles**.
+
+3. Click on **Add Cluster Profile**.
+
+4. Fill out the input fields for **Name**, **Version**, **Description**, **Type** and **Tags**. Click on **Next** to
+   continue.
+
+5. Select the infrastructure provider and click on **Next**.
+
+6. Select the OS layer and use the following information to find the Ubuntu pack:
+
+- **Pack Type** - OS
+
+- **Registry** - Public Repo
+
+- **Pack Name** -Ubuntu
+
+- **Pack Version** - 20.04 or 22.04
+
+7. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML file. Click on the
+   **\</\>** button to reveal the YAML editor and expand the **Preset Drawer**.
+
+![A view of the cluster profile creation wizard for Ubuntu Pro](/integrations_ubuntu_ubuntu-pro-preset-drawer.webp)
+
+8. Click the **Ubuntu Advantage/Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
+
+9. Toggle options on or off to enable or disable the various Ubuntu Pro services.
+
+10. Click the **Next layer** button to continue to the next layer.
+
+11. Complete the remainder of the cluster profile creation wizard by selecting the next cluster profile layers.
+
+</TabItem>
+<TabItem label="20.04 LTS" value="20.04.x">
+
+<!-- prettier-ignore -->
+
+To use the Ubuntu OS pack, add the pack to your cluster profile when you select the OS layer. Refer to the <VersionedLink text="Create an Infrastructure Profile" url="/profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile" />
+guide to learn more.
+
+#### Add Custom Files
+
+You can create custom files that you define in the `files` section that precedes the `preKubeadmCommands` and
+`postKubeadmCommands` sections. The files are invoked during runtime.
+
+```yaml
+kubeadmconfig:
+  files:
+    - targetPath: /usr/local/share/ca-certificates/mycom.crt
+      targetOwner: "root:root"
+      targetPermissions: "0644"
+      content: |
+        -----BEGIN CERTIFICATE-----
+        MIICyzCCAbOgAwIBAgIBADANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwprdWJl
+        cm5ldGVzMB4XDTIwMDkyMjIzNDMyM1oXDTMwMDkyMDIzNDgyM1owFTETMBEGA1UE
+        AxMKa3ViZXJuZXRlczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMdA
+        nZYs1el/6f9PgV/aO9mzy7MvqaZoFnqO7Qi4LZfYzixLYmMUzi+h8/RLPFIoYLiz
+        qiDn+P8c9I1uxB6UqGrBt7dkXfjrUZPs0JXEOX9U/6GFXL5C+n3AUlAxNCS5jobN
+        fbLt7DH3WoT6tLcQefTta2K+9S7zJKcIgLmBlPNDijwcQsbenSwDSlSLkGz8v6N2
+        7SEYNCV542lbYwn42kbcEq2pzzAaCqa5uEPsR9y+uzUiJpv5tDHUdjbFT8tme3vL
+        9EdCPODkqtMJtCvz0hqd5SxkfeC2L+ypaiHIxbwbWe7GtliROvz9bClIeGY7gFBK
+        jZqpLdbBVjo0NZBTJFUCAwEAAaMmMCQwDgYDVR0PAQH/BAQDAgKkMBIGA1UdEwEB
+        /wQIMAYBAf8CAQAwDQYJKoZIhvcNAQELBQADggEBADIKoE0P+aVJGV9LWGLiOhki
+        HFv/vPPAQ2MPk02rLjWzCaNrXD7aPPgT/1uDMYMHD36u8rYyf4qPtB8S5REWBM/Y
+        g8uhnpa/tGsaqO8LOFj6zsInKrsXSbE6YMY6+A8qvv5lPWpJfrcCVEo2zOj7WGoJ
+        ixi4B3fFNI+wih8/+p4xW+n3fvgqVYHJ3zo8aRLXbXwztp00lXurXUyR8EZxyR+6
+        b+IDLmHPEGsY9KOZ9VLLPcPhx5FR9njFyXvDKmjUMJJgUpRkmsuU1mCFC+OHhj56
+        IkLaSJf6z/p2a3YjTxvHNCqFMLbJ2FvJwYCRzsoT2wm2oulnUAMWPI10vdVM+Nc=
+        -----END CERTIFICATE-----
+  preKubeadmCommands:
+    - echo "Executing pre kube admin config commands"
+    - update-ca-certificates
+    - "systemctl restart containerd; sleep 3"
+    - 'while [ ! -S /var/run/containerd/containerd.sock ]; do echo "Waiting for containerd..."; sleep 1; done'
+  postKubeadmCommands:
+    - echo "Executing post kube admin config commands"
+```
+
+In the next example, a configuration file is added to a folder.
+
+```yaml
+kubeadmconfig:
+  files:
+    - targetPath: /etc/containerd/config.toml
+      targetOwner: "root:root"
+      targetPermissions: "0644"
+      content: |
+        ## template: jinja
+
+        # Use config version 2 to enable new configuration fields.
+        # Config file is parsed as version 1 by default.
+        version = 2
+
+        imports = ["/etc/containerd/conf.d/*.toml"]
+
+        [plugins]
+          [plugins."io.containerd.grpc.v1.cri"]
+            sandbox_image = "registry.k8s.io/pause:3.9"
+            device_ownership_from_security_context = true
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+            runtime_type = "io.containerd.runc.v2"
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+            SystemdCgroup = true
+  preKubeadmCommands:
+    - 'echo "====> Applying pre Kubeadm commands"'
+  postKubeadmCommands:
+    - 'echo "====> Applying post Kubeadm commands"'
+```
+
+### Ubuntu Pro
+
+Ubuntu Pro is a security and maintenance subscription offering from Canonical that offers long-term security support and
+many other security hardening features. Ubuntu Pro offers several more benefits than the free Ubuntu offering:
+
+- Extended Security Maintenance
+
+- Kernel Livepatch service to avoid reboots
+
+- FIPS 140-2 Level 1 certified crypto modules
+
+- Common Criteria EAL2
+
+For more information, refer to the [Ubuntu Pro](https://ubuntu.com/pro) documentation from Canonical.
+
+You can enable Ubuntu Pro when deploying clusters with Palette. To enable Ubuntu Pro, select Ubuntu as the OS for a
+cluster profile and expand the **Preset Menu** to reveal the Ubuntu Pro parameters.
+
+| Parameter        | Description                                                                                                                                                                                                                                                         | Default Value |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| **token**        | The Canonical subscription token for Ubuntu Pro. Refer to the Ubuntu Pro [subscribe page](https://ubuntu.com/pro/subscribe) to aquire a subscription token.                                                                                                         | `""`          |
+| **esm-apps**     | Expanded Security Maintenance (ESM) for Applications. Refer to the Ubuntu [ESM documentation](https://ubuntu.com/security/esm) to learn more.                                                                                                                       | Disabled      |
+| **livepatch**    | Canonical Livepatch service. Refer to the Ubuntu [Livepatch](https://ubuntu.com/security/livepatch) documenation for more details.                                                                                                                                  | Disabled      |
+| **fips**         | Federal Information Processing Standards (FIPS) 140 validated cryptography for Linux workloads on Ubuntu. This installs NIST-certified core packages. Refer to the Ubuntu [FIPS](https://ubuntu.com/security/certifications/docs/2204) documentation to learn more. | Disabled      |
+| **fips-updates** | Install NIST-certified core packages with priority security updates. Refer to the Ubuntu [FIPS Updates](https://ubuntu.com/security/certifications/docs/fips-updates) documentation to learn more.                                                                  | Disabled      |
+| **cis**          | Gain access to OpenSCAP-based tooling that automates both hardening and auditing with certified content based on published CIS benchmarks. Refer to the Ubuntu [CIS](https://ubuntu.com/security/certifications/docs/2204/usg/cis) documentation to learn more.     | Disabled      |
+
+Use the following steps to enable Ubuntu Pro.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Navigate to the left **Main Menu** and select **Profiles**.
+
+3. Click on **Add Cluster Profile**.
+
+4. Fill out the input fields for **Name**, **Version**, **Description**, **Type** and **Tags**. Click on **Next** to
+   continue.
+
+5. Select the infrastructure provider and click on **Next**.
+
+6. Select the OS layer and use the following information to find the Ubuntu pack:
+
+- **Pack Type** - OS
+
+- **Registry** - Public Repo
+
+- **Pack Name** -Ubuntu
+
+- **Pack Version** - 20.04 or 22.04
+
+7. Modify the Ubuntu **Pack values** to activate the **Presets** options for the Ubuntu YAML file. Click on the
+   **\</\>** button to reveal the YAML editor and expand the **Preset Drawer**.
+
+![A view of the cluster profile creation wizard for Ubuntu Pro](/integrations_ubuntu_ubuntu-pro-preset-drawer.webp)
+
+8. Click the **Ubuntu Advantage/Pro** checkbox to include the Ubuntu Pro parameters in the pack configuration file.
+
+9. Toggle options on or off to enable or disable the various Ubuntu Pro services.
+
+10. Click the **Next layer** button to continue to the next layer.
+
+11. Complete the remainder of the cluster profile creation wizard by selecting the next cluster profile layers.
+
+</TabItem>
+</Tabs>

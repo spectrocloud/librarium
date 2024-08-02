@@ -128,17 +128,13 @@ scenario, use the CLIs to help you with the customization.
   [Prepare User Data](/clusters/edge/edgeforge-workflow/prepare-user-data) guide to learn more about user data and when
   to use multiple user data files.
 
-- **Bring Your Own OS (BYOOS)**: Palette provides the following runtime OS out-of-the-box for all Edge Hosts. For
-  environments that require a different runtime OS, you can specify another OS through the BYOOS option. Follow the
-  instructions in the [Bring Your Own OS](/clusters/edge/edgeforge-workflow/build-kairos-os) guide to learn more about
-  BYOOS.
+<!-- prettier-ignore-start -->
 
-# Build a Custom Edge Artifact
-
-To start building a custom Edge artifact, use the following guides. You should review each guide sequentially, although
-some guides may not apply to your Edge deployment.
-
-<br />
+- **Bring Your Own OS (BYOOS)**: For environments that require a different runtime OS, you can specify another OS
+through the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=edge-native-byoi"/> option. Follow the
+instructions in the [Build Edge Images](build-images.md) guide to learn more about how you can customize the OS used in
+an Edge deployment.
+<!-- prettier-ignore-end -->
 
 ## Resources
 

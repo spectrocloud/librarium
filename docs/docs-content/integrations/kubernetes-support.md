@@ -38,10 +38,11 @@ version, we initiate the deprecation process. You can learn more about our depre
 
 ## Palette eXtended Kubernetes Support
 
-We support CNCF Kubernetes, [Palette eXtended Kubernetes (PXK)](./kubernetes.md) and
-[Palette eXtended Kubernetes Edge (PXK-E)](./kubernetes-edge.md) for N-3 Kubernetes minor versions for a duration of 14
+<!-- prettier-ignore-start -->
+We support CNCF Kubernetes, [Palette eXtended Kubernetes (PXK)](./kubernetes.md) and <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s"/> for N-3 Kubernetes minor versions for a duration of 14
 months. The duration exceeds the official EOL by four months. Once we stop supporting the minor version, we initiate the
 deprecation process.
+<!-- prettier-ignore-end -->
 
 The diagram below illustrates the support lifecycle of a Kubernetes version. A deprecated Kubernetes version will no
 longer receive updates.

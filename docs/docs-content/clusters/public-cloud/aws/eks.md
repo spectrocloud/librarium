@@ -245,8 +245,10 @@ To use custom OIDC, you need to do the following:
   more information and to learn about other available helper applications, you can visit
   [OIDC Identity Provider authentication for Amazon EKS](https://aws.amazon.com/blogs/containers/introducing-oidc-identity-provider-authentication-amazon-eks/).
 
+<!-- prettier-ignore -->
 - Configure OIDC in the Kubernetes pack YAML file. Refer to steps for Amazon EKS in the
-  [Configure Custom OIDC](../../../integrations/kubernetes-generic.md#configure-custom-oidc) guide.
+  <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=kubernetes-eks" /> guide.
+ 
 
 - Map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups,
   refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to

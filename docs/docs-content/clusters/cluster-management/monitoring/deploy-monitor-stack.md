@@ -2,6 +2,7 @@
 sidebar_label: "Deploy Monitoring Stack"
 title: "Deploy Monitoring Stack"
 description: "Learn how to deploy a monitoring stack in your Palette environment."
+hiddenFromNav: false
 hide_table_of_contents: false
 sidebar_position: 0
 tags: ["clusters", "cluster management", "monitoring"]
@@ -12,15 +13,17 @@ The monitoring stack you will deploy uses the open-source tool,
 The monitoring stack is a centralized server or aggregation spot to which all other clusters will forward metrics. The
 monitoring stack is a dedicated Kubernetes cluster for monitoring and metrics aggregation in your Palette environment.
 
+<!-- prettier-ignore-start -->
+
 The monitoring stack uses a server-client architecture. The monitoring stack uses the
-[Prometheus Operator](../../../integrations/prometheus-operator.md) pack to deploy all the dependencies the Prometheus
+<VersionedLink text="Prometheus Operator" url="/integrations/packs/?pack=prometheus-operator"/> pack to deploy all the dependencies the Prometheus
 server requires. The server exposes an API endpoint for all other clients to forward metrics. The clients are Kubernetes
-clusters with the [Prometheus Agent](../../../integrations/prometheus-agent.md) pack installed and configured.
+clusters with the <VersionedLink text="Prometheus Agent" url="/integrations/packs/?pack=prometheus-agent"/> pack installed and configured.
 
 Use the following steps to deploy a monitoring stack, and learn how to configure a host cluster to forward metrics to
 the monitoring stack.
 
-<br />
+<!-- prettier-ignore-end -->
 
 :::warning
 
@@ -99,30 +102,56 @@ You can choose to deploy the monitoring stack with or without authentication.
    - Pack Type: Monitoring
    - Registry: Public Repo
    - Pack Name: Prometheus Grafana
-   - Pack Version: 44.3.X or newer. <br />
+   - Pack Version: 44.25.X or newer. <br />
 
 9. Review the YAML configuration on the right. Scroll down in the file until you find the parameter `adminPassword`.
    Input the password value for the admin user. The default admin user name is `admin`.
 
 10. Next, click on the **Presets** button to expand the options drawer.
 
+<!-- prettier-ignore-start -->
+
 11. Scroll down the presets option menu and enable **Remote Monitoring**. Confirm your changes. You can enable several
-    options to expand the functionality of the monitoring stack. Review the
-    [Prometheus Operator](../../../integrations/prometheus-operator.md) pack documentation to learn more about the
-    available options.
+options to expand the functionality of the monitoring stack. Review the
+<VersionedLink text="Prometheus Operator" url="/integrations/packs/?pack=prometheus-operator"/> pack documentation to
+learn more about the available options.
+<!-- prettier-ignore-end -->
 
-12. Click on **Next** to review the cluster profile and save it.
+12. Confirm your changes by selecting **Confirm & Create**.
 
-13. Navigate to the left **Main Menu** and select **Clusters**.
+13. Click on **Add New Pack**.
 
-14. Click on **Add New Cluster**. Select **Deploy New Cluster**.
+14. Use the following information to find the Spectro Cluster Metrics pack.
 
-15. Pick the infrastructure provider you selected for the cluster profile you created earlier.
+    - **Pack Type**: Monitoring
+    - **Registry**: Public Repo
+    - **Pack Name**: Spectro Cluster Metrics
+    - **Pack Version**: 3.3.X or newer
 
-16. Assign a name to the host cluster and select the registered account you wish to deploy the host cluster to. Click on
-    **Next**.
+15. Use the default values. Confirm your changes by selecting **Confirm & Create**.
 
-17. Pick the cluster profile you created earlier and complete the remainder of the cluster creation process.
+16. Click on **Add New Pack**.
+
+17. Use the following information to find the Spectrocloud Grafana Dashboards pack.
+
+    - **Pack Type**: Monitoring
+    - **Registry**: Public Repo
+    - **Pack Name**: Spectro Grafana Dashboards
+    - **Pack Version**: 4.0.X or newer
+
+18. Use the default values. Confirm your changes by selecting **Confirm & Create**.
+
+19. Click on **Next** to review the cluster profile and save it.
+
+20. Navigate to the left **Main Menu** and select **Clusters**.
+
+21. Click on **Add New Cluster**. Select **Deploy New Cluster**.
+
+22. Choose the infrastructure provider you selected for the cluster profile you created earlier.
+
+23. Assign a name to the host cluster and select the registered account you will deploy it to. Click on **Next**.
+
+24. Choose the cluster profile you created earlier and complete the remainder of the cluster creation process.
 
 When you deploy the cluster, a host cluster with Prometheus will be installed and ready to receive information from
 Prometheus agents.
@@ -272,41 +301,66 @@ charts:
 
 16. Next, update the `prometheus.service.type` parameter to `ClusterIP`.
 
-<br />
+        <br />
 
-```yaml
-charts:
-  kube-prometheus-stack:
-    prometheus:
-      service:
-        type: ClusterIP
-```
+        ```yaml
+        charts:
+          kube-prometheus-stack:
+            prometheus:
+              service:
+                type: ClusterIP
+        ```
+
+<!-- prettier-ignore-start -->
 
 17. Confirm your changes by selecting **Confirm & Create**. You can enable several options to expand the functionality
-    of the monitoring stack. Review the [Prometheus Operator](../../../integrations/prometheus-operator.md) pack
-    documentation to learn more about the available options.
+of the monitoring stack. Review the
+<VersionedLink text="Prometheus Operator" url="/integrations/packs/?pack=prometheus-operator"/> pack documentation to
+learn more about the available options.
+<!-- prettier-ignore-end -->
 
-18. Click on **Next** to review the cluster profile and save it.
+18. Click on **Add New Pack**.
 
-19. Navigate to the left **Main Menu** and select **Clusters**.
+19. Use the following information to find the Spectro Cluster Metrics pack.
 
-20. Click on **Add New Cluster**. Select **Deploy New Cluster**.
+    - **Pack Type**: Monitoring
+    - **Registry**: Public Repo
+    - **Pack Name**: Spectro Cluster Metrics
+    - **Pack Version**: 3.3.X or newer
 
-21. Pick the infrastructure provider you selected for the cluster profile you created earlier.
+20. Use the default values. Confirm your changes by selecting **Confirm & Create**.
 
-22. Assign a name to the host cluster and select the registered account you wish to deploy the host cluster. Click on
-    **Next**.
+21. Click on **Add New Pack**.
 
-23. Pick the cluster profile you created earlier and complete the remainder of the cluster creation process.
+22. Use the following information to find the Spectrocloud Grafana Dashboards pack.
 
-24. Once the host cluster is deployed, navigate to the left **Main Menu** and select **Clusters**. Click on your cluster
+    - **Pack Type**: Monitoring
+    - **Registry**: Public Repo
+    - **Pack Name**: Spectrocloud Grafana Dashboards
+    - **Pack Version**: 1.0.X or newer
+
+23. Use the default values. Confirm your changes by selecting **Confirm & Create**.
+
+24. Click on **Next** to review the cluster profile and save it.
+
+25. Navigate to the left **Main Menu** and select **Clusters**.
+
+26. Click on **Add New Cluster**. Select **Deploy New Cluster**.
+
+27. Choose the infrastructure provider you selected for the cluster profile you created earlier.
+
+28. Assign a name to the host cluster and select the registered account you will deploy it to. Click on **Next**.
+
+29. Choose the cluster profile you created earlier and complete the remainder of the cluster creation process.
+
+30. Once the host cluster is deployed, navigate to the left **Main Menu** and select **Clusters**. Click on your cluster
     to display the details page and ensure its status is **Running**.
 
-25. Download the Kubernetes configuration file. Click on the URL that has the name of your cluster followed by a period
+31. Download the Kubernetes configuration file. Click on the URL that has the name of your cluster followed by a period
     and the word _kubeconfig_. Refer to the [Access Cluster with CLI](../palette-webctl.md#access-cluster-with-cli) for
     additional guidance.
 
-26. Open a terminal window and set the environment variable `KUBECONFIG` to point to kubeconfig file you downloaded.
+32. Open a terminal window and set the environment variable `KUBECONFIG` to point to kubeconfig file you downloaded.
 
 <br />
 
@@ -314,8 +368,8 @@ charts:
 export KUBECONFIG=~/Downloads/dev-monitoring-stack.config
 ```
 
-27. Create a htpasswd file for the user `agent` and assign a password. You can choose a different username if you prefer
-    something else.
+33. Create an htpasswd file for the user `agent` and assign a password. You can choose a different username if you
+    prefer.
 
 <br />
 
@@ -332,7 +386,7 @@ Re-type new password:
 Adding password for user agent
 ```
 
-28. Convert the htpasswd file into a Kubernetes secret.
+34. Convert the htpasswd file into a Kubernetes secret.
 
 <br />
 
@@ -346,11 +400,11 @@ Output:
   secret "basic-auth" created
 ```
 
-29. Navigate back to Palette, and review the cluster profile you created for the monitoring stack. From the left **Main
+35. Navigate back to Palette, and review the cluster profile you created for the monitoring stack. From the left **Main
     Menu** > **Profiles** > select your cluster profile. Click on the Prometheus operator layer to edit the YAML.
 
-30. Locate the `prometheus.ingress` section located towards the end of the file. Update the ingress configuration with
-    the values provided below. Replace the `hosts` parameter with your custom domain.
+36. Locate the `prometheus.ingress` section near the end of the file. Update the ingress configuration with the values
+    provided below. Replace the `hosts` parameter with your custom domain.
 
 <br />
 
@@ -366,13 +420,13 @@ ingress:
     - metrics.example.com
 ```
 
-31. Confirm your updates on the next screen that displays.
+37. Confirm your updates on the next screen that displays.
 
-32. From the left **Main Menu**, select **Clusters** and access the monitoring stack host cluster.
+38. From the left **Main Menu**, select **Clusters** and access the monitoring stack host cluster.
 
-33. Click on the **Updates Available** button to review the changes.
+39. Click on the **Updates Available** button to review the changes.
 
-34. Accept the changes and select **Confirm Updates**.
+40. Accept the changes and select **Confirm Updates**.
 
 :::warning
 
@@ -381,8 +435,9 @@ network administrator team if you need additional guidance.
 
 :::
 
-35. Create a Canonical Name (CNAME) record for each of the following services and add the load balancer hostname to the
-    CNAME's record value. Use the table below to identify what domain to map each load balancer hostname.
+41. Create a Canonical Name (CNAME) record for each of the following services and add the load balancer hostname to the
+    CNAME's record value. Use the table below to identify which mapping to use between the domain and each load balancer
+    hostname.
 
 | Service                                             | Domain                   | CNAME Value Example                                                       |
 | --------------------------------------------------- | ------------------------ | ------------------------------------------------------------------------- |
@@ -409,15 +464,15 @@ kubectl get service nginx-ingress-controller --namespace nginx -o jsonpath='{.st
 
 :::
 
-36. Create a public certificate for each domain. If you are using a public cloud provider, use the native certificate
-    manager service to generate a public certificate that you can attach to the load balancers with minimal friction.
+42. Create a public certificate for each domain. If you are using a public cloud provider, use the native certificate
+    manager service to generate a public certificate that you can attach to the load balancers with minimal overhead.
     On-prem, use the default certificate manager used by your organization.
 
-37. Update the network rules for each of the load balancers to allow inbound port 443.
+43. Update the network rules for each of the load balancers to allow inbound port 443.
 
 <br />
 
-38. Next, update the load balancer listeners to forward requests from port 443 to the respective target port on the
+44. Next, update the load balancer listeners to forward requests from port 443 to the respective target port on the
     monitoring stack. The following table will map the service's load balancer listener with the respective
     configuration. Refer to the architecture diagram from the introduction to help you visualize the mapping.
 
@@ -426,7 +481,7 @@ kubectl get service nginx-ingress-controller --namespace nginx -o jsonpath='{.st
 | 443                        | `monitoring.example.com` | Use the same instance port the original entry for port 80 is using. | `prometheus-operator-kube-prometheus-stack-grafana` |
 | 443                        | `metrics.example.com`    | Use the same instance port the original entry for port 80 is using. | `nginx-ingress-controller`                          |
 
-39. Wait for the DNS changes to propagate. This could take between one to five minutes.
+45. Wait for the DNS changes to propagate. This can take up to five minutes.
 
 Your monitoring stack is now enabled with authentication and network encryption.
 
