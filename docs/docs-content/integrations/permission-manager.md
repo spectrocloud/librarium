@@ -10,33 +10,18 @@ logoUrl: "https://registry.spectrocloud.com/v1/permission-manager/blobs/sha256:1
 tags: ["packs", "permission-manager", "security"]
 ---
 
-This integration provides a graphical user interface for RBAC management in Kubernetes. You can create users, assign
-namespaces/permissions, and distribute Kubeconfig YAML files quickly.
-
 ## Versions Supported
 
-<Tabs queryString="versions">
+<Tabs queryString="parent">
 <TabItem label="1.0.x" value="1.0.x">
 
-- **1.0.0**
-
-</TabItem>
-</Tabs>
-
-## Configuration
-
-| Name         | Supported Value            | Description                                                        |
-| ------------ | -------------------------- | ------------------------------------------------------------------ |
-| namespace    | Any valid namespace string | The namespace under which this integration should be deployed onto |
-| authPassword |                            | Login password for the web interface                               |
-
-## Customizing the permission templates
+## Customize Permission Templates
 
 Create a ClusterRole starting with `template-namespaced-resources___` or `template-cluster-resources___` and apply it to
 the cluster. Permission manager will honor any custom resources with this naming convention and will populate on the
 user interface.
 
-## Ingress
+## Configure Ingress
 
 Follow below steps to configure Ingress on Permission Manager
 
@@ -45,9 +30,23 @@ Follow below steps to configure Ingress on Permission Manager
    - Enable Ingress; Change enabled from false to "true"
    - Set Ingress rules like annotations, path, hosts, etc.
 
-With these config changes, you can access Permission manager service on the Ingress Controller LoadBalancer hostname /
-IP
+With these config changes, you can access Permission manager service on the Ingress Controller LoadBalancer hostname/IP.
 
-## References
+</TabItem>
+</Tabs>
 
-- [Permission Manager GitHub](https://github.com/sighupio/permission-manager)
+## Terraform
+
+You can reference the Permission Manager pack in Terraform with the following data resource.
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+data "spectrocloud_pack" "permission-manager" {
+  name    = "permission-manager"
+  version = "1.0.0"
+  type = "manifest"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```

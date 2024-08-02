@@ -62,35 +62,39 @@ needs.
     Refer to the EdgeForge [Build Images](../edgeforge-workflow/palette-canvos/palette-canvos.md) guide if you are
     missing a custom OS image. The following is an example configuration using a custom OS image.
 
-    ```yaml
-    pack:
-    content:
-      images:
-        - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
-        # - image: example.io/my-other-images/example:v1.0.0
-        # - image: example.io/my-super-other-images/example:v1.0.0
-      #drain:
-      #cordon: true
-      #timeout: 60 # The length of time to wait before giving up, zero means infinite
-      #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
-      #ignoreDaemonSets: true
-      #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
-      #force: true # Continue even if there are pods that do not declare a controller
-      #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
-      #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
+        ```yaml
+        pack:
+        content:
+          images:
+            - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
+            # - image: example.io/my-other-images/example:v1.0.0
+            # - image: example.io/my-super-other-images/example:v1.0.0
+          #drain:
+          #cordon: true
+          #timeout: 60 # The length of time to wait before giving up, zero means infinite
+          #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
+          #ignoreDaemonSets: true
+          #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
+          #force: true # Continue even if there are pods that do not declare a controller
+          #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
+          #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
 
-    options:
-      system.uri: example.io/my-images/example-custom-os:v1.4.5
-    ```
+        options:
+          system.uri: example.io/my-images/example-custom-os:v1.4.5
+        ```
 
-    :::info
+<!-- prettier-ignore-start -->
 
-    You can customize the node drainage behavior and specify additional images that you may have created that are part
-    of the content bundle. Specify any additional image required by the cluster profile in the `images` section. Add an
-    `- image: ` entry for each image you need to specify. Refer to the [BYOOS Pack](../../../integrations/byoos.md)
-    resource to learn more about the pack details.
+:::info
 
-    :::
+You can customize the node drainage behavior and specify additional images that you may have created that are part
+of the content bundle. Specify any additional image required by the cluster profile in the `images` section. Add an
+`- image: ` entry for each image you need to specify. Refer to the <VersionedLink text="BYOOS Pack" url="/integrations/packs/?pack=generic-byoi" /> resource to learn more about the
+pack details.
+
+:::
+
+<!-- prettier-ignore-end -->
 
 11. Specify any cloud-init stages in your OS pack. Cloud-init stages allow you to configure your OS declaratively. For
     more information about cloud-init stages, refer to [Cloud-init Stages](../edge-configuration/cloud-init.md).
@@ -162,9 +166,9 @@ YAML file to set up Edge host users, install other OS packages, install certific
 
 You now have a cluster profile you can use for deploying Edge hosts.
 
+<!-- prettier-ignore -->
 Consider creating additional profiles with out-of-the-box packs for monitoring, security, authentication, or other
-capabilities. If you need remote access to the cluster, consider adding the
-[Spectro Proxy](../../../integrations/frp.md) pack to one of the add-on profiles.
+capabilities. If you need remote access to the cluster, consider adding the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack to one of the add-on profiles.
 
 Optionally, add additional Helm or OCI registries and include applications hosted in those registries in add-on
 profiles. Check out the guide for adding a [Helm](../../../registries-and-packs/registries/helm-charts.md) or
