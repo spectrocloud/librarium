@@ -36,9 +36,8 @@ Clusters with the VMO pack may experience VMs getting stuck in a continuous migr
 
    :::warning
 
-   Step **4** affects the [CPU Hotplug](../vm-management/create-manage-vm/enable-cpu-hotplug.md) functionality as it
-   disables the [live migration](../vm-management/create-manage-vm/migrate-vm-to-different-node.md) feature. If your
-   cluster has the CPU Hotplug functionality enabled, you will need to manually migrate your VM to a different node each
-   time you add a virtual CPU for the changes to take effect.
+   Step **4** affects the [CPU Hotplug](../vm-management/create-manage-vm/enable-cpu-hotplug.md) functionality. If your
+   cluster has CPU Hotplug enabled, you will need to manually restart your VM each time you add a virtual CPU for the
+   changes to take effect.
 
    :::
