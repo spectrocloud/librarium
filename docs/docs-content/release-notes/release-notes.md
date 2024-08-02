@@ -260,7 +260,7 @@ features and improvements.
 - <TpBadge /> The MicroK8s pack layer now exposes `bootCommands`, `preRunCommands` and `postRunCommands`. You can use
   these commands to customize and configure MicroK8s as needed. MicroK8s is delivered as a Technical Preview for AWS and
   Canonical MAAS in this release. To learn more, refer to the MicroK8s pack
-  [documentation](../integrations/microk8s.md).
+  <VersionedLink text="documentation" url="/integrations/packs/?pack=kubernetes-microk8s" />.
 
 #### Improvements
 
@@ -303,12 +303,13 @@ features and improvements.
 - An issue prevents RKE2 and Palette eXtended Kubernetes (PXK) on version 1.29.4 from operating correctly with Canonical
   MAAS. A temporary workaround is using a version lower than 1.29.4 when using MAAS..
 
-- [MicroK8s](../integrations/microk8s.md) does not support a multi-node cluster deployment and is limited to a
-  single-node cluster. As a result, the only supported upgrade strategy is `InPlaceUpgrade`.
+- <VersionedLink text="MicroK8s" url="/integrations/packs/?pack=kubernetes-microk8s" /> does not support a multi-node
+  cluster deployment and is limited to a single-node cluster. As a result, the only supported upgrade strategy is
+  `InPlaceUpgrade`.
 
-- Clusters using [MicroK8s](../integrations/microk8s.md) as the Kubernetes distribution, the control plane node fails to
-  upgrade when using the `InPlaceUpgrade` strategy for sequential upgrades, such as upgrading from version 1.25.x to
-  version 1.26.x and then to version 1.27.x. Refer to the
+- Clusters using <VersionedLink text="MicroK8s" url="/integrations/packs/?pack=kubernetes-microk8s"/> as the Kubernetes
+  distribution, the control plane node fails to upgrade when using the `InPlaceUpgrade` strategy for sequential
+  upgrades, such as upgrading from version 1.25.x to version 1.26.x and then to version 1.27.x. Refer to the
   [Control Plane Node Fails to Upgrade in Sequential MicroK8s Upgrades](../troubleshooting/pack-issues.md)
   troubleshooting guide for resolution steps.
 

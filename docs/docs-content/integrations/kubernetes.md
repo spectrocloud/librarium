@@ -60,11 +60,12 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 
 ### PXK and Palette VerteX
 
+<!-- prettier-ignore-start -->
 The PXK used in [Palette VerteX](../vertex/vertex.md) is compiled and linked with our
 [NIST-certified FIPS crypto module](../legal-licenses/compliance.md#fips-140-2) PXK is by default enabled with
 [Ubuntu Pro](https://ubuntu.com/pro) with FIPS mode enabled. Additionally, the Operating System (OS) is hardened based
-on the NIST-800 standard. However, if you use a different OS through the [BYOOS](./byoos.md) pack, then you are
-responsible for ensuring FIPS compliance and hardening of the OS.
+on the NIST-800 standard. However, if you use a different OS through the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=generic-byoi" /> pack, then you are responsible for ensuring FIPS compliance and hardening of the OS.
+<!-- prettier-ignore-end -->
 
 The combined usage of PXK and Palette VerteX provides a secure and FIPS-compliant experience as the Kubernetes
 distribution, OS, and management platform VerteX is FIPS-compliant.
@@ -77,44 +78,9 @@ four months. Once we stop supporting the minor version, we initiate the deprecat
 
 ## Versions Supported
 
-<Tabs queryString="versions">
+<Tabs queryString="parent">
 
 <TabItem label="1.29.x" value="k8s_v1.29">
-
-## Prerequisites
-
-- A minimum of 4 CPU and 4 GB Memory.
-
-- Operating System (OS) dependencies as listed in the table.
-
-  | OS Distribution | OS Version | Supports Kubernetes 1.29.x |
-  | --------------- | ---------- | -------------------------- |
-  | CentOS          | 7.7        | ✅                         |
-  | Ubuntu          | 22.04      | ✅                         |
-  | Ubuntu          | 20.04      | ❌                         |
-  | Ubuntu          | 18.04      | ❌                         |
-
-## Parameters
-
-| Parameter                                        | Description                                                                                                                                                                                                                                                                                                                                                                                                    |
-| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pack.podCIDR`                                   | The CIDR range for Pods in the cluster. This should match the networking layer property. Default: `192.168.0.0/16`                                                                                                                                                                                                                                                                                             |
-| `pack.serviceClusterIpRange`                     | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`                                                                                                                                                                                                                                                                      |
-| `pack.serviceDomain`                             | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.27#change-cluster-dns-service-domain) section. |
-| `pack.palette.config.dashboard.identityProvider` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](kubernetes.md#configure-oidc-identity-provider).                                                                                               |
-| `kubeadmconfig.apiServer.extraArgs`              | A list of additional apiServer flags you can set.                                                                                                                                                                                                                                                                                                                                                              |
-| `kubeadmconfig.apiServer.extraVolumes`           | A list of additional volumes to mount on the apiServer.                                                                                                                                                                                                                                                                                                                                                        |
-| `kubeadmconfig.controllerManager.extraArgs`      | A list of additional ControllerManager flags to set.                                                                                                                                                                                                                                                                                                                                                           |
-| `kubeadmconfig.scheduler.extraArgs`              | A list of additional Kube scheduler flags to set.                                                                                                                                                                                                                                                                                                                                                              |
-| `kubeadmconfig.kubeletExtraArgs`                 | A list of kubelet arguments to set and copy to the nodes.                                                                                                                                                                                                                                                                                                                                                      |
-| `kubeadmconfig.files`                            | A list of additional files to copy to the nodes.                                                                                                                                                                                                                                                                                                                                                               |
-| `kubeadmconfig.preKubeadmCommands`               | A list of additional commands to invoke **before** running kubeadm commands.                                                                                                                                                                                                                                                                                                                                   |
-| `kubeadmconfig.postKubeadmCommands`              | A list of additional commands to invoke **after** running kubeadm commands.                                                                                                                                                                                                                                                                                                                                    |
-| `kubeadmconfig.clientConfig`                     | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](#configure-custom-oidc).                                                                                                                                                                                                                                                 |
-| `cloud.maas.customEndpoint`                      | The custom MAAS API or DNS endpoint URL to use for the PXK cluster. This parameter is only available for MAAS.                                                                                                                                                                                                                                                                                                 |
-| `cloud.maas.customEndpointPort`                  | The custom MAAS API or DNS endpoint port to use for the PXK cluster. This parameter is only available for MAAS. Default value is `6443`.                                                                                                                                                                                                                                                                       |
-
-## Usage
 
 The Kubeadm configuration file is where you can do the following:
 
@@ -134,7 +100,7 @@ The Kubeadm configuration file is where you can do the following:
   [Configure Custom OIDC](#configure-custom-oidc).
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
-  information, refer to the [Spectro Proxy](frp.md) guide.
+  information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
 
 ### Change Cluster DNS Service Domain
 
@@ -449,40 +415,6 @@ cloud:
 
 <TabItem label="1.28.x" value="k8s_v1.28">
 
-## Prerequisites
-
-- A minimum of 4 CPU and 4 GB Memory.
-
-- Operating System (OS) dependencies as listed in the table.
-
-  | OS Distribution | OS Version | Supports Kubernetes 1.28.x |
-  | --------------- | ---------- | -------------------------- |
-  | CentOS          | 7.7        | ✅                         |
-  | Ubuntu          | 22.04      | ✅                         |
-  | Ubuntu          | 20.04      | ❌                         |
-
-## Parameters
-
-| Parameter                                        | Description                                                                                                                                                                                                                                                                                                                                                                                                    |
-| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pack.podCIDR`                                   | The CIDR range for Pods in the cluster. This should match the networking layer property. Default: `192.168.0.0/16`                                                                                                                                                                                                                                                                                             |
-| `pack.serviceClusterIpRange`                     | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`                                                                                                                                                                                                                                                                      |
-| `pack.serviceDomain`                             | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.27#change-cluster-dns-service-domain) section. |
-| `pack.palette.config.dashboard.identityProvider` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](kubernetes.md#configure-oidc-identity-provider).                                                                                               |
-| `kubeadmconfig.apiServer.extraArgs`              | A list of additional apiServer flags you can set.                                                                                                                                                                                                                                                                                                                                                              |
-| `kubeadmconfig.apiServer.extraVolumes`           | A list of additional volumes to mount on the apiServer.                                                                                                                                                                                                                                                                                                                                                        |
-| `kubeadmconfig.controllerManager.extraArgs`      | A list of additional ControllerManager flags to set.                                                                                                                                                                                                                                                                                                                                                           |
-| `kubeadmconfig.scheduler.extraArgs`              | A list of additional Kube scheduler flags to set.                                                                                                                                                                                                                                                                                                                                                              |
-| `kubeadmconfig.kubeletExtraArgs`                 | A list of kubelet arguments to set and copy to the nodes.                                                                                                                                                                                                                                                                                                                                                      |
-| `kubeadmconfig.files`                            | A list of additional files to copy to the nodes.                                                                                                                                                                                                                                                                                                                                                               |
-| `kubeadmconfig.preKubeadmCommands`               | A list of additional commands to invoke **before** running kubeadm commands.                                                                                                                                                                                                                                                                                                                                   |
-| `kubeadmconfig.postKubeadmCommands`              | A list of additional commands to invoke **after** running kubeadm commands.                                                                                                                                                                                                                                                                                                                                    |
-| `kubeadmconfig.clientConfig`                     | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](#configure-custom-oidc).                                                                                                                                                                                                                                                 |
-| `cloud.maas.customEndpoint`                      | The custom MAAS API or DNS endpoint URL to use for the PXK cluster. This parameter is only available for MAAS.                                                                                                                                                                                                                                                                                                 |
-| `cloud.maas.customEndpointPort`                  | The custom MAAS API or DNS endpoint port to use for the PXK cluster. This parameter is only available for MAAS. Default value is `6443`.                                                                                                                                                                                                                                                                       |
-
-## Usage
-
 The Kubeadm configuration file is where you can do the following:
 
 - Change the default `podCIDR` and `serviceClusterIpRange` values. CIDR IPs specified in the configuration file take
@@ -501,7 +433,7 @@ The Kubeadm configuration file is where you can do the following:
   [Configure Custom OIDC](#configure-custom-oidc).
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
-  information, refer to the [Spectro Proxy](frp.md) guide.
+  information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
 
 ### Change Cluster DNS Service Domain
 
@@ -816,38 +748,6 @@ cloud:
 
 <TabItem label="1.27.x" value="k8s_v1.27">
 
-## Prerequisites
-
-- A minimum of 4 CPU and 4 GB Memory.
-
-- Operating System (OS) dependencies as listed in the table.
-
-  | OS Distribution | OS Version | Supports Kubernetes 1.27.x |
-  | --------------- | ---------- | -------------------------- |
-  | CentOS          | 7.7        | ✅                         |
-  | Ubuntu          | 22.04      | ✅                         |
-  | Ubuntu          | 20.04      | ❌                         |
-
-## Parameters
-
-| Parameter                                        | Description                                                                                                                                                                                                                                                                                                                                                                                                    |
-| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pack.podCIDR`                                   | The CIDR range for Pods in the cluster. This should match the networking layer property. Default: `192.168.0.0/16`                                                                                                                                                                                                                                                                                             |
-| `pack.serviceClusterIpRange`                     | The CIDR range for services in the cluster. This should not overlap with any IP ranges assigned to nodes or pods. Default: `10.96.0.0/12`                                                                                                                                                                                                                                                                      |
-| `pack.serviceDomain`                             | The cluster DNS service domain. Default: `cluster.local`. To change the default, you must add this parameter to the Kubernetes YAML file at cluster creation and specify the cluster DNS service domain to use. This value cannot be changed after cluster creation is complete. Refer to the [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.27#change-cluster-dns-service-domain) section. |
-| `pack.palette.config.dashboard.identityProvider` | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](kubernetes.md#configure-oidc-identity-provider).                                                                                               |
-| `kubeadmconfig.apiServer.extraArgs`              | A list of additional apiServer flags you can set.                                                                                                                                                                                                                                                                                                                                                              |
-| `kubeadmconfig.apiServer.extraVolumes`           | A list of additional volumes to mount on the apiServer.                                                                                                                                                                                                                                                                                                                                                        |
-| `kubeadmconfig.controllerManager.extraArgs`      | A list of additional ControllerManager flags to set.                                                                                                                                                                                                                                                                                                                                                           |
-| `kubeadmconfig.scheduler.extraArgs`              | A list of additional Kube scheduler flags to set.                                                                                                                                                                                                                                                                                                                                                              |
-| `kubeadmconfig.kubeletExtraArgs`                 | A list of kubelet arguments to set and copy to the nodes.                                                                                                                                                                                                                                                                                                                                                      |
-| `kubeadmconfig.files`                            | A list of additional files to copy to the nodes.                                                                                                                                                                                                                                                                                                                                                               |
-| `kubeadmconfig.preKubeadmCommands`               | A list of additional commands to invoke **before** running kubeadm commands.                                                                                                                                                                                                                                                                                                                                   |
-| `kubeadmconfig.postKubeadmCommands`              | A list of additional commands to invoke **after** running kubeadm commands.                                                                                                                                                                                                                                                                                                                                    |
-| `kubeadmconfig.clientConfig`                     | Settings to manually configure OIDC-based authentication when you choose a third-party (Custom) IDP. Refer to [Configure Custom OIDC](#configure-custom-oidc).                                                                                                                                                                                                                                                 |
-
-## Usage
-
 The Kubeadm configuration file is where you can do the following:
 
 - Change the default `podCIDR` and `serviceClusterIpRange` values. CIDR IPs specified in the configuration file take
@@ -866,7 +766,7 @@ The Kubeadm configuration file is where you can do the following:
   [Configure Custom OIDC](#configure-custom-oidc).
 
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
-  information, refer to the [Spectro Proxy](frp.md) guide.
+  information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
 
 ### Change Cluster DNS Service Domain
 
@@ -1152,16 +1052,6 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 ![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.webp)
 
 </TabItem>
-
-<TabItem label="Deprecated" value="deprecated">
-
-:::warning
-
-All versions less than v1.27.x are considered deprecated. Upgrade to a newer version to take advantage of new features.
-
-:::
-
-</TabItem>
 </Tabs>
 
 ## Terraform
@@ -1180,13 +1070,3 @@ data "spectrocloud_pack_simple" "k8s" {
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
-
-## Resources
-
-- [Kubernetes](https://kubernetes.io/)
-
-- [Kubernetes Documentation](https://kubernetes.io/docs/concepts/overview/)
-
-- [Image Swap with Palette](../clusters/cluster-management/image-swap.md)
-
-- [RHEL and PXK for Vmware](../byoos/usecases/vmware/rhel-pxk.md)

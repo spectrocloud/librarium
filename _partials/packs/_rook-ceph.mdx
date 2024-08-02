@@ -1,0 +1,417 @@
+---
+partial_category: packs
+partial_name: rook-ceph
+---
+
+## Versions Supported
+
+<Tabs queryString="parent">
+
+<TabItem label="1.14.x" value="1.14.x">
+
+### Rook on Edge Clusters
+
+To use Rook-Ceph on Edge clusters, you need to make a few changes to the cluster profile depending on your cluster
+configuration.
+
+1. In the YAML file for BYO-OS pack, add the following blocks to the `stages` configuration in the OS pack of the
+   cluster profile.
+
+   ```yaml
+   stages:
+     initramfs:
+       - files:
+           - path: /etc/modules-load.d/ceph.conf
+             permissions: 644
+             owner: 0
+             group: 0
+             content: |
+               rbd
+               ceph
+             encoding: ""
+             ownerstring: ""
+     after-upgrade:
+       - name: "Erase Old Partitions on Boot Disk"
+         commands:
+           - wipefs -a /dev/sdb
+   ```
+
+2. Click on the Rook-Ceph layer. In the upper-right corner of the Rook-Ceph layer's YAML editing interface, click
+   **Presets**. Set the preset to either single-node or multi-node depending on your cluster configuration.
+
+3. If you chose the **Single Node Cluster** preset, skip this step.
+
+   If you chose the **Multi Node Cluster with Replicas** preset, set the value of
+   `manifests.storageClass.volumeBindingMode` to `Immediate`.
+
+### Access Ceph Dashboard
+
+The Ceph dashboard gives you an overview of the status of your Ceph cluster, including overall health, and the status of
+all Ceph daemons. By default, the Dashboard is exposed as a ClusterIP-type service on the port 7000 on single node
+clusters.
+
+1. Issue the following command to view the service and find its cluster IP and port.
+
+   ```shell
+   kukubectl --namespace rook-ceph get svc | grep dashboard
+   ```
+
+   ```hideClipboard
+   rook-ceph-mgr-dashboard   ClusterIP   192.169.32.142   <none>        7000/TCP            15m
+   ```
+
+2. If you are on a node of the cluster, you can visit the dashboard by visiting the cluster IP and the exposed port.
+
+   If you are remotely accessing the cluster, you can issue the following command to enable port forwarding from your
+   local machine to the dashboard service.
+
+   ```shell
+   kukubectl port-forward svc/rook-ceph-mgr-dashboard -n rook-ceph 8443:7000 &
+   ```
+
+   If your dashboard service is exposed on a different port, replace 7000 with the port that the dashboard service is
+   exposed on.
+
+3. Once you can connect to the dashboard, you need to provide the login credentials to access the dashboard. Rook
+   creates a default user named `admin` and generates a secret called `rook-ceph-dashboard-password` in the namespace of
+   the Rook-Ceph cluster. To retrieve the generated password, issue the following command:
+
+   ```shell
+   kubectl -n rook-ceph get secret rook-ceph-dashboard-password -o jsonpath="{['data']['password']}" | base64 --decode && echo
+   ```
+
+4. Use the password you receive in the output with the username `admin` to log in to the Ceph Dashboard.
+
+### Known Issues
+
+- If a cluster experiences network issues, it's possible for the file mount to become unavailable and remain unavailable
+  even after the network is restored. This a known issue disclosed in the
+  [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
+  [Troubleshooting section](#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) for a workaround
+  if you observe this issue in your cluster.
+
+
+
+</TabItem>
+
+<TabItem label="1.12.x" value="1.12.x">
+
+
+### Rook on Edge Clusters
+
+To use Rook-Ceph on Edge clusters, you need to make a few changes to the cluster profile depending on your cluster
+configuration.
+
+1. In the YAML file for BYO-OS pack, add the following blocks to the `stages` configuration in the OS pack of the
+   cluster profile.
+
+   ```yaml
+   stages:
+     initramfs:
+       - files:
+           - path: /etc/modules-load.d/ceph.conf
+             permissions: 644
+             owner: 0
+             group: 0
+             content: |
+               rbd
+               ceph
+             encoding: ""
+             ownerstring: ""
+     after-upgrade:
+       - name: "Erase Old Partitions on Boot Disk"
+         commands:
+           - wipefs -a /dev/sdb
+   ```
+
+2. Click on the Rook-Ceph layer. In the upper-right corner of the Rook-Ceph layer's YAML editing interface, click
+   **Presets**. Set the preset to either single-node or multi-node depending on your cluster configuration.
+
+3. If you chose the **Single Node Cluster** preset, skip this step.
+
+   If you chose the **Multi Node Cluster with Replicas** preset, set the value of
+   `manifests.storageClass.volumeBindingMode` to `Immediate`.
+
+### Access Ceph Dashboard
+
+The Ceph dashboard gives you an overview of the status of your Ceph cluster, including overall health, and the status of
+all Ceph daemons. By default, the Dashboard is exposed as a ClusterIP-type service on the port 7000 on single node
+clusters.
+
+1. Issue the following command to view the service and find its cluster IP and port.
+
+   ```shell
+   kukubectl --namespace rook-ceph get svc | grep dashboard
+   ```
+
+   ```hideClipboard
+   rook-ceph-mgr-dashboard   ClusterIP   192.169.32.142   <none>        7000/TCP            15m
+   ```
+
+2. If you are on a node of the cluster, you can visit the dashboard by visiting the cluster IP and the exposed port.
+
+   If you are remotely accessing the cluster, you can issue the following command to enable port forwarding from your
+   local machine to the dashboard service.
+
+   ```shell
+   kukubectl port-forward svc/rook-ceph-mgr-dashboard -n rook-ceph 8443:7000 &
+   ```
+
+   If your dashboard service is exposed on a different port, replace 7000 with the port that the dashboard service is
+   exposed on.
+
+3. Once you can connect to the dashboard, you need to provide the login credentials to access the dashboard. Rook
+   creates a default user named `admin` and generates a secret called `rook-ceph-dashboard-password` in the namespace of
+   the Rook-Ceph cluster. To retrieve the generated password, issue the following command:
+
+   ```shell
+   kubectl -n rook-ceph get secret rook-ceph-dashboard-password -o jsonpath="{['data']['password']}" | base64 --decode && echo
+   ```
+
+4. Use the password you receive in the output with the username `admin` to log in to the Ceph Dashboard.
+
+### Known Issues
+
+- If a cluster experiences network issues, it's possible for the file mount to become unavailable and remain unavailable
+  even after the network is restored. This a known issue disclosed in the
+  [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
+  [Troubleshooting section](#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) for a workaround
+  if you observe this issue in your cluster.
+
+</TabItem>
+
+<TabItem label="1.11.x" value="1.11.x">
+
+
+### Rook on Edge Clusters
+
+To use Rook-Ceph on Edge clusters, you need to make a few changes to the cluster profile depending on your cluster
+configuration.
+
+1. In the YAML file for BYO-OS pack, add the following blocks to the `stages` configuration in the OS pack of the
+   cluster profile.
+
+   ```yaml
+   stages:
+     initramfs:
+       - files:
+           - path: /etc/modules-load.d/ceph.conf
+             permissions: 644
+             owner: 0
+             group: 0
+             content: |
+               rbd
+               ceph
+             encoding: ""
+             ownerstring: ""
+     after-upgrade:
+       - name: "Erase Old Partitions on Boot Disk"
+         commands:
+           - wipefs -a /dev/sdb
+   ```
+
+2. Click on the Rook-Ceph layer. In the upper-right corner of the Rook-Ceph layer's YAML editing interface, click
+   **Presets**. Set the preset to either single-node or multi-node depending on your cluster configuration.
+
+3. If you chose the **Single Node Cluster** preset, skip this step.
+
+   If you chose the **Multi Node Cluster with Replicas** preset, set the value of
+   `manifests.storageClass.volumeBindingMode` to `Immediate`.
+
+### Access Ceph Dashboard
+
+The Ceph dashboard gives you an overview of the status of your Ceph cluster, including overall health, and the status of
+all Ceph daemons. By default, the Dashboard is exposed as a ClusterIP-type service on the port 7000 on single node
+clusters.
+
+1. Issue the following command to view the service and find its cluster IP and port.
+
+   ```shell
+   kukubectl --namespace rook-ceph get svc | grep dashboard
+   ```
+
+   ```hideClipboard
+   rook-ceph-mgr-dashboard   ClusterIP   192.169.32.142   <none>        7000/TCP            15m
+   ```
+
+2. If you are on a node of the cluster, you can visit the dashboard by visiting the cluster IP and the exposed port.
+
+   If you are remotely accessing the cluster, you can issue the following command to enable port forwarding from your
+   local machine to the dashboard service.
+
+   ```shell
+   kukubectl port-forward svc/rook-ceph-mgr-dashboard -n rook-ceph 8443:7000 &
+   ```
+
+   If your dashboard service is exposed on a different port, replace 7000 with the port that the dashboard service is
+   exposed on.
+
+3. Once you can connect to the dashboard, you need to provide the login credentials to access the dashboard. Rook
+   creates a default user named `admin` and generates a secret called `rook-ceph-dashboard-password` in the namespace of
+   the Rook-Ceph cluster. To retrieve the generated password, issue the following command:
+
+   ```shell
+   kubectl -n rook-ceph get secret rook-ceph-dashboard-password -o jsonpath="{['data']['password']}" | base64 --decode && echo
+   ```
+
+4. Use the password you receive in the output with the username `admin` to log in to the Ceph Dashboard.
+
+### Known Issues
+
+- If a cluster experiences network issues, it's possible for the file mount to become unavailable and remain unavailable
+  even after the network is restored. This a known issue disclosed in the
+  [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
+  [Troubleshooting section](#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) for a workaround
+  if you observe this issue in your cluster.
+
+</TabItem>
+
+<TabItem label="1.10.x" value="1.10.x">
+
+
+### Rook on Edge Clusters
+
+To use Rook-Ceph on Edge clusters, you need to make a few changes to the cluster profile depending on your cluster
+configuration.
+
+1. In the YAML file for BYO-OS pack, add the following blocks to the `stages` configuration in the OS pack of the
+   cluster profile.
+
+   ```yaml
+   stages:
+     initramfs:
+       - files:
+           - path: /etc/modules-load.d/ceph.conf
+             permissions: 644
+             owner: 0
+             group: 0
+             content: |
+               rbd
+               ceph
+             encoding: ""
+             ownerstring: ""
+     after-upgrade:
+       - name: "Erase Old Partitions on Boot Disk"
+         commands:
+           - wipefs -a /dev/sdb
+   ```
+
+2. Click on the Rook-Ceph layer. In the upper-right corner of the Rook-Ceph layer's YAML editing interface, click
+   **Presets**. Set the preset to either single-node or multi-node depending on your cluster configuration.
+
+3. If you chose the **Single Node Cluster** preset, skip this step.
+
+   If you chose the **Multi Node Cluster with Replicas** preset, set the value of
+   `manifests.storageClass.volumeBindingMode` to `Immediate`.
+
+### Access Ceph Dashboard
+
+The Ceph dashboard gives you an overview of the status of your Ceph cluster, including overall health, and the status of
+all Ceph daemons. By default, the Dashboard is exposed as a ClusterIP-type service on the port 7000 on single node
+clusters.
+
+1. Issue the following command to view the service and find its cluster IP and port.
+
+   ```shell
+   kukubectl --namespace rook-ceph get svc | grep dashboard
+   ```
+
+   ```hideClipboard
+   rook-ceph-mgr-dashboard   ClusterIP   192.169.32.142   <none>        7000/TCP            15m
+   ```
+
+2. If you are on a node of the cluster, you can visit the dashboard by visiting the cluster IP and the exposed port.
+
+   If you are remotely accessing the cluster, you can issue the following command to enable port forwarding from your
+   local machine to the dashboard service.
+
+   ```shell
+   kukubectl port-forward svc/rook-ceph-mgr-dashboard -n rook-ceph 8443:7000 &
+   ```
+
+   If your dashboard service is exposed on a different port, replace 7000 with the port that the dashboard service is
+   exposed on.
+
+3. Once you can connect to the dashboard, you need to provide the login credentials to access the dashboard. Rook
+   creates a default user named `admin` and generates a secret called `rook-ceph-dashboard-password` in the namespace of
+   the Rook-Ceph cluster. To retrieve the generated password, issue the following command:
+
+   ```shell
+   kubectl -n rook-ceph get secret rook-ceph-dashboard-password -o jsonpath="{['data']['password']}" | base64 --decode && echo
+   ```
+
+4. Use the password you receive in the output with the username `admin` to log in to the Ceph Dashboard.
+
+### Known Issues
+
+- If a cluster experiences network issues, it's possible for the file mount to become unavailable and remain unavailable
+  even after the network is restored. This a known issue disclosed in the
+  [Rook GitHub repository](https://github.com/rook/rook/issues/13818). Refer to the
+  [Troubleshooting section](#file-mount-becomes-unavailable-after-cluster-experiences-network-issues) for a workaround
+  if you observe this issue in your cluster.
+
+</TabItem>
+
+
+</Tabs>
+
+## Troubleshooting
+
+### File Mount Becomes Unavailable after Cluster Experiences Network Issues
+
+A known issue exists with Rook-Ceph where file mounts become unavailable and remain unavailable even after network
+issues are resolved.
+
+#### Debug Steps
+
+1. One way to debug is to reboot the node that is experiencing the issues. If you are unable to reboot the node, or if
+   rebooting the node does not fix the issue, continue to the following steps.
+
+<!-- prettier-ignore -->
+2. Connect to your cluster via the command-line. For more information, refer to <VersionedLink text="Access Cluster with CLI" url="/clusters/cluster-management/palette-webctl" />
+
+3. Issue the following command to identify Persistent Volume Claims (PVC) from Ceph File System (FS).
+
+   ```shell
+   kubectl get pvc --all | grep "cephFS"
+   ```
+
+4. Scale down all workloads, including pods, deployments, and StatefulSets using the PVC to zero.
+
+   To scale down a deployment, use the following command. Replace `deployment-name` with the name of the deployment.
+
+   ```shell
+   kubectl scale deployment deployment-name --replicas=0
+   ```
+
+   To scale down a StatefulSet, use the following command. Replace `statefulset-name` with the name of the StatefulSet.
+
+   ```shell
+   kubectl scale statefulset statefulset-name --replicas=0
+   ```
+
+   To scale down a pod, delete it. Make sure you delete the deployments and StatefulSets first. If a pod belongs to a
+   StatefulSet or a deployment, it will simply be recreated.
+
+   ```shell
+   kubectl delete pods pod-name
+   ```
+
+   :::tip
+
+   If you do not know which workloads use the PVC, you can start by getting a list of all pods that are using PVCs and
+   their PVC names with the following command.
+
+   ```shell
+   kubectl get pods --all-namespaces --output=json | jq '.items[] | {name: .metadata.name, namespace: .metadata.namespace, claimName: .spec |  select( has ("volumes") ).volumes[] | select( has ("persistentVolumeClaim") ).persistentVolumeClaim.claimName }'
+   ```
+
+   You can then find workloads that are associated with the pods and scale them down to zero.
+
+   :::
+
+5. Once all the workloads are scaled down, all existing volume mounts will be unmounted, followed by fresh new mounts of
+   cephFS volumes. Ensure that all workloads are scaled down to zero. Even if one pod remains that uses the PVC, the
+   unmount will not happen and the issue will not be resolved.
+
+6. Scale the workloads back to their original state.
