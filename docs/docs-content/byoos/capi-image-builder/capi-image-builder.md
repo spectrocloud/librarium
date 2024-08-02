@@ -4,7 +4,7 @@ title: "CAPI Image Builder"
 description: "Learn how to use the CAPI Image Builder project to create images for Palette and VerteX."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 0
 tags: ["operating system", "byoos", "capi iamge builder"]
 ---
 
