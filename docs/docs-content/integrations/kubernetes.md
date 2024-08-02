@@ -1073,8 +1073,9 @@ The Kubeadm configuration file is where you can do the following:
   change the DNS domain during cluster creation. For more information, refer to
   [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.26#change-cluster-dns-service-domain-1).
 
+<!-- prettier-ignore -->
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
-  information, refer to the [Spectro Proxy](frp.md) guide.
+  information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
 
 ### Change Cluster DNS Service Domain
 
@@ -1403,8 +1404,9 @@ The Kubeadm configuration file is where you can do the following:
   change the DNS domain during cluster creation. For more information, refer to
   [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.25#change-cluster-dns-service-domain).
 
+<!-- prettier-ignore -->
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
-  information, refer to the [Spectro Proxy](frp.md) guide.
+  information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
 
 ### Change Cluster DNS Service Domain
 
@@ -1752,8 +1754,9 @@ The Kubeadm configuration file is where you can do the following:
   change the DNS domain during cluster creation. For more information, refer to
   [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.24#change-cluster-dns-service-domain).
 
+<!-- prettier-ignore -->
 - Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
-  information, refer to the [Spectro Proxy](frp.md) guide.
+  information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
 
 ### Change Cluster DNS Service Domain
 
