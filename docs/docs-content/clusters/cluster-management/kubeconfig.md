@@ -81,7 +81,7 @@ permission for the resource key _cluster_.
 
 :::
 
-- Is the [Spectro Proxy](../../integrations/frp.md) enabled for the cluster?
+- Is the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> enabled for the cluster?
 
 Use the tables below to help you identify which project role you need to access the kubeconfig file for a cluster.
 

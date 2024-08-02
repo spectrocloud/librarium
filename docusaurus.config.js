@@ -10,6 +10,7 @@ const { pluginPacksAndIntegrationsData } = require("./plugins/packs-integrations
 const { pluginImportFontAwesomeIcons } = require("./plugins/font-awesome");
 
 import path from "path";
+import { Logger } from "sass";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -193,7 +194,10 @@ const config = {
         id: "enable-source-map",
       },
     ],
-    pluginPacksAndIntegrationsData,
+    [
+      pluginPacksAndIntegrationsData,
+      { repositories: ["Palette Registry", "Public Repo", "Spectro Addon Repo", "Palette Community Registry"] },
+    ],
     pluginImportFontAwesomeIcons,
     function () {
       return {

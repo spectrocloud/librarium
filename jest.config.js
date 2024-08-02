@@ -4,7 +4,7 @@ module.exports = {
   preset: "ts-jest",
   testEnvironment: "jsdom",
   moduleNameMapper: {
-    ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": `identity-obj-proxy`,
+    ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2|svg)$": `identity-obj-proxy`,
   },
   testPathIgnorePatterns: [`node_modules`, `\\.cache`, `<rootDir>.*/build`, `visuals`],
   testEnvironment: `jsdom`,

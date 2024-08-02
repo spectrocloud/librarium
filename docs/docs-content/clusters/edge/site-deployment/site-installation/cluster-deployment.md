@@ -198,9 +198,9 @@ node pool.
 
 ### Limitations
 
-- In a multi-node cluster with [PXK-E](../../../../integrations/kubernetes-edge.md) as its Kubernetes layer, you cannot
-  change custom Network Interface Card (NIC). When you add an Edge host to such a cluster, leave the NIC field as its
-  default value.
+- In a multi-node cluster with <VersionedLink text="PXK-E" url="/integrations/packs/?pack=edge-k8s"/> as its Kubernetes
+  layer, you cannot change custom Network Interface Card (NIC). When you add an Edge host to such a cluster, leave the
+  NIC field as its default value.
 
 ### Prerequisites
 

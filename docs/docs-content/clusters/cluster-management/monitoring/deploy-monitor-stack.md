@@ -13,15 +13,17 @@ The monitoring stack you will deploy uses the open-source tool,
 The monitoring stack is a centralized server or aggregation spot to which all other clusters will forward metrics. The
 monitoring stack is a dedicated Kubernetes cluster for monitoring and metrics aggregation in your Palette environment.
 
+<!-- prettier-ignore-start -->
+
 The monitoring stack uses a server-client architecture. The monitoring stack uses the
-[Prometheus Operator](../../../integrations/prometheus-operator.md) pack to deploy all the dependencies the Prometheus
+<VersionedLink text="Prometheus Operator" url="/integrations/packs/?pack=prometheus-operator"/> pack to deploy all the dependencies the Prometheus
 server requires. The server exposes an API endpoint for all other clients to forward metrics. The clients are Kubernetes
-clusters with the [Prometheus Agent](../../../integrations/prometheus-agent.md) pack installed and configured.
+clusters with the <VersionedLink text="Prometheus Agent" url="/integrations/packs/?pack=prometheus-agent"/> pack installed and configured.
 
 Use the following steps to deploy a monitoring stack, and learn how to configure a host cluster to forward metrics to
 the monitoring stack.
 
-<br />
+<!-- prettier-ignore-end -->
 
 :::warning
 
@@ -107,10 +109,13 @@ You can choose to deploy the monitoring stack with or without authentication.
 
 10. Next, click on the **Presets** button to expand the options drawer.
 
+<!-- prettier-ignore-start -->
+
 11. Scroll down the presets option menu and enable **Remote Monitoring**. Confirm your changes. You can enable several
-    options to expand the functionality of the monitoring stack. Review the
-    [Prometheus Operator](../../../integrations/prometheus-operator.md) pack documentation to learn more about the
-    available options.
+options to expand the functionality of the monitoring stack. Review the
+<VersionedLink text="Prometheus Operator" url="/integrations/packs/?pack=prometheus-operator"/> pack documentation to
+learn more about the available options.
+<!-- prettier-ignore-end -->
 
 12. Confirm your changes by selecting **Confirm & Create**.
 
@@ -131,8 +136,8 @@ You can choose to deploy the monitoring stack with or without authentication.
 
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
-    - **Pack Name**: Spectrocloud Grafana Dashboards
-    - **Pack Version**: 1.0.X or newer
+    - **Pack Name**: Spectro Grafana Dashboards
+    - **Pack Version**: 4.0.X or newer
 
 18. Use the default values. Confirm your changes by selecting **Confirm & Create**.
 
@@ -296,19 +301,23 @@ charts:
 
 16. Next, update the `prometheus.service.type` parameter to `ClusterIP`.
 
-<br />
+        <br />
 
-```yaml
-charts:
-  kube-prometheus-stack:
-    prometheus:
-      service:
-        type: ClusterIP
-```
+        ```yaml
+        charts:
+          kube-prometheus-stack:
+            prometheus:
+              service:
+                type: ClusterIP
+        ```
+
+<!-- prettier-ignore-start -->
 
 17. Confirm your changes by selecting **Confirm & Create**. You can enable several options to expand the functionality
-    of the monitoring stack. Review the [Prometheus Operator](../../../integrations/prometheus-operator.md) pack
-    documentation to learn more about the available options.
+of the monitoring stack. Review the
+<VersionedLink text="Prometheus Operator" url="/integrations/packs/?pack=prometheus-operator"/> pack documentation to
+learn more about the available options.
+<!-- prettier-ignore-end -->
 
 18. Click on **Add New Pack**.
 

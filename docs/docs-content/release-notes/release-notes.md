@@ -98,9 +98,8 @@ extended period of time, contact support@spectrocloud.com.
 - Fixed an issue that caused MinIO S3 URL setting to be missing in backup location settings.
 - Fixed an issue that prohibited updating Helm packs in cluster profiles.
 - Fixed an issue that caused certain OCI registries created before the Palette 4.2 upgrade to be unlisted.
-- Fixed an issue that caused HTTP 400 errors when visiting the
-  [Kubernetes Dashboard](../integrations/kubernetes-dashboard.md). The issue was caused by an internal cookie size limit
-  that was insufficient for the Kubernetes Dashboard.
+- Fixed an issue that caused HTTP 400 errors when visiting the Kubernetes Dashboard. The issue was caused by an internal
+  cookie size limit that was insufficient for the Kubernetes Dashboard.
 
 ## January 9, 2024 - Release 4.2.4
 
@@ -246,12 +245,13 @@ notes below to learn more about the new features and improvements.
     to our support team [support@spectrocloud.com](mailto:support@spectrocloud.com) if you need to remove a node with
     the `palette-webhook` pod on it.
 
-- In a multi-node cluster with [PXK-E](../integrations/kubernetes-edge.md) as the Kubernetes distribution, you cannot
-  change the Network Interface Card (NIC). When you add an Edge host to such a cluster, leave the NIC field as its
+<!-- prettier-ignore -->
+- In a multi-node cluster with <VersionedLink text="PXK-E" url="/integrations/packs/?pack=edge-k8s" /> as the Kubernetes distribution, you cannot change the Network Interface Card (NIC). When you add an Edge host to such a cluster, leave the NIC field as its
   default value.
 
-- The following known issues apply to [Harbor Edge Native Config](../integrations/harbor-edge.md) when deployed with the
-  [Longhorn](../integrations/longhorn.md) Container Storage Interface (CSI) driver:
+<!-- prettier-ignore -->
+- The following known issues apply to <VersionedLink text="Harbor Edge Native Config" url="/integrations/packs/?pack=harbor-edge-native-config" /> when deployed with the
+  <VersionedLink text="Longhorn" url="/integrations/packs/?pack=csi-longhorn" /> Container Storage Interface (CSI) driver:
 
   - The Harbor job service pod is in a _Terminating_ and _ContainerCreating_ state in an Edge Native High Availability
     (HA) cluster after a Day-2 operation.
