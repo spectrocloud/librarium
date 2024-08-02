@@ -294,9 +294,8 @@ Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/
 
 Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers
 except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to
-use Azure Active Directory (AAD) to enable OIDC integration. Refer to
-[Enable OIDC in Kubernetes Clusters With Entra ID](../user-management/saml-sso/palette-sso-with-entra-id.md#enable-oidc-in-kubernetes-clusters-with-entra-id)
-to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
+use Azure Active Directory (AAD) to enable OIDC integration. Click the **Amazon EKS** tab for steps to configure OIDC
+for EKS clusters.
 
 1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
 

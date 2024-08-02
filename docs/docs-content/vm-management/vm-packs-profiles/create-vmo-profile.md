@@ -50,9 +50,9 @@ about pack components, refer to [Virtual Machine Orchestrator Pack](../vm-packs-
    - **Pack Name**: Virtual Machine Orchestrator
    - **Pack Version**: 1.0 or higher
 
+<!-- prettier-ignore -->
 7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the
-   **Spectro Proxy** pack when you create the cluster. Check out the [Spectro Proxy](../../integrations/frp.md) guide to
-   learn more. Changing the default may require some additional configuration.
+   **Spectro Proxy** pack when you create the cluster. Check out the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more. Changing the default may require some additional configuration.
 
    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 

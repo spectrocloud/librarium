@@ -38,9 +38,10 @@ a VMO cluster profile. The pack's components are described below. All the compon
 
 :::info
 
+<!-- prettier-ignore -->
 The **Spectro Proxy** pack enables the use of a reverse proxy with a Kubernetes cluster and is automatically installed
 when you create the cluster with the default **Proxied** setting for **Access** during cluster profile creation. Check
-out the [Spectro Proxy](../../integrations/frp.md) pack documentation to learn more.
+out the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack documentation to learn more.
 
 :::
 
@@ -49,6 +50,6 @@ used operating systems, or they can define their own VM templates to share with 
 
 ## Resources
 
-- [Spectro Proxy](../../integrations/frp.md)
+- <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" />
 
 - [Feature Gates](../vm-management.md#feature-gates)

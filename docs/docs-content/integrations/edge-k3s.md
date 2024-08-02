@@ -198,11 +198,6 @@ After you have configured the IDP for authentication, you can proceed to create 
 in your cluster. Refer to [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings)
 for more guidance.
 
-## Configure OIDC Identity Provider for Palette Virtual Clusters
-
-If you are using K3s in a virtual cluster inside of a cluster group, you can also configure OIDC for your cluster. Refer
-to [Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md) for
-more guidance.
 
 ## Add a Certificate for Reverse Proxy
 

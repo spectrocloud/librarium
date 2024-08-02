@@ -554,8 +554,9 @@ Spectro Cloud Palette 3.0.0 is released with [Native Edge](clusters/edge/edge.md
 - Palette enterprise mode production clusters can be backed up to
   [Azure Blob storage](clusters/cluster-management/backup-restore/backup-restore.md) for convenient restoration.
 
+<!-- prettier-ignore -->
 - Palette provisions cluster monitoring with [Kubernetes Dashboard](integrations/spectro-k8s-dashboard.md) exposed to
-  external traffic using [Spectro Proxy](integrations/frp.md) pack with RBAC authentication.
+  external traffic using <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack with RBAC authentication.
 
 **Enhancements**
 

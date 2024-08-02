@@ -326,9 +326,7 @@ role to users and groups, refer to
 
 You can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to
 a role. To learn more, review
-<VersionedLink text="Use RBAC with OIDC" url="/integrations/packs/?pack=edge-k8s#use-rbac-with-oidc" />. You can also
-configure OIDC for virtual clusters. For guidance, refer to
-[Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
+<VersionedLink text="Use RBAC with OIDC" url="/integrations/packs/?pack=edge-k8s#use-rbac-with-oidc" />. 
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
 
@@ -691,9 +689,7 @@ role to users and groups, refer to
 
 You can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to
 a role. To learn more, review
-<VersionedLink text="Use RBAC with OIDC" url="/integrations/packs/?pack=edge-k8s#use-rbac-with-oidc" />. You can also
-configure OIDC for virtual clusters. For guidance, refer to
-[Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
+<VersionedLink text="Use RBAC with OIDC" url="/integrations/packs/?pack=edge-k8s#use-rbac-with-oidc" />. 
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
 
@@ -1052,20 +1048,14 @@ All the options require you to map a set of users or groups to a Kubernetes RBAC
 role to users and groups, refer to
 [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
 
-<!-- prettier-ignore-start -->
-
+<!-- prettier-ignore -->
 You can create a role binding that maps individual users or groups assigned within the OIDC provider's configuration to
-a role. To learn more, review
-
-<VersionedLink text="Use RBAC with OIDC" url="/integrations/packs/?pack=edge-k8s#use-rbac-with-oidc" />. You can also
-configure OIDC for virtual clusters. For guidance, refer to [Configure OIDC for a Virtual
-Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
+a role. To learn more, review <VersionedLink text="Use RBAC with OIDC" url="/integrations/packs/?pack=edge-k8s#use-rbac-with-oidc" />.
 
 - **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
   specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
-
   <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=edge-k8s#configure-custom-oidc" />. This
   setting displays in the YAML file as `none`.
 
@@ -1074,10 +1064,9 @@ Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md)
   displays in the YAML file as `palette`.
 
 - **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure
-OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
-**OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
-information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
-<!-- prettier-ignore-end -->
+  OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
+  **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
+  information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
 
 :::info
 
