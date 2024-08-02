@@ -254,8 +254,9 @@ improvements in Palette 4.0.0.
   configuration parameter `disableAutoRegister` to `true` to turn off auto registration. Refer to the
   [Edge Installer Configuration](clusters/edge/edge-configuration/installer-reference.md) documentation to learn more.
 
+<!-- prettier-ignore -->
 - You can configure the node drainage behavior for your Edge hosts. To learn more about configuring node drainage, refer
-  to the [Bring Your Own OS (BYOOS) pack](integrations/byoos.md#parameters) documentation.
+  to the <VersionedLink text="Bring Your Own OS (BYOOS) pack" url="/integrations/packs/?pack=generic-byoi"/> documentation.
 
 #### Known Issues {#release-4-0-edge-known-issues}
 
