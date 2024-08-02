@@ -8,9 +8,9 @@ sidebar_position: 10
 tags: ["vmo"]
 ---
 
-The **Virtual Machine Orchestrator** pack conveniently includes several components and automatically installs the
-[Spectro Proxy](../integrations/frp.md) pack when you use the default profile configuration. To learn about pack
-components, refer to [Palette VMO](./vm-management.md).
+<!-- prettier-ignore -->
+The **Virtual Machine Orchestrator** pack conveniently includes several components and automatically installs the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack when you use the default
+profile configuration. To learn about pack components, refer to [Palette VMO](./vm-management.md).
 
 ## Limitations
 
@@ -49,8 +49,8 @@ components, refer to [Palette VMO](./vm-management.md).
 
 7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the
    **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere. Check
-   out the [Spectro Proxy](../integrations/frp.md) guide to learn more. Changing the default may require some additional
-   configuration.
+   out the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more.
+   Changing the default may require some additional configuration.
 
    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
@@ -86,12 +86,11 @@ components, refer to [Palette VMO](./vm-management.md).
 
 6.  Locate the **Virtual Machine Orchestrator** pack and add it to your profile.
 
+<!-- prettier-ignore -->
 7.  Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the
     **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere.
     Changing the default may require some additional configuration. Check out the
-    [Spectro Proxy](../integrations/frp.md) guide to learn more
-
-    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
+    <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more. The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
 8.  If you are using PKX-E, no change is required and you can skip this step.
 
@@ -107,14 +106,16 @@ components, refer to [Palette VMO](./vm-management.md).
         criSocketContainerPath: /host/run/containerd/containerd.sock
     ```
 
+<!-- prettier-ignore -->
 9.  If your cluster profile does include a load balancer such as MetalLB, no changes are required and you can skip this
-    step. For more information about MetalLB, refer to [MetalLB pack documentation](../integrations/metallb.md).
+    step. For more information about MetalLB, refer to the <VersionedLink text="MetalLB pack documentation" url="/integrations/packs/?pack=lb-metallb-helm" />
+
 
     If your cluster profile does not include a load balancer, update the services
     `charts.virtual-machine-orchestrator.kubevirt` and `charts.virtual-machine-orchestrator.cdi` to type ClusterIP in
     **values.yaml** for the VMO pack:
 
-          <Tabs>
+    <Tabs>
 
     <TabItem value="cdi" label="cdi">
 
@@ -133,9 +134,9 @@ components, refer to [Palette VMO](./vm-management.md).
         targetPort: 8443
     ```
 
-          </TabItem>
+    </TabItem>
 
-          <TabItem value="kubevirt" label="kubevirt">
+    <TabItem value="kubevirt" label="kubevirt">
 
     ```yaml {7}
     kubevirt:
@@ -149,7 +150,7 @@ components, refer to [Palette VMO](./vm-management.md).
         targetPort: 8443
     ```
 
-          </TabItem>
+    </TabItem>
 
     </Tabs>
 

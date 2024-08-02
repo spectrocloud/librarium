@@ -1,0 +1,324 @@
+---
+partial_category: packs
+partial_name: longhorn
+---
+
+
+## Versions Supported
+
+<Tabs queryString="parent">
+<TabItem label="1.6.x" value="1.6.x">
+
+### Longhorn with Harbor Registry in Airgap Environments
+
+When you use the Longhorn pack in an airgapped environment, the Harbor Edge-Native Config pack is required for your
+cluster to function. However, you must change the image references in the Longhorn pack to use the base URL of the local
+Harbor registry. Otherwise, the cluster will fail to deploy, with the `longhorn-driver-deployer` pod stuck in the `Init`
+state.
+
+1.  Log in to Palette.
+
+2.  From the left **Main Menu**, select **Profiles**.
+
+3.  Select the cluster profile you use to deploy the cluster with Longhorn.
+
+4.  In the pack YAML for the Longhorn pack, replace the base URL of each image referenced in the pack with the Harbor
+    registry.
+
+    For example, the following is a snippet of the Longhorn pack's YAML before and after you replace the base URL.
+
+    <Tabs>
+
+    <TabItem label="Before Replacement" value="before">
+
+    ```yaml
+    pack:
+      namespace: "longhorn-system"
+      namespaceLabels:
+        "longhorn-system":
+          "pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v{{
+          .spectro.system.kubernetes.version | substr 0 4 }}"
+      content:
+        images:
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-engine:v1.5.3
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-manager:v1.5.3
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-ui:v1.5.3
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-instance-manager:v1.5.3
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-share-manager:v1.5.3
+    ```
+
+    </TabItem>
+
+    <TabItem label="After Replacement" value="after">
+
+    ```yaml
+    pack:
+    namespace: "longhorn-system"
+    namespaceLabels:
+      "longhorn-system":
+        "pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v{{
+        .spectro.system.kubernetes.version | substr 0 4 }}"
+    content:
+      images:
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-engine:v1.5.3
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-manager:v1.5.3
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-ui:v1.5.3
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-instance-manager:v1.5.3
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-share-manager:v1.5.3
+    ```
+
+    </TabItem>
+
+    </Tabs>
+
+    Refer to <VersionedLink text="Harbor Edge-Native Config" url="/integrations/harbor-edge/#log-in-to-harbor-web-ui" /> pack documentation to learn how to
+    find the node IP and port of the Harbor registry. If you have given the registry a domain name, you can use the
+    domain name instead of the node IP.
+
+## Known Issues
+
+The following known issues exist in the Longhorn 1.5.X release.
+
+- A deadlock may occurs when using a RWX volume and a cluster node is recreated. This issue is disclosed as a
+  [known issue](https://github.com/longhorn/longhorn/wiki/Release-Known-Issues#v153) in the Longhorn GitHub repository]
+  and a fix is on the roadmap. Workarounds provided by the community can be found in the
+  [issue discussion](https://github.com/longhorn/longhorn/issues/7183#issuecomment-1823715359).
+
+- Rebooting or upgrading a cluster with Longhorn has a small possibility of triggering a race condition that causes pods
+  to be stuck in the terminating state. This issue is related to a
+  [known issue](https://github.com/longhorn/longhorn/issues/6962) in the Longhorn GitHub repository and a fix is on the
+  roadmap.
+
+- Using Longhorn together in airgap environments with an external registry requires you to update the Longhorn pack
+  image references to use the base URL of the Harbor registry. For more information, refer to
+  Longhorn Deployer Stuck in Init State in Airgap Environments section.
+
+</TabItem>
+<TabItem label="1.5.x" value="1.5.x">
+
+### Longhorn with Harbor Registry in Airgap Environments
+
+When you use the Longhorn pack in an airgapped environment, the Harbor Edge-Native Config pack is required for your
+cluster to function. However, you must change the image references in the Longhorn pack to use the base URL of the local
+Harbor registry. Otherwise, the cluster will fail to deploy, with the `longhorn-driver-deployer` pod stuck in the `Init`
+state.
+
+1.  Log in to Palette.
+
+2.  From the left **Main Menu**, select **Profiles**.
+
+3.  Select the cluster profile you use to deploy the cluster with Longhorn.
+
+4.  In the pack YAML for the Longhorn pack, replace the base URL of each image referenced in the pack with the Harbor
+    registry.
+
+    For example, the following is a snippet of the Longhorn pack's YAML before and after you replace the base URL.
+
+    <Tabs>
+
+    <TabItem label="Before Replacement" value="before">
+
+    ```yaml
+    pack:
+      namespace: "longhorn-system"
+      namespaceLabels:
+        "longhorn-system":
+          "pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v{{
+          .spectro.system.kubernetes.version | substr 0 4 }}"
+      content:
+        images:
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-engine:v1.5.3
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-manager:v1.5.3
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-ui:v1.5.3
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-instance-manager:v1.5.3
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-share-manager:v1.5.3
+    ```
+
+    </TabItem>
+
+    <TabItem label="After Replacement" value="after">
+
+    ```yaml
+    pack:
+    namespace: "longhorn-system"
+    namespaceLabels:
+      "longhorn-system":
+        "pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v{{
+        .spectro.system.kubernetes.version | substr 0 4 }}"
+    content:
+      images:
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-engine:v1.5.3
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-manager:v1.5.3
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-ui:v1.5.3
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-instance-manager:v1.5.3
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-share-manager:v1.5.3
+    ```
+
+    </TabItem>
+
+    </Tabs>
+
+    Refer to <VersionedLink text="Harbor Edge-Native Config" url="/integrations/harbor-edge/#log-in-to-harbor-web-ui" /> pack documentation to learn how to
+    find the node IP and port of the Harbor registry. If you have given the registry a domain name, you can use the
+    domain name instead of the node IP.
+
+## Known Issues
+
+The following known issues exist in the Longhorn 1.5.X release.
+
+- A deadlock may occurs when using a RWX volume and a cluster node is recreated. This issue is disclosed as a
+  [known issue](https://github.com/longhorn/longhorn/wiki/Release-Known-Issues#v153) in the Longhorn GitHub repository]
+  and a fix is on the roadmap. Workarounds provided by the community can be found in the
+  [issue discussion](https://github.com/longhorn/longhorn/issues/7183#issuecomment-1823715359).
+
+- Rebooting or upgrading a cluster with Longhorn has a small possibility of triggering a race condition that causes pods
+  to be stuck in the terminating state. This issue is related to a
+  [known issue](https://github.com/longhorn/longhorn/issues/6962) in the Longhorn GitHub repository and a fix is on the
+  roadmap.
+
+- Using Longhorn together in airgap environments with an external registry requires you to update the Longhorn pack
+  image references to use the base URL of the Harbor registry. For more information, refer to
+  Longhorn Deployer Stuck in Init State in Airgap Environments section.
+
+</TabItem>
+
+<TabItem label="1.4.x" value="1.4.x">
+
+### Longhorn with Harbor Registry in Airgap Environments
+
+When you use the Longhorn pack in an airgapped environment, the Harbor Edge-Native Config pack is required for your
+cluster to function. However, you must change the image references in the Longhorn pack to use the base URL of the local
+Harbor registry. Otherwise, the cluster will fail to deploy, with the `longhorn-driver-deployer` pod stuck in the `Init`
+state.
+
+1.  Log in to Palette.
+
+2.  From the left **Main Menu**, select **Profiles**.
+
+3.  Select the cluster profile you use to deploy the cluster with Longhorn.
+
+4.  In the pack YAML for the Longhorn pack, replace the base URL of each image referenced in the pack with the Harbor
+    registry.
+
+    For example, the following is a snippet of the Longhorn pack's YAML before and after you replace the base URL.
+
+    <Tabs>
+
+    <TabItem label="Before Replacement" value="before">
+
+    ```yaml
+    pack:
+      namespace: "longhorn-system"
+      namespaceLabels:
+        "longhorn-system":
+          "pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v{{
+          .spectro.system.kubernetes.version | substr 0 4 }}"
+      content:
+        images:
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-engine:v1.5.3
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-manager:v1.5.3
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-ui:v1.5.3
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-instance-manager:v1.5.3
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-share-manager:v1.5.3
+    ```
+
+    </TabItem>
+
+    <TabItem label="After Replacement" value="after">
+
+    ```yaml
+    pack:
+    namespace: "longhorn-system"
+    namespaceLabels:
+      "longhorn-system":
+        "pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v{{
+        .spectro.system.kubernetes.version | substr 0 4 }}"
+    content:
+      images:
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-engine:v1.5.3
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-manager:v1.5.3
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-ui:v1.5.3
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-instance-manager:v1.5.3
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-share-manager:v1.5.3
+    ```
+
+    </TabItem>
+
+    </Tabs>
+
+    Refer to <VersionedLink text="Harbor Edge-Native Config" url="/integrations/harbor-edge/#log-in-to-harbor-web-ui" /> pack documentation to learn how to
+    find the node IP and port of the Harbor registry. If you have given the registry a domain name, you can use the
+    domain name instead of the node IP.
+
+</TabItem>
+
+<TabItem label="1.3.x" value="1.3.x">
+
+### Longhorn with Harbor Registry in Airgap Environments
+
+When you use the Longhorn pack in an airgapped environment, the Harbor Edge-Native Config pack is required for your
+cluster to function. However, you must change the image references in the Longhorn pack to use the base URL of the local
+Harbor registry. Otherwise, the cluster will fail to deploy, with the `longhorn-driver-deployer` pod stuck in the `Init`
+state.
+
+1.  Log in to Palette.
+
+2.  From the left **Main Menu**, select **Profiles**.
+
+3.  Select the cluster profile you use to deploy the cluster with Longhorn.
+
+4.  In the pack YAML for the Longhorn pack, replace the base URL of each image referenced in the pack with the Harbor
+    registry.
+
+    For example, the following is a snipped of the Longhorn pack's YAML before and after you replace the base URL:
+
+    <Tabs>
+
+    <TabItem label="Before Replacement" value="before">
+
+    ```yaml
+    pack:
+      namespace: "longhorn-system"
+      namespaceLabels:
+        "longhorn-system":
+          "pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v{{
+          .spectro.system.kubernetes.version | substr 0 4 }}"
+      content:
+        images:
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-engine:v1.5.3
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-manager:v1.5.3
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-ui:v1.5.3
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-instance-manager:v1.5.3
+          - image: gcr.io/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-share-manager:v1.5.3
+    ```
+
+    </TabItem>
+
+    <TabItem label="After Replacement" value="after">
+
+    ```yaml
+    pack:
+    namespace: "longhorn-system"
+    namespaceLabels:
+      "longhorn-system":
+        "pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v{{
+        .spectro.system.kubernetes.version | substr 0 4 }}"
+    content:
+      images:
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-engine:v1.5.3
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-manager:v1.5.3
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-ui:v1.5.3
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-instance-manager:v1.5.3
+        - image: 10.10.137.220:30003/spectro-images-public/packs/csi-longhorn/1.5.3/longhorn-share-manager:v1.5.3
+    ```
+
+    </TabItem>
+
+    </Tabs>
+
+    Refer to <VersionedLink text="Harbor Edge-Native Config" url="/integrations/harbor-edge/#log-in-to-harbor-web-ui" /> pack documentation to learn how to
+    find the node IP and port of the Harbor registry. If you have given the registry a domain name, you can use the
+    domain name instead of the node IP.
+
+</TabItem>
+</Tabs>

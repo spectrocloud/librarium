@@ -10,24 +10,18 @@ logoUrl: https://registry-addon.spectrocloud.com/v1/kube-bench/blobs/sha256:28c2
 tags: ["packs", "kube-bench", "security"]
 ---
 
-Palette executes kube-bench, a CIS Benchmark scanner by Aqua Security, for every Kubernetes pack to ensure the master
-and worker nodes are configured securely. It is available as an Add-on layer within Palette.
+## Terraform
 
-kube-bench runs against a series of checks specified in a `controls` YAML file. For more information on how to write
-tests and config files, refer to the [controls](https://github.com/aquasecurity/kube-bench/blob/main/docs/controls.md)
-section.
+You can reference the Kube-bench pack in Terraform with the following data resource.
 
-## Versions Supported
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
 
-<Tabs queryString="versions">
-
-<TabItem label="0.6.x" value="0.6.x">
-
-- **0.6.8**
-
-</TabItem>
-</Tabs>
-
-## References
-
-- [kube-bench GitHub](https://github.com/aquasecurity/kube-bench/blob/main/docs/running.md#running-kube-bench)
+data "spectrocloud_pack" "kubebench" {
+  name    = "kubebench"
+  version = "1.16.7"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```

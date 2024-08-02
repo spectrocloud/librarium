@@ -10,32 +10,18 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/kubewatch/blobs/sha256:a277fb
 tags: ["packs", "kube-watch", "monitoring"]
 ---
 
-Kubewatch is a Kubernetes watcher that currently publishes notification to available collaboration hubs/notification
-channels. It is run in the k8s cluster for monitoring resource changes and event notifications are obtained through
-webhooks. The supported webhooks are:
+## Terraform
 
-- slack
-- hipchat
-- mattermost
-- flock
-- webhook
-- smtp
+You can reference the Kubewatch pack in Terraform with the following data resource.
 
-## Usage:
-
-kubewatch [flags] kubewatch [command]
-
-## Versions Supported
-
-<Tabs>
-
-<TabItem label="1.0.x" value="1.0.x">
-
-**1.0.7**
-
-</TabItem>
-</Tabs>
-
-## References
-
-- [kube-watch GitHub](https://github.com/robusta-dev/kubewatch)
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+data "spectrocloud_pack" "kubewatch" {
+  name    = "kubewatch"
+  version = "1.0.7"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
