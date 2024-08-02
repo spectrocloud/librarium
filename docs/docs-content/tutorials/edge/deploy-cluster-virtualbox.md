@@ -413,7 +413,7 @@ Replace the layer manifest with the custom manifest you built in the [Build Edge
 section. This will make the cluster profile pull the provider images from the _ttl.sh_ registry. The image below
 displays the OS layer with the custom manifest.
 
-![A screenshot of the cluster profile creation step with the OS layer.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_byos-cluster-profile.png)
+![A screenshot of the cluster profile creation step with the OS layer.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_byos-cluster-profile.webp)
 
 Click **Next Layer** to proceed to the next layer. Add the following Kubernetes layer to your cluster profile. The
 Kubernetes version must match the same version that was used in the provider images.
@@ -426,7 +426,7 @@ Click **Values** under **Pack Details**, and replace the predefined **cluster-ci
 they overlap with your network. For example, you can set the **cluster-cidr** parameter to `"100.64.0.0/18"` and
 **service-cidr** to `"100.64.64.0/18"`. This pevents any routing conflicts in the internal pod networking.
 
-![A screenshot of the cluster profile creation step with the Kubernetes layer.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-profile-k8s.png)
+![A screenshot of the cluster profile creation step with the Kubernetes layer.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-profile-k8s.webp)
 
 Click **Next Layer** to add the network layer. This tutorial uses Cilium as an example.
 
@@ -451,7 +451,7 @@ Click **Values** under **Pack Details** and replace the predefined `192.168.10.0
 **addresses** line with a valid IP address or IP range from your network. Next, click **Confirm & Create** to add the
 MetalLB pack.
 
-![A screenshot of the cluster profile creation step with the MetalLB layer.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-profile-metallb.png)
+![A screenshot of the cluster profile creation step with the MetalLB layer.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-profile-metallb.webp)
 
 Finally, click **Add New Pack** again and search for the Hello Universe pack.
 
@@ -479,7 +479,7 @@ preset. Replace these values with your own base64 encoded values. The
 [hello-universe](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer) repository
 provides a token that you can use.
 
-![A screenshot of the cluster profile creation step with the Hello Universe layer.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-profile-hellouni.png)
+![A screenshot of the cluster profile creation step with the Hello Universe layer.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-profile-hellouni.webp)
 
 Click **Confirm & Create** to save the alterations and add the pack to your cluster profile.
 
@@ -500,7 +500,7 @@ In the **ISO Image** field, select the Edge Installer ISO file you built in the
 
 Set the machine **Type** as `Linux`, the **Version** as `Ubuntu (64-bit)`, and click **Next**.
 
-![A screenshot of the VirtualBox VM configuration.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-config.png)
+![A screenshot of the VirtualBox VM configuration.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-config.webp)
 
 Adjust the **Base Memory** to `8000 MB` and **Processors** to `2 CPU`. Click **Next** to proceed.
 
@@ -520,7 +520,7 @@ Select the VM to ajust its network settings. Click **Settings** and select **Net
 Change the option **Attached to:** from `NAT` to `Bridged Adapter` so that the VM can receive an IP address from the
 same network as the host machine. Click **OK**.
 
-![A screenshot of the VirtualBox VM network configuration.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-network.png)
+![A screenshot of the VirtualBox VM network configuration.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-network.webp)
 
 Once you finish the network configuration, the VM gets created and ready to be started.
 
@@ -537,14 +537,14 @@ default upon completion.
 When you see the image below, right-click the VM, select **Stop**, and then click **Power Off** to turn it off before
 the reboot starts.
 
-![A screenshot of the VirtualBox VM after installation.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-reboot.png)
+![A screenshot of the VirtualBox VM after installation.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-reboot.webp)
 
 Next, click **Settings** and select **Storage**.
 
 Select the Edge Installer ISO and click **Remove Attachment** to remove it from your VM. Confirm the deletion with
 **Remove** and click **OK** to close the settings window.
 
-![A screenshot of the VirtualBox VM storage configuration.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-remove-iso.png)
+![A screenshot of the VirtualBox VM storage configuration.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-remove-iso.webp)
 
 ### Deploy Edge Host
 
@@ -554,7 +554,7 @@ bridged network of the host machine. This address should be on the same subnet a
 After a few minutes, the VM screen displays an IP address and it registers automatically in Palette as an Edge host
 using the provided Palette registration token.
 
-![A screenshot of the Edge host.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_edge-host.png)
+![A screenshot of the Edge host.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_edge-host.webp)
 
 ### Validate the Edge Host Registration
 
@@ -564,7 +564,7 @@ Log in to [Palette](https://console.spectrocloud.com/) and select **Clusters** f
 Confirm your Edge host is listed as **Healthy** and with a **Ready** status. The **Machine ID** should match the ID
 displayed on your VM's screen.
 
-![A screenshot of the Edge host in Palette.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_edge-host-palette.png)
+![A screenshot of the Edge host in Palette.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_edge-host-palette.webp)
 
 ## Deploy Edge Cluster
 
