@@ -29,6 +29,8 @@ support team by opening up a ticket through our [support page](http://support.sp
 
 - [Private Cloud Gateway](pcg.md)
 
+- [Virtual Machine Orchestrator](vmo-issues.md)
+
 ## Generate HAR Files
 
 When you report issues with Palette to Spectro Cloud Support, we may ask you to generate an HTTP Archive (HAR) file to
