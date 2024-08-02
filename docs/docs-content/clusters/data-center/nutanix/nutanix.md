@@ -57,14 +57,14 @@ steps in Palette and their local environment.
    you configured it in the previous step. You must fill out the account name and account details.
 
 4. Create a cluster profile by selecting Nutanix as the cloud type.
-
+   <!-- prettier-ignore-start -->
    When creating a Nutanix profile, you do not have to specify anything for the OS or Kubernetes layers. Palette
    provides out-of-the-box packs for the network and storage profile layers, including the
-   [**Nutanix CSI**](../../../integrations/nutanix-csi.md) storage pack. The **Nutanix CSI** pack is available when the
-   cloud is registered using the name `nutanix`. If you have custom packs, you can add them to Palette by adding your
-   registry. To learn how to add a pack registry, review
-   [Add a Custom Registry](/docs/docs-content/registries-and-packs/adding-a-custom-registry.md).
-
+      <VersionedLink text="Nutanix CSI" url="/integrations/packs/?pack=nutanix-csi" /> storage pack. The **Nutanix CSI**
+      pack is available when the cloud is registered using the name `nutanix`. If you have custom packs, you can add them
+      to Palette by adding your registry. To learn how to add a pack registry, review [Add a Custom
+      Registry](/docs/docs-content/registries-and-packs/adding-a-custom-registry.md).
+   <!-- prettier-ignore-end -->
 5. Deploy a cluster by specifying Nutanix, listed under **Tech Preview**, as the cluster type. Select the cloud account
    you added and make any needed changes to the profile layers by using the YAML editor. At the **Cluster Config** step,
    customize the Cluster configuration and Node configuration YAML files by replacing any undefined variables in curly

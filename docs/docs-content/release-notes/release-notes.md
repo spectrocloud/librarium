@@ -314,7 +314,131 @@ notes below to learn more about the new features and improvements.
 
 #### Features
 
-- Version 0.17.2 of the
+- <TpBadge /> The MicroK8s pack layer now exposes `bootCommands`, `preRunCommands` and `postRunCommands`. You can use
+  these commands to customize and configure MicroK8s as needed. MicroK8s is delivered as a Technical Preview for AWS and
+  Canonical MAAS in this release. To learn more, refer to the MicroK8s pack
+  <VersionedLink text="documentation" url="/integrations/packs/?pack=kubernetes-microk8s" />.
+
+#### Improvements
+
+- You can now upload a custom pack to a self-hosted OCI registry multiple times by using different namespaces in the OCI
+  repository.
+
+- This release removes terminology that may be culturally insensitive or create a barrier to inclusion. We removed the
+  term "master" from our product and replaced it with "control-plane". This work aligns with the Linux Foundation
+  initiative for [Diversity & Inclusivity](https://www.linuxfoundation.org/about/diversity-inclusivity).
+
+#### Bug Fixes
+
+- The issue where Google GKE cluster deployments failed is now resolved. You can now deploy GKE clusters using the
+  latest available GKE versions.
+
+#### Deprecations and Removals
+
+- The term _master_ is removed from Palette and replaced with the term, _control plane_. This change is reflected in the
+  UI, API and documentation. The following API endpoints are affected as a the payload object `includeMasterMachines` is
+  deprecated and replaced with the new object, `includeControlPlaneMachines`:
+
+  - POST `/v1/dashboard/spectroclusters/resources/usage`
+  - POST `/v1/dashboard/spectroclusters/resources/cost`
+  - POST `/v1/dashboard/spectroclusters/{uid}/resources/consumption`
+  - POST `/v1/dashboard/spectroclusters/resources/consumption`
+  - GET `/v1/metrics/{resourceKind}/{resourceUid}/values`
+  - GET `/v1/metrics/{resourceKind}/values`
+
+  <br />
+
+  :::warning
+
+  After six months, the `includeMasterMachines` object will be removed from the API. Use the
+  `includeControlPlaneMachines` object moving forward.
+
+  :::
+
+#### Known Issues
+
+- An issue prevents RKE2 and Palette eXtended Kubernetes (PXK) on version 1.29.4 from operating correctly with Canonical
+  MAAS. A temporary workaround is using a version lower than 1.29.4 when using MAAS..
+
+- <VersionedLink text="MicroK8s" url="/integrations/packs/?pack=kubernetes-microk8s" /> does not support a multi-node
+  cluster deployment and is limited to a single-node cluster. As a result, the only supported upgrade strategy is
+  `InPlaceUpgrade`.
+
+- Clusters using <VersionedLink text="MicroK8s" url="/integrations/packs/?pack=kubernetes-microk8s"/> as the Kubernetes
+  distribution, the control plane node fails to upgrade when using the `InPlaceUpgrade` strategy for sequential
+  upgrades, such as upgrading from version 1.25.x to version 1.26.x and then to version 1.27.x. Refer to the
+  [Control Plane Node Fails to Upgrade in Sequential MicroK8s Upgrades](../troubleshooting/pack-issues.md)
+  troubleshooting guide for resolution steps.
+
+- If you did not configure the Trusted Boot keys to auto-enroll, manual enrollment could take several times to be
+  successful. For more information about key enrollment, refer to
+  [Enroll Trusted Boot Keys in Edge Host](../clusters/edge/trusted-boot/deployment-day2/install.md#enroll-secure-boot-keys-into-edge-device).
+
+- Edge hosts with FIPS-compliant RHEL Operating System (OS) distribution may encounter the error where the
+  `systemd-resolved.service` service enters the **failed** state. This prevents the nameserver from being configured,
+  which will result in cluster deployment failure. Refer to
+  [TroubleShooting](../troubleshooting/edge.md#scenario---systemd-resolvedservice-enters-failed-state) for a workaround.
+
+### Edge
+
+#### Features
+
+<!-- prettier-ignore -->
+- <TpBadge /> [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) is an exciting new Edge capability developed as part of the [SENA
+  framework](https://www.spectrocloud.com/product/sena). Trusted Boot is a hardware-based security feature that ensures that the system boots securely and that the boot process has
+  not been tampered with. Trusted Boot does several significant things, all working in concert, to enhance security: 
+  - Ensures that only trusted software can boot on the system. Any modification to any part of the hard disk will be detected. 
+  - Encrypts all sensitive data on disk using hardware security Trusted Platform Module (TPM). 
+  - Ensures that the TPM will only decrypt sensitive data if the boot process is clean and untampered.
+
+  Unlike similar solutions, Trusted Boot utilizes a secure boot, measured boot, and encryption to protect 
+  the booting system far more than other solutions. To learn more about Edge Trusted Boot, check out the
+  [Edge Trusted Boot documentation](../clusters/edge/trusted-boot/trusted-boot.md).
+
+#### Improvements
+
+<!-- prettier-ignore -->
+- <TpBadge /> The Cluster Profile Variables user experience has been improved. Users can now identify where a variable is used, preview the variable during creation time, and change the order of the variables displayed. An improved Day-2 management experience is also available. You can learn more about these new features in the [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) documentation.
+
+
+- Edge clusters managed by [LocalUI](../clusters/edge/local-ui/local-ui.md) now receive automatic SSL certificate updates for Kubernetes. Users can also manually trigger the SSL certificate update process. For more information, refer to the [Renew Certificates for Airgap Clusters](../clusters/edge/cluster-management/certificate-renewal.md) guide.
+
+- [Local UI](../clusters/edge/local-ui/local-ui.md) now includes tools to help users troubleshoot network issues. The tools include ping and traceroute. For more information, refer to the [Local UI](../clusters/edge/local-ui/local-ui.md) documentation.
+
+- Clusters managed by [Local UI](../clusters/edge/local-ui/local-ui.md) now include a new feature that allows users to download diagnostic logs from Local UI. This feature reduces the friction of troubleshooting issues on the cluster as the need to SSH into the cluster is reduced.
+
+- Support for custom links, URLs, and static pages is now available in Local UI. You can populate custom links in the left **Main Menu** of [Local UI](../clusters/edge/local-ui/host-management/custom-link.md), which will either load content into in an iframe or act as en external link. You can also can host static pages in Local UI. This is useful when you need to deploy and host custom or specific content for a site and want to avoid introducing additional services to host a static site.
+
+### Palette Dev Engine (PDE)
+
+#### Known Issues
+
+- During the platform upgrade from Palette 4.3 to 4.4,
+  [Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md) may encounter a scenario where
+  the pod `palette-controller-manager` is not upgraded to the newer version of Palette. The virtual cluster will
+  continue to be operational, and this does not impact its functionality. Refer to the
+  [Controller Manager Pod Not Upgraded](../troubleshooting/palette-dev-engine.md#scenario---controller-manager-pod-not-upgraded)
+  troubleshooting guide for resolution steps.
+
+### Virtual Machine Orchestrator (VMO)
+
+#### Improvements
+
+- The KubeVirt version in use is now v1.2.0. Other minor maintenance updates in support of Kubevirt 1.2.0 are also
+  included.
+
+<!-- ### VerteX
+
+#### Features
+
+- You can now deploy Palette VerteX using Red Hat Linux Enterprise (RHEL) as the Operating System (OS) for the VerteX
+  instance nodes. Using RHEL as the base OS is available for VerteX when deployed to a VMware vSphere environment using
+  the Palette CLI. A prompt will ask you to select the OS during the VerteX deployment process. Refer to the Palette
+  VerteX installation [guide](../vertex/install-palette-vertex/install-on-vmware/install.md) for more details. -->
+
+### Automation
+
+- Terraform version 0.20.0 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
