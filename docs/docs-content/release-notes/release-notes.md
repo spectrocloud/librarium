@@ -249,8 +249,8 @@ notes below to learn more about the new features and improvements.
   distribution, you cannot change the Network Interface Card (NIC). When you add an Edge host to such a cluster, leave
   the NIC field as its default value.
 
-- The following known issues apply to [Harbor Edge Native Config](../integrations/harbor-edge.md) when deployed with the
-  [Longhorn](../integrations/longhorn.md) Container Storage Interface (CSI) driver:
+<!-- prettier-ignore -->
+- The following known issues apply to <VersionedLink text="Harbor Edge Native Config" url="/integrations/packs/?pack=harbor-edge-native-config" /> when deployed with the <VersionedLink text="Longhorn" url="/integrations/packs/?pack=csi-longhorn" /> Container Storage Interface (CSI) driver:
 
   - The Harbor job service pod is in a _Terminating_ and _ContainerCreating_ state in an Edge Native High Availability
     (HA) cluster after a Day-2 operation.
@@ -368,10 +368,6 @@ notes below to learn more about the new features and improvements.
   upgrades, such as upgrading from version 1.25.x to version 1.26.x and then to version 1.27.x. Refer to the
   [Control Plane Node Fails to Upgrade in Sequential MicroK8s Upgrades](../troubleshooting/pack-issues.md)
   troubleshooting guide for resolution steps.
-
-- If you did not configure the Trusted Boot keys to auto-enroll, manual enrollment could take several times to be
-  successful. For more information about key enrollment, refer to
-  [Enroll Trusted Boot Keys in Edge Host](../clusters/edge/trusted-boot/deployment-day2/install.md#enroll-secure-boot-keys-into-edge-device).
 
 - Edge hosts with FIPS-compliant RHEL Operating System (OS) distribution may encounter the error where the
   `systemd-resolved.service` service enters the **failed** state. This prevents the nameserver from being configured,

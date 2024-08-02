@@ -114,7 +114,7 @@ registry URL and the credentials needed to authenticate with the registry in the
     clusters, refer to [Update a Cluster](../../cluster-management/cluster-updates.md). This will trigger a full cluster
     repave since it includes an update to the OS layer of the cluster. To learn more about cluster repave behavior,
     refer to
-    [Repave Behavior and Configuration](../../../cluster-management/node-pool.md#repave-behavior-and-configuration).
+    [Repave Behavior and Configuration](../../cluster-management/node-pool.md#repave-behavior-and-configuration).
 
     If you don't have an active cluster yet, deploy a new cluster with the profile you just created, and the cluster
     will pull images from the private registry you specified.
