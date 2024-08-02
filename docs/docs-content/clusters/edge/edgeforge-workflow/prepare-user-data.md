@@ -53,16 +53,46 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
    either a registration token or QR code registration configuration. For more information about Edge host registration,
    refer to [Edge Host Registration](../site-deployment/site-installation/edge-host-registration.md).
 
+### Configure Cloud Init Stages (Optional)
+
+4. Cloud-init stages allow you to configure your Edge host declaratively. For more information about cloud-init stages,
+   refer to [Cloud-init Stages](../edge-configuration/cloud-init.md).
+
+   To configure clout-init stages for your Edge host, use the `stages` block. For example, the following configuration
+   installs Amazon Systems Manager agent on your Edge host during the `after-install-chroot` stage.
+
+   ```
+   #cloud-init
+   stages:
+    after-install-chroot:
+      - name: "Install SSM"
+        commands:
+          - snap install amazon-ssm-agent --classic
+   ```
+
 ### Configure Users
 
-4. If you would like to have SSH access to your Edge host, you must configure Operating System (OS) users on your Edge
-   host. You can do this using the `stages` block.
+5. If you would like to have SSH access to your Edge host, you must configure Operating System (OS) users on your Edge
+   host. You can do this using the `stages.initramfs.users` block. Replace `USERNAME` with the name of your user and
+   replace the value of the password with your password. You can also add the user to user groups, or add SSH keys to
+   the list of authorized keys for that user.
 
-### Configure Cloud Init Stages (Optional)
+   ```yaml
+   #cloud-init
+   stages:
+    initramfs:
+      - users:
+          USERNAME:
+            passwd: ******
+            groups:
+            - sudo
+            ssh_authorized_keys:
+            - ssh-rsa AAAAB3N…
+   ```
 
 ### Configure Proxy Settings (Optional)
 
-5. Optionally, you can configure HTTP/HTTPS proxy settings for your Edge host. This instructs the Edge host OS as well
+6. Optionally, you can configure HTTP/HTTPS proxy settings for your Edge host. This instructs the Edge host OS as well
    as the Palette agent to use the proxy server for outbound communications. Use the parameters from the table below to
    configure proxy settings for your Edge host.
 
