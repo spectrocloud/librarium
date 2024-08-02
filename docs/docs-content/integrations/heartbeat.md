@@ -10,21 +10,18 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/heartbeat/blobs/sha256:19fec6
 tags: ["packs", "heart-beat", "monitoring"]
 ---
 
-Heartbeat is a lightweight daemon installed to a remote server for periodically checking the status of the services and
-determine whether they are currently available and reachable. Heartbeat is useful to verify that your service level
-agreements are met during the service uptime.
+## Terraform
 
-## Versions Supported
+You can reference the Heartbeat pack in Terraform with the following data resource.
 
-<Tabs queryString="versions">
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
 
-<TabItem label="1.0.x" value="1.0.x">
-
-**1.0.0**
-
-</TabItem>
-</Tabs>
-
-## References
-
-- [Heartbeat Reference Documentation](https://www.elastic.co/guide/en/beats/heartbeat/current/index.html)
+data "spectrocloud_pack" "heartbeat" {
+  name    = "heartbeat"
+  version = "1.0.0"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```

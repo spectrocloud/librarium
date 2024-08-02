@@ -15,6 +15,7 @@ d748cceb3859df5c354b96a0c3d115513f6c123e:docs/docs-content/devx/apps/deploy-app.
 404219eb2cad1fbd5e03d64783b1db285c8e08b3:docs/docs-content/integrations/portworx_operator.md:private-key:613
 504642da118b99f12e838c6ff9a1166cc8fcff61:docs/docs-content/integrations/portworx_operator.md:private-key:309
 86b8971f386ee3b00d2558a7fd6029f312b335cf:docs/docs-content/integrations/portworx.md:private-key:269
+1058de28bdc307a7b9a80ba6f1c26d2165d43414:docs/deprecated/integrations/portworx.md:private-key:263
 feaea7ee07b76653233cf4ff8376953bfb216c8d:docs/docs-content/integrations/ubuntu.md:generic-api-key:65
 261324e61a4dd4a3da73c8c03f45d3fcca826817:packages/docs/content/clusters/cluster-management/cluster-rbac.md:generic-api-key:112
 261324e61a4dd4a3da73c8c03f45d3fcca826817:packages/docs/content/clusters/cluster-management/cluster-rbac.md:generic-api-key:113
