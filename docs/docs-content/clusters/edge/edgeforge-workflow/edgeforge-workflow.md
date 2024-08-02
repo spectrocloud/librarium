@@ -132,8 +132,8 @@ scenario, use the CLIs to help you with the customization.
 
 - **Bring Your Own OS (BYOOS)**: For environments that require a different runtime OS, you can specify another OS
 through the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=edge-native-byoi"/> option. Follow the
-instructions in the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn more about
-how you can customize the OS used in an Edge deployment.
+instructions in the [Build Edge Images](build-images.md) guide to learn more about how you can customize the OS used in
+an Edge deployment.
 <!-- prettier-ignore-end -->
 
 ## Resources
