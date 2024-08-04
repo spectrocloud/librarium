@@ -51,8 +51,8 @@ To complete this tutorial, you will need the following prerequisites in place.
   - 8 GB memory
   - 100 GB storage
 - A DHCP-enabled network.
-- Three available IP addresses on the same network as the host machine. One address for the Edge host, one for the
-  cluster's Virtual IP (VIP) address, and one address for the MetalLB pack.
+- Three available IP addresses on the same network as the host machine. One address is for the Edge host, one is for the
+  cluster's Virtual IP (VIP) address, and one is for the MetalLB pack.
 - A [Palette account](https://www.spectrocloud.com/get-started) with
   [tenant admin](../../tenant-settings/tenant-settings.md) access.
 - A Palette tenant registration token. Refer to the
@@ -67,13 +67,13 @@ To complete this tutorial, you will need the following prerequisites in place.
 
 ## EdgeForge Workflow
 
-The first step to deploy an Edge cluster is to prepare your Edge host with all the required components. This process is
-called called [EdgeForge](../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) and uses the
+The first step to deploying an Edge cluster is to prepare your Edge host with all the required components. This process
+is called [EdgeForge](../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) and uses the
 [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md) utility. In this section, you will build the
 Installer ISO and provider images Edge artifacts.
 
-- Installer ISO: It is an ISO file that contains the Palette Edge host agent and metadata. It bootstraps the Edge
-  installation in your Edge host.
+- Installer ISO: ISO file that contains the Palette Edge host agent and metadata. It bootstraps the Edge installation in
+  your Edge host.
 - Provider Images: Kairos-based images containing the OS and the desired Kubernetes versions. The provider images are
   used in the OS layer when creating an Edge cluster profile.
 
@@ -140,7 +140,7 @@ git checkout v4.4.5
 ### Define Arguments
 
 CanvOS leverages [Earthly](https://earthly.dev) to build the Installer ISO and provider images artifacts. A filed called
-**.arg** is used to pass the value of a few arguments such as the image tag and registry name to Earthly for the build
+**.arg** is used to pass the value of a few arguments, such as the image tag and registry name, to Earthly for the build
 process.
 
 Execute the command below to create a custom tag for the provider images. The tag must be an alphanumeric lowercase
@@ -185,10 +185,10 @@ version tag.
 ### Create User Data
 
 Once the **.arg** file is ready, the next step is to create an
-[**user-data**](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file, which allow you to provide customized
-configuration to the Edge Installer ISO. In this tutorial, the file will be used to embed the Palette registration
-token, Palette endpoint, and Edge host login information into the Edge Installer ISO. The login credentials allow you to
-SSH into your Edge host.
+[**user-data**](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file, which allows you to provide
+customized configuration to the Edge Installer ISO. In this tutorial, the file will be used to embed the Palette
+registration token, Palette endpoint, and Edge host login information into the Edge Installer ISO. The login credentials
+allow you to SSH into your Edge host.
 
 Export your Palette registration token.
 
@@ -218,8 +218,8 @@ Confirm that the file was created correctly.
 cat user-data
 ```
 
-The output should contain the value of your Palette registration token assigned to the `edgeHostToken` parameter. Below
-is a sample output.
+The output should contain the value of your Palette registration token assigned to the `edgeHostToken` parameter, as
+displayed in the example output below.
 
 ```text hideClipboard
 #cloud-config
@@ -292,8 +292,8 @@ finished, you get a success message similar to the one displayed below.
 
 <!-- REPLACE 4.4.6, this output is not being generated in v4.4.5 -->
 
-The output also includes a manifest with predefined parameters that you will use later to create the cluster profile.
-Copy and save the manifest in a notepad.
+The output also includes a manifest with predefined parameters you will use later to create the cluster profile. Copy
+and save the manifest in a notepad.
 
 <!-- prettier-ignore-start -->
 ```yaml
@@ -336,7 +336,7 @@ palette-edge-installer.iso
 palette-edge-installer.iso.sha256
 ```
 
-Now, list the container images to confirm that the provider images were built successfully.
+List the container images to confirm that the provider images were built successfully.
 
 ```bash
 docker images --filter=reference="*/*:*$CUSTOM_TAG"
@@ -387,7 +387,7 @@ push images to a different registry.
 
 ## Create Cluster Profile
 
-Once the provider images are available in the registry, you can proceed to the cluster profile creation.
+Once the provider images are available in the registry, proceed to create the cluster profile.
 
 Log in to [Palette](https://console.spectrocloud.com/) and select **Profiles** from the left **Main Menu**. Click **Add
 Cluster Profile** to create a cluster profile.
@@ -401,7 +401,7 @@ the version defaults to **1.0.0**. Click on **Next**.
 **Cloud Type** allows you to choose the infrastructure provider with which this cluster profile is associated. Select
 **Edge Native** and click **Next**.
 
-The **Profile Layers** section is where you specify the packs that compose the profile.
+The **Profile Layers** section specifies the packs that compose the profile.
 
 Add the **BYOS Edge OS** pack to the OS layer.
 
@@ -416,7 +416,7 @@ displays the OS layer with the custom manifest.
 ![A screenshot of the cluster profile creation step with the OS layer.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_byos-cluster-profile.webp)
 
 Click **Next Layer** to proceed to the next layer. Add the following Kubernetes layer to your cluster profile. The
-Kubernetes version must match the same version that was used in the provider images.
+Kubernetes version must match the version used in the provider images.
 
 | **Pack Name**         | **Version** | **Registry** | **Layer**  |
 | --------------------- | ----------- | ------------ | ---------- |
@@ -424,7 +424,7 @@ Kubernetes version must match the same version that was used in the provider ima
 
 Click **Values** under **Pack Details**, and replace the predefined **cluster-cidr** and **service-cidr** IP CIDRs if
 they overlap with your network. For example, you can set the **cluster-cidr** parameter to `"100.64.0.0/18"` and
-**service-cidr** to `"100.64.64.0/18"`. This pevents any routing conflicts in the internal pod networking.
+**service-cidr** to `"100.64.64.0/18"`. This prevents any routing conflicts in the internal pod networking.
 
 ![A screenshot of the cluster profile creation step with the Kubernetes layer.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-profile-k8s.webp)
 
@@ -459,15 +459,14 @@ Finally, click **Add New Pack** again and search for the Hello Universe pack.
 | -------------- | ----------- | -------------------------- | ------------ |
 | Hello Universe | 1.1.2       | Palette Community Registry | App Services |
 
-Once you have selected the pack, Palette will display its README, which provides you with additional guidance for usage
-and configuration options. The pack you added will deploy the
-[hello-universe](https://github.com/spectrocloud/hello-universe) application.
+Once you select the pack, Palette will display its README file, providing additional guidance on usage and configuration
+options. This pack deploys the [hello-universe](https://github.com/spectrocloud/hello-universe) application.
 
 Click on **Values** under the **Pack Details** section. Next, click on **Presets** on the right-hand side.
 
 This pack has two configured presets:
 
-1. **Disable Hello Universe API** configures the hello-universe application as a standalone frontend application. This
+1. **Disable Hello Universe API** configures the hello-universe application as a standalone front-end application. This
    is the default preset selection.
 2. **Enable Hello Universe API** configures the hello-universe application as a three-tier application with a frontend,
    API server, and Postgres database.
@@ -515,14 +514,14 @@ vary.
 
 Confirm the VM settings and click **Finish** to create the VM.
 
-Select the VM to ajust its network settings. Click **Settings** and select **Network**.
+Select the VM to adjust its network settings. Click **Settings** and select **Network**.
 
-Change the option **Attached to:** from `NAT` to `Bridged Adapter` so that the VM can receive an IP address from the
-same network as the host machine. Click **OK**.
+Change the option **Attached to:** from `NAT` to `Bridged Adapter` so the VM can receive an IP address from the same
+network as the host machine. Click **OK**.
 
 ![A screenshot of the VirtualBox VM network configuration.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-network.webp)
 
-Once you finish the network configuration, the VM gets created and ready to be started.
+Once you finish the network configuration, the VM will be created.
 
 ## Prepare Edge Host
 
@@ -571,9 +570,7 @@ displayed on your VM's screen.
 The following steps will guide you through deploying the Edge cluster infrastructure.
 
 Select **Clusters** from Palette's left **Main Menu** and click on **Create Cluster**. Ensure you are in the **Default**
-poject.
-
-<!-- screenshoot -->
+project.
 
 Palette will prompt you to select the type of cluster. Select **Edge Native** and click the **Start Edge Native
 Configuration** button.
@@ -586,7 +583,7 @@ and click **Confirm**.
 
 The **Cluster Profile** section displays all the layers in the cluster profile. Click on **Next** to proceed.
 
-<!--screenshoot -->
+![A screenshot of the cluster profile during cluster deployment.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-deployment-profile.png)
 
 In the **Cluster Config** section, provide a Virtual IP (VIP) address for the Edge cluster. This address must be an
 unused address on the same network as your Edge host.
@@ -595,7 +592,7 @@ Optionally, you can also select an SSH key to access the cluster's node and a Ne
 
 Click **Next** to continue.
 
-The **Nodes Config** section is where you can specify what Edge hosts make up the Edge cluster. This tutorial deploys a
+In the **Nodes Config** section, you can specify what Edge hosts make up the Edge cluster. This tutorial deploys a
 single-node Edge cluster with no worker pools.
 
 Provide the following details for the control plane pool.
@@ -610,7 +607,7 @@ Provide the following details for the control plane pool.
 
 Next, click **Remove** to delete the worker pool and click **Next** to proceed with the cluster deployment.
 
-<!-- screenshoot -->
+![A screenshot of the nodes config during cluster deployment.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-deployment-nodes.png)
 
 The **Cluster Settings** section provides advanced options for OS patching, scheduled scans, scheduled backups, and
 cluster role binding. For this tutorial, you can use the default settings. Click on **Validate** to continue.
@@ -618,10 +615,11 @@ cluster role binding. For this tutorial, you can use the default settings. Click
 Finally, the **Review** section allows you to review the cluster configuration. If everything looks correct, click
 **Finish Configuration** to deploy the cluster.
 
-The cluster deployment can take 15 to 30 minutes depending on its configuration. Click on the **Events** tab to
-visualize the event log and learn more about the deployment progress.
+The cluster deployment can take 15 to 30 minutes, depending on its configuration.
 
-<!-- screenshoot -->
+Click on the **Events** tab to visualize the event log and learn more about the deployment progress.
+
+![A screenshot of the cluster's Events tab.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-events.png)
 
 ## Validate
 
@@ -634,12 +632,12 @@ Confirm that your cluster has a **Running** status and is listed as **Healthy**.
 When the Hello Universe application is deployed and ready for network traffic, Palette exposes the service URL in the
 **Services** field. Click on the URL for port **:8080** to access the application landing page.
 
-<!-- screenshoot -->
+![A screenshot of the cluster's Overview tab](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-overview.png)
 
 Welcome to Hello Universe, an application that helps you learn more about Palette and its features. Feel free to click
 on the logo to increase the global counter and for a fun image change.
 
-<!-- screenshoot -->
+![A screenshot of the Hello Universe application.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_hello-universe.png)
 
 You have successfully provisioned an Edge cluster and deployed a three-tier demo application onto it.
 
@@ -653,8 +651,6 @@ To remove the Edge cluster, log in to Palette and click **Clusters** from the le
 named **edge-vbox-cluster** to access its details page.
 
 Next, click **Settings** and select **Delete Cluster**.
-
-<!-- screenshoot -->
 
 You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name to proceed with
 the delete step. The deletion process takes several minutes to complete.
@@ -673,24 +669,22 @@ Click **Profiles** from the left **Main Menu**. Select the **edge-vbox-profile**
 **three-dot Menu** to display the **Delete** button. Click **Delete** and confirm the selection to remove the cluster
 profile.
 
-<!-- screenshoot -->
-
 ### Edge Host
 
 Once the Edge cluster and cluster profile are deleted, click **Clusters** from the left **Main Menu**.
 
 Locate the Edge host deployed in the [Deploy Edge Host](#deploy-edge-host) section of this tutorial. Click on the
 **three-dot Menu** and select **Delete** to delete the Edge host. Confirm the deletion by clicking **OK**. This will
-remove the Edge host from Palette, but it will not delete the underlying infrastructure.
+remove the Edge host from Palette but not delete the underlying infrastructure.
 
-<!-- screenshoot -->
+![A screenshot of the Edge Hosts page.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_delete-host.png)
 
 To delete the VM, open the **VirtualBox** application on your host machine.
 
-Right-hand click on the `edge-vm` VM and select **Remove**. Next, select **Delete all files** to delete the VM and its
-hard disk
+Right-hand click the `edge-vm` VM and select **Stop**. Then, click **Power Off** to turn the machine off.
 
-<!-- screenshoot -->
+Next, right-hand click the VM again and select **Remove**. Click **Delete all files** to delete the VM and its hard
+disk.
 
 ### Edge Artifacts
 
@@ -717,9 +711,9 @@ the Edge cluster.
 Palette Edge enables you to customize your Edge hosts with the desired OS, Kubernetes distribution, dependencies, and
 user data configurations.
 
-This tutorial setup has provided you with hands-on experience using Palette Edge on a single VM and without the need for
-a complex lab environment or separate physical devices. You can also use this setup to quickly test and validate Edge
-configurations before deploying them at scale in production.
+This tutorial setup has provided you with hands-on experience with Palette Edge using a single VM, eliminating the need
+for a complex lab environment or separate physical devices. You can also use this setup to quickly test and validate
+Edge configurations before deploying them in production.
 
 We encourage you to check out the reference resources below to learn more about Palette Edge.
 
