@@ -8,15 +8,14 @@ tags: ["edge"]
 ---
 
 The Edge Installer supports using a custom configuration file in the format of a YAML file named **user-data** that you
-can use to customize the installation. You can provide the customized configuration to the Edge Installer as a user data
-file. For more information on how to provide the configuration to the Edge Installer, refer to
-[Build Edge Installer ISO](./palette-canvos/build-installer-iso.md). Additionally, you can also provide the
+can use to customize the installation. For more information on how to provide the configuration to the Edge Installer,
+refer to [Build Edge Installer ISO](./palette-canvos/build-installer-iso.md). Additionally, you can also provide the
 configuration during site deployment as site-specific configuration. This can replace, supplement, or override your
 installer configuration you provide to the installer ISO. For more information, refer to
 [Apply Site User Data](../site-deployment/site-installation/site-user-data.md).
 
-This article guides you through several important configurations in the **user-data** file. However, you can use many
-additional parameters to further customize your installation. Review the Edge
+This article guides you through several important configuration blocks in the **user-data** file. However, you can use
+many additional parameters to further customize your installation. Review the Edge
 [Install Configuration](../edge-configuration/installer-reference.md) resource to learn more about all the supported
 configuration parameters you can use in the configuration user data.
 
@@ -47,6 +46,10 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
      installationMode: airgap
    ```
 
+   Edge hosts installed in airgap mode require you to provide assets needed to provision clusters. For more information
+   about the deployment lifecycle of airgap Edge hosts, refer to
+   [Edge Deployment Lifecycle](../edge-native-lifecycle.md).
+
 3. If you want to deploy the Edge host in `airgap` mode, skip this step.
 
    If you want to deploy the Edge host in connected mode, you need to provide the Palette endpoint, in addition to
@@ -61,13 +64,13 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
    To configure clout-init stages for your Edge host, use the `stages` block. For example, the following configuration
    installs Amazon Systems Manager agent on your Edge host during the `after-install-chroot` stage.
 
-   ```
+   ```yaml
    #cloud-init
    stages:
-    after-install-chroot:
-      - name: "Install SSM"
-        commands:
-          - snap install amazon-ssm-agent --classic
+     after-install-chroot:
+       - name: "Install SSM"
+         commands:
+           - snap install amazon-ssm-agent --classic
    ```
 
 ### Configure Users
@@ -101,6 +104,27 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
    | `siteNetwork.httpProxy`  | The URL of the HTTP proxy endpoint.                                                   |
    | `siteNetwork.httpsProxy` | The URL of the HTTPS proxy endpoint.                                                  |
    | `siteNetwork.noProxy`    | The list of IP addresses or CIDR ranges to exclude routing through the network proxy. |
+
+### Configure Post-Installation Behavior (Optional)
+
+7. You can use some parameters of the `install` block to configure what you'd like the Edge host to do after
+   installation is complete. The default behavior for the Edge host is to stay on the "Installation Complete" screen,
+   but you can configure it to power off or restart automatically. For example, the following configuration instructs
+   the Edge host to power off automatically post-installation.
+
+   ```yaml
+   #cloud-init
+   install:
+     poweroff: true
+   ```
+
+   :::warning
+
+   If your want your Edge host to restart automatically, ensure that you remove the installation disk after the
+   installation is complete and before the restart happens. Otherwise, the Edge host might start the installation
+   process again.
+
+   :::
 
 ## Validate
 

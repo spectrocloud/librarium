@@ -97,8 +97,8 @@ production scenario, you would need to customize these artifacts to suit your sp
 
 You can specify a custom registry for the Edge Installer to use during installation with the user data parameter
 `registryCredentials`. Refer to the
-[Installer Configuration](../edge-configuration/installer-reference.md#external-registry) reference resource for more
-details.
+[Installer Configuration](../edge-configuration/installer-reference.md#external-registry-parameters) reference resource
+for more details.
 
 :::
 
