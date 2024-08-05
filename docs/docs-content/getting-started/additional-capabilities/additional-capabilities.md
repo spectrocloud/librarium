@@ -14,18 +14,17 @@ Kubernetes workloads across a wide variety of environments and deployment option
 This section introduces you to some of Palette's additional capabilities, which include:
 
 - Managing thousands of clusters in remote locations with [Edge](./edge.md).
-- Supporting high-security requirements with our FIPS-validated [VerteX](./self-hosted.md#palette-vertex)
-  edition.
+- Supporting high-security requirements with our FIPS-validated [VerteX](./self-hosted.md#palette-vertex) edition.
 - Self-hosting the Palette management plane in your own environment with
   [Self-Hosted Palette](./self-hosted.md#self-hosted-palette).
-- Integrating virtual machine workloads into Kubernetes environments with
-  [Virtual Machine Orchestrator](./vmo.md).
+- Integrating virtual machine workloads into Kubernetes environments with [Virtual Machine Orchestrator](./vmo.md).
 
 ![A drawing of Palette with humans interacting](/getting-started/getting-started_additional-capabilities_palette.webp)
 
-## Keep Learning!
+## The Journey Continues
 
-In this section, you get an overview of other parts of Palette not covered by your Getting Started journey. Explore more through the following pages.
+In this section, you get an overview of other parts of Palette not covered by your Getting Started journey. Explore more
+through the following pages.
 
 <SimpleCardGrid
   hideNumber="true"

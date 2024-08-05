@@ -23,15 +23,14 @@ in self-hosted, airgapped, and in our SaaS environments. Learn more on the
 
 ## Resources
 
-To learn more about Palette VMO, review the [Architecture](../../vm-management/architecture.md) page to learn about the components
-involved in enabling VMO for your infrastructure. Then, review the [Create a VMO Profile](../../vm-management/create-vmo-profile.md) guide
-to prepare everything you need to deploy your first VMO cluster.
+To learn more about Palette VMO, review the [Architecture](../../vm-management/architecture.md) page to learn about the
+components involved in enabling VMO for your infrastructure. Then, review the
+[Create a VMO Profile](../../vm-management/create-vmo-profile.md) guide to prepare everything you need to deploy your
+first VMO cluster.
 
-Check out the following video for a tour of Palette's Virtual Machine Orchestrator (VMO) capability, showing how you can model, deploy and manage VM workloads alongside containers in all your clusters and environments.
+Check out the following video for a tour of Palette's Virtual Machine Orchestrator (VMO) capability, showing how you can
+model, deploy and manage VM workloads alongside containers in all your clusters and environments.
 
 <br />
 
-<YouTube
-  url="https://www.youtube.com/embed/N7dQ6jmEkCQ"
-  title="Webinar | The new home for your VMs: Kubernetes"
-/>
+<YouTube url="https://www.youtube.com/embed/N7dQ6jmEkCQ" title="Webinar | The new home for your VMs: Kubernetes" />
