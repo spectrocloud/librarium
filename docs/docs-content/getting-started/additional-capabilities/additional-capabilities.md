@@ -43,7 +43,7 @@ through the following pages.
     },
     {
       title: "Virtual Machine Orchestrator",
-      description: "Learn about Palette's Virtual Machine deployment and management capabilities.",
+      description: "Learn about Palette's Virtual Machine (VM) deployment and management capabilities.",
       buttonText: "Learn more",
       relativeURL: "./vmo",
     },
