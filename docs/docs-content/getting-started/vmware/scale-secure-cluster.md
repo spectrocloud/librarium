@@ -235,8 +235,8 @@ replace its nodes. This is known as a repave. Check out the
 the repave behavior and configuration.
 
 Click on the **Nodes** tab. You can follow along with the node upgrades on this screen. Palette replaces the nodes
-configured with the old Kubernetes version with newly upgraded ones. This may lead to some application level outages, as
-Kubernetes swaps the workloads to the upgraded nodes.
+configured with the old Kubernetes version with newly upgraded ones. This may affect the performance of your
+application, as Kubernetes swaps the workloads to the upgraded nodes.
 
 ![Node repaves in progress](/getting-started/vmware/getting-started_scale-secure-cluster_node-repaves.webp)
 
