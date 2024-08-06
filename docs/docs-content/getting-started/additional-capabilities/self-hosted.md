@@ -20,23 +20,6 @@ upgrades. A self-hosted instance may be necessary to meet compliance requirement
 policies. You may also need to deploy an instance of Palette within an airgapped facility to manage clusters where
 access to any outside service is not possible.
 
-### Resources
-
-Review the [Self-Hosted Palette](../../enterprise-version/enterprise-version.md) section to learn how to install the
-self-hosted version of Palette in your data centers or public cloud providers.
-
-Check out the following video to discover some simple strategies you can follow to streamline how you manage Kubernetes
-deployments and versioning in your production environment.
-
-<br />
-
-<YouTube
-  url="https://www.youtube.com/embed/VgIO2nXxLW4"
-  title="Webinar | Deploying and upgrading Kubernetes in the real world"
-/>
-
-<br />
-
 ## Palette VerteX
 
 Palette VerteX offers a simple, flexible, and secure way for government and regulated industries to deploy and manage
@@ -58,7 +41,10 @@ Layer Security (TLS) communication channels, includes a suite of scanning tools,
 dedicated public sector team. These capabilities ensure robust data protection for your organization’s infrastructure
 and applications.
 
-### Resources
+## Resources
+
+Check out the [Self-Hosted Palette](../../enterprise-version/enterprise-version.md) section to learn how to install the
+self-hosted version of Palette in your data centers or public cloud providers.
 
 Review the [Palette VerteX](../../vertex/vertex.md) section to learn how to install and configure VerteX in your data
 centers or public cloud providers.
