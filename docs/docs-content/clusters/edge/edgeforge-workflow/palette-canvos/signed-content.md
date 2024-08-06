@@ -75,8 +75,8 @@ your Edge hosts come from a trusted source. For more information about content b
 5. In **CanvOS**, create a file named **.edge_custom_config.yaml**.
 
 6. Populate the YAML file with the following content. Replace the value for `base64EncodedValue` with the base64 encoded
-   value of your public key. 
-   You can convert your PEM file to base64 using this command replacing `sample.pem` with your filename.
+   value of your public key. You can convert your PEM file to base64 using this command replacing `sample.pem` with your
+   filename.
 
    ```bash
    base64 -w 0 sample-key.pem
@@ -90,7 +90,7 @@ your Edge hosts come from a trusted source. For more information about content b
              description: "This is a public key used for verifying content bundles and cluster definitions." 
    ```
 
-8. In your **.arg** file, add the following parameter `EDGE_CUSTOM_CONFIG` and provide the path to your
+7. In your **.arg** file, add the following parameter `EDGE_CUSTOM_CONFIG` and provide the path to your
    **.edge_custom_config.yaml** file.
 
    ```text {12}
@@ -108,7 +108,7 @@ your Edge hosts come from a trusted source. For more information about content b
     EDGE_CUSTOM_CONFIG=.edge-custom-config.yaml
    ```
 
-9. Finish the rest of the EdgeForge process to build either the installer ISO or provider images. For more information,
+8. Finish the rest of the EdgeForge process to build either the installer ISO or provider images. For more information,
    refer to [Build Installer ISO](./build-installer-iso.md) and [Build Provider Images](./build-provider-images.md).
 
    :::info
