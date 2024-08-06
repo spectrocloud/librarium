@@ -529,5 +529,5 @@ vSphere cluster. Then, you upgraded the Kubernetes version of your cluster and s
 scanning capabilities. Finally, you scaled your cluster's nodes and used taints to select which Hello Universe pods
 execute on them.
 
-We encourage you to check out the [Additional Capabilities](../additional-capabilities.md) to explore other Palette
-functionalities.
+We encourage you to check out the [Additional Capabilities](../additional-capabilities/additional-capabilities.md) to
+explore other Palette functionalities.
