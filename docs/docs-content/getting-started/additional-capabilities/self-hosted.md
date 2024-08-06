@@ -23,7 +23,7 @@ access to any outside service is not possible.
 ### Resources
 
 Review the [Self-Hosted Palette](../../enterprise-version/enterprise-version.md) section to learn how to install the
-self-hosted version of Palette in your data centers or public cloud providers to manage Kubernetes clusters.
+self-hosted version of Palette in your data centers or public cloud providers.
 
 Check out the following video to discover some simple strategies you can follow to streamline how you manage Kubernetes
 deployments and versioning in your production environment.

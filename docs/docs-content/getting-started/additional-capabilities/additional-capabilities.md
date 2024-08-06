@@ -37,13 +37,13 @@ through the following pages.
     },
     {
       title: "VerteX and Self-Hosted Palette",
-      description: "Read about our dedicated Palette installations, VerteX and Self-Hosted Palette.",
+      description: "Read about our dedicated Palette offerings, VerteX and Self-Hosted Palette.",
       buttonText: "Learn more",
       relativeURL: "./self-hosted",
     },
     {
       title: "Virtual Machine Orchestrator",
-      description: "Learn about Palette's Virtual Machine (VM) deployment and management capabilities.",
+      description: "Learn about Palette's Virtual Machine Orchestrator (VMO) and its management capabilities.",
       buttonText: "Learn more",
       relativeURL: "./vmo",
     },
