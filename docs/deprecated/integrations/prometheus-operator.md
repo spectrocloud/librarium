@@ -1233,7 +1233,7 @@ data "spectrocloud_pack_simple" "pack-info" {
 
 - [Prometheus Remote Write Tuning](https://prometheus.io/docs/practices/remote_write)
 
-- [Thanos & Prometheus](https://prometheus-operator.dev/docs/operator/thanos)
+- [Thanos & Prometheus](https://prometheus-operator.dev/docs/platform/thanos/)
 
 - [Prometheus FAQ](https://prometheus.io/docs/introduction/faq)
 
