@@ -1,11 +1,11 @@
 ---
 sidebar_label: "Scale, Upgrade, and Secure Clusters"
 title: "Scale, Upgrade, and Secure Clusters"
-description: "Learn how to scale, upgrade, and secure Palette host clusters deployed to AWS."
+description: "Learn how to scale, upgrade, and secure Palette host clusters deployed to VMware."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 60
-tags: ["getting-started", "aws", "tutorial"]
+tags: ["getting-started", "vmware", "tutorial"]
 ---
 
 Palette has in-built features to help with the automation of Day-2 operations. Upgrading and maintaining a deployed
@@ -19,8 +19,11 @@ deployed cluster and scale up your cluster nodes.
 
 ## Prerequisites
 
-To complete this tutorial, follow the steps described in the [Set up Palette with AWS](./setup.md) guide to authenticate
-Palette for use with your AWS cloud account.
+To complete this tutorial, follow the steps described in the [Set up Palette with VMware](./setup.md) guide to
+authenticate Palette for use with your VMware vSphere account.
+
+Follow the steps described in the [Deploy a PCG](./deploy-pcg.md) tutorial to deploy a VMware vSphere Private Cloud
+Gateway (PCG).
 
 Additionally, you should install kubectl locally. Use the Kubernetes
 [Install Tools](https://kubernetes.io/docs/tasks/tools/) page for further guidance.
@@ -103,16 +106,16 @@ Profile** pane opens.
 
 Paste the following in the text editor. Click on **Validate**. The **Select repositories** dialog appears.
 
-<PartialsComponent category="getting-started" name="import-hello-uni-aws" />
+<PartialsComponent category="getting-started" name="import-hello-uni-vmware" />
 
 Click on **Confirm**. Then, click on **Confirm** on the **Import Cluster Profile** pane. Palette creates a new cluster
-profile named **aws-profile**.
+profile named **vmware-profile**.
 
 On the **Profiles** list, select **Project** from the **Contexts** drop-down. Your newly created cluster profile
 displays. The Palette UI confirms that the cluster profile was created in the scope of the
 **Project-ScaleSecureTutorial**.
 
-![Image that shows the cluster profile ](/getting-started/aws/getting-started_scale-secure-cluster_cluster-profile-created.webp)
+![Image that shows the cluster profile ](/getting-started/vmware/getting-started_scale-secure-cluster_cluster-profile-created.webp)
 
 Select the cluster profile to view its details. The cluster profile summary appears.
 
@@ -122,12 +125,21 @@ pack. Click on the **hellouniverse 1.1.3** layer. The pack manifest editor appea
 Click on **Presets** on the right-hand side. You can learn more about the pack presets on the pack README, which is
 available in the Palette UI. Select the **Enable Hello Universe API** preset. The pack manifest changes accordingly.
 
-![Screenshot of pack presets](/getting-started/aws/getting-started_scale-secure-cluster_pack-presets.webp)
+![Screenshot of pack presets](/getting-started/vmware/getting-started_scale-secure-cluster_pack-presets.webp)
 
 The pack requires two values to be replaced for the authorization token and for the database password when using this
 preset. Replace these values with your own base64 encoded values. The
 [_hello-universe_](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer) repository
 provides a token that you can use.
+
+Click on **Confirm Updates**. The manifest editor closes.
+
+Click on the **lb-metallb-helm** layer. The pack manifest editor appears.
+
+Replace the predefined `192.168.10.0/24` IP CIDR listed below the **addresses** line with a valid IP address or IP range
+from your VMware environment to be assigned to your load balancer.
+
+![Metallb Helm-based pack.](/getting-started/vmware/getting-started_scale-secure-cluster_metallb-pack.webp)
 
 Click on **Confirm Updates**. The manifest editor closes. Then, click on **Save Changes** to save your updates.
 
@@ -135,11 +147,10 @@ Click on **Confirm Updates**. The manifest editor closes. Then, click on **Save 
 
 Navigate to the left **Main Menu** and select **Clusters**. Click on **Create Cluster**.
 
-Palette will prompt you to select the type of cluster. Select **AWS IaaS** and click on **Start AWS IaaS
-Configuration**.
+Palette will prompt you to select the type of cluster. Select **VMware** and click on **Start VMware Configuration**.
 
 Continue with the rest of the cluster deployment flow using the cluster profile you created in the
-[Import a Cluster Profile](#import-a-cluster-profile) section, named **aws-profile**. Refer to the
+[Import a Cluster Profile](#import-a-cluster-profile) section, named **vmware-profile**. Refer to the
 [Deploy a Cluster](./deploy-k8s-cluster.md#deploy-a-cluster) tutorial for additional guidance or if you need a refresher
 of the Palette deployment flow.
 
@@ -152,7 +163,7 @@ Select your cluster to view its **Overview** tab.
 When the application is deployed and ready for network traffic, Palette exposes the service URL in the **Services**
 field. Click on the URL for port **:8080** to access the Hello Universe application.
 
-![Cluster details page with service URL highlighted](/getting-started/aws/getting-started_scale-secure-cluster_service_url.webp)
+![Cluster details page with service URL highlighted](/getting-started/vmware/getting-started_scale-secure-cluster_service_url.webp)
 
 ## Upgrade Kubernetes Versions
 
@@ -179,7 +190,7 @@ Kubernetes upgrade.
 <summary>Upgrade Kubernetes using Cluster Profile Versions</summary>
 
 Navigate to the left **Main Menu** and click on **Profiles**. Select the cluster profile that you used to deploy your
-cluster, named **aws-profile**. The cluster profile details page appears.
+cluster, named **vmware-profile**. The cluster profile details page appears.
 
 Click on the version drop-down and select **Create new version**. The version creation dialog appears.
 
@@ -191,7 +202,7 @@ Select the **kubernetes 1.27.x** layer of the profile. The pack manifest editor 
 Click on the **Pack Version** dropdown. All of the available versions of the **Palette eXtended Kubernetes** pack
 appear. The cluster profile is configured to use the latest patch version of **Kubernetes 1.27**.
 
-![Cluster profile with all Kubernetes versions](/getting-started/aws/getting-started_scale-secure-cluster_kubernetes-versions.webp)
+![Cluster profile with all Kubernetes versions](/getting-started/vmware/getting-started_scale-secure-cluster_kubernetes-versions.webp)
 
 The official guidelines for Kubernetes upgrades recommend upgrading one minor version at a time. For example, if you are
 using Kubernetes version 1.26, you should upgrade to 1.27, before upgrading to version 1.28. You can learn more about
@@ -227,7 +238,7 @@ Click on the **Nodes** tab. You can follow along with the node upgrades on this 
 configured with the old Kubernetes version with newly upgraded ones. This may affect the performance of your
 application, as Kubernetes swaps the workloads to the upgraded nodes.
 
-![Node repaves in progress](/getting-started/aws/getting-started_scale-secure-cluster_node-repaves.webp)
+![Node repaves in progress](/getting-started/vmware/getting-started_scale-secure-cluster_node-repaves.webp)
 
 ### Verify the Application
 
@@ -235,7 +246,7 @@ The cluster update completes when the Palette UI marks the cluster profile layer
 **Healthy** state. The cluster **Overview** page also displays the Kubernetes version as **1.28**. Click on the URL for
 port **:8080** to access the application and verify that your upgraded cluster is functional.
 
-![Kubernetes upgrade applied](/getting-started/aws/getting-started_scale-secure-cluster_kubernetes-upgrade-applied.webp)
+![Kubernetes upgrade applied](/getting-started/vmware/getting-started_scale-secure-cluster_kubernetes-upgrade-applied.webp)
 
 ## Scan Clusters
 
@@ -255,13 +266,13 @@ Navigate to the left **Main Menu** and select **Clusters**. Select your cluster 
 Select the **Scan** tab. The list of all the available cluster scans appears. Palette indicates that you have never
 scanned your cluster.
 
-![Scans never performed on the cluster](/getting-started/aws/getting-started_scale-secure-cluster_never-scanned-cluster.webp)
+![Scans never performed on the cluster](/getting-started/vmware/getting-started_scale-secure-cluster_never-scanned-cluster.webp)
 
 Click **Run Scan** on the **Kubernetes configuration security** and **Kubernetes penetration testing** scans. Palette
 schedules and executes these scans on your cluster, which may take a few minutes. Once they complete, you can download
 the report in PDF, CSV or view the results directly in the Palette UI.
 
-![Scans completed on the cluster](/getting-started/aws/getting-started_scale-secure-cluster_scans-completed.webp)
+![Scans completed on the cluster](/getting-started/vmware/getting-started_scale-secure-cluster_scans-completed.webp)
 
 Click on **Configure Scan** on the **Software Bill of Materials (SBOM)** scan. The **Configure SBOM Scan** dialog
 appears.
@@ -296,7 +307,7 @@ Select the **Schedule Scans** option. You can configure schedules for you cluste
 schedules or you can provide a custom time. We recommend choosing a schedule when you expect the usage of your cluster
 to be lowest. Otherwise, the scans may impact the performance of your nodes.
 
-![Scan schedules](/getting-started/aws/getting-started_scale-secure-cluster_scans-schedules.webp)
+![Scan schedules](/getting-started/vmware/getting-started_scale-secure-cluster_scans-schedules.webp)
 
 Palette will automatically scan your cluster according to your configured schedule.
 
@@ -314,12 +325,12 @@ Select the **Nodes** tab. Your cluster has a **control-plane-pool** and a **work
 
 Select the **Overview** tab. Download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file.
 
-![kubeconfig download](/getting-started/aws/getting-started_scale-secure-cluster_download-kubeconfig.webp)
+![kubeconfig download](/getting-started/vmware/getting-started_scale-secure-cluster_download-kubeconfig.webp)
 
 Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
 
 ```shell
-export KUBECONFIG=~/Downloads/admin.aws-cluster.kubeconfig
+export KUBECONFIG=~/Downloads/admin.vmware-cluster.kubeconfig
 ```
 
 Execute the following command in your terminal to view the nodes of your cluster.
@@ -330,12 +341,12 @@ kubectl get nodes
 
 The output reveals two nodes, one for the worker pool and one for the control plane. Make a note of the name of your
 worker node, which is the node that does not have the `control-plane` role. In the example below,
-`ip-10-0-1-133.ec2.internal` is the name of the worker node.
+`vmware-cluster-worker-pool-7d6d76b55b-dhffq` is the name of the worker node.
 
 ```shell
-NAME                         STATUS   ROLES           AGE   VERSION
-ip-10-0-1-133.ec2.internal   Ready    <none>          46m   v1.28.11
-ip-10-0-1-95.ec2.internal    Ready    control-plane   51m   v1.28.11
+NAME                                          STATUS   ROLES           AGE   VERSION
+vmware-cluster-cp-xcqlw                       Ready    control-plane   28m   v1.28.11
+vmware-cluster-worker-pool-7d6d76b55b-dhffq   Ready    <none>          28m   v1.28.11
 ```
 
 The Hello Universe pack deploys three pods in the `hello-universe` namespace. Execute the following command to verify
@@ -348,10 +359,10 @@ kubectl get pods --namespace hello-universe --output wide
 The output verifies that all of the pods have been scheduled on the worker node you made a note of previously.
 
 ```shell
-NAME                        READY   STATUS    RESTARTS      AGE   NODE
-api-7db799cf85-5w5l6        1/1     Running   1 (20m ago)   20m   ip-10-0-1-133.ec2.internal
-postgres-698d7ff8f4-vbktf   1/1     Running   0             20m   ip-10-0-1-133.ec2.internal
-ui-5f777c76df-pplcv         1/1     Running   0             20m   ip-10-0-1-133.ec2.internal
+NAME                        READY   STATUS    AGE   NODE
+api-7db799cf85-5w5l6        1/1     Running   20m   vmware-cluster-worker-pool-7d6d76b55b-dhffq
+postgres-698d7ff8f4-vbktf   1/1     Running   20m   vmware-cluster-worker-pool-7d6d76b55b-dhffq
+ui-5f777c76df-pplcv         1/1     Running   20m   vmware-cluster-worker-pool-7d6d76b55b-dhffq
 ```
 
 Navigate back to the Palette UI in your browser. Select the **Nodes** tab.
@@ -359,17 +370,21 @@ Navigate back to the Palette UI in your browser. Select the **Nodes** tab.
 Click on **New Node Pool**. The **Add node pool** dialog appears. This workflow allows you to create a new worker pool
 for your cluster. Fill in the following configuration.
 
-| Field                 | Value                              | Description                                                                                                                                                                                                                                                                                  |
-| --------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Node pool name**    | `worker-pool-2`                    | The name of your worker pool.                                                                                                                                                                                                                                                                |
-| **Enable Autoscaler** | Enabled                            | Whether Palette should scale the pool horizontally based on its per-node workload counts. The **Minimum size** parameter specifies the lower bound of nodes in the pool and the **Maximum size** specifies the upper bound. By default, **Minimum size** is `1` and **Maximum size** is `3`. |
-| **Instance Type**     | `m4.2xlarge`                       | Set the compute size equal to the already provisioned nodes.                                                                                                                                                                                                                                 |
-| **Availability Zone** | _Availability zone of your choice_ | Set the availability zone the same as the already provisioned nodes.                                                                                                                                                                                                                         |
+| Field                 | Value           | Description                                                                                                                                                                                                                                                                                  |
+| --------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Node pool name**    | `worker-pool-2` | The name of your worker pool.                                                                                                                                                                                                                                                                |
+| **Enable Autoscaler** | Enabled         | Whether Palette should scale the pool horizontally based on its per-node workload counts. The **Minimum size** parameter specifies the lower bound of nodes in the pool and the **Maximum size** specifies the upper bound. By default, **Minimum size** is `1` and **Maximum size** is `3`. |
+| **CPU**               | 4 cores         | Set the number of CPUs equal to the already provisioned nodes.                                                                                                                                                                                                                               |
+| **Memory**            | 8 GB            | Set the memory allocation equal to the already provisioned nodes.                                                                                                                                                                                                                            |
+| **Disk**              | 60 GB           | Set the disk space equal to the already provisioned nodes.                                                                                                                                                                                                                                   |
+
+Next, populate the **Compute cluster**, **Resource Pool**, **Datastore**, and **Network** fields according to your
+VMware vSphere environment.
 
 Click on **Confirm**. The dialog closes. Palette begins provisioning your node pool. Once the process completes, your
 three node pools appear in a healthy state.
 
-![New worker pool provisioned](/getting-started/aws/getting-started_scale-secure-cluster_third-node-pool.webp)
+![New worker pool provisioned](/getting-started/vmware/getting-started_scale-secure-cluster_third-node-pool.webp)
 
 Navigate back to your terminal and execute the following command in your terminal to view the nodes of your cluster.
 
@@ -378,13 +393,14 @@ kubectl get nodes
 ```
 
 The output reveals three nodes, two for worker pools and one for the control plane. Make a note of the names of your
-worker nodes. In the example below, `ip-10-0-1-133.ec2.internal` and `ip-10-0-1-32.ec2.internal` are the worker nodes.
+worker nodes. In the example below, `vmware-cluster-worker-pool-7d6d76b55b-dhffq ` and
+`vmware-cluster-worker-pool-2-5b4b559f6d-znbtm` are the worker nodes.
 
 ```shell
-NAME                         STATUS   ROLES           AGE   VERSION
-ip-10-0-1-32.ec2.internal    Ready    <none>          16m   v1.28.11
-ip-10-0-1-133.ec2.internal   Ready    <none>          46m   v1.28.11
-ip-10-0-1-95.ec2.internal    Ready    control-plane   51m   v1.28.11
+NAME                                            STATUS   ROLES           AGE   VERSION
+vmware-cluster-cp-xcqlw                         Ready    control-plane   58m   v1.28.11
+vmware-cluster-worker-pool-2-5b4b559f6d-znbtm   Ready    <none>          30m   v1.28.11
+vmware-cluster-worker-pool-7d6d76b55b-dhffq     Ready    <none>          58m   v1.28.11
 ```
 
 It is common to dedicate node pools to a particular type of workload. One way to specify this is through the use of
@@ -400,7 +416,7 @@ workloads execute on which nodes.
 ![Taints repel pods to a new node](/getting-started/getting-started_scale-secure-cluster_taints-in-action.gif)
 
 Switch back to Palette in your web browser. Navigate to the left **Main Menu** and select **Profiles**. Select the
-cluster profile deployed to your cluster, named `aws-profile`. Ensure that the **1.1.0** version is selected.
+cluster profile deployed to your cluster, named `vmware-profile`. Ensure that the **1.1.0** version is selected.
 
 Click on the **hellouniverse 1.1.3** layer. The manifest editor appears. Set the
 `manifests.hello-universe.ui.useTolerations` field on line 20 to `true`. Then, set the
@@ -419,7 +435,7 @@ ui:
 
 Click on **Confirm Updates**. The manifest editor closes. Then, click on **Save Changes** to persist your changes.
 
-Navigate to the left **Main Menu** and select **Clusters**. Select your deployed cluster, named **aws-cluster**.
+Navigate to the left **Main Menu** and select **Clusters**. Select your deployed cluster, named **vmware-cluster**.
 
 Due to the changes you have made to the cluster profile, this cluster has a pending update. Click on **Updates**. The
 **Changes Summary** dialog appears.
@@ -447,14 +463,15 @@ scheduled.
 kubectl get pods --namespace hello-universe --output wide
 ```
 
-The output verifies that the UI pods have remained scheduled on their original node named `ip-10-0-1-133.ec2.internal`,
-while the other two pods have been moved to the node of the second worker pool named `ip-10-0-1-32.ec2.internal`.
+The output verifies that the UI pods have remained scheduled on their original node named
+`vmware-cluster-worker-pool-7d6d76b55b-dhffq`, while the other two pods have been moved to the node of the second worker
+pool named `vmware-cluster-worker-pool-2-5b4b559f6d-znbtm`.
 
 ```shell
-NAME                        READY   STATUS    RESTARTS      AGE   NODE
-api-7db799cf85-5w5l6        1/1     Running   1 (20m ago)   20m   ip-10-0-1-32.ec2.internal
-postgres-698d7ff8f4-vbktf   1/1     Running   0             20m   ip-10-0-1-32.ec2.internal
-ui-5f777c76df-pplcv         1/1     Running   0             20m   ip-10-0-1-133.ec2.internal
+NAME                        READY   STATUS    AGE   NODE
+api-7db799cf85-5w5l6        1/1     Running   20m   vmware-cluster-worker-pool-2-5b4b559f6d-znbtm
+postgres-698d7ff8f4-vbktf   1/1     Running   20m   vmware-cluster-worker-pool-2-5b4b559f6d-znbtm
+ui-5f777c76df-pplcv         1/1     Running   20m   vmware-cluster-worker-pool-7d6d76b55b-dhffq
 ```
 
 Taints and tolerations are a common way of creating nodes dedicated to certain workloads, once the cluster has scaled
@@ -475,10 +492,10 @@ delete to access its details page.
 
 Click on **Settings** to expand the menu, and select **Delete Cluster**.
 
-![Delete cluster](/getting-started/aws/getting-started_scale-secure-cluster_delete-cluster-button.webp)
+![Delete cluster](/getting-started/vmware/getting-started_scale-secure-cluster_delete-cluster-button.webp)
 
-You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name `aws-cluster` to
-proceed with the delete step. The deletion process takes several minutes to complete.
+You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name `vmware-cluster`
+to proceed with the delete step. The deletion process takes several minutes to complete.
 
 :::info
 
@@ -507,10 +524,10 @@ pop-up box will ask you to confirm the action. Confirm the deletion.
 ## Wrap-up
 
 In this tutorial, you learned how to perform very important operations relating to the scalability and availability of
-your clusters. First, you created a project and team. Next, you imported a cluster profile and deployed a host AWS
-cluster. Then, you upgraded the Kubernetes version of your cluster and scanned your clusters using Palette's scanning
-capabilities. Finally, you scaled your cluster's nodes and used taints to select which Hello Universe pods execute on
-them.
+your clusters. First, you created a project and team. Next, you imported a cluster profile and deployed a host VMware
+vSphere cluster. Then, you upgraded the Kubernetes version of your cluster and scanned your clusters using Palette's
+scanning capabilities. Finally, you scaled your cluster's nodes and used taints to select which Hello Universe pods
+execute on them.
 
 We encourage you to check out the [Additional Capabilities](../additional-capabilities.md) to explore other Palette
 functionalities.

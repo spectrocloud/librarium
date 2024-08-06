@@ -743,6 +743,5 @@ In this tutorial, you learned how to create different versions of a cluster prof
 Azure cluster and then updated it to use a different version of a cluster profile. Finally, you learned how to perform
 cluster profile roll backs.
 
-We encourage you to check out the
-[Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest) provider page to
-learn more about the Palette resources you can deploy using Terraform.
+We encourage you to check out the [Scale, Upgrade, and Secure Clusters](./scale-secure-cluster.md) tutorial to learn how
+to perform common Day-2 operations on your deployed clusters.
