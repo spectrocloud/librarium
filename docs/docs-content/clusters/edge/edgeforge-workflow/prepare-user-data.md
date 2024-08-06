@@ -29,9 +29,17 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
 
 ## Prerequisites
 
+- [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
+
 ## Prepare User Data
 
-1. From the **CanvOS** directory, copy the **user-data.template** file and name the copy **user-data**. This is a
+1. Clone the **CanvOS** repository.
+
+   ```shell
+    git clone https://github.com/spectrocloud/CanvOS.git
+   ```
+
+   From the **CanvOS** directory, copy the **user-data.template** file and name the copy **user-data**. This is a
    template that you can use as a starting point to build your own user data file.
 
 ### Configure Installation Mode

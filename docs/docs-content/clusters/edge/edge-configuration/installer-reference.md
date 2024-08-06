@@ -253,7 +253,7 @@ Cloud init stages allow you to specify
 
 You can configure users during any cloud-init stage. However, we strongly recommend that you use the `initramfs` stage
 to configure users, because this is the earlist cloud-init stage. If you need to debug the Edge host in the event it is
-unabled to progress past a certain stage, you will be able to establish an SSH connection into the Edge host because the
+unable to progress past a certain stage, you will be able to establish an SSH connection into the Edge host because the
 users are already there. On the other hand, if you configure users at a later stage and your Edge host is not able to
 progress to that stage during installation, you will not be able to access your Edge host because there are no users.
 

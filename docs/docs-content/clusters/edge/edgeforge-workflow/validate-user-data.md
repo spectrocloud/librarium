@@ -8,7 +8,7 @@ tags: ["edge"]
 ---
 
 After preparing or modifying your **user-data** file, you can validate your user data before using it to build the Edge
-installer ISO. This allows you to be confident that your user data follows the the expected schema and avoid having to
+installer ISO. This allows you to be confident that your user data follows the expected schema and avoid having to
 rebuilt Edge artifacts due to user data errors.
 
 ## Prerequisites
