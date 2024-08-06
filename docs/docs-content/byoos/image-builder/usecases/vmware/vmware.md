@@ -1,6 +1,6 @@
 ---
-sidebar_label: "VMware"
-title: "VMware"
+sidebar_label: "VMware Workflow"
+title: "VMware Workflow"
 description: "Learn how to build and use custom OS images for Kubernetes clusters on VMware vSphere."
 hide_table_of_contents: false
 sidebar_position: 10

@@ -533,6 +533,10 @@ const redirects = [
     from: "/security-bulletins/cve-reports/",
     to: "/security-bulletins/reports/",
   },
+  {
+    from: "/byoos/usecases/",
+    to: "/byoos/image-builder/usecases/",
+  },
 ];
 
 module.exports = redirects;

@@ -1,46 +1,19 @@
 ---
-sidebar_label: "Create Images with Image Builder"
-title: "Create Images with Image Builder"
-description: "Learn how to use the Image Builder project to create images for Palette."
+sidebar_label: "Generic Workflow"
+title: "Generic Workflow"
+description:
+  "Learn how to build a custom image for your infrastructure provider and use it to deploy a Kubernetes cluster."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
-tags: ["operating system", "byoos", "profiles", "cluster profiles"]
+sidebar_position: 0
+tags: ["operating system", "byoos", "profiles"]
 ---
 
-You can create and deploy custom images to most infrastructure providers using various tools. Many infrastructure
-providers have tools that you can use to create custom images for the platform, such as
-[AWS EC2 Image Builder](https://aws.amazon.com/image-builder/) for AWS or
-[Azure VM Image Builder](https://azure.microsoft.com/en-us/products/image-builder) for Azure. You can also use platform
-agnostic tools, such as [HashiCorp Packer](https://developer.hashicorp.com/packer), or something more tailored to
-Kubernetes, such as the [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) (KIB) project.
+This guide will teach you how to use the [Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html)
+(KIB) project to create images for your infrastructure provider so that you can use the custom images in a Palette
+cluster profile.
 
-## Kubernetes Image Builder
-
-KIB is a project designed to help users create images for various platforms. The project is a consolidation of multiple
-tools that together work to create an artifact, or in simpler terms, a custom image.
-
-You can use the custom images created by KIB with Palette, assuming the infrastructure provider is supported in Palette.
-Use the following diagram to understand how you can use KIB to create custom images that you can use with Palette.
-
-![A diagram displaying the steps for creating a custom image](/cluster-profiles_byoos_image-builder_workflow-diagram.webp)
-
-<br />
-
-1. Download the KIB project and configure the image builder's **packer.json** file.
-
-2. Use the `make` command to create a custom image containing a specific Operating System (OS) version and flavor.
-
-3. The custom image is created and distributed to the target regions you specified in the **packer.json** file.
-
-4. Create a cluster profile that points to your custom image.
-
-5. Deploy a host cluster using your cluster profile that contains the custom image.
-
-This guide will teach you how to use KIB to create images for your infrastructure provider so that you can use the
-custom images in a Palette cluster profile.
-
-### Prerequisites
+## Prerequisites
 
 - Palette v3.4.0 or greater.
 
@@ -56,20 +29,18 @@ custom images in a Palette cluster profile.
 - [HashiCorp Packer](https://developer.hashicorp.com/packer/tutorials/docker-get-started/get-started-install-cli)
   installed v1.8.6 or greater.
 
-<br />
-
 :::warning
 
 To use a commercial OS, you must provide the license before starting the image creation process.
 
 :::
 
-### Create an Image
+## Create an Image
 
-The following steps guide you through creating your image. You will create a custom Red Hat Enterprise Linux (RHEL)
-image for Amazon Web Services (AWS). RHEL is a commercial product, so you will need license subscription credentials,
-but you can use the same steps for a non-RHEL image. The critical point to take away in this guide is using KIB to
-create the image.
+The following steps guide you through creating your image. As an example, you will create a custom Red Hat Enterprise
+Linux (RHEL) image for Amazon Web Services (AWS). RHEL is a commercial product, so you will need license subscription
+credentials, but you can use the same steps for a non-RHEL image. The critical point to take away in this guide is using
+KIB to create the image.
 
 1.  Clone the KIB repository.
 
@@ -281,8 +252,8 @@ create the image.
 
     Depending on what platform you are targeting, the value you provide for `osImageOverride` may differ. For example,
     for AWS, the value is the AMI ID. For vSphere, the value is VM template path and name. Refer to the
-    [Reference Custom Image](../integrations/byoos.md?edge-non-edge=Non-Edge#reference-custom-image) section of the
-    BYOOS page for examples.
+    [Reference Custom Image](../../../integrations/byoos.md?edge-non-edge=Non-Edge#reference-custom-image) section of
+    the BYOOS page for examples.
 
     :::
 
@@ -305,7 +276,7 @@ Palette's inability to launch a cluster.
 
 :::
 
-### Validate
+## Validate
 
 Use the following steps to validate your custom image is working correctly.
 
