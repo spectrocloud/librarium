@@ -695,7 +695,7 @@ oidcIdentityProvider:
 clientConfig:
   oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
   oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
-  oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+  oidc-client-secret: **************************************************
   oidc-extra-scope: profile,email
 ```
 
@@ -1002,7 +1002,7 @@ oidcIdentityProvider:
 clientConfig:
   oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
   oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
-  oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+  oidc-client-secret: **************************************************
   oidc-extra-scope: profile,email
 ```
 
