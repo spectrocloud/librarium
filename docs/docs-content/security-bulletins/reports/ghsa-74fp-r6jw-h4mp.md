@@ -22,7 +22,7 @@ Kubernetes apimachinery packages vulnerable to unbounded recursion in JSON or YA
 
 ## Our Official Summary
 
-Spectro Cloud Official Summary Coming
+This vulnerability is reported by govulncheck because of the presence of go library, k8s.io/apimachinery (Affected versions: \< 0.0.0-20190927203648-9ce6eca90e73). This is a false positive, because it does not affect latest kubernetes versions as indicated here ([https://nvd.nist.gov/vuln/detail/CVE-2019-11253](https://nvd.nist.gov/vuln/detail/CVE-2019-11253)). Current K8s version used: 1.28.11
 
 ## CVE Severity
 
