@@ -583,7 +583,7 @@ and click **Confirm**.
 
 The **Cluster Profile** section displays all the layers in the cluster profile. Click on **Next** to proceed.
 
-![A screenshot of the cluster profile during cluster deployment.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-deployment-profile.png)
+![A screenshot of the cluster profile during cluster deployment.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-deployment-profile.webp)
 
 In the **Cluster Config** section, provide a Virtual IP (VIP) address for the Edge cluster. This address must be an
 unused address on the same network as your Edge host.
@@ -607,7 +607,7 @@ Provide the following details for the control plane pool.
 
 Next, click **Remove** to delete the worker pool and click **Next** to proceed with the cluster deployment.
 
-![A screenshot of the nodes config during cluster deployment.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-deployment-nodes.png)
+![A screenshot of the nodes config during cluster deployment.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-deployment-nodes.webp)
 
 The **Cluster Settings** section provides advanced options for OS patching, scheduled scans, scheduled backups, and
 cluster role binding. For this tutorial, you can use the default settings. Click on **Validate** to continue.
@@ -619,7 +619,7 @@ The cluster deployment can take 15 to 30 minutes, depending on its configuration
 
 Click on the **Events** tab to visualize the event log and learn more about the deployment progress.
 
-![A screenshot of the cluster's Events tab.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-events.png)
+![A screenshot of the cluster's Events tab.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-events.webp)
 
 ## Validate
 
@@ -632,12 +632,12 @@ Confirm that your cluster has a **Running** status and is listed as **Healthy**.
 When the Hello Universe application is deployed and ready for network traffic, Palette exposes the service URL in the
 **Services** field. Click on the URL for port **:8080** to access the application landing page.
 
-![A screenshot of the cluster's Overview tab](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-overview.png)
+![A screenshot of the cluster's Overview tab](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-overview.webp)
 
 Welcome to Hello Universe, an application that helps you learn more about Palette and its features. Feel free to click
 on the logo to increase the global counter and for a fun image change.
 
-![A screenshot of the Hello Universe application.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_hello-universe.png)
+![A screenshot of the Hello Universe application.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_hello-universe.webp)
 
 You have successfully provisioned an Edge cluster and deployed a three-tier demo application onto it.
 
@@ -677,7 +677,7 @@ Locate the Edge host deployed in the [Deploy Edge Host](#deploy-edge-host) secti
 **three-dot Menu** and select **Delete** to delete the Edge host. Confirm the deletion by clicking **OK**. This will
 remove the Edge host from Palette but not delete the underlying infrastructure.
 
-![A screenshot of the Edge Hosts page.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_delete-host.png)
+![A screenshot of the Edge Hosts page.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_delete-host.webp)
 
 To delete the VM, open the **VirtualBox** application on your host machine.
 
