@@ -210,6 +210,10 @@ You can configure `stylus.site.tagsFromScript` to point to the script, and it wi
 
 ## Install Parameters
 
+The `install` block allows you to configure the installer to make bind mounts and disk partitions on the Edge host. In
+addition, you can specify post-installation behavior, such as instructing the Edge host to power off automatically after
+installation is complete.
+
 | Parameter                                      | Description                                                                                         | Default |
 | ---------------------------------------------- | --------------------------------------------------------------------------------------------------- | ------- |
 | `install.bind_mounts`                          | The list of folders to bind mount from the installer to the Edge host                               | None    |
@@ -228,7 +232,8 @@ You can configure `stylus.site.tagsFromScript` to point to the script, and it wi
 
 ## Cloud Init Stages
 
-Cloud init stages allow you to specify
+Cloud init stages allow you to automates the initialization of your Edge hosts during various stages of the system boot
+process. For more information, refer to [Cloud-init Stages](./cloud-init.md).
 
 | Parameter                     | Description                                                                                                                                           | Default |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
