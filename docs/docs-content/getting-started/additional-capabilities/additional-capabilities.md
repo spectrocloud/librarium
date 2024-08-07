@@ -23,8 +23,8 @@ This section introduces you to some of Palette's additional capabilities, which 
 
 ## The Journey Continues
 
-In this section, you get an overview of other parts of Palette not covered by your Getting Started journey. Explore more
-through the following pages.
+In this section, you get an overview of other parts of Palette not yet covered by your Getting Started journey so far.
+Explore more through the following pages.
 
 <SimpleCardGrid
   hideNumber="true"
