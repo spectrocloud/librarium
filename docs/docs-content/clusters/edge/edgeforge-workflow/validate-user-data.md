@@ -20,7 +20,7 @@ rebuilt Edge artifacts due to user data errors.
   uname -m
   ```
 
-- You have cloned the **CanvOS** repository.
+- You have cloned the [**CanvOS** repository](https://github.com/spectrocloud/CanvOS.git).
 
 - You have a file named **user-data** in your **CanvOS** directory. For more information on how to prepare the user-data
   file, refer to [Prepare User Data](./prepare-user-data.md).
@@ -34,9 +34,17 @@ sudo ./earthly.sh +validate-user-data
 ```
 
 If the output is similar to the following, it means that the user data is valid and will be applied to the Edge host.
-Note that this only checks that the user data conforms to the expected schema and will not catch issues with the data
-itself. For example, if your user data contained an expired registration token, this will not be flagged by the
-validation script.
+
+:::warning
+
+This only checks that the user data conforms to the expected schema and will not catch issues with the data itself. For
+example, if your user data contained an expired registration token, this will not be flagged by the validation script.
+
+:::
+
+```hideClipboard
++validate-user-data | time=*2024-07-25T20:19:172* level=info msg="Validation successful"
+```
 
 ## Validate
 
