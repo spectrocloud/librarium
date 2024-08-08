@@ -64,7 +64,7 @@ out and archived. You can still download your log files from any period, but the
 
 <Tabs>
 
-<TabItem label="Send Application Logs to Palette Log File">
+<TabItem value="Send Application Logs to Palette Log File">
 
 3. Populate the file with the following configuration. Replace `your-tag` with the tag you configured for the logs of
    your own application. If you changed the facility or the severity level from the suggested values, replace them with
@@ -93,7 +93,7 @@ out and archived. You can still download your log files from any period, but the
 
 </TabItem>
 
-<TabItem label="Send Palette Logs to Another File">
+<TabItem value="Send Palette Logs to Another File">
 
 3. Populate the file with the following configuration. Replace `your-file` with the name of your log file.
 
