@@ -64,7 +64,7 @@ out and archived. You can still download your log files from any period, but the
 
 <Tabs>
 
-<TabIem label="Send Application Logs to Palette Log File">
+<TabItem label="Send Application Logs to Palette Log File">
 
 3. Populate the file with the following configuration. Replace `your-tag` with the tag you configured for the logs of
    your own application. If you changed the facility or the severity level from the suggested values, replace them with
