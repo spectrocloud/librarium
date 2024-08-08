@@ -61,8 +61,8 @@ You can update your Palette system address and SSL certificates by using the fol
 8. Click on **Update** to save your changes.
 
 Palette VerteX validates the combination of system address, certificate, key, and Certificate Authority (CA). Ensure
-that the certificate is not expired, as well as that it is valid for the CA and the system address. Additionally, ensure
-that that the system address is accessible from the system console.
+that the certificate is not expired, as well as that it is valid for the CA and the system address. Additionally, the
+system address must be accessible from the system console.
 
 You will receive an error message if the provided values are not valid. Once the certificate is uploaded successfully,
 Palette VerteX will refresh its listening ports and start using the newly configured values.
