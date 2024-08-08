@@ -132,11 +132,11 @@ out and archived. You can still download your log files from any period, but the
 
 ## View and Download Log File from Local UI
 
-Log files are stored in the `/var/log/` folder. By default, the active log file `stylus-audit.log` stores up to one
-year's worth of logs. When the one period is reached, or when the file size reaches 100 MB, the log file is rotated out
-and archived. If the log messages are configured to be picked up by Local UI, they will show up in Local UI. You can
-also download all log files in the `/var/log/` file from Local UI, including files that are older than one-year old, as
-well as files that were not configured to be displayed by Local UI.
+Log files are stored in the `/var/log/` folder. The active log file `stylus-audit.log` stores up to one year's worth of
+logs. When the one period is reached, or when the file size reaches 100 MB, the log file is rotated out and archived. If
+the log messages are configured to be picked up by Local UI, they will show up in Local UI. You can also download all
+log files in the `/var/log/` file from Local UI, including files that are older than one-year old, as well as files that
+were not configured to be displayed by Local UI.
 
 ### Prerequisites
 
@@ -146,11 +146,11 @@ well as files that were not configured to be displayed by Local UI.
 
 1. Log in to Local UI. For more information, refer to [Access Local UI Console](access-console.md).
 
-2. In the left **Main Menu**, click **Audit Log**. You can view all audit log entries on this page. By default, local UI
-   will display log entries dated up to one year ago.
+2. In the left **Main Menu**, click **Diagnostics**. Then click the **Logs** tab. You can view all audit log entries on
+   this page. Local UI will display log entries dated up to one year ago.
 
-3. To download the log files, click the **Download Logs** button in the upper-right corner. This will download all files
-   in the `/var/log` folder, including archived old log files as well as any additional log files you configured to be
+3. To download the log files, click the **Download** button in the upper-right corner. This will download all files in
+   the `/var/log` folder, including archived old log files as well as any additional log files you configured to be
    stored in the directory.
 
 ### Validate
