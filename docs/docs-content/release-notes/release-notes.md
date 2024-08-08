@@ -32,11 +32,13 @@ tags: ["release-notes"]
 
 #### Improvements
 
-- PEM-5043 Reduces system resource usage, fostering faster query execution.
+- Improvements made to Palette reduced resource usage and improved the reliability and responsiveness of the cluster
+  management.
 
-- Reduces latency in permission resolution, especially for users with access to a large number of projects.
+- Reduced latency in permission resolution, especially for users with access to a large number of projects.
 
-- Reduces CPU and memory consumption within the pods. Enhances overall system performance during machine health updates.
+- Reduced CPU and memory consumption within the pods and enhanced overall system performance during machine health
+  updates.
 
 #### Features
 
@@ -44,68 +46,85 @@ tags: ["release-notes"]
 
 #### Features
 
-- This release introduces application and core dump support within Local UI, easily download of crash core dumps for
-  debugging and troubleshooting edge hosts. Previously, gathering core dumps required elevated privileges and could be
-  error-prone when executed manually.
-
-- Introducing an audit logging feature for the Local UI, aimed at thoroughly tracking user actions and system
-  modifications. This capability captures timestamped records for a variety of events, including authentication
-  attempts, configuration changes, and cluster management activities. The audit logs will be available through both a
-  dedicated UI section and an API for programmatic access, ensuring comprehensive monitoring and ease of offline
-  analysis.
-
-- The progress tracking for the lifecycle of Kubernetes clusters deployed on edge locations has been enhanced. Users can
-  now monitor key milestones in real-time during the creation and updating of edge clusters. The interface logs
-  important events, displaying readable date and time stamps, and estimating the duration of processes to provide
-  clarity and certainty.
-
-- The functionality to filter lists of Edge hosts via tags has been added to improve usability when locating specific
-  hosts by location or site. This enhancement includes a lightweight, fast, and intuitive tag mechanism on both the edge
-  host listing page and the edge cluster creation screen. The aim is to simplify the process of finding and adding tags
-  while considering performance impacts for large environments with numerous tags.
-
-- This release adds the ability to search and filter Edge hosts using tags during cluster creation. This functionality
-  addresses the difficulty users face in finding and utilizing edge hosts efficiently during cluster creation.
-
-- Introducing a "user-data" validation tool to streamline the deployment process for Edge hosts. Errors in user-data
+- Introducing a validation tool for the install configuration **user-data** for Edge hosts. Errors in **user-data**
   files can lead to significant delays and troubleshooting efforts. This feature validates the user-data file for both
   YAML formatting and schema compliance during build time to catch issues earlier.
 
+- This release introduces application and core dump support within Local UI, which allows downloads of crash core dumps
+  for debugging and troubleshooting Edge hosts. Previously, gathering core dumps required elevated privileges and could
+  be error-prone when executed manually.
+
+- Palette agent on Edge hosts will now produce audit logs. This capability captures timestamped records for a variety of
+  events, including authentication attempts, configuration changes, and cluster management activities. In addition, you
+  can program your own applications to send logs to the same location, and have Local UI display those applications.
+
+- Local UI will now display progress and status during cluster deployment. Users can now monitor key milestones in
+  real-time during the creation and updating of Edge clusters.
+
 ### Packs
+
+#### Kubernetes Packs
 
 | Pack                                       | New Version |
 | ------------------------------------------ | ----------- |
-| K3s                                        | 1.27.15     |
-| K3s                                        | 1.28.11     |
-| K3s                                        | 1.29.6      |
-| Palette eXtended Kubernetes (PXK)          | 1.27.15     |
-| Palette eXtended Kubernetes (PXK)          | 1.28.11     |
-| Palette eXtended Kubernetes (PXK)          | 1.29.6      |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.15     |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.28.11     |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.6      |
-| RKE2                                       | 1.27.14     |
-| RKE2                                       | 1.28.10     |
-| RKE2                                       | 1.29.5      |
-| RKE2 - Edge                                | 1.27.14     |
-| RKE2 - Edge                                | 1.28.10     |
-| RKE2 - Edge                                | 1.29.5      |
+| K3s                                        | 1.27.16     |
+| K3s                                        | 1.28.12     |
+| K3s                                        | 1.29.7      |
+| Palette eXtended Kubernetes (PXK)          | 1.27.16     |
+| Palette eXtended Kubernetes (PXK)          | 1.28.12     |
+| Palette eXtended Kubernetes (PXK)          | 1.29.7      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.16     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.28.12     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.7      |
+
+| RKE2 | 1.27.15 | | RKE2 | 1.28.11 | | RKE2 | 1.29.6 | | RKE2 FIPS | 1.27.15 |
+
+#### CNI
+
+| Pack   | New Version |
+| ------ | ----------- |
+| Cilium | 1.15.7      |
+
+#### CSI
+
+| Pack        | New Version |
+| ----------- | ----------- |
+| Azure Disk  | 1.30.1      |
+| AWS EBS     | 1.33.0      |
+| VSphere CSI | 3.3.0       |
+
+#### FIPS
+
+| Pack                               | New Version |
+| ---------------------------------- | ----------- |
+| Longhorn                           | 1.6.2       |
+| Palette eXtended Kubernetes - FIPS | 1.27.16     |
+| Palette eXtended Kubernetes - FIPS | 1.28.12     |
+| Palette eXtended Kubernetes - FIPS | 1.29.7      |
+
+#### Add-on Packs
+
+| Pack       | New Version |
+| ---------- | ----------- |
+| MetalLB    | 0.14.5      |
+| Prometheus | 58.6.0      |
 
 ### Terraform
 
-Palette/VerteX UI to include proactive notifications for users managing clusters with Terraform. This new feature alerts
-users when their actions could trigger a cluster repave, a significant operation that may affect cluster performance or
-configuration. Currently, this notification is not available in Terraform-managed environments, leading to potential
-oversight by users.
+You will now receive a clear warning message in the terminal after issuing the `terraform plan` command if your action
+would result in a cluster repave. Previously, this notification is not available in Terraform-managed environments,
+leading to potential oversight by users.
 
 ### VerteX
 
 #### Features
 
-- A new API will be introduced to allow users to update both DNS hosts and SSL certificates simultaneously in Palette
-  and VerteX. This update addresses user-reported issues related to circular dependencies when updating DNS hosts and
-  certificates separately. The change will also be reflected in the UI by merging DNS and certificate update
-  functionalities onto a single page, enhancing user experience and functionality validation.
+- A new API now allows users to update both DNS hosts and SSL certificates simultaneously in Palette and VerteX. This
+  update addresses user-reported issues related to circular dependencies when updating DNS hosts and certificates
+  separately. The change will also be reflected in the UI by merging DNS and certificate update functionalities onto a
+  single page, enhancing user experience and functionality validation.
+
+- The VMO airgap binary has moved out of Preview status into Production-ready state.
 
 ## Jul 31, 2024 - Release 4.4.12
 
