@@ -8,18 +8,25 @@ sidebar_position: 0
 tags: ["operating system", "byoos", "capi iamge builder"]
 ---
 
+The CAPI Image Builder is a tool we developed and maintain to reduce the challenges associated with creating images for
+Kubernetes clusters. It is based on the upstream
+[Kubernetes Image Builder (KIB)](https://image-builder.sigs.k8s.io/introduction.html) project.
+
+The tool includes all the dependencies required to build FIPS and non-FIPS images within a Docker container, eliminating
+the need to install any dependencies on your local machine. This is particularly useful when working in air-gapped
+environments.
+
 :::preview
 
 :::
 
-The CAPI Image Builder is a tool we develop and maintain to reduce the challenges of creating images for Kubernetes
-clusters. The tool is based on the upstream
-[Kubernetes Image Builder](https://image-builder.sigs.k8s.io/introduction.html) (KIB) project. All the dependencies
-required to build the images are included in the tool through a Docker image, removing the need to install any
-dependencies on your local machine. The latter is especially useful when working within air-gapped environments.
-
 ## Get Started
 
+Refer to the [Build Image for VMware vSphere](./build-image-vmware/build-image-vmware.md) guide to learn how to use the
+CAPI Image Builder tool to create an OS image for Kubernetes clusters that target VMware vSphere.
+
 ## Resources
+
+- [Build Image for VMware vSphere](./build-image-vmware/build-image-vmware.md)
 
 - [Configuration Reference](./config-reference.md)

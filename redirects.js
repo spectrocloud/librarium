@@ -535,7 +535,19 @@ const redirects = [
   },
   {
     from: "/byoos/usecases/",
-    to: "/byoos/image-builder/usecases/",
+    to: "/byoos/image-builder/build-image-vmware/",
+  },
+  {
+    from: "/byoos/usecases/vmware/",
+    to: "/byoos/image-builder/build-image-vmware/",
+  },
+  {
+    from: "/byoos/usecases/vmware/konvoy/",
+    to: "/byoos/image-builder/build-image-vmware/konvoy/",
+  },
+  {
+    from: "/byoos/usecases/vmware/rhel-pxk/",
+    to: "/byoos/image-builder/build-image-vmware/rhel-pxk/",
   },
 ];
 

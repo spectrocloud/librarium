@@ -42,5 +42,3 @@ images for Palette and VerteX.
 - [Create Images with CAPI Image Builder](capi-image-builder/capi-image-builder.md)
 
 - [BYOOS Pack](../integrations/byoos.md)
-
-<br />

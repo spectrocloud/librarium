@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Generic Workflow"
-title: "Generic Workflow"
+sidebar_label: "Build Image"
+title: "Build Image"
 description:
   "Learn how to build a custom image for your infrastructure provider and use it to deploy a Kubernetes cluster."
 icon: ""
@@ -252,8 +252,8 @@ KIB to create the image.
 
     Depending on what platform you are targeting, the value you provide for `osImageOverride` may differ. For example,
     for AWS, the value is the AMI ID. For vSphere, the value is VM template path and name. Refer to the
-    [Reference Custom Image](../../../integrations/byoos.md?edge-non-edge=Non-Edge#reference-custom-image) section of
-    the BYOOS page for examples.
+    [Reference Custom Image](../../integrations/byoos.md?edge-non-edge=Non-Edge#reference-custom-image) section of the
+    BYOOS page for examples.
 
     :::
 

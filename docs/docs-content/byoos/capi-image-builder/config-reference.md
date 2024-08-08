@@ -8,52 +8,57 @@ sidebar_position: 30
 tags: ["operating system", "byoos", "capi iamge builder"]
 ---
 
-The CAPI Image Builder utility is configured through a configuration file. The configuration file is made up of the
-following parameters. Review the parameters below to understand how to configure the CAPI Image Builder for your use
-case.
+The CAPI Image Builder utility is configured using a configuration file that includes the parameters documented below.
+Review these parameters to understand how to tailor the CAPI Image Builder to your specific use case.
 
-## Operating System Configurations
+:::warning
+
+At this time, VMware vSphere is the only infrastructure provider supported by the CAPI Image Builder.
+
+:::
+
+## Operating System Configuration
 
 | Parameter                | Description                                                                                                             | Required |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------- | -------- |
 | `os_versions`            | A list of operating system versions to build. Available options are `rhel-8`, `rhel-9`, `rockylinux-8`, `rockylinux-9`. | Yes      |
-| `image_type`             | The type of image to build. Available options `standard` or `fips`.                                                     | Yes      |
+| `image_type`             | The type of image to build. Available options are `standard` or `fips`.                                                 | Yes      |
 | `rhel_subscription_user` | The RHEL subscription username to use when building the image.                                                          | No       |
 | `rhel_subscription_pass` | The RHEL subscription password to use when building the image.                                                          | No       |
 
-## Image Configurations
+## Image Configuration
 
 | Parameter    | Description                                                                                      | Required |
 | ------------ | ------------------------------------------------------------------------------------------------ | -------- |
 | `image_name` | The name of the image to build.                                                                  | Yes      |
 | `cloud_type` | The cloud type to build the image for. Available options are `aws`, `azure`, `gcp` and `vmware`, | Yes      |
 
-## Kubernetes Configurations
+## Kubernetes Configuration
 
-| Parameter            | Description                                                                          | Required |
-| -------------------- | ------------------------------------------------------------------------------------ | -------- |
-| `k8s_version`        | The version of Kubernetes to use when building the image.                            | Yes      |
-| `cni_version`        | The version of the Container Network Interface (CNI) to use when building the image. | Yes      |
-| `containerd_version` | The version of containerd to use when building the image.                            | Yes      |
-| `crictl_version`     | The version of crictl to use when building the image.                                | Yes      |
+| Parameter            | Description                                                                   | Required |
+| -------------------- | ----------------------------------------------------------------------------- | -------- |
+| `k8s_version`        | The Kubernetes version to use when building the image.                        | Yes      |
+| `cni_version`        | The Container Network Interface (CNI) version to use when building the image. | Yes      |
+| `containerd_version` | The containerd version to use when building the image.                        | Yes      |
+| `crictl_version`     | The crictl version to use when building the image.                            | Yes      |
 
-## ISO Configurations
+## ISO Configuration
 
 | Parameter      | Description                                                                                                                       | Required |
 | -------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | `iso_name`     | The name of the ISO file to use when building the image. The ISO file is expected to be located inside the **output** folder.     | Yes      |
 | `iso_checksum` | The SHA256 checksum of the ISO file to use when building the image. The checksum is used to verify the integrity of the ISO file. | Yes      |
 
-## Infrastructure Configurations
+## Infrastructure Configuration
 
-Fill out the parameters below for the cloud provider you are building the image for. The parameters are used to
-authenticate with the cloud provider and to upload the image to the cloud provider.
+Fill out the parameters below for the infrastructure provider for which you are building the image. These parameters are
+required for authenticating with the provider and uploading the image. Do not fill in the parameters for any other
+providers.
 
 :::info
 
-Only one cloud provider can be used at a time. If you are building the image for multiple cloud providers, you need to
-create separate configurations for each cloud provider. Only the parameters for the selected cloud provider are
-required.
+Only one infrastructure provider can be used at a time. If you need to build images for multiple providers, you need to
+create a separate configuration file for each.
 
 :::
 
@@ -96,7 +101,7 @@ required.
 | `vcenter_cluster`       | The vCenter cluster to use when building the image.                                                                      | Yes      |
 | `vcenter_resource_pool` | The vCenter resource pool to use when building the image.                                                                | Yes      |
 
-## Airgap Configurations
+## Airgap Configuration
 
 Fill out the parameters below if you are building the image in an air-gapped environment. Otherwise, you can skip this
 section.

@@ -4,14 +4,14 @@ title: "RHEL and Palette eXtended Kubernetes"
 description: "Learn how to build a custom RHEL with PXK for VMware vSphere and use it to deploy a Kubernetes cluster."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 tags: ["operating system", "byoos", "profiles", "pxk", "vmware"]
 ---
 
 You can create a custom VMware vSphere RHEL image with
-[Palette eXtended Kubernetes](../../../../integrations/kubernetes.md) (PXK) and use it to deploy a Kubernetes cluster.
-You can choose to build the custom RHEL image with PXK using FIPS or opt for a non-FIPS-compliant image. This workflow
-is built on-top of the [Image Builder](https://github.com/kubernetes-sigs/image-builder) project. Check out the
+[Palette eXtended Kubernetes](../../../integrations/kubernetes.md) (PXK) and use it to deploy a Kubernetes cluster. You
+can choose to build the custom RHEL image with PXK using FIPS or opt for a non-FIPS-compliant image. This workflow is
+built on-top of the [Image Builder](https://github.com/kubernetes-sigs/image-builder) project. Check out the
 [Image Builder vSphere](https://image-builder.sigs.k8s.io/capi/providers/vsphere) section of the documentation to learn
 more about this workflow.
 
@@ -34,8 +34,6 @@ Before you begin, ensure that you have the following prerequisites met.
   - Internet access
   - Git installed.
   - Ubuntu 22.04 LTS or later.
-
-  <br />
 
   :::info
 
@@ -276,8 +274,8 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
 
 14. The custom RHEL image with PXK is now built and available in the VMware vSphere environment. You can use this image
     to deploy a Kubernetes cluster. To use the image, create a cluster profile with and select the
-    [BYOOS pack](../../../../integrations/byoos.md). Refer to the custom image in the cluster profile when populating
-    the image details. You need to refer to the VM template path of the image.
+    [BYOOS pack](../../../integrations/byoos.md). Refer to the custom image in the cluster profile when populating the
+    image details. You need to refer to the VM template path of the image.
 
     ```yaml hideClipboard
     pack:
@@ -295,7 +293,7 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
     ![A cluster profile using a custom RHEL image](/byoos_vmware_rhewl-pxk_cluster-profile.webp)
 
     Complete the remaining steps in the
-    [cluster profile creation process](../../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md).
+    [cluster profile creation process](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md).
     Use the cluster profile to deploy a Kubernetes cluster in your VMware vSphere environment with the custom RHEL
     image.
 
@@ -506,8 +504,8 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
 
 14. The custom RHEL image with PXK is now built and available in the VMware vSphere environment. You can use this image
     to deploy a Kubernetes cluster. To use the image, create a cluster profile with and select the
-    [BYOOS pack](../../../../integrations/byoos.md). Refer to the custom image in the cluster profile when populating
-    the image details. You need to refer to the VM template path of the image.
+    [BYOOS pack](../../../integrations/byoos.md). Refer to the custom image in the cluster profile when populating the
+    image details. You need to refer to the VM template path of the image.
 
     ```yaml hideClipboard
     pack:
@@ -525,7 +523,7 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
     ![A cluster profile using a custom RHEL image](/byoos_vmware_rhewl-pxk_cluster-profile-non-fips.webp)
 
     Complete the remaining steps in the
-    [cluster profile creation process](../../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md).
+    [cluster profile creation process](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md).
     Use the cluster profile to deploy a Kubernetes cluster in your VMware vSphere environment with the custom RHEL
     image.
 

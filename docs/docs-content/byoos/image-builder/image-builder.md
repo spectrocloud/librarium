@@ -35,7 +35,15 @@ Use the following diagram to understand how you can use KIB to create custom ima
 
 5. Deploy a host cluster using your cluster profile that contains the custom image.
 
+## Get Started
+
+Refer to the generic [Build Image](./build-image.md) guide for instructions on how to build custom OS images.
+
+Additionally, check out the [Build Image for VMware vSphere](./build-image-vmware/build-image-vmware.md) page for
+specific guides on how to build custom OS images for Kubernetes clusters that use VMware vSphere as the infrastructure
+platform.
+
 ## Resources
 
-- Check out the [Use Cases](./usecases/usecases.md) page to learn how to create a custom OS image for different
-  infrastructure providers.
+- [Build Image](./build-image.md)
+- [Build Image for VMware vSphere](./build-image-vmware/build-image-vmware.md)
