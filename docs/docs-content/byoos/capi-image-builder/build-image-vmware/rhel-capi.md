@@ -18,7 +18,7 @@ workflows.
 
 :::
 
-<!-- compatibility matrix. airgap. test static ip-->
+<!-- missing: compatibility matrix. airgap. -->
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ workflows.
 
   - 4 CPU
   - 8 GB of RAM
-  - 100 GB of free disk space
+  - 50 GB of free disk space
 
 - The following software installed:
   - [Docker](https://docs.docker.com/engine/install/) or [Podman](https://podman.io/docs/installation)
@@ -104,8 +104,8 @@ workflows.
     directory. Ensure you download the **x86_64 DVD ISO** and not the **x86_64 BOOT ISO**. Replace
     `<iso-file-download-link>` in the command below with the direct link to download the RHEL ISO.
 
-    This guide uses RHEL 8.8 as an example. Refer to the Compatibility Matrix page for a list of supported operating
-    systems and dependencies.
+    This guide uses RHEL 8.8 as an example. Refer to the [Configuration Reference](../config-reference.md) page for
+    details on supported operating systems.
 
     ```shell
     curl <iso-file-download-link> -o rhel-8.8-x86_64-dvd.iso
@@ -132,15 +132,16 @@ workflows.
 
 7.  Open the **imageconfig** template file in an editor of your choice and fill in the required parameters. For a
     complete list of parameters, refer to the [Configuration Reference](../config-reference.md) page. Additionally,
-    refer to the Compatibility Matrix for details on compatible versions of Kubernetes, CNI, containerd, and crictl.
+    refer to the [Compatibility Matrix](../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions and
+    their corresponding dependencies.
 
     The **imageconfig** is the file you use to set up the CAPI Image Builder according to your requirements. This
     includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and more.
 
     Use the example configuration below for building a RHEL 8 CAPI image. Replace `<rhel-subscription-email>` and
     `<rhel-subscription-password>` with your RHEL subscription credentials. Use the SHA256 checksum of the RHEL ISO from
-    step **5** of this guide for `<iso-checksum>`. Finally, update the VMware-related values with those from your VMware
-    vSphere environment.
+    step **5** of this guide for `<iso-checksum>`. Additionally, replace the VMware-related placeholders with the values
+    from your VMware vSphere environment.
 
     ```text {4-5,9,13,19-22,26-27,30-31,38-46,64}
      # Define the OS type and version here
@@ -180,15 +181,15 @@ workflows.
      aws_secret_key=
 
      # Define Vmware infra details
-     vcenter_server=
-     vcenter_user=
-     vcenter_password=
-     vcenter_datacenter=
-     vcenter_datastore=
-     vcenter_network=
-     vcenter_folder=
-     vcenter_cluster=
-     vcenter_resource_pool=
+     vcenter_server=<vcenter-server>
+     vcenter_user=<vcenter-user>
+     vcenter_password=<vcenter-password>
+     vcenter_datacenter=<vcenter-datacenter>
+     vcenter_datastore=<vcenter-datastore>
+     vcenter_network=<vcenter-network>
+     vcenter_folder=<vcenter-folder>
+     vcenter_cluster=<vcenter-cluster>
+     vcenter_resource_pool=<vcenter-resource-pool>
 
      # Optional: for OVA based builds
      vcenter_template=

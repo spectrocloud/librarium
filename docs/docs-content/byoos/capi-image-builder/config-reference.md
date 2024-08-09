@@ -5,7 +5,7 @@ description: "Learn about the configuration options available for the CAPI Image
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["operating system", "byoos", "capi iamge builder"]
+tags: ["operating system", "byoos", "capi image builder"]
 ---
 
 The CAPI Image Builder utility is configured using a configuration file that includes the parameters documented below.
@@ -34,6 +34,9 @@ At this time, VMware vSphere is the only infrastructure provider supported by th
 | `cloud_type` | The cloud type to build the image for. Available options are `aws`, `azure`, `gcp` and `vmware`, | Yes      |
 
 ## Kubernetes Configuration
+
+Refer to the [CAPI Image Builder Compatibility Matrix](./comp-matrix-capi-builder.md) file for a list of supported
+Kubernetes versions and the corresponding compatible versions of its dependencies.
 
 | Parameter            | Description                                                                   | Required |
 | -------------------- | ----------------------------------------------------------------------------- | -------- |
