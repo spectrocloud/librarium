@@ -15,6 +15,8 @@ Transfer Protocol Secure (HTTPS). External Palette endpoints, such as the
 [Palette dashboard](../../getting-started/dashboard.md), Palette API, and gRPC endpoints, are enabled by default with
 HTTPS using an auto-generated self-signed certificate.
 
+## Update System Address and Certificates
+
 The Palette system console provides you with the ability to replace the self-signed certificate with a custom SSL
 certificate to secure these endpoints. Additionally, you can update the system address, which is the IP address or Fully
 Qualified Domain Name (FQDN) that you use to access your Palette installation. The system address and certificates may
@@ -27,7 +29,7 @@ updating the system address may require manual reconciliation on deployed cluste
 
 :::
 
-## Prerequisites
+### Prerequisites
 
 - Access to the Palette system console.
 
@@ -38,10 +40,7 @@ updating the system address may require manual reconciliation on deployed cluste
   not specify a custom domain name, the certificate must be created for the Palette system console's IP address. You can
   also specify a load balancer's IP address if you are using a load balancer to access Palette.
 
-- Additionally, you should install kubectl locally. Use the Kubernetes
-  [Install Tools](https://kubernetes.io/docs/tasks/tools/) page for further guidance.
-
-## Enablement
+### Enablement
 
 You can update your Palette system address and SSL certificates by using the following steps.
 
@@ -57,7 +56,7 @@ You can update your Palette system address and SSL certificates by using the fol
 
 6. Copy and paste the certificate key into the **Key** field.
 
-7. Copy and paste the certificate authority into the **Certificate authority** field.
+7. Copy and paste the certificate authority into the **Certificate Authority** field.
 
    ![A view of the certificate upload screen](/palette_system-management_ssl-certificate-management_system-address.webp)
 
@@ -70,7 +69,7 @@ address must be accessible from the system console.
 You will receive an error message if the provided values are not valid. Once the certificate is uploaded successfully,
 Palette will refresh its listening ports and start using the newly configured values.
 
-## Validate
+### Validate
 
 You can validate that your certificate is uploaded correctly by using the following steps.
 
@@ -81,40 +80,65 @@ You can validate that your certificate is uploaded correctly by using the follow
 2.  Log back into the Palette system console. Ensure the connection is secure by checking the URL. The URL should start
     with `https://`.
 
-3.  If you have any deployed clusters, navigate to the left **Main Menu** and select **Clusters**. Palette displays the
-    status of your clusters. If the status of your clusters is **Unknown**, you will need to manually update the API
-    endpoint on each cluster. Click on the box below to expand the instructions.
-
-   <details>
-   <summary>Manually Update System Address On Deployed Clusters</summary>
-
-      1. Select your cluster from the **Clusters** list. The cluster **Overview** tab displays.
-      2. Download the kubeconfig file. This file allows you to connect to your deployed cluster. Check out the
-         [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) page to learn more.
-      3. Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
-
-         ```shell
-         export KUBECONFIG=~/Downloads/admin.my-cluster-name.kubeconfig
-         ```
-
-      4. Execute the following command in your terminal to view the namespaces of your cluster. Make a note of the cluster
-         namespace that Palette has created. Its name follows the pattern `cluster-xxx`.
-
-         ```shell
-         kubectl get namespaces
-         ```
-
-      5. Palette uses ConfigMaps to save its configuration and environment variables. Update the `apiEndpoint` value in the
-         `hubble-info` ConfigMap to use the newly configured system address.
-
-         ```shell
-         kubectl edit configmap hubble-info --namespace cluster-xxx
-         ```
-
-      6. Save your changes and exit the editor. Palette will then reconcile the clusters with the new configuration. That
-         cluster status will change from Unknown.
-
-   </details>
-
 Palette is now using your uploaded certificate to create a secure HTTPS connection with external clients. Users can now
 securely access the system console, Palette dashboard, the gRPC endpoint, and the Palette API endpoint.
+
+## Reconcile System Address on Deployed Clusters
+
+Once you have updated your system address, you will need to manually update the API endpoint on each cluster that was
+deployed before the update. This enables the Palette agent to reconnect to the API at the newly configured system
+address.
+
+### Prerequisites
+
+- A tenant. Refer to the [Create a Tenant](./tenant-management.md#create-a-tenant) guide for further information.
+
+- Palette access with a configured cloud account.
+
+- One of more deployed clusters. Refer to the [Clusters](../../clusters/clusters.md) section for further guidance.
+
+- Additionally, you should install kubectl locally. Use the Kubernetes
+  [Install Tools](https://kubernetes.io/docs/tasks/tools/) page for further guidance.
+
+### Enablement
+
+1. Log into Palette using the configured system address.
+
+2. Navigate to the left **Main Menu** and select **Clusters**. Palette displays your deployed clusters. The clusters
+   that have the **Unknown** status need to be manually updated.
+
+3. Select your cluster from the **Clusters** list. The cluster **Overview** tab displays.
+
+4. Download the kubeconfig file. This file allows you to connect to your deployed cluster. Check out the
+   [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) page to learn more.
+5. Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
+
+   ```shell
+   export KUBECONFIG=~/Downloads/admin.cluster-name.kubeconfig
+   ```
+
+6. Execute the following command in your terminal to view the cluster namespaces. Make a note of the cluster namespace
+   that Palette has created. Its name follows the pattern **cluster-xxx**.
+
+   ```shell
+   kubectl get namespaces
+   ```
+
+7. Palette uses ConfigMaps to save its configuration and environment variables. Update the `apiEndpoint` value in the
+   `hubble-info` ConfigMap to use the newly configured system address.
+
+   ```shell
+   kubectl edit configmap hubble-info --namespace cluster-xxx
+   ```
+
+8. Save your changes and exit the editor.
+
+Repeat the outlined steps for each cluster that has the **Unknown** status.
+
+### Validate
+
+1. Log into Palette using the configured system address.
+
+2. Navigate to the left **Main Menu** and select **Clusters**.
+
+3. Palette successfully displays the status of your clusters. None of your clusters clusters has the **Unknown** status.
