@@ -9,9 +9,10 @@ sidebar_position: 10
 tags: ["operating system", "byoos", "profiles", "pxk", "vmware"]
 ---
 
-This guide will teach you how to use the [CAPI Image Builder](../capi-image-builder.md) tool to create a custom RHEL
-image with [Palette eXtended Kubernetes (PXK)](../../../integrations/kubernetes.md) for VMware vSphere and then use this
-image to create a cluster profile. This guide covers both airgapped and non-airgapped workflows.
+This guide will teach you how to use the [CAPI Image Builder](../capi-image-builder.md) tool to create a custom Red Hat
+Enterprise Linux (RHEL) image with [Palette eXtended Kubernetes (PXK)](../../../integrations/kubernetes.md) for VMware
+vSphere and then use this image to create a cluster profile. This guide covers both airgapped and non-airgapped
+workflows.
 
 :::preview
 
@@ -100,11 +101,11 @@ image to create a cluster profile. This guide covers both airgapped and non-airg
 
 4.  Download the RHEL ISO file from the
     [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download?source=sso) into the output
-    directory. Make sure you download the **x86_64 DVD ISO** and not the **x86_64 BOOT ISO**. Replace
+    directory. Ensure you download the **x86_64 DVD ISO** and not the **x86_64 BOOT ISO**. Replace
     `<iso-file-download-link>` in the command below with the direct link to download the RHEL ISO.
 
-    This guide uses RHEL 8.8 as an example. Refer to the Compatibility Matrix for a list of supported operating systems
-    and dependencies.
+    This guide uses RHEL 8.8 as an example. Refer to the Compatibility Matrix page for a list of supported operating
+    systems and dependencies.
 
     ```shell
     curl <iso-file-download-link> -o rhel-8.8-x86_64-dvd.iso
@@ -130,8 +131,8 @@ image to create a cluster profile. This guide covers both airgapped and non-airg
     ```
 
 7.  Open the **imageconfig** template file in an editor of your choice and fill in the required parameters. For a
-    complete list of parameters, refer to the [Configuration Reference](../config-reference.md) page. Additionally, for
-    details on compatible versions of Kubernetes, CNI, containerd, and crictl, refer to the Compatibility Matrix.
+    complete list of parameters, refer to the [Configuration Reference](../config-reference.md) page. Additionally,
+    refer to the Compatibility Matrix for details on compatible versions of Kubernetes, CNI, containerd, and crictl.
 
     The **imageconfig** is the file you use to set up the CAPI Image Builder according to your requirements. This
     includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and more.
@@ -248,7 +249,7 @@ image to create a cluster profile. This guide covers both airgapped and non-airg
     </TabItem>
     </Tabs>
 
-    In case you need the VM to use static IP placement instead of DHCP, follow the steps described below.
+    If you need the VM to use static IP placement instead of DHCP, follow the steps described below.
 
     <!-- prettier-ignore -->
         <details>
@@ -261,7 +262,7 @@ image to create a cluster profile. This guide covers both airgapped and non-airg
             curl -L https://github.com/kubernetes-sigs/image-builder/raw/main/images/capi/packer/ova/linux/rhel/http/8/ks.cfg -o ks.cfg
             ```
 
-        2. Open the `ks.cfg` file in an editor of your choice. Locate and replace the line
+        2. Open the `ks.cfg` file in an editor of your choice. Locate and replace the network lines
             `network --bootproto=dhcp --device=link --activate network --hostname=rhel8` with the configuration below.
 
             ```text
@@ -325,7 +326,7 @@ image to create a cluster profile. This guide covers both airgapped and non-airg
     :::
 
 10. Once the build is complete, the RHEL 8 CAPI image will be downloaded to a folder named `rhel-8` within the output
-    directory on your machine and the VM will be deleted from VMware vSphere. Issue the command below to confirm that
+    directory on your machine, and the VM will be deleted from VMware vSphere. Issue the command below to confirm that
     the build files are present in the output directory.
 
         ```shell
@@ -336,7 +337,7 @@ image to create a cluster profile. This guide covers both airgapped and non-airg
         packer-manifest.json  rhel-8-kube-v1.28.9.mf   rhel-8-kube-v1.28.9.ova.sha256  rhel-8.ovf rhel-8-disk-0.vmdk    rhel-8-kube-v1.28.9.ova  rhel-8-kube-v1.28.9.ovf
         ```
 
-11. To make the image available in VMware vSphere, log in to your environment, and locate the `vcenter_folder` you
+11. To make the image available in VMware vSphere, log in to your environment and locate the `vcenter_folder` you
     defined in step **7** of this guide.
 
     :::info
@@ -357,13 +358,13 @@ image to create a cluster profile. This guide covers both airgapped and non-airg
 
 15. Select a compute resource and click **Next**.
 
-16. Review the VM configuration, acccept the license agreements, and click **Next**.
+16. Review the VM configuration, accept the license agreements, and click **Next**.
 
 17. Select the storage location and network configuration and click **Next**. Then, click **Finish** to deploy the VM.
 
     :::warning
 
-    It takes a while for the VM to deploy, approximately 45 minutes or more depending on your internet connection. The
+    It takes a while for the VM to deploy, approximately 45 minutes or more, depending on your internet connection. The
     download of the OVA file takes up the majority of the time. You can monitor the progress of this process in VMware
     vSphere by looking at the **Recent Tasks** tab and filtering the **Task Name** column by `Deploy OVF Template`.
 
@@ -381,8 +382,8 @@ profile and deploy a VMware host cluster.
 
 20. Click **Add Cluster Profile** and follow the wizard to create a new profile.
 
-21. In the **Basic Information** section, assign the cluster profile a name, a brief description, and select the type as
-    **Full**. Click **Next**.
+21. In the **Basic Information** section, assign the cluster profile a name and a brief description, and select the type
+    as **Full**. Click **Next**.
 
 22. In the **Cloud Type** section, select **VMware** and click **Next**.
 
@@ -396,8 +397,8 @@ profile and deploy a VMware host cluster.
     | Cilium                      | 1.15.3  | Network          |
     | vSphere CSI                 | 3.2.0   | Storage          |
 
-    For the [BYOOS](../../../integrations/byoos.md) layer, reference the custom RHEL 8 image template path in VMware
-    vSphere when populating the pack details.
+    Reference the custom RHEL 8 image template path in your VMware vSphere environment when populating the pack details
+    for the [BYOOS](../../../integrations/byoos.md) layer.
 
     ```yaml
     pack:
