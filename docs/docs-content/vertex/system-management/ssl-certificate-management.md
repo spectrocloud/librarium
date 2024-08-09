@@ -141,5 +141,4 @@ Repeat the outlined steps for each cluster that has the **Unknown** status.
 
 2. Navigate to the left **Main Menu** and select **Clusters**.
 
-3. Palette VerteX successfully displays the status of your clusters. None of your clusters clusters has the **Unknown**
-   status.
+3. Palette VerteX successfully displays the status of your clusters. None of your clusters has the **Unknown** status.
