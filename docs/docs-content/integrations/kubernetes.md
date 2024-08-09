@@ -1189,4 +1189,4 @@ data "spectrocloud_pack_simple" "k8s" {
 
 - [Image Swap with Palette](../clusters/cluster-management/image-swap.md)
 
-- [RHEL and PXK for Vmware](../byoos/usecases/vmware/rhel-pxk.md)
+- [RHEL and PXK for Vmware](../byoos/image-builder/build-image-vmware/rhel-pxk.md)
