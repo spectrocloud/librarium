@@ -9,8 +9,4 @@ module.exports = {
   testPathIgnorePatterns: [`node_modules`, `\\.cache`, `<rootDir>.*/build`, `visuals`],
   testEnvironment: `jsdom`,
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
-  transform: {
-    "^.+\\.[tj]sx?$": "babel-jest",
-  },
-  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
 };
