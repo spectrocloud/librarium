@@ -59,6 +59,10 @@ out and archived. You can still download your log files from any period, but the
 
 1. Clone the CanvOS repository and change into the directory.
 
+   ```shell
+    git clone https://github.com/spectrocloud/CanvOS.git
+   ```
+
 2. Create a file at the path `overlay/files/etc/rsyslog.d/48-audit.conf`. You can change the filename, but it must be a
    `conf` file and sort alphanumerically before `49-stylus-audit.conf`. For example, `30-my-log.conf`.
 
