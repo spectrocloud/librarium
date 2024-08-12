@@ -28,8 +28,8 @@ You can use a combination of these options to patch the operating system to the 
 patch OS on boot, set up scheduled patching every month, and also perform on-demand patches at any given point in time.
 
 Palette provides the option to provide custom node drain configuration, which gives you fine-grained control of drain
-behaviour during updates. Refer to the [Configure OS Patching Drain Policy](#configure-os-patching-drain-policy)
-for further information.
+behaviour during updates. Refer to the [Configure OS Patching Drain Policy](#configure-os-patching-drain-policy) for
+further information.
 
 ## Patch OS on Boot
 
@@ -224,13 +224,13 @@ can be applied to deployed clusters using a cluster profile or through `kubectl`
    | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------------- |
    | `data.profiling`                      | Flag to indicate whether the profiling server should capture profiling data. If enabled, the port `8082` should be exposed to the profiling server.             | `enable` / `disable` | `disable`         |
    | `data.feature.workloads`              | Flag to indicate whether to push workload metadata to the Palette server.                                                                                       | `enable` /`disable`  | `enable`          |
-   | `data.drain.timeout`                  | The length of time, specified in nanoseconds, to wait for the drain operation to complete. There is no configured timeout if set to zero.                       | Duration             | `unset`           |
-   | `data.drain.gracePeriod`              | The period of time, specified in seconds, to wait for each pod to terminate gracefully. The value provided by the pods will be usef if set to a negative value. | Integer              | `-1`              |
-   | `data.drain.deleteLocalData`          | Flag to indicate whether to continue if one or more affected pods do not have specified volumes, resulting in the deletion of their local data.                 | Boolean              | `false`           |
-   | `data.drain.ignoreDaemonSets`         | Flag to indicate whether to ignore DaemonSet managed pods.                                                                                                      | Boolean              | `false`           |
-   | `data.drain.force`                    | Flag to indicate whether to continue if one or more affected pods do not have a declared controller.                                                            | Boolean              | `false`           |
-   | `data.drain.disableEviction`          | Flag to indicate whether to force drain to use delete operations.                                                                                               | Boolean              | `false`           |
-   | `data.drain.skipWaitForDeleteTimeout` | The length of time, in seconds, to wait for pod deletion to complete. If the time elapses, the drain will continue.                                             | Integer              | `0`               |
+   | `data.drain.timeout`                  | The length of time, specified in nanoseconds, to wait for the drain operation to complete. There is no configured timeout if set to zero.                       | `duration`           | `unset`           |
+   | `data.drain.gracePeriod`              | The period of time, specified in seconds, to wait for each pod to terminate gracefully. The value provided by the pods will be used if set to a negative value. | `int`                | `-1`              |
+   | `data.drain.deleteLocalData`          | Flag to indicate whether to continue if one or more affected pods do not have specified volumes, resulting in the deletion of their local data.                 | `boolean`            | `false`           |
+   | `data.drain.ignoreDaemonSets`         | Flag to indicate whether to ignore DaemonSet managed pods.                                                                                                      | `boolean`            | `false`           |
+   | `data.drain.force`                    | Flag to indicate whether to continue if one or more affected pods do not have a declared controller.                                                            | `boolean`            | `false`           |
+   | `data.drain.disableEviction`          | Flag to indicate whether to force drain to use delete operations.                                                                                               | `boolean`            | `false`           |
+   | `data.drain.skipWaitForDeleteTimeout` | The length of time, in seconds, to wait for pod deletion to complete. If the time elapses, the drain will continue.                                             | `int`                | `0`               |
 
    ```yaml
    apiVersion: v1
