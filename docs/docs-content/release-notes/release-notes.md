@@ -13,7 +13,16 @@ tags: ["release-notes"]
 
 ## Aug 17, 2024 - Release 4.4.X
 
-TBA
+<!-- Replace heading ID with the release version below -->
+
+### Palette {#release-4-4-REPLACE_ME}
+
+#### Breaking Changes
+
+- The Palette CLI no longer has the `validator` command. To validate your self-hosted Palette or VerteX deployment, use
+  the `ec` command instead with the `--validate` flag. Refer to the
+  [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section of the Palette EC
+  command documentation to learn more.
 
 ## Jul 31, 2024 - Release 4.4.12
 
@@ -251,8 +260,7 @@ features and improvements.
 - Validator Helm Charts have migrated from `https://github.com/spectrocloud-labs/validator` to
   `https://github.com/validator-labs/validator`. Former versions of the Palette CLI will point to the former repository
   when prompted for the Helm chart location and require a manual URL change. The new version of the Palette CLI will
-  point to the new repository. Refer to the [Validator](../automation/palette-cli/commands/validator.md) CLI page
-  documentation for more details.
+  point to the new repository.
 
 - Due to the removal of GKE Kubernetes patch versions, it's critical you update existing cluster profiles to use the new
   GKE Kubernetes packs to avoid issues. Active clusters using old GKE Kubernetes pack versions may encounter problems

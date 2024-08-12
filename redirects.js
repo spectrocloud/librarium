@@ -490,7 +490,7 @@ const redirects = [
 
   {
     from: "/palette-cli/commands/validator/",
-    to: "/automation/palette-cli/commands/validator/",
+    to: "/automation/palette-cli/commands/ec/",
   },
   {
     from: "/user-management/palette-resource-limits/",
@@ -548,6 +548,8 @@ const redirects = [
   {
     from: "/byoos/usecases/vmware/rhel-pxk/",
     to: "/byoos/image-builder/build-image-vmware/rhel-pxk/",
+    from: "/automation/palette-cli/commands/validator/",
+    to: "/automation/palette-cli/commands/ec/",
   },
 ];
 
