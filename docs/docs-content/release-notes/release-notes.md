@@ -40,7 +40,10 @@ tags: ["release-notes"]
 - Reduced CPU and memory consumption within the pods and enhanced overall system performance during machine health
   updates.
 
-#### Features
+#### Fixes
+
+- Fixed an issue that sometimes caused CSI errors if there are multiple instances of self-hosted Palette or VerteX in a
+  single vSphere environment.
 
 ### Edge
 
