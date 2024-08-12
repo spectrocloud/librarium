@@ -19,7 +19,7 @@ you can download the core dump files from Local UI for diagnostic purposes.
 - An operational Edge host installed in the `airgap` installation mode. For more information, refer to
   [Installer Reference](../../edge-configuration/installer-reference.md).
 
-- Network access to your Edge host's Local UI port. The default port is 5800.
+- Network access to your Edge host's Local UI port. The default port is 5080.
 
 ## Procedure
 
