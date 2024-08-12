@@ -16,14 +16,18 @@ This section contains documentation and guides for tools essential in automating
   [self-hosted Palette](../enterprise-version/enterprise-version.md) instance and deploying a
   [Private Cloud Gateway](../clusters/pcg/pcg.md).
 
+- Palette Go SDK - Provides client configuration through functional options and boilerplate functions, enabling Go
+  developers to interact with Palette services.
+
 - Palette Terraform Provider - Allows users to use [Terraform](https://www.terraform.io) for automating the deployment
   and management of Palette resources such as cluster profiles, cloud accounts, clusters, and more.
 
-- Palette Crossplane Provider - It allows users to use [Crossplane](https://docs.crossplane.io/v1.15/) to provision and
+- Palette Crossplane Provider - Allows users to use [Crossplane](https://docs.crossplane.io/v1.15/) to provision and
   manage Palette resources through standard Kubernetes APIs.
 
 ## Resources
 
 - [Palette CLI](./palette-cli/palette-cli.md)
+- [Palette Go SDK](./palette-sdk/palette-sdk.md)
 - [Palette Terraform Provider](./terraform/terraform.md)
 - [Palette Crossplane Provider](./crossplane/crossplane.md)
