@@ -108,7 +108,7 @@ workflows.
     details on supported operating systems.
 
     ```shell
-    curl <iso-file-download-link> -o rhel-8.8-x86_64-dvd.iso
+    curl <iso-file-download-link> --output rhel-8.8-x86_64-dvd.iso
     ```
 
 5.  Calculate the **SHA256** checksum for the RHEL ISO you downloaded. The calculation might take a few minutes. Save
@@ -127,7 +127,7 @@ workflows.
 6.  Download the **imageconfig** template file.
 
     ```shell
-    curl https://software.spectrocloud.com/tools/capi-image-builder/imageconfig -o imageconfig
+    curl https://software.spectrocloud.com/tools/capi-image-builder/imageconfig --output imageconfig
     ```
 
 7.  Open the **imageconfig** template file in an editor of your choice and fill in the required parameters. For a
@@ -235,7 +235,7 @@ workflows.
     <TabItem value="Docker" label="Docker">
 
     ```bash
-    BUILD_ID=$(docker run --net=host -v /home/ubuntu/output:/home/imagebuilder/output  -d  gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0)
+    BUILD_ID=$(docker run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0)
     ```
 
     </TabItem>
@@ -243,7 +243,7 @@ workflows.
     <TabItem value="Podman" label="Podman">
 
     ```bash
-    BUILD_ID=$(podman run --net=host -v /home/ubuntu/output:/home/imagebuilder/output  -d  gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0)
+    BUILD_ID=$(podman run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0)
     ```
 
     <!-- prettier-ignore -->
@@ -260,7 +260,7 @@ workflows.
             GitHub repository directly into the output folder.
 
             ```shell
-            curl -L https://github.com/kubernetes-sigs/image-builder/raw/main/images/capi/packer/ova/linux/rhel/http/8/ks.cfg -o ks.cfg
+            curl --location https://github.com/kubernetes-sigs/image-builder/raw/main/images/capi/packer/ova/linux/rhel/http/8/ks.cfg --output ks.cfg
             ```
 
         2. Open the `ks.cfg` file in an editor of your choice. Locate and replace the network lines
@@ -284,14 +284,14 @@ workflows.
             <TabItem value="Docker" label="Docker">
 
              ```bash
-             BUILD_ID=$(docker run --net=host -v /home/ubuntu/output:/home/imagebuilder/output  -d  gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0)
+             BUILD_ID=$(docker run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0)
              ```
             </TabItem>
 
             <TabItem value="Podman" label="Podman">
 
              ```bash
-             BUILD_ID=$(podman run --net=host -v /home/ubuntu/output:/home/imagebuilder/output  -d  gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0)
+             BUILD_ID=$(podman run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0)
              ```
 
             </TabItem>
@@ -305,7 +305,7 @@ workflows.
     <TabItem value="Docker" label="Docker">
 
     ```shell
-    docker logs -f $BUILD_ID
+    docker logs --follow $BUILD_ID
     ```
 
     </TabItem>
@@ -313,7 +313,7 @@ workflows.
     <TabItem value="Podman" label="Podman">
 
     ```shell
-    podman logs -f $BUILD_ID
+    podman logs --follow $BUILD_ID
     ```
 
     <!-- prettier-ignore -->

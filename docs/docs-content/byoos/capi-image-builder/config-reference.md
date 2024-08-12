@@ -97,7 +97,7 @@ create a separate configuration file for each.
 | `vcenter_server`        | The vCenter server to use when building the image. Provide either a Fully Qualified Domain Name (FQDN) or an IP address. | Yes      |
 | `vcenter_user`          | The vCenter user to use when building the image.                                                                         | Yes      |
 | `vcenter_password`      | The vCenter password to use when building the image.                                                                     | Yes      |
-| `vcenter_datacenter`    | The vCenter datacenter to use when building the image.                                                                   | Yes      |
+| `vcenter_datacenter`    | The vCenter data center to use when building the image.                                                                  | Yes      |
 | `vcenter_datastore`     | The vCenter datastore to use when building the image.                                                                    | Yes      |
 | `vcenter_network`       | The vCenter network to use when building the image.                                                                      | Yes      |
 | `vcenter_folder`        | The vCenter folder to use when building the image.                                                                       | Yes      |
