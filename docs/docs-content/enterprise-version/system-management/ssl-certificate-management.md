@@ -17,10 +17,18 @@ HTTPS using an auto-generated self-signed certificate.
 
 ## Update System Address and Certificates
 
-The Palette system console allows you to replace the self-signed certificate with a custom SSL
-certificate to secure these endpoints. Additionally, you can update the system address, which is the IP address or Fully
-Qualified Domain Name (FQDN) that you use to access your Palette installation. The system address and certificates may
-be updated simultaneously.
+The Palette system console allows you to replace the self-signed certificate with a custom SSL certificate to secure
+these endpoints. Additionally, you can update the system address, which is the IP address or Fully Qualified Domain Name
+(FQDN) that you use to access your Palette installation. The system address and certificates may be updated
+simultaneously.
+
+:::info
+
+Palette validates the combination of system address, certificate, key, and Certificate Authority (CA). Ensure that the
+certificate is not expired, as well as that it is valid for the CA and the system address. Additionally, the system
+address must be accessible from the system console.
+
+:::
 
 :::warning
 
@@ -62,9 +70,8 @@ You can update your Palette system address and SSL certificates by using the fol
 
 8. Click **Update** to save your changes.
 
-Palette validates the combination of system address, certificate, key, and Certificate Authority (CA). Ensure that the
-certificate is not expired, as well as that it is valid for the CA and the system address. Additionally, the system
-address must be accessible from the system console.
+9. If you have any clusters deployed, make sure to reconcile the updated system address for each cluster. Refer to
+   [Reconcile System Address on Deployed Clusters](#reconcile-system-address-on-deployed-clusters) for more information.
 
 You will receive an error message if the provided values are not valid. Once the certificate is uploaded successfully,
 Palette will refresh its listening ports and start using the newly configured values.
@@ -91,14 +98,13 @@ address.
 
 ### Prerequisites
 
-- A tenant. Refer to the [Create a Tenant](./tenant-management.md#create-a-tenant) guide for further information.
-
 - Palette access with a configured cloud account.
 
-- A cluster deployed prior to the system address update. Refer to the [Clusters](../../clusters/clusters.md) section for further guidance.
+- A cluster deployed prior to the system address update. Refer to the [Clusters](../../clusters/clusters.md) section for
+  further guidance.
 
-- `kubectl` installed. Use the Kubernetes
-  [Install Tools](https://kubernetes.io/docs/tasks/tools/) page for further guidance.
+- `kubectl` installed. Use the Kubernetes [Install Tools](https://kubernetes.io/docs/tasks/tools/) page for further
+  guidance.
 
 ### Enablement
 

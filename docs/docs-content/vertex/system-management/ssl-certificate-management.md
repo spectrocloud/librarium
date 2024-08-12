@@ -17,10 +17,18 @@ with HTTPS using an auto-generated self-signed certificate.
 
 ## Update System Address and Certificates
 
-The Palette VerteX system console provides you with the ability to replace the self-signed certificate with a custom SSL
-certificate to secure these endpoints. Additionally, you can update the system address, which is the IP address or Fully
-Qualified Domain Name (FQDN) that you use to access your Palette installation. The system address and certificates may
-be updated simultaneously.
+The Palette VerteX system console allows you to replace the self-signed certificate with a custom SSL certificate to
+secure these endpoints. Additionally, you can update the system address, which is the IP address or Fully Qualified
+Domain Name (FQDN) that you use to access your Palette installation. The system address and certificates may be updated
+simultaneously.
+
+:::info
+
+Palette VerteX validates the combination of system address, certificate, key, and Certificate Authority (CA). Ensure
+that the certificate is not expired, as well as that it is valid for the CA and the system address. Additionally, the
+system address must be accessible from the system console.
+
+:::
 
 :::warning
 
@@ -48,7 +56,7 @@ You can update your Palette system address and SSL certificates by using the fol
 
 2. Navigate to the left **Main Menu** and select **Administration**.
 
-3. Select the tab titled **System Address**.
+3. Select the **System Address** tab.
 
 4. Update your Palette domain in the **System Address (UI and API)** field.
 
@@ -60,11 +68,10 @@ You can update your Palette system address and SSL certificates by using the fol
 
    ![A view of the certificate upload screen](/palette_system-management_ssl-certificate-management_system-address.webp)
 
-8. Click on **Update** to save your changes.
+8. Click **Update** to save your changes.
 
-Palette VerteX validates the combination of system address, certificate, key, and Certificate Authority (CA). Ensure
-that the certificate is not expired, as well as that it is valid for the CA and the system address. Additionally, the
-system address must be accessible from the system console.
+9. If you have any clusters deployed, make sure to reconcile the updated system address for each cluster. Refer to
+   [Reconcile System Address on Deployed Clusters](#reconcile-system-address-on-deployed-clusters) for more information.
 
 You will receive an error message if the provided values are not valid. Once the certificate is uploaded successfully,
 Palette VerteX will refresh its listening ports and start using the newly configured values.
@@ -91,14 +98,13 @@ address.
 
 ### Prerequisites
 
-- A tenant. Refer to the [Create a Tenant](./tenant-management.md#create-a-tenant) guide for further information.
-
 - Palette VerteX access with a configured cloud account.
 
-- One of more deployed clusters. Refer to the [Clusters](../../clusters/clusters.md) section for further guidance.
+- A cluster deployed prior to the system address update. Refer to the [Clusters](../../clusters/clusters.md) section for
+  further guidance.
 
-- Additionally, you should install kubectl locally. Use the Kubernetes
-  [Install Tools](https://kubernetes.io/docs/tasks/tools/) page for further guidance.
+- `kubectl` installed. Use the Kubernetes [Install Tools](https://kubernetes.io/docs/tasks/tools/) page for further
+  guidance.
 
 ### Enablement
 
@@ -114,11 +120,11 @@ address.
 5. Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
 
    ```shell
-   export KUBECONFIG=~/Downloads/admin.cluster-name.kubeconfig
+   export KUBECONFIG=<path-to-downloaded-kubeconfig-file>
    ```
 
 6. Execute the following command in your terminal to view the cluster namespaces. Make a note of the cluster namespace
-   that Palette has created. Its name follows the pattern **cluster-xxx**.
+   that Palette has created. Its name follows the pattern **cluster-id**.
 
    ```shell
    kubectl get namespaces
@@ -128,12 +134,12 @@ address.
    `hubble-info` ConfigMap to use the newly configured system address.
 
    ```shell
-   kubectl edit configmap hubble-info --namespace cluster-xxx
+   kubectl edit configmap hubble-info --namespace <cluster-id>
    ```
 
 8. Save your changes and exit the editor.
 
-Repeat the outlined steps for each cluster that has the **Unknown** status.
+Repeat these steps for each cluster that has the **Unknown** status.
 
 ### Validate
 
