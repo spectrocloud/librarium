@@ -50,9 +50,9 @@ explains how to install and use the SDK to list the active host clusters in your
 
 5.  Create a source file named `main.go`.
 
-        ```bash
-        touch main.go
-        ```
+    ```bash
+    touch main.go
+    ```
 
 6.  Open the `main.go` file in a text editor of your choice and paste the content below.
 
@@ -62,26 +62,25 @@ explains how to install and use the SDK to list the active host clusters in your
     import (
         "fmt"
         "os"
+
         "github.com/spectrocloud/palette-sdk-go/api/models"
         "github.com/spectrocloud/palette-sdk-go/client"
     )
 
     func main() {
-        var host, apiKey, projectUid, scope string
 
-        // Parse command line arguments
+        // Read environment variables
 
-        numArgs := len(os.Args)
-        if numArgs < 3 || numArgs > 4 {
-            fmt.Println("Usage: main <host> <apiKey> [projectUid]")
+        host := os.Getenv("host")
+        apiKey := os.Getenv("apiKey")
+        projectUid := os.Getenv("projectUid")
+        scope := "tenant"
+
+        if host == "" || apiKey == "" {
+            fmt.Println("Please specify a host and apiKey as environment variables")
             os.Exit(1)
         }
-        switch numArgs {
-        case 3:
-            host, apiKey = os.Args[1], os.Args[2]
-            scope = "tenant"
-        case 4:
-            host, apiKey, projectUid = os.Args[1], os.Args[2], os.Args[3]
+        if projectUid != "" {
             scope = "project"
         }
 
@@ -126,7 +125,7 @@ explains how to install and use the SDK to list the active host clusters in your
 
     - Imports the required packages.
 
-    - Parses command-line arguments provided by the user to configure the client and define the search scope. If the
+    - Reads the environment variables provided by the user to configure the client and define the search scope. If the
       user provides a project UID, the application sets the scope to project-specific and lists the active clusters
       within that project. If no project UID is given, the scope is set to tenant-wide, listing active clusters across
       all projects.
@@ -150,8 +149,19 @@ explains how to install and use the SDK to list the active host clusters in your
 8.  Issue the following command to execute the application.
 
     ```bash
-    go run . $host $apiKey
+    go run .
     ```
+
+    :::tip
+
+    Optionally, instead of exporting the variables in a separate command, you can use the `go run` command with
+    command-scoped environment variables.
+
+        ```bash
+        apiKey=<your-palette-api-key> host=<your-palette-host-url> go run .
+        ```
+
+    :::
 
     The application will print the active clusters in your Palette environment.
 

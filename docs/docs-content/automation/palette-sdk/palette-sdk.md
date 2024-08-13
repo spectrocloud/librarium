@@ -18,14 +18,14 @@ The SDK comprises of two libraries:
 
 ## Initialize Palette Client
 
-The Go Palette client provides the following authentication methods.
+The Go Palette client supports the following authentication methods.
 
 - [JWT](https://github.com/spectrocloud/palette-sdk-go/blob/main/client/client.go#L56)
 - [Palette API Key](https://github.com/spectrocloud/palette-sdk-go/blob/main/client/client.go#L49)
 - [Username](https://github.com/spectrocloud/palette-sdk-go/blob/main/client/client.go#L63) and
   [password](https://github.com/spectrocloud/palette-sdk-go/blob/main/client/client.go#L70)
 
-The snippet below demonstrates an example of how to initialize a Palette client using the API key. You must provide a
+The snippet below showcases an example of how to initialize the Palette client using an API key. You must provide a
 [Palette URI](https://github.com/spectrocloud/palette-sdk-go/blob/main/client/client.go#L77) for all authentication
 methods.
 
