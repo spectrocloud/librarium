@@ -89,7 +89,12 @@ required environment variables. The values are not important for local developme
 ALGOLIA_APP_ID=1234567890
 ALGOLIA_SEARCH_KEY=1234567890
 ALGOLIA_INDEX_NAME=spectrocloud
+PALETTE_API_KEY=""
 ```
+
+> [!IMPORTANT] You need a Palette API key to start the local development server. Refer to the
+> [Create API Key](https://docs.spectrocloud.com/user-management/authentication/api-key/create-api-key/) guide to learn
+> how to create a Palette API key.
 
 ## Documentation Content
 
@@ -650,7 +655,8 @@ To add tutorials to an existing category, create a new **.md** file in the respe
 This is a custom component that allows you to create and use Docusaurus'
 [Import Markdown](https://docusaurus.io/docs/markdown-features/react#importing-markdown) functionality.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
+>
 > Docusaurus does not provide the ability to dynamically configure table of contents. See
 > [this issue](https://github.com/facebook/docusaurus/issues/6201) for more information. This means that you should
 > avoid adding headings to partials that you intend to use with the Partials Component.
@@ -714,6 +720,124 @@ This is a <VersionedLink text="Internal Link" url="/getting-started/additional-c
 The path of the link should be the path of the destination file from the root directory, without any back operators
 `..`. External links can be referenced as usual.
 
+## Packs Component
+
+The packs component is a custom component that displays all packs available in Palette SaaS by querying the Palette API
+at `api.spectrocloud.com`. The component is powered by a [custom plugin](./plugins/packs-integrations.js) that fetches
+the data before a build or a local development server start.
+
+> [!NOTE]
+>
+> The data is stored in the file `.docusarus/packs-integration/api_pack_response.json` once all the packs are fetched.
+> The logos are stored in `static/img/packs/`. If you remove the `.docusarus` folder, the plugin will fetch the packs
+> again. If the pack's data is present, the plugin will skip re-downloading the data. If you want to remove the packs
+> data and trigger a new fetch, you can issue the following command `make clean-packs`.
+
+Pack descriptions are stored in a JSON file maintained by the documentation team. The JSON file is located at
+[`/static/packs-data/packs_information.json`](./static/packs-data/packs_information.json). To add an entry for a new
+pack, add the following JSON object to the file.
+
+```json
+{
+  "name": "insert the name of the pack. DO NOT USE THE DISPLAY NAME",
+  "description": "insert description here"
+}
+```
+
+Some things to keep in mind related to descriptions. If the local development server is active and you make changes to
+the `/static/packs-data/packs_information.json`file, the changes will not be reflected in the pack component. You must
+stop and restart the local development server to observe the changes. The same applies to the build process. Another
+thing to remember is to reference a pack by the name used in the Palette API, not the display name. You can find the
+pack's name in the description component or by looking at the URL of the pack's page.
+
+#### Exluding Packs
+
+You can specify a list of packs to exclude from the packs component. To exclude a pack, add the pack name to the
+[exclude_packs.json](./static/packs-data/exclude_packs.json) file.
+
+<!-- prettier-ignore -->
+```json
+[
+  "palette-upgrader", 
+  "csi-aws-new", 
+  "inser-pack-name-here"
+]
+```
+
+Excluded packs are not displayed in the packs component.
+
+#### README Content
+
+The pack component will display a Pack's README file if it exists. The README content comes from the Palette API.
+Depending on the available content, the packs component will display the README content, the additional details content,
+or a message indicating that no content is available. Refer to the table below for the different scenarios.
+
+| README Available | Additional Details File Available | Content Displayed                                        |
+| ---------------- | --------------------------------- | -------------------------------------------------------- |
+| ✅               | ✅                                | Both README and Additional Details content is displayed. |
+| ✅               | ❌                                | Only the README content is displayed.                    |
+| ❌               | ✅                                | Only the Additional Details content is displayed.        |
+| ❌               | ❌                                | A message indicating that no content is available.       |
+
+#### Additional Details Content
+
+To display the Additional Details content, create a markdown file with the same name as the pack in the the
+[`docs/docs-content/integrations/`](./docs/docs-content/integrations/) content folder. For example, if the pack name is
+`ubuntu-aws`, you would create a markdown file called `ubuntu-aws.md`. The additional details content requires you to
+follow the [Packs layout guide](https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1802797059/Packs).
+
+If you want to add content specific to a version, include the following heading and tabs component in the markdown file.
+
+<!-- prettier-ignore -->
+```md
+## Versions Supported
+
+<Tabs queryString="parent"> -> Tabs for different versions
+<TabItem label="1.1.x" value="1.1.2">
+ Insert content here as needed. Create more `TabItem` components as needed.
+</TabItem>
+</Tabs>
+```
+
+> [!WARNING]
+>
+> Ensure the`Tabs` component has the `queryString` prop set to `parent`. This is required for the component to work. The
+> `Tabs` component must also have a `## Versions Supported` heading. If you do not follow this format, the content will
+> not be displayed correctly, and as a result, actual tabs will be displayed, and the pack will lose the ability to
+> automatically display the content for the select version the user has specified in the version drop-down.
+
+The packs component will always display the top-level tab content, so if you add content for a new version, ensure the
+new `TabItem` component is the first in the list. If a new pack version does not have a respective tag, the latest
+version content will be displayed automatically.
+
+#### Links
+
+When authoring additional details content, you must use the `<VersionedLink />` component to link to other documentation
+pages. The component is required to ensure that the links are versioned correctly. Refer to the
+[Internal Links](#internal-links) section for more information.
+
+If you want to link to a heading inside the pack component, you must also use the `<VersionedLink />` and include the
+path to the component followed by the heading id. The following is an example of how to link to a heading inside the
+pack component. Take note of the `#` symbol followed by the heading id.
+
+```md
+<VersionedLink text="Change Cluster DNS Service Domain" url="/integrations/packs/?pack=kubernetes-eks#change-cluster-dns-service-domain" />
+```
+
+Omit the `version=xxxx&parent=xxxx` value that is part of the query string. If you include the `version` and `parent`
+values, the link will not work as expected.
+
+### Link to a Pack
+
+You must use the `<VersionedLink />` component to link to a pack. The following is an example of how to link to a pack.
+For more information, refer to the [Internal Links](#internal-links) section.
+
+```md
+<VersionedLink text="Change Cluster DNS Service Domain" url="/integrations/packs/?pack=kubernetes-eks" />
+```
+
+If you do not use the `<VersionedLink />` component, the link will not be versioned correctly, and the build will fail.
+
 ## Netlify Previews
 
 By default Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. In
@@ -739,7 +863,9 @@ documentation.
 Next, download the required Vale plugins.
 
 ```
+
 make sync-vale
+
 ```
 
 To execute the writing check, issue the command below. The command below will identify files that are modified by
@@ -747,7 +873,9 @@ comparing the current git branch against the `master` branch. Ensure your local 
 accurate results.
 
 ```
+
 make check-writing
+
 ```
 
 You may also use the Vale CLI to directly scan a file and receive feedback.

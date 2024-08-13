@@ -12,10 +12,10 @@ The following are common scenarios that you may encounter when using Packs.
 
 ## Scenario - Control Plane Node Fails to Upgrade in Sequential MicroK8s Upgrades
 
-In clusters that use [MicroK8s](../integrations/microk8s.md) as the Kubernetes distribution, there is a known issue when
-using the `InPlaceUpgrade` strategy for sequential Kubernetes upgrades. For example, upgrading from version 1.25.x to
-version 1.26.x and then to version 1.27.x may cause the control plane node to fail to upgrade. Use the following steps
-to troubleshoot and resolve the issue.
+In clusters that use <VersionedLink text="MicroK8s" url="/integrations/packs/?pack=kubernetes-microk8s"/> as the
+Kubernetes distribution, there is a known issue when using the `InPlaceUpgrade` strategy for sequential Kubernetes
+upgrades. For example, upgrading from version 1.25.x to version 1.26.x and then to version 1.27.x may cause the control
+plane node to fail to upgrade. Use the following steps to troubleshoot and resolve the issue.
 
 ### Debug Steps
 
