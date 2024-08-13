@@ -7,7 +7,7 @@ sidebar_position: 110
 tags: ["edge"]
 ---
 
-On any operational Edge host, many services write events, logs, and any other applicable audit log to the
+On any operational Edge host, many services write events, logs, and any other applicable audit logs to the
 `/var/log/stylus-audit.log` file. If you have application workloads on your cluster, you can also configure them to
 write audit logs to the same file. This allows you to keep all audit logs in a single location for easy management and
 retrieval. Audit logs written to the `/var/log/stylus-audit.log` file can be downloaded from Local UI.
@@ -17,14 +17,14 @@ retrieval. Audit logs written to the `/var/log/stylus-audit.log` file can be dow
 You can configure your own application to write log entries to the `/var/log/stylus-audit.log` file by setting up the
 applications to write to `syslog` and configure your `syslog` daemon to direct the logs to the file. The exact steps to
 do this vary by application, but the log entries must conform to the expected schema. In addition, you can also direct
-Palette agent's logs to be directed to another file if you want to collect the logs in a different file.
+Palette agent's logs to another file if you want to collect the logs in a different file.
 
 By default, you can view one year's worth of audit logs in Local UI. Log files past the one year mark will be rotated
 out and archived. You can still download your log files from any period, but they will not be viewable in Local UI.
 
 ### Limitations
 
-- This feature is available to airgapped Edge hosts without a connection to Palette only.
+- This feature is only available to airgapped Edge hosts without a connection to Palette.
 
 ### Prerequisites
 
@@ -63,8 +63,8 @@ out and archived. You can still download your log files from any period, but the
     git clone https://github.com/spectrocloud/CanvOS.git
    ```
 
-2. Create a file at the path `overlay/files/etc/rsyslog.d/48-audit.conf`. You can change the filename, but it must be a
-   `conf` file and sort alphanumerically before `49-stylus-audit.conf`. For example, `30-my-log.conf`.
+2. Create a file at the path `overlay/files/etc/rsyslog.d/48-audit.conf`. You can change the file name, but it must be a
+   `conf` file and sorted alphanumerically before `49-stylus-audit.conf`. For example, `30-my-log.conf`.
 
 <Tabs>
 
@@ -92,7 +92,7 @@ out and archived. You can still download your log files from any period, but the
 
    Ensure your logs follow the RFC 5424 Syslog protocol, with the message in JSON format. The JSON object must contain
    the following keys: `edgeHostId`, `contentMsg`, `action`, `actor`, `actorType`, `resourceId`, `resourceName`,
-   `resourceKind`. If your log entries do not follow this RFE 5424 Syslog protocol, or do not contain the necessary
+   `resourceKind`. If your log entries do not follow the RFE 5424 Syslog protocol, or do not contain the necessary
    keys, they will still be logged, but will not show up in Local UI.
 
 </TabItem>
@@ -109,7 +109,8 @@ out and archived. You can still download your log files from any period, but the
    if ($syslogfacility-text == 'local7' and $syslogseverity-text == 'notice' and $syslogtag contains 'stylus-audit') then {
         action(
             type="omfile"
-            file="/var/log/your-file"
+            // highlight-next-line
+            file="</var/log/your-file>"
             FileCreateMode="0600"
             fileowner="root"
             template="ForwardFormat"
@@ -124,7 +125,7 @@ out and archived. You can still download your log files from any period, but the
 
 </Tabs>
 
-4. Follow [Build Edge Installer ISO](../../edgeforge-workflow/palette-canvos/build-installer-iso.md) to build an Edge
+4. Follow the [Build Edge Installer ISO](../../edgeforge-workflow/palette-canvos/build-installer-iso.md) guide to build an Edge
    installer ISO and install an Edge host. Then follow the relevant guides in
    [Deployment](../../site-deployment/site-deployment.md) to deploy a cluster with your application workloads.
 
@@ -137,14 +138,14 @@ out and archived. You can still download your log files from any period, but the
 ## View and Download Log File from Local UI
 
 Log files are stored in the `/var/log/` folder. The active log file `stylus-audit.log` stores up to one year's worth of
-logs. When the one period is reached, or when the file size reaches 100 MB, the log file is rotated out and archived. If
+logs. After a year, or when the file size reaches 100 MB, the log file is rotated out and archived. If
 the log messages are configured to be picked up by Local UI, they will show up in Local UI. You can also download all
-log files in the `/var/log/` file from Local UI, including files that are older than one-year old, as well as files that
+log files in the `/var/log/` file from Local UI, including files that are older than a year, as well as files that
 were not configured to be displayed by Local UI.
 
 ### Prerequisites
 
-- An active Edge host installed in the `airgap` installation mode.
+- An active Edge host installed in the `airgap` mode.
 
 ### Procedure
 
@@ -154,7 +155,7 @@ were not configured to be displayed by Local UI.
    this page. Local UI will display log entries dated up to one year ago.
 
 3. To download the log files, click the **Download** button in the upper-right corner. This will download all files in
-   the `/var/log` folder, including archived old log files as well as any additional log files you configured to be
+   the `/var/log` folder, including the archived log files as well as any additional log files you configured to be
    stored in the directory.
 
 ### Validate
