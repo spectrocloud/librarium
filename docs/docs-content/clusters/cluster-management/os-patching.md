@@ -238,21 +238,21 @@ through `kubectl`.
    apiVersion: v1
    kind: ConfigMap
    metadata:
-   name: palette-agent-config
-   namespace: "cluster-{{ .spectro.system.cluster.uid }}"
+     name: palette-agent-config
+     namespace: "cluster-{{ .spectro.system.cluster.uid }}"
    data:
-   profiling: disable
-   feature.workloads: enable
-   drain: |
-     {
-        "timeout": 600000000,
-        "gracePeriod": 600,
-        "deleteLocalData": true,
-        "ignoreDaemonSets": true,
-        "force": true,
-        "disableEviction": false,
-        "skipWaitForDeleteTimeout": 600
-     }
+     profiling: disable
+     feature.workloads: enable
+     drain: |
+       {
+          "timeout": 600000000,
+          "gracePeriod": 600,
+          "deleteLocalData": true,
+          "ignoreDaemonSets": true,
+          "force": true,
+          "disableEviction": false,
+          "skipWaitForDeleteTimeout": 600
+       }
    ```
 
    :::info
