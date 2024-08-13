@@ -155,12 +155,14 @@ explains how to install and use the SDK to list the active host clusters in your
 
     The application will print the active clusters in your Palette environment.
 
-    <!-- UPDATE OUTPUT -->
-
     ```text hideClipboard
     Searching for Palette clusters with tenant scope...
 
-    No clusters found.
+    Found 1 cluster(s):
+
+    Name: aws-cluster
+    Cloud Type: aws
+    Project: Default
     ```
 
 ## Validate
