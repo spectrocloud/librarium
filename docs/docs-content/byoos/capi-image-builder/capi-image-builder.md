@@ -13,7 +13,7 @@ Kubernetes clusters. It is based on the upstream
 [Kubernetes Image Builder (KIB)](https://image-builder.sigs.k8s.io/introduction.html) project.
 
 The tool includes all the dependencies required to build FIPS and non-FIPS images within a Docker container, eliminating
-the need to install any dependencies on your local machine. This is particularly useful when working in air-gapped
+the need to install any dependencies on your local machine. This is particularly useful when working in airgapped
 environments.
 
 :::preview

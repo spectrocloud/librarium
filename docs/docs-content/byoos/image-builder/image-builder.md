@@ -20,7 +20,7 @@ Kubernetes, such as the [Kubernetes Image Builder](https://image-builder.sigs.k8
 KIB is a project designed to help users create images for various platforms. The project is a consolidation of multiple
 tools that together work to create an artifact, or in simpler terms, a custom image.
 
-You can use the custom images created by KIB with Palette, assuming the infrastructure provider is supported in Palette.
+You can use the custom images created by KIB with Palette, assuming the infrastructure provider is supported by Palette.
 Use the following diagram to understand how you can use KIB to create custom images that you can use with Palette.
 
 ![A diagram displaying the steps for creating a custom image](/cluster-profiles_byoos_image-builder_workflow-diagram.webp)
