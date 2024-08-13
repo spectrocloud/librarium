@@ -92,8 +92,8 @@ out and archived. You can still download your log files from any period, but the
 
    Ensure your logs follow the RFC 5424 Syslog protocol, with the message in JSON format. The JSON object must contain
    the following keys: `edgeHostId`, `contentMsg`, `action`, `actor`, `actorType`, `resourceId`, `resourceName`,
-   `resourceKind`. If your log entries do not follow the RFE 5424 Syslog protocol, or do not contain the necessary
-   keys, they will still be logged, but will not show up in Local UI.
+   `resourceKind`. If your log entries do not follow the RFE 5424 Syslog protocol, or do not contain the necessary keys,
+   they will still be logged, but will not show up in Local UI.
 
 </TabItem>
 
@@ -125,8 +125,8 @@ out and archived. You can still download your log files from any period, but the
 
 </Tabs>
 
-4. Follow the [Build Edge Installer ISO](../../edgeforge-workflow/palette-canvos/build-installer-iso.md) guide to build an Edge
-   installer ISO and install an Edge host. Then follow the relevant guides in
+4. Follow the [Build Edge Installer ISO](../../edgeforge-workflow/palette-canvos/build-installer-iso.md) guide to build
+   an Edge installer ISO and install an Edge host. Then follow the relevant guides in
    [Deployment](../../site-deployment/site-deployment.md) to deploy a cluster with your application workloads.
 
 ### Validate
@@ -138,10 +138,11 @@ out and archived. You can still download your log files from any period, but the
 ## View and Download Log File from Local UI
 
 Log files are stored in the `/var/log/` folder. The active log file `stylus-audit.log` stores up to one year's worth of
-logs. After a year, or when the file size reaches 100 MB, the log file is rotated out and archived. If
-the log messages are configured to be picked up by Local UI, they will show up in Local UI. You can also download all
-log files in the `/var/log/` file from Local UI, including files that are older than a year, as well as files that
-were not configured to be displayed by Local UI.
+logs. After a year, or when the file size reaches 100 MB, the log file is rotated out and archived. If the log messages
+are configured to be picked up by Local UI, they will show up in Local UI.
+
+You can also download log files less than three years old in the `/var/log/` file from Local UI. This includes the log
+entries that were not configured to be displayed in Local UI.
 
 ### Prerequisites
 
