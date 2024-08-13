@@ -27,7 +27,7 @@ The following options are available for OS patching:
 You can use a combination of these options to patch the operating system to the latest version. For example, you can
 patch OS on boot, set up scheduled patching every month, and also perform on-demand patches at any given point in time.
 
-Palette provides the option to provide custom node drain configuration, which gives you fine-grained control of drain
+Palette offers the option to provide custom node drain configuration, which gives you fine-grained control of drain
 behaviour during updates. Refer to the [Configure OS Patching Drain Policy](#configure-os-patching-drain-policy) for
 further information.
 
@@ -187,13 +187,13 @@ updates.
 
 ## Configure OS Patching Drain Policy
 
-Palette provides the ability to configure the drain policy during on boot, scheduled and on-demand OS patching. This
+Palette provides the ability to configure the drain policy during on-boot, scheduled, and on-demand OS patching. This
 capability can also be useful during node maintenance. Users can specify a node drain policy using a ConfigMap, which
 can be applied to deployed clusters using a cluster profile or through `kubectl`.
 
 ### Limitations
 
-- This operation is not available for existing Kubernetes clusters imported into Palette.
+- This operation is not available for existing Kubernetes clusters that have been previously imported into Palette.
 - This operation is not available for managed Kubernetes Services such as EKS and AKS.
   - For EKS clusters, you can trigger OS updates from Palette. This would request AWS to update cluster node groups to
     the latest patch version.
@@ -217,7 +217,7 @@ can be applied to deployed clusters using a cluster profile or through `kubectl`
 5. Add a name in the **Layer Name** field. Then, click **New manifest**. Assign a name to the internal manifest and
    click on the blue button. An empty editor displays on the right side of the screen.
 
-6. Paste the snippet below into the empty editor. This snippet uses a ConfigMap to control the drain policy of the
+6. Paste the snippet below into the empty editor. This snippet includes example values within a ConfigMap to demonstrate how to control the drain policy of the
    cluster. The ConfigMap provides the following drain configuration parameters.
 
    | **Parameter**                         | **Description**                                                                                                                                                 | **Value Type**       | **Default Value** |
@@ -255,7 +255,7 @@ can be applied to deployed clusters using a cluster profile or through `kubectl`
 
    :::info
 
-   You can also specify the drain ConfigMap directly on the cluster by using `kubectl`. Download the
+   You can also specify the drain policy ConfigMap directly on the cluster by using `kubectl`. Download the
    [Kubeconfig](./kubeconfig.md) file to connect to the cluster and issue the
    `kubectl create configmap palette-agent-config --namespace <cluster-id>` command. Then, execute the command
    `kubectl edit configmap palette-agent-config --namespace <cluster-id>` command and paste the configuration provided.
