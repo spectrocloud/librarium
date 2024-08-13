@@ -187,9 +187,11 @@ updates.
 
 ## Configure OS Patching Drain Policy
 
-Palette provides the ability to configure the drain policy during on-boot, scheduled, and on-demand OS patching. This
-capability can also be useful during node maintenance. Users can specify a node drain policy using a ConfigMap, which
-can be applied to deployed clusters using a cluster profile or through `kubectl`.
+The node drain operation refers to the process of evicting all of your pods from a node before you perform maintenance
+operations on the node. Typical node maintenance operations are hardware upgrades, kernel updates and OS patching.
+Palette provides the ability to configure the drain policy during on-boot, scheduled, and on-demand OS patching. Users
+can specify a node drain policy using a ConfigMap, which can be applied to deployed clusters using a cluster profile or
+through `kubectl`.
 
 ### Limitations
 
@@ -217,8 +219,8 @@ can be applied to deployed clusters using a cluster profile or through `kubectl`
 5. Add a name in the **Layer Name** field. Then, click **New manifest**. Assign a name to the internal manifest and
    click on the blue button. An empty editor displays on the right side of the screen.
 
-6. Paste the snippet below into the empty editor. This snippet includes example values within a ConfigMap to demonstrate how to control the drain policy of the
-   cluster. The ConfigMap provides the following drain configuration parameters.
+6. Paste the snippet below into the empty editor. This snippet includes example values within a ConfigMap to demonstrate
+   how to control the drain policy of the cluster. The ConfigMap provides the following drain configuration parameters.
 
    | **Parameter**                         | **Description**                                                                                                                                                 | **Value Type**       | **Default Value** |
    | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------------- |
