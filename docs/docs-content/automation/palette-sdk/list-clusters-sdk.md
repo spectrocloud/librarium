@@ -21,7 +21,7 @@ explains how to install and use the SDK to list the active host clusters in your
 
 ## List Palette Clusters
 
-1.  Open a terminal window and create a folder to store your Go source code.
+1.  Open a terminal window and create a folder for you Go repository.
 
     ```bash
     mkdir sdk-example
@@ -33,7 +33,7 @@ explains how to install and use the SDK to list the active host clusters in your
     cd sdk-example
     ```
 
-3.  Enable dependency tracking for your code by issuing the following command. This will create a `go.mod` file in the
+3.  Initialize your Go module and enable dependency tracking for your code by issuing the following command. This will create a `go.mod` file in the
     current folder.
 
     ```bash
@@ -48,13 +48,13 @@ explains how to install and use the SDK to list the active host clusters in your
     go get github.com/spectrocloud/palette-sdk-go/client
     ```
 
-5.  Create a file named `list-clusters.go` to store your Go application.
+5.  Create a source file named `main.go`.
 
         ```bash
-        touch list-clusters.go
+        touch main.go
         ```
 
-6.  Open the `list-clusters.go` file in a text editor of your choice and paste the content below.
+6.  Open the `main.go` file in a text editor of your choice and paste the content below.
 
     ```go
     package main
@@ -171,4 +171,4 @@ explains how to install and use the SDK to list the active host clusters in your
 
 2. From the left **Main Menu**, click **Clusters**.
 
-3. Verify that the clusters printed by the `list-clusters.go` application are also visible in the Palette UI.
+3. Verify that the clusters printed by the Go client application are also visible in the Palette UI.

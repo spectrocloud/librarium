@@ -9,7 +9,7 @@ tags: ["palette-sdk"]
 The Palette Go Software Developer Toolkit (SDK) allows Go developers to interact with several public Palette APIs
 through user-friendly client configurations.
 
-The SDK comprises two repositories:
+The SDK comprises of two libraries:
 
 - The [Palette API Go](https://github.com/spectrocloud/palette-api-go) repository contains API client models that are
   generated from Palette's public APIs.
