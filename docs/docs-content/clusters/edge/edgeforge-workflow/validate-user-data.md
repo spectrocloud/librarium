@@ -51,6 +51,6 @@ example, if your user data contained an expired registration token, this will no
 1. Build an Edge installer ISO with the user data and install an Edge host. For more information, refer to
    [Build Installer ISO](./palette-canvos/build-installer-iso.md).
 
-2. Establish an SSH connection to the Edge host. View the `/oem/90_custom.yaml` file on your Edge host. If the file
-   contains the customizations you made in your **user-data** file, it means the installer configuration has been
-   applied to the Edge host.
+2. Confirm that the user data you provided has been applied. For example, if you configured users in your user data and
+   you were able to use the credentials to establish an SSH connection to your Edge host, then you can confirm that the
+   user data has been applied.
