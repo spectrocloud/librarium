@@ -26,55 +26,45 @@ to a bootable device, such as a USB stick.
 
 1. Create a file called **user-data** that contains the additional configurations you want to override or inject.
 
-<br />
-
-```shell
-touch user-data
-```
+   ```shell
+   touch user-data
+   ```
 
 2. Create an empty **meta-data** file:
 
-<br />
-
-```shell
-touch meta-data
-```
+   ```shell
+   touch meta-data
+   ```
 
 3. Create an ISO using the following command.
 
-MacOS/Linux:
+   MacOS/Linux:
 
-```shell
-mkisofs -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
-```
+   ```shell
+   mkisofs -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
+   ```
 
-Windows:
+   Windows:
 
-```shell
-genisoimage -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
-```
+   ```shell
+   genisoimage -output site-user-data.iso -volid cidata -joliet -rock user-data meta-data
+   ```
 
-This generates an ISO file called site-user-data.iso in the current directory.
-
-<br />
+   This generates an ISO file called site-user-data.iso in the current directory.
 
 4. Copy the ISO to a bootable device such as a USB drive.
-
-   <br />
 
    :::info
 
    You can use several software tools to create a bootable USB drive, such as
    [balenaEtcher](https://www.balena.io/etcher). For a PXE server, there are open-source projects such as
-   [Fog](https://fogproject.org/download) or
+   [Fog](https://fogproject.org/download.php) or
    [Windows Deployment Services](https://learn.microsoft.com/en-us/windows/deployment/wds-boot-support) for Windows.
 
    :::
 
 5. Once the Edge host arrives at the physical site. Load the USB drive to the Edge host before powering it on. The Edge
    Installer will apply the new user data during the installation process.
-
-<br />
 
 ## Validate
 
