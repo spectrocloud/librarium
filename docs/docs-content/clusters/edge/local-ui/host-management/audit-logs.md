@@ -79,7 +79,7 @@ out and archived. You can still download your log files from any period, but the
    $PrivDropToGroup root
    $Umask 0000
    $template ForwardFormat,"<%pri%>1 %timestamp:::date-rfc3339% %HOSTNAME% %syslogtag% %procid% - - %msg%\n"
-   if ($syslogfacility-text == 'local7' and $syslogseverity-text == 'notice' and $syslogtag contains 'your-tag') then {
+   if ($syslogfacility-text == 'local7' and $syslogseverity-text == 'notice' and $syslogtag contains '<your-tag>') then {
         action(
             type="omfile"
             file="/var/log/stylus-audit.log"
