@@ -187,11 +187,10 @@ updates.
 
 ## Configure OS Patching Drain Policy
 
-The node drain operation refers to the process of evicting all of your pods from a node before you perform maintenance
-operations on the node. Typical node maintenance operations are hardware upgrades, kernel updates and OS patching.
-Palette provides the ability to configure the drain policy during on-boot, scheduled, and on-demand OS patching. Users
-can specify a node drain policy using a ConfigMap, which can be applied to deployed clusters using a cluster profile or
-through `kubectl`.
+The node drain operation refers to the process of evicting all of your pods from a node before you perform node
+maintenance. Typical node maintenance activities are hardware upgrades, kernel updates and OS patching. Palette provides
+the ability to configure the drain policy during on-boot, scheduled, and on-demand OS patching. Users can specify a node
+drain policy using a ConfigMap, which can be applied to deployed clusters using a cluster profile or through `kubectl`.
 
 ### Limitations
 
