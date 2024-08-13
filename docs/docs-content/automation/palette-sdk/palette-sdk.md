@@ -16,6 +16,26 @@ The SDK comprises of two libraries:
 - The [Palette SDK](https://github.com/spectrocloud/palette-sdk-go) repository leverages the Palette API Go repository
   to provide client configuration for interacting with Palette public APIs.
 
+## Initialize Palette Client
+
+The Go Palette client provides the following authentication methods.
+
+- [JWT](https://github.com/spectrocloud/palette-sdk-go/blob/main/client/client.go#L56)
+- [Palette API Key](https://github.com/spectrocloud/palette-sdk-go/blob/main/client/client.go#L49)
+- [Username](https://github.com/spectrocloud/palette-sdk-go/blob/main/client/client.go#L63) and
+  [password](https://github.com/spectrocloud/palette-sdk-go/blob/main/client/client.go#L70)
+
+The snippet below demonstrates an example of how to initialize a Palette client using the API key. You must provide a
+[Palette URI](https://github.com/spectrocloud/palette-sdk-go/blob/main/client/client.go#L77) for all authentication
+methods.
+
+```go
+  pc := client.New(
+      client.WithPaletteURI(host),
+      client.WithAPIKey(apiKey),
+    )
+```
+
 ## Get Started
 
 Check out the [List Clusters with Palette Go SDK](./list-clusters-sdk.md) example to learn how to install, configure,
