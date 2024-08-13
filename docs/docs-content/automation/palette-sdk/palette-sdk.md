@@ -14,15 +14,14 @@ The SDK comprises of two libraries:
 - The [Palette API Go](https://github.com/spectrocloud/palette-api-go) repository contains API client models that are
   generated from Palette's public APIs.
 - The [Palette SDK](https://github.com/spectrocloud/palette-sdk-go) repository leverages the Palette API Go repository
-  to provide client configuration for interacting with Palette public APIs. Refer to the
-  [client.go](https://github.com/spectrocloud/palette-sdk-go/blob/main/client/client.go) file for a complete list of
-  client configuration options.
+  to provide client configuration for interacting with Palette public APIs.
 
 ## Get Started
 
 Check out the [List Clusters with Palette Go SDK](./list-clusters-sdk.md) example to learn how to install, configure,
 and use the SDK. This guide provides instructions and sample code for listing the active clusters in your Palette
-environment.
+environment. Additionally, refer to the [client](https://github.com/spectrocloud/palette-sdk-go/blob/main/client) folder
+for a complete list of client configuration options.
 
 ## Resources
 

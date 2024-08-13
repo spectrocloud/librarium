@@ -33,8 +33,8 @@ explains how to install and use the SDK to list the active host clusters in your
     cd sdk-example
     ```
 
-3.  Initialize your Go module and enable dependency tracking for your code by issuing the following command. This will create a `go.mod` file in the
-    current folder.
+3.  Initialize your Go module and enable dependency tracking for your code by issuing the following command. This will
+    create a `go.mod` file in the current folder.
 
     ```bash
     go mod init example/list-clusters
