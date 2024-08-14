@@ -191,60 +191,59 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 <TabItem value="airgap" label="Airgap">
 
-1. Log in to a tenant that belongs to your instance of Palette or Palette VerteX.
+1.  Log in to a tenant that belongs to your instance of Palette or Palette VerteX.
 
-2. In the **left Main Menu**, select **Profiles** and click **Add Cluster Profile**.
+2.  In the **left Main Menu**, select **Profiles** and click **Add Cluster Profile**.
 
-3. Enter basic information for the profile: name, version if desired, and optional description.
+3.  Enter basic information for the profile: name, version if desired, and optional description.
 
-4. Select type **Add-on**, and click **Next**.
+4.  Select type **Add-on**, and click **Next**.
 
-5. In the following screen, click **Add New Pack**.
+5.  In the following screen, click **Add New Pack**.
 
-6. Locate the **Virtual Machine Orchestrator** pack and add it to your profile.
+6.  Locate the **Virtual Machine Orchestrator** pack and add it to your profile.
 
-7. Review the **Access** configuration panel on the right. The default setting is **Proxied**, which automatically adds
-   the **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere.
-   Check out the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn
-   more.
+7.  Review the **Access** configuration panel on the right. The default setting is **Proxied**, which automatically adds
+    the **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere.
+    Check out the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn
+    more.
 
-   The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
+    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
-   :::warning
+    :::warning
 
-   We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the default
-   settings can introduce misconfigurations. Carefully review the changes you make to a pack.
+    We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the
+    default settings can introduce misconfigurations. Carefully review the changes you make to a pack.
 
-   :::
+    :::
 
-8. Click **Values** in the **Pack Details** section. The pack manifest editor appears.
+8.  Click **Values** in the **Pack Details** section. The pack manifest editor appears. Locate the
+    `pack.cdi.privateRegistry` section in the manifest. The table below contains a brief description of each field
+    exposed by the private registry. Set the `pack.cdi.privateRegistry.enabled` field to true and fill in the registry
+    IP address and base path according to your environment. This configures the VMO pack to pull images from your airgap
+    environment private registry.
 
-Locate the `pack.cdi.privateRegistry` section in the manifest. The table below contains a brief description of each
-field exposed by the private registry. Set the `pack.cdi.privateRegistry.enabled` field to true and fill in the registry
-IP address and base path according to your environment. This configures the VMO pack to pull images from your airgap
-environment private registry.
+        | Field                                       | Description                                                          |
+        | ------------------------------------------- | -------------------------------------------------------------------- |
+        | `pack.cdi.privateRegistry.enabled`          | Flag to enable the profile to use the airgap private image registry. |
+        | `pack.cdi.privateRegistry.registryIP`       | The IP address the private image registry.                           |
+        | `pack.cdi.privateRegistry.registryBasePath` | The base path of the private image registry.                         |
 
-| Field                                       | Description                                                          |
-| ------------------------------------------- | -------------------------------------------------------------------- |
-| `pack.cdi.privateRegistry.enabled`          | Flag to enable the profile to use the airgap private image registry. |
-| `pack.cdi.privateRegistry.registryIP`       | The IP address the private image registry.                           |
-| `pack.cdi.privateRegistry.registryBasePath` | The base path of the private image registry.                         |
+        ```yaml
+        cdi:
+          privateRegistry:
+            enabled: true
+            registryIP: <REPLACE ME>
+            registryBasePath: <REPLACE ME>
+        ```
 
-```yaml
-cdi:
-  privateRegistry:
-    enabled: true
-    registryIP: <REPLACE ME>
-    registryBasePath: <REPLACE ME>
-```
+9.  Click **Confirm & Create**.
 
-10. Click **Confirm & Create**.
+10. On the following screen, click **Next**.
 
-11. On the following screen, click **Next**.
+11. Review the profile and click **Finish Configuration**.
 
-12. Review the profile and click **Finish Configuration**.
-
-13. Apply the profile to your cluster. For more information, refer to
+12. Apply the profile to your cluster. For more information, refer to
     [Create a Cluster](../clusters/public-cloud/deploy-k8s-cluster.md).
 
 </TabItem>
