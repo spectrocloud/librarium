@@ -79,8 +79,10 @@ tags: ["release-notes"]
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.16     |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.28.12     |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.7      |
-
-| RKE2 | 1.27.15 | | RKE2 | 1.28.11 | | RKE2 | 1.29.6 | | RKE2 FIPS | 1.27.15 |
+| RKE2                                       | 1.27.15     |
+| RKE2                                       | 1.28.11     |
+| RKE2                                       | 1.29.6      |
+| RKE2 FIPS                                  | 1.27.15     |
 
 #### CNI
 
