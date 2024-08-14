@@ -9,9 +9,9 @@ sidebar_position: 10
 tags: ["operating system", "byoos", "profiles", "pxk", "vmware"]
 ---
 
+<!-- prettier-ignore -->
 This guide will teach you how to use the [CAPI Image Builder](../capi-image-builder.md) tool to create a custom Red Hat
-Enterprise Linux (RHEL) image with [Palette eXtended Kubernetes (PXK)](../../../integrations/kubernetes.md) for VMware
-vSphere and then use this image to create a cluster profile.
+Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for VMware vSphere and then use this image to create a cluster profile.
 
 :::preview
 
@@ -392,8 +392,9 @@ profile and deploy a VMware host cluster.
     | Cilium                      | 1.15.3  | Network          |
     | vSphere CSI                 | 3.2.0   | Storage          |
 
+    <!-- prettier-ignore -->
     Reference the custom RHEL 8 image template path in your VMware vSphere environment when populating the pack details
-    for the [BYOOS](../../../integrations/byoos.md) layer.
+    for the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=generic-byoi" /> layer.
 
     ```yaml
     pack:
