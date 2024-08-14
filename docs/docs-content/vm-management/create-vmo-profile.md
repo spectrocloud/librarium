@@ -219,8 +219,10 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 8. Click **Values** in the **Pack Details** section. The pack manifest editor appears.
 
-9. Locate the `pack.cdi` section in the manifest. Configure the `pack.cdi.privateRegistry` option as in the snippet
-   below. This configures the pack to pull images from your airgap environment private registry.
+9. Locate the `pack.cdi.privateRegistry` section in the manifest. The table below contains a brief description of each
+   field exposed by the private registry. Set the `pack.cdi.privateRegistry.enabled` field to true and fill in the
+   registry IP address and base path according to your environment. This configures the VMO pack to pull images from
+   your airgap environment private registry.
 
    | Field                                       | Description                                                          |
    | ------------------------------------------- | -------------------------------------------------------------------- |
