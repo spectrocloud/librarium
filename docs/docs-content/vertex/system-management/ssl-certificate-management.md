@@ -91,7 +91,7 @@ securely access the system console, VerteX dashboard, the gRPC endpoint, and the
 
 ## Reconcile System Address on Deployed Clusters
 
-Once you have updated your system address, the clusters that were deployed before the upade will not be able to
+Once you have updated your system address, the clusters that were deployed before the update will not be able to
 automatically reconnect to Palette if the old system address is no longer available. You will need to manually update
 the API endpoint on each cluster if this the case. This enables the Palette agent to reconnect to the API at the newly
 configured system address.
