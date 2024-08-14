@@ -218,44 +218,47 @@ KIB to create the image.
     help you identify the correct value to provide. In the example output below, the tag values `distribution_version`
     and `distribution` are used to determine the correct values for the YAML.
 
-    ```shell hideClipboard
-    ==> amazon-ebs.{{user `build_name`}}: Creating AMI tags
-    amazon-ebs.{{user `build_name`}}: Adding tag: "build_date": "2023-05-10T17:19:37Z"
-    amazon-ebs.{{user `build_name`}}: Adding tag: "build_timestamp": "1683739177"
-    amazon-ebs.{{user `build_name`}}: Adding tag: "kubernetes_cni_version": "v1.2.0"
-    amazon-ebs.{{user `build_name`}}: Adding tag: "source_ami": ""
-    amazon-ebs.{{user `build_name`}}: Adding tag: "containerd_version": "1.6.20"
-    amazon-ebs.{{user `build_name`}}: Adding tag: "distribution_release": "Enterprise"
-    + amazon-ebs.{{user `build_name`}}: Adding tag: "distribution": "rhel"
-    amazon-ebs.{{user `build_name`}}: Adding tag: "image_builder_version": ""
-    amazon-ebs.{{user `build_name`}}: Adding tag: "kubernetes_version": "v1.24.11"
-    + amazon-ebs.{{user `build_name`}}: Adding tag: "distribution_version": "8
-    ```
+            ```shell hideClipboard
+            ==> amazon-ebs.{{user `build_name`}}: Creating AMI tags
+            amazon-ebs.{{user `build_name`}}: Adding tag: "build_date": "2023-05-10T17:19:37Z"
+            amazon-ebs.{{user `build_name`}}: Adding tag: "build_timestamp": "1683739177"
+            amazon-ebs.{{user `build_name`}}: Adding tag: "kubernetes_cni_version": "v1.2.0"
+            amazon-ebs.{{user `build_name`}}: Adding tag: "source_ami": ""
+            amazon-ebs.{{user `build_name`}}: Adding tag: "containerd_version": "1.6.20"
+            amazon-ebs.{{user `build_name`}}: Adding tag: "distribution_release": "Enterprise"
+            + amazon-ebs.{{user `build_name`}}: Adding tag: "distribution": "rhel"
+            amazon-ebs.{{user `build_name`}}: Adding tag: "image_builder_version": ""
+            amazon-ebs.{{user `build_name`}}: Adding tag: "kubernetes_version": "v1.24.11"
+            + amazon-ebs.{{user `build_name`}}: Adding tag: "distribution_version": "8
+            ```
 
-    In this example, the YAML is updated to point to the RHEL image created earlier. Use the table below to learn more
-    about each variable.
+            In this example, the YAML is updated to point to the RHEL image created earlier. Use the table below to learn more
+            about each variable.
 
-    | **Parameter**     | **Description**                                                                                                                                                      | **Type** |
-    | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-    | `osImageOverride` | The ID of the image to use as the base OS layer. This is the image ID as assigned in the infrastructure environment it belongs to. Example: `ami-0f4804aff4cf9c5a2`. | string   |
-    | `osName`          | The name of the OS distribution. Example: `rhel`.                                                                                                                    | string   |
-    | `osVersion`       | The version of the OS distribution. Example: `8`                                                                                                                     | string   |
+            | **Parameter**     | **Description**                                                                                                                                                      | **Type** |
+            | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+            | `osImageOverride` | The ID of the image to use as the base OS layer. This is the image ID as assigned in the infrastructure environment it belongs to. Example: `ami-0f4804aff4cf9c5a2`. | string   |
+            | `osName`          | The name of the OS distribution. Example: `rhel`.                                                                                                                    | string   |
+            | `osVersion`       | The version of the OS distribution. Example: `8`                                                                                                                     | string   |
 
-    ```yaml
-    pack:
-      osImageOverride: "ami-0f4804aff4cf9c5a2"
-      osName: "rhel"
-      osVersion: "8"
-    ```
+            ```yaml
+            pack:
+              osImageOverride: "ami-0f4804aff4cf9c5a2"
+              osName: "rhel"
+              osVersion: "8"
+            ```
 
-    :::info
+<!-- prettier-ignore-start -->
 
-    Depending on what platform you are targeting, the value you provide for `osImageOverride` may differ. For example,
-    for AWS, the value is the AMI ID. For vSphere, the value is VM template path and name. Refer to the
-    [Reference Custom Image](../../integrations/byoos.md?edge-non-edge=Non-Edge#reference-custom-image) section of the
-    BYOOS page for examples.
+:::info
 
-    :::
+Depending on what platform you are targeting, the value you provide for `osImageOverride` may differ. For example, for
+AWS, the value is the AMI ID. For vSphere, the value is VM template path and name. Refer to the <VersionedLink text="Reference Custom Image" url="/integrations/packs/?pack=generic-byoi#reference-custom-image" />
+section of the BYOOS page for examples.
+
+:::
+
+<!-- prettier-ignore-end -->
 
 ![View of the cluster profile wizard](/clusters_byoos_image-builder_cluster-profile-byoos-yaml.webp)
 

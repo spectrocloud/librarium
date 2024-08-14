@@ -272,30 +272,32 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
     --> vsphere-iso.vsphere: rhel-8-kube-v1.27.11
     ```
 
+<!-- prettier-ignore-start -->
+
 14. The custom RHEL image with PXK is now built and available in the VMware vSphere environment. You can use this image
-    to deploy a Kubernetes cluster. To use the image, create a cluster profile with and select the
-    [BYOOS pack](../../../integrations/byoos.md). Refer to the custom image in the cluster profile when populating the
-    image details. You need to refer to the VM template path of the image.
+    to deploy a Kubernetes cluster. To use the image, create a cluster profile with and select the <VersionedLink text="BYOOS Pack" url="/integrations/packs/?pack=generic-byoi" />. Refer to the custom image in the cluster profile when populating the image details. You need to refer to the VM template path of the image.
 
-    ```yaml hideClipboard
-    pack:
-      osImageOverride: "/Datacenter/vm/sp-docs/rhel-8-kube-v1.27.11"
-      osName: "rhel"
-      osVersion: "8.8"
-    ```
+        ```yaml hideClipboard
+        pack:
+          osImageOverride: "/Datacenter/vm/sp-docs/rhel-8-kube-v1.27.11"
+          osName: "rhel"
+          osVersion: "8.8"
+        ```
 
-    Using the following image, take note of the three numbers highlighted in the image name.
+        Using the following image, take note of the three numbers highlighted in the image name.
 
-    1. The BYOOS pack is selected as the operating system layer.
-    2. The custom RHEL image template is specified in the `osImageOverride` field.
-    3. The Kubernetes version is set to `1.27.11`, the same version specified in the `kubernetes.json` file.
+        1. The BYOOS pack is selected as the operating system layer.
+        2. The custom RHEL image template is specified in the `osImageOverride` field.
+        3. The Kubernetes version is set to `1.27.11`, the same version specified in the `kubernetes.json` file.
 
-    ![A cluster profile using a custom RHEL image](/byoos_vmware_rhewl-pxk_cluster-profile.webp)
+        ![A cluster profile using a custom RHEL image](/byoos_vmware_rhewl-pxk_cluster-profile.webp)
 
-    Complete the remaining steps in the
-    [cluster profile creation process](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md).
-    Use the cluster profile to deploy a Kubernetes cluster in your VMware vSphere environment with the custom RHEL
-    image.
+        Complete the remaining steps in the
+        [cluster profile creation process](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md).
+        Use the cluster profile to deploy a Kubernetes cluster in your VMware vSphere environment with the custom RHEL
+        image.
+
+<!-- prettier-ignore-end -->
 
 </TabItem>
 <TabItem value="non-fips" label="Non-FIPS">
@@ -502,30 +504,35 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
     --> vsphere-iso.vsphere: rhel-8-kube-v1.27.11
     ```
 
+<!-- prettier-ignore-start -->
+
 14. The custom RHEL image with PXK is now built and available in the VMware vSphere environment. You can use this image
     to deploy a Kubernetes cluster. To use the image, create a cluster profile with and select the
-    [BYOOS pack](../../../integrations/byoos.md). Refer to the custom image in the cluster profile when populating the
-    image details. You need to refer to the VM template path of the image.
 
-    ```yaml hideClipboard
-    pack:
-      osImageOverride: "/Datacenter/vm/sp-docs/rhel-8-kube-v1.27.11"
-      osName: "rhel"
-      osVersion: "8.8"
-    ```
+    <VersionedLink text="BYOOS Pack" url="/integrations/packs/?pack=generic-byoi" />. Refer to the custom image in the
+    cluster profile when populating the image details. You need to refer to the VM template path of the image.
 
-    Using the following image, take note of the three numbers highlighted in the image name.
+        ```yaml hideClipboard
+        pack:
+          osImageOverride: "/Datacenter/vm/sp-docs/rhel-8-kube-v1.27.11"
+          osName: "rhel"
+          osVersion: "8.8"
+        ```
 
-    1. The BYOOS pack is selected as the operating system layer.
-    2. The custom RHEL image template is specified in the `osImageOverride` field.
-    3. The Kubernetes version is set to `1.27.11`, the same version specified in the `kubernetes.json` file.
+        Using the following image, take note of the three numbers highlighted in the image name.
 
-    ![A cluster profile using a custom RHEL image](/byoos_vmware_rhewl-pxk_cluster-profile-non-fips.webp)
+        1. The BYOOS pack is selected as the operating system layer.
+        2. The custom RHEL image template is specified in the `osImageOverride` field.
+        3. The Kubernetes version is set to `1.27.11`, the same version specified in the `kubernetes.json` file.
 
-    Complete the remaining steps in the
-    [cluster profile creation process](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md).
-    Use the cluster profile to deploy a Kubernetes cluster in your VMware vSphere environment with the custom RHEL
-    image.
+        ![A cluster profile using a custom RHEL image](/byoos_vmware_rhewl-pxk_cluster-profile-non-fips.webp)
+
+        Complete the remaining steps in the
+        [cluster profile creation process](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md).
+        Use the cluster profile to deploy a Kubernetes cluster in your VMware vSphere environment with the custom RHEL
+        image.
+
+    <!-- prettier-ignore-end -->
 
 </TabItem>
 </Tabs>

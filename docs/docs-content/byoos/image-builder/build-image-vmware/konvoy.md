@@ -9,8 +9,9 @@ sidebar_position: 10
 tags: ["operating system", "byoos", "profiles", "konvoy", "vmware"]
 ---
 
+<!-- prettier-ignore -->
 This guide provides instructions for building a custom image using Red Hat Linux Enterprise (RHEL) with Konvoy. The
-guide assumes that you have a basic understanding of VMware vSphere, RHEL and [Konvoy](../../../integrations/konvoy.md).
+guide assumes that you have a basic understanding of VMware vSphere, RHEL and <VersionedLink text="Konvoy" url="/integrations/packs/?pack=kubernetes-konvoy" />.
 
 You will use the [Konvoy image builder](https://github.com/mesosphere/konvoy-image-builder) project to build the custom
 RHEL image with Konvoy. The custom image will be used to deploy a Kubernetes cluster on VMware vSphere.
@@ -186,9 +187,10 @@ instructions on how to build the custom RHEL with Konvoy image.
 
     </details>
 
+<!-- prettier-ignore -->
 7.  Review the **images/common.yaml** file and modify the file if necessary. The **common.yaml** file is where you
-    specify the Kubernetes version. Refer to the [Konvoy](../../../integrations/konvoy.md) pack reference page to learn
-    about supported Konvoy versions.
+    specify the Kubernetes version. Refer to the <VersionedLink text="Konvoy" url="/integrations/packs/?pack=kubernetes-konvoy" /> pack reference page to learn about
+    supported Konvoy versions.
 
     ```yaml hideClipboard {2}
     ---
@@ -329,9 +331,10 @@ instructions on how to build the custom RHEL with Konvoy image.
 
     </details>
 
+<!-- prettier-ignore -->
 7.  Review the **images/common.yaml** file and modify the file if necessary. The **common.yaml** file is where you
-    specify the Kubernetes version. Refer to the [Konvoy](../../../integrations/konvoy.md) pack reference page to learn
-    about supported Konvoy versions.
+    specify the Kubernetes version. Refer to the <VersionedLink text="Konvoy" url="/integrations/packs/?pack=kubernetes-konvoy" /> pack reference page to learn about
+    supported Konvoy versions.
 
     ```yaml hideClipboard {2}
     ---
@@ -441,11 +444,12 @@ instructions on how to build the custom RHEL with Konvoy image.
 
 ## Usage with Cluster Profile
 
+<!-- prettier-ignore-start -->
 To use the custom RHEL with Konvoy image, create a
-[cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md) and use the
-[BYOOS](../../../integrations/byoos.md) pack to reference the custom RHEL with Konvoy image. Specify the vSphere path to
-the custom RHEL with Konvoy image in the pack's YAML file. The following example YAML content demonstrates how to use
-the custom RHEL with Konvoy image in a cluster profile.
+[cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md) and use the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=generic-byoi"/> pack to reference the custom RHEL with
+Konvoy image. Specify the vSphere path to the custom RHEL with Konvoy image in the pack's YAML file. The following
+example YAML content demonstrates how to use the custom RHEL with Konvoy image in a cluster profile.
+<!-- prettier-ignore-end -->
 
     ```yaml hideClipboard {2}
     pack:
