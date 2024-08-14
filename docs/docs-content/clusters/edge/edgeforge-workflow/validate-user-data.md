@@ -11,6 +11,9 @@ After preparing or modifying your **user-data** file, you can validate your user
 installer ISO. This allows you to be confident that your user data follows the expected schema and avoid having to
 rebuild Edge artifacts due to user data errors.
 
+This guide provides instructions on how to validate the user data manually without triggering an actual build. However,
+this process is also executed automatically when you build the Edge installer ISO.
+
 ## Prerequisites
 
 - A physical or virtual Linux machine with AMD64 (also known as x86_64) processor architecture to build the Edge
