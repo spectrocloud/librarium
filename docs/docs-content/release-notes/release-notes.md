@@ -64,7 +64,8 @@ tags: ["release-notes"]
 
 - Introducing a validation tool for the install configuration **user-data** for Edge hosts. Errors in **user-data**
   files can lead to significant delays and troubleshooting efforts. This feature validates the user-data file for both
-  YAML formatting and schema compliance during build time to catch issues earlier.
+  YAML formatting and schema compliance during build time to catch issues earlier. For more information, refer to
+  [Validate User Data](../clusters/edge/edgeforge-workflow/)
 
 - This release introduces application and core dump support within Local UI, which allows downloads of crash core dumps
   for debugging and troubleshooting Edge hosts. Previously, gathering core dumps required elevated privileges and could
