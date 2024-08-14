@@ -219,9 +219,14 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 8. Click **Values** in the **Pack Details** section. The pack manifest editor appears.
 
-9. Locate the `pack.cdi` section in the manifest. Set `privateRegistry.enabled` to true, and add
-   `privateRegistry.registryIP` and `privateRegistry.registryBasePath` details according to your environment details.
-   This configures the pack to pull images from the provided private registry.
+9. Locate the `pack.cdi` section in the manifest. Configure the `pack.cdi.privateRegistry` option as in the snippet
+   below. This configures the pack to pull images from your airgap environment private registry.
+
+   | Field                                       | Description                                                          |
+   | ------------------------------------------- | -------------------------------------------------------------------- |
+   | `pack.cdi.privateRegistry.enabled`          | Flag to enable the profile to use the airgap private image registry. |
+   | `pack.cdi.privateRegistry.registryIP`       | The IP address the private image registry.                           |
+   | `pack.cdi.privateRegistry.registryBasePath` | The base path of the private image registry.                         |
 
    ```yaml
    cdi:
