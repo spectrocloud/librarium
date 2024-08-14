@@ -203,9 +203,10 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 6. Locate the **Virtual Machine Orchestrator** pack and add it to your profile.
 
-7. Review the **Access** configuration panel on the right. The default setting is **Proxied**, which automatically adds the
-   **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere. Check
-   out the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more.
+7. Review the **Access** configuration panel on the right. The default setting is **Proxied**, which automatically adds
+   the **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere.
+   Check out the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn
+   more.
 
    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
@@ -218,24 +219,24 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 8. Click **Values** in the **Pack Details** section. The pack manifest editor appears.
 
- Locate the `pack.cdi.privateRegistry` section in the manifest. The table below contains a brief description of each
-   field exposed by the private registry. Set the `pack.cdi.privateRegistry.enabled` field to true and fill in the
-   registry IP address and base path according to your environment. This configures the VMO pack to pull images from
-   your airgap environment private registry.
+Locate the `pack.cdi.privateRegistry` section in the manifest. The table below contains a brief description of each
+field exposed by the private registry. Set the `pack.cdi.privateRegistry.enabled` field to true and fill in the registry
+IP address and base path according to your environment. This configures the VMO pack to pull images from your airgap
+environment private registry.
 
-   | Field                                       | Description                                                          |
-   | ------------------------------------------- | -------------------------------------------------------------------- |
-   | `pack.cdi.privateRegistry.enabled`          | Flag to enable the profile to use the airgap private image registry. |
-   | `pack.cdi.privateRegistry.registryIP`       | The IP address the private image registry.                           |
-   | `pack.cdi.privateRegistry.registryBasePath` | The base path of the private image registry.                         |
+| Field                                       | Description                                                          |
+| ------------------------------------------- | -------------------------------------------------------------------- |
+| `pack.cdi.privateRegistry.enabled`          | Flag to enable the profile to use the airgap private image registry. |
+| `pack.cdi.privateRegistry.registryIP`       | The IP address the private image registry.                           |
+| `pack.cdi.privateRegistry.registryBasePath` | The base path of the private image registry.                         |
 
-   ```yaml
-   cdi:
-     privateRegistry:
-       enabled: true
-       registryIP: <REPLACE ME>
-       registryBasePath: <REPLACE ME>
-   ```
+```yaml
+cdi:
+  privateRegistry:
+    enabled: true
+    registryIP: <REPLACE ME>
+    registryBasePath: <REPLACE ME>
+```
 
 10. Click **Confirm & Create**.
 
