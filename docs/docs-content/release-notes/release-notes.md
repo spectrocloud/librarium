@@ -43,6 +43,8 @@ tags: ["release-notes"]
   separately. The change will also be reflected in the UI by merging DNS and certificate update functionalities onto a
   single page, enhancing user experience and functionality validation.
 
+- - The VMO airgap binary has moved out of Preview status into Production-ready state.
+
 #### Improvements
 
 - Improvements made to Palette reduced resource usage and improved the reliability and responsiveness of the cluster
@@ -70,11 +72,11 @@ tags: ["release-notes"]
 - This release introduces file download support within Local UI, which allows users to write files to a fixed path on
   the Edge host and download them from Local UI. Previously, gathering files from Edge hosts required elevated
   privileges and could be error-prone when executed manually. For more information, refer to
-  [Download Files from Local UI](../clusters/edge/local-ui/host-management/download-core-dump.md)
+  [Download Files from Local UI](../clusters/edge/local-ui/host-management/download-core-dump.md).
 
 - Palette agent on Edge hosts will now produce audit logs. This capability captures timestamped records for a variety of
   events, including authentication attempts, configuration changes, and cluster management activities. In addition, you
-  can program your own applications to send logs to the same location, and have Local UI display those applications. For
+  can program your own applications to send logs to the same location, and have Local UI display those log entries. For
   more information, refer to [Configure Audit Logs](../clusters/edge/local-ui/host-management/audit-logs.md).
 
 - Local UI will now display progress and status during cluster deployment. Users can now monitor key milestones in
@@ -148,6 +150,10 @@ tags: ["release-notes"]
 ### VerteX
 
 #### Features
+
+- Introducing new filter options to improve the pack selection experience within Palette and VerteX. Users can now
+  easily filter packs by "Verified" and "FIPS Compliant" status using toggles, facilitating quicker and more efficient
+  pack searches and selections.
 
 - A new API now allows users to update both DNS hosts and SSL certificates simultaneously in Palette and VerteX. This
   update addresses user-reported issues related to circular dependencies when updating DNS hosts and certificates
