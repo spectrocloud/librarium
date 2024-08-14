@@ -65,15 +65,17 @@ tags: ["release-notes"]
 - Introducing a validation tool for the install configuration **user-data** for Edge hosts. Errors in **user-data**
   files can lead to significant delays and troubleshooting efforts. This feature validates the user-data file for both
   YAML formatting and schema compliance during build time to catch issues earlier. For more information, refer to
-  [Validate User Data](../clusters/edge/edgeforge-workflow/)
+  [Validate User Data](../clusters/edge/edgeforge-workflow/validate-user-data.md).
 
-- This release introduces application and core dump support within Local UI, which allows downloads of crash core dumps
-  for debugging and troubleshooting Edge hosts. Previously, gathering core dumps required elevated privileges and could
-  be error-prone when executed manually.
+- This release introduces file download support within Local UI, which allows users to write files to a fixed path on
+  the Edge host and download them from Local UI. Previously, gathering files from Edge hosts required elevated
+  privileges and could be error-prone when executed manually. For more information, refer to
+  [Download Files from Local UI](../clusters/edge/local-ui/host-management/download-core-dump.md)
 
 - Palette agent on Edge hosts will now produce audit logs. This capability captures timestamped records for a variety of
   events, including authentication attempts, configuration changes, and cluster management activities. In addition, you
-  can program your own applications to send logs to the same location, and have Local UI display those applications.
+  can program your own applications to send logs to the same location, and have Local UI display those applications. For
+  more information, refer to [Configure Audit Logs](../clusters/edge/local-ui/host-management/audit-logs.md).
 
 - Local UI will now display progress and status during cluster deployment. Users can now monitor key milestones in
   real-time during the creation and updating of Edge clusters.
@@ -130,9 +132,18 @@ tags: ["release-notes"]
 
 ### Automation
 
-You will now receive a clear warning message in the terminal after issuing the `terraform plan` command if your action
-would result in a cluster repave. Previously, this notification is not available in Terraform-managed environments,
-leading to potential oversight by users.
+#### Features
+
+- A new tool for building CAPI images is now available. The CAPI Image Builder reduces the challenges associated with
+  creating images for Kubernetes clusters. It is based on the upstream
+  [Kubernetes Image Builder (KIB)](https://image-builder.sigs.k8s.io/introduction.html) project and includes all the
+  dependencies required to build FIPS and non-FIPS images within a Docker container.
+
+#### Improvements
+
+- You will now receive a clear warning message in the terminal after issuing the `terraform plan` command if your action
+  would result in a cluster repave. Previously, this notification is not available in Terraform-managed environments,
+  leading to potential oversight by users.
 
 ### VerteX
 
@@ -144,6 +155,12 @@ leading to potential oversight by users.
   single page, enhancing user experience and functionality validation.
 
 - The VMO airgap binary has moved out of Preview status into Production-ready state.
+
+### Docs and Education
+
+Palette's Go SDK now has a dedicated documentation section. The new section also includes a guide on how to install,
+configure, and use the SDK. This guide provides instructions and sample code for listing the active clusters in your
+Palette environment. Check out the Palette Go SDK documentation for more details.
 
 ## Jul 31, 2024 - Release 4.4.12
 
