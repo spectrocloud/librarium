@@ -191,9 +191,9 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 <TabItem value="airgap" label="Airgap">
 
-1. Log in to Palette using your configured system address.
+1. Log in to a tenant that belongs to your instance of Palette or Palette VerteX.
 
-2. Select **Profiles** in the left **Main Menu** and click the **Add Cluster Profile** button.
+2. In the **left Main Menu**, select **Profiles** and click **Add Cluster Profile**.
 
 3. Enter basic information for the profile: name, version if desired, and optional description.
 
@@ -203,10 +203,9 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 6. Locate the **Virtual Machine Orchestrator** pack and add it to your profile.
 
-7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the
+7. Review the **Access** configuration panel on the right. The default setting is **Proxied**, which automatically adds the
    **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere. Check
    out the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more.
-   Changing the default may require some additional configuration.
 
    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
@@ -219,7 +218,7 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 8. Click **Values** in the **Pack Details** section. The pack manifest editor appears.
 
-9. Locate the `pack.cdi.privateRegistry` section in the manifest. The table below contains a brief description of each
+ Locate the `pack.cdi.privateRegistry` section in the manifest. The table below contains a brief description of each
    field exposed by the private registry. Set the `pack.cdi.privateRegistry.enabled` field to true and fill in the
    registry IP address and base path according to your environment. This configures the VMO pack to pull images from
    your airgap environment private registry.
@@ -240,7 +239,7 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 10. Click **Confirm & Create**.
 
-11. In the following screen, click **Next**.
+11. On the following screen, click **Next**.
 
 12. Review the profile and click **Finish Configuration**.
 
