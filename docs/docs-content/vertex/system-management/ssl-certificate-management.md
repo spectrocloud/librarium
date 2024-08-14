@@ -18,9 +18,8 @@ with HTTPS using an auto-generated self-signed certificate.
 ## Update System Address and Certificates
 
 The Palette VerteX system console allows you to replace the self-signed certificate with a custom SSL certificate to
-secure these endpoints. Additionally, you can update the system address, which is the IP address or Fully Qualified
-Domain Name (FQDN) that you use to access your Palette installation. The system address and certificates may be updated
-simultaneously.
+secure these endpoints. Additionally, you can update the system address, which is the Fully Qualified Domain Name (FQDN)
+that you use to access your Palette installation. The system address and certificates may be updated simultaneously.
 
 :::info
 
@@ -70,7 +69,7 @@ You can update your Palette system address and SSL certificates by using the fol
 
 8. Click **Update** to save your changes.
 
-9. If you have any clusters deployed, make sure to reconcile the updated system address for each cluster. Refer to
+9. If you have any clusters deployed, you may need to reconcile the updated system address for each cluster. Refer to
    [Reconcile System Address on Deployed Clusters](#reconcile-system-address-on-deployed-clusters) for more information.
 
 You will receive an error message if the provided values are not valid. Once the certificate is uploaded successfully,
@@ -92,9 +91,10 @@ securely access the system console, VerteX dashboard, the gRPC endpoint, and the
 
 ## Reconcile System Address on Deployed Clusters
 
-Once you have updated your system address, you will need to manually update the API endpoint on each cluster that was
-deployed before the update. This enables the Palette agent to reconnect to the API at the newly configured system
-address.
+Once you have updated your system address, the clusters that were deployed before the upade will not be able to
+automatically reconnect to Palette if the old system address is no longer available. You will need to manually update
+the API endpoint on each cluster if this the case. This enables the Palette agent to reconnect to the API at the newly
+configured system address.
 
 ### Prerequisites
 
