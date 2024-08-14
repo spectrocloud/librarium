@@ -30,7 +30,7 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
 - The Edge host must not have an active cluster deployed on it.
 
 - The Edge installer ISO used to install Palette on the Edge host must
-  [enable initial configuration](../../edge-configuration/installer-reference.md#initial-configuration).
+  [enable initial configuration](../../edge-configuration/installer-reference.md#palette-agent-parameters).
 
 - A keyboard or another input device connected to the Edge host.
 
