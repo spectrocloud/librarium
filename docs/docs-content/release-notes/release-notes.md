@@ -24,11 +24,24 @@ tags: ["release-notes"]
   [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section of the Palette EC
   command documentation to learn more.
 
+- `nodeDrainTimeout` for clusters has been changed from 10 mins from the previous version to infinite.
+
+  - New clusters will have an infinite `nodeDrainTimeout` upon creation.
+  - Existing clusters will retain their existing `nodeDrainTimeout` until there is a new machine created in the control
+    plane through scaling, upgrading, or repaving, or when a worker node pool is added or scaled out.
+
+  If any pods fail to be drained, they will be stuck in the draining process and would require manual intervention.
+
 #### Features
 
 - Introducing new filter options to improve the pack selection experience within Palette and VerteX. Users can now
   easily filter packs by "Verified" and "FIPS Compliant" status using toggles, facilitating quicker and more efficient
   pack searches and selections.
+
+- A new API now allows users to update both DNS hosts and SSL certificates simultaneously in Palette and VerteX. This
+  update addresses user-reported issues related to circular dependencies when updating DNS hosts and certificates
+  separately. The change will also be reflected in the UI by merging DNS and certificate update functionalities onto a
+  single page, enhancing user experience and functionality validation.
 
 #### Improvements
 
@@ -114,7 +127,7 @@ tags: ["release-notes"]
 | MetalLB    | 0.14.5      |
 | Prometheus | 58.6.0      |
 
-### Terraform
+### Automation
 
 You will now receive a clear warning message in the terminal after issuing the `terraform plan` command if your action
 would result in a cluster repave. Previously, this notification is not available in Terraform-managed environments,
