@@ -13,7 +13,8 @@ Review these parameters to understand how to tailor the CAPI Image Builder to yo
 
 :::warning
 
-At this time, VMware vSphere is the only infrastructure provider supported by the CAPI Image Builder.
+At this time, VMware vSphere is the only supported infrastructure provider for the CAPI Image Builder, and only
+non-airgap workflows are available.
 
 :::
 

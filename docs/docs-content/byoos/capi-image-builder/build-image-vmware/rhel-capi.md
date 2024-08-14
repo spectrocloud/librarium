@@ -11,14 +11,11 @@ tags: ["operating system", "byoos", "profiles", "pxk", "vmware"]
 
 This guide will teach you how to use the [CAPI Image Builder](../capi-image-builder.md) tool to create a custom Red Hat
 Enterprise Linux (RHEL) image with [Palette eXtended Kubernetes (PXK)](../../../integrations/kubernetes.md) for VMware
-vSphere and then use this image to create a cluster profile. This guide covers both airgapped and non-airgapped
-workflows.
+vSphere and then use this image to create a cluster profile.
 
 :::preview
 
 :::
-
-<!-- missing: compatibility matrix. airgap. -->
 
 ## Prerequisites
 
@@ -40,9 +37,6 @@ workflows.
   - [curl](https://curl.se/docs/install.html)
 
 ## Build Custom Image
-
-<Tabs>
-<TabItem value="Non-Airgap" label="Non-Airgap">
 
 1.  Open up a terminal session in your Linux machine and download the CAPI Image Builder version `1.5.0`.
 
@@ -428,9 +422,3 @@ profile and deploy a VMware host cluster.
 1. Log in to the VMware vSphere environment and navigate to the **Inventory** view.
 
 2. Select the **VMs and Templates** tab and verify the custom RHEL 8 image is available.
-
-</TabItem>
-<TabItem value="Airgap" label="Airgap">
-
-</TabItem>
-</Tabs>
