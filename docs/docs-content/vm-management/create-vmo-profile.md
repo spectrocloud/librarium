@@ -193,7 +193,7 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 1.  Log in to a tenant that belongs to your instance of Palette or Palette VerteX.
 
-2.  In the **left Main Menu**, select **Profiles** and click **Add Cluster Profile**.
+2.  In the left **Main Menu**, select **Profiles** and click **Add Cluster Profile**.
 
 3.  Enter basic information for the profile: name, version if desired, and optional description.
 
@@ -288,7 +288,7 @@ You can validate the profile is created.
 
 <TabItem value="airgap" label="Airgap">
 
-1.  Log in to Palette using your configured system address.
+1.  Log in to a tenant that belongs to your instance of Palette or Palette VerteX.
 
 2.  Navigate to **Profiles** from the left **Main Menu**.
 
