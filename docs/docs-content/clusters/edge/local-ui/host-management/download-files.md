@@ -7,12 +7,13 @@ sidebar_position: 130
 tags: ["edge"]
 ---
 
-Palette Edge provides you with a fixed path where you can configure your applications to write files. These files can then be
-downloaded from Local UI.
+Palette Edge provides you with a fixed path where you can configure your applications to write files. These files can
+then be downloaded from Local UI.
 
-This is particularly useful if you want to access core dump files of your applications in the event of a crash. For example, if you
-have configured your applications to direct core dumps to the folder `/var/log/files` in the event of a crash, you can
-download the core dump files from Local UI for diagnostic purposes. You can also write any type of file to this directory; it is not limited to core dump files.
+This is particularly useful if you want to access core dump files of your applications in the event of a crash. For
+example, if you have configured your applications to direct core dumps to the folder `/var/log/files` in the event of a
+crash, you can download the core dump files from Local UI for diagnostic purposes. You can also write any type of file
+to this directory; it is not limited to core dump files.
 
 ## Prerequisites
 
