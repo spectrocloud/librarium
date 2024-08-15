@@ -254,7 +254,7 @@ If OS patching failure happens on an AWS cluster with Microk8s 1.27, use the fol
 
    The name of the partition is the partition at the start of the line before `on /boot/efi`: `/dev/xvda15`
 
-9. Issue the following command. Replace <partition-name> with the name of the partition.
+9. Issue the following command. Replace `partition-name` with the name of the partition.
 
    ```shell
    grub-install --efi-directory=/boot/efi <partition-name> --force

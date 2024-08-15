@@ -11,11 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## Aug 17, 2024 - Release 4.4.X
+## Aug 17, 2024 - Release 4.4.14
 
 <!-- Replace heading ID with the release version below -->
 
-### Palette {#release-4-4-REPLACE_ME}
+This release is specific to Palette Enterprise and does not apply to Palette VerteX.
+
+### Palette {#release-4-4-14}
 
 #### Breaking Changes
 
@@ -34,16 +36,16 @@ tags: ["release-notes"]
 
 #### Features
 
-- Introducing new filter options to improve the pack selection experience within Palette and VerteX. Users can now
-  easily filter packs by "Verified" and "FIPS Compliant" status using toggles, facilitating quicker and more efficient
-  pack searches and selections.
+- Introducing new filter options to improve the pack selection experience within Palette. Users can now easily filter
+  packs by "Verified" and "FIPS Compliant" status using toggles, facilitating quicker and more efficient pack searches
+  and selections.
 
-- A new API now allows users to update both DNS hosts and SSL certificates simultaneously in Palette and VerteX. This
-  update addresses user-reported issues related to circular dependencies when updating DNS hosts and certificates
-  separately. The change will also be reflected in the UI by merging DNS and certificate update functionalities onto a
-  single page, enhancing user experience and functionality validation.
+- A new API now allows users to update both DNS hosts and SSL certificates simultaneously in Palette. This update
+  addresses user-reported issues related to circular dependencies when updating DNS hosts and certificates separately.
+  The change will also be reflected in the UI by merging DNS and certificate update functionalities onto a single page,
+  enhancing user experience and functionality validation.
 
-- - The VMO airgap binary has moved out of Preview status into Production-ready state.
+- The VMO airgap binary has moved out of Preview status into Production-ready state.
 
 #### Improvements
 
@@ -146,21 +148,6 @@ tags: ["release-notes"]
 - You will now receive a clear warning message in the terminal after issuing the `terraform plan` command if your action
   would result in a cluster repave. Previously, this notification is not available in Terraform-managed environments,
   leading to potential oversight by users.
-
-### VerteX
-
-#### Features
-
-- Introducing new filter options to improve the pack selection experience within Palette and VerteX. Users can now
-  easily filter packs by "Verified" and "FIPS Compliant" status using toggles, facilitating quicker and more efficient
-  pack searches and selections.
-
-- A new API now allows users to update both DNS hosts and SSL certificates simultaneously in Palette and VerteX. This
-  update addresses user-reported issues related to circular dependencies when updating DNS hosts and certificates
-  separately. The change will also be reflected in the UI by merging DNS and certificate update functionalities onto a
-  single page, enhancing user experience and functionality validation.
-
-- The VMO airgap binary has moved out of Preview status into Production-ready state.
 
 ### Docs and Education
 
