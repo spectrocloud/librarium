@@ -23,7 +23,7 @@ Clusters with the VMO pack may experience VMs getting stuck in a continuous migr
 
 3. Select the VMO pack layer and click **Values** under the **Pack Details** section.
 
-4. Comment out the following lines under the `workloads: {}` section and click **Save**.
+4. Comment out the following lines under the `kubevirtResource` section and click **Save**.
 
    ```yaml
    workloads: {}
@@ -32,7 +32,25 @@ Clusters with the VMO pack may experience VMs getting stuck in a continuous migr
    #     - LiveMigrate
    ```
 
-5. Within a few minutes, the VMs will stop being stuck in the continuous migration loop.
+5. The KubeVirt custom resource may fail to update after changing the VMO pack values in the Palette UI. To ensure the
+   changes take effect, follow the [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) guide to
+   connect to your host cluster using the [kubectl](https://kubernetes.io/docs/tasks/tools/) CLI.
+
+6. In your terminal, issue the following command to edit the KubeVirt custom resource.
+
+   ```bash
+   kubectl edit kubevirt --namespace kubevirt
+   ```
+
+7. Comment out the following lines under the `spec` block and save the file.
+
+   ```yaml
+   # workloadUpdateStrategy:
+   #   workloadUpdateMethods:
+   #   - LiveMigrate
+   ```
+
+8. Within a few minutes, the VMs will stop being stuck in the continuous migration loop.
 
    :::warning
 
