@@ -17,6 +17,14 @@ instance of Palette and Palette VerteX.
   [Self-Hosted Palette Installation](../enterprise-version/install-palette/install-palette.md) and
   [Palette VerteX Installation](../vertex/install-palette-vertex/install-palette-vertex.md) guides for more information.
 
+  :::info
+
+  If your environment is configured to use an external proxy, you can use the **No Proxy** list to exclude any domains
+  or IP addresses from proxying. You have the option to set the No Proxy list during the Palette installation flow. This
+  is useful for scenarios where you know the IP addresses of your VMs load balancers before deployment.
+
+  :::
+
 - At least one tenant created for your airgap instance of Palette or Palette VerteX. Refer to
   [Tenant Management](../enterprise-version/system-management/tenant-management.md) for more information.
 

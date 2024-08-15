@@ -246,6 +246,51 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 12. Apply the profile to your cluster. For more information, refer to
     [Create a Cluster](../clusters/public-cloud/deploy-k8s-cluster.md).
 
+:::info
+
+If you want to use direct access in an environment configured to use an external proxy, you must exclude your cluster's
+load balancer IP range from proxy routing. Expand the following section to learn how you can configure your
+environment's no proxy list.
+
+   <details>
+      <summary>Configure the No Proxy list</summary>
+
+      1. Download the [Kubeconfig](../clusters/cluster-management/kubeconfig.md) file of the airgap support VM.
+
+      2. Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
+
+          ```shell
+          export KUBECONFIG=<path-to-downloaded-kubeconfig-file>
+          ```
+
+      3. Execute the following command to find the namespace which contains your environment proxy configuration. Make a note of the namespace.
+
+          ```shell
+          kubectl get podpreset --all-namespaces --field-selector=metadata.name=proxy
+          ```
+
+      4. Issue following command to edit the pod preset. Replace the placeholder with the namespace you found previously.
+
+          ```shell
+          kubectl edit podpreset proxy --namespace <namespace>
+          ```
+
+      5. Add your load balancer IP range to the `NO_PROXY` configuration under the `spec.env` section.
+
+          ```yaml
+          env:
+            - name: NO_PROXY
+              value: "REPLACE ME"
+          ```
+
+      6. Save your changes and close the editor.
+
+      Your configuration changes are automatically applied.
+
+   </details>
+   
+   :::
+
 </TabItem>
 
 </Tabs>
