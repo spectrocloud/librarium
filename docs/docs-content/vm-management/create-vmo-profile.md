@@ -250,7 +250,7 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 If you want to use direct access in an environment configured to use an external proxy, you must exclude your cluster's
 load balancer IP range from proxy routing. Expand the following section to learn how you can configure your
-environment's no proxy list.
+environment's No Proxy list.
 
    <details>
       <summary>Configure the No Proxy list</summary>
@@ -269,7 +269,7 @@ environment's no proxy list.
           kubectl get podpreset --all-namespaces --field-selector=metadata.name=proxy
           ```
 
-      4. Issue following command to edit the pod preset. Replace the placeholder with the namespace you found previously.
+      4. Issue following command to edit the pod preset. Replace the placeholder with the namespace you identified previously.
 
           ```shell
           kubectl edit podpreset proxy --namespace <namespace>
