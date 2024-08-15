@@ -8,8 +8,8 @@ sidebar_position: 10
 tags: ["vmo"]
 ---
 
-The Virtual Machine Orchestrator (VMO) pack is available for use in tenants that
-belong to your airgapped self-hosted instance of Palette and Palette VerteX.
+The Virtual Machine Orchestrator (VMO) pack is available for use in tenants that belong to your airgapped self-hosted
+instance of Palette and Palette VerteX.
 
 ## Prerequisites
 
