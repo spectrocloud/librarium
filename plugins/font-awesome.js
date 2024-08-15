@@ -86,7 +86,7 @@ async function pluginImportFontAwesomeIcons() {
         fs.mkdirSync(directory, { recursive: true });
       }
 
-      fs.writeFile(path.join(directory, "dynamicFontAwesomeImports.js"), fileContent, "utf8", (err) => {
+      fs.writeFile(path.join(directory, "dynamicFontAwesomeImports.ts"), fileContent, "utf8", (err) => {
         if (err) {
           console.error("An error occurred while writing the file:", err);
         }

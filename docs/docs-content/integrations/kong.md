@@ -10,33 +10,18 @@ logoUrl: "https://registry.spectrocloud.com/v1/kong/blobs/sha256:600f20583f85cca
 tags: ["packs", "kong", "network"]
 ---
 
-The Kong integration is an Ingress Controller for Kubernetes that configures ingress with a load balancer. You can use
-the Kong as an application load balancer for your application.
+## Terraform
 
-## Version Supported
+You can reference the Kong pack in Terraform with the following data resource.
 
-<Tabs queryString="versions">
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
 
-<TabItem label="2.13.x" value="2.13.x">
-
-- **2.13.1**
-
-</TabItem>
-
-<TabItem label="1.4.x" value="1.4.x">
-
-- **1.4.0**
-
-</TabItem>
-
-</Tabs>
-
-## Components
-
-The integration adds the Kong Ingress Controller, which exposes a Kubernetes service of type LoadBalancer.
-
-## References
-
-- [Kong Ingress Controller Documentation ](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers)
-
-- [Kong GitHub](https://github.com/Kong/kubernetes-ingress-controller)
+data "spectrocloud_pack" "kong" {
+  name    = "kong"
+  version = "2.38.0"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```

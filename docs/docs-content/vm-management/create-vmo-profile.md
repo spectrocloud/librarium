@@ -4,13 +4,13 @@ title: "Create a VMO Profile"
 description: "Learn how to create a cluster profile to utilize Palette Virtual Machine Orchestrator capabilities."
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 tags: ["vmo"]
 ---
 
-The **Virtual Machine Orchestrator** pack conveniently includes several components and automatically installs the
-[Spectro Proxy](../integrations/frp.md) pack when you use the default profile configuration. To learn about pack
-components, refer to [Palette VMO](./vm-management.md).
+<!-- prettier-ignore -->
+The **Virtual Machine Orchestrator** pack conveniently includes several components and automatically installs the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack when you use the default
+profile configuration. To learn about pack components, refer to [Palette VMO](./vm-management.md).
 
 ## Limitations
 
@@ -26,13 +26,37 @@ components, refer to [Palette VMO](./vm-management.md).
 
 ## Prerequisites
 
+<Tabs groupId="environment">
+
+<TabItem value="non-edge" label="Non-edge">
+
 - A Palette permission key `create` for the resource `clusterProfile`.
 
-- If you are creating an Edge cluster profile, your profile must have a Container Storage Interface (CSI) pack.
+</TabItem>
+
+<TabItem value="edge" label="Edge">
+
+- A Palette permission key `create` for the resource `clusterProfile`.
+
+- Your Edge cluster profile must have a Container Storage Interface (CSI) pack.
+
+</TabItem>
+
+<TabItem value="airgap" label="Airgap">
+
+- A Palette permission key `create` for the resource `clusterProfile`.
+
+- Ensure the VMO pack is installed in your airgap environment. Refer to the
+  [Install VMO in Airgap Environments](./install-vmo-in-airgap.md) guide for further information.
+
+</TabItem>
+
+</Tabs>
 
 ## Create the Profile
 
-<Tabs>
+<Tabs groupId="environment">
+
 <TabItem value="non-edge" label="Non-edge">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
@@ -49,8 +73,8 @@ components, refer to [Palette VMO](./vm-management.md).
 
 7. Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the
    **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere. Check
-   out the [Spectro Proxy](../integrations/frp.md) guide to learn more. Changing the default may require some additional
-   configuration.
+   out the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more.
+   Changing the default may require some additional configuration.
 
    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
@@ -86,12 +110,11 @@ components, refer to [Palette VMO](./vm-management.md).
 
 6.  Locate the **Virtual Machine Orchestrator** pack and add it to your profile.
 
+<!-- prettier-ignore -->
 7.  Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the
     **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere.
     Changing the default may require some additional configuration. Check out the
-    [Spectro Proxy](../integrations/frp.md) guide to learn more
-
-    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
+    <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more. The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
 
 8.  If you are using PKX-E, no change is required and you can skip this step.
 
@@ -107,14 +130,16 @@ components, refer to [Palette VMO](./vm-management.md).
         criSocketContainerPath: /host/run/containerd/containerd.sock
     ```
 
+<!-- prettier-ignore -->
 9.  If your cluster profile does include a load balancer such as MetalLB, no changes are required and you can skip this
-    step. For more information about MetalLB, refer to [MetalLB pack documentation](../integrations/metallb.md).
+    step. For more information about MetalLB, refer to the <VersionedLink text="MetalLB pack documentation" url="/integrations/packs/?pack=lb-metallb-helm" />
+
 
     If your cluster profile does not include a load balancer, update the services
     `charts.virtual-machine-orchestrator.kubevirt` and `charts.virtual-machine-orchestrator.cdi` to type ClusterIP in
     **values.yaml** for the VMO pack:
 
-          <Tabs>
+    <Tabs>
 
     <TabItem value="cdi" label="cdi">
 
@@ -133,9 +158,9 @@ components, refer to [Palette VMO](./vm-management.md).
         targetPort: 8443
     ```
 
-          </TabItem>
+    </TabItem>
 
-          <TabItem value="kubevirt" label="kubevirt">
+    <TabItem value="kubevirt" label="kubevirt">
 
     ```yaml {7}
     kubevirt:
@@ -149,7 +174,7 @@ components, refer to [Palette VMO](./vm-management.md).
         targetPort: 8443
     ```
 
-          </TabItem>
+    </TabItem>
 
     </Tabs>
 
@@ -164,11 +189,74 @@ components, refer to [Palette VMO](./vm-management.md).
 
 </TabItem>
 
+<TabItem value="airgap" label="Airgap">
+
+1.  Log in to a tenant that belongs to your instance of Palette or Palette VerteX.
+
+2.  In the left **Main Menu**, select **Profiles** and click **Add Cluster Profile**.
+
+3.  Enter basic information for the profile: name, version if desired, and optional description.
+
+4.  Select type **Add-on**, and click **Next**.
+
+5.  In the following screen, click **Add New Pack**.
+
+6.  Locate the **Virtual Machine Orchestrator** pack and add it to your profile.
+
+7.  Review the **Access** configuration panel on the right. The default setting is **Proxied**, which automatically adds
+    the **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere.
+    Check out the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn
+    more.
+
+    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
+
+    :::warning
+
+    We recommend using the pack defaults. Default settings provide best practices for your clusters. Changing the
+    default settings can introduce misconfigurations. Carefully review the changes you make to a pack.
+
+    :::
+
+8.  Click **Values** in the **Pack Details** section. The pack manifest editor appears. Locate the
+    `pack.cdi.privateRegistry` section in the manifest. The table below contains a brief description of each field
+    exposed by the private registry. Set the `pack.cdi.privateRegistry.enabled` field to true and fill in the registry
+    IP address and base path according to your environment. This configures the VMO pack to pull images from your airgap
+    environment private registry.
+
+        | Field                                       | Description                                                          |
+        | ------------------------------------------- | -------------------------------------------------------------------- |
+        | `pack.cdi.privateRegistry.enabled`          | Flag to enable the profile to use the airgap private image registry. |
+        | `pack.cdi.privateRegistry.registryIP`       | The IP address the private image registry.                           |
+        | `pack.cdi.privateRegistry.registryBasePath` | The base path of the private image registry.                         |
+
+        ```yaml
+        cdi:
+          privateRegistry:
+            enabled: true
+            registryIP: <REPLACE ME>
+            registryBasePath: <REPLACE ME>
+        ```
+
+9.  Click **Confirm & Create**.
+
+10. On the following screen, click **Next**.
+
+11. Review the profile and click **Finish Configuration**.
+
+12. Apply the profile to your cluster. For more information, refer to
+    [Create a Cluster](../clusters/public-cloud/deploy-k8s-cluster.md).
+
+</TabItem>
+
 </Tabs>
 
 ## Validate
 
 You can validate the profile is created.
+
+<Tabs groupId="environment">
+
+<TabItem value="non-edge" label="Non-edge">
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
@@ -180,6 +268,40 @@ You can validate the profile is created.
 
 5.  Based on your Single Sign-On (SSO) settings, the **Virtual Machines** tab may display on the **Cluster Overview**
     page, or the **Connect** button may display next to **Virtual Machines Dashboard** in cluster details.
+
+</TabItem>
+
+<TabItem value="edge" label="Edge">
+
+1.  Log in to [Palette](https://console.spectrocloud.com).
+
+2.  Navigate to **Profiles** from the left **Main Menu**.
+
+3.  Locate the newly created profile in the list.
+
+4.  From the left **Main Menu**, click **Clusters** and select your cluster.
+
+5.  Based on your Single Sign-On (SSO) settings, the **Virtual Machines** tab may display on the **Cluster Overview**
+    page, or the **Connect** button may display next to **Virtual Machines Dashboard** in cluster details.
+
+</TabItem>
+
+<TabItem value="airgap" label="Airgap">
+
+1.  Log in to a tenant that belongs to your instance of Palette or Palette VerteX.
+
+2.  Navigate to **Profiles** from the left **Main Menu**.
+
+3.  Locate the newly created profile in the list.
+
+4.  From the left **Main Menu**, click **Clusters** and select your cluster.
+
+5.  Based on your Single Sign-On (SSO) settings, the **Virtual Machines** tab may display on the **Cluster Overview**
+    page, or the **Connect** button may display next to **Virtual Machines Dashboard** in cluster details.
+
+</TabItem>
+
+</Tabs>
 
 ## Next Steps
 

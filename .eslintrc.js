@@ -1,6 +1,6 @@
 module.exports = {
   env: { browser: true, es2015: true, node: true },
-  settings: { "import/resolver": "webpack" },
+  settings: { "import/resolver": "webpack", react: { version: "detect" } },
   extends: ["eslint:recommended", "plugin:react/recommended", "prettier"],
   overrides: [
     {

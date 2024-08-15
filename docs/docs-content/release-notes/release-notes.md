@@ -13,7 +13,23 @@ tags: ["release-notes"]
 
 ## Aug 17, 2024 - Release 4.4.X
 
-TBA
+<!-- Replace heading ID with the release version below -->
+
+### Palette {#release-4-4-REPLACE_ME}
+
+#### Breaking Changes
+
+- The Palette CLI no longer has the `validator` command. To validate your self-hosted Palette or VerteX deployment, use
+  the `ec` command instead with the `--validate` flag. Refer to the
+  [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section of the Palette EC
+  command documentation to learn more.
+
+## Jul 31, 2024 - Release 4.4.12
+
+#### Bug Fixes
+
+- Fixed an issue where the Palette agent would fail to pull Helm charts from private registries when initializing Edge
+  clusters.
 
 ## Jul 20, 2024 - Release 4.4.11
 
@@ -244,8 +260,7 @@ features and improvements.
 - Validator Helm Charts have migrated from `https://github.com/spectrocloud-labs/validator` to
   `https://github.com/validator-labs/validator`. Former versions of the Palette CLI will point to the former repository
   when prompted for the Helm chart location and require a manual URL change. The new version of the Palette CLI will
-  point to the new repository. Refer to the [Validator](../automation/palette-cli/commands/validator.md) CLI page
-  documentation for more details.
+  point to the new repository.
 
 - Due to the removal of GKE Kubernetes patch versions, it's critical you update existing cluster profiles to use the new
   GKE Kubernetes packs to avoid issues. Active clusters using old GKE Kubernetes pack versions may encounter problems
@@ -257,7 +272,7 @@ features and improvements.
 - <TpBadge /> The MicroK8s pack layer now exposes `bootCommands`, `preRunCommands` and `postRunCommands`. You can use
   these commands to customize and configure MicroK8s as needed. MicroK8s is delivered as a Technical Preview for AWS and
   Canonical MAAS in this release. To learn more, refer to the MicroK8s pack
-  [documentation](../integrations/microk8s.md).
+  <VersionedLink text="documentation" url="/integrations/packs/?pack=kubernetes-microk8s" />.
 
 #### Improvements
 
@@ -300,12 +315,13 @@ features and improvements.
 - An issue prevents RKE2 and Palette eXtended Kubernetes (PXK) on version 1.29.4 from operating correctly with Canonical
   MAAS. A temporary workaround is using a version lower than 1.29.4 when using MAAS..
 
-- [MicroK8s](../integrations/microk8s.md) does not support a multi-node cluster deployment and is limited to a
-  single-node cluster. As a result, the only supported upgrade strategy is `InPlaceUpgrade`.
+- <VersionedLink text="MicroK8s" url="/integrations/packs/?pack=kubernetes-microk8s" /> does not support a multi-node
+  cluster deployment and is limited to a single-node cluster. As a result, the only supported upgrade strategy is
+  `InPlaceUpgrade`.
 
-- Clusters using [MicroK8s](../integrations/microk8s.md) as the Kubernetes distribution, the control plane node fails to
-  upgrade when using the `InPlaceUpgrade` strategy for sequential upgrades, such as upgrading from version 1.25.x to
-  version 1.26.x and then to version 1.27.x. Refer to the
+- Clusters using <VersionedLink text="MicroK8s" url="/integrations/packs/?pack=kubernetes-microk8s"/> as the Kubernetes
+  distribution, the control plane node fails to upgrade when using the `InPlaceUpgrade` strategy for sequential
+  upgrades, such as upgrading from version 1.25.x to version 1.26.x and then to version 1.27.x. Refer to the
   [Control Plane Node Fails to Upgrade in Sequential MicroK8s Upgrades](../troubleshooting/pack-issues.md)
   troubleshooting guide for resolution steps.
 

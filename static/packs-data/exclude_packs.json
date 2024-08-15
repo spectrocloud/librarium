@@ -1,0 +1,15 @@
+[
+  "palette-upgrader",
+  "csi-aws-new",
+  "csi-portworx-gcp",
+  "csi-portworx-aws",
+  "csi-portworx-vsphere",
+  "csi-rook-ceph-helm",
+  "csi-rook-ceph-helm-addon",
+  "calico-networking",
+  "ubuntu-k3s",
+  "ubuntu-coxedge",
+  "edge-os",
+  "spectro-zen-of-k8s",
+  "spectro-mgmt"
+]

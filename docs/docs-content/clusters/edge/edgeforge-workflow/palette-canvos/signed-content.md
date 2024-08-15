@@ -75,8 +75,12 @@ your Edge hosts come from a trusted source. For more information about content b
 5. In **CanvOS**, create a file named **.edge_custom_config.yaml**.
 
 6. Populate the YAML file with the following content. Replace the value for `base64EncodedValue` with the base64 encoded
-   value of your public key. The PEM format is base64 encoded. If you have your public key in the PEM format, you only
-   need to copy the base64 portion of the key, without the header nor footer.
+   value of your public key. You can convert your PEM file to base64 using this command replacing `sample.pem` with your
+   filename.
+
+   ```bash
+   base64 -w 0 sample-key.pem
+   ```
 
    ```yaml
    content:

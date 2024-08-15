@@ -32,11 +32,20 @@ deep-clean: ## Clean all artifacts
 	rm -rf node_modules build public .cache .docusaurus
 	npm run clear && npm run clean-api-docs
 	docker image rm $(IMAGE) || echo "No image exists."
+	rm -rfv static/img/packs
+
+clean-logos: ## Clean logos
+	rm -rf static/img/packs
 
 clean-versions: ## Clean Docusarus content versions
 	@echo "cleaning versions"
 	rm -rf api_versions.json versions.json versioned_docs versioned_sidebars api_versioned_sidebars api_versioned_docs versioned_partials
 	git checkout -- docusaurus.config.js static/robots.txt
+
+
+clean-packs: ## Clean supplemental packs and pack images
+	rm -rf static/img/packs
+	rm -rf .docusaurus/packs-integrations/api_pack_response.json
 
 clean-api: ## Clean API docs
 	@echo "cleaning api docs"
@@ -163,7 +172,7 @@ pdf-local: ## Generate PDF from local docs
 verify-url-links:
 	@echo "Checking for broken external URLs in markdown files..."
 	rm link_report.csv || echo "No report exists. Proceeding to scan step"
-	@npx linkinator "docs/**/*.md" --markdown --recurse --timeout 60000 --retry --retry-errors-jitter --retry-errors-count 3 \
+	@npx linkinator "docs/**/*.md" --concurrency 50 --markdown --recurse --timeout 100000 --retry --retry-errors-jitter --retry-errors-count 5 \
 		--skip "^https:\/\/docs\.spectrocloud\.com.*$$" \
 		--skip "^https:\/\/docs\.spectrocloud\.com\/.*\/supplemental\-packs$$" \
 		--skip "^http:\/\/docs\.spectrocloud\.com.*$$" \
@@ -181,7 +190,7 @@ verify-url-links:
 verify-url-links-ci: ## Check for broken URLs in production in a GitHub Actions CI environment
 	@echo "Checking for broken external URLs in CI environment..."
 	rm link_report.json || echo "No report exists. Proceeding to scan step"
-	@npx linkinator "docs/**/*.md" --markdown --recurse --timeout 60000 --retry-errors-jitter --retry --retry-errors-count 5 \
+	@npx linkinator "docs/**/*.md" --concurrency 50 --markdown --recurse --timeout 100000 --retry-errors-jitter --retry --retry-errors-count 5 \
 		--skip "^https:\/\/docs\.spectrocloud\.com.*$$" \
 		--skip "^https:\/\/docs\.spectrocloud\.com\/.*\/supplemental\-packs$$" \
 		--skip "^http:\/\/docs\.spectrocloud\.com.*$$" \
