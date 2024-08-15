@@ -8,7 +8,7 @@ sidebar_position: 10
 tags: ["vmo"]
 ---
 
-This guide explains how you can make the Virtual Machine Orchestrator (VMO) pack available for use in tenants that
+The Virtual Machine Orchestrator (VMO) pack is available for use in tenants that
 belong to your airgapped self-hosted instance of Palette and Palette VerteX.
 
 ## Prerequisites
@@ -24,7 +24,7 @@ belong to your airgapped self-hosted instance of Palette and Palette VerteX.
 
 - Access to the Palette system console.
 
-## Install VMO in Airgap Environments
+## Enablement
 
 1. In your terminal, use the following command template to SSH into the Palette airgap support VM. Enter the path to
    your private SSH key, username, and the IP or domain of the airgap support VM. The default username is `ubuntu`.
@@ -39,7 +39,7 @@ belong to your airgapped self-hosted instance of Palette and Palette VerteX.
    ssh -identity_file /docs/ssh-private-key.pem ubuntu@palette.example.com
    ```
 
-2. Use the following command to switch to the `root` user account.
+2. Execute the following command to switch to the `root` user account.
 
    ```shell
    sudo --login
@@ -55,7 +55,7 @@ belong to your airgapped self-hosted instance of Palette and Palette VerteX.
 
 5. Log in to the Palette system console.
 
-6. From the **left Main Menu**, select **Administration**, and then select the **Pack Registries** tab.
+6. From the left **Main Menu**, select **Administration**, and then select the **Pack Registries** tab.
 
 7. Select the **three-dots Menu** of **spectro-packs** and click **Sync**.
 
@@ -68,7 +68,7 @@ belong to your airgapped self-hosted instance of Palette and Palette VerteX.
 
 1. Log in to a tenant that belongs to your airgapped instance of Palette or Palette VerteX.
 
-2. From the **left Main Menu**, select **Profiles** and click **Add Cluster Profile**.
+2. From the left **Main Menu**, select **Profiles** and click **Add Cluster Profile**.
 
 3. Follow the [Create a VMO Profile](./create-vmo-profile.md) guide to start creating a VMO add-on profile.
 
