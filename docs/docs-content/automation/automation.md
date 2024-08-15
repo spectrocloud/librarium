@@ -16,8 +16,7 @@ This section contains documentation and guides for tools essential in automating
   [self-hosted Palette](../enterprise-version/enterprise-version.md) instance and deploying a
   [Private Cloud Gateway](../clusters/pcg/pcg.md).
 
-- Palette Go SDK - Provides client configuration through a set of public libraries, enabling Go developers to interact
-  with Palette services.
+- Palette Go SDK - Enables developers to interact with Palette APIs for automated resource management using Go.
 
 - Palette Terraform Provider - Allows users to use [Terraform](https://www.terraform.io) for automating the deployment
   and management of Palette resources such as cluster profiles, cloud accounts, clusters, and more.

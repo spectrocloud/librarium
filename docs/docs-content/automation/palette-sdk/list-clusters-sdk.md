@@ -71,13 +71,13 @@ explains how to install and use the SDK to list the active host clusters in your
 
         // Read environment variables
 
-        host := os.Getenv("host")
-        apiKey := os.Getenv("apiKey")
-        projectUid := os.Getenv("projectUid")
+        host := os.Getenv("PALETTE_HOST")
+        apiKey := os.Getenv("PALETTE_API_KEY")
+        projectUid := os.Getenv("PALETTE_PROJECT_UID")
         scope := "tenant"
 
         if host == "" || apiKey == "" {
-            fmt.Println("Please specify a host and apiKey as environment variables")
+            fmt.Println("You must specify the PALETTE_HOST and PALETTE_API_KEY environment variables.")
             os.Exit(1)
         }
         if projectUid != "" {
@@ -142,8 +142,8 @@ explains how to install and use the SDK to list the active host clusters in your
     Palette URL, such as `console.spectrocloud.com`, and `<your-palette-api-key>` with your API key.
 
     ```bash
-    export apiKey=<your-palette-api-key>
-    export host=<your-palette-host-url>
+    export PALETTE_API_KEY=<your-palette-api-key>
+    export PALETTE_HOST=<your-palette-host-url>
     ```
 
 8.  Issue the following command to execute the application.
@@ -158,7 +158,7 @@ explains how to install and use the SDK to list the active host clusters in your
     command-scoped environment variables.
 
         ```bash
-        apiKey=<your-palette-api-key> host=<your-palette-host-url> go run .
+        PALETTE_API_KEY=<your-palette-api-key> PALETTE_HOST=<your-palette-host-url> go run .
         ```
 
     :::
