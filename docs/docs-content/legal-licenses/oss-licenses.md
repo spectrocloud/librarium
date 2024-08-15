@@ -751,5 +751,4 @@ have any questions or concerns, contact us at support@spectrocloud.com.
 | sigs.k8s.io/yaml                                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                                               |
 | sigs.k8s.io/yaml/goyaml.v2                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                                               |
 
-
 <!-- vale on -->
