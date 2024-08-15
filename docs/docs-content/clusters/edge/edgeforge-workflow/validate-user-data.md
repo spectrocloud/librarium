@@ -11,7 +11,7 @@ After preparing or modifying your **user-data** file, you can validate your user
 installer ISO. This allows you to be confident that your user data follows the expected schema and avoid having to
 rebuild Edge artifacts due to user data errors. The following issues will be flagged through validation:
 
-- YAML formatting issues. This includes
+- YAML formatting issues.
 - Omission of the `#cloud-config` header.
 - Missing required fields or fields containing incorrect data types.
 
