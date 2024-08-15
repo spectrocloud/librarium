@@ -46,8 +46,8 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 - A Palette permission key `create` for the resource `clusterProfile`.
 
-- Ensure the VMO pack is installed in your airgap environment. Refer to the Install VMO in Airgap Environments guide for
-  further information.
+- Ensure the VMO pack is installed in your airgap environment. Refer to the
+  [Install VMO in Airgap Environments](./install-vmo-in-airgap.md) guide for further information.
 
 </TabItem>
 
