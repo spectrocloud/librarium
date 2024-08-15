@@ -74,8 +74,8 @@ example, if your user data contained an expired registration token, this will no
 ```
 
 If the data does not pass the validation, the output will display the encountered error. For example, if the
-`stylus.registryCredentials.password` field is present but no value is provided, the following error will be displayed in the
-output.
+`stylus.registryCredentials.password` field is present but no value is provided, the following error will be displayed
+in the output.
 
 ```
 Error: invalid JSON: stylus.registryCredentials.password: Invalid type. Expected: string, given: null
