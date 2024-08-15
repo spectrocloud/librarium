@@ -10,8 +10,8 @@ tags: ["operating system", "byoos", "capi iamge builder"]
 
 This page contains guides on how to use the CAPI Image Builder tool to create images for Palette and VerteX. The CAPI
 Image Builder can be used to build images for Kubernetes clusters deployed through Palette and VerteX that target VMware
-vSphere. We encourage you to review the [Configuration Reference](../config-reference.md) for more information on how to
-configure the CAPI Image Builder.
+vSphere. We encourage you to review the [Configuration Reference](../config-reference.md) and
+[Compatibility Matrix](../comp-matrix-capi-builder.md) for more information on how to configure the CAPI Image Builder.
 
 :::preview
 

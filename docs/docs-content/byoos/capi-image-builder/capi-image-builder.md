@@ -29,3 +29,5 @@ CAPI Image Builder tool to create an OS image for Kubernetes clusters that targe
 - [Build Image for VMware vSphere](./build-image-vmware/build-image-vmware.md)
 
 - [Configuration Reference](./config-reference.md)
+
+- [Compatibility Matrix](./comp-matrix-capi-builder.md)
