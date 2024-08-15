@@ -15,7 +15,6 @@ rebuild Edge artifacts due to user data errors. The following issues will be fla
 - Omission of the `#cloud-config` header.
 - Missing required fields or fields containing incorrect data types.
 
-
 This guide provides instructions on how to validate the user data manually without triggering an actual build. However,
 this process is also executed automatically when you build the Edge installer ISO.
 
@@ -61,7 +60,6 @@ download the Palette Edge CLI.
 
 </Tabs>
 
-
 If the output is similar to the following, it means that the user data is valid and will be applied to the Edge host.
 
 :::warning
@@ -74,7 +72,7 @@ example, if your user data contained an expired registration token, this will no
 ```hideClipboard
 +validate-user-data | time=*2024-07-25T20:19:172* level=info msg="Validation successful"
 ```
-  
+
 If the data does not pass the validation, the output will display the error found. For example, if you have the
 `stylus.registryCredentials.password` field and does not provide a value, the following error will be displayed in the
 output.
