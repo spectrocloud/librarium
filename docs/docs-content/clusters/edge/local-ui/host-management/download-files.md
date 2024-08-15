@@ -1,19 +1,18 @@
 ---
-sidebar_label: "Download Files from Local II"
-title: "Download Files from Local UI."
+sidebar_label: "Download Files from Local UI"
+title: "Download Files from Local UI"
 description: "Instructions for downloading files from Local UI."
 hide_table_of_contents: false
 sidebar_position: 130
 tags: ["edge"]
 ---
 
-Palette Edge provides you with a fixed path where you can configure your applications to write files. These files can be
+Palette Edge provides you with a fixed path where you can configure your applications to write files. These files can then be
 downloaded from Local UI.
 
-This is particularly useful if you want to access core dump files of your applications in the event of a crash. If you
+This is particularly useful if you want to access core dump files of your applications in the event of a crash. For example, if you
 have configured your applications to direct core dumps to the folder `/var/log/files` in the event of a crash, you can
-download the core dump files from Local UI for diagnostic purposes. However, you can write any file into the directory
-and they do not necessarily need to be core dump files.
+download the core dump files from Local UI for diagnostic purposes. You can also write any type of file to this directory; it is not limited to core dump files.
 
 ## Prerequisites
 
@@ -23,9 +22,9 @@ and they do not necessarily need to be core dump files.
 - An operational Edge host installed in the `airgap` mode. For more information, refer to
   [Installer Reference](../../edge-configuration/installer-reference.md).
 
-- Network access to your Edge host's Local UI port. The default port is 5080.
+- Network access to your Edge host's Local UI port. The default port is `5080`.
 
-## Procedure
+## Enablement
 
 1. Log in to Local UI. For more information, refer to [Access Local UI Console](./access-console.md).
 
