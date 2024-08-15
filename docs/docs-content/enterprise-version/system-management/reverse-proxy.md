@@ -13,9 +13,8 @@ You can configure a reverse proxy for Palette. The reverse proxy can be used by 
 network. Host clusters deployed in a private network are not accessible from the public internet or by users in
 different networks. You can use a reverse proxy to access the cluster's Kubernetes API server from a different network.
 
-When you configure reverse proxy server for Palette, clusters that use the
-[Spectro Proxy pack](../../integrations/frp.md) will use the reverse proxy server address in the kubeconfig file.
-Clusters not using the Spectro Proxy pack will use the default cluster address in the kubeconfig file.
+<!-- prettier-ignore -->
+When you configure reverse proxy server for Palette, clusters that use the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack will use the reverse proxy server address in the kubeconfig file. Clusters not using the Spectro Proxy pack will use the default cluster address in the kubeconfig file.
 
 Use the following steps to configure a reverse proxy server for Palette.
 
@@ -206,8 +205,9 @@ Output
 204
 ```
 
+<!-- prettier-ignore -->
 You now have a Spectro Proxy server that you can use to access Palette clusters deployed in a different network. Make
-sure you add the [Spectro Proxy pack](../../integrations/frp.md) to the clusters you want to access using the Spectro
+sure you add the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack to the clusters you want to access using the Spectro
 Proxy server.
 
 ## Validate

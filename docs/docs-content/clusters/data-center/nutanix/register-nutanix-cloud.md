@@ -118,10 +118,9 @@ Use the following steps to prepare to register your cloud with Palette.
 
    :::
 
-8. In **controlPlanePoolTemplate.yaml**, edit the KubeadmControlPlane object to enable the
-   [**Nutanix CSI**](../../../integrations/nutanix-csi.md) pack. Include a new line with the
-   `- systemctl enable --now iscsid` command below the `preKubeadmCommands:` line, keeping proper indentation as
-   illustrated below.
+8. In **controlPlanePoolTemplate.yaml**, edit the KubeadmControlPlane object to enable the **Nutanix CSI** pack. Include
+   a new line with the `- systemctl enable --now iscsid` command below the `preKubeadmCommands:` line, keeping proper
+   indentation as illustrated below.
 
    ```bash
    preKubeadmCommands:
@@ -131,10 +130,9 @@ Use the following steps to prepare to register your cloud with Palette.
 9. In **workerPoolTemplate.yaml**, change `providerID` to `providerID: nutanix://${CLUSTER_NAME}-m1-mt-0` within the
    `NutanixMachineTemplate` object.
 
-10. In **workerPoolTemplate.yaml**, edit the KubeadmConfigTemplate object to enable the
-    [**Nutanix CSI**](../../../integrations/nutanix-csi.md) pack. Include a new line with the
-    `- systemctl enable --now iscsid` command below the `preKubeadmCommands:` line, keeping proper indentation as
-    illustrated below.
+10. In **workerPoolTemplate.yaml**, edit the KubeadmConfigTemplate object to enable the **Nutanix CSI** pack. Include a
+    new line with the `- systemctl enable --now iscsid` command below the `preKubeadmCommands:` line, keeping proper
+    indentation as illustrated below.
 
     ```bash
     preKubeadmCommands:
@@ -229,8 +227,7 @@ Nutanix cloud to Palette. Alternatively, you can use an API platform such as [Po
    The CLOUD_TYPE variable value must be set as `nutanix`, as this value will be used in the following steps.
 
    Moreover, in the cloud registration API, set `name` as `nutanix`. Setting `name` as `nutanix` will make the
-   out-of-the-box [**Nutanix CSI**](../../../integrations/nutanix-csi.md) pack available to users when they create a
-   cluster profile in Palette.
+   out-of-the-box **Nutanix CSI** pack available to users when they create a cluster profile in Palette.
 
    :::
 
