@@ -49,7 +49,7 @@ sudo ./earthly.sh +validate-user-data
 <TabItem value="Palette Edge CLI">
 
 From the directory where the Palette Edge CLI executable is present, issue the following command. Replace
-`path-to-user-data` with the path to your user-data file. Refer to [Downloads](../../../spectro-downloads.md) to
+`<path-to-user-data>` with the path to your user-data file. Refer to [Downloads](../../../spectro-downloads.md) to
 download the Palette Edge CLI.
 
 ```shell
@@ -73,8 +73,8 @@ example, if your user data contained an expired registration token, this will no
 +validate-user-data | time=*2024-07-25T20:19:172* level=info msg="Validation successful"
 ```
 
-If the data does not pass the validation, the output will display the error found. For example, if you have the
-`stylus.registryCredentials.password` field and does not provide a value, the following error will be displayed in the
+If the data does not pass the validation, the output will display the encountered error. For example, if the
+`stylus.registryCredentials.password` field is present but no value is provided, the following error will be displayed in the
 output.
 
 ```
