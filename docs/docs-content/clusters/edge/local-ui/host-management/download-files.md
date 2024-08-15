@@ -33,7 +33,7 @@ and they do not necessarily need to be core dump files.
 
 3. Click on the **Files** tab.
 
-4. Check the files you'd like to download.
+4. Check the files you would like to download.
 
 5. Click the **Download** button in the upper-right corner.
 
