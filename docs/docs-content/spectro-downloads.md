@@ -37,4 +37,3 @@ the [Palette CLI](./automation/palette-cli/palette-cli.md) document for installa
 | 4.4.6   | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.4.6/cli/linux/palette-edge) | `6bf798ce0fc1910cfb0ad3b5e2d949d46fa7d1948372120cc82ae323b14898aa`  |
 | 4.4.4   | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.4.4/cli/linux/palette-edge) | `3dae63e503251ff0d8a85c596cddf9c45ac29ca341d0f4d47756c865121fcdb9`  |
 | 4.4.2   | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.4.2/cli/linux/palette-edge) | `86d2f9239d2b8517dc6d750631a3a328136a5d49a8ec042899879e9bd25a396e`  |
-
