@@ -141,7 +141,8 @@ This release is specific to Palette Enterprise and does not apply to Palette Ver
 - A new tool for building CAPI images is now available. The CAPI Image Builder reduces the challenges associated with
   creating images for Kubernetes clusters. It is based on the upstream
   [Kubernetes Image Builder (KIB)](https://image-builder.sigs.k8s.io/introduction.html) project and includes all the
-  dependencies required to build FIPS and non-FIPS images within a Docker container.
+  dependencies required to build FIPS and non-FIPS images within a Docker container. For more information, refer to
+  [CAPI Image Builder](https://deploy-preview-3523--docs-spectrocloud.netlify.app/byoos/capi-image-builder/).
 
 #### Improvements
 
@@ -153,7 +154,8 @@ This release is specific to Palette Enterprise and does not apply to Palette Ver
 
 Palette's Go SDK now has a dedicated documentation section. The new section also includes a guide on how to install,
 configure, and use the SDK. This guide provides instructions and sample code for listing the active clusters in your
-Palette environment. Check out the Palette Go SDK documentation for more details.
+Palette environment. Check out the [Palette Go SDK documentation](../automation/palette-sdk/palette-sdk.md) for more
+details.
 
 ## Jul 31, 2024 - Release 4.4.12
 
