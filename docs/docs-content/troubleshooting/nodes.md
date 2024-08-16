@@ -221,13 +221,13 @@ To resolve this issue, use the following steps:
 
 ### OS Patch Fails on AWS with Microk8s 1.27
 
-If OS patching failure happens on an AWS cluster with Microk8s 1.27, use the following debug steps to resolve the issue.
+If OS patching fails on an AWS cluster with Microk8s 1.27, use the following debug steps to resolve the issue.
 
 #### Debug Steps
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From left **Main Menu**, select **Clusters**.
+2. Navigate to the left **Main Menu** and select **Clusters**.
 
 3. Select the cluster that is experiencing the issue and click on its row to access the cluster details page.
 
@@ -246,7 +246,7 @@ If OS patching failure happens on an AWS cluster with Microk8s 1.27, use the fol
    mount | grep /boot/efi
    ```
 
-   The command will produce output similar to the following.
+   The command produces output similar to the following.
 
    ```
    /dev/xvda15 on /boot/efi type vfat (rw,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro)
