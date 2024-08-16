@@ -17,7 +17,7 @@ tags: ["release-notes"]
 
 This release is specific to Palette Enterprise and does not apply to Palette VerteX.
 
-### Palette {#release-4-4-14}
+### Palette Enterprise {#release-4-4-14}
 
 #### Breaking Changes
 
@@ -149,6 +149,14 @@ This release is specific to Palette Enterprise and does not apply to Palette Ver
 - You will now receive a clear warning message in the terminal after issuing the `terraform plan` command if your action
   would result in a cluster repave. Previously, this notification is not available in Terraform-managed environments,
   leading to potential oversight by users.
+
+### Virtual Machine Orchestrator
+
+#### Features
+
+- The Virtual Machine Orchestrator (VMO) pack is now available for use in tenants that belong to your airgapped
+  self-hosted instance of Palette. For more information, refer to
+  [Install VMO in Airgap Environments](../vm-management/install-vmo-in-airgap.md).
 
 ### Docs and Education
 
