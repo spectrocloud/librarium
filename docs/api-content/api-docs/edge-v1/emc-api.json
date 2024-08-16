@@ -568,7 +568,7 @@
       "get": {
         "description": "Get the base64 encoded key used to verify the signed content.",
         "tags": [
-          "content"
+          "edge-mgmt"
         ],
         "summary": "Get the public key used to verify the signed content.",
         "operationId": "V1GetContentSigningPublicKey",
@@ -1004,7 +1004,7 @@
       "get": {
         "description": "Get general settings",
         "tags": [
-          "settings"
+          "edge-mgmt"
         ],
         "summary": "Get general settings",
         "operationId": "v1Settings",

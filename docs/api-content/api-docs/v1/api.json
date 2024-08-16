@@ -68066,7 +68066,7 @@
         ],
         "summary": "Cluster configuration for the edge installer",
         "tags": [
-          "v1"
+          "spectroclusters"
         ]
       }
     },
@@ -79358,7 +79358,7 @@
         ],
         "summary": "Returns the users system feature",
         "tags": [
-          "v1"
+          "users"
         ]
       }
     },
