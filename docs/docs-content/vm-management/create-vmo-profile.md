@@ -250,10 +250,10 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 If you want to use direct access in an environment configured to use an external proxy, you must exclude your cluster's
 load balancer IP range from proxy routing. Expand the following section to learn how you can configure your
-environment's No Proxy list.
+environment's **No Proxy** list.
 
    <details>
-      <summary>Configure the No Proxy list</summary>
+      <summary>Configure the **No Proxy** list</summary>
 
       1. Download the [Kubeconfig](../clusters/cluster-management/kubeconfig.md) file of the airgap support VM.
 
