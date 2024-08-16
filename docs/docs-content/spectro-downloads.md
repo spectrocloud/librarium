@@ -9,7 +9,7 @@ sidebar_custom_props:
 tags: ["downloads"]
 ---
 
-The following Palette downloads are available:
+The following Palette downloads are available.
 
 ## Self-Hosted
 
