@@ -16,6 +16,8 @@ This page lists the version details of various Palette components and their resp
 
 | Palette Release | Recommended CLI Version |
 | --------------- | ----------------------- |
+| Release 4.4.14  | v4.4.6                  |
+| Release 4.4.12  | v4.4.6                  |
 | Release 4.4.11  | v4.4.5                  |
 | Release 4.4.4   | v4.4.0                  |
 | Release 4.3.x   | v4.3.4                  |
@@ -29,6 +31,8 @@ This page lists the version details of various Palette components and their resp
 
 | Palette Release | CLI Version |
 | --------------- | ----------- |
+| Release 4.4.14  | v4.4.8      |
+| Release 4.4.12  | v4.4.7      |
 | Release 4.4.11  | v4.4.4      |
 | Release 4.4.2   | v4.4.4      |
 | Release 4.3.x   | v4.3.2      |
