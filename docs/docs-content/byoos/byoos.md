@@ -17,8 +17,28 @@ compliance, or specific hardware configurations.
 The ability to bring your own OS to Palette gives you more control over dependencies in your environment and ensures
 compatibility with your existing applications. The OS you bring can be commercial or an open-source distribution.
 
+## Get Started
+
+To get started with BYOOS, you need to create an OS image and make it available to Palette or VerteX. Review the
+[Create Images with Image Builder](../byoos/image-builder/image-builder.md) guide to learn how to create an OS image
+using the Kubernetes Image Builder (KIB) project.
+
+## CAPI Image Builder
+
+:::preview
+
+:::
+
+An alternative to the default image building process that uses the Kubernetes Image Builder (KIB) project is the CAPI
+Image Builder. The CAPI Image Builder is a tool we develop and maintain to reduce the challenges of creating images for
+Kubernetes clusters. Check out the [Create Images with CAPI Image Builder](./capi-image-builder/capi-image-builder.md)
+guide to learn how to use the [CAPI Image Builder](https://github.com/kubernetes-sigs/image-builder) project to create
+images for Palette and VerteX.
+
 ## Resources
 
-- [Create Images with Image Builder](../byoos/image-builder.md)
+- [Create Images with Image Builder](../byoos/image-builder/image-builder.md)
+
+- [Create Images with CAPI Image Builder](capi-image-builder/capi-image-builder.md)
 
 - <VersionedLink text="BYOOS Pack" url="/integrations/packs/?pack=generic-byoi" />
