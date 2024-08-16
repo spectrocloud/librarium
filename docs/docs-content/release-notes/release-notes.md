@@ -30,8 +30,8 @@ This release is specific to Palette Enterprise and does not apply to Palette Ver
   infinite.
 
   - New clusters will have an infinite `nodeDrainTimeout` upon creation.
-  - Existing clusters will retain their existing `nodeDrainTimeout` until there is a new machine created in the control
-    plane through scaling, upgrading, or repaving, or when a worker node pool is added or scaled out.
+  - Existing clusters will retain their existing `nodeDrainTimeout` until there is a new machine created in cluster
+    through scaling, upgrading, or repaving, or when a worker node pool is added or scaled out.
 
   If any pods fail to be drained, they will be stuck in the draining process and would require manual intervention.
 
@@ -177,7 +177,7 @@ details.
 
 <!-- Custom heading applied due to linking of the Palette section in the VerteX section -->
 
-### Palette {#release-4-4-8}
+### Palette Enterprise {#release-4-4-8}
 
 #### Features
 
@@ -390,7 +390,7 @@ features and improvements.
 
 - Review the [Security Bulletins](../security-bulletins/security-bulletins.md) page for the latest security advisories.
 
-### Palette
+### Palette Enterprise
 
 #### Breaking Changes
 
