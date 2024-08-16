@@ -74,7 +74,7 @@ This release is specific to Palette Enterprise and does not apply to Palette Ver
 - This release introduces file download support within Local UI, which allows users to write files to a fixed path on
   the Edge host and download them from Local UI. Previously, gathering files from Edge hosts required elevated
   privileges and could be error-prone when executed manually. For more information, refer to
-  [Download Files from Local UI](../clusters/edge/local-ui/host-management/download-core-dump.md).
+  [Download Files from Local UI](../clusters/edge/local-ui/host-management/download-files.md).
 
 - Palette agent on Edge hosts will now produce audit logs. This capability captures timestamped records for a variety of
   events, including authentication attempts, configuration changes, and cluster management activities. In addition, you
