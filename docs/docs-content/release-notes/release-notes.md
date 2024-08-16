@@ -41,10 +41,10 @@ This release is specific to Palette Enterprise and does not apply to Palette Ver
   easily filter packs by **Verified** and **FIPS Compliant** status using toggles, facilitating quicker and more
   efficient pack searches and selections.
 
-- A new API endpoint now allows users to update both DNS hosts and SSL certificates simultaneously in Palette. This update
-  addresses user-reported issues related to circular dependencies when updating DNS hosts and certificates separately.
-  The change will also be reflected in the UI by merging DNS and certificate update functionalities onto a single page,
-  enhancing user experience and functionality validation.
+- A new API endpoint now allows users to update both DNS hosts and SSL certificates simultaneously in Palette. This
+  update addresses user-reported issues related to circular dependencies when updating DNS hosts and certificates
+  separately. The change will also be reflected in the UI by merging DNS and certificate update functionalities onto a
+  single page, enhancing user experience and functionality validation.
 
 - The VMO airgap binary has moved out of Preview status into Production-ready state.
 
@@ -82,8 +82,8 @@ This release is specific to Palette Enterprise and does not apply to Palette Ver
   can program your own applications to send logs to the same location, and have Local UI display those log entries. For
   more information, refer to [Configure Audit Logs](../clusters/edge/local-ui/host-management/audit-logs.md).
 
-- Local UI displays progress and status during cluster deployment. Users can now monitor key milestones in
-  real-time during the creation and updating of Edge clusters.
+- Local UI displays progress and status during cluster deployment. Users can now monitor key milestones in real-time
+  during the creation and updating of Edge clusters.
 
 ### Packs
 
@@ -147,16 +147,16 @@ This release is specific to Palette Enterprise and does not apply to Palette Ver
 
 #### Improvements
 
-- Users receive a clear warning message in the terminal after issuing the `terraform plan` command if actions
-  would result in a cluster repave. Previously, this notification was not available in Terraform-managed environments,
-  leading to potential oversight by users.
+- Users receive a clear warning message in the terminal after issuing the `terraform plan` command if actions would
+  result in a cluster repave. Previously, this notification was not available in Terraform-managed environments, leading
+  to potential oversight by users.
 
 ### Virtual Machine Orchestrator
 
 #### Features
 
-- The Virtual Machine Orchestrator (VMO) pack is now available for use in tenants that belong to your airgapped
- instance of Palette. For more information, refer to
+- The Virtual Machine Orchestrator (VMO) pack is now available for use in tenants that belong to your airgapped instance
+  of Palette. For more information, refer to
   [Install VMO in Airgap Environments](../vm-management/install-vmo-in-airgap.md).
 
 ### Docs and Education
