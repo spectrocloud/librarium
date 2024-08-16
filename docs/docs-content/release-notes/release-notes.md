@@ -26,7 +26,8 @@ This release is specific to Palette Enterprise and does not apply to Palette Ver
   [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section of the Palette EC
   command documentation to learn more.
 
-- The `nodeDrainTimeout` parameter for clusters has been changed from 10 minutes from the previous Palette version to infinite.
+- The `nodeDrainTimeout` parameter for clusters has been changed from 10 minutes from the previous Palette version to
+  infinite.
 
   - New clusters will have an infinite `nodeDrainTimeout` upon creation.
   - Existing clusters will retain their existing `nodeDrainTimeout` until there is a new machine created in the control
@@ -36,9 +37,9 @@ This release is specific to Palette Enterprise and does not apply to Palette Ver
 
 #### Features
 
-- This release introduces new filter options to improve the pack selection experience within Palette. Users can now easily filter
-  packs by "Verified" and "FIPS Compliant" status using toggles, facilitating quicker and more efficient pack searches
-  and selections.
+- This release introduces new filter options to improve the pack selection experience within Palette. Users can now
+  easily filter packs by **Verified** and **FIPS Compliant** status using toggles, facilitating quicker and more
+  efficient pack searches and selections.
 
 - A new API now allows users to update both DNS hosts and SSL certificates simultaneously in Palette. This update
   addresses user-reported issues related to circular dependencies when updating DNS hosts and certificates separately.
@@ -66,10 +67,10 @@ This release is specific to Palette Enterprise and does not apply to Palette Ver
 
 #### Features
 
-- This release introduces a validation tool for the install configuration **user-data** for Edge hosts. Errors in **user-data**
-  files can lead to significant delays and troubleshooting efforts. This feature validates the user-data file for both
-  YAML formatting and schema compliance during build time to catch issues earlier. For more information, refer to
-  [Validate User Data](../clusters/edge/edgeforge-workflow/validate-user-data.md).
+- This release introduces a validation tool for the install configuration **user-data** for Edge hosts. Errors in
+  **user-data** files can lead to significant delays and troubleshooting efforts. This feature validates the user-data
+  file for both YAML formatting and schema compliance during build time to catch issues earlier. For more information,
+  refer to [Validate User Data](../clusters/edge/edgeforge-workflow/validate-user-data.md).
 
 - This release introduces file download support within Local UI, which allows users to write files to a fixed path on
   the Edge host and download them from Local UI. Previously, gathering files from Edge hosts required elevated
@@ -142,7 +143,7 @@ This release is specific to Palette Enterprise and does not apply to Palette Ver
   creating images for Kubernetes clusters. It is based on the upstream
   [Kubernetes Image Builder (KIB)](https://image-builder.sigs.k8s.io/introduction.html) project and includes all the
   dependencies required to build FIPS and non-FIPS images within a Docker container. For more information, refer to
-  [CAPI Image Builder](https://deploy-preview-3523--docs-spectrocloud.netlify.app/byoos/capi-image-builder/).
+  [CAPI Image Builder](../byoos/capi-image-builder/capi-image-builder.md).
 
 #### Improvements
 
