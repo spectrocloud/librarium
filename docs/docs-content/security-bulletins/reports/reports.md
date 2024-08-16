@@ -88,4 +88,3 @@ Click on the CVE ID to view the full details of the vulnerability.
 | [CVE-2019-9192](./cve-2019-9192.md)             | 08/16/24         | 08/16/24      | Palette 4.4.12             | Third-party component: GNU C Library    | [7.5](https://nvd.nist.gov/vuln/detail/ CVE-2019-9192)   | :mag: Ongoing |
 | [CVE-2018-20796](./cve-2018-20796.md)           | 08/16/24         | 08/16/24      | Palette 4.4.12             | Third-party component: GNU C Library    | [7.5](https://nvd.nist.gov/vuln/detail/ CVE-2018-20796)  | :mag: Ongoing |
 | [PRISMA-2022-0227](./prisma-2022-0227.md)       | 9/12/23          | 9/12/23       | Palette 4.4.11             | Third-party component: vSphere-CSI      | N/A                                                      | :mag: Ongoing |
-
