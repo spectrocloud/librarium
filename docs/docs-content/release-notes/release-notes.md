@@ -26,7 +26,7 @@ This release is specific to Palette Enterprise and does not apply to Palette Ver
   [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section of the Palette EC
   command documentation to learn more.
 
-- `nodeDrainTimeout` for clusters has been changed from 10 mins from the previous version to infinite.
+- The `nodeDrainTimeout` parameter for clusters has been changed from 10 minutes from the previous Palette version to infinite.
 
   - New clusters will have an infinite `nodeDrainTimeout` upon creation.
   - Existing clusters will retain their existing `nodeDrainTimeout` until there is a new machine created in the control
@@ -36,7 +36,7 @@ This release is specific to Palette Enterprise and does not apply to Palette Ver
 
 #### Features
 
-- Introducing new filter options to improve the pack selection experience within Palette. Users can now easily filter
+- This release introduces new filter options to improve the pack selection experience within Palette. Users can now easily filter
   packs by "Verified" and "FIPS Compliant" status using toggles, facilitating quicker and more efficient pack searches
   and selections.
 
@@ -66,7 +66,7 @@ This release is specific to Palette Enterprise and does not apply to Palette Ver
 
 #### Features
 
-- Introducing a validation tool for the install configuration **user-data** for Edge hosts. Errors in **user-data**
+- This release introduces a validation tool for the install configuration **user-data** for Edge hosts. Errors in **user-data**
   files can lead to significant delays and troubleshooting efforts. This feature validates the user-data file for both
   YAML formatting and schema compliance during build time to catch issues earlier. For more information, refer to
   [Validate User Data](../clusters/edge/edgeforge-workflow/validate-user-data.md).
@@ -147,7 +147,7 @@ This release is specific to Palette Enterprise and does not apply to Palette Ver
 #### Improvements
 
 - You will now receive a clear warning message in the terminal after issuing the `terraform plan` command if your action
-  would result in a cluster repave. Previously, this notification is not available in Terraform-managed environments,
+  would result in a cluster repave. Previously, this notification was not available in Terraform-managed environments,
   leading to potential oversight by users.
 
 ### Virtual Machine Orchestrator
