@@ -11,6 +11,161 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## Aug 17, 2024 - Release 4.4.14
+
+<!-- Replace heading ID with the release version below -->
+
+This release is specific to Palette Enterprise and does not apply to Palette VerteX.
+
+### Palette Enterprise {#release-4-4-14}
+
+#### Breaking Changes
+
+- The Palette CLI no longer has the `validator` command. To validate your self-hosted Palette or VerteX deployment, use
+  the `ec` command instead with the `--validate` flag. Refer to the
+  [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section of the Palette EC
+  command documentation to learn more.
+
+- The `nodeDrainTimeout` parameter for clusters has been changed from 10 minutes from the previous Palette version to
+  infinite.
+
+  - New clusters will have an infinite `nodeDrainTimeout` upon creation.
+  - Existing clusters will retain their existing `nodeDrainTimeout` until there is a new machine created in cluster
+    through scaling, upgrading, or repaving, or when a worker node pool is added or scaled out.
+
+  If any pods fail to be drained, they will be stuck in the draining process and would require manual intervention.
+
+#### Features
+
+- This release introduces new filter options to improve the pack selection experience within Palette. Users can now
+  easily filter packs by **Verified** and **FIPS Compliant** status using toggles, facilitating quicker and more
+  efficient pack searches and selections.
+
+- A new API endpoint now allows users to update both DNS hosts and SSL certificates simultaneously in Palette. This
+  update addresses user-reported issues related to circular dependencies when updating DNS hosts and certificates
+  separately. The change will also be reflected in the UI by merging DNS and certificate update functionalities onto a
+  single page, enhancing user experience and functionality validation.
+
+- The VMO airgap binary has moved out of Preview status into Production-ready state.
+
+#### Improvements
+
+- Improvements made to Palette reduced resource usage and improved the reliability and responsiveness of the cluster
+  management.
+
+- Reduced latency in permission resolution, especially for users with access to a large number of projects.
+
+- Reduced CPU and memory consumption within the pods and enhanced overall system performance during machine health
+  updates.
+
+#### Fixes
+
+- Fixed an issue that sometimes caused CSI errors if there are multiple instances of self-hosted Palette or VerteX in a
+  single vSphere environment.
+
+### Edge
+
+#### Features
+
+- This release introduces a validation tool for the install configuration **user-data** for Edge hosts. Errors in
+  **user-data** files can lead to significant delays and troubleshooting efforts. This feature validates the user-data
+  file for both YAML formatting and schema compliance during build time to catch issues earlier. For more information,
+  refer to [Validate User Data](../clusters/edge/edgeforge-workflow/validate-user-data.md).
+
+- This release introduces file download support within Local UI, which allows users to write files to a fixed path on
+  the Edge host and download them from Local UI. Previously, gathering files from Edge hosts required elevated
+  privileges and could be error-prone when executed manually. For more information, refer to
+  [Download Files from Local UI](../clusters/edge/local-ui/host-management/download-files.md).
+
+- Palette agent on Edge hosts will now produce audit logs. This capability captures timestamped records for a variety of
+  events, including authentication attempts, configuration changes, and cluster management activities. In addition, you
+  can program your own applications to send logs to the same location, and have Local UI display those log entries. For
+  more information, refer to [Configure Audit Logs](../clusters/edge/local-ui/host-management/audit-logs.md).
+
+- Local UI displays progress and status during cluster deployment. Users can now monitor key milestones in real-time
+  during the creation and updating of Edge clusters.
+
+### Packs
+
+#### Kubernetes Packs
+
+| Pack                                       | New Version |
+| ------------------------------------------ | ----------- |
+| K3s                                        | 1.27.16     |
+| K3s                                        | 1.28.12     |
+| K3s                                        | 1.29.7      |
+| Palette eXtended Kubernetes (PXK)          | 1.27.16     |
+| Palette eXtended Kubernetes (PXK)          | 1.28.12     |
+| Palette eXtended Kubernetes (PXK)          | 1.29.7      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.16     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.28.12     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.7      |
+| RKE2                                       | 1.27.15     |
+| RKE2                                       | 1.28.11     |
+| RKE2                                       | 1.29.6      |
+| RKE2 FIPS                                  | 1.27.15     |
+
+#### CNI
+
+| Pack   | New Version |
+| ------ | ----------- |
+| Cilium | 1.15.7      |
+
+#### CSI
+
+| Pack        | New Version |
+| ----------- | ----------- |
+| Azure Disk  | 1.30.1      |
+| AWS EBS     | 1.33.0      |
+| VSphere CSI | 3.3.0       |
+
+#### FIPS
+
+| Pack                               | New Version |
+| ---------------------------------- | ----------- |
+| Longhorn                           | 1.6.2       |
+| Palette eXtended Kubernetes - FIPS | 1.27.16     |
+| Palette eXtended Kubernetes - FIPS | 1.28.12     |
+| Palette eXtended Kubernetes - FIPS | 1.29.7      |
+
+#### Add-on Packs
+
+| Pack       | New Version |
+| ---------- | ----------- |
+| MetalLB    | 0.14.5      |
+| Prometheus | 58.6.0      |
+
+### Automation
+
+#### Features
+
+- A new tool for building CAPI images is now available. The CAPI Image Builder reduces the challenges associated with
+  creating images for Kubernetes clusters. It is based on the upstream
+  [Kubernetes Image Builder (KIB)](https://image-builder.sigs.k8s.io/introduction.html) project and includes all the
+  dependencies required to build FIPS and non-FIPS images within a Docker container. For more information, refer to
+  [CAPI Image Builder](../byoos/capi-image-builder/capi-image-builder.md).
+
+#### Improvements
+
+- Users receive a clear warning message in the terminal after issuing the `terraform plan` command if actions would
+  result in a cluster repave. Previously, this notification was not available in Terraform-managed environments, leading
+  to potential oversight by users.
+
+### Virtual Machine Orchestrator
+
+#### Features
+
+- The Virtual Machine Orchestrator (VMO) pack is now available for use in tenants that belong to your airgapped instance
+  of Palette. For more information, refer to
+  [Install VMO in Airgap Environments](../vm-management/install-vmo-in-airgap.md).
+
+### Docs and Education
+
+Palette's Go SDK now has a dedicated documentation section. The new section also includes a guide on how to install,
+configure, and use the SDK. This guide provides instructions and sample code for listing the active clusters in your
+Palette environment. Check out the [Palette Go SDK documentation](../automation/palette-sdk/palette-sdk.md) for more
+details.
+
 ## Jul 31, 2024 - Release 4.4.12
 
 #### Bug Fixes
@@ -22,7 +177,7 @@ tags: ["release-notes"]
 
 <!-- Custom heading applied due to linking of the Palette section in the VerteX section -->
 
-### Palette {#release-4-4-8}
+### Palette Enterprise {#release-4-4-8}
 
 #### Features
 
@@ -235,7 +390,7 @@ features and improvements.
 
 - Review the [Security Bulletins](../security-bulletins/security-bulletins.md) page for the latest security advisories.
 
-### Palette
+### Palette Enterprise
 
 #### Breaking Changes
 
@@ -247,8 +402,7 @@ features and improvements.
 - Validator Helm Charts have migrated from `https://github.com/spectrocloud-labs/validator` to
   `https://github.com/validator-labs/validator`. Former versions of the Palette CLI will point to the former repository
   when prompted for the Helm chart location and require a manual URL change. The new version of the Palette CLI will
-  point to the new repository. Refer to the [Validator](../automation/palette-cli/commands/validator.md) CLI page
-  documentation for more details.
+  point to the new repository.
 
 - Due to the removal of GKE Kubernetes patch versions, it's critical you update existing cluster profiles to use the new
   GKE Kubernetes packs to avoid issues. Active clusters using old GKE Kubernetes pack versions may encounter problems

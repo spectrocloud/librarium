@@ -26,7 +26,7 @@ Start by reviewing the required action items below:
 4. If you are deploying VerteX with Red Hat Enterprise Linux (RHEL). Ensure you create a custom image containing your
    RHEL subscription credentials and the desired Kubernetes version. This image template must be uploaded to the vSphere
    `spectro-templates` folder. Instructions for creating the custom RHEL image with Kubernetes are available in the
-   [RHEL and PXK](../../../byoos/usecases/vmware/rhel-pxk.md) guide.
+   [RHEL and PXK](../../../byoos/image-builder/build-image-vmware/rhel-pxk.md) guide.
 
 :::info
 

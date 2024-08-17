@@ -70,8 +70,8 @@ create a custom image. The custom image contains the underlying OS and Kubernete
 
 :::info
 
-Check out the [RHEL and Konvoy](../byoos/usecases/vmware/konvoy.md) guide to learn how to create a custom image using
-the Konvoy image builder project.
+Check out the [RHEL and Konvoy](../byoos/image-builder/build-image-vmware/konvoy.md) guide to learn how to create a
+custom image using the Konvoy image builder project.
 
 :::
 
@@ -113,6 +113,6 @@ data "spectrocloud_pack_simple" "k8s" {
 
 - [Konvoy](https://d2iq.com/products/konvoy)
 
-- [RHEL and Konvoy](../byoos/usecases/vmware/konvoy.md)
+- [RHEL and Konvoy](../byoos/image-builder/build-image-vmware/konvoy.md)
 
 - [Konvoy Image Builder](https://github.com/mesosphere/konvoy-image-builder)

@@ -34,19 +34,20 @@ and profiles because these may contain packs with an _Unknown_ or _Not FIPS-comp
 
 The screenshots below show how Palette VerteX applies FIPS status icons.
 
+:::tip
+
+When creating a cluster profile, you can filter packs by checking the **FIPS Compliant** checkbox to display only
+FIPS-compliant packs.
+
+:::
+
 When you create a profile, icons display next to packs.
 
 ![Diagram showing FIPS status icons on profile page.](/vertex_fips-status-icons_icons-on-profile-page.webp)
 
-<!-- (/vertex_fips-status-icons_icons-on-profile-page.webp) -->
-
-<br />
-
 Icons appear next to each profile layer to indicate FIPS compliance.
 
 ![Diagram showing FIPS-compliant icons in profile stack.](/vertex_fips-status-icons_icons-in-profile-stack.webp)
-
-<br />
 
 In this screenshot, Palette VerteX shows FIPS status for the cluster is partially compliant because one pack in the
 profile is not FIPS-compliant.

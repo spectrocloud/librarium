@@ -26904,6 +26904,9 @@
               "$ref": "#/definitions/v1CustomClusterConfigEntity",
               "description": "General cluster configuration like patching settings, namespace resource allocation, rbac"
             },
+            "clusterType": {
+              "$ref": "#/definitions/v1ClusterType"
+            },
             "machinepoolconfig": {
               "items": {
                 "$ref": "#/definitions/v1CustomMachinePoolConfigEntity"
@@ -28704,6 +28707,28 @@
       },
       "type": "object"
     },
+    "v1SystemCertificatesSpec": {
+      "description": "system certificate in base64 format",
+      "properties": {
+        "caCertificateBase64": {
+          "type": "string",
+          "x-omitempty": false
+        },
+        "certificateBase64": {
+          "type": "string",
+          "x-omitempty": false
+        },
+        "insecureSkipVerify": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "keyBase64": {
+          "type": "string",
+          "x-omitempty": false
+        }
+      },
+      "type": "object"
+    },
     "v1SystemConfigAuth": {
       "description": "System config auth",
       "properties": {
@@ -28725,6 +28750,18 @@
           "x-omitempty": false
         }
       }
+    },
+    "v1SystemConfigDomainCertificatesSpec": {
+      "description": "system domain and its certificate config spec",
+      "properties": {
+        "certificates": {
+          "$ref": "#/definitions/v1SystemCertificatesSpec"
+        },
+        "rootDomain": {
+          "type": "string"
+        }
+      },
+      "type": "object"
     },
     "v1SystemConfigDomainSpec": {
       "description": "system domain config spec",
@@ -32004,6 +32041,21 @@
         }
       },
       "type": "object"
+    },
+    "v1UserInfo": {
+      "description": "User basic information",
+      "properties": {
+        "orgName": {
+          "description": "Organization name",
+          "type": "string"
+        },
+        "tenantUid": {
+          "type": "string"
+        },
+        "userUid": {
+          "type": "string"
+        }
+      }
     },
     "v1UserInfoResponse": {
       "properties": {
@@ -69585,6 +69637,47 @@
         "tags": [
           "spectroclusters"
         ]
+      },
+      "post": {
+        "operationId": "v1SpectroClustersUpgradeSettings",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterUpgradeSettingsEntity"
+            }
+          },
+          {
+            "description": "Scope the request to the specified project uid",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Update all clusters upgrade settings",
+        "tags": [
+          "spectroclusters"
+        ]
       }
     },
     "/v1/spectroclusters/validate/name": {
@@ -74293,6 +74386,58 @@
           }
         ],
         "summary": "Updates the cluster's upgrade status",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
+    },
+    "/v1/spectroclusters/{uid}/upgrade/settings": {
+      "parameters": [
+        {
+          "description": "Cluster uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "v1SpectroClustersUidUpgradeSettings",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterUpgradeSettingsEntity"
+            }
+          },
+          {
+            "description": "Scope the request to the specified project uid",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Update specific cluster upgrade settings",
         "tags": [
           "spectroclusters"
         ]
@@ -79089,6 +79234,32 @@
           }
         ],
         "summary": "Get the system Spectro repository. Restricted to edge services",
+        "tags": [
+          "users"
+        ]
+      }
+    },
+    "/v1/users/info": {
+      "get": {
+        "description": "Returns a basic information of User for the specified uid.",
+        "operationId": "v1UsersInfoGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1UserInfo"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the base information of specified User",
         "tags": [
           "users"
         ]
