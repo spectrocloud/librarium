@@ -88,7 +88,8 @@ cluster using Local UI.
    For more information about node pool configurations, refer to [Node pools](../../../cluster-management/node-pool.md).
    After you finish configuration, click **Next**.
 
-9. Review your configurations and deploy the cluster.
+9. Review your configurations and deploy the cluster. As your cluster begins to deploy, the status and details of the
+   deployment are displayed in the **Cluster** page. Use this page to track the deployment progress.
 
 ## Validate
 
