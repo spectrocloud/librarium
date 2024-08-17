@@ -12,16 +12,16 @@ category: ["tutorial"]
 ---
 
 Palette Edge allows the deployment of Kubernetes workloads in remote locations with limited connectivity and compute
-infrastructure. This means you can use Palette to manage the lifecycle of your Kubernetes clusters at the edge in
-locations such as hospitals, rural areas, restaurants, and more.
+infrastructure. This means you can use Palette to manage the lifecycle of your Kubernetes clusters at the edge in places
+such as hospitals, rural areas, restaurants, and more.
 
 Edge clusters are Kubernetes clusters set up on Edge hosts, which can be bare metal or virtual machines. These hosts can
 be managed locally on-site through the [Local UI](../../clusters/edge/local-ui/local-ui.md) or centrally through the
 Palette management plane.
 
 Before forming a cluster, the Edge Hosts must be prepared and registered with Palette. This involves the
-[EdgeForge workflow](../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), responsible for building the Edge
-artifacts required for the deployment, such as the
+[EdgeForge workflow](../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), which is responsible for building
+the required Edge artifacts, such as the
 [Installer ISO](../../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md) and
 [Provider Images](../../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md). Once these artifacts
 are built, you can use the Installer ISO to bootstrap the Edge installation on your Edge host and the Provider Images to
@@ -29,7 +29,7 @@ create a cluster profile.
 
 This tutorial will help you understand, through hands-on activities, how the different Edge components work together.
 You will build and test the Edge artifacts and deploy an Edge cluster without needing a complex lab environment or
-separate physical devices. Specifically, you will learn how to deploy an Edge cluster using a VirtualBox VM as the Edge
+separate physical devices. Specifically, you will learn to deploy an Edge cluster using a VirtualBox VM as the Edge
 host. The tutorial will guide you through building the required
 [Edge artifacts](../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md), creating an Edge cluster
 profile, preparing your Edge host, and deploying an Edge cluster along with a demo application.
@@ -52,7 +52,7 @@ To complete this tutorial, you will need the following prerequisites in place.
   - 100 GB storage
 - A DHCP-enabled network.
 - Three available IP addresses on the same network as the host machine. One address is for the Edge host, one is for the
-  cluster's Virtual IP (VIP) address, and one is for the MetalLB pack.
+  cluster's Virtual IP (VIP) address, and one is for the MetalLB load balancer.
 - A [Palette account](https://www.spectrocloud.com/get-started) with
   [tenant admin](../../tenant-settings/tenant-settings.md) access.
 - A Palette tenant registration token. Refer to the
@@ -74,12 +74,16 @@ Installer ISO and provider images Edge artifacts.
 
 - Installer ISO: ISO file that contains the Palette Edge host agent and metadata. It bootstraps the Edge installation in
   your Edge host.
-- Provider Images: Kairos-based images containing the OS and the desired Kubernetes versions. The provider images are
-  used in the OS layer when creating an Edge cluster profile.
+- Provider Images: [Kairos-based](https://kairos.io) images containing the OS and the desired Kubernetes versions. The
+  provider images are used in the OS layer when creating an Edge cluster profile.
+
+:::tip
 
 If you want your Edge host to have preloaded content and be able to create clusters using this content, you can create a
 [content bundle](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) and build it into your
 Installer ISO.
+
+:::
 
 ### Check Out the Starter Code
 
@@ -90,7 +94,7 @@ and scripts required to build Edge artifacts.
 git clone https://github.com/spectrocloud/CanvOS.git
 ```
 
-Next, navigate to the **CanvOS/** directory.
+Next, navigate to the **CanvOS** directory.
 
 ```shell
 cd CanvOS
@@ -168,7 +172,7 @@ UPDATE_KERNEL=false
 EOF
 ```
 
-Check if the file was created correctly using the `cat` command.
+Verify that the file was created correctly using the `cat` command.
 
 ```
 cat .arg
@@ -177,14 +181,14 @@ cat .arg
 :::info
 
 Different versions of CanvOS may require different arguments. Refer to the
-[CanvOS](https://github.com/spectrocloud/CanvOS#readme) repository to learn more about the arguments needed for each
+[CanvOS](https://github.com/spectrocloud/CanvOS#readme) repository to learn more about the required arguments for each
 version tag.
 
 :::
 
 ### Create User Data
 
-Once the **.arg** file is ready, the next step is to create an
+Once the **.arg** file is ready, the next step is to create a
 [**user-data**](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file, which allows you to provide
 customized configuration to the Edge Installer ISO. In this tutorial, the file will be used to embed the Palette
 registration token, Palette endpoint, and Edge host login information into the Edge Installer ISO. The login credentials
@@ -293,7 +297,7 @@ finished, you get a success message similar to the one displayed below.
 <!-- REPLACE 4.4.6, this output is not being generated in v4.4.5 -->
 
 The output also includes a manifest with predefined parameters you will use later to create the cluster profile. Copy
-and save the manifest in a notepad.
+and save the manifest.
 
 <!-- prettier-ignore-start -->
 ```yaml
@@ -387,14 +391,14 @@ push images to a different registry.
 
 ## Create Cluster Profile
 
-Once the provider images are available in the registry, proceed to create the cluster profile.
+Once the provider images are available in the registry, create the cluster profile.
 
 Log in to [Palette](https://console.spectrocloud.com/) and select **Profiles** from the left **Main Menu**. Click **Add
 Cluster Profile** to create a cluster profile.
 
 Follow the wizard to create a new profile.
 
-In the **Basic Information** section, assign the name **edge-vbox-profile**, a brief profile description, select the
+In the **Basic Information** section, assign the name **edge-vbox-profile** and a brief profile description, select the
 type as **Full**, and assign the tag **env:edge**. You can leave the version empty if you want to. Just be aware that
 the version defaults to **1.0.0**. Click on **Next**.
 
@@ -488,7 +492,7 @@ you added are correct, and click on **Finish Configuration** to create the clust
 ## Deploy VirtualBox VM
 
 Once the Edge artifacts and Palette cluster profile have been created, proceed to the VM deployment. The VirtualBox VM
-will use the Installer ISO to bootstrap the Edge installation and will serve as the Edge host for your cluster.
+will use the Installer ISO to bootstrap the Edge installation and serve as the Edge host for your cluster.
 
 Launch the VirtualBox application and click **New Virtual Machine**.
 
@@ -497,7 +501,7 @@ Give the machine a name, for example, `edge-vm`.
 In the **ISO Image** field, select the Edge Installer ISO file you built in the
 [Build Edge Artifacts](#build-edge-artifacts) section. The ISO file is stored in the `CanvOS/build` folder.
 
-Set the machine **Type** as `Linux`, the **Version** as `Ubuntu (64-bit)`, and click **Next**.
+Set the machine **Type** as `Linux` and the **Version** as `Ubuntu (64-bit)`, and click **Next**.
 
 ![A screenshot of the VirtualBox VM configuration.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-config.webp)
 
@@ -550,8 +554,8 @@ Select the Edge Installer ISO and click **Remove Attachment** to remove it from 
 Select the VirtualBox VM you created and click **Start** to turn it on. The VM will boot and get an IP address from the
 bridged network of the host machine. This address should be on the same subnet as the host machine.
 
-After a few minutes, the VM screen displays an IP address and it registers automatically in Palette as an Edge host
-using the provided Palette registration token.
+After a few minutes, the VM screen displays an IP address and registers automatically in Palette as an Edge host using
+the provided Palette registration token.
 
 ![A screenshot of the Edge host.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_edge-host.webp)
 
@@ -639,7 +643,7 @@ on the logo to increase the global counter and for a fun image change.
 
 ![A screenshot of the Hello Universe application.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_hello-universe.webp)
 
-You have successfully provisioned an Edge cluster and deployed a three-tier demo application onto it.
+You have successfully provisioned an Edge cluster with a three-tier demo application.
 
 ## Clean Up
 
@@ -681,10 +685,9 @@ remove the Edge host from Palette but not delete the underlying infrastructure.
 
 To delete the VM, open the **VirtualBox** application on your host machine.
 
-Right-hand click the `edge-vm` VM and select **Stop**. Then, click **Power Off** to turn the machine off.
+Right-click the `edge-vm` VM and select **Stop**. Then, click **Power Off** to turn the machine off.
 
-Next, right-hand click the VM again and select **Remove**. Click **Delete all files** to delete the VM and its hard
-disk.
+Next, right-click the VM again and select **Remove**. Click **Delete all files** to delete the VM and its hard disk.
 
 ### Edge Artifacts
 
@@ -705,8 +708,8 @@ docker rmi ttl.sh/ubuntu:k3s-1.29.6-v4.4.4-vbox-tutorial_linux_amd64
 ## Wrap-up
 
 In this tutorial, you successfully deployed a single-node Edge cluster along with a demo application using a VirtualBox
-VM as the Edge host. You learned how to build and test the Edge artifacts, prepare the Edge host, and use it to deploy
-the Edge cluster.
+VM as the Edge host. You learned how to build and test Edge artifacts, prepare an Edge host, and use it to deploy an
+Edge cluster.
 
 Palette Edge enables you to customize your Edge hosts with the desired OS, Kubernetes distribution, dependencies, and
 user data configurations.
@@ -715,7 +718,7 @@ This tutorial setup has provided you with hands-on experience with Palette Edge 
 for a complex lab environment or separate physical devices. You can also use this setup to quickly test and validate
 Edge configurations before deploying them in production.
 
-We encourage you to check out the reference resources below to learn more about Palette Edge.
+We encourage you to check the reference resources below to learn more about Palette Edge.
 
 - [Palette Edge](../../clusters/edge/edge.md)
 - [Edge Architecture](../../clusters/edge/architecture.md)
