@@ -36,22 +36,26 @@ function importLatestHelper(prefix: string, existingPartials: PartialsMap) {
   try {
     // Linting is disabled for next line, as we need the ability to dynamically import partials.
     // eslint-disable-next-line  @typescript-eslint/no-var-requires
+    /* eslint-disable */
     const modules: Modules = require("@site/_partials");
     MapPartials(prefix, modules, existingPartials);
   } catch {
     console.log("No partials found for " + prefix + ". Skipping imports for it.");
   }
+  /* eslint-enable */
 }
 
 function importVersionedHelper(prefix: string, existingPartials: PartialsMap) {
   try {
     // Linting is disabled for next line, as we need the ability to dynamically import partials.
     // eslint-disable-next-line  @typescript-eslint/no-var-requires
+    /* eslint-disable */
     const modules: Modules = require("@site/versioned_partials/" + prefix + "/");
     MapPartials(prefix, modules, existingPartials);
   } catch {
     console.log("No partials found for " + prefix + ". Skipping imports for it.");
   }
+  /* eslint-enable */
 }
 
 export function MapPartials(ver: string, module: Modules, pmap: PartialsMap) {
