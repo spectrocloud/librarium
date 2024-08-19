@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-return */
+/* eslint-disable */
 
 import React, { useEffect, useState } from "react";
 import { useHistory } from "@docusaurus/router";
