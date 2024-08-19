@@ -101,8 +101,8 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
        insecure: true
    ```
 
-   Refer to [Installer Configuration](../../edge-configuration/installer-reference.md#external-registry) for a
-   description of each field.
+   Refer to [Installer Configuration](../../edge-configuration/installer-reference.md#external-registry-parameters) for
+   a description of each field.
 
 4. Follow the rest of the [Build Edge Artifact](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide and
    build the Installer ISO with the user data containing the registry credentials.
