@@ -705,7 +705,12 @@ section.
 
 ### Profile Layers
 
-In the **Profile Layers** section, add the following [BYOS Edge OS](../../integrations/byoos.md) pack to the OS layer.
+<!-- prettier-ignore-start -->
+
+In the **Profile Layers** section, add the following
+<VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS layer.
+
+<!-- prettier-ignore-end -->
 
 | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
 | ------------- | ------------ | ------------- | ---------------- |

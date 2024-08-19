@@ -10,28 +10,10 @@ logoUrl: "https://registry.spectrocloud.com/v1/kubevious/blobs/sha256:5e33d7b51b
 tags: ["packs", "kubevious", "monitoring"]
 ---
 
-Kubevious integration provides a graphical interface that renders easy to understand, application-centric Kubernetes
-configurations.
-
 ## Versions Supported
 
-<Tabs>
+<Tabs queryString="parent">
 <TabItem label="1.0.x" value="1.0.x">
-
-- **1.0.10**
-
-</TabItem>
-<TabItem label="0.8.x" value="0.8.x">
-
-- **0.8.15**
-
-</TabItem>
-<TabItem label="0.5.x" value="0.5.x">
-
-- **0.5.9**
-
-</TabItem>
-</Tabs>
 
 ## Components
 
@@ -42,9 +24,9 @@ This integration deploys the following components:
 - UI
 - Parser
 
-## Ingress
+## Configure Ingress
 
-Follow the steps below to configure Ingress on Kubevious, according to the corresponding version
+Follow the steps below to configure Ingress on Kubevious, according to the corresponding version.
 
 1. Within the manifest, find the kubevious section **user** > **interface** > **service** > **type** and confirm/change,
    according to the Kubevious version as listed in the table below.
@@ -62,6 +44,85 @@ Follow the steps below to configure Ingress on Kubevious, according to the corre
 With these configuration changes, you can access the Kubevious service on the Ingress Controller LoadBalancer
 hostname/IP.
 
-## References
+</TabItem>
+<TabItem label="0.8.x" value="0.8.x">
 
-- [Kubevious GitHub](https://github.com/kubevious/kubevious)
+## Components
+
+This integration deploys the following components:
+
+- Deployment
+- MySql DB
+- UI
+- Parser
+
+## Configure Ingress
+
+Follow the steps below to configure Ingress on Kubevious, according to the corresponding version.
+
+1. Within the manifest, find the kubevious section **user** > **interface** > **service** > **type** and confirm/change,
+   according to the Kubevious version as listed in the table below.
+
+   | **Versions** | **Parameters**                   | **Action**                                                           |
+   | ------------ | -------------------------------- | -------------------------------------------------------------------- |
+   | **1.0.10**   | ui: service: type: **ClusterIP** | Confirm that it states **ClusterIP**.                                |
+   | **0.8.15**   | ui: service: type: **ClusterIP** | Confirm that it states **ClusterIP**.                                |
+   | **0.5.9**    | ui: svcType: **LoadBalancer**    | Change kubevious.ui.svcType from **LoadBalancer** to **Cluster IP**. |
+
+2. Configure Ingress
+   - Enable Ingress; change enabled from _false_ to **true**.
+   - Set Ingress rules like annotations, path, hosts, etc.
+
+With these configuration changes, you can access the Kubevious service on the Ingress Controller LoadBalancer
+hostname/IP.
+
+</TabItem>
+<TabItem label="0.5.x" value="0.5.x">
+
+## Components
+
+This integration deploys the following components:
+
+- Deployment
+- MySql DB
+- UI
+- Parser
+
+## Configure Ingress
+
+Follow the steps below to configure Ingress on Kubevious, according to the corresponding version.
+
+1. Within the manifest, find the kubevious section **user** > **interface** > **service** > **type** and confirm/change,
+   according to the Kubevious version as listed in the table below.
+
+   | **Versions** | **Parameters**                   | **Action**                                                           |
+   | ------------ | -------------------------------- | -------------------------------------------------------------------- |
+   | **1.0.10**   | ui: service: type: **ClusterIP** | Confirm that it states **ClusterIP**.                                |
+   | **0.8.15**   | ui: service: type: **ClusterIP** | Confirm that it states **ClusterIP**.                                |
+   | **0.5.9**    | ui: svcType: **LoadBalancer**    | Change kubevious.ui.svcType from **LoadBalancer** to **Cluster IP**. |
+
+2. Configure Ingress
+   - Enable Ingress; change enabled from _false_ to **true**.
+   - Set Ingress rules like annotations, path, hosts, etc.
+
+With these configuration changes, you can access the Kubevious service on the Ingress Controller LoadBalancer
+hostname/IP.
+
+</TabItem>
+</Tabs>
+
+## Terraform
+
+You can reference the Kubevious pack in Terraform with the following data resource.
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+data "spectrocloud_pack" "kubevious" {
+  name    = "kubevious"
+  version = "1.0.10"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```

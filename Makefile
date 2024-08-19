@@ -32,11 +32,20 @@ deep-clean: ## Clean all artifacts
 	rm -rf node_modules build public .cache .docusaurus
 	npm run clear && npm run clean-api-docs
 	docker image rm $(IMAGE) || echo "No image exists."
+	rm -rfv static/img/packs
+
+clean-logos: ## Clean logos
+	rm -rf static/img/packs
 
 clean-versions: ## Clean Docusarus content versions
 	@echo "cleaning versions"
 	rm -rf api_versions.json versions.json versioned_docs versioned_sidebars api_versioned_sidebars api_versioned_docs versioned_partials
 	git checkout -- docusaurus.config.js static/robots.txt
+
+
+clean-packs: ## Clean supplemental packs and pack images
+	rm -rf static/img/packs
+	rm -rf .docusaurus/packs-integrations/api_pack_response.json
 
 clean-api: ## Clean API docs
 	@echo "cleaning api docs"
