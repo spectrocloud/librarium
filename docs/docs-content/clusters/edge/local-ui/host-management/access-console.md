@@ -85,7 +85,7 @@ You can change the password of an OS user through Local UI, through the terminal
 
   - Through Local UI: The `stylus.disablePasswordUpdate` parameter is set to `false` in the installer configuration user
     data. The default value of the parameter is `false`. For more information, refer to
-    [Installer Reference](../../edge-configuration/installer-reference.md#local-ui).
+    [Installer Reference](../../edge-configuration/installer-reference.md#site-parameters).
 
   </TabItem>
 

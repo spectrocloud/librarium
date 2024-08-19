@@ -25,7 +25,7 @@ You can build the following content into the Edge installer ISO to customize you
 
 - User data. This is a YAML file that contains the configuration for the Edge Installer. For all available configuration
   options, refer to [Installer Configuration](../../edge-configuration/installer-reference.md). User data is required
-  for the installer ISO.
+  for the installer ISO. The build process validates the user data first before building the ISO.
   - If you do not include the user data file during the Edge Installer ISO build process, you must provide this
     configuration before the installation takes place with site user data. For more information, refer to
     [Apply Site User Data](../../site-deployment/site-installation/site-user-data.md).

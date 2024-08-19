@@ -33,8 +33,9 @@ You will benefit from Palette VMO in the following cases:
 ## Get Started
 
 To get started with Palette VMO, review the [Architecture](./architecture.md) page to learn about the components
-involved in enabling VMO for your infrastructure. Then, review the [Create a VMO Profile](./create-vmo-profile.md) guide
-to prepare everything you need to deploy your first VMO cluster.
+involved in enabling VMO for your infrastructure. If you want to use VMO in airgapped instances of self-hosted Palette
+or Palette VerteX, review the [Install VMO in Airgap Environments](./install-vmo-in-airgap.md) guide. Then, review the
+[Create a VMO Profile](./create-vmo-profile.md) guide to prepare everything you need to deploy your first VMO cluster.
 
 Once your VMO cluster is up and healthy, refer to the [Create and Manage VMs](./create-manage-vm/create-manage-vm.md)
 section for information on deploying VMs from existing Palette templates and performing standard VM operations.
@@ -47,6 +48,8 @@ and permissions for your VMs.
 ## Resources
 
 - [Architecture](./architecture.md)
+
+- [Install VMO in Airgap Environments](./install-vmo-in-airgap.md)
 
 - [Create a VMO Profile](./create-vmo-profile.md)
 
