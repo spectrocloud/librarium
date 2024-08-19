@@ -100,14 +100,6 @@ The upgrade strategy describes how to replace existing control plane nodes with 
 You can specify the upgrade strategy during cluster profile creation by editing the value of the `upgradeStrategy`
 parameter in the MicroK8s pack YAML file displayed under the **Pack Details** section.
 
-:::warning
-
-Before upgrading your cluster, review the [Known Issues](../release-notes/known-issues.md) and the
-[Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) pages to learn about the limitations associated with
-MicroK8s upgrades.
-
-:::
-
 The MicroK8s pack supports three types of upgrade strategies:
 
 - `InPlaceUpgrade` - Performs an in-place upgrade of the control plane. For clusters with one control plane and one
@@ -134,14 +126,6 @@ The upgrade strategy describes how to replace existing control plane nodes with 
 
 You can specify the upgrade strategy during cluster profile creation by editing the value of the `upgradeStrategy`
 parameter in the MicroK8s pack YAML file displayed under the **Pack Details** section.
-
-:::warning
-
-Before upgrading your cluster, review the [Known Issues](../release-notes/known-issues.md) and the
-[Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades) pages to learn about the limitations associated with
-MicroK8s upgrades.
-
-:::
 
 The MicroK8s pack supports three types of upgrade strategies:
 
