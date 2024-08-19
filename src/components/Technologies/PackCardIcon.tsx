@@ -17,13 +17,14 @@ export default function PackCardIcon({ appType, logoUrl, type, className }: Pack
         if (appType === "app") {
           setIcon(<img src={logoUrl} />);
         } else {
-          setIcon(<Image img={require(`/static/img/packs/${logoUrl}`)} />);
+          setIcon(<Image img={import(`/static/img/packs/${logoUrl}`)} />);
         }
       } catch (e) {
-        type ? setIcon(<IconMapper type={type} />) : setIcon(null);
+        console.error(e);
+        type = type ? setIcon(<IconMapper type={type} />) : setIcon(null);
       }
     } else {
-      type ? setIcon(<IconMapper type={type} />) : setIcon(null);
+      type = type ? setIcon(<IconMapper type={type} />) : setIcon(null);
     }
   }, [logoUrl]);
 

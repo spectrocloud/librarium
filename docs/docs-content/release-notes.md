@@ -263,8 +263,9 @@ Check out the following sections to learn about all the new features and improve
 
 #### Pack Notes
 
+<!-- prettier-ignore -->
 - ngrok published a documentation page where you can learn more about their ingress pack and how to use it. You can
-  review their contribution by visiting the [ngrok](integrations/ngrok.md) documentation page.
+  review their contribution by visiting the <VersionedLink text="ngrok" url="/integrations/packs/?pack=ngrok-ingress-controller" /> documentation page.
 
 #### Deprecations and Removals
 
