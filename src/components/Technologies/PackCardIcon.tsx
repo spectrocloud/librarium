@@ -10,24 +10,40 @@ interface PackCardIconProps {
   className?: any;
 }
 
+type ImageModule = {
+  default: string;
+};
+
 export default function PackCardIcon({ appType, logoUrl, type, className }: PackCardIconProps) {
   const [icon, setIcon] = useState<ReactElement | null>(null);
+
   useEffect(() => {
-    if (logoUrl) {
-      try {
-        if (appType === "app") {
-          setIcon(<img src={logoUrl} />);
-        } else {
-          setIcon(<Image img={import(`/static/img/packs/${logoUrl}`)} />);
-        }
-      } catch (e) {
-        console.error(e);
-        type = type ? setIcon(<IconMapper type={type} />) : setIcon(null);
+    const loadIcon = async () => {
+      if (logoUrl && appType === "app") {
+        setIcon(<img src={logoUrl} />);
+        return;
       }
-    } else {
-      type = type ? setIcon(<IconMapper type={type} />) : setIcon(null);
-    }
-  }, [logoUrl]);
+
+      if (logoUrl) {
+        try {
+          const module: ImageModule = await import(`/static/img/packs/${logoUrl}`);
+          setIcon(<Image img={module.default} />);
+          return;
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      if (type) {
+        setIcon(<IconMapper type={type} />);
+      } else {
+        setIcon(null);
+      }
+    };
+
+    // Explicitly mark the promise as intentionally unhandled
+    void loadIcon();
+  }, [logoUrl, appType, type]);
 
   return <div className={`${className} ${styles.imageWrapper}`}>{icon}</div>;
 }
