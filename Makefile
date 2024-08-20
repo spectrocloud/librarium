@@ -237,7 +237,7 @@ verify-security-bulletins-links-ci: ## Check for broken URLs in production in a 
 		--skip "\.(jpg|jpeg|png|gif|webp)$$" \
 		--skip "https:\/\/linux\.die\.net\/man\/.*$$" \
 		--skip "https:\/\/mysql\.com\/.*\.*$$" \
-		--skip "https:\/\/dev\.mysql\.com\/doc\/.*$$" \	
+		--skip "https:\/\/dev\.mysql\.com\/doc\/.*$$" \
 		--format json > temp_sec_bul_report.json
 	@# Use jq to filter out links that do not start with http or https and keep only broken links
 	@jq '[.links[] | select(.url | test("^https?://")) | select(.status >= 400)]' temp_sec_bul_report.json > filtered_sec_bul_report.json
