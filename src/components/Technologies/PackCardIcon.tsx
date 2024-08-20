@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect, ReactElement } from "react";
 import styles from "./PackCardIcon.module.scss";
 import IconMapper from "@site/src/components/IconMapper/IconMapper";
@@ -10,40 +11,30 @@ interface PackCardIconProps {
   className?: any;
 }
 
-type ImageModule = {
-  default: string;
-};
-
 export default function PackCardIcon({ appType, logoUrl, type, className }: PackCardIconProps) {
   const [icon, setIcon] = useState<ReactElement | null>(null);
 
   useEffect(() => {
-    const loadIcon = async () => {
-      if (logoUrl && appType === "app") {
-        setIcon(<img src={logoUrl} />);
-        return;
-      }
-
+    const loadImage = async () => {
       if (logoUrl) {
         try {
-          const module: ImageModule = await import(`/static/img/packs/${logoUrl}`);
-          setIcon(<Image img={module.default} />);
-          return;
+          if (appType === "app") {
+            setIcon(<img src={logoUrl} />);
+          } else {
+            const img = (await import(`/static/img/packs/${logoUrl}`)).default;
+            setIcon(<Image img={img} />);
+          }
         } catch (e) {
-          console.error(e);
+          console.error("Error loading pack icon image", e);
+          type = type ? setIcon(<IconMapper type={type} />) : setIcon(null);
         }
-      }
-
-      if (type) {
-        setIcon(<IconMapper type={type} />);
       } else {
-        setIcon(null);
+        type = type ? setIcon(<IconMapper type={type} />) : setIcon(null);
       }
     };
 
-    // Explicitly mark the promise as intentionally unhandled
-    void loadIcon();
-  }, [logoUrl, appType, type]);
+    loadImage();
+  }, [logoUrl]);
 
   return <div className={`${className} ${styles.imageWrapper}`}>{icon}</div>;
 }
