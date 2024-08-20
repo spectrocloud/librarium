@@ -10,6 +10,10 @@ interface PackCardIconProps {
   className?: any;
 }
 
+type ImageModule = {
+  default: string;
+};
+
 export default function PackCardIcon({ appType, logoUrl, type, className }: PackCardIconProps) {
   const [icon, setIcon] = useState<ReactElement | null>(null);
 
@@ -22,8 +26,8 @@ export default function PackCardIcon({ appType, logoUrl, type, className }: Pack
 
       if (logoUrl) {
         try {
-          const img = (await import(`/static/img/packs/${logoUrl}`)).default;
-          setIcon(<Image img={img} />);
+          const module: ImageModule = await import(`/static/img/packs/${logoUrl}`);
+          setIcon(<Image img={module.default} />);
           return;
         } catch (e) {
           console.error(e);
@@ -37,7 +41,8 @@ export default function PackCardIcon({ appType, logoUrl, type, className }: Pack
       }
     };
 
-    loadIcon();
+    // Explicitly mark the promise as intentionally unhandled
+    void loadIcon();
   }, [logoUrl, appType, type]);
 
   return <div className={`${className} ${styles.imageWrapper}`}>{icon}</div>;
