@@ -12,8 +12,9 @@ CPUS := $(shell sysctl -n hw.ncpu | awk '{print int($$1 / 2)}')
 
 ALOGLIA_CONFIG=$(shell cat docsearch.dev.config.json | jq -r tostring)
 
-# Find all *.md files in docs, cut the prefix ./  and remove all security-bulletins
-VERIFY_URL_PATHS=$(shell find ./docs -name "*.md" | cut -c 3- | sed '/security-bulletins/d')
+# Find all *.md files in docs, cut the prefix ./ 
+# Remove all security-bulletins and cve-reports.md
+VERIFY_URL_PATHS=$(shell find ./docs -name "*.md" | cut -c 3- | sed '/security-bulletins/d' | sed '/cve-reports/d' )
 
 help: ## Display this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
@@ -192,7 +193,7 @@ verify-url-links:
 verify-security-bulletins-links:
 	@echo "Checking for broken URLs in security-bulletins markdown files..."
 	rm link_sec_bul_report.csv || echo "No security bulletins report exists. Proceeding to scan step"
-	@npx linkinator "docs/docs-content/security-bulletins/**/*.md" "docs/docs-content/security-bulletins/*.md" "docs/docs-content/security-bulletins/*.md" --concurrency 1 --markdown --recurse --timeout 100000 --retry --retry-errors-jitter --retry-errors-count 5 \
+	@npx linkinator "docs/docs-content/security-bulletins/**/*.md" "docs/docs-content/security-bulletins/*.md" "docs/docs-content/unlisted/cve-reports.md" --concurrency 1 --markdown --recurse --timeout 100000 --retry --retry-errors-jitter --retry-errors-count 5 \
 		--skip "^https:\/\/docs\.spectrocloud\.com.*$$" \
 		--skip "^https:\/\/docs\.spectrocloud\.com\/.*\/supplemental\-packs$$" \
 		--skip "^http:\/\/docs\.spectrocloud\.com.*$$" \
@@ -230,7 +231,7 @@ verify-url-links-ci: ## Check for broken URLs in production in a GitHub Actions 
 verify-security-bulletins-links-ci: ## Check for broken URLs in production in a GitHub Actions CI environment
 	@echo "Checking for broken URLs in security-bulletins markdown files in CI environment..."
 	rm link_sec_bul_report.json || echo "No security bulletins report exists. Proceeding to scan step"
-	@npx linkinator "docs/docs-content/security-bulletins/**/*.md" "docs/docs-content/security-bulletins/*.md" "docs/docs-content/security-bulletins/*.md" --concurrency 1 --markdown --recurse --timeout 100000 --retry --retry-errors-jitter --retry-errors-count 5 \
+	@npx linkinator "docs/docs-content/security-bulletins/**/*.md" "docs/docs-content/security-bulletins/*.md" "docs/docs-content/unlisted/cve-reports.md" --concurrency 1 --markdown --recurse --timeout 100000 --retry --retry-errors-jitter --retry-errors-count 5 \
 		--skip "^https:\/\/docs\.spectrocloud\.com.*$$" \
 		--skip "^https:\/\/docs\.spectrocloud\.com\/.*\/supplemental\-packs$$" \
 		--skip "^http:\/\/docs\.spectrocloud\.com.*$$" \
