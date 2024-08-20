@@ -76,6 +76,10 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
 
 ## Deploy Cluster with a Private External Registry
 
+<Tabs>
+
+<TabItem value="Configure through user data">
+
 1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
 
    ```bash
@@ -134,6 +138,55 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
    ```
 
 10. Follow the [Create Cluster Definition](../cluster-deployment.md) guide and deploy your cluster.
+
+</TabItem>
+
+<TabItem value="Configure though Cluster Profile">
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, click **Profiles**. You can create a new profile or update an existing profile. For more
+   information, refer to
+   [Create a Profile](../../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) or
+   [Update a Profile](../../../../profiles/cluster-profiles/modify-cluster-profiles/modify-cluster-profiles.md).
+
+3. Add a new manifest to your cluster profile. For more information, refer to
+   [Add a Manifest](../../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md).
+
+4. In your manifest, provide the following YAML configuration. Replace the placeholders with the correct values
+   according to the table below.
+
+   ```yaml
+   apiVersion: v1
+   data:
+     password: <base64-encdoded-password>
+     name: <bas64-encoded-name>
+     type: <base64-encoded-type>
+     url: <base64-encoded-url>
+     username: <base64-encoded-username>
+   kind: Secret
+   metadata:
+     labels:
+       spectrocloud.com/registry: "true"
+       spectrocloud.com/copyToTarget: "true"
+     name: registry1
+   type: Opaque
+   ```
+
+   | Parameter       | Description                                                            |
+   | --------------- | ---------------------------------------------------------------------- |
+   | `data.url`      | The URL of the registry in base-64 encoded format.                     |
+   | `data.name`     | The name of the repository in base-64 encoded format.                  |
+   | `data.type`     |                                                                        |
+   | `data.username` | The username used to log in to the registry in base-64 encoded format. |
+   | `data.password` | The password of the user in base-64 encoded format.                    |
+
+5. Use the cluster profile to create your Edge cluster. For more information, refer to
+   [Create Cluster Definition](../cluster-deployment.md).
+
+</TabItem>
+
+<Tabs>
 
 ## Validate
 
