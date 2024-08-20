@@ -14,26 +14,31 @@ export default function PackCardIcon({ appType, logoUrl, type, className }: Pack
   const [icon, setIcon] = useState<ReactElement | null>(null);
 
   useEffect(() => {
-    const loadImage = async () => {
+    const loadIcon = async () => {
+      if (logoUrl && appType === "app") {
+        setIcon(<img src={logoUrl} />);
+        return;
+      }
+
       if (logoUrl) {
         try {
-          if (appType === "app") {
-            setIcon(<img src={logoUrl} />);
-          } else {
-            const img = (await import(`/static/img/packs/${logoUrl}`)).default;
-            setIcon(<Image img={img} />);
-          }
+          const img = (await import(`/static/img/packs/${logoUrl}`)).default;
+          setIcon(<Image img={img} />);
+          return;
         } catch (e) {
           console.error(e);
-          type = type ? setIcon(<IconMapper type={type} />) : setIcon(null);
         }
+      }
+
+      if (type) {
+        setIcon(<IconMapper type={type} />);
       } else {
-        type = type ? setIcon(<IconMapper type={type} />) : setIcon(null);
+        setIcon(null);
       }
     };
 
-    loadImage();
-  }, [logoUrl]);
+    loadIcon();
+  }, [logoUrl, appType, type]);
 
   return <div className={`${className} ${styles.imageWrapper}`}>{icon}</div>;
 }
