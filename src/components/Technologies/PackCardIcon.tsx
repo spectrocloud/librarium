@@ -12,21 +12,27 @@ interface PackCardIconProps {
 
 export default function PackCardIcon({ appType, logoUrl, type, className }: PackCardIconProps) {
   const [icon, setIcon] = useState<ReactElement | null>(null);
+
   useEffect(() => {
-    if (logoUrl) {
-      try {
-        if (appType === "app") {
-          setIcon(<img src={logoUrl} />);
-        } else {
-          setIcon(<Image img={import(`/static/img/packs/${logoUrl}`)} />);
+    const loadImage = async () => {
+      if (logoUrl) {
+        try {
+          if (appType === "app") {
+            setIcon(<img src={logoUrl} />);
+          } else {
+            const img = (await import(`/static/img/packs/${logoUrl}`)).default;
+            setIcon(<Image img={img} />);
+          }
+        } catch (e) {
+          console.error(e);
+          type = type ? setIcon(<IconMapper type={type} />) : setIcon(null);
         }
-      } catch (e) {
-        console.error(e);
+      } else {
         type = type ? setIcon(<IconMapper type={type} />) : setIcon(null);
       }
-    } else {
-      type = type ? setIcon(<IconMapper type={type} />) : setIcon(null);
-    }
+    };
+
+    loadImage();
   }, [logoUrl]);
 
   return <div className={`${className} ${styles.imageWrapper}`}>{icon}</div>;
