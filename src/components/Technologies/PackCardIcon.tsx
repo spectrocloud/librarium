@@ -29,3 +29,4 @@ export default function PackCardIcon({ appType, logoUrl, type, className }: Pack
   }, [logoUrl]);
 
   return <div className={`${className} ${styles.imageWrapper}`}>{icon}</div>;
+}
