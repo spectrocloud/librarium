@@ -122,7 +122,6 @@ dynamically creates the network resources required for your cluster.
 | Microsoft.Resources/subscriptions/resourceGroups/read             | Subscription |
 | Microsoft.Storage/storageAccounts/blobServices/containers/read    | Subscription |
 | Microsoft.Storage/storageAccounts/blobServices/containers/write   | Subscription |
-| Microsoft.Storage/storageAccounts/blobServices/listKeys/action    | Subscription |
 | Microsoft.Storage/storageAccounts/read                            | Subscription |
 | Microsoft.Storage/storageAccounts/write                           | Subscription |
 
