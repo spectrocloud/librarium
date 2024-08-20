@@ -15,9 +15,9 @@ You have the following options to register the Edge host with Palette.
 
 :::warning
 
-If you reinstall Palette Edge on an Edge host that was previously registered with Palette, ensure that you delete the
-Edge host from your Palette account first before attempting Edge host registration. Otherwise, the registration will
-fail due to duplicate Edge host IDs.
+If you are registering an Edge host that was previously registered with Palette after a reinstall, ensure that you
+delete the Edge host from your Palette account first before attempting Edge host registration. Otherwise, the
+registration will fail due to duplicate Edge host IDs.
 
 :::
 
