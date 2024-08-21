@@ -28,10 +28,11 @@ echo "Pull request number: $PR_NUMBER"
 
 # Read JSON file contents into a variable
 JSON_CONTENT=$(cat link_report.json)
+JSON_SEC_BUL_CONTENT=$(cat link_sec_bul_report.json)
 
 
 # Check if JSON file is empty
-if [[ -z "$JSON_CONTENT" ]]; then
+if [[ -z "$JSON_CONTENT" ]] && [[ -z "$JSON_SEC_BUL_CONTENT" ]]; then
   echo "No broken links found"
   exit 0
 fi
@@ -44,6 +45,20 @@ COMMENT=":loudspeaker: Broken External Docs Links in Production Report :spectro:
 
 # Loop through each item in the JSON array directly
 for link in $(echo "${JSON_CONTENT}" | jq -c '.[]'); do
+    url=$(echo "${link}" | jq -r '.url')
+    status=$(echo "${link}" | jq -r '.status')
+    state=$(echo "${link}" | jq -r '.state')
+    parent=$(echo "${link}" | jq -r '.parent')
+
+    # Increment counter for broken links if status is not "200"
+    if [[ "$status" != "200" ]]; then
+      ((BROKEN_LINK_COUNT++))
+    fi
+
+    COMMENT="${COMMENT}\n\n:link: Broken URL: ${url}  \n:red_circle: State: ${state}  \n:arrow_up: Parent Page: ${parent}\n\n"
+done
+
+for link in $(echo "${JSON_SEC_BUL_CONTENT}" | jq -c '.[]'); do
     url=$(echo "${link}" | jq -r '.url')
     status=$(echo "${link}" | jq -r '.status')
     state=$(echo "${link}" | jq -r '.state')
