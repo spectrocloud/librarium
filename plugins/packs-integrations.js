@@ -341,37 +341,6 @@ async function write(res, packName, logoUrlMap) {
   });
 }
 
-// async function getLogoUrl(packsAllData, logoUrlMap) {
-//   for (let j = 0; j < packsAllData.length; j++) {
-//     const registries = packsAllData[j].spec.registries;
-//     const packName = packsAllData[j].spec.name;
-//     for (let i = 0; i < registries.length; i++) {
-//       const registry = registries[i];
-//       try {
-//         let url = registry.logoUrl;
-//         if (!url) {
-//           url = `${BASE_URL}/v1/packs/${registry.latestPackUid}/logo`;
-//         } else {
-//           url = url.startsWith("https") ? url : url.startsWith("/") ? `${BASE_URL}${url}` : `${BASE_URL}/${url}`;
-//         }
-//         if (!Object.hasOwnProperty.call(logoUrlMap, packName)) {
-//           options.headers["Accept"] = "image/png";
-//           const res = await fetch(url, options);
-//           await write(res, packName, logoUrlMap);
-//           counter++;
-//           if (counter % 10 === 0) {
-//             await setTimeout(1000);
-//           }
-//         }
-//       } catch (e) {
-//         // Intentionally ignoring errors here to continue processing other logos
-//         // Enable the below line to log the error, if needed, for debugging.
-//         logger.error(e);
-//       }
-//     }
-//   }
-// }
-
 async function getLogoUrl(packsAllData, logoUrlMap) {
   for (let j = 0; j < packsAllData.length; j++) {
     const { registries, name: packName } = packsAllData[j].spec;
