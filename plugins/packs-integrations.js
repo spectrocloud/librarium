@@ -356,7 +356,7 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
             ? `${BASE_URL}${url}`
             : `${BASE_URL}/${url}`;
 
-      if (!logoUrlMap.hasOwnProperty(packName)) {
+      if (!Object.prototype.hasOwnProperty.call(logoUrlMap, packName)) {
         try {
           options.headers["Accept"] = "image/png";
           const res = await fetch(url, options);
