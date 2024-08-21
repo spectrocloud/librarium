@@ -54,7 +54,7 @@
     "docusaurus-plugin-image-zoom": "^1.0.1",
     "docusaurus-plugin-openapi-docs": "^3.0.0-beta.10",
     "docusaurus-plugin-sass": "^0.2.5",
-    "docusaurus-theme-openapi-docs": "^3.0.2",
+    "docusaurus-theme-openapi-docs": "^4.0.0",
     "fuse.js": "^6.6.2",
     "markdown-to-jsx": "^7.0.0",
     "node-fetch": "^3.1.0",
