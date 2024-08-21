@@ -355,6 +355,7 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
           url = url.startsWith("https") ? url : url.startsWith("/") ? `${BASE_URL}${url}` : `${BASE_URL}/${url}`;
         }
         if (!Object.hasOwnProperty.call(logoUrlMap, packName)) {
+          options.headers["Accept"] = "image/png";
           const res = await fetch(url, options);
           await write(res, packName, logoUrlMap);
           counter++;
@@ -365,7 +366,7 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
       } catch (e) {
         // Intentionally ignoring errors here to continue processing other logos
         // Enable the below line to log the error, if needed, for debugging.
-        // logger.error(e);
+        logger.error(e);
       }
     }
   }
