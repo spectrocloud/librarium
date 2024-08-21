@@ -15,7 +15,7 @@ the default session timeout, follow the steps below.
 
 ## Prerequisites
 
-- You must have access to Palette as a tenant admin.
+- Palette tenant admin access.
 
 ## Update Session Timeout
 
@@ -36,4 +36,4 @@ the default session timeout, follow the steps below.
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
 2. Wait for the session timeout duration. You will be automatically logged out of Palette after the session timeout
-   duration.
+   duration has elapsed.
