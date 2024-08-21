@@ -416,15 +416,24 @@ async function pluginPacksAndIntegrationsData(context, options) {
           const registryPackData = [];
           for (const registry of packData.spec.registries) {
             const url = `${packUrl}${packData.spec.name}/registries/${registry.uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`;
-            registryPackData.push(callRateLimitAPI(() => api.get(url)));
+            registryPackData.push(
+              callRateLimitAPI(() => {
+                return api.get(url);
+              })
+            );
           }
           return registryPackData;
         });
         const flatted = promisesPackDetails.flat();
         const results = await Promise.allSettled(flatted);
-        apiPacksData = results
-          .filter((result) => result.status === "fulfilled" && result.value?.data)
-          .map((result) => result.value.data);
+
+        for (const result of results) {
+          if (result.status === "fulfilled" && result.value?.data) {
+            apiPacksData.push(result.value.data);
+          } else {
+            logger.error("Failed to fetch the details for the following pack " + result.reason.config.url);
+          }
+        }
         logger.info("Completed fetching all the packs and their details");
         logger.info("Fetching the logo for each pack");
         //Fetch logos
