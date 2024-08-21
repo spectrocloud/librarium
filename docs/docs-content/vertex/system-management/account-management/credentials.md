@@ -38,7 +38,7 @@ minutes, the user can try to log in again. The default session timeout for syste
 ## Timeout and Session Management
 
 The default timeout for tenant users is set to four hours. After four hours of inactivity, the user will be logged out
-VerteX. You can change the default session timeout value for tenant users by following the steps in the
+of VerteX. You can change the default session timeout value for tenant users by following the steps in the
 [Session Timeout](../../../tenant-settings/session-timeout.md) guide.
 
 Use the following sections to learn how to manage user credentials.
