@@ -79,6 +79,7 @@ export default function PacksReadme() {
           </div>
         );
       } catch (error) {
+        console.error("Error importing custom readme component for pack. Additional information follows: \n", error);
         setCustomReadme(null);
       }
     };
