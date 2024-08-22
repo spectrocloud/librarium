@@ -579,6 +579,23 @@ const redirects = [
     ],
     to: "/integrations/",
   },
+  {
+    from: [
+      "/security-bulletins/reports/cve-2020-1971",
+      "/security-bulletins/reports/cve-2021-3449",
+      "/security-bulletins/reports/cve-2021-3711",
+      "/security-bulletins/reports/cve-2021-45079",
+      "/security-bulletins/reports/cve-2022-0778",
+      "/security-bulletins/reports/cve-2022-4450",
+      "/security-bulletins/reports/cve-2023-0215",
+      "/security-bulletins/reports/cve-2023-0286",
+      "/security-bulletins/reports/cve-2023-52425",
+      "/security-bulletins/reports/cve-2023-5528",
+      "/security-bulletins/reports/cve-2024-0743",
+      "/security-bulletins/reports/prisma-2022-0227",
+    ],
+    to: "/security-bulletins/reports/",
+  },
 ];
 
 module.exports = redirects;
