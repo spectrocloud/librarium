@@ -66,6 +66,9 @@ dynamically creates the network resources required for your cluster.
 
 - A terminal or command prompt to issue the Azure CLI commands.
 
+- The Azure Security Principal Object ID you want to use with Palette. The Security Principal Object ID can represent a
+  user, group, or service principal.
+
 ### Create Role and Assign Permissions
 
 1.  Export your Azure subscription ID to a variable.
@@ -253,10 +256,12 @@ dynamically creates the network resources required for your cluster.
     previous step. Issue the following command to create the role.
 
     ```shell
-    az role definition create --role-definition dynamic-permissions.json
+    az role definition create --role-definition @dynamic-permissions.json
     ```
 
-4.  Export the security principal object ID you want to use with Palette to a variable.
+4.  Export the
+    [security principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
+    object ID you want to use with Palette to a variable.
 
     ```shell
     export ASSIGNEE="<security_principal_object_id>"
@@ -298,6 +303,9 @@ various scenarios.
 
 - A terminal or command prompt to issue the Azure CLI commands.
 
+- The Azure Security Principal Object ID you want to use with Palette. The Security Principal Object ID can represent a
+  user, group, or service principal.
+
 ### Create Role and Assign Permissions
 
 Select the tabs below to view the required permissions for deploying clusters using static placement.
@@ -313,7 +321,7 @@ Select the tabs below to view the required permissions for deploying clusters us
     ```
 
 2.  Issue the following command to create a JSON file containing all the required permissions to deploy a cluster
-    staticaly in Palette.
+    statically in Palette.
 
     ```shell
     echo "{
@@ -565,10 +573,10 @@ Select the tabs below to view the required permissions for deploying clusters us
     the roles.
 
     ```shell
-    az role definition create --role-definition static-permissions.json
-    az role definition create --role-definition static-gallery-scope-permissions.json
-    az role definition create --role-definition static-subnet-scope-permissions.json
-    az role definition create --role-definition static-virtual-network-scope-permissions.json
+    az role definition create --role-definition @static-permissions.json
+    az role definition create --role-definition @static-gallery-scope-permissions.json
+    az role definition create --role-definition @static-subnet-scope-permissions.json
+    az role definition create --role-definition @static-virtual-network-scope-permissions.json
     ```
 
 7.  Export resource group, virtual network, subnet, and compute gallery names you desire Palette to use to a set of
@@ -581,7 +589,9 @@ Select the tabs below to view the required permissions for deploying clusters us
     export COMPUTE_GALLERY_NAME=<compute-gallery-name>
     ```
 
-8.  Export the security principal object ID you want to use with Palette to a variable.
+8.  Export the
+    [security principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
+    object ID you want to use with Palette to a variable.
 
     ```shell
     export ASSIGNEE="<security_principal_object_id>"
@@ -623,7 +633,7 @@ Select the tabs below to view the required permissions for deploying clusters us
     ```
 
 2.  Issue the following command to create a JSON file containing all the required permissions to deploy a cluster
-    staticaly in Palette.
+    statically in Palette.
 
           ```shell
           echo "{
@@ -750,10 +760,12 @@ Select the tabs below to view the required permissions for deploying clusters us
 3.  Create a role for the JSON file you created in the previous step. Issue the following command to create the role.
 
     ```shell
-    az role definition create --role-definition static-placement-permissions.json
+    az role definition create --role-definition @static-placement-permissions.json
     ```
 
-4.  Export the ecurity principal object ID and resource group name you want to use with Palette to a set of variables.
+4.  Export the
+    [security principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
+    object ID and resource group name you want to use with Palette to a set of variables.
 
     ```shell
     export ASSIGNEE="<security_principal_object_id>"
@@ -779,7 +791,7 @@ Select the tabs below to view the required permissions for deploying clusters us
     ```
 
 2.  Issue the following command to create a JSON file containing all the required permissions to deploy a cluster
-    staticaly in Palette.
+    statically in Palette.
 
     ```shell
     echo "{
@@ -907,10 +919,12 @@ Select the tabs below to view the required permissions for deploying clusters us
 3.  Create a role using the JSON file you created in the previous step. Issue the following command to create the role.
 
     ```shell
-    az role definition create --role-definition static-placement-permissions.json
+    az role definition create --role-definition @static-placement-permissions.json
     ```
 
-4.  Export the security principal object ID you want to use with Palette to a variable.
+4.  Export the
+    [security principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
+    object ID you want to use with Palette to a variable.
 
     ```shell
     export ASSIGNEE="<security_principal_object_id>"
