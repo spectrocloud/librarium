@@ -256,7 +256,7 @@ dynamically creates the network resources required for your cluster.
     previous step. Issue the following command to create the role.
 
     ```shell
-    az role definition create --role-definition @dynamic-permissions.json
+    az role definition create --role-definition @dynamic-permissions.json --output table
     ```
 
 4.  Export the
@@ -267,7 +267,7 @@ dynamically creates the network resources required for your cluster.
     export ASSIGNEE="<security_principal_object_id>"
     ```
 
-5.  Assign the role by creating a role assignment referencing the role definition `Dynamic Placement Palette Deployer`.
+5.  Assign the role by creating a role assignment referencing the role definition _Dynamic Placement Palette Deployer_.
     Use the command below to assign the role to the service principal.
 
     ```shell
@@ -573,10 +573,10 @@ Select the tab below to view the required permissions and steps for the static p
     the roles.
 
     ```shell
-    az role definition create --role-definition @static-permissions.json
-    az role definition create --role-definition @static-gallery-scope-permissions.json
-    az role definition create --role-definition @static-subnet-scope-permissions.json
-    az role definition create --role-definition @static-virtual-network-scope-permissions.json
+    az role definition create --role-definition @static-permissions.json --output table
+    az role definition create --role-definition @static-gallery-scope-permissions.json --output table
+    az role definition create --role-definition @static-subnet-scope-permissions.json --output table
+    az role definition create --role-definition @static-virtual-network-scope-permissions.json --output table
     ```
 
 7.  Export resource group, virtual network, subnet, and compute gallery names you desire Palette to use to a set of
@@ -760,7 +760,7 @@ Select the tab below to view the required permissions and steps for the static p
 3.  Create a role for the JSON file you created in the previous step. Issue the following command to create the role.
 
     ```shell
-    az role definition create --role-definition @static-placement-permissions.json
+    az role definition create --role-definition @static-placement-permissions.json --output table
     ```
 
 4.  Export the
@@ -919,7 +919,7 @@ Select the tab below to view the required permissions and steps for the static p
 3.  Create a role using the JSON file you created in the previous step. Issue the following command to create the role.
 
     ```shell
-    az role definition create --role-definition @static-placement-permissions.json
+    az role definition create --role-definition @static-placement-permissions.json --output table
     ```
 
 4.  Export the
