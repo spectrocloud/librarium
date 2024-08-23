@@ -45,7 +45,9 @@ to <VersionedLink text="Harbor Edge-Native Config pack" url="/integrations/packs
 - An Edge cluster profile. For information about how to create a cluster profile for Edge, refer to
   [Model Edge Cluster Profile](../../site-deployment/model-profile.md).
 
-## Enable Local Harbor Registry
+## Enablement
+
+### Enable Local Harbor Registry
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -77,6 +79,61 @@ to <VersionedLink text="Harbor Edge-Native Config pack" url="/integrations/packs
 
 7. In the `harbor-config.storage` parameter, make sure you allocate enough storage in the `registry` field to store all
    your images.
+
+### Provide Credentials to Private Registries (Optional)
+
+If your cluster profile does not reference a private repository for images or helm charts or you have configured the
+Palette agent to download all images from an external private registry, you can skip this step.
+
+::: info
+
+Configuring external registries through user data will instruct the Palette agent to download all images from the
+external registry and prepend the registry URL to every image referenced in the cluster profile. Therefore, if you have
+configured an external registry through user data, you no longer need to provide credentials to the private registries
+referenced in the profile. For more information, refer to
+[Deploy with External Private Registry](./deploy-external-registry.md).
+
+:::
+
+If your have not configured an external registry for your Edge host through the Edge installer configuration user data,
+and your cluster profile references private repositories you must provide credentials to those private repositories
+through Kubernetes secrets using a manifest in your cluster profile.
+
+8. Add a new manifest to your cluster profile. For more information, refer to
+   [Add a Manifest](../../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md).
+
+9. In your manifest, provide the following YAML configuration. Replace the placeholders with the correct values
+   according to the table below. You need to do this for every private registry referenced.
+
+   ```yaml
+   apiVersion: v1
+   data:
+     password: <base64-encdoded-password>
+     name: <bas64-encoded-name>
+     type: <base64-encoded-type>
+     url: <base64-encoded-url>
+     username: <base64-encoded-username>
+   kind: Secret
+   metadata:
+     labels:
+       spectrocloud.com/registry: "true"
+       spectrocloud.com/copyToTarget: "true"
+     name: registry1
+   type: Opaque
+   ```
+
+   | Parameter       | Description                                                                                                                                 |
+   | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `data.url`      | The URL of the registry in base-64 encoded format.                                                                                          |
+   | `data.name`     | The name of the registry in base-64 encoded format.                                                                                         |
+   | `data.type`     | The type of the registry in base-64 encoded format. Accepted values are `aW1hZ2U=` for image registries and `aGVsbQ==` for Helm registries. |
+   | `data.username` | The username used to log in to the registry in base-64 encoded format.                                                                      |
+   | `data.password` | The password of the user in base-64 encoded format.                                                                                         |
+
+10. Use the cluster profile to create your Edge cluster. For more information, refer to
+    [Create Cluster Definition](../cluster-deployment.md).
+
+## Save Profile and Deploy Cluster
 
 8. Click **Save Changes**.
 
