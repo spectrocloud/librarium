@@ -764,91 +764,139 @@ groups. Select the tabs below to view the required permissions for deploying clu
 
 <TabItem label="Multiple Cluster - Same Subscription" value="sc3">
 
-Use the following JSON template to create a custom role in Azure that provides the necessary permissions for deploying
-multiple clusters into the same subscription.
+1.  Export your Azure subscription ID to a variable.
 
-```json
-{
-  "Name": "Static Placement Palette Deployer",
-  "IsCustom": true,
-  "Description": "Can deploy Azure IaaS clusters using static placement with Palette.",
-  "Actions": [
-    "Microsoft.Compute/disks/delete",
-    "Microsoft.Compute/disks/read",
-    "Microsoft.Compute/disks/write",
-    "Microsoft.Compute/virtualMachines/delete",
-    "Microsoft.Compute/virtualMachines/extensions/delete",
-    "Microsoft.Compute/virtualMachines/extensions/read",
-    "Microsoft.Compute/virtualMachines/extensions/write",
-    "Microsoft.Compute/virtualMachines/read",
-    "Microsoft.Compute/virtualMachines/write",
-    "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
-    "Microsoft.Network/loadBalancers/delete",
-    "Microsoft.Network/loadBalancers/inboundNatRules/delete",
-    "Microsoft.Network/loadBalancers/inboundNatRules/join/action",
-    "Microsoft.Network/loadBalancers/inboundNatRules/read",
-    "Microsoft.Network/loadBalancers/inboundNatRules/write",
-    "Microsoft.Network/loadBalancers/read",
-    "Microsoft.Network/loadBalancers/write",
-    "Microsoft.Network/networkInterfaces/delete",
-    "Microsoft.Network/networkInterfaces/join/action",
-    "Microsoft.Network/networkInterfaces/read",
-    "Microsoft.Network/networkInterfaces/write",
-    "Microsoft.Network/networkSecurityGroups/read",
-    "Microsoft.Network/networkSecurityGroups/securityRules/delete",
-    "Microsoft.Network/networkSecurityGroups/securityRules/read",
-    "Microsoft.Network/networkSecurityGroups/securityRules/write",
-    "Microsoft.Network/privateDnsZones/A/delete",
-    "Microsoft.Network/privateDnsZones/A/read",
-    "Microsoft.Network/privateDnsZones/A/write",
-    "Microsoft.Network/privateDnsZones/delete",
-    "Microsoft.Network/privateDnsZones/read",
-    "Microsoft.Network/privateDnsZones/virtualNetworkLinks/delete",
-    "Microsoft.Network/privateDnsZones/virtualNetworkLinks/read",
-    "Microsoft.Network/privateDnsZones/virtualNetworkLinks/write",
-    "Microsoft.Network/privateDnsZones/write",
-    "Microsoft.Network/publicIPAddresses/delete",
-    "Microsoft.Network/publicIPAddresses/join/action",
-    "Microsoft.Network/publicIPAddresses/read",
-    "Microsoft.Network/publicIPAddresses/write",
-    "Microsoft.Network/routeTables/delete",
-    "Microsoft.Network/routeTables/read",
-    "Microsoft.Network/routeTables/write",
-    "Microsoft.Network/virtualNetworks/join/action",
-    "Microsoft.Resources/subscriptions/resourceGroups/read",
-    "Microsoft.Network/virtualNetworks/read",
-    "Microsoft.Network/virtualNetworks/subnets/join/action",
-    "Microsoft.Network/virtualNetworks/subnets/read",
-    "Microsoft.Compute/galleries/images/read",
-    "Microsoft.Compute/galleries/images/versions/read"
-  ],
-  "AssignableScopes": ["/subscriptions/$SUBSCRIPTION_ID"]
-}
-```
+    ```shell
+    export SUBSCRIPTION_ID=<your-subscription-id>
+    ```
 
-<details>
-<summary>Assign the role to the service principal</summary>
+2.  Issue the following command to create a JSON file containing all the required permissions to deploy a cluster
+    staticaly in Palette.
 
-To use the role definition with the service principal you want to use with Palette, assign the role to the service
-principal. Use the commands below to create the role definition and assign it to the service principal.
+            ```shell
+            echo "{
+            \"Name\": \"Static Placement Palette Deployer\",
+            \"IsCustom\": true,
+            \"Description\": \"Can deploy Azure IaaS clusters using static placement with Palette.\",
+            \"Actions\": [
+            \"Microsoft.Compute/disks/delete\",
+            \"Microsoft.Compute/disks/read\",
+            \"Microsoft.Compute/disks/write\",
+            \"Microsoft.Compute/virtualMachines/delete\",
+            \"Microsoft.Compute/virtualMachines/extensions/delete\",
+            \"Microsoft.Compute/virtualMachines/extensions/read\",
+            \"Microsoft.Compute/virtualMachines/extensions/write\",
+            \"Microsoft.Compute/virtualMachines/read\",
+            \"Microsoft.Compute/virtualMachines/write\",
+            \"Microsoft.Network/loadBalancers/backendAddressPools/join/action\",
+            \"Microsoft.Network/loadBalancers/delete\",
+            \"Microsoft.Network/loadBalancers/inboundNatRules/delete\",
+            \"Microsoft.Network/loadBalancers/inboundNatRules/join/action\",
+            \"Microsoft.Network/loadBalancers/inboundNatRules/read\",
+            \"Microsoft.Network/loadBalancers/inboundNatRules/write\",
+            \"Microsoft.Network/loadBalancers/read\",
+            \"Microsoft.Network/loadBalancers/write\",
+            \"Microsoft.Network/networkInterfaces/delete\",
+            \"Microsoft.Network/networkInterfaces/join/action\",
+            \"Microsoft.Network/networkInterfaces/read\",
+            \"Microsoft.Network/networkInterfaces/write\",
+            \"Microsoft.Network/networkSecurityGroups/read\",
+            \"Microsoft.Network/networkSecurityGroups/securityRules/delete\",
+            \"Microsoft.Network/networkSecurityGroups/securityRules/read\",
+            \"Microsoft.Network/networkSecurityGroups/securityRules/write\",
+            \"Microsoft.Network/privateDnsZones/A/delete\",
+            \"Microsoft.Network/privateDnsZones/A/read\",
+            \"Microsoft.Network/privateDnsZones/A/write\",
+            \"Microsoft.Network/privateDnsZones/delete\",
+            \"Microsoft.Network/privateDnsZones/read\",
+            \"Microsoft.Network/privateDnsZones/virtualNetworkLinks/delete\",
+            \"Microsoft.Network/privateDnsZones/virtualNetworkLinks/read\",
+            \"Microsoft.Network/privateDnsZones/virtualNetworkLinks/write\",
+            \"Microsoft.Network/privateDnsZones/write\",
+            \"Microsoft.Network/publicIPAddresses/delete\",
+            \"Microsoft.Network/publicIPAddresses/join/action\",
+            \"Microsoft.Network/publicIPAddresses/read\",
+            \"Microsoft.Network/publicIPAddresses/write\",
+            \"Microsoft.Network/routeTables/delete\",
+            \"Microsoft.Network/routeTables/read\",
+            \"Microsoft.Network/routeTables/write\",
+            \"Microsoft.Network/virtualNetworks/join/action\",
+            \"Microsoft.Resources/subscriptions/resourceGroups/read\",
+            \"Microsoft.Network/virtualNetworks/read\",
+            \"Microsoft.Network/virtualNetworks/subnets/join/action\",
+            \"Microsoft.Network/virtualNetworks/subnets/read\",
+            \"Microsoft.Compute/galleries/images/read\",
+            \"Microsoft.Compute/galleries/images/versions/read\"
+            ],
+            \"AssignableScopes\": [\"/subscriptions/$SUBSCRIPTION_ID\"]
+            }" > static-placement-permissions.json
+            ```
 
-1. Create a role definition using the JSON template above and assign it to the service principal you want to use with
-   Palette.
+  <!-- prettier-ignore -->
 
-   ```shell
-   az role definition create --role-definition /path/to/role-definition.json
-   ```
+      <details>
+      <summary>Click here to view the raw JSON policy.</summary>
+        ```json
+        {
+          "Name": "Static Placement Palette Deployer",
+          "IsCustom": true,
+          "Description": "Can deploy Azure IaaS clusters using static placement with Palette.",
+          "Actions": [
+            "Microsoft.Compute/disks/delete",
+            "Microsoft.Compute/disks/read",
+            "Microsoft.Compute/disks/write",
+            "Microsoft.Compute/virtualMachines/delete",
+            "Microsoft.Compute/virtualMachines/extensions/delete",
+            "Microsoft.Compute/virtualMachines/extensions/read",
+            "Microsoft.Compute/virtualMachines/extensions/write",
+            "Microsoft.Compute/virtualMachines/read",
+            "Microsoft.Compute/virtualMachines/write",
+            "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
+            "Microsoft.Network/loadBalancers/delete",
+            "Microsoft.Network/loadBalancers/inboundNatRules/delete",
+            "Microsoft.Network/loadBalancers/inboundNatRules/join/action",
+            "Microsoft.Network/loadBalancers/inboundNatRules/read",
+            "Microsoft.Network/loadBalancers/inboundNatRules/write",
+            "Microsoft.Network/loadBalancers/read",
+            "Microsoft.Network/loadBalancers/write",
+            "Microsoft.Network/networkInterfaces/delete",
+            "Microsoft.Network/networkInterfaces/join/action",
+            "Microsoft.Network/networkInterfaces/read",
+            "Microsoft.Network/networkInterfaces/write",
+            "Microsoft.Network/networkSecurityGroups/read",
+            "Microsoft.Network/networkSecurityGroups/securityRules/delete",
+            "Microsoft.Network/networkSecurityGroups/securityRules/read",
+            "Microsoft.Network/networkSecurityGroups/securityRules/write",
+            "Microsoft.Network/privateDnsZones/A/delete",
+            "Microsoft.Network/privateDnsZones/A/read",
+            "Microsoft.Network/privateDnsZones/A/write",
+            "Microsoft.Network/privateDnsZones/delete",
+            "Microsoft.Network/privateDnsZones/read",
+            "Microsoft.Network/privateDnsZones/virtualNetworkLinks/delete",
+            "Microsoft.Network/privateDnsZones/virtualNetworkLinks/read",
+            "Microsoft.Network/privateDnsZones/virtualNetworkLinks/write",
+            "Microsoft.Network/privateDnsZones/write",
+            "Microsoft.Network/publicIPAddresses/delete",
+            "Microsoft.Network/publicIPAddresses/join/action",
+            "Microsoft.Network/publicIPAddresses/read",
+            "Microsoft.Network/publicIPAddresses/write",
+            "Microsoft.Network/routeTables/delete",
+            "Microsoft.Network/routeTables/read",
+            "Microsoft.Network/routeTables/write",
+            "Microsoft.Network/virtualNetworks/join/action",
+            "Microsoft.Resources/subscriptions/resourceGroups/read",
+            "Microsoft.Network/virtualNetworks/read",
+            "Microsoft.Network/virtualNetworks/subnets/join/action",
+            "Microsoft.Network/virtualNetworks/subnets/read",
+            "Microsoft.Compute/galleries/images/read",
+            "Microsoft.Compute/galleries/images/versions/read"
+          ],
+          "AssignableScopes": ["/subscriptions/$SUBSCRIPTION_ID"]
+        }
+        ```
+      </details>
 
-2. Next, assign the role to the service principal. Replace `$ASSIGNEE` with the service principal object ID and
-   `$SUBSCRIPTION_ID` with your Azure subscription ID.
-
-   ```shell
-   az role assignment create --assignee $ASSIGNEE \
-     --role "Static Placement Palette Deployer" \
-     --scope "/subscriptions/$SUBSCRIPTION_ID"
-   ```
-
-</details>
+3.  sas
 
 </TabItem>
 
