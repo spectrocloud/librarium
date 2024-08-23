@@ -36,15 +36,32 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
 
 ## Set up Edge Host
 
-1. Power up the Edge host. Do not make any input and allow Palette to choose the boot option automatically. If this is
-   the first time you've started the Edge host since installation, you will be automatically directed to the TUI.
+1. Power up the Edge host. The GRand Unified Bootloader (GRUB) screen will display the following options. Do not make
+   any input and allow Palette to choose the boot option automatically.
 
-   If you are accessing the Edge host with an SSH connection, you can issue the command `palette-tui` to bring up the
-   TUI. You can also use the same command to bring up the TUI if you have gone through the initial setup in the TUI and
-   want to change any configuration. However, you can only do this before you have deployed a cluster on the Edge host.
+   :::warning
 
-2. If you have already configured a user in your **user-data** file in the EdgeForge step, this step will be skipped
-   automatically.
+   The following table describes each option in the GRUB screen for your information. However, you should never manually
+   change the boot option. Doing so may cause Edge cluster deployment failures.
+
+   :::
+
+   | Option                                          | Description                                                                                                                                                                                                                                                                                                                                   |
+   | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Palette eXtended Kubernetes - Edge              | This option boots the active image on your Edge host. If the Edge host is already part of a cluster, the active image is the image that your cluster uses.                                                                                                                                                                                    |
+   | Palette eXtended Kubernetes - Edge (fallback)   | This option boots the passive image on your Edge host. If you have updated the cluster with a new cluster profile, the passive image is the image used by the previous version of the cluster.                                                                                                                                                |
+   | Palette eXtended Kubernetes - Edge recovery     | This option boots the recovery image. The recovery image is the OS image in the installer ISO. It does not include Kubernetes. The Palette agent is also inactive when this option is used, which means that the Edge host will not attempt to register with Palette.                                                                         |
+   | Palette eXtended Kubernetes - Edge Reset        | This option wipes all data and resets the Edge host to the state after a fresh installation. The difference between this option and the recovery option is that the reset option wipes all application data and the Palette agent will be active after a reset. This will not affect the registration if the Edge host is already registered. |
+   | Palette eXtended Kubernetes - Edge Registration | This option boots the Edge host to the registration phase. For more information, refer to [Edge Host Registration](../../site-deployment/site-installation/edge-host-registration.md).                                                                                                                                                        |
+
+2. If this is the first time you've started the Edge host since installation, you will be automatically directed to the
+   TUI. If you are accessing the Edge host with an SSH connection, you can issue the command `palette-tui` to bring up
+   the TUI. You can also use the same command to bring up the TUI if you have gone through the initial setup in the TUI
+   and want to change any configuration. However, you can only do this before you have deployed a cluster on the Edge
+   host.
+
+3. If you have already configured a user in your **user-data** file in the EdgeForge step, this step will be skipped
+   automatically. For more information, refer to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
 
    If you did not configure a user in your **user-data** file during EdgeForge or provide site user data, a terminal
    user interface will display a **Create User** page. This allows you to create an Operating System (OS) user with the
@@ -59,22 +76,22 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
 
    :::
 
-3. Next, the terminal will display a console for you to provide hostname and network configurations to the Edge host.
+4. Next, the terminal will display a console for you to provide hostname and network configurations to the Edge host.
 
    ![A terminal user interface showing displaying network configuration options](/cluster_edge_site-deployment_installation_initial-setup_tui.webp)
 
    Check the existing hostname and, optionally, change it to a new one. Use the Tab key or the up and down arrow keys to
    switch between fields. When you make a change, press Enter to confirm the change.
 
-4. In **Network Adapters**, choose a network adapter that the Edge host will use to communicate with Palette.
+5. In **Network Adapters**, choose a network adapter that the Edge host will use to communicate with Palette.
 
    By default, the network adapter requests an IP automatically from the DHCP server. Optionally, you can also specify a
    static IP. Press Enter to confirm the change.
 
-5. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. Press Enter to confirm
+6. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. Press Enter to confirm
    the change.
 
-6. After you are satisfied with the configurations, navigate to **Quit** and hit enter to finish configuration.
+7. After you are satisfied with the configurations, navigate to **Quit** and hit enter to finish configuration.
 
 ## Validate
 
