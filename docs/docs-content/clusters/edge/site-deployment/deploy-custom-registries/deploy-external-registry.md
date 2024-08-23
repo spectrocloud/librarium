@@ -76,7 +76,6 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
 
 ## Deploy Cluster with a Private External Registry
 
-
 1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
 
    ```bash
@@ -135,16 +134,6 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
    ```
 
 10. Follow the [Create Cluster Definition](../cluster-deployment.md) guide and deploy your cluster.
-
-</TabItem>
-
-<TabItem value="Configure though Cluster Profile">
-
-
-
-</TabItem>
-
-<Tabs>
 
 ## Validate
 

@@ -82,7 +82,7 @@ to <VersionedLink text="Harbor Edge-Native Config pack" url="/integrations/packs
 
 ### Provide Credentials to Private Registries (Optional)
 
-If your cluster profile does not reference a private repository for images or helm charts or you have configured the
+If your cluster profile does not reference a private registry for images or helm charts or you have configured the
 Palette agent to download all images from an external private registry, you can skip this step.
 
 ::: info
@@ -129,6 +129,9 @@ through Kubernetes secrets using a manifest in your cluster profile.
    | `data.type`     | The type of the registry in base-64 encoded format. Accepted values are `aW1hZ2U=` for image registries and `aGVsbQ==` for Helm registries. |
    | `data.username` | The username used to log in to the registry in base-64 encoded format.                                                                      |
    | `data.password` | The password of the user in base-64 encoded format.                                                                                         |
+
+   For example, if an add-on layer references the following image: `docker.io/spectrodocs/example:1.0.0` and the
+   `docker.io/spectrodocs` is private. You would need to provide the credentials
 
 10. Use the cluster profile to create your Edge cluster. For more information, refer to
     [Create Cluster Definition](../cluster-deployment.md).
