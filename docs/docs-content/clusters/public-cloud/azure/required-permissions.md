@@ -308,7 +308,7 @@ various scenarios.
 
 ### Create Role and Assign Permissions
 
-Select the tabs below to view the required permissions for deploying clusters using static placement.
+Select the tab below to view the required permissions and steps for the static placement scenario you want to use.
 
 <Tabs>
 
