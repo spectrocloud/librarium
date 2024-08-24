@@ -519,6 +519,7 @@ Some **content** with _Markdown_ `syntax`.
 
 :::
 ```
+
 https://docusaurus.io/docs/markdown-features/admonitions
 
 The content must have a new line at the beginning and at the end of the tag.
