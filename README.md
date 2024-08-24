@@ -472,42 +472,53 @@ Result
 
 ### Admonitions - Warning / Info / Tip / Danger / Tech Preview / Further Guidance
 
+```mdx
 :::warning
 
 Some **content** with _Markdown_ `syntax`.
 
 :::
+```
 
+```mdx
 :::info
 
 Some **content** with _Markdown_ `syntax`.
 
 :::
+```
 
+```mdx
 :::tip
 
 Some **content** with _Markdown_ `syntax`.
 
 :::
+```
 
+```mdx
 :::danger
 
 Some **content** with _Markdown_ `syntax`.
 
 :::
+```
 
+```mdx
 :::preview
 
 Some **content** with _Markdown_ `syntax`.
 
 :::
+```
 
+```mdx
 :::further
 
 Some **content** with _Markdown_ `syntax`.
 
 :::
-
+```
 https://docusaurus.io/docs/markdown-features/admonitions
 
 The content must have a new line at the beginning and at the end of the tag.
