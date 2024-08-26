@@ -59,9 +59,8 @@ To complete this tutorial, you will need the following prerequisites in place.
   [Create a Registration Token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md)
   guide for instructions on how to create a token.
 - The following software installed:
-  - [Docker Engine](https://docs.docker.com/engine/install/). You should have root-level or `sudo` privileges on your
-    Linux machine to create privileged containers.
   - A text editor such as Vi or Nano. This tutorial uses Vi as an example.
+  - [Docker Engine](https://docs.docker.com/engine/install/) with `sudo` privileges
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
   - [VirtualBox](https://www.virtualbox.org/wiki/Downloads) version 7.0
 
@@ -106,17 +105,15 @@ Check the available git tags.
 git tag
 ```
 
-<!-- REPLACE 4.4.6 -->
-
-Check out the newest available tag. This tutorial uses the tag **v4.4.5** as an example.
+Check out the newest available tag. This tutorial uses the tag **v4.4.8** as an example.
 
 ```
-git checkout v4.4.5
+git checkout v4.4.8
 ```
 
 ### Define Arguments
 
-EdgeForge leverages [Earthly](https://earthly.dev) to build the Installer ISO and provider images artifacts. A filed
+EdgeForge leverages [Earthly](https://earthly.dev) to build the Installer ISO and provider images artifacts. A file
 called **.arg** is used to pass the values of a few arguments, such as the image tag and registry name, to Earthly for
 the build process.
 
@@ -139,7 +136,7 @@ OS_DISTRIBUTION=ubuntu
 IMAGE_REPO=ubuntu
 OS_VERSION=22
 K8S_DISTRIBUTION=k3s
-ISO_NAME=palette-edge-installer
+ISO_NAME=palette-installer
 ARCH=amd64
 UPDATE_KERNEL=false
 EOF
@@ -212,23 +209,21 @@ users:
 
 ### Build Edge Artifacts
 
-By default, the Earthfile builds multiple images with different K3s Kubernetes versions. You can exclude the image
-versions you do not need from the build process by commenting out the lines under the `build-provider-images` section in
-the **Earthfile**. This will speed up the build process and reduce the amount of space that is required from your host
+By default, Earthly builds multiple images with different K3s Kubernetes versions. You can exclude the image versions
+you do not need from the build process by commenting out the lines under the `build-provider-images` section in the
+**Earthfile**. This will speed up the build process and reduce the amount of space that is required from your host
 machine.
 
-Open the **Eathfile** with an editor of your choice.
+Open the **Earthfile** with an editor of your choice.
 
 ```bash
 vi Earthfile
 ```
 
-<!-- REPLACE 4.4.6 -->
-
 Next, comment out the K3s versions you do not need. This tutorial uses K3s version `1.29.6`. Below is an example of the
 file with the versions commented out.
 
-```text {15} hideClipboard
+```text {18} hideClipboard
        ELSE IF [ "$K8S_DISTRIBUTION" = "k3s" ]
           # BUILD  +$TARGET --K8S_VERSION=1.24.6
           # BUILD  +$TARGET --K8S_VERSION=1.25.2
@@ -267,12 +262,10 @@ finished, you get a success message similar to the one displayed below.
 🛰️ Reuse cache between CI runs with Earthly Satellites! 2-20X faster than without cache. Generous free tier https://cloud.earthly.dev
 ```
 
-<!-- REPLACE 4.4.6, this output is not being generated in v4.4.5 -->
-
 The output also includes a manifest with predefined parameters you will use later to create the cluster profile. Copy
 and save the manifest.
 
-<!-- prettier-ignore-start -->
+<!-- prettier-ignore -->
 ```yaml
 pack:
   content:
@@ -280,27 +273,26 @@ pack:
       - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
   # Below config is default value, please uncomment if you want to modify default values
   #drain:
-  #cordon: true
-  #timeout: 60 # The length of time to wait before giving up, zero means infinite
-  #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
-  #ignoreDaemonSets: true
-  #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
-  #force: true # Continue even if there are pods that do not declare a controller
-  #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
-  #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
+    #cordon: true
+    #timeout: 60 # The length of time to wait before giving up, zero means infinite
+    #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
+    #ignoreDaemonSets: true
+    #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
+    #force: true # Continue even if there are pods that do not declare a controller
+    #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
+    #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
 options:
-  system.uri:
-    "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo}}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{.spectro.pack.edge-native-byoi.options.system.peVersion }}-{{.spectro.pack.edge-native-byoi.options.system.customTag }}"
+  system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
+
 
   system.registry: ttl.sh
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
-  system.peVersion: v4.4.4
+  system.peVersion: v4.4.8
   system.customTag: vbox-tutorial
   system.osVersion: 22
 ```
-<!-- prettier-ignore-end -->
 
 Once the build is complete, confirm that the Edge Installer ISO and its checksum were created correctly.
 
@@ -309,8 +301,8 @@ ls build
 ```
 
 ```text hideClipboard
-palette-edge-installer.iso
-palette-edge-installer.iso.sha256
+palette-installer.iso
+palette-installer.iso.sha256
 ```
 
 List the container images to confirm that the provider images were built successfully.
@@ -319,38 +311,25 @@ List the container images to confirm that the provider images were built success
 docker images --filter=reference="*/*:*$CUSTOM_TAG"
 ```
 
-<!-- replace 4.4.6 -->
-
 ```text hideClipboard
-REPOSITORY      TAG                               IMAGE ID       CREATED        SIZE
-ttl.sh/ubuntu   k3s-1.29.6-v4.4.4-vbox-tutorial   545feb4ece48   2 hours ago   3.59GB
+REPOSITORY      TAG                               IMAGE ID       CREATED          SIZE
+ttl.sh/ubuntu   k3s-1.29.6-v4.4.8-vbox-tutorial   75811e3dfb42   13 minutes ago   3.63GB
 ```
-
-:::info
-
-The provider images are tagged with the Palette Edge release. In this tutorial, CanvOS version 4.4.5 is used, which
-utilizes Palette Edge version 4.4.4. Therefore, Palette Edge and CanvOS tags may differ.
-
-:::
 
 ### Push Provider Images
 
 Push the provider images to the [ttl.sh](https://ttl.sh/) registry so that you can reference it when creating the
 cluster profile.
 
-<!-- replace 4.4.6 -->
-
 ```bash
-docker push ttl.sh/ubuntu:k3s-1.29.6-v4.4.4-$CUSTOM_TAG
+docker push ttl.sh/ubuntu:k3s-1.29.6-v4.4.8-$CUSTOM_TAG
 ```
 
 The output confirms that the image was pushed to the registry with the correct tag.
 
-<!-- replace 4.4.6 -->
-
 ```text hideClipboard
 # Output condensed for readability
-k3s-1.29.6-v4.4.4-vbox-tutorial: digest: sha256:128f0f77c865177b54ecec1bfad7fe0b70418cd84d1bb598149baa63f4457365 size: 17399
+k3s-1.29.6-v4.4.8-vbox-tutorial: digest: sha256:42f8805830c7fd3816bb27e8d710d1747fea31a70cb7718d74e42fe1c0ed53ac size: 17815
 ```
 
 :::warning
@@ -375,8 +354,8 @@ In the **Basic Information** section, assign the name **edge-vbox-profile** and 
 type as **Full**, and assign the tag **env:edge**. You can leave the version empty if you want to. Just be aware that
 the version defaults to **1.0.0**. Click on **Next**.
 
-**Cloud Type** allows you to choose the infrastructure provider with which this cluster profile is associated. Select
-**Edge Native** and click **Next**.
+The **Cloud Type** section allows you to choose the infrastructure provider for the cluster. Select **Edge Native** and
+click **Next**.
 
 The **Profile Layers** section specifies the packs that compose the profile.
 
@@ -464,10 +443,10 @@ you added are correct, and click on **Finish Configuration** to create the clust
 
 ## Deploy VirtualBox VM
 
-Once the Edge artifacts and Palette cluster profile have been created, proceed to the VM deployment. The VirtualBox VM
-will use the Installer ISO to bootstrap the Edge installation and serve as the Edge host for your cluster.
+Once the Edge artifacts and cluster profile have been created, proceed to the VM deployment. The VirtualBox VM will use
+the Installer ISO to bootstrap the Edge installation and serve as the Edge host for your cluster.
 
-Launch the VirtualBox application and click **New Virtual Machine**.
+Launch the VirtualBox application and click **New** to create a new VM.
 
 Give the machine a name, for example, `edge-vm`.
 
@@ -480,7 +459,7 @@ Set the machine **Type** as `Linux` and the **Version** as `Ubuntu (64-bit)`, an
 
 Adjust the **Base Memory** to `8000 MB` and **Processors** to `2 CPU`. Click **Next** to proceed.
 
-Set the **Disk Size** to 100 GB and ensure the option **Pre-Allocate Full Size** is not checked. Click **Next**.
+Set the **Disk Size** to 100 GB and ensure the option **Pre-Allocate Full Size** is **not** checked. Click **Next**.
 
 :::info
 
@@ -493,19 +472,17 @@ Confirm the VM settings and click **Finish** to create the VM.
 
 Select the VM to adjust its network settings. Click **Settings** and select **Network**.
 
-Change the option **Attached to:** from `NAT` to `Bridged Adapter` so the VM can receive an IP address from the same
-network as the host machine. Click **OK**.
+Change the **Attached to:** option from `NAT` to `Bridged Adapter` so that the VM can receive an IP address from the
+same network as the host machine's network. Click **OK**.
 
 ![A screenshot of the VirtualBox VM network configuration.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-network.webp)
-
-Once you finish the network configuration, the VM will be created.
 
 ## Prepare Edge Host
 
 ### Install Palette Edge
 
-In VirtualBox, select the VM and click **Start** to turn it on. The Edge Installer will bootstrap the Palette Edge
-installation onto the VM.
+In VirtualBox, select the created VM and click **Start** to turn it on. The Edge Installer will bootstrap the Palette
+Edge installation onto the VM.
 
 Wait for the Edge Installer to complete copying content to the VM, which may take a few minutes. The VM will reboot by
 default upon completion.
@@ -544,7 +521,7 @@ displayed on your VM's screen.
 
 ## Deploy Edge Cluster
 
-The following steps will guide you through deploying the Edge cluster infrastructure.
+The following steps will guide you through deploying the Edge cluster.
 
 Select **Clusters** from Palette's left **Main Menu** and click on **Create Cluster**. Ensure you are in the **Default**
 project.
@@ -605,11 +582,8 @@ cluster role binding. For this tutorial, you can use the default settings. Click
 Finally, the **Review** section allows you to review the cluster configuration. If everything looks correct, click
 **Finish Configuration** to deploy the cluster.
 
-The cluster deployment can take 15 to 30 minutes, depending on its configuration.
-
-Click on the **Events** tab to visualize the event log and learn more about the deployment progress.
-
-![A screenshot of the cluster's Events tab.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-events.webp)
+The cluster deployment can take 15 to 30 minutes, depending on its configuration. You can click on the **Events** tab to
+visualize the event log and learn more about the deployment progress.
 
 ## Validate
 
@@ -629,11 +603,10 @@ on the logo to increase the global counter and for a fun image change.
 
 ![A screenshot of the Hello Universe application.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_hello-universe.webp)
 
-You have successfully provisioned an Edge cluster with a three-tier demo application.
-
 ## Clean Up
 
-Use the following steps to remove the resources created for this tutorial.
+You have successfully provisioned an Edge cluster with a three-tier demo application. Use the following steps to remove
+the resources created for this tutorial.
 
 ### Cluster and Cluster Profile
 
@@ -642,8 +615,7 @@ named **edge-vbox-cluster** to access its details page.
 
 Next, click **Settings** and select **Delete Cluster**.
 
-You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name to proceed with
-the delete step. The deletion process takes several minutes to complete.
+Type in the cluster name to proceed with the deletion. This process may take several minutes to complete.
 
 :::info
 
@@ -680,15 +652,15 @@ Next, right-click the VM again and select **Remove**. Click **Delete all files**
 Delete the Edge Installer ISO image and its checksum by issuing the following commands from the **CanvOS/** directory.
 
 ```bash
-rm build/palette-edge-installer.iso
-rm build/palette-edge-installer.iso.sha256
+rm build/palette-installer.iso
+rm build/palette-installer.iso.sha256
 ```
 
 Next, delete the provider images.
 
 ```bash
-docker rmi ttl.sh/ubuntu:k3s-1.29.6-v4.4.4-vbox-tutorial
-docker rmi ttl.sh/ubuntu:k3s-1.29.6-v4.4.4-vbox-tutorial_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.29.6-v4.4.8-vbox-tutorial
+docker rmi ttl.sh/ubuntu:k3s-1.29.6-v4.4.8-vbox-tutorial_linux_amd64
 ```
 
 ## Wrap-up
@@ -700,9 +672,9 @@ Edge cluster.
 Palette Edge enables you to customize your Edge hosts with the desired OS, Kubernetes distribution, dependencies, and
 user data configurations.
 
-This tutorial setup has provided you with hands-on experience with Palette Edge using a single VM, eliminating the need
-for a complex lab environment or separate physical devices. You can also use this setup to quickly test and validate
-Edge configurations before deploying them in production.
+This tutorial has provided you with hands-on experience with Palette Edge using a single VM, eliminating the need for a
+complex lab environment or separate physical devices. You can also use this setup to quickly test and validate Edge
+configurations before deploying them in production.
 
 We encourage you to check the reference resources below to learn more about Palette Edge.
 
