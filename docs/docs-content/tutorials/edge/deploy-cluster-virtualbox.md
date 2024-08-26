@@ -106,33 +106,6 @@ Check the available git tags.
 git tag
 ```
 
-The output should be similar to the following.
-
-<!-- REPLACE 4.4.6 -->
-
-```text hideClipboard
-v3.3.3
-v3.4.0
-v3.4.1
-v3.4.11
-v3.4.3
-v3.4.7
-v3.4.9
-v4.0.2
-v4.0.3
-v4.0.4
-v4.0.5
-v4.0.6
-v4.1.2
-v4.1.4
-v4.2.3
-v4.3.2
-v4.3.3
-v4.4.2
-v4.4.4
-v4.4.5
-```
-
 <!-- REPLACE 4.4.6 -->
 
 Check out the newest available tag. This tutorial uses the tag **v4.4.5** as an example.
@@ -143,9 +116,9 @@ git checkout v4.4.5
 
 ### Define Arguments
 
-CanvOS leverages [Earthly](https://earthly.dev) to build the Installer ISO and provider images artifacts. A filed called
-**.arg** is used to pass the value of a few arguments, such as the image tag and registry name, to Earthly for the build
-process.
+EdgeForge leverages [Earthly](https://earthly.dev) to build the Installer ISO and provider images artifacts. A filed
+called **.arg** is used to pass the values of a few arguments, such as the image tag and registry name, to Earthly for
+the build process.
 
 Execute the command below to create a custom tag for the provider images. The tag must be an alphanumeric lowercase
 string. This tutorial uses `vbox-tutorial` as an example.
@@ -537,7 +510,7 @@ installation onto the VM.
 Wait for the Edge Installer to complete copying content to the VM, which may take a few minutes. The VM will reboot by
 default upon completion.
 
-When you see the image below, right-click the VM, select **Stop**, and then click **Power Off** to turn it off before
+When the image below appears, right-click the VM, select **Stop**, and then click **Power Off** to turn it off before
 the reboot starts.
 
 ![A screenshot of the VirtualBox VM after installation.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-reboot.webp)
@@ -549,7 +522,7 @@ Select the Edge Installer ISO and click **Remove Attachment** to remove it from 
 
 ![A screenshot of the VirtualBox VM storage configuration.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-remove-iso.webp)
 
-### Deploy Edge Host
+### Register Edge Host
 
 Select the VirtualBox VM you created and click **Start** to turn it on. The VM will boot and get an IP address from the
 bridged network of the host machine. This address should be on the same subnet as the host machine.
@@ -592,7 +565,20 @@ The **Cluster Profile** section displays all the layers in the cluster profile. 
 In the **Cluster Config** section, provide a Virtual IP (VIP) address for the Edge cluster. This address must be an
 unused address on the same network as your Edge host.
 
-Optionally, you can also select an SSH key to access the cluster's node and a Network Time Protocol (NTP) server list.
+:::tip
+
+You can use the [nmap](https://nmap.org/book/man.html) tool to scan your network and check which IP addresses are in
+use. Issue the following command in your terminal, replacing the example CIDR `192.168.0.0/24` with your network's CIDR.
+
+    ```bash
+    nmap -sn 192.168.0.0/24
+    ```
+
+The output displays the IP addresses that are currently in use on your network.
+
+:::
+
+Optionally, you can also select an SSH key to access the cluster's nodes and a Network Time Protocol (NTP) server list.
 
 Click **Next** to continue.
 
@@ -601,13 +587,13 @@ single-node Edge cluster with no worker pools.
 
 Provide the following details for the control plane pool.
 
-| Field                           | Value                                                                                                                                                                                  |
-| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Node pool name                  | control-plane-pool                                                                                                                                                                     |
-| Allow worker capability         | Yes                                                                                                                                                                                    |
-| Additional Labels (Optional)    | None                                                                                                                                                                                   |
-| Taints                          | None                                                                                                                                                                                   |
-| Pool Configuration > Edge Hosts | Choose the registered Edge hosts you created in the [Deploy Edge Host](#deploy-edge-host) section of this tutorial. Palette automatically displays the NIC Name for the selected host. |
+| Field                           | Value                                                                                                                                                                                      |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Node pool name                  | control-plane-pool                                                                                                                                                                         |
+| Allow worker capability         | Yes                                                                                                                                                                                        |
+| Additional Labels (Optional)    | None                                                                                                                                                                                       |
+| Taints                          | None                                                                                                                                                                                       |
+| Pool Configuration > Edge Hosts | Choose the registered Edge hosts you created in the [Register Edge Host](#register-edge-host) section of this tutorial. Palette automatically displays the NIC Name for the selected host. |
 
 Next, click **Remove** to delete the worker pool and click **Next** to proceed with the cluster deployment.
 
@@ -677,7 +663,7 @@ profile.
 
 Once the Edge cluster and cluster profile are deleted, click **Clusters** from the left **Main Menu**.
 
-Locate the Edge host deployed in the [Deploy Edge Host](#deploy-edge-host) section of this tutorial. Click on the
+Locate the Edge host deployed in the [Register Edge Host](#register-edge-host) section of this tutorial. Click on the
 **three-dot Menu** and select **Delete** to delete the Edge host. Confirm the deletion by clicking **OK**. This will
 remove the Edge host from Palette but not delete the underlying infrastructure.
 
