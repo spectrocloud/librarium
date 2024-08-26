@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Pause Platform Upgrades"
-title: "Pause Platform Upgrades"
+sidebar_label: "Pause Agent Upgrades"
+title: "Pause Agent Upgrades"
 description: "Learn about Palette's Pause Agent Upgrades setting."
 hide_table_of_contents: false
 sidebar_position: 0
