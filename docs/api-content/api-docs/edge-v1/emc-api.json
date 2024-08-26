@@ -11,7 +11,7 @@
   ],
   "swagger": "2.0",
   "info": {
-    "title": "Edge Management APIs",
+    "title": "Local Management APIs",
     "version": "v1"
   },
   "paths": {
@@ -564,6 +564,42 @@
         }
       }
     },
+    "/v1/edge-mgmt/edgehosts/current/actions/content/signing-public-key": {
+      "get": {
+        "description": "Get the base64 encoded key used to verify the signed content.",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get the public key used to verify the signed content.",
+        "operationId": "V1GetContentSigningPublicKey",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1ContentSigningKey"
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
     "/v1/edge-mgmt/edgehosts/current/actions/reboot": {
       "post": {
         "description": "Reboot edge host",
@@ -656,10 +692,16 @@
         "parameters": [
           {
             "type": "file",
-            "description": "The archive file to be uploaded.",
+            "description": "The clusterconfig file to be uploaded.",
             "name": "uploadFile",
             "in": "formData",
             "required": true
+          },
+          {
+            "type": "file",
+            "description": "The signature for the corresponding cluster config to be uploaded.",
+            "name": "signature",
+            "in": "formData"
           }
         ],
         "responses": {
@@ -696,6 +738,12 @@
             "name": "uploadFile",
             "in": "formData",
             "required": true
+          },
+          {
+            "type": "file",
+            "description": "The signature for the corresponding archive file to be uploaded.",
+            "name": "signature",
+            "in": "formData"
           }
         ],
         "responses": {
@@ -709,6 +757,154 @@
             "description": "Internal server error",
             "schema": {
               "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/audits": {
+      "get": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Retrieves the list of audit logs",
+        "operationId": "v1Audits",
+        "parameters": [
+          {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "name": "startTime",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "name": "endTime",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Specify the user uid, to retrieve the specific user audit logs",
+            "name": "userUid",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Specify the resource name, to retrieve the specific resource audit logs",
+            "name": "resourceKind",
+            "in": "query"
+          },
+          {
+            "enum": [
+              "create",
+              "update",
+              "delete",
+              "activity",
+              "action"
+            ],
+            "type": "string",
+            "name": "actionType",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "default": 50,
+            "description": "limit is a maximum number of responses to return for a list call. Default and maximum value of the limit is 50.\nIf more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results.",
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int64",
+            "description": "offset is the next index number from which the response will start. The response offset value can be used along with continue token for the pagination.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "continue token to paginate the subsequent data items",
+            "name": "continue",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AuditsList"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/v1NotFoundResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/audits/download": {
+      "get": {
+        "description": "Download audit logs as a single compressed file",
+        "produces": [
+          "application/x-tar",
+          "application/json"
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Download audit logs",
+        "operationId": "v1AuditDownload",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "file",
+              "format": "binary"
+            },
+            "headers": {
+              "Content-Disposition": {
+                "type": "string",
+                "description": "Specifies the filename for the downloaded file."
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/v1NotFoundResponseWithMessage"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/audits/filters": {
+      "get": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Retrieves the list of filter options to display on audit ui page",
+        "operationId": "v1AuditFilter",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AuditFilterObect"
             }
           }
         }
@@ -880,6 +1076,98 @@
         }
       }
     },
+    "/v1/edge-mgmt/edgehosts/current/file-download/files": {
+      "get": {
+        "description": "Lists all the first level files from the '/var/log/files' directory.\n",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "List custom files from the '/var/log/files' directory",
+        "operationId": "v1EdgeHostListCustomFiles",
+        "responses": {
+          "200": {
+            "description": "A list of files with metadata.",
+            "schema": {
+              "$ref": "#/definitions/v1FileMetadataList"
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/file-download/{filePath}": {
+      "get": {
+        "description": "Downloads a file from the `/var/log/files` directory. The file path is expected to be relative to the `/var/log/files` directory.\n",
+        "produces": [
+          "application/octet-stream",
+          "application/json"
+        ],
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Download a custom file from the user-defined or default directory",
+        "operationId": "v1EdgeHostCustomFileDownload",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Relative path of the file to download.",
+            "name": "filePath",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "File downloaded successfully",
+            "schema": {
+              "type": "file",
+              "format": "binary"
+            },
+            "headers": {
+              "Content-Disposition": {
+                "type": "string",
+                "description": "Specifies the filename for the downloaded file."
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
     "/v1/edge-mgmt/edgehosts/current/generate-logs": {
       "post": {
         "description": "Start edge host log collection",
@@ -947,6 +1235,30 @@
             "description": "Internal server error",
             "schema": {
               "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/settings": {
+      "get": {
+        "description": "Get general settings",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get general settings",
+        "operationId": "v1Settings",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1Settings"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
             }
           }
         }
@@ -1234,6 +1546,125 @@
         "arm64",
         "amd64"
       ]
+    },
+    "v1Audit": {
+      "description": "Audit response payload",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1AuditMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1AuditSpec"
+        }
+      }
+    },
+    "v1AuditActor": {
+      "description": "Audit actor object",
+      "properties": {
+        "actorType": {
+          "type": "string",
+          "enum": [
+            "user",
+            "system"
+          ]
+        },
+        "uid": {
+          "description": "id of actor",
+          "type": "string"
+        }
+      }
+    },
+    "v1AuditFilterObect": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "v1AuditMeta": {
+      "properties": {
+        "createTimestamp": {
+          "description": "CreationTimestamp is a timestamp representing the server time when this object was created.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "edgeHostId": {
+          "description": "edge host id",
+          "type": "string"
+        }
+      }
+    },
+    "v1AuditResourceReference": {
+      "description": "Audit resource object",
+      "properties": {
+        "kind": {
+          "description": "Audit resource type",
+          "type": "string"
+        },
+        "name": {
+          "description": "Audit resource name",
+          "type": "string"
+        },
+        "uid": {
+          "description": "Audit resource id",
+          "type": "string"
+        }
+      }
+    },
+    "v1AuditSpec": {
+      "description": "Audit specifications",
+      "properties": {
+        "actionType": {
+          "type": "string",
+          "enum": [
+            "create",
+            "update",
+            "delete",
+            "action",
+            "activity"
+          ]
+        },
+        "actor": {
+          "$ref": "#/definitions/v1AuditActor"
+        },
+        "message": {
+          "description": "Audit action message",
+          "type": "string"
+        },
+        "resource": {
+          "$ref": "#/definitions/v1AuditResourceReference"
+        }
+      }
+    },
+    "v1AuditsList": {
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "description": "List of audit message",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/v1Audit"
+          }
+        },
+        "listmeta": {
+          "$ref": "#/definitions/v1ListMetaData"
+        }
+      }
     },
     "v1AuthLogin": {
       "type": "object",
@@ -1679,11 +2110,21 @@
             "$ref": "#/definitions/v1ClusterNodePoolStatus"
           }
         },
+        "ntpServersApplied": {
+          "type": "boolean",
+          "default": false,
+          "x-isnullable": false
+        },
         "services": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1Service"
           }
+        },
+        "sshKeysApplied": {
+          "type": "boolean",
+          "default": false,
+          "x-isnullable": false
         }
       }
     },
@@ -1775,6 +2216,21 @@
         "Connected",
         "Airgap"
       ]
+    },
+    "v1ContentSigningKey": {
+      "type": "object",
+      "properties": {
+        "creationTimestamp": {
+          "description": "CreationTimestamp is the timestamp when the resource was created.",
+          "$ref": "#/definitions/v1Time"
+        },
+        "description": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        }
+      }
     },
     "v1DNS": {
       "type": "object",
@@ -1927,6 +2383,9 @@
           "items": {
             "$ref": "#/definitions/v1Nic"
           }
+        },
+        "paletteEndpointURL": {
+          "type": "string"
         }
       }
     },
@@ -2086,12 +2545,6 @@
           "type": "string",
           "default": ""
         },
-        "isTwoNodeCandidate": {
-          "description": "Enable this flag to support 2-Node HA mode. True indicates this edgehost which act as the recovery node. It is a immutable field can be set only during cluster provisioning.",
-          "type": "boolean",
-          "default": false,
-          "x-omitempty": false
-        },
         "nic": {
           "description": "Edge native nic",
           "$ref": "#/definitions/v1Nic"
@@ -2103,6 +2556,14 @@
         "staticIP": {
           "description": "Deprecated. Edge host static IP",
           "type": "string"
+        },
+        "twoNodeCandidatePriority": {
+          "description": "Set the edgehost candidate priority as primary or secondary, if the edgehost is nominated as two node candidate",
+          "type": "string",
+          "enum": [
+            "primary",
+            "secondary"
+          ]
         }
       }
     },
@@ -2278,6 +2739,36 @@
           "uniqueItems": true,
           "items": {
             "$ref": "#/definitions/v1Event"
+          }
+        }
+      }
+    },
+    "v1FileMetadata": {
+      "type": "object",
+      "properties": {
+        "creationTimestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "fileName": {
+          "type": "string"
+        },
+        "lastModifiedTimestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "size": {
+          "type": "string"
+        }
+      }
+    },
+    "v1FileMetadataList": {
+      "type": "object",
+      "properties": {
+        "files": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1FileMetadata"
           }
         }
       }
@@ -2506,6 +2997,27 @@
           "items": {
             "$ref": "#/definitions/v1ConditionCategoryOrder"
           }
+        }
+      }
+    },
+    "v1ListMetaData": {
+      "description": "ListMeta describes metadata for the resource listing",
+      "type": "object",
+      "properties": {
+        "continue": {
+          "description": "Next token for the pagination. Next token is equal to empty string indicates end of result set.",
+          "type": "string",
+          "x-omitempty": false
+        },
+        "limit": {
+          "description": "Number of records feteched",
+          "type": "integer",
+          "x-omitempty": false
+        },
+        "offset": {
+          "description": "The next offset for the pagination. Starting index for which next request will be placed.",
+          "type": "integer",
+          "x-omitempty": false
         }
       }
     },
@@ -2751,6 +3263,9 @@
         "name": {
           "type": "string"
         },
+        "values": {
+          "type": "string"
+        },
         "version": {
           "type": "string"
         }
@@ -2827,6 +3342,9 @@
           "type": "string"
         },
         "type": {
+          "type": "string"
+        },
+        "values": {
           "type": "string"
         },
         "version": {
@@ -2985,6 +3503,22 @@
         }
       }
     },
+    "v1Settings": {
+      "type": "object",
+      "properties": {
+        "hasHarborPack": {
+          "type": "boolean",
+          "default": false
+        },
+        "installationMode": {
+          "type": "string",
+          "enum": [
+            "airgap",
+            "connected"
+          ]
+        }
+      }
+    },
     "v1State": {
       "type": "string",
       "enum": [
@@ -3053,6 +3587,11 @@
       "description": "Current user information",
       "type": "object",
       "properties": {
+        "disablePasswordUpdate": {
+          "description": "Flag to indicate if the user is allowed to update the password",
+          "type": "boolean",
+          "default": false
+        },
         "sshKeys": {
           "description": "Current user's ssh keys",
           "type": "array",

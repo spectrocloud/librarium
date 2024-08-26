@@ -97,8 +97,8 @@ production scenario, you would need to customize these artifacts to suit your sp
 
 You can specify a custom registry for the Edge Installer to use during installation with the user data parameter
 `registryCredentials`. Refer to the
-[Installer Configuration](../edge-configuration/installer-reference.md#external-registry) reference resource for more
-details.
+[Installer Configuration](../edge-configuration/installer-reference.md#external-registry-parameters) reference resource
+for more details.
 
 :::
 
@@ -138,10 +138,13 @@ scenario, use the CLIs to help you with the customization.
   [Prepare User Data](/clusters/edge/edgeforge-workflow/prepare-user-data) guide to learn more about user data and when
   to use multiple user data files.
 
+<!-- prettier-ignore-start -->
+
 - **Bring Your Own OS (BYOOS)**: For environments that require a different runtime OS, you can specify another OS
-  through the [BYOOS](/integrations/byoos) option. Follow the instructions in the
-  [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn more about how you can
-  customize the OS used in an Edge deployment.
+through the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=edge-native-byoi"/> option. Follow the
+instructions in the [Build Edge Artifacts](/clusters/edge/edgeforge-workflow/palette-canvos) guide to learn more about
+how you can customize the OS used in an Edge deployment.
+<!-- prettier-ignore-end -->
 
 ## Resources
 

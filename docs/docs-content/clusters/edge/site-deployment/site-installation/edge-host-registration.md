@@ -13,6 +13,14 @@ guide for steps on how to create a tenant registration token.
 
 You have the following options to register the Edge host with Palette.
 
+:::warning
+
+If you using an Edge host that was previously registered with Palette, ensure that you delete the Edge host from your
+Palette account first before attempting Edge host registration. Otherwise, the registration will fail due to duplicate
+Edge host IDs.
+
+:::
+
 | **Method**          | **Description**                                                                                                                                                                                                                               | **Set up Effort** |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
 | Auto Registration   | Edge hosts can automatically register with Palette through a _Registration Token_. This method requires you to specify the registration token in the user data.                                                                               | Low               |
@@ -241,6 +249,9 @@ Use the following steps to enable this workflow.
 Your Edge host is displayed and marked as **Registered** in the Edge hosts list.
 
 ## Next Steps
+
+After an Edge host is registered, it will show up in the **Edge Hosts** tab in a grid view. For more information, refer
+to [Edge Host Grid View](../edge-host-view.md).
 
 The next step in the installation process is to add the Edge host to a cluster or to create an Edge Native host cluster.
 Check out the [Create Cluster Definition](../cluster-deployment.md) guide to complete the last step of the installation

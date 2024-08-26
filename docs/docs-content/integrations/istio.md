@@ -10,29 +10,13 @@ logoUrl: "https://registry.spectrocloud.com/v1/istio/blobs/sha256:c80cf596d48592
 tags: ["packs", "istio", "network"]
 ---
 
-This Integration aims to automate and simplify the rollout of the various Istio components which helps with service mesh
-use cases.
-
 ## Versions Supported
 
-<Tabs queryString="versions">
+<Tabs queryString="parent">
 
 <TabItem label="1.14.x" value="1.14.x">
 
-- **1.14.3**
-- **1.14.1**
-
-</TabItem>
-
-<TabItem label="1.6.x" value="1.6.x">
-
-- **1.6.2**
-
-</TabItem>
-
-</Tabs>
-
-## Contents
+## Pack Components
 
 The integration deploys the Istio Operator with the 'demo' profile which deploys the following components:
 
@@ -44,10 +28,38 @@ The integration deploys the Istio Operator with the 'demo' profile which deploys
 - Istio Tracing
 - Kiali
 
-## References
+</TabItem>
 
-- [Istio Home](https://istio.io)
+<TabItem label="1.6.x" value="1.6.x">
 
-- [Istio Documentation](https://istio.io/latest/docs)
+## Pack Components
 
-- [Istio Operator GitHub](https://github.com/istio/operator)
+The integration deploys the Istio Operator with the 'demo' profile which deploys the following components:
+
+- Istiod
+- Istio Ingress Gateway
+- Istio Egress Gateway
+- Grafana
+- Prometheus
+- Istio Tracing
+- Kiali
+
+</TabItem>
+
+</Tabs>
+
+## Terraform
+
+You can reference the Istio pack in Terraform with the following data resource.
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack" "istio" {
+  name    = "istio"
+  version = "1.20.1"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```

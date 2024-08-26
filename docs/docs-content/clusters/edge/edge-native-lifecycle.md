@@ -36,7 +36,7 @@ SaaS or a self-hosted instance. The following diagram represents the deployment 
    static IP address, network proxy, and SSL certificates with site user data or Palette Terminal User Interface (TUI).
    For more information, refer to [Deploy Edge Hosts On-Site](./site-deployment/site-installation/site-installation.md).
 
-5. **Cluster formation**. One an Edge host is registered with Palette, the Edge host can be used to form a new cluster
+5. **Cluster formation**. Once an Edge host is registered with Palette, the Edge host can be used to form a new cluster
    or be added to an existing cluster. Each cluster uses a cluster profile modeled in the **Modeling** stage. For more
    information, refer to [Cluster Definition](./site-deployment/cluster-deployment.md).
 

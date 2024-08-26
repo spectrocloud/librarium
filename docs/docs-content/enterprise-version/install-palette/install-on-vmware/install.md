@@ -15,11 +15,10 @@ Refer to [Access Palette](../../enterprise-version.md#access-palette) for instru
 
 ## Prerequisites
 
-:::warning
+:::tip
 
-If you are installing Palette in an airgap environment, ensure you complete all the airgap pre-install steps before
-proceeding with the installation. Refer to the
-[VMware vSphere Airgap Instructions](../install-on-vmware//airgap-install/vmware-vsphere-airgap-instructions.md) guide
+We recommend using the `--validate` flag with the `ec install` command to validate the installation. Check out the
+[Validate Environment](../../../automation/palette-cli/commands/ec.md#validate-environment) section of the EC command
 for more information.
 
 :::
@@ -67,6 +66,9 @@ for more information.
   persistent storage. Refer to [Zone Tagging](../install-on-vmware/vmware-system-requirements.md) for information.
 
 - Assigned IP addresses for application workload services, such as Load Balancer services.
+
+- Ensure Palette has access to the required domains and ports. Refer to the
+  [Required Domains](../install-palette.md#proxy-requirements) section for more information.
 
 - Shared Storage between VMware vSphere hosts.
 
@@ -125,6 +127,14 @@ Use the following steps to install Palette.
     palette ec install
     ```
 
+    You can also use the `--validate` flag to validate the installation prior to deployment. Refer to the
+    [Validate Environment](../../../automation/palette-cli/commands/ec.md#validate-environment) section of the EC
+    command for more information.
+
+    ```bash
+    palette ec install --validate
+    ```
+
 6.  At the **Enterprise Cluster Type** prompt, choose **Palette**.
 
 7.  Type `y` if you want to use Ubuntu Pro. Otherwise, type `n`. If you choose to use Ubuntu Pro, you will be prompted
@@ -168,69 +178,7 @@ Use the following steps to install Palette.
     | **Pod CIDR**                      | Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                     |
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                         |
 
-13. Select the tab below that matches your installation type for further guidance.
-
-    <Tabs groupId="mode">
-
-    <TabItem label="Non-Airgap" value="non-airgap">
-
-    Select `y` to use the Spectro Cloud repository and proceed to the next step.
-
-    </TabItem>
-
-    <TabItem label="Airgap" value="airgap">
-
-    :::info
-
-    If you are using the Palette CLI from inside an
-    [airgap support VM](./airgap-install/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect the
-    airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type `y` to use the local resources
-    and skip filling in the OCI registry URL and credentials.
-
-    :::
-
-    Select the OCI registry type and provide the configuration values. Review the following table for more information.
-
-    :::warning
-
-    For self-hosted OCI registries, ensure you have the server Certificate Authority (CA) certificate file available on
-    the host where you are using the Palette CLI. You will be prompted to provide the file path to the OCI CA
-    certificate. Failure to provide the OCI CA certificate will result in self-linking errors. Refer to the
-    [Self-linking Error](../../../troubleshooting/enterprise-install.md#scenario---self-linking-error) troubleshooting
-    guide for more information.
-
-    :::
-
-    #### Pack & Image Registry Configuration
-
-    | **Parameter**                                    | **Description**                                                                                                                                                                                                                                                                                                                                     |
-    | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Registry Type**                                | Specify the type of registry. Allowed values are `OCI` or `OCI ECR`. Airgap users, select `OCI`.                                                                                                                                                                                                                                                    |
-    | **Registry Name**                                | Enter the name of the registry.                                                                                                                                                                                                                                                                                                                     |
-    | **Registry Endpoint**                            | Enter the registry endpoint. Airgap users, provide the **Spectro Cloud Repository** URL or hostname shared by the airgap setup script.                                                                                                                                                                                                              |
-    | **Registry Base Path**                           | Enter the registry base path.                                                                                                                                                                                                                                                                                                                       |
-    | **Allow Insecure Connection**                    | Bypasses x509 verification. Type `n` to specify a certificate authority in the follow-up prompt. Airgap user, ensure you select `n`.                                                                                                                                                                                                                |
-    | **Registry CA certificate filepath**             | Specify the file path to the certificate authority. Use absolute paths. Airgap users, provide the filepath displayed by the aurgap setup script.                                                                                                                                                                                                    |
-    | **Registry Username** or **Registry Access Key** | Enter the registry username or the access key if using `OCI ECR`.                                                                                                                                                                                                                                                                                   |
-    | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`.                                                                                                                                                                                                                                                                                   |
-    | **Registry Region**                              | Enter the registry region. This option is only available if you are using `OCI ECR`.                                                                                                                                                                                                                                                                |
-    | **ECR Registry Private**                         | Type `y` if the registry is private. Otherwise, type `n`.                                                                                                                                                                                                                                                                                           |
-    | **Use Public Registry for Images**               | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. Airgap users, select `n` so that you can specify the values for the OCI registry that contains all the required images. |
-
-        	When prompted to **Pull images from public registry**, type `n` and specify the OCI registry configuration values for
-        	your image registry. If you are an airgap support VM, the CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Image Registry?** Type `y` to use the local resources and skip filling in the OCI registry URL and credentials.
-        Refer to the table above for more information.
-
-    :::info
-
-    You will be provided with an opportunity to update the mirror registries values. To exit `vi` press the `Escape` key
-    and type `:wq` to save and exit.
-
-    :::
-
-    </TabItem>
-
-    </Tabs>
+13. Select `y` to use the Spectro Cloud repository and proceed to the next step.
 
 14. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following
     table.

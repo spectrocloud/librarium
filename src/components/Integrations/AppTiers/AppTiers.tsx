@@ -1,5 +1,5 @@
 import React from "react";
-import Integrations from "@site/src/components/Technologies";
+import Integrations from "@site/src/components/Technologies/AppPackList";
 import { usePluginData } from "@docusaurus/useGlobalData";
 import PacksIntegrationsPluginData from "../IntegrationTypes";
 

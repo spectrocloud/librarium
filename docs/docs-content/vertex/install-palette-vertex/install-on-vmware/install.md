@@ -16,6 +16,14 @@ Palette VerteX will be deployed.
 
 ## Prerequisites
 
+:::tip
+
+We recommend using the `--validate` flag with the `ec install` command to validate the installation. Check out the
+[Validate Environment](../../../automation/palette-cli/commands/ec.md#validate-environment) section of the EC command
+for more information.
+
+:::
+
 - An AMD64 Linux environment with connectivity to the VMware vSphere environment.
 
 - [Docker](https://docs.docker.com/engine/install/) or equivalent container runtime installed and available on the Linux
@@ -30,7 +38,7 @@ Palette VerteX will be deployed.
 
   - [Red Hat Linux Enterprise](https://www.redhat.com/en) - you need a Red Hat subscription and a custom RHEL vSphere
     template with Kubernetes available in your vSphere environment. To learn how to create the required template, refer
-    to the [RHEL and PXK](../../../byoos/usecases/vmware/rhel-pxk.md) guide.
+    to the [RHEL and PXK](../../../byoos/image-builder/build-image-vmware/rhel-pxk.md) guide.
 
     :::warning
 
@@ -82,6 +90,9 @@ Palette VerteX will be deployed.
   persistent storage. Refer to [Zone Tagging](vmware-system-requirements.md#zone-tagging) for information.
 
 - Assigned IP addresses for application workload services, such as Load Balancer services.
+
+- Ensure Palette has access to the required domains and ports. Refer to the
+  [Required Domains](../install-palette-vertex.md#proxy-requirements) section for more information.
 
 - Shared Storage between VMware vSphere hosts.
 
@@ -142,15 +153,23 @@ Use the following steps to install Palette VerteX.
         palette ec install
         ```
 
+    You can also use the `--validate` flag to validate the installation prior to deployment. Refer to the
+    [Validate Environment](../../../automation/palette-cli/commands/ec.md#validate-environment) section of the EC
+    command for more information.
+
+        ```bash
+        palette ec install --validate
+        ```
+
 6.  At the **Enterprise Cluster Type** prompt, choose **Palette VerteX**.
 
 7.  Select the desired OS you want to use for the installation. Review the table below for more information about each
     option.
 
-    | **Option**                   | **Description**                                                                                                                | **Requirements**                                                                                                                                                                             |
-    | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Ubuntu Pro**               | [Ubuntu Pro](https://ubuntu.com/pro) is the default option. It provides access to FIPS 140-2 certified cryptographic packages. | Ubuntu Pro token.                                                                                                                                                                            |
-    | **Red Hat Linux Enterprise** | Red Hat Linux Enterprise provides access to Red Hat Enterprise Linux.                                                          | Red Hat subscription and a custom RHEL vSphere template with Kubernetes. Review the [RHEL and PXK](../../../byoos/usecases/vmware/rhel-pxk.md) to learn how to create the required template. |
+    | **Option**                   | **Description**                                                                                                                | **Requirements**                                                                                                                                                                                              |
+    | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Ubuntu Pro**               | [Ubuntu Pro](https://ubuntu.com/pro) is the default option. It provides access to FIPS 140-2 certified cryptographic packages. | Ubuntu Pro token.                                                                                                                                                                                             |
+    | **Red Hat Linux Enterprise** | Red Hat Linux Enterprise provides access to Red Hat Enterprise Linux.                                                          | Red Hat subscription and a custom RHEL vSphere template with Kubernetes. Review the [RHEL and PXK](../../../byoos/image-builder/build-image-vmware/rhel-pxk.md) to learn how to create the required template. |
 
 8.  Depending on your OS selection, you will be prompted to provide the required information. For Ubuntu Pro, you will
     need to provide your Ubuntu Pro token. For Red Hat Linux Enterprise, you will need to provide the path to the

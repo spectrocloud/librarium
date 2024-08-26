@@ -32,8 +32,9 @@ This step is to create teams in Palette that will be used for Okta SAML, this wi
 permissions. For this example, you will create the `Okta Team` team and give it **Tenant Admin** permissions. You can
 repeat this for any other team that you configured with group claims.
 
-1.  Open a web browser and navigate to your Palette subscription. Navigate to **Tenant Settings** --> **Users & Teams**
-    --> **Teams** tab, and click **+ Create Team**.
+1.  Open a web browser and navigate to your Palette subscription. Navigate to left **Main Menu** and select **Tenant
+    Settings**. From the left **Tenant Menu**, select **Users & Teams**, then click the on the **Teams** tab, and
+    lastly, click on **+ Create Team**.
 
     ![Create Palette Team](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_create-team.webp)
 
@@ -44,7 +45,7 @@ repeat this for any other team that you configured with group claims.
 
 3.  The list of teams displays again. Select the newly created **Okta Team** team to review its details. To give this
     team administrative access to the entire tenant and all the projects in it, assign the **Tenant Admin** role. Select
-    **Tenant Roles** and click **+ Add Tenant Role**:
+    **Tenant Roles** and click **+ Add Tenant Role**.
 
     ![Palette Tenant Roles](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_tenant-roles.webp)
 
@@ -83,13 +84,7 @@ repeat this for any other team that you configured with group claims.
 
 10. Set the value of **Service** to **Okta**.
 
-    ![Configure General SSO Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml.webp)
-
-11. Switch back to your Okta Admin console and paste the copied value to the **Single sign-on URL** and **Audience URI
-    (SP Entity ID)**.
-
-12. Specify values within **Attribute Statements** and **Group Attribute Statements** to link user values from Okta to
-    SpectroCloud.
+![Configure General SSO Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml.webp)
 
     Under **Attribute Statements (Optional)** specify the below values.
 
@@ -99,30 +94,38 @@ repeat this for any other team that you configured with group claims.
     | `LastName`  | `Unspecified` | `user.lastName`  |
     | `Email`     | `Unspecified` | `user.email`     |
 
-    Under **Group Attribute Statements (Optional)** specify the below values.
+Under **Attribute Statements (Optional)** specify the below values.
 
-    | Name          | Name Format   | Filter          | Value |
-    | ------------- | ------------- | --------------- | ----- |
-    | `SpectroTeam` | `Unspecified` | `Matches Regex` | Blank |
+| Name        | Name Format   | Value            |
+| ----------- | ------------- | ---------------- |
+| `FirstName` | `Unspecified` | `user.firstName` |
+| `LastName`  | `Unspecified` | `user.lastName`  |
+| `Email`     | `Unspecified` | `user.email`     |
 
-    ![Configure Attribute Statements](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_attribute-statements.webp)
+Under **Group Attribute Statements (Optional)** specify the below values.
 
-13. Finish the creation of the application with default values.
+| Name          | Name Format   | Filter          | Value |
+| ------------- | ------------- | --------------- | ----- |
+| `SpectroTeam` | `Unspecified` | `Matches Regex` | Blank |
 
-14. Once brought to main application page, copy the **Metadata URL**, open it up in a separate page, then copy of the
-    contents of the XML.
+![Configure Attribute Statements](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_attribute-statements.webp)
 
-    ![Copy Okta SAML Metadata](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_metadata-url.webp)
+8. Finish the creation of the application with default values.
 
-15. Go back to Palette SSO settings then paste the contents of the Okta SAML Metadata into **Identity Provider
+9. Once brought to main application page, copy the **Metadata URL**, open it up in a separate page, then copy of the
+   contents of the XML.
+
+   ![Copy Okta SAML Metadata](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_metadata-url.webp)
+
+10. Go back to Palette SSO settings then paste the contents of the Okta SAML Metadata into **Identity Provider
     Metadata**.
 
-    ![Paste Metadata in Palette SSO Manager](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml.webp)
+    ![Paste Metadata in Palette SSO Manager](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml_meta_data.webp)
 
-16. Under **Default Teams**, search for then click the Palette team we created called **Okta Team**. This connects all
+11. Under **Default Teams**, search for then click the Palette team we created called **Okta Team**. This connects all
     Okta users with the team and the team permissions we set earlier.
 
-17. When all the information has been entered, click Enable to activate SSO. You will receive a message stating SAML
+12. When all the information has been entered, click Enable to activate SSO. You will receive a message stating SAML
     configured successfully.
 
 ## Validate

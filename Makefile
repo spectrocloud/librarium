@@ -12,6 +12,9 @@ CPUS := $(shell sysctl -n hw.ncpu | awk '{print int($$1 / 2)}')
 
 ALOGLIA_CONFIG=$(shell cat docsearch.dev.config.json | jq -r tostring)
 
+# Find all *.md files in docs, cut the prefix ./ 
+# Remove all security-bulletins and cve-reports.md
+VERIFY_URL_PATHS=$(shell find ./docs -name "*.md" | cut -c 3- | sed '/security-bulletins/d' | sed '/cve-reports/d' )
 
 help: ## Display this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
@@ -32,11 +35,20 @@ deep-clean: ## Clean all artifacts
 	rm -rf node_modules build public .cache .docusaurus
 	npm run clear && npm run clean-api-docs
 	docker image rm $(IMAGE) || echo "No image exists."
+	rm -rfv static/img/packs
+
+clean-logos: ## Clean logos
+	rm -rf static/img/packs
 
 clean-versions: ## Clean Docusarus content versions
 	@echo "cleaning versions"
 	rm -rf api_versions.json versions.json versioned_docs versioned_sidebars api_versioned_sidebars api_versioned_docs versioned_partials
 	git checkout -- docusaurus.config.js static/robots.txt
+
+
+clean-packs: ## Clean supplemental packs and pack images
+	rm -rf static/img/packs
+	rm -rf .docusaurus/packs-integrations/api_pack_response.json
 
 clean-api: ## Clean API docs
 	@echo "cleaning api docs"
@@ -163,7 +175,7 @@ pdf-local: ## Generate PDF from local docs
 verify-url-links:
 	@echo "Checking for broken external URLs in markdown files..."
 	rm link_report.csv || echo "No report exists. Proceeding to scan step"
-	@npx linkinator "docs/**/*.md" --markdown --recurse --timeout 60000 --retry --retry-errors-jitter --retry-errors-count 3 \
+	@npx linkinator $(VERIFY_URL_PATHS) --concurrency 50 --markdown --recurse --timeout 100000 --retry --retry-errors-jitter --retry-errors-count 5 \
 		--skip "^https:\/\/docs\.spectrocloud\.com.*$$" \
 		--skip "^https:\/\/docs\.spectrocloud\.com\/.*\/supplemental\-packs$$" \
 		--skip "^http:\/\/docs\.spectrocloud\.com.*$$" \
@@ -173,15 +185,15 @@ verify-url-links:
 		--skip "\.(jpg|jpeg|png|gif|webp)$$" \
 		--skip "https:\/\/linux\.die\.net\/man\/.*$$" \
 		--skip "https:\/\/mysql\.com\/.*\.*$$" \
-		--skip "https:\/\/dev\.mysql\.com\/doc/\.*$$" \
+		--skip "https:\/\/dev\.mysql\.com\/doc\/.*$$" \
 		--format csv > temp_report.csv && sleep 2
 	@grep -E 'https?://' temp_report.csv > filtered_report.csv
 	@grep -E ',[[:space:]]*([4-9][0-9]{2}|[0-9]{4,}),' filtered_report.csv > link_report.csv && rm temp_report.csv filtered_report.csv
 
-verify-url-links-ci: ## Check for broken URLs in production in a GitHub Actions CI environment
-	@echo "Checking for broken external URLs in CI environment..."
-	rm link_report.json || echo "No report exists. Proceeding to scan step"
-	@npx linkinator "docs/**/*.md" --markdown --recurse --timeout 60000 --retry --retry-errors-count 3 \
+verify-security-bulletins-links:
+	@echo "Checking for broken URLs in security-bulletins markdown files..."
+	rm link_sec_bul_report.csv || echo "No security bulletins report exists. Proceeding to scan step"
+	@npx linkinator "docs/docs-content/security-bulletins/**/*.md" "docs/docs-content/security-bulletins/*.md" "docs/docs-content/unlisted/cve-reports.md" --concurrency 1 --markdown --recurse --timeout 100000 --retry --retry-errors-jitter --retry-errors-count 5 \
 		--skip "^https:\/\/docs\.spectrocloud\.com.*$$" \
 		--skip "^https:\/\/docs\.spectrocloud\.com\/.*\/supplemental\-packs$$" \
 		--skip "^http:\/\/docs\.spectrocloud\.com.*$$" \
@@ -191,12 +203,50 @@ verify-url-links-ci: ## Check for broken URLs in production in a GitHub Actions 
 		--skip "\.(jpg|jpeg|png|gif|webp)$$" \
 		--skip "https:\/\/linux\.die\.net\/man\/.*$$" \
 		--skip "https:\/\/mysql\.com\/.*\.*$$" \
-		--skip "https:\/\/dev\.mysql\.com\/doc/\.*$$" \
+		--skip "https:\/\/dev\.mysql\.com\/doc\/.*$$" \
+		--format csv > temp_sec_bul_report.csv && sleep 2
+	@grep -E 'https?://' temp_sec_bul_report.csv > filtered_sec_bul_report.csv
+	@grep -E ',[[:space:]]*([4-9][0-9]{2}|[0-9]{4,}),' filtered_sec_bul_report.csv > link_sec_bul_report.csv && rm temp_sec_bul_report.csv filtered_sec_bul_report.csv
+
+verify-url-links-ci: ## Check for broken URLs in production in a GitHub Actions CI environment
+	@echo "Checking for broken external URLs in CI environment..."
+	rm link_report.json || echo "No report exists. Proceeding to scan step"
+	@npx linkinator $(VERIFY_URL_PATHS) --concurrency 50 --markdown --recurse --timeout 100000 --retry --retry-errors-jitter --retry-errors-count 5 \
+		--skip "^https:\/\/docs\.spectrocloud\.com.*$$" \
+		--skip "^https:\/\/docs\.spectrocloud\.com\/.*\/supplemental\-packs$$" \
+		--skip "^http:\/\/docs\.spectrocloud\.com.*$$" \
+		--skip "^https:\/\/software-private\.spectrocloud\.com.*$$" \
+		--skip "^\/.*\.md$$" \
+		--skip "!\[.*\]\(.*\)$$" \
+		--skip "\.(jpg|jpeg|png|gif|webp)$$" \
+		--skip "https:\/\/linux\.die\.net\/man\/.*$$" \
+		--skip "https:\/\/mysql\.com\/.*\.*$$" \
+		--skip "https:\/\/dev\.mysql\.com\/doc\/.*$$" \
 		--format json > temp_report.json
 	@# Use jq to filter out links that do not start with http or https and keep only broken links
 	@jq '[.links[] | select(.url | test("^https?://")) | select(.status >= 400)]' temp_report.json > filtered_report.json
 	@rm temp_report.json
 	@mv filtered_report.json scripts/link_report.json
+
+verify-security-bulletins-links-ci: ## Check for broken URLs in production in a GitHub Actions CI environment
+	@echo "Checking for broken URLs in security-bulletins markdown files in CI environment..."
+	rm link_sec_bul_report.json || echo "No security bulletins report exists. Proceeding to scan step"
+	@npx linkinator "docs/docs-content/security-bulletins/**/*.md" "docs/docs-content/security-bulletins/*.md" "docs/docs-content/unlisted/cve-reports.md" --concurrency 1 --markdown --recurse --timeout 100000 --retry --retry-errors-jitter --retry-errors-count 5 \
+		--skip "^https:\/\/docs\.spectrocloud\.com.*$$" \
+		--skip "^https:\/\/docs\.spectrocloud\.com\/.*\/supplemental\-packs$$" \
+		--skip "^http:\/\/docs\.spectrocloud\.com.*$$" \
+		--skip "^https:\/\/software-private\.spectrocloud\.com.*$$" \
+		--skip "^\/.*\.md$$" \
+		--skip "!\[.*\]\(.*\)$$" \
+		--skip "\.(jpg|jpeg|png|gif|webp)$$" \
+		--skip "https:\/\/linux\.die\.net\/man\/.*$$" \
+		--skip "https:\/\/mysql\.com\/.*\.*$$" \
+		--skip "https:\/\/dev\.mysql\.com\/doc\/.*$$" \
+		--format json > temp_sec_bul_report.json
+	@# Use jq to filter out links that do not start with http or https and keep only broken links
+	@jq '[.links[] | select(.url | test("^https?://")) | select(.status >= 400)]' temp_sec_bul_report.json > filtered_sec_bul_report.json
+	@rm temp_sec_bul_report.json
+	@mv filtered_sec_bul_report.json scripts/link_sec_bul_report.json
 
 ###@ Image Formatting
 
