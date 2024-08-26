@@ -84,10 +84,6 @@ const redirects = [
     to: `/clusters/public-cloud/azure/aks/`,
   },
   {
-    from: `/integrations/minio-operator/`,
-    to: `/integrations/`,
-  },
-  {
     from: `/knowledgebase/how-to/reverse-proxy-dashboard/`,
     to: `/clusters/cluster-management/kubernetes-dashboard/`,
   },
@@ -164,16 +160,8 @@ const redirects = [
     to: `/clusters/edge/edgeforge-workflow/palette-canvos/`,
   },
   {
-    from: `/integrations/ubuntu-k3s/`,
-    to: `/integrations/ubuntu/`,
-  },
-  {
     from: `/clusters/brownfield-clusters/`,
     to: `/clusters/imported-clusters/`,
-  },
-  {
-    from: `/integrations/oidc-eks/`,
-    to: `/integrations/kubernetes/`,
   },
   {
     from: `/clusters/palette-virtual-clusters/add-virtual-cluster-to-host-cluster/`,
@@ -181,15 +169,15 @@ const redirects = [
   },
   {
     from: `/vm-management/vm-packs-profiles/enable-vm-dashboard/`,
-    to: `/vm-management/vm-packs-profiles/add-roles-and-role-bindings/`,
+    to: `/vm-management/rbac/add-roles-and-role-bindings/`,
   },
   {
     from: `/vm-management/vm-packs-profiles/vm-dashboard/`,
-    to: `/vm-management/create-manage-vm/standard-vm-operations/`,
+    to: `/vm-management/create-manage-vm`,
   },
   {
     from: `/vm-management/vm-packs-profiles/create-vm-dashboard-profile/`,
-    to: `/vm-management/vm-packs-profiles/create-vmo-profile/`,
+    to: `/vm-management/create-vmo-profile/`,
   },
   {
     from: `/knowledgebase/`,
@@ -298,10 +286,6 @@ const redirects = [
   {
     from: `/devx/app-profile/services/service-listings/cockroach-db/`,
     to: `/devx/services/service-listings/cockroach-db/`,
-  },
-  {
-    from: `/integrations/EKS-D/`,
-    to: `/integrations/`,
   },
   {
     from: `/enterprise-version/on-prem-system-requirements/`,
@@ -490,7 +474,7 @@ const redirects = [
 
   {
     from: "/palette-cli/commands/validator/",
-    to: "/automation/palette-cli/commands/validator/",
+    to: "/automation/palette-cli/commands/ec/",
   },
   {
     from: "/user-management/palette-resource-limits/",
@@ -531,6 +515,85 @@ const redirects = [
   },
   {
     from: "/security-bulletins/cve-reports/",
+    to: "/security-bulletins/reports/",
+  },
+  {
+    from: "/byoos/usecases/",
+    to: "/byoos/image-builder/build-image-vmware/",
+  },
+  {
+    from: "/byoos/usecases/vmware/",
+    to: "/byoos/image-builder/build-image-vmware/",
+  },
+  {
+    from: "/byoos/usecases/vmware/konvoy/",
+    to: "/byoos/image-builder/build-image-vmware/konvoy/",
+  },
+  {
+    from: "/byoos/usecases/vmware/rhel-pxk/",
+    to: "/byoos/image-builder/build-image-vmware/rhel-pxk/",
+  },
+  {
+    from: "/automation/palette-cli/commands/validator/",
+    to: "/automation/palette-cli/commands/ec/",
+  },
+  {
+    from: [
+      "/integrations/antrea-cni",
+      "/integrations/aws-autoscaler",
+      "/integrations/aws-ebs",
+      "/integrations/aws-efs",
+      "/integrations/azure-cni",
+      "/integrations/azure-disk",
+      "/integrations/byoos",
+      "/integrations/calico",
+      "/integrations/centos",
+      "/integrations/certmanager",
+      "/integrations/cilium",
+      "/integrations/citrix-ipam",
+      "/integrations/collectord",
+      "/integrations/flannel-cni",
+      "/integrations/fluentbit",
+      "/integrations/frp",
+      "/integrations/gce",
+      "/integrations/grafana-spectrocloud-dashboards",
+      "/integrations/harbor-edge",
+      "/integrations/k3s",
+      "/integrations/konvoy",
+      "/integrations/kubernetes-dashboard",
+      "/integrations/kubernetes-edge",
+      "/integrations/kubernetes-generic",
+      "/integrations/longhorn",
+      "/integrations/metallb",
+      "/integrations/microk8s",
+      "/integrations/nfs-subdir-external",
+      "/integrations/opa-gatekeeper",
+      "/integrations/portworx",
+      "/integrations/portworx_operator",
+      "/integrations/prometheus-cluster-metrics",
+      "/integrations/rke2",
+      "/integrations/rook-ceph",
+      "/integrations/trident",
+      "/integrations/ubuntu",
+      "/integrations/vsphere-csi",
+    ],
+    to: "/integrations/",
+  },
+  {
+    from: [
+      "/security-bulletins/reports/cve-2020-1971",
+      "/security-bulletins/reports/cve-2021-3449",
+      "/security-bulletins/reports/cve-2021-3711",
+      "/security-bulletins/reports/cve-2021-45079",
+      "/security-bulletins/reports/cve-2022-0778",
+      "/security-bulletins/reports/cve-2022-4450",
+      "/security-bulletins/reports/cve-2023-0215",
+      "/security-bulletins/reports/cve-2023-0286",
+      "/security-bulletins/reports/cve-2023-52425",
+      "/security-bulletins/reports/cve-2023-5528",
+      "/security-bulletins/reports/cve-2024-0743",
+      "/security-bulletins/reports/prisma-2022-0227",
+    ],
     to: "/security-bulletins/reports/",
   },
 ];

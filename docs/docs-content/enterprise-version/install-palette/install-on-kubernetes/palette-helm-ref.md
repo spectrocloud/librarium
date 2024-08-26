@@ -179,14 +179,14 @@ config:
     stableEndpointAccess: false
 ```
 
-### Registries
+## Registries
 
 Palette requires credentials to access the required Palette images. You can configure different types of registries for
 Palette to download the required images. You must configure at least one Open Container Initiative (OCI) registry for
 Palette. You must also provide the credentials for the Spectro Cloud Artifact Repository (SCAR) to download the required
 FIPS images.
 
-#### OCI Registry
+### OCI Registry
 
 Palette requires access to an OCI registry that contains all the required FIPS packs. You can host your own OCI registry
 and configure Palette to reference the registry. Alternatively, you can use the public OCI registry that we provide.
@@ -214,7 +214,7 @@ config:
     caCert: ""
 ```
 
-#### OCI ECR Registry
+### OCI ECR Registry
 
 We expose a public OCI ECR registry that you can configure Palette to reference. If you want to host your own OCI
 registry, refer to the [OCI Registry](#oci-registry) section. The OCI Elastic Container Registry (ECR) is hosted in an
@@ -244,7 +244,7 @@ config:
     caCert: ""
 ```
 
-#### OCI Image Registry
+### OCI Image Registry
 
 You can specify an OCI registry for the images used by Palette.
 
@@ -272,7 +272,7 @@ config:
     mirrorRegistries: ""
 ```
 
-#### Spectro Cloud Artifact Repository (SCAR)
+### Spectro Cloud Artifact Repository (SCAR)
 
 SCAR credentials are required to download the necessary FIPS manifests. Our support team provides the SCAR credentials.
 
@@ -294,7 +294,7 @@ config:
     caCert: ""
 ```
 
-#### Image Swap Configuration
+### Image Swap Configuration
 
 You can configure Palette to use image swap to download the required images. This is an advanced configuration option,
 and it is only required for air-gapped deployments. You must also install the Palette Image Swap Helm chart to use this
@@ -354,19 +354,23 @@ IP address of the gRPC load balancer. For example, if your Palette domain name i
 create a CNAME DNS record for `grpc.palette.example.com` that points to the IP address of the load balancer dedicated to
 gRPC.
 
-| **Parameters**        | **Description**                                                                              | **Type** | **Default value** |
-| --------------------- | -------------------------------------------------------------------------------------------- | -------- | ----------------- |
-| `external`            | Specifies whether to use an external gRPC endpoint.                                          | Boolean  | `false`           |
-| `endpoint`            | The gRPC endpoint.                                                                           | String   | `""`              |
-| `caCertificateBase64` | The base64-encoded certificate authority (CA) certificate for the gRPC endpoint.             | String   | `""`              |
-| `serverCrtBase64`     | The base64-encoded server certificate for the gRPC endpoint.                                 | String   | `""`              |
-| `serverKeyBase64`     | The base64-encoded server key for the gRPC endpoint.                                         | String   | `""`              |
-| `insecureSkipVerify`  | Specifies whether to skip Transport Layer Security (TLS) verification for the gRPC endpoint. | Boolean  | `false`           |
+| **Parameters**        | **Description**                                                                                                                                                                                                                                                                                                          | **Type** | **Default value** |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ----------------- |
+| `external`            | Specifies whether to use an external gRPC endpoint.                                                                                                                                                                                                                                                                      | Boolean  | `false`           |
+| `endpoint`            | The gRPC endpoint.                                                                                                                                                                                                                                                                                                       | String   | `""`              |
+| `annotations`         | A map of key-value pairs that specifies load balancer annotations for gRPC. You can use annotations to change the behavior of the load balancer and the gRPC configuration. This field is considered an advanced setting. We recommend you consult with your assigned support team representative before making changes. | Object   | `{}`              |
+| `grpcStaticIP`        | Specify a static IP address for the gRPC load balancer service. If the field is empty, a dynamic IP address will be assigned to the load balancer.                                                                                                                                                                       | String   | `""`              |
+| `caCertificateBase64` | The base64-encoded Certificate Authority (CA) certificate for the gRPC endpoint.                                                                                                                                                                                                                                         | String   | `""`              |
+| `serverCrtBase64`     | The base64-encoded server certificate for the gRPC endpoint.                                                                                                                                                                                                                                                             | String   | `""`              |
+| `serverKeyBase64`     | The base64-encoded server key for the gRPC endpoint.                                                                                                                                                                                                                                                                     | String   | `""`              |
+| `insecureSkipVerify`  | Specifies whether to skip Transport Layer Security (TLS) verification for the gRPC endpoint.                                                                                                                                                                                                                             | Boolean  | `false`           |
 
 ```yaml
 grpc:
   external: false
   endpoint: ""
+  annotations: {}
+  grpcStaticIP: ""
   caCertificateBase64: ""
   serverCrtBase64: ""
   serverKeyBase64: ""
@@ -402,11 +406,11 @@ ingress:
 
 ### Spectro Proxy
 
+<!-- prettier-ignore -->
 You can specify a reverse proxy server that clusters deployed through Palette can use to facilitate network connectivity
-to the cluster's Kubernetes API server. Host clusters deployed in private networks can use the
-[Spectro Proxy pack](../../../integrations/frp.md) to expose the cluster's Kubernetes API to downstream clients that are
-not in the same network. Check out the [Reverse Proxy](../../system-management/reverse-proxy.md) documentation to learn
-more about setting up a reverse proxy server for Palette.
+to the cluster's Kubernetes API server. Host clusters deployed in private networks can use the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack to expose the cluster's Kubernetes API to downstream clients that are not in the same network. Check out the [Reverse
+Proxy](../../system-management/reverse-proxy.md) documentation to learn more about setting up a reverse proxy server for
+Palette.
 
 | **Parameters**    | **Description**                                                                              | **Type** | **Default value** |
 | ----------------- | -------------------------------------------------------------------------------------------- | -------- | ----------------- |

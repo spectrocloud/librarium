@@ -126,7 +126,12 @@ artifacts at the same time.
 
     Refer to [Edge Artifact Build Configurations](./arg.md) for all available arguments.
 
-11. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
+11. (Optional) You can embed a public key in your provider image. If you choose to add a public key to your provider
+    image, after you create a cluster with the provider image, only content that is signed by the corresponding private
+    key can be uploaded to the Edge host through Local UI. This includes both the content bundle and cluster definition.
+    For more information, refer to [Embed Public Key in Edge Artifacts](./signed-content.md).
+
+12. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
     start the build process.
 
     ```bash
@@ -139,14 +144,14 @@ artifacts at the same time.
     Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
     ```
 
-12. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file.
+13. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file.
     Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
     ```bash
     docker login
     ```
 
-13. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
+14. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
     `[REGISTRY-HOSTNAME]` and version numbers in the command below.
 
     ```bash

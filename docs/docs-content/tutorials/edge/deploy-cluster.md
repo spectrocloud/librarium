@@ -61,8 +61,6 @@ To complete this tutorial, you will need the following:
   uname -m
   ```
 
-  <br />
-
   :::warning
 
   The Linux machine must have network connectivity to your VMware vCenter environment.
@@ -198,13 +196,7 @@ placeholder with your actual registration token.
 export token=[your_token_here]
 ```
 
-Use the following command to create the **user-data** file containing the tenant registration token. You can click on
-the _Points of Interest_ numbers below to learn more about the main attributes relevant to this example.
-
-<PointsOfInterest points={[
-  { x: 250, y: 160, label: 1, description: "Stores the registration token and lets the agent use the auto-registration functionality and authenticate with the provided token.", tooltipPlacement: "rightTop", },
-  { x: 600, y: 300, label: 2, description: "Sets the login credentials for Edge hosts. The login credentials allow you to SSH log in to the edge host for debugging purposes.", tooltipPlacement: "rightTop", }
-]}>
+Use the following command to create the **user-data** file containing the tenant registration token.
 
 ```shell
 cat << EOF > user-data
@@ -217,12 +209,21 @@ stylus:
 users:
   - name: kairos
     passwd: kairos
+
+install:
+  poweroff: true
 EOF
 ```
 
-</PointsOfInterest>
+:::warning
 
-Review the newly created user data file. <br />
+Ensure that you include the `install.poweroff.true` parameter. This ensures that the Edge host will power off after
+installation. If you do not include this parameter, this could lead to a VM you will use in a subsequent step to refuse
+to power off automatically and cause a timeout error unless you manually shut down the VM.
+
+:::
+
+Review the newly created user data file.
 
 ```bash
 cat user-data
@@ -243,8 +244,6 @@ users:
   - name: kairos
     passwd: kairos
 ```
-
-<br />
 
 ## Build Artifacts
 
@@ -706,7 +705,12 @@ section.
 
 ### Profile Layers
 
-In the **Profile Layers** section, add the following [BYOS Edge OS](../../integrations/byoos.md) pack to the OS layer.
+<!-- prettier-ignore-start -->
+
+In the **Profile Layers** section, add the following
+<VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS layer.
+
+<!-- prettier-ignore-end -->
 
 | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
 | ------------- | ------------ | ------------- | ---------------- |

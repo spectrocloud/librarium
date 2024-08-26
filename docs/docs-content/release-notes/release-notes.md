@@ -11,6 +11,356 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## Aug 17, 2024 - Release 4.4.14
+
+<!-- Replace heading ID with the release version below -->
+
+This release is specific to Palette Enterprise and does not apply to Palette VerteX.
+
+### Palette Enterprise {#release-4-4-14}
+
+#### Breaking Changes
+
+- The Palette CLI no longer has the `validator` command. To validate your self-hosted Palette or VerteX deployment, use
+  the `ec` command instead with the `--validate` flag. Refer to the
+  [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section of the Palette EC
+  command documentation to learn more.
+
+- The `nodeDrainTimeout` parameter for clusters has been changed from 10 minutes from the previous Palette version to
+  infinite.
+
+  - New clusters will have an infinite `nodeDrainTimeout` upon creation.
+  - Existing clusters will retain their existing `nodeDrainTimeout` until there is a new machine created in cluster
+    through scaling, upgrading, or repaving, or when a worker node pool is added or scaled out.
+
+  If any pods fail to be drained, they will be stuck in the draining process and would require manual intervention.
+
+#### Features
+
+- This release introduces new filter options to improve the pack selection experience within Palette. Users can now
+  easily filter packs by **Verified** and **FIPS Compliant** status using toggles, facilitating quicker and more
+  efficient pack searches and selections.
+
+- A new API endpoint now allows users to update both DNS hosts and SSL certificates simultaneously in Palette. This
+  update addresses user-reported issues related to circular dependencies when updating DNS hosts and certificates
+  separately. The change will also be reflected in the UI by merging DNS and certificate update functionalities onto a
+  single page, enhancing user experience and functionality validation.
+
+- The VMO airgap binary has moved out of Preview status into Production-ready state.
+
+#### Improvements
+
+- Improvements made to Palette reduced resource usage and improved the reliability and responsiveness of the cluster
+  management.
+
+- Reduced latency in permission resolution, especially for users with access to a large number of projects.
+
+- Reduced CPU and memory consumption within the pods and enhanced overall system performance during machine health
+  updates.
+
+#### Fixes
+
+- Fixed an issue that sometimes caused CSI errors if there are multiple instances of self-hosted Palette or VerteX in a
+  single vSphere environment.
+
+### Edge
+
+#### Features
+
+- This release introduces a validation tool for the install configuration **user-data** for Edge hosts. Errors in
+  **user-data** files can lead to significant delays and troubleshooting efforts. This feature validates the user-data
+  file for both YAML formatting and schema compliance during build time to catch issues earlier. For more information,
+  refer to [Validate User Data](../clusters/edge/edgeforge-workflow/validate-user-data.md).
+
+- This release introduces file download support within Local UI, which allows users to write files to a fixed path on
+  the Edge host and download them from Local UI. Previously, gathering files from Edge hosts required elevated
+  privileges and could be error-prone when executed manually. For more information, refer to
+  [Download Files from Local UI](../clusters/edge/local-ui/host-management/download-files.md).
+
+- Palette agent on Edge hosts will now produce audit logs. This capability captures timestamped records for a variety of
+  events, including authentication attempts, configuration changes, and cluster management activities. In addition, you
+  can program your own applications to send logs to the same location, and have Local UI display those log entries. For
+  more information, refer to [Configure Audit Logs](../clusters/edge/local-ui/host-management/audit-logs.md).
+
+- Local UI displays progress and status during cluster deployment. Users can now monitor key milestones in real-time
+  during the creation and updating of Edge clusters.
+
+### Packs
+
+#### Kubernetes Packs
+
+| Pack                                       | New Version |
+| ------------------------------------------ | ----------- |
+| K3s                                        | 1.27.16     |
+| K3s                                        | 1.28.12     |
+| K3s                                        | 1.29.7      |
+| Palette eXtended Kubernetes (PXK)          | 1.27.16     |
+| Palette eXtended Kubernetes (PXK)          | 1.28.12     |
+| Palette eXtended Kubernetes (PXK)          | 1.29.7      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.16     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.28.12     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.7      |
+| RKE2                                       | 1.27.15     |
+| RKE2                                       | 1.28.11     |
+| RKE2                                       | 1.29.6      |
+| RKE2 FIPS                                  | 1.27.15     |
+
+#### CNI
+
+| Pack   | New Version |
+| ------ | ----------- |
+| Cilium | 1.15.7      |
+
+#### CSI
+
+| Pack        | New Version |
+| ----------- | ----------- |
+| Azure Disk  | 1.30.1      |
+| AWS EBS     | 1.33.0      |
+| VSphere CSI | 3.3.0       |
+
+#### FIPS
+
+| Pack                               | New Version |
+| ---------------------------------- | ----------- |
+| Longhorn                           | 1.6.2       |
+| Palette eXtended Kubernetes - FIPS | 1.27.16     |
+| Palette eXtended Kubernetes - FIPS | 1.28.12     |
+| Palette eXtended Kubernetes - FIPS | 1.29.7      |
+
+#### Add-on Packs
+
+| Pack       | New Version |
+| ---------- | ----------- |
+| MetalLB    | 0.14.5      |
+| Prometheus | 58.6.0      |
+
+### Automation
+
+#### Features
+
+- A new tool for building CAPI images is now available. The CAPI Image Builder reduces the challenges associated with
+  creating images for Kubernetes clusters. It is based on the upstream
+  [Kubernetes Image Builder (KIB)](https://image-builder.sigs.k8s.io/introduction.html) project and includes all the
+  dependencies required to build FIPS and non-FIPS images within a Docker container. For more information, refer to
+  [CAPI Image Builder](../byoos/capi-image-builder/capi-image-builder.md).
+
+#### Improvements
+
+- Users receive a clear warning message in the terminal after issuing the `terraform plan` command if actions would
+  result in a cluster repave. Previously, this notification was not available in Terraform-managed environments, leading
+  to potential oversight by users.
+
+### Virtual Machine Orchestrator
+
+#### Features
+
+- The Virtual Machine Orchestrator (VMO) pack is now available for use in tenants that belong to your airgapped instance
+  of Palette. For more information, refer to
+  [Install VMO in Airgap Environments](../vm-management/install-vmo-in-airgap.md).
+
+### Docs and Education
+
+Palette's Go SDK now has a dedicated documentation section. The new section also includes a guide on how to install,
+configure, and use the SDK. This guide provides instructions and sample code for listing the active clusters in your
+Palette environment. Check out the [Palette Go SDK documentation](../automation/palette-sdk/palette-sdk.md) for more
+details.
+
+## Jul 31, 2024 - Release 4.4.12
+
+#### Bug Fixes
+
+- Fixed an issue where the Palette agent would fail to pull Helm charts from private registries when initializing Edge
+  clusters.
+
+## Jul 20, 2024 - Release 4.4.11
+
+<!-- Custom heading applied due to linking of the Palette section in the VerteX section -->
+
+### Palette Enterprise {#release-4-4-8}
+
+#### Features
+
+- This release introduces a system-wide control User Interface (UI) for feature flags. System administrators can now
+  turn features on or off through the system console. Once a feature flag is enabled, all tenants will have access to
+  the feature. Check out the [Feature Flags](../enterprise-version/system-management/feature-flags.md) documentation to
+  learn more.
+
+- Kubernetes clusters deployed to Azure can now use network proxy configurations. To use this new feature, you must
+  deploy a PCG in your Azure environment and configure the PCG to use your network proxy server. Once the PCG is
+  deployed and configured with the proxy server details, the newly deployed Azure clusters will inherit the proxy
+  configurations from the PCG. To learn more, refer to the
+  [Proxy Configuration](../clusters/public-cloud/azure/architecture.md#proxy-configuration) guide.
+
+- Palette now supports specifying a custom Certificate Authority (CA) when enabling OIDC integration. You now use
+  self-signed root certificates from internal identity providers when configuring OIDC integration. To learn more, refer
+  to the [Enable SSO with Custom CA](../user-management/saml-sso/saml-sso.md) guide.
+
+- You can now deploy a cluster on Azure and only use private IP addresses for the control plane and worker nodes. When
+  deploying the cluster, this new behavior requires using a Private Cloud Gateway (PCG) and static placement selection.
+  To learn more about deploying a cluster with private IP addresses, refer to the
+  [Deploy a Cluster with Private IP Addresses](../clusters/public-cloud/azure/create-azure-cluster.md) guide.
+
+#### Improvements
+
+- The Palette UI has been updated to improve the user experience for the project and tenant settings pages. The new
+  **Settings Menu** enhances usability and reduces visual clutter. You can now collapse and expand categories within the
+  **Settings Menu**.
+
+- Self-hosted Palette and PCG instances deployed to Azure through a Helm Chart now accept proxy configurations for
+  outbound traffic. The proxy configuration is set in the **values.yaml** file during the deployment process. Refer to
+  the
+  [Self-Hosted Helm Chart Configuration Reference](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md#reach-system)
+  or the [Deploy a PCG to an Existing Kubernetes Cluster](../clusters/pcg/deploy-pcg-k8s.md) guide to learn more.
+
+- Improvements to the Palette agent has reduced the frequency and bandwidth of agent communication with the Palette
+  management platform. This change reduces the resource consumption by the Palette agent in a cluster and the bandwidth
+  usage between the agent and the Palette management platform.
+
+- Palette API responses now include the header `Cache-Control`. This header provides information on how long the
+  response can be cached and helps improve the performance of the Palette UI.
+
+- Self-Hosted Palette and Private Cloud Gateway (PCG) instances deployed on VMware vSphere now use the vSphere CSI
+  driver version 3.2.0. The new version will automatically get picked up during an upgrade.
+
+### Bug Fixes
+
+- The issue preventing RKE2 and PXK clusters using Kubernetes version 1.29.4 from deploying on MAAS successfully is now
+  resolved. Remove any existing MAAS Kubernetes 1.29.4 images from your environment to pull in the updated images.
+
+### Edge
+
+#### Breaking Changes
+
+- A change in the EdgeForge process affects the Local UI customization process when using the CanvOS utility. In the
+  past, placing a folder named **ui** at the root level of the CanvOS project was required. Moving forward, the **ui**
+  folder will be placed in the **local-ui/** folder. This change is to align with the new CanvOS project structure. If
+  you are using the EdgeForge process to create Edge artifacts, ensure you update the location of the **ui** folder in
+  your CanvOS project. Refer to the Local UI [Custom Links](../clusters/edge/local-ui/host-management/custom-link.md)
+  and [Customize Local UI Theme](../clusters/edge/local-ui/host-management/theming.md) to learn more about the changes.
+
+#### Features
+
+- A new Palette API endpoint, `v1/edgehosts/tags`, is available to retrieve all tags associated with Edge clusters.
+
+- [The Edge Management API](/api/category/edge-management-api-v1/) now supports some operations on connected Edge hosts
+  (non-airgap). In the past, the Edge Management API only supported airgap Edge hosts and clusters. The new
+  functionality now allows you to perform some actions using the Edge Management API on connected Edge hosts. Refer to
+  [List of Endpoints Unavailable to Connected Edge Hosts](/api/introduction/#list-of-endpoints-unavailable-to-connected-edge-hosts)
+  section to learn more about the limitations of connected Edge hosts.
+
+- Local UI now supports signed content bundles and cluster definitions. You can embed a public key in your Edge
+  Installer ISO or provider image. Local UI can use the key to verify the content bundle and cluster definition
+  cryptographically during uploads to ensure you are fulfilling compliance requirements. Refer to the
+  [Build Content Bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) guide to learn
+  more.
+
+#### Improvements
+
+- You can now disable password changes of Operating System (OS) users from Local UI. When password updates from Local UI
+  are disabled, you can still update the OS user password from the OS or the Edge Management API. Check out the
+  [Access Local UI](../clusters/edge/local-ui/host-management/access-console.md) page to learn more.
+
+- Several enhancements have been made to the UI for Edge host management in the context of cluster creation and updates.
+  These changes ensure a consistent and user-friendly experience, including new designs for the Edge host selection
+  screen and a customizable, powerful grid view. This redesign provides a better user experience for managing many edge
+  hosts in large-scale environments. Check out the
+  [Edge Host Grid View](../clusters/edge/site-deployment/edge-host-view.md) page to learn more.
+
+- EdgeForge now supports creating base images for Edge hosts using Ubuntu 24.04 UKI. To learn more about creating base
+  images, refer to the [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md)
+  guide.
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features and improvements in this release. Refer to the [Palette](#release-4-4-8) section for
+  more details.
+
+#### Bug Fixes
+
+- Resolved the issue that made VerteX enterprise clusters unable to complete backup operations.
+
+### Automation
+
+- Terraform version 0.20.7 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
+- Palette Crossplane provider version 0.20.7 is available. For more details, refer to the provider
+  [release page](https://github.com/crossplane-contrib/provider-palette/releases).
+
+- The Palette CLI now supports automatic validation when deploying a self-hosted VerteX or Palette instance. Use the
+  `--validate` flag to validate the deployment configuration before deploying the instance. Refer to the
+  [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section of the Palette EC
+  command documentation to learn more.
+
+### Docs and Education
+
+- Palette tutorials now have a dedicated view in the documentation. The [Tutorials](../tutorials/tutorials.md) page
+  provides a list of tutorials to help you get started with Palette and its features, and other advanced topics.
+
+### Packs
+
+#### Kubernetes
+
+| Pack                                       | New Version |
+| ------------------------------------------ | ----------- |
+| K3s                                        | 1.27.15     |
+| K3s                                        | 1.28.11     |
+| K3s                                        | 1.29.6      |
+| Palette eXtended Kubernetes (PXK)          | 1.27.15     |
+| Palette eXtended Kubernetes (PXK)          | 1.28.11     |
+| Palette eXtended Kubernetes (PXK)          | 1.29.6      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.15     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.28.11     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.6      |
+| RKE2                                       | 1.27.14     |
+| RKE2                                       | 1.28.10     |
+| RKE2                                       | 1.29.5      |
+| RKE2 - Edge                                | 1.27.14     |
+| RKE2 - Edge                                | 1.28.10     |
+| RKE2 - Edge                                | 1.29.5      |
+
+#### CNI
+
+| Pack   | New Version |
+| ------ | ----------- |
+| Calico | 3.28.0      |
+
+#### CSI
+
+| Pack        | New Version |
+| ----------- | ----------- |
+| AWS EFS     | 2.0.4       |
+| Rook Ceph   | 1.14.0      |
+| vSphere CSI | 3.2.0       |
+
+#### Add-on Packs
+
+| Pack                      | New Version |
+| ------------------------- | ----------- |
+| External Secrets Operator | 0.9.16      |
+| Kong                      | 2.38.0      |
+| Reloader                  | 1.0.74      |
+| Reloader                  | 1.0.107     |
+| Spectro Proxy             | 1.5.3       |
+
+#### FIPS
+
+| Pack        | New Version |
+| ----------- | ----------- |
+| Calico      | 3.28.0      |
+| Flannel     | 0.24.3      |
+| RKE2        | 1.27.14     |
+| RKE2        | 1.28.10     |
+| RKE2        | 1.29.5      |
+| RKE2 - Edge | 1.27.14     |
+| RKE2 - Edge | 1.28.10     |
+| RKE2 - Edge | 1.29.5      |
+
 ## Jul 7, 2024 - Release 4.4.7
 
 #### Bug Fixes
@@ -40,7 +390,7 @@ features and improvements.
 
 - Review the [Security Bulletins](../security-bulletins/security-bulletins.md) page for the latest security advisories.
 
-### Palette
+### Palette Enterprise
 
 #### Breaking Changes
 
@@ -52,8 +402,7 @@ features and improvements.
 - Validator Helm Charts have migrated from `https://github.com/spectrocloud-labs/validator` to
   `https://github.com/validator-labs/validator`. Former versions of the Palette CLI will point to the former repository
   when prompted for the Helm chart location and require a manual URL change. The new version of the Palette CLI will
-  point to the new repository. Refer to the [Validator](../automation/palette-cli/commands/validator.md) CLI page
-  documentation for more details.
+  point to the new repository.
 
 - Due to the removal of GKE Kubernetes patch versions, it's critical you update existing cluster profiles to use the new
   GKE Kubernetes packs to avoid issues. Active clusters using old GKE Kubernetes pack versions may encounter problems
@@ -65,7 +414,7 @@ features and improvements.
 - <TpBadge /> The MicroK8s pack layer now exposes `bootCommands`, `preRunCommands` and `postRunCommands`. You can use
   these commands to customize and configure MicroK8s as needed. MicroK8s is delivered as a Technical Preview for AWS and
   Canonical MAAS in this release. To learn more, refer to the MicroK8s pack
-  [documentation](../integrations/microk8s.md).
+  <VersionedLink text="documentation" url="/integrations/packs/?pack=kubernetes-microk8s" />.
 
 #### Improvements
 
@@ -108,12 +457,13 @@ features and improvements.
 - An issue prevents RKE2 and Palette eXtended Kubernetes (PXK) on version 1.29.4 from operating correctly with Canonical
   MAAS. A temporary workaround is using a version lower than 1.29.4 when using MAAS..
 
-- [MicroK8s](../integrations/microk8s.md) does not support a multi-node cluster deployment and is limited to a
-  single-node cluster. As a result, the only supported upgrade strategy is `InPlaceUpgrade`.
+- <VersionedLink text="MicroK8s" url="/integrations/packs/?pack=kubernetes-microk8s" /> does not support a multi-node
+  cluster deployment and is limited to a single-node cluster. As a result, the only supported upgrade strategy is
+  `InPlaceUpgrade`.
 
-- Clusters using [MicroK8s](../integrations/microk8s.md) as the Kubernetes distribution, the control plane node fails to
-  upgrade when using the `InPlaceUpgrade` strategy for sequential upgrades, such as upgrading from version 1.25.x to
-  version 1.26.x and then to version 1.27.x. Refer to the
+- Clusters using <VersionedLink text="MicroK8s" url="/integrations/packs/?pack=kubernetes-microk8s"/> as the Kubernetes
+  distribution, the control plane node fails to upgrade when using the `InPlaceUpgrade` strategy for sequential
+  upgrades, such as upgrading from version 1.25.x to version 1.26.x and then to version 1.27.x. Refer to the
   [Control Plane Node Fails to Upgrade in Sequential MicroK8s Upgrades](../troubleshooting/pack-issues.md)
   troubleshooting guide for resolution steps.
 

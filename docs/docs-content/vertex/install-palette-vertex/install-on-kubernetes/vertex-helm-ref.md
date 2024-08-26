@@ -347,19 +347,23 @@ IP address of the gRPC load balancer. For example, if your Palette VerteX domain
 create a CNAME DNS record for `grpc.vertex.example.com` that points to the IP address of the load balancer dedicated to
 gRPC.
 
-| **Parameters**        | **Description**                                                                              | **Type** | **Default value** |
-| --------------------- | -------------------------------------------------------------------------------------------- | -------- | ----------------- |
-| `external`            | Specifies whether to use an external gRPC endpoint.                                          | Boolean  | `false`           |
-| `endpoint`            | The gRPC endpoint.                                                                           | String   | `""`              |
-| `caCertificateBase64` | The base64-encoded certificate authority (CA) certificate for the gRPC endpoint.             | String   | `""`              |
-| `serverCrtBase64`     | The base64-encoded server certificate for the gRPC endpoint.                                 | String   | `""`              |
-| `serverKeyBase64`     | The base64-encoded server key for the gRPC endpoint.                                         | String   | `""`              |
-| `insecureSkipVerify`  | Specifies whether to skip Transport Layer Security (TLS) verification for the gRPC endpoint. | Boolean  | `false`           |
+| **Parameters**        | **Description**                                                                                                                                                                                                                                                                                                          | **Type** | **Default value** |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ----------------- |
+| `external`            | Specifies whether to use an external gRPC endpoint.                                                                                                                                                                                                                                                                      | Boolean  | `false`           |
+| `endpoint`            | The gRPC endpoint.                                                                                                                                                                                                                                                                                                       | String   | `""`              |
+| `annotations`         | A map of key-value pairs that specifies load balancer annotations for gRPC. You can use annotations to change the behavior of the load balancer and the gRPC configuration. This field is considered an advanced setting. We recommend you consult with your assigned support team representative before making changes. | Object   | `{}`              |
+| `grpcStaticIP`        | Specify a static IP address for the gRPC load balancer service. If the field is empty, a dynamic IP address will be assigned to the load balancer.                                                                                                                                                                       | String   | `""`              |
+| `caCertificateBase64` | The base64-encoded Certificate Authority (CA) certificate for the gRPC endpoint.                                                                                                                                                                                                                                         | String   | `""`              |
+| `serverCrtBase64`     | The base64-encoded server certificate for the gRPC endpoint.                                                                                                                                                                                                                                                             | String   | `""`              |
+| `serverKeyBase64`     | The base64-encoded server key for the gRPC endpoint.                                                                                                                                                                                                                                                                     | String   | `""`              |
+| `insecureSkipVerify`  | Specifies whether to skip Transport Layer Security (TLS) verification for the gRPC endpoint.                                                                                                                                                                                                                             | Boolean  | `false`           |
 
 ```yaml
 grpc:
   external: false
   endpoint: ""
+  annotations: {}
+  grpcStaticIP: ""
   caCertificateBase64: ""
   serverCrtBase64: ""
   serverKeyBase64: ""
@@ -395,11 +399,11 @@ ingress:
 
 ## Spectro Proxy
 
+<!-- prettier-ignore -->
 You can specify a reverse proxy server that clusters deployed through Palette VerteX can use to facilitate network
-connectivity to the cluster's Kubernetes API server. Host clusters deployed in private networks can use the
-[Spectro Proxy pack](../../../integrations/frp.md) to expose the cluster's Kubernetes API to downstream clients that are
-not in the same network. Check out the [Reverse Proxy](../../system-management/reverse-proxy.md) documentation to learn
-more about setting up a reverse proxy server for Palette VerteX.
+connectivity to the cluster's Kubernetes API server. Host clusters deployed in private networks can use the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack to expose the cluster's Kubernetes API to downstream clients that are not in the same network. Check out the [Reverse
+Proxy](../../system-management/reverse-proxy.md) documentation to learn more about setting up a reverse proxy server for
+Palette VerteX.
 
 | **Parameters**    | **Description**                                                                              | **Type** | **Default value** |
 | ----------------- | -------------------------------------------------------------------------------------------- | -------- | ----------------- |

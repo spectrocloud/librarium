@@ -16,6 +16,7 @@ Palette VerteX supports the following infrastructure platforms for deploying Kub
 | **AWS Gov**        | Refer to the [AWS](#aws) section for additional guidance.                 |
 | **Azure**          | Refer to the [Azure](#azure) section for additional guidance.             |
 | **Azure Gov**      | Refer to the [Azure](#azure) section for additional guidance.             |
+| **Dev Engine**     | Refer to the VerteX Engine section for additional guidance.               |
 | **MAAS**           | Canonical Metal-As-A-Service (MAAS) is available and supported in VerteX. |
 | **Edge**           | Edge deployments are supported in VerteX.                                 |
 | **VMware vSphere** | VMware vSphere is supported in VerteX.                                    |
@@ -53,6 +54,13 @@ VerteX supports the following Azure services.
 All Azure Government regions are supported with the exception of Department of Defense regions. Refer to the
 [official Azure Government documentation](https://learn.microsoft.com/en-us/azure/azure-government/documentation-government-overview-dod)
 to learn more about the available regions.
+
+#### Dev Engine
+
+VerteX supports the [Dev Engine](../devx/devx.md) platform for deploying virtual clusters. However, the Dev Engine
+platform is not FIPS compliant and requires you to enable the
+[non-FIPS setting](./system-management/enable-non-fips-settings/enable-non-fips-settings.md). Additionally, container
+deployment based workflows are not supported for airgap environments.
 
 #### VMware vSphere
 

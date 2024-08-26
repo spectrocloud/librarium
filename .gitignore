@@ -64,7 +64,7 @@ test-results/
 playwright-report/
 artifact.zip
 
-# Netlify 
+# Netlify
 
 .netlify/
 # Ignore _partials/index.ts
@@ -72,7 +72,6 @@ _partials/index.ts
 
 # Ignore statoc/img/packs
 static/img/packs
-
 
 .vale-config/
 vale/styles/spectrocloud/

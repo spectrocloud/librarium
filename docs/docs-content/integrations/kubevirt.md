@@ -10,55 +10,18 @@ logoUrl: "https://registry.spectrocloud.com/v1/kubevirt/blobs/sha256:185e7a7658c
 tags: ["packs", "kubevirt", "system app"]
 ---
 
-KubeVirt is a virtual machine management add-on for Kubernetes clusters. Create predefine virtual machines using
-KubeVirt, and Palette will provision KubeVirt as an Add-on Pack to manage the VM resources within the orchestrator.
+## Terraform
 
-<br />
+You can reference the Kubevirt pack in Terraform with the following data resource.
 
-## Version Supported
-
-<Tabs queryString="versions">
-<TabItem label="0.51.x" value="0.51.x">
-
-**0.51.0**
-
-</TabItem>
-<TabItem label="0.55.x" value="0.55.x">
-
-**0.55.0**
-
-</TabItem>
-</Tabs>
-
-<br />
-<br />
-
-## Notable Parameters
-
-```yaml
-manifests:
-  KubeVirt-operator:
-    # Enable Emulation (when no nested virtualization enabled)
-    useEmulation: true
-  KubeVirt-cr:
-    contents: |
-    apiVersion: KubeVirt.io/v1
-      kind: KubeVirt
-      metadata:
-        name: KubeVirt
-        namespace: KubeVirt
-      spec:
-        certificateRotateStrategy: {}
-        configuration:
-          developerConfiguration:
-            featureGates: []
-        customizeComponents: {}
-        imagePullPolicy: IfNotPresent
-        workloadUpdateStrategy: {}
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+data "spectrocloud_pack" "kubevirt" {
+  name    = "kubevirt"
+  version = "0.59.0"
+  type = "manifest"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
 ```
-
-## References
-
-- [Installing KubeVirt on Kubernetes](https://kubevirt.io/user-guide/cluster_admin/installation/#installing-kubevirt-on-kubernetes)
-
-- [GitHub KubeVirt](https://github.com/KubeVirt/KubeVirt/releases/tag/v0.51.0)

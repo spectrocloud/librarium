@@ -326,8 +326,8 @@ customization.
 15. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
     out the required basic information fields to create a cluster profile for Edge.
 
-16. Add the following [BYOS Edge OS](../../../../integrations/byoos.md) pack to the OS layer in the **Profile Layers**
-    section.
+16. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
+    layer in the **Profile Layers** section.
 
     | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
     | ------------- | ------------ | ------------- | ---------------- |
@@ -788,8 +788,8 @@ git checkout v4.0.6
 19. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
     out the required basic information fields to create a cluster profile for Edge.
 
-20. Add the following [BYOS Edge OS](../../../../integrations/byoos.md) pack to the OS layer in the **Profile Layers**
-    section.
+20. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
+    layer in the **Profile Layers** section.
 
     | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
     | ------------- | ------------ | ------------- | ---------------- |
@@ -897,3 +897,17 @@ Palette-managed Edge clusters, we encourage you to check out the reference resou
 - [Deploy an Edge Cluster on VMware](../../../../tutorials/edge/deploy-cluster.md)
 
 - [Installation](../../site-deployment/stage.md)
+
+## Resources
+
+- [Edge Artifact Build Configurations](./arg.md)
+
+- [Build Installer ISO](./build-installer-iso.md)
+
+- [Build Provider Images](./build-provider-images.md)
+
+- [Build FIPS-Compliant Edge Artifacts](./fips.md)
+
+- [Build Content Bundles](./build-content-bundle.md)
+
+- [Edge Artifact Build Configurations](./signed-content.md)
