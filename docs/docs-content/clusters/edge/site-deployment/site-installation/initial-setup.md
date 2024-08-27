@@ -61,7 +61,8 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
    host.
 
 3. If you have already configured a user in your **user-data** file in the EdgeForge step, this step will be skipped
-   automatically. For more information, refer to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
+   automatically and you will be asked to log in instead. For more information, refer to
+   [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
 
    If you did not configure a user in your **user-data** file during EdgeForge or provide site user data, a terminal
    user interface will display a **Create User** page. This allows you to create an Operating System (OS) user with the
@@ -81,14 +82,16 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
    ![A terminal user interface showing displaying network configuration options](/cluster_edge_site-deployment_installation_initial-setup_tui.webp)
 
    Check the existing hostname and, optionally, change it to a new one. Use the Tab key or the up and down arrow keys to
-   switch between fields. When you make a change, press Enter to confirm the change.
+   switch between fields. When you make a change, press **Enter** to apply the change.
 
-5. In **Network Adapters**, choose a network adapter that the Edge host will use to communicate with Palette.
+5. In **Host Network Adapters**, select a network adapter you'd like to configure. By default, the network adapters
+   request an IP automatically from the DHCP server. You can see the CIDR block of an adapter's possible IP address from
+   the **Host Network Adapters** screen without selecting an individual adapter.
 
-   By default, the network adapter requests an IP automatically from the DHCP server. Optionally, you can also specify a
-   static IP. Press Enter to confirm the change.
+   In the configuration page for each adapter, you can specify a static IP the network adapter. Specifying a static IP
+   will remove the existing DHCP settings. Press **Enter** to apply the change.
 
-6. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. Press Enter to confirm
+6. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. Press **Enter** to apply
    the change.
 
 7. After you are satisfied with the configurations, navigate to **Quit** and hit enter to finish configuration.
