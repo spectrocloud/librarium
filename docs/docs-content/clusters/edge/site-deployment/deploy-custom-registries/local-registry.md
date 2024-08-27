@@ -161,7 +161,7 @@ Kubernetes secrets using a manifest in your cluster profile.
 10. Use the cluster profile to create your Edge cluster. For more information, refer to
     [Create Cluster Definition](../cluster-deployment.md).
 
-## Save Profile and Deploy Cluster
+### Save Profile and Deploy Cluster
 
 8. Click **Save Changes**.
 
