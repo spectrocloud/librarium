@@ -26,7 +26,8 @@ Refer to the following table for the self-hosted Palette VerteX upgrade paths th
 
 :::warning
 
-Before upgrading Palette VerteX to a new major version, you must first update it to the latest minor version available.
+Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of the
+latest minor version avaiable.
 
 :::
 
