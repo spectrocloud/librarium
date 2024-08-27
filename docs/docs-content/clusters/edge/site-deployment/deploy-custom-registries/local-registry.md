@@ -85,7 +85,7 @@ to <VersionedLink text="Harbor Edge-Native Config pack" url="/integrations/packs
 If your cluster profile does not reference a private registry for images or helm charts or you have configured the
 Palette agent to download all images from an external private registry, you can skip this step.
 
-::: info
+:::info
 
 Configuring external registries through user data will instruct the Palette agent to download all images from the
 external registry and prepend the registry URL to every image referenced in the cluster profile. Therefore, if you have
@@ -118,7 +118,7 @@ Kubernetes secrets using a manifest in your cluster profile.
      labels:
        spectrocloud.com/registry: "true"
        spectrocloud.com/copyToTarget: "true"
-     name: registry1
+     name: <registry-name>
    type: Opaque
    ```
 
