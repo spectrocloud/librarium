@@ -111,8 +111,6 @@ Kubernetes secrets using a manifest in your cluster profile.
    apiVersion: v1
    data:
      password: <base64-encdoded-password>
-     name: <bas64-encoded-name>
-     type: <base64-encoded-type>
      url: <base64-encoded-url>
      username: <base64-encoded-username>
    kind: Secret
@@ -124,12 +122,12 @@ Kubernetes secrets using a manifest in your cluster profile.
    type: Opaque
    ```
 
-   | Parameter       | Description                                                                                                                                                                                                                                                                                                                                |
-   | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | `data.url`      | The URL of the registry in base-64 encoded format. For image registries, this includes only the hostname. For example, `aHR0cHM6Ly9kb2NrZXIuaW8=` for `https://docker.io`. For helm registries, include both scheme and hostname. For example, `https://blr-artifactory.apps.beehive.net/artifactory/helm-all` in based-64 encoded format. |
-   | `data.name`     | Optional. A name you may give the registry in base-64 encoded format.                                                                                                                                                                                                                                                                      |
-   | `data.username` | The username used to log in to the registry in base-64 encoded format.                                                                                                                                                                                                                                                                     |
-   | `data.password` | The password of the user in base-64 encoded format.                                                                                                                                                                                                                                                                                        |
+   | Parameter       | Description                                                                                                                                                                                                                                                                                                   |
+   | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `data.url`      | The URL of the registry in base-64 encoded format. For image registries, this includes only the hostname. For example, `aHR0cHM6Ly9kb2NrZXIuaW8=` for `docker.io`. For helm registries, include both scheme and hostname. For example, `https://blr-artifactory.apps.beehive.net` in based-64 encoded format. |
+   | `data.username` | The username used to log in to the registry in base-64 encoded format.                                                                                                                                                                                                                                        |
+   | `data.password` | The password of the user in base-64 encoded format.                                                                                                                                                                                                                                                           |
+   | `metadata.name` | Optional. A human-readable name you may give the registry.                                                                                                                                                                                                                                                    |
 
    The following is an example of a manifest providing the credentials providing credentials to multiple registries,
    including both image registries and helm registries.
@@ -138,7 +136,6 @@ Kubernetes secrets using a manifest in your cluster profile.
    apiVersion: v1
    data:
      password: <base64-encdoded-password>
-     name: dXMtd2VzdDItcmVnaXN0cnktMQ==
      url: ZWRnZS51cy13ZXN0Mi5hcnRpZmFjdG9yeS5jb20=
      username: dXNlcjE=
    kind: Secret
@@ -151,7 +148,6 @@ Kubernetes secrets using a manifest in your cluster profile.
    apiVersion: v1
    data:
      password: <base64-encdoded-password>
-     name: dXMtd2VzdDItcmVnaXN0cnktMQ==
      url: aHR0cHM6Ly9lZGdlLnVzLXdlc3QyLmFydGlmYWN0b3J5LmNvbQ==
      username: dXNlcjE=
    kind: Secret
