@@ -13,8 +13,9 @@ vSphere.
 
 :::warning
 
-Before upgrading Palette VerteX to a new major version, you must first update it to the latest minor version available.
-Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for details.
+Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of the
+latest minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section
+for details.
 
 :::
 
