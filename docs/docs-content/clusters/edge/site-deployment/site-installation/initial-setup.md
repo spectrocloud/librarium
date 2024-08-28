@@ -88,13 +88,18 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
    request an IP automatically from the DHCP server. You can see the CIDR block of an adapter's possible IP address from
    the **Host Network Adapters** screen without selecting an individual adapter.
 
-   In the configuration page for each adapter, you can specify a static IP the network adapter. Specifying a static IP
-   will remove the existing DHCP settings. Press **Enter** to apply the change.
+   In the configuration page for each adapter, you can change the IP addressing scheme of the adapter and choose static
+   IP instead of DHCP. In Static IP mode, you will need to provide a static IP address, subnet mask, as well as the
+   address of the default gateway. Specifying a static IP will remove the existing DHCP settings.
 
-6. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. Press **Enter** to apply
+6. In the configuration page of each network adapter, you can also specify the Maximum Transmission Unit (MTU) for your
+   Edge host. The MTU defines the largest size, in bytes, of a packet that can be sent over a network interface without
+   needing to be fragmented. Press **Enter** to apply the change.
+
+7. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. Press **Enter** to apply
    the change.
 
-7. After you are satisfied with the configurations, navigate to **Quit** and hit enter to finish configuration.
+8. After you are satisfied with the configurations, navigate to **Quit** and hit enter to finish configuration.
 
 ## Validate
 
