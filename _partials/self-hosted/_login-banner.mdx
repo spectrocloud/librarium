@@ -1,0 +1,60 @@
+---
+partial_category: self-hosted
+partial_name: login-banner
+---
+
+
+{props.edition} allows you to add Login banner, also known as as an Authority to Operate (ATO) banner, or System Message,  to the login page. This banner can be used to display important information to users before they log in to the system console or an individual tenant. 
+
+## Prerequisites
+
+- Access to the Palette system console.
+<!-- prettier-ignore -->
+- System administrator permissions, either a Root Administrator or Operations Administrator. Refer to the <PaletteURL
+     edition={props.edition}
+     text="System Administrators"
+     url="/system-management/account-management/#system-administrators"
+   /> guide. page to learn more about system administrator roles.
+
+
+
+
+## Setup Login Banner
+
+Use the following steps to add a login banner to the {props.edition} login page.
+
+1. Log in to the {props.edition} system console. Refer to the
+   [Access Palette System Console](../enterprise-version.md#access-palette) guide for more information.
+
+2. From the left **Main Menu** select **Administration**.
+
+3. Select the **ATO Message** tab, and toggle the **Display Login Banner** switch to enable the login banner.
+
+4. Fill out the **Login Banner Title** and **Login Banner Message** fields with the desired content.
+
+5. Click **Save** to apply the changes.
+
+## Validate
+
+1. Log out of the Palette system console.
+
+2. Visit the Palette system console login page.
+
+3. The Login banner is displayed before you are prompted to log in.
+
+
+
+
+
+
+export function PaletteURL({ edition, text, url }) {
+  return (
+    <>
+      {edition.toLowerCase() === "palette" ? (
+        <VersionedLink text={text} url={`/enterprise-version${url}`} />
+      ) : (
+        <VersionedLink text={text} url={`/vertex${url}`} />
+      )}
+    </>
+  );
+}
