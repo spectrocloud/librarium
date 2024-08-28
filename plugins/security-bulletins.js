@@ -3,6 +3,7 @@ const { open, writeFile, close, existsSync, mkdirSync } = require("node:fs");
 const logger = require("@docusaurus/logger");
 const fs = require("fs").promises;
 const path = require("path");
+const { getFormattedDate } = require("../utils/helpers/date");
 
 async function getSecurityBulletins(queryParams) {
   try {
@@ -35,10 +36,10 @@ async function pluginSecurityBulletins(context, options) {
 
       if (!isFileExists) {
         logger.info("Fetching security bulletins...");
-        const paletteQueryParams = "airgap=false&date=2024-08-16&edition=palette&report=cve&version=4.4.14";
-        const paletteAirgapQueryParams = "airgap=true&date=2024-08-16&edition=palette&report=cve&version=4.4.14";
-        const verteXQueryParams = "airgap=false&date=2024-08-16&edition=vertex&report=cve&version=4.4.14";
-        const verteXAirgapQueryParams = "airgap=true&date=2024-08-16&edition=vertex&report=cve&version=4.4.14";
+        const paletteQueryParams = `airgap=false&date=${getFormattedDate()}&edition=palette&report=cve&version=4.4.14`;
+        const paletteAirgapQueryParams = `airgap=true&date=${getFormattedDate()}&edition=palette&report=cve&version=4.4.14`;
+        const verteXQueryParams = `airgap=false&date=${getFormattedDate()}&edition=vertex&report=cve&version=4.4.14`;
+        const verteXAirgapQueryParams = `airgap=true&date=${getFormattedDate()}&edition=vertex&report=cve&version=4.4.14`;
 
         try {
           const palette = await getSecurityBulletins(paletteQueryParams);
