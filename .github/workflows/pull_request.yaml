@@ -69,16 +69,10 @@ jobs:
 
       - run: npm ci
 
-      - name: Auto Format
-        id: auto-format
-        run: npx prettier . --check
-
-      - name: Fix Formatting
-        if: ${{ failure() }}
+      - name: Auto Format (Prettier)
         run: make format
 
       - name: Commit Changes
-        if: ${{ steps.auto-format.conclusion == 'failure' }}
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "ci: auto-formatting prettier issues"
