@@ -26,7 +26,8 @@ Refer to the following table for the self-hosted Palette upgrade paths that we c
 
 :::warning
 
-Before upgrading Palette to a new major version, you must first update it to the latest minor version available.
+Before upgrading Palette to a new major version, you must first update it to the latest patch version of the latest
+minor version available.
 
 :::
 
