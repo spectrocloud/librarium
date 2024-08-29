@@ -75,9 +75,10 @@ jobs:
       - name: Commit Changes
         if: ${{ failure() }}
         run: |
-          make format
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull origin ${{ github.head_ref }} --ff
+          make format
           git add .
           git commit -m "Auto format code"
           git push origin HEAD:${{ github.head_ref }}
