@@ -9,9 +9,6 @@ tags: ["enterprise", "management", "ato"]
 keywords: ["self-hosted", "enterprise", "ato"]
 ---
 
-// Import due to limitation in Docusarus not able to display the right navigation sidebar unless the import is done in
-the same file.
-
 import LoginBanner from "../../../../_partials/self-hosted/_login-banner.mdx";
 
 <LoginBanner name="login-banner" edition="Palette" />
