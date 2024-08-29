@@ -46,8 +46,20 @@ jobs:
     needs: [run-ci]
     runs-on: ubuntu-latest
     steps:
+      - name: Retrieve Credentials
+        id: import-secrets
+        uses: hashicorp/vault-action@v3.0.0
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
@@ -57,8 +69,18 @@ jobs:
 
       - run: npm ci
 
-      - name: Prettier Check
+      - name: Auto Format
         run: npx prettier . --check
+
+      - name: Commit Changes
+        if: ${{ failure() }}
+        run: |
+          make format
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Auto format code"
+          git push
 
   build:
     name: Build

@@ -30,7 +30,8 @@ using the Kubernetes Image Builder (KIB) project.
 :::
 
 An alternative to the default image building process that uses the Kubernetes Image Builder (KIB) project is the CAPI
-Image Builder. The CAPI Image Builder is a tool we develop and maintain to reduce the challenges of creating images for
+Image Builder. 
+The CAPI Image Builder is a tool we develop and maintain to reduce the challenges of creating images for
 Kubernetes clusters. Check out the [Create Images with CAPI Image Builder](./capi-image-builder/capi-image-builder.md)
 guide to learn how to use the [CAPI Image Builder](https://github.com/kubernetes-sigs/image-builder) project to create
 images for Palette and VerteX.
