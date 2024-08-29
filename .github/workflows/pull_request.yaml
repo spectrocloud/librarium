@@ -72,16 +72,14 @@ jobs:
       - name: Auto Format
         run: npx prettier . --check
 
-      - name: Commit Changes
+      - name: Fix Formatting
         if: ${{ failure() }}
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git pull origin ${{ github.head_ref }} --ff
-          make format
-          git add .
-          git commit -m "Auto format code"
-          git push origin HEAD:${{ github.head_ref }}
+        run: make format
+
+      - name: Commit Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "ci: auto-formatting prettier issues"
 
   build:
     name: Build
