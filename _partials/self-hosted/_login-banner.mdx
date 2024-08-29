@@ -4,16 +4,29 @@ partial_name: login-banner
 ---
 
 
-{props.edition} allows you to add Login banner, also known as as an Authority to Operate (ATO) banner, or System Message,  to the login page. This banner can be used to display important information to users before they log in to the system console or an individual tenant. 
+
+
+{props.edition} allows you to add a Login banner, also known as an Authority to Operate (ATO) banner or System Message, to the login page. This banner can display important information to users before they log in to the system console or an individual tenant.
+
+
+:::warning
+
+Setting a login banner at the system console will override any tenant-specific login banners configured. Refer to the <VersionedLink text="Tenant Login Banner" edition={props.edition}  url="/tenant-settings/login-banner/"/> guide to learn more about tenant-specific login banners.
+
+:::
+
+
+Use the following steps to add a login banner to the {props.edition} login page.
 
 ## Prerequisites
 
 - Access to the Palette system console.
 <!-- prettier-ignore -->
-- System administrator permissions, either a Root Administrator or Operations Administrator. Refer to the <PaletteURL
+- System administrator permissions, either a Root Administrator or Operations Administrator. Refer to the 
+  <PaletteVertexUrlMapper
      edition={props.edition}
      text="System Administrators"
-     url="/system-management/account-management/#system-administrators"
+     url="/system-management/account-management"
    /> guide. page to learn more about system administrator roles.
 
 
@@ -21,10 +34,14 @@ partial_name: login-banner
 
 ## Setup Login Banner
 
-Use the following steps to add a login banner to the {props.edition} login page.
 
+<!-- prettier-ignore -->
 1. Log in to the {props.edition} system console. Refer to the
-   [Access Palette System Console](../enterprise-version.md#access-palette) guide for more information.
+    <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="Access Palette System Console"
+        url="/#access-palette"
+      /> guide for more information.
 
 2. From the left **Main Menu** select **Administration**.
 
@@ -36,9 +53,9 @@ Use the following steps to add a login banner to the {props.edition} login page.
 
 ## Validate
 
-1. Log out of the Palette system console.
+1. Log out of the {props.edition}  system console.
 
-2. Visit the Palette system console login page.
+2. Visit the {props.edition}  system console login page.
 
 3. The Login banner is displayed before you are prompted to log in.
 
@@ -47,14 +64,3 @@ Use the following steps to add a login banner to the {props.edition} login page.
 
 
 
-export function PaletteURL({ edition, text, url }) {
-  return (
-    <>
-      {edition.toLowerCase() === "palette" ? (
-        <VersionedLink text={text} url={`/enterprise-version${url}`} />
-      ) : (
-        <VersionedLink text={text} url={`/vertex${url}`} />
-      )}
-    </>
-  );
-}
