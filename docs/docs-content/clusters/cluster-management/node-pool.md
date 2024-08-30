@@ -61,6 +61,22 @@ cluster repaves.
 
 :::
 
+### Pod Drainage Toleration
+
+Palette will not remove pods with the toleration key `node.kubernetes.io/unschedulable` and the effect `NoSchedule`
+during node draining operations. You can add this toleration to your pods to prevent them from being removed during a
+repave operation.
+
+```yaml
+tolerations:
+  - key: node.kubernetes.io/unschedulable
+    effect: NoSchedule
+    operator: Exists
+```
+
+You can also specify other custom tolerations during the cluster creation process. For more information on adding
+tolerations, refer to the [Taints and Tolerations](./taints.md) guide.
+
 ## Node Pool Configuration Settings
 
 The following tables contain the configuration settings for node pools. Depending on the type of node pool, some of the

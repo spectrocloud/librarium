@@ -46,20 +46,3 @@ pack:
     "monitoring": "monitoring.io/enable=true"
     "wordpress-storage": "storage.metrics.io/format=json"
 ```
-
-## Additional Parameters
-
-The following parameters are available to help customize pack configurations.
-
-### Skip Drain Selector
-
-The `skipDrainSelector` parameter is used to skip the drain operation for pack pods that match the specified label. In
-the following example, the `storage: true` label is used to skip the drain operation for pack pods that have the
-`storage: true` label.
-
-```yaml
-pack:
-  skipDrainSelector:
-    labels:
-      storage: true
-```
