@@ -98,7 +98,7 @@ that all images are present in the external registry. For more information, refe
 
 If your have not configured an external registry for your Edge host through the Edge installer configuration user data,
 and your cluster profile references private registries, you must provide credentials to those private registries through
-Kubernetes secrets using a manifest in your cluster profile.
+[Kubernetes secrets](https://kubernetes.io/docs/concepts/configuration/secret/) using a manifest in your cluster profile.
 
 8. Add a new manifest to your cluster profile. For more information, refer to
    [Add a Manifest](../../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md).
