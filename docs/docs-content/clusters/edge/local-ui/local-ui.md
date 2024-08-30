@@ -8,25 +8,18 @@ tags: ["edge"]
 ---
 
 Once Palette Edge has been installed on the Edge host and the Edge host has gone through initial configuration, you will
-be able to access Local UI. Local UI allows you to manage Edge hosts in your network locally, upload content bundles
+be able to access Local UI.
+
+In airgapped Edge hosts, Local UI allows you to manage Edge hosts in your network locally, upload content bundles
 containing images, Helm charts, and packs, and create Edge clusters locally in disconnected environments without
-connections to a Palette instance.
+connections to a Palette instance. In connected Edge hosts, you cannot use the cluster-related functionalities because
+the cluster is managed by Palette, but you can still utilize Local UI to configure and manage the Edge host itself.
 
 :::preview
 
 :::
 
 ![A diagram illustrating how users and use EdgeForge and Local UI to deploy clusters without a Palette connection](/clusters_edge_emc_workflow.webp)
-
-:::warning
-
-Local UI only works for Edge deployments in disconnected environments. A disconnected environment means that the Edge
-host does not have a connection to a Palette instance. Do not use Local UI if your cluster has a connection to a Palette
-instance.
-
-:::
-
-Refer to the follow resources to learn how to use Local UI to manage your disconnected Edge deployment:
 
 ## Get Started
 
@@ -47,6 +40,8 @@ Refer to the follow resources to learn how to use Local UI to manage your discon
 
 ## Cluster Management
 
+Cluster management features are only available to airgapped Edge hosts.
+
 - [Upload Content Bundles](./cluster-management/upload-content-bundle.md)
 
 - [Export Cluster Definition](./cluster-management/export-cluster-definition.md)
@@ -55,6 +50,9 @@ Refer to the follow resources to learn how to use Local UI to manage your discon
 
 ## Host Management
 
+Most host management features, with the exception of Factory Reset, are available on both airgapped and connected Edge
+hosts.
+
 - [Access Local UI](./host-management/access-console.md)
 
 - [Configure HTTP Proxy in Local UI](./host-management/configure-proxy.md)
@@ -62,3 +60,11 @@ Refer to the follow resources to learn how to use Local UI to manage your discon
 - [Reset Edge Host to Factory Default](./host-management/reset-reboot.md)
 
 - [Customize Local UI Theme](./host-management/theming.md)
+
+- [Add Custom Link to Sidebar](./host-management/custom-link.md)
+
+- [Troubleshooting with Diagnostic Tools](./host-management/diagnostic-tools.md)
+
+- [Configure Audit Logs](./host-management/audit-logs.md)
+
+- [Download Files](./host-management/download-files.md)
