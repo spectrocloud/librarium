@@ -1,0 +1,70 @@
+---
+partial_category: self-hosted
+partial_name: login-banner
+---
+
+
+
+
+{props.edition} allows you to add a Login banner, also known as an Authority to Operate (ATO) banner or System Message, to the login page. This banner can display important information to users before they log in to the system console or to an individual tenant.
+
+
+:::warning
+
+Setting a login banner at the system console will override any tenant-specific login banners configured. Refer to the <VersionedLink text="Tenant Login Banner" url="/tenant-settings/login-banner/"/> guide to learn more about tenant-specific login banners.
+
+:::
+
+
+Use the following steps to add a login banner to the {props.edition} login page.
+
+## Prerequisites
+
+- Access to the {props.edition} <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="system console"
+        url="/system-management/#access-the-system-console"
+      /> 
+<!-- prettier-ignore -->
+- System administrator permissions, either a Root Administrator or Operations Administrator. Refer to the 
+  <PaletteVertexUrlMapper
+     edition={props.edition}
+     text="System Administrators"
+     url="/system-management/account-management"
+   /> page to learn more about system administrator roles.
+
+
+
+
+## Setup Login Banner
+
+
+<!-- prettier-ignore -->
+1. Log in to the {props.edition} system console. Refer to the
+    <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="Access System Console"
+        url="/system-management/#access-the-system-console"
+      /> guide for more information.
+
+2. From the left **Main Menu**, select **Administration**.
+
+3. Select the **ATO Message** tab, and toggle the **Display Login Banner** switch to enable the login banner.
+
+4. Fill out the **Login Banner Title** and **Login Banner Message** fields with the desired content.
+
+5. Click **Save** to apply the changes.
+
+## Validate
+
+1. Log out of the {props.edition}  system console.
+
+2. Visit the {props.edition}  system console login page.
+
+3. The Login banner is displayed before you are prompted to log in.
+
+
+
+
+
+
