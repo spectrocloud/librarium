@@ -47,7 +47,7 @@ Platform administrators can use the system console to perform the following oper
 
 - Manage Palette platform upgrades.
 
-- Configuere login banner.
+- [Configure login banner](./login-banner.md).
 
 - [Manage tenants](tenant-management.md).
 
