@@ -11,7 +11,7 @@ partial_name: login-banner
 
 :::warning
 
-Setting a login banner at the system console will override any tenant-specific login banners configured. Refer to the <VersionedLink text="Tenant Login Banner" edition={props.edition}  url="/tenant-settings/login-banner/"/> guide to learn more about tenant-specific login banners.
+Setting a login banner at the system console will override any tenant-specific login banners configured. Refer to the <VersionedLink text="Tenant Login Banner" url="/tenant-settings/login-banner/"/> guide to learn more about tenant-specific login banners.
 
 :::
 
@@ -20,7 +20,11 @@ Use the following steps to add a login banner to the {props.edition} login page.
 
 ## Prerequisites
 
-- Access to the Palette system console.
+- Access to the {props.edition} <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="system console"
+        url="/system-management/#access-the-system-console"
+      /> 
 <!-- prettier-ignore -->
 - System administrator permissions, either a Root Administrator or Operations Administrator. Refer to the 
   <PaletteVertexUrlMapper
