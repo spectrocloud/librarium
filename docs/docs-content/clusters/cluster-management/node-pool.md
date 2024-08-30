@@ -74,8 +74,8 @@ tolerations:
     operator: Exists
 ```
 
-You can also specify other custom tolerations during the cluster creation process. For more information on adding
-tolerations, refer to the [Taints and Tolerations](./taints.md) guide.
+You can also specify other tolerations during the cluster creation process. For more information on adding tolerations,
+refer to the [Taints and Tolerations](./taints.md) guide.
 
 ## Node Pool Configuration Settings
 
