@@ -531,11 +531,11 @@ For guidance on using admonitions, refer to
 
 To add a video, use the following syntax. Ensure you capitalize the letter "V":
 
-```
+```mdx
 <Video src="/aws-full-profile.mp4"></Video>
 ```
 
-```
+```mdx
 <Video title="vsphere-pcg-creation" src="/cluster-creation-videos/vmware.mp4"></Video>
 ```
 
@@ -708,6 +708,29 @@ This is a <VersionedLink text="Internal Link" url="/getting-started/additional-c
 The path of the link should be the path of the destination file from the root directory, without any back operators
 `..`. External links can be referenced as usual.
 
+## Palette/VerteX URLs
+
+A special component has been created to handle the generation of URLs for Palette and VertX. The component is called
+[PaletteVertexUrlMapper](./src/components/PaletteVertexUrlMapper/PaletteVertexUrlMapper.tsx). This component is intended
+for usage withing partials. You can use the component to change the base path of the URL to either Palette or VerteX.
+The component will automatically prefix the path to the URL. The component has the following props:
+
+- `edition` - The edition of the URL. This can be either `Palette` or `Vertex`. Internally, the component will use this
+  value to determine the base URL.
+- `text` - The text to display for the link.
+- `url` - The path to append to the base URL.
+
+Below is an example of how to use the component:
+
+```mdx
+- System administrator permissions, either a Root Administrator or Operations Administrator. Refer to the
+  <PaletteVertexUrlMapper
+    edition={props.edition}
+    text="System Administrators"
+    url="/system-management/account-management"
+  /> page to learn more about system administrator roles.
+```
+
 ## Packs Component
 
 The packs component is a custom component that displays all packs available in Palette SaaS by querying the Palette API
@@ -808,8 +831,11 @@ If you want to link to a heading inside the pack component, you must also use th
 path to the component followed by the heading id. The following is an example of how to link to a heading inside the
 pack component. Take note of the `#` symbol followed by the heading id.
 
-```md
-<VersionedLink text="Change Cluster DNS Service Domain" url="/integrations/packs/?pack=kubernetes-eks#change-cluster-dns-service-domain" />
+```mdx
+<VersionedLink
+  text="Change Cluster DNS Service Domain"
+  url="/integrations/packs/?pack=kubernetes-eks#change-cluster-dns-service-domain"
+/>
 ```
 
 Omit the `version=xxxx&parent=xxxx` value that is part of the query string. If you include the `version` and `parent`
@@ -820,7 +846,7 @@ values, the link will not work as expected.
 You must use the `<VersionedLink />` component to link to a pack. The following is an example of how to link to a pack.
 For more information, refer to the [Internal Links](#internal-links) section.
 
-```md
+```mdx
 <VersionedLink text="Change Cluster DNS Service Domain" url="/integrations/packs/?pack=kubernetes-eks" />
 ```
 
@@ -851,20 +877,16 @@ documentation.
 
 Next, download the required Vale plugins.
 
-```
-
+```shell
 make sync-vale
-
 ```
 
 To execute the writing check, issue the command below. The command below will identify files that are modified by
 comparing the current git branch against the `master` branch. Ensure your local `master` branch is up to date for
 accurate results.
 
-```
-
+```shell
 make check-writing
-
 ```
 
 You may also use the Vale CLI to directly scan a file and receive feedback.
@@ -875,31 +897,10 @@ Example:
 vale content/docs/08-user-management.md
 ```
 
-## Modify Writing Rules
+## Vale
 
-The [vale.ini](vale.ini) file contains the configuration for Vale. Changes to [vale.ini](vale.ini),
-[accept.txt](/vale/styles/Vocab/Internal/accept.txt), and [reject.txt](/vale/styles/Vocab/Internal/reject.txt) require
-approval by the [docs-education](https://github.com/orgs/spectrocloud/teams/docs-education) team.
-
-### Disable Rule
-
-To disable a specific rule, add the rule name and the word "NO" to the vale.ini](vale.ini) file.
-
-Example:
-
-```
-Google.Headings = NO
-```
-
-### Approved Words
-
-Approved words can be found in the [accept.txt](/vale/styles/Vocab/Internal/accept.txt) file. You can add or remove
-words from the list by modifying the file.
-
-### Rejected Words
-
-Rejected words automatically get flagged by Vale. To modify the list of rejected words, modify the
-[reject.txt](/vale/styles/Vocab/Internal/reject.txt) file.
+The [vale.ini](vale.ini) file contains the configuration for Vale. We use the
+[Spectro Cloud Vale](https://github.com/spectrocloud/spectro-vale-pkg) package to enforce our writing style.
 
 ## Check Formatting
 
@@ -909,24 +910,24 @@ the formatting in all files complies with our Prettier configuration.
 
 > [!NOTE]
 >
-> The build fails if the Code Formatting check doesn't pass.
+> The CI will automatically format the files and commit the changes, if necessary.
 
 To manually check the formatting before pushing your work upstream, execute the following command in your terminal:
 
-```
+```shell
 make format-check
 ```
 
 Console output if all files are formatted:
 
-```
+```shell
 Checking formatting...
 All matched files use Prettier code style!
 ```
 
 Console output if some of the files require re-formatting:
 
-```
+```shell
 Checking formatting...
 [warn] README.md
 [warn] Code style issues found in the above file. Run Prettier to fix.
@@ -934,7 +935,7 @@ Checking formatting...
 
 To manually format all files, issue the following command:
 
-```
+```shell
 make format
 ```
 
