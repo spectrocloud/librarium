@@ -19,6 +19,11 @@ The login banner message is only accessible when users attempt to log in to Pale
 default Palette SaaS login URL of `https://console.spectrocloud.com` will not display the login banner message. Users of
 self-hosted Palette use the tenant URL defined during the Palette installation.
 
+Additionally, if you are using self-hosted Palette or VerteX and have a login banner configured at the system console,
+the tenant login banner will not be displayed, as the system console login banner takes precedence. Refer to the
+[System Login Banner](../enterprise-version/system-management/login-banner.md) page to learn more about system login
+banners.
+
 :::
 
 ## Prerequisite
