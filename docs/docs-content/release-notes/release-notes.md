@@ -430,6 +430,9 @@ features and improvements.
 - The issue where Google GKE cluster deployments failed is now resolved. You can now deploy GKE clusters using the
   latest available GKE versions.
 
+- Fixed an issue that caused clusters to experience problems in communicating with Palette through gRPC using domain
+  names and port 443, resulting in clusters appearing in an Unhealthy state.
+
 #### Deprecations and Removals
 
 - The term _master_ is removed from Palette and replaced with the term, _control plane_. This change is reflected in the
