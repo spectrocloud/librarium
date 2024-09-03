@@ -13,7 +13,73 @@ tags: ["release-notes"]
 
 ## Sep 14, 2024 - Release 4.4.X
 
-TBA
+## Palette
+
+#### Features
+
+#### Improvements
+
+## Edge
+
+#### Breaking Changes
+
+- Edge hosts will no longer expose a QR code during the registration phase by default. Users who want a QR code
+  generated during this phase must specify a registration URL in the Edge Installer user data configuration file. Refer
+  to the [Edge Installer User Data Configuration](../clusters/edge/edge-configuration/edge-configuration.md) reference
+  page for more information.
+
+#### Features
+
+- You can now configure the Maximum Transmission Unit (MTU) for network interface configured discovered though Dynamic
+  Host Configuration Protocol (DHCP) when using [Local UI](../clusters/edge//local-ui/local-ui.md).
+
+#### Improvements
+
+### Palette Dev Engine (PDE)
+
+#### Features
+
+#### Improvements
+
+#### Bug Fixes
+
+### Virtual Machine Orchestrator
+
+#### Features
+
+#### Improvements
+
+### VerteX
+
+#### Breaking Changes
+
+#### Features
+
+#### Improvements
+
+### Automation
+
+### Docs and Education
+
+### Packs
+
+#### Operating Systems
+
+#### Kubernetes
+
+#### CNI
+
+#### CSI
+
+#### Add-on Packs
+
+#### Community Packs
+
+#### Known Inssues
+
+#### Pack Notes
+
+#### Deprecations and Removals
 
 ## Aug 17, 2024 - Release 4.4.14
 
