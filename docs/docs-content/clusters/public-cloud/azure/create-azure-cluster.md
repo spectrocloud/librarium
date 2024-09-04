@@ -56,8 +56,13 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
   - Managed Disks
   - Virtual Network Address Translation (NAT) Gateway
 
-- To enable the `fullyPrivateAddressing` parameter, you need a self-hosted Private Cloud Gateway (PCG) deployed in
-  Azure. For more information on deploying PCGs, refer to [Private Cloud Gateway](../../pcg/pcg.md).
+- To enable the `fullyPrivateAddressing` parameter and use a Private API Server load balancer, you need a self-hosted
+  Private Cloud Gateway (PCG) deployed in Azure. Ensure the Azure cloud account selected is connected to a PCG. For more
+  information on deploying PCGs, refer to [Private Cloud Gateway](../../pcg/pcg.md). To learn how to connect a PCG to an
+  Azure cloud account, refer to the [Register and Manage Azure Cloud Account](./azure-cloud.md) guide.
+
+- A Private DNS Zone is required to use the Private API Server load balancer. To learn more about Private DNS Zones,
+  refer to [Private DNS Zones](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns).
 
 ## Deploy an Azure Cluster
 
@@ -98,8 +103,6 @@ Use the following steps to deploy an Azure cluster.
    If you set the `fullyPrivateAddressing` property to `false` or leave it blank, Palette will create outbound load
    balancers for the control plane and worker nodes and assign public IPs to them.
 
-   :::warning
-
    Consider the following limitations:
 
    - If the `fullyPrivateAddressing` parameter is set to `true`, the control plane and worker nodes in your cluster must
@@ -110,7 +113,10 @@ Use the following steps to deploy an Azure cluster.
    - Once the `fullyPrivateAddressing` parameter is set for your cluster, you cannot change its value. Changing the
      parameter value will result in errors until you return the value to its original configuration.
 
-   :::
+   Toggle the **Private API Server** option to enable the use of a Private API Server load balancer and specify the
+   [Private DNS Zone](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns) name you want to use.
+   Select the desired **IP Allocation Method**. You can choose between **Static** and **Dynamic** IP allocation methods.
+   If you select **Static**, you must provide a valid IP address.
 
 10. To configure custom OpenID Connect (OIDC) for Azure clusters, refer to our
     [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider) guide for
