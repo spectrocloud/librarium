@@ -8,8 +8,8 @@ tags: ["data center", "vmware", "permissions"]
 ---
 
 The VMware vSphere user account that deploys host clusters and/or private cloud gateways requires all vSphere privileges
-listed in the following table. Review the vSphere objects and privileges required to ensure each role is
-assigned the required privileges.
+listed in the following table. Review the vSphere objects and privileges required to ensure each role is assigned the
+required privileges.
 
 ### Spectro Root Role Privileges
 
@@ -33,7 +33,7 @@ https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-ED56F3C4-77D
 | ----------------------- | ---------------------------------------- |
 | **CNS**                 | Searchable                               |
 | **Datastore**           | Browse datastore                         |
-| **Host**                | Configuration.*                          |
+| **Host**                | Configuration.\*                         |
 | **Network**             | Assign network                           |
 | **Sessions**            | Validate session                         |
 | **Storage Views**       | View                                     |
@@ -52,7 +52,7 @@ https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GU
 | -------------------------- | ---------------------------------------- |
 | **CNS**                    | Searchable                               |
 | **Datastore**              | Browse datastore                         |
-| **Host**                   | Configuration.*                          |
+| **Host**                   | Configuration.\*                         |
 | **Network**                | Assign network                           |
 | **Profile-driven Storage** | View                                     |
 | **Sessions**               | Validate session                         |
@@ -67,7 +67,7 @@ https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GU
 | -------------------------- | ---------------------------------------- |
 | **CNS**                    | Searchable                               |
 | **Datastore**              | Browse datastore                         |
-| **Host**                   | Configuration.*                          |
+| **Host**                   | Configuration.\*                         |
 | **Network**                | Assign network                           |
 | **Profile-driven Storage** | View                                     |
 | **Sessions**               | Validate session                         |
