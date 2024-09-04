@@ -16,8 +16,6 @@ documentation to learn more about the auto-generated certificates and to better 
 This reference page focuses on how to renew the PKI certificates through Palette. You have two options for how you can
 renew the cluster PKI certificates:
 
-<br />
-
 - Automatic Certificate Renewal
 
 - Manual Certificate Renewal
@@ -31,6 +29,10 @@ years.
 
 You can learn more about each option in the following sections.
 
+## Limitations
+
+- Neither automatic nor manual certificate renewal through the Palette UI is supported by Edge clusters.
+
 ## Automatic Certificate Renewal
 
 When you upgrade the control plane on a cluster, the PKI certificates are automatically updated. Upgrading a cluster's
@@ -38,8 +40,6 @@ Kubernetes version, whether a minor patch or a major release, results in renewed
 that requires the least user actions when it comes to renewing PKI certificates. We recommend regularly updating your
 clusters to stay current with security fixes and best practices. By keeping your host cluster updated, you prevent the
 scenario of PKI certificates from reaching their one-year expiration date.
-
-<br />
 
 :::info
 
