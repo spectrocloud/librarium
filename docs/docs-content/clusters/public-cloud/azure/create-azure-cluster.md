@@ -63,7 +63,7 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
 
 - A Private DNS Zone is required to use the Private API Server load balancer. You also need to ensure the vNETs used for
   the cluster supports
-  [Private DNS resolving](https://learn.microsoft.com/en-us/azure/dns/dns-private-resolver-overview). us To learn more
+  [Private DNS resolving](https://learn.microsoft.com/en-us/azure/dns/dns-private-resolver-overview). To learn more
   about Private DNS Zones, refer to
   [Private DNS Zones](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns).
 
@@ -116,7 +116,7 @@ Use the following steps to deploy an Azure cluster.
    - Once the `fullyPrivateAddressing` parameter is set for your cluster, you cannot change its value. Changing the
      parameter value will result in errors until you return the value to its original configuration.
 
-   Toggle the **Private API Server** option to enable the use of a Private API Server load balancer and specify the
+   Toggle the **Private API Server LB** option to enable the use of a Private API Server load balancer and specify the
    [Private DNS Zone](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns) name you want to use.
    Select the desired **IP Allocation Method**. You can choose between **Static** and **Dynamic** IP allocation methods.
    If you select **Static**, you must provide a valid IP address.
