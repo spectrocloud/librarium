@@ -31,9 +31,7 @@ You can learn more about each option in the following sections.
 
 ## Limitations
 
-- Neither automatic nor manual certificate renewal through the Palette UI is supported by Edge clusters. For Edge airgap
-  clusters, you can renew the certificates from Local UI. Refer to
-  [Renew Certificates for Airgapped Edge Hosts](../edge/cluster-management/certificate-renewal.md) for more information.
+- Neither automatic nor manual certificate renewal through the Palette UI is supported by Edge clusters.
 
 ## Automatic Certificate Renewal
 
