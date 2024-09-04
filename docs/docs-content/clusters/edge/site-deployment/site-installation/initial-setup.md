@@ -93,11 +93,11 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
    address of the default gateway. Specifying a static IP will remove the existing DHCP settings.
 
 6. In the configuration page of each network adapter, you can also specify the Maximum Transmission Unit (MTU) for your
-   Edge host. The MTU defines the largest size, in bytes, of a packet that can be sent over a network interface without
-   needing to be fragmented. Press **Enter** to apply the change.
+   network adapter. The MTU defines the largest size, in bytes, of a packet that can be sent over a network interface
+   without needing to be fragmented. Press **Enter** to apply the change.
 
-7. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. Press **Enter** to apply
-   the change.
+7. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. You can optionally also
+   specify a search domain. Press **Enter** to apply the change.
 
 8. After you are satisfied with the configurations, navigate to **Quit** and hit enter to finish configuration.
 
