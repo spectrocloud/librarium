@@ -33,6 +33,8 @@ tags: ["release-notes"]
 - You can now configure the Maximum Transmission Unit (MTU) for network interface configured discovered though Dynamic
   Host Configuration Protocol (DHCP) when using [Local UI](../clusters/edge//local-ui/local-ui.md).
 
+-
+
 #### Improvements
 
 ### Palette Dev Engine (PDE)
