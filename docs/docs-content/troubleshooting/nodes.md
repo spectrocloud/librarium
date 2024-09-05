@@ -154,3 +154,53 @@ To resolve this issue, use the following steps:
    :::
 
 9. Repeat the previous step for all nodes in the cluster.
+
+### OS Patch Fails on AWS with Microk8s 1.27
+
+If OS patching fails on an AWS cluster with Microk8s 1.27, use the following debug steps to resolve the issue.
+
+#### Debug Steps
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. Navigate to the left **Main Menu** and select **Clusters**.
+
+3. Select the cluster that is experiencing the issue and click on its row to access the cluster details page.
+
+4. From the cluster details page, select the **Nodes** tab.
+
+5. Click on a cluster node to access its details page. Review the network information, such as the subnet and the
+   network the node is in.
+
+6. Log in to the infrastructure provider console and acquire the node IP address.
+
+7. SSH into one of the cluster nodes
+
+8. Find out the partition name to which `boot/efi` is mounted with the following command.
+
+   ```
+   mount | grep /boot/efi
+   ```
+
+   The command produces output similar to the following.
+
+   ```
+   /dev/xvda15 on /boot/efi type vfat (rw,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro)
+   ```
+
+   The name of the partition is the partition at the start of the line before `on /boot/efi`: `/dev/xvda15`
+
+9. Issue the following command. Replace `partition-name` with the name of the partition.
+
+   ```shell
+   grub-install --efi-directory=/boot/efi <partition-name> --force
+   ```
+
+10. Issue the following commands.
+
+    ```
+    grub-mkconfig -o /boot/grub/grub.cfg
+    update-grub
+    apt-get update
+    apt-get upgrade
+    ```
