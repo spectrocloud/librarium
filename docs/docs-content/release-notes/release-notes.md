@@ -19,6 +19,14 @@ tags: ["release-notes"]
 
 #### Improvements
 
+#### Deprecations and Removals
+
+- Palette's internal message communication between components transitioned from NATS to gRPC. The previous usage of NATS
+  has been deprecated and will be removed in a future release. This change primarily affects customers using Palette
+  agents on versions older than 4.0. If your tenant clusters still use agents on version 3.x,
+  [resume agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) to avoid
+  disrupting critical functions such as health monitoring and heartbeat publishing.
+
 ## Edge
 
 #### Breaking Changes
