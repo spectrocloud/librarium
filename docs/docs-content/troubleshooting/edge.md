@@ -231,4 +231,5 @@ are no longer in use and can be erased internally. To enable TRIM operations, us
 
 6. Click on **Confirm Updates** to save the changes.
 
-7. Use the updated profile to create a [new Edge cluster](../clusters/) or update an existing Edge cluster.
+7. Use the updated profile to create a [new Edge cluster](../clusters/edge/site-deployment/cluster-deployment.md) or
+   update an existing Edge cluster.
