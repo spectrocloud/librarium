@@ -13,21 +13,34 @@ tags: ["release-notes"]
 
 ## Sep 14, 2024 - Release 4.4.X
 
-## Palette
+### Palette Enterprise
 
-#### Features
+##### Features
 
-#### Improvements
+- Palette will not remove pods with the toleration key node.kubernetes.io/unschedulable set to NoSchedule. This is
+  useful for scenarios where a pod may behave as a DaemonSet but is not a DaemonSet, such as the Portworx operator pod,
+  and you don't want it to be removed during node drain operations. Refer to the
+  [Pod Drainage Toleration](../clusters/cluster-management/node-pool.md#pod-drainage-toleration) section for more
+  information on using the new behavior.
+
+##### Improvements
+
+- Several enhancements have been made to the Clusters view in the Palette UI. These changes ensure a consistent and
+  user-friendly experience, including new designs for the cluster selection screen and a customizable, powerful grid
+  view. This redesign provides a better user experience for managing clusters in large-scale environments.
 
 #### Deprecations and Removals
 
 - Palette's internal message communication between components transitioned from NATS to gRPC. The previous usage of NATS
   has been deprecated and will be removed in a future release. This change primarily affects customers using Palette
-  agents on versions older than 4.0. If your tenant clusters still use agents on version 3.x,
+  agents on versions older than 4.0. If your tenant clusters still use agents on version 3.x or older,
   [resume agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) to avoid
-  disrupting critical functions such as health monitoring and heartbeat publishing.
+  disrupting critical functions such as health monitoring and heartbeat publishing. To learn more about Palette's
+  internal network architecture, refer to the [Network Ports](../architecture/networking-ports.md) page. If you are
+  using network proxies, we recommend you review the [gRPC and Proxies](../architecture/grps-proxy.md) documentation for
+  potential issues.
 
-## Edge
+### Edge
 
 #### Breaking Changes
 
@@ -41,9 +54,20 @@ tags: ["release-notes"]
 - You can now configure the Maximum Transmission Unit (MTU) for network interface configured discovered though Dynamic
   Host Configuration Protocol (DHCP) when using [Local UI](../clusters/edge//local-ui/local-ui.md).
 
--
+- Manual and automatic Kubernetes certificate renewal for control-plane nodes is now available to Edge clusters managed
+  by Palette. This feature is available for the following Kubernetes distributions K3s, RKE2, and PXK-E. The new process
+  for certificate renewal leverages the command `kubeadm certs renew`, ensuring certificates update without requiring
+  node reboots.
+
+- Local UI now supported Edge hosts in _connected mode_. Previously, Local UI only supported Edge hosts in airgap mode.
+  This change allows users to now manage connected Edge hosts using Local UI. To learn more, refer to the
+  [Local UI](../clusters/edge/local-ui/local-ui.md) documentation.
 
 #### Improvements
+
+- Several improvements have been made to the Local UI's Terminal User Interface (TUI) to enhance the user experience.
+  These improvements include more visible options menus, automatic configuration save upon exit, improved color scheme,
+  and more.
 
 ### Palette Dev Engine (PDE)
 
