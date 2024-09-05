@@ -20,6 +20,9 @@ Silicon, use the API approach instead.
 
 ## Export Cluster Definition with Palette Edge CLI
 
+You can export cluster definitions with the Palette Edge CLI. This approach allows you to create a content bundle at the
+same time in a single command.
+
 ### Prerequisites
 
 - At least one [cluster profile](/docs/docs-content/profiles/cluster-profiles/cluster-profiles.md) in Palette.
@@ -161,6 +164,9 @@ Silicon, use the API approach instead.
 4. A successful cluster definition export will display the correct profile layers from the cluster creation view.
 
 ## Export Cluster Definition with Palette API
+
+If you don't have a AMC64 machine, or you do not want to download and use the Palette Edge CLI, you can still export
+cluster definitions using the Palette API.
 
 ### Prerequisites
 
