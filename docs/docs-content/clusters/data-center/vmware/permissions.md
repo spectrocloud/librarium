@@ -28,16 +28,16 @@ Defined Privileges
 https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html
 -->
 
-| **Category**            | **Privileges**                           |
-| ----------------------- | ---------------------------------------- |
-| **CNS**                 | Searchable                               |
-| **Datastore**           | Browse datastore                         |
-| **Host**                | Configuration: System management         |
-| **Network**             | Assign network                           |
-| **Sessions**            | Validate session                         |
-| **Storage Views**       | View                                     |
-| **VM Storage Policies** | View VM storage policies                 |
-| **vSphere Tagging**     | Create vSphere Tag<br />Edit vSphere Tag |
+| **Category**            | **Privileges**                                 |
+| ----------------------- | ---------------------------------------------- |
+| **CNS**                 | Searchable                                     |
+| **Datastore**           | Browse datastore                               |
+| **Host**                | Configuration: Storage partition configuration |
+| **Network**             | Assign network                                 |
+| **Sessions**            | Validate session                               |
+| **Storage Views**       | View                                           |
+| **VM Storage Policies** | View VM storage policies                       |
+| **vSphere Tagging**     | Create vSphere Tag<br />Edit vSphere Tag       |
 
 </TabItem>
 
@@ -47,39 +47,39 @@ Defined Privileges
 https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html
 -->
 
-| **Category**               | **Privileges**                           |
-| -------------------------- | ---------------------------------------- |
-| **CNS**                    | Searchable                               |
-| **Datastore**              | Browse datastore                         |
-| **Host**                   | Configuration: System management         |
-| **Network**                | Assign network                           |
-| **Profile-driven Storage** | View                                     |
-| **Sessions**               | Validate session                         |
-| **Storage Views**          | View                                     |
-| **vSphere Tagging**        | Create vSphere Tag<br />Edit vSphere Tag |
+| **Category**               | **Privileges**                                 |
+| -------------------------- | ---------------------------------------------- |
+| **CNS**                    | Searchable                                     |
+| **Datastore**              | Browse datastore                               |
+| **Host**                   | Configuration: Storage partition configuration |
+| **Network**                | Assign network                                 |
+| **Profile-driven Storage** | View                                           |
+| **Sessions**               | Validate session                               |
+| **Storage Views**          | View                                           |
+| **vSphere Tagging**        | Create vSphere Tag<br />Edit vSphere Tag       |
 
 </TabItem>
 
 <TabItem label="6.7U3" value="6.7U3">
 
-| **Category**               | **Privileges**                           |
-| -------------------------- | ---------------------------------------- |
-| **CNS**                    | Searchable                               |
-| **Datastore**              | Browse datastore                         |
-| **Host**                   | Configuration: System management         |
-| **Network**                | Assign network                           |
-| **Profile-driven Storage** | View                                     |
-| **Sessions**               | Validate session                         |
-| **Storage Views**          | View                                     |
-| **vSphere Tagging**        | Create vSphere Tag<br />Edit vSphere Tag |
+| **Category**               | **Privileges**                                 |
+| -------------------------- | ---------------------------------------------- |
+| **CNS**                    | Searchable                                     |
+| **Datastore**              | Browse datastore                               |
+| **Host**                   | Configuration: Storage partition configuration |
+| **Network**                | Assign network                                 |
+| **Profile-driven Storage** | View                                           |
+| **Sessions**               | Validate session                               |
+| **Storage Views**          | View                                           |
+| **vSphere Tagging**        | Create vSphere Tag<br />Edit vSphere Tag       |
 
 </TabItem>
 
 <TabItem label="API" value="API">
 
-| **Category**       | **Privileges**                                                                                                                                                                                                                                         |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **API Privileges** | Cns.Searchable<br />Datastore.Browse<br />Host.Config.SystemManagement<br />InventoryService.Tagging.CreateTag<br />InventoryService.Tagging.EditTag<br />Network.Assign<br />Sessions.ValidateSession<br />StorageProfile.View<br />StorageViews.View |
+| **Category**       | **Privileges**                                                                                                                                                                                                                                |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **API Privileges** | Cns.Searchable<br />Datastore.Browse<br />Host.Config.Storage<br />InventoryService.Tagging.CreateTag<br />InventoryService.Tagging.EditTag<br />Network.Assign<br />Sessions.ValidateSession<br />StorageProfile.View<br />StorageViews.View |
 
 </TabItem>
 
@@ -91,13 +91,13 @@ The privileges associated with the _Spectro root role_ must be granted via role 
 for either the user or a group containing the user. Review the required role assignments to ensure that your user has
 all required privileges on all required objects.
 
-| **vSphere Object**    | **Propagation** | **Role**            | **Condition**                                                            |
-| --------------------- | --------------- | ------------------- | ------------------------------------------------------------------------ |
-| **vCenter Root**      | No              | _Spectro root role_ |                                                                          |
-| **Target Datacenter** | No              | _Spectro root role_ |                                                                          |
-| **Target Cluster**    | No              | _Spectro root role_ |                                                                          |
-| **Target VM Folder**  | Yes             | _Spectro root role_ |                                                                          |
-| **VDS**               | No              | _Spectro root role_ | If the Target Network is a Distributed Port Group residing beneath a VDS |
+| **vSphere Object**     | **Propagation** | **Role**            | **Condition**                                                            |
+| ---------------------- | --------------- | ------------------- | ------------------------------------------------------------------------ |
+| **vCenter Root**       | No              | _Spectro root role_ |                                                                          |
+| **Target Datacenter**  | No              | _Spectro root role_ |                                                                          |
+| **Target Cluster**     | No              | _Spectro root role_ |                                                                          |
+| **Target VM Folder**   | Yes             | _Spectro root role_ |                                                                          |
+| **Distributed Switch** | No              | _Spectro root role_ | If the Target Network is a Distributed Port Group residing beneath a VDS |
 
 ### Spectro Role Privileges
 
