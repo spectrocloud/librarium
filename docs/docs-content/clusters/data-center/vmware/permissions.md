@@ -8,12 +8,13 @@ tags: ["data center", "vmware", "permissions"]
 ---
 
 The VMware vSphere user account that deploys host clusters and/or private cloud gateways requires all vSphere privileges
-listed in the following table on specific objects. A _Spectro root role_ must be created that contains each privilege in
-the table.
+listed in the following sections on specific objects.
 
 ### Spectro Root Role Privileges
 
-Select the tab for the vSphere version you are using to view the required privileges for the _Spectro root role_.
+A _Spectro root role_ must be created that contains each privilege in the following table.
+
+Select the tab for the vSphere version you are using to view the required privileges.
 
 <!--
 VMware vSphere Privilege ID Mapping
@@ -91,21 +92,19 @@ The privileges associated with the _Spectro root role_ must be granted via role 
 for either the user or a group containing the user. Review the required role assignments to ensure that your user has
 all required privileges on all required objects.
 
-| **vSphere Object**     | **Propagation** | **Role**            | **Condition**                                                            |
-| ---------------------- | --------------- | ------------------- | ------------------------------------------------------------------------ |
-| **vCenter Root**       | No              | _Spectro root role_ |                                                                          |
-| **Target Datacenter**  | No              | _Spectro root role_ |                                                                          |
-| **Target Cluster**     | No              | _Spectro root role_ |                                                                          |
-| **Target VM Folder**   | Yes             | _Spectro root role_ |                                                                          |
-| **Distributed Switch** | No              | _Spectro root role_ | If the Target Network is a Distributed Port Group residing beneath a VDS |
+| **vSphere Object**     | **Propagation** | **Role**            | **Condition**                                     |
+| ---------------------- | --------------- | ------------------- | ------------------------------------------------- |
+| **vCenter Root**       | No              | _Spectro root role_ |                                                   |
+| **Target Datacenter**  | No              | _Spectro root role_ |                                                   |
+| **Target Cluster**     | No              | _Spectro root role_ |                                                   |
+| **Target VM Folder**   | Yes             | _Spectro root role_ |                                                   |
+| **Distributed Switch** | No              | _Spectro root role_ | If the Target Network is a Distributed Port Group |
 
 ### Spectro Role Privileges
 
-The VMware vSphere user account that deploys host clusters and/or private cloud gateways requires all vSphere privileges
-listed in the following table on specific objects. A _Spectro role_ must be created that contains each privilege in the
-following tables. A separate table lists Spectro role privileges for VMs by category.
+A _Spectro role_ must be created that contains each privilege in the following table.
 
-Select the tab for the vSphere version you are using to view the required privileges for the _Spectro role_.
+Select the tab for the vSphere version you are using to view the required privileges.
 
 <Tabs groupId="vsphere-version">
 
@@ -120,7 +119,6 @@ Select the tab for the vSphere version you are using to view the required privil
 | **Network**               | Assign network                                                                                                                                                        |
 | **Resource**              | Apply recommendation<br />Assign virtual machine to resource pool<br />Migrate powered off virtual machine<br />Migrate powered on virtual machine<br />Query vMotion |
 | **Sessions**              | Validate session                                                                                                                                                      |
-| **spectro-templates**     | Read only. This is the vSphere folder created during the install. For airgap installs, you must manually create this folder.                                          |
 | **Storage Views**         | View                                                                                                                                                                  |
 | **Tasks**                 | Create task<br />Update task                                                                                                                                          |
 | **vApp**                  | Import<br />View OVF environment<br />vApp application configuration<br />vApp instance configuration                                                                 |
@@ -156,7 +154,6 @@ Virtual Machines.
 | **Resource**               | Apply recommendation<br />Assign virtual machine to resource pool<br />Migrate powered off virtual machine<br />Migrate powered on virtual machine<br />Query vMotion |
 | **Profile-driven Storage** | View                                                                                                                                                                  |
 | **Sessions**               | Validate session                                                                                                                                                      |
-| **spectro-templates**      | Read only. This is the vSphere folder created during the install. For airgap installs, you must manually create this folder.                                          |
 | **Storage Views**          | View                                                                                                                                                                  |
 | **Tasks**                  | Create task<br />Update task                                                                                                                                          |
 | **vApp**                   | Import<br />View OVF environment<br />vApp application configuration<br />vApp instance configuration                                                                 |
@@ -190,7 +187,6 @@ Virtual Machines.
 | **Resource**               | Apply recommendation<br />Assign virtual machine to resource pool<br />Migrate powered off virtual machine<br />Migrate powered on virtual machine<br />Query vMotion |
 | **Profile-driven Storage** | View                                                                                                                                                                  |
 | **Sessions**               | Validate session                                                                                                                                                      |
-| **spectro-templates**      | Read only. This is the vSphere folder created during the install. For airgap installs, you must manually create this folder.                                          |
 | **Storage Views**          | View                                                                                                                                                                  |
 | **Tasks**                  | Create task<br />Update task                                                                                                                                          |
 | **vApp**                   | Import<br />View OVF environment<br />vApp application configuration<br />vApp instance configuration                                                                 |
@@ -228,10 +224,10 @@ The privileges associated with the _Spectro role_ must be granted via role assig
 either the user or a group containing the user. Review the required role assignments to ensure that your user has all
 required privileges on all required objects.
 
-| **vSphere Object**                           | **Propagation** | **Role**       |
-| -------------------------------------------- | --------------- | -------------- |
-| **Target Network**                           | Yes             | _Spectro role_ |
-| **Target Datastore**                         | Yes             | _Spectro role_ |
-| **All ESXi hosts within the Target Cluster** | No              | _Spectro role_ |
-| **Target Resource Pool**                     | Yes             | _Spectro role_ |
-| **spectro-templates Folder**                 | Yes             | _Spectro role_ |
+| **vSphere Object**                           | **Propagation** | **Role**       | **Condition**                                                                                                                             |
+| -------------------------------------------- | --------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| **Target Network**                           | Yes             | _Spectro role_ |                                                                                                                                           |
+| **Target Datastore**                         | Yes             | _Spectro role_ |                                                                                                                                           |
+| **All ESXi hosts within the Target Cluster** | No              | _Spectro role_ |                                                                                                                                           |
+| **spectro-templates Folder**                 | Yes             | _Spectro role_ | For airgap installs, it must be manually created in advance and permissions assigned. For connected installs it is created automatically. |
+| **Target Resource Pool**                     | Yes             | _Spectro role_ |                                                                                                                                           |
