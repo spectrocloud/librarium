@@ -85,7 +85,7 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
    switch between fields. When you make a change, press **Enter** to apply the change.
 
 5. In **Host Network Adapters**, select a network adapter you'd like to configure. By default, the network adapters
-   request an IP automatically from the DHCP server. The CIDR block of an adapter's possible IP address is displayed in
+   request an IP automatically from the Dynamic Host Configuration Protocol (DHCP) server. The CIDR block of an adapter's possible IP address is displayed in
    the **Host Network Adapters** screen without selecting an individual adapter.
 
    In the configuration page for each adapter, you can change the IP addressing scheme of the adapter and choose static
