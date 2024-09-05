@@ -192,7 +192,7 @@ are no longer in use and can be erased internally. To enable TRIM operations, us
 
 3. Select the **Cluster Profile** that you want to use for your Edge cluster.
 
-4. Click on the BYOOS layer to access it's YAML configuration.
+4. Click on the BYOOS layer to access its YAML configuration.
 
 5. Add the following configuration to the YAML to enable TRIM operations on encrypted partitions.
 
