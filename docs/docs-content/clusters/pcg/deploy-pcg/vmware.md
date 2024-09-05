@@ -87,7 +87,7 @@ Palette requires two custom roles to be created in vSphere before the PCG instal
 [Create a Custom Role](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-18071E9A-EED1-4968-8D51-E0B4F526FDA3.html?hWord=N4IghgNiBcIE4HsIFMDOIC+Q)
 guide if you need help creating a custom role in vSphere. The required custom roles are:
 
-- A root-level role with access to higher-level vSphere objects. This role is referred to as the _spectro root role_.
+- A root-level role with access to higher-level vSphere objects. This role is referred to as the _Spectro root role_.
   Check out the [Root-Level Role Privileges](../../data-center/vmware/permissions.md#spectro-root-role-privileges) table for the list of privileges required for the root-level role.
 
 - A role with the required privileges for deploying VMs. This role is referred to as the _Spectro role_. Review the

@@ -8,13 +8,12 @@ tags: ["data center", "vmware", "permissions"]
 ---
 
 The VMware vSphere user account that deploys host clusters and/or private cloud gateways requires all vSphere privileges
-listed in the following table. Review the vSphere objects and privileges required to ensure each role is assigned the
-required privileges.
+listed in the following table on specific objects. A _Spectro root role_ must be created that contains each privilege in
+the table.
 
 ### Spectro Root Role Privileges
 
-The spectro root role privileges are only applied to root objects and data center objects. Select the tab for the
-vSphere version you are using to view the required privileges for the spectro root role.
+Select the tab for the vSphere version you are using to view the required privileges for the _Spectro root role_.
 
 <!--
 VMware vSphere Privilege ID Mapping
@@ -29,11 +28,11 @@ Defined Privileges
 https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html
 -->
 
-| **vSphere Object**      | **Privileges**                           |
+| **Category**            | **Privileges**                           |
 | ----------------------- | ---------------------------------------- |
 | **CNS**                 | Searchable                               |
 | **Datastore**           | Browse datastore                         |
-| **Host**                | Configuration.\*                         |
+| **Host**                | Configuration: System management         |
 | **Network**             | Assign network                           |
 | **Sessions**            | Validate session                         |
 | **Storage Views**       | View                                     |
@@ -48,11 +47,11 @@ Defined Privileges
 https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html
 -->
 
-| **vSphere Object**         | **Privileges**                           |
+| **Category**               | **Privileges**                           |
 | -------------------------- | ---------------------------------------- |
 | **CNS**                    | Searchable                               |
 | **Datastore**              | Browse datastore                         |
-| **Host**                   | Configuration.\*                         |
+| **Host**                   | Configuration: System management         |
 | **Network**                | Assign network                           |
 | **Profile-driven Storage** | View                                     |
 | **Sessions**               | Validate session                         |
@@ -63,11 +62,11 @@ https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GU
 
 <TabItem label="6.7U3" value="6.7U3">
 
-| **vSphere Object**         | **Privileges**                           |
+| **Category**               | **Privileges**                           |
 | -------------------------- | ---------------------------------------- |
 | **CNS**                    | Searchable                               |
 | **Datastore**              | Browse datastore                         |
-| **Host**                   | Configuration.\*                         |
+| **Host**                   | Configuration: System management         |
 | **Network**                | Assign network                           |
 | **Profile-driven Storage** | View                                     |
 | **Sessions**               | Validate session                         |
@@ -78,30 +77,35 @@ https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GU
 
 <TabItem label="API" value="API">
 
-| **Category**       | **Privileges**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **API Privileges** | Cns.Searchable<br />Datastore.Browse<br />Host.Config.AdvancedConfig<br />Host.Config.AuthenticationStore<br />Host.Config.AutoStart<br />Host.Config.Connection<br />Host.Config.DateTime<br />Host.Config.Firmware<br />Host.Config.GuestStore<br />Host.Config.HyperThreading<br />Host.Config.Image<br />Host.Config.Maintenance<br />Host.Config.Memory<br />Host.Config.NetService<br />Host.Config.Network<br />Host.Config.Nvdimm<br />Host.Config.Patch<br />Host.Config.PciPassthru<br />Host.Config.Power<br />Host.Config.ProductLocker<br />Host.Config.Quarantine<br />Host.Config.Resources<br />Host.Config.Settings<br />Host.Config.Snmp<br />Host.Config.Storage<br />Host.Config.SystemManagement<br />Host.Local.ReconfigVM<br />InventoryService.Tagging.CreateTag<br />InventoryService.Tagging.EditTag<br />Network.Assign<br />Sessions.ValidateSession<br />StorageProfile.View<br />StorageViews.View |
+| **Category**       | **Privileges**                                                                                                                                                                                                                                         |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **API Privileges** | Cns.Searchable<br />Datastore.Browse<br />Host.Config.SystemManagement<br />InventoryService.Tagging.CreateTag<br />InventoryService.Tagging.EditTag<br />Network.Assign<br />Sessions.ValidateSession<br />StorageProfile.View<br />StorageViews.View |
 
 </TabItem>
 
 </Tabs>
 
-:::warning
+### Spectro Root Role Assignments
 
-If the network is a Distributed Port Group under a vSphere Distributed Switch (VDS), _ReadOnly_ access to the VDS
-without “Propagate to children” is required.
+The privileges associated with the _Spectro root role_ must be granted via role assignments on specific vSphere objects
+for either the user or a group containing the user. Review the required role assignments to ensure that your user has
+all required privileges on all required objects.
 
-:::
+| **vSphere Object**    | **Propagation** | **Role**            | **Condition**                                                            |
+| --------------------- | --------------- | ------------------- | ------------------------------------------------------------------------ |
+| **vCenter Root**      | No              | _Spectro root role_ |                                                                          |
+| **Target Datacenter** | No              | _Spectro root role_ |                                                                          |
+| **Target Cluster**    | No              | _Spectro root role_ |                                                                          |
+| **Target VM Folder**  | Yes             | _Spectro root role_ |                                                                          |
+| **VDS**               | No              | _Spectro root role_ | If the Target Network is a Distributed Port Group residing beneath a VDS |
 
 ### Spectro Role Privileges
 
-As listed in the table, apply spectro role privileges to vSphere objects you intend to use for Palette installation. A
-separate table lists Spectro role privileges for VMs by category.
+The VMware vSphere user account that deploys host clusters and/or private cloud gateways requires all vSphere privileges
+listed in the following table on specific objects. A _Spectro role_ must be created that contains each privilege in
+the following tables. A separate table lists Spectro role privileges for VMs by category.
 
-Open Virtual Appliance (OVA) files are downloaded to the folder you selected. These images are cloned from the folder
-and applied VMs that deployed during deployments.
-
-Select the tab for the vSphere version you are using to view the required privileges for the spectro role.
+Select the tab for the vSphere version you are using to view the required privileges for the _Spectro role_.
 
 <Tabs groupId="vsphere-version">
 
@@ -124,8 +128,7 @@ Select the tab for the vSphere version you are using to view the required privil
 | **vSAN**                  | Cluster: ShallowRekey                                                                                                                                                 |
 | **vSphere Tagging**       | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag                                                                  |
 
-The following table lists spectro role privileges for VMs by category. All privileges are for the vSphere object,
-Virtual Machines.
+The following table lists spectro role privileges for VMs by category. All privileges are for the vSphere object, Virtual Machines.
 
 | **Category**          | **Privileges**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -158,8 +161,7 @@ Virtual Machines.
 | **vApp**                   | Import<br />View OVF environment<br />vApp application configuration<br />vApp instance configuration                                                                 |
 | **vSphere Tagging**        | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag                                                                  |
 
-The following table lists spectro role privileges for VMs by category. All privileges are for the vSphere object,
-Virtual Machines.
+The following table lists spectro role privileges for VMs by category. All privileges are for the vSphere object, Virtual Machines.
 
 | **Category**          | **Privileges**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -192,8 +194,7 @@ Virtual Machines.
 | **vApp**                   | Import<br />View OVF environment<br />vApp application configuration<br />vApp instance configuration                                                                 |
 | **vSphere Tagging**        | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag                                                                  |
 
-The following table lists spectro role privileges for VMs by category. All privileges are for the vSphere object,
-Virtual Machines.
+The following table lists spectro role privileges for VMs by category. All privileges are for the vSphere object, Virtual Machines.
 
 | **Category**          | **Privileges**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -217,3 +218,17 @@ Virtual Machines.
 </TabItem>
 
 </Tabs>
+
+### Spectro Role Assignments
+
+The privileges associated with the _Spectro role_ must be granted via role assignments on specific vSphere objects
+for either the user or a group containing the user. Review the required role assignments to ensure that your user has
+all required privileges on all required objects.
+
+| **vSphere Object**                           | **Propagation** | **Role**       |
+| -------------------------------------------- | --------------- | -------------- |
+| **Target Network**                           | Yes             | _Spectro role_ |
+| **Target Datastore**                         | Yes             | _Spectro role_ |
+| **All ESXi hosts within the Target Cluster** | No              | _Spectro role_ |
+| **Target Resource Pool**                     | Yes             | _Spectro role_ |
+| **spectro-templates Folder**                 | Yes             | _Spectro role_ |
