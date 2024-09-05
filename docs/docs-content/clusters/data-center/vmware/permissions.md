@@ -111,7 +111,7 @@ Select the tab for the vSphere version you are using to view the required privil
 
 <TabItem label="8.0.x" value="8.0.x">
 
-| **vSphere Object**        | **Privileges**                                                                                                                                                        |
+| **Category**              | **Privileges**                                                                                                                                                        |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **CNS**                   | Searchable                                                                                                                                                            |
 | **Datastore**             | Allocate space<br />Browse datastore<br />Low level file operations<br />Remove file<br />Update virtual machine files<br />Update virtual machine metadata           |
@@ -146,7 +146,7 @@ Virtual Machines.
 
 <TabItem label="7.0.x" value="7.0.x">
 
-| **vSphere Object**         | **Privileges**                                                                                                                                                        |
+| **Category**               | **Privileges**                                                                                                                                                        |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **CNS**                    | Searchable                                                                                                                                                            |
 | **Datastore**              | Allocate space<br />Browse datastore<br />Low level file operations<br />Remove file<br />Update virtual machine files<br />Update virtual machine metadata           |
@@ -180,7 +180,7 @@ Virtual Machines.
 
 <TabItem label="6.7U3" value="6.7U3">
 
-| **vSphere Object**         | **Privileges**                                                                                                                                                        |
+| **Category**               | **Privileges**                                                                                                                                                        |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **CNS**                    | Searchable                                                                                                                                                            |
 | **Datastore**              | Allocate space<br />Browse datastore<br />Low level file operations<br />Remove file<br />Update virtual machine files<br />Update virtual machine metadata           |
