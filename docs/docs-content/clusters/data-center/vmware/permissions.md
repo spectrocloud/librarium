@@ -102,8 +102,8 @@ all required privileges on all required objects.
 ### Spectro Role Privileges
 
 The VMware vSphere user account that deploys host clusters and/or private cloud gateways requires all vSphere privileges
-listed in the following table on specific objects. A _Spectro role_ must be created that contains each privilege in
-the following tables. A separate table lists Spectro role privileges for VMs by category.
+listed in the following table on specific objects. A _Spectro role_ must be created that contains each privilege in the
+following tables. A separate table lists Spectro role privileges for VMs by category.
 
 Select the tab for the vSphere version you are using to view the required privileges for the _Spectro role_.
 
@@ -128,7 +128,8 @@ Select the tab for the vSphere version you are using to view the required privil
 | **vSAN**                  | Cluster: ShallowRekey                                                                                                                                                 |
 | **vSphere Tagging**       | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag                                                                  |
 
-The following table lists spectro role privileges for VMs by category. All privileges are for the vSphere object, Virtual Machines.
+The following table lists spectro role privileges for VMs by category. All privileges are for the vSphere object,
+Virtual Machines.
 
 | **Category**          | **Privileges**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -161,7 +162,8 @@ The following table lists spectro role privileges for VMs by category. All privi
 | **vApp**                   | Import<br />View OVF environment<br />vApp application configuration<br />vApp instance configuration                                                                 |
 | **vSphere Tagging**        | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag                                                                  |
 
-The following table lists spectro role privileges for VMs by category. All privileges are for the vSphere object, Virtual Machines.
+The following table lists spectro role privileges for VMs by category. All privileges are for the vSphere object,
+Virtual Machines.
 
 | **Category**          | **Privileges**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -194,7 +196,8 @@ The following table lists spectro role privileges for VMs by category. All privi
 | **vApp**                   | Import<br />View OVF environment<br />vApp application configuration<br />vApp instance configuration                                                                 |
 | **vSphere Tagging**        | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag                                                                  |
 
-The following table lists spectro role privileges for VMs by category. All privileges are for the vSphere object, Virtual Machines.
+The following table lists spectro role privileges for VMs by category. All privileges are for the vSphere object,
+Virtual Machines.
 
 | **Category**          | **Privileges**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -221,9 +224,9 @@ The following table lists spectro role privileges for VMs by category. All privi
 
 ### Spectro Role Assignments
 
-The privileges associated with the _Spectro role_ must be granted via role assignments on specific vSphere objects
-for either the user or a group containing the user. Review the required role assignments to ensure that your user has
-all required privileges on all required objects.
+The privileges associated with the _Spectro role_ must be granted via role assignments on specific vSphere objects for
+either the user or a group containing the user. Review the required role assignments to ensure that your user has all
+required privileges on all required objects.
 
 | **vSphere Object**                           | **Propagation** | **Role**       |
 | -------------------------------------------- | --------------- | -------------- |
