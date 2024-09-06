@@ -11,9 +11,9 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## Sep 14, 2024 - Release 4.4.X
+## Sep 14, 2024 - Release 4.4.15
 
-### Palette Enterprise
+### Palette Enterprise {#release-4-4-15}
 
 ##### Features
 
@@ -86,42 +86,101 @@ tags: ["release-notes"]
 
 ### VerteX
 
-#### Breaking Changes
+#### Features
+
+- Includes all Palette features and improvements in this release. Refer to the [Palette](#release-4-4-15) section for
+  more details
+
+### Automation
 
 #### Features
 
-#### Improvements
-
-### Automation
+- The Palette CLI is now compiled with FIPS-compliant cryptographic libraries, ensuring that it can be used in
+  FIPS-compliant environments. The CLI is also now available for the Darwin/arm64, Linux/amd64, and Windows/amd64
+  platforms. Check out the [Downloads](../spectro-downloads.md) page to download the latest version of the Palette CLI.
 
 #### Improvements
 
 - The Palette CLI has been updated to improve the user experience by adding detailed warning messages and providing
   additional information before selecting options. The new changes include clarifying the node affinity prompt for the
-  PCG deployment and providing more information about the deployment process. Renaming _DDNS_ to _DHCP_ and providing a
-  delete command for kind clusters when multiple kind clusters are detected locally.
+  PCG deployment and providing more information about the deployment process. Renaming **DDNS** to **DHCP** and
+  providing a delete command for kind clusters when multiple kind clusters are detected locally.
 
-### Docs and Education
+- The Palette CLI `ec install` command's validate flag can now be used in environments where a network proxy is
+  configured. When specified in the environment, the validate flag will honor `the NO_PROXY`,` HTTP_PROXY`,
+  `and HTTPS_PROXY environment` variables. Additionaly, the validate flag will now check for connectivity and access to
+  image registries specified during the installation process. Refer to the
+  [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section of the Palette EC
+  command documentation to learn more about the validate flag.
 
 ### Packs
 
-#### Operating Systems
-
 #### Kubernetes
+
+| Pack                                      | New Version |
+| ----------------------------------------- | ----------- |
+| K3s                                       | 1.28.13     |
+| K3s                                       | 1.29.8      |
+| K3s                                       | 1.30.4      |
+| Kubernetes AKS                            | 1.30        |
+| Kubernetes EKS                            | 1.30        |
+| Kubernetes GKE                            | 1.30        |
+| Palette eXtended Kubernetes (PXK)         | 1.28.13     |
+| Palette eXtended Kubernetes (PXK)         | 1.29.8      |
+| Palette eXtended Kubernetes (PXK)         | 1.30.4      |
+| Palette eXtended Kubernetes Edge (PXK-E)  | 1.28.13     |
+| Palette eXtended Kubernetes Edge (PXK-E)  | 1.29.8      |
+| Palette eXtended Kubernetes Edege (PXK-E) | 1.30.4      |
+| RKE2                                      | 1.28.12     |
+| RKE2                                      | 1.29.7      |
+| RKE2                                      | 1.30.3      |
+| RKE3 - Edge                               | 1.28.12     |
+| RKE3 - Edge                               | 1.29.7      |
+| RKE3 - Edge                               | 1.30.3      |
 
 #### CNI
 
+| Pack    | New Version |
+| ------- | ----------- |
+| Calico  | 3.28.1      |
+| Cilium  | 1.16.0      |
+| Flannel | 0.25.5      |
+
 #### CSI
+
+| Pack        | New Version |
+| ----------- | ----------- |
+| Longhorn    | 1.6.2       |
+| vSphere CSI | 3.3.1       |
 
 #### Add-on Packs
 
-#### Community Packs
+| Pack                                      | New Version |
+| ----------------------------------------- | ----------- |
+| Crossplane                                | 1.7.0       |
+| Crossplane                                | 1.16.0      |
+| Harbor - Edge                             | 1.1.0       |
+| Kyverno                                   | 1.12.2      |
+| MetalLB                                   | 0.14.8      |
+| Palette eXtended Kubernetes (PXK)         | 1.28.13     |
+| Palette eXtended Kubernetes (PXK)         | 1.29.8      |
+| Palette eXtended Kubernetes (PXK)         | 1.30.4      |
+| Palette eXtended Kubernetes Edge (PXK-E)  | 1.28.13     |
+| Palette eXtended Kubernetes Edge (PXK-E)  | 1.29.8      |
+| Palette eXtended Kubernetes Edege (PXK-E) | 1.30.4      |
+| RKE3 - Edge                               | 1.28.12     |
+| RKE3 - Edge                               | 1.29.7      |
+| RKE3 - Edge                               | 1.30.3      |
+| Volume Snapshot Controller                | 8.0.1       |
 
-#### Known Inssues
+#### FIPS
 
-#### Pack Notes
-
-#### Deprecations and Removals
+| Pack        | New Version |
+| ----------- | ----------- |
+| Calico      | 3.28.1      |
+| Flannel     | 0.25.5      |
+| Longhorn    | 1.6.2       |
+| vSphere CSI | 3.3.1       |
 
 ## Aug 17, 2024 - Release 4.4.14
 
@@ -273,10 +332,10 @@ This release is specific to Palette Enterprise and does not apply to Palette Ver
 
 ### Docs and Education
 
-Palette's Go SDK now has a dedicated documentation section. The new section also includes a guide on how to install,
-configure, and use the SDK. This guide provides instructions and sample code for listing the active clusters in your
-Palette environment. Check out the [Palette Go SDK documentation](../automation/palette-sdk/palette-sdk.md) for more
-details.
+- Palette's Go SDK now has a dedicated documentation section. The new section also includes a guide on how to install,
+  configure, and use the SDK. This guide provides instructions and sample code for listing the active clusters in your
+  Palette environment. Check out the [Palette Go SDK documentation](../automation/palette-sdk/palette-sdk.md) for more
+  details.
 
 ## Jul 31, 2024 - Release 4.4.12
 
