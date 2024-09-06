@@ -165,7 +165,7 @@ same time in a single command.
 
 ## Export Cluster Definition with Palette API
 
-If you don't have a AMC64 machine, or you do not want to download and use the Palette Edge CLI, you can still export
+If you do not have an AMD64 machine, or you do not want to download and use the Palette Edge CLI, you can still export
 cluster definitions using the Palette API.
 
 ### Prerequisites
