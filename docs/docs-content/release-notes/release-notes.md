@@ -69,19 +69,20 @@ tags: ["release-notes"]
   These improvements include more visible options menus, automatic configuration save upon exit, improved color scheme,
   and more.
 
-### Palette Dev Engine (PDE)
-
-#### Features
-
-#### Improvements
-
-#### Bug Fixes
-
 ### Virtual Machine Orchestrator
 
 #### Features
 
+- Virtual Machines deployed with VMO now receive unique and random MAC addresses. This change ensures that MAC addresses
+  are unique across all VMs in the same network, preventing conflicts and ensuring proper network communication.
+  Previously, you were responsible for ensuring MAC address uniqueness, which could lead to conflicts and network issues
+  if not managed correctly.
+
 #### Improvements
+
+- VM memory configuration through the Kubevirt hotplug has
+  [changed in Kubevirt version 1.2.0](https://kubevirt.io/user-guide/compute/memory_hotplug/#memory-hotplug-in-action).
+  Palette now supports the new configuration object.
 
 ### VerteX
 
@@ -92,6 +93,13 @@ tags: ["release-notes"]
 #### Improvements
 
 ### Automation
+
+#### Improvements
+
+- The Palette CLI has been updated to improve the user experience by adding detailed warning messages and providing
+  additional information before selecting options. The new changes include clarifying the node affinity prompt for the
+  PCG deployment and providing more information about the deployment process. Renaming _DDNS_ to _DHCP_ and providing a
+  delete command for kind clusters when multiple kind clusters are detected locally.
 
 ### Docs and Education
 

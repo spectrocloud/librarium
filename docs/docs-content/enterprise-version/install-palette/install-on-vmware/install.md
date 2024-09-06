@@ -210,9 +210,9 @@ Use the following steps to install Palette.
     | **NTP Servers**     | You can provide a list of Network Time Protocol (NTP) servers.                                                                                                                                                                                                                                                            |
     | **SSH Public Keys** | Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) reference.                            |
 
-15. Specify the IP pool configuration. The placement type can be Static or Dynamic Domain Name Server (DDNS). Choosing
-    static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IP addresses
-    using DNS.
+15. Specify the IP pool configuration. The placement type can be Static or Dynamic Host Configuration Protocol (DHCP).
+    Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DHCP assigns IP
+    addresses using DNS.
 
     #### Static Placement Configuration
 

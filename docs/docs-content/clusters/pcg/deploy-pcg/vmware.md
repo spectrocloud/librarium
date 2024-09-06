@@ -453,10 +453,10 @@ The following requirements apply to tags:
     | **SSH Public Keys**                                      | Provide the public OpenSSH key for the PCG cluster. Use this key when establishing an SSH connection with the PCG cluster. This prompt will result in the default text editor for the Operating System to open. Vi is the more common text editor used in Linux environments. |
     | **Number of Nodes**                                      | The number of nodes that will make up the cluster. Available options are **1** or **3**. We recommend three nodes for a High Availability (HA) cluster in a production environment.                                                                                           |
 
-8.  Specify the IP pool configuration. You have the option to select a static placement or use Dynamic Domain Name
-    Service (DDNS). With static placement, an IP pool is created, and the PCG VMs are assigned IP addresses from the
-    selected pool. With DDNS, PCG VMs are assigned IP addresses via DNS. Review the following tables to learn more about
-    each parameter.
+8.  Specify the IP pool configuration. You have the option to select a static placement or use Dynamic Host
+    Configuration Protocol (DHCP). With static placement, an IP pool is created, and the PCG VMs are assigned IP
+    addresses from the selected pool. With DHCP, PCG VMs are assigned IP addresses via DNS. Review the following tables
+    to learn more about each parameter.
 
     :::warning
 
@@ -477,7 +477,7 @@ The following requirements apply to tags:
     | **Name servers**                           | Comma-separated list of DNS name server IP addresses.                                                                              |
     | **Name server search suffixes (optional)** | Comma-separated list of DNS search domains.                                                                                        |
 
-    ##### DDNS Placement Configuration
+    ##### DHCP Placement Configuration
 
     | **Parameter**      | **Description**                             |
     | ------------------ | ------------------------------------------- |
