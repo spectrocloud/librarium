@@ -73,6 +73,8 @@ certain columns, pin a column, filter Edge hosts by attribute, and order the Edg
 
 4. The following table lists the actions you can take to customize the grid view.
 
+   ![A screenshot of the Edge host grid view complete with arrows pointing to the elements referred to by the preceding table](/clusters_edge_site-deployment_edge-grid-view.webp)
+
    | Action                         | Description                                                                                                                                                                          |
    | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
    | Reorder Columns                | Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, drag and drop the six dots icon to the left of each list item to reorder the columns. |
@@ -80,8 +82,6 @@ certain columns, pin a column, filter Edge hosts by attribute, and order the Edg
    | Pin a Column                   | Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, click on the pin icon to the right of the list item you want to pin.                  |
    | Filter Edge Hosts by Attribute | At the top of the grid, click on **Tags**, **Status**, and **Architecture** depending on the attribute you want to filter by, and then choose the value you want to filter by.       |
    | Order by a Column              | Click on the label row of the column you want to order by alphanumeric order. You can click it again to change the sort order. You can only sort by one column at a time.            |
-
-![A screenshot of the Edge host grid view complete with arrows pointing to the elements referred to by the preceding table](/clusters_edge_site-deployment_edge-grid-view.webp)
 
 ### Validate
 

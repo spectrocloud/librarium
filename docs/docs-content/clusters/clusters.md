@@ -355,12 +355,14 @@ The following are the attributes of a cluster that are displayed in the cluster 
 | Heathy Nodes  | The number of healthy nodes in the cluster.                                                                                                                                                            | No               |
 | CPU           | The CPU usage of the cluster.                                                                                                                                                                          | No               |
 | Memory        | The memory usage of the cluster.                                                                                                                                                                       | No               |
-| Architecture  | The processor architecture of the cluster.                                                                                                                                                             | NO               |
+| Architecture  | The processor architecture of the cluster.                                                                                                                                                             | No               |
 | Tags          | The tags on the cluster.                                                                                                                                                                               | No               |
 
 ### Organize Cluster Grid
 
 You can take the following actions to organize your clusters in the grid view.
+
+![Screenshot of cluster grid view with arrows pointing to the areas where actions to organize the gride view can be performed. ](/clusters_clusters_cluster-grid-view.webp)
 
 | Action                  | Description                                                                                                                                                                          |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -369,8 +371,6 @@ You can take the following actions to organize your clusters in the grid view.
 | Pin a Column            | Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, click on the pin icon to the right of the list item you want to pin.                  |
 | Order by a Column       | Click on the label row of the column you want to order by alphanumeric order. You can click it again to change the sort order. You can only sort by one column at a time.            |
 | Filter by Attribute     | Click on **Add Filter** above the cluster grid and choose an existing filter or define a custom filter to apply to the clusters.                                                     |
-
-![Screenshot of cluster grid view with arrows pointing to the areas where actions to organize the gride view can be performed. ](/clusters_clusters_cluster-grid-view.webp)
 
 ## Resources
 
