@@ -336,8 +336,9 @@ at the tenant scope.
 
 ## Cluster Grid View
 
-In the **Clusters** page, you can view all clusters within a given scope in a grid view. You can customize the grid by
-applying filters, pinning and hiding columns, as well as sorting by attributes.
+On the **Clusters** page, you can view all clusters within a given scope in a grid view that displays the clusters with
+their attributes. You can customize the grid by applying filters, removing and adding columns, pinning columns, as well
+as ordering the clusters by certain attributes.
 
 ### Cluster Attributes
 
@@ -346,7 +347,7 @@ The following are the attributes of a cluster that are displayed in the cluster 
 | Attribute     | Description                                                                                                                                                                                            | Support Order-by |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- |
 | Type          | The cluster type. Possible values are "Palette-managed" or "Imported". When there is a small green arrow on the icon, it means there are pending updates to the cluster that requires acknowledgement. | No               |
-| Env           | The environment of the cluster. These are the infrastructure provider of the cluster, such as AWS, Azure, GCP and Edge.                                                                                | Yes              |
+| Env           | The infrastructure provider of the cluster, such as AWS, Azure, GCP and Edge.                                                                                                                          | Yes              |
 | Name          | The name of the cluster.                                                                                                                                                                               | Yes              |
 | Status        | The status of the cluster. Possible values include "Pending", "Running", "Deleting" and "Provisioning".                                                                                                | Yes              |
 | Last Modified | The date and time when the cluster was last modified.                                                                                                                                                  | Yes              |
@@ -369,7 +370,7 @@ You can take the following actions to organize your clusters in the grid view.
 | Order by a Column       | Click on the label row of the column you want to order by alphanumeric order. You can click it again to change the sort order. You can only sort by one column at a time.            |
 | Filter by Attribute     | Click on **Add Filter** above the cluster grid and choose an existing filter or define a custom filter to apply to the clusters.                                                     |
 
-![Screenshot of cluster grid view with arrows pointing to the areas where actions to organize the gride view can be performed. ](/clusters_clusters_cluster-grid-view.png)
+![Screenshot of cluster grid view with arrows pointing to the areas where actions to organize the gride view can be performed. ](/clusters_clusters_cluster-grid-view.webp)
 
 ## Resources
 
