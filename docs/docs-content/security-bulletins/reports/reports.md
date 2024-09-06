@@ -29,9 +29,9 @@ workarounds where applicable.
 
 Click on the CVE ID to view the full details of the vulnerability.
 
-<Tabs>
+<Tabs groupId="edition" queryString>
 
-<TabItem label="VerteX" value="vertex">
+<TabItem label="Palette VerteX" value="vertex">
 
 | CVE ID                                          | Initial Pub Date | Modified Date | Product Version | Vulnerability Type                      | CVSS Severity                                            | Status                      |
 | ----------------------------------------------- | ---------------- | ------------- | --------------- | --------------------------------------- | -------------------------------------------------------- | --------------------------- |
