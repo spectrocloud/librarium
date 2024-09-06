@@ -110,16 +110,10 @@ create a separate configuration file for each.
 Fill out the parameters below if you are building the image in an air-gapped environment. Otherwise, you can skip this
 section.
 
-| Parameter           | Description                                                                      | Required |
-| ------------------- | -------------------------------------------------------------------------------- | -------- |
-| `airgap`            | Set to `true` if you are building the image in an air-gapped environment.        | Yes      |
-| `airgap_ip`         | The IP address of the machine that has the required dependencies.                | Yes      |
-| `k8s_rpm_key`       | The GPG key to use when installing the Kubernetes RPMs.                          | Yes      |
-| `k8s_rpm_server`    | The IP address or FQDN of the server to use when installing the Kubernetes RPMs. | Yes      |
-| `containerd_url`    | The URL to use when downloading the containerd binary.                           | Yes      |
-| `crictl_url`        | The URL to use when downloading the crictl binary.                               | Yes      |
-| `k8s_container_reg` | The URL of the container registry to use when downloading the Kubernetes images. | Yes      |
-| `cert_url`          | The URL to use when downloading the certificate file.                            | Yes      |
+| Parameter   | Description                                                                             | Required |
+| ----------- | --------------------------------------------------------------------------------------- | -------- |
+| `airgap`    | Set to `true` if you are building the image in an air-gapped environment.               | Yes      |
+| `airgap_ip` | The IP address or hostname of the airgap support VM that has the required dependencies. | Yes      |
 
 ## Example Configuration
 
