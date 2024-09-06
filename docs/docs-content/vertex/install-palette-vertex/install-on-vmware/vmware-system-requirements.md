@@ -9,6 +9,8 @@ tags: ["vertex", "self-hosted", "vmware"]
 keywords: ["self-hosted", "vertex"]
 ---
 
+import VspherPermissions from "../../../../../_partials/permissions/_vsphere-permissions.mdx";
+
 Before installing Palette VerteX on VMware, review the following system requirements and permissions. The vSphere user
 account used to deploy VerteX must have the required permissions to access the proper roles and objects in vSphere.
 
@@ -65,7 +67,7 @@ resource.
 
 ## vSphere Permissions
 
-Refer to the [Required Permissions](../../../clusters/data-center/vmware/permissions.md) page for more information.
+<VspherPermissions category="permissions" name="vsphere-permissions" />
 
 ## Zone Tagging
 

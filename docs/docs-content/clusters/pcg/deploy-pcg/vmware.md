@@ -110,7 +110,11 @@ resource.
 
 ### vSphere Permissions
 
-Refer to the [Required Permissions](../../data-center/vmware/permissions.md) page for more information.
+<details>
+    <summary>Click to reveal all required vSphere permissions</summary>
+      <PartialsComponent category="permissions" name="vsphere-permissions" />
+
+</details>
 
 ### Zone Tagging
 
