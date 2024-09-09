@@ -113,11 +113,11 @@ Always refer to the CSI driver's Pack README for guidance on volume snapshot sup
 
 :::
 
-| Scenario                                                                                                                                                      | Requires Volume Snapshot Controller Pack | Guidance                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------ |
-| CSI driver supports volume snapshots but does not contain all the required components, such as the Snapshot Contoller, VolumeSnapshotClass, or the CRDs       | Yes                                      | Include the Volume Snapshot Controller pack in the cluster profile |
-| CSI driver supports volume snapshots, contains the all required components, such as the Snapshot Contoller, and has the VolumeSnapshotClass and CRDs included | No                                       | Refer to the CSI Pack README for guidance                          |
-| CSI driver does not support volume snapshots                                                                                                                  | No                                       | Refer to the CSI Pack README for guidance                          |
+| Scenario                                                                                                                                                       | Requires Volume Snapshot Controller Pack | Guidance                                                           |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------ |
+| CSI driver supports volume snapshots but does not contain all the required components, such as the Snapshot Controller, VolumeSnapshotClass, or the CRDs       | Yes                                      | Include the Volume Snapshot Controller pack in the cluster profile |
+| CSI driver supports volume snapshots, contains the all required components, such as the Snapshot Controller, and has the VolumeSnapshotClass and CRDs included | No                                       | Refer to the CSI Pack README for guidance                          |
+| CSI driver does not support volume snapshots                                                                                                                   | No                                       | Refer to the CSI Pack README for guidance                          |
 
 ## etcd Backups
 

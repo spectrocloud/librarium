@@ -104,7 +104,7 @@ backup. To learn more about the restore operation, refer to the Velero
 
 <!-- prettier-ignore -->
 - If your backup contains volume snapshots, ensure that your CSI driver supports volume snapshots. For more
-  information about volume support, review the CSI pack README for your CSI driver in use. Refer to the [Voume Snapshots](backup-restore.md#volume-snapshots) section for more information.
+  information about volume support, review the CSI pack README for your CSI driver in use. Refer to the [Volume Snapshots](backup-restore.md#volume-snapshots) section for more information.
 
 ### Instructions
 
