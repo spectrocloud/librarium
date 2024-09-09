@@ -195,3 +195,25 @@ hour, or minute. The following options are available:
 - Every two weeks at midnight.
 - Every month on the first day of the month at midnight.
 - Every two months on the first day of the month at midnight
+
+## Scan reports
+
+All scan reports are available for users in Palette UI, where users can download reports as CSV or PDF file. In addition, Palette agent stores reports on the Kubernetes cluster, where users can list all available reports, see the status per each report and get the report as Kubernetes resource. To retrieve the list of all available reports, use Admin Kubeconfig file downloaded from Palette UI and execute command:
+```
+kubectl get audits.cluster.spectrocloud.com -A
+```
+
+The output of this command provides the list of all reports executed on this Kubernetes cluster with the status for each report:
+```
+# kubectl get audits.cluster.spectrocloud.com -A
+NAMESPACE                          NAME                                         AGE     STATUS
+cluster-66d8a761ed405e70b86a8a17   kube-bench-66df28ab3c13fb7876674c98-xscvq    5h14m   Complete
+cluster-66d8a761ed405e70b86a8a17   kube-hunter-66df65dced406e0856d8536a-zetys   53m     Complete
+cluster-66d8a761ed405e70b86a8a17   syft-66df6d437cda16db7074cefe-czfxq          21m     Complete
+```
+
+To see details for the particular report, execute command `kubectl get audits.cluster.spectrocloud.com -n cluster-<cluster-uuid> <name of the report> -o yaml`, for example:
+```
+# kubectl get audits.cluster.spectrocloud.com -n cluster-66d8a761ed405e70b86a8a17 kube-bench-66df28ab3c13fb7876674c98-xscvq -o yaml
+```
+The scan report is available in the output, block `status.results.<scan name>.scanReport.Worker.reportData`
