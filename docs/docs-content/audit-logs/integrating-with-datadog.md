@@ -28,13 +28,13 @@ Datadog is a monitoring and analytics tool. You can set up Palette to export aud
 
 1. Ensure you have access to Datadog console, navigate to [https://app.datadoghq.eu/signup](https://app.datadoghq.eu/signup) to obtain a free trial. Pick appropriate region (for example, EU1), provide your name, email address and company name, and click **Sign up**
 
-![alt_text](/datadog/audit-logs_datadog-01_datadog_signup.png "Datadog Signup" )
+![alt_text](/datadog/audit-logs_datadog-01_datadog_signup.webp "Datadog Signup" )
 
 2. Once logged in to Datadog, pick Kubernetes and click **Next** at the bottom of the page.
 
 Datadog will provide you with an API key, record it for the future
 
-![alt_text](/datadog/audit-logs_datadog-02_datadog_apikey.png "Datadog APIkey")
+![alt_text](/datadog/audit-logs_datadog-02_datadog_apikey.webp "Datadog APIkey")
 
 :::info
 Note at the bottom of the page that Datadog waiting for the first agent to report.
@@ -54,18 +54,18 @@ At the moment of writing, Palette Datadog Pack was still in development. Verify 
 
 :::
 
-![alt_text](/datadog/audit-logs_datadog-03_helm_repository.png "Helm Repository")
+![alt_text](/datadog/audit-logs_datadog-03_helm_repository.webp "Helm Repository")
 
 3. When the repository is synchronized, create a new addon Datadog profile via Helm chart: in Palette, click on **Profiles**, then **Add Cluster Profile**, give the profile name `datadog` and choose **Add-on** type.
 
   Then click on **Add new pack**, choose Pack Type **Helm Chart** and Registry **Datadog** Then pick the **Datadog** chart and its latest version.
 
-![alt_text](/datadog/audit-logs_datadog-04_helm_chart.png "Helm Chart")
+![alt_text](/datadog/audit-logs_datadog-04_helm_chart.webp "Helm Chart")
 
 
 4. This will open a Helm chart modification window, so that Datadog installation collects all the necessary data, you need to modify a number of parameters and to add two YAML stanzas to the Helm chart
 
-![alt_text](/datadog/audit-logs_datadog-05_helm_modifications.png "Helm modifications")
+![alt_text](/datadog/audit-logs_datadog-05_helm_modifications.webp "Helm modifications")
 
 :::tip
 
@@ -122,11 +122,11 @@ Make sure to save the profile after making these changes!
 
 5. Now apply new created profile to the cluster: go to **Profiles** of the cluster, click on blue **+** sign, choose `datadog` profile and click on **Confirm**
 
-![alt_text](/datadog/audit-logs_datadog-06_profile_confirm.png "Profile")
+![alt_text](/datadog/audit-logs_datadog-06_profile_confirm.webp "Profile")
 
 6. After some time, the Datadog agent should start reporting, click **Finish** to get to the Datadog Panel and verify that audit logs are indeed being transferred to it.
 
-![alt_text](/datadog/audit-logs_datadog-07_datadog_agent.png "Datadog agent")
+![alt_text](/datadog/audit-logs_datadog-07_datadog_agent.webp "Datadog agent")
 
 7. Enable configmap for the cluster to collect data: create a `datadog-configmap.yaml` file with the following content:
 
@@ -158,7 +158,7 @@ Make sure path for apiserver corresponds to what is in `kube-apiserver-arg` argu
 
 Open Datadog console by clicking **Logs** on the left hand side and make sure you're seeing Kubernetes audit logs flowing in
 
-![alt_text](/datadog/audit-logs_datadog-08_datadog_example.png "Datadog Example")
+![alt_text](/datadog/audit-logs_datadog-08_datadog_example.webp "Datadog Example")
 
 ## Resources:
 
