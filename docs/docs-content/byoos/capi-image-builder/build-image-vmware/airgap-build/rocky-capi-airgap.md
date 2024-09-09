@@ -497,9 +497,9 @@ profile and deploy a VMware vSphere host cluster.
 
     ```yaml
     pack:
-    osImageOverride: "/Datacenter/vm/sp-docs/rockylinux-8-kube-v1.28.9"
-    osName: "rockylinux"
-    osVersion: "8"
+      osImageOverride: "/Datacenter/vm/sp-docs/rockylinux-8-kube-v1.28.9"
+      osName: "rockylinux"
+      osVersion: "8"
     ```
 
     As you fill out the information for each layer, click **Next** to proceed.
