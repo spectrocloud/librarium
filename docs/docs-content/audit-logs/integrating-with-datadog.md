@@ -1,7 +1,7 @@
 ---
-sidebar_label: 'Palette with Datadog'
-title: 'Export audit logs to Datadog'
-description: 'Set up exporting audit logs to Datadog'
+sidebar_label: "Palette with Datadog"
+title: "Export audit logs to Datadog"
+description: "Set up exporting audit logs to Datadog"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 100
@@ -9,10 +9,11 @@ hiddenFromNav: false
 tags: ["audit-logs", "Datadog"]
 ---
 
-
 # Palette Datadog Integration
 
-Datadog is a monitoring and analytics tool. You can set up Palette to export audit logs from your Kubernetes clusters managed by Palette to Datadog. This guide will walk you through the steps to accomplish this through installing Datadog Helm chart and configuring it.
+Datadog is a monitoring and analytics tool. You can set up Palette to export audit logs from your Kubernetes clusters
+managed by Palette to Datadog. This guide will walk you through the steps to accomplish this through installing Datadog
+Helm chart and configuring it.
 
 ## Prerequisites:
 
@@ -26,9 +27,11 @@ Datadog is a monitoring and analytics tool. You can set up Palette to export aud
 
 ### Datadog configuration
 
-1. Ensure you have access to Datadog console, navigate to [https://app.datadoghq.eu/signup](https://app.datadoghq.eu/signup) to obtain a free trial. Pick appropriate region (for example, EU1), provide your name, email address and company name, and click **Sign up**
+1. Ensure you have access to Datadog console, navigate to
+   [https://app.datadoghq.eu/signup](https://app.datadoghq.eu/signup) to obtain a free trial. Pick appropriate region
+   (for example, EU1), provide your name, email address and company name, and click **Sign up**
 
-![alt_text](/datadog/audit-logs_datadog-01_datadog_signup.webp "Datadog Signup" )
+![alt_text](/datadog/audit-logs_datadog-01_datadog_signup.webp "Datadog Signup")
 
 2. Once logged in to Datadog, pick Kubernetes and click **Next** at the bottom of the page.
 
@@ -36,95 +39,100 @@ Datadog will provide you with an API key, record it for the future
 
 ![alt_text](/datadog/audit-logs_datadog-02_datadog_apikey.webp "Datadog APIkey")
 
-:::info
-Note at the bottom of the page that Datadog waiting for the first agent to report.
-:::
+:::info Note at the bottom of the page that Datadog waiting for the first agent to report. :::
 
 Datadog is now ready to accept audit logs from Kubernetes clusters
 
 ### Palette configuration
 
-1. Ensure you can access your Kubernetes cluster using the kubectl CLI. Refer to the [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) for guidance on how to access your cluster with the `kubectl` CLI.
+1. Ensure you can access your Kubernetes cluster using the kubectl CLI. Refer to the
+   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) for guidance on how to access your
+   cluster with the `kubectl` CLI.
 
-2. Log in to Palette and add datadog Helm repo: click on **Tenant Settings** on the left, then on **Registries**, then on **Add New Helm Registry** and add new Helm registry with the name Datadog and endpoint [https://helm.datadoghq.com](https://helm.datadoghq.com). The synchronization takes a couple of minutes.
+2. Log in to Palette and add datadog Helm repo: click on **Tenant Settings** on the left, then on **Registries**, then
+   on **Add New Helm Registry** and add new Helm registry with the name Datadog and endpoint
+   [https://helm.datadoghq.com](https://helm.datadoghq.com). The synchronization takes a couple of minutes.
 
 :::tip
 
-At the moment of writing, Palette Datadog Pack was still in development. Verify in the [Packs list](https://docs.spectrocloud.com/integrations/) if it's completed. If it is available, install the pack rather than Helm chart
+At the moment of writing, Palette Datadog Pack was still in development. Verify in the
+[Packs list](https://docs.spectrocloud.com/integrations/) if it's completed. If it is available, install the pack rather
+than Helm chart
 
 :::
 
 ![alt_text](/datadog/audit-logs_datadog-03_helm_repository.webp "Helm Repository")
 
-3. When the repository is synchronized, create a new addon Datadog profile via Helm chart: in Palette, click on **Profiles**, then **Add Cluster Profile**, give the profile name `datadog` and choose **Add-on** type.
+3. When the repository is synchronized, create a new addon Datadog profile via Helm chart: in Palette, click on
+   **Profiles**, then **Add Cluster Profile**, give the profile name `datadog` and choose **Add-on** type.
 
-  Then click on **Add new pack**, choose Pack Type **Helm Chart** and Registry **Datadog** Then pick the **Datadog** chart and its latest version.
+Then click on **Add new pack**, choose Pack Type **Helm Chart** and Registry **Datadog** Then pick the **Datadog** chart
+and its latest version.
 
 ![alt_text](/datadog/audit-logs_datadog-04_helm_chart.webp "Helm Chart")
 
-
-4. This will open a Helm chart modification window, so that Datadog installation collects all the necessary data, you need to modify a number of parameters and to add two YAML stanzas to the Helm chart
+4. This will open a Helm chart modification window, so that Datadog installation collects all the necessary data, you
+   need to modify a number of parameters and to add two YAML stanzas to the Helm chart
 
 ![alt_text](/datadog/audit-logs_datadog-05_helm_modifications.webp "Helm modifications")
 
 :::tip
 
-Line numbers can change in Datadog Helm chart, if there's no exact match, please search for corresponding linesa in close vicinity
+Line numbers can change in Datadog Helm chart, if there's no exact match, please search for corresponding linesa in
+close vicinity
 
 :::
 
-|**Line**| **Modification**|
-|---|---|
-|2   | choose namespace for Datadog install, for example: namespace: "datadog"|
-|38  | add your Datadog API key saved earlier |
-|119 | choose your regional Datadog website, for example datadoghq.eu, please refer to [Datadog Documentation](https://docs.datadoghq.com/) for the full list
-|428 | change _false_ to _true_ to enable logs collector
-|433 | change _false_ to _true_ to activate containerCollectAll
-|632 | change _false_ to _true_ to enable process collection
-|764 | change _false_ to _true_ to enable network monitoring
-|768 | change _false_ to _true_ to enable service monitoring
-|790 | change _false_ to _true_ to enable security agent
-
+| **Line** | **Modification**                                                                                                                                       |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 2        | choose namespace for Datadog install, for example: namespace: "datadog"                                                                                |
+| 38       | add your Datadog API key saved earlier                                                                                                                 |
+| 119      | choose your regional Datadog website, for example datadoghq.eu, please refer to [Datadog Documentation](https://docs.datadoghq.com/) for the full list |
+| 428      | change _false_ to _true_ to enable logs collector                                                                                                      |
+| 433      | change _false_ to _true_ to activate containerCollectAll                                                                                               |
+| 632      | change _false_ to _true_ to enable process collection                                                                                                  |
+| 764      | change _false_ to _true_ to enable network monitoring                                                                                                  |
+| 768      | change _false_ to _true_ to enable service monitoring                                                                                                  |
+| 790      | change _false_ to _true_ to enable security agent                                                                                                      |
 
 To enable volume, paste the following stanza under `clusterAgent` configuration.
 
 ```yaml
-  volumes:
-      - hostPath:
-          path: /var/log/apiserver
-        name: auditdir
-      - name: dd-agent-config
-        configMap:
-          name: dd-agent-config
-          items:
-            - key: kubernetes-audit-log
-              path: conf.yaml
+volumes:
+  - hostPath:
+      path: /var/log/apiserver
+    name: auditdir
+  - name: dd-agent-config
+    configMap:
+      name: dd-agent-config
+      items:
+        - key: kubernetes-audit-log
+          path: conf.yaml
 ```
 
 To enable volume mounts paste the following stanza under `clusterAgent` configuration.
 
 ```yaml
-  volumeMounts:
-      - name: auditdir
-        mountPath: /var/log/apiserver
-      - name: dd-agent-config
-        mountPath: /conf.d/kubernetes_audit.d 
+volumeMounts:
+  - name: auditdir
+    mountPath: /var/log/apiserver
+  - name: dd-agent-config
+    mountPath: /conf.d/kubernetes_audit.d
 ```
 
-
-:::tip
-Make sure `mountPath` and `path` for apiserver correspond to what is set up in `kube-apiserver-arg` argument of your Kubernetes cluster, you can look it up in Kubernetes profile in Palette. In case of k3s it is `/var/log/apiserver`
+:::tip Make sure `mountPath` and `path` for apiserver correspond to what is set up in `kube-apiserver-arg` argument of
+your Kubernetes cluster, you can look it up in Kubernetes profile in Palette. In case of k3s it is `/var/log/apiserver`
 :::
 
-:::caution
-Make sure to save the profile after making these changes!
-:::
+:::caution Make sure to save the profile after making these changes! :::
 
-5. Now apply new created profile to the cluster: go to **Profiles** of the cluster, click on blue **+** sign, choose `datadog` profile and click on **Confirm**
+5. Now apply new created profile to the cluster: go to **Profiles** of the cluster, click on blue **+** sign, choose
+   `datadog` profile and click on **Confirm**
 
 ![alt_text](/datadog/audit-logs_datadog-06_profile_confirm.webp "Profile")
 
-6. After some time, the Datadog agent should start reporting, click **Finish** to get to the Datadog Panel and verify that audit logs are indeed being transferred to it.
+6. After some time, the Datadog agent should start reporting, click **Finish** to get to the Datadog Panel and verify
+   that audit logs are indeed being transferred to it.
 
 ![alt_text](/datadog/audit-logs_datadog-07_datadog_agent.webp "Datadog agent")
 
@@ -134,29 +142,30 @@ Make sure to save the profile after making these changes!
 kind: ConfigMap
 apiVersion: v1
 metadata:
-    name: dd-agent-config
-    namespace: default
+  name: dd-agent-config
+  namespace: default
 data:
-    kubernetes-audit-log: |-
-        logs:
-          - type: file
-            path: /var/log/apiserver/audit.log
-            source: kubernetes.audit
-            service: audit      
+  kubernetes-audit-log: |-
+    logs:
+      - type: file
+        path: /var/log/apiserver/audit.log
+        source: kubernetes.audit
+        service: audit
 ```
-and apply it with the kubeconfig file for the Kubernetes cluster from which you want to obtain audit logs: 
+
+and apply it with the kubeconfig file for the Kubernetes cluster from which you want to obtain audit logs:
 
 ```bash
 kubectl -n datadog apply -f datadog-configmap.yaml
 ```
 
-:::tip
-Make sure path for apiserver corresponds to what is in `kube-apiserver-arg` argument of the Kubernetes cluster, you can look it up in Kubernetes profile in Palette. In case of k3s it is `/var/log/apiserver`
-:::
+:::tip Make sure path for apiserver corresponds to what is in `kube-apiserver-arg` argument of the Kubernetes cluster,
+you can look it up in Kubernetes profile in Palette. In case of k3s it is `/var/log/apiserver` :::
 
 ## Validate
 
-Open Datadog console by clicking **Logs** on the left hand side and make sure you're seeing Kubernetes audit logs flowing in
+Open Datadog console by clicking **Logs** on the left hand side and make sure you're seeing Kubernetes audit logs
+flowing in
 
 ![alt_text](/datadog/audit-logs_datadog-08_datadog_example.webp "Datadog Example")
 
