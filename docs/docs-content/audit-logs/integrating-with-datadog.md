@@ -76,16 +76,17 @@ Line numbers can change in Datadog Helm chart, if there's no exact match, please
 |**Line**| **Modification**|
 |---|---|
 |2   | choose namespace for Datadog install, for example: namespace: "datadog"|
-|36  | add your Datadog API key saved earlier |
-|117 | choose your regional Datadog website, for example datadoghq.eu, please refer to [Datadog Documentation](https://docs.datadoghq.com/) for the full list
-|403 | change _false_ to _true_ to enable logs collector
-|408 | change _false_ to _true_ to activate containerCollectAll
-|546 | change _false_ to _true_ to enable process collection
-|655 | change _false_ to _true_ to enable network monitoring
-|659 | change _false_ to _true_ to enable service monitoring
-|669 | change _false_ to _true_ to enable security agent
+|38  | add your Datadog API key saved earlier |
+|119 | choose your regional Datadog website, for example datadoghq.eu, please refer to [Datadog Documentation](https://docs.datadoghq.com/) for the full list
+|428 | change _false_ to _true_ to enable logs collector
+|433 | change _false_ to _true_ to activate containerCollectAll
+|632 | change _false_ to _true_ to enable process collection
+|764 | change _false_ to _true_ to enable network monitoring
+|768 | change _false_ to _true_ to enable service monitoring
+|790 | change _false_ to _true_ to enable security agent
 
-To enable volume, paste the following stanza around lines 1109 and Line 1546
+
+To enable volume, paste the following stanza under `clusterAgent` configuration.
 
 ```yaml
   volumes:
@@ -100,7 +101,7 @@ To enable volume, paste the following stanza around lines 1109 and Line 1546
               path: conf.yaml
 ```
 
-To enable volume mounts paste the following stanza around lines 1115 and 1564
+To enable volume mounts paste the following stanza under `clusterAgent` configuration.
 
 ```yaml
   volumeMounts:
