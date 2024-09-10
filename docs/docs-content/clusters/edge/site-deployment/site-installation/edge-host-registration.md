@@ -25,11 +25,11 @@ Edge host IDs.
 
 :::
 
-| **Method**                                  | **Description**                                                                                                                                                                                                                               | **Set up Effort** |
-| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| [Auto Registration](#auto-registration)     | Edge hosts can automatically register with Palette through a _Registration Token_. This method requires you to specify the registration token in the user data.                                                                               | Low               |
-| [Manual Registration](#manual-registration) | You can manually enter a unique Edge host ID in Palette.                                                                                                                                                                                      | Low               |
-| QR Code                                     | Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry. | High              |
+| **Method**                                    | **Description**                                                                                                                                                                                                                               | **Set up Effort** |
+| --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| [Auto Registration](#auto-registration)       | Edge hosts can automatically register with Palette through a _Registration Token_. This method requires you to specify the registration token in the user data.                                                                               | Low               |
+| [Manual Registration](#manual-registration)   | You can manually enter a unique Edge host ID in Palette.                                                                                                                                                                                      | Low               |
+| [QR Code Registration](#qr-code-registration) | Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry. | High              |
 
 ```yaml
 stylus:
