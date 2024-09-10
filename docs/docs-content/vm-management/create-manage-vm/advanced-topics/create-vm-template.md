@@ -35,98 +35,98 @@ Create a template by adding a YAML file as a manifest in an add-on profile.
 
 8. Click **Finish Configuration**.
 
-#### Example YAML for a VM template
+   #### Example YAML for a VM template
 
-```yaml
-apiVersion: kubevirt.io/v1
-kind: VirtualMachine
-metadata:
-  name: example
-  namespace: default
-  labels:
-    app.kubernetes.io/managed-by: Helm
-    kubevirt.io/vm: example
-spec:
-  dataVolumeTemplates:
-    - metadata:
-        name: example-dv-u2204-sip
-      spec:
-        pvc:
-          accessModes:
-            - ReadWriteMany
-          resources:
-            requests:
-              storage: 50Gi
-        source:
-          registry:
-            url: >-
-              docker://gcr.io/spectro-images-public/release/virtual-machine-orchestrator/os/ubuntu-container-disk:22.04
-  running: false
-  template:
-    metadata:
-      annotations:
-        descheduler.alpha.kubernetes.io/evict: "true"
-    spec:
-      domain:
-        cpu:
-          cores: 8
-          sockets: 1
-          threads: 1
-        devices:
-          disks:
-            - disk:
-                bus: virtio
-              name: datavolume-os
-            - disk:
-                bus: virtio
-              name: cloudinitdisk
-          interfaces:
-            - bridge: {}
-              model: virtio
-              name: default
-              macAddress: "06:AD:69:40:F0:94"
-        machine:
-          type: q35
-        resources:
-          limits: {}
-          requests: {}
-        memory:
-          guest: 16Gi
-      networks:
-        - multus:
-            networkName: vlan-0
-          name: default
-      volumes:
-        - dataVolume:
-            name: example-dv-u2204-sip
-          name: datavolume-os
-        - cloudInitNoCloud:
-            networkData: |
-              network:
-                version: 1
-                config:
-                  - type: physical
-                    name: enp1s0
-                    subnets:
-                      #- type: dhcp
-                      - type: static
-                        address: a.b.c.d/prefixlength
-                        gateway: e.f.g.h
-                  - type: nameserver
-                    address:
-                      - 8.8.8.8
-            userData: |
-              #cloud-config
-              ssh_pwauth: True
-              chpasswd: { expire: False }
-              password: spectro
-              disable_root: false
-              runcmd:
-                - apt-get update
-                - apt-get install -y qemu-guest-agent
-                - systemctl start qemu-guest-agent
-          name: cloudinitdisk
-```
+   ```yaml
+   apiVersion: kubevirt.io/v1
+   kind: VirtualMachine
+   metadata:
+     name: example
+     namespace: default
+     labels:
+       app.kubernetes.io/managed-by: Helm
+       kubevirt.io/vm: example
+   spec:
+     dataVolumeTemplates:
+       - metadata:
+           name: example-dv-u2204-sip
+         spec:
+           pvc:
+             accessModes:
+               - ReadWriteMany
+             resources:
+               requests:
+                 storage: 50Gi
+           source:
+             registry:
+               url: >-
+                 docker://gcr.io/spectro-images-public/release/virtual-machine-orchestrator/os/ubuntu-container-disk:22.04
+     running: false
+     template:
+       metadata:
+         annotations:
+           descheduler.alpha.kubernetes.io/evict: "true"
+       spec:
+         domain:
+           cpu:
+             cores: 8
+             sockets: 1
+             threads: 1
+           devices:
+             disks:
+               - disk:
+                   bus: virtio
+                 name: datavolume-os
+               - disk:
+                   bus: virtio
+                 name: cloudinitdisk
+             interfaces:
+               - bridge: {}
+                 model: virtio
+                 name: default
+                 macAddress: "06:AD:69:40:F0:94"
+           machine:
+             type: q35
+           resources:
+             limits: {}
+             requests: {}
+           memory:
+             guest: 16Gi
+         networks:
+           - multus:
+               networkName: vlan-0
+             name: default
+         volumes:
+           - dataVolume:
+               name: example-dv-u2204-sip
+             name: datavolume-os
+           - cloudInitNoCloud:
+               networkData: |
+                 network:
+                   version: 1
+                   config:
+                     - type: physical
+                       name: enp1s0
+                       subnets:
+                         #- type: dhcp
+                         - type: static
+                           address: a.b.c.d/prefixlength
+                           gateway: e.f.g.h
+                     - type: nameserver
+                       address:
+                         - 8.8.8.8
+               userData: |
+                 #cloud-config
+                 ssh_pwauth: True
+                 chpasswd: { expire: False }
+                 password: spectro
+                 disable_root: false
+                 runcmd:
+                   - apt-get update
+                   - apt-get install -y qemu-guest-agent
+                   - systemctl start qemu-guest-agent
+             name: cloudinitdisk
+   ```
 
 ## Validate
 
