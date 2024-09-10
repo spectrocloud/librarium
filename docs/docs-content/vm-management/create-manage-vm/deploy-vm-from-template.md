@@ -55,6 +55,15 @@ These steps will help guide you to deploy a VM from an out-of-the-box VM templat
 
 8. Give the VM a name and specify memory and CPUs.
 
+   :::info
+
+   You can change the memory and CPU values after the VM is deployed. If you change the memory post-deployment, you will
+   have the option to reboot the VM to apply the changes, or you can apply the changes without rebooting. If you apply
+   the memory change without rebooting, the changes may not take effect until the next reboot. Post-deplyment CPU
+   changes will allow you to apply the changes with the Live Migration feature.
+
+   :::
+
 9. Optionally, you can enable the checkbox to start the VM automatically after creation.
 
 10. Click the **Next** button, which displays the YAML file. Tooltip help is available when you hover over lines in the
