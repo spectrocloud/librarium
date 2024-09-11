@@ -27,7 +27,8 @@ tags: ["release-notes"]
 
 - Several enhancements have been made to the Clusters view in the Palette UI. These changes ensure a consistent and
   user-friendly experience, including new designs for the cluster selection screen and a customizable, powerful grid
-  view. This redesign provides a better user experience for managing clusters in large-scale environments.
+  view. This redesign provides a better user experience for managing clusters in large-scale environments. Refer to the
+  [Cluster Grid View](../clusters/clusters.md#organize-cluster-grid) section to learn more.
 
 #### Deprecations and Removals
 
@@ -57,7 +58,8 @@ tags: ["release-notes"]
 - Manual and automatic Kubernetes certificate renewal for control-plane nodes is now available to Edge clusters managed
   by Palette. This feature is available for the following Kubernetes distributions K3s, RKE2, and PXK-E. The new process
   for certificate renewal leverages the command `kubeadm certs renew`, ensuring certificates update without requiring
-  node reboots.
+  node reboots. Refer to the [Certificate Management](../clusters/cluster-management/certificate-management.md)
+  documentation to learn more.
 
 - Local UI now supported Edge hosts in _connected mode_. Previously, Local UI only supported Edge hosts in airgap mode.
   This change allows users to now manage connected Edge hosts using Local UI. To learn more, refer to the
@@ -80,9 +82,10 @@ tags: ["release-notes"]
 
 #### Improvements
 
-- VM memory configuration through the Kubevirt hotplug has
-  [changed in Kubevirt version 1.2.0](https://kubevirt.io/user-guide/compute/memory_hotplug/#memory-hotplug-in-action).
-  Palette now supports the new configuration object.
+- VM memory management now support the
+  [Kubevirt Memory Hotplug](https://kubevirt.io/user-guide/compute/memory_hotplug/). This feature allows you to increase
+  or decrease the memory allocated to a VM without requiring a VM restart. Refer to the
+  [Manage CPU and Memory](../vm-management/create-manage-vm/enable-cpu-hotplug.md) documentation to learn more.
 
 ### VerteX
 
