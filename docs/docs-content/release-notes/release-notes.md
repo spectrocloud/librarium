@@ -115,6 +115,11 @@ tags: ["release-notes"]
 
 ### Packs
 
+#### Pack Notes
+
+<!-- prettier-ignore -->
+- Users of Portworx CSI, review the [node repave interval](../clusters/cluster-management/node-pool.md#worker-node-pool) configured on worker pools. Ensure sufficient time is allotted for Portworx to initialize on a newly repaved cluster node. Otherwise, the Portworx pod may encounter issues during the node repave process. Refer to the <VersionedLink text="Portworx" url="/integrations/packs/?pack=csi-portworx-generic" /> README for more information.
+
 #### Kubernetes
 
 | Pack                                      | New Version |
