@@ -10,7 +10,7 @@ tags: ["security", "cve"]
 
 ## CVE Details
 
-[GHSA-m425-mq94-257g](https://github.com/advisories/ghsa-74fp-r6jw-h4mp)
+[GHSA-74fp-r6jw-h4mp](https://github.com/advisories/ghsa-74fp-r6jw-h4mp)
 
 ## Last Update
 
@@ -18,7 +18,7 @@ tags: ["security", "cve"]
 
 ## NIST CVE Summary
 
-Kubernetes apimachinery packages vulnerable to unbounded recursion in JSON or YAML parsing
+Kubernetes apimachinery packages vulnerable to unbounded recursion in JSON or YAML parsing.
 
 ## Our Official Summary
 

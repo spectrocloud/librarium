@@ -41,3 +41,5 @@ Use the following resources to become familiar with the available tenant setting
 - [Login Banner](login-banner.md)
 
 - [Projects](./projects/projects.md)
+
+- [Session Timeout](./session-timeout.md)

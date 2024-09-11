@@ -450,7 +450,7 @@ ui-system:
       mapBoxStyledLayerID: ""
 ```
 
-### Reach System
+## Reach System
 
 You can configure VerteX to use a proxy server to access the internet. Set the parameter `reach-system.enabled` to
 `true` to enable the proxy server. Proxy settings are configured in the `reach-system.proxySettings` section.
