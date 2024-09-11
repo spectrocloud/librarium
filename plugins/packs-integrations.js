@@ -473,7 +473,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
           logger.error("An error occurred while reading the JSON file:", e);
         }
       }
-      logger.info(`The number of packs identified are ${Object.keys(apiPackResponse.packMDMap).length}`);
+      logger.info(`The number of packs identified is:  ${Object.keys(apiPackResponse.packMDMap).length}`);
       return {
         packsPaletteData: apiPackResponse.packMDMap,
         packsPaletteDetailsData: apiPackResponse.apiPacksData,
