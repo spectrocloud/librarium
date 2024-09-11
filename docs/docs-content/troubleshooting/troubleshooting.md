@@ -11,6 +11,8 @@ tags: ["troubleshooting"]
 Use the following troubleshooting resources to help you address issues that may arise. You can also reach out to our
 support team by opening up a ticket through our [support page](http://support.spectrocloud.io/).
 
+- [Automation](automation.md)
+
 - [Cluster Deployment](cluster-deployment.md)
 
 - [Edge](edge.md)
