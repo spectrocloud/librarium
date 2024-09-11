@@ -13,11 +13,11 @@ recommend you review the
 [PKI certificates and requirement](https://kubernetes.io/docs/setup/best-practices/certificates) Kubernetes
 documentation to learn more about the auto-generated certificates and to better understand their purpose.
 
-This reference page focuses on how to renew the PKI certificates through Palette. You have two options for how you can
-renew the cluster PKI certificates:
+This page focuses on how to renew the PKI certificates through Palette. You have two options for how you can renew the
+cluster PKI certificates:
 
-- Automatic Certificate Renewal
-- Manual Certificate Renewal
+- [Automatic Certificate Renewal](#automatic-certificate-renewal)
+- [Manual Certificate Renewal](#manual-certificate-renewal)
 
 :::info
 
