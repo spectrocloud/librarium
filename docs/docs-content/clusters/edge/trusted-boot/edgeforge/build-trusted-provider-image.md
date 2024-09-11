@@ -128,12 +128,12 @@ key that is in the Signature Database (DB). This is important both during instal
 
    The following table lists a few key arguments for you to pay close attention to.
 
-   | **Argument**       | **Description**                                                                                       | **Allowed Values**                         |
-   | ------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-   | `IS_UKI`           | Determines whether to build a provider image that supports Trusted Boot. You must set this to `true`. | `true`, `false`. Default is `false`.       |
-   | `K8S_DISTRIBUTION` | Kubernetes distribution.                                                                              | ` k3s`, `rke2`, `kubeadm`, `kubeadm-fips`. |
-   | `OS_DISTRIBUTION`  | OS distribution.                                                                                      | `ubuntu`, `opensuse-leap`, `rhel`.         |
-   | `OS_VERSION`       | OS version. This applies to Ubuntu only.                                                              | `20`, `22`.                                |
+   | **Argument**       | **Description**                                                                                       | **Allowed Values**                   |
+   | ------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------ |
+   | `IS_UKI`           | Determines whether to build a provider image that supports Trusted Boot. You must set this to `true`. | `true`, `false`. Default is `false`. |
+   | `K8S_DISTRIBUTION` | Kubernetes distribution.                                                                              | `rke2`                               |
+   | `OS_DISTRIBUTION`  | OS distribution.                                                                                      | `ubuntu`, `opensuse-leap`, `rhel`.   |
+   | `OS_VERSION`       | OS version. This applies to Ubuntu only.                                                              | `23.10`, `24.04`                     |
 
 10. Open the **Earthfile** in the CanvOS directory. Under `build-provider-images`, remove the lines containing
     Kubernetes versions that you do not need.
