@@ -8,7 +8,7 @@ tags: ["vmo", "cpu-hotplug"]
 ---
 
 You can use the [KubeVirt CPU Hotplug](https://kubevirt.io/user-guide/compute/cpu_hotplug/) and
-[KubeVirt Memoruy Hotplug](https://kubevirt.io/user-guide/compute/memory_hotplug/) feature in Palette, which allows the
+[KubeVirt Memory Hotplug](https://kubevirt.io/user-guide/compute/memory_hotplug/) feature in Palette, which allows the
 Virtual Machine (VM) to add and remove virtual CPUs, and increase or descrease memory, while the VM is active. By
 default, live migration is automatically enabled to apply the changes without rebooting the VM.
 
