@@ -38,7 +38,7 @@ Select the tab that corresponds to the method you want to use to enable CPU or m
 
    ![Palette with the Details tab displayed.](/vm-management_create-manage-vm_enable-cpu-hotplug_details.webp)
 
-4. Change the desired CPU Sockets, CPU Cores, or Memory Size. Toggle the **Run Live Migration** switch to enable the
+4. Change the desired CPU sockets, CPU cores, or memory size. Toggle the **Run Live Migration** switch to enable the
    changes through live migration. If you don't toggle the switch, the changes are applied next time the VM is
    restarted.
 

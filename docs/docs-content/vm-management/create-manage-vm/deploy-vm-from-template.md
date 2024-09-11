@@ -57,7 +57,7 @@ These steps will help guide you to deploy a VM from an out-of-the-box VM templat
 
    :::info
 
-   You can change the memory and CPU values after the VM is deployed. By default, the Hotplug feature is enabled for
+   You can change the memory and CPU values after the VM is deployed. By default, the hotplug feature is enabled for
    both [memory](https://kubevirt.io/user-guide/compute/memory_hotplug/#memory-hotplug-in-action) and
    [CPU](https://kubevirt.io/user-guide/compute/cpu_hotplug/), allowing changes to be applied without rebooting the VM
    through live migration.
