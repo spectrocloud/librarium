@@ -1,15 +1,16 @@
 ---
-sidebar_label: "Enable CPU and Memory Hotplug"
-title: "Enable CPU and Memory Hotplug"
+sidebar_label: "Manage CPU and Memory"
+title: "Manage CPU and Memory"
 description:
-  "Learn how to enable the CPU and Memory Hotplug feature in your VMs using Palette Virtual Machine Orchestrator."
+  "Learn how to manage the CPU and Memory Hotplug feature in your VMs using Palette Virtual Machine Orchestrator."
 sidebar_position: 50
 tags: ["vmo", "cpu-hotplug"]
 ---
 
-You can enable the [KubeVirt CPU Hotplug](https://kubevirt.io/user-guide/compute/cpu_hotplug/) and
+You can use the [KubeVirt CPU Hotplug](https://kubevirt.io/user-guide/compute/cpu_hotplug/) and
 [KubeVirt Memoruy Hotplug](https://kubevirt.io/user-guide/compute/memory_hotplug/) feature in Palette, which allows the
-Virtual Machine (VM) to add and remove virtual CPUs, and increase or descrease memory, while the VM is active
+Virtual Machine (VM) to add and remove virtual CPUs, and increase or descrease memory, while the VM is active. By
+default, live migration is automatically enabled to apply the changes without rebooting the VM.
 
 ## Limitations
 
@@ -22,9 +23,9 @@ Virtual Machine (VM) to add and remove virtual CPUs, and increase or descrease m
 
 - A VM deployed and active in Palette.
 
-## Enable Hotplug
+## Manage CPU and Memory
 
-Select the tab that corresponds to the method you want to use to enable CPU hotplug in your VM.
+Select the tab that corresponds to the method you want to use to enable CPU or memory hotplug in your VM.
 
 <Tabs groupId="method">
 <TabItem label="UI" value="ui">
