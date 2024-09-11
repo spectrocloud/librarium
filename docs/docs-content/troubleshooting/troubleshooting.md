@@ -11,7 +11,7 @@ tags: ["troubleshooting"]
 Use the following troubleshooting resources to help you address issues that may arise. You can also reach out to our
 support team by opening up a ticket through our [support page](http://support.spectrocloud.io/).
 
-- [Kubernetes Debugging](kubernetes-tips.md)
+- [Automation](automation.md)
 
 - [Cluster Deployment](cluster-deployment.md)
 
