@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Renew Cluster PKI Certificates"
 title: "Renew Cluster PKI Certificates"
-description: "Learn how auto-renewal of certificates work in Palette and how to "
+description: "Learn about auto-renewal of control certificates in Palette and how to renew the certificates manually. "
 hide_table_of_contents: false
 sidebar_position: 50
 tags: ["clusters", "cluster management"]
