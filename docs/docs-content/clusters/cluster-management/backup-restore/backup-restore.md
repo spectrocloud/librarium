@@ -97,11 +97,11 @@ guide.
 ## Volume Snapshots
 
 <!-- prettier-ignore -->
-You can include [volume snapshots](https://kubernetes.io/docs/concepts/storage/volume-snapshots/) in your cluster backups if the Container Storage Interface (CSI) driver you are using supports them. For more information about volume support, check the CSI pack README for your CSI driver. You can find a list of all Packs in the <VersionedLink text="Packs List" url="/integrations/" />
+You can include [volume snapshots](https://kubernetes.io/docs/concepts/storage/volume-snapshots/) in your cluster backups if the Container Storage Interface (CSI) driver you are using supports them. For more information about volume snapshot support, check the CSI pack README for your CSI driver. You can find a list of all Packs in the <VersionedLink text="Packs List" url="/integrations/" />
 page.
 
 <!-- prettier-ignore -->
-If the CSI driver includes the [csi-snapshotter](https://github.com/kubernetes-csi/external-snapshotter), it supports volume snapshotting. If the CSI driver contains the snapshot controller and VolumeSnapshotClass, then all necessary components are already included in the CSI pack and nothing else is needed. If not, you must add the <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" />, version 8 or greater, to your cluster profile to install the snapshot controller and VolumeSnapshotClass. These components are necessary to support taking snapshots, including for backup purposes. You can learn how to add a pack to a cluster profile by checking out the [Add a Pack](../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-pack-addon.md) guide.
+If the CSI driver you are using includes the [csi-snapshotter](https://github.com/kubernetes-csi/external-snapshotter) component, then it supports volume snapshotting. If the CSI driver contains the snapshot controller and VolumeSnapshotClass, then all necessary components are already included in the CSI pack and nothing else is needed. If not, you must add the <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" />, version 8 or greater, to your cluster profile to install the snapshot controller and VolumeSnapshotClass. These components are necessary to support taking snapshots and including them in your cluster backups. You can learn how to add a pack to a cluster profile by checking out the [Add a Pack](../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-pack-addon.md) guide.
 
 You can use the table below to determine if your CSI driver supports volume snapshots and if you need to include the
 Volume Snapshot Controller pack in your cluster profile.
@@ -121,7 +121,7 @@ Always refer to the CSI driver's Pack README for guidance on volume snapshot sup
 ### Volume Snapshots and VMO
 
 <!-- prettier-ignore -->
-Clusters deployed with the <VersionedLink text="Virtual Machine Orchestrator " url="/integrations/packs/?pack=virtual-machine-orchestrator" /> do not need the  <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> as the VMO pack includes the required components for volume snapshots. However, you must ensure the CSI driver supports volume snapshots. Review the CSI driver's Pack README for guidance on volume snapshot support.
+Clusters deployed with the <VersionedLink text="Virtual Machine Orchestrator " url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack do not need the  <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> as the pack already includes the required components for volume snapshots. However, you must ensure the CSI driver supports volume snapshots. Review the CSI driver's Pack README for guidance on volume snapshot support.
 
 ## etcd Backups
 
