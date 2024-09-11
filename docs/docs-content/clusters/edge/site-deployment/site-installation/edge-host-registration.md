@@ -7,9 +7,13 @@ sidebar_position: 20
 tags: ["edge"]
 ---
 
-To use an Edge host with a host cluster, you must first register it with Palette. A registration token in the user data
-is required to complete the registration process. Review the [Create Registration Token](create-registration-token.md)
-guide for steps on how to create a tenant registration token.
+To use an Edge host with a host cluster, you must first register it with Palette. With the exception of QR code
+registration, a registration token in the user data is required to complete the registration process. Review the
+[Create Registration Token](create-registration-token.md) guide for steps on how to create a tenant registration token.
+
+Edge hosts are registered under the default project chosen for the registration token. You can override the default
+project by specifying the project in the Edge Installer [user data](../../edge-configuration/installer-reference.md)
+configuration file.
 
 You have the following options to register the Edge host with Palette.
 
@@ -21,22 +25,11 @@ Edge host IDs.
 
 :::
 
-| **Method**          | **Description**                                                                                                                                                                                                                               | **Set up Effort** |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| Auto Registration   | Edge hosts can automatically register with Palette through a _Registration Token_. This method requires you to specify the registration token in the user data.                                                                               | Low               |
-| Manual Registration | You can manually enter a unique Edge host ID in Palette.                                                                                                                                                                                      | Low               |
-| QR Code             | Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry. | High              |
-
-## Registration Method
-
-To register the Edge host, you are required to use a registration token with all three registration options. Edge hosts
-are registered under the default project chosen for the registration token. You can override the default project by
-specifying the project in the Edge Installer [user data](../../edge-configuration/installer-reference.md) configuration
-file.
-
-By default, devices automatically register during the on-site deployment process when a tenant registration token value
-is present. Set the parameter `disableAutoRegister` to `true` in the Edge Installer configuration to disable auto
-registration and require manual device registration.
+| **Method**                                    | **Description**                                                                                                                                                                                                                               | **Set up Effort** |
+| --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| [Auto Registration](#auto-registration)       | Edge hosts can automatically register with Palette through a _Registration Token_. This method requires you to specify the registration token in the user data.                                                                               | Low               |
+| [Manual Registration](#manual-registration)   | You can manually enter a unique Edge host ID in Palette.                                                                                                                                                                                      | Low               |
+| [QR Code Registration](#qr-code-registration) | Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry. | High              |
 
 ```yaml
 stylus:
@@ -45,16 +38,11 @@ stylus:
     disableAutoRegister: true
 ```
 
-Select the registration method that best fits your organizational needs and review the steps to get started.
-
-- [Auto Registration](#auto-registration)
-
-- [Manual Registration](#manual-registration)
-
 ### Auto Registration
 
-When your Edge host powers up after installation, the Edge host will attempt to register itself with Palette
-automatically.
+Edge hosts that use the default `connected` installation mode automatically register during the on-site deployment
+process when a tenant registration token value is present. Set the parameter `disableAutoRegister` to `true` in the Edge
+Installer configuration to disable auto registration and require manual device registration.
 
 If you selected a default project for the registration token, that is the project the Edge host will be registered
 under. You can override the default project by providing a project name in the user data.
@@ -172,7 +160,8 @@ Your Edge host is displayed and marked as **Registered** in the Edge hosts list.
 ### QR Code Registration
 
 You can provide a QR case-based automated registration to simplify the registration process. Upon boot up, a QR code is
-displayed on the Edge host's console if enabled during the installation phase.
+displayed on the Edge host's console if a registration URL was provided. If no registration URL was provided in the user
+data, the QR code will not be displayed.
 
 Site operators scan the QR code to visit the registration page. This web page pre-populates the Edge host's unique ID in
 the web app and provides a list of edge sites they can associate with this edge host.
