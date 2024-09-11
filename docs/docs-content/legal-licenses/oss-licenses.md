@@ -11,7 +11,7 @@ tags: ["legal", "licenses"]
 The following table lists the open-source licenses tied to the libraries and modules currently in use by Palette. If you
 have any questions or concerns, contact us at support@spectrocloud.com.
 
-| Module                                                                                        | License                                                                                |
+| Library                                                                                       | License                                                                                |
 | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | golang.org/x/sync                                                                             | [BSD-3-Clause](https://opensource.org/licenses/BSD-3-Clause)                           |
 | go.uber.org/atomic                                                                            | [MIT](https://opensource.org/licenses/MIT)                                             |
@@ -561,7 +561,7 @@ have any questions or concerns, contact us at support@spectrocloud.com.
 | https://www.npmjs.com/package/browserslist                                                    | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/callsites                                                       | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/camelize                                                        | [MIT](https://opensource.org/licenses/MIT)                                             |
-| https://www.npmjs.com/package/caniuse-lite                                                    | [CC-BY-4.0](https://opensource.org/licenses/CC-BY-4.0)                                 |
+| https://www.npmjs.com/package/caniuse-lite                                                    | [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/deed.en)                       |
 | https://www.npmjs.com/package/chalk                                                           | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/chokidar                                                        | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/classnames                                                      | [MIT](https://opensource.org/licenses/MIT)                                             |
@@ -647,7 +647,7 @@ have any questions or concerns, contact us at support@spectrocloud.com.
 | https://www.npmjs.com/package/fs.realpath                                                     | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/functional-red-black-tree                                       | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/get-user-locale                                                 | [MIT](https://opensource.org/licenses/MIT)                                             |
-| https://www.npmjs.com/package/glob                                                            | [CC-BY-SA-4.0](#)                                                                      |
+| https://www.npmjs.com/package/glob                                                            | [CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en)                 |
 | https://www.npmjs.com/package/global-modules                                                  | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/global-prefix                                                   | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/globals                                                         | [MIT](https://opensource.org/licenses/MIT)                                             |
