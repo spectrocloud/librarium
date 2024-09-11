@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Certificate Management"
-title: "Certificate Management"
-description: "Learn how to manage the cluster certificates through Palette."
+sidebar_label: "Renew Cluster PKI Certificates"
+title: "Renew Cluster PKI Certificates"
+description: "Learn how auto-renewal of certificates work in Palette and how to "
 hide_table_of_contents: false
 sidebar_position: 50
 tags: ["clusters", "cluster management"]
@@ -17,7 +17,6 @@ This reference page focuses on how to renew the PKI certificates through Palette
 renew the cluster PKI certificates:
 
 - Automatic Certificate Renewal
-
 - Manual Certificate Renewal
 
 :::info
@@ -26,6 +25,17 @@ Certificates created by kubeadm expire after 365 days. The Root Certificate Auth
 years.
 
 :::
+
+## Certificate Renewal Impact on Cluster Availability
+
+Both automatic and manual renewal leverage the `kubeadm certs renew` command. For more information about
+`kubectl certs`, refer to
+[Kubernetes documentation](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-certs/).
+
+After the new certificates are generated, the cluster needs to restart the control plane components in order to pick up
+the new certificates. If you have a single-node control plane, this will cause a short period of downtime for the
+control plane components, while your worker nodes will continue to operate normally in the meantime. If you have three
+nodes or more in your control plane, certificate renewal will cause zero downtime.
 
 You can learn more about each option in the following sections.
 
