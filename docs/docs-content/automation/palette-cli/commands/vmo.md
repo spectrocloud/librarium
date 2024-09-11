@@ -58,7 +58,7 @@ Use the `import-ova` subcommand to import a vSphere OVA to Palette VMO. The foll
 
 ## Migrate VM
 
-Use the `migrate-vm` subcommand to migrate one or more VM(s) from VMware vSphere to Palette VMO. The following flags are
+Use the `migrate-vm` subcommand to migrate one or more VMs from VMware vSphere to Palette VMO. The following flags are
 supported by the `migrate-vm` subcommand.
 
 | **Short Flag** | **Long Flag**        | **Description**                                                                                                               | **Type** |

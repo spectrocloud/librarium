@@ -84,20 +84,20 @@ VMO cluster and the machines to be migrated.
    | **Add Another Host?**                                    | Indicate whether you would like to perform two migrations in the same configuration.                                                                                                                                      |                                              |
    | **Destination Network Type**                             | The network that the VMs will be mapped to in the VMO cluster.                                                                                                                                                            | `pod` / `multus`                             |
    | **Destination StorageClass**                             | The storage class on the destination that will be used to create the VM volumes.                                                                                                                                          |                                              |
-   | **Destination StorageClass Access Mode**                 | The configured access moded on the cluster storage class.                                                                                                                                                                 | `ReadWriteOnce` / `ReadWriteMany`            |
+   | **Destination StorageClass Access Mode**                 | The configured access mode on the cluster storage class.                                                                                                                                                                  | `ReadWriteOnce` / `ReadWriteMany`            |
 
 5. The migration begins as soon as you complete the configuration. Execute the following command to watch the migration
    status.
 
    ```shell
-   watch -n 2 'kubectl -n konveyor-forklift get migrations.forklift.konveyor.io <migration-name>-migration'
+   watch --interval 2 'kubectl --namespace konveyor-forklift get migrations.forklift.konveyor.io <migration-name>-migration'
    ```
 
    The migration with take approximately 20 minutes, depending on the size of the VM to migrate. Once the migration is
-   comeplete, the `watch` command will output the following.
+   complete, the `watch` command will output the following.
 
    ```shell
-   Every 2.0s: kubectl -n konveyor-forklift get migrations.forklift.konveyor.io vmo-migration
+   Every 2.0s: kubectl --namespace konveyor-forklift get migrations.forklift.konveyor.io vmo-migration
 
    NAME           READY   RUNNING   SUCCEEDED   FAILED   AGE
    vmo-migration   True              True                 18m
@@ -115,4 +115,4 @@ VMO cluster and the machines to be migrated.
 
 4. Click on the **three-dot Menu** and select **Start**. Your VM is now ready to use.
 
-   ![Start migrated vm](/migrate-vm-kubevirt-guide/vm-management_create-manage-vm_migrate-vm-kubevirt_start_migrated_vm.webp)
+   ![Start migrated VM](/migrate-vm-kubevirt-guide/vm-management_create-manage-vm_migrate-vm-kubevirt_start_migrated_vm.webp)
