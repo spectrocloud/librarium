@@ -16,7 +16,8 @@ API, CLI, Terraform, and SDK.
 Palette CLI may encounter issues when attempting to use third-party binaries that are incompatible with the CLI such as
 `docker`, `kind`, and `validatorctl`. By default, the Palette CLI will download the third-party binaries from the
 internet and store them in the `$HOME/.palette/bin` directory, the first time you issue a command that requires them.
-The Palette CLI does not upgrade these binaries, which can lead to compatibility issues with current versions of the CLI.
+The Palette CLI does not upgrade these binaries, which can lead to compatibility issues with current versions of the
+CLI.
 
 Use the following steps to resolve issues with incompatible stale Palette CLI binaries.
 
