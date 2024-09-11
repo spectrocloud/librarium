@@ -12,7 +12,9 @@ certificates allows Kubernetes to secure API connections, verify the authenticit
 All certificates have an expiry date, and need to be renewed periodically.
 
 This page guides you through the different methods used to renew certificates in an airgapped Palette Edge cluster. An
-airgapped cluster means a cluster that has no connection to a Palette instance.
+airgapped cluster means a cluster that has no connection to a Palette instance. For information on how to renew
+certificates on connected Edge clusters, refer to
+[Renew Cluster PKI Certificates](../../cluster-management/certificate-management.md).
 
 ## Limitations
 
