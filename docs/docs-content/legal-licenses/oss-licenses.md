@@ -643,7 +643,7 @@ have any questions or concerns, contact us at support@spectrocloud.com.
 | https://www.npmjs.com/package/@fortawesome/fontawesome-common-types                           | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/fsevents                                                        | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/fs-extra                                                        | [MIT](https://opensource.org/licenses/MIT)                                             |
-| https://www.npmjs.com/package/fs-monkey                                                       | [Unlicense](#)                                                                         |
+| https://www.npmjs.com/package/fs-monkey                                                       | [Unlicense](https://unlicense.org/)                                                    |
 | https://www.npmjs.com/package/fs.realpath                                                     | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/functional-red-black-tree                                       | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/get-user-locale                                                 | [MIT](https://opensource.org/licenses/MIT)                                             |
@@ -708,7 +708,7 @@ have any questions or concerns, contact us at support@spectrocloud.com.
 | https://www.npmjs.com/package/lru-cache                                                       | [ISC](https://opensource.org/licenses/ISC)                                             |
 | https://www.npmjs.com/package/make-dir                                                        | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/math-expression-evaluator                                       | [MIT](https://opensource.org/licenses/MIT)                                             |
-| https://www.npmjs.com/package/memfs                                                           | [Unlicense](#)                                                                         |
+| https://www.npmjs.com/package/memfs                                                           | [Unlicense](https://unlicense.org/)                                                    |
 | https://www.npmjs.com/package/merge2                                                          | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/merge-class-names                                               | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/micromatch                                                      | [MIT](https://opensource.org/licenses/MIT)                                             |
