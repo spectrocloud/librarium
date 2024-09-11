@@ -46,7 +46,7 @@ Select the tab that corresponds to the method you want to use to enable CPU or m
 
    :::info
 
-   Memory changes expose an additional Save & Restart button. This button allows you to save the changes and immediately
+   Memory changes expose an additional **Save & Restart** button. This button allows you to save the changes and immediately
    restart the VM to apply the changes. Otherwise, the changes are applied through live migration.
 
    :::
