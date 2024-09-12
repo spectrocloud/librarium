@@ -112,14 +112,16 @@ palette vmo import-ova --skip-image
 ## Migrate VM
 
 Use the `migrate-vm` subcommand to migrate one or more VMs from VMware vSphere to Palette VMO. The following flags are
-supported by the `migrate-vm` subcommand. Refer to the [Migrate a VM to a VMO cluster](../../../vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md) guide for further details on migrating a vSphere VM to Palette VMO. 
+supported by the `migrate-vm` subcommand. Refer to the
+[Migrate a VM to a VMO cluster](../../../vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md) guide
+for further details on migrating a vSphere VM to Palette VMO.
 
-| **Short Flag** | **Long Flag**        | **Description**                                                                                                               | **Type** |
-| -------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `-f`           | `--config-file`      | Specifies a configuration file for the VM migration.                                                                          | string   |
-| `-o`           | `--config-only`      | Generate the migration configuration file only, without proceeding with the migration.                                        | boolean  |
+| **Short Flag** | **Long Flag**        | **Description**                                                                                                                | **Type** |
+| -------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------ | -------- |
+| `-f`           | `--config-file`      | Specifies a configuration file for the VM migration.                                                                           | string   |
+| `-o`           | `--config-only`      | Generate the migration configuration file only, without proceeding with the migration.                                         | boolean  |
 | `-p`           | `--update-passwords` | Update the vSphere and ESXi passwords saved in the configuration file. This flag requires the `--config-file` to be specified. | boolean  |
-| `-h`           | `--help`             | Help for the `migrate-vm` subcommand.                                                                                         | -        |
+| `-h`           | `--help`             | Help for the `migrate-vm` subcommand.                                                                                          | -        |
 
 ### Examples
 
