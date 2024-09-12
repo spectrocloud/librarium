@@ -102,11 +102,11 @@ Use the following steps to install Palette.
     OVA in the `spectro-templates` folder.
 
     ```url
-     https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12711-0.ova
+    https://vmwaregoldenimage.s3.amazonaws.com/u-2204-0-k-12813-0.ova
     ```
 
 4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
-    should look like `r_u-2204-0-k-12711-0`. This naming convention is required for the install process to identify the
+    should look like `r_u-2204-0-k-12813-0`. This naming convention is required for the install process to identify the
     OVA. Refer to the [Supplement Packs](../airgap/supplemental-packs.md#additional-ovas) page for a list of additional
     OVAs you can download and upload to your vCenter environment.
 
