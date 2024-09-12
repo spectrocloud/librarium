@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## Sep 14, 2024 - Release 4.4.17
+## Sept 14, 2024 - Release 4.4.17
 
 ### Palette Enterprise {#release-4-4-17}
 
