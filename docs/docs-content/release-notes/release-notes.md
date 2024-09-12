@@ -113,7 +113,7 @@ tags: ["release-notes"]
 
 - The Palette CLI `ec install` command's validate flag can now be used in environments where a network proxy is
   configured. When specified in the environment, the validate flag will honor `the NO_PROXY`,` HTTP_PROXY`,
-  `and HTTPS_PROXY environment` variables. Additionaly, the validate flag will now check for connectivity and access to
+  `and HTTPS_PROXY environment` variables. Additionally, the validate flag will now check for connectivity and access to
   image registries specified during the installation process. Refer to the
   [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section of the Palette EC
   command documentation to learn more about the validate flag.
@@ -127,26 +127,26 @@ tags: ["release-notes"]
 
 #### Kubernetes
 
-| Pack                                      | New Version |
-| ----------------------------------------- | ----------- |
-| K3s                                       | 1.28.13     |
-| K3s                                       | 1.29.8      |
-| K3s                                       | 1.30.4      |
-| Kubernetes AKS                            | 1.30        |
-| Kubernetes EKS                            | 1.30        |
-| Kubernetes GKE                            | 1.30        |
-| Palette eXtended Kubernetes (PXK)         | 1.28.13     |
-| Palette eXtended Kubernetes (PXK)         | 1.29.8      |
-| Palette eXtended Kubernetes (PXK)         | 1.30.4      |
-| Palette eXtended Kubernetes Edge (PXK-E)  | 1.28.13     |
-| Palette eXtended Kubernetes Edge (PXK-E)  | 1.29.8      |
-| Palette eXtended Kubernetes Edege (PXK-E) | 1.30.4      |
-| RKE2                                      | 1.28.12     |
-| RKE2                                      | 1.29.7      |
-| RKE2                                      | 1.30.3      |
-| RKE3 - Edge                               | 1.28.12     |
-| RKE3 - Edge                               | 1.29.7      |
-| RKE3 - Edge                               | 1.30.3      |
+| Pack                                     | New Version |
+| ---------------------------------------- | ----------- |
+| K3s                                      | 1.28.13     |
+| K3s                                      | 1.29.8      |
+| K3s                                      | 1.30.4      |
+| Kubernetes AKS                           | 1.30        |
+| Kubernetes EKS                           | 1.30        |
+| Kubernetes GKE                           | 1.30        |
+| Palette eXtended Kubernetes (PXK)        | 1.28.13     |
+| Palette eXtended Kubernetes (PXK)        | 1.29.8      |
+| Palette eXtended Kubernetes (PXK)        | 1.30.4      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.28.13     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.29.8      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.30.4      |
+| RKE2                                     | 1.28.12     |
+| RKE2                                     | 1.29.7      |
+| RKE2                                     | 1.30.3      |
+| RKE3 - Edge                              | 1.28.12     |
+| RKE3 - Edge                              | 1.29.7      |
+| RKE3 - Edge                              | 1.30.3      |
 
 #### CNI
 
@@ -165,23 +165,23 @@ tags: ["release-notes"]
 
 #### Add-on Packs
 
-| Pack                                      | New Version |
-| ----------------------------------------- | ----------- |
-| Crossplane                                | 1.7.0       |
-| Crossplane                                | 1.16.0      |
-| Harbor - Edge                             | 1.1.0       |
-| Kyverno                                   | 1.12.2      |
-| MetalLB                                   | 0.14.8      |
-| Palette eXtended Kubernetes (PXK)         | 1.28.13     |
-| Palette eXtended Kubernetes (PXK)         | 1.29.8      |
-| Palette eXtended Kubernetes (PXK)         | 1.30.4      |
-| Palette eXtended Kubernetes Edge (PXK-E)  | 1.28.13     |
-| Palette eXtended Kubernetes Edge (PXK-E)  | 1.29.8      |
-| Palette eXtended Kubernetes Edege (PXK-E) | 1.30.4      |
-| RKE3 - Edge                               | 1.28.12     |
-| RKE3 - Edge                               | 1.29.7      |
-| RKE3 - Edge                               | 1.30.3      |
-| Volume Snapshot Controller                | 8.0.1       |
+| Pack                                     | New Version |
+| ---------------------------------------- | ----------- |
+| Crossplane                               | 1.7.0       |
+| Crossplane                               | 1.16.0      |
+| Harbor - Edge                            | 1.1.0       |
+| Kyverno                                  | 1.12.2      |
+| MetalLB                                  | 0.14.8      |
+| Palette eXtended Kubernetes (PXK)        | 1.28.13     |
+| Palette eXtended Kubernetes (PXK)        | 1.29.8      |
+| Palette eXtended Kubernetes (PXK)        | 1.30.4      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.28.13     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.29.8      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.30.4      |
+| RKE3 - Edge                              | 1.28.12     |
+| RKE3 - Edge                              | 1.29.7      |
+| RKE3 - Edge                              | 1.30.3      |
+| Volume Snapshot Controller               | 8.0.1       |
 
 #### FIPS
 
