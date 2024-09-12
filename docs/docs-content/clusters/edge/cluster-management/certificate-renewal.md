@@ -123,4 +123,4 @@ Management API.
 
 In **Overview**, click **View Certificates** in the **Kubernetes Certificates** row. This will display all the
 certificates currently in use by your cluster. You can confirm that the certificates have been renewed by looking at the
-issue date of certificates.
+expiry date of certificates.
