@@ -13,6 +13,13 @@ A _Spectro root role_ must be created that contains each privilege in the follow
 
 Select the tab for the vSphere version you are using to view the required privileges.
 
+
+:::info
+
+The `System.*` privileges are added to all [custom vSphere roles](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-18071E9A-EED1-4968-8D51-E0B4F526FDA3.html) by default.
+
+:::
+
 <!--
 VMware vSphere Privilege ID Mapping
 https://gist.github.com/pljoel/98842cf88d78872bed891bba14a44ab8
@@ -34,6 +41,7 @@ https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-ED56F3C4-77D
 | **Network**             | Assign network                                 |
 | **Sessions**            | Validate session                               |
 | **Storage Views**       | View                                           |
+| **System**              | Anonymous<br />Read<br />View                  |
 | **VM Storage Policies** | View VM storage policies                       |
 | **vSphere Tagging**     | Create vSphere Tag<br />Edit vSphere Tag       |
 
@@ -54,6 +62,7 @@ https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GU
 | **Profile-driven Storage** | View                                           |
 | **Sessions**               | Validate session                               |
 | **Storage Views**          | View                                           |
+| **System**                 | Anonymous<br />Read<br />View                  |
 | **vSphere Tagging**        | Create vSphere Tag<br />Edit vSphere Tag       |
 
 </TabItem>
@@ -69,6 +78,7 @@ https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GU
 | **Profile-driven Storage** | View                                           |
 | **Sessions**               | Validate session                               |
 | **Storage Views**          | View                                           |
+| **System**                 | Anonymous<br />Read<br />View                  |
 | **vSphere Tagging**        | Create vSphere Tag<br />Edit vSphere Tag       |
 
 </TabItem>
@@ -87,8 +97,12 @@ https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GU
     - `Sessions.ValidateSession`
     - `StorageProfile.View`
     - `StorageViews.View`
+    - `System.Anonymous`
+    - `System.Read`
+    - `System.View`
 
 </details>
+
 
 ### Spectro Root Role Assignments
 
@@ -108,7 +122,6 @@ propagated to a child object, the child object inherits the permission from the 
 | **vCenter Root**       | No              | _Spectro root role_ |                                                   |
 | **Target Datacenter**  | No              | _Spectro root role_ |                                                   |
 | **Target Cluster**     | No              | _Spectro root role_ |                                                   |
-| **Target VM Folder**   | Yes             | _Spectro root role_ |                                                   |
 | **Distributed Switch** | No              | _Spectro root role_ | If the Target Network is a Distributed Port Group |
 
 ### Spectro Role Privileges
@@ -131,6 +144,7 @@ Select the tab for the vSphere version you are using to view the required privil
 | **Resource**              | Apply recommendation<br />Assign virtual machine to resource pool<br />Migrate powered off virtual machine<br />Migrate powered on virtual machine<br />Query vMotion |
 | **Sessions**              | Validate session                                                                                                                                                      |
 | **Storage Views**         | View                                                                                                                                                                  |
+| **System**                | Anonymous<br />Read<br />View                                                                                                                                         |
 | **Tasks**                 | Create task<br />Update task                                                                                                                                          |
 | **vApp**                  | Import<br />View OVF environment<br />vApp application configuration<br />vApp instance configuration                                                                 |
 | **VM Storage Policies**   | View VM storage policies                                                                                                                                              |
@@ -166,6 +180,7 @@ Virtual Machines.
 | **Profile-driven Storage** | View                                                                                                                                                                  |
 | **Sessions**               | Validate session                                                                                                                                                      |
 | **Storage Views**          | View                                                                                                                                                                  |
+| **System**                 | Anonymous<br />Read<br />View                                                                                                                                         |
 | **Tasks**                  | Create task<br />Update task                                                                                                                                          |
 | **vApp**                   | Import<br />View OVF environment<br />vApp application configuration<br />vApp instance configuration                                                                 |
 | **vSphere Tagging**        | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag                                                                  |
@@ -199,6 +214,7 @@ Virtual Machines.
 | **Profile-driven Storage** | View                                                                                                                                                                  |
 | **Sessions**               | Validate session                                                                                                                                                      |
 | **Storage Views**          | View                                                                                                                                                                  |
+| **System**                 | Anonymous<br />Read<br />View                                                                                                                                         |
 | **Tasks**                  | Create task<br />Update task                                                                                                                                          |
 | **vApp**                   | Import<br />View OVF environment<br />vApp application configuration<br />vApp instance configuration                                                                 |
 | **vSphere Tagging**        | Assign or Unassign vSphere Tag<br />Create vSphere Tag<br />Delete vSphere Tag<br />Edit vSphere Tag                                                                  |
@@ -249,6 +265,9 @@ Virtual Machines.
     - `Sessions.ValidateSession`
     - `StorageProfile.View`
     - `StorageViews.View`
+    - `System.Anonymous`
+    - `System.Read`
+    - `System.View`
     - `Task.Create`
     - `Task.Update`
     - `VApp.ApplicationConfig`
@@ -327,16 +346,25 @@ Virtual Machines.
 
 </details>
 
+
+:::info
+
+The `System.*` privileges are added to all [custom vSphere roles](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-18071E9A-EED1-4968-8D51-E0B4F526FDA3.html) by default.
+
+:::
+
 ### Spectro Role Assignments
 
 The privileges associated with the _Spectro role_ must be granted via role assignments on specific vSphere objects for
 either the user or a group containing the user. Review the required role assignments to ensure that your user has all
 required privileges on all required objects.
 
-| **vSphere Object**                           | **Propagation** | **Role**       | **Condition**                                                                                                                             |
-| -------------------------------------------- | --------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Target Network**                           | Yes             | _Spectro role_ |                                                                                                                                           |
-| **Target Datastore**                         | Yes             | _Spectro role_ |                                                                                                                                           |
-| **All ESXi hosts within the Target Cluster** | No              | _Spectro role_ |                                                                                                                                           |
-| **spectro-templates Folder**                 | Yes             | _Spectro role_ | For airgap installs, it must be manually created in advance and permissions assigned. For connected installs it is created automatically. |
-| **Target Resource Pool**                     | Yes             | _Spectro role_ |                                                                                                                                           |
+| **vSphere Object**                           | **Propagation** | **Role**       | **Condition**                                                                                                                                 |
+| -------------------------------------------- | --------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Target Network**                           | Yes             | _Spectro role_ |                                                                                                                                               |
+| **Target Cluster**                           | No              | _Spectro role_ | Required if using a cluster's default `Resources` resource pool.                                                                              |
+| **Target Resource Pool**                     | Yes             | _Spectro role_ | Required if using a non-default resource pool.                                                                                                |
+| **All ESXi hosts within the Target Cluster** | No              | _Spectro role_ |                                                                                                                                               |
+| **Target Datastore**                         | Yes             | _Spectro role_ |                                                                                                                                               |
+| **spectro-templates Folder**                 | Yes             | _Spectro role_ | Must be manually created in advance, assigned permissions, and populated with Spectro Cloud VM Templates.                                     |
+| **Target VM Folder**                         | Yes             | _Spectro role_ | For air-gapped installs, it must be manually created in advance and permissions assigned. For connected installs it is created automatically. |
