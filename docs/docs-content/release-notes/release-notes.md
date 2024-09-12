@@ -11,9 +11,9 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## Sep 14, 2024 - Release 4.4.15
+## Sep 14, 2024 - Release 4.4.17
 
-### Palette Enterprise {#release-4-4-15}
+### Palette Enterprise {#release-4-4-17}
 
 ##### Features
 
@@ -67,9 +67,9 @@ tags: ["release-notes"]
 
 #### Improvements
 
-- Several improvements have been made to the Local UI's Terminal User Interface (TUI) to enhance the user experience.
-  These improvements include more visible options menus, automatic configuration save upon exit, improved color scheme,
-  and more.
+- Several improvements have been made to the [Local UI](../clusters/edge/local-ui/local-ui.md)'s Terminal User Interface
+  (TUI) to enhance the user experience. These improvements include more visible options menus, automatic configuration
+  save upon exit, improved color scheme, and more.
 
 ### Virtual Machine Orchestrator
 
@@ -78,7 +78,9 @@ tags: ["release-notes"]
 - Virtual Machines deployed with VMO now receive unique and random MAC addresses. This change ensures that MAC addresses
   are unique across all VMs in the same network, preventing conflicts and ensuring proper network communication.
   Previously, you were responsible for ensuring MAC address uniqueness, which could lead to conflicts and network issues
-  if not managed correctly.
+  if not managed correctly. Check out the
+  [MAC Address Management](../vm-management/architecture.md#mac-address-management) section of the VMO architecture
+  documentation to learn more.
 
 #### Improvements
 
@@ -91,7 +93,7 @@ tags: ["release-notes"]
 
 #### Features
 
-- Includes all Palette features and improvements in this release. Refer to the [Palette](#release-4-4-15) section for
+- Includes all Palette features and improvements in this release. Refer to the [Palette](#release-4-4-17) section for
   more details
 
 ### Automation
@@ -189,6 +191,15 @@ tags: ["release-notes"]
 | Flannel     | 0.25.5      |
 | Longhorn    | 1.6.2       |
 | vSphere CSI | 3.3.1       |
+
+#### Deprecations and Removals
+
+- All Kubernetes 1.27.x versions are deprecated.
+
+- MetalLB 0.14.3 is deprecated.
+
+- Review the [Deprecated Packs](../integrations/deprecated-packs.md) page for a complete list of deprecated and removed
+  packs.
 
 ## Aug 17, 2024 - Release 4.4.14
 
