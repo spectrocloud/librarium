@@ -66,9 +66,9 @@ palette vmo deploy-ova --config-file ~/.palette/vmo/vms/my-ova-name/my-ova-name.
 ## Import OVA
 
 Use the `import-ova` subcommand to import a vSphere OVA to Palette VMO. The following flags are supported by the
-`import-ova` subcommand. The OVA will be converted to the QCOW2 virtual disk storage format. This subcommand generates an OVA
-deployment configuration file. You can then either directly upload the imported image to a `DataVolume` or upload it a
-Docker image registry.
+`import-ova` subcommand. The OVA will be converted to the QCOW2 virtual disk storage format. This subcommand generates
+an OVA deployment configuration file. You can then either directly upload the imported image to a `DataVolume` or upload
+it a Docker image registry.
 
 | **Short Flag** | **Long Flag**    | **Description**                                                               | **Type** |
 | -------------- | ---------------- | ----------------------------------------------------------------------------- | -------- |
