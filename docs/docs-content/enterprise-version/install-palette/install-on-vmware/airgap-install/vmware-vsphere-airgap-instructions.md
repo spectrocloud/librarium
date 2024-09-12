@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Environment Setup"
-title: "Environment Setup"
-description: "Learn how to install Palette in an air gap environment."
+sidebar_label: "Environment Setup with OVA"
+title: "Environment Setup with OVA"
+description: "Learn how to install Palette in an airgap environment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
@@ -9,7 +9,8 @@ tags: ["self-hosted", "enterprise", "airgap", "vmware", "vsphere"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-This guide helps you to prepare your airgap environment for Palette installation.
+This guide helps you to prepare your airgap environment for Palette installation using an OVA to deploy and initialize
+an airgap support VM.
 
 :::info
 
