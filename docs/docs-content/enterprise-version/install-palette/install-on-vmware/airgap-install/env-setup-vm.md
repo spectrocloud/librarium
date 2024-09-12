@@ -33,7 +33,8 @@ Palette is available in the [Checklist](./checklist.md) page.
 - A valid [RHEL subscription](https://www.redhat.com/en/store/linux-platforms).
 
 - An HTTP file server to host the Palette files. The file server must be accessible from the target environment where
-  Palette will be installed. Below is a list of common file servers. This guide uses Apache as an example.
+  Palette will be installed and should serve files from the `/var/www/html` directory. Below is a list of common file
+  servers. This guide uses Apache as an example.
 
   - [Apache HTTP Server](https://httpd.apache.org/)
 
