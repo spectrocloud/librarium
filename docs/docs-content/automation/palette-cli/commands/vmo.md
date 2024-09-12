@@ -36,12 +36,32 @@ The VMs can then be used with the Virtual Machine Orchestrator (VMO).
 Use the `deploy-ova` subcommand to deploy an imported vSphere OVA to Palette VMO. The following flags are supported by
 the `deploy-ova` subcommand.
 
-| **Short Flag** | **Long Flag**   | **Description**                                                                       | **Type** |
-| -------------- | --------------- | ------------------------------------------------------------------------------------- | -------- |
-| `-f`           | `--config-file` | Specifies an OVA configuration file.                                                  | string   |
-| `-o`           | `--config-only` | Update the OVA configuration file only, without proceeding with the deployment.       | boolean  |
-| `-s`           | `--silent`      | Perform a silent OVA deployment. This flag requires the `--config-file` be specified. | boolean  |
-| `-h`           | `--help`        | Help for the `deploy-ova` subcommand.                                                 | -        |
+| **Short Flag** | **Long Flag**   | **Description**                                                                                                                      | **Type** |
+| -------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------- |
+| `-f`           | `--config-file` | Specifies an OVA configuration file.                                                                                                 | string   |
+| `-o`           | `--config-only` | Update the OVA configuration file only, without proceeding with the deployment. This flag requires the `--config-file` be specified. | boolean  |
+| `-s`           | `--silent`      | Perform a silent OVA deployment. This flag requires the `--config-file` be specified.                                                | boolean  |
+| `-h`           | `--help`        | Help for the `deploy-ova` subcommand.                                                                                                | -        |
+
+### Examples
+
+Deploy a vSphere OVA previously imported to Palette VMO in interactive mode.
+
+```shell
+palette vmo deploy-ova --config-file ~/.palette/vmo/vms/my-ova-name/my-ova-name.yaml
+```
+
+Update the OVA configuration file without proceeding with the depoyment.
+
+```shell
+palette vmo import-ova --config-file ~/.palette/vmo/vms/my-ova-name/my-ova-name.yaml --config-only
+```
+
+Deploy a vSphere OVA previously imported to Palette VMO in interactive mode silently, without blocking the terminal.
+
+```shell
+palette vmo deploy-ova --config-file ~/.palette/vmo/vms/my-ova-name/my-ova-name.yaml --silent
+```
 
 ## Import OVA
 
@@ -52,18 +72,78 @@ Use the `import-ova` subcommand to import a vSphere OVA to Palette VMO. The foll
 | -------------- | ---------------- | ----------------------------------------------------------------------------- | -------- |
 | `-f`           | `--config-file`  | Specifies an OVA configuration file.                                          | string   |
 | `-o`           | `--config-only`  | Generate the OVA configuration file only, without proceeding with the import. | boolean  |
-|                | `--skip-convert` | Skip OVA conversion.                                                          | boolean  |
+|                | `--skip-convert` | Skip OVA conversion to QCOW2 format.                                          | boolean  |
 |                | `--skip-image`   | Skip VM image upload.                                                         | boolean  |
 | `-h`           | `--help`         | Help for the `deploy-ova` subcommand.                                         | -        |
+
+### Examples
+
+Import a vSphere OVA to Palette VMO in interactive mode.
+
+```shell
+palette vmo import-ova
+```
+
+Create a configuration file for the OVA import without proceeding with the import.
+
+```shell
+palette vmo import-ova --config-only
+```
+
+Import an OVA to Palette VMO using a configuration file. The configuration file is generated using the `--config-only`
+flag.
+
+```shell hideCliboard
+palette vmo import-ova --config-file ~/.palette/vmo/vms/my-ova-name/my-ova-name.yaml
+```
+
+Import an OVA to Palette VMO without converting it to QCOW2 format.
+
+```shell hideCliboard
+palette vmo import-ova --skip-convert
+```
+
+Import an OVA to Palette VMO without uploading it.
+
+```shell hideCliboard
+palette vmo import-ova --skip-image
+```
 
 ## Migrate VM
 
 Use the `migrate-vm` subcommand to migrate one or more VMs from VMware vSphere to Palette VMO. The following flags are
-supported by the `migrate-vm` subcommand.
+supported by the `migrate-vm` subcommand. Refer to the [Migrate a VM to a VMO cluster](../../../vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md) guide for further details on migrating a vSphere VM to Palette VMO. 
 
 | **Short Flag** | **Long Flag**        | **Description**                                                                                                               | **Type** |
 | -------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------- |
 | `-f`           | `--config-file`      | Specifies a configuration file for the VM migration.                                                                          | string   |
 | `-o`           | `--config-only`      | Generate the migration configuration file only, without proceeding with the migration.                                        | boolean  |
-| `-p`           | `--update-passwords` | Update the vSphere and ESXi passwords save in the configuration file. This flag requires the `--config-file` to be specified. | boolean  |
+| `-p`           | `--update-passwords` | Update the vSphere and ESXi passwords saved in the configuration file. This flag requires the `--config-file` to be specified. | boolean  |
 | `-h`           | `--help`             | Help for the `migrate-vm` subcommand.                                                                                         | -        |
+
+### Examples
+
+Migrate a VM to Palette VMO in interactive mode.
+
+```shell
+palette vmo migrate-vm
+```
+
+Create a configuration file for the VM migration without proceeding with the migration.
+
+```shell
+palette vmo migrate-vm --config-only
+```
+
+Migrate a VM using a configuration file. The configuration file is generated using the `--config-only` flag.
+
+```shell hideCliboard
+palette vmo migrate-vm --config-file ~/.palette/vmo/migrations/migration-123/config.yaml
+```
+
+Update the passwords of an VM migration using a configuration file. The configuration file is generated using the
+`--config-only` flag.
+
+```shell hideCliboard
+palette vmo migrate-vm --config-file ~/.palette/vmo/migrations/migration-123/config.yaml --update-passwords
+```

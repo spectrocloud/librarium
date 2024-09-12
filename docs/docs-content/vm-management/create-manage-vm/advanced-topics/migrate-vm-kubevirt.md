@@ -19,12 +19,13 @@ from VMware vSphere to Palette VMO.
 ## Limitations
 
 - You can only migrate VMs hosted in VMware vSphere.
+- Only VMs whose operating systems are included under [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
 
 ## Prerequisites
 
 - A Healthy VMO cluster. Refer to the [Create a VMO Profile](../../create-vmo-profile.md) for further guidance.
-- One or more VMs hosted in VMware vSphere. The VMs should also operate one the
-  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html).
+- A VMware vSphere user account with the necessary permissions to manage the VMs you want to migrate. 
+- One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
   - The VMs must be powered off before migration.
 - The Palette CLI installed and setup. Refer to the
   [Installation](../../../automation/palette-cli/install-palette-cli.md) guide for further details.
@@ -49,7 +50,7 @@ VMO cluster and the machines to be migrated.
    export KUBECONFIG=<path-to-downloaded-kubeconfig-file>
    ```
 
-3. Optionally, create a namespace where your VM will be migrated.
+3. Optionally, create a namespace where your VM will be migrated. We recommend that you migrate a VM to a dedicated namespace.
 
    ```shell
    kubectl create namespaces <migration-namespace>
@@ -61,6 +62,17 @@ VMO cluster and the machines to be migrated.
    ```shell
    palette vmo migrate-vm
    ```
+   
+   :::tip
+
+   You can save your configuration to a file, allowing you to revise your configuration and perform the migration later.
+
+   ```shell
+   palette vmo migrate-vm --config-only
+   ```
+
+   :::
+
 
    The Palette CLI prompts you for information regarding the VM you want to migrate, vSphere environment, and resource
    configurations.
@@ -86,8 +98,9 @@ VMO cluster and the machines to be migrated.
    | **Destination StorageClass**                             | The storage class on the destination that will be used to create the VM volumes.                                                                                                                                          |                                              |
    | **Destination StorageClass Access Mode**                 | The configured access mode on the cluster storage class.                                                                                                                                                                  | `ReadWriteOnce` / `ReadWriteMany`            |
 
+
 5. The migration begins as soon as you complete the configuration. Execute the following command to watch the migration
-   status.
+   status. Replace the `<migration-name>` placeholder with the migration name you have configured. 
 
    ```shell
    watch --interval 2 'kubectl --namespace konveyor-forklift get migrations.forklift.konveyor.io <migration-name>-migration'
