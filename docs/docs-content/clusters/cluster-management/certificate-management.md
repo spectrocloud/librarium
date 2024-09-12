@@ -46,9 +46,8 @@ availability of your cluster, but will not affect your cluster workloads:
 
 ## Automatic Certificate Renewal
 
-Palette will automatically update the cluster PKI certificates 30 days before they expire. The automatic renewal process
-will only renew the certificates for the control plane nodes. You can view the issue and expiry date of the cluster by
-click on **View K8s Certificates** in the cluster details page.
+Palette will automatically update the cluster PKI certificates 30 days before they expire. You can view the issue and
+expiry date of the cluster by click on **View K8s Certificates** in the cluster details page.
 
 Another scenario that results in new PKI certificates is upgrading a cluster's Kubernetes version. Upgrading a cluster's
 Kubernetes version, whether a minor patch or a major release, results in renewed PKI certificates. We recommend
