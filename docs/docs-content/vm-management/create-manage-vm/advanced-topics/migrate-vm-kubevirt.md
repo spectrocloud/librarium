@@ -26,13 +26,16 @@ from VMware vSphere to Palette VMO.
 
 - A Healthy VMO cluster. Refer to the [Create a VMO Profile](../../create-vmo-profile.md) for further guidance.
 - A VMware vSphere user account with the necessary permissions to manage the VMs you want to migrate.
+  - Migration can optionally accelerated by providing credentials for the ESXi hosts where the VMs reside.
 - One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
   [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
   - The VMs must be powered off before migration.
+  - Ensure that VMs operating Windows are shut down at the virtualized OS level.
+  - If you are migrating more than one VM in the same plan, they must all share the same network.
 - The Palette CLI installed and setup. Refer to the
   [Installation](../../../automation/palette-cli/install-palette-cli.md) guide for further details.
-  - The kubectl command-line tool should also be installed. Refer to the
-    [kubectl installation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) guide to learn more.
+- The kubectl command-line tool should also be installed. Refer to the
+  [kubectl installation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) guide to learn more.
 
 :::warning
 

@@ -24,8 +24,8 @@ The VMs can then be used with the Virtual Machine Orchestrator (VMO).
 
 - A Healthy VMO cluster. Refer to the [Create a VMO Profile](../../../vm-management/create-vmo-profile.md) for further
   guidance.
-- One or more VMs hosted in VMware vSphere. The VMs should also operate one the
-  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html).
+- One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
+  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
 
 ## Limitations
 
@@ -43,7 +43,7 @@ the `deploy-ova` subcommand.
 | `-s`           | `--silent`      | Perform a silent OVA deployment. This flag requires the `--config-file` be specified.                                                | boolean  |
 | `-h`           | `--help`        | Help for the `deploy-ova` subcommand.                                                                                                | -        |
 
-### Examples
+### Examples
 
 Deploy a vSphere OVA previously imported to Palette VMO in interactive mode.
 
@@ -66,7 +66,9 @@ palette vmo deploy-ova --config-file ~/.palette/vmo/vms/my-ova-name/my-ova-name.
 ## Import OVA
 
 Use the `import-ova` subcommand to import a vSphere OVA to Palette VMO. The following flags are supported by the
-`import-ova` subcommand.
+`import-ova` subcommand. The OVA will be converted to the QCOW2 virtual disk storage format. This subcommand generates an OVA
+deployment configuration file. You can then either directly upload the imported image to a `DataVolume` or upload it a
+Docker image registry.
 
 | **Short Flag** | **Long Flag**    | **Description**                                                               | **Type** |
 | -------------- | ---------------- | ----------------------------------------------------------------------------- | -------- |
@@ -76,7 +78,7 @@ Use the `import-ova` subcommand to import a vSphere OVA to Palette VMO. The foll
 |                | `--skip-image`   | Skip VM image upload.                                                         | boolean  |
 | `-h`           | `--help`         | Help for the `deploy-ova` subcommand.                                         | -        |
 
-### Examples
+### Examples
 
 Import a vSphere OVA to Palette VMO in interactive mode.
 
@@ -112,7 +114,10 @@ palette vmo import-ova --skip-image
 ## Migrate VM
 
 Use the `migrate-vm` subcommand to migrate one or more VMs from VMware vSphere to Palette VMO. The following flags are
-supported by the `migrate-vm` subcommand. Refer to the
+supported by the `migrate-vm` subcommand. The migration consists of two phases. First, all guest disks are transferred
+to Persistent Volumes (PVs) in K8s using KubeVirt CDI and VMware Virtual Disk Development Kit (VDDK). Then, the guest OS
+on the root disk is made bootable and drivers are installed using [virt-v2v](https://libguestfs.org/virt-v2v.1.html).
+Refer to the
 [Migrate a VM to a VMO cluster](../../../vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md) guide
 for further details on migrating a vSphere VM to Palette VMO.
 
@@ -123,7 +128,7 @@ for further details on migrating a vSphere VM to Palette VMO.
 | `-p`           | `--update-passwords` | Update the vSphere and ESXi passwords saved in the configuration file. This flag requires the `--config-file` to be specified. | boolean  |
 | `-h`           | `--help`             | Help for the `migrate-vm` subcommand.                                                                                          | -        |
 
-### Examples
+### Examples
 
 Migrate a VM to Palette VMO in interactive mode.
 
