@@ -108,7 +108,6 @@ propagated to a child object, the child object inherits the permission from the 
 | **vCenter Root**       | No              | _Spectro root role_ |                                                   |
 | **Target Datacenter**  | No              | _Spectro root role_ |                                                   |
 | **Target Cluster**     | No              | _Spectro root role_ |                                                   |
-| **Target VM Folder**   | Yes             | _Spectro root role_ |                                                   |
 | **Distributed Switch** | No              | _Spectro root role_ | If the Target Network is a Distributed Port Group |
 
 ### Spectro Role Privileges
@@ -333,10 +332,11 @@ The privileges associated with the _Spectro role_ must be granted via role assig
 either the user or a group containing the user. Review the required role assignments to ensure that your user has all
 required privileges on all required objects.
 
-| **vSphere Object**                           | **Propagation** | **Role**       | **Condition**                                                                                                                             |
-| -------------------------------------------- | --------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Target Network**                           | Yes             | _Spectro role_ |                                                                                                                                           |
-| **Target Datastore**                         | Yes             | _Spectro role_ |                                                                                                                                           |
-| **All ESXi hosts within the Target Cluster** | No              | _Spectro role_ |                                                                                                                                           |
-| **spectro-templates Folder**                 | Yes             | _Spectro role_ | For airgap installs, it must be manually created in advance and permissions assigned. For connected installs it is created automatically. |
-| **Target Resource Pool**                     | Yes             | _Spectro role_ |                                                                                                                                           |
+| **vSphere Object**                           | **Propagation** | **Role**       | **Condition**                                                                                                                                 |
+| -------------------------------------------- | --------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Target Network**                           | Yes             | _Spectro role_ |                                                                                                                                               |
+| **Target Datastore**                         | Yes             | _Spectro role_ |                                                                                                                                               |
+| **All ESXi hosts within the Target Cluster** | No              | _Spectro role_ |                                                                                                                                               |
+| **spectro-templates Folder**                 | Yes             | _Spectro role_ | Must be manually created in advance, assigned permissions, and populated with Spectro Cloud VM Templates.                                     |
+| **Target VM Folder**                         | Yes             | _Spectro role_ | For air-gapped installs, it must be manually created in advance and permissions assigned. For connected installs it is created automatically. |
+| **Target Resource Pool**                     | Yes             | _Spectro role_ |                                                                                                                                               |
