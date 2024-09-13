@@ -80,9 +80,9 @@ following steps to restart the management pod.
 
 ## Non-unique vSphere CNS Mapping
 
-In Palette releases 4.4.8 and earlier, self-hosted instances of Palette in vSphere do not have globally unique cluster
-IDs. This can lead to issues if you have multiple instances of self-hosted Palette in your vSphere environment, and can
-lead to data loss and data overwrite issues during an upgrade as well.
+In Palette releases 4.4.8 and earlier, Persistent Volume Claims (PVCs) metadata do not use a unique identifier for
+self-hosted Palette clusters. This causes incorrect Cloud Native Storage (CNS) mappings in vSphere, potentially leading
+to issues during node operations and upgrades.
 
 This issue is resolved in Palette releases starting with 4.4.14. However, if you have self-hosted instances of Palette
 in your vSphere environment, you should execute the following utility script to make the Cloud Native Storage (CNS)
@@ -90,30 +90,35 @@ mapping unique for the associated PVC.
 
 ### Debug Steps
 
-1. SSH to the VM where you can access your self-hosted Palette instance with `kubectl`.
+1. Ensure your machine has network access to your self-hosted Palette instance with `kubectl`. Alternatively, establish
+   an SSH connection to a machine where you can access your self-hosted Palette instance with `kubectl`.
 
-2. Issue the following command to download the utility script.
+2. Log in to your self-hosted Palette instance System Console.
+
+3. In the **Main Menu**, click **Enterprise Cluster**.
+
+4. In the cluster details page, scroll down to the **Kubernetes Config File** field and download the kubeconfig file.
+
+5. Issue the following command to download the utility script.
 
    ```bash
    curl --output csi-helper https://software.spectrocloud.com/tools/csi-helper/csi-helper
    ```
 
-3. Adjust the permission of the script.
+6. Adjust the permission of the script.
 
    ```bash
    chmod +x csi-helper
    ```
 
-4. Download the kubeconfig file of your self-hosted Palette instance.
-
-5. Issue the following command to execute the utility script. Replace the placeholder with the path to your kubeconfig
-   file
+7. Issue the following command to execute the utility script. Replace the placeholder with the path to your kubeconfig
+   file.
 
    ```bash
    ./csi-helper --kubeconfig=<PATH_TO_KUBECONFIG>
    ```
 
-6. Issue the following command to verify that the script had updated the cluster ID.
+8. Issue the following command to verify that the script had updated the cluster ID.
 
    ```bash
    kubectl describe configmap vsphere-cloud-config --namespace=kube-syste
