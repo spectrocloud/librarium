@@ -72,7 +72,7 @@ attribute for the VMO cluster.
 
 1. Log in to [Palette](https://console.spectrocloud.com)
 
-2. Nagivate to the **left Main Menu** and select **Clusters**.
+2. Navigate to the **left Main Menu** and select **Clusters**.
 
 3. Select your VMO cluster to access the cluster details page.
 
