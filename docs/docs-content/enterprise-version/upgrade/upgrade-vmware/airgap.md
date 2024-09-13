@@ -16,7 +16,8 @@ details.
 :::warning
 
 If you are upgrading from a Palette version that is older than 4.4.14, ensure that you have executed the utility script
-to make the CNS mapping unique for the associated PVC.
+to make the CNS mapping unique for the associated PVC. For more information, refer to the
+[Troubleshooting guide](../../../troubleshooting/enterprise-install.md#non-unique-vsphere-cns-mapping).
 
 :::
 
