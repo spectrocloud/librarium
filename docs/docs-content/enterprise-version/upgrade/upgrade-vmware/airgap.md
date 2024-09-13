@@ -9,12 +9,14 @@ keywords: ["self-hosted", "enterprise"]
 ---
 
 This guide takes you through the process of upgrading a self-hosted airgap Palette instance installed on VMware vSphere.
-
-:::warning
-
 Before upgrading Palette to a new major version, you must first update it to the latest patch version of the latest
 minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for
 details.
+
+:::warning
+
+Before upgrading Palette to a new major version, you must first update it to the latest minor version available. Refer
+to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for details.
 
 :::
 
