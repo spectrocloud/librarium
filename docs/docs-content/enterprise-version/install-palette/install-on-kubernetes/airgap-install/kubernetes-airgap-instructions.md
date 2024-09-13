@@ -89,9 +89,10 @@ Complete the following steps before deploying the airgap Palette installation.
 3.  In your OCI registry, create a public repository named `spectro-images`. The public repositry will host the images
     required by Palette.
 
-4.  Download the Certificate Authority (CA) for your OCI registry. You will need to provide the installation process the
-    CA, otherwise you may encounter errors when authenticating with the OCI registry which could result in an incomplete
-    install. Skip this step if you are using AWS ECR.
+4.  Download the Certificate Authority (CA) for your OCI registry and make it available in the local file system. You
+    will need to provide the CA to the Palette CLI installation wizard later in the installation process. If you don't
+    give the Palette CLI the file path to the CA when prompted, you may encounter errors when authenticating with the
+    OCI registry, which could result in an incomplete installation. Skip this step if you are using AWS ECR.
 
 5.  Log in to the Linux environment where you will download the airgap binaries. This step requires internet access.
 
