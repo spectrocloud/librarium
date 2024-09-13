@@ -273,7 +273,5 @@ IDs. Use the following steps to correctly identify the issue and resolve it.
     to left **Main Menu** and select **Enterprise Cluster**. The **Nodes** tab will display the status of the nodes in
     the cluster.
 
-    ![A view of three nodes in a healthy status](/troubleshootig_palette-upgrade_nodes-healthy.webp)
-
     If you continue to encounter issues, contact our support team by emailing
     [support@spectrocloud.com](mailto:support@spectrocloud.com) so that we can provide you with further guidance.
