@@ -34,7 +34,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 - The following artifacts must be available in the root home directory of the airgap support VM. You can download the
   files in a system with internet access and then transfer them to your airgap environment.
   - CAPI Image Builder compressed archive file. Contact your Palette support representative to obtain the latest version
-    of the tool. This guide uses version `4.4.3` of the tool as an example.
+    of the tool. This guide uses version `4.4.4` of the tool as an example.
   - [Rocky Linux ISO](https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8-latest-x86_64-dvd.iso) version
     `8-latest`. Ensure you download the **x86_64 DVD ISO** and not the **x86_64 BOOT ISO**, and make sure you have its
     **SHA256** checksum available. This guide uses Rocky 8 as an example. Refer to the
@@ -69,7 +69,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```
 
     ```text hideClipboard
-    airgap-pack-kubernetes-1.28.9.bin  bin  capi-image-builder-v4.4.3.tgz  prep  Rocky-8-latest-x86_64-dvd.iso  snap
+    airgap-pack-kubernetes-1.28.9.bin  bin  capi-image-builder-v4.4.4.tgz  prep  Rocky-8-latest-x86_64-dvd.iso  snap
     ```
 
     :::warning
@@ -82,7 +82,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 4.  Extract the CAPI Image Builder file.
 
     ```shell
-    tar --extract --gzip --file=capi-image-builder-v4.4.3.tgz
+    tar --extract --gzip --file=capi-image-builder-v4.4.4.tgz
     ```
 
 5.  Update the permissions of the `output` folder to allow the CAPI Builder tool to create directories and files within
@@ -212,14 +212,14 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         <TabItem value="Docker" label="Docker">
 
         ```shell
-        docker load < capi-builder-v4.4.3.tar
+        docker load < capi-builder-v4.4.4.tar
         ```
 
         </TabItem>
         <TabItem value="Podman" label="Podman">
 
         ```shell
-        podman load < capi-builder-v4.4.3.tar
+        podman load < capi-builder-v4.4.4.tar
         ```
 
         </TabItem>
@@ -255,7 +255,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         ```
         ```text hideClipboard
         REPOSITORY                                              TAG         IMAGE ID      CREATED       SIZE
-        gcr.io/spectro-images-public/imagebuilder/capi-builder  v4.4.3      34ae97fee5e3  10 days ago   2.59 GB
+        gcr.io/spectro-images-public/imagebuilder/capi-builder  v4.4.4      34ae97fee5e3  10 days ago   2.59 GB
         gcr.io/spectro-images-public/imagebuilder/yum-repo      v1.0.0      b03879039936  6 weeks ago   603 MB
         ```
 
@@ -267,7 +267,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         ```
         ```text hideClipboard
         REPOSITORY                                              TAG         IMAGE ID      CREATED       SIZE
-        gcr.io/spectro-images-public/imagebuilder/capi-builder  v4.4.3      34ae97fee5e3  10 days ago   2.59 GB
+        gcr.io/spectro-images-public/imagebuilder/capi-builder  v4.4.4      34ae97fee5e3  10 days ago   2.59 GB
         gcr.io/spectro-images-public/imagebuilder/yum-repo      v1.0.0      b03879039936  6 weeks ago   603 MB
         ```
 
@@ -350,14 +350,14 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         <TabItem value="Docker" label="Docker">
 
         ```bash
-        BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach gcr.io/spectro-images-public/imagebuilder/capi-builder:v4.4.3)
+        BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach gcr.io/spectro-images-public/imagebuilder/capi-builder:v4.4.4)
         ```
 
         </TabItem>
         <TabItem value="Podman" label="Podman">
 
         ```bash
-        BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach gcr.io/spectro-images-public/imagebuilder/capi-builder:v4.4.3)
+        BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach gcr.io/spectro-images-public/imagebuilder/capi-builder:v4.4.4)
         ```
 
         </TabItem>
@@ -437,11 +437,11 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     command below to confirm that the build files are present in the output directory.
 
         ```shell
-        ls rocky-8
+        ls output/rocky-8
         ```
 
         ```text hideClipboard
-        packer-manifest.json  rockylinux-8-kube-v1.28.9.mf  rockylinux-8-kube-v1.28.9.ovfrocky-8-disk-0.vmdk  rockylinux-8-kube-v1.28.9.ova  rocky-8.ovf rockylinux-8-kube-v1.28.9.ova.sha256
+        packer-manifest.json  rockylinux-8-kube-v1.28.9.mf  rockylinux-8-kube-v1.28.9.ovf  rocky-8-disk-0.vmdk  rockylinux-8-kube-v1.28.9.ova  rocky-8.ovf rockylinux-8-kube-v1.28.9.ova.sha256
         ```
 
 19. Copy the `rockylinux-8-kube-v1.28.9.ova` file to the home directory of the airgap support VM.
