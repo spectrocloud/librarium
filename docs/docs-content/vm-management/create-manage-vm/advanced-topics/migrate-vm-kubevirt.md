@@ -33,7 +33,8 @@ from VMware vSphere to Palette VMO.
   information, refer to
   [Repave Behaviors and Configurations](../../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration)
 
-  Additionally, we recommend provisioning volumes with the `ReadWriteMany` access mode.
+  Additionally, we recommend provisioning volumes with the `ReadWriteMany` access mode to ensure that VMs can be
+  [live migrated](https://kubevirt.io/user-guide/compute/live_migration/#limitations).
 
   ```yaml
   kubeadmconfig:
