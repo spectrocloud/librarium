@@ -11,9 +11,9 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## Sept 14, 2024 - Release 4.4.17
+## Sept 14, 2024 - Release 4.4.18
 
-### Palette Enterprise {#release-4-4-17}
+### Palette Enterprise {#release-4-4-18}
 
 ##### Features
 
@@ -37,7 +37,7 @@ tags: ["release-notes"]
   [Cloud Native Storage](https://blogs.vmware.com/virtualblocks/2019/08/14/introducing-cloud-native-storage-for-vsphere/)
   (CSN) mappings to PVCs belonging to a specific self-hosted cluster were incorrect, potentially causing issues during
   various cluster node operations. This issue affects all self-hosted versions of Palette and VerteX before to 4.4.14
-  and must be addressed before upgrading to version 4.4.17 or higher. Refer to the
+  and must be addressed before upgrading to version 4.4.18 or higher. Refer to the
   [Non-unique vSphere CNS Mapping](../troubleshooting/enterprise-install.md) troubleshooting guide for more information
   on how to resolve this issue.
 
@@ -104,7 +104,7 @@ tags: ["release-notes"]
 
 #### Features
 
-- Includes all Palette features and improvements in this release. Refer to the [Palette](#release-4-4-17) section for
+- Includes all Palette features and improvements in this release. Refer to the [Palette](#release-4-4-18) section for
   more details
 
 ### Automation
