@@ -11,8 +11,8 @@ const stylesheet = fs.readFileSync(stylesheetPath).toString();
 test.describe.configure({ mode: "parallel" });
 
 function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
-  if (excludeList.includes(pathname)) {
-    console.log(`Excluding ${pathname}`);
+  if (excludeList.some((excludedPath) => pathname === excludedPath || pathname.startsWith(excludedPath))) {
+    console.log(`Excluding ${pathname} because it matches or starts with an exclude list pattern`);
     return false;
   }
 

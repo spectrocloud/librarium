@@ -343,29 +343,37 @@ async function write(res, packName, logoUrlMap) {
 
 async function getLogoUrl(packsAllData, logoUrlMap) {
   for (let j = 0; j < packsAllData.length; j++) {
-    const registries = packsAllData[j].spec.registries;
-    const packName = packsAllData[j].spec.name;
+    const { registries, name: packName } = packsAllData[j].spec;
+
     for (let i = 0; i < registries.length; i++) {
       const registry = registries[i];
-      try {
-        let url = registry.logoUrl;
-        if (!url) {
-          url = `${BASE_URL}/v1/packs/${registry.latestPackUid}/logo`;
-        } else {
-          url = url.startsWith("https") ? url : url.startsWith("/") ? `${BASE_URL}${url}` : `${BASE_URL}/${url}`;
-        }
-        if (!Object.hasOwnProperty.call(logoUrlMap, packName)) {
+      let url = registry.logoUrl || `${BASE_URL}/v1/packs/${registry.latestPackUid}/logo`;
+
+      url =
+        url.startsWith("http://") || url.startsWith("https://")
+          ? url
+          : url.startsWith("/")
+            ? `${BASE_URL}${url}`
+            : `${BASE_URL}/${url}`;
+
+      if (!Object.prototype.hasOwnProperty.call(logoUrlMap, packName)) {
+        try {
+          options.headers["Accept"] = "image/png";
           const res = await fetch(url, options);
+
+          if (!res.ok) {
+            throw new Error(`Failed to fetch logo for ${packName} from ${url}. Got status ${res.status}`);
+          }
+
           await write(res, packName, logoUrlMap);
           counter++;
+
           if (counter % 10 === 0) {
             await setTimeout(1000);
           }
+        } catch (e) {
+          logger.error(e);
         }
-      } catch (e) {
-        // Intentionally ignoring errors here to continue processing other logos
-        // Enable the below line to log the error, if needed, for debugging.
-        // logger.error(e);
       }
     }
   }
@@ -415,15 +423,24 @@ async function pluginPacksAndIntegrationsData(context, options) {
           const registryPackData = [];
           for (const registry of packData.spec.registries) {
             const url = `${packUrl}${packData.spec.name}/registries/${registry.uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`;
-            registryPackData.push(callRateLimitAPI(() => api.get(url)));
+            registryPackData.push(
+              callRateLimitAPI(() => {
+                return api.get(url);
+              })
+            );
           }
           return registryPackData;
         });
         const flatted = promisesPackDetails.flat();
         const results = await Promise.allSettled(flatted);
-        apiPacksData = results
-          .filter((result) => result.status === "fulfilled" && result.value?.data)
-          .map((result) => result.value.data);
+
+        for (const result of results) {
+          if (result.status === "fulfilled" && result.value?.data) {
+            apiPacksData.push(result.value.data);
+          } else {
+            logger.error("Failed to fetch the details for the following pack " + result.reason.config.url);
+          }
+        }
         logger.info("Completed fetching all the packs and their details");
         logger.info("Fetching the logo for each pack");
         //Fetch logos
@@ -456,7 +473,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
           logger.error("An error occurred while reading the JSON file:", e);
         }
       }
-      logger.info(`The number of packs identified are ${Object.keys(apiPackResponse.packMDMap).length}`);
+      logger.info(`The number of packs identified is:  ${Object.keys(apiPackResponse.packMDMap).length}`);
       return {
         packsPaletteData: apiPackResponse.packMDMap,
         packsPaletteDetailsData: apiPackResponse.apiPacksData,

@@ -25,8 +25,8 @@ cluster.
 
 ```yaml hideClipboard
 pack:
-namespace: "external-dns"
-spectrocloud.com/display-name: "dns-1"
+  namespace: "external-dns"
+  spectrocloud.com/display-name: "dns-1"
 ```
 
 If the same pack is needed at another layer, repeat the above block with the same namespace but a different name such as

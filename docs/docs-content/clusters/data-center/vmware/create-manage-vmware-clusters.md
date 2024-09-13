@@ -17,6 +17,23 @@ Before you begin, ensure that you have the following prerequisites:
 - A VMware vSphere user account with the necessary permissions to create and manage clusters. Refer to the
   [Required Permissions](./permissions.md) page for more information.
 
+- Ensure your vSphere environment contains the Kubernetes OVA for the desired Kubernetes version. Such as
+  `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-1294-0.ova`. Speak to your assigned support
+  representative to get the link to other versions. Append an `r_` prefix to the OVA name and remove the `.ova` suffix
+  after the import. For example, the final output should look like `r_u-2204-0-k-12813-0`. This naming convention is
+  required for the install process to identify the OVA. The OVA must be converted to a template in the
+  `spectro-templates` folder.
+
+  :::tip
+
+  You can also use the **Deploy OVF Template** wizard in vSphere to make the OVA available in the `spectro-templates`
+  folder. Append the `r_` prefix, and remove the `.ova` suffix when assigning a name and target location. You can
+  terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
+  [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
+  guide for more information about deploying an OVA in vCenter.
+
+  :::
+
 - A VMware account registered in Palette. VMware accounts are automatically registered when you deploy a Private Cloud
   Gateway (PCG) in Palette. Check out the [Deploy a PCG](../../pcg/deploy-pcg/vmware.md) guide to learn how to deploy a
   PCG.
