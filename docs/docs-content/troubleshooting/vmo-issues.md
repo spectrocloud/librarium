@@ -62,7 +62,7 @@ Clusters with the VMO pack may experience VMs getting stuck in a continuous migr
 
 ## Scenario - OVA Imports Fail Due To Storage Class Attribute
 
-If you are importing an OVA file through the Palette CLI's
+If you are importing an OVA file through the Palette CLI
 [VMO command](../automation/palette-cli/commands/vmo.md#import-ova), `import-ova`, and the import fails. It may be due
 to the VMO cluster using a `storageClass` with an unsupported volume bind mode, such as
 `volumeBindingMode: WaitForFirstConsumer`. To address this issue, use the following steps to update the `storageClass`
