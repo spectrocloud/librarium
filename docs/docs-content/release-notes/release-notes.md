@@ -32,11 +32,12 @@ tags: ["release-notes"]
 
 ##### Bug Fixes
 
-- Fixed an issue where self-hosted Palette and VerteX were not getting unique identifiers for the
+- Fixed an issue where Persistent Volume Claims (PVCs) metadata was not using the self-hosted Palette cluster's unique
+  identifier. As a result,
   [Cloud Native Storage](https://blogs.vmware.com/virtualblocks/2019/08/14/introducing-cloud-native-storage-for-vsphere/)
-  (CNS) associated with Persistent Volume Claims (PVCs) created by the self-hosted cluster. This issue affects all prior
-  versions of Palette and VerteX. Refer to the
-  [Non-unique vSphere CNS Mapping](../troubleshooting/enterprise-install.md) troubleshooting guide for more information.
+  (CSN) mappings to PVCs belonging to a specific self-hosted cluster were incorrect, potentially causing issues during
+  various cluster node operations. Refer to the
+  [Non-unique vSphere CNS Mapping](../troubleshooting/enterprise-install.md) troubleshooting guide for more information
 
 #### Deprecations and Removals
 
