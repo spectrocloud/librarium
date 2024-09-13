@@ -124,7 +124,7 @@ automatically resolve this issue. If you have self-hosted instances of Palette i
    kubectl describe configmap vsphere-cloud-config --namespace=kube-syste
    ```
 
-   If the update is successful, the cluster ID in the ConfigMap will have a unique ID  assigned instead of
+   If the update is successful, the cluster ID in the ConfigMap will have a unique ID assigned instead of
    `spectro-mgmt/spectro-mgmt-cluster`.
 
    ```hideClipboard {12}
