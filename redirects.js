@@ -534,6 +534,14 @@ const redirects = [
     to: "/byoos/image-builder/build-image-vmware/rhel-pxk/",
   },
   {
+    from: "/byoos/capi-image-builder/build-image-vmware/rhel-capi/",
+    to: "/byoos/capi-image-builder/build-image-vmware/non-airgap-build/rhel-capi/",
+  },
+  {
+    from: "/byoos/capi-image-builder/build-image-vmware/rocky-capi/",
+    to: "/byoos/capi-image-builder/build-image-vmware/non-airgap-build/rocky-capi/",
+  },
+  {
     from: "/automation/palette-cli/commands/validator/",
     to: "/automation/palette-cli/commands/ec/",
   },
