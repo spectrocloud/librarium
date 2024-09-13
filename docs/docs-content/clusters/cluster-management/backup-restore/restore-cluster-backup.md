@@ -102,6 +102,10 @@ out to our support team at [support@spectrocloud.com](mailto:support@spectroclou
   enables the destination cluster to assume the necessary IAM role to access the backup files. Refer to the
   [Add a Backup Location using Dynamic Credentials](add-backup-location-dynamic.md) guide.
 
+<!-- prettier-ignore -->
+- If your backup contains volume snapshots, ensure that your CSI driver supports volume snapshots. For more
+  information about volume support, review the CSI pack README for your CSI driver in use. Refer to the [Volume Snapshots](backup-restore.md#volume-snapshots) section for more information.
+
 ### Instructions
 
 Use the following instructions in Palette to restore a backup to a destination cluster.

@@ -14,14 +14,9 @@ version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supporte
 
 :::warning
 
-<<<<<<< HEAD
-Before upgrading Palette to a new major version, you must first update it to the latest minor version available. Refer
-to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for details.
-=======
 If you are upgrading from a Palette version that is older than 4.4.14, ensure that you have executed the utility script
 to make the CNS mapping unique for the associated PVC. For more information, refer to the
 [Troubleshooting guide](../../../troubleshooting/enterprise-install.md#non-unique-vsphere-cns-mapping).
->>>>>>> b46a973cd (docs: add new vsphere known issue  (#3896))
 
 :::
 
