@@ -25,6 +25,7 @@ from VMware vSphere to Palette VMO.
 ## Prerequisites
 
 - A Healthy VMO cluster. Refer to the [Create a VMO Profile](../../create-vmo-profile.md) for further guidance.
+
   - The VMO cluster must have access to VMware and the VM you want to migrate.
 
   :::warning
