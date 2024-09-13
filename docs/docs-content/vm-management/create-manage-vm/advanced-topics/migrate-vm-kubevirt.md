@@ -28,8 +28,12 @@ from VMware vSphere to Palette VMO.
 
   :::warning
 
-  Apply the following patch to your VMO cluster in order to allow the creation of `Block` storage volumes during the VM
-  migration process. Additionally, we recommend provisioning volumes with the `ReadWriteMany` access mode.
+  If you need to provision `Block` storage volumes during the VM migration process, add the following custom
+  configuration to your VMO cluster OS pack. Applying this configuration may cause a cluster repave. For more
+  information, refer to
+  [Repave Behaviors and Configurations](../../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration)
+
+  Additionally, we recommend provisioning volumes with the `ReadWriteMany` access mode.
 
   ```yaml
   kubeadmconfig:
