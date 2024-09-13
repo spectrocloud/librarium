@@ -86,8 +86,7 @@ to issues during node operations and upgrades.
 
 This issue is resolved in Palette releases starting with 4.4.14. However, upgrading to 4.4.14 will not automatically
 resolve this issue. If you have self-hosted instances of Palette in your vSphere environment older than 4.4.14, you
-should execute the following utility script manually to make the Cloud Native Storage (CNS) mapping unique for the
-associated PVC.
+should execute the following utility script manually to make the CNS mapping unique for the associated PVC.
 
 ### Debug Steps
 
