@@ -1,24 +1,21 @@
 ---
-sidebar_label: "Certificate Management"
-title: "Certificate Management"
-description: "Learn how to manage the cluster certificates through Palette."
+sidebar_label: "Renew Cluster PKI Certificates"
+title: "Renew Cluster PKI Certificates"
+description: "Learn about auto-renewal of control certificates in Palette and how to renew the certificates manually. "
 hide_table_of_contents: false
 sidebar_position: 50
 tags: ["clusters", "cluster management"]
 ---
 
-Palette installs Kubernetes through the tool, [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm). As a
-result, all deployed clusters include auto-generated Public Key Infrastructure (PKI) certificates created by kubeadm. We
-recommend you review the
-[PKI certificates and requirement](https://kubernetes.io/docs/setup/best-practices/certificates) Kubernetes
-documentation to learn more about the auto-generated certificates and to better understand their purpose.
+In Kubernetes, Public Key Infrastructure (PKI) certificates are used to secure communications and authenticate
+components within the cluster. Certificates have an expiry date and need to be renewed periodically. You can view the
+issue and expiry date of the cluster by click on **View K8s Certificates** in the cluster details page.
 
-This reference page focuses on how to renew the PKI certificates through Palette. You have two options for how you can
-renew the cluster PKI certificates:
+This page focuses on how to renew the PKI certificates through Palette. You have two options for how you can renew the
+cluster PKI certificates:
 
-- Automatic Certificate Renewal
-
-- Manual Certificate Renewal
+- [Automatic Certificate Renewal](#automatic-certificate-renewal)
+- [Manual Certificate Renewal](#manual-certificate-renewal)
 
 :::info
 
@@ -27,7 +24,17 @@ years.
 
 :::
 
-You can learn more about each option in the following sections.
+## Certificate Renewal Impact on Cluster Availability
+
+After the new certificates are generated, the cluster needs to restart the control plane components in order to pick up
+the new certificates. Depending on your cluster structure, this restart period may impact the cluster management
+availability of your cluster, but will not affect your cluster workloads:
+
+- If you have a single-node control plane, this will cause a short period of downtime for the control plane components,
+  meaning that cluster management availability will be temporarily impacted. However, your worker nodes will continue to
+  operate normally in the meantime and their workloads will not be impacted.
+- If you have three nodes or more in your control plane, certificate renewal will not cause downtime for neither the
+  control plane components nor worker nodes.
 
 ## Limitations
 
@@ -39,9 +46,8 @@ You can learn more about each option in the following sections.
 
 ## Automatic Certificate Renewal
 
-Palette will automatically update the cluster PKI certificates 30 days before they expire. The automatic renewal process
-will not cause a cluster repave. The automatic renewal process will only renew the certificates for the control plane
-nodes.
+Palette will automatically update the cluster PKI certificates 30 days before they expire. You can view the issue and
+expiry date of the cluster by clicking on **View K8s Certificates** in the cluster details page.
 
 Another scenario that results in new PKI certificates is upgrading a cluster's Kubernetes version. Upgrading a cluster's
 Kubernetes version, whether a minor patch or a major release, results in renewed PKI certificates. We recommend
