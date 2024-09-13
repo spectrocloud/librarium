@@ -26,6 +26,8 @@ from VMware vSphere to Palette VMO.
 
 - A Healthy VMO cluster. Refer to the [Create a VMO Profile](../../create-vmo-profile.md) for further guidance.
 
+  - The VMO cluster must have access to VMware and the VM you want to migrate.
+
   :::warning
 
   If you need to provision `Block` storage volumes during the VM migration process, add the following custom
@@ -75,15 +77,9 @@ from VMware vSphere to Palette VMO.
   - If you are migrating more than one VM in the same plan, they must all share the same network.
 - The Palette CLI installed and setup. Refer to the
   [Installation](../../../automation/palette-cli/install-palette-cli.md) guide for further details.
+  - The Palette CLI must have access to both the VMO cluster and the machines to be migrated.
 - The kubectl command-line tool should also be installed. Refer to the
   [kubectl installation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) guide to learn more.
-
-:::warning
-
-The VMO cluster must have access to VMware and the VM you want to migrate. The Palette CLI must have access to both the
-VMO cluster and the machines to be migrated.
-
-:::
 
 ## Migrate VMware vSphere VMs
 
