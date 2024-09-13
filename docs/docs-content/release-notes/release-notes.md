@@ -186,10 +186,7 @@ the following sections for a complete list of features, improvements, and known 
 
 - In a VMware environment, self-hosted Palette instances do not receive a unique cluster ID when deployed, which can
   cause issues during a node repave event, such as a Kubernetes version upgrade. Specifically, Persistent Volumes (PVs)
-  and Persistent Volume Claims (PVCs) will experience start problems due to the lack of a unique cluster ID. To resolve
-  this issue, refer to the
-  [Volume Attachment Errors Volume in VMware Environment](../troubleshooting/palette-upgrade.md#volume-attachment-errors-volume-in-vmware-environment)
-  troubleshooting guide.
+  and Persistent Volume Claims (PVCs) will experience start problems due to the lack of a unique cluster ID.
 
 - Day-2 operations related to infrastructure changes, such as modifying the node size, and node count, when using
   MicroK8s are not taking effect.
