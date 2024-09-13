@@ -25,6 +25,42 @@ from VMware vSphere to Palette VMO.
 ## Prerequisites
 
 - A Healthy VMO cluster. Refer to the [Create a VMO Profile](../../create-vmo-profile.md) for further guidance.
+
+  :::warning
+
+  Apply the following patch to your VMO cluster in order to allow the creation of `Block` storage volumes during the VM
+  migration process. Additionally, we recommend provisioning volumes with the `ReadWriteMany` access mode.
+
+  ```yaml
+  kubeadmconfig:
+     preKubeadmCommands:
+        # Start containerd with new configuration
+        - systemctl daemon-reload
+        - systemctl restart containerd
+     files:
+        - targetPath: /etc/containerd/config.toml
+        targetOwner: "root:root"
+        targetPermissions: "0644"
+        content: |
+           ## template: jinja
+
+           # Use config version 2 to enable new configuration fields.
+           version = 2
+
+           imports = ["/etc/containerd/conf.d/*.toml"]
+
+           [plugins]
+              [plugins."io.containerd.grpc.v1.cri"]
+              sandbox_image = "registry.k8s.io/pause:3.9"
+              device_ownership_from_security_context = true
+              [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+              runtime_type = "io.containerd.runc.v2"
+              [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+              SystemdCgroup = true
+  ```
+
+  :::
+
 - A VMware vSphere user account with the necessary permissions to manage the VMs you want to migrate.
   - Migration can optionally accelerated by providing credentials for the ESXi hosts where the VMs reside.
 - One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
