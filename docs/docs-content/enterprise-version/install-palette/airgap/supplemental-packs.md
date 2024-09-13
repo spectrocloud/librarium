@@ -142,22 +142,27 @@ registry.
 The following table lists additional OVAs you may need depending on the Kubernetes version and distribution you want to
 use for the workload clusters.
 
-| **Kubernetes Version** | **OVA Name**            | **Download URL**                                                                           |
-| ---------------------- | ----------------------- | ------------------------------------------------------------------------------------------ |
-| Kubernetes 1.26.4      | u-2204-0-k-1264-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1264-0.ova`       |
-| Kubernetes 1.26.5      | u-2204-0-k-1265-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1265-0.ova`       |
-| Kubernetes 1.26.10     | u-2204-0-k-12610-0      | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12610-0.ova`      |
-| Kubernetes 1.26.12     | u-2204-0-k-12612-0      | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12612-0.ova`      |
-| Kubernetes 1.27.1      | u-2204-0-k-1271-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1271-0.ova`       |
-| Kubernetes 1.27.2      | u-2204-0-k-1272-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1272-0.ova`       |
-| Kubernetes 1.28.2      | u-2204-0-k-1282-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1282-0.ova`       |
-| Kubernetes 1.29.0      | u-2204-0-k-1290-0       | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1290-0.ova`       |
-| RKE2 1.26.11           | u-2204-0-k-rke2-12611-0 | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-rke2-12611-0.ova` |
-| RKE2 1.26.12           | u-2204-0-k-rke2-12612-0 | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-rke2-12612-0.ova` |
-| RKE2 1.27.8            | u-2204-0-k-rke2-1278-0  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-rke2-1278-0.ova`  |
-| RKE2 1.27.9            | u-2204-0-k-rke2-1279-0  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-rke2-1279-0.ova`  |
-| RKE2 1.28.4            | u-2204-0-k-rke2-1284-0  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-rke2-1284-0.ova`  |
-| RKE2 1.28.5            | u-2204-0-k-rke2-1285-0  | `https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-rke2-1285-0.ova`  |
+| **Kubernetes Version** | **OVA Name**                | **Download URL**                                                                 |
+| ---------------------- | --------------------------- | -------------------------------------------------------------------------------- |
+| Kubernetes 1.29.4      | u-2204-0-k-1294-0.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-1294-0.ova`       |
+| Kubernetes 1.28.9      | u-2204-0-k-1289-0.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-1289-0.ova`       |
+| Kubernetes 1.27.13     | u-2204-0-k-12713-0.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-12713-0.ova`      |
+| Kubernetes 1.27.11     | u-2204-0-k-rke2-12711-0.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-rke2-12711-0.ova` |
+| Kubernetes 1.29.4      | u-2204-0-k-rke2-1294-0.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-rke2-1294-0.ova`  |
+| Kubernetes 1.28.9      | u-2204-0-k-rke2-1289-0.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-rke2-1289-0.ova`  |
+| Kubernetes 1.27.13     | u-2204-0-k-rke2-12713-0.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-rke2-12713-0.ova` |
+| Kubernetes 1.29.5      | u-2204-0-k-rke2-1295-0.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-rke2-1295-0.ova`  |
+| Kubernetes 1.27.14     | u-2204-0-k-rke2-12714-0.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-rke2-12714-0.ova` |
+| Kubernetes 1.28.10     | u-2204-0-k-rke2-12810-0.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-rke2-12810-0.ova` |
+| Kubernetes 1.28.11     | u-2204-0-k-12811-0.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-12811-0.ova`      |
+| Kubernetes 1.29.6      | u-2204-0-k-1296-0.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-1296-0.ova`       |
+| Kubernetes 1.27.15     | u-2204-0-k-12715-0.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-12715-0.ova`      |
+| Kubernetes 1.27.16     | u-2204-0-k-12716-0.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-12716-0.ova`      |
+| Kubernetes 1.28.12     | u-2204-0-k-12812-0.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-12812-0.ova`      |
+| Kubernetes 1.29.7      | u-2204-0-k-1297-0.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-1297-0.ova`       |
+| Kubernetes 1.29.6      | u-2204-0-k-rke2-1296-0.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-rke2-1296-0.ova`  |
+| Kubernetes 1.28.11     | u-2204-0-k-rke2-12811-0.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-rke2-12811-0.ova` |
+| Kubernetes 1.27.15     | u-2204-0-k-rke2-12715-0.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-rke2-12715-0.ova` |
 
 ### Usage Instructions
 

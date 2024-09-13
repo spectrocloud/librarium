@@ -32,12 +32,14 @@ tags: ["release-notes"]
 
 ##### Bug Fixes
 
-- Fixed an issue where Persistent Volume Claims (PVCs) metadata was not using the self-hosted Palette cluster's unique
-  identifier. As a result,
+- Fixed an issue where Persistent Volume Claims (PVCs) metadata did not use a unique identifier for the self-hosted
+  Palette cluster. As a result,
   [Cloud Native Storage](https://blogs.vmware.com/virtualblocks/2019/08/14/introducing-cloud-native-storage-for-vsphere/)
   (CSN) mappings to PVCs belonging to a specific self-hosted cluster were incorrect, potentially causing issues during
-  various cluster node operations. Refer to the
+  various cluster node operations. This issue affects all self-hosted versions of Palette and VerteX before to 4.4.14
+  and must be addressed before upgrading to version 4.4.17 or higher. Refer to the
   [Non-unique vSphere CNS Mapping](../troubleshooting/enterprise-install.md) troubleshooting guide for more information
+  on how to resolve this issue.
 
 #### Deprecations and Removals
 
@@ -61,17 +63,17 @@ tags: ["release-notes"]
 
 #### Features
 
-- You can now configure the Maximum Transmission Unit (MTU) for network interface configured discovered though Dynamic
-  Host Configuration Protocol (DHCP) when using [Local UI](../clusters/edge//local-ui/local-ui.md).
+- You can now configure the Maximum Transmission Unit (MTU) for network interface configured for discovery though
+  Dynamic Host Configuration Protocol (DHCP) when using [Local UI](../clusters/edge//local-ui/local-ui.md).
 
-- Manual and automatic Kubernetes certificate renewal for control-plane nodes is now available to Edge clusters managed
+- Manual and automatic Kubernetes certificate renewal for control plane nodes is now available to Edge clusters managed
   by Palette. This feature is available for the following Kubernetes distributions K3s, RKE2, and PXK-E. The new process
   for certificate renewal leverages the command `kubeadm certs renew`, ensuring certificates update without requiring
   node reboots. Refer to the [Certificate Management](../clusters/cluster-management/certificate-management.md)
   documentation to learn more.
 
-- Local UI now supported Edge hosts in _connected mode_. Previously, Local UI only supported Edge hosts in airgap mode.
-  This change allows users to now manage connected Edge hosts using Local UI. To learn more, refer to the
+- Local UI now supports Edge hosts in _connected mode_. Previously, Local UI only supported Edge hosts in airgap mode.
+  This change allows users to manage connected Edge hosts using Local UI. To learn more, refer to the
   [Local UI](../clusters/edge/local-ui/local-ui.md) documentation.
 
 #### Improvements
@@ -93,7 +95,7 @@ tags: ["release-notes"]
 
 #### Improvements
 
-- VM memory management now support the
+- VM memory management now supports the
   [Kubevirt Memory Hotplug](https://kubevirt.io/user-guide/compute/memory_hotplug/). This feature allows you to increase
   or decrease the memory allocated to a VM without requiring a VM restart. Refer to the
   [Manage CPU and Memory](../vm-management/create-manage-vm/enable-cpu-hotplug.md) documentation to learn more.
@@ -121,8 +123,8 @@ tags: ["release-notes"]
   providing a delete command for kind clusters when multiple kind clusters are detected locally.
 
 - The Palette CLI `ec install` command's validate flag can now be used in environments where a network proxy is
-  configured. When specified in the environment, the validate flag will honor `the NO_PROXY`,` HTTP_PROXY`,
-  `and HTTPS_PROXY environment` variables. Additionally, the validate flag will now check for connectivity and access to
+  configured. When specified in the environment, the validate flag will honor the `NO_PROXY`,`HTTP_PROXY`,
+  and `HTTPS_PROXY` environment variables. Additionally, the validate flag will now check for connectivity and access to
   image registries specified during the installation process. Refer to the
   [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section of the Palette EC
   command documentation to learn more about the validate flag.
