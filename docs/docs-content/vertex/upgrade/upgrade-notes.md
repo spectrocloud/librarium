@@ -21,3 +21,10 @@ Addressing this Mongo DNS issue will prevent system pods from experiencing _Cras
 After the upgrade, if Enterprise Cluster backups are stuck, refer to the
 [Enterprise Backup Stuck](../../troubleshooting/enterprise-install.md#scenario---enterprise-backup-stuck)
 troubleshooting guide for resolution steps.
+
+## Upgrade with VMware
+
+A known issue impacts all self-hosted Palette instances older then 4.4.14. Before upgrading an Palette instance with
+version older than 4.4.14, ensure that you execute a utility script to make all your cluster IDs unique in your
+Persistent Volume Claim (PVC) metadata. For more information, refer to the
+[Troubleshooting Guide](../../troubleshooting/enterprise-install.md#non-unique-vsphere-cns-mapping).

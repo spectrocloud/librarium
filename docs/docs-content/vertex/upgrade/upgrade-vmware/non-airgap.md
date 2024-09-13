@@ -9,12 +9,15 @@ keywords: ["self-hosted", "vertex"]
 ---
 
 This guide takes you through the process of upgrading a self-hosted Palette VerteX instance installed on VMware vSphere.
-
-:::warning
-
 Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of the
 latest minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section
 for details.
+
+:::warning
+
+If you are upgrading from a Palette VerteX version that is older than 4.4.14, ensure that you have executed the utility
+script to make the CNS mapping unique for the associated PVC. For more information, refer to the
+[Troubleshooting guide](../../../troubleshooting/enterprise-install.md#non-unique-vsphere-cns-mapping).
 
 :::
 
