@@ -78,7 +78,7 @@ following steps to restart the management pod.
    pod "mgmt-f7f97f4fd-lds69" deleted
    ```
 
-## Run Script to Make vSphere CNS Mapping Unique
+## Non-unique vSphere CNS Mapping
 
 In Palette releases 4.4.8 and earlier, self-hosted instances of Palette in vSphere do not have globally unique cluster
 IDs. This can lead to issues if you have multiple instances of self-hosted Palette in your vSphere environment, and can
@@ -100,7 +100,7 @@ mapping unique for the associated PVC.
 
 3. Adjust the permission of the script.
 
-   ```
+   ```bash
    chmod +x csi-helper
    ```
 
@@ -138,8 +138,8 @@ mapping unique for the associated PVC.
 
    [VirtualCenter "vcenter.spectrocloud.dev"]
    insecure-flag = "true"
-   user = "lenny@vsphere.local"
-   password = "XT#CXiKWmC1"
+   user = "example@vsphere.local"
+   password = "************"
 
    [Labels]
    zone = "k8s-zone"
