@@ -30,6 +30,14 @@ tags: ["release-notes"]
   view. This redesign provides a better user experience for managing clusters in large-scale environments. Refer to the
   [Cluster Grid View](../clusters/clusters.md#organize-cluster-grid) section to learn more.
 
+##### Bug Fixes
+
+- Fixed an issue where self-hosted Palette and VerteX were not getting unique identifiers for the
+  [Cloud Native Storage](https://blogs.vmware.com/virtualblocks/2019/08/14/introducing-cloud-native-storage-for-vsphere/)
+  (CNS) associated with Persistent Volume Claims (PVCs) created by the self-hosted cluster. This issue affects all prior
+  versions of Palette and VerteX. Refer to the
+  [Non-unique vSphere CNS Mapping](../troubleshooting/enterprise-install.md) troubleshooting guide for more information.
+
 #### Deprecations and Removals
 
 - Palette's internal message communication between components transitioned from NATS to gRPC. The previous usage of NATS
@@ -101,8 +109,8 @@ tags: ["release-notes"]
 #### Features
 
 - The Palette CLI is now compiled with FIPS-compliant cryptographic libraries, ensuring that it can be used in
-  FIPS-compliant environments. The CLI is also now available for the Darwin/arm64, Linux/amd64, and Windows/amd64
-  platforms. Check out the [Downloads](../spectro-downloads.md) page to download the latest version of the Palette CLI.
+  FIPS-compliant environments. Check out the [Downloads](../spectro-downloads.md) page to download the latest version of
+  the Palette CLI.
 
 #### Improvements
 
