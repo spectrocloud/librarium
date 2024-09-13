@@ -74,6 +74,10 @@ tolerations:
     operator: Exists
 ```
 
+Adding the `node.kubernetes.io/unschedulable` toleration to your pods can be useful in scenarios where you have pods
+that behave as _DeamonSets_ and should not be removed during a repave operation. You can use this toleration to ensure
+that these pods are not removed during a repave operation.
+
 You can also specify other tolerations during the cluster creation process. For more information on adding tolerations,
 refer to the [Taints and Tolerations](./taints.md) guide.
 
