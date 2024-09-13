@@ -218,10 +218,10 @@ Ensure that your VMO cluster has sufficient capacity for any VMs that you deploy
 
     The Palette CLI prompts you for information regarding the VM you want to deploy.
 
-    | **Parameter**               | **Description**                                    | **Values** |
-    | --------------------------- | -------------------------------------------------- | ---------- |
-    | **VM Namespace**            | The namespace to create your VM into.              |            |
-    | **VM Name**                 | The namespace of your VM.                          |            |
+    | **Parameter**               | **Description**                                   | **Values** |
+    | --------------------------- | ------------------------------------------------- | ---------- |
+    | **VM Namespace**            | The namespace to create your VM into.             |            |
+    | **VM Name**                 | The namespace of your VM.                         |            |
     | **Start VM Automatically?** | Indicate whether to start your VM after creation. | `y`/ `N`   |
 
 13. Depending on the configuration of your OVA, you may be prompted to provide value. The deployment of your VM should
