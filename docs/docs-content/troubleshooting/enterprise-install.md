@@ -118,13 +118,13 @@ automatically resolve this issue. If you have self-hosted instances of Palette i
    ./csi-helper --kubeconfig=<PATH_TO_KUBECONFIG>
    ```
 
-8. Issue the following command to verify that the script had updated the cluster ID.
+8. Issue the following command to verify that the script has updated the cluster ID.
 
    ```bash
    kubectl describe configmap vsphere-cloud-config --namespace=kube-syste
    ```
 
-   If the update is successful, the cluster ID in the ConfigMap should be a unique ID instead of
+   If the update is successful, the cluster ID in the ConfigMap will have a unique ID  assigned instead of
    `spectro-mgmt/spectro-mgmt-cluster`.
 
    ```hideClipboard {12}

@@ -54,7 +54,7 @@ Palette 4.0 includes the following major enhancements that require user interven
 
 :::warning
 
-A known issue impacts all self-hosted Palette instances older then 4.4.14. Before upgrading an Palette instance with
+A known issue impacts all self-hosted Palette instances older then 4.4.14. Before upgrading a Palette instance with
 version older than 4.4.14, ensure that you execute a utility script to make all your cluster IDs unique in your
 Persistent Volume Claim (PVC) metadata. For more information, refer to the
 [Troubleshooting Guide](../../troubleshooting/enterprise-install.md#non-unique-vsphere-cns-mapping).
