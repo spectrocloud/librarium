@@ -57,6 +57,14 @@ Taints can also be applied to node pools using the Spectro Cloud
    [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) official
    documentation page for more details.
 
+   :::tip
+
+   By default, Palette will not remove pods with the toleration key `node.kubernetes.io/unschedulable` set to
+   `NoSchedule`. For more information, refer to the [Pod Drainage Toleration](./node-pool.md#pod-drainage-toleration)
+   section
+
+   :::
+
    - Specify a custom **key** and custom **value**.
    - Palette supports the `Equal` **operator**.
    - The **effect** defines what will happen to the pods that do not tolerate a taint. Kubernetes provides three taint

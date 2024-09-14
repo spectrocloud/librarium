@@ -11,6 +11,11 @@ Local UI allows you to upload content bundles to the Edge host. The content in t
 create a single-node cluster consisting of the Edge host itself. You can also import cluster definitions, which is a
 bundle of one or more cluster profiles and their profile variables, from Palette to define your Edge cluster.
 
+Cluster operations in Local UI are only available to airgapped Edge hosts. You cannot use Local UI to create or manage
+clusters, upload content bundles, or cluster definition on a connected Edge host. You must use Palette to manage the
+cluster instead. For more information, refer to
+[Create Cluster Definition](../../site-deployment/cluster-deployment.md).
+
 :::preview
 
 :::
