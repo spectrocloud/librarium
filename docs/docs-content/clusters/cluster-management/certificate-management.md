@@ -1,24 +1,21 @@
 ---
-sidebar_label: "Certificate Management"
-title: "Certificate Management"
-description: "Learn how to manage the cluster certificates through Palette."
+sidebar_label: "Renew Cluster PKI Certificates"
+title: "Renew Cluster PKI Certificates"
+description: "Learn about auto-renewal of control certificates in Palette and how to renew the certificates manually. "
 hide_table_of_contents: false
 sidebar_position: 50
 tags: ["clusters", "cluster management"]
 ---
 
-Palette installs Kubernetes through the tool, [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm). As a
-result, all deployed clusters include auto-generated Public Key Infrastructure (PKI) certificates created by kubeadm. We
-recommend you review the
-[PKI certificates and requirement](https://kubernetes.io/docs/setup/best-practices/certificates) Kubernetes
-documentation to learn more about the auto-generated certificates and to better understand their purpose.
+In Kubernetes, Public Key Infrastructure (PKI) certificates are used to secure communications and authenticate
+components within the cluster. Certificates have an expiry date and need to be renewed periodically. You can view the
+issue and expiry date of the cluster by click on **View K8s Certificates** in the cluster details page.
 
-This reference page focuses on how to renew the PKI certificates through Palette. You have two options for how you can
-renew the cluster PKI certificates:
+This page focuses on how to renew the PKI certificates through Palette. You have two options for how you can renew the
+cluster PKI certificates:
 
-- Automatic Certificate Renewal
-
-- Manual Certificate Renewal
+- [Automatic Certificate Renewal](#automatic-certificate-renewal)
+- [Manual Certificate Renewal](#manual-certificate-renewal)
 
 :::info
 
@@ -27,19 +24,30 @@ years.
 
 :::
 
-You can learn more about each option in the following sections.
+## Certificate Renewal Impact on Cluster Availability
+
+After the new certificates are generated, the cluster needs to restart the control plane components in order to pick up
+the new certificates. Depending on your cluster structure, this restart period may impact the cluster management
+availability of your cluster, but will not affect your cluster workloads:
+
+- If you have a single-node control plane, this will cause a short period of downtime for the control plane components,
+  meaning that cluster management availability will be temporarily impacted. However, your worker nodes will continue to
+  operate normally in the meantime and their workloads will not be impacted.
+- If you have three nodes or more in your control plane, certificate renewal will not cause downtime for neither the
+  control plane components nor worker nodes.
 
 ## Limitations
 
-- Neither automatic nor manual certificate renewal through the Palette UI is supported by Edge clusters. For Edge airgap
-  clusters, you can renew the certificates from Local UI. Refer to
-  [Renew Certificates for Airgapped Edge Hosts](../edge/cluster-management/certificate-renewal.md) for more information.
+- Both automatic and manual certificate renewal will renew control plane certificates only. Worker node certificate
+  renewal is not supported.
+
+- Airgapped Edge clusters are not managed by Palette. To renew the certificates for airgapped Edge clusters, refer to
+  [Renew Certificates for Airgap Clusters](../edge/cluster-management/certificate-renewal.md).
 
 ## Automatic Certificate Renewal
 
-Palette will automatically update the cluster PKI certificates 30 days before they expire. The automatic renewal process
-will not cause a cluster repave. The automatic renewal process will only renew the certificates for the control plane
-nodes.
+Palette will automatically update the cluster PKI certificates 30 days before they expire. You can view the issue and
+expiry date of the cluster by clicking on **View K8s Certificates** in the cluster details page.
 
 Another scenario that results in new PKI certificates is upgrading a cluster's Kubernetes version. Upgrading a cluster's
 Kubernetes version, whether a minor patch or a major release, results in renewed PKI certificates. We recommend
@@ -99,13 +107,9 @@ method, using the Palette UI or the API.
 
 4. From the cluster details page, click on **View K8s Certificates**.
 
-<br />
-
 ![A view of the Palette UI with an arrow pointing to the **View K8s Certificates** button.](/clusters_cluster-management_certificate-management_cluster-details-page.webp)
 
 5. Next, select **Renew All** to start the renewal process.
-
-<br />
 
 ![A view of the cluster certificates displaying the expiration date](/clusters_cluster-management_certificate-management_certificate-renew-page.webp)
 
@@ -116,46 +120,38 @@ The renewal process may take several minutes, depending on the number of cluster
 
 1. Set your Palette API key as an environment variable. Add your actual API key in place of `REPLACE_ME`.
 
-<br />
-
-```shell
-export API_KEY=REPLACE_ME
-```
+   ```shell
+   export API_KEY=REPLACE_ME
+   ```
 
 2. Set the project ID as an environment variable. Add your project ID in place of `REPLACE_ME`. You can find the project
    ID on the Palette landing page. The project ID is displayed in the top right corner of the page.
 
-<br />
-
-```shell
-export PROJECT_ID=REPLACE_ME
-```
+   ```shell
+   export PROJECT_ID=REPLACE_ME
+   ```
 
 3. Set the cluster ID as an environment variable. Add your cluster's ID in place of `REPLACE_ME`. You can get the
    cluster ID from the cluster detail's page URL. The value after `clusters/` is the cluster ID.
 
-<br />
-
-```shell
-export CLUSTER_ID=REPLACE_ME
-```
+   ```shell
+   export CLUSTER_ID=REPLACE_ME
+   ```
 
 4. Use the Palette API endpoint `https://api.spectrocloud.com/v1/spectroclusters/{uid}/k8certificates/renew` to renew a
    cluster's PKI certificates. The endpoint accepts the HTTP method `PATCH`, and the only required parameter is the
    cluster ID.
 
-<br />
+   ```shell
+   curl --request PATCH \
+     --url  'https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID/k8certificates/renew' \
+     --header 'Content-Type: application/json' \
+     --header 'Accept: application/json' \
+     --header "ApiKey: $API_KEY" \
+     --header "ProjectUid: $PROJECT_ID"
+   ```
 
-```shell
-curl --request PATCH \
-  --url  'https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID/k8certificates/renew' \
-  --header 'Content-Type: application/json' \
-  --header 'Accept: application/json' \
-  --header "ApiKey: $API_KEY" \
-  --header "ProjectUid: $PROJECT_ID"
-```
-
-3. No output is returned and an HTTP status `204` is expected.
+5. No output is returned and an HTTP status `204` is expected.
 
 The renewal process may take several minutes, depending on the number of cluster nodes.
 
@@ -169,8 +165,6 @@ The renewal process may take several minutes, depending on the number of cluster
 <TabItem label="UI" value="ui">
 
 Using the following steps, you can validate that the cluster's PKI certificates were renewed.
-
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -188,198 +182,95 @@ Using the following steps, you can validate that the cluster's PKI certificates 
 
 Using the following steps, you can validate that the cluster's PKI certificates were renewed.
 
-<br />
-
 1. Set your Palette API key as an environment variable. Add your actual API key in place of `REPLACE_ME`.
 
-<br />
-
-```shell
-export API_KEY=REPLACE_ME
-```
+   ```shell
+   export API_KEY=REPLACE_ME
+   ```
 
 2. Set the project ID as an environment variable. Add your project ID in place of `REPLACE_ME`.
 
-<br />
-
-```shell
-export PROJECT_ID=REPLACE_ME
-```
+   ```shell
+   export PROJECT_ID=REPLACE_ME
+   ```
 
 3. Set the cluster ID as an environment variable. Add your cluster's ID in place of `REPLACE_ME`.
 
-<br />
-
-```shell
-export CLUSTER_ID=REPLACE_ME
-```
+   ```shell
+   export CLUSTER_ID=REPLACE_ME
+   ```
 
 4. Retrieve the cluster's certificate information from Palette by using the
    `https://api.spectrocloud.com/v1/spectroclusters/{uid}/k8certificates` endpoint.
 
-<br />
-
-```shell
-curl \
- --url  'https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID/k8certificates' \
- --header 'Content-Type: application/json' \
- --header 'Accept: application/json' \
- --header "ApiKey: $API_KEY" \
- --header "ProjectUid: $PROJECT_ID"
-```
+   ```shell
+   curl \
+   --url  'https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID/k8certificates' \
+   --header 'Content-Type: application/json' \
+   --header 'Accept: application/json' \
+   --header "ApiKey: $API_KEY" \
+   --header "ProjectUid: $PROJECT_ID"
+   ```
 
 5. Validate the output and confirm the expiration date is one year away.
 
-<br />
-
-```json hideClipboard
-{
-  "machineCertificates": [
-    {
-      "certificateAuthorities": [
-        {
-          "certificates": [
-            {
-              "expiry": "2024-05-23T16:51:05.000Z",
-              "name": "front-proxy-client"
-            }
-          ],
-          "expiry": "2033-05-23T16:45:22.209Z",
-          "name": "front-proxy-ca"
-        },
-        {
-          "certificates": [
-            {
-              "expiry": "2024-05-23T16:51:05.000Z",
-              "name": "kube-apiserver"
-            },
-            {
-              "expiry": "2024-05-23T16:51:05.000Z",
-              "name": "kube-apiserver-kubelet-client"
-            }
-          ],
-          "expiry": "2033-05-23T16:45:22.209Z",
-          "name": "ca"
-        },
-        {
-          "certificates": [
-            {
-              "expiry": "2024-05-23T16:51:05.000Z",
-              "name": "kube-apiserver-etcd-client"
-            },
-            {
-              "expiry": "2024-05-23T16:51:05.000Z",
-              "name": "kube-etcd-healthcheck-client"
-            },
-            {
-              "expiry": "2024-05-23T16:51:05.000Z",
-              "name": "kube-etcd-peer"
-            },
-            {
-              "expiry": "2024-05-23T16:51:05.000Z",
-              "name": "kube-etcd-server"
-            }
-          ],
-          "expiry": "2033-05-23T16:45:22.209Z",
-          "name": "etcd-ca"
-        }
-      ],
-      "name": "ip-10-0-1-120.ec2.internal"
-    }
-  ]
-}
-```
+   ```json hideClipboard
+   {
+     "machineCertificates": [
+       {
+         "certificateAuthorities": [
+           {
+             "certificates": [
+               {
+                 "expiry": "2024-05-23T16:51:05.000Z",
+                 "name": "front-proxy-client"
+               }
+             ],
+             "expiry": "2033-05-23T16:45:22.209Z",
+             "name": "front-proxy-ca"
+           },
+           {
+             "certificates": [
+               {
+                 "expiry": "2024-05-23T16:51:05.000Z",
+                 "name": "kube-apiserver"
+               },
+               {
+                 "expiry": "2024-05-23T16:51:05.000Z",
+                 "name": "kube-apiserver-kubelet-client"
+               }
+             ],
+             "expiry": "2033-05-23T16:45:22.209Z",
+             "name": "ca"
+           },
+           {
+             "certificates": [
+               {
+                 "expiry": "2024-05-23T16:51:05.000Z",
+                 "name": "kube-apiserver-etcd-client"
+               },
+               {
+                 "expiry": "2024-05-23T16:51:05.000Z",
+                 "name": "kube-etcd-healthcheck-client"
+               },
+               {
+                 "expiry": "2024-05-23T16:51:05.000Z",
+                 "name": "kube-etcd-peer"
+               },
+               {
+                 "expiry": "2024-05-23T16:51:05.000Z",
+                 "name": "kube-etcd-server"
+               }
+             ],
+             "expiry": "2033-05-23T16:45:22.209Z",
+             "name": "etcd-ca"
+           }
+         ],
+         "name": "ip-10-0-1-120.ec2.internal"
+       }
+     ]
+   }
+   ```
 
 </TabItem>
 </Tabs>
-
-<br />
-
-## Advanced - Only Renew Control Plane Nodes
-
-You can configure Palette to only renew the PKI certificates for the control plane nodes. You can achieve this by using
-the annotation `spectrocloud.com/cert-renew-controlplane-only` and setting the value to `true`. To enable this behavior,
-you must use `kubectl` and apply the update to a Custom Resource Definition (CRD) created by Palette during the cluster
-deployment process.
-
-Use the following steps to configure Palette only to renew the certificates for control plane nodes.
-
-### Prerequisites
-
-- Kubectl is installed in your system.
-
-- A host cluster deployed.
-
-- Access to the host cluster's kubeconfig file. Refer to the [Access Cluster with CLI](palette-webctl.md) guide to learn
-  how to use your cluster's kubeconfig file.
-
-### Configure Cluster
-
-1. Set your cluster name as an environment variable. Add your cluster's name in place of `REPLACE_ME`.
-
-<br />
-
-```shell
-export CLUSTER_NAME=REPLACE_ME
-```
-
-1. Use the following command to retrieve the namespace of the CRD Palette created in your cluster.
-
-<br />
-
-```shell
-namespace=$(kubectl get spc --all-namespaces --output jsonpath='{range .items[?(@.metadata.name=="'"$CLUSTER_NAME"'")]}{.metadata.namespace}{"\n"}{end}')
-```
-
-2. Use `kubectl` to update the CRD to include the `spectrocloud.com/cert-renew-controlplane-only` annotation.
-
-<br />
-
-```shell
-kubectl annotate spc/certificate-renew --namespace $namespace spectrocloud.com/cert-renew-controlplane-only="true"
-```
-
-3. Verify the annotation was set correctly with the command below. The expected output is `true`.
-
-<br />
-
-```shell
-kubectl get spc/$CLUSTER_NAME --namespace $(kubectl get spc --all-namespaces --output jsonpath='{range .items[?(@.metadata.name=="'"$CLUSTER_NAME"'")]}{.metadata.namespace}{"\n"}{end}') --output jsonpath='{.metadata.annotations.spectrocloud\.com/cert-renew-controlplane-only}'
-```
-
-Output
-
-```
-true
-```
-
-4. Next, trigger a certificate renewal using either [Automatic Certificate Renewal](#automatic-certificate-renewal) or
-   [Manual Certificate Renewal](#manual-certificate-renewal).
-
-The renewal process may take several minutes, depending on the number of cluster nodes.
-
-### Validate
-
-Using the following steps, you can validate that the cluster's PKI certificates are renewed only for the control plane
-nodes.
-
-<br />
-
-1. Log in to [Palette](https://console.spectrocloud.com).
-
-2. Navigate to the left **Main Menu** and select **Clusters**.
-
-3. Select the host cluster to renew its PKI certificates.
-
-4. From the cluster details page, click on **View K8s Certificates**.
-
-5. Review the expiration date for each component. Each component's expiration date will have a status of **365d** with a
-   date that is one year away.
-
-6. Navigate to the **Nodes** tab and verify the **Worker Pool** nodes' **Age** is not updated recently.
-
-<br />
-
-![View of the cluster nodes where only the control plane nodes are modified](/clusters_cluster-management_certificate-management_control-plane-only-change.webp)
-
-<br />

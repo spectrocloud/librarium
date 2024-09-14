@@ -9595,21 +9595,6 @@
       },
       "type": "object"
     },
-    "v1DeleteMeta": {
-      "description": "Properties to send back after deletion operation",
-      "properties": {
-        "count": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "items": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        }
-      }
-    },
     "v1DeletedMsg": {
       "description": "Deleted response with message",
       "properties": {
@@ -10490,6 +10475,11 @@
         },
         "type": {
           "description": "Type indicates DDNS or VIP",
+          "enum": [
+            "VIP",
+            "External",
+            "DDNS"
+          ],
           "type": "string"
         }
       },
@@ -14095,6 +14085,22 @@
           "type": "string"
         },
         "tenantUid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1K8MachineCertificate": {
+      "description": "K8 Certificates for control plane nodes",
+      "properties": {
+        "certificateAuthorities": {
+          "description": "Applicable certificate authorities",
+          "items": {
+            "$ref": "#/definitions/v1k8CertificateAuthority"
+          },
+          "type": "array"
+        },
+        "name": {
           "type": "string"
         }
       },
@@ -25585,6 +25591,18 @@
           "type": "string"
         }
       }
+    },
+    "v1SpectroClusterK8sCertificate": {
+      "description": "K8 Certificates for all the cluster's control plane nodes",
+      "properties": {
+        "machineCertificates": {
+          "items": {
+            "$ref": "#/definitions/v1K8MachineCertificate"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
     },
     "v1SpectroClusterKubeCtlRedirect": {
       "description": "Active resources of tenant",
@@ -38314,6 +38332,25 @@
       "properties": {
         "id": {
           "description": "Azure availability zone id",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1k8CertificateAuthority": {
+      "description": "K8 Certificate Authority",
+      "properties": {
+        "certificates": {
+          "items": {
+            "$ref": "#/definitions/v1Certificate"
+          },
+          "type": "array"
+        },
+        "expiry": {
+          "$ref": "#/definitions/v1Time",
+          "description": "Certificate expiry time"
+        },
+        "name": {
           "type": "string"
         }
       },
@@ -63909,43 +63946,6 @@
       }
     },
     "/v1/packs": {
-      "delete": {
-        "operationId": "v1PacksSummaryDelete",
-        "parameters": [
-          {
-            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
-            "in": "query",
-            "name": "filters",
-            "type": "string"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1DeleteMeta"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Deletes the packs",
-        "tags": [
-          "packs"
-        ]
-      },
       "get": {
         "operationId": "v1PacksSummaryList",
         "parameters": [
@@ -72798,7 +72798,42 @@
           "required": true,
           "type": "string"
         }
-      ]
+      ],
+      "put": {
+        "operationId": "v1SpectroClustersK8CertificateUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterK8sCertificate"
+            }
+          },
+          {
+            "description": "Scope the request to the specified project uid",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Update K8Certificate for spectro cluster",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
     },
     "/v1/spectroclusters/{uid}/k8certificates/renew": {
       "parameters": [

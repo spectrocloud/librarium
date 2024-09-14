@@ -84,6 +84,33 @@ Palette VMO includes the following KubeVirt feature gates by default:
 For more information on KubeVirt feature gates, refer to the
 [KubeVirt Activating feature gates](https://kubevirt.io/user-guide/cluster_admin/activating_feature_gates/) guide.
 
+## MAC Address Management
+
+Palette automatically assigns unique Media Access Control (MAC) addresses to VMs when you create them through the
+Palette UI, API, or [Terraform](../automation/terraform/terraform.md). The MAC address always starts with a prefix that
+is either `02`, `06`, `0A`, or `0E`. The remaining part of the MAC address is generated randomly.
+
+### Specify a MAC Address
+
+You can set a VM's MAC address by specifying a value in the VM's YAML configuration file under the `macAddress` field.
+
+:::danger
+
+If you choose to assign a custom MAC address to a VM, ensure that it is unique and not already in use by any other VM in
+the cluster. Duplicate MAC addresses can cause network conflicts and connectivity issues.
+
+:::
+
+```yaml hideClipboard
+spec:
+  template:
+    spec:
+      domain:
+        devices:
+          interfaces:
+            - macAddress: "REPLACE_WITH_MAC_ADDRESS"
+```
+
 ## Next Steps
 
 Now that you understand the architecture behind Palette VMO, you can continue exploring it by reviewing our
