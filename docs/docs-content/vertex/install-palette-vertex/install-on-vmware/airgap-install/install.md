@@ -3,7 +3,7 @@ sidebar_label: "Install VerteX"
 title: "Install VerteX"
 description: "Learn how to install VerteX in an airgap VMware environment."
 icon: ""
-sidebar_position: 30
+sidebar_position: 40
 hide_table_of_contents: false
 tags: ["vertex", "enterprise", "airgap", "vmware", "vsphere"]
 keywords: ["self-hosted", "vertex"]

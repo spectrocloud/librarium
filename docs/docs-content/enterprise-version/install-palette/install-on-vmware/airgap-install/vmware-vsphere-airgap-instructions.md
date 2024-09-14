@@ -14,9 +14,9 @@ an airgap support VM.
 
 :::info
 
-This guide is for preparing your airgap environment only. For instructions on installing Palette on
-[VMware](./install.md). A checklist of the steps you will complete to prepare your airgap environment for Palette is
-available in the [Checklist](./checklist.md) page.
+This guide is for preparing your airgap environment only. For instructions on installing Palette on VMware, check the
+[Install](./install.md) guide. A checklist of the steps you will complete to prepare your airgap environment for Palette
+is available in the [Checklist](./checklist.md) page.
 
 :::
 

@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Environment Setup"
-title: "Environment Setup"
-description: "Learn how to install VerteX in an air gap environment."
+sidebar_label: "Environment Setup with OVA"
+title: "Environment Setup with OVA"
+description: "Learn how to install VerteX in an airgap environment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
@@ -9,13 +9,14 @@ tags: ["vertex", "enterprise", "airgap", "vmware", "vsphere"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-This guide helps you to prepare your airgap environment for Palette VerteX installation.
+This guide helps you to prepare your airgap environment for VerteX installation using an OVA to deploy and initialize an
+airgap support VM.
 
 :::info
 
-This guide is for preparing your airgap environment only. For instructions on installing Palette on
-[VMware](./install.md). A checklist of the steps you will complete to prepare your airgap environment for Palette is
-available in the [Checklist](./checklist.md) page.
+This guide is for preparing your airgap environment only. For instructions on installing VerteX on VMware, check the
+[Install](./install.md) guide. A checklist of the steps you will complete to prepare your airgap environment for VerteX
+is available in the [Checklist](./checklist.md) page.
 
 :::
 
