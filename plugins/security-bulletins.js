@@ -5,8 +5,6 @@ const fs = require("fs").promises;
 const path = require("path");
 const { getFormattedDate } = require("../utils/helpers/date");
 
-let GlobalCVEData = "";
-
 async function getSecurityBulletins(queryParams) {
   try {
     const response = await callRateLimitAPI(() => api.get(`/v1/reports/container?${queryParams}`));
@@ -23,6 +21,8 @@ async function getSecurityBulletins(queryParams) {
 }
 
 async function pluginSecurityBulletins(context, options) {
+  let GlobalCVEData = "";
+
   return {
     name: "security-bulletins",
     async loadContent() {
