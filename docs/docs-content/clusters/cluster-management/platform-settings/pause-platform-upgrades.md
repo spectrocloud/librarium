@@ -8,11 +8,22 @@ tags: ["clusters", "cluster management"]
 ---
 
 Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a group of clusters from getting
-automatically upgraded when Palette is upgraded. The three ways to activate this feature are:
+automatically upgraded when Palette is upgraded.
 
-- Pause Upgrades for a Single Cluster
-- Pause Upgrades for all Clusters within Project Scope
-- Pause Upgrades for all Clusters within Tenant Scope
+## Pause Agent Upgrade Scopes
+
+You can manage agent upgrade behavior in three scopes:
+
+- Pause upgrades for a single cluster
+- Pause upgrades for all clusters within a project
+- Pause upgrades for all clusters within a tenant
+
+Agent upgrades are only enabled when they are not paused at any level. For an individual cluster, if agent upgrades are
+paused at any level - at the tenant level, project level, or cluster level, agent upgrades will not be enabled for that
+cluster. In the case of Edge hosts that are registered with Palette but are not part of a cluster, agent upgrades will
+be paused if you pause upgrades either at the tenant level or at the project level.
+
+![A flow chart demonstrating how cluster and Edge host agent upgrades are decided based on pause upgrade settings](/clusters_cluster-management_platform-settings_pause-agent-upgrade-flow.webp)
 
 ## Prerequisites
 
