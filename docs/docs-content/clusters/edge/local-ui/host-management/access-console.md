@@ -22,13 +22,6 @@ This page guides you through how access the console, and log in, and manage your
 
 - An Edge host installed with Edge Installer 4.3 or later.
 
-- The Edge host does not have a connection to a Palette instance and the installation is conducted with the
-  `installationMode` parameter set to `airgap`. For more information, refer to
-  [Installer Configuration](../../edge-configuration/installer-reference.md).
-
-- You have completed or skipped the initial configuration of the Edge host. For more information, refer to
-  [Edge Host Initial Configuration](../../site-deployment/site-installation/initial-setup.md).
-
 - Network access to the Edge host's port where Local UI is exposed. The default port is 5080.
 
 - Credentials to log in to Local UI. Any Operating System (OS) user can be used to log into Local UI.

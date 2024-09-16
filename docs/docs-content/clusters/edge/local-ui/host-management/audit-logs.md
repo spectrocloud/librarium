@@ -22,10 +22,6 @@ Palette agent's logs to another file if you want to collect the logs in a differ
 By default, you can view one year's worth of audit logs in Local UI. Log files past the one year mark will be rotated
 out and archived. You can still download your log files from any period, but they will not be viewable in Local UI.
 
-### Limitations
-
-- This feature is only available to airgapped Edge hosts without a connection to Palette.
-
 ### Prerequisites
 
 - You must have configured your application to write logs to `syslog` with a given facility and severity level. We
@@ -146,7 +142,11 @@ entries that were not configured to be displayed in Local UI.
 
 ### Prerequisites
 
-- An active Edge host installed in the `airgap` mode.
+- An Edge host installed with Edge Installer 4.3 or later.
+
+- Network access to the Edge host's port where Local UI is exposed. The default port is 5080.
+
+- Credentials to log in to Local UI. Any Operating System (OS) user can be used to log into Local UI.
 
 ### Procedure
 

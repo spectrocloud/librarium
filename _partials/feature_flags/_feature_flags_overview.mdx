@@ -3,8 +3,10 @@ partial_category: feature-flags
 partial_name: feature-flags-overview
 ---
 
+
+
 <!-- prettier-ignore -->
-Feature flags allow <PaletteURL text="system administrators" edition={props.edition}  url="/system-management/account-management/#system-administrators" /> to 
+Feature flags allow <PaletteVertexUrlMapper text="system administrators" edition={props.edition}  url="/system-management/account-management/#system-administrators" /> to 
 manage what features are available to the system's tenants. They can use this capability to roll out new features to {props.edition} tenants in a controlled manner or choose not to implement a feature for their tenants due to security or compliance reasons.
 
 Features enabled by system administrators are applied to all tenants in the system. Once a feature is enabled, it cannot
@@ -31,9 +33,9 @@ Use the following steps to enable a feature flag.
 
 ## Enablement
 
-<!-- prettier-ignore -->
+
 1. Log in to the system console. For additional guidance on accessing the system console, check out the
-   <PaletteURL
+   <PaletteVertexUrlMapper
      edition={props.edition}
      text="Access the System Console"
      url="/system-management/#access-the-system-console"
@@ -54,15 +56,3 @@ Use the following steps to validate that the feature flag is enabled.
 
 2. Attempt to access the enabled feature flag. If the feature is enabled, you will be able to use it. If the feature is
    disabled, you will not be able to access it.
-
-export function PaletteURL({ edition, text, url }) {
-  return (
-    <>
-      {edition.toLowerCase() === "palette" ? (
-        <VersionedLink text={text} url={`/enterprise-version${url}`} />
-      ) : (
-        <VersionedLink text={text} url={`/vertex${url}`} />
-      )}
-    </>
-  );
-}

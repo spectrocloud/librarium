@@ -334,6 +334,44 @@ at the tenant scope.
 
 :::
 
+## Cluster Grid View
+
+On the **Clusters** page, you can view all clusters within a given scope in a grid view that displays the clusters with
+their attributes. You can customize the grid by applying filters, removing and adding columns, pinning columns, as well
+as ordering the clusters by certain attributes.
+
+### Cluster Attributes
+
+The following are the attributes of a cluster that are displayed in the cluster grid view.
+
+| Attribute     | Description                                                                                                                                                                                            | Support Order-by |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- |
+| Type          | The cluster type. Possible values are "Palette-managed" or "Imported." When there is a small green arrow on the icon, it means there are pending updates to the cluster that requires acknowledgement. | No               |
+| Env           | The infrastructure provider of the cluster, such as AWS, Azure, GCP and Edge.                                                                                                                          | Yes              |
+| Name          | The name of the cluster.                                                                                                                                                                               | Yes              |
+| Status        | The status of the cluster. Possible values include "Pending," "Running," "Deleting" and "Provisioning."                                                                                                | Yes              |
+| Last Modified | The date and time when the cluster was last modified.                                                                                                                                                  | Yes              |
+| Health        | The health status of the cluster. Refer to [Cluster Health](#cluster-health) for details.                                                                                                              | Yes              |
+| Heathy Nodes  | The number of healthy nodes in the cluster.                                                                                                                                                            | No               |
+| CPU           | The CPU usage of the cluster.                                                                                                                                                                          | No               |
+| Memory        | The memory usage of the cluster.                                                                                                                                                                       | No               |
+| Architecture  | The processor architecture of the cluster.                                                                                                                                                             | No               |
+| Tags          | The tags on the cluster.                                                                                                                                                                               | No               |
+
+### Organize Cluster Grid
+
+You can take the following actions to organize your clusters in the grid view.
+
+![Screenshot of cluster grid view with arrows pointing to the areas where actions to organize the gride view can be performed. ](/clusters_clusters_cluster-grid-view.webp)
+
+| Action                  | Description                                                                                                                                                                          |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Reorder Columns         | Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, drag and drop the six dots icon to the left of each list item to reorder the columns. |
+| Remove Column From View | Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, uncheck the columns you want to hide from view.                                       |
+| Pin a Column            | Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, click on the pin icon to the right of the list item you want to pin.                  |
+| Order by a Column       | Click on the label row of the column you want to order by alphanumeric order. You can click it again to change the sort order. You can only sort by one column at a time.            |
+| Filter by Attribute     | Click on **Add Filter** above the cluster grid and choose an existing filter or define a custom filter to apply to the clusters.                                                     |
+
 ## Resources
 
 - [Public Cloud Clusters](./public-cloud/public-cloud.md)

@@ -57,4 +57,6 @@ and permissions for your VMs.
 
 - [Advanced Topics](./create-manage-vm/advanced-topics/advanced-topics.md)
 
+- [Migrate a VM to a VMO cluster](./create-manage-vm/advanced-topics/migrate-vm-kubevirt.md)
+
 - [RBAC](./rbac/rbac.md)

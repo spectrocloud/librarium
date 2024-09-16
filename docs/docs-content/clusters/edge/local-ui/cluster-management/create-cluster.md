@@ -7,8 +7,8 @@ sidebar_position: 30
 tags: ["edge"]
 ---
 
-You can create and manage a single-node cluster locally from Local UI. This page guides you through how to create a
-cluster using Local UI.
+You can create and manage a single-node cluster on an airgapped Edge host locally from Local UI. This page guides you
+through how to create a cluster using Local UI.
 
 :::preview
 
