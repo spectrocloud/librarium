@@ -63,7 +63,7 @@ async function pluginSecurityBulletins(context, options) {
         const plainObject = Object.fromEntries(securityBulletins);
         GlobalCVEData = plainObject;
 
-        logger.success("Finished fetching security bulletins.");
+        logger.info("Finished fetching security bulletins data.");
       }
     },
     async contentLoaded({ content, actions }) {
@@ -94,6 +94,10 @@ async function pluginSecurityBulletins(context, options) {
           },
         });
       }
+      logger.info("All security bulletin routes generated.");
+    },
+    async allContentLoaded() {
+      logger.success("Security bulletins loaded successfully.");
     },
   };
 }
