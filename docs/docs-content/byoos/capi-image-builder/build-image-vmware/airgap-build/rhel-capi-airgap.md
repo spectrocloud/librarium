@@ -32,7 +32,7 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
   vSphere.
 
 - SSH access to the VMware vSphere
-  [airgap support VM](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions.md)
+  [airgap support VM](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions.md)
   utilized to deploy the airgapped instance of Palette or Vertex.
 
 - The following artifacts must be available in the root home directory of the airgap support VM. You can download the
