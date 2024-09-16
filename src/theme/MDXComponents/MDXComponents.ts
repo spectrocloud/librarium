@@ -11,6 +11,7 @@ import AppTiers from "@site/src/components/Integrations/AppTiers/AppTiers";
 import PacksTable from "@site/src/components/PacksTable/PacksTable";
 import TOCInline from "@theme/TOCInline";
 import { TechnicalPreviewReleaseNote as TpBadge } from "@site/src/components/Badges";
+import CVECard from "@site/src/components/CVECard";
 import SimpleCardGrid from "@site/src/components/SimpleCardGrid/index";
 import ReleaseNotesVersions from "@site/src/components/ReleaseNotesVersions/index";
 import PartialsComponent from "@site/src/components/PartialsComponent";
@@ -29,6 +30,7 @@ export default {
   PacksInformation,
   AppTiers,
   PacksTable,
+  CVECard,
   TOCInline,
   TpBadge,
   SimpleCardGrid,

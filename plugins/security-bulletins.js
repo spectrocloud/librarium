@@ -69,35 +69,27 @@ async function pluginSecurityBulletins(context, options) {
     async contentLoaded({ content, actions }) {
       const { createData, addRoute } = actions;
 
-      const cvesData = await createData("data.json", JSON.stringify(GlobalCVEData, null, 2));
-      console.log("cvesData", cvesData.lenght);
+      await createData("data.json", JSON.stringify(GlobalCVEData, null, 2));
 
-      // We need to add a route for each CVE. Let's combine all enteries into a single array.
+      // We need to add a route for each CVE. Let's combine all entries into a single array.
       const allCVEs = Object.values(GlobalCVEData).reduce((acc, curr) => acc.concat(curr), []);
 
       // In here we loop through all the CVEs and create a route for each one.
       // The data for each route is passed as a prop to the component.
-      // allCVEs.forEach((cve) => {
-      //   addRoute({
-      //     path: `/security-bulletins/${cve.id}`,
-      //     component: "@site/src/components/CveDetails",
-      //     modules: {
-      //       cve: cve,
-      //     },
-      //   });
-      // });
+      for (const item of allCVEs) {
+        const jsonPath = await createData(`${item.cve}.json`, JSON.stringify(item, null, 2));
 
-      // addRoute({
-      //   path: "/security-bulletins/reports",
-      //   component: "@site/src/components/CveReportsTable",
-      //   modules: {
-      //     cves: cvesData,
-      //   },
-      //   metadata: {
-      //     sourceFilePath: "../docs/docs-content/security-bulletins/reports/reports.mdx",
-      //   },
-      //   exact: false,
-      // });
+        addRoute({
+          path: `/security-bulletins/reports/${item.cve.toLowerCase()}`,
+          component: "@site/src/components/CVECard",
+          metadata: {
+            sourceFilePath: "../docs/docs-content/security-bulletins/reports/reports.mdx",
+          },
+          modules: {
+            cve: jsonPath,
+          },
+        });
+      }
     },
   };
 }
