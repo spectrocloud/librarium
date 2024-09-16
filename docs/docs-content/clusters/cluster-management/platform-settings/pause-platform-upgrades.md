@@ -25,11 +25,11 @@ be paused if you pause upgrades either at the tenant level or at the project lev
 
 :::info
 
-While pausing upgrades at any scope will stop the agent from upgrading, pausing or resuming agent upgrades in another
-scope will not change the upgrade setting in any other scope. For example, if you pause upgrades at the tenant level,
-and also pause upgrades at the cluster level for one cluster, the cluster agent will not upgrade. When you resume
-upgrades at the tenant level, the agent upgrades still will not resume for that cluster because the upgrade is still
-paused at the cluster level.
+While pausing upgrades at any scope will stop the agent from upgrading, pausing or resuming agent upgrades in one scope
+will not change the upgrade setting in any other scope. For example, if you pause upgrades at the tenant level, and also
+pause upgrades at the cluster level for one cluster, the cluster agent will not upgrade. When you resume upgrades at the
+tenant level, the agent upgrades still will not resume for that cluster because the upgrade is still paused at the
+cluster level.
 
 :::
 
