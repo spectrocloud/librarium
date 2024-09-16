@@ -963,6 +963,12 @@
               "$ref": "#/definitions/v1AcceptedResponseWithMessage"
             }
           },
+          "400": {
+            "description": "Bad request, invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "500": {
             "description": "(empty)",
             "schema": {
@@ -2384,6 +2390,9 @@
             "$ref": "#/definitions/v1Nic"
           }
         },
+        "nodeRole": {
+          "$ref": "#/definitions/v1NodeRole"
+        },
         "paletteEndpointURL": {
           "type": "string"
         }
@@ -2407,9 +2416,6 @@
         },
         "ntp": {
           "$ref": "#/definitions/v1NTP"
-        },
-        "registrationStatus": {
-          "$ref": "#/definitions/v1Registration"
         }
       }
     },
@@ -3156,6 +3162,15 @@
     "v1NoContent": {
       "description": "No Content"
     },
+    "v1NodeRole": {
+      "type": "string",
+      "enum": [
+        "init",
+        "controlplane",
+        "worker",
+        "unknown"
+      ]
+    },
     "v1NotFound": {
       "description": "Resource not found"
     },
@@ -3451,15 +3466,6 @@
         }
       }
     },
-    "v1Registration": {
-      "description": "Registration status of the edge host.",
-      "type": "string",
-      "enum": [
-        "Paired",
-        "Unpaired",
-        "Not Applicable"
-      ]
-    },
     "v1RelatedObject": {
       "description": "The object for which the event is related",
       "type": "object",
@@ -3506,10 +3512,6 @@
     "v1Settings": {
       "type": "object",
       "properties": {
-        "hasHarborPack": {
-          "type": "boolean",
-          "default": false
-        },
         "installationMode": {
           "type": "string",
           "enum": [

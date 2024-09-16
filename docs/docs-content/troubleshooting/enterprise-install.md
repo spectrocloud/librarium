@@ -77,3 +77,82 @@ following steps to restart the management pod.
    ```shell hideClipboard
    pod "mgmt-f7f97f4fd-lds69" deleted
    ```
+
+## Non-unique vSphere CNS Mapping
+
+In Palette and VerteX releases 4.4.8 and earlier, Persistent Volume Claims (PVCs) metadata do not use a unique
+identifier for self-hosted Palette clusters. This causes incorrect Cloud Native Storage (CNS) mappings in vSphere,
+potentially leading to issues during node operations and upgrades.
+
+This issue is resolved in Palette and VerteX releases starting with 4.4.14. However, upgrading to 4.4.14 will not
+automatically resolve this issue. If you have self-hosted instances of Palette in your vSphere environment older than
+4.4.14, you should execute the following utility script manually to make the CNS mapping unique for the associated PVC.
+
+### Debug Steps
+
+1. Ensure your machine has network access to your self-hosted Palette instance with `kubectl`. Alternatively, establish
+   an SSH connection to a machine where you can access your self-hosted Palette instance with `kubectl`.
+
+2. Log in to your self-hosted Palette instance System Console.
+
+3. In the **Main Menu**, click **Enterprise Cluster**.
+
+4. In the cluster details page, scroll down to the **Kubernetes Config File** field and download the kubeconfig file.
+
+5. Issue the following command to download the utility script.
+
+   ```bash
+   curl --output csi-helper https://software.spectrocloud.com/tools/csi-helper/csi-helper
+   ```
+
+6. Adjust the permission of the script.
+
+   ```bash
+   chmod +x csi-helper
+   ```
+
+7. Issue the following command to execute the utility script. Replace the placeholder with the path to your kubeconfig
+   file.
+
+   ```bash
+   ./csi-helper --kubeconfig=<PATH_TO_KUBECONFIG>
+   ```
+
+8. Issue the following command to verify that the script has updated the cluster ID.
+
+   ```bash
+   kubectl describe configmap vsphere-cloud-config --namespace=kube-syste
+   ```
+
+   If the update is successful, the cluster ID in the ConfigMap will have a unique ID assigned instead of
+   `spectro-mgmt/spectro-mgmt-cluster`.
+
+   ```hideClipboard {12}
+   Name:         vsphere-cloud-config
+   Namespace:    kube-system
+   Labels:       component=cloud-controller-manager
+               vsphere-cpi-infra=config
+   Annotations:  cluster.spectrocloud.com/last-applied-hash: 17721994478134573986
+
+   Data
+   ====
+   vsphere.conf:
+   ----
+   [Global]
+   cluster-id = "896d25b9-bfac-414f-bb6f-52fd469d3a6c/spectro-mgmt-cluster"
+
+   [VirtualCenter "vcenter.spectrocloud.dev"]
+   insecure-flag = "true"
+   user = "example@vsphere.local"
+   password = "************"
+
+   [Labels]
+   zone = "k8s-zone"
+   region = "k8s-region"
+
+
+   BinaryData
+   ====
+
+   Events:  <none>
+   ```
