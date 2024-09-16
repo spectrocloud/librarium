@@ -2,6 +2,7 @@ import React from "react";
 import { Tabs, ConfigProvider, Table, theme } from "antd";
 import styles from "./CveReportTable.module.scss";
 import { useColorMode } from "@docusaurus/theme-common";
+import { useHistory } from "@docusaurus/router"; // Import useHistory
 
 export default function CveReportsTable() {
   const data = require("../../../.docusaurus/security-bulletins/default/data.json");
@@ -13,6 +14,7 @@ export default function CveReportsTable() {
 
   const { colorMode } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
+  const history = useHistory(); // Use useHistory for navigation
 
   // Columns configuration for sorting
   const columns = [
@@ -21,6 +23,14 @@ export default function CveReportsTable() {
       dataIndex: "cve",
       key: "cve",
       sorter: (a, b) => a.cve.localeCompare(b.cve),
+      render: (cve) => (
+        <a
+          onClick={() => history.push(`/security-bulletins/reports/${cve.toLowerCase()}`)} // Navigate to the route
+          style={{ cursor: "pointer", color: "#1890ff" }} // Add pointer cursor and link color
+        >
+          {cve}
+        </a>
+      ),
     },
     {
       title: "Initial Pub Date",
@@ -75,7 +85,7 @@ export default function CveReportsTable() {
       dataSource={cveList}
       rowKey="cve"
       pagination={{
-        pageSizeOptions: ["25", "100", "300", "500"],
+        pageSizeOptions: ["25", "100", "500"],
         defaultPageSize: 100,
         showSizeChanger: true,
       }}
