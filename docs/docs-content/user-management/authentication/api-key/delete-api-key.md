@@ -291,7 +291,7 @@ You can use the [Palette SDK](../../../automation/palette-sdk/palette-sdk.md) to
 You can validate the deletion by checking the Palette UI or by querying the API with the `GetAPIKeys()` method to list
 the API keys again and verifying the API key is no longer available.
 
-1. Ceate a function to list the API keys and verify the API key is no longer available. Use the following code snippet
+1. Create a function to list the API keys and verify the API key is no longer available. Use the following code snippet
    to validate the deletion.
 
    ```go
