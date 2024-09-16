@@ -11,10 +11,12 @@ tags: ["user-management", "authentication", "api-key"]
 You can delete an API key from Palette. A tenant admin can also delete an API key created by another user within the
 tenant. Use the following steps to delete an API key.
 
-Tenant administrators can delete an API key on behalf of any user within the tenant. Select the Tenant tab below to
-learn more about deleting an API key as a tenant admin.
+The following sections provide information on how to delete an API key in Palette through the UI, API, and SDK.
 
 ## UI
+
+Tenant administrators can delete an API key on behalf of any user within the tenant. Select the Tenant tab below to
+learn more about deleting an API key as a tenant admin.
 
 ### Prerequisites
 
@@ -196,6 +198,8 @@ You can use the [Palette SDK](../../../automation/palette-sdk/palette-sdk.md) to
 
 - A valid Palette API key to delete. In this example, the fictional API key named `delete-test-key` is used.
 
+- An internet connection to download the Palette SDK and its dependencies.
+
 ### Delete API Key With Go SDK
 
 1. Create a new directory for your Go project and navigate to the directory.
@@ -274,7 +278,7 @@ You can use the [Palette SDK](../../../automation/palette-sdk/palette-sdk.md) to
 7. Start the Go program.
 
    ```shell
-   go run main.go
+   go run .
    ```
 
    ```shell
@@ -287,26 +291,53 @@ You can use the [Palette SDK](../../../automation/palette-sdk/palette-sdk.md) to
 You can validate the deletion by checking the Palette UI or by querying the API with the `GetAPIKeys()` method to list
 the API keys again and verifying the API key is no longer available.
 
-You can create a function to list the API keys and verify the API key is no longer available. Use the following code
-snippet to list the API keys.
+1. Ceate a function to list the API keys and verify the API key is no longer available. Use the following code snippet
+   to validate the deletion.
 
-```go
-// validateKeyIsRemoved checks if the key is removed
-// returns true if the key is removed, false otherwise
-func validateKeyIsRemoved(keyName string, pc *client.V1Client) (bool, error) {
+   ```go
+   // validateKeyIsRemoved checks if the key is removed
+   // returns true if the key is removed, false otherwise
+   func validateKeyIsRemoved(keyName string, pc *client.V1Client) (bool, error) {
 
-  keys, err := pc.GetAPIKeys()
-  if err != nil {
-    log.Fatal("Error getting API keys: ", err)
-  }
+     keys, err := pc.GetAPIKeys()
+     if err != nil {
+       log.Fatal("Error getting API keys: ", err)
+     }
 
-  for _, key := range keys.Items {
-    if key.Metadata.Name == keyName {
-      return false, nil
-    }
-  }
+     for _, key := range keys.Items {
+       if key.Metadata.Name == keyName {
+         return false, nil
+       }
+     }
 
-  return true, nil
+     return true, nil
 
-}
-```
+   }
+   ```
+
+2. Add the function to **main.go** file. Add the code snippet after the initial loop that removes the APII key, line 40.
+
+   ```go
+     ok, err := validateKeyIsRemoved(keyName, pc)
+     if err != nil {
+       log.Fatal("Unable to gather API keys: ", err)
+     }
+
+     if !ok {
+       log.Fatal("API key is not removed")
+     }
+
+     slog.Info("Validation ensured the API key is removed successfully")
+   ```
+
+3. Start the Go program.
+
+   ```shell
+   go run .
+   ```
+
+   ```shell
+   2024/09/16 08:35:07 INFO Validation ensured the API key is removed successfully
+   ```
+
+4. The output confirms the API key is successfully deleted.
