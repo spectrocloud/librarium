@@ -53,16 +53,18 @@ Use the following steps to create a cluster profile by adding one or more layers
 5. Select the cluster profile type that you want to create. You can read more about cluster profile types on the
    [Cluster Profiles](../profiles/cluster-profiles/cluster-profiles.md) page. Click on **Next** to continue.
 
-6. Select **Add New Pack**. In the next window that displays, select the pack with the verified badge that you want to
-   add to your profile. You can search packs by name.
+6. Select **Add New Pack**.
 
-![A screenshot of selecting Palette Registry](/integrations_verified-packs_add-pack.webp)
+7. Toggle the **Verified** checkbox to display all verified packs. Select the pack you want to add to the cluster
+   profile.
 
-7. Fill out the required input fields and click on **Confirm & Create**.
+   ![A screenshot of selecting Palette Registry](/integrations_verified-packs_add-pack.webp)
 
-8. If you want to add additional layers, repeat steps 6 and 7. Otherwise, click on **Next** to review the profile.
+8. Fill out the required input fields and click on **Confirm & Create**.
 
-9. Click on **Finish Configuration** to create the cluster profile.
+9. If you want to add additional layers, repeat steps 6 - 8. Otherwise, click on **Next** to review the profile.
+
+10. Click on **Finish Configuration** to create the cluster profile.
 
 You now have an add-on cluster profile that contains one or more verified packs.
 

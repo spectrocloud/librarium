@@ -26,12 +26,17 @@ Refer to the following table for the self-hosted Palette VerteX upgrade paths th
 
 :::warning
 
-Before upgrading Palette VerteX to a new major version, you must first update it to the latest minor version available.
+Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of the
+latest minor version available.
 
 :::
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.4.14       |       4.4.18       | :white_check_mark: |
+|       4.4.11       |       4.4.14       | :white_check_mark: |
+|       4.4.6        |       4.4.14       | :white_check_mark: |
+|       4.3.6        |       4.4.14       | :white_check_mark: |
 |       4.4.6        |       4.4.11       | :white_check_mark: |
 |       4.3.6        |       4.4.11       | :white_check_mark: |
 |       4.3.6        |       4.4.x        | :white_check_mark: |

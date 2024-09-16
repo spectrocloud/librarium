@@ -38,7 +38,7 @@ before proceeding with the installation. Refer to the
 
   - [Red Hat Linux Enterprise](https://www.redhat.com/en) - you need a Red Hat subscription and a custom RHEL vSphere
     template with Kubernetes available in your vSphere environment. To learn how to create the required template, refer
-    to the [RHEL and PXK](../../../../byoos/usecases/vmware/rhel-pxk.md) guide.
+    to the [RHEL and PXK](../../../../byoos/image-builder/build-image-vmware/rhel-pxk.md) guide.
 
     :::warning
 
@@ -124,11 +124,11 @@ Use the following steps to install Palette VerteX.
     guide for information about importing an OVA in vCenter.
 
     ```url
-     https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12711-0.ova
+    https://vmwaregoldenimage.s3.amazonaws.com/u-2204-0-k-12813-0.ova
     ```
 
 4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
-    should look like `r_u-2204-0-k-12711-0`. This naming convention is required for the install process to identify the
+    should look like `r_u-2204-0-k-12813-0`. This naming convention is required for the install process to identify the
     OVA. Refer to the [Supplement Packs](../../airgap/supplemental-packs.md#additional-ovas) page for a list of
     additional OVAs you can download and upload to your vCenter environment.
 
@@ -155,10 +155,10 @@ Use the following steps to install Palette VerteX.
 7.  Select the desired OS you want to use for the installation. Review the table below for more information about each
     option.
 
-    | **Option**                   | **Description**                                                                                                                | **Requirements**                                                                                                                                                                                |
-    | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Ubuntu Pro**               | [Ubuntu Pro](https://ubuntu.com/pro) is the default option. It provides access to FIPS 140-2 certified cryptographic packages. | Ubuntu Pro token.                                                                                                                                                                               |
-    | **Red Hat Linux Enterprise** | Red Hat Linux Enterprise provides access to Red Hat Enterprise Linux.                                                          | Red Hat subscription and a custom RHEL vSphere template with Kubernetes. Review the [RHEL and PXK](../../../../byoos/usecases/vmware/rhel-pxk.md) to learn how to create the required template. |
+    | **Option**                   | **Description**                                                                                                                | **Requirements**                                                                                                                                                                                                 |
+    | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Ubuntu Pro**               | [Ubuntu Pro](https://ubuntu.com/pro) is the default option. It provides access to FIPS 140-2 certified cryptographic packages. | Ubuntu Pro token.                                                                                                                                                                                                |
+    | **Red Hat Linux Enterprise** | Red Hat Linux Enterprise provides access to Red Hat Enterprise Linux.                                                          | Red Hat subscription and a custom RHEL vSphere template with Kubernetes. Review the [RHEL and PXK](../../../../byoos/image-builder/build-image-vmware/rhel-pxk.md) to learn how to create the required template. |
 
 8.  Depending on your OS selection, you will be prompted to provide the required information. For Ubuntu Pro, you will
     need to provide your Ubuntu Pro token. For Red Hat Linux Enterprise, you will need to provide the path to the
@@ -278,9 +278,9 @@ Use the following steps to install Palette VerteX.
         | **NTP Servers**     | You can provide a list of Network Time Protocol (NTP) servers, such as `pool.ntp.org`.                                                                                                                                                                                                                                                            |
         | **SSH Public Keys** | Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) reference.                            |
 
-16. Specify the IP pool configuration. The placement type can be Static or Dynamic Domain Name Server (DDNS). Choosing
-    static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IP addresses
-    using DNS.
+16. Specify the IP pool configuration. The placement type can be Static or Dynamic Host Configuration Protocol (DHCP).
+    Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DHCP assigns IP
+    addresses using DNS.
 
         #### Static Placement Configuration
 

@@ -11,6 +11,362 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## Sept 14, 2024 - Release 4.4.18
+
+### Palette Enterprise {#release-4-4-18}
+
+##### Features
+
+- Palette will not remove pods with the toleration key node.kubernetes.io/unschedulable set to NoSchedule. This is
+  useful for scenarios where a pod may behave as a DaemonSet but is not a DaemonSet, such as the Portworx operator pod,
+  and you don't want it to be removed during node drain operations. Refer to the
+  [Pod Drainage Toleration](../clusters/cluster-management/node-pool.md#pod-drainage-toleration) section for more
+  information on using the new behavior.
+
+##### Improvements
+
+- Several enhancements have been made to the Clusters view in the Palette UI. These changes ensure a consistent and
+  user-friendly experience, including new designs for the cluster selection screen and a customizable, powerful grid
+  view. This redesign provides a better user experience for managing clusters in large-scale environments. Refer to the
+  [Cluster Grid View](../clusters/clusters.md#organize-cluster-grid) section to learn more.
+
+##### Bug Fixes
+
+- Fixed an issue where Persistent Volume Claims (PVCs) metadata did not use a unique identifier for the self-hosted
+  Palette cluster on VMware. As a result,
+  [Cloud Native Storage](https://blogs.vmware.com/virtualblocks/2019/08/14/introducing-cloud-native-storage-for-vsphere/)
+  (CNS) mappings to PVCs belonging to a specific self-hosted cluster were incorrect, potentially causing issues during
+  various cluster node operations. This issue affects all self-hosted versions of Palette and VerteX before to 4.4.14 on
+  VMware and must be addressed before upgrading to version 4.4.18 or higher. Refer to the
+  [Non-unique vSphere CNS Mapping](../troubleshooting/enterprise-install.md) troubleshooting guide for more information
+  on how to resolve this issue.
+
+#### Deprecations and Removals
+
+- Palette's internal message communication between components transitioned from NATS to gRPC. The previous usage of NATS
+  has been deprecated and will be removed in a future release. This change primarily affects customers using Palette
+  agents on versions older than 4.0. If your tenant clusters still use agents on version 3.x or older,
+  [resume agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) to avoid
+  disrupting critical functions such as health monitoring and heartbeat publishing. To learn more about Palette's
+  internal network architecture, refer to the [Network Ports](../architecture/networking-ports.md) page. If you are
+  using network proxies, we recommend you review the [gRPC and Proxies](../architecture/grps-proxy.md) documentation for
+  potential issues.
+
+### Edge
+
+#### Breaking Changes
+
+- Edge hosts will no longer expose a QR code during the registration phase by default. Users who want a QR code
+  generated during this phase must specify a registration URL in the Edge Installer user data configuration file. Refer
+  to the [Edge Installer User Data Configuration](../clusters/edge/edge-configuration/edge-configuration.md) reference
+  page for more information.
+
+#### Features
+
+- You can now configure the Maximum Transmission Unit (MTU) for network interface configured for discovery though
+  Dynamic Host Configuration Protocol (DHCP) when using [Local UI](../clusters/edge//local-ui/local-ui.md).
+
+- Manual and automatic Kubernetes certificate renewal for control plane nodes is now available to Edge clusters managed
+  by Palette. This feature is available for the following Kubernetes distributions K3s, RKE2, and PXK-E. The new process
+  for certificate renewal leverages the command `kubeadm certs renew`, ensuring certificates update without requiring
+  node reboots. Refer to the [Certificate Management](../clusters/cluster-management/certificate-management.md)
+  documentation to learn more.
+
+- Local UI now supports Edge hosts in _connected mode_. Previously, Local UI only supported Edge hosts in airgap mode.
+  This change allows users to manage connected Edge hosts using Local UI. To learn more, refer to the
+  [Local UI](../clusters/edge/local-ui/local-ui.md) documentation.
+
+#### Improvements
+
+- Several improvements have been made to the [Local UI](../clusters/edge/local-ui/local-ui.md)'s Terminal User Interface
+  (TUI) to enhance the user experience. These improvements include more visible options menus, automatic configuration
+  save upon exit, improved color scheme, and more.
+
+### Virtual Machine Orchestrator
+
+#### Features
+
+- Virtual Machines deployed with VMO now receive unique and random MAC addresses. This change ensures that MAC addresses
+  are unique across all VMs in the same network, preventing conflicts and ensuring proper network communication.
+  Previously, you were responsible for ensuring MAC address uniqueness, which could lead to conflicts and network issues
+  if not managed correctly. Check out the
+  [MAC Address Management](../vm-management/architecture.md#mac-address-management) section of the VMO architecture
+  documentation to learn more.
+
+#### Improvements
+
+- VM memory management now supports the
+  [Kubevirt Memory Hotplug](https://kubevirt.io/user-guide/compute/memory_hotplug/). This feature allows you to increase
+  or decrease the memory allocated to a VM without requiring a VM restart. Refer to the
+  [Manage CPU and Memory](../vm-management/create-manage-vm/enable-cpu-hotplug.md) documentation to learn more.
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features and improvements in this release. Refer to the [Palette](#release-4-4-18) section for
+  more details
+
+### Automation
+
+#### Features
+
+- The Palette CLI is now compiled with FIPS-compliant cryptographic libraries, ensuring that it can be used in
+  FIPS-compliant environments. Check out the [Downloads](../spectro-downloads.md) page to download the latest version of
+  the Palette CLI.
+
+#### Improvements
+
+- The Palette CLI has been updated to improve the user experience by adding detailed warning messages and providing
+  additional information before selecting options. The new changes include clarifying the node affinity prompt for the
+  PCG deployment and providing more information about the deployment process. Renaming **DDNS** to **DHCP** and
+  providing a delete command for kind clusters when multiple kind clusters are detected locally.
+
+- The Palette CLI `ec install` command's validate flag can now be used in environments where a network proxy is
+  configured. When specified in the environment, the validate flag will honor the `NO_PROXY`,`HTTP_PROXY`,
+  and `HTTPS_PROXY` environment variables. Additionally, the validate flag will now check for connectivity and access to
+  image registries specified during the installation process. Refer to the
+  [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section of the Palette EC
+  command documentation to learn more about the validate flag.
+
+### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore -->
+- Users of Portworx CSI, review the [node repave interval](../clusters/cluster-management/node-pool.md#worker-node-pool) configured on worker pools. Ensure sufficient time is allotted for Portworx to initialize on a newly repaved cluster node. Otherwise, the Portworx pod may encounter issues during the node repave process. Refer to the <VersionedLink text="Portworx" url="/integrations/packs/?pack=csi-portworx-generic" /> README for more information.
+
+#### Kubernetes
+
+| Pack                                     | New Version |
+| ---------------------------------------- | ----------- |
+| K3s                                      | 1.28.13     |
+| K3s                                      | 1.29.8      |
+| K3s                                      | 1.30.4      |
+| Kubernetes AKS                           | 1.30        |
+| Kubernetes EKS                           | 1.30        |
+| Kubernetes GKE                           | 1.30        |
+| Palette eXtended Kubernetes (PXK)        | 1.28.13     |
+| Palette eXtended Kubernetes (PXK)        | 1.29.8      |
+| Palette eXtended Kubernetes (PXK)        | 1.30.4      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.28.13     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.29.8      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.30.4      |
+| RKE2                                     | 1.28.12     |
+| RKE2                                     | 1.29.7      |
+| RKE2                                     | 1.30.3      |
+| RKE3 - Edge                              | 1.28.12     |
+| RKE3 - Edge                              | 1.29.7      |
+| RKE3 - Edge                              | 1.30.3      |
+
+#### CNI
+
+| Pack    | New Version |
+| ------- | ----------- |
+| Calico  | 3.28.1      |
+| Cilium  | 1.16.0      |
+| Flannel | 0.25.5      |
+
+#### CSI
+
+| Pack        | New Version |
+| ----------- | ----------- |
+| Longhorn    | 1.6.2       |
+| vSphere CSI | 3.3.1       |
+
+#### Add-on Packs
+
+| Pack                                     | New Version |
+| ---------------------------------------- | ----------- |
+| Crossplane                               | 1.7.0       |
+| Crossplane                               | 1.16.0      |
+| Harbor - Edge                            | 1.1.0       |
+| Kyverno                                  | 1.12.2      |
+| MetalLB                                  | 0.14.8      |
+| Palette eXtended Kubernetes (PXK)        | 1.28.13     |
+| Palette eXtended Kubernetes (PXK)        | 1.29.8      |
+| Palette eXtended Kubernetes (PXK)        | 1.30.4      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.28.13     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.29.8      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.30.4      |
+| RKE3 - Edge                              | 1.28.12     |
+| RKE3 - Edge                              | 1.29.7      |
+| RKE3 - Edge                              | 1.30.3      |
+| Volume Snapshot Controller               | 8.0.1       |
+
+#### FIPS
+
+| Pack        | New Version |
+| ----------- | ----------- |
+| Calico      | 3.28.1      |
+| Flannel     | 0.25.5      |
+| Longhorn    | 1.6.2       |
+| vSphere CSI | 3.3.1       |
+
+#### Deprecations and Removals
+
+- All Kubernetes 1.27.x versions are deprecated.
+
+- MetalLB 0.14.3 is deprecated.
+
+- Review the [Deprecated Packs](../integrations/deprecated-packs.md) page for a complete list of deprecated and removed
+  packs.
+
+## Aug 17, 2024 - Release 4.4.14
+
+<!-- Replace heading ID with the release version below -->
+
+This release is specific to Palette Enterprise and does not apply to Palette VerteX.
+
+### Palette Enterprise {#release-4-4-14}
+
+#### Breaking Changes
+
+- The Palette CLI no longer has the `validator` command. To validate your self-hosted Palette or VerteX deployment, use
+  the `ec` command instead with the `--validate` flag. Refer to the
+  [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section of the Palette EC
+  command documentation to learn more.
+
+- The `nodeDrainTimeout` parameter for clusters has been changed from 10 minutes from the previous Palette version to
+  infinite.
+
+  - New clusters will have an infinite `nodeDrainTimeout` upon creation.
+  - Existing clusters will retain their existing `nodeDrainTimeout` until there is a new machine created in cluster
+    through scaling, upgrading, or repaving, or when a worker node pool is added or scaled out.
+
+  If any pods fail to be drained, they will be stuck in the draining process and would require manual intervention.
+
+#### Features
+
+- This release introduces new filter options to improve the pack selection experience within Palette. Users can now
+  easily filter packs by **Verified** and **FIPS Compliant** status using toggles, facilitating quicker and more
+  efficient pack searches and selections.
+
+- A new API endpoint now allows users to update both DNS hosts and SSL certificates simultaneously in Palette. This
+  update addresses user-reported issues related to circular dependencies when updating DNS hosts and certificates
+  separately. The change will also be reflected in the UI by merging DNS and certificate update functionalities onto a
+  single page, enhancing user experience and functionality validation.
+
+- The VMO airgap binary has moved out of Preview status into Production-ready state.
+
+#### Improvements
+
+- Improvements made to Palette reduced resource usage and improved the reliability and responsiveness of the cluster
+  management.
+
+- Reduced latency in permission resolution, especially for users with access to a large number of projects.
+
+- Reduced CPU and memory consumption within the pods and enhanced overall system performance during machine health
+  updates.
+
+#### Fixes
+
+- Fixed an issue that sometimes caused CSI errors if there are multiple instances of self-hosted Palette or VerteX in a
+  single vSphere environment.
+
+### Edge
+
+#### Features
+
+- This release introduces a validation tool for the install configuration **user-data** for Edge hosts. Errors in
+  **user-data** files can lead to significant delays and troubleshooting efforts. This feature validates the user-data
+  file for both YAML formatting and schema compliance during build time to catch issues earlier. For more information,
+  refer to [Validate User Data](../clusters/edge/edgeforge-workflow/validate-user-data.md).
+
+- This release introduces file download support within Local UI, which allows users to write files to a fixed path on
+  the Edge host and download them from Local UI. Previously, gathering files from Edge hosts required elevated
+  privileges and could be error-prone when executed manually. For more information, refer to
+  [Download Files from Local UI](../clusters/edge/local-ui/host-management/download-files.md).
+
+- Palette agent on Edge hosts will now produce audit logs. This capability captures timestamped records for a variety of
+  events, including authentication attempts, configuration changes, and cluster management activities. In addition, you
+  can program your own applications to send logs to the same location, and have Local UI display those log entries. For
+  more information, refer to [Configure Audit Logs](../clusters/edge/local-ui/host-management/audit-logs.md).
+
+- Local UI displays progress and status during cluster deployment. Users can now monitor key milestones in real-time
+  during the creation and updating of Edge clusters.
+
+### Packs
+
+#### Kubernetes Packs
+
+| Pack                                       | New Version |
+| ------------------------------------------ | ----------- |
+| K3s                                        | 1.27.16     |
+| K3s                                        | 1.28.12     |
+| K3s                                        | 1.29.7      |
+| Palette eXtended Kubernetes (PXK)          | 1.27.16     |
+| Palette eXtended Kubernetes (PXK)          | 1.28.12     |
+| Palette eXtended Kubernetes (PXK)          | 1.29.7      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.27.16     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.28.12     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.7      |
+| RKE2                                       | 1.27.15     |
+| RKE2                                       | 1.28.11     |
+| RKE2                                       | 1.29.6      |
+| RKE2 FIPS                                  | 1.27.15     |
+
+#### CNI
+
+| Pack   | New Version |
+| ------ | ----------- |
+| Cilium | 1.15.7      |
+
+#### CSI
+
+| Pack        | New Version |
+| ----------- | ----------- |
+| Azure Disk  | 1.30.1      |
+| AWS EBS     | 1.33.0      |
+| VSphere CSI | 3.3.0       |
+
+#### FIPS
+
+| Pack                               | New Version |
+| ---------------------------------- | ----------- |
+| Longhorn                           | 1.6.2       |
+| Palette eXtended Kubernetes - FIPS | 1.27.16     |
+| Palette eXtended Kubernetes - FIPS | 1.28.12     |
+| Palette eXtended Kubernetes - FIPS | 1.29.7      |
+
+#### Add-on Packs
+
+| Pack       | New Version |
+| ---------- | ----------- |
+| MetalLB    | 0.14.5      |
+| Prometheus | 58.6.0      |
+
+### Automation
+
+#### Features
+
+- A new tool for building CAPI images is now available. The CAPI Image Builder reduces the challenges associated with
+  creating images for Kubernetes clusters. It is based on the upstream
+  [Kubernetes Image Builder (KIB)](https://image-builder.sigs.k8s.io/introduction.html) project and includes all the
+  dependencies required to build FIPS and non-FIPS images within a Docker container. For more information, refer to
+  [CAPI Image Builder](../byoos/capi-image-builder/capi-image-builder.md).
+
+#### Improvements
+
+- Users receive a clear warning message in the terminal after issuing the `terraform plan` command if actions would
+  result in a cluster repave. Previously, this notification was not available in Terraform-managed environments, leading
+  to potential oversight by users.
+
+### Virtual Machine Orchestrator
+
+#### Features
+
+- The Virtual Machine Orchestrator (VMO) pack is now available for use in tenants that belong to your airgapped instance
+  of Palette. For more information, refer to
+  [Install VMO in Airgap Environments](../vm-management/install-vmo-in-airgap.md).
+
+### Docs and Education
+
+- Palette's Go SDK now has a dedicated documentation section. The new section also includes a guide on how to install,
+  configure, and use the SDK. This guide provides instructions and sample code for listing the active clusters in your
+  Palette environment. Check out the [Palette Go SDK documentation](../automation/palette-sdk/palette-sdk.md) for more
+  details.
+
 ## Jul 31, 2024 - Release 4.4.12
 
 #### Bug Fixes
@@ -22,7 +378,7 @@ tags: ["release-notes"]
 
 <!-- Custom heading applied due to linking of the Palette section in the VerteX section -->
 
-### Palette {#release-4-4-8}
+### Palette Enterprise {#release-4-4-8}
 
 #### Features
 
@@ -235,7 +591,7 @@ features and improvements.
 
 - Review the [Security Bulletins](../security-bulletins/security-bulletins.md) page for the latest security advisories.
 
-### Palette
+### Palette Enterprise
 
 #### Breaking Changes
 
@@ -247,8 +603,7 @@ features and improvements.
 - Validator Helm Charts have migrated from `https://github.com/spectrocloud-labs/validator` to
   `https://github.com/validator-labs/validator`. Former versions of the Palette CLI will point to the former repository
   when prompted for the Helm chart location and require a manual URL change. The new version of the Palette CLI will
-  point to the new repository. Refer to the [Validator](../automation/palette-cli/commands/validator.md) CLI page
-  documentation for more details.
+  point to the new repository.
 
 - Due to the removal of GKE Kubernetes patch versions, it's critical you update existing cluster profiles to use the new
   GKE Kubernetes packs to avoid issues. Active clusters using old GKE Kubernetes pack versions may encounter problems
@@ -275,6 +630,9 @@ features and improvements.
 
 - The issue where Google GKE cluster deployments failed is now resolved. You can now deploy GKE clusters using the
   latest available GKE versions.
+
+- Fixed an issue that caused clusters to experience problems in communicating with Palette through gRPC using domain
+  names and port 443, resulting in clusters appearing in an Unhealthy state.
 
 #### Deprecations and Removals
 

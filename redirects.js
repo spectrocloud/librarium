@@ -482,7 +482,7 @@ const redirects = [
 
   {
     from: "/palette-cli/commands/validator/",
-    to: "/automation/palette-cli/commands/validator/",
+    to: "/automation/palette-cli/commands/ec/",
   },
   {
     from: "/user-management/palette-resource-limits/",
@@ -526,6 +526,34 @@ const redirects = [
     to: "/security-bulletins/reports/",
   },
   {
+    from: "/byoos/usecases/",
+    to: "/byoos/image-builder/build-image-vmware/",
+  },
+  {
+    from: "/byoos/usecases/vmware/",
+    to: "/byoos/image-builder/build-image-vmware/",
+  },
+  {
+    from: "/byoos/usecases/vmware/konvoy/",
+    to: "/byoos/image-builder/build-image-vmware/konvoy/",
+  },
+  {
+    from: "/byoos/usecases/vmware/rhel-pxk/",
+    to: "/byoos/image-builder/build-image-vmware/rhel-pxk/",
+  },
+  {
+    from: "/byoos/capi-image-builder/build-image-vmware/rhel-capi/",
+    to: "/byoos/capi-image-builder/build-image-vmware/non-airgap-build/rhel-capi/",
+  },
+  {
+    from: "/byoos/capi-image-builder/build-image-vmware/rocky-capi/",
+    to: "/byoos/capi-image-builder/build-image-vmware/non-airgap-build/rocky-capi/",
+  },
+  {
+    from: "/automation/palette-cli/commands/validator/",
+    to: "/automation/palette-cli/commands/ec/",
+  },
+  {
     from: [
       "/integrations/antrea-cni",
       "/integrations/aws-autoscaler",
@@ -567,134 +595,23 @@ const redirects = [
     ],
     to: "/integrations/",
   },
-  // {
-  //   from: "/integrations/argo-cd/",
-  //   to: "/integrations/packs/?pack=argo-cd",
-  // },
-  // {
-  //   from: "/integrations/cilium-tetragon",
-  //   to: "/integrations/packs/?pack=cilium-tetragon",
-  // },
-  // {
-  //   from: "/integrations/cloudanix",
-  //   to: "/integrations/packs/?pack=cloudanix",
-  // },
-  // {
-  //   from: "/integrations/dex",
-  //   to: "/integrations/packs/?pack=dex",
-  // },
-  // {
-  //   from: "/integrations/external-dns",
-  //   to: "/integrations/packs/?pack=external-dns",
-  // },
-  // {
-  //   from: "/integrations/external-secrets-operator",
-  //   to: "/integrations/packs/?pack=external-secrets-operator",
-  // },
-  // {
-  //   from: "/integrations/falco",
-  //   to: "/integrations/packs/?pack=falco",
-  // },
-  // {
-  //   from: "/integrations/generic-vm-libvirt",
-  //   to: "/integrations/packs/?pack=generic-vm-libvirtlco",
-  // },
-  // {
-  //   from: "/integrations/generic-vm-vsphere",
-  //   to: "/integrations/packs/?pack=generic-vm-vsphere",
-  // },
-  // {
-  //   from: "/integrations/heartbeat",
-  //   to: "/integrations/packs/?pack=heartbeat",
-  // },
-  // {
-  //   from: "/integrations/hello-universe",
-  //   to: "/integrations/packs/?pack=hello-universe",
-  // },
-  // {
-  //   from: "/integrations/istio",
-  //   to: "/integrations/packs/?pack=istio",
-  // },
-  // {
-  //   from: "/integrations/kibana",
-  //   to: "/integrations/packs/?pack=kibana",
-  // },
-  // {
-  //   from: "/integrations/kong",
-  //   to: "/integrations/packs/?pack=kong",
-  // },
-  // {
-  //   from: "/integrations/kubebench",
-  //   to: "/integrations/packs/?pack=kubebench",
-  // },
-  // {
-  //   from: "/integrations/kubehunter",
-  //   to: "/integrations/packs/?pack=kubehunter",
-  // },
-  // {
-  //   from: "/integrations/kubernetes",
-  //   to: "/integrations/packs/?pack=kubernetes",
-  // },
-  // {
-  //   from: "/integrations/kubevious",
-  //   to: "/integrations/packs/?pack=kubevious",
-  // },
-  // {
-  //   from: "/integrations/kubevirt",
-  //   to: "/integrations/packs/?pack=kubevirt",
-  // },
-  // {
-  //   from: "/integrations/kubewatch",
-  //   to: "/integrations/packs/?pack=kubewatch",
-  // },
-  // {
-  //   from: "/integrations/multus-cni",
-  //   to: "/integrations/packs/?pack=multus-cni",
-  // },
-  // {
-  //   from: "/integrations/nginx",
-  //   to: "/integrations/packs/?pack=nginx",
-  // },
-  // {
-  //   from: "/integrations/ngrok",
-  //   to: "/integrations/packs/?pack=ngrok",
-  // },
-  // {
-  //   from: "/integrations/nutanix-csi",
-  //   to: "/integrations/packs/?pack=nutanix-csi",
-  // },
-  // {
-  //   from: "/integrations/openstack-cinder",
-  //   to: "/integrations/packs/?pack=openstack-cinder",
-  // },
-  // {
-  //   from: "/integrations/permission-manager",
-  //   to: "/integrations/packs/?pack=permission-manager",
-  // },
-  // {
-  //   from: "/integrations/prismacloud",
-  //   to: "/integrations/packs/?pack=prismacloud",
-  // },
-  // {
-  //   from: "/integrations/prometheus-agent",
-  //   to: "/integrations/packs/?pack=prometheus-agent",
-  // },
-  // {
-  //   from: "/integrations/prometheus-opeartor",
-  //   to: "/integrations/packs/?pack=prometheus-operator",
-  // },
-  // {
-  //   from: "/integrations/spectro-k8s-dashboard",
-  //   to: "/integrations/packs/?pack=spectro-k8s-dashboard",
-  // },
-  // {
-  //   from: "/integrations/vault",
-  //   to: "/integrations/packs/?pack=vault",
-  // },
-  // {
-  //   from: "/integrations/vsphere-volume",
-  //   to: "/integrations/packs/?pack=vsphere-volume",
-  // },
+  {
+    from: [
+      "/security-bulletins/reports/cve-2020-1971",
+      "/security-bulletins/reports/cve-2021-3449",
+      "/security-bulletins/reports/cve-2021-3711",
+      "/security-bulletins/reports/cve-2021-45079",
+      "/security-bulletins/reports/cve-2022-0778",
+      "/security-bulletins/reports/cve-2022-4450",
+      "/security-bulletins/reports/cve-2023-0215",
+      "/security-bulletins/reports/cve-2023-0286",
+      "/security-bulletins/reports/cve-2023-52425",
+      "/security-bulletins/reports/cve-2023-5528",
+      "/security-bulletins/reports/cve-2024-0743",
+      "/security-bulletins/reports/prisma-2022-0227",
+    ],
+    to: "/security-bulletins/reports/",
+  },
 ];
 
 module.exports = redirects;

@@ -9595,21 +9595,6 @@
       },
       "type": "object"
     },
-    "v1DeleteMeta": {
-      "description": "Properties to send back after deletion operation",
-      "properties": {
-        "count": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "items": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        }
-      }
-    },
     "v1DeletedMsg": {
       "description": "Deleted response with message",
       "properties": {
@@ -10490,6 +10475,11 @@
         },
         "type": {
           "description": "Type indicates DDNS or VIP",
+          "enum": [
+            "VIP",
+            "External",
+            "DDNS"
+          ],
           "type": "string"
         }
       },
@@ -14095,6 +14085,22 @@
           "type": "string"
         },
         "tenantUid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1K8MachineCertificate": {
+      "description": "K8 Certificates for control plane nodes",
+      "properties": {
+        "certificateAuthorities": {
+          "description": "Applicable certificate authorities",
+          "items": {
+            "$ref": "#/definitions/v1k8CertificateAuthority"
+          },
+          "type": "array"
+        },
+        "name": {
           "type": "string"
         }
       },
@@ -25586,6 +25592,18 @@
         }
       }
     },
+    "v1SpectroClusterK8sCertificate": {
+      "description": "K8 Certificates for all the cluster's control plane nodes",
+      "properties": {
+        "machineCertificates": {
+          "items": {
+            "$ref": "#/definitions/v1K8MachineCertificate"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "v1SpectroClusterKubeCtlRedirect": {
       "description": "Active resources of tenant",
       "properties": {
@@ -26903,6 +26921,9 @@
             "clusterConfig": {
               "$ref": "#/definitions/v1CustomClusterConfigEntity",
               "description": "General cluster configuration like patching settings, namespace resource allocation, rbac"
+            },
+            "clusterType": {
+              "$ref": "#/definitions/v1ClusterType"
             },
             "machinepoolconfig": {
               "items": {
@@ -28704,6 +28725,28 @@
       },
       "type": "object"
     },
+    "v1SystemCertificatesSpec": {
+      "description": "system certificate in base64 format",
+      "properties": {
+        "caCertificateBase64": {
+          "type": "string",
+          "x-omitempty": false
+        },
+        "certificateBase64": {
+          "type": "string",
+          "x-omitempty": false
+        },
+        "insecureSkipVerify": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "keyBase64": {
+          "type": "string",
+          "x-omitempty": false
+        }
+      },
+      "type": "object"
+    },
     "v1SystemConfigAuth": {
       "description": "System config auth",
       "properties": {
@@ -28725,6 +28768,18 @@
           "x-omitempty": false
         }
       }
+    },
+    "v1SystemConfigDomainCertificatesSpec": {
+      "description": "system domain and its certificate config spec",
+      "properties": {
+        "certificates": {
+          "$ref": "#/definitions/v1SystemCertificatesSpec"
+        },
+        "rootDomain": {
+          "type": "string"
+        }
+      },
+      "type": "object"
     },
     "v1SystemConfigDomainSpec": {
       "description": "system domain config spec",
@@ -32004,6 +32059,21 @@
         }
       },
       "type": "object"
+    },
+    "v1UserInfo": {
+      "description": "User basic information",
+      "properties": {
+        "orgName": {
+          "description": "Organization name",
+          "type": "string"
+        },
+        "tenantUid": {
+          "type": "string"
+        },
+        "userUid": {
+          "type": "string"
+        }
+      }
     },
     "v1UserInfoResponse": {
       "properties": {
@@ -38262,6 +38332,25 @@
       "properties": {
         "id": {
           "description": "Azure availability zone id",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1k8CertificateAuthority": {
+      "description": "K8 Certificate Authority",
+      "properties": {
+        "certificates": {
+          "items": {
+            "$ref": "#/definitions/v1Certificate"
+          },
+          "type": "array"
+        },
+        "expiry": {
+          "$ref": "#/definitions/v1Time",
+          "description": "Certificate expiry time"
+        },
+        "name": {
           "type": "string"
         }
       },
@@ -63857,43 +63946,6 @@
       }
     },
     "/v1/packs": {
-      "delete": {
-        "operationId": "v1PacksSummaryDelete",
-        "parameters": [
-          {
-            "description": "Filters can be combined with AND, OR operators with field path name. Eg: metadata.name=TestServiceANDspec.cloudType=aws\n\nServer will be restricted to certain fields based on the indexed data for each resource.",
-            "in": "query",
-            "name": "filters",
-            "type": "string"
-          },
-          {
-            "description": "Scope the request to the specified project uid",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1DeleteMeta"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Deletes the packs",
-        "tags": [
-          "packs"
-        ]
-      },
       "get": {
         "operationId": "v1PacksSummaryList",
         "parameters": [
@@ -68066,7 +68118,7 @@
         ],
         "summary": "Cluster configuration for the edge installer",
         "tags": [
-          "v1"
+          "spectroclusters"
         ]
       }
     },
@@ -69582,6 +69634,47 @@
           }
         ],
         "summary": "Get cluster settings by context",
+        "tags": [
+          "spectroclusters"
+        ]
+      },
+      "post": {
+        "operationId": "v1SpectroClustersUpgradeSettings",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterUpgradeSettingsEntity"
+            }
+          },
+          {
+            "description": "Scope the request to the specified project uid",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Update all clusters upgrade settings",
         "tags": [
           "spectroclusters"
         ]
@@ -72705,7 +72798,42 @@
           "required": true,
           "type": "string"
         }
-      ]
+      ],
+      "put": {
+        "operationId": "v1SpectroClustersK8CertificateUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterK8sCertificate"
+            }
+          },
+          {
+            "description": "Scope the request to the specified project uid",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Update K8Certificate for spectro cluster",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
     },
     "/v1/spectroclusters/{uid}/k8certificates/renew": {
       "parameters": [
@@ -74293,6 +74421,58 @@
           }
         ],
         "summary": "Updates the cluster's upgrade status",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
+    },
+    "/v1/spectroclusters/{uid}/upgrade/settings": {
+      "parameters": [
+        {
+          "description": "Cluster uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "v1SpectroClustersUidUpgradeSettings",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterUpgradeSettingsEntity"
+            }
+          },
+          {
+            "description": "Scope the request to the specified project uid",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Update specific cluster upgrade settings",
         "tags": [
           "spectroclusters"
         ]
@@ -79094,6 +79274,32 @@
         ]
       }
     },
+    "/v1/users/info": {
+      "get": {
+        "description": "Returns a basic information of User for the specified uid.",
+        "operationId": "v1UsersInfoGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1UserInfo"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the base information of specified User",
+        "tags": [
+          "users"
+        ]
+      }
+    },
     "/v1/users/kubectl/session/{sessionUid}": {
       "get": {
         "description": "gets users kubectl session",
@@ -79358,7 +79564,7 @@
         ],
         "summary": "Returns the users system feature",
         "tags": [
-          "v1"
+          "users"
         ]
       }
     },
