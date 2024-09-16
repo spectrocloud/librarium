@@ -18,7 +18,7 @@ for hosting Palette images and also assists in starting the Palette installation
 :::info
 
 This guide is for preparing your airgap environment only. For instructions on installing Palette on VMware, refer to the
-[Install Palette](./install.md) guide.
+[Install Palette](../install.md) guide.
 
 :::
 

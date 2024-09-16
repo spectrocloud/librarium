@@ -16,7 +16,8 @@ and assets.
 
 :::warning
 
-Complete the [Environment Setup](./vmware-vsphere-airgap-instructions.md) steps before proceeding with the installation.
+Complete the [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md) steps before proceeding with
+the installation.
 
 :::
 
