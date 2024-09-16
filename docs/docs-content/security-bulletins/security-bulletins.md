@@ -16,9 +16,10 @@ utilize in our products and services.
 
 ## Security Bulletins
 
-We release [security bulletins](./reports/reports.md) on a monthly and ad-hoc basis addressing security vulnerabilities
-in our software or related third-party components, describing their remediation when available, and providing links to
-the applicable updates for affected software when available.
+<!-- prettier-ignore -->
+We release <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />  on a monthly and ad-hoc basis addressing security vulnerabilities in our software or
+related third-party components, describing their remediation when available, and providing links to the applicable
+updates for affected software when available.
 
 ## Security Advisories
 
@@ -29,4 +30,4 @@ security bulletin.
 
 ## Resources
 
-- [Security Bulletins](./reports/reports.md)
+- <VersionedLink text="Security Bulletins" url="/security-bulletins/reports/" />
