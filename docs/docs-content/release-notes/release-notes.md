@@ -36,8 +36,8 @@ tags: ["release-notes"]
   Palette cluster on VMware. As a result,
   [Cloud Native Storage](https://blogs.vmware.com/virtualblocks/2019/08/14/introducing-cloud-native-storage-for-vsphere/)
   (CNS) mappings to PVCs belonging to a specific self-hosted cluster were incorrect, potentially causing issues during
-  various cluster node operations. This issue affects all self-hosted versions of Palette and VerteX before to 4.4.14
-  on VMware and must be addressed before upgrading to version 4.4.18 or higher. Refer to the
+  various cluster node operations. This issue affects all self-hosted versions of Palette and VerteX before to 4.4.14 on
+  VMware and must be addressed before upgrading to version 4.4.18 or higher. Refer to the
   [Non-unique vSphere CNS Mapping](../troubleshooting/enterprise-install.md) troubleshooting guide for more information
   on how to resolve this issue.
 
