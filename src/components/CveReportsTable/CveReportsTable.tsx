@@ -35,6 +35,7 @@ export default function CveReportsTable() {
       key: "modifiedDateTime",
       sorter: (a, b) => new Date(a.modifiedDateTime) - new Date(b.modifiedDateTime),
       render: (text) => new Date(text).toLocaleDateString(),
+      defaultSortOrder: "descend",
     },
     {
       title: "Product Version",
