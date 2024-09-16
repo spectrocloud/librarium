@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CveReportsTable(props) {
+export default function CVECard(props) {
   const { cve } = props; // Accessing cve from props
 
   if (!cve) {
