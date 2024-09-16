@@ -69,21 +69,20 @@ async function pluginSecurityBulletins(context, options) {
     async contentLoaded({ content, actions }) {
       const { createData, addRoute } = actions;
 
-      // const friends = ["Yangshun", "Sebastien"];
-      // const friendsJsonPath = await createData("friends.json", JSON.stringify(friends));
       const cvesData = await createData("data.json", JSON.stringify(GlobalCVEData, null, 2));
+      console.log("cvesData", cvesData.lenght);
 
-      addRoute({
-        path: "/security-bulletins/reports",
-        component: "@site/src/components/CveReportsTable",
-        modules: {
-          cves: cvesData,
-        },
-        metadata: {
-          sourceFilePath: "../docs/docs-content/security-bulletins/reports/reports.mdx",
-        },
-        exact: false,
-      });
+      // addRoute({
+      //   path: "/security-bulletins/reports",
+      //   component: "@site/src/components/CveReportsTable",
+      //   modules: {
+      //     cves: cvesData,
+      //   },
+      //   metadata: {
+      //     sourceFilePath: "../docs/docs-content/security-bulletins/reports/reports.mdx",
+      //   },
+      //   exact: false,
+      // });
     },
   };
 }

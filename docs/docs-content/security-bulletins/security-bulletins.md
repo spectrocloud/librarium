@@ -9,6 +9,8 @@ sidebar_custom_props:
 tags: ["security", "cve"]
 ---
 
+import CveReportsTable from "@site/src/components/CveReportsTable";
+
 We aim to provide you with the most up-to-date information about the security of our products and services. No matter
 how carefully engineered the services are, from time to time, it may be necessary to notify you of security and privacy
 events with our services, including the security notifications we receive related to the third-party components we
