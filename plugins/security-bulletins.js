@@ -84,7 +84,7 @@ async function pluginSecurityBulletins(context, options) {
 
         const path = `/security-bulletins/reports/${item.cve}`;
         addRoute({
-          path: `/security-bulletins/reports/${path.toLowerCase()}`,
+          path: `${path.toLowerCase()}`,
           component: "@site/src/components/CVECard",
           metadata: {
             sourceFilePath: "../docs/docs-content/security-bulletins/reports/reports.mdx",
@@ -93,7 +93,6 @@ async function pluginSecurityBulletins(context, options) {
             cve: jsonPath,
           },
         });
-        console.log(`Created route for ${path.toLowerCase()}`);
       }
     },
   };
