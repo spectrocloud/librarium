@@ -418,7 +418,7 @@ teams.
 
 ## Resources
 
-- [Airgap Instructions](./airgap-install/vmware-vsphere-airgap-instructions.md)
+- [Airgap Instructions](./airgap-install/environment-setup/vmware-vsphere-airgap-instructions.md)
 
 - [Create a Tenant](../../system-management/tenant-management.md)
 
