@@ -1,5 +1,5 @@
 import React from "react";
-import { Tabs, ConfigProvider, theme } from "antd";
+import { Tabs, ConfigProvider, Table, theme } from "antd";
 import styles from "./CveReportTable.module.scss";
 import { useColorMode } from "@docusaurus/theme-common";
 
@@ -14,39 +14,72 @@ export default function CveReportsTable() {
   const { colorMode } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
 
+  // Columns configuration for sorting
+  const columns = [
+    {
+      title: "CVE ID",
+      dataIndex: "cve",
+      key: "cve",
+      sorter: (a, b) => a.cve.localeCompare(b.cve),
+    },
+    {
+      title: "Initial Pub Date",
+      dataIndex: "publishedDateTime",
+      key: "publishedDateTime",
+      sorter: (a, b) => new Date(a.publishedDateTime) - new Date(b.publishedDateTime),
+      render: (text) => new Date(text).toLocaleDateString(),
+    },
+    {
+      title: "Modified Date",
+      dataIndex: "modifiedDateTime",
+      key: "modifiedDateTime",
+      sorter: (a, b) => new Date(a.modifiedDateTime) - new Date(b.modifiedDateTime),
+      render: (text) => new Date(text).toLocaleDateString(),
+    },
+    {
+      title: "Product Version",
+      dataIndex: "productVersion",
+      key: "productVersion",
+      render: () => "N/A",
+    },
+    {
+      title: "Vulnerability Type",
+      dataIndex: "vulnerabilityType",
+      key: "vulnerabilityType",
+      render: () => "N/A",
+    },
+    // {
+    //   title: "CVSS Severity",
+    //   dataIndex: "baseScore",
+    //   key: "baseScore",
+    //   sorter: (a, b) => a.baseScore - b.baseScore,
+    //   render: (score) => (
+    //     <a href={`https://nvd.nist.gov/vuln/detail/${score}`} target="_blank" rel="noopener noreferrer">
+    //       {score}
+    //     </a>
+    //   ),
+    // },
+    {
+      title: "CVSS Severity",
+      dataIndex: "baseScore",
+      key: "baseScore",
+      sorter: (a, b) => a.baseScore - b.baseScore,
+      render: (baseScore, record) => (
+        <a href={`https://nvd.nist.gov/vuln/detail/${record.cve}`} target="_blank" rel="noopener noreferrer">
+          {baseScore}
+        </a>
+      ),
+    },
+    {
+      title: "Status",
+      key: "status",
+      sorter: (a, b) => (a.isImpacting === b.isImpacting ? 0 : a.isImpacting ? -1 : 1),
+      render: (text, record) => (record.isImpacting ? <span>🔍 Ongoing</span> : <span>✅ Resolved</span>),
+    },
+  ];
+
   // Function to render a table for a specific list of CVEs
-  const renderCveTable = (cveList) => (
-    <table>
-      <thead>
-        <tr>
-          <th>CVE ID</th>
-          <th>Initial Pub Date</th>
-          <th>Modified Date</th>
-          <th>Product Version</th>
-          <th>Vulnerability Type</th>
-          <th>CVSS Severity</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        {cveList.map((cveData, index) => (
-          <tr key={index}>
-            <td>{cveData.cve}</td>
-            <td>{new Date(cveData.publishedDateTime).toLocaleDateString()}</td>
-            <td>{new Date(cveData.modifiedDateTime).toLocaleDateString()}</td>
-            <td>N/A</td>
-            <td>N/A</td>
-            <td>
-              <a href={`https://nvd.nist.gov/vuln/detail/${cveData.cve}`} target="_blank" rel="noopener noreferrer">
-                {cveData.baseScore}
-              </a>
-            </td>
-            <td>{cveData.isImpacting ? <span>🔍 Ongoing</span> : <span>✅ Resolved</span>}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
+  const renderCveTable = (cveList) => <Table columns={columns} dataSource={cveList} rowKey="cve" pagination={false} />;
 
   // Tabs content data
   const tabs = [
