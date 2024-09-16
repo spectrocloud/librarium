@@ -84,11 +84,11 @@ Palette is not FIPS compliant. If you need a FIPS-compliant solution, you need t
    ```
 
 3. View the available tags and check out the latest tag or any specific version of your choosing. This guide uses
-   **v4.3.2** as an example.
+   **v4.4.12** as an example.
 
    ```bash
    git tag
-   git checkout v4.3.2
+   git checkout v4.4.12
    ```
 
 ### Build FIPS-Compliant Base OS Image
@@ -266,7 +266,11 @@ workaround.
 Provider images are Kairos-based container images for a supported OS and Kubernetes distribution combination.
 FIPS-complaint provider images are built on top of the base OS image you have built previously.
 
-17. Locate **Earthfile** in the CanvOS directory. In the file, find the block that starts with
+17. Open the **k8s_versions.json** file in the CanvOS directory. Remove the kubernetes versions that you don't need from
+    the JSON object corresponding to your Kubernetes distribution.
+
+    If you are using a tag that is earlier than v4.4.12, the **k8s_versions.json** file does not exist in those tags.
+    Instead, open the **Earthfile** in the CanvOS directory. . In the file, find the block that starts with
     `build-provider-images-fips:` and delete the Kubernetes versions that you do not want. This will speed up the build
     process and save storage space.
 
