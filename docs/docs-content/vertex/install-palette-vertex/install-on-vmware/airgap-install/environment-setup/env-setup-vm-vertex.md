@@ -18,7 +18,7 @@ for hosting VerteX images and also assists in starting the VerteX installation.
 :::info
 
 This guide is for preparing your airgap environment only. For instructions on installing VerteX on VMware, refer to the
-[Install VerteX](./install.md) guide.
+[Install VerteX](../install.md) guide.
 
 :::
 

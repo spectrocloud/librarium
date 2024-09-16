@@ -15,8 +15,8 @@ airgap support VM.
 :::info
 
 This guide is for preparing your airgap environment only. For instructions on installing VerteX on VMware, check the
-[Install](./install.md) guide. A checklist of the steps you will complete to prepare your airgap environment for VerteX
-is available in the [Checklist](./checklist.md) page.
+[Install](../install.md) guide. A checklist of the steps you will complete to prepare your airgap environment for VerteX
+is available in the [Checklist](../checklist.md) page.
 
 :::
 
@@ -49,10 +49,10 @@ VerteX.
 - Configure the Dynamic Host Configuration Protocol (DHCP) to access the airgap support VM via SSH. You can disable DHCP
   or modify the IP address after deploying the airgap support VM.
 
-- Review the required vSphere [permissions](../vmware-system-requirements.md) and ensure you've created the proper
+- Review the required vSphere [permissions](../../vmware-system-requirements.md) and ensure you've created the proper
   custom roles and zone tags. Zone tagging enables dynamic storage allocation across fault domains when provisioning
-  workloads that require persistent storage. Refer to [Zone Tagging](../vmware-system-requirements.md#zone-tagging) for
-  information.
+  workloads that require persistent storage. Refer to [Zone Tagging](../../vmware-system-requirements.md#zone-tagging)
+  for information.
 
 <br />
 
@@ -61,7 +61,7 @@ VerteX.
 Self-hosted VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not
 require a separate, user-installed PCG. However, you can deploy additional PCG instances to support provisioning into
 remote data centers without a direct incoming connection to VerteX. To learn how to install a PCG on VMware, check out
-the [VMware](../../../../clusters/pcg/deploy-pcg/vmware.md) guide.
+the [VMware](../../../../../clusters/pcg/deploy-pcg/vmware.md) guide.
 
 :::
 
@@ -94,7 +94,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     Place the OVA in the **spectro-templates** folder. Append the `r_` prefix, and remove the `.ova` suffix when
     assigning its name and target location. For example, the final output should look like `r_u-2204-0-k-12711-0`. This
     naming convention is required for the installation process to identify the OVA. Refer to the
-    [Supplement Packs](../../airgap/supplemental-packs.md) page for a list of additional OS OVAs.
+    [Supplement Packs](../../../airgap/supplemental-packs.md) page for a list of additional OS OVAs.
 
     You can terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
     [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
@@ -354,8 +354,8 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 21. The output of the script contains credentials and values you will need when completing the installation with the
     Palette CLI. If you need to review this information in the future, invoke the script again.
 
-22. Review the [Additional Packs](../../airgap/supplemental-packs.md) page and identify any additional packs you want to
-    add to your OCI registry. By default, the installation includes only the minimum required packs. You can also add
+22. Review the [Additional Packs](../../../airgap/supplemental-packs.md) page and identify any additional packs you want
+    to add to your OCI registry. By default, the installation includes only the minimum required packs. You can also add
     additional packs after the installation is complete.
 
 You have now completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to
@@ -433,7 +433,7 @@ installed in the airgap support VM and ready to use.
     palette ec install
     ```
 
-Complete all the Palette CLI steps outlined in the [Install VerteX](./install.md) guide from the airgap support VM.
+Complete all the Palette CLI steps outlined in the [Install VerteX](../install.md) guide from the airgap support VM.
 
 :::info
 
