@@ -72,6 +72,21 @@ async function pluginSecurityBulletins(context, options) {
       const cvesData = await createData("data.json", JSON.stringify(GlobalCVEData, null, 2));
       console.log("cvesData", cvesData.lenght);
 
+      // We need to add a route for each CVE. Let's combine all enteries into a single array.
+      const allCVEs = Object.values(GlobalCVEData).reduce((acc, curr) => acc.concat(curr), []);
+
+      // In here we loop through all the CVEs and create a route for each one.
+      // The data for each route is passed as a prop to the component.
+      // allCVEs.forEach((cve) => {
+      //   addRoute({
+      //     path: `/security-bulletins/${cve.id}`,
+      //     component: "@site/src/components/CveDetails",
+      //     modules: {
+      //       cve: cve,
+      //     },
+      //   });
+      // });
+
       // addRoute({
       //   path: "/security-bulletins/reports",
       //   component: "@site/src/components/CveReportsTable",

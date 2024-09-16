@@ -35,7 +35,7 @@ export default function CveReportsTable() {
       key: "modifiedDateTime",
       sorter: (a, b) => new Date(a.modifiedDateTime) - new Date(b.modifiedDateTime),
       render: (text) => new Date(text).toLocaleDateString(),
-      defaultSortOrder: "descend",
+      defaultSortOrder: "descend", // Automatically sort by latest modified date
     },
     {
       title: "Product Version",
@@ -49,17 +49,6 @@ export default function CveReportsTable() {
       key: "vulnerabilityType",
       render: () => "N/A",
     },
-    // {
-    //   title: "CVSS Severity",
-    //   dataIndex: "baseScore",
-    //   key: "baseScore",
-    //   sorter: (a, b) => a.baseScore - b.baseScore,
-    //   render: (score) => (
-    //     <a href={`https://nvd.nist.gov/vuln/detail/${score}`} target="_blank" rel="noopener noreferrer">
-    //       {score}
-    //     </a>
-    //   ),
-    // },
     {
       title: "CVSS Severity",
       dataIndex: "baseScore",
@@ -80,7 +69,18 @@ export default function CveReportsTable() {
   ];
 
   // Function to render a table for a specific list of CVEs
-  const renderCveTable = (cveList) => <Table columns={columns} dataSource={cveList} rowKey="cve" pagination={false} />;
+  const renderCveTable = (cveList) => (
+    <Table
+      columns={columns}
+      dataSource={cveList}
+      rowKey="cve"
+      pagination={{
+        pageSizeOptions: ["25", "100", "300", "500"],
+        defaultPageSize: 100,
+        showSizeChanger: true,
+      }}
+    />
+  );
 
   // Tabs content data
   const tabs = [
