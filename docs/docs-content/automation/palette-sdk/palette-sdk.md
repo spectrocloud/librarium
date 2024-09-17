@@ -23,6 +23,10 @@ The snippet below showcases an example of how to initialize the Palette client u
 methods.
 
 ```go
+  import (
+    "github.com/spectrocloud/palette-sdk-go/client"
+  )
+
   pc := client.New(
       client.WithPaletteURI(host),
       client.WithAPIKey(apiKey),
