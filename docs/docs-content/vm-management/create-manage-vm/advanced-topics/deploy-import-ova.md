@@ -302,7 +302,8 @@ export KUBECONFIG=<path-to-kubeconfig-file>
     will exit completely.
 
     You may need to make minor edits to the auto-generated VM specification if you want to configure
-    <VersionedLink text="Multus" url="/integrations/packs/?pack=cni-multus"/> VLAN for each network interface.
+
+    <VersionedLink text="Multus" url="/integrations/packs/?pack=cni-multus" /> VLAN for each network interface.
 
     If uploading your image to a `DataVolume` upload fails, you may re-run the upload after debugging any CDI issues.
     Execute the command `palette vmo import-ova --config-file <path-to-ova-config.yaml> --skip-convert`. :::
