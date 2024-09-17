@@ -102,7 +102,7 @@ artifacts at the same time.
    export OS_VERSION=22.04
    ```
 
-9. Open the **k8s_versions.json** file in the CanvOS directory. Remove the kubernetes versions that you don't need from
+9. Open the **k8s_versions.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
    the JSON object corresponding to your Kubernetes distribution.
 
    If you are using a tag that is earlier than v4.4.12, the **k8s_versions.json** file does not exist in those tags.
