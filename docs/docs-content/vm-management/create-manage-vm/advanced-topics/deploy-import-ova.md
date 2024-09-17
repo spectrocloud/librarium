@@ -22,7 +22,12 @@ Palette VMO.
 
 ## Prerequisites
 
-- A Healthy VMO cluster. Refer to the [Create a VMO Profile](../../create-vmo-profile.md) for further guidance.
+- A Healthy VMO cluster. Refer to the [Create a VMO Profile](../../create-vmo-profile.md) for further guidance. 
+
+    - Ensure that your VMO cluster has sufficient capacity for any VMs that you deploy. Refer to the
+    [Environment Setup](../../environment-setup.md) page for recommended environment sizes.
+
+<br />
 
   :::warning
 
@@ -67,8 +72,8 @@ Palette VMO.
   [CDI Configuration](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/cdi-config.md#options)
   documentation.
 
-  If you have configured NGINX together with MetalLB, add an entry to `/etc/hosts` that maps the CDI upload proxy host
-  name, e.g. `cdi-uploadproxy.mycompany.io`, to the NGINX load balancer’s public IP address.
+  If you have configured Nginx together with MetalLB, add an entry to `/etc/hosts` that maps the CDI upload proxy host
+  name, for example `cdi-uploadproxy.mycompany.io`, to the Nginx load balancer’s public IP address.
 
   :::
 
@@ -76,13 +81,6 @@ Palette VMO.
   [kubectl installation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) guide to learn more.
 - Install the virtctl command-line tool. Refer to the
   [virtctl installation](https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/) guide for more information.
-
-:::warning
-
-Ensure that your VMO cluster has sufficient capacity for any VMs that you deploy. Refer to the
-[Environment Setup](../../environment-setup.md) page for recommended environment sizes.
-
-:::
 
 ## Enablement
 
@@ -107,8 +105,8 @@ Ensure that your VMO cluster has sufficient capacity for any VMs that you deploy
    spec:
    dataVolumeTemplates:
    - metadata:
-       name: vmo-jh-dv
-       spec:
+            name: vmo-jh-dv
+     spec:
        pvc:
            accessModes:
            - ReadWriteMany
@@ -116,8 +114,8 @@ Ensure that your VMO cluster has sufficient capacity for any VMs that you deploy
            requests:
                storage: 66Gi
        source:
-           registry:
-           url: docker://tylergillson/vmo-jh:4.0.0
+            registry:
+                url: gcr.io/spectro-images-public/release/vmo-jh:v4.5.0
    running: true
    template:
        metadata:
@@ -163,7 +161,7 @@ Ensure that your VMO cluster has sufficient capacity for any VMs that you deploy
    EOF
    ```
 
-   :::warning
+   :::info
 
    Depending on the configuration of your VMO cluster's CSI layer, you may need to change the configured `ReadWriteMany`
    access mode to `ReadWriteOnce`. Check the documentation for your chosen CSI to ensure you have the correct setting.
@@ -214,11 +212,9 @@ Ensure that your VMO cluster has sufficient capacity for any VMs that you deploy
    the same way you copied the kubeconfig file. Replace the placeholders with local path to the downloaded binary and
    the path to your private key.
 
-   ````shell
+   ```shell
    virtctl scp <path-to-downloaded-palette-cli-binary> -i <path-to-private-key> root@vmo-jh.default:/root
    ```
-
-   ````
 
 8. Start an SSH session with the VM.
 
@@ -236,9 +232,9 @@ Ensure that your VMO cluster has sufficient capacity for any VMs that you deploy
 10. Set the environment variable `KUBECONFIG` to point to the file you uploaded. This allows your terminal session to
     connect to your VMO cluster.
 
-```shell
-export KUBECONFIG=<path-to-kubeconfig-file>
-```
+    ```shell
+    export KUBECONFIG=<path-to-kubeconfig-file>
+    ```
 
 11. Execute the following command to start an interactive shell and begin the import process.
 
@@ -293,22 +289,21 @@ export KUBECONFIG=<path-to-kubeconfig-file>
 14. Depending on the configuration of your OVA, you may be prompted to provide additional values for the OVF template
     variables. The deployment of your VM should complete within a few minutes.
 
-    <!-- prettier-ignore-start -->
+<!-- prettier-ignore-start -->
 
-    :::info
+:::info
 
-    You may see a variety of warnings during the deployment process, including many repeated lines containing the word
-    `(BADINDEX)`. All of these warnings and messages can safely be ignored. If a fatal error is encountered, Palette CLI
-    will exit completely.
+The import may generate a variety of warnings during the deployment process, including many repeated lines
+containing the word `(BADINDEX)`. All of these warnings and messages can safely be ignored. If a fatal error is
+encountered, Palette CLI will exit completely.
 
-    You may need to make minor edits to the auto-generated VM specification if you want to configure
+You may need to make minor edits to the auto-generated VM specification if you want to configure
+<VersionedLink text="Multus" url="/integrations/packs/?pack=cni-multus" /> VLAN for each network interface.
+If uploading your image to a `DataVolume` upload fails, you may restart the upload after debugging any CDI issues. Execute the command `palette vmo import-ova --config-file <path-to-ova-config.yaml> --skip-convert`.
 
-    <VersionedLink text="Multus" url="/integrations/packs/?pack=cni-multus" /> VLAN for each network interface.
+:::
 
-    If uploading your image to a `DataVolume` upload fails, you may re-run the upload after debugging any CDI issues.
-    Execute the command `palette vmo import-ova --config-file <path-to-ova-config.yaml> --skip-convert`. :::
-
-    <!-- prettier-ignore-end -->
+<!-- prettier-ignore-end -->
 
 ## Validate
 
