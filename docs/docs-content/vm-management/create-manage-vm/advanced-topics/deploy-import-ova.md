@@ -96,7 +96,7 @@ name, for example `cdi-uploadproxy.mycompany.io`, to the Nginx load balancer’s
    the tools required for OVA import and deployment. The VM is named `vmo-jh`.
 
    ```shell
-   cat <<EOF | kubectl apply -f -
+   cat <<EOF | kubectl apply --filename -
    apiVersion: kubevirt.io/v1
    kind: VirtualMachine
    metadata:
@@ -205,7 +205,7 @@ name, for example `cdi-uploadproxy.mycompany.io`, to the Nginx load balancer’s
    the path to your private key. The kubeconfig file is required for subsequent operations.
 
    ```shell
-   virtctl scp <path-to-downloaded-kubeconfig-file> -i <path-to-private-key> root@vmo-jh.default:/root
+   virtctl scp <path-to-downloaded-kubeconfig-file> --identity-file <path-to-private-key> root@vmo-jh.default:/root
    ```
 
 7. Download the newest [Palette CLI](../../../spectro-downloads.md#palette-cli) binary. Copy the binary to the VM, in
@@ -213,20 +213,20 @@ name, for example `cdi-uploadproxy.mycompany.io`, to the Nginx load balancer’s
    the path to your private key.
 
    ```shell
-   virtctl scp <path-to-downloaded-palette-cli-binary> -i <path-to-private-key> root@vmo-jh.default:/root
+   virtctl scp <path-to-downloaded-palette-cli-binary> --identity-file <path-to-private-key> root@vmo-jh.default:/root
    ```
 
 8. Start an SSH session with the VM.
 
    ```shell
-   virtctl ssh -i <path-to-private-key> root@vmo-jh.default --local-ssh=true
+   virtctl ssh --identity-file <path-to-private-key> root@vmo-jh.default --local-ssh=true
    ```
 
 9. Download an OVA file to import on the VM. Alternatively, you can upload the OVA file using `virtctl scp` as
    demonstrated in previous steps. This guide uses a publicly available Bitnami image for demonstration purposes.
 
    ```shell
-   curl -LO https://downloads.bitnami.com/files/stacks/wordpress/6.2.2/bitnami-wordpress-6.2.2-r1-debian-11-amd64.ova
+   curl --location https://downloads.bitnami.com/files/stacks/wordpress/6.2.2/bitnami-wordpress-6.2.2-r1-debian-11-amd64.ova --output bitnami-wordpress-6.2.2-r1-debian-11-amd64.ova
    ```
 
 10. Set the environment variable `KUBECONFIG` to point to the file you uploaded. This allows your terminal session to
