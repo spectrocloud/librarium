@@ -23,6 +23,55 @@ Palette VMO.
 ## Prerequisites
 
 - A Healthy VMO cluster. Refer to the [Create a VMO Profile](../../create-vmo-profile.md) for further guidance.
+
+  :::warning
+
+  If you need to provision `Block` storage volumes during the VM deployment process, add the following custom
+  configuration to your VMO cluster OS pack. Applying this configuration may cause a cluster repave. For more
+  information, refer to
+  [Repave Behaviors and Configurations](../../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration)
+
+  Additionally, we recommend provisioning volumes with the `ReadWriteMany` access mode to ensure that VMs can be
+  [live migrated](https://kubevirt.io/user-guide/compute/live_migration/#limitations).
+
+  ```yaml
+  kubeadmconfig:
+    preKubeadmCommands:
+      # Start containerd with new configuration
+      - systemctl daemon-reload
+      - systemctl restart containerd
+    files:
+      - targetPath: /etc/containerd/config.toml
+    targetOwner: "root:root"
+    targetPermissions: "0644"
+    content: |
+      ## template: jinja
+
+      # Use config version 2 to enable new configuration fields.
+      version = 2
+
+      imports = ["/etc/containerd/conf.d/*.toml"]
+
+      [plugins]
+          [plugins."io.containerd.grpc.v1.cri"]
+          sandbox_image = "registry.k8s.io/pause:3.9"
+          device_ownership_from_security_context = true
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+          runtime_type = "io.containerd.runc.v2"
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+          SystemdCgroup = true
+  ```
+
+  If you are in a proxied environment, you must configure the CDI custom resource in order to deploy to a `DataVolume`.
+  Refer to the
+  [CDI Configuration](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/cdi-config.md#options)
+  documentation.
+
+  If you have configured NGINX together with MetalLB, add an entry to `/etc/hosts` that maps the CDI upload proxy host
+  name, e.g. `cdi-uploadproxy.mycompany.io`, to the NGINX load balancer’s public IP address.
+
+  :::
+
 - Install kubectl command-line tool. Refer to the
   [kubectl installation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) guide to learn more.
 - Install the virtctl command-line tool. Refer to the
@@ -147,6 +196,13 @@ Ensure that your VMO cluster has sufficient capacity for any VMs that you deploy
    mkdir -p /root/.ssh && cat /root/public-key.pub >> /root/.ssh/authorized_keys
    ```
 
+   :::info
+
+   If you are starting an SSH session from a Windows machine, then you should omit the `--local-ssh=true` flag and
+   execute the command `virtctl ssh root@vmo-jh.default` only.
+
+   :::
+
 6. Copy your cluster's kubeconfig file to the VM. Replace the placeholders with local path to the kubeconfig file and
    the path to your private key. The kubeconfig file is required for subsequent operations.
 
@@ -154,27 +210,37 @@ Ensure that your VMO cluster has sufficient capacity for any VMs that you deploy
    virtctl scp <path-to-downloaded-kubeconfig-file> -i <path-to-private-key> root@vmo-jh.default:/root
    ```
 
-7. Start an SSH session with the VM.
+7. Download the newest [Palette CLI](../../../spectro-downloads.md#palette-cli) binary. Copy the binary to the VM, in
+   the same way you copied the kubeconfig file. Replace the placeholders with local path to the downloaded binary and
+   the path to your private key.
+
+   ````shell
+   virtctl scp <path-to-downloaded-palette-cli-binary> -i <path-to-private-key> root@vmo-jh.default:/root
+   ```
+
+   ````
+
+8. Start an SSH session with the VM.
 
    ```shell
    virtctl ssh -i <path-to-private-key> root@vmo-jh.default --local-ssh=true
    ```
 
-8. Download an OVA file to import on the VM. Alternatively, you can upload the OVA file using `virtctl scp` as
+9. Download an OVA file to import on the VM. Alternatively, you can upload the OVA file using `virtctl scp` as
    demonstrated in previous steps. This guide uses a publicly available Bitnami image for demonstration purposes.
 
    ```shell
    curl -LO https://downloads.bitnami.com/files/stacks/wordpress/6.2.2/bitnami-wordpress-6.2.2-r1-debian-11-amd64.ova
    ```
 
-9. Set the environment variable `KUBECONFIG` to point to the file you uploaded. This allows your terminal session to
-   connect to your VMO cluster.
+10. Set the environment variable `KUBECONFIG` to point to the file you uploaded. This allows your terminal session to
+    connect to your VMO cluster.
 
-   ```shell
-   export KUBECONFIG=<path-to-kubeconfig-file>
-   ```
+```shell
+export KUBECONFIG=<path-to-kubeconfig-file>
+```
 
-10. Execute the following command to start an interactive shell and begin the import process.
+11. Execute the following command to start an interactive shell and begin the import process.
 
     ```shell
     palette vmo import-ova
@@ -192,23 +258,23 @@ Ensure that your VMO cluster has sufficient capacity for any VMs that you deploy
 
     The Palette CLI prompts you for information regarding the OVA you want to import.
 
-    | **Parameter**                               | **Description**                                                                                                                                                                                   | **Values**                        |
-    | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
-    | **OVA Path**                                | The path to the image your have uploaded to your VM. The path for the example provided is `/root/bitnami-wordpress-6.2.2-r1-debian-11-amd64.ova/`.                                                |                                   |
-    | **Container Disk Upload Method**            | Indicate whether to upload the image directly to the target cluster as a `DataVolume` or build and push a Docker image. You will need to provide an existing image registry if you select Docker. | `DataVolume` / `Docker Image`     |
-    | **Kubeconfig Path**                         | The path to the kubeconfig file you have uploaded to your VM.                                                                                                                                     |                                   |
-    | **DataVolume Namespace**                    | The namespace to create your `DataVolume`, if you selected this option previously.                                                                                                                |                                   |
-    | **DataVolume Name**                         | The name of your `DataVolume`.                                                                                                                                                                    |                                   |
-    | **Overhead Percentage for DataVolume Size** | Set an overhead percentage for your `DataVolume` compared to the OVA specification. This parameter is optional and can be skipped with the value `-1`.                                            |                                   |
-    | **Access Mode for the PVC**                 | Set the access mode for your `DataVolume`. Ensure that your configured CSI supports your selection.                                                                                               | `ReadWriteMany` / `ReadWriteOnce` |
-    | **Create a PVC with VolumeMode=Block**      | Indicate whether to set `Block` volume mode on the `DataVolume`.                                                                                                                                  | `y` / `N`                         |
-    | **StorageClass**                            | The storage class on the destination that will be used to create the VM volume.                                                                                                                   |                                   |
-    | **CDI upload proxy URL**                    | Optionally, provide a URL to upload the CDI custom resource.                                                                                                                                      |                                   |
+    | **Parameter**                               | **Description**                                                                                                                                                                                                                                                                                                                                                                                                             | **Values**                        |
+    | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
+    | **OVA Path**                                | The path to the image your have uploaded to your VM. The path for the example provided is `/root/bitnami-wordpress-6.2.2-r1-debian-11-amd64.ova/`.                                                                                                                                                                                                                                                                          |                                   |
+    | **Container Disk Upload Method**            | Indicate whether to upload the image directly to the target cluster as a `DataVolume` or build and push a Docker image. You will need to provide an existing image registry if you select Docker.                                                                                                                                                                                                                           | `DataVolume` / `Docker Image`     |
+    | **Kubeconfig Path**                         | The path to the kubeconfig file you have uploaded to your VM.                                                                                                                                                                                                                                                                                                                                                               |                                   |
+    | **DataVolume Namespace**                    | The namespace to create your `DataVolume`, if you selected this option previously.                                                                                                                                                                                                                                                                                                                                          |                                   |
+    | **DataVolume Name**                         | The name of your `DataVolume`.                                                                                                                                                                                                                                                                                                                                                                                              |                                   |
+    | **Overhead Percentage for DataVolume Size** | Set an overhead percentage for your `DataVolume` compared to the OVA specification. This parameter is optional and can be skipped with the value `-1`. If skipped, the filesystem overhead percentage will be inferred from the CDI Custom Resource in your VMO cluster. Refer to the [CDI Configuration](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/cdi-config.md#options) for further details. |                                   |
+    | **Access Mode for the PVC**                 | Set the access mode for your `DataVolume`. Ensure that your configured CSI supports your selection.                                                                                                                                                                                                                                                                                                                         | `ReadWriteMany` / `ReadWriteOnce` |
+    | **Create a PVC with VolumeMode=Block**      | Indicate whether to set `Block` volume mode on the `DataVolume`.                                                                                                                                                                                                                                                                                                                                                            | `y` / `N`                         |
+    | **StorageClass**                            | The storage class on the destination that will be used to create the VM volume.                                                                                                                                                                                                                                                                                                                                             |                                   |
+    | **CDI Upload Proxy URL**                    | Optionally, provide a URL to upload the CDI custom resource. If you have configured a CDI as part of your environment, specify `https://cdi-uploadproxy.mycompany.io`. Refer to the [Prerequisites](#prerequisites) section for configuration details.                                                                                                                                                                      |                                   |
 
-11. The import may take a few minutes to complete. The Palette CLI outputs the path for your OVA configuration file.
+12. The import may take a few minutes to complete. The Palette CLI outputs the path for your OVA configuration file.
     Make a note of it.
 
-12. Your imported OVA is now ready to be deployed to a new VM inside your VMO cluster. Execute the following command to
+13. Your imported OVA is now ready to be deployed to a new VM inside your VMO cluster. Execute the following command to
     start an interactive shell and begin the deployment process. Replace the path placeholder with the path of your OVA
     configuration file.
 
@@ -224,8 +290,24 @@ Ensure that your VMO cluster has sufficient capacity for any VMs that you deploy
     | **VM Name**                 | The namespace of your VM.                         |            |
     | **Start VM Automatically?** | Indicate whether to start your VM after creation. | `y`/ `N`   |
 
-13. Depending on the configuration of your OVA, you may be prompted to provide value. The deployment of your VM should
-    complete within a few minutes.
+14. Depending on the configuration of your OVA, you may be prompted to provide additional values for the OVF template
+    variables. The deployment of your VM should complete within a few minutes.
+
+    <!-- prettier-ignore-start -->
+
+    :::info
+
+    You may see a variety of warnings during the deployment process, including many repeated lines containing the word
+    `(BADINDEX)`. All of these warnings and messages can safely be ignored. If a fatal error is encountered, Palette CLI
+    will exit completely.
+
+    You may need to make minor edits to the auto-generated VM specification if you want to configure
+    <VersionedLink text="Multus" url="/integrations/packs/?pack=cni-multus"/> VLAN for each network interface.
+
+    If uploading your image to a `DataVolume` upload fails, you may re-run the upload after debugging any CDI issues.
+    Execute the command `palette vmo import-ova --config-file <path-to-ova-config.yaml> --skip-convert`. :::
+
+    <!-- prettier-ignore-end -->
 
 ## Validate
 
