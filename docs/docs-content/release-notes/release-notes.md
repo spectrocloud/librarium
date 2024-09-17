@@ -61,9 +61,10 @@ tags: ["release-notes"]
   to the [Edge Installer User Data Configuration](../clusters/edge/edge-configuration/edge-configuration.md) reference
   page for more information.
 
-- A change in the Palette API affects Edge clusters deployed with Terraform or the Palette API. The `type` parameter in
-  the `controlPlaneEndpoint` for Edge clusters no longer accepts IP addresses. The accepted values are now `VIP`,
-  `External`, and `DDNS`.
+- A change in the [Edge Native Cluster](https://docs.spectrocloud.com/api/v1/v-1-spectro-clusters-edge-native-create/)
+  API endpoint affects Terraform and API workflows for Edge cluster creation or modification. The `type` parameter in
+  the `controlPlaneEndpoint` no longer accepts IP addresses. The accepted values are now `VIP`, `External`, and `DDNS`.
+  Refer to the [Known Issues](./known-issues.md) page for more information.
 
 #### Features
 
