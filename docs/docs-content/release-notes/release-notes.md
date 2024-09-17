@@ -61,6 +61,10 @@ tags: ["release-notes"]
   to the [Edge Installer User Data Configuration](../clusters/edge/edge-configuration/edge-configuration.md) reference
   page for more information.
 
+- A change in the Palette API affects Edge clusters deployed with Terraform or the Palette API. The `type` parameter in
+  the `controlPlaneEndpoint` for Edge clusters no longer accepts IP addresses. The accepted values are now `VIP`,
+  `External`, and `DDNS`.
+
 #### Features
 
 - You can now configure the Maximum Transmission Unit (MTU) for network interface configured for discovery though
