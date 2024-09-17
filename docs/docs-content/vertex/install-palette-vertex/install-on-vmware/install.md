@@ -9,9 +9,9 @@ tags: ["vertex", "vmware"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-You install Palette VerteX in an airgap environment through the Palette Command Line Interface (CLI). The CLI provides
-you with an interactive experience that guides you through the installation process. You can invoke the Palette CLI on
-any Linux x86-64 system with the Docker daemon installed and connectivity to the VMware vSphere environment where
+You can install Palette VerteX in a connected environment using the Palette Command Line Interface (CLI). The CLI
+provides you with an interactive experience that guides you through the installation process. You can invoke the Palette
+CLI on any Linux x86-64 system with the Docker daemon installed and connectivity to the VMware vSphere environment where
 Palette VerteX will be deployed.
 
 ## Prerequisites
@@ -78,10 +78,10 @@ Palette VerteX will be deployed.
 
 :::info
 
-Self-hosted Palette VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do
-not require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning
-into remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install
-a PCG on VMware, check out the [Deploy to VMware vSphere](../../../clusters/pcg/deploy-pcg/vmware.md) guide.
+Palette VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not require a
+separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into remote data
+centers that do not have a direct incoming connection from the Palette console. To learn how to install a PCG on VMware,
+check out the [Deploy to VMware vSphere](../../../clusters/pcg/deploy-pcg/vmware.md) guide.
 
 :::
 
@@ -99,7 +99,7 @@ Use the following steps to install Palette VerteX.
 1.  Log in to your vCenter environment.
 
 2.  Create a vSphere VM and Template folder with the name `spectro-templates`. Ensure this folder is accessible by the
-    user account you will use to deploy the airgap VerteX installation.
+    user account you will use to deploy the VerteX installation.
 
 3.  Use the URL below to import the Operating System and Kubernetes distribution OVA required for the install. Place the
     OVA in the `spectro-templates` folder. Refer to the
@@ -146,8 +146,7 @@ Use the following steps to install Palette VerteX.
 8.  The Spectro Cloud repository URL is `https://saas-repo-fips.console.spectrocloud.com`.
 
 9.  Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro
-    Cloud repository. Airgap installations, provide the credentials to your private repository provided to you by the
-    airgap setup script .
+    Cloud repository.
 
 10. Choose `VMware vSphere` as the cloud type. This is the default.
 
