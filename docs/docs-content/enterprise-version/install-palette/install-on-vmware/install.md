@@ -96,7 +96,7 @@ Use the following steps to install Palette.
 1.  Log in to your vCenter environment.
 
 2.  Create a vSphere VM and Template folder with the name `spectro-templates`. Ensure this folder is accessible by the
-    user account you will use to deploy the airgap VerteX installation.
+    user account you will use to deploy the Palette installation.
 
 3.  Use the URL below to import the Operating System and Kubernetes distribution OVA required for the install. Place the
     OVA in the `spectro-templates` folder.
@@ -133,26 +133,10 @@ Use the following steps to install Palette.
 7.  Type `y` if you want to use Ubuntu Pro. Otherwise, type `n`. If you choose to use Ubuntu Pro, you will be prompted
     to enter your Ubuntu Pro token.
 
-8.  Depending on that type of install of Palette you are using, the Spectro Cloud repository URL value will be
-    different.
-
-    - Non-Airgap: `https://saas-repo.console.spectrocloud.com`
-    - Airgap: The URL or IP address of the Spectro Cloud Repository that is provided to you by the airgap setup script
-
-    <br />
-
-    :::info
-
-    If you are using the Palette CLI from inside an [airgap support VM](./airgap-install/airgap-install.md), the CLI
-    will automatically detect the airgap environment and prompt you to **Use local, air-gapped Spectro Cloud Artifact
-    Repository (SCAR) configuration**. Type `y` to use the local resources and skip filling in the repository URL and
-    credentials.
-
-    :::
+8.  Provide `https://saas-repo.console.spectrocloud.com` as the URL for the Spectro Cloud repository.
 
 9.  Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro
-    Cloud repository. Airgap installations, provide the credentials to your private repository provided to you by the
-    airgap setup script .
+    Cloud repository.
 
 10. Choose `VMware vSphere` as the cloud type. This is the default.
 
