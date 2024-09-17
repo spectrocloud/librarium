@@ -50,6 +50,9 @@ clean-packs: ## Clean supplemental packs and pack images
 	rm -rf static/img/packs
 	rm -rf .docusaurus/packs-integrations/api_pack_response.json
 
+clean-security: ## Clean security bulletins
+	rm -rf .docusaurus/security-bulletins/default/*.json
+
 clean-api: ## Clean API docs
 	@echo "cleaning api docs"
 	npm run clean-api-docs

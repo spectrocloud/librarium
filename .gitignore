@@ -72,6 +72,7 @@ _partials/index.ts
 
 # Ignore statoc/img/packs
 static/img/packs
+static/data/security-bulletins/*
 
 .vale-config/
 vale/styles/spectrocloud/
