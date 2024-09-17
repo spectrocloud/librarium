@@ -16,7 +16,7 @@ utilize in our products and services.
 
 ## Security Bulletins
 
-We release [security bulletins](./reports/reports.md) on a monthly and ad-hoc basis addressing security vulnerabilities
+We release [security bulletins](./reports/reports.md) on regular basis addressing security vulnerabilities
 in our software or related third-party components, describing their remediation when available, and providing links to
 the applicable updates for affected software when available.
 
