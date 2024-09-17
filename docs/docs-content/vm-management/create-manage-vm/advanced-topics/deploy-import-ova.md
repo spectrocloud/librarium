@@ -22,60 +22,60 @@ Palette VMO.
 
 ## Prerequisites
 
-- A Healthy VMO cluster. Refer to the [Create a VMO Profile](../../create-vmo-profile.md) for further guidance. 
+- A Healthy VMO cluster. Refer to the [Create a VMO Profile](../../create-vmo-profile.md) for further guidance.
 
-    - Ensure that your VMO cluster has sufficient capacity for any VMs that you deploy. Refer to the
+  - Ensure that your VMO cluster has sufficient capacity for any VMs that you deploy. Refer to the
     [Environment Setup](../../environment-setup.md) page for recommended environment sizes.
 
 <br />
 
-  :::warning
+:::warning
 
-  If you need to provision `Block` storage volumes during the VM deployment process, add the following custom
-  configuration to your VMO cluster OS pack. Applying this configuration may cause a cluster repave. For more
-  information, refer to
-  [Repave Behaviors and Configurations](../../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration)
+If you need to provision `Block` storage volumes during the VM deployment process, add the following custom
+configuration to your VMO cluster OS pack. Applying this configuration may cause a cluster repave. For more information,
+refer to
+[Repave Behaviors and Configurations](../../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration)
 
-  Additionally, we recommend provisioning volumes with the `ReadWriteMany` access mode to ensure that VMs can be
-  [live migrated](https://kubevirt.io/user-guide/compute/live_migration/#limitations).
+Additionally, we recommend provisioning volumes with the `ReadWriteMany` access mode to ensure that VMs can be
+[live migrated](https://kubevirt.io/user-guide/compute/live_migration/#limitations).
 
-  ```yaml
-  kubeadmconfig:
-    preKubeadmCommands:
-      # Start containerd with new configuration
-      - systemctl daemon-reload
-      - systemctl restart containerd
-    files:
-      - targetPath: /etc/containerd/config.toml
-    targetOwner: "root:root"
-    targetPermissions: "0644"
-    content: |
-      ## template: jinja
+```yaml
+kubeadmconfig:
+  preKubeadmCommands:
+    # Start containerd with new configuration
+    - systemctl daemon-reload
+    - systemctl restart containerd
+  files:
+    - targetPath: /etc/containerd/config.toml
+  targetOwner: "root:root"
+  targetPermissions: "0644"
+  content: |
+    ## template: jinja
 
-      # Use config version 2 to enable new configuration fields.
-      version = 2
+    # Use config version 2 to enable new configuration fields.
+    version = 2
 
-      imports = ["/etc/containerd/conf.d/*.toml"]
+    imports = ["/etc/containerd/conf.d/*.toml"]
 
-      [plugins]
-          [plugins."io.containerd.grpc.v1.cri"]
-          sandbox_image = "registry.k8s.io/pause:3.9"
-          device_ownership_from_security_context = true
-          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
-          runtime_type = "io.containerd.runc.v2"
-          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
-          SystemdCgroup = true
-  ```
+    [plugins]
+        [plugins."io.containerd.grpc.v1.cri"]
+        sandbox_image = "registry.k8s.io/pause:3.9"
+        device_ownership_from_security_context = true
+        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+        runtime_type = "io.containerd.runc.v2"
+        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+        SystemdCgroup = true
+```
 
-  If you are in a proxied environment, you must configure the CDI custom resource in order to deploy to a `DataVolume`.
-  Refer to the
-  [CDI Configuration](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/cdi-config.md#options)
-  documentation.
+If you are in a proxied environment, you must configure the CDI custom resource in order to deploy to a `DataVolume`.
+Refer to the
+[CDI Configuration](https://github.com/kubevirt/containerized-data-importer/blob/main/doc/cdi-config.md#options)
+documentation.
 
-  If you have configured Nginx together with MetalLB, add an entry to `/etc/hosts` that maps the CDI upload proxy host
-  name, for example `cdi-uploadproxy.mycompany.io`, to the Nginx load balancer’s public IP address.
+If you have configured Nginx together with MetalLB, add an entry to `/etc/hosts` that maps the CDI upload proxy host
+name, for example `cdi-uploadproxy.mycompany.io`, to the Nginx load balancer’s public IP address.
 
-  :::
+:::
 
 - Install kubectl command-line tool. Refer to the
   [kubectl installation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) guide to learn more.
