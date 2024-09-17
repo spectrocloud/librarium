@@ -114,10 +114,10 @@ customization.
    git tag
    ```
 
-4. Check out the newest available tag. This guide uses the tag **v4.0.6** as an example.
+4. Check out the newest available tag. This guide uses the tag **v4.4.12** as an example.
 
    ```shell
-   git checkout v4.0.6
+   git checkout v4.4.12
    ```
 
 5. Review the files relevant for this guide.
@@ -152,7 +152,7 @@ customization.
 
    Using the arguments defined in the **.arg** file, the final provider images you generate will have the following
    naming convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. For example, one of the provider images will be
-   `ttl.sh/ubuntu:k3s-1.27.2-v4.0.6-palette-learn`.
+   `ttl.sh/ubuntu:k3s-1.27.2-v4.4.12-palette-learn`.
 
    ```bash
    cat << EOF > .arg
@@ -279,7 +279,7 @@ customization.
       system.repo: ubuntu
       system.k8sDistribution: k3s
       system.osName: ubuntu
-      system.peVersion: v4.0.6
+      system.peVersion: v4.4.12
       system.customTag: palette-learn
       system.osVersion: 22
     ```
@@ -294,9 +294,9 @@ customization.
 
     ```hideClipboard bash
     REPOSITORY             TAG                                   IMAGE ID       CREATED         SIZE
-    ttl.sh/ubuntu          k3s-1.27.2-v4.0.6-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
-    ttl.sh/ubuntu          k3s-1.25.2-v4.0.6-palette-learn       02424d29fcac   10 minutes ago   4.09GB
-    ttl.sh/ubuntu          k3s-1.26.4-v4.0.6-palette-learn       4e373ddfb53f   10 minutes ago   4.11GB
+    ttl.sh/ubuntu          k3s-1.27.2-v4.4.12-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
+    ttl.sh/ubuntu          k3s-1.25.2-v4.4.12-palette-learn       02424d29fcac   10 minutes ago   4.09GB
+    ttl.sh/ubuntu          k3s-1.26.4-v4.4.12-palette-learn       4e373ddfb53f   10 minutes ago   4.11GB
     ```
 
 13. To use the provider images in your cluster profile, push them to the image registry mentioned in the **.arg** file.
@@ -305,9 +305,9 @@ customization.
     following commands to push the provider images to the _ttl.sh_ image registry.
 
     ```bash
-    docker push ttl.sh/ubuntu:k3s-1.25.2-v4.0.6-palette-learn
-    docker push ttl.sh/ubuntu:k3s-1.26.4-v4.0.6-palette-learn
-    docker push ttl.sh/ubuntu:k3s-1.27.2-v4.0.6-palette-learn
+    docker push ttl.sh/ubuntu:k3s-1.25.2-v4.4.12-palette-learn
+    docker push ttl.sh/ubuntu:k3s-1.26.4-v4.4.12-palette-learn
+    docker push ttl.sh/ubuntu:k3s-1.27.2-v4.4.12-palette-learn
     ```
 
     :::warning
@@ -366,7 +366,7 @@ customization.
       system.repo: ubuntu
       system.k8sDistribution: k3s
       system.osName: ubuntu
-      system.peVersion: v4.0.6
+      system.peVersion: v4.4.12
       system.customTag: palette-learn
       system.osVersion: 22
     ```
@@ -495,7 +495,7 @@ git tag
 4. Check out the newest available tag. This guide uses **v3.4.3** tag as an example.
 
 ```shell
-git checkout v4.0.6
+git checkout v4.4.12
 ```
 
 5. Review the files relevant for this guide.
@@ -740,7 +740,7 @@ git checkout v4.0.6
       system.repo: opensuse-leap
       system.k8sDistribution: k3s
       system.osName: opensuse-leap
-      system.peVersion: v4.0.6
+      system.peVersion: v4.4.12
       system.customTag: palette-learn
       system.osVersion:
     ```
@@ -755,9 +755,9 @@ git checkout v4.0.6
 
     ```hideClipboard bash
     REPOSITORY                   TAG                               IMAGE ID       CREATED          SIZE
-    spectrocloud/opensuse-leap   k3s-1.27.2-v4.0.6-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
-    spectrocloud/opensuse-leap   k3s-1.26.6-v4.0.6-palette-learn   0f2efd533a33   24 minutes ago   2.22GB
-    spectrocloud/opensuse-leap   k3s-1.25.2-v4.0.6-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
+    spectrocloud/opensuse-leap   k3s-1.27.2-v4.4.12-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
+    spectrocloud/opensuse-leap   k3s-1.26.6-v4.4.12-palette-learn   0f2efd533a33   24 minutes ago   2.22GB
+    spectrocloud/opensuse-leap   k3s-1.25.2-v4.4.12-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
     ```
 
 16. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file.
@@ -776,9 +776,9 @@ git checkout v4.0.6
     the utility created.
 
     ```bash
-    docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.27.2-v4.0.6-palette-learn
-    docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.26.6-v4.0.6-palette-learn
-    docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.25.2-v4.0.6-palette-learn
+    docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.27.2-v4.4.12-palette-learn
+    docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.26.6-v4.4.12-palette-learn
+    docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.25.2-v4.4.12-palette-learn
     ```
 
 18. After pushing the provider images to the image registry, open a web browser and log in to
@@ -828,7 +828,7 @@ git checkout v4.0.6
       system.repo: opensuse-leap
       system.k8sDistribution: k3s
       system.osName: opensuse-leap
-      system.peVersion: v4.0.6
+      system.peVersion: v4.4.12
       system.customTag: palette-learn
       system.osVersion:
     ```
