@@ -99,7 +99,9 @@ learn more about deleting an API key as a tenant admin.
 
 ## API
 
-You can use the Palette API with the `https://api.spectrocloud.com/v1/apiKeys/:uid` [endpoint](https://docs.spectrocloud.com/api/v1/v-1-api-keys-uid-delete) and the API key's unique identifier to delete an API key programmatically. 
+You can use the Palette API with the `https://api.spectrocloud.com/v1/apiKeys/:uid`
+[endpoint](https://docs.spectrocloud.com/api/v1/v-1-api-keys-uid-delete) and the API key's unique identifier to delete
+an API key programmatically.
 
 Use the following steps to learn how to delete an API key.
 
@@ -169,8 +171,8 @@ Use the following steps to learn how to delete an API key.
 
 ### Validate
 
-1. Verify the API key is no longer available in Palette by issuing the following command. Replace `API_KEY_VALUE`
-   with your API key.
+1. Verify the API key is no longer available in Palette by issuing the following command. Replace `API_KEY_VALUE` with
+   your API key.
 
    ```shell
    curl --location 'https://api.spectrocloud.com/v1/apiKeys' \
@@ -219,9 +221,10 @@ You can use the [Palette SDK](../../../automation/palette-sdk/palette-sdk.md) to
 
 4. Open the **main.go** file in your text editor or IDE.
 
-5. Copy and paste the following code snippet into the **main.go** file.
+5. Copy and paste the following code snippet into the **main.go** file. Replace the variable `keyName` with the key name
+   you want to delete.
 
-   ```go
+   ```go {17}
     package main
 
     import (
@@ -237,6 +240,10 @@ You can use the [Palette SDK](../../../automation/palette-sdk/palette-sdk.md) to
 
       host := os.Getenv("PALETTE_HOST") // "api.spectrocloud.com"
       apiKey := os.Getenv("PALETTE_API_KEY") // "your api key"
+
+      if host == "" || apiKey == "" {
+        log.Fatal("Please set PALETTE_HOST and PALETTE_API_KEY environment variables")
+      }
 
       keyName := "delete-test-key" // "name of the key to delete. Replace as needed"
 
@@ -275,7 +282,7 @@ You can use the [Palette SDK](../../../automation/palette-sdk/palette-sdk.md) to
 7. Start the Go program.
 
    ```shell
-   go run .
+   go get ./... && go run .
    ```
 
    ```shell
@@ -312,25 +319,90 @@ the API keys again and verifying the API key is no longer available.
    }
    ```
 
-2. Add the function to the **main.go** file. Add the code snippet after the initial loop that removes the API key on line 40.
+2. Replace the entire content of the **main.go** file with the following code snippet to include the validation check.
 
    ```go
-     ok, err := validateKeyIsRemoved(keyName, pc)
-     if err != nil {
-       log.Fatal("Unable to gather API keys: ", err)
-     }
+    package main
 
-     if !ok {
-       log.Fatal("API key is not removed")
-     }
+    import (
+      "fmt"
+      "log"
+      "log/slog"
+      "os"
 
-     slog.Info("Validation ensured the API key is removed successfully")
+      "github.com/spectrocloud/palette-sdk-go/client"
+    )
+
+    func main() {
+
+      host := os.Getenv("PALETTE_HOST") // "api.spectrocloud.com"
+      apiKey := os.Getenv("PALETTE_API_KEY") // "your api key"
+
+      if host == "" || apiKey == "" {
+        log.Fatal("Please set PALETTE_HOST and PALETTE_API_KEY environment variables")
+      }
+
+      keyName := "delete-test-key" // "name of the key to delete"
+
+      pc := client.New(
+        client.WithPaletteURI(host),
+        client.WithAPIKey(apiKey),
+      )
+
+      keys, err := pc.GetAPIKeys()
+      if err != nil {
+        log.Fatal("Error getting API keys: ", err)
+      }
+
+      for _, key := range keys.Items {
+        if key.Metadata.Name == keyName {
+          slog.Info(fmt.Sprintf("API key found. Deleting API key: %s", key.Metadata.Name))
+          err := pc.DeleteAPIKey(key.Metadata.UID)
+          if err != nil {
+            log.Fatal("Error deleting API key: ", err)
+          }
+          slog.Info("API key deleted successfully")
+        }
+
+      }
+
+      ok, err := validateKeyIsRemoved(keyName, pc)
+      if err != nil {
+        log.Fatal("Error validating key is removed: ", err)
+      }
+
+      if !ok {
+        log.Fatal("API key is not removed")
+      }
+
+      slog.Info("Validation ensured the key is removed successfully")
+
+    }
+
+    // validateKeyIsRemoved checks if the key is removed
+    // returns true if the key is removed, false otherwise
+    func validateKeyIsRemoved(keyName string, pc *client.V1Client) (bool, error) {
+
+      keys, err := pc.GetAPIKeys()
+      if err != nil {
+        log.Fatal("Error getting API keys: ", err)
+      }
+
+      for _, key := range keys.Items {
+        if key.Metadata.Name == keyName {
+          return false, nil
+        }
+      }
+
+      return true, nil
+
+    }
    ```
 
 3. Start the Go program.
 
    ```shell
-   go run .
+   go get ./... && go run .
    ```
 
    ```shell
