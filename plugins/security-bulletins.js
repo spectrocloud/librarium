@@ -21,7 +21,7 @@ async function getSecurityBulletins(queryParams) {
 }
 
 async function pluginSecurityBulletins(context, options) {
-  let GlobalCVEData = "";
+  let GlobalCVEData = {};
 
   return {
     name: "plugin-security-bulletins",
@@ -74,8 +74,17 @@ async function pluginSecurityBulletins(context, options) {
       // We need to add a route for each CVE. Let's combine all entries into a single array.
       const allCVEs = Object.values(GlobalCVEData).reduce((acc, curr) => acc.concat(curr), []);
 
-      // remove any duplicate CVEs
-      const uniqueCVEs = allCVEs.filter((item, index, self) => index === self.findIndex((t) => t.cve === item.cve));
+      // const uniqueCVEs = allCVEs.filter((item, index, self) => index === self.findIndex((t) => t.cve === item.cve));
+      const uniqueCVEs = [];
+      const seenCVEs = new Set();
+
+      // remove any duplicate CVEs. If we don't do this, we will have multiple routes for the same CVE. Multiple routes could cause build errors and navigation issues.
+      for (const item of allCVEs) {
+        if (!seenCVEs.has(item.cve)) {
+          seenCVEs.add(item.cve);
+          uniqueCVEs.push(item);
+        }
+      }
 
       // In here we loop through all the CVEs and create a route for each one.
       // The data for each route is passed as a prop to the component.
