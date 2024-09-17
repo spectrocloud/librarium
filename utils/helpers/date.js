@@ -1,10 +1,7 @@
 function getFormattedDate() {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, "0"); // Adding 1 because months are zero-based
-  const day = String(today.getDate()).padStart(2, "0");
-
-  return `${year}-${month}-${day}`;
+  const options = { timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit", day: "2-digit" };
+  const formattedDate = new Date().toLocaleDateString("en-CA", options);
+  return formattedDate;
 }
 
 export { getFormattedDate };
