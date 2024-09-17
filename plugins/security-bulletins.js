@@ -24,10 +24,10 @@ async function pluginSecurityBulletins(context, options) {
   let GlobalCVEData = "";
 
   return {
-    name: "security-bulletins",
+    name: "plugin-security-bulletins",
     async loadContent() {
       const securityBulletins = new Map();
-      const dirname = path.join(".docusaurus", "security-bulletins", "default");
+      const dirname = path.join(".docusaurus", "plugin-security-bulletins", "default");
       const filename = path.join(dirname, "data.json");
 
       let isFileExists = false;

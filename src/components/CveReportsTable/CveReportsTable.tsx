@@ -5,7 +5,7 @@ import { useColorMode } from "@docusaurus/theme-common";
 import { useHistory } from "@docusaurus/router"; // Import useHistory
 
 export default function CveReportsTable() {
-  const data = require("../../../.docusaurus/security-bulletins/default/data.json");
+  const data = require("../../../.docusaurus/plugin-security-bulletins/default/data.json");
 
   const paletteCVEsConnected = data?.palette;
   const paletteCVEsAirgap = data?.paletteAirgap;
@@ -85,7 +85,7 @@ export default function CveReportsTable() {
       dataSource={cveList}
       rowKey="cve"
       pagination={{
-        pageSizeOptions: ["25", "100", "500"],
+        pageSizeOptions: ["100", "500", "1000"],
         defaultPageSize: 100,
         showSizeChanger: true,
       }}
