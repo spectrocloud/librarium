@@ -99,12 +99,9 @@ learn more about deleting an API key as a tenant admin.
 
 ## API
 
-You can use the Palette API to delete an API key programmatically. Use the
-`https://api.spectrocloud.com/v1/apiKeys/:uid`[endpoint](https://docs.spectrocloud.com/api/v1/v-1-api-keys-uid-delete)
-to delete an API key.
+You can use the Palette API with the `https://api.spectrocloud.com/v1/apiKeys/:uid` [endpoint](https://docs.spectrocloud.com/api/v1/v-1-api-keys-uid-delete) and the API key's unique identifier to delete an API key programmatically. 
 
-To delete an API key, you first must have the API key's unique identifier. Use the following steps to learn how to
-delete an API key programmatically.
+Use the following steps to learn how to delete an API key.
 
 ### Prerequisites
 
@@ -113,7 +110,7 @@ delete an API key programmatically.
 - A terminal or command prompt to execute the `curl` command. Alternatively, you can use a REST client like
   [Postman](https://www.postman.com/).
 
-### Delete API Key With API
+### Delete API Key with API
 
 1. Open a terminal or command prompt.
 
@@ -172,7 +169,7 @@ delete an API key programmatically.
 
 ### Validate
 
-1. Verify the API key is no longer available in the Palette by issuing the following command. Replace `API_KEY_VALUE`
+1. Verify the API key is no longer available in Palette by issuing the following command. Replace `API_KEY_VALUE`
    with your API key.
 
    ```shell
@@ -315,7 +312,7 @@ the API keys again and verifying the API key is no longer available.
    }
    ```
 
-2. Add the function to **main.go** file. Add the code snippet after the initial loop that removes the APII key, line 40.
+2. Add the function to the **main.go** file. Add the code snippet after the initial loop that removes the API key on line 40.
 
    ```go
      ok, err := validateKeyIsRemoved(keyName, pc)

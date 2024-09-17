@@ -35,7 +35,7 @@ group, any changes to the external user's group membership are reflected the nex
 
 ## Best Practices
 
-The following best practices we recommend for managing Palette API keys:
+The following are best practices we recommend for managing Palette API keys:
 
 - Set an expiration date for API keys to ensure that they are not used indefinitely. Preferably, set the expiration date
   to a short duration, such as 30 days, and renew the key as needed.
