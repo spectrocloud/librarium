@@ -51,7 +51,7 @@ expire. You can follow the steps below to check when the next automatic renewal 
 
 In **Overview**, click **View Certificates** in the **Kubernetes Certificates** row. This will display all the
 certificates currently in use by your cluster. You can confirm that the certificates have been renewed by looking at the
-issue date of certificates.
+_expiry_ date of certificates. The issue date of the certificates will not change after certificate renewal.
 
 ## Manual Renewal
 
@@ -125,4 +125,4 @@ Management API.
 
 In **Overview**, click **View Certificates** in the **Kubernetes Certificates** row. This will display all the
 certificates currently in use by your cluster. You can confirm that the certificates have been renewed by looking at the
-_expiry_ date of certificates. The issue date of the certificates will not change after cluster renewal.
+_expiry_ date of certificates. The issue date of the certificates will not change after certificate renewal.
