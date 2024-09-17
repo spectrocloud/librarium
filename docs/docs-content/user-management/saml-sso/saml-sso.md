@@ -20,11 +20,19 @@ the following protocols for authentication and authorization.
 
 ## Limitations
 
-- Palette [API keys](../authentication/api-key/api-key.md) that belong to Palette users removed from the organization
-  through OIDC/SAML are not automatically removed. We recommend that you remove these keys to ensure that they are no
-  longer used. You can programmatically remove the API keys using the REST API or the Palette SDK. Check out the
-  [Delete API Key](../authentication/api-key/delete-api-key.md) page for more information on how to delete an API key
-  programmatically.
+Palette [API keys](../authentication/api-key/api-key.md) that belong to Palette users removed from the organization
+through OIDC/SAML are not automatically removed. We recommend that you remove these keys to ensure that they are no
+longer used. You can programmatically remove the API keys using the REST API or the Palette SDK. Check out the
+[Delete API Key](../authentication/api-key/delete-api-key.md) page for more information on how to delete an API key
+programmatically.
+
+:::tip
+
+Tenant administrators can view all API keys created for the tenant. Users are limited to actions for their own API keys.
+To learn more about the API key management tasks you can perform as a tenant administrator, refer to the
+[Tenant API Key Management](../../tenant-settings/api-key-management.md) page.
+
+:::
 
 Check out the following resources to enable SSO in Palette with the supported Identity Providers (IDP).
 
