@@ -45,7 +45,7 @@ The following software must be installed on your system:
 - [tar](https://www.gnu.org/software/tar/) - This is only required if you need to deploy the offline documentation to a
   device without internet access.
 
-- [cosign](https://docs.sigstore.dev/system_config/installation) - Not required unless you want to verify the
+- [cosign](https://docs.sigstore.dev/cosign/system_config/installation/) - Not required unless you want to verify the
   authenticity of the container image. Review the [Container Image Authenticity](#container-image-authenticity) section
   for more information.
 
@@ -113,8 +113,8 @@ image is signed using a cryptographic key pair that is private and stored intern
 documentation repository at
 [**static/cosign.pub**](https://raw.githubusercontent.com/spectrocloud/librarium/master/static/cosign.pub). Use the
 public key to verify the authenticity of the container image. You can learn more about the container image signing
-process by reviewing the [Signing Containers](https://docs.sigstore.dev/signing/signing_with_containers) documentation
-page.
+process by reviewing the [Signing Containers](https://docs.sigstore.dev/cosign/signing/signing_with_containers/)
+documentation page.
 
 :::info
 
