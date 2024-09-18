@@ -11,6 +11,17 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## Sept 18, 2024 - Release 4.4.19
+
+#### Bug Fixes
+
+- Fixed an issue where the API endpoint for
+  [Edge Cluster](https://docs.spectrocloud.com/api/v1/v-1-spectro-clusters-edge-native-create/) creation did not accept
+  the value `IP` for the `spec.cloudConfig.controlPlaneEndpoint.type` field. The
+  [Palette Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) versions
+  [0.21.4](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases) and `0.20.9` contain the fix for
+  this issue.
+
 ## Sept 14, 2024 - Release 4.4.18
 
 ### Palette Enterprise {#release-4-4-18}
