@@ -1,0 +1,25 @@
+{
+  "concurrency": 50,
+  "markdown": true,
+  "recurse": true,
+  "timeout": 100000,
+  "retry": true,
+  "retryErrors": true,
+  "retryErrorsJitter": 10000,
+  "retryErrorsCount": 5,
+  "format": "json",
+  "skip": [
+    "^https://docs.spectrocloud.com.*$$",
+    "^https://docs.spectrocloud.com/.*/supplemental-packs$$",
+    "^http://docs.spectrocloud.com.*$$",
+    "^https://software-private.spectrocloud.com.*$$",
+    "^/.*.md$$",
+    "![.*](.*)$$",
+    ".(jpg|jpeg|png|gif|webp)$$",
+    "https://linux.die.net/man/.*$$",
+    "https://mysql.com/.*.*$$",
+    "https://dev.mysql.com/doc/.*$$"
+  ],
+  "verbosity": "error",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+}
