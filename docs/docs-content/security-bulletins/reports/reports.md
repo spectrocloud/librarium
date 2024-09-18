@@ -108,7 +108,6 @@ Click on the CVE ID to view the full details of the vulnerability.
 
 | CVE ID                                          | Initial Pub Date | Modified Date | Product Version          | Vulnerability Type                      | CVSS Severity                                            | Status        |
 | ----------------------------------------------- | ---------------- | ------------- | ------------------------ | --------------------------------------- | -------------------------------------------------------- | ------------- |
-| [CVE-2023-49569](./cve-2023-49569.md)           | 9/6/24           | 9/6/24        | 4.4.15                   | Third-party component: Bitdefender      | [9.8](https://nvd.nist.gov/vuln/detail/CVE-2023-49569)   | :mag: Ongoing |
 | [CVE-2024-37371](./cve-2024-37371.md)           | 08/30/24         | 08/30/24      | 4.4.14 & 4.4.18          | Third-party component: MIT Kerberos     | [9.1](https://nvd.nist.gov/vuln/detail/CVE-2024-37371)   | :mag: Ongoing |
 | [CVE-2019-1010022](./cve-2019-1010022.md)       | 08/16/24         | 08/16/24      | 4.4.14 & 4.4.18          | Third-party component: GNU Libc         | [9.8](https://nvd.nist.gov/vuln/detail/CVE-2019-1010022) | :mag: Ongoing |
 | [CVE-2024-45490](./cve-2024-45490.md)           | 9/5/24           | 9/5/24        | 4.4.14 & 4.4.18          | Third-party component: Libexpat         | [9.8](https://nvd.nist.gov/vuln/detail/CVE-2024-45490)   | :mag: Ongoing |
