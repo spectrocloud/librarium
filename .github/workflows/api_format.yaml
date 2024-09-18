@@ -1,0 +1,69 @@
+name: API Format
+
+on:
+  pull_request_target:
+    types: ["labeled", "closed"]
+
+jobs:
+  backport:
+    name: Format API PR
+    runs-on: ubuntu-latest
+    if: |
+      github.event.pull_request.merged == true
+      && contains(github.event.pull_request.labels.*.name, 'api-format')
+      && (
+        (github.event.action == 'labeled' && github.event.label.name == 'api-format')
+        || (github.event.action == 'closed')
+      )
+    steps:
+      - name: Retrieve Credentials
+        id: import-secrets
+        uses: hashicorp/vault-action@v3.0.0
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+
+      - name: Determine branch name
+        id: extract_branch
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "GITHUB_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
+          else
+            echo "GITHUB_BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV
+          fi
+
+      - name: Format API
+        run: make api
+
+
+      - name: Commit Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "ci: auto-formatting API changes"        
+
+
+      - name: Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: ' The PR for branch ${{env.GITHUB_BRANCH}} failed when attempting to format the API. Review the GitHub Actions logs for more details.'
+
+      - name: Post Netlify progress
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+              🤖 The API has been format and is ready for merging.
+          refresh-message-position: false
