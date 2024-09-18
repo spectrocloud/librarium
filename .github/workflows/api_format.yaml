@@ -4,6 +4,9 @@ on:
   pull_request_target:
     types: ["labeled", "closed"]
 
+env:
+  GITHUB_BRANCH: ${{ github.ref_name }} 
+
 jobs:
   backport:
     name: Format API PR
@@ -65,5 +68,5 @@ jobs:
         uses: mshick/add-pr-comment@v2
         with:
           message: |
-              🤖 The API has been format and is ready for merging.
+              🤖 The API has been formated and is ready for merging.
           refresh-message-position: false
