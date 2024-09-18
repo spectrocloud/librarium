@@ -65,6 +65,4 @@ Palette CLI supports the following global flags.
 
 - [Validator](validator.md)
 
-- [Import](import.md)
-
 - [VMO](vmo.md)
