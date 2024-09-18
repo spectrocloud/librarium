@@ -12,12 +12,11 @@ jobs:
     name: Format API PR
     runs-on: ubuntu-latest
     if: |
-      github.event.pull_request.merged == true
-      && contains(github.event.pull_request.labels.*.name, 'api-format')
-      && (
-        (github.event.action == 'labeled' && github.event.label.name == 'api-format')
-        || (github.event.action == 'closed')
-      )
+      github.event.action == 'labeled'
+      && github.event.label.name == 'api-format'
+      && github.event.pull_request.draft == false
+  
+  
     steps:
       - name: Retrieve Credentials
         id: import-secrets
