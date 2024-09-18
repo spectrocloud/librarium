@@ -11,7 +11,7 @@ toc_max_heading_level: 2
 category: ["tutorial"]
 ---
 
-Palette Edge allows the deployment of Kubernetes workloads in remote locations with limited connectivity and compute
+Palette Edge allows users to deploy Kubernetes workloads in remote locations with limited connectivity and compute
 infrastructure. This means you can use Palette to manage the lifecycle of your Kubernetes clusters at the edge in places
 such as hospitals, rural areas, restaurants, and more.
 
@@ -19,7 +19,7 @@ Edge clusters are Kubernetes clusters set up on Edge hosts, which can be bare me
 be managed locally on-site through the [Local UI](../../clusters/edge/local-ui/local-ui.md) or centrally through the
 Palette management plane.
 
-Before forming a cluster, the Edge Hosts must be prepared and registered with Palette. This involves the
+Before forming a cluster, the Edge hosts must be prepared and registered with Palette. This involves the
 [EdgeForge workflow](../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), which is responsible for building
 the required Edge artifacts, such as the
 [Installer ISO](../../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md) and
@@ -34,7 +34,7 @@ host. The tutorial will guide you through building the required
 [Edge artifacts](../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md), creating an Edge cluster
 profile, preparing your Edge host, and deploying an Edge cluster along with a demo application.
 
-The diagram below illustrates the components that will be deployed in this tutorial and how they interact with each
+The diagram below illustrates how the components that will be deployed in this tutorial interact with each
 other.
 
 ![A diagram showing the Edge VirtualBox tutorial workflow.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_diagram.webp)
@@ -45,7 +45,7 @@ To complete this tutorial, you will need the following prerequisites in place.
 
 - A host with _AMD64_ (also known as _x86_64_) processor architecture and access to the Internet. The host must meet the
   [minimum requirements](../../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md#prerequisites) to
-  allow the build of the artifacts and have enough resources to allow the creation of a VM with the following
+   build the artifacts and allow the creation of a VM with the following
   specifications:
   - 2 CPU
   - 8 GB memory
@@ -84,7 +84,7 @@ Installer ISO.
 
 :::
 
-### Check Out the Starter Code
+### Setup Your Local Environment
 
 Open up a terminal window in your host machine and clone the **CanvOS** repository. This repository contains the code
 and scripts required to build Edge artifacts.
@@ -113,8 +113,8 @@ git checkout v4.4.8
 
 ### Define Arguments
 
-EdgeForge leverages [Earthly](https://earthly.dev) to build the Installer ISO and provider images artifacts. A file
-called **.arg** is used to pass the values of a few arguments, such as the image tag and registry name, to Earthly for
+EdgeForge leverages [Earthly](https://earthly.dev) to build the Installer ISO and provider images artifacts. The 
+**.arg** file is used to pass the values of a few arguments, such as the image tag and registry name, to Earthly for
 the build process.
 
 Execute the command below to create a custom tag for the provider images. The tag must be an alphanumeric lowercase
@@ -221,7 +221,7 @@ vi Earthfile
 ```
 
 Next, comment out the K3s versions you do not need. This tutorial uses K3s version `1.29.6`. Below is an example of the
-file with the versions commented out.
+file with all other versions commented out.
 
 ```text {18} hideClipboard
        ELSE IF [ "$K8S_DISTRIBUTION" = "k3s" ]
@@ -253,11 +253,11 @@ Next, execute the command below to build the Edge Installer ISO and provider ima
 sudo ./earthly.sh +build-all-images
 ```
 
-The build may take 15 to 20 minutes to conclude, depending on the hardware resources available on the host machine. Once
+The build may take 15 to 20 minutes to complete, depending on the hardware resources available on the host machine. Once
 finished, you get a success message similar to the one displayed below.
 
 ```text hideClipboard
-# Output condensed for readability
+# Lines omitted for readability
 ========================== 🌍 Earthly Build  ✅ SUCCESS ==========================
 🛰️ Reuse cache between CI runs with Earthly Satellites! 2-20X faster than without cache. Generous free tier https://cloud.earthly.dev
 ```
@@ -328,7 +328,7 @@ docker push ttl.sh/ubuntu:k3s-1.29.6-v4.4.8-$CUSTOM_TAG
 The output confirms that the image was pushed to the registry with the correct tag.
 
 ```text hideClipboard
-# Output condensed for readability
+# Lines omitted for readability
 k3s-1.29.6-v4.4.8-vbox-tutorial: digest: sha256:42f8805830c7fd3816bb27e8d710d1747fea31a70cb7718d74e42fe1c0ed53ac size: 17815
 ```
 
@@ -345,7 +345,7 @@ push images to a different registry.
 
 Once the provider images are available in the registry, create the cluster profile.
 
-Log in to [Palette](https://console.spectrocloud.com/) and select **Profiles** from the left **Main Menu**. Click **Add
+Log in to [Palette](https://console.spectrocloud.com/). Then,  select **Profiles** from the left **Main Menu**. Click **Add
 Cluster Profile** to create a cluster profile.
 
 Follow the wizard to create a new profile.
@@ -484,8 +484,8 @@ same network as the host machine's network. Click **OK**.
 In VirtualBox, select the created VM and click **Start** to turn it on. The Edge Installer will bootstrap the Palette
 Edge installation onto the VM.
 
-Wait for the Edge Installer to complete copying content to the VM, which may take a few minutes. The VM will reboot by
-default upon completion.
+Wait for the Edge Installer to complete copying content to the VM, which may take a few minutes. The VM will reboot
+upon completion.
 
 When the image below appears, right-click the VM, select **Stop**, and then click **Power Off** to turn it off before
 the reboot starts.
@@ -511,7 +511,7 @@ the provided Palette registration token.
 
 ### Validate the Edge Host Registration
 
-Log in to [Palette](https://console.spectrocloud.com/) and select **Clusters** from the left **Main Menu**. Click on the
+Navigate back to [Palette](https://console.spectrocloud.com/). Then, select **Clusters** from the left **Main Menu**. Click on the
 **Edge Hosts** tab to view the registered hosts.
 
 Confirm your Edge host is listed as **Healthy** and with a **Ready** status. The **Machine ID** should match the ID
@@ -523,7 +523,7 @@ displayed on your VM's screen.
 
 The following steps will guide you through deploying the Edge cluster.
 
-Select **Clusters** from Palette's left **Main Menu** and click on **Create Cluster**. Ensure you are in the **Default**
+Select **Clusters** from the left **Main Menu** and click on **Create Cluster**. Ensure you are in the **Default**
 project.
 
 Palette will prompt you to select the type of cluster. Select **Edge Native** and click the **Start Edge Native
@@ -673,7 +673,7 @@ Palette Edge enables you to customize your Edge hosts with the desired OS, Kuber
 user data configurations.
 
 This tutorial has provided you with hands-on experience with Palette Edge using a single VM, eliminating the need for a
-complex lab environment or separate physical devices. You can also use this setup to quickly test and validate Edge
+complex lab environment or separate physical devices. You can also use this setup to test and validate Edge
 configurations before deploying them in production.
 
 We encourage you to check the reference resources below to learn more about Palette Edge.
