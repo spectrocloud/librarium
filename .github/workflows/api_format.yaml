@@ -35,6 +35,12 @@ jobs:
         with:
           token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
 
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
       - name: Determine branch name
         id: extract_branch
         run: |
@@ -43,6 +49,8 @@ jobs:
           else
             echo "GITHUB_BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV
           fi
+
+      - run: npm ci
 
       - name: Format API
         run: make api
