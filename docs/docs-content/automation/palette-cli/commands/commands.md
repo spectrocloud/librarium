@@ -33,6 +33,8 @@ The following list contains all the supported Palette CLI subcommands. Click on 
 
 - [`project`](project.md) - Manage Palette Projects.
 
+- [`vmo`](vmo.md) - Migrate, import and deploy VMs to Palette VMO.
+
 ## Global Flags
 
 Palette CLI supports the following global flags.
@@ -61,3 +63,5 @@ Palette CLI supports the following global flags.
 - [Project](project.md)
 
 - [Import](import.md)
+
+- [VMO](vmo.md)
