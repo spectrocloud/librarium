@@ -479,12 +479,12 @@ Login Succeeded
 
 After you have created the repositories, authenticate to your ECR registry using the `aws ecr get-login-password`
 command. The ECR authorization token is then passed to the `oras login` command with **AWS** as username and the
-registry Uniform Resource Identifier (URI). [Oras](https://oras.land/docs/) is a CLI tool to push and pull OCI artifacts
+registry Uniform Resource Identifier (URI). [ORAS](https://oras.land/docs/) is a CLI tool to push and pull OCI artifacts
 to and from OCI registries.
 
 :::warning
 
-If you are not using the tutorial container, ensure you have Oras version `1.0.0` installed. This version is explicitly
+If you are not using the tutorial container, ensure you have ORAS version `1.0.0` installed. This version is explicitly
 required for pushing packs to OCI registries.
 
 :::
@@ -510,12 +510,12 @@ After creating the projects, proceed with the Harbor authentication. In the tuto
 export HARBOR_ADDRESS=<Your_Harbor_Address>
 ```
 
-Now, issue the command `oras login`. [Oras](https://oras.land/docs/) is a CLI tool to push and pull OCI artifacts to and
+Now, issue the command `oras login`. [ORAS](https://oras.land/docs/) is a CLI tool to push and pull OCI artifacts to and
 from OCI registries.
 
 :::warning
 
-If you are not using the tutorial container, ensure you have Oras version `1.0.0` installed. This version is explicitly
+If you are not using the tutorial container, ensure you have ORAS version `1.0.0` installed. This version is explicitly
 required for pushing packs to OCI registries.
 
 :::
