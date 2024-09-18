@@ -607,7 +607,6 @@ const redirects = [
       "/security-bulletins/reports/cve-2023-0286",
       "/security-bulletins/reports/cve-2023-52425",
       "/security-bulletins/reports/cve-2023-5528",
-      "/security-bulletins/reports/cve-2024-0743",
       "/security-bulletins/reports/prisma-2022-0227",
     ],
     to: "/security-bulletins/reports/",

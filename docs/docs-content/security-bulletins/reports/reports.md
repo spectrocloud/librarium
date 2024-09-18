@@ -11,9 +11,10 @@ tags: ["security", "cve"]
 
 # Security Bulletins
 
-The vulnerabilities reported in this Security Bulletin include vulnerabilities within the Palette VerteX airgap solution
-and third-party component vulnerabilities, which we have become aware of. These vulnerabilities are discovered via our
-Bug Bounty program, our security monitoring program, or reported to us by our supply chain.
+The vulnerabilities reported in this Security Bulletin include vulnerabilities within the Palette VerteX and Palette
+Enterprise airgap solution, and third-party component vulnerabilities, which we have become aware of. These
+vulnerabilities are discovered via our Bug Bounty program, our security monitoring program, or reported to us by our
+supply chain.
 
 :::info
 
@@ -23,7 +24,7 @@ score for third-party components. Previous security bulletins are available in t
 
 :::
 
-To fix all the vulnerabilities impacting your products, we recommends patching your instances to the latest version
+To fix all the vulnerabilities impacting your products, we recommend patching your instances to the latest version
 regarding any third-party components. For vulnerabilities originating in our products, we will provide mitigations and
 workarounds where applicable.
 
@@ -146,6 +147,22 @@ Click on the CVE ID to view the full details of the vulnerability.
 | [CVE-2024-0760](./cve-2024-0760.md)             | 9/5/24           | 9/5/24        | 4.4.14 & 4.4.18          | Third-party component: ISC              | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2024-0760)    | :mag: Ongoing |
 | [CVE-2024-1737](./cve-2024-1737.md)             | 9/5/24           | 9/5/24        | 4.4.14 & 4.4.18          | Third-party component: ISC              | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2024-1737)    | :mag: Ongoing |
 | [CVE-2024-1975](./cve-2024-1975.md)             | 9/5/24           | 9/5/24        | 4.4.14 & 4.4.18          | Third-party component: ISC              | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2024-1975)    | :mag: Ongoing |
+| [CVE-2022-28357](./cve-2022-28357.md)           | 9/15/24          | 9/15/24       | 4.4.18                   | Third-party component: NATS             | [9.8](https://nvd.nist.gov/vuln/detail/CVE-2022-28357)   | :mag: Ongoing |
+| [CVE-2022-28948](./cve-2022-28948.md)           | 9/15/24          | 9/15/24       | 4.4.18                   | Third-party component: Go-Yaml          | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2022-28948)   | :mag: Ongoing |
+| [CVE-2022-41724](./cve-2022-41724.md)           | 9/15/24          | 9/15/24       | 4.4.18                   | Third-party component: Go Project       | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2022-41724)   | :mag: Ongoing |
+| [CVE-2022-41725](./cve-2022-41725.md)           | 9/15/24          | 9/15/24       | 4.4.18                   | Third-party component: Go Project       | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2022-41725)   | :mag: Ongoing |
+| [CVE-2023-24534](./cve-2023-24534.md)           | 9/15/24          | 9/15/24       | 4.4.18                   | Third-party component: Go Project       | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2023-24534)   | :mag: Ongoing |
+| [CVE-2023-24536](./cve-2023-24536.md)           | 9/15/24          | 9/15/24       | 4.4.18                   | Third-party component: Go Project       | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2023-24536)   | :mag: Ongoing |
+| [CVE-2023-24537](./cve-2023-24537.md)           | 9/15/24          | 9/15/24       | 4.4.18                   | Third-party component: Go Project       | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2023-24537)   | :mag: Ongoing |
+| [CVE-2023-24538](./cve-2023-24538.md)           | 9/15/24          | 9/15/24       | 4.4.18                   | Third-party component: Go Project       | [9.8](https://nvd.nist.gov/vuln/detail/CVE-2023-24538)   | :mag: Ongoing |
+| [CVE-2023-24539](./cve-2023-24539.md)           | 9/15/24          | 9/15/24       | 4.4.18                   | Third-party component: Go Project       | [7.3](https://nvd.nist.gov/vuln/detail/CVE-2023-24539)   | :mag: Ongoing |
+| [CVE-2023-24540](./cve-2023-24540.md)           | 9/15/24          | 9/15/24       | 4.4.18                   | Third-party component: Go Project       | [9.8](https://nvd.nist.gov/vuln/detail/CVE-2023-24540)   | :mag: Ongoing |
+| [CVE-2023-29400](./cve-2023-29400.md)           | 9/15/24          | 9/15/24       | 4.4.18                   | Third-party component: Go Project       | [7.3](https://nvd.nist.gov/vuln/detail/CVE-2023-29400)   | :mag: Ongoing |
+| [CVE-2023-29403](./cve-2023-29403.md)           | 9/15/24          | 9/15/24       | 4.4.18                   | Third-party component: Go Project       | [7.8](https://nvd.nist.gov/vuln/detail/CVE-2023-29403)   | :mag: Ongoing |
+| [CVE-2023-45287](./cve-2023-45287.md)           | 9/15/24          | 9/15/24       | 4.4.18                   | Third-party component: Go Project       | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2023-45287)   | :mag: Ongoing |
+| [CVE-2023-52356](./cve-2023-52356.md)           | 9/15/24          | 9/15/24       | 4.4.18                   | Third-party component: Libtiff          | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2023-52356)   | :mag: Ongoing |
+| [CVE-2024-0743](./cve-2024-0743.md)             | 9/15/24          | 9/15/24       | 4.4.18                   | Third-party component: Mozilla          | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2024-0743)    | :mag: Ongoing |
+| [CVE-2024-32002](./cve-2024-32002.md)           | 9/15/24          | 9/15/24       | 4.4.18                   | Third-party component: Github           | [9.0](https://nvd.nist.gov/vuln/detail/CVE-2024-32002)   | :mag: Ongoing |
 
 </TabItem>
 </Tabs>

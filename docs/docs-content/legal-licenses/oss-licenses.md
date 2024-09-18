@@ -472,7 +472,7 @@ have any questions or concerns, contact us at support@spectrocloud.com.
 | https://www.npmjs.com/package/query-string                                                    | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/react                                                           | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/react-calendar                                                  | [MIT](https://opensource.org/licenses/MIT)                                             |
-| https://www.npmjs.com/package/react-clipboard.js                                              | [CC0-1.0](https://opensource.org/licenses/CC0-1.0)                                     |
+| https://www.npmjs.com/package/react-clipboard.js                                              | [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode.en)              |
 | https://www.npmjs.com/package/react-dev-utils                                                 | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/react-dom                                                       | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/react-helmet                                                    | [MIT](https://opensource.org/licenses/MIT)                                             |
@@ -702,7 +702,7 @@ have any questions or concerns, contact us at support@spectrocloud.com.
 | https://www.npmjs.com/package/locate-path                                                     | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/lodash.camelcase                                                | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/lodash.isequalwith                                              | [MIT](https://opensource.org/licenses/MIT)                                             |
-| https://www.npmjs.com/package/lodash.once                                                     | [CC0-1.0](https://opensource.org/licenses/CC0-1.0)                                     |
+| https://www.npmjs.com/package/lodash.once                                                     | [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode.en)              |
 | https://www.npmjs.com/package/lodash.upperfirst                                               | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/loose-envify                                                    | [MIT](https://opensource.org/licenses/MIT)                                             |
 | https://www.npmjs.com/package/lru-cache                                                       | [ISC](https://opensource.org/licenses/ISC)                                             |
