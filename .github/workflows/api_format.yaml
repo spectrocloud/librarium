@@ -6,18 +6,25 @@ on:
 
 env:
   GITHUB_BRANCH: ${{ github.ref_name }} 
+  NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+  NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+  FULLSTORY_ORGID: ${{ secrets.FULLSTORY_ORGID }}
+  ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+  ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+  ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
+  ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
+  PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
 
 jobs:
   backport:
     name: Format API PR
     runs-on: ubuntu-latest
     if: |
-      github.event.pull_request.merged == true
-      && contains(github.event.pull_request.labels.*.name, 'api-format')
-      && (
-        (github.event.action == 'labeled' && github.event.label.name == 'api-format')
-        || (github.event.action == 'closed')
-      )
+      github.event.action == 'labeled'
+      && github.event.label.name == 'api-format'
+      && github.event.pull_request.draft == false
+  
+  
     steps:
       - name: Retrieve Credentials
         id: import-secrets
