@@ -34,6 +34,8 @@ minor version available.
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.4.14       |       4.4.18       | :white_check_mark: |
+|       4.4.11       |       4.4.18       | :white_check_mark: |
+|       4.3.6        |       4.4.18       | :white_check_mark: |
 |       4.4.11       |       4.4.14       | :white_check_mark: |
 |       4.4.6        |       4.4.14       | :white_check_mark: |
 |       4.3.6        |       4.4.14       | :white_check_mark: |
