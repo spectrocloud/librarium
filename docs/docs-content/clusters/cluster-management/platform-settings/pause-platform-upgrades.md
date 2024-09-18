@@ -18,22 +18,21 @@ Upgrades can be paused and resumed in the following scopes:
 - Pause upgrades for all clusters within a project
 - Pause upgrades for all clusters within a tenant
 
-Agent upgrades are only enabled when they are not paused at any level. For an individual cluster, if agent upgrades are
-paused at any level - at the tenant level, project level, or cluster level, agent upgrades will not be enabled for that
-cluster. In the case of Edge hosts that are registered with Palette but are not part of a cluster, agent upgrades will
-be paused if you pause upgrades either at the tenant level or at the project level.
+When determining if the agent upgrades for one cluster is paused or not, you only need to look at the setting for the
+cluster itself. Even if agent upgrades are paused on a tenant or project level, agent upgrades for an individual cluster
+can still be turned on. If an Edge host is not part of any cluster, then its agent upgrade status is determined by the
+project that the Edge host is associated with.
 
-![A flow chart demonstrating how cluster and Edge host agent upgrades are decided based on pause upgrade settings](/clusters_cluster-management_platform-settings_pause-agent-upgrade-flow.webp)
+Pausing or resuming agent upgrades at a higher-level scope will automatically pause or resume agent upgrades in the
+lower-level scopes, respectively. For example, if you pause agent upgrades at the tenant level, then agent upgrades will
+be paused for all projects within that tenant, and all clusters within those projects. Similarly, if you resume upgrades
+at the project level, then all clusters within that project will have their agent upgrades resumed.
 
-:::info
-
-While pausing upgrades at any scope will stop the agent from upgrading, pausing or resuming agent upgrades in one scope
-will not change the upgrade setting in any other scope. For example, if you pause upgrades at the tenant level, and also
-pause upgrades at the cluster level for one cluster, the cluster agent will not upgrade. When you resume upgrades at the
-tenant level, the agent upgrades still will not resume for that cluster because the upgrade is still paused at the
-cluster level.
-
-:::
+However, if you pause or resume agent upgrades at a lower-level scope, it will have no impact on the higher-level scope.
+For example, if you pause all agent upgrades for a tenant, and then resume agent upgrades for one cluster within that
+tenant, agent upgrades for that one cluster will resume, even as agent upgrades are still paused at the tenant level.
+However, if you resume upgrades at the tenant level, and then pause again at the tenant level, it will pause agent
+upgrades for all clusters within the tenant, including clusters where you manually resumed agent upgrades.
 
 ## Prerequisites
 
