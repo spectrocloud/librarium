@@ -5,6 +5,7 @@ description:
   "Learn how to deploy applications to a Kubernetes cluster using Palette's custom packs, hosted in either the Spectro
   registry or an OCI registry."
 sidebar_position: 0
+toc_max_heading_level: 2
 tags: ["packs", "tutorial"]
 category: ["tutorial"]
 ---
@@ -362,6 +363,13 @@ Next, export the variables below, which you will use later to create the ECR rep
 - `VERSION` - the pack's version, which must match the version in the **pack.json** file.
 - `ACCOUNT_ID` - your AWS account ID, containing only numerical digits and no dashes.
 
+:::warning
+
+Ensure that the variables `NAME` and `VERSION` match the pack name and version in the **pack.json** file. This is a
+requirement for the pack to be correctly pushed to the registry.
+
+:::
+
 ```bash
 export REGISTRY_NAME=spectro-oci-registry
 export NAME=hellouniverse
@@ -474,6 +482,13 @@ command. The ECR authorization token is then passed to the `oras login` command 
 registry Uniform Resource Identifier (URI). [Oras](https://oras.land/docs/) is a CLI tool to push and pull OCI artifacts
 to and from OCI registries.
 
+:::warning
+
+If you are not using the tutorial container, ensure you have Oras version `1.0.0` installed. This version is explicitly
+required for pushing packs to OCI registries.
+
+:::
+
 ```bash
 aws ecr get-login-password --region $AWS_DEFAULT_REGION | oras login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
 ```
@@ -495,7 +510,15 @@ After creating the projects, proceed with the Harbor authentication. In the tuto
 export HARBOR_ADDRESS=<Your_Harbor_Address>
 ```
 
-Now, issue the command `oras login`.
+Now, issue the command `oras login`. [Oras](https://oras.land/docs/) is a CLI tool to push and pull OCI artifacts to and
+from OCI registries.
+
+:::warning
+
+If you are not using the tutorial container, ensure you have Oras version `1.0.0` installed. This version is explicitly
+required for pushing packs to OCI registries.
+
+:::
 
 ```bash
 oras login $HARBOR_ADDRESS
@@ -603,6 +626,13 @@ Harbor repository and push the pack.
 - `HARBOR_PROJECT` - the name of your Harbor project. This tutorial uses **spectro-oci-registry**.
 - `NAME` - the pack's name, which must match the name in the **pack.json** file.
 - `VERSION` - the pack's version, which must match the version in the **pack.json** file.
+
+:::warning
+
+Ensure that the variables `NAME` and `VERSION` match the pack name and version in the **pack.json** file. This is a
+requirement for the pack to be correctly pushed to the registry.
+
+:::
 
 ```bash
 export HARBOR_PROJECT=spectro-oci-registry
