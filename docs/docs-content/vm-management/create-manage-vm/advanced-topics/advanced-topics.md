@@ -22,3 +22,4 @@ by over-committing CPU and memory.
 - [Create DISK Templates](./create-disk-templates.md)
 - [Over-commit Resources to Enhance VM Performance](./vm-oversubscription.md)
 - [Migrate a VM to a VMO cluster](./migrate-vm-kubevirt.md)
+- [Import and Deploy OVAs to Palette VMO](./deploy-import-ova.md)
