@@ -34,8 +34,7 @@ host. The tutorial will guide you through building the required
 [Edge artifacts](../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md), creating an Edge cluster
 profile, preparing your Edge host, and deploying an Edge cluster along with a demo application.
 
-The diagram below illustrates how the components that will be deployed in this tutorial interact with each
-other.
+The diagram below illustrates how the components that will be deployed in this tutorial interact with each other.
 
 ![A diagram showing the Edge VirtualBox tutorial workflow.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_diagram.webp)
 
@@ -45,8 +44,7 @@ To complete this tutorial, you will need the following prerequisites in place.
 
 - A host with _AMD64_ (also known as _x86_64_) processor architecture and access to the Internet. The host must meet the
   [minimum requirements](../../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md#prerequisites) to
-   build the artifacts and allow the creation of a VM with the following
-  specifications:
+  build the artifacts and allow the creation of a VM with the following specifications:
   - 2 CPU
   - 8 GB memory
   - 100 GB storage
@@ -113,9 +111,9 @@ git checkout v4.4.8
 
 ### Define Arguments
 
-EdgeForge leverages [Earthly](https://earthly.dev) to build the Installer ISO and provider images artifacts. The 
-**.arg** file is used to pass the values of a few arguments, such as the image tag and registry name, to Earthly for
-the build process.
+EdgeForge leverages [Earthly](https://earthly.dev) to build the Installer ISO and provider images artifacts. The
+**.arg** file is used to pass the values of a few arguments, such as the image tag and registry name, to Earthly for the
+build process.
 
 Execute the command below to create a custom tag for the provider images. The tag must be an alphanumeric lowercase
 string. This tutorial uses `vbox-tutorial` as an example.
@@ -345,8 +343,8 @@ push images to a different registry.
 
 Once the provider images are available in the registry, create the cluster profile.
 
-Log in to [Palette](https://console.spectrocloud.com/). Then,  select **Profiles** from the left **Main Menu**. Click **Add
-Cluster Profile** to create a cluster profile.
+Log in to [Palette](https://console.spectrocloud.com/). Then, select **Profiles** from the left **Main Menu**. Click
+**Add Cluster Profile** to create a cluster profile.
 
 Follow the wizard to create a new profile.
 
@@ -484,8 +482,8 @@ same network as the host machine's network. Click **OK**.
 In VirtualBox, select the created VM and click **Start** to turn it on. The Edge Installer will bootstrap the Palette
 Edge installation onto the VM.
 
-Wait for the Edge Installer to complete copying content to the VM, which may take a few minutes. The VM will reboot
-upon completion.
+Wait for the Edge Installer to complete copying content to the VM, which may take a few minutes. The VM will reboot upon
+completion.
 
 When the image below appears, right-click the VM, select **Stop**, and then click **Power Off** to turn it off before
 the reboot starts.
@@ -511,8 +509,8 @@ the provided Palette registration token.
 
 ### Validate the Edge Host Registration
 
-Navigate back to [Palette](https://console.spectrocloud.com/). Then, select **Clusters** from the left **Main Menu**. Click on the
-**Edge Hosts** tab to view the registered hosts.
+Navigate back to [Palette](https://console.spectrocloud.com/). Then, select **Clusters** from the left **Main Menu**.
+Click on the **Edge Hosts** tab to view the registered hosts.
 
 Confirm your Edge host is listed as **Healthy** and with a **Ready** status. The **Machine ID** should match the ID
 displayed on your VM's screen.
