@@ -33,6 +33,8 @@ The following list contains all the supported Palette CLI subcommands. Click on 
 
 - [`validator`](validator.md) - Deploy a kind cluster and install the Validator framework to validate your environment
   is ready for Palette.
+  
+- [`vmo`](vmo.md) - Migrate, import and deploy VMs to Palette VMO.
 
 ## Global Flags
 
@@ -62,3 +64,5 @@ Palette CLI supports the following global flags.
 - [Project](project.md)
 
 - [Validator](validator.md)
+
+- [VMO](vmo.md)
