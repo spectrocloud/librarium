@@ -29,10 +29,8 @@ create a cluster profile.
 
 This tutorial will help you understand, through hands-on activities, how the different Edge components work together.
 You will build and test the Edge artifacts and deploy an Edge cluster without needing a complex lab environment or
-separate physical devices. Specifically, you will learn to deploy an Edge cluster using a VirtualBox VM as the Edge
-host. The tutorial will guide you through building the required
-[Edge artifacts](../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md), creating an Edge cluster
-profile, preparing your Edge host, and deploying an Edge cluster along with a demo application.
+separate physical devices. Specifically, you will learn to deploy an Edge cluster along with a demo application using a
+VirtualBox VM as the Edge host.
 
 The diagram below illustrates how the components that will be deployed in this tutorial interact with each other.
 
@@ -260,8 +258,8 @@ finished, you get a success message similar to the one displayed below.
 🛰️ Reuse cache between CI runs with Earthly Satellites! 2-20X faster than without cache. Generous free tier https://cloud.earthly.dev
 ```
 
-The output also includes a manifest with predefined parameters you will use later to create the cluster profile. Copy
-and save the manifest.
+The output also includes a manifest with predefined parameters that are required to create the cluster profile. Copy and
+save the manifest, as you will need it later.
 
 <!-- prettier-ignore -->
 ```yaml
@@ -399,7 +397,7 @@ cluster profile.
 
 The MetalLB pack provides a load-balancer implementation for your Edge Kubernetes cluster. The load balancer is required
 to help the _LoadBalancer_ service specified in the Hello Universe pack obtain an IP address, so that you can access the
-application from your browser.
+demo application from your browser.
 
 Click **Values** under **Pack Details** and replace the predefined `192.168.10.0/24` IP CIDR listed below the
 **addresses** line with a valid IP address or IP range from your network. Next, click **Confirm & Create** to add the
@@ -409,9 +407,9 @@ MetalLB pack.
 
 Finally, click **Add New Pack** again and search for the Hello Universe pack.
 
-| **Pack Name**  | **Version** | **Registry**               | **Layer**    |
-| -------------- | ----------- | -------------------------- | ------------ |
-| Hello Universe | 1.1.2       | Palette Community Registry | App Services |
+| **Pack Name**  | **Version** | **Registry**               | **Layer**   |
+| -------------- | ----------- | -------------------------- | ----------- |
+| Hello Universe | 1.1.2       | Palette Community Registry | Application |
 
 Once you select the pack, Palette will display its README file, providing additional guidance on usage and configuration
 options. This pack deploys the [hello-universe](https://github.com/spectrocloud/hello-universe) application.
@@ -431,6 +429,22 @@ The pack requires two values to be replaced for the authorization token and for 
 preset. Replace these values with your own base64 encoded values. The
 [hello-universe](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer) repository
 provides a token that you can use.
+
+:::tip
+
+You can use the `base64` command to create a base64 encoded value.
+
+```shell
+echo "mypassword" | base64
+```
+
+The output contains your base64 encoded value.
+
+```text hideClipboard
+bXlwYXNzd29yZAo=
+```
+
+:::
 
 ![A screenshot of the cluster profile creation step with the Hello Universe layer.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-profile-hellouni.webp)
 
@@ -483,10 +497,9 @@ In VirtualBox, select the created VM and click **Start** to turn it on. The Edge
 Edge installation onto the VM.
 
 Wait for the Edge Installer to complete copying content to the VM, which may take a few minutes. The VM will reboot upon
-completion.
+completion. Ensure that you stop the VM before the reboot proceeds.
 
-When the image below appears, right-click the VM, select **Stop**, and then click **Power Off** to turn it off before
-the reboot starts.
+When the image below appears, right-click the VM, select **Stop**, and then click **Power Off** to turn it off.
 
 ![A screenshot of the VirtualBox VM after installation.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-reboot.webp)
 
@@ -519,10 +532,8 @@ displayed on your VM's screen.
 
 ## Deploy Edge Cluster
 
-The following steps will guide you through deploying the Edge cluster.
-
-Select **Clusters** from the left **Main Menu** and click on **Create Cluster**. Ensure you are in the **Default**
-project.
+From the left **Main Menu**, select **Clusters**, then click **Create Cluster**. If you already have clusters deployed,
+choose **Add New Cluster** instead. Ensure you are in the **Default** project.
 
 Palette will prompt you to select the type of cluster. Select **Edge Native** and click the **Start Edge Native
 Configuration** button.
