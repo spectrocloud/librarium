@@ -3,7 +3,7 @@ const { existsSync, mkdirSync } = require("node:fs");
 const logger = require("@docusaurus/logger");
 const fs = require("fs").promises;
 const path = require("path");
-const { getFormattedDate } = require("../utils/helpers/date");
+const { getTodayFormattedDate, formatDateCveDetails } = require("../utils/helpers/date");
 
 async function getSecurityBulletins(queryParams) {
   try {
@@ -40,10 +40,10 @@ async function pluginSecurityBulletins(context, options) {
       if (!isFileExists) {
         logger.info("Fetching security bulletins...");
 
-        const paletteQueryParams = `airgap=false&date=${getFormattedDate()}&edition=palette&report=cve&version=4.4.18`;
-        const paletteAirgapQueryParams = `airgap=true&date=${getFormattedDate()}&edition=palette&report=cve&version=4.4.18`;
-        const verteXQueryParams = `airgap=false&date=${getFormattedDate()}&edition=vertex&report=cve&version=4.4.18`;
-        const verteXAirgapQueryParams = `airgap=true&date=${getFormattedDate()}&edition=vertex&report=cve&version=4.4.18`;
+        const paletteQueryParams = `airgap=false&date=${getTodayFormattedDate()}&edition=palette&report=cve&version=4.4.18`;
+        const paletteAirgapQueryParams = `airgap=true&date=${getTodayFormattedDate()}&edition=palette&report=cve&version=4.4.18`;
+        const verteXQueryParams = `airgap=false&date=${getTodayFormattedDate()}&edition=vertex&report=cve&version=4.4.18`;
+        const verteXAirgapQueryParams = `airgap=true&date=${getTodayFormattedDate()}&edition=vertex&report=cve&version=4.4.18`;
 
         try {
           const palette = await getSecurityBulletins(paletteQueryParams);
@@ -86,27 +86,29 @@ async function pluginSecurityBulletins(context, options) {
         }
       }
 
-      // In here we loop through all the CVEs and create a route for each one.
-      // The data for each route is passed as a prop to the component.
+      // In here we loop through all the CVEs and create a markdown file for each one.
+      // Ideally, we would use the createRoute function to create a route for each CVE.
+      // However, the createRoute requires a component to be passed in. If a component is specified, then we loose the sidebar, header, and footer.
       for (const item of uniqueCVEs) {
-        const jsonPath = await createData(`${item.cve}.json`, JSON.stringify(item, null, 2));
+        // Create an array of promises for markdown generation
+        const markdownPromises = uniqueCVEs.map((item) =>
+          createCveMarkdown(item, "docs/docs-content/security-bulletins/reports/")
+        );
 
-        // const path = `/security-bulletins/reports/${item.cve}`;
-        // addRoute({
-        //   path: `${path.toLowerCase()}`,
-        //   component: "@site/src/components/CVECard",
-        //   metadata: {
-        //     sourceFilePath: "../docs/docs-content/security-bulletins/reports/reports.mdx",
-        //   },
-        //   // modules: {
-        //   //   cve: jsonPath,
-        //   // },
-        // });
+        // Await all markdown files to be written and check results
+        const results = await Promise.all(markdownPromises);
 
-        createCveMarkdown(item.cve, "docs/docs-content/security-bulletins/reports/");
+        const failedFiles = results.filter((result) => !result.success);
+
+        if (failedFiles.length > 0) {
+          logger.error(`Failed to generate the following markdown files:`);
+          failedFiles.forEach((failure) => {
+            logger.error(`File: ${failure.file}, Error: ${failure.error.message}`);
+          });
+        }
       }
 
-      logger.info("All security bulletin routes generated.");
+      logger.info("All security bulletin markdown files generated.");
     },
     async allContentLoaded() {
       logger.success("Security bulletins loaded successfully.");
@@ -114,34 +116,48 @@ async function pluginSecurityBulletins(context, options) {
   };
 }
 
-function createCveMarkdown(cve, location) {
-  const lowerCaseCve = cve.toLowerCase();
-  const upperCaseCve = cve.toUpperCase();
+function createCveMarkdown(item, location) {
+  const lowerCaseCve = item.cve.toLowerCase();
+  const upperCaseCve = item.cve.toUpperCase();
 
   const content = `---
 sidebar_label: "${upperCaseCve}"
 title: "${upperCaseCve}"
 description: "Lifecycle of ${upperCaseCve}"
-hide_table_of_contents: false
 sidebar_class_name: "hide-from-sidebar"
+hide_table_of_contents: false
 toc_max_heading_level: 2
 tags: ["security", "cve"]
 ---
 
 ## CVE Details
 
-<CVECard />
+[${upperCaseCve}](https://nvd.nist.gov/vuln/detail/${upperCaseCve})
+
+
+## Last Update
+
+${formatDateCveDetails(item.modifiedDateTime)}
+
 `;
 
   const filePath = path.join(location, `${lowerCaseCve}.md`);
 
-  fs.writeFile(filePath, content, (err) => {
-    if (err) {
-      console.error("Error writing file at ", filePath, err);
-    } else {
-      console.log(`Markdown file created at ${filePath}`);
-    }
-  });
+  // Return a promise and include the CVE or file path in the error log
+  return fs
+    .writeFile(filePath, content)
+    .then(() => ({
+      success: true,
+      file: filePath,
+    }))
+    .catch((err) => {
+      console.error(`Error writing file for ${upperCaseCve} at ${filePath}:`, err);
+      return {
+        success: false,
+        file: filePath,
+        error: err,
+      };
+    });
 }
 
 module.exports = {
