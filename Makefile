@@ -52,6 +52,7 @@ clean-packs: ## Clean supplemental packs and pack images
 
 clean-security: ## Clean security bulletins
 	rm -rf .docusaurus/plugin-security-bulletins/default/*.json
+	rm -rfv docs/docs-content/security-bulletins/reports/*.md 
 
 clean-api: ## Clean API docs
 	@echo "cleaning api docs"

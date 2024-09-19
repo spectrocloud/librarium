@@ -91,24 +91,57 @@ async function pluginSecurityBulletins(context, options) {
       for (const item of uniqueCVEs) {
         const jsonPath = await createData(`${item.cve}.json`, JSON.stringify(item, null, 2));
 
-        const path = `/security-bulletins/reports/${item.cve}`;
-        addRoute({
-          path: `${path.toLowerCase()}`,
-          component: "@site/src/components/CVECard",
-          metadata: {
-            sourceFilePath: "../docs/docs-content/security-bulletins/reports/reports.mdx",
-          },
-          modules: {
-            cve: jsonPath,
-          },
-        });
+        // const path = `/security-bulletins/reports/${item.cve}`;
+        // addRoute({
+        //   path: `${path.toLowerCase()}`,
+        //   component: "@site/src/components/CVECard",
+        //   metadata: {
+        //     sourceFilePath: "../docs/docs-content/security-bulletins/reports/reports.mdx",
+        //   },
+        //   // modules: {
+        //   //   cve: jsonPath,
+        //   // },
+        // });
+
+        createCveMarkdown(item.cve, "docs/docs-content/security-bulletins/reports/");
       }
+
       logger.info("All security bulletin routes generated.");
     },
     async allContentLoaded() {
       logger.success("Security bulletins loaded successfully.");
     },
   };
+}
+
+function createCveMarkdown(cve, location) {
+  const lowerCaseCve = cve.toLowerCase();
+  const upperCaseCve = cve.toUpperCase();
+
+  const content = `---
+sidebar_label: "${upperCaseCve}"
+title: "${upperCaseCve}"
+description: "Lifecycle of ${upperCaseCve}"
+hide_table_of_contents: false
+sidebar_class_name: "hide-from-sidebar"
+toc_max_heading_level: 2
+tags: ["security", "cve"]
+---
+
+## CVE Details
+
+<CVECard />
+`;
+
+  const filePath = path.join(location, `${lowerCaseCve}.md`);
+
+  fs.writeFile(filePath, content, (err) => {
+    if (err) {
+      console.error("Error writing file at ", filePath, err);
+    } else {
+      console.log(`Markdown file created at ${filePath}`);
+    }
+  });
 }
 
 module.exports = {
