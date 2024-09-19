@@ -21,8 +21,7 @@ popularity, as they expand their dashboards and grow their subscribers. Their sm
 developing new features alongside scaling and maintaining their infrastructure, but they are dedicated to providing the
 best astronomy education platform on Planet Earth.
 
-> "I'm the resident space expert around here!" says Anya, Spacetastic's Lead Astrophycist, smiling with a glint in here
-> eye. "My mission is to make astrophysics, the science of space, accessible to everyone."
+> "I'm the resident space expert around here!" says Anya, Spacetastic's Lead Astrophycist, with a beaming smile. "My mission is to make astrophysics, the science of space, accessible to everyone."
 >
 > "I'm here to support you and your mission. I build all the dashboards, pages and features that bring your vast space
 > knowledge to our users in a beautiful visual format!" says Wren, Founding Engineer at Spacetastic.
@@ -32,7 +31,7 @@ best astronomy education platform on Planet Earth.
 >
 > Meera, Head of Cybersecurity, is the final member of the Spacetastic team. "Let's not forget about the security of our
 > platform. I make sure that all our systems are designed and implemented with security in mind, the true SecDevOps
-> way." she exclaims.
+> way."
 
 ![Meet the Spacetastic team](/getting-started/getting-started_landing_meet-the-team.webp)
 
@@ -45,14 +44,14 @@ reliability SLA of at least 99% uptime. The following diagram presents an overvi
 While the system architecture they have chosen was a great place to start, the team soon start to face common challenges
 that many growing organisations face with Kubernetes.
 
-> Wren hurriedly walks into the office, looking at his phone with a worried expression. "Users are reporting that our
-> systems are down on social media! This must be related to the new feature we have just released." he says.
+> Wren hurriedly walks into the office, looking at their phone with a worried expression. "Users are reporting that our
+> systems are down on social media! This must be related to the new feature we have just released."
 >
-> Meera looks up from her monitor. "I've also received an alert about a new zero-day vulnerability. We need to patch our
+> Meera looks up from their monitor. "I've also received an alert about a new zero-day vulnerability. We need to patch our
 > services without further downtime, as soon as you are able to stabilize our platform."
 >
 > "Team, we need to rethink our platform engineering tools. We need a solution that can help us scale and deploy with
-> confidence, ultimately supporting the growth of our company." says Kai with a determined look in his eye.
+> confidence, ultimately supporting the growth of our company." says Kai with a determined look.
 
 ![Kubernetes challenges](/getting-started/getting-started_landing_kubernetes-challenges.webp)
 
