@@ -21,10 +21,10 @@ popularity, as they expand their dashboards and grow their subscribers. Their sm
 developing new features alongside scaling and maintaining their infrastructure, but they are dedicated to providing the
 best astronomy education platform on Planet Earth.
 
-> "I'm the resident space expert around here!" says Anya, Spacetastic's Lead Astrophycist, with a beaming smile. "My mission is to make astrophysics, the science of space, accessible to everyone."
+> "I'm the resident space expert around here!" says Anya, Lead Astrophycist, with a beaming smile. "My mission is to make astrophysics, the science of space, accessible to everyone."
 >
 > "I'm here to support you and your mission. I build all the dashboards, pages and features that bring your vast space
-> knowledge to our users in a beautiful visual format!" says Wren, Founding Engineer at Spacetastic.
+> knowledge to our users in a beautiful visual format!" says Wren, Founding Engineer.
 >
 > Kai smiles and nods. "I work closely with both Wren and Anya. As Platform Engineer, I ensure that our platform is
 > reliable and scalable for everyone around the world, and beyond!"
