@@ -21,7 +21,8 @@ popularity, as they expand their dashboards and grow their subscribers. Their sm
 developing new features alongside scaling and maintaining their infrastructure, but they are dedicated to providing the
 best astronomy education platform on Planet Earth.
 
-> "I'm the resident space expert around here!" says Anya, Lead Astrophycist, with a beaming smile. "My mission is to make astrophysics, the science of space, accessible to everyone."
+> "I'm the resident space expert around here!" says Anya, Lead Astrophycist, with a beaming smile. "My mission is to
+> make astrophysics, the science of space, accessible to everyone."
 >
 > "I'm here to support you and your mission. I build all the dashboards, pages and features that bring your vast space
 > knowledge to our users in a beautiful visual format!" says Wren, Founding Engineer.
@@ -47,8 +48,8 @@ that many growing organisations face with Kubernetes.
 > Wren hurriedly walks into the office, looking at their phone with a worried expression. "Users are reporting that our
 > systems are down on social media! This must be related to the new feature we have just released."
 >
-> Meera looks up from their monitor. "I've also received an alert about a new zero-day vulnerability. We need to patch our
-> services without further downtime, as soon as you are able to stabilize our platform."
+> Meera looks up from their monitor. "I've also received an alert about a new zero-day vulnerability. We need to patch
+> our services without further downtime, as soon as you are able to stabilize our platform."
 >
 > "Team, we need to rethink our platform engineering tools. We need a solution that can help us scale and deploy with
 > confidence, ultimately supporting the growth of our company." says Kai with a determined look.
