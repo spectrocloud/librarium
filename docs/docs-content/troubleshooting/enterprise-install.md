@@ -121,7 +121,7 @@ automatically resolve this issue. If you have self-hosted instances of Palette i
 8. Issue the following command to verify that the script has updated the cluster ID.
 
    ```bash
-   kubectl describe configmap vsphere-cloud-config --namespace=kube-syste
+   kubectl describe configmap vsphere-cloud-config --namespace=kube-system
    ```
 
    If the update is successful, the cluster ID in the ConfigMap will have a unique ID assigned instead of
