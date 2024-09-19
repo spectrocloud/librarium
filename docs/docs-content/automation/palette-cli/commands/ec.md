@@ -176,7 +176,8 @@ for the following prerequisites:
 
 The `--validate` is only available in environments that have internet access to download the Helm charts required by the
 Validator. If you are in an environment without internet access, the validation will not be able to execute and will
-return an error.
+return an error. The `--validate` flag will honor proxy settings if they are set in the environment through the
+following environment variables: `HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`.
 
 :::
 

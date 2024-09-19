@@ -20,9 +20,6 @@ to this directory; it is not limited to core dump files.
 - You have configured your applications to write files to `/var/log/files`. The steps to do this vary by application,
   but the path must be exactly `/var/log/files`. This is the only path where files can be downloaded from Local UI.
 
-- An operational Edge host installed in the `airgap` mode. For more information, refer to
-  [Installer Reference](../../edge-configuration/installer-reference.md).
-
 - Network access to your Edge host's Local UI port. The default port is `5080`.
 
 ## Enablement

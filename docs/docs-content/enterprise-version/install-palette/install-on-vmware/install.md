@@ -95,17 +95,17 @@ Use the following steps to install Palette.
 1.  Log in to your vCenter environment.
 
 2.  Create a vSphere VM and Template folder with the name `spectro-templates`. Ensure this folder is accessible by the
-    user account you will use to deploy the airgap VerteX installation.
+    user account you will use to deploy the Palette installation.
 
 3.  Use the URL below to import the Operating System and Kubernetes distribution OVA required for the install. Place the
     OVA in the `spectro-templates` folder.
 
     ```url
-     https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12711-0.ova
+    https://vmwaregoldenimage.s3.amazonaws.com/u-2204-0-k-12813-0.ova
     ```
 
 4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
-    should look like `r_u-2204-0-k-12711-0`. This naming convention is required for the install process to identify the
+    should look like `r_u-2204-0-k-12813-0`. This naming convention is required for the install process to identify the
     OVA. Refer to the [Supplement Packs](../airgap/supplemental-packs.md#additional-ovas) page for a list of additional
     OVAs you can download and upload to your vCenter environment.
 
@@ -140,26 +140,10 @@ Use the following steps to install Palette.
 7.  Type `y` if you want to use Ubuntu Pro. Otherwise, type `n`. If you choose to use Ubuntu Pro, you will be prompted
     to enter your Ubuntu Pro token.
 
-8.  Depending on that type of install of Palette you are using, the Spectro Cloud repository URL value will be
-    different.
-
-    - Non-Airgap: `https://saas-repo.console.spectrocloud.com`
-    - Airgap: The URL or IP address of the Spectro Cloud Repository that is provided to you by the airgap setup script
-
-    <br />
-
-    :::info
-
-    If you are using the Palette CLI from inside an [airgap support VM](./airgap-install/airgap-install.md), the CLI
-    will automatically detect the airgap environment and prompt you to **Use local, air-gapped Spectro Cloud Artifact
-    Repository (SCAR) configuration**. Type `y` to use the local resources and skip filling in the repository URL and
-    credentials.
-
-    :::
+8.  Provide `https://saas-repo.console.spectrocloud.com` as the URL for the Spectro Cloud repository.
 
 9.  Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro
-    Cloud repository. Airgap installations, provide the credentials to your private repository provided to you by the
-    airgap setup script .
+    Cloud repository.
 
 10. Choose `VMware vSphere` as the cloud type. This is the default.
 
@@ -210,9 +194,9 @@ Use the following steps to install Palette.
     | **NTP Servers**     | You can provide a list of Network Time Protocol (NTP) servers.                                                                                                                                                                                                                                                            |
     | **SSH Public Keys** | Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) reference.                            |
 
-15. Specify the IP pool configuration. The placement type can be Static or Dynamic Domain Name Server (DDNS). Choosing
-    static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IP addresses
-    using DNS.
+15. Specify the IP pool configuration. The placement type can be Static or Dynamic Host Configuration Protocol (DHCP).
+    Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DHCP assigns IP
+    addresses using DNS.
 
     #### Static Placement Configuration
 

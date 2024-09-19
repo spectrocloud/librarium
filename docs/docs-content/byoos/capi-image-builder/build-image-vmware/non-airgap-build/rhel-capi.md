@@ -10,7 +10,7 @@ tags: ["operating system", "byoos", "profiles", "pxk", "vmware"]
 ---
 
 <!-- prettier-ignore -->
-This guide will teach you how to use the [CAPI Image Builder](../capi-image-builder.md) tool to create a custom Red Hat
+This guide teaches you how to use the [CAPI Image Builder](../../capi-image-builder.md) tool to create a custom Red Hat
 Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for VMware vSphere and then use this image to create a cluster profile.
 
 :::preview
@@ -98,7 +98,7 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
     directory. Ensure you download the **x86_64 DVD ISO** and not the **x86_64 BOOT ISO**. Replace
     `<iso-file-download-link>` in the command below with the direct link to download the RHEL ISO.
 
-    This guide uses RHEL 8.8 as an example. Refer to the [Configuration Reference](../config-reference.md) page for
+    This guide uses RHEL 8.8 as an example. Refer to the [Configuration Reference](../../config-reference.md) page for
     details on supported operating systems.
 
     ```shell
@@ -125,9 +125,9 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
     ```
 
 7.  Open the **imageconfig** template file in an editor of your choice and fill in the required parameters. For a
-    complete list of parameters, refer to the [Configuration Reference](../config-reference.md) page. Additionally,
-    refer to the [Compatibility Matrix](../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions and
-    their corresponding dependencies.
+    complete list of parameters, refer to the [Configuration Reference](../../config-reference.md) page. Additionally,
+    refer to the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions
+    and their corresponding dependencies.
 
     The **imageconfig** is the file you use to set up the CAPI Image Builder according to your requirements. This
     includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and more.
@@ -398,9 +398,9 @@ profile and deploy a VMware host cluster.
 
     ```yaml
     pack:
-    osImageOverride: "/Datacenter/vm/sp-docs/rhel-8-kube-v1.28.9"
-    osName: "rhel"
-    osVersion: "8"
+      osImageOverride: "/Datacenter/vm/sp-docs/rhel-8-kube-v1.28.9"
+      osName: "rhel"
+      osVersion: "8"
     ```
 
     As you fill out the information for each layer, click **Next** to proceed.
@@ -415,7 +415,7 @@ profile and deploy a VMware host cluster.
 24. Review the profile layers and click **Finish Configuration** to create the cluster profile.
 
 25. Deploy a VMware host cluster using the created cluster profile. Refer to the
-    [Deploy App Workloads with a PCG](../../../tutorials/cluster-deployment/pcg/deploy-app-pcg.md) tutorial for
+    [Deploy App Workloads with a PCG](../../../../tutorials/cluster-deployment/pcg/deploy-app-pcg.md) tutorial for
     instructions on deploying a VMware host cluster.
 
 ## Validate

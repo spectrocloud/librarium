@@ -13,8 +13,7 @@ Review these parameters to understand how to tailor the CAPI Image Builder to yo
 
 :::warning
 
-At this time, VMware vSphere is the only supported infrastructure provider for the CAPI Image Builder, and only
-non-airgap workflows are available.
+At this time, VMware vSphere is the only supported infrastructure provider for the CAPI Image Builder.
 
 :::
 
@@ -110,16 +109,10 @@ create a separate configuration file for each.
 Fill out the parameters below if you are building the image in an air-gapped environment. Otherwise, you can skip this
 section.
 
-| Parameter           | Description                                                                      | Required |
-| ------------------- | -------------------------------------------------------------------------------- | -------- |
-| `airgap`            | Set to `true` if you are building the image in an air-gapped environment.        | Yes      |
-| `airgap_ip`         | The IP address of the machine that has the required dependencies.                | Yes      |
-| `k8s_rpm_key`       | The GPG key to use when installing the Kubernetes RPMs.                          | Yes      |
-| `k8s_rpm_server`    | The IP address or FQDN of the server to use when installing the Kubernetes RPMs. | Yes      |
-| `containerd_url`    | The URL to use when downloading the containerd binary.                           | Yes      |
-| `crictl_url`        | The URL to use when downloading the crictl binary.                               | Yes      |
-| `k8s_container_reg` | The URL of the container registry to use when downloading the Kubernetes images. | Yes      |
-| `cert_url`          | The URL to use when downloading the certificate file.                            | Yes      |
+| Parameter   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                          | Required |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `airgap`    | Set to `true` if you are building the image in an air-gapped environment.                                                                                                                                                                                                                                                                                                                                                                            | Yes      |
+| `airgap_ip` | The IP address or hostname of the airgap support VM that has the required dependencies. Refer to the [Self-Hosted Palette](../../enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions.md) and [Vertex](../../vertex/install-palette-vertex/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions.md) Environment Setup pages for instructions on how to deploy an airgap support VM. | Yes      |
 
 ## Example Configuration
 

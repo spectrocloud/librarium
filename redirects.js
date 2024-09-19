@@ -534,6 +534,14 @@ const redirects = [
     to: "/byoos/image-builder/build-image-vmware/rhel-pxk/",
   },
   {
+    from: "/byoos/capi-image-builder/build-image-vmware/rhel-capi/",
+    to: "/byoos/capi-image-builder/build-image-vmware/non-airgap-build/rhel-capi/",
+  },
+  {
+    from: "/byoos/capi-image-builder/build-image-vmware/rocky-capi/",
+    to: "/byoos/capi-image-builder/build-image-vmware/non-airgap-build/rocky-capi/",
+  },
+  {
     from: "/automation/palette-cli/commands/validator/",
     to: "/automation/palette-cli/commands/ec/",
   },
@@ -591,7 +599,6 @@ const redirects = [
       "/security-bulletins/reports/cve-2023-0286",
       "/security-bulletins/reports/cve-2023-52425",
       "/security-bulletins/reports/cve-2023-5528",
-      "/security-bulletins/reports/cve-2024-0743",
       "/security-bulletins/reports/prisma-2022-0227",
     ],
     to: "/security-bulletins/reports/",

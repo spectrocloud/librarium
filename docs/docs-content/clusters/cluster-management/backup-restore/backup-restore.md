@@ -94,6 +94,35 @@ or
 [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic)
 guide.
 
+## Volume Snapshots
+
+<!-- prettier-ignore -->
+You can include [volume snapshots](https://kubernetes.io/docs/concepts/storage/volume-snapshots/) in your cluster backups if the Container Storage Interface (CSI) driver you are using supports them. For more information about volume snapshot support, check the CSI pack README for your CSI driver. You can find a list of all Packs in the <VersionedLink text="Packs List" url="/integrations/" />
+page.
+
+<!-- prettier-ignore -->
+If the CSI driver you are using includes the [csi-snapshotter](https://github.com/kubernetes-csi/external-snapshotter) component, then it supports volume snapshotting. If the CSI driver contains the snapshot controller and VolumeSnapshotClass, then all necessary components are already included in the CSI pack and nothing else is needed. If not, you must add the <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" />, version 8 or greater, to your cluster profile to install the snapshot controller and VolumeSnapshotClass. These components are necessary to support taking snapshots and including them in your cluster backups. You can learn how to add a pack to a cluster profile by checking out the [Add a Pack](../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-pack-addon.md) guide.
+
+You can use the table below to determine if your CSI driver supports volume snapshots and if you need to include the
+Volume Snapshot Controller pack in your cluster profile.
+
+:::tip
+
+Always refer to the CSI driver's Pack README for guidance on volume snapshot support.
+
+:::
+
+| Scenario                                                                                                                                              | Requires Volume Snapshot Controller Pack | Guidance                                                           |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------ |
+| CSI driver supports volume snapshots but does not contain all the required components, such as the Snapshot Controller, and the VolumeSnapshotClass   | Yes                                      | Include the Volume Snapshot Controller pack in the cluster profile |
+| CSI driver supports volume snapshots, contains the all required components, such as the Snapshot Controller, and has the VolumeSnapshotClass included | No                                       | Refer to the CSI Pack README for guidance                          |
+| CSI driver does not support volume snapshots                                                                                                          | No                                       | Refer to the CSI Pack README for guidance                          |
+
+### Volume Snapshots and VMO
+
+<!-- prettier-ignore -->
+Clusters deployed with the <VersionedLink text="Virtual Machine Orchestrator " url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack do not need the  <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> as the pack already includes the required components for volume snapshots. However, you must ensure the CSI driver supports volume snapshots. Review the CSI driver's Pack README for guidance on volume snapshot support.
+
 ## etcd Backups
 
 etcd backups are enabled by default. You can edit the YAML file for a cluster's Kubernetes layer to configure its
