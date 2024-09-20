@@ -2,10 +2,11 @@ import React from "react";
 import { Tabs, ConfigProvider, Table, theme } from "antd";
 import styles from "./CveReportTable.module.scss";
 import { useColorMode } from "@docusaurus/theme-common";
-import { useHistory } from "@docusaurus/router"; // Import useHistory
+import { useHistory } from "@docusaurus/router";
+import Link from "@docusaurus/Link";
 
 export default function CveReportsTable() {
-  const data = require("../../../.docusaurus/plugin-security-bulletins/default/data.json");
+  const data = require("../../../.docusaurus/security-bulletins/default/data.json");
 
   const paletteCVEsConnected = data?.palette;
   const paletteCVEsAirgap = data?.paletteAirgap;
@@ -14,9 +15,8 @@ export default function CveReportsTable() {
 
   const { colorMode } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
-  const history = useHistory(); // Use useHistory for navigation
+  const history = useHistory();
 
-  // Columns configuration for sorting
   const columns = [
     {
       title: "CVE ID",
@@ -24,12 +24,12 @@ export default function CveReportsTable() {
       key: "cve",
       sorter: (a, b) => a.cve.localeCompare(b.cve),
       render: (cve) => (
-        <a
-          onClick={() => history.push(`/security-bulletins/reports/${cve.toLowerCase()}`)} // Navigate to the route
-          style={{ cursor: "pointer", color: "#1890ff" }} // Add pointer cursor and link color
+        <Link
+          to={`/security-bulletins/reports/${cve.toLowerCase()}`} // Navigate to the route
+          style={{ color: "#1890ff" }} // Add link color
         >
           {cve}
-        </a>
+        </Link>
       ),
     },
     {

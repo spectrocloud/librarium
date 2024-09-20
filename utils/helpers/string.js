@@ -13,4 +13,4 @@ function escapeMDXSpecialChars(str) {
     .replace(/>/g, "\\>"); // Escape greater-than sign
 }
 
-export { escapeMDXSpecialChars };
+module.exports = { escapeMDXSpecialChars };

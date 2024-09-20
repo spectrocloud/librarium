@@ -13,4 +13,4 @@ function formatDateCveDetails(isoString) {
   return `${month}/${day}/${year}`;
 }
 
-export { getTodayFormattedDate, formatDateCveDetails };
+module.exports = { getTodayFormattedDate, formatDateCveDetails };
