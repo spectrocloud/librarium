@@ -15,11 +15,10 @@ Refer to [Access Palette](../../enterprise-version.md#access-palette) for instru
 
 ## Prerequisites
 
-:::warning
+:::tip
 
-If you are installing Palette in an airgap environment, ensure you complete all the airgap pre-install steps before
-proceeding with the installation. Refer to the
-[VMware vSphere Airgap Instructions](../install-on-vmware//airgap-install/vmware-vsphere-airgap-instructions.md) guide
+We recommend using the `--validate` flag with the `ec install` command to validate the installation. Check out the
+[Validate Environment](../../../automation/palette-cli/commands/ec.md#validate-environment) section of the EC command
 for more information.
 
 :::
@@ -68,6 +67,9 @@ for more information.
 
 - Assigned IP addresses for application workload services, such as Load Balancer services.
 
+- Ensure Palette has access to the required domains and ports. Refer to the
+  [Required Domains](../install-palette.md#proxy-requirements) section for more information.
+
 - Shared Storage between VMware vSphere hosts.
 
 :::info
@@ -93,17 +95,17 @@ Use the following steps to install Palette.
 1.  Log in to your vCenter environment.
 
 2.  Create a vSphere VM and Template folder with the name `spectro-templates`. Ensure this folder is accessible by the
-    user account you will use to deploy the airgap VerteX installation.
+    user account you will use to deploy the Palette installation.
 
 3.  Use the URL below to import the Operating System and Kubernetes distribution OVA required for the install. Place the
     OVA in the `spectro-templates` folder.
 
     ```url
-     https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12711-0.ova
+    https://vmwaregoldenimage.s3.amazonaws.com/u-2204-0-k-12813-0.ova
     ```
 
 4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
-    should look like `r_u-2204-0-k-12711-0`. This naming convention is required for the install process to identify the
+    should look like `r_u-2204-0-k-12813-0`. This naming convention is required for the install process to identify the
     OVA. Refer to the [Supplement Packs](../airgap/supplemental-packs.md#additional-ovas) page for a list of additional
     OVAs you can download and upload to your vCenter environment.
 
@@ -125,31 +127,23 @@ Use the following steps to install Palette.
     palette ec install
     ```
 
+    You can also use the `--validate` flag to validate the installation prior to deployment. Refer to the
+    [Validate Environment](../../../automation/palette-cli/commands/ec.md#validate-environment) section of the EC
+    command for more information.
+
+    ```bash
+    palette ec install --validate
+    ```
+
 6.  At the **Enterprise Cluster Type** prompt, choose **Palette**.
 
 7.  Type `y` if you want to use Ubuntu Pro. Otherwise, type `n`. If you choose to use Ubuntu Pro, you will be prompted
     to enter your Ubuntu Pro token.
 
-8.  Depending on that type of install of Palette you are using, the Spectro Cloud repository URL value will be
-    different.
-
-    - Non-Airgap: `https://saas-repo.console.spectrocloud.com`
-    - Airgap: The URL or IP address of the Spectro Cloud Repository that is provided to you by the airgap setup script
-
-    <br />
-
-    :::info
-
-    If you are using the Palette CLI from inside an [airgap support VM](./airgap-install/airgap-install.md), the CLI
-    will automatically detect the airgap environment and prompt you to **Use local, air-gapped Spectro Cloud Artifact
-    Repository (SCAR) configuration**. Type `y` to use the local resources and skip filling in the repository URL and
-    credentials.
-
-    :::
+8.  Provide `https://saas-repo.console.spectrocloud.com` as the URL for the Spectro Cloud repository.
 
 9.  Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro
-    Cloud repository. Airgap installations, provide the credentials to your private repository provided to you by the
-    airgap setup script .
+    Cloud repository.
 
 10. Choose `VMware vSphere` as the cloud type. This is the default.
 
@@ -168,69 +162,7 @@ Use the following steps to install Palette.
     | **Pod CIDR**                      | Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                     |
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                         |
 
-13. Select the tab below that matches your installation type for further guidance.
-
-    <Tabs groupId="mode">
-
-    <TabItem label="Non-Airgap" value="non-airgap">
-
-    Select `y` to use the Spectro Cloud repository and proceed to the next step.
-
-    </TabItem>
-
-    <TabItem label="Airgap" value="airgap">
-
-    :::info
-
-    If you are using the Palette CLI from inside an
-    [airgap support VM](./airgap-install/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect the
-    airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type `y` to use the local resources
-    and skip filling in the OCI registry URL and credentials.
-
-    :::
-
-    Select the OCI registry type and provide the configuration values. Review the following table for more information.
-
-    :::warning
-
-    For self-hosted OCI registries, ensure you have the server Certificate Authority (CA) certificate file available on
-    the host where you are using the Palette CLI. You will be prompted to provide the file path to the OCI CA
-    certificate. Failure to provide the OCI CA certificate will result in self-linking errors. Refer to the
-    [Self-linking Error](../../../troubleshooting/enterprise-install.md#scenario---self-linking-error) troubleshooting
-    guide for more information.
-
-    :::
-
-    #### Pack & Image Registry Configuration
-
-    | **Parameter**                                    | **Description**                                                                                                                                                                                                                                                                                                                                     |
-    | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Registry Type**                                | Specify the type of registry. Allowed values are `OCI` or `OCI ECR`. Airgap users, select `OCI`.                                                                                                                                                                                                                                                    |
-    | **Registry Name**                                | Enter the name of the registry.                                                                                                                                                                                                                                                                                                                     |
-    | **Registry Endpoint**                            | Enter the registry endpoint. Airgap users, provide the **Spectro Cloud Repository** URL or hostname shared by the airgap setup script.                                                                                                                                                                                                              |
-    | **Registry Base Path**                           | Enter the registry base path.                                                                                                                                                                                                                                                                                                                       |
-    | **Allow Insecure Connection**                    | Bypasses x509 verification. Type `n` to specify a certificate authority in the follow-up prompt. Airgap user, ensure you select `n`.                                                                                                                                                                                                                |
-    | **Registry CA certificate filepath**             | Specify the file path to the certificate authority. Use absolute paths. Airgap users, provide the filepath displayed by the aurgap setup script.                                                                                                                                                                                                    |
-    | **Registry Username** or **Registry Access Key** | Enter the registry username or the access key if using `OCI ECR`.                                                                                                                                                                                                                                                                                   |
-    | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`.                                                                                                                                                                                                                                                                                   |
-    | **Registry Region**                              | Enter the registry region. This option is only available if you are using `OCI ECR`.                                                                                                                                                                                                                                                                |
-    | **ECR Registry Private**                         | Type `y` if the registry is private. Otherwise, type `n`.                                                                                                                                                                                                                                                                                           |
-    | **Use Public Registry for Images**               | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. Airgap users, select `n` so that you can specify the values for the OCI registry that contains all the required images. |
-
-        	When prompted to **Pull images from public registry**, type `n` and specify the OCI registry configuration values for
-        	your image registry. If you are an airgap support VM, the CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Image Registry?** Type `y` to use the local resources and skip filling in the OCI registry URL and credentials.
-        Refer to the table above for more information.
-
-    :::info
-
-    You will be provided with an opportunity to update the mirror registries values. To exit `vi` press the `Escape` key
-    and type `:wq` to save and exit.
-
-    :::
-
-    </TabItem>
-
-    </Tabs>
+13. Select `y` to use the Spectro Cloud repository and proceed to the next step.
 
 14. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following
     table.
@@ -262,9 +194,9 @@ Use the following steps to install Palette.
     | **NTP Servers**     | You can provide a list of Network Time Protocol (NTP) servers.                                                                                                                                                                                                                                                            |
     | **SSH Public Keys** | Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) reference.                            |
 
-15. Specify the IP pool configuration. The placement type can be Static or Dynamic Domain Name Server (DDNS). Choosing
-    static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DDNS assigns IP addresses
-    using DNS.
+15. Specify the IP pool configuration. The placement type can be Static or Dynamic Host Configuration Protocol (DHCP).
+    Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DHCP assigns IP
+    addresses using DNS.
 
     #### Static Placement Configuration
 
@@ -345,7 +277,40 @@ Use the following steps to install Palette.
     export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
     ```
 
-17. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
+17. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
+    in the environment where you initiated the installation.
+
+    Issue the following command to list all instances of `kind` that exist in the environment.
+
+    ```shell
+    docker images
+    ```
+
+    ```shell
+    REPOSITORY     TAG        IMAGE ID       CREATED        SIZE
+    kindest/node   v1.26.13   131ad18222cc   5 months ago   910MB
+    ```
+
+    Then, use the following command template to remove all instances of `kind`.
+
+    ```shell
+    docker image rm kindest/node:<version>
+    ```
+
+    Consider the following example for reference.
+
+    ```shell
+    docker image rm kindest/node:v1.26.13
+    ```
+
+    ```shell
+    Untagged: kindest/node:v1.26.13
+    Untagged: kindest/node@sha256:15ae92d507b7d4aec6e8920d358fc63d3b980493db191d7327541fbaaed1f789
+    Deleted: sha256:131ad18222ccb05561b73e86bb09ac3cd6475bb6c36a7f14501067cba2eec785
+    Deleted: sha256:85a1a4dfc468cfeca99e359b74231e47aedb007a206d0e2cae2f8290e7290cfd
+    ```
+
+18. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
     you will be prompted to create a new password. Enter a new password and save your changes. Refer to the
     [password requirements](../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about the password requirements.
@@ -365,13 +330,13 @@ Use the following steps to install Palette.
 
     ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
-18. After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
+19. After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
     [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to
     upload the SSL certificate files to Palette.
 
-19. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
+20. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../system-management/tenant-management.md) guide.
 
     ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.webp)

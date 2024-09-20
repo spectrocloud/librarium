@@ -6,6 +6,7 @@ import Tooltip from "@site/src/components/Tooltip/Tooltip";
 import PointsOfInterest from "@site/src/components/PointOfInterest/index";
 import YouTube from "@site/src/components/Youtube/Youtube";
 import Packs from "@site/src/components/Integrations/Packs/Packs";
+import PacksInformation from "@site/src/components/PacksInformation/PacksInformation";
 import AppTiers from "@site/src/components/Integrations/AppTiers/AppTiers";
 import PacksTable from "@site/src/components/PacksTable/PacksTable";
 import TOCInline from "@theme/TOCInline";
@@ -14,6 +15,7 @@ import SimpleCardGrid from "@site/src/components/SimpleCardGrid/index";
 import ReleaseNotesVersions from "@site/src/components/ReleaseNotesVersions/index";
 import PartialsComponent from "@site/src/components/PartialsComponent";
 import VersionedLink from "@site/src/components/VersionedLink";
+import PaletteVertexUrlMapper from "@site/src/components/PaletteVertexUrlMapper/PaletteVertexUrlMapper";
 
 export default {
   ...MDXComponents,
@@ -24,6 +26,7 @@ export default {
   PointsOfInterest,
   YouTube,
   Packs,
+  PacksInformation,
   AppTiers,
   PacksTable,
   TOCInline,
@@ -32,4 +35,5 @@ export default {
   ReleaseNotesVersions,
   PartialsComponent,
   VersionedLink,
+  PaletteVertexUrlMapper,
 };

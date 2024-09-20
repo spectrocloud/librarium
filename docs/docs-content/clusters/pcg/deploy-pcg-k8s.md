@@ -114,6 +114,14 @@ Use the following steps to install the PCG in your existing Kubernetes cluster.
    field will display **Pending** while the PCG is deploying. The deployment is complete when the **Cluster Status**
    field displays the status **Running**.
 
+   :::tip
+
+   You can provide network proxy configurations to your Kubernetes clusters deployed through Palette. To provide network
+   proxy configurations to your host clusters, update the PCG with the proxy server details. To learn more, check out
+   the [Proxy Configuration](./manage-pcg/configure-proxy.md) guide.
+
+   :::
+
 ## Validate
 
 When deployed, the PCG registers itself with Palette. Use the steps below to verify if the PCG registration is

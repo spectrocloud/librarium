@@ -20,6 +20,9 @@ Silicon, use the API approach instead.
 
 ## Export Cluster Definition with Palette Edge CLI
 
+You can export cluster definitions with the Palette Edge CLI. This approach allows you to create a content bundle at the
+same time in a single command.
+
 ### Prerequisites
 
 - At least one [cluster profile](/docs/docs-content/profiles/cluster-profiles/cluster-profiles.md) in Palette.
@@ -36,10 +39,12 @@ Silicon, use the API approach instead.
 
 ### Instructions
 
-1. Download Palette Edge Content CLI and assign the executable bit to the CLI.
+1. Download Palette Edge CLI and assign the executable bit to the CLI. Refer to
+   [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to use the right
+   Palette Edge CLI version. This guide uses 4.4.2 as an example.
 
    ```shell
-   VERSION=4.1.2
+   VERSION=4.4.2
    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
    chmod +x palette-edge
    ```
@@ -113,13 +118,14 @@ Silicon, use the API approach instead.
     --cluster-definition-profile-ids <clusterDefinitionProfileId1,clusterDefinitionProfileId2,...>
     ```
 
-    | Flag                               | Description                                                           |
-    | ---------------------------------- | --------------------------------------------------------------------- |
-    | `--api-key`                        | Your Palette API key.                                                 |
-    | `--palette-endpoint`               | API endpoint for your Palette instance.                               |
-    | `--project-id`                     | The ID of your Palette project.                                       |
-    | `--cluster-definition-name`        | Filename of the cluster definition tgz file.                          |
-    | `--cluster-definition-profile-ids` | List of cluster profile IDs to be included in the cluster definition. |
+    | Flag                               | Description                                                                                                                                                                                                                                                                                                        |
+    | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | `--api-key`                        | Your Palette API key.                                                                                                                                                                                                                                                                                              |
+    | `--palette-endpoint`               | API endpoint for your Palette instance.                                                                                                                                                                                                                                                                            |
+    | `--project-id`                     | The ID of your Palette project.                                                                                                                                                                                                                                                                                    |
+    | `--cluster-definition-name`        | Filename of the cluster definition tgz file.                                                                                                                                                                                                                                                                       |
+    | `--cluster-definition-profile-ids` | List of cluster profile IDs to be included in the cluster definition.                                                                                                                                                                                                                                              |
+    | `--private-key`                    | The path to the private key used to sign the cluster definition and content bundle if it is present. This is necessary if your Edge host has an embedded corresponding public key. For more information, refer to [Embed Public Key in Edge Artifacts](../../edgeforge-workflow/palette-canvos/signed-content.md). |
 
 11. (Optional) You can also build a content bundle together with your cluster definition in a single command by adding a
     few additional flags to the command. Content bundles are archives of all the required container images required for
@@ -158,6 +164,9 @@ Silicon, use the API approach instead.
 4. A successful cluster definition export will display the correct profile layers from the cluster creation view.
 
 ## Export Cluster Definition with Palette API
+
+If you do not have an AMD64 machine, or you do not want to download and use the Palette Edge CLI, you can still export
+cluster definitions using the Palette API.
 
 ### Prerequisites
 

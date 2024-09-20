@@ -163,26 +163,26 @@ The table enlists the role wise resourceKeys and Operations that are predefined 
 </table>
 <hr />
 
-|                    | **Create** | **Get** | **Delete** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ------- | ---------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **apiKey**         |            | √       |            | √        |            |            |             |            |             |
-| **audit**          |            | √       |            | √        |            |            |             |            |             |
-| **cloudaccount**   | √          | √       | √          | √        | √          |            |             |            |             |
-| **cloudconfig**    | √          | √       | √          | √        | √          |            |             |            |             |
-| **cluster**        | √          | √       | √          | √        | √          | √          |             |            |             |
-| **clusterProfile** | √          | √       | √          | √        | √          |            | √           |            |             |
-| **clusterRbac**    | √          | √       | √          | √        | √          |            |             |            |             |
-| **dnsMapping**     | √          | √       | √          | √        | √          |            |             |            |             |
-| **edgehost**       | √          | √       | √          | √        | √          |            |             |            |             |
-| **location**       | √          | √       | √          | √        | √          |            |             |            |             |
-| **machine**        | √          | √       | √          | √        | √          |            |             |            |             |
-| **macro**          | √          | √       | √          | √        | √          |            |             |            |             |
-| **packRegistry**   | √          | √       | √          | √        | √          |            |             |            |             |
-| **privateGateway** | √          | √       | √          | √        | √          |            |             |            |             |
-| **project**        | √          | √       | √          | √        | √          |            |             |            |             |
-| **sshKey**         | √          | √       | √          | √        | √          |            |             |            |             |
-| **tag**            |            |         |            |          | √          |            |             |            |             |
-| **workspace**      | √          | √       | √          | √        | √          |            |             | √          | √           |
+|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
+| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
+| **apiKey**         |            |            | √       | √        |            |            |             |            |             |
+| **audit**          |            |            | √       | √        |            |            |             |            |             |
+| **cloudaccount**   | √          | √          | √       | √        | √          |            |             |            |             |
+| **cloudconfig**    | √          | √          | √       | √        | √          |            |             |            |             |
+| **cluster**        | √          | √          | √       | √        | √          | √          |             |            |             |
+| **clusterProfile** | √          | √          | √       | √        | √          |            | √           |            |             |
+| **clusterRbac**    | √          | √          | √       | √        | √          |            |             |            |             |
+| **dnsMapping**     | √          | √          | √       | √        | √          |            |             |            |             |
+| **edgehost**       | √          | √          | √       | √        | √          |            |             |            |             |
+| **location**       | √          | √          | √       | √        | √          |            |             |            |             |
+| **machine**        | √          | √          | √       | √        | √          |            |             |            |             |
+| **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
+| **packRegistry**   | √          | √          | √       | √        | √          |            |             |            |             |
+| **privateGateway** | √          | √          | √       | √        | √          |            |             |            |             |
+| **project**        | √          | √          | √       | √        | √          |            |             |            |             |
+| **sshKey**         | √          | √          | √       | √        | √          |            |             |            |             |
+| **tag**            |            |            |         |          | √          |            |             |            |             |
+| **workspace**      | √          | √          | √       | √        | √          |            |             | √          | √           |
 
 </TabItem>
 </Tabs>

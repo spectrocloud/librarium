@@ -12,6 +12,8 @@ env:
   ALGOLIA_ADMIN_KEY: "123456789"
   ALGOLIA_APP_ID: "123456789"
   ALGOLIA_SEARCH_KEY: "123456789"
+  ALGOLIA_INDEX_NAME: "madeup-index"
+  PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
 
 jobs:
   build:
@@ -54,7 +56,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         id: build-and-push
         with:
           context: .
@@ -65,7 +67,7 @@ jobs:
           tags: ghcr.io/${{ github.repository }}:nightly
           labels: ${{ steps.meta.outputs.labels }}
 
-      - uses: sigstore/cosign-installer@v3.5.0
+      - uses: sigstore/cosign-installer@v3.6.0
 
       - name: Image Signing
         run: |

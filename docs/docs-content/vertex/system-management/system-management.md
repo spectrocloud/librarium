@@ -44,9 +44,11 @@ System administrators can use the system console to perform the following operat
 
 - Enable metrics collection.
 
+- [Manage feature flags](./feature-flags.md).
+
 - [Manage VerteX platform upgrades](../upgrade/upgrade.md).
 
-- Configuere login banner.
+- [Configure login banner](./login-banner.md).
 
 - [Manage tenants](tenant-management.md).
 

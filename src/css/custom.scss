@@ -11,6 +11,7 @@
 @import "./dark-mode.scss";
 @import "./reset.scss";
 @import "./table.scss";
+@import "./sidebars.scss";
 
 html {
   // mendable widget inline style affects fonts
@@ -37,6 +38,9 @@ html {
   --ifm-alert-shadow: unset;
   --openapi-demo-font-size-code: 10px;
   --openapi-demo-font-size-input: 10px;
+  --custom-sidebar-item-color: #aeb1be;
+  --custom-purple-border-color: #7d77ca;
+  --custom-byzantine-border-color: #b54aa1;
 }
 
 .markdown h1:first-child {
@@ -210,14 +214,25 @@ p img.markdown-image {
 }
 
 .admonition-tech-preview {
-  border: 1px solid var(--custom-purple-important-color);
+  border: 1px solid var(--custom-purple-border-color);
   background-color: var(--custom-purple-alert-bg-color);
+}
+
+.admonition-further-guidance {
+  border: 1px solid var(--custom-byzantine-border-color);
+  background-color: var(--custom-byzantine-alert-bg-color);
 }
 
 .desktop-only-display {
   @media (max-width: 768px) {
     display: none;
   }
+}
+
+// Allow hiding directories in docs-content
+
+.hidden-category {
+  display: none !important;
 }
 
 // Reduce the spacing between lines in code blocks

@@ -10,6 +10,24 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - IP Address not Assigned to Edge Host
+
+When you add a new VMware vSphere Edge host to an Edge cluster, the IP address may fail to be assigned to the Edge host
+after a reboot.
+
+### Debug Steps
+
+1. Access the Edge host through the
+   [vSphere Web Console](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-92986CAA-4FDE-4AA0-A9E9-084FF9E03323.html).
+
+2. Issue the following command.
+
+   ```bash
+   networkctl reload
+   ```
+
+   This command restarts the Edge host network and allows the Edge host to receive an IP address.
+
 ## Scenario - Override or Reconfigure Read-only File System Stage
 
 If you need to override or reconfigure the read-only file system, you can do so using the following steps.
@@ -42,23 +60,23 @@ adjust the values of related environment variables in the KubeVip DaemonSet with
 
 2. Issue the following command:
 
-```shell
-kubectl edit ds kube-vip-ds --namespace kube-system
-```
+   ```shell
+   kubectl edit ds kube-vip-ds --namespace kube-system
+   ```
 
 3. In the `env` of the KubeVip service, modify the environment variables to have the following corresponding values.
 
-```yaml {4-9}
-env:
-  - name: vip_leaderelection
-    value: "true"
-  - name: vip_leaseduration
-    value: "30"
-  - name: vip_renewdeadline
-    value: "20"
-  - name: vip_retryperiod
-    value: "4"
-```
+   ```yaml {4-9}
+   env:
+     - name: vip_leaderelection
+       value: "true"
+     - name: vip_leaseduration
+       value: "30"
+     - name: vip_renewdeadline
+       value: "20"
+     - name: vip_retryperiod
+       value: "4"
+   ```
 
 4. Within a minute, the old Pods in unknown state will be terminated and Pods will come up with the updated values.
 
@@ -139,9 +157,9 @@ issues or not being available. Use the following steps to troubleshoot and resol
 
 ## Scenario - systemd-resolved.service Enters Failed State
 
-When you create a cluster with an Edge host that operates the FIPS-compliant RHEL Operating System (OS), you may
-encounter an error where the `systemd-resolved.service` process enters the **failed** state. This prevents the
-nameserver from being configured, which will result in cluster deployment failure.
+When you create a cluster with an Edge host that operates the RHEL Operating System (OS), you may encounter an error
+where the `systemd-resolved.service` process enters the **failed** state. This prevents the nameserver from being
+configured, which will result in cluster deployment failure.
 
 ### Debug Steps
 
@@ -158,3 +176,60 @@ nameserver from being configured, which will result in cluster deployment failur
    ```
 
    This will start the `systemd-resolved.service` process and move the cluster creation process forward.
+
+## Scenario - Degreated Performance on Disk Drives
+
+If you are experiencing degraded performance on disk drives, such as Solid-State Drive or Nonvolatile Memory Express
+drives, and you have [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) enabled. The degraded performance may
+be caused by TRIM operations not being enabled on the drives. TRIM allows the OS to notify the drive which data blocks
+are no longer in use and can be erased internally. To enable TRIM operations, use the following steps.
+
+### Debug Steps
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Navigate to the left **Main Menu** and click on **Profiles**.
+
+3. Select the **Cluster Profile** that you want to use for your Edge cluster.
+
+4. Click on the BYOOS layer to access its YAML configuration.
+
+5. Add the following configuration to the YAML to enable TRIM operations on encrypted partitions.
+
+   ```yaml
+   stages:
+     boot.after:
+       - name: Ensure encrypted partitions can be trimmed
+         commands:
+           - |
+             DEVICES=$(lsblk -p -n -l -o NAME)
+             if cat /proc/cmdline | grep rd.immucore.uki; then TRUSTED_BOOT="true"; fi
+             for part in $DEVICES
+             do
+               if cryptsetup isLuks $part; then
+                 echo "Detected encrypted partition $part, ensuring TRIM is enabled..."
+                 if ! cryptsetup status ${part#/dev/} | grep discards; then
+                   echo "TRIM is not enabled on $part, enabling TRIM..."
+                   if [ "$TRUSTED_BOOT" = "true" ]; then
+                     cryptsetup refresh --allow-discards --persistent ${part#/dev/}
+                   else
+                     if cryptsetup status ${part#/dev/} | grep LUKS2; then OPTIONS="--persistent"; fi
+                     passphrase=$(echo '{ "data": "{ \"label\": \"LABEL\" }"}' | /system/discovery/kcrypt-discovery-challenger "discovery.password" | jq -r '.data')
+                     echo $passphrase | cryptsetup refresh --allow-discards $OPTIONS ${part#/dev/}
+                   fi
+                   if [ "$?" = "0" ]; then
+                     echo "TRIM is now enabled on $part"
+                   else
+                     echo "TRIM coud not be enabled on $part!"
+                   fi
+                 else
+                   echo "TRIM is already enabled on $part, nothing to do."
+                 fi
+               fi
+             done
+   ```
+
+6. Click on **Confirm Updates** to save the changes.
+
+7. Use the updated profile to create a [new Edge cluster](../clusters/edge/site-deployment/cluster-deployment.md) or
+   update an existing Edge cluster.

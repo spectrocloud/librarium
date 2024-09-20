@@ -67,7 +67,7 @@ server. The region experiences a bad weather event that causes a sustained outag
   boot stage. Replace `INTERFACE_NAME` with the name of the network interface on your Edge host.
   ```yaml {2-6}
   stages:
-    boot:
+    initramfs:
       - name: "Disable UDP segmentation"
         commands:
           - ethtool -K INTERFACE_NAME tx-udp_tnl-segmentation off
@@ -193,7 +193,7 @@ address in the overlay CIDR range will be used as the Overlay VIP. This VIP is t
 cluster.
 
 12. Finish the rest of the cluster configurations and click **Finish Configuration** to deploy the cluster. For more
-    information, refer to [Create Cluster Definition](../site-deployment/site-installation/cluster-deployment.md).
+    information, refer to [Create Cluster Definition](../site-deployment/cluster-deployment.md).
 
 ## Validate
 

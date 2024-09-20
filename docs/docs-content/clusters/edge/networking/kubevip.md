@@ -103,7 +103,7 @@ spec:
 ```
 
 9. Click **Next** and finish the rest of the configurations. For more information, refer to
-   [Create Cluster Definition](../site-deployment/site-installation/cluster-deployment.md).
+   [Create Cluster Definition](../site-deployment/cluster-deployment.md).
 
 When the cluster finishes deploying, kube-vip adds an annotation named `kube-vip.io/requestedIP` to the Service resource
 to document which IP address it has received from the external network. Whenever kube-vip restarts, it will attempt to

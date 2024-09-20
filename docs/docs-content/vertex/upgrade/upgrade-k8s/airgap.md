@@ -13,8 +13,9 @@ Kubernetes.
 
 :::warning
 
-Before upgrading Palette VerteX to a new major version, you must first update it to the latest minor version available.
-Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for details.
+Before upgrading Palette VerteX to a new major version, you must first update it to the latest patch version of the
+latest minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section
+for details.
 
 :::
 
@@ -250,6 +251,13 @@ Palette VerteX upgrade.
     ```shell
     unzip spectro-manifests-<file-id>.zip -d /target/folder
     ```
+
+    :::warning
+
+    Do not remove or replace the existing files inside your target folder that is served by the file server. The
+    previous content is necessary for the upgrade process.
+
+    :::
 
 8.  Refer to the [Additional Packs](../../install-palette-vertex/airgap/supplemental-packs.md) page and update the
     packages you are currently using. You must update each package separately.

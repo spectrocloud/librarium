@@ -28,6 +28,9 @@ jobs:
 
       - name: URL Checker
         run: make verify-url-links-ci
+
+      - name: URL Rate Limit Checker
+        run: make verify-rate-limited-links-ci
   
       - name: Post Comment
         run: |

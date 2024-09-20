@@ -61,6 +61,26 @@ cluster repaves.
 
 :::
 
+### Pod Drainage Toleration
+
+Palette will not remove pods with the toleration key `node.kubernetes.io/unschedulable` and the effect `NoSchedule`
+during node draining operations. You can add this toleration to your pods to prevent them from being removed during a
+repave operation.
+
+```yaml
+tolerations:
+  - key: node.kubernetes.io/unschedulable
+    effect: NoSchedule
+    operator: Exists
+```
+
+Adding the `node.kubernetes.io/unschedulable` toleration to your pods can be useful in scenarios where you have pods
+that behave as _DeamonSets_ and should not be removed during a repave operation. You can use this toleration to ensure
+that these pods are not removed during a repave operation.
+
+You can also specify other tolerations during the cluster creation process. For more information on adding tolerations,
+refer to the [Taints and Tolerations](./taints.md) guide.
+
 ## Node Pool Configuration Settings
 
 The following tables contain the configuration settings for node pools. Depending on the type of node pool, some of the
@@ -75,8 +95,8 @@ settings may not be available.
 | **Node pool name**              | A descriptive name for the node pool.                                                                                                                                                                            |
 | **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool. For the control plane pool, this number can be 1, 3, or 5.                                                                                                  |
 | **Allow worker capability**     | Select this option to allow workloads to be provisioned on control plane nodes.                                                                                                                                  |
-| **Additional Labels**           | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](taints.md#labels).      |
-| **Taints**                      | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Overview on Taints](taints.md#taints).                              |
+| **Additional Labels**           | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Node Labels](./node-labels.md).             |
+| **Taints**                      | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Taints and Tolerations](./taints.md) guide.                         |
 | **Availability Zones**          | The Availability Zones from which to select available servers for deployment. If you select multiple zones, Palette will deploy servers evenly across them as long as sufficient servers are available to do so. |
 | **Disk Size**                   | Give the required storage size.                                                                                                                                                                                  |
 
@@ -87,8 +107,8 @@ settings may not be available.
 | **Node pool name**              | A descriptive name for the worker pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | **Node repave interval**        | The time interval in seconds between repaves. The default value is 0 seconds.                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| **Additional Labels**           | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Overview on Labels](taints.md#labels).                                                                                                                                                                                                                                                                                                                                               |
-| **Taints**                      | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Overview on Taints](taints.md#apply-taints-to-nodes).                                                                                                                                                                                                                                                                                                                                                        |
+| **Additional Labels**           | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Node Labels](./node-labels.md) guide.                                                                                                                                                                                                                                                                                                                                                |
+| **Taints**                      | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Taints and Tolerations](./taints.md) guide.                                                                                                                                                                                                                                                                                                                                                                  |
 | **Rolling update**              | Apply the update policy. **Expand first** launches new nodes and then terminates old notes. **Contract first** terminates old nodes and then launches new ones.                                                                                                                                                                                                                                                                                                                                                                                           |
 | **Instance Option**             | AWS options for compute capacity. **On Demand** gives you full control over the instance lifecycle without long-term commitment. **Spot** allows the use of spare EC2 capacity at a discount but which can be reclaimed if needed.                                                                                                                                                                                                                                                                                                                        |
 | **Instance Type**               | The compute size.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |

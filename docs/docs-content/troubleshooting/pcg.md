@@ -90,7 +90,7 @@ unavailable IP addresses for the worker nodes, or the inability to perform a Net
 9. If the problem persists, download the cluster logs from Palette. The screenshot below will help you locate the button
    to download logs from the cluster details page.
 
-![A screenshot highlighting how to download the cluster logs from Palette.](/troubleshooting-pcg-download_logs.webp)
+   ![A screenshot highlighting how to download the cluster logs from Palette.](/troubleshooting-pcg-download_logs.webp)
 
 10. Share the logs with our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com).
 
@@ -215,3 +215,44 @@ self-hosted Palette or VerteX cluster. Reach out to your Palette system administ
    ```bash
    kubectl delete VSphereFailureDomain  <cluster-name>
    ```
+
+## Scenario - vSphere Controller Pod Fails to Start in Single Node PCG Cluster
+
+In a single-node PCG cluster, the vSphere controller pod may fail to start due to no matching node affinity rules. If
+you encounter this issue, follow the steps below to resolve it.
+
+### Debug Steps
+
+1. Connect to the PCG cluster using the `kubectl` command-line tool. You can find the kubeconfig file in the PCG
+   cluster's details page in Palette. Log in to Palette and navigate to the left **Main Menu** and select **Tenant
+   Settings**. From the **Tenant settings Menu**, select **Private Cloud Gateways**. Select the PCG cluster that is
+   deployed in the VMware vSphere environment to access the details page. For additional guidance on how to setup
+   kubectl, check out the [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) page.
+
+2. Issue the following command to get the vSphere controller pod's status. Take note of the pod's name.
+
+   ```bash
+    kubectl get pods --namespace kube-system
+   ```
+
+3. If the vSphere controller pod is in a `Pending` state, issue the following command to delete the existing pod and
+   force a restart.
+
+   ```bash
+   kubectl delete pod <vSphere-controller-pod-name> --namespace kube-system
+   ```
+
+4. After deleting the pod, issue the following command to check the pod's status.
+
+   ```bash
+   kubectl get pods --namespace kube-system
+   ```
+
+5. If the pod is still in a `Pending` state, check the pod's events to investigate the issue.
+
+   ```bash
+   kubectl describe pod <vSphere-controller-pod-name> --namespace kube-system
+   ```
+
+6. If the problem persists, reach out to our support team at
+   [support@spectrocloud.com](mailto:support@spectrocloud.com).

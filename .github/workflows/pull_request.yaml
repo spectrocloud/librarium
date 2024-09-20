@@ -20,6 +20,7 @@ env:
   ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
   ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
+  PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
 
 jobs:
   run-ci:
@@ -45,8 +46,20 @@ jobs:
     needs: [run-ci]
     runs-on: ubuntu-latest
     steps:
+      - name: Retrieve Credentials
+        id: import-secrets
+        uses: hashicorp/vault-action@v3.0.0
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
@@ -56,8 +69,13 @@ jobs:
 
       - run: npm ci
 
-      - name: Prettier Check
-        run: npx prettier . --check
+      - name: Auto Format (Prettier)
+        run: make format
+
+      - name: Commit Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "ci: auto-formatting prettier issues"
 
   build:
     name: Build

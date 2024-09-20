@@ -79,53 +79,56 @@ to use a private registry for images other the provider images, refer to
    If you have specified registry credentials in the `registryCredentials` field in the user data file during the
    EdgeForge process, the credentials provided in the cluster profile will be ignored. For more information, refer to
    [EdgeForge - Build Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) and
-   [Installer Configuration](../../edge-configuration/installer-reference.md#external-registry).
+   [Installer Configuration](../../edge-configuration/installer-reference.md#external-registry-parameters).
 
    :::
 
-6. At the root level of YAML for your OS layer, add the `providerCredentials` field to provide the credentials you need
-   to authenticate with your registry. For more information about the `providerCredentials` field, refer to
-   [Bring Your Own OS (BYOOS)](../../../../integrations/byoos.md) pack page. The `providerCredentials.password` field
-   will be masked when you provide it in the YAML file. You can also use a macro to store your credentials instead of
-   providing it directly in the YAML file. For more information, refer to
-   [Macros Support](../../../cluster-management/macros.md):
+<!-- prettier-ignore-start -->
 
-   ```yaml {7-8}
-   pack:
-     content:
-       images:
-         - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
-         # - image: example.io/my-other-images/example:v1.0.0
-         # - image: example.io/my-super-other-images/example:v1.0.0
-   providerCredentials:
-     registry: <registry_domain or IP Address>
-       # - e.x. registry: registry-1.docker.io
-     user: user
-     password: ******
-     certificates: |
-       -----BEGIN CERTIFICATE-----
-       MIIDVzCCAj+gAwIBAgIRANtGPo/hFkZtYRNw0KaeW54wDQYJKoZIhvcNAQELBQAw
-       ----------------------------------------------------------------
-       7OicCaV35lje5FSl0owu74ghAlCgMyAdKsJf615g1kKO4V5E2BMErd9Ibw==
-       -----END CERTIFICATE-----
+6.  At the root level of YAML for your OS layer, add the `providerCredentials` field to provide the credentials you need
+    to authenticate with your registry. For more information about the `providerCredentials` field, refer to
+    <VersionedLink text="Bring Your Own OS (BYOOS)" url="/integrations/packs/?pack=generic-byoi" /> pack page. The
+    `providerCredentials.password` field will be masked when you provide it in the YAML file. You can also use a macro
+    to store your credentials instead of providing it directly in the YAML file. For more information, refer to
+    [Macros Support](../../../cluster-management/macros.md):
+    <!-- prettier-ignore-end -->
 
-   options:
-     system.uri: example.io/my-images/example-custom-os:v1.4.5
-   ```
+        ```yaml {7-8}
+        pack:
+          content:
+            images:
+              - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
+              # - image: example.io/my-other-images/example:v1.0.0
+              # - image: example.io/my-super-other-images/example:v1.0.0
+        providerCredentials:
+          registry: <registry_domain or IP Address>
+            # - e.x. registry: registry-1.docker.io
+          user: user
+          password: ******
+          certificates: |
+            -----BEGIN CERTIFICATE-----
+            MIIDVzCCAj+gAwIBAgIRANtGPo/hFkZtYRNw0KaeW54wDQYJKoZIhvcNAQELBQAw
+            ----------------------------------------------------------------
+            7OicCaV35lje5FSl0owu74ghAlCgMyAdKsJf615g1kKO4V5E2BMErd9Ibw==
+            -----END CERTIFICATE-----
 
-7. If you are updating an existing profile, click **Confirm changes**, and then click **Save changes** to publish the
-   new version of your cluster profile. If you are creating a new profile, click **Next layer** and finish configuring
-   the remaining layers.
+        options:
+          system.uri: example.io/my-images/example-custom-os:v1.4.5
+        ```
 
-8. If you already have an active cluster that is using the original version of the cluster profile, update the cluster
-   so that it uses the new version of the cluster profile you just published. For more information about updating
-   clusters, refer to [Update a Cluster](../../../cluster-management/cluster-updates.md). This will trigger a full
-   cluster repave since it includes an update to the OS layer of the cluster. To learn more about cluster repave
-   behavior, refer to
-   [Repave Behavior and Configuration](../../../cluster-management/node-pool.md#repave-behavior-and-configuration).
+7.  If you are updating an existing profile, click **Confirm changes**, and then click **Save changes** to publish the
+    new version of your cluster profile. If you are creating a new profile, click **Next layer** and finish configuring
+    the remaining layers.
 
-   If you don't have an active cluster yet, deploy a new cluster with the profile you just created, and the cluster will
-   pull images from the private registry you specified.
+8.  If you already have an active cluster that is using the original version of the cluster profile, update the cluster
+    so that it uses the new version of the cluster profile you just published. For more information about updating
+    clusters, refer to [Update a Cluster](../../../cluster-management/cluster-updates.md). This will trigger a full
+    cluster repave since it includes an update to the OS layer of the cluster. To learn more about cluster repave
+    behavior, refer to
+    [Repave Behavior and Configuration](../../../cluster-management/node-pool.md#repave-behavior-and-configuration).
+
+    If you don't have an active cluster yet, deploy a new cluster with the profile you just created, and the cluster
+    will pull images from the private registry you specified.
 
 ## Validate
 

@@ -22,7 +22,7 @@ installation.
 
   - [Red Hat Linux Enterprise](https://www.redhat.com/en) - you need a Red Hat subscription and a custom RHEL vSphere
     template with Kubernetes available in your vSphere environment. To learn how to create the required template, refer
-    to the [RHEL and PXK](../../../../byoos/usecases/vmware/rhel-pxk.md) guide.
+    to the [RHEL and PXK](../../../../byoos/image-builder/build-image-vmware/rhel-pxk.md) guide.
 
 - [ ] Import the Operating System and Kubernetes distribution OVA required for the installation and place the OVA in the
       `spectro-templates` folder.

@@ -11,7 +11,7 @@ tags: ["troubleshooting"]
 Use the following troubleshooting resources to help you address issues that may arise. You can also reach out to our
 support team by opening up a ticket through our [support page](http://support.spectrocloud.io/).
 
-<br />
+- [Automation](automation.md)
 
 - [Cluster Deployment](cluster-deployment.md)
 
@@ -30,6 +30,8 @@ support team by opening up a ticket through our [support page](http://support.sp
 - [Palette Upgrade](palette-upgrade.md)
 
 - [Private Cloud Gateway](pcg.md)
+
+- [Virtual Machine Orchestrator](vmo-issues.md)
 
 ## Generate HAR Files
 
@@ -52,8 +54,6 @@ Follow the link for more details: [Download Cluster Logs](../clusters/clusters.m
 
 Spectro Cloud maintains an event stream with low-level details of the various orchestration tasks being performed. This
 event stream is a good source for identifying issues in the event an operation does not complete for a long time.
-
-<br />
 
 :::warning
 
@@ -83,5 +83,3 @@ made to perform the task. Failed conditions are a great source of troubleshootin
 For example, failure to create a virtual machine in AWS due to the vCPU limit being exceeded would cause this error is
 shown to the end-users. They could choose to bring down some workloads in the AWS cloud to free up space. The next time
 a VM creation task is attempted, it would succeed and the condition would be marked as a success.
-
-<br />

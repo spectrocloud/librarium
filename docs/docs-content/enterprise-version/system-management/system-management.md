@@ -50,9 +50,11 @@ Platform administrators can use the system console to perform the following oper
 
 - Enable metrics collection.
 
+- [Manage feature flags](./feature-flags.md).
+
 - Manage Palette platform upgrades.
 
-- Configuere login banner.
+- [Configure login banner](./login-banner.md).
 
 - [Manage tenants](tenant-management.md).
 
