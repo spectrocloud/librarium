@@ -19,11 +19,9 @@ Edge clusters are Kubernetes clusters set up on Edge hosts, which can be bare me
 
 Before forming a cluster, the Edge hosts must be prepared and registered with Palette. This involves the
 [EdgeForge workflow](../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), which is responsible for building
-the required Edge artifacts, such as the
-[Installer ISO](../../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md) and
-[Provider Images](../../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md). Once these artifacts
-are built, you can use the Installer ISO to bootstrap the Edge installation on your Edge host and the Provider Images to
-create a cluster profile.
+the required [Edge artifacts](../../clusters/edge/edgeforge-workflow/build-artifacts.md), such as the Installer ISO and
+Provider Images. Once these artifacts are built, you can use the Installer ISO to bootstrap the Edge installation on
+your Edge host and the Provider Images to create a cluster profile.
 
 This tutorial will help you understand how the different Edge components work together. You will build and test the Edge
 artifacts and deploy an Edge cluster without the need for a complex lab environment or separate physical devices.
@@ -39,8 +37,8 @@ The diagram below illustrates how the components that will be deployed in this t
 To complete this tutorial, you will need the following prerequisites in place.
 
 - A host with _AMD64_ (also known as _x86_64_) processor architecture and access to the Internet. The host must meet the
-  [minimum requirements](../../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md#prerequisites) to
-  build the artifacts and allow the creation of a VM with the following specifications:
+  [minimum requirements](../../clusters/edge/architecture.md#minimum-device-requirements) to build the artifacts and
+  allow the creation of a VM with the following specifications:
   - 2 CPU
   - 8 GB memory
   - 100 GB storage
@@ -69,14 +67,6 @@ Installer ISO and provider images Edge artifacts.
   your Edge host.
 - Provider Images: [Kairos-based](https://kairos.io) images containing the OS and the desired Kubernetes versions. The
   provider images are used in the OS layer when creating an Edge cluster profile.
-
-:::tip
-
-If you want your Edge host to have preloaded content and be able to create clusters using this content, you can create a
-[content bundle](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) and build it into your
-Installer ISO.
-
-:::
 
 ### Setup Your Local Environment
 
@@ -325,8 +315,8 @@ k3s-1.29.6-v4.4.12-vbox-tutorial: digest: sha256:42f8805830c7fd3816bb27e8d710d17
 
 [ttl.sh](https://ttl.sh/) is free and does not require you to sign in to use it. However, this is a short-lived image
 registry, which means that the pushed images will expire after 24 hours. Refer to the
-[Build Edge Artifacts](../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide to learn how to
-push images to a different registry.
+[Build Edge Artifacts](../../clusters/edge/edgeforge-workflow/build-artifacts.md) guide to learn how to push images to a
+different registry.
 
 :::
 
