@@ -42,8 +42,8 @@ reliability SLA of at least 99% uptime. The following diagram presents an overvi
 
 ![Spacetastic system diagram](/getting-started/getting-started_landing_spacetastic-systems.webp)
 
-While the system architecture they have chosen was a great place to start, the team soon start to face common challenges
-that many growing organisations face with Kubernetes.
+While the system architecture they have chosen was a great place to start, the team soon face common challenges that
+many growing organisations encounter with Kubernetes.
 
 > Wren hurriedly walks into the office, looking at their phone with a worried expression. "Users are reporting that our
 > systems are down on social media! This must be related to the new feature we have just released."
