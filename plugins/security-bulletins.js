@@ -4,6 +4,7 @@ const logger = require("@docusaurus/logger");
 const fs = require("fs").promises;
 const path = require("path");
 const { getTodayFormattedDate, formatDateCveDetails } = require("../utils/helpers/date");
+const { escapeMDXSpecialChars } = require("../utils/helpers/string");
 
 async function getSecurityBulletins(queryParams) {
   try {
@@ -120,6 +121,8 @@ function createCveMarkdown(item, location) {
   const lowerCaseCve = item.cve.toLowerCase();
   const upperCaseCve = item.cve.toUpperCase();
 
+  const images = item.images.map((image) => `- ${image}`).join("\n");
+
   const content = `---
 sidebar_label: "${upperCaseCve}"
 title: "${upperCaseCve}"
@@ -138,6 +141,23 @@ tags: ["security", "cve"]
 ## Last Update
 
 ${formatDateCveDetails(item.modifiedDateTime)}
+
+## NIST Summary
+
+${escapeMDXSpecialChars(item.summary)}
+
+## CVE Severity
+
+${item.baseScore}
+
+## Status
+
+${item.isImpacting ? "Ongoing" : "Resolved"}
+
+## Images
+
+${images}
+
 
 `;
 
