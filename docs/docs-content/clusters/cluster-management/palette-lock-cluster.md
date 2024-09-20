@@ -14,12 +14,8 @@ Palette provides the following platform settings:
 
 ## Pause Platform Updates
 
-Palette supports the **Pause Platform Updates** feature to exclude a cluster or a group of clusters from getting
-upgraded when Palette is upgraded. The use cases of this feature are:
-
-- Pause Updates for Single Cluster
-- Pause Updates for all the Clusters within the Project Scope
-- Pause Updates for all Clusters within the Tenant Scope
+Palette supports the **Pause Platform Updates** feature to exclude a cluster or a group of clusters from having their
+Palette agent upgraded when Palette is upgraded.
 
 :::info
 
