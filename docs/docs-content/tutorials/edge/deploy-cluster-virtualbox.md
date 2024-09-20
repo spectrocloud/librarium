@@ -196,7 +196,7 @@ displayed in the example output below.
 stylus:
   site:
     paletteEndpoint: api.spectrocloud.com
-    edgeHostToken: 62ElvdMeX5MdOESgTleBjjKAB123456
+    edgeHostToken: ****************
 
 users:
   - name: kairos
