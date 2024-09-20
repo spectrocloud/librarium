@@ -15,9 +15,7 @@ Palette Edge allows users to deploy Kubernetes workloads in remote locations wit
 infrastructure. This means you can use Palette to manage the lifecycle of your Kubernetes clusters at the edge in places
 such as hospitals, rural areas, restaurants, and more.
 
-Edge clusters are Kubernetes clusters set up on Edge hosts, which can be bare metal or virtual machines. These hosts can
-be managed locally on-site through the [Local UI](../../clusters/edge/local-ui/local-ui.md) or centrally through the
-Palette management plane.
+Edge clusters are Kubernetes clusters set up on Edge hosts, which can be bare metal or virtual machines.
 
 Before forming a cluster, the Edge hosts must be prepared and registered with Palette. This involves the
 [EdgeForge workflow](../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), which is responsible for building
