@@ -12,10 +12,21 @@ Palette offers profile-based management for Kubernetes, enabling consistency, re
 across multiple clusters. A cluster profile allows you to customize the cluster infrastructure stack, allowing you to
 choose the desired Operating System (OS), Kubernetes, Container Network Interfaces (CNI), Container Storage Interfaces
 (CSI). You can further customize the stack with add-on application layers. For more information about cluster profile
-types, refer to [Cluster Profiles](../introduction.md#cluster-profiles).
+types, refer to [Cluster Profiles](../introduction.md#cluster-profiles). The concepts you learn about in the Getting
+Started section are centered around a fictional case study company, Spacetastic Ltd.
 
 In this tutorial, you create a full profile directly from the Palette dashboard. Then, you add a layer to your cluster
 profile by using a [community pack](../../integrations/community_packs.md) to deploy a web application.
+
+The team at Spacetastic have begun their Palette exploration. In order to prepare for a migration to Palette, they begin
+to map out all the dependencies of their systems and infrastructure. This gives them a chance to review which
+dependencies need to be updated.
+
+> Wren begins creating the list. "Our tech stack has grown as we have added features and capabilities. I remember making
+> a lot of design decisions myself, as I was the first Spacetastic engineer. ”
+>
+> Kai's focus is on the platform. "I will add our infrastructure layers to your list. This process gives us a chance to
+> review which dependencies need to be updates, as well as identify "
 
 ## Prerequisites
 
@@ -111,3 +122,13 @@ In this tutorial, you created a cluster profile, which is a template that contai
 host cluster using Amazon Web Services (AWS). You added a community pack to your profile to deploy a custom workload. We
 recommend that you continue to the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial to deploy this cluster profile
 to a host cluster onto AWS.
+
+Wren and Kai have continued their exploration of Palette features. They have created their first Palette cluster profile
+by following the steps described in this guide.
+
+> "The visual representation of cluster profiles in Palette is much easier to understand than our whiteboard." says Kai,
+> glancing back at the list they have created. "I can very easily see which versions we are using in production. What
+> are your thoughts, Wren? Have you remained a Palette sceptic?"
+>
+> Wren laughs. ”Yes, I admit this is much nicer to keep track of than our whiteboard. I'm not convinced yet, but I am
+> already starting to see how it could make our lives easier. Let's keep exploring and get something deployed with it!"
