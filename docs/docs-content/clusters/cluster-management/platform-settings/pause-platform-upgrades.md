@@ -156,7 +156,10 @@ clusters within the project scope, or all within the tenant scope.
 
 </TabItem>
 
-<TabItem value="projectScope" label="All Clusters and Idle Edge Hosts - Project Scope">
+<TabItem value="projectScope" label="All Clusters - Project Scope">
+
+Pausing upgrades in a project also pauses agent upgrades for all Edge hosts in the project that are not part of a
+cluster.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -168,7 +171,10 @@ clusters within the project scope, or all within the tenant scope.
 
 </TabItem>
 
-<TabItem value="tenantScope" label="All Clusters, Idle Edge Hosts, and PCGs - Tenant Scope">
+<TabItem value="tenantScope" label="All Clusters - Tenant Scope">
+
+Pausing upgrades in a Tenant also pauses agent upgrades for all Edge hosts in the tenant that are not part of a cluster,
+as well as PCGs in the tenant.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
