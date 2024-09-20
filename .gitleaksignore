@@ -134,3 +134,6 @@ e4040084011d4d7935a589959b96ebc5cfba7a94:docs/docs-content/integrations/kubernet
 969ac609f82bacb36093c429adfc096c5a97e10f:docs/docs-content/tutorials/edge/deploy-cluster.md:generic-api-key:240
 b02a20eb1f0cc90913785c75e77f2d2f613afffa:docs/docs-content/integrations/kubernetes.md:generic-api-key:1005
 c9d5aa901fb7316d96863687583a6cdc85683898:docs/docs-content/integrations/kubernetes.md:generic-api-key:1005
+8f515d46ce2bb80b7173bf9684ed8e87cb96fd83:docs/docs-content/tutorials/edge/deploy-cluster-virtualbox.md:generic-api-key:229
+e556feb165ac7b1d3c6c2b9a652851d2298061c9:docs/docs-content/tutorials/edge/deploy-cluster-virtualbox.md:generic-api-key:199
+f3d65e145353a31710483102c336916ce4862fcb:docs/docs-content/tutorials/edge/deploy-cluster-virtualbox.md:generic-api-key:199
