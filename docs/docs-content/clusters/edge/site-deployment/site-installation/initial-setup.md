@@ -61,7 +61,8 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
    host.
 
 3. If you have already configured a user in your **user-data** file in the EdgeForge step, this step will be skipped
-   automatically. For more information, refer to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
+   automatically and you will be asked to log in instead. For more information, refer to
+   [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
 
    If you did not configure a user in your **user-data** file during EdgeForge or provide site user data, a terminal
    user interface will display a **Create User** page. This allows you to create an Operating System (OS) user with the
@@ -81,17 +82,25 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
    ![A terminal user interface showing displaying network configuration options](/cluster_edge_site-deployment_installation_initial-setup_tui.webp)
 
    Check the existing hostname and, optionally, change it to a new one. Use the Tab key or the up and down arrow keys to
-   switch between fields. When you make a change, press Enter to confirm the change.
+   switch between fields. When you make a change, press **Enter** to apply the change.
 
-5. In **Network Adapters**, choose a network adapter that the Edge host will use to communicate with Palette.
+5. In **Host Network Adapters**, select a network adapter you'd like to configure. By default, the network adapters
+   request an IP automatically from the Dynamic Host Configuration Protocol (DHCP) server. The CIDR block of an
+   adapter's possible IP address is displayed in the **Host Network Adapters** screen without selecting an individual
+   adapter.
 
-   By default, the network adapter requests an IP automatically from the DHCP server. Optionally, you can also specify a
-   static IP. Press Enter to confirm the change.
+   In the configuration page for each adapter, you can change the IP addressing scheme of the adapter and choose static
+   IP instead of DHCP. In Static IP mode, you will need to provide a static IP address, subnet mask, as well as the
+   address of the default gateway. Specifying a static IP will remove the existing DHCP settings.
 
-6. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. Press Enter to confirm
-   the change.
+6. In the configuration page of each network adapter, you can also specify the Maximum Transmission Unit (MTU) for your
+   network adapter. The MTU defines the largest size, in bytes, of a packet that can be sent over a network interface
+   without needing to be fragmented. Press **Enter** to apply the change.
 
-7. After you are satisfied with the configurations, navigate to **Quit** and hit enter to finish configuration.
+7. In **DNS Configuration**, specify the IP address of the primary and secondary name servers. You can optionally also
+   specify a search domain. Press **Enter** to apply the change.
+
+8. After you are satisfied with the configurations, navigate to **Quit** and hit enter to finish configuration.
 
 ## Validate
 

@@ -21,7 +21,11 @@ an air-gapped environment.
 
 ### Prerequisites
 
-- You have access to Local UI.
+- An Edge host installed with Edge Installer 4.3 or later.
+
+- Network access to the Edge host's port where Local UI is exposed. The default port is 5080.
+
+- Credentials to log in to Local UI. Any Operating System (OS) user can be used to log into Local UI.
 
 ### Use Ping to Check Connection to a Specific Endpoint
 
@@ -68,7 +72,11 @@ lost.
 
 ### Prerequisites
 
-- You have access to Local UI.
+- An Edge host installed with Edge Installer 4.3 or later.
+
+- Network access to the Edge host's port where Local UI is exposed. The default port is 5080.
+
+- Credentials to log in to Local UI. Any Operating System (OS) user can be used to log into Local UI.
 
 ### Use Traceroute to Check Connection to a Specific Endpoint
 

@@ -50,6 +50,10 @@ Use the following instructions to schedule a backup for an existing cluster.
 
 - An active cluster in Palette.
 
+<!-- prettier-ignore -->
+- If you want to include volume snapshots in the backup, ensure that your CSI driver supports volume snapshots. For more
+  information about volume support, review the CSI pack README for your CSI driver in use. Refer to the [Volume Snapshots](backup-restore.md#volume-snapshots) section for more information.
+
 ### Instructions
 
 1. Log in to [Palette](https://console.spectrocloud.com/).

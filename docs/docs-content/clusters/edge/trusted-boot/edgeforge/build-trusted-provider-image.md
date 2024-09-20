@@ -69,10 +69,10 @@ key that is in the Signature Database (DB). This is important both during instal
    git tag
    ```
 
-4. Check out the newest available tag. This guide uses the tag **v4.4.0** as an example.
+4. Check out the newest available tag. This guide uses the tag **v4.4.12** as an example.
 
    ```shell
-   git checkout v4.4.0
+   git checkout v4.4.12
    ```
 
 5. Review the files relevant for this guide.
@@ -128,14 +128,18 @@ key that is in the Signature Database (DB). This is important both during instal
 
    The following table lists a few key arguments for you to pay close attention to.
 
-   | **Argument**       | **Description**                                                                                       | **Allowed Values**                         |
-   | ------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-   | `IS_UKI`           | Determines whether to build a provider image that supports Trusted Boot. You must set this to `true`. | `true`, `false`. Default is `false`.       |
-   | `K8S_DISTRIBUTION` | Kubernetes distribution.                                                                              | ` k3s`, `rke2`, `kubeadm`, `kubeadm-fips`. |
-   | `OS_DISTRIBUTION`  | OS distribution.                                                                                      | `ubuntu`, `opensuse-leap`, `rhel`.         |
-   | `OS_VERSION`       | OS version. This applies to Ubuntu only.                                                              | `20`, `22`.                                |
+   | **Argument**       | **Description**                                                                                       | **Allowed Values**                   |
+   | ------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------ |
+   | `IS_UKI`           | Determines whether to build a provider image that supports Trusted Boot. You must set this to `true`. | `true`, `false`. Default is `false`. |
+   | `K8S_DISTRIBUTION` | Kubernetes distribution.                                                                              | `rke2`                               |
+   | `OS_DISTRIBUTION`  | OS distribution.                                                                                      | `ubuntu`, `opensuse-leap`, `rhel`.   |
+   | `OS_VERSION`       | OS version. This applies to Ubuntu only.                                                              | `23.10`, `24.04`                     |
 
-10. Open the **Earthfile** in the CanvOS directory. Under `build-provider-images`, remove the lines containing
+10. Open the **k8s_versions.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
+    the JSON object corresponding to your Kubernetes distribution.
+
+    If you are using a tag that is earlier than v4.4.12, the **k8s_versions.json** file does not exist in those tags.
+    Instead, open the **Earthfile** in the CanvOS directory. Under `build-provider-images`, remove the lines containing
     Kubernetes versions that you do not need.
 
 11. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
@@ -162,7 +166,7 @@ key that is in the Signature Database (DB). This is important both during instal
     `[DOCKER-ID]` and version numbers in the command below with your Docker ID and respective Kubernetes versions.
 
     ```bash
-    docker push docker.io/[DOCKER-ID]/ubuntu:rke2-1.28.2-v4.4.0-trusted-boot
+    docker push docker.io/[DOCKER-ID]/ubuntu:rke2-1.28.2-v4.4.12-trusted-boot
     ```
 
 ## Validate
@@ -178,5 +182,5 @@ key that is in the Signature Database (DB). This is important both during instal
 
    ```hideClipboard
    REPOSITORY                            TAG                                   IMAGE ID       CREATED         SIZE
-   docker.io/[DOCKER-ID]/ubuntu          rke2-1.28.2-v4.4.0-trusted-boot       075134ad5d4b   10 minutes ago  1.79GB
+   docker.io/[DOCKER-ID]/ubuntu          rke2-1.28.2-v4.4.12-trusted-boot       075134ad5d4b   10 minutes ago  1.79GB
    ```

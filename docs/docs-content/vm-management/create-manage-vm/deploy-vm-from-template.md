@@ -55,6 +55,15 @@ These steps will help guide you to deploy a VM from an out-of-the-box VM templat
 
 8. Give the VM a name and specify memory and CPUs.
 
+   :::info
+
+   You can change the memory and CPU values after the VM is deployed. By default, the hotplug feature is enabled for
+   both [memory](https://kubevirt.io/user-guide/compute/memory_hotplug/#memory-hotplug-in-action) and
+   [CPU](https://kubevirt.io/user-guide/compute/cpu_hotplug/), allowing changes to be applied without rebooting the VM
+   through live migration.
+
+   :::
+
 9. Optionally, you can enable the checkbox to start the VM automatically after creation.
 
 10. Click the **Next** button, which displays the YAML file. Tooltip help is available when you hover over lines in the
