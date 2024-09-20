@@ -170,7 +170,7 @@ The following options are available cluster scans.
 
 #### On Demand
 
-Ondeman scans can be initatied by navigating to the **Scans** tab of a cluster's details page in Palette. The scan
+Ondemand scans can be initiated by navigating to the **Scans** tab of a cluster's details page in Palette. The scan
 progress displays as **Initiated** and changes to **Completed** when the scan is complete.
 
 | **On Demand Scan**                                                                                  |
