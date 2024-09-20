@@ -27,10 +27,10 @@ the required Edge artifacts, such as the
 are built, you can use the Installer ISO to bootstrap the Edge installation on your Edge host and the Provider Images to
 create a cluster profile.
 
-This tutorial will help you understand, through hands-on activities, how the different Edge components work together.
-You will build and test the Edge artifacts and deploy an Edge cluster without needing a complex lab environment or
-separate physical devices. Specifically, you will learn to deploy an Edge cluster along with a demo application using a
-VirtualBox VM as the Edge host.
+This tutorial will help you understand how the different Edge components work together. You will build and test the Edge
+artifacts and deploy an Edge cluster without the need for a complex lab environment or separate physical devices.
+Specifically, you will learn to deploy an Edge cluster along with a demo application using a VirtualBox VM as the Edge
+host.
 
 The diagram below illustrates how the components that will be deployed in this tutorial interact with each other.
 
@@ -101,10 +101,10 @@ Check the available git tags.
 git tag
 ```
 
-Check out the newest available tag. This tutorial uses the tag **v4.4.8** as an example.
+Check out the newest available tag. This tutorial uses the tag **v4.4.12** as an example.
 
 ```
-git checkout v4.4.8
+git checkout v4.4.12
 ```
 
 ### Define Arguments
@@ -206,42 +206,38 @@ users:
 ### Build Edge Artifacts
 
 By default, Earthly builds multiple images with different K3s Kubernetes versions. You can exclude the image versions
-you do not need from the build process by commenting out the lines under the `build-provider-images` section in the
-**Earthfile**. This will speed up the build process and reduce the amount of space that is required from your host
-machine.
+you do not need from the build process by deleting the lines under the `k3s` section in the **k8s_version.json** file.
+This will speed up the build process and reduce the amount of space that is required from your host machine.
 
-Open the **Earthfile** with an editor of your choice.
+Open the **k8s_version.json** file with an editor of your choice.
 
 ```bash
-vi Earthfile
+vi k8s_version.json
 ```
 
-Next, comment out the K3s versions you do not need. This tutorial uses K3s version `1.29.6`. Below is an example of the
-file with all other versions commented out.
+Next, delete the K3s versions you do not need. This tutorial uses K3s version `1.29.6`. Below is an example of the file
+with all other versions deleted.
 
 ```text {18} hideClipboard
-       ELSE IF [ "$K8S_DISTRIBUTION" = "k3s" ]
-          # BUILD  +$TARGET --K8S_VERSION=1.24.6
-          # BUILD  +$TARGET --K8S_VERSION=1.25.2
-          # BUILD  +$TARGET --K8S_VERSION=1.25.13
-          # BUILD  +$TARGET --K8S_VERSION=1.25.15
-          # BUILD  +$TARGET --K8S_VERSION=1.26.4
-          # BUILD  +$TARGET --K8S_VERSION=1.26.8
-          # BUILD  +$TARGET --K8S_VERSION=1.26.10
-          # BUILD  +$TARGET --K8S_VERSION=1.26.14
-          # BUILD  +$TARGET --K8S_VERSION=1.27.2
-          # BUILD  +$TARGET --K8S_VERSION=1.27.5
-          # BUILD  +$TARGET --K8S_VERSION=1.27.7
-          # BUILD  +$TARGET --K8S_VERSION=1.27.11
-          # BUILD  +$TARGET --K8S_VERSION=1.27.15
-          # BUILD  +$TARGET --K8S_VERSION=1.28.2
-          # BUILD  +$TARGET --K8S_VERSION=1.28.7
-          # BUILD  +$TARGET --K8S_VERSION=1.29.2
-           BUILD  +$TARGET --K8S_VERSION=1.29.6
-       END
+{
+  "k3s": [
+    "1.29.6"
+  ],
+
+  ...
+
+}
 ```
 
 Once you are done making the alterations, save and exit the file.
+
+:::warning
+
+If you are using a CanvOS tag that is earlier than v4.4.12, the **k8s_version.json** file does not exist in those tags.
+Instead, open the **Earthfile** in the CanvOS directory. Under `build-provider-images`, remove the lines containing
+Kubernetes versions that you do not need.
+
+:::
 
 Next, execute the command below to build the Edge Installer ISO and provider images artifacts.
 
@@ -255,7 +251,6 @@ finished, you get a success message similar to the one displayed below.
 ```text hideClipboard
 # Lines omitted for readability
 ========================== 🌍 Earthly Build  ✅ SUCCESS ==========================
-🛰️ Reuse cache between CI runs with Earthly Satellites! 2-20X faster than without cache. Generous free tier https://cloud.earthly.dev
 ```
 
 The output also includes a manifest with predefined parameters that are required to create the cluster profile. Copy and
@@ -285,7 +280,7 @@ options:
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
-  system.peVersion: v4.4.8
+  system.peVersion: v4.4.12
   system.customTag: vbox-tutorial
   system.osVersion: 22
 ```
@@ -309,7 +304,7 @@ docker images --filter=reference="*/*:*$CUSTOM_TAG"
 
 ```text hideClipboard
 REPOSITORY      TAG                               IMAGE ID       CREATED          SIZE
-ttl.sh/ubuntu   k3s-1.29.6-v4.4.8-vbox-tutorial   75811e3dfb42   13 minutes ago   3.63GB
+ttl.sh/ubuntu   k3s-1.29.6-v4.4.12-vbox-tutorial   75811e3dfb42   13 minutes ago   3.63GB
 ```
 
 ### Push Provider Images
@@ -318,14 +313,14 @@ Push the provider images to the [ttl.sh](https://ttl.sh/) registry so that you c
 cluster profile.
 
 ```bash
-docker push ttl.sh/ubuntu:k3s-1.29.6-v4.4.8-$CUSTOM_TAG
+docker push ttl.sh/ubuntu:k3s-1.29.6-v4.4.12-$CUSTOM_TAG
 ```
 
 The output confirms that the image was pushed to the registry with the correct tag.
 
 ```text hideClipboard
 # Lines omitted for readability
-k3s-1.29.6-v4.4.8-vbox-tutorial: digest: sha256:42f8805830c7fd3816bb27e8d710d1747fea31a70cb7718d74e42fe1c0ed53ac size: 17815
+k3s-1.29.6-v4.4.12-vbox-tutorial: digest: sha256:42f8805830c7fd3816bb27e8d710d1747fea31a70cb7718d74e42fe1c0ed53ac size: 17815
 ```
 
 :::warning
@@ -393,7 +388,7 @@ cluster profile.
 
 | **Pack Name**  | **Version** | **Registry** | **Layer**     |
 | -------------- | ----------- | ------------ | ------------- |
-| MetalLB (Helm) | 0.14.3      | Public Repo  | Load Balancer |
+| MetalLB (Helm) | 0.14.8      | Public Repo  | Load Balancer |
 
 The MetalLB pack provides a load-balancer implementation for your Edge Kubernetes cluster. The load balancer is required
 to help the _LoadBalancer_ service specified in the Hello Universe pack obtain an IP address, so that you can access the
@@ -499,7 +494,8 @@ Edge installation onto the VM.
 Wait for the Edge Installer to complete copying content to the VM, which may take a few minutes. The VM will reboot upon
 completion. Ensure that you stop the VM before the reboot proceeds.
 
-When the image below appears, right-click the VM, select **Stop**, and then click **Power Off** to turn it off.
+When the image below appears for the second time, right-click the VM, select **Stop**, and then click **Power Off** to
+turn it off.
 
 ![A screenshot of the VirtualBox VM after installation.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-reboot.webp)
 
@@ -533,7 +529,7 @@ displayed on your VM's screen.
 ## Deploy Edge Cluster
 
 From the left **Main Menu**, select **Clusters**, then click **Create Cluster**. If you already have clusters deployed,
-choose **Add New Cluster** instead. Ensure you are in the **Default** project.
+click **Add New Cluster** instead. Ensure you are in the **Default** project.
 
 Palette will prompt you to select the type of cluster. Select **Edge Native** and click the **Start Edge Native
 Configuration** button.
@@ -541,12 +537,10 @@ Configuration** button.
 In the **Basic Information** section, assign the name **edge-vbox-cluster**, a brief cluster description, and assign the
 tag **env:edge**. Click **Next**.
 
-Select the cluster profile you created in the [Create Cluster Profile](#create-cluster-profile) section of this tutorial
-and click **Confirm**.
+In the **Cluster Profile** section, click **Add Cluster Profile**. Select the cluster profile you created earlier in
+this tutorial and click **Confirm**.
 
-The **Cluster Profile** section displays all the layers in the cluster profile. Click on **Next** to proceed.
-
-![A screenshot of the cluster profile during cluster deployment.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-deployment-profile.webp)
+Review the cluster profile layers, then click **Next** to proceed.
 
 In the **Cluster Config** section, provide a Virtual IP (VIP) address for the Edge cluster. This address must be an
 unused address on the same network as your Edge host.
@@ -568,8 +562,8 @@ Optionally, you can also select an SSH key to access the cluster's nodes and a N
 
 Click **Next** to continue.
 
-In the **Nodes Config** section, you can specify what Edge hosts make up the Edge cluster. This tutorial deploys a
-single-node Edge cluster with no worker pools.
+In the **Nodes Config** section, specify what Edge hosts make up the Edge cluster. This tutorial deploys a single-node
+Edge cluster with no worker pools.
 
 Provide the following details for the control plane pool.
 
@@ -668,8 +662,8 @@ rm build/palette-installer.iso.sha256
 Next, delete the provider images.
 
 ```bash
-docker rmi ttl.sh/ubuntu:k3s-1.29.6-v4.4.8-vbox-tutorial
-docker rmi ttl.sh/ubuntu:k3s-1.29.6-v4.4.8-vbox-tutorial_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.29.6-v4.4.12-vbox-tutorial
+docker rmi ttl.sh/ubuntu:k3s-1.29.6-v4.4.12-vbox-tutorial_linux_amd64
 ```
 
 ## Wrap-up
