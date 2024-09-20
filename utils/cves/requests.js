@@ -11,7 +11,6 @@ if (!authToken) {
   throw new Error("DSO_AUTH_TOKEN must be set in the environment to use this plugin.");
 }
 
-// Set up Axios instance with base configuration
 const api = axios.create({
   baseURL: SECURITY_BULLETIN_URL,
   timeout: 120000, // 2 minutes timeout
@@ -28,7 +27,6 @@ const limit = pRateLimit({
   concurrency: 1, // no more than 1 running at once
 });
 
-// Add Axios retry logic for retrying failed API calls
 axiosRetry(api, {
   retries: 3, // Retry up to 3 times
   retryDelay: axiosRetry.exponentialDelay, // Exponential backoff starting with 1 second

@@ -7,7 +7,6 @@ const darkCodeTheme = themes.dracula;
 const redirects = require("./redirects");
 const ArchivedVersions = require("./archiveVersions.json");
 const { pluginPacksAndIntegrationsData } = require("./plugins/packs-integrations");
-// const { pluginSecurityBulletins } = require("./plugins/security-bulletins");
 const { pluginImportFontAwesomeIcons } = require("./plugins/font-awesome");
 
 import path from "path";
@@ -137,7 +136,6 @@ const config = {
     ],
   ],
   plugins: [
-    // pluginSecurityBulletins,
     "docusaurus-plugin-sass",
     [
       "@docusaurus/plugin-content-docs",

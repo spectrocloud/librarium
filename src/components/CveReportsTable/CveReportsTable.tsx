@@ -2,28 +2,48 @@ import React from "react";
 import { Tabs, ConfigProvider, Table, theme } from "antd";
 import styles from "./CveReportTable.module.scss";
 import { useColorMode } from "@docusaurus/theme-common";
-import { useHistory } from "@docusaurus/router";
 import Link from "@docusaurus/Link";
+import type { ColumnsType } from "antd/es/table";
+import rawData from "../../../.docusaurus/security-bulletins/default/data.json";
+
+interface CveData {
+  palette: Cve[];
+  paletteAirgap: Cve[];
+  vertex: Cve[];
+  vertexAirgap: Cve[];
+}
+
+interface Cve {
+  cve: string;
+  publishedDateTime: string;
+  modifiedDateTime: string;
+  baseScore: number;
+  baseSeverity: string;
+  packs: string[];
+  groups: string[];
+  summary: string;
+  secSeverity: string;
+  isImpacting: boolean;
+}
 
 export default function CveReportsTable() {
-  const data = require("../../../.docusaurus/security-bulletins/default/data.json");
+  const data: CveData = rawData as CveData;
 
-  const paletteCVEsConnected = data?.palette;
-  const paletteCVEsAirgap = data?.paletteAirgap;
-  const verteXCVEsConnected = data?.vertex;
-  const verteXCVEsAirgap = data?.vertexAirgap;
+  const paletteCVEsConnected: Cve[] = data?.palette;
+  const paletteCVEsAirgap: Cve[] = data?.paletteAirgap;
+  const verteXCVEsConnected: Cve[] = data?.vertex;
+  const verteXCVEsAirgap: Cve[] = data?.vertexAirgap;
 
   const { colorMode } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
-  const history = useHistory();
 
-  const columns = [
+  const columns: ColumnsType<Cve> = [
     {
       title: "CVE ID",
       dataIndex: "cve",
       key: "cve",
       sorter: (a, b) => a.cve.localeCompare(b.cve),
-      render: (cve) => (
+      render: (cve: string) => (
         <Link
           to={`/security-bulletins/reports/${cve.toLowerCase()}`} // Navigate to the route
           style={{ color: "#1890ff" }} // Add link color
@@ -36,16 +56,16 @@ export default function CveReportsTable() {
       title: "Initial Pub Date",
       dataIndex: "publishedDateTime",
       key: "publishedDateTime",
-      sorter: (a, b) => new Date(a.publishedDateTime) - new Date(b.publishedDateTime),
-      render: (text) => new Date(text).toLocaleDateString(),
+      sorter: (a, b) => new Date(a.publishedDateTime).getTime() - new Date(b.publishedDateTime).getTime(),
+      render: (text: string) => new Date(text).toLocaleDateString(),
     },
     {
       title: "Modified Date",
       dataIndex: "modifiedDateTime",
       key: "modifiedDateTime",
-      sorter: (a, b) => new Date(a.modifiedDateTime) - new Date(b.modifiedDateTime),
-      render: (text) => new Date(text).toLocaleDateString(),
-      defaultSortOrder: "descend", // Automatically sort by latest modified date
+      sorter: (a, b) => new Date(a.modifiedDateTime).getTime() - new Date(b.modifiedDateTime).getTime(),
+      render: (text: string) => new Date(text).toLocaleDateString(),
+      defaultSortOrder: "descend",
     },
     {
       title: "Product Version",
@@ -64,10 +84,8 @@ export default function CveReportsTable() {
       dataIndex: "baseScore",
       key: "baseScore",
       sorter: (a, b) => a.baseScore - b.baseScore,
-      render: (baseScore, record) => (
-        <a href={`https://nvd.nist.gov/vuln/detail/${record.cve}`} target="_blank" rel="noopener noreferrer">
-          {baseScore}
-        </a>
+      render: (baseScore: number, record) => (
+        <Link to={`https://nvd.nist.gov/vuln/detail/${record.cve}`}>{baseScore}</Link>
       ),
     },
     {
@@ -79,7 +97,7 @@ export default function CveReportsTable() {
   ];
 
   // Function to render a table for a specific list of CVEs
-  const renderCveTable = (cveList) => (
+  const renderCveTable = (cveList: Cve[]) => (
     <Table
       columns={columns}
       dataSource={cveList}
