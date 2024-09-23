@@ -44,8 +44,8 @@ You can point the Edge Installer to a non-default registry to load content from 
 
 If you are using an external registry and want to use content bundles when deploying your Edge cluster, you must also
 enable the local Harbor registry. For more information, refer to
-[Build Content Bundles](../../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
-[Enable Local Harbor Registry](../../site-deployment/deploy-custom-registries/local-registry.md).
+[Build Content Bundles](../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
+[Enable Local Harbor Registry](../site-deployment/deploy-custom-registries/local-registry.md).
 
 | Parameter                                    | Description                                                                                                                                                                                                                                                                                                   | Default |
 | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
