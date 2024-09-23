@@ -226,7 +226,7 @@ The table below displays the packs deployed in each version of the cluster profi
 | Kubernetes    | `kubernetes`    | `1.29.0`    | :white_check_mark:         | :white_check_mark:         |
 | Network       | `cni-calico`    | `3.27.0`    | :white_check_mark:         | :white_check_mark:         |
 | Storage       | `csi-aws-ebs`   | `1.26.1`    | :white_check_mark:         | :white_check_mark:         |
-| App Services  | `hellouniverse` | `1.1.2`     | :white_check_mark:         | :white_check_mark:         |
+| App Services  | `hellouniverse` | `1.2.0`     | :white_check_mark:         | :white_check_mark:         |
 | App Services  | `cost-analyzer` | `1.103.3`   | :x:                        | :white_check_mark:         |
 
 The Hello Universe pack has two configured [presets](../../glossary-all.md#presets). The first preset deploys a
@@ -544,8 +544,7 @@ moments before clicking on the service URL to prevent the browser from caching a
 
 ![Deployed application](/getting-started/aws/getting-started_deploy-manage-k8s-cluster_hello-universe-w-api.webp)
 
-Welcome to Hello Universe, a demo application developed to help you learn more about Palette and its features. Feel free
-to click on the logo to increase the counter and for a fun image change.
+Welcome to Spacetastic's astronomy education platform. Feel free to explore the pages and learn more about space. The statistics page offers information on visitor counts on your deployed cluster.
 
 ## Version Cluster Profiles
 

@@ -191,10 +191,10 @@ Click on the version drop-down and select **Create new version**. The version cr
 Fill in **1.1.0** in the **Version** input field. Then, click on **Confirm**. The new cluster profile version is created
 with the same layers as version **1.0.0**.
 
-Select the **kubernetes 1.27.x** layer of the profile. The pack manifest editor appears.
+Select the **kubernetes 1.29.x** layer of the profile. The pack manifest editor appears.
 
 Click on the **Pack Version** dropdown. All of the available versions of the **Palette eXtended Kubernetes** pack
-appear. The cluster profile is configured to use the latest patch version of **Kubernetes 1.27**.
+appear. The cluster profile is configured to use the latest patch version of **Kubernetes 1.29**.
 
 ![Cluster profile with all Kubernetes versions](/getting-started/aws/getting-started_scale-secure-cluster_kubernetes-versions.webp)
 
@@ -203,8 +203,8 @@ using Kubernetes version 1.26, you should upgrade to 1.27, before upgrading to v
 the official Kubernetes upgrade guidelines in the
 [Version Skew Policy](https://kubernetes.io/releases/version-skew-policy/) page.
 
-Select **1.28.x** from the version dropdown. This selection follows the Kubernetes upgrade guidelines as the cluster
-profile is using **1.27.x**.
+Select **1.30.x** from the version dropdown. This selection follows the Kubernetes upgrade guidelines as the cluster
+profile is using **1.29.x**.
 
 The manifest editor highlights the changes made by this upgrade. Once you have verified that the upgrade changes
 versions as expected, click on **Confirm changes**.
@@ -237,7 +237,7 @@ application, as Kubernetes swaps the workloads to the upgraded nodes.
 ### Verify the Application
 
 The cluster update completes when the Palette UI marks the cluster profile layers as green and the cluster is in a
-**Healthy** state. The cluster **Overview** page also displays the Kubernetes version as **1.28**. Click on the URL for
+**Healthy** state. The cluster **Overview** page also displays the Kubernetes version as **1.30**. Click on the URL for
 port **:8080** to access the application and verify that your upgraded cluster is functional.
 
 ![Kubernetes upgrade applied](/getting-started/aws/getting-started_scale-secure-cluster_kubernetes-upgrade-applied.webp)
