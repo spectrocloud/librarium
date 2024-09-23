@@ -16,10 +16,10 @@ introducing you with Palette workflows and capabilities.
 ## 🧑‍🚀 Welcome to Spacetastic!
 
 Spacetastic Ltd., our fictional example company, is on a mission to teach its users about space. They have assembled a
-team of bright minds who are passionate about astronomy and the universe. They are a startup that is gaining
-popularity, as they expand their dashboards and grow their subscribers. Their small team has been in charge of
-developing new features alongside scaling and maintaining their infrastructure, but they are dedicated to providing the
-best astronomy education platform on Planet Earth.
+team of bright minds who are passionate about astronomy and the universe. They are a startup that is gaining popularity,
+as they expand their dashboards and grow their subscribers. Their small team has been in charge of developing new
+features alongside scaling and maintaining their infrastructure, but they are dedicated to providing the best astronomy
+education platform on Planet Earth.
 
 > "I'm the resident space expert around here!" says Anya, Lead Astrophycist, with a beaming smile. "My mission is to
 > make astrophysics, the science of space, accessible to everyone."

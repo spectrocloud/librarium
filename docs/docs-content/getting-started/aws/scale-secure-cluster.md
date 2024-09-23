@@ -34,8 +34,8 @@ Spacetastic features.
 > "I agree. No matter how safe our coding practices are, we need to periodically review, patch and upgrade our
 > dependencies." says Wren, who leads the engineering team at Spacetastic.
 >
-> Kai nods, scrolling through the Palette Docs. "Team, Palette has more security and Day-2 operation support than
-> we have explored so far. I will continue their Getting Started section and report back with my findings."
+> Kai nods, scrolling through the Palette Docs. "Team, Palette has more security and Day-2 operation support than we
+> have explored so far. I will continue their Getting Started section and report back with my findings."
 
 ## Prerequisites
 
