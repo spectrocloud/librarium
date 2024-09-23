@@ -15,8 +15,8 @@ provisioning of resources, collaborate on changes, and maintain a single source 
 
 This tutorial will teach you how to use Terraform to deploy and update an Azure host cluster. You will learn how to
 create two versions of a cluster profile with different demo applications, update the deployed cluster with the new
-cluster profile version, and then perform a rollback. The concepts you learn about in the Getting Started
-section are centered around a fictional case study company, Spacetastic Ltd.
+cluster profile version, and then perform a rollback. The concepts you learn about in the Getting Started section are
+centered around a fictional case study company, Spacetastic Ltd.
 
 ## 🧑‍🚀 Back at Spacetastic HQ
 

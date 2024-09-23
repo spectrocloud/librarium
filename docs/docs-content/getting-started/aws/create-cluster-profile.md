@@ -22,7 +22,6 @@ learn about in the Getting Started section are centered around a fictional case 
 
 <PartialsComponent category="getting-started" name="spacetastic-create-cluster-profile-intro" />
 
-
 ## Prerequisites
 
 - Follow the steps described in the [Set up Palette with AWS](./setup.md) guide to authenticate Palette for use with
@@ -121,4 +120,3 @@ to a host cluster onto AWS.
 ## 🧑‍🚀 Catch up with Spacetastic
 
 <PartialsComponent category="getting-started" name="spacetastic-create-cluster-profile-end" />
-

@@ -9,8 +9,8 @@ tags: ["getting-started", "gcp"]
 ---
 
 In this guide, you will learn how to set up Palette for use with your Google Cloud Platform (GCP) cloud account. These
-steps are required in order to authenticate Palette and allow it to deploy host clusters. The concepts you learn about in the Getting Started
-section are centered around a fictional case study company, Spacetastic Ltd.
+steps are required in order to authenticate Palette and allow it to deploy host clusters. The concepts you learn about
+in the Getting Started section are centered around a fictional case study company, Spacetastic Ltd.
 
 ## 🧑‍🚀 Back at Spacetastic HQ
 

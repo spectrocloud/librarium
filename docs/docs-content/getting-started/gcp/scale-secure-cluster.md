@@ -522,6 +522,6 @@ them.
 We encourage you to check out the [Additional Capabilities](../additional-capabilities/additional-capabilities.md) to
 explore other Palette functionalities.
 
-## 🧑‍🚀 Catch up with Spacetastic 
+## 🧑‍🚀 Catch up with Spacetastic
 
 <PartialsComponent category="getting-started" name="spacetastic-scale-secure-cluster-end" />

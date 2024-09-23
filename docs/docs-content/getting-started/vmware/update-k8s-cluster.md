@@ -22,8 +22,8 @@ update your Palette deployments.
 | Cluster overrides        | Change the configuration of a single deployed cluster outside its cluster profile. | Save and apply the changes you've made to your cluster.                                                                                                                                                    |
 
 This tutorial will teach you how to update a cluster deployed with Palette to VMware vSphere. You will explore each
-cluster update method and learn how to apply these changes using Palette. The concepts you learn about in
-the Getting Started section are centered around a fictional case study company, Spacetastic Ltd.
+cluster update method and learn how to apply these changes using Palette. The concepts you learn about in the Getting
+Started section are centered around a fictional case study company, Spacetastic Ltd.
 
 ## 🧑‍🚀 Back at Spacetastic HQ
 

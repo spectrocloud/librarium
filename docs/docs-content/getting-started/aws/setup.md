@@ -64,4 +64,3 @@ how to get started with deploying Kubernetes clusters to AWS, we recommend that 
 ## 🧑‍🚀 Catch up with Spacetastic
 
 <PartialsComponent category="getting-started" name="spacetastic-setup-end" />
-

@@ -14,7 +14,8 @@ Kubernetes with minimal effort.
 
 As you navigate the tutorial, refer to this diagram to help you understand how Palette uses a cluster profile as a
 blueprint for the host cluster you deploy. Palette clusters have the same node pools you may be familiar with: _control
-plane nodes_ and _worker nodes_ where you will deploy applications. The result is a host cluster that Palette manages. The concepts you learn about in the Getting Started section are centered around a fictional case study company,
+plane nodes_ and _worker nodes_ where you will deploy applications. The result is a host cluster that Palette manages.
+The concepts you learn about in the Getting Started section are centered around a fictional case study company,
 Spacetastic Ltd.
 
 ![A view of Palette managing the Kubernetes lifecycle](/getting-started/getting-started_deploy-k8s-cluster_application.webp)
