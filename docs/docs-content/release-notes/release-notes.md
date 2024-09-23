@@ -17,9 +17,9 @@ tags: ["release-notes"]
 
 - Palette's message communication channel between clusters and the management plane has been updated to support gRPC
   over WebSocket. Palette agents will automatically fall back to a WebSocket connection if the gRPC connection cannot be
-  established with the management plane using the default HTTP/2 protocol. This change improves the reliability of the communication channel
-  between the agent and the management plane. Environments with network proxies that reject HTTP/2 connections can now
-  connect as the connection is transcoded to the HTTP/1.1 protocol.
+  established with the management plane using the default HTTP/2 protocol. This change improves the reliability of the
+  communication channel between the agent and the management plane. Environments with network proxies that reject HTTP/2
+  connections can now connect as the connection is transcoded to the HTTP/1.1 protocol.
 
 - Local UI now supports selecting network interfaces by name.
 
