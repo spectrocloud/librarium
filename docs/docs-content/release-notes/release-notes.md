@@ -25,13 +25,13 @@ tags: ["release-notes"]
 
 - Local UI has improved validation when assigning static IP addresses to network interfaces.
 
-- The heartbeat mechanism for Palette deployed clusters has been improved to improve performance and reliability.
+- The heartbeat mechanism for Palette deployed clusters has been improved for better performance and reliability.
 
 #### Bug Fixes
 
 - Fixed an issue where imported cluster profiles defaulted to incorrect registry type.
 
-- Fixed an issue where Local UI TUI was not displaying network interfaces that had no IP addresses assigned.
+- Fixed an issue where Palette TUI was not displaying network interfaces that had no IP addresses assigned.
 
 - Resolved an issue where the Local UI took a long time to load after application deployment.
 
@@ -51,7 +51,7 @@ tags: ["release-notes"]
   changing the value in the Harbor pack.
 
 - Resolved an issue where kubeadm based Kubernetes distributions were unable to initialize on clusters with multiple
-  Network Interfaces (NIC).
+  Network Interface Cards (NIC).
 
 ## Sept 18, 2024 - Release 4.4.19
 
