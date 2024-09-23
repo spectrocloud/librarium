@@ -38,6 +38,13 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
 - Palette Edge supports basic username/password authentication. Token authentication schemes used by services such as
   AWS ECR and Google Artifact Registry are not supported.
 
+- You cannot use content bundles with an external registry if you do not enable a local Harbor registry on your Edge
+  host. If you specify a external registry without enabling the local Harbor registry, the images will be downloaded
+  from the external registry even if you provide a content bundle, and deployment will fail if the necessary images
+  cannot be located in the external registry. refer to
+  [Build Content Bundles](../../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
+  [Enable Local Harbor Registry](../../site-deployment/deploy-custom-registries/local-registry.md).
+
 ## Prerequisites
 
 - Specifying the external registry and providing credentials happens during the EdgeForge process. You should become
