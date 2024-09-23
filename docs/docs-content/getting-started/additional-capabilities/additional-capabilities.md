@@ -21,6 +21,35 @@ This section introduces you to some of Palette's additional capabilities, which 
 
 ![A drawing of Palette with humans interacting](/getting-started/getting-started_additional-capabilities_palette.webp)
 
+The concepts you learn about in the Getting Started section are centered around a fictional case study company,
+Spacetastic Ltd.
+
+## 🧑‍🚀 Back at Spacetastic HQ
+
+Spacetastic has been a Palette customer for a few months. In this time, they have become the leading astronomy education
+platform. They want to keep pushing the limits of their platform and implement some innovative capabilities on the
+Spacetastic platform. To support this growth, they will need to expand their team, infrastructure and systems. They
+continue exploring the Getting Started section to learn how they can grow with Palette and have a long-term relationship
+with Spectro Cloud.
+
+> "Wouldn’t bringing some astronomy into everyone's home be great?" says Anya, Lead Astrophycist, who has always the
+> dreamer of the team. "I wonder how we could make that possible."
+>
+> Kai is in charge of scaling the Spacetastic platform. "That would be a great dream and a challenge for us, Anya." they
+> say.
+>
+> "You know, we might be able to make your dream happen!" says Wren, Founding Engineer. "Palette's edge capabilities
+> could make it possible for us to bring Spacetastic to many devices."
+>
+> "I can't believe my ears!" says Kai laughing. "Wren, our resident Palette sceptic, has well and truly embraced our new
+> platform solution."
+>
+> Wren laughs and quickly responds. "Oh and one more thing! Palette doesn't lock us into a single tech stack or cloud
+> provider, so we can deploy our services in many locations."
+>
+> "Palette is just as secure on edge devices." says Meera, Head of Cybersecurity, joining in. "We'll make your dream a
+> reality and bring Spacetastic to everyone soon enough, Anya. The sky's the limit for us now."
+
 ## The Journey Continues
 
 In this section, you get an overview of other parts of Palette not yet covered by your Getting Started journey so far.

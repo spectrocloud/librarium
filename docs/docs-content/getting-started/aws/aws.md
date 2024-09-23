@@ -13,10 +13,10 @@ Palette supports integration with [Amazon Web Services](https://aws.amazon.com).
 are centered around a fictional case study company. This approach gives you a solution focused approach, while
 introducing you with Palette workflows and capabilities.
 
-## Case Study
+## 🧑‍🚀 Welcome to Spacetastic!
 
 Spacetastic Ltd., our fictional example company, is on a mission to teach its users about space. They have assembled a
-team of phycists and engineers who are passionate about astronomy and the universe. They are a start up that is gaining
+team of bright minds who are passionate about astronomy and the universe. They are a start up that is gaining
 popularity, as they expand their dashboards and grow their subscribers. Their small team has been in charge of
 developing new features alongside scaling and maintaining their infrastructure, but they are dedicated to providing the
 best astronomy education platform on Planet Earth.
@@ -31,13 +31,12 @@ best astronomy education platform on Planet Earth.
 > reliable and scalable for everyone around the world, and beyond!"
 >
 > Meera, Head of Cybersecurity, is the final member of the Spacetastic team. "Let's not forget about the security of our
-> platform. I make sure that all our systems are designed and implemented with security in mind, the true SecDevOps
-> way."
+> platform. I make sure that our systems are designed and implemented with security in mind, the true SecDevOps way."
 
 ![Meet the Spacetastic team](/getting-started/getting-started_landing_meet-the-team.webp)
 
 The team has deployed their services to a single cloud provider. They rely on Kubernetes for the reliability and
-scalability of their systems. The team must ensure the systems are secure, patched regularly, scalable, and meet
+scalability of their systems. The team must ensure the systems are secure, patched regularly, scalable, and meet a
 reliability SLA of at least 99% uptime. The following diagram presents an overview of their systems.
 
 ![Spacetastic system diagram](/getting-started/getting-started_landing_spacetastic-systems.webp)
@@ -45,8 +44,8 @@ reliability SLA of at least 99% uptime. The following diagram presents an overvi
 While the system architecture they have chosen was a great place to start, the team soon face common challenges that
 many growing organisations encounter with Kubernetes.
 
-> Wren hurriedly walks into the office, looking at their phone with a worried expression. "Users are reporting that our
-> systems are down on social media! This must be related to the new feature we have just released."
+> Wren hurriedly walks into the office, looking at their phone with a worried expression. "Users are reporting on social
+> media that our systems are down! This must be related to the new feature we have just released."
 >
 > Meera looks up from their monitor. "I've also received an alert about a new zero-day vulnerability. We need to patch
 > our services without further downtime, as soon as you are able to stabilize our platform."

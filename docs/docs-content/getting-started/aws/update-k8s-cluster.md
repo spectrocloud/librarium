@@ -22,7 +22,27 @@ update your Palette deployments.
 | Cluster overrides        | Change the configuration of a single deployed cluster outside its cluster profile. | Save and apply the changes you've made to your cluster.                                                                                                                                                    |
 
 This tutorial will teach you how to update a cluster deployed with Palette to Amazon Web Services (AWS). You will
-explore each cluster update method and learn how to apply these changes using Palette.
+explore each cluster update method and learn how to apply these changes using Palette. The concepts you learn about in
+the Getting Started section are centered around a fictional case study company, Spacetastic Ltd.
+
+## 🧑‍🚀 Back at Spacetastic HQ
+
+The recent outages of their platform have highlighted the need to mature their systems and establish the future vision
+of the Spacetastic platform and infrastructure. The team have identfied the following areas of improvement.
+
+- Automated deployments across cloud providers.
+- Scalable infrastructure that can support triple the amount of current subscribers.
+- Safe updates and releases without any downtime.
+
+> Wren, Founding Engineer, and Kai, Platform Engineer, have been learning and experimenting with Palette.
+>
+> "The streamlined deployment process is just one part of the improvements we've got planned for our platform." says
+> Kai. "I'm interested to learn how Palette's cluster profiles behave when applying updates and other changes to our
+> clusters."
+>
+> Wren nods, knowingly. "Yes, that’s critical to avoid future outages like the incidents we’ve had when rolling out new
+> features. After all, not every service is greenfield development, so we want services that have streamlined management
+> processes too."
 
 ## Prerequisites
 
@@ -286,3 +306,14 @@ rolling back workloads across your environments.
 
 We recommend that you continue to the [Cluster Management with Terraform](./deploy-manage-k8s-cluster-tf.md) page to
 learn about how you can use Palette with Terraform.
+
+## 🧑‍🚀 Catch up with Spacetastic
+
+Wren and Kai have followed this tutorial and now have a great understanding of what cluster profile updates mean to
+deployed clusters. They are impressed with Palette's cluster management capabilities.
+
+> "Neat! Palette’s cluster profiles allow us to review all updates we apply to our clusters." says Kai. "I can finally
+> take my vacation days, once we can safely maintain our clusters."
+>
+> "Don't I know the feeling?" laughs Wren. "I think we could all use more vacations, quiet weekends and less excitement
+> when it comes to the Spacetastic platform."
