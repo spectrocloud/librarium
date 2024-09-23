@@ -15,8 +15,25 @@ Kubernetes with minimal effort.
 As you navigate the tutorial, refer to this diagram to help you understand how Palette uses a cluster profile as a
 blueprint for the host cluster you deploy. Palette clusters have the same node pools you may be familiar with: _control
 plane nodes_ and _worker nodes_ where you will deploy applications. The result is a host cluster that Palette manages.
+The concepts you learn about in the Getting Started section are centered around a fictional case study company,
+Spacetastic Ltd.
 
 ![A view of Palette managing the Kubernetes lifecycle](/getting-started/getting-started_deploy-k8s-cluster_application.webp)
+
+## 🧑‍🚀 Back at Spacetastic HQ
+
+After successfully creating their first cluster profile and mapping out their entire technology stack, Wren, Founding
+Engineer and Kai, Platform Engineer, continue their Palette onboarding process. They are evaluating Palette as a
+potential platform orchestration tool for all the production workloads at Spacetastic, who provide an astronomy
+education platform deployed on Kubernetes.
+
+> "The Getting Started section is a great way to learn about Palette. The hands-on approach is just what we need to get
+> our first cluster deployed." says Kai, scrolling through the Spectro Cloud Docs. "Wren, do you have time to continue
+> our onboarding and get our first cluster deployed?"
+>
+> Wren sits down next to Kai and sips on a cup of coffee. "Now, we'll get a hands-on feel of the Palette developer
+> experience. You know me, I'm a champion for developer tooling and always supportive of investing in our platform.
+> Let’s follow this tutorial and deploy a cluster using the Palette UI."
 
 ## Prerequisites
 
@@ -173,3 +190,23 @@ deployed, you verified the Hello Universe application was successfully deployed.
 
 We recommend that you continue to the [Deploy Cluster Profile Updates](./update-k8s-cluster.md) tutorial to learn how to
 update your host cluster.
+
+## 🧑‍🚀 Catch up with Spacetastic
+
+Wren and Kai have deployed their first cluster profile by following the steps described in this tutorial. They were
+impressed by how streamlined the process was and how the cluster profiles provided them with a deployment blueprint.
+
+> "Deploying our first cluster with Palette was intuitive." says Wren. "It's ideal to find an external partner that can
+> take care of our Kubernetes infrastructure and free us up to deliver more educational features. I definitely think
+> that Palette has the capabilities to take care of all the Kubernetes heavy lifting for us."
+>
+> "I agree with you and I'm glad to hear you're not as sceptical anymore." says Kai, nodding and laughing. "From a
+> platform engineering perspective, I can say that cluster profiles will provide us with reliable deployments across
+> environments and even clouds, so I'm much more confident about our testing and deployment strategy."
+>
+> Meera, Head of Cybersecurity, walks in holding a file. "I've done our security due diligence and I'm happy to report
+> that Spectro Cloud adheres to the highest security standards. I'm happy to approve Palette for use in our
+> organization."
+>
+> "It seems like we've found a great platform that can support us. Let's explore the rest of the Getting Started section
+> to understand what else Palette has to offer." says Kai turning back to their monitor.
