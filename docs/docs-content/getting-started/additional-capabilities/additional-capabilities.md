@@ -27,8 +27,7 @@ Spacetastic Ltd.
 ## 🧑‍🚀 Back at Spacetastic HQ
 
 Spacetastic has been a Palette customer for a few months. In this time, they have become the leading astronomy education
-platform. They want to keep pushing the limits of their platform and implement some innovative capabilities on the
-Spacetastic platform. To support this growth, they will need to expand their team, infrastructure and systems. They
+platform. They want to keep pushing the limits of their platform and implement some innovative capabilities. To support this growth, they will need to expand their team, infrastructure, and systems. They
 continue exploring the Getting Started section to learn how they can grow with Palette and have a long-term relationship
 with Spectro Cloud.
 
@@ -47,7 +46,7 @@ with Spectro Cloud.
 > Wren laughs and quickly responds. "Oh and one more thing! Palette doesn't lock us into a single tech stack or cloud
 > provider, so we can deploy our services in many locations."
 >
-> "Palette is just as secure on edge devices." says Meera, Head of Cybersecurity, joining in. "We'll make your dream a
+> "Palette makes Kubernetes just as secure on edge devices as it is in large data centers." says Meera, Head of Cybersecurity, joining in. "We'll make your dream a
 > reality and bring Spacetastic to everyone soon enough, Anya. The sky's the limit for us!"
 
 ## The Journey Continues

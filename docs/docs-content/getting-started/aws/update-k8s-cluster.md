@@ -31,7 +31,7 @@ The recent outages of their platform have highlighted the need to mature their s
 of the Spacetastic platform and infrastructure. The team have identified the following areas of improvement.
 
 - Automated deployments across cloud providers.
-- Scalable infrastructure that can support triple the amount of current subscribers.
+- Scalable infrastructure that can support 10x the amount of current subscribers.
 - Safe updates and releases without any downtime.
 
 > Wren, Founding Engineer, and Kai, Platform Engineer, have been learning and experimenting with Palette.

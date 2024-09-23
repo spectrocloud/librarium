@@ -16,7 +16,7 @@ introducing you with Palette workflows and capabilities.
 ## 🧑‍🚀 Welcome to Spacetastic!
 
 Spacetastic Ltd., our fictional example company, is on a mission to teach its users about space. They have assembled a
-team of bright minds who are passionate about astronomy and the universe. They are a start up that is gaining
+team of bright minds who are passionate about astronomy and the universe. They are a startup that is gaining
 popularity, as they expand their dashboards and grow their subscribers. Their small team has been in charge of
 developing new features alongside scaling and maintaining their infrastructure, but they are dedicated to providing the
 best astronomy education platform on Planet Earth.
@@ -42,7 +42,7 @@ reliability SLA of at least 99% uptime. The following diagram presents an overvi
 ![Spacetastic system diagram](/getting-started/getting-started_landing_spacetastic-systems.webp)
 
 While the system architecture they have chosen was a great place to start, the team soon face common challenges that
-many growing organisations encounter with Kubernetes.
+many growing organizations encounter with Kubernetes.
 
 > Wren hurriedly walks into the office, looking at their phone with a worried expression. "Users are reporting on social
 > media that our systems are down! This must be related to the new feature we have just released."
