@@ -26,15 +26,16 @@ and to learn more about the ports used for communication.
 The Palette agent will automatically attempt to connect to the management plane using gRPC through HTTPS using the
 HTTP/2 protocol. In some environments, the network configuration may not allow gRPC traffic to pass through. A common
 scenario is when the network is behind a proxy server that does not support HTTP/2. In this scenario, the Palette agent
-will first attempt to connect to the management plane using HTTP/2. After three failed attempts, the agent will fall
+will first attempt to connect to the management plane using HTTP/2. After several failed attempts, the agent will fall
 back to using WebSocket over HTTPS with HTTP/1.1.
 
 The fallback to WebSocket with transcoding occurs automatically and does not require any additional configuration.
 
 ### gRPC Transcode
 
-Behind the scenes, when the Palette agent fails to connect with the management plane after three connection attempts,
-the agent transcodes the gRPC messages using a WebSocket connection and the HTTP/1.1 protocol.
+Behind the scenes, when the Palette agent fails to connect with the management plane after a maximum of ten connection
+attempts, the agent initiates the failover to a WebSocket connection and transcodes the gRPC messages with the HTTP/1.1
+protocol.
 
 The Palette agent direct gRPC messages to a freshly started in-memory proxy service that take the original gRPC request
 and transcode it to HTTP/1.1 protocol and send it over the WebSocket connection to the mangement plane. The management
@@ -45,23 +46,24 @@ to HTTP/2 and pass it to the agent.
 
 ![An architecture diagram of the gRPC over WebSocket flow from a network perspective. Agent to agent proxy, to WebSocket handler, who then forwards the message to the server gRPC handler.](/architecture_grps-proxy_grpc-websocket.webp)
 
-Below is a high-level overview of the order of operations when the agent falls back to using WebSocket:
+Below is a high-level overview of the order of operations when the Palette agent falls back to using WebSocket:
 
-1. The Palette agent initiates a gRPC request to the server.
-2. The agent initiates a WebSocket connection with the server.
+1. The agent initiates a gRPC request to the server.
+2. The agent initiates a WebSocket connection with the management plane servers.
 3. The server accepts the WebSocket connection.
 4. The agent in-memory proxy transcodes the gRPC request on-demand and sends it via the WebSocket connection.
-5. The server's WebSocker handler reads the request off the WebSocket connection and forwards it to the gRPC handler.
-6. The gRPC handler processes the request and responds via the same connection and the WebSocket handler sends the
-   response back to the agent.
-7. The agent's in-memory proxy reads the response off the WebSocket connection and transcodes it back to gRPC and passes
-   it to the agent.
+5. The server's WebSocker handler reads the request off the WebSocket connection and forwards it to the server's gRPC
+   handler.
+6. The gRPC handler processes the request and responds via the same connection. The WebSocket handler sends the response
+   from the gRPC handler back to the agent.
+7. The agent's in-memory proxy reads the response off the WebSocket connection and transcodes it back to HTTP/2 and
+   passes it to the agent.
 
 A more straightforward way to think about the WebSocket transcoding architecture is that network traffic between the
 Palette agent and the management plane uses the WebSocket connection and the HTTP/1.1 protocol. The agent and server are
 still communicating using gRPC, but the messages are transcoded to the HTTP/1.1 protocol between the two entities. Using
 WebSocket and HTTP/1.1 removes issues due to application firewalls or network proxies not supporting the HTTP/2
-protocol. Once the gRPC message is internal to the agent or the server, HTTP/2 is used for communication.
+protocol. Once the gRPC message is internal to the agent or the server, the HTTP/2 protocol is used for communication.
 
 ## gRPC and Proxies
 
