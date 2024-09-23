@@ -141,7 +141,7 @@ If certain network information is already available, the corresponding fields wi
                 #FELIX_IPV6SUPPORT: "true"
                 #CALICO_IPV6POOL_NAT_OUTGOING: "true"
                 #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
-                IP_AUTODETECTION_METHOD: "interface=eno32"
+                IP_AUTODETECTION_METHOD: "kubernetes-internal-ip"
     ```
     
   </TabItem>
@@ -309,7 +309,7 @@ number of control plane nodes. To learn more, check out the resource from the et
                 #FELIX_IPV6SUPPORT: "true"
                 #CALICO_IPV6POOL_NAT_OUTGOING: "true"
                 #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
-                IP_AUTODETECTION_METHOD: "interface=eno32"
+                IP_AUTODETECTION_METHOD: "kubernetes-internal-ip"
     ```
 
   </TabItem>
