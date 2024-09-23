@@ -48,7 +48,7 @@ with Spectro Cloud.
 > provider, so we can deploy our services in many locations."
 >
 > "Palette is just as secure on edge devices." says Meera, Head of Cybersecurity, joining in. "We'll make your dream a
-> reality and bring Spacetastic to everyone soon enough, Anya. The sky's the limit for us now."
+> reality and bring Spacetastic to everyone soon enough, Anya. The sky's the limit for us!"
 
 ## The Journey Continues
 
