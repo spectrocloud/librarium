@@ -14,26 +14,7 @@ section are centered around a fictional case study company, Spacetastic Ltd.
 
 ## 🧑‍🚀 Back at Spacetastic HQ
 
-The Spacetastic team decide to look for an external solution that can help them scale and manage their Kubernetes
-services. Partnering with a team of Kubernetes experts allows them to focus on expanding their astronomy education
-platform, instead of spending countless hours migrating and rehosting their services. They identify the following list
-of benefits that their new platform should provide.
-
-- Simplified Kubernetes cluster deployment processes across cloud providers.
-- Cluster maintenance and security patching across environments.
-- Monitoring and observability of Kubernetes workloads.
-
-> "I have so many ideas for new features for our backlog." says Anya, Lead Astrophycist. "Our community of space
-> explorers want to keep learning, so we shouldn't slow down our implementation cycle. We need to keep expanding our
-> astronomy education product."
->
-> Kai nods knowingly. As a Platform Engineer, they agree with Anya's concerns. "I've done some research on Kubernetes
-> orchestration solutions. It seems that Palette has all the capabilities we need to help us grow."
->
-> "I agree with both of you, but I want to review the developer experience in detail before we agree to implement a new
-> solution in production." says Wren, whose main concern as Founding Engineer is to ensure development velocity does not
-> decrease. "Let's reach out to Spectro Cloud to create an account. Then, we can make an informed decision after we
-> complete their Getting Started tutorials."
+<PartialsComponent category="getting-started" name="spacetastic-setup-intro" />
 
 ## Prerequisites
 
@@ -82,11 +63,5 @@ how to get started with deploying Kubernetes clusters to AWS, we recommend that 
 
 ## 🧑‍🚀 Catch up with Spacetastic
 
-After following the detailed Palette setup instructions, the Spacetastic team have added their cloud accounts on the
-Palette dashboard. They are ready to learn about Palette.
+<PartialsComponent category="getting-started" name="spacetastic-setup-end" />
 
-> "The Spectro Cloud team has provided our Palette accounts" says Kai. "I have followed their setup guide and have added
-> our cloud accounts. I can already tell at a first glance that they offer many Kubernetes customization features."
->
-> Wren joins Kai in looking at the Palette dashboard. "I'm interested to learn more, but I never believe in _magic_
-> solutions. We should review their Getting Started material in detail to ensure that Palette is a good fit for us."

@@ -20,21 +20,7 @@ section are centered around a fictional case study company, Spacetastic Ltd.
 
 ## 🧑‍🚀 Back at Spacetastic HQ
 
-After following the tutorials in the Getting Started section, the Spacetastic team have been have been impressed with
-its capabilities. Wren, Founding Engineer, and Kai, Platform Engineer, have been discussing adopting IaC workflows and
-have been upskilling with Terraform throughout the past year. They are interested in learning if Palette can support IaC
-workflows too.
-
-> "While we're on the topic of platform improvements, it would be great to kick off our adoption of Infrastructure as
-> Code at Spacetastic." says Wren. "I've been wanting to roll this out for a while, but we don't have that much in-house
-> expertise."
->
-> "Yes, this would definitely be a big improvement to our processes." says Kai, Platform Engineer. "Some people might
-> think that it slows down the development and release processes, due to the extra code reviews. However, the ability to
-> revert in the case of an outage more than makes up for this small drop in velocity."
->
-> Wren nods, knowingly. "Let's explore Palette's IaC capabilities and maybe we can apply some learnings to our
-> infrastructure."
+<PartialsComponent category="getting-started" name="spacetastic-deploy-cluster-tf-intro" />
 
 ## Prerequisites
 
@@ -763,12 +749,4 @@ to perform common Day-2 operations on your deployed clusters.
 
 ## 🧑‍🚀 Catch up with Spacetastic
 
-Wren and Kai have followed this tutorial and have learned how Palette supports IaC through Terraform. They found the
-essentials covered to be a great introduction to IaC and gives them the confidence to kick off this initiative at
-Spacetastic.
-
-> "I'd say that deploying Palette clusters with Terraform is even more convenient than through the UI." says Kai. "The
-> Palette Terraform provider includes a lot of the same functionality that the UI provides."
->
-> "Yes! I definitely agree. I'm a Terraform novice and I could follow along with this tutorial." says Wren. "This has
-> definitely inspired me to make our IaC adoption a priority in the medium term future."
+<PartialsComponent category="getting-started" name="spacetastic-deploy-cluster-tf-end" />

@@ -15,7 +15,12 @@ provisioning of resources, collaborate on changes, and maintain a single source 
 
 This tutorial will teach you how to use Terraform to deploy and update a VMware vSphere host cluster. You will learn how
 to create two versions of a cluster profile with different demo applications, update the deployed cluster with the new
-cluster profile version, and then perform a rollback.
+cluster profile version, and then perform a rollback. The concepts you learn about in the Getting Started
+section are centered around a fictional case study company, Spacetastic Ltd.
+
+## 🧑‍🚀 Back at Spacetastic HQ
+
+<PartialsComponent category="getting-started" name="spacetastic-deploy-cluster-tf-intro" />
 
 ## Prerequisites
 
@@ -794,3 +799,7 @@ perform cluster profile roll backs.
 
 We encourage you to check out the [Scale, Upgrade, and Secure Clusters](./scale-secure-cluster.md) tutorial to learn how
 to perform common Day-2 operations on your deployed clusters.
+
+## 🧑‍🚀 Catch up with Spacetastic
+
+<PartialsComponent category="getting-started" name="spacetastic-deploy-cluster-tf-end" />

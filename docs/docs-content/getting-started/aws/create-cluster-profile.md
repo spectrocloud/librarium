@@ -20,17 +20,8 @@ learn about in the Getting Started section are centered around a fictional case 
 
 ## 🧑‍🚀 Back at Spacetastic HQ
 
-The team are busy exploring and evaluating Palette. In order to prepare for a migration to any external platform, they
-begin to map out all the dependencies of their systems and infrastructure.
+<PartialsComponent category="getting-started" name="spacetastic-create-cluster-profile-intro" />
 
-> Wren begins creating the list. "Our tech stack has grown, as we have added features and capabilities. I remember
-> making a lot of design decisions myself, as I was Spacetastic's Founding Engineer. It's really interesting to look
-> back on how much we've built and grown since those days!"
->
-> Kai smiles and nods. "It's definitely been an out of this world ride!" they say. "I have a similar feeling when I
-> think about the infrastructure that I built in the early days as Platform Engineer. I will add our infrastructure
-> layers to your list. This process has the added bonus of giving us a chance to review which dependencies need to be
-> updated, so Meera, our security expert, will be happy too."
 
 ## Prerequisites
 
@@ -129,12 +120,5 @@ to a host cluster onto AWS.
 
 ## 🧑‍🚀 Catch up with Spacetastic
 
-Wren and Kai have created their first Palette cluster profile by following the steps described in this guide. They are
-in good spirits, as the process has gone smoothly.
+<PartialsComponent category="getting-started" name="spacetastic-create-cluster-profile-end" />
 
-> "The visual representation of cluster profiles in Palette is much clearer than our whiteboard." says Kai, glancing
-> back at the list they have created. "I can keep track of which versions we are using in production just by reviewing
-> the profile. What are your thoughts, Wren? Have you remained a Palette sceptic?"
->
-> Wren laughs. "Yes, I admit cluster profiles are very convenient. I'm not convinced yet, but I am already starting to
-> understand how Palette could make us more productive. Let's keep exploring and get something deployed with it!"

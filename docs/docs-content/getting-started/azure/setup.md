@@ -9,7 +9,12 @@ tags: ["getting-started", "azure"]
 ---
 
 In this guide, you will learn how to set up Palette for use with your Azure cloud account. These steps are required in
-order to authenticate Palette and allow it to deploy host clusters.
+order to authenticate Palette and allow it to deploy host clusters. The concepts you learn about in the Getting Started
+section are centered around a fictional case study company, Spacetastic Ltd.
+
+## 🧑‍🚀 Back at Spacetastic HQ
+
+<PartialsComponent category="getting-started" name="spacetastic-setup-intro" />
 
 ## Prerequisites
 
@@ -62,3 +67,7 @@ You can verify your account is added.
 Now that you set up Palette for use with Azure, you can start deploying Kubernetes clusters to your Azure account. To
 learn how to get started with deploying Kubernetes clusters to Azure, we recommend that you continue to the
 [Create a Cluster Profile](./create-cluster-profile.md) tutorial to create a full cluster profile for your host cluster.
+
+## 🧑‍🚀 Catch up with Spacetastic
+
+<PartialsComponent category="getting-started" name="spacetastic-setup-end" />

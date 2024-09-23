@@ -15,7 +15,12 @@ choose the desired Operating System (OS), Kubernetes, Container Network Interfac
 types, refer to [Cluster Profiles](../introduction.md#cluster-profiles).
 
 In this tutorial, you create a full profile directly from the Palette dashboard. Then, you add a layer to your cluster
-profile by using a [community pack](../../integrations/community_packs.md) to deploy a web application.
+profile by using a [community pack](../../integrations/community_packs.md) to deploy a web application.  The concepts you
+learn about in the Getting Started section are centered around a fictional case study company, Spacetastic Ltd.
+
+## 🧑‍🚀 Back at Spacetastic HQ
+
+<PartialsComponent category="getting-started" name="spacetastic-create-cluster-profile-intro" />
 
 ## Prerequisites
 
@@ -138,3 +143,7 @@ custom workload.
 
 We recommend that you continue to the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial to deploy this cluster
 profile to a host cluster onto VMware.
+
+## 🧑‍🚀 Catch up with Spacetastic
+
+<PartialsComponent category="getting-started" name="spacetastic-create-cluster-profile-end" />
