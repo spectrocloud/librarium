@@ -15,7 +15,12 @@ scans.
 
 This tutorial will teach you how to use the Palette UI to perform scale and maintenance tasks on your clusters. You will
 learn how to create Palette projects and teams, import a cluster profile, safely upgrade the Kubernetes version of a
-deployed cluster and scale up your cluster nodes.
+deployed cluster and scale up your cluster nodes. The concepts you learn about in the Getting Started section are
+centered around a fictional case study company, Spacetastic Ltd.
+
+## 🧑‍🚀 Back at Spacetastic HQ
+
+<PartialsComponent category="getting-started" name="spacetastic-scale-secure-cluster-intro" />
 
 ## Prerequisites
 
@@ -516,3 +521,7 @@ them.
 
 We encourage you to check out the [Additional Capabilities](../additional-capabilities/additional-capabilities.md) to
 explore other Palette functionalities.
+
+## 🧑‍🚀 Catch up with Spacetastic
+
+<PartialsComponent category="getting-started" name="spacetastic-scale-secure-cluster-end" />

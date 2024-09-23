@@ -22,7 +22,12 @@ update your Palette deployments.
 | Cluster overrides        | Change the configuration of a single deployed cluster outside its cluster profile. | Save and apply the changes you've made to your cluster.                                                                                                                                                    |
 
 This tutorial will teach you how to update a cluster deployed with Palette to Google Cloud Platform (GCP). You will
-explore each cluster update method and learn how to apply these changes using Palette.
+explore each cluster update method and learn how to apply these changes using Palette. The concepts you learn about in
+the Getting Started section are centered around a fictional case study company, Spacetastic Ltd.
+
+## 🧑‍🚀 Back at Spacetastic HQ
+
+<PartialsComponent category="getting-started" name="spacetastic-update-cluster-intro" />
 
 ## Prerequisites
 
@@ -287,3 +292,7 @@ rolling back workloads across your environments.
 
 We recommend that you continue to the [Cluster Management with Terraform](./deploy-manage-k8s-cluster-tf.md) page to
 learn about how you can use Palette with Terraform.
+
+## 🧑‍🚀 Catch up with Spacetastic
+
+<PartialsComponent category="getting-started" name="spacetastic-update-cluster-end" />

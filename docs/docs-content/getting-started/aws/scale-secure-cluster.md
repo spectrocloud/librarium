@@ -20,22 +20,7 @@ centered around a fictional case study company, Spacetastic Ltd.
 
 ## 🧑‍🚀 Back at Spacetastic HQ
 
-The team have been impressed with Palette's capabilities and decide to become a Spectro Cloud customer. The last piece
-of the puzzle is to learn how to handle Day-2 operations, which become increasingly more important as the Spacetastic
-platform matures. They must ensure that their systems are patched, upgraded, scaled, and scanned for vulnerabilities.
-These maintenance tasks must be automated and applied on a schedule, as the entire team wants to focus on providing
-Spacetastic features.
-
-> "I've read your report on Palette adoption at Spacetastic." says Meera, who provides the security expertise at
-> Spacetastic. I was impressed with the ability to roll out updates to all clusters using the same cluster profile. This
-> will streamline our system upgrades and cluster patching. Keeping up with security best practices has never been more
-> important, now that we are growing faster than ever!"
->
-> "I agree. No matter how safe our coding practices are, we need to periodically review, patch and upgrade our
-> dependencies." says Wren, who leads the engineering team at Spacetastic.
->
-> Kai nods, scrolling through the Palette Docs. "Team, Palette has more security and Day-2 operation support than we
-> have explored so far. I will continue their Getting Started section and report back with my findings."
+<PartialsComponent category="getting-started" name="spacetastic-scale-secure-cluster-intro" />
 
 ## Prerequisites
 
@@ -537,21 +522,4 @@ explore other Palette functionalities.
 
 ## 🧑‍🚀 Catch up with Spacetastic
 
-After going through the steps in the tutorial, Kai is confident in Palette's upgrade and scanning capabilities.
-
-> "What have you found out, Kai?" says Meera walking over to Kai's desk. "Can I rely on Palette when a zero-day
-> vulnerability comes in?"
->
-> "Yes, I know how stressful it is when those are reported." says Kai with a sympathetic nod. "I found out that Palette
-> has our security covered through their pack updates and scanning capabilities. Relying on this kind of tooling is
-> invaluable to security conscious engineers like us."
->
-> "Excellent! These capabilities will be a great addition to our existing systems at Spacetastic." says Meera with a big
-> grin.
->
-> "I'm so glad that we found a platform that can support everyone!" says Kai. "There is so much more to explore though.
-> I will keep reading through the Getting Started section and find out what additional capabilities Palette provides."
->
-> "Good thinking, Kai." says Meera, nodding. "We should maximize all of Palette's features now that we have implemented
-> it in production. We've got big ideas and goals on our company roadmap, so let's find out how Palette can help us
-> deliver them."
+<PartialsComponent category="getting-started" name="spacetastic-scale-secure-cluster-end" />
