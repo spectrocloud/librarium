@@ -550,7 +550,7 @@ After going through the steps in the tutorial, Kai is confident in Palette's upg
 > grin.
 >
 > "I'm so glad that we found a platform that can support everyone!" says Kai. "There is so much more to explore though.
-> I will keep reading through the Getting Started section and see what additional capabilities Palette provides."
+> I will keep reading through the Getting Started section and find out what additional capabilities Palette provides."
 >
 > "Good thinking, Kai." says Meera, nodding. "We should maximize all of Palette's features now that we have implemented
 > it in production. We've got big ideas and goals on our company roadmap, so let's find out how Palette can help us
