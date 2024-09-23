@@ -33,7 +33,7 @@ workflows too.
 > think that it slows down the development and release processes, due to the extra code reviews. However, the ability to
 > revert in the case of an outage more than makes up for this small drop in velocity."
 >
-> Wren nods, knowingly. "Let's explore Palette's IaC capabilities and see if we can apply some learnings to our
+> Wren nods, knowingly. "Let's explore Palette's IaC capabilities and maybe we can apply some learnings to our
 > infrastructure."
 
 ## Prerequisites

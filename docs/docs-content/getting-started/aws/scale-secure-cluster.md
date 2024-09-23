@@ -34,8 +34,8 @@ Spacetastic features.
 > "I agree. No matter how safe our coding practices are, we need to periodically review, patch and upgrade our
 > dependencies." says Wren, who leads the engineering team at Spacetastic.
 >
-> Kai nods, scrolling through the the Spectro Cloud Docs. "Team, Palette has more security and Day-2 operation support
-> than we have explored so far. I will continue their Getting Started section and report back with my findings."
+> Kai nods, scrolling through the Spectro Cloud Docs. "Team, Palette has more security and Day-2 operation support than
+> we have explored so far. I will continue their Getting Started section and report back with my findings."
 
 ## Prerequisites
 
@@ -539,7 +539,7 @@ explore other Palette functionalities.
 
 After going through the steps in the tutorial, Kai is confident in Palette's upgrade and scanning capabilities.
 
-> "So, what have you found out, Kai?" says Meera walking over to Kai's desk. "Can I rely on Palette when a zero day
+> "What have you found out, Kai?" says Meera walking over to Kai's desk. "Can I rely on Palette when a zero day
 > vulnerability comes in?"
 >
 > "Yes, I know how stressful it is when those are reported." says Kai with a sympathetic nod. "I found out that Palette

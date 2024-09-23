@@ -22,8 +22,8 @@ Spacetastic Ltd.
 
 ## 🧑‍🚀 Back at Spacetastic HQ
 
-After succesfully creating their first cluster profile and mapping out their entire technology stack, Wren, Founding
-Engineer and Kai, Platform Engineer, continue their Palettte onboarding process. They are evaluating Palette as a
+After successfully creating their first cluster profile and mapping out their entire technology stack, Wren, Founding
+Engineer and Kai, Platform Engineer, continue their Palette onboarding process. They are evaluating Palette as a
 potential platform orchestration tool for all the production workloads at Spacetastic, who provide an astronomy
 education platform deployed on Kubernetes.
 
@@ -198,10 +198,10 @@ impressed by how streamlined the process was and how the cluster profiles provid
 
 > "Deploying our first cluster with Palette was intuitive." says Wren. "It's ideal to find an external partner that can
 > take care of our Kubernetes infrastructure and free us up to deliver more educational features. I definitely think
-> that Palette has the capabilites to take care of all the Kubernetes heavy lifting for us."
+> that Palette has the capabilities to take care of all the Kubernetes heavy lifting for us."
 >
 > "I agree with you and I'm glad to hear you're not as sceptical anymore." says Kai, nodding and laughing. "From a
-> platform engineering perscpective, I can say that cluster profiles will provide us with reliable deployments across
+> platform engineering perspective, I can say that cluster profiles will provide us with reliable deployments across
 > environments and even clouds, so I'm much more confident about our testing and deployment strategy."
 >
 > Meera, Head of Cybersecurity, walks in holding a file. "I've done our security due diligence and I'm happy to report
