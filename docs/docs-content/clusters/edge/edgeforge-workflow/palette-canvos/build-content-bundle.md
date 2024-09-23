@@ -43,7 +43,7 @@ Creating a content bundle provides several benefits that may address common use 
 
 ## Limitation
 
-- You cannot use content bundles with an external registry if you do not enable a local Harbor registry on your Edge
+- You cannot use content bundles with an external registry if you do not enable the local Harbor registry on your Edge
   host. If you specify a external registry without enabling the local Harbor registry, the images will be downloaded
   from the external registry even if you provide a content bundle, and deployment will fail if the necessary images
   cannot be located in the external registry. For more information, refer to
