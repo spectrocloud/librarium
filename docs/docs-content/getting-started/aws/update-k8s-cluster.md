@@ -28,7 +28,7 @@ the Getting Started section are centered around a fictional case study company, 
 ## 🧑‍🚀 Back at Spacetastic HQ
 
 The recent outages of their platform have highlighted the need to mature their systems and establish the future vision
-of the Spacetastic platform and infrastructure. The team have identfied the following areas of improvement.
+of the Spacetastic platform and infrastructure. The team have identified the following areas of improvement.
 
 - Automated deployments across cloud providers.
 - Scalable infrastructure that can support triple the amount of current subscribers.

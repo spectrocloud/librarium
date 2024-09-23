@@ -768,7 +768,7 @@ essentials covered to be a great introduction to IaC and gives them the confiden
 Spacetastic.
 
 > "I'd say that deploying Palette clusters with Terraform is even more convenient than through the UI." says Kai. "The
-> Palette Terraform provider includes a lot of the functionality that we've seen with the UI so far."
+> Palette Terraform provider includes a lot of the same functionality that the UI provides."
 >
 > "Yes! I definitely agree. I'm a Terraform novice and I could follow along with this tutorial." says Wren. "This has
 > definitely inspired me to make our IaC adoption a priority in the medium term future."
