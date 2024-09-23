@@ -539,7 +539,7 @@ explore other Palette functionalities.
 
 After going through the steps in the tutorial, Kai is confident in Palette's upgrade and scanning capabilities.
 
-> "What have you found out, Kai?" says Meera walking over to Kai's desk. "Can I rely on Palette when a zero day
+> "What have you found out, Kai?" says Meera walking over to Kai's desk. "Can I rely on Palette when a zero-day
 > vulnerability comes in?"
 >
 > "Yes, I know how stressful it is when those are reported." says Kai with a sympathetic nod. "I found out that Palette
@@ -548,3 +548,10 @@ After going through the steps in the tutorial, Kai is confident in Palette's upg
 >
 > "Excellent! These capabilities will be a great addition to our existing systems at Spacetastic." says Meera with a big
 > grin.
+>
+> "I'm so glad that we found a platform that can support everyone!" says Kai. "There is so much more to explore though.
+> I will keep reading through the Getting Started section and see what additional capabilities Palette provides."
+>
+> "Good thinking, Kai." says Meera, nodding. "We should maximize all of Palette's features now that we have implemented
+> it in production. We've got big ideas and goals on our company roadmap, so let's find out how Palette can help us
+> deliver them."
