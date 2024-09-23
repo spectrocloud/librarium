@@ -38,7 +38,7 @@ attempts, the agent initiates the failover to a WebSocket connection and transco
 protocol.
 
 The Palette agent direct gRPC messages to a freshly started in-memory proxy service that take the original gRPC request
-and transcode it to HTTP/1.1 protocol and send it over the WebSocket connection to the mangement plane. The management
+and transcode it to HTTP/1.1 protocol and send it over the WebSocket connection to the management plane. The management
 plane's websocket handler will then accept the WebSocket message and transcode the message back the HTTP/2 protocol and
 forward it to the gRPC handler. The server will then respond with a gRPC message that will be transcoded to HTTP/1.1 and
 sent back to the agent over the WebSocket. The agent's in-memory proxy will then read the message and transcode it back
