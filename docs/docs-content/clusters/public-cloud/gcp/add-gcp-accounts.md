@@ -44,29 +44,7 @@ account in Palette.
 
 ## Create Account
 
-1. Log in to [Palette](https://console.spectrocloud.com) as Tenant admin.
-
-2. Navigate to the left **Main Menu** and select **Tenant Settings**.
-
-3. Select **Cloud Accounts** and click on **Add GCP Account**.
-
-4. In the cloud account creation wizard, provide the following information:
-
-   - **Account Name:** Custom name for the cloud account.
-
-   - **JSON Credentials:** The JSON credentials object.
-
-   <br />
-
-   :::info
-
-   You can use the **Upload** button to upload the JSON file you downloaded from the GCP console.
-
-   :::
-
-5. Click the **Validate** button to validate the credentials.
-
-6. When the credentials are validated, click on **Confirm** to save your changes.
+<PartialsComponent category="palette-setup" name="gcp-cloud-account" />
 
 ## Validate
 
