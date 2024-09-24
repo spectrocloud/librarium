@@ -89,14 +89,14 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 10. (Optional) When you assign Edge hosts to node pools, you can optionally specify a static IP address for each Edge
     host. If you want to specify a static IP, toggle on **Static IP** and provide the following information:
 
-| **Field**       | **Description**                                                                                                                     |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| IP address      | The static IP address assigned to your Edge host. This should be unique within your network.                                        |
-| Default gateway | The IP address of the default gateway for your cluster network. This gateway routes traffic from your cluster to external networks. |
-| Subnet mask     | The subnet mask of your cluster network. This defines the range of IP addresses within your cluster network.                        |
-| DNS server      | The IP address of the DNS server your cluster uses for domain resolution.                                                           |
+    | **Field**       | **Description**                                                                                                                     |
+    | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+    | IP address      | The static IP address assigned to your Edge host. This should be unique within your network.                                        |
+    | Default gateway | The IP address of the default gateway for your cluster network. This gateway routes traffic from your cluster to external networks. |
+    | Subnet mask     | The subnet mask of your cluster network. This defines the range of IP addresses within your cluster network.                        |
+    | DNS server      | The IP address of the DNS server your cluster uses for domain resolution.                                                           |
 
-If certain network information is already available, the corresponding fields will be pre-populated.
+    If certain network information is already available, the corresponding fields will be pre-populated.
 
 11. (Optional) When you assign an Edge host to a node pool, if your Edge host has more than one NIC, you can optionally
     specify which Network Interface Controller (NIC) the Edge host will use to communicate with the cluster. When you
@@ -123,13 +123,13 @@ If certain network information is already available, the corresponding fields wi
     In the CNI layer, depending on which CNI pack you choose for your cluster profile, you need to make changes in the
     following locations.
 
-  <Tabs>
-  <TabItem value="calico" label="Calico">
-  
-    In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` 
-    and set its value to `kubernetes-internal-ip`. This tells Calico to use the address assigned to the Kubernetes
-    node. 
-    
+    <Tabs>
+
+    <TabItem value="calico" label="Calico">
+
+    In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD`
+    and set its value to `kubernetes-internal-ip`. This tells Calico to use the address assigned to the Kubernetes node.
+
     ```yaml {11}
     manifests:
         calico:
@@ -143,8 +143,9 @@ If certain network information is already available, the corresponding fields wi
                 #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
                 IP_AUTODETECTION_METHOD: "kubernetes-internal-ip"
     ```
-    
+
   </TabItem>
+
   <TabItem value="flannel" label="Flannel">
 
     In the Flannel pack YAML file, add a line `- "--iface=INTERFACE_NAME"` in the default template under
@@ -171,14 +172,15 @@ If certain network information is already available, the corresponding fields wi
   <TabItem value="other" label="Other">
     If you are using other CNIs, refer to the documentation of your selected CNI and configure it to make sure that it picks the right NIC on your Edge hosts. 
   </TabItem>
+  
   </Tabs>
 
-:::warning
+    :::warning
 
-After you create the cluster, you will not be able to change the IP address or NIC of your existing Edge hosts unless
-you remove and re-add them back to the cluster.
+    After you create the cluster, you will not be able to change the IP address or NIC of your existing Edge hosts unless
+    you remove and re-add them back to the cluster.
 
-:::
+    :::
 
 12. The Settings page is where you can configure a patching schedule, security scans, backup settings, and set up
     Role-Based Access Control (RBAC). Review the settings and make changes if needed. Click on **Validate**.
