@@ -31,8 +31,6 @@ profile by using a [community pack](../../integrations/community_packs.md) to de
 Log in to Palette and navigate to the left **Main Menu**. Select **Profiles** to view the cluster profile page. You can
 view the list of available cluster profiles. To create a cluster profile, click on **Add Cluster Profile**.
 
-![View of the cluster Profiles page](/getting-started/getting-started_create-cluster-profile_profile_list_view.webp)
-
 Follow the wizard to create a new profile.
 
 In the **Basic Information** section, assign the name **azure-profile**, a brief profile description, select the type as
@@ -51,7 +49,7 @@ For this tutorial, use the following packs:
 | Pack Name        | Version | Layer            |
 | ---------------- | ------- | ---------------- |
 | ubuntu-azure LTS | 22.4.x  | Operating System |
-| Kubernetes       | 1.27.x  | Kubernetes       |
+| Kubernetes       | 1.30.x  | Kubernetes       |
 | cni-calico-azure | 3.26.x  | Network          |
 | Azure Disk       | 1.28.x  | Storage          |
 
@@ -71,7 +69,7 @@ Navigate to the left **Main Menu** and select **Profiles**. Select the cluster p
 Click on **Add New Pack** at the top of the page.
 
 Select the **Palette Community Registry** from the **Registry** dropdown. Then, click on the latest **Hello Universe**
-pack with version **v1.1.2**.
+pack with version **v1.2.0**.
 
 ![Screenshot of hello universe pack](/getting-started/azure/getting-started_create-cluster-profile_add-pack.webp)
 

@@ -38,7 +38,7 @@ provisioned and in a healthy state.
 
 The cluster profile name is `azure-profile` and the cluster name is `azure-cluster`.
 
-![Cluster details page with service URL highlighted](/getting-started/azure/getting-started_deploy-k8s-cluster_service_url.webp)
+![Cluster details page](/getting-started/azure/getting-started_update-k8s-cluster_cluster-healthy.webp)
 
 ## Tag and Filter Clusters
 
@@ -162,7 +162,7 @@ visualization tools. Read more about
 [Navigating the Kubecost UI](https://docs.kubecost.com/using-kubecost/navigating-the-kubecost-ui) to make the most of
 the cost analyzer.
 
-![Image that shows the Kubecost UI](/getting-started/getting-started_update-k8s-cluster_kubecost-ui.webp)
+![Image that shows the Kubecost UI](/getting-started/azure/getting-started_update-k8s-cluster_kubecost-ui.webp)
 
 Once you are done exploring locally, you can stop the `kubectl port-forward` command by closing the terminal window it
 is executing from.
@@ -187,7 +187,7 @@ Click on **Save** to confirm your changes.
 Palette now makes the changes required for the cluster to return to the state specified in version **1.0.0** of your
 cluster profile. Once your changes have completed, Palette marks your layers with the green status indicator.
 
-![Cluster details page with service URL highlighted](/getting-started/azure/getting-started_deploy-k8s-cluster_service_url.webp)
+![Cluster details page with service URL highlighted](/getting-started/azure/getting-started_update-k8s-cluster_rollback.webp)
 
 ## Pending Updates
 
