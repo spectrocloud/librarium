@@ -163,30 +163,33 @@ page for that particular vulnerability.
 
 ## Scan Options
 
-The following options are available for running cluster scans:
+The following options are available cluster scans.
 
-## On Demand
+- **On Demand**: Start a scan immediately.
+- **Scheduled**: Schedule a scan to start at a specific time.
 
-A cluster scan of any type can be started by navigating to the **Scans** tab of a cluster in Palette. Scan progress
-displays as 'Initiated' and transitions to 'Completed' when the scan is complete.
+#### On Demand
 
-| **On Demand Scan**                                         |
-| ---------------------------------------------------------- |
-| Select the cluster to scan -> Scan(top panel) -> Run Scan. |
+On demand scans can be initiated by navigating to the **Scans** tab of a cluster's details page in Palette. The scan
+progress displays as **Initiated** and changes to **Completed** when the scan is complete.
 
-## Scheduled
+| **On Demand Scan**                                                                                  |
+| --------------------------------------------------------------------------------------------------- |
+| From the cluster details page. Select the Scan tab. Click on **Run Scan** on the desired scan type. |
 
-You can set a schedule for each scan type when you deploy the cluster, and you can change the schedule at a later time.
+#### Scheduled
 
-| **During Cluster Deployment**                                                       |
-| ----------------------------------------------------------------------------------- |
-| Add New Cluster -> Settings -> Schedule scans -> Enable and schedule desired scans. |
+You can set a fixed schedule for a scan when you deploy the cluster. You can also change the schedule at a later time.
 
-| **Running Cluster**                                                                                                      |
-| ------------------------------------------------------------------------------------------------------------------------ |
-| Select the cluster to scan -> Settings -> Cluster Settings -> Scan Policies -> Enable and schedule scans of your choice. |
+| **Cluster Deployment**                                                                                |
+| ----------------------------------------------------------------------------------------------------- |
+| From the cluster creation settings page. Click on **Schedule scans** tab and configured the schedule. |
 
-### Schedule Options Available
+| **Active Cluster**                                                                                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| From the cluster details page. Click on the **Settings drop-down Menu**. Select **Cluster Settings**, followed by clicking on the **Scan Policies** tab. Enable and schedule the scans of your choice. |
+
+#### Schedule Options Available
 
 This operation can be performed on all cluster types across all clouds. Schedule your compliance scan for month, day,
 hour, or minute. The following options are available:
@@ -195,3 +198,43 @@ hour, or minute. The following options are available:
 - Every two weeks at midnight.
 - Every month on the first day of the month at midnight.
 - Every two months on the first day of the month at midnight
+
+## Scan reports
+
+All scan reports are available in the Palette UI. You can download them in CSV or PDF formats.
+
+The Palette agent stores reports in the Kubernetes cluster as a Kubernetes resource. You can list all available reports
+in the cluster and gather each report's status. To retrieve the list of all available reports, use the admin kubeconfig
+file downloaded and kubectl. Refer to the [Kubectl](./palette-webctl.md) to learn how to download the kubeconfig file
+and configure kubectl.
+
+To list all available reports, use the following command.
+
+```
+kubectl get audits.cluster.spectrocloud.com --all-namespaces
+```
+
+The output of this command provides the list of all reports executed on this Kubernetes cluster with the status for each
+report.
+
+```shell hideClipboard
+NAMESPACE                          NAME                                         AGE     STATUS
+cluster-66d8a761ed405e70b86a8a17   kube-bench-66df28ab3c13fb7876674c98-xscvq    5h14m   Complete
+cluster-66d8a761ed405e70b86a8a17   kube-hunter-66df65dced406e0856d8536a-zetys   53m     Complete
+cluster-66d8a761ed405e70b86a8a17   syft-66df6d437cda16db7074cefe-czfxq          21m     Complete
+```
+
+To check the details for a particular report, including report content. Issue the following command and replace the
+`<cluster-uuid>` with the actual cluster UUID and `<name of the report>` with the name of the report from the list.
+
+```shell
+kubectl get audits.cluster.spectrocloud.com --namespace cluster-<cluster-uuid> <name of the report> --output yaml
+```
+
+Below is an example of the command to get the details of the kube-bench report.
+
+```shell
+kubectl get audits.cluster.spectrocloud.com --namespace cluster-66d8a761ed405e70b86a8a17 kube-bench-66df28ab3c13fb7876674c98-xscvq --output yaml
+```
+
+The scan report content is available in the output block `status.results.<scan name>.scanReport.Worker.reportData`.
