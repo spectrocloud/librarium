@@ -37,15 +37,21 @@ Behind the scenes, when the Palette agent fails to connect with the management p
 attempts, the agent initiates the failover to a WebSocket connection and transcodes the gRPC messages with the HTTP/1.1
 protocol.
 
-The Palette agent directs gRPC messages to a freshly started in-memory proxy service, which takes the original gRPC request, transcodes it to HTTP/1.1 protocol, and sends it over the WebSocket connection to the management plane. The management plane's WebSocket handler will then accept the WebSocket message and transcode it back to the HTTP/2 protocol before forwarding it to the gRPC handler. The server will then respond with a gRPC message, which will be transcoded to HTTP/1.1 and sent back to the agent over the WebSocket. The agent's in-memory proxy will read the message and transcode it back to HTTP/2 and pass it to the agent.
+The Palette agent directs gRPC messages to a freshly started in-memory proxy service, which takes the original gRPC
+request, transcodes it to HTTP/1.1 protocol, and sends it over the WebSocket connection to the management plane. The
+management plane's WebSocket handler will then accept the WebSocket message and transcode it back to the HTTP/2 protocol
+before forwarding it to the gRPC handler. The server will then respond with a gRPC message, which will be transcoded to
+HTTP/1.1 and sent back to the agent over the WebSocket. The agent's in-memory proxy will read the message and transcode
+it back to HTTP/2 and pass it to the agent.
 
 ![An architecture diagram of the gRPC over WebSocket flow from a network perspective. Agent to agent proxy, to WebSocket handler, who then forwards the message to the server gRPC handler.](/architecture_grps-proxy_grpc-websocket.webp)
 
 Below is a high-level overview of the order of operations when the Palette agent falls back to using WebSocket:
 
-1. The agent initiates a gRPC request to the server.
-2. The agent initiates a WebSocket connection with the management plane servers.
-3. The server accepts the WebSocket connection.
+1. The agent initiates a new gRPC request to the management plane servers that is picked up by the in-memory proxy
+   service.
+2. The agent's in-memory proxy creates a WebSocket connection with the management plane servers.
+3. The management plane server accepts the WebSocket connection
 4. The agent in-memory proxy transcodes the gRPC request on-demand and sends it via the WebSocket connection.
 5. The server's WebSocker handler reads the request off the WebSocket connection and forwards it to the server's gRPC
    handler.
@@ -65,8 +71,9 @@ protocol. Once the gRPC message is internal to the agent or the server, the HTTP
 :::info
 
 The following sections provide information about using gRPC with network proxies. These issues are addressed by using
-WebSocket and the HTTP/1.1 protocol as a fallback mechanism. However, if you want to better understand the reasons for falling back to a WebSocket connection, the following sections provide more information about challenges with
-gRPC and network proxies. If you want to learn more about gRPC and transcoding, check out the Red Hat article
+WebSocket and the HTTP/1.1 protocol as a fallback mechanism. However, if you want to better understand the reasons for
+falling back to a WebSocket connection, the following sections provide more information about challenges with gRPC and
+network proxies. If you want to learn more about gRPC and transcoding, check out the Red Hat article
 [gRPC Anywhere](https://www.redhat.com/en/blog/grpc-anywhere).
 
 :::
