@@ -20,7 +20,10 @@ from VMware vSphere to Palette VMO.
 
 - You can only migrate VMs hosted in VMware vSphere.
 - Only VMs whose operating systems are included under
-  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
+[`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
+<!-- prettier-ignore -->
+- When using <VersionedLink text="Multus CNI" url="/integrations/packs/?pack=cni-multus" />, the Network Attachment
+  Definitions (NADs) used must match the same name assigned to the migration. Otherwise, the migration will fail.
 
 ## Prerequisites
 
