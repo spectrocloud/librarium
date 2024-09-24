@@ -25,14 +25,6 @@ when the connection to the management plane is lost. You can manage Edge cluster
 centrally through the Palette management plane. Palette Edge is able to meet your needs, regardless of the network
 topology your deployments face.
 
-Palette Edge also allows you to be confident that all software operating on your Edge hosts is authenticated software
-verified through cryptographic signatures. [Trusted Boot](../../clusters/edge/trusted-boot/trusted-boot.md) is the
-security feature that ensures the authenticity of the boot processes. In the event that an Edge device is lost or
-stolen, the
-[Trusted Platform Module (TPM)](https://www.intel.com/content/www/us/en/business/enterprise-computers/resources/trusted-platform-module.html)
-will not release the key to decrypt the disk encryption if the boot process is tampered with, ensuring your user data
-remains encrypted.
-
 ## Resources
 
 To learn more about Palette Edge, review the [Edge](../../clusters/edge/edge.md) section to learn more about Edge and
