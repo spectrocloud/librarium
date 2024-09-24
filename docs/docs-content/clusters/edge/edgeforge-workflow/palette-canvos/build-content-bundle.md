@@ -37,6 +37,15 @@ Creating a content bundle provides several benefits that may address common use 
 - Organizations that want better control over the software used by their Edge hosts can use content bundles to ensure
   that only approved software is consumed.
 
+## Limitation
+
+- You cannot use content bundles with an external registry if you do not enable the local Harbor registry on your Edge
+  host. If you specify a external registry without enabling the local Harbor registry, the images will be downloaded
+  from the external registry even if you provide a content bundle, and deployment will fail if the necessary images
+  cannot be located in the external registry. For more information, refer to
+  [Deploy Cluster with External Registry](../../site-deployment/deploy-custom-registries/deploy-external-registry.md)
+  and [Enable Local Harbor Registry](../../site-deployment/deploy-custom-registries/local-registry.md).
+
 ## Prerequisites
 
 - Linux Machine (Physical or VM) with an AMD64 architecture.
