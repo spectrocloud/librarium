@@ -21,7 +21,7 @@ either deploy or delete Kubernetes clusters within the environment. This connect
 that is encrypted using the Transport Layer Security (TLS) protocol. Once a cluster is deployed, the PCG is no longer
 involved in the communication between Palette and the deployed cluster. The cluster then communicates directly with
 Palette through the Palette agent available within each cluster, which originates all network requests outbound toward
-Palette. Refer to the [PCG Architecture](../../clusters/pcg/architecture.md) section for more information.
+Palette. 
 
 In this tutorial, you will deploy a VMware PCG using Palette CLI.
 

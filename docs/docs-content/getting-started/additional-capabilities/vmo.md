@@ -23,7 +23,7 @@ in self-hosted, airgapped, and in our SaaS environments. Learn more on the
 
 ## Resources
 
-To learn more about Palette VMO, review the [Architecture](../../vm-management/architecture.md) page to learn about the
+To learn more about Palette VMO, review the [Get Started With VM Orchestrator](../../vm-management/vm-management.md#get-started-with-vm-orchestrator) page to learn about the
 components involved in enabling VMO for your infrastructure. Then, review the
 [Create a VMO Profile](../../vm-management/create-vmo-profile.md) guide to prepare everything you need to deploy your
 first cluster with VMO.

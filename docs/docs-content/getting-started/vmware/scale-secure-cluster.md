@@ -328,7 +328,7 @@ Navigate to the left **Main Menu** and select **Clusters**. Select your cluster 
 
 Select the **Nodes** tab. Your cluster has a **control-plane-pool** and a **worker-pool**. Each pool contains one node.
 
-Select the **Overview** tab. Download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file.
+Select the **Overview** tab. Download the kubeconfig file.
 
 ![kubeconfig download](/getting-started/vmware/getting-started_scale-secure-cluster_download-kubeconfig.webp)
 

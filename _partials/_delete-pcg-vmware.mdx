@@ -8,8 +8,6 @@ admin, navigate to the left **Main Menu** and select **Tenant Settings**. Next, 
 on **Private Cloud Gateways**. Identify the PCG you want to delete, click on the **Three-Dot Menu** at the end of the
 PCG row, and select **Delete**. Click **OK** to confirm the PCG deletion.
 
-![Delete PCG image](/clusters_pcg_deploy-app-pcg_pcg-delete.webp)
-
 Palette will delete the PCG and the Palette services deployed on the PCG node. However, the underlying infrastructure
 resources, such as the virtual machine, must be removed manually from VMware vSphere.
 
@@ -17,5 +15,3 @@ Log in to your VMware vSphere server and select the VM representing the PCG node
 the **Three-Dot Actions** button, select **Power**, and **Power Off** to power off the machine. Once the machine is
 powered off, click on the **Three-Dot Actions** button again and select **Delete from Disk** to remove the machine from
 your VMware vSphere environment.
-
-![Delete VMware VM](/clusters_pcg_deploy-app-pcg_vmware-delete.webp)

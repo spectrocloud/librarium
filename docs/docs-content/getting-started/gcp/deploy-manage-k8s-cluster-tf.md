@@ -620,7 +620,7 @@ Once the changes have been completed, Palette marks the cluster layers with a gr
 
 ![Image that shows the cluster with Kubecost](/getting-started/gcp/getting-started_deploy-manage-k8s-cluster_profile-with-kubecost.webp)
 
-Next, download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file for your cluster from the Palette
+Next, download the kubeconfig file for your cluster from the Palette
 UI. This file enables you and other users to issue `kubectl` commands against the host cluster.
 
 ![Image that shows the cluster's kubeconfig file location](/getting-started/gcp/getting-started_deploy-manage-k8s-cluster_kubeconfig.webp)
