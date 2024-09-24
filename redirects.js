@@ -76,8 +76,16 @@ const redirects = [
     to: `/getting-started/`,
   },
   {
-    from: `/clusters/public-cloud/eks/`,
-    to: `/clusters/public-cloud/aws/eks/`,
+    from: `/getting-started/dashboard`,
+    to: `/introduction/dashboard`,
+  },
+  {
+    from: `/getting-started/cluster-profiles`,
+    to: `/getting-started/introduction`,
+  },
+  {
+    from: `/clusters/public-cloud/eks`,
+    to: `/clusters/public-cloud/aws/eks`,
   },
   {
     from: `/clusters/public-cloud/aks/`,
