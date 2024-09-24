@@ -40,7 +40,7 @@ Started section to learn how they can grow with Palette and have a long-term rel
 > "You know, we might be able to make your dream happen!" says Wren, Founding Engineer. "Palette's edge capabilities
 > could make it possible for us to bring Spacetastic to many devices."
 >
-> "I can't believe my ears!" says Kai laughing. "Wren, our resident Palette sceptic, has well and truly embraced our new
+> "I can't believe my ears!" says Kai laughing. "Wren, our resident Palette skeptic, has well and truly embraced our new
 > platform solution."
 >
 > Wren laughs and quickly responds. "Oh and one more thing! Palette doesn't lock us into a single tech stack or cloud
