@@ -58,12 +58,6 @@ Explore more through the following pages.
       relativeURL: "./introduction",
     },
     {
-      title: "Cluster Profiles",
-      description: "Learn about Palette Cluster Profiles and Packs.",
-      buttonText: "Learn more",
-      relativeURL: "./cluster-profiles",
-    },
-    {
       title: "Deploy a Cluster to Amazon Web Services (AWS)",
       description: "Deploy and update a Palette host cluster to AWS.",
       buttonText: "Learn more",
