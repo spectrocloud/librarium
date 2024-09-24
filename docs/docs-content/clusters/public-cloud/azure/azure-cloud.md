@@ -22,26 +22,7 @@ Palette. You can use any of the following authentication methods to register you
 
 ## Add Azure Cloud Account
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
-
-2. From the left **Main Menu**, select **Tenant Settings**.
-
-3. Next, select **Cloud Accounts** in the **Tenant Settings Menu**.
-
-4. Locate **Azure**, and click **+ Add Azure Account**.
-
-5. Fill out the following information, and click **Confirm** to complete the registration.
-
-| **Basic Information**             | **Description**                                                                                                                                                                                                                                                                                        |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Account Name**                  | A custom account name.                                                                                                                                                                                                                                                                                 |
-| **Tenant ID**                     | Unique tenant ID from Azure Management Portal.                                                                                                                                                                                                                                                         |
-| **Client ID**                     | Unique client ID from Azure Management Portal.                                                                                                                                                                                                                                                         |
-| **Client Secret**                 | Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).                                              |
-| **Cloud**                         | Select **Azure Public Cloud** or **Azure US Government**.                                                                                                                                                                                                                                              |
-| **Tenant Name**                   | An optional tenant name.                                                                                                                                                                                                                                                                               |
-| **Disable Properties**            | This option prevents Palette and VerteX from creating Azure Virtual Networks (VNets) and other network resources on your behalf for static placement deployments. If you enable this option, all users must manually specify a pre-existing VNet, subnets, and security groups when creating clusters. |
-| **Connect Private Cloud Gateway** | If you will be launching Managed Kubernetes Service (AKS), use the **drop-down Menu** to select a [self-hosted PCG](gateways.md) that you created to link to the cloud account.                                                                                                                        |
+<PartialsComponent category="palette-setup" name="azure-cloud-account" />
 
 ## Validate
 
