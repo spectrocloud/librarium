@@ -4,7 +4,7 @@ title: "App Mode and Cluster Mode"
 description: "Learn about the two modes available in Palette and how they benefit your Kubernetes experience."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 0
+sidebar_position: 20
 tags: ["app mode", "cluster mode"]
 ---
 
