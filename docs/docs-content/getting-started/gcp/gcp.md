@@ -9,7 +9,13 @@ tags: ["getting-started", "gcp"]
 ---
 
 Palette supports integration with [Google Cloud Platform](https://cloud.google.com/). You can deploy and manage
-[Host Clusters](../../glossary-all.md#host-cluster) in GCP.
+[Host Clusters](../../glossary-all.md#host-cluster) in GCP. The concepts you learn about in the Getting Started section
+are centered around a fictional case study company. This approach gives you a solution focused approach, while
+introducing you with Palette workflows and capabilities.
+
+## 🧑‍🚀 Welcome to Spacetastic!
+
+<PartialsComponent category="getting-started" name="spacetastic-landing-intro" />
 
 ## Get Started
 
