@@ -57,7 +57,7 @@ For this tutorial, use the following packs:
 | ubuntu-gcp LTS | 22.4.x  | Operating System |
 | Kubernetes     | 1.28.x  | Kubernetes       |
 | cni-calico     | 3.27.x  | Network          |
-| csi-gcp-driver | 1.12.x   | Storage          |
+| csi-gcp-driver | 1.12.x  | Storage          |
 
 As you fill out the information for each layer, click on **Next** to proceed to the next layer.
 
