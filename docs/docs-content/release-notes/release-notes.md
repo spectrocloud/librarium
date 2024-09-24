@@ -19,7 +19,9 @@ tags: ["release-notes"]
   over WebSocket. Palette agents will automatically fall back to a WebSocket connection if the gRPC connection cannot be
   established with the management plane using the default HTTP/2 protocol. This change improves the reliability of the
   communication channel between the agent and the management plane. Environments with network proxies that reject HTTP/2
-  connections can now connect as the connection is transcoded to the HTTP/1.1 protocol.
+  connections can now connect as the connection is transcoded to the HTTP/1.1 protocol. Refer to the
+  [gRPC and WebSocket](../architecture/grps-proxy.md#grpc-and-websocket) section of the Architecture documentation to
+  learn more.
 
 - Local UI now supports selecting network interfaces by name.
 
@@ -27,7 +29,7 @@ tags: ["release-notes"]
 
 - The heartbeat mechanism for Palette deployed clusters has been improved for better performance and reliability.
 
-#### Bug Fixes
+### Bug Fixes
 
 - Fixed an issue where imported cluster profiles defaulted to incorrect registry type.
 
