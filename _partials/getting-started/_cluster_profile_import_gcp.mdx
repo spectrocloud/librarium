@@ -1,0 +1,109 @@
+---
+partial_category: getting-started
+partial_name: import-hello-uni-gcp
+---
+
+```json
+{
+  "metadata": {
+    "name": "gcp-profile",
+    "description": "Cluster profile to deploy to GCP.",
+    "labels": {}
+  },
+  "spec": {
+    "version": "1.0.0",
+    "template": {
+      "type": "cluster",
+      "cloudType": "gcp",
+      "packs": [
+        {
+          "name": "ubuntu-gcp",
+          "type": "spectro",
+          "layer": "os",
+          "version": "22.04",
+          "tag": "22.04",
+          "values": "# Spectro Golden images includes most of the hardening as per CIS Ubuntu Linux 22.04 LTS Server L1 v1.0.0 standards\n\n# Uncomment below section to\n# 1. Include custom files to be copied over to the nodes and/or\n# 2. Execute list of commands before or after kubeadm init/join is executed\n#\n#kubeadmconfig:\n#  preKubeadmCommands:\n#  - echo \"Executing pre kube admin config commands\"\n#  - update-ca-certificates\n#  - 'systemctl restart containerd; sleep 3'\n#  - 'while [ ! -S /var/run/containerd/containerd.sock ]; do echo \"Waiting for containerd...\"; sleep 1; done'\n#  postKubeadmCommands:\n#  - echo \"Executing post kube admin config commands\"\n#  files:\n#  - targetPath: /usr/local/share/ca-certificates/mycom.crt\n#    targetOwner: \"root:root\"\n#    targetPermissions: \"0644\"\n#    content: |\n#      -----BEGIN CERTIFICATE-----\n#      MIICyzCCAbOgAwIBAgIBADANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwprdWJl\n#      cm5ldGVzMB4XDTIwMDkyMjIzNDMyM1oXDTMwMDkyMDIzNDgyM1owFTETMBEGA1UE\n#      AxMKa3ViZXJuZXRlczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMdA\n#      nZYs1el/6f9PgV/aO9mzy7MvqaZoFnqO7Qi4LZfYzixLYmMUzi+h8/RLPFIoYLiz\n#      qiDn+P8c9I1uxB6UqGrBt7dkXfjrUZPs0JXEOX9U/6GFXL5C+n3AUlAxNCS5jobN\n#      fbLt7DH3WoT6tLcQefTta2K+9S7zJKcIgLmBlPNDijwcQsbenSwDSlSLkGz8v6N2\n#      7SEYNCV542lbYwn42kbcEq2pzzAaCqa5uEPsR9y+uzUiJpv5tDHUdjbFT8tme3vL\n#      9EdCPODkqtMJtCvz0hqd5SxkfeC2L+ypaiHIxbwbWe7GtliROvz9bClIeGY7gFBK\n#      jZqpLdbBVjo0NZBTJFUCAwEAAaMmMCQwDgYDVR0PAQH/BAQDAgKkMBIGA1UdEwEB\n#      /wQIMAYBAf8CAQAwDQYJKoZIhvcNAQELBQADggEBADIKoE0P+aVJGV9LWGLiOhki\n#      HFv/vPPAQ2MPk02rLjWzCaNrXD7aPPgT/1uDMYMHD36u8rYyf4qPtB8S5REWBM/Y\n#      g8uhnpa/tGsaqO8LOFj6zsInKrsXSbE6YMY6+A8qvv5lPWpJfrcCVEo2zOj7WGoJ\n#      ixi4B3fFNI+wih8/+p4xW+n3fvgqVYHJ3zo8aRLXbXwztp00lXurXUyR8EZxyR+6\n#      b+IDLmHPEGsY9KOZ9VLLPcPhx5FR9njFyXvDKmjUMJJgUpRkmsuU1mCFC+OHhj56\n#      IkLaSJf6z/p2a3YjTxvHNCqFMLbJ2FvJwYCRzsoT2wm2oulnUAMWPI10vdVM+Nc=\n#      -----END CERTIFICATE-----",
+          "registry": {
+            "metadata": {
+              "uid": "5eecc89d0b150045ae661cef",
+              "name": "Public Repo",
+              "kind": "pack",
+              "isPrivate": false,
+              "providerType": ""
+            }
+          }
+        },
+        {
+          "name": "kubernetes",
+          "type": "spectro",
+          "layer": "k8s",
+          "version": "1.27.16",
+          "tag": "1.27.x",
+          "values": "# spectrocloud.com/enabled-presets: Kube Controller Manager:loopback-ctrlmgr,Kube Scheduler:loopback-scheduler\npack:\n  content:\n    images:\n      - image: registry.k8s.io/coredns/coredns:v1.10.1\n      - image: registry.k8s.io/etcd:3.5.12-0\n      - image: registry.k8s.io/kube-apiserver:v1.27.15\n      - image: registry.k8s.io/kube-controller-manager:v1.27.15\n      - image: registry.k8s.io/kube-proxy:v1.27.15\n      - image: registry.k8s.io/kube-scheduler:v1.27.15\n      - image: registry.k8s.io/pause:3.9\n      - image: registry.k8s.io/pause:3.8\n  #CIDR Range for Pods in cluster\n  # Note : This must not overlap with any of the host or service network\n  podCIDR: \"192.168.0.0/16\"\n  #CIDR notation IP range from which to assign service cluster IPs\n  # Note : This must not overlap with any IP ranges assigned to nodes for pods.\n  serviceClusterIpRange: \"10.96.0.0/12\"\n  # serviceDomain: \"cluster.local\"\n\nkubeadmconfig:\n  apiServer:\n    extraArgs:\n      # Note : secure-port flag is used during kubeadm init. Do not change this flag on a running cluster\n      secure-port: \"6443\"\n      anonymous-auth: \"true\"\n      profiling: \"false\"\n      disable-admission-plugins: \"AlwaysAdmit\"\n      default-not-ready-toleration-seconds: \"60\"\n      default-unreachable-toleration-seconds: \"60\"\n      enable-admission-plugins: \"AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurity\"\n      admission-control-config-file: \"/etc/kubernetes/pod-security-standard.yaml\"\n      audit-log-path: /var/log/apiserver/audit.log\n      audit-policy-file: /etc/kubernetes/audit-policy.yaml\n      audit-log-maxage: \"30\"\n      audit-log-maxbackup: \"10\"\n      audit-log-maxsize: \"100\"\n      authorization-mode: RBAC,Node\n      tls-cipher-suites: \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256\"\n    extraVolumes:\n      - name: audit-log\n        hostPath: /var/log/apiserver\n        mountPath: /var/log/apiserver\n        pathType: DirectoryOrCreate\n      - name: audit-policy\n        hostPath: /etc/kubernetes/audit-policy.yaml\n        mountPath: /etc/kubernetes/audit-policy.yaml\n        readOnly: true\n        pathType: File\n      - name: pod-security-standard\n        hostPath: /etc/kubernetes/pod-security-standard.yaml\n        mountPath: /etc/kubernetes/pod-security-standard.yaml\n        readOnly: true\n        pathType: File\n  controllerManager:\n    extraArgs:\n      profiling: \"false\"\n      terminated-pod-gc-threshold: \"25\"\n      use-service-account-credentials: \"true\"\n      feature-gates: \"RotateKubeletServerCertificate=true\"\n  scheduler:\n    extraArgs:\n      profiling: \"false\"\n  kubeletExtraArgs:\n    read-only-port : \"0\"\n    event-qps: \"0\"\n    feature-gates: \"RotateKubeletServerCertificate=true\"\n    protect-kernel-defaults: \"true\"\n    rotate-server-certificates: \"true\"\n    tls-cipher-suites: \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256\"\n  files:\n    - path: hardening/audit-policy.yaml\n      targetPath: /etc/kubernetes/audit-policy.yaml\n      targetOwner: \"root:root\"\n      targetPermissions: \"0600\"\n    - path: hardening/90-kubelet.conf\n      targetPath: /etc/sysctl.d/90-kubelet.conf\n      targetOwner: \"root:root\"\n      targetPermissions: \"0600\"\n    - targetPath: /etc/kubernetes/pod-security-standard.yaml\n      targetOwner: \"root:root\"\n      targetPermissions: \"0600\"\n      content: |\n        apiVersion: apiserver.config.k8s.io/v1\n        kind: AdmissionConfiguration\n        plugins:\n        - name: PodSecurity\n          configuration:\n            apiVersion: pod-security.admission.config.k8s.io/v1\n            kind: PodSecurityConfiguration\n            defaults:\n              enforce: \"baseline\"\n              enforce-version: \"v1.27\"\n              audit: \"baseline\"\n              audit-version: \"v1.27\"\n              warn: \"restricted\"\n              warn-version: \"v1.27\"\n              audit: \"restricted\"\n              audit-version: \"v1.27\"\n            exemptions:\n              # Array of authenticated usernames to exempt.\n              usernames: []\n              # Array of runtime class names to exempt.\n              runtimeClasses: []\n              # Array of namespaces to exempt.\n              namespaces: [kube-system]\n\n  preKubeadmCommands:\n    # For enabling 'protect-kernel-defaults' flag to kubelet, kernel parameters changes are required\n    - 'echo \"====> Applying kernel parameters for Kubelet\"'\n    - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'\n  postKubeadmCommands:\n    - 'chmod 600 /var/lib/kubelet/config.yaml'\n    #- 'echo \"List of post kubeadm commands to be executed\"'\n\n# Client configuration to add OIDC based authentication flags in kubeconfig\n#clientConfig:\n  #oidc-issuer-url: \"{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}\"\n  #oidc-client-id: \"{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}\"\n  #oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv\n  #oidc-extra-scope: profile,email",
+          "registry": {
+            "metadata": {
+              "uid": "5eecc89d0b150045ae661cef",
+              "name": "Public Repo",
+              "kind": "pack",
+              "isPrivate": false,
+              "providerType": ""
+            }
+          }
+        },
+        {
+          "name": "cni-calico",
+          "type": "spectro",
+          "layer": "cni",
+          "version": "3.27.2",
+          "tag": "3.27.x",
+          "values": "# spectrocloud.com/enabled-presets: Microk8s:microk8s-false\npack:\n  content:\n    images:\n      - image: gcr.io/spectro-images-public/packs/calico/3.27.2/cni:v3.27.2\n      - image: gcr.io/spectro-images-public/packs/calico/3.27.2/node:v3.27.2\n      - image: gcr.io/spectro-images-public/packs/calico/3.27.2/kube-controllers:v3.27.2\n\nmanifests:\n  calico:\n    microk8s: \"false\"\n    images:\n      cni: \"\"\n      node: \"\"\n      kubecontroller: \"\"\n    # IPAM type to use. Supported types are calico-ipam, host-local\n    ipamType: \"calico-ipam\"\n\n    calico_ipam:\n      assign_ipv4: true\n      assign_ipv6: false\n\n    # Should be one of CALICO_IPV4POOL_IPIP or CALICO_IPV4POOL_VXLAN  \n    encapsulationType: \"CALICO_IPV4POOL_IPIP\"\n\n    # Should be one of Always, CrossSubnet, Never\n    encapsulationMode: \"Always\"\n\n    env:\n      # Additional env variables for calico-node\n      calicoNode:\n        #IPV6: \"autodetect\"\n        #FELIX_IPV6SUPPORT: \"true\"\n        #CALICO_IPV6POOL_NAT_OUTGOING: \"true\"\n        #CALICO_IPV4POOL_CIDR: \"192.168.0.0/16\"\n        #IP_AUTODETECTION_METHOD: \"first-found\"\n\n      # Additional env variables for calico-kube-controller deployment\n      calicoKubeControllers:\n        #LOG_LEVEL: \"info\"\n        #SYNC_NODE_LABELS: \"true\"",
+          "registry": {
+            "metadata": {
+              "uid": "5eecc89d0b150045ae661cef",
+              "name": "Public Repo",
+              "kind": "pack",
+              "isPrivate": false,
+              "providerType": ""
+            }
+          }
+        },
+        {
+          "name": "csi-gcp-driver",
+          "type": "spectro",
+          "layer": "csi",
+          "version": "1.12.4",
+          "tag": "1.12.x",
+          "values": "pack:\n  content:\n    images:\n      - image: gcr.io/spectro-images-public/packs/csi-gcp-driver/1.12.4/csi-provisioner:v3.6.2\n      - image: gcr.io/spectro-images-public/packs/csi-gcp-driver/1.12.4/csi-attacher:v4.4.2\n      - image: gcr.io/spectro-images-public/packs/csi-gcp-driver/1.12.4/csi-resizer:v1.9.2\n      - image: gcr.io/spectro-images-public/packs/csi-gcp-driver/1.12.4/csi-snapshotter:v6.3.2\n      - image: gcr.io/spectro-images-public/packs/csi-gcp-driver/1.12.4/gcp-compute-persistent-disk-csi-driver:v1.12.4\n      - image: gcr.io/spectro-images-public/packs/csi-gcp-driver/1.12.4/csi-node-driver-registrar:v2.9.2\n    \nmanifests:\n  storageclass:\n    #Flag to denote if this should be the default storage class for dynamic provisioning\n    isDefaultClass: \"true\"\n\n    parameters:\n      #Possible values : pd-standard or pd-ssd\n      type: \"pd-standard\"\n      \n      #Possible values: none or regional-pd\n      replication-type: \"none\"\n          \n    #Supported binding modes are Immediate, WaitForFirstConsumer\n    volumeBindingMode: \"WaitForFirstConsumer\"\n\n    #Set this flag to true to enable volume expansion\n    allowVolumeExpansion: true\n\n    #Allowed reclaim policies are Delete, Retain\n    reclaimPolicy: \"Delete\"\n\n    #allowedTopologies\n    zones:\n      #- us-central1-a\n      #- us-central1-b\n\n    k8sVersion: \"{{ .spectro.system.kubernetes.version }}\"\n\n  controller:\n    args:\n      csiProvisioner:\n        - \"--v=5\"\n        - \"--csi-address=/csi/csi.sock\"\n        - \"--feature-gates=Topology=true\"\n        - \"--http-endpoint=:22011\"\n        - \"--leader-election-namespace=$(PDCSI_NAMESPACE)\"\n        - \"--timeout=250s\"\n        - \"--extra-create-metadata\"\n        #- \"--run-controller-service=false\"  # disable the controller service of the CSI driver\n        #- \"--run-node-service=false\"        # disable the node service of the CSI driver\n        - \"--leader-election\"\n        - \"--default-fstype=ext4\"\n        - \"--controller-publish-readonly=true\"\n              \n      csiAttacher:\n        - \"--v=5\"\n        - \"--csi-address=/csi/csi.sock\"\n        - \"--http-endpoint=:22012\"\n        - \"--leader-election\"\n        - \"--leader-election-namespace=$(PDCSI_NAMESPACE)\"\n        - \"--timeout=250s\"\n\n      csiResizer:\n        - \"--v=5\"\n        - \"--csi-address=/csi/csi.sock\"\n        - \"--http-endpoint=:22013\"\n        - \"--leader-election\"\n        - \"--leader-election-namespace=$(PDCSI_NAMESPACE)\"\n        - \"--handle-volume-inuse-error=false\"\n\n      csiSnapshotter:\n        - \"--v=5\"\n        - \"--csi-address=/csi/csi.sock\"\n        - \"--metrics-address=:22014\"\n        - \"--leader-election\"\n        - \"--leader-election-namespace=$(PDCSI_NAMESPACE)\"\n        - \"--timeout=300s\"\n\n      csiDriver:\n        - \"--v=5\"\n        - \"--endpoint=unix:/csi/csi.sock\"",
+          "registry": {
+            "metadata": {
+              "uid": "5eecc89d0b150045ae661cef",
+              "name": "Public Repo",
+              "kind": "pack",
+              "isPrivate": false,
+              "providerType": ""
+            }
+          }
+        },
+        {
+          "name": "hello-universe",
+          "type": "oci",
+          "layer": "addon",
+          "version": "1.2.0",
+          "tag": "1.2.0",
+          "values": "# spectrocloud.com/enabled-presets: Backend:disable-api\npack:\n  content:\n    images:\n      - image: ghcr.io/spectrocloud/hello-universe:1.2.0\n  spectrocloud.com/install-priority: 0\n\nmanifests:\n  hello-universe:\n    images:\n      hellouniverse: ghcr.io/spectrocloud/hello-universe:1.2.0\n    apiEnabled: false\n    namespace: hello-universe\n    port: 8080\n    replicas: 1",
+          "registry": {
+            "metadata": {
+              "uid": "64eaff5630402973c4e1856a",
+              "name": "Palette Community Registry",
+              "kind": "oci",
+              "isPrivate": true,
+              "providerType": "pack"
+            }
+          }
+        }
+      ]
+    },
+    "variables": []
+  }
+}
+```
