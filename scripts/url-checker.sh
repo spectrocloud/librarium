@@ -28,11 +28,11 @@ echo "Pull request number: $PR_NUMBER"
 
 # Read JSON file contents into a variable
 JSON_CONTENT=$(cat link_report.json)
-JSON_SEC_BUL_CONTENT=$(cat link_sec_bul_report.json)
+JSON_RATE_LIMIT_CONTENT=$(cat link_rate_limit_report.json)
 
 
 # Check if JSON file is empty
-if [[ -z "$JSON_CONTENT" ]] && [[ -z "$JSON_SEC_BUL_CONTENT" ]]; then
+if [[ -z "$JSON_CONTENT" ]] && [[ -z "$JSON_RATE_LIMIT_CONTENT" ]]; then
   echo "No broken links found"
   exit 0
 fi
@@ -58,7 +58,7 @@ for link in $(echo "${JSON_CONTENT}" | jq -c '.[]'); do
     COMMENT="${COMMENT}\n\n:link: Broken URL: ${url}  \n:red_circle: State: ${state}  \n:arrow_up: Parent Page: ${parent}\n\n"
 done
 
-for link in $(echo "${JSON_SEC_BUL_CONTENT}" | jq -c '.[]'); do
+for link in $(echo "${JSON_RATE_LIMIT_CONTENT}" | jq -c '.[]'); do
     url=$(echo "${link}" | jq -r '.url')
     status=$(echo "${link}" | jq -r '.status')
     state=$(echo "${link}" | jq -r '.state')
