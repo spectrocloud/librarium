@@ -37,12 +37,7 @@ Behind the scenes, when the Palette agent fails to connect with the management p
 attempts, the agent initiates the failover to a WebSocket connection and transcodes the gRPC messages with the HTTP/1.1
 protocol.
 
-The Palette agent direct gRPC messages to a freshly started in-memory proxy service that take the original gRPC request
-and transcode it to HTTP/1.1 protocol and send it over the WebSocket connection to the management plane. The management
-plane's websocket handler will then accept the WebSocket message and transcode the message back the HTTP/2 protocol and
-forward it to the gRPC handler. The server will then respond with a gRPC message that will be transcoded to HTTP/1.1 and
-sent back to the agent over the WebSocket. The agent's in-memory proxy will then read the message and transcode it back
-to HTTP/2 and pass it to the agent.
+The Palette agent directs gRPC messages to a freshly started in-memory proxy service, which takes the original gRPC request, transcodes it to HTTP/1.1 protocol, and sends it over the WebSocket connection to the management plane. The management plane's WebSocket handler will then accept the WebSocket message and transcode it back to the HTTP/2 protocol before forwarding it to the gRPC handler. The server will then respond with a gRPC message, which will be transcoded to HTTP/1.1 and sent back to the agent over the WebSocket. The agent's in-memory proxy will read the message and transcode it back to HTTP/2 and pass it to the agent.
 
 ![An architecture diagram of the gRPC over WebSocket flow from a network perspective. Agent to agent proxy, to WebSocket handler, who then forwards the message to the server gRPC handler.](/architecture_grps-proxy_grpc-websocket.webp)
 
@@ -70,8 +65,7 @@ protocol. Once the gRPC message is internal to the agent or the server, the HTTP
 :::info
 
 The following sections provide information about using gRPC with network proxies. These issues are addressed by using
-WebSocket and the HTTP/1.1 protocol as a fallback mechanism. However, if you want to better understand the decision to,
-fall back to a WebSocket connection. In that case, the following sections provide more information about challenges with
+WebSocket and the HTTP/1.1 protocol as a fallback mechanism. However, if you want to better understand the reasons for falling back to a WebSocket connection, the following sections provide more information about challenges with
 gRPC and network proxies. If you want to learn more about gRPC and transcoding, check out the Red Hat article
 [gRPC Anywhere](https://www.redhat.com/en/blog/grpc-anywhere).
 
