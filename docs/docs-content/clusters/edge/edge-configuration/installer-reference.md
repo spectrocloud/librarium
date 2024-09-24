@@ -86,6 +86,11 @@ stylus:
 You can point the Edge Installer to a non-default registry to load content from another source. Use the
 `registryCredentials` parameter object to specify the registry configurations.
 
+If you are using an external registry and want to use content bundles when deploying your Edge cluster, you must also
+enable the local Harbor registry. For more information, refer to
+[Build Content Bundles](../edgeforge-workflow/build-content-bundle.md) and
+[Enable Local Harbor Registry](../networking/local-registry.md).
+
 | Parameter         | Description                                                                                                                                                                                                                                                                                                                       |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `domain`          | The domain of the registry. You can use an IP address plus the port or a domain name.                                                                                                                                                                                                                                             |
