@@ -167,7 +167,7 @@ visualization tools. Read more about
 [Navigating the Kubecost UI](https://docs.kubecost.com/using-kubecost/navigating-the-kubecost-ui) to make the most of
 the cost analyzer.
 
-![Image that shows the Kubecost UI](/getting-started/getting-started_update-k8s-cluster_kubecost-ui.webp)
+![Image that shows the Kubecost UI](/getting-started/gcp/getting-started_deploy-manage-k8s-cluster_kubecost.webp)
 
 Once you are done exploring locally, you can stop the `kubectl port-forward` command by closing the terminal window it
 is executing from.
@@ -221,7 +221,7 @@ corresponding to your _hello-universe-frontend_ cluster, named `gcp-profile`.
 
 Click on it to view its details. Select **1.0.0** in the version dropdown.
 
-Select the **hello-universe** pack. The editor appears. Change the `replicas` field to `3` on line `14`. Click on
+Select the **hello-universe** pack. The editor appears. Change the `replicas` field to `3` on line `15`. Click on
 **Confirm Updates**. The editor closes.
 
 Click on **Save Changes** to confirm the changes you have made to your profile.

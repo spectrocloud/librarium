@@ -37,8 +37,6 @@ Log in to [Palette](https://console.spectrocloud.com) and navigate to the left *
 view the cluster profile page. You can view the list of available cluster profiles. To create a cluster profile, click
 on **Add Cluster Profile**.
 
-![View of the cluster Profiles page](/getting-started/getting-started_create-cluster-profile_profile_list_view.webp)
-
 Follow the wizard to create a new profile.
 
 In the **Basic Information** section, assign the name **gcp-profile**, provide a profile description, select the type as
@@ -57,9 +55,9 @@ For this tutorial, use the following packs:
 | Pack Name      | Version | Layer            |
 | -------------- | ------- | ---------------- |
 | ubuntu-gcp LTS | 22.4.x  | Operating System |
-| Kubernetes     | 1.27.x  | Kubernetes       |
-| cni-calico     | 3.26.x  | Network          |
-| csi-gcp-driver | 1.8.x   | Storage          |
+| Kubernetes     | 1.28.x  | Kubernetes       |
+| cni-calico     | 3.27.x  | Network          |
+| csi-gcp-driver | 1.12.x   | Storage          |
 
 As you fill out the information for each layer, click on **Next** to proceed to the next layer.
 
@@ -77,7 +75,7 @@ Navigate to the left **Main Menu** and select **Profiles**. Select the cluster p
 Click on **Add New Pack** at the top of the page.
 
 Select the **Palette Community Registry** from the **Registry** dropdown. Then, click on the latest **Hello Universe**
-pack with version **v1.1.2**.
+pack with version **v1.2.0**.
 
 ![Screenshot of hello universe pack](/getting-started/gcp/getting-started_create-cluster-profile_add-pack.webp)
 
