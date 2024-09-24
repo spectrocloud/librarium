@@ -218,7 +218,7 @@ The table below displays the packs deployed in each version of the cluster profi
 | **Pack Type** | **Pack Name**      | **Version** | **Cluster Profile v1.0.0** | **Cluster Profile v1.1.0** |
 | ------------- | ------------------ | ----------- | -------------------------- | -------------------------- |
 | OS            | `ubuntu-azure`     | `22.04`     | :white_check_mark:         | :white_check_mark:         |
-| Kubernetes    | `kubernetes`       | `1.27.5`    | :white_check_mark:         | :white_check_mark:         |
+| Kubernetes    | `kubernetes`       | `1.30.4`    | :white_check_mark:         | :white_check_mark:         |
 | Network       | `cni-calico-azure` | `3.26.1`    | :white_check_mark:         | :white_check_mark:         |
 | Storage       | `csi-azure`        | `1.28.3`    | :white_check_mark:         | :white_check_mark:         |
 | App Services  | `hellouniverse`    | `1.1.2`     | :white_check_mark:         | :white_check_mark:         |
@@ -298,12 +298,12 @@ Terraform. The Spectro Cloud Terraform provider exposes several data resources t
 dynamic. The data resource used in the cluster profile is `spectrocloud_pack`. This resource enables you to query
 Palette for information about a specific pack, such as its unique ID, registry ID, available versions, and YAML values.
 
-Below is the data resource used to query Palette for information about the Kubernetes pack for version `1.27.5`.
+Below is the data resource used to query Palette for information about the Kubernetes pack for version `1.30.4`.
 
 ```hcl
 data "spectrocloud_pack" "azure_k8s" {
   name         = "kubernetes"
-  version      = "1.27.5"
+  version      = "1.30.4"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
@@ -543,8 +543,8 @@ moments before clicking on the service URL to prevent the browser from caching a
 
 ![Deployed application](/getting-started/azure/getting-started_deploy-manage-k8s-cluster_hello-universe-w-api.webp)
 
-Welcome to Hello Universe, a demo application developed to help you learn more about Palette and its features. Feel free
-to click on the logo to increase the counter and for a fun image change.
+Welcome to Spacetastic's astronomy education platform. Feel free to explore the pages and learn more about space. The
+statistics page offers information on visitor counts on your deployed service.
 
 ## Version Cluster Profiles
 
