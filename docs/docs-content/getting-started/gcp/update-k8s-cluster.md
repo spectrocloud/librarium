@@ -143,8 +143,8 @@ will be successfully deployed.
 
 ![Image that shows completed cluster profile updates](/getting-started/gcp/getting-started_update-k8s-cluster_completed-cluster-updates.webp)
 
-Download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file for your cluster from the Palette UI.
-This file enables you and other users to issue kubectl commands against the host cluster.
+Download the kubeconfig file for your cluster from the Palette UI. This file enables you and other users to issue
+kubectl commands against the host cluster.
 
 ![Image that the kubeconfig file](/getting-started/gcp/getting-started_update-k8s-cluster_download-kubeconfig.webp)
 

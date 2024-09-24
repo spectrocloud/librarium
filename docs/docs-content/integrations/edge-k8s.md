@@ -1056,6 +1056,7 @@ a role. To learn more, review <VersionedLink text="Use RBAC with OIDC" url="/int
 
 - **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
   specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
+
   <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=edge-k8s#configure-custom-oidc" />. This
   setting displays in the YAML file as `none`.
 

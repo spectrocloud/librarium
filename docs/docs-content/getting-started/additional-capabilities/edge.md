@@ -28,9 +28,7 @@ topology your deployments face.
 ## Resources
 
 To learn more about Palette Edge, review the [Edge](../../clusters/edge/edge.md) section to learn more about Edge and
-its features. Then, follow the [Deploy an Edge Cluster on VMware](../../tutorials/edge/deploy-cluster.md) tutorial to
-learn how to build Edge artifacts, prepare VMware VMs as Edge hosts using the Edge installer ISO, create a cluster
-profile referencing a provider image, and deploy a cluster.
+its features.
 
 Check out the following video for a quick overview of how you can provision and manage thousands of edge Kubernetes
 clusters with Palette.

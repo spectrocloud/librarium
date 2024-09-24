@@ -23,10 +23,9 @@ in self-hosted, airgapped, and in our SaaS environments. Learn more on the
 
 ## Resources
 
-To learn more about Palette VMO, review the [Get Started With VM Orchestrator](../../vm-management/vm-management.md#get-started-with-vm-orchestrator) page to learn about the
-components involved in enabling VMO for your infrastructure. Then, review the
-[Create a VMO Profile](../../vm-management/create-vmo-profile.md) guide to prepare everything you need to deploy your
-first cluster with VMO.
+To learn more about Palette VMO, review the
+[Get Started With VM Orchestrator](../../vm-management/vm-management.md#get-started-with-vm-orchestrator) page to learn
+about the components involved in enabling VMO for your infrastructure.
 
 Check out the following video for a tour of Palette's Virtual Machine Orchestrator (VMO) capability. It shows how you
 can model, deploy, and manage VM workloads alongside containers in your clusters.

@@ -20,8 +20,7 @@ section are centered around a fictional case study company, Spacetastic Ltd.
 
 - A Palette account with [tenant admin](../../tenant-settings/tenant-settings.md) access.
 
-- A [VMware vSphere](https://docs.vmware.com/en/VMware-vSphere/index.html) user account with the
-  required permissions.
+- A [VMware vSphere](https://docs.vmware.com/en/VMware-vSphere/index.html) user account with the required permissions.
 
 ## Enablement
 
