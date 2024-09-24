@@ -100,7 +100,7 @@ Click on **Confirm & Create** to save the pack.
 Click on **Add New Pack** at the top of the page.
 
 Select the **Palette Community Registry** from the **Registry** dropdown. Then, click on the latest **Hello Universe**
-pack with version **v1.1.2**.
+pack with version **v1.2.0**.
 
 ![Screenshot of hello universe pack](/getting-started/vmware/getting-started_create-cluster-profile_add-pack.webp)
 
