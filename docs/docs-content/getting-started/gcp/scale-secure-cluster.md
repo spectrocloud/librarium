@@ -122,7 +122,7 @@ displays. The Palette UI confirms that the cluster profile was created in the sc
 Select the cluster profile to view its details. The cluster profile summary appears.
 
 This cluster profile deploys the [Hello Universe](https://github.com/spectrocloud/hello-universe) application using a
-pack. Click on the **hellouniverse 1.1.3** layer. The pack manifest editor appears.
+pack. Click on the **hellouniverse 1.2.0** layer. The pack manifest editor appears.
 
 Click on **Presets** on the right-hand side. You can learn more about the pack presets on the pack README, which is
 available in the Palette UI. Select the **Enable Hello Universe API** preset. The pack manifest changes accordingly.
@@ -339,8 +339,8 @@ worker node, which is the node that does not have the `control-plane` role. In t
 
 ```shell
 NAME                                            STATUS   ROLES           AGE   VERSION
-gcp-cluster-cp-67943-pnh7m                      Ready    control-plane   30m   v1.28.11
-gcp-cluster-worker-pool-us-east1-b-17dc-6mqrv   Ready    <none>          22m   v1.28.11
+gcp-cluster-cp-67943-pnh7m                      Ready    control-plane   30m   v1.28.13
+gcp-cluster-worker-pool-us-east1-b-17dc-6mqrv   Ready    <none>          22m   v1.28.13
 ```
 
 The Hello Universe pack deploys three pods in the `hello-universe` namespace. Execute the following command to verify
@@ -388,9 +388,9 @@ worker nodes. In the example below, `gcp-cluster-worker-pool-us-east1-b-17dc-6mq
 
 ```shell
 NAME                                              STATUS   ROLES           AGE    VERSION
-gcp-cluster-cp-67943-pnh7m                        Ready    control-plane   36m    v1.28.11
-gcp-cluster-worker-pool-2-us-east1-b-2612-4bcck   Ready    <none>          3m5s   v1.28.11
-gcp-cluster-worker-pool-us-east1-b-17dc-6mqrv     Ready    <none>          29m    v1.28.11
+gcp-cluster-cp-67943-pnh7m                        Ready    control-plane   36m    v1.28.13
+gcp-cluster-worker-pool-2-us-east1-b-2612-4bcck   Ready    <none>          3m5s   v1.28.13
+gcp-cluster-worker-pool-us-east1-b-17dc-6mqrv     Ready    <none>          29m    v1.28.13
 ```
 
 It is common to dedicate node pools to a particular type of workload. One way to specify this is through the use of
@@ -408,7 +408,7 @@ workloads execute on which nodes.
 Switch back to Palette in your web browser. Navigate to the left **Main Menu** and select **Profiles**. Select the
 cluster profile deployed to your cluster, named `gcp-profile`. Ensure that the **1.1.0** version is selected.
 
-Click on the **hellouniverse 1.1.3** layer. The manifest editor appears. Set the
+Click on the **hellouniverse 1.2.0** layer. The manifest editor appears. Set the
 `manifests.hello-universe.ui.useTolerations` field on line 20 to `true`. Then, set the
 `manifests.hello-universe.ui.effect` field on line 22 to `NoExecute`. This toleration describes that the UI pods of
 Hello Universe will tolerate the taint with the key `app`, value `ui` and effect `NoExecute`. The tolerations of the UI

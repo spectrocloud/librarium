@@ -122,7 +122,7 @@ displays. The Palette UI confirms that the cluster profile was created in the sc
 Select the cluster profile to view its details. The cluster profile summary appears.
 
 This cluster profile deploys the [Hello Universe](https://github.com/spectrocloud/hello-universe) application using a
-pack. Click on the **hellouniverse 1.1.3** layer. The pack manifest editor appears.
+pack. Click on the **hellouniverse 1.2.0** layer. The pack manifest editor appears.
 
 Click on **Presets** on the right-hand side. You can learn more about the pack presets on the pack README, which is
 available in the Palette UI. Select the **Enable Hello Universe API** preset. The pack manifest changes accordingly.
@@ -191,10 +191,10 @@ Click on the version drop-down and select **Create new version**. The version cr
 Fill in **1.1.0** in the **Version** input field. Then, click on **Confirm**. The new cluster profile version is created
 with the same layers as version **1.0.0**.
 
-Select the **kubernetes 1.27.x** layer of the profile. The pack manifest editor appears.
+Select the **kubernetes 1.29.x** layer of the profile. The pack manifest editor appears.
 
 Click on the **Pack Version** dropdown. All of the available versions of the **Palette eXtended Kubernetes** pack
-appear. The cluster profile is configured to use the latest patch version of **Kubernetes 1.27**.
+appear. The cluster profile is configured to use the latest patch version of **Kubernetes 1.29**.
 
 ![Cluster profile with all Kubernetes versions](/getting-started/aws/getting-started_scale-secure-cluster_kubernetes-versions.webp)
 
@@ -203,8 +203,8 @@ using Kubernetes version 1.26, you should upgrade to 1.27, before upgrading to v
 the official Kubernetes upgrade guidelines in the
 [Version Skew Policy](https://kubernetes.io/releases/version-skew-policy/) page.
 
-Select **1.28.x** from the version dropdown. This selection follows the Kubernetes upgrade guidelines as the cluster
-profile is using **1.27.x**.
+Select **1.30.x** from the version dropdown. This selection follows the Kubernetes upgrade guidelines as the cluster
+profile is using **1.29.x**.
 
 The manifest editor highlights the changes made by this upgrade. Once you have verified that the upgrade changes
 versions as expected, click on **Confirm changes**.
@@ -237,7 +237,7 @@ application, as Kubernetes swaps the workloads to the upgraded nodes.
 ### Verify the Application
 
 The cluster update completes when the Palette UI marks the cluster profile layers as green and the cluster is in a
-**Healthy** state. The cluster **Overview** page also displays the Kubernetes version as **1.28**. Click on the URL for
+**Healthy** state. The cluster **Overview** page also displays the Kubernetes version as **1.30**. Click on the URL for
 port **:8080** to access the application and verify that your upgraded cluster is functional.
 
 ![Kubernetes upgrade applied](/getting-started/aws/getting-started_scale-secure-cluster_kubernetes-upgrade-applied.webp)
@@ -339,8 +339,8 @@ worker node, which is the node that does not have the `control-plane` role. In t
 
 ```shell
 NAME                         STATUS   ROLES           AGE   VERSION
-ip-10-0-1-133.ec2.internal   Ready    <none>          46m   v1.28.11
-ip-10-0-1-95.ec2.internal    Ready    control-plane   51m   v1.28.11
+ip-10-0-1-133.ec2.internal   Ready    <none>          46m   v1.30.4
+ip-10-0-1-95.ec2.internal    Ready    control-plane   51m   v1.30.4
 ```
 
 The Hello Universe pack deploys three pods in the `hello-universe` namespace. Execute the following command to verify
@@ -387,9 +387,9 @@ worker nodes. In the example below, `ip-10-0-1-133.ec2.internal` and `ip-10-0-1-
 
 ```shell
 NAME                         STATUS   ROLES           AGE   VERSION
-ip-10-0-1-32.ec2.internal    Ready    <none>          16m   v1.28.11
-ip-10-0-1-133.ec2.internal   Ready    <none>          46m   v1.28.11
-ip-10-0-1-95.ec2.internal    Ready    control-plane   51m   v1.28.11
+ip-10-0-1-32.ec2.internal    Ready    <none>          16m   v1.30.4
+ip-10-0-1-133.ec2.internal   Ready    <none>          46m   v1.30.4
+ip-10-0-1-95.ec2.internal    Ready    control-plane   51m   v1.30.4
 ```
 
 It is common to dedicate node pools to a particular type of workload. One way to specify this is through the use of
@@ -407,7 +407,7 @@ workloads execute on which nodes.
 Switch back to Palette in your web browser. Navigate to the left **Main Menu** and select **Profiles**. Select the
 cluster profile deployed to your cluster, named `aws-profile`. Ensure that the **1.1.0** version is selected.
 
-Click on the **hellouniverse 1.1.3** layer. The manifest editor appears. Set the
+Click on the **hellouniverse 1.2.0** layer. The manifest editor appears. Set the
 `manifests.hello-universe.ui.useTolerations` field on line 20 to `true`. Then, set the
 `manifests.hello-universe.ui.effect` field on line 22 to `NoExecute`. This toleration describes that the UI pods of
 Hello Universe will tolerate the taint with the key `app`, value `ui` and effect `NoExecute`. The tolerations of the UI
