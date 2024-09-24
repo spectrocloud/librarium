@@ -226,7 +226,7 @@ The table below displays the packs deployed in each version of the cluster profi
 | Kubernetes    | `kubernetes`       | `1.30.4`    | :white_check_mark:         | :white_check_mark:         |
 | Network       | `cni-calico-azure` | `3.26.1`    | :white_check_mark:         | :white_check_mark:         |
 | Storage       | `csi-azure`        | `1.28.3`    | :white_check_mark:         | :white_check_mark:         |
-| App Services  | `hellouniverse`    | `1.1.2`     | :white_check_mark:         | :white_check_mark:         |
+| App Services  | `hellouniverse`    | `1.2.0`     | :white_check_mark:         | :white_check_mark:         |
 | App Services  | `cost-analyzer`    | `1.103.3`   | :x:                        | :white_check_mark:         |
 
 The Hello Universe pack has two configured [presets](../../glossary-all.md#presets). The first preset deploys a
