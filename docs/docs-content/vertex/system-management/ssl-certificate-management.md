@@ -12,8 +12,8 @@ keywords: ["self-hosted", "vertex"]
 Palette VerteX uses Secure Sockets Layer (SSL) certificates to secure internal and external communication with Hypertext
 Transfer Protocol Secure (HTTPS). External VerteX endpoints, such as the
 [system console](../system-management/system-management.md#system-console),
-[VerteX dashboard](../../getting-started/dashboard.md), the VerteX API, and the gRPC endpoint, are enabled by default
-with HTTPS using an auto-generated self-signed certificate.
+[VerteX dashboard](../../introduction/dashboard.md), the VerteX API, and the gRPC endpoint, are enabled by default with
+HTTPS using an auto-generated self-signed certificate.
 
 ## Update System Address and Certificates
 
