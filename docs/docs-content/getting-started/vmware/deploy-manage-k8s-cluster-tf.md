@@ -56,7 +56,7 @@ docker ps
 Next, download the tutorial image, start the container, and open a bash session into it.
 
 ```shell
-docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.8 bash
+docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.9 bash
 ```
 
 Navigate to the folder that contains the tutorial code.
@@ -92,7 +92,7 @@ podman info
 Next, download the tutorial image, start the container, and open a bash session into it.
 
 ```shell
-podman run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.8 bash
+podman run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.9 bash
 ```
 
 Navigate to the folder that contains the tutorial code.
@@ -126,7 +126,7 @@ cd tutorials/
 Check out the following git tag.
 
 ```shell
-git checkout v1.1.8
+git checkout v1.1.9
 ```
 
 Navigate to the folder that contains the tutorial code.
@@ -229,8 +229,8 @@ the cluster profile.
 | Kubernetes    | `kubernetes`      | `1.28.3`    | :white_check_mark:         | :white_check_mark:         |
 | Network       | `cni-calico`      | `3.26.3`    | :white_check_mark:         | :white_check_mark:         |
 | Storage       | `csi-vsphere-csi` | `3.0.2`     | :white_check_mark:         | :white_check_mark:         |
-| Load Balancer | `lb-metallb-helm` | `0.13.11`   | :white_check_mark:         | :white_check_mark:         |
-| App Services  | `hellouniverse`   | `1.1.2`     | :white_check_mark:         | :white_check_mark:         |
+| Load Balancer | `lb-metallb-helm` | `0.14.8`    | :white_check_mark:         | :white_check_mark:         |
+| App Services  | `hellouniverse`   | `1.2.0`     | :white_check_mark:         | :white_check_mark:         |
 | App Services  | `cost-analyzer`   | `1.103.3`   | :x:                        | :white_check_mark:         |
 
 The Hello Universe pack has two configured [presets](../../glossary-all.md#presets). The first preset deploys a
@@ -592,8 +592,8 @@ moments before clicking on the service URL to prevent the browser from caching a
 
 ![Deployed application](/getting-started/vmware/getting-started_deploy-manage-k8s-cluster_hello-universe-w-api.webp)
 
-Welcome to Hello Universe, a demo application developed to help you learn more about Palette and its features. Feel free
-to click on the logo to increase the counter and for a fun image change.
+Welcome to Spacetastic's astronomy education platform. Feel free to explore the pages and learn more about space. The
+statistics page offers information on visitor counts on your deployed service.
 
 ## Version Cluster Profiles
 
@@ -775,7 +775,7 @@ the following command to stop and remove the container.
 
 ```shell
 docker stop tutorialContainer && \
-docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.8
+docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.9
 ```
 
 </TabItem>
@@ -784,7 +784,7 @@ docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.8
 
 ```shell
 podman stop tutorialContainer && \
-podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.8
+podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.9
 ```
 
 </TabItem>
