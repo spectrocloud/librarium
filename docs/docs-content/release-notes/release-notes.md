@@ -11,6 +11,50 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## Sept 25, 2024 - Release 4.4.20
+
+### Improvements
+
+- Palette's message communication channel between clusters and the management plane has been updated to support gRPC
+  over WebSocket. Palette agents will automatically fall back to a WebSocket connection if the gRPC connection cannot be
+  established with the management plane using the default HTTP/2 protocol. This change improves the reliability of the
+  communication channel between the agent and the management plane. Environments with network proxies that reject HTTP/2
+  connections can now connect as the connection is transcoded to the HTTP/1.1 protocol. Refer to the
+  [gRPC and WebSocket](../architecture/grps-proxy.md#grpc-and-websocket) section of the Architecture documentation to
+  learn more.
+
+- Local UI now supports selecting network interfaces by name.
+
+- Local UI has improved validation when assigning static IP addresses to network interfaces.
+
+- The heartbeat mechanism for Palette deployed clusters has been improved for better performance and reliability.
+
+### Bug Fixes
+
+- Fixed an issue where imported cluster profiles defaulted to incorrect registry type.
+
+- Fixed an issue where Palette TUI was not displaying network interfaces that had no IP addresses assigned.
+
+- Resolved an issue where the Local UI took a long time to load after application deployment.
+
+- Fixed an issue where the Edge CLI could not download Helm charts from private registries.
+
+- Fix an issue with the Edge CLI that was silently failing when unable to create the build artifact. The Edge CLI now
+  provides a clear error message when the build artifact creation fails.
+
+- Fixed a Palette UI message incorrectly stating to check the new issue date for SSL certificate renewal. The message
+  now correctly states to check the new expiration date.
+
+- Resolved an issue where the Palette UI was erroring out when reviewing pack layers during a PCG upgrade.
+
+- Resolved an issue where the Local UI username and password field validation was not working as expected.
+
+- Fixed an issue with updating the node port for the Edge Harbor pack. The node port is now correctly updated when
+  changing the value in the Harbor pack.
+
+- Resolved an issue where kubeadm based Kubernetes distributions were unable to initialize on clusters with multiple
+  Network Interface Cards (NIC).
+
 ## Sept 18, 2024 - Release 4.4.19
 
 #### Bug Fixes
