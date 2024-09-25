@@ -125,7 +125,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
     <Tabs>
 
-    <TabItem value="calico" label="Calico">
+  <TabItem value="calico" label="Calico">
 
     In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD`
     and set its value to `kubernetes-internal-ip`. This tells Calico to use the address assigned to the Kubernetes node.
