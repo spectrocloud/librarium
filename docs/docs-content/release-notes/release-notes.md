@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-<!-- ## Sept 25, 2024 - Release 4.4.20
+## Sept 25, 2024 - Release 4.4.20
 
 ### Improvements
 
@@ -53,7 +53,7 @@ tags: ["release-notes"]
   changing the value in the Harbor pack.
 
 - Resolved an issue where kubeadm based Kubernetes distributions were unable to initialize on clusters with multiple
-  Network Interface Cards (NIC). -->
+  Network Interface Cards (NIC).
 
 ## Sept 18, 2024 - Release 4.4.19
 
