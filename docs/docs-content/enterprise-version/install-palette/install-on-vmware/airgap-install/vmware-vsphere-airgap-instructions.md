@@ -265,7 +265,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     - **server.crt**
     - **server.key**
 
-20. Start the airgap initialization process by issuing the following command. The script requires the hostname or IP
+20. Start the airgap initialization process by issuing the following command. The script requires a fully qualified hostname or IP
     address of the airgap support VM. Choose the preferred method for your environment. Be aware that the script will
     generate a self-signed certificate for the value you provide.
 
@@ -273,7 +273,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
         <TabItem label="Domain Name" value="domain">
 
         ```shell
-        /bin/airgap-setup.sh palette.example.com
+        /usr/bin/airgap-setup.sh palette.example.com
         ```
 
         The output of the script will look similar to the example below.
@@ -311,7 +311,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
         <TabItem label="IP Address" value="ip-address">
 
         ```shell
-        /bin/airgap-setup.sh 10.10.1.1
+        /usr/bin/airgap-setup.sh 10.10.1.1
         ```
 
         The output of the script will look similar to the example below.
@@ -385,7 +385,7 @@ Use the following steps to validate that you've successfully completed the airga
     hostname or IP address with the hostname or IP address of the airgap support VM.
 
     ```shell
-    bin/airgap-setup.sh palette.example.com
+    /usr/bin/airgap-setup.sh palette.example.com
     ```
 
 4.  Verify you have the values and credentials in the output.
