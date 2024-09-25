@@ -80,75 +80,77 @@ Network Time Protocol (NTP) servers. Click on **Next**.
 10. (Optional) When you assign Edge hosts to node pools, you can optionally specify a static IP address for each Edge
     host. If you want to specify a static IP, toggle on **Static IP** and provide the following information:
 
-| **Field**       | **Description**                                                                                                                     |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| IP address      | The static IP address assigned to your Edge host. This should be unique within your network.                                        |
-| Default gateway | The IP address of the default gateway for your cluster network. This gateway routes traffic from your cluster to external networks. |
-| Subnet mask     | The subnet mask of your cluster network. This defines the range of IP addresses within your cluster network.                        |
-| DNS server      | The IP address of the DNS server your cluster uses for domain resolution.                                                           |
+    | **Field**       | **Description**                                                                                                                     |
+    | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+    | IP address      | The static IP address assigned to your Edge host. This should be unique within your network.                                        |
+    | Default gateway | The IP address of the default gateway for your cluster network. This gateway routes traffic from your cluster to external networks. |
+    | Subnet mask     | The subnet mask of your cluster network. This defines the range of IP addresses within your cluster network.                        |
+    | DNS server      | The IP address of the DNS server your cluster uses for domain resolution.                                                           |
 
-If certain network information is already available, the corresponding fields will be pre-populated.
+    If certain network information is already available, the corresponding fields will be pre-populated.
 
 11. (Optional) When you assign an Edge host to a node pool, if your Edge host has more than one NIC, you can optionally
     specify which Network Interface Controller (NIC) the Edge host will use to communicate with the cluster. When you
     select an Edge host, Palette displays a dropdown of all NICs present on the Edge host.
 
-If the NIC is configured on the Edge host network, an IP address is displayed next to the name of the NIC. If the NIC is
-not configured on the Edge host network, you can specify its IP address, default gateway, subnet mask, as well as DNS
-server to configure it.
+    If the NIC is configured on the Edge host network, an IP address is displayed next to the name of the NIC. If the
+    NIC is not configured on the Edge host network, you can specify its IP address, default gateway, subnet mask, as
+    well as DNS server to configure it.
 
-If you choose to change the default NIC used by your nodes in the control plane node pool, you need to make sure all the
-NICs in the control plane node pool share the same name. You also must make corresponding changes in the Kubernetes
-layer and the Container Network Interface (CNI) layer.
+    If you choose to change the default NIC used by your nodes in the control plane node pool, you need to make sure all
+    the NICs in the control plane node pool share the same name. You also must make corresponding changes in the
+    Kubernetes layer and the Container Network Interface (CNI) layer.
 
-In the Kubernetes layer, enter a new parameter `cluster.kubevipArgs.vip_interface` and set its value to the name of the
-NIC used by your control plane nodes. For example, if the NIC used by the nodes in your control plane pool is named
-`ens32`, add the following two lines.
+    In the Kubernetes layer, enter a new parameter `cluster.kubevipArgs.vip_interface` and set its value to the name of
+    the NIC used by your control plane nodes. For example, if the NIC used by the nodes in your control plane pool is
+    named `ens32`, add the following two lines.
 
-```yaml {3}
-cluster:
- kubevipArgs:
-   vip_interface: "ens32"
-```
+    ```yaml {3}
+    cluster:
+     kubevipArgs:
+       vip_interface: "ens32"
+    ```
 
-In the CNI layer, depending on which CNI pack you choose for your cluster profile, you need to make changes in the
-following locations.
+    In the CNI layer, depending on which CNI pack you choose for your cluster profile, you need to make changes in the
+    following locations.
 
   <Tabs>
   <TabItem value="calico" label="Calico">
   
-  In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=INTERFACE_NAME`. Replace `INTERFACE_NAME` with the name of the NIC in your control plane node pool. For example, set `IP_AUTODETECTION_METHOD` to `"interface=eno32"` if the NIC name of the nodes in your control plane pool is `eno32`. 
-  
-  ```yaml {11}
-  manifests:
-      calico:
-          ...
-          env:
-          # Additional env variables for calico-node
-          calicoNode:
-              #IPV6: "autodetect"
-              #FELIX_IPV6SUPPORT: "true"
-              #CALICO_IPV6POOL_NAT_OUTGOING: "true"
-              #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
-              IP_AUTODETECTION_METHOD: "interface=eno32"
-  ```
+    In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD`
+    and set its value to `kubernetes-internal-ip`. This tells Calico to use the address assigned to the Kubernetes node.
+
+    ```yaml {11}
+    manifests:
+        calico:
+            ...
+            env:
+            # Additional env variables for calico-node
+            calicoNode:
+                #IPV6: "autodetect"
+                #FELIX_IPV6SUPPORT: "true"
+                #CALICO_IPV6POOL_NAT_OUTGOING: "true"
+                #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
+                IP_AUTODETECTION_METHOD: "kubernetes-internal-ip"
+    ```
+
   </TabItem>
   <TabItem value="flannel" label="Flannel">
 
-In the Flannel pack YAML file, add a line `- "--iface=INTERFACE_NAME"` in the default template under
-`charts.flannel.args`. Replace `INTERFACE_NAME` with the name of the NIC. For example, add the line `- "--iface=eno32`
-if the NIC name of your control plane nodes is `eno32`.
+    In the Flannel pack YAML file, add a line `- "--iface=INTERFACE_NAME"` in the default template under
+    `charts.flannel.args`. Replace `INTERFACE_NAME` with the name of the NIC. For example, add the line `- "--iface=eno32`
+    if the NIC name of your control plane nodes is `eno32`.
 
-```yaml {8}
-charts:
-    flannel:
-        ...
-        # flannel command arguments
-        args:
-        - "--ip-masq"
-        - "--kube-subnet-mgr"
-        - "--iface=eno32"
-```
+    ```yaml {8}
+    charts:
+        flannel:
+            ...
+            # flannel command arguments
+            args:
+            - "--ip-masq"
+            - "--kube-subnet-mgr"
+            - "--iface=eno32"
+    ```
 
   </TabItem>
   
@@ -161,21 +163,21 @@ charts:
   </TabItem>
   </Tabs>
 
-:::warning
+    :::warning
 
-After you create the cluster, you will not be able to change the IP address or NIC of your existing Edge hosts unless
-you remove and re-add them back to the cluster.
+    After you create the cluster, you will not be able to change the IP address or NIC of your existing Edge hosts unless
+    you remove and re-add them back to the cluster.
 
-:::
+    :::
 
 12. The Settings page is where you can configure a patching schedule, security scans, backup settings, and set up
     Role-Based Access Control (RBAC). Review the settings and make changes if needed. Click on **Validate**.
 
 13. Review the settings summary and click on **Finish Configuration** to deploy the cluster.
 
-After you create the cluster, the Palette Edge Host agent will start the installation process. You can track the
-installation progress in Palette. The cluster overview page displays a summary of the progress. Use the _Events_ tab to
-review detailed logs.
+    After you create the cluster, the Palette Edge Host agent will start the installation process. You can track the
+    installation progress in Palette. The cluster overview page displays a summary of the progress. Use the _Events_ tab
+    to review detailed logs.
 
 ### Validate
 
@@ -187,9 +189,9 @@ review detailed logs.
 
 4. Review the **Cluster Status**. Ensure the **Cluster Status** field displays **Running**.
 
-You can also use the command `kubectl get nodes` to review the status of all nodes in the cluster. Check out the
-[Access Cluster with CLI](../../../cluster-management/palette-webctl.md) guide to learn how to use `kubectl` with a host
-cluster.
+   You can also use the command `kubectl get nodes` to review the status of all nodes in the cluster. Check out the
+   [Access Cluster with CLI](../../../cluster-management/palette-webctl.md) guide to learn how to use `kubectl` with a
+   host cluster.
 
 ## Add an Edge Host to a Host Cluster
 
@@ -236,38 +238,38 @@ number of nodes. To learn more, check out the resource from the etcd documentati
 8. (Optional) When you select your Edge host, you can optionally specify a static IP address for the Edge host. If you
    want to specify a static IP, toggle on **Static IP** and provide the following information:
 
-| **Field**       | **Description**                                                                                                                     |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| IP Address      | The static IP address assigned to your Edge host. This should be unique within your network.                                        |
-| Default gateway | The IP address of the default gateway for your cluster network. This gateway routes traffic from your cluster to external networks. |
-| Subnet mask     | The subnet mask of your cluster network. This defines the range of IP addresses within your cluster network.                        |
-| DNS server      | The IP address of the DNS server your cluster uses for domain resolution.                                                           |
+   | **Field**       | **Description**                                                                                                                     |
+   | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+   | IP Address      | The static IP address assigned to your Edge host. This should be unique within your network.                                        |
+   | Default gateway | The IP address of the default gateway for your cluster network. This gateway routes traffic from your cluster to external networks. |
+   | Subnet mask     | The subnet mask of your cluster network. This defines the range of IP addresses within your cluster network.                        |
+   | DNS server      | The IP address of the DNS server your cluster uses for domain resolution.                                                           |
 
-If certain network information is already available, the corresponding fields will be pre-populated.
+   If certain network information is already available, the corresponding fields will be pre-populated.
 
 9. (Optional) When you assign an Edge host to a node pool, if your Edge host has more than one NIC, you can optionally
    specify which Network Interface Controller (NIC) the Edge host will use to communicate with the cluster. When you
    select an Edge host, Palette displays a dropdown of all NICs present on the Edge host.
 
-If the NIC is configured on the Edge host network, an IP address is displayed next to the name of the NIC. If the NIC is
-not configured on the Edge host network, you can specify its IP address, default gateway, subnet mask, as well as DNS
-server to configure it.
+   If the NIC is configured on the Edge host network, an IP address is displayed next to the name of the NIC. If the NIC
+   is not configured on the Edge host network, you can specify its IP address, default gateway, subnet mask, as well as
+   DNS server to configure it.
 
-If you choose to change the default NIC used by your nodes, you need to make sure all the NICs in the control plane node
-pool share the same name. You also must make corresponding changes in the Kubernetes layer and the CNI layer.
+   If you choose to change the default NIC used by your nodes, you need to make sure all the NICs in the control plane
+   node pool share the same name. You also must make corresponding changes in the Kubernetes layer and the CNI layer.
 
-In the Kubernetes layer, enter a new parameter `cluster.kubevipArgs.vip_interface` and set its value to the name of the
-NIC used by your control plane nodes. For example, if the NIC used by the nodes in your control plane pool is named
-`ens32`, add the following two lines.
+   In the Kubernetes layer, enter a new parameter `cluster.kubevipArgs.vip_interface` and set its value to the name of
+   the NIC used by your control plane nodes. For example, if the NIC used by the nodes in your control plane pool is
+   named `ens32`, add the following two lines.
 
-```yaml {2-3}
-cluster:
- kubevipArgs:
-   vip_interface: "ens32"
-```
+   ```yaml {2-3}
+   cluster:
+    kubevipArgs:
+      vip_interface: "ens32"
+   ```
 
-In the CNI layer, depending on which CNI pack you choose for your cluster profile, you need to make changes in the
-following locations.
+   In the CNI layer, depending on which CNI pack you choose for your cluster profile, you need to make changes in the
+   following locations.
 
   <Tabs>
   <TabItem value="calico" label="Calico">
@@ -290,9 +292,9 @@ following locations.
   </TabItem>
   <TabItem value="flannel" label="Flannel">
 
-In the Flannel pack YAML file, add a line `- "--iface=INTERFACE_NAME"` in the default template under
-`charts.flannel.args`. Replace `INTERFACE_NAME` with the name of the NIC. For example, add the line `- "--iface=eno32`
-if the NIC name of your control plane nodes is `eno32`.
+    In the Flannel pack YAML file, add a line `- "--iface=INTERFACE_NAME"` in the default template under
+    `charts.flannel.args`. Replace `INTERFACE_NAME` with the name of the NIC. For example, add the line `- "--iface=eno32`
+    if the NIC name of your control plane nodes is `eno32`.
 
 ```yaml {8}
 charts:
@@ -316,17 +318,17 @@ charts:
   </TabItem>
   </Tabs>
 
-:::warning
+    :::warning
 
-After you add the Edge host to your cluster, you will not be able to change its IP address unless you remove and re-add
-them back to the cluster.
+    After you add the Edge host to your cluster, you will not be able to change its IP address unless you remove and re-add
+    them back to the cluster.
 
-:::
+    :::
 
 10. Confirm your changes.
 
-The Palette Edge Host agent will start the installation process. You can track the installation progress in Palette. The
-cluster overview page displays a summary of the progress. Use the **Events** tab to review detailed logs.
+    The Palette Edge Host agent will start the installation process. You can track the installation progress in Palette.
+    The cluster overview page displays a summary of the progress. Use the **Events** tab to review detailed logs.
 
 ### Validate
 
@@ -338,6 +340,6 @@ cluster overview page displays a summary of the progress. Use the **Events** tab
 
 4. Review the **Cluster Status**. Ensure the **Cluster Status** field displays **Running**.
 
-You can also use the command `kubectl get nodes` to review the status of all nodes in the cluster. Check out the
-[Access Cluster with CLI](../../../cluster-management/palette-webctl.md) to learn how to use `kubectl` with a host
-cluster.
+   You can also use the command `kubectl get nodes` to review the status of all nodes in the cluster. Check out the
+   [Access Cluster with CLI](../../../cluster-management/palette-webctl.md) to learn how to use `kubectl` with a host
+   cluster.
