@@ -120,53 +120,56 @@ cluster:
    vip_interface: "ens32"
 ```
 
-In the CNI layer, depending on which CNI pack you choose for your cluster profile, you need to make changes in the
-following locations.
+    In the CNI layer, depending on which CNI pack you choose for your cluster profile, you need to make changes in the
+    following locations.
 
   <Tabs>
+
   <TabItem value="calico" label="Calico">
-  
-  In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=INTERFACE_NAME`. Replace `INTERFACE_NAME` with the name of the NIC in your control plane node pool. For example, set `IP_AUTODETECTION_METHOD` to `"interface=eno32"` if the NIC name of the nodes in your control plane pool is `eno32`. 
-  
-  ```yaml {11}
-  manifests:
-      calico:
-          ...
-          env:
-          # Additional env variables for calico-node
-          calicoNode:
-              #IPV6: "autodetect"
-              #FELIX_IPV6SUPPORT: "true"
-              #CALICO_IPV6POOL_NAT_OUTGOING: "true"
-              #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
-              IP_AUTODETECTION_METHOD: "interface=eno32"
-  ```
+
+    In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and
+    set its value to `kubernetes-internal-ip`. This tells Calico to use the address assigned to the Kubernetes node.
+
+    ```yaml {11}
+    manifests:
+        calico:
+            ...
+            env:
+            # Additional env variables for calico-node
+            calicoNode:
+                #IPV6: "autodetect"
+                #FELIX_IPV6SUPPORT: "true"
+                #CALICO_IPV6POOL_NAT_OUTGOING: "true"
+                #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
+                IP_AUTODETECTION_METHOD: "kubernetes-internal-ip"
+    ```
+
   </TabItem>
   <TabItem value="flannel" label="Flannel">
 
-In the Flannel pack YAML file, add a line `- "--iface=INTERFACE_NAME"` in the default template under
-`charts.flannel.args`. Replace `INTERFACE_NAME` with the name of the NIC. For example, add the line `- "--iface=eno32`
-if the NIC name of your control plane nodes is `eno32`.
+    In the Flannel pack YAML file, add a line `- "--iface=INTERFACE_NAME"` in the default template under
+    `charts.flannel.args`. Replace `INTERFACE_NAME` with the name of the NIC. For example, add the line `- "--iface=eno32`
+    if the NIC name of your control plane nodes is `eno32`.
 
-```yaml {8}
-charts:
-    flannel:
-        ...
-        # flannel command arguments
-        args:
-        - "--ip-masq"
-        - "--kube-subnet-mgr"
-        - "--iface=eno32"
-```
+    ```yaml {8}
+    charts:
+        flannel:
+            ...
+            # flannel command arguments
+            args:
+            - "--ip-masq"
+            - "--kube-subnet-mgr"
+            - "--iface=eno32"
+    ```
 
   </TabItem>
   
   <TabItem value="cilium" label="Cilium">
-  You do not need to make any adjustments to the Cilium pack.
+    You do not need to make any adjustments to the Cilium pack.
   </TabItem>
 
   <TabItem value="other" label="Other">
-  If you are using other CNIs, refer to the documentation of your selected CNI and configure it to make sure that it picks the right NIC on your Edge hosts. 
+    If you are using other CNIs, refer to the documentation of your selected CNI and configure it to make sure that it picks the right NIC on your Edge hosts. 
   </TabItem>
   </Tabs>
 
