@@ -123,7 +123,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
     In the CNI layer, depending on which CNI pack you choose for your cluster profile, you need to make changes in the
     following locations.
 
-    <Tabs>
+  <Tabs>
 
   <TabItem value="calico" label="Calico">
 
