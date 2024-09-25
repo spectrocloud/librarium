@@ -123,12 +123,12 @@ Use the following steps to create a new host cluster so that you can add Edge ho
     In the CNI layer, depending on which CNI pack you choose for your cluster profile, you need to make changes in the
     following locations.
 
-    <Tabs>
+  <Tabs>
 
-    <TabItem value="calico" label="Calico">
+  <TabItem value="calico" label="Calico">
 
-    In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD`
-    and set its value to `kubernetes-internal-ip`. This tells Calico to use the address assigned to the Kubernetes node.
+    In the Calico pack YAML file default template, uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and
+    set its value to `kubernetes-internal-ip`. This tells Calico to use the address assigned to the Kubernetes node.
 
     ```yaml {11}
     manifests:
@@ -175,12 +175,12 @@ Use the following steps to create a new host cluster so that you can add Edge ho
   
   </Tabs>
 
-    :::warning
+:::warning
 
-    After you create the cluster, you will not be able to change the IP address or NIC of your existing Edge hosts unless
-    you remove and re-add them back to the cluster.
+After you create the cluster, you will not be able to change the IP address or NIC of your existing Edge hosts unless
+you remove and re-add them back to the cluster.
 
-    :::
+:::
 
 12. The Settings page is where you can configure a patching schedule, security scans, backup settings, and set up
     Role-Based Access Control (RBAC). Review the settings and make changes if needed. Click on **Validate**.
