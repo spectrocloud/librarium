@@ -22,7 +22,7 @@ from VMware vSphere to Palette VMO.
 - Only VMs whose operating systems are included under
   [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
 
-- The network type <VersionedLink text="Multus CNI" url="/integrations/packs/?pack=cni-multus" />, requires a Network
+- The network type <VersionedLink text="Multus CNI" url="/integrations/packs/?pack=cni-multus" /> requires a Network
   Attachment Definition (NAD) to exist in the migration target namespace in the destination cluster. The NAD name must
   also match the name assigned to the migration. The migration name is assigned during the wizard, which is started by
   the Palette CLI's `vmo migrate-vm` command.
