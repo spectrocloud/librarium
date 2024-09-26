@@ -350,8 +350,8 @@ worker node, which is the node that does not have the `control-plane` role. In t
 
 ```shell
 NAME                                          STATUS   ROLES           AGE   VERSION
-vmware-cluster-cp-xcqlw                       Ready    control-plane   28m   v1.28.11
-vmware-cluster-worker-pool-7d6d76b55b-dhffq   Ready    <none>          28m   v1.28.11
+vmware-cluster-cp-xcqlw                       Ready    control-plane   28m   v1.28.13
+vmware-cluster-worker-pool-7d6d76b55b-dhffq   Ready    <none>          28m   v1.28.13
 ```
 
 The Hello Universe pack deploys three pods in the `hello-universe` namespace. Execute the following command to verify
@@ -403,9 +403,9 @@ worker nodes. In the example below, `vmware-cluster-worker-pool-7d6d76b55b-dhffq
 
 ```shell
 NAME                                            STATUS   ROLES           AGE   VERSION
-vmware-cluster-cp-xcqlw                         Ready    control-plane   58m   v1.28.11
-vmware-cluster-worker-pool-2-5b4b559f6d-znbtm   Ready    <none>          30m   v1.28.11
-vmware-cluster-worker-pool-7d6d76b55b-dhffq     Ready    <none>          58m   v1.28.11
+vmware-cluster-cp-xcqlw                         Ready    control-plane   58m   v1.28.13
+vmware-cluster-worker-pool-2-5b4b559f6d-znbtm   Ready    <none>          30m   v1.28.13
+vmware-cluster-worker-pool-7d6d76b55b-dhffq     Ready    <none>          58m   v1.28.13
 ```
 
 It is common to dedicate node pools to a particular type of workload. One way to specify this is through the use of
