@@ -56,7 +56,7 @@ docker ps
 Next, download the tutorial image, start the container, and open a bash session into it.
 
 ```shell
-docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.9 bash
+docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.10 bash
 ```
 
 Navigate to the folder that contains the tutorial code.
@@ -92,7 +92,7 @@ podman info
 Next, download the tutorial image, start the container, and open a bash session into it.
 
 ```shell
-podman run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.9 bash
+podman run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.10 bash
 ```
 
 Navigate to the folder that contains the tutorial code.
@@ -126,7 +126,7 @@ cd tutorials/
 Check out the following git tag.
 
 ```shell
-git checkout v1.1.9
+git checkout v1.1.10
 ```
 
 Navigate to the folder that contains the tutorial code.
@@ -226,9 +226,9 @@ the cluster profile.
 | **Pack Type** | **Pack Name**     | **Version** | **Cluster Profile v1.0.0** | **Cluster Profile v1.1.0** |
 | ------------- | ----------------- | ----------- | -------------------------- | -------------------------- |
 | OS            | `ubuntu-vsphere`  | `22.04`     | :white_check_mark:         | :white_check_mark:         |
-| Kubernetes    | `kubernetes`      | `1.28.3`    | :white_check_mark:         | :white_check_mark:         |
-| Network       | `cni-calico`      | `3.26.3`    | :white_check_mark:         | :white_check_mark:         |
-| Storage       | `csi-vsphere-csi` | `3.0.2`     | :white_check_mark:         | :white_check_mark:         |
+| Kubernetes    | `kubernetes`      | `1.28.13`   | :white_check_mark:         | :white_check_mark:         |
+| Network       | `cni-calico`      | `3.27.2`    | :white_check_mark:         | :white_check_mark:         |
+| Storage       | `csi-vsphere-csi` | `3.1.2`     | :white_check_mark:         | :white_check_mark:         |
 | Load Balancer | `lb-metallb-helm` | `0.14.8`    | :white_check_mark:         | :white_check_mark:         |
 | App Services  | `hellouniverse`   | `1.2.0`     | :white_check_mark:         | :white_check_mark:         |
 | App Services  | `cost-analyzer`   | `1.103.3`   | :x:                        | :white_check_mark:         |
@@ -315,12 +315,12 @@ Terraform. The Spectro Cloud Terraform provider exposes several data resources t
 dynamic. The data resource used in the cluster profile is `spectrocloud_pack`. This resource enables you to query
 Palette for information about a specific pack, such as its unique ID, registry ID, available versions, and YAML values.
 
-Below is the data resource used to query Palette for information about the Kubernetes pack for version `1.28.3`.
+Below is the data resource used to query Palette for information about the Kubernetes pack for version `1.28.13`.
 
 ```hcl
 data "spectrocloud_pack" "vmware_k8s" {
   name         = "kubernetes"
-  version      = "1.28.3"
+  version      = "1.28.13"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
@@ -774,7 +774,7 @@ the following command to stop and remove the container.
 
 ```shell
 docker stop tutorialContainer && \
-docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.9
+docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.10
 ```
 
 </TabItem>
@@ -783,7 +783,7 @@ docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.9
 
 ```shell
 podman stop tutorialContainer && \
-podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.9
+podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.10
 ```
 
 </TabItem>
