@@ -153,7 +153,7 @@ could arise if the original pack has Kubernetes resources with the same names as
    named `hellouni-2--hello-universe`, where `hello-universe` is the pack's manifest name, and `hellouni-1` and
    `hellouni-2` are the display names for each layer.
 
-   There are three elements that must be present in the pack's `values` field:
+   The pack's `values` field must include three key elements:
 
    - **Display Name**: Defined by the `spectrocloud.com/display-name: \"hello-uni-1\"` line for the first layer of the
      profile and `spectrocloud.com/display-name: \"hello-uni-2\"` for the second layer.
