@@ -39,8 +39,8 @@ could arise if the original pack has Kubernetes resources with the same names as
   [Cluster Profile Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
   page for more information about roles and permissions.
 
-- A Palette API key. Refer to the [Create API Key](../../../user-management/authentication/api-key/create-api-key.md)
-  guide for instructions on creating an API key.
+- A Palette API key. Refer to the [Create API Key](../../../user-management/user-authentication.md#api-key) guide for
+  instructions on creating an API key.
 
 </TabItem>
 </Tabs>
