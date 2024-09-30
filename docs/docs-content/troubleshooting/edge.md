@@ -157,9 +157,9 @@ issues or not being available. Use the following steps to troubleshoot and resol
 
 ## Scenario - systemd-resolved.service Enters Failed State
 
-When you create a cluster with an Edge host that operates the FIPS-compliant RHEL Operating System (OS), you may
-encounter an error where the `systemd-resolved.service` process enters the **failed** state. This prevents the
-nameserver from being configured, which will result in cluster deployment failure.
+When you create a cluster with an Edge host that operates the Red Hat Enterprise Linux (RHEL) and Ubuntu Operating
+Systems (OS), you may encounter an error where the `systemd-resolved.service` process enters the **failed** state. This
+prevents the nameserver from being configured, which will result in cluster deployment failure.
 
 ### Debug Steps
 
