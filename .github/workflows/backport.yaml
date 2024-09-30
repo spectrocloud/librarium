@@ -20,7 +20,7 @@ jobs:
         || (github.event.action == 'closed')
       )
     outputs:
-      BEFORE_BACKPORTS: ${{ steps.set-output.outputs.pr_count }}
+      BEFORE_BACKPORTS: ${{ steps.count_prs.outputs.pr_count }}
     steps:
 
       - name: Retrieve Credentials
@@ -39,8 +39,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           PR_COUNT=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-            "https://api.github.com/repos/${{ github.repository }}/pulls?state=all&per_page=100" | \
-            jq '[.[] | select(.user.login == "vault-token-factory-spectrocloud")] | length')
+            "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&per_page=100" | \
+            jq '[.[] | select(.user.login == "vault-token-factory-spectrocloud[bot]")] | length')
           echo "Number of PRs created by vault-token-factory-spectrocloud: $PR_COUNT"
           echo "pr_count=$PR_COUNT" >> $GITHUB_OUTPUT
 
@@ -87,8 +87,8 @@ jobs:
         run: |-
           BEFORE_BACKPORTS=${{ steps.count_prs.outputs.pr_count }}
           NEW_COUNT=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-            "https://api.github.com/repos/${{ github.repository }}/pulls?state=all&per_page=100" | \
-            jq '[.[] | select(.user.login == "vault-token-factory-spectrocloud")] | length')
+            "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&per_page=100" | \
+            jq '[.[] | select(.user.login == "vault-token-factory-spectrocloud[bot]")] | length')
           
           MATCHED=${{ steps.check_labels.outputs.matched }}
 
