@@ -99,8 +99,309 @@ pull behavior.
    build the Installer ISO with the user data configurations. The Edge clusters provisioned with the ISO will no longer
    automatically redirect image pull requests to the external registry or the local Harbor registry.
 
-   From this point on, you can customize redirect behavior yourself. The process to redirect image pulls vary by
-   Kubernetes distribution as well as your registry setup.
+### Redirect Image Pull
+
+The process to redirect image pulls vary by Kubernetes distribution as well as your registry setup. This section
+provides an example that shows how you might customize the image pull behavior of your Edge cluster. The example shows
+how you can configure a PXK-E Edge cluster to pull from multiple authenticated registries.
+
+The example shown in this section uses containerd's registry configuration to redirect image pulls. It uses PXK-E
+
+6. Log in to [Palette](https://console.spectrocloud.com).
+
+7. From the left **Main Menu**, click **Profiles**. Click on the profile you use to deploy your Edge cluster.
+
+8. In the Kubernetes layer of the profile, include the following lines in the `initramfs` stage to adjust the containerd
+   configuration to supports reading additional files:
+
+   ```yaml
+   stages:
+     initramfs:
+       - name: "Manage containerd config"
+         files:
+           - path: /etc/containerd/config.toml
+             permissions: 0644
+             owner: 0
+             group: 0
+             content: |-
+               version = 2
+               imports = ["/etc/containerd/conf.d/*.toml"]
+               [plugins]
+                 [plugins."io.containerd.grpc.v1.cri"]
+                   sandbox_image = "registry.k8s.io/pause:3.9"
+                   enable_unprivileged_ports = true
+                   enable_unprivileged_icmp = true
+                 [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+                   runtime_type = "io.containerd.runc.v2"
+                 [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+                   SystemdCgroup = true
+                 [plugins."io.containerd.grpc.v1.cri".registry]
+                   config_path = "/etc/containerd/certs.d"
+   ```
+
+   :::info
+
+   This configuration change is only needed to PXK-E. Since it changes the `initramfs` stage, this will require a reboot
+   of the node. If you are using K3s or RKE2, the ability fo read additional files is enabled by default and you don't
+   need to add this configuration.
+
+   :::
+
+9. In the Kubernetes layer of the profile, include the following lines in the reconcile stage. For more information,
+   refer to [Cloud-init Stages](../../edge-configuration/cloud-init.md).
+
+   ```yaml
+   stages:
+    reconcile:
+        - name: "Redirect registries"
+            - path: /etc/containerd/certs.d/gcr.io/hosts.toml
+              owner: 0
+              group: 0
+              permissions: 0644
+              content: |-
+                server = "https://gcr.io"
+                [host."https://gcr-io-mirror.company.local"]
+                    capabilities = ["pull", "resolve"]
+   ```
+
+   This will redirect image pulls for `https://gcr.io` to `https://gcr-io-mirror.company.local`. Since you are only
+   editing the reconcile stage, this will not result in a reboot or service restart for your cluster.
+
+### Provide Registry Credentials
+
+If you are using public registries that do not require authentication, you can skip this step.
+
+If your registries require authentication, you will need to provide credentials to enable image pulls. This example uses
+an open-source generic Kubernetes credentials provider to provide the resources. There are other resources that you can
+take advantage of to provide registry credentials, including using a `registry.yaml` file in K3s or RKE2. However, the
+advantage of the approach used in this example is that after installation, you will not need to restart your cluster to
+rewrite the registry paths or provide the registry credentials if you use K3S or RKE2.
+
+:::info
+
+Refer to the
+[`generic-credential-provider` GitHub repository](https://github.com/JonTheNiceGuy/generic-credential-provider) for the
+code for the credential provider on GitHub.
+
+:::
+
+12. Install the generic credential provider by including the following lines in either the OS layer or the Kubernetes
+    layer of the cluster profile. This will create the file at `/usr/local/bin/generic-credential-provider`, populate
+    the content, and set the file permissions to ensure that it is executable, during the `initramfs` stage. Click on
+    the box below to expand the instructions.
+
+     <details>
+
+    <summary>Install Credential Provider </summary>
+
+    ```
+    stages:
+      initramfs:
+          - name: "Install generic-credential-provider binary"
+            files:
+              - path: /usr/local/bin/generic-credential-provider
+                permissions: 0755
+                owner: 0
+                group: 0
+                content: |-
+                  #!/usr/bin/env python3
+                  import os
+                  import sys
+                  import json
+                  import syslog
+                  import logging
+                  import argparse
+
+                  logging.basicConfig(level=logging.DEBUG, format='%(levelname)s: %(message)s')
+
+                  class generic_credential_provider:
+                      def __init__(self):
+                          args = generic_credential_provider_utilities.parse_args()
+                          if not args.debug:
+                              logging.disable(logging.DEBUG)
+                          if args.version:
+                              print(f"generic-credential-provider version 1.0.0")
+                              exit(0)
+
+                          base_path = args.credroot
+
+                          syslog.openlog("generic-credential-provider", syslog.LOG_PID, syslog.LOG_USER)
+
+                          # Read the input JSON from stdin
+                          input_json = json.load(sys.stdin)
+                          repository = generic_credential_provider_utilities.get_image_repository(input_json)
+
+                          # Generate possible JSON filenames
+                          possible_filenames = generic_credential_provider_utilities.generate_possible_filenames(repository)
+
+                          # Search for the JSON file in the specified directory
+                          found_json_file = generic_credential_provider_utilities.find_json_file(possible_filenames, base_path)
+
+                          if found_json_file:
+                              # If a matching JSON file is found, read the username and password
+                              credentials = generic_credential_provider_utilities.read_credentials(found_json_file)
+                              username = credentials.get("username", "")
+                              password = credentials.get("password", "")
+                              duration = credentials.get("duration", "0h5m0s")
+                          else:
+                              syslog.syslog(syslog.LOG_ERR, f"Failed to fulfill credential request for {repository}")
+                              logging.error(f'Error running credential provider plugin: {repository} is an unknown source')
+                              exit(1)
+
+                          # Create the output JSON response
+                          output_json = {
+                              "kind": "CredentialProviderResponse",
+                              "apiVersion": "credentialprovider.kubelet.k8s.io/v1",
+                              "cacheKeyType": "Registry",
+                              "cacheDuration": duration,
+                              "auth": {
+                                  repository: {
+                                      "username": username,
+                                      "password": password
+                                  }
+                              }
+                          }
+                          syslog.syslog(syslog.LOG_INFO, f"Credential request fulfilled for {repository}")
+
+                          # Print the output JSON response to stdout
+                          json.dump(output_json, sys.stdout)
+
+                  class generic_credential_provider_utilities:
+                      def parse_args():
+                          parser = argparse.ArgumentParser(description="A generic credential provider for Kubernetes")
+
+                          parser.add_argument('--version', '-v', action='store_true', help="version for generic-credential-provider")
+                          parser.add_argument('--debug', '-d', action='store_true', help="Enable debug output")
+                          parser.add_argument('--credroot', '-c', help="Provide a new credential root, only used for testing", default="/etc/kubernetes/registries/")
+
+                          return parser.parse_args()
+
+                      def get_image_repository(input_json):
+                          image = input_json.get("image", "")
+                          repository = image.split('/')[0].split(':')[0]
+                          logging.debug(f"Got repository name: {repository}")
+                          return repository
+
+                      def generate_possible_filenames(repository):
+                          possible_filenames = []
+                          possible_filename = ""
+                          parts = repository.split(".")
+                          parts.reverse()
+                          for part in parts:
+                              if possible_filename == "":
+                                  possible_filename = part
+                              else:
+                                  possible_filename = f"{part}.{possible_filename}"
+                              possible_filenames.append(possible_filename)
+                          possible_filenames.reverse()
+                          return possible_filenames
+
+                      def find_json_file(possible_filenames, base_path):
+                          for filename in possible_filenames:
+                              json_file_path = os.path.join(base_path, f"{filename}.json")
+                              logging.debug(f"Testing json_file_path: {json_file_path}")
+                              if os.path.exists(json_file_path):
+                                  logging.debug(f"Got it")
+                                  return json_file_path
+                          return None
+
+                      def read_credentials(json_file_path):
+                          with open(json_file_path, "r") as json_file:
+                              credentials = json.load(json_file)
+                              logging.debug(f"Got credentials: {credentials}")
+                              return credentials
+
+                  if __name__ == "__main__":
+                      generic_credential_provider()
+    ```
+
+     </details>
+
+13. In the Kubernetes layer of your cluster, add the following lines to the `kubeadmconfig.kubeletExtraArgs` field.
+
+    ```yaml
+    kubeletExtraArgs:
+      cluster:
+        config: |
+          initConfiguration:
+            nodeRegistration:
+              kubeletExtraArgs:
+                image-credential-provider-bin-dir: /usr/local/bin
+                image-credential-provider-config: /opt/kubernetes/generic-credential-provider-config.json
+          joinConfiguration:
+            discovery: {}
+            nodeRegistration:
+              kubeletExtraArgs:
+                image-credential-provider-bin-dir: /usr/local/bin
+                image-credential-provider-config: /opt/kubernetes/generic-credential-provider-config.json
+    ```
+
+14. Use a `reconcile` stage to define the JSON file with the `CredentialProviderConfig` for kubelet.
+
+    ```yaml {17,18}
+    stages:
+      reconcile:
+        - name: "Registry credential management"
+          files:
+            - path: /opt/kubernetes/generic-credential-provider-config.json
+              owner: 0
+              group: 0
+              permissions: 0644
+              content: |-
+                {
+                  "apiVersion": "kubelet.config.k8s.io/v1",
+                  "kind": "CredentialProviderConfig",
+                  "providers": [
+                    {
+                      "name": "generic-credential-provider",
+                      "matchImages": [
+                        "*.io",
+                        "*.*.io"
+                      ],
+                      "defaultCacheDuration": "5m",
+                      "apiVersion": "credentialprovider.kubelet.k8s.io/v1"
+                    }
+                  ]
+                }
+    ```
+
+    Registry URLs that match the patterns in the `mathImages` field will use this provider for credentials. For example,
+    `*.io` would match `docker.io`, `quay.io`, `gcr.io` and `*.*.io` would cover URLs like `us.gcr.io`. Refer to
+    [Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubelet-credential-provider/#configure-a-kubelet-credential-provider)
+    about the parameters you can use to configure credential providers for kubelet. We suggest that you define a broad
+    pattern, as updating this file requires kubelet to restart. There are no adverse effects when the pattern matches a
+    registry URL for which there is no defined credentials.
+
+15. With the credential provider installed and configured, you can now provide your registry credentials. Similar to
+    other configurations, you will also perform this step during the `reconcile` stage. Add the following lines to your
+    cluster profile in the OS or the Kubernetes layer.
+
+    ```yaml {5,11-13}
+    stages:
+      reconcile:
+        - name: "Registry credential management"
+          files:
+            - path: /etc/kubernetes/registries/gcr.io.json
+              owner: 0
+              group: 0
+              permissions: 0644
+              content: |-
+                {
+                  "username": "proxy-access",
+                  "password": "*****",
+                  "duration": "0h5m0s"
+                }
+    ```
+
+    :::warning
+
+    Avoid entering sensitive information like passwords directly into your cluster profile in plain text. Instead, you
+    can either use a cluster profile variable or a macro.
+
+    :::
+
+    The script will lookup the JSON file by registry naming and allows partial matches. For example, `gcr.io.json` would
+    match `gcr.io` as well as `us.gcr.io`.
 
 ## Validate
 
@@ -108,5 +409,3 @@ pull behavior.
    [Installation](../site-installation/site-installation.md).
 
 2. Create a cluster profile and include **Harbor Edge-Native Config** pack.
-
-3.
