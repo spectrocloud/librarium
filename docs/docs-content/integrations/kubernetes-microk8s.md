@@ -85,7 +85,7 @@ node:
   kubeletPath: /var/snap/microk8s/common/var/lib/kubelet
 ```
 
-### Troubleshooting
+### Troubleshoot
 
 ### Backup and Restore Fails with Restic
 
@@ -174,7 +174,7 @@ The MicroK8s pack supports three types of upgrade strategies:
 - `SmartUpgrade` - Performs an in-place upgrade of the control plane on clusters with fewer than three control plane
   nodes, and a rolling upgrade on clusters with three or more control plane nodes.
 
-### Troubleshooting
+### Troubleshoot
 
 ### Backup and Restore Fails with Restic
 
