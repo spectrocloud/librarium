@@ -88,13 +88,13 @@ Use the following steps to install Palette.
     `ubuntu`.
 
     ```shell
-    ssh -identity_file </path/to/private/key> ubuntu@<vm-ip-or-domain>
+    ssh -i </path/to/private/key> ubuntu@<vm-ip-or-domain>
     ```
 
     Consider the following command example for reference.
 
     ```shell
-    ssh -identity_file /docs/ssh-private-key.pem ubuntu@palette.example.com
+    ssh -i /docs/ssh-private-key.pem ubuntu@palette.example.com
     ```
 
     :::tip

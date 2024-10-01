@@ -15,7 +15,7 @@ This guide helps you to prepare your airgap environment for Palette VerteX insta
 
 This guide is for preparing your airgap environment only. For instructions on installing VerteX on VMware, check the
 [Install](../install.md) guide. A checklist of the steps you will complete to prepare your airgap environment for VerteX
-is available in the [Checklist](./checklist.md) page.
+is available on the [Checklist](./checklist.md) page.
 
 :::
 
