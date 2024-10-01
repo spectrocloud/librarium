@@ -13,9 +13,9 @@ This guide helps you to prepare your airgap environment for Palette installation
 
 :::info
 
-This guide is for preparing your airgap environment only. For instructions on installing Palette on
-[VMware](./install.md). A checklist of the steps you will complete to prepare your airgap environment for Palette is
-available in the [Checklist](./checklist.md) page.
+This guide is for preparing your airgap environment only. For instructions on installing Palette on VMware, check the
+[Install](../install.md) guide. A checklist of the steps you will complete to prepare your airgap environment for
+Palette is available in the [Checklist](./checklist.md) page.
 
 :::
 
@@ -26,10 +26,12 @@ Palette.
 
 ## Prerequisites
 
-- Download the following OVAs:
+- Download the following artifacts:
 
-  - The Palette installation OVA.
-  - The installation OVA that deploys and initializes the airgap support VM.
+  - The installation OVA that deploys and initializes the airgap support VM. The installation OVA can be either generic
+    or release-specific.
+  - If you are using a generic OVA, ensure you download the airgap Palette installation binary for the version of
+    Palette you plan to install.
   - An OVA with the operating system and Kubernetes distribution required for the Palette nodes.
 
   For sensitive environments, you can download the OVAs to a system with internet access and then transfer them to your
@@ -81,6 +83,8 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
 4.  In the **Deploy OVF Template** wizard, enter the following URL to import the Operating System (OS) and Kubernetes
     distribution OVA required for the installation.
+
+    Consider the following example for reference.
 
     ```url
     https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12610-0.ova
@@ -349,9 +353,37 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 21. The output of the script contains credentials and values you will need when completing the installation with the
     Palette CLI. If you need to review this information in the future, invoke the script again.
 
-22. Review the [Additional Packs](../../airgap/supplemental-packs.md) page and identify any additional packs you want to
-    add to your OCI registry. By default, the installation includes only the minimum required packs. You can also add
-    additional packs after the installation is complete.
+22. If you have used a release-specific installation OVA, skip this step. Otherwise, if you have use a generic
+    installation OVA, use the following command to execute the Palette airgap installation binary.
+
+    ```shell
+    chmod +x airgap-<version>.bin && ./airgap-<version>.bin
+    ```
+
+    Consider the following example for reference.
+
+    ```shell
+    chmod +x airgap-v4.4.14.bin && ./airgap-v4.4.14.bin
+    ```
+
+    After the Palette airgap installation binary is verified and uncompressed, it uploads the release-specific packs and
+    images to the registry configured in step **20** of this guide. This process may take some time to complete.
+
+    ```text hideClipboard
+    Verifying archive integrity...  100%   MD5 checksums are OK. All good.
+    Uncompressing Airgap Setup - Version 4.4.14  100%
+    Setting up CLI
+    Setting up Manifests
+    Setting up Packs
+    ...
+
+    Setup Completed
+    ```
+
+    Once the airgap binary is executed, you will receive a **Setup Completed** success message.
+
+23. Review the [Additional Packs](../../airgap/supplemental-packs.md) page and identify any additional packs you want to
+    add to your OCI registry. You can also add additional packs after the installation is complete.
 
 You have now completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to
 ensure the airgap setup process is completed successfully. After you validate the airgap setup process completion,
