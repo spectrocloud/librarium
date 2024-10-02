@@ -75,7 +75,7 @@
     "@semantic-release/github": "latest",
     "@semantic-release/npm": "latest",
     "@testing-library/jest-dom": "^6.0.0",
-    "@testing-library/react": "^14.1.2",
+    "@testing-library/react": "^16.0.1",
     "@tsconfig/docusaurus": "^2.0.3",
     "@types/jest": "^29.5.12",
     "@typescript-eslint/eslint-plugin": "^8.2.0",
