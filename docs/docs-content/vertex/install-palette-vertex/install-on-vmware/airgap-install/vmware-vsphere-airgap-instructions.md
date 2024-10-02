@@ -137,7 +137,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     | **SSH Public Keys**                        | Provide the SSH public keys for the user account you will use to access the airgap support VM. You need to provide at least one SSH public key to access the instance. | Yes      |
     | **Default User's password**                | Enter the password for the user account you will use to access the airgap support VM. You will be asked to change this password the first time you log in through SSH. | Yes      |
     | **A Unique Instance ID for this instance** | Enter a unique instance ID for the airgap support VM. The default value is `id-ovf`.                                                                                   | Yes      |
-    | **Hostname**                               | Enter a hostname for the airgap support VM. For example, `vertex.example.com`. The default value is `ubuntuguest`.                                                     | Yes      |
+    | **Hostname**                               | Enter a fully qualified hostname for the airgap support VM. For example, `vertex.example.com`. The default value is `ubuntuguest`.                                     | Yes      |
     | **Url to seed instance data from**         | You can specify a URL to seed instance data from. You can leave this value empty.                                                                                      | No       |
 
 12. Review the details and click on **Finish** to deploy the airgap support VM.
@@ -385,7 +385,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     Setup Completed
     ```
 
-    Once the Palette VerteX airgap binary is executed, you will receive a **Setup Completed** success message.
+    Once the Palette VerteX airgap binary completes its tasks, you will receive a **Setup Completed** success message.
 
 23. Review the [Additional Packs](../../airgap/supplemental-packs.md) page and identify any additional packs you want to
     add to your OCI registry. You can also add additional packs after the installation is complete.

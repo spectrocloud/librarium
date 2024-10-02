@@ -14,12 +14,6 @@ cluster is created. You use the interactive Palette CLI to install VerteX on VMw
 [Access Palette](../../../vertex.md#access-palette-vertex) for instructions on requesting the required credentials and
 assets.
 
-:::warning
-
-Complete the [Environment Setup](./vmware-vsphere-airgap-instructions.md) steps before proceeding with the installation.
-
-:::
-
 ## Prerequisites
 
 - You have completed the [Environment Setup](./vmware-vsphere-airgap-instructions.md) steps and deployed the airgap
@@ -130,9 +124,17 @@ Use the following steps to install Palette VerteX.
     for configuration details and then initiates the installation. For more information about the `ec` subcommand, refer
     to [Palette Commands](../../../../automation/palette-cli/commands/ec.md).
 
-        ```bash
-        palette ec install
-        ```
+    ```bash
+    palette ec install
+    ```
+
+    :::warning
+
+    If you deployed the airgap support VM using a generic OVA, the Palette CLI may not be in the `usr/bin` path. Ensure
+    that you complete step **22** of the [Environment Setup](./vmware-vsphere-airgap-instructions.md) guide, which
+    installs the VerteX airgap binary and moves the Palette CLI to the correct path.
+
+    :::
 
 3.  At the **Enterprise Cluster Type** prompt, choose **Palette VerteX**.
 

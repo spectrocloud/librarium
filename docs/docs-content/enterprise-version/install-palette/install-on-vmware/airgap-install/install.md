@@ -14,12 +14,6 @@ created. You use the interactive Palette CLI to install Palette on VMware vSpher
 [Access Palette](../../../enterprise-version.md#access-palette) for instructions on requesting the required credentials
 and assets.
 
-:::warning
-
-Complete the [Environment Setup](./vmware-vsphere-airgap-instructions.md) steps before proceeding with the installation.
-
-:::
-
 ## Prerequisites
 
 - You have completed the [Environment Setup](./vmware-vsphere-airgap-instructions.md) steps and deployed the airgap
@@ -112,14 +106,20 @@ Use the following steps to install Palette.
     palette ec install
     ```
 
+    :::warning
+
+    If you deployed the airgap support VM using a generic OVA, the Palette CLI may not be in the `usr/bin` path. Ensure
+    that you complete step **22** of the [Environment Setup](./vmware-vsphere-airgap-instructions.md) guide, which
+    installs the Palette airgap binary and moves the Palette CLI to the correct path.
+
+    :::
+
 3.  At the **Enterprise Cluster Type** prompt, choose **Palette**.
 
 4.  Type `y` if you want to use Ubuntu Pro. Otherwise, type `n`. If you choose to use Ubuntu Pro, you will be prompted
     to enter your Ubuntu Pro token.
 
-5.  Provide the URL or IP address of the Spectro Cloud Repository that is provided to you by the airgap setup script
-
-    <br />
+5.  Provide the URL or IP address of the Spectro Cloud Repository that is provided to you by the airgap setup script.
 
     :::info
 
