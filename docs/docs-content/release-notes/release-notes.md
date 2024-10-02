@@ -79,6 +79,15 @@ voluptatibus laborum sapiente delectus.
 
 ### Automation
 
+- Terraform version 0.22.0 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
+- The Palette CLI commands `vmo migrate-vm` and `vmo import-ova` have received serveral improvements to better handle
+  the migration and import of virtual machines to a VMO cluster. Refer to the
+  [VMO](../automation/palette-cli/commands/vmo.md) reference page to learn more about these commands.
+
 ### Docs and Education
 
 ### Packs
