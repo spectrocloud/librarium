@@ -85,9 +85,9 @@ node:
   kubeletPath: /var/snap/microk8s/common/var/lib/kubelet
 ```
 
-### Troubleshoot
+## Troubleshoot
 
-### Backup and Restore Fails with Restic
+### Scenario - Backup and Restore Fails with Restic
 
 If you encounter errors backing up or restoring a MicroK8s cluster with [restic](https://github.com/restic/restic), it
 may be related to the Velero issue [4035](https://github.com/vmware-tanzu/velero/issues/4035). You can resolve this
@@ -96,7 +96,7 @@ issue by using the following workaround.
 1. Issue the command below to get the `restic` daemonset pod and its namespace.
 
    ```shell
-   kubectl get pods --selector name=restic  --all-namespaces
+   kubectl get pods --selector name=restic --all-namespaces
    ```
 
    ```shell hideClipboard
@@ -174,9 +174,9 @@ The MicroK8s pack supports three types of upgrade strategies:
 - `SmartUpgrade` - Performs an in-place upgrade of the control plane on clusters with fewer than three control plane
   nodes, and a rolling upgrade on clusters with three or more control plane nodes.
 
-### Troubleshoot
+## Troubleshoot
 
-### Backup and Restore Fails with Restic
+### Scenario - Backup and Restore Fails with Restic
 
 If you encounter errors backing up or restoring a MicroK8s cluster with [restic](https://github.com/restic/restic), it
 may be related to the Velero issue [4035](https://github.com/vmware-tanzu/velero/issues/4035). You can resolve this
@@ -185,7 +185,7 @@ issue by using the following workaround.
 1. Issue the command below to get the `restic` daemonset pod and its namespace.
 
    ```shell
-   kubectl get pods --selector name=restic  --all-namespaces
+   kubectl get pods --selector name=restic --all-namespaces
    ```
 
    ```shell hideClipboard
