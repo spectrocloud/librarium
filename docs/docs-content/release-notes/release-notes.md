@@ -13,7 +13,16 @@ tags: ["release-notes"]
 
 ## October 12, 2024 - Release 4.5.0 - 4.5.X
 
+Et consequatur ea asperiores temporibus. Impedit exercitationem veritatis ut laudantium est eum rem in libero
+asperiores. Voluptas culpa repellat et ea rerum dolores illum quas nostrum quis architecto architecto doloremque. Aut in
+quos quia ut quisquam. Officiis consequatur aut commodi dignissimos quis quia pariatur quo modi explicabo non nisi.
+Quisquam qui nihil molestiae tenetur molestiae et sint non illum at tempora veniam. Officiis libero odio consequatur
+dicta corporis velit repudiandae est. Ex eum et voluptatum animi doloremque libero modi quam maxime unde labore
+voluptatibus laborum sapiente delectus.
+
 ### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.md) page for the latest security advisories.
 
 ### Palette Enterprise
 
@@ -30,6 +39,9 @@ tags: ["release-notes"]
 #### Features
 
 #### Improvements
+
+- The self-hosted Palette system console login page now has improved visual feedback for login errors. If the username
+  and password fields are empty, they will be highlighted in red.
 
 #### Bug Fixes
 
