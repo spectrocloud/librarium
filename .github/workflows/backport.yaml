@@ -47,7 +47,7 @@ jobs:
       - name: Determine branch name
         id: extract_branch
         run: |
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
+          if [ "${{ github.event_name }}" = "pull_request_target" ]; then
             echo "GITHUB_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
           else
             echo "GITHUB_BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV
@@ -111,4 +111,4 @@ jobs:
           SLACK_USERNAME: "spectromate"
           SLACK_ICON_EMOJI: ":robot_panic:"
           SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: 'The backports for branch ${{env.GITHUB_BRANCH}} failed. Review the GitHub Actions logs for more details.'
+          SLACK_MESSAGE: 'The backports for branch ${{env.GITHUB_BRANCH}} and PR #${{ github.event.pull_request.number }} failed. Review the GitHub Actions logs for more details. \n Link to PR: ${{ github.event.pull_request.html_url }}'
