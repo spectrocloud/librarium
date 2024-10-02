@@ -110,7 +110,7 @@ Use the following steps to install Palette VerteX.
 
 2.  Invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The interactive CLI prompts you
     for configuration details and then initiates the installation. For more information about the `ec` subcommand, refer
-    to [Palette Commands](../../../../automation/palette-cli/commands/ec.md).
+    to [Palette Commands](../../../../automation/palette-cli/commands.md).
 
     ```bash
     palette ec install
@@ -129,10 +129,10 @@ Use the following steps to install Palette VerteX.
 4.  Select the desired OS you want to use for the installation. Review the table below for more information about each
     option.
 
-    | **Option**                   | **Description**                                                                                                                | **Requirements**                                                                                                                                                                                                 |
-    | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Ubuntu Pro**               | [Ubuntu Pro](https://ubuntu.com/pro) is the default option. It provides access to FIPS 140-2 certified cryptographic packages. | Ubuntu Pro token.                                                                                                                                                                                                |
-    | **Red Hat Linux Enterprise** | Red Hat Linux Enterprise provides access to Red Hat Enterprise Linux.                                                          | Red Hat subscription and a custom RHEL vSphere template with Kubernetes. Review the [RHEL and PXK](../../../../byoos/image-builder/build-image-vmware/rhel-pxk.md) to learn how to create the required template. |
+    | **Option**                   | **Description**                                                                                                                | **Requirements**                                                                                                                                                                                |
+    | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Ubuntu Pro**               | [Ubuntu Pro](https://ubuntu.com/pro) is the default option. It provides access to FIPS 140-2 certified cryptographic packages. | Ubuntu Pro token.                                                                                                                                                                               |
+    | **Red Hat Linux Enterprise** | Red Hat Linux Enterprise provides access to Red Hat Enterprise Linux.                                                          | Red Hat subscription and a custom RHEL vSphere template with Kubernetes. Review the [RHEL and PXK](../../../../byoos/usecases/vmware/rhel-pxk.md) to learn how to create the required template. |
 
 5.  Depending on your OS selection, you will be prompted to provide the required information. For Ubuntu Pro, you will
     need to provide your Ubuntu Pro token. For Red Hat Linux Enterprise, you will need to provide the path to the
@@ -370,9 +370,7 @@ Use the following steps to install Palette VerteX.
     ```
 
 16. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
-    you will be prompted to create a new password. Enter a new password and save your changes. Refer to the
-    [password requirements](../../../system-management/account-management/credentials.md#password-requirements-and-security)
-    documentation page to learn more about the password requirements.
+    you will be prompted to create a new password. Enter a new password and save your changes.
 
     Use the username `admin` and your new password to log in to the system console.
 

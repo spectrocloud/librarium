@@ -100,7 +100,7 @@ Use the following steps to install Palette.
 
 2.  Invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The interactive CLI prompts you
     for configuration details and then initiates the installation. For more information about the `ec` subcommand, refer
-    to [Palette Commands](../../../../automation/palette-cli/commands/commands.md).
+    to [Palette Commands](../../../../automation/palette-cli/commands.md).
 
     ```bash
     palette ec install
@@ -339,9 +339,7 @@ Use the following steps to install Palette.
     ```
 
 15. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
-    you will be prompted to create a new password. Enter a new password and save your changes. Refer to the
-    [password requirements](../../../system-management/account-management/credentials.md#password-requirements-and-security)
-    documentation page to learn more about the password requirements.
+    you will be prompted to create a new password. Enter a new password and save your changes.
 
     Use the username `admin` and your new password to log in to the system console.
 
