@@ -371,8 +371,8 @@ Use the following steps to install Palette VerteX.
 
 16. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
     you will be prompted to create a new password. Enter a new password and save your changes. Refer to the
-    [password requirements](../../../system-management/account-management/credentials.md#password-requirements-and-security)
-    documentation page to learn more about the password requirements.
+    [password requirements](../../../system-management/account-management/credentials.md) documentation page to learn
+    more about the password requirements.
 
     Use the username `admin` and your new password to log in to the system console. You can create additional system
     administrator accounts and assign roles to users in the system console. Refer to the
