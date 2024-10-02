@@ -40,8 +40,17 @@ voluptatibus laborum sapiente delectus.
 
 #### Improvements
 
-- The self-hosted Palette system console login page now has improved visual feedback for login errors. If the username
-  and password fields are empty, they will be highlighted in red.
+- The self-hosted Palette [system console](../enterprise-version/system-management/system-management.md#system-console)
+  login page now has improved visual feedback for login errors. If the username and password fields are empty, they will
+  be highlighted in red.
+
+- Several improvements have been introduced to the Palette UI in this release.These upgrades include better support for
+  wider screens, optimized page width, ensuring headings are visible on all screen sizes, and other responsive design
+  improvements. In addition, event and audit logs can now occupy the entire screen width.
+
+- The difference editor during
+  [cluster profile upgrades](../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) received
+  minor improvements to make it more user-friendly.
 
 #### Bug Fixes
 
