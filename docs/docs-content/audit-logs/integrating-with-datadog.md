@@ -51,8 +51,8 @@ installing Datadog Helm chart and configuring it.
    [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) for guidance on how to access your
    cluster with the `kubectl` CLI.
 
-2. Log in to Palette and add Datadog Helm repository. Click on **Tenant Settings** on the left, then on **Registries**, then
-   on **Add New Helm Registry** and add new Helm registry with the name Datadog and endpoint
+2. Log in to Palette and add Datadog Helm repository. Click on **Tenant Settings** on the left, then on **Registries**,
+   then on **Add New Helm Registry** and add new Helm registry with the name Datadog and endpoint
    [https://helm.datadoghq.com](https://helm.datadoghq.com). The synchronization takes a couple of minutes.
 
    :::tip
