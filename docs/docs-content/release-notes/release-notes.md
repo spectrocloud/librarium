@@ -40,6 +40,18 @@ voluptatibus laborum sapiente delectus.
 
 #### Improvements
 
+- You can now use OIDC user information endpoints to retrieve user information from your designated Identity Provider
+  (IdP), such as roles and groups. This improvement allows you to automate the synchronization of user roles and groups
+  in Palette with your IdP. Refer to [OIDC](../user-management/saml-sso/saml-sso.md) to learn more about enabling OIDC
+  integration in Palette.
+
+- Palette now supports automatic synchronization for OCI Helm registries. Previously, you had to trigger the
+  synchronization process manually. With this release, you can enable automatic synchronization for OCI Helm registries.
+  This feature is only available to new OCI Helm registries added to Palette. Existing OCI Helm registries will continue
+  to require manual synchronization. Re-register existing OCI Helm registries to take advantage of automatic
+  synchronization. Refer to the [Add OCI Helm Registry](../registries-and-packs/registries/oci-registry/add-oci-helm.md)
+  guide to learn more about adding an OCI Helm registry.
+
 - The self-hosted Palette [system console](../enterprise-version/system-management/system-management.md#system-console)
   login page now has improved visual feedback for login errors. If the username and password fields are empty, they will
   be highlighted in red.
@@ -51,6 +63,8 @@ voluptatibus laborum sapiente delectus.
 - The difference editor during
   [cluster profile upgrades](../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) received
   minor improvements to make it more user-friendly.
+
+- Palette's internal database, MongoDB, has been upgraded to version 6.0.
 
 #### Bug Fixes
 
