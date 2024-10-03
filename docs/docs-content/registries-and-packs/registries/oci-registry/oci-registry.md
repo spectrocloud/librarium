@@ -27,7 +27,7 @@ The following type of OCI registries are supported:
 
 ## Limitations
 
-- Synchronization is not supported for Zarf registries.
+- Automatic Synchronization is not supported for Zarf registries.
 
 - OCI Helm registries created before Palette version 4.5.0 do not support automatic synchronization. To enable automatic
   synchronization, re-register the OCI Helm registry.
