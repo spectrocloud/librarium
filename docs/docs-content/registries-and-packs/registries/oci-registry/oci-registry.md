@@ -27,10 +27,7 @@ The following type of OCI registries are supported:
 
 ## Limitations
 
-- Public OCI registries are not supported. You must use a private OCI registry that supports basic authentication.
-
-- Synchronization management is not supported for OCI registries. OCI registries are automatically synchronized with
-  Palette and the synchronization cannot be disabled.
+- Synchronization is not supported for Zarf registries.
 
 <br />
 
