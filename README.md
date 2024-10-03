@@ -30,9 +30,19 @@ To contribute, we recommend having the following software installed locally on y
 
 ## Local Development (Docker)
 
-To get started with the Docker based local development approach ensure you are in the root context of this repository.
+To get started with the Docker-based local development approach, ensure you are in the root context of this repository.
 
-Initailize the repository by issuing the following command:
+Export your Palette API key.
+
+```shell
+export PALETTE_API_KEY=""
+```
+
+> [!IMPORTANT] You need a Palette API key to use the Docker-based local development approach. Refer to the
+> [Create API Key](https://docs.spectrocloud.com/user-management/authentication/api-key/create-api-key/) guide to learn
+> how to create a Palette API key.
+
+Initialize the repository by issuing the following command:
 
 ```shell
 make init
