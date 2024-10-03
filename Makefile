@@ -72,6 +72,10 @@ clean-visuals:
 init: ## Initialize npm dependencies
 	@echo "initializing npm dependencies"
 	npm ci
+	touch .env
+	grep -q "^ALGOLIA_APP_ID=" .env || echo "\nALGOLIA_APP_ID=1234567890" >> .env
+	grep -q "^ALGOLIA_SEARCH_KEY=" .env || echo "\nALGOLIA_SEARCH_KEY=1234567890" >> .env
+	grep -q "^ALGOLIA_INDEX_NAME=" .env || echo "\nALGOLIA_INDEX_NAME=spectrocloud" >> .env
 	npx husky install
 
 start: ## Start a local development server
@@ -129,7 +133,7 @@ docker-image: ## Build the docker image
 	docker build -t $(IMAGE) .
 
 docker-start: docker-image ## Start a local development container
-	docker run --rm -it -v $(CURDIR)/docs:/librarium/docs/ -p 9000:9000 $(IMAGE)
+	docker run --env-file=.env --rm -it -v $(CURDIR)/docs:/librarium/docs/ -p 9000:9000 $(IMAGE)
 
 
 ##@ Writing Checks
