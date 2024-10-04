@@ -175,8 +175,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 
     ![View of the cluster profile creation page with the BYOS pack.](/deployment-modes_agent-mode_byos-pack.webp)
 
-17. Update the `system.uri` parameter with the desired Kubernetes image. Refer to the [Configuration Reference] page for
-    a list of verified Kubernetes versions and distributions.
+17. Update the `system.uri` parameter with the desired Kubernetes image.
 
     Additionally, include the `stylusPackage` line following the example below.
 
