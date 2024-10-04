@@ -3,7 +3,7 @@ sidebar_label: "Install Palette Agent"
 title: "Install Palette Agent"
 description: "Learn how to install the Palette Agent on your host."
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 10
 tags: ["edge", "agent mode"]
 ---
 
