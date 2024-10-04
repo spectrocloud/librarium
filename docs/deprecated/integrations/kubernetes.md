@@ -39,8 +39,8 @@ Konvoy, and more, should you want to consume a different Kubernetes distribution
 
 PXK is different from the upstream open-source Kubernetes version primarily because of the carefully reviewed and
 applied hardening of the operating system (OS) and Kubernetes. The hardening ranges from removing unused kernel modules
-to using an OS configuration that follows industry best practices. Our recompiled Kubernetes configuration addresses common
-Kubernetes deployment security pitfalls and implements industry best practices.
+to using an OS configuration that follows industry best practices. Our recompiled Kubernetes configuration addresses
+common Kubernetes deployment security pitfalls and implements industry best practices.
 
 A benefit of Palette when used with PXK is the ability to apply different flavors of container storage interface (CSI)
 plugins and container network interface (CNI) plugins. Other open-source Kubernetes distributions, such as MicroK8s,
@@ -71,7 +71,9 @@ distribution, OS, and management platform VerteX is FIPS-compliant.
 
 :::info
 
-While Palette eXtended Kubernetes is designed to work seamlessly with the Palette VerteX management plane, in the case Palette VerteX management plane is removed, it can be managed using standard Kubernetes tools like `kubeadm` and `clusterctl` without relying on Palette VerteX. 
+While Palette eXtended Kubernetes is designed to work seamlessly with the Palette VerteX management plane, in the case
+Palette VerteX management plane is removed, it can be managed using standard Kubernetes tools like `kubeadm` and
+`clusterctl` without relying on Palette VerteX.
 
 :::
 
