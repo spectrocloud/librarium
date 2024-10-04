@@ -13,12 +13,11 @@ tags: ["release-notes"]
 
 ## October 12, 2024 - Release 4.5.0 - 4.5.X
 
-Et consequatur ea asperiores temporibus. Impedit exercitationem veritatis ut laudantium est eum rem in libero
-asperiores. Voluptas culpa repellat et ea rerum dolores illum quas nostrum quis architecto architecto doloremque. Aut in
-quos quia ut quisquam. Officiis consequatur aut commodi dignissimos quis quia pariatur quo modi explicabo non nisi.
-Quisquam qui nihil molestiae tenetur molestiae et sint non illum at tempora veniam. Officiis libero odio consequatur
-dicta corporis velit repudiandae est. Ex eum et voluptatum animi doloremque libero modi quam maxime unde labore
-voluptatibus laborum sapiente delectus.
+This release of Palette features a new deployment model, Agent Mode, and contains several new improvements and
+enhancements. Take a moment and review the breaking changes and deprecation messages to ensure you stay informed of
+upcoming changes. We also have a new and improved [Getting Started](../getting-started/getting-started.md) series worth
+checking out, especially if you have new users needing to get familiar with Palette. Check out the following sections to
+learn more about the changes introduced in this release.
 
 ### Security Notices
 
@@ -89,14 +88,6 @@ voluptatibus laborum sapiente delectus.
   [Disable Webhook to Customize Image Pull Behavior](../clusters/edge/site-deployment/site-deployment.md) guide to learn
   more about this feature.
 
-### Palette Dev Engine (PDE)
-
-#### Known Issues
-
-### Virtual Machine Orchestrator (VMO)
-
-#### Improvements
-
 ### Automation
 
 - Terraform version 0.22.0 of the
@@ -109,6 +100,16 @@ voluptatibus laborum sapiente delectus.
   [VMO](../automation/palette-cli/commands/vmo.md) reference page to learn more about these commands.
 
 ### Docs and Education
+
+- The [Getting Started](../getting-started/getting-started.md) section of the documentation has been updated to provide
+  a more comprehensive guide for new users to get started with Palette. In the Getting Started section, you can now find
+  guides featuring AWS, Azure, GCP, and VMware vSphere. The sections have been updated with new tutorials and feature
+  the fictional company Spacetastic to help you understand how to use Palette to manage your infrastructure.
+
+- A new tutorial for Edge is now available. The
+  [Deploy an Edge Cluster on VirtualBox](../tutorials/edge/deploy-cluster-virtualbox.md) tutorial provides a
+  step-by-step guide to deploying an Edge cluster on VirtualBox. This tutorial is great for new users who want to learn
+  more about Edge and gain hands-on experience without needing access to physical hardware.
 
 ### Packs
 
