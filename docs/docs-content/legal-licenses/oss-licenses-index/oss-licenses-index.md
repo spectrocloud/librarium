@@ -12,5 +12,5 @@ This section documents the open-source licenses associated with the libraries an
 
 ## Resources
 
-- [Palette Open-source Licenses](./oss-licenses.md)
-- [PXK Open-source Licenses](./pxk-oss-licenses.md)
+- [Palette](./oss-licenses.md)
+- [Palette eXtended Kubernetes](./pxk-oss-licenses.md)
