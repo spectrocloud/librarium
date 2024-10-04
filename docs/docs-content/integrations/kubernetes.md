@@ -31,7 +31,7 @@ Review our [Maintenance Policy](maintenance-policy.md) to learn about pack updat
 
 ## What is PXK?
 
-Palette eXtended Kubernetes (PXK) is a customized version of the open-source Cloud Native Computing Foundation (CNCF)
+Palette eXtended Kubernetes (PXK) is a recompiled version of the open-source Cloud Native Computing Foundation (CNCF)
 distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure
 providers, public cloud providers, and private data center providers. This is the default distribution when deploying a
 Kubernetes cluster through Palette. You have the option to choose other Kubernetes distributions, such as MicroK8s,
@@ -39,8 +39,8 @@ Konvoy, and more, should you want to consume a different Kubernetes distribution
 
 PXK is different from the upstream open-source Kubernetes version primarily because of the carefully reviewed and
 applied hardening of the operating system (OS) and Kubernetes. The hardening ranges from removing unused kernel modules
-to using an OS configuration that follows industry best practices. Our custom Kubernetes configuration addresses common
-Kubernetes deployment security pitfalls and implements industry best practices.
+to using an OS configuration that follows industry best practices. Our recompiled Kubernetes configuration addresses
+common Kubernetes deployment security pitfalls and implements industry best practices.
 
 A benefit of Palette when used with PXK is the ability to apply different flavors of container storage interface (CSI)
 plugins and container network interface (CNI) plugins. Other open-source Kubernetes distributions, such as MicroK8s,
@@ -58,6 +58,15 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 
 :::
 
+### CNCF Conformance
+
+PXK is a CNCF-certified Kubernetes distribution. The CNCF certification ensures that the Kubernetes distribution
+supports the required Kubernetes APIs. You can view the official list of CNCF-certified products by visiting the
+[Certified Kubernetes Software Conformance](https://www.cncf.io/certification/software-conformance/) page. To review
+what versions of PXK are certified, refer to the official
+[Kubernetes Distributions & Platforms](https://docs.google.com/spreadsheets/d/1uF9BoDzzisHSQemXHIKegMhuythuq_GL3N1mlUUK2h0/edit?usp=sharing)
+spreadsheet maintained by the CNCF.
+
 ### PXK and Palette VerteX
 
 <!-- prettier-ignore-start -->
@@ -69,6 +78,14 @@ on the NIST-800 standard. However, if you use a different OS through the <Versio
 
 The combined usage of PXK and Palette VerteX provides a secure and FIPS-compliant experience as the Kubernetes
 distribution, OS, and management platform VerteX is FIPS-compliant.
+
+:::info
+
+Palette eXtended Kubernetes is optimized for the Palette or VerteX management plane. In the event that the Palette or
+VerteX management plane is removed, you can continue to manage the Kubernetes cluster through tools
+like `kubeadm` and `clusterctl` without relying on Palette or VerteX.
+
+:::
 
 ### Support Lifecycle
 
