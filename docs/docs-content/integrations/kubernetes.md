@@ -58,6 +58,15 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 
 :::
 
+### CNCF Conformance
+
+PXK is a CNCF-certified Kubernetes distribution. The CNCF certification ensures that the Kubernetes distribution
+supports the required Kubernetes APIs. You can view the offical list of CNCF-certified products by visiting the
+[Certified Kubernetes Software Conformance](https://www.cncf.io/certification/software-conformance/) page. To review
+what versions of PXK are certified, refer to the official
+[Kubernetes Distributions & Platforms](https://docs.google.com/spreadsheets/d/1uF9BoDzzisHSQemXHIKegMhuythuq_GL3N1mlUUK2h0/edit?usp=sharing)
+spreadsheet maintained by the CNCF.
+
 ### PXK and Palette VerteX
 
 <!-- prettier-ignore-start -->
@@ -72,9 +81,9 @@ distribution, OS, and management platform VerteX is FIPS-compliant.
 
 :::info
 
-While Palette eXtended Kubernetes is designed to work seamlessly with the Palette VerteX management plane, in the case
-Palette VerteX management plane is removed, it can be managed using standard Kubernetes tools like `kubeadm` and
-`clusterctl` without relying on Palette VerteX.
+Palette eXtended Kubernetes is optimized for the Palette or VerteX management plane. In the event that the Palette or
+VerteX management plane is removed, you can continue to manage the Kubernetes cluster through tools
+like `kubeadm` and `clusterctl` without relying on Palette or VerteX.
 
 :::
 
