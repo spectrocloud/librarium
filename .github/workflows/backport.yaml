@@ -113,4 +113,4 @@ jobs:
           SLACK_COLOR: ${{ job.status }}
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
-          SLACK_MESSAGE: 'The backports for branch ${{env.GITHUB_BRANCH}} and PR [#${{ github.event.pull_request.number }}](${{ github.event.pull_request.html_url }}) failed. Review the GitHub Actions logs for more details.'
+          SLACK_MESSAGE: 'The backports for branch `${{env.GITHUB_BRANCH}}` in PR [#${{ github.event.pull_request.number }}](${{ github.event.pull_request.html_url }}) failed. Review the PR for more details.'
