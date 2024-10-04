@@ -42,6 +42,8 @@ form a cluster instead of the Palette Management Plane. The provider images are 
 and Kubernetes distribution. Once your cluster is operational, no one will be able to make further changes to the OS.
 You can also use the Trusted Boot feature to further enhance the security of your hosts.
 
+![Architecture Diagram for Appliance Mode](/deployment-modes_appliance-mode.webp)
+
 Appliance mode requires significantly less permissions to your existing system compared with controller mode. In
 addition, the immutability and security provided by appliance mode makes it an ideal choice for deployment in Edge
 locations, though you can still deploy to data center. Because Palette is no longer managing the infrastructure for you,
@@ -53,6 +55,8 @@ Agent mode is similar to appliance mode in that the bulk of the actions involved
 host instead of being initiated by the Palette Management Plane, and in that you are in charge of provisioning the
 infrastructure. Unlike appliance mode, agent mode does not require you to use EdgeForge to create the immutable OS
 image. You can instead install the Palette agent on your existing machine and use the existing OS.
+
+![Architecture Diagram for Appliance Mode](/deployment-modes_agent-mode.webp)
 
 Agent mode is especially convenient for organizations that have stringent security policies. Since it allows you to use
 your existing OS, you no longer need to obtain additional approval from using a new OS that you build with EdgeForge. In
