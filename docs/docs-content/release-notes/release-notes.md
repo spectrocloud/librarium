@@ -83,6 +83,12 @@ voluptatibus laborum sapiente delectus.
 
 #### Improvements
 
+- You can now disable the webhook Edge hosts use to redirect image pulls to the appropriate locations depending on your
+  Edge user data configuration. Turning off the default webhook allows you to use diverse registry setups, such as
+  private authenticated registries and airgap domains. Check out the
+  [Disable Webhook to Customize Image Pull Behavior](../clusters/edge/site-deployment/site-deployment.md) guide to learn
+  more about this feature.
+
 ### Palette Dev Engine (PDE)
 
 #### Known Issues
