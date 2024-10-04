@@ -91,17 +91,21 @@ jobs:
             jq '[.[] | select(.user.login == "vault-token-factory-spectrocloud[bot]")] | length')
           
           MATCHED=${{ steps.check_labels.outputs.matched }}
-
+      
           echo "Before Backports Count: $BEFORE_BACKPORTS"
           echo "New PR Count: $NEW_COUNT"
           echo "Matched Backport Labels: $MATCHED"
-
+      
           if [ $((NEW_COUNT - BEFORE_BACKPORTS)) -eq $MATCHED ]; then
             echo "PR count increased by the expected amount."
+            echo "missing_prs=0" >> $GITHUB_OUTPUT
           else
+            MISSING_PR_COUNT=$((MATCHED - (NEW_COUNT - BEFORE_BACKPORTS)))
             echo "PR count did not increase by the expected amount."
+            echo "missing_prs=$MISSING_PR_COUNT" >> $GITHUB_OUTPUT
             exit 1
           fi
+      
 
       - name: Slack Notification
         if: ${{ failure() }}
@@ -113,4 +117,4 @@ jobs:
           SLACK_COLOR: ${{ job.status }}
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
-          SLACK_MESSAGE: 'The backports for branch ${{env.GITHUB_BRANCH}} and PR [#${{ github.event.pull_request.number }}](${{ github.event.pull_request.html_url }}) failed. Review the GitHub Actions logs for more details.'
+          SLACK_MESSAGE: 'The backports for branch `${{env.GITHUB_BRANCH}}` in PR [#${{ github.event.pull_request.number }}](${{ github.event.pull_request.html_url }}) failed. Number of missing PRs: `${{ steps.verify_increment.outputs.missing_prs }}`. Review the PR for more details.'
