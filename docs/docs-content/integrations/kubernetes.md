@@ -61,7 +61,7 @@ We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Ref
 ### CNCF Conformance
 
 PXK is a CNCF-certified Kubernetes distribution. The CNCF certification ensures that the Kubernetes distribution
-supports the required Kubernetes APIs. You can view the offical list of CNCF-certified products by visiting the
+supports the required Kubernetes APIs. You can view the official list of CNCF-certified products by visiting the
 [Certified Kubernetes Software Conformance](https://www.cncf.io/certification/software-conformance/) page. To review
 what versions of PXK are certified, refer to the official
 [Kubernetes Distributions & Platforms](https://docs.google.com/spreadsheets/d/1uF9BoDzzisHSQemXHIKegMhuythuq_GL3N1mlUUK2h0/edit?usp=sharing)

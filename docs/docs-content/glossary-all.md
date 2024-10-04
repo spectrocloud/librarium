@@ -15,8 +15,8 @@ This page gives a quick reference to various object types and concepts within th
 
 ## Agent
 
-The Palette Agent bridges the information transfer between Palette SaaS and Palette management llane. The agent collects
-information such as metrics, workloads, and heartbeats and constantly updates to the mangement plane. In addition to
+The Palette Agent bridges the information transfer between Palette SaaS and Palette management plane. The agent collects
+information such as metrics, workloads, and heartbeats and constantly updates to the management plane. In addition to
 this, the agent is responsible for initiating and controlling Backup, OS-Patch, and Compliance Scan on the active
 cluster.
 
