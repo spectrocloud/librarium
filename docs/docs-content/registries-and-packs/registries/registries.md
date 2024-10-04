@@ -16,6 +16,12 @@ can add the following types of registries to Palette:
 
 - Legacy Pack Registries
 
+:::info
+
+We recommend you use [OCI registries](./oci-registry/oci-registry.md) over Legacy Pack registries.
+
+:::
+
 Palette supports OCI registries that support basic authentication. OCI registries can also be used to store and serve
 images, Helm Charts, Zarf packages, and Packs. Refer to the [OCI Registries](./oci-registry/oci-registry.md) resource to
 learn more about OCI registries.
