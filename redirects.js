@@ -554,6 +554,10 @@ const redirects = [
     to: "/automation/palette-cli/commands/ec/",
   },
   {
+    from: "/legal-licenses/oss-licenses/",
+    to: "/legal-licenses/oss-licenses-index/",
+  },
+  {
     from: [
       "/integrations/antrea-cni",
       "/integrations/aws-autoscaler",
