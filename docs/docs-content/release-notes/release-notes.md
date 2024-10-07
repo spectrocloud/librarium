@@ -23,7 +23,7 @@ learn more about the changes introduced in this release.
 
 - Review the [Security Bulletins](../security-bulletins/reports/reports.md) page for the latest security advisories.
 
-### Palette Enterprise
+### Palette Enterprise {#palette-enterprise-4-5-x}
 
 #### Breaking Changes
 
@@ -42,7 +42,8 @@ learn more about the changes introduced in this release.
   Palette. The Palette agent is downloaded and installed on the machine, and the machine is then registered with
   Palette. The new model provides more flexibility for customers who want to use their own OS and manage the
   infrastructure provisioning process. In this release, the first supported use case for agent mode is Edge deployments.
-  Check out the [Agent Mode](../automation/automation.md) section to learn more about this new deployment model.
+  Check out the [Agent Mode](../automation/automation.md) section to learn more about this new deployment model. This
+  feature is only available to Palette Enterprise, and is not available in Palette VerteX.
 
 #### Improvements
 
@@ -87,6 +88,13 @@ learn more about the changes introduced in this release.
 
 #### Features
 
+- You can now use LocalUI to facilitate user authentication for applications deployed onto Edge clusters. Application
+  developers can use the JWT token provided by LocalUI to authenticate users for their application hosted in the Edge
+  cluster. The LocalUI provides a shared public key to each Edge host that you can use to verify the JWT token produced
+  by LocalUI. Use this feature to enable a single source of authentication for application deployed onto of your Edge
+  cluster. Check out the [LocalUI](../clusters/edge/site-deployment/site-deployment.md) guide to learn more about this
+  feature.
+
 #### Improvements
 
 - You can now disable the webhook Edge hosts use to redirect image pulls to the appropriate locations depending on your
@@ -94,6 +102,13 @@ learn more about the changes introduced in this release.
   private authenticated registries and airgap domains. Check out the
   [Disable Webhook to Customize Image Pull Behavior](../clusters/edge/site-deployment/site-deployment.md) guide to learn
   more about this feature.
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4-5-x) for more details.
 
 ### Automation
 
@@ -122,15 +137,58 @@ learn more about the changes introduced in this release.
 
 #### Pack Notes
 
+#### OS
+
+| Pack Name | New Version |
+| --------- | ----------- |
+| BYOS      | 2.0.0       |
+
 #### Kubernetes
+
+| Pack Name | New Version |
+| --------- | ----------- |
+| K3s       | 1.28.14     |
+| K3s       | 1.29.9      |
+| K3s       | 1.30.5      |
+| Microk8s  | 1.28        |
 
 #### CNI
 
+| Pack Name  | New Version |
+| ---------- | ----------- |
+| Calico     | 3.28.2      |
+| Custom CNI | 1.0.0       |
+
 #### CSI
+
+| Pack Name           | New Version |
+| ------------------- | ----------- |
+| AWS EBS             | 1.35.0      |
+| Custom CSI          | 1.0.0       |
+| Portworx w/Operator | 3.1.5       |
+| Rook Ceph           | 1.14.9      |
 
 #### Add-on Packs
 
+| Pack Name                 | New Version |
+| ------------------------- | ----------- |
+| AWS ALB                   | 2.8.3       |
+| Cillium Tetragon          | 1.2.0       |
+| Dex                       | 2.39.1      |
+| ExternalDNS               | 0.15.0      |
+| External Secrets Operator | 0.10.3      |
+| Istio                     | 1.23.1      |
+| Kong                      | 2.41.1      |
+| Nginx                     | 1.11.2      |
+| Spectro Proxy             | 1.5.4       |
+| Vault                     | 0.28.1      |
+
 #### FIPS Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+| AWS EBS   | 1.35.0      |
+| Calico    | 3.28.2      |
 
 #### Deprecations and Removals
 
