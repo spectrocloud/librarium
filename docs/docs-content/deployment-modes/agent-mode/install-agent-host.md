@@ -19,6 +19,21 @@ This page guides you through the process of installing the Palette agent on your
 user data file to configure your host, install the agent, and verify that your host was successfully registered with
 Palette. You will then create a cluster profile and use the registered host to deploy a cluster.
 
+:::preview
+
+:::
+
+## Limitations
+
+- Currently, agent mode only supports non-FIPS workflows.
+
+- The following table presents the verified combinations of host architecture and cluster profile layers.
+
+  | Host Architecture | OS     | Kubernetes | CNI     | Verified           |
+  | ----------------- | ------ | ---------- | ------- | ------------------ |
+  | AMD64             | Ubuntu | PXKE       | Calico  | :white_check_mark: |
+  | AMD64             | Ubuntu | K3s        | Flannel | :white_check_mark: |
+
 ## Prerequisites
 
 - A physical or virtual host with SSH access, access to the Internet, and connection to Palette. This guide uses an
@@ -37,7 +52,6 @@ Palette. You will then create a cluster profile and use the registered host to d
 - One IP address is required for the cluster's Virtual IP (VIP) address.
 
 - Ensure the following software is installed and available:
-  - A text editor, such as Vi or Nano. This guide uses Vi as an example.
   - [jq](https://jqlang.github.io/jq/download/)
   - [Zstandard](https://facebook.github.io/zstd/)
   - [conntrack](https://conntrack-tools.netfilter.org/downloads.html)
@@ -141,7 +155,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 7. Issue the following command to install the agent on your host.
 
    ```shell
-   sudo ./install.sh
+   sudo --preserve-env ./install.sh
    ```
 
    The termination of the SSH connection, as shown in the example below, confirms that the script has completed its
