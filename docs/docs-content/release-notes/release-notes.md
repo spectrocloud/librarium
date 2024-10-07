@@ -89,11 +89,10 @@ learn more about the changes introduced in this release.
 #### Features
 
 - You can now use LocalUI to facilitate user authentication for applications deployed onto Edge clusters. Application
-  developers can use the JWT token provided by LocalUI to authenticate users for their application hosted in the Edge
+  developers can use the JWT token provided by LocalUI to authenticate users for their applications hosted in the Edge
   cluster. The LocalUI provides a shared public key to each Edge host that you can use to verify the JWT token produced
-  by LocalUI. Use this feature to enable a single source of authentication for application deployed onto of your Edge
-  cluster. Check out the [LocalUI](../clusters/edge/site-deployment/site-deployment.md) guide to learn more about this
-  feature.
+  by LocalUI. This feature enables a single authentication source for applications deployed onto your Edge cluster.
+  Check out the [LocalUI](../clusters/edge/site-deployment/site-deployment.md) guide to learn more about this feature.
 
 #### Improvements
 
