@@ -29,10 +29,17 @@ infrastructure is provisioned, the Palette agent managing the cluster starts to 
 System (OS), Kubernetes, network and storage plugins, as well as applications. You may customize the OS in any way you
 wish, and use that OS image in your cluster profile.
 
+### Why Use Controller Mode
+
+The advantage of controller mode is that your cluster is fully managed by Palette, saving you significant time, effort,
+and upfront investment that would have been required for managing your own infrastructure. If your applications
+primarily run on public clouds or data centers, using controller mode allows you to manage everything for your cluster,
+from infrastructure to applications, in a unified platform.
+
 Because Palette is provisioning and managing infrastructure for you, controller mode also requires that you provide
-Palette with all the necessary permissions and credentials to perform these actions. The advantage of controller mode is
-that your cluster is fully managed by Palette, potentially saving you significant time, effort, and upfront investment
-that would have been required for managing your own infrastructure.
+Palette with all the necessary permissions and credentials to perform these actions. For more information on the
+required permissions, refer to the Required Permissions page for the corresponding infrastructure provider. For example,
+refer to [Required IAM Policies](../clusters/public-cloud/aws/required-iam-policies.md) for AWS.
 
 ## Appliance Mode
 
@@ -49,6 +56,8 @@ operational, no one will be able to make further changes to the OS, unless you b
 your cluster.
 
 ![Architecture Diagram for Appliance Mode](/deployment-modes_appliance-mode.webp)
+
+### Why Use Appliance Mode
 
 Appliance mode does not require you to provide us with any credentials to your cloud environments. In addition, the
 immutability and security provided by appliance mode makes it an ideal choice for deployment in Edge locations, though
@@ -67,7 +76,7 @@ Unlike appliance mode, you have more freedom to manage the OS for your clusters.
 EdgeForge to create an immutable OS image or Kubernetes image. Instead, you can use a script to install the Palette
 agent on your existing machine, with its existing OS, or build an OS image that includes the Palette agent.
 
-![Architecture Diagram for Appliance Mode](/deployment-modes_agent-mode.webp)
+### Why Use Agent Mode
 
 Agent mode is especially convenient for organizations that have stringent security policies and you already have tools
 in place to manage some specific OS. Since it allows you to use your existing OS, you no longer need to obtain
