@@ -37,6 +37,13 @@ learn more about the changes introduced in this release.
 
 #### Features
 
+- <TpBadge /> A new deployment model is available in Palette, Agent Mode. Agent mode allows you to use your preferred
+  security-hardened Operating System (OS) or immutable OS and machine without sharing cloud provider credentials with
+  Palette. The Palette agent is downloaded and installed on the machine, and the machine is then registered with
+  Palette. The new model provides more flexibility for customers who want to use their own OS and manage the
+  infrastructure provisioning process. In this release, the first supported use case for agent mode is Edge deployments.
+  Check out the [Agent Mode](../automation/automation.md) section to learn more about this new deployment model.
+
 #### Improvements
 
 - You can now use OIDC user information endpoints to retrieve user information from your designated Identity Provider
