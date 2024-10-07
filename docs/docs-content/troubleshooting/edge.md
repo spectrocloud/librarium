@@ -233,3 +233,27 @@ are no longer in use and can be erased internally. To enable TRIM operations, us
 
 7. Use the updated profile to create a [new Edge cluster](../clusters/edge/site-deployment/cluster-deployment.md) or
    update an existing Edge cluster.
+
+## Scenario - Clusters with Cilium and RKE2 Experiences Kubernetes Upgrade Failure
+
+When you upgrade your cluster from RKE2 1.29 to 1.30 and you use the Cilium CNI, the upgrade could fail with error
+messages similar to the following. This is due to an upstream issue with Cilium.
+
+### Debug Steps
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Navigate to the left **Main Menu** and click on **Profiles**.
+
+3. Select the **Cluster Profile** that you want to use for your Edge cluster.
+
+4. Click on the Cilium layer to access its YAML configuration.
+
+5. Add the following lines under `charts.cilium`. These add the annotations to the Cilium DaemonSet.
+
+   ```yaml
+   container.apparmor.security.beta.kubernetes.io/cilium-agent: "unconfined"
+   container.apparmor.security.beta.kubernetes.io/clean-cilium-state: "unconfined"
+   container.apparmor.security.beta.kubernetes.io/mount-cgroup: "unconfined"
+   container.apparmor.security.beta.kubernetes.io/apply-sysctl-overwrites: "unconfined"
+   ```
