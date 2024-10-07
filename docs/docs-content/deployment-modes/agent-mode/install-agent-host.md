@@ -7,7 +7,7 @@ sidebar_position: 10
 tags: ["edge", "agent mode"]
 ---
 
-Agent Mode allows you to bring your own host, regardless of its architecture and Operating System (OS), to be managed by
+Agent mode allows you to bring your own host, regardless of its architecture and Operating System (OS), to be managed by
 Palette and to operate as nodes in your Kubernetes clusters. For example, you can use an
 [AWS EC2 instance](https://aws.amazon.com/ec2/), a
 [Raspberry Pi](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.raspberrypi.com/&ved=2ahUKEwi-38Gt__SIAxU2CnkGHeU6Ha8QFnoECAkQAQ&usg=AOvVaw12ldjgQls5EV3KbUmJD0nz),
