@@ -168,6 +168,12 @@ Review the following steps to accept incoming pack updates to a cluster profile.
    Otherwise, you will be presented with the **Review changes in Editor** button, which allows you to review the changes
    before applying them.
 
+   :::tip
+
+   If a pack row has an information icon, hover over the icon to learn more about the changes.
+
+   :::
+
    ![A view of the cluster profile update widget displaying a new packs versions but changes that require the user's input.](/profiles_cluster-profiles_modify-cluster-profiles_new-version-notifcation-changes-required.webp)
 
 6. Click on the **Apply Changes** button to apply the updates to the profile. If have changes that require your
