@@ -126,6 +126,8 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 5. Download the agent installation script.
 
+   <!-- This link will be updated before the release. -->
+
    ```shell
    curl --output ./install.sh https://rishi-public-dnd.s3.amazonaws.com/latest-edge-standard/install.sh
    ```
@@ -172,6 +174,8 @@ Palette. You will then create a cluster profile and use the registered host to d
     **1.0.0** to the OS layer.
 
 16. Click **Values** under **Pack Details** to edit the pack's manifest.
+
+    <!-- Steps 16 and 17 use the old version of the BYOS pack. The steps will be updated once the new version of the pack is available. -->
 
     ![View of the cluster profile creation page with the BYOS pack.](/deployment-modes_agent-mode_byos-pack.webp)
 

@@ -7,14 +7,50 @@ sidebar_position: 30
 tags: ["CAPI"]
 ---
 
-In controller mode, Palette provisions Kubernetes clusters and their infrastructure resources using
-[Cluster API](https://cluster-api.sigs.k8s.io/). Cluster API is a Kubernetes sub-project focused on providing
-declarative APIs and tooling to automate cluster lifecycle management for platform operations. It ensures a consistent
-experience in cluster deployment across different infrastructure environments.
+Controller mode uses the Palette Management Plane and the [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io/) project
+to provision and manage clusters along with their underlying infrastructure resources in the specified target
+environment. CAPI is a Kubernetes sub-project focused on providing declarative APIs and tooling to automate cluster
+lifecycle management for platform operations.
+
+To create a cluster, you simply need to provide Palette with the required permissions and credentials, and then request
+Palette to create a cluster. The following steps briefly describe what happens after the cluster creation request.
+
+1. The Palette Management Plane creates the CAPI Custom Resource Definitions (CRDs) for the target cloud.
+
+2. CAPI then uses the CRDs to provision the first control plane node on the target enrivonment.
+
+3. Next, the Palette Management Plane installs a Pallete agent on the node and performs a pivot of CAPI resources,
+   transferring management responsibilities to the workload cluster.
+
+4. The workload cluster then creates the remaining control plane and worker nodes.
+
+<!-- prettier-ignore -->
+5. Finally, the Palette agent installs the cluster's add-ons as specified in the cluster profile. This includes
+   downloading images for the Operating System (OS), Kubernetes, network and storage plugins, and applications. You also
+   have the option to customize the OS image and use it with the
+   <VersionedLink text="BYOS pack" url="/integrations/packs/?pack=generic-byoi"/> in the cluster profile.
+
+The diagram below illustrates the controller mode cluster provisioning workflow.
+
+![Controller Mode diagram](/deployment-modes_controller-diagram.webp)
 
 ## Use Cases
 
-You can deploy clusters in controller mode across a variety of environments, including public clouds and on-prem data
-centers.
+You can deploy clusters in controller mode across a range of environments to meet your operational requirements. The
+table below provides an overview of the different use cases and the corresponding supported environments for controller
+mode deployments.
+
+| Use Case          | Supported Environments                                                                                                                           |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Public Cloud**  | [AWS](../clusters/public-cloud/aws/aws.md)<br />[Azure](../clusters/public-cloud/azure/azure.md)<br />[GCP](../clusters/public-cloud/gcp/gcp.md) |
+| **Data Center**   | [VMware vSphere](../clusters/data-center/vmware/vmware.md)                                                                                       |
+| **Bare Metal**    | [MAAS](../clusters/data-center/maas/maas.md)                                                                                                     |
+| **Private Cloud** | [Nutanix](../clusters/data-center/nutanix/nutanix.md)<br />[Openstack](../clusters/data-center/openstack.md)                                     |
 
 ## Resources
+
+- [Architecture Overview](../architecture/architecture-overview.md)
+
+- [Order of Operations](../architecture/orchestration-spectrocloud.md)
+
+- [Getting Started](../getting-started/getting-started.md)
