@@ -187,8 +187,8 @@ Review the following steps to accept incoming pack updates to a cluster profile.
    - **Prev**: Click to navigate to the previous change.
    - **Next**: Click to navigate to the next change.
    - **Keep**: Click to apply the current change.
-   - **Revert**: Click to revert the the accepted change. This button will only appear after you have clicked the
-     **Keep** button.
+   - **Revert**: Click to revert the accepted change. This button will only appear after you have clicked the **Keep**
+     button.
 
    The differential editor will display the changes between the current YAML configuration and new incoming YAML changes
    by highlighting the differences. The color-coded highlights indicate the following:
@@ -201,7 +201,7 @@ Review the following steps to accept incoming pack updates to a cluster profile.
    - _Blue highlight_ indicates additions in the new configuration that are not present in the pack version you are
      using.
 
-     ![Screenshot that shows Palette's pack diff user interface with yello highlight at left and blue highlight at right](/profiles_cluster-profiles_modify-cluster-incoming-updates.webp)
+     ![Screenshot that shows Palette's pack diff user interface with yellow highlight at left and blue highlight at right](/profiles_cluster-profiles_modify-cluster-incoming-updates.webp)
 
 8. Repeat step 7 until you have reviewed all the changes for each pack layer. You can select a different pack layer from
    the left-hand side of the editor. Once a pack layer is reviewed, a gray checkmark will appear next to the pack name.
@@ -272,7 +272,7 @@ Ensure you follow these practices when updating to a new pack version.
 
      #### Example of Difference Between Current and New Configurations
 
-     ![Screenshot that shows Palette's pack diff user interface with yello highlight at left and blue highlight at right](/integrations_pack_diffs.webp)
+     ![Screenshot that shows Palette's pack diff user interface with yellow highlight at left and blue highlight at right](/integrations_pack_diffs.webp)
 
 5. Check for yellow-highlight in the configuration that are missing in the new configuration. If there are any
    customizations lines you added, use the **Keep** button to transfer the lines to the new version. Otherwise, click on
