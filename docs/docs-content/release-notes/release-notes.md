@@ -98,6 +98,11 @@ learn more about the changes introduced in this release.
   [Disable Webhook to Customize Image Pull Behavior](../clusters/edge/site-deployment/site-deployment.md) guide to learn
   more about this feature.
 
+#### Bug Fixes
+
+<!-- prettier-ignore -->
+- Fixed an issue where the <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor-edge-native-config" /> pack's SSL certificate was not   updated during Day-2 operations. The file **harbor-ca.crt** is now updated during Day-2 operations.
+
 ### VerteX
 
 #### Features
