@@ -40,8 +40,8 @@ or open a new tab in your browser depending on how to configure the links.
   command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
   create privileged containers.
 
-- A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for a
-  [free trial](https://www.spectrocloud.com/free-tier/).
+- A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for an account
+  [here](https://www.spectrocloud.com/get-started).
 
 ## Customize theme during EdgeForge
 
