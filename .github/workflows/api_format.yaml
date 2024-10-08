@@ -5,7 +5,7 @@ on:
     types: ["labeled", "closed"]
 
 concurrency:
-  group: ci-${{ github.ref }}
+  group: api-format-${{ github.ref }}
   cancel-in-progress: true
 
 env:
