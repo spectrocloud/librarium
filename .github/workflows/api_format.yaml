@@ -66,7 +66,10 @@ jobs:
       - name: Commit Changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "ci: auto-formatting API changes"        
+          commit_message: "ci: auto-formatting API changes"
+          branch: ${{ github.head_ref }}
+          file_pattern: '*.json **.json **/*.json'
+
 
 
       - name: Slack Notification
