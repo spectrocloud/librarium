@@ -111,7 +111,7 @@ learn more about the changes introduced in this release.
 
 ### Automation
 
-- Terraform version 0.22.0 of the
+- Terraform version 0.21.5 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
