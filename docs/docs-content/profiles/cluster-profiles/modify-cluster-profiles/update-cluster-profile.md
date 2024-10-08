@@ -25,7 +25,7 @@ profiles, check out [Version a Cluster Profile](version-cluster-profile.md).
 You can apply cluster updates individually at any time. To learn how to apply updates to an active cluster, review the
 [Update a Cluster](../../../clusters/cluster-management/cluster-updates.md) guide.
 
-Refer to the following sections to learn how to update a cluster profiles.
+Refer to the following sections to learn how to update a cluster profile.
 
 ## Modify Basic Profile Information
 
@@ -37,7 +37,7 @@ Refer to the following sections to learn how to update a cluster profiles.
   [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
   reference for more information about roles and permissions.
 
-### Modfiy Profile Information
+### Modify Profile Information
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -133,7 +133,7 @@ To learn how to apply the changes, review [Apply Profile Updates to Clusters](#a
 
 Palette will automatically display the **Update** button when a new version of a pack is available. For example, if you
 have the Container Network Interface (CNI) Calico pack version 3.28.0 in your profile, and a new version becomes
-available, for example, version 3.28.2. Palette will automatically display the **Update** button when you visit the
+available, for example, version 3.28.2, Palette will automatically display the **Update** button when you visit the
 cluster profile's details page. If you click on the **Update** button, Palette will display the new versions available
 for each pack in the profile.
 
@@ -176,8 +176,8 @@ Review the following steps to accept incoming pack updates to a cluster profile.
 
    ![A view of the cluster profile update widget displaying a new packs versions but changes that require the user's input.](/profiles_cluster-profiles_modify-cluster-profiles_new-version-notifcation-changes-required.webp)
 
-6. Click on the **Apply Changes** button to apply the updates to the profile. If have changes that require your
-   attention then click on the **Review changes in Editor** button to start the review process.
+6. Click on the **Apply Changes** button to apply the updates to the profile. If there are changes that require your
+   attention, click on the **Review changes in Editor** button to start the review process.
 
 7. The differential editor will display the changes between the current YAML configuration and new incoming YAML
    changes. The left side of the editor displays the current configuration. The right side displays the new pack
@@ -190,11 +190,10 @@ Review the following steps to accept incoming pack updates to a cluster profile.
    - **Revert**: Click to revert the accepted change. This button will only appear after you have clicked the **Keep**
      button.
 
-   The differential editor will display the changes between the current YAML configuration and new incoming YAML changes
-   by highlighting the differences. The color-coded highlights indicate the following:
+   The differential editor will display the changes by highlighting the differences between the configurations. The color-coded highlights indicate the following:
 
    - _Yellow highlight_ indicates text that is not present in the new configuration. These may be lines you have added
-     in the current configuration. These lines may also have been removed because they are no longer valid in the new
+     in the current configuration or lines that have been removed because they are no longer valid in the new
      configuration. If you need them, use the **Keep** button to transfer the lines to the new pack version. Otherwise,
      click on **Next** to proceed.
 
@@ -263,7 +262,7 @@ Ensure you follow these practices when updating to a new pack version.
    Differences between the displayed configurations are as follows:
 
    - _Yellow highlight_ indicates text that is not present in the new configuration. These may be lines you have added
-     in the current configuration. These lines may also have been removed because they are no longer valid in the new
+     in the current configuration or lines that have been removed because they are no longer valid in the new
      configuration. If you need them, you can use the **Keep** button to transfer the lines to the new pack version.
      Otherwise, click on **Next** to proceed.
 
@@ -274,7 +273,7 @@ Ensure you follow these practices when updating to a new pack version.
 
      ![Screenshot that shows Palette's pack diff user interface with yellow highlight at left and blue highlight at right](/integrations_pack_diffs.webp)
 
-5. Check for yellow-highlight in the configuration that are missing in the new configuration. If there are any
+5. Check for yellow-highlights in the current configuration that are missing in the new configuration. If there are any
    customizations lines you added, use the **Keep** button to transfer the lines to the new version. Otherwise, click on
    **Next** to proceed.
 
@@ -310,8 +309,8 @@ To learn how to apply the changes, review [Apply Profile Updates to Clusters](#a
 
 ## Apply Profile Updates to Clusters
 
-You can accept changes to a cluster's cluster profile and override the profile configurations to update a cluster.
-Accepting these change will only apply to the cluster you are updating and will not propagate to the cluster profile or
+You can accept changes to a cluster's cluster profile and override the existing profile configurations to update a cluster.
+Accepting these changes will only apply to the cluster you are updating and will not propagate to the cluster profile or
 other clusters using the same profile.
 
 :::warning
@@ -326,7 +325,7 @@ profiles, check out [Version a Cluster Profile](version-cluster-profile.md).
 
 - A cluster profile created in Palette.
 
-- A cluster is deployed, healthy, with a cluster profile that has updates available.
+- A deployed and healthy cluster with an associated cluster profile that has  updates available.
 
 ### Apply Updates
 
