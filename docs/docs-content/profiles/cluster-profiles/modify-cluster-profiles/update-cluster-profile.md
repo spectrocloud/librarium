@@ -12,7 +12,7 @@ layers. You can also update basic profile information such as the name, descript
 
 Cluster profile changes will generate an update notification on all the clusters that are created from the profile.
 Update notifications include information about all the changes applied to the profile since the initial creation or
-since the previous update. You can apply cluster updates individually at any time.
+since the previous update.
 
 :::warning
 
@@ -22,7 +22,14 @@ profiles, check out [Version a Cluster Profile](version-cluster-profile.md).
 
 :::
 
-## Prerequisites
+You can apply cluster updates individually at any time. To learn how to apply updates to an active cluster, review the
+[Update a Cluster](../../../clusters/cluster-management/cluster-updates.md) guide.
+
+Refer to the following sections to learn how to update a cluster profile.
+
+## Modify Basic Profile Information
+
+### Prerequisites
 
 - A cluster profile created in Palette.
 
@@ -30,7 +37,7 @@ profiles, check out [Version a Cluster Profile](version-cluster-profile.md).
   [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
   reference for more information about roles and permissions.
 
-## Modify Basic Profile Information
+### Modify Profile Information
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -61,6 +68,16 @@ profiles, check out [Version a Cluster Profile](version-cluster-profile.md).
 To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-profile-updates-to-clusters).
 
 ## Update a Profile Layer
+
+### Prerequisites
+
+- A cluster profile created in Palette.
+
+- Your Palette account role must have the `clusterProfile.update` permission to update a profile. Refer to the
+  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  reference for more information about roles and permissions.
+
+### Update Layer
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -112,6 +129,97 @@ To learn how to apply the changes, review [Apply Profile Updates to Clusters](#a
 
 To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-profile-updates-to-clusters).
 
+## Accept Updates to a Cluster Profile
+
+Palette will automatically display the **Update** button when a new version of a pack is available. For example, if you
+have the Container Network Interface (CNI) Calico pack version 3.28.0 in your profile, and a new version becomes
+available, for example, version 3.28.2, Palette will automatically display the **Update** button when you visit the
+cluster profile's details page. If you click on the **Update** button, Palette will display the new versions available
+for each pack in the profile.
+
+Review the following steps to accept incoming pack updates to a cluster profile.
+
+### Prerequisites
+
+- A cluster profile created in Palette.
+
+- There are updates available for at least one pack in the profile.
+
+- Your Palette account role must have the `clusterProfile.update` permission to update a profile. Refer to the
+  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  reference for more information about roles and permissions.
+
+### Review Update Changes
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, select **Profiles**.
+
+3. Select the profile you want to update to access the profile details page.
+
+4. Palette displays profile details and the profile stack. If there are pending updates, Palette displays a green
+   **Update** button in the top right-hand corner of the page. Click on the **Update** button to view the changes
+   summary modal.
+
+5. If the changes can be applied without any issues, then Palette will display the **Apply Changes** button.
+
+   ![A view of the cluster profile update widget displaying a new version of Calico is available.](/profiles_cluster-profiles_modify-cluster-profiles_new-version-notifcation.webp)
+
+   Otherwise, you will be presented with the **Review changes in Editor** button, which allows you to review the changes
+   before applying them.
+
+   :::tip
+
+   If a pack row has an information icon, hover over the icon to learn more about the changes.
+
+   :::
+
+   ![A view of the cluster profile update widget displaying a new packs versions but changes that require the user's input.](/profiles_cluster-profiles_modify-cluster-profiles_new-version-notifcation-changes-required.webp)
+
+6. Click on the **Apply Changes** button to apply the updates to the profile. If there are changes that require your
+   attention, click on the **Review changes in Editor** button to start the review process.
+
+7. The differential editor will display the changes between the current YAML configuration and new incoming YAML
+   changes. The left side of the editor displays the current configuration. The right side displays the new pack
+   version's incoming changes. Review the changes and apply them as needed. Use the three buttons at the bottom to
+   navigate through the changes.
+
+   - **Prev**: Click to navigate to the previous change.
+   - **Next**: Click to navigate to the next change.
+   - **Keep**: Click to apply the current change.
+   - **Revert**: Click to revert the accepted change. This button will only appear after you have clicked the **Keep**
+     button.
+
+   The differential editor will display the changes by highlighting the differences between the configurations. The
+   color-coded highlights indicate the following:
+
+   - _Yellow highlight_ indicates text that is not present in the new configuration. These may be lines you have added
+     in the current configuration or lines that have been removed because they are no longer valid in the new
+     configuration. If you need them, use the **Keep** button to transfer the lines to the new pack version. Otherwise,
+     click on **Next** to proceed.
+
+   - _Blue highlight_ indicates additions in the new configuration that are not present in the pack version you are
+     using.
+
+     ![Screenshot that shows Palette's pack diff user interface with yellow highlight at left and blue highlight at right](/profiles_cluster-profiles_modify-cluster-incoming-updates.webp)
+
+8. Repeat step 7 until you have reviewed all the changes for each pack layer. You can select a different pack layer from
+   the left-hand side of the editor. Once a pack layer is reviewed, a gray checkmark will appear next to the pack name.
+
+9. Click on the **Apply Changes** button to apply the updates to the profile.
+
+### Validate
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+2. From the left **Main Menu**, select **Profiles**.
+
+3. Click the profile you updated to access the profile details page.
+
+4. Check that the updated layer displays the new pack versions.
+
+5. Click on the pack layer and review its configuration to ensure the changes are applied.
+
 ## Update the Pack Version
 
 Packs typically contain changes between versions, such as the addition or removal of parameters and policies. The
@@ -122,66 +230,64 @@ following steps will guide you in updating configurations.
 Ensure you follow these practices when updating to a new pack version.
 
 - You should not copy the pack configuration from one version to another, as the newer version often contains
-  customizations. Instead, you should integrate your changes manually in the new version.
+  customizations. Instead, you should integrate your changes manually in the new version. Use the **Keep** button to
+  copy the lines from the current configuration to the new version.
 - Update to a newer Kubernetes version incrementally, one minor version at a time.
 - Select a specific target version instead of a group that ends in `.x`
 - We do not recommend downgrading packs to the previous version.
 
 :::
 
+### Prerequisites
+
+- A cluster profile created in Palette.
+
+- There are updates available for at least one pack in the profile.
+
+- Your Palette account role must have the `clusterProfile.update` permission to update a profile. Refer to the
+  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  reference for more information about roles and permissions.
+
+### Update Pack Version
+
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Profiles**.
 
-3. Select the profile you want to update. Palette displays profile details and the profile stack.
+3. Select the profile you want to update to access the profile details page.
 
-4. Click on the pack layer to update.
-
-5. In the **Edit Pack** panel, select a specific target version, not a group that ends in `.x`. Palette displays the
+4. In the **Edit Pack** panel, select a specific target version, not a group that ends in `.x`. Palette displays the
    difference between the current version at left and the new version at right. The target version is displayed in the
    header.
 
    Differences between the displayed configurations are as follows:
 
-   - _Red highlight_ indicates text that is not present in the new configuration.
+   - _Yellow highlight_ indicates text that is not present in the new configuration. These may be lines you have added
+     in the current configuration or lines that have been removed because they are no longer valid in the new
+     configuration. If you need them, you can use the **Keep** button to transfer the lines to the new pack version.
+     Otherwise, click on **Next** to proceed.
 
-     These may be lines you have added in the current configuration. Use the arrow that displays between the two
-     configurations to transfer the lines to the new pack version.
-
-     These lines may also have been removed because they are no longer valid in the new configuration. If you need them,
-     you should copy the lines to the new version. Similarly, you should copy any settings from the current
-     configuration.
-
-   - _Green highlight_ indicates additions in the new configuration that are not present in the pack version you are
+   - _Blue highlight_ indicates additions in the new configuration that are not present in the pack version you are
      using.
 
      #### Example of Difference Between Current and New Configurations
 
-     ![Screenshot that shows Palette's pack diff user interface with red highlight at left and green highlight at right](/integrations_pack_diffs.webp)
+     ![Screenshot that shows Palette's pack diff user interface with yellow highlight at left and blue highlight at right](/integrations_pack_diffs.webp)
 
-   - _Contrasting shades_ of red and green highlight within the same line indicates differences occur in only part of
-     the line.
+5. Check for yellow-highlights in the current configuration that are missing in the new configuration. If there are any
+   customizations lines you added, use the **Keep** button to transfer the lines to the new version. Otherwise, click on
+   **Next** to proceed.
 
-     #### Example of Line Changes in Current and New Configurations
-
-     ![Screenshot that shows Palette's pack diff user interface with contrasting shades of red and green highlight in the same line](/integrations_pack_line_diffs.webp)
-
-6. Check for red-highlight in the configuration that is missing in the new configuration.
-
-   - If there are any lines you added, use the arrow to transfer the lines to the new version.
-   - If there are lines you did not add that are red highlighted, they have been removed in the new version, and you
-     should _not_ copy them over.
-
-7. Check for changed settings in the new configuration, and copy settings from the current configuration to the new
+6. Check for changed settings in the new configuration, and copy settings from the current configuration to the new
    configuration.
 
-8. Review new sections in the new configuration. You should adopt them, as they are typically needed to support the new
+7. Review new sections in the new configuration. You should adopt them, as they are typically needed to support the new
    configuration.
 
-9. Check for changes in the same line that have a different value. If it is not a customization you made, you should
+8. Check for changes in the same line that have a different value. If it is not a customization you made, you should
    adopt the new value, as it is known to be compatible with the new version.
 
-10. Confirm your updates.
+9. Confirm your updates.
 
 To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-profile-updates-to-clusters).
 
@@ -203,6 +309,26 @@ To learn how to apply the changes, review [Apply Profile Updates to Clusters](#a
 6. Repeat the process until Palette indicates the configuration works.
 
 ## Apply Profile Updates to Clusters
+
+You can accept changes to a cluster's cluster profile and override the existing profile configurations to update a
+cluster. Accepting these changes will only apply to the cluster you are updating and will not propagate to the cluster
+profile or other clusters using the same profile.
+
+:::warning
+
+We do not recommend updating a currently deployed cluster profile version to push out changes. Instead, we recommend
+creating a _new_ profile version, and then upgrade active clusters to the new version. For information on versioning
+profiles, check out [Version a Cluster Profile](version-cluster-profile.md).
+
+:::
+
+### Prerequisites
+
+- A cluster profile created in Palette.
+
+- A deployed and healthy cluster with an associated cluster profile that has updates available.
+
+### Apply Updates
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
