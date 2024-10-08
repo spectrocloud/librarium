@@ -241,19 +241,25 @@ messages similar to the following. This is due to an upstream issue with Cilium.
 
 ### Debug Steps
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+1. Connect to your cluster using kubectl. For more information, refer to
+   [Access Cluster with kubectl](../clusters/cluster-management/palette-webctl.md).
 
-2. Navigate to the left **Main Menu** and click on **Profiles**.
+2. Issue the following command from the terminal edit the Cillium DaemonSet.
 
-3. Select the **Cluster Profile** that you want to use for your Edge cluster.
+   ```bash
+   kubectl edit ds cilium -n kube-system
+   ```
 
-4. Click on the Cilium layer to access its YAML configuration.
-
-5. Add the following lines under `charts.cilium`. These add the annotations to the Cilium DaemonSet.
+3. Under `metadata.annotations`, add the following annotations.
 
    ```yaml
-   container.apparmor.security.beta.kubernetes.io/cilium-agent: "unconfined"
-   container.apparmor.security.beta.kubernetes.io/clean-cilium-state: "unconfined"
-   container.apparmor.security.beta.kubernetes.io/mount-cgroup: "unconfined"
-   container.apparmor.security.beta.kubernetes.io/apply-sysctl-overwrites: "unconfined"
+   metadata:
+   annotations:
+     deprecated.daemonset.template.generation: "1"
+     meta.helm.sh/release-name: cilium-cilium
+     meta.helm.sh/release-namespace: kube-system
+     container.apparmor.security.beta.kubernetes.io/cilium-agent: "unconfined"
+     container.apparmor.security.beta.kubernetes.io/clean-cilium-state: "unconfined"
+     container.apparmor.security.beta.kubernetes.io/mount-cgroup: "unconfined"
+     container.apparmor.security.beta.kubernetes.io/apply-sysctl-overwrites: "unconfined"
    ```
