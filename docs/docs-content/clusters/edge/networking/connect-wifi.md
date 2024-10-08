@@ -33,8 +33,8 @@ with the original user data you use to build Edge artifacts and skip that step.
   - 8 GB memory
   - 50 GB storage
 - A bootable device such as a USB drive, or a Preboot Execution Environment (PXE) server.
-- A [Spectro Cloud](https://console.spectrocloud.com/) account. If you have not signed up, you can sign up for a
-  [free trial](https://www.spectrocloud.com/free-tier/).
+- A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for an account
+  [here](https://www.spectrocloud.com/get-started).
 - A Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
   generate a new registration token. For detailed instructions, refer to the
   [Create Registration Token](../site-deployment/site-installation/create-registration-token.md) guide.
