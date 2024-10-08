@@ -13,7 +13,13 @@ manage your host is to download and install the Palette agent.
 
 ## Use Cases
 
-You can deploy clusters in agent mode across a variety of environments, including in public cloud, on-prem data centers,
-and in Edge locations.
+Agent mode is design to work across a variety of environments, including in public cloud, on-prem data centers, and in
+Edge locations. Currently, the validated use cases include Edge and VMware vSphere.
 
 ## Resources
+
+- [Architecture](./architecture.md)
+
+- [Install Palette Agent](install-agent-host.md)
+
+- [Manage Hosts in Agent Mode](./manage-agent/manage-agent.md)
