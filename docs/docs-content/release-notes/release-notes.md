@@ -73,16 +73,12 @@ learn more about the changes introduced in this release.
 
 - Palette's internal database, MongoDB, has been upgraded to version 6.0.
 
-#### Bug Fixes
-
 #### Deprecations and Removals
 
 - The [cluster group](../clusters/cluster-groups/cluster-groups.md), Beehive, will be sunset November 9, 2024. If you
   are using Palette SaaS and have virtual clusters in the Beehive cluster group, migrate the workload to new virtual
   clusters hosted in a self-managed cluster group before November 9, 2024. You can learn more about creating a new
   cluster group in the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide.
-
-#### Known Issues
 
 ### Edge
 
@@ -116,10 +112,6 @@ learn more about the changes introduced in this release.
   available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
-- The Palette CLI commands `vmo migrate-vm` and `vmo import-ova` have received serveral improvements to better handle
-  the migration and import of virtual machines to a VMO cluster. Refer to the
-  [VMO](../automation/palette-cli/commands/vmo.md) reference page to learn more about these commands.
-
 ### Docs and Education
 
 - The [Getting Started](../getting-started/getting-started.md) section of the documentation has been updated to provide
@@ -133,8 +125,6 @@ learn more about the changes introduced in this release.
   more about Edge and gain hands-on experience without needing access to physical hardware.
 
 ### Packs
-
-#### Pack Notes
 
 #### OS
 
