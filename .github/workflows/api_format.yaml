@@ -4,6 +4,10 @@ on:
   pull_request:
     types: ["labeled", "closed"]
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   GITHUB_BRANCH: ${{ github.ref_name }} 
   NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
