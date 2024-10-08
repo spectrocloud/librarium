@@ -29,10 +29,10 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 - The following table presents the verified combinations of host architecture and cluster profile layers.
 
-  | Host Architecture | OS     | Kubernetes | CNI     | Verified           |
-  | ----------------- | ------ | ---------- | ------- | ------------------ |
-  | AMD64             | Ubuntu | PXKE       | Calico  | :white_check_mark: |
-  | AMD64             | Ubuntu | K3s        | Flannel | :white_check_mark: |
+  | Host Architecture | OS     | Kubernetes                                | CNI     | Verified           |
+  | ----------------- | ------ | ----------------------------------------- | ------- | ------------------ |
+  | AMD64             | Ubuntu | Palette eXtended Kubernetes - Edge (PXKE) | Calico  | :white_check_mark: |
+  | AMD64             | Ubuntu | K3s                                       | Flannel | :white_check_mark: |
 
 ## Prerequisites
 
@@ -51,11 +51,14 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 - One IP address is required for the cluster's Virtual IP (VIP) address.
 
+- Ensure that the host has `Bash` configured as the default shell.
+
 - Ensure the following software is installed and available:
   - [jq](https://jqlang.github.io/jq/download/)
   - [Zstandard](https://facebook.github.io/zstd/)
-  - [conntrack](https://conntrack-tools.netfilter.org/downloads.html)
   - [Rsync](https://github.com/RsyncProject/rsync)
+  - [conntrack](https://conntrack-tools.netfilter.org/downloads.html). This requirement is specific for clusters that
+    use PXKE as the Kubernetes layer.
 
 ## Install Palette Agent
 
@@ -138,24 +141,23 @@ Palette. You will then create a cluster profile and use the registered host to d
    export USER_DATA=./user-data
    ```
 
-5. Download the agent installation script.
-
-   <!-- This link will be updated before the release. -->
+5. Download the Palette agent installation script. Access the [Agent Mode](https://github.com/spectrocloud/agent-mode)
+   GitHub repository to obtain the latest releases. This guide uses `v4.5.0-rc9` as an example.
 
    ```shell
-   curl --output ./install.sh https://rishi-public-dnd.s3.amazonaws.com/latest-edge-standard/install.sh
+   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/download/v4.5.0-rc9/palette-agent-install.sh
    ```
 
 6. Grant execution permissions to the `install.sh` script.
 
    ```shell
-   chmod +x ./install.sh
+   chmod +x ./palette-agent-install.sh
    ```
 
 7. Issue the following command to install the agent on your host.
 
    ```shell
-   sudo --preserve-env ./install.sh
+   sudo --preserve-env ./palette-agent-install.sh
    ```
 
    The termination of the SSH connection, as shown in the example below, confirms that the script has completed its
