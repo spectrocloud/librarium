@@ -190,7 +190,8 @@ Review the following steps to accept incoming pack updates to a cluster profile.
    - **Revert**: Click to revert the accepted change. This button will only appear after you have clicked the **Keep**
      button.
 
-   The differential editor will display the changes by highlighting the differences between the configurations. The color-coded highlights indicate the following:
+   The differential editor will display the changes by highlighting the differences between the configurations. The
+   color-coded highlights indicate the following:
 
    - _Yellow highlight_ indicates text that is not present in the new configuration. These may be lines you have added
      in the current configuration or lines that have been removed because they are no longer valid in the new
@@ -309,9 +310,9 @@ To learn how to apply the changes, review [Apply Profile Updates to Clusters](#a
 
 ## Apply Profile Updates to Clusters
 
-You can accept changes to a cluster's cluster profile and override the existing profile configurations to update a cluster.
-Accepting these changes will only apply to the cluster you are updating and will not propagate to the cluster profile or
-other clusters using the same profile.
+You can accept changes to a cluster's cluster profile and override the existing profile configurations to update a
+cluster. Accepting these changes will only apply to the cluster you are updating and will not propagate to the cluster
+profile or other clusters using the same profile.
 
 :::warning
 
@@ -325,7 +326,7 @@ profiles, check out [Version a Cluster Profile](version-cluster-profile.md).
 
 - A cluster profile created in Palette.
 
-- A deployed and healthy cluster with an associated cluster profile that has  updates available.
+- A deployed and healthy cluster with an associated cluster profile that has updates available.
 
 ### Apply Updates
 
