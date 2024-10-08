@@ -245,10 +245,10 @@ annotations to the Cilium DaemonSet.
 1. Connect to your cluster using kubectl. For more information, refer to
    [Access Cluster with kubectl](../clusters/cluster-management/palette-webctl.md).
 
-2. Issue the following command from the terminal edit the Cillium DaemonSet.
+2. Issue the following command from the terminal edit the Cilium DaemonSet.
 
    ```bash
-   kubectl edit ds cilium -n kube-system
+   kubectl edit ds cilium --namespace kube-system
    ```
 
 3. Under `metadata.annotations`, add the following annotations.
