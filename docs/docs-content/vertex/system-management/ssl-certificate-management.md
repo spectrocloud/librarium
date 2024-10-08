@@ -62,9 +62,9 @@ You can update your Palette system address and SSL certificates by using the fol
 
 4. Update your Palette domain in the **System Address (UI and API)** field.
 
-5. Convert the certificate, private key, and Certificate Authority (CA) to base64-encoded strings. In the following
-   command, an example file, **certificate.crt** is output and converted to base64-encoded string using the `base64`
-   command.
+5. Convert the certificate, private key, and Certificate Authority (CA) chain to base64-encoded strings. In the
+   following command, an example file, **certificate.crt** is output and converted to base64-encoded string using the
+   `base64` command.
 
    ```shell
    cat certificate.crt | base64
@@ -80,7 +80,7 @@ You can update your Palette system address and SSL certificates by using the fol
 
 7. Copy and paste the base64-encoded certificate key string into the **Key** field.
 
-8. Copy and paste the base64-encoded certificate authority string into the **Certificate Authority** field.
+8. Copy and paste the base64-encoded certificate authority chain string into the **Certificate Authority** field.
 
    ![A view of the certificate upload screen](/palette_system-management_ssl-certificate-management_system-address.webp)
 
