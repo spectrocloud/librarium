@@ -23,6 +23,8 @@ registration token you provide in building the installer. Once registered, you c
 control plane nodes or worker nodes to create a cluster. In airgapped environments, you can use
 [Local UI](../clusters/edge/local-ui/local-ui.md) to create the cluster, which does not require a connection to Palette.
 
+![Architecture Diagram for Appliance Mode](/deployment-modes_appliance-mode.webp)
+
 ## Use Cases
 
 The table below provides an overview of the different use cases and the corresponding supported environments for

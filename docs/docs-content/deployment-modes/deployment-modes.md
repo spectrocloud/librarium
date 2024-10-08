@@ -29,6 +29,8 @@ infrastructure is provisioned, the Palette agent managing the cluster starts to 
 System (OS), Kubernetes, network and storage plugins, as well as applications. You may customize the OS in any way you
 wish, and use that OS image in your cluster profile.
 
+![Controller Mode diagram](/deployment-modes_controller-diagram.webp)
+
 ### Why Use Controller Mode
 
 The advantage of controller mode is that your cluster is fully managed by Palette, saving you significant time, effort,
@@ -55,6 +57,8 @@ between your cluster and Palette. In addition, clusters deployed in appliance mo
 operational, no one will be able to make further changes to the OS, unless you build a new provider image to upgrade
 your cluster.
 
+![Architecture Diagram for Appliance Mode](/deployment-modes_appliance-mode.webp)
+
 ### Why Use Appliance Mode
 
 Appliance mode does not require you to provide us with any credentials to your cloud environments. In addition, the
@@ -73,6 +77,8 @@ or Palette Management Plane.
 Unlike appliance mode, you have more freedom to manage the OS for your clusters. Agent mode does not require you to use
 EdgeForge to create an immutable OS image or Kubernetes image. Instead, you can use a script to install the Palette
 agent on your existing machine, with its existing OS, or build an OS image that includes the Palette agent.
+
+![Architecture Diagram for Agent Mode](/deployment-modes_agent-mode.webp)
 
 ### Why Use Agent Mode
 
