@@ -236,9 +236,10 @@ are no longer in use and can be erased internally. To enable TRIM operations, us
 
 ## Scenario - Clusters with Cilium and RKE2 Experiences Kubernetes Upgrade Failure
 
-When you upgrade your cluster from RKE2 1.29 to 1.30 and you use the Cilium CNI, the upgrade could fail with error
-messages similar to the following. This is due to an upstream issue with Cilium. You can fix this issue by adding a few
-annotations to the Cilium DaemonSet.
+When you upgrade your cluster from RKE2 1.29 to 1.30 and your cluster uses the Cilium CNI, the upgrade could fail with
+error messages similar to the following. This is due to an
+[upstream issue](https://github.com/rancher/rancher/issues/46726). You can fix this issue by adding a few annotations to
+the Cilium DaemonSet.
 
 ### Debug Steps
 
