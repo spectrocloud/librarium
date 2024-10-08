@@ -55,8 +55,6 @@ between your cluster and Palette. In addition, clusters deployed in appliance mo
 operational, no one will be able to make further changes to the OS, unless you build a new provider image to upgrade
 your cluster.
 
-![Architecture Diagram for Appliance Mode](/deployment-modes_appliance-mode.webp)
-
 ### Why Use Appliance Mode
 
 Appliance mode does not require you to provide us with any credentials to your cloud environments. In addition, the
