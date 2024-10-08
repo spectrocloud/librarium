@@ -69,6 +69,7 @@ jobs:
           commit_message: "ci: auto-formatting API changes"
           branch: ${{ github.head_ref }}
           file_pattern: '*.json **.json **/*.json'
+          disable_globbing: true
 
 
 
