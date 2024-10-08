@@ -39,4 +39,4 @@ appliance mode deployments.
 
 - [Edge Deployment Lifecycle](../clusters/edge/edge-native-lifecycle.md)
 
-- [EdgeForge Workflow](../clusters/edge/edgeforge-workflow/)
+- [EdgeForge Workflow](../clusters/edge/edgeforge-workflow/edgeforge-workflow.md)
