@@ -7,9 +7,9 @@ sidebar_position: 20
 tags: ["edge"]
 ---
 
-The following are architectural highlights of clusters deployed using in agent mode.
+The following are architectural highlights of clusters deployed using agent mode.
 
-- You can bring an existing host with your an Operating System (OS) of your choice.
+- You can bring an existing host with an Operating System (OS) of your choice.
 
 - You may also build the Palette agent into your OS image to have the agent natively installed on your host.
 
@@ -25,7 +25,7 @@ The following are architectural highlights of clusters deployed using in agent m
 
 ## Minimum Device Requirements
 
-Agent mode deployments support both AMD64 and ARM64 architecture.
+Agent mode deployments support both AMD64 and ARM64 architectures.
 
 | Component | Requirement                                                                                                                                               |
 | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |

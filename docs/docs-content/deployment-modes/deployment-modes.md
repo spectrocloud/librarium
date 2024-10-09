@@ -11,9 +11,9 @@ tags: ["edge"]
 
 Real-life applications in Kubernetes can operate in many different environments, with varying security, compliance, and
 performance requirements. Palette offers three different deployment modes that can help you meet the needs of your
-organization. Whether you want to operate your cluster in public cloud, private data centers, or at the Edge, whether
-you want to use your own organization's hardware and Operating Systems (OS) or build secure immutable OS to bootstrap
-your applications, you can choose a solution that works for you.
+organization. Whether you want to operate your cluster in public cloud, private data centers, or at the Edge, and
+whether you want to use your own organization's hardware and Operating Systems (OS) or build secure, immutable OS to
+bootstrap your applications, you can choose a solution that works for you.
 
 The table below provides you with a brief overview of the different deployment modes and the distinctions between them.
 
@@ -27,9 +27,9 @@ The table below provides you with a brief overview of the different deployment m
 
 Controller mode is how you use Palette to deploy clusters in public clouds and data centers. In controller mode, the act
 of provisioning infrastructure comes from the Palette Management Plane using Cluster API (CAPI). After the
-infrastructure is provisioned, the Palette agent managing the cluster starts to download images, including for Operating
-System (OS), Kubernetes, network and storage plugins, as well as applications. You may customize the OS in any way you
-wish, and use that OS image in your cluster profile.
+infrastructure is provisioned, the Palette agent managing the cluster starts to download images, including those for the
+Operating System (OS), Kubernetes, network and storage plugins, as well as applications. You may customize the OS in any
+way you wish, and use that OS image in your cluster profile.
 
 ![Controller Mode diagram](/deployment-modes_controller-diagram.webp)
 
@@ -43,38 +43,37 @@ from infrastructure to applications, in a unified platform.
 Because Palette is provisioning and managing infrastructure for you, controller mode also requires that you provide
 Palette with all the necessary permissions and credentials to perform these actions. For more information on the
 required permissions, refer to the Required Permissions page for the corresponding infrastructure provider. For example,
-refer to [Required IAM Policies](../clusters/public-cloud/aws/required-iam-policies.md) for AWS.
+for AWS, refer to the [Required IAM Policies](../clusters/public-cloud/aws/required-iam-policies.md) page.
 
 ## Appliance Mode
 
 In appliance mode, you provide your own infrastructure. You start by using
 [EdgeForge](../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) to build artifacts, including provider images and
 the installer ISO. You then [install](../clusters/edge/site-deployment/stage.md) the Palette agent on your host using
-the installer ISO. Once installed, you can use either Local UI or the Palette Management Plane to instruct the Palette
-agent to create and manage clusters.
+the installer ISO. Once installed, you can use either [Local UI](../clusters/edge/local-ui/local-ui.md) or the Palette
+Management Plane to instruct the Palette agent to create and manage clusters.
 
-Unlike controller mode, where clusters are always managed by Palette. You can choose to manage your cluster with Palette
-, or manage your cluster locally using [Local UI](../clusters/edge/local-ui/local-ui.md), with no network connection
-between your cluster and Palette. In addition, clusters deployed in appliance mode are immutable. Once your cluster is
-operational, no one will be able to make further changes to the OS, unless you build a new provider image to upgrade
-your cluster.
+Unlike controller mode, where clusters are always managed by Palette, you can choose to manage your cluster with Palette
+or locally using [Local UI](../clusters/edge/local-ui/local-ui.md), with no network connection between your cluster and
+Palette. In addition, clusters deployed in appliance mode are immutable. Once your cluster is operational, no one will
+be able to make further changes to the OS, unless you build a new provider image to upgrade your cluster.
 
 ![Architecture Diagram for Appliance Mode](/deployment-modes_appliance-mode.webp)
 
 ### Why Use Appliance Mode
 
 Appliance mode does not require you to provide us with any credentials to your cloud environments. In addition, the
-immutability and security provided by appliance mode makes it an ideal choice for deployment in Edge locations, though
-you can still deploy to a data center or public cloud. Additionally, appliance mode allows you to take advantage of
-features such as [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) to ensure the authenticity of your boot
-process, further enhancing the security of your systems. Because Palette is no longer managing the infrastructure for
-you, there is more overhead involved for you to manage the infrastructure for the cluster yourself.
+immutability and security provided by appliance mode make it an ideal choice for deployment in Edge locations, though
+you can still use it to deploy clusters to a data center or public cloud. Additionally, appliance mode allows you to
+take advantage of features such as [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md), ensuring the
+authenticity of your boot process and further enhancing the security of your systems. Since Palette is no longer
+managing the infrastructure for you, you will have more overhead in managing the cluster's infrastructure yourself.
 
 ## Agent Mode
 
-Agent mode follows a similar model to appliance mode. You also need to provide your own infrastructure in agent mode.
-Once the Palette agent is installed, you can also instruct the agent to create and manage a cluster either from Local UI
-or Palette Management Plane.
+Agent mode follows a similar model to appliance mode, requiring you to provide your own infrastructure. Once the Palette
+agent is installed, you can instruct the agent to create and manage a cluster either from Local UI or Palette Management
+Plane.
 
 Unlike appliance mode, you have more freedom to manage the OS for your clusters. Agent mode does not require you to use
 EdgeForge to create an immutable OS image or Kubernetes image. Instead, you can use a script to install the Palette

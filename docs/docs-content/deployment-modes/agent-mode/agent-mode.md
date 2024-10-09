@@ -7,14 +7,22 @@ sidebar_position: 20
 tags: ["edge"]
 ---
 
-In agent mode, you bring your own host, which can be any host that meets the basic hardware requirements regardless of
-environments， including an EC2 instance on AWS or a Raspberry Pi in your own home. All you need to do to have Palette
-manage your host is to download and install the Palette agent.
+In agent mode, you bring your own host, which can be any host that meets the minimum hardware requirements, regardless
+of the environment. This includes options like an AWS EC2 instance or a Raspberry Pi in your own home. All you need to
+do to have Palette manage your host is to [download and install the Palette agent](./install-agent-host.md).
+
+The diagram below illustrates the agent mode cluster provisioning workflow.
+
+![Architecture Diagram for Agent Mode](/deployment-modes_agent-mode.webp)
 
 ## Use Cases
 
-Agent mode is design to work across a variety of environments, including in public cloud, on-prem data centers, and in
-Edge locations. Currently, the validated use cases include Edge and VMware vSphere.
+Agent mode is designed to work across a variety of environments, including public clouds, on-prem data centers, and Edge
+locations. Currently, the validated use case for agent mode includes [Edge](../../clusters/edge/edge.md).
+
+| Use Case | Supported Environments                                                                                                  |
+| -------- | ----------------------------------------------------------------------------------------------------------------------- |
+| **Edge** | [VMware vSphere](../../clusters/edge/site-deployment/virtual-deployment/virtual-deployment.md)<br />Bare metal machines |
 
 ## Resources
 
