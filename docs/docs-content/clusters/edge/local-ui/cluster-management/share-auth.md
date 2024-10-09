@@ -88,7 +88,7 @@ becomes operational:
    :::info
 
    To find your Edge host ID, you can log in to [Local UI](../host-management/access-console.md). In the **Overview**
-   section is the Edge host ID. If you didn't enable local UI, you can log in to
+   section is the Edge host ID. If you didn't enable Local UI, you can log in to
    [Palette](https://console.spectrocloud.com) and find the Edge host ID in the
    [Edge host grid view](../../site-deployment/edge-host-view.md) page in the **Machine ID** column.
 
@@ -123,8 +123,8 @@ becomes operational:
 8. Deploy your cluster using your cluster profile. For more information, refer to
    [Create Cluster Definition](../../site-deployment/cluster-deployment.md).
 
-   During the deployment, you may see error messages that suggest the volume mount has failed to be created. This is
-   because the secret may not exist the namespace where your application is deployed. The secret resides in the
+   During the deployment, you may encounter error messages that suggest the volume mount has failed to be created. This
+   is because the secret may not exist the namespace where your application is deployed. The secret resides in the
    `spectro-system` namespace. This is expected and you can fix this in the next step.
 
 9. Issue the following command to copy the secret to the namespace where your application is deployed. Replace
