@@ -138,9 +138,10 @@ becomes operational:
 
    :::info
 
-   Alternatively, you can create the cluster without the application layer first. Issue the command to copy the secret
-   to a new namespace where you expect to deploy the application, and then add the add-on layer to the profile of the
-   active cluster.
+   Alternatively, you can create the cluster without the application layer first. After the cluster is up, issue the
+   command to copy the secret to a new namespace where you expect to deploy the application, and then add the add-on
+   layer to the profile of the active cluster. If you do this, you won't encounter the error regarding volume mounts
+   failing to be created.
 
    :::
 
