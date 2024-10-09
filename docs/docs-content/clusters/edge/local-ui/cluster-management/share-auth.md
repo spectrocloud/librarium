@@ -28,7 +28,7 @@ becomes operational:
 
 - A [Spectro Cloud](https://console.spectrocloud.com) account.
 
-- A tool that allows you to build image of containerized applications such as [Docker](docker.io).
+- A tool that allows you to build image of containerized applications such as [Docker](https://docker.io).
 
 - [Kubectl](https://kubernetes.io/docs/reference/kubectl/) is installed on your host machine.
 
@@ -73,8 +73,9 @@ becomes operational:
    }
    ```
 
-   The middleware verifies and the JWT. If it is valid, it decodes the JWT and return the user information contained in
-   the JWT. If the JWT doesn't exist or is not valid, it will redirect the user to the login page.
+   The middleware verifies the JWT using the public key. If it is valid, it decodes the JWT and return the user
+   information contained in the JWT. If the JWT doesn't exist or is not valid, it will redirect the user to the login
+   page.
 
 3. Build the image containing your application and push it to a registry that your host has access to.
 
@@ -117,7 +118,7 @@ becomes operational:
    ```
 
 7. Create an add-on profile and use the manifest you created in the add-on profile. For more information, refer to
-   [Add a Manifest](../../../../profiles/cluster-profiles/).
+   [Add a Manifest](../../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md).
 
 8. Deploy your cluster using your cluster profile. For more information, refer to
    [Create Cluster Definition](../../site-deployment/cluster-deployment.md).
