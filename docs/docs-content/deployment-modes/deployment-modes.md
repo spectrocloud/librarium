@@ -4,6 +4,8 @@ title: "Deployment Modes"
 description: "Learn about the different deployment modes available to deploy your Kubernetes cluster with Palette."
 hide_table_of_contents: false
 sidebar_position: 20
+sidebar_custom_props:
+  icon: "road"
 tags: ["edge"]
 ---
 
