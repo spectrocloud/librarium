@@ -34,11 +34,12 @@ becomes operational:
 
 ## Procedure
 
-1. Determine the location where the public key file will be relative to your containerized application. At this time,
-   the public key file does not exist yet because you do not yet have a cluster. Therefore, you need to remember this
-   location and mount secret volume to the corresponding location in a subsequent step. For example, if you decide
-   location of the key file will be `/app/keys/server.pem`, then you'll need to mount the secret volume to `/apps/key/`
-   later.
+1. Determine the location where the public key file will be relative to your containerized application. The public key
+   file will be named `server.pem` in a Kubernetes secret once your have an active cluster.
+
+   You need to remember this location and mount the secret volume to the corresponding location in a subsequent step.
+   For example, if you decide location of the key file will be `/app/keys/server.pem`, and your application is expecting
+   the public key at that location, you'll need to mount the secret volume to `/apps/key/` later.
 
    :::tip
 
@@ -95,6 +96,25 @@ becomes operational:
 6. In the manifest for your application, mount the volume containing the secret to the location specified in your
    application. For example, if your application is trying to access `/app/keys/server.pem`, you should mount the volume
    to `/app/keys/`.
+
+   If you have previously used an environment variable to store the path of the public key, define the corresponding
+   environment variable in your container specification. For example, if your application will try to access an
+   environment variable `KEY_LOCATION`, you can define the environment variable using configurations similar to the
+   following.
+
+   ```yaml
+   spec:
+     containers:
+       - name: sample-auth-app
+         image: gcr.io/example-app:latest
+         volumeMounts:
+           - name: jwt-secret
+             mountPath: /app/keys
+             readOnly: true
+         env:
+           - name: KEY_LOCATION
+             value: "/app/keys/server.pem"
+   ```
 
 7. Create an add-on profile and use the manifest you created in the add-on profile. For more information, refer to
    [Add a Manifest](../../../../profiles/cluster-profiles/).
