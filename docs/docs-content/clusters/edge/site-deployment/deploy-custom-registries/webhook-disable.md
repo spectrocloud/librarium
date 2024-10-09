@@ -251,7 +251,7 @@ source code for the credential provider on GitHub.
                           # Create the output JSON response
                           output_json = {
                               "kind": "CredentialProviderResponse",
-                              "apiVersion": "credentialprovider.kubelet.k8s.io/v1",
+                              "apiVersion": "credentialprovider.Kubelet.k8s.io/v1",
                               "cacheKeyType": "Registry",
                               "cacheDuration": duration,
                               "auth": {
@@ -317,27 +317,27 @@ source code for the credential provider on GitHub.
 
      </details>
 
-13. In the Kubernetes layer of your cluster, add the following lines to the `kubeadmconfig.kubeletExtraArgs` field. This
+13. In the Kubernetes layer of your cluster, add the following lines to the `kubeadmconfig.KubeletExtraArgs` field. This
     tells Kubernetes to use the credential provider you installed in the previous step.
 
     ```yaml
-    kubeletExtraArgs:
+    KubeletExtraArgs:
       cluster:
         config: |
           initConfiguration:
             nodeRegistration:
-              kubeletExtraArgs:
+              KubeletExtraArgs:
                 image-credential-provider-bin-dir: /usr/local/bin
                 image-credential-provider-config: /opt/kubernetes/generic-credential-provider-config.json
           joinConfiguration:
             discovery: {}
             nodeRegistration:
-              kubeletExtraArgs:
+              KubeletExtraArgs:
                 image-credential-provider-bin-dir: /usr/local/bin
                 image-credential-provider-config: /opt/kubernetes/generic-credential-provider-config.json
     ```
 
-14. Use a `reconcile` stage to define the JSON file with the `CredentialProviderConfig` for kubelet. This configuration
+14. Use a `reconcile` stage to define the JSON file with the `CredentialProviderConfig` for Kubelet. This configuration
     specifies the registries that will use the credential provider.
 
     ```yaml {17,18}
@@ -351,7 +351,7 @@ source code for the credential provider on GitHub.
               permissions: 0644
               content: |-
                 {
-                  "apiVersion": "kubelet.config.k8s.io/v1",
+                  "apiVersion": "Kubelet.config.k8s.io/v1",
                   "kind": "CredentialProviderConfig",
                   "providers": [
                     {
@@ -361,7 +361,7 @@ source code for the credential provider on GitHub.
                         "*.*.io"
                       ],
                       "defaultCacheDuration": "5m",
-                      "apiVersion": "credentialprovider.kubelet.k8s.io/v1"
+                      "apiVersion": "credentialprovider.Kubelet.k8s.io/v1"
                     }
                   ]
                 }
@@ -369,12 +369,12 @@ source code for the credential provider on GitHub.
 
     Registry URLs that match the patterns in the `mathImages` field will use this provider for credentials. For example,
     `*.io` would match `docker.io`, `quay.io`, `gcr.io` and `*.*.io` would cover URLs like `us.gcr.io`. Refer to
-    [Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubelet-credential-provider/#configure-a-kubelet-credential-provider)
-    about the parameters you can use to configure credential providers for kubelet.
+    [Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/Kubelet-credential-provider/#configure-a-Kubelet-credential-provider)
+    about the parameters you can use to configure credential providers for Kubelet.
 
     :::tip
 
-    We suggest that you define a broad pattern, as updating this file requires kubelet to restart. There are no adverse
+    We suggest that you define a broad pattern, as updating this file requires Kubelet to restart. There are no adverse
     effects when the pattern matches a registry URL for which there is no defined credentials: the Palette agent will
     still perform the image pull, but it will not use the credential provider.
 
