@@ -138,7 +138,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 4. Export the path to your user data file.
 
    ```shell
-   export USER_DATA=./user-data
+   export USERDATA=./user-data
    ```
 
 5. Download the Palette agent installation script. Access the [Agent Mode](https://github.com/spectrocloud/agent-mode)
@@ -187,45 +187,17 @@ Palette. You will then create a cluster profile and use the registered host to d
 14. Select **Edge Native** as the **Cloud Type** and click **Next**.
 
 15. The **Profile Layers** section specifies the packs that compose the profile. Add the **BYOS Edge OS** pack version
-    **1.0.0** to the OS layer.
+    **2.0.0** to the OS layer.
 
-16. Click **Values** under **Pack Details** to edit the pack's manifest.
-
-    <!-- Steps 16 and 17 use the old version of the BYOS pack. The steps will be updated once the new version of the pack is available. -->
+16. Click **Values** under **Pack Details**, then click on **Presets** on the right-hand side. Select **Agent Mode**.
 
     ![View of the cluster profile creation page with the BYOS pack.](/deployment-modes_agent-mode_byos-pack.webp)
 
-17. Update the `system.uri` parameter with the desired Kubernetes image.
+17. Click **Next Layer** to continue.
 
-    Additionally, include the `stylusPackage` line following the example below.
+18. Complete the cluster profile creation process by filling out the remaining layers.
 
-    ```yaml {16,18}
-    pack:
-      content:
-        images:
-          - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
-      # Below config is default value, please uncomment if you want to modify default values
-      #drain:
-      #cordon: true
-      #timeout: 60 # The length of time to wait before giving up, zero means infinite
-      #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
-      #ignoreDaemonSets: true
-      #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
-      #force: true # Continue even if there are pods that do not declare a controller
-      #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
-      #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
-    options:
-      system.uri: "gcr.io/spectro-dev-public/stylus/k8s:k3s-1.29.2"
-
-    stylusPackage: container://gcr.io/spectro-dev-public/stylus-edge-standard:v0.0.1
-    ```
-
-18. Click **Next Layer** to continue.
-
-19. Complete the cluster profile creation process by filling out the remaining layers. Ensure that the Kubernetes layer
-    matches the version and distribution specified in step **7** of this guide.
-
-20. Follow the steps in the [Create Cluster Definition](../../clusters/edge/site-deployment/model-profile.md) guide to
+19. Follow the steps in the [Create Cluster Definition](../../clusters/edge/site-deployment/model-profile.md) guide to
     deploy a cluster using your registered host as a cluster node.
 
 ## Validate
