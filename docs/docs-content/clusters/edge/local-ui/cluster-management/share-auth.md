@@ -26,6 +26,12 @@ becomes operational:
 - The application whose authentication you want to integrate with Local UI must support HTTPS. Traffic to the
   application service must be over HTTPS.
 
+- A [Spectro Cloud](https://console.spectrocloud.com) account.
+
+- A tool that allows you to build image of containerized applications such as [Docker](docker.io).
+
+- [Kubectl](https://kubernetes.io/docs/reference/kubectl/) is installed on your host machine.
+
 ## Procedure
 
 1. Determine the location where the public key file will be relative to your containerized application. At this time,
