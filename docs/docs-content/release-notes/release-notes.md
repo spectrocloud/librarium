@@ -101,7 +101,7 @@ learn more about the changes introduced in this release.
 #### Bug Fixes
 
 <!-- prettier-ignore -->
-- Fixed an issue where the <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor-edge-native-config" /> pack's SSL certificate was not   updated during Day-2 operations. The file **harbor-ca.crt** is now updated during Day-2 operations.
+- Fixed an issue where the <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor-edge-native-config" /> pack's SSL certificate was not updated when a new certificate was specified in the pack YAML configuration.
 
 ### VerteX
 
