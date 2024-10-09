@@ -422,4 +422,4 @@ source code for the credential provider on GitHub.
 
 2. Create a cluster profile that references the image registries you configured.
 
-3. Deploy a cluster with the cluster profile.
+3. Deploy a cluster with the cluster profile. Confirm that the cluster is able to download the necessary images.
