@@ -41,10 +41,10 @@ same time in a single command.
 
 1. Download Palette Edge CLI and assign the executable bit to the CLI. Refer to
    [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to use the right
-   Palette Edge CLI version. This guide uses 4.4.2 as an example.
+   Palette Edge CLI version. This guide uses 4.4.12 as an example.
 
    ```shell
-   VERSION=4.4.2
+   VERSION=4.4.12
    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
    chmod +x palette-edge
    ```
@@ -66,7 +66,7 @@ same time in a single command.
 
    ```hideClipboard bash
    Usage:
-   palette-edge-cli [command]
+   palette-edge [command]
 
    Available Commands:
    build            Build the content
@@ -79,11 +79,11 @@ same time in a single command.
    Flags:
          --config string    config file (default is $HOME/.palette-edge-cli.yaml)
          --debug            set to enable debug logging [default: false]
-   -h, --help             help for palette-edge-cli
+   -h, --help             help for palette-edge
          --logfile string   log file name
          --trace            set to enable trace logging [default: false]
 
-   Use "palette-edge-cli [command] --help" for more information about a command.
+   Use "palette-edge [command] --help" for more information about a command.
    ```
 
 4. Log in to [Palette](https://console.spectrocloud.com).
@@ -111,7 +111,7 @@ same time in a single command.
 10. Issue the following command to export the cluster definition.
 
     ```shell
-    palette-edge-cli build --api-key <apiKey> \
+    palette-edge build --api-key <apiKey> \
     --project-id <projectId> \
     --palette-endpoint <paletteEndpoint> \
     --cluster-definition-name <clusterDefinitionName> \
