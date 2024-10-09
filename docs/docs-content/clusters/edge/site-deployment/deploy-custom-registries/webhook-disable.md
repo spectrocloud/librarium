@@ -15,7 +15,7 @@ appropriate locations depending on your configuration.
 
 While the webhook makes using an external registry or the local Harbor registry more streamlined, it can limit your
 flexibility to configure your own image pull behavior. This guide guides you through how to disable the Palette agent
-webhook and provides a few example configurations to customize image pull for your cluster.
+webhook and provides an example custom image pull configuration.
 
 ## What Happens When You Disable the Webhook
 
@@ -105,8 +105,6 @@ The process to redirect image pulls vary by Kubernetes distribution as well as y
 provides an example that shows how you might customize the image pull behavior of your Edge cluster. The example shows
 how you can configure a PXK-E Edge cluster to pull from multiple authenticated registries.
 
-The example shown in this section uses containerd's registry configuration to redirect image pulls. It uses PXK-E
-
 6. Log in to [Palette](https://console.spectrocloud.com).
 
 7. From the left **Main Menu**, click **Profiles**. Click on the profile you use to deploy your Edge cluster.
@@ -175,7 +173,7 @@ If your registries require authentication, you will need to provide credentials 
 an open-source generic Kubernetes credentials provider to provide the resources. There are other resources that you can
 take advantage of to provide registry credentials, including using a `registry.yaml` file in K3s or RKE2. However, the
 advantage of the approach used in this example is that after installation, you will not need to restart your cluster to
-rewrite the registry paths or provide the registry credentials if you use K3S or RKE2.
+rewrite the registry paths or provide the registry credentials.
 
 :::info
 
@@ -396,7 +394,9 @@ code for the credential provider on GitHub.
     :::warning
 
     Avoid entering sensitive information like passwords directly into your cluster profile in plain text. Instead, you
-    can either use a cluster profile variable or a macro.
+    can either use a cluster profile variable or a macro. For more information, refer to
+    [Macros](../../../cluster-management/macros.md) and
+    [Define and Manage Profile Variables](../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md).
 
     :::
 
@@ -408,4 +408,6 @@ code for the credential provider on GitHub.
 1. Use the ISO to install Palette Edge on an Edge host. For more information, refer to
    [Installation](../site-installation/site-installation.md).
 
-2. Create a cluster profile and include **Harbor Edge-Native Config** pack.
+2. Create a cluster profile that references the image registries you configured.
+
+3. Deploy a cluster with the cluster profile.
