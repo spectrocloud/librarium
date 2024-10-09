@@ -77,7 +77,7 @@ same time in a single command.
    upload
 
    Flags:
-         --config string    config file (default is $HOME/.palette-edge.yaml)
+         --config string    config file (default is $HOME/.palette-edge-cli.yaml)
          --debug            set to enable debug logging [default: false]
    -h, --help             help for palette-edge
          --logfile string   log file name
