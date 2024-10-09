@@ -56,8 +56,7 @@ pull behavior.
   command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
   create privileged containers.
 
-- A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for a
-  [free trial](https://www.spectrocloud.com/free-tier/).
+- A [Spectro Cloud](https://console.spectrocloud.com) account.
 
 ## Procedure
 
@@ -82,7 +81,8 @@ pull behavior.
    git checkout v4.5.0
    ```
 
-4. In your **user-data** file, set `stylus.webhook.enable` to `false`.
+4. In your **user-data** file, set `stylus.imageRedirectWebhook.enable` to `false`. This parameter defaults to true if
+   you do not explicitly set it to `false`.
 
    ```yaml {7}
    #cloud-config
@@ -101,16 +101,16 @@ pull behavior.
 
 ### Redirect Image Pull
 
-The process to redirect image pulls vary by Kubernetes distribution as well as your registry setup. This section
-provides an example that shows how you might customize the image pull behavior of your Edge cluster. The example shows
-how you can configure a PXK-E Edge cluster to pull from multiple authenticated registries.
+The process to redirect image pulls varies by Kubernetes distribution as well as your registry setup. This section
+provides an example that shows how you might customize the image pull behavior of your Edge cluster using PXK-E.
 
 6. Log in to [Palette](https://console.spectrocloud.com).
 
 7. From the left **Main Menu**, click **Profiles**. Click on the profile you use to deploy your Edge cluster.
 
-8. In the Kubernetes layer of the profile, include the following lines in the `initramfs` stage to adjust the containerd
-   configuration to supports reading additional files:
+8. (PXK-E Only) In the Kubernetes layer of the profile, include the following lines in the `initramfs` stage to adjust
+   the containerd configuration to supports reading additional files, which you will use to configure the redirect
+   behavior and provide registry credentials.
 
    ```yaml
    stages:
@@ -171,15 +171,17 @@ If you are using public registries that do not require authentication, you can s
 
 If your registries require authentication, you will need to provide credentials to enable image pulls. This example uses
 an open-source generic Kubernetes credentials provider to provide the resources. There are other resources that you can
-take advantage of to provide registry credentials, including using a `registry.yaml` file in K3s or RKE2. However, the
-advantage of the approach used in this example is that after installation, you will not need to restart your cluster to
-rewrite the registry paths or provide the registry credentials.
+take advantage of to provide registry credentials, including using a `registry.yaml` file in
+[K3s](https://docs.k3s.io/installation/private-registry) or
+[RKE2](https://docs.rke2.io/install/containerd_registry_configuration). However, the advantage of the approach used in
+this example is that after installation, you will not need to restart your cluster services to update the registry paths
+or the registry credentials.
 
 :::info
 
 Refer to the
 [`generic-credential-provider` GitHub repository](https://github.com/JonTheNiceGuy/generic-credential-provider) for the
-code for the credential provider on GitHub.
+source code for the credential provider on GitHub.
 
 :::
 
@@ -315,7 +317,8 @@ code for the credential provider on GitHub.
 
      </details>
 
-13. In the Kubernetes layer of your cluster, add the following lines to the `kubeadmconfig.kubeletExtraArgs` field.
+13. In the Kubernetes layer of your cluster, add the following lines to the `kubeadmconfig.kubeletExtraArgs` field. This
+    tells Kubernetes to use the credential provider you installed in the previous step.
 
     ```yaml
     kubeletExtraArgs:
@@ -334,7 +337,8 @@ code for the credential provider on GitHub.
                 image-credential-provider-config: /opt/kubernetes/generic-credential-provider-config.json
     ```
 
-14. Use a `reconcile` stage to define the JSON file with the `CredentialProviderConfig` for kubelet.
+14. Use a `reconcile` stage to define the JSON file with the `CredentialProviderConfig` for kubelet. This configuration
+    specifies the registries that will use the credential provider.
 
     ```yaml {17,18}
     stages:
@@ -366,20 +370,27 @@ code for the credential provider on GitHub.
     Registry URLs that match the patterns in the `mathImages` field will use this provider for credentials. For example,
     `*.io` would match `docker.io`, `quay.io`, `gcr.io` and `*.*.io` would cover URLs like `us.gcr.io`. Refer to
     [Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubelet-credential-provider/#configure-a-kubelet-credential-provider)
-    about the parameters you can use to configure credential providers for kubelet. We suggest that you define a broad
-    pattern, as updating this file requires kubelet to restart. There are no adverse effects when the pattern matches a
-    registry URL for which there is no defined credentials.
+    about the parameters you can use to configure credential providers for kubelet.
+
+    :::tip
+
+    We suggest that you define a broad pattern, as updating this file requires kubelet to restart. There are no adverse
+    effects when the pattern matches a registry URL for which there is no defined credentials: the Palette agent will
+    still perform the image pull, but it will not use the credential provider.
+
+    :::
 
 15. With the credential provider installed and configured, you can now provide your registry credentials. Similar to
     other configurations, you will also perform this step during the `reconcile` stage. Add the following lines to your
-    cluster profile in the OS or the Kubernetes layer.
+    cluster profile in the OS or the Kubernetes layer. Replace `<registry-url>` with the URL of your image registry.
+    Replace the username and password fields with your credentials.
 
     ```yaml {5,11-13}
     stages:
       reconcile:
         - name: "Registry credential management"
           files:
-            - path: /etc/kubernetes/registries/gcr.io.json
+            - path: /etc/kubernetes/registries/<registry-url>.json
               owner: 0
               group: 0
               permissions: 0644
@@ -401,7 +412,8 @@ code for the credential provider on GitHub.
     :::
 
     The script will lookup the JSON file by registry naming and allows partial matches. For example, `gcr.io.json` would
-    match `gcr.io` as well as `us.gcr.io`.
+    match `gcr.io` as well as `us.gcr.io`, and those image pulls to those registries will use the credentials your
+    provided.
 
 ## Validate
 
