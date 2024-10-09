@@ -25,8 +25,7 @@ section are centered around a fictional case study company, Spacetastic Ltd.
   must have the required [IAM policies](../../clusters/public-cloud/aws/required-iam-policies.md).
 
 - An SSH key pair available in the region where you want to deploy the cluster. Check out the
-  [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html) for
-  guidance.
+  [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html) for guidance.
 
 ## Enablement
 
