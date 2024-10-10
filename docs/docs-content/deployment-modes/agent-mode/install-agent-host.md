@@ -62,6 +62,10 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 ## Install Palette Agent
 
+<Tabs group="env">
+
+<TabItem value="Connected">
+
 1. In your terminal, use the following command to SSH into the host. Replace `</path/to/private/key>` with the path to
    your private SSH key and `<host-ip-or-domain>` with the host's IP address or hostname.
 
@@ -200,7 +204,151 @@ Palette. You will then create a cluster profile and use the registered host to d
 19. Follow the steps in the [Create Cluster Definition](../../clusters/edge/site-deployment/model-profile.md) guide to
     deploy a cluster using your registered host as a cluster node.
 
+</TabItem value="Connected">
+
+<TabItem value="Airgap">
+
+In an airgapped environment, your host does not have a connection to Palette and may also have limited access to the
+internet.
+
+1. In your terminal, use the following command to SSH into the host. Replace `</path/to/private/key>` with the path to
+   your private SSH key and `<host-ip-or-domain>` with the host's IP address or hostname.
+
+   ```shell
+   ssh -i </path/to/private/key> ubuntu@<host-ip-or-domain>
+   ```
+
+2. Issue the command below to create the **user-data** file and configure your host declaratively.
+
+   The following configuration indicates the installation mode to be airgap and sets up the `kairos` user. The host will
+   not shut down and will reboot after the agent installation, with
+   [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and VMware vSphere
+   deployments. If your environment does not require kube-vip, set `skipKubeVip:` to `true`. Refer to the
+   [Prepare User Data](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide to learn more about user data
+   configuration.
+
+   ```shell
+   cat << EOF > user-data
+   #cloud-config
+   install:
+     reboot: true
+     poweroff: false
+
+   stylus:
+     skipKubeVip: false
+     installationMode: airgap
+   stages:
+     initramfs:
+       - users:
+           kairos:
+             groups:
+               - sudo
+             passwd: kairos
+   EOF
+   ```
+
+3. Export the path to your user data file.
+
+   ```shell
+   export USERDATA=./user-data
+   ```
+
+4. Download the Palette agent installation script. Access the [Agent Mode](https://github.com/spectrocloud/agent-mode)
+   GitHub repository to obtain the latest releases. This guide uses `v4.5.0-rc9` as an example.
+
+   ```shell
+   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/download/v4.5.0-rc9/palette-agent-install.sh
+   ```
+
+   If your host does not have access to the internet, you would need to download the script from a host that has
+   internet access and copy the script to your host.
+
+5. Grant execution permissions to the `install.sh` script.
+
+   ```shell
+   chmod +x ./palette-agent-install.sh
+   ```
+
+6. Issue the following command from a host with internet access to download the agent binary and name the binary
+   `palette-agent`.
+
+   ```shell
+   export ARCH=$(uname -m)
+   export URL=https://github.com/spectrocloud/agent-mode/releases/download/v4.5.0-rc9/palette-agent-linux-${ARCH}
+   curl -v -L $URL -o palette-agent
+   ```
+
+7. Copy the agent binary from your host with internet access to the host where you want to install the Palette agent.
+
+8. On the host where you want to install the agent, make the following changes to the install script so that the script
+   will use the local Palette agent binary instead of attempting to download from the internet.
+
+9. Issue the following command to install the agent on your host.
+
+   ```shell
+   sudo --preserve-env ./palette-agent-install.sh
+   ```
+
+   The termination of the SSH connection, as shown in the example below, confirms that the script has completed its
+   tasks.
+
+   ```text hideClipboard
+   Connection to 192.168.1.100 closed by remote host.
+   Connection to 192.168.1.100 closed.
+   ```
+
+10. Log in to [Palette](https://console.spectrocloud.com/) and select **Clusters** from the left **Main Menu**.
+
+11. Select the **Edge Hosts** tab and verify your host is displayed and marked as **Healthy** in the Edge hosts list.
+
+12. Once the host has been registered with Palette, proceed with the cluster profile creation. Select **Profiles** from
+    the left **Main Menu**.
+
+13. Click on **Add Cluster Profile**.
+
+14. In the **Basic Information** section, assign the a profile name, a description, and tags. Select the type as
+    **Full** and click **Next**.
+
+15. Select **Edge Native** as the **Cloud Type** and click **Next**.
+
+16. The **Profile Layers** section specifies the packs that compose the profile. Add the **BYOS Edge OS** pack version
+    **2.0.0** to the OS layer.
+
+17. Click **Values** under **Pack Details**, then click on **Presets** on the right-hand side. Select **Agent Mode**.
+
+    ![View of the cluster profile creation page with the BYOS pack.](/deployment-modes_agent-mode_byos-pack.webp)
+
+18. Click **Next Layer** to continue.
+
+19. Complete the cluster profile creation process by filling out the remaining layers. In the application layer, make
+    sure you include the **Harbor Edge-Native Config** pack. This pack is required for airgapped clusters.
+
+20. Follow the steps in
+    [Export Cluster Definition](../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) to export
+    a cluster definition of your profile.
+
+21. Follow the steps in
+    [Build Content Bundles](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) to build a
+    content bundle for your cluster profile.
+
+22. Log in to [Local UI](../../clusters/edge/local-ui/host-management/access-console.md).
+
+23. Follow the steps in
+    [Upload Content Bundles](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) to upload the
+    content bundle to your host.
+
+24. Follow the steps in [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) to use
+    the cluster definition you exported previously to create a cluster.
+
+</TabItem>
+
+</Tabs>
+
 ## Validate
+
+<Tabs group="env">
+
+<TabItem value="Connected">
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -209,3 +357,17 @@ Palette. You will then create a cluster profile and use the registered host to d
 3. Select the host cluster you created to view its details page.
 
 4. Verify that the cluster is listed as **Healthy** and has a **Running** status.
+
+</TabItem>
+
+<TabItem value="Airgap">
+
+1. Log in to [Local UI](../../clusters/edge/local-ui/host-management/access-console.md).
+
+2. Select **Cluster** from the left **Main Menu**.
+
+3. Verify that your cluster is in a **Heathy** status.
+
+</TabItem>
+
+</Tabs>
