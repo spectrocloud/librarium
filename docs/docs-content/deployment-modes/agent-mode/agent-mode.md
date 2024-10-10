@@ -21,9 +21,9 @@ The diagram below illustrates the agent mode cluster provisioning workflow.
 
 The order of operations can be summarized as follows:
 
-1. You provide a host as well as an Operating System (OS) that will run on your host.
+1. You provide a host as well as an Operating System (OS) that will operate on your host.
 
-2. You install the Palette agent on your host. Alternatively, you may build the the Palette agent into your OS image.
+2. You install the Palette agent on your host. Alternatively, you may build the Palette agent into your OS image.
 
 3. You create a cluster profile in Palette. The profile contains the Kubernetes distribution, the Container Network
    Interface (CNI), the Container Storage Interface (CSI) as well as any other applications.
@@ -37,7 +37,7 @@ The order of operations can be summarized as follows:
    your cluster profile.
 
    If the agent is installed on your host in airgap mode, you can use the exported cluster profile to provision a
-   cluster from Local UI
+   cluster from Local UI.
 
 ## Use Cases
 
