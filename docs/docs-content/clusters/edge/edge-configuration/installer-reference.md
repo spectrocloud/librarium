@@ -216,7 +216,7 @@ registry. If you find this redirect behavior to be limiting, you can disable the
 
 | Parameter                            | Description                                            | Default |
 | ------------------------------------ | ------------------------------------------------------ | ------- |
-| `stylus.imageRedirectWebhook.enable` | Whether to enable the webhook to redirect image pulls. | None    |
+| `stylus.imageRedirectWebhook.enable` | Whether to enable the webhook to redirect image pulls. | `True`    |
 
 ## Install Parameters
 
