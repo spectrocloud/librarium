@@ -16,8 +16,8 @@ tags: ["release-notes"]
 This release of Palette features a new deployment model, Agent Mode, and contains several new improvements and
 enhancements. Take a moment and review the breaking changes and deprecation messages to ensure you stay informed of
 upcoming changes. We also have a new and improved [Getting Started](../getting-started/getting-started.md) series worth
-checking out, especially if you have new users who need to get familiar with Palette. Check out the following sections to
-learn more about the changes introduced in this release.
+checking out, especially if you have new users who need to get familiar with Palette. Check out the following sections
+to learn more about the changes introduced in this release.
 
 ### Security Notices
 
