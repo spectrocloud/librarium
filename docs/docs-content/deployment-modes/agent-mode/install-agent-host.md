@@ -31,7 +31,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 
   | Host Architecture | OS     | Kubernetes                                | CNI     | Verified           |
   | ----------------- | ------ | ----------------------------------------- | ------- | ------------------ |
-  | AMD64             | Ubuntu | Palette eXtended Kubernetes - Edge (PXKE) | Calico  | :white_check_mark: |
+  | AMD64             | Ubuntu | Palette eXtended Kubernetes - Edge (PXK-E) | Calico  | :white_check_mark: |
   | AMD64             | Ubuntu | K3s                                       | Flannel | :white_check_mark: |
 
 ## Prerequisites

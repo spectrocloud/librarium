@@ -9,7 +9,7 @@ sidebar_custom_props:
 tags: ["edge"]
 ---
 
-Real-life applications in Kubernetes can operate in many different environments, with varying security, compliance, and
+Applications in Kubernetes can operate in many different environments with varying security, compliance, and
 performance requirements. Palette offers three different deployment modes that can help you meet the needs of your
 organization. Whether you want to operate your cluster in public cloud, private data centers, or at the Edge, and
 whether you want to use your own organization's hardware and Operating Systems (OS) or build secure, immutable OS to
@@ -38,7 +38,7 @@ customize the OS in any way you wish, and use that OS image in your cluster prof
 
 The advantage of controller mode is that your cluster is fully managed by Palette, saving you significant time, effort,
 and upfront investment that would have been required for managing your own infrastructure. If your applications
-primarily run on public clouds or data centers, using controller mode allows you to manage everything for your cluster,
+primarily deploy on public clouds or data centers, using controller mode allows you to manage everything for your cluster,
 from infrastructure to applications, in a unified platform.
 
 Because Palette is provisioning and managing infrastructure for you, controller mode also requires that you provide
@@ -72,7 +72,7 @@ managing the infrastructure for you, you will have more overhead in managing the
 
 [Agent mode](./agent-mode/agent-mode.md) follows a similar model to appliance mode, requiring you to provide your own
 infrastructure. Once the Palette agent is installed, you can instruct the agent to create and manage a cluster either
-from Local UI or Palette Management Plane.
+from Local UI or Palette Management plane.
 
 Unlike appliance mode, you have more freedom to manage the OS for your clusters. Agent mode does not require you to use
 EdgeForge to create an immutable OS image or Kubernetes image. Instead, you can use a script to install the Palette
