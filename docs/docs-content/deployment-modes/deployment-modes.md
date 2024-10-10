@@ -24,7 +24,7 @@ between them.
 | [Appliance mode](#appliance-mode)   | Provided and managed by the user                                 | Built with EdgeForge                                     | Immutable            | No                                |
 | [Agent mode](#agent-mode)           | Provided and managed by the user                                 | Provided and managed by the user                         | Mutable or immutable | No                                |
 
-![Deployment Modes diagram](/deployment-modes_main-diagram.gif)
+![Deployment Modes diagram](/deployment-modes_main-diagram-loop.gif)
 
 ## Controller Mode
 
