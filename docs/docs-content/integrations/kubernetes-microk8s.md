@@ -59,9 +59,9 @@ MicroK8s upgrades.
 The MicroK8s pack supports three types of upgrade strategies:
 
 - `InPlaceUpgrade` - Performs an in-place upgrade of the control plane. For clusters with one control plane and one
-  worker node, `InPlaceUpgrade` temporarily shuts down the API server.
+  worker node, `InPlaceUpgrade` temporarily shuts down the API server. This is the default upgrade strategy.
 
-- `RollingUpgrade` - The default upgrade strategy that deletes the current control plane node before creating a new one.
+- `RollingUpgrade` - This upgrade strategy deletes the current control plane node before creating a new one.
 
 - `SmartUpgrade` - Performs an in-place upgrade of the control plane on clusters with fewer than three control plane
   nodes, and a rolling upgrade on clusters with three or more control plane nodes.
