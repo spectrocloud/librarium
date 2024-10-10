@@ -213,6 +213,16 @@ For example, if you have a Python script that returns the following JSON output:
 You can configure `stylus.site.tagsFromScript` to point to the script, and it will add the tags `owner:p78125d` and
 `department: sales` to the Edge host.
 
+### Site Registry Parameters
+
+Palette uses a webhook to redirect image pulls when you have specified an external registry or use a local Harbor
+registry. If you find this redirect behavior to be limiting, you can disable the webhook. For more information, refer to
+[Disable Webhook to Customize Image Pull Behavior](../site-deployment/deploy-custom-registries/webhook-disable.md).
+
+| Parameter                            | Description                                            | Default |
+| ------------------------------------ | ------------------------------------------------------ | ------- |
+| `stylus.imageRedirectWebhook.enable` | Whether to enable the webhook to redirect image pulls. | `True`  |
+
 ## Install Parameters
 
 The `install` block allows you to configure the installer to make bind mounts and disk partitions on the Edge host. In
