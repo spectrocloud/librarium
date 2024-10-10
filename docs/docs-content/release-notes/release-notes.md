@@ -16,7 +16,7 @@ tags: ["release-notes"]
 This release of Palette features a new deployment model, Agent Mode, and contains several new improvements and
 enhancements. Take a moment and review the breaking changes and deprecation messages to ensure you stay informed of
 upcoming changes. We also have a new and improved [Getting Started](../getting-started/getting-started.md) series worth
-checking out, especially if you have new users needing to get familiar with Palette. Check out the following sections to
+checking out, especially if you have new users who need to get familiar with Palette. Check out the following sections to
 learn more about the changes introduced in this release.
 
 ### Security Notices
@@ -60,7 +60,7 @@ learn more about the changes introduced in this release.
   guide to learn more about adding an OCI Helm registry.
 
 - The self-hosted Palette [system console](../enterprise-version/system-management/system-management.md#system-console)
-  login page now has improved visual feedback for login errors. If the username and password fields are empty, they will
+  login page has now improved visual feedback for login errors. If the username and password fields are empty, they will
   be highlighted in red.
 
 - Several improvements have been introduced to the Palette UI in this release.These upgrades include better support for
@@ -75,7 +75,7 @@ learn more about the changes introduced in this release.
 
 #### Deprecations and Removals
 
-- The [cluster group](../clusters/cluster-groups/cluster-groups.md), Beehive, will be sunset November 9, 2024. If you
+- The [cluster group](../clusters/cluster-groups/cluster-groups.md), Beehive, will be sunset on November 9, 2024. If you
   are using Palette SaaS and have virtual clusters in the Beehive cluster group, migrate the workload to new virtual
   clusters hosted in a self-managed cluster group before November 9, 2024. You can learn more about creating a new
   cluster group in the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide.
