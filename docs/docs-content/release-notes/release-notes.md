@@ -88,15 +88,16 @@ learn more about the changes introduced in this release.
   developers can use the JWT token provided by LocalUI to authenticate users for their applications hosted in the Edge
   cluster. The LocalUI provides a shared public key to each Edge host that you can use to verify the JWT token produced
   by LocalUI. This feature enables a single authentication source for applications deployed onto your Edge cluster.
-  Check out the [LocalUI](../clusters/edge/site-deployment/site-deployment.md) guide to learn more about this feature.
+  Check out the [Share Local UI Authentication](../clusters/edge/local-ui/cluster-management/share-auth.md) guide to
+  learn more about this feature.
 
 #### Improvements
 
 - You can now disable the webhook Edge hosts use to redirect image pulls to the appropriate locations depending on your
   Edge user data configuration. Turning off the default webhook allows you to use diverse registry setups, such as
   private authenticated registries and airgap domains. Check out the
-  [Disable Webhook to Customize Image Pull Behavior](../clusters/edge/site-deployment/site-deployment.md) guide to learn
-  more about this feature.
+  [Disable Webhook to Customize Image Pull Behavior](../clusters/edge/site-deployment//deploy-custom-registries/webhook-disable.md)
+  guide to learn more about this feature.
 
 #### Bug Fixes
 
