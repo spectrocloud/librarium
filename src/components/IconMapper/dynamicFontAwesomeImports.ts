@@ -8,6 +8,7 @@ import { faHdd } from '@fortawesome/free-solid-svg-icons';
 import { faCloudArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faNetworkWired } from '@fortawesome/free-solid-svg-icons';
 import { faServer } from '@fortawesome/free-solid-svg-icons';
+import { faRoad } from '@fortawesome/free-solid-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faWarehouse } from '@fortawesome/free-solid-svg-icons';
 import { faFlagCheckered } from '@fortawesome/free-solid-svg-icons';
@@ -34,6 +35,7 @@ export const fontAwesomeIcons = {
   "cloud-arrow-down": faCloudArrowDown,
   "network-wired": faNetworkWired,
   "server": faServer,
+  "road": faRoad,
   "users": faUsers,
   "warehouse": faWarehouse,
   "flag-checkered": faFlagCheckered,
