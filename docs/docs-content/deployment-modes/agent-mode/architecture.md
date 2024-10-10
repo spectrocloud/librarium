@@ -23,6 +23,13 @@ The following are architectural highlights of clusters deployed using agent mode
 
 ![Architecture Diagram for Agent Mode](/deployment-modes_agent-mode.webp)
 
+## Supported Kubernetes Distributions
+
+| Distribution | Versions                |
+| ------------ | ----------------------- |
+| PXK-E        | 1.28.13, 1.28.9, 1.30.5 |
+| K3s          | 1.28.14, 1.28.9, 1.30.5 |
+
 ## Minimum Device Requirements
 
 Agent mode deployments support both AMD64 and ARM64 architectures.
