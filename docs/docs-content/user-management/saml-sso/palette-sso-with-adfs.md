@@ -40,6 +40,19 @@ standard that Palette employs. You can only use the OIDC-based approach for Micr
   [Matrixpost](https://blog.matrixpost.net/set-up-active-directory-federation-services-ad-fs-5-0-adfs-reverse-proxy-part-2/)
   for additional guidance.
 
+- Palette requires the following claims to be present in the OIDC token:
+
+  | Claim Name       | Default Value | Description                                            |
+  | ---------------- | ------------- | ------------------------------------------------------ |
+  | **Email**        | `email`       | The user's email address.                              |
+  | **First Name**   | `given_name`  | The user's first name.                                 |
+  | **Last Name**    | `family_name` | The user's last name.                                  |
+  | **Spectro Team** | `groups`      | The user's group memberships in the Identity Provider. |
+
+  Change the claim names in your IdP if they are different from the default values. If the OIDC token does not contain
+  these claims, toggle the **Use userinfo endpoint** option in the OIDC configuration to allow Palette to fetch the
+  missing claims from the user information endpoint.
+
 ## Enablement
 
 ### Create the AD FS Application Group for Palette

@@ -20,9 +20,6 @@ For guidance on how to add a custom pack to an OCI pack registry, check out the
 
 ## Prerequisites
 
-- You must have a private OCI type Pack registry that supports basic authentication. Public OCI registries are not
-  supported.
-
 - Credentials to access the OCI registry. If you are using an AWS ECR registry, you must have the AWS credentials to an
   IAM user or add a trust relationship to an IAM role so that Palette can access the registry.
 
@@ -101,7 +98,9 @@ registry you are adding.
 
 9. Specify the **Base Content Path**. This is the path to the OCI registry where the OCI Packs are stored. For example,
    if the OCI registry URL is `https://registry.example.com` and the OCI Packs are stored in the `internal` repository,
-   the base content path is `internal`.
+   the base content path is `internal`. You can specify multiple base paths by pressing the Enter key after each path.
+   Providing multiple base paths is useful when Helm Charts are stored in different directories or projects, such as
+   multiple projects in a Harbor registry.
 
 10. Fill out the **Username** and **Password** fields with the credentials to access the registry.
 

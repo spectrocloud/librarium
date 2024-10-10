@@ -25,7 +25,9 @@ In the event that more than one application in the profile needs the same pack, 
 pack to multiple layers. Check out
 [Deploy Same Pack to Multiple Layers](../create-cluster-profiles/duplicate-pack-in-profile.md) for more information.
 
-The next sections guide you in updating and versioning a profile.
+Palette will automatically display the **Update** button when a new version of a pack is available. Review the
+[Accept Updates to a Cluster Profile](./update-cluster-profile.md#review-update-changes) section to learn more about
+accepting pack updates.
 
 ## Resources
 

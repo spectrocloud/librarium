@@ -1222,6 +1222,91 @@
         }
       }
     },
+    "/v1/edge-mgmt/edgehosts/current/link": {
+      "post": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Link edge host to another edge host",
+        "operationId": "v1EdgeHostLink",
+        "parameters": [
+          {
+            "name": "LinkToken",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1LinkToken"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1LinkStatus"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/link/generate-token": {
+      "post": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Generate a link token for linking edge hosts",
+        "operationId": "v1EdgeHostLinkGenerateToken",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1LinkToken"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/link/status": {
+      "get": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get the status of the edge host link",
+        "operationId": "v1EdgeHostLinkStatus",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1LinkStatus"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
     "/v1/edge-mgmt/events/lifecycle": {
       "get": {
         "description": "Get life cycle events of cluster and edge host",
@@ -2462,8 +2547,7 @@
           "description": "NTPServers is a list of NTP servers to use instead of the machine image's default NTP server list",
           "type": "array",
           "items": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           }
         },
         "overlayNetworkConfiguration": {
@@ -3006,6 +3090,87 @@
         }
       }
     },
+    "v1LinkPeer": {
+      "type": "object",
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/v1EdgeHostInfo"
+        },
+        "contentSyncStatus": {
+          "description": "content sync status for the edge host",
+          "type": "string"
+        },
+        "health": {
+          "$ref": "#/definitions/v1Health"
+        },
+        "id": {
+          "description": "edge host id",
+          "type": "string"
+        },
+        "ip": {
+          "description": "edge host ip",
+          "type": "string"
+        },
+        "localUIPort": {
+          "description": "edge host local UI port",
+          "type": "string"
+        },
+        "nodeRole": {
+          "$ref": "#/definitions/v1NodeRole"
+        },
+        "role": {
+          "description": "edge host role",
+          "type": "string"
+        },
+        "status": {
+          "description": "edge host status",
+          "type": "string"
+        }
+      }
+    },
+    "v1LinkStatus": {
+      "type": "object",
+      "properties": {
+        "errorMessage": {
+          "description": "The error message in case of failure",
+          "type": "string"
+        },
+        "peers": {
+          "description": "The list of peers linked to the edge host",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1LinkPeer"
+          }
+        },
+        "status": {
+          "description": "The status of the link operation",
+          "type": "string",
+          "enum": [
+            "Pending",
+            "InProgress",
+            "Completed",
+            "Failed"
+          ]
+        }
+      }
+    },
+    "v1LinkToken": {
+      "type": "object",
+      "properties": {
+        "interval": {
+          "description": "The refresh interval for the link token in seconds",
+          "type": "integer"
+        },
+        "remainingTime": {
+          "description": "The remaining time for the current link token to be valid in seconds",
+          "type": "integer"
+        },
+        "token": {
+          "description": "The link token to link the edge host in base64 encoded format",
+          "type": "string"
+        }
+      }
+    },
     "v1ListMetaData": {
       "description": "ListMeta describes metadata for the resource listing",
       "type": "object",
@@ -3512,6 +3677,12 @@
     "v1Settings": {
       "type": "object",
       "properties": {
+        "featureFlags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "boolean"
+          }
+        },
         "installationMode": {
           "type": "string",
           "enum": [

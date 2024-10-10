@@ -513,7 +513,7 @@
   },
   {
     "name": "edge-native-byoi",
-    "description": "The Bring Your Own Operating System (BYOOS) pack enables you to use a custom Operating System (OS) with Palette Edge clusters."
+    "description": "The Bring Your Own Operating System (BYOOS) pack enables you to use a custom Operating System (OS) when using Agent Mode or deploying  Edge clusters."
   },
   {
     "name": "generic-byoi",

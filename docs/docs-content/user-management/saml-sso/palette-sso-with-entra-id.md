@@ -49,6 +49,19 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
   need to install [kubelogin](https://github.com/int128/kubelogin) on your local workstation to handle retrieval of
   access tokens for your cluster.
 
+- Palette requires the following claims to be present in the OIDC token:
+
+  | Claim Name       | Default Value | Description                                            |
+  | ---------------- | ------------- | ------------------------------------------------------ |
+  | **Email**        | `email`       | The user's email address.                              |
+  | **First Name**   | `given_name`  | The user's first name.                                 |
+  | **Last Name**    | `family_name` | The user's last name.                                  |
+  | **Spectro Team** | `groups`      | The user's group memberships in the Identity Provider. |
+
+  Change the claim names in your IdP if they are different from the default values. If the OIDC token does not contain
+  these claims, toggle the **Use userinfo endpoint** option in the OIDC configuration to allow Palette to fetch the
+  missing claims from the user information endpoint.
+
 ### Configure Microsoft Entra ID with Palette
 
 1.  Log in to [Palette](https://console.spectrocloud.com) as a **Tenant Admin**.
