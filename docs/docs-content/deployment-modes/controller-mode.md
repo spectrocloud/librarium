@@ -7,7 +7,7 @@ sidebar_position: 30
 tags: ["CAPI"]
 ---
 
-Controller mode uses the Palette Management Plane and the [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io/) project
+Controller mode uses the Palette management plane and the [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io/) project
 to provision and manage clusters along with their underlying infrastructure resources in the specified target
 environment. CAPI is a Kubernetes sub-project focused on providing declarative APIs and tooling to automate cluster
 lifecycle management for platform operations.
@@ -15,11 +15,11 @@ lifecycle management for platform operations.
 To create a cluster, you must provide Palette with the required permissions and credentials, and then request that
 Palette create the cluster. The following steps briefly describe what happens after the cluster creation request.
 
-1. The Palette Management Plane creates the CAPI Custom Resource Definitions (CRDs) for the target cloud.
+1. The Palette management plane creates the CAPI Custom Resource Definitions (CRDs) for the target cloud.
 
 2. CAPI then uses the CRDs to provision the first control plane node on the target environment.
 
-3. Next, the Palette Management Plane installs a Palette agent on the node and performs a pivot of CAPI resources,
+3. Next, the Palette management plane installs a Palette agent on the node and performs a pivot of CAPI resources,
    transferring management responsibilities to the workload cluster.
 
 4. The workload cluster then creates the remaining control plane and worker nodes.
@@ -33,6 +33,8 @@ Palette create the cluster. The following steps briefly describe what happens af
 The diagram below illustrates the controller mode cluster provisioning workflow.
 
 ![Controller Mode diagram](/deployment-modes_controller-diagram.webp)
+
+For more details, refer to [Order of Operations](../architecture/orchestration-spectrocloud.md)
 
 ## Use Cases
 

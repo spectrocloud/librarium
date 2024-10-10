@@ -9,18 +9,18 @@ sidebar_custom_props:
 tags: ["edge"]
 ---
 
-Applications in Kubernetes can operate in many different environments with varying security, compliance, and
-performance requirements. Palette offers three different deployment modes that can help you meet the needs of your
-organization. Whether you want to operate your cluster in public cloud, private data centers, or at the Edge, and
-whether you want to use your own organization's hardware and Operating Systems (OS) or build secure, immutable OS to
-bootstrap your applications, you can choose a solution that works for you.
+Applications in Kubernetes can operate in many different environments with varying security, compliance, and performance
+requirements. Palette offers three different deployment modes that can help you meet the needs of your organization.
+Whether you want to operate your cluster in public cloud, private data centers, or at the Edge, and whether you want to
+use your own organization's hardware and Operating Systems (OS) or build secure, immutable OS to bootstrap your
+applications, you can choose a solution that works for you.
 
 The table and diagram below provide you with a brief overview of the different deployment modes and the distinctions
 between them.
 
 | Mode                                | Infrastructure                                                   | Operating System                                         | OS Mutability        | Require Cloud Account Credentials |
 | ----------------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------- | -------------------- | --------------------------------- |
-| [Controller mode](#controller-mode) | Provisioned by Palette Management Plane using Cluster API (CAPI) | Use Palette-provided OS packs or build your own OS image | Mutable              | Yes                               |
+| [Controller mode](#controller-mode) | Provisioned by Palette management plane using Cluster API (CAPI) | Use Palette-provided OS packs or build your own OS image | Mutable              | Yes                               |
 | [Appliance mode](#appliance-mode)   | Provided and managed by the user                                 | Built with EdgeForge                                     | Immutable            | No                                |
 | [Agent mode](#agent-mode)           | Provided and managed by the user                                 | Provided and managed by the user                         | Mutable or immutable | No                                |
 
@@ -29,7 +29,7 @@ between them.
 ## Controller Mode
 
 [Controller mode](controller-mode.md) is how you use Palette to deploy clusters in public clouds and data centers. In
-controller mode, the act of provisioning infrastructure comes from the Palette Management Plane using Cluster API
+controller mode, the act of provisioning infrastructure comes from the Palette management plane using Cluster API
 (CAPI). After the infrastructure is provisioned, the Palette agent managing the cluster starts to download images,
 including those for the Operating System (OS), Kubernetes, network and storage plugins, as well as applications. You may
 customize the OS in any way you wish, and use that OS image in your cluster profile.
@@ -38,8 +38,8 @@ customize the OS in any way you wish, and use that OS image in your cluster prof
 
 The advantage of controller mode is that your cluster is fully managed by Palette, saving you significant time, effort,
 and upfront investment that would have been required for managing your own infrastructure. If your applications
-primarily deploy on public clouds or data centers, using controller mode allows you to manage everything for your cluster,
-from infrastructure to applications, in a unified platform.
+primarily deploy on public clouds or data centers, using controller mode allows you to manage everything for your
+cluster, from infrastructure to applications, in a unified platform.
 
 Because Palette is provisioning and managing infrastructure for you, controller mode also requires that you provide
 Palette with all the necessary permissions and credentials to perform these actions. For more information on the
@@ -52,7 +52,7 @@ In [appliance mode](./appliance-mode.md), you provide your own infrastructure. Y
 [EdgeForge](../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) to build artifacts, including provider images and
 the installer ISO. You then [install](../clusters/edge/site-deployment/stage.md) the Palette agent on your host using
 the installer ISO. Once installed, you can use either [Local UI](../clusters/edge/local-ui/local-ui.md) or the Palette
-Management Plane to instruct the Palette agent to create and manage clusters.
+management plane to instruct the Palette agent to create and manage clusters.
 
 Unlike controller mode, where clusters are always managed by Palette, you can choose to manage your cluster with Palette
 or locally using [Local UI](../clusters/edge/local-ui/local-ui.md), with no network connection between your cluster and
