@@ -31,7 +31,7 @@ list of the core and auxiliary Kubernetes components that are included in PXK.
 | Controller Manager | The controller manager is a daemon that embeds the core control loops shipped with Kubernetes.                                 |
 | Scheduler          | The scheduler is a daemon that finds the best node for a pod, based on the scheduling requirements you specify.                |
 | Kubelet            | The kubelet is the primary _node agent_ that is deployed on each node.                                                         |
-| Kube-proxy         | The kube-proxy is a network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept. |
+| Kube-proxy         | The kube-proxy is a network proxy that operates on each node in your cluster, implementing part of the Kubernetes Service concept. |
 | Kubeadm            | Kubeadm is a tool built to provide best-practice “fast paths” for creating Kubernetes clusters.                                |
 | Kubectl            | Kubectl is a command line interface for issuing commands against Kubernetes clusters.                                          |
 
@@ -52,7 +52,7 @@ list of the core and auxiliary Kubernetes components that are included in PXK.
 | containerd-shim-runc-v2 | Containerd-shim-runc-v2 is a shim used by containerd to launch containers.                                        |
 | ctr                     | Ctr is a command line interface for containerd.                                                                   |
 | crictl                  | Crictl is a command line interface for CRI-compatible container runtimes.                                         |
-| runc                    | Runc is a CLI tool for spawning and running containers according to the OCI specification.                        |
+| runc                    | Runc is a CLI tool for spawning and managing containers according to the OCI specification.                        |
 
 <br />
 
