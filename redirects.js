@@ -563,6 +563,10 @@ const redirects = [
     ],
     to: "/integrations/",
   },
+  {
+    from: "/legal-licenses/oss-licenses/",
+    to: "/legal-licenses/oss-licenses-index/",
+  },
 ];
 
 module.exports = redirects;
