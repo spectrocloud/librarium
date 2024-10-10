@@ -1,8 +1,8 @@
 ---
 sidebar_label: "Palette eXtended Kubernetes"
-title: "PXK Open-source Licenses"
+title: "PXK Open Source Licenses"
 description:
-  "Review the open-source licenses tied to the libraries and modules currently in use by Palette eXtended Kubernetes
+  "Review the open source licenses tied to the libraries and modules currently in use by Palette eXtended Kubernetes
   (PXK)."
 sidebar_position: 20
 tags: ["legal", "licenses", "pxk"]
@@ -10,7 +10,56 @@ tags: ["legal", "licenses", "pxk"]
 
 <!-- vale off -->
 <!-- prettier-ignore -->
-The following table lists the open-source licenses associated with the libraries and modules currently in use by <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> and the Federal Information Processing Standards (FIPS) compliant version of PXK.
+The following table lists the open source licenses associated with the libraries and modules currently in use by <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> and the Federal Information Processing Standards (FIPS) compliant version of PXK.
+
+## PXK License
+
+PXK is released under an [Apache-2.0 license](https://www.apache.org/licenses/LICENSE-2.0).
+
+## PXK Components
+
+All PXK components and supporting open source components are compiled in their native programming language. Below is a
+list of the core and auxiliary Kubernetes components that are included in PXK.
+
+<br />
+
+### Core Kubernetes Components
+
+| **Component**      | **Description**                                                                                                                |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| API Server         | The API server is the central management entity that receives all REST requests for the cluster.                               |
+| Controller Manager | The controller manager is a daemon that embeds the core control loops shipped with Kubernetes.                                 |
+| Scheduler          | The scheduler is a daemon that finds the best node for a pod, based on the scheduling requirements you specify.                |
+| Kubelet            | The kubelet is the primary _node agent_ that is deployed on each node.                                                         |
+| Kube-proxy         | The kube-proxy is a network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept. |
+| Kubeadm            | Kubeadm is a tool built to provide best-practice “fast paths” for creating Kubernetes clusters.                                |
+| Kubectl            | Kubectl is a command line interface for issuing commands against Kubernetes clusters.                                          |
+
+### Auxiliary Kubernetes Components
+
+| **Component** | **Description**                                                                               |
+| ------------- | --------------------------------------------------------------------------------------------- |
+| CoreDNS       | CoreDNS is a Domain Name System (DNS) server deployed as a cluster DNS service.               |
+| Etcd          | Etcd is a distributed key-value store used as Kubernetes’ backing store for all cluster data. |
+
+### Runtime Components
+
+| **Component**           | **Description**                                                                                                   |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| containerd              | Containerd is an industry-standard container runtime with an emphasis on simplicity, robustness, and portability. |
+| containerd-shim         | Containerd-shim is a shim used by containerd to launch containers.                                                |
+| containerd-shim-runc-v1 | Containerd-shim-runc-v1 is a shim used by containerd to launch containers.                                        |
+| containerd-shim-runc-v2 | Containerd-shim-runc-v2 is a shim used by containerd to launch containers.                                        |
+| ctr                     | Ctr is a command line interface for containerd.                                                                   |
+| crictl                  | Crictl is a command line interface for CRI-compatible container runtimes.                                         |
+| runc                    | Runc is a CLI tool for spawning and running containers according to the OCI specification.                        |
+
+<br />
+
+## Open Source Dependencies
+
+The following table lists the open source libraries and modules currently in use by PXK and the Federal Information
+Processing Standards (FIPS) compliant version of PXK.
 
 | Library                                                                                | License                                                                                                                                                           |
 | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
