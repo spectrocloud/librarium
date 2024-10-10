@@ -14,7 +14,7 @@ The following table lists the open source licenses associated with the libraries
 
 ## PXK License
 
-PXK is released under an [Apache-2.0 license](https://www.apache.org/licenses/LICENSE-2.0).
+PXK is released under the [Apache-2.0 license](https://www.apache.org/licenses/LICENSE-2.0).
 
 ## PXK Components
 
