@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 12, 2024 - Release 4.5.0 - 4.5.X
+## October 12, 2024 - Release 4.5.0 - 4.5.1
 
 This release of Palette features a new deployment model, Agent Mode, and contains several new improvements and
 enhancements. Take a moment and review the breaking changes and deprecation messages to ensure you stay informed of
