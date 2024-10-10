@@ -9,14 +9,14 @@ tags: ["edge"]
 ---
 
 Accessing Local UI requires authentication. Local UI will store a JSON Web Token (JWT) as a cookie in your browser once
-authentication is successful, and you won't need to log in again as long as the token exists and remains valid. If you
-have applications in your cluster that also require authentication, you can have your application consume the same token
+authentication is successful, and you won't need to log in again as long as the cookie exists and remains valid. If you
+have applications in your cluster that also require authentication, you can have your application consume the same cookie
 to streamline the authentication process for your users.
 
 When you develop your application, you need to be aware that your application needs access to two items when the cluster
 becomes operational:
 
-- The JWT itself. This token will be stored in the browser if your user has previously logged in to Local UI.
+- The JWT itself. This token is stored in your browser as a cookie, but only if your user has previously logged in to Local UI.
 - The public key that is used to validate the JWT token. This token is exposed as a secret in the `spectro-system`
   namespace when you provision your Kubernetes cluster. If your cluster has multiple nodes, each node will have its own
   public key.
@@ -75,7 +75,7 @@ becomes operational:
 
    The middleware verifies the JWT using the public key. If it is valid, it decodes the JWT and return the user
    information contained in the JWT. If the JWT doesn't exist or is not valid, it will redirect the user to the login
-   page.
+   page. At this point, you can mark application routes as either protected or unprotected. Protecting routes varies by library and framework utilized. Refer to your application framework or authentication library's documentation for more details.
 
 3. Build the image containing your application and push it to a registry that your host has access to.
 
@@ -139,10 +139,12 @@ becomes operational:
 
    :::info
 
-   Alternatively, you can create the cluster without the application layer first. After the cluster is up, issue the
+   You can create the cluster without the application layer first. After the cluster is up, issue the
    command to copy the secret to a new namespace where you expect to deploy the application, and then add the add-on
    layer to the profile of the active cluster. If you do this, you won't encounter the error regarding volume mounts
    failing to be created.
+   
+  Alternatively, you can use a Kubernetes [service account role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#service-account-permissions) and an initialization script that accesses the secret from the `spectro-system` namespace. This is an advanced workflow but allows for single-shot deployments. Check out the [Accessing the Kubernetes API from a Pod](https://kubernetes.io/docs/tasks/run-application/access-api-from-pod/) guide for an example on how to use a service account role's credentials inside a container.
 
    :::
 
