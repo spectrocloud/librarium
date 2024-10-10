@@ -204,7 +204,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 19. Follow the steps in the [Create Cluster Definition](../../clusters/edge/site-deployment/model-profile.md) guide to
     deploy a cluster using your registered host as a cluster node.
 
-</TabItem value="Connected">
+</TabItem>
 
 <TabItem value="Airgap">
 
