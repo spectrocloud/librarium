@@ -146,9 +146,13 @@ provides an example that shows how you might customize the image pull behavior o
    :::
 
 9. In the Kubernetes layer of the profile, include the following lines in the reconcile stage. For more information,
-   refer to [Cloud-init Stages](../../edge-configuration/cloud-init.md).
+   refer to [Cloud-init Stages](../../edge-configuration/cloud-init.md). Replace the server address and the host address
+   with your registry and its mirror. Since you are only editing the reconcile stage, this will not result in a reboot
+   or service restart for your cluster.
 
-   ```yaml
+   The following example will redirect image pulls for `https://gcr.io` to `https://gcr-io-mirror.company.local`.
+
+   ```yaml {9-11}
    stages:
     reconcile:
         - name: "Redirect registries"
@@ -161,9 +165,6 @@ provides an example that shows how you might customize the image pull behavior o
                 [host."https://gcr-io-mirror.company.local"]
                     capabilities = ["pull", "resolve"]
    ```
-
-   This will redirect image pulls for `https://gcr.io` to `https://gcr-io-mirror.company.local`. Since you are only
-   editing the reconcile stage, this will not result in a reboot or service restart for your cluster.
 
 ### Provide Registry Credentials
 
@@ -337,8 +338,9 @@ source code for the credential provider on GitHub.
                 image-credential-provider-config: /opt/kubernetes/generic-credential-provider-config.json
     ```
 
-14. Use a `reconcile` stage to define the JSON file with the `CredentialProviderConfig` for Kubelet. This configuration
-    specifies the registries that will use the credential provider.
+14. In the Kubernetes or OS layoer of your cluster profile, use a `reconcile` stage to define the JSON file with the
+    `CredentialProviderConfig` for Kubelet. This configuration specifies the registries that will use the credential
+    provider.
 
     ```yaml {17,18}
     stages:
