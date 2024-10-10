@@ -82,9 +82,9 @@ agent on your existing machine, with its existing OS, or build an OS image that 
 
 Agent mode is especially convenient for organizations that have stringent security policies and you already have tools
 in place to manage some specific OS. Since it allows you to use your existing OS, you no longer need to obtain
-additional approval from using a new OS that you build with EdgeForge.
+additional approval for using a new OS that you build with EdgeForge.
 
-In addition, agent mode does not require you to have an immutable OS, so you can continue to use the tools that you
+In addition, agent mode does not require you to have an immutable OS, so you can continue to use the tools that you may
 already have in place for your OS lifecycle management. Compared with appliance mode, agent mode provides more
 flexibility, but it may not have the security provided by appliance mode's immutable OS and you will not be able to use
 Trusted Boot to ensure the software on your hosts are never tempered with.
