@@ -20,8 +20,8 @@ becomes operational:
   to Local UI. If your cluster has multiple nodes, then each node has its own cookie based on the IP address of the
   node.
 - The public key that is used to validate the JWT token. This token is exposed as a secret in the `spectro-system`
-  namespace when you provision your Kubernetes cluster. If your cluster has multiple nodes, each node will have its own
-  public key.
+  namespace when you provision your Kubernetes cluster. If your cluster has multiple nodes, each node will also have its
+  own public key.
 
 ## Limitations
 
