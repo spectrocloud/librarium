@@ -29,10 +29,10 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 - The following table presents the verified combinations of host architecture and cluster profile layers.
 
-  | Host Architecture | OS     | Kubernetes                                | CNI     | Verified           |
-  | ----------------- | ------ | ----------------------------------------- | ------- | ------------------ |
+  | Host Architecture | OS     | Kubernetes                                 | CNI     | Verified           |
+  | ----------------- | ------ | ------------------------------------------ | ------- | ------------------ |
   | AMD64             | Ubuntu | Palette eXtended Kubernetes - Edge (PXK-E) | Calico  | :white_check_mark: |
-  | AMD64             | Ubuntu | K3s                                       | Flannel | :white_check_mark: |
+  | AMD64             | Ubuntu | K3s                                        | Flannel | :white_check_mark: |
 
 ## Prerequisites
 
@@ -271,7 +271,7 @@ internet.
    docker push gcr-mirror.io/example/foo-bar:latest
    ```
 
-   Alternatively, you can export the image as a tar file, copy it to your host, and the load the tar file on the host.
+   Alternatively, you can export the image as a TAR file, copy it to your host, and the load the TAR file on the host.
    You can do this with the `docker image save` and `docker image load` commands. For more information, refer to
    [Docker Documentation](https://docs.docker.com/reference/cli/docker/image/save/).
 
@@ -281,7 +281,7 @@ internet.
 
    ```shell
    export URL=https://github.com/spectrocloud/agent-mode/releases/download/v4.5.0-rc9/palette-agent-linux-<architecture>
-   curl -v -L $URL -o palette-agent
+   curl --verbose --location $URL --output palette-agent
    ```
 
 7. Copy the agent binary from your host with internet access to the host where you want to install the Palette agent.
