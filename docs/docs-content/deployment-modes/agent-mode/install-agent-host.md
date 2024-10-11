@@ -55,6 +55,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 - Ensure that the host has `Bash` configured as the default shell.
 
 - Ensure the following software is installed and available:
+
   - [jq](https://jqlang.github.io/jq/download/)
   - [Zstandard](https://facebook.github.io/zstd/)
   - [Rsync](https://github.com/RsyncProject/rsync)
@@ -63,6 +64,13 @@ Palette. You will then create a cluster profile and use the registered host to d
   - (Airgap only) [Crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and
     available.
   - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli) is installed and available.
+
+  :::warning
+
+  Avoid installing Docker on the host where you want to install the agent. Docker is a heavyweight tool that could
+  interfere with the Palette agent.
+
+  :::
 
 ## Install Palette Agent
 
