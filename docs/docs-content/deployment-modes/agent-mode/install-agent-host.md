@@ -36,7 +36,8 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 ## Prerequisites
 
-- A physical or virtual host with SSH access, access to the Internet, and connection to Palette. This guide uses an
+- A physical or virtual host with SSH access, access to the internet, and connection to Palette. For airgap deployments,
+  the host does not need to have a connection to Palette and may have limited access to the internet. This guide uses an
   **Ubuntu 22.04** virtual machine deployed in VMware vSphere as an example.
 
 - The host must meet the following minimum hardware requirements:
@@ -63,7 +64,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 ## Install Palette Agent
 
-<Tabs group="env">
+<Tabs groupId="env">
 
 <TabItem value="Connected">
 
@@ -146,11 +147,29 @@ Palette. You will then create a cluster profile and use the registered host to d
    export USERDATA=./user-data
    ```
 
-5. Download the Palette agent installation script. Access the [Agent Mode](https://github.com/spectrocloud/agent-mode)
-   GitHub repository to obtain the latest releases. This guide uses `v4.5.0-rc9` as an example.
+5. Download the latest version of the Palette agent installation script.
 
    ```shell
-   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/download/v4.5.0-rc9/palette-agent-install.sh
+   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install.sh
+   ```
+
+   If you have a dedicated or on-premises instance of Palette, use the command below to get the Palette's stylus
+   version. Replace `<palette-endpoint>` with your Palette endpoint and `<api-key>` with your Palette API key.
+
+   ```shell
+   curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>'  | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'
+   ```
+
+   ```text hideClipboard
+   4.5.0
+   ```
+
+   Next, download the version of the Palette agent installation script that matches the stylus version. Replace
+   `<stylus-version>` with your Palette stylus version. For example, if the output of the previous command was `4.5.0`,
+   replace `<stylus-version>` with `v4.5.0`.
+
+   ```shell
+   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/download/<stylus-version>/palette-agent-install.sh
    ```
 
 6. Grant execution permissions to the `install.sh` script.
@@ -271,8 +290,8 @@ internet.
    docker push gcr-mirror.io/example/foo-bar:latest
    ```
 
-   Alternatively, you can export the image as a TAR file, copy it to your host, and the load the TAR file on the host.
-   You can do this with the `docker image save` and `docker image load` commands. For more information, refer to
+   Alternatively, you can export the image as a TAR file, copy it to your host, and then load the TAR file on the host.
+   You can do this with the `docker image save` and `docker image load` commands. For more information, refer to the
    [Docker Documentation](https://docs.docker.com/reference/cli/docker/image/save/).
 
 6. Issue the following command from a host with internet access to download the agent binary and name the binary
@@ -367,7 +386,7 @@ internet.
 
 ## Validate
 
-<Tabs group="env">
+<Tabs groupId="env">
 
 <TabItem value="Connected">
 
