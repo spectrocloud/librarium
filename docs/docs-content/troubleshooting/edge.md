@@ -176,3 +176,31 @@ prevents the nameserver from being configured, which will result in cluster depl
    ```
 
    This will start the `systemd-resolved.service` process and move the cluster creation process forward.
+
+## Scenario - Clusters with Cilium and RKE2 Experiences Kubernetes Upgrade Failure
+
+When you upgrade your cluster from RKE2 1.29 to 1.30 and your cluster uses the Cilium CNI, the upgrade could fail with
+error messages similar to the following. This is due to an
+[upstream issue](https://github.com/rancher/rancher/issues/46726). You can fix this issue by adding a few annotations to
+the Cilium DaemonSet.
+
+### Debug Steps
+
+1. Connect to your cluster using kubectl. For more information, refer to
+   [Access Cluster with kubectl](../clusters/cluster-management/palette-webctl.md).
+2. Issue the following command from the terminal edit the Cilium DaemonSet.
+   ```bash
+   kubectl edit ds cilium --namespace kube-system
+   ```
+3. Under `metadata.annotations`, add the following annotations.
+   ```yaml
+   metadata:
+   annotations:
+     deprecated.daemonset.template.generation: "1"
+     meta.helm.sh/release-name: cilium-cilium
+     meta.helm.sh/release-namespace: kube-system
+     container.apparmor.security.beta.kubernetes.io/cilium-agent: "unconfined"
+     container.apparmor.security.beta.kubernetes.io/clean-cilium-state: "unconfined"
+     container.apparmor.security.beta.kubernetes.io/mount-cgroup: "unconfined"
+     container.apparmor.security.beta.kubernetes.io/apply-sysctl-overwrites: "unconfined"
+   ```
