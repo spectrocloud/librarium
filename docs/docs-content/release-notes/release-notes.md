@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 12, 2024 - Release 4.5.0 - 4.5.1
+## October 13, 2024 - Release 4.5.0 - 4.5.2
 
 This release of Palette features a new deployment model, Agent Mode, and contains several new improvements and
 enhancements. Take a moment and review the breaking changes and deprecation messages to ensure you stay informed of
@@ -42,8 +42,8 @@ to learn more about the changes introduced in this release.
   Palette. The Palette agent is downloaded and installed on the machine, and the machine is then registered with
   Palette. The new model provides more flexibility for customers who want to use their own OS and manage the
   infrastructure provisioning process. In this release, the first supported use case for agent mode is Edge deployments.
-  Check out the [Agent Mode](../automation/automation.md) section to learn more about this new deployment model. This
-  feature is only available to Palette Enterprise, and is not available in Palette VerteX.
+  Check out the [Agent Mode](../deployment-modes/agent-mode/agent-mode.md) section to learn more about this new
+  deployment model. This feature is only available to Palette Enterprise, and is not available in Palette VerteX.
 
 #### Improvements
 
@@ -131,6 +131,13 @@ to learn more about the changes introduced in this release.
   more about Edge and gain hands-on experience without needing access to physical hardware.
 
 ### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore -->
+- NVIDIA has released a software update for the NVIDIA Container Toolkit and NVIDIA GPU Operator that addresses a
+  critical vulnerability, [NVIDIA CVE-2024-0132](https://nvidia.custhelp.com/app/answers/detail/a_id/5582), that affects
+  the NVIDIA Container Toolkit versions v1.16.1 or earlier. To address this vulnerability, we recommend you upgrade to the latest <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator" /> pack version v24.6.2.
 
 #### OS
 
