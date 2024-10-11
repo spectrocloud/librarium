@@ -132,6 +132,13 @@ to learn more about the changes introduced in this release.
 
 ### Packs
 
+#### Pack Notes
+
+<!-- prettier-ignore -->
+- NVIDIA has released a software update for the NVIDIA Container Toolkit and NVIDIA GPU Operator that addresses a
+  critical vulnerability, [NVIDIA CVE-2024-0132](https://nvidia.custhelp.com/app/answers/detail/a_id/5582), that affects
+  the NVIDIA Container Toolkit versions v1.16.1 or earlier. To address this vulnerability, we recommend you upgrade to the latest <VersionedLink text="NVIDIA GPU Operator" url="/integrations/packs/?pack=nvidia-gpu-operator" /> pack version v24.6.2.
+
 #### OS
 
 | Pack Name | New Version |
