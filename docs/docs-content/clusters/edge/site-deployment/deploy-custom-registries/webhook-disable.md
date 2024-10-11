@@ -27,7 +27,7 @@ configured to do so. Disabling the webhook removes restrictions, but does place 
 pulled from the correct locations on yourself.
 
 You may consider disabling the webhook if you want to configure your cluster to pull images from multiple authenticated
-registries, or you simply do not want the default behavior that forces image pulls to be redirected to the local Harbor
+registries, or if you do not want the default behavior that forces image pulls to be redirected to the local Harbor
 registry. Once the webhook is disabled, you can then take advantage of the rewrite features of some Kubernetes
 distributions such as K3s and RKE2, or other redirect mechanism that you implement on your own to customize the image
 pull behavior.
@@ -338,7 +338,7 @@ source code for the credential provider on GitHub.
                 image-credential-provider-config: /opt/kubernetes/generic-credential-provider-config.json
     ```
 
-14. In the Kubernetes or OS layoer of your cluster profile, use a `reconcile` stage to define the JSON file with the
+14. In the Kubernetes or OS layer of your cluster profile, use a `reconcile` stage to define the JSON file with the
     `CredentialProviderConfig` for Kubelet. This configuration specifies the registries that will use the credential
     provider.
 
