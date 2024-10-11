@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /4.4.x/
+Disallow: /api/4.4.x
+Allow: /$
+Sitemap: https://docs.spectrocloud.com/sitemap.xml
