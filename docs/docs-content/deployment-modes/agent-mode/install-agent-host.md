@@ -61,6 +61,7 @@ Palette. You will then create a cluster profile and use the registered host to d
   - [conntrack](https://conntrack-tools.netfilter.org/downloads.html). This requirement is specific for clusters that
     use PXKE as the Kubernetes layer.
   - (Airgap only) [Docker](https://www.docker.com/) is installed and available.
+  - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli) is installed and available.
 
 ## Install Palette Agent
 
@@ -275,7 +276,7 @@ internet.
 
 4. Download the agent installation image. Replace `<architecture>` with the architecture of your CPU. If you have ARM64,
    use `arm64`. If you have AMD64 or x86_64, use `amd64`. Replace `<version>` with the desired version number. In this
-   example, we use `v4.5.0`.
+   example, we use `v4.5.x`.
 
    ```shell
    docker pull us-docker.pkg.dev/palette-images/edge/stylus-agent-mode-linux-<architecture>:$<version>
@@ -296,16 +297,23 @@ internet.
 
 6. Issue the following command from a host with internet access to download the agent binary and name the binary
    `palette-agent`. Replace `<architecture>` with the architecture of your CPU. If you have ARM64, use `arm64`. If you
-   have AMD64 or x86_64, use `amd64`.
+   have AMD64 or x86_64, use `amd64`. Replace `<version>` with the desired version number. In this example, we use
+   `v4.5.x`.
 
    ```shell
-   export URL=https://github.com/spectrocloud/agent-mode/releases/download/v4.5.0-rc9/palette-agent-linux-<architecture>
+   export URL=https://github.com/spectrocloud/agent-mode/releases/download/<version>/palette-agent-linux-<architecture>
    curl --verbose --location $URL --output palette-agent
    ```
 
-7. Copy the agent binary from your host with internet access to the host where you want to install the Palette agent.
+7. Issue the following command to make the binary executable.
 
-8. Issue the following command to install the agent on your host. Replace `<image-tag>` with the tag of the installation
+   ```shell
+   chmod +x palette-agent
+   ```
+
+8. Copy the agent binary from your host with internet access to the host where you want to install the Palette agent.
+
+9. Issue the following command to install the agent on your host. Replace `<image-tag>` with the tag of the installation
    image. If your user data is not in the current directory, replace `./user-data` with the path to your user data file.
 
    ```shell
@@ -320,30 +328,30 @@ internet.
    Connection to 192.168.1.100 closed.
    ```
 
-9. Log in to [Palette](https://console.spectrocloud.com/) and select **Clusters** from the left **Main Menu**.
+10. Log in to [Palette](https://console.spectrocloud.com/) and select **Clusters** from the left **Main Menu**.
 
-10. Select the **Edge Hosts** tab and verify your host is displayed and marked as **Healthy** in the Edge hosts list.
+11. Select the **Edge Hosts** tab and verify your host is displayed and marked as **Healthy** in the Edge hosts list.
 
-11. Once the host has been registered with Palette, proceed with the cluster profile creation. Select **Profiles** from
+12. Once the host has been registered with Palette, proceed with the cluster profile creation. Select **Profiles** from
     the left **Main Menu**.
 
-12. Click on **Add Cluster Profile**.
+13. Click on **Add Cluster Profile**.
 
-13. In the **Basic Information** section, assign the a profile name, a description, and tags. Select the type as
+14. In the **Basic Information** section, assign the a profile name, a description, and tags. Select the type as
     **Full** and click **Next**.
 
-14. Select **Edge Native** as the **Cloud Type** and click **Next**.
+15. Select **Edge Native** as the **Cloud Type** and click **Next**.
 
-15. The **Profile Layers** section specifies the packs that compose the profile. Add the **BYOS Edge OS** pack version
+16. The **Profile Layers** section specifies the packs that compose the profile. Add the **BYOS Edge OS** pack version
     **2.0.0** to the OS layer.
 
-16. Click **Values** under **Pack Details**, then click on **Presets** on the right-hand side. Select **Agent Mode**.
+17. Click **Values** under **Pack Details**, then click on **Presets** on the right-hand side. Select **Agent Mode**.
 
     ![View of the cluster profile creation page with the BYOS pack.](/deployment-modes_agent-mode_byos-pack.webp)
 
-17. Click **Next Layer** to continue.
+18. Click **Next Layer** to continue.
 
-18. In the **Kubernetes** layer, under `cluster.config.kube-apiserver-arg`, remove `AlwaysPullImages` from the list item
+19. In the **Kubernetes** layer, under `cluster.config.kube-apiserver-arg`, remove `AlwaysPullImages` from the list item
     `enable-admission-plugins`:
 
     ```yaml {7}
@@ -356,28 +364,28 @@ internet.
       - enable-admission-plugins=NamespaceLifecycle,ServiceAccount,NodeRestriction
     ```
 
-19. Complete the cluster profile creation process by filling out the remaining layers. In the application layer, make
+20. Complete the cluster profile creation process by filling out the remaining layers. In the application layer, make
     sure you include the **Harbor Edge-Native Config** pack. This pack is required for airgapped clusters.
 
-20. Follow the steps in
+21. Follow the steps in
     [Export Cluster Definition](../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) to export
     a cluster definition of your profile. You will use this cluster definition later when you create the cluster in
     Local UI.
 
-21. (Optional) If your host has access to all the images referenced by your cluster profile, you may skip this step.
+22. (Optional) If your host has access to all the images referenced by your cluster profile, you may skip this step.
 
     Follow the steps in
     [Build Content Bundles](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) to build a
     content bundle for your cluster profile. The content bundle will contain all the artifacts required to create your
     cluster and it will allow you to create a cluster even if your host has no access to an external image registry.
 
-22. Log in to [Local UI](../../clusters/edge/local-ui/host-management/access-console.md).
+23. Log in to [Local UI](../../clusters/edge/local-ui/host-management/access-console.md).
 
-23. Follow the steps in
+24. Follow the steps in
     [Upload Content Bundles](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) to upload the
     content bundle to your host.
 
-24. Follow the steps in [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) to use
+25. Follow the steps in [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) to use
     the cluster definition you exported previously to create a cluster.
 
 </TabItem>
