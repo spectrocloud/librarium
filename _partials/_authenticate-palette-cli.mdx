@@ -1,0 +1,40 @@
+---
+partial_category: pcg-vmware
+partial_name: authenticate-palette-cli
+---
+
+The initial step to deploy a PCG using Palette CLI involves authenticating with your Palette environment using the
+<VersionedLink text="palette login" url="/automation/palette-cli/commands/login" /> command.
+In your terminal, execute the following command.
+
+```bash
+palette login
+```
+
+Once issued, you will be prompted for several parameters to complete the authentication. The table below outlines the
+required parameters along with the values that will be utilized in this tutorial. If a parameter is specific to your
+environment and Palette account, such as your Palette API key, ensure to input the value according to your environment.
+Check out the <VersionedLink text="Deploy a PCG to VMware vSphere" url="/clusters/pcg/deploy-pcg/vmware"/> guide for
+more information. option.
+
+| **Parameter**                  | **Value**                                                                                                                                                                                                                                                            | **Environment-Specific** |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
+| **Spectro Cloud Console**      | `https://console.spectrocloud.com`. If using a self-hosted instance of Palette, enter the URL for that instance.                                                                                                                                                     | No                       |
+| **Allow Insecure Connection**  | `Y`. Enabling this option bypasses x509 CA verification. In production environments, enter `Y` if you are using a self-hosted Palette or VerteX instance with self-signed TLS certificates and need to provide a file path to the instance CA. Otherwise, enter `N`. | No                       |
+| **Spectro Cloud API Key**      | Enter your Palette API Key.                                                                                                                                                                                                                                          | Yes                      |
+| **Spectro Cloud Organization** | Select your Palette Organization name.                                                                                                                                                                                                                               | Yes                      |
+| **Spectro Cloud Project**      | `None (TenantAdmin)`                                                                                                                                                                                                                                                 | No                       |
+| **Acknowledge**                | Accept the login banner message. <VersionedLink text="Login banner" url="/tenant-settings/login-banner"/> messages are only displayed if the tenant admin enabled a login banner.                                                                                    | Yes                      |
+
+After accepting the login banner message, you will receive the following output confirming you have successfully
+authenticated with Palette.
+
+```text hideClipboard
+Welcome to Spectro Cloud Palette
+```
+
+The video below demonstrates Palette's authentication process. Ensure you utilize values specific to your environment,
+such as the correct Palette URL. Contact your Palette administrator for the correct URL if you use a self-hosted Palette
+or VerteX instance.
+
+<Video title="palette-login-video" src="/videos/palette-login.mp4"></Video>

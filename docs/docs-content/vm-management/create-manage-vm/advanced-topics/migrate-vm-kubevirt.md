@@ -22,9 +22,57 @@ from VMware vSphere to Palette VMO.
 - Only VMs whose operating systems are included under
   [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
 
+- The network type <VersionedLink text="Multus CNI" url="/integrations/packs/?pack=cni-multus" /> requires a Network
+  Attachment Definition (NAD) to exist in the migration target namespace in the destination cluster. The NAD name must
+  also match the name assigned to the migration. The migration name is assigned during the wizard, which is started by
+  the Palette CLI's `vmo migrate-vm` command.
+
 ## Prerequisites
 
 - A Healthy VMO cluster. Refer to the [Create a VMO Profile](../../create-vmo-profile.md) for further guidance.
+
+  - The VMO cluster must have access to VMware and the VM you want to migrate.
+
+  :::warning
+
+  If you need to provision `Block` storage volumes during the VM migration process, add the following custom
+  configuration to your VMO cluster OS pack. Applying this configuration may cause a cluster repave. For more
+  information, refer to
+  [Repave Behaviors and Configurations](../../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration)
+
+  Additionally, we recommend provisioning volumes with the `ReadWriteMany` access mode to ensure that VMs can be
+  [live migrated](https://kubevirt.io/user-guide/compute/live_migration/#limitations).
+
+  ```yaml
+  kubeadmconfig:
+     preKubeadmCommands:
+        # Start containerd with new configuration
+        - systemctl daemon-reload
+        - systemctl restart containerd
+     files:
+        - targetPath: /etc/containerd/config.toml
+        targetOwner: "root:root"
+        targetPermissions: "0644"
+        content: |
+           ## template: jinja
+
+           # Use config version 2 to enable new configuration fields.
+           version = 2
+
+           imports = ["/etc/containerd/conf.d/*.toml"]
+
+           [plugins]
+              [plugins."io.containerd.grpc.v1.cri"]
+              sandbox_image = "registry.k8s.io/pause:3.9"
+              device_ownership_from_security_context = true
+              [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+              runtime_type = "io.containerd.runc.v2"
+              [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+              SystemdCgroup = true
+  ```
+
+  :::
+
 - A VMware vSphere user account with the necessary permissions to manage the VMs you want to migrate.
   - Migration can optionally accelerated by providing credentials for the ESXi hosts where the VMs reside.
 - One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
@@ -34,15 +82,9 @@ from VMware vSphere to Palette VMO.
   - If you are migrating more than one VM in the same plan, they must all share the same network.
 - The Palette CLI installed and setup. Refer to the
   [Installation](../../../automation/palette-cli/install-palette-cli.md) guide for further details.
+  - The Palette CLI must have access to both the VMO cluster and the machines to be migrated.
 - The kubectl command-line tool should also be installed. Refer to the
   [kubectl installation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) guide to learn more.
-
-:::warning
-
-The VMO cluster must have access to VMware and the VM you want to migrate. The Palette CLI must have access to both the
-VMO cluster and the machines to be migrated.
-
-:::
 
 ## Migrate VMware vSphere VMs
 
