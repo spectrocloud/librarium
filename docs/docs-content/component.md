@@ -33,7 +33,7 @@ This page lists the version details of various Palette components and their resp
 
 | Palette Release | CLI Version |
 | --------------- | ----------- |
-| Release 4.5.3   | v4.5.2      |
+| Release 4.5.3   | v4.5.3      |
 | Release 4.4.18  | v4.4.12     |
 | Release 4.4.14  | v4.4.8      |
 | Release 4.4.12  | v4.4.6      |
