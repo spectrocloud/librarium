@@ -24,8 +24,8 @@ The Palette Command Line Interface (CLI) is a tool that you can use to interact 
 the [Palette CLI](./automation/palette-cli/palette-cli.md) document for installation guidance.
 
 | Version | Operating System                                                                      | Checksum (SHA256)                                                  |
-| ------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | --- |
-| 4.5.0   | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette) | `1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0` |     |
+| ------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| 4.5.0   | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette) | `1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0` |
 
 ## Palette Edge CLI
 
