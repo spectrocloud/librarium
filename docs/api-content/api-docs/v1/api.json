@@ -4449,6 +4449,9 @@
         },
         "spec": {
           "$ref": "#/definitions/v1BasicOciRegistrySpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1OciRegistryStatus"
         }
       },
       "type": "object"
@@ -4470,6 +4473,9 @@
         "endpoint": {
           "description": "OCI registry endpoint",
           "type": "string"
+        },
+        "isSyncSupported": {
+          "type": "boolean"
         },
         "providerType": {
           "default": "helm",
@@ -4521,6 +4527,10 @@
     "v1BrokerToken": {
       "description": "Response for broker login request",
       "properties": {
+        "clientType": {
+          "description": "clientType indicates the type of the client making the request",
+          "type": "string"
+        },
         "maxAllowedClients": {
           "description": "maximum number of clients that can subscribe to the subject",
           "type": "integer"
@@ -9774,6 +9784,9 @@
         },
         "spec": {
           "$ref": "#/definitions/v1EcrRegistrySpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1OciRegistryStatus"
         }
       },
       "type": "object"
@@ -9795,6 +9808,9 @@
           "type": "string"
         },
         "isPrivate": {
+          "type": "boolean"
+        },
+        "isSyncSupported": {
           "type": "boolean"
         },
         "providerType": {
@@ -10478,7 +10494,8 @@
           "enum": [
             "VIP",
             "External",
-            "DDNS"
+            "DDNS",
+            "IP"
           ],
           "type": "string"
         }
@@ -18704,6 +18721,15 @@
       },
       "type": "object"
     },
+    "v1OciRegistryStatus": {
+      "description": "Status of the oci registry",
+      "properties": {
+        "syncStatus": {
+          "$ref": "#/definitions/v1RegistrySyncStatus"
+        }
+      },
+      "type": "object"
+    },
     "v1OciRegistryStatusSummary": {
       "description": "OCI registry status summary",
       "properties": {
@@ -18807,6 +18833,19 @@
       "properties": {
         "token": {
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1OidcUserInfo": {
+      "properties": {
+        "claims": {
+          "$ref": "#/definitions/v1TenantOidcClaims"
+        },
+        "useUserInfo": {
+          "default": false,
+          "type": "boolean",
+          "x-omitempty": false
         }
       },
       "type": "object"
@@ -20850,7 +20889,12 @@
       "description": "Pack registry metadata",
       "properties": {
         "isPrivate": {
-          "description": "If true then pack registry is private and is not accessible for the pack sync",
+          "description": "If true then helm registry is private and is not accessible for the content sync",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "isSyncSupported": {
+          "description": "If true the registry sync is supported",
           "type": "boolean",
           "x-omitempty": false
         },
@@ -23095,6 +23139,10 @@
     "v1RegistrySyncStatus": {
       "description": "Status of the registry sync",
       "properties": {
+        "isSyncSupported": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
         "lastRunTime": {
           "$ref": "#/definitions/v1Time"
         },
@@ -25591,6 +25639,23 @@
           "type": "string"
         }
       }
+    },
+    "v1SpectroClusterHeartbeat": {
+      "description": "Cluster heartbeat message",
+      "properties": {
+        "agentVersion": {
+          "description": "Version of the agent",
+          "type": "string"
+        },
+        "message": {
+          "description": "Heartbeat message",
+          "type": "string"
+        }
+      },
+      "required": [
+        "agentVersion"
+      ],
+      "type": "object"
     },
     "v1SpectroClusterK8sCertificate": {
       "description": "K8 Certificates for all the cluster's control plane nodes",
@@ -30514,6 +30579,9 @@
         "syncSsoTeams": {
           "type": "boolean",
           "x-omitempty": false
+        },
+        "userInfo": {
+          "$ref": "#/definitions/v1OidcUserInfo"
         }
       },
       "type": "object"
@@ -38358,7 +38426,7 @@
     }
   },
   "info": {
-    "title": "Palette APIs - 4.4",
+    "title": "Palette APIs - 4.5",
     "version": "v1"
   },
   "paths": {
@@ -72664,6 +72732,52 @@
           }
         ],
         "summary": "Create on demand cluster restore",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
+    },
+    "/v1/spectroclusters/{uid}/heartbeat": {
+      "parameters": [
+        {
+          "description": "Cluster uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1SpectroClustersUidHeartbeatUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterHeartbeat"
+            }
+          },
+          {
+            "description": "Scope the request to the specified project uid",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Update specific cluster heartbeat",
         "tags": [
           "spectroclusters"
         ]

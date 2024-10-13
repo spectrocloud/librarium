@@ -11,9 +11,6 @@ You can add an OCI type Helm registry to Palette and use the Helm Charts in your
 
 ## Prerequisites
 
-- You must have a private OCI type Helm registry that supports basic authentication. Public OCI registries are not
-  supported.
-
 - Credentials to access the OCI registry. If you are using an AWS ECR registry, you must have the AWS credentials to an
   IAM user or add a trust relationship to an IAM role so that Palette can access the registry.
 
@@ -88,15 +85,24 @@ registry you are adding.
 
 7. Select the **OCI Authentication Type** as **Basic**.
 
-8. Provide the registry URL in the **Endpoint** field.
+8. Toggle the **Synchronization** option to enable or disable synchronization for the registry. To learn more about the
+   synchronization behavior of Helm registries, refer to the [Helm Registry](../helm-charts.md#synchronization-behavior)
+   resource.
 
-9. Fill out the **Username** and **Password** fields with the credentials to access the registry.
+9. Provide the registry URL in the **Endpoint** field.
 
-10. If your OCI registry server is using a self-signed certificate or if the server certificate is not signed by a
+10. Specify the base path in the **Base Content Path** field. The base path is the path to the repository in the
+    registry where the Helm Charts are stored. You can specify multiple base paths by pressing the Enter key after each
+    path. Providing multiple base paths is useful when Helm Charts are stored in different directories or projects, such
+    as multiple projects in a Harbor registry.
+
+11. Fill out the **Username** and **Password** fields with the credentials to access the registry.
+
+12. If your OCI registry server is using a self-signed certificate or if the server certificate is not signed by a
     trusted CA, check the **Insecure Skip TLS Verify** box to skip verifying the x509 certificate, and click **Upload
     file** to upload the certificate.
 
-11. Click **Confirm** to complete adding the registry.
+13. Click **Confirm** to complete adding the registry.
 
 </TabItem>
 
@@ -167,6 +173,6 @@ Use the following steps to validate that the OCI registry is added to Palette co
 
 4. Provide a name and select the type **Add-on**.
 
-5. In the following screen, click **Add Helm Chart** and select **Private**.
+5. In the following screen, click **Add Helm Chart** and select **Public Packs**.
 
 6. Verify the Helm Chart registry you added is displayed in the **Registry drop-down Menu**.
