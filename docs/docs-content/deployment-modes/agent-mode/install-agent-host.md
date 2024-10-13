@@ -287,7 +287,7 @@ internet.
 
 4. Download the agent installation image from a host with internet access and export it to a TAR file. Replace
    `<architecture>` with the architecture of your CPU. If you have ARM64, use `arm64`. If you have AMD64 or x86_64, use
-   `amd64`. Replace `<version>` with the desired version number. In this example, we use `v4.5.x`.
+   `amd64`. Replace `<version>` with the desired version number. In this example, we use `v4.5.0`.
 
    ```shell
    crane pull us-docker.pkg.dev/palette-images/edge/stylus-agent-mode-linux-<architecture>:<version> agent-image.tar
@@ -296,7 +296,7 @@ internet.
 5. Issue the following command from a host with internet access to download the agent binary and name the binary
    `palette-agent`. Replace `<architecture>` with the architecture of your CPU. If you have ARM64, use `arm64`. If you
    have AMD64 or x86_64, use `amd64`. Replace `<version>` with the desired version number. In this example, we use
-   `v4.5.x`.
+   `v4.5.0`.
 
    ```shell
    export URL=https://github.com/spectrocloud/agent-mode/releases/download/<version>/palette-agent-linux-<architecture>
