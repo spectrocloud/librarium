@@ -23,7 +23,7 @@ to learn more about the changes introduced in this release.
 
 - Review the [Security Bulletins](../security-bulletins/reports/reports.md) page for the latest security advisories.
 
-### Palette Enterprise {#palette-enterprise-4-5-x}
+### Palette Enterprise {#palette-enterprise-4-5-3}
 
 #### Breaking Changes
 
@@ -109,7 +109,7 @@ to learn more about the changes introduced in this release.
 #### Features
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
-  [Palette section](#palette-enterprise-4-5-x) for more details.
+  [Palette section](#palette-enterprise-4-5-3) for more details.
 
 ### Automation
 
