@@ -8,10 +8,10 @@ const { escapeMDXSpecialChars } = require("../helpers/string");
 
 async function getSecurityBulletins(queryParams) {
   try {
-    const response = await callRateLimitAPI(() => api.get(`/v1/reports/container?${queryParams}`));
+    const response = await callRateLimitAPI(() => api.get(`https://dso.teams.spectrocloud.com/v1/advisories`));
     if (response && response.data) {
       const highAndCritical = response.data.filter(
-        (item) => item.baseSeverity === "HIGH" || item.baseSeverity === "CRITICAL"
+        (item) => item.metadata.nistSeverity === "HIGH" || item.metadata.nistSeverity === "CRITICAL"
       );
       return highAndCritical;
     }
@@ -34,21 +34,45 @@ async function generateCVEs() {
   } else {
     logger.info("Fetching security bulletins...");
 
-    const paletteQueryParams = `airgap=false&date=${getTodayFormattedDate()}&edition=palette&report=cve&version=4.5.3`;
-    const paletteAirgapQueryParams = `airgap=true&date=${getTodayFormattedDate()}&edition=palette&report=cve&version=4.5.3`;
-    const verteXQueryParams = `airgap=false&date=${getTodayFormattedDate()}&edition=vertex&report=cve&version=4.5.3`;
-    const verteXAirgapQueryParams = `airgap=true&date=${getTodayFormattedDate()}&edition=vertex&report=cve&version=4.5.3`;
+    // const paletteQueryParams = `airgap=false&date=${getTodayFormattedDate()}&edition=palette&report=cve&version=4.5.3`;
+    // const paletteAirgapQueryParams = `airgap=true&date=${getTodayFormattedDate()}&edition=palette&report=cve&version=4.5.3`;
+    // const verteXQueryParams = `airgap=false&date=${getTodayFormattedDate()}&edition=vertex&report=cve&version=4.5.3`;
+    // const verteXAirgapQueryParams = `airgap=true&date=${getTodayFormattedDate()}&edition=vertex&report=cve&version=4.5.3`;
 
     try {
-      const palette = await getSecurityBulletins(paletteQueryParams);
-      const paletteAirgap = await getSecurityBulletins(paletteAirgapQueryParams);
-      const verteX = await getSecurityBulletins(verteXQueryParams);
-      const verteXAirgap = await getSecurityBulletins(verteXAirgapQueryParams);
+      // const palette = await getSecurityBulletins(paletteQueryParams);
+      // const paletteAirgap = await getSecurityBulletins(paletteAirgapQueryParams);
+      // const verteX = await getSecurityBulletins(verteXQueryParams);
+      // const verteXAirgap = await getSecurityBulletins(verteXAirgapQueryParams);
+
+      const cves = await getSecurityBulletins();
+
+      const palette = cves.filter(
+        (item) =>
+          item.spec.impact.impactedProducts.palette === true && item.spec.impact.impactedDeployments.connected === true
+      );
+      const paletteAirgap = cves.filter(
+        (item) =>
+          item.spec.impact.impactedProducts.palette === true && item.spec.impact.impactedDeployments.airgap === true
+      );
+      const vertex = cves.filter(
+        (item) =>
+          item.spec.impact.impactedProducts.vertex === true && item.spec.impact.impactedDeployments.connected === true
+      );
+      const vertexAirgap = cves.filter(
+        (item) =>
+          item.spec.impact.impactedProducts.vertex === true && item.spec.impact.impactedDeployments.airgap === true
+      );
+
+      // console.log("Length of palette", palette.length);
+      // console.log("Length of palette airgap", paletteAirgap.length);
+      // console.log("Length of vertex", vertex.length);
+      // console.log("Length of vertex airgap", vertexAirgap.length);
 
       securityBulletins.set("palette", palette);
       securityBulletins.set("paletteAirgap", paletteAirgap);
-      securityBulletins.set("vertex", verteX);
-      securityBulletins.set("vertexAirgap", verteXAirgap);
+      securityBulletins.set("vertex", vertex);
+      securityBulletins.set("vertexAirgap", vertexAirgap);
 
       const plainObject = Object.fromEntries(securityBulletins);
       GlobalCVEData = plainObject;
@@ -64,100 +88,95 @@ async function generateCVEs() {
     }
   }
 
-  // await generateMarkdownForCVEs(GlobalCVEData);
+  await generateMarkdownForCVEs(GlobalCVEData);
 }
 
-// async function generateMarkdownForCVEs(GlobalCVEData) {
-//   const allCVEs = Object.values(GlobalCVEData).reduce((acc, curr) => acc.concat(curr), []);
-//   const uniqueCVEs = [];
-//   const seenCVEs = new Set();
+async function generateMarkdownForCVEs(GlobalCVEData) {
+  const allCVEs = Object.values(GlobalCVEData).reduce((acc, curr) => acc.concat(curr), []);
+  const uniqueCVEs = [];
+  const seenCVEs = new Set();
 
-//   // Remove duplicate CVEs
-//   for (const item of allCVEs) {
-//     if (!seenCVEs.has(item.cve)) {
-//       seenCVEs.add(item.cve);
-//       uniqueCVEs.push(item);
-//     }
-//   }
+  // Remove duplicate CVEs
+  for (const item of allCVEs) {
+    if (!seenCVEs.has(item.cve)) {
+      seenCVEs.add(item.cve);
+      uniqueCVEs.push(item);
+    }
+  }
 
-//   const markdownPromises = uniqueCVEs.map((item) =>
-//     createCveMarkdown(item, "docs/docs-content/security-bulletins/reports/")
-//   );
+  const markdownPromises = uniqueCVEs.map((item) =>
+    createCveMarkdown(item, "docs/docs-content/security-bulletins/reports/")
+  );
 
-//   const results = await Promise.all(markdownPromises);
+  const results = await Promise.all(markdownPromises);
 
-//   const failedFiles = results.filter((result) => !result.success);
+  const failedFiles = results.filter((result) => !result.success);
 
-//   if (failedFiles.length > 0) {
-//     logger.error("Failed to generate the following markdown files:");
-//     failedFiles.forEach((failure) => {
-//       logger.error(`File: ${failure.file}, Error: ${failure.error.message}`);
-//     });
-//   }
+  if (failedFiles.length > 0) {
+    logger.error("Failed to generate the following markdown files:");
+    failedFiles.forEach((failure) => {
+      logger.error(`File: ${failure.file}, Error: ${failure.error.message}`);
+    });
+  }
 
-//   logger.success("All security bulletin markdown files generated.");
-// }
+  logger.success("All security bulletin markdown files generated.");
+}
 
-// function createCveMarkdown(item, location) {
-//   const lowerCaseCve = item.cve.toLowerCase();
-//   const upperCaseCve = item.cve.toUpperCase();
+function createCveMarkdown(item, location) {
+  const lowerCaseCve = item.metadata.cve.toLowerCase();
+  const upperCaseCve = item.metadata.cve.toUpperCase();
 
-//   const images = item.images.map((image) => `- ${image}`).join("\n");
+  const content = `---
+sidebar_label: "${upperCaseCve}"
+title: "${upperCaseCve}"
+description: "Lifecycle of ${upperCaseCve}"
+sidebar_class_name: "hide-from-sidebar"
+hide_table_of_contents: false
+toc_max_heading_level: 2
+tags: ["security", "cve"]
+---
 
-//   const content = `---
-// sidebar_label: "${upperCaseCve}"
-// title: "${upperCaseCve}"
-// description: "Lifecycle of ${upperCaseCve}"
-// sidebar_class_name: "hide-from-sidebar"
-// hide_table_of_contents: false
-// toc_max_heading_level: 2
-// tags: ["security", "cve"]
-// ---
+## CVE Details
 
-// ## CVE Details
+[${upperCaseCve}](https://nvd.nist.gov/vuln/detail/${upperCaseCve})
 
-// [${upperCaseCve}](https://nvd.nist.gov/vuln/detail/${upperCaseCve})
+## Last Update
 
-// ## Last Update
+${formatDateCveDetails(item.metadata.cveLastModifiedTimestamp)}
 
-// ${formatDateCveDetails(item.modifiedDateTime)}
+## NIST Summary
 
-// ## NIST Summary
+${escapeMDXSpecialChars(item.spec.assessment.justification)}
 
-// ${escapeMDXSpecialChars(item.summary)}
+## CVE Severity
 
-// ## CVE Severity
+${item.metadata.cvssScore}
 
-// ${item.baseScore}
+## Status
 
-// ## Status
+${item.status.state}
 
-// ${item.isImpacting ? "Ongoing" : "Resolved"}
 
-// ## Images
+`;
 
-// ${images}
+  const filePath = path.join(location, `${lowerCaseCve}.md`);
 
-// `;
-
-//   const filePath = path.join(location, `${lowerCaseCve}.md`);
-
-//   // Return a promise and include the CVE or file path in the error log
-//   return fs
-//     .writeFile(filePath, content)
-//     .then(() => ({
-//       success: true,
-//       file: filePath,
-//     }))
-//     .catch((err) => {
-//       console.error(`Error writing file for ${upperCaseCve} at ${filePath}:`, err);
-//       return {
-//         success: false,
-//         file: filePath,
-//         error: err,
-//       };
-//     });
-// }
+  // Return a promise and include the CVE or file path in the error log
+  return fs
+    .writeFile(filePath, content)
+    .then(() => ({
+      success: true,
+      file: filePath,
+    }))
+    .catch((err) => {
+      console.error(`Error writing file for ${upperCaseCve} at ${filePath}:`, err);
+      return {
+        success: false,
+        file: filePath,
+        error: err,
+      };
+    });
+}
 
 // Call the main function to generate CVEs
 generateCVEs();

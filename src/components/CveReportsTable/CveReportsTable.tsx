@@ -14,16 +14,59 @@ interface CveData {
 }
 
 interface Cve {
-  cve: string;
-  publishedDateTime: string;
-  modifiedDateTime: string;
-  baseScore: number;
-  baseSeverity: string;
-  packs: string[];
-  groups: string[];
-  summary: string;
-  secSeverity: string;
-  isImpacting: boolean;
+  metadata: {
+    uid: string;
+    cve: string;
+    summary: string;
+    cvssScore: number;
+    nistSeverity: string;
+    trivySeverity: string;
+    grypeSeverity: string;
+    cvePublishedTimestamp: string;
+    cveLastModifiedTimestamp: string;
+    cveLastSeenTimestamp: string;
+    advCreatedTimestamp: string;
+    advLastModifiedTimestamp: string;
+  };
+  spec: {
+    assessment: {
+      impact: string;
+      severity: string;
+      justification: string;
+      thirdParty: {
+        isDependentOnThirdParty: boolean;
+        isUpstreamFixAvailable: boolean;
+        dependencyNote: string;
+      };
+    };
+    impact: {
+      isImpacting: boolean;
+      impactedImageTypes: {
+        core: boolean;
+      };
+      impactedDeployments: {
+        airgap: boolean;
+        connected: boolean;
+      };
+      impactedProducts: {
+        palette: boolean;
+        vertex: boolean;
+      };
+      impactedImageList: string[];
+      impactedComponents: string[];
+      impactedVersions: string[];
+      technicalDetails: string;
+    };
+    remediation: {
+      isRemediationAvailable: boolean;
+      remediationSteps: string;
+    };
+    revision: any[];
+  };
+  status: {
+    state: string;
+    status: string;
+  };
 }
 
 export default function CveReportsTable() {
@@ -40,9 +83,9 @@ export default function CveReportsTable() {
   const columns: ColumnsType<Cve> = [
     {
       title: "CVE ID",
-      dataIndex: "cve",
+      dataIndex: ["metadata", "cve"],
       key: "cve",
-      sorter: (a, b) => a.cve.localeCompare(b.cve),
+      sorter: (a, b) => a.metadata.cve.localeCompare(b.metadata.cve),
       render: (cve: string) => (
         <Link
           to={`/security-bulletins/reports/${cve.toLowerCase()}`} // Navigate to the route
@@ -54,45 +97,64 @@ export default function CveReportsTable() {
     },
     {
       title: "Initial Pub Date",
-      dataIndex: "publishedDateTime",
+      dataIndex: ["metadata", "cvePublishedTimestamp"],
       key: "publishedDateTime",
-      sorter: (a, b) => new Date(a.publishedDateTime).getTime() - new Date(b.publishedDateTime).getTime(),
+      sorter: (a, b) =>
+        new Date(a.metadata.cvePublishedTimestamp).getTime() - new Date(b.metadata.cvePublishedTimestamp).getTime(),
       render: (text: string) => new Date(text).toLocaleDateString(),
     },
     {
       title: "Modified Date",
-      dataIndex: "modifiedDateTime",
+      dataIndex: ["metadata", "cveLastModifiedTimestamp"],
       key: "modifiedDateTime",
-      sorter: (a, b) => new Date(a.modifiedDateTime).getTime() - new Date(b.modifiedDateTime).getTime(),
+      sorter: (a, b) =>
+        new Date(a.metadata.cveLastModifiedTimestamp).getTime() -
+        new Date(b.metadata.cveLastModifiedTimestamp).getTime(),
       render: (text: string) => new Date(text).toLocaleDateString(),
       defaultSortOrder: "descend",
     },
     {
       title: "Product Version",
-      dataIndex: "productVersion",
+      dataIndex: ["spec", "impact", "impactedVersions"],
       key: "productVersion",
-      render: () => "N/A",
+      render: (impactedVersions: string[]) => (impactedVersions.length > 0 ? impactedVersions.join(", ") : "N/A"),
     },
     {
       title: "Vulnerability Type",
       dataIndex: "vulnerabilityType",
       key: "vulnerabilityType",
-      render: () => "N/A",
+      render: () => "N/A", // Assuming this field is not in the data
     },
     {
       title: "CVSS Severity",
-      dataIndex: "baseScore",
+      dataIndex: ["metadata", "cvssScore"],
       key: "baseScore",
-      sorter: (a, b) => a.baseScore - b.baseScore,
+      sorter: (a, b) => a.metadata.cvssScore - b.metadata.cvssScore,
       render: (baseScore: number, record) => (
-        <Link to={`https://nvd.nist.gov/vuln/detail/${record.cve}`}>{baseScore}</Link>
+        <Link to={`https://nvd.nist.gov/vuln/detail/${record.metadata.cve}`}>{baseScore}</Link>
       ),
     },
     {
       title: "Status",
       key: "status",
-      sorter: (a, b) => (a.isImpacting === b.isImpacting ? 0 : a.isImpacting ? -1 : 1),
-      render: (text, record) => (record.isImpacting ? <span>🔍 Ongoing</span> : <span>✅ Resolved</span>),
+      sorter: (a, b) => {
+        const statusPriority = (status: string) => {
+          // Assign a higher priority to "Open" and "Ongoing", lower to "Fixed" and "Closed"
+          if (status === "Open" || status === "Ongoing") return -1;
+          if (status === "Fixed" || status === "Closed") return 1;
+          return 0; // For safety, though we expect only these four statuses
+        };
+        return statusPriority(a.status.status) - statusPriority(b.status.status);
+      },
+      render: (text, record) => {
+        const status = record.status.status;
+        if (status === "Open" || status === "Ongoing") {
+          return <span>🔍 {status}</span>;
+        } else if (status === "Fixed" || status === "Closed") {
+          return <span>✅ {status}</span>;
+        }
+        return <span>{status}</span>; // Default case if there are unexpected values
+      },
     },
   ];
 
@@ -101,7 +163,7 @@ export default function CveReportsTable() {
     <Table
       columns={columns}
       dataSource={cveList}
-      rowKey="cve"
+      rowKey={(record) => record.metadata.uid}
       pagination={{
         pageSizeOptions: ["100", "500", "1000"],
         defaultPageSize: 100,
