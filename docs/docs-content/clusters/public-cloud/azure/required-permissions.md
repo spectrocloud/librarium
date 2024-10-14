@@ -137,7 +137,7 @@ as scope instead of the resource group as scope.
    ```
 
 3. Next, create a JSON file for the compute permissions. Issue the following command to create the JSON file. If you
-   want to assigne the permission to scope to a specific resource group, replace the subscription ID the
+   want to assign the permission to scope to a specific resource group, replace the subscription ID the
    `AssignableScopes` field with the resource group ID.
 
    ```shell
@@ -267,7 +267,7 @@ subscription as scope instead of the resource group as scope.
    ```
 
 2. Issue the following command to create a JSON file containing all the required permissions to create resources. If you
-   want to assigne the permission to scope to a specific resource group, replace the subscription ID the
+   want to assign the permission to scope to a specific resource group, replace the subscription ID the
    `AssignableScopes` field with the resource group ID.
 
    ```shell
@@ -483,9 +483,8 @@ as scope instead of the resource group as scope.
    }
    ```
 
-4. Create another JSON file for the remaining permissions required by AKS. If you want to assigne the permission to
-   scope to a specific resource group, replace the subscription ID the `AssignableScopes` field with the resource group
-   ID.
+4. Create another JSON file for the remaining permissions required by AKS. If you want to assign the permission to scope
+   to a specific resource group, replace the subscription ID the `AssignableScopes` field with the resource group ID.
 
    ```shell
    cat << EOF > aks_static_rg_sub_role.template.json
@@ -1065,7 +1064,7 @@ resource groups within a subscription.
    }
    ```
 
-3. Create another JSON file containing the remaining permissions required for AKS. If you want to assigne the permission
+3. Create another JSON file containing the remaining permissions required for AKS. If you want to assign the permission
    to scope to a specific resource group, replace the subscription ID the `AssignableScopes` field with the resource
    group ID.
 
