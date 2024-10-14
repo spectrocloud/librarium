@@ -3,7 +3,7 @@ const { existsSync, mkdirSync } = require("node:fs");
 const logger = require("@docusaurus/logger");
 const fs = require("fs").promises;
 const path = require("path");
-const { getTodayFormattedDate, formatDateCveDetails } = require("../helpers/date");
+const { formatDateCveDetails } = require("../helpers/date");
 const { escapeMDXSpecialChars } = require("../helpers/string");
 
 async function getSecurityBulletins(queryParams) {
@@ -98,11 +98,13 @@ async function generateMarkdownForCVEs(GlobalCVEData) {
 
   // Remove duplicate CVEs
   for (const item of allCVEs) {
-    if (!seenCVEs.has(item.cve)) {
-      seenCVEs.add(item.cve);
+    if (!seenCVEs.has(item.metadata.cve)) {
+      seenCVEs.add(item.metadata.cve);
       uniqueCVEs.push(item);
     }
   }
+
+  logger.info(`Generating markdown files for ${uniqueCVEs.length} unique CVEs.`);
 
   const markdownPromises = uniqueCVEs.map((item) =>
     createCveMarkdown(item, "docs/docs-content/security-bulletins/reports/")
@@ -146,11 +148,15 @@ ${formatDateCveDetails(item.metadata.cveLastModifiedTimestamp)}
 
 ## NIST Summary
 
-${escapeMDXSpecialChars(item.spec.assessment.justification)}
+${escapeMDXSpecialChars(item.metadata.summary)}
 
 ## CVE Severity
 
 ${item.metadata.cvssScore}
+
+## Our Official Summary
+
+${escapeMDXSpecialChars(item.spec.assessment.justification)}
 
 ## Status
 
