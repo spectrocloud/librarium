@@ -89,8 +89,7 @@ principal you want to use with Palette.
    ```
 
 2. Issue the following command to create a JSON file containing all the required permissions to create network
-   resources. If you want to assigne the permission to scope to a specific resource group, replace the subscription ID
-   the `AssignableScopes` field with the resource group ID.
+   resources.
 
    ```shell
    cat << EOF > iaas_static_vnet_role.template.json
@@ -226,7 +225,149 @@ principal you want to use with Palette.
 
 #### Validate
 
+1. Log in to the Azure portal.
+
+2. Navigate to the Microsoft Entra ID section.
+
+3. Review the role, or roles if you created multiple. Review the role assignments to ensure the service principal has
+   the correct permissions assigned.
+
 ### Dynamic Placement
+
+#### Prerequisites
+
+- Azure CLI installed on your local machine. Refer to the
+  [Azure CLI Install Guide](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) for installation instructions.
+
+- The Azure subscription ID you want to use with Palette.
+
+- The Security Principal Object ID you want to use with Palette. You can retrieve it from the Entra ID section of the
+  Azure Portal.
+
+- A terminal or command prompt to issue the Azure CLI commands.
+
+- The Azure Security Principal Object ID you want to use with Palette. The Security Principal Object ID can represent a
+  user, group, or service principal.
+
+#### Create Role and Assign Permissions
+
+1. Open a terminal or command prompt. Export your Azure subscription ID to a variable.
+
+   ```shell
+   export SUBSCRIPTION_ID=<your-subscription-id>
+   ```
+
+2. Issue the following command to create a JSON file containing all the required permissions to create resources. If you
+   want to assigne the permission to scope to a specific resource group, replace the subscription ID the
+   `AssignableScopes` field with the resource group ID.
+
+   ```shell
+   cat << EOF > iaas_dynamic_rg_sub_role.template.json
+   {
+     "Name": "Palette Dynamic Placement IaaS Cluster Deployer (rg/sub)",
+     "IsCustom": true,
+     "Description": "Can use Palette to deploy IaaS clusters using static placement. This role contains the permissions that must be applied at the resource group scope level. If deploying multiple clusters in a variety of resource groups within a subscription, apply the role with the subscription as scope instead of the resource group as scope.",
+     "Actions": [
+       "Microsoft.Compute/disks/delete",
+       "Microsoft.Compute/disks/read",
+       "Microsoft.Compute/disks/write",
+       "Microsoft.Compute/galleries/images/read",
+       "Microsoft.Compute/galleries/images/versions/read",
+       "Microsoft.Compute/galleries/images/versions/write",
+       "Microsoft.Compute/galleries/images/write",
+       "Microsoft.Compute/galleries/read",
+       "Microsoft.Compute/galleries/write",
+       "Microsoft.Compute/images/read",
+       "Microsoft.Compute/images/write",
+       "Microsoft.Compute/virtualMachines/delete",
+       "Microsoft.Compute/virtualMachines/extensions/delete",
+       "Microsoft.Compute/virtualMachines/extensions/read",
+       "Microsoft.Compute/virtualMachines/extensions/write",
+       "Microsoft.Compute/virtualMachines/read",
+       "Microsoft.Compute/virtualMachines/write",
+       "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
+       "Microsoft.Network/loadBalancers/delete",
+       "Microsoft.Network/loadBalancers/inboundNatRules/delete",
+       "Microsoft.Network/loadBalancers/inboundNatRules/join/action",
+       "Microsoft.Network/loadBalancers/inboundNatRules/read",
+       "Microsoft.Network/loadBalancers/inboundNatRules/write",
+       "Microsoft.Network/loadBalancers/read",
+       "Microsoft.Network/loadBalancers/write",
+       "Microsoft.Network/networkInterfaces/delete",
+       "Microsoft.Network/networkInterfaces/join/action",
+       "Microsoft.Network/networkInterfaces/read",
+       "Microsoft.Network/networkInterfaces/write",
+       "Microsoft.Network/networkSecurityGroups/read",
+       "Microsoft.Network/networkSecurityGroups/securityRules/delete",
+       "Microsoft.Network/networkSecurityGroups/securityRules/read",
+       "Microsoft.Network/networkSecurityGroups/securityRules/write",
+       "Microsoft.Network/privateDnsZones/A/delete",
+       "Microsoft.Network/privateDnsZones/A/read",
+       "Microsoft.Network/privateDnsZones/A/write",
+       "Microsoft.Network/privateDnsZones/delete",
+       "Microsoft.Network/privateDnsZones/read",
+       "Microsoft.Network/privateDnsZones/virtualNetworkLinks/delete",
+       "Microsoft.Network/privateDnsZones/virtualNetworkLinks/read",
+       "Microsoft.Network/privateDnsZones/virtualNetworkLinks/write",
+       "Microsoft.Network/privateDnsZones/write",
+       "Microsoft.Network/publicIPAddresses/delete",
+       "Microsoft.Network/publicIPAddresses/join/action",
+       "Microsoft.Network/publicIPAddresses/read",
+       "Microsoft.Network/publicIPAddresses/write",
+       "Microsoft.Network/routeTables/delete",
+       "Microsoft.Network/routeTables/read",
+       "Microsoft.Network/routeTables/write",
+       "Microsoft.Network/virtualNetworks/delete",
+       "Microsoft.Network/virtualNetworks/join/action",
+       "Microsoft.Network/virtualNetworks/join/action",
+       "Microsoft.Network/virtualNetworks/joinLoadBalancer/action",
+       "Microsoft.Network/virtualNetworks/peer/action",
+       "Microsoft.Network/virtualNetworks/read",
+       "Microsoft.Network/virtualNetworks/subnets/delete",
+       "Microsoft.Network/virtualNetworks/subnets/join/action",
+       "Microsoft.Network/virtualNetworks/subnets/joinLoadBalancer/action",
+       "Microsoft.Network/virtualNetworks/subnets/read",
+       "Microsoft.Network/virtualNetworks/subnets/virtualMachines/read",
+       "Microsoft.Network/virtualNetworks/subnets/write",
+       "Microsoft.Network/virtualNetworks/virtualMachines/read",
+       "Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete",
+       "Microsoft.Network/virtualNetworks/virtualNetworkPeerings/read",
+       "Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write",
+       "Microsoft.Network/virtualNetworks/write",
+       "Microsoft.Resources/subscriptions/resourceGroups/read",
+       "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+       "Microsoft.Storage/storageAccounts/blobServices/containers/write",
+       "Microsoft.Storage/storageAccounts/read",
+       "Microsoft.Storage/storageAccounts/write"
+     ],
+     "NotActions": [],
+     "AssignableScopes": [
+       "/subscriptions/$SUBSCRIPTION_ID"
+     ]
+   }
+   ```
+
+3. Create a role using the JSON file you created in the previous step. Issue the following command to create the role.
+
+   ```shell
+   az role definition create --role-definition @iaas_dynamic_rg_sub_role.template.json --output table
+   ```
+
+4. Export the
+   [security principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
+   object ID you want to use with Palette to a variable.
+
+   ```shell
+   export ASSIGNEE="<security_principal_object_id>"
+   ```
+
+5. Assign the role to the service principal. Use the following command to assign the role.
+
+   ```shell
+   az role assignment create --assignee $ASSIGNEE \
+   --role "Palette Dynamic Placement IaaS Cluster Deployer (rg/sub)" \
+   --scope "/subscriptions/$SUBSCRIPTION_ID"
+   ```
 
 ## AKS
 
