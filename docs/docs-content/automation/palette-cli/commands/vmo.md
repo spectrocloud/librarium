@@ -34,7 +34,9 @@ The VMs can then be used with the Virtual Machine Orchestrator (VMO).
 ## Deploy OVA
 
 Use the `deploy-ova` subcommand to deploy an imported vSphere OVA to Palette VMO. The following flags are supported by
-the `deploy-ova` subcommand.
+the `deploy-ova` subcommand. Refer to the
+[Import and Deploy OVAs to Palette VMO](../../../vm-management/create-manage-vm/advanced-topics/deploy-import-ova.md)
+guide for further details on importing and deploying vSphere OVAs.
 
 | **Short Flag** | **Long Flag**   | **Description**                                                                                                                      | **Type** |
 | -------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------- |
@@ -68,7 +70,9 @@ palette vmo deploy-ova --config-file ~/.palette/vmo/vms/my-ova-name/my-ova-name.
 Use the `import-ova` subcommand to import a vSphere OVA to Palette VMO. The following flags are supported by the
 `import-ova` subcommand. The OVA will be converted to the QCOW2 virtual disk storage format. This subcommand generates
 an OVA deployment configuration file. You can then either directly upload the imported image to a `DataVolume` or upload
-it a Docker image registry.
+it a Docker image registry. Refer to the
+[Import and Deploy OVAs to Palette VMO](../../../vm-management/create-manage-vm/advanced-topics/deploy-import-ova.md)
+guide for further details on importing and deploying vSphere OVAs
 
 | **Short Flag** | **Long Flag**    | **Description**                                                               | **Type** |
 | -------------- | ---------------- | ----------------------------------------------------------------------------- | -------- |

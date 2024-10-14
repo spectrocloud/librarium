@@ -42,6 +42,11 @@ listed in alphabetical order.
 You can point the Edge Installer to a non-default registry to load content from another source. Use the
 `registryCredentials` parameter object to specify the registry configurations.
 
+If you are using an external registry and want to use content bundles when deploying your Edge cluster, you must also
+enable the local Harbor registry. For more information, refer to
+[Build Content Bundles](../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
+[Enable Local Harbor Registry](../site-deployment/deploy-custom-registries/local-registry.md).
+
 | Parameter                                    | Description                                                                                                                                                                                                                                                                                                   | Default |
 | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
 | `stylus.registryCredentials.domain`          | The domain of the registry. You can use an IP address plus the port or a domain name.                                                                                                                                                                                                                         |         |
@@ -207,6 +212,16 @@ For example, if you have a Python script that returns the following JSON output:
 
 You can configure `stylus.site.tagsFromScript` to point to the script, and it will add the tags `owner:p78125d` and
 `department: sales` to the Edge host.
+
+### Site Registry Parameters
+
+Palette uses a webhook to redirect image pulls when you have specified an external registry or use a local Harbor
+registry. If you find this redirect behavior to be limiting, you can disable the webhook. For more information, refer to
+[Disable Webhook to Customize Image Pull Behavior](../site-deployment/deploy-custom-registries/webhook-disable.md).
+
+| Parameter                            | Description                                            | Default |
+| ------------------------------------ | ------------------------------------------------------ | ------- |
+| `stylus.imageRedirectWebhook.enable` | Whether to enable the webhook to redirect image pulls. | `True`  |
 
 ## Install Parameters
 

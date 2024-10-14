@@ -76,8 +76,16 @@ const redirects = [
     to: `/getting-started/`,
   },
   {
-    from: `/clusters/public-cloud/eks/`,
-    to: `/clusters/public-cloud/aws/eks/`,
+    from: `/getting-started/dashboard`,
+    to: `/introduction/dashboard`,
+  },
+  {
+    from: `/getting-started/cluster-profiles`,
+    to: `/getting-started/introduction`,
+  },
+  {
+    from: `/clusters/public-cloud/eks`,
+    to: `/clusters/public-cloud/aws/eks`,
   },
   {
     from: `/clusters/public-cloud/aks/`,
@@ -546,6 +554,10 @@ const redirects = [
     to: "/automation/palette-cli/commands/ec/",
   },
   {
+    from: "/legal-licenses/oss-licenses/",
+    to: "/legal-licenses/oss-licenses-index/",
+  },
+  {
     from: [
       "/integrations/antrea-cni",
       "/integrations/aws-autoscaler",
@@ -587,23 +599,22 @@ const redirects = [
     ],
     to: "/integrations/",
   },
-  // {
-  //   from: [
-  //     "/security-bulletins/reports/cve-2020-1971",
-  //     "/security-bulletins/reports/cve-2021-3449",
-  //     "/security-bulletins/reports/cve-2021-3711",
-  //     "/security-bulletins/reports/cve-2021-45079",
-  //     "/security-bulletins/reports/cve-2022-0778",
-  //     "/security-bulletins/reports/cve-2022-4450",
-  //     "/security-bulletins/reports/cve-2023-0215",
-  //     "/security-bulletins/reports/cve-2023-0286",
-  //     "/security-bulletins/reports/cve-2023-52425",
-  //     "/security-bulletins/reports/cve-2023-5528",
-  //     "/security-bulletins/reports/cve-2024-0743",
-  //     "/security-bulletins/reports/prisma-2022-0227",
-  //   ],
-  //   to: "/security-bulletins/reports/",
-  // },
+  {
+    from: [
+      "/security-bulletins/reports/cve-2020-1971",
+      "/security-bulletins/reports/cve-2021-3449",
+      "/security-bulletins/reports/cve-2021-3711",
+      "/security-bulletins/reports/cve-2021-45079",
+      "/security-bulletins/reports/cve-2022-0778",
+      "/security-bulletins/reports/cve-2022-4450",
+      "/security-bulletins/reports/cve-2023-0215",
+      "/security-bulletins/reports/cve-2023-0286",
+      "/security-bulletins/reports/cve-2023-52425",
+      "/security-bulletins/reports/cve-2023-5528",
+      "/security-bulletins/reports/prisma-2022-0227",
+    ],
+    to: "/security-bulletins/reports/",
+  },
 ];
 
 module.exports = redirects;

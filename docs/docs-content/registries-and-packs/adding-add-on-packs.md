@@ -7,7 +7,7 @@ hide_table_of_contents: false
 sidebar_position: 30
 ---
 
-An Add-on Pack defines deployment specifics of a Kubernetes application to be installed on a running Kubernetes cluster.
+An Add-on Pack defines deployment specifics of a Kubernetes application to be installed on an active Kubernetes cluster.
 Palette provides several Add-on packs out of the box for various layers of the Kubernetes stack. For example:
 
 - **Logging** - elastic search, fluentd
