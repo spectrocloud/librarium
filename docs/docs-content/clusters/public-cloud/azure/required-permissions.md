@@ -27,15 +27,15 @@ custom role to provide only those permissions that Palette requires.
 
 We support the following use cases:
 
-- [IaaS Dynamic Placement](#dynamic-placement) - Palette creates network resources required for your cluster.
-
-- [IaaS Static Placement](#static-placement) - Palette deploys clusters on the pre-existing network resources you
+- [IaaS Static Placement](#iaas-static-placement) - Palette deploys clusters on the pre-existing network resources you
   specify.
 
-- [AKS Dynamic Placement](../azure/aks.md#dynamic-placement) - Palette creates resources required for your AKS cluster.
+- [IaaS Dynamic Placement](#iaas-dynamic-placement) - Palette creates network resources required for your cluster.
 
-- [AKS Static Placement](../azure/aks.md#static-placement) - Palette deploys AKS clusters on the pre-existing resources
-  you specify.
+- [AKS Static Placement](#aks-static-placement) - Palette deploys AKS clusters on the pre-existing resources you
+  specify.
+
+- [AKS Dynamic Placement](#aks-dynamic-placement) - Palette creates resources required for your AKS cluster.
 
 :::tip
 
@@ -63,7 +63,7 @@ use case, you can deploy VMs on a pre-existing environment or let Palette create
 Select the appropriate section below to learn how to create a custom role in Azure and assign it to the service
 principal you want to use with Palette.
 
-### Static Placement
+### Static Placement {#iaas-static-placement}
 
 #### Prerequisites
 
@@ -232,7 +232,7 @@ principal you want to use with Palette.
 3. Review the role, or roles if you created multiple. Review the role assignments to ensure the service principal has
    the correct permissions assigned.
 
-### Dynamic Placement
+### Dynamic Placement {#iaas-dynamic-placement}
 
 #### Prerequisites
 
@@ -371,6 +371,6 @@ principal you want to use with Palette.
 
 ## AKS
 
-### Static Placement
+### Static Placement {#aks-static-placement}
 
-### Dynamic Placement
+### Dynamic Placement {#aks-dynamic-placement}
