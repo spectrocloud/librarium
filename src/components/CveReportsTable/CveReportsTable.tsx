@@ -69,6 +69,17 @@ interface Cve {
   };
 }
 
+const compareSemVer = (versionA: string, versionB: string) => {
+  const parseVersion = (version: string) => version.split(".").map((num) => parseInt(num, 10));
+
+  const [majorA, minorA, patchA] = parseVersion(versionA);
+  const [majorB, minorB, patchB] = parseVersion(versionB);
+
+  if (majorA !== majorB) return majorA - majorB;
+  if (minorA !== minorB) return minorA - minorB;
+  return patchA - patchB;
+};
+
 export default function CveReportsTable() {
   const data: CveData = rawData as CveData;
 
@@ -117,6 +128,15 @@ export default function CveReportsTable() {
       title: "Product Version",
       dataIndex: ["spec", "impact", "impactedVersions"],
       key: "productVersion",
+      sorter: (a, b) => {
+        // If either has no version, treat as equal or move the one with versions first
+        if (!a.spec.impact.impactedVersions.length || !b.spec.impact.impactedVersions.length) {
+          return a.spec.impact.impactedVersions.length - b.spec.impact.impactedVersions.length;
+        }
+
+        // Assuming each CVE only impacts a single version (taking the first impacted version for sorting)
+        return compareSemVer(a.spec.impact.impactedVersions[0], b.spec.impact.impactedVersions[0]);
+      },
       render: (impactedVersions: string[]) => (impactedVersions.length > 0 ? impactedVersions.join(", ") : "N/A"),
     },
     {
