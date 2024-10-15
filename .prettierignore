@@ -13,6 +13,7 @@ docs/api-content/**/*.json
 tsconfig.json
 src/components/IconMapper/dynamicFontAwesomeImports.*
 docs/docs-content/security-bulletins/cve-reports.md
+docs/docs-content/security-bulletins/reports/*.md
 
 # Ignore partials
 _partials/

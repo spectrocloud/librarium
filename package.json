@@ -5,8 +5,9 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start --host 0.0.0.0 --port 9000",
-    "build": "npm run generate-api-docs && npm run generate-partials && docusaurus build",
+    "build": "npm run generate-api-docs && npm run cves && npm run generate-partials && docusaurus build",
     "swizzle": "docusaurus swizzle",
+    "cves": "node utils/cves/index.js",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
