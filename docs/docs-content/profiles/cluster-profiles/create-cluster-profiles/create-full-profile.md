@@ -44,7 +44,7 @@ To learn how to create multiple profile versions that use the same name, check o
    :::info
 
    Cluster profiles created from a Tech Preview cloud type are intended for clusters that a cloud provider deploys using
-   Palette's generic framework built upon the open-source Cluster API (CAPI) initiative.
+   Palette's generic framework built upon the open source Cluster API (CAPI) initiative.
 
    When creating a profile using a Tech Preview cloud type, you do not have to specify anything for the OS or Kubernetes
    layers. Out-of-the-box packs are provided for the network and storage profile layers.
