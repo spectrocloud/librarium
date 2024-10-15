@@ -64,7 +64,7 @@ object storage solutions as backup locations.
 
 :::info
 
-Palette uses open-source Velero to provide backup and restore capabilities. You can learn more about Velero by checking
+Palette uses open source Velero to provide backup and restore capabilities. You can learn more about Velero by checking
 out the Velero [Restore Reference](https://velero.io/docs/main/restore-reference/) and
 [Backup Reference](https://velero.io/docs/main/backup-reference/).
 
