@@ -46,7 +46,7 @@ By default, Palette VMO includes the following components:
 - **Spectro VM Dashboard**. Enables you to create, manage, and monitor VMs from Palette. The dashboard becomes available
   once the VMO pack is successfully deployed as part of your cluster profile.
 
-- **KubeVirt**. This open-source solution enables you to create and manage VMs within Kubernetes clusters. KubeVirt
+- **KubeVirt**. This open source solution enables you to create and manage VMs within Kubernetes clusters. KubeVirt
   extends Kubernetes with additional virtualization resource types using Kubernetes Custom Resource Definitions (CRD)
   API.
 
