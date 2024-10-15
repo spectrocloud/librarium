@@ -63,7 +63,7 @@ Palette has the richest coverage in supported environments that includes:
 
 ## What is Under the Hood?
 
-Palette uniquely extends and integrates the Cloud Native Computing Foundation (CNCF) open-source Cluster API project.
+Palette uniquely extends and integrates the Cloud Native Computing Foundation (CNCF) open source Cluster API project.
 Palette does this by providing comprehensive full-stack modeling and orchestration, governance, security, and day 0 -
 day 2 management capabilities.
 
