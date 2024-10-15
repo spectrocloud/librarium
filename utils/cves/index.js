@@ -6,18 +6,12 @@ const path = require("path");
 const { formatDateCveDetails } = require("../helpers/date");
 const { escapeMDXSpecialChars } = require("../helpers/string");
 
-async function getSecurityBulletins(queryParams) {
+async function getSecurityBulletins(payload) {
   try {
-    const response = await callRateLimitAPI(() => api.get(`https://dso.teams.spectrocloud.com/v1/advisories`));
-    if (response && response.data) {
-      const highAndCritical = response.data.filter(
-        (item) => item.metadata.nistSeverity === "HIGH" || item.metadata.nistSeverity === "CRITICAL"
-      );
-      return highAndCritical;
-    }
+    return await callRateLimitAPI(() => api.post(`https://dso.teams.spectrocloud.com/v1/advisories`, payload));
   } catch (error) {
     logger.error(error);
-    logger.error("Error:", error.response ? error.response.status : error.message);
+    logger.error("Error:", error.response ? error.response.data || error.response.status : error.message);
   }
 }
 
@@ -34,47 +28,85 @@ async function generateCVEs() {
   } else {
     logger.info("Fetching security bulletins...");
 
-    // const paletteQueryParams = `airgap=false&date=${getTodayFormattedDate()}&edition=palette&report=cve&version=4.5.3`;
-    // const paletteAirgapQueryParams = `airgap=true&date=${getTodayFormattedDate()}&edition=palette&report=cve&version=4.5.3`;
-    // const verteXQueryParams = `airgap=false&date=${getTodayFormattedDate()}&edition=vertex&report=cve&version=4.5.3`;
-    // const verteXAirgapQueryParams = `airgap=true&date=${getTodayFormattedDate()}&edition=vertex&report=cve&version=4.5.3`;
-
     try {
-      // const palette = await getSecurityBulletins(paletteQueryParams);
-      // const paletteAirgap = await getSecurityBulletins(paletteAirgapQueryParams);
-      // const verteX = await getSecurityBulletins(verteXQueryParams);
-      // const verteXAirgap = await getSecurityBulletins(verteXAirgapQueryParams);
-
-      const cves = await getSecurityBulletins();
-
-      const palette = cves.filter(
-        (item) =>
-          item.spec.impact.impactedProducts.palette === true && item.spec.impact.impactedDeployments.connected === true
-      );
-      const paletteAirgap = cves.filter(
-        (item) =>
-          item.spec.impact.impactedProducts.palette === true && item.spec.impact.impactedDeployments.airgap === true
-      );
-      const vertex = cves.filter(
-        (item) =>
-          item.spec.impact.impactedProducts.vertex === true && item.spec.impact.impactedDeployments.connected === true
-      );
-      const vertexAirgap = cves.filter(
-        (item) =>
-          item.spec.impact.impactedProducts.vertex === true && item.spec.impact.impactedDeployments.airgap === true
-      );
-
-      // console.log("Length of palette", palette.length);
-      // console.log("Length of palette airgap", paletteAirgap.length);
-      // console.log("Length of vertex", vertex.length);
-      // console.log("Length of vertex airgap", vertexAirgap.length);
+      const palette = await getSecurityBulletins({
+        filters: [
+          {
+            field: "metadata.nistSeverity",
+            operator: "in",
+            options: ["CRITICAL", "HIGH"],
+          },
+          {
+            field: "spec.impact.impactedProducts.palette",
+            operator: "ex",
+          },
+          {
+            field: "spec.impact.impactedDeployments.connected",
+            operator: "ex",
+          },
+        ],
+      });
+      const paletteAirgap = await getSecurityBulletins({
+        filters: [
+          {
+            field: "metadata.nistSeverity",
+            operator: "in",
+            options: ["CRITICAL", "HIGH"],
+          },
+          {
+            field: "spec.impact.impactedProducts.palette",
+            operator: "ex",
+          },
+          {
+            field: "spec.impact.impactedDeployments.airgap",
+            operator: "ex",
+          },
+        ],
+      });
+      const vertex = await getSecurityBulletins({
+        filters: [
+          {
+            field: "metadata.nistSeverity",
+            operator: "in",
+            options: ["CRITICAL", "HIGH"],
+          },
+          {
+            field: "spec.impact.impactedProducts.vertex",
+            operator: "ex",
+          },
+          {
+            field: "spec.impact.impactedDeployments.connected",
+            operator: "ex",
+          },
+        ],
+      });
+      const vertexAirgap = await getSecurityBulletins({
+        filters: [
+          {
+            field: "metadata.nistSeverity",
+            operator: "in",
+            options: ["CRITICAL", "HIGH"],
+          },
+          {
+            field: "spec.impact.impactedProducts.vertex",
+            operator: "ex",
+          },
+          {
+            field: "spec.impact.impactedDeployments.airgap",
+            operator: "ex",
+          },
+        ],
+      });
 
       securityBulletins.set("palette", palette);
       securityBulletins.set("paletteAirgap", paletteAirgap);
       securityBulletins.set("vertex", vertex);
       securityBulletins.set("vertexAirgap", vertexAirgap);
 
-      const plainObject = Object.fromEntries(securityBulletins);
+      // const plainObject = Object.fromEntries(securityBulletins);
+      const plainObject = Object.fromEntries(
+        Array.from(securityBulletins.entries()).map(([key, value]) => [key, value.data])
+      );
       GlobalCVEData = plainObject;
 
       // Write the security bulletins data to a JSON file
