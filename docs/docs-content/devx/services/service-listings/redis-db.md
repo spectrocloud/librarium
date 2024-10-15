@@ -11,7 +11,7 @@ logoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjxG5Qb38rX39m1M
 tags: ["devx", "app mode", "pde", "databases"]
 ---
 
-[Redis](https://redis.io/docs/about/) is an open-source (BSD licensed), in-memory data structure store used as a data
+[Redis](https://redis.io/docs/about/) is an open source (BSD licensed), in-memory data structure store used as a data
 cache store or database service. Redis has built-in replication, Lua scripting, least recently used eviction,
 transactions, and different levels of on-disk persistence capabilities. In addition, Redis provides high availability
 via Redis Sentinel and automatic partitioning with Redis Cluster.
