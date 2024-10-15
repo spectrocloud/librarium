@@ -69,15 +69,8 @@ interface Cve {
   };
 }
 
-const compareSemVer = (versionA: string, versionB: string) => {
-  const parseVersion = (version: string) => version.split(".").map((num) => parseInt(num, 10));
-
-  const [majorA, minorA, patchA] = parseVersion(versionA);
-  const [majorB, minorB, patchB] = parseVersion(versionB);
-
-  if (majorA !== majorB) return majorA - majorB;
-  if (minorA !== minorB) return minorA - minorB;
-  return patchA - patchB;
+const isGreater = (a: string, b: string) => {
+  return a.localeCompare(b, undefined, { numeric: true }) === 1;
 };
 
 export default function CveReportsTable() {
@@ -129,21 +122,34 @@ export default function CveReportsTable() {
       dataIndex: ["spec", "impact", "impactedVersions"],
       key: "productVersion",
       sorter: (a, b) => {
-        // If either has no version, treat as equal or move the one with versions first
-        if (!a.spec.impact.impactedVersions.length || !b.spec.impact.impactedVersions.length) {
-          return a.spec.impact.impactedVersions.length - b.spec.impact.impactedVersions.length;
+        const isGreater = (a: string, b: string) => a.localeCompare(b, undefined, { numeric: true }) === 1;
+
+        const getSortedVersions = (versions: string[]) => versions.sort((v1, v2) => (isGreater(v1, v2) ? -1 : 1)); // Sort in descending order (newest first)
+
+        const sortedVersionsA = getSortedVersions([...a.spec.impact.impactedVersions]);
+        const sortedVersionsB = getSortedVersions([...b.spec.impact.impactedVersions]);
+
+        // Handle cases where either list of impacted versions is empty
+        if (sortedVersionsA.length === 0 || sortedVersionsB.length === 0) {
+          return sortedVersionsA.length - sortedVersionsB.length;
         }
 
-        // Assuming each CVE only impacts a single version (taking the first impacted version for sorting)
-        return compareSemVer(a.spec.impact.impactedVersions[0], b.spec.impact.impactedVersions[0]);
+        // Compare the first (newest) version in the sorted list
+        return isGreater(sortedVersionsA[0], sortedVersionsB[0]) ? -1 : 1;
       },
-      render: (impactedVersions: string[]) => (impactedVersions.length > 0 ? impactedVersions.join(", ") : "N/A"),
+      render: (impactedVersions: string[]) => {
+        // Ensure versions are sorted before rendering
+        const sortedVersions = impactedVersions.sort((v1, v2) =>
+          v1.localeCompare(v2, undefined, { numeric: true }) === 1 ? -1 : 1
+        );
+        return sortedVersions.length > 0 ? sortedVersions.join(", ") : "N/A";
+      },
     },
     {
-      title: "Vulnerability Type",
-      dataIndex: "vulnerabilityType",
+      title: "Third Party Vulnerability",
+      dataIndex: ["spec", "assessment", "thirdParty", "isDependentOnThirdParty"],
       key: "vulnerabilityType",
-      render: () => "N/A", // Assuming this field is not in the data
+      render: (record) => (record ? "Yes" : "No"),
     },
     {
       title: "CVSS Severity",
