@@ -15,7 +15,7 @@ ensures uniformity across your clusters. The primary use cases for creating cust
 
 - Aggregated configuration and application dependencies simplify deployment and consumption.
 
-- Open-source contributors can add new Kubernetes applications to a custom add-on pack for the community.
+- Open source contributors can add new Kubernetes applications to a custom add-on pack for the community.
 
 - Enterprises can add proprietary Kubernetes applications to a custom add-on pack.
 
