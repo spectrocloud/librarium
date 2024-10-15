@@ -78,7 +78,7 @@ to learn more about the changes introduced in this release.
 - The [cluster group](../clusters/cluster-groups/cluster-groups.md), Beehive, will be sunset on November 9, 2024. If you
   are using Palette SaaS and have virtual clusters in the Beehive cluster group, migrate the workload to new virtual
   clusters hosted in a self-managed cluster group before November 9, 2024. You can learn more about creating a new
-  cluster group in the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide.
+  cluster group in the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide. Test!
 
 ### Edge
 
