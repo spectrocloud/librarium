@@ -32,7 +32,7 @@ Click on the CVE ID to view the full details of the vulnerability.
 
 <Tabs groupId="edition" queryString>
 
-<TabItem label="Palette VerteX Airgap" value="vertex">
+<TabItem label="Palette VerteX Airgap" value="vertex-airgap">
 
 | CVE ID                                          | Initial Pub Date | Modified Date | Product Version                  | Vulnerability Type                      | CVSS Severity                                            | Status                      |
 | ----------------------------------------------- | ---------------- | ------------- | -------------------------------- | --------------------------------------- | -------------------------------------------------------- | --------------------------- |
@@ -104,7 +104,7 @@ Click on the CVE ID to view the full details of the vulnerability.
 
 </TabItem>
 
-<TabItem label="Palette Enterprise Airgap" value="palette-enterprise">
+<TabItem label="Palette Enterprise Airgap" value="palette-enterprise-airgap">
 
 | CVE ID                                          | Initial Pub Date | Modified Date | Product Version          | Vulnerability Type                      | CVSS Severity                                            | Status        |
 | ----------------------------------------------- | ---------------- | ------------- | ------------------------ | --------------------------------------- | -------------------------------------------------------- | ------------- |
@@ -323,3 +323,6 @@ Click on the CVE ID to view the full details of the vulnerability.
 | [CVE-2023-5363](./cve-2023-5363.md)             | 10/25/23         | 10/14/24      | 4.5.3           | Third-party component: OpenSSL          | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2023-5363)    | :mag: Ongoing |
 | [CVE-2023-6246](./cve-2023-6246.md)             | 1/31/24          | 10/14/24      | 4.5.3           | Third-party component: GNU C Library    | [7.8](https://nvd.nist.gov/vuln/detail/CVE-2023-6246)    | :mag: Ongoing |
 | [CVE-2023-6779](./cve-2023-6779.md)             | 1/31/24          | 10/14/24      | 4.5.3           | Third-party component: GNU C Library    | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2023-6779)    | :mag: Ongoing |
+
+</TabItem>
+</Tabs>
