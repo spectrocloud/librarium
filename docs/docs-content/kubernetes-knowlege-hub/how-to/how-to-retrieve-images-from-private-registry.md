@@ -12,7 +12,7 @@ tags: ["how-to", "k8s-tips"]
 
 ## How To Retrieve Images from a Private Registry in Kubernetes
 
-Kubernetes is an open-source container orchestration platform that enables efficient management, deployment, and scaling
+Kubernetes is an open source container orchestration platform that enables efficient management, deployment, and scaling
 of containerized applications.
 
 By default, Docker and Kubernetes allow a limited number of unauthenticated pulls from a Docker registry, such as Docker

@@ -9,7 +9,7 @@ hiddenFromNav: false
 tags: ["user-management", "oidc-sso", "Keycloak"]
 ---
 
-Keycloak is an open-source Identity and Access Management (IAM) tool, primarily used for simplifying the authentication
+Keycloak is an open source Identity and Access Management (IAM) tool, primarily used for simplifying the authentication
 and authorization processes in modern applications and services. It provides a wide range of features including Single
 Sign-On (SSO), two-factor authentication, and social login capabilities. Keycloak is designed to manage users,
 credentials, roles, and groups efficiently, enabling developers to secure their applications and services with minimal
