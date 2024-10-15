@@ -140,7 +140,7 @@ notes below to learn more about the new features and improvements.
 - A Pack's README file is displayed during the cluster profile creation and editing process. You can find additional
   information about a pack in the [Packs List](../integrations/integrations.mdx) page.
 
-- Palette CLI now supports integration with [Validator](https://github.com/spectrocloud-labs/validator), an open-source
+- Palette CLI now supports integration with [Validator](https://github.com/spectrocloud-labs/validator), an open source
   framework that you can use to validate your self-hosted Palette, VerteX, or workload cluster environment. Validator
   performs Day 0-2 validation and configuration drift detection in a composable manner across various systems. Use the
   `palette validator` command to verify your environment before installing a self-hosted instance of Palette or VerteX.

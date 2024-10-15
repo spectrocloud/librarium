@@ -10,7 +10,7 @@ logoUrl: "https://registry.spectrocloud.com/v1/prometheus-operator/blobs/sha256:
 tags: ["packs", "prometheus-agent", "monitoring"]
 ---
 
-Prometheus is an open-source monitoring and alerting system that is designed to collect and analyze metrics from various
+Prometheus is an open source monitoring and alerting system that is designed to collect and analyze metrics from various
 systems and services.
 
 Prometheus is built around a time-series database that stores metrics data. It uses a flexible querying language called

@@ -10,7 +10,7 @@ sidebar_custom_props:
 ---
 
 Palette uses [gRPC](https://grpc.io) to communicate between the management platform and the workload cluster. gRPC is a
-high-performance, open-source universal Remote Procedure Call (RPC) framework. It is used to build distributed
+high-performance, open source universal Remote Procedure Call (RPC) framework. It is used to build distributed
 applications and services. gRPC is based on HTTP/2 and uses protocol buffers ([protobuf](https://protobuf.dev/)) as the
 underlying data serialization framework.
 
@@ -67,7 +67,7 @@ to some vendors' documentation that addresses HTTP/2 and gRPC support.
 
 ## Squid Proxy With SSL Bump
 
-A common open-source proxy server is [Squid](https://wiki.squid-cache.org). Squid is a caching proxy for the Web
+A common open source proxy server is [Squid](https://wiki.squid-cache.org). Squid is a caching proxy for the Web
 supporting HTTP, HTTPS, FTP, and more. Squid supports gRPC but requires additional configuration. gRPC with SSL bump
 does not work with all versions of Squid, such as versions 5 and 6. Review the
 [SSL Bump issue](https://bugs.squid-cache.org/show_bug.cgi?id=5245) to learn more about the issue and track the progress
