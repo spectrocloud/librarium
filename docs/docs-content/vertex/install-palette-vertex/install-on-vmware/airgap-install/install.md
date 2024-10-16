@@ -16,8 +16,8 @@ assets.
 
 ## Prerequisites
 
-- You have completed the [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md) steps and
-  deployed the airgap support VM.
+- You have completed the [Environment Setup](./environment-setup/environment-setup.md) steps and deployed the airgap
+  support VM.
 
 - You can choose between two Operating Systems (OS) when installing Vertex. Review the requirements for each OS.
 

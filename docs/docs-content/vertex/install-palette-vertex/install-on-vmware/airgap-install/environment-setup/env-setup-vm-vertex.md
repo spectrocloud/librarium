@@ -13,7 +13,7 @@ This guide helps you prepare your VMware vSphere airgap environment for VerteX i
 Enterprise Linux (RHEL) VM.
 
 You will learn how to execute an appliance binary in your VM that installs the necessary tools to deploy an OCI registry
-for hosting VerteX images and also assists in starting the VerteX installation.
+for hosting VerteX images and assists in starting the VerteX installation.
 
 :::info
 
@@ -21,6 +21,10 @@ This guide is for preparing your airgap environment only. For instructions on in
 [Install VerteX](../install.md) guide.
 
 :::
+
+## Limitations
+
+- Currently, `9.4` is the only supported RHEL version.
 
 ## Prerequisites
 

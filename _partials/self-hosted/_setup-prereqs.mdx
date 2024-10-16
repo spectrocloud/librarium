@@ -5,7 +5,7 @@ partial_name: setup-prereqs
 
 - An RHEL airgap VM deployed in your VMware vSphere. The VM must be registered with
   [Red Hat](https://access.redhat.com/solutions/253273) and have ports `80` and `443` available. This guide uses RHEL
-  version `8.8` as an example.
+  version `9.4` as an example.
 
 - The RHEL VM must have a Fully Qualified Domain Name (FQDN) that is DNS resolvable and must be accessible via SSH.
 
@@ -36,5 +36,5 @@ partial_name: setup-prereqs
 - The following artifacts must be available in the root home directory of the RHEL airgap VM. You can download the files
   in a system with internet access and then transfer them to your airgap environment. Contact your {props.edition} support
   representative to obtain the latest version of each artifact.
-  - RHEL airgap appliance binary. This guide uses version `4.4.2` of the binary as an example.
-  - {props.edition} installation binary. This guide uses version `4.4.14` of the binary as an example.
+  - RHEL airgap appliance binary.
+  - {props.edition} installation binary.

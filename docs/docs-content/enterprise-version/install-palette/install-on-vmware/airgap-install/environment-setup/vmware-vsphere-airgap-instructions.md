@@ -354,7 +354,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 21. The output of the script contains credentials and values you will need when completing the installation with the
     Palette CLI. If you need to review this information in the future, invoke the script again.
 
-22. If you have used a release-specific installation OVA, skip this step. Otherwise, if you have use a generic
+22. If you have used a release-specific installation OVA, skip this step. Otherwise, if you have used a generic
     installation OVA, use the following command to execute the Palette airgap installation binary.
 
     ```shell

@@ -16,8 +16,8 @@ and assets.
 
 ## Prerequisites
 
-- You have completed the [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md) steps and
-  deployed the airgap support VM.
+- You have completed the [Environment Setup](./environment-setup/environment-setup.md) steps and deployed the airgap
+  support VM.
 
 - Review the required VMware vSphere [permissions](../vmware-system-requirements.md). Ensure you have created the proper
   custom roles and zone tags.

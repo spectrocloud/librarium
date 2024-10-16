@@ -101,6 +101,12 @@ partial_name: setup-steps
     set up the Harbor registry and push images.
 
     ```shell
+    chmod +x ./airgap-appliance-<version>-rhel-podman.bin && ./airgap-appliance-<version>-rhel-podman.bin
+    ```
+
+    Consider the following example for reference.
+
+    ```shell
     chmod +x ./airgap-appliance-v4.4.2-rhel-podman.bin && ./airgap-appliance-v4.4.2-rhel-podman.bin
     ```
 
@@ -130,16 +136,16 @@ partial_name: setup-steps
 
     <!-- prettier-ignore -->
     Your SSH connection will be terminated. Start a new SSH session and switch to `sudo` mode before proceeding. Use
-    the same commands from steps *5* and *6* of this guide.
+    the same commands from steps **5**, **6**, and **12** of this guide.
 
 15. Issue the following command to configure the Harbor registry. Replace `palette.example.com` with the FQDN of the
     RHEL airgap VM. The script will generate a self-signed certificate for the value you provide.
 
     ```shell
-    chmod +x ./airgap-appliance-v4.4.2-rhel-podman.bin && /bin/airgap-setup.sh palette.example.com
+    /bin/airgap-setup.sh palette.example.com
     ```
 
-    The script output will look similar to the example below. It contains the credentials and values you will need when
+    The script output should look similar to the example below. It contains the credentials and values you will need when
     completing the installation with the Palette CLI. If you need to review this information in the future, invoke the
     script again.
 
@@ -176,11 +182,11 @@ partial_name: setup-steps
     Password: **************
     ```
 
-16. (REVIEW) Update the SSL certificate file and key in the **httpd** service.
+16. Update the SSL certificate file and key in the **httpd** service.
 
     :::warning
 
-    You can skip this step if you plan to use the local Spectro Cloud Repository Location (SCAR) during the
+    You can skip this step if you do not plan to use the local Spectro Cloud Artifact Repository (SCAR) during the
     [{props.edition} installation](#next-steps) process.
 
     :::
@@ -199,7 +205,13 @@ partial_name: setup-steps
     systemctl restart httpd.service
     ```
 
-17. Execute the {props.edition} installation binary, which pushes {props.edition} images and packs to the Harbor registry.
+17. Execute the {props.edition} installation binary, which uploads release-specific {props.edition} images and packs to the Harbor registry.
+
+    ```shell
+    chmod +x airgap-<version>.bin && ./airgap-<version>.bin
+    ```
+    
+    Consider the following example for reference.
 
     ```shell
     chmod +x airgap-4-4-14.bin && ./airgap-4-4-14.bin
@@ -218,8 +230,14 @@ partial_name: setup-steps
     Setup Completed
     ```
 
-18. (REVIEW) Grant the Apache user and group access to the `/var/www/html` folder.
+18. Grant the Apache user and group the necessary permissions to serve the files in the `/var/www/html` directory.
 
     ```shell
     chown -R apache.apache /var/www/html
+    ```
+
+    Restart the HTTP server to apply the changes.
+
+    ```shell
+    systemctl restart httpd.service
     ```
