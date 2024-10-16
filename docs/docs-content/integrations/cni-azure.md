@@ -34,7 +34,7 @@ CNI:
 - **azure**: Azure's own implementation, called
   [Azure Network Policy](https://learn.microsoft.com/en-us/azure/virtual-network/kubernetes-network-policies).
 
-- **calico**: An open-source network and network security solution developed by [Tigera](https://www.tigera.io/).
+- **calico**: An open source network and network security solution developed by [Tigera](https://www.tigera.io/).
 
 - **none**: No network policy is applied. Use this option if you do not want to apply any network policy.
 

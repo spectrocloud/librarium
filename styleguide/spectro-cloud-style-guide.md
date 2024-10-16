@@ -487,7 +487,7 @@ Capitalize the first word and all proper nouns, such as product names. To learn 
 
 Don’t capitalize common nouns unless required.
 
-- Kubernetes is an open-source container orchestration platform.
+- Kubernetes is an open source container orchestration platform.
 
 - Kubectl allows you to connect to, configure and work with your clusters through the command line.
 
