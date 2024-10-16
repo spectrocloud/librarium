@@ -5,6 +5,7 @@ const fs = require("fs").promises;
 const path = require("path");
 const { formatDateCveDetails } = require("../helpers/date");
 const { escapeMDXSpecialChars } = require("../helpers/string");
+const { generateMarkdownTable } = require("../helpers/affected-table");
 
 async function getSecurityBulletins(payload) {
   try {
@@ -159,6 +160,16 @@ async function generateMarkdownForCVEs(GlobalCVEData) {
 function createCveMarkdown(item, location) {
   const lowerCaseCve = item.metadata.cve.toLowerCase();
   const upperCaseCve = item.metadata.cve.toUpperCase();
+  // console.log(item);
+  // console.log(item.spec.revision);
+
+  const impactedProducts = item.spec.impact.impactedProducts;
+  const impactedVersions = item.spec.impact.impactedVersions;
+
+  // Generate a table of impacted products
+
+  let productMap = { palette: "Palette", vertex: "VerteX" };
+  let table = generateMarkdownTable(impactedProducts, impactedVersions, productMap);
 
   const content = `---
 sidebar_label: "${upperCaseCve}"
@@ -174,11 +185,15 @@ tags: ["security", "cve"]
 
 [${upperCaseCve}](https://nvd.nist.gov/vuln/detail/${upperCaseCve})
 
+## Initial Publication
+
+${formatDateCveDetails(item.metadata.advCreatedTimestamp)}
+
 ## Last Update
 
-${formatDateCveDetails(item.metadata.cveLastModifiedTimestamp)}
+${formatDateCveDetails(item.metadata.advLastModifiedTimestamp)}
 
-## NIST Summary
+## NIST CVE Summary
 
 ${escapeMDXSpecialChars(item.metadata.summary)}
 
@@ -188,11 +203,20 @@ ${item.metadata.cvssScore}
 
 ## Our Official Summary
 
-${escapeMDXSpecialChars(item.spec.assessment.justification)}
+${item.spec.assessment.justification ? escapeMDXSpecialChars(item.spec.assessment.justification) : "Investigation is ongoing to determine how this vulnerability affects our products."}
 
 ## Status
 
 ${item.status.state}
+
+## Affected Products & Versions
+
+${table}
+
+
+## Revision History
+
+
 
 
 `;
