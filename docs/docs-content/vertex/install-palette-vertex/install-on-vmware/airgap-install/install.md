@@ -16,8 +16,8 @@ assets.
 
 ## Prerequisites
 
-- You have completed the [Environment Setup](./vmware-vsphere-airgap-instructions.md) steps and deployed the airgap
-  support VM.
+- You have completed the [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md) steps and
+  deployed the airgap support VM.
 
 - You can choose between two Operating Systems (OS) when installing Vertex. Review the requirements for each OS.
 
@@ -131,8 +131,8 @@ Use the following steps to install Palette VerteX.
     :::warning
 
     If you deployed the airgap support VM using a generic OVA, the Palette CLI may not be in the `usr/bin` path. Ensure
-    that you complete step **22** of the [Environment Setup](./vmware-vsphere-airgap-instructions.md) guide, which
-    installs the VerteX airgap binary and moves the Palette CLI to the correct path.
+    that you complete step **22** of the [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md)
+    guide, which installs the VerteX airgap binary and moves the Palette CLI to the correct path.
 
     :::
 
@@ -191,9 +191,10 @@ Use the following steps to install Palette VerteX.
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                          |
 
 11. Select the OCI registry type and provide the configuration values. Review the following table for more information.
-    If you are using the Palette CLI from inside an [airgap support VM](./vmware-vsphere-airgap-instructions.md), the
-    CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type
-    `y` to use the local resources and skip filling in the OCI registry URL and credentials.
+    If you are using the Palette CLI from inside an
+    [airgap support VM](./environment-setup/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect
+    the airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type `y` to use the local
+    resources and skip filling in the OCI registry URL and credentials.
 
     :::warning
 

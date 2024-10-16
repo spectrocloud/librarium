@@ -16,7 +16,7 @@ airgap support VM.
 
 This guide is for preparing your airgap environment only. For instructions on installing VerteX on VMware, check the
 [Install](../install.md) guide. A checklist of the steps you will complete to prepare your airgap environment for VerteX
-is available on the [Checklist](./checklist.md) page.
+is available on the [Checklist](../checklist.md) page.
 
 :::
 
@@ -388,8 +388,8 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
     Once the Palette VerteX airgap binary completes its tasks, you will receive a **Setup Completed** success message.
 
-23. Review the [Additional Packs](../../airgap/supplemental-packs.md) page and identify any additional packs you want to
-    add to your OCI registry. You can also add additional packs after the installation is complete.
+23. Review the [Additional Packs](../../../airgap/supplemental-packs.md) page and identify any additional packs you want
+    to add to your OCI registry. You can also add additional packs after the installation is complete.
 
 You have now completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to
 ensure the airgap setup process is completed successfully. After you validate the airgap setup process completion,
