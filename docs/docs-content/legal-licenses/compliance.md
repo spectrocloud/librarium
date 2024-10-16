@@ -3,7 +3,7 @@ sidebar_label: "Compliance"
 title: "Certification of Compliance"
 description: "Certification of Compliance"
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 0
 tags: ["compliance", "soc2", "fips"]
 ---
 

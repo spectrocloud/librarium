@@ -76,8 +76,16 @@ const redirects = [
     to: `/getting-started/`,
   },
   {
-    from: `/clusters/public-cloud/eks/`,
-    to: `/clusters/public-cloud/aws/eks/`,
+    from: `/getting-started/dashboard`,
+    to: `/introduction/dashboard`,
+  },
+  {
+    from: `/getting-started/cluster-profiles`,
+    to: `/getting-started/introduction`,
+  },
+  {
+    from: `/clusters/public-cloud/eks`,
+    to: `/clusters/public-cloud/aws/eks`,
   },
   {
     from: `/clusters/public-cloud/aks/`,
@@ -554,6 +562,10 @@ const redirects = [
     to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
   },
   {
+    from: "/legal-licenses/oss-licenses/",
+    to: "/legal-licenses/oss-licenses-index/",
+  },
+  {
     from: [
       "/integrations/antrea-cni",
       "/integrations/aws-autoscaler",
@@ -607,7 +619,6 @@ const redirects = [
       "/security-bulletins/reports/cve-2023-0286",
       "/security-bulletins/reports/cve-2023-52425",
       "/security-bulletins/reports/cve-2023-5528",
-      "/security-bulletins/reports/cve-2024-0743",
       "/security-bulletins/reports/prisma-2022-0227",
     ],
     to: "/security-bulletins/reports/",

@@ -157,9 +157,9 @@ issues or not being available. Use the following steps to troubleshoot and resol
 
 ## Scenario - systemd-resolved.service Enters Failed State
 
-When you create a cluster with an Edge host that operates the RHEL Operating System (OS), you may encounter an error
-where the `systemd-resolved.service` process enters the **failed** state. This prevents the nameserver from being
-configured, which will result in cluster deployment failure.
+When you create a cluster with an Edge host that operates the Red Hat Enterprise Linux (RHEL) and Ubuntu Operating
+Systems (OS), you may encounter an error where the `systemd-resolved.service` process enters the **failed** state. This
+prevents the nameserver from being configured, which will result in cluster deployment failure.
 
 ### Debug Steps
 
@@ -233,3 +233,35 @@ are no longer in use and can be erased internally. To enable TRIM operations, us
 
 7. Use the updated profile to create a [new Edge cluster](../clusters/edge/site-deployment/cluster-deployment.md) or
    update an existing Edge cluster.
+
+## Scenario - Clusters with Cilium and RKE2 Experiences Kubernetes Upgrade Failure
+
+When you upgrade your cluster from RKE2 1.29 to 1.30 and your cluster uses the Cilium CNI, the upgrade could fail with
+error messages similar to the following. This is due to an
+[upstream issue](https://github.com/rancher/rancher/issues/46726). You can fix this issue by adding a few annotations to
+the Cilium DaemonSet.
+
+### Debug Steps
+
+1. Connect to your cluster using kubectl. For more information, refer to
+   [Access Cluster with kubectl](../clusters/cluster-management/palette-webctl.md).
+
+2. Issue the following command from the terminal edit the Cilium DaemonSet.
+
+   ```bash
+   kubectl edit ds cilium --namespace kube-system
+   ```
+
+3. Under `metadata.annotations`, add the following annotations.
+
+   ```yaml
+   metadata:
+   annotations:
+     deprecated.daemonset.template.generation: "1"
+     meta.helm.sh/release-name: cilium-cilium
+     meta.helm.sh/release-namespace: kube-system
+     container.apparmor.security.beta.kubernetes.io/cilium-agent: "unconfined"
+     container.apparmor.security.beta.kubernetes.io/clean-cilium-state: "unconfined"
+     container.apparmor.security.beta.kubernetes.io/mount-cgroup: "unconfined"
+     container.apparmor.security.beta.kubernetes.io/apply-sysctl-overwrites: "unconfined"
+   ```
