@@ -91,13 +91,13 @@ partial_name: setup-steps
     success
     ```
 
-12. Set the `AIRGAP_BUILD` variable as `true`. This is required to execute the RHEL airgap appliance binary.
+12. Set the `AIRGAP_BUILD` variable as `true`. This is required for the RHEL airgap appliance binary.
 
     ```shell
     export AIRGAP_BUILD=true
     ```
 
-13. Execute the RHEL airgap appliance binary, which installs the tools and configures the manifests that are required to
+13. Start the RHEL airgap appliance binary, which installs the tools and configures the manifests that are required to
     set up the Harbor registry and push images.
 
     ```shell
@@ -205,7 +205,7 @@ partial_name: setup-steps
     systemctl restart httpd.service
     ```
 
-17. Execute the {props.edition} installation binary, which uploads release-specific {props.edition} images and packs to the Harbor registry.
+17. Start the {props.edition} installation binary, which uploads release-specific {props.edition} images and packs to the Harbor registry.
 
     ```shell
     chmod +x airgap-<version>.bin && ./airgap-<version>.bin

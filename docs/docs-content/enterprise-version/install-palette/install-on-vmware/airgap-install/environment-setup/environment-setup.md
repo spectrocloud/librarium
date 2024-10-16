@@ -9,8 +9,8 @@ tags: ["self-hosted", "enterprise", "airgap", "vmware", "vsphere"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-This section helps you prepare your VMware vSphere airgap environment for Palette installation. There are two ways to
-prepare your environment:
+This section helps you prepare your VMware vSphere airgap environment for Palette installation. You can choose between
+two methods to prepare your environment:
 
 1. If you have a Red Hat Enterprise Linux (RHEL) VM deployed in your environment, follow the
    [Environment Setup with an Existing RHEL VM](./env-setup-vm.md) guide to learn how to prepare this VM for Palette
