@@ -709,7 +709,7 @@ The path of the link should be the path of the destination file from the root di
 
 ## Palette/VerteX URLs
 
-A special component has been created to handle the generation of URLs for Palette and VertX. The component is called
+A special component has been created to handle the generation of URLs for Palette and VerteX. The component is called
 [PaletteVertexUrlMapper](./src/components/PaletteVertexUrlMapper/PaletteVertexUrlMapper.tsx). This component is intended
 for usage withing partials. You can use the component to change the base path of the URL to either Palette or VerteX.
 The component will automatically prefix the path to the URL. The component has the following props:
@@ -727,6 +727,27 @@ Below is an example of how to use the component:
     edition={props.edition}
     text="System Administrators"
     url="/system-management/account-management"
+  /> page to learn more about system administrator roles.
+```
+
+In cases where Palette and Vertex pages have different URLs beyond the base path, the component will accept the
+following props:
+
+- `edition` - The edition of the URL. This can be either `Palette` or `Vertex`. Internally, the component will use this
+  value to determine the base URL.
+- `text` - The text to display for the link.
+- `palettePath` - The Palette path to append to the base URL.
+- `vertexPath` - The VerteX path to append to the base URL.
+
+Below is an example of how to use the component when the URLs are different:
+
+```mdx
+- System administrator permissions, either a Root Administrator or Operations Administrator. Refer to the
+  <PaletteVertexUrlMapper
+    edition={props.edition}
+    text="System Administrators"
+    palettePath="/system-management/account-management"
+    vertexPath="/system-management-vertex/account-management"
   /> page to learn more about system administrator roles.
 ```
 
