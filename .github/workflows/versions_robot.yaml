@@ -1,4 +1,4 @@
-name: Robots.txt Check
+name: Versions Robot.txt Check
 
 on:
   pull_request:
