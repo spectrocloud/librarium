@@ -8,7 +8,7 @@ tags: ["edge"]
 ---
 
 Palette Edge supports all the cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/)
-both during installation and during cluster deployment. Kairos is an open-source project that is used to create
+both during installation and during cluster deployment. Kairos is an open source project that is used to create
 immutable images, Kairos is a container layer that enables you to specify dependencies and create resources before
 locking down the image.
 

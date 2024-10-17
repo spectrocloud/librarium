@@ -762,7 +762,7 @@ environment. Reach out to our support team if you need assistance.
 
     :::tip
 
-    For a more user-friendly experience, use the open-source tool [k9s](https://k9scli.io/) to monitor the installation
+    For a more user-friendly experience, use the open source tool [k9s](https://k9scli.io/) to monitor the installation
     process.
 
     :::

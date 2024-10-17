@@ -7,11 +7,11 @@ sidebar_position: 0
 tags: ["data center", "maas", "architecture"]
 ---
 
-Canonical MAAS is an open-source tool that lets you discover, commission, deploy and re-deploy operating systems to
+Canonical MAAS is an open source tool that lets you discover, commission, deploy and re-deploy operating systems to
 physical servers. The following are some architectural highlights of bare-metal Kubernetes clusters that Palette deploys
 using Canonical MAAS. Refer to the PCG deployment options section below to learn more about PCG deployment.
 
-- Palette integrates with MAAS through Spectro Cloud’s open-source Cloud Native Computing Foundation (CNCF)
+- Palette integrates with MAAS through Spectro Cloud’s open source Cloud Native Computing Foundation (CNCF)
   [Cluster API provider](https://github.com/spectrocloud/cluster-api-provider-maas). Refer to the table below
 
 - Palette provides a cloud-like experience for deploying clusters on bare metal servers. The result is increased
