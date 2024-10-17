@@ -11,7 +11,13 @@ interface ComponentProperties {
 
 export default function PaletteVertexUrlMapper(props: ComponentProperties) {
   const { edition, text, url, palettePath, vertexPath } = props;
-  const isPalette = edition?.toLowerCase() === "palette";
+  const normalizedEdition = edition?.toLowerCase();
+
+  if (normalizedEdition !== "palette" && normalizedEdition !== "vertex") {
+    throw new Error("Invalid edition. Please provide either 'palette' or 'vertex'.");
+  }
+
+  const isPalette = normalizedEdition === "palette";
   const baseUrl = isPalette ? "/enterprise-version" : "/vertex";
 
   const mappedUrl =
