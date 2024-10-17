@@ -3,6 +3,46 @@ partial_category: self-hosted
 partial_name: setup-steps
 ---
 
+## Prerequisites
+
+- An RHEL airgap VM deployed in your VMware vSphere. The VM must be registered with
+  [Red Hat](https://access.redhat.com/solutions/253273) and have ports `80` and `443` available. This guide uses RHEL
+  version `9.4` as an example.
+
+- The RHEL VM must have a Fully Qualified Domain Name (FQDN) that is DNS resolvable and must be accessible via SSH.
+
+- The RHEL VM must have Podman installed.
+
+- An HTTP file server installed within the RHEL VM to host the {props.edition} files. The file server must serve files from the
+  `/var/www/html` directory and have SSL support enabled. Below is a list of common file servers. This guide uses Apache
+  as an example.
+
+  - [Apache HTTP Server](https://httpd.apache.org/)
+
+  - [Nginx](https://www.nginx.com/)
+
+  - [Caddy](https://caddyserver.com/)
+
+  :::warning
+
+  Take the necessary steps to secure your file server and ensure it can automatically recover from failure. The file
+  server is a critical component of the airgap installation and must be available post-install for {props.edition} to function
+  properly.
+
+  :::
+
+- Review the required vSphere <VersionedLink text="permissions" url="/enterprise-version/install-palette/install-on-vmware/vmware-system-requirements/" /> and ensure you have
+  created the proper custom roles and zone tags. Zone tagging enables dynamic storage allocation across fault domains
+  when provisioning workloads that require persistent storage. Refer to <VersionedLink text="Zone Tagging" url="/enterprise-version/install-palette/install-on-vmware/vmware-system-requirements/" /> for information.
+
+- The following artifacts must be available in the root home directory of the RHEL airgap VM. You can download the files
+  in a system with internet access and then transfer them to your airgap environment. Contact your {props.edition} support
+  representative to obtain the latest version of each artifact.
+  - RHEL airgap appliance binary.
+  - {props.edition} installation binary.
+
+## Prepare for Airgap Installation
+
 1.  Log in to your vCenter environment.
 
 2.  Create a vSphere template folder named `spectro-templates`. Ensure you can access this folder with the user account
@@ -241,3 +281,92 @@ partial_name: setup-steps
     ```shell
     systemctl restart httpd.service
     ```
+
+## Validate
+
+1.  SSH into the RHEL airgap VM as a root user with the command below. Replace `/path/to/private_key` with the path to
+    the private SSH key, `docs` with the username, and `palette.example.com` with the FQDN of the RHEL airgap VM.
+
+    ```shell
+    ssh -i /path/to/private_key docs@palette.example.com
+    ```
+
+2.  Switch to the `root` user account.
+
+    ```shell
+    sudo --login
+    ```
+
+3.  Issue the following command to validate that you have successfully completed the airgap setup process. Replace
+    `palette.example.com` with the FQDN of the RHEL airgap VM.
+
+    ```shell
+    bin/airgap-setup.sh palette.example.com
+    ```
+
+    The output must include the registry location and credentials, which must be accessible from within your
+    environment.
+
+    ```shell hideClipboard
+    Setting up SSL Certs
+    /opt/spectro/functions.sh: line 118: /etc/nginx/.htpasswd: No such file or directory
+    chmod: cannot access '/etc/nginx/.htpasswd': No such file or directory
+    mkdir: cannot create directory ‘/etc/nginx/ssl’: No such file or directory
+    cp: target '/etc/nginx/ssl' is not a directory
+    Setting up Harbor
+    setenforce is /usr/sbin/setenforce
+    Setup Completed
+
+    Details:
+    -------
+    Spectro Cloud Repository
+    Location: https://palette.example.com:8443
+    UserName: spectro
+    Password: **************
+    CA certificate filepath: /opt/spectro/ssl/server.crt
+
+    Pack OCI Registry
+    Endpoint: https://palette.example.com
+    Base Content Path: spectro-packs
+    CA certificate Filepath: /opt/spectro/ssl/server.crt
+    Username: admin
+    Password: **************
+
+    Image OCI Registry
+    Endpoint: https://palette.example.comv
+    Base Content Path: spectro-images
+    CA certificate Filepath: /opt/spectro/ssl/server.crt
+    Username: admin
+    Password: **************
+    ```
+
+## Next Steps
+
+You are now ready to deploy {props.edition} in an airgapped environment with the Palette CLI. As a root user, issue the Palette CLI
+command below to start the installation.
+
+    ```shell
+    palette ec install
+    ```
+
+Complete all the Palette CLI steps outlined in the <VersionedLink text="Install" url="/enterprise-version/install-palette/install-on-vmware/airgap-install/install/" /> guide from the RHEL VM.
+
+:::info
+
+The table below maps the airgap script output values to their respective Palette CLI prompts and example values. The
+example values are for reference only.
+
+| Output Value                          | Palette CLI Prompt                   | Example Value                                          |
+| ------------------------------------- | ------------------------------------ | ------------------------------------------------------ |
+| **Spectro Cloud Repository Location** | **SCAR Location**                    | `https://palette.example.com:8443`                     |
+| **CA certificate filepath**           | **SCAR CA certificate filepath**     | `/opt/spectro/ssl/server.crt`                          |
+| **OCI Registry**                      | **Registry Type**                    | `OCI`                                                  |
+| **Pack OCI Registry**                 | **Registry Endpoint**                | `https://palette.example.com`                          |
+| **CA certificate Filepath**           | **Registry CA certificate filepath** | `/opt/spectro/ssl/server.crt`                          |
+| **Image OCI Registry**                | **Registry Endpoint**                | `https://palette.example.com`                          |
+| **CA certificate Filepath**           | **Registry CA certificate filepath** | `/opt/spectro/ssl/server.crt`                          |
+
+When prompted for **Allow Insecure Connection (Bypass x509 Verification)?**, enter `n` to continue and specify the
+server certificate file path from the script output.
+
+:::

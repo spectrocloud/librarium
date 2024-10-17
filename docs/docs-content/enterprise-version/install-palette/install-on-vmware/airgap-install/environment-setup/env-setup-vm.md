@@ -26,18 +26,6 @@ This guide is for preparing your airgap environment only. For instructions on in
 
 - Currently, `9.4` is the only supported RHEL version.
 
-## Prerequisites
-
-<PartialsComponent category="self-hosted" name="setup-prereqs" edition="Palette" />
-
-## Prepare for Airgap Installation
+import SetupSteps from "../../../../../../../_partials/self-hosted/_setup-steps.mdx";
 
 <PartialsComponent category="self-hosted" name="setup-steps" edition="Palette" />
-
-## Validate
-
-<PartialsComponent category="self-hosted" name="setup-validate" edition="Palette" />
-
-## Next Steps
-
-<PartialsComponent category="self-hosted" name="setup-next-steps" edition="Palette" />
