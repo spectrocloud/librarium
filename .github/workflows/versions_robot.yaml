@@ -66,13 +66,21 @@ jobs:
       - name: Check if robots.txt exists and create if missing
         shell: bash
         run: |
-          if [ ! -f "static/robots.txt" ]; then
-            echo "Does not Exist"
-            echo "User-agent: *" > static/robots.txt
-            echo "Disallow: /" >> static/robots.txt
-          else
-            echo "Robots.txt file exists"
-          fi
+            if [ ! -f "static/robots.txt" ]; then
+              echo "Does not Exist"
+              echo "User-agent: *" > static/robots.txt
+              echo "Disallow: /" >> static/robots.txt
+            else
+              echo "Robots.txt file exists"
+              if ! grep -Fxq "User-agent: *" static/robots.txt || ! grep -Fxq "Disallow: /" static/robots.txt; then
+                echo "Robots.txt file does not have the expected content. Updating..."
+                echo "User-agent: *" > static/robots.txt
+                echo "Disallow: /" >> static/robots.txt
+              else
+                echo "Robots.txt file has the expected content."
+              fi
+            fi
+            
       - name: Ensure noIndex is set
         id: check_noindex
         run: node scripts/noindex_docusaurus_config.js $RUNNER_TEMP $PWD && mv $RUNNER_TEMP/temp.docusaurus.config.js $PWD/docusaurus.config.js
