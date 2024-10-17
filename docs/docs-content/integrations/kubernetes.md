@@ -402,14 +402,23 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 ![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.webp)
 
-### Custom MAAS Endpoint
+### Custom API server endpoint for MAAS clusters
 
-You can specify a custom MAAS endpoint and port that instructs Palette to direct all MAAS API requests to the provided
-endpoint URL. Use the `cloud.maas.customEndpoint` and `cloud.maas.customEndpointPort` parameters to specify the custom
-MAAS API URL and port. This is useful in scenarios where the MAAS API endpoint is not resolvable outside of the MAAS
-network.
+By default, Palette will register a DNS record in MAAS for the deployed cluster, linking it to the IP address(es) of the control plane node(s) of the cluster. However you may not want to depend on MAAS for your cluster DNS record. The Kubernetes pack provides an option to configure a custom API server endpoint for your cluster instead. This feature is only supported in Palette eXtended Kubernetes (PXK).
 
-The following example shows how to specify a custom MAAS endpoint and port in the Kubernetes YAML file. Make sure the
+When you configure this option, a DNS record will not be created in MAAS and the configured endpoint will be used instead. If you use this option, you are responsible for:
+* Ensuring the endpoint FQDN can be resolved by your DNS infrastructure
+* Ensuring the endpoint connects to the API server port on your control plane node(s), by either:
+  * pointing directly to the IP address(es) of your control plane node(s), or
+  * pointing to a load balancer that balances traffic to your control plane node(s)
+
+:::warning
+
+This endpoint must exist before the cluster gets deployed, otherwise deployment will fail as components will not be able to connect to the cluster API endpoint.
+
+:::
+
+The following example shows how to specify a custom API server endpoint in the Kubernetes pack. Make sure the
 `cloud.maas` section is at the same level as the `pack` section.
 
 ```yaml hideClipboard {10-14}
@@ -417,16 +426,28 @@ pack:
   k8sHardening: True
   podCIDR: "192.168.0.0/16"
   serviceClusterIpRange: "10.96.0.0/12"
-  palette:
-    config:
-      dashboard:
-        identityProvider: palette
 
 cloud:
   maas:
-    customEndpoint: "maas-api.example.maas.org"
+    customEndpoint: "cluster-123.baremetal.company.com"
     customEndpointPort: "6443"
 ```
+
+In order to prevent needing per-cluster profile adjustments (which can become difficult to deal with at scale), it is recommend to use a system macro to automatically populate the cluster name:
+
+```yaml hideClipboard {10-14}
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+
+cloud:
+  maas:
+    customEndpoint: "{{ .spectro.system.cluster.name }}.baremetal.company.com"
+    customEndpointPort: "6443"
+```
+
+That way the profile can dynamically populate the endpoint name, without requiring the user to do it manually.
 
 </TabItem>
 
@@ -735,14 +756,23 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 ![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.webp)
 
-### Custom MAAS Endpoint
+### Custom API server endpoint for MAAS clusters
 
-You can specify a custom MAAS endpoint and port that instructs Palette to direct all MAAS API requests to the provided
-endpoint URL. Use the `cloud.maas.customEndpoint` and `cloud.maas.customEndpointPort` parameters to specify the custom
-MAAS API URL and port. This is useful in scenarios where the MAAS API endpoint is not resolvable outside of the MAAS
-network.
+By default, Palette will register a DNS record in MAAS for the deployed cluster, linking it to the IP address(es) of the control plane node(s) of the cluster. However you may not want to depend on MAAS for your cluster DNS record. The Kubernetes pack provides an option to configure a custom API server endpoint for your cluster instead. This feature is only supported in Palette eXtended Kubernetes (PXK).
 
-The following example shows how to specify a custom MAAS endpoint and port in the Kubernetes YAML file. Make sure the
+When you configure this option, a DNS record will not be created in MAAS and the configured endpoint will be used instead. If you use this option, you are responsible for:
+* Ensuring the endpoint FQDN can be resolved by your DNS infrastructure
+* Ensuring the endpoint connects to the API server port on your control plane node(s), by either:
+  * pointing directly to the IP address(es) of your control plane node(s), or
+  * pointing to a load balancer that balances traffic to your control plane node(s)
+
+:::warning
+
+This endpoint must exist before the cluster gets deployed, otherwise deployment will fail as components will not be able to connect to the cluster API endpoint.
+
+:::
+
+The following example shows how to specify a custom API server endpoint in the Kubernetes pack. Make sure the
 `cloud.maas` section is at the same level as the `pack` section.
 
 ```yaml hideClipboard {10-14}
@@ -750,16 +780,28 @@ pack:
   k8sHardening: True
   podCIDR: "192.168.0.0/16"
   serviceClusterIpRange: "10.96.0.0/12"
-  palette:
-    config:
-      dashboard:
-        identityProvider: palette
 
 cloud:
   maas:
-    customEndpoint: "maas-api.example.maas.org"
+    customEndpoint: "cluster-123.baremetal.company.com"
     customEndpointPort: "6443"
 ```
+
+In order to prevent needing per-cluster profile adjustments (which can become difficult to deal with at scale), it is recommend to use a system macro to automatically populate the cluster name:
+
+```yaml hideClipboard {10-14}
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+
+cloud:
+  maas:
+    customEndpoint: "{{ .spectro.system.cluster.name }}.baremetal.company.com"
+    customEndpointPort: "6443"
+```
+
+That way the profile can dynamically populate the endpoint name, without requiring the user to do it manually.
 
 </TabItem>
 
