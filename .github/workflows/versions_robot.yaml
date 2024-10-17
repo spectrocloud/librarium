@@ -67,7 +67,7 @@ jobs:
         shell: bash
         run: |
             if [ ! -f "static/robots.txt" ]; then
-              echo "Does not Exist"
+              echo "Does not Exist. Creating file with expected content..."
               echo "User-agent: *" > static/robots.txt
               echo "Disallow: /" >> static/robots.txt
             else
