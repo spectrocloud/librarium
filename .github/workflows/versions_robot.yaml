@@ -22,6 +22,7 @@ env:
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
   ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
   PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
+  GITHUB_BRANCH: ${{ github.ref_name }} 
 
 jobs:
   run-ci:
@@ -45,6 +46,15 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Determine branch name
+        id: extract_branch
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "GITHUB_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
+          else
+            echo "GITHUB_BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV
+          fi
+
       - name: Check if robots.txt exists and create if missing
         shell: bash
         run: |
@@ -55,4 +65,29 @@ jobs:
           else
             echo "Robots.txt file exists"
           fi
-      
+
+      - name: Commit Changes
+        id: commit
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          file_pattern: '*.txt **.txt **/*.txt'
+          disable_globbing: true
+          commit_message: "ci: adding missing robots.txt"
+
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: ' The PR for version branch ${{env.GITHUB_BRANCH}} failed when attempting add a robot.txt file. Review the GitHub Actions logs for more details.'
+        
+      - name: Post Netlify progress
+        if: ${{ steps.commit.conclusion == 'success' }}
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+              🤖 A robot.txt file was auto-generated and commited to the branch. All version braches require a robot.txt file.
+          refresh-message-position: false
+          
