@@ -404,17 +404,23 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 ### Custom API server endpoint for MAAS clusters
 
-By default, Palette will register a DNS record in MAAS for the deployed cluster, linking it to the IP address(es) of the control plane node(s) of the cluster. However you may not want to depend on MAAS for your cluster DNS record. The Kubernetes pack provides an option to configure a custom API server endpoint for your cluster instead. This feature is only supported in Palette eXtended Kubernetes (PXK).
+By default, Palette will register a DNS record in MAAS for the deployed cluster, linking it to the IP address(es) of the
+control plane node(s) of the cluster. However you may not want to depend on MAAS for your cluster DNS record. The
+Kubernetes pack provides an option to configure a custom API server endpoint for your cluster instead. This feature is
+only supported in Palette eXtended Kubernetes (PXK).
 
-When you configure this option, a DNS record will not be created in MAAS and the configured endpoint will be used instead. If you use this option, you are responsible for:
-* Ensuring the endpoint FQDN can be resolved by your DNS infrastructure
-* Ensuring the endpoint connects to the API server port on your control plane node(s), by either:
-  * pointing directly to the IP address(es) of your control plane node(s), or
-  * pointing to a load balancer that balances traffic to your control plane node(s)
+When you configure this option, a DNS record will not be created in MAAS and the configured endpoint will be used
+instead. If you use this option, you are responsible for:
+
+- Ensuring the endpoint FQDN can be resolved by your DNS infrastructure
+- Ensuring the endpoint connects to the API server port on your control plane node(s), by either:
+  - pointing directly to the IP address(es) of your control plane node(s), or
+  - pointing to a load balancer that balances traffic to your control plane node(s)
 
 :::warning
 
-This endpoint must exist before the cluster gets deployed, otherwise deployment will fail as components will not be able to connect to the cluster API endpoint.
+This endpoint must exist before the cluster gets deployed, otherwise deployment will fail as components will not be able
+to connect to the cluster API endpoint.
 
 :::
 
@@ -433,7 +439,8 @@ cloud:
     customEndpointPort: "6443"
 ```
 
-In order to prevent needing per-cluster profile adjustments (which can become difficult to deal with at scale), it is recommend to use a system macro to automatically populate the cluster name:
+In order to prevent needing per-cluster profile adjustments (which can become difficult to deal with at scale), it is
+recommend to use a system macro to automatically populate the cluster name:
 
 ```yaml hideClipboard {10-14}
 pack:
@@ -758,17 +765,23 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 ### Custom API server endpoint for MAAS clusters
 
-By default, Palette will register a DNS record in MAAS for the deployed cluster, linking it to the IP address(es) of the control plane node(s) of the cluster. However you may not want to depend on MAAS for your cluster DNS record. The Kubernetes pack provides an option to configure a custom API server endpoint for your cluster instead. This feature is only supported in Palette eXtended Kubernetes (PXK).
+By default, Palette will register a DNS record in MAAS for the deployed cluster, linking it to the IP address(es) of the
+control plane node(s) of the cluster. However you may not want to depend on MAAS for your cluster DNS record. The
+Kubernetes pack provides an option to configure a custom API server endpoint for your cluster instead. This feature is
+only supported in Palette eXtended Kubernetes (PXK).
 
-When you configure this option, a DNS record will not be created in MAAS and the configured endpoint will be used instead. If you use this option, you are responsible for:
-* Ensuring the endpoint FQDN can be resolved by your DNS infrastructure
-* Ensuring the endpoint connects to the API server port on your control plane node(s), by either:
-  * pointing directly to the IP address(es) of your control plane node(s), or
-  * pointing to a load balancer that balances traffic to your control plane node(s)
+When you configure this option, a DNS record will not be created in MAAS and the configured endpoint will be used
+instead. If you use this option, you are responsible for:
+
+- Ensuring the endpoint FQDN can be resolved by your DNS infrastructure
+- Ensuring the endpoint connects to the API server port on your control plane node(s), by either:
+  - pointing directly to the IP address(es) of your control plane node(s), or
+  - pointing to a load balancer that balances traffic to your control plane node(s)
 
 :::warning
 
-This endpoint must exist before the cluster gets deployed, otherwise deployment will fail as components will not be able to connect to the cluster API endpoint.
+This endpoint must exist before the cluster gets deployed, otherwise deployment will fail as components will not be able
+to connect to the cluster API endpoint.
 
 :::
 
@@ -787,7 +800,8 @@ cloud:
     customEndpointPort: "6443"
 ```
 
-In order to prevent needing per-cluster profile adjustments (which can become difficult to deal with at scale), it is recommend to use a system macro to automatically populate the cluster name:
+In order to prevent needing per-cluster profile adjustments (which can become difficult to deal with at scale), it is
+recommend to use a system macro to automatically populate the cluster name:
 
 ```yaml hideClipboard {10-14}
 pack:
