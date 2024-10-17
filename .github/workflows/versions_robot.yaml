@@ -3,7 +3,7 @@ name: Versions Robot.txt Check
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-    branches: ["version-*"]
+    branches: ["version-*", "backport/version-*"]
 
 
 concurrency:
