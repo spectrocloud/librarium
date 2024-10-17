@@ -46,6 +46,14 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - run: npm ci
+
       - name: Determine branch name
         id: extract_branch
         run: |
@@ -65,29 +73,33 @@ jobs:
           else
             echo "Robots.txt file exists"
           fi
+      - name: Ensure noIndex is set
+        id: check_noindex
+        run: node scripts/noindex_docusaurus_config.js $RUNNER_TEMP $PWD && mv $RUNNER_TEMP/temp.docusaurus.config.js $PWD/docusaurus.config.js
 
       - name: Commit Changes
         id: commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          file_pattern: '*.txt **.txt **/*.txt'
+          file_pattern: '*.js *.txt **.txt **.js **/*.txt **/*.js'
           disable_globbing: true
-          commit_message: "ci: adding missing robots.txt"
+          commit_message: "ci: adding missing robots.txt or updating noindex in docusaurus.config.js"
 
       - name: Slack Notification
+        if: ${{ failure() }}
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
           SLACK_ICON_EMOJI: ":robot_panic:"
           SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: ' The PR for version branch ${{env.GITHUB_BRANCH}} failed when attempting add a robot.txt file. Review the GitHub Actions logs for more details.'
+          SLACK_MESSAGE: ' The PR for version branch ${{env.GITHUB_BRANCH}} failed when attempting add a robot.txt file or update the docusaurus.config.js. Review the GitHub Actions logs for more details.'
         
       - name: Post Netlify progress
-        if: ${{ steps.commit.conclusion == 'success' }}
+        if: ${{ steps.commit.conclusion == 'success' && steps.commit.outputs.changes_detected == 'true' }}
         uses: mshick/add-pr-comment@v2
         with:
           message: |
-              🤖 A robot.txt file was auto-generated and commited to the branch. All version braches require a robot.txt file.
+              🤖 A robot.txt file was auto-generated or the docusaurus.config.js was updated and commited to the branch. All version braches require a robot.txt file.
           refresh-message-position: false
           
