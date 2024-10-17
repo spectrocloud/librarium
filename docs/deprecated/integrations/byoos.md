@@ -18,7 +18,7 @@ needs.
 
 Using your custom OS provides several benefits, including the ability to control your own dependencies, improve
 performance, and ensure compatibility with your existing applications. With BYOOS, you can choose the OS that best fits
-your needs, whether it's a commercial or open-source distribution, and integrate it with your Kubernetes clusters. The
+your needs, whether it's a commercial or open source distribution, and integrate it with your Kubernetes clusters. The
 BYOOS pack can be used with both Edge and non-Edge environments.
 
 ## Versions Supported
