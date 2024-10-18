@@ -39,7 +39,7 @@ partial_name: setup-steps
   in a system with internet access and then transfer them to your airgap environment. Contact your {props.edition} support
   representative to obtain the latest version of each artifact.
   - RHEL airgap appliance binary.
-  - {props.edition} installation binary.
+  - {props.edition} airgap installation binary.
 
 ## Prepare for Airgap Installation
 
@@ -54,12 +54,25 @@ partial_name: setup-steps
     distribution OVA required for the {props.edition} nodes creation. Contact your {props.edition} support representative to learn if
     the version of {props.edition} you are using requires a new OS and Kubernetes OVA.
 
+    <Tabs>
+    <TabItem value="non-fips" label="Non-FIPS">
+
     ```url
-    https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-1282-0.ova
+    https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-1294-0.ova
     ```
 
+    </TabItem>
+    <TabItem value="fips" label="FIPS">
+
+    ```url
+    https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1294-fips.ova
+    ```
+
+    </TabItem>
+    </Tabs>
+
     Place the OVA in the **spectro-templates** folder. Append the `r_` prefix, and remove the `.ova` suffix when
-    assigning its name and target location. For example, the final output should look like `r_u-2204-0-k-1282-0`. This
+    assigning its name and target location. For example, the final output should look like `r_u-2204-0-k-1294-0`. This
     naming convention is required for the installation process to identify the OVA. Refer to the
     <VersionedLink text="Additional Packs" url="/enterprise-version/install-palette/airgap/supplemental-packs/" /> page for a list of additional OS and
     Kubernetes OVAs.
@@ -138,7 +151,7 @@ partial_name: setup-steps
     ```
 
 13. Start the RHEL airgap appliance binary, which installs the tools and configures the manifests that are required to
-    set up the Harbor registry and push images.
+    set up the Harbor registry and push images. Replace `<version>` with the version of the binary received from the support team.
 
     ```shell
     chmod +x ./airgap-appliance-<version>-rhel-podman.bin && ./airgap-appliance-<version>-rhel-podman.bin
@@ -175,10 +188,15 @@ partial_name: setup-steps
     ```
 
     <!-- prettier-ignore -->
-    Your SSH connection will be terminated. Start a new SSH session and switch to `sudo` mode before proceeding. Use
-    the same commands from steps **5**, **6**, and **12** of this guide.
+    Your SSH connection will be terminated. 
+    
+15. Start a new SSH session and switch to `sudo` mode before proceeding.
 
-15. Issue the following command to configure the Harbor registry. Replace `palette.example.com` with the FQDN of the
+    ```shell
+    sudo --login
+    ```
+
+16. Issue the following command to configure the Harbor registry. Replace `palette.example.com` with the FQDN of the
     RHEL airgap VM. The script will generate a self-signed certificate for the value you provide.
 
     ```shell
@@ -222,7 +240,7 @@ partial_name: setup-steps
     Password: **************
     ```
 
-16. Update the SSL certificate file and key in the **httpd** service.
+17. Update the SSL certificate file and key in the **httpd** service.
 
     :::warning
 
@@ -245,7 +263,7 @@ partial_name: setup-steps
     systemctl restart httpd.service
     ```
 
-17. Start the {props.edition} installation binary, which uploads release-specific {props.edition} images and packs to the Harbor registry.
+18. Start the {props.edition} installation binary, which uploads release-specific {props.edition} images and packs to the Harbor registry. Replace `<version>` with the version of the binary received from the support team.
 
     ```shell
     chmod +x airgap-<version>.bin && ./airgap-<version>.bin
@@ -270,7 +288,7 @@ partial_name: setup-steps
     Setup Completed
     ```
 
-18. Grant the Apache user and group the necessary permissions to serve the files in the `/var/www/html` directory.
+19. Grant the Apache user and group the necessary permissions to serve the files in the `/var/www/html` directory.
 
     ```shell
     chown -R apache.apache /var/www/html
@@ -281,6 +299,34 @@ partial_name: setup-steps
     ```shell
     systemctl restart httpd.service
     ```
+
+20. Review the <PaletteVertexUrlMapper edition={props.edition} text="Additional Packs" palettePath="/install-palette/airgap/supplemental-packs/" vertexPath="/install-palette-vertex/airgap/supplemental-packs/" /> page and identify any additional packs you want
+    to add to your registry. You can also add additional packs after the installation is complete.
+
+You have now completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to
+ensure the airgap setup process is completed successfully. After you validate the airgap setup process,
+review the [Next Steps](#next-steps).
+
+:::warning
+
+Do not power off the RHEL VM. The RHEL VM is required for {props.edition} to function properly and must
+remain available at all times. If for some reason the VM is powered off, power the VM back on and restart
+the required services.
+
+Switch to `sudo` mode and restart the file server.
+
+```shell
+sudo --login
+systemctl restart httpd
+```
+
+Next, navigate to the **/opt/spectro/harbor** directory and issue the following command to restart the registry.
+
+```shell
+docker compose up --detach
+```
+
+:::
 
 ## Validate
 
@@ -353,7 +399,7 @@ Complete all the Palette CLI steps outlined in the <VersionedLink text="Install"
 
 :::info
 
-The table below maps the airgap script output values to their respective Palette CLI prompts and example values. The
+The following table maps the airgap script output values to their respective Palette CLI prompts and example values. The
 example values are for reference only.
 
 | Output Value                          | Palette CLI Prompt                   | Example Value                                          |

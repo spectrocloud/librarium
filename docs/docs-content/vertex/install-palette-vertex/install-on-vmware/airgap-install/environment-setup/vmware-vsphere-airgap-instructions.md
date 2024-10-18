@@ -89,14 +89,28 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 4.  In the **Deploy OVF Template** wizard, enter the following URL to import the Operating System (OS) and Kubernetes
     distribution OVA required for the installation.
 
-    Consider the following example for reference.
+        Consider the following example for reference.
 
-    ```url
-     https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12711-0.ova
-    ```
+        <!-- prettier-ignore -->
+        <Tabs>
+        <TabItem value="non-fips" label="Non-FIPS">
+
+        ```url
+        https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-1294-0.ova
+        ```
+        <!-- prettier-ignore -->
+        </TabItem>
+        <TabItem value="fips" label="FIPS">
+
+        ```url
+        https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1294-fips.ova
+        ```
+        <!-- prettier-ignore -->
+        </TabItem>
+        </Tabs>
 
     Place the OVA in the **spectro-templates** folder. Append the `r_` prefix, and remove the `.ova` suffix when
-    assigning its name and target location. For example, the final output should look like `r_u-2204-0-k-12711-0`. This
+    assigning its name and target location. For example, the final output should look like `r_u-2204-0-k-1294-0`. This
     naming convention is required for the installation process to identify the OVA. Refer to the
     [Supplement Packs](../../../airgap/supplemental-packs.md) page for a list of additional OS OVAs.
 
