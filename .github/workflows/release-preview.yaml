@@ -42,6 +42,20 @@ jobs:
 
       - run: npm ci
 
+
+      - name: Make Robots.txt
+        run: |
+          touch static/robots.txt
+          echo "User-agent: *" >> robots.txt
+          echo "Disallow: /" >> robots.txt
+          excho "Sitemap: https://docs-latest.spectrocloud.com/sitemap.xml" >> robots.txt
+        
+
+      - name: Ensure noIndex is set
+        id: check_noindex
+        run: node scripts/noindex_docusaurus_config.js $RUNNER_TEMP $PWD && mv $RUNNER_TEMP/temp.docusaurus.config.js $PWD/docusaurus.config.j
+          
+
       - name: Build
         run: |
           touch .env
