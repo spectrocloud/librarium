@@ -176,7 +176,87 @@ environment. Reach out to our support team if you need assistance.
       mirrorRegistries: "docker.io::my-oci-registry.com/spectro-images,gcr.io::my-oci-registry.com/spectro-images,ghcr.io::my-oci-registry.com/spectro-images,k8s.gcr.io::my-oci-registry.com/spectro-images,registry.k8s.io::my-oci-registry.com/spectro-images,quay.io::my-oci-registry.com/spectro-images"
     ```
 
-7.  Go ahead and install the image-swap chart using the following command. Point to the **values.yaml** file you
+7.  Create an empty YAML file with the name **registry-secret.yaml**. Use the following command to create the file.
+
+    ```shell
+    touch registry-secret.yaml
+    ```
+
+8.  Open the **registry-secret.yaml** file and copy the placeholder configuration below.
+
+    ```yaml
+     ---
+     apiVersion: v1
+     stringData:
+       DOMAIN: "REPLACE_WITH_CUSTOM_REGISTRY_DOMAIN"
+       BASE_PATH: "REPLACE_WITH_CUSTOM_REGISTRY_BASE_PATH"
+       USERNAME: "REPLACE_WITH_CUSTOM_REGISTRY_USERNAME"
+       PASSWORD: "REPLACE_WITH_CUSTOM_REGISTRY_PASSWORD"
+       INSECURE: "false"
+       CA_CERT: "REPLACE_WITH_CUSTOM_REGISTRY_CA_CERT"
+       MIRROR_REGISTRIES: REPLACE_WITH_CUSTOM_REGISTRY_MIRROR_REGISTRIES
+     kind: Secret
+     metadata:
+       name: registry-info
+       namespace: jet-system
+     type: Opaque
+     ---
+    ```
+
+    :::warning
+
+    Do not change the `kind`, `metadata` and `type` fields in the YAML file. Only replace the placeholder values with
+    the actual values for your custom image registry as indicated in the table below.
+
+    :::
+
+9.  Replace the placeholder values with the actual values for your custom image registry. Use the same values that you
+    used in the `ociImageRegistry` section of the **values.yaml** file for the image-swap Helm chart. Refer to the table
+    below for a description of each parameter.
+
+    | Parameter           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Required |
+    | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
+    | `DOMAIN`            | The domain of the custom image registry.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Yes      |
+    | `BASE_PATH`         | The base path to the custom image registry.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Yes      |
+    | `USERNAME`          | The username to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                                                                                                                                                                                                                                                                                                                                           | No       |
+    | `PASSWORD`          | The password to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                                                                                                                                                                                                                                                                                                                                           | No       |
+    | `INSECURE`          | Set to `true` if the custom image registry uses an insecure connection or a self-signed certificate. Set to `false` if the custom image registry uses a secure connection.                                                                                                                                                                                                                                                                                                                                                                                                           | Yes      |
+    | `CA_CERT`           | The Certificate Authority of the custom image registry in the PEM format. This is required if the custom image registry uses a self-signed certificate.                                                                                                                                                                                                                                                                                                                                                                                                                                      | No       |
+    | `MIRROR_REGISTRIES` | A comma-separated list of mirror registries in the [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images` | Yes      |
+
+       <details>
+       <!-- prettier-ignore -->
+       <summary>Click here for a complete example configuration.</summary>
+
+    ```yaml
+    ---
+    apiVersion: v1
+    stringData:
+      DOMAIN: "harbor.example.org"
+      BASE_PATH: "airgap-images"
+      USERNAME: ""
+      PASSWORD: ""
+      INSECURE: "false"
+      CA_CERT: ""
+      MIRROR_REGISTRIES: docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images
+    kind: Secret
+    metadata:
+      name: registry-info
+      namespace: jet-system
+    type: Opaque
+    ---
+    ```
+
+       </details>
+
+10. Once you have created the YAML file and configured the parameter values, issue the following command to create the
+    Kubernetes secret containing the image registry configuration.
+
+    ```shell
+    kubectl create --filename registry-secret.yaml
+    ```
+
+Install the image-swap chart using the following command. Point to the **values.yaml** file you
     configured in steps five through six.
 
     ```shell
@@ -201,7 +281,7 @@ environment. Reach out to our support team if you need assistance.
 
     :::
 
-8.  Open the **values.yaml** file in the **spectro-mgmt-plane** folder with a text editor of your choice. The
+12. Open the **values.yaml** file in the **spectro-mgmt-plane** folder with a text editor of your choice. The
     **values.yaml** file contains the default values for the Palette installation parameters. However, you must populate
     the following parameters before installing Palette. You can learn more about the parameters on the **values.yaml**
     file on the [Helm Configuration Reference](../palette-helm-ref.md) page.
@@ -704,7 +784,7 @@ environment. Reach out to our support team if you need assistance.
 
     :::
 
-9.  This step is only required if you are installing Palette in an environment where a network proxy must be configured
+13. This step is only required if you are installing Palette in an environment where a network proxy must be configured
     for Palette to access the internet. If you are not using a network proxy, skip to the next step.
 
     Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in step
@@ -725,7 +805,7 @@ environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-10. Install the Palette Helm Chart using the following command.
+14. Install the Palette Helm Chart using the following command.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -742,7 +822,7 @@ environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-11. Track the installation process using the command below. Palette is ready when the deployments in the namespaces
+15. Track the installation process using the command below. Palette is ready when the deployments in the namespaces
     `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system`, and `ui-system` reach the _Ready_ state. The
     installation takes two to three minutes to complete.
 
@@ -757,7 +837,7 @@ environment. Reach out to our support team if you need assistance.
 
     :::
 
-12. Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
+16. Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
     following command to retrieve the load balancer IP address. You may require the assistance of your network
     administrator to create the DNS record.
 
@@ -775,7 +855,7 @@ environment. Reach out to our support team if you need assistance.
 
     :::
 
-13. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
+17. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
     system console, open a web browser, paste the custom domain URL in the address bar, and append the value `/system`.
 
     The first time you visit the Palette system console, a warning message about a not-trusted SSL certificate may
@@ -784,7 +864,7 @@ environment. Reach out to our support team if you need assistance.
 
     ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
-14. Log in to the system console using the following default credentials. Refer to the
+18. Log in to the system console using the following default credentials. Refer to the
     [password requirements](../../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about password requirements.
 
@@ -799,7 +879,7 @@ environment. Reach out to our support team if you need assistance.
     Refer to the [Account Management](../../../system-management/account-management/account-management.md) documentation
     page for more information.
 
-15. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
+19. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate, you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
     [Configure HTTPS Encryption](../../../system-management/ssl-certificate-management.md) page for instructions on how
