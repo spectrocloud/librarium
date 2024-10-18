@@ -395,14 +395,14 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
             <TabItem value="Docker" label="Docker">
 
              ```bash
-             BUILD_ID_CAPI=$(docker run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0)
+             BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach gcr.io/spectro-images-public/imagebuilder/capi-builder:v4.4.4)
              ```
             </TabItem>
 
             <TabItem value="Podman" label="Podman">
 
              ```bash
-             BUILD_ID_CAPI=$(podman run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0)
+             BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach gcr.io/spectro-images-public/imagebuilder/capi-builder:v4.4.4)
              ```
 
             </TabItem>
