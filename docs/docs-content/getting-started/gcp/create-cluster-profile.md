@@ -26,10 +26,9 @@ learn about in the Getting Started section are centered around a fictional case 
 
 - Follow the steps described in the [Set up Palette with GCP](./setup.md) guide to authenticate Palette for use with
   your GCP cloud account.
-- Ensure that the [Palette Community Registry](../../registries-and-packs/registries-and-packs.md#default-registry)
-  is available in your Palette environment. Refer to the
-  [Add OCI Packs Registry](../../registries-and-packs/oci-registry/oci-registry.md) guide for additional
-  guidance.
+- Ensure that the [Palette Community Registry](../../registries-and-packs/registries-and-packs.md#default-registry) is
+  available in your Palette environment. Refer to the
+  [Add OCI Packs Registry](../../registries-and-packs/oci-registry/oci-registry.md) guide for additional guidance.
 
 ## Create a Full Cluster Profile
 
