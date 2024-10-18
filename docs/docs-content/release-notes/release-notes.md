@@ -101,10 +101,10 @@ the following sections for a complete list of features, improvements, and known 
 
 <!-- prettier-ignore-end -->
 
-- Support for <VersionedLink text="Konvoy" url="/integrations/packs/?pack=kubernetes-konvoy"/> is now available in Palette. You can create a custom image using the
-  Konvoy image builder project and use it to deploy a Konvoy cluster. Check out the
-  [Red Hat Linux Enterprise and Konvoy](../byoos/usecases/vmware/konvoy.md) guide to learn how to create a custom image
-  and deploy a Konvoy cluster.
+- Support for <VersionedLink text="Konvoy" url="/integrations/packs/?pack=kubernetes-konvoy"/> is now available in
+  Palette. You can create a custom image using the Konvoy image builder project and use it to deploy a Konvoy cluster.
+  Check out the [Red Hat Linux Enterprise and Konvoy](../byoos/usecases/vmware/konvoy.md) guide to learn how to create a
+  custom image and deploy a Konvoy cluster.
 
 - Multiple system administrators can now be added to the self-hosted Palette system console to help manage and maintain
   the Palette instance. The feature helps organizations embrace the separation of duties by delegating different
