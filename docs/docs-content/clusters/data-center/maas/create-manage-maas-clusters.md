@@ -29,15 +29,21 @@ create a Kubernetes cluster in MAAS that is managed by Palette.
   your MAAS environment. Review the [How to use standard images](https://maas.io/docs/how-to-use-standard-images) for
   guidance on downloading OS images for MAAS.
 
-:::warning
+:::info
 
-By default, Palette will register a DNS record in MAAS for the deployed cluster, linking it to the IP address(es) of the
-control plane node(s) of the cluster. However you may not want to depend on MAAS for your cluster DNS record. The
-Kubernetes pack provides an option to configure a custom API server endpoint for your cluster instead.
+By default, Palette registers a DNS record in MAAS for the deployed cluster and links it to the IP addresses of the
+control plane nodes of the cluster. However, you may choose not to depend on MAAS for your cluster DNS record. The
+Kubernetes pack allows you configure a custom API server endpoint for your cluster instead.
 
-This feature is only supported in Palette eXtended Kubernetes (PXK). For more information, refer to the
-[Custom API server endpoint for MAAS clusters](../../../integrations/kubernetes.md#custom-api-server-endpoint-for-maas-clusters)
-section of the PXK reference page.
+<!-- prettier-ignore-start -->
+
+This feature is only supported in Palette eXtended Kubernetes (PXK). Refer to the <VersionedLink
+  text="Custom API Server Endpoint for MAAS Clusters"
+  url="/integrations/packs/?pack=kubernetes#custom-api-server-endpoint-for-maas-clusters"
+/>
+section for further guidance.
+
+<!-- prettier-ignore-end -->
 
 :::
 
