@@ -48,5 +48,5 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
           SLACK_ICON_EMOJI: ":robot:"
-          # SLACK_COLOR: ${{ job.status }}
+          SLACK_COLOR: ${{ job.status }}
           SLACK_MESSAGE: 'The Docs cron job that generates the `packs.json` file failed. Please check the logs for more details.'
