@@ -7,7 +7,7 @@ sidebar_position: 50
 tags: ["palette-cli"]
 ---
 
-The Palette CLI has built-in support for the open-source [Validator](https://github.com/validator-labs/validator)
+The Palette CLI has built-in support for the open source [Validator](https://github.com/validator-labs/validator)
 framework and its plugins ecosystem. You can use the Validator to verify your environment is ready for an installation
 of self-hosted Palette, VerteX, or for deployment of Kubernetes clusters through Palette.
 

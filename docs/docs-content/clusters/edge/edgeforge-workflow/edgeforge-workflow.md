@@ -55,7 +55,7 @@ EdgeForge contains the following critical components:
 
 The EdgeForge process applies Center for Information System (CIS) hardening to the Edge artifacts by default. This means
 we implement the guidelines and solutions provided by CIS to secure your systems automatically. The code for how we
-achieve CIS hardening is open-source, available in the
+achieve CIS hardening is open source, available in the
 [CanvOS repository](https://github.com/spectrocloud/CanvOS/tree/main/cis-harden).
 
 ### Edge Installer ISO

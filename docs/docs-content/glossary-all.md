@@ -185,35 +185,35 @@ Charts.
 
 ## Palette eXtended Kubernetes (PXK)
 
-Palette eXtended Kubernetes (PXK) is a recompiled version of the open-source Cloud Native Computing Foundation (CNCF)
+Palette eXtended Kubernetes (PXK) is a recompiled version of the open source Cloud Native Computing Foundation (CNCF)
 distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure
 providers, public cloud providers, and private data center providers. This is the default distribution when deploying a
 Kubernetes cluster through Palette. You have the option to choose other Kubernetes distributions, such as MicroK8s,
 Konvoy, and more, should you want to consume a different Kubernetes distribution.
 
-PXK is different from the upstream open-source Kubernetes version primarily because of the carefully reviewed and
+PXK is different from the upstream open source Kubernetes version primarily because of the carefully reviewed and
 applied hardening of the operating system (OS) and Kubernetes. The hardening ranges from removing unused kernel modules
 to using an OS configuration that follows industry best practices. Our recompiled Kubernetes configuration addresses
 common Kubernetes deployment security pitfalls and implements industry best practices.
 
 A benefit of Palette when used with PXK is the ability to apply different flavors of container storage interface (CSI)
-plugins and container network interface (CNI) plugins. Other open-source Kubernetes distributions, such as MicroK8s,
+plugins and container network interface (CNI) plugins. Other open source Kubernetes distributions, such as MicroK8s,
 RKE2, and K3s, come with a default CSI and CNI. Additional complexity and overhead are required from you to enable
 different interfaces. PXK supports the ability to select other interface plugins out of the box without any additional
 overhead or complexity needed from your side.
 
-There are no changes to the Kubernetes source code and we also follow the same versioning schema as the upstream
-open-source Kubernetes distribution.
+There are no changes to the Kubernetes source code and we also follow the same versioning schema as the upstream open
+source Kubernetes distribution.
 
 ## Palette eXtended Kubernetes Edge (PXK-E)
 
-Palette eXtended Kubernetes Edge (PXK-E) is a recompiled version of the open-source Cloud Native Computing Foundation
+Palette eXtended Kubernetes Edge (PXK-E) is a recompiled version of the open source Cloud Native Computing Foundation
 (CNCF) distribution of Kubernetes. This Kubernetes distribution is customized and optimized for edge computing
 environments and can be deployed through Palette. PXK-E is the Kubernetes distribution Palette defaults to when
 deploying Edge clusters.
 
-PXK-E differs from the upstream open-source Kubernetes version by optimizing for operations in an edge computing
-environment. PXK-E also differentiates itself by using the open-source project, [Kairos](https://kairos.io/) as the base
+PXK-E differs from the upstream open source Kubernetes version by optimizing for operations in an edge computing
+environment. PXK-E also differentiates itself by using the open source project, [Kairos](https://kairos.io/) as the base
 operating system (OS). PXK-E’s use of Kairos means the OS is immutable, which significantly improves the security
 posture and reduces potential attack surfaces.
 
@@ -231,13 +231,13 @@ PXK-E manages the underlying OS and the Kubernetes layer together, which reduces
 maintaining two separate components.
 
 PXK-E allows you to apply different flavors of container storage interfaces (CSI) and container network interfaces
-(CNI). Other open-source Kubernetes distributions such as MicroK8s, RKE2, and K3s come with a default CSI and CNI. There
+(CNI). Other open source Kubernetes distributions such as MicroK8s, RKE2, and K3s come with a default CSI and CNI. There
 is additional complexity and overhead when you want to consume different interface plugins with traditional Kubernetes
 distributions. Using PXK-E, you select the interface plugin you want to apply without additional overhead and
 complexity.
 
 There are no changes to the Kubernetes source code used in PXK-E, and it follows the same versioning schema as the
-upstream open-source Kubernetes distribution.
+upstream open source Kubernetes distribution.
 
 ## Palette Terminal User Interface (TUI)
 
