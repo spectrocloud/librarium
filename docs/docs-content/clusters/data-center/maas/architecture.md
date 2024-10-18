@@ -99,3 +99,19 @@ The following table explains the different use cases for when a PCG and System P
 | --------------------------------------------------------------- | ------------------------- | -------------------------- |
 | Firewall or NAT between MAAS and a self-hosted Palette instance | ✅                        | ❌                         |
 | Direct connectivity between MAAS and a Palette instance         | ✅                        | ✅                         |
+
+## Custom API Server Endpoint for MAAS Clusters
+
+By default, Palette registers a DNS record in MAAS for the deployed cluster and links it to the IP addresses of the
+control plane nodes of the cluster. However, you may choose not to depend on MAAS for your cluster DNS record. The
+Kubernetes pack allows you to configure a custom API server endpoint for your cluster instead.
+
+<!-- prettier-ignore-start -->
+
+This feature is only supported in Palette eXtended Kubernetes (PXK). Refer to the <VersionedLink
+  text="Custom API Server Endpoint for MAAS Clusters"
+  url="/integrations/packs/?pack=kubernetes#custom-api-server-endpoint-for-maas-clusters"
+/>
+section for further guidance.
+
+<!-- prettier-ignore-end -->
