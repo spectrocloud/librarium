@@ -92,10 +92,14 @@ the following sections for a complete list of features, improvements, and known 
   Check out [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) to learn more about
   profile variables.
 
+<!-- prettier-ignore-start -->
+
 - MAAS clusters using Palette eXtended Kubernetes (PXK) now support the ability to specify a custom MAAS API endpoint
   URL and port during cluster creation. This feature allows you to use a custom DNS server or Virtual IP (VIP) that is
-  not resolvable outside of the MAAS network. Refer to the [PXK](../integrations/kubernetes.md#custom-maas-endpoint)
+  not resolvable outside of the MAAS network. Refer to the <VersionedLink text="PXK" url="/integrations/packs/?pack=kubernetes#custom-api-server-endpoint-for-maas-clusters"/>
   documentation for more details.
+
+<!-- prettier-ignore-end -->
 
 - Support for <VersionedLink text="Konvoy" url="/integrations/packs/?pack=kubernetes-konvoy"/> is now available in Palette. You can create a custom image using the
   Konvoy image builder project and use it to deploy a Konvoy cluster. Check out the
