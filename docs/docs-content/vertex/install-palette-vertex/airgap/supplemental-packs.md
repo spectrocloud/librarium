@@ -93,25 +93,37 @@ want to use for your workload clusters.
 
 | **Kubernetes Version** | **OVA Name**                   | **Download URL**                                                                    |
 | ---------------------- | ------------------------------ | ----------------------------------------------------------------------------------- |
-| Kubernetes 1.28.9      | u-2004-0-k-1289-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1289-fips.ova`       |
-| Kubernetes 1.29.4      | u-2004-0-k-1294-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1294-fips.ova`       |
 | Kubernetes 1.27.13     | u-2004-0-k-12713-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12713-fips.ova`      |
-| Kubernetes 1.27.11     | u-2004-0-k-rke2-12711-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12711-fips.ova` |
-| Kubernetes 1.29.4      | u-2004-0-k-rke2-1294-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1294-fips.ova`  |
-| Kubernetes 1.28.9      | u-2004-0-k-rke2-1289-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1289-fips.ova`  |
-| Kubernetes 1.27.13     | u-2004-0-k-rke2-12713-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12713-fips.ova` |
-| Kubernetes 1.28.10     | u-2004-0-k-rke2-12810-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12810-fips.ova` |
-| Kubernetes 1.27.14     | u-2004-0-k-rke2-12714-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12714-fips.ova` |
-| Kubernetes 1.29.5      | u-2004-0-k-rke2-1295-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1295-fips.ova`  |
 | Kubernetes 1.27.15     | u-2004-0-k-12715-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12715-fips.ova`      |
-| Kubernetes 1.28.11     | u-2004-0-k-12811-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12811-fips.ova`      |
-| Kubernetes 1.29.6      | u-2004-0-k-1296-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1296-fips.ova`       |
 | Kubernetes 1.27.16     | u-2004-0-k-12716-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12716-fips.ova`      |
+| Kubernetes 1.28.9      | u-2004-0-k-1289-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1289-fips.ova`       |
+| Kubernetes 1.28.11     | u-2004-0-k-12811-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12811-fips.ova`      |
 | Kubernetes 1.28.12     | u-2004-0-k-12812-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12812-fips.ova`      |
+| Kubernetes 1.28.13     | u-2004-0-k-12813-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12813-fips.ova`      |
+| Kubernetes 1.28.14     | u-2004-0-k-12814-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12814-fips.ova`      |
+| Kubernetes 1.29.4      | u-2004-0-k-1294-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1294-fips.ova`       |
+| Kubernetes 1.29.6      | u-2004-0-k-1296-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1296-fips.ova`       |
 | Kubernetes 1.29.7      | u-2004-0-k-1297-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1297-fips.ova`       |
-| Kubernetes 1.29.6      | u-2004-0-k-rke2-1296-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1296-fips.ova`  |
-| Kubernetes 1.28.11     | u-2004-0-k-rke2-12811-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12811-fips.ova` |
-| Kubernetes 1.27.15     | u-2004-0-k-rke2-12715-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12715-fips.ova` |
+| Kubernetes 1.29.8      | u-2004-0-k-1298-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1298-fips.ova`       |
+| Kubernetes 1.29.9      | u-2004-0-k-1299-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1299-fips.ova`       |
+| Kubernetes 1.30.4      | u-2004-0-k-1304-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1304-fips.ova`       |
+| Kubernetes 1.30.5      | u-2004-0-k-1305-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1305-fips.ova`       |
+| RKE2 1.27.11           | u-2004-0-k-rke2-12711-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12711-fips.ova` |
+| RKE2 1.27.13           | u-2004-0-k-rke2-12713-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12713-fips.ova` |
+| RKE2 1.27.14           | u-2004-0-k-rke2-12714-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12714-fips.ova` |
+| RKE2 1.27.15           | u-2004-0-k-rke2-12715-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12715-fips.ova` |
+| RKE2 1.28.9            | u-2004-0-k-rke2-1289-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1289-fips.ova`  |
+| RKE2 1.28.10           | u-2004-0-k-rke2-12810-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12810-fips.ova` |
+| RKE2 1.28.11           | u-2004-0-k-rke2-12811-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12811-fips.ova` |
+| RKE2 1.28.12           | u-2004-0-k-rke2-12812-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12812-fips.ova` |
+| RKE2 1.28.13           | u-2004-0-k-rke2-12813-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12813-fips.ova` |
+| RKE2 1.29.4            | u-2004-0-k-rke2-1294-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1294-fips.ova`  |
+| RKE2 1.29.5            | u-2004-0-k-rke2-1295-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1295-fips.ova`  |
+| RKE2 1.29.6            | u-2004-0-k-rke2-1296-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1296-fips.ova`  |
+| RKE2 1.29.7            | u-2004-0-k-rke2-1297-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1297-fips.ova`  |
+| RKE2 1.29.8            | u-2004-0-k-rke2-1298-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1298-fips.ova`  |
+| RKE2 1.30.3            | u-2004-0-k-rke2-1303-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1303-fips.ova`  |
+| RKE2 1.30.4            | u-2004-0-k-rke2-1304-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1304-fips.ova`  |
 
 ### Usage Instructions
 
