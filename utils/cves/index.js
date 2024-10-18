@@ -6,6 +6,7 @@ const path = require("path");
 const { formatDateCveDetails } = require("../helpers/date");
 const { escapeMDXSpecialChars } = require("../helpers/string");
 const { generateMarkdownTable } = require("../helpers/affected-table");
+const { generateRevisionHistory } = require("../helpers/revision-history");
 
 async function getSecurityBulletins(payload) {
   try {
@@ -160,16 +161,17 @@ async function generateMarkdownForCVEs(GlobalCVEData) {
 function createCveMarkdown(item, location) {
   const lowerCaseCve = item.metadata.cve.toLowerCase();
   const upperCaseCve = item.metadata.cve.toUpperCase();
-  // console.log(item);
-  // console.log(item.spec.revision);
 
   const impactedProducts = item.spec.impact.impactedProducts;
   const impactedVersions = item.spec.impact.impactedVersions;
+  const impactedDeployments = item.spec.impact.impactedDeployments;
+  const revisions = item.spec.revision;
 
   // Generate a table of impacted products
 
   let productMap = { palette: "Palette", vertex: "VerteX" };
-  let table = generateMarkdownTable(impactedProducts, impactedVersions, productMap);
+  let table = generateMarkdownTable(impactedProducts, impactedVersions, productMap, impactedDeployments);
+  let revisionHistory = generateRevisionHistory(revisions);
 
   const content = `---
 sidebar_label: "${upperCaseCve}"
@@ -211,10 +213,12 @@ ${item.status.state}
 
 ## Affected Products & Versions
 
-${table}
+${item.spec.impact.isImpacting ? table : "This CVE is non-impacting as the impacting symbol and/or function is not used in the product"}
 
 
 ## Revision History
+
+${revisionHistory}
 
 
 

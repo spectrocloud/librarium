@@ -5,13 +5,14 @@ describe("generateMarkdownTable", () => {
     const impactData = { palette: true, vertex: false };
     const versions = ["4.4.20", "4.5.3"];
     const productMap = { palette: "Palette", vertex: "VerteX" };
+    const impactedDeployments = { airgap: false, connected: true };
 
-    const expectedTable = `| | Palette | VerteX |
-    |-|--------|--------|
-    | 4.4.20 | Impacted | No Impact |
-    | 4.5.3 | Impacted | No Impact |`;
+    const expectedTable = `| Versions | Palette (Airgap) | Palette (Connected) | VerteX (Airgap) | VerteX (Connected) |
+|-|--------|--------|--------|--------|
+| 4.4.20 | No Impact | Impacted | No Impact | No Impact |
+| 4.5.3 | No Impact | Impacted | No Impact | No Impact |`;
 
-    expect(generateMarkdownTable(impactData, versions, productMap).replace(/\s+/g, "")).toBe(
+    expect(generateMarkdownTable(impactData, versions, productMap, impactedDeployments).replace(/\s+/g, "")).toBe(
       expectedTable.replace(/\s+/g, "")
     );
   });
@@ -20,17 +21,19 @@ describe("generateMarkdownTable", () => {
     const impactData = { palette: false, vertex: false };
     const versions = ["4.4.20", "4.5.3"];
     const productMap = { palette: "Palette", vertex: "VerteX" };
+    const impactedDeployments = { airgap: false, connected: true };
 
-    const expectedMessage = "Investigation is ongoing to determine how this vulnerability affects our products.";
-    expect(generateMarkdownTable(impactData, versions, productMap)).toBe(expectedMessage);
+    const expectedMessage = "Investigation is ongoing to determine how this vulnerability affects our products";
+    expect(generateMarkdownTable(impactData, versions, productMap, impactedDeployments)).toBe(expectedMessage);
   });
 
   it("should throw an error when products are impacted but no versions are provided", () => {
     const impactData = { palette: true, vertex: false };
     const versions = [];
     const productMap = { palette: "Palette", vertex: "VerteX" };
+    const impactedDeployments = { airgap: false, connected: true };
 
-    expect(() => generateMarkdownTable(impactData, versions, productMap)).toThrow(
+    expect(() => generateMarkdownTable(impactData, versions, productMap, impactedDeployments)).toThrow(
       "Error: Data inconsistency - Products impacted but no versions provided."
     );
   });
