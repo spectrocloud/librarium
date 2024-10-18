@@ -32,3 +32,19 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
   ![Network flow from an architectural perspective of how MAAS works with Palette](/maas_cluster_architecture.webp)
 
 Refer to the [PCG Architecture](../../pcg/architecture.md) section to learn more about the PCG architecture.
+
+## Custom API Server Endpoint for MAAS Clusters
+
+By default, Palette registers a DNS record in MAAS for the deployed cluster and links it to the IP addresses of the
+control plane nodes of the cluster. However, you may choose not to depend on MAAS for your cluster DNS record. The
+Kubernetes pack allows you to configure a custom API server endpoint for your cluster instead.
+
+<!-- prettier-ignore-start -->
+
+This feature is only supported in Palette eXtended Kubernetes (PXK). Refer to the <VersionedLink
+  text="Custom API Server Endpoint for MAAS Clusters"
+  url="/integrations/packs/?pack=kubernetes#custom-api-server-endpoint-for-maas-clusters"
+/>
+section for further guidance.
+
+<!-- prettier-ignore-end -->
