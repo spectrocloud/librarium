@@ -169,14 +169,14 @@ artifacts at the same time.
     Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
     ```
 
-12. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file.
+13. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file.
     Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
     ```bash
     docker login
     ```
 
-13. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
+14. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
     `[REGISTRY-HOSTNAME]` and version numbers in the command below.
 
     ```bash
