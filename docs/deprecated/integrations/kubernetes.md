@@ -431,7 +431,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 By default, Palette registers a DNS record in MAAS for the deployed cluster and links it to the IP addresses of the
 control plane nodes of the cluster. However, you may choose not to depend on MAAS for your cluster DNS record. The
-Kubernetes pack allows you configure a custom API server endpoint for your cluster instead. This feature is only
+Kubernetes pack allows you to configure a custom API server endpoint for your cluster instead. This feature is only
 supported in Palette eXtended Kubernetes (PXK).
 
 :::warning
@@ -462,7 +462,7 @@ cloud:
 
 In order to prevent the need for per-cluster profile adjustments which can become difficult to maintain at scale, we
 recommend to use a system macro to automatically populate the cluster name. This approach allows the cluster profile to
-dynamically populate the endpoint name, without requiring the user to do it manually. The following snippet demonstrates
+dynamically populate the endpoint name without requiring the user to do it manually. The following snippet demonstrates
 how to use macros for endpoint specification.
 
 ```yaml hideClipboard {10-14}
@@ -822,7 +822,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 By default, Palette registers a DNS record in MAAS for the deployed cluster and links it to the IP addresses of the
 control plane nodes of the cluster. However, you may choose not to depend on MAAS for your cluster DNS record. The
-Kubernetes pack allows you configure a custom API server endpoint for your cluster instead. This feature is only
+Kubernetes pack allows you to configure a custom API server endpoint for your cluster instead. This feature is only
 supported in Palette eXtended Kubernetes (PXK).
 
 :::warning
@@ -853,7 +853,7 @@ cloud:
 
 In order to prevent the need for per-cluster profile adjustments which can become difficult to maintain at scale, we
 recommend to use a system macro to automatically populate the cluster name. This approach allows the cluster profile to
-dynamically populate the endpoint name, without requiring the user to do it manually. The following snippet demonstrates
+dynamically populate the endpoint name without requiring the user to do it manually. The following snippet demonstrates
 how to use macros for endpoint specification.
 
 ```yaml hideClipboard {10-14}
