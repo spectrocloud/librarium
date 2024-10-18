@@ -80,8 +80,9 @@ To complete this basic guide, you will need the following items:
 
 - [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
 
-- (Optional) [Earthly] is installed and available. If you do not install Earthly, you can still build the artifacts, but
-  it would require root privileges, and some of the resulting artifacts will be owned by the root user.
+- (Optional) [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still
+  build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the
+  root user.
 
 - An image management tool such as [Docker](https://docs.docker.com/engine/install/) or
   [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available.
@@ -222,9 +223,9 @@ customization.
    cat user-data
    ```
 
-10. The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. By default, images are
-    created for all the Palette-supported Kubernetes versions. Comment out the versions you do not need in the file
-    **Earthfile** to speed up the build process and save disk space.
+10. The CanvOS utility uses [Earthly](https://earthly.dev/)(https://earthly.dev/) to build the target artifacts. By
+    default, images are created for all the Palette-supported Kubernetes versions. Comment out the versions you do not
+    need in the file **Earthfile** to speed up the build process and save disk space.
 
     ```
     build-provider-images:
@@ -469,8 +470,9 @@ To complete this advanced guide, you will need the following items:
 
 - [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
 
-- (Optional) [Earthly] is installed and available. If you do not install Earthly, you can still build the artifacts, but
-  it would require root privileges, and some of the resulting artifacts will be owned by the root user.
+- (Optional) [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still
+  build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the
+  root user.
 
 - An image management tool such as [Docker](https://docs.docker.com/engine/install/) or
   [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available.
@@ -722,8 +724,8 @@ git checkout v4.4.12
     [Edge Configuration Stages](../../edge-configuration/cloud-init.md) and
     [User Data Parameters](../../edge-configuration/installer-reference.md) documents to learn more.
 
-14. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
-    start the build process.
+14. CanvOS utility uses [Earthly](https://earthly.dev/)(https://earthly.dev/) to build the target artifacts. Issue the
+    following command to start the build process.
 
     <Tabs group="earthly">
 

@@ -48,8 +48,9 @@ This page guides you through the process of building FIPS-compliant Edge Install
 
 - [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
 
-- (Optional) [Earthly] is installed and available. If you do not install Earthly, you can still build the artifacts, but
-  it would require root privileges, and some of the resulting artifacts will be owned by the root user.
+- (Optional) [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still
+  build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the
+  root user.
 
 - An image management tool such as [Docker](https://docs.docker.com/engine/install/) or
   [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available.
