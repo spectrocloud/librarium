@@ -169,7 +169,7 @@ function createCveMarkdown(item, location) {
 
   // Generate a table of impacted products
 
-  let productMap = { palette: "Palette", vertex: "VerteX" };
+  let productMap = { palette: "Palette Enterprise", vertex: "VerteX" };
   let table = generateMarkdownTable(impactedProducts, impactedVersions, productMap, impactedDeployments);
   let revisionHistory = generateRevisionHistory(revisions);
 

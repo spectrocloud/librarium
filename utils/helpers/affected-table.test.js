@@ -4,10 +4,10 @@ describe("generateMarkdownTable", () => {
   it("should generate a markdown table for two products with mixed impact", () => {
     const impactData = { palette: true, vertex: false };
     const versions = ["4.4.20", "4.5.3"];
-    const productMap = { palette: "Palette", vertex: "VerteX" };
+    const productMap = { palette: "Palette Enterprise", vertex: "VerteX" };
     const impactedDeployments = { airgap: false, connected: true };
 
-    const expectedTable = `| Versions | Palette (Airgap) | Palette (Connected) | VerteX (Airgap) | VerteX (Connected) |
+    const expectedTable = `| Versions | Palette Enterprise Airgap | Palette Enterprise | VerteX Airgap | VerteX |
 |-|--------|--------|--------|--------|
 | 4.4.20 | No Impact | Impacted | No Impact | No Impact |
 | 4.5.3 | No Impact | Impacted | No Impact | No Impact |`;

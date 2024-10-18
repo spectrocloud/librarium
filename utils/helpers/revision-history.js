@@ -30,10 +30,13 @@ function generateRevisionHistory(revisionHistory) {
 
     // Impacted versions logic
     if (revisedField === "spec.impact.impactedVersions") {
-      if (revisedFrom.length === 0) {
-        itemDescription = `Added impacted versions: ${revisedTo}`;
+      const formattedFrom = revisedFrom.replace(/\s+/g, ", ").replace(/^\[|\]$/g, "");
+      const formattedTo = revisedTo.replace(/\s+/g, ", ").replace(/^\[|\]$/g, "");
+
+      if (revisedFrom === "[]") {
+        itemDescription = `Added impacted versions: ${formattedTo}`;
       } else {
-        itemDescription = `Impacted versions changed from ${revisedFrom} to ${revisedTo}`;
+        itemDescription = `Impacted versions changed from ${formattedFrom} to ${formattedTo}`;
       }
     }
 

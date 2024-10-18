@@ -17,7 +17,7 @@ function generateMarkdownTable(impactData, versions, productMap, impactedDeploym
   let header =
     "| Versions | " +
     Object.values(productMap)
-      .flatMap((product) => [`${product} (Airgap)`, `${product} (Connected)`])
+      .flatMap((product) => [`${product} Airgap`, `${product}`])
       .join(" | ") +
     " |\n";
   let separator =

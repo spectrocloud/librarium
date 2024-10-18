@@ -62,20 +62,20 @@ describe("generateRevisionHistory", () => {
       {
         revisionTimestamp: "2024-10-16T05:50:00.194Z",
         revisedField: "spec.impact.impactedVersions",
-        revisedFrom: [],
+        revisedFrom: "[]",
         revisedTo: "[4.4.20]",
       },
       {
         revisionTimestamp: "2024-10-17T05:50:00.194Z",
         revisedField: "spec.impact.impactedVersions",
         revisedFrom: "[4.4.20]",
-        revisedTo: "[4.4.20, 4.5.3]",
+        revisedTo: "[4.4.20 4.5.3]",
       },
     ];
 
     const expectedOutput = [
-      "1. 10/16/2024: Added impacted versions: [4.4.20]",
-      "2. 10/17/2024: Impacted versions changed from [4.4.20] to [4.4.20, 4.5.3]",
+      "1. 10/16/2024: Added impacted versions: 4.4.20",
+      "2. 10/17/2024: Impacted versions changed from 4.4.20 to 4.4.20, 4.5.3",
     ].join("\n");
 
     expect(generateRevisionHistory(revisionHistory)).toBe(expectedOutput);
