@@ -80,9 +80,18 @@ To complete this basic guide, you will need the following items:
 
 - [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
 
-- [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
-  command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
-  create privileged containers.
+- (Optional) [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still
+  build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the
+  root user.
+
+- An image management tool such as [Docker](https://docs.docker.com/engine/install/) or
+  [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available.
+
+  :::info
+
+  If you do not install Earthly, you must install Docker.
+
+  :::
 
 - A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for an account
   [here](https://www.spectrocloud.com/get-started).
@@ -214,9 +223,9 @@ customization.
    cat user-data
    ```
 
-10. The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. By default, images are
-    created for all the Palette-supported Kubernetes versions. Comment out the versions you do not need in the file
-    **Earthfile** to speed up the build process and save disk space.
+10. The CanvOS utility uses [Earthly](https://earthly.dev/)(https://earthly.dev/) to build the target artifacts. By
+    default, images are created for all the Palette-supported Kubernetes versions. Comment out the versions you do not
+    need in the file **Earthfile** to speed up the build process and save disk space.
 
     ```
     build-provider-images:
@@ -228,9 +237,25 @@ customization.
 
 11. Issue the following command to start the build process.
 
+    <Tabs group="earthly">
+
+    <TabItem value="Earthly Installed">
+
+    ```bash
+    earthly +build-all-images
+    ```
+
+    </TabItem>
+
+    <TabItem value="Earthly Not Installed">
+
     ```bash
     sudo ./earthly.sh +build-all-images
     ```
+
+    </TabItem>
+
+    </Tabs>
 
     ```bash hideClipboard
     ===================== Earthly Build SUCCESS =====================
@@ -428,10 +453,10 @@ process means installing the necessary tools and configurations on a host machin
 
 ### Prerequisites
 
-To complete this advanced guide, you will need the following items: <br />
+To complete this advanced guide, you will need the following items:
 
 - A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture to build the Edge
-  artifacts. You can issue the following command in the terminal to check your processor architecture. <br/>
+  artifacts. You can issue the following command in the terminal to check your processor architecture.
 
   ```bash
   uname -m
@@ -445,9 +470,18 @@ To complete this advanced guide, you will need the following items: <br />
 
 - [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
 
-- [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
-  command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
-  create privileged containers.
+- (Optional) [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still
+  build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the
+  root user.
+
+- An image management tool such as [Docker](https://docs.docker.com/engine/install/) or
+  [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available.
+
+  :::info
+
+  If you do not install Earthly, you must install Docker.
+
+  :::
 
 - A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for an account
   [here](https://www.spectrocloud.com/get-started).
@@ -690,12 +724,28 @@ git checkout v4.0.6
     [Edge Configuration Stages](../../edge-configuration/cloud-init.md) and
     [User Data Parameters](../../edge-configuration/installer-reference.md) documents to learn more.
 
-14. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
-    start the build process.
+14. CanvOS utility uses [Earthly](https://earthly.dev/)(https://earthly.dev/) to build the target artifacts. Issue the
+    following command to start the build process.
+
+    <Tabs group="earthly">
+
+    <TabItem value="Earthly Installed">
+
+    ```bash
+    earthly +build-all-images
+    ```
+
+    </TabItem>
+
+    <TabItem value="Earthly Not Installed">
 
     ```bash
     sudo ./earthly.sh +build-all-images
     ```
+
+    </TabItem>
+
+    </Tabs>
 
     ```hideClipboard bash {2}
     # Output condensed for readability
@@ -709,7 +759,7 @@ git checkout v4.0.6
     `+build-all-images` option in the command above. The command, `sudo ./earthly.sh +build-provider-images`, will build
     the provider images but not the Edge installer ISO.
 
-    :::
+    :::info
 
     This command may take up to 15-20 minutes to finish depending on the resources of the host machine. Upon completion,
     the command will display the manifest, as shown in the example below, that you will use in your cluster profile

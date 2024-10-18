@@ -41,9 +41,18 @@ artifacts at the same time.
 
 - [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
 
-- [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
-  command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
-  create privileged containers.
+- (Optional) [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still
+  build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the
+  root user.
+
+- An image management tool such as [Docker](https://docs.docker.com/engine/install/) or
+  [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available.
+
+  :::info
+
+  If you do not install Earthly, you must install Docker.
+
+  :::
 
 ## Build Provider Images
 
@@ -126,12 +135,33 @@ artifacts at the same time.
 
     Refer to [Edge Artifact Build Configurations](./arg.md) for all available arguments.
 
-11. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
-    start the build process.
+11. (Optional) You can embed a public key in your provider image. If you choose to add a public key to your provider
+    image, after you create a cluster with the provider image, only content that is signed by the corresponding private
+    key can be uploaded to the Edge host through Local UI. This includes both the content bundle and cluster definition.
+    For more information, refer to [Embed Public Key in Edge Artifacts](./signed-content.md).
+
+12. CanvOS utility uses [Earthly](https://earthly.dev/)(https://earthly.dev/) to build the target artifacts. Issue the
+    following command to start the build process.
+
+   <Tabs group="earthly">
+
+   <TabItem value="Earthly Installed">
+
+    ```bash
+    earthly +build-provider-images
+    ```
+
+   </TabItem>
+
+   <TabItem value="Earthly Not Installed">
 
     ```bash
     sudo ./earthly.sh +build-provider-images
     ```
+
+   </TabItem>
+
+   </Tabs>
 
     ```hideClipboard bash {2}
     # Output condensed for readability
@@ -139,14 +169,14 @@ artifacts at the same time.
     Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
     ```
 
-12. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file.
+13. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file.
     Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
     ```bash
     docker login
     ```
 
-13. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
+14. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
     `[REGISTRY-HOSTNAME]` and version numbers in the command below.
 
     ```bash
