@@ -28,10 +28,9 @@ learn about in the Getting Started section are centered around a fictional case 
   your VMware user account.
 - Refer to the [Deploy a PCG with Palette CLI](./deploy-pcg.md) guide to create the required infrastructure that enables
   communication with your cluster.
-- Ensure that the [Palette Community Registry](../../registries-and-packs/registries-and-packs.md#default-registry)
-  is available in your Palette environment. Refer to the
-  [Add OCI Packs Registry](../../registries-and-packs/oci-registry/oci-registry.md) guide for additional
-  guidance.
+- Ensure that the [Palette Community Registry](../../registries-and-packs/registries-and-packs.md#default-registry) is
+  available in your Palette environment. Refer to the
+  [Add OCI Packs Registry](../../registries-and-packs/oci-registry/oci-registry.md) guide for additional guidance.
 
 ## Create a Full Cluster Profile
 
