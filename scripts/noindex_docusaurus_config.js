@@ -4,8 +4,7 @@ const generate = require("@babel/generator").default;
 const t = require("@babel/types");
 
 const docusaurusConfigFile = "docusaurus.config.js";
-const tempDirectory = process.argv[2];
-const baseDirectory = process.argv[3];
+const baseDirectory = process.argv[2]; // Remove the tempDirectory argument
 
 // This reads the docusaurus.config.js file and parses it into an AST.
 // We need to parse it into an AST so that we can add the new versions to the config object.
@@ -51,16 +50,12 @@ const addNoIndexProperty = () => {
 
 addNoIndexProperty();
 
+// Generate the updated code from the AST and overwrite the original config file
 const updatedCode = generate(ast).code;
 try {
-  // Write the new config object to the temp.docusaurus.config.js file
-  fs.writeFileSync(`${tempDirectory}/temp.docusaurus.config.js`, updatedCode);
-  console.log("Temp file created.");
-
-  // Now replace the original docusaurus.config.js with the temp file's content
-  const tempConfigCode = fs.readFileSync(`${tempDirectory}/temp.docusaurus.config.js`, "utf8");
-  fs.writeFileSync(`${baseDirectory}/${docusaurusConfigFile}`, tempConfigCode);
-  console.log("Original docusaurus.config.js replaced with the updated content.");
+  // Write directly to the original docusaurus.config.js file
+  fs.writeFileSync(`${baseDirectory}/${docusaurusConfigFile}`, updatedCode);
+  console.log("Original docusaurus.config.js updated with the new content.");
 } catch (err) {
-  console.error("An error occurre when writing the updated config object to the real docusaurus.config.js file.");
+  console.error("Could not write to docusaurus.config.js:", err);
 }
