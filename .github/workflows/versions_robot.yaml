@@ -85,6 +85,9 @@ jobs:
         id: check_noindex
         run: node scripts/noindex_docusaurus_config.js $RUNNER_TEMP $PWD && mv $RUNNER_TEMP/temp.docusaurus.config.js $PWD/docusaurus.config.js
 
+      - name: Auto Format (Prettier)
+        run: make format
+
       - name: Commit Changes
         id: commit
         uses: stefanzweifel/git-auto-commit-action@v5
