@@ -83,7 +83,7 @@ jobs:
             
       - name: Ensure noIndex is set
         id: check_noindex
-        run: node scripts/noindex_docusaurus_config.js $RUNNER_TEMP $PWD && mv $RUNNER_TEMP/temp.docusaurus.config.js $PWD/docusaurus.config.js
+        run: node scripts/noindex_docusaurus_config.js $RUNNER_TEMP $PWD
 
       - name: Auto Format (Prettier)
         run: make format
