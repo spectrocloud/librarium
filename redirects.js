@@ -410,7 +410,7 @@ const redirects = [
   },
   {
     from: "/enterprise-version/install-palette/airgap/vmware-vsphere-airgap-instructions/",
-    to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
   },
   {
     from: "/vertex/install-palette-vertex/airgap/kubernetes-airgap-instructions/",
@@ -418,7 +418,7 @@ const redirects = [
   },
   {
     from: "/vertex/install-palette-vertex/airgap/vmware-vsphere-airgap-instructions/",
-    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
   },
   {
     from: "/vertex/install-palette-vertex/airgap/checklist/",
@@ -552,6 +552,14 @@ const redirects = [
   {
     from: "/automation/palette-cli/commands/validator/",
     to: "/automation/palette-cli/commands/ec/",
+  },
+  {
+    from: "/enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
   },
   {
     from: "/legal-licenses/oss-licenses/",
