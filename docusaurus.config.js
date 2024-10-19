@@ -8,7 +8,6 @@ const redirects = require("./redirects");
 const { pluginPacksAndIntegrationsData } = require("./plugins/packs-integrations");
 const { pluginImportFontAwesomeIcons } = require("./plugins/font-awesome");
 import path from "path";
-import { Logger } from "sass";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
