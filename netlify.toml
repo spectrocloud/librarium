@@ -1,7 +1,4 @@
 [build]
   ignore = "./scripts/netlify.sh"
   command = "npm run build"
-[context.branch-deploy.environment]
-  # Set so that branch deploys (version-x.legacy.docs.spectrocloud.com) contain sitemap.xml
-  NODE_ENV = "production"
 
