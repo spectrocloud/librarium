@@ -18,16 +18,32 @@ tags: ["release-notes"]
 <!-- prettier-ignore -->
 - <VersionedLink text="BYOOS Edge OS" url="/integrations/packs/?pack=edge-native-byoi" /> pack version 2.0.0 is now available with support for [agent mode deployment](../deployment-modes/agent-mode/agent-mode.md).
 
+- Cluster [Profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) marked as hidden now include the ability to be mutable, hidden, and read-only.
+
+- [Edge content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) will now retain tags and image signatures. In the past, tags and signatures were stripped when the content bundle was created.
+
+- Support for multiple authenticated external registries is now available for Edge clusters.
+
 ### Bug Fixes
 
-- Resolved an issue where Edge nodes removed from a cluster remained in the Palette UI after the node was deleted.
+- Resolved an issue where Edge nodes removed from a cluster remained in the Palette UI after a node delete operation was
+  completed.
 
-- Fixed an issue with Palette agent 4.4.10 was unable to connect to the Palette management plane due to gRPC connection
-  errors.
+- Fixed an issue with Palette agent version 4.4.10 was unable to connect to the Palette management plane due to a gRPC
+  connection error.
 
 - Fixed an upgrade error causing clusters on K3s version 1.29 to fail to upgrade to a newer version.
 
 - Resolved an issue where clusters deployed by LocalUI failed to start due to KubeVIP and Harbor pods not starting.
+
+- Fixed an issue where pack names containing the `/` character did not fail validation during pack creation.
+
+- Fixed an issue where clusters, without prior backups, using Velero and Restic, were unable to accept resource quotas.
+
+- Resolved an issue where CordeDNS was not upgraded during a Kubernetes upgrade.
+
+- Fixed an issue where [system macros](../registries-and-packs/pack-constraints.md#pack-macros) were causing errors
+  during cluster profile downloads.
 
 ## October 13, 2024 - Release 4.5.0 - 4.5.3
 
