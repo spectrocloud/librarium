@@ -24,10 +24,12 @@ create a custom OS that includes all the required components for the Edge Instal
 Next, select the BYOOS pack and fill out the required parameters during the cluster profile creation process. The
 `system.uri` parameter specifies the location of the BYOOS image.
 
-## Agent Mode
+### Agent Mode
 
 To enable agent mode with the BYOOS Edge OS pack, expand the **Presets** section from the YAML editor view. Toggle the
-**Agent Mode** switch to enable agent mode.
+**Agent Mode** switch to enable agent mode. Check out the
+[Install Palette Agent](../deployment-modes/agent-mode/install-agent-host.md) guide for additional guidance on
+installing the Palette Agent.
 
 </TabItem>
 
