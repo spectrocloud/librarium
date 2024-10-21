@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Environment Setup"
-title: "Environment Setup"
-description: "Learn how to install Palette in an air gap environment."
+sidebar_label: "Environment Setup with OVA"
+title: "Environment Setup with OVA"
+description: "Learn how to install Palette in an airgap environment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
@@ -9,13 +9,14 @@ tags: ["self-hosted", "enterprise", "airgap", "vmware", "vsphere"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-This guide helps you to prepare your airgap environment for Palette installation.
+This guide helps you prepare your airgap environment for Palette installation using an OVA to deploy and initialize an
+airgap support VM.
 
 :::info
 
 This guide is for preparing your airgap environment only. For instructions on installing Palette on VMware, check the
 [Install](../install.md) guide. A checklist of the steps you will complete to prepare your airgap environment for
-Palette is available on the [Checklist](./checklist.md) page.
+Palette is available on the [Checklist](../checklist.md) page.
 
 :::
 
@@ -50,17 +51,17 @@ Palette.
 - Configure the Dynamic Host Configuration Protocol (DHCP) to access the airgap support VM via SSH. You can disable DHCP
   or modify the IP address after deploying the airgap support VM.
 
-- Review the required vSphere [permissions](../../install-on-vmware/vmware-system-requirements.md) and ensure you've
+- Review the required vSphere [permissions](../../../install-on-vmware/vmware-system-requirements.md) and ensure you've
   created the proper custom roles and zone tags. Zone tagging enables dynamic storage allocation across fault domains
   when provisioning workloads that require persistent storage. Refer to
-  [Zone Tagging](../../install-on-vmware/vmware-system-requirements.md#zone-tagging) for information.
+  [Zone Tagging](../../../install-on-vmware/vmware-system-requirements.md#zone-tagging) for information.
 
 :::info
 
 Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not
 require a separate, user-installed PCG. However, you can deploy additional PCG instances to support provisioning into
 remote data centers without a direct incoming connection to Palette. To learn how to install a PCG on VMware, check out
-the [VMware](../../../../clusters/pcg/deploy-pcg/vmware.md) guide.
+the [VMware](../../../../../clusters/pcg/deploy-pcg/vmware.md) guide.
 
 :::
 
@@ -84,28 +85,42 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 4.  In the **Deploy OVF Template** wizard, enter the following URL to import the Operating System (OS) and Kubernetes
     distribution OVA required for the installation.
 
-    Consider the following example for reference.
+        Consider the following example for reference.
 
-    ```url
-    https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2204-0-k-12610-0.ova
-    ```
+        <!-- prettier-ignore -->
+        <Tabs>
+        <TabItem value="non-fips" label="Non-FIPS">
 
-    Place the OVA in the **spectro-templates** folder. Append the `r_` prefix, and remove the `.ova` suffix when
-    assigning its name and target location. For example, the final output should look like `r_u-2004-0-k-12610`. This
-    naming convention is required for the installation process to identify the OVA. Refer to the
-    [Supplement Packs](../../airgap/supplemental-packs.md#additional-ovas) page for a list of additional OS OVAs.
+        ```url
+        https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-1294-0.ova
+        ```
+        <!-- prettier-ignore -->
+        </TabItem>
+        <TabItem value="fips" label="FIPS">
 
-    You can terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
-    [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
-    guide for more information about deploying an OVA in vCenter.
+        ```url
+        https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1294-fips.ova
+        ```
+        <!-- prettier-ignore -->
+        </TabItem>
+        </Tabs>
 
-    :::warning
+        Place the OVA in the **spectro-templates** folder. Append the `r_` prefix, and remove the `.ova` suffix when
+        assigning its name and target location. For example, the final output should look like `r_u-2204-0-k-1294-0`. This
+        naming convention is required for the installation process to identify the OVA. Refer to the
+        [Supplement Packs](../../../airgap/supplemental-packs.md#additional-ovas) page for a list of additional OS OVAs.
 
-    If you encounter an error message during the OVA deployment stating unable to retrieve manifest or certificate,
-    refer to this [known issue](https://kb.vmware.com/s/article/79986) from VMware's knowledge base for guidance on how
-    to resolve the issue.
+        You can terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
+        [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
+        guide for more information about deploying an OVA in vCenter.
 
-    :::
+        :::warning
+
+        If you encounter an error message during the OVA deployment stating unable to retrieve manifest or certificate,
+        refer to this [known issue](https://kb.vmware.com/s/article/79986) from VMware's knowledge base for guidance on how
+        to resolve the issue.
+
+        :::
 
 5.  Next, deploy the airgap installation OVA by using the **Deploy OVF Template** wizard again in vSphere. Insert the
     Palette install OVA URL in the **URL** field. The URL is provided to you by your Palette support representative.
@@ -353,7 +368,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 21. The output of the script contains credentials and values you will need when completing the installation with the
     Palette CLI. If you need to review this information in the future, invoke the script again.
 
-22. If you have used a release-specific installation OVA, skip this step. Otherwise, if you have use a generic
+22. If you have used a release-specific installation OVA, skip this step. Otherwise, if you have used a generic
     installation OVA, use the following command to execute the Palette airgap installation binary.
 
     ```shell
@@ -382,8 +397,8 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
     Once the airgap binary completes its tasks, you will receive a **Setup Completed** success message.
 
-23. Review the [Additional Packs](../../airgap/supplemental-packs.md) page and identify any additional packs you want to
-    add to your OCI registry. You can also add additional packs after the installation is complete.
+23. Review the [Additional Packs](../../../airgap/supplemental-packs.md) page and identify any additional packs you want
+    to add to your OCI registry. You can also add additional packs after the installation is complete.
 
 You have now completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to
 ensure the airgap setup process is completed successfully. After you validate the airgap setup process completion,
@@ -460,7 +475,7 @@ installed in the airgap support VM and ready to use.
     palette ec install
     ```
 
-Complete all the Palette CLI steps outlined in the [Install Palette](./install.md) guide from the airgap support VM.
+Complete all the Palette CLI steps outlined in the [Install Palette](../install.md) guide from the airgap support VM.
 
 :::info
 
