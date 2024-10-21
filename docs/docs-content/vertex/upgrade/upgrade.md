@@ -31,11 +31,18 @@ latest minor version available.
 
 :::
 
+### 4.5.x
+
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
 |       4.5.3        |       4.5.4        | :white_check_mark: |
 |       4.4.20       |       4.5.3        | :white_check_mark: |
 |       4.4.6        |       4.5.3        | :white_check_mark: |
+
+### 4.4.x
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
 |       4.4.18       |       4.4.20       | :white_check_mark: |
 |       4.4.14       |       4.4.18       | :white_check_mark: |
 |       4.4.11       |       4.4.18       | :white_check_mark: |
@@ -45,7 +52,12 @@ latest minor version available.
 |       4.3.6        |       4.4.14       | :white_check_mark: |
 |       4.4.6        |       4.4.11       | :white_check_mark: |
 |       4.3.6        |       4.4.11       | :white_check_mark: |
-|       4.3.6        |       4.4.x        | :white_check_mark: |
+|       4.3.6        |       4.4.4        | :white_check_mark: |
+
+### 4.3.x and Prior
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
 |       4.2.13       |       4.3.6        | :white_check_mark: |
 |       4.2.7        |       4.2.13       | :white_check_mark: |
 |       4.1.x        |       4.3.6        |        :x:         |
