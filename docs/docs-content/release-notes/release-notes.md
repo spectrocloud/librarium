@@ -11,6 +11,19 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 24, 2024 - Release 4.5.4
+
+### Bug Fixes
+
+- Resolved an issue where Edge nodes removed from a cluster remained in the Palette UI after the node was deleted.
+
+- Fixed an issue with Palette agent 4.4.10 was unable to connect to the Palette management plane due to gRPC connection
+  errors.
+
+- Fixed an upgrade error causing clusters on K3s version 1.29 to fail to upgrade to a newer version.
+
+- Resolved an issue where clusters deployed by LocalUI failed to start due to KubeVIP and Harbor pods not starting.
+
 ## October 13, 2024 - Release 4.5.0 - 4.5.3
 
 This release of Palette features a new deployment model, Agent Mode, and contains several new improvements and
