@@ -13,6 +13,11 @@ tags: ["release-notes"]
 
 ## October 24, 2024 - Release 4.5.4
 
+### Improvements
+
+<!-- prettier-ignore -->
+- <VersionedLink text="BYOOS Edge OS" url="/integrations/packs/?pack=edge-native-byoi" /> pack version 2.0.0 is now available with support for [agent mode deployment](../deployment-modes/agent-mode/agent-mode.md).
+
 ### Bug Fixes
 
 - Resolved an issue where Edge nodes removed from a cluster remained in the Palette UI after the node was deleted.

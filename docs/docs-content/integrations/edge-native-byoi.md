@@ -14,6 +14,23 @@ tags: ["packs", "byoos", "operating system", "edge"]
 
 <Tabs queryString="parent">
 
+<TabItem label="2.0.x" value="2.0.x">
+
+BYOOS enables you to use a custom OS for your Edge host. The custom OS must include all the Edge artifacts and provider
+images required by the Edge Installer. Refer to the
+[Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide for steps on how to
+create a custom OS that includes all the required components for the Edge Installer.
+
+Next, select the BYOOS pack and fill out the required parameters during the cluster profile creation process. The
+`system.uri` parameter specifies the location of the BYOOS image.
+
+## Agent Mode
+
+To enable agent mode with the BYOOS Edge OS pack, expand the **Presets** section from the YAML editor view. Toggle the
+**Agent Mode** switch to enable agent mode.
+
+</TabItem>
+
 <TabItem label="1.0.x" value="1.0.x">
 
 BYOOS enables you to use a custom OS for your Edge host. The custom OS must include all the Edge artifacts and provider
@@ -38,7 +55,7 @@ data "spectrocloud_registry" "public_registry" {
 
 data "spectrocloud_pack_simple" "byoos" {
   name         = "edge-native-byoi"
-  version      = "1.0.0"
+  version      = "2.0.0"
   type         = "helm"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
