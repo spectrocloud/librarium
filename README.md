@@ -30,23 +30,26 @@ To contribute, we recommend having the following software installed locally on y
 
 ## Local Development (Docker)
 
-To get started with the Docker based local development approach ensure you are in the root context of this repository.
+To get started with the Docker-based local development approach, ensure you are in the root context of this repository.
 
-Initailize the repository by issuing the following command:
+Initialize the repository by issuing the following command:
 
 ```shell
 make init
 ```
 
-Next, issue the following command to build the Docker image.
-
-**Note**: The first time issuing the command may take several minutes.
+Next, add your Palette API key to the `.env` file. Replace `<your-palette-api-key>` with your Palette API key.
 
 ```shell
-make docker-image
+PALETTE_API_KEY="<your-palette-api-key>"
 ```
 
-To start the Dockererized local development server, issue the command:
+> [!IMPORTANT] You need a Palette API key to start the local development server. Refer to the
+> [Create API Key](https://docs.spectrocloud.com/user-management/authentication/api-key/create-api-key/) guide to learn
+> how to create a Palette API key.
+
+Issue the following command to build the Docker image and start the Dockererized local development server. The command
+may take several minutes to complete.
 
 ```shell
 make docker-start
@@ -82,14 +85,10 @@ cd librarium
 make init
 ```
 
-Next, populate the `.env` file with the following content. The local development server will not start without the
-required environment variables. The values are not important for local development.
+Next, add your Palette API key to the `.env` file. Replace `<your-palette-api-key>` with your Palette API key.
 
 ```shell
-ALGOLIA_APP_ID=1234567890
-ALGOLIA_SEARCH_KEY=1234567890
-ALGOLIA_INDEX_NAME=spectrocloud
-PALETTE_API_KEY=""
+PALETTE_API_KEY="<your-palette-api-key>"
 ```
 
 > [!IMPORTANT] You need a Palette API key to start the local development server. Refer to the
@@ -726,7 +725,7 @@ partial_name: palette-setup
 
 This is how you set up Palette in {props.cloud}.
 
-This is a <VersionedLink text="Internal Link" url="/getting-started/additional-capabilities"/>`.
+This is an <VersionedLink text="Internal Link" url="/getting-started/additional-capabilities"/>.
 ```
 
 The path of the link should be the path of the destination file from the root directory, without any back operators
@@ -734,7 +733,7 @@ The path of the link should be the path of the destination file from the root di
 
 ## Palette/VerteX URLs
 
-A special component has been created to handle the generation of URLs for Palette and VertX. The component is called
+A special component has been created to handle the generation of URLs for Palette and VerteX. The component is called
 [PaletteVertexUrlMapper](./src/components/PaletteVertexUrlMapper/PaletteVertexUrlMapper.tsx). This component is intended
 for usage withing partials. You can use the component to change the base path of the URL to either Palette or VerteX.
 The component will automatically prefix the path to the URL. The component has the following props:
@@ -752,6 +751,27 @@ Below is an example of how to use the component:
     edition={props.edition}
     text="System Administrators"
     url="/system-management/account-management"
+  /> page to learn more about system administrator roles.
+```
+
+In cases where Palette and Vertex pages have different URLs beyond the base path, the component will accept the
+following props:
+
+- `edition` - The edition of the URL. This can be either `Palette` or `Vertex`. Internally, the component will use this
+  value to determine the base URL.
+- `text` - The text to display for the link.
+- `palettePath` - The Palette path to append to the base URL.
+- `vertexPath` - The VerteX path to append to the base URL.
+
+Below is an example of how to use the component when the URLs are different:
+
+```mdx
+- System administrator permissions, either a Root Administrator or Operations Administrator. Refer to the
+  <PaletteVertexUrlMapper
+    edition={props.edition}
+    text="System Administrators"
+    palettePath="/system-management/account-management"
+    vertexPath="/system-management-vertex/account-management"
   /> page to learn more about system administrator roles.
 ```
 

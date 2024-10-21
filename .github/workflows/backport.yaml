@@ -4,6 +4,10 @@ on:
   pull_request_target:
     types: ["labeled", "closed"]
 
+
+env:
+  GITHUB_BRANCH: ${{ github.ref_name }} 
+
 jobs:
   backport:
     name: Backport PR
@@ -15,6 +19,8 @@ jobs:
         (github.event.action == 'labeled' && github.event.label.name == 'auto-backport')
         || (github.event.action == 'closed')
       )
+    outputs:
+      BEFORE_BACKPORTS: ${{ steps.count_prs.outputs.pr_count }}
     steps:
 
       - name: Retrieve Credentials
@@ -27,6 +33,35 @@ jobs:
           secretId: ${{ secrets.VAULT_SECRET_ID }}
           secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
+      - name: Count PRs created by vault-token-factory-spectrocloud
+        id: count_prs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_COUNT=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&per_page=100" | \
+            jq '[.[] | select(.user.login == "vault-token-factory-spectrocloud[bot]")] | length')
+          echo "Number of PRs created by vault-token-factory-spectrocloud: $PR_COUNT"
+          echo "pr_count=$PR_COUNT" >> $GITHUB_OUTPUT
+
+      - name: Determine branch name
+        id: extract_branch
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request_target" ]; then
+            echo "GITHUB_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
+          else
+            echo "GITHUB_BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV
+          fi
+
+      - name: Check for backport labels
+        id: check_labels
+        run: |-
+          labels='${{ toJSON(github.event.pull_request.labels.*.name) }}'
+          matched=$(echo "${labels}" | jq '. | map(select(startswith("backport-"))) | length')
+          echo "matched=$matched"
+          echo "matched=$matched" >> $GITHUB_OUTPUT
+
+
       - name: Backport Action
         uses: sqren/backport-github-action@v9.5.1
         with:
@@ -37,19 +72,49 @@ jobs:
           add_original_reviewers: true
 
       - name: Info log
-        if: ${{ success() }}
+        if: ${{ success() }} 
         run: cat ~/.backport/backport.info.log
 
       - name: Debug log
+        id: debug-log
         if: ${{ failure() }}
         run: cat ~/.backport/backport.debug.log
 
+      - name: Verify PR count increment
+        id: verify_increment
+        env:
+          GITHUB_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+        run: |-
+          BEFORE_BACKPORTS=${{ steps.count_prs.outputs.pr_count }}
+          NEW_COUNT=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&per_page=100" | \
+            jq '[.[] | select(.user.login == "vault-token-factory-spectrocloud[bot]")] | length')
+          
+          MATCHED=${{ steps.check_labels.outputs.matched }}
+      
+          echo "Before Backports Count: $BEFORE_BACKPORTS"
+          echo "New PR Count: $NEW_COUNT"
+          echo "Matched Backport Labels: $MATCHED"
+      
+          if [ $((NEW_COUNT - BEFORE_BACKPORTS)) -eq $MATCHED ]; then
+            echo "PR count increased by the expected amount."
+            echo "missing_prs=0" >> $GITHUB_OUTPUT
+          else
+            MISSING_PR_COUNT=$((MATCHED - (NEW_COUNT - BEFORE_BACKPORTS)))
+            echo "PR count did not increase by the expected amount."
+            echo "missing_prs=$MISSING_PR_COUNT" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+      
+
       - name: Slack Notification
         if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2
+        uses: rtCamp/action-slack-notify@v2.3.0
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
           SLACK_ICON_EMOJI: ":robot_panic:"
           SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: 'The backport automation flow failed. Review the GitHub Actions logs for more details.'
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'The backports for branch `${{env.GITHUB_BRANCH}}` in PR [#${{ github.event.pull_request.number }}](${{ github.event.pull_request.html_url }}) failed. Number of missing PRs: `${{ steps.verify_increment.outputs.missing_prs }}`. Review the PR for more details.'

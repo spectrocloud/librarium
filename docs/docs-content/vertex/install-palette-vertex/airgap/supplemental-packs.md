@@ -13,55 +13,18 @@ Review the following table to determine which pack binaries you need to download
 
 | **File Name**                                                         | **Download URL**                                                                                                                  |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `airgap-vertex-pack-cni-calico-3.27.2.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-cni-calico-3.27.2.bin                            |
-| `airgap-vertex-pack-cni-calico-3.28.0.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-cni-calico-3.28.0.bin                            |
-| `airgap-vertex-pack-cni-calico-3.28.1.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-cni-calico-3.28.1.bin                            |
-| `airgap-vertex-pack-cni-calico-azure-fips-3.28.1.bin`                 | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-cni-calico-azure-fips-3.28.1.bin                 |
-| `airgap-vertex-pack-cni-flannel-fips-0.25.5.bin`                      | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-cni-flannel-fips-0.25.5.bin                      |
-| `airgap-vertex-pack-csi-longhorn-addon-fips-1.6.2.bin`                | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-csi-longhorn-addon-fips-1.6.2.bin                |
-| `airgap-vertex-pack-csi-longhorn-fips-1.6.2.bin`                      | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-csi-longhorn-fips-1.6.2.bin                      |
-| `airgap-vertex-pack-csi-vsphere-csi-3.2.0.bin`                        | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-csi-vsphere-csi-3.2.0.bin                        |
-| `airgap-vertex-pack-csi-vsphere-csi-3.3.1.bin`                        | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-csi-vsphere-csi-3.3.1.bin                        |
-| `airgap-vertex-pack-edge-k8s-1.29.5.bin`                              | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.29.5.bin                              |
-| `airgap-vertex-pack-edge-k8s-1.29.0.bin`                              | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.29.0.bin                              |
-| `airgap-vertex-pack-edge-k8s-1.28.10.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.28.10.bin                             |
-| `airgap-vertex-pack-edge-k8s-1.27.14.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.27.14.bin                             |
-| `airgap-vertex-pack-edge-k8s-1.27.15.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.27.15.bin                             |
-| `airgap-vertex-pack-edge-k8s-1.29.6.bin`                              | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.29.6.bin                              |
-| `airgap-vertex-pack-edge-k8s-1.28.11.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.28.11.bin                             |
-| `airgap-vertex-pack-edge-k8s-1.29.7.bin`                              | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.29.7.bin                              |
-| `airgap-vertex-pack-edge-k8s-1.28.12.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.28.12.bin                             |
-| `airgap-vertex-pack-edge-k8s-1.27.16.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.27.16.bin                             |
-| `airgap-vertex-pack-edge-k8s-1.28.13.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.28.13.bin                             |
-| `airgap-vertex-pack-edge-k8s-1.29.8.bin`                              | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.29.8.bin                              |
-| `airgap-vertex-pack-edge-k8s-1.30.4.bin`                              | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.30.4.bin                              |
-| `airgap-vertex-pack-edge-rke2-1.27.14.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.27.14.bin                            |
-| `airgap-vertex-pack-edge-rke2-1.28.10.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.28.10.bin                            |
-| `airgap-vertex-pack-edge-rke2-1.29.5.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.29.5.bin                             |
-| `airgap-vertex-pack-edge-rke2-1.27.15.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.27.15.bin                            |
-| `airgap-vertex-pack-edge-rke2-1.28.11.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.28.11.bin                            |
-| `airgap-vertex-pack-edge-rke2-1.29.6.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.29.6.bin                             |
-| `airgap-vertex-pack-edge-rke2-1.28.12.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.28.12.bin                            |
-| `airgap-vertex-pack-edge-rke2-1.29.7.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.29.7.bin                             |
-| `airgap-vertex-pack-edge-rke2-1.30.3.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.30.3.bin                             |
-| `airgap-vertex-pack-kubernetes-1.27.15.bin`                           | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.27.15.bin                           |
-| `airgap-vertex-pack-kubernetes-1.28.11.bin`                           | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.28.11.bin                           |
-| `airgap-vertex-pack-kubernetes-1.29.6.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.29.6.bin                            |
-| `airgap-vertex-pack-kubernetes-1.29.7.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.29.7.bin                            |
-| `airgap-vertex-pack-kubernetes-1.27.16.bin`                           | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.27.16.bin                           |
-| `airgap-vertex-pack-kubernetes-1.28.12.bin`                           | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.28.12.bin                           |
-| `airgap-vertex-pack-kubernetes-1.28.13.bin`                           | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.28.13.bin                           |
-| `airgap-vertex-pack-kubernetes-1.29.8.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.29.8.bin                            |
-| `airgap-vertex-pack-kubernetes-1.30.4.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.30.4.bin                            |
-| `airgap-vertex-pack-kubernetes-rke2-1.27.14-rke2r1-build20240515.bin` | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.27.14-rke2r1-build20240515.bin |
-| `airgap-vertex-pack-kubernetes-rke2-1.28.10-rke2r1-build20240514.bin` | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.28.10-rke2r1-build20240514.bin |
-| `airgap-vertex-pack-kubernetes-rke2-1.29.5-rke2r1-build20240515.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.29.5-rke2r1-build20240515.bin  |
-| `airgap-vertex-pack-kubernetes-rke2-1.29.6-rke2r1-build20240619.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.29.6-rke2r1-build20240619.bin  |
-| `airgap-vertex-pack-kubernetes-rke2-1.28.11-rke2r1-build20240619.bin` | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.28.11-rke2r1-build20240619.bin |
-| `airgap-vertex-pack-kubernetes-rke2-1.27.15-rke2r1-build20240619.bin` | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.27.15-rke2r1-build20240619.bin |
-| `airgap-vertex-pack-kubernetes-rke2-1.28.12-rke2r1-build20240717.bin` | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.28.12-rke2r1-build20240717.bin |
-| `airgap-vertex-pack-kubernetes-rke2-1.29.7-rke2r1-build20240717.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.29.7-rke2r1-build20240717.bin  |
-| `airgap-vertex-pack-kubernetes-rke2-1.30.3-rke2r1-build20240717.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.30.3-rke2r1-build20240717.bin  |
+| `airgap-vertex-pack-edge-k8s-1.28.14.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.28.14.bin                             |
+| `airgap-vertex-pack-edge-k8s-1.29.9.bin`                              | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.29.9.bin                              |
+| `airgap-vertex-pack-edge-k8s-1.30.5.bin`                              | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.30.5.bin                              |
+| `airgap-vertex-pack-edge-rke2-1.28.13.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.28.13.bin                            |
+| `airgap-vertex-pack-edge-rke2-1.29.8.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.29.8.bin                             |
+| `airgap-vertex-pack-edge-rke2-1.30.4.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.30.4.bin                             |
+| `airgap-vertex-pack-kubernetes-1.28.14.bin`                           | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.28.14.bin                           |
+| `airgap-vertex-pack-kubernetes-1.29.9.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.29.9.bin                            |
+| `airgap-vertex-pack-kubernetes-1.30.5.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.30.5.bin                            |
+| `airgap-vertex-pack-kubernetes-rke2-1.28.13-rke2r1-build20240815.bin` | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.28.13-rke2r1-build20240815.bin |
+| `airgap-vertex-pack-kubernetes-rke2-1.29.8-rke2r1-build20240815.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.29.8-rke2r1-build20240815.bin  |
+| `airgap-vertex-pack-kubernetes-rke2-1.30.4-rke2r1-build20240815.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.30.4-rke2r1-build20240815.bin  |
 
 ### Usage Instructions
 
@@ -130,25 +93,37 @@ want to use for your workload clusters.
 
 | **Kubernetes Version** | **OVA Name**                   | **Download URL**                                                                    |
 | ---------------------- | ------------------------------ | ----------------------------------------------------------------------------------- |
-| Kubernetes 1.28.9      | u-2004-0-k-1289-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1289-fips.ova`       |
-| Kubernetes 1.29.4      | u-2004-0-k-1294-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1294-fips.ova`       |
 | Kubernetes 1.27.13     | u-2004-0-k-12713-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12713-fips.ova`      |
-| Kubernetes 1.27.11     | u-2004-0-k-rke2-12711-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12711-fips.ova` |
-| Kubernetes 1.29.4      | u-2004-0-k-rke2-1294-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1294-fips.ova`  |
-| Kubernetes 1.28.9      | u-2004-0-k-rke2-1289-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1289-fips.ova`  |
-| Kubernetes 1.27.13     | u-2004-0-k-rke2-12713-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12713-fips.ova` |
-| Kubernetes 1.28.10     | u-2004-0-k-rke2-12810-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12810-fips.ova` |
-| Kubernetes 1.27.14     | u-2004-0-k-rke2-12714-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12714-fips.ova` |
-| Kubernetes 1.29.5      | u-2004-0-k-rke2-1295-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1295-fips.ova`  |
 | Kubernetes 1.27.15     | u-2004-0-k-12715-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12715-fips.ova`      |
-| Kubernetes 1.28.11     | u-2004-0-k-12811-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12811-fips.ova`      |
-| Kubernetes 1.29.6      | u-2004-0-k-1296-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1296-fips.ova`       |
 | Kubernetes 1.27.16     | u-2004-0-k-12716-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12716-fips.ova`      |
+| Kubernetes 1.28.9      | u-2004-0-k-1289-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1289-fips.ova`       |
+| Kubernetes 1.28.11     | u-2004-0-k-12811-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12811-fips.ova`      |
 | Kubernetes 1.28.12     | u-2004-0-k-12812-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12812-fips.ova`      |
+| Kubernetes 1.28.13     | u-2004-0-k-12813-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12813-fips.ova`      |
+| Kubernetes 1.28.14     | u-2004-0-k-12814-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12814-fips.ova`      |
+| Kubernetes 1.29.4      | u-2004-0-k-1294-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1294-fips.ova`       |
+| Kubernetes 1.29.6      | u-2004-0-k-1296-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1296-fips.ova`       |
 | Kubernetes 1.29.7      | u-2004-0-k-1297-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1297-fips.ova`       |
-| Kubernetes 1.29.6      | u-2004-0-k-rke2-1296-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1296-fips.ova`  |
-| Kubernetes 1.28.11     | u-2004-0-k-rke2-12811-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12811-fips.ova` |
-| Kubernetes 1.27.15     | u-2004-0-k-rke2-12715-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12715-fips.ova` |
+| Kubernetes 1.29.8      | u-2004-0-k-1298-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1298-fips.ova`       |
+| Kubernetes 1.29.9      | u-2004-0-k-1299-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1299-fips.ova`       |
+| Kubernetes 1.30.4      | u-2004-0-k-1304-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1304-fips.ova`       |
+| Kubernetes 1.30.5      | u-2004-0-k-1305-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1305-fips.ova`       |
+| RKE2 1.27.11           | u-2004-0-k-rke2-12711-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12711-fips.ova` |
+| RKE2 1.27.13           | u-2004-0-k-rke2-12713-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12713-fips.ova` |
+| RKE2 1.27.14           | u-2004-0-k-rke2-12714-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12714-fips.ova` |
+| RKE2 1.27.15           | u-2004-0-k-rke2-12715-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12715-fips.ova` |
+| RKE2 1.28.9            | u-2004-0-k-rke2-1289-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1289-fips.ova`  |
+| RKE2 1.28.10           | u-2004-0-k-rke2-12810-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12810-fips.ova` |
+| RKE2 1.28.11           | u-2004-0-k-rke2-12811-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12811-fips.ova` |
+| RKE2 1.28.12           | u-2004-0-k-rke2-12812-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12812-fips.ova` |
+| RKE2 1.28.13           | u-2004-0-k-rke2-12813-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12813-fips.ova` |
+| RKE2 1.29.4            | u-2004-0-k-rke2-1294-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1294-fips.ova`  |
+| RKE2 1.29.5            | u-2004-0-k-rke2-1295-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1295-fips.ova`  |
+| RKE2 1.29.6            | u-2004-0-k-rke2-1296-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1296-fips.ova`  |
+| RKE2 1.29.7            | u-2004-0-k-rke2-1297-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1297-fips.ova`  |
+| RKE2 1.29.8            | u-2004-0-k-rke2-1298-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1298-fips.ova`  |
+| RKE2 1.30.3            | u-2004-0-k-rke2-1303-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1303-fips.ova`  |
+| RKE2 1.30.4            | u-2004-0-k-rke2-1304-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1304-fips.ova`  |
 
 ### Usage Instructions
 

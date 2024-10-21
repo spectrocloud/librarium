@@ -24,41 +24,7 @@ authentication methods to register your cloud account.
 
 ## Add Azure Cloud Account
 
-Use the following steps to add an Azure or Azure Government account in Palette or Palette VerteX.
-
-1. Log in to [Palette](https://console.spectrocloud.com) or Palette VerteX as a tenant admin.
-
-2. From the left **Main Menu**, select **Tenant Settings**.
-
-3. Next, select **Cloud Accounts** in the **Tenant Settings Menu**.
-
-4. Locate **Azure**, and click **+ Add Azure Account**.
-
-5. Fill out the following information, and click **Confirm** to complete the registration.
-
-   | **Basic Information**             | **Description**                                                                                                                                                                                                                                                                                        |
-   | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | **Account Name**                  | A custom account name.                                                                                                                                                                                                                                                                                 |
-   | **Tenant ID**                     | Unique tenant ID from Azure Management Portal.                                                                                                                                                                                                                                                         |
-   | **Client ID**                     | Unique client ID from Azure Management Portal.                                                                                                                                                                                                                                                         |
-   | **Client Secret**                 | Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).                                              |
-   | **Cloud**                         | Select **Azure Public Cloud** or **Azure US Government**.                                                                                                                                                                                                                                              |
-   | **Tenant Name**                   | An optional tenant name.                                                                                                                                                                                                                                                                               |
-   | **Disable Properties**            | This option prevents Palette and VerteX from creating Azure Virtual Networks (VNets) and other network resources on your behalf for static placement deployments. If you enable this option, all users must manually specify a pre-existing VNet, subnets, and security groups when creating clusters. |
-   | **Connect Private Cloud Gateway** | Select this option to connect to a Private Cloud Gateway (PCG) if you have a PCG deployed in your environment. Refer to the PCG [Architecture](../../pcg/architecture.md) page to learn more about a PCG.                                                                                              |
-
-   :::info
-
-   If you want to provide network proxy configurations to the Kubernetes clusters deployed through Palette, you must use
-   a PCG cluster. Check out the [Proxy Configuration](./architecture.md#proxy-configuration) section in the Architecture
-   page for more information.
-
-   :::
-
-6. After providing the required values, click the **Validate** button. If the client secret you provided is correct, a
-   _Credentials validated_ success message with a green check is displayed.
-
-7. Click **Confirm** to complete the registration.
+<PartialsComponent category="palette-setup" name="azure-cloud-account" />
 
 ## Validate
 

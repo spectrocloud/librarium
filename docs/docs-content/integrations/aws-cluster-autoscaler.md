@@ -722,8 +722,7 @@ You may encounter an `executable aws-iam-authenticator not found` error in your 
 EKS cluster from your local machine. This may happen due to the
 [aws-iam-authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator) plugin missing from your local
 environment. The workaround is to install the IAM Authenticator. Refer to the
-[IAM Authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html) install guide
-for more information.
+[IAM Authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator) GitHub page for more information.
 
 ## Terraform
 

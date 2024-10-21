@@ -15,7 +15,7 @@ specific requirements. This feature is especially useful for organizations with 
 compliance, or specific hardware configurations.
 
 The ability to bring your own OS to Palette gives you more control over dependencies in your environment and ensures
-compatibility with your existing applications. The OS you bring can be commercial or an open-source distribution.
+compatibility with your existing applications. The OS you bring can be commercial or an open source distribution.
 
 ## Get Started
 

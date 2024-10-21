@@ -89,10 +89,6 @@ one through four. Otherwise, start at step five.
 
    :::tip
 
-   If, during the OVA deployment, you encounter an error message stating **Unable to retrieve manifest or certificate**,
-   refer to this [known issue](https://kb.vmware.com/s/article/79986) from the VMware knowledge base for a guide on how
-   to resolve it.
-
 5. In your terminal, use the following command template to SSH into the Palette VerteX airgap support VM. Enter the path
    to your private SSH key, your username, and the IP or domain of the airgap support VM. The default username is
    `ubuntu`.

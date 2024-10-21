@@ -42,7 +42,7 @@ The following resources are scoped to a project by default:
 
 ## Project Dashboard
 
-When a user logs in to Palette, the [project dashboard](../../getting-started/dashboard.md) is displayed by default. The
+When a user logs in to Palette, the [project dashboard](../../introduction/dashboard.md) is displayed by default. The
 project dashboard displays a map containing all the clusters deployed in the project. A summary of the clusters deployed
 in the project, deleted, failed deployments, and the number of clusters pending an update is also displayed.
 

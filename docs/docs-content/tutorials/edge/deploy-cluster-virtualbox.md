@@ -56,7 +56,10 @@ To complete this tutorial, you will need the following prerequisites in place.
   guide for instructions on how to create a token.
 - The following software installed:
   - A text editor such as Vi or Nano. This tutorial uses Vi as an example.
-  - [Docker Engine](https://docs.docker.com/engine/install/) with `sudo` privileges
+  - [Docker Engine](https://docs.docker.com/engine/install/) with `sudo` privileges. Alternatively, you can install
+    [Earthly](https://earthly.dev/), in which case you will not need `sudo` privileges. And you can use lighter image
+    management tools like [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) instead
+    of Docker.
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
   - [VirtualBox](https://www.virtualbox.org/wiki/Downloads) version 7.0
 
@@ -109,9 +112,9 @@ git checkout v4.4.12
 
 ### Define Arguments
 
-EdgeForge leverages [Earthly](https://earthly.dev) to build the Installer ISO and provider images artifacts. The
-**.arg** file is used to pass the values of a few arguments, such as the image tag and registry name, to Earthly for the
-build process.
+EdgeForge leverages [Earthly](https://earthly.dev/)(https://earthly.dev) to build the Installer ISO and provider images
+artifacts. The **.arg** file is used to pass the values of a few arguments, such as the image tag and registry name, to
+Earthly for the build process.
 
 Execute the command below to create a custom tag for the provider images. The tag must be an alphanumeric lowercase
 string. This tutorial uses `vbox-tutorial` as an example.
@@ -196,7 +199,7 @@ displayed in the example output below.
 stylus:
   site:
     paletteEndpoint: api.spectrocloud.com
-    edgeHostToken: 62ElvdMeX5MdOESgTleBjjKAB123456
+    edgeHostToken: ****************
 
 users:
   - name: kairos

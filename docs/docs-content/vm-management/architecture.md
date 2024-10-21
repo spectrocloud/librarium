@@ -14,8 +14,9 @@ on top of an existing data center or edge cluster.
 
 ![Diagram that explains the architecture behind Palette VMO.](/vm-management_architecture_vmo-architecture.webp)
 
-For more detailed information about the technical architecture of VMO, refer to
-[Palette VMO Reference Architecture](https://www.spectrocloud.com/resources/whitepaper/vmo-architecture-pdf).
+For more detailed information about the technical architecture of VMO, refer to the
+[Spectro Cloud Resource Center](https://www.spectrocloud.com/resource-center). From the left **Main Menu**, click on the
+"virtual machines" topic to find the latest version of the Palette VMO Reference Architecture.
 
 ## Palette VMO Components
 
@@ -45,7 +46,7 @@ By default, Palette VMO includes the following components:
 - **Spectro VM Dashboard**. Enables you to create, manage, and monitor VMs from Palette. The dashboard becomes available
   once the VMO pack is successfully deployed as part of your cluster profile.
 
-- **KubeVirt**. This open-source solution enables you to create and manage VMs within Kubernetes clusters. KubeVirt
+- **KubeVirt**. This open source solution enables you to create and manage VMs within Kubernetes clusters. KubeVirt
   extends Kubernetes with additional virtualization resource types using Kubernetes Custom Resource Definitions (CRD)
   API.
 

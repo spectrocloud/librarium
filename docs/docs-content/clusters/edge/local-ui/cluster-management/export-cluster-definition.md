@@ -41,10 +41,10 @@ same time in a single command.
 
 1. Download Palette Edge CLI and assign the executable bit to the CLI. Refer to
    [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to use the right
-   Palette Edge CLI version. This guide uses 4.4.2 as an example.
+   Palette Edge CLI version. This guide uses 4.4.12 as an example.
 
    ```shell
-   VERSION=4.4.2
+   VERSION=4.4.12
    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
    chmod +x palette-edge
    ```
@@ -66,7 +66,7 @@ same time in a single command.
 
    ```hideClipboard bash
    Usage:
-   palette-edge-cli [command]
+   palette-edge [command]
 
    Available Commands:
    build            Build the content
@@ -79,11 +79,11 @@ same time in a single command.
    Flags:
          --config string    config file (default is $HOME/.palette-edge-cli.yaml)
          --debug            set to enable debug logging [default: false]
-   -h, --help             help for palette-edge-cli
+   -h, --help             help for palette-edge
          --logfile string   log file name
          --trace            set to enable trace logging [default: false]
 
-   Use "palette-edge-cli [command] --help" for more information about a command.
+   Use "palette-edge [command] --help" for more information about a command.
    ```
 
 4. Log in to [Palette](https://console.spectrocloud.com).
@@ -111,7 +111,7 @@ same time in a single command.
 10. Issue the following command to export the cluster definition.
 
     ```shell
-    palette-edge-cli build --api-key <apiKey> \
+    palette-edge build --api-key <apiKey> \
     --project-id <projectId> \
     --palette-endpoint <paletteEndpoint> \
     --cluster-definition-name <clusterDefinitionName> \
@@ -145,12 +145,17 @@ same time in a single command.
      --cluster-definition-profile-ids <CLUSTER_PROFILE_IDS>
     ```
 
-    | Flag                        | Description                                                                                                                                                                                                                         |
-    | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | `--cluster-profile-ids`     | Comma-separated list of cluster profile IDs to download content for.                                                                                                                                                                |
-    | `--cred-file-path`          | Path to the JSON file storing registry credentials if you are using a private registry. Refer to [Build Content Bundles](../../edgeforge-workflow/palette-canvos/build-content-bundle.md) for the expected schema of the JSON file. |
-    | `--include-palette-content` | Whether to include content necessary for Palette itself. Required for airgap installations.                                                                                                                                         |
-    | `--outfile`                 | Name of your content bundle. The final file name should have the following pattern: `core-<bundle-name>-random-string`.                                                                                                             |
+    | Flag                         | Description                                                                                                                                                                                                                                                                                                                            |
+    | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `--api-key`                  | Your Palette API key.                                                                                                                                                                                                                                                                                                                  |
+    | `--cluster-profile-ids`      | Comma-separated list of cluster profile IDs to download content for.                                                                                                                                                                                                                                                                   |
+    | `--cred-file-path`           | Path to the JSON file storing registry credentials if you are using a private registry.                                                                                                                                                                                                                                                |
+    | `--include-palette-content`  | Whether to include images for the Palette agent itself, including images to support cluster creation and cluster management. For airgap installations, you must use either this option or the `--include-core-images-only` option. We recommend you use `--include-core-images-only` instead to reduce the size of the content bundle. |
+    | `--include-core-images-only` | Whether to include images for the Palette agent that are necessary for cluster creation only. In airgap installations, we recommend using this option instead of `--include-palette-content` to reduce the size of the content bundle, as Local UI currently does not offer native backup and support features.                        |
+    | `--outfile`                  | Name of your content bundle. The final file name should have the following pattern: `core-<bundle-name>-random-string`.                                                                                                                                                                                                                |
+    | `--palette-endpoint`         | API endpoint for your Palette instance.                                                                                                                                                                                                                                                                                                |
+    | `--project-id`               | The ID of your Palette project.                                                                                                                                                                                                                                                                                                        |
+    | `--private-key`              | The path to the private key used to sign the content bundle and cluster definition if it is present. This is necessary if your Edge host has an embedded corresponding public key. For more information, refer to [Embed Public Key in Edge Artifacts](../../edgeforge-workflow/palette-canvos/signed-content.md).                     |
 
 ### Validate
 
