@@ -3,7 +3,7 @@ sidebar_label: "Install VerteX"
 title: "Install VerteX"
 description: "Learn how to install VerteX in an airgap VMware environment."
 icon: ""
-sidebar_position: 30
+sidebar_position: 40
 hide_table_of_contents: false
 tags: ["vertex", "enterprise", "airgap", "vmware", "vsphere"]
 keywords: ["self-hosted", "vertex"]
@@ -16,7 +16,7 @@ assets.
 
 ## Prerequisites
 
-- You have completed the [Environment Setup](./vmware-vsphere-airgap-instructions.md) steps and deployed the airgap
+- You have completed the [Environment Setup](./environment-setup/environment-setup.md) steps and deployed the airgap
   support VM.
 
 - You can choose between two Operating Systems (OS) when installing Vertex. Review the requirements for each OS.
@@ -131,8 +131,8 @@ Use the following steps to install Palette VerteX.
     :::warning
 
     If you deployed the airgap support VM using a generic OVA, the Palette CLI may not be in the `usr/bin` path. Ensure
-    that you complete step **22** of the [Environment Setup](./vmware-vsphere-airgap-instructions.md) guide, which
-    installs the VerteX airgap binary and moves the Palette CLI to the correct path.
+    that you complete step **22** of the [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md)
+    guide, which installs the VerteX airgap binary and moves the Palette CLI to the correct path.
 
     :::
 
@@ -162,10 +162,10 @@ Use the following steps to install Palette VerteX.
 
     :::info
 
-    If you are using the Palette CLI from inside an [airgap support VM](./vmware-vsphere-airgap-instructions.md), the
-    CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Spectro Cloud
-    Artifact Repository (SCAR) configuration**. Type `y` to use the local resources and skip filling in the repository
-    URL and credentials.
+    If you are using the Palette CLI from inside an
+    [airgap support VM](./environment-setup/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect
+    the airgap environment and prompt you to **Use local, air-gapped Spectro Cloud Artifact Repository (SCAR)
+    configuration**. Type `y` to use the local resources and skip filling in the repository URL and credentials.
 
     :::
 
@@ -191,9 +191,10 @@ Use the following steps to install Palette VerteX.
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                          |
 
 11. Select the OCI registry type and provide the configuration values. Review the following table for more information.
-    If you are using the Palette CLI from inside an [airgap support VM](./vmware-vsphere-airgap-instructions.md), the
-    CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type
-    `y` to use the local resources and skip filling in the OCI registry URL and credentials.
+    If you are using the Palette CLI from inside an
+    [airgap support VM](./environment-setup/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect
+    the airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type `y` to use the local
+    resources and skip filling in the OCI registry URL and credentials.
 
     :::warning
 
@@ -222,10 +223,10 @@ Use the following steps to install Palette VerteX.
     | **Use Public Registry for Images**               | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. Airgap users, select `n` so that you can specify the values for the OCI registry that contains all the required images. |
 
     When prompted to **Pull images from public registry**, type `n` and specify the OCI registry configuration values
-    for your image registry. If you are an [airgap support VM](./vmware-vsphere-airgap-instructions.md), the CLI will
-    automatically detect the airgap environment and prompt you to **Use local, air-gapped Image Registry?**. Type `y` to
-    use the local resources and skip filling in the OCI registry URL and credentials. Refer to the table above for more
-    information.
+    for your image registry. If you are on an
+    [airgap support VM](./environment-setup/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect
+    the airgap environment and prompt you to **Use local, air-gapped Image Registry?**. Type `y` to use the local
+    resources and skip filling in the OCI registry URL and credentials. Refer to the table above for more information.
 
     :::info
 
@@ -445,7 +446,7 @@ teams.
 
 ## Resources
 
-- [Environment Setup](./vmware-vsphere-airgap-instructions.md)
+- [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md)
 
 - [Create a Tenant](../../../system-management/tenant-management.md)
 
