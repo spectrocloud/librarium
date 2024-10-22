@@ -46,7 +46,7 @@ jobs:
           touch static/robots.txt
           echo "User-agent: *" >> robots.txt
           echo "Disallow: /" >> robots.txt
-          excho "Sitemap: https://docs-latest.spectrocloud.com/sitemap.xml" >> robots.txt
+          echo "Sitemap: https://docs-latest.spectrocloud.com/sitemap.xml" >> robots.txt
         
 
       - name: Ensure noIndex is set
