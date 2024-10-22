@@ -44,9 +44,9 @@ jobs:
       - name: Make Robots.txt
         run: |
           touch static/robots.txt
-          echo "User-agent: *" >> robots.txt
-          echo "Disallow: /" >> robots.txt
-          echo "Sitemap: https://docs-latest.spectrocloud.com/sitemap.xml" >> robots.txt
+          echo "User-agent: *" >> static/robots.txt
+          echo "Disallow: /" >> static/robots.txt
+          echo "Sitemap: https://docs-latest.spectrocloud.com/sitemap.xml" >> static/robots.txt
         
 
       - name: Ensure noIndex is set
@@ -74,4 +74,4 @@ jobs:
           message-failure: |
               👎 Uh oh! The Netlify Preview failed to deploy for commit ${{ github.sha }}. Please check the Netlify logs for more information.
           refresh-message-position: true
-          update-only: true
+          update-only: false
