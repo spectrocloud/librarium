@@ -299,7 +299,7 @@ As of Palette version 4.5.4, you no longer need to configure SCAR.
 | `scar.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the SCAR connection. | Boolean  | `true`                         |
 | `scar.caCert`             | The base64-encoded certificate authority (CA) certificate for SCAR.                            | String   | `""`                           |
 
-````yaml
+```yaml
 config:
   scar:
     endpoint: "https://specman-service:8443"
@@ -307,7 +307,7 @@ config:
     password: ""
     insecureSkipVerify: false
     caCert: ""
-``
+```
 
 ### Image Swap Configuration
 
@@ -330,7 +330,7 @@ config:
 
   imageSwapConfig:
     isEKSCluster: true
-````
+```
 
 ## gRPC
 
