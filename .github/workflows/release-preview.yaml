@@ -51,7 +51,7 @@ jobs:
 
       - name: Ensure noIndex is set
         id: check_noindex
-        run: node scripts/noindex_docusaurus_config.js $ $PWD
+        run: node scripts/noindex_docusaurus_config.js $PWD
           
 
       - name: Build
