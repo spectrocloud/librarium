@@ -457,7 +457,7 @@ pack:
 cloud:
   maas:
     customEndpoint: "cluster-123.baremetal.company.com"
-    customEndpointPort: "6443"
+    customEndpointPort: 6443
 ```
 
 In order to prevent the need for per-cluster profile adjustments which can become difficult to maintain at scale, we
@@ -474,7 +474,7 @@ pack:
 cloud:
   maas:
     customEndpoint: "{{ .spectro.system.cluster.name }}.baremetal.company.com"
-    customEndpointPort: "6443"
+    customEndpointPort: 6443
 ```
 
 </TabItem>
@@ -848,7 +848,7 @@ pack:
 cloud:
   maas:
     customEndpoint: "cluster-123.baremetal.company.com"
-    customEndpointPort: "6443"
+    customEndpointPort: 6443
 ```
 
 In order to prevent the need for per-cluster profile adjustments which can become difficult to maintain at scale, we
@@ -865,7 +865,7 @@ pack:
 cloud:
   maas:
     customEndpoint: "{{ .spectro.system.cluster.name }}.baremetal.company.com"
-    customEndpointPort: "6443"
+    customEndpointPort: 6443
 ```
 
 </TabItem>
