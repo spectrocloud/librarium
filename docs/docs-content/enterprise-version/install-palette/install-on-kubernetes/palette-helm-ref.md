@@ -22,7 +22,6 @@ The following parameters are required for a successful installation of Palette.
 | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | `config.env.rootDomain`                                 | Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix, `*.palette.abc.com`. Review the [Environment parameters](#environment) to learn more. | String   |
 | `config.env.ociRegistry` or `config.env.ociEcrRegistry` | Specifies the FIPS image registry for Palette. You can use an a self-hosted OCI registry or a public OCI registry we maintain and support. For more information, refer to the [Registry](#registries) section.                                                                | Object   |
-| `scar`                                                  | The Spectro Cloud Artifact Repository (SCAR) credentials for Palette FIPS images. Our support team provides these credentials. For more information, refer to the [Registry](#registries) section.                                                                            | Object   |
 
 :::warning
 
@@ -183,8 +182,7 @@ config:
 
 Palette requires credentials to access the required Palette images. You can configure different types of registries for
 Palette to download the required images. You must configure at least one Open Container Initiative (OCI) registry for
-Palette. You must also provide the credentials for the Spectro Cloud Artifact Repository (SCAR) to download the required
-FIPS images.
+Palette.
 
 ### OCI Registry
 
@@ -274,20 +272,20 @@ config:
 
 ### Spectro Cloud Artifact Repository (SCAR)
 
-SCAR credentials are required to download the necessary FIPS manifests. Our support team provides the SCAR credentials.
+As of Palette version 4.5.4, you no longer need to configure SCAR.
 
-| **Parameters**            | **Description**                                                                                | **Type** | **Default value** |
-| ------------------------- | ---------------------------------------------------------------------------------------------- | -------- | ----------------- |
-| `scar.endpoint`           | The endpoint URL of SCAR.                                                                      | String   | `""`              |
-| `scar.username`           | The username for SCAR.                                                                         | String   | `""`              |
-| `scar.password`           | The base64-encoded password for the SCAR.                                                      | String   | `""`              |
-| `scar.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the SCAR connection. | Boolean  | `false`           |
-| `scar.caCert`             | The base64-encoded certificate authority (CA) certificate for SCAR.                            | String   | `""`              |
+| **Parameters**            | **Description**                                                                                | **Type** | **Default value**              |
+| ------------------------- | ---------------------------------------------------------------------------------------------- | -------- | ------------------------------ |
+| `scar.endpoint`           | The endpoint URL of SCAR.                                                                      | String   | `https://specman-service:8443` |
+| `scar.username`           | The username for SCAR.                                                                         | String   | `""`                           |
+| `scar.password`           | The base64-encoded password for the SCAR.                                                      | String   | `""`                           |
+| `scar.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the SCAR connection. | Boolean  | `true`                         |
+| `scar.caCert`             | The base64-encoded certificate authority (CA) certificate for SCAR.                            | String   | `""`                           |
 
 ```yaml
 config:
   scar:
-    endpoint: ""
+    endpoint: "https://specman-service:8443"
     username: ""
     password: ""
     insecureSkipVerify: false
