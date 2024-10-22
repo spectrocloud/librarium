@@ -98,9 +98,37 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
            - snap install amazon-ssm-agent --classic
    ```
 
+### Configure NTP Server Settings
+
+5. Edge hosts require a valid configuration Network Time Protocol (NTP) before it can join a cluster. Depending on your
+   OS distribution, your host will have a fallback NTP server that will be used as default if you do not provide one.
+   However, if your host is in an environment that does not have connection to the fallback NTP server, you need to
+   provide it with a valid NTP server.
+
+   Use the following block to define NTP servers for your host and reboot the `systemd-timesyncd` service to make the
+   changes take effect. Replace NTP server address and the fallback NTP server address with NPT servers of your
+   choosing.
+
+   ```yaml {9,10}
+   #cloud-config
+   stages:
+     boot:
+       - name: "Setup NTP"
+         systemctl:
+           enable:
+             - systemd-timesyncd
+         timesyncd:
+           NTP: "time.google.com"
+           FallbackNTP: ""
+     boot.after:
+       - name: "restart systemd-timesyncd"
+         commands:
+           - systemctl restart systemd-timesyncd
+   ```
+
 ### Configure Users
 
-5. If you would like to have SSH access to your Edge host, you must configure Operating System (OS) users on your Edge
+6. If you would like to have SSH access to your Edge host, you must configure Operating System (OS) users on your Edge
    host. You can do this using the `stages.initramfs.users` block. Replace `USERNAME` with the name of your user and
    replace the value of the password with your password. You can also add the user to user groups, or add SSH keys to
    the list of authorized keys for that user.
@@ -120,7 +148,7 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
 
 ### Configure Proxy Settings (Optional)
 
-6. Optionally, you can configure HTTP/HTTPS proxy settings for your Edge host. This instructs the Edge host OS as well
+7. Optionally, you can configure HTTP/HTTPS proxy settings for your Edge host. This instructs the Edge host OS as well
    as the Palette agent to use the proxy server for outbound communications. Use the parameters from the table below to
    configure proxy settings for your Edge host.
 
@@ -132,7 +160,7 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
 
 ### Configure Post-Installation Behavior (Optional)
 
-7. You can use some parameters of the `install` block to configure what you'd like the Edge host to do after
+8. You can use some parameters of the `install` block to configure what you'd like the Edge host to do after
    installation is complete. The default behavior for the Edge host is to stay on the "Installation Complete" screen,
    but you can configure it to power off or restart automatically. For example, the following configuration instructs
    the Edge host to power off automatically post-installation.
