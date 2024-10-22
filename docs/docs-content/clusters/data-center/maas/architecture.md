@@ -45,6 +45,6 @@ This feature is only supported in Palette eXtended Kubernetes (PXK). Refer to th
   text="Custom API Server Endpoint for MAAS Clusters"
   url="/integrations/packs/?pack=kubernetes"
 />
-section for further guidance.
+section of the pack Additional Guidance for further information.
 
 <!-- prettier-ignore-end -->
