@@ -1,0 +1,71 @@
+name: Clean Up Unused Images
+
+on:
+  schedule:
+    # On the first of every month at 2 am
+    - cron: '0 2 1 * *'
+  workflow_dispatch:
+
+concurrency:
+  group: clean-up-images-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  find_unused_images:
+    runs-on: ubuntu-latest
+
+    steps:
+      - id: checkout
+        name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      
+      - name: Find unused images
+        run: make find-unused-images
+
+      - name: Install GitHub CLI
+        run: sudo apt-get install gh
+
+      - name: Create PR with unused images
+        run: |
+          # Ensure that we are on master.
+          git checkout master
+
+          # Create a new branch.
+          branch_name="clean-up-unused-images-$(date +%Y%m%d%H%M%S)"
+          git checkout -b "$branch_name"
+
+          # Remove all the images identified as unused.
+          for img in $(cat unused_images.json); do
+            rm static/assets/docs/images/$img
+          done
+
+          # Clean up results file.
+          rm unused_images.json
+
+          # Commit and push branch
+          git add .
+          git commit -m "docs: clean up unused images"
+          git push origin $branch_name
+
+          # Create the pull request
+          gh pr create --base master --title "docs: clean up librarium unused images " --body "$(cat <<EOF
+            ## Describe the Change
+
+            This PR removes images identified as unused across all our branches. 
+
+            The images are identified using `scripts/find-unused-images.sh` script.
+
+            Please review this PR carefully before merging it.
+
+            EOF
+          )"
+    
+
