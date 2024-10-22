@@ -9,15 +9,17 @@ echo "Checking for unused image files in static/assets/docs/images folder..."
 # Trim the path static/assets/docs/images.
 find static/assets/docs/images -type f ! -name ".DS_STORE" ! -name ".DS_Store" | sed 's|static/assets/docs/images||g'  > all_images.json
 
+# Fetch all branches
+git fetch --all
+
 # List all the version branches
 branches="master"
 version_branches=$(git branch --list "version-[0-9]-[0-9]")
 branches+=" $version_branches"
 
 for current_branch in $branches; do
-    git checkout $current_branch
     echo "Current branch: $current_branch"
-    git pull
+    git checkout origin/$current_branch
 
     find docs -type f -name "*.md" -exec grep -Hn "\.webp" {} + > docs_used_images.json
     find _partials -type f -name "*.mdx" -exec grep -Hn "\.webp" {} + > partials_used_images.json
