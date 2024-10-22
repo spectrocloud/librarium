@@ -54,11 +54,11 @@ Configure your Palette environment
 ## Get Started
 
 To get started with an airgap Palette installation, begin by reviewing the
-[Environment Setup](./vmware-vsphere-airgap-instructions.md) guide.
+[Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md) guide.
 
 ## Resources
 
-- [Environment Setup](./vmware-vsphere-airgap-instructions.md)
+- [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md)
 
 - [Airgap Install Checklist](./checklist.md)
 

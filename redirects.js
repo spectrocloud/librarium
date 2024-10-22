@@ -410,7 +410,7 @@ const redirects = [
   },
   {
     from: "/enterprise-version/install-palette/airgap/vmware-vsphere-airgap-instructions/",
-    to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
   },
   {
     from: "/vertex/install-palette-vertex/airgap/kubernetes-airgap-instructions/",
@@ -418,7 +418,7 @@ const redirects = [
   },
   {
     from: "/vertex/install-palette-vertex/airgap/vmware-vsphere-airgap-instructions/",
-    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
   },
   {
     from: "/vertex/install-palette-vertex/airgap/checklist/",
@@ -554,6 +554,14 @@ const redirects = [
     to: "/automation/palette-cli/commands/ec/",
   },
   {
+    from: "/enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
+  },
+  {
     from: "/legal-licenses/oss-licenses/",
     to: "/legal-licenses/oss-licenses-index/",
   },
@@ -606,9 +614,6 @@ const redirects = [
       "/security-bulletins/reports/cve-2021-3711",
       "/security-bulletins/reports/cve-2021-45079",
       "/security-bulletins/reports/cve-2022-0778",
-      "/security-bulletins/reports/cve-2022-4450",
-      "/security-bulletins/reports/cve-2023-0215",
-      "/security-bulletins/reports/cve-2023-0286",
       "/security-bulletins/reports/cve-2023-52425",
       "/security-bulletins/reports/cve-2023-5528",
       "/security-bulletins/reports/prisma-2022-0227",

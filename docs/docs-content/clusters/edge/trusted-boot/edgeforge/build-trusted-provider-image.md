@@ -142,8 +142,8 @@ key that is in the Signature Database (DB). This is important both during instal
     Instead, open the **Earthfile** in the CanvOS directory. Under `build-provider-images`, remove the lines containing
     Kubernetes versions that you do not need.
 
-11. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
-    start the build process.
+11. CanvOS utility uses [Earthly](https://earthly.dev/)(https://earthly.dev/) to build the target artifacts. Issue the
+    following command to start the build process.
 
     ```bash
     ./earthly.sh +build-provider-images
