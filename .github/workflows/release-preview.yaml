@@ -44,14 +44,14 @@ jobs:
       - name: Make Robots.txt
         run: |
           touch static/robots.txt
-          echo "User-agent: *" >> robots.txt
-          echo "Disallow: /" >> robots.txt
-          excho "Sitemap: https://docs-latest.spectrocloud.com/sitemap.xml" >> robots.txt
+          echo "User-agent: *" >> static/robots.txt
+          echo "Disallow: /" >> static/robots.txt
+          echo "Sitemap: https://docs-latest.spectrocloud.com/sitemap.xml" >> static/robots.txt
         
 
       - name: Ensure noIndex is set
         id: check_noindex
-        run: node scripts/noindex_docusaurus_config.js $RUNNER_TEMP $PWD && mv $RUNNER_TEMP/temp.docusaurus.config.js $PWD/docusaurus.config.j
+        run: node scripts/noindex_docusaurus_config.js $PWD
           
 
       - name: Build
@@ -61,7 +61,7 @@ jobs:
 
       - name: Deploy Preview
         run: |
-          aws s3 sync --cache-control 'public, max-age=604800' --exclude '*.html' --exclude '*.xml' --exclude build/scripts/ build/ s3://docs-latest.spectrocloud.com --delete
+          aws s3 sync --cache-control 'public, max-age=604800' --exclude '*.html' --exclude build/scripts/ build/ s3://docs-latest.spectrocloud.com --delete
           aws s3 sync --cache-control 'public, max-age=0, s-maxage=604800' build/ s3://docs-latest.spectrocloud.com --delete
           aws cloudfront create-invalidation --distribution-id ${{ secrets.LATEST_DOCS_DISTRIBUTION_ID }} --paths "/*"
 
@@ -74,4 +74,4 @@ jobs:
           message-failure: |
               👎 Uh oh! The Netlify Preview failed to deploy for commit ${{ github.sha }}. Please check the Netlify logs for more information.
           refresh-message-position: true
-          update-only: true
+          update-only: false
