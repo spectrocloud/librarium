@@ -29,6 +29,8 @@ jobs:
         with:
           node-version: "20"
       
+      - run: npm ci
+
       - name: Find unused images
         run: make find-unused-images
 
