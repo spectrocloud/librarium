@@ -15,10 +15,10 @@ tags: ["release-notes"]
 
 ### Breaking Changes
 
-- Edge [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) created with the
-  latest version of the Edge CLI, version `4.5.4`, are not compatible with Palette agent versions prior to `4.5.4` due
-  to a new format schema. If you are using an older version of the Palette agent, use the Edge CLI version `4.5.3` or
-  earlier to create content bundles.
+- Edge [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) created with the
+  latest version of the Edge CLI, version `4.5.5`, are incompatible with Palette agent versions before `4.5.4` due to a
+  new format schema. If you are using an older version of the Palette agent, use the Edge CLI version `4.5.3` or earlier
+  to create content bundles.
 
 ### Improvements
 
