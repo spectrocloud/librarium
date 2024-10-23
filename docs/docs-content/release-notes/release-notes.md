@@ -28,7 +28,8 @@ tags: ["release-notes"]
 
 - Cluster [Profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) marked as hidden now include the ability to be mutable, hidden, and read-only.
 
-- [Edge content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) will now retain tags and image signatures. In the past, tags and signatures were stripped when the content bundle was created.
+- [Edge content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) will now retain tags and image signatures. In the past, tags and signatures were stripped when the content bundle was created. Use the latest version of the Edge CLI to create content bundles that retain tags and signatures. To download the latest version of the Edge CLI, visit the
+  [Downloads](../spectro-downloads.md#palette-edge-cli) page.
 
 - Support for multiple authenticated external registries with domain mapping capabilities is now available for Edge clusters. Refer to the [External Registries](../clusters/edge/edge-configuration/installer-reference.md#external-registries) section in the Edge Installer Configuration Reference page for more information.
 
@@ -41,8 +42,6 @@ tags: ["release-notes"]
   connection error.
 
 - Fixed an upgrade error causing clusters on K3s version 1.29 to fail to upgrade to a newer version.
-
-- Resolved an issue where clusters deployed by LocalUI failed to start due to KubeVIP and Harbor pods not starting.
 
 - Fixed an issue where pack names containing the `/` character did not fail validation during pack creation.
 
