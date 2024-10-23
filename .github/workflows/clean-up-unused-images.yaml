@@ -100,7 +100,7 @@ jobs:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
 
       - name: Slack Notification
-        if: ${{ env.GITHUB_CREATED_CLEANUP_PR }}
+        if: ${{ env.GITHUB_CREATED_CLEANUP_PR  != ''}}
         uses: rtCamp/action-slack-notify@v2.3.0
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
