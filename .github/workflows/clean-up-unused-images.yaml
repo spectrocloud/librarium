@@ -94,14 +94,21 @@ jobs:
           Please review this PR carefully before merging it.'
 
           output=$(gh pr create --base master --title "docs: clean up librarium unused images " --body "$pr_body" --label "$backport_labels")
-          echo $output
           pr_url=$(echo "$output" | grep -o "https://[^ ]*")
-          echo $pr_url
+          echo "PR successfully created $pr_url."
 
-          echo "CREATED_CLEANUP_PR=pr_url" >> $GITHUB_ENV
-          
-          echo "PR successfully created $CREATED_CLEANUP_PR."
-
+          echo "GITHUB_CREATED_CLEANUP_PR=$pr_url" >> $GITHUB_ENV
         env:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
 
+      - name: Slack Notification
+        if: ${{ env.GITHUB_CREATED_CLEANUP_PR }}
+        uses: rtCamp/action-slack-notify@v2.3.0
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":ok_hand:"
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'A new PR with unused images to clean up was created. Please review ${{env.GITHUB_CREATED_CLEANUP_PR}} for more details.'
