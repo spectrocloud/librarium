@@ -31,7 +31,7 @@ The next sections describe specific requirements for installing Palette VerteX.
 
 ## Size Guidelines
 
-<PartialsComponent category="self-hosted" name="size-guidelines" edition="Palette VerteX" />
+<PartialsComponent category="self-hosted" name="size-guidelines" edition="VerteX" />
 
 ## Proxy Requirements
 
