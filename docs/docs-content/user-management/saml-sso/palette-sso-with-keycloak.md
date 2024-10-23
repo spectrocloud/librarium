@@ -113,7 +113,7 @@ up Keycloak as an OIDC provider for Palette.
 
    :::
 
-   ![Keycloak Admin console](/keycloak//user-management_palette-rback_keycloak_login.webp)
+   ![Keycloak Admin console](/keycloak/user-management_palette-rback_keycloak_login.webp)
 
 7. Next, log in to [Palette](https://console.spectrocloud.com), and navigate to the left **Main Menu** and select
    **Tenant Settings**. Next, select **SSO** from the **Tenant Menu** to access the SSO configuration page. Click on the
@@ -187,7 +187,7 @@ Use the following steps to validate the SSO configuration.
 
    ![Image of Palette's main login screen](/keycloak/user-management_saml-sso_keycloak-11-palette-sso.webp "Palette SSO")
 
-   ![Image of the Keycloak Admin console](/keycloak//user-management_palette-rback_keycloak_login.webp)
+   ![Image of the Keycloak Admin console](/keycloak/user-management_palette-rback_keycloak_login.webp)
 
 3. Upon successful authentication, you will be redirected to Palette. You will be logged in to Palette as the admin user
    you created in Keycloak.
