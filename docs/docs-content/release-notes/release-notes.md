@@ -30,7 +30,7 @@ tags: ["release-notes"]
 
 - [Edge content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) will now retain tags and image signatures. In the past, tags and signatures were stripped when the content bundle was created.
 
-- Support for multiple authenticated external registries is now available for Edge clusters.
+- Support for multiple authenticated external registries with domain mapping capabilities is now available for Edge clusters. Refer to the [External Registries](../clusters/edge/edge-configuration/installer-reference.md#external-registries) section in the Edge Installer Configuration Reference page for more information.
 
 ### Bug Fixes
 
@@ -52,6 +52,13 @@ tags: ["release-notes"]
 
 - Fixed an issue where [system macros](../registries-and-packs/pack-constraints.md#pack-macros) were causing errors
   during cluster profile downloads.
+
+### Deprecations and Removals
+
+- The Edge Installer configuration parameter `stylus.registryCredentials` is deprecated. Use the
+  `stylus.externalRegistries` parameter to configure external registries. Refer to the
+  [Edge Installer Configuration Reference](../clusters/edge/edge-configuration/installer-reference.md#external-registries)
+  page for more information.
 
 ## October 13, 2024 - Release 4.5.0 - 4.5.3
 
