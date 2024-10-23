@@ -5,8 +5,6 @@ on:
     # On the first of every month at 2 am
     - cron: '0 2 1 * *'
   workflow_dispatch:
-  push:
-    branches: ['clean-up-images-doc-1232']
 
 concurrency:
   group: clean-up-images-${{ github.ref }}
