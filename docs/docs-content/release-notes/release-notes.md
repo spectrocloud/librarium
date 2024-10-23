@@ -18,7 +18,8 @@ tags: ["release-notes"]
 - Edge [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) created with the
   latest version of the Edge CLI, version `4.5.5`, are incompatible with Palette agent versions before `4.5.4` due to a
   new format schema. If you are using an older version of the Palette agent, use the Edge CLI version `4.5.3` or earlier
-  to create content bundles.
+  to create content bundles. To download the latest version of the Edge CLI, visit the
+  [Downloads](../spectro-downloads.md#palette-edge-cli) page.
 
 ### Improvements
 
