@@ -51,6 +51,12 @@ jobs:
 
       - name: Create PR with unused images
         run: |
+          unused_image_count=$(wc -l < unused_images.json)
+          if unused_image_count == 0; then
+            "No images found to remove."
+            exit 0
+          fi
+
           # Ensure that we are on master.
           git checkout master
 
@@ -87,9 +93,15 @@ jobs:
           The images are identified using `scripts/find-unused-images.sh` script.
           Please review this PR carefully before merging it.'
 
-          gh pr create --base master --title "docs: clean up librarium unused images " --body "$pr_body" --label "$backport_labels"
+          output=$(gh pr create --base master --title "docs: clean up librarium unused images " --body "$pr_body" --label "$backport_labels")
+          echo $output
+          pr_url=$(echo "$output" | grep -o "https://[^ ]*")
+          echo $pr_url
+
+          echo "CREATED_CLEANUP_PR=pr_url" >> $GITHUB_ENV
+          
+          echo "PR successfully created $CREATED_CLEANUP_PR."
 
         env:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
-    
 
