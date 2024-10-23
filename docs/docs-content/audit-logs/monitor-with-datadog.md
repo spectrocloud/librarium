@@ -33,7 +33,7 @@ Datadog.
 
 2. Select **Helm Chart**. Datadog provides you with an API key. Copy and save the key.
 
-   ![Datadog Agent Setup Page](/audit-logs_integrating-with-datadog_datadog-ui.webp)
+   ![Datadog Agent Setup Page](/audit-logs_monitor-with-datadog_datadog-ui.webp)
 
 3. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -45,7 +45,7 @@ Datadog.
 6. Assign the registry a name, for example, `Datadog`, and include `https://helm.datadoghq.com` as the endpoint. Click
    **Confirm**. The synchronization may take a few minutes to complete.
 
-   ![Palette Registry Setup Page](/audit-logs_integrating-with-datadog_registry.webp)
+   ![Palette Registry Setup Page](/audit-logs_monitor-with-datadog_registry.webp)
 
 7. Once the synchronization is finished, click on **Profiles** from the left **Main Menu** and select **Add Cluster
    Profile** to create a Datadog add-on cluster profile.
@@ -56,7 +56,7 @@ Datadog.
 
 10. Next, select the latest version of the `datadog` chart.
 
-    ![Datadog Helm Chart Pack](/audit-logs_integrating-with-datadog_datadog-pack.webp)
+    ![Datadog Helm Chart Pack](/audit-logs_monitor-with-datadog_datadog-pack.webp)
 
 11. Click **Values** under **Pack Details** to configure the Datadog Helm chart. Modify the parameters according to the
     following table.
@@ -147,7 +147,7 @@ Datadog.
 16. After a few minutes, the Datadog agent will start reporting. Log in to Datadog and select **Kubernetes** from the
     left **Main Menu** to verify that the audit logs are being transferred successfully to Datadog.
 
-    ![Datadog Agent Reporting](/audit-logs_integrating-with-datadog_datadog-agent.webp)
+    ![Datadog Agent Reporting](/audit-logs_monitor-with-datadog_datadog-agent.webp)
 
 ## Validate
 
@@ -156,7 +156,7 @@ Datadog.
 2. Click on **Logs** in the left **Main Menu**, select **Explorer**, and verify that your host cluster audit logs are
    visible.
 
-   ![Datadog UI Displaying the Logs](/audit-logs_integrating-with-datadog_datadog-logs.webp)
+   ![Datadog UI Displaying the Logs](/audit-logs_monitor-with-datadog_datadog-logs.webp)
 
 ## Resources
 
