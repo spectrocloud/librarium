@@ -95,17 +95,31 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
    cd CanvOS
    ```
 
-3. In the user data file, provide the URL and the credentials in `stylus.registryCredentials`. The following is an
-   example:
+3. In the user data file, provide the URL and the credentials in `stylus.externalRegistries.registries`. The following
+   is an example. Replace the values with your own and add any URL mapping rules if necessary.
 
    ```yaml
    #cloud-config
    stylus:
-     registryCredentials:
-       domain: 10.10.254.254:8000/spectro-images
-       username: ubuntu
-       password: *******
-       insecure: true
+    externalRegistries:
+      registries:
+      - domain: 10.10.254.254:8000/spectro-images
+        username: admin
+        password: ***************
+        repositoryName: example-repository-private
+        certificates: |
+          -----BEGIN CERTIFICATE-----
+          MIIDBzCCAe+gAwIBAgIJAJzQ
+          ...
+          -----END CERTIFICATE-----
+    registryMappingRules:
+      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+      "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
+      "grc.io/spectro-dev-public": "example.registry.com/internal-images"
+      "grc.io/spectro-images-public": "example.registry.com/internal-images"
+      "k8s.gcr.io": "example.registry.com/internal-images"
+      "registry.k8s.io": "example.registry.com/internal-images"
+      "grc.io": "example.registry.com/internal-images"
    ```
 
    Refer to [Installer Configuration](../../edge-configuration/installer-reference.md#external-registry-parameters) for

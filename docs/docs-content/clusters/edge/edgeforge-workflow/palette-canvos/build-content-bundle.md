@@ -73,10 +73,10 @@ Creating a content bundle provides several benefits that may address common use 
 
 1. Download Palette Edge CLI and assign the executable bit to the CLI. Refer to
    [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to use the right
-   Palette Edge CLI version. This guide uses 4.4.2 as an example.
+   Palette Edge CLI version. This guide uses 4.5.5 as an example.
 
    ```shell
-   VERSION=4.4.2
+   VERSION=4.5.5
    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
    chmod +x palette-edge
    ```
