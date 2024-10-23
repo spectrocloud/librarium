@@ -12,17 +12,26 @@ concurrency:
   group: clean-up-images-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 jobs:
   find_unused_images:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Retrieve Credentials
+        id: import-secrets
+        uses: hashicorp/vault-action@v3.0.0
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
       - id: checkout
         name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
 
       - name: Setup Nodejs
         uses: actions/setup-node@v4
@@ -34,8 +43,11 @@ jobs:
       - name: Find unused images
         run: make find-unused-images
 
-      - name: Install GitHub CLI
-        run: sudo apt-get install gh
+      - name: Set Git User
+        # see: https://github.com/actions/checkout/issues/13#issuecomment-724415212
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Create PR with unused images
         run: |
@@ -60,16 +72,14 @@ jobs:
           git push origin $branch_name
 
           # Create the pull request
-          gh pr create --base master --title "docs: clean up librarium unused images " --body "$(cat <<EOF
-            ## Describe the Change
+          echo -e '
+          ## Describe the Change \n
+          This PR removes images identified as unused across all our branches.\n 
+          The images are identified using `scripts/find-unused-images.sh` script.\n
+          Please review this PR carefully before merging it.\n' > pr_body
 
-            This PR removes images identified as unused across all our branches. 
-
-            The images are identified using `scripts/find-unused-images.sh` script.
-
-            Please review this PR carefully before merging it.
-
-            EOF
-          )"
+          export pr_body=$(cat pr_body) ; gh pr create --base master --title "docs: clean up librarium unused images " --body "$pr_body"
+        env:
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
     
 
