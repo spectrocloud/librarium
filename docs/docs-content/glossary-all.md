@@ -13,6 +13,13 @@ tags: ["glossary"]
 
 This page gives a quick reference to various object types and concepts within the Palette platform.
 
+## Agent
+
+The Palette Agent bridges the information transfer between Palette SaaS and Palette management plane. The agent collects
+information such as metrics, workloads, and heartbeats and constantly updates to the management plane. In addition to
+this, the agent is responsible for initiating and controlling Backup, OS-Patch, and Compliance Scan on the active
+cluster.
+
 ## App Mode
 
 A mode optimized for a simpler and streamlined developer experience that allows you to focus on the building,
@@ -177,48 +184,44 @@ are not part of any Palette pack or a chart. Pack manifests provide a pass-throu
 through raw manifests. Pack Manifest layers can be added to a cluster profile stack built using Spectro Packs and
 Charts.
 
-## Palette Edge Manager (Edge Host API)
-
-A cmd line API that supports TUI operations & site diagnostics. For Dark Site or Air Gapped environments Palette Edge
-Manager can be used to upload cluster configurations.
-
 ## Palette eXtended Kubernetes (PXK)
 
-Palette eXtended Kubernetes (PXK) is a customized version of the open-source Cloud Native Computing Foundation (CNCF)
+Palette eXtended Kubernetes (PXK) is a recompiled version of the open source Cloud Native Computing Foundation (CNCF)
 distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure
 providers, public cloud providers, and private data center providers. This is the default distribution when deploying a
 Kubernetes cluster through Palette. You have the option to choose other Kubernetes distributions, such as MicroK8s,
 Konvoy, and more, should you want to consume a different Kubernetes distribution.
 
-PXK is different from the upstream open-source Kubernetes version primarily because of the carefully reviewed and
+PXK is different from the upstream open source Kubernetes version primarily because of the carefully reviewed and
 applied hardening of the operating system (OS) and Kubernetes. The hardening ranges from removing unused kernel modules
-to using an OS configuration that follows industry best practices. Our custom Kubernetes configuration addresses common
-Kubernetes deployment security pitfalls and implements industry best practices.
+to using an OS configuration that follows industry best practices. Our recompiled Kubernetes configuration addresses
+common Kubernetes deployment security pitfalls and implements industry best practices.
 
 A benefit of Palette when used with PXK is the ability to apply different flavors of container storage interface (CSI)
-plugins and container network interface (CNI) plugins. Other open-source Kubernetes distributions, such as MicroK8s,
+plugins and container network interface (CNI) plugins. Other open source Kubernetes distributions, such as MicroK8s,
 RKE2, and K3s, come with a default CSI and CNI. Additional complexity and overhead are required from you to enable
 different interfaces. PXK supports the ability to select other interface plugins out of the box without any additional
 overhead or complexity needed from your side.
 
-There are no changes to the Kubernetes source code and we also follow the same versioning schema as the upstream
-open-source Kubernetes distribution.
+There are no changes to the Kubernetes source code and we also follow the same versioning schema as the upstream open
+source Kubernetes distribution.
 
 ## Palette eXtended Kubernetes Edge (PXK-E)
 
-Palette eXtended Kubernetes Edge (PXK-E) is a customized version of the open-source Cloud Native Computing Foundation
+Palette eXtended Kubernetes Edge (PXK-E) is a recompiled version of the open source Cloud Native Computing Foundation
 (CNCF) distribution of Kubernetes. This Kubernetes distribution is customized and optimized for edge computing
 environments and can be deployed through Palette. PXK-E is the Kubernetes distribution Palette defaults to when
 deploying Edge clusters.
 
-PXK-E differs from the upstream open-source Kubernetes version by optimizing for operations in an edge computing
-environment. PXK-E also differentiates itself by using the open-source project, [Kairos](https://kairos.io/) as the base
+PXK-E differs from the upstream open source Kubernetes version by optimizing for operations in an edge computing
+environment. PXK-E also differentiates itself by using the open source project, [Kairos](https://kairos.io/) as the base
 operating system (OS). PXK-E’s use of Kairos means the OS is immutable, which significantly improves the security
 posture and reduces potential attack surfaces.
 
 Another differentiator of PXK-E is the carefully reviewed and applied hardening of the OS and Kubernetes. The hardening
 ranges from removing unused OS kernel modules to using an OS configuration that follows industry best practices. Our
-custom Kubernetes configuration addresses common deployment security pitfalls and implements industry best practices.
+recompiled Kubernetes configuration addresses common deployment security pitfalls and implements industry best
+practices.
 
 With PXK-E, you can manage automatic OS upgrades while retaining immutability and the flexibility to roll out changes
 safely. The A/B partition architecture of Kairos allows for new OS and dependency versions to be installed in a separate
@@ -229,29 +232,13 @@ PXK-E manages the underlying OS and the Kubernetes layer together, which reduces
 maintaining two separate components.
 
 PXK-E allows you to apply different flavors of container storage interfaces (CSI) and container network interfaces
-(CNI). Other open-source Kubernetes distributions such as MicroK8s, RKE2, and K3s come with a default CSI and CNI. There
+(CNI). Other open source Kubernetes distributions such as MicroK8s, RKE2, and K3s come with a default CSI and CNI. There
 is additional complexity and overhead when you want to consume different interface plugins with traditional Kubernetes
 distributions. Using PXK-E, you select the interface plugin you want to apply without additional overhead and
 complexity.
 
 There are no changes to the Kubernetes source code used in PXK-E, and it follows the same versioning schema as the
-upstream open-source Kubernetes distribution.
-
-## Palette Orchestrator
-
-Palette orchestrator supports deploying the clusters as per the specifications desired and modeled in Palette UI.
-Furthermore, it supports the cluster version upgrades as per the user requirements. The Palette orchestrator also aids
-in recycling the certificates of the clusters, node health checks, and recycling unhealthy nodes.
-
-## PaletteOS (P6OS)
-
-PaletteOS is a real-time operating system provisioned by Palette. It is embedded with a base Operating System such as
-Ubuntu, K3OS, etc., and one of the Kubernetes distributions such as CNCF (Cloud Native Computing Foundation), K3s (a
-Lightweight Kubernetes Distribution), or RKE (Rancher Kubernetes Engine). Palette builds several of these based on the
-most desired versions of the base operating system and Kubernetes distribution.
-
-**Examples**: (Ubuntu20.0.4+CNCFK8s1.21.3, SLES+K3S). We also encourage our customers to build their own Operating
-system.
+upstream open source Kubernetes distribution.
 
 ## Palette Terminal User Interface (TUI)
 
@@ -330,13 +317,6 @@ cluster profile, create a cluster, etc.
 
 TUI is initially used as an interface to site operator to provide site-specific settings such as NW Settings (Static IP,
 DHCP, WAN, GW, Proxy), Palette endpoint, and Device ID override. It can accept inputs from the unattended.yaml file.
-
-## Spectro Agent
-
-Spectro Agent bridges the information transfer between Palette SaaS and Palette Orchestrator. The Spectro Agent collects
-information such as metrics, workloads, and heartbeats and constantly updates to the SaaS platform for user access. In
-addition to this, the Spectro Agent is responsible for initiating and controlling Backup, OS-Patch, and Compliance Scan
-on the running cluster.
 
 ## System Administrator
 

@@ -121,7 +121,7 @@ export function ReleaseNotesVersions(): JSX.Element | null {
     return (
       <Admonition type="tip">
         <p>
-          Are you looking for the release notes to a specific version of Palette? Use the version selector below to
+          Are you looking for the release notes for a specific version of Palette? Use the version selector below to
           navigate to the release notes of the desired version.
         </p>
         <div className={styles.dropdownContainer}>

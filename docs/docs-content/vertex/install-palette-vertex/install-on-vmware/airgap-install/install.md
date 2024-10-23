@@ -3,34 +3,21 @@ sidebar_label: "Install VerteX"
 title: "Install VerteX"
 description: "Learn how to install VerteX in an airgap VMware environment."
 icon: ""
-sidebar_position: 30
+sidebar_position: 40
 hide_table_of_contents: false
 tags: ["vertex", "enterprise", "airgap", "vmware", "vsphere"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-You install Palette VerteX in an airgap environment through the Palette Command Line Interface (CLI). The CLI provides
-you with an interactive experience that guides you through the installation process. You can invoke the Palette CLI on
-any Linux x86-64 system with the Docker daemon installed and connectivity to the VMware vSphere environment where
-Palette VerteX will be deployed.
+Palette VerteX can be installed on VMware vSphere in an airgap environment. When you install VerteX, a three-node
+cluster is created. You use the interactive Palette CLI to install VerteX on VMware vSphere. Refer to
+[Access Palette](../../../vertex.md#access-palette-vertex) for instructions on requesting the required credentials and
+assets.
 
 ## Prerequisites
 
-:::warning
-
-If you are installing Palette VerteX in an airgap environment, ensure you complete all the airgap pre-install steps
-before proceeding with the installation. Refer to the
-[VMware vSphere Airgap Instructions](./vmware-vsphere-airgap-instructions.md) guide for more information.
-
-:::
-
-- An AMD64 Linux environment with connectivity to the VMware vSphere environment.
-
-- [Docker](https://docs.docker.com/engine/install/) or equivalent container runtime installed and available on the Linux
-  host.
-
-- Palette CLI installed and available. Refer to the Palette CLI
-  [Install](../../../../automation/palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
+- You have completed the [Environment Setup](./environment-setup/environment-setup.md) steps and deployed the airgap
+  support VM.
 
 - You can choose between two Operating Systems (OS) when installing Vertex. Review the requirements for each OS.
 
@@ -113,46 +100,45 @@ playback speed.
 
 Use the following steps to install Palette VerteX.
 
-1.  Log in to your vCenter environment.
+1.  In your terminal, use the following command template to SSH into the airgap support VM. Enter the path to your
+    private SSH key, your username, and the IP or domain of the airgap support VM. The default username is `ubuntu`.
 
-2.  Create a vSphere VM and Template folder with the name `spectro-templates`. Ensure this folder is accessible by the
-    user account you will use to deploy the airgap VerteX installation.
-
-3.  Use the URL below to import the Operating System and Kubernetes distribution OVA required for the install. Place the
-    OVA in the `spectro-templates` folder. Refer to the
-    [Import Items to a Content Library](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-B413FBAE-8FCB-4598-A3C2-8B6DDA772D5C.html?hWord=N4IghgNiBcIJYFsAOB7ATgFwAQYKbIjDwGcQBfIA)
-    guide for information about importing an OVA in vCenter.
-
-    ```url
-    https://vmwaregoldenimage.s3.amazonaws.com/u-2204-0-k-12813-0.ova
+    ```shell
+    ssh -i </path/to/private/key> ubuntu@<vm-ip-or-domain>
     ```
 
-4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
-    should look like `r_u-2204-0-k-12813-0`. This naming convention is required for the install process to identify the
-    OVA. Refer to the [Supplement Packs](../../airgap/supplemental-packs.md#additional-ovas) page for a list of
-    additional OVAs you can download and upload to your vCenter environment.
+    Consider the following command example for reference.
+
+    ```shell
+    ssh -i /docs/ssh-private-key.pem ubuntu@vertex.example.com
+    ```
 
     :::tip
 
-    You can also use the **Deploy OVF Template** wizard in vSphere to make the OVA available in the `spectro-templates`
-    folder. Append the `r_` prefix, and remove the `.ova` suffix when assigning a name and target location. You can
-    terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
-    [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
-    guide for more information about deploying an OVA in vCenter.
+    Alternatively, you can use any Linux x86-64 system that has the Docker daemon and Palette CLI installed, as well as
+    connectivity to the VMware vSphere environment where Palette VerteX will be deployed.
 
     :::
 
-5.  Open a terminal window and invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The
-    interactive CLI prompts you for configuration details and then initiates the installation. For more information
-    about the `ec` subcommand, refer to [Palette Commands](../../../../automation/palette-cli/commands/ec.md).
+2.  Invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The interactive CLI prompts you
+    for configuration details and then initiates the installation. For more information about the `ec` subcommand, refer
+    to [Palette Commands](../../../../automation/palette-cli/commands/ec.md).
 
-        ```bash
-        palette ec install
-        ```
+    ```bash
+    palette ec install
+    ```
 
-6.  At the **Enterprise Cluster Type** prompt, choose **Palette VerteX**.
+    :::warning
 
-7.  Select the desired OS you want to use for the installation. Review the table below for more information about each
+    If you deployed the airgap support VM using a generic OVA, the Palette CLI may not be in the `usr/bin` path. Ensure
+    that you complete step **22** of the [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md)
+    guide, which installs the VerteX airgap binary and moves the Palette CLI to the correct path.
+
+    :::
+
+3.  At the **Enterprise Cluster Type** prompt, choose **Palette VerteX**.
+
+4.  Select the desired OS you want to use for the installation. Review the table below for more information about each
     option.
 
     | **Option**                   | **Description**                                                                                                                | **Requirements**                                                                                                                                                                                                 |
@@ -160,7 +146,7 @@ Use the following steps to install Palette VerteX.
     | **Ubuntu Pro**               | [Ubuntu Pro](https://ubuntu.com/pro) is the default option. It provides access to FIPS 140-2 certified cryptographic packages. | Ubuntu Pro token.                                                                                                                                                                                                |
     | **Red Hat Linux Enterprise** | Red Hat Linux Enterprise provides access to Red Hat Enterprise Linux.                                                          | Red Hat subscription and a custom RHEL vSphere template with Kubernetes. Review the [RHEL and PXK](../../../../byoos/image-builder/build-image-vmware/rhel-pxk.md) to learn how to create the required template. |
 
-8.  Depending on your OS selection, you will be prompted to provide the required information. For Ubuntu Pro, you will
+5.  Depending on your OS selection, you will be prompted to provide the required information. For Ubuntu Pro, you will
     need to provide your Ubuntu Pro token. For Red Hat Linux Enterprise, you will need to provide the path to the
     vSphere template and specify the version.
 
@@ -171,27 +157,27 @@ Use the following steps to install Palette VerteX.
 
     :::
 
-9.  Specify the URL or IP address of the Spectro Cloud Repository that is provided to you by the airgap setup script.
+6.  Specify the URL or IP address of the Spectro Cloud Repository that is provided to you by the airgap setup script.
     Make sure to specify the file path to the CA certificate when prompted.
 
     :::info
 
-    If you are using the Palette CLI from inside an [airgap support VM](./vmware-vsphere-airgap-instructions.md), the
-    CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Spectro Cloud
-    Artifact Repository (SCAR) configuration**. Type `y` to use the local resources and skip filling in the repository
-    URL and credentials.
+    If you are using the Palette CLI from inside an
+    [airgap support VM](./environment-setup/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect
+    the airgap environment and prompt you to **Use local, air-gapped Spectro Cloud Artifact Repository (SCAR)
+    configuration**. Type `y` to use the local resources and skip filling in the repository URL and credentials.
 
     :::
 
-10. Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro
+7.  Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro
     Cloud repository. Airgap installations, provide the credentials to your private repository provided to you by the
     airgap setup script .
 
-11. Choose `VMware vSphere` as the cloud type. This is the default.
+8.  Choose `VMware vSphere` as the cloud type. This is the default.
 
-12. Type an enterprise cluster name. Your VM instances will use this name as a prefix.
+9.  Type an enterprise cluster name. Your VM instances will use this name as a prefix.
 
-13. When prompted, enter the information listed in each of the following tables.
+10. When prompted, enter the information listed in each of the following tables.
 
         #### Environment Configuration
 
@@ -204,10 +190,11 @@ Use the following steps to install Palette VerteX.
     | **Pod CIDR**                      | Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                                      |
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                          |
 
-14. Select the OCI registry type and provide the configuration values. Review the following table for more information.
-    If you are using the Palette CLI from inside an [airgap support VM](./vmware-vsphere-airgap-instructions.md), the
-    CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type
-    `y` to use the local resources and skip filling in the OCI registry URL and credentials.
+11. Select the OCI registry type and provide the configuration values. Review the following table for more information.
+    If you are using the Palette CLI from inside an
+    [airgap support VM](./environment-setup/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect
+    the airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type `y` to use the local
+    resources and skip filling in the OCI registry URL and credentials.
 
     :::warning
 
@@ -236,10 +223,10 @@ Use the following steps to install Palette VerteX.
     | **Use Public Registry for Images**               | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. Airgap users, select `n` so that you can specify the values for the OCI registry that contains all the required images. |
 
     When prompted to **Pull images from public registry**, type `n` and specify the OCI registry configuration values
-    for your image registry. If you are an [airgap support VM](./vmware-vsphere-airgap-instructions.md), the CLI will
-    automatically detect the airgap environment and prompt you to **Use local, air-gapped Image Registry?**. Type `y` to
-    use the local resources and skip filling in the OCI registry URL and credentials. Refer to the table above for more
-    information.
+    for your image registry. If you are on an
+    [airgap support VM](./environment-setup/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect
+    the airgap environment and prompt you to **Use local, air-gapped Image Registry?**. Type `y` to use the local
+    resources and skip filling in the OCI registry URL and credentials. Refer to the table above for more information.
 
     :::info
 
@@ -248,7 +235,7 @@ Use the following steps to install Palette VerteX.
 
     :::
 
-15. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following
+12. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following
     table.
 
     #### VMware vSphere Account Information
@@ -278,7 +265,7 @@ Use the following steps to install Palette VerteX.
         | **NTP Servers**     | You can provide a list of Network Time Protocol (NTP) servers, such as `pool.ntp.org`.                                                                                                                                                                                                                                                            |
         | **SSH Public Keys** | Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) reference.                            |
 
-16. Specify the IP pool configuration. The placement type can be Static or Dynamic Host Configuration Protocol (DHCP).
+13. Specify the IP pool configuration. The placement type can be Static or Dynamic Host Configuration Protocol (DHCP).
     Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DHCP assigns IP
     addresses using DNS.
 
@@ -293,7 +280,7 @@ Use the following steps to install Palette VerteX.
         | **Name servers**                | Comma-separated list of DNS name server IP addresses.                                       |
         | **Name server search suffixes** | An optional comma-separated list of DNS search domains.                                     |
 
-17. The last set of prompts are for the vSphere machine and database configuration. Use the following table for
+14. The last set of prompts are for the vSphere machine and database configuration. Use the following table for
     guidance.
 
         #### vSphere Machine Configuration
@@ -363,7 +350,7 @@ Use the following steps to install Palette VerteX.
     export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
     ```
 
-18. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
+15. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
     in the environment where you initiated the installation.
 
     Issue the following command to list all instances of `kind` that exist in the environment.
@@ -396,7 +383,7 @@ Use the following steps to install Palette VerteX.
     Deleted: sha256:85a1a4dfc468cfeca99e359b74231e47aedb007a206d0e2cae2f8290e7290cfd
     ```
 
-19. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
+16. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
     you will be prompted to create a new password. Enter a new password and save your changes. Refer to the
     [password requirements](../../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about the password requirements.
@@ -416,13 +403,13 @@ Use the following steps to install Palette VerteX.
 
     ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.webp)
 
-20. After login, a Summary page is displayed. Palette VerteX is installed with a self-signed SSL certificate. To assign
+17. After login, a Summary page is displayed. Palette VerteX is installed with a self-signed SSL certificate. To assign
     a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the
     [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to
     upload the SSL certificate files to Palette VerteX.
 
-21. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
+18. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../../system-management/tenant-management.md) guide.
 
     ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.webp)
@@ -459,7 +446,7 @@ teams.
 
 ## Resources
 
-- [Environment Setup](./vmware-vsphere-airgap-instructions.md)
+- [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md)
 
 - [Create a Tenant](../../../system-management/tenant-management.md)
 

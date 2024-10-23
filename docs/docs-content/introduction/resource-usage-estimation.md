@@ -3,7 +3,7 @@ sidebar_label: "Resource Usage Calculation"
 title: "How Palette Calculates Your Resource Usage"
 description: "Learn what kCh is and how Palette measures your resource usage."
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 30
 tags: ["usage", "kCh"]
 ---
 

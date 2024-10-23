@@ -14,21 +14,10 @@ created. You use the interactive Palette CLI to install Palette on VMware vSpher
 [Access Palette](../../../enterprise-version.md#access-palette) for instructions on requesting the required credentials
 and assets.
 
-:::warning
-
-Complete the [Environment Setup](./vmware-vsphere-airgap-instructions.md) steps before proceeding with the installation.
-
-:::
-
 ## Prerequisites
 
-- An AMD64 Linux environment with connectivity to the VMware vSphere environment.
-
-- [Docker](https://docs.docker.com/engine/install/) or equivalent container runtime installed and available on the Linux
-  host.
-
-- Palette CLI installed and available. Refer to the Palette CLI
-  [Install](../../../../automation/palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
+- You have completed the [Environment Setup](./environment-setup/environment-setup.md) steps and deployed the airgap
+  support VM.
 
 - Review the required VMware vSphere [permissions](../vmware-system-requirements.md). Ensure you have created the proper
   custom roles and zone tags.
@@ -88,49 +77,49 @@ playback speed.
 
 Use the following steps to install Palette.
 
-1.  Log in to your vCenter environment.
+1.  In your terminal, use the following command template to SSH into the Palette airgap support VM. Enter the path to
+    your private SSH key, your username, and the IP or domain of the airgap support VM. The default username is
+    `ubuntu`.
 
-2.  Create a vSphere VM and Template folder with the name `spectro-templates`. Ensure this folder is accessible by the
-    user account you will use to deploy the airgap Palette installation.
-
-3.  Use the URL below to import the Operating System and Kubernetes distribution OVA required for the install. Place the
-    OVA in the `spectro-templates` folder.
-
-    ```url
-    https://vmwaregoldenimage.s3.amazonaws.com/u-2204-0-k-12813-0.ova
+    ```shell
+    ssh -i </path/to/private/key> ubuntu@<vm-ip-or-domain>
     ```
 
-4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
-    should look like `r_u-2204-0-k-12813-0`. This naming convention is required for the install process to identify the
-    OVA. Refer to the [Supplement Packs](../../airgap/supplemental-packs.md#additional-ovas) page for a list of
-    additional OVAs you can download and upload to your vCenter environment.
+    Consider the following command example for reference.
+
+    ```shell
+    ssh -i /docs/ssh-private-key.pem ubuntu@palette.example.com
+    ```
 
     :::tip
 
-    You can also use the **Deploy OVF Template** wizard in vSphere to make the OVA available in the `spectro-templates`
-    folder. Append the `r_` prefix, and remove the `.ova` suffix when assigning a name and target location. You can
-    terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
-    [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
-    guide for more information about deploying an OVA in vCenter.
+    Alternatively, you can use any Linux x86-64 system that has the Docker daemon and Palette CLI installed, as well as
+    connectivity to the VMware vSphere environment where Palette will be deployed.
 
     :::
 
-5.  Open a terminal window and invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The
-    interactive CLI prompts you for configuration details and then initiates the installation. For more information
-    about the `ec` subcommand, refer to [Palette Commands](../../../../automation/palette-cli/commands/commands.md).
+2.  Invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The interactive CLI prompts you
+    for configuration details and then initiates the installation. For more information about the `ec` subcommand, refer
+    to [Palette Commands](../../../../automation/palette-cli/commands/commands.md).
 
     ```bash
     palette ec install
     ```
 
-6.  At the **Enterprise Cluster Type** prompt, choose **Palette**.
+    :::warning
 
-7.  Type `y` if you want to use Ubuntu Pro. Otherwise, type `n`. If you choose to use Ubuntu Pro, you will be prompted
+    If you deployed the airgap support VM using a generic OVA, the Palette CLI may not be in the `usr/bin` path. Ensure
+    that you complete step **22** of the [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md)
+    guide, which installs the Palette airgap binary and moves the Palette CLI to the correct path.
+
+    :::
+
+3.  At the **Enterprise Cluster Type** prompt, choose **Palette**.
+
+4.  Type `y` if you want to use Ubuntu Pro. Otherwise, type `n`. If you choose to use Ubuntu Pro, you will be prompted
     to enter your Ubuntu Pro token.
 
-8.  Provide the URL or IP address of the Spectro Cloud Repository that is provided to you by the airgap setup script
-
-    <br />
+5.  Provide the URL or IP address of the Spectro Cloud Repository that is provided to you by the airgap setup script.
 
     :::info
 
@@ -140,15 +129,15 @@ Use the following steps to install Palette.
 
     :::
 
-9.  Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro
+6.  Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro
     Cloud repository. Airgap installations, provide the credentials to your private repository provided to you by the
     airgap setup script .
 
-10. Choose `VMware vSphere` as the cloud type. This is the default.
+7.  Choose `VMware vSphere` as the cloud type. This is the default.
 
-11. Type an enterprise cluster name, or use the default value. Your VM instances will use this name as a prefix.
+8.  Type an enterprise cluster name, or use the default value. Your VM instances will use this name as a prefix.
 
-12. When prompted, enter the information listed in each of the following tables.
+9.  When prompted, enter the information listed in each of the following tables.
 
     #### Environment Configuration
 
@@ -161,7 +150,7 @@ Use the following steps to install Palette.
     | **Pod CIDR**                      | Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                     |
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                         |
 
-13. Fill out the registry configuration details. If you are using the Palette CLI from inside an airgap support VM, the
+10. Fill out the registry configuration details. If you are using the Palette CLI from inside an airgap support VM, the
     CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type
     `y` to use the local resources and skip filling in the OCI registry URL and credentials. Otherwise, you will need to
     provide the OCI registry configuration values for your pack and image registry.
@@ -193,7 +182,7 @@ Use the following steps to install Palette.
     | **Use Public Registry for Images**               | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. Airgap users, select `n` so that you can specify the values for the OCI registry that contains all the required images. |
 
         	When prompted to **Pull images from public registry**, type `n` and specify the OCI registry configuration values for
-        	your image registry. If you are an airgap support VM, the CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Image Registry?** Type `y` to use the local resources and skip filling in the OCI registry URL and credentials.
+        	your image registry. If you are on an airgap support VM, the CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Image Registry?** Type `y` to use the local resources and skip filling in the OCI registry URL and credentials.
         Refer to the table above for more information.
 
     :::info
@@ -203,7 +192,7 @@ Use the following steps to install Palette.
 
     :::
 
-14. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following
+11. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following
     table.
 
     #### VMware vSphere Account Information
@@ -233,7 +222,7 @@ Use the following steps to install Palette.
     | **NTP Servers**     | You can provide a list of Network Time Protocol (NTP) servers.                                                                                                                                                                                                                                                            |
     | **SSH Public Keys** | Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) reference.                            |
 
-15. Specify the IP pool configuration. The placement type can be Static or Dynamic Host Configuration Protocol (DHCP).
+12. Specify the IP pool configuration. The placement type can be Static or Dynamic Host Configuration Protocol (DHCP).
     Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DHCP assigns IP
     addresses using DNS.
 
@@ -248,7 +237,7 @@ Use the following steps to install Palette.
     | **Name servers**                | Comma-separated list of DNS name server IP addresses.                                       |
     | **Name server search suffixes** | An optional comma-separated list of DNS search domains.                                     |
 
-16. The last set of prompts are for the vSphere machine and database configuration. Use the following table for
+13. The last set of prompts are for the vSphere machine and database configuration. Use the following table for
     guidance.
 
     #### vSphere Machine Configuration
@@ -316,7 +305,7 @@ Use the following steps to install Palette.
     export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
     ```
 
-17. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
+14. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
     in the environment where you initiated the installation.
 
     Issue the following command to list all instances of `kind` that exist in the environment.
@@ -349,7 +338,7 @@ Use the following steps to install Palette.
     Deleted: sha256:85a1a4dfc468cfeca99e359b74231e47aedb007a206d0e2cae2f8290e7290cfd
     ```
 
-18. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
+15. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
     you will be prompted to create a new password. Enter a new password and save your changes. Refer to the
     [password requirements](../../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about the password requirements.
@@ -369,17 +358,17 @@ Use the following steps to install Palette.
 
     ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
-19. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
+16. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
     you will be prompted to create a new password. Enter a new password and save your changes. You will be redirected to
     the Palette system console.
 
-20. After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
+17. After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
     [Configure HTTPS Encryption](../../../system-management/ssl-certificate-management.md) page for instructions on how
     to upload the SSL certificate files to Palette.
 
-21. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
+18. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../../system-management/tenant-management.md) guide.
 
     ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.webp)

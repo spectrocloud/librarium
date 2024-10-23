@@ -6,7 +6,7 @@ set -e
 echo "Checking for files not in WebP format in static/assets/docs/images/ folder..."
 
 # Find files that are not in WebP format and are not .DS_STORE files
-non_webp_files=$(find static/assets/docs/images/ -type f ! -name "*.webp" -not -name ".DS_STORE")
+non_webp_files=$(find static/assets/docs/images/ -type f ! -name "*.webp" ! -name "*.gif" -not -name ".DS_STORE")
 
 # Check if there are any non-WebP files
 if [[ -n "$non_webp_files" ]]; then

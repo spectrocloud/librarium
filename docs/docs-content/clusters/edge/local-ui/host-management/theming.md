@@ -40,8 +40,8 @@ console for all Edge hosts of your organization.
   command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
   create privileged containers.
 
-- A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for a
-  [free trial](https://www.spectrocloud.com/free-tier/).
+- A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for an account
+  [here](https://www.spectrocloud.com/get-started).
 
 - Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
   generate a new registration token. For detailed instructions, refer to the
@@ -91,9 +91,7 @@ console for all Edge hosts of your organization.
     The `colors.sidebar` property controls the color of the sidebar. This is also the color of the background in the
     Local UI login screen. We suggest you choose a color that contrasts well against your logo as the logo as the color
     will serve as the background for your logo. The **brand** color controls the color of buttons and checkboxes in the
-    UI. The
-
-    following image displays the default logo, brand, and sidebar color.
+    UI. The following image displays the default logo, brand, and sidebar color.
 
     ![A screenshot of Local UI showing the elements controlled by the color properties and the location of the logo](/cluster_edge_emc_theming.webp)
 

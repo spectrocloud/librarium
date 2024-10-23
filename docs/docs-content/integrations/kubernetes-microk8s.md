@@ -24,7 +24,7 @@ Refer to the [Kubernetes Support Lifecycle](kubernetes-support.md#other-kubernet
 
 <Tabs queryString="parent">
 
-<!-- <TabItem label="1.28.x" value="1.28.x">
+<TabItem label="1.28.x" value="1.28.x">
 
 ### Usage
 
@@ -59,17 +59,19 @@ MicroK8s upgrades.
 The MicroK8s pack supports three types of upgrade strategies:
 
 - `InPlaceUpgrade` - Performs an in-place upgrade of the control plane. For clusters with one control plane and one
-  worker node, `InPlaceUpgrade` temporarily shuts down the API server.
+  worker node, `InPlaceUpgrade` temporarily shuts down the API server. This is the default upgrade strategy.
 
-- `RollingUpgrade` - The default upgrade strategy that deletes the current control plane node before creating a new one.
+- `RollingUpgrade` - This upgrade strategy deletes the current control plane node before creating a new one.
 
 - `SmartUpgrade` - Performs an in-place upgrade of the control plane on clusters with fewer than three control plane
   nodes, and a rolling upgrade on clusters with three or more control plane nodes.
 
 #### Using MicroK8s with the AWS EBS Pack
 
-When using the [AWS EBS pack](./aws-ebs.md) with MicroK8s, you need to change the EBS CSI pack `node.kubelet` parameter
-from `/var/lib/kubelet` to `/var/snap/microk8s/common/var/lib/kubelet`.
+<!-- prettier-ignore -->
+When using the <VersionedLink text="AWS EBS pack" url="/integrations/packs/?pack=kubernetes-microk8s" /> with MicroK8s,
+you need to change the EBS CSI pack `node.kubelet` parameter from `/var/lib/kubelet` to
+`/var/snap/microk8s/common/var/lib/kubelet`.
 
 ```yaml {3}
 node:
@@ -83,7 +85,61 @@ node:
   kubeletPath: /var/snap/microk8s/common/var/lib/kubelet
 ```
 
-</TabItem> -->
+## Troubleshoot
+
+### Scenario - Backup and Restore Fails with Restic
+
+If you encounter errors backing up or restoring a MicroK8s cluster with [restic](https://github.com/restic/restic), it
+may be related to the Velero issue [4035](https://github.com/vmware-tanzu/velero/issues/4035). You can resolve this
+issue by using the following workaround.
+
+1. Issue the command below to get the `restic` daemonset pod and its namespace.
+
+   ```shell
+   kubectl get pods --selector name=restic --all-namespaces
+   ```
+
+   ```shell hideClipboard
+   NAMESPACE                          NAME           READY   STATUS        RESTARTS   AGE
+   cluster-66f0f593841168d5eec8962e   restic-4lj7p    0/1    Terminating       3        2m
+   ```
+
+2. Issue the following command to patch the `restic` daemonset pod. Replace `cluster-xxxxxxxxx` with the namespace of
+   your `restic` daemonset pod.
+
+   ```shell
+   kubectl ---namespace cluster-xxxxxxxxx patch daemonset restic --patch '{"spec":{"template":{"spec":{"volumes":[{"name":"host-pods","hostPath":{"path":"/var/snap/microk8s/common/var/lib/kubelet/pods"}}]}}}}'
+   ```
+
+3. Verify that the `restic` daemonset pod is patched. Replace `cluster-xxxxxxxxx` with the namespace of your `restic`
+   daemonset pod.
+
+   ```shell
+   kubectl --namespace cluster-xxxxxxxxx get daemonset restic -o jsonpath='{.spec.template.spec.volumes}'
+   ```
+
+   ```shell {9-15} hideClipboard
+    [
+      {
+        "name": "cloud-credentials",
+        "secret": {
+          "defaultMode": 420,
+          "secretName": "velero"
+        }
+      },
+      {
+        "hostPath": {
+          "path": "/var/snap/microk8s/common/var/lib/kubelet/pods",
+          "type": ""
+        },
+        "name": "host-pods"
+      }
+   ]
+   ```
+
+4. Backup and restore operations will now work as expected.
+
+</TabItem>
 
 <TabItem label="1.27.x" value="1.27.x">
 
@@ -117,6 +173,60 @@ The MicroK8s pack supports three types of upgrade strategies:
 
 - `SmartUpgrade` - Performs an in-place upgrade of the control plane on clusters with fewer than three control plane
   nodes, and a rolling upgrade on clusters with three or more control plane nodes.
+
+## Troubleshoot
+
+### Scenario - Backup and Restore Fails with Restic
+
+If you encounter errors backing up or restoring a MicroK8s cluster with [restic](https://github.com/restic/restic), it
+may be related to the Velero issue [4035](https://github.com/vmware-tanzu/velero/issues/4035). You can resolve this
+issue by using the following workaround.
+
+1. Issue the command below to get the `restic` daemonset pod and its namespace.
+
+   ```shell
+   kubectl get pods --selector name=restic --all-namespaces
+   ```
+
+   ```shell hideClipboard
+   NAMESPACE                          NAME           READY   STATUS        RESTARTS   AGE
+   cluster-66f0f593841168d5eec8962e   restic-4lj7p    0/1    Terminating       3        2m
+   ```
+
+2. Issue the following command to patch the `restic` daemonset pod. Replace `cluster-xxxxxxxxx` with the namespace of
+   your `restic` daemonset pod.
+
+   ```shell
+   kubectl ---namespace cluster-xxxxxxxxx patch daemonset restic --patch '{"spec":{"template":{"spec":{"volumes":[{"name":"host-pods","hostPath":{"path":"/var/snap/microk8s/common/var/lib/kubelet/pods"}}]}}}}'
+   ```
+
+3. Verify that the `restic` daemonset pod is patched. Replace `cluster-xxxxxxxxx` with the namespace of your `restic`
+   daemonset pod.
+
+   ```shell
+   kubectl --namespace cluster-xxxxxxxxx get daemonset restic -o jsonpath='{.spec.template.spec.volumes}'
+   ```
+
+   ```shell {9-15} hideClipboard
+    [
+      {
+        "name": "cloud-credentials",
+        "secret": {
+          "defaultMode": 420,
+          "secretName": "velero"
+        }
+      },
+      {
+        "hostPath": {
+          "path": "/var/snap/microk8s/common/var/lib/kubelet/pods",
+          "type": ""
+        },
+        "name": "host-pods"
+      }
+   ]
+   ```
+
+4. Backup and restore operations will now work as expected.
 
 </TabItem>
 

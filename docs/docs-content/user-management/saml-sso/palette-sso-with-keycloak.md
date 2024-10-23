@@ -9,7 +9,7 @@ hiddenFromNav: false
 tags: ["user-management", "oidc-sso", "Keycloak"]
 ---
 
-Keycloak is an open-source Identity and Access Management (IAM) tool, primarily used for simplifying the authentication
+Keycloak is an open source Identity and Access Management (IAM) tool, primarily used for simplifying the authentication
 and authorization processes in modern applications and services. It provides a wide range of features including Single
 Sign-On (SSO), two-factor authentication, and social login capabilities. Keycloak is designed to manage users,
 credentials, roles, and groups efficiently, enabling developers to secure their applications and services with minimal
@@ -41,6 +41,19 @@ up Keycloak as an OIDC provider for Palette.
   :::
 
 - Kubectl installed and configured to access your Kubernetes cluster.
+
+- Palette requires the following claims to be present in the OIDC token:
+
+  | Claim Name       | Default Value | Description                                            |
+  | ---------------- | ------------- | ------------------------------------------------------ |
+  | **Email**        | `email`       | The user's email address.                              |
+  | **First Name**   | `given_name`  | The user's first name.                                 |
+  | **Last Name**    | `family_name` | The user's last name.                                  |
+  | **Spectro Team** | `groups`      | The user's group memberships in the Identity Provider. |
+
+  Change the claim names in your IdP if they are different from the default values. If the OIDC token does not contain
+  these claims, toggle the **Use userinfo endpoint** option in the OIDC configuration to allow Palette to fetch the
+  missing claims from the user information endpoint.
 
 ## Enable SSO with Keycloak
 

@@ -75,12 +75,21 @@ To complete this tutorial, you will need the following:
 
 - [Git](https://git-scm.com/downloads). Ensure git installation by issuing the `git --version` command.
 
-- [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
-  command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
-  create privileged containers.
+- (Optional) [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still
+  build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the
+  root user.
 
-- A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for a
-  [free trial](https://www.spectrocloud.com/free-tier/).
+- An image management tool such as [Docker](https://docs.docker.com/engine/install/) or
+  [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available.
+
+  :::info
+
+  If you do not install Earthly, you must install Docker.
+
+  :::
+
+- A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for an account
+  [here](https://www.spectrocloud.com/get-started).
 
 - A Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
   generate a new registration token. For detailed instructions, refer to the
@@ -247,8 +256,8 @@ users:
 
 ## Build Artifacts
 
-The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
-start the build process.
+The CanvOS utility uses [Earthly](https://earthly.dev/)(https://earthly.dev/) to build the target artifacts. Issue the
+following command to start the build process.
 
 :::warning
 
@@ -264,9 +273,25 @@ to [Build Edge Artifacts guide](../../clusters/edge/edgeforge-workflow/palette-c
 
 :::
 
+<Tabs group="earthly">
+
+<TabItem value="Earthly Installed">
+
+```bash
+earthly +build-all-images
+```
+
+</TabItem>
+
+<TabItem value="Earthly Not Installed">
+
 ```bash
 sudo ./earthly.sh +build-all-images
 ```
+
+</TabItem>
+
+</Tabs>
 
 ```hideClipboard bash {2}
 # Output condensed for readability

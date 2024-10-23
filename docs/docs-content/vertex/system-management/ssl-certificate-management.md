@@ -12,8 +12,8 @@ keywords: ["self-hosted", "vertex"]
 Palette VerteX uses Secure Sockets Layer (SSL) certificates to secure internal and external communication with Hypertext
 Transfer Protocol Secure (HTTPS). External VerteX endpoints, such as the
 [system console](../system-management/system-management.md#system-console),
-[VerteX dashboard](../../getting-started/dashboard.md), the VerteX API, and the gRPC endpoint, are enabled by default
-with HTTPS using an auto-generated self-signed certificate.
+[VerteX dashboard](../../introduction/dashboard.md), the VerteX API, and the gRPC endpoint, are enabled by default with
+HTTPS using an auto-generated self-signed certificate.
 
 ## Update System Address and Certificates
 
@@ -43,6 +43,9 @@ updating the system address may require manual reconciliation on deployed cluste
 - You need to have an x509 certificate and a key file in PEM format. The certificate file must contain the full
   certificate chain. Reach out to your network administrator or security team if you do not have these files.
 
+- A utility or tool to convert the certificate and key files to base64-encoded strings. You can use the `base64` command
+  in Unix-based systems. Alternatively, you can use an online tool to convert the files to base64-encoded strings.
+
 - Ensure the certificate is created for the custom domain name you specified for your Palette VerteX installation. If
   you did not specify a custom domain name, the certificate must be created for the Palette VerteX system console's IP
   address. You can also specify a load balancer's IP address if you are using a load balancer to access Palette VerteX.
@@ -59,18 +62,33 @@ You can update your Palette system address and SSL certificates by using the fol
 
 4. Update your Palette domain in the **System Address (UI and API)** field.
 
-5. Copy and paste the certificate into the **Certificate** field.
+5. Convert the certificate, private key, and Certificate Authority (CA) chain to base64-encoded strings. In the
+   following command, an example file, **certificate.crt** is output and converted to base64-encoded string using the
+   `base64` command.
 
-6. Copy and paste the certificate key into the **Key** field.
+   ```shell
+   cat certificate.crt | base64
+   ```
 
-7. Copy and paste the certificate authority into the **Certificate Authority** field.
+   ```shell hideClipboard
+   LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURwRENDQW95Z0F3SUJBZ0lSQU1VYUZ3cytaUyszYnhzRmREZ0s0aWd3RFFZSktvWklodmNOQVFFTEJRQXcKWXpFTE1Ba0dBMVVFQmhNQ1NVNHhFakFRQmdOVkJBZ1RDVXRoY201aGRHRnJZVEVXTUJRR0ExVUVDaE1OVTNCbApZM1J5YnlCRGJHOTFaREVQTUEwR0ExVUVDeE1HU0hWaVlteGxNUmN3RlFZRFZRUURFdzVEUVNCRFpYSjBhV1pwClkyRjBaVEFlRncweU5ERXdNRGd5TWpBd05EaGFGdzB5TlRFd01EZ3lNakF3TkRoYU1IY3hDekFKQmdOVkJBWVQKQWtsT01SSXdFQVlEVlFRSUV3bExZWEp1WVhSaGEyRXhGakFVQmdOVkJBb1REVk53WldOMGNtOGdRMnh2ZFdReApEekFOQmdOVkJBc1RCa2gxWW1Kc1pURXJNQ2tHQTFVRUF4TWljR0ZzWlhSMFpTNWtiMk56TFhSbGMzUXVjM0JsClkzUnliMk5zYjNWa0xtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFNZHMKUjk3enFKWjBpc1VYTWpkZVBzY3BRZTM2d0gxOVhKM0QyV2Q4dnk2MVZOcThNbnNGM1FZWmRLT2dpcGZVNnV5WQp3b3NqcnErRzE3Wm5lS2tzMG5iQ3BiU0M0MURyalJxYUp2YnJOMUdDTjJnYTNXaEVURzBEdi9PWjIwYlF0S2ZqCkJXcWNOY0p5Mm90N0hQZXRiVmEvSFNhZnE1OXJKMEQvaXJtVGJJcm1Fb0ZEMmpEWUx2eVpycEt5WVdmY3JWYjIKL09USmJGNXIwQndYVXNRTit4b0FhdnlsNXl2a1B2MWhwUHlxWkRUQmk3c290VEZJZDl3eHczeGdkU3JWZHQwdgpJWnc5WTN4NWxlaGZMQm5CSWo1RlBXdUJGNmxiZDhoazBaLzdtbTVybjRxalArMmphTzBzYlhRUnl4WjlJZys1CmliOHZRVEZUVFVmYmUvQTZ5T1VDQXdFQUFhTS9NRDB3REFZRFZSMFRBUUgvQkFJd0FEQXRCZ05WSFJFRUpqQWsKZ2lKd1lXeGxkSFJsTG1SdlkzTXRkR1Z6ZEM1emNHVmpkSEp2WTJ4dmRXUXVZMjl0TUEwR0NTcUdTSWIzRFFFQgpDd1VBQTRJQkFRQktxbGVuZVB0WjJ1cG9LbCsvRWNNUmF0cjNOTWRlWHFGM0R6bWZLMDJ5VlE4akZremdkdVI2CmJXclBBaXBBejRXSytOTTcwSnZTRzVpaVhtajd1ajU5S2ZPUDA4RWZjYy94Q1ErMGtYdTJXV2J5M0p5c0UxMjQKT2o3OEJlOXFkZ3Q1cXFCcU03OEFMYkVKU21Ha21zak9DcFFzMlV5d3E2L0RmZngxVVk4VS9FS3l1M2JUS1pmQgpMcDBoMzZjeU83MFVKZjJycWxVMVVLUnZsNmh3UkpFRXRjOW5iNzh4TVFic0RQRThaOUZBMXh3QW1qU1lSaGx5CjVUUjFQTnREVTd0MHROVWg1ZzlzSjVVTmhpbDkyZzZNZ3dLYjVRMXVxT0JjbFZMcHdzbVRrdERjTWlZM1dKTksKWTZsYjBBZVE0cVBZNkFiUmQrOXJnc2NvcGRPc2dqUkEKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+   ```
+
+   Repeat this step for the private key and Certificate Authority (CA) file.
+
+6. Copy and paste the base64-encoded certificate string into the **Certificate** field.
+
+7. Copy and paste the base64-encoded certificate key string into the **Key** field.
+
+8. Copy and paste the base64-encoded certificate authority chain string into the **Certificate Authority** field.
 
    ![A view of the certificate upload screen](/palette_system-management_ssl-certificate-management_system-address.webp)
 
-8. Click **Update** to save your changes.
+9. Click **Update** to save your changes.
 
-9. If you have any clusters deployed, you may need to reconcile the updated system address for each cluster. Refer to
-   [Reconcile System Address on Deployed Clusters](#reconcile-system-address-on-deployed-clusters) for more information.
+10. If you have any clusters deployed, you may need to reconcile the updated system address for each cluster. Refer to
+    [Reconcile System Address on Deployed Clusters](#reconcile-system-address-on-deployed-clusters) for more
+    information.
 
 You will receive an error message if the provided values are not valid. Once the certificate is uploaded successfully,
 Palette VerteX will refresh its listening ports and start using the newly configured values.

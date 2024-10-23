@@ -66,3 +66,4 @@ gRPC is used for all communication between the management platform and the workl
 | registry3.spectrocloud.com                    | 443       |
 | 415789037893.dkr.ecr.us-east-1.amazonaws.com  | 443       |
 | 415789037893.dkr.ecr.us-west-2.amazonaws.com  | 443       |
+| us-docker.pkg.dev                             | 443       |

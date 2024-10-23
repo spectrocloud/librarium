@@ -26,9 +26,9 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
   [Amazon EC2 key pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) resource.
 
 - To access your EKS cluster using kubectl, you will need the
-  [aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html) plugin
-  installed. If you are using a custom OIDC provider, you will need the [kubelogin](https://github.com/int128/kubelogin)
-  plugin installed. Refer to the [Access EKS Cluster](#access-eks-cluster) section for more information.
+  [aws-iam-authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator) plugin installed. If you are using a
+  custom OIDC provider, you will need the [kubelogin](https://github.com/int128/kubelogin) plugin installed. Refer to
+  the [Access EKS Cluster](#access-eks-cluster) section for more information.
 
 - To use secrets encryption, which is available only during EKS cluster creation, you must have created an AWS Key
   Management Service (KMS) key. If you do not have one, review
@@ -206,10 +206,10 @@ You can access your Kubernetes cluster by using the kubectl CLI, which requires 
 will authenticate to your EKS cluster, you need to install the appropriate plugin. The table below lists the plugin
 required for two EKS deployment scenarios.
 
-| **Scenario**                                              | **Plugin**                                                                                                   |
-| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| Deploy EKS cluster with custom OIDC                       | [kubelogin](https://github.com/int128/kubelogin)                                                             |
-| Deploy EKS cluster access with default AWS authentication | [aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html) |
+| **Scenario**                                              | **Plugin**                                                                        |
+| --------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Deploy EKS cluster with custom OIDC                       | [kubelogin](https://github.com/int128/kubelogin)                                  |
+| Deploy EKS cluster access with default AWS authentication | [aws-iam-authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator) |
 
 Select the appropriate tab for your deployment.
 
@@ -219,7 +219,9 @@ Select the appropriate tab for your deployment.
 
 To access an EKS cluster with default AWS authentication, you need to do the following:
 
-- Install [aws-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html).
+- Download the aws-iam-authenticator plugin, install it, and make it available in your system's `$PATH`. Refer to the
+  [AWS IAM Authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator) GitHub repository for more
+  information.
 
 - Configure your AWS credentials. The aws-iam-authenticator plugin requires AWS credentials to access the cluster. Refer
   to the

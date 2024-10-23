@@ -1,0 +1,17 @@
+---
+partial_category: getting-started
+partial_name: cluster-observability
+---
+
+As we have seen throughout this tutorial, Palette exposes a set of workload metrics out-of-the-box to help cluster
+administrators better understand the resource utilization of the cluster. The <VersionedLink text="workload metrics" url="/clusters/cluster-management/workloads/" /> in Palette are a snapshot in
+time and do not provide alerting capabilities.
+
+We recommend using a dedicated monitoring system in order to gain a better picture of resource utilization in your
+environments. Several <VersionedLink text="packs" url="/integrations/" /> are available in the monitoring category that
+you can use to add additional monitoring capabilities to your cluster.
+
+Refer to the <VersionedLink text="Deploy Monitoring Stack" url="/clusters/cluster-management/monitoring/deploy-monitor-stack/"/>
+guide to learn how to deploy a monitoring stack using the open source tool
+[Prometheus](https://prometheus.io/docs/introduction/overview/) and how to configure a host cluster to forward metrics
+to the monitoring stack.

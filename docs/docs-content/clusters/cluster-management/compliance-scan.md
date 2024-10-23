@@ -38,7 +38,7 @@ page for guidance on how to upload the conformance packs to the self-hosted OCI 
 This scan examines the compliance of deployed Kubernetes security features against the CIS Kubernetes Benchmarks. CIS
 Kubernetes Benchmarks are consensus-driven security guidelines for the Kubernetes. Different releases of the CIS
 benchmark cover different releases of Kubernetes. By default, Kubernetes configuration security will determine the test
-set based on the Kubernetes version running on the cluster being scanned. Internally, Palette leverages an open-source
+set based on the Kubernetes version running on the cluster being scanned. Internally, Palette leverages an open source
 tool called KubeBench from Aqua Security to perform this scan. Scans are run against control plane and worker nodes of
 the Kubernetes cluster, and a combined report is made available on the UI. Users can filter the report to view only the
 control plane or worker results if required.
@@ -53,7 +53,7 @@ and it is suggested to be tested manually.
 Kubernetes penetration testing scans Kubernetes-related open-ports for any configuration issues that can leave the
 tenant clusters exposed to attackers. It hunts for security issues in your Kubernetes clusters and increases awareness
 and visibility of the security controls in Kubernetes environments. The scan gives a full report on the cluster security
-concerns. Internally Palette leverages an open-source tool called KubeHunter from Aqua Security to perform this scan.
+concerns. Internally Palette leverages an open source tool called KubeHunter from Aqua Security to perform this scan.
 Scans are run in 2 modes, Internal and External. In the internal mode, tests are run against the internal endpoint of
 the API server, whereas, in external mode, the external public-facing endpoint is used for testing. A combined report of
 vulnerabilities found in both modes is shown on the Palette UI. Users can filter the report to view just the internal or
@@ -64,7 +64,7 @@ external report if required.
 ## Conformance Testing
 
 Kubernetes conformance testing is about validating your Kubernetes configuration to ensure that they are conformant to
-the CNCF specifications. Palette leverages an open-source tool called Sonobuoy to perform this scan. Automatically
+the CNCF specifications. Palette leverages an open source tool called Sonobuoy to perform this scan. Automatically
 select a subset of relevant tests for execution based on the type of cloud (public, private) and the type of deployment
 infrastructure (IaaS, managed cloud service). Each test can take up to 2 hours to complete. If a cluster has a single
 worker node, a few tests may fail due to resources. For accurate assessment of conformance for distribution of
@@ -100,7 +100,7 @@ and choose the desired SBOM format, scan scope, and an optional backup location.
 
 Palette will identify every unique container image within your chosen scope and generate an SBOM for that image. Palette
 also runs the SBOM through a vulnerability scanner to flag any Common Vulnerabilities and Exposures (CVEs). Palette
-leverages two open-source tools from Anchore: [Syft](https://github.com/anchore/syft) for SBOM generation and
+leverages two open source tools from Anchore: [Syft](https://github.com/anchore/syft) for SBOM generation and
 [Grype](https://github.com/anchore/grype) for vulnerability detection.
 
 Suppose you specify a [backup location](backup-restore/backup-restore.md). In that case, the SBOM for each image will be
@@ -118,7 +118,7 @@ location setting.
 - [SPDX](https://github.com/spdx/spdx-spec/blob/v2.2/schemas/spdx-schema.json): A standard SBOM format widely used by
   organizations and governments. The SPDX format has been around longer than any other SBOM format.
 
-- [CycloneDX](https://cyclonedx.org/specification/overview/): An open-source XML-based SBOM format that provides a
+- [CycloneDX](https://cyclonedx.org/specification/overview/): An open source XML-based SBOM format that provides a
   standard representation of software components and their metadata.
 
 - Syft JSON: Syft's custom SBOM format. The Syft SBOM format contains the most metadata compared to the other SBOM
@@ -163,30 +163,33 @@ page for that particular vulnerability.
 
 ## Scan Options
 
-The following options are available for running cluster scans:
+The following options are available cluster scans.
 
-## On Demand
+- **On Demand**: Start a scan immediately.
+- **Scheduled**: Schedule a scan to start at a specific time.
 
-A cluster scan of any type can be started by navigating to the **Scans** tab of a cluster in Palette. Scan progress
-displays as 'Initiated' and transitions to 'Completed' when the scan is complete.
+#### On Demand
 
-| **On Demand Scan**                                         |
-| ---------------------------------------------------------- |
-| Select the cluster to scan -> Scan(top panel) -> Run Scan. |
+On demand scans can be initiated by navigating to the **Scans** tab of a cluster's details page in Palette. The scan
+progress displays as **Initiated** and changes to **Completed** when the scan is complete.
 
-## Scheduled
+| **On Demand Scan**                                                                                  |
+| --------------------------------------------------------------------------------------------------- |
+| From the cluster details page. Select the Scan tab. Click on **Run Scan** on the desired scan type. |
 
-You can set a schedule for each scan type when you deploy the cluster, and you can change the schedule at a later time.
+#### Scheduled
 
-| **During Cluster Deployment**                                                       |
-| ----------------------------------------------------------------------------------- |
-| Add New Cluster -> Settings -> Schedule scans -> Enable and schedule desired scans. |
+You can set a fixed schedule for a scan when you deploy the cluster. You can also change the schedule at a later time.
 
-| **Running Cluster**                                                                                                      |
-| ------------------------------------------------------------------------------------------------------------------------ |
-| Select the cluster to scan -> Settings -> Cluster Settings -> Scan Policies -> Enable and schedule scans of your choice. |
+| **Cluster Deployment**                                                                                |
+| ----------------------------------------------------------------------------------------------------- |
+| From the cluster creation settings page. Click on **Schedule scans** tab and configured the schedule. |
 
-### Schedule Options Available
+| **Active Cluster**                                                                                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| From the cluster details page. Click on the **Settings drop-down Menu**. Select **Cluster Settings**, followed by clicking on the **Scan Policies** tab. Enable and schedule the scans of your choice. |
+
+#### Schedule Options Available
 
 This operation can be performed on all cluster types across all clouds. Schedule your compliance scan for month, day,
 hour, or minute. The following options are available:
@@ -195,3 +198,43 @@ hour, or minute. The following options are available:
 - Every two weeks at midnight.
 - Every month on the first day of the month at midnight.
 - Every two months on the first day of the month at midnight
+
+## Scan reports
+
+All scan reports are available in the Palette UI. You can download them in CSV or PDF formats.
+
+The Palette agent stores reports in the Kubernetes cluster as a Kubernetes resource. You can list all available reports
+in the cluster and gather each report's status. To retrieve the list of all available reports, use the admin kubeconfig
+file downloaded and kubectl. Refer to the [Kubectl](./palette-webctl.md) to learn how to download the kubeconfig file
+and configure kubectl.
+
+To list all available reports, use the following command.
+
+```
+kubectl get audits.cluster.spectrocloud.com --all-namespaces
+```
+
+The output of this command provides the list of all reports executed on this Kubernetes cluster with the status for each
+report.
+
+```shell hideClipboard
+NAMESPACE                          NAME                                         AGE     STATUS
+cluster-66d8a761ed405e70b86a8a17   kube-bench-66df28ab3c13fb7876674c98-xscvq    5h14m   Complete
+cluster-66d8a761ed405e70b86a8a17   kube-hunter-66df65dced406e0856d8536a-zetys   53m     Complete
+cluster-66d8a761ed405e70b86a8a17   syft-66df6d437cda16db7074cefe-czfxq          21m     Complete
+```
+
+To check the details for a particular report, including report content. Issue the following command and replace the
+`<cluster-uuid>` with the actual cluster UUID and `<name of the report>` with the name of the report from the list.
+
+```shell
+kubectl get audits.cluster.spectrocloud.com --namespace cluster-<cluster-uuid> <name of the report> --output yaml
+```
+
+Below is an example of the command to get the details of the kube-bench report.
+
+```shell
+kubectl get audits.cluster.spectrocloud.com --namespace cluster-66d8a761ed405e70b86a8a17 kube-bench-66df28ab3c13fb7876674c98-xscvq --output yaml
+```
+
+The scan report content is available in the output block `status.results.<scan name>.scanReport.Worker.reportData`.
