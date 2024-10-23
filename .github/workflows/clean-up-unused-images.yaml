@@ -63,9 +63,6 @@ jobs:
             rm static/assets/docs/images/$img
           done
 
-          # Clean up results file.
-          rm unused_images.json
-
           # Commit and push branch
           git add .
           git commit -m "docs: clean up unused images"
@@ -77,8 +74,20 @@ jobs:
           This PR removes images identified as unused across all our branches.\n 
           The images are identified using `scripts/find-unused-images.sh` script.\n
           Please review this PR carefully before merging it.\n' > pr_body
+          
+          backport_labels="auto-backport"
+          for branch in $(cat evaluated_branches.json); do
+            if [[ $branch =~ version-[0-9]+(-[0-9]+)*$ ]]; then
+              backport_labels+=",backport-$branch"
+            fi 
+          done
 
-          export pr_body=$(cat pr_body) ; gh pr create --base master --title "docs: clean up librarium unused images " --body "$pr_body"
+          export pr_body=$(cat pr_body) ; gh pr create --base master --title "docs: clean up librarium unused images " --body "$pr_body" --label "$backport_labels"
+          
+          # Clean up results file.
+          rm unused_images.json
+          rm evaluated_branches.json
+
         env:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
     

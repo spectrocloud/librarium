@@ -1,9 +1,0 @@
-
-          ## Describe the Change 
-
-          This PR removes images identified as unused across all our branches.
- 
-          The images are identified using `scripts/find-unused-images.sh` script.
-
-          Please review this PR carefully before merging it.
-

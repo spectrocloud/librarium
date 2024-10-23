@@ -5,9 +5,9 @@ set -e
 
 # Create a list of all the images we have and save it to a json.
 # Trim the path static/assets/docs/images.
-find static/assets/docs/images -type f ! -name ".DS_STORE" ! -name ".DS_Store" | sed 's|static/assets/docs/images||g'  > all_images.json
+find static/assets/docs/images -type f \( -name "*.gif" -o -name "*.webp" \) ! -name ".DS_STORE" ! -name ".DS_Store" | sed 's|static/assets/docs/images||g'  > all_images.json
 image_count=$(wc -l < all_images.json)
-echo "Detected $image_count webp assets in static/assets/docs/images..." 
+echo "Detected $image_count .webp and .gif assets in static/assets/docs/images..." 
 
 # Fetch all branches
 git fetch --all
@@ -23,12 +23,13 @@ for version_branch in $version_branches; do
 done
 
 echo "Evaluating the following branches for image usage: { $branches }"
+echo "$branches" > evaluated_branches.json
 
 for current_branch in $branches; do    
     git checkout $current_branch
 
-    find docs -type f -name "*.md" -exec grep -Hn "\.webp" {} + > docs_used_images.json
-    find _partials -type f -name "*.mdx" -exec grep -Hn "\.webp" {} + > partials_used_images.json
+    find docs -type f -name "*.md" -exec grep -Hn -E "\.webp|\.gif" {} \; > docs_used_images.json
+    find _partials -type f -name "*.mdx" -exec grep -Hn -E "\.webp|\.gif" {} \; > partials_used_images.json
     cat docs_used_images.json partials_used_images.json > used_images.json
 
     line_number=1
