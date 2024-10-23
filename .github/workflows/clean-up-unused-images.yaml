@@ -63,18 +63,7 @@ jobs:
             rm static/assets/docs/images/$img
           done
 
-          # Commit and push branch
-          git add .
-          git commit -m "docs: clean up unused images"
-          git push origin $branch_name
-
-          # Create the pull request
-          echo -e '
-          ## Describe the Change \n
-          This PR removes images identified as unused across all our branches.\n 
-          The images are identified using `scripts/find-unused-images.sh` script.\n
-          Please review this PR carefully before merging it.\n' > pr_body
-          
+          # Construct backport labels.
           backport_labels="auto-backport"
           for branch in $(cat evaluated_branches.json); do
             if [[ $branch =~ version-[0-9]+(-[0-9]+)*$ ]]; then
@@ -82,11 +71,23 @@ jobs:
             fi 
           done
 
-          export pr_body=$(cat pr_body) ; gh pr create --base master --title "docs: clean up librarium unused images " --body "$pr_body" --label "$backport_labels"
-          
           # Clean up results file.
           rm unused_images.json
           rm evaluated_branches.json
+
+          # Commit and push branch
+          git add .
+          git commit -m "docs: clean up unused images"
+          git push origin $branch_name
+
+          # Create the pull request
+          pr_body='
+          ## Describe the Change
+          This PR removes images identified as unused across all our branches. 
+          The images are identified using `scripts/find-unused-images.sh` script.
+          Please review this PR carefully before merging it.'
+
+          gh pr create --base master --title "docs: clean up librarium unused images " --body "$pr_body" --label "$backport_labels"
 
         env:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
