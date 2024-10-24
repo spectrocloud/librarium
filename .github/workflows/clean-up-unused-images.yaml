@@ -49,10 +49,16 @@ jobs:
 
       - name: Create PR with unused images
         run: |
-          unused_image_count=$(wc -l < unused_images.json)
-          if unused_image_count == 0; then
-            "No images found to remove."
-            exit 0
+          file="unused_images.json"
+          if [[ -f "$file" ]]; then
+            unused_image_count=$(wc -l < "$file")
+            if [ "$unused_image_count" -eq 0 ]; then
+              echo "No images found to remove."
+              exit 0
+            fi
+          else
+            echo "File $file not found."
+            exit 1
           fi
 
           # Ensure that we are on master.
