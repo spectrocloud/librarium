@@ -32,7 +32,7 @@ We support the following use cases:
 
 - [IaaS Dynamic Placement](#iaas-dynamic-placement) - Palette creates network resources required for your cluster.
 
-- [AKS Static Placement](#aks-static-placement) - Palette deploys AKS clusters on the pre-existing resources you
+- [AKS Static Placement](#aks-static-placement) - Palette deploys AKS clusters on the pre-existing network resources you
   specify.
 
 - [AKS Dynamic Placement](#aks-dynamic-placement) - Palette creates resources required for your AKS cluster.
@@ -58,7 +58,7 @@ to use with Palette.
 ## IaaS
 
 Palette can deploy Virtual Machines (VMs) on Azure that collectively will be used to form the cluster. Depending on the
-use case, you can deploy VMs on a pre-existing environment or let Palette create the required network resources.
+use case, you can deploy VMs to a pre-existing virtual network or let Palette create the required network resources.
 
 Select the appropriate section below to learn how to create a custom role in Azure and assign it to the service
 principal you want to use with Palette.
@@ -66,8 +66,8 @@ principal you want to use with Palette.
 ### Static Placement {#iaas-static-placement}
 
 Palette requires a set of permissions at the subscription level to deploy IaaS clusters using static placement. The
-remainder of the permissions required by IaaS can be assigned at the subscription or resource group level. If you are
-deploying multiple clusters in a variety of resource groups within a subscription, apply the role with the subscription
+remainder of the permissions required by IaaS can be assigned at the resource group level. If you are
+deploying multiple clusters in a variety of resource groups within a subscription, apply the role containing the resource group level permissions with the subscription
 as scope instead of the resource group as scope.
 
 #### Prerequisites
@@ -97,7 +97,7 @@ as scope instead of the resource group as scope.
    resources.
 
    ```shell
-   cat << EOF > iaas_static_vnet_role.template.json
+   cat << EOF > iaas_static_vnet_role.json
    {
       "Name": "Palette Static Placement IaaS Cluster Deployer (vnet)",
       "IsCustom": true,
@@ -136,12 +136,12 @@ as scope instead of the resource group as scope.
     }
    ```
 
-3. Next, create a JSON file for the compute permissions. Issue the following command to create the JSON file. If you
+3. Next, create a JSON file for the permissions that must be applied at the resource group or subscription scope level. Issue the following command to create the JSON file. If you
    want to assign the permission to scope to a specific resource group, replace the subscription ID the
    `AssignableScopes` field with the resource group ID.
 
    ```shell
-   cat << EOF > iaas_static_rg_sub_role.template.json
+   cat << EOF > iaas_static_rg_sub_role.json
    {
      "Name": "Palette Static Placement IaaS Cluster Deployer (rg/sub)",
      "IsCustom": true,
@@ -202,8 +202,8 @@ as scope instead of the resource group as scope.
    the roles.
 
    ```shell
-   az role definition create --role-definition @iaas_static_vnet_role.template.json --output table
-   az role definition create --role-definition @iaas_static_rg_sub_role.template.json --output table
+   az role definition create --role-definition @iaas_static_vnet_role.json --output table
+   az role definition create --role-definition @iaas_static_rg_sub_role.json --output table
    ```
 
 5. Export the
@@ -271,7 +271,7 @@ subscription as scope instead of the resource group as scope.
    `AssignableScopes` field with the resource group ID.
 
    ```shell
-   cat << EOF > iaas_dynamic_rg_sub_role.template.json
+   cat << EOF > iaas_dynamic_rg_sub_role.json
    {
      "Name": "Palette Dynamic Placement IaaS Cluster Deployer (rg/sub)",
      "IsCustom": true,
@@ -359,7 +359,7 @@ subscription as scope instead of the resource group as scope.
 3. Create a role using the JSON file you created in the previous step. Issue the following command to create the role.
 
    ```shell
-   az role definition create --role-definition @iaas_dynamic_rg_sub_role.template.json --output table
+   az role definition create --role-definition @iaas_dynamic_rg_sub_role.json --output table
    ```
 
 4. Export the
@@ -428,7 +428,7 @@ as scope instead of the resource group as scope.
    resources.
 
    ```shell
-   cat << EOF > aks_static_vnet_role.template.json
+   cat << EOF > aks_static_vnet_role.json
    {
      "Name": "Palette Static Placement AKS Cluster Deployer (vnet)",
      "IsCustom": true,
@@ -445,10 +445,10 @@ as scope instead of the resource group as scope.
    }
    ```
 
-3. Create a JSON file for the compute permissions. Issue the following command to create the JSON file.
+3. Create a JSON file for the permissions that must be applied at the subscription scope level. Issue the following command to create the JSON file.
 
    ```shell
-   cat << EOF > aks_static_sub_role.template.json
+   cat << EOF > aks_static_sub_role.json
    {
     "Name": "Palette Static Placement AKS Cluster Deployer (sub)",
     "IsCustom": true,
@@ -487,7 +487,7 @@ as scope instead of the resource group as scope.
    to a specific resource group, replace the subscription ID the `AssignableScopes` field with the resource group ID.
 
    ```shell
-   cat << EOF > aks_static_rg_sub_role.template.json
+   cat << EOF > aks_static_rg_sub_role.json
    {
      "Name": "Palette Static Placement AKS Cluster Deployer (rg/sub)",
      "IsCustom": true,
@@ -954,9 +954,9 @@ as scope instead of the resource group as scope.
    the roles.
 
    ```shell
-   az role definition create --role-definition @aks_static_vnet_role.template.json --output table
-   az role definition create --role-definition @aks_static_sub_role.template.json --output table
-   az role definition create --role-definition @aks_static_rg_sub_role.template.json --output table
+   az role definition create --role-definition @aks_static_vnet_role.json --output table
+   az role definition create --role-definition @aks_static_sub_role.json --output table
+   az role definition create --role-definition @aks_static_rg_sub_role.json --output table
    ```
 
 6. Export the
@@ -1029,7 +1029,7 @@ resource groups within a subscription.
 2. Issue the following command to create a JSON file containing all the required subscription level permissions.
 
    ```shell
-   cat << EOF > aks_dynamic_sub_role.template.json
+   cat << EOF > aks_dynamic_sub_role.json
    {
      "Name": "Palette Dynamic Placement AKS Cluster Deployer (sub)",
      "IsCustom": true,
@@ -1069,7 +1069,7 @@ resource groups within a subscription.
    group ID.
 
    ```shell
-   cat << EOF > aks_dynamic_rg_sub_role.template.json
+   cat << EOF > aks_dynamic_rg_sub_role.json
    {
      "Name": "Palette Dynamic Placement AKS Cluster Deployer (rg/sub)",
      "IsCustom": true,
@@ -1542,8 +1542,8 @@ resource groups within a subscription.
    the roles.
 
    ```shell
-   az role definition create --role-definition @aks_dynamic_sub_role.template.json --output table
-   az role definition create --role-definition @aks_dynamic_rg_sub_role.template.json --output table
+   az role definition create --role-definition @aks_dynamic_sub_role.json --output table
+   az role definition create --role-definition @aks_dynamic_rg_sub_role.json --output table
    ```
 
 5. Export the
