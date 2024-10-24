@@ -111,9 +111,6 @@ stylus:
       "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
       "grc.io/spectro-dev-public": "example.registry.com/internal-images"
       "grc.io/spectro-images-public": "example.registry.com/internal-images"
-      "k8s.gcr.io": "example.registry.com/internal-images"
-      "registry.k8s.io": "example.registry.com/internal-images"
-      "grc.io": "example.registry.com/internal-images"
 ```
 
 #### Registry Mapping Rules
@@ -137,9 +134,6 @@ stylus:
       "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
       "grc.io/spectro-dev-public": "example.registry.com/internal-images"
       "grc.io/spectro-images-public": "example.registry.com/internal-images"
-      "k8s.gcr.io": "example.registry.com/internal-images"
-      "registry.k8s.io": "example.registry.com/internal-images"
-      "grc.io": "example.registry.com/internal-images"
 ```
 
 ##### Airgap Environment
@@ -172,9 +166,6 @@ stylus:
       "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
       "grc.io/spectro-dev-public": "example.registry.com/internal-images"
       "grc.io/spectro-images-public": "example.registry.com/internal-images"
-      "k8s.gcr.io": "example.registry.com/internal-images"
-      "registry.k8s.io": "example.registry.com/internal-images"
-      "grc.io": "example.registry.com/internal-images"
 ```
 
 ### Single External Registry
