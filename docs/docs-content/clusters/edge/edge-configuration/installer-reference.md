@@ -158,7 +158,8 @@ Palette will automatically update the image path when <VersionedLink text="Harbo
 
 Then the image tag will be updated with the prefix URL to the Harbor registry, such as
 `https://10.10.100.45:30003/example.registry.com/internal-images`. Palette will do this for all registry mapping rules
-specified in the user data. This allows the Edge host to find and pull images that came from an external registry through the local Harbor registry.
+specified in the user data. This allows the Edge host to find and pull images that came from an external registry
+through the local Harbor registry.
 
 :::
 
