@@ -35,7 +35,7 @@ listed in alphabetical order.
 | `stylus.localUI.port`          | Specifies the port that Local UI is exposed on.                                                                                                                                                            | 5080        |
 | `stylus.site`                  | Review Site Parameters for more information.                                                                                                                                                               |             |
 | `stylus.externalRegistries`    | Use this parameter to configure multiple external registries and to apply domain re-mapping rules. Review [External Registry Parameters](#multiple-external-registries) for more information.              | None        |
-| `stylus.registryCredentials`   | Only used when a single external registry in use and no mapping rules are needed. Review [Single External Registry](#single-external-registry-parameters) for more information.                            | None        |
+| `stylus.registryCredentials`   | Only used when a single external registry in use and no mapping rules are needed. Review [Single External Registry](#single-external-registry) for more information.                                       | None        |
 | `stylus.trace`                 | Enable this parameter to display trace output. Allowed values are `true` or `false`.                                                                                                                       | `False`     |
 
 ### Multiple External Registries
