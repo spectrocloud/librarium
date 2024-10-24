@@ -66,9 +66,7 @@ principal you want to use with Palette.
 ### Static Placement {#iaas-static-placement}
 
 Palette requires a set of permissions at the subscription level to deploy IaaS clusters using static placement. The
-remainder of the permissions required by IaaS can be assigned at the resource group level. If you are
-deploying multiple clusters in a variety of resource groups within a subscription, apply the role containing the resource group level permissions with the subscription
-as scope instead of the resource group as scope.
+remainder of the permissions required by IaaS can be assigned at the resource group level.
 
 #### Prerequisites
 
@@ -93,8 +91,8 @@ as scope instead of the resource group as scope.
    export SUBSCRIPTION_ID=<your-subscription-id>
    ```
 
-2. Issue the following command to create a JSON file containing all the required permissions to create network
-   resources.
+2. Issue the following command to create a JSON file containing all the permissions that must be applied at the virtual
+   network scope level.
 
    ```shell
    cat << EOF > iaas_static_vnet_role.json
@@ -136,9 +134,8 @@ as scope instead of the resource group as scope.
     }
    ```
 
-3. Next, create a JSON file for the permissions that must be applied at the resource group or subscription scope level. Issue the following command to create the JSON file. If you
-   want to assign the permission to scope to a specific resource group, replace the subscription ID the
-   `AssignableScopes` field with the resource group ID.
+3. Next, create a JSON file for the permissions that must be applied at the resource group or subscription scope level.
+   Issue the following command to create the JSON file.
 
    ```shell
    cat << EOF > iaas_static_rg_sub_role.json
@@ -214,18 +211,26 @@ as scope instead of the resource group as scope.
    export ASSIGNEE="<security_principal_object_id>"
    ```
 
-6. Assign the roles to the service principal. Use the following commands to assign the roles.
+6. Export the resource group name and virtual network name to a variable.
+
+   ```shell
+   export RESOURCE_GROUP_NAME="<resource-group-name>"
+   export VNET_NAME="<vnet-name>"
+   ```
+
+7. Assign the roles to the service principal. Use the following commands to assign the roles.
 
    ```json
    az role assignment create --assignee $ASSIGNEE \
      --role "Palette Static Placement IaaS Cluster Deployer (rg/sub)" \
-     --scope "/subscriptions/$SUBSCRIPTION_ID"
+     --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME"
    ```
 
    ```json
    az role assignment create --assignee $ASSIGNEE \
      --role "Palette Static Placement IaaS Cluster Deployer (vnet)" \
      --scope "/subscriptions/$SUBSCRIPTION_ID"
+     --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$VNET_NAME"
    ```
 
 #### Validate
@@ -266,9 +271,7 @@ subscription as scope instead of the resource group as scope.
    export SUBSCRIPTION_ID=<your-subscription-id>
    ```
 
-2. Issue the following command to create a JSON file containing all the required permissions to create resources. If you
-   want to assign the permission to scope to a specific resource group, replace the subscription ID the
-   `AssignableScopes` field with the resource group ID.
+2. Issue the following command to create a JSON file containing all the required permissions to create resources.
 
    ```shell
    cat << EOF > iaas_dynamic_rg_sub_role.json
@@ -370,12 +373,18 @@ subscription as scope instead of the resource group as scope.
    export ASSIGNEE="<security_principal_object_id>"
    ```
 
-5. Assign the role to the service principal. Use the following command to assign the role.
+5. Export the resource group name to a variable.
+
+   ```shell
+   export RESOURCE_GROUP_NAME="<resource-group-name>"
+   ```
+
+6. Assign the role to the service principal. Use the following command to assign the role.
 
    ```shell
    az role assignment create --assignee $ASSIGNEE \
    --role "Palette Dynamic Placement IaaS Cluster Deployer (rg/sub)" \
-   --scope "/subscriptions/$SUBSCRIPTION_ID"
+   --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME"
    ```
 
 #### Validate
@@ -397,9 +406,7 @@ Palette.
 ### Static Placement {#aks-static-placement}
 
 Palette requires a set of permissions at the subscription level to deploy AKS clusters using static placement. The
-remainder of the permissions required by AKS can be assigned at the subscription or resource group level. If you are
-deploying multiple clusters in a variety of resource groups within a subscription, apply the role with the subscription
-as scope instead of the resource group as scope.
+remainder of the permissions required by AKS can be assigned at the subscription or resource group level.
 
 #### Prerequisites
 
@@ -424,8 +431,8 @@ as scope instead of the resource group as scope.
    export SUBSCRIPTION_ID=<your-subscription-id>
    ```
 
-2. Issue the following command to create a JSON file containing all the required permissions to create network
-   resources.
+2. Issue the following command to create a JSON file containing all the permissions that must be applied at the virtual
+   network scope level.
 
    ```shell
    cat << EOF > aks_static_vnet_role.json
@@ -445,7 +452,8 @@ as scope instead of the resource group as scope.
    }
    ```
 
-3. Create a JSON file for the permissions that must be applied at the subscription scope level. Issue the following command to create the JSON file.
+3. Create a JSON file for the permissions that must be applied at the subscription scope level. Issue the following
+   command to create the JSON file.
 
    ```shell
    cat << EOF > aks_static_sub_role.json
@@ -483,8 +491,7 @@ as scope instead of the resource group as scope.
    }
    ```
 
-4. Create another JSON file for the remaining permissions required by AKS. If you want to assign the permission to scope
-   to a specific resource group, replace the subscription ID the `AssignableScopes` field with the resource group ID.
+4. Create another JSON file for the remaining permissions required by AKS.
 
    ```shell
    cat << EOF > aks_static_rg_sub_role.json
@@ -967,24 +974,31 @@ as scope instead of the resource group as scope.
    export ASSIGNEE="<security_principal_object_id>"
    ```
 
-7. Assign the roles to the service principal. Use the following commands to assign the roles.
+7. Export the resource group name and virtual network name to a variable.
+
+   ```shell
+   export RESOURCE_GROUP_NAME="<resource-group-name>"
+   export VNET_NAME="<vnet-name>"
+   ```
+
+8. Assign the roles to the service principal. Use the following commands to assign the roles.
 
    ```json
    az role assignment create --assignee $ASSIGNEE \
      --role "Palette Static Placement AKS Cluster Deployer (vnet)" \
-     --scope "/subscriptions/$SUBSCRIPTION_ID"
+     --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$VNET_NAME"
    ```
 
    ```json
    az role assignment create --assignee $ASSIGNEE \
      --role "Palette Static Placement AKS Cluster Deployer (sub)" \
-     --scope "/subscriptions/$SUBSCRIPTION_ID"
+     --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME"
    ```
 
    ```json
    az role assignment create --assignee $ASSIGNEE \
      --role "Palette Static Placement AKS Cluster Deployer (rg/sub)" \
-     --scope "/subscriptions/$SUBSCRIPTION_ID"
+     --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME"
    ```
 
 #### Validate
@@ -1064,9 +1078,7 @@ resource groups within a subscription.
    }
    ```
 
-3. Create another JSON file containing the remaining permissions required for AKS. If you want to assign the permission
-   to scope to a specific resource group, replace the subscription ID the `AssignableScopes` field with the resource
-   group ID.
+3. Create another JSON file containing the remaining permissions required for AKS.
 
    ```shell
    cat << EOF > aks_dynamic_rg_sub_role.json
@@ -1554,7 +1566,14 @@ resource groups within a subscription.
    export ASSIGNEE="<security_principal_object_id>"
    ```
 
-6. Assign the roles to the service principal. Use the following commands to assign the roles.
+6. Export the resource group name to a variable.
+
+   ```shell
+   export RESOURCE_GROUP_NAME="<resource-group-name>"
+   export VNET_NAME="<vnet-name>"
+   ```
+
+7. Assign the roles to the service principal. Use the following commands to assign the roles.
 
    ```json
    az role assignment create --assignee $ASSIGNEE \
@@ -1565,5 +1584,5 @@ resource groups within a subscription.
    ```json
    az role assignment create --assignee $ASSIGNEE \
      --role "Palette Dynamic Placement AKS Cluster Deployer (rg/sub)" \
-     --scope "/subscriptions/$SUBSCRIPTION_ID"
+     --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME"
    ```
