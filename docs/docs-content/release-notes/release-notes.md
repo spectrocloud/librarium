@@ -47,7 +47,7 @@ tags: ["release-notes"]
 
 - Fixed an issue where clusters, without prior backups, using Velero and Restic, were unable to accept resource quotas.
 
-- Resolved an issue where CordeDNS was not upgraded during a Kubernetes upgrade.
+- Resolved an issue where CoreDNS was not upgraded during a Kubernetes upgrade.
 
 - Fixed an issue where [system macros](../registries-and-packs/pack-constraints.md#pack-macros) were causing errors
   during cluster profile downloads.
