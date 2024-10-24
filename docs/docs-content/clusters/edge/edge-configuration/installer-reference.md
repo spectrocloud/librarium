@@ -34,13 +34,14 @@ listed in alphabetical order.
 | `stylus.installationMode`      | Allowed values are `connected` and `airgap`. Default value is `connected`. `connected` means that the Edge host has a connection to Palette; `airgap` means it does not have a connection to Palette.      | `connected` |
 | `stylus.localUI.port`          | Specifies the port that Local UI is exposed on.                                                                                                                                                            | 5080        |
 | `stylus.site`                  | Review Site Parameters for more information.                                                                                                                                                               |             |
-| `stylus.externalRegistries`    | Use this parameter to configure external registries to load content from another source. Review [External Registry Parameters](#external-registry-parameters) for more information.                        | None        |
-| `stylus.registryCredentials`   | [**Deprecated**] Use `stylus.externalRegistries` to configure external registries moving forward. Review [External Registry Parameters](#external-registry-parameters) for more information.               | None        |
+| `stylus.externalRegistries`    | Use this parameter to configure multiple external registries and to apply domain re-mapping rules. Review [External Registry Parameters](#multiple-external-registries) for more information.              | None        |
+| `stylus.registryCredentials`   | Only used when a single external registry in use and no mapping rules are needed. Review [Single External Registry](#single-external-registry-parameters) for more information.                            | None        |
 | `stylus.trace`                 | Enable this parameter to display trace output. Allowed values are `true` or `false`.                                                                                                                       | `False`     |
 
-### External Registries
+### Multiple External Registries
 
-You can configure external registries to load content from another source.
+You can configure multiple external registries by using the `stylus.externalRegistries` parameter object. You can also
+apply domain mapping rules to map domain names to external registries.
 
 If you are using an external registry and want to use content bundles when deploying your Edge cluster, you must also
 enable the local Harbor registry. For more information, refer to
@@ -72,39 +73,47 @@ Below is an example of how to configure an external registry.
 
 ```yaml
 stylus:
- externalRegistries:
-  registries:
-  - domain: example.registry.com/internal-images
-    username: admin
-    password: ***************
-    repositoryName: example-repository-private
-    certificates:
-     - |
-      -----BEGIN CERTIFICATE-----
-      MIIENDCCAxygAwIBAgIUSdnFq4anqjgKf2iRX2RP65LYpkwwDQYJKoZIhvcNAQEL
-      BQAwfzEpMCcGA1UEAwwgc2hydXRoaS1haXJnYXAyLnNwZWN0cm9jbG91ZC5kZXYx
-      FTATBgNVBAoMDFNwZWN0cm9DbG91ZDELMAkGA1UECwwCSVQxFDASBgNVBAcMC1Nh
-      bnRhIENsYXJhMQswCQYDVQQIDAJDQTELMAkGA1UEBhMCVVMwHhcNMjQwMTExMDkz
-      ODUzWhcNMzQwMTA4MDkzODUzWjB/MSkwJwYDVQQDDCBzaHJ1dGhpLWFpcmdhcDIu
-      c3BlY3Ryb2Nsb3VkLmRldjEVMBMGA1UECgwMU3BlY3Ryb0Nsb3VkMQswCQYDVQQL
-      DAJJVDEUMBIGA1UEBwwLU2FudGEgQ2xhcmExCzAJBgNVBAgMAkNBMQswCQYDVQQG
-      EwJVUzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANcPucLatrCHmR+o
-      h6pIReisVxbJI0jqlVfive+mDp64Z3aXbzlX634chbyjd6G8xmZXH0beIZE91yGD
-      42atamrqDSADcZRvjUmqGzf/nrm3sOCHOKNMvMFZJ0uGFjwuwxIDf91+Vgj0FZRe
-      j+nVRI3XQyAdJXP6sls8vu8bHk6RDMLYb+IzMWzFuPGDUv3fU41a3dijVfMxt6hj
-      MdoUe6wzTr46ylUgm5rB/SKrMcg41ZNFcqYLhHt6KsS/0G8hjrvo7d+BeNcxf6GP
-      xOWyimdq18suHqFQ82ieCxB8gR2Ig15ch8UG1p95JbVMjzLTi3tgU9EARuftsUK9
-      spdn2cUCAwEAAaOBpzCBpDAdBgNVHQ4EFgQUDVk6cnlax94aPm3F+fubzHj8vaIw
-      HwYDVR0jBBgwFoAUDVk6cnlax94aPm3F+fubzHj8vaIwDwYDVR0TAQH/BAUwAwEB
-      /zA8BgNVHREENTAzgglsb2NhbGhvc3SHBH8AAAGCIHNocnV0aGktYWlyZ2FwMi5z
-      cGVjdHJvY2xvdWQuZGV2MBMGA1UdJQQMMAoGCCsGAQUFBwMBMA0GCSqGSIb3DQEB
-      CwUAA4IBAQATfu3drGJkmFD58KvUKuOhAY28TpVquH63W40JchVjhtOmg+WHfPIE
-      8dvYYKiZtrpFZDUcAVtn/KJIZoNbq51o7mWj/rl6W5pcajBLoqcvlDH0zXzVgF+f
-      +gj68SMegHwp+EO/dK9LfLp2bxNuBPCnvLj3eMs0HCdmZW1uzVm71YIXTSXwgm/2
-      nMnI5ELi2kuufCZh5wQxr7km+qZgTteaZI2h+YNU88m/SreRFHfBP8QRfkqTumfW
-      Sz3rWOQ93KXO/CEk+XySnVFgS+JdGtpmRalOfGeJ0Kk8hraX3h/2KkD0Vd99DIMN
-      DlN636dYFSJBG3LjGuzyO66kEvbGJAIT
-      -----END CERTIFICATE-----
+  externalRegistries:
+    registries:
+      - domain: "example.registry.com/internal-images"
+        username: "admin"
+        password: "***************"
+        repositoryName: example-repository-private
+        certificates:
+          - |
+            -----BEGIN CERTIFICATE-----
+            MIIENDCCAxygAwIBAgIUSdnFq4anqjgKf2iRX2RP65LYpkwwDQYJKoZIhvcNAQEL
+            BQAwfzEpMCcGA1UEAwwgc2hydXRoaS1haXJnYXAyLnNwZWN0cm9jbG91ZC5kZXYx
+            FTATBgNVBAoMDFNwZWN0cm9DbG91ZDELMAkGA1UECwwCSVQxFDASBgNVBAcMC1Nh
+            bnRhIENsYXJhMQswCQYDVQQIDAJDQTELMAkGA1UEBhMCVVMwHhcNMjQwMTExMDkz
+            ODUzWhcNMzQwMTA4MDkzODUzWjB/MSkwJwYDVQQDDCBzaHJ1dGhpLWFpcmdhcDIu
+            c3BlY3Ryb2Nsb3VkLmRldjEVMBMGA1UECgwMU3BlY3Ryb0Nsb3VkMQswCQYDVQQL
+            DAJJVDEUMBIGA1UEBwwLU2FudGEgQ2xhcmExCzAJBgNVBAgMAkNBMQswCQYDVQQG
+            EwJVUzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANcPucLatrCHmR+o
+            h6pIReisVxbJI0jqlVfive+mDp64Z3aXbzlX634chbyjd6G8xmZXH0beIZE91yGD
+            42atamrqDSADcZRvjUmqGzf/nrm3sOCHOKNMvMFZJ0uGFjwuwxIDf91+Vgj0FZRe
+            j+nVRI3XQyAdJXP6sls8vu8bHk6RDMLYb+IzMWzFuPGDUv3fU41a3dijVfMxt6hj
+            MdoUe6wzTr46ylUgm5rB/SKrMcg41ZNFcqYLhHt6KsS/0G8hjrvo7d+BeNcxf6GP
+            xOWyimdq18suHqFQ82ieCxB8gR2Ig15ch8UG1p95JbVMjzLTi3tgU9EARuftsUK9
+            spdn2cUCAwEAAaOBpzCBpDAdBgNVHQ4EFgQUDVk6cnlax94aPm3F+fubzHj8vaIw
+            HwYDVR0jBBgwFoAUDVk6cnlax94aPm3F+fubzHj8vaIwDwYDVR0TAQH/BAUwAwEB
+            /zA8BgNVHREENTAzgglsb2NhbGhvc3SHBH8AAAGCIHNocnV0aGktYWlyZ2FwMi5z
+            cGVjdHJvY2xvdWQuZGV2MBMGA1UdJQQMMAoGCCsGAQUFBwMBMA0GCSqGSIb3DQEB
+            CwUAA4IBAQATfu3drGJkmFD58KvUKuOhAY28TpVquH63W40JchVjhtOmg+WHfPIE
+            8dvYYKiZtrpFZDUcAVtn/KJIZoNbq51o7mWj/rl6W5pcajBLoqcvlDH0zXzVgF+f
+            +gj68SMegHwp+EO/dK9LfLp2bxNuBPCnvLj3eMs0HCdmZW1uzVm71YIXTSXwgm/2
+            nMnI5ELi2kuufCZh5wQxr7km+qZgTteaZI2h+YNU88m/SreRFHfBP8QRfkqTumfW
+            Sz3rWOQ93KXO/CEk+XySnVFgS+JdGtpmRalOfGeJ0Kk8hraX3h/2KkD0Vd99DIMN
+            DlN636dYFSJBG3LjGuzyO66kEvbGJAIT
+            -----END CERTIFICATE-----
+    registryMappingRules:
+      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+      "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
+      "grc.io/spectro-dev-public": "example.registry.com/internal-images"
+      "grc.io/spectro-images-public": "example.registry.com/internal-images"
+      "k8s.gcr.io": "example.registry.com/internal-images"
+      "registry.k8s.io": "example.registry.com/internal-images"
+      "grc.io": "example.registry.com/internal-images"
 ```
 
 #### Registry Mapping Rules
@@ -112,16 +121,17 @@ stylus:
 Use registry mapping rules to map a domain name to an external registry. The `registryMappingRules` parameter accepts a
 list of key-value pairs where the key is the domain name and the value is URL mapping to the external registry.
 
-Below is an example of registry mapping rules.
+Below is an example of registry mapping rules. The registry in the code snippet, `example.registry.com/internal-images`
+is assumed to contain the images that are mapped from the external registries.
 
 ```yaml
 stylus:
   externalRegistries:
     registries:
-      - domain: example.registry.com/internal-images
-        repositoryName: primary-registry
-        username: admin
-        password: ***************
+      - domain: "example.registry.com/internal-images"
+        repositoryName: "primary-registry"
+        username: "admin"
+        password: "***************"
     registryMappingRules:
       "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
       "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
@@ -167,17 +177,12 @@ stylus:
       "grc.io": "example.registry.com/internal-images"
 ```
 
-#### External Registry Parameters
-
-:::warning
-
-This parameter is deprecated. Use the parameter [`stylus.externalRegistries`](#external-registries) to configure
-external registries.
-
-:::
+### Single External Registry
 
 You can point the Edge Installer to a non-default registry to load content from another source. Use the
-`registryCredentials` parameter object to specify the registry configurations.
+`registryCredentials` parameter object to specify the registry configurations. If you have multiple external registries,
+use the `stylus.externalRegistries` parameter object instead. Refer to the
+[Multiple External Registries](#multiple-external-registries) section for more information.
 
 If you are using an external registry and want to use content bundles when deploying your Edge cluster, you must also
 enable the local Harbor registry. For more information, refer to

@@ -95,18 +95,53 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
    cd CanvOS
    ```
 
-3. In the user data file, provide the URL and the credentials in `stylus.externalRegistries.registries`. The following
-   is an example. Replace the values with your own and add any URL mapping rules if necessary.
+3. In the user data file, provide the URL and the credentials to the external registry. You can specify a single
+   external registry or multiple external registries. The following example shows how to specify a single external
+   registry and multiple external registries. Select the tab that corresponds to the configuration you want to use.
 
-   ```yaml
-   #cloud-config
-   stylus:
+   :::tip
+
+   If you need specify URL mapping rules to the external registry, use the multiple external registries configuration
+   and provide the mapping rules in the `registryMappingRules` field.
+
+   :::
+
+  <Tabs>
+  <TabItem value="single-registry" label="Single External Registry">
+    ```yaml
+    #cloud-config
+    stylus:
+      registryCredentials:
+        domain: "10.10.254.254:8000/spectro-images"
+        username: "ubuntu"
+        password: "*******"
+        insecure: true
+    ```
+
+    Refer to [Installer Configuration](../../edge-configuration/installer-reference.md#single-external-registry) for a
+    description of each field.
+
+  </TabItem>
+  <TabItem value="multiple-registries" label="Multiple External Registries">
+
+    ```yaml
+    #cloud-config
+    stylus:
     externalRegistries:
       registries:
-      - domain: 10.10.254.254:8000/spectro-images
-        username: admin
+      - domain: "10.10.254.254:8000/spectro-images"
+        username: "admin"
         password: ***************
-        repositoryName: example-repository-private
+        repositoryName: "example-repository-private"
+        certificates: |
+          -----BEGIN CERTIFICATE-----
+          MIIDBzCCAe+gAwIBAgIJAJzQ
+          ...
+          -----END CERTIFICATE-----
+      - domain: "10.10.11.60:3899/security-images"
+        username: "projectAdmin2"
+        password: "***************"
+        repositoryName: security-images
         certificates: |
           -----BEGIN CERTIFICATE-----
           MIIDBzCCAe+gAwIBAgIJAJzQ
@@ -120,10 +155,12 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
       "k8s.gcr.io": "example.registry.com/internal-images"
       "registry.k8s.io": "example.registry.com/internal-images"
       "grc.io": "example.registry.com/internal-images"
-   ```
+    ```
+    Refer to [Installer Configuration](../../edge-configuration/installer-reference.md#multiple-external-registries) for a
+    description of each field.
 
-   Refer to [Installer Configuration](../../edge-configuration/installer-reference.md#external-registry-parameters) for
-   a description of each field.
+  </TabItem>
+  </Tabs>
 
 4. Follow the rest of the [Build Edge Artifact](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide and
    build the Installer ISO with the user data containing the registry credentials.
