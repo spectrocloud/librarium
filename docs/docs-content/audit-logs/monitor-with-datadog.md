@@ -12,7 +12,7 @@ tags: ["audit-logs", "datadog", "monitoring"]
 You can use [Datadog](https://www.datadoghq.com/), a monitoring and analytics tool, to visualize the audit logs of your
 host clusters.
 
-This guide will walk you through the process of configuring Palette to export audit logs from your host clusters to
+This guide will help you through the process of configuring your clusters deployed with Palette to export audit logs to
 Datadog.
 
 ## Prerequisites
@@ -21,7 +21,9 @@ Datadog.
 
 - A Datadog account. Visit the [Datadog official website](https://app.datadoghq.eu/signup) to create a Datadog account.
 
-- An active host cluster.
+- An active [host cluster](../glossary-all.md#host-cluster). Refer to the
+  [Deploy a Cluster](../clusters/public-cloud/deploy-k8s-cluster.md) tutorial for instructions on how to deploy a
+  cluster.
 
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed and configured to access your host cluster. Refer
   to the [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) page for guidance on how to access
@@ -73,7 +75,7 @@ Datadog.
     | **datadog.serviceMonitoring.enabled**        | Set it to `true` to enable universal service monitoring.                                                                                                                                                          |
     | **datadog.securityAgent.compliance.enabled** | Set it to `true` to enable the security agent.                                                                                                                                                                    |
 
-    Paste the following snippet under the `clusterAgent.volumes` section to enable the volume and volume mount for
+12. Next, paste the following snippet under the `clusterAgent.volumes` section to enable the volume and volume mount for
     collecting audit logs. Replace `/var/log/apiserver` with the `audit-log` path configured in the Kubernetes layer of
     your host cluster. You can find this path in the Kubernetes layer of your host cluster profile in Palette.
 
@@ -95,7 +97,7 @@ Datadog.
         mountPath: /conf.d/kubernetes_audit.d
     ```
 
-    Additionally, if your host cluster uses Kubernetes version 1.25 or later, add the following lines under the
+13. Additionally, if your host cluster uses Kubernetes version 1.25 or later, add the following lines under the
     `pack.namespace` section to accommodate the elevated privileges required by the Datadog pods. Replace
     `<k8s_version>` with your cluster's Kubernetes version and only include the major and minor version following the
     lowercase letter **v**. For example, `v1.30`. Refer to the
@@ -109,17 +111,18 @@ Datadog.
         "datadog": "pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v<k8s_version>"
     ```
 
-    Once you finish making the necessary changes, click **Confirm & Create**, then select **Next**.
+14. Once you finish making the necessary changes, click **Confirm & Create**, then select **Next**.
 
-12. Review the cluster profile and click **Finish Configuration**.
+15. Review the cluster profile and click **Finish Configuration**.
 
-13. In Palette, attach the Datadog add-on cluster profile to your host cluster. Refer to the
+16. In Palette, attach the Datadog add-on cluster profile to your host cluster. Refer to the
     [Attach an Add-on Profile](../clusters/imported-clusters/attach-add-on-profile.md) guide for instructions.
 
-14. Create a ConfigMap resource for the host cluster to collect data. Open a terminal window and create a file named
-    `datadog-configmap.yaml` with the following content.
+17. Open a terminal window and use the `cat` command to create a ConfigMap resource for the host cluster to collect
+    data.
 
     ```yaml
+    cat << EOF > datadog-configmap.yaml
     kind: ConfigMap
     apiVersion: v1
     metadata:
@@ -132,19 +135,20 @@ Datadog.
             path: /var/log/apiserver/audit.log
             source: kubernetes.audit
             service: audit
+    EOF
     ```
 
-15. Issue the following command to apply the ConfigMap to your host cluster.
+18. Issue the following command to apply the ConfigMap to your host cluster.
 
     ```bash
-    kubectl --namespace datadog apply --filename datadog-configmap.yaml
+    kubectl apply --namespace datadog --filename datadog-configmap.yaml
     ```
 
     ```text hideClipboard
     configmap/dd-agent-config created
     ```
 
-16. After a few minutes, the Datadog agent will start reporting. Log in to Datadog and select **Kubernetes** from the
+19. After a few minutes, the Datadog agent will start reporting. Log in to Datadog and select **Kubernetes** from the
     left **Main Menu** to verify that the audit logs are being transferred successfully to Datadog.
 
     ![Datadog Agent Reporting](/audit-logs_monitor-with-datadog_datadog-agent.webp)
