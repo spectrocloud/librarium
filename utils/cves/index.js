@@ -127,21 +127,53 @@ async function generateCVEs() {
 
 async function generateMarkdownForCVEs(GlobalCVEData) {
   const allCVEs = Object.values(GlobalCVEData).reduce((acc, curr) => acc.concat(curr), []);
-  const uniqueCVEs = [];
-  const seenCVEs = new Set();
 
-  // Remove duplicate CVEs
+  // To generate the Impact Product & Versions table we need to track all the instances of the same CVE
+  // The followin hashmap will store the data for each CVE and aggregate the impact data for each product
+  const cveImpactMap = {};
+
   for (const item of allCVEs) {
-    if (!seenCVEs.has(item.metadata.cve)) {
-      seenCVEs.add(item.metadata.cve);
-      uniqueCVEs.push(item);
+    // Let's add the CVE to the map if it doesn't exist
+    // We can take all of the values from the first instance of the CVE
+    // Future instances will update the values if they are true
+    if (!cveImpactMap[item.metadata.cve]) {
+      cveImpactMap[item.metadata.cve] = {
+        versions: item.spec.impact.impactedVersions,
+        impactsPaletteEnterprise: item.spec.impact.impactedProducts.palette,
+        impactsPaletteEnterpriseAirgap: item.spec.impact.impactedDeployments.airgap,
+        impactsVerteX: item.spec.impact.impactedProducts.vertex,
+        impactsVerteXAirgap: item.spec.impact.impactedDeployments.airgap,
+      };
+    }
+
+    // If the CVE already exists in the map, we need to update the values
+    // But only if the value is true. If the value is false, we don't need to update it.
+    if (cveImpactMap[item.metadata.cve]) {
+      cveImpactMap[item.metadata.cve].versions = [
+        ...cveImpactMap[item.metadata.cve].versions,
+        ...item.spec.impact.impactedVersions,
+      ];
+
+      if (item.spec.impact.impactedProducts.palette) {
+        cveImpactMap[item.metadata.cve].impactsPaletteEnterprise = true;
+      }
+
+      if (item.spec.impact.impactedDeployments.airgap) {
+        cveImpactMap[item.metadata.cve].impactsPaletteEnterpriseAirgap = true;
+      }
+
+      if (item.spec.impact.impactedProducts.vertex) {
+        cveImpactMap[item.metadata.cve].impactsVerteX = true;
+      }
+
+      if (item.spec.impact.impactedDeployments.airgap) {
+        cveImpactMap[item.metadata.cve].impactsVerteXAirgap = true;
+      }
     }
   }
 
-  logger.info(`Generating markdown files for ${uniqueCVEs.length} unique CVEs.`);
-
-  const markdownPromises = uniqueCVEs.map((item) =>
-    createCveMarkdown(item, "docs/docs-content/security-bulletins/reports/")
+  const markdownPromises = allCVEs.map((item) =>
+    createCveMarkdown(item, cveImpactMap[item.metadata.cve], "docs/docs-content/security-bulletins/reports/")
   );
 
   const results = await Promise.all(markdownPromises);
@@ -158,7 +190,7 @@ async function generateMarkdownForCVEs(GlobalCVEData) {
   logger.success("All security bulletin markdown files generated.");
 }
 
-function createCveMarkdown(item, location) {
+function createCveMarkdown(item, cveImpactData, location) {
   const lowerCaseCve = item.metadata.cve.toLowerCase();
   const upperCaseCve = item.metadata.cve.toUpperCase();
 
@@ -170,7 +202,7 @@ function createCveMarkdown(item, location) {
   // Generate a table of impacted products
 
   let productMap = { palette: "Palette Enterprise", vertex: "VerteX" };
-  let table = generateMarkdownTable(impactedProducts, impactedVersions, productMap, impactedDeployments);
+  let table = generateMarkdownTable(cveImpactData);
   let revisionHistory = generateRevisionHistory(revisions);
 
   const content = `---
