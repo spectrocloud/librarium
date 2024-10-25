@@ -14,6 +14,7 @@ interface CveData {
   vertexAirgap: Cve[];
 }
 
+// The interface maps to the return payload from the API https://dso.teams.spectrocloud.com/v1/advisories
 interface Cve {
   metadata: {
     uid: string;
@@ -84,9 +85,13 @@ export default function CveReportsTable() {
   const { defaultAlgorithm, darkAlgorithm } = theme;
 
   useEffect(() => {
-    // Set a timeout to simulate loading delay if necessary
-    const timer = setTimeout(() => setLoading(false), 0); // Adjust delay as needed
-    return () => clearTimeout(timer); // Clear timeout on unmount
+    // I'm (Karl) only using this to simulate a loading state
+    // The main reason is to show the loading spinner
+    // If we don't do this then when a user navigates to this page or refreshes the page
+    // It's possible the CSS is not loaded yet and the table styles are not applied resulting in a bad UX
+    // This is a workaround to show the loading spinner until the CSS is loaded
+    const timer = setTimeout(() => setLoading(false), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const columns: ColumnsType<Cve> = [
@@ -144,7 +149,7 @@ export default function CveReportsTable() {
           v1.localeCompare(v2, undefined, { numeric: true }) === 1 ? -1 : 1
         );
 
-        // Show only the first 3 versions, followed by an ellipsis if there are more
+        // Show only the first 3 versions, followed by an ellipsis if there are more otherwise things look rough
         const displayedVersions = sortedVersions.slice(0, 3).join(", ");
         return sortedVersions.length > 3 ? `${displayedVersions}, ...` : displayedVersions || "N/A";
       },
@@ -176,10 +181,9 @@ export default function CveReportsTable() {
       key: "status",
       sorter: (a, b) => {
         const statusPriority = (status: string) => {
-          // Assign a higher priority to "Open" and "Ongoing", lower to "Fixed" and "Closed"
           if (status === "Open" || status === "Ongoing") return -1;
           if (status === "Fixed" || status === "Closed") return 1;
-          return 0; // For safety, though we expect only these four statuses
+          return 0;
         };
         return statusPriority(a.status.status) - statusPriority(b.status.status);
       },
@@ -190,7 +194,7 @@ export default function CveReportsTable() {
         } else if (status === "Fixed" || status === "Closed") {
           return <span>✅ {status}</span>;
         }
-        return <span>{status}</span>; // Default case if there are unexpected values
+        return <span>{status}</span>;
       },
     },
   ];
