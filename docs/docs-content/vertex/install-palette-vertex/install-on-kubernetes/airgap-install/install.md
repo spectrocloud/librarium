@@ -159,7 +159,7 @@ environment. Reach out to our support team if you need assistance.
     Use the following `mirrorRegistries`placeholder string to replace the respective values of your OCI registry.
 
     ```yaml
-    docker.io::OCI_URL/IMAGE_PROJECT,gcr.io::OCI_URL/IMAGE_PROJECT,ghcr.io::OCI_URL/IMAGE_PROJECT,k8s.gcr.io::OCI_URL/IMAGE_PROJECT,registry.k8s.io::OCI_URL/IMAGE_PROJECT,quay.io::OCI_URL/IMAGE_PROJECT"
+    docker.io::OCI_URL/IMAGE_PROJECT/docker.io,gcr.io::OCI_URL/IMAGE_PROJECT/gcr.io,ghcr.io::OCI_URL/IMAGE_PROJECT/ghcr.io,k8s.gcr.io::OCI_URL/IMAGE_PROJECT/k8s.gcr.io,registry.k8s.io::OCI_URL/IMAGE_PROJECT/registry.k8s.io,quay.io::OCI_URL/IMAGE_PROJECT/quay.io"
     ```
 
     :::
@@ -173,7 +173,7 @@ environment. Reach out to our support team if you need assistance.
       baseContentPath: "spectro-images" #
       insecureSkipVerify: true
       caCert: ""
-      mirrorRegistries: "docker.io::my-oci-registry.com/spectro-images,gcr.io::my-oci-registry.com/spectro-images,ghcr.io::my-oci-registry.com/spectro-images,k8s.gcr.io::my-oci-registry.com/spectro-images,registry.k8s.io::my-oci-registry.com/spectro-images,quay.io::my-oci-registry.com/spectro-images"
+      mirrorRegistries: "docker.io::my-oci-registry.com/spectro-images/docker.io,gcr.io::my-oci-registry.com/spectro-images,ghcr.io::my-oci-registry.com/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/spectro-images/quay.io"
     ```
 
 7.  Go ahead and install the image-swap chart using the following command. Point to the **values.yaml** file you
@@ -300,22 +300,22 @@ environment. Reach out to our support team if you need assistance.
       cluster:
         stableEndpointAccess: false
 
-      #  registry:
-      #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-      #    name: "" #<Contact Spectro Cloud Sales for More info>
-      #    password: "" #<Contact Spectro Cloud Sales for More info>
-      #    username: "" #<Contact Spectro Cloud Sales for More info>
-      #    insecureSkipVerify: false
-      #    caCert: ""
+        #  registry:
+        #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+        #    name: "" #<Contact Spectro Cloud Sales for More info>
+        #    password: "" #<Contact Spectro Cloud Sales for More info>
+        #    username: "" #<Contact Spectro Cloud Sales for More info>
+        #    insecureSkipVerify: false
+        #    caCert: ""
 
-      #  ociPackRegistry:
-      #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-      #    name: "" #<Contact Spectro Cloud Sales for More info>
-      #    password: "" #<Contact Spectro Cloud Sales for More info>
-      #    username: "" #<Contact Spectro Cloud Sales for More info>
-      #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
-      #    insecureSkipVerify: false
-      #    caCert: ""
+        ociPackRegistry:
+          endpoint: "my-oci-registry.com" #<Contact Spectro Cloud Sales for More info>
+          name: "Airgap Packs OCI" #<Contact Spectro Cloud Sales for More info>
+          password: "" #<Contact Spectro Cloud Sales for More info>
+          username: "" #<Contact Spectro Cloud Sales for More info>
+          baseContentPath: "spectro-packs" #<Contact Spectro Cloud Sales for More info>
+          insecureSkipVerify: false
+          caCert: ""
 
       # ociPackEcrRegistry:
       #   endpoint: "" #<Contact Spectro Cloud Sales for More info>
@@ -335,7 +335,7 @@ environment. Reach out to our support team if you need assistance.
         baseContentPath: "spectro-images" #<Contact Spectro Cloud Sales for More info>
         insecureSkipVerify: true
         caCert: ""
-        mirrorRegistries: "docker.io::my-oci-registry.com/v2/spectro-images,gcr.io::my-oci-registry.com/v2/spectro-images,ghcr.io::my-oci-registry.com/v2/spectro-images,k8s.gcr.io::my-oci-registry.com/v2/spectro-images,registry.k8s.io::my-oci-registry.com/v2/spectro-images,quay.io::my-oci-registry.com/v2/spectro-images"
+        mirrorRegistries: "docker.io::my-oci-registry.com/v2/spectro-images/docker.io,gcr.io::my-oci-registry.com/v2/spectro-images/gcr.io,ghcr.io::my-oci-registry.com/v2/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/v2/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/v2/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/v2/spectro-images/quay.io"
 
       scar:
         endpoint: "http://10.15.20.15:2015"
@@ -562,7 +562,7 @@ environment. Reach out to our support team if you need assistance.
         baseContentPath: "spectro-images" #<Contact Spectro Cloud Sales for More info>
         insecureSkipVerify: false
         caCert: ""
-        mirrorRegistries: "docker.io::public.ecr.aws/123456789/v2/spectr-images,gcr.io::public.ecr.aws/123456789/v2/spectro-images,ghcr.io::public.ecr.aws/123456789/v2/spectro-images,k8s.gcr.io::public.ecr.aws/123456789/v2/spectro-images,registry.k8s.io::public.ecr.aws/123456789/v2/spectro-images,quay.io::public.ecr.aws/123456789/v2/spectro-imagesßßß"
+        mirrorRegistries: "docker.io::public.ecr.aws/123456789/v2/spectro-images/docker.io,gcr.io::public.ecr.aws/123456789/v2/spectro-images/gcr.io,ghcr.io::public.ecr.aws/123456789/v2/spectro-images/ghcr.io,k8s.gcr.io::public.ecr.aws/123456789/v2/spectro-images/k8s.gcr.io,registry.k8s.io::public.ecr.aws/123456789/v2/spectro-images/registry.k8s.io,quay.io::public.ecr.aws/123456789/v2/spectro-images/quay.io"
       #
       # Instruction for mirrorRegistries.
       # ----------------------------------
@@ -710,7 +710,8 @@ environment. Reach out to our support team if you need assistance.
     :::warning
 
     Ensure you have configured the **values.yaml** file with the required parameters before proceeding to the next
-    steps.
+    steps. For the parameter `ociImageRegistry.mirrorRegistries`, ensure a `/v2/` endpoint is used if your OCI registry
+    supports the Docker Registry protocol v2, otherwise container pull images will fail.
 
     :::
 
@@ -762,7 +763,7 @@ environment. Reach out to our support team if you need assistance.
 
     :::tip
 
-    For a more user-friendly experience, use the open-source tool [k9s](https://k9scli.io/) to monitor the installation
+    For a more user-friendly experience, use the open source tool [k9s](https://k9scli.io/) to monitor the installation
     process.
 
     :::

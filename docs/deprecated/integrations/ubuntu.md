@@ -10,7 +10,7 @@ logoUrl: "https://registry.spectrocloud.com/v1/ubuntu-vsphere/blobs/sha256:09a72
 tags: ["packs", "ubuntu", "operating system"]
 ---
 
-[Ubuntu](https://ubuntu.com) is an open-source operating system based on the Linux kernel. Developed by Canonical Ltd.,
+[Ubuntu](https://ubuntu.com) is an open source operating system based on the Linux kernel. Developed by Canonical Ltd.,
 Ubuntu is a popular choice for desktops, servers, and cloud environments due to its ease of use, robustness, and
 versatility.
 
