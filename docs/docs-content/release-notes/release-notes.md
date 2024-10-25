@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 24, 2024 - Release 4.5.4
+## October 26, 2024 - Release 4.5.4
 
 ### Breaking Changes
 

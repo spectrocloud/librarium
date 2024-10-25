@@ -25,6 +25,8 @@ To complete this tutorial, you will need the following items.
 
 - A Spectro Cloud account
 - Basic knowledge about containers.
+- Cluster Group available in Palette. If you don’t have a cluster group, check out the
+  [Create Cluster Group](../../../clusters/cluster-groups/cluster-groups.md) documentation to learn how to create one.
 
 If you select the Terraform workflow, you will need the following software installed.
 
@@ -50,9 +52,8 @@ The following steps will guide you through deploying the two scenarios. You will
 scenario to build up your knowledge before deploying the multiple applications scenario.
 
 From Palette, you will deploy two Palette Virtual Clusters. Palette Virtual Clusters will be referred to as virtual
-clusters for the rest of the tutorial. Each virtual cluster will be hosted on a host cluster group managed by us,
-Spectro Cloud, called _beehive_. You can deploy up to two virtual clusters in the beehive group for free. Each
-scenario’s virtual cluster will sit on the beehive host cluster group.
+clusters for the rest of the tutorial. Each virtual cluster will be deployed onto your cluster group. Each scenario’s
+virtual cluster will reside on the workload clusters belonging to the cluster group.
 
 <br />
 
@@ -87,15 +88,8 @@ button **New Virtual Cluster**.
 ![View of the virtual cluster list](/tutorials/deploy-app/devx_apps_deploy-apps_virtual-cluster-list.webp)
 
 In the following screen, you will be prompted for the cluster group, virtual cluster name, and the cluster size in terms
-of CPU, memory, and storage. Select beehive for the cluster group, name the cluster `cluster-1`, and allocate 4 CPU, 4
-GiB memory, and 2 GiB of storage. Click on **Deploy Virtual Cluster** after you have filled out all the required
-information.
-
-Palette Dev Engine allows you to deploy up to two virtual clusters into the beehive cluster group. Each virtual cluster
-requires a minimum of 4 CPU, 4 GiB memory, and 2 GiB storage. When using the beehive cluster, you can allocate a maximum
-of 12 CPU, 16 Gib memory, and 20 GiB of storage. Check out the
-[Palette Dev Engine and Quotas](../../../devx/manage-dev-engine/resource-quota.md) documentation to learn more about
-limits.
+of CPU, memory, and storage. Select your cluster group, name the cluster `cluster-1`, and allocate 4 CPU, 4 GiB memory,
+and 2 GiB of storage. Click on **Deploy Virtual Cluster** after you have filled out all the required information.
 
 It will take a few minutes for the virtual cluster to deploy. In the meantime, navigate to the left **Main Menu** and
 click on **App Profiles**.
@@ -171,9 +165,9 @@ server and Postgres database to simulate a common application architecture encou
 Create another virtual cluster for the multi-application scenario. From the app mode landing page, navigate to the left
 **Main Menu** and click on **Virtual Clusters**. Next, click on the **New Virtual Cluster** button.
 
-Add the following details. Select beehive for the cluster group, name the cluster **cluster-2**, add the tag
-**scenario-2**, and allocate 8 CPU, 12 GiB memory, and 12 GiB of storage. Click on **Deploy Virtual Cluster** after you
-have filled out all the required information.
+Add the following details. Select your cluster group, name the cluster **cluster-2**, add the tag **scenario-2**, and
+allocate 8 CPU, 12 GiB memory, and 12 GiB of storage. Click on **Deploy Virtual Cluster** after you have filled out all
+the required information.
 
 It will take a few minutes for the new virtual cluster to deploy. In the meantime, go ahead and navigate to the left
 **Main Menu** and click on **App Profiles**.
