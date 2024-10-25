@@ -76,8 +76,7 @@ kubernetes-dashboard-7b544877d5-j8r4x                            1/1     Running
 dashboard-metrics-scraper-7bc864c59-n2j4m                        1/1     Running   0          10m13s
 ```
 
-If you remove the Kubecost pack through Palette, the `hello-universe` namespace will be destroyed, including the
-Palette-managed Kubecost and manually installed kubernetes-dashboard.
+If you remove the Kubecost pack through Palette, all resources in the `hello-universe` namespace will be destroyed, including the namespace.
 
 ```bash
 kubectl get pods --namespace hello-universe
