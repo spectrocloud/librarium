@@ -34,6 +34,7 @@ interface Cve {
       severity: string;
       justification: string;
       thirdParty: {
+        dependentPackage: string;
         isDependentOnThirdParty: boolean;
         isUpstreamFixAvailable: boolean;
         dependencyNote: string;
@@ -152,6 +153,13 @@ export default function CveReportsTable() {
       render: (record) => (record ? "Yes" : "No"),
     },
     {
+      title: "Third Party Package",
+      dataIndex: ["spec", "assessment", "thirdParty", "dependentPackage"],
+      key: "thirdPartyPackage",
+      width: "15%",
+      render: (record) => (record ? record : "N/A"),
+    },
+    {
       title: "CVSS Severity",
       dataIndex: ["metadata", "cvssScore"],
       key: "baseScore",
@@ -195,6 +203,7 @@ export default function CveReportsTable() {
         defaultPageSize: 100,
         showSizeChanger: true,
       }}
+      tableLayout="fixed"
     />
   );
 

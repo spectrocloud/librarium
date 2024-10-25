@@ -227,6 +227,9 @@ ${formatDateCveDetails(item.metadata.advCreatedTimestamp)}
 
 ${formatDateCveDetails(item.metadata.advLastModifiedTimestamp)}
 
+${item.spec.assessment?.thirdParty?.dependentPackage != "" ? `## Third Party Dependency \n\n${item.spec.assessment.thirdParty.dependentPackage}` : "This CVE does not have a third party dependency."}
+
+
 ## NIST CVE Summary
 
 ${escapeMDXSpecialChars(item.metadata.summary)}
