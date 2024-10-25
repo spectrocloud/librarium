@@ -49,11 +49,11 @@ pack:
 
 ## Namespace Considerations
 
-When deploying Helm charts or other manifests to your cluster outside of the context of Palette,
-it is important you understand the expected behavior of how Palette manages namespaces and its resources.
+When deploying Helm charts or other manifests to your cluster outside of the context of Palette, it is important you
+understand the expected behavior of how Palette manages namespaces and its resources.
 
-If a Palette-managed cluster profile is removed, Palette will destroy the associated namespace and all
-resources within that namespace. This includes resources that were not deployed by Palette.
+If a Palette-managed cluster profile is removed, Palette will destroy the associated namespace and all resources within
+that namespace. This includes resources that were not deployed by Palette.
 
 Here is an example scenario.
 
@@ -84,5 +84,5 @@ kubectl get pods --namespace hello-universe
 No resources found in hello-universe namespace.
 ```
 
-We recommend using separate namespaces for all cluster profile layers, including resources manually deployed outside Palette.
-Separating resources into namespaces prevents unintended deletions.
+We recommend using separate namespaces for all cluster profile layers, including resources manually deployed outside
+Palette. Separating resources into namespaces prevents unintended deletions.
