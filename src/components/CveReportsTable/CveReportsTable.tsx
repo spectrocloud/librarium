@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Tabs, ConfigProvider, Table, theme } from "antd";
 import styles from "./CveReportTable.module.scss";
 import { useColorMode } from "@docusaurus/theme-common";
 import Link from "@docusaurus/Link";
 import type { ColumnsType } from "antd/es/table";
 import rawData from "../../../.docusaurus/security-bulletins/default/data.json";
+import { Spin } from "antd";
 
 interface CveData {
   palette: Cve[];
@@ -70,12 +71,9 @@ interface Cve {
   };
 }
 
-const isGreater = (a: string, b: string) => {
-  return a.localeCompare(b, undefined, { numeric: true }) === 1;
-};
-
 export default function CveReportsTable() {
   const data: CveData = rawData as CveData;
+  const [loading, setLoading] = useState(true);
 
   const paletteCVEsConnected: Cve[] = data?.palette;
   const paletteCVEsAirgap: Cve[] = data?.paletteAirgap;
@@ -84,6 +82,12 @@ export default function CveReportsTable() {
 
   const { colorMode } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
+
+  useEffect(() => {
+    // Set a timeout to simulate loading delay if necessary
+    const timer = setTimeout(() => setLoading(false), 0); // Adjust delay as needed
+    return () => clearTimeout(timer); // Clear timeout on unmount
+  }, []);
 
   const columns: ColumnsType<Cve> = [
     {
@@ -179,7 +183,7 @@ export default function CveReportsTable() {
         };
         return statusPriority(a.status.status) - statusPriority(b.status.status);
       },
-      render: (text, record) => {
+      render: (record) => {
         const status = record.status.status;
         if (status === "Open" || status === "Ongoing") {
           return <span>🔍 {status}</span>;
@@ -191,7 +195,6 @@ export default function CveReportsTable() {
     },
   ];
 
-  // Function to render a table for a specific list of CVEs
   const renderCveTable = (cveList: Cve[]) => (
     <Table
       columns={columns}
@@ -206,7 +209,6 @@ export default function CveReportsTable() {
     />
   );
 
-  // Tabs content data
   const tabs = [
     { label: "Palette Enterprise", key: "1", children: renderCveTable(paletteCVEsConnected) },
     { label: "Palette Enterprise Airgap", key: "2", children: renderCveTable(paletteCVEsAirgap) },
@@ -217,13 +219,20 @@ export default function CveReportsTable() {
   return (
     <div className={styles.tabPane}>
       <ConfigProvider theme={{ algorithm: colorMode === "dark" ? darkAlgorithm : defaultAlgorithm }}>
-        <Tabs defaultActiveKey="1">
-          {tabs.map((tab) => (
-            <Tabs.TabPane tab={tab.label} key={tab.key}>
-              {tab.children}
-            </Tabs.TabPane>
-          ))}
-        </Tabs>
+        {loading ? (
+          <Spin
+            size="large"
+            style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100px" }}
+          />
+        ) : (
+          <Tabs defaultActiveKey="1">
+            {tabs.map((tab) => (
+              <Tabs.TabPane tab={tab.label} key={tab.key}>
+                {tab.children}
+              </Tabs.TabPane>
+            ))}
+          </Tabs>
+        )}
       </ConfigProvider>
     </div>
   );
