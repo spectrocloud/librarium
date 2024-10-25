@@ -47,7 +47,7 @@ pack:
     "wordpress-storage": "storage.metrics.io/format=json"
 ```
 
-## Existing Namespace Considerations
+## Namespace Considerations
 
 When deploying Helm charts or other packages to your cluster outside of Palette, it is important to understand namespace
 management.
@@ -55,7 +55,7 @@ management.
 :::danger If a Palette-managed cluster profile is removed, Palette will destroy the associated namespace and all
 resources within that namespace. This includes resources that were not deployed by Palette. :::
 
-Here is an example scenario:
+Here is an example scenario.
 
 A cluster has the following packages installed in the `hello-universe` namespace:
 
