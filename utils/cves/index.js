@@ -129,7 +129,7 @@ async function generateMarkdownForCVEs(GlobalCVEData) {
   const allCVEs = Object.values(GlobalCVEData).reduce((acc, curr) => acc.concat(curr), []);
 
   // To generate the Impact Product & Versions table we need to track all the instances of the same CVE
-  // The followin hashmap will store the data for each CVE and aggregate the impact data for each product
+  // The following hashmap will store the data for each CVE and aggregate the impact data for each product
   const cveImpactMap = {};
 
   for (const item of allCVEs) {
@@ -193,10 +193,6 @@ async function generateMarkdownForCVEs(GlobalCVEData) {
 function createCveMarkdown(item, cveImpactData, location) {
   const lowerCaseCve = item.metadata.cve.toLowerCase();
   const upperCaseCve = item.metadata.cve.toUpperCase();
-
-  const impactedProducts = item.spec.impact.impactedProducts;
-  const impactedVersions = item.spec.impact.impactedVersions;
-  const impactedDeployments = item.spec.impact.impactedDeployments;
   const revisions = item.spec.revision;
 
   // Generate a table of impacted products
