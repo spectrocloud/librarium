@@ -49,24 +49,24 @@ pack:
 
 ## Namespace Considerations
 
-When deploying Helm charts or other packages to your cluster outside of Palette, it is important to understand namespace
-management.
+When deploying Helm charts or other manifests to your cluster outside of the context of Palette,
+it is important you understand the expected behavior of how Palette manages namespaces and its resources.
 
-:::danger If a Palette-managed cluster profile is removed, Palette will destroy the associated namespace and all
-resources within that namespace. This includes resources that were not deployed by Palette. :::
+If a Palette-managed cluster profile is removed, Palette will destroy the associated namespace and all
+resources within that namespace. This includes resources that were not deployed by Palette.
 
 Here is an example scenario.
 
-A cluster has the following packages installed in the `hello-universe` namespace:
+A cluster has the following two packs and Helm chart installed in the `hello-universe` namespace:
 
-- Hello Universe (Palette-managed)
-- Kubecost (Palette-managed)
+- Hello Universe (Palette-managed pack)
+- Kubecost (Palette-managed pack)
 - kubernetes-dashboard (helm chart added outside of Palette)
 
 Initial state of the namespace.
 
 ```bash
-~ kubectl get pods --namespace hello-universe
+kubectl get pods --namespace hello-universe
 NAME                                                             READY   STATUS    RESTARTS   AGE
 hello-universe-deployment-5b4ffc8f97-r5nhb                       1/1     Running   0          3m50s
 cost-analyzer-cost-analyzer-59bf7cc86-tzdgs                      2/2     Running   0          7m47s
@@ -76,15 +76,13 @@ kubernetes-dashboard-7b544877d5-j8r4x                            1/1     Running
 dashboard-metrics-scraper-7bc864c59-n2j4m                        1/1     Running   0          10m13s
 ```
 
-If you remove the Kubecost profile through Palette, the `hello-universe` namespace will be destroyed, including the
+If you remove the Kubecost pack through Palette, the `hello-universe` namespace will be destroyed, including the
 Palette-managed Kubecost and manually installed kubernetes-dashboard.
 
 ```bash
-~ kubectl get pods --namespace hello-universe
+kubectl get pods --namespace hello-universe
 No resources found in hello-universe namespace.
 ```
 
-### Best Practice
-
-When manually deploying resources outside of Palette, use separate namespaces from your Palette-managed profiles to
-prevent unintended deletion.
+We recommend using separate namespaces for all cluster profile layers, including resources manually deployed outside Palette.
+Separating resources into namespaces prevents unintended deletions.
