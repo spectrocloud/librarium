@@ -25,10 +25,18 @@ To complete this tutorial, you will need the following items.
 
 - A Spectro Cloud account
 - Basic knowledge about containers.
-- Cluster Group available in Palette. If you don’t have a cluster group, check out the
-  [Create Cluster Group](../../../clusters/cluster-groups/cluster-groups.md) documentation to learn how to create one.
+- A Cluster Group available in Palette with at least the following resources:
+
+  - 12 CPU
+  - 12 GiB of Memory,
+  - 20 GiB of Storage.
+
+    If you don’t have a cluster group, check out the
+    [Create Cluster Group](../../../clusters/cluster-groups/cluster-groups.md) documentation to learn how to create one.
 
 If you select the Terraform workflow, you will need the following software installed.
+
+- [Terraform](https://developer.hashicorp.com/terraform/install) 1.9.0 or later.
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) or [Podman](https://podman.io/docs/installation).
 
@@ -492,6 +500,13 @@ Cloud provider can authenticate with the Palette API.
 export SPECTROCLOUD_APIKEY=YourAPIKeyHere
 ```
 
+To simplify future steps, export the name of the cluster group you want to deploy the virtual clusters to as an
+environment variable.
+
+```shell
+export CLUSTER_GROUP_NAME=YourClusterGroupName
+```
+
 Next, initialize the Terraform provider by issuing the following command.
 
 ```shell
@@ -524,7 +539,7 @@ change this value to point to any other projects you may have in Palette.
 terraform {
   required_providers {
     spectrocloud = {
-      version = ">= 0.11.1"
+      version = ">= 0.21.6"
       source  = "spectrocloud/spectrocloud"
     }
   }
@@ -545,7 +560,7 @@ cluster.
 ```hcl
 resource "spectrocloud_virtual_cluster" "cluster-1" {
   name              = var.scenario-one-cluster-name
-  cluster_group_uid = data.spectrocloud_cluster_group.beehive.id
+  cluster_group_uid = data.spectrocloud_cluster_group.cluster-group.id
 
   resources {
     max_cpu           = 4
@@ -573,9 +588,9 @@ cluster group.
 <br />
 
 ```hcl
-data "spectrocloud_cluster_group" "beehive" {
-  name    = var.cluster-group-name
-  context = "system"
+data "spectrocloud_cluster_group" "cluster-group" {
+  name = var.cluster-group-name
+  context = "project"
 }
 ```
 
@@ -725,14 +740,22 @@ resource "spectrocloud_application" "scenario-1" {
   config {
     cluster_name      = spectrocloud_virtual_cluster.cluster-1.name
     cluster_uid = spectrocloud_virtual_cluster.cluster-1.id
+    cluster_context = "project"
   }
   tags = concat(var.tags, ["scenario-1"])
 }
 ```
 
+Before deploying the application, use a terraform variable file to populate the cluster group name for the variable
+`cluster-group-name`. Issue the following command to create the file.
+
+```shell
+echo "cluster-group-name = \"${CLUSTER_GROUP_NAME}\"" > terraform.tfvars
+```
+
 </PointsOfInterest>
 
-You can preview the resources Terraform will create by issuing the following command.
+Preview the resources Terraform will create by issuing the following command.
 
 ```shell
 terraform plan
