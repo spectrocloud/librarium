@@ -200,8 +200,6 @@ function createCveMarkdown(item, cveImpactData, location) {
   const revisions = item.spec.revision;
 
   // Generate a table of impacted products
-
-  let productMap = { palette: "Palette Enterprise", vertex: "VerteX" };
   let table = generateMarkdownTable(cveImpactData);
   let revisionHistory = generateRevisionHistory(revisions);
 

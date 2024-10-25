@@ -124,26 +124,25 @@ export default function CveReportsTable() {
       key: "productVersion",
       sorter: (a, b) => {
         const isGreater = (a: string, b: string) => a.localeCompare(b, undefined, { numeric: true }) === 1;
-
-        const getSortedVersions = (versions: string[]) => versions.sort((v1, v2) => (isGreater(v1, v2) ? -1 : 1)); // Sort in descending order (newest first)
+        const getSortedVersions = (versions: string[]) => versions.sort((v1, v2) => (isGreater(v1, v2) ? -1 : 1));
 
         const sortedVersionsA = getSortedVersions([...a.spec.impact.impactedVersions]);
         const sortedVersionsB = getSortedVersions([...b.spec.impact.impactedVersions]);
 
-        // Handle cases where either list of impacted versions is empty
         if (sortedVersionsA.length === 0 || sortedVersionsB.length === 0) {
           return sortedVersionsA.length - sortedVersionsB.length;
         }
 
-        // Compare the first (newest) version in the sorted list
         return isGreater(sortedVersionsA[0], sortedVersionsB[0]) ? -1 : 1;
       },
       render: (impactedVersions: string[]) => {
-        // Ensure versions are sorted before rendering
         const sortedVersions = impactedVersions.sort((v1, v2) =>
           v1.localeCompare(v2, undefined, { numeric: true }) === 1 ? -1 : 1
         );
-        return sortedVersions.length > 0 ? sortedVersions.join(", ") : "N/A";
+
+        // Show only the first 3 versions, followed by an ellipsis if there are more
+        const displayedVersions = sortedVersions.slice(0, 3).join(", ");
+        return sortedVersions.length > 3 ? `${displayedVersions}, ...` : displayedVersions || "N/A";
       },
     },
     {
