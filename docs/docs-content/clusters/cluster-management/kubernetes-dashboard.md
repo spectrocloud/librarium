@@ -8,7 +8,15 @@ tags: ["clusters", "cluster management", "k"]
 ---
 
 The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is a general-purpose, web-based UI for Kubernetes
-clusters. You can use the dashboard to manage the cluster, deploy and manage applications, and troubleshoot issues.
+clusters. The dashboard provides a rich variety of functionality by wrapping around the
+[kubectl](https://kubernetes.io/docs/tasks/tools/) CLI. You can use it to perform the following operations.
 
-Use the [Spectro Kubernetes Dashboard](../../integrations/spectro-k8s-dashboard.md) pack to add the Kubernetes dashboard
-to your cluster. The pack documentation page has instructions on how to use the pack.
+- List and manage cluster Kubernetes resources.
+- Deploy a containerized application to a host cluster.
+- Troubleshoot deployed applications and resources.
+
+<!-- prettier-ignore -->
+Use the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack to add the Kubernetes dashboard
+to your cluster. The pack documentation page has instructions on how to configure and use the dashboard.
+
+![Kubernetes dashboard login page](/integrations_spectro-k8s-dashboard_dashboard-page.webp)
