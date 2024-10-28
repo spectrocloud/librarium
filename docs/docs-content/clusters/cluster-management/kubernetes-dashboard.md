@@ -9,9 +9,9 @@ tags: ["clusters", "cluster management", "k"]
 
 The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is a general-purpose, web-based UI for Kubernetes
 clusters. The dashboard provides a rich variety of functionality by wrapping around the
-[kubectl](https://kubernetes.io/docs/tasks/tools/) CLI. You can use it to perform the following operations.
+[kubectl](https://kubernetes.io/docs/tasks/tools/) CLI. You can use it to perform the following operations:
 
-- List and manage cluster Kubernetes resources.
+- List and manage Kubernetes cluster resources.
 - Deploy a containerized application to a host cluster.
 - Troubleshoot deployed applications and resources.
 
