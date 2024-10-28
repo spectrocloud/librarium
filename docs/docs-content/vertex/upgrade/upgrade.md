@@ -35,7 +35,6 @@ latest minor version available.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
-|       4.5.3        |       4.5.5        | :white_check_mark: |
 |       4.5.3        |       4.5.4        | :white_check_mark: |
 |       4.4.20       |       4.5.3        | :white_check_mark: |
 |       4.4.6        |       4.5.3        | :white_check_mark: |
