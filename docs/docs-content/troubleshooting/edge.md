@@ -273,22 +273,22 @@ nodes to help investigate the root cause as long as your cluster is in **Healthy
 
 The downloaded log archive includes logs from the following services and files:
 
-- stylus-agent.service
-- stylus-operator.service
-- spectro-stylus-agent.service
-- spectro-stylus-operator.service
-- k3s.service
-- k3s-agent.service
-- rke2.service
-- rke2-agent.service
-- /var/log/stylus-upgrade.log
-- /var/log/stylus-upgrade-script.log
-- /var/log/stylus-init-upgrade.log
-- /var/log/kube-init.log
-- /var/log/kube-join.log
-- /var/log/kube-upgrade.log
-- /var/log/kube-post-init.log
-- /proc/cmdline
+- `stylus-agent.service`
+- `stylus-operator.service`
+- `spectro-stylus-agent.service`
+- `spectro-stylus-operator.service`
+- `k3s.service`
+- `k3s-agent.service`
+- `rke2.service`
+- `rke2-agent.service`
+- `/var/log/stylus-upgrade.log`
+- `/var/log/stylus-upgrade-script.log`
+- `/var/log/stylus-init-upgrade.log`
+- `/var/log/kube-init.log`
+- `/var/log/kube-join.log`
+- `/var/log/kube-upgrade.log`
+- `/var/log/kube-post-init.log`
+- `/proc/cmdline`
 
 ### Debug Steps
 
