@@ -12,22 +12,9 @@ apply to users and virtual clusters.
 
 ## Available Environments
 
-Palette Dev Engine users have access to a Palette-managed cluster group named _beehive_. The beehive cluster group is
-also a _system-level cluster group_, meaning that Spectro Cloud manages it. The beehive cluster group falls under the
-free tier of Palette and comes with its own set of resource limits. All users are subject to the following resource
-quotas when using the beehive cluster group.
-
-| Type            | Max Limit | Description                                                                                           |
-| --------------- | --------- | ----------------------------------------------------------------------------------------------------- |
-| Virtual Cluster | 2         | Each user is allowed to deploy a total of two virtual clusters.                                       |
-| CPU             | 12        | Each user is allowed to consume a total of 12 CPU. This limit spans both virtual clusters.            |
-| Memory          | 12 Gib    | Each user is allowed to consume a total of 12 GiB of Memory. This limit spans both virtual clusters.  |
-| Storage         | 20 GiB    | Each user is allowed to consume a total of 20 GiB of storage. This limit spans both virtual clusters. |
-
-Palette administrators can remove the beehive cluster, and other system-level cluster groups for all downstream users by
-setting the tenant developer setting **Hide system-level cluster groups from tenant users** to **true**. When this
-setting value is **true**, the beehive cluster is not displayed in the cluster group drop-down menu when deploying
-Palette virtual clusters.
+Palette administrators can remove system-level cluster groups for all downstream users by setting the tenant developer
+setting **Hide system-level cluster groups from tenant users** to **true**. When this setting value is **true**, the
+beehive cluster is not displayed in the cluster group drop-down menu when deploying Palette virtual clusters.
 
 ![The deployment path for a user](/045-devx_resource-quota_is-beehive-enabled.webp)
 
@@ -186,8 +173,8 @@ cluster request falls within the approved limits.
 
 ### Scenario 3
 
-User B is creating a request to deploy a virtual cluster to the beehive cluster group. The virtual cluster is requesting
-the following resources:
+User B is creating a request to deploy a virtual cluster to a system-level cluster group. The virtual cluster is
+requesting the following resources:
 
 - 4 CPU
 - 8 GiB Memory
@@ -195,6 +182,6 @@ the following resources:
 
 **Request**: ✅
 
-**Explanation**: The request is accepted because it targets a system-level cluster group, the beehive cluster group and
-not a cluster group managed by the tenant. Based on the cluster group quota, the number of requested resources falls
-within the within the approved limits of the system-level quota.
+**Explanation**: The request is accepted because it targets a system-level cluster group and not a cluster group managed
+by the tenant. Based on the cluster group quota, the number of requested resources falls within the within the approved
+limits of the system-level quota.
