@@ -269,7 +269,7 @@ the Cilium DaemonSet.
 ## Download Node Logs from Edge Clusters
 
 If you experience issues with your Edge cluster control plane or workloads, you can download the logs of your cluster
-nodes to help investigate the root cause as long as Kubernetes is reachable in your cluster.
+nodes to help investigate the root cause as long as your cluster is in **Healthy** status.
 
 The following log archive includes logs from the following services and files:
 
