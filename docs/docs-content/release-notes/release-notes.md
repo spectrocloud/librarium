@@ -11,7 +11,100 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## TBD - Release 4.5.a
+## November 9,2024 - Release 4.5.a
+
+### Palette
+
+#### Breaking Changes
+
+- The _Beehive_ [cluster group](../clusters/cluster-groups/cluster-groups.md) is no longer available starting with this
+  release. If you need to deploy virtual cluster, create a cluster group in your tenant or project. You can learn more
+  about creating a new cluster group in the
+  [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide.
+
+#### Features
+
+#### Improvements
+
+#### Bug Fixes
+
+### Deprecations and Removals
+
+### Edge
+
+#### Breaking Changes
+
+#### Features
+
+#### Improvements
+
+#### Deprecations and Removals
+
+#### Bug Fixes
+
+#### Known Inssues
+
+### Palette Dev Engine (PDE)
+
+#### Features
+
+#### Improvements
+
+#### Deprecations and Removals
+
+#### Bug Fixes
+
+#### Known Inssues
+
+### Virtual Machine Orchestrator
+
+#### Features
+
+#### Improvements
+
+#### Deprecations and Removals
+
+#### Bug Fixes
+
+#### Known Inssues
+
+### VerteX
+
+#### Breaking Changes
+
+#### Features
+
+#### Improvements
+
+#### Deprecations and Removals
+
+#### Bug Fixes
+
+#### Known Inssues
+
+### Automation
+
+### Docs and Education
+
+### Packs
+
+#### Operating Systems
+
+#### Kubernetes
+
+#### CNI
+
+#### CSI
+
+#### Add-on Packs
+
+#### Community Packs
+
+#### Known Inssues
+
+#### Pack Notes
+
+#### Deprecations and Removals
 
 ## October 26, 2024 - Release 4.5.5
 
