@@ -268,9 +268,8 @@ the Cilium DaemonSet.
 
 ## Download Node Logs from Edge Clusters
 
-If your cluster is stuck in the **Provisioning** or **Unknown** state, it can be difficult to diagnose the issue. To
-help identify the root cause of the issue impacting your cluster, you can download node logs of your cluster as long as
-Kubernetes is reachable in your cluster.
+If you experience issues with your Edge cluster control plane or workloads, you can download the logs of your cluster
+nodes to help investigate the root cause as long as Kubernetes is reachable in your cluster.
 
 The following log archive includes logs from the following services and files:
 
