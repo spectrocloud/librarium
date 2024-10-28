@@ -13,6 +13,47 @@ tags: ["release-notes"]
 
 ## TBD - Release 4.5.a
 
+## October 26, 2024 - Release 4.5.5
+
+### Breaking Changes
+
+- Edge [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) created with the
+  latest version of the Edge CLI, version `4.5.5`, are incompatible with Palette agent versions before `4.5.4` due to a
+  new format schema. If you are using an older version of the Palette agent, use the Edge CLI version `4.5.3` or earlier
+  to create content bundles. To download the latest version of the Edge CLI, visit the
+  [Downloads](../spectro-downloads.md#palette-edge-cli) page.
+
+### Improvements
+
+<!-- prettier-ignore -->
+- <VersionedLink text="BYOOS Edge OS" url="/integrations/packs/?pack=edge-native-byoi" /> pack version 2.0.0 is now available with support for [agent mode deployment](../deployment-modes/agent-mode/agent-mode.md).
+
+- Cluster [Profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) marked as hidden now include the ability to be mutable, hidden, and read-only.
+
+- [Edge content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) will now retain tags and image signatures. In the past, tags and signatures were stripped when the content bundle was created. Use the latest version of the Edge CLI to create content bundles that retain tags and signatures. To download the latest version of the Edge CLI, visit the
+  [Downloads](../spectro-downloads.md#palette-edge-cli) page.
+
+- Support for multiple authenticated external registries with domain mapping capabilities is now available for Edge clusters. Refer to the [External Registries](../clusters/edge/edge-configuration/installer-reference.md#multiple-external-registries) section in the Edge Installer Configuration Reference page for more information.
+
+### Bug Fixes
+
+- Resolved an issue where Edge nodes removed from a cluster remained in the Palette UI after a node delete operation was
+  completed.
+
+- Fixed an issue with Palette agent version 4.4.10 was unable to connect to the Palette management plane due to a gRPC
+  connection error.
+
+- Fixed an upgrade error causing clusters on K3s version 1.29 to fail to upgrade to a newer version.
+
+- Fixed an issue where pack names containing the `/` character did not fail validation during pack creation.
+
+- Fixed an issue where clusters, without prior backups, using Velero and Restic, were unable to accept resource quotas.
+
+- Resolved an issue where CoreDNS was not upgraded during a Kubernetes upgrade.
+
+- Fixed an issue where [system macros](../registries-and-packs/pack-constraints.md#pack-macros) were causing errors
+  during cluster profile downloads.
+
 ## October 13, 2024 - Release 4.5.0 - 4.5.3
 
 This release of Palette features a new deployment model, Agent Mode, and contains several new improvements and
