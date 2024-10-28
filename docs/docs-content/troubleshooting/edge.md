@@ -271,7 +271,7 @@ the Cilium DaemonSet.
 If you experience issues with your Edge cluster control plane or workloads, you can download the logs of your cluster
 nodes to help investigate the root cause as long as your cluster is in **Healthy** status.
 
-The following log archive includes logs from the following services and files:
+The downloaded log archive includes logs from the following services and files:
 
 - stylus-agent.service
 - stylus-operator.service
