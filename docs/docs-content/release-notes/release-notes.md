@@ -26,9 +26,13 @@ tags: ["release-notes"]
 
 #### Improvements
 
-#### Bug Fixes
+- The Palette SaaS login and product tour pages have been visually refreshed.
 
-### Deprecations and Removals
+- Additional Palette images that are required by internal Palette microservices are migrated to the new image registry,
+  `us-docker.pkg.dev`. Refer to the Palette 4.5.3 [Breaking Changes](#breaking-changes-4-5-3) section for more
+  information about the new image registry.
+
+#### Bug Fixes
 
 ### Edge
 
@@ -37,8 +41,6 @@ tags: ["release-notes"]
 #### Features
 
 #### Improvements
-
-#### Deprecations and Removals
 
 #### Bug Fixes
 
@@ -50,8 +52,6 @@ tags: ["release-notes"]
 
 #### Improvements
 
-#### Deprecations and Removals
-
 #### Bug Fixes
 
 #### Known Inssues
@@ -61,8 +61,6 @@ tags: ["release-notes"]
 #### Features
 
 #### Improvements
-
-#### Deprecations and Removals
 
 #### Bug Fixes
 
@@ -84,7 +82,19 @@ tags: ["release-notes"]
 
 ### Automation
 
+- Terraform version 0.22.0 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
+#### Deprecations and Removals
+
+- The Terraform resource, `spectrocloud_cluster_import` is deprecated. To import a cluster deployed outside of the
+  context of Palette, refer to the [Import a Cluster](../clusters/imported-clusters/cluster-import.md) guide.
+
 ### Docs and Education
+
+-
 
 ### Packs
 
@@ -161,7 +171,7 @@ to learn more about the changes introduced in this release.
 
 ### Palette Enterprise {#palette-enterprise-4-5-3}
 
-#### Breaking Changes
+#### Breaking Changes {#breaking-changes-4-5-3}
 
 - Due to Google's
   [decision to deprecate](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr) the `gcr.io`
