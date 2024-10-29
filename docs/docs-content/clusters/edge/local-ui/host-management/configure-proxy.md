@@ -25,7 +25,7 @@ configured through Local UI will be retained even after a
 
 - An active HTTP proxy server.
 
-- If your Certificate Authority (CA) certificates are not base64-encoded, you ned a utility or tool to convert the
+- If your Certificate Authority (CA) certificates are not base64-encoded, you need a utility or tool to convert the
   certificate and key files to base64-encoded strings. You can use the `base64` command in Unix-based systems.
   Alternatively, you can use an online tool to convert the files to base64-encoded strings.
 
