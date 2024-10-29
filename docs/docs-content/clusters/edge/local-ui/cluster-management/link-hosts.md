@@ -23,13 +23,15 @@ nodes have access to features such as cluster management and can change host set
 
 ## Prerequisites
 
-- Two or more hosts deployed in [appliance mode](../../../../deployment-modes/appliance-mode.md) with Palette Edge
-  installed on the same network.
+- Two or more hosts deployed in the same deployment mode on the same network. For more information, refer to
+  [Appliance Mode Installation](../../site-deployment/stage.md) or
+  [Agent Mode Installation](../../../../deployment-modes/agent-mode/install-agent-host.md).
 
 ## Procedure
 
 1. Decide on a node that you plan to use as the leader of the group. Log in to
-   [Local UI](../host-management/access-console.md) of that node.
+   [Local UI](../host-management/access-console.md) of that node. The leader node may or may not already be in a
+   cluster, but the follower nodes must be idle and cannot be in a cluster.
 
 2. From the left **Main Menu**, click **Linked Edge Hosts**.
 

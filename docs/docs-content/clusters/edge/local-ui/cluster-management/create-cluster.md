@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Create Local Cluster"
 title: "Create Local Cluster"
-description: "Instructions for creating a locally manageg cluster in Edge Host Management Console."
+description: "Instructions for creating a locally managed cluster in Edge Host Management Console."
 hide_table_of_contents: false
 sidebar_position: 30
 tags: ["edge"]
@@ -16,8 +16,10 @@ guides you through how to create a cluster using Local UI.
 
 ## Limitations
 
-- For multi-node clusters, only hosts deployed in [appliance mode](../../../../deployment-modes/appliance-mode.md) can
-  be part of a multi-node cluster. Agent mode hosts are not able to join a multi-node cluster.
+- For multi-node clusters, all hosts must be deployed in the same deployment mode. For more information, refer to
+  [Deployment Modes](../../../../deployment-modes/deployment-modes.md).
+
+- For multi-node clusters composed of hosts deployed in agent mode, all hosts must share the same Operating System (OS).
 
 ## Prerequisites
 
@@ -36,6 +38,9 @@ guides you through how to create a cluster using Local UI.
     network administrator to reserve IP addresses for your Edge hosts in a DHCP network.
   - Enable network overlay on your Edge cluster. Network overlay can only be enabled during cluster creation. For more
     information about network overlay, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md).
+
+- To create multi-node clusters, all nodes to be included in the cluster must be linked. For more information, refer to
+  [Link Hosts](./link-hosts.md).
 
 ## Create Local Cluster
 
@@ -85,8 +90,8 @@ guides you through how to create a cluster using Local UI.
 
 8. In the **Node Config** step, you can specify configurations for worker pools and control plane pools. To assign a
    host to a node pool, click **Add Edge Hosts** in the corresponding node pool and select the host to add to the pool.
-   The leader node is a mandatory control plane node and cannot be unassigned. Additionally, ensure that you have an odd
-   number of nodes in the control plane.
+   For multi-node clusters, the leader node is a mandatory control plane node and cannot be unassigned. Additionally,
+   you must ensure that you have an odd number of nodes in the control plane.
 
    For more information about node pool configurations, refer to [Node pools](../../../cluster-management/node-pool.md).
    After you finish configuration, click **Next**.
@@ -96,6 +101,6 @@ guides you through how to create a cluster using Local UI.
 
 ## Validate
 
-1. Log in to Local UI.
+1. Log in to [Local UI](../host-management/access-console.md).
 
 2. Click **Cluster**. Verify that your cluster has entered the running status.
