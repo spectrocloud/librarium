@@ -132,6 +132,7 @@ remainder of the permissions required by IaaS can be assigned at the resource gr
         "/subscriptions/$SUBSCRIPTION_ID"
       ]
     }
+   EOF
    ```
 
 3. Next, create a JSON file for the permissions that must be applied at the resource group or subscription scope level.
@@ -193,6 +194,7 @@ remainder of the permissions required by IaaS can be assigned at the resource gr
        "/subscriptions/$SUBSCRIPTION_ID"
      ]
    }
+   EOF
    ```
 
 4. Create a role for each of the JSON files you created in the previous steps. Issue the following commands to create
@@ -208,7 +210,7 @@ remainder of the permissions required by IaaS can be assigned at the resource gr
    object ID you want to use with Palette to a variable.
 
    ```shell
-   export ASSIGNEE="<security_principal_object_id>"
+   export ASSIGNEE="<security_principal_client_id>"
    ```
 
 6. Export the resource group name and virtual network name to a variable.
@@ -229,7 +231,6 @@ remainder of the permissions required by IaaS can be assigned at the resource gr
    ```json
    az role assignment create --assignee $ASSIGNEE \
      --role "Palette Static Placement IaaS Cluster Deployer (vnet)" \
-     --scope "/subscriptions/$SUBSCRIPTION_ID"
      --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$VNET_NAME"
    ```
 
@@ -357,6 +358,7 @@ subscription as scope instead of the resource group as scope.
        "/subscriptions/$SUBSCRIPTION_ID"
      ]
    }
+   EOF
    ```
 
 3. Create a role using the JSON file you created in the previous step. Issue the following command to create the role.
@@ -370,7 +372,7 @@ subscription as scope instead of the resource group as scope.
    object ID you want to use with Palette to a variable.
 
    ```shell
-   export ASSIGNEE="<security_principal_object_id>"
+   export ASSIGNEE="<security_principal_client_id>"
    ```
 
 5. Export the resource group name to a variable.
@@ -450,6 +452,7 @@ remainder of the permissions required by AKS can be assigned at the subscription
        "/subscriptions/$SUBSCRIPTION_ID"
      ]
    }
+   EOF
    ```
 
 3. Create a JSON file for the permissions that must be applied at the subscription scope level. Issue the following
@@ -489,6 +492,7 @@ remainder of the permissions required by AKS can be assigned at the subscription
       "/subscriptions/$SUBSCRIPTION_ID"
     ]
    }
+   EOF
    ```
 
 4. Create another JSON file for the remaining permissions required by AKS.
@@ -955,6 +959,7 @@ remainder of the permissions required by AKS can be assigned at the subscription
        "/subscriptions/$SUBSCRIPTION_ID"
      ]
    }
+   EOF
    ```
 
 5. Create a role for each of the JSON files you created in the previous steps. Issue the following commands to create
@@ -971,7 +976,7 @@ remainder of the permissions required by AKS can be assigned at the subscription
    object ID you want to use with Palette to a variable.
 
    ```shell
-   export ASSIGNEE="<security_principal_object_id>"
+   export ASSIGNEE="<security_principal_client_id>"
    ```
 
 7. Export the resource group name and virtual network name to a variable.
@@ -1076,6 +1081,7 @@ resource groups within a subscription.
        "/subscriptions/$SUBSCRIPTION_ID"
      ]
    }
+   EOF
    ```
 
 3. Create another JSON file containing the remaining permissions required for AKS.
@@ -1548,6 +1554,7 @@ resource groups within a subscription.
        "/subscriptions/$SUBSCRIPTION_ID"
      ]
    }
+   EOF
    ```
 
 4. Create a role for each of the JSON files you created in the previous steps. Issue the following commands to create
@@ -1563,7 +1570,7 @@ resource groups within a subscription.
    object ID you want to use with Palette to a variable.
 
    ```shell
-   export ASSIGNEE="<security_principal_object_id>"
+   export ASSIGNEE="<security_principal_client_id>"
    ```
 
 6. Export the resource group name to a variable.
