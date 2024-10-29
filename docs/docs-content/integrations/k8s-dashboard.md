@@ -36,7 +36,7 @@ Dashboard on port 8080.
 <!-- prettier-ignore-end -->
 
 ```bash
-kubectl port-forward -namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
+kubectl port-forward --namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
 ```
 
 To access Kubernetes Dashboard, navigate to `https://localhost:8080` in a browser of your choice.
@@ -44,8 +44,8 @@ To access Kubernetes Dashboard, navigate to `https://localhost:8080` in a browse
 From the Dashboard login page, run the following command from the terminal window to obtain the bearer token:
 
 ```bash
-kubectl -namespace kubernetes-dashboard describe secret  \
-$(kubectl -namespace kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
+kubectl --namespace kubernetes-dashboard describe secret  \
+$(kubectl --namespace kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
 ```
 
 The following example shows the command output with the token value.
@@ -115,7 +115,7 @@ Dashboard on port 8080.
 <!-- prettier-ignore-end -->
 
 ```bash
-kubectl port-forward -namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
+kubectl port-forward --namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
 ```
 
 To access Kubernetes Dashboard, navigate to `https://localhost:8080` in a browser of your choice.
@@ -123,7 +123,7 @@ To access Kubernetes Dashboard, navigate to `https://localhost:8080` in a browse
 From the Dashboard login page, run the following command from the terminal window to obtain the bearer token:
 
 ```bash
-kubectl -namespace kubernetes-dashboard describe secret $(kubectl -namespace kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
+kubectl --namespace kubernetes-dashboard describe secret $(kubectl --namespace kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
 ```
 
 The following example shows the command output with the token value.
@@ -193,7 +193,7 @@ Dashboard on port 8080.
 <!-- prettier-ignore-end -->
 
 ```bash
-kubectl port-forward -namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
+kubectl port-forward --namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
 ```
 
 To access Kubernetes Dashboard, navigate to `https://localhost:8080` in a browser of your choice.
@@ -201,7 +201,7 @@ To access Kubernetes Dashboard, navigate to `https://localhost:8080` in a browse
 From the Dashboard login page, run the following command from the terminal window to obtain the bearer token:
 
 ```bash
-kubectl -namespace kubernetes-dashboard describe secret $(kubectl -namespace kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
+kubectl --namespace kubernetes-dashboard describe secret $(kubectl --namespace kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
 ```
 
 The following example shows the command output with the token value.
@@ -267,7 +267,7 @@ When connected to the cluster remotely, run the following command to establish a
 Dashboard on port 80.
 
 ```bash
-kubectl port-forward -namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
+kubectl port-forward --namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
 ```
 
 To access Kubernetes Dashboard, navigate to `https://localhost:8080` in a browser of your choice.
@@ -275,7 +275,7 @@ To access Kubernetes Dashboard, navigate to `https://localhost:8080` in a browse
 From the Dashboard login page, run the following command from the terminal window to obtain the bearer token:
 
 ```bash
-kubectl -namespace kubernetes-dashboard describe secret $(kubectl -namespace kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
+kubectl --namespace kubernetes-dashboard describe secret $(kubectl --namespace kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
 ```
 
 The following example shows the command output with the token value.
@@ -345,7 +345,7 @@ Dashboard on port 80.
 <!-- prettier-ignore-end -->
 
 ```bash
-kubectl port-forward -namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
+kubectl port-forward --namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
 ```
 
 To access Kubernetes Dashboard, navigate to `https://localhost:8080` in a browser of your choice.
@@ -353,7 +353,7 @@ To access Kubernetes Dashboard, navigate to `https://localhost:8080` in a browse
 From the Dashboard login page, run the following command from the terminal window to obtain the bearer token:
 
 ```bash
-kubectl -namespace kubernetes-dashboard describe secret $(kubectl -namespace kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
+kubectl --namespace kubernetes-dashboard describe secret $(kubectl --namespace kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
 ```
 
 The following example shows the command output with the token value.
@@ -423,7 +423,7 @@ Dashboard on port 80.
 <!-- prettier-ignore-end -->
 
 ```bash
-kubectl port-forward -namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
+kubectl port-forward --namespace kubernetes-dashboard service/kubernetes-dashboard 8080:443
 ```
 
 To access Kubernetes Dashboard, navigate to `https://localhost:8080` in a browser of your choice.
@@ -431,7 +431,7 @@ To access Kubernetes Dashboard, navigate to `https://localhost:8080` in a browse
 From the Dashboard login page, run the following command from the terminal window to obtain the bearer token:
 
 ```bash
-kubectl -namespace kubernetes-dashboard describe secret $(kubectl -namespace kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
+kubectl --namespace kubernetes-dashboard describe secret $(kubectl --namespace kubernetes-dashboard get secret | grep kubernetes-dashboard-token | awk '{print $1}')
 ```
 
 The following example shows the command output with the token value.
