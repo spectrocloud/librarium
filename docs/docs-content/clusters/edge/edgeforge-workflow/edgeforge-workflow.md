@@ -24,9 +24,9 @@ To start building a custom Edge artifact, use the following guides:
 images to help you get started quickly. You can also refer to the following how-tos to learn how to build the Edge
 Installer ISO and provider images individually.
 
-- [Build Provider Images](./palette-canvos//build-provider-images.md).
+- [Build Provider Images](./palette-canvos/build-provider-images.md).
 
-- [Build Installer ISO](./palette-canvos//build-installer-iso.md).
+- [Build Installer ISO](./palette-canvos/build-installer-iso.md).
 
 If you want your Edge host to have preloaded content and be able to create clusters using the preloaded content, you
 build a content bundle and build the content bundle into your Edge Installer ISO. Building preloaded content into your
@@ -97,8 +97,8 @@ production scenario, you would need to customize these artifacts to suit your sp
 
 You can specify a custom registry for the Edge Installer to use during installation with the user data parameter
 `registryCredentials`. Refer to the
-[Installer Configuration](../edge-configuration/installer-reference.md#external-registry-parameters) reference resource
-for more details.
+[Installer Configuration](../edge-configuration/installer-reference.md#single-external-registry) reference resource for
+more details.
 
 :::
 
