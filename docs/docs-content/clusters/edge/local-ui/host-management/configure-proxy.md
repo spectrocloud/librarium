@@ -34,12 +34,12 @@ configured through Local UI will be retained even after a
 
 3. Supply the proxy server information.
 
-   | Field           | Description                                                                                                                                                               |
-   | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | HTTP Endpoint   | The address where the HTTP proxy server is located. It's used to route HTTP traffic through the proxy.                                                                    |
-   | HTTPS Endpoint  | The address where the HTTPS proxy server is located. It's used to route HTTPS traffic through the proxy.                                                                  |
-   | No Proxy        | Specifies exceptions to the proxy rules. It lists addresses or domains that should bypass the proxy and connect directly, useful for local or internal network resources. |
-   | CA Certificates | CA certificates that are used to authenticate the proxy server.                                                                                                           |
+   | Field                                   | Description                                                                                                                                                               |
+   | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | HTTP Endpoint                           | The address where the HTTP proxy server is located. It's used to route HTTP traffic through the proxy.                                                                    |
+   | HTTPS Endpoint                          | The address where the HTTPS proxy server is located. It's used to route HTTPS traffic through the proxy.                                                                  |
+   | No Proxy                                | Specifies exceptions to the proxy rules. It lists addresses or domains that should bypass the proxy and connect directly, useful for local or internal network resources. |
+   | Certificate Authority (CA) Certificates | CA certificates that are used to authenticate the proxy server. The certificates must be base64-encoded.                                                                  |
 
 4. Click **Confirm**. Updating the HTTP proxy settings causes HTTP/HTTPS services on the Edge host to restart, so you
    will not be able to access the console for a short duration .
