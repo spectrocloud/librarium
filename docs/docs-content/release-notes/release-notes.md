@@ -36,49 +36,16 @@ tags: ["release-notes"]
 
 ### Edge
 
-#### Breaking Changes
-
 #### Features
+
+<!-- prettier-ignore -->
+- You can now use manifests to customize <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor-edge-native-config" /> configurations for Edge
+  clusters.
 
 #### Improvements
 
-#### Bug Fixes
-
-#### Known Inssues
-
-### Palette Dev Engine (PDE)
-
-#### Features
-
-#### Improvements
-
-#### Bug Fixes
-
-#### Known Inssues
-
-### Virtual Machine Orchestrator
-
-#### Features
-
-#### Improvements
-
-#### Bug Fixes
-
-#### Known Inssues
-
-### VerteX
-
-#### Breaking Changes
-
-#### Features
-
-#### Improvements
-
-#### Deprecations and Removals
-
-#### Bug Fixes
-
-#### Known Inssues
+<!-- prettier-ignore -->
+- Palette will now create separate Harbor projects for packs and Helm charts when the <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor-edge-native-config" /> pack is enabled an Edge cluster profile. Existing Edge clusters may continue to use the same Harbor project for both packs and Helm charts.
 
 ### Automation
 
