@@ -278,7 +278,7 @@ subscription as scope instead of the resource group as scope.
    {
      "Name": "Palette Dynamic Placement IaaS Cluster Deployer (rg/sub)",
      "IsCustom": true,
-     "Description": "Can use Palette to deploy IaaS clusters using static placement. This role contains the permissions that must be applied at the resource group scope level. If deploying multiple clusters in a variety of resource groups within a subscription, apply the role with the subscription as scope instead of the resource group as scope.",
+     "Description": "Can use Palette to deploy IaaS clusters using dynamic placement. This role contains the permissions that must be applied at the resource group scope level. If deploying multiple clusters in a variety of resource groups within a subscription, apply the role with the subscription as scope instead of the resource group as scope.",
      "Actions": [
        "Microsoft.Compute/disks/delete",
        "Microsoft.Compute/disks/read",
