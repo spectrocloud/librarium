@@ -9,8 +9,8 @@ sidebar_position: 100
 ---
 
 Palette requires a set of permissions to properly deploy and manage the lifecycle of clusters deployed to Azure. We
-recommend creating a
-[role assignment](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments) that has the
+recommend creating
+[role assignments](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments) that have the
 service principal you want to use with Palette and the appropriate
 [scope level](https://learn.microsoft.com/en-us/azure/role-based-access-control/scope-overview). To ensure that Palette
 and VerteX can deploy and manage clusters on Azure in all use cases, use a subscription as the scope level for the role
@@ -20,8 +20,8 @@ assignment.
 
 We recommend against assigning the built-in Azure
 [Contributor](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) role to the
-service principal you want to use in Palette because its permission scope exceeds our requirements. Instead, create a
-custom role to provide only those permissions that Palette requires.
+service principal you want to use in Palette because its permission scope exceeds our requirements. Instead, create
+custom roles to provide only those permissions that Palette requires.
 
 :::
 
@@ -39,8 +39,8 @@ We support the following use cases:
 
 :::tip
 
-You can use the [Validator](https://github.com/spectrocloud-labs/validator) with the
-[Azure plugin](https://github.com/spectrocloud-labs/validator-plugin-azure) to verify you have setup the correct
+You can use [Validator](https://github.com/validator-labs/validator) with its
+[Azure plugin](https://github.com/validator-labs/validator-plugin-azure) to verify you have setup the correct
 permissions. The Validator Azure plugin requires the following permissions:
 
 - Microsoft.Authorization/denyAssignments/read
@@ -73,15 +73,12 @@ remainder of the permissions required by IaaS can be assigned at the resource gr
 - Azure CLI installed on your local machine. Refer to the
   [Azure CLI Install Guide](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) for installation instructions.
 
-- The Azure subscription ID you want to use with Palette.
-
-- The Security Principal Object ID you want to use with Palette. You can retrieve it from the Entra ID section of the
-  Azure Portal.
-
 - A terminal or command prompt to issue the Azure CLI commands.
 
-- The Azure Security Principal Object ID you want to use with Palette. The Security Principal Object ID can represent a
-  user, group, or service principal.
+- The Azure subscription ID you want to use with Palette.
+
+- The client ID of the Azure service principal you want to use with Palette. You can retrieve it from the Entra ID
+  section of the Azure Portal.
 
 #### Create Role and Assign Permissions
 
@@ -205,12 +202,12 @@ remainder of the permissions required by IaaS can be assigned at the resource gr
    az role definition create --role-definition @iaas_static_rg_sub_role.json --output table
    ```
 
-5. Export the
-   [security principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
-   object ID you want to use with Palette to a variable.
+5. Export the client ID of the
+   [service principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
+   you want to use with Palette to a variable.
 
    ```shell
-   export ASSIGNEE="<security_principal_client_id>"
+   export ASSIGNEE="<service_principal_client_id>"
    ```
 
 6. Export the resource group name and virtual network name to a variable.
@@ -254,15 +251,12 @@ subscription as scope instead of the resource group as scope.
 - Azure CLI installed on your local machine. Refer to the
   [Azure CLI Install Guide](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) for installation instructions.
 
-- The Azure subscription ID you want to use with Palette.
-
-- The Security Principal Object ID you want to use with Palette. You can retrieve it from the Entra ID section of the
-  Azure Portal.
-
 - A terminal or command prompt to issue the Azure CLI commands.
 
-- The Azure Security Principal Object ID you want to use with Palette. The Security Principal Object ID can represent a
-  user, group, or service principal.
+- The Azure subscription ID you want to use with Palette.
+
+- The client ID of the Azure service principal you want to use with Palette. You can retrieve it from the Entra ID
+  section of the Azure Portal.
 
 #### Create Role and Assign Permissions
 
@@ -367,12 +361,12 @@ subscription as scope instead of the resource group as scope.
    az role definition create --role-definition @iaas_dynamic_rg_sub_role.json --output table
    ```
 
-4. Export the
-   [security principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
-   object ID you want to use with Palette to a variable.
+4. Export the client ID of the
+   [service principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
+   you want to use with Palette to a variable.
 
    ```shell
-   export ASSIGNEE="<security_principal_client_id>"
+   export ASSIGNEE="<service_principal_client_id>"
    ```
 
 5. Export the resource group name to a variable.
@@ -415,15 +409,12 @@ remainder of the permissions required by AKS can be assigned at the subscription
 - Azure CLI installed on your local machine. Refer to the
   [Azure CLI Install Guide](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) for installation instructions.
 
-- The Azure subscription ID you want to use with Palette.
-
-- The Security Principal Object ID you want to use with Palette. You can retrieve it from the Entra ID section of the
-  Azure Portal.
-
 - A terminal or command prompt to issue the Azure CLI commands.
 
-- The Azure Security Principal Object ID you want to use with Palette. The Security Principal Object ID can represent a
-  user, group, or service principal.
+- The Azure subscription ID you want to use with Palette.
+
+- The client ID of the Azure service principal you want to use with Palette. You can retrieve it from the Entra ID
+  section of the Azure Portal.
 
 #### Create Role and Assign Permissions
 
@@ -971,12 +962,12 @@ remainder of the permissions required by AKS can be assigned at the subscription
    az role definition create --role-definition @aks_static_rg_sub_role.json --output table
    ```
 
-6. Export the
-   [security principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
-   object ID you want to use with Palette to a variable.
+6. Export the client ID of the
+   [service principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
+   you want to use with Palette to a variable.
 
    ```shell
-   export ASSIGNEE="<security_principal_client_id>"
+   export ASSIGNEE="<service_principal_client_id>"
    ```
 
 7. Export the resource group name and virtual network name to a variable.
@@ -1027,15 +1018,12 @@ resource groups within a subscription.
 - Azure CLI installed on your local machine. Refer to the
   [Azure CLI Install Guide](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) for installation instructions.
 
-- The Azure subscription ID you want to use with Palette.
-
-- The Security Principal Object ID you want to use with Palette. You can retrieve it from the Entra ID section of the
-  Azure Portal.
-
 - A terminal or command prompt to issue the Azure CLI commands.
 
-- The Azure Security Principal Object ID you want to use with Palette. The Security Principal Object ID can represent a
-  user, group, or service principal.
+- The Azure subscription ID you want to use with Palette.
+
+- The client ID of the Azure service principal you want to use with Palette. You can retrieve it from the Entra ID
+  section of the Azure Portal.
 
 #### Create Role and Assign Permissions
 
@@ -1565,12 +1553,12 @@ resource groups within a subscription.
    az role definition create --role-definition @aks_dynamic_rg_sub_role.json --output table
    ```
 
-5. Export the
-   [security principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
-   object ID you want to use with Palette to a variable.
+5. Export the client ID of the
+   [service principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
+   you want to use with Palette to a variable.
 
    ```shell
-   export ASSIGNEE="<security_principal_client_id>"
+   export ASSIGNEE="<service_principal_client_id>"
    ```
 
 6. Export the resource group name to a variable.
