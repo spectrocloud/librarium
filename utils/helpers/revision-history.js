@@ -1,11 +1,12 @@
 const { formatDateCveDetails } = require("./date");
 
 function generateRevisionHistory(revisionHistory) {
-  const historyList = [];
+  // This will be the table headings.
+  let tableString = "| Date       | Revision                   |\n";
+  tableString += "|------------|----------------------------|\n";
 
   revisionHistory.forEach((revision) => {
     const { revisionTimestamp, revisedField, revisedFrom, revisedTo } = revision;
-
     let itemDescription = "";
 
     // Justification field logic
@@ -56,13 +57,14 @@ function generateRevisionHistory(revisionHistory) {
       }
     }
 
-    // If there's a description, prepend the timestamp and add it to the list
+    // If there's a description for the revision, add it to the table as a new markdown row so that we can display it.
     if (itemDescription) {
-      historyList.push(`${formatDateCveDetails(revisionTimestamp)}: ${itemDescription}`);
+      const formattedDate = formatDateCveDetails(revisionTimestamp);
+      tableString += `| ${formattedDate} | ${itemDescription} |\n`;
     }
   });
 
-  return historyList.map((item, index) => `${index + 1}. ${item}`).join("\n");
+  return tableString;
 }
 
 module.exports = { generateRevisionHistory };
