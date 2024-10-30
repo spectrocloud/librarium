@@ -9,7 +9,8 @@ sidebar_position: 100
 ---
 
 Palette requires a set of permissions to properly deploy and manage the lifecycle of clusters deployed to Azure. We
-recommend creating [role assignments](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments) that have the
+recommend creating
+[role assignments](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments) that have the
 service principal you want to use with Palette and the appropriate
 [scope level](https://learn.microsoft.com/en-us/azure/role-based-access-control/scope-overview). To ensure that Palette
 and VerteX can deploy and manage clusters on Azure in all use cases, use a subscription as the scope level for the role
@@ -19,7 +20,8 @@ assignment.
 
 We recommend against assigning the built-in Azure
 [Contributor](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) role to the
-service principal you want to use in Palette because its permission scope exceeds our requirements. Instead, create custom roles to provide only those permissions that Palette requires.
+service principal you want to use in Palette because its permission scope exceeds our requirements. Instead, create
+custom roles to provide only those permissions that Palette requires.
 
 :::
 
@@ -75,7 +77,8 @@ remainder of the permissions required by IaaS can be assigned at the resource gr
 
 - The Azure subscription ID you want to use with Palette.
 
-- The client ID of the Azure service principal you want to use with Palette. You can retrieve it from the Entra ID section of the Azure Portal.
+- The client ID of the Azure service principal you want to use with Palette. You can retrieve it from the Entra ID
+  section of the Azure Portal.
 
 #### Create Role and Assign Permissions
 
@@ -252,7 +255,8 @@ subscription as scope instead of the resource group as scope.
 
 - The Azure subscription ID you want to use with Palette.
 
-- The client ID of the Azure service principal you want to use with Palette. You can retrieve it from the Entra ID section of the Azure Portal.
+- The client ID of the Azure service principal you want to use with Palette. You can retrieve it from the Entra ID
+  section of the Azure Portal.
 
 #### Create Role and Assign Permissions
 
@@ -409,7 +413,8 @@ remainder of the permissions required by AKS can be assigned at the subscription
 
 - The Azure subscription ID you want to use with Palette.
 
-- The client ID of the Azure service principal you want to use with Palette. You can retrieve it from the Entra ID section of the Azure Portal.
+- The client ID of the Azure service principal you want to use with Palette. You can retrieve it from the Entra ID
+  section of the Azure Portal.
 
 #### Create Role and Assign Permissions
 
@@ -1017,7 +1022,8 @@ resource groups within a subscription.
 
 - The Azure subscription ID you want to use with Palette.
 
-- The client ID of the Azure service principal you want to use with Palette. You can retrieve it from the Entra ID section of the Azure Portal.
+- The client ID of the Azure service principal you want to use with Palette. You can retrieve it from the Entra ID
+  section of the Azure Portal.
 
 #### Create Role and Assign Permissions
 
