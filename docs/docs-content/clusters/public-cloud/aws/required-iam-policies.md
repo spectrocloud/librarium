@@ -544,8 +544,8 @@ managing existing infrastructure without provisioning or deleting foundational n
 <Tabs queryString="min-permissions">
 <TabItem label="Minimum Dynamic Permissions" value="Minimum Dynamic Permissions">
 
-The following policy allows Palette to operate and create VPC resources as needed but restricts its access to the
-[Principle of Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
+The following policy allows Palette to operate and create VPC resources as needed while retaining minimal permissions
+for deploying clusters through Palette.
 
 ```json
 {
@@ -685,8 +685,8 @@ The following policy allows Palette to operate and create VPC resources as neede
 
 <TabItem label="Minimum Static Permissions" value="Minimum Static Permissions">
 
-The following policy allows Palette to operate within an existing VPC while restricting its access to the
-[Principle of Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
+The following policy allows Palette to operate within an existing VPC while retaining minimal permissions for deploying
+clusters through Palette.
 
 ```json
 {
@@ -808,10 +808,14 @@ The following policy allows Palette to operate within an existing VPC while rest
 
 The following are important points to be aware of.
 
+- These permissions specified do not include all the permissions required for all possible use cases and for taking full
+  advantage of all Palette features. Additional permissions may be required based on the specific use case.
+
 - Ensure that the IAM Role or IAM User created contain all the core policies defined above, or one of the minimum
   permissions policies.
 
 - These IAM policies cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
+  Break policy into multiple inline policies or create new managed policies.
 
 - The following IAM warning is expected and can be ignored:
 
