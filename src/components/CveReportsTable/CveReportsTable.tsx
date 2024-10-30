@@ -3,9 +3,10 @@ import { Tabs, ConfigProvider, Table, theme } from "antd";
 import styles from "./CveReportTable.module.scss";
 import { useColorMode } from "@docusaurus/theme-common";
 import Link from "@docusaurus/Link";
-import type { ColumnsType } from "antd/es/table";
-import rawData from "../../../.docusaurus/security-bulletins/default/data.json";
 import { Spin } from "antd";
+import rawData from "../../../.docusaurus/security-bulletins/default/data.json";
+import type { ColumnsType } from "antd/es/table";
+import Admonition from "@theme/Admonition";
 
 interface CveData {
   palette: Cve[];
@@ -14,7 +15,6 @@ interface CveData {
   vertexAirgap: Cve[];
 }
 
-// The interface maps to the return payload from the API https://dso.teams.spectrocloud.com/v1/advisories
 interface Cve {
   metadata: {
     uid: string;
@@ -75,17 +75,11 @@ interface Cve {
 export default function CveReportsTable() {
   const data: CveData = rawData as CveData;
   const [loading, setLoading] = useState(true);
-
-  const paletteCVEsConnected: Cve[] = data?.palette;
-  const paletteCVEsAirgap: Cve[] = data?.paletteAirgap;
-  const verteXCVEsConnected: Cve[] = data?.vertex;
-  const verteXCVEsAirgap: Cve[] = data?.vertexAirgap;
-
   const { colorMode } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
 
   useEffect(() => {
-    // I'm (Karl) only using this to simulate a loading state
+    // I'm only using this to simulate a loading state
     // The main reason is to show the loading spinner
     // If we don't do this then when a user navigates to this page or refreshes the page
     // It's possible the CSS is not loaded yet and the table styles are not applied resulting in a bad UX
@@ -101,10 +95,7 @@ export default function CveReportsTable() {
       key: "cve",
       sorter: (a, b) => a.metadata.cve.localeCompare(b.metadata.cve),
       render: (cve: string) => (
-        <Link
-          to={`/security-bulletins/reports/${cve.toLowerCase()}`} // Navigate to the route
-          style={{ color: "#1890ff" }} // Add link color
-        >
+        <Link to={`/security-bulletins/reports/${cve.toLowerCase()}`} style={{ color: "#1890ff" }}>
           {cve}
         </Link>
       ),
@@ -148,7 +139,6 @@ export default function CveReportsTable() {
         const sortedVersions = impactedVersions.sort((v1, v2) =>
           v1.localeCompare(v2, undefined, { numeric: true }) === 1 ? -1 : 1
         );
-
         // Show only the first 3 versions, followed by an ellipsis if there are more otherwise things look rough
         const displayedVersions = sortedVersions.slice(0, 3).join(", ");
         return sortedVersions.length > 3 ? `${displayedVersions}, ...` : displayedVersions || "N/A";
@@ -214,10 +204,10 @@ export default function CveReportsTable() {
   );
 
   const tabs = [
-    { label: "Palette Enterprise", key: "1", children: renderCveTable(paletteCVEsConnected) },
-    { label: "Palette Enterprise Airgap", key: "2", children: renderCveTable(paletteCVEsAirgap) },
-    { label: "VerteX", key: "3", children: renderCveTable(verteXCVEsConnected) },
-    { label: "VerteX Airgap", key: "4", children: renderCveTable(verteXCVEsAirgap) },
+    { label: "Palette Enterprise", key: "1", children: renderCveTable(data.palette) },
+    { label: "Palette Enterprise Airgap", key: "2", children: renderCveTable(data.paletteAirgap) },
+    { label: "VerteX", key: "3", children: renderCveTable(data.vertex) },
+    { label: "VerteX Airgap", key: "4", children: renderCveTable(data.vertexAirgap) },
   ];
 
   return (
@@ -229,13 +219,22 @@ export default function CveReportsTable() {
             style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100px" }}
           />
         ) : (
-          <Tabs defaultActiveKey="1">
-            {tabs.map((tab) => (
-              <Tabs.TabPane tab={tab.label} key={tab.key}>
-                {tab.children}
-              </Tabs.TabPane>
-            ))}
-          </Tabs>
+          <>
+            <div className={styles.unsupportedMessage}>
+              <Admonition type="warning" title="Unsupported Display Size">
+                The current screen size is not supported. Use a larger display to access the CVE table.
+              </Admonition>
+            </div>
+            <div className={styles.tableContainer}>
+              <Tabs defaultActiveKey="1">
+                {tabs.map((tab) => (
+                  <Tabs.TabPane tab={tab.label} key={tab.key}>
+                    {tab.children}
+                  </Tabs.TabPane>
+                ))}
+              </Tabs>
+            </div>
+          </>
         )}
       </ConfigProvider>
     </div>

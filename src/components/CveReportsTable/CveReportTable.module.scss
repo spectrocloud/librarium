@@ -13,3 +13,23 @@
     min-height: 300px;
   }
 }
+
+.tableContainer {
+  display: block;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.unsupportedMessage {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2em;
+    color: #555;
+  }
+}
