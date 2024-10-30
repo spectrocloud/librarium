@@ -24,6 +24,17 @@ tags: ["release-notes"]
 
 #### Features
 
+- Palette now supports Azure Disk Encryption for IaaS clusters deployed to Azure. This feature allows you to leverage
+  [Azure Key Vault](https://azure.microsoft.com/en-us/products/key-vault) for end-to-end encryption for Azure disks
+  attached to your IaaS clusters deployed to Azure. Refer to the
+  [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) guide to learn more
+  about this feature.
+
+- You can now add Edge clusters to Cluster Groups. This feature allows you to use Edge clusters to host virtual clusters
+  in Cluster Groups. Check out the
+  [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide to learn how to create a
+  Cluster Group.
+
 #### Improvements
 
 - The Palette SaaS login and product tour pages have been visually refreshed.
