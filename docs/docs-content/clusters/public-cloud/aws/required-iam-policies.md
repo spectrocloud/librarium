@@ -33,7 +33,7 @@ into a custom-managed policy. You can learn more about AWS IAM limits in the
 
 If you want to narrow down the IAM permissions, you can use the [Minimum Permissions](#minimum-permissions) policies.
 These policies are designed to follow the
-[Principle of Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
+[principle of least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
 You can also use the Static Policy for deploying clusters within an existing VPC without provisioning or deleting
 foundational network resources.
 
@@ -525,7 +525,7 @@ If you plan to deploy host clusters to AWS EKS, make sure to attach the **Palett
 ## Minimum Permissions
 
 The following policies are designed from the
-[Principle of Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
+[principle of least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
 You can use these policies to narrow the permissions Palette requires to operate instead of using the
 [Core IAM Policies](#core-iam-policies).
 
