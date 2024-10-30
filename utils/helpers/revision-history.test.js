@@ -27,9 +27,9 @@ describe("generateRevisionHistory", () => {
     const expectedOutput = [
       "| Date       | Revision                   |",
       "|------------|----------------------------|",
-      "| 10/16/2024 | Official summary added |",
-      "| 10/17/2024 | Official summary revised: Revised summary text |",
       "| 10/18/2024 | Official summary removed |",
+      "| 10/17/2024 | Official summary revised: Revised summary text |",
+      "| 10/16/2024 | Official summary added |",
     ].join("\n");
 
     expect(generateRevisionHistory(revisionHistory)).toBe(expectedOutput);
@@ -54,8 +54,8 @@ describe("generateRevisionHistory", () => {
     const expectedOutput = [
       "| Date       | Revision                   |",
       "|------------|----------------------------|",
-      "| 10/16/2024 | Advisory assigned with CRITICAL severity |",
       "| 10/17/2024 | Advisory severity revised to HIGH from CRITICAL |",
+      "| 10/16/2024 | Advisory assigned with CRITICAL severity |",
     ].join("\n");
 
     expect(generateRevisionHistory(revisionHistory)).toBe(expectedOutput);
@@ -80,8 +80,8 @@ describe("generateRevisionHistory", () => {
     const expectedOutput = [
       "| Date       | Revision                   |",
       "|------------|----------------------------|",
-      "| 10/16/2024 | Added impacted versions: 4.4.20 |",
       "| 10/17/2024 | Impacted versions changed from 4.4.20 to 4.4.20, 4.5.3 |",
+      "| 10/16/2024 | Added impacted versions: 4.4.20 |",
     ].join("\n");
 
     expect(generateRevisionHistory(revisionHistory)).toBe(expectedOutput);
@@ -125,14 +125,14 @@ describe("generateRevisionHistory", () => {
     const expectedOutput = [
       "| Date       | Revision                   |",
       "|------------|----------------------------|",
-      "| 10/16/2024 | Advisory is now impacting. |",
       "| 10/17/2024 | Advisory is no longer impacting. |",
+      "| 10/16/2024 | Advisory is now impacting. |",
     ].join("\n");
 
     expect(generateRevisionHistory(revisionHistory)).toBe(expectedOutput);
   });
 
-  it("should return emptry string if no revision history", () => {
+  it("should return empty string if no revision history", () => {
     const revisionHistory = [
       {
         revisionTimestamp: "2024-10-16T05:50:00.194Z",
@@ -143,6 +143,39 @@ describe("generateRevisionHistory", () => {
     ];
 
     const expectedOutput = "";
+
+    expect(generateRevisionHistory(revisionHistory)).toBe(expectedOutput);
+  });
+
+  it("should sort revisions with newest entries at the top", () => {
+    const revisionHistory = [
+      {
+        revisionTimestamp: "2024-10-15T05:50:00.194Z",
+        revisedField: "spec.assessment.justification",
+        revisedFrom: "",
+        revisedTo: "Initial summary",
+      },
+      {
+        revisionTimestamp: "2024-10-17T05:50:00.194Z",
+        revisedField: "spec.assessment.justification",
+        revisedFrom: "Initial summary",
+        revisedTo: "Updated summary",
+      },
+      {
+        revisionTimestamp: "2024-10-16T05:50:00.194Z",
+        revisedField: "spec.assessment.justification",
+        revisedFrom: "Updated summary",
+        revisedTo: "Final summary",
+      },
+    ];
+
+    const expectedOutput = [
+      "| Date       | Revision                   |",
+      "|------------|----------------------------|",
+      "| 10/17/2024 | Official summary revised: Updated summary |",
+      "| 10/16/2024 | Official summary revised: Final summary |",
+      "| 10/15/2024 | Official summary added |",
+    ].join("\n");
 
     expect(generateRevisionHistory(revisionHistory)).toBe(expectedOutput);
   });
