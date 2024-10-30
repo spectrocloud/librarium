@@ -12,11 +12,10 @@ or more host clusters that together form a computing platform for you and your u
 Downstream consumers can use the cluster group when using Palette in
 [App Mode](../../introduction/palette-modes.md#what-is-app-mode).
 
-:::info
+:::warning
 
 Palette does not offer support for host clusters of these types within a cluster group:
 
-- Edge clusters
 - Virtual clusters
 - Private Cloud Gateway (PCG) cluster
 - Imported clusters with read-only access
@@ -30,6 +29,9 @@ Use the instructions below to create a cluster group.
 - To create a Palette Host Cluster Group, you need to deploy a healthy running [Palette host cluster](../clusters.md).
 
 - The host clusters must match the network endpoint type of the cluster group.
+
+- If the cluster group will contain Edge clusters, the cluster group must only contain Edge clusters. You cannot mix
+  Edge clusters with other types of clusters in the same cluster group.
 
 ## Enablement
 
@@ -66,11 +68,11 @@ Use the instructions below to create a cluster group.
 
    #### Cluster Group Configurations
 
-   | **Host Cluster Config** | **Description**                                                                                                                                                                                                                                                                                                                            |
-   | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | Oversubscription (%):   | The allowed oversubscription for cluster in terms of resources. Default is 120%.                                                                                                                                                                                                                                                           |
-   | Cluster endpoint type:  | Load balancer or Ingress.                                                                                                                                                                                                                                                                                                                  |
-   | Host DNS:               | If the selected cluster endpoint is **Ingress**, then for each selected host cluster provide the host DNS pattern. Ensure that a wildcard DNS record exists that maps the provided host pattern to the ingress controller load balancer for this cluster. Check out the [Setup Ingress](ingress-cluster-group.md) for additional guidance. |
+   | **Host Cluster Config**   | **Description**                                                                                                                                                                                                                                                                                                                            |
+   | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Oversubscription (%)**  | The allowed oversubscription for cluster in terms of resources. Default is 120%.                                                                                                                                                                                                                                                           |
+   | **Cluster endpoint type** | Load balancer or Ingress.                                                                                                                                                                                                                                                                                                                  |
+   | **Host DNS**              | If the selected cluster endpoint is **Ingress**, then for each selected host cluster provide the host DNS pattern. Ensure that a wildcard DNS record exists that maps the provided host pattern to the ingress controller load balancer for this cluster. Check out the [Setup Ingress](ingress-cluster-group.md) for additional guidance. |
 
    #### Palette Virtual Cluster Configuration
 
@@ -164,22 +166,20 @@ To deploy a virtual cluster on OpenShift:
    - `capabilities.drop: [all]`
    - `runAsNonRoot: true`
 
-The following example shows the required configuration for OpenShift.
+   The following example shows the required configuration for OpenShift.
 
-**Example**
+   ```yaml
+   #fsGroup: 12345
+   securityContext:
+     allowPrivilegeEscalation: false
+     capabilities:
+       drop:
+         - all
 
-```yaml
-#fsGroup: 12345
-securityContext:
-  allowPrivilegeEscalation: false
-  capabilities:
-    drop:
-      - all
+     #runAsGroup: 12345
+     #runAsUser: 12345
+     runAsNonRoot: true
 
-  #runAsGroup: 12345
-  #runAsUser: 12345
-  runAsNonRoot: true
-
-openshift:
-  enable: true
-```
+   openshift:
+     enable: true
+   ```

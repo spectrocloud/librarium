@@ -32,6 +32,15 @@ type cannot be added to a cluster group configured for the endpoint type load ba
 
 ![An example cluster group made up of various clusters](/clusters_cluster-groups_index-page.webp)
 
+## Edge Cluster Support
+
+You can add Edge clusters to a cluster group and deploy Palette virtual clusters on them. However, when using Edge
+clusters in a cluster group, you must consider the following limitations:
+
+- The cluster group must only contain Edge clusters. You cannot mix Edge clusters with other types of clusters in the
+  same cluster group.
+- The cluster group can only support one Edge cluster.
+
 ## Get Started
 
 Learn how to create a cluster group by reviewing the [Create and Manage Cluster Groups](create-cluster-group.md) guide.
