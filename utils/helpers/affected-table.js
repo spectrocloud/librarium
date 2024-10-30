@@ -20,11 +20,9 @@ function generateMarkdownTable(cveImpactMap) {
   const header = `| Version | Palette Enterprise | Palette Enterprise Airgap | VerteX | VerteX Airgap |\n`;
   const separator = `| - | -------- | -------- | -------- | -------- |\n`;
 
-  // Use a Set to store unique versions
-  const uniqueVersions = new Set(cveImpactMap.versions);
+  const uniqueVersions = Array.from(new Set(cveImpactMap.versions)).sort((a, b) => b.localeCompare(a));
 
-  // Create rows based on unique impacted versions
-  const rows = Array.from(uniqueVersions)
+  const rows = uniqueVersions
     .map((version) => {
       const row = [
         `| ${version}`,
