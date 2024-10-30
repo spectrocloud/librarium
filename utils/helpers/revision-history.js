@@ -5,6 +5,8 @@ function generateRevisionHistory(revisionHistory) {
   let tableString = "| Date       | Revision                   |\n";
   tableString += "|------------|----------------------------|\n";
 
+  let hasContent = false;
+
   revisionHistory.forEach((revision) => {
     const { revisionTimestamp, revisedField, revisedFrom, revisedTo } = revision;
     let itemDescription = "";
@@ -61,10 +63,11 @@ function generateRevisionHistory(revisionHistory) {
     if (itemDescription) {
       const formattedDate = formatDateCveDetails(revisionTimestamp);
       tableString += `| ${formattedDate} | ${itemDescription} |\n`;
+      hasContent = true;
     }
   });
 
-  return tableString;
+  return hasContent ? tableString.trim() : "";
 }
 
 module.exports = { generateRevisionHistory };

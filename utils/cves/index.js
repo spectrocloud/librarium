@@ -247,7 +247,7 @@ ${item.spec.impact.isImpacting ? table : "This CVE is non-impacting as the impac
 
 ## Revision History
 
-${revisionHistory}
+${revisionHistory ? revisionHistory : "No revision history available."}
 
 
 

@@ -12,8 +12,8 @@ describe("generateMarkdownTable", () => {
 
     const expectedTable = `| Version | Palette Enterprise | Palette Enterprise Airgap | VerteX | VerteX Airgap |
 |-|--------|--------|--------|--------|
-| 4.4.20 | Impacted | No Impact | No Impact | No Impact |
-| 4.5.3 | Impacted | No Impact | No Impact | No Impact |`;
+| 4.5.3 | Impacted | No Impact | No Impact | No Impact |
+| 4.4.20 | Impacted | No Impact | No Impact | No Impact |`;
 
     expect(generateMarkdownTable(cveImpactMap).replace(/\s+/g, "")).toBe(expectedTable.replace(/\s+/g, ""));
   });
