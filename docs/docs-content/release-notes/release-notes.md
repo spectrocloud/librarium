@@ -11,9 +11,9 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## November 9,2024 - Release 4.5.a
+## November 9,2024 - Release 4.5.6
 
-### Palette
+### Palette {#palette-enterprise-4-5-6}
 
 #### Breaking Changes
 
@@ -32,6 +32,11 @@ tags: ["release-notes"]
   `us-docker.pkg.dev`. Refer to the Palette 4.5.3 [Breaking Changes](#breaking-changes-4-5-3) section for more
   information about the new image registry.
 
+- The Self-Hosted Palette install method, Helm Chart, now supports the ability to specify image registry credentials for
+  private registries. Refer to the
+  [Helm Chart Configuration Reference](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md)
+  to learn more about configuring image registry credentials.
+
 #### Bug Fixes
 
 ### Edge
@@ -47,6 +52,13 @@ tags: ["release-notes"]
 <!-- prettier-ignore -->
 - Palette will now create separate Harbor projects for packs and Helm charts when the <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor-edge-native-config" /> pack is enabled an Edge cluster profile. Existing Edge clusters may continue to use the same Harbor project for both packs and Helm charts.
 
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4-5-6) for more details.
+
 ### Automation
 
 - Terraform version 0.22.0 of the
@@ -54,14 +66,25 @@ tags: ["release-notes"]
   available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
+- A new Terraform resource, `spectrocloud_ssh_key`, is now available for uploading SSH keys to Palette. You can also use
+  the data resource `spectrocloud_ssh_key` to look up information about an SSH key in Palette. For more information,
+  refer to the Spectro Cloud Terraform
+  provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
+- The Terraform resource, `spectrocloud_privatecloudgateway_dns_map` is now available for creating a DNS mapping with a
+  Private Cloud Gateway. A data resource is also available for retrieving information about a DNS mapping for a Private
+  Cloud Gateway. For more information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
+- The Palette CLI's usage of Forklift has been updated to version `2.6.3`. The Palette CLI can leverage Forklift to
+  miragte a Virtual Machine to a VMO cluster. Check out the
+  [Migrate a VM to a VMO cluster](../vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md) guide to
+  learn more about this feature.
+
 #### Deprecations and Removals
 
 - The Terraform resource, `spectrocloud_cluster_import` is deprecated. To import a cluster deployed outside of the
   context of Palette, refer to the [Import a Cluster](../clusters/imported-clusters/cluster-import.md) guide.
-
-### Docs and Education
-
--
 
 ### Packs
 
