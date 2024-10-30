@@ -33,7 +33,7 @@ into a custom-managed policy. You can learn more about AWS IAM limits in the
 
 If you want to narrow down the IAM permissions, you can use the [Minimum Permissions](#minimum-permissions) policies.
 These policies are designed to follow the
-[Principle of Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
+[principle of least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
 You can also use the Static Policy for deploying clusters within an existing VPC without provisioning or deleting
 foundational network resources.
 
@@ -525,7 +525,7 @@ If you plan to deploy host clusters to AWS EKS, make sure to attach the **Palett
 ## Minimum Permissions
 
 The following policies are designed from the
-[Principle of Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
+[principle of least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
 You can use these policies to narrow the permissions Palette requires to operate instead of using the
 [Core IAM Policies](#core-iam-policies).
 
@@ -545,7 +545,7 @@ managing existing infrastructure without provisioning or deleting foundational n
 <TabItem label="Minimum Dynamic Permissions" value="Minimum Dynamic Permissions">
 
 The following policy allows Palette to operate and create VPC resources as needed but restricts its access to the
-[Principle of Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
+[principle of least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
 
 ```json
 {
@@ -686,7 +686,7 @@ The following policy allows Palette to operate and create VPC resources as neede
 <TabItem label="Minimum Static Permissions" value="Minimum Static Permissions">
 
 The following policy allows Palette to operate within an existing VPC while restricting its access to the
-[Principle of Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
+[principle of least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
 
 ```json
 {
@@ -808,7 +808,7 @@ The following policy allows Palette to operate within an existing VPC while rest
 
 The following are important points to be aware of.
 
-- Ensure that the IAM Role or IAM User created contain all the core policies defined above, or one of the minimum
+- Ensure that the IAM Role or IAM User created contains all the core policies defined above, or one of the minimum
   permissions policies.
 
 - These IAM policies cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
