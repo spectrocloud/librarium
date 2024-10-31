@@ -44,7 +44,7 @@ clusters in a cluster group, you must consider the following limitations:
 - You must provide the capability to support a load balancer or ingress endpoint for the cluster group. You can use
   solutions such as <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm" /> and
   <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> in your cluster profile to support these types
-  endpoints.
+  of endpoints.
 
 ## Get Started
 

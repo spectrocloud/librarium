@@ -37,7 +37,7 @@ Use the instructions below to create a cluster group.
 - If the cluster group will contain Edge clusters, provide the capability to support a load balancer or ingress endpoint for the cluster group.You can use
   solutions such as <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm" /> and
   <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> in your cluster profile to support these types
-  endpoints.
+  of endpoints.
 
 ## Enablement
 
@@ -78,7 +78,7 @@ Use the instructions below to create a cluster group.
    | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
    | **Oversubscription (%)**  | The allowed oversubscription for cluster in terms of resources. Default is 120%.                                                                                                                                                                                                                                                           |
    | **Cluster endpoint type** | Load balancer or Ingress.                                                                                                                                                                                                                                                                                                                  |
-   | **Host DNS**              | If the selected cluster endpoint is **Ingress**, then for each selected host cluster provide the host DNS pattern. Ensure that a wildcard DNS record exists that maps the provided host pattern to the ingress controller load balancer for this cluster. Check out the [Setup Ingress](ingress-cluster-group.md) for additional guidance. |
+   | **Host DNS**              | If the selected cluster endpoint is **Ingress**, then for each selected host cluster provide the host DNS pattern. Ensure that a wildcard DNS record exists that maps the provided host pattern to the ingress controller or load balancer for this cluster. Check out the [Setup Ingress](ingress-cluster-group.md) for additional guidance. |
 
    #### Palette Virtual Cluster Configuration
 
