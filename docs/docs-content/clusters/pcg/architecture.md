@@ -160,7 +160,8 @@ instance.
 :::warning
 
 Only self-hosted Palette or VerteX instances support using the System Private Gateway. Use the default
-[PCG deployment](#private-cloud-gateway) option if you have NAT gateways or network firewalls between Palette and MAAS.
+[PCG deployment](#private-cloud-gateway) option if you have NAT gateways or network firewalls between Palette and your
+compute environment.
 
 :::
 
