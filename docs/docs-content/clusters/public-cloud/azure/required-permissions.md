@@ -988,7 +988,7 @@ remainder of the permissions required by AKS can be assigned at the subscription
    ```json
    az role assignment create --assignee $ASSIGNEE \
      --role "Palette Static Placement AKS Cluster Deployer (sub)" \
-     --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME"
+     --scope "/subscriptions/$SUBSCRIPTION_ID"
    ```
 
    ```json
