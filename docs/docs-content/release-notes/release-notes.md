@@ -48,8 +48,6 @@ tags: ["release-notes"]
   [Helm Chart Configuration Reference](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md)
   to learn more about configuring image registry credentials.
 
-#### Bug Fixes
-
 ### Edge
 
 #### Features
@@ -92,6 +90,11 @@ tags: ["release-notes"]
   [Migrate a VM to a VMO cluster](../vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md) guide to
   learn more about this feature.
 
+- You can now specify a private VMware Virtual Disk Development Kit (VDDK) image to help optimize the migration process
+  when migrating a Virtual Machine to a VMO cluster. Refer to the
+  [Migrate a VM to a VMO cluster](../vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md) guide to
+  learn more about this feature.
+
 #### Deprecations and Removals
 
 - The Terraform resource, `spectrocloud_cluster_import` is deprecated. To import a cluster deployed outside of the
@@ -99,23 +102,31 @@ tags: ["release-notes"]
 
 ### Packs
 
-#### Operating Systems
-
 #### Kubernetes
 
-#### CNI
+| Pack Name   | New Version |
+| ----------- | ----------- |
+| Nodeadm     | 1.29.0      |
+| Nodeadm     | 1.30.0      |
+| RKE2        | 1.28.14     |
+| RKE2        | 1.29.9      |
+| RKE2        | 1.30.5      |
+| RKE2 - Edge | 1.28.14     |
+| RKE2 - Edge | 1.29.9      |
+| RKE2 - Edge | 1.30.5      |
 
-#### CSI
+#### FIPS Packs
 
-#### Add-on Packs
+| Pack Name   | New Version |
+| ----------- | ----------- |
+| Azure CSI   | 1.30.5      |
+| Cillium CNI | 1.16.0      |
 
 #### Community Packs
 
-#### Known Inssues
-
-#### Pack Notes
-
-#### Deprecations and Removals
+| Pack Name              | New Version |
+| ---------------------- | ----------- |
+| vSphere No-Provisioner | 1.0.0       |
 
 ## October 26, 2024 - Release 4.5.5
 
