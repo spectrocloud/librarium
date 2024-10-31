@@ -40,6 +40,11 @@ clusters in a cluster group, you must consider the following limitations:
 - The cluster group must only contain Edge clusters. You cannot mix Edge clusters with other types of clusters in the
   same cluster group.
 - The cluster group can only support one Edge cluster.
+<!-- prettier-ignore -->
+- You must provide the capability to support a load balancer or ingress endpoint for the cluster group. You can use
+  solutions such as <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm" /> and
+  <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> in your cluster profile to support these types
+  endpoints.
 
 ## Get Started
 

@@ -33,6 +33,12 @@ Use the instructions below to create a cluster group.
 - If the cluster group will contain Edge clusters, the cluster group must only contain Edge clusters. You cannot mix
   Edge clusters with other types of clusters in the same cluster group.
 
+<!-- prettier-ignore -->
+- If the cluster group will contain Edge clusters, provide the capability to support a load balancer or ingress endpoint for the cluster group.You can use
+  solutions such as <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm" /> and
+  <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> in your cluster profile to support these types
+  endpoints.
+
 ## Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com).
