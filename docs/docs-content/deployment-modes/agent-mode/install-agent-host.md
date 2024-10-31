@@ -93,7 +93,32 @@ Palette. You will then create a cluster profile and use the registered host to d
    export TOKEN=<your-palette-registration-token>
    ```
 
-3. Issue the command below to create the **user-data** file and configure your host declaratively.
+3. (Optional) If you are not installing the agent on a host that accesses the internet via a proxy, skip this step.
+
+   If you are installing the agent on a host that accesses the internet via a proxy, export the proxy configurations in
+   your current terminal session. We recommend exporting the variables both in uppercase and lowercase to ensure
+   compatibility. Replace `<httpProxyAddress>` and `<httpsProxyAddress>` with the address and port to your HTTP and
+   HTTPS proxy servers, respectively.
+
+   ```shell
+   export http_proxy=<httpProxyAddress>
+   export https_proxy=<httpsProxyAddress>
+   export HTTP_PROXY=<httpProxyAddress>
+   export HTTPS_PROXY=<httpsProxyAddress>
+   ```
+
+4. Issue the command below to create the **user-data** file and configure your host declaratively.
+
+   :::info
+
+   If your host needs a proxy to access the internet, you need to provide the proxy configurations in the user data as
+   well. For more information, refer to
+   [Site Network Parameters](../../clusters/edge/edge-configuration/installer-reference.md#site-network-parameters).
+
+   Alternatively, you can install the agent first and configure proxy in Local UI. For more information, refer to
+   [Configure HTTP Proxy](../../clusters/edge/local-ui/host-management/configure-proxy.md).
+
+   :::
 
    The following configuration includes the default Palette endpoint, a registration token, and sets up the `kairos`
    user. The host will not shut down and will reboot after the agent installation, with
@@ -153,13 +178,13 @@ Palette. You will then create a cluster profile and use the registered host to d
              passwd: kairos
    ```
 
-4. Export the path to your user data file.
+5. Export the path to your user data file.
 
    ```shell
    export USERDATA=./user-data
    ```
 
-5. Download the latest version of the Palette agent installation script.
+6. Download the latest version of the Palette agent installation script.
 
    ```shell
    curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install.sh
@@ -184,13 +209,13 @@ Palette. You will then create a cluster profile and use the registered host to d
    curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/download/<stylus-version>/palette-agent-install.sh
    ```
 
-6. Grant execution permissions to the `install.sh` script.
+7. Grant execution permissions to the `install.sh` script.
 
    ```shell
    chmod +x ./palette-agent-install.sh
    ```
 
-7. Issue the following command to install the agent on your host.
+8. Issue the following command to install the agent on your host.
 
    ```shell
    sudo --preserve-env ./palette-agent-install.sh
@@ -204,36 +229,36 @@ Palette. You will then create a cluster profile and use the registered host to d
    Connection to 192.168.1.100 closed.
    ```
 
-8. Upon agent installation, the host will reboot to the registration screen and use the provided `EdgeHostToken` for
+9. Upon agent installation, the host will reboot to the registration screen and use the provided `EdgeHostToken` for
    automatic registration with Palette. The host will be registered in the same project where the registration token was
    created.
 
-9. Log in to [Palette](https://console.spectrocloud.com/) and select **Clusters** from the left **Main Menu**.
+10. Log in to [Palette](https://console.spectrocloud.com/) and select **Clusters** from the left **Main Menu**.
 
-10. Select the **Edge Hosts** tab and verify your host is displayed and marked as **Healthy** in the Edge hosts list.
+11. Select the **Edge Hosts** tab and verify your host is displayed and marked as **Healthy** in the Edge hosts list.
 
-11. Once the host has been registered with Palette, proceed with the cluster profile creation. Select **Profiles** from
+12. Once the host has been registered with Palette, proceed with the cluster profile creation. Select **Profiles** from
     the left **Main Menu**.
 
-12. Click on **Add Cluster Profile**.
+13. Click on **Add Cluster Profile**.
 
-13. In the **Basic Information** section, assign the a profile name, a description, and tags. Select the type as
+14. In the **Basic Information** section, assign the a profile name, a description, and tags. Select the type as
     **Full** and click **Next**.
 
-14. Select **Edge Native** as the **Cloud Type** and click **Next**.
+15. Select **Edge Native** as the **Cloud Type** and click **Next**.
 
-15. The **Profile Layers** section specifies the packs that compose the profile. Add the **BYOS Edge OS** pack version
+16. The **Profile Layers** section specifies the packs that compose the profile. Add the **BYOS Edge OS** pack version
     **2.0.0** to the OS layer.
 
-16. Click **Values** under **Pack Details**, then click on **Presets** on the right-hand side. Select **Agent Mode**.
+17. Click **Values** under **Pack Details**, then click on **Presets** on the right-hand side. Select **Agent Mode**.
 
     ![View of the cluster profile creation page with the BYOS pack.](/deployment-modes_agent-mode_byos-pack.webp)
 
-17. Click **Next Layer** to continue.
+18. Click **Next Layer** to continue.
 
-18. Complete the cluster profile creation process by filling out the remaining layers.
+19. Complete the cluster profile creation process by filling out the remaining layers.
 
-19. Follow the steps in the [Create Cluster Definition](../../clusters/edge/site-deployment/model-profile.md) guide to
+20. Follow the steps in the [Create Cluster Definition](../../clusters/edge/site-deployment/model-profile.md) guide to
     deploy a cluster using your registered host as a cluster node.
 
 </TabItem>
@@ -285,7 +310,21 @@ internet.
    export USERDATA=./user-data
    ```
 
-4. Download the agent installation image from a host with internet access and export it to a TAR file. Replace
+4. (Optional) If you are not accessing the internet via a proxy, skip this step.
+
+   If you are downloading the agent on a host that accesses the internet via a proxy, export the proxy configurations in
+   your current terminal session so that the script to download the agent binary can execute successfully. We recommend
+   exporting the variables both in uppercase and lowercase to ensure compatibility. Replace `<httpProxyAddress>` and
+   `<httpsProxyAddress>` with the address and port to your HTTP and HTTPS proxy servers, respectively.
+
+   ```shell
+   export http_proxy=<httpProxyAddress>
+   export https_proxy=<httpsProxyAddress>
+   export HTTP_PROXY=<httpProxyAddress>
+   export HTTPS_PROXY=<httpsProxyAddress>
+   ```
+
+5. Download the agent installation image from a host with internet access and export it to a TAR file. Replace
    `<architecture>` with the architecture of your CPU. If you have ARM64, use `arm64`. If you have AMD64 or x86_64, use
    `amd64`. Replace `<version>` with the desired version number. In this example, we use `v4.5.0`.
 
@@ -293,7 +332,7 @@ internet.
    crane pull us-docker.pkg.dev/palette-images/edge/stylus-agent-mode-linux-<architecture>:<version> agent-image.tar
    ```
 
-5. Issue the following command from a host with internet access to download the agent binary and name the binary
+6. Issue the following command from a host with internet access to download the agent binary and name the binary
    `palette-agent`. Replace `<architecture>` with the architecture of your CPU. If you have ARM64, use `arm64`. If you
    have AMD64 or x86_64, use `amd64`. Replace `<version>` with the desired version number. In this example, we use
    `v4.5.0`.
@@ -303,16 +342,16 @@ internet.
    curl --verbose --location $URL --output palette-agent
    ```
 
-6. Issue the following command to make the binary executable.
+7. Issue the following command to make the binary executable.
 
    ```shell
    chmod +x palette-agent
    ```
 
-7. Copy the agent binary as well as the agent image TAR file from your host with internet access to the host where you
+8. Copy the agent binary as well as the agent image TAR file from your host with internet access to the host where you
    want to install the Palette agent.
 
-8. Issue the following command to install the agent on your host. Replace `<image-tag>` with the tag of the installation
+9. Issue the following command to install the agent on your host. Replace `<image-tag>` with the tag of the installation
    image. If your user data is not in the current directory, replace `./user-data` with the path to your user data file.
    If your agent image TAR file is not in the current directory, replace `./agent-image.tar` with the path to your image
    TAR file.
@@ -329,30 +368,30 @@ internet.
    Connection to 192.168.1.100 closed.
    ```
 
-9. Log in to [Palette](https://console.spectrocloud.com/) and select **Clusters** from the left **Main Menu**.
+10. Log in to [Palette](https://console.spectrocloud.com/) and select **Clusters** from the left **Main Menu**.
 
-10. Select the **Edge Hosts** tab and verify your host is displayed and marked as **Healthy** in the Edge hosts list.
+11. Select the **Edge Hosts** tab and verify your host is displayed and marked as **Healthy** in the Edge hosts list.
 
-11. Once the host has been registered with Palette, proceed with the cluster profile creation. Select **Profiles** from
+12. Once the host has been registered with Palette, proceed with the cluster profile creation. Select **Profiles** from
     the left **Main Menu**.
 
-12. Click on **Add Cluster Profile**.
+13. Click on **Add Cluster Profile**.
 
-13. In the **Basic Information** section, assign the a profile name, a description, and tags. Select the type as
+14. In the **Basic Information** section, assign the a profile name, a description, and tags. Select the type as
     **Full** and click **Next**.
 
-14. Select **Edge Native** as the **Cloud Type** and click **Next**.
+15. Select **Edge Native** as the **Cloud Type** and click **Next**.
 
-15. The **Profile Layers** section specifies the packs that compose the profile. Add the **BYOS Edge OS** pack version
+16. The **Profile Layers** section specifies the packs that compose the profile. Add the **BYOS Edge OS** pack version
     **2.0.0** to the OS layer.
 
-16. Click **Values** under **Pack Details**, then click on **Presets** on the right-hand side. Select **Agent Mode**.
+17. Click **Values** under **Pack Details**, then click on **Presets** on the right-hand side. Select **Agent Mode**.
 
     ![View of the cluster profile creation page with the BYOS pack.](/deployment-modes_agent-mode_byos-pack.webp)
 
-17. Click **Next Layer** to continue.
+18. Click **Next Layer** to continue.
 
-18. In the **Kubernetes** layer, under `cluster.config.kube-apiserver-arg`, remove `AlwaysPullImages` from the list item
+19. In the **Kubernetes** layer, under `cluster.config.kube-apiserver-arg`, remove `AlwaysPullImages` from the list item
     `enable-admission-plugins`:
 
     ```yaml {7}
@@ -365,28 +404,28 @@ internet.
       - enable-admission-plugins=NamespaceLifecycle,ServiceAccount,NodeRestriction
     ```
 
-19. Complete the cluster profile creation process by filling out the remaining layers. In the application layer, make
+20. Complete the cluster profile creation process by filling out the remaining layers. In the application layer, make
     sure you include the **Harbor Edge-Native Config** pack. This pack is required for airgapped clusters.
 
-20. Follow the steps in
+21. Follow the steps in
     [Export Cluster Definition](../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) to export
     a cluster definition of your profile. You will use this cluster definition later when you create the cluster in
     Local UI.
 
-21. (Optional) If your host has access to all the images referenced by your cluster profile, you may skip this step.
+22. (Optional) If your host has access to all the images referenced by your cluster profile, you may skip this step.
 
     Follow the steps in
     [Build Content Bundles](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) to build a
     content bundle for your cluster profile. The content bundle will contain all the artifacts required to create your
     cluster and it will allow you to create a cluster even if your host has no access to an external image registry.
 
-22. Log in to [Local UI](../../clusters/edge/local-ui/host-management/access-console.md).
+23. Log in to [Local UI](../../clusters/edge/local-ui/host-management/access-console.md).
 
-23. Follow the steps in
+24. Follow the steps in
     [Upload Content Bundles](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) to upload the
     content bundle to your host.
 
-24. Follow the steps in [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) to use
+25. Follow the steps in [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) to use
     the cluster definition you exported previously to create a cluster.
 
 </TabItem>
