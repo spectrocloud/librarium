@@ -95,10 +95,10 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 3. (Optional) If you are not installing the agent on a host that accesses the internet via a proxy, skip this step.
 
-   If you are installing the agent on a host that accesses the internet via a network proxy, export the proxy configurations in
-   your current terminal session. We recommend exporting the variables both in uppercase and lowercase to ensure
-   compatibility. Replace `<httpProxyAddress>` and `<httpsProxyAddress>` with the address and port to your HTTP and
-   HTTPS proxy servers, respectively.
+   If you are installing the agent on a host that accesses the internet via a network proxy, export the proxy
+   configurations in your current terminal session. We recommend exporting the variables both in uppercase and lowercase
+   to ensure compatibility. Replace `<httpProxyAddress>` and `<httpsProxyAddress>` with the address and port to your
+   HTTP and HTTPS proxy servers, respectively.
 
    ```shell
    export http_proxy=<httpProxyAddress>
@@ -312,10 +312,11 @@ internet.
 
 4. (Optional) If you are not accessing the internet via a proxy, skip this step.
 
-   If you are downloading the agent on a host that accesses the internet via a proxy network, export the proxy configurations in
-   your current terminal session so that the script downloading the agent binary can execute successfully. We recommend
-   exporting the variables both in uppercase and lowercase to ensure compatibility. Replace `<httpProxyAddress>` and
-   `<httpsProxyAddress>` with the address and port to your HTTP and HTTPS proxy servers, respectively.
+   If you are downloading the agent on a host that accesses the internet via a proxy network, export the proxy
+   configurations in your current terminal session so that the script downloading the agent binary can execute
+   successfully. We recommend exporting the variables both in uppercase and lowercase to ensure compatibility. Replace
+   `<httpProxyAddress>` and `<httpsProxyAddress>` with the address and port to your HTTP and HTTPS proxy servers,
+   respectively.
 
    ```shell
    export http_proxy=<httpProxyAddress>
