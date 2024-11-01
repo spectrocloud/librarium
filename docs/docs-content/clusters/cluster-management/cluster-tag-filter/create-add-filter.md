@@ -13,27 +13,30 @@ access restrictions.
 
 You must create a Resource Filter in Palette to establish user-based access restrictions to clusters across multiple
 projects. The resource filters are created under the scope of Tenant Admin. To create a resource filter, follow the
-steps below:
+steps below.
 
-<br />
+1. Log in to Palette as **Tenant Admin**.
 
-1. Log in to Palette as **Tenant Admin** and go to **Tenant Settings** from the left **Main Menu**.
+2. Navigate to the left **Main Menu** and select **Tenant Settings**.
 
-2. Select **Filters** tab and click **+New Resource Filter**.
+3. From the **Tenant Settings Menu**, expand the **Platform Settings** and click on **Filters**.
 
-3. To the **Create New Filter** wizard give the following information:
+4. Click on **+New Resource Filter**.
 
-- Filter Name: A custom name for the tag filter.
-- A filter expression. Use the following table to familiarize yourself with the filter expression format:
+5. Fill out the input fields in the **Create Resource Filter** wizard. Use the following table to understand the input
+   fields:
 
-  | Conjunction | Property | Operator | Tag-Value        |
-  | ----------- | -------- | -------- | ---------------- |
-  | and         | Tag      | is       | Custom tag value |
-  | or          | Tag      | is       | Custom tag value |
-  | and         | Tag      | is not   | Custom tag value |
-  | or          | Tag      | is not   | Custom tag value |
+   - Filter Name: A custom name for the tag filter.
+   - A filter expression. Use the following table to familiarize yourself with the filter expression format:
 
-4. Click the **Confirm** button to complete the filter creation wizard.
+   | Conjunction | Property | Operator | Tag-Value        |
+   | ----------- | -------- | -------- | ---------------- |
+   | and         | Tag      | is       | Custom tag value |
+   | or          | Tag      | is       | Custom tag value |
+   | and         | Tag      | is not   | Custom tag value |
+   | or          | Tag      | is not   | Custom tag value |
+
+6. Click the **Confirm** button to complete the filter creation wizard.
 
 **Note:** The tags are case-sensitive.
 
@@ -42,11 +45,15 @@ steps below:
 Upon creating a filter, a display message will pop up to confirm the successful creation of the tag. You can also use
 the following steps to review the filter is available for use.
 
-1. Navigate to the left **Main Menu** and click on **Tentant Settings**.
+1. Log in to Palette as **Tenant Admin**.
 
-2. Access the **Manage Filters** page to find the filter name listed.
+2. Navigate to the left **Main Menu** and select **Tenant Settings**.
 
-3. You can **Edit** and **Delete** filters by clicking on the **three-dot Menu** at the end of the row.
+3. From the **Tenant Settings Menu**, expand the **Platform Settings** and click on **Filters**.
+
+4. Locate the filter you created in the list of filters displayed.
+
+5. You can **Edit** and **Delete** filters by clicking on the **three-dot Menu** at the end of the row.
 
 ## Add Resource Role
 
