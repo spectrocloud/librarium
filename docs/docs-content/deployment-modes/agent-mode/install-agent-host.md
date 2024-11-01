@@ -313,7 +313,7 @@ internet.
 4. (Optional) If you are not accessing the internet via a proxy, skip this step.
 
    If you are downloading the agent on a host that accesses the internet via a proxy, export the proxy configurations in
-   your current terminal session so that the script to download the agent binary can execute successfully. We recommend
+   your current terminal session so that the script downloading the agent binary can execute successfully. We recommend
    exporting the variables both in uppercase and lowercase to ensure compatibility. Replace `<httpProxyAddress>` and
    `<httpsProxyAddress>` with the address and port to your HTTP and HTTPS proxy servers, respectively.
 
