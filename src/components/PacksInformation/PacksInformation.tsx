@@ -16,11 +16,7 @@ interface PacksData {
   };
 }
 
-type CustomFields = {
-  DISABLE_PACKS_INTEGRATIONS: string;
-};
-
-export default function Packs(props) {
+export default function Packs(props: Packs) {
   const { siteConfig } = useDocusaurusContext();
   const isPacksDisabled = siteConfig.customFields.DISABLE_PACKS_INTEGRATIONS === "true";
 
