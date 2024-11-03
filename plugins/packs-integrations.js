@@ -392,9 +392,9 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
 // Otherwise, errors will be thrown when the PDE service packs are accessed.
 // The redirect.js file has logic to redirect pack pages in production to the /integrations/ page.
 async function pluginPacksAndIntegrationsData(context, options) {
-  if (process.env.DISABLE_PACKS_INTEGRATIONS) {
+  if (process.env.DISABLE_PACKS_INTEGRATIONS === "true") {
     logger.warn(
-      "The Packs Integrations plugin is disabled. To enable it, set the environment variable, DISABLE_PACKS_INTEGRATIONS, to false."
+      "The Packs Integrations plugin is disabled. To enable it, set the environment variable DISABLE_PACKS_INTEGRATIONS to false."
     );
     return {
       name: "plugin-packs-integrations",

@@ -11,7 +11,7 @@ This allows to prevent broken links when the packs integrations are disabled.
 
 let packRedirects = [];
 
-if (process.env.DISABLE_PACKS_INTEGRATIONS) {
+if (process.env.DISABLE_PACKS_INTEGRATIONS === "true") {
   const sitemapUrl = "https://docs.spectrocloud.com/sitemap.xml";
   const urlPrefix = "https://docs.spectrocloud.com/integrations/packs/";
 
