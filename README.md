@@ -821,6 +821,24 @@ You can specify a list of packs to exclude from the packs component. To exclude 
 
 Excluded packs are not displayed in the packs component.
 
+#### Disable Plugin
+
+To disable the packs plugin, you can set the `DISABLE_PACKS_PLUGIN` environment variable to `true`. This will prevent
+the plugin from running and fetching the packs data. The packs component will not display any data if the plugin is
+disabled.
+
+```shell
+export DISABLE_PACKS_PLUGIN=true
+```
+
+Settting the `DISABLE_PACKS_PLUGIN` environment variable to `true` will also have the following effects:
+
+- The PDE/App Mode Packs are still displayed.
+- All production pack pages are added to the redirects file. This is to prevent broken URLs.
+- Fallback logic is activated in the `PacksReadme`, `PacksInformation`, and `Packs` components. Redirect to the
+  `integrations/` page is the new behavior.
+- The Packs list page will display a warning message indicating that the packs data is not available.
+
 #### README Content
 
 The pack component will display a Pack's README file if it exists. The README content comes from the Palette API.
