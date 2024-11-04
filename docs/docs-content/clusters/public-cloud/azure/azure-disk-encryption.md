@@ -26,13 +26,14 @@ pack.
 
 - Azure Disk Encryption is only supported on Azure IaaS clusters.
 
-- Azure Disk Encryption is only supported when using the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack.
+- Azure Disk Encryption is only supported when using the
+  <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack.
 
 - If a key expires in your Key Vault, your cluster may experience operation failures. To resolve this, generate a new
   key in Key Vault and update your Disk Encryption Set to reference the new key.
-  
-  - No changes are needed in Palette, as the Palette eXtended Kubernetes pack configuration references the URI of
-    your Disk Encryption Set, which remains unchanged.
+
+  - No changes are needed in Palette, as the Palette eXtended Kubernetes pack configuration references the URI of your
+    Disk Encryption Set, which remains unchanged.
 
   - We recommend enabling
     [**Auto key rotation**](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys)
