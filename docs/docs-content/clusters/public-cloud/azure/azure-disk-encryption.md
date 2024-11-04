@@ -146,7 +146,7 @@ Use the following steps to enable disk encryption on a
 You can now [create a new Azure IaaS cluster](./create-azure-cluster.md) with disk encryption enabled using this cluster
 profile.
 
-### Existing Cluster Profile
+### Edit an Existing Cluster Profile
 
 #### Enable Disk Encryption on a Cluster Profile
 
