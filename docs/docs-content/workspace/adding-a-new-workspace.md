@@ -28,8 +28,9 @@ how a workspace can be created in the Palette console.
 
 2. Associate Clusters
 
-   - Select the cluster(s) to be added to the workspace. (See [New Clusters](../clusters/clusters.md) to learn how to
-     add a new Cluster.) Palette clusters, as well as brownfield clusters, can be added to your workspace.
+   - Select the clusters to be added to the workspace. (See [New Clusters](../clusters/clusters.md) to learn how to add
+     a new Cluster.) Palette clusters, as well as brownfield clusters, can be added to your workspace.
+
    - Configure the Cluster Role Binding (optional). Role bindings can be created on all workspace clusters.
    - As step 2 of the new Workspace creation, select **Add Cluster Role Binding**.
    - Provide the name of the role for which the cluster role binding needs to be created. The role should be
