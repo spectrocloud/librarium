@@ -16,7 +16,8 @@ find previously implemented changes in the [Implemented Changes](#implemented-ch
 
 <!-- vale on -->
 
-You can review the upcoming breaking changes in Palette and Palette VerteX in the following table.
+Stay informed about the upcoming breaking changes in Palette and Palette VerteX. Use the information below to prepare
+for the changes in your environment.
 
 | Change                                                                                                                                                                                                                                                                                                                                                                             | Target Date    | Published Date   |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | ---------------- |
@@ -28,7 +29,8 @@ You can review the upcoming breaking changes in Palette and Palette VerteX in th
 
 <!-- vale on -->
 
-The table below lists the upcoming deprecations and removals in Palette and Palette VerteX.
+The table below lists the upcoming deprecations and removals in Palette and Palette VerteX. Review the information to
+below and take necessary actions to avoid any disruptions in your environment.
 
 | Change                                                                                                                                                                                                                       | Target Date   | Published Date    |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ----------------- |
@@ -36,8 +38,8 @@ The table below lists the upcoming deprecations and removals in Palette and Pale
 
 ## Implemented Changes
 
-You can review the previously implemented changes in Palette and Palette VerteX in the following table. Refer to
-respective release version's [Release Notes](./release-notes.md) for more information.
+You can review previously implemented changes in Palette and VerteX in the following table. Refer to respective release
+version's [Release Notes](./release-notes.md) for more information.
 
 | Change                                                                                                                                                                                                                                                                                                                                                                                                      |     | Release | Date         |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------- | ------------ |
