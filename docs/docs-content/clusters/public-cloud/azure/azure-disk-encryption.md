@@ -27,6 +27,7 @@ pack.
 - Azure Disk Encryption is only supported on Azure IaaS clusters.
 
 - Azure Disk Encryption is only supported when using the
+
   <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack.
 
 - If a key expires in your Key Vault, your cluster may experience operation failures. To resolve this, generate a new
