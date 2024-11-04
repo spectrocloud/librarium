@@ -12,17 +12,13 @@ sidebar_position: 12
 Palette supports disk encryption of your Azure Kubernetes cluster using Disk Encryption Sets with
 [customer-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#customer-managed-keys).
 
-You can use Disk Encryption Sets to encrypt your nodes' Operating System (OS) and data disks by including a preset
-option in the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" />
-pack.
-
-:::info
-
 By default, Azure encrypts all managed disks with
 [platform-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#platform-managed-keys),
 however, customer-managed keys enable you to have greater control over your key management.
 
-:::
+You can use Disk Encryption Sets to encrypt your nodes' Operating System (OS) and data disks by including a preset
+option in the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" />
+pack.
 
 ## Limitations
 
@@ -30,14 +26,17 @@ however, customer-managed keys enable you to have greater control over your key 
 
 - Azure Disk Encryption is only supported on Azure IaaS clusters.
 
+- Azure Disk Encryption is only supported when using the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack.
+
 - If a key expires in your Key Vault, your cluster may experience operation failures. To resolve this, generate a new
   key in Key Vault and update your Disk Encryption Set to reference the new key.
+  
+  - No changes are needed in Palette, as the Palette eXtended Kubernetes pack configuration references the URI of
+    your Disk Encryption Set, which remains unchanged.
 
   - We recommend enabling
     [**Auto key rotation**](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys)
     on your Disk Encryption Set so it can automatically use new key versions from your Key Vault.
-  - No changes are needed in Palette, as the Palette eXtended Kubernetes pack configuration references the URI of your
-    Disk Encryption Set, which remains unchanged.
 
 - Changing the Disk Encryption Set URI (`diskEncryptionSetID`) in the Palette eXtended Kubernetes pack configuration in
   Palette will trigger a node repave.
@@ -78,7 +77,9 @@ however, customer-managed keys enable you to have greater control over your key 
   - If you have designated a user-assigned identity to the Disk Encryption Set, add the same access policies to the
     user-assigned identity in the Azure Key Vault.
 
-## Enable Disk Encryption on a New Cluster Profile
+## Enable Disk Encryption
+
+### New Cluster Profile
 
 Use the following steps to enable disk encryption on a
 [new cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md).
@@ -99,7 +100,8 @@ Use the following steps to enable disk encryption on a
 
 8. In **Configure Pack**, select **Values** in pack details, and click the **\</\>** button to show the YAML editor.
 
-9. On the right-hand side, click the **Presets** drop-down menu, and select the **Use Azure Disk Encryption** option.
+9. On the right-hand side, click the **Presets** drop-down menu, and select the **Enable Encryption Using
+   Customer-Managed Key** option.
 
 10. Scroll to the bottom of the YAML editor to view the additional configuration that was added.
 
@@ -142,9 +144,9 @@ Use the following steps to enable disk encryption on a
 You can now [create a new Azure IaaS cluster](./create-azure-cluster.md) with disk encryption enabled using this cluster
 profile.
 
-## Enable Disk Encryption on an Existing Cluster Profile
+### Existing Cluster Profile
 
-### Update Cluster Profile
+#### Enable Disk Encryption on a Cluster Profile
 
 Use the following steps to enable disk encryption on an
 [existing cluster profile](../../../profiles/cluster-profiles/modify-cluster-profiles/modify-cluster-profiles.md).
@@ -155,8 +157,7 @@ Use the following steps to enable disk encryption on an
 
 3. From the left **Main Menu**, select **Profiles** and click the cluster profile that you want to edit.
 
-4. (Optional) We recommend that you create a new version of your cluster profile instead of changing the configuration
-   of your current version.
+4. Create a new version of your cluster profile:
 
    1. Click the version drop-down menu next to the cluster profile name, and click **Create new version**.
    2. Fill the **Version** field with a new version number.
@@ -175,7 +176,8 @@ Use the following steps to enable disk encryption on an
 
 6. In **Values**, click the **\</\>** button to show the YAML editor.
 
-7. On the right-hand side, click the **Presets** drop-down menu, and select the **Use Azure Disk Encryption** option.
+7. On the right-hand side, click the **Presets** drop-down menu, and select the **Enable Encryption Using
+   Customer-Managed Key** option.
 
 8. Scroll to the bottom of the YAML editor to view the additional configuration that was added.
 
@@ -214,10 +216,10 @@ Use the following steps to enable disk encryption on an
 
 11. Click **Save Changes**.
 
-### Update an Active Cluster to Enable Disk Encryption
+#### Enable Disk Encryption on an Active Cluster
 
 Use the following steps to enable disk encryption on an active cluster using the
-[updated cluster profile](#update-cluster-profile).
+[updated cluster profile](#enable-disk-encryption-on-a-cluster-profile).
 
 :::warning
 
@@ -240,27 +242,103 @@ Performing these steps will cause a
 6. Review the changes and click **Update**.
 
 Your cluster will now update and a full cluster repave will occur. Wait until the update has completed before
-[validating](#validate) the disk encryption.
+[validating the disk encryption enablement](#validate-after-enablement).
+
+## Disable Disk Encryption
+
+### Disable Disk Encryption on a Cluster Profile
+
+Use the following steps to disable disk encryption on an
+[existing cluster profile](../../../profiles/cluster-profiles/modify-cluster-profiles/modify-cluster-profiles.md).
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Ensure you are in the correct project scope.
+
+3. From the left **Main Menu**, select **Profiles** and click the cluster profile that you want to edit.
+
+4. Create a new version of your cluster profile:
+
+   1. Click the version drop-down menu next to the cluster profile name, and click **Create new version**.
+   2. Fill the **Version** field with a new version number.
+   3. Click **Confirm**.
+
+5. Select the Kubernetes layer to view the **Edit Pack** drawer.
+
+6. In **Values**, click the **\</\>** button to show the YAML editor.
+
+7. On the right-hand side, click the **Presets** drop-down menu, and select the **Disable Encryption Using
+   Customer-Managed Key** option.
+
+8. Click **Confirm updates**.
+
+9. Click **Save Changes**.
+
+### Disable Disk Encryption on an Active Cluster
+
+Use the following steps to disable disk encryption on an active cluster using the
+[updated cluster profile](#disable-disk-encryption-on-a-cluster-profile).
+
+:::warning
+
+Performing these steps will cause a
+[full cluster repave](../../cluster-management/node-pool.md#repave-behavior-and-configuration).
+
+:::
+
+1. From the left **Main Menu**, select **Clusters**.
+
+2. Find the cluster that you want to update and click on it.
+
+3. Click the **Profile** tab.
+
+4. Click the version drop-down menu in **Infrastructure Layers** and select the version that has disk encryption
+   disabled.
+
+5. Click **Review & Save**, then click **Review changes in Editor** in the Changes Summary box.
+
+6. Review the changes and click **Update**.
+
+Your cluster will now update and a full cluster repave will occur. Wait until the update has completed before
+[validating the disk encryption disablement](#validate-after-disablement).
 
 ## Validate
 
-Follow these steps to validate disk encryption on your Azure VM disks.
+### Validate after Enablement
+
+Follow these steps to validate enablement of customer-managed key encryption on your Azure VM disks.
 
 1. Log in to the [Azure Portal](https://portal.azure.com/).
 
-2. In the search bar, look for **Virtual Machines**. Click on the service when found.
+2. In the search bar, look for **Disks**. Click on the service when found.
 
-3. Find your cluster's Virtual Machines by using the search filters provided. You can use the cluster name as the
-   cluster nodes contain the cluster name at the beginning (for example: `<clusterName>-worker-pool-XXXX-YYYYY`).
+3. Find your cluster's disks by using the search filters provided. You can use the cluster name as the cluster resources
+   contain the cluster name at the beginning (for example: `<clusterName>-e3c0-f7ljd_OSDisk`).
 
-4. Once identified, click on your Virtual Machine name to view its details.
+4. Once identified, click on a disk name to view its details.
 
-5. Click the **Settings** drop-down menu, and then click **Disks**.
+5. Scroll down to view the **Properties** tab and check that the **Encryption** section shows **Customer-managed key**
+   for **Encryption type**. Your Disk Encryption Set name is also shown for the **Encryption key**.
 
-6. View the **Encryption** column for each disk and check that it displays **SSE with CMK**. This stands for Server-Side
-   Encryption with Customer-managed Key.
+6. Repeat steps 4-5 for each disk in your cluster.
 
-7. Repeat steps 4-6 for each Virtual Machine in your cluster.
+### Validate after Disablement
+
+Follow these steps to validate disablement of customer-managed key encryption on your Azure VM disks.
+
+1. Log in to the [Azure Portal](https://portal.azure.com/).
+
+2. In the search bar, look for **Disks**. Click on the service when found.
+
+3. Find your cluster's disks by using the search filters provided. You can use the cluster name as the cluster resources
+   contain the cluster name at the beginning (for example: `<clusterName>-e3c0-f7ljd_OSDisk`).
+
+4. Once identified, click on a disk name to view its details.
+
+5. Scroll down to view the **Properties** tab and check that the **Encryption** section shows **Platform-managed key**
+   for **Encryption type**.
+
+6. Repeat steps 4-5 for each disk in your cluster.
 
 ## Resources
 
