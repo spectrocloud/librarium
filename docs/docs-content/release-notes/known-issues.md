@@ -3,7 +3,7 @@ sidebar_label: "Known Issues"
 title: "Known Issues"
 description: "Review all known issues in Palette and learn more about their status."
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 tags: ["known-issues"]
 ---
 
