@@ -114,20 +114,13 @@ following steps to resolve the issue.
    deployment.apps/cluster-management-agent scaled
    ```
 
-## Scenario - Override Virtual Cluster Resource Limits
+## Scenario - Apply Host Cluster Resource Limits to Virtual Cluster
 
-If you encounter Out-of-Memory (OOM) errors in a virtual cluster, it may be due to default resource limits set in the
-Cluster Group's
+If you encounter Out-of-Memory (OOM) errors for the Palette agent pod inside a virtual cluster, it may be due to default
+resource limits set in the Cluster Group's
 [Virtual Cluster configuration](../clusters/cluster-groups/create-cluster-group.md#palette-virtual-cluster-configuration).
-We recommend that you review these limits and adjust them as needed. If you need to override the resource limits set in
-a cluster group's virtual cluster configuration, use the following steps.
-
-:::info
-
-Once you override the resource limits configured for a cluster group, the resource limits configured for the host
-cluster take precedence.
-
-:::
+By default, virtual clusters are limited to half the resources of the host cluster. If you need to override the resource
+limits for a virtual cluster, and use the host cluster's default resource limits, follow the steps below.
 
 ### Debug Steps
 
