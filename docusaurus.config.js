@@ -34,7 +34,11 @@ const config = {
     defaultLocale: "en",
     locales: ["en"],
   },
-  staticDirectories: ["static", "static/assets/docs/images", "static/assets"],
+  customFields: {
+    // Used to access the environment variable in the build process during the client-side step
+    DISABLE_PACKS_INTEGRATIONS: process.env.DISABLE_PACKS_INTEGRATIONS,
+  },
+  staticDirectories: ["static", "static/assets/docs/images", "static/assets", "static/img/"],
   headTags: [
     {
       tagName: "script",
