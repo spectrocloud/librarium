@@ -113,3 +113,44 @@ following steps to resolve the issue.
    ```shell hideClipboard
    deployment.apps/cluster-management-agent scaled
    ```
+
+## Scenario - Override Virtual Cluster Resource Limits
+
+If you encounter Out-of-Memory (OOM) errors in a virtual cluster, it may be due to default resource limits set in the
+Cluster Group's
+[Virtual Cluster configuration](../clusters/cluster-groups/create-cluster-group.md#palette-virtual-cluster-configuration).
+We recommend that you review these limits and adjust them as needed. If you need to override the resource limits set in
+a cluster group's virtual cluster configuration, use the following steps.
+
+:::info
+
+Once you override the resource limits configured for a cluster group, the resource limits configured for the host
+cluster take precedence.
+
+:::
+
+### Debug Steps
+
+1. Open a terminal and connect to the host cluster using the cluster's kubeconfig file. Refer to the
+   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) guide for additional guidance.
+
+2. Create an empty _ConfigMap_. Use the following command to create the ConfigMap in the `jet-system` namespace.
+
+   ```shell
+   cat <<EOF > skip-palette-patch.yaml
+   apiVersion: v1
+   kind: ConfigMap
+   metadata:
+     name: skip-palette-patch
+     namespace: jet-system
+   data: {}
+   EOF
+   ```
+
+3. Issue the following command to apply the ConfigMap to the host cluster.
+
+   ```shell
+   kubectl apply --filename=skip-palette-patch.yaml
+   ```
+
+4. Repeat step one through three for each host cluster that makes up the Cluster Group.
