@@ -387,7 +387,25 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
   }
 }
 
+// If the plugin is disabled, then the packs and integrations data will not be fetched.
+// However, the PDE service packs still need to be loaded.
+// Otherwise, errors will be thrown when the PDE service packs are accessed.
+// The redirect.js file has logic to redirect pack pages in production to the /integrations/ page.
 async function pluginPacksAndIntegrationsData(context, options) {
+  if (process.env.DISABLE_PACKS_INTEGRATIONS === "true") {
+    logger.warn(
+      "The Packs Integrations plugin is disabled. To enable it, set the environment variable DISABLE_PACKS_INTEGRATIONS to false."
+    );
+    return {
+      name: "plugin-packs-integrations",
+      async allContentLoaded({ allContent, actions }) {
+        const { setGlobalData } = actions;
+        const integrationsData = generateIntegrationData(allContent);
+        setGlobalData({ integrations: integrationsData });
+      },
+    };
+  }
+
   return {
     name: "plugin-packs-integrations",
     async loadContent() {
