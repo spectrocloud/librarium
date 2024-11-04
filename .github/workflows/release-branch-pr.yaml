@@ -18,6 +18,7 @@ env:
   ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
   GITHUB_BRANCH: ${{ github.ref_name }} 
   PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
+  DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
 
 
 concurrency:
