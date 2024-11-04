@@ -16,6 +16,8 @@ find previously implemented changes in the [Implemented Changes](#implemented-ch
 
 <!-- vale on -->
 
+You can review the upcoming breaking changes in Palette and Palette VerteX in the following table.
+
 | Change                                                                                                                                                                                                                                                                                                                                                                             | Target Date    | Published Date   |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | ---------------- |
 | The _Beehive_ [cluster group](../clusters/cluster-groups/cluster-groups.md) is no longer available starting with this release. If you need to deploy virtual cluster, create a cluster group in your tenant or project. You can learn more about creating a new cluster group in the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide. | November, 2024 | October 13, 2024 |
@@ -26,11 +28,16 @@ find previously implemented changes in the [Implemented Changes](#implemented-ch
 
 <!-- vale on -->
 
+The table below lists the upcoming deprecations and removals in Palette and Palette VerteX.
+
 | Change                                                                                                                                                                                                                       | Target Date   | Published Date    |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ----------------- |
 | The Terraform resource, `spectrocloud_cluster_import` is deprecated. To import a cluster deployed outside of the context of Palette, refer to the [Import a Cluster](../clusters/imported-clusters/cluster-import.md) guide. | January, 2025 | November 15, 2024 |
 
 ## Implemented Changes
+
+You can review the previously implemented changes in Palette and Palette VerteX in the following table. Refer to
+respective release version's [Release Notes](./release-notes.md) for more information.
 
 | Change                                                                                                                                                                                                                                                                                                                                                                                                      |     | Release | Date         |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------- | ------------ |
