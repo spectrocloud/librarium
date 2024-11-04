@@ -1,4 +1,29 @@
-const redirects = [
+const fetchAndFilterUrls = require("./utils/xml/packExtracter");
+
+/*
+The logigc below is all related to the event that the environment variable DISABLE_PACKS_INTEGRATIONS is set to true.
+The function fetchAndFilterUrls is used to fetch the sitemap.xml file from production. 
+The assumption is that the sitemap.xml file is up to date and contains all the URLs for the packs integrations.
+We then filter the URLs that start with the prefix "https://docs.spectrocloud.com/integrations/packs/" and store them in the packRedirects array.
+The redirects array is then updated with the packRedirects array.
+This allows to prevent broken links when the packs integrations are disabled.
+*/
+
+let packRedirects = [];
+
+if (process.env.DISABLE_PACKS_INTEGRATIONS === "true") {
+  const sitemapUrl = "https://docs.spectrocloud.com/sitemap.xml";
+  const urlPrefix = "https://docs.spectrocloud.com/integrations/packs/";
+
+  fetchAndFilterUrls(sitemapUrl, urlPrefix).then((paths) => {
+    packRedirects = paths.map((path) => ({
+      from: path,
+      to: "/integrations/",
+    }));
+  });
+}
+
+let redirects = [
   {
     from: `/api/`,
     to: `/api/introduction/`,
@@ -410,7 +435,7 @@ const redirects = [
   },
   {
     from: "/enterprise-version/install-palette/airgap/vmware-vsphere-airgap-instructions/",
-    to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
   },
   {
     from: "/vertex/install-palette-vertex/airgap/kubernetes-airgap-instructions/",
@@ -418,7 +443,7 @@ const redirects = [
   },
   {
     from: "/vertex/install-palette-vertex/airgap/vmware-vsphere-airgap-instructions/",
-    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
   },
   {
     from: "/vertex/install-palette-vertex/airgap/checklist/",
@@ -554,6 +579,14 @@ const redirects = [
     to: "/automation/palette-cli/commands/ec/",
   },
   {
+    from: "/enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
+  },
+  {
     from: "/legal-licenses/oss-licenses/",
     to: "/legal-licenses/oss-licenses-index/",
   },
@@ -616,5 +649,9 @@ const redirects = [
     to: "/security-bulletins/reports/",
   },
 ];
+
+if (packRedirects.length > 0) {
+  redirects = redirects.concat(packRedirects);
+}
 
 module.exports = redirects;

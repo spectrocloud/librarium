@@ -78,7 +78,7 @@ Toggle the **Enable** button to enable the use of Ingress.
 
 ## Thanos SideCar
 
-[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open-source system for running large-scale,
+[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open source system for running large-scale,
 distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods in
 object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale
 horizontally without the risk of using up local storage space.
@@ -222,7 +222,7 @@ Toggle the **Enable** button to enable the use of Ingress.
 
 ## Thanos SideCar
 
-[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open-source system for running large-scale,
+[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open source system for running large-scale,
 distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods in
 object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale
 horizontally without the risk of using up local storage space.
@@ -366,7 +366,7 @@ Toggle the **Enable** button to enable the use of Ingress.
 
 ## Thanos SideCar
 
-[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open-source system for running large-scale,
+[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open source system for running large-scale,
 distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods in
 object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale
 horizontally without the risk of using up local storage space.
@@ -512,7 +512,7 @@ Toggle the **Enable** button to enable the use of Ingress.
 
 ## Thanos SideCar
 
-[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open-source system for running large-scale,
+[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open source system for running large-scale,
 distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods in
 object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale
 horizontally without the risk of using up local storage space.
@@ -621,7 +621,7 @@ Toggle the **Enable** button to enable the use of Ingress.
 
 ## Thanos SideCar
 
-[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open-source system for running large-scale,
+[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open source system for running large-scale,
 distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods in
 object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale
 horizontally without the risk of using up local storage space.
@@ -721,7 +721,7 @@ Toggle the **Enable** button to enable the use of Ingress.
 
 ## Thanos SideCar
 
-[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open-source system for running large-scale,
+[Thanos](https://prometheus-operator.dev/docs/platform/thanos/) is an open source system for running large-scale,
 distributed, and highly available Prometheus setups. Thanos allows Prometheus to store data for extended periods in
 object storage, such as Amazon S3 or Google Cloud Storage, instead of a local disk. This enables Prometheus to scale
 horizontally without the risk of using up local storage space.
