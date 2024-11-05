@@ -17,6 +17,7 @@ By default, Azure encrypts all managed disks with
 however, customer-managed keys enable you to have greater control over your key management.
 
 You can use Disk Encryption Sets to encrypt your nodes' Operating System and data disks by selecting a preset in the
+
 <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack.
 
 ## Limitations
