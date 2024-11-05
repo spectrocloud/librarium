@@ -209,22 +209,20 @@ Performing these steps will cause a
 
 3. From the left **Main Menu**, select **Profiles** and click the cluster profile that you want to edit.
 
-4. Create a new version of your cluster profile:
+4. Create a new version of your cluster profile. Click the version **drop-down Menu** next to the cluster profile name, and click **Create new version**.
 
-5. Click the version **drop-down Menu** next to the cluster profile name, and click **Create new version**.
+5. Fill the **Version** field with a new version number.
 
-6. Fill the **Version** field with a new version number.
+6. Click **Confirm**.
 
-7. Click **Confirm**.
+7. Select the Kubernetes layer (Palette eXtended Kubernetes pack) to view the **Edit Pack** drawer.
 
-8. Select the Kubernetes layer (Palette eXtended Kubernetes pack) to view the **Edit Pack** drawer.
+8. In **Values**, click the **\</\>** button to show the YAML editor.
 
-9. In **Values**, click the **\</\>** button to show the YAML editor.
-
-10. On the right-hand side, click the **Presets drop-down Menu**, and select the **Enable Encryption Using
+9.  On the right-hand side, click the **Presets drop-down Menu**, and select the **Enable Encryption Using
     Customer-Managed Key** option.
 
-11. Scroll to the bottom of the YAML editor to view the additional configuration that was added.
+10. Scroll to the bottom of the YAML editor to view the additional configuration that was added.
 
     ```yaml
     cloud:
@@ -232,7 +230,7 @@ Performing these steps will cause a
         diskEncryptionSetID: ""
     ```
 
-12. Fill in the `diskEncryptionSetID` with the Resource ID URI of your Disk Encryption Set.
+11. Fill in the `diskEncryptionSetID` with the Resource ID URI of your Disk Encryption Set.
 
     <!-- prettier-ignore -->
     <details>
@@ -258,22 +256,22 @@ Performing these steps will cause a
         diskEncryptionSetID: "/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet"
     ```
 
-13. Click **Confirm updates**.
+12. Click **Confirm updates**.
 
-14. Click **Save Changes**.
+13. Click **Save Changes**.
 
-15. From the left **Main Menu**, select **Clusters**.
+14. From the left **Main Menu**, select **Clusters**.
 
-16. Find the cluster that you want to update and click on it.
+15. Find the cluster that you want to update and click on it.
 
-17. Click the **Profile** tab.
+16. Click the **Profile** tab.
 
-18. Click the version **drop-down Menu** in **Infrastructure Layers** and select the version that has disk encryption
+17. Click the version **drop-down Menu** in **Infrastructure Layers** and select the version that has disk encryption
     enabled.
 
-19. Click **Review & Save**, then click **Review changes in Editor** in the Changes Summary box.
+18. Click **Review & Save**, then click **Review changes in Editor** in the Changes Summary box.
 
-20. Review the changes and click **Update**.
+19. Review the changes and click **Update**.
 
 Your cluster will now update and a full cluster repave will occur. Wait until the update has completed before
 [validating the disk encryption enablement](#validate-active-cluster).
@@ -321,37 +319,35 @@ Performing these steps will cause a
 
 3. From the left **Main Menu**, select **Profiles** and click the cluster profile that you want to edit.
 
-4. Create a new version of your cluster profile:
+4. Create a new version of your cluster profile. Click the version **drop-down Menu** next to the cluster profile name, and click **Create new version**.
 
-5. Click the version **drop-down Menu** next to the cluster profile name, and click **Create new version**.
+5. Fill the **Version** field with a new version number.
 
-6. Fill the **Version** field with a new version number.
+6. Click **Confirm**.
 
-7. Click **Confirm**.
+7. Select the Kubernetes layer (**Palette eXtended Kubernetes** pack) to view the **Edit Pack** drawer.
 
-8. Select the Kubernetes layer (**Palette eXtended Kubernetes** pack) to view the **Edit Pack** drawer.
+8. In **Values**, click the **\</\>** button to show the YAML editor.
 
-9. In **Values**, click the **\</\>** button to show the YAML editor.
-
-10. On the right-hand side, click the **Presets drop-down Menu**, and select the **Disable Encryption Using
+9.  On the right-hand side, click the **Presets drop-down Menu**, and select the **Disable Encryption Using
     Customer-Managed Key** option.
 
-11. Click **Confirm updates**.
+10. Click **Confirm updates**.
 
-12. Click **Save Changes**.
+11. Click **Save Changes**.
 
-13. From the left **Main Menu**, select **Clusters**.
+12. From the left **Main Menu**, select **Clusters**.
 
-14. Find the cluster that you want to update and click on it.
+13. Find the cluster that you want to update and click on it.
 
-15. Click the **Profile** tab.
+14. Click the **Profile** tab.
 
-16. Click the version **drop-down Menu** in **Infrastructure Layers** and select the version that has disk encryption
+15. Click the version **drop-down Menu** in **Infrastructure Layers** and select the version that has disk encryption
     disabled.
 
-17. Click **Review & Save**, then click **Review changes in Editor** in the Changes Summary box.
+16. Click **Review & Save**, then click **Review changes in Editor** in the Changes Summary box.
 
-18. Review the changes and click **Update**.
+17. Review the changes and click **Update**.
 
 Your cluster will now update and a full cluster repave will occur. Wait until the update has completed before
 [validating the disk encryption disablement](#validate).
