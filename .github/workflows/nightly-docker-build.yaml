@@ -68,7 +68,7 @@ jobs:
           tags: ghcr.io/${{ github.repository }}:nightly
           labels: ${{ steps.meta.outputs.labels }}
 
-      - uses: sigstore/cosign-installer@v3.6.0
+      - uses: sigstore/cosign-installer@v3.7.0
 
       - name: Image Signing
         run: |
