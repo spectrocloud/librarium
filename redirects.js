@@ -567,7 +567,7 @@ const redirects = [
   },
   {
     from: "/clusters/cluster-management/noc-ui/",
-    to: "/clusters/cluster-management/cluster-map-filter/",
+    to: "/clusters/cluster-management/cluster-map-filters/",
   },
   {
     from: [
