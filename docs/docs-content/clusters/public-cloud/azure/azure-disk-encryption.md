@@ -9,25 +9,23 @@ tags: ["public cloud", "azure", "encryption", "security"]
 sidebar_position: 12
 ---
 
-Palette supports disk encryption of your Azure Kubernetes cluster using Disk Encryption Sets with
-[customer-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#customer-managed-keys).
+Palette supports disk encryption of your Azure Kubernetes cluster using
+[Disk Encryption Sets with customer-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#customer-managed-keys).
 
 By default, Azure encrypts all managed disks with
 [platform-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#platform-managed-keys),
 however, customer-managed keys enable you to have greater control over your key management.
 
-You can use Disk Encryption Sets to encrypt your nodes' Operating System (OS) and data disks by including a preset
-option in the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" />
+You can use Disk Encryption Sets to encrypt your nodes' Operating System (OS) and data disks by selecting a preset in the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" />
 pack.
 
 ## Limitations
 
-- Azure Disk Encryption is available from [4.5.a](../../../release-notes/release-notes.md) onwards.
 
 - Azure Disk Encryption is only supported on Azure IaaS clusters.
 
+  <!-- prettier-ignore -->
 - Azure Disk Encryption is only supported when using the
-
   <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack.
 
 - If a key expires in your Key Vault, your cluster may experience operation failures. To resolve this, generate a new
@@ -45,12 +43,11 @@ pack.
 
 ## Prerequisites
 
-- To create the Azure Key Vault and Disk Encryption Set, you will need an Azure user account with the **Contributor** or
-  **Owner** role on the resource group or subscription.
+- An Azure user account with the **Contributor** or **Owner** role to create the Azure Key Vault and Disk Encryption Set.
 
-- Create an
+- An
   [Azure Key Vault](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-azure-key-vault)
-  with the following necessary configuration:
+  with the following configuration:
 
   - Resource access:
 
@@ -59,9 +56,8 @@ pack.
   - Purge protection:
     - :white_check_mark: **Enable purge protection**
 
-- Create a
-  [Disk Encryption Set](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-disk-encryption-set)
-  with the encryption type as **Encryption at-rest with a customer-managed key**.
+- A [Disk Encryption Set](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-disk-encryption-set)
+  with the encryption type set to **Encryption at-rest with a customer-managed key**.
 
 - In the Azure Key Vault, assign the following
   [access policies](https://learn.microsoft.com/en-us/azure/key-vault/general/assign-access-policy?tabs=azure-portal) to
@@ -98,11 +94,11 @@ Use the following steps to enable disk encryption on a
 
 6. Select your base OS pack and configure it to your liking. Select **Next layer** when complete.
 
-7. Select the **Palette eXtended Kubernetes** pack as your base Kubernetes pack.
+7. Select the **Palette eXtended Kubernetes** pack as your Kubernetes pack.
 
 8. In **Configure Pack**, select **Values** in pack details, and click the **\</\>** button to show the YAML editor.
 
-9. On the right-hand side, click the **Presets** drop-down menu, and select the **Enable Encryption Using
+9. On the right-hand side, click the **Presets** drop-down Menu, and select the **Enable Encryption Using
    Customer-Managed Key** option.
 
 10. Scroll to the bottom of the YAML editor to view the additional configuration that was added.
@@ -136,7 +132,7 @@ Use the following steps to enable disk encryption on a
     ```yaml
     cloud:
       azure:
-        diskEncryptionSetID: "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Compute/diskEncryptionSets/<diskEncryptionSet>"
+        diskEncryptionSetID: "/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet"
     ```
 
 12. Make any other changes that you need and click **Next layer**.
@@ -211,7 +207,7 @@ Use the following steps to enable disk encryption on an
    ```yaml
    cloud:
      azure:
-       diskEncryptionSetID: "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Compute/diskEncryptionSets/<diskEncryptionSet>"
+       diskEncryptionSetID: "/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet"
    ```
 
 10. Click **Confirm updates**.
@@ -261,7 +257,7 @@ Use the following steps to disable disk encryption on an
 
 4. Create a new version of your cluster profile:
 
-   1. Click the version drop-down menu next to the cluster profile name, and click **Create new version**.
+   1. Click the version **drop-down Menu** next to the cluster profile name, and click **Create new version**.
    2. Fill the **Version** field with a new version number.
    3. Click **Confirm**.
 
@@ -308,7 +304,7 @@ Your cluster will now update and a full cluster repave will occur. Wait until th
 
 ### Validate after Enablement
 
-Follow these steps to validate enablement of customer-managed key encryption on your Azure VM disks.
+Follow these steps to validate the enablement of customer-managed key encryption on your Azure VM disks.
 
 1. Log in to the [Azure Portal](https://portal.azure.com/).
 
@@ -322,11 +318,11 @@ Follow these steps to validate enablement of customer-managed key encryption on 
 5. Scroll down to view the **Properties** tab and check that the **Encryption** section shows **Customer-managed key**
    for **Encryption type**. Your Disk Encryption Set name is also shown for the **Encryption key**.
 
-6. Repeat steps 4-5 for each disk in your cluster.
+6. Repeat steps 4 and 5 for each disk in your cluster.
 
 ### Validate after Disablement
 
-Follow these steps to validate disablement of customer-managed key encryption on your Azure VM disks.
+Follow these steps to validate the disablement of customer-managed key encryption on your Azure VM disks.
 
 1. Log in to the [Azure Portal](https://portal.azure.com/).
 
@@ -340,7 +336,7 @@ Follow these steps to validate disablement of customer-managed key encryption on
 5. Scroll down to view the **Properties** tab and check that the **Encryption** section shows **Platform-managed key**
    for **Encryption type**.
 
-6. Repeat steps 4-5 for each disk in your cluster.
+6. Repeat steps 4 and 5 for each disk in your cluster.
 
 ## Resources
 
