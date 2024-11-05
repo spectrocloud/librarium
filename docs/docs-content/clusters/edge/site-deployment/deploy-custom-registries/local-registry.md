@@ -164,12 +164,12 @@ profile.
 
 ### Save Profile and Deploy Cluster
 
-8. Click **Save Changes**.
+11. Click **Save Changes**.
 
-9. Deploy a new Edge cluster with your updated profile. Or, if you have an active cluster, update the cluster to use the
-   new version of the cluster profile. The initial download of the images will require a connection to the external
-   network as the images are sourced from the original repository. Subsequent image pulls are sourced from the local
-   Harbor registry.
+12. Deploy a new Edge cluster with your updated profile. Or, if you have an active cluster, update the cluster to use
+    the new version of the cluster profile. The initial download of the images will require a connection to the external
+    network as the images are sourced from the original repository. Subsequent image pulls are sourced from the local
+    Harbor registry.
 
 ## Validation
 

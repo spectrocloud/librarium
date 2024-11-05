@@ -170,6 +170,85 @@ docker push 10.10.137.220:30003/spectro-images/alpine:latest
   </TabItem>
   </Tabs>
 
+## Add Additional Projects in Harbor
+
+Harbor organizes repositories by project. As a best practice, a project in Harbor should contain all repositories of an
+application. When you use the Harbor pack in a cluster, a project named **spectro-images** is created by default. You
+can follow the steps below to create additional projects.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, navigate to **Profiles**. Select the profile you use to deploy the cluster with Harbor.
+
+3. Select the Harbor layer of the cluster profile.
+
+4. Click **New manifest** to add a manifest. Give your manifest a name such as **create-harbor-project**.
+
+5. Use the following job definition in your new manifest. The manifest executes a job that calls the Harbor API to
+   create a new project. Replace `projectName` with the name you want to give to your new project.
+
+   ```yaml {27}
+   apiVersion: batch/v1
+   kind: Job
+   metadata:
+   name: harbor-project
+   spec:
+      backoffLimit: 1
+      template:
+         spec:
+            restartPolicy: Never
+            containers:
+               - name: harbor-project
+               image: gcr.io/spectro-dev-public/edge/alpine-curl:v1
+               command: ["/bin/sh", "-c"]
+               env:
+               - name: HARBOR_USERNAME
+                 valueFrom:
+                   secretKeyRef:
+                     name: registry-info
+                     key: SPECTRO_USER
+               - name: HARBOR_PASSWORD
+                 valueFrom:
+                   secretKeyRef:
+                     name: registry-info
+                     key: SPECTRO_USER_PASSWORD
+               args:
+                  - |
+                     PROJECT_NAME=<projectName> # Update this name to the project you want to create
+                     echo "Creating a new project in Harbor: $PROJECT_NAME"
+
+                     # Create a new project in Harbor
+                     curl -k -u $HARBOR_USERNAME:$HARBOR_PASSWORD -X POST "https://harbor.harbor.svc.cluster.local/api/v2.0/projects" \
+                     -H "Content-Type: application/json" \
+                     -H 'accept: application/json' \
+                     -H 'X-Resource-Name-In-Location: false' \
+                     -d '{
+                        "project_name": "'$PROJECT_NAME'",
+                        "public": true,
+                        "metadata": {
+                           "public": "true"
+                        }
+                     }'
+                     sleep 100
+                     echo "Created project $PROJECT_NAME in Harbor!"
+   ```
+
+   :::info
+
+   You can use the same approach to make changes the your Harbor registry using any Harbor API endpoint. If you have an
+   active cluster with Harbor, you can view all the available API endpoints at
+   `https://<nodeIP>:30003/devcenter-api-2.0`. Replace `nodeIP` with the IP address of any node in the cluster.
+
+   :::
+
+6. Click **Confirm Updates**.
+
+7. Click **Save Changes**.
+
+8. Use the newly updated cluster profile to deploy a new cluster, or update an existing cluster to use the new profile.
+   For more information, refer to [Create Cluster Definition](../clusters/edge/site-deployment/cluster-deployment.md)
+   and [Update a Cluster](../clusters/cluster-management/cluster-updates.md).
+
 ## Enable Image Download from Outside of Harbor
 
 If a cluster is configured with the Harbor Edge-Native Config pack, it will assume that all images will be stored in
