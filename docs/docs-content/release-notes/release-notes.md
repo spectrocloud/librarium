@@ -22,13 +22,19 @@ tags: ["release-notes"]
   about creating a new cluster group in the
   [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide.
 
+- The internal machine templates of Nutanix clusters have been updated to improve future capabilities. The change
+  impacts active Nutanix clusters and requires a re-deployment. New Nutanix clusters will automatically use the updated
+  machine template. Refer to the
+  [Create and Manage Nutanix Cluster](../clusters/data-center/nutanix/create-manage-nutanix-cluster.md) guide for
+  guidance on deploying a Nutanix cluster.
+
 #### Features
 
 - Palette now supports Azure Disk Encryption for IaaS clusters deployed to Azure. This feature allows you to leverage
   [Azure Key Vault](https://azure.microsoft.com/en-us/products/key-vault) for end-to-end encryption for Azure disks
   attached to your IaaS clusters deployed to Azure. Refer to the
-  [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) guide to learn more
-  about this feature.
+  [Azure Disk Encryption](../clusters/public-cloud/azure/azure-disk-encryption.md) guide to learn more about this
+  feature.
 
 - You can now add Edge clusters to Cluster Groups. This feature allows you to use Edge clusters to host virtual clusters
   in Cluster Groups. Check out the
@@ -114,6 +120,25 @@ tags: ["release-notes"]
 | RKE2 - Edge | 1.28.14     |
 | RKE2 - Edge | 1.29.9      |
 | RKE2 - Edge | 1.30.5      |
+
+#### CSI
+
+| Pack Name  | New Version |
+| ---------- | ----------- |
+| Azure CSI  | 1.30.5      |
+| GCP Driver | 1.15.1      |
+| Rook Ceph  | 1.15.3      |
+
+#### Add-on Packs
+
+| Pack Name                    | New Version |
+| ---------------------------- | ----------- |
+| AWS Application Loadbalancer | 2.9.1       |
+| AWS Cluster Autoscaler       | 1.30.0      |
+| Kong                         | 2.42.0      |
+| Prometheus - Grafana         | 65.3.1      |
+| Reloader                     | 1.1.0       |
+| Volume-Snapshot-controller   | 8.1.0       |
 
 #### FIPS Packs
 
