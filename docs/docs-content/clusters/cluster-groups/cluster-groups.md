@@ -15,10 +15,6 @@ users to deploy Palette virtual clusters. Downstream consumers can use the clust
 You can create a cluster group under the Palette [tenant](../../glossary-all.md#tenant) scope. Alternatively, you can
 create a cluster group at the [project](../../tenant-settings/projects/projects.md) scope.
 
-By default, Palette exposes a managed cluster group called _beehive_ that is available for users in app mode. This
-cluster group is managed by Palette and falls under the free tier. The beehive cluster group is located in the eastern
-side of the U.S.
-
 You can create a cluster group that is made up of various types of host clusters. You could create a cluster group by
 similar cloud providers, Kubernetes versions, or by location. You have the flexibility to define the grouping criteria.
 The following image displays a cluster group comprised of various host clusters deployed in a public cloud, private

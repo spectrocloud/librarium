@@ -34,13 +34,146 @@ listed in alphabetical order.
 | `stylus.installationMode`      | Allowed values are `connected` and `airgap`. Default value is `connected`. `connected` means that the Edge host has a connection to Palette; `airgap` means it does not have a connection to Palette.      | `connected` |
 | `stylus.localUI.port`          | Specifies the port that Local UI is exposed on.                                                                                                                                                            | 5080        |
 | `stylus.site`                  | Review Site Parameters for more information.                                                                                                                                                               |             |
-| `stylus.registryCredentials`   | Review [External Registry Parameters](#external-registry-parameters) for more information.                                                                                                                 | None        |
+| `stylus.externalRegistries`    | Use this parameter to configure multiple external registries and to apply domain re-mapping rules. Review [External Registry Parameters](#multiple-external-registries) for more information.              | None        |
+| `stylus.registryCredentials`   | Only used when a single external registry in use and no mapping rules are needed. Review [Single External Registry](#single-external-registry) for more information.                                       | None        |
 | `stylus.trace`                 | Enable this parameter to display trace output. Allowed values are `true` or `false`.                                                                                                                       | `False`     |
 
-### External Registry Parameters
+### Multiple External Registries
+
+You can configure multiple external registries by using the `stylus.externalRegistries` parameter object. You can also
+apply domain mapping rules to map domain names to external registries.
+
+If you are using an external registry and want to use content bundles when deploying your Edge cluster, you must also
+enable the local Harbor registry. For more information, refer to
+[Build Content Bundles](../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
+[Enable Local Harbor Registry](../site-deployment/deploy-custom-registries/local-registry.md).
+
+Review the following parameters to configure external registries.
+
+| Parameter                                        | Description                                                                                                                                       | Default |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `stylus.externalRegistries.registries`           | A list of external registries. Refer to [Registry Parameters](#registry-parameters) for more details.                                             | None    |
+| `stylus.externalRegistries.registryMappingRules` | A list of key-pair rules to map domain names to external registries. Refer to [Registry Mapping Rules](#registry-mapping-rules) for more details. | None    |
+
+#### Registry Parameters
+
+The `stylus.externalRegistries.registries` block accepts the following parameters.
+
+| Parameter         | Description                                                         | Default |
+| ----------------- | ------------------------------------------------------------------- | ------- |
+| `domain`          | The domain of the registry.                                         | None    |
+| `username`        | The username to authenticate with the registry.                     | None    |
+| `password`        | The password to authenticate with the registry.                     | None    |
+| `repositoryName`  | The name of the repository within the registry.                     | None    |
+| `certificates`    | A list of certificates in PEM format to use to access the registry. | None    |
+| `insecure`        | Whether to allow insecure connections to the registry.              | `False` |
+| `encodedPassword` | Whether the password is base64 encoded.                             | `False` |
+
+Below is an example of how to configure an external registry.
+
+```yaml
+stylus:
+  externalRegistries:
+    registries:
+      - domain: "example.registry.com/internal-images"
+        username: "admin"
+        password: "***************"
+        repositoryName: example-repository-private
+        certificates:
+          - |
+            -----BEGIN CERTIFICATE-----
+            MIIENDCCAxygAwIBAgIUSdnFq4anqjgKf2iRX2RP65LYpkwwDQYJKoZIhvcNAQEL
+            BQAwfzEpMCcGA1UEAwwgc2hydXRoaS1haXJnYXAyLnNwZWN0cm9jbG91ZC5kZXYx
+            FTATBgNVBAoMDFNwZWN0cm9DbG91ZDELMAkGA1UECwwCSVQxFDASBgNVBAcMC1Nh
+            bnRhIENsYXJhMQswCQYDVQQIDAJDQTELMAkGA1UEBhMCVVMwHhcNMjQwMTExMDkz
+            ODUzWhcNMzQwMTA4MDkzODUzWjB/MSkwJwYDVQQDDCBzaHJ1dGhpLWFpcmdhcDIu
+            c3BlY3Ryb2Nsb3VkLmRldjEVMBMGA1UECgwMU3BlY3Ryb0Nsb3VkMQswCQYDVQQL
+            DAJJVDEUMBIGA1UEBwwLU2FudGEgQ2xhcmExCzAJBgNVBAgMAkNBMQswCQYDVQQG
+            EwJVUzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANcPucLatrCHmR+o
+            h6pIReisVxbJI0jqlVfive+mDp64Z3aXbzlX634chbyjd6G8xmZXH0beIZE91yGD
+            42atamrqDSADcZRvjUmqGzf/nrm3sOCHOKNMvMFZJ0uGFjwuwxIDf91+Vgj0FZRe
+            j+nVRI3XQyAdJXP6sls8vu8bHk6RDMLYb+IzMWzFuPGDUv3fU41a3dijVfMxt6hj
+            MdoUe6wzTr46ylUgm5rB/SKrMcg41ZNFcqYLhHt6KsS/0G8hjrvo7d+BeNcxf6GP
+            xOWyimdq18suHqFQ82ieCxB8gR2Ig15ch8UG1p95JbVMjzLTi3tgU9EARuftsUK9
+            spdn2cUCAwEAAaOBpzCBpDAdBgNVHQ4EFgQUDVk6cnlax94aPm3F+fubzHj8vaIw
+            HwYDVR0jBBgwFoAUDVk6cnlax94aPm3F+fubzHj8vaIwDwYDVR0TAQH/BAUwAwEB
+            /zA8BgNVHREENTAzgglsb2NhbGhvc3SHBH8AAAGCIHNocnV0aGktYWlyZ2FwMi5z
+            cGVjdHJvY2xvdWQuZGV2MBMGA1UdJQQMMAoGCCsGAQUFBwMBMA0GCSqGSIb3DQEB
+            CwUAA4IBAQATfu3drGJkmFD58KvUKuOhAY28TpVquH63W40JchVjhtOmg+WHfPIE
+            8dvYYKiZtrpFZDUcAVtn/KJIZoNbq51o7mWj/rl6W5pcajBLoqcvlDH0zXzVgF+f
+            +gj68SMegHwp+EO/dK9LfLp2bxNuBPCnvLj3eMs0HCdmZW1uzVm71YIXTSXwgm/2
+            nMnI5ELi2kuufCZh5wQxr7km+qZgTteaZI2h+YNU88m/SreRFHfBP8QRfkqTumfW
+            Sz3rWOQ93KXO/CEk+XySnVFgS+JdGtpmRalOfGeJ0Kk8hraX3h/2KkD0Vd99DIMN
+            DlN636dYFSJBG3LjGuzyO66kEvbGJAIT
+            -----END CERTIFICATE-----
+    registryMappingRules:
+      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+      "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
+      "grc.io/spectro-dev-public": "example.registry.com/internal-images"
+      "grc.io/spectro-images-public": "example.registry.com/internal-images"
+```
+
+#### Registry Mapping Rules
+
+Use registry mapping rules to map a domain name to an external registry. The `registryMappingRules` parameter accepts a
+list of key-value pairs where the key is the domain name and the value is URL mapping to the external registry.
+
+Below is an example of registry mapping rules. The registry in the code snippet, `example.registry.com/internal-images`
+is assumed to contain the images that are mapped from the external registries.
+
+```yaml
+stylus:
+  externalRegistries:
+    registries:
+      - domain: "example.registry.com/internal-images"
+        repositoryName: "primary-registry"
+        username: "admin"
+        password: "***************"
+    registryMappingRules:
+      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+      "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
+      "grc.io/spectro-dev-public": "example.registry.com/internal-images"
+      "grc.io/spectro-images-public": "example.registry.com/internal-images"
+```
+
+##### Airgap Environment
+
+In an airgap environment, use the `registryMappingRules` parameter to map domain names to external registries that were
+downloaded when creating the [content bundle](../edgeforge-workflow/palette-canvos/build-content-bundle.md).
+
+:::info
+
+<!-- prettier-ignore -->
+Palette will automatically update the image path when <VersionedLink text="Harbor Edge-Native Config" url="/integrations/packs/?pack=harbor-edge-native-config" />  pack is enabled. For example, if you have a registry mapping rule such as the following.
+
+```yaml
+"us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+```
+
+Then the image tag will be updated with the prefix URL to the Harbor registry, such as
+`https://10.10.100.45:30003/example.registry.com/internal-images`. Palette will do this for all registry mapping rules
+specified in the user data. This allows the Edge host to find and pull images that came from an external registry
+through the local Harbor registry.
+
+:::
+
+```yaml
+stylus:
+  installationMode: airgap
+  externalRegistries:
+    registryMappingRules:
+      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+      "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
+      "grc.io/spectro-dev-public": "example.registry.com/internal-images"
+      "grc.io/spectro-images-public": "example.registry.com/internal-images"
+```
+
+### Single External Registry
 
 You can point the Edge Installer to a non-default registry to load content from another source. Use the
-`registryCredentials` parameter object to specify the registry configurations.
+`registryCredentials` parameter object to specify the registry configurations. If you have multiple external registries,
+use the `stylus.externalRegistries` parameter object instead. Refer to the
+[Multiple External Registries](#multiple-external-registries) section for more information.
 
 If you are using an external registry and want to use content bundles when deploying your Edge cluster, you must also
 enable the local Harbor registry. For more information, refer to
@@ -70,7 +203,7 @@ The `stylus.site` blocks accept the following parameters.
 
 | Parameter                        | Description                                                                                                                                                                                                                                                  | Default |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
-| `stylus.site.caCerts`            | The Secure Sockets Layer (SSL) certificate authority (CA) certificates.                                                                                                                                                                                      |         |
+| `stylus.site.caCerts`            | The Secure Sockets Layer (SSL) Certificate Authority (CA) certificates. The certificates must be base64-encoded.                                                                                                                                             |         |
 | `stylus.site.clusterId`          | The ID of the host cluster the edge host belongs to.                                                                                                                                                                                                         |         |
 | `stylus.site.clusterName`        | The name of the host cluster the edge host belongs to.                                                                                                                                                                                                       |         |
 | `stylus.site.deviceUIDPaths`     | Specify the file path for reading in product or board serial that can be used to set the device ID. The default file path is **/sys/class/dmi/id/product_uuid**. Refer to the [Device ID (UID) Parameters](#device-id-uid-parameters) section to learn more. |         |

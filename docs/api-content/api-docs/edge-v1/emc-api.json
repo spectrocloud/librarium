@@ -49,12 +49,13 @@
         }
       },
       "patch": {
-        "description": "Updates a cluster with the provided cluster configuration",
+        "description": "DEPRECATED - This endpoint is deprecated and will be removed in future versions. Use /v1/edge-mgmt/cluster/{clusterName} instead",
         "tags": [
           "edge-mgmt"
         ],
-        "summary": "Updates a cluster with the provided cluster configuration",
-        "operationId": "v1UpdateCluster",
+        "summary": "DEPRECATED - This endpoint is deprecated and will be removed in future versions. Use /v1/edge-mgmt/cluster/{clusterName} instead",
+        "operationId": "v1PatchCluster",
+        "deprecated": true,
         "parameters": [
           {
             "name": "body",
@@ -395,6 +396,86 @@
             "description": "generic error response",
             "schema": {
               "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/{clusterName}": {
+      "put": {
+        "description": "Updates a cluster with the provided cluster configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Updates a cluster with the provided cluster configuration",
+        "operationId": "v1UpdateClusterConfig",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Name of the cluster to be updated",
+            "name": "clusterName",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterConfiguration"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "description": "Patch a cluster with the provided cluster configuration",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Patch a cluster with the provided cluster configuration",
+        "operationId": "v1PatchClusterConfig",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Name of the cluster to be patched",
+            "name": "clusterName",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterPatch"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
             }
           }
         }
@@ -2048,6 +2129,17 @@
         }
       }
     },
+    "v1ClusterPatch": {
+      "type": "object",
+      "properties": {
+        "clusterConfigPatches": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1HttpPatch"
+          }
+        }
+      }
+    },
     "v1ClusterProfileConfiguration": {
       "description": "v1ClusterProfileConfiguration is the configuration required to update a cluster's profiles.",
       "type": "object",
@@ -3060,6 +3152,32 @@
             "Healthy",
             "Unhealthy"
           ]
+        }
+      }
+    },
+    "v1HttpPatch": {
+      "type": "object",
+      "required": [
+        "op",
+        "path"
+      ],
+      "properties": {
+        "op": {
+          "description": "The operation to be performed",
+          "type": "string",
+          "enum": [
+            "add",
+            "remove",
+            "replace"
+          ]
+        },
+        "path": {
+          "description": "A path to the pointer on which operation will be done",
+          "type": "string"
+        },
+        "value": {
+          "description": "The value to be used within the operations.",
+          "type": "object"
         }
       }
     },
