@@ -13,10 +13,10 @@ centers and edge hosts.
 
 ## Cluster List View
 
-Palette provides a **Cluster List View** as an efficient way to view and search your clusters. The cluster list contains
-all Palette clusters deployed in the selected Palette project. The list view also provides filters that allow you to
-narrow down clusters that may be dispersed geographically, across multiple scopes, or different cloud providers. You can
-also search your clusters by name.
+Palette provides the **Cluster List View** as an efficient way to view and search your clusters. The cluster list
+contains all Palette clusters deployed in the selected Palette scope. The list view also provides filters that allow you
+to narrow down clusters that may be dispersed geographically, across multiple regions, or different cloud providers. You
+can also search your clusters by name.
 
 ### Prerequisites
 
@@ -29,14 +29,14 @@ also search your clusters by name.
 
 1. Login to [Palette](https://console.spectrocloud.com).
 
-2. Select **Clusters** from the left **Main Menu**. All the clusters deployed in your selected Palette project appear in
+2. Select **Clusters** from the left **Main Menu**. All the clusters deployed in your selected Palette scope appear in
    the clusters list. The list filters appear at the top of the map. You can filter your clusters by the following
    characteristics.
 
    | **Filter**      | **Description**                                                                  | **Values**                                                                               |
    | --------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
    | **Name**        | Filter and display the cluster matching the specified name.                      | Custom string                                                                            |
-   | **Environment** | Filter and display deployed clusters based on the cluster type.                  | Configured cluster types                                                                 |
+   | **Environment** | Filter and display clusters based on the cluster type.                           | Configured cluster types                                                                 |
    | **Status**      | Filter and display clusters based on their current status.                       | **Pending**, **Provisioning**, **Running**, **Deleting**, **Importing**, and **Unknown** |
    | **Profiles**    | Filter and display clusters based on the name of the configured cluster profile. | Custom string                                                                            |
 
@@ -44,21 +44,22 @@ also search your clusters by name.
 
 3. Click on the **Environment** drop-down list and select a cluster type. The cluster list displays matching clusters.
 
-4. Click on the **Status** drop-down list and select **Running** status. The cluster list displays clusters matching the
-   selected cluster type and status. You can combine as many filters as you require.
+4. Click on the **Status** drop-down list and select the **Running** status. The cluster list displays clusters matching
+   the selected cluster type and status. You can combine as many filters as you require. Only clusters that satisfy all
+   filter requirements are displayed.
 
-5. Click on **Clear All**. The filters are removed and the cluster list displays all clusters.
+5. Click on **Clear All**. The filters are removed and the cluster list displays all clusters in your selected scope.
 
 6. Enter a cluster profile name in the **Profiles** field. The cluster list displays all clusters deployed with the
    specified cluster profile.
 
-7. Click on **Clear All**. The filters are removed and the cluster list displays all clusters.
+7. Click on **Clear All**. The filters are removed and the cluster list displays all clusters in your selected scope.
 
 8. Enter a cluster name in the **Search** field. The cluster list displays the cluster matching the specified name.
    Select the row of the matching cluster. The cluster details appear in the **Overview** tab of the selected cluster.
 
-9. Select **Clusters** from the left **Main Menu**. All the clusters deployed in your selected Palette project appear in
-   the clusters list. Click on the **Filter** button. The **All Filters** pane appears.
+9. Select **Clusters** from the left **Main Menu**. All the clusters deployed in your selected scope appear in the
+   clusters list. Click on the **Filter** button. The **All Filters** pane appears.
 
    ![Cluster All Filters pane](/clusters_cluster-management_cluster-map-filters_cluster-all-filters.webp)
 
@@ -83,13 +84,14 @@ also search your clusters by name.
    | **Region**          | Filter and display clusters based on the cluster location region                                                                                                                                        | Any region where a cluster is deployed                                                   |
    | **Projects**        | Filter and display clusters based on the project they are deployed to. This filter is only available in tenant scope.                                                                                   | Any project belonging to this tenant                                                     |
 
-   You can combine as many filters as you require. Only clusters that satisfy all filter requirements are displayed.
+   Just as with the list view filters, you can combine as many filters as you require and only clusters that satisfy all
+   filter requirements are displayed.
 
 ## Clusters Map View
 
 Palette provides a **Clusters Map View** as an alternative way to visualize and search your clusters. The map is
-constructed based on the configured cluster location and configured region. The map view provides filters that allow you
-to filter and search through your deployed clusters. You can also search your clusters by name.
+constructed based on the configured cluster location and region. The map view provides filters that allow you to filter
+and search through your deployed clusters. You can also search your clusters by name.
 
 ### Prerequisites
 
@@ -127,7 +129,7 @@ to filter and search through your deployed clusters. You can also search your cl
    | **Filter**      | **Description**                                                                  | **Values**                                                                               |
    | --------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
    | **Name**        | Filter and display the cluster matching the specified name.                      | Custom string                                                                            |
-   | **Environment** | Filter and display deployed clusters based on the cluster type.                  | Configured cluster types                                                                 |
+   | **Environment** | Filter and display clusters based on the cluster type.                           | Configured cluster types                                                                 |
    | **Status**      | Filter and display clusters based on their current status.                       | **Pending**, **Provisioning**, **Running**, **Deleting**, **Importing**, and **Unknown** |
    | **Profiles**    | Filter and display clusters based on the name of the configured cluster profile. | Custom string                                                                            |
 
@@ -136,7 +138,8 @@ to filter and search through your deployed clusters. You can also search your cl
 4. Click on the **Environment** drop-down list and select a cluster type. The map displays matching clusters.
 
 5. Click on the **Status** drop-down list and select **Running** status. The map displays clusters matching the selected
-   cluster type and status. You can combine as many filters as you require.
+   cluster type and status. You can combine as many filters as you require. Only clusters that satisfy all filter
+   requirements are displayed.
 
 6. Click on **Clear All**. The filters are removed and the map displays all clusters.
 
