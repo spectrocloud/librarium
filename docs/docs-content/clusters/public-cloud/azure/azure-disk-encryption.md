@@ -16,16 +16,17 @@ By default, Azure encrypts all managed disks with
 [platform-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#platform-managed-keys),
 however, customer-managed keys enable you to have greater control over your key management.
 
-You can use Disk Encryption Sets to encrypt your nodes' Operating System (OS) and data disks by selecting a preset in the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" />
-pack.
+You can use Disk Encryption Sets to encrypt your nodes' Operating System (OS) and data disks by selecting a preset in
+the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack.
 
 ## Limitations
-
 
 - Azure Disk Encryption is only supported on Azure IaaS clusters.
 
   <!-- prettier-ignore -->
+
 - Azure Disk Encryption is only supported when using the
+
   <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack.
 
 - If a key expires in your Key Vault, your cluster may experience operation failures. To resolve this, generate a new
@@ -43,7 +44,8 @@ pack.
 
 ## Prerequisites
 
-- An Azure user account with the **Contributor** or **Owner** role to create the Azure Key Vault and Disk Encryption Set.
+- An Azure user account with the **Contributor** or **Owner** role to create the Azure Key Vault and Disk Encryption
+  Set.
 
 - An
   [Azure Key Vault](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-azure-key-vault)
@@ -56,7 +58,8 @@ pack.
   - Purge protection:
     - :white_check_mark: **Enable purge protection**
 
-- A [Disk Encryption Set](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-disk-encryption-set)
+- A
+  [Disk Encryption Set](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-disk-encryption-set)
   with the encryption type set to **Encryption at-rest with a customer-managed key**.
 
 - In the Azure Key Vault, assign the following
