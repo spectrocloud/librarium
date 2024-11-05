@@ -209,7 +209,8 @@ Performing these steps will cause a
 
 3. From the left **Main Menu**, select **Profiles** and click the cluster profile that you want to edit.
 
-4. Create a new version of your cluster profile. Click the version **drop-down Menu** next to the cluster profile name, and click **Create new version**.
+4. Create a new version of your cluster profile. Click the version **drop-down Menu** next to the cluster profile name,
+   and click **Create new version**.
 
 5. Fill the **Version** field with a new version number.
 
@@ -219,8 +220,8 @@ Performing these steps will cause a
 
 8. In **Values**, click the **\</\>** button to show the YAML editor.
 
-9.  On the right-hand side, click the **Presets drop-down Menu**, and select the **Enable Encryption Using
-    Customer-Managed Key** option.
+9. On the right-hand side, click the **Presets drop-down Menu**, and select the **Enable Encryption Using
+   Customer-Managed Key** option.
 
 10. Scroll to the bottom of the YAML editor to view the additional configuration that was added.
 
@@ -319,7 +320,8 @@ Performing these steps will cause a
 
 3. From the left **Main Menu**, select **Profiles** and click the cluster profile that you want to edit.
 
-4. Create a new version of your cluster profile. Click the version **drop-down Menu** next to the cluster profile name, and click **Create new version**.
+4. Create a new version of your cluster profile. Click the version **drop-down Menu** next to the cluster profile name,
+   and click **Create new version**.
 
 5. Fill the **Version** field with a new version number.
 
@@ -329,8 +331,8 @@ Performing these steps will cause a
 
 8. In **Values**, click the **\</\>** button to show the YAML editor.
 
-9.  On the right-hand side, click the **Presets drop-down Menu**, and select the **Disable Encryption Using
-    Customer-Managed Key** option.
+9. On the right-hand side, click the **Presets drop-down Menu**, and select the **Disable Encryption Using
+   Customer-Managed Key** option.
 
 10. Click **Confirm updates**.
 
