@@ -112,13 +112,13 @@ and search through your deployed clusters. You can also search your clusters by 
 
    <summary>Configure Cluster Location</summary>
 
-   Select the cluster to you want to update.
+   1. Select the cluster to you want to update.
 
-   Click on **Settings**. Then, select **Cluster Settings**. The **Settings** pane appears.
+   2. Click on **Settings**. Then, select **Cluster Settings**. The **Settings** pane appears.
 
-   Select the **Location** option. Search for the cluster location and click on **Save Changes**.
+   3. Select the **Location** option. Search for the cluster location and click on **Save Changes**.
 
-   Repeat these steps for all the clusters that are missing a location.
+   4. Repeat these steps for all the clusters that are missing a location.
 
    </details>
 
