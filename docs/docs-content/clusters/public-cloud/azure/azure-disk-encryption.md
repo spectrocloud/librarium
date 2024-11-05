@@ -16,15 +16,15 @@ By default, Azure encrypts all managed disks with
 [platform-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#platform-managed-keys),
 however, customer-managed keys enable you to have greater control over your key management.
 
-You can use Disk Encryption Sets to encrypt your nodes' Operating System (OS) and data disks by selecting a preset in
-the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack.
+You can use Disk Encryption Sets to encrypt your nodes' Operating System and data disks by selecting a preset in
+the <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack.
 
 ## Limitations
 
 - Azure Disk Encryption is only supported on Azure IaaS clusters.
 
 <!-- prettier-ignore -->
-- Azure Disk Encryption is only supported when using the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack.
+- Azure Disk Encryption is only supported when using the <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack.
 
 - If a key expires in your Key Vault, your cluster may experience operation failures. To resolve this, generate a new
   key in Key Vault and update your Disk Encryption Set to reference the new key.
@@ -37,7 +37,7 @@ the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/p
     [**Auto key rotation**](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys)
     on your Disk Encryption Set so it can automatically use new key versions from your Key Vault.
 
-- Changing the Disk Encryption Set URI (`diskEncryptionSetID`) in the Palette eXtended Kubernetes pack configuration in
+- Changing the Disk Encryption Set URI in the Palette eXtended Kubernetes pack configuration in
   Palette will trigger a node repave.
 
 ## New Cluster Profile
@@ -53,6 +53,8 @@ the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/p
   | Create Disk Encryption Set & Assign Key Vault Key                             | Key Vault Administrator                  |
   | Assign Key Vault Access Policies (GET, WRAP KEY, UNWRAP KEY)                  | Key Vault Crypto Service Encryption User |
   | (Optional) Assign User-Assigned Identity to Key Vault and Disk Encryption Set | Managed Identity Operator                |
+
+  For more information, see [Azure built-in roles for Key Vault data plane operations](https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide?tabs=azure-cli#azure-built-in-roles-for-key-vault-data-plane-operations).
 
 <!-- prettier-ignore -->
 - An [Azure Key Vault](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal#set-up-your-azure-key-vault)
@@ -148,7 +150,7 @@ Follow these steps to validate the enablement of customer-managed key encryption
 2. In the search bar, look for **Disks**. Click on the service when found.
 
 3. Find your cluster's disks by using the search filters provided. You can use the cluster name as the cluster resources
-   contain the cluster name at the beginning (for example: `<clusterName>-e3c0-f7ljd_OSDisk`).
+   contain the cluster name at the beginning, for example: `<clusterName>-e3c0-f7ljd_OSDisk`.
 
 4. Once identified, click on a disk name to view its details.
 
@@ -216,7 +218,7 @@ Performing these steps will cause a
 
 6. Click **Confirm**.
 
-7. Select the Kubernetes layer (Palette eXtended Kubernetes pack) to view the **Edit Pack** drawer.
+7. Select the Kubernetes layer to view the **Edit Pack** drawer.
 
 8. In **Values**, click the **\</\>** button to show the YAML editor.
 
@@ -286,7 +288,7 @@ Follow these steps to validate the enablement of customer-managed key encryption
 2. In the search bar, look for **Disks**. Click on the service when found.
 
 3. Find your cluster's disks by using the search filters provided. You can use the cluster name as the cluster resources
-   contain the cluster name at the beginning (for example: `<clusterName>-e3c0-f7ljd_OSDisk`).
+   contain the cluster name at the beginning, for example: `<clusterName>-e3c0-f7ljd_OSDisk`.
 
 4. Once identified, click on a disk name to view its details.
 
@@ -299,8 +301,8 @@ Follow these steps to validate the enablement of customer-managed key encryption
 
 ### Prerequisites
 
-- An Azure user account with access to view disks in your resource group where the cluster resources are created (for
-  example: **Reader** role).
+- An Azure user account with access to view disks in your resource group where the cluster resources are created, for
+  example, **Reader** role.
 
 ### Disable Disk Encryption
 
@@ -327,7 +329,7 @@ Performing these steps will cause a
 
 6. Click **Confirm**.
 
-7. Select the Kubernetes layer (**Palette eXtended Kubernetes** pack) to view the **Edit Pack** drawer.
+7. Select the Kubernetes layer to view the **Edit Pack** drawer.
 
 8. In **Values**, click the **\</\>** button to show the YAML editor.
 
@@ -363,7 +365,7 @@ Follow these steps to validate the disablement of customer-managed key encryptio
 2. In the search bar, look for **Disks**. Click on the service when found.
 
 3. Find your cluster's disks by using the search filters provided. You can use the cluster name as the cluster resources
-   contain the cluster name at the beginning (for example: `<clusterName>-e3c0-f7ljd_OSDisk`).
+   contain the cluster name at the beginning, for example: `<clusterName>-e3c0-f7ljd_OSDisk`.
 
 4. Once identified, click on a disk name to view its details.
 
