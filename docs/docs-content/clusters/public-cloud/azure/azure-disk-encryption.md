@@ -18,6 +18,7 @@ however, customer-managed keys enable you to have greater control over your key 
 
 <!-- prettier-ignore -->
 You can use Disk Encryption Sets to encrypt your nodes' Operating System and data disks by selecting a preset in the
+
 <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack.
 
 ## Limitations
