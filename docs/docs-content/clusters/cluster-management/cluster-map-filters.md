@@ -9,7 +9,7 @@ tags: ["clusters", "cluster management"]
 
 The Palette Dashboard provides users with the ability to map and filter Kubernetes clusters. You can find these
 capabilities on the **Clusters** page. Mapping and filtering is available for clusters deployed to public clouds, data
-centers and edge hosts.
+centers, and edge hosts.
 
 ## Cluster List View
 
@@ -27,7 +27,7 @@ can also search your clusters by name.
 
 ### Enablement
 
-1. Login to [Palette](https://console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. Select **Clusters** from the left **Main Menu**. All the clusters deployed in your selected Palette scope appear in
    the clusters list. The list filters appear at the top of the map. You can filter your clusters by the following
@@ -42,9 +42,9 @@ can also search your clusters by name.
 
    ![Cluster list view](/clusters_cluster-management_cluster-map-filters_cluster-list-view.webp)
 
-3. Click on the **Environment** drop-down list and select a cluster type. The cluster list displays matching clusters.
+3. Click on the **Environment** drop-down Menu and select a cluster type. The cluster list displays matching clusters.
 
-4. Click on the **Status** drop-down list and select the **Running** status. The cluster list displays clusters matching
+4. Click on the **Status** drop-down Menu and select the **Running** status. The cluster list displays clusters matching
    the selected cluster type and status. You can combine as many filters as you require. Only clusters that satisfy all
    filter requirements are displayed.
 
@@ -74,7 +74,7 @@ can also search your clusters by name.
    | **Environment**     | Filter and display deployed clusters based on the cluster type.                                                                                                                                         | Configured cluster types                                                                 |
    | **Status**          | Filter and display clusters based on their current status.                                                                                                                                              | **Pending**, **Provisioning**, **Running**, **Deleting**, **Importing**, and **Unknown** |
    | **Profiles**        | Filter and display clusters based on the name of the configured cluster profile.                                                                                                                        | Custom string                                                                            |
-   | **Tags**            | Filter and display clusters which have the specified tag. Tags can be specified during cluster deployment or from the **Cluster Settings** tab.                                                         | Custom string                                                                            |
+   | **Tags**            | Filter and display clusters with the specified tag. Tags can be specified during cluster deployment or from the **Cluster Settings** tab.                                                         | Custom string                                                                            |
    | **Health Status**   | Filter and display clusters based on their current health status.                                                                                                                                       | **Healthy** and **UnHealthy**                                                            |
    | **Cloud Account**   | Filter and display clusters based on the cloud account they are deployed to.                                                                                                                            | Configured cloud accounts                                                                |
    | **Repave Status**   | Filter and display clusters based on their repave status. Refer to the [Repave Behavior and Configuration](./node-pool.md#repave-behavior-and-configuration) section for further guidance.              | **Pending**                                                                              |
@@ -135,9 +135,9 @@ and search through your deployed clusters. You can also search your clusters by 
 
    ![Cluster map view](/clusters_cluster-management_cluster-map-filters_cluster-map-view.webp)
 
-4. Click on the **Environment** drop-down list and select a cluster type. The map displays matching clusters.
+4. Click on the **Environment** drop-down Menu and select a cluster type. The map displays matching clusters.
 
-5. Click on the **Status** drop-down list and select **Running** status. The map displays clusters matching the selected
+5. Click on the **Status** drop-down Menu and select **Running** status. The map displays clusters matching the selected
    cluster type and status. You can combine as many filters as you require. Only clusters that satisfy all filter
    requirements are displayed.
 
