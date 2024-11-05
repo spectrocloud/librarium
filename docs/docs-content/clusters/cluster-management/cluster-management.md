@@ -74,7 +74,7 @@ The following sections describe these capabilities in detail:
   exclude a cluster or a group of clusters from getting upgraded when Palette is upgraded and disable auto remediation
   of unhealthy cluster nodes.
 
-- [Map and Filter Clusters](cluster-map-view.md) - The Palette Dashboard provides users with the ability to map and
+- [Map and Filter Clusters](./cluster-map-filters.md) - The Palette Dashboard provides users with the ability to map and
   filter Kubernetes clusters. You can find these capabilities on the **Clusters** page. Mapping and filtering is
   available for clusters deployed to public clouds, data centers and edge hosts.
 
