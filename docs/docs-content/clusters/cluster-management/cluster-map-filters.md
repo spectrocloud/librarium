@@ -9,7 +9,7 @@ tags: ["clusters", "cluster management"]
 
 The Palette Dashboard provides users with the ability to map and filter Kubernetes clusters. You can find these
 capabilities on the **Clusters** page. Mapping and filtering is available for clusters deployed to public clouds, data
-centers, and edge hosts.
+centers, and Edge hosts.
 
 ## Cluster List View
 
