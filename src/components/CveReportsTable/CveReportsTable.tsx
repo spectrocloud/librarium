@@ -148,7 +148,16 @@ export default function CveReportsTable() {
       title: "Third Party Vulnerability",
       dataIndex: ["spec", "assessment", "thirdParty", "isDependentOnThirdParty"],
       key: "vulnerabilityType",
-      render: (record) => (record ? "Yes" : "No"),
+      sorter: (a, b) => {
+        const valueA = a.spec.assessment.thirdParty.isDependentOnThirdParty ? 1 : 0;
+        const valueB = b.spec.assessment.thirdParty.isDependentOnThirdParty ? 1 : 0;
+        return valueB - valueA; // Sort "Yes" (true) higher than "No" (false)
+      },
+      render: (isDependentOnThirdParty) => {
+        if (isDependentOnThirdParty === true) return "Yes";
+        if (isDependentOnThirdParty === false) return "No";
+        return "N/A"; // Display "N/A" if the value is missing
+      },
     },
     {
       title: "Third Party Package",
