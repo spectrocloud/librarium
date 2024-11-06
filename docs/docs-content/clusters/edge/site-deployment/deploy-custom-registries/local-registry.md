@@ -198,4 +198,16 @@ profile.
 
 7. In the **Projects** view, select the **spectro-images** project.
 
+<!-- prettier-ignore-start -->
+
+   :::info
+
+   Refer to
+   <VersionedLink text="Harbor Edge Native Config pack documentation" url="/integrations/packs/?pack=harbor-edge-native-config"/>  to 
+   learn how to create additional projects in your Harbor registry through your cluster profile.
+
+   :::
+
+<!-- prettier-ignore-end -->
+
 8. Confirm that all images required by the cluster are stored in the project.

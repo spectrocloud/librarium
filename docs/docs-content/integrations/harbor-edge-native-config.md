@@ -198,7 +198,7 @@ can follow the steps below to create additional projects.
          spec:
             restartPolicy: Never
             containers:
-               - name: harbor-project
+            - name: harbor-project
                image: gcr.io/spectro-dev-public/edge/alpine-curl:v1
                command: ["/bin/sh", "-c"]
                env:
