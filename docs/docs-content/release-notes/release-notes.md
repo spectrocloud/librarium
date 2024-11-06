@@ -36,11 +36,6 @@ tags: ["release-notes"]
   [Azure Disk Encryption](../clusters/public-cloud/azure/azure-disk-encryption.md) guide to learn more about this
   feature.
 
-- You can now add Edge clusters to Cluster Groups. This feature allows you to use Edge clusters to host virtual clusters
-  in Cluster Groups. Check out the
-  [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide to learn how to create a
-  Cluster Group.
-
 #### Improvements
 
 - The Palette SaaS login page has received a visual refresh. You can check out the new login page by visiting the
@@ -64,6 +59,11 @@ tags: ["release-notes"]
 ### Edge
 
 #### Features
+
+- You can now add Edge clusters to Cluster Groups. This feature allows you to use Edge clusters to host virtual clusters
+  in Cluster Groups. Check out the
+  [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide to learn how to create a
+  Cluster Group.
 
 <!-- prettier-ignore -->
 - You can now use manifests to customize <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor-edge-native-config" /> configurations for Edge
