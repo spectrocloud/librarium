@@ -48,6 +48,7 @@ jobs:
           name: "build-packs"
           path: |
             build/packs
-            build/packs-data
+            .docusaurus/packs-integration
+            .docusaurus/plugin-packs-integrations
           if-no-files-found: error
           retention-days: 7

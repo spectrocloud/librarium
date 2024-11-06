@@ -97,3 +97,24 @@ jobs:
       - name: Build
         run: |
           npm run build
+      
+      # - name: Download Packs Data
+      #   # if: ${{ failure() }} Put this on after testing
+      #   uses: Wandalen/wretry.action@v3
+      #   with: 
+      #     attempt_limit: 3
+      #     action: actions/download-artifact@v4
+      #     with: |
+      #       name: build-packs
+      #       path: build-packs
+      #     attempt_delay: 60000 # 1 minute
+
+      # - name: Unpack packs data
+      #   run: |
+      #     unzip build-packs.zip
+      #     mv packs-integration .docusaurus && mv plugin-packs-integrations .docusaurus && mv packs static/img/packs
+      #     rm -rf build-packs.zip 
+
+      # - name: Build
+      #   run: |
+      #     npm run build
