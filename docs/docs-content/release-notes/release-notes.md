@@ -61,13 +61,13 @@ tags: ["release-notes"]
 #### Features
 
 - You can now add Edge clusters to Cluster Groups. This feature allows you to use Edge clusters to host virtual clusters
-  in Cluster Groups. Check out the
-  [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide to learn how to create a
-  Cluster Group.
-
+in Cluster Groups. Check out the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md)
+guide to learn how to create a Cluster Group. s
 <!-- prettier-ignore -->
-- You can now use manifests to customize <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor-edge-native-config" /> configurations for Edge
-  clusters.
+- You can now add additional manifests to the
+  <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor-edge-native-config" /> pack that invoke the Harbor
+  API to customize the Harbor registry. This allows you to standardize custom Harbor configurations, such as creating
+  additional projects, in your cluster profile.
 
 #### Improvements
 
