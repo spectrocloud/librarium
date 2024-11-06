@@ -54,6 +54,12 @@ tags: ["release-notes"]
   [Helm Chart Configuration Reference](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md)
   to learn more about configuring image registry credentials.
 
+- A new cluster filter capability has been added to the Palette UI. The new filter experience provides several quick
+  filters out-of-the-box, such as filtering by cluster status, environment, cluster profile, architecture, and more. You
+  can find the new filter side drawer on the Clusters page. Refer to the
+  [Cluster Filters](../clusters/cluster-management/cluster-map-filters.md) guide to learn more about the new cluster
+  filters.
+
 ### Edge
 
 #### Features
