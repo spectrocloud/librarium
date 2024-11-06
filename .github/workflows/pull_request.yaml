@@ -100,22 +100,22 @@ jobs:
       
       - name: Download Packs Data
         # if: ${{ failure() }} Put this on after testing
-        uses: Wandalen/wretry.action@v3
-        with: 
-          attempt_limit: 3
-          action: actions/download-artifact@v4
-          with: |
-            name: build-packs
-            path: build-packs
-          attempt_delay: 60000 # 1 minute
+        run: |
+          run_id=$(gh run list --workflow="packs_upload.yaml" --limit 1 --json databaseId | jq -r '.[0].databaseId')
+          echo "GITHUB_RUN_ID=$run_id" >> $GITHUB_ENV
+          rm -rf ./downloaded_artifacts
+          gh run download ${run_id} --name build-packs --dir ./downloaded_artifacts
+        
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
       - name: Unpack packs data
         run: |
           mkdir build-packs
-          unzip build-packs.zip -d build-packs/
-          mv build-packs/.docusaurus/packs-integration .docusaurus/packs-integration 
-          mv build-packs/.docusaurus/plugin-packs-integrations .docusaurus && mv packs static/img/packs
-          rm -rf build-packs.zip 
+          mv downloaded_artifacts/.docusaurus/packs-integration .docusaurus/packs-integration 
+          mv downloaded_artifacts/.docusaurus/plugin-packs-integrations .docusaurus && mv downloaded_artifacts/build/packs static/img/packs
+          rm -rf downloaded_artifacts 
 
       - name: Build
         run: |
