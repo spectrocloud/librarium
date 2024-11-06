@@ -218,11 +218,11 @@ can follow the steps below to create additional projects.
                      echo "Creating a new project in Harbor: $PROJECT_NAME"
 
                      # Create a new project in Harbor
-                     curl -k -u $HARBOR_USERNAME:$HARBOR_PASSWORD -X POST "https://harbor.harbor.svc.cluster.local/api/v2.0/projects" \
-                     -H "Content-Type: application/json" \
-                     -H 'accept: application/json' \
-                     -H 'X-Resource-Name-In-Location: false' \
-                     -d '{
+                     curl --insecure --user $HARBOR_USERNAME:$HARBOR_PASSWORD -X POST "https://harbor.harbor.svc.cluster.local/api/v2.0/projects" \
+                     --header "Content-Type: application/json" \
+                     --header 'accept: application/json' \
+                     --header 'X-Resource-Name-In-Location: false' \
+                     --data '{
                         "project_name": "'$PROJECT_NAME'",
                         "public": true,
                         "metadata": {
