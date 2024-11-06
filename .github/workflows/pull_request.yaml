@@ -113,7 +113,7 @@ jobs:
       - name: Unpack packs data
         run: |
           mkdir build-packs
-          mv downloaded_artifacts/.docusaurus/packs-integration .docusaurus/packs-integration 
+          mv downloaded_artifacts/.docusaurus/packs-integrations .docusaurus/packs-integrations 
           mv downloaded_artifacts/.docusaurus/plugin-packs-integrations .docusaurus && mv downloaded_artifacts/build/packs static/img/packs
           rm -rf downloaded_artifacts 
 
