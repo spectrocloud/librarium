@@ -43,7 +43,8 @@ tags: ["release-notes"]
 
 #### Improvements
 
-- The Palette SaaS login and product tour pages have been visually refreshed.
+- The Palette SaaS login page has received a visual refresh. You can check out the new login page by visiting the
+  [Palette](https://console.spectrocloud.com) login page.
 
 - Additional Palette images that are required by internal Palette microservices are migrated to the new image registry,
   `us-docker.pkg.dev`. Refer to the Palette 4.5.3 [Breaking Changes](#breaking-changes-4-5-3) section for more
@@ -55,8 +56,8 @@ tags: ["release-notes"]
   to learn more about configuring image registry credentials.
 
 - A new cluster filter capability has been added to the Palette UI. The new filter experience provides several quick
-  filters out-of-the-box, such as filtering by cluster status, environment, cluster profile, architecture, and more. You
-  can find the new filter side drawer on the Clusters page. Refer to the
+  filters out-of-the-box, such as filtering by cluster status, environment, cluster profile, architecture, and more. The
+  new filter side drawer is located on the Clusters page. Refer to the
   [Cluster Filters](../clusters/cluster-management/cluster-map-filters.md) guide to learn more about the new cluster
   filters.
 
@@ -111,6 +112,16 @@ tags: ["release-notes"]
 
 - The Terraform resource, `spectrocloud_cluster_import` is deprecated. To import a cluster deployed outside of the
   context of Palette, refer to the [Import a Cluster](../clusters/imported-clusters/cluster-import.md) guide.
+
+### Docs and Education
+
+- A new announcement page is now available. Use the announcement page to stay informed about upcoming breaking changes,
+  deprecations, and removals in Palette. Check out the [Announcements](./annoucements.md) page to learn more.
+
+- The Azure Required IAM permissions have been updated with granular permissions required to support dynamic and static
+  placement for Azure IaaS and Azure AKS use cases. Check out the
+  [Azure Required IAM Permissions](../clusters/public-cloud/azure/required-permissions.md) to review the updated
+  content.
 
 ### Packs
 
