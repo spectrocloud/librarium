@@ -8,6 +8,8 @@ on:
     workflows: ["Release to Production"]
     types: [completed]
   workflow_dispatch:
+  push:
+    branches: ['caching-packs-doc-1460']
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -43,85 +45,9 @@ jobs:
       - name: Upload Build
         uses: actions/upload-artifact@v4
         with:
-          name: "build"
+          name: "build-packs"
           path: |
-            build/
+            build/packs
+            build/packs-data
           if-no-files-found: error
-          retention-days: 1
-
-
-
-
-  visual-snapshots:
-    runs-on: ubuntu-latest
-    needs: [create-assets]
-    strategy:
-      fail-fast: false
-      matrix:
-        shardIndex: [1, 2, 3, 4]
-        shardTotal: [4]
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js Environment
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
-
-      - name: Install Dependencies
-        uses: Wandalen/wretry.action@v3
-        with: 
-            command: npm ci
-            attempt_limit: 3
-            attempt_delay: 60000 # 1 minute
-
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
-
-      - name: retry action
-        uses: Wandalen/wretry.action@v3
-        with: 
-          attempt_limit: 3
-          action: actions/download-artifact@v4
-          with: |
-            name: build
-            path: build
-          attempt_delay: 60000 # 1 minute
-
-      - name: Take Screenshots with Playwright
-        run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} || exit 0
-
-      - name: Upload Screenshots
-        uses: actions/upload-artifact@v4
-        id: screenshots
-        with:
-          name: screenshots-${{ matrix.shardIndex }}
-          path: |
-            screenshots/
-          if-no-files-found: error
-          retention-days: 1
-
-  merge-snapshots:
-    name: Merge Screenshots
-    runs-on: ubuntu-latest
-    needs: [visual-snapshots]
-    steps:
-
-    - name: Download blob reports from GitHub Actions Artifacts
-      uses: actions/download-artifact@v4
-      with:
-        path: screenshots
-        pattern: screenshots-*
-        merge-multiple: true
-
-    - name: Upload Screenshots
-      uses: actions/upload-artifact@v4
-      id: screenshots
-      with:
-        name: "screenshots"
-        path: |
-          screenshots/
-        if-no-files-found: error
-        retention-days: 3
+          retention-days: 7
