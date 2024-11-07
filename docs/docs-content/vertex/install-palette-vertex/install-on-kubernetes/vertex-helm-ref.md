@@ -32,6 +32,40 @@ information, refer to the [Image Swap Configuration](#image-swap-configuration) 
 
 :::
 
+### Global
+
+The global block allows you to provide configurations that apply globally to the installation process.
+
+### Image Pull Secret
+
+The `imagePullSecret` block allows you to provide image pull secrets that will be used to authenticate with private
+registries to obtain the images required for Palette VerteX installation. This is relevant if you have your own mirror
+registries you use for Palette installation.
+
+| **Parameters**     | **Description**                                                                                                                                                                                                                                                                                                                 | **Type** | **Default value** |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
+| `create`           | Specifies whether to create a secret containing credentials to your own private image registry.                                                                                                                                                                                                                                 | Boolean  | `true`            |
+| `dockerConfigJson` | The `config.json` file created when you successfully log into your image registry in base64 encoded format on a single line. For more information about the `config.json` file, refer to [Kubernetes Documentation](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#log-in-to-docker-hub) | String   | None              |
+
+:::info
+
+To obtain the base-64 encoded version of the credential `config.json` file, you can issue the following command. Replace
+`<path/to/.docker/config.json>` with the path to your `config.json` file. The `--wrap=0` option puts the output on a
+single line, which is required in the YAML file format.
+
+```shell
+cat <path/to/.docker/config.json> | base64 --wrap=0
+```
+
+:::
+
+```yaml
+global:
+  imagePullSecret:
+    create: true
+    dockerConfigJson: { imagePullSecret } #base64 encoded dockerconfigjson
+```
+
 ## MongoDB
 
 Palette VerteX uses MongoDB Enterprise as its internal database and supports two modes of deployment:

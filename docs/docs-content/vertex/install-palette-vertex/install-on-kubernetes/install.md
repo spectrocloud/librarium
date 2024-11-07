@@ -142,6 +142,14 @@ your environment. Reach out to our support team if you need assistance.
     | `ingress.enabled`                         | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                         | boolean  |
     | `reach-system`                            | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure VerteX to use a network proxy in your environment | object   |
 
+    :::info
+
+    If you are installing Palette by pulling required images from a private mirror registry, you'll need to provide the
+    credentials to your registry in the **values.yaml** file. For more information, refer to
+    [Helm Configuration Reference](palette-helm-ref.md#image-pull-secret).
+
+    :::
+
     Save the **values.yaml** file after you have populated the required parameters mentioned in the table.
 
     Select one of the following tabs to review an example of the **values.yaml** file with the required parameters
