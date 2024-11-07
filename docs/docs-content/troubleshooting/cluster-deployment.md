@@ -8,8 +8,6 @@ sidebar_position: 10
 tags: ["troubleshooting", "cluster-deployment"]
 ---
 
-# Cluster Deployment Errors Scenarios
-
 The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.
 
 ## Instances Continuously Delete Every 30 Minutes
@@ -177,3 +175,48 @@ pack:
   namespaceLabels:
     "monitoring": "org=spectro,team=dev,pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v1.28"
 ```
+
+## Scenario - Nutanix Cluster Machine Template Updates
+
+In the event that the internal Nutanix cluster machine template is updated, there is a possibility that the cluster
+deployment may encounter issues. This can occur when the updated machine template may be incompatible with the newer
+version of Palette. The following steps will help you troubleshoot and resolve this issue.
+
+### Debug Steps
+
+1. Open a terminal session and ensure you have the `kubectl` CLI installed. If you do not have the CLI installed, you
+   can download it from the [Kubernetes](https://kubernetes.io/docs/tasks/tools/install-kubectl/) website.
+
+2. Set up your terminal session to use the kubeconfig file for your Nutanix cluster. You can find the kubeconfig for
+   your cluster in the Palette UI by visiting the Nuntaix cluster's details page. Check out the
+   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide for
+   guidance on how to set up your terminal session to use the kubeconfig file.
+
+3. Identify the namespace name where the Palette components are deployed. Use the following command to find the
+   namespace and store it in a variable.
+
+   ```shell
+   CLUSTER_NAME=$(kubectl get namespaces --output jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' | while read name; do [[ $name == cluster-* ]] && echo "$name" && break; done)
+   ```
+
+4. To restore the cluster to a healthy state, you need to delete the following deployments so that Palette can re-create
+   them with the updated machine template. Issue the following commands to delete the following three deployments.
+
+   ```shell
+    kubectl delete deployment capi-controller-manager --namespace "$CLUSTER_NAME"
+   ```
+
+   ```shell
+    kubectl delete deployment capi-kubeadm-bootstrap-controller-manager --namespace "$CLUSTER_NAME"
+   ```
+
+   ```shell
+    kubectl delete deployment capi-kubeadm-control-plane-controller-manager --namespace "$CLUSTER_NAME"
+   ```
+
+5. Palette will automatically re-create the deleted deployments with the updated machine template. You can monitor the
+   progress of the re-creation by checking the status of the deployments using the following command.
+
+   ```shell
+   kubectl get deployments --namespace "$CLUSTER_NAME"
+   ```

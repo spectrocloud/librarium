@@ -23,10 +23,10 @@ tags: ["release-notes"]
   [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide.
 
 - The internal machine templates of Nutanix clusters have been updated to improve future capabilities. The change
-  impacts active Nutanix clusters and requires a re-deployment. New Nutanix clusters will automatically use the updated
-  machine template. Refer to the
-  [Create and Manage Nutanix Cluster](../clusters/data-center/nutanix/create-manage-nutanix-cluster.md) guide for
-  guidance on deploying a Nutanix cluster.
+  impacts active Nutanix clusters and requires manual intervention to return the cluster to a healthy state. Refer to
+  the
+  [Nutanix Cluster Machine Template Updates](../troubleshooting/cluster-deployment.md#scenario---nutanix-cluster-machine-template-updates)
+  for resolution steps. New Nutanix clusters will automatically use the updated machine template.
 
 #### Features
 
