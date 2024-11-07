@@ -11,9 +11,9 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## November 9,2024 - Release 4.5.6
+## November 9,2024 - Release 4.5.7
 
-### Palette {#palette-enterprise-4-5-6}
+### Palette {#palette-enterprise-4-5-7}
 
 #### Breaking Changes
 
@@ -22,11 +22,10 @@ tags: ["release-notes"]
   about creating a new cluster group in the
   [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide.
 
-- The internal machine templates of Nutanix clusters have been updated to improve future capabilities. The change
-  impacts active Nutanix clusters and requires manual intervention to return the cluster to a healthy state. Refer to
-  the
-  [Nutanix Cluster Machine Template Updates](../troubleshooting/cluster-deployment.md#scenario---nutanix-cluster-machine-template-updates)
-  for resolution steps. New Nutanix clusters will automatically use the updated machine template.
+- The Cluster API (CAPI) label selectors for Nutanux clusters have been updated. The change impacts active Nutanix
+  clusters and requires manual intervention to return the cluster to a healthy state. Refer to the
+  [Nutanix Cluster Machine Template Updates](../troubleshooting/cluster-deployment.md#scenario---nutanix-capi-deployment-updates)
+  for resolution steps. New Nutanix clusters will automatically use the updated label selectors.
 
 #### Features
 
@@ -79,7 +78,7 @@ guide to learn how to create a Cluster Group. s
 #### Features
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
-  [Palette section](#palette-enterprise-4-5-6) for more details.
+  [Palette section](#palette-enterprise-4-5-7) for more details.
 
 ### Automation
 

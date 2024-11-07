@@ -10,7 +10,7 @@ tags: ["troubleshooting", "cluster-deployment"]
 
 The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.
 
-## Instances Continuously Delete Every 30 Minutes
+## Scenario - Instances Continuously Delete Every 30 Minutes
 
 An instance is launched and terminated every 30 minutes prior to completion of its deployment, and the **Events Tab**
 lists errors with the following message:
@@ -106,7 +106,7 @@ why a service may fail are:
 6. Check stdout for errors. You can also open a support ticket. Visit our
    [support page](http://support.spectrocloud.io/).
 
-## Deployment Violates Pod Security
+## Scenario - Deployment Violates Pod Security
 
 Cluster deployment fails with the following message.
 
@@ -176,11 +176,12 @@ pack:
     "monitoring": "org=spectro,team=dev,pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v1.28"
 ```
 
-## Scenario - Nutanix Cluster Machine Template Updates
+## Scenario - Nutanix CAPI Deployment Updates
 
-In the event that the internal Nutanix cluster machine template is updated, there is a possibility that the cluster
-deployment may encounter issues. This can occur when the updated machine template may be incompatible with the newer
-version of Palette. The following steps will help you troubleshoot and resolve this issue.
+In the event that the internal Nutanix cluster Cluster API (CAPI) configurations are updated, there is a possibility
+that the cluster's Kubernetes deployments may encounter issues, resulting in an unhealthy cluster. This can occur when
+the CAPI changes may be incompatible with the newer version of Palette. The following steps will help you troubleshoot
+and resolve this issue.
 
 ### Debug Steps
 
