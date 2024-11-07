@@ -101,7 +101,7 @@ Datadog.
     `pack.namespace` section to accommodate the elevated privileges required by the Datadog pods. Replace
     `<k8s_version>` with your cluster's Kubernetes version and only include the major and minor version following the
     lowercase letter **v**. For example, `v1.30`. Refer to the
-    [Deployment Violates Pod Security](../troubleshooting/cluster-deployment.md#deployment-violates-pod-security)
+    [Deployment Violates Pod Security](../troubleshooting/cluster-deployment.md#scenario---deployment-violates-pod-security)
     troubleshooting guide for more information.
 
     ```yaml {3-4}
