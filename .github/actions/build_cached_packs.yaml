@@ -1,0 +1,34 @@
+name: "Build with cached packs"
+inputs:
+  gh-token:
+    description: "GitHub Token for authentication"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Download Packs Data
+      run: |
+        # Find the latest packs upload workflow.
+        run_id=$(gh run list --workflow="packs_upload.yaml" --limit 1 --json databaseId | jq -r '.[0].databaseId')
+        # Remove any downloaded artifacts, should they exist.
+        rm -rf ./downloaded_artifacts
+        # Download the latest artifact to a new dir.
+        gh run download ${run_id} --name build-packs --dir ./downloaded_artifacts
+      env:
+        GH_TOKEN: ${{ inputs.gh-token }}
+
+    - name: Unpack packs data
+      run: |
+        # Make a new dir we can do our work in.
+        mkdir build-packs
+        # Move the files to their correct places in the checked out repository
+        mv downloaded_artifacts/.docusaurus/packs-integrations/* .docusaurus/packs-integrations 
+        mv downloaded_artifacts/.docusaurus/plugin-packs-integrations/* .docusaurus 
+        mv downloaded_artifacts/build/packs/* static/img/packs
+        # Clean up. 
+        rm -rf downloaded_artifacts 
+
+    - name: Build
+      run: |
+        npm run build

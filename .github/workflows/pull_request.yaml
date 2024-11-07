@@ -98,25 +98,8 @@ jobs:
         run: |
           npm run build
       
-      - name: Download Packs Data
+      - name: Build with cached packs
         # if: ${{ failure() }} Put this on after testing
-        run: |
-          run_id=$(gh run list --workflow="packs_upload.yaml" --limit 1 --json databaseId | jq -r '.[0].databaseId')
-          echo "GITHUB_RUN_ID=$run_id" >> $GITHUB_ENV
-          rm -rf ./downloaded_artifacts
-          gh run download ${run_id} --name build-packs --dir ./downloaded_artifacts
-        
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
-      - name: Unpack packs data
-        run: |
-          mkdir build-packs
-          mv downloaded_artifacts/.docusaurus/packs-integrations/* .docusaurus/packs-integrations 
-          mv downloaded_artifacts/.docusaurus/plugin-packs-integrations/* .docusaurus && mv downloaded_artifacts/build/packs/* static/img/packs
-          rm -rf downloaded_artifacts 
-
-      - name: Build
-        run: |
-          npm run build
+        uses: ./.github/actions/build_cached_packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}

@@ -8,8 +8,6 @@ on:
     workflows: ["Release to Production"]
     types: [completed]
   workflow_dispatch:
-  push:
-    branches: ['caching-packs-doc-1460']
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
