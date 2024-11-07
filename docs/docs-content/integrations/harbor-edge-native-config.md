@@ -225,7 +225,7 @@ can follow the steps below to create additional projects.
             echo "Creating a new project in Harbor: $PROJECT_NAME"
 
             # Create a new project in Harbor
-            curl --insecure --user $HARBOR_USERNAME:$HARBOR_PASSWORD -X POST "https://harbor.harbor.svc.cluster.local/api/v2.0/projects" \
+            curl --insecure --user $HARBOR_USERNAME:$HARBOR_PASSWORD --request POST "https://harbor.harbor.svc.cluster.local/api/v2.0/projects" \
             --header "Content-Type: application/json" \
             --header 'accept: application/json' \
             --header 'X-Resource-Name-In-Location: false' \
