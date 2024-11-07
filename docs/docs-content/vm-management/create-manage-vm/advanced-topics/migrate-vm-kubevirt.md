@@ -113,7 +113,7 @@ from VMware vSphere to Palette VMO.
     metadata:
       name: vddk-image-pull-secret
     data:
-      .dockerconfigjson: eyJodHRwczovL2luZGV4L ... J0QUl6RTIifX0=
+      .dockerconfigjson: #base64 encoded dockerconfigjson
     type: kubernetes.io/dockerconfigjson
     ```
 
