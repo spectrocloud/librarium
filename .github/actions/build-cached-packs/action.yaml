@@ -39,3 +39,4 @@ runs:
     - name: Build
       run: |
         npm run build
+      shell: bash
