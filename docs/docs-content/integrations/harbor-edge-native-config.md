@@ -205,7 +205,8 @@ can follow the steps below to create additional projects.
 5. Click **New manifest** to add a manifest. Give your manifest a name such as **create-harbor-project**.
 
 6. Use the following job definition in your new manifest. The manifest executes a job that calls the Harbor API to
-   create a new project. Replace the value of the variable `PROJECT_NAME ` with the name you want to give to your new project.
+   create a new project. Replace the value of the variable `PROJECT_NAME ` with the name you want to give to your new
+   project.
 
    ```yaml {10,14}
    apiVersion: batch/v1
