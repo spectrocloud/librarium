@@ -221,7 +221,7 @@ can follow the steps below to create additional projects.
              command: ["/bin/sh", "-c"]
              args:
                - |
-                 PROJECT_NAME="edge" # Update this name to the project you want to create
+                 PROJECT_NAME=<projectName> # Update this name to the project you want to create
                  echo "Creating a new project in Harbor: $PROJECT_NAME"
 
                  # Create a new project in Harbor
