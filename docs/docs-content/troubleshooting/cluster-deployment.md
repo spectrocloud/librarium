@@ -189,7 +189,7 @@ and resolve this issue.
    can download it from the [Kubernetes](https://kubernetes.io/docs/tasks/tools/install-kubectl/) website.
 
 2. Set up your terminal session to use the kubeconfig file for your Nutanix cluster. You can find the kubeconfig for
-   your cluster in the Palette UI by visiting the Nuntaix cluster's details page. Check out the
+   your cluster in the Palette UI by visiting the Nutanix cluster's details page. Check out the
    [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide for
    guidance on how to set up your terminal session to use the kubeconfig file.
 

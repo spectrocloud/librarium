@@ -22,7 +22,7 @@ tags: ["release-notes"]
   about creating a new cluster group in the
   [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide.
 
-- The Cluster API (CAPI) label selectors for Nutanux clusters have been updated. The change impacts active Nutanix
+- The Cluster API (CAPI) label selectors for Nutanix clusters have been updated. The change impacts active Nutanix
   clusters and requires manual intervention to return the cluster to a healthy state. Refer to the
   [Nutanix Cluster Machine Template Updates](../troubleshooting/cluster-deployment.md#scenario---nutanix-capi-deployment-updates)
   for resolution steps. New Nutanix clusters will automatically use the updated label selectors.
@@ -98,7 +98,7 @@ guide to learn how to create a Cluster Group. s
   [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 - The Palette CLI's usage of Forklift has been updated to version `2.6.3`. The Palette CLI can leverage Forklift to
-  miragte a Virtual Machine to a VMO cluster. Check out the
+  migrate a Virtual Machine to a VMO cluster. Check out the
   [Migrate a VM to a VMO cluster](../vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md) guide to
   learn more about this feature.
 
