@@ -38,14 +38,16 @@ The global block allows you to provide configurations that apply globally to the
 
 ### Image Pull Secret
 
-The `imagePullSecret` block allows you to provide image pull secrets that will be used to authenticate with private
-registries to obtain the images required for Palette VerteX installation. This is relevant if you have your own mirror
-registries you use for Palette installation.
+This section is only relevant if you are using your own private registry to host the images required for the Palette
+installation process.
 
-| **Parameters**     | **Description**                                                                                                                                                                                                                                                                                                                 | **Type** | **Default value** |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
-| `create`           | Specifies whether to create a secret containing credentials to your own private image registry.                                                                                                                                                                                                                                 | Boolean  | `true`            |
-| `dockerConfigJson` | The `config.json` file created when you successfully log into your image registry in base64 encoded format on a single line. For more information about the `config.json` file, refer to [Kubernetes Documentation](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#log-in-to-docker-hub) | String   | None              |
+The `imagePullSecret` block allows you to provide image pull secrets that will be used to authenticate with private
+registries to obtain the images required for Palette VerteX installation.
+
+| **Parameters**     | **Description**                                                                                                                                                                                                                                                                         | **Type** | **Default value** |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
+| `create`           | Specifies whether to create a secret containing credentials to your own private image registry.                                                                                                                                                                                         | Boolean  | `false`           |
+| `dockerConfigJson` | The `config.json` file created when you successfully log into your image registry in base64 encoded format on a single line. For more information about the `config.json` file, refer to [Kubernetes Documentation](https://kubernetes.io/docs/concepts/containers/images/#config-json) | String   | None              |
 
 :::info
 
