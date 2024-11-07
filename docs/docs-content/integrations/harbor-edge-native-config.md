@@ -211,44 +211,44 @@ can follow the steps below to create additional projects.
    apiVersion: batch/v1
    kind: Job
    metadata:
-   name: harbor-project
+     name: harbor-project
    spec:
-   template:
-      spec:
+     template:
+       spec:
          containers:
-         - name: harbor-project
-         image: gcr.io/spectro-dev-public/edge/alpine-curl:v1
-         command: ["/bin/sh", "-c"]
-         args:
-         - |
-            PROJECT_NAME="edge" # Update this name to the project you want to create
-            echo "Creating a new project in Harbor: $PROJECT_NAME"
+           - name: harbor-project
+             image: gcr.io/spectro-dev-public/edge/alpine-curl:v1
+             command: ["/bin/sh", "-c"]
+             args:
+               - |
+                 PROJECT_NAME="edge" # Update this name to the project you want to create
+                 echo "Creating a new project in Harbor: $PROJECT_NAME"
 
-            # Create a new project in Harbor
-            curl --insecure --user $HARBOR_USERNAME:$HARBOR_PASSWORD --request POST "https://harbor.harbor.svc.cluster.local/api/v2.0/projects" \
-            --header "Content-Type: application/json" \
-            --header 'accept: application/json' \
-            --header 'X-Resource-Name-In-Location: false' \
-            --data '{
-               "project_name": "'$PROJECT_NAME'",
-               "public": true,
-               "metadata": {
-                  "public": "true"
-               }
-            }'
-            sleep 100
-            echo "Created project $PROJECT_NAME in Harbor!"
-         env:
-         - name: HARBOR_USERNAME
-            valueFrom:
-               secretKeyRef:
-               name: registry-info
-               key: SPECTRO_USER
-         - name: HARBOR_PASSWORD
-            valueFrom:
-               secretKeyRef:
-               name: registry-info
-               key: SPECTRO_USER_PASSWORD
+                 # Create a new project in Harbor
+                 curl --insecure --user $HARBOR_USERNAME:$HARBOR_PASSWORD --request POST "https://harbor.harbor.svc.cluster.local/api/v2.0/projects" \
+                 --header "Content-Type: application/json" \
+                 --header 'accept: application/json' \
+                 --header 'X-Resource-Name-In-Location: false' \
+                 --data '{
+                   "project_name": "'$PROJECT_NAME'",
+                   "public": true,
+                   "metadata": {
+                      "public": "true"
+                   }
+                 }'
+                 sleep 100
+                 echo "Created project $PROJECT_NAME in Harbor!"
+             env:
+               - name: HARBOR_USERNAME
+                 valueFrom:
+                   secretKeyRef:
+                     name: registry-info
+                     key: SPECTRO_USER
+               - name: HARBOR_PASSWORD
+                 valueFrom:
+                   secretKeyRef:
+                     name: registry-info
+                     key: SPECTRO_USER_PASSWORD
          restartPolicy: Never
      backoffLimit: 1
    ```
