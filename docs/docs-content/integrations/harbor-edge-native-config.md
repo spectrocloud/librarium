@@ -182,12 +182,32 @@ can follow the steps below to create additional projects.
 
 3. Select the Harbor layer of the cluster profile.
 
-4. Click **New manifest** to add a manifest. Give your manifest a name such as **create-harbor-project**.
+4. In the Harbor pack **values.yaml**, add the image `gcr.io/spectro-dev-public/edge/alpine-curl:v1` to
+   `pack.content.images`.
 
-5. Use the following job definition in your new manifest. The manifest executes a job that calls the Harbor API to
+   ```yaml {14}
+   pack:
+   content:
+     images:
+       - image: gcr.io/spectro-images-public/goharbor/harbor-core:v2.9.0
+       - image: gcr.io/spectro-images-public/goharbor/harbor-db:v2.9.0
+       - image: gcr.io/spectro-images-public/goharbor/harbor-exporter:v2.9.0
+       - image: gcr.io/spectro-images-public/goharbor/harbor-jobservice:v2.9.0
+       - image: gcr.io/spectro-images-public/goharbor/nginx-photon:v2.9.0
+       - image: gcr.io/spectro-images-public/goharbor/harbor-portal:v2.9.0
+       - image: gcr.io/spectro-images-public/goharbor/redis-photon:v2.9.0
+       - image: gcr.io/spectro-images-public/goharbor/registry-photon:v2.9.0
+       - image: gcr.io/spectro-images-public/goharbor/harbor-registryctl:v2.9.0
+       - image: gcr.io/spectro-images-public/goharbor/trivy-adapter-photon:v2.9.0
+       - image: gcr.io/spectro-dev-public/edge/alpine-curl:v1
+   ```
+
+5. Click **New manifest** to add a manifest. Give your manifest a name such as **create-harbor-project**.
+
+6. Use the following job definition in your new manifest. The manifest executes a job that calls the Harbor API to
    create a new project. Replace `projectName` with the name you want to give to your new project.
 
-   ```yaml {27}
+   ```yaml {10,14}
    apiVersion: batch/v1
    kind: Job
    metadata:
@@ -241,11 +261,11 @@ can follow the steps below to create additional projects.
 
    :::
 
-6. Click **Confirm Updates**.
+7. Click **Confirm Updates**.
 
-7. Click **Save Changes**.
+8. Click **Save Changes**.
 
-8. Use the newly updated cluster profile to deploy a new cluster, or update an existing cluster to use the new profile.
+9. Use the newly updated cluster profile to deploy a new cluster, or update an existing cluster to use the new profile.
    For more information, refer to [Create Cluster Definition](../clusters/edge/site-deployment/cluster-deployment.md)
    and [Update a Cluster](../clusters/cluster-management/cluster-updates.md).
 
