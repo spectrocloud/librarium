@@ -7,6 +7,11 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Install jq (JSON processor)
+      run: |
+        sudo apt-get update && sudo apt-get install -y jq
+      shell: bash
+
     - name: Download Packs Data
       run: |
         # Find the latest packs upload workflow.
@@ -15,6 +20,7 @@ runs:
         rm -rf ./downloaded_artifacts
         # Download the latest artifact to a new dir.
         gh run download ${run_id} --name build-packs --dir ./downloaded_artifacts
+      shell: bash
       env:
         GH_TOKEN: ${{ inputs.gh-token }}
 
@@ -27,7 +33,8 @@ runs:
         mv downloaded_artifacts/.docusaurus/plugin-packs-integrations/* .docusaurus 
         mv downloaded_artifacts/build/packs/* static/img/packs
         # Clean up. 
-        rm -rf downloaded_artifacts 
+        rm -rf downloaded_artifacts
+      shell: bash
 
     - name: Build
       run: |
