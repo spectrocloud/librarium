@@ -52,11 +52,11 @@ registries to obtain the images required for Palette VerteX installation.
 :::info
 
 To obtain the base-64 encoded version of the credential `config.json` file, you can issue the following command. Replace
-`<path/to/.docker/config.json>` with the path to your `config.json` file. The `--wrap=0` option puts the output on a
-single line, which is required in the YAML file format.
+`<path/to/.docker/config.json>` with the path to your `config.json` file. The `tr -d '\n'` removes new line characters
+and produce the output on a single line.
 
 ```shell
-cat <path/to/.docker/config.json> | base64 --wrap=0
+cat <path/to/.docker/config.json> | base64 | tr -d '\n'
 ```
 
 :::
@@ -65,7 +65,7 @@ cat <path/to/.docker/config.json> | base64 --wrap=0
 global:
   imagePullSecret:
     create: true
-    dockerConfigJson: { imagePullSecret } #base64 encoded dockerconfigjson
+    dockerConfigJson: ewoJImF1dGhzHsKCQkiaG9va3......MiOiAidHJ1ZSIKCX0KfQ # Base64 encoded config.json
 ```
 
 ## MongoDB
