@@ -13,12 +13,12 @@ tags: ["release-notes"]
 
 ## November 9,2024 - Release 4.5.8
 
-### Palette {#palette-enterprise-4-5-7}
+### Palette {#palette-enterprise-4-5-8}
 
 #### Breaking Changes
 
 - The _Beehive_ [cluster group](../clusters/cluster-groups/cluster-groups.md) is no longer available starting with this
-  release. If you need to deploy virtual cluster, create a cluster group in your tenant or project. You can learn more
+  release. If you need to deploy a virtual cluster, create a cluster group in your tenant or project. You can learn more
   about creating a new cluster group in the
   [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide.
 
@@ -78,7 +78,7 @@ guide to learn how to create a Cluster Group. s
 #### Features
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
-  [Palette section](#palette-enterprise-4-5-7) for more details.
+  [Palette section](#palette-enterprise-4-5-8) for more details.
 
 ### Automation
 
