@@ -248,10 +248,6 @@ ${item.spec.impact.isImpacting ? table : "This CVE is non-impacting as the impac
 ## Revision History
 
 ${revisionHistory ? revisionHistory : "No revision history available."}
-
-
-
-
 `;
 
   const filePath = path.join(location, `${lowerCaseCve}.md`);

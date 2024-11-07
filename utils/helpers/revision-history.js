@@ -1,18 +1,23 @@
 const { formatDateCveDetails } = require("./date");
 
 function generateRevisionHistory(revisionHistory) {
+  if (!Array.isArray(revisionHistory)) {
+    console.error("Invalid revisionHistory input. Expected an array.");
+    return "";
+  }
+
   const sortedRevisions = revisionHistory.sort((a, b) => new Date(b.revisionTimestamp) - new Date(a.revisionTimestamp));
 
-  let tableString = "| Date       | Revision                   |\n";
-  tableString += "|------------|----------------------------|\n";
+  // Initialize the table header with consistent spacing
+  let tableString = "| Date       | Revision                                |\n";
+  tableString += "|------------|-----------------------------------------|\n";
 
   let hasContent = false;
 
   sortedRevisions.forEach((revision) => {
-    const { revisionTimestamp, revisedField, revisedFrom, revisedTo } = revision;
+    const { revisionTimestamp, revisedField, revisedFrom = "", revisedTo = "" } = revision;
     let itemDescription = "";
 
-    // Justification field logic
     if (revisedField === "spec.assessment.justification") {
       if (revisedFrom === "" && revisedTo !== "") {
         itemDescription = `Official summary added`;
@@ -21,19 +26,13 @@ function generateRevisionHistory(revisionHistory) {
       } else if (revisedFrom !== "" && revisedTo !== "") {
         itemDescription = `Official summary revised: ${revisedTo}`;
       }
-    }
-
-    // NIST severity change logic
-    if (revisedField === "metadata.nistSeverity") {
+    } else if (revisedField === "metadata.nistSeverity") {
       if (revisedFrom === "UNKNOWN") {
         itemDescription = `Advisory assigned with ${revisedTo} severity`;
       } else if (revisedFrom !== revisedTo) {
         itemDescription = `Advisory severity revised to ${revisedTo} from ${revisedFrom}`;
       }
-    }
-
-    // Impacted versions logic
-    if (revisedField === "spec.impact.impactedVersions") {
+    } else if (revisedField === "spec.impact.impactedVersions") {
       const formattedFrom = revisedFrom.replace(/\s+/g, ", ").replace(/^\[|\]$/g, "");
       const formattedTo = revisedTo.replace(/\s+/g, ", ").replace(/^\[|\]$/g, "");
 
@@ -42,17 +41,11 @@ function generateRevisionHistory(revisionHistory) {
       } else {
         itemDescription = `Impacted versions changed from ${formattedFrom} to ${formattedTo}`;
       }
-    }
-
-    // Status change logic
-    if (revisedField === "status.status") {
+    } else if (revisedField === "status.status") {
       if (revisedFrom !== revisedTo) {
         itemDescription = `Status changed from ${revisedFrom} to ${revisedTo}`;
       }
-    }
-
-    // isImpacting field logic
-    if (revisedField === "spec.impact.isImpacting") {
+    } else if (revisedField === "spec.impact.isImpacting") {
       if (revisedFrom === "false" && revisedTo === "true") {
         itemDescription = "Advisory is now impacting.";
       } else if (revisedFrom === "true" && revisedTo === "false") {
@@ -60,14 +53,17 @@ function generateRevisionHistory(revisionHistory) {
       }
     }
 
-    // If there's a description, add it to the table as a markdown row so we can display it.
+    // Ensure valid date and description, adding a placeholder if missing
+    const formattedDate = formatDateCveDetails(revisionTimestamp) || "N/A";
+
+    // Only add the row if there's valid content to avoid empty lines
     if (itemDescription) {
-      const formattedDate = formatDateCveDetails(revisionTimestamp);
       tableString += `| ${formattedDate} | ${itemDescription} |\n`;
       hasContent = true;
     }
   });
 
+  // Remove the trailing newline if any before returning
   return hasContent ? tableString.trim() : "";
 }
 

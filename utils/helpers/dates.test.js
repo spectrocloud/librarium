@@ -15,24 +15,37 @@ describe("getTodayFormattedDate", () => {
 });
 
 describe("formatDateCveDetails", () => {
-  it("should format ISO string date to M/D/YYYY", () => {
-    const isoString = "2023-09-20T00:00:00Z";
+  it("should format ISO string date to MM/DD/YYYY with zero-padded month and day", () => {
+    const isoString = "2023-09-05T00:00:00Z";
     const formattedDate = formatDateCveDetails(isoString);
 
-    expect(formattedDate).toBe("9/20/2023");
+    expect(formattedDate).toBe("09/05/2023");
   });
 
   it("should handle leap years correctly", () => {
     const isoString = "2024-02-29T00:00:00Z";
     const formattedDate = formatDateCveDetails(isoString);
 
-    expect(formattedDate).toBe("2/29/2024");
+    expect(formattedDate).toBe("02/29/2024");
   });
 
   it("should return the correct date even with different time zones in the input", () => {
-    const isoString = "2023-09-20T15:00:00Z"; // Time zone is UTC but should still give same day for UTC date
+    const isoString = "2023-09-20T15:00:00Z"; // Time zone is UTC but should still give the same day in UTC
     const formattedDate = formatDateCveDetails(isoString);
 
-    expect(formattedDate).toBe("9/20/2023");
+    expect(formattedDate).toBe("09/20/2023");
+  });
+
+  it("should return 'N/A' for an invalid date string", () => {
+    const invalidDate = "invalid-date";
+    const formattedDate = formatDateCveDetails(invalidDate);
+
+    expect(formattedDate).toBe("N/A");
+  });
+
+  it("should return 'N/A' for undefined input", () => {
+    const formattedDate = formatDateCveDetails(undefined);
+
+    expect(formattedDate).toBe("N/A");
   });
 });
