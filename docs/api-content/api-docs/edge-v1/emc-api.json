@@ -19,7 +19,7 @@
       "get": {
         "description": "Get the details of the cluster.",
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "Get the details of the cluster.",
         "operationId": "v1ClusterConfig",
@@ -53,7 +53,7 @@
       "post": {
         "description": "Creates a cluster with the provided cluster configuration",
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "Creates a cluster with the provided cluster configuration",
         "operationId": "v1CreateCluster",
@@ -85,7 +85,7 @@
       "delete": {
         "description": "Delete a cluster",
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "Delete a cluster",
         "operationId": "v1DeleteCluster",
@@ -113,7 +113,7 @@
       "patch": {
         "description": "DEPRECATED - This endpoint is deprecated and will be removed in future versions. Use /v1/edge-mgmt/cluster/{clusterName} instead",
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "DEPRECATED - This endpoint is deprecated and will be removed in future versions. Use /v1/edge-mgmt/cluster/{clusterName} instead",
         "operationId": "v1PatchCluster",
@@ -148,7 +148,7 @@
       "get": {
         "description": "list the details of the cluster’s packs.",
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "list the details of the cluster’s packs.",
         "operationId": "v1ClusterApplications",
@@ -184,7 +184,7 @@
       "get": {
         "description": "Get Cluster Certificates Info",
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "Get Cluster Certificates Info",
         "operationId": "v1CertificateDetails",
@@ -208,7 +208,7 @@
       "get": {
         "description": "Get Edge Cluster details",
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "Get Edge Cluster details",
         "operationId": "v1ClusterGet",
@@ -238,7 +238,7 @@
       "get": {
         "description": "List cluster events",
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "List cluster events",
         "operationId": "v1GetClusterEvents",
@@ -275,7 +275,7 @@
       "put": {
         "description": "Updates a cluster with the provided cluster configuration",
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "Updates a cluster with the provided cluster configuration",
         "operationId": "v1UpdateClusterProfiles",
@@ -309,7 +309,7 @@
       "post": {
         "description": "Validate cluster profile variables",
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "Validate cluster profile variables",
         "operationId": "v1ValidateClusterProfileVariables",
@@ -343,7 +343,7 @@
       "get": {
         "description": "Get Harbor Content Details",
         "tags": [
-          "content"
+          "edge-mgmt"
         ],
         "summary": "List existing Harbor Content Details",
         "operationId": "v1HarborContentsDetails",
@@ -361,7 +361,7 @@
       "get": {
         "description": "Get Harbor Content Sync Status",
         "tags": [
-          "content"
+          "edge-mgmt"
         ],
         "summary": "List Harbor Content Sync Status",
         "operationId": "v1HarborContentsSyncStatusDetails",
@@ -379,7 +379,7 @@
       "get": {
         "description": "Gets the harbor health status",
         "tags": [
-          "content"
+          "edge-mgmt"
         ],
         "summary": "Gets the harbor health status",
         "operationId": "V1HarborHealth",
@@ -403,7 +403,7 @@
       "post": {
         "description": "Renew Cluster Certificates",
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "Renew Cluster Certificates",
         "operationId": "v1RenewCerts",
@@ -427,7 +427,7 @@
       "put": {
         "description": "Update cluster settings",
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "Update cluster settings",
         "operationId": "v1EdgeNativeClusterSettings",
@@ -467,7 +467,7 @@
       "put": {
         "description": "Updates a cluster with the provided cluster configuration",
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "Updates a cluster with the provided cluster configuration",
         "operationId": "v1UpdateClusterConfig",
@@ -506,7 +506,7 @@
       "patch": {
         "description": "Patch a cluster with the provided cluster configuration",
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "Patch a cluster with the provided cluster configuration",
         "operationId": "v1PatchClusterConfig",
@@ -547,7 +547,7 @@
       "get": {
         "description": "parses the cluster-config archive.",
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "parses the cluster-config archive.",
         "operationId": "V1ClusterConfigArchiveEmbedded",
@@ -571,7 +571,7 @@
       "get": {
         "description": "parses the cluster-config archive if it exists.",
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "parses the cluster-config archive if it exists.",
         "operationId": "v1ClusterConfigArchiveOverriden",
@@ -594,7 +594,7 @@
     "/v1/edge-mgmt/clusters/current/machinepools": {
       "get": {
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "Fetch the cluster node pool details including edge host details.",
         "operationId": "v1MachinePoolDetail",
@@ -623,7 +623,7 @@
       },
       "post": {
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "Create a machine pool",
         "operationId": "v1ClusterMachinePoolCreate",
@@ -662,7 +662,7 @@
     "/v1/edge-mgmt/clusters/current/machinepools/{poolName}": {
       "put": {
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "Update machine pools",
         "operationId": "v1ClusterMachinePoolUpdate",
@@ -706,7 +706,7 @@
       },
       "delete": {
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "Delete machine pools",
         "operationId": "v1ClusterMachinePoolDelete",
@@ -742,7 +742,7 @@
       },
       "patch": {
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "Patch machine pools",
         "operationId": "v1ClusterMachinePoolPatch",
@@ -789,7 +789,7 @@
       "get": {
         "description": "Get K8s Cluster Nodes",
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "A list of the K8s Cluster Nodes",
         "operationId": "v1ClusterNodes",
@@ -813,7 +813,7 @@
       "get": {
         "description": "Ping an endpoint",
         "tags": [
-          "troubleshoot"
+          "edge-mgmt"
         ],
         "summary": "Ping an endpoint",
         "operationId": "v1PingHost",
@@ -844,7 +844,7 @@
       "get": {
         "description": "Display route that IP packets take to a network host",
         "tags": [
-          "troubleshoot"
+          "edge-mgmt"
         ],
         "summary": "Display route that IP packets take to a network host",
         "operationId": "v1TraceRouteHost",
@@ -875,7 +875,7 @@
       "get": {
         "description": "Get edge host details",
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "Get edge host info",
         "operationId": "v1EdgeHostInfo",
@@ -905,7 +905,7 @@
       "get": {
         "description": "Get the base64 encoded key used to verify the signed content.",
         "tags": [
-          "content"
+          "edge-mgmt"
         ],
         "summary": "Get the public key used to verify the signed content.",
         "operationId": "V1GetContentSigningPublicKey",
@@ -941,7 +941,7 @@
       "post": {
         "description": "Reboot edge host",
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "Reboot edge host",
         "operationId": "v1EdgeHostActionReboot",
@@ -965,7 +965,7 @@
       "post": {
         "description": "Reset edge host",
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "Reset edge host",
         "operationId": "v1EdgeHostActionReset",
@@ -995,7 +995,7 @@
       "post": {
         "description": "Shutdown edge host",
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "Shutdown edge host",
         "operationId": "v1EdgeHostActionShutdown",
@@ -1022,7 +1022,7 @@
           "multipart/form-data"
         ],
         "tags": [
-          "cluster"
+          "edge-mgmt"
         ],
         "summary": "Uploads the cluster config archive and extracts it to the required location on the edge host.",
         "operationId": "V1ClusterConfigUpload",
@@ -1064,7 +1064,7 @@
           "multipart/form-data"
         ],
         "tags": [
-          "content"
+          "edge-mgmt"
         ],
         "summary": "Uploads an archive file and extracts it to the required location on the edge host.",
         "operationId": "V1ContentUpload",
@@ -1102,7 +1102,7 @@
     "/v1/edge-mgmt/edgehosts/current/audits": {
       "get": {
         "tags": [
-          "audit"
+          "edge-mgmt"
         ],
         "summary": "Retrieves the list of audit logs",
         "operationId": "v1Audits",
@@ -1197,7 +1197,7 @@
           "application/json"
         ],
         "tags": [
-          "audit"
+          "edge-mgmt"
         ],
         "summary": "Download audit logs",
         "operationId": "v1AuditDownload",
@@ -1233,7 +1233,7 @@
     "/v1/edge-mgmt/edgehosts/current/audits/filters": {
       "get": {
         "tags": [
-          "audit"
+          "edge-mgmt"
         ],
         "summary": "Retrieves the list of filter options to display on audit ui page",
         "operationId": "v1AuditFilter",
@@ -1251,7 +1251,7 @@
       "get": {
         "description": "Get edge host configurations.",
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "Get edge host configurations.",
         "operationId": "V1EdgeHostConfigurationsGet",
@@ -1278,7 +1278,7 @@
       },
       "put": {
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "Update Edge Host configurations",
         "operationId": "V1EdgeHostConfigurationsUpdate",
@@ -1325,7 +1325,7 @@
       "get": {
         "description": "Edge host configurations status",
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "Edge host configurations status",
         "operationId": "v1EdgeHostConfigurationStatus",
@@ -1353,7 +1353,7 @@
           "application/json"
         ],
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "Download edge host Logs",
         "operationId": "v1EdgeHostDownloadLogs",
@@ -1384,7 +1384,7 @@
       "get": {
         "description": "List last 'logCount' edge host error logs",
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "List last 'logCount' edge host error logs",
         "operationId": "V1EdgeHostErrorLogs",
@@ -1423,7 +1423,7 @@
       "get": {
         "description": "Lists all the first level files from the '/var/log/files' directory.\n",
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "List custom files from the '/var/log/files' directory",
         "operationId": "v1EdgeHostListCustomFiles",
@@ -1463,7 +1463,7 @@
           "application/json"
         ],
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "Download a custom file from the user-defined or default directory",
         "operationId": "v1EdgeHostCustomFileDownload",
@@ -1515,7 +1515,7 @@
       "post": {
         "description": "Start edge host log collection",
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "Start edge host log collection",
         "operationId": "v1EdgeHostGenerateLogs",
@@ -1539,7 +1539,7 @@
       "get": {
         "description": "Edge host log collection status",
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "Edge host log collection status",
         "operationId": "v1EdgeHostGenerateLogsStatus",
@@ -1562,7 +1562,7 @@
     "/v1/edge-mgmt/edgehosts/current/link": {
       "post": {
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "Link edge host to another edge host",
         "operationId": "v1EdgeHostLink",
@@ -1601,7 +1601,7 @@
     "/v1/edge-mgmt/edgehosts/current/link/generate-token": {
       "post": {
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "Generate a link token for linking edge hosts",
         "operationId": "v1EdgeHostLinkGenerateToken",
@@ -1624,7 +1624,7 @@
     "/v1/edge-mgmt/edgehosts/current/link/status": {
       "get": {
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "Get the status of the edge host link",
         "operationId": "v1EdgeHostLinkStatus",
@@ -1647,7 +1647,7 @@
     "/v1/edge-mgmt/edgehosts/current/unlink": {
       "post": {
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "Unlink edge host from other edge hosts",
         "operationId": "v1EdgeHostUnlink",
@@ -1684,7 +1684,7 @@
     "/v1/edge-mgmt/edgehosts/current/uploaded-content/details": {
       "get": {
         "tags": [
-          "host"
+          "edge-mgmt"
         ],
         "summary": "Get metadata of last uploaded content archive file",
         "operationId": "v1UploadedContentDetails",
@@ -1708,7 +1708,7 @@
       "get": {
         "description": "Get life cycle events of cluster and edge host",
         "tags": [
-          "events"
+          "edge-mgmt"
         ],
         "summary": "Get life cycle events of cluster and edge host",
         "operationId": "v1GetLifecycleEvents",
@@ -1732,7 +1732,7 @@
       "get": {
         "description": "Get general settings",
         "tags": [
-          "settings"
+          "edge-mgmt"
         ],
         "summary": "Get general settings",
         "operationId": "v1Settings",
@@ -1756,7 +1756,7 @@
       "get": {
         "description": "Ping Service",
         "tags": [
-          "troubleshoot"
+          "ping"
         ],
         "summary": "Ping Service",
         "operationId": "V1Ping",
@@ -1780,7 +1780,7 @@
       "get": {
         "description": "Get current logged in user's information",
         "tags": [
-          "user"
+          "users"
         ],
         "summary": "Get current logged in user's information",
         "operationId": "V1CurrentUser",
@@ -1802,7 +1802,7 @@
       "patch": {
         "description": "Patches the current logged in user's configuration",
         "tags": [
-          "user"
+          "users"
         ],
         "summary": "Patches the current logged in user's configuration",
         "operationId": "v1PatchCurrentUser",
@@ -1836,7 +1836,7 @@
       "post": {
         "description": "Authenticates the user with the specified credentials",
         "tags": [
-          "user"
+          "users"
         ],
         "summary": "Authenticates the user with the specified credentials",
         "operationId": "V1UserLogin",
@@ -1889,7 +1889,7 @@
     "/v1/users/default/logout": {
       "post": {
         "tags": [
-          "user"
+          "users"
         ],
         "summary": "Logs out the user from the system",
         "operationId": "V1UserLogout",
@@ -1922,7 +1922,7 @@
       "post": {
         "description": "Resets the user's password",
         "tags": [
-          "user"
+          "users"
         ],
         "summary": "Resets the user's password",
         "operationId": "V1UserPasswordReset",
@@ -1961,7 +1961,7 @@
     "/v1/users/default/token/renewal": {
       "post": {
         "tags": [
-          "user"
+          "users"
         ],
         "summary": "Refreshes the authentication token of the user",
         "operationId": "V1UserTokenRenewal",
@@ -3169,7 +3169,7 @@
           "$ref": "#/definitions/v1UpdateStrategy"
         },
         "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true \u0026\u0026 useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
+          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove master taint this will not be used for worker pools",
           "type": "boolean"
         }
       }
@@ -3297,7 +3297,7 @@
       "type": "object",
       "properties": {
         "addresses": {
-          "description": "Addresses is a map of PCI device entry name to its addresses.\nExample entry would be \"11:00.0 VGA compatible controller [0300]: NVIDIA\nCorporation Device [10de:1eb1] (rev a1)\"- \u003e 0000_11_00_0\" The address is\nBDF (Bus Device Function) identifier format seperated by underscores. The\nfirst 4 bits are almost always 0000. In the above example 11 is Bus, 00\nis Device,0 is function. The values of these addreses are expected in hexadecimal\nformat\n",
+          "description": "Addresses is a map of PCI device entry name to its addresses.\nExample entry would be \"11:00.0 VGA compatible controller [0300]: NVIDIA\nCorporation Device [10de:1eb1] (rev a1)\"- > 0000_11_00_0\" The address is\nBDF (Bus Device Function) identifier format seperated by underscores. The\nfirst 4 bits are almost always 0000. In the above example 11 is Bus, 00\nis Device,0 is function. The values of these addreses are expected in hexadecimal\nformat\n",
           "type": "object",
           "additionalProperties": {
             "type": "string"
@@ -4242,7 +4242,7 @@
       "description": "Unauthorized"
     },
     "v1UpdateStrategy": {
-      "description": "UpdatesStrategy will be used to translate to RollingUpdateStrategy of a MachineDeployment We'll start with default values for the translation, can expose more details later Following is details of parameters translated from the type ScaleOut =\u003e maxSurge=1, maxUnavailable=0 ScaleIn =\u003e maxSurge=0, maxUnavailable=1",
+      "description": "UpdatesStrategy will be used to translate to RollingUpdateStrategy of a MachineDeployment We'll start with default values for the translation, can expose more details later Following is details of parameters translated from the type ScaleOut => maxSurge=1, maxUnavailable=0 ScaleIn => maxSurge=0, maxUnavailable=1",
       "type": "object",
       "properties": {
         "type": {
@@ -4427,5 +4427,24 @@
       "name": "Authorization",
       "in": "header"
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "edge-mgmt",
+      "x-displayName": "Edge Mgmt"
+    },
+    {
+      "name": "ping",
+      "x-displayName": "Ping"
+    },
+    {
+      "name": "users",
+      "x-displayName": "Users"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://edge-host-ip:5080"
+    }
+  ]
 }
