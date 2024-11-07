@@ -88,7 +88,7 @@ from VMware vSphere to Palette VMO.
     for guidance.
   - The host with the Palette CLI setup for migration must have access to your image registry.
   - If you are using a private image registry, you must create a Secret to be used for the migration. The Secret must be
-    in the form of a yaml file and the `metadata.name` value must be `vddk-image-pull-secret`.
+    in the form of a YAML file and the `metadata.name` value must be `vddk-image-pull-secret`.
 
     <!--prettier-ignore-->
     <details>
