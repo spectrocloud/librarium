@@ -103,7 +103,7 @@ api: ## Generate API docs
 	npm run generate-api-docs
 
 test: ## Run Jest tests
-	npm test
+	npm test -- --no-cache
 
 test-visuals: ## Run visual regression tests
 	npx playwright test visuals/
