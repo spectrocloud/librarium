@@ -94,8 +94,8 @@ export default function CveReportsTable() {
       dataIndex: ["metadata", "cve"],
       key: "cve",
       sorter: (a, b) => a.metadata.cve.localeCompare(b.metadata.cve),
-      render: (cve: string) => (
-        <Link to={`/security-bulletins/reports/${cve.toLowerCase()}`} style={{ color: "#1890ff" }}>
+      render: (cve: string, record) => (
+        <Link to={`/security-bulletins/reports/${record.metadata.uid.toLowerCase()}`} style={{ color: "#1890ff" }}>
           {cve}
         </Link>
       ),
@@ -164,7 +164,7 @@ export default function CveReportsTable() {
       dataIndex: ["spec", "assessment", "thirdParty", "dependentPackage"],
       key: "thirdPartyPackage",
       width: "15%",
-      render: (record) => (record ? record : "N/A"),
+      render: (record: string) => (record ? record : "N/A"),
     },
     {
       title: "CVSS Severity",
@@ -186,7 +186,7 @@ export default function CveReportsTable() {
         };
         return statusPriority(a.status.status) - statusPriority(b.status.status);
       },
-      render: (record) => {
+      render: (record: Cve) => {
         const status = record.status.status;
         if (status === "Open" || status === "Ongoing") {
           return <span>🔍 {status}</span>;

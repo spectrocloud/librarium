@@ -191,9 +191,9 @@ async function generateMarkdownForCVEs(GlobalCVEData) {
 }
 
 function createCveMarkdown(item, cveImpactData, location) {
-  const lowerCaseCve = item.metadata.cve.toLowerCase();
   const upperCaseCve = item.metadata.cve.toUpperCase();
   const revisions = item.spec.revision;
+  const uid = item.metadata.uid.toLowerCase();
 
   // Generate a table of impacted products
   let table = generateMarkdownTable(cveImpactData);
@@ -250,7 +250,7 @@ ${item.spec.impact.isImpacting ? table : "This CVE is non-impacting as the impac
 ${revisionHistory ? revisionHistory : "No revision history available."}
 `;
 
-  const filePath = path.join(location, `${lowerCaseCve}.md`);
+  const filePath = path.join(location, `${uid}.md`);
 
   // Return a promise and include the CVE or file path in the error log
   return fs
