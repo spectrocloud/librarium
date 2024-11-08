@@ -10,13 +10,14 @@ function generateRevisionHistory(revisions) {
   const headerRow = `| ${headers.join(" | ")} |`;
   const separatorRow = `| ${headers.map(() => "---").join(" | ")} |`;
 
-  // Sort revisions by timestamp in descending order
-  const sortedRevisions = revisions.sort((a, b) => new Date(b.revisionTimestamp) - new Date(a.revisionTimestamp));
+  // Sort revisions by timestamp in descending order, only if revisions array is not empty
+  const sortedRevisions = revisions.length
+    ? [...revisions].sort((a, b) => new Date(b.revisionTimestamp) - new Date(a.revisionTimestamp))
+    : [];
 
   const rows = sortedRevisions.reduce((acc, { revisionTimestamp, revisedField, revisedFrom, revisedTo }) => {
     const description = getItemDescription(revisedField, revisedFrom, revisedTo);
 
-    // Skip row if no applicable description
     if (!description) return acc;
 
     const formattedDate = formatDateCveDetails(revisionTimestamp);
@@ -39,56 +40,61 @@ function getItemDescription(revisedField, revisedFrom, revisedTo) {
 
   switch (revisedField) {
     case "spec.assessment.justification":
-      if (!revisedFrom && revisedTo) {
-        itemDescription = "Official summary added";
-      } else if (revisedFrom && !revisedTo) {
-        itemDescription = "Official summary removed";
-      } else if (revisedFrom && revisedTo) {
-        itemDescription = `Official summary revised: ${revisedTo}`;
-      }
+      itemDescription = getJustificationDescription(revisedFrom, revisedTo);
       break;
 
     case "metadata.nistSeverity":
-      if (revisedFrom === "UNKNOWN") {
-        itemDescription = `Advisory assigned with ${revisedTo} severity`;
-      } else if (revisedFrom !== revisedTo) {
-        itemDescription = `Advisory severity revised to ${revisedTo} from ${revisedFrom}`;
-      }
+      itemDescription = getSeverityDescription(revisedFrom, revisedTo);
       break;
 
-    // Wraping the case inside a block to address eslint no-case-declarations rule
-    case "spec.impact.impactedVersions": {
-      const formattedFrom = revisedFrom.replace(/\s+/g, ", ").replace(/^\[|\]$/g, "");
-      const formattedTo = revisedTo.replace(/\s+/g, ", ").replace(/^\[|\]$/g, "");
-
-      if (revisedFrom === "[]") {
-        itemDescription = `Added impacted versions: ${formattedTo}`;
-      } else {
-        itemDescription = `Impacted versions changed from ${formattedFrom} to ${formattedTo}`;
-      }
+    case "spec.impact.impactedVersions":
+      itemDescription = getImpactedVersionsDescription(revisedFrom, revisedTo);
       break;
-    }
 
     case "status.status":
-      if (revisedFrom !== revisedTo) {
-        itemDescription = `Status changed from ${revisedFrom} to ${revisedTo}`;
-      }
+      itemDescription = revisedFrom !== revisedTo ? `Status changed from ${revisedFrom} to ${revisedTo}` : "";
       break;
 
     case "spec.impact.isImpacting":
-      if (revisedFrom === "false" && revisedTo === "true") {
-        itemDescription = "Advisory is now impacting.";
-      } else if (revisedFrom === "true" && revisedTo === "false") {
-        itemDescription = "Advisory is no longer impacting.";
-      }
+      itemDescription =
+        revisedFrom === "false" && revisedTo === "true"
+          ? "Advisory is now impacting."
+          : revisedFrom === "true" && revisedTo === "false"
+            ? "Advisory is no longer impacting."
+            : "";
       break;
 
     default:
-      itemDescription = "";
-      break;
+      return ""; // Return early if no matching case
   }
 
   return itemDescription;
+}
+
+function getJustificationDescription(revisedFrom, revisedTo) {
+  if (!revisedFrom && revisedTo) return "Official summary added";
+  if (revisedFrom && !revisedTo) return "Official summary removed";
+  if (revisedFrom && revisedTo) return `Official summary revised: ${revisedTo}`;
+  return "";
+}
+
+function getSeverityDescription(revisedFrom, revisedTo) {
+  if (revisedFrom === "UNKNOWN") return `Advisory assigned with ${revisedTo} severity`;
+  if (revisedFrom !== revisedTo) return `Advisory severity revised to ${revisedTo} from ${revisedFrom}`;
+  return "";
+}
+
+function getImpactedVersionsDescription(revisedFrom, revisedTo) {
+  const formattedFrom = formatArray(revisedFrom);
+  const formattedTo = formatArray(revisedTo);
+
+  return revisedFrom === "[]"
+    ? `Added impacted versions: ${formattedTo}`
+    : `Impacted versions changed from ${formattedFrom} to ${formattedTo}`;
+}
+
+function formatArray(value) {
+  return value.replace(/\s+/g, ", ").replace(/^\[|\]$/g, "");
 }
 
 module.exports = { generateRevisionHistory };
