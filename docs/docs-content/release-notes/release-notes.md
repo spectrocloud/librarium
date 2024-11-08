@@ -61,7 +61,7 @@ tags: ["release-notes"]
 
 - You can now add Edge clusters to Cluster Groups. This feature allows you to use Edge clusters to host virtual clusters
 in Cluster Groups. Check out the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md)
-guide to learn how to create a Cluster Group. s
+guide to learn how to create a Cluster Group.
 <!-- prettier-ignore -->
 - You can now add additional manifests to the
   <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor-edge-native-config" /> pack that invoke the Harbor
@@ -71,7 +71,7 @@ guide to learn how to create a Cluster Group. s
 #### Improvements
 
 <!-- prettier-ignore -->
-- Palette will now create separate Harbor projects for packs and Helm charts when the <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor-edge-native-config" /> pack is enabled an Edge cluster profile. Existing Edge clusters may continue to use the same Harbor project for both packs and Helm charts.
+- Palette will now create separate Harbor projects for packs and Helm charts when the <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor-edge-native-config" /> pack is enabled an Edge cluster profile. Existing Edge clusters may continue to use the same Harbor project for both packs and Helm charts. You can also add additional Harbor projects to the Harbor through the Harbor pack configuration. Refer to the <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor-edge-native-config" /> pack documentation to learn more about this feature.
 
 ### VerteX
 
