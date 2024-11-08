@@ -44,11 +44,6 @@ tags: ["release-notes"]
   `us-docker.pkg.dev`. Refer to the Palette 4.5.3 [Breaking Changes](#breaking-changes-4-5-3) section for more
   information about the new image registry.
 
-- The Self-Hosted Palette install method, Helm Chart, now supports the ability to specify image registry credentials for
-  private registries. Refer to the
-  [Helm Chart Configuration Reference](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md)
-  to learn more about configuring image registry credentials.
-
 - A new cluster filter capability has been added to the Palette UI. The new filter experience provides several quick
   filters out-of-the-box, such as filtering by cluster status, environment, cluster profile, architecture, and more. The
   new filter side drawer is located on the Clusters page. Refer to the
