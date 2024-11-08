@@ -37,6 +37,10 @@ upgrading, you review the information provided in the
   instead. For more information about creating an Edge cluster, refer to
   [Create Cluster Definition](../edge/site-deployment/cluster-deployment.md).
 
+- Avoid skipping minor versions when upgrading the Kubernetes version of a cluster. Refer to the documentation of your
+  Kubernetes distribution for upgrade guidance and follow the recommended upgrade paths. For PXK abd PXK-E, refer to
+  [Upgrade Kubeadm Clusters](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
+
 ## Prerequisites
 
 - An active Kubernetes cluster in Palette.
