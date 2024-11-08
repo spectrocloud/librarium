@@ -40,7 +40,7 @@ upgrading, you review the information provided in the
 - Avoid skipping minor versions when upgrading the Kubernetes version of a cluster. Refer to the documentation of your
   Kubernetes distribution for upgrade guidance and follow the recommended upgrade paths.
 
-  - For PXK abd PXK-E, refer to
+  - For PXK and PXK-E, refer to
     [Upgrade Kubeadm Clusters](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
   - For K3s, refer to [K3s Upgrades](https://docs.k3s.io/upgrades#version-specific-caveats)
   - For RKE2, refer to [RKE2 Manual Upgrades](https://docs.rke2.io/upgrade/manual_upgrade)
