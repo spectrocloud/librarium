@@ -11,7 +11,7 @@ tags: ["legal", "licenses"]
 The following table lists the open source licenses tied to the libraries and modules currently in use by Palette.
 
 | Library                                                                                       | License                                                                   |
-| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | --- |
 | github.com/klauspost/compress/internal/snapref                                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/modern-go/reflect2                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | sigs.k8s.io/yaml                                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
