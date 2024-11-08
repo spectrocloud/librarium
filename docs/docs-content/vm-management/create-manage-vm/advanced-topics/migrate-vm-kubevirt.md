@@ -84,9 +84,9 @@ from VMware vSphere to Palette VMO.
   speed up the migration.
 
   - The VDDK image must be built and uploaded to your image registry before starting the migration. Refer to the
-    [Red Hat Documentation](https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.6/html/installing_and_using_the_migration_toolkit_for_virtualization/prerequisites_mtv#creating-vddk-image_mtv)
+    [Creating a VDDK image](https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.6/html/installing_and_using_the_migration_toolkit_for_virtualization/prerequisites_mtv#creating-vddk-image_mtv) guide
     for guidance.
-  - The host with the Palette CLI setup for migration must have access to your image registry.
+  - The migration host must have access to your image registry.
   - If you are using a private image registry, you must create a Secret to be used for the migration. The Secret must be
     in the form of a YAML file and the `metadata.name` value must be `vddk-image-pull-secret`.
 
@@ -102,12 +102,12 @@ from VMware vSphere to Palette VMO.
     --docker-username=myUsername \
     --docker-password=myPassword \
     --docker-email=myEmail \
-    -o yaml > image-pull-secret.yaml
+    --output yaml > image-pull-secret.yaml
     ```
 
     This creates the `image-pull-secret.yaml` file in your working directory.
 
-    ```yaml title="Example contents of image-pull-secret.yaml"
+    ```yaml hideClipboard
     apiVersion: v1
     kind: Secret
     metadata:
@@ -117,7 +117,7 @@ from VMware vSphere to Palette VMO.
     type: kubernetes.io/dockerconfigjson
     ```
 
-    The `data..dockerconfigjson` value contains your registry credentials, which have been base64 encoded by the
+    The `data.dockerconfigjson` value contains your registry credentials, which have been base64 encoded by the
     command.
 
     Alternatively, you can manually encode a `config.json` by issuing the following command.
@@ -130,11 +130,11 @@ from VMware vSphere to Palette VMO.
     eyJodHRwczovL2luZGV4L ... J0QUl6RTIifX0=
     ```
 
-    You can then use this output to create your own Secret manually. Just ensure that the `metadata.name` is set to
+    You can then use this output to create your own Secret manually. Ensure that the `metadata.name` is set to
     `vddk-image-pull-secret`.
 
     Refer to the
-    [Kubernetes Documentation](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
+    [Pull an Image from a Private Registry documentation](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
     for additional guidance.
 
     </details>
