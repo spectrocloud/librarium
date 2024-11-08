@@ -24,68 +24,82 @@ interface Cve {
     grypeSeverity: string;
     cvePublishedTimestamp: string;
     cveLastModifiedTimestamp: string;
-    cveLastSeenTimestamp: string;
     advCreatedTimestamp: string;
-    advLastModifiedTimestamp: string;
   };
   spec: {
-    assessment: {
-      impact: string;
-      severity: string;
-      justification: string;
-      thirdParty: {
-        dependentPackage: string;
-        isDependentOnThirdParty: boolean;
-        isUpstreamFixAvailable: boolean;
-        dependencyNote: string;
-      };
-    };
     impact: {
-      isImpacting: boolean;
-      impactedImageTypes: {
-        core: boolean;
-      };
-      impactedDeployments: {
-        airgap: boolean;
-        connected: boolean;
-      };
-      impactedProducts: {
-        palette: boolean;
-        vertex: boolean;
-      };
-      impactedImageList: string[];
-      impactedComponents: string[];
       impactedVersions: string[];
-      technicalDetails: string;
     };
-    remediation: {
-      isRemediationAvailable: boolean;
-      remediationSteps: string;
-    };
-    revision: any[];
   };
   status: {
-    state: string;
     status: string;
   };
 }
 
+// Reduced interface for minimized CVE data
+interface MinimizedCve {
+  metadata: {
+    uid: string;
+    cve: string;
+    cvssScore: number;
+    cvePublishedTimestamp: string;
+    cveLastModifiedTimestamp: string;
+  };
+  spec: {
+    impact: {
+      impactedVersions: string[];
+    };
+  };
+  status: {
+    status: string;
+  };
+}
+
+// Define a union type to handle both full and minimized data structures
+type CveDataUnion =
+  | CveData
+  | { palette: MinimizedCve[]; paletteAirgap: MinimizedCve[]; vertex: MinimizedCve[]; vertexAirgap: MinimizedCve[] };
+
 export default function CveReportsTable() {
-  const [data, setData] = useState<CveData | null>(null);
+  const [data, setData] = useState<CveDataUnion | null>(null);
   const [loading, setLoading] = useState(true);
   const { colorMode } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
 
   useEffect(() => {
+    // Attempt at reducing memory foot print (fingers crossed)
+    const minimizeData = (entry: Cve): MinimizedCve => ({
+      metadata: {
+        uid: entry.metadata.uid,
+        cve: entry.metadata.cve,
+        cvssScore: entry.metadata.cvssScore,
+        cvePublishedTimestamp: entry.metadata.cvePublishedTimestamp,
+        cveLastModifiedTimestamp: entry.metadata.cveLastModifiedTimestamp,
+      },
+      spec: { impact: { impactedVersions: entry.spec.impact.impactedVersions } },
+      status: { status: entry.status.status },
+    });
+
     const loadData = async () => {
-      const response = await import("../../../.docusaurus/security-bulletins/default/data.json");
-      setData(response as CveData);
-      setLoading(false);
+      try {
+        const response = await import("../../../.docusaurus/security-bulletins/default/data.json");
+        const reducedData = {
+          palette: response.palette.map(minimizeData),
+          paletteAirgap: response.paletteAirgap.map(minimizeData),
+          vertex: response.vertex.map(minimizeData),
+          vertexAirgap: response.vertexAirgap.map(minimizeData),
+        };
+        setData(reducedData); // `reducedData` matches the `MinimizedCve` type
+      } catch (error) {
+        console.error("Error loading data:", error);
+      } finally {
+        setLoading(false);
+      }
     };
     loadData();
   }, []);
 
-  const columns: ColumnsType<Cve> = useMemo(
+  const columns: ColumnsType<MinimizedCve> = useMemo(
     () => [
       {
         title: "CVE ID",
@@ -120,84 +134,21 @@ export default function CveReportsTable() {
         title: "Product Version",
         dataIndex: ["spec", "impact", "impactedVersions"],
         key: "productVersion",
-        sorter: (a, b) => {
-          const isGreater = (a: string, b: string) => a.localeCompare(b, undefined, { numeric: true }) === 1;
-          const getSortedVersions = (versions: string[]) => versions.sort((v1, v2) => (isGreater(v1, v2) ? -1 : 1));
-
-          const sortedVersionsA = getSortedVersions([...a.spec.impact.impactedVersions]);
-          const sortedVersionsB = getSortedVersions([...b.spec.impact.impactedVersions]);
-
-          if (sortedVersionsA.length === 0 || sortedVersionsB.length === 0) {
-            return sortedVersionsA.length - sortedVersionsB.length;
-          }
-
-          return isGreater(sortedVersionsA[0], sortedVersionsB[0]) ? -1 : 1;
-        },
-        render: (impactedVersions: string[]) => {
-          const sortedVersions = impactedVersions.sort((v1, v2) =>
-            v1.localeCompare(v2, undefined, { numeric: true }) === 1 ? -1 : 1
-          );
-          const displayedVersions = sortedVersions.slice(0, 3).join(", ");
-          return sortedVersions.length > 3 ? `${displayedVersions}, ...` : displayedVersions || "N/A";
-        },
-      },
-      {
-        title: "Third Party Vulnerability",
-        dataIndex: ["spec", "assessment", "thirdParty", "isDependentOnThirdParty"],
-        key: "vulnerabilityType",
-        sorter: (a, b) => {
-          const valueA = a.spec.assessment.thirdParty.isDependentOnThirdParty ? 1 : 0;
-          const valueB = b.spec.assessment.thirdParty.isDependentOnThirdParty ? 1 : 0;
-          return valueB - valueA;
-        },
-        render: (isDependentOnThirdParty) => {
-          if (isDependentOnThirdParty === true) return "Yes";
-          if (isDependentOnThirdParty === false) return "No";
-          return "N/A";
-        },
-      },
-      {
-        title: "Third Party Package",
-        dataIndex: ["spec", "assessment", "thirdParty", "dependentPackage"],
-        key: "thirdPartyPackage",
-        width: "15%",
-        render: (record: string) => (record ? record : "N/A"),
-      },
-      {
-        title: "CVSS Severity",
-        dataIndex: ["metadata", "cvssScore"],
-        key: "baseScore",
-        sorter: (a, b) => a.metadata.cvssScore - b.metadata.cvssScore,
-        render: (baseScore: number, record) => (
-          <Link to={`https://nvd.nist.gov/vuln/detail/${record.metadata.cve}`}>{baseScore}</Link>
-        ),
+        render: (impactedVersions: string[]) => impactedVersions.join(", ") || "N/A",
       },
       {
         title: "Status",
         key: "status",
-        sorter: (a, b) => {
-          const statusPriority = (status: string) => {
-            if (status === "Open" || status === "Ongoing") return -1;
-            if (status === "Fixed" || status === "Closed") return 1;
-            return 0;
-          };
-          return statusPriority(a.status.status) - statusPriority(b.status.status);
-        },
-        render: (record: Cve) => {
+        render: (record: MinimizedCve) => {
           const status = record.status.status;
-          if (status === "Open" || status === "Ongoing") {
-            return <span>🔍 {status}</span>;
-          } else if (status === "Fixed" || status === "Closed") {
-            return <span>✅ {status}</span>;
-          }
-          return <span>{status}</span>;
+          return status === "Open" || status === "Ongoing" ? <span>🔍 {status}</span> : <span>✅ {status}</span>;
         },
       },
     ],
     []
   );
 
-  const renderCveTable = (cveList: Cve[]) => (
+  const renderCveTable = (cveList: MinimizedCve[]) => (
     <Table
       columns={columns}
       dataSource={cveList}
@@ -236,7 +187,7 @@ export default function CveReportsTable() {
           </Admonition>
         </div>
         <div className={styles.tableContainer}>
-          <Tabs defaultActiveKey="1" items={tabs} />
+          <Tabs defaultActiveKey="1" items={tabs} destroyInactiveTabPane />
         </div>
       </ConfigProvider>
     </div>
