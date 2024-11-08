@@ -671,6 +671,6 @@ The following table lists the open source licenses tied to the libraries and mod
 | registry.npmjs.org/react-aria-components/-/react-aria-components-1.3.0                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | registry.npmjs.org/react-clipboard.js/-/react-clipboard.js-2.0.16                             | [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode.en) |
 | registry.npmjs.org/react-dom/-/react-dom-18.2.0                                               | [MIT](https://opensource.org/license/mit/)                                |
-| registry.npmjs.org/react-helmet/-/react-helmet-6.1.0                                          | [MIT](https://opensource.org/license/mit/)                                |     |
+| registry.npmjs.org/react-helmet/-/react-helmet-6.1.0                                          | [MIT](https://opensource.org/license/mit/)                                |
 
 <!-- vale on -->
