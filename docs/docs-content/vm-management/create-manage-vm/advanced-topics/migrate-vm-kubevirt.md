@@ -125,7 +125,7 @@ from VMware vSphere to Palette VMO.
     cat path/to/config.json | base64 --wrap=0
     ```
 
-    ```text title="Example output"
+    ```text hideClipboard title="Example output"
     eyJodHRwczovL2luZGV4L ... J0QUl6RTIifX0=
     ```
 
