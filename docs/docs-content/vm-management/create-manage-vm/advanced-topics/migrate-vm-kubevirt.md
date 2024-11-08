@@ -24,7 +24,7 @@ from VMware vSphere to Palette VMO.
 
 ## Prerequisites
 
-- A Healthy VMO cluster. Refer to the [Create a VMO Profile](../../create-vmo-profile.md) for further guidance.
+- A healthy VMO cluster. Refer to the [Create a VMO Profile](../../create-vmo-profile.md) for further guidance.
 
   - The VMO cluster must have access to VMware and the VM you want to migrate.
 
@@ -85,7 +85,7 @@ from VMware vSphere to Palette VMO.
 
   - The VDDK image must be built and uploaded to your image registry before starting the migration. Refer to the
     [Creating a VDDK image](https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.6/html/installing_and_using_the_migration_toolkit_for_virtualization/prerequisites_mtv#creating-vddk-image_mtv)
-    guide for guidance.
+    documentation for guidance.
   - The migration host must have access to your image registry.
   - If you are using a private image registry, you must create a Secret to be used for the migration. The Secret must be
     in the form of a YAML file and the `metadata.name` value must be `vddk-image-pull-secret`.
