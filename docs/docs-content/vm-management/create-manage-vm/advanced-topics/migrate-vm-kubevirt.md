@@ -84,8 +84,8 @@ from VMware vSphere to Palette VMO.
   speed up the migration.
 
   - The VDDK image must be built and uploaded to your image registry before starting the migration. Refer to the
-    [Creating a VDDK image](https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.6/html/installing_and_using_the_migration_toolkit_for_virtualization/prerequisites_mtv#creating-vddk-image_mtv) guide
-    for guidance.
+    [Creating a VDDK image](https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.6/html/installing_and_using_the_migration_toolkit_for_virtualization/prerequisites_mtv#creating-vddk-image_mtv)
+    guide for guidance.
   - The migration host must have access to your image registry.
   - If you are using a private image registry, you must create a Secret to be used for the migration. The Secret must be
     in the form of a YAML file and the `metadata.name` value must be `vddk-image-pull-secret`.
@@ -117,8 +117,7 @@ from VMware vSphere to Palette VMO.
     type: kubernetes.io/dockerconfigjson
     ```
 
-    The `data.dockerconfigjson` value contains your registry credentials, which have been base64 encoded by the
-    command.
+    The `data.dockerconfigjson` value contains your registry credentials, which have been base64 encoded by the command.
 
     Alternatively, you can manually encode a `config.json` by issuing the following command.
 
