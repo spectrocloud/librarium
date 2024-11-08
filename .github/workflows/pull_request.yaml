@@ -99,7 +99,7 @@ jobs:
           npm run build
       
       - name: Build with cached packs
-        # if: ${{ failure() }} Put this on after testing
+        if: ${{ failure() }}
         uses: ./.github/actions/build-cached-packs
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
