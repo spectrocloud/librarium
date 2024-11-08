@@ -193,31 +193,24 @@ and resolve this issue.
    [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide for
    guidance on how to set up your terminal session to use the kubeconfig file.
 
-3. Identify the namespace name where the Palette components are deployed. Use the following command to find the
-   namespace and store it in a variable.
-
-   ```shell
-   CLUSTER_NAME=$(kubectl get namespaces --output jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' | while read name; do [[ $name == cluster-* ]] && echo "$name" && break; done)
-   ```
-
-4. To restore the cluster to a healthy state, you need to delete the following deployments so that Palette can re-create
+3. To restore the cluster to a healthy state, you need to delete the following deployments so that Palette can re-create
    them with the updated machine template. Issue the following commands to delete the following three deployments.
 
    ```shell
-    kubectl delete deployment capi-controller-manager --namespace "$CLUSTER_NAME"
+    kubectl delete deployment capi-controller-manager --namespace capi-system
    ```
 
    ```shell
-    kubectl delete deployment capi-kubeadm-bootstrap-controller-manager --namespace "$CLUSTER_NAME"
+    kubectl delete deployment capi-kubeadm-bootstrap-controller-manager --namespace capi-kubeadm-bootstrap-system
    ```
 
    ```shell
-    kubectl delete deployment capi-kubeadm-control-plane-controller-manager --namespace "$CLUSTER_NAME"
+    kubectl delete deployment capi-kubeadm-control-plane-controller-manager --namespace capi-kubeadm-control-plane-system
    ```
 
-5. Palette will automatically re-create the deleted deployments with the updated machine template. You can monitor the
+4. Palette will automatically re-create the deleted deployments with the updated machine template. You can monitor the
    progress of the re-creation by checking the status of the deployments using the following command.
 
    ```shell
-   kubectl get deployments --namespace "$CLUSTER_NAME"
+   kubectl get deployments --all-namespaces
    ```
