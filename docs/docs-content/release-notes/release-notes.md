@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## November 9,2024 - Release 4.5.8
+## November 9, 2024 - Release 4.5.8
 
 ### Palette {#palette-enterprise-4-5-8}
 
