@@ -164,12 +164,12 @@ profile.
 
 ### Save Profile and Deploy Cluster
 
-8. Click **Save Changes**.
+11. Click **Save Changes**.
 
-9. Deploy a new Edge cluster with your updated profile. Or, if you have an active cluster, update the cluster to use the
-   new version of the cluster profile. The initial download of the images will require a connection to the external
-   network as the images are sourced from the original repository. Subsequent image pulls are sourced from the local
-   Harbor registry.
+12. Deploy a new Edge cluster with your updated profile. Or, if you have an active cluster, update the cluster to use
+    the new version of the cluster profile. The initial download of the images will require a connection to the external
+    network as the images are sourced from the original repository. Subsequent image pulls are sourced from the local
+    Harbor registry.
 
 ## Validation
 
@@ -197,5 +197,17 @@ profile.
 <!-- prettier-ignore-end -->
 
 7. In the **Projects** view, select the **spectro-images** project.
+
+<!-- prettier-ignore-start -->
+
+   :::info
+
+   Refer to
+   <VersionedLink text="Harbor Edge Native Config pack documentation" url="/integrations/packs/?pack=harbor-edge-native-config"/>  to 
+   learn how to create additional projects in your Harbor registry through your cluster profile.
+
+   :::
+
+<!-- prettier-ignore-end -->
 
 8. Confirm that all images required by the cluster are stored in the project.
