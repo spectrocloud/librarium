@@ -20,18 +20,20 @@ The VMs can then be used with the Virtual Machine Orchestrator (VMO).
 
 - [`migrate-vm`](#migrate-vm) - Migrate one or more VMware vSphere VMs to Palette VMO.
 
-## Prerequisites
-
-- A Healthy VMO cluster. Refer to the [Create a VMO Profile](../../../vm-management/create-vmo-profile.md) for further
-  guidance.
-- One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
-  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
-
 ## Limitations
 
 - You can only use the `vmo` subcommand with VMs hosted in VMware vSphere.
 
 ## Deploy OVA
+
+### Prerequisites
+
+- A healthy VMO cluster. Refer to the [Create a VMO Profile](../../../vm-management/create-vmo-profile.md) for further
+  guidance.
+- One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
+  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
+
+### Usage
 
 Use the `deploy-ova` subcommand to deploy an imported vSphere OVA to Palette VMO. The following flags are supported by
 the `deploy-ova` subcommand. Refer to the
@@ -66,6 +68,15 @@ palette vmo deploy-ova --config-file ~/.palette/vmo/vms/my-ova-name/my-ova-name.
 ```
 
 ## Import OVA
+
+### Prerequisites
+
+- A healthy VMO cluster. Refer to the [Create a VMO Profile](../../../vm-management/create-vmo-profile.md) for further
+  guidance.
+- One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
+  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
+
+### Usage
 
 Use the `import-ova` subcommand to import a vSphere OVA to Palette VMO. The following flags are supported by the
 `import-ova` subcommand. The OVA will be converted to the QCOW2 virtual disk storage format. This subcommand generates
@@ -116,6 +127,14 @@ palette vmo import-ova --skip-image
 ```
 
 ## Migrate VM
+
+### Prerequisites
+
+Refer to
+[Migrate a VM to a VMO cluster](../../../vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md#prerequisites)
+for a full list of prerequisites.
+
+### Usage
 
 Use the `migrate-vm` subcommand to migrate one or more VMs from VMware vSphere to Palette VMO. The following flags are
 supported by the `migrate-vm` subcommand. The migration consists of two phases. First, all guest disks are transferred
