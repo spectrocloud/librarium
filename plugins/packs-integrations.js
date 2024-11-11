@@ -340,19 +340,25 @@ async function mapRepositories(repositories) {
     }
     return acc;
   }, []);
+
   open(`${dirname}${repos_filename}`, "w+", (err, fd) => {
+    if (err) {
+      logger.error("An error occurred while opening the JSON file:", err);
+      return;
+    }
     try {
-      writeFile(`${dirname}${repos_filename}`, JSON.stringify(repoMap), (err) => {
-        if (err) {
-          logger.error("An error occurred while writing the JSON file:", err);
+      writeFile(`${dirname}${repos_filename}`, JSON.stringify(repoMap), (err1) => {
+        if (err1) {
+          logger.error("An error occurred while writing the JSON file:", err1);
         }
       });
     } finally {
-      close(fd, (err1) => {
-        if (err1) logger.error("An error occurred while closing the file:", err1);
+      close(fd, (err2) => {
+        if (err2) logger.error("An error occurred while closing the file:", err2);
       });
     }
   });
+
   return repoMap;
 }
 
@@ -527,15 +533,19 @@ async function pluginPacksAndIntegrationsData(context, options) {
         apiPackResponse.packMDMap = packMDMap;
         apiPackResponse.logoUrlMap = logoUrlMap;
         open(`${dirname}${packs_filename}`, "w+", (err, fd) => {
+          if (err) {
+            logger.error("An error occurred while opening the JSON file:", err);
+            return;
+          }
           try {
-            writeFile(`${dirname}${packs_filename}`, JSON.stringify(apiPackResponse), (err) => {
-              if (err) {
-                logger.error("An error occurred while writing the JSON file:", err);
+            writeFile(`${dirname}${packs_filename}`, JSON.stringify(apiPackResponse), (err1) => {
+              if (err1) {
+                logger.error("An error occurred while writing the JSON file:", err1);
               }
             });
           } finally {
-            close(fd, (err1) => {
-              if (err1) logger.error("An error occurred while closing the file:", err1);
+            close(fd, (err2) => {
+              if (err2) logger.error("An error occurred while closing the file:", err2);
             });
           }
         });
