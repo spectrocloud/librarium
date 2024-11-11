@@ -298,13 +298,12 @@ async function fetchPackListItems(queryParams, packDataArr, counter, mappedRepos
   }
   // Provide the registryUids in the payload to fetch the packs ONLY from registries provided in the Docusarus config file
   const payload = { filter: { type: ["spectro", "oci"], registryUid: registryUids } };
-  let response = []
+  let response = [];
   try {
     response = await callRateLimitAPI(() => api.post(`/v1/packs/search${queryParams}`, payload));
-  }
-  catch (error) {
+  } catch (error) {
     logger.error("An error occurred while fetching packs:", error);
-    process.exit(5)
+    process.exit(5);
   }
   const tempPackArr = packDataArr.concat(response?.data?.items);
 
@@ -321,14 +320,14 @@ async function fetchPackListItems(queryParams, packDataArr, counter, mappedRepos
 }
 
 async function mapRepositories(repositories) {
-  let ociRegistries = []
-  let packRegistries = []
+  let ociRegistries = [];
+  let packRegistries = [];
   try {
     ociRegistries = await api.get("v1/registries/oci/summary");
     packRegistries = await api.get("v1/registries/pack");
   } catch (error) {
     logger.error("An error occurred while fetching registries:", error);
-    process.exit(5)
+    process.exit(5);
   }
   const mergedRegistries = [ociRegistries.data?.items || [], packRegistries.data?.items || []];
   const results = mergedRegistries.flat();
@@ -499,11 +498,11 @@ async function pluginPacksAndIntegrationsData(context, options) {
                 })
               );
             }
-          } catch(error) {
+          } catch (error) {
             logger.error("An error occurred while fetching packs:", error);
-            process.exit(5)
+            process.exit(5);
           }
-          
+
           return registryPackData;
         });
         const flatted = promisesPackDetails.flat();
