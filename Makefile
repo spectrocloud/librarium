@@ -54,6 +54,7 @@ clean-versions: ## Clean Docusarus content versions
 clean-packs: ## Clean supplemental packs and pack images
 	rm -rf static/img/packs
 	rm -rf .docusaurus/packs-integrations/api_pack_response.json
+	rm -rf .docusaurus/packs-integrations/api_repositories_response.json
 
 clean-api: ## Clean API docs
 	@echo "cleaning api docs"

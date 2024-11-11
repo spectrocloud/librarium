@@ -348,8 +348,8 @@ async function mapRepositories(repositories) {
         }
       });
     } finally {
-      close(fd, (err) => {
-        if (err) logger.error("An error occurred while closing the file:", err);
+      close(fd, (err1) => {
+        if (err1) logger.error("An error occurred while closing the file:", err1);
       });
     }
   });
