@@ -18,8 +18,8 @@ This section contains documentation and guides for tools essential in automating
 - Palette Terraform Provider - Allows users to use [Terraform](https://www.terraform.io) for automating the deployment
   and management of Palette resources such as cluster profiles, cloud accounts, clusters, and more.
 
-- Palette Crossplane Provider - It allows users to use [Crossplane](https://docs.crossplane.io/v1.15/) to provision and
-  manage Palette resources through standard Kubernetes APIs.
+- Palette Crossplane Provider - Allows users to use [Crossplane](https://docs.crossplane.io/) to provision and manage
+  Palette resources through standard Kubernetes APIs.
 
 ## Resources
 
