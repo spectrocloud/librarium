@@ -21,9 +21,9 @@ cluster profile, and upgrade the cluster using the new profile.
 - Palette API key. Refer to the [User Authentication](../../../user-management/authentication/api-key/create-api-key.md)
   resource to learn how to create a Palette API key.
 
-- An Edge type cluster profile. Refer to
-  [Create Edge Native Cluster Profile](../site-deployment/model-profile.md) guide to learn how to create an Edge Native
-  cluster profile. You may also have other add-on profiles that you wish to attach to your cluster.
+- An Edge type cluster profile. Refer to [Create Edge Native Cluster Profile](../site-deployment/model-profile.md) guide
+  to learn how to create an Edge Native cluster profile. You may also have other add-on profiles that you wish to attach
+  to your cluster.
 
 - Content tags in your profiles highlight the exact location of container images to be downloaded.
 
@@ -87,7 +87,8 @@ cluster profile, and upgrade the cluster using the new profile.
 
    :::info
 
-   Following the EdgeForge process, it's likely that your provider image has a `peVersion` parameter. You can use a different version value in the `peVersion` parameter from the version you use for `stylusPackage`.
+   Following the EdgeForge process, it's likely that your provider image has a `peVersion` parameter. You can use a
+   different version value in the `peVersion` parameter from the version you use for `stylusPackage`.
 
    :::
 
