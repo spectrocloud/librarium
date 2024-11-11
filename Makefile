@@ -230,6 +230,11 @@ find-unused-images:
 
 generate-partials: ## Generate
 	./scripts/generate-partials.sh
+
+###@ Fetch cached packs assets.
+
+get-cached-packs:
+	./scripts/get-cached-packs.sh
 	
 ###@ Aloglia Indexing
 
