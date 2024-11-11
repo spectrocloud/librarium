@@ -71,7 +71,7 @@ cluster profile, and upgrade the cluster using the new profile.
    [Update a Cluster](../../cluster-management/cluster-updates.md).
 
 5. In the OS layer of the profile, include the following line. Replace `versionNumber` with your target agent version
-   number.
+   number you obtained in the first step.
 
    ```yaml {9}
    pack:
