@@ -96,10 +96,11 @@ jobs:
 
       - name: Build
         run: |
-          npm run build
+          npm run build || true # Allows workflow to continue on error
+          echo "BUILD_EXIT_CODE=$?">> $GITHUB_ENV
       
       - name: Build with cached packs
-        if: ${{ failure() }}
+        if: env.BUILD_EXIT_CODE == '5' 
         uses: ./.github/actions/build-cached-packs
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
