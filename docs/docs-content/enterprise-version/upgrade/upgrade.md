@@ -19,7 +19,7 @@ guidance.
 
 :::
 
-### PCG
+### Private Cloud Gateway
 
 If your setup includes a PCG, make sure to
 [allow the PCG to upgrade automatically](../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
