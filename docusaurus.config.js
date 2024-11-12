@@ -35,7 +35,7 @@ const config = {
   },
   future: {
     experimental_faster: {
-      swcJsLoader: true,
+      swcJsLoader: false,
       swcJsMinimizer: true,
       swcHtmlMinimizer: true,
       lightningCssMinimizer: true,
