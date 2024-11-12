@@ -148,6 +148,12 @@ const config = {
     ],
   ],
   plugins: [
+    process.env.RSDOCTOR === 'true' && [
+      'rsdoctor',
+      {
+        /* options */
+      },
+    ],
     "docusaurus-plugin-sass",
     [
       "@docusaurus/plugin-content-docs",
