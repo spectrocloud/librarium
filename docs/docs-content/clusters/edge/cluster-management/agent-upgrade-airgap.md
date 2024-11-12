@@ -25,7 +25,7 @@ cluster profile, and upgrade the cluster using the new profile.
   to learn how to create an Edge Native cluster profile. You may also have other add-on profiles that you wish to attach
   to your cluster.
 
-- Content tags in your profiles highlight the exact location of container images to be downloaded.
+- The `pack.content.images` parameter in your profiles contains the exact location of container images to be downloaded.
 
 ## Procedure
 
