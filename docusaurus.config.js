@@ -148,8 +148,8 @@ const config = {
     ],
   ],
   plugins: [
-    process.env.RSDOCTOR === 'true' && [
-      'rsdoctor',
+    process.env.RSDOCTOR === "true" && [
+      "rsdoctor",
       {
         /* options */
       },
