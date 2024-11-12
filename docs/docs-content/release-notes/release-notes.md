@@ -16,7 +16,7 @@ tags: ["release-notes"]
 ### Bug Fixes
 
 - Fixed an issue that caused add-on packs belonging to Helm registries to fail to download due to incorrect Helm
-  registry path resolution logic. This issue affected Edge clusters.
+  registry path lookup logic. This issue affected Edge clusters.
 
 ## November 9, 2024 - Release 4.5.8
 
