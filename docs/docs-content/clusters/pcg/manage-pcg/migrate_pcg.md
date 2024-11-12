@@ -15,8 +15,8 @@ Check out the [Order of Operations](../../../architecture/orchestration-spectroc
 API pivot.
 
 The cluster's PCG reference point is stored in the Palette management plane's internal database. You can retrieve a
-cluster's PCG reference point by using the Palette API endpoint `GET /v1/spectroclusters/clusterId`. The resonse
-payload's `metadata.annotations.overlordUid` field contains the ID of the PCG that deployed the cluster.
+cluster's PCG reference point by using the Palette API endpoint `GET /v1/spectroclusters/:uid`. The resonse payload's
+`metadata.annotations.overlordUid` field contains the ID of the PCG that deployed the cluster.
 
 ```json hideClipboard {5}
 {
