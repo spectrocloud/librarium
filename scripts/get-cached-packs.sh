@@ -10,7 +10,7 @@ then
     echo "✅ GitHub CLI is installed."
 else
     echo "❌ GitHub CLI is not installed."
-    echo "Run 'brew install gh' to install it with Homebrew."
+    echo "ℹ️ Use 'brew install gh' to install it with Homebrew."
     exit 1
 fi
 
@@ -19,7 +19,7 @@ then
     echo "✅ GitHub CLI is authenticated. "
 else
     echo "❌ GitHub CLI is not authenticated."
-    echo "Please log in by running 'gh auth login'."
+    echo "ℹ️ Please log in with 'gh auth login'."
     exit 1
 fi
 
@@ -46,4 +46,4 @@ mv downloaded_artifacts/build/packs/* static/img/packs
 rm -rf downloaded_artifacts
 
 echo "✅ Completed fetch of cached packs." 
-echo "⏭️ You can now execute make start or make build."
+echo "⏭️ You can now execute 'make start' or 'make build'."

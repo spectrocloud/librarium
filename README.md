@@ -839,6 +839,18 @@ Settting the `DISABLE_PACKS_PLUGIN` environment variable to `true` will also hav
   `integrations/` page is the new behavior.
 - The Packs list page will display a warning message indicating that the packs data is not available.
 
+#### Cached Packs Data
+
+All pack related data is saved to a [GitHub Workflow Artifact](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/storing-and-sharing-data-from-a-workflow#about-workflow-artifacts) after every succesful release to production. Check out the [post_release.yaml](.github/workflows/post_release.yaml) for further details. The cached data enables us to build and start librarium without performing any pack related API queries. All of our GitHub workflows will use this cached data as a fallback in the case of an API related build failure. Check out the [build-cached-packs action.yaml](.github/actions/build-cached-packs/action.yaml) to learn how the cached data is fetched and used. 
+
+You can use this flow locally when you want to avoid the pack download time or when the API is having an outage. Execute the following command from the librarium root folder to fetch the packs data artifact and place the files in the correct places.
+
+```shell
+make get-cached-packs
+```
+
+The script will prompt you to install and authenticate the [GitHub CLI](https://cli.github.com/) before you can proceed. You can then execute `make start` or `make build` as usual.
+
 #### README Content
 
 The pack component will display a Pack's README file if it exists. The README content comes from the Palette API.
