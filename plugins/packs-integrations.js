@@ -341,23 +341,7 @@ async function mapRepositories(repositories) {
     return acc;
   }, []);
 
-  open(`${dirname}${repos_filename}`, "w+", (err, fd) => {
-    if (err) {
-      logger.error("An error occurred while opening the JSON file:", err);
-      return;
-    }
-    try {
-      writeFile(`${dirname}${repos_filename}`, JSON.stringify(repoMap), (err1) => {
-        if (err1) {
-          logger.error("An error occurred while writing the JSON file:", err1);
-        }
-      });
-    } finally {
-      close(fd, (err2) => {
-        if (err2) logger.error("An error occurred while closing the file:", err2);
-      });
-    }
-  });
+  await writeResponseFile(`${dirname}${repos_filename}`, repoMap);
 
   return repoMap;
 }
@@ -418,6 +402,27 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
       }
     }
   }
+}
+
+async function writeResponseFile(path, apiResponse) {
+  open(path, "w+", (err, fd) => {
+    if (err) {
+      logger.error("An error occurred while opening the JSON file:", err);
+      return;
+    }
+    try {
+      writeFile(path, JSON.stringify(apiResponse), (err1) => {
+        if (err1) {
+          logger.error("An error occurred while writing the JSON file:", err1);
+        }
+        logger.info(`API Response saved to ${path}`);
+      });
+    } finally {
+      close(fd, (err2) => {
+        if (err2) logger.error("An error occurred while closing the file:", err2);
+      });
+    }
+  });
 }
 
 // If the plugin is disabled, then the packs and integrations data will not be fetched.
@@ -532,23 +537,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
         apiPackResponse.apiPacksData = apiPacksData;
         apiPackResponse.packMDMap = packMDMap;
         apiPackResponse.logoUrlMap = logoUrlMap;
-        open(`${dirname}${packs_filename}`, "w+", (err, fd) => {
-          if (err) {
-            logger.error("An error occurred while opening the JSON file:", err);
-            return;
-          }
-          try {
-            writeFile(`${dirname}${packs_filename}`, JSON.stringify(apiPackResponse), (err1) => {
-              if (err1) {
-                logger.error("An error occurred while writing the JSON file:", err1);
-              }
-            });
-          } finally {
-            close(fd, (err2) => {
-              if (err2) logger.error("An error occurred while closing the file:", err2);
-            });
-          }
-        });
+        await writeResponseFile(`${dirname}${packs_filename}`, apiPackResponse);
       } else {
         try {
           const data = await promises.readFile(`${dirname}${packs_filename}`);

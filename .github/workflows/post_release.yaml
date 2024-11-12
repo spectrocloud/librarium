@@ -50,6 +50,5 @@ jobs:
           path: |
             build/packs
             .docusaurus/packs-integrations
-            .docusaurus/plugin-packs-integrations
           if-no-files-found: error
           retention-days: 7

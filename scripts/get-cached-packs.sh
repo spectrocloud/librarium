@@ -36,11 +36,9 @@ echo "✅ Cached packs artifact downloaded."
 
 # Ensure the correct folders exist.
 mkdir -p .docusaurus/packs-integrations
-mkdir -p .docusaurus/plugin-packs-integrations
 
 # Move the files to their correct places in the checked out repository
 mv downloaded_artifacts/.docusaurus/packs-integrations/* .docusaurus/packs-integrations 
-mv downloaded_artifacts/.docusaurus/plugin-packs-integrations/* .docusaurus/plugin-packs-integrations
 mkdir -p static/img/packs
 mv downloaded_artifacts/build/packs/* static/img/packs
 
