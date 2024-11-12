@@ -35,12 +35,12 @@ const config = {
   },
   future: {
     experimental_faster: {
-      swcJsLoader: false,
-      swcJsMinimizer: false,
-      swcHtmlMinimizer: false,
-      lightningCssMinimizer: false,
+      swcJsLoader: true,
+      swcJsMinimizer: true,
+      swcHtmlMinimizer: true,
+      lightningCssMinimizer: true,
       rspackBundler: false,
-      mdxCrossCompilerCache: false,
+      mdxCrossCompilerCache: true,
     },
   },
   customFields: {
