@@ -67,3 +67,91 @@ PCG is helpful in scenarios such as:
 - PCG upgrade errors.
 
 - The cloud account associated with the existing PCG is no longer valid and a new cloud account is needed.
+
+:::warning
+
+A PCG migration is an irreversible action. Once a PCG is migrated, the original PCG is no longer associated with the
+clusters that it deployed.
+
+:::
+
+Use the following steps to migrate a PCG to a different PCG.
+
+## Prerequisites
+
+- Tenant admin access to the Palette.
+
+- At least two healthy PCG with network connectivity to the Palette management plane.
+
+- The new PCG must target the same infrastructure provider as the existing PCG.
+
+## Migrate PCG
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant administrator.
+
+2. Navigate to the left **Main Menu** and select **Tenant Settings**.
+
+3. Select **Private Cloud Gateways** from the **Tenant Settings Menu**.
+
+4. In the list of PCGs, identify the PCG that you want to migrate and click on the **three-dot Menu** at the end of the
+   PCG row.
+
+5. Select **Migrate** from the **drop-down Menu**.
+
+6. In the **Migrate Cloud Gateway** dialog box, select the a PCG from the **PCG** drop-down list.
+
+7. Click **Migrate**.
+
+We recommend you remove the cloud account created by the PCG that you migrated. This will prevent any future cluster
+deployments from using the cloud account associated with the migrated PCG. During a cluster deployment, if you
+accidentally select the cloud account mapped to the migrated PCG. Palette will automatically ensure the newly specified
+PCG is used as a PCG reference point instead of the migrated PCG that belongs to the cloud account selected.
+
+## Validate
+
+After the migration is complete, you can validate the migration by checking a cluster deployed with the migrated PCG no
+longer referencing the old PCG. Use the Palette API endpoint `GET /v1/spectroclusters/:uid` and verify the
+`metadata.annotations.overlordUid` field to ensure that the cluster now references the new PCG.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Navigate to the left **Main Menu** and click **Clusters**.
+
+3. Click on a cluster that was deployed by the PCG that you migrated. Take note of the cluster ID. You can find the ID
+   in the URL of the browser. It is the last part of the URL after the `/clusters/`.
+
+   ```text hideClipboard
+   https://console.spectrocloud.com/clusters/11111111111111111111
+   ```
+
+4. Retrieve a deployed cluster's `overlordUid` using the Palette API endpoint `GET /v1/spectroclusters/:uid`. You can
+   use the `curl` command below. Make sure you replace the `:uid` path parameter with the cluster ID, and the `apiKey`
+   and `ProjectUid` headers with your own values.
+
+   ```shell hideClipboard
+   curl --location 'https://api.spectrocloud.com/v1/spectroclusters/:uid' \
+   --header 'ProjectUid: XXXXXXXXXXXX' \
+   --header 'Accept: application/json' \
+   --header 'apiKey: XXXXXXXXXXX'
+   ```
+
+5. Verify that the `metadata.annotations.overlordUid` field in the response payload matches the new PCG's `overlordUid`.
+   Refer to the into section of this guide on how to get the `overlordUid` of a PCG cluster if you need additional help.
+
+   ```json hideClipboard {5}
+   {
+    "metadata": {
+        "annotations": {
+            "jetUid": "6d1e59d9-08fb-4f5c-88ed-1f8c318884bb",
+            "overlordUid": "672fa7ad6e7f4d26fd91d81b",
+            "ownerUid": "667c37669fb1d224ffd0bd1d",
+            "palette.spectrocloud.com/disablenodeautoremidiation": "false",
+            "permissions": "cluster.create,cluster.delete,cluster.get,cluster.import,cluster.list,cluster.update,tag.update",
+            "projectUid": "11111111111111111111",
+            "rootDomain": "console.spectrocloud.com",
+            "scope": "project",
+            "scopeVisibility": "16",
+            "spectroComponentsUpgradeForbidden": "true",
+            "tenantUid": "2222222222222222222"
+        },
+   ```
