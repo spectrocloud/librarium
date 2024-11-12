@@ -22,17 +22,17 @@ cluster's PCG reference point by using the Palette API endpoint `GET /v1/spectro
 {
     "metadata": {
         "annotations": {
-            "jetUid": "6d1e59d9-08fb-4f5c-88ed-1f8c318884bb",
+            "jetUid": "***********************",
             "overlordUid": "6732677ce46389af646d517a",
-            "ownerUid": "667c37669fb1d224ffd0bd1d",
+            "ownerUid": "***********************",
             "palette.spectrocloud.com/disablenodeautoremidiation": "false",
             "permissions": "cluster.create,cluster.delete,cluster.get,cluster.import,cluster.list,cluster.update,tag.update",
-            "projectUid": "11111111111111111111",
+            "projectUid": "***********************",
             "rootDomain": "console.spectrocloud.com",
             "scope": "project",
             "scopeVisibility": "16",
             "spectroComponentsUpgradeForbidden": "true",
-            "tenantUid": "2222222222222222222"
+            "tenantUid": "***********************"
         },
 ```
 
@@ -65,8 +65,6 @@ PCG is helpful in scenarios such as:
 - Decommissioning an existing PCG.
 
 - PCG upgrade errors.
-
-- The cloud account associated with the existing PCG is no longer valid and a new cloud account is needed.
 
 :::warning
 
@@ -142,16 +140,16 @@ longer referencing the old PCG. Use the Palette API endpoint `GET /v1/spectroclu
    {
     "metadata": {
         "annotations": {
-            "jetUid": "6d1e59d9-08fb-4f5c-88ed-1f8c318884bb",
+            "jetUid": "*********************************",
             "overlordUid": "672fa7ad6e7f4d26fd91d81b",
-            "ownerUid": "667c37669fb1d224ffd0bd1d",
+            "ownerUid": "********************************",
             "palette.spectrocloud.com/disablenodeautoremidiation": "false",
             "permissions": "cluster.create,cluster.delete,cluster.get,cluster.import,cluster.list,cluster.update,tag.update",
-            "projectUid": "11111111111111111111",
+            "projectUid": "**********************",
             "rootDomain": "console.spectrocloud.com",
             "scope": "project",
             "scopeVisibility": "16",
             "spectroComponentsUpgradeForbidden": "true",
-            "tenantUid": "2222222222222222222"
+            "tenantUid": "************************"
         },
    ```
