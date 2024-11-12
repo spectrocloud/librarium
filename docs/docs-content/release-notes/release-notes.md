@@ -11,6 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 13, 2024 - Release 4.5.9
+
+### Bug Fixes
+
+- Fixed an issue that caused airgap Edge clusters profile layers to fail to download due to incorrect image path
+  resolution.
+
 ## November 9, 2024 - Release 4.5.8
 
 ### Palette {#palette-enterprise-4-5-8}
