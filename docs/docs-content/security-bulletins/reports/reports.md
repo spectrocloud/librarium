@@ -67,7 +67,7 @@ Click on the CVE ID to view the full details of the vulnerability.
 | [CVE-2023-26604](./cve-2023-26604.md)           | 08/16/24         | 11/7/24       | 4.4.14, 4.4.18, 4.5.3, 4.5.8         | Third-party component: Ubuntu           | [7.8](https://nvd.nist.gov/vuln/detail/CVE-2023-26604)               | :mag: Ongoing               |
 | [CVE-2015-20107](./cve-2015-20107.md)           | 08/16/24         | 9/25/24       | 4.4.14                               | Third-party component: MongoDB          | [7.6](https://nvd.nist.gov/vuln/detail/CVE-2015-20107)               | :mag: Ongoing               |
 | [CVE-2017-11164](./cve-2017-11164.md)           | 08/16/24         | 11/7/24       | 4.4.14, 4.4.18, 4.5.3, 4.5.8         | Third-party component: Ubuntu           | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2017-11164)               | :mag: Ongoing               |
-| [CVE-2018-20225](./cve-2018-20225.md)           | 08/16/24         | 11/12/24       | 4.4.14, 4.5.8                        | Third-party component: MongoDB          | [7.8](https://nvd.nist.gov/vuln/detail/CVE-2018-20225)               | :mag: Ongoing               |
+| [CVE-2018-20225](./cve-2018-20225.md)           | 08/16/24         | 11/12/24      | 4.4.14, 4.5.8                        | Third-party component: MongoDB          | [7.8](https://nvd.nist.gov/vuln/detail/CVE-2018-20225)               | :mag: Ongoing               |
 | [CVE-2022-41409](./cve-2022-41409.md)           | 08/16/24         | 11/7/24       | 4.4.14, 4.4.18, 4.5.3, 4.5.8         | Third-party component: MongoDB          | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2022-41409)               | :mag: Ongoing               |
 | [CVE-2019-17543](./cve-2019-17543.md)           | 08/16/24         | 08/16/24      | 4.4.14                               | Third-party component: MongoDB          | [8.1](https://nvd.nist.gov/vuln/detail/CVE-2019-17543)               | :mag: Ongoing               |
 | [CVE-2022-4899](./cve-2022-4899.md)             | 08/16/24         | 11/7/24       | 4.4.14, 4.4.18, 4.5.3, 4.5.8         | Third-party component: MongoDB          | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2022-4899)                | :mag: Ongoing               |
@@ -102,7 +102,7 @@ Click on the CVE ID to view the full details of the vulnerability.
 | [CVE-2022-48560](./cve-2022-48560.md)           | 9/13/24          | 10/24/24      | 4.4.18                               | Third-party component: Python           | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2022-48560)               | :mag: Ongoing               |
 | [CVE-2022-48565](./cve-2022-48565.md)           | 9/13/24          | 10/24/24      | 4.4.18                               | Third-party component: Python           | [9.8](https://nvd.nist.gov/vuln/detail/CVE-2022-48565) :mag: Ongoing |
 | [CVE-2022-40735](./cve-2022-40735.md)           | 11/14/22         | 11/7/24       | 4.5.8                                | Third-party component: DH Key Exhcnage  | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2022-40735) :mag: Ongoing |
-| [CVE-2024-10963](./cve-2022-40735.md)           | 11/7/24         | 11/12/24       | 4.5.8                                | Third-party component: PAM              | [7.4](https://nvd.nist.gov/vuln/detail/CVE-2022-40735) :mag: Ongoing |
+| [CVE-2024-10963](./cve-2022-40735.md)           | 11/7/24          | 11/12/24      | 4.5.8                                | Third-party component: PAM              | [7.4](https://nvd.nist.gov/vuln/detail/CVE-2022-40735) :mag: Ongoing |
 
 </TabItem>
 
@@ -169,7 +169,7 @@ Click on the CVE ID to view the full details of the vulnerability.
 | [CVE-2022-40735](./cve-2022-40735.md)           | 11/14/22         | 11/7/24       | 4.5.8                        | Third-party component: DH Key Exhcnage  | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2022-40735) :mag: Ongoing |
 | [CVE-2024-49767](./cve-2024-49767.md)           | 10/25/24         | 11/7/24       | 4.5.8                        | Third-party component: Github           | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2024-49767) :mag: Ongoing |
 | [CVE-2018-20225](./cve-2018-20225.md)           | 08/16/24         | 11/12/24      | 4.5.8                        | Third-party component: MongoDB          | [7.8](https://nvd.nist.gov/vuln/detail/CVE-2018-20225)               | :mag: Ongoing |
-| [CVE-2024-10963](./cve-2022-40735.md)           | 11/7/24         | 11/12/24       | 4.5.8                                | Third-party component: PAM              | [7.4](https://nvd.nist.gov/vuln/detail/CVE-2022-40735) :mag: Ongoing |
+| [CVE-2024-10963](./cve-2022-40735.md)           | 11/7/24          | 11/12/24      | 4.5.8                        | Third-party component: PAM              | [7.4](https://nvd.nist.gov/vuln/detail/CVE-2022-40735) :mag: Ongoing |
 
 </TabItem>
 
@@ -257,7 +257,7 @@ Click on the CVE ID to view the full details of the vulnerability.
 | [CVE-2022-40735](./cve-2022-40735.md)           | 11/14/22         | 11/7/24       | 4.5.8                | Third-party component: DH Key Exhcnage  | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2022-40735) :mag: Ongoing |
 | [CVE-2024-49767](./cve-2024-49767.md)           | 10/25/24         | 11/7/24       | 4.5.8                | Third-party component: Github           | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2024-49767) :mag: Ongoing |
 | [CVE-2018-20225](./cve-2018-20225.md)           | 08/16/24         | 11/12/24      | 4.5.8                | Third-party component: MongoDB          | [7.8](https://nvd.nist.gov/vuln/detail/CVE-2018-20225)               | :mag: Ongoing |
-| [CVE-2024-10963](./cve-2022-40735.md)           | 11/7/24         | 11/12/24       | 4.5.8                                | Third-party component: PAM              | [7.4](https://nvd.nist.gov/vuln/detail/CVE-2022-40735) :mag: Ongoing |
+| [CVE-2024-10963](./cve-2022-40735.md)           | 11/7/24          | 11/12/24      | 4.5.8                | Third-party component: PAM              | [7.4](https://nvd.nist.gov/vuln/detail/CVE-2022-40735) :mag: Ongoing |
 
 </TabItem>
 
@@ -337,7 +337,7 @@ Click on the CVE ID to view the full details of the vulnerability.
 | [CVE-2024-1485](./cve-2024-1485.md)             | 2/13/24          | 10/29/24      | 4.5.3           | Third-party component: Github           | [9.3](https://nvd.nist.gov/vuln/detail/CVE-2024-1485)                | :mag: Ongoing |
 | [CVE-2022-40735](./cve-2022-40735.md)           | 11/14/22         | 11/7/24       | 4.5.8           | Third-party component: DH Key Exhcnage  | [7.5](https://nvd.nist.gov/vuln/detail/CVE-2022-40735) :mag: Ongoing |
 | [CVE-2018-20225](./cve-2018-20225.md)           | 08/16/24         | 11/12/24      | 4.5.8           | Third-party component: MongoDB          | [7.8](https://nvd.nist.gov/vuln/detail/CVE-2018-20225)               | :mag: Ongoing |
-| [CVE-2024-10963](./cve-2022-40735.md)           | 11/7/24         | 11/12/24       | 4.5.8                                | Third-party component: PAM              | [7.4](https://nvd.nist.gov/vuln/detail/CVE-2022-40735) :mag: Ongoing |
+| [CVE-2024-10963](./cve-2022-40735.md)           | 11/7/24          | 11/12/24      | 4.5.8           | Third-party component: PAM              | [7.4](https://nvd.nist.gov/vuln/detail/CVE-2022-40735) :mag: Ongoing |
 
 </TabItem>
 </Tabs>
