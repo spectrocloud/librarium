@@ -405,6 +405,9 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
 }
 
 async function writeResponseFile(path, apiResponse) {
+  if (!existsSync(dirname)) {
+    mkdirSync(dirname, { recursive: true });
+  }
   open(path, "w+", (err, fd) => {
     if (err) {
       logger.error("An error occurred while opening the JSON file:", err);
@@ -471,9 +474,6 @@ async function pluginPacksAndIntegrationsData(context, options) {
       let apiPackResponse = {};
       let logoUrlMap = {};
       if (!isPackFileExists) {
-        if (!existsSync(dirname)) {
-          mkdirSync(dirname, { recursive: true });
-        }
         logger.info("Fetching the list of packs from the Palette API");
         let packDataArr = await fetchPackListItems(`?limit=${filterLimit}`, [], 0, mappedRepos);
 
