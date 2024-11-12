@@ -115,3 +115,5 @@ e4040084011d4d7935a589959b96ebc5cfba7a94:docs/docs-content/integrations/kubernet
 969ac609f82bacb36093c429adfc096c5a97e10f:docs/docs-content/tutorials/cluster-deployment/pde/deploy-app.md:generic-api-key:1232
 969ac609f82bacb36093c429adfc096c5a97e10f:docs/docs-content/tutorials/edge/deploy-cluster.md:generic-api-key:240
 8f515d46ce2bb80b7173bf9684ed8e87cb96fd83:docs/docs-content/tutorials/edge/deploy-cluster-virtualbox.md:generic-api-key:229
+794611e3320adb6fbf968fe7d75d1e55cf7a8422:docs/docs-content/vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md:docker-config-json:116
+794611e3320adb6fbf968fe7d75d1e55cf7a8422:docs/docs-content/automation/palette-cli/commands/vmo.md:docker-config-json:222

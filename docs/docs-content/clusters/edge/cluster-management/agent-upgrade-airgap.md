@@ -7,7 +7,7 @@ sidebar_position: 80
 tags: ["edge", "architecture"]
 ---
 
-In connected clusters, the Palette agent gets upgraded automatically with the Palette version, unless you explicitly
+In connected clusters, the Palette agent gets upgraded automatically with Palette upgrades, unless you explicitly
 [pause upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md). In airgap clusters, this does
 not happen automatically. When you want to upgrade the agent version, you can include the new agent version in a new
 cluster profile, and upgrade the cluster using the new profile.
@@ -21,9 +21,9 @@ cluster profile, and upgrade the cluster using the new profile.
 - Palette API key. Refer to the [User Authentication](../../../user-management/authentication/api-key/create-api-key.md)
   resource to learn how to create a Palette API key.
 
-- An Edge Native type cluster profile. Refer to
-  [Create Edge Native Cluster Profile](../site-deployment/model-profile.md) guide to learn how to create an Edge Native
-  cluster profile. You may also have other add-on profiles that you wish to attach to your cluster.
+- An Edge type cluster profile. Refer to [Create Edge Native Cluster Profile](../site-deployment/model-profile.md) guide
+  to learn how to create an Edge Native cluster profile. You may also have other add-on profiles that you wish to attach
+  to your cluster.
 
 - Content tags in your profiles highlight the exact location of container images to be downloaded.
 
@@ -87,8 +87,8 @@ cluster profile, and upgrade the cluster using the new profile.
 
    :::info
 
-   Following the EdgeForge process, it's likely that your provider image has a `peVersion` parameter. It is permissable
-   for this version to be different from the version you use for `stylusPackage`.
+   Following the EdgeForge process, it's likely that your provider image has a `peVersion` parameter. You can use a
+   different version value in the `peVersion` parameter from the version you use for `stylusPackage`.
 
    :::
 
