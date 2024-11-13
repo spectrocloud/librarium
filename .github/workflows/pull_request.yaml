@@ -108,15 +108,13 @@ jobs:
           fi
       
       - name: Check Build Exit Code
+        if: ${{ env.BUILD_EXIT_CODE != '0' }}
         run: |
           # Exit codes are not immediately propagated. We use an intermediary step.
-          if [ "$BUILD_EXIT_CODE" != "0" ]; then
-            echo "Build failed with exit code $BUILD_EXIT_CODE."
-            exit 1
-          fi
+          echo "Build failed with exit code $BUILD_EXIT_CODE."
       
       - name: Build with cached packs
-        if: env.BUILD_EXIT_CODE == '5' 
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
         uses: ./.github/actions/build-cached-packs
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
