@@ -15,7 +15,7 @@ Check out the [Order of Operations](../../../architecture/orchestration-spectroc
 API pivot.
 
 The cluster's PCG reference point is stored in the Palette management plane's internal database. You can retrieve a
-cluster's PCG reference point by using the Palette API endpoint `GET /v1/spectroclusters/:uid`. The resonse payload's
+cluster's PCG reference point by using the Palette API endpoint `GET /v1/spectroclusters/:uid`. The response payload's
 `metadata.annotations.overlordUid` field contains the ID of the PCG that deployed the cluster.
 
 ```json hideClipboard {5}
@@ -58,7 +58,7 @@ You will get the `overlordUid` of the PCG cluster.
 ## What is a PCG migration?
 
 A PCG migration is an action that updates the PCG reference point mapping in Palette of the PCG deployed clusters. All
-clusters deployed by the original PCG will be updated to reference the new PCG. This action is internal to the Palette
+clusters deployed by the original PCG will be updated to reference a new PCG. This action is internal to the Palette
 management plane. The migration process is necessary when you want to remove the existing PCG. The ability to migrate a
 PCG is helpful in scenarios such as:
 
@@ -102,8 +102,8 @@ Use the following steps to migrate a PCG to a different PCG.
 
 We recommend you remove the cloud account created by the PCG that you migrated. This will prevent any future cluster
 deployments from using the cloud account associated with the migrated PCG. During a cluster deployment, if you
-accidentally select the cloud account mapped to the migrated PCG. Palette will automatically ensure the newly specified
-PCG is used as a PCG reference point instead of the migrated PCG that belongs to the cloud account selected.
+accidentally select the cloud account mapped to the former PCG. Palette will automatically ensure the newly specified
+PCG is used as a PCG reference point instead of the former PCG that belongs to the cloud account selected.
 
 ## Validate
 
@@ -134,7 +134,7 @@ longer referencing the old PCG. Use the Palette API endpoint `GET /v1/spectroclu
    ```
 
 5. Verify that the `metadata.annotations.overlordUid` field in the response payload matches the new PCG's `overlordUid`.
-   Refer to the into section of this guide on how to get the `overlordUid` of a PCG cluster if you need additional help.
+   Refer to the intro section of this guide for guidance on how to get the `overlordUid` of a PCG cluster.
 
    ```json hideClipboard {5}
    {
