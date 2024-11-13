@@ -32,9 +32,8 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 | App Deployment Editor | Allows the user to perform edit operations on an App but not to create or delete an App. |
 | App Deployment Viewer | Allows the user to view all the App resources but not to make modifications.             |
 
-<!-- <Accordion>
-
-<AccordionPanelPanel title="App Deployment Admin">
+<Accordion>
+<AccordionPanel title="App Deployment Admin">
 - appDeployment.create
 - appDeployment.delete
 - appDeployment.get
@@ -79,7 +78,6 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 - virtualCluster.list
 - virtualCluster.update
 </AccordionPanel>
-
 <AccordionPanel title="App Deployment Editor">
 - appDeployment.get
 - appDeployment.list
@@ -113,7 +111,6 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 - virtualCluster.list
 - virtualCluster.update
 </AccordionPanel>
-
 <AccordionPanel title="App Deployment Viewer">
 - appDeployment.get
 - appDeployment.list
@@ -140,12 +137,11 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 - virtualCluster.get
 - virtualCluster.list
 </AccordionPanel>
-
-</Accordion> -->
+</Accordion>
 
 ## App Profile
 
----
+
 
 | Role Names         | Description                                                                                            |
 | ------------------ | ------------------------------------------------------------------------------------------------------ |
@@ -153,52 +149,55 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 | App Profile Editor | Allows the user to perform edit operations on App profiles but not to create or delete an App profile. |
 | App Profile Viewer | Allows the user to view all the App profile resources but not to modify them.                          |
 
-
-
-## App Profile Admin
-
-|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **appProfile**   | ✅         | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
-| **macro**        | ✅         | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
-| **packRegistry** |            |            | ✅      | ✅       |            |            |             |            |             |
-| **project**      |            |            | ✅      | ✅       |            |            |             |            |             |
-
-
-
-## App Profile Editor
-
-|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **appProfile**   |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **macro**        |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **packRegistry** |            |            | ✅      | ✅       |            |            |             |            |             |
-| **project**      |            |            | ✅      | ✅       |            |            |             |            |             |
-
-
-
-## App Profile Viewer
-
-|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **appProfile**   |            |            | ✅      | ✅       |            |            |             |            |             |
-| **macro**        |            |            | ✅      | ✅       |            |            |             |            |             |
-| **packRegistry** |            |            | ✅      | ✅       |            |            |             |            |             |
-| **project**      |            |            | ✅      | ✅       |            |            |             |            |             |
-
-
+<Accordion>
+<AccordionPanel title=" App Profile Admin">
+- appProfile.create
+- appProfile.delete
+- appProfile.get
+- appProfile.list
+- appProfile.update
+- macro.create
+- macro.delete
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+</AccordionPanel>
+<AccordionPanel title=" App Profile Editor">
+- appProfile.get
+- appProfile.list
+- appProfile.update
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+</AccordionPanel>
+<AccordionPanel title=" App Profile Viewer">
+- appProfile.get
+- appProfile.list
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+</AccordionPanel>
+</Accordion>
 
 ## Project
 
----
 
 | Role Names     | Description                                                                                                                   |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | Project Admin  | The Project Admin role is a closure of all the project operations. It is a administrative privilege for the project resources |
 | Project Editor | The Project Editor role can perform edit operations within a project, but the user is not able to create or delete a project  |
 | Project Viewer | The Project Viewer will be able to view all the resources within a project, but not privileged to make modifications          |
-
-Leeny said to click HERE
 
 <Accordion>
     <AccordionPanel title="Project Admin">
@@ -440,52 +439,9 @@ Leeny said to click HERE
     </AccordionPanel>
 </Accordion>
 
-
-### Project Editor
-
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **audit**          |            |            | ✅      | ✅       |            |            |             |            |             |
-| **cloudaccount**   |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **cloudconfig**    | ✅         |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **cluster**        |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **clusterProfile** |            |            | ✅      | ✅       | ✅         |            | ✅          |            |             |
-| **clusterRbac**    |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **dnsMapping**     |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **edgehost**       |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **location**       |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **machine**        |            | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
-| **macro**          |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **packRegistry**   |            |            | ✅      | ✅       |            |            |             |            |             |
-| **privateGateway** |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **project**        |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **sshKey**         |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **tag**            |            |            |         |          | ✅         |            |             |            |             |
-| **workspace**      |            |            | ✅      | ✅       | ✅         |            |             | ✅         | ✅          |
-
-### Project Viewer
-
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **audit**          | ✅         |            |         |          | ✅         |            |             |            |             |
-| **cloudaccount**   | ✅         |            |         |          | ✅         |            |             |            |             |
-| **cloudconfig**    | ✅         |            |         |          | ✅         |            |             |            |             |
-| **cluster**        | ✅         |            |         |          | ✅         |            |             |            |             |
-| **clusterProfile** | ✅         |            |         |          | ✅         |            |             |            |             |
-| **dnsMapping**     | ✅         |            |         |          | ✅         |            |             |            |             |
-| **edgehost**       | ✅         |            |         |          | ✅         |            |             |            |             |
-| **location**       | ✅         |            |         |          | ✅         |            |             |            |             |
-| **machine**        | ✅         |            |         |          | ✅         |            |             |            |             |
-| **macro**          | ✅         |            |         |          | ✅         |            |             |            |             |
-| **packRegistry**   | ✅         |            |         |          | ✅         |            |             |            |             |
-| **privateGateway** | ✅         |            |         |          | ✅         |            |             |            |             |
-| **project**        | ✅         |            |         |          | ✅         |            |             |            |             |
-| **sshKey**         | ✅         |            |         |          | ✅         |            |             |            |             |
-| **workspace**      | ✅         |            |         |          | ✅         |            |             |            |             |
-
 ## Cluster Profile
 
----
+
 
 The user with these permissions can manage the Cluster Profiles within a project.
 
@@ -495,47 +451,57 @@ The user with these permissions can manage the Cluster Profiles within a project
 | Cluster Profile Editor | Cluster Profile Editor role has privileges to edit and list operations on the cluster profile |
 | Cluster Profile Viewer | Cluster Profile Viewer role has read-only privileges to cluster profiles                      |
 
-<Tabs>
-<TabItem label="Cluster Profile Admin" value="Cluster Profile Admin">
 
-## Cluster Profile Admin
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterProfile** | ✅         | ✅         | ✅      | ✅       | ✅         |            | ✅          |            |             |
-| **macro**          | ✅         | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
-| **packRegistry**   | ✅         | ✅         |         |          |            |            |             |            |             |
-| **tag**            |            |            |         |          | ✅         |            |             |            |             |
+<Accordion>
+<AccordionPanel title="Cluster Profile Admin">
+- clusterProfile.create
+- clusterProfile.delete
+- clusterProfile.get
+- clusterProfile.list
+- clusterProfile.publish
+- clusterProfile.update
+- macro.create
+- macro.delete
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+- tag.update
+</AccordionPanel>
+<AccordionPanel title="Cluster Profile Editor">
+- clusterProfile.get
+- clusterProfile.list
+- clusterProfile.publish
+- clusterProfile.update
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+- tag.update
+</AccordionPanel>
+<AccordionPanel title="Cluster Profile Viewer">
+- clusterProfile.get
+- clusterProfile.list
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+</AccordionPanel>
+</Accordion>
 
-</TabItem>
-<TabItem label="Cluster Profile Editor" value="Cluster Profile Editor">
-
-## Cluster Profile Editor
-
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterProfile** |            |            | ✅      | ✅       | ✅         |            | ✅          |            |             |
-| **macro**          |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **packRegistry**   |            |            | ✅      | ✅       |            |            |             |            |             |
-| **tag**            |            |            |         |          | ✅         |            |             |            |             |
-
-</TabItem>
-<TabItem label="Cluster Profile Viewer" value="Cluster Profile Viewer">
-
-## Cluster Profile Viewer
-
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterProfile** |            |            | ✅      | ✅       |            |            |             |            |             |
-| **macro**          |            |            | ✅      | ✅       |            |            |             |            |             |
-| **packRegistry**   |            |            | ✅      | ✅       |            |            |             |            |             |
-
-</TabItem>
-</Tabs>
 
 ## Cluster
 
----
+
 
 | Role Names     | Description                                                                                                                                             |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -543,78 +509,196 @@ The user with these permissions can manage the Cluster Profiles within a project
 | Cluster Editor | A cluster editor in Project scope has the privileges to update, delete,get and list cluster resources. This role is not privileged for cluster creation |
 | Cluster Viewer | A cluster viewer in Project scope is a read-only privilege to cluster operations                                                                        |
 
-<Tabs>
 
-<TabItem label="Cluster Admin" value="Cluster Admin">
 
-## Cluster Admin
+<Accordion>
+<AccordionPanel title="Cluster Admin">
+- cloudaccount.get
+- cloudaccount.list
+- cloudconfig.create
+- cloudconfig.delete
+- cloudconfig.get
+- cloudconfig.list
+- cloudconfig.update
+- cluster.create
+- cluster.delete
+- cluster.get
+- cluster.import
+- cluster.list
+- cluster.update
+- clusterGroup.get
+- clusterGroup.list
+- clusterProfile.get
+- clusterProfile.list
+- dnsMapping.create
+- dnsMapping.delete
+- dnsMapping.get
+- dnsMapping.list
+- dnsMapping.update
+- edgehost.create
+- edgehost.delete
+- edgehost.get
+- edgehost.list
+- edgehost.update
+- location.create
+- location.delete
+- location.get
+- location.list
+- location.update
+- machine.create
+- machine.delete
+- machine.get
+- machine.list
+- machine.update
+- macro.create
+- macro.delete
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- privateGateway.get
+- privateGateway.list
+- project.get
+- project.list
+- sshKey.create
+- sshKey.delete
+- sshKey.get
+- sshKey.list
+- sshKey.update
+- tag.update
+- virtualCloudconfig.create
+- virtualCloudconfig.delete
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCloudconfig.update
+- virtualCluster.create
+- virtualCluster.delete
+- virtualCluster.get
+- virtualCluster.list
+- virtualCluster.update
+- virtualMachine.clone
+- virtualMachine.create
+- virtualMachine.delete
+- virtualMachine.get
+- virtualMachine.list
+- virtualMachine.migrate
+- virtualMachine.pause
+- virtualMachine.restart
+- virtualMachine.resume
+- virtualMachine.snapshotCreate
+- virtualMachine.snapshotDelete
+- virtualMachine.snapshotGet
+- virtualMachine.snapshotList
+- virtualMachine.snapshotUpdate
+- virtualMachine.start
+- virtualMachine.stop
+- virtualMachine.update
+</AccordionPanel>
+<AccordionPanel title="Cluster Editor">
+- cloudaccount.get
+- cloudaccount.list
+- cloudconfig.get
+- cloudconfig.list
+- cloudconfig.update
+- cluster.get
+- cluster.list
+- cluster.update
+- clusterGroup.get
+- clusterGroup.list
+- clusterProfile.get
+- clusterProfile.list
+- dnsMapping.get
+- dnsMapping.list
+- dnsMapping.update
+- edgehost.get
+- edgehost.list
+- edgehost.update
+- location.get
+- location.list
+- location.update
+- machine.delete
+- machine.get
+- machine.list
+- machine.update
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- privateGateway.get
+- privateGateway.list
+- project.get
+- project.list
+- sshKey.get
+- sshKey.list
+- sshKey.update
+- tag.update
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCloudconfig.update
+- virtualCluster.get
+- virtualCluster.list
+- virtualCluster.update
+- virtualMachine.get
+- virtualMachine.list
+- virtualMachine.pause
+- virtualMachine.restart
+- virtualMachine.resume
+- virtualMachine.snapshotCreate
+- virtualMachine.snapshotDelete
+- virtualMachine.snapshotGet
+- virtualMachine.snapshotList
+- virtualMachine.snapshotUpdate
+- virtualMachine.start
+- virtualMachine.stop
+- virtualMachine.update
+</AccordionPanel>
+<AccordionPanel title="Cluster Viewer">
+- cloudaccount.get
+- cloudaccount.list
+- cloudconfig.get
+- cloudconfig.list
+- cluster.get
+- cluster.list
+- clusterGroup.get
+- clusterGroup.list
+- clusterProfile.get
+- clusterProfile.list
+- dnsMapping.get
+- dnsMapping.list
+- edgehost.get
+- edgehost.list
+- location.get
+- location.list
+- machine.get
+- machine.list
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
+- privateGateway.get
+- privateGateway.list
+- project.get
+- project.list
+- sshKey.get
+- sshKey.list
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCluster.get
+- virtualCluster.list
+- virtualMachine.get
+- virtualMachine.list
+</AccordionPanel>
+</Accordion>
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cloudaccount**   |            |            | ✅      | ✅       |            |            |             |            |             |
-| **cloudconfig**    | ✅         | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
-| **cluster**        | ✅         | ✅         | ✅      | ✅       | ✅         | ✅         |             |            |             |
-| **clusterProfile** | ✅         | ✅         |         |          |            |            |             |            |             |
-| **clusterRbac**    | ✅         | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
-| **dnsMapping**     | ✅         | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
-| **edgehost**       | ✅         | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
-| **location**       | ✅         | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
-| **machine**        | ✅         | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
-| **macro**          | ✅         | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
-| **packRegistry**   | ✅         | ✅         |         |          |            |            |             |            |             |
-| **privateGateway** | ✅         | ✅         |         |          |            |            |             |            |             |
-| **tag**            |            |            |         |          | ✅         |            |             |            |             |
-| **sshKey**         | ✅         | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
 
-</TabItem>
-<TabItem label="Cluster Editor" value="Cluster Editor">
 
-## Cluster Editor
-
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cloudaccount**   |            |            | ✅      | ✅       |            |            |             |            |             |
-| **cloudconfig**    |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **cluster**        |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **clusterProfile** |            |            | ✅      | ✅       |            |            |             |            |             |
-| **clusterRbac**    |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **dnsMapping**     |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **edgehost**       |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **location**       |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **machine**        |            | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
-| **macro**          |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **packRegistry**   |            |            | ✅      | ✅       |            |            |             |            |             |
-| **privateGateway** |            |            | ✅      | ✅       |            |            |             |            |             |
-| **tag**            |            |            |         |          | ✅         |            |             |            |             |
-| **sshKey**         |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-
-</TabItem>
-<TabItem label="Cluster Viewer" value="Cluster Viewer">
-
-## Cluster Viewer
-
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cloudaccount**   |            |            | ✅      | ✅       |            |            |             |            |             |
-| **cloudconfig**    |            |            | ✅      | ✅       |            |            |             |            |             |
-| **cluster**        |            |            | ✅      | ✅       |            |            |             |            |             |
-| **clusterProfile** |            |            | ✅      | ✅       |            |            |             |            |             |
-| **clusterRbac**    |            |            | ✅      | ✅       |            |            |             |            |             |
-| **dnsMapping**     |            |            | ✅      | ✅       |            |            |             |            |             |
-| **edgehost**       |            |            | ✅      | ✅       |            |            |             |            |             |
-| **location**       |            |            | ✅      | ✅       |            |            |             |            |             |
-| **machine**        |            |            | ✅      | ✅       |            |            |             |            |             |
-| **macro**          |            |            | ✅      | ✅       |            |            |             |            |             |
-| **packRegistry**   |            |            | ✅      | ✅       |            |            |             |            |             |
-| **privateGateway** |            |            | ✅      | ✅       |            |            |             |            |             |
-| **sshKey**         |            |            | ✅      | ✅       |            |            |             |            |             |
-
-</TabItem>
-</Tabs>
 
 ## Cloud Account
 
----
+
+
 
 | Role Names             | Description                                          |
 | ---------------------- | ---------------------------------------------------- |
@@ -622,69 +706,77 @@ The user with these permissions can manage the Cluster Profiles within a project
 | Cluster Account Editor | An editor access to cloud cloud account operations   |
 | Cluster Account Viewer | A read-only role for cloud account operations        |
 
-<Tabs>
-<TabItem label="Cluster Account Admin" value="Cloud Account Admin">
 
-## Cluster Account Admin
+<Accordion>
+<AccordionPanel title="Cluster Account Admin">
+- cloudaccount.create
+- cloudaccount.delete
+- cloudaccount.get
+- cloudaccount.list
+- cloudaccount.update
+- project.get
+- project.list
+</AccordionPanel>
+<AccordionPanel title="Cluster Account Editor">
+- cloudaccount.get
+- cloudaccount.list
+- cloudaccount.update
+- project.get
+- project.list
+</AccordionPanel>
+<AccordionPanel title="Cluster Account Viewer">
+- cloudaccount.get
+- cloudaccount.list
+- project.get
+- project.list
+</AccordionPanel>
+</Accordion>
 
-|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cloudaccount** | ✅         | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
-
-</TabItem>
-<TabItem label="Cluster Account Editor" value="Cluster Account Editor">
-
-## Cluster Account Editor
-
-|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cloudaccount** |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-
-</TabItem>
-<TabItem label="Cluster Account Viewer" value="Cluster Account Viewer">
-
-## Cluster Account Viewer
-
-|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cloudaccount** |            |            | ✅      | ✅       |            |            |             |            |             |
-
-</TabItem>
-</Tabs>
 
 ## Workspace
 
----
+
 
 | Role Names       | Description                                |
 | ---------------- | ------------------------------------------ |
 | Workspace Admin  | Administrator role to workspace operations |
 | Workspace Editor | Editor role to workspace operations        |
 
-<Tabs>
-<TabItem label="Workspace Admin" value="Workspace Admin">
 
-## Workspace Admin
 
-|               | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **workspace** | ✅         | ✅         | ✅      | ✅       | ✅         |            |             | ✅         | ✅          |
+<Accordion>
+<AccordionPanel title="Workspace Admin">
+- cluster.list
+- location.list
+- project.get
+- project.list
+- tag.update
+- workspace.backup
+- workspace.create
+- workspace.delete
+- workspace.get
+- workspace.list
+- workspace.restore
+- workspace.update
+</AccordionPanel>
+<AccordionPanel title="Workspace Operator">
+- cluster.list
+- location.list
+- project.get
+- project.list
+- workspace.backup
+- workspace.get
+- workspace.list
+- workspace.restore
+</AccordionPanel>
+</Accordion>
 
-</TabItem>
-<TabItem label="Workspace Operator" value="Workspace Operator">
 
-## Workspace Operator
 
-|               | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **workspace** |            |            | ✅      | ✅       |            |            |             | ✅         | ✅          |
-
-</TabItem>
-</Tabs>
 
 ## Virtual Cluster
 
----
+
 
 | Role Names             | Description                                                                                                    |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------- |
@@ -692,10 +784,9 @@ The user with these permissions can manage the Cluster Profiles within a project
 | Virtual Cluster Editor | Allows the user to perform edit operations on a virtual cluster but not to create or delete a virtual cluster. |
 | Virtual Cluster Viewer | Allows the user to view all the virtual cluster resources but not to modify them.                              |
 
-<Tabs>
-<TabItem label="Virtual Cluster Admin" value="Virtual Cluster Admin">
 
-## Virtual Cluster Admin
+
+### Virtual Cluster Admin
 
 |                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -707,10 +798,9 @@ The user with these permissions can manage the Cluster Profiles within a project
 | **virtualCloudconfig** | ✅         | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
 | **virtualCluster**     | ✅         | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
 
-</TabItem>
-<TabItem label="Virtual Cluster Editor" value="Virtual Cluster Editor">
 
-## Virtual Cluster Editor
+
+### Virtual Cluster Editor
 
 |                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -722,10 +812,9 @@ The user with these permissions can manage the Cluster Profiles within a project
 | **virtualCloudconfig** |            |            | ✅      | ✅       | ✅         |            |             |            |             |
 | **virtualCluster**     |            |            | ✅      | ✅       | ✅         |            |             |            |             |
 
-</TabItem>
-<TabItem label="App Deployment Viewer" value="App Deployment Viewer">
 
-## Virtual Cluster Viewer
+
+### Virtual Cluster Viewer
 
 |                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -736,7 +825,6 @@ The user with these permissions can manage the Cluster Profiles within a project
 | **virtualCloudconfig** |            |            | ✅      | ✅       |            |            |             |            |             |
 | **virtualCluster**     |            |            | ✅      | ✅       |            |            |             |            |             |
 
-</TabItem>
-</Tabs>
+
 
 <!-- prettier-ignore-end -->
