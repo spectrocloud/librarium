@@ -5,13 +5,13 @@
  */
 
 /* You can override the default Infima variables here. */
-@import "./font.scss";
-@import "./api.scss";
-@import "./light-mode.scss";
-@import "./dark-mode.scss";
-@import "./reset.scss";
-@import "./table.scss";
-@import "./sidebars.scss";
+@use "./font.scss";
+@use "./api.scss";
+@use "./light-mode.scss";
+@use "./dark-mode.scss";
+@use "./reset.scss";
+@use "./table.scss";
+@use "./sidebars.scss";
 
 html {
   // mendable widget inline style affects fonts
