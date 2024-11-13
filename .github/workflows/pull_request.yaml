@@ -97,7 +97,9 @@ jobs:
       - name: Build
         run: |
           npm run build || true # Allows workflow to continue on error
-          echo "BUILD_EXIT_CODE=$?">> $GITHUB_ENV
+          exit_code=$?
+          echo "Build command exit code: $exit_code"
+          echo "BUILD_EXIT_CODE=$exit_code">> $GITHUB_ENV
       
       - name: Build with cached packs
         if: env.BUILD_EXIT_CODE == '5' 
