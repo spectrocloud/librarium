@@ -91,7 +91,7 @@ managing its own lifecycle operations. The PCG is not involved in managing the w
 
 In the event of a cluster deletion, the CAPI state management is pivoted back to the PCG, and CAPI begins the cluster
 deletion process to release the resources used by the workload cluster. The pivot process uses the PCG reference point
-to correctly identify what PCG to move the CAPI state management back to.
+to correctly identify which PCG to move the CAPI state management back to.
 
 </details>
 
