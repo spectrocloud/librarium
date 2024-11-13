@@ -48,17 +48,24 @@ jobs:
           echo "User-agent: *" >> static/robots.txt
           echo "Disallow: /" >> static/robots.txt
           echo "Sitemap: https://docs-latest.spectrocloud.com/sitemap.xml" >> static/robots.txt
-        
 
       - name: Ensure noIndex is set
         id: check_noindex
         run: node scripts/noindex_docusaurus_config.js $PWD
-          
-
+      
       - name: Build
         run: |
-          touch .env
-          make build
+          set +e  # Disable automatic stop on command failure
+          npm run build
+          exit_code=$?
+          echo "Build command exit code: $exit_code"
+          echo "BUILD_EXIT_CODE=$exit_code">> $GITHUB_ENV
+      
+      - name: Build with cached packs
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
+        uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy Preview
         run: |

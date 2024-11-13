@@ -30,11 +30,19 @@ jobs:
 
       - run: npm ci
 
-      - name: Compile
+      - name: Build
         run: |
-          touch .env
-          make build
-
+          set +e  # Disable automatic stop on command failure
+          npm run build
+          exit_code=$?
+          echo "Build command exit code: $exit_code"
+          echo "BUILD_EXIT_CODE=$exit_code">> $GITHUB_ENV
+      
+      - name: Build with cached packs
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
+        uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3

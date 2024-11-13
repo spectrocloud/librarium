@@ -36,9 +36,20 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci
-
-      - name: Build Website
-        run: make build
+      
+      - name: Build
+        run: |
+          set +e  # Disable automatic stop on command failure
+          npm run build
+          exit_code=$?
+          echo "Build command exit code: $exit_code"
+          echo "BUILD_EXIT_CODE=$exit_code">> $GITHUB_ENV
+      
+      - name: Build with cached packs
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
+        uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Build Packs
         uses: actions/upload-artifact@v4
