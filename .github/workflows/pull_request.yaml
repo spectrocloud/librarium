@@ -96,6 +96,7 @@ jobs:
 
       - name: Build
         run: |
+          set +e  # Disable automatic stop on command failure
           npm run build
           exit_code=$?
           echo "Build command exit code: $exit_code"
