@@ -34,6 +34,16 @@ const config = {
     defaultLocale: "en",
     locales: ["en"],
   },
+  future: {
+    experimental_faster: {
+      swcJsLoader: false, // Set to 'false' as Netlify builds fail with this enabled.
+      swcJsMinimizer: true,
+      swcHtmlMinimizer: true,
+      lightningCssMinimizer: true,
+      rspackBundler: true,
+      mdxCrossCompilerCache: true,
+    },
+  },
   customFields: {
     // Used to access the environment variable in the build process during the client-side step
     DISABLE_PACKS_INTEGRATIONS: process.env.DISABLE_PACKS_INTEGRATIONS,
@@ -351,7 +361,7 @@ const config = {
         {
           highlight: "bash",
           language: "curl",
-          logoClass: "bash",
+          logoClass: "curl",
         },
         {
           highlight: "python",
