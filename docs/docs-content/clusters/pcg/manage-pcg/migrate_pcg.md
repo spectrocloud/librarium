@@ -11,8 +11,8 @@ Clusters deployed through a Private Cloud Gateway (PCG) maintain a reference poi
 reference point is required for Palette to know which PCG to use when the cluster needs to be removed. A Cluster API
 pivot occurs between the PCG and the cluster during a cluster deployment and removal. In a cluster creation, the pivot
 occurs from the PCG to the cluster. In a cluster removal, the Cluster API pivot occurs from the cluster to the PCG.
-Check out the [Order of Operations](../../../architecture/orchestration-spectrocloud.md) page to learn more about the Cluster
-API pivot.
+Check out the [Order of Operations](../../../architecture/orchestration-spectrocloud.md) page to learn more about the
+Cluster API pivot.
 
 The cluster's PCG reference point is stored in the Palette management plane's internal database. You can retrieve a
 cluster's PCG reference point by using the Palette API endpoint `GET /v1/spectroclusters/:uid`. The response payload's
@@ -57,10 +57,10 @@ You will get the `overlordUid` of the PCG cluster.
 
 ## What is a PCG migration?
 
-A PCG migration is an action that updates the PCG reference point mapping in Palette for clusters deployed by a specific PCG. All
-clusters deployed by the original PCG will be updated to reference a new PCG. This action is internal to the Palette
-management plane. The migration process is necessary when you want to remove the existing PCG. The ability to migrate a
-PCG is helpful in scenarios such as:
+A PCG migration is an action that updates the PCG reference point mapping in Palette for clusters deployed by a specific
+PCG. All clusters deployed by the original PCG will be updated to reference a new PCG. This action is internal to the
+Palette management plane. The migration process is necessary when you want to remove the existing PCG. The ability to
+migrate a PCG is helpful in scenarios such as:
 
 - Decommissioning an existing PCG.
 
@@ -96,7 +96,8 @@ Use the following steps to update the PCG reference point mapping to a different
 
 5. Select **Migrate** from the **drop-down Menu**.
 
-6. In the **Migrate Cloud Gateway** dialog box, select the PCG from the **PCG** drop-down list that you want to migrate to.
+6. In the **Migrate Cloud Gateway** dialog box, select the PCG from the **PCG** drop-down list that you want to migrate
+   to.
 
 7. Click **Migrate**.
 
@@ -107,8 +108,8 @@ PCG is used as the PCG reference point instead of the former PCG that belongs to
 
 ## Validate
 
-After the migration is complete, you can validate it by checking that a cluster deployed with the migrated PCG no
-longer references the old PCG. Use the Palette API endpoint `GET /v1/spectroclusters/:uid` and verify the
+After the migration is complete, you can validate it by checking that a cluster deployed with the migrated PCG no longer
+references the old PCG. Use the Palette API endpoint `GET /v1/spectroclusters/:uid` and verify the
 `metadata.annotations.overlordUid` field to ensure that the cluster now references the new PCG.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
