@@ -1,6 +1,6 @@
 const { api, callRateLimitAPI } = require("./requests");
 const { existsSync, mkdirSync } = require("node:fs");
-const logger = require("@docusaurus/logger");
+const { logger } = require("@docusaurus/logger");
 const fs = require("fs").promises;
 const path = require("path");
 const { formatDateCveDetails } = require("../helpers/date");

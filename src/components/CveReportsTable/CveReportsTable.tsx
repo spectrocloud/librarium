@@ -5,6 +5,7 @@ import Link from "@docusaurus/Link";
 import type { ColumnsType } from "antd/es/table";
 import Admonition from "@theme/Admonition";
 import styles from "./CveReportTable.module.scss";
+import semver from "semver";
 
 interface CveData {
   palette: Cve[];
@@ -96,7 +97,7 @@ export default function CveReportsTable() {
         setLoading(false);
       }
     };
-    loadData();
+    loadData().catch((error) => console.error("Error loading data:", error));
   }, []);
 
   const columns: ColumnsType<MinimizedCve> = useMemo(
@@ -134,7 +135,17 @@ export default function CveReportsTable() {
         title: "Product Version",
         dataIndex: ["spec", "impact", "impactedVersions"],
         key: "productVersion",
-        render: (impactedVersions: string[]) => impactedVersions.join(", ") || "N/A",
+        sorter: (a, b) => {
+          const versionsA = a.spec.impact.impactedVersions.sort(semver.compare).reverse();
+          const versionsB = b.spec.impact.impactedVersions.sort(semver.compare).reverse();
+          return semver.compare(versionsB[0] || "0.0.0", versionsA[0] || "0.0.0"); // compare the highest version
+        },
+        render: (impactedVersions: string[]) => {
+          // Sort versions semantically and limit to the top 3
+          const sortedVersions = impactedVersions.sort(semver.compare).reverse().slice(0, 3);
+          // Join versions with comma and add ellipsis if there are more than 3
+          return sortedVersions.join(", ") + (impactedVersions.length > 3 ? ", ..." : "");
+        },
       },
       {
         title: "Status",
