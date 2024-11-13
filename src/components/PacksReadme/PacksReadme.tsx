@@ -110,7 +110,12 @@ function renderVersionOptions(packData: PackData) {
     }));
 }
 
-function renderTabs(selectedPackUid: string, packData: PackData, customReadme: ReactElement<any, any> | null, fragmentIdentifier: string) {
+function renderTabs(
+  selectedPackUid: string,
+  packData: PackData,
+  customReadme: ReactElement<any, any> | null,
+  fragmentIdentifier: string
+) {
   const empty_icon_light = useBaseUrl("/img/empty_icon_table_light.svg");
   const empty_icon_dark = useBaseUrl("/img/empty_icon_table_dark.svg");
   const readme = selectedPackUid ? packData.packUidMap[selectedPackUid]?.readme : "";
