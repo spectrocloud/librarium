@@ -32,10 +32,12 @@ The following are architectural highlights of clusters deployed using agent mode
 
 ## Minimum Device Requirements
 
-Agent mode deployments support both AMD64 and ARM64 architectures.
+Agent mode deployments support both AMD64 and ARM64 architectures. The numbers presented in this section are the bare
+minimum required for the operating system, Palette agent, and lightweight Kubernetes distributions only and do not
+account for any application workloads. The actual requirement for your hardware depends on the your workload.
 
-| Component | Requirement                                                                                                                                               |
-| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| CPU Core  | Minimum two cores.                                                                                                                                        |
-| Memory    | Minimum 8 GB.                                                                                                                                             |
-| Storage   | Main drive requires a minimum of 100 GB storage to accommodate the Operating System (OS), Kubernetes, and workloads. The main drive must be an SSD drive. |
+| Component | Requirement                                                                                                                                              |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CPU Core  | Minimum four cores.                                                                                                                                      |
+| Memory    | Minimum 4 GB.                                                                                                                                            |
+| Storage   | Main drive requires a minimum of 32 GB storage to accommodate the Operating System (OS), Kubernetes, and workloads. The main drive must be an SSD drive. |
