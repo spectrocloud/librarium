@@ -110,7 +110,7 @@ function renderVersionOptions(packData: PackData) {
     }));
 }
 
-function renderTabs(selectedPackUid: string, packData: PackData, customReadme: ReactElement<any, any> | null) {
+function renderTabs(selectedPackUid: string, packData: PackData, customReadme: ReactElement<any, any> | null, fragmentIdentifier: string) {
   const empty_icon_light = useBaseUrl("/img/empty_icon_table_light.svg");
   const empty_icon_dark = useBaseUrl("/img/empty_icon_table_dark.svg");
   const readme = selectedPackUid ? packData.packUidMap[selectedPackUid]?.readme : "";
@@ -129,7 +129,7 @@ function renderTabs(selectedPackUid: string, packData: PackData, customReadme: R
 
   if (tabs.length > 1) {
     return (
-      <Tabs defaultActiveKey="1">
+      <Tabs defaultActiveKey={fragmentIdentifier ? "2" : "1"}>
         {tabs.map((item) => (
           <Tabs.TabPane tab={item.label} key={item.key}>
             {item.children}
@@ -186,7 +186,7 @@ function getRegistries(packData: PackData, selectedVersion: string, selectedPack
 export default function PacksReadme() {
   try {
     const { packs, repositories } = usePluginData("plugin-packs-integrations") as PacksIntegrationsPluginData;
-
+    const [fragmentIdentifier, setFragmentIdentifier] = useState<string>("");
     const [customReadme, setCustomReadme] = useState<ReactElement<any, any> | null>(null);
     const [packName, setPackName] = useState<string>("");
     const [selectedPackUid, setSelectedPackUid] = useState<string>("");
@@ -197,6 +197,7 @@ export default function PacksReadme() {
 
     useEffect(() => {
       const searchParams = window ? new URLSearchParams(window.location.search) : null;
+      const hashLocationValue = window ? window.location.hash : "";
       const pckName = searchParams?.get("pack") || "";
       setPackName(pckName);
       const importComponent = async () => {
@@ -208,6 +209,9 @@ export default function PacksReadme() {
               <PackReadMeComponent />
             </div>
           );
+          if (hashLocationValue) {
+            setFragmentIdentifier(hashLocationValue);
+          }
         } catch (error) {
           console.error("Error importing custom readme component for pack. Additional information follows: \n", error);
           setCustomReadme(null);
@@ -217,6 +221,14 @@ export default function PacksReadme() {
         console.error("Error importing custom readme component for pack. Additional information follows: \n", e);
       });
     }, []);
+
+    useEffect(() => {
+      if (document && fragmentIdentifier) {
+        const elementId = fragmentIdentifier.replace("#", "");
+        const parent = document.getElementById?.(elementId);
+        parent?.querySelector?.("a")?.click();
+      }
+    }, [fragmentIdentifier]);
 
     const packData: PackData = useMemo(() => {
       const pack = packs.find((pack) => pack.name === packName);
@@ -322,7 +334,7 @@ export default function PacksReadme() {
         </div>
         <div className={styles.tabPane}>
           <ConfigProvider theme={{ algorithm: colorMode === "dark" ? darkAlgorithm : defaultAlgorithm }}>
-            {renderTabs(selectedPackUid, packData, customReadme)}
+            {renderTabs(selectedPackUid, packData, customReadme, fragmentIdentifier)}
           </ConfigProvider>
         </div>
       </div>
