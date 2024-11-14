@@ -1,17 +1,17 @@
 ---
-sidebar_label: "Project Scope Roles and Permissions"
+sidebar_label: "Project Roles"
 title: "Project Roles"
-description: "The list of Global Project Roles under Project Scope"
+description: "Learn about the predefined roles available in Palette for managing resources within a project scope."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["user-management", "rbac"]
+tags: ["user-management", "project", "rbac"]
 ---
 
 <!-- prettier-ignore-start -->
 
 
-Palette provides the following roles out-of-the-box. These roles are predefined and cannot be modified. You can assign these roles to users and teams to manage the resources within the project scope. The roles are categorized based on the resources they can manage. Each of these roles is scoped at the project level. This means the permissions granted to a user or team only apply within the project scope. If you need to manage resources across multiple projects, consider using a [Tenant Roles](./tenant-scope-roles-permissions.md) role instead.
+Palette provides the following project roles out-of-the-box. These roles are predefined and cannot be modified. You can assign these roles to users and teams to manage the resources within the project scope. The roles are categorized based on the resources they can manage. If you need to manage resources across multiple projects, consider using a [Tenant](./tenant-scope-roles-permissions.md) role instead.
 
 :::tip
 
