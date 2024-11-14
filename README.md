@@ -849,9 +849,13 @@ queries. All of our GitHub workflows will use this cached data as a fallback in 
 failure. Check out the [build-cached-packs action.yaml](.github/actions/build-cached-packs/action.yaml) to learn how the
 cached data is fetched and used.
 
-You can use this flow locally when you want to avoid the pack download time or when the API is having an outage. Execute
-the following command from the librarium root folder to fetch the packs data artifact and place the files in the correct
-places.
+Packs data is saved locally in the `.docusaurus/packs-integrations` and `static/img/packs` folders. You cna removed the
+data using `make clean-packs`. You can use the cached packs artifact locally when you don't have any downloaded packs
+data and you want to avoid the pack download time. This flow also helps you when you don't have any local packs data and
+we are experiencing an API outage.
+
+Execute the following command from the librarium root folder to fetch the packs data artifact and place the files in the
+correct places.
 
 ```shell
 make get-cached-packs
