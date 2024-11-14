@@ -38,5 +38,6 @@ runs:
 
     - name: Build
       run: |
+        npm run clear
         npm run build
       shell: bash

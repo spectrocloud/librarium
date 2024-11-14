@@ -62,7 +62,8 @@ jobs:
       - name: Build
         run: |
           set +e  # Disable automatic stop on command failure
-          npm run build
+          touch .env
+          make build
           exit_code=$?
           echo "Build command exit code: $exit_code"
           echo "BUILD_EXIT_CODE=$exit_code">> $GITHUB_ENV
