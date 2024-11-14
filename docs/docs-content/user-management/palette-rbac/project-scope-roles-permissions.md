@@ -11,17 +11,16 @@ tags: ["user-management", "rbac"]
 <!-- prettier-ignore-start -->
 
 
-The Global Project Scope holds a group of resources, in a logical grouping, to a specific project. Users and Teams with
-specific Roles can be associated with the Project, Cluster, or Cluster Profile you create.
+Palette provides the following roles out-of-the-box. These roles are predefined and cannot be modified. You can assign these roles to users and teams to manage the resources within the project scope. The roles are categorized based on the resources they can manage. Each of these roles is scoped at the project level. This means the permissions granted to a user or team only apply within the project scope. If you need to manage resources across multiple projects, consider using a [Tenant Roles](./tenant-scope-roles-permissions.md) role instead.
 
-Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the
-Scopes, Resources, and Components. The Permissions format is `resourceKey.operation`, where **resourceKey** refers to a
-resource or the API functionality, and _operation_ refers to the action or activity allowed.
+:::tip
 
-To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the
-list of **Global Roles**. If you need to extend your permissions, use the **Create Role** option.
+Create your own custom project role if none of the predefined roles meet your requirements. You can create a custom role by combining the required permissions from the various resources;. Refer to the [Resource Scope Matrix](./palette-rbac.md#resource-scope-matrix) for the list of permissions available for each resource.
 
-Below is the predefined list of Roles and Permissions for the Global Project Scope:
+:::
+
+To review the permissions associated with each role, click on the role name to expand the list of permissions.
+
 
 ## App Deployment
 
@@ -189,6 +188,300 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 - project.list
 </AccordionPanel>
 </Accordion>
+
+
+## Cloud Account
+
+
+
+
+| Role Names             | Description                                          |
+| ---------------------- | ---------------------------------------------------- |
+| Cluster Account Admin  | An administrative access to cloud account operations |
+| Cluster Account Editor | An editor access to cloud cloud account operations   |
+| Cluster Account Viewer | A read-only role for cloud account operations        |
+
+
+<Accordion>
+<AccordionPanel title="Cluster Account Admin">
+- cloudaccount.create
+- cloudaccount.delete
+- cloudaccount.get
+- cloudaccount.list
+- cloudaccount.update
+- project.get
+- project.list
+</AccordionPanel>
+<AccordionPanel title="Cluster Account Editor">
+- cloudaccount.get
+- cloudaccount.list
+- cloudaccount.update
+- project.get
+- project.list
+</AccordionPanel>
+<AccordionPanel title="Cluster Account Viewer">
+- cloudaccount.get
+- cloudaccount.list
+- project.get
+- project.list
+</AccordionPanel>
+</Accordion>
+
+
+
+## Cluster
+
+
+
+| Role Names     | Description                                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cluster Admin  | A cluster admin in Project scope has all the privileges related to cluster operation                                                                    |
+| Cluster Editor | A cluster editor in Project scope has the privileges to update, delete,get and list cluster resources. This role is not privileged for cluster creation |
+| Cluster Viewer | A cluster viewer in Project scope is a read-only privilege to cluster operations                                                                        |
+
+
+
+<Accordion>
+<AccordionPanel title="Cluster Admin">
+- cloudaccount.get
+- cloudaccount.list
+- cloudconfig.create
+- cloudconfig.delete
+- cloudconfig.get
+- cloudconfig.list
+- cloudconfig.update
+- cluster.create
+- cluster.delete
+- cluster.get
+- cluster.import
+- cluster.list
+- cluster.update
+- clusterGroup.get
+- clusterGroup.list
+- clusterProfile.get
+- clusterProfile.list
+- dnsMapping.create
+- dnsMapping.delete
+- dnsMapping.get
+- dnsMapping.list
+- dnsMapping.update
+- edgehost.create
+- edgehost.delete
+- edgehost.get
+- edgehost.list
+- edgehost.update
+- location.create
+- location.delete
+- location.get
+- location.list
+- location.update
+- machine.create
+- machine.delete
+- machine.get
+- machine.list
+- machine.update
+- macro.create
+- macro.delete
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- privateGateway.get
+- privateGateway.list
+- project.get
+- project.list
+- sshKey.create
+- sshKey.delete
+- sshKey.get
+- sshKey.list
+- sshKey.update
+- tag.update
+- virtualCloudconfig.create
+- virtualCloudconfig.delete
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCloudconfig.update
+- virtualCluster.create
+- virtualCluster.delete
+- virtualCluster.get
+- virtualCluster.list
+- virtualCluster.update
+- virtualMachine.clone
+- virtualMachine.create
+- virtualMachine.delete
+- virtualMachine.get
+- virtualMachine.list
+- virtualMachine.migrate
+- virtualMachine.pause
+- virtualMachine.restart
+- virtualMachine.resume
+- virtualMachine.snapshotCreate
+- virtualMachine.snapshotDelete
+- virtualMachine.snapshotGet
+- virtualMachine.snapshotList
+- virtualMachine.snapshotUpdate
+- virtualMachine.start
+- virtualMachine.stop
+- virtualMachine.update
+</AccordionPanel>
+<AccordionPanel title="Cluster Editor">
+- cloudaccount.get
+- cloudaccount.list
+- cloudconfig.get
+- cloudconfig.list
+- cloudconfig.update
+- cluster.get
+- cluster.list
+- cluster.update
+- clusterGroup.get
+- clusterGroup.list
+- clusterProfile.get
+- clusterProfile.list
+- dnsMapping.get
+- dnsMapping.list
+- dnsMapping.update
+- edgehost.get
+- edgehost.list
+- edgehost.update
+- location.get
+- location.list
+- location.update
+- machine.delete
+- machine.get
+- machine.list
+- machine.update
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- privateGateway.get
+- privateGateway.list
+- project.get
+- project.list
+- sshKey.get
+- sshKey.list
+- sshKey.update
+- tag.update
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCloudconfig.update
+- virtualCluster.get
+- virtualCluster.list
+- virtualCluster.update
+- virtualMachine.get
+- virtualMachine.list
+- virtualMachine.pause
+- virtualMachine.restart
+- virtualMachine.resume
+- virtualMachine.snapshotCreate
+- virtualMachine.snapshotDelete
+- virtualMachine.snapshotGet
+- virtualMachine.snapshotList
+- virtualMachine.snapshotUpdate
+- virtualMachine.start
+- virtualMachine.stop
+- virtualMachine.update
+</AccordionPanel>
+<AccordionPanel title="Cluster Viewer">
+- cloudaccount.get
+- cloudaccount.list
+- cloudconfig.get
+- cloudconfig.list
+- cluster.get
+- cluster.list
+- clusterGroup.get
+- clusterGroup.list
+- clusterProfile.get
+- clusterProfile.list
+- dnsMapping.get
+- dnsMapping.list
+- edgehost.get
+- edgehost.list
+- location.get
+- location.list
+- machine.get
+- machine.list
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
+- privateGateway.get
+- privateGateway.list
+- project.get
+- project.list
+- sshKey.get
+- sshKey.list
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCluster.get
+- virtualCluster.list
+- virtualMachine.get
+- virtualMachine.list
+</AccordionPanel>
+</Accordion>
+
+
+## Cluster Profile
+
+
+
+The user with these permissions can manage the Cluster Profiles within a project.
+
+| Role Names             | Description                                                                                   |
+| ---------------------- | --------------------------------------------------------------------------------------------- |
+| Cluster Profile Admin  | Cluster Profile Admin role has admin privileges to all the cluster profile operations         |
+| Cluster Profile Editor | Cluster Profile Editor role has privileges to edit and list operations on the cluster profile |
+| Cluster Profile Viewer | Cluster Profile Viewer role has read-only privileges to cluster profiles                      |
+
+
+
+<Accordion>
+<AccordionPanel title="Cluster Profile Admin">
+- clusterProfile.create
+- clusterProfile.delete
+- clusterProfile.get
+- clusterProfile.list
+- clusterProfile.publish
+- clusterProfile.update
+- macro.create
+- macro.delete
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+- tag.update
+</AccordionPanel>
+<AccordionPanel title="Cluster Profile Editor">
+- clusterProfile.get
+- clusterProfile.list
+- clusterProfile.publish
+- clusterProfile.update
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+- tag.update
+</AccordionPanel>
+<AccordionPanel title="Cluster Profile Viewer">
+- clusterProfile.get
+- clusterProfile.list
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+</AccordionPanel>
+</Accordion>
+
 
 ## Project
 
@@ -439,133 +732,74 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
     </AccordionPanel>
 </Accordion>
 
-## Cluster Profile
 
 
-
-The user with these permissions can manage the Cluster Profiles within a project.
-
-| Role Names             | Description                                                                                   |
-| ---------------------- | --------------------------------------------------------------------------------------------- |
-| Cluster Profile Admin  | Cluster Profile Admin role has admin privileges to all the cluster profile operations         |
-| Cluster Profile Editor | Cluster Profile Editor role has privileges to edit and list operations on the cluster profile |
-| Cluster Profile Viewer | Cluster Profile Viewer role has read-only privileges to cluster profiles                      |
+## Project Cluster Group
 
 
+| Role Names               | Description                                                                                           |
+| ------------------------ | ----------------------------------------------------------------------------------------------------- |
+| Project Cluster Group Admin  | Provides administrative privilege to perform all the operations on the cluster group resources.       |
+| Project Cluster Group Editor | Allows the user to perform edit operations on a cluster group but not to create or delete a cluster group. |
+| Project Cluster Group Viewer | Allows the user to view all the cluster group resources but not to modify them.                        |
 
 <Accordion>
-<AccordionPanel title="Cluster Profile Admin">
-- clusterProfile.create
-- clusterProfile.delete
-- clusterProfile.get
-- clusterProfile.list
-- clusterProfile.publish
-- clusterProfile.update
-- macro.create
-- macro.delete
-- macro.get
-- macro.list
-- macro.update
-- packRegistry.get
-- packRegistry.list
+<AccordionPanel title="Project Cluster Group Admin">
+- cluster.get
+- cluster.list
+- clusterGroup.create
+- clusterGroup.delete
+- clusterGroup.get
+- clusterGroup.list
+- clusterGroup.update
 - project.get
 - project.list
 - tag.update
 </AccordionPanel>
-<AccordionPanel title="Cluster Profile Editor">
-- clusterProfile.get
-- clusterProfile.list
-- clusterProfile.publish
-- clusterProfile.update
-- macro.get
-- macro.list
-- macro.update
-- packRegistry.get
-- packRegistry.list
+<AccordionPanel title="Project Cluster Group Editor">
+- cluster.get
+- cluster.list
+- clusterGroup.get
+- clusterGroup.list
+- clusterGroup.update
 - project.get
 - project.list
 - tag.update
 </AccordionPanel>
-<AccordionPanel title="Cluster Profile Viewer">
-- clusterProfile.get
-- clusterProfile.list
-- macro.get
-- macro.list
-- packRegistry.get
-- packRegistry.list
+<AccordionPanel title="Project Cluster Group Viewer">
+- cluster.get
+- cluster.list
+- clusterGroup.get
+- clusterGroup.list
 - project.get
 - project.list
 </AccordionPanel>
 </Accordion>
 
-
-## Cluster
-
+## Virtual Cluster
 
 
-| Role Names     | Description                                                                                                                                             |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cluster Admin  | A cluster admin in Project scope has all the privileges related to cluster operation                                                                    |
-| Cluster Editor | A cluster editor in Project scope has the privileges to update, delete,get and list cluster resources. This role is not privileged for cluster creation |
-| Cluster Viewer | A cluster viewer in Project scope is a read-only privilege to cluster operations                                                                        |
 
+| Role Names             | Description                                                                                                    |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Virtual Cluster Admin  | Provides administrative privilege to perform all virtual cluster operations on App resources.                  |
+| Virtual Cluster Editor | Allows the user to perform edit operations on a virtual cluster but not to create or delete a virtual cluster. |
+| Virtual Cluster Viewer | Allows the user to view all the virtual cluster resources but not to modify them.                              |
 
 
 <Accordion>
-<AccordionPanel title="Cluster Admin">
-- cloudaccount.get
-- cloudaccount.list
-- cloudconfig.create
-- cloudconfig.delete
-- cloudconfig.get
-- cloudconfig.list
-- cloudconfig.update
-- cluster.create
-- cluster.delete
-- cluster.get
-- cluster.import
-- cluster.list
-- cluster.update
+<AccordionPanel title="Virtual Cluster Admin">
 - clusterGroup.get
 - clusterGroup.list
-- clusterProfile.get
-- clusterProfile.list
-- dnsMapping.create
-- dnsMapping.delete
-- dnsMapping.get
-- dnsMapping.list
-- dnsMapping.update
-- edgehost.create
-- edgehost.delete
-- edgehost.get
-- edgehost.list
-- edgehost.update
-- location.create
-- location.delete
 - location.get
 - location.list
-- location.update
-- machine.create
-- machine.delete
-- machine.get
-- machine.list
-- machine.update
 - macro.create
 - macro.delete
 - macro.get
 - macro.list
 - macro.update
-- packRegistry.get
-- packRegistry.list
-- privateGateway.get
-- privateGateway.list
 - project.get
 - project.list
-- sshKey.create
-- sshKey.delete
-- sshKey.get
-- sshKey.list
-- sshKey.update
 - tag.update
 - virtualCloudconfig.create
 - virtualCloudconfig.delete
@@ -577,6 +811,55 @@ The user with these permissions can manage the Cluster Profiles within a project
 - virtualCluster.get
 - virtualCluster.list
 - virtualCluster.update
+</AccordionPanel>
+<AccordionPanel title="Virtual Cluster Editor">
+- clusterGroup.get
+- clusterGroup.list
+- location.get
+- location.list
+- macro.get
+- macro.list
+- macro.update
+- project.get
+- project.list
+- tag.update
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCloudconfig.update
+- virtualCluster.get
+- virtualCluster.list
+- virtualCluster.update
+</AccordionPanel>
+<AccordionPanel title="Virtual Cluster Viewer">
+- clusterGroup.get
+- clusterGroup.list
+- location.get
+- location.list
+- macro.get
+- macro.list
+- project.get
+- project.list
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCluster.get
+- virtualCluster.list
+</AccordionPanel>
+</Accordion>
+
+
+
+## Virtual Machine
+
+| Role Names           | Description                                                                                           |
+| -------------------- | ----------------------------------------------------------------------------------------------------- |
+| Virtual Machine Admin  | Provides administrative privilege to perform all the virtual machine operations.    |
+| Virtual Machine Power User | Provides the user with the ability to most of the virtual machine operations. |
+| Virtual Machine User | Provides the user with the ability to perform non-destructive operations on virtual machines. |
+| Virtual Machine Viewer | Provides the user with the ability to view virtual machines. |
+
+<Accordion>
+<AccordionPanel title="Virtual Machine Admin">
+- project.get
 - virtualMachine.clone
 - virtualMachine.create
 - virtualMachine.delete
@@ -595,51 +878,28 @@ The user with these permissions can manage the Cluster Profiles within a project
 - virtualMachine.stop
 - virtualMachine.update
 </AccordionPanel>
-<AccordionPanel title="Cluster Editor">
-- cloudaccount.get
-- cloudaccount.list
-- cloudconfig.get
-- cloudconfig.list
-- cloudconfig.update
-- cluster.get
-- cluster.list
-- cluster.update
-- clusterGroup.get
-- clusterGroup.list
-- clusterProfile.get
-- clusterProfile.list
-- dnsMapping.get
-- dnsMapping.list
-- dnsMapping.update
-- edgehost.get
-- edgehost.list
-- edgehost.update
-- location.get
-- location.list
-- location.update
-- machine.delete
-- machine.get
-- machine.list
-- machine.update
-- macro.get
-- macro.list
-- macro.update
-- packRegistry.get
-- packRegistry.list
-- privateGateway.get
-- privateGateway.list
+<AccordionPanel title="Virtual Machine Operator">
 - project.get
-- project.list
-- sshKey.get
-- sshKey.list
-- sshKey.update
-- tag.update
-- virtualCloudconfig.get
-- virtualCloudconfig.list
-- virtualCloudconfig.update
-- virtualCluster.get
-- virtualCluster.list
-- virtualCluster.update
+- virtualMachine.clone
+- virtualMachine.create
+- virtualMachine.delete
+- virtualMachine.get
+- virtualMachine.list
+- virtualMachine.migrate
+- virtualMachine.pause
+- virtualMachine.restart
+- virtualMachine.resume
+- virtualMachine.snapshotCreate
+- virtualMachine.snapshotDelete
+- virtualMachine.snapshotGet
+- virtualMachine.snapshotList
+- virtualMachine.snapshotUpdate
+- virtualMachine.start
+- virtualMachine.stop
+- virtualMachine.update
+</AccordionPanel>
+<AccordionPanel title="Virtual Machine User">
+- project.get
 - virtualMachine.get
 - virtualMachine.list
 - virtualMachine.pause
@@ -654,84 +914,12 @@ The user with these permissions can manage the Cluster Profiles within a project
 - virtualMachine.stop
 - virtualMachine.update
 </AccordionPanel>
-<AccordionPanel title="Cluster Viewer">
-- cloudaccount.get
-- cloudaccount.list
-- cloudconfig.get
-- cloudconfig.list
-- cluster.get
-- cluster.list
-- clusterGroup.get
-- clusterGroup.list
-- clusterProfile.get
-- clusterProfile.list
-- dnsMapping.get
-- dnsMapping.list
-- edgehost.get
-- edgehost.list
-- location.get
-- location.list
-- machine.get
-- machine.list
-- macro.get
-- macro.list
-- packRegistry.get
-- packRegistry.list
-- privateGateway.get
-- privateGateway.list
+<AccordionPanel title="Virtual Machine Viewer">
 - project.get
-- project.list
-- sshKey.get
-- sshKey.list
-- virtualCloudconfig.get
-- virtualCloudconfig.list
-- virtualCluster.get
-- virtualCluster.list
 - virtualMachine.get
 - virtualMachine.list
 </AccordionPanel>
 </Accordion>
-
-
-
-
-## Cloud Account
-
-
-
-
-| Role Names             | Description                                          |
-| ---------------------- | ---------------------------------------------------- |
-| Cluster Account Admin  | An administrative access to cloud account operations |
-| Cluster Account Editor | An editor access to cloud cloud account operations   |
-| Cluster Account Viewer | A read-only role for cloud account operations        |
-
-
-<Accordion>
-<AccordionPanel title="Cluster Account Admin">
-- cloudaccount.create
-- cloudaccount.delete
-- cloudaccount.get
-- cloudaccount.list
-- cloudaccount.update
-- project.get
-- project.list
-</AccordionPanel>
-<AccordionPanel title="Cluster Account Editor">
-- cloudaccount.get
-- cloudaccount.list
-- cloudaccount.update
-- project.get
-- project.list
-</AccordionPanel>
-<AccordionPanel title="Cluster Account Viewer">
-- cloudaccount.get
-- cloudaccount.list
-- project.get
-- project.list
-</AccordionPanel>
-</Accordion>
-
 
 ## Workspace
 
@@ -773,57 +961,6 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 
 
-
-## Virtual Cluster
-
-
-
-| Role Names             | Description                                                                                                    |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Virtual Cluster Admin  | Provides administrative privilege to perform all virtual cluster operations on App resources.                  |
-| Virtual Cluster Editor | Allows the user to perform edit operations on a virtual cluster but not to create or delete a virtual cluster. |
-| Virtual Cluster Viewer | Allows the user to view all the virtual cluster resources but not to modify them.                              |
-
-
-
-### Virtual Cluster Admin
-
-|                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterGroup**       |            |            | ✅      | ✅       |            |            |             |            |             |
-| **location**           |            |            | ✅      | ✅       |            |            |             |            |             |
-| **macro**              | ✅         | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
-| **project**            |            |            | ✅      | ✅       |            |            |             |            |             |
-| **tag**                |            |            |         |          | ✅         |            |             |            |             |
-| **virtualCloudconfig** | ✅         | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
-| **virtualCluster**     | ✅         | ✅         | ✅      | ✅       | ✅         |            |             |            |             |
-
-
-
-### Virtual Cluster Editor
-
-|                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterGroup**       |            |            | ✅      | ✅       |            |            |             |            |             |
-| **location**           |            |            | ✅      | ✅       |            |            |             |            |             |
-| **macro**              |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **project**            |            |            | ✅      | ✅       |            |            |             |            |             |
-| **tag**                |            |            |         |          | ✅         |            |             |            |             |
-| **virtualCloudconfig** |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-| **virtualCluster**     |            |            | ✅      | ✅       | ✅         |            |             |            |             |
-
-
-
-### Virtual Cluster Viewer
-
-|                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterGroup**       |            |            | ✅      | ✅       |            |            |             |            |             |
-| **location**           |            |            | ✅      | ✅       |            |            |             |            |             |
-| **macro**              |            |            | ✅      | ✅       |            |            |             |            |             |
-| **project**            |            |            | ✅      | ✅       |            |            |             |            |             |
-| **virtualCloudconfig** |            |            | ✅      | ✅       |            |            |             |            |             |
-| **virtualCluster**     |            |            | ✅      | ✅       |            |            |             |            |             |
 
 
 
