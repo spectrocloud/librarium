@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Palette RBAC"
-title: "Palette User Access using RBAC "
+sidebar_label: "Roles"
+title: "Roles"
 description: "Palette User Access control using RBAC"
 icon: ""
 hide_table_of_contents: false

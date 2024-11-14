@@ -26,8 +26,8 @@ To review the permissions associated with each role, click on the role name to e
 
 | Role Names           | Description                                                                                                                |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Tenant Admin         | Allows the user to create projects and manage projects within the tenant, covered under all operations related to projects |
-| Tenant Viewer        | Provides a read only access to all the project resources                                                                   |
+| Tenant Admin         | Grants access to all resources in all projects.  |
+| Tenant Viewer        | Provides a read only access to all the project resources.                                                                   |
 
 
 <Accordion>
@@ -247,9 +247,9 @@ To review the permissions associated with each role, click on the role name to e
 
 | Role Names                   | Description                                                                                                                   |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Tenant Cluster Group Admin  | Allows the user to create and manage cluster groups within the tenant, covered under all operations related to cluster groups |
-| Tenant Cluster Group Editor | The role can perform edit operations related to a cluster group, but the user is not able to create or delete a cluster group |
-| Tenant Cluster Group Viewer | Provides a read only access to all the cluster group resources                                                                |
+| Tenant Cluster Group Admin  | Allows the user to create and manage cluster groups in all projects. |
+| Tenant Cluster Group Editor | Allows the user to view, access, and update cluster groups in all projects. |
+| Tenant Cluster Group Viewer | Grants read-only access to cluster groups in all projects. |                                                               
 
 <Accordion>
 <AccordionPanel title="Tenant Cluster Group Admin">
@@ -282,6 +282,10 @@ To review the permissions associated with each role, click on the role name to e
 ## Cluster Profile
 
 
+| Role Names                   | Description                                                                                                                   |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Tenant Cluster Profile Admin | Allows the user to create and manage cluster profiles in all projects. |
+
 <Accordion>
 <AccordionPanel title="Tenant Cluster Profile Admin">
 - clusterProfile.create
@@ -306,7 +310,7 @@ To review the permissions associated with each role, click on the role name to e
 
 | Role Names                   | Description                                                                                                                   |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Tenant Project Admin | The role with complete access to an existing project                                                                       |
+| Tenant Project Admin | Grants the user complete access to all the project resources. Unlike the Tenant Admin role, this role is cannot create projects, users, and teams.  |
 
 
 <Accordion>
@@ -450,7 +454,7 @@ To review the permissions associated with each role, click on the role name to e
 
 | Role Names        | Description                                                          |
 | ----------------- | -------------------------------------------------------------------- |
-| Tenant Role Admin | A role which has complete access to all the role permissions. |
+| Tenant Role Admin | This role allows the user to create, update, and delete roles. |
 
 
 
@@ -475,7 +479,7 @@ To review the permissions associated with each role, click on the role name to e
 
 | Role Names        | Description                                                           |
 | ----------------- | --------------------------------------------------------------------- |
-| Tenant Team Admin | A role that has complete access to all the team related operations. |
+| Tenant Team Admin | This role grants the user complete access to all the team resources. |
 
 
 <Accordion>
@@ -505,7 +509,7 @@ To review the permissions associated with each role, click on the role name to e
 
 | Role Names             | Description                                                           |
 | ---------------------- | --------------------------------------------------------------------- |
-| Tenant User Admin Role | A role that has complete access to all the user related operations. |
+| Tenant User Admin Role |  This role grants the user complete access to all user operations. |
 
 
 <Accordion>

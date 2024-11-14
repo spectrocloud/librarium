@@ -1,27 +1,26 @@
 ---
-sidebar_label: "Palette Resource Roles"
-title: "Palette Global and Custom Resource Roles "
+sidebar_label: "Resource Roles"
+title: "Resource Roles "
 description: "Palette contains global resource roles and supports the ability to create custom resource roles."
 hide_table_of_contents: false
 sidebar_position: 20
 tags: ["user-management", "rbac"]
 ---
 
-Palette support two types of resource roles, global resource roles and custom resource roles:
+A resource role is scoped at the project level and has a set of permissions that define the actions a user can perform
+on resources within a project. Resource roles are much more limited in actions available compared to project or tenant
+roles. You can use resource roles to achieve Attribute-Based Access Control (ABAC) by pairing them with filters.
 
-<br />
+All resource roles must be paired with a Filter when assigned to a User or Team. The combination of a resource role and
+a filter allows you to control access based on a tag value.
 
-- Global Resource Roles are a set of roles built in and available to you.
-
-- Custom Resource Roles, are roles you can create in Palette using a set of permissions and operations.
-
-To learn how to create a custom role. Review the [Create Custom Role](#palette-custom-resource-roles) guide.
+For example, a resource role that grants all cluster permissions, `cluster.*`, can be assigned to a user for a specific
+project, with a filter where the tag value is `claims`. This user will have full access to all clusters in the project
+that have the tag `claims`.
 
 ## Palette Global Resource Roles
 
 Palette provides the following built-in global resource roles:
-
-<br />
 
 - [Cluster](#cluster)
 
@@ -39,11 +38,7 @@ Palette provides the following built-in global resource roles:
 
   - Resource Cluster Profile Viewer
 
-<br />
-
 ## Cluster
-
-<br />
 
 | Role Names              | Description                                                                                                                                             |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -51,29 +46,7 @@ Palette provides the following built-in global resource roles:
 | Resource Cluster Editor | A cluster editor in Project scope has the privileges to update, delete,get and list cluster resources. This role is not privileged for cluster creation |
 | Resource Cluster Viewer | A cluster viewer in Project scope is a read-only privilege to cluster operations                                                                        |
 
-<br />
-
-<Tabs>
-
-<TabItem label="Resource Cluster Admin" value="Resource Cluster Admin">
-
-<br />
-
 ### Resource Cluster Admin
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
 
 |                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -91,28 +64,7 @@ Palette provides the following built-in global resource roles:
 | **privateGateway** | √          | √          |         |          |            |            |             |            |             |
 | **sshKey**         | √          | √          | √       | √        | √          |            |             |            |             |
 
-<br />
-
-</TabItem>
-<TabItem label="Resource Cluster Editor" value="Resource Cluster Editor">
-
-<br />
-
 ### Resource Cluster Editor
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
 
 |                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -130,28 +82,7 @@ Palette provides the following built-in global resource roles:
 | **privateGateway** |            |            | √       | √        |            |            |             |            |             |
 | **sshKey**         |            |            | √       | √        | √          |            |             |            |             |
 
-<br />
-
-</TabItem>
-<TabItem label="Resource Cluster Viewer" value="Resource Cluster Viewer">
-
-<br />
-
 ### Resource Cluster Viewer
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
 
 |                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -169,18 +100,9 @@ Palette provides the following built-in global resource roles:
 | **privateGateway** |            |            | √       | √        |            |            |             |            |             |
 | **sshKey**         |            |            | √       | √        |            |            |             |            |             |
 
-<br />
-
-</TabItem>
-</Tabs>
-
-<br />
-
 ## Cluster Profile
 
 The user with these permissions can manage the Cluster Profiles within a project.
-
-<br />
 
 | Role Names             | Description                                                                                   |
 | ---------------------- | --------------------------------------------------------------------------------------------- |
@@ -188,27 +110,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 | Cluster Profile Editor | Cluster Profile Editor role has privileges to edit and list operations on the cluster profile |
 | Cluster Profile Viewer | Cluster Profile Viewer role has read-only privileges to cluster profiles                      |
 
-<br />
-
-<Tabs>
-<TabItem label="Resource Cluster Profile Admin" value="Resource Cluster Profile Admin">
-<br />
-
 ### Resource Cluster Profile Admin
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
 
 |                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -216,28 +118,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 | **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
 | **packRegistry**   | √          | √          |         |          |            |            |             |            |             |
 
-<br />
-
-</TabItem>
-<TabItem label="Resource Cluster Profile Editor" value="Resource Cluster Profile Editor">
-
-<br />
-
 ### Resource Cluster Profile Editor
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
 
 |                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -245,28 +126,7 @@ The user with these permissions can manage the Cluster Profiles within a project
 | **macro**          |            |            | √       | √        | √          |            |             |            |             |
 | **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
 
-<br />
-
-</TabItem>
-<TabItem label="Resource Cluster Profile Viewer" value="Resource Cluster Profile Viewer">
-
-<br />
-
 ### Resource Cluster Profile Viewer
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
 
 |                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -274,38 +134,13 @@ The user with these permissions can manage the Cluster Profiles within a project
 | **macro**          |            |            | √       | √        |            |            |             |            |             |
 | **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
 
-<br />
-
-</TabItem>
-</Tabs>
-
-<br />
-
 ## Palette Custom Resource Roles
-
-<br />
 
 The following is a list of platform permissions and operations supported by Palette. Use these permissions to
 [create custom role](../new-user.md#create-custom-role) to control the cluster access. For every **Resource Keys**
 available **operations** can be added as per your requirements.
 
-<br />
-
 ## List of Custom Permissions
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
 
 |                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
 | ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
@@ -321,4 +156,4 @@ available **operations** can be added as per your requirements.
 
 ## Resources
 
-[Resource Scope Matrix](palette-rbac.md#resource-scope-matrix)
+- [Resource Scope Matrix](palette-rbac.md#resource-scope-matrix)

@@ -1,5 +1,5 @@
 ---
-sidebar_label: "User Management"
+sidebar_label: "User & Role Management"
 title: "User Management"
 description:
   "Dive into Palette's user management capabilities and how to manage users' access and setting up controls,
