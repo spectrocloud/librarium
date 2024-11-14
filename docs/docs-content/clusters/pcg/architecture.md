@@ -73,6 +73,14 @@ cluster deployment process. Once a cluster is deployed, the PCG is no longer inv
 Palette and the deployed cluster. The cluster will communicate with Palette directly through local network gateways or a
 proxy server. The workload cluster is self-sustaining and does not require the PCG to be operational.
 
+For every workload cluster that a PCG facilitates deployment, the workload cluster will maintain a reference point back
+to that PCG. This reference point is used to identify the PCG used in the event of a cluster deletion. The mapping
+between a workload cluster and a PCG is stored in the Palette management plane.
+
+A PCG can be migrated. Migrated means that all clusters deployed by the original PCG will be updated to reference a
+different PCG. This action is internal to the Palette management plane. The migration process is necessary when you want
+to remove an existing PCG. Refer to the [Migrate a PCG](./manage-pcg/migrate_pcg.md) for guidance on migrating a PCG.
+
 <details>
   <summary>Cluster API State Management with PCG</summary>
 
@@ -82,7 +90,8 @@ workload cluster as a dedicated service. The workload cluster, through the Palet
 managing its own lifecycle operations. The PCG is not involved in managing the workloads of the deployed cluster.
 
 In the event of a cluster deletion, the CAPI state management is pivoted back to the PCG, and CAPI begins the cluster
-deletion process to release the resources used by the workload cluster.
+deletion process to release the resources used by the workload cluster. The pivot process uses the PCG reference point
+to correctly identify which PCG to move the CAPI state management back to.
 
 </details>
 
