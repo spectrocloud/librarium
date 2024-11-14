@@ -18,6 +18,9 @@ tags: ["release-notes"]
 - Fixed an issue that caused add-on packs belonging to Helm registries to fail to download due to incorrect Helm
   registry path lookup logic. This issue affected Edge clusters.
 
+- Fixed an issue where Azure users could not select a Private DNS zone from an existing resource group when creating a
+  new Azure cluster.
+
 ## November 9, 2024 - Release 4.5.8
 
 ### Palette {#palette-enterprise-4-5-8}
