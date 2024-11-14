@@ -89,7 +89,7 @@ from VMware vSphere to Palette VMO.
   - The migration host must have access to your image registry.
   - If you are using a private image registry, you must create a Secret to be used for the migration. The Secret must be
     in the form of a YAML file and the `metadata.name` value must be `vddk-image-pull-secret`. The `metadata.namespace`
-    value should be left blank, it will be automatically populated by Palette CLI.
+    value should be left blank or omitted, as the Palette CLI will automatically populate it.
 
     <!--prettier-ignore-->
     <details>
@@ -131,7 +131,7 @@ from VMware vSphere to Palette VMO.
     ```
 
     You can then use this output to create your own Secret manually. Ensure that the `metadata.name` is set to
-    `vddk-image-pull-secret` and the `metadata.namespace` is left blank.
+    `vddk-image-pull-secret`, and the `metadata.namespace` is left blank or omitted.
 
     Refer to the
     [Pull an Image from a Private Registry documentation](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
