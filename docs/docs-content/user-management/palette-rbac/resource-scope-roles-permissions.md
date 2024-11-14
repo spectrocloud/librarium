@@ -7,9 +7,9 @@ sidebar_position: 20
 tags: ["user-management", "rbac"]
 ---
 
-A resource role is scoped at the project level and has a set of permissions that define the actions a user can perform
-on resources within a project. Resource roles are much more limited in actions available compared to project or tenant
-roles. You can use resource roles to achieve Attribute-Based Access Control (ABAC) by pairing them with filters.
+A Resource role is scoped at the project level and has a set of permissions that define the actions a user can perform
+on Palette resources within a project. Resource roles have limited resource keys available compared to Project or Tenant
+roles. You can use Resource roles to achieve Attribute-Based Access Control (ABAC) by pairing them with filters.
 
 All resource roles must be paired with a Filter when assigned to a User or Team. The combination of a resource role and
 a filter allows you to control access based on a tag value.
@@ -18,141 +18,235 @@ For example, a resource role that grants all cluster permissions, `cluster.*`, c
 project, with a filter where the tag value is `claims`. This user will have full access to all clusters in the project
 that have the tag `claims`.
 
-## Palette Global Resource Roles
+### Available Resource Keys
 
-Palette provides the following built-in global resource roles:
+The following resource keys are available for Resource roles. Click on the accordion below to view the list of
+available.
 
-- [Cluster](#cluster)
+<Accordion>
+<AccordionPanel title="Available Resource Keys">
 
-  - Resource Cluster Admin
+- cloudaccount.get
+- cloudaccount.list
+- cloudconfig.delete
+- cloudconfig.get
+- cloudconfig.list
+- cloudconfig.update
+- cluster.delete
+- cluster.get
+- cluster.list
+- cluster.update
+- clusterProfile.delete
+- clusterProfile.get
+- clusterProfile.list
+- clusterProfile.publish
+- clusterProfile.update
+- dnsMapping.get
+- dnsMapping.list
+- location.get
+- location.list
+- machine.get
+- machine.list
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
 
-  - Resource Cluster Editor
+</AccordionPanel>
+</Accordion>
 
-  - Resource Cluster Viewer
+## Default Resource Roles
 
-- [Cluster Profile](#cluster-profile)
+Palette comes with a set of immutable predefined resource roles out-of-the-box that you can assign to users or teams. To
+review the permissions associated with each Resource role, click on the role name to expand the list of permissions.
 
-  - Resource Cluster Profile Admin
+### Cluster
 
-  - Resource Cluster Profile Editor
-
-  - Resource Cluster Profile Viewer
-
-## Cluster
-
-| Role Names              | Description                                                                                                                                             |
+| Role Name               | Description                                                                                                                                             |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Resource Cluster Admin  | A cluster admin in Project scope has all the privileges related to cluster operation                                                                    |
 | Resource Cluster Editor | A cluster editor in Project scope has the privileges to update, delete,get and list cluster resources. This role is not privileged for cluster creation |
 | Resource Cluster Viewer | A cluster viewer in Project scope is a read-only privilege to cluster operations                                                                        |
 
-### Resource Cluster Admin
+<Accordion>
+<AccordionPanel title="Resource Cluster Admin">
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cloudaccount**   |            |            | √       | √        |            |            |             |            |             |
-| **cloudconfig**    | √          | √          | √       | √        | √          |            |             |            |             |
-| **cluster**        | √          | √          | √       | √        | √          | √          |             |            |             |
-| **clusterProfile** | √          | √          |         |          |            |            |             |            |             |
-| **clusterRbac**    | √          | √          | √       | √        | √          |            |             |            |             |
-| **dnsMapping**     | √          | √          | √       | √        | √          |            |             |            |             |
-| **edgehost**       | √          | √          | √       | √        | √          |            |             |            |             |
-| **location**       | √          | √          | √       | √        | √          |            |             |            |             |
-| **machine**        | √          | √          | √       | √        | √          |            |             |            |             |
-| **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
-| **packRegistry**   | √          | √          |         |          |            |            |             |            |             |
-| **privateGateway** | √          | √          |         |          |            |            |             |            |             |
-| **sshKey**         | √          | √          | √       | √        | √          |            |             |            |             |
+- cloudaccount.get
+- cloudaccount.list
+- cloudconfig.delete
+- cloudconfig.get
+- cloudconfig.list
+- cloudconfig.update
+- cluster.delete
+- cluster.get
+- cluster.list
+- cluster.update
+- clusterProfile.delete
+- clusterProfile.get
+- clusterProfile.list
+- clusterProfile.update
+- dnsMapping.get
+- dnsMapping.list
+- location.get
+- location.list
+- machine.get
+- machine.list
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
+- sshKey.get
+- sshKey.list
+- virtualCloudconfig.delete
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCloudconfig.update
+- virtualCluster.delete
+- virtualCluster.get
+- virtualCluster.list
+- virtualCluster.update
+- virtualMachine.clone
+- virtualMachine.create
+- virtualMachine.delete
+- virtualMachine.get
+- virtualMachine.list
+- virtualMachine.migrate
+- virtualMachine.pause
+- virtualMachine.restart
+- virtualMachine.resume
+- virtualMachine.snapshotCreate
+- virtualMachine.snapshotDelete
+- virtualMachine.snapshotGet
+- virtualMachine.snapshotList
+- virtualMachine.snapshotUpdate
+- virtualMachine.start
+- virtualMachine.stop
+- virtualMachine.update
 
-### Resource Cluster Editor
+</AccordionPanel>
+<AccordionPanel title="Resource Cluster Editor">
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cloudaccount**   |            |            | √       | √        |            |            |             |            |             |
-| **cloudconfig**    |            |            | √       | √        | √          |            |             |            |             |
-| **cluster**        |            |            | √       | √        | √          |            |             |            |             |
-| **clusterProfile** |            |            | √       | √        |            |            |             |            |             |
-| **clusterRbac**    |            |            | √       | √        | √          |            |             |            |             |
-| **dnsMapping**     |            |            | √       | √        | √          |            |             |            |             |
-| **edgehost**       |            |            | √       | √        | √          |            |             |            |             |
-| **location**       |            |            | √       | √        | √          |            |             |            |             |
-| **machine**        |            | √          | √       | √        | √          |            |             |            |             |
-| **macro**          |            |            | √       | √        | √          |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
-| **privateGateway** |            |            | √       | √        |            |            |             |            |             |
-| **sshKey**         |            |            | √       | √        | √          |            |             |            |             |
+- cloudaccount.get
+- cloudaccount.list
+- cloudconfig.get
+- cloudconfig.list
+- cloudconfig.update
+- cluster.get
+- cluster.list
+- cluster.update
+- clusterProfile.get
+- clusterProfile.list
+- clusterProfile.update
+- dnsMapping.get
+- dnsMapping.list
+- location.get
+- location.list
+- machine.get
+- machine.list
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
+- sshKey.get
+- sshKey.list
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCloudconfig.update
+- virtualCluster.get
+- virtualCluster.list
+- virtualCluster.update
+- virtualMachine.get
+- virtualMachine.list
+- virtualMachine.pause
+- virtualMachine.restart
+- virtualMachine.resume
+- virtualMachine.snapshotCreate
+- virtualMachine.snapshotDelete
+- virtualMachine.snapshotGet
+- virtualMachine.snapshotList
+- virtualMachine.snapshotUpdate
+- virtualMachine.start
+- virtualMachine.stop
+- virtualMachine.update
 
-### Resource Cluster Viewer
+</AccordionPanel>
+<AccordionPanel title="Resource Cluster Viewer">
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cloudaccount**   |            |            | √       | √        |            |            |             |            |             |
-| **cloudconfig**    |            |            | √       | √        |            |            |             |            |             |
-| **cluster**        |            |            | √       | √        |            |            |             |            |             |
-| **clusterProfile** |            |            | √       | √        |            |            |             |            |             |
-| **clusterRbac**    |            |            | √       | √        |            |            |             |            |             |
-| **dnsMapping**     |            |            | √       | √        |            |            |             |            |             |
-| **edgehost**       |            |            | √       | √        |            |            |             |            |             |
-| **location**       |            |            | √       | √        |            |            |             |            |             |
-| **machine**        |            |            | √       | √        |            |            |             |            |             |
-| **macro**          |            |            | √       | √        |            |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
-| **privateGateway** |            |            | √       | √        |            |            |             |            |             |
-| **sshKey**         |            |            | √       | √        |            |            |             |            |             |
+- cloudaccount.get
+- cloudaccount.list
+- cloudconfig.get
+- cloudconfig.list
+- cluster.get
+- cluster.list
+- clusterProfile.get
+- clusterProfile.list
+- dnsMapping.get
+- dnsMapping.list
+- location.get
+- location.list
+- machine.get
+- machine.list
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
+- sshKey.get
+- sshKey.list
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCluster.get
+- virtualCluster.list
+- virtualMachine.get
+- virtualMachine.list
 
-## Cluster Profile
+</AccordionPanel>
+</Accordion>
 
-The user with these permissions can manage the Cluster Profiles within a project.
+### Cluster Profile
 
-| Role Names             | Description                                                                                   |
-| ---------------------- | --------------------------------------------------------------------------------------------- |
-| Cluster Profile Admin  | Cluster Profile Admin role has admin privileges to all the cluster profile operations         |
-| Cluster Profile Editor | Cluster Profile Editor role has privileges to edit and list operations on the cluster profile |
-| Cluster Profile Viewer | Cluster Profile Viewer role has read-only privileges to cluster profiles                      |
+| Role Name                       | Description                                                              |
+| ------------------------------- | ------------------------------------------------------------------------ |
+| Resource Cluster Profile Admin  | A role has admin privileges to all the cluster profile operations        |
+| Resource Cluster Profile Editor | A role has privileges to edit and list operations on the cluster profile |
+| Resource Cluster Profile Viewer | A role has read-only privileges to cluster profiles                      |
 
-### Resource Cluster Profile Admin
+<Accordion>
+<AccordionPanel title="Resource Cluster Profile Admin">
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterProfile** | √          | √          | √       | √        | √          |            | √           |            |             |
-| **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
-| **packRegistry**   | √          | √          |         |          |            |            |             |            |             |
+- clusterProfile.delete
+- clusterProfile.get
+- clusterProfile.list
+- clusterProfile.publish
+- clusterProfile.update
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
 
-### Resource Cluster Profile Editor
+</AccordionPanel>
+<AccordionPanel title="Resource Cluster Profile Editor">
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterProfile** |            |            | √       | √        | √          |            | √           |            |             |
-| **macro**          |            |            | √       | √        | √          |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
+- clusterProfile.get
+- clusterProfile.list
+- clusterProfile.publish
+- clusterProfile.update
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
 
-### Resource Cluster Profile Viewer
+</AccordionPanel>
+<AccordionPanel title="Resource Cluster Profile Viewer">
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterProfile** |            |            | √       | √        |            |            |             |            |             |
-| **macro**          |            |            | √       | √        |            |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
+- clusterProfile.get
+- clusterProfile.list
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
 
-## Palette Custom Resource Roles
-
-The following is a list of platform permissions and operations supported by Palette. Use these permissions to
-[create custom role](../new-user.md#create-custom-role) to control the cluster access. For every **Resource Keys**
-available **operations** can be added as per your requirements.
-
-## List of Custom Permissions
-
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cloudaccount**   |            |            | √       | √        |            |            |             |            |             |
-| **cloudconfig**    |            | √          | √       | √        | √          |            |             |            |             |
-| **cluster**        |            | √          | √       | √        | √          |            |             |            |             |
-| **clusterProfile** |            | √          | √       | √        | √          |            | √           |            |             |
-| **dnsMapping**     |            |            | √       | √        |            |            |             |            |             |
-| **location**       |            |            | √       | √        |            |            |             |            |             |
-| **machine**        |            |            | √       | √        |            |            |             |            |             |
-| **macro**          |            |            | √       | √        |            |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
+</AccordionPanel>
+</Accordion>
 
 ## Resources
 

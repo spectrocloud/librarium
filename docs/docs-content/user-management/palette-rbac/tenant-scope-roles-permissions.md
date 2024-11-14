@@ -8,30 +8,36 @@ sidebar_position: 0
 tags: ["user-management", "teanant", "rbac"]
 ---
 
-<!-- prettier-ignore-start -->
-
-
-Palette provides the following tenant roles out-of-the-box. These roles are predefined and cannot be modified. You can assign these roles to users and teams. The roles are categorized based on the resources they can manage. Each of these roles is scoped at the tenant level. This means the permissions granted to a user or team span across all projects. If you need to narrow the scope down to a single project or a handful of projects, consider using a [Project](./project-scope-roles-permissions.md) role instead.
+Palette provides the following tenant roles out-of-the-box. These roles are predefined and cannot be modified. You can
+assign these roles to users and teams. The roles are categorized based on the resources they can manage. Each of these
+roles is scoped at the tenant level. This means the permissions granted to a user or team span across all projects. If
+you need to narrow the scope down to a single project or a handful of projects, consider using a
+[Project](./project-scope-roles-permissions.md) role instead.
 
 :::tip
 
-Create your own custom tenant role if none of the predefined roles meet your requirements. You can create a custom role by combining the required permissions from the various resources;. Refer to the [Resource Scope Matrix](./palette-rbac.md#resource-scope-matrix) for the list of permissions available for each resource.
+Create your own custom tenant role if none of the predefined roles meet your requirements. You can create a custom role
+by combining the required permissions from the various resources;. Refer to the
+[Resource Scope Matrix](./palette-rbac.md#resource-scope-matrix) for the list of permissions available for each
+resource.
 
 :::
 
-To review the permissions associated with each role, click on the role name to expand the list of permissions.
+## Default Tenant Roles
 
-## Admin
+Palette comes with a set of immutable predefined Tenant roles out-of-the-box that you can assign to users or teams. To
+review the permissions associated with each Tenant role, click on the role name to expand the list of permissions.
 
+### Admin
 
-| Role Names           | Description                                                                                                                |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Tenant Admin         | Grants access to all resources in all projects.  |
-| Tenant Viewer        | Provides a read only access to all the project resources.                                                                   |
-
+| Role Name     | Description                                               |
+| ------------- | --------------------------------------------------------- |
+| Tenant Admin  | Grants access to all resources in all projects.           |
+| Tenant Viewer | Provides a read only access to all the project resources. |
 
 <Accordion>
 <AccordionPanel title="Tenant Admin">
+
 - apiKey.create
 - apiKey.delete
 - apiKey.get
@@ -181,8 +187,10 @@ To review the permissions associated with each role, click on the role name to e
 - workspace.list
 - workspace.restore
 - workspace.update
+
 </AccordionPanel>
 <AccordionPanel title="Tenant Viewer">
+
 - apiKey.get
 - apiKey.list
 - appDeployment.get
@@ -237,22 +245,21 @@ To review the permissions associated with each role, click on the role name to e
 - virtualMachine.list
 - workspace.get
 - workspace.list
+
 </AccordionPanel>
 </Accordion>
 
+### Cluster Group
 
-## Cluster Group
-
-
-
-| Role Names                   | Description                                                                                                                   |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Tenant Cluster Group Admin  | Allows the user to create and manage cluster groups in all projects. |
+| Role Name                   | Description                                                                 |
+| --------------------------- | --------------------------------------------------------------------------- |
+| Tenant Cluster Group Admin  | Allows the user to create and manage cluster groups in all projects.        |
 | Tenant Cluster Group Editor | Allows the user to view, access, and update cluster groups in all projects. |
-| Tenant Cluster Group Viewer | Grants read-only access to cluster groups in all projects. |                                                               
+| Tenant Cluster Group Viewer | Grants read-only access to cluster groups in all projects.                  |
 
 <Accordion>
 <AccordionPanel title="Tenant Cluster Group Admin">
+
 - cluster.get
 - cluster.list
 - clusterGroup.create
@@ -261,33 +268,37 @@ To review the permissions associated with each role, click on the role name to e
 - clusterGroup.list
 - clusterGroup.update
 - tag.update
+
 </AccordionPanel>
 <AccordionPanel title="Tenant Cluster Group Editor">
+
 - cluster.get
 - cluster.list
 - clusterGroup.get
 - clusterGroup.list
 - clusterGroup.update
 - tag.update
+
 </AccordionPanel>
 <AccordionPanel title="Tenant Cluster Group Viewer">
+
 - cluster.get
 - cluster.list
 - clusterGroup.get
 - clusterGroup.list
+
 </AccordionPanel>
 </Accordion>
 
+### Cluster Profile
 
-## Cluster Profile
-
-
-| Role Names                   | Description                                                                                                                   |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Role Name                    | Description                                                            |
+| ---------------------------- | ---------------------------------------------------------------------- |
 | Tenant Cluster Profile Admin | Allows the user to create and manage cluster profiles in all projects. |
 
 <Accordion>
 <AccordionPanel title="Tenant Cluster Profile Admin">
+
 - clusterProfile.create
 - clusterProfile.delete
 - clusterProfile.get
@@ -302,19 +313,19 @@ To review the permissions associated with each role, click on the role name to e
 - packRegistry.get
 - packRegistry.list
 - tag.update
+
 </AccordionPanel>
 </Accordion>
 
+### Project
 
-## Project
-
-| Role Names                   | Description                                                                                                                   |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Tenant Project Admin | Grants the user complete access to all the project resources. Unlike the Tenant Admin role, this role is cannot create projects, users, and teams.  |
-
+| Role Name            | Description                                                                                                                                        |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tenant Project Admin | Grants the user complete access to all the project resources. Unlike the Tenant Admin role, this role is cannot create projects, users, and teams. |
 
 <Accordion>
 <AccordionPanel title="Tenant Project Admin">
+
 - apiKey.get
 - apiKey.list
 - appDeployment.create
@@ -446,44 +457,37 @@ To review the permissions associated with each role, click on the role name to e
 - workspace.list
 - workspace.restore
 - workspace.update
+
 </AccordionPanel>
 </Accordion>
 
+### Role
 
-## Role
-
-| Role Names        | Description                                                          |
-| ----------------- | -------------------------------------------------------------------- |
+| Role Name         | Description                                                    |
+| ----------------- | -------------------------------------------------------------- |
 | Tenant Role Admin | This role allows the user to create, update, and delete roles. |
-
-
 
 <Accordion>
 <AccordionPanel title="Tenant Role Admin">
+
 - role.create
 - role.delete
 - role.get
 - role.list
 - role.update
+
 </AccordionPanel>
 </Accordion>
 
+### Team
 
-
-
-
-
-## Team
-
-
-
-| Role Names        | Description                                                           |
-| ----------------- | --------------------------------------------------------------------- |
+| Role Name         | Description                                                          |
+| ----------------- | -------------------------------------------------------------------- |
 | Tenant Team Admin | This role grants the user complete access to all the team resources. |
-
 
 <Accordion>
 <AccordionPanel title="Tenant Team Admin">
+
 - apiKey.get
 - apiKey.list
 - audit.get
@@ -495,25 +499,19 @@ To review the permissions associated with each role, click on the role name to e
 - team.update
 - user.get
 - user.list
+
 </AccordionPanel>
 </Accordion>
 
+### User
 
-
-
-
-
-## User 
-
-
-
-| Role Names             | Description                                                           |
-| ---------------------- | --------------------------------------------------------------------- |
-| Tenant User Admin Role |  This role grants the user complete access to all user operations. |
-
+| Role Name              | Description                                                       |
+| ---------------------- | ----------------------------------------------------------------- |
+| Tenant User Admin Role | This role grants the user complete access to all user operations. |
 
 <Accordion>
 <AccordionPanel title="Tenant User Admin">
+
 - apiKey.create
 - apiKey.delete
 - apiKey.get
@@ -526,8 +524,10 @@ To review the permissions associated with each role, click on the role name to e
 - user.get
 - user.list
 - user.update
+
 </AccordionPanel>
 </Accordion>
 
+## Resources
 
-<!-- prettier-ignore-end -->
+- [Resource Scope Matrix](palette-rbac.md#resource-scope-matrix)
