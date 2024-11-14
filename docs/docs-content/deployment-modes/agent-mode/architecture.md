@@ -39,5 +39,5 @@ account for any application workloads. The actual requirement for your hardware 
 | Component | Requirement                                                                                                                                              |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | CPU Core  | Minimum four cores.                                                                                                                                      |
-| Memory    | Minimum four GB.                                                                                                                                            |
+| Memory    | Minimum four GB.                                                                                                                                         |
 | Storage   | Main drive requires a minimum of 32 GB storage to accommodate the Operating System (OS), Kubernetes, and workloads. The main drive must be an SSD drive. |
