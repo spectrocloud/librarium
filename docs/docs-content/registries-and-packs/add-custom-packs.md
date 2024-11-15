@@ -7,18 +7,27 @@ hide_table_of_contents: false
 sidebar_position: 20
 ---
 
-# Add a Custom Pack
+You can add a custom pack to Palette to add new integrations or applications to your cluster profiles.
 
-Custom packs are built by users and deployed to custom registries using the Spectro Cloud CLI tool. To get started with
-Spectro Cloud CLI, review the Spectro Cloud CLI installation [instructions](spectro-cli-reference.md).
+:::further
+
+Check out the tutorial [Deploy a Custom Pack](../tutorials/profiles/deploy-pack.md) to learn how to deploy a custom pack
+to a custom registry.
+
+:::
 
 ## Prerequsites
 
 The following items are required to create a custom pack.
 
-- [Spectro Cloud CLI](spectro-cli-reference.md)
-- A Spectro Cloud [account](https://www.spectrocloud.com/)
-- [Custom Pack registry](adding-a-custom-registry.md)
+- [Oras CLI](https://oras.land/docs/installation) v1.0.0 or the [Spectro Cloud CLI](spectro-cli-reference.md) if you
+  using the legacy Spectro Rgistry. We recommend using Oras CLI with an Open Container Initiative (OCI) compliant
+  registry.
+- A custom Pack registry registered in Palette. Check out the following guides for additional help on how to set up a
+  custom pack registry:
+  - [OCI Pack Registry](./registries/oci-registry/add-pack-oci/add-pack-oci-basic.md)
+  - [AWS ECR Pack Registry](./registries/oci-registry/add-pack-oci/add-pack-oci-ecr.md)
+  - [Legacy Spectro Pack Registry](./adding-a-custom-registry.md)
 
 ## JSON Schema
 
