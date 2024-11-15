@@ -568,6 +568,7 @@ let redirects = [
       "/integrations/trident",
       "/integrations/ubuntu",
       "/integrations/vsphere-csi",
+      "/integrations/ngrok",
     ],
     to: "/integrations/",
   },
