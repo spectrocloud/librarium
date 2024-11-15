@@ -12,7 +12,7 @@ All actions in Palette are controlled by permissions. Permissions are assigned t
 or teams. Each Palette components has a corresponding _resource key_ and a set of operations that can be performed on
 that component.
 
-Palette components are managed at different scopes. The availalbe scopes are Tenant and Project. The Tenant scope is
+Palette components are managed at different scopes. The available scopes are Tenant and Project. The Tenant scope is
 global and applies to all projects within the tenant. The Project scope is specific to a project.
 
 ## Components and Resource Keys
