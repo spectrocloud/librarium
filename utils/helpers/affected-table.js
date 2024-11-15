@@ -1,4 +1,10 @@
+const semver = require("semver");
+
 function generateMarkdownTable(cveImpactMap) {
+  if (!cveImpactMap || typeof cveImpactMap !== "object") {
+    throw new Error("Invalid input: cveImpactMap must be an object.");
+  }
+
   const impactData = {
     "Palette Enterprise": cveImpactMap.impactsPaletteEnterprise,
     "Palette Enterprise Airgap": cveImpactMap.impactsPaletteEnterpriseAirgap,
@@ -20,7 +26,8 @@ function generateMarkdownTable(cveImpactMap) {
   const header = `| Version | Palette Enterprise | Palette Enterprise Airgap | VerteX | VerteX Airgap |\n`;
   const separator = `| - | -------- | -------- | -------- | -------- |\n`;
 
-  const uniqueVersions = Array.from(new Set(cveImpactMap.versions)).sort((a, b) => b.localeCompare(a));
+  // const uniqueVersions = Array.from(new Set(cveImpactMap.versions)).sort((a, b) => b.localeCompare(a));
+  const uniqueVersions = Array.from(new Set(cveImpactMap.versions)).sort(semver.rcompare);
 
   const rows = uniqueVersions
     .map((version) => {
