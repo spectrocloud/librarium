@@ -19,46 +19,16 @@ For example, a Resource role that grants all cluster permissions, `cluster.*`, c
 project, with a Resource filter where the tag value is `claims`. This user will have full access to all clusters in the
 project that have the tag `claims`.
 
-### Available Resource Keys
+:::tip
 
-The following resource keys are available for Resource roles. Click on the accordion below to view the list of
-available.
+Create your own custom Resource role if none of the predefined roles meet your requirements. Refer to the
+[Create a Custom Role](./create-custom-role.md#create-a-custom-resource-role) guide for more information.
 
-<Accordion>
-<AccordionPanel title="Available Resource Keys">
-
-- cloudaccount.get
-- cloudaccount.list
-- cloudconfig.delete
-- cloudconfig.get
-- cloudconfig.list
-- cloudconfig.update
-- cluster.delete
-- cluster.get
-- cluster.list
-- cluster.update
-- clusterProfile.delete
-- clusterProfile.get
-- clusterProfile.list
-- clusterProfile.publish
-- clusterProfile.update
-- dnsMapping.get
-- dnsMapping.list
-- location.get
-- location.list
-- machine.get
-- machine.list
-- macro.get
-- macro.list
-- packRegistry.get
-- packRegistry.list
-
-</AccordionPanel>
-</Accordion>
+:::
 
 ## Default Resource Roles
 
-Palette comes with a set of immutable predefined resource roles out-of-the-box that you can assign to users or teams. To
+Palette comes with a set of immutable predefined Resource roles out-of-the-box that you can assign to users or teams. To
 review the permissions associated with each Resource role, click on the role name to expand the list of permissions.
 
 ### Cluster
@@ -251,4 +221,4 @@ review the permissions associated with each Resource role, click on the role nam
 
 ## Resources
 
-- [Resource Scope Matrix](palette-rbac.md#resource-scope-matrix)
+- [Permissions](./permissions.md)

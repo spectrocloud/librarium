@@ -991,4 +991,4 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 ## Resources
 
-- [Resource Scope Matrix](palette-rbac.md#resource-scope-matrix)
+- [Permissions](./permissions.md)

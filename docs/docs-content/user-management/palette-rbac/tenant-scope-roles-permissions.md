@@ -528,4 +528,4 @@ review the permissions associated with each Tenant role, click on the role name 
 
 ## Resources
 
-- [Resource Scope Matrix](palette-rbac.md#resource-scope-matrix)
+- [Permissions](./permissions.md)
