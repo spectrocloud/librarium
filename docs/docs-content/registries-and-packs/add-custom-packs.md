@@ -25,8 +25,8 @@ The following items are required to create a custom pack.
   registry.
 - A custom Pack registry registered in Palette. Check out the following guides for additional help on how to set up a
   custom pack registry:
-  - [OCI Pack Registry](./registries/oci-registry/add-pack-oci/add-pack-oci-basic.md)
-  - [AWS ECR Pack Registry](./registries/oci-registry/add-pack-oci/add-pack-oci-ecr.md)
+  - [OCI Pack Registry](./oci-registry/add-pack-oci/add-pack-oci-basic.md)
+  - [AWS ECR Pack Registry](./oci-registry/add-pack-oci/add-pack-oci-ecr.md)
   - [Legacy Spectro Pack Registry](./adding-a-custom-registry.md)
 
 ## JSON Schema
