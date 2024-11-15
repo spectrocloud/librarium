@@ -48,7 +48,8 @@ Edge host is rebooting.
 You can reset an airgapped Edge host to factory default from Local UI. This restores the Edge host to the state right
 after the [initial configuration](../../site-deployment/site-installation/initial-setup.md) is completed in the Terminal
 User Interface (TUI). Reset to factory default removes all workloads, content, and cluster definition from the Edge
-host. This includes content bundles that were built into the ISO image during EdgeForge.
+host. This includes content bundles that were built into the ISO image during EdgeForge. If your host was
+[linked](../cluster-management/link-hosts.md) with another host, resetting the host will unlink the host.
 
 If your Edge host has a connection to Palette, you cannot reset the Edge host to factory default through Local UI as the
 cluster is managed through Palette.
