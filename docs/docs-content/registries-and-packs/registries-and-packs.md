@@ -35,15 +35,14 @@ Each pack is a collection of files such as manifests, helm charts, Ansible roles
 roles, if provided, are used to customize cluster VM images, whereas Kubernetes manifests and Helm charts are applied to
 the Kubernetes clusters after deployment. The following is a typical pack structure:
 
-| **Pack Name**   | **Requirement** | **Description**                                                                                                 |
-| --------------- | --------------- | --------------------------------------------------------------------------------------------------------------- |
-| `pack.json`     | mandatory       | Pack metadata.                                                                                                  |
-| `values.yaml`   | mandatory       | Pack configuration, parameters exposed from the underlying charts, and templated parameters from Ansible roles. |
-| `charts/`       | mandatory       | Mandatory for Helm chart-based packs. Contains the Helm charts to be deployed for the pack.                     |
-| `manifests/`    | mandatory       | Mandatory for Manifest-based packs. Contains the manifest files to be deployed for the pack.                    |
-| `ansible-roles` | optional        | Ansible roles used to install the pack.                                                                         |
-| `logo.png`      | optional        | Contains the pack logo.                                                                                         |
-| `README.md`     | optional        | The pack description.                                                                                           |
+| **Pack Name** | **Requirement** | **Description**                                                                                                 |
+| ------------- | --------------- | --------------------------------------------------------------------------------------------------------------- |
+| `pack.json`   | mandatory       | Pack metadata.                                                                                                  |
+| `values.yaml` | mandatory       | Pack configuration, parameters exposed from the underlying charts, and templated parameters from Ansible roles. |
+| `charts/`     | mandatory       | Mandatory for Helm chart-based packs. Contains the Helm charts to be deployed for the pack.                     |
+| `manifests/`  | mandatory       | Mandatory for Manifest-based packs. Contains the manifest files to be deployed for the pack.                    |
+| `logo.png`    | optional        | Contains the pack logo.                                                                                         |
+| `README.md`   | optional        | The pack description.                                                                                           |
 
 Let's look at the examples below to better understand pack structure.
 
