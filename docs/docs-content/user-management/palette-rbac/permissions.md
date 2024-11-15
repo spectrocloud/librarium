@@ -51,6 +51,9 @@ The following table lists the availabe Palette components, their corresponding r
 
 ## Operations
 
+To review the operations that can be performed on each component, click on the Palette component name below to display
+the list of operations.
+
 <Accordion>
 <AccordionPanel title="API Keys">
 
@@ -85,25 +88,222 @@ The following table lists the availabe Palette components, their corresponding r
 - update
 
 </AccordionPanel>
-</Accordion>
+<AccordionPanel title="Cloud Account">
 
-<!-- | Component       | Resource Key   | Operations                                   | Scope          | Usage                                                       |
-| --------------- | -------------- | -------------------------------------------- | -------------- | ----------------------------------------------------------- |
-| API Key         | apiKey         | create, get, list, update, delete            | Tenant         | API Key related operations                                  |
-| Appliance       | edgehost       | create,get,list,update,delete                | Project        | Edge appliance deployment and management                    |
-| Audit           | audit          | get, list                                    | Tenant Project | Audit log access                                            |
-| Cloud Account   | cloudaccount   | create, get,list,update,delete               | Tenant Project | Cloud account creation and management                       |
-| Cloud Config    | cloudconfig    | create,update,delete,get,list                | Project        | Cluster level cloud configuration                           |
-| Cluster         | cluster        | create,get,list,update,delete                | Project        | Creation and management of Palette workload clusters        |
-| Cluster Profile | clusterProfile | update,publish,delete,create,get,list        | Tenant Project | Creation and management of Palette cluster profiles         |
-| DNS Mapping     | dnsMapping     | create,get,list,update,delete                | Project        | Domain Name Server mapping services creation and management |
-| Location        | location       | create,get,list,update,delete                | Tenant Project | location services related to backup and restore             |
-| Macro           | macro          | create,get,list,update,delete                | Tenant Project | Key value management for Palette resources                  |
-| Machine         | machine        | create,get,list,delete,update                | Project        | Palette node pool management                                |
-| Private Gateway | privateGateway | create,get,list,update,delete                | Tenant         | PCG creation and maintenance                                |
-| Registry        | packRegistry   | create, get, list, update, delete            | Tenant         | Creation and management of registries                       |
-| Role            | role           | create,update,delete,get,list                | Tenant         | creation and management of Palette roles                    |
-| Project         | project        | create,get,list,delete,update                | Project        | Creation and management of Palette roles                    |
-| Workspace       | workspace      | create,list,update,delete,backup,restore,get | Project        | Workspace operations including backup and restore           |
-| Team            | team           | create,list,update,delete,get                | Tenant         | Creation and management of user teams in Palette            |
-| User            | user           | create,update,delete,get,list                | Tenant         | Creation and management of users in Palette                 | -->
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Cloud Config">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Cluster">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Cluster Group">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Cluster Profile">
+
+- create
+- delete
+- get
+- list
+- update
+- publish
+
+</AccordionPanel>
+<AccordionPanel title="DNS Mapping">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Edge Host">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Edge Host Token">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Filter">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Location">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Macro">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Machine">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Private Gateway">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Project">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Role">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Registry">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Tag">
+
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Team">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="User">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Virtual Cloud Config">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Virtual Cluster">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="Virtual Machine">
+
+- create
+- delete
+- get
+- list
+- update
+- clone
+- migrate
+- pause
+- restart
+- resume
+- snapshotCreate
+- snapshotDelete
+- snapshotGet
+- snapshotList
+- snapshotUpdate
+- start
+- stop
+
+</AccordionPanel>
+<AccordionPanel title="Workspace">
+
+- create
+- delete
+- get
+- list
+- update
+- restore
+- backup
+
+</AccordionPanel>
+</Accordion>
