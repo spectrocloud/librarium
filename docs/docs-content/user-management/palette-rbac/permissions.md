@@ -7,3 +7,103 @@ hide_table_of_contents: false
 sidebar_position: 8
 tags: ["user-management", "permissions", "rbac"]
 ---
+
+All actions in Palette are controlled by permissions. Permissions are assigned to roles, and roles are assigned to users
+or teams. Each Palette components has a corresponding _resource key_ and a set of operations that can be performed on
+that component.
+
+Palette components are managed at different scopes. The availalbe scopes are Tenant and Project. The Tenant scope is
+global and applies to all projects within the tenant. The Project scope is specific to a project.
+
+## Components and Resource Keys
+
+The following table lists the availabe Palette components, their corresponding resource key and the applicable scopes.
+
+| Component            | Resource Key         | Tenant Scope | Project Scope | Resource Role Scope | Description                                                                |
+| -------------------- | -------------------- | ------------ | ------------- | ------------------- | -------------------------------------------------------------------------- |
+| API Key              | `apiKey`             | ✅           |               |                     | API Key related operations                                                 |
+| Audit                | `audit`              | ✅           |               |                     | Audit log access                                                           |
+| App Deployment       | `appDeployment`      | ✅           | ✅            |                     | Application deployment and management in the context of Palette Dev Engine |
+| App Profile          | `appProfile`         |              | ✅            |                     | Management of Application profiles.                                        |
+| Cloud Account        | `cloudaccount`       | ✅           | ✅            | ✅                  | Cloud account creation and management                                      |
+| Cloud Config         | `cloudconfig`        | ✅           | ✅            | ✅                  | Cluster level cloud configuration                                          |
+| Cluster              | `cluster`            | ✅           | ✅            | ✅                  | Creation and management of Palette workload clusters                       |
+| Cluster Group        | `clusterGroup`       | ✅           | ✅            |                     | Creation and management of cluster groups                                  |
+| Cluster Profile      | `clusterProfile`     | ✅           | ✅            | ✅                  | Creation and management of Palette cluster profiles                        |
+| DNS Mapping          | `dnsMapping`         |              | ✅            | ✅                  | Domain Name Server mapping services creation and management                |
+| Edge Host            | `edgehost`           | ✅           | ✅            |                     | Edge host deployment and management                                        |
+| Edge Host Token      | `edgeToken`          | ✅           |               |                     | Edge host registration token management                                    |
+| Filter               | `filter`             | ✅           |               |                     | Creation and management of resource filters                                |
+| Location             | `location`           | ✅           | ✅            | ✅                  | Location services related to backup and restore                            |
+| Macro                | `macro`              | ✅           | ✅            | ✅                  | Key value management for Palette resources                                 |
+| Machine              | `machine`            | ✅           | ✅            | ✅                  | Palette node pool management                                               |
+| Private Gateway      | `privateGateway`     | ✅           |               |                     | Private Cloud Gateway creation and maintenance                             |
+| Registry             | `packRegistry`       | ✅           | ✅            | ✅                  | Creation and management of registries                                      |
+| Role                 | `role`               | ✅           |               |                     | Creation and management of Palette roles                                   |
+| Project              | `project`            | ✅           | ✅            |                     | Creation and management of Palette projects                                |
+| Tag                  | `tag`                | ✅           | ✅            |                     | Creation and management of tags                                            |
+| Team                 | `team`               | ✅           |               |                     | Creation and management of user teams                                      |
+| User                 | `user`               | ✅           |               |                     | Creation and management of users                                           |
+| Virtual Cloud Config | `virtualCloudConfig` |              | ✅            |                     | Virtual cluster level cloud configuration                                  |
+| Virtual Cluster      | `virtualCluster`     |              | ✅            |                     | Creation and management of virtual clusters                                |
+| Virtual Machine      | `virtualMachine`     |              | ✅            |                     | Creation and management of virtual machines                                |
+| Workspace            | `workspace`          |              | ✅            |                     | Workspace operations including backup and restore                          |
+
+## Operations
+
+<Accordion>
+<AccordionPanel title="API Keys">
+
+- create
+- get
+- list
+- update
+- delete
+
+</AccordionPanel>
+<AccordionPanel title="Audit">
+
+- get
+- list
+
+</AccordionPanel>
+<AccordionPanel title="App Deployment">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+<AccordionPanel title="App Profile">
+
+- create
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+</Accordion>
+
+<!-- | Component       | Resource Key   | Operations                                   | Scope          | Usage                                                       |
+| --------------- | -------------- | -------------------------------------------- | -------------- | ----------------------------------------------------------- |
+| API Key         | apiKey         | create, get, list, update, delete            | Tenant         | API Key related operations                                  |
+| Appliance       | edgehost       | create,get,list,update,delete                | Project        | Edge appliance deployment and management                    |
+| Audit           | audit          | get, list                                    | Tenant Project | Audit log access                                            |
+| Cloud Account   | cloudaccount   | create, get,list,update,delete               | Tenant Project | Cloud account creation and management                       |
+| Cloud Config    | cloudconfig    | create,update,delete,get,list                | Project        | Cluster level cloud configuration                           |
+| Cluster         | cluster        | create,get,list,update,delete                | Project        | Creation and management of Palette workload clusters        |
+| Cluster Profile | clusterProfile | update,publish,delete,create,get,list        | Tenant Project | Creation and management of Palette cluster profiles         |
+| DNS Mapping     | dnsMapping     | create,get,list,update,delete                | Project        | Domain Name Server mapping services creation and management |
+| Location        | location       | create,get,list,update,delete                | Tenant Project | location services related to backup and restore             |
+| Macro           | macro          | create,get,list,update,delete                | Tenant Project | Key value management for Palette resources                  |
+| Machine         | machine        | create,get,list,delete,update                | Project        | Palette node pool management                                |
+| Private Gateway | privateGateway | create,get,list,update,delete                | Tenant         | PCG creation and maintenance                                |
+| Registry        | packRegistry   | create, get, list, update, delete            | Tenant         | Creation and management of registries                       |
+| Role            | role           | create,update,delete,get,list                | Tenant         | creation and management of Palette roles                    |
+| Project         | project        | create,get,list,delete,update                | Project        | Creation and management of Palette roles                    |
+| Workspace       | workspace      | create,list,update,delete,backup,restore,get | Project        | Workspace operations including backup and restore           |
+| Team            | team           | create,list,update,delete,get                | Tenant         | Creation and management of user teams in Palette            |
+| User            | user           | create,update,delete,get,list                | Tenant         | Creation and management of users in Palette                 | -->
