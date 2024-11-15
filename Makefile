@@ -122,10 +122,10 @@ build-ci: ## Run npm build in CI environment
 	@echo "building site"
 	npm run clear
 	rm -rf build
-	@{ \ 
+	@{ \
 		npm run build; \
-		exit_code=$$?; \ 
-		echo "BUILD_EXIT_CODE=$$exit_code" >> $(GITHUB_ENV); \ 
+		exit_code=$$?; \
+		echo "BUILD_EXIT_CODE=$$exit_code" >> $(GITHUB_ENV); \
 	}
 
 versions: ## Create Docusarus content versions
