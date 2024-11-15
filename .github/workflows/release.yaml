@@ -54,19 +54,12 @@ jobs:
           cache: "npm"
 
       - run: npm ci
-
-      - name: Versions
-        run: |
-          make versions-ci
       
       - name: Build
         run: |
-          set +e  # Disable automatic stop on command failure
           touch .env
-          make build
-          exit_code=$?
-          echo "Build command exit code: $exit_code"
-          echo "BUILD_EXIT_CODE=$exit_code">> $GITHUB_ENV
+          make versions-ci
+          make build-ci
       
       - name: Build with cached packs
         if: ${{ env.BUILD_EXIT_CODE == '5' }}
@@ -105,15 +98,12 @@ jobs:
 
       - name: Versions
         run: |
-          make versions-ci
       
       - name: Build
         run: |
-          set +e  # Disable automatic stop on command failure
-          npm run build
-          exit_code=$?
-          echo "Build command exit code: $exit_code"
-          echo "BUILD_EXIT_CODE=$exit_code">> $GITHUB_ENV
+          touch .env
+          make versions-ci
+          make build-ci
       
       - name: Build with cached packs
         if: ${{ env.BUILD_EXIT_CODE == '5' }}

@@ -63,12 +63,8 @@ jobs:
 
     - name: Build
       run: |
-        set +e  # Disable automatic stop on command failure
         touch .env
         make build
-        exit_code=$?
-        echo "Build command exit code: $exit_code"
-        echo "BUILD_EXIT_CODE=$exit_code">> $GITHUB_ENV
       
     - name: Build with cached packs
       if: ${{ env.BUILD_EXIT_CODE == '5' }}
