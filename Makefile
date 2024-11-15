@@ -125,6 +125,7 @@ build-ci: ## Run npm build in CI environment
 	@{ \
 		npm run build; \
 		exit_code=$$?; \
+		echo "Build exited with code $$exit_code..."; \
 		echo "BUILD_EXIT_CODE=$$exit_code" >> $(GITHUB_ENV); \
 	}
 
