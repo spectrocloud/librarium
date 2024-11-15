@@ -82,17 +82,51 @@ start: ## Start a local development server
 	make generate-partials
 	npm run start
 
+start-cached-packs: ## Start a local development server with cached packs retry.
+	make generate-partials
+	@{ \
+		npm run start; \
+		exit_code=$$?; \
+		if [ "$$exit_code" = "5" ]; then \
+			echo "❌ Start has failed due to missing packs data..."; \
+			echo "ℹ️ Initializing fetch cached packs data..."; \
+			make get-cached-packs; \
+			echo "ℹ️ Retrying start... "; \
+			npm run start;\
+		fi; \
+	}
+
 build: ## Run npm build
 	@echo "building site"
 	npm run clear
 	rm -rf build
 	npm run build
 
+build-cached-packs: ## Run npm build with cached packs retry
+	@echo "building site"
+	npm run clear
+	rm -rf build
+	@{ \
+		npm run build; \
+		exit_code=$$?; \
+		if [ "$$exit_code" = "5" ]; then \
+			echo "❌ Build has failed due to missing packs data..."; \
+			echo "ℹ️ Initializing fetch cached packs data..."; \
+			make get-cached-packs; \
+			echo "ℹ️ Retrying build... "; \
+			npm run build;\
+		fi; \
+	}
+
 build-ci: ## Run npm build in CI environment
 	@echo "building site"
 	npm run clear
 	rm -rf build
-	@{ npm run build; exit_code=$$?; echo "BUILD_EXIT_CODE=$$exit_code" >> $(GITHUB_ENV); }
+	@{ \ 
+		npm run build; \
+		exit_code=$$?; \ 
+		echo "BUILD_EXIT_CODE=$$exit_code" >> $(GITHUB_ENV); \ 
+	}
 
 versions: ## Create Docusarus content versions
 	@echo "creating versions"

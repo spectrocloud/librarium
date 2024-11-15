@@ -849,20 +849,21 @@ queries. All of our GitHub workflows will use this cached data as a fallback in 
 failure. Check out the [build-cached-packs action.yaml](.github/actions/build-cached-packs/action.yaml) to learn how the
 cached data is fetched and used.
 
-Packs data is saved locally in the `.docusaurus/packs-integrations` and `static/img/packs` folders. You cna removed the
+Packs data is saved locally in the `.docusaurus/packs-integrations` and `static/img/packs` folders. You can remove the
 data using `make clean-packs`. You can use the cached packs artifact locally when you don't have any downloaded packs
 data and you want to avoid the pack download time. This flow also helps you when you don't have any local packs data and
 we are experiencing an API outage.
 
-Execute the following command from the librarium root folder to fetch the packs data artifact and place the files in the
-correct places.
+We provide the following commands which fetch cached packs to your local environment.
 
-```shell
-make get-cached-packs
-```
+| **Command**               | **Description**                                                                                                                                    |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `make get-cached-packs`   | Fetch the packs data artifact and pace files in the correct places. You can then execute `make start` or `make build` as usual.                    |
+| `make start-cached-packs` | Attempt to start the local development server. If a packs related outage is detected, fetch the packs data artifact and retry the `start` command. |
+| `make build-cached-packs` | Attempt to build the application. If a packs related outage is detected, fetch the packs data artifact and retry the `build` command.              |
 
-The script will prompt you to install and authenticate the [GitHub CLI](https://cli.github.com/) before you can proceed.
-You can then execute `make start` or `make build` as usual.
+These scripts will prompt you to install and authenticate the [GitHub CLI](https://cli.github.com/) before you can
+proceed.
 
 #### README Content
 
