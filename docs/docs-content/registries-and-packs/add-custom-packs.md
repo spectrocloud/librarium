@@ -20,7 +20,7 @@ to a custom registry.
 
 The following items are required to create a custom pack.
 
-- [Oras CLI](https://oras.land/docs/installation) v1.0.0 or the [Spectro Cloud CLI](spectro-cli-reference.md) if you
+- [ORAS CLI](https://oras.land/docs/installation) v1.0.0 or the [Spectro Cloud CLI](spectro-cli-reference.md) if you
   using the legacy Spectro Rgistry. We recommend using Oras CLI with an Open Container Initiative (OCI) compliant
   registry.
 - A custom Pack registry registered in Palette. Check out the following guides for additional help on how to set up a
