@@ -9,14 +9,15 @@ tags: ["user-management", "rbac"]
 
 A Resource role is scoped at the project level and has a set of permissions that define the actions a user can perform
 on Palette resources within a project. Resource roles have limited resource keys available compared to Project or Tenant
-roles. You can use Resource roles to achieve Attribute-Based Access Control (ABAC) by pairing them with filters.
+roles. You can use Resource roles to achieve Attribute-Based Access Control (ABAC) by pairing them with
+[Resource filters](../../tenant-settings/filters.md)
 
-All resource roles must be paired with a Filter when assigned to a User or Team. The combination of a resource role and
-a filter allows you to control access based on a tag value.
+All resource roles must be paired with a Filter when assigned to a User or Team. The combination of a Resource role and
+a Resource filter allows you to control access based on a tag value.
 
-For example, a resource role that grants all cluster permissions, `cluster.*`, can be assigned to a user for a specific
-project, with a filter where the tag value is `claims`. This user will have full access to all clusters in the project
-that have the tag `claims`.
+For example, a Resource role that grants all cluster permissions, `cluster.*`, can be assigned to a user for a specific
+project, with a Resource filter where the tag value is `claims`. This user will have full access to all clusters in the
+project that have the tag `claims`.
 
 ### Available Resource Keys
 
