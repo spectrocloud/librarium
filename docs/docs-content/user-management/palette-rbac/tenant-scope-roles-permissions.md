@@ -4,11 +4,11 @@ title: "Tenant Roles"
 description: "Learn about the predefined roles and permissions for the Tenant scope in Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 0
+sidebar_position: 30
 tags: ["user-management", "teanant", "rbac"]
 ---
 
-Palette provides the following tenant roles out-of-the-box. These roles are predefined and cannot be modified. You can
+Palette provides the following Tenant roles out-of-the-box. These roles are predefined and cannot be modified. You can
 assign these roles to users and teams. The roles are categorized based on the resources they can manage. Each of these
 roles is scoped at the tenant level. This means the permissions granted to a user or team span across all projects. If
 you need to narrow the scope down to a single project or a handful of projects, consider using a
@@ -16,10 +16,8 @@ you need to narrow the scope down to a single project or a handful of projects, 
 
 :::tip
 
-Create your own custom tenant role if none of the predefined roles meet your requirements. You can create a custom role
-by combining the required permissions from the various resources;. Refer to the
-[Resource Scope Matrix](./palette-rbac.md#resource-scope-matrix) for the list of permissions available for each
-resource.
+Create your own custom tenant role if none of the predefined roles meet your requirements. Refer to the
+[Create a Custom Role](./create-custom-role.md#tenant-roles) guide for more information.
 
 :::
 

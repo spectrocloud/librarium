@@ -8,17 +8,15 @@ sidebar_position: 10
 tags: ["user-management", "project", "rbac"]
 ---
 
-Palette provides the following project roles out-of-the-box. These roles are predefined and cannot be modified. You can
+Palette provides the following Project roles out-of-the-box. These roles are predefined and cannot be modified. You can
 assign these roles to users and teams to manage the resources within the project scope. The roles are categorized based
 on the resources they can manage. If you need to manage resources across multiple projects, consider using a
 [Tenant](./tenant-scope-roles-permissions.md) role instead.
 
 :::tip
 
-Create your own custom project role if none of the predefined roles meet your requirements. You can create a custom role
-by combining the required permissions from the various resources;. Refer to the
-[Resource Scope Matrix](./palette-rbac.md#resource-scope-matrix) for the list of permissions available for each
-resource.
+Create your own custom project role if none of the predefined roles meet your requirements. Refer to the
+[Create a Custom Role](./create-custom-role.md#project-roles) guide for more information.
 
 :::
 
