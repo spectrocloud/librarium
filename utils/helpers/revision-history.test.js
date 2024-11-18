@@ -163,4 +163,24 @@ describe("generateRevisionHistory", () => {
 
     expect(generateRevisionHistory(revisionHistory)).toBe(expectedOutput);
   });
+
+  it("newlines are removed from description", () => {
+    const revisionHistory = [
+      {
+        revisionTimestamp: "2024-10-15T05:50:00.194Z",
+        revisedField: "spec.assessment.justification",
+        revisedFrom: "Investigation is ongoing to determine how this vulnerability impacts our products.\n",
+        revisedTo:
+          "This vulnerability in pam_access allows hostname spoofing to bypass restrictions intended for specific local TTYs or services This enables attackers with minimal effort to exploit gaps in security policies that rely on access.conf configurations. \n\nThis is reported on a few of the third party images which do not use pam_access. So risk of exploitation is low. Impact of exploit is also low, since these containers present a minimal attack surface.\n",
+      },
+    ];
+
+    const expectedOutput = [
+      "| Date | Revision |",
+      "| --- | --- |",
+      "| 10/15/2024 | Official summary revised: This vulnerability in pam_access allows hostname spoofing to bypass restrictions intended for specific local TTYs or services This enables attackers with minimal effort to exploit gaps in security policies that rely on access.conf configurations. This is reported on a few of the third party images which do not use pam_access. So risk of exploitation is low. Impact of exploit is also low, since these containers present a minimal attack surface. |",
+    ].join("\n");
+
+    expect(generateRevisionHistory(revisionHistory)).toBe(expectedOutput);
+  });
 });

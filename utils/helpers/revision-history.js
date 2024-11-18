@@ -38,6 +38,10 @@ function generateRevisionHistory(revisions) {
 function getItemDescription(revisedField, revisedFrom, revisedTo) {
   let itemDescription = "";
 
+  revisedField = revisedField.replace(/(\r\n|\n|\r)/gm, "");
+  revisedFrom = revisedFrom.replace(/(\r\n|\n|\r)/gm, "");
+  revisedTo = revisedTo.replace(/(\r\n|\n|\r)/gm, "");
+
   switch (revisedField) {
     case "spec.assessment.justification":
       itemDescription = getJustificationDescription(revisedFrom, revisedTo);
