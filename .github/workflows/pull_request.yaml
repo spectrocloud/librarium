@@ -97,6 +97,7 @@ jobs:
       - name: Build
         run: |
           touch .env
+          make clean
           make build-ci
       
       - name: Build with cached packs

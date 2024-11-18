@@ -120,8 +120,6 @@ build-cached-packs: ## Run npm build with cached packs retry
 
 build-ci: ## Run npm build in CI environment
 	@echo "building site"
-	npm run clear
-	rm -rf build
 	@{ \
 		npm run build; \
 		exit_code=$$?; \
