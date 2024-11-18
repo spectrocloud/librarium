@@ -187,7 +187,7 @@ The VM Migration Assistant is an add-on pack that can be added to your cluster p
 
 To migrate VMs to VMO, perform the steps in the [Create Providers](#create-providers) section to add your source providers for the VMs.
 
-Once complete, perform the steps in the [Create Migration Plans](#create-migration-plans) section to plan and execute migrations.
+Once complete, perform the steps in the [Create Migration Plans](#create-and-start-migration-plans) section to plan and execute migrations.
 
 #### Create Providers
 

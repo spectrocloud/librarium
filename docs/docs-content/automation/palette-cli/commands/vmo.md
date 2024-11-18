@@ -131,7 +131,7 @@ palette vmo import-ova --skip-image
 ### Prerequisites
 
 Refer to
-[Migrate a VM to a VMO cluster](../../../vm-management/create-manage-vm/migrate-vm-kubevirt.md#prerequisites)
+[Migrate a VM to a VMO cluster](../../../vm-management/create-manage-vm/migrate-vm-kubevirt.md#prerequisites-cli)
 for a full list of prerequisites.
 
 ### Usage
