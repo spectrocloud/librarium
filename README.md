@@ -1133,3 +1133,14 @@ make clean-versions
 >
 > The `docusaurus.config.js` file is updated by the [`update_docusaurus_config.js`](./docusaurus.config.js) script. DO
 > NOT commit this file with the updated changes.
+
+## Exit Codes
+
+Librarium provides the following exit codes. These exit codes are returned by both the `npm run start` and
+`npm run build` commands.
+
+| **Exit Code**                 | **Description**                                                                                                                                                                                                                                                   |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `0`                           | The command was executed successfully.                                                                                                                                                                                                                            |
+| `5`                           | The command failed due to errors received from the API service. These requests are issued by the [Packs Component](#packs-component) and librarium cannot start without loading packs, either from the API service or the [cached packs data](#cached-packs-data) |
+| Any other non-zero exit code. | The command failed due to another error. Check the command output.                                                                                                                                                                                                |
