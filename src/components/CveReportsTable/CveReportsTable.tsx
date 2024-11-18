@@ -150,6 +150,7 @@ export default function CveReportsTable() {
       {
         title: "Status",
         key: "status",
+        sorter: (a, b) => a.status.status.localeCompare(b.status.status),
         render: (record: MinimizedCve) => {
           const status = record.status.status;
           return status === "Open" || status === "Ongoing" ? <span>🔍 {status}</span> : <span>✅ {status}</span>;
@@ -160,17 +161,22 @@ export default function CveReportsTable() {
   );
 
   const renderCveTable = (cveList: MinimizedCve[]) => (
-    <Table
-      columns={columns}
-      dataSource={cveList}
-      rowKey={(record) => record.metadata.uid}
-      pagination={{
-        pageSizeOptions: ["100", "500", "1000"],
-        defaultPageSize: 100,
-        showSizeChanger: true,
-      }}
-      tableLayout="fixed"
-    />
+    <div className={styles.tableContainer}>
+      <Table
+        columns={columns}
+        dataSource={cveList}
+        rowKey={(record) => record.metadata.uid}
+        pagination={{
+          pageSizeOptions: ["25", "50", "100", "500", "1000"],
+          defaultPageSize: 100,
+          showSizeChanger: true,
+        }}
+        virtual
+        scroll={{ y: 800 }}
+        bordered={true}
+        tableLayout="fixed"
+      />
+    </div>
   );
 
   const tabs = useMemo(
@@ -198,7 +204,7 @@ export default function CveReportsTable() {
           </Admonition>
         </div>
         <div className={styles.tableContainer}>
-          <Tabs defaultActiveKey="1" items={tabs} destroyInactiveTabPane />
+          <Tabs defaultActiveKey="1" items={tabs} destroyInactiveTabPane type="card" />
         </div>
       </ConfigProvider>
     </div>
