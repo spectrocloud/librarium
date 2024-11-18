@@ -104,12 +104,12 @@ guide to learn how to create a Cluster Group.
 
 - The Palette CLI's usage of Forklift has been updated to version `2.6.3`. The Palette CLI can leverage Forklift to
   migrate a Virtual Machine to a VMO cluster. Check out the
-  [Migrate a VM to a VMO cluster](../vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md) guide to
+  [Migrate a VM to a VMO cluster](../vm-management/create-manage-vm/migrate-vm-kubevirt.md) guide to
   learn more about this feature.
 
 - You can now specify a private VMware Virtual Disk Development Kit (VDDK) image to help optimize the migration process
   when migrating a Virtual Machine to a VMO cluster. Refer to the
-  [Migrate a VM to a VMO cluster](../vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md) guide to
+  [Migrate a VM to a VMO cluster](../vm-management/create-manage-vm/migrate-vm-kubevirt.md) guide to
   learn more about this feature.
 
 #### Deprecations and Removals
