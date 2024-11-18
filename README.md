@@ -854,7 +854,7 @@ data using `make clean-packs`. You can use the cached packs artifact locally whe
 data and you want to avoid the pack download time. This flow also helps you when you don't have any local packs data and
 we are experiencing an API outage.
 
-We provide the following commands which fetch cached packs to your local environment.
+librarium provides the following commands which fetch cached packs to your local environment.
 
 | **Command**               | **Description**                                                                                                                                    |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
