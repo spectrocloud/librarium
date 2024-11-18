@@ -38,6 +38,6 @@ runs:
 
     - name: Build
       run: |
-        touch .env
-        make build-ci
+        rm -rf build
+        npm run build
       shell: bash
