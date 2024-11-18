@@ -237,7 +237,7 @@ Use the following steps to enable this workflow.
    stylus:
      site:
        paletteEndpoint: api.spectrocloud.com
-       registrationURL: https://edge-registration-url.vercel.app
+       registrationURL: https://example-url.com
    ```
 
 9. Your next step is to decide how you want to provide the registration URL value. You can include the registration URL
