@@ -7,9 +7,14 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Install jq (JSON processor)
+    - name: Install jq (JSON processor) if not found
       run: |
-        sudo apt-get install -y jq
+        if ! command -v jq &> /dev/null; then
+          sudo apt-get update
+          sudo apt-get install -y jq
+        else
+          echo "jq is already installed. Skipping install..."
+        fi
       shell: bash
 
     - name: Download Packs Data
