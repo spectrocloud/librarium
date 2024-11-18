@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Uninstallation"
-title: "Uninstall Palette"
-description: "Learn how to uninstall a Palette installation from your cluster using Helm charts."
+title: "Uninstall VerteX"
+description: "Learn how to uninstall a VerteX installation from your cluster using Helm charts."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 40
@@ -9,14 +9,14 @@ tags: ["self-hosted", "enterprise"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-To uninstall Palette from your cluster, you need to uninstall the following components: Reach system, Palette management
-plane, and Cert Manager. This uninstall process applies to both connected and airgap instances of self-hosted Palette.
+To uninstall VerteX from your cluster, you need to uninstall the following components: Reach system, VerteX management
+plane, and Cert Manager. This uninstall process applies to both connected and airgap instances of self-hosted VerteX.
 
 ## Prerequisite
 
-- An active self-hosted Palette instance.
+- An active self-hosted VerteX instance.
 
-- Access to the Kubernetes cluster where Palette is deployed.
+- Access to the Kubernetes cluster where VerteX is deployed.
 
 - Permissions to perform delete actions on all relevant cluster resources.
 
@@ -24,16 +24,16 @@ plane, and Cert Manager. This uninstall process applies to both connected and ai
 
 - kubectl is installed and available on your host machine.
 
-## Uninstall Palette
+## Uninstall VerteX
 
-1. Ensure you are using the appropriate context where Palette is deployed.
+1. Ensure you are using the appropriate context where VerteX is deployed.
 
    ```shell
    kubectl config current-context
    ```
 
 2. Issue the following command to start uninstalling Reach. This will remove all resources related to Reach that are
-   managed by Helm. However, some resources created by Helm hooks are not managed by helm and will require additional
+   managed by Helm. However, some resources created by Helm hooks are not managed by Helm and will require additional
    manual intervention to remove.
 
    ```shell
@@ -46,14 +46,14 @@ plane, and Cert Manager. This uninstall process applies to both connected and ai
    kubectl get all,configmap,secret,serviceaccount,mutatingwebhookconfiguration,validatingwebhookconfiguration,clusterpodpreset --output=jsonpath='{range .items[?(@.metadata.annotations.helm\.sh/hook)]}{.kind}/{.metadata.name}{"\n"}{end}' --namespace reach-system | grep -v "ReplicaSet/" | xargs -r kubectl delete --namespace reach-system && kubectl delete ns reach-system && kubectl delete crd podpresets.reach.spectrocloud.com clusterpodpresets.reach.spectrocloud.com
    ```
 
-4. Issue the following command to start uninstalling the Palette management plane. Similar to Reach, this will only
+4. Issue the following command to start uninstalling the VerteX management plane. Similar to Reach, this will only
    remove the resources managed by Helm and the remaining resources will require additional manual intervention.
 
    ```shell
    helm uninstall hubble
    ```
 
-5. Issue the following command to remove the namespace and custom resource definitions related to Palette management
+5. Issue the following command to remove the namespace and custom resource definitions related to VerteX management
    plane.
 
    ```shell
@@ -71,7 +71,7 @@ plane, and Cert Manager. This uninstall process applies to both connected and ai
 
 1. Connect to your cluster via kubectl.
 
-2. Issue the following command to get a list of remaining namespaces. Confirm that all Palette-related namespaces have
+2. Issue the following command to get a list of remaining namespaces. Confirm that all VerteX-related namespaces have
    been deleted.
 
    ```shell
@@ -79,7 +79,7 @@ plane, and Cert Manager. This uninstall process applies to both connected and ai
    ```
 
 3. Issue the following command to retrieve all resources in your cluster across all namespaces. Confirm that no
-   Palette-related resources are remaining.
+   VerteX-related resources are remaining.
 
    ```shell
    kubectl get all --all-namespaces
