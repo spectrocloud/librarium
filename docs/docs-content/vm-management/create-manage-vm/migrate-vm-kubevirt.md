@@ -185,13 +185,13 @@ The VM Migration Assistant is an add-on pack that can be added to your cluster p
 
 ### Migrate VMware vSphere VMs {#migrate-vmware-vsphere-vms-ui}
 
-To migrate VMs to VMO, perform the steps in the [Create Providers](#create-providers) section to add your source providers for the VMs.
+To migrate VMs to VMO, perform the steps in the [Create Source Providers](#create-source-providers) section to add your source providers for the VMs.
 
 Once complete, perform the steps in the [Create Migration Plans](#create-and-start-migration-plans) section to plan and execute migrations.
 
-#### Create Providers
+#### Create Source Providers
 
-Complete the following steps for your provider.
+Complete the following steps for each source provider.
 
 1. Log in to the VM Migration Assistant.
 
