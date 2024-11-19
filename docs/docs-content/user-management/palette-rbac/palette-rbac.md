@@ -1,5 +1,5 @@
 ---
-sidebar_label: "Roles"
+sidebar_label: "Roles and Permissions"
 title: "Roles"
 description: "Palette User Access control using RBAC"
 icon: ""
@@ -7,13 +7,19 @@ hide_table_of_contents: false
 tags: ["user-management", "rbac"]
 ---
 
-Role-Based Access Control (RBAC) allows a single user to have different types of access control based on the resource
+Palette provides you with the ability to create and manage roles to control access to resources. Roles are a collection
+of [permissions](./permissions.md) that define the actions a user, or a team, can perform on a resource. By assigning
+roles to users or teams, you can control the level of access they have to resources in Palette.
+
+## Role-Based Access Control
+
+Role-Based Access Control (RBAC) allows a user or team to have different types of access control based on the resource
 being accessed. Palette supports an RBAC approach for granting users granular access to resources and their operations
 within the Palette platform.
 
-Role-based access control (RBAC) focuses on assigning permissions to roles rather than to individual users or teams.
-Users and teams are then assigned these roles, which specify their access to various resources. A user or team can be
-assigned multiple roles, each defining the permitted actions they can perform on those resources.
+RBAC focuses on assigning permissions to roles rather than individual users or teams. Users and teams are then assigned
+these roles, which specify their access to various resources. A user or team can be assigned multiple roles, each
+defining their permitted actions on those resources.
 
 :::info
 
