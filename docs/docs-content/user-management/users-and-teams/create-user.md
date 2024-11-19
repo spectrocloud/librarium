@@ -1,76 +1,142 @@
 ---
-sidebar_label: "Create a New User"
-title: "Create a New User in Palette "
-description: "Create a new user in Palette "
+sidebar_label: "Create and Manage a New User"
+title: "Create and Manage a New User"
+description: "Learn how to create and manage a new user in Palette"
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["user-management"]
+tags: ["user-management", "users"]
 ---
 
-The section guides you on how to create a user in Palette.
+You can create a user in Palette to allow them access to the tenant and its resources. Users can be assigned to teams
+and projects, and their permissions are determined by the roles assigned to them.
 
-<br />
+## User Creation
 
-## Prerequisites
+Use the following steps to create a new user in Palette.
 
-- A [Palette account](https://console.spectrocloud.com).
-- Tenant Admin access.
+### Prerequisites
 
-<br />
+- Tenant admin access with the `user.create` permission.
 
-## Create a New User
+- Name and email address of the user you want to create.
 
-To create a new user in Palette:
+- If you are using self-hosted Palette or VerteX, ensure you have configured Simple Mail Transfer Protocol (SMTP)
+  settings to send email invitations to the user. You can configure SMTP settings in the self-hosted Palette system
+  console.
 
-1. Log in to Palette as a Tenant Admin.
+### Create a User
 
-2. Select **Users and Teams** from the left **Main Menu** and click on **+Create User** button.
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
-3. Provide the following information to the **Create User** wizard:
+2. Navigate to the left **Main Menu** and click on **Tenant Settings**.
 
-   - First Name
-   - Last Name
-   - Email
-   - Team(s)
+3. Click on **Users & Teams**.
 
-4. Click on the **Confirm** button to complete the wizard.
+4. Select the **Users** tab.
 
-## Validate
+5. Click on the **Create User** button.
 
-- A display message will pop up confirming the user creation.
+6. Fill in the user details, including the user's name, email address, and assign them to a team. You can assign the
+   user to a team later if you prefer.
 
-- The validation can also be done from the Tenant console. Go to **Tenant Settings** from the **Left Main Menu**.
+7. Click **Confirm** to create the user.
 
-- Click the **Users & Teams** tab from the **Left Menu**. This page will list all the users under the Tenant scope.
+An email invitation is sent to the user with a link to set their password and log in to Palette.
 
-## Create Custom Role
+### Validate
 
-Use the following steps to create a custom resource role:
+Use the following steps to validate the user creation.
 
-1.  Log in to Palette as Tenant Admin and select **Roles** from the left **Main Menu**.
+1. Have the user check their email for the invitation.
 
-2.  Go to the **Resource Roles** tab from the top menu and click on the **+Create Resource Role** button to open the
-    **Add New Role (Resource)** wizard. Fill out the following inputs:
+2. Have the user click on the link in the email to set their password.
 
-- Name of the role.
-- Assign permissions and operations.
+3. Have the user log in to [Palette](https://console.spectrocloud.com) using their email address and the password they
+   set. If you are using self-hosted Palette or VerteX, use the URL provided by your system administrator.
 
-3. Once the required permissions are selected, click the **Save** button.
+## User Deletion
 
-4. To **Edit and Delete** the role from the role listing page, click the role to be deleted or edited to go to the role
-   details page.
+Use the following steps to delete a user in Palette.
 
-5. Click on **Delete Role or Edit Role** button to delete or edit the role respectively.
+### Prerequisites
 
-## Validate
+- Tenant admin access with the `user.create` permission.
 
-- A display message will pop up confirming the user creation. You can validate the user creation from the **Users &
-  Teams** page in the Tenant Admin console.
+- Name and email address of the user you want to create.
 
-- The validation can also be done from the **Tenant console**. Go to **Tenant Settings** from the left **Main Menu**.
+- If you are using self-hosted Palette or VerteX, ensure you have configured Simple Mail Transfer Protocol (SMTP)
+  settings to send email invitations to the user. You can configure SMTP settings in the self-hosted Palette system
+  console.
 
-- Click the **Roles** tab from the left **Main Menu** and click on the **Resource Roles** tab to find the new role name
-  listed.
+### Delete a User
 
-- To **Reset Password** or **Delete** the user, click the user name and go to the **User Details** page. Then, click on
-  **Delete** or **Reset Password** to perform the corresponding operation.
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+2. Navigate to the left **Main Menu** and click on **Tenant Settings**.
+
+3. Click on **Users & Teams**.
+
+4. Select the **Users** tab.
+
+5. Click on the row of the user you want to delete.
+
+6. Click on the **Delete User** button.
+
+7. Click **OK** to confirm the deletion.
+
+The user is now removed from the tenant and all associated teams and projects.
+
+### Validate
+
+Use the following steps to validate the user deletion.
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+2. Navigate to the left **Main Menu** and click on **Tenant Settings**.
+
+3. Click on **Users & Teams**.
+
+4. Select the **Users** tab.
+
+5. Verify that the user you deleted is no longer listed in the users list.
+
+## Password Reset
+
+Use the following steps to reset a user's password in Palette.
+
+### Prerequisites
+
+- Tenant admin access with the `user.update` permission.
+
+- If you are using self-hosted Palette or VerteX, ensure you have configured Simple Mail Transfer Protocol (SMTP)
+  settings to send email invitations to the user. You can configure SMTP settings in the self-hosted Palette system
+  console.
+
+### Reset Password
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+2. Navigate to the left **Main Menu** and click on **Tenant Settings**.
+
+3. Click on **Users & Teams**.
+
+4. Select the **Users** tab.
+
+5. Click on the row of the user whose password you want to reset.
+
+6. Click on the **Reset password** button.
+
+7. Click **OK** to confirm the password reset.
+
+An email is sent to the user with a link to set a new password.
+
+### Validate
+
+Use the following steps to validate the password reset.
+
+1. Have the user check their email for the password reset link.
+
+2. Have the user click on the link in the email to set their new password.
+
+3. Have the user log in to [Palette](https://console.spectrocloud.com) using their email address and the new password
+   they set. If you are using self-hosted Palette or VerteX, use the URL provided by your system administrator.
