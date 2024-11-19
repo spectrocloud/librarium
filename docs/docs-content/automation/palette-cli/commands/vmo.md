@@ -131,8 +131,8 @@ palette vmo import-ova --skip-image
 ### Prerequisites
 
 Refer to
-[Migrate a VM to a VMO cluster](../../../vm-management/create-manage-vm/migrate-vm-kubevirt.md#prerequisites-cli)
-for a full list of prerequisites.
+[Migrate a VM to a VMO cluster](../../../vm-management/migrate-vm-vmo-cluster/migrate-vm-kubevirt.md#prerequisites) for
+a full list of prerequisites.
 
 ### Usage
 
@@ -140,8 +140,7 @@ Use the `migrate-vm` subcommand to migrate one or more VMs from VMware vSphere t
 supported by the `migrate-vm` subcommand. The migration consists of two phases. First, all guest disks are transferred
 to Persistent Volumes (PVs) in K8s using KubeVirt CDI and VMware Virtual Disk Development Kit (VDDK). Then, the guest OS
 on the root disk is made bootable and drivers are installed using [virt-v2v](https://libguestfs.org/virt-v2v.1.html).
-Refer to the
-[Migrate a VM to a VMO cluster](../../../vm-management/create-manage-vm/migrate-vm-kubevirt.md) guide
+Refer to the [Migrate a VM to a VMO cluster](../../../vm-management/migrate-vm-vmo-cluster/migrate-vm-kubevirt.md) guide
 for further details on migrating a vSphere VM to Palette VMO.
 
 | **Short Flag** | **Long Flag**        | **Description**                                                                                                                | **Type** |
