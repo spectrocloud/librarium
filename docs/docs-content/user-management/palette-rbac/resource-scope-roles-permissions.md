@@ -3,7 +3,7 @@ sidebar_label: "Resource Roles"
 title: "Resource Roles "
 description: "Palette contains global resource roles and supports the ability to create custom resource roles."
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 50
 tags: ["user-management", "rbac"]
 ---
 

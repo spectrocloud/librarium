@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Create and Manage a New User"
-title: "Create and Manage a New User"
+sidebar_label: "Create and Manage a User"
+title: "Create and Manage a User"
 description: "Learn how to create and manage a new user in Palette"
 hide_table_of_contents: false
 sidebar_position: 10

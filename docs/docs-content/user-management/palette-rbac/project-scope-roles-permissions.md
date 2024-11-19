@@ -4,7 +4,7 @@ title: "Project Roles"
 description: "Learn about the predefined roles available in Palette for managing resources within a project scope."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 40
 tags: ["user-management", "project", "rbac"]
 ---
 

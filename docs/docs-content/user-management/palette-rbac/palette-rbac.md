@@ -168,6 +168,8 @@ available Palette components that are eligible for use with a Resource role. You
 
 - [Creating a Custom Role](./create-custom-role.md)
 
+- [Create and Manage a Role Assignment](./assign-a-role.md)
+
 - [Permissions](permissions.md)
 
 - [Default Tenant Roles](./tenant-scope-roles-permissions.md)
