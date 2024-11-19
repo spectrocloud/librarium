@@ -132,7 +132,7 @@ pages for more information:
 You can also create your own custom role of any type. To create a custom role, refer to the
 [Creating a Custom Role](./create-custom-role.md) page for detailed instructions.
 
-### Attribute-Based Access Control
+## Attribute-Based Access Control
 
 Attribute-Based Access Control (ABAC) is a model that uses attributes to determine access control. In Palette, ABAC is
 supported for a limited set of resources using [Resource roles](./resource-scope-roles-permissions.md). Resource roles
@@ -159,10 +159,8 @@ would have been able to update the cluster profile.
 
 ![ABAC with Resource roles](/user-management_palette-rback_abac_example.webp)
 
-If you are interested in using ABAC with Palette, check out the [Permissions](./permissions.md) page and review all the
-available Palette components that are eligible for use with a Resource role. You can get started with the
-[default Resource Roles](./resource-scope-roles-permissions.md) available in Palette, or create your own
-[custom Resource role](./create-custom-role.md#create-a-custom-resource-role).
+If you are interested in using ABAC with Palette, check out the [ABAC in Palette](implement-abac.md) guide for a
+step-by-step guide on how to implement ABAC in Palette.
 
 ## Resources
 
