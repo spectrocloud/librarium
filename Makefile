@@ -65,7 +65,6 @@ clean-visuals:
 	@echo "Cleaning visual regression tests"
 
 	rm -rf test-results/  playwright-report/  screenshots/
-	
 
 ##@ npm Targets
 
@@ -104,7 +103,7 @@ api: ## Generate API docs
 	npm run generate-api-docs
 
 test: ## Run Jest tests
-	npm test
+	npm test -- --no-cache
 
 test-visuals: ## Run visual regression tests
 	npx playwright test visuals/
@@ -220,6 +219,12 @@ verify-rate-limited-links-ci: ## Check for broken URLs in production in a GitHub
 format-images: ## Format images
 	@echo "formatting images in /static/assets/docs/images/ folder"
 	./scripts/compress-convert-images.sh
+
+###@ Find unused images assets
+
+find-unused-images:
+	@echo "Find unused image assets"
+	./scripts/find-unused-images.sh	
 
 ###@ Generate _partials/index.ts required to automatic partials usage.
 

@@ -289,15 +289,23 @@ function generateRoutes(packsAllData) {
   });
 }
 
-async function fetchPackListItems(queryParams, packDataArr, counter) {
-  const payload = { filter: { type: ["spectro", "oci"] } };
+async function fetchPackListItems(queryParams, packDataArr, counter, mappedRepos) {
+  // Loop through the mappedRepos object and extract all the registries provided in the Docusarus config file
+  const registryUids = [];
+  for (let i = 0; i < mappedRepos.length; i++) {
+    registryUids.push(mappedRepos[i].uid);
+  }
+  // Provide the registryUids in the payload to fetch the packs ONLY from registries provided in the Docusarus config file
+  const payload = { filter: { type: ["spectro", "oci"], registryUid: registryUids } };
   const response = await callRateLimitAPI(() => api.post(`/v1/packs/search${queryParams}`, payload));
   const tempPackArr = packDataArr.concat(response?.data?.items);
+
   if (response?.data?.listmeta?.continue) {
     return fetchPackListItems(
       `?limit=${filterLimit}&continue=` + response.data.listmeta.continue,
       tempPackArr,
-      counter
+      counter,
+      mappedRepos
     );
   } else {
     return tempPackArr;
@@ -379,11 +387,30 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
   }
 }
 
+// If the plugin is disabled, then the packs and integrations data will not be fetched.
+// However, the PDE service packs still need to be loaded.
+// Otherwise, errors will be thrown when the PDE service packs are accessed.
+// The redirect.js file has logic to redirect pack pages in production to the /integrations/ page.
 async function pluginPacksAndIntegrationsData(context, options) {
+  if (process.env.DISABLE_PACKS_INTEGRATIONS === "true") {
+    logger.warn(
+      "The Packs Integrations plugin is disabled. To enable it, set the environment variable DISABLE_PACKS_INTEGRATIONS to false."
+    );
+    return {
+      name: "plugin-packs-integrations",
+      async allContentLoaded({ allContent, actions }) {
+        const { setGlobalData } = actions;
+        const integrationsData = generateIntegrationData(allContent);
+        setGlobalData({ integrations: integrationsData });
+      },
+    };
+  }
+
   return {
     name: "plugin-packs-integrations",
     async loadContent() {
       const repositories = options.repositories || [];
+
       const mappedRepos = await mapRepositories(repositories);
       let apiPackResponse = {};
       let isFileExists = false;
@@ -396,7 +423,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
           mkdirSync(dirname, { recursive: true });
         }
         logger.info("Fetching the list of packs from the Palette API");
-        let packDataArr = await fetchPackListItems(`?limit=${filterLimit}`, [], 0);
+        let packDataArr = await fetchPackListItems(`?limit=${filterLimit}`, [], 0, mappedRepos);
 
         // Filter out the packs from the exclude list.
         packDataArr = packDataArr.filter((pack) => {

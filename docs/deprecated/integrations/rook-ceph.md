@@ -1,7 +1,7 @@
 ---
 sidebar_label: "rook-ceph"
 title: "Rook Ceph"
-description: "Rook is an open-source cloud-native storage orchestrator that provides the platform, framework, and support for Ceph
+description: "Rook is an open source cloud-native storage orchestrator that provides the platform, framework, and support for Ceph
 storage to natively integrate with cloud-native environments. Ceph is a distributed storage system that provides file,
 block, and object storage and is deployed in large-scale production clusters. This page talks about how to use the Rook Ceph storage pack in Spectro Cloud"
 hide_table_of_contents: true
@@ -13,7 +13,7 @@ logoUrl:
 tags: ["packs", "rook-ceph", "storage"]
 ---
 
-Rook is an open-source cloud-native storage orchestrator that provides the platform, framework, and support for Ceph
+Rook is an open source cloud-native storage orchestrator that provides the platform, framework, and support for Ceph
 storage to natively integrate with cloud-native environments. Ceph is a distributed storage system that provides file,
 block, and object storage and is deployed in large-scale production clusters.
 
