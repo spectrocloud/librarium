@@ -28,6 +28,11 @@ interface Cve {
     advCreatedTimestamp: string;
   };
   spec: {
+    assessment: {
+      thirdParty: {
+        isDependentOnThirdParty: boolean;
+      };
+    };
     impact: {
       impactedVersions: string[];
     };
@@ -47,6 +52,11 @@ interface MinimizedCve {
     cveLastModifiedTimestamp: string;
   };
   spec: {
+    assessment: {
+      thirdParty: {
+        isDependentOnThirdParty: boolean;
+      };
+    };
     impact: {
       impactedVersions: string[];
     };
@@ -77,7 +87,12 @@ export default function CveReportsTable() {
         cvePublishedTimestamp: entry.metadata.cvePublishedTimestamp,
         cveLastModifiedTimestamp: entry.metadata.cveLastModifiedTimestamp,
       },
-      spec: { impact: { impactedVersions: entry.spec.impact.impactedVersions } },
+      spec: {
+        assessment: {
+          thirdParty: { isDependentOnThirdParty: entry.spec.assessment.thirdParty.isDependentOnThirdParty },
+        },
+        impact: { impactedVersions: entry.spec.impact.impactedVersions },
+      },
       status: { status: entry.status.status },
     });
 
@@ -146,6 +161,25 @@ export default function CveReportsTable() {
           // Join versions with comma and add ellipsis if there are more than 3
           return sortedVersions.join(", ") + (impactedVersions.length > 3 ? ", ..." : "");
         },
+      },
+      {
+        title: "Third Party Vulnerability",
+        dataIndex: ["spec", "assessment", "thirdParty", "isDependentOnThirdParty"],
+        key: "vulnerabilityType",
+        sorter: (a, b) =>
+          a.spec.assessment.thirdParty.isDependentOnThirdParty === b.spec.assessment.thirdParty.isDependentOnThirdParty
+            ? 0
+            : 1,
+        render: (record) => (record ? "Yes" : "No"),
+      },
+      {
+        title: "CVSS Severity",
+        dataIndex: ["metadata", "cvssScore"],
+        key: "baseScore",
+        sorter: (a, b) => a.metadata.cvssScore - b.metadata.cvssScore,
+        render: (baseScore: number, record) => (
+          <Link to={`https://nvd.nist.gov/vuln/detail/${record.metadata.cve}`}>{baseScore}</Link>
+        ),
       },
       {
         title: "Status",
