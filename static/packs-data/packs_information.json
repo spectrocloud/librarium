@@ -436,6 +436,10 @@
     "description": "gVisor is an open-source Linux-compatible sandbox that can be deployed anywhere existing container tooling does. It enables cloud-native container security and portability. gVisor leverages years of experience isolating production workloads at Google."
   },
   {
+    "name": "karpenter",
+    "description": "Karpenter is an open-source node lifecycle management project built for Kubernetes. Adding Karpenter to a Kubernetes cluster can dramatically improve the efficiency and cost of active workloads in the cluster. Karpenter automatically launches the right compute resources to handle your cluster's applications."
+  },
+  {
     "name": "kubernetes-microk8s",
     "description": "MicroK8s is a lightweight Kubernetes distribution developed by Canonical. It deploys all Kubernetes services in a single, fully contained package and offers out-of-the-box add-ons."
   },

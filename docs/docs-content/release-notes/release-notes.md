@@ -11,6 +11,210 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 13, 2024 - Release 4.5.10
+
+### Bug Fixes
+
+- Fixed an issue that caused add-on packs belonging to Helm registries to fail to download due to incorrect Helm
+  registry path lookup logic. This issue affected Edge clusters.
+
+- Fixed an issue where Azure users could not select a Private DNS zone from a cluster resource group when creating a new
+  Azure cluster.
+
+## November 9, 2024 - Release 4.5.8
+
+### Palette {#palette-enterprise-4-5-8}
+
+#### Breaking Changes
+
+- The _Beehive_ [cluster group](../clusters/cluster-groups/cluster-groups.md) is no longer available starting with this
+  release. If you need to deploy a virtual cluster, create a cluster group in your tenant or project. You can learn more
+  about creating a new cluster group in the
+  [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide.
+
+- The Cluster API (CAPI) label selectors for Nutanix clusters have been updated. The change impacts active Nutanix
+  clusters and requires manual intervention to return the cluster to a healthy state. Refer to the
+  [Nutanix Cluster Machine Template Updates](../troubleshooting/cluster-deployment.md#scenario---nutanix-capi-deployment-updates)
+  for resolution steps. New Nutanix clusters will automatically use the updated label selectors.
+
+#### Features
+
+- Palette now supports Azure Disk Encryption for IaaS clusters deployed to Azure. This feature allows you to leverage
+  [Azure Key Vault](https://azure.microsoft.com/en-us/products/key-vault) for end-to-end encryption for Azure disks
+  attached to your IaaS clusters deployed to Azure. Refer to the
+  [Azure Disk Encryption](../clusters/public-cloud/azure/azure-disk-encryption.md) guide to learn more about this
+  feature.
+
+#### Improvements
+
+- The Palette SaaS login page has received a visual refresh. You can check out the new login page by visiting the
+  [Palette](https://console.spectrocloud.com) login page.
+
+- Additional Palette images that are required by internal Palette microservices are migrated to the new image registry,
+  `us-docker.pkg.dev`. Refer to the Palette 4.5.3 [Breaking Changes](#breaking-changes-4-5-3) section for more
+  information about the new image registry.
+
+- A new cluster filter capability has been added to the Palette UI. The new filter experience provides several quick
+  filters out-of-the-box, such as filtering by cluster status, environment, cluster profile, architecture, and more. The
+  new filter side drawer is located on the Clusters page. Refer to the
+  [Cluster Filters](../clusters/cluster-management/cluster-map-filters.md) guide to learn more about the new cluster
+  filters.
+
+### Edge
+
+#### Features
+
+- You can now add Edge clusters to Cluster Groups. This feature allows you to use Edge clusters to host virtual clusters
+in Cluster Groups. Check out the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md)
+guide to learn how to create a Cluster Group.
+<!-- prettier-ignore -->
+- You can now add additional manifests to the
+  <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor-edge-native-config" /> pack that invoke the Harbor
+  API to customize the Harbor registry. This allows you to standardize custom Harbor configurations, such as creating
+  additional projects, in your cluster profile.
+
+#### Improvements
+
+<!-- prettier-ignore -->
+- Palette will now create separate Harbor projects for packs and Helm charts when the <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor-edge-native-config" /> pack is enabled an Edge cluster profile. Existing Edge clusters may continue to use the same Harbor project for both packs and Helm charts. You can also add additional Harbor projects to the Harbor through the Harbor pack configuration. Refer to the <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor-edge-native-config" /> pack documentation to learn more about this feature.
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4-5-8) for more details.
+
+### Automation
+
+- Terraform version 0.22.0 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
+- A new Terraform resource, `spectrocloud_ssh_key`, is now available for uploading SSH keys to Palette. You can also use
+  the data resource `spectrocloud_ssh_key` to look up information about an SSH key in Palette. For more information,
+  refer to the Spectro Cloud Terraform
+  provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
+- The Terraform resource, `spectrocloud_privatecloudgateway_dns_map` is now available for creating a DNS mapping with a
+  Private Cloud Gateway. A data resource is also available for retrieving information about a DNS mapping for a Private
+  Cloud Gateway. For more information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
+- The Palette CLI's usage of Forklift has been updated to version `2.6.3`. The Palette CLI can leverage Forklift to
+  migrate a Virtual Machine to a VMO cluster. Check out the
+  [Migrate a VM to a VMO cluster](../vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md) guide to
+  learn more about this feature.
+
+- You can now specify a private VMware Virtual Disk Development Kit (VDDK) image to help optimize the migration process
+  when migrating a Virtual Machine to a VMO cluster. Refer to the
+  [Migrate a VM to a VMO cluster](../vm-management/create-manage-vm/advanced-topics/migrate-vm-kubevirt.md) guide to
+  learn more about this feature.
+
+#### Deprecations and Removals
+
+- The Terraform resource, `spectrocloud_cluster_import` is deprecated. To import a cluster deployed outside of the
+  context of Palette, refer to the [Import a Cluster](../clusters/imported-clusters/cluster-import.md) guide.
+
+### Docs and Education
+
+- A new announcement page is now available. Use the announcement page to stay informed about upcoming breaking changes,
+  deprecations, and removals in Palette. Check out the [Announcements](./annoucements.md) page to learn more.
+
+- The Azure Required IAM permissions have been updated with granular permissions required to support dynamic and static
+  placement for Azure IaaS and Azure AKS use cases. Check out the
+  [Azure Required IAM Permissions](../clusters/public-cloud/azure/required-permissions.md) to review the updated
+  content.
+
+### Packs
+
+#### Kubernetes
+
+| Pack Name   | New Version |
+| ----------- | ----------- |
+| Nodeadm     | 1.29.0      |
+| Nodeadm     | 1.30.0      |
+| RKE2        | 1.28.14     |
+| RKE2        | 1.29.9      |
+| RKE2        | 1.30.5      |
+| RKE2 - Edge | 1.28.14     |
+| RKE2 - Edge | 1.29.9      |
+| RKE2 - Edge | 1.30.5      |
+
+#### CSI
+
+| Pack Name  | New Version |
+| ---------- | ----------- |
+| Azure CSI  | 1.30.5      |
+| GCP Driver | 1.15.1      |
+| Rook Ceph  | 1.15.3      |
+
+#### Add-on Packs
+
+| Pack Name                    | New Version |
+| ---------------------------- | ----------- |
+| AWS Application Loadbalancer | 2.9.1       |
+| AWS Cluster Autoscaler       | 1.30.0      |
+| Kong                         | 2.42.0      |
+| Prometheus - Grafana         | 65.3.1      |
+| Reloader                     | 1.1.0       |
+| Volume-Snapshot-controller   | 8.1.0       |
+
+#### FIPS Packs
+
+| Pack Name   | New Version |
+| ----------- | ----------- |
+| Azure CSI   | 1.30.5      |
+| Cillium CNI | 1.16.0      |
+
+#### Community Packs
+
+| Pack Name              | New Version |
+| ---------------------- | ----------- |
+| vSphere No-Provisioner | 1.0.0       |
+
+## October 26, 2024 - Release 4.5.5
+
+### Breaking Changes
+
+- Edge [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) created with the
+  latest version of the Edge CLI, version `4.5.5`, are incompatible with Palette agent versions before `4.5.4` due to a
+  new format schema. If you are using an older version of the Palette agent, use the Edge CLI version `4.5.3` or earlier
+  to create content bundles. To download the latest version of the Edge CLI, visit the
+  [Downloads](../spectro-downloads.md#palette-edge-cli) page.
+
+### Improvements
+
+<!-- prettier-ignore -->
+- <VersionedLink text="BYOOS Edge OS" url="/integrations/packs/?pack=edge-native-byoi" /> pack version 2.0.0 is now available with support for [agent mode deployment](../deployment-modes/agent-mode/agent-mode.md).
+
+- Cluster [Profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) marked as hidden now include the ability to be mutable, hidden, and read-only.
+
+- [Edge content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) will now retain tags and image signatures. In the past, tags and signatures were stripped when the content bundle was created. Use the latest version of the Edge CLI to create content bundles that retain tags and signatures. To download the latest version of the Edge CLI, visit the
+  [Downloads](../spectro-downloads.md#palette-edge-cli) page.
+
+- Support for multiple authenticated external registries with domain mapping capabilities is now available for Edge clusters. Refer to the [External Registries](../clusters/edge/edge-configuration/installer-reference.md#multiple-external-registries) section in the Edge Installer Configuration Reference page for more information.
+
+### Bug Fixes
+
+- Resolved an issue where Edge nodes removed from a cluster remained in the Palette UI after a node delete operation was
+  completed.
+
+- Fixed an issue with Palette agent version 4.4.10 was unable to connect to the Palette management plane due to a gRPC
+  connection error.
+
+- Fixed an upgrade error causing clusters on K3s version 1.29 to fail to upgrade to a newer version.
+
+- Fixed an issue where pack names containing the `/` character did not fail validation during pack creation.
+
+- Fixed an issue where clusters, without prior backups, using Velero and Restic, were unable to accept resource quotas.
+
+- Resolved an issue where CoreDNS was not upgraded during a Kubernetes upgrade.
+
+- Fixed an issue where [system macros](../registries-and-packs/pack-constraints.md#pack-macros) were causing errors
+  during cluster profile downloads.
+
 ## October 13, 2024 - Release 4.5.0 - 4.5.3
 
 This release of Palette features a new deployment model, Agent Mode, and contains several new improvements and
@@ -25,7 +229,7 @@ to learn more about the changes introduced in this release.
 
 ### Palette Enterprise {#palette-enterprise-4-5-3}
 
-#### Breaking Changes
+#### Breaking Changes {#breaking-changes-4-5-3}
 
 - Due to Google's
   [decision to deprecate](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr) the `gcr.io`
@@ -75,10 +279,11 @@ to learn more about the changes introduced in this release.
 
 #### Deprecations and Removals
 
-- The [cluster group](../clusters/cluster-groups/cluster-groups.md), Beehive, will be sunset on November 9, 2024. If you
-  are using Palette SaaS and have virtual clusters in the Beehive cluster group, migrate the workload to new virtual
-  clusters hosted in a self-managed cluster group before November 9, 2024. You can learn more about creating a new
-  cluster group in the [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide.
+- The [cluster group](../clusters/cluster-groups/cluster-groups.md), Beehive, will be sunset on November 9, 2024. As of
+  the 4.5.0 release, you are no longer able to deploy any new virtual clusters into Beehive. If you are using Palette
+  SaaS and have virtual clusters in the Beehive cluster group, migrate the workload to new virtual clusters hosted in a
+  self-managed cluster group before November 9, 2024. You can learn more about creating a new cluster group in the
+  [Create and Manage Cluster Groups](../clusters/cluster-groups/create-cluster-group.md) guide.
 
 ### Edge
 

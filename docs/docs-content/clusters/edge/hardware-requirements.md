@@ -23,6 +23,16 @@ Spectro Cloud sales at sales@spectrocloud.com.
 
 All Edge hosts must meet the following minimum hardware requirements.
 
+:::info
+
+The requirements listed on this page apply to Edge hosts deployed in appliance mode only. To learn more about different
+deployment modes, refer to [Deployment Modes](../../deployment-modes/deployment-modes.md).
+
+To learn about the requirements for Edge hosts deployed in agent mode, refer to
+[Agent Mode Hardware Requirements](../../deployment-modes/agent-mode/architecture.md#minimum-device-requirements).
+
+:::
+
 ### AMD64 Architecture Devices
 
 | Component | Requirement                                                                                                                                               |

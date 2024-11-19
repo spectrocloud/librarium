@@ -24,9 +24,9 @@ To start building a custom Edge artifact, use the following guides:
 images to help you get started quickly. You can also refer to the following how-tos to learn how to build the Edge
 Installer ISO and provider images individually.
 
-- [Build Provider Images](./palette-canvos//build-provider-images.md).
+- [Build Provider Images](./palette-canvos/build-provider-images.md).
 
-- [Build Installer ISO](./palette-canvos//build-installer-iso.md).
+- [Build Installer ISO](./palette-canvos/build-installer-iso.md).
 
 If you want your Edge host to have preloaded content and be able to create clusters using the preloaded content, you
 build a content bundle and build the content bundle into your Edge Installer ISO. Building preloaded content into your
@@ -54,7 +54,7 @@ EdgeForge contains the following critical components:
 You can apply Center for Information System (CIS) hardening to the Edge artifacts with the `CIS_HARDENING` argument in
 your `.arg` file, which implements the guidelines and solutions provided by CIS to secure your systems automatically.
 For more information about available arguments in `.arg`, refer to
-[Edge Artifacts Build Configuration](./palette-canvos/arg.md). The code for how we achieve CIS hardening is open-source,
+[Edge Artifacts Build Configuration](./palette-canvos/arg.md). The code for how we achieve CIS hardening is open source,
 available in the [CanvOS repository](https://github.com/spectrocloud/CanvOS/tree/main/cis-harden).
 
 ### Edge Installer ISO
@@ -97,8 +97,8 @@ production scenario, you would need to customize these artifacts to suit your sp
 
 You can specify a custom registry for the Edge Installer to use during installation with the user data parameter
 `registryCredentials`. Refer to the
-[Installer Configuration](../edge-configuration/installer-reference.md#external-registry-parameters) reference resource
-for more details.
+[Installer Configuration](../edge-configuration/installer-reference.md#single-external-registry) reference resource for
+more details.
 
 :::
 
