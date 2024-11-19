@@ -231,7 +231,7 @@ export default function PacksReadme() {
       if (document && fragmentIdentifier) {
         const elementId = fragmentIdentifier.replace("#", "");
         const parent = document.getElementById?.(elementId);
-        parent?.querySelector?.("a")?.scrollIntoView();
+        parent?.querySelector?.("a")?.click();
       }
     }, [fragmentIdentifier]);
 
