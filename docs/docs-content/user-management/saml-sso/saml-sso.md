@@ -1,7 +1,7 @@
 ---
-sidebar_label: "SAML and OIDC SSO Setup"
-title: "SAML and OIDC SSO Setup"
-description: "Detailed instructions on creating Single Sign-on to log in to Palette using SAML 2.0"
+sidebar_label: "SAML and OIDC SSO"
+title: "SAML and OIDC SSO"
+description: "Learn how to enable Single Sign-On (SSO) in Palette with SAML and OIDC."
 icon: ""
 hide_table_of_contents: false
 tags: ["user-management", "saml-sso", "oidc", "saml", "sso"]

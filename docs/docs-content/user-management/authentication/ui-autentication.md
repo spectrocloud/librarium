@@ -4,7 +4,7 @@ title: "User Authentication"
 description: "Learn about User Interface authentication method in Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 tags: ["user-management", "authentication", "user-interface"]
 ---
 
@@ -23,17 +23,20 @@ To sign up for a Palette account, ask you Palette tenant administrator to send y
 
 ## Sign In Flow
 
-If you created your user with a username and password, then you may be prompted to select the organization you wish to
-log in to. If you are a member of a single organization, then you will not be prompted for an organization selection.
+If you created your user with a username and password, then you may be prompted to select the tenant you wish to log in
+to. If you are a member of a single tenant, then you will not be prompted for a tenant selection.
 
-If you created an account through SSO and are a member of different organizations, then you must first select the
-organization name you wish to log in to. Click on the **Sign in to your organization** button for the option to specify
-the organization name. If you need help remembering the organization name, click on the **Forgot your organization
-name?** button and provide your email address to receive an email containing your organization name and its login URL.
+If you created an account through SSO and are a member of different tenant, then you must first select the tenant name
+you wish to log in to. Click on the **Sign in to your tenant** button for the option to specify the tenant name.
 
 :::info
 
-If you are a Palette Enterprise user, use the custom Palette URL for an optimized login experience and avoid specifying
-the organization name. Ask your Palette system administrator for the custom Palette URL.
+If you are a self-hosted Palette user, use the custom Palette URL for an optimized login experience and avoid specifying
+the tenant name. Ask your Palette system administrator for the custom Palette URL.
 
 :::
+
+## Switch Tenant
+
+If you are a member of multiple tenants, you can switch between tenants in Palette without logging out. Check out the
+[Switch Tenant](./switch-tenant.md) guide for more information.
