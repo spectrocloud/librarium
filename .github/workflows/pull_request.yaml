@@ -98,4 +98,11 @@ jobs:
 
       - name: Build
         run: |
-          npm run build
+          touch .env
+          make build-ci
+      
+      - name: Build with cached packs
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
+        uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
