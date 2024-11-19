@@ -18,7 +18,12 @@ the following protocols for authentication and authorization.
   [OAuth 2.0](https://www.rfc-editor.org/rfc/rfc6749), a widely used authorization framework. OIDC supports distributed
   identity providers and supports social login providers such as Google or GitHub.
 
-## Limitations
+## Palette OIDC and PXK
+
+<!-- prettier-ignore -->
+Palette can act as an Identity Provider (IDP) when <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> is used as the Kubernetes distribution in a cluster profile. Palette eXtended Kubernetes (PXK) is a recompiled version of the open-source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure providers, public cloud providers, and private data center providers. This is the default distribution when deploying a Kubernetes cluster through Palette. To learn more about PXK, refer to the <VersionedLink text="PXK" url="/integrations/packs/?pack=kubernetes" /> page.
+
+## OIDC Limitations
 
 Palette [API keys](../authentication/api-key/api-key.md) that belong to Palette users removed from the organization
 through OIDC/SAML are not automatically removed. We recommend that you remove these keys to ensure that they are no

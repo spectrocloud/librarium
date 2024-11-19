@@ -15,6 +15,19 @@ Role-based access control (RBAC) focuses on assigning permissions to roles rathe
 Users and teams are then assigned these roles, which specify their access to various resources. A user or team can be
 assigned multiple roles, each defining the permitted actions they can perform on those resources.
 
+:::info
+
+Palette RBAC is separate from Kubernetes RBAC and is used to manage access to the Palette platform and its resources.
+The access control inside a Kubernetes cluster is managed by Kubernetes RBAC and requires the usage of
+[Kubernetes roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) and
+[role bindings](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#default-roles-and-role-bindings). For
+fine-grained access control to Kubernetes resources, use the
+[Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) system. You can use OpenID Connect
+(OIDC) to integrate Kubernetes RBAC with Palette RBAC. Refer to the [OIDC](../saml-sso/saml-sso.md) page for more
+information.
+
+:::
+
 ## RBAC Model
 
 The Palette RBAC Model is based on the following three components:

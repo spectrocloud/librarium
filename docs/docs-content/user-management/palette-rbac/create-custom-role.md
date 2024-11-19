@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Create a Custom Role"
-title: "Create a Custom Role"
-description: "Learn how to create a custom role in Palette."
+sidebar_label: "Create and Manage a Custom Role"
+title: "Create and Manage a Custom Role"
+description: "Learn how to create and manage a custom role in Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 5
@@ -137,3 +137,82 @@ To validate that the custom Tenant role is created successfully, follow these st
 4. Verify that the custom role is listed in the **Project Roles** tab.
 
 5. Assign the custom Tenant role to a user or group to validate that the permissions are applied correctly.
+
+## Edit a Custom Role
+
+To edit a custom role in Palette, use the following steps.
+
+### Prerequisites
+
+- You need a Tenant admin role with the `role.update` permission to edit a custom role.
+
+### Edit a Custom Role
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+2. Navigate to the left **Main Menu** and select **Roles**.
+
+3. Navigate to the tab that corresponds to the role type you want to edit. For example, if you want to edit a custom
+   Project role, navigate to the **Project Roles** tab.
+
+4. Locate the custom role you want to edit and click on row to expose the details drawer.
+
+5. Click on the **Actions** button and select **Edit Role**.
+
+6. Make the necessary changes to the custom role.
+
+7. Click on the **Save Changes** button at the bottom of the page.
+
+### Validate
+
+To validate that the custom role is edited successfully, follow these steps.
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+2. Navigate to the left **Main Menu** and select **Roles**.
+
+3. Navigate to the tab that corresponds to the role type you edited the role from.
+
+4. Verify that the custom role is listed in the roles list.
+
+5. Assign the custom role to a user or group to validate that the permissions are applied correctly.
+
+6. Log in as a user with the custom role assigned and verify that the permissions are applied correctly.
+
+## Delete a Custom Role
+
+To delete a custom role in Palette, use the following steps.
+
+### Prerequisites
+
+- You need a Tenant admin role with the `role.delete` permission to delete a custom role.
+
+### Delete a Custom Role
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+2. Navigate to the left **Main Menu** and select **Roles**.
+
+3. Navigate to the tab that corresponds to the role type you want to delete. For example, if you want to delete a custom
+   Project role, navigate to the **Project Roles** tab.
+
+4. Locate the custom role you want to delete and click on row to expose the details drawer.
+
+5. Click on the **Actions** button and select **Delete Role**.
+
+6. Confirm the deletion by clicking on the **OK** button in the confirmation dialog.
+
+### Validate
+
+To validate that the custom role is deleted successfully, follow these steps.
+
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+2. Navigate to the left **Main Menu** and select **Roles**.
+
+3. Navigate to the tab that corresponds to the role type you deleted the role from.
+
+4. Verify that the custom role is no longer listed in the roles list.
+
+5. Review the permissions assigned to the users or groups that had the custom role assigned to ensure that the
+   permissions are removed.
