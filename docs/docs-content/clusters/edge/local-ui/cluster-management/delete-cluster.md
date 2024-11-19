@@ -3,7 +3,7 @@ sidebar_label: "Delete a Cluster"
 title: "Delete a Cluster"
 description: "Learn how to delete a cluster with Local UI."
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 90
 tags: ["edge"]
 ---
 
@@ -12,6 +12,11 @@ workloads. Deleting a cluster does not unlink the linked hosts. For more informa
 [Link Hosts](./link-hosts.md).
 
 ## Prerequisites
+
+- Access to [Local UI](../host-management/access-console.md). Any Operating System (OS) user can be used to log in to
+  Local UI.
+
+- An active cluster deployed and managed by Local UI.
 
 ## Delete a Cluster
 
