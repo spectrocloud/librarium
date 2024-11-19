@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Migrate a VM to a VMO Cluster"
-title: "Migrate a VM to a VMO Cluster"
+sidebar_label: "Migrate VMs to a VMO Cluster"
+title: "Migrate VMs to a VMO Cluster"
 description: "Learn how to migrate VMs to Palette VMO."
 icon: " "
 hide_table_of_contents: false

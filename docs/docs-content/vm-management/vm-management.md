@@ -57,7 +57,7 @@ and permissions for your VMs.
 
 - [Advanced Topics](./create-manage-vm/advanced-topics/advanced-topics.md)
 
-- [Migrate a VM to a VMO cluster](./migrate-vm-vmo-cluster/migrate-vm-vmo-cluster.md)
+- [Migrate a VM to a VMO cluster](./migrate-vms-vmo-cluster/migrate-vms-vmo-cluster.md)
 
 - [Import and Deploy OVAs to Palette VMO](./create-manage-vm/advanced-topics/deploy-import-ova.md)
 
