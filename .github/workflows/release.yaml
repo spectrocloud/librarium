@@ -54,12 +54,18 @@ jobs:
           cache: "npm"
 
       - run: npm ci
-
-      - name: Compile
+      
+      - name: Build
         run: |
           touch .env
           make versions-ci
-          make build
+          make build-ci
+      
+      - name: Build with cached packs
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
+        uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload to AWS
         run: |
@@ -90,10 +96,20 @@ jobs:
 
       - run: npm ci
 
-      - name: Compile
+      - name: Versions
         run: |
+      
+      - name: Build
+        run: |
+          touch .env
           make versions-ci
-          make build
+          make build-ci
+      
+      - name: Build with cached packs
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
+        uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload to AWS
         run: |
