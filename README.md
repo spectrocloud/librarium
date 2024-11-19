@@ -815,6 +815,32 @@ Settting the `DISABLE_PACKS_PLUGIN` environment variable to `true` will also hav
   `integrations/` page is the new behavior.
 - The Packs list page will display a warning message indicating that the packs data is not available.
 
+#### Cached Packs Data
+
+All pack related data is saved to a
+[GitHub Workflow Artifact](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/storing-and-sharing-data-from-a-workflow#about-workflow-artifacts)
+after every succesful release to production. Check out the [post_release.yaml](.github/workflows/post_release.yaml) for
+further details. The cached data enables us to build and start librarium without performing any pack related API
+queries. All of our GitHub workflows will use this cached data as a fallback in the case of an API related build
+failure. Check out the [build-cached-packs action.yaml](.github/actions/build-cached-packs/action.yaml) to learn how the
+cached data is fetched and used.
+
+Packs data is saved locally in the `.docusaurus/packs-integrations` and `static/img/packs` folders. You can remove the
+data using `make clean-packs`. You can use the cached packs artifact locally when you don't have any downloaded packs
+data and you want to avoid the pack download time. This flow also helps you when you don't have any local packs data and
+we are experiencing an API outage.
+
+librarium provides the following commands which fetch cached packs to your local environment.
+
+| **Command**               | **Description**                                                                                                                                    |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `make get-cached-packs`   | Fetch the packs data artifact and pace files in the correct places. You can then execute `make start` or `make build` as usual.                    |
+| `make start-cached-packs` | Attempt to start the local development server. If a packs related outage is detected, fetch the packs data artifact and retry the `start` command. |
+| `make build-cached-packs` | Attempt to build the application. If a packs related outage is detected, fetch the packs data artifact and retry the `build` command.              |
+
+These scripts will prompt you to install and authenticate the [GitHub CLI](https://cli.github.com/) before you can
+proceed.
+
 #### README Content
 
 The pack component will display a Pack's README file if it exists. The README content comes from the Palette API.
@@ -1075,5 +1101,18 @@ make build
 rm versions.json
 ```
 
-> [!WARNING] The `docuasurus.config.js` file is updated by the [`update_docusaurs_config.js`](./docusaurus.config.js)
-> script. DO NOT commit this file with the updated changes.
+> [!WARNING]
+>
+> The `docusaurus.config.js` file is updated by the [`update_docusaurus_config.js`](./docusaurus.config.js) script. DO
+> NOT commit this file with the updated changes.
+
+## Exit Codes
+
+Librarium provides the following exit codes. These exit codes are returned by both the `npm run start` and
+`npm run build` commands.
+
+| **Exit Code**                 | **Description**                                                                                                                                                                                                                                                   |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `0`                           | The command was executed successfully.                                                                                                                                                                                                                            |
+| `5`                           | The command failed due to errors received from the API service. These requests are issued by the [Packs Component](#packs-component) and librarium cannot start without loading packs, either from the API service or the [cached packs data](#cached-packs-data) |
+| Any other non-zero exit code. | The command failed due to another error. Check the command output.                                                                                                                                                                                                |
