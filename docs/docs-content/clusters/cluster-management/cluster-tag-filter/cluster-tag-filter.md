@@ -24,6 +24,6 @@ To get started with an attribute access control through tags, check out the
 
 - [Resource Roles](../../../user-management/palette-rbac/resource-scope-roles-permissions.md)
 
-- [Create Custom Role](../../../user-management/users-and-teams/create-user.md#create-custom-role)
+- [Create Custom Role](../../../user-management/palette-rbac/create-custom-role.md)
 
-- [Create New User in Palette](../../../user-management/users-and-teams/create-user.md#create-a-new-user)
+- [Create New User in Palette](../../../user-management/users-and-teams/create-user.md)
