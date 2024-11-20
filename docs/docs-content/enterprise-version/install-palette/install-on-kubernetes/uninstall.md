@@ -12,6 +12,13 @@ keywords: ["self-hosted", "enterprise"]
 To uninstall Palette from your cluster, you need to uninstall the following components: Reach system, Palette management
 plane, and Cert Manager. This uninstall process applies to both connected and airgap instances of self-hosted Palette.
 
+:::warning
+
+This installation process only applies to Palette instances installed using Helm charts. If you used the Palette CLI to
+install Palette, this process does not apply.
+
+:::
+
 ## Prerequisite
 
 - An active self-hosted Palette instance.
@@ -40,10 +47,18 @@ plane, and Cert Manager. This uninstall process applies to both connected and ai
    helm uninstall reach-system
    ```
 
-3. Issue the following command to remove the remaining Reach system resources.
+3. Issue the following commands to remove the remaining Reach system resources.
 
    ```shell
-   kubectl get all,configmap,secret,serviceaccount,mutatingwebhookconfiguration,validatingwebhookconfiguration,clusterpodpreset --output=jsonpath='{range .items[?(@.metadata.annotations.helm\.sh/hook)]}{.kind}/{.metadata.name}{"\n"}{end}' --namespace reach-system | grep -v "ReplicaSet/" | xargs -r kubectl delete --namespace reach-system && kubectl delete ns reach-system && kubectl delete crd podpresets.reach.spectrocloud.com clusterpodpresets.reach.spectrocloud.com
+   kubectl delete ns reach-system
+   kubectl delete crd podpresets.reach.spectrocloud.com clusterpodpresets.reach.spectrocloud.com
+   kubectl delete mutatingwebhookconfiguration reach-mutating-webhook-configuration
+   kubectl delete validatingwebhookconfiguration reach-validating-webhook-configuration
+   kubectl delete clusterrolebinding reach-manager-rolebinding
+   kubectl delete clusterrolebinding reach-proxy-rolebinding
+   kubectl delete clusterrole reach-manager-role
+   kubectl delete clusterrole reach-metrics-reader
+   kubectl delete clusterrole reach-proxy-role
    ```
 
 4. Issue the following command to start uninstalling the Palette management plane. Similar to Reach, this will only
@@ -57,11 +72,25 @@ plane, and Cert Manager. This uninstall process applies to both connected and ai
    plane.
 
    ```shell
-   kubectl delete ns hubble-system && kubectl delete crd spectroclusteractions.jet.cluster.spectrocloud.com
+   kubectl delete ns hubble-system || kubectl delete crd spectroclusteractions.jet.cluster.spectrocloud.com
    ```
 
-6. Finally, issue the following command to uninstall Cert Manager. Cert Manager does not reply on any Helm hooks and the
-   Helm uninstall command will uninstall all related resources.
+6. Issue the following command to remove the `image-swap` chart.
+
+   ```shell
+   helm uninstall image-swap
+   ```
+
+7. Issue the following commands to remove the the remaining resources related to `image-swap`.
+
+   ```shell
+   kubectl delete ns imageswap-system
+   kubectl delete mutatingwebhookconfiguration imageswap-webhook
+   kubectl delete csr imageswap.imageswap-system.cert-request
+   ```
+
+8. Issue the following command to uninstall Cert Manager. Cert Manager does not reply on any Helm hooks and the Helm
+   uninstall command will uninstall all related resources.
 
    ```shell
    helm uninstall cert-manager
