@@ -15,7 +15,7 @@ plane, and Cert Manager. This uninstall process applies to both connected and ai
 :::warning
 
 This installation process only applies to VerteX instances installed using Helm charts. If you used the Palette CLI to
-install Palette, this process does not apply.
+install VerteX, this process does not apply.
 
 :::
 
