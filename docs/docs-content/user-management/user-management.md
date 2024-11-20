@@ -11,15 +11,15 @@ tags: ["user-management"]
 ---
 
 Palette is designed to help you implement a least-privilege access model. It allows you to manage users and teams
-effectively and supports multiple authentication methods. Additionally, it features a comprehensive role-based access
-control (RBAC) system and the ability to apply attribute-based access control (ABAC).
+effectively and supports multiple authentication methods. Additionally, Palette features a comprehensive role-based
+access control (RBAC) system and the ability to apply attribute-based access control (ABAC).
 
 ## User Authentication
 
-You can log into Palette through the Palette UI and interact with the platform through a web browser. You can also
-interact with Palette programmatically through the API. Review the
-[User Authentication](./authentication/authentication.md) section to learn more about the different authentication
-methods.
+You can log into Palette through the Palette user interface and interact with the platform through a web browser. You
+can also interact with Palette programmatically through the API. Review the
+[User Authentication](./authentication/authentication.md) section to learn more about the different supported
+authentication methods.
 
 ## Users and Teams
 
