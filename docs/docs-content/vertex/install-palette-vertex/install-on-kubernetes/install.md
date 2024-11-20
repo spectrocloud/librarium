@@ -28,7 +28,7 @@ has the necessary network connectivity for VerteX to operate successfully.
 
 - Ensure `unzip` or a similar extraction utility is installed on your system.
 
-- The Kubernetes cluster must be set up on a supported version of Kubernetes, which includes versions v1.25 to v1.27.
+- The Kubernetes cluster must be set up on a supported version of Kubernetes, which includes versions v1.28 to v1.29.
 
 - Ensure the Kubernetes cluster does not have Cert Manager installed. VerteX requires a unique Cert Manager
   configuration to be installed as part of the installation process. If Cert Manager is already installed, you must

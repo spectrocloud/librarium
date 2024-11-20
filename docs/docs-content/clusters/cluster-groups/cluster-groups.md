@@ -15,10 +15,6 @@ users to deploy Palette virtual clusters. Downstream consumers can use the clust
 You can create a cluster group under the Palette [tenant](../../glossary-all.md#tenant) scope. Alternatively, you can
 create a cluster group at the [project](../../tenant-settings/projects/projects.md) scope.
 
-By default, Palette exposes a managed cluster group called _beehive_ that is available for users in app mode. This
-cluster group is managed by Palette and falls under the free tier. The beehive cluster group is located in the eastern
-side of the U.S.
-
 You can create a cluster group that is made up of various types of host clusters. You could create a cluster group by
 similar cloud providers, Kubernetes versions, or by location. You have the flexibility to define the grouping criteria.
 The following image displays a cluster group comprised of various host clusters deployed in a public cloud, private
@@ -35,6 +31,20 @@ type cannot be added to a cluster group configured for the endpoint type load ba
 :::
 
 ![An example cluster group made up of various clusters](/clusters_cluster-groups_index-page.webp)
+
+## Edge Cluster Support
+
+You can add Edge clusters to a cluster group and deploy Palette virtual clusters on them. However, when using Edge
+clusters in a cluster group, you must consider the following limitations:
+
+- The cluster group must only contain Edge clusters. You cannot mix Edge clusters with other types of clusters in the
+  same cluster group.
+- The cluster group can only support one Edge cluster.
+<!-- prettier-ignore -->
+- You must provide the capability to support a load balancer or ingress endpoint for the cluster group. You can use
+  solutions such as <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm" /> and
+  <VersionedLink text="Nginx" url="/integrations/packs/?pack=nginx" /> in your cluster profile to support these types of
+  endpoints.
 
 ## Get Started
 

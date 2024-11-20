@@ -26,6 +26,7 @@ env:
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
   ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
   PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
+  DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
 
 
 concurrency:
@@ -53,12 +54,18 @@ jobs:
           cache: "npm"
 
       - run: npm ci
-
-      - name: Compile
+      
+      - name: Build
         run: |
           touch .env
           make versions-ci
-          make build
+          make build-ci
+      
+      - name: Build with cached packs
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
+        uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload to AWS
         run: |
@@ -89,10 +96,20 @@ jobs:
 
       - run: npm ci
 
-      - name: Compile
+      - name: Versions
         run: |
+      
+      - name: Build
+        run: |
+          touch .env
           make versions-ci
-          make build
+          make build-ci
+      
+      - name: Build with cached packs
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
+        uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload to AWS
         run: |

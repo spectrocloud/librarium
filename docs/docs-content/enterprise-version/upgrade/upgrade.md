@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Upgrade"
-title: "Upgrade"
-description: "Spectro Cloud upgrade notes for specific Palette versions."
+title: "Palette Upgrade"
+description: "Upgrade notes for specific Palette versions."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 100
@@ -12,27 +12,44 @@ keywords: ["self-hosted", "enterprise"]
 This page offers links and reference information for upgrading self-hosted Palette instances. If you have questions or
 concerns, [reach out to our support team](http://support.spectrocloud.io/).
 
-:::info
+:::tip
+
+If you are using Palette VerteX, refer to the [VerteX Upgrade](../../vertex/upgrade/upgrade.md) page for upgrade
+guidance.
+
+:::
+
+### Private Cloud Gateway
 
 If your setup includes a PCG, make sure to
 [allow the PCG to upgrade automatically](../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette upgrade.
 
-:::
-
 ## Supported Upgrade Paths
 
 Refer to the following table for the self-hosted Palette upgrade paths that we currently support.
 
-:::warning
+:::danger
 
 Before upgrading Palette to a new major version, you must first update it to the latest patch version of the latest
 minor version available.
 
 :::
 
+### 4.5.x
+
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.5.5        |       4.5.8        | :white_check_mark: |
+|       4.5.3        |       4.5.5        | :white_check_mark: |
+|       4.5.3        |       4.5.4        | :white_check_mark: |
+|       4.4.20       |       4.5.3        | :white_check_mark: |
+
+### 4.4.x
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.4.18       |       4.4.20       | :white_check_mark: |
 |       4.4.14       |       4.4.18       | :white_check_mark: |
 |       4.4.11       |       4.4.18       | :white_check_mark: |
 |       4.3.6        |       4.4.18       | :white_check_mark: |
@@ -40,8 +57,12 @@ minor version available.
 |       4.4.6        |       4.4.14       | :white_check_mark: |
 |       4.3.6        |       4.4.14       | :white_check_mark: |
 |       4.4.6        |       4.4.11       | :white_check_mark: |
-|       4.3.6        |       4.4.11       | :white_check_mark: |
 |       4.3.6        |       4.4.4        | :white_check_mark: |
+
+### 4.3.x and Prior
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
 |       4.2.13       |       4.3.6        | :white_check_mark: |
 |       4.2.7        |       4.2.13       | :white_check_mark: |
 |       4.1.x        |       4.3.6        |        :x:         |

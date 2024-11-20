@@ -265,3 +265,43 @@ the Cilium DaemonSet.
      container.apparmor.security.beta.kubernetes.io/mount-cgroup: "unconfined"
      container.apparmor.security.beta.kubernetes.io/apply-sysctl-overwrites: "unconfined"
    ```
+
+## Download Node Logs from Edge Clusters
+
+If you experience issues with your Edge cluster control plane or workloads, you can download the logs of your cluster
+nodes to help investigate the root cause as long as your cluster is in **Healthy** status.
+
+The downloaded log archive includes the following systemd service log files as well as other log files related to the
+Palette agent:
+
+- **stylus-agent.service**
+- **stylus-operator.service**
+- **spectro-stylus-agent.service**
+- **spectro-stylus-operator.service**
+- **k3s.service**
+- **k3s-agent.service**
+- **rke2.service**
+- **rke2-agent.service**
+- **/var/log/stylus-upgrade.log**
+- **/var/log/stylus-upgrade-script.log**
+- **/var/log/stylus-init-upgrade.log**
+- **/var/log/kube-init.log**
+- **/var/log/kube-join.log**
+- **/var/log/kube-upgrade.log**
+- **/var/log/kube-post-init.log**
+- **/proc/cmdline**
+
+### Debug Steps
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Navigate to the left **Main Menu** and click on **Clusters**.
+
+3. Select the cluster whose logs you want to download.
+
+4. In the upper-right corner of the cluster page, click **Settings**.
+
+5. In the **drop-down Menu** that appears, click **Download Logs**.
+
+6. Check the **Node Logs** box and click **Download**. You may also download logs from other components at the same
+   time.
