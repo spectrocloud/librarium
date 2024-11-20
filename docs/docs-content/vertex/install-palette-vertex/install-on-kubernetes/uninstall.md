@@ -81,12 +81,19 @@ install Palette, this process does not apply.
    helm uninstall image-swap
    ```
 
-7. Issue the following commands to remove the the remaining resources related to `image-swap`.
+7. Issue the following commands to remove the remaining resources related to `image-swap`.
 
    ```shell
    kubectl delete ns imageswap-system
    kubectl delete mutatingwebhookconfiguration imageswap-webhook
    kubectl delete csr imageswap.imageswap-system.cert-request
+   ```
+
+8. Issue the following command to uninstall Cert Manager. Cert Manager does not reply on any Helm hooks and the Helm
+   uninstall command will uninstall all related resources.
+
+   ```shell
+   helm uninstall cert-manager
    ```
 
 ## Validate

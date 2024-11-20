@@ -81,7 +81,7 @@ install Palette, this process does not apply.
    helm uninstall image-swap
    ```
 
-7. Issue the following commands to remove the the remaining resources related to `image-swap`.
+7. Issue the following commands to remove the remaining resources related to `image-swap`.
 
    ```shell
    kubectl delete ns imageswap-system
