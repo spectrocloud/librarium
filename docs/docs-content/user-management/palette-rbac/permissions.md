@@ -17,7 +17,7 @@ global and applies to all projects within the tenant. The Project scope is speci
 
 ## Components and Resource Keys
 
-The following table lists the availabe Palette components, their corresponding resource key and the applicable Role
+The following table lists the available Palette components, their corresponding resource key and the applicable Role
 scopes you can assign permissions to.
 
 | Component            | Resource Key         | Tenant Role Scope | Project Role Scope | Resource Role Scope | Description                                                                        |
