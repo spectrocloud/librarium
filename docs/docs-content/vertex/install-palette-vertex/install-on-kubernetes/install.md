@@ -138,7 +138,6 @@ your environment. Reach out to our support team if you need assistance.
     | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
     | `env.rootDomain`                          | The URL name or IP address you will use for the VerteX installation.                                                                                          | string   |
     | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for VerteX FIPS packs. These credentials are provided by our support team.                                                       | object   |
-    | `scar`                                    | The Spectro Cloud Artifact Repository (SCAR) credentials for VerteX FIPS images. These credentials are provided by our support team.                          | object   |
     | `ingress.enabled`                         | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                         | boolean  |
     | `reach-system`                            | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure VerteX to use a network proxy in your environment | object   |
 
@@ -152,7 +151,7 @@ your environment. Reach out to our support team if you need assistance.
 
     <TabItem label="AWS ECR Registry" value="ecr">
 
-    ```yaml {53,77-85,97-102}
+    ```yaml {53,77-85}
     #########################
     # Spectro Cloud Palette #
     #########################
@@ -250,10 +249,10 @@ your environment. Reach out to our support team if you need assistance.
       #   mirrorRegistries: ""
 
       scar:
-        endpoint: "https://saas-repo-fips.console.spectrocloud.com"
-        username: "**********"
-        password: "**********"
-        insecureSkipVerify: true
+        endpoint: "https://specman-service:8443" #<Contact Spectro Cloud Sales for More info>
+        username: "" #<Contact Spectro Cloud Sales for More info>
+        password: "" #<Contact Spectro Cloud Sales for More info> Note: Password must be base64
+        insecureSkipVerify: false
         caCert: ""
 
       imageSwapImages:
@@ -379,7 +378,7 @@ your environment. Reach out to our support team if you need assistance.
 
     <TabItem label="OCI Registry" value="oci">
 
-    ```yaml {53,68-75,110-115}
+    ```yaml {53,68-75}
     #########################
     # Spectro Cloud VerteX #
     #########################
@@ -490,10 +489,10 @@ your environment. Reach out to our support team if you need assistance.
       # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
 
       scar:
-        endpoint: "https://saas-repo-fips.console.spectrocloud.com"
-        username: "**********"
-        password: "**********"
-        insecureSkipVerify: true
+        endpoint: "https://specman-service:8443" #<Contact Spectro Cloud Sales for More info>
+        username: "" #<Contact Spectro Cloud Sales for More info>
+        password: "" #<Contact Spectro Cloud Sales for More info> Note: Password must be base64
+        insecureSkipVerify: false
         caCert: ""
 
       imageSwapImages:

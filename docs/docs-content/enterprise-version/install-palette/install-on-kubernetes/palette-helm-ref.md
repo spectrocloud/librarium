@@ -272,7 +272,9 @@ config:
 
 ### Spectro Cloud Artifact Repository (SCAR)
 
-As of Palette version 4.5.4, you no longer need to configure SCAR.
+The Spectro Cloud Artifact Repository (SCAR) does not require any configuration. However, are using a previous
+installation of Palette and configured SCAR, reach out to the support team for guidance on how to update the SCAR
+settings.
 
 | **Parameters**            | **Description**                                                                                | **Type** | **Default value**              |
 | ------------------------- | ---------------------------------------------------------------------------------------------- | -------- | ------------------------------ |
