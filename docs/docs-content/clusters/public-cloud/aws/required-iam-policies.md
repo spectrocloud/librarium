@@ -10,7 +10,7 @@ sidebar_position: 50
 Palette requires proper Amazon Web Services (AWS) permissions to operate and perform actions on your behalf. The
 following policies include all the permissions needed for Palette to deploy and manage clusters on AWS.
 
-- **PaletteControllersPolicy**
+- **PaletteControllerPolicy**
 
 - **PaletteControlPlanePolicy**
 
@@ -43,7 +43,7 @@ The four core IAM policies are required for Palette to operate.
 
 <Tabs queryString="iam-policies">
 
-<TabItem label="Controllers Policy" value="Controllers Policy">
+<TabItem label="Controller Policy" value="Controller Policy">
 
 **Last Update**: April 20, 2023
 
