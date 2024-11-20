@@ -18,7 +18,7 @@ To learn how to create a user and manage users, refer to the [Create and Manage 
 
 ## Teams
 
-Teams are made up of users. A team can have multiple users, and each user can belong to multiple teams. Teams are are
+Teams are made up of users. A team can have multiple users, and each user can belong to multiple teams. Teams are
 assigned roles, which determine the permissions and access levels of the users in the team. To learn how to create a
 team and manage teams, refer to the [Create and Manage a Team](./create-a-team.md) guide.
 

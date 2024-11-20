@@ -153,7 +153,7 @@ projects, and to list cluster profiles. For brevity, these permissions are not l
 :::
 
 In the diagram below, the Resource role, **security-enforcer**, is allowed to update the cluster profile in Project A,
-with the tag `prodAllowed`. If the user attemps to update the cluster profile in Project B, that lacks the tag,
+with the tag `prodAllowed`. If the user attempts to update the cluster profile in Project B, that lacks the tag,
 `productionAllowed`, the operation is denied. If the cluster profile in Project B had the tag, `prodAllowed`, the user
 would have been able to update the cluster profile.
 
