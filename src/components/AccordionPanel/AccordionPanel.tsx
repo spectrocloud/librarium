@@ -1,4 +1,3 @@
-// src/components/AccordionPanel.tsx
 import React, { ReactNode } from "react";
 
 interface AccordionPanelProps {

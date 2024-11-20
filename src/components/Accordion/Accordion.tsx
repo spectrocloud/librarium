@@ -1,9 +1,7 @@
-// src/components/Accordion.tsx
-import React, { ReactNode, ReactElement } from "react";
+import React, { ReactNode } from "react";
 import { Collapse } from "antd";
 import styles from "./Accordion.module.css";
 
-// Define the expected props for AccordionPanel
 interface AccordionPanelProps {
   title: string;
   children: ReactNode;
