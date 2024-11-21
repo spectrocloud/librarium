@@ -258,13 +258,13 @@ change something, click the **Actions** drop-down in the top-right corner, and s
 
 8. Fill in the migration plan details.
 
-   | Setting              | Description                                                                   |
-   | -------------------- | ----------------------------------------------------------------------------- |
-   | **Plan name**        | A unique name for your migration plan.                                        |
-   | **Target provider**  | Select the target provider from the drop-down Menu.                           |
-   | **Target namespace** | Select the target namespace for the VM migration from the drop-down Menu.     |
-   | **Network map**      | Add or remove additional network maps, or leave the default mapping in place. |
-   | **Storage map**      | Add or remove additional storage maps, or leave the default mapping in place. |
+   | Setting              | Description                                                                                                    | Example                                    |
+   | -------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+   | **Plan name**        | A unique name for your migration plan.                                                                         | `myMigrationPlan`                          |
+   | **Target provider**  | Select the target provider from the drop-down Menu. By default, this will be your host cluster.                | `host`                                     |
+   | **Target namespace** | Select the target namespace for the VM migration from the drop-down Menu.                                      | `myVmMigrationNamespace`                   |
+   | **Network map**      | The source provider to target provider network map. Adjust the mapping, or leave the default mapping in place. | `VM-NETWORK` / `Pod Networking`            |
+   | **Storage map**      | The source provider to target provider storage map. Adjust the mapping, or leave the default mapping in place. | `vsanDatastore1` / `spectro-storage-class` |
 
 9. Click **Create migration plan**.
 

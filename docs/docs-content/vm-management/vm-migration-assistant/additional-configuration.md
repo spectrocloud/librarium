@@ -11,41 +11,64 @@ tags: ["vmo", "vm migration assistant"]
 
 ## Configure Overview Settings
 
-### Configure
+<Tabs queryString="overview">
 
-| Name                                          | Description                                                                                                                         | Default Value | Values                                |
-| --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------- |
-| **Max concurrent virtual machine migrations** | The maximum number of VMs per plan that can be migrated simultaneously.                                                             | `20`          |                                       |
-| **Controller main container CPU limit**       | The CPU limit (in milliCPU) allocated to the main container in the controller pod.                                                  | `500m`        | `200m` / `500m` / `2000m` / `8000m`   |
-| **Controller main container Memory limit**    | The Memory limit (in mebibytes) allocated to the main container in the controller pod.                                              | `800Mi`       | `200Mi` / `800Mi` / `2000m` / `8000m` |
-| **Precopy interval (minutes)**                | _(Only applicable to warm migrations)_ The interval time for when a new snapshot is requested prior to initiating a warm migration. | `60`          | `5` / `30` / `60` / `120`             |
-| **Snapshot polling interval (seconds)**       | _(Only applicable to warm migrations)_ The frequency to which the snapshot status is checked during creation and removal.           | `10`          | `1` / `5` / `10` / `60`               |
+<TabItem label="Overview" value="overview">
 
-### Validate
+You can configure parameters related to tuning on the **Overview > Overview Tab**.
 
-TBC
+![Overview - Overview Tab Settings](/vm-management_vm-migration-assistant_additional-configuration_overview-settings.webp)
+
+To change a setting, click the pencil icon next to each value, and adjust the value in the pop-up window. Click **Save**
+after making changes.
+
+The available parameters are described in the following table.
+
+| Parameter                                     | Description                                                                                                                         | Default Value |
+| --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| **Max concurrent virtual machine migrations** | The maximum number of VMs per plan that can be migrated simultaneously.                                                             | `20`          |
+| **Controller main container CPU limit**       | The CPU limit (in milliCPU) allocated to the main container in the controller pod.                                                  | `500m`        |
+| **Controller main container Memory limit**    | The Memory limit (in mebibytes) allocated to the main container in the controller pod.                                              | `800Mi`       |
+| **Precopy interval (minutes)**                | _(Only applicable to warm migrations)_ The interval time for when a new snapshot is requested prior to initiating a warm migration. | `60`          |
+| **Snapshot polling interval (seconds)**       | _(Only applicable to warm migrations)_ The frequency to which the snapshot status is checked during creation and removal.           | `10`          |
+
+</TabItem>
+
+<TabItem label="YAML" value="yaml">
+
+View and edit the Custom Resource Definition for the VM Migration Assistant in YAML format on this tab.
+
+:::warning
+
+It is not generally recommended to make adjustments directly to this file, only do so if you are sure of the
+consequences.
+
+:::
+
+</TabItem>
+
+<TabItem label="Metrics" value="metrics">
+
+View your migration metrics on the **Overview > Metrics Tab**.
+
+To change the time period displayed for the Migrations and Virtual Machine Migrations graphs, click the three-dot Menu
+at the top-right of each graph. You can then select from 7 days, 31 days, and 24 hours.
+
+![Overview - Metrics Tab](/vm-management_vm-migration-assistant_additional-configuration_overview-metrics.webp)
+
+</TabItem>
+
+</Tabs>
 
 ## Configure Provider Settings
 
-### Configure
-
 | Setting | Description | Values |
 | ------- | ----------- | ------ |
-
-### Validate
-
-TBC
 
 ## Configure Plan Settings
 
-### Configure
-
 | Setting | Description | Values |
 | ------- | ----------- | ------ |
-
-### Validate
-
-TBC
 
 ## Configure StorageMap Settings
 

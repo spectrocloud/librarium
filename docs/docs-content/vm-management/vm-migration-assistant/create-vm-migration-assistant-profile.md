@@ -32,20 +32,21 @@ Follow these steps to create a new add-on profile that will be applied to your e
 5. Select **Add New Pack**. In the next window that displays, enter **Virtual Machine Migration Assistant** in the
    **Filter by name** search bar. The pack is in the **Spectro Addon Repo** registry. Select the pack when it appears.
 
-6. Palette displays the YAML file in the editor at right. You can edit the YAML as needed. Review the following parameters and adjust to your requirements if needed.
+6. Palette displays the YAML file in the editor at right. You can edit the YAML as needed. Review the following
+   parameters and adjust to your requirements if needed.
 
-   | **Parameter** | **Description** | **Default Value** |
-   |---|---|---|
-   | `vm-migration-assistant-ui.console.service.console.type` | Choose whether to use a NodePort, LoadBalancer, or an Ingress to expose the service console. | `"LoadBalancer"` |
-   | `vm-migration-assistant-ui.console.service.console.loadBalancerPort` | If choosing LoadBalancer, specify the port for the LoadBalancer to expose the VM Migration Assistant service console. | `443` |
-   | `vm-migration-assistant-ui.console.service.console.nodePort` | If choosing NodePort, specify the NodePort to expose the VM Migration Assistant service console. | `30443` |
-   | `vm-migration-assistant-ui.console.service.console.ingress.domain` | If choosing Ingress, specify the domain name that the Ingress resource will use to expose the VM Migration Assistant service console. | `console.127.0.0.1.sslip.io` |
+   | **Parameter**                                                        | **Description**                                                                                                                       | **Default Value**            |
+   | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+   | `vm-migration-assistant-ui.console.service.console.type`             | Choose whether to use a NodePort, LoadBalancer, or an Ingress to expose the service console.                                          | `"LoadBalancer"`             |
+   | `vm-migration-assistant-ui.console.service.console.loadBalancerPort` | If choosing LoadBalancer, specify the port for the LoadBalancer to expose the VM Migration Assistant service console.                 | `443`                        |
+   | `vm-migration-assistant-ui.console.service.console.nodePort`         | If choosing NodePort, specify the NodePort to expose the VM Migration Assistant service console.                                      | `30443`                      |
+   | `vm-migration-assistant-ui.console.service.console.ingress.domain`   | If choosing Ingress, specify the domain name that the Ingress resource will use to expose the VM Migration Assistant service console. | `console.127.0.0.1.sslip.io` |
 
 7. Click on **Confirm & Create**.
 
 8. In the following screen, click **Next**.
 
-9.  Click **Finish Configuration**.
+9. Click **Finish Configuration**.
 
 10. From the **Main Menu**, choose **Clusters** and select your VMO cluster.
 
@@ -65,8 +66,8 @@ Follow these steps to create a new add-on profile that will be applied to your e
 
 4.  From the left **Main Menu**, click **Clusters** and select your cluster.
 
-5.  In the **Overview** tab, the **Services** list displays a clickable port to access the VM Migration Assistant service console.
-    The port number is based on your service console configuration.
+5.  In the **Overview** tab, the **Services** list displays a clickable port to access the VM Migration Assistant
+    service console. The port number is based on your service console configuration.
 
 ## Next Steps
 
