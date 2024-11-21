@@ -226,6 +226,11 @@ customization.
 10. Open the **k8s_versions.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
     the JSON object corresponding to your Kubernetes distribution.
 
+    If you are using a tag that is earlier than v4.4.12, the **k8s_versions.json** file does not exist in those tags.
+    Instead, open the **Earthfile** in the CanvOS directory. In the file, find the block that starts with
+    `build-provider-images-fips:` and delete the Kubernetes versions that you do not want. This will speed up the build
+    process and save storage space.
+
 11. Issue the following command to start the build process.
 
     <Tabs group="earthly">
