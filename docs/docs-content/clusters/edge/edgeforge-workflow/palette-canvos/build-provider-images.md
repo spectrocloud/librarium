@@ -114,10 +114,6 @@ artifacts at the same time.
 9. Open the **k8s_versions.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
    the JSON object corresponding to your Kubernetes distribution.
 
-   If you are using a tag that is earlier than v4.4.12, the **k8s_versions.json** file does not exist in those tags.
-   Instead, open the **Earthfile** in the CanvOS directory. Under `build-provider-images`, remove the lines containing
-   Kubernetes versions that you do not need.
-
 10. Issue the command below to create an **.arg** file. The **.arg** file uses the default values for the remaining
     arguments.
 
