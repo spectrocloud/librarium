@@ -1,21 +1,13 @@
 ---
-sidebar_label: "VM Migration Assistant"
-title: "Migrate a VM to a VMO cluster using the VM Migration Assistant"
+sidebar_label: "Migrate VMs to a VMO cluster"
+title: "Migrate VMs to a VMO cluster using the VM Migration Assistant"
 description: "Learn how to migrate VMs to Palette VMO using the VM Migration Assistant"
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 tags: ["vmo", "vm migration assistant"]
 #toc_max_heading_level: 4
 ---
-
-<!--prettier-ignore-->
-This migration method uses the VM Migration Assistant. The VM Migration Assistant is an add-on pack that can be added to
-your cluster profile. It works in conjunction with the <VersionedLink text="Virtual Machine Orchestrator (VMO)" url="/integrations/packs/?pack=virtual-machine-orchestrator"/> pack.
-
-:::preview
-
-:::
 
 ## Limitations
 
@@ -27,7 +19,7 @@ your cluster profile. It works in conjunction with the <VersionedLink text="Virt
 
 - A healthy VMO cluster. Refer to the [Create a VMO Profile](../create-vmo-profile.md) for further guidance.
 
-  - The VMO cluster must have access to VMware and the VM you want to migrate.
+  - The VMO cluster must have access to VMware and the VMs you want to migrate.
 
   :::warning
 
@@ -70,13 +62,16 @@ your cluster profile. It works in conjunction with the <VersionedLink text="Virt
   :::
 
 - A VMware vSphere user account with the necessary permissions to manage the VMs you want to migrate.
-  - Migration can optionally accelerated by providing credentials for the ESXi hosts where the VMs reside.
+  - Migration can be optionally accelerated by providing credentials for the ESXi hosts where the VMs reside.
 - One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
   [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
-  - Ensure that VMs operating Windows are shut down at the virtualized OS level.
+
   - If you are migrating more than one VM in the same plan, they must all share the same network.
-- The VM Migration Assistant pack must be added to your cluster profile.
+
+<!--prettier-ignore-->
+- The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant-pack"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
   - The VM Migration Assistant service console must be accessible from a web browser.
+
 - We recommend providing a
   [VMware Virtual Disk Development Kit (VDDK) image](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest)
   for the migration. This will significantly speed up the migration.
@@ -281,7 +276,7 @@ change something, click the **Actions** drop-down in the top-right corner, and s
 
 11. Click **Start** in the pop-up window.
 
-Wait until the **Status** shows as **Successful** (TBC) before [validating](#validate) the migration.
+Wait until the **Status** shows as **Successful** before [validating](#validate) the migration.
 
 ## Validate
 
@@ -296,3 +291,7 @@ Wait until the **Status** shows as **Successful** (TBC) before [validating](#val
 4. Click on the **three-dot Menu** and select **Start**. Your VM is now ready to use.
 
    ![Start migrated VM](/migrate-vm-kubevirt-guide/vm-management_create-manage-vm_migrate-vm-kubevirt_start_migrated_vm.webp)
+
+## Resources
+
+- [Additional Configuration](./additional-configuration.md)

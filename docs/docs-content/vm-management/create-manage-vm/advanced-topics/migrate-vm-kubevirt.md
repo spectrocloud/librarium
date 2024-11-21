@@ -1,5 +1,5 @@
 ---
-sidebar_label: "Palette CLI"
+sidebar_label: "Migrate a VM to a VMO cluster using the Palette CLI"
 title: "Migrate a VM to a VMO cluster using the Palette CLI"
 description: "Learn how to migrate VMs to Palette VMO using the Palette CLI"
 icon: " "
@@ -9,7 +9,8 @@ tags: ["vmo", "palette cli"]
 #toc_max_heading_level: 4
 ---
 
-This migration method uses the [Palette CLI](../../automation/palette-cli/palette-cli.md).
+This migration method uses the [Palette CLI](../../../automation/palette-cli/palette-cli.md), and is alternative to
+using the [VM Migration Assistant](../../vm-migration-assistant/vm-migration-assistant.md).
 
 ## Limitations
 
@@ -19,7 +20,7 @@ This migration method uses the [Palette CLI](../../automation/palette-cli/palett
 
 ## Prerequisites
 
-- A healthy VMO cluster. Refer to the [Create a VMO Profile](../create-vmo-profile.md) for further guidance.
+- A healthy VMO cluster. Refer to the [Create a VMO Profile](../../create-vmo-profile.md) for further guidance.
 
   - The VMO cluster must have access to VMware and the VM you want to migrate.
 
@@ -28,7 +29,7 @@ This migration method uses the [Palette CLI](../../automation/palette-cli/palett
   If you need to provision `Block` storage volumes during the VM migration process, add the following custom
   configuration to your VMO cluster OS pack. Applying this configuration may cause a cluster repave. For more
   information, refer to
-  [Repave Behaviors and Configurations](../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration)
+  [Repave Behaviors and Configurations](../../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration)
 
   Additionally, we recommend provisioning volumes with the `ReadWriteMany` access mode to ensure that VMs can be
   [live migrated](https://kubevirt.io/user-guide/compute/live_migration/#limitations).
@@ -64,14 +65,14 @@ This migration method uses the [Palette CLI](../../automation/palette-cli/palett
   :::
 
 - A VMware vSphere user account with the necessary permissions to manage the VMs you want to migrate.
-  - Migration can optionally accelerated by providing credentials for the ESXi hosts where the VMs reside.
+  - Migration can be optionally accelerated by providing credentials for the ESXi hosts where the VMs reside.
 - One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
   [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
   - The VMs must be powered off before migration.
   - Ensure that VMs operating Windows are shut down at the virtualized OS level.
   - If you are migrating more than one VM in the same plan, they must all share the same network.
-- The Palette CLI installed and setup. Refer to the [Installation](../../automation/palette-cli/install-palette-cli.md)
-  guide for further details.
+- The Palette CLI installed and setup. Refer to the
+  [Installation](../../../automation/palette-cli/install-palette-cli.md) guide for further details.
   - The Palette CLI must have access to both the VMO cluster and the machines to be migrated.
 - The kubectl command-line tool should also be installed. Refer to the
   [kubectl installation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) guide to learn more.
@@ -182,8 +183,8 @@ This migration method uses the [Palette CLI](../../automation/palette-cli/palett
 
 ## Migrate VMware vSphere VMs
 
-1. Download the [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) file of the VMO cluster to the host where
-   the Palette CLI is installed.
+1. Download the [Kubeconfig](../../../clusters/cluster-management/kubeconfig.md) file of the VMO cluster to the host
+   where the Palette CLI is installed.
 
 2. Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
 
