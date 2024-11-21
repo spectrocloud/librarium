@@ -3,7 +3,7 @@ sidebar_label: "Link Hosts"
 title: "Link Hosts"
 description: "Instructions for linking hosts to prepare for multi-node cluster creation."
 hide_table_of_contents: false
-sidebar_position: 50
+sidebar_position: 20
 tags: ["edge"]
 ---
 
@@ -77,10 +77,70 @@ You can unlink a follower host on the follower host itself or from the leader no
 
 ### Procedure
 
-1. Log in to Local UI on either the leader node or the follower node.
+<Tabs>
+
+<TabItem value="From Leader Node">
+
+1. Log in to Local UI on the leader node to which the node you want to unlink is paired.
 
 2. From the left **Main Menu**, click **Linked Edge Hosts**.
 
+3. In the list of linked nodes, identify the node you want to unlink and click the **three-dot button** next to the IP
+   address of the node.
+
+4. Click **Unlink**.
+
+5. Click **Confirm**
+
+</TabItem>
+
+<TabItem value="On Follower Node">
+
+1. Log in to Local UI on the node you want to unlink.
+
+2. From the left **Main Menu**, click **Linked Edge Hosts**.
+
+3. Click **Unlink** in the upper-right corner of the **Linked Edge Hosts** page.
+
+4. Click **Confirm**
+
+</TabItem>
+
+</Tabs>
+
 ### Validate
 
-## Relinquish Leader Node Status
+1. Log in to Local UI on the node you unlinked.
+
+2. From the left **Main Menu**, click **Linked Edge Hosts**.
+
+3. Confirm that the node has been unlinked from the leader and is ready to be paired with another node.
+
+## Remove Leader Node Status
+
+If you have made a host the leader of a group of linked hosts, but later want to link it to another leader node, you
+must first remove its leader node status.
+
+### Prerequisite
+
+- Access to Local UI on a host that generates pairing tokens.
+
+- The host is not linked with any other host. If your host is still linked with other hosts, you must unlink all its
+  follower nodes.
+
+### Procedure
+
+1. Log in to Local UI.
+
+2. From the left **Main Menu**, click **Linked Edge Hosts**.
+
+3. Click the red **Stop token generation** button to stop the host from generating pairing tokens. This will make it
+   ready to be paired with other nodes again as a follower.
+
+### Validate
+
+1. Log in to Local UI.
+
+2. From the left **Main Menu**, click **Linked Edge Hosts**.
+
+3. Confirm that the host is no longer generating pairing tokens and can be linked to another host as a follower.

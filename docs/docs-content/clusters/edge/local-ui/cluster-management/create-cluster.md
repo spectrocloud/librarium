@@ -3,7 +3,7 @@ sidebar_label: "Create Local Cluster"
 title: "Create Local Cluster"
 description: "Instructions for creating a locally managed cluster in Edge Host Management Console."
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 0
 tags: ["edge"]
 ---
 
