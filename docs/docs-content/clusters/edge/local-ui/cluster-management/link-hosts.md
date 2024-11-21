@@ -21,13 +21,15 @@ each other. In a group of linked hosts that have not formed a cluster, only the 
 such as change host settings, upload content, and create clusters. Once a cluster is created, only the control plane
 nodes have access to features such as cluster management and can change host settings.
 
-## Prerequisites
+## Link Hosts
+
+### Prerequisites
 
 - Two or more hosts deployed in the same deployment mode on the same network. For more information, refer to
   [Appliance Mode Installation](../../site-deployment/stage.md) or
   [Agent Mode Installation](../../../../deployment-modes/agent-mode/install-agent-host.md).
 
-## Procedure
+### Procedure
 
 1. Decide on a node that you plan to use as the leader of the group. Log in to
    [Local UI](../host-management/access-console.md) of that node. The leader node may or may not already be in a
@@ -52,10 +54,33 @@ nodes have access to features such as cluster management and can change host set
 
 10. Repeat this process for every node you want to link to the leader node.
 
-## Validate
+### Validate
 
 1. Log in to [Local UI](../host-management/access-console.md) on the leader node.
 
 2. From the left **Main Menu**, click **Linked Edge Hosts**.
 
 3. Confirm that all nodes you linked together show up in the **Linked Edge Hosts** table.
+
+## Unlink Hosts
+
+You can unlink a host to either link it to another host or to use it for independent workloads. You can only unlink a
+follower host. Leader hosts cannot be unlinked.
+
+You can unlink a follower host on the follower host itself or from the leader node.
+
+### Prerequisites
+
+- Two or more linked hosts.
+
+- [Access to Local UI](../host-management/access-console.md) on the host you want to unlink or on the leader host.
+
+### Procedure
+
+1. Log in to Local UI on either the leader node or the follower node.
+
+2. From the left **Main Menu**, click **Linked Edge Hosts**.
+
+### Validate
+
+## Relinquish Leader Node Status
