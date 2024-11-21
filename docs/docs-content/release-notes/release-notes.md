@@ -11,6 +11,21 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## November 20, 2024 - Release 4.5.11
+
+### Bug Fixes
+
+- Fixed an issue that prevented the instructions screen from appearing when users select Security Token Service (STS) as
+  the authentication method used for adding OCI registries to Palette.
+
+- Fixed an issue that affected the deployment of edge clusters on VerteX.
+
+- Fixed an issue that caused pod presets to fail to be installed correctly after upgrades, blocking pod preset users
+  from upgrading their Palette or VerteX installation.
+
+- Fixed an issue that prevented the **Add New Cluster** and **Import Cluster** buttons from appearing in the Palette UI
+  when users have selected projects without any clusters.
+
 ## November 13, 2024 - Release 4.5.10
 
 ### Bug Fixes
@@ -235,7 +250,8 @@ to learn more about the changes introduced in this release.
   [decision to deprecate](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr) the `gcr.io`
   container registry, we are adding a new image registry that Palette agents will use to pull images. The new registry
   is `us-docker.pkg.dev`. If you have network restrictions in place, ensure that the new registry is allowed. The new
-  registry is available for use starting with this release. Refer to the
+  registry is available for use starting with this release. Ensure network connections to `grc.io` are allowed until the
+  migration is complete. Refer to the
   [Proxy Requirements](../enterprise-version/install-palette/install-palette.md#proxy-requirements) for a complete list
   of domains that must be allowed.
 
