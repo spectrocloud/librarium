@@ -40,8 +40,8 @@ install VerteX, this process does not apply.
    kubectl config current-context
    ```
 
-2. Issue the following command to start uninstalling the Vertex management plane. This will only
-   remove the resources managed by Helm and the remaining resources will require additional manual intervention.
+2. Issue the following command to start uninstalling the Vertex management plane. This will only remove the resources
+   managed by Helm and the remaining resources will require additional manual intervention.
 
    ```shell
    helm uninstall hubble
@@ -51,7 +51,7 @@ install VerteX, this process does not apply.
    plane.
 
    ```shell
-   kubectl delete ns hubble-system || kubectl delete crd spectroclusteractions.jet.cluster.spectrocloud.com
+   kubectl delete namespace hubble-system || kubectl delete crd spectroclusteractions.jet.cluster.spectrocloud.com
    ```
 
 4. Issue the following command to uninstall Cert Manager. Cert Manager does not reply on any Helm hooks and the Helm
@@ -101,8 +101,8 @@ install VerteX, this process does not apply.
 
 1. Connect to your cluster via kubectl.
 
-2. Issue the following command to get a list of the remaining namespaces. Confirm that all VerteX-related namespaces have
-   been deleted.
+2. Issue the following command to get a list of the remaining namespaces. Confirm that all VerteX-related namespaces
+   have been deleted.
 
    ```shell
    kubectl get namespaces
