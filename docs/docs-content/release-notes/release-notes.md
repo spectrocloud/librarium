@@ -251,7 +251,7 @@ to learn more about the changes introduced in this release.
   container registry, we are adding a new image registry that Palette agents will use to pull images. The new registry
   is `us-docker.pkg.dev`. If you have network restrictions in place, ensure that the new registry is allowed. The new
   registry is available for use starting with this release. Ensure network connections to `grc.io` are allowed until the
-  migration is complete Refer to the
+  migration is complete. Refer to the
   [Proxy Requirements](../enterprise-version/install-palette/install-palette.md#proxy-requirements) for a complete list
   of domains that must be allowed.
 
