@@ -9,8 +9,9 @@ tags: ["self-hosted", "enterprise"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-To uninstall VerteX from your cluster, you need to uninstall the following components: Reach system, VerteX management
-plane, and Cert Manager. This uninstall process applies to both connected and airgap instances of self-hosted VerteX.
+To uninstall VerteX from your cluster, you need to uninstall VerteX management plane and Cert Manager. Optionally, you
+may also have installed Image Swap and Reach system, which also need to be uninstalled. This uninstall process applies
+to both connected and airgap instances of self-hosted VerteX.
 
 :::warning
 
@@ -39,15 +40,36 @@ install VerteX, this process does not apply.
    kubectl config current-context
    ```
 
-2. Issue the following command to start uninstalling Reach. This will remove all resources related to Reach that are
-   managed by Helm. However, some resources created by Helm hooks are not managed by Helm and will require additional
-   manual intervention to remove.
+2. Issue the following command to start uninstalling the Vertex management plane. Similar to Reach, this will only
+   remove the resources managed by Helm and the remaining resources will require additional manual intervention.
+
+   ```shell
+   helm uninstall hubble
+   ```
+
+3. Issue the following command to remove the namespace and custom resource definitions related to Vertex management
+   plane.
+
+   ```shell
+   kubectl delete ns hubble-system || kubectl delete crd spectroclusteractions.jet.cluster.spectrocloud.com
+   ```
+
+4. Issue the following command to uninstall Cert Manager. Cert Manager does not reply on any Helm hooks and the Helm
+   uninstall command will uninstall all related resources.
+
+   ```shell
+   helm uninstall cert-manager
+   ```
+
+5. (Optional) If you installed Reach, issue the following command to start uninstalling Reach. This will remove all
+   resources related to Reach that are managed by Helm. However, some resources created by Helm hooks are not managed by
+   Helm and will require additional manual intervention to remove.
 
    ```shell
    helm uninstall reach-system
    ```
 
-3. Issue the following commands to remove the remaining Reach system resources.
+6. (Optional) Issue the following commands to remove the remaining Reach system resources.
 
    ```shell
    kubectl delete ns reach-system
@@ -61,39 +83,18 @@ install VerteX, this process does not apply.
    kubectl delete clusterrole reach-proxy-role
    ```
 
-4. Issue the following command to start uninstalling the Vertex management plane. Similar to Reach, this will only
-   remove the resources managed by Helm and the remaining resources will require additional manual intervention.
-
-   ```shell
-   helm uninstall hubble
-   ```
-
-5. Issue the following command to remove the namespace and custom resource definitions related to Vertex management
-   plane.
-
-   ```shell
-   kubectl delete ns hubble-system || kubectl delete crd spectroclusteractions.jet.cluster.spectrocloud.com
-   ```
-
-6. Issue the following command to remove the `image-swap` chart.
+7. (Optional) If you installed Image Swap, issue the following command to remove the `image-swap` chart.
 
    ```shell
    helm uninstall image-swap
    ```
 
-7. Issue the following commands to remove the remaining resources related to `image-swap`.
+8. (Optional) Issue the following commands to remove the remaining resources related to `image-swap`.
 
    ```shell
    kubectl delete ns imageswap-system
    kubectl delete mutatingwebhookconfiguration imageswap-webhook
    kubectl delete csr imageswap.imageswap-system.cert-request
-   ```
-
-8. Issue the following command to uninstall Cert Manager. Cert Manager does not reply on any Helm hooks and the Helm
-   uninstall command will uninstall all related resources.
-
-   ```shell
-   helm uninstall cert-manager
    ```
 
 ## Validate
@@ -107,7 +108,13 @@ install VerteX, this process does not apply.
    kubectl get namespaces
    ```
 
-3. Issue the following command to retrieve all resources in your cluster across all namespaces. Confirm that no
+3. Issue the following command to confirm that all charts have been uninstalled.
+
+   ```shell
+   helm ls
+   ```
+
+4. Issue the following command to retrieve all resources in your cluster across all namespaces. Confirm that no
    VerteX-related resources are remaining.
 
    ```shell
