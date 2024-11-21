@@ -10,7 +10,7 @@ keywords: ["self-hosted", "enterprise"]
 ---
 
 To uninstall VerteX from your cluster, you need to uninstall VerteX management plane and Cert Manager. Optionally, you
-may also have installed Image Swap and Reach system, which also need to be uninstalled. This uninstall process applies
+may have installed Image Swap and Reach system, which also need to be uninstalled. This uninstall process applies
 to both connected and airgap instances of self-hosted VerteX.
 
 :::warning
