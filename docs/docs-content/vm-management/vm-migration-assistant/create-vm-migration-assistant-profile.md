@@ -11,7 +11,7 @@ tags: ["vmo", "vm migration assistant"]
 
 Follow these steps to create a new add-on profile that will be applied to your existing VMO cluster.
 
-## Prerequisites
+## Prerequisites
 
 - Your Palette account role must have the `clusterProfile.create` permission to create a cluster profile. Refer to the
   [Roles and Permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
@@ -35,12 +35,10 @@ Follow these steps to create a new add-on profile that will be applied to your e
 6. Palette displays the YAML file in the editor at right. You can edit the YAML as needed. Review the following
    parameters and adjust to your requirements if needed.
 
-   | **Parameter**                                                        | **Description**                                                                                                                       | **Default Value**            |
-   | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-   | `vm-migration-assistant-ui.console.service.console.type`             | Choose whether to use a NodePort, LoadBalancer, or an Ingress to expose the service console.                                          | `"LoadBalancer"`             |
-   | `vm-migration-assistant-ui.console.service.console.loadBalancerPort` | If choosing LoadBalancer, specify the port for the LoadBalancer to expose the VM Migration Assistant service console.                 | `443`                        |
-   | `vm-migration-assistant-ui.console.service.console.nodePort`         | If choosing NodePort, specify the NodePort to expose the VM Migration Assistant service console.                                      | `30443`                      |
-   | `vm-migration-assistant-ui.console.service.console.ingress.domain`   | If choosing Ingress, specify the domain name that the Ingress resource will use to expose the VM Migration Assistant service console. | `console.127.0.0.1.sslip.io` |
+   | **Parameter**                                                      | **Description**                                                                                                                    | **Default Value**            |
+   | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+   | `vm-migration-assistant-ui.console.service.console.type`           | Choose whether to use a `NodePort`, `LoadBalancer`, or an `Ingress` to expose the service console.                                 | `"LoadBalancer"`             |
+   | `vm-migration-assistant-ui.console.service.console.ingress.domain` | If using Ingress, specify the domain name that the Ingress resource will use to expose the VM Migration Assistant service console. | `console.127.0.0.1.sslip.io` |
 
 7. Click on **Confirm & Create**.
 
@@ -69,6 +67,6 @@ Follow these steps to create a new add-on profile that will be applied to your e
 5.  In the **Overview** tab, the **Services** list displays a clickable port to access the VM Migration Assistant
     service console. The port number is based on your service console configuration.
 
-## Next Steps
+## Next Steps
 
 - [Migrate VMs to a VMO cluster using the VM Migration Assistant](./migrate-vms-vmo-cluster.md)

@@ -278,6 +278,8 @@ change something, click the **Actions** drop-down in the top-right corner, and s
 
 Wait until the **Status** shows as **Successful** before [validating](#validate) the migration.
 
+_Include pipeline status view here_
+
 ## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).

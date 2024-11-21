@@ -38,12 +38,7 @@ The available parameters are described in the following table.
 
 View and edit the Custom Resource Definition for the VM Migration Assistant in YAML format on this tab.
 
-:::warning
-
-It is not generally recommended to make adjustments directly to this file, only do so if you are sure of the
-consequences.
-
-:::
+_Link to YAML schema (CRD)._
 
 </TabItem>
 
@@ -65,14 +60,20 @@ at the top-right of each graph. You can then select from 7 days, 31 days, and 24
 | Setting | Description | Values |
 | ------- | ----------- | ------ |
 
+### Validate
+
+TBC
+
 ## Configure Plan Settings
 
 | Setting | Description | Values |
 | ------- | ----------- | ------ |
 
-## Configure StorageMap Settings
+### Validate
 
-### Configure
+TBC
+
+## Configure StorageMap Settings
 
 | Setting | Description | Values |
 | ------- | ----------- | ------ |
@@ -82,8 +83,6 @@ at the top-right of each graph. You can then select from 7 days, 31 days, and 24
 TBC
 
 ## Configure NetworkMap Settings
-
-### Configure
 
 | Setting | Description | Values |
 | ------- | ----------- | ------ |
