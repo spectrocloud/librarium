@@ -15,7 +15,7 @@ both connected and airgap instances of self-hosted Palette.
 
 :::warning
 
-This installation process only applies to Palette instances installed using Helm charts. If you used the Palette CLI to
+This uninstallation process only applies to Palette instances installed using Helm charts. If you used the Palette CLI to
 install Palette, this process does not apply.
 
 :::
@@ -28,9 +28,9 @@ install Palette, this process does not apply.
 
 - Permissions to perform delete actions on all relevant cluster resources.
 
-- Helm is installed and available on your host machine.
+- [Helm](https://helm.sh/docs/intro/install/) is installed and available on your host machine.
 
-- kubectl is installed and available on your host machine.
+- [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) is installed and available on your host machine.
 
 ## Uninstall Palette
 
@@ -40,14 +40,14 @@ install Palette, this process does not apply.
    kubectl config current-context
    ```
 
-2. Issue the following command to start uninstalling the Palette management plane. Similar to Reach, this will only
+2. Issue the following command to start uninstalling the Palette management plane. This will only
    remove the resources managed by Helm and the remaining resources will require additional manual intervention.
 
    ```shell
    helm uninstall hubble
    ```
 
-3. Issue the following command to remove the namespace and custom resource definitions related to Palette management
+3. Issue the following command to remove the namespace and custom resource definitions related to the Palette management
    plane.
 
    ```shell
@@ -101,7 +101,7 @@ install Palette, this process does not apply.
 
 1. Connect to your cluster via kubectl.
 
-2. Issue the following command to get a list of remaining namespaces. Confirm that all Palette-related namespaces have
+2. Issue the following command to get a list of the remaining namespaces. Confirm that all Palette-related namespaces have
    been deleted.
 
    ```shell

@@ -6,7 +6,7 @@ icon: ""
 hide_table_of_contents: false
 sidebar_position: 40
 tags: ["self-hosted", "enterprise"]
-keywords: ["self-hosted", "enterprise"]
+keywords: ["vertex"]
 ---
 
 To uninstall VerteX from your cluster, you need to uninstall VerteX management plane and Cert Manager. Optionally, you
@@ -15,7 +15,7 @@ both connected and airgap instances of self-hosted VerteX.
 
 :::warning
 
-This installation process only applies to VerteX instances installed using Helm charts. If you used the Palette CLI to
+This uninstallation process only applies to VerteX instances installed using Helm charts. If you used the Palette CLI to
 install VerteX, this process does not apply.
 
 :::
@@ -28,9 +28,9 @@ install VerteX, this process does not apply.
 
 - Permissions to perform delete actions on all relevant cluster resources.
 
-- Helm is installed and available on your host machine.
+- [Helm](https://helm.sh/docs/intro/install/) is installed and available on your host machine.
 
-- kubectl is installed and available on your host machine.
+- [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) is installed and available on your host machine.
 
 ## Uninstall VerteX
 
@@ -40,7 +40,7 @@ install VerteX, this process does not apply.
    kubectl config current-context
    ```
 
-2. Issue the following command to start uninstalling the Vertex management plane. Similar to Reach, this will only
+2. Issue the following command to start uninstalling the Vertex management plane. This will only
    remove the resources managed by Helm and the remaining resources will require additional manual intervention.
 
    ```shell
@@ -101,7 +101,7 @@ install VerteX, this process does not apply.
 
 1. Connect to your cluster via kubectl.
 
-2. Issue the following command to get a list of remaining namespaces. Confirm that all VerteX-related namespaces have
+2. Issue the following command to get a list of the remaining namespaces. Confirm that all VerteX-related namespaces have
    been deleted.
 
    ```shell
