@@ -23,6 +23,13 @@ nodes have access to features such as cluster management and can change host set
 
 ## Link Hosts
 
+### Limitations
+
+- All hosts must be deployed in the same deployment mode. For more information, refer to
+  [Deployment Modes](../../../../deployment-modes/deployment-modes.md).
+
+- All hosts must share the same Operating System (OS).
+
 ### Prerequisites
 
 - Two or more hosts deployed in the same deployment mode on the same network. For more information, refer to

@@ -19,7 +19,7 @@ guides you through how to create a cluster using Local UI.
 - For multi-node clusters, all hosts must be deployed in the same deployment mode. For more information, refer to
   [Deployment Modes](../../../../deployment-modes/deployment-modes.md).
 
-- For multi-node clusters composed of hosts deployed in agent mode, all hosts must share the same Operating System (OS).
+- All hosts must share the same Operating System (OS).
 
 ## Prerequisites
 
