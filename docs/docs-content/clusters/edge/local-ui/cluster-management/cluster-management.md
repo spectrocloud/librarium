@@ -28,3 +28,11 @@ Refer to the following resources to learn how to upload content and create a clu
 - [Export Cluster Definition](./export-cluster-definition.md)
 
 - [Create Local Cluster](./create-cluster.md)
+
+- [Link Hosts](./link-hosts.md)
+
+- [Scale a Cluster](./scale-cluster.md)
+
+- [Delete a Cluster](./delete-cluster.md)
+
+- [Share Local UI Authentication](./share-auth.md)

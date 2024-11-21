@@ -3,7 +3,7 @@ sidebar_label: "Scale a Cluster"
 title: "Scale a Cluster"
 description: "Learn how to scale up or scale down a cluster."
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 40
 tags: ["edge"]
 ---
 

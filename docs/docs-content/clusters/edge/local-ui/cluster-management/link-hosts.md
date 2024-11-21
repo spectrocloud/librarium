@@ -3,7 +3,7 @@ sidebar_label: "Link Hosts"
 title: "Link Hosts"
 description: "Instructions for linking hosts to prepare for multi-node cluster creation."
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 30
 tags: ["edge"]
 ---
 

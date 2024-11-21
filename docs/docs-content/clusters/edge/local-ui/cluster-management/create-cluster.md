@@ -3,7 +3,7 @@ sidebar_label: "Create Local Cluster"
 title: "Create Local Cluster"
 description: "Instructions for creating a locally managed cluster in Edge Host Management Console."
 hide_table_of_contents: false
-sidebar_position: 0
+sidebar_position: 20
 tags: ["edge"]
 ---
 
@@ -19,7 +19,7 @@ guides you through how to create a cluster using Local UI.
 - For multi-node clusters, all hosts must be deployed in the same deployment mode. For more information, refer to
   [Deployment Modes](../../../../deployment-modes/deployment-modes.md).
 
-- All hosts must share the same Operating System (OS).
+- For hosts that are deployed in agent mode, all hosts must share the same Operating System (OS).
 
 ## Prerequisites
 
