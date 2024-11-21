@@ -54,12 +54,11 @@ install Palette, this process does not apply.
    kubectl delete ns hubble-system || kubectl delete crd spectroclusteractions.jet.cluster.spectrocloud.com
    ```
 
-4. Issue the following command to start uninstalling Reach. This will remove all resources related to Reach that are
-   managed by Helm. However, some resources created by Helm hooks are not managed by helm and will require additional
-   manual intervention to remove.
+4. Issue the following command to uninstall Cert Manager. Cert Manager does not reply on any Helm hooks and the Helm
+   uninstall command will uninstall all related resources.
 
    ```shell
-   helm uninstall reach-system
+   helm uninstall cert-manager
    ```
 
 5. (Optional) If you installed Reach, issue the following command to start uninstalling Reach. This will remove all
