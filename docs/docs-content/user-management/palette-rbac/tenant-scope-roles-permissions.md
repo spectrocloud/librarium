@@ -319,7 +319,7 @@ review the permissions associated with each Tenant role, click on the role name 
 
 | Role Name            | Description                                                                                                                                        |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Tenant Project Admin | Grants the user complete access to all the project resources. Unlike the Tenant Admin role, this role is cannot create projects, users, and teams. |
+| Tenant Project Admin | Grants the user complete access to all the project resources. Unlike the Tenant Admin role, this role cannot create projects, users, and teams. |
 
 <Accordion>
 <AccordionPanel title="Tenant Project Admin">
