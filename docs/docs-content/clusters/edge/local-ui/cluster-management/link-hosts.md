@@ -7,7 +7,7 @@ sidebar_position: 30
 tags: ["edge"]
 ---
 
-To provision a multi-node cluster with hosts are provisioned in `airgap` installation mode, the hosts must first be able
+To create a multi-node cluster with hosts provisioned in `airgap` installation mode, the hosts must first be able
 identify and securely communicate with each other. By default, hosts that are provisioned in `airgap` installation mode
 are not aware of each other even if they are on the same network, and they do not have the credentials to communicate
 with each other securely.
@@ -28,13 +28,17 @@ nodes have access to features such as cluster management and can change host set
 - All hosts must be deployed in the same deployment mode. For more information, refer to
   [Deployment Modes](../../../../deployment-modes/deployment-modes.md).
 
-- All hosts must share the same Operating System (OS).
+- For hosts that are deployed in agent mode, all hosts must share the same Operating System (OS).
 
 ### Prerequisites
 
 - Two or more hosts deployed in the same deployment mode on the same network. For more information, refer to
   [Appliance Mode Installation](../../site-deployment/stage.md) or
   [Agent Mode Installation](../../../../deployment-modes/agent-mode/install-agent-host.md).
+
+- All hosts must be idle. They cannot have any current cluster workloads, or are linked to another node. Refer to
+  [Delete a Cluster](./delete-cluster.md) and [Unlink Hosts](#unlink-hosts) to learn how to delete a cluster and unlink
+  a host to free it up for linking.
 
 ### Procedure
 
