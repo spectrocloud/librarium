@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Tabs, ConfigProvider, Table, theme, Spin } from "antd";
 import { useColorMode } from "@docusaurus/theme-common";
+import useIsBrowser from "@docusaurus/useIsBrowser";
 import Link from "@docusaurus/Link";
 import type { ColumnsType } from "antd/es/table";
 import Admonition from "@theme/Admonition";
@@ -26,6 +27,7 @@ interface Cve {
     cvePublishedTimestamp: string;
     cveLastModifiedTimestamp: string;
     advCreatedTimestamp: string;
+    advLastModifiedTimestamp: string;
   };
   spec: {
     assessment: {
@@ -42,7 +44,6 @@ interface Cve {
   };
 }
 
-// Reduced interface for minimized CVE data
 interface MinimizedCve {
   metadata: {
     uid: string;
@@ -66,19 +67,31 @@ interface MinimizedCve {
   };
 }
 
-// Define a union type to handle both full and minimized data structures
 type CveDataUnion =
   | CveData
-  | { palette: MinimizedCve[]; paletteAirgap: MinimizedCve[]; vertex: MinimizedCve[]; vertexAirgap: MinimizedCve[] };
+  | {
+      palette: MinimizedCve[];
+      paletteAirgap: MinimizedCve[];
+      vertex: MinimizedCve[];
+      vertexAirgap: MinimizedCve[];
+    };
 
 export default function CveReportsTable() {
   const [data, setData] = useState<CveDataUnion | null>(null);
   const [loading, setLoading] = useState(true);
+  const isBrowser = useIsBrowser();
+  const [activeTabKey, setActiveTabKey] = useState("palette");
   const { colorMode } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
 
   useEffect(() => {
-    // Attempt at reducing memory foot print (fingers crossed)
+    if (isBrowser) {
+      const hash = window.location.hash?.replace("#", "") || "palette";
+      setActiveTabKey(hash);
+    }
+  }, [isBrowser]);
+
+  useEffect(() => {
     const minimizeData = (entry: Cve): MinimizedCve => ({
       metadata: {
         uid: entry.metadata.uid,
@@ -105,7 +118,7 @@ export default function CveReportsTable() {
           vertex: response.vertex.map(minimizeData),
           vertexAirgap: response.vertexAirgap.map(minimizeData),
         };
-        setData(reducedData); // `reducedData` matches the `MinimizedCve` type
+        setData(reducedData);
       } catch (error) {
         console.error("Error loading data:", error);
       } finally {
@@ -114,6 +127,12 @@ export default function CveReportsTable() {
     };
     loadData().catch((error) => console.error("Error loading data:", error));
   }, []);
+
+  useEffect(() => {
+    if (isBrowser) {
+      window.location.hash = activeTabKey;
+    }
+  }, [activeTabKey, isBrowser]);
 
   const columns: ColumnsType<MinimizedCve> = useMemo(
     () => [
@@ -153,12 +172,10 @@ export default function CveReportsTable() {
         sorter: (a, b) => {
           const versionsA = a.spec.impact.impactedVersions.sort(semver.compare).reverse();
           const versionsB = b.spec.impact.impactedVersions.sort(semver.compare).reverse();
-          return semver.compare(versionsB[0] || "0.0.0", versionsA[0] || "0.0.0"); // compare the highest version
+          return semver.compare(versionsB[0] || "0.0.0", versionsA[0] || "0.0.0");
         },
         render: (impactedVersions: string[]) => {
-          // Sort versions semantically and limit to the top 3
           const sortedVersions = impactedVersions.sort(semver.compare).reverse().slice(0, 3);
-          // Join versions with comma and add ellipsis if there are more than 3
           return sortedVersions.join(", ") + (impactedVersions.length > 3 ? ", ..." : "");
         },
       },
@@ -215,10 +232,10 @@ export default function CveReportsTable() {
 
   const tabs = useMemo(
     () => [
-      { label: "Palette Enterprise", key: "1", children: renderCveTable(data?.palette || []) },
-      { label: "Palette Enterprise Airgap", key: "2", children: renderCveTable(data?.paletteAirgap || []) },
-      { label: "VerteX", key: "3", children: renderCveTable(data?.vertex || []) },
-      { label: "VerteX Airgap", key: "4", children: renderCveTable(data?.vertexAirgap || []) },
+      { label: "Palette Enterprise", key: "palette", children: renderCveTable(data?.palette || []) },
+      { label: "Palette Enterprise Airgap", key: "paletteAirgap", children: renderCveTable(data?.paletteAirgap || []) },
+      { label: "VerteX", key: "vertex", children: renderCveTable(data?.vertex || []) },
+      { label: "VerteX Airgap", key: "vertexAirgap", children: renderCveTable(data?.vertexAirgap || []) },
     ],
     [data]
   );
@@ -238,7 +255,14 @@ export default function CveReportsTable() {
           </Admonition>
         </div>
         <div className={styles.tableContainer}>
-          <Tabs defaultActiveKey="1" items={tabs} destroyInactiveTabPane type="card" />
+          <Tabs
+            defaultActiveKey={activeTabKey}
+            activeKey={activeTabKey}
+            onChange={(key) => setActiveTabKey(key)}
+            items={tabs}
+            destroyInactiveTabPane
+            type="card"
+          />
         </div>
       </ConfigProvider>
     </div>
