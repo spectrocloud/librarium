@@ -129,9 +129,10 @@ balancer service. Add the following tags Virtual Private Network (VPC) public su
 
 ## Custom Security Group Ingress Rules
 
-Palette provisions a Virtual Private Network (VPC) for the control plane and worker nodes. It then also creates multiple
-security groups, which help manage and secure the resources within the VPC. By default, the API Load Balancer security
-group allows all inbound traffic, specified using an ingress rule with the CIDR range `0.0.0.0/0` and port `6443`.
+Palette provisions a Virtual Private Network (VPC) for the control plane and worker nodes of AWS IaaS clusters. It then
+also creates multiple security groups, which help manage and secure the resources within the VPC. By default, the API
+Load Balancer security group allows all inbound traffic, specified using an ingress rule with the CIDR range `0.0.0.0/0`
+and port `6443`.
 
 :::warning
 
@@ -139,8 +140,8 @@ Security groups with CIDR range `0.0.0.0/0` will be automatically removed in AWS
 [auto remediation](https://docs.aws.amazon.com/config/latest/developerguide/setup-autoremediation.html). The cluster
 will then become inaccessible.
 
-We recommend that you configure custom security group ingress rules to all the cluster profiles that you plan to deploy
-to secure AWS environments.
+We recommend that you configure custom security group ingress rules to all the cluster profiles that you will be deploy
+to AWS IaaS on secure environments.
 
 :::
 
