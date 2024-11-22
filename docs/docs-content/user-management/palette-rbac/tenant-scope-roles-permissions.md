@@ -1,358 +1,495 @@
 ---
-sidebar_label: "Tenant Scope Roles and Permissions"
+sidebar_label: "Tenant Roles"
 title: "Tenant Roles"
-description: "The list of Global Tenant Roles under Tenant Scope"
+description: "Learn about the predefined roles and permissions for the Tenant scope in Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 0
-tags: ["user-management", "rbac"]
+sidebar_position: 30
+tags: ["user-management", "teanant", "rbac"]
 ---
 
-## Global Tenant Scope
+Palette provides the following Tenant roles out-of-the-box. These roles are predefined and cannot be modified. You can
+assign these roles to users and teams. The roles are categorized based on the resources they can manage. Each of these
+roles is scoped at the tenant level. This means the permissions granted to a user or team span across all projects. If
+you need to narrow the scope down to a single project or a handful of projects, consider using a
+[Project](./project-scope-roles-permissions.md) role instead.
 
-Tenant is an isolated workspace within the Palette Console. Users and teams with specific roles can be associated with
-the [tenants](../../glossary-all.md#organization) and [projects](../../glossary-all.md#project) you create.
+:::tip
 
-Each user is assigned a role and permissions, which apply to the scopes, resources, and resourceKey. The Permissions
-format is `resourceKey.operation`, where resourceKey refers to resource or the API functionality, and Operation refers
-to the permitted action or activity.
-
-To view the list of the predefined roles and permissions, ensure you are in the project scope **Tenant**. Next, navigate
-to the left **Main Menu** and click on **Tenant Settings** > **Roles**, and you will find the list of **Global Roles**.
-If you need to extend permissions, create a custom role by using the
-[Create Role](palette-rbac.md#create-custom-role-in-palette) option.
-
-Below is the list of Roles and Permissions that already predefined for the Global Tenant Scope.
-
-<br />
-
-:::info
-
-All users can view tags assigned to a resource. In technical terms, all users inherit the permission `tag.get` by
-default.
+Create your own custom tenant role if none of the predefined roles meet your requirements. Refer to the
+[Create a Custom Role](./create-custom-role.md#tenant-roles) guide for more information.
 
 :::
 
-<br />
+## Default Tenant Roles
 
-## Tenants
+Palette comes with a set of immutable predefined Tenant roles out-of-the-box that you can assign to users or teams. To
+review the permissions associated with each Tenant role, click on the role name to expand the list of permissions.
 
----
+### Admin
 
-| Role Names           | Description                                                                                                                |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Tenant Admin         | Allows the user to create projects and manage projects within the tenant, covered under all operations related to projects |
-| Tenant Viewer        | Provides a read only access to all the project resources                                                                   |
-| Tenant Project Admin | The role with complete access to an existing project                                                                       |
+| Role Name     | Description                                               |
+| ------------- | --------------------------------------------------------- |
+| Tenant Admin  | Grants access to all resources in all projects.           |
+| Tenant Viewer | Provides a read only access to all the project resources. |
 
-The table enlists the role wise resourceKeys and Operations that are predefined under the Global Tenant Scope:
+<Accordion>
+<AccordionPanel title="Tenant Admin">
 
-<br />
-<br />
+- apiKey.create
+- apiKey.delete
+- apiKey.get
+- apiKey.list
+- apiKey.update
+- appDeployment.create
+- appDeployment.delete
+- appDeployment.get
+- appDeployment.list
+- appDeployment.update
+- appProfile.create
+- appProfile.delete
+- appProfile.get
+- appProfile.list
+- appProfile.update
+- audit.get
+- audit.list
+- cloudaccount.create
+- cloudaccount.delete
+- cloudaccount.get
+- cloudaccount.list
+- cloudaccount.update
+- cloudconfig.create
+- cloudconfig.delete
+- cloudconfig.get
+- cloudconfig.list
+- cloudconfig.update
+- cluster.create
+- cluster.delete
+- cluster.get
+- cluster.import
+- cluster.list
+- cluster.update
+- clusterGroup.create
+- clusterGroup.delete
+- clusterGroup.get
+- clusterGroup.list
+- clusterGroup.update
+- clusterProfile.create
+- clusterProfile.delete
+- clusterProfile.get
+- clusterProfile.list
+- clusterProfile.publish
+- clusterProfile.update
+- dnsMapping.create
+- dnsMapping.delete
+- dnsMapping.get
+- dnsMapping.list
+- dnsMapping.update
+- edgeToken.create
+- edgeToken.delete
+- edgeToken.get
+- edgeToken.list
+- edgeToken.update
+- edgehost.create
+- edgehost.delete
+- edgehost.get
+- edgehost.list
+- edgehost.update
+- filter.create
+- filter.delete
+- filter.get
+- filter.list
+- filter.update
+- location.create
+- location.delete
+- location.get
+- location.list
+- location.update
+- machine.create
+- machine.delete
+- machine.get
+- machine.list
+- machine.update
+- macro.create
+- macro.delete
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.create
+- packRegistry.delete
+- packRegistry.get
+- packRegistry.list
+- packRegistry.update
+- privateGateway.create
+- privateGateway.delete
+- privateGateway.get
+- privateGateway.list
+- privateGateway.update
+- project.create
+- project.delete
+- project.get
+- project.list
+- project.update
+- role.create
+- role.delete
+- role.get
+- role.list
+- role.update
+- sshKey.create
+- sshKey.delete
+- sshKey.get
+- sshKey.list
+- sshKey.update
+- tag.update
+- team.create
+- team.delete
+- team.get
+- team.list
+- team.update
+- user.create
+- user.delete
+- user.get
+- user.list
+- user.update
+- virtualCloudconfig.create
+- virtualCloudconfig.delete
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCloudconfig.update
+- virtualCluster.create
+- virtualCluster.delete
+- virtualCluster.get
+- virtualCluster.list
+- virtualCluster.update
+- workspace.backup
+- workspace.create
+- workspace.delete
+- workspace.get
+- workspace.list
+- workspace.restore
+- workspace.update
 
-<Tabs>
+</AccordionPanel>
+<AccordionPanel title="Tenant Viewer">
 
-<TabItem label="Tenant Admin" value="Tenant Admin">
+- apiKey.get
+- apiKey.list
+- appDeployment.get
+- appDeployment.list
+- appProfile.get
+- appProfile.list
+- audit.get
+- audit.list
+- cloudaccount.get
+- cloudaccount.list
+- cloudconfig.get
+- cloudconfig.list
+- cluster.get
+- cluster.list
+- clusterGroup.get
+- clusterGroup.list
+- clusterProfile.get
+- clusterProfile.list
+- dnsMapping.get
+- dnsMapping.list
+- edgeToken.get
+- edgeToken.list
+- edgehost.get
+- edgehost.list
+- filter.get
+- filter.list
+- location.get
+- location.list
+- machine.get
+- machine.list
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
+- privateGateway.get
+- privateGateway.list
+- project.get
+- project.list
+- role.get
+- role.list
+- sshKey.get
+- sshKey.list
+- team.get
+- team.list
+- user.get
+- user.list
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCluster.get
+- virtualCluster.list
+- workspace.get
+- workspace.list
 
-<br />
+</AccordionPanel>
+</Accordion>
 
-## Tenant Admin
+### Cluster Group
 
-<br />
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
+| Role Name                   | Description                                                                 |
+| --------------------------- | --------------------------------------------------------------------------- |
+| Tenant Cluster Group Admin  | Allows the user to create and manage cluster groups in all projects.        |
+| Tenant Cluster Group Editor | Allows the user to view, access, and update cluster groups in all projects. |
+| Tenant Cluster Group Viewer | Grants read-only access to cluster groups in all projects.                  |
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **apiKey**         | √          | √          | √       | √        | √          |            |             |            |             |
-| **audit**          |            |            | √       | √        |            |            |             |            |             |
-| **cloudaccount**   | √          | √          | √       | √        | √          |            |             |            |             |
-| **cloudconfig**    | √          | √          | √       | √        | √          |            |             |            |             |
-| **cluster**        | √          | √          | √       | √        | √          | √          |             |            |             |
-| **clusterProfile** | √          | √          | √       | √        | √          |            | √           |            |             |
-| **clusterRbac**    | √          | √          | √       | √        | √          |            |             |            |             |
-| **dnsMapping**     | √          | √          | √       | √        | √          |            |             |            |             |
-| **edgehost**       | √          | √          | √       | √        | √          |            |             |            |             |
-| **location**       | √          | √          | √       | √        | √          |            |             |            |             |
-| **machine**        | √          | √          | √       | √        | √          |            |             |            |             |
-| **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
-| **packRegistry**   | √          | √          | √       | √        | √          |            |             |            |             |
-| **privateGateway** | √          | √          | √       | √        | √          |            |             |            |             |
-| **project**        | √          | √          | √       | √        | √          |            |             |            |             |
-| **role**           | √          | √          | √       | √        | √          |            |             |            |             |
-| **sshKey**         | √          | √          | √       | √        | √          |            |             |            |             |
-| **team**           | √          | √          | √       | √        | √          |            |             |            |             |
-| **tag**            |            |            |         |          | √          |            |             |            |             |
-| **user**           | √          | √          | √       | √        | √          |            |             |            |             |
-| **workspace**      | √          | √          | √       | √        | √          |            |             | √          | √           |
+<Accordion>
+<AccordionPanel title="Tenant Cluster Group Admin">
 
-<br />
-<br />
-<br />
+- cluster.get
+- cluster.list
+- clusterGroup.create
+- clusterGroup.delete
+- clusterGroup.get
+- clusterGroup.list
+- clusterGroup.update
+- tag.update
 
-</TabItem>
-<TabItem label="Tenant Viewer" value="Tenant Viewer Role">
+</AccordionPanel>
+<AccordionPanel title="Tenant Cluster Group Editor">
 
-## Tenant Viewer
+- cluster.get
+- cluster.list
+- clusterGroup.get
+- clusterGroup.list
+- clusterGroup.update
+- tag.update
 
-<br />
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
+</AccordionPanel>
+<AccordionPanel title="Tenant Cluster Group Viewer">
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **apiKey**         |            |            | √       | √        |            |            |             |            |             |
-| **audit**          |            |            | √       | √        |            |            |             |            |             |
-| **cloudaccount**   |            |            | √       | √        |            |            |             |            |             |
-| **cloudconfig**    |            |            | √       | √        |            |            |             |            |             |
-| **cluster**        |            |            | √       | √        |            |            |             |            |             |
-| **clusterProfile** |            |            | √       | √        |            |            |             |            |             |
-| **clusterRbac**    |            |            | √       | √        |            |            |             |            |             |
-| **dnsMapping**     |            |            | √       | √        |            |            |             |            |             |
-| **edgehost**       |            |            | √       | √        |            |            |             |            |             |
-| **location**       |            |            | √       | √        |            |            |             |            |             |
-| **machine**        |            |            | √       | √        |            |            |             |            |             |
-| **macro**          |            |            | √       | √        |            |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
-| **privateGateway** |            |            | √       | √        |            |            |             |            |             |
-| **project**        |            |            | √       | √        |            |            |             |            |             |
-| **role**           |            |            | √       | √        |            |            |             |            |             |
-| **sshKey**         |            |            | √       | √        |            |            |             |            |             |
-| **team**           |            |            | √       | √        |            |            |             |            |             |
-| **user**           |            |            | √       | √        |            |            |             |            |             |
-| **workspace**      |            |            | √       | √        |            |            |             |            |             |
+- cluster.get
+- cluster.list
+- clusterGroup.get
+- clusterGroup.list
 
-</TabItem>
-<TabItem label="Tenant Project Admin" value="Tenant Project Admin">
+</AccordionPanel>
+</Accordion>
 
-<br />
+### Cluster Profile
 
-## Tenant Project Admin
+| Role Name                    | Description                                                            |
+| ---------------------------- | ---------------------------------------------------------------------- |
+| Tenant Cluster Profile Admin | Allows the user to create and manage cluster profiles in all projects. |
 
-<br />
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
+<Accordion>
+<AccordionPanel title="Tenant Cluster Profile Admin">
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **apiKey**         |            |            | √       | √        |            |            |             |            |             |
-| **audit**          |            |            | √       | √        |            |            |             |            |             |
-| **cloudaccount**   | √          | √          | √       | √        | √          |            |             |            |             |
-| **cloudconfig**    | √          | √          | √       | √        | √          |            |             |            |             |
-| **cluster**        | √          | √          | √       | √        | √          | √          |             |            |             |
-| **clusterProfile** | √          | √          | √       | √        | √          |            | √           |            |             |
-| **clusterRbac**    | √          | √          | √       | √        | √          |            |             |            |             |
-| **dnsMapping**     | √          | √          | √       | √        | √          |            |             |            |             |
-| **edgehost**       | √          | √          | √       | √        | √          |            |             |            |             |
-| **location**       | √          | √          | √       | √        | √          |            |             |            |             |
-| **machine**        | √          | √          | √       | √        | √          |            |             |            |             |
-| **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
-| **packRegistry**   | √          | √          | √       | √        | √          |            |             |            |             |
-| **privateGateway** | √          | √          | √       | √        | √          |            |             |            |             |
-| **project**        | √          | √          | √       | √        | √          |            |             |            |             |
-| **sshKey**         | √          | √          | √       | √        | √          |            |             |            |             |
-| **tag**            |            |            |         |          | √          |            |             |            |             |
-| **workspace**      | √          | √          | √       | √        | √          |            |             | √          | √           |
+- clusterProfile.create
+- clusterProfile.delete
+- clusterProfile.get
+- clusterProfile.list
+- clusterProfile.publish
+- clusterProfile.update
+- macro.create
+- macro.delete
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- tag.update
 
-</TabItem>
-</Tabs>
+</AccordionPanel>
+</Accordion>
 
-<br />
-<br />
+### Project
 
-## Cluster Profile
+| Role Name            | Description                                                                                                                                     |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tenant Project Admin | Grants the user complete access to all the project resources. Unlike the Tenant Admin role, this role cannot create projects, users, and teams. |
 
----
+<Accordion>
+<AccordionPanel title="Tenant Project Admin">
 
-| Role Names                   | Description                                                                      |
-| ---------------------------- | -------------------------------------------------------------------------------- |
-| Tenant Cluster Profile Admin | A role which has complete access to all the `Cluster Profile` related operations |
+- apiKey.get
+- apiKey.list
+- appDeployment.create
+- appDeployment.delete
+- appDeployment.get
+- appDeployment.list
+- appDeployment.update
+- appProfile.create
+- appProfile.delete
+- appProfile.get
+- appProfile.list
+- appProfile.update
+- audit.get
+- audit.list
+- cloudaccount.create
+- cloudaccount.delete
+- cloudaccount.get
+- cloudaccount.list
+- cloudaccount.update
+- cloudconfig.create
+- cloudconfig.delete
+- cloudconfig.get
+- cloudconfig.list
+- cloudconfig.update
+- cluster.create
+- cluster.delete
+- cluster.get
+- cluster.import
+- cluster.list
+- cluster.update
+- clusterGroup.create
+- clusterGroup.delete
+- clusterGroup.get
+- clusterGroup.list
+- clusterGroup.update
+- clusterProfile.create
+- clusterProfile.delete
+- clusterProfile.get
+- clusterProfile.list
+- clusterProfile.publish
+- clusterProfile.update
+- dnsMapping.create
+- dnsMapping.delete
+- dnsMapping.get
+- dnsMapping.list
+- dnsMapping.update
+- edgeToken.create
+- edgeToken.delete
+- edgeToken.get
+- edgeToken.list
+- edgeToken.update
+- edgehost.create
+- edgehost.delete
+- edgehost.get
+- edgehost.list
+- edgehost.update
+- filter.create
+- filter.delete
+- filter.get
+- filter.list
+- filter.update
+- location.create
+- location.delete
+- location.get
+- location.list
+- location.update
+- machine.create
+- machine.delete
+- machine.get
+- machine.list
+- machine.update
+- macro.create
+- macro.delete
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.create
+- packRegistry.delete
+- packRegistry.get
+- packRegistry.list
+- packRegistry.update
+- privateGateway.create
+- privateGateway.delete
+- privateGateway.get
+- privateGateway.list
+- privateGateway.update
+- project.create
+- project.delete
+- project.get
+- project.list
+- project.update
+- sshKey.create
+- sshKey.delete
+- sshKey.get
+- sshKey.list
+- sshKey.update
+- tag.update
+- virtualCloudconfig.create
+- virtualCloudconfig.delete
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCloudconfig.update
+- virtualCluster.create
+- virtualCluster.delete
+- virtualCluster.get
+- virtualCluster.list
+- virtualCluster.update
+- workspace.backup
+- workspace.create
+- workspace.delete
+- workspace.get
+- workspace.list
+- workspace.restore
+- workspace.update
 
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterProfile** | √          | √          | √       | √        | √          |            | √           |            |             |
-| **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
-| **tag**            |            |            |         |          | √          |            |             |            |             |
+</AccordionPanel>
+</Accordion>
 
-<br />
-<br />
-<br />
+### Role
 
-## Tenant Role
+| Role Name         | Description                                                    |
+| ----------------- | -------------------------------------------------------------- |
+| Tenant Role Admin | This role allows the user to create, update, and delete roles. |
 
----
+<Accordion>
+<AccordionPanel title="Tenant Role Admin">
 
-| Role Names        | Description                                                          |
+- role.create
+- role.delete
+- role.get
+- role.list
+- role.update
+
+</AccordionPanel>
+</Accordion>
+
+### Team
+
+| Role Name         | Description                                                          |
 | ----------------- | -------------------------------------------------------------------- |
-| Tenant Role Admin | A role which has complete access to all the `Role` related perations |
+| Tenant Team Admin | This role grants the user complete access to all the team resources. |
 
-|          | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| -------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **role** | √          | √          | √       | √        | √          |            |             |            |             |
+<Accordion>
+<AccordionPanel title="Tenant Team Admin">
 
-<br />
-<br />
-<br />
+- apiKey.get
+- apiKey.list
+- audit.get
+- audit.list
+- team.create
+- team.delete
+- team.get
+- team.list
+- team.update
+- user.get
+- user.list
 
-## Tenant Team
+</AccordionPanel>
+</Accordion>
 
----
+### User
 
-| Role Names        | Description                                                           |
-| ----------------- | --------------------------------------------------------------------- |
-| Tenant Team Admin | A role which has complete access to all the `Team` related operations |
+| Role Name              | Description                                                       |
+| ---------------------- | ----------------------------------------------------------------- |
+| Tenant User Admin Role | This role grants the user complete access to all user operations. |
 
-|            | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **apiKey** |            |            | √       | √        |            |            |             |            |             |
-| **audit**  |            |            | √       | √        |            |            |             |            |             |
-| **team**   | √          | √          | √       | √        | √          |            |             |            |             |
-| **user**   |            |            | √       | √        |            |            |             |            |             |
+<Accordion>
+<AccordionPanel title="Tenant User Admin">
 
-<br />
-<br />
-<br />
+- apiKey.create
+- apiKey.delete
+- apiKey.get
+- apiKey.list
+- apiKey.update
+- audit.get
+- audit.list
+- user.create
+- user.delete
+- user.get
+- user.list
+- user.update
 
-## Tenant User
+</AccordionPanel>
+</Accordion>
 
----
+## Resources
 
-| Role Names             | Description                                                           |
-| ---------------------- | --------------------------------------------------------------------- |
-| Tenant User Admin Role | A role which has complete access to all the `User` related operations |
-
-|            | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **apiKey** | √          | √          | √       | √        | √          |            |             |            |             |
-| **audit**  |            |            | √       | √        |            |            |             |            |             |
-| **user**   | √          | √          | √       | √        | √          |            |             |            |
-
-<br />
-
-## Tenants Cluster Group
-
----
-
-| Role Names                   | Description                                                                                                                   |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Tenants Cluster Group Admin  | Allows the user to create and manage cluster groups within the tenant, covered under all operations related to cluster groups |
-| Tenants Cluster Group Editor | The role can perform edit operations related to a cluster group, but the user is not able to create or delete a cluster group |
-| Tenants Cluster Group Viewer | Provides a read only access to all the cluster group resources                                                                |
-
-The table lists role resourceKeys and operations that are predefined under the Global Tenant Scope:
-
-<br />
-<br />
-
-<Tabs>
-
-<TabItem label="Tenants Cluster Group Admin" value="Tenant Admin">
-
-<br />
-
-## Tenant Cluster Group Admin
-
-<br />
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cluster**      |            |            | √       | √        |            |            |             |            |             |
-| **clusterGroup** | √          | √          | √       | √        | √          |            |             |            |             |
-| **tag**          |            |            |         |          | √          |            |             |            |             |
-
-<br />
-<br />
-<br />
-
-</TabItem>
-<TabItem label="Tenants Cluster Group Editor" value="Tenants Cluster Group Editor Role">
-
-## Tenant Cluster Group Editor
-
-<br />
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cluster**      |            |            | √       | √        |            |            |             |            |             |
-| **clusterGroup** |            |            | √       | √        | √          |            |             |            |             |
-| **tag**          |            |            |         |          | √          |            |             |            |             |
-
-</TabItem>
-<TabItem label="Tenants Cluster Group Viewer" value="Tenant Project Viewer">
-
-<br />
-
-## Tenant Cluster Group Viewer
-
-<br />
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cluster**      |            |            | √       | √        |            |            |             |            |             |
-| **clusterGroup** |            |            | √       | √        |            |            |             |            |             |
-
-</TabItem>
-</Tabs>
-
-<br />
+- [Permissions](./permissions.md)
