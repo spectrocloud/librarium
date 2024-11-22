@@ -20,7 +20,7 @@ Create your own custom project role if none of the predefined roles meet your re
 
 :::
 
-## Default Tenant Roles
+## Default Project Roles
 
 Palette comes with a set of immutable predefined Project roles out-of-the-box that you can assign to users or teams. To
 review the permissions associated with each Project role, click on the role name to expand the list of permissions.
@@ -205,9 +205,9 @@ review the permissions associated with each Project role, click on the role name
 
 | Role Name              | Description                                          |
 | ---------------------- | ---------------------------------------------------- |
-| Cluster Account Admin  | An administrative access to cloud account operations |
-| Cluster Account Editor | An editor access to cloud cloud account operations   |
-| Cluster Account Viewer | A read-only role for cloud account operations        |
+| Cloud Account Admin  | An administrative access to cloud account operations. |
+| Cloud Account Editor | An editor access to cloud account operations.   |
+| Cloud Account Viewer | A read-only role for cloud account operations.        |
 
 <Accordion>
 <AccordionPanel title="Cluster Account Admin">
@@ -244,9 +244,9 @@ review the permissions associated with each Project role, click on the role name
 
 | Role Name      | Description                                                                                                                                             |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cluster Admin  | A cluster admin in Project scope has all the privileges related to cluster operation                                                                    |
-| Cluster Editor | A cluster editor in Project scope has the privileges to update, delete,get and list cluster resources. This role is not privileged for cluster creation |
-| Cluster Viewer | A cluster viewer in Project scope is a read-only privilege to cluster operations                                                                        |
+| Cluster Admin  | A cluster admin in the Project scope has all the privileges related to the cluster operation.                                                                    |
+| Cluster Editor | A cluster editor in the Project scope has the privileges to update, delete, get, and list cluster resources. This role is not privileged for cluster creation. |
+| Cluster Viewer | A cluster viewer in Project scope is a read-only privilege to cluster operations.                                                                        |
 
 <Accordion>
 <AccordionPanel title="Cluster Admin">
@@ -437,13 +437,12 @@ review the permissions associated with each Project role, click on the role name
 
 ### Cluster Profile
 
-The user with these permissions can manage the Cluster Profiles within a project.
 
 | Role Name              | Description                                                                                   |
 | ---------------------- | --------------------------------------------------------------------------------------------- |
-| Cluster Profile Admin  | Cluster Profile Admin role has admin privileges to all the cluster profile operations         |
-| Cluster Profile Editor | Cluster Profile Editor role has privileges to edit and list operations on the cluster profile |
-| Cluster Profile Viewer | Cluster Profile Viewer role has read-only privileges to cluster profiles                      |
+| Cluster Profile Admin  | Cluster Profile Admin role has admin privileges to all the cluster profile operations.        |
+| Cluster Profile Editor | Cluster Profile Editor role has privileges to edit and list operations on the cluster profile. |
+| Cluster Profile Viewer | Cluster Profile Viewer role has read-only privileges to cluster profiles.                      |
 
 <Accordion>
 <AccordionPanel title="Cluster Profile Admin">
@@ -500,9 +499,9 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 | Role Name      | Description                                                                                                                   |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Project Admin  | The Project Admin role is a closure of all the project operations. It is a administrative privilege for the project resources |
-| Project Editor | The Project Editor role can perform edit operations within a project, but the user is not able to create or delete a project  |
-| Project Viewer | The Project Viewer will be able to view all the resources within a project, but not privileged to make modifications          |
+| Project Admin  | The Project Admin role is a closure of all the project operations. It is an administrative privilege for the project resources. |
+| Project Editor | The Project Editor role can perform edit operations within a project, but the user is not able to create or delete a project.  |
+| Project Viewer | The Project Viewer will be able to view all the resources within a project, but is not privileged to make modifications.         |
 
 <Accordion>
 <AccordionPanel title="Project Admin">
@@ -955,8 +954,8 @@ The user with these permissions can manage the Cluster Profiles within a project
 
 | Role Name        | Description                                |
 | ---------------- | ------------------------------------------ |
-| Workspace Admin  | Administrator role to workspace operations |
-| Workspace Editor | Editor role to workspace operations        |
+| Workspace Admin  | Administrator role to workspace operations. |
+| Workspace Editor | Editor role to workspace operations.        |
 
 <Accordion>
 <AccordionPanel title="Workspace Admin">

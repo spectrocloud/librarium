@@ -17,7 +17,7 @@ global and applies to all projects within the tenant. The Project scope is speci
 
 ## Components and Resource Keys
 
-The following table lists the available Palette components, their corresponding resource key and the applicable Role
+The following table lists the available Palette components, their corresponding resource keys, and the applicable Role
 scopes you can assign permissions to.
 
 | Component            | Resource Key         | Tenant Role Scope | Project Role Scope | Resource Role Scope | Description                                                                        |
@@ -25,7 +25,7 @@ scopes you can assign permissions to.
 | API Key              | `apiKey`             | ✅                |                    |                     | API Key related operations                                                         |
 | Audit                | `audit`              | ✅                |                    |                     | Audit log access                                                                   |
 | App Deployment       | `appDeployment`      | ✅                | ✅                 |                     | Application deployment and management in the context of Palette Dev Engine         |
-| App Profile          | `appProfile`         |                   | ✅                 |                     | Management of Application profiles.                                                |
+| App Profile          | `appProfile`         |                   | ✅                 |                     | Management of Application profiles                                                |
 | Cloud Account        | `cloudaccount`       | ✅                | ✅                 | ✅                  | Cloud account creation and management                                              |
 | Cloud Config         | `cloudconfig`        | ✅                | ✅                 | ✅                  | Cluster level cloud configuration                                                  |
 | Cluster              | `cluster`            | ✅                | ✅                 | ✅                  | Creation and management of Palette workload clusters                               |
@@ -45,7 +45,7 @@ scopes you can assign permissions to.
 | Tag                  | `tag`                | ✅                | ✅                 |                     | Creation and management of tags                                                    |
 | Team                 | `team`               | ✅                |                    |                     | Creation and management of user teams                                              |
 | User                 | `user`               | ✅                |                    |                     | Creation and management of users                                                   |
-| Virtual Cloud Config | `virtualCloudConfig` |                   | ✅                 |                     | Allows the user to deploy application and manage applications in virtual clusters. |
+| Virtual Cloud Config | `virtualCloudConfig` |                   | ✅                 |                     | Allows the user to deploy and manage applications in virtual clusters |
 | Virtual Cluster      | `virtualCluster`     |                   | ✅                 |                     | Creation and management of virtual clusters                                        |
 | Virtual Machine      | `virtualMachine`     |                   | ✅                 |                     | Creation and management of virtual machines                                        |
 | Workspace            | `workspace`          |                   | ✅                 |                     | Workspace operations including backup and restore                                  |

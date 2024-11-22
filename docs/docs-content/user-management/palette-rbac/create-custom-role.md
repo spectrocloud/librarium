@@ -138,7 +138,7 @@ To validate that the custom Tenant role is created successfully, follow these st
 
 5. Assign the custom Tenant role to a user or group to validate that the permissions are applied correctly.
 
-## Edit a Custom Role
+## Custom Role Edit
 
 To edit a custom role in Palette, use the following steps.
 
@@ -155,7 +155,7 @@ To edit a custom role in Palette, use the following steps.
 3. Navigate to the tab that corresponds to the role type you want to edit. For example, if you want to edit a custom
    Project role, navigate to the **Project Roles** tab.
 
-4. Locate the custom role you want to edit and click on row to expose the details drawer.
+4. Locate the custom role you want to edit and click on the row to expose the details drawer.
 
 5. Click on the **Actions** button and select **Edit Role**.
 
@@ -171,7 +171,7 @@ To validate that the custom role is edited successfully, follow these steps.
 
 2. Navigate to the left **Main Menu** and select **Roles**.
 
-3. Navigate to the tab that corresponds to the role type you edited the role from.
+3. Navigate to the tab that corresponds to the role type from which you edited the role.
 
 4. Verify that the custom role is listed in the roles list.
 
@@ -179,7 +179,7 @@ To validate that the custom role is edited successfully, follow these steps.
 
 6. Log in as a user with the custom role assigned and verify that the permissions are applied correctly.
 
-## Delete a Custom Role
+## Custom Role Deletion
 
 To delete a custom role in Palette, use the following steps.
 
@@ -196,7 +196,7 @@ To delete a custom role in Palette, use the following steps.
 3. Navigate to the tab that corresponds to the role type you want to delete. For example, if you want to delete a custom
    Project role, navigate to the **Project Roles** tab.
 
-4. Locate the custom role you want to delete and click on row to expose the details drawer.
+4. Locate the custom role you want to delete and click on the row to expose the details drawer.
 
 5. Click on the **Actions** button and select **Delete Role**.
 
@@ -210,7 +210,7 @@ To validate that the custom role is deleted successfully, follow these steps.
 
 2. Navigate to the left **Main Menu** and select **Roles**.
 
-3. Navigate to the tab that corresponds to the role type you deleted the role from.
+3. Navigate to the tab that corresponds to the role type from which you deleted the role.
 
 4. Verify that the custom role is no longer listed in the roles list.
 

@@ -11,7 +11,7 @@ Attribute-Based Access Control (ABAC) is a security model that uses attributes t
 Palette, ABAC is implemented using [Resource roles](./resource-scope-roles-permissions.md) and
 [Resource filters](../../tenant-settings/filters.md).
 
-The Resource role define the permissions a user has on resources, and the Resource filters define the scope of the
+The Resource role defines the permissions a user has on resources, and the Resource filters define the scope of the
 resources the user can access. When a Resource role is assigned to a user or team, it must be paired with a Resource
 filter to control access based on a tag value.
 
@@ -27,7 +27,7 @@ checkmark in the Resource Role Scope column.
 
 ## Prerequisites
 
-- Tenant admin access to Palette with permissions `user.update`, `role.list`, `team.update` and `filter.list`.
+- Tenant admin access to Palette with the permissions `user.update`, `role.list`, `team.update`, and `filter.list`.
 
 - A user or team available. Check out the [Create and Manage a User](../users-and-teams/create-user.md) or
   [Create and Manage a Team](../users-and-teams/create-a-team.md) guide to learn how to create a user or team.
@@ -57,12 +57,12 @@ To implement ABAC in Palette, use the following steps.
     <details> 
     <summary>What permissions do I select?</summary>
 
-        The permissions you select depend on the use case you want to regulate. For example, if you're going to control what cluster profiles a user can view and use,
+        The permissions you select depend on the use case you want to regulate. For example, if you are going to control what cluster profiles a user can view and use,
         you would select the **Cluster permissions** resource type and check the
-        boxes for the`clusterprofile.get` and `clusterprofile.list` permissions. This would allow the user to view and list
+        boxes for the `clusterprofile.get` and `clusterprofile.list` permissions. This would allow the user to view and list
         cluster profiles when creating a cluster.
 
-        The next import step is to ensure all cluster profiles match the
+        The next important step is to ensure all cluster profiles match the
         conditions defined in the resource filter you created in step 4. This ensures that the user can only view and use cluster
         profiles that match the filter conditions. For example, if you created a filter that only allows users to view
         cluster profiles with the tag `development`, the user would only be able to view and use cluster profiles with that
@@ -95,7 +95,7 @@ To implement ABAC in Palette, use the following steps.
 
 16. Click **Confirm** to assign the Resource role to the user or team.
 
-The user or team can now interact with the Palette components that match the conditions defined in the Resource filter,
+The user or team can now interact with the Palette components that match the conditions defined in the Resource filter
 and the permissions defined in the Resource role.
 
 ## Validate
