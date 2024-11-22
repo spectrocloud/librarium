@@ -266,10 +266,16 @@ images are created for all the Palette-supported Kubernetes versions by default.
 used in this tutorial, the script builds 14 images. If your machine does not have enough disk space, the build process
 will fail silently.
 
-You can exclude image versions you do not need from the build process by commenting out the lines in the
-`build-provider-images` parameter in the file **Earthfile** in the **CanvOS** repository. This speeds up build process
-and reduces the amount of space required for the build process. For an example of excluding a version from build, refer
-to [Build Edge Artifacts guide](../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md).
+If you are using a Git tag earlier than v4.4.12, you can exclude image versions you do not need from the build process
+by commenting out the lines in the `build-provider-images` parameter in the file **Earthfile** in the **CanvOS**
+repository.
+
+If you are using a Git tag later than v4.4.12, open the **k8s_versions.json** file in the CanvOS directory. Remove the
+Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
+
+This speeds up build process and reduces the amount of space required for the build process. For an example of excluding
+a version from build, refer to
+[Build Edge Artifacts guide](../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md).
 
 :::
 
