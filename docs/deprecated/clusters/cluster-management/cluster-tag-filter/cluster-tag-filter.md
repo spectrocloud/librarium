@@ -17,16 +17,13 @@ To get started with an attribute access control through tags, check out the
 ## Resources
 
 - [Cluster Resource Filter](create-add-filter.md)
+
 - [Create Resource Filter](create-add-filter.md#create-resource-filter)
 
 - [Add Resource Role](create-add-filter.md#add-resource-role)
 
-- [Palette Resource Roles](../../../user-management/palette-rbac/resource-scope-roles-permissions.md)
+- [Resource Roles](../../../user-management/palette-rbac/resource-scope-roles-permissions.md)
 
-- [Palette Global Resource Roles](../../../user-management/palette-rbac/resource-scope-roles-permissions.md#palette-global-resource-roles)
+- [Create Custom Role](../../../user-management/palette-rbac/create-custom-role.md)
 
-- [Palette Custom Resource Roles](../../../user-management/palette-rbac/resource-scope-roles-permissions.md#palette-custom-resource-roles)
-
-- [Create Custom Role](../../../user-management/new-user.md#create-custom-role)
-
-- [Create New User in Palette](../../../user-management/new-user.md#create-a-new-user)
+- [Create New User in Palette](../../../user-management/users-and-teams/create-user.md)

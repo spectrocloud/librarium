@@ -572,6 +572,35 @@ let redirects = [
     ],
     to: "/integrations/",
   },
+  {
+    from: [
+      "/security-bulletins/reports/cve-2020-1971",
+      "/security-bulletins/reports/cve-2021-3449",
+      "/security-bulletins/reports/cve-2021-3711",
+      "/security-bulletins/reports/cve-2021-45079",
+      "/security-bulletins/reports/cve-2022-0778",
+      "/security-bulletins/reports/cve-2023-52425",
+      "/security-bulletins/reports/cve-2023-5528",
+      "/security-bulletins/reports/prisma-2022-0227",
+    ],
+    to: "/security-bulletins/reports/",
+  },
+  {
+    from: "/clusters/cluster-management/cluster-tag-filter/",
+    to: "tenant-settings/filters/",
+  },
+  {
+    from: "/clusters/cluster-management/cluster-tag-filter/create-add-filter/",
+    to: "tenant-settings/filters/",
+  },
+  {
+    from: "/user-management/new-user/",
+    to: "/user-management/users-and-teams/create-user/",
+  },
+  {
+    from: "/user-management/project-association/",
+    to: "/user-management/palette-rbac/assign-a-role/",
+  },
 ];
 
 if (packRedirects.length > 0) {
