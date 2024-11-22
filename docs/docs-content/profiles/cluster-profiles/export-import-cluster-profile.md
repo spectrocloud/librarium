@@ -18,7 +18,7 @@ add-ons and integrations.
 
 - Your Palette account role must have the `clusterProfile.get` permission to export a cluster profile and
   `clusterProfile.create` to import a cluster profile. Refer to the
-  [Cluster Profile permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin).
+  [Cluster Profile permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile).
 
 - [Macros](../../registries-and-packs/pack-constraints.md#pack-macros) used in the profile you want to export must be
   available in the target environment _before_ you import the profile.
