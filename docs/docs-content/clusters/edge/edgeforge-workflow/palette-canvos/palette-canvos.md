@@ -222,7 +222,7 @@ customization.
    ```bash
    cat user-data
    ```
-
+  
    :::info
 
    You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. Refer to
@@ -232,17 +232,14 @@ customization.
 
    :::
 
-10. The CanvOS utility uses [Earthly](https://earthly.dev/)(https://earthly.dev/) to build the target artifacts. By
-    default, images are created for all the Palette-supported Kubernetes versions. Comment out the versions you do not
-    need in the file **Earthfile** to speed up the build process and save disk space.
+10. Open the **k8s_versions.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
+    the JSON object corresponding to your Kubernetes distribution.
 
-    ```
-    build-provider-images:
-    #    BUILD  +provider-image --K8S_VERSION=1.24.6
-      BUILD  +provider-image --K8S_VERSION=1.25.2
-      BUILD  +provider-image --K8S_VERSION=1.26.4
-      BUILD  +provider-image --K8S_VERSION=1.27.2
-    ```
+
+    If you are using a tag that is earlier than v4.4.12, the **k8s_versions.json** file does not exist in those tags.
+    Instead, open the **Earthfile** in the CanvOS directory. In the file, find the block that starts with
+    `build-provider-images-fips:` and delete the Kubernetes versions that you do not want. This will speed up the build
+    process and save storage space.
 
 11. Issue the following command to start the build process.
 

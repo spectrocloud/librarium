@@ -34,7 +34,7 @@ Refer to the following sections to learn how to update a cluster profile.
 - A cluster profile created in Palette.
 
 - Your Palette account role must have the `clusterProfile.update` permission to update a profile. Refer to the
-  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   reference for more information about roles and permissions.
 
 ### Modify Profile Information
@@ -74,7 +74,7 @@ To learn how to apply the changes, review [Apply Profile Updates to Clusters](#a
 - A cluster profile created in Palette.
 
 - Your Palette account role must have the `clusterProfile.update` permission to update a profile. Refer to the
-  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   reference for more information about roles and permissions.
 
 ### Update Layer
@@ -146,7 +146,7 @@ Review the following steps to accept incoming pack updates to a cluster profile.
 - There are updates available for at least one pack in the profile.
 
 - Your Palette account role must have the `clusterProfile.update` permission to update a profile. Refer to the
-  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   reference for more information about roles and permissions.
 
 ### Review Update Changes
@@ -245,7 +245,7 @@ Ensure you follow these practices when updating to a new pack version.
 - There are updates available for at least one pack in the profile.
 
 - Your Palette account role must have the `clusterProfile.update` permission to update a profile. Refer to the
-  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   reference for more information about roles and permissions.
 
 ### Update Pack Version
