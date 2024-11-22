@@ -27,8 +27,8 @@ profiles, check out [Version a Cluster Profile](version-cluster-profile.md).
 - A cluster profile created in Palette.
 
 - Your Palette account role must have the `clusterProfile.update` permission to update a profile. Refer to the
-  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
-  reference for more information about roles and permissions.
+  [Permissions](../../../user-management/palette-rbac/permissions.md) page for more information about roles and
+  permissions.
 
 ## Modify Basic Profile Information
 
