@@ -28,7 +28,7 @@ could arise if the original pack has Kubernetes resources with the same names as
 <TabItem label="UI" value="ui">
 
 - Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the
-  [Cluster Profile Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  [Cluster Profile Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   page for more information about roles and permissions.
 
 </TabItem>
@@ -36,7 +36,7 @@ could arise if the original pack has Kubernetes resources with the same names as
 
 - Your Palette account role must have the `clusterProfile.Create` and `clusterProfile.Publish` permissions to create and
   publish a profile. Refer to the
-  [Cluster Profile Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  [Cluster Profile Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   page for more information about roles and permissions.
 
 - A Palette API key. Refer to the [Create API Key](../../../user-management/user-authentication.md#api-key) guide for

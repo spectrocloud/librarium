@@ -1,7 +1,7 @@
 ---
-sidebar_label: "SAML and SSO Setup"
-title: "SAML and SSO Setup"
-description: "Detailed instructions on creating Single Sign-on to log in to Palette using SAML 2.0"
+sidebar_label: "SAML and OIDC SSO"
+title: "SAML and OIDC SSO"
+description: "Learn how to enable Single Sign-On (SSO) in Palette with SAML and OIDC."
 icon: ""
 hide_table_of_contents: false
 tags: ["user-management", "saml-sso"]
@@ -17,6 +17,11 @@ the following protocols for authentication and authorization.
 - OpenID Connect (OIDC) - OIDC more modern protocol designed for web and mobile applications. OIDC is built on top of
   [OAuth 2.0](https://www.rfc-editor.org/rfc/rfc6749), a widely used authorization framework. OIDC supports distributed
   identity providers and supports social login providers such as Google or GitHub.
+
+## Palette OIDC and PXK
+
+<!-- prettier-ignore -->
+Palette can act as an Identity Provider (IDP) when <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> is used as the Kubernetes distribution in a cluster profile. Palette eXtended Kubernetes (PXK) is a recompiled version of the open source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure providers, public cloud providers, and private data center providers. This is the default distribution when deploying a Kubernetes cluster through Palette. To learn more about PXK, refer to the <VersionedLink text="PXK" url="/integrations/packs/?pack=kubernetes" /> page.
 
 Check out the following resources to enable SSO in Palette with the supported Identity Providers (IDP).
 
