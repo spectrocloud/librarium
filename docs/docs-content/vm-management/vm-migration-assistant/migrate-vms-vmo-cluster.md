@@ -70,7 +70,9 @@ Follow this guide to create source providers and migrate your VMs to your VMO cl
 
   - If you are migrating more than one VM in the same plan, they must all share the same network.
   - For cold migrations, ensure that VMs operating Windows are shut down at the virtualized OS level.
-  - For warm migrations, [Changed Block Tracking](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vddk-programming-guide/GUID-7B12E618-7851-4BD3-8E39-819454D8C016.html) must be enabled on your VMs.
+  - For warm migrations,
+    [Changed Block Tracking](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vddk-programming-guide/GUID-7B12E618-7851-4BD3-8E39-819454D8C016.html)
+    must be enabled on your VMs.
 
 <!--prettier-ignore-->
 - The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant-pack"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
@@ -185,11 +187,11 @@ Follow this guide to create source providers and migrate your VMs to your VMO cl
 
 To migrate VMs to your VMO cluster, complete the steps in the following sections.
 
-1. [Create Source Providers](#create-source-providers) to add your source providers for the VMs.
-2. [Create Migration Plans](#create-migration-plans) to plan your migrations.
-3. [Start Migration Plans](#start-migration-plans) to execute your migrations.
+1. [Create Source Provider](#create-source-provider) to add your source provider for the VMs.
+2. [Create Migration Plan](#create-migration-plan) to plan your migration.
+3. [Start Migration Plan](#start-migration-plan) to execute your migration.
 
-### Create Source Providers
+### Create Source Provider
 
 1. Log in to the VM Migration Assistant.
 
@@ -216,7 +218,7 @@ To migrate VMs to your VMO cluster, complete the steps in the following sections
    | **Endpoint type**               | Select the type of endpoint to configure the connection. Choose **vCenter** if managing multiple hosts through a central server, or **ESXi** if connecting directly to a standalone host.                                                                                                                                                                     |
    | **URL**                         | Your vSphere / ESXi API endpoint for the SDK. You can specify a Full Qualified Domain Name (FQDN) or an IP address. For example, `https://vcenter.mycompany.com/sdk`.                                                                                                                                                                                         |
    | **VDDK init image**             | Provide the registry URL to the VMware Virtual Disk Development Kit (VDDK) image, or select **Skip VMware Virtual Disk Development Kit (VDDK) SDK acceleration, migration may be slow.**. If providing an image, make sure you specify the registry URL without the HTTP scheme `https://` or `http://`. For example, `docker.io/myorganization/vddk:v8.0.3`. |
-   | **Username**                    | Your vSphere / ESXi account username. For example, `user@VSPHERE.LOCAL`.                                                                                                                                                                                                                                                                                                                         |
+   | **Username**                    | Your vSphere / ESXi account username. For example, `user@VSPHERE.LOCAL`.                                                                                                                                                                                                                                                                                      |
    | **Password**                    | Your vSphere / ESXi account password.                                                                                                                                                                                                                                                                                                                         |
    | **Skip certificate validation** | Enabling this option bypasses x509 CA verification. In production environments, do not enable if you are using a custom registry with self-signed SSL certificates, as the certificate can be provided in the next setting.                                                                                                                                   |
    | **CA certificate**              | Upload or drag and drop the CA certificate for your vSphere / ESXi. You can also use the **Fetch certificate from URL** option if your CA certificate is not third party or self-managed.                                                                                                                                                                     |
@@ -226,7 +228,9 @@ To migrate VMs to your VMO cluster, complete the steps in the following sections
    <TabItem label="Open Virtual Appliance (OVA)" value="ova">
 
    :::warning
+
    The Open Virtual Appliance (OVA) provider type is not supported.
+
    :::
 
    </TabItem>
@@ -238,14 +242,14 @@ To migrate VMs to your VMO cluster, complete the steps in the following sections
 8. The provider details have been successfully validated once the provider status displays as **Ready**.
 
    ![Provider Ready Status](/vm-management_vm-migration-assistant_migrate-vms-vmo-cluster_provider-ready.webp)
-  
-9. If you need to change a setting, click the pencil icon next to each value and adjust it in the pop-up window. Click **Save** after making changes.
 
-10. If you want to explore additional settings, refer to the [Additional Configuration - Provider Settings](./additional-configuration.md#provider-settings) for guidance.
+9. If you need to change a setting, click the pencil icon next to each value and adjust it in the pop-up window. Click
+   **Save** after making changes.
 
-11. Repeat these steps for each source provider that you want to create.
+10. If you want to explore additional settings, refer to the
+    [Additional Configuration - Provider Settings](./additional-configuration.md#provider-settings) for guidance.
 
-### Create Migration Plans
+### Create Migration Plan
 
 1. Log in to the VM Migration Assistant.
 
@@ -279,25 +283,26 @@ To migrate VMs to your VMO cluster, complete the steps in the following sections
    <!-- ![Plan Ready Status](/vm-management_vm-migration-assistant_migrate-vms-vmo-cluster_plan-ready.webp) -->
 
 11. Review the **Details** tab and check that the following settings are configured to your requirements.
-    
-    If you need to change a setting, click the pencil icon next to each value and adjust it in the pop-up window. Click **Save** after making changes.
-    
-    | Setting | Description |
-    | ------- | ----------- |
-    | **Warm migration** | Choose whether this will be a warm or cold migration. A cold migration is when VMs are shut down at the start of migration. A warm migration is when VMs are shut down during the final switchover. |
-    | **Target namespace** | The target namespace for the migrated VMs. |
-    | **Disk decryption passphrases** | Provide a list of passphrases for [LUKS-encrypted devices](https://docs.fedoraproject.org/en-US/quick-docs/encrypting-drives-using-LUKS/#_encrypting_block_devices_using_dm_cryptluks) on the VMs you intend to migrate. |
-    | **Transfer Network** | Change the migration transfer network for this plan. If a migration transfer network is defined for the source provider and exists in the target namespace, it is used by default. Otherwise, the pod network is used. |
-    | **Preserve static IPs** | Choose whether to preserve the static IPs of the VMs migrated from vSphere. |
-    | **Root device** | Choose the root filesystem to convert. By default, the first root device is chosen in multi-boot systems. You can specify a root device (for example, `/dev/sda1`) for multi-boot systems, but if it is not detected as a root device, the migration will fail. |
 
-    If you want to explore all additional plan settings, refer to the [Additional Configuration - Plan Settings](./additional-configuration.md#plan-settings) for guidance.
+    If you need to change a setting, click the pencil icon next to each value and adjust it in the pop-up window. Click
+    **Save** after making changes.
 
-12. Repeat these steps for each migration plan that you want to create.
+    | Setting                         | Description                                                                                                                                                                                                                                                     |
+    | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Warm migration**              | Choose whether this will be a warm or cold migration. A cold migration is when VMs are shut down at the start of migration. A warm migration is when VMs are shut down during the final switchover.                                                             |
+    | **Target namespace**            | The target namespace for the migrated VMs.                                                                                                                                                                                                                      |
+    | **Disk decryption passphrases** | Provide a list of passphrases for [LUKS-encrypted devices](https://docs.fedoraproject.org/en-US/quick-docs/encrypting-drives-using-LUKS/#_encrypting_block_devices_using_dm_cryptluks) on the VMs you intend to migrate.                                        |
+    | **Transfer Network**            | Change the migration transfer network for this plan. If a migration transfer network is defined for the source provider and exists in the target namespace, it is used by default. Otherwise, the pod network is used.                                          |
+    | **Preserve static IPs**         | Choose whether to preserve the static IPs of the VMs migrated from vSphere.                                                                                                                                                                                     |
+    | **Root device**                 | Choose the root filesystem to convert. By default, the first root device is chosen in multi-boot systems. You can specify a root device (for example, `/dev/sda1`) for multi-boot systems, but if it is not detected as a root device, the migration will fail. |
 
-### Start Migration Plans
+    If you want to explore all additional plan settings, refer to the
+    [Additional Configuration - Plan Settings](./additional-configuration.md#plan-settings) for guidance.
 
-1. Once the **Status** field displays **Ready** in the **Plan details**, click **Start migration** in the top-right corner.
+### Start Migration Plan
+
+1. Once the **Status** field displays **Ready** in the **Plan details**, click **Start migration** in the top-right
+   corner.
 
 2. Click **Start** in the pop-up window.
 
@@ -321,9 +326,9 @@ To migrate VMs to your VMO cluster, complete the steps in the following sections
 
    ![Start migrated VM](/migrate-vm-kubevirt-guide/vm-management_create-manage-vm_migrate-vm-kubevirt_start_migrated_vm.webp)
 
-## Cancel Running Migrations
+## Cancel Running Migration
 
-### Prerequisites
+### Prerequisites
 
 - A running migration plan.
 
@@ -345,7 +350,7 @@ To migrate VMs to your VMO cluster, complete the steps in the following sections
 
 8. Click **Yes, cancel** to confirm the cancellation.
 
-### Validate
+### Validate
 
 1. Log in to the VM Migration Assistant.
 

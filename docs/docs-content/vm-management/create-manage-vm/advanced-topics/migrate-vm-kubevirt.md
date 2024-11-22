@@ -11,7 +11,8 @@ tags: ["vmo", "palette cli"]
 
 :::info
 
-We recommend using the [VM Migration Assistant](../../vm-migration-assistant/vm-migration-assistant.md) instead of this method for new migrations.
+We recommend using the [VM Migration Assistant](../../vm-migration-assistant/vm-migration-assistant.md) instead of this
+method for new migrations.
 
 :::
 
@@ -112,7 +113,8 @@ This migration method uses the [Palette CLI](../../../automation/palette-cli/pal
        EOF
        ```
 
-       Replace the `<myregistry/myrepository:tag>` with your chosen base image registry/repository (for example: `alpine:latest`).
+       Replace the `<myregistry/myrepository:tag>` with your chosen base image registry/repository (for example:
+       `alpine:latest`).
 
     4. Build the image.
 

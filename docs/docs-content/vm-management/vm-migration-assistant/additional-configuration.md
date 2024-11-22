@@ -17,7 +17,8 @@ Navigate to your overview settings by clicking **Overview** on the left **Main M
 
 <TabItem label="Overview" value="overview">
 
-The **Overview** tab has configurable settings for the migration controller. These parameters define the resource allocation, performance tuning, and operational settings for efficiently managing virtual machine migrations.
+The **Overview** tab has configurable settings for the migration controller. These parameters define the resource
+allocation, performance tuning, and operational settings for efficiently managing virtual machine migrations.
 
 ![Overview - Overview Tab Settings](/vm-management_vm-migration-assistant_additional-configuration_overview-settings.webp)
 
@@ -25,13 +26,13 @@ The **Overview** tab has configurable settings for the migration controller. The
 
 The configurable parameters are described in the following table.
 
-| Parameter                                     | Description                                                                                                                         | Default Value |
-| --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| **Max concurrent virtual machine migrations** | The maximum number of VMs per plan that can be migrated simultaneously.                                                             | `20`          |
-| **Controller main container CPU limit**       | The CPU limit (in milliCPU) allocated to the main container in the controller pod.                                                  | `500m`        |
-| **Controller main container Memory limit**    | The Memory limit (in mebibytes) allocated to the main container in the controller pod.                                              | `800Mi`       |
+| Parameter                                     | Description                                                                                                                                                                                                                                                                                                           | Default Value |
+| --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| **Max concurrent virtual machine migrations** | The maximum number of VMs per plan that can be migrated simultaneously.                                                                                                                                                                                                                                               | `20`          |
+| **Controller main container CPU limit**       | The CPU limit (in milliCPU) allocated to the main container in the controller pod.                                                                                                                                                                                                                                    | `500m`        |
+| **Controller main container Memory limit**    | The Memory limit (in mebibytes) allocated to the main container in the controller pod.                                                                                                                                                                                                                                | `800Mi`       |
 | **Precopy interval (minutes)**                | _(Only applicable to warm migrations)_ The interval time at which a new snapshot is requested prior to initiating a warm migration. The optimal choice depends on various factors such as network bandwidth and the rate of data changes. For example, VMs with heavy write workloads benefit from shorter intervals. | `60`          |
-| **Snapshot polling interval (seconds)**       | _(Only applicable to warm migrations)_ The frequency at which the migration controller checks for changes or updates in snapshots during the migration process. Shorter frequencies may reduce the overall migration time, but will also increase resource usage.            | `10`          |
+| **Snapshot polling interval (seconds)**       | _(Only applicable to warm migrations)_ The frequency at which the migration controller checks for changes or updates in snapshots during the migration process. Shorter frequencies may reduce the overall migration time, but will also increase resource usage.                                                     | `10`          |
 
 Perform the following steps to change a setting.
 
@@ -45,7 +46,9 @@ Perform the following steps to change a setting.
 
 The **YAML** tab displays a YAML editor for the VM Migration Assistant resource.
 
-View and edit the [Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) for the VM Migration Assistant on this tab.
+View and edit the
+[Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) for the VM
+Migration Assistant on this tab.
 
 </TabItem>
 
@@ -53,7 +56,8 @@ View and edit the [Custom Resource](https://kubernetes.io/docs/concepts/extend-k
 
 The **Metrics** tab displays your migration metrics.
 
-Perform the following steps to change the time period displayed for the Migrations and Virtual Machine Migrations graphs.
+Perform the following steps to change the time period displayed for the Migrations and Virtual Machine Migrations
+graphs.
 
 1. Click the **three-dot Menu** at the top-right of each graph.
 
@@ -85,22 +89,24 @@ The **Details** tab has configurable settings for the provider.
 
 <TabItem label="Source Provider" value="source-provider">
 
-The configurable settings are described in the following table. These were originally defined when you performed the steps in [Create Source Providers](./migrate-vms-vmo-cluster.md#create-source-providers).
+The configurable settings are described in the following table. These were originally defined when you performed the
+steps in [Create Source Providers](./migrate-vms-vmo-cluster.md#create-source-provider).
 
-| Setting | Description |
-| ------- | ----------- |
-| **URL** | Your vSphere / ESXi API endpoint for the SDK. You can specify a Full Qualified Domain Name (FQDN) or an IP address. For example, `https://vcenter.mycompany.com/sdk`. |
-| **External web UI link** | Your vSphere / ESXi UI endpoint. You can specify a Full Qualified Domain Name (FQDN) or an IP address. For example, `https://vcenter.mycompany.com/ui`. |
-| **VDDK init image** | Provide the registry URL to the VMware Virtual Disk Development Kit (VDDK) image. If providing an image, make sure you specify the registry URL without the HTTP scheme `https://` or `http://`. For example, `docker.io/myorganization/vddk:v8.0.3`. |
+| Setting                  | Description                                                                                                                                                                                                                                           |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **URL**                  | Your vSphere / ESXi API endpoint for the SDK. You can specify a Full Qualified Domain Name (FQDN) or an IP address. For example, `https://vcenter.mycompany.com/sdk`.                                                                                 |
+| **External web UI link** | Your vSphere / ESXi UI endpoint. You can specify a Full Qualified Domain Name (FQDN) or an IP address. For example, `https://vcenter.mycompany.com/ui`.                                                                                               |
+| **VDDK init image**      | Provide the registry URL to the VMware Virtual Disk Development Kit (VDDK) image. If providing an image, make sure you specify the registry URL without the HTTP scheme `https://` or `http://`. For example, `docker.io/myorganization/vddk:v8.0.3`. |
 
 </TabItem>
 
 <TabItem label="Host Cluster" value="host-cluster">
 
-The configurable settings are described in the following table. These are automatically defined when the VM Migration Assistant is installed on your VMO cluster.
+The configurable settings are described in the following table. These are automatically defined when the VM Migration
+Assistant is installed on your VMO cluster.
 
-| Setting | Description |
-| ------- | ----------- |
+| Setting                      | Description                                                                                        |
+| ---------------------------- | -------------------------------------------------------------------------------------------------- |
 | **Default Transfer Network** | Select a default migration network. If no network is selected, the pod network is used by default. |
 
 </TabItem>
@@ -119,7 +125,9 @@ Perform the following steps to change a setting.
 
 The **YAML** tab displays a YAML editor for the provider resource.
 
-View and edit the [Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) for the provider on this tab.
+View and edit the
+[Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) for the
+provider on this tab.
 
 </TabItem>
 
@@ -129,14 +137,15 @@ The **Credentials** tab has configurable settings for the provider credentials.
 
 ### Configure Provider Credentials
 
-The configurable settings are described in the following table. These were originally defined when you performed the steps in [Create Source Providers](./migrate-vms-vmo-cluster.md#create-source-providers).
+The configurable settings are described in the following table. These were originally defined when you performed the
+steps in [Create Source Providers](./migrate-vms-vmo-cluster.md#create-source-provider).
 
-| Setting | Description |
-| ------- | ----------- |
-| **Username** | Your vSphere / ESXi account username. For example, `user@VSPHERE.LOCAL`. |
-| **Password** | Your vSphere / ESXi account password. |
+| Setting                         | Description                                                                                                                                                                                                                 |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Username**                    | Your vSphere / ESXi account username. For example, `user@VSPHERE.LOCAL`.                                                                                                                                                    |
+| **Password**                    | Your vSphere / ESXi account password.                                                                                                                                                                                       |
 | **Skip certificate validation** | Enabling this option bypasses x509 CA verification. In production environments, do not enable if you are using a custom registry with self-signed SSL certificates, as the certificate can be provided in the next setting. |
-| **CA certificate** | Upload or drag and drop the CA certificate for your vSphere / ESXi. You can also use the **Fetch certificate from URL** option if your CA certificate is not third party or self-managed. |
+| **CA certificate**              | Upload or drag and drop the CA certificate for your vSphere / ESXi. You can also use the **Fetch certificate from URL** option if your CA certificate is not third party or self-managed.                                   |
 
 Perform the following steps to change a setting.
 
@@ -150,7 +159,8 @@ Perform the following steps to change a setting.
 
 The **Virtual Machines** tab displays a table of virtual machines from the provider.
 
-You can initiate migrations from this tab by selecting VMs and clicking on **Create migration plan**. Refer to [Create Migration Plans](./migrate-vms-vmo-cluster.md#create-migration-plans) from step 6 for guidance.
+You can initiate migrations from this tab by selecting VMs and clicking on **Create migration plan**. Refer to
+[Create Migration Plans](./migrate-vms-vmo-cluster.md#create-migration-plan) from step 6 for guidance.
 
 </TabItem>
 
@@ -162,9 +172,10 @@ You can configure the migration network for each listed host in the table.
 
 :::info
 
-Using the default management network for migration can lead to poor performance. Disk transfer operations may saturate may saturate network bandwidth, which could affect communication between vCenter and ESXi hosts.
+Using the default management network for migration can lead to poor performance. Disk transfer operations may saturate
+may saturate network bandwidth, which could affect communication between vCenter and ESXi hosts.
 
-A dedicated migration network can improve performance and reduce risks to the VMware environment. 
+A dedicated migration network can improve performance and reduce risks to the VMware environment.
 
 :::
 
@@ -174,11 +185,11 @@ A dedicated migration network can improve performance and reduce risks to the VM
 2. Click on **Select migration network**.
 3. The configurable settings are described in the following table.
 
-   | Setting | Description |
-   | ------- | ----------- |
-   | **Network** | Select the migration network to use from the drop-down Menu. |
-   | **ESXi host admin username** | Specify the ESXi host admin username. For example, `root`. |
-   | **ESXi host admin password** | Specify the ESXi host admin password. |
+   | Setting                      | Description                                                  |
+   | ---------------------------- | ------------------------------------------------------------ |
+   | **Network**                  | Select the migration network to use from the drop-down Menu. |
+   | **ESXi host admin username** | Specify the ESXi host admin username. For example, `root`.   |
+   | **ESXi host admin password** | Specify the ESXi host admin password.                        |
 
 4. After making changes, click **Save**.
 
@@ -186,9 +197,12 @@ A dedicated migration network can improve performance and reduce risks to the VM
 
 <TabItem label="Networks" value="networks">
 
-The **Networks** tab displays a table of [NetworkAttachmentDefinitions](https://docs.openshift.com/container-platform/4.8/rest_api/network_apis/networkattachmentdefinition-k8s-cni-cncf-io-v1.html) from the cluster. This tab is only visible on host clusters.
+The **Networks** tab displays a table of
+[NetworkAttachmentDefinitions](https://docs.openshift.com/container-platform/4.8/rest_api/network_apis/networkattachmentdefinition-k8s-cni-cncf-io-v1.html)
+from the cluster. This tab is only visible on host clusters.
 
-You can select a default migration network for the cluster to improve disk transfer performance. If no network is selected, the pod network is used by default, which may not be optimal.
+You can select a default migration network for the cluster to improve disk transfer performance. If no network is
+selected, the pod network is used by default, which may not be optimal.
 
 ### Configure Default Transfer Network for Host Cluster
 
@@ -216,16 +230,17 @@ The **Details** tab has configurable settings for the plan.
 
 ### Configure Plan Details
 
-The configurable settings are described in the following table. Some of these were originally defined when you performed the steps in [Create Migration Plans](./migrate-vms-vmo-cluster.md#create-migration-plans).
+The configurable settings are described in the following table. Some of these were originally defined when you performed
+the steps in [Create Migration Plans](./migrate-vms-vmo-cluster.md#create-migration-plan).
 
-| Setting | Description |
-| ------- | ----------- |
-| **Warm migration** | Choose whether this will be a warm or cold migration. A cold migration is when VMs are shut down at the start of migration. A warm migration is when VMs are shut down during the final switchover. |
-| **Target namespace** | The target namespace for the migrated VMs. |
-| **Disk decryption passphrases** | Provide a list of passphrases for [LUKS-encrypted devices](https://docs.fedoraproject.org/en-US/quick-docs/encrypting-drives-using-LUKS/#_encrypting_block_devices_using_dm_cryptluks) on the VMs you intend to migrate. |
-| **Transfer Network** | Change the migration transfer network for this plan. If a migration transfer network is defined for the source provider and exists in the target namespace, it is used by default. Otherwise, the pod network is used. |
-| **Preserve static IPs** | Choose whether to preserve the static IPs of the VMs migrated from vSphere. |
-| **Root device** | Choose the root filesystem to convert. By default, the first root device is chosen in multi-boot systems. You can specify a root device (for example, `/dev/sda1`) for multi-boot systems, but if it is not detected as a root device, the migration will fail. |
+| Setting                         | Description                                                                                                                                                                                                                                                     |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Warm migration**              | Choose whether this will be a warm or cold migration. A cold migration is when VMs are shut down at the start of migration. A warm migration is when VMs are shut down during the final switchover.                                                             |
+| **Target namespace**            | The target namespace for the migrated VMs.                                                                                                                                                                                                                      |
+| **Disk decryption passphrases** | Provide a list of passphrases for [LUKS-encrypted devices](https://docs.fedoraproject.org/en-US/quick-docs/encrypting-drives-using-LUKS/#_encrypting_block_devices_using_dm_cryptluks) on the VMs you intend to migrate.                                        |
+| **Transfer Network**            | Change the migration transfer network for this plan. If a migration transfer network is defined for the source provider and exists in the target namespace, it is used by default. Otherwise, the pod network is used.                                          |
+| **Preserve static IPs**         | Choose whether to preserve the static IPs of the VMs migrated from vSphere.                                                                                                                                                                                     |
+| **Root device**                 | Choose the root filesystem to convert. By default, the first root device is chosen in multi-boot systems. You can specify a root device (for example, `/dev/sda1`) for multi-boot systems, but if it is not detected as a root device, the migration will fail. |
 
 Perform the following steps to change a setting.
 
@@ -239,7 +254,9 @@ Perform the following steps to change a setting.
 
 The **YAML** tab displays a YAML editor for the plan resource.
 
-View and edit the [Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) for the plan on this tab.
+View and edit the
+[Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) for the plan on
+this tab.
 
 </TabItem>
 
@@ -263,12 +280,13 @@ The **Mappings** tab displays the network and storage mappings for the migration
 
 ### Configure Plan Mappings
 
-The configurable settings are described in the following table. These were originally defined when you performed the steps in [Create Migration Plans](./migrate-vms-vmo-cluster.md#create-migration-plans).
+The configurable settings are described in the following table. These were originally defined when you performed the
+steps in [Create Migration Plans](./migrate-vms-vmo-cluster.md#create-migration-plan).
 
-| Setting              | Description                                                                                                    | Example                                    |
-| -------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| **Network map**      | The source provider to target provider network map. Adjust the mapping, or leave the default mapping in place. | `VM-NETWORK` / `Pod Networking`            |
-| **Storage map**      | The source provider to target provider storage map. Adjust the mapping, or leave the default mapping in place. | `vsanDatastore1` / `spectro-storage-class` |
+| Setting         | Description                                                                                                    | Example                                    |
+| --------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| **Network map** | The source provider to target provider network map. Adjust the mapping, or leave the default mapping in place. | `VM-NETWORK` / `Pod Networking`            |
+| **Storage map** | The source provider to target provider storage map. Adjust the mapping, or leave the default mapping in place. | `vsanDatastore1` / `spectro-storage-class` |
 
 Perform the following steps to change a setting.
 
@@ -290,10 +308,10 @@ Perform the following steps to enable a hook.
 
 2. The configurable settings are described in the following table.
 
-   | Setting              | Description                                                                                                    |
-   | -------------------- | -------------------------------------------------------------------------------------------------------------- |
+   | Setting               | Description                                                                                                                                                                                                                             |
+   | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Hook runner image** | If enabling a pre or post migration hook, provide registry URL to the hook-runner or custom image. Make sure you specify the registry URL without the HTTP scheme `https://` or `http://`. For example, `quay.io/konveyor/hook-runner`. |
-   | **Ansible playbook** | You can optionally provide an [Ansible playbook](https://ansible.readthedocs.io/projects/runner/en/stable/intro/) for the hook. You can only specify a playbook if you are using a hook-runner image. |
+   | **Ansible playbook**  | You can optionally provide an [Ansible playbook](https://ansible.readthedocs.io/projects/runner/en/stable/intro/) for the hook. You can only specify a playbook if you are using a hook-runner image.                                   |
 
 3. Click **Update hooks** after making changes.
 
@@ -305,7 +323,7 @@ Perform the following steps to enable a hook.
 
 Navigate to your storage maps by clicking **StorageMaps for virtualization** on the left **Main Menu**.
 
-Storage maps are added here after [creating a migration plan](./migrate-vms-vmo-cluster.md#create-migration-plans).
+Storage maps are added here after [creating a migration plan](./migrate-vms-vmo-cluster.md#create-migration-plan).
 
 Click on a storage plan name to view the its details.
 
@@ -313,6 +331,6 @@ Click on a storage plan name to view the its details.
 
 Navigate to your network maps by clicking **NetworkMaps for virtualization** on the left **Main Menu**.
 
-Network maps are added here after [creating a migration plan](./migrate-vms-vmo-cluster.md#create-migration-plans).
+Network maps are added here after [creating a migration plan](./migrate-vms-vmo-cluster.md#create-migration-plan).
 
 Click on a network plan name to view the its details.
