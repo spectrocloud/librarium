@@ -115,8 +115,9 @@ artifacts at the same time.
    the JSON object corresponding to your Kubernetes distribution.
 
    If you are using a tag that is earlier than v4.4.12, the **k8s_versions.json** file does not exist in those tags.
-   Instead, open the **Earthfile** in the CanvOS directory. Under `build-provider-images`, remove the lines containing
-   Kubernetes versions that you do not need.
+   Instead, open the **Earthfile** in the CanvOS directory. In the file, find the block that starts with
+   `build-provider-images-fips:` and delete the Kubernetes versions that you do not want. This will speed up the build
+   process and save storage space.
 
 10. Issue the command below to create an **.arg** file. The **.arg** file uses the default values for the remaining
     arguments.

@@ -13,7 +13,7 @@ and Storage. Next, add layers using add-on profiles to expand the functionality 
 ## Prerequisites
 
 - Your Palette account role must have the `clusterProfile.create` permission to create a cluster profile. Refer to the
-  [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   documentation for more information.
 
 ## Create Full Profile
