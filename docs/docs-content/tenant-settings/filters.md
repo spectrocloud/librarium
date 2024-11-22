@@ -9,8 +9,8 @@ tags: ["tenant-administration", "filter"]
 ---
 
 Resource filters are used to limit the visibility of resources or actions to a
-[Resource roles](../user-management/palette-rbac/resource-scope-roles-permissions.md). A filter is a collection
-expressions that together define the scope the Resource roles can access.
+[Resource role](../user-management/palette-rbac/resource-scope-roles-permissions.md). A filter is a collection of
+expressions that together define the scope that Resource roles can access.
 
 Use the following steps to add a filter to your Palette tenant.
 
@@ -32,9 +32,9 @@ Use the following steps to add a filter to your Palette tenant.
 
 6. Provide a name for the filter in the **Name** field.
 
-7. Next, select the Palette resource type you want to apply the filter on. For example, **Tag**.
+7. Next, select the Palette resource type you want to apply the filter to. For example, **Tag**.
 
-8. Next, define the query for the filter. You can chose between **is**, and **is not**. Complete the expression by
+8. Next, define the query for the filter. You can chose between **is** and **is not**. Complete the expression by
    providing a value for the query.
 
    ![A view of the Add Resource Filter wizard with two tag expressions - tag is not equal to the value sensitive, and the tag is equal to the value claims.](/tenant-settings_filters_add-resource-filter-wizard.webp)

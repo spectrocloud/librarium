@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Roles and Permissions"
-title: "Roles"
+title: "Roles and Permissions"
 description: "Palette User Access control using RBAC"
 icon: ""
 hide_table_of_contents: false
@@ -8,7 +8,7 @@ tags: ["user-management", "rbac"]
 ---
 
 Palette provides you with the ability to create and manage roles to control access to resources. Roles are a collection
-of [permissions](./permissions.md) that define the actions a user, or a team, can perform on a resource. By assigning
+of [permissions](./permissions.md) that define the actions a user or a team can perform on a resource. By assigning
 roles to users or teams, you can control the level of access they have to resources in Palette.
 
 ## Role-Based Access Control
@@ -44,34 +44,33 @@ The Palette RBAC Model is based on the following three components:
 
 ### Scope
 
-Scope defines the context in which the resources are located in and the visiblity. The scope will be either Tenant or
-Project. For example, a role within the project scope can conduct actions within a project. Whereas, a role within the
+Scope defines the context in which the resources are located and their visibility. The scope can be either Tenant or
+Project. For example, a role within the project scope can conduct actions within a project, whereas a role within the
 tenant scope can conduct actions across all projects within the tenant.
 
 :::info
 
 Self-hosted Palette and VerteX instances have an additional scope called the System Scope. The system scope applies to
-the entire system. System-scope actions are only allowed for the system administrator. Only users with the system
+the entire system. Only users with the system
 administrator role can perform actions in the system scope. System administrator access is only available to self-hosted
 instances.
 
 :::
 
 Scopes are organized hierarchically, with each level becoming more specific. Roles can be assigned at different scope
-levels, and the level you choose determines the role's range of influence. Use the scope to control the visibility of
-resources and to reduce the number resources a Role has access to.
+levels, and the level you choose determines the role's range of influence. Use the scope to control the visibility of resources and to reduce the number of resources a role has access to.
 
 ![palette-rbac-scope.webp](/user-management_palette-rbac_palette-rbac_scope-overview.webp)
 
-Some key points to remember about scopes:
+Key points to remember about scopes:
 
 - Scopes control the visibility of the resource. The resource created in the higher scope will be visible and accessible
-  for use in the lower scope. For example, a cluster profile created in the tenant scope will be visible, and accessible
+  for use in the lower scope. For example, a cluster profile created in the tenant scope will be visible and accessible
   in the project scope.
 
 - Resource isolation is achieved by creating resources in the lower scope.
 
-- Resources with the same name may co-exist across scopes and will be distinguished with scope icon in the context
+- Resources with the same name may co-exist across different project scopes and will be distinguished with a scope icon in the context
   column.
 
 - In Terraform, when using the Spectro Cloud provider, the term context is used instead of scope. Refer to the
@@ -93,7 +92,7 @@ or switch to the tenant scope.
 
 Different resources in Palette exist at different scopes. Some resources are global and can be accessed across all
 scopes, while others are specific to a particular scope. For example, Users and Teams are managed at the Tenant scope,
-and are only accessible to Tenant administrators, or Tenant roles with user modification permissions. Cloud accounts on
+and are only accessible to Tenant administrators or Tenant roles with user modification permissions. Cloud accounts, on
 the other hand, can be defined at the Tenant scope and at the Project scope. However, if a cloud account is defined at
 the Tenant scope, it is accessible to all projects within the tenant. If a cloud account is defined at the Project
 scope, it is only accessible to that project.
@@ -102,7 +101,7 @@ scope, it is only accessible to that project.
 
 ## Permissions
 
-Permissions determine the type of operations allowed on a resource. Permissions can be defined in the following format,
+Permissions determine the type of operations allowed on a resource. Permissions can be defined in the format
 `resourceKey.operation`. The resource key is the resource type, and the operation is the action that can be performed on
 the resource. For example, `cluster.create` allows the role to create a cluster. Permissions are assigned to roles.
 
@@ -141,21 +140,21 @@ are unique roles that can be assigned at the project scope. Each Resource role m
 access. When a user is assigned a Resource role, they can only access resources that match the Resource Filter.
 
 To illustrate ABAC with Resource roles, consider a scenario where you have a Resource role called **security-enforcer**
-that has the permissions `clusterProfile.update`. This Resource role is paired with a Resource Filter that specifies the
+that has the permission `clusterProfile.update`. This Resource role is paired with a Resource Filter that specifies the
 attribute, Tag, with a value `prodAllowed`. When a user is assigned the **security-enforcer** role, they can only update
-cluster profiles that have the attribute `prodAllowed`.
+cluster profiles that have the tag `prodAllowed`.
 
 :::info
 
 In the example provided, assume the user with the Resource role assigned has other permissions required to view
-projects, and to list cluster profiles. For brevity, these permissions are not listed.
+projects and list cluster profiles. For brevity, these permissions are not listed.
 
 :::
 
-In the diagram below, the Resource role, **security-enforcer**, is allowed to update the cluster profile in Project A,
-with the tag `prodAllowed`. If the user attempts to update the cluster profile in Project B, that lacks the tag,
-`productionAllowed`, the operation is denied. If the cluster profile in Project B had the tag, `prodAllowed`, the user
-would have been able to update the cluster profile.
+In the diagram below, the Resource role **security-enforcer** is allowed to update the cluster profile in Project A,
+which has the tag `prodAllowed`. If the user attempts to update the cluster profile in Project B, which lacks the tag
+`productionAllowed`, the operation is denied. If the cluster profile in Project B had the tag `prodAllowed`, the user
+would be able to update the cluster profile.
 
 ![ABAC with Resource roles](/user-management_palette-rback_abac_example.webp)
 

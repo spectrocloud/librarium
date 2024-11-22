@@ -8,7 +8,7 @@ tags: ["user-management", "users", "tenants"]
 ---
 
 You can switch between tenants in Palette to access resources and manage configurations in different tenants without
-having to log in again. This feature is available to both self-hosted Palette, VerteX, and Palette SaaS.
+having to log in again. This feature is available to self-hosted Palette, VerteX, and Palette SaaS.
 
 ## Prerequisites
 
@@ -48,4 +48,4 @@ access is limited to the permissions assigned to your user account in the tenant
 
 5. Click on the **drop-down Menu** at the top of the page.
 
-6. Verify the expected tenant name is displayed at the bottom of option list.
+6. Verify the expected tenant name is displayed at the bottom of the option list.

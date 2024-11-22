@@ -8,7 +8,7 @@ sidebar_position: 5
 tags: ["user-management", "role", "rbac"]
 ---
 
-For each of the role types in Palette, you can create a custom role with specific permissions. This allows you to create
+For each role type in Palette, you can create a custom role with specific permissions. This allows you to create
 roles that are tailored to your organization's needs.
 
 :::tip

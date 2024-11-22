@@ -9,7 +9,7 @@ tags: ["user-management", "permissions", "rbac"]
 ---
 
 All actions in Palette are controlled by permissions. Permissions are assigned to roles, and roles are assigned to users
-or teams. Each Palette components has a corresponding _resource key_ and a set of operations that can be performed on
+or teams. Each Palette component has a corresponding _resource key_ and a set of operations that can be performed on
 that component.
 
 Palette components are managed at different scopes. The available scopes are Tenant and Project. The Tenant scope is

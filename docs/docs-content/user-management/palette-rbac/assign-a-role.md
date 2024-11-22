@@ -20,7 +20,7 @@ Use the following steps to assign a role to a user.
 
 ### Prerequisites
 
-- Tenant admin access to Palette with permissions `user.update`, and `role.list`.
+- Tenant admin access to Palette with the permissions `user.update` and `role.list`.
 
 - An available user. Check out the [Create a User](../users-and-teams/create-user.md) guide to learn how to create a
   user.
@@ -65,7 +65,7 @@ Use the following steps to assign a role to a user.
 2. The user can now access the resources and perform the actions associated with the assigned roles in the projects you
    assigned them to.
 
-In the user is unable to access a project or a resource, review the projects and roles assigned to the user.
+If the user is unable to access a project or a resource, review the projects and roles assigned to the user.
 
 ## Assign a Role to a Team
 
@@ -73,7 +73,7 @@ Use the following steps to assign a role to a team.
 
 ### Prerequisites
 
-- Tenant admin access to Palette with permissions `team.update`, and `role.list`.
+- Tenant admin access to Palette with the permissions `team.update` and `role.list`.
 
 - An available team. Check out the [Create a Team](../users-and-teams/create-a-team.md) guide to learn how to create a
   team.
@@ -127,7 +127,7 @@ Use the following steps to remove a role from a user.
 
 ### Prerequisites
 
-- Tenant admin access to Palette with permissions `user.update`, and `role.list`.
+- Tenant admin access to Palette with the permissions `user.update` and `role.list`.
 
 - An available user. Check out the [Create a User](../users-and-teams/create-user.md) guide to learn how to create a
   user.
@@ -156,7 +156,7 @@ Use the following steps to remove a role from a user.
 1. Have the user log in to [Palette](https://console.spectrocloud.com). If a self-hosted Palette instance is used, have
    the user log in to Palette using the instance URL.
 
-2. The user can no longer access the resources and perform the actions associated with the removed role in the projects
+2. Verify that the user can no longer access the resources and perform the actions associated with the removed role in the projects
    you assigned them to.
 
 ## Remove a Role From a Team
@@ -165,7 +165,7 @@ Use the following steps to remove a role from a team.
 
 ### Prerequisites
 
-- Tenant admin access to Palette with permissions `team.update`, and `role.list`.
+- Tenant admin access to Palette with the permissions `team.update` and `role.list`.
 
 - An available team. Check out the [Create a Team](../users-and-teams/create-a-team.md) guide to learn how to create a
   team.
@@ -185,7 +185,7 @@ Use the following steps to remove a role from a team.
 6. Select the tab of the role you want to remove from the team. For example, click on **Project Roles** to unassign a
    built-in project role or a custom project role you created.
 
-7. Identify the role you want to remove from the user and click on **three-dot Menu** next to the role.
+7. Identify the role you want to remove from the team and click on **three-dot Menu** next to the role.
 
 8. Click on **Remove**.
 
@@ -194,5 +194,5 @@ Use the following steps to remove a role from a team.
 1. Have a member of the team log in to [Palette](https://console.spectrocloud.com). If a self-hosted Palette instance is
    used, have the team member log in to Palette using the instance URL.
 
-2. The team member can no longer access the resources and perform the actions associated with the removed role in the
+2. Verify that the team member can no longer access the resources and perform the actions associated with the removed role in the
    projects you assigned them to.
