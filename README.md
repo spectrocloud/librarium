@@ -948,6 +948,8 @@ The script is located in the [scripts/netlify.sh](./scripts/netlify.sh) file. If
 for a branch, add the branch name to the `allowed_branches` variable in the [scripts/netlify.sh](./scripts/netlify.sh)
 file.
 
+## Docs AI Chatbot
+
 ## Approvers/Reviewers
 
 The content in this repository requires approval from the documentation team. The approval rules can be found in the
