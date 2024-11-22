@@ -140,16 +140,11 @@ Use the following steps to install Palette.
 7.  Type `y` if you want to use Ubuntu Pro. Otherwise, type `n`. If you choose to use Ubuntu Pro, you will be prompted
     to enter your Ubuntu Pro token.
 
-8.  Provide `https://saas-repo.console.spectrocloud.com` as the URL for the Spectro Cloud repository.
+8.  Choose `VMware vSphere` as the cloud type. This is the default.
 
-9.  Enter the repository credentials. Our support team provides the credentials you need to access the public Spectro
-    Cloud repository.
+9.  Type an enterprise cluster name, or use the default value. Your VM instances will use this name as a prefix.
 
-10. Choose `VMware vSphere` as the cloud type. This is the default.
-
-11. Type an enterprise cluster name, or use the default value. Your VM instances will use this name as a prefix.
-
-12. When prompted, enter the information listed in each of the following tables.
+10. When prompted, enter the information listed in each of the following tables.
 
     #### Environment Configuration
 
@@ -162,10 +157,29 @@ Use the following steps to install Palette.
     | **Pod CIDR**                      | Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                     |
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                         |
 
-13. Select `y` to use the Spectro Cloud repository and proceed to the next step.
+11. Choose the image registry configuration. By default, our support team will provide you with credentials for the AWS
+    ECR registry containing packs. Use the following table for guidance.
 
-14. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following
-    table.
+    #### Pack & Image Registry Configuration
+
+    | **Parameter**                                    | **Description**                                                                                                                                 |
+    | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Registry Type**                                | Specify the type of registry. Allowed values are `OCI` or `OCI` Select `OCI ECR` if you received credentials for the ECR registry from support. |
+    | **Registry Name**                                | Enter the name of the registry.                                                                                                                 |
+    | **Registry Endpoint**                            | Enter the registry endpoint.                                                                                                                    |
+    | **Registry Base Path**                           | Enter the registry base path. Use the value `production` if you are using the Palette AWS ECR registry.                                         |
+    | **Allow Insecure Connection**                    | Bypasses x509 verification. Type `y`.                                                                                                           |
+    | **Registry CA certificate filepath**             | Specify the file path to the certificate authority. Use absolute paths.                                                                         |
+    | **Registry Username** or **Registry Access Key** | Enter the registry username or the access key if using `OCI ECR`.                                                                               |
+    | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`.                                                                               |
+    | **Registry Region**                              | Enter the registry region. Use `us-east-1` unless told otherwise by our support team. This option is only available if you are using `OCI ECR`. |
+    | **ECR Registry Private**                         | Type `y` as the `OCI ECR` registry required credentials.                                                                                        |
+    | **Pull images from public registries**           | Type `y` to use a public registry for images.                                                                                                   |
+
+        	When prompted to **Pull images from public registry**, type `y`.
+
+12. The next set of prompts asks for the VMware vSphere account information. Enter the information listed in the table
+    below.
 
     #### VMware vSphere Account Information
 
@@ -194,7 +208,7 @@ Use the following steps to install Palette.
     | **NTP Servers**     | You can provide a list of Network Time Protocol (NTP) servers.                                                                                                                                                                                                                                                            |
     | **SSH Public Keys** | Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) reference.                            |
 
-15. Specify the IP pool configuration. The placement type can be Static or Dynamic Host Configuration Protocol (DHCP).
+13. Specify the IP pool configuration. The placement type can be Static or Dynamic Host Configuration Protocol (DHCP).
     Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DHCP assigns IP
     addresses using DNS.
 
@@ -209,7 +223,7 @@ Use the following steps to install Palette.
     | **Name servers**                | Comma-separated list of DNS name server IP addresses.                                       |
     | **Name server search suffixes** | An optional comma-separated list of DNS search domains.                                     |
 
-16. The last set of prompts are for the vSphere machine and database configuration. Use the following table for
+14. The last set of prompts are for the vSphere machine and database configuration. Use the following table for
     guidance.
 
     #### vSphere Machine Configuration
@@ -277,7 +291,7 @@ Use the following steps to install Palette.
     export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
     ```
 
-17. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
+15. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
     in the environment where you initiated the installation.
 
     Issue the following command to list all instances of `kind` that exist in the environment.
@@ -310,7 +324,7 @@ Use the following steps to install Palette.
     Deleted: sha256:85a1a4dfc468cfeca99e359b74231e47aedb007a206d0e2cae2f8290e7290cfd
     ```
 
-18. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
+16. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
     you will be prompted to create a new password. Enter a new password and save your changes. Refer to the
     [password requirements](../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about the password requirements.
@@ -330,13 +344,13 @@ Use the following steps to install Palette.
 
     ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
-19. After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
+17. After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
     [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to
     upload the SSL certificate files to Palette.
 
-20. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
+18. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../system-management/tenant-management.md) guide.
 
     ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.webp)

@@ -235,8 +235,8 @@ Use the following steps to install Palette VerteX.
 
     :::
 
-12. The next set of prompts is for the VMware vSphere account information. Enter the information listed in the following
-    table.
+12. The next set of prompts asks for the VMware vSphere account information. Enter the information listed in the table
+    below.
 
     #### VMware vSphere Account Information
 

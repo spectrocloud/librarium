@@ -41,7 +41,8 @@ following diagram outlines the major pre-install steps for an airgap installatio
    content and upload the required images and packs to your private OCI registry. Start the airgap setup binary in a
    Linux Virtual Machine (VM).
 
-3. The airgap script will push the required images and packs the built-in [Harbor](https://goharbor.io/) OCI registry.
+3. The airgap script will push the required images, packs, and manifest to the built-in [Harbor](https://goharbor.io/)
+   OCI registry.
 
 4. Install Palette using the Palette CLI or the Kubernetes Helm chart.
 
