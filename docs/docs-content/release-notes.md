@@ -446,8 +446,7 @@ profiles, and more.
   [FIPS-compliant](./legal-licenses/compliance.md#fips-140-2) version of Kubernetes (PXK and PXK-E). Palette FIPS
   support is extended at the platform Level with the tenant and project Scope and cluster level with FIPS compliant
   infrastructure layer cluster profiles.
-- Palette supports tagging and the ability to filter user
-  [access](clusters/cluster-management/cluster-tag-filter/cluster-tag-filter.md) and
+- Palette supports tagging and the ability to filter user [access](./tenant-settings/filters.md) and
   [visibility](clusters/cluster-management/noc-ui.md#monitor-your-cluster-location) to clusters using tags. You can
   filter geographically dispersed clusters in the Palette map view and list view using
   [flexible filters](clusters/cluster-management/noc-ui.md#map-filters) to have a granular view of cluster information.
