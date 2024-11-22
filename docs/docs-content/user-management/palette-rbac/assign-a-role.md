@@ -156,8 +156,8 @@ Use the following steps to remove a role from a user.
 1. Have the user log in to [Palette](https://console.spectrocloud.com). If a self-hosted Palette instance is used, have
    the user log in to Palette using the instance URL.
 
-2. Verify that the user can no longer access the resources and perform the actions associated with the removed role in the projects
-   you assigned them to.
+2. Verify that the user can no longer access the resources and perform the actions associated with the removed role in
+   the projects you assigned them to.
 
 ## Remove a Role From a Team
 
@@ -194,5 +194,5 @@ Use the following steps to remove a role from a team.
 1. Have a member of the team log in to [Palette](https://console.spectrocloud.com). If a self-hosted Palette instance is
    used, have the team member log in to Palette using the instance URL.
 
-2. Verify that the team member can no longer access the resources and perform the actions associated with the removed role in the
-   projects you assigned them to.
+2. Verify that the team member can no longer access the resources and perform the actions associated with the removed
+   role in the projects you assigned them to.

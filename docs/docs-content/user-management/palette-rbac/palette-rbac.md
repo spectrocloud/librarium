@@ -51,14 +51,14 @@ tenant scope can conduct actions across all projects within the tenant.
 :::info
 
 Self-hosted Palette and VerteX instances have an additional scope called the System Scope. The system scope applies to
-the entire system. Only users with the system
-administrator role can perform actions in the system scope. System administrator access is only available to self-hosted
-instances.
+the entire system. Only users with the system administrator role can perform actions in the system scope. System
+administrator access is only available to self-hosted instances.
 
 :::
 
 Scopes are organized hierarchically, with each level becoming more specific. Roles can be assigned at different scope
-levels, and the level you choose determines the role's range of influence. Use the scope to control the visibility of resources and to reduce the number of resources a role has access to.
+levels, and the level you choose determines the role's range of influence. Use the scope to control the visibility of
+resources and to reduce the number of resources a role has access to.
 
 ![palette-rbac-scope.webp](/user-management_palette-rbac_palette-rbac_scope-overview.webp)
 
@@ -70,8 +70,8 @@ Key points to remember about scopes:
 
 - Resource isolation is achieved by creating resources in the lower scope.
 
-- Resources with the same name may co-exist across different project scopes and will be distinguished with a scope icon in the context
-  column.
+- Resources with the same name may co-exist across different project scopes and will be distinguished with a scope icon
+  in the context column.
 
 - In Terraform, when using the Spectro Cloud provider, the term context is used instead of scope. Refer to the
   [Spectro Cloud provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) for more
@@ -146,8 +146,8 @@ cluster profiles that have the tag `prodAllowed`.
 
 :::info
 
-In the example provided, assume the user with the Resource role assigned has other permissions required to view
-projects and list cluster profiles. For brevity, these permissions are not listed.
+In the example provided, assume the user with the Resource role assigned has other permissions required to view projects
+and list cluster profiles. For brevity, these permissions are not listed.
 
 :::
 
