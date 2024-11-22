@@ -76,7 +76,7 @@ Where:
 - Values for **N** and **M** for each instance type can be referred from
   [this document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI).
 
-## Example Calculation:
+### Example Calculation
 
 - For instance type = t3.medium
 - For values of N = 3, and M = 6 (values derived from AWS
