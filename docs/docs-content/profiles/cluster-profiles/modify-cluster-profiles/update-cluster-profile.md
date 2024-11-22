@@ -27,7 +27,7 @@ profiles, check out [Version a Cluster Profile](version-cluster-profile.md).
 - A cluster profile created in Palette.
 
 - Your Palette account role must have the `clusterProfile.update` permission to update a profile. Refer to the
-  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   reference for more information about roles and permissions.
 
 ## Modify Basic Profile Information
@@ -61,6 +61,16 @@ profiles, check out [Version a Cluster Profile](version-cluster-profile.md).
 To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-profile-updates-to-clusters).
 
 ## Update a Profile Layer
+
+### Prerequisites
+
+- A cluster profile created in Palette.
+
+- Your Palette account role must have the `clusterProfile.update` permission to update a profile. Refer to the
+  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
+  reference for more information about roles and permissions.
+
+### Update Layer
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
