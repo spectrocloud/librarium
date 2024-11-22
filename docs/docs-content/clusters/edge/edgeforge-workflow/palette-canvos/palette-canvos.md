@@ -223,6 +223,15 @@ customization.
    cat user-data
    ```
 
+   :::info
+
+   You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. Refer to
+   [Edit User Data](../../local-ui/host-management/edit-user-data.md) for more information. However, we still recommend
+   you provide user data during EdgeForge for production workloads, because not all user data fields can be updated in
+   Local UI.
+
+   :::
+
 10. The CanvOS utility uses [Earthly](https://earthly.dev/)(https://earthly.dev/) to build the target artifacts. By
     default, images are created for all the Palette-supported Kubernetes versions. Comment out the versions you do not
     need in the file **Earthfile** to speed up the build process and save disk space.
@@ -703,6 +712,11 @@ git checkout v4.4.12
         passwd: kairos
     EOF
     ```
+
+    You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. Refer to
+    [Edit User Data](../../local-ui/host-management/edit-user-data.md) for more information. However, we still recommend
+    you provide user data during EdgeForge for production workloads, because not all user data fields can be updated in
+    Local UI.
 
     :::info
 
