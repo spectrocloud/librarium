@@ -18,8 +18,8 @@ Access Control (RBAC) system and the ability to apply Attribute-Based Access Con
 
 You can log into Palette through the Palette user interface and interact with the platform through a web browser. You
 can also interact with Palette programmatically through the API. Review the
-[User Authentication](./authentication/authentication.md) section to learn more about the different supported
-authentication methods.
+[User Authentication](user-authentication.md) section to learn more about the different supported authentication
+methods.
 
 ## Users and Teams
 
@@ -44,7 +44,7 @@ to the [SAML and OIDC SSO](./saml-sso/saml-sso.md) section.
 
 ## Resources
 
-- [User Authentication](./authentication/authentication.md)
+- [User Authentication](user-authentication.md)
 
 - [Users and Teams](./users-and-teams/users-and-teams.md)
 
