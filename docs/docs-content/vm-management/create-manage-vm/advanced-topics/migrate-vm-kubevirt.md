@@ -71,7 +71,7 @@ This migration method uses the [Palette CLI](../../../automation/palette-cli/pal
   :::
 
 - A VMware vSphere user account with the necessary permissions to manage the VMs you want to migrate.
-  - Migration can be optionally accelerated by providing credentials for the ESXi hosts where the VMs reside.
+  - Migrations can be optionally accelerated by providing credentials for the ESXi hosts where the VMs reside.
 - One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
   [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
   - The VMs must be powered off before migration.
