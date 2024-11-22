@@ -649,6 +649,22 @@ let redirects = [
     ],
     to: "/security-bulletins/reports/",
   },
+  {
+    from: "/clusters/cluster-management/cluster-tag-filter/",
+    to: "tenant-settings/filters/",
+  },
+  {
+    from: "/clusters/cluster-management/cluster-tag-filter/create-add-filter/",
+    to: "tenant-settings/filters/",
+  },
+  {
+    from: "/user-management/new-user/",
+    to: "/user-management/users-and-teams/create-user/",
+  },
+  {
+    from: "/user-management/project-association/",
+    to: "/user-management/palette-rbac/assign-a-role/",
+  },
 ];
 
 if (packRedirects.length > 0) {
