@@ -63,8 +63,8 @@ To create your **Workspace Role**, follow the steps below:
 
 2. Go to the **Users and Teams** option.
 
-3. From the listed users, select the user to be assigned with Workspace Roles. See here for
-   [User Creation](../user-management/new-user.md).
+3. From the listed users, select the user to be assigned with Workspace Roles. Check out the
+   [Create a User](../user-management/users-and-teams/create-user.md) guide to learn how to create a user.
 
 4. Select the **Workspace Roles** tab and click **+ New Workspace Role** to create a new role.
 

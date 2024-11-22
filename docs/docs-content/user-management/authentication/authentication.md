@@ -53,3 +53,5 @@ To learn more about the authorization token, refer to the [Authorization Token](
 - [API Key](api-key/api-key.md)
 
 - [UI Authentication](authentication.md)
+
+- [Switch Tenant](switch-tenant.md)
