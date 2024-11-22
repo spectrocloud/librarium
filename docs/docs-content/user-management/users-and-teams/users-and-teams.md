@@ -19,13 +19,15 @@ To learn how to create and manage users, refer to the [Create and Manage a User]
 ## Teams
 
 Teams are made up of users. A team can have multiple users, and each user can belong to multiple teams. Teams are
-assigned roles, which determine the permissions and access levels of the users in the team. To learn how to create and manage teams, refer to the [Create and Manage a Team](./create-a-team.md) guide.
+assigned roles, which determine the permissions and access levels of the users in the team. To learn how to create and
+manage teams, refer to the [Create and Manage a Team](./create-a-team.md) guide.
 
 ## Manage User Access with Identity Providers
 
 Palette supports integration with Identity Providers (IDP) to manage user access. You can use an IDP to authenticate
 users and manage their access to Palette. If you use an IDP, user management is handled by the IDP, meaning you no
-longer create and manage the user accounts in Palette. User permissions are determined by the Palette team to which users are mapped in the IDP and the Palette roles assigned to that team.
+longer create and manage the user accounts in Palette. User permissions are determined by the Palette team to which
+users are mapped in the IDP and the Palette roles assigned to that team.
 
 To learn how to configure an IDP, refer to the [SAML and OIDC SSO Setup](../saml-sso/saml-sso.md) section and the
 various IDP-specific guides.
