@@ -9,8 +9,13 @@ tags: ["vmo", "palette cli"]
 #toc_max_heading_level: 4
 ---
 
-This migration method uses the [Palette CLI](../../../automation/palette-cli/palette-cli.md), and is alternative to
-using the [VM Migration Assistant](../../vm-migration-assistant/vm-migration-assistant.md).
+:::info
+
+We recommend using the [VM Migration Assistant](../../vm-migration-assistant/vm-migration-assistant.md) instead of this method for new migrations.
+
+:::
+
+This migration method uses the [Palette CLI](../../../automation/palette-cli/palette-cli.md)
 
 ## Limitations
 
@@ -99,13 +104,15 @@ using the [VM Migration Assistant](../../vm-migration-assistant/vm-migration-ass
 
        ```shell
        cat > Dockerfile <<EOF
-       FROM registry.access.redhat.com/ubi8/ubi-minimal
+       FROM <myregistry/myrepository:tag>
        USER 1001
        COPY vmware-vix-disklib-distrib /vmware-vix-disklib-distrib
        RUN mkdir -p /opt
        ENTRYPOINT ["cp", "-r", "/vmware-vix-disklib-distrib", "/opt"]
        EOF
        ```
+
+       Replace the `<myregistry/myrepository:tag>` with your chosen base image registry/repository (for example: `alpine:latest`).
 
     4. Build the image.
 
@@ -118,10 +125,6 @@ using the [VM Migration Assistant](../../vm-migration-assistant/vm-migration-ass
        ```shell
        docker push <docker-registry>/vddk:<tag>
        ```
-
-    Refer to the
-    [Creating a VDDK image](https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.6/html/installing_and_using_the_migration_toolkit_for_virtualization/prerequisites_mtv#creating-vddk-image_mtv)
-    documentation for additional guidance.
 
     </details>
 
