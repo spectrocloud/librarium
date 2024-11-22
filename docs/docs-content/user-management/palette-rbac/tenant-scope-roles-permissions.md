@@ -317,8 +317,8 @@ review the permissions associated with each Tenant role, click on the role name 
 
 ### Project
 
-| Role Name            | Description                                                                                                                                        |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Role Name            | Description                                                                                                                                     |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | Tenant Project Admin | Grants the user complete access to all the project resources. Unlike the Tenant Admin role, this role cannot create projects, users, and teams. |
 
 <Accordion>

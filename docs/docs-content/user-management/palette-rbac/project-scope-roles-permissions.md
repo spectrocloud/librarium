@@ -203,10 +203,10 @@ review the permissions associated with each Project role, click on the role name
 
 ### Cloud Account
 
-| Role Name              | Description                                          |
-| ---------------------- | ---------------------------------------------------- |
+| Role Name            | Description                                           |
+| -------------------- | ----------------------------------------------------- |
 | Cloud Account Admin  | An administrative access to cloud account operations. |
-| Cloud Account Editor | An editor access to cloud account operations.   |
+| Cloud Account Editor | An editor access to cloud account operations.         |
 | Cloud Account Viewer | A read-only role for cloud account operations.        |
 
 <Accordion>
@@ -242,11 +242,11 @@ review the permissions associated with each Project role, click on the role name
 
 ### Cluster
 
-| Role Name      | Description                                                                                                                                             |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cluster Admin  | A cluster admin in the Project scope has all the privileges related to the cluster operation.                                                                    |
+| Role Name      | Description                                                                                                                                                    |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cluster Admin  | A cluster admin in the Project scope has all the privileges related to the cluster operation.                                                                  |
 | Cluster Editor | A cluster editor in the Project scope has the privileges to update, delete, get, and list cluster resources. This role is not privileged for cluster creation. |
-| Cluster Viewer | A cluster viewer in Project scope is a read-only privilege to cluster operations.                                                                        |
+| Cluster Viewer | A cluster viewer in Project scope is a read-only privilege to cluster operations.                                                                              |
 
 <Accordion>
 <AccordionPanel title="Cluster Admin">
@@ -437,10 +437,9 @@ review the permissions associated with each Project role, click on the role name
 
 ### Cluster Profile
 
-
-| Role Name              | Description                                                                                   |
-| ---------------------- | --------------------------------------------------------------------------------------------- |
-| Cluster Profile Admin  | Cluster Profile Admin role has admin privileges to all the cluster profile operations.        |
+| Role Name              | Description                                                                                    |
+| ---------------------- | ---------------------------------------------------------------------------------------------- |
+| Cluster Profile Admin  | Cluster Profile Admin role has admin privileges to all the cluster profile operations.         |
 | Cluster Profile Editor | Cluster Profile Editor role has privileges to edit and list operations on the cluster profile. |
 | Cluster Profile Viewer | Cluster Profile Viewer role has read-only privileges to cluster profiles.                      |
 
@@ -497,11 +496,11 @@ review the permissions associated with each Project role, click on the role name
 
 ### Project
 
-| Role Name      | Description                                                                                                                   |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Role Name      | Description                                                                                                                     |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | Project Admin  | The Project Admin role is a closure of all the project operations. It is an administrative privilege for the project resources. |
-| Project Editor | The Project Editor role can perform edit operations within a project, but the user is not able to create or delete a project.  |
-| Project Viewer | The Project Viewer will be able to view all the resources within a project, but is not privileged to make modifications.         |
+| Project Editor | The Project Editor role can perform edit operations within a project, but the user is not able to create or delete a project.   |
+| Project Viewer | The Project Viewer will be able to view all the resources within a project, but is not privileged to make modifications.        |
 
 <Accordion>
 <AccordionPanel title="Project Admin">
@@ -952,8 +951,8 @@ review the permissions associated with each Project role, click on the role name
 
 ### Workspace
 
-| Role Name        | Description                                |
-| ---------------- | ------------------------------------------ |
+| Role Name        | Description                                 |
+| ---------------- | ------------------------------------------- |
 | Workspace Admin  | Administrator role to workspace operations. |
 | Workspace Editor | Editor role to workspace operations.        |
 
