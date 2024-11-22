@@ -62,17 +62,18 @@ the following steps to review the filter is available for use.
 You can assign the created resource filter and roles to a user or team to enforce access restrictions. There are two
 types of roles that can be assigned:
 
-- [Palette Global Roles](../../..//user-management/palette-rbac/resource-scope-roles-permissions.md#palette-global-resource-roles)
-  are a set of roles that are available in Palette by default.
+- [Resource Roles](../../../user-management/palette-rbac/resource-scope-roles-permissions.md) are a set of roles that
+  are available in Palette by default.
 
-- [Custom Resource Roles](../../..//user-management/palette-rbac/resource-scope-roles-permissions.md#palette-custom-resource-roles)
-  can be created according to your requirements from the available set of permissions and operations.
+- [Custom Resource Roles](../../../user-management/palette-rbac/resource-scope-roles-permissions.md) can be created
+  according to your requirements from the available set of permissions and operations.
 
 ### Prerequisites
 
 - A [Palette account](https://console.spectrocloud.com) with Tenant scope privileges.
 
-- A Palette [user](../../../user-management/new-user.md#create-a-new-user) or team to assign the resource privileges.
+- A Palette [user](../../../user-management/users-and-teams/create-user.md#user-creation) or team to assign the resource
+  privileges.
 
 ### Assign Resource Roles and Filter
 
