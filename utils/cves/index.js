@@ -236,7 +236,7 @@ ${item.metadata.cvssScore}
 
 ${item.spec.assessment.justification ? escapeMDXSpecialChars(item.spec.assessment.justification) : "Investigation is ongoing to determine how this vulnerability affects our products."}
 
-## Status
+## State
 
 ${item.status.state}
 

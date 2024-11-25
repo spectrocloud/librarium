@@ -19,7 +19,7 @@ utilize in our products and services.
 ## Security Bulletins
 
 <!-- prettier-ignore -->
-We release <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />  on a monthly and ad-hoc basis addressing security vulnerabilities in our software or
+We release <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />  on a daily and ad-hoc basis addressing security vulnerabilities in our software or
 related third-party components, describing their remediation when available, and providing links to the applicable
 updates for affected software when available.
 

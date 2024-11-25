@@ -77,7 +77,7 @@ described in the list below.
 
 6. Tenant admins can assign [Roles and Permissions](../user-management/palette-rbac/palette-rbac.md).
 
-7. Tenant admins can create [Users and Teams](../user-management/user-management.md).
+7. Tenant admins can create [Users and Teams](../user-management/users-and-teams/users-and-teams.md).
 
 8. [Audit logs](../audit-logs/audit-logs.md) in the **Tenant Admin** dashboard allow tracking user interaction with
    application resources for all projects and users. For admin users, the **Audit Log** button is visible for each
