@@ -43,6 +43,11 @@ Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps befo
 - The Kubernetes cluster must have a Container Storage Interface (CSI) installed and configured. Palette requires a CSI
   to store persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
 
+- If you are using MongoDB Atlas, or a self-hosted MongoDB instance, ensure the MongoDB database has a user named
+  `hubble` with the permission `readWriteAnyDatabase`. Refer to the
+  [Add a Database User](https://www.mongodb.com/docs/guides/atlas/db-user/) guide for guidance on how to create a
+  database user in Atlas.
+
 - We recommended the following resources for Palette. Refer to the
   [Palette size guidelines](../../install-palette.md#size-guidelines) for additional sizing information.
 
@@ -805,6 +810,25 @@ environment. Reach out to our support team if you need assistance.
     REVISION: 1
     TEST SUITE: None
     ```
+
+    <!-- prettier-ignore -->
+    <details>
+    <summary>How to update containerd to use proxy configurations</summary>
+
+    If your Kubernetes cluster is behind a network proxy, ensure the containerd service is configured to use proxy
+    settings. You can do this by updating the containerd configuration file on each node in the cluster. The
+    configuration file is typically located at ` /etc/systemd/system/containerd.service.d/http-proxy.conf`. Below is an
+    example of the configuration file. Replace the values with your proxy settings. Ask your network administrator for
+    guidance.
+
+    ```
+    [Service]
+    Environment="HTTP_PROXY=http://example.com:9090"
+    Environment="HTTPS_PROXY=http://example.com:9090"
+    Environment="NO_PROXY=127.0.0.1,localhost,100.64.0.0/17,192.168.0.0/16,172.16.0.0/12,10.0.0.0/8,,.cluster.local"
+    ```
+
+    </details>
 
 14. Install the Palette Helm Chart using the following command.
 
