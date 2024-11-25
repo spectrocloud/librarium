@@ -37,6 +37,11 @@ has the necessary network connectivity for VerteX to operate successfully.
 - The Kubernetes cluster must have a Container Storage Interface (CSI) installed and configured. VerteX requires a CSI
   to store persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
 
+- If you are using MongoDB Atlas, or a self-hosted MongoDB instance,ensure the MongoDB database has a user named
+  `hubble` with the permission `readWriteAnyDatabase`. Refer to the
+  [Add a Database User](https://www.mongodb.com/docs/guides/atlas/db-user/) guide for guidance on how to create a
+  database user in Atlas.
+
 - We recommend the following resources for VerteX. Refer to the
   [VerteX size guidelines](../install-palette-vertex.md#size-guidelines) for additional sizing information.
 
