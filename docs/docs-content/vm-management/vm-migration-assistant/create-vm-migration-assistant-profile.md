@@ -62,9 +62,10 @@ Follow these steps to create a new add-on profile that will be applied to your e
 
 5. In the **Overview** tab, ensure that the cluster status and health is **Running** and **Healthy**.
 
-6. In the **Overview** tab, the **Services** list displays a clickable port to access the VM Migration Assistant
-   service console. The port number is based on your service console configuration.
+6. In the **Overview** tab, the **Services** list displays a clickable port to access the VM Migration Assistant service
+   console. The port number is based on your service console configuration.
 
 ## Next Steps
 
-You can now use the VM Migration Assistant to migrate your VMs. Refer to the [Migrate VMs to a VMO cluster](./migrate-vms-vmo-cluster.md) guide to start your VM migrations.
+You can now use the VM Migration Assistant to migrate your VMs. Refer to the
+[Migrate VMs to a VMO cluster](./migrate-vms-vmo-cluster.md) guide to start your VM migrations.

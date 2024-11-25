@@ -321,12 +321,20 @@ Perform the following steps to enable a hook.
 
 ## Storage Maps
 
-Navigate to your storage maps by clicking **StorageMaps for virtualization** on the left **Main Menu**. A storage map defines the mapping of source storage domains to target storage classes or datastores, ensuring VM disks are correctly placed in the destination environment.
+Navigate to your storage maps by clicking **StorageMaps for virtualization** on the left **Main Menu**. A storage map
+defines the mapping of source storage domains to target storage classes or datastores, ensuring VM disks are correctly
+placed in the destination environment.
 
-Storage maps are visible on the **StorageMaps for virtualization** page once you have [created a migration plan](./migrate-vms-vmo-cluster.md#create-migration-plan). Click on a storage plan name to view the its details.
+Storage maps are visible on the **StorageMaps for virtualization** page once you have
+[created a migration plan](./migrate-vms-vmo-cluster.md#create-migration-plan). Click on a storage plan name to view the
+its details.
 
 ## Network Maps
 
-Navigate to your network maps by clicking **NetworkMaps for virtualization** on the left **Main Menu**. A network map defines the mapping of source networks to target networks, ensuring VM network interfaces are correctly connected in the destination environment.
+Navigate to your network maps by clicking **NetworkMaps for virtualization** on the left **Main Menu**. A network map
+defines the mapping of source networks to target networks, ensuring VM network interfaces are correctly connected in the
+destination environment.
 
-Network maps are visible on the **NetworkMaps for virtualization** page once you have [created a migration plan](./migrate-vms-vmo-cluster.md#create-migration-plan). Click on a network plan name to view the its details.
+Network maps are visible on the **NetworkMaps for virtualization** page once you have
+[created a migration plan](./migrate-vms-vmo-cluster.md#create-migration-plan). Click on a network plan name to view the
+its details.
