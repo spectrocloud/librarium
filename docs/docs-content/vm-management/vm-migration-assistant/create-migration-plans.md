@@ -484,7 +484,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
   3. Ensure that your terminal is [configured to access your VMO cluster](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) and issue the following command to create the ConfigMap on your cluster. 
 
      ```shell
-     kubectl apply -f configmap.yaml
+     kubectl apply --filename configmap.yaml
      ```
 
   </details>
