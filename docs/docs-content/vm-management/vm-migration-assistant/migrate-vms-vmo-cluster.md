@@ -1,12 +1,11 @@
 ---
 sidebar_label: "Migrate VMs to a VMO cluster"
-title: "Migrate VMs to a VMO cluster using the VM Migration Assistant"
+title: "Migrate VMs to a VMO cluster"
 description: "Learn how to migrate VMs to Palette VMO using the VM Migration Assistant"
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 20
 tags: ["vmo", "vm migration assistant"]
-#toc_max_heading_level: 4
 ---
 
 Follow this guide to create source providers and migrate your VMs to your VMO cluster.
@@ -183,7 +182,7 @@ Follow this guide to create source providers and migrate your VMs to your VMO cl
 
     </details>
 
-## Migrate VMware vSphere VMs
+## Migrate VMs
 
 To migrate VMs to your VMO cluster, complete the steps in the following sections.
 
@@ -326,11 +325,11 @@ To migrate VMs to your VMO cluster, complete the steps in the following sections
 
    ![Start migrated VM](/migrate-vm-kubevirt-guide/vm-management_create-manage-vm_migrate-vm-kubevirt_start_migrated_vm.webp)
 
-## Cancel Running Migration
+## Cancel Active Migration
 
 ### Prerequisites
 
-- A running migration plan.
+- An active migration plan.
 
 ### Cancel VM Migration
 
@@ -340,7 +339,7 @@ To migrate VMs to your VMO cluster, complete the steps in the following sections
 
 3. In the top-left corner, use the **Namespace** drop-down Menu to select your Kubernetes namespace for the migration.
 
-4. Click on the running migration plan name to view its details.
+4. Click on the active migration plan name to view its details.
 
 5. Click on the **Virtual Machines** tab.
 
