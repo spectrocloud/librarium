@@ -15,7 +15,7 @@ Follow these steps to create a new add-on profile that will be applied to your e
 - Your Palette account role must have the `clusterProfile.create` permission to create a cluster profile. Refer to the
   [Permissions](../../user-management/palette-rbac/permissions.md#operations) documentation for more information.
 - A healthy VMO cluster. Refer to the [Create a VMO Profile](../create-vmo-profile.md) for further guidance.
-  - The VMO cluster must have access to VMware and the VMs you want to migrate.
+  - The VMO cluster must have network connectivity to vCenter and ESXi hosts, and the VMs you want to migrate.
 
 ## Create the Profile
 
@@ -33,10 +33,10 @@ Follow these steps to create a new add-on profile that will be applied to your e
 6. Palette displays the YAML file in the editor at right. You can edit the YAML as needed. Review the following
    parameters and adjust to your requirements if needed.
 
-   | **Parameter**                                                      | **Description**                                                                                                                    | **Default Value**            |
-   | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-   | `vm-migration-assistant-ui.console.service.console.type`           | Choose whether to use a `NodePort`, `LoadBalancer`, or an `Ingress` to expose the service console.                                 | `"LoadBalancer"`             |
-   | `vm-migration-assistant-ui.console.service.console.ingress.domain` | If using Ingress, specify the domain name that the Ingress resource will use to expose the VM Migration Assistant service console. | `console.127.0.0.1.sslip.io` |
+   | **Parameter**                                                      | **Description**                                                                                                                    | **Default Value**               |
+   | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+   | `vm-migration-assistant-ui.console.service.console.type`           | Choose whether to use a `NodePort`, `LoadBalancer`, or an `Ingress` to expose the service console.                                 | `"LoadBalancer"`                |
+   | `vm-migration-assistant-ui.console.service.console.ingress.domain` | If using Ingress, specify the domain name that the Ingress resource will use to expose the VM Migration Assistant service console. | `vm-migration.spectrocloud.dev` |
 
 7. Click on **Confirm & Create**.
 

@@ -10,6 +10,71 @@ tags: ["vmo", "vm migration assistant"]
 
 Follow this guide to start migration plans in the VM Migration Assistant.
 
+## Start Cold Migration Plans
+
+### Prerequisites
+
+- A cold migration plan created and ready to start. Refer to [Create Migration Plans](./create-migration-plans.md) for
+  guidance.
+- One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
+  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
+
+  - If you are migrating more than one VM in the same plan, they must all share the same network.
+  - Ensure that VMs operating Windows are shut down at the virtualized OS level.
+
+<!--prettier-ignore-->
+- The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant-pack"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
+  - The VM Migration Assistant service console must be accessible from a web browser.
+
+### Start Cold Migration
+
+1. Log in to the VM Migration Assistant.
+
+2. From the left **Main Menu**, select **Plans for virtualization**.
+
+3. In the top-left corner, use the **Namespace** drop-down Menu to select your Kubernetes namespace for the migration.
+
+4. Find your plan in the table and click the plan name to view its details.
+
+5. Click **Start migration** in the top-right corner.
+
+6. Click **Start** in the pop-up window.
+
+7. Click on the **Virtual Machines** tab.
+
+8. In the table, view the status of the migration for each VM in the **Pipeline status** column. Each circle represents
+   a stage in the migration. You can click on a circle to view additional details.
+
+   ![Pipeline Status](/vm-management_vm-migration-assistant_migrate-vms-vmo-cluster_pipeline-status-cold.webp)
+
+   View additional pipeline details by clicking on the **>** icon next to the VM name.
+
+   ![Pipeline Details](/vm-management_vm-migration-assistant_migrate-vms-vmo-cluster_pipeline-details-cold.webp)
+
+### Validate
+
+1. Log in to the VM Migration Assistant.
+
+2. From the left **Main Menu**, select **Plans for virtualization**.
+
+3. In the top-left corner, use the **Namespace** drop-down Menu to select your Kubernetes namespace for the migration.
+
+4. In the table, click on a plan name to view the plan details.
+
+5. In the **Details** tab, the plan status displays as **Successful**.
+
+6. Log in to [Palette](https://console.spectrocloud.com).
+
+7. From the left **Main Menu**, select **Clusters**. Then, choose the VMO cluster that you migrated your VMs to. The
+   **Overview** tab appears.
+
+8. Select the **Virtual Machines** tab. Then, select your migration namespace from the **Namespace** drop-down Menu.
+   Your migrated VMs appear.
+
+9. For each migrated VM, click on the **three-dot Menu** and select **Start**. Your VMs are now ready to use.
+
+   ![Start migrated VM](/migrate-vm-kubevirt-guide/vm-management_create-manage-vm_migrate-vm-kubevirt_start_migrated_vm.webp)
+
 ## Start Warm Migration Plans
 
 ### Prerequisites
@@ -20,7 +85,7 @@ Follow this guide to start migration plans in the VM Migration Assistant.
   [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
 
   - If you are migrating more than one VM in the same plan, they must all share the same network.
-  - [Changed Block Tracking](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vddk-programming-guide/GUID-7B12E618-7851-4BD3-8E39-819454D8C016.html)
+  - [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html)
     must be enabled on your VMs.
 
 - Terminal access to execute [kubectl](https://kubernetes.io/docs/reference/kubectl/) commands on your VMO cluster.
@@ -185,71 +250,6 @@ completed. The target VM is then created and powered on on the destination VMO c
 
 8. Select the **Virtual Machines** tab. Then, select your migration namespace from the **Namespace** drop-down Menu.
    Your migrated VMs appear with a **Running** status.
-
-## Start Cold Migration Plans
-
-### Prerequisites
-
-- A cold migration plan created and ready to start. Refer to [Create Migration Plans](./create-migration-plans.md) for
-  guidance.
-- One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
-  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
-
-  - If you are migrating more than one VM in the same plan, they must all share the same network.
-  - Ensure that VMs operating Windows are shut down at the virtualized OS level.
-
-<!--prettier-ignore-->
-- The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant-pack"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
-  - The VM Migration Assistant service console must be accessible from a web browser.
-
-### Start Cold Migration
-
-1. Log in to the VM Migration Assistant.
-
-2. From the left **Main Menu**, select **Plans for virtualization**.
-
-3. In the top-left corner, use the **Namespace** drop-down Menu to select your Kubernetes namespace for the migration.
-
-4. Find your plan in the table and click the plan name to view its details.
-
-5. Click **Start migration** in the top-right corner.
-
-6. Click **Start** in the pop-up window.
-
-7. Click on the **Virtual Machines** tab.
-
-8. In the table, view the status of the migration for each VM in the **Pipeline status** column. Each circle represents
-   a stage in the migration. You can click on a circle to view additional details.
-
-   ![Pipeline Status](/vm-management_vm-migration-assistant_migrate-vms-vmo-cluster_pipeline-status-cold.webp)
-
-   View additional pipeline details by clicking on the **>** icon next to the VM name.
-
-   ![Pipeline Details](/vm-management_vm-migration-assistant_migrate-vms-vmo-cluster_pipeline-details-cold.webp)
-
-### Validate
-
-1. Log in to the VM Migration Assistant.
-
-2. From the left **Main Menu**, select **Plans for virtualization**.
-
-3. In the top-left corner, use the **Namespace** drop-down Menu to select your Kubernetes namespace for the migration.
-
-4. In the table, click on a plan name to view the plan details.
-
-5. In the **Details** tab, the plan status displays as **Successful**.
-
-6. Log in to [Palette](https://console.spectrocloud.com).
-
-7. From the left **Main Menu**, select **Clusters**. Then, choose the VMO cluster that you migrated your VMs to. The
-   **Overview** tab appears.
-
-8. Select the **Virtual Machines** tab. Then, select your migration namespace from the **Namespace** drop-down Menu.
-   Your migrated VMs appear.
-
-9. For each migrated VM, click on the **three-dot Menu** and select **Start**. Your VMs are now ready to use.
-
-   ![Start migrated VM](/migrate-vm-kubevirt-guide/vm-management_create-manage-vm_migrate-vm-kubevirt_start_migrated_vm.webp)
 
 ## Resources
 

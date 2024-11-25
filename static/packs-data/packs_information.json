@@ -913,7 +913,7 @@
   },
   {
     "name": "vm-migration-assistant-pack",
-    "description": "The Virtual Machine Migration Assistant pack lets you migrate your VMs to your Virtual Machine Orchestrator (VMO) cluster. You can deploy VM Migration Assistant as an add-on cluster profile on top of an existing cluster with the Virtual Machine Orchestrator (VMO) pack installed."
+    "description": "The Virtual Machine Migration Assistant pack lets you migrate your VMs from VMware vSphere to your Virtual Machine Orchestrator (VMO) cluster. You can deploy VM Migration Assistant as an add-on cluster profile on top of an existing cluster with the Virtual Machine Orchestrator (VMO) pack installed."
   },
   {
     "name": "virtual-machine-orchestrator",

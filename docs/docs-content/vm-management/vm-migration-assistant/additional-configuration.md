@@ -125,7 +125,7 @@ steps in [Create Source Providers](./create-source-providers.md).
 
 | Setting                         | Description                                                                                                                                                                                                                 |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Username**                    | Your vSphere / ESXi account username. For example, `user@VSPHERE.LOCAL`.                                                                                                                                                    |
+| **Username**                    | Your vSphere / ESXi account username. For example, `user@vsphere.local`.                                                                                                                                                    |
 | **Password**                    | Your vSphere / ESXi account password.                                                                                                                                                                                       |
 | **Skip certificate validation** | Enabling this option bypasses x509 CA verification. In production environments, do not enable if you are using a custom registry with self-signed SSL certificates, as the certificate can be provided in the next setting. |
 | **CA certificate**              | Upload or drag and drop the CA certificate for your vSphere / ESXi. You can also use the **Fetch certificate from URL** option if your CA certificate is not third party or self-managed.                                   |
@@ -262,10 +262,10 @@ The **Mappings** tab displays the network and storage mappings for the migration
 The configurable settings are described in the following table. These were originally defined when you performed the
 steps in [Create Migration Plans](./create-migration-plans.md).
 
-| Setting         | Description                                                                                                    | Example                                    |
-| --------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| **Network map** | The source provider to target provider network map. Adjust the mapping, or leave the default mapping in place. | `VM-NETWORK` / `Pod Networking`            |
-| **Storage map** | The source provider to target provider storage map. Adjust the mapping, or leave the default mapping in place. | `vsanDatastore1` / `spectro-storage-class` |
+| Setting         | Description                                                                                                    | Example                                   |
+| --------------- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| **Network map** | The source provider to target provider network map. Adjust the mapping, or leave the default mapping in place. | `VM Network` / `Pod Networking`           |
+| **Storage map** | The source provider to target provider storage map. Adjust the mapping, or leave the default mapping in place. | `vsanDatastore` / `spectro-storage-class` |
 
 Perform the following steps to change a setting.
 

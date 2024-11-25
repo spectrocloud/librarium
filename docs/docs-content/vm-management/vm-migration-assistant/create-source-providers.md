@@ -25,7 +25,7 @@ Machines (VMs) that need to be migrated.
 
 - A healthy VMO cluster. Refer to the [Create a VMO Profile](../create-vmo-profile.md) for further guidance.
 
-  - The VMO cluster must have access to VMware and the VMs you want to migrate.
+  - The VMO cluster must have network connectivity to vCenter and ESXi hosts, and the VMs you want to migrate.
 
   :::warning
 
@@ -67,22 +67,31 @@ Machines (VMs) that need to be migrated.
 
   :::
 
-- A VMware vSphere user account with the necessary permissions to manage the VMs you want to migrate.
-  - Migration can be optionally accelerated by providing credentials for the ESXi hosts where the VMs reside.
+- A vCenter user account with the following necessary privileges to perform migrations.
+  
+  | **Privileges**                                      | **Description**                   |
+  |----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+  | **[Virtual machine.Interaction.Power Off](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-3D47149A-947D-4608-88B3-E5811129EFA8.html)**             | Allows shutting down a powered-on virtual machine, powering down its guest operating system.    |
+  | **[Virtual machine.Interaction.Power On](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-3D47149A-947D-4608-88B3-E5811129EFA8.html)**              | Enables starting a powered-off virtual machine or resuming a suspended one.                              |
+  | [**Virtual Machine Interaction Privileges** (all)](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-3D47149A-947D-4608-88B3-E5811129EFA8.html) | Allow creating, cloning, modifying, customizing, and managing templates, virtual machines, their files, and customization specifications, as well as performing disk and deployment-related operations. | 
+  | **[Virtual machine.Snapshot management.Create snapshot](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-222FE721-0968-4E9E-9F98-7CB03E7185E8.html)** | Allows capturing the current state of a virtual machine as a snapshot.  |
+  | **[Virtual machine.Snapshot management.Remove Snapshot](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-222FE721-0968-4E9E-9F98-7CB03E7185E8.html)** | Permits deletion of a snapshot from the snapshot history.    |
+
+  - Migrations can be optionally accelerated by providing credentials for the ESXi hosts where the VMs reside.
 - One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
   [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
 
   - If you are migrating more than one VM in the same plan, they must all share the same network.
-  - For cold migrations, ensure that VMs operating Windows are shut down at the virtualized OS level.
+  - For cold migrations, ensure that VMs operating Windows are shut down at the guest OS level.
   - For warm migrations,
-    [Changed Block Tracking](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vddk-programming-guide/GUID-7B12E618-7851-4BD3-8E39-819454D8C016.html)
+    [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html)
     must be enabled on your VMs.
 
 - We recommend providing a
   [VMware Virtual Disk Development Kit (VDDK) image](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest)
-  for the migration. This will significantly speed up the migration.
+  for the migration. This will significantly speed up the migration. The migration engine uses VDDK on the destination VMO cluster to read virtual disks from the source environment, transfer the data, and write it to the target storage.
 
-  - The VDDK image must be built and uploaded to your image registry before starting the migration.
+  - You must build and host the VDDK image in your own image registry, which must be accessible to the destination VMO cluster for migrations.
 
     <!--prettier-ignore-->
     <details>
@@ -125,7 +134,6 @@ Machines (VMs) that need to be migrated.
 
     </details>
 
-  - The migration host must have access to your image registry.
   - If you are using a private image registry, you must create a Secret to be used for the migration. The Secret must be
     created in the namespace where the VMs will be migrated to, and the `metadata.name` value must be
     `vddk-image-pull-secret`.
@@ -212,7 +220,7 @@ Machines (VMs) that need to be migrated.
    | **Endpoint type**               | Select the type of endpoint to configure the connection. Choose **vCenter** if managing multiple hosts through a central server, or **ESXi** if connecting directly to a standalone host.                                                                                                                                                                     |
    | **URL**                         | Your vSphere / ESXi API endpoint for the SDK. You can specify a Full Qualified Domain Name (FQDN) or an IP address. For example, `https://vcenter.mycompany.com/sdk`.                                                                                                                                                                                         |
    | **VDDK init image**             | Provide the registry URL to the VMware Virtual Disk Development Kit (VDDK) image, or select **Skip VMware Virtual Disk Development Kit (VDDK) SDK acceleration, migration may be slow.**. If providing an image, make sure you specify the registry URL without the HTTP scheme `https://` or `http://`. For example, `docker.io/myorganization/vddk:v8.0.3`. |
-   | **Username**                    | Your vSphere / ESXi account username. For example, `user@VSPHERE.LOCAL`.                                                                                                                                                                                                                                                                                      |
+   | **Username**                    | Your vSphere / ESXi account username. For example, `user@vsphere.local`.                                                                                                                                                                                                                                                                                      |
    | **Password**                    | Your vSphere / ESXi account password.                                                                                                                                                                                                                                                                                                                         |
    | **Skip certificate validation** | Enabling this option bypasses x509 CA verification. In production environments, do not enable if you are using a custom registry with self-signed SSL certificates, as the certificate can be provided in the next setting.                                                                                                                                   |
    | **CA certificate**              | Upload or drag and drop the CA certificate for your vSphere / ESXi. You can also use the **Fetch certificate from URL** option if your CA certificate is not third party or self-managed.                                                                                                                                                                     |

@@ -22,7 +22,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
   [Create Source Providers](./create-source-providers.md) for guidance.
 - A healthy VMO cluster. Refer to the [Create a VMO Profile](../create-vmo-profile.md) for further guidance.
 
-  - The VMO cluster must have access to VMware and the VMs you want to migrate.
+  - The VMO cluster must have network connectivity to vCenter and ESXi hosts, and the VMs you want to migrate.
 
   :::warning
 
@@ -68,9 +68,9 @@ Follow this guide to create migration plans using the VM Migration Assistant.
   [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
 
   - If you are migrating more than one VM in the same plan, they must all share the same network.
-  - For cold migrations, ensure that VMs operating Windows are shut down at the virtualized OS level.
+  - For cold migrations, ensure that VMs operating Windows are shut down at the guest OS level.
   - For warm migrations,
-    [Changed Block Tracking](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vddk-programming-guide/GUID-7B12E618-7851-4BD3-8E39-819454D8C016.html)
+    [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html)
     must be enabled on your VMs.
 
 <!--prettier-ignore-->
@@ -508,13 +508,13 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
 8. Fill in the migration plan details.
 
-   | Setting              | Description                                                                                                                                                                                                                            | Example                                    |
-   | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-   | **Plan name**        | A unique name for your migration plan.                                                                                                                                                                                                 | `myMigrationPlan`                          |
-   | **Target provider**  | Select the target provider from the drop-down Menu. By default, this will be your host cluster.                                                                                                                                        | `host`                                     |
-   | **Target namespace** | Select the target namespace for the VM migration from the drop-down Menu.                                                                                                                                                              | `myVmMigrationNamespace`                   |
-   | **Network map**      | A storage map defines the mapping of source storage domains to target storage classes or datastores, ensuring VM disks are correctly placed in the destination environment. Adjust the mapping, or leave the default mapping in place. | `VM-NETWORK` / `Pod Networking`            |
-   | **Storage map**      | A network map defines the mapping of source networks to target networks, ensuring VM network interfaces are correctly connected in the destination environment. Adjust the mapping, or leave the default mapping in place.             | `vsanDatastore1` / `spectro-storage-class` |
+   | Setting              | Description                                                                                                                                                                                                                            | Example                                   |
+   | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+   | **Plan name**        | A unique name for your migration plan.                                                                                                                                                                                                 | `myMigrationPlan`                         |
+   | **Target provider**  | Select the target provider from the drop-down Menu. By default, this will be your host cluster.                                                                                                                                        | `host`                                    |
+   | **Target namespace** | Select the target namespace for the VM migration from the drop-down Menu.                                                                                                                                                              | `myVmMigrationNamespace`                  |
+   | **Network map**      | A storage map defines the mapping of source storage domains to target storage classes or datastores, ensuring VM disks are correctly placed in the destination environment. Adjust the mapping, or leave the default mapping in place. | `VM Network` / `Pod Networking`           |
+   | **Storage map**      | A network map defines the mapping of source networks to target networks, ensuring VM network interfaces are correctly connected in the destination environment. Adjust the mapping, or leave the default mapping in place.             | `vsanDatastore` / `spectro-storage-class` |
 
 9. Click **Create migration plan**. The **Details** tab for the plan is then displayed.
 
