@@ -6,23 +6,20 @@ icon: " "
 hide_table_of_contents: false
 sidebar_position: 60
 tags: ["vmo", "vm migration assistant"]
-toc_max_heading_level: 2
 ---
 
 ## Overview Settings
 
 Navigate to your overview settings by clicking **Overview** on the left **Main Menu**.
 
-<Tabs queryString="overview">
-
-<TabItem label="Overview" value="overview">
+### Overview Tab
 
 The **Overview** tab has configurable settings for the migration controller. These parameters define the resource
 allocation, performance tuning, and operational settings for efficiently managing virtual machine migrations.
 
 ![Overview - Overview Tab Settings](/vm-management_vm-migration-assistant_additional-configuration_overview-settings.webp)
 
-### Configure Migration Controller
+#### Configure Migration Controller
 
 The configurable parameters are described in the following table.
 
@@ -40,9 +37,7 @@ Perform the following steps to change a setting.
 2. Adjust the value in the pop-up window.
 3. Click **Save** after making changes.
 
-</TabItem>
-
-<TabItem label="YAML" value="yaml">
+### YAML Tab
 
 The **YAML** tab displays a YAML editor for the VM Migration Assistant resource.
 
@@ -50,9 +45,7 @@ View and edit the
 [Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) for the VM
 Migration Assistant on this tab.
 
-</TabItem>
-
-<TabItem label="Metrics" value="metrics">
+### Metrics Tab
 
 The **Metrics** tab displays your migration metrics.
 
@@ -65,10 +58,6 @@ graphs.
 
 2. Select from **7 days**, **31 days**, or **24 hours**. The graph updates after selection.
 
-</TabItem>
-
-</Tabs>
-
 ## Provider Settings
 
 Navigate to your providers by clicking **Providers for virtualization** on the left **Main Menu**.
@@ -77,13 +66,11 @@ Click on a provider name to view the provider settings.
 
 ![Providers for virtualization - Providers Table](/vm-management_vm-migration-assistant_additional-configuration_providers-table.webp)
 
-<Tabs queryString="provider">
-
-<TabItem label="Details" value="details">
+### Details Tab
 
 The **Details** tab has configurable settings for the provider.
 
-### Configure Provider Details
+#### Configure Provider Details
 
 <Tabs queryString="provider-type">
 
@@ -119,9 +106,7 @@ Perform the following steps to change a setting.
 2. Adjust the value in the pop-up window.
 3. Click **Save** after making changes.
 
-</TabItem>
-
-<TabItem label="YAML" value="yaml">
+### YAML Tab
 
 The **YAML** tab displays a YAML editor for the provider resource.
 
@@ -129,13 +114,11 @@ View and edit the
 [Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) for the
 provider on this tab.
 
-</TabItem>
-
-<TabItem label="Credentials" value="credentials">
+### Credentials Tab
 
 The **Credentials** tab has configurable settings for the provider credentials.
 
-### Configure Provider Credentials
+#### Configure Provider Credentials
 
 The configurable settings are described in the following table. These were originally defined when you performed the
 steps in [Create Source Providers](./create-source-providers.md).
@@ -153,18 +136,14 @@ Perform the following steps to change a setting.
 2. Update the value for each setting that you want to change.
 3. Click **Update credentials** after making changes.
 
-</TabItem>
-
-<TabItem label="Virtual Machines" value="virtual-machines">
+### Virtual Machines Tab
 
 The **Virtual Machines** tab displays a table of virtual machines from the provider.
 
 You can initiate migrations from this tab by selecting VMs and clicking on **Create migration plan**. Refer to
 [Create Migration Plans](./create-migration-plans.md) for guidance.
 
-</TabItem>
-
-<TabItem label="Hosts" value="hosts">
+### Hosts Tab
 
 The **Hosts** tab displays a table of hosts from the provider. This tab is not visible on host clusters.
 
@@ -179,7 +158,7 @@ A dedicated migration network can improve performance and reduce risks to the VM
 
 :::
 
-### Configure Provider Host Network
+#### Configure Provider Host Network
 
 1. For each host that you want to configure, click the checkbox next to the hosts' name.
 2. Click on **Select migration network**.
@@ -193,9 +172,7 @@ A dedicated migration network can improve performance and reduce risks to the VM
 
 4. After making changes, click **Save**.
 
-</TabItem>
-
-<TabItem label="Networks" value="networks">
+### Networks Tab
 
 The **Networks** tab displays a table of
 [NetworkAttachmentDefinitions](https://docs.openshift.com/container-platform/4.8/rest_api/network_apis/networkattachmentdefinition-k8s-cni-cncf-io-v1.html)
@@ -204,15 +181,11 @@ from the cluster. This tab is only visible on host clusters.
 You can select a default migration network for the cluster to improve disk transfer performance. If no network is
 selected, the pod network is used by default, which may not be optimal.
 
-### Configure Default Transfer Network for Host Cluster
+#### Configure Default Transfer Network for Host Cluster
 
 1. Click on **Set default transfer network**.
 2. Select a network name from the **drop-down Menu**.
 3. After making changes, click **Save**.
-
-</TabItem>
-
-</Tabs>
 
 ## Plan Settings
 
@@ -222,13 +195,11 @@ Click on a plan name to view the plan settings.
 
 ![Plans for virtualization - Plans Table](/vm-management_vm-migration-assistant_additional-configuration_plans-table.webp)
 
-<Tabs queryString="plan">
-
-<TabItem label="Details" value="details">
+### Details Tab
 
 The **Details** tab has configurable settings for the plan.
 
-### Configure Plan Details
+#### Configure Plan Details
 
 The configurable settings are described in the following table. Some of these were originally defined when you performed
 the steps in [Create Migration Plans](./create-migration-plans.md).
@@ -248,9 +219,7 @@ Perform the following steps to change a setting.
 2. Adjust the value in the pop-up window.
 3. Click **Save** after making changes.
 
-</TabItem>
-
-<TabItem label="YAML" value="yaml">
+### YAML Tab
 
 The **YAML** tab displays a YAML editor for the plan resource.
 
@@ -258,15 +227,13 @@ View and edit the
 [Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) for the plan on
 this tab.
 
-</TabItem>
-
-<TabItem label="Virtual Machines" value="virtual-machines">
+### Virtual Machines Tab
 
 The **Virtual Machines** tab displays a table of VMs from the migration plan.
 
 You can view the status of your VM migrations in the **Pipeline status** column for each VM.
 
-### Remove VMs from Plan
+#### Remove VMs from Plan
 
 Perform the following steps to remove VMs from your plan. You can only remove VMs from a plan if the plan has not yet
 been started.
@@ -282,19 +249,15 @@ been started.
 
    :::
 
-</TabItem>
-
-<TabItem label="Resources" value="resources">
+### Resources Tab
 
 The **Resources** tab displays the calculated resources of your VMs from the migration plan.
 
-</TabItem>
-
-<TabItem label="Mappings" value="mappings">
+### Mappings tab
 
 The **Mappings** tab displays the network and storage mappings for the migration plan.
 
-### Configure Plan Mappings
+#### Configure Plan Mappings
 
 The configurable settings are described in the following table. These were originally defined when you performed the
 steps in [Create Migration Plans](./create-migration-plans.md).
@@ -310,13 +273,11 @@ Perform the following steps to change a setting.
 2. Click on the **drop-down Menu** for each map and select a different option from the list.
 3. Click **Update mappings** after making changes.
 
-</TabItem>
-
-<TabItem label="Hooks" value="hooks">
+### Hooks Tab
 
 The **Hooks** tab displays the migration hooks for the migration plan.
 
-### Configure Plan Hooks
+#### Configure Plan Hooks
 
 Perform the following steps to enable a hook.
 
@@ -330,10 +291,6 @@ Perform the following steps to enable a hook.
    | **Ansible playbook**  | You can optionally provide an [Ansible playbook](https://ansible.readthedocs.io/projects/runner/en/stable/intro/) for the hook. You can only specify a playbook if you are using a hook-runner image.                                   |
 
 3. Click **Update hooks** after making changes.
-
-</TabItem>
-
-</Tabs>
 
 ## Storage Maps
 
