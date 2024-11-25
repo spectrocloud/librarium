@@ -32,7 +32,7 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
 - The Kubernetes cluster must have a Container Storage Interface (CSI) installed and configured. Palette requires a CSI
   to store persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
 
-- If you are using MongoDB Atlas, or a self-hosted MongoDB instance,ensure the MongoDB database has a user named
+- If you are using MongoDB Atlas, or a self-hosted MongoDB instance, ensure the MongoDB database has a user named
   `hubble` with the permission `readWriteAnyDatabase`. Refer to the
   [Add a Database User](https://www.mongodb.com/docs/guides/atlas/db-user/) guide for guidance on how to create a
   database user in Atlas.

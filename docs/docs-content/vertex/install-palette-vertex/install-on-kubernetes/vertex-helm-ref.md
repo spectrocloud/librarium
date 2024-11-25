@@ -38,7 +38,7 @@ Palette VerteX uses MongoDB Enterprise as its internal database and supports two
 
 - MongoDB Enterprise deployed and active inside the cluster.
 
-- MongoDB Enterprise is hosted on a software-as-a-service (SaaS) platform, such as MongoDB Atlas. If you choose to use
+- MongoDB Enterprise is hosted on a Software-as-a-Service (SaaS) platform, such as MongoDB Atlas. If you choose to use
   MongoDB Atlas, ensure the MongoDB database has a user named `hubble` with the permission `readWriteAnyDatabase`. Refer
   to the [Add a Database User](https://www.mongodb.com/docs/guides/atlas/db-user/) guide for guidance on how to create a
   database user in Atlas.
