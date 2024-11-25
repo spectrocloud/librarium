@@ -23,7 +23,7 @@ Follow this guide to start migration plans in the VM Migration Assistant.
   - [Changed Block Tracking](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vddk-programming-guide/GUID-7B12E618-7851-4BD3-8E39-819454D8C016.html)
     must be enabled on your VMs.
 
-- Terminal access to run [kubectl](https://kubernetes.io/docs/reference/kubectl/) commands on your VMO cluster.
+- Terminal access to execute [kubectl](https://kubernetes.io/docs/reference/kubectl/) commands on your VMO cluster.
 
 <!--prettier-ignore-->
 - The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant-pack"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
