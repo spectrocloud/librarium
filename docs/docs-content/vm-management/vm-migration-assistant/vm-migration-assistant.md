@@ -12,8 +12,8 @@ tags: ["vmo"]
 
 During large scale Kubernetes adoptions, workloads are often rehosted or migrated instead of being redeployed from
 scratch. This process allows system administrators to copy the application, together with its data, to a Kubernetes
-cluster. However, the migration of Virtual Machines (VMs) can be time consuming if done manually, so it is often automated with open source
-tools such as [Forklift](https://github.com/kubev2v/forklift).
+cluster. However, the migration of Virtual Machines (VMs) can be time consuming if done manually, so it is often
+automated with open source tools such as [Forklift](https://github.com/kubev2v/forklift).
 
 <!-- prettier-ignore-start -->
 
