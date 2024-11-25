@@ -11,6 +11,48 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## December 9, 2024 - Release 4.5.12
+
+### Palette {#palette-enterprise-4-5-12}
+
+#### Features
+
+#### Improvements
+
+### Edge
+
+#### Features
+
+#### Improvements
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4-5-12) for more details.
+
+### Automation
+
+#### Deprecations and Removals
+
+- The Terraform resource, `spectrocloud_cluster_import` is deprecated. To import a cluster deployed outside of the
+  context of Palette, refer to the [Import a Cluster](../clusters/imported-clusters/cluster-import.md) guide.
+
+### Docs and Education
+
+### Packs
+
+#### Kubernetes
+
+#### CSI
+
+#### Add-on Packs
+
+#### FIPS Packs
+
+#### Community Packs
+
 ## November 20, 2024 - Release 4.5.11
 
 ### Bug Fixes
