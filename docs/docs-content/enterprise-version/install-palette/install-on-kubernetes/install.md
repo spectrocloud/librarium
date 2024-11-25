@@ -724,9 +724,7 @@ your environment. Reach out to our support team if you need assistance.
 
     ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
-10. Log in to the system console using the following default credentials. Refer to the
-    [password requirements](../../system-management/account-management/credentials.md#password-requirements-and-security)
-    documentation page to learn more about password requirements
+10. Log in to the system console using the following default credentials.
 
     | **Parameter** | **Value** |
     | ------------- | --------- |
