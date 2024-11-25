@@ -4,7 +4,7 @@ title: "VM Migration Assistant Additional Configuration"
 description: "Learn how to configure additional settings in the VM Migration Assistant"
 icon: " "
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 60
 tags: ["vmo", "vm migration assistant"]
 toc_max_heading_level: 2
 ---
@@ -90,7 +90,7 @@ The **Details** tab has configurable settings for the provider.
 <TabItem label="Source Provider" value="source-provider">
 
 The configurable settings are described in the following table. These were originally defined when you performed the
-steps in [Create Source Providers](./migrate-vms-vmo-cluster.md#create-source-provider).
+steps in [Create Source Providers](./create-source-providers.md).
 
 | Setting                  | Description                                                                                                                                                                                                                                           |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -138,7 +138,7 @@ The **Credentials** tab has configurable settings for the provider credentials.
 ### Configure Provider Credentials
 
 The configurable settings are described in the following table. These were originally defined when you performed the
-steps in [Create Source Providers](./migrate-vms-vmo-cluster.md#create-source-provider).
+steps in [Create Source Providers](./create-source-providers.md).
 
 | Setting                         | Description                                                                                                                                                                                                                 |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -160,7 +160,7 @@ Perform the following steps to change a setting.
 The **Virtual Machines** tab displays a table of virtual machines from the provider.
 
 You can initiate migrations from this tab by selecting VMs and clicking on **Create migration plan**. Refer to
-[Create Migration Plans](./migrate-vms-vmo-cluster.md#create-migration-plan) from step 6 for guidance.
+[Create Migration Plans](./create-migration-plans.md) for guidance.
 
 </TabItem>
 
@@ -231,7 +231,7 @@ The **Details** tab has configurable settings for the plan.
 ### Configure Plan Details
 
 The configurable settings are described in the following table. Some of these were originally defined when you performed
-the steps in [Create Migration Plans](./migrate-vms-vmo-cluster.md#create-migration-plan).
+the steps in [Create Migration Plans](./create-migration-plans.md).
 
 | Setting                         | Description                                                                                                                                                                                                                                                     |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -297,7 +297,7 @@ The **Mappings** tab displays the network and storage mappings for the migration
 ### Configure Plan Mappings
 
 The configurable settings are described in the following table. These were originally defined when you performed the
-steps in [Create Migration Plans](./migrate-vms-vmo-cluster.md#create-migration-plan).
+steps in [Create Migration Plans](./create-migration-plans.md).
 
 | Setting         | Description                                                                                                    | Example                                    |
 | --------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
@@ -342,8 +342,7 @@ defines the mapping of source storage domains to target storage classes or datas
 placed in the destination environment.
 
 Storage maps are visible on the **StorageMaps for virtualization** page once you have
-[created a migration plan](./migrate-vms-vmo-cluster.md#create-migration-plan). Click on a storage plan name to view the
-its details.
+[created a migration plan](./create-migration-plans.md). Click on a storage plan name to view the its details.
 
 ## Network Maps
 
@@ -352,5 +351,4 @@ defines the mapping of source networks to target networks, ensuring VM network i
 destination environment.
 
 Network maps are visible on the **NetworkMaps for virtualization** page once you have
-[created a migration plan](./migrate-vms-vmo-cluster.md#create-migration-plan). Click on a network plan name to view the
-its details.
+[created a migration plan](./create-migration-plans.md). Click on a network plan name to view the its details.

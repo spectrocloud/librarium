@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Create a VM Migration Assistant Profile"
-title: "Create a VM Migration Assistant Cluster Profile"
+title: "Create a VM Migration Assistant Profile"
 description: "Learn how to create a Virtual Machine Migration Assistant cluster profile and add it your VMO cluster"
 icon: " "
 hide_table_of_contents: false
@@ -68,4 +68,4 @@ Follow these steps to create a new add-on profile that will be applied to your e
 ## Next Steps
 
 You can now use the VM Migration Assistant to migrate your VMs. Refer to the
-[Migrate VMs to a VMO cluster](./migrate-vms-vmo-cluster.md) guide to start your VM migrations.
+[Create Source Providers](./create-source-providers.md) guide to start creating your source providers.

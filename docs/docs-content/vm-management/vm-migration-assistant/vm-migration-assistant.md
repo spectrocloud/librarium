@@ -40,5 +40,8 @@ required to get access.
 ## Resources
 
 - [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md)
-- [Migrate VMs to a VMO cluster using the VM Migration Assistant](./migrate-vms-vmo-cluster.md)
+- [Create Source Providers](./create-source-providers.md)
+- [Create Migration Plans](./create-migration-plans.md)
+- [Start Migration Plans](./start-migration-plans.md)
+- [Cancel Active Migration Plans](./cancel-active-migration-plans.md)
 - [Additional Configuration](./additional-configuration.md)
