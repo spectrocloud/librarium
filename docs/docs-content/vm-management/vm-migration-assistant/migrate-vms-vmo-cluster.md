@@ -182,6 +182,8 @@ Follow this guide to create source providers and migrate your VMs to your VMO cl
 
     </details>
 
+- For warm migrations, terminal access to run [kubectl](https://kubernetes.io/docs/reference/kubectl/) commands on your VMO cluster.
+
 ## Migrate VMs
 
 ### Create Source Provider
@@ -261,21 +263,17 @@ Follow this guide to create source providers and migrate your VMs to your VMO cl
 
 8. Fill in the migration plan details.
 
-   | Setting              | Description                                                                                                    | Example                                    |
-   | -------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-   | **Plan name**        | A unique name for your migration plan.                                                                         | `myMigrationPlan`                          |
-   | **Target provider**  | Select the target provider from the drop-down Menu. By default, this will be your host cluster.                | `host`                                     |
-   | **Target namespace** | Select the target namespace for the VM migration from the drop-down Menu.                                      | `myVmMigrationNamespace`                   |
-   | **Network map**      | The source provider to target provider network map. Adjust the mapping, or leave the default mapping in place. | `VM-NETWORK` / `Pod Networking`            |
-   | **Storage map**      | The source provider to target provider storage map. Adjust the mapping, or leave the default mapping in place. | `vsanDatastore1` / `spectro-storage-class` |
+   | Setting              | Description                                                                                                                                                                                                                            | Example                                    |
+   | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+   | **Plan name**        | A unique name for your migration plan.                                                                                                                                                                                                 | `myMigrationPlan`                          |
+   | **Target provider**  | Select the target provider from the drop-down Menu. By default, this will be your host cluster.                                                                                                                                        | `host`                                     |
+   | **Target namespace** | Select the target namespace for the VM migration from the drop-down Menu.                                                                                                                                                              | `myVmMigrationNamespace`                   |
+   | **Network map**      | A storage map defines the mapping of source storage domains to target storage classes or datastores, ensuring VM disks are correctly placed in the destination environment. Adjust the mapping, or leave the default mapping in place. | `VM-NETWORK` / `Pod Networking`            |
+   | **Storage map**      | A network map defines the mapping of source networks to target networks, ensuring VM network interfaces are correctly connected in the destination environment. Adjust the mapping, or leave the default mapping in place.             | `vsanDatastore1` / `spectro-storage-class` |
 
-9. Click **Create migration plan**.
+9. Click **Create migration plan**. The **Details** tab for the plan is then displayed.
 
-10. The plan details have been successfully validated once the plan status displays as **Ready**.
-
-   <!-- ![Plan Ready Status](/vm-management_vm-migration-assistant_migrate-vms-vmo-cluster_plan-ready.webp) -->
-
-11. Review the **Details** tab and check that the following settings are configured to your requirements.
+10. Review the **Details** tab and check that the following settings are configured to your requirements.
 
     If you need to change a setting, click the pencil icon next to each value and adjust it in the pop-up window. Click
     **Save** after making changes.
@@ -292,18 +290,175 @@ Follow this guide to create source providers and migrate your VMs to your VMO cl
     If you want to explore all additional plan settings, refer to the
     [Additional Configuration - Plan Settings](./additional-configuration.md#plan-settings) for guidance.
 
-### Start Migration Plan
+11. The plan details have been successfully validated once the plan status displays as **Ready**.
 
-1. Once the **Status** field displays **Ready** in the **Plan details**, click **Start migration** in the top-right
-   corner.
+    ![Plan Ready Status](/vm-management_vm-migration-assistant_migrate-vms-vmo-cluster_plan-ready.webp)
 
-2. Click **Start** in the pop-up window.
+### Start Warm Migration Plan
 
-3. Click on the **Virtual Machines** tab.
+1. Log in to the VM Migration Assistant.
 
-4. In the table, view the status of the migration for each VM in the **Pipeline status** column.
+2. From the left **Main Menu**, select **Plans for virtualization**.
 
-   Wait until the **Status** shows as **Successful** before [validating](#validate) the migration.
+3. In the top-left corner, use the **Namespace** drop-down Menu to select your Kubernetes namespace for the migration.
+
+4. Find your plan in the table and click the plan name to view its details.
+
+5. Click **Start migration** in the top-right corner.
+
+6. Click **Start** in the pop-up window.
+
+7. Click on the **Virtual Machines** tab.
+
+8. In the table, view the status of the migration for each VM in the **Pipeline status** column. Each circle represents
+   a stage in the migration. You can click on a circle to view additional details.
+
+   ![Pipeline Status](/vm-management_vm-migration-assistant_migrate-vms-vmo-cluster_pipeline-status-warm.webp)
+
+   View additional pipeline details by clicking on the **>** icon next to the VM name.
+
+   ![Pipeline Details](/vm-management_vm-migration-assistant_migrate-vms-vmo-cluster_pipeline-details-warm.webp)
+
+9. Open a terminal session and
+   [configure access](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
+   to your VMO cluster.
+
+10. Issue the following command to check for [datavolumes](https://kubevirt.io/2018/CDI-DataVolumes.html) in your chosen
+    VM migration namespace.
+
+    ```shell
+    kubectl get datavolume --namespace <myVmMigrationNamespace>
+    ```
+
+    Example output.
+
+    ```shell
+    NAME                                PHASE         PROGRESS   AGE
+    vm-migration-cold-vm-140860-92mwk  Succeeded     100%       30m
+    vm-migration-warm-vm-140852-p446x  Importing     75%        20m
+    ```
+
+    The datavolume names are uniquely generated using the `<planName>-<vmIdentifier>-<randomSuffix>` template.
+
+11. Issue the following command to output the datavolume details to your terminal.
+
+    ```shell
+    kubectl describe datavolume <datavolumeName> --namespace <myVmMigrationNamespace>
+    ```
+
+    When the status of the volume is paused and awaiting cutover, the warm migration is ready for the final cutover.
+
+    <!--prettier-ignore-->
+    <details>
+    <summary> Example output </summary>
+
+    ```shell
+    Name:         vm-migration-warm-vm-140852-p446x
+    Namespace:    konveyor-forklift
+    Labels:       migration=0ef09f8f-2a96-41cb-ab72-3f7cceb7f7b5
+                  plan=2e663a0f-2d49-45f1-ac2d-4406d3472da2
+                  vmID=vm-140852
+    Annotations:  cdi.kubevirt.io/storage.bind.immediate.requested: true
+                  cdi.kubevirt.io/storage.deleteAfterCompletion: false
+                  cdi.kubevirt.io/storage.usePopulator: true
+                  forklift.konveyor.io/disk-source: [vsanDatastore2] f9564467-a3c8-851c-84ff-0cc47a92e4ca/migration01_2.vmdk
+                  migration: 0ef09f8f-2a96-41cb-ab72-3f7cceb7f7b5
+                  plan: 2e663a0f-2d49-45f1-ac2d-4406d3472da2
+                  vmID: vm-140852
+    API Version:  cdi.kubevirt.io/v1beta1
+    Kind:         DataVolume
+    Metadata:
+      Creation Timestamp:  2024-11-25T12:43:50Z
+      Generate Name:       vm-migration-warm-vm-140852-
+      Generation:          1
+      Resource Version:    3534737
+      UID:                 83e32262-c480-4609-9029-d14fe69f65d6
+    Spec:
+      Checkpoints:
+        Current:   snapshot-140857
+        Previous:  snapshot-140856
+      Source:
+        Vddk:
+          Backing File:  [vsanDatastore2] f9564467-a3c8-851c-84ff-0cc47a92e4ca/migration01_2.vmdk
+          Secret Ref:    vm-migration-warm-vm-140852-l9qjp
+          Thumbprint:    E3:95:23:08:79:A6:6B:2B:B6:82:6F:34:A7:88:85:12:11:47:5D:B2
+          URL:           https://vcenter.mycompany.dev/sdk
+          Uuid:          4238710f-bdda-6ede-1870-b095b1c5dbd5
+      Storage:
+        Resources:
+          Requests:
+            Storage:         60Gi
+        Storage Class Name:  spectro-storage-class
+    Status:
+      Claim Name:  vm-migration-warm-vm-140852-p446x
+      Conditions:
+        Last Heartbeat Time:   2024-11-25T13:43:50Z
+        Last Transition Time:  2024-11-25T13:43:50Z
+        Message:               Data volume paused after warm sync
+        Reason:                ImportPaused
+        Status:                True
+        Type:                  Paused
+        Last Heartbeat Time:   2024-11-25T13:43:50Z
+        Last Transition Time:  2024-11-25T13:43:50Z
+        Message:               Warm sync completed successfully; awaiting cutover
+        Reason:                SyncComplete
+        Status:                True
+        Type:                  Succeeded
+      Progress:
+        Current:  59Gi
+        Total:    60Gi
+    Events:
+      Type    Reason              Age   From                    Message
+      ----    ------              ----  ----                    -------
+      Normal  WarmSyncStarted     25m   datavolume-controller   Warm sync started for the VM
+      Normal  WarmSyncComplete    10m   datavolume-controller   Warm sync completed; awaiting cutover
+      Warning Paused              5m    datavolume-controller   Data volume paused; awaiting migration cutover
+    ```
+
+    </details>
+
+12. Return to the VM Migration Assistant.
+
+13. On the **Virtual Machines** tab for your plan, click the **Actions** drop-down Menu in the top-right corner.
+
+14. Click **Cutover**.
+
+15. In the pop-up window, click on the calendar icon and select a cutover date in the calendar. Next, click on the clock
+    icon and select a cutover time from the drop-down Menu.
+
+16. Click **Set cutover** once complete.
+
+After the cutover is initiated, the source VM is powered off, and a final synchronization of any remaining disk changes
+is completed. The target VM is then created and powered on on the destination VMO cluster.
+
+Wait until the plan **Status** shows as **Successful** before [validating](#validate) the migration.
+
+### Start Cold Migration Plan
+
+1. Log in to the VM Migration Assistant.
+
+2. From the left **Main Menu**, select **Plans for virtualization**.
+
+3. In the top-left corner, use the **Namespace** drop-down Menu to select your Kubernetes namespace for the migration.
+
+4. Find your plan in the table and click the plan name to view its details.
+
+5. Click **Start migration** in the top-right corner.
+
+6. Click **Start** in the pop-up window.
+
+7. Click on the **Virtual Machines** tab.
+
+8. In the table, view the status of the migration for each VM in the **Pipeline status** column. Each circle represents
+   a stage in the migration. You can click on a circle to view additional details.
+
+   ![Pipeline Status](/vm-management_vm-migration-assistant_migrate-vms-vmo-cluster_pipeline-status-cold.webp)
+
+   View additional pipeline details by clicking on the **>** icon next to the VM name.
+
+   ![Pipeline Details](/vm-management_vm-migration-assistant_migrate-vms-vmo-cluster_pipeline-details-cold.webp)
+
+Wait until the plan **Status** shows as **Successful** before [validating](#validate) the migration.
 
 ## Validate
 
@@ -315,7 +470,8 @@ Follow this guide to create source providers and migrate your VMs to your VMO cl
 3. Select the **Virtual Machines** tab. Then, select your migration namespace from the **Namespace** drop-down Menu.
    Your migrated VMs appear.
 
-4. For each migrated VM, click on the **three-dot Menu** and select **Start**. Your VMs are now ready to use.
+4. _(Cold migrations only)_ For each migrated VM, click on the **three-dot Menu** and select **Start**. Your VMs are now
+   ready to use.
 
    ![Start migrated VM](/migrate-vm-kubevirt-guide/vm-management_create-manage-vm_migrate-vm-kubevirt_start_migrated_vm.webp)
 

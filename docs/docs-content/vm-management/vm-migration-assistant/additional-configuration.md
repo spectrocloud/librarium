@@ -266,6 +266,22 @@ The **Virtual Machines** tab displays a table of VMs from the migration plan.
 
 You can view the status of your VM migrations in the **Pipeline status** column for each VM.
 
+### Remove VMs from Plan
+
+Perform the following steps to remove VMs from your plan. You can only remove VMs from a plan if the plan has not yet
+been started.
+
+1. Click the checkbox next to each VM that you want to remove from the plan.
+2. Click on **Remove virtual machines**.
+3. Click **Delete** in the pop-up window.
+
+   :::info
+
+   If you only have one VM remaining in your plan, delete the plan instead, as deleting all VMs from a plan is not
+   allowed.
+
+   :::
+
 </TabItem>
 
 <TabItem label="Resources" value="resources">
