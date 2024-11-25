@@ -50,21 +50,21 @@ Follow these steps to create a new add-on profile that will be applied to your e
 
 12. Click **Save** to deploy the VM Migration Assistant to your cluster.
 
-13. Ensure that the VMO cluster status is **Running** and **Healthy** before [validating](#validate).
-
 ## Validate
 
-1.  Log in to [Palette](https://console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-2.  Navigate to **Profiles** from the left **Main Menu**.
+2. Navigate to **Profiles** from the left **Main Menu**.
 
-3.  Locate the newly created profile in the list.
+3. Locate the newly created profile in the list.
 
-4.  From the left **Main Menu**, click **Clusters** and select your cluster.
+4. From the left **Main Menu**, click **Clusters** and select your cluster.
 
-5.  In the **Overview** tab, the **Services** list displays a clickable port to access the VM Migration Assistant
-    service console. The port number is based on your service console configuration.
+5. In the **Overview** tab, ensure that the cluster status and health is **Running** and **Healthy**.
+
+6. In the **Overview** tab, the **Services** list displays a clickable port to access the VM Migration Assistant
+   service console. The port number is based on your service console configuration.
 
 ## Next Steps
 
-- [Migrate VMs to a VMO cluster using the VM Migration Assistant](./migrate-vms-vmo-cluster.md)
+You can now use the VM Migration Assistant to migrate your VMs. Refer to the [Migrate VMs to a VMO cluster](./migrate-vms-vmo-cluster.md) guide to start your VM migrations.

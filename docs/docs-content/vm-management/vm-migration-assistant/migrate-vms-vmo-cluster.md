@@ -184,12 +184,6 @@ Follow this guide to create source providers and migrate your VMs to your VMO cl
 
 ## Migrate VMs
 
-To migrate VMs to your VMO cluster, complete the steps in the following sections.
-
-1. [Create Source Provider](#create-source-provider) to add your source provider for the VMs.
-2. [Create Migration Plan](#create-migration-plan) to plan your migration.
-3. [Start Migration Plan](#start-migration-plan) to execute your migration.
-
 ### Create Source Provider
 
 1. Log in to the VM Migration Assistant.
