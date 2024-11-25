@@ -475,9 +475,9 @@ Follow this guide to create migration plans using the VM Migration Assistant.
      Format rules:
 
      - Windows scripts must follow the regex `^([0-9]+_win_firstboot(([\w\-]*).ps1))$`.
-       - For example, `00_win_firstboot.ps1` is a PowerShell script that runs at boot.
+       - For example, `00_win_firstboot.ps1` is a PowerShell script that executes at boot.
      - Linux scripts must follow the regex `^([0-9]+_linux_(run|firstboot)(([\w\-]*).sh))$`.
-       - `firstboot` means run at first boot.
+       - `firstboot` means execute at first boot.
        - `run` means execute after virt-v2v conversion, but before the VM starts.
      - The number at the beginning of the key determines the script execution order.
 
