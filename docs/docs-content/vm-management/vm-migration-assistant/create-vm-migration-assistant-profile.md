@@ -71,16 +71,18 @@ Follow these steps to create a new add-on profile that will be applied to your e
 You can access the service console based on how you configured the VM Migration Assistant YAML manifest when
 [creating the cluster profile](#create-the-profile).
 
-Here are some examples for each `console.service.type`:
+The following examples are for each `console.service.type`:
 
 - If you configured an `Ingress` with a `domain` of `vm-migration.mycompany.dev`, you can access the service console at
   `https://vm-migration.mycompany.dev`.
+
 - If you configured a `NodePort` with a `nodePort` of `30443`, you can access the service console at
   `https://<NODE_IP>:30443`.
+
+<!--prettier-ignore-->
 - If you configured a `LoadBalancer` with a `loadBalancerPort` of `443`, you can access the service console at
   `https://<LOAD_BALANCER_IP>`, where the load balancer IP address is provided by your load balancer solution (such as
-  <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm" />
-  ).
+  <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm" />).
 
 ## Next Steps
 
