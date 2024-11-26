@@ -7,20 +7,20 @@ sidebar_position: 30
 tags: ["edge"]
 ---
 
-To create a multi-node cluster with hosts provisioned in `airgap` installation mode, the hosts must first be able
+To create a multi-node cluster with hosts provisioned in `airgap` installation mode, the hosts must first be able to
 identify and securely communicate with each other. By default, hosts that are provisioned in `airgap` installation mode
 are not aware of each other even if they are on the same network, and they do not have the credentials to communicate
 with each other securely.
 
 Host linking provides the hosts with the necessary network and security infrastructure to form a cluster together. In a
 group of linked hosts, hosts can broadcast information to all its peers. Every group has a leader node, which provides
-tokens with its IP and a One-Time Password (OTP) credentials encrypted that you can use to link other nodes.
+tokens with its IP and a One-Time Password (OTP) credentials that you can use to link other nodes.
 
 ![A diagram of the order of operations for linking hosts.](/clusters_edge_localui_cluster-mgmt_link-hosts.webp)
 
 Linked hosts will sync uploaded content, including images for the Palette agent, provider images, and host status, with
 each other. In a group of linked hosts that have not formed a cluster, only the leader node has access to functionality
-such as change host settings, upload content, and create clusters. Once a cluster is created, only the control plane
+such as to change host settings, upload content, and create clusters. Once a cluster is created, only the control plane
 nodes have access to features such as cluster management and can change host settings. Once a cluster is formed, all
 control plane nodes will be considered leader nodes.
 
@@ -40,6 +40,9 @@ control plane nodes will be considered leader nodes.
 - Two or more hosts deployed in the same deployment mode on the same network. For more information, refer to
   [Appliance Mode Installation](../../site-deployment/stage.md) or
   [Agent Mode Installation](../../../../deployment-modes/agent-mode/install-agent-host.md).
+
+- `stylus.enableMultiNode` parameter is set to `true` in your user data configuration for all your hosts. For more
+  information, refer to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
 
 - All hosts must be idle. They cannot have any current cluster workloads, or are linked to another node. Refer to
   [Delete a Cluster](./delete-cluster.md) and [Unlink Hosts](#unlink-hosts) to learn how to delete a cluster and unlink
