@@ -30,13 +30,13 @@ Follow these steps to create a new add-on profile that will be applied to your e
 5. Select **Add New Pack**. In the next window that displays, enter **Virtual Machine Migration Assistant** in the
    **Filter by name** search bar. The pack is in the **Spectro Addon Repo** registry. Select the pack when it appears.
 
-6. Palette displays the YAML file in the editor at right. You can edit the YAML as needed. Review the following
-   parameters and adjust to your requirements if needed.
+6. Palette displays the YAML file in the editor on the right. You can edit the YAML as needed. Review the following
+   service console parameters and adjust to your requirements if needed.
 
-   | **Parameter**                                                      | **Description**                                                                                                                    | **Default Value**               |
-   | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
-   | `vm-migration-assistant-ui.console.service.console.type`           | Choose whether to use a `NodePort`, `LoadBalancer`, or an `Ingress` to expose the service console.                                 | `"LoadBalancer"`                |
-   | `vm-migration-assistant-ui.console.service.console.ingress.domain` | If using Ingress, specify the domain name that the Ingress resource will use to expose the VM Migration Assistant service console. | `vm-migration.spectrocloud.dev` |
+   | **Parameter**                    | **Description**                                                                                                                        | **Default Value**               |
+   | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+   | `console.service.type`           | Choose whether to use a `NodePort`, `LoadBalancer`, or an `Ingress` to expose the service console.                                     | `"LoadBalancer"`                |
+   | `console.service.ingress.domain` | If using `Ingress`, specify the domain name that the `Ingress` resource will use to expose the VM Migration Assistant service console. | `vm-migration.spectrocloud.dev` |
 
 7. Click on **Confirm & Create**.
 
@@ -62,8 +62,24 @@ Follow these steps to create a new add-on profile that will be applied to your e
 
 5. In the **Overview** tab, ensure that the cluster status and health is **Running** and **Healthy**.
 
-6. In the **Overview** tab, the **Services** list displays a clickable port to access the VM Migration Assistant service
-   console. The port number is based on your service console configuration.
+6. In the **Overview** tab, the **Services** list displays the **vm-migration** service with a clickable port. Click the
+   port to access the VM Migration Assistant service console. The port number is based on your service console
+   configuration.
+
+## Access the VM Migration Assistant Service Console
+
+You can access the service console based on how you configured the VM Migration Assistant YAML manifest when
+[creating the cluster profile](#create-the-profile).
+
+Here are some examples for each `console.service.type`:
+
+- If you configured an `Ingress` with a `domain` of `vm-migration.mycompany.dev`, you can access the service console at
+  `https://vm-migration.mycompany.dev`.
+- If you configured a `NodePort` with a `nodePort` of `30443`, you can access the service console at
+  `https://<NODE_IP>:30443`.
+- If you configured a `LoadBalancer` with a `loadBalancerPort` of `443`, you can access the service console at
+  `https://<LOAD_BALANCER_IP>`, where the load balancer IP address is provided by your load balancer solution (such as
+  <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm"/>).
 
 ## Next Steps
 

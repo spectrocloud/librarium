@@ -28,7 +28,7 @@ Follow this guide to start migration plans in the VM Migration Assistant.
 
 ### Start Cold Migration
 
-1. Log in to the VM Migration Assistant.
+1. [Access the VM Migration Assistant service console](./create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console).
 
 2. From the left **Main Menu**, select **Plans for virtualization**.
 
@@ -53,7 +53,7 @@ Follow this guide to start migration plans in the VM Migration Assistant.
 
 ### Validate
 
-1. Log in to the VM Migration Assistant.
+1. [Access the VM Migration Assistant service console](./create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console).
 
 2. From the left **Main Menu**, select **Plans for virtualization**.
 
@@ -96,7 +96,7 @@ Follow this guide to start migration plans in the VM Migration Assistant.
 
 ### Start Warm Migration
 
-1. Log in to the VM Migration Assistant.
+1. [Access the VM Migration Assistant service console](./create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console).
 
 2. From the left **Main Menu**, select **Plans for virtualization**.
 
@@ -233,7 +233,7 @@ completed. The target VM is then created and powered on on the destination VMO c
 
 ### Validate
 
-1. Log in to the VM Migration Assistant.
+1. [Access the VM Migration Assistant service console](./create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console).
 
 2. From the left **Main Menu**, select **Plans for virtualization**.
 

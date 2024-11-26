@@ -193,7 +193,7 @@ Machines (VMs) that need to be migrated.
 
 ## Create Source Provider
 
-1. Log in to the VM Migration Assistant.
+1. [Access the VM Migration Assistant service console](./create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console).
 
 2. From the left **Main Menu**, select **Providers for virtualization**.
 
@@ -235,7 +235,7 @@ If you want to explore additional settings, refer to the
 
 ## Validate
 
-1. Log in to the VM Migration Assistant.
+1. [Access the VM Migration Assistant service console](./create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console).
 
 2. From the left **Main Menu**, select **Providers for virtualization**.
 

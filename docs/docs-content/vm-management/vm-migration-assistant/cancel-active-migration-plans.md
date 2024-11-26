@@ -21,7 +21,7 @@ is a migration plan that has been started, but not yet completed.
 
 ### Cancel VM Migration
 
-1. Log in to the VM Migration Assistant.
+1. [Access the VM Migration Assistant service console](./create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console).
 
 2. From the left **Main Menu**, select **Plans for virtualization**.
 
@@ -39,7 +39,7 @@ is a migration plan that has been started, but not yet completed.
 
 ### Validate
 
-1. Log in to the VM Migration Assistant.
+1. [Access the VM Migration Assistant service console](./create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console).
 
 2. From the left **Main Menu**, select **Plans for virtualization**.
 

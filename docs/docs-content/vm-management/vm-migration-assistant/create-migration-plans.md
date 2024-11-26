@@ -491,7 +491,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
 ## Create Migration Plan
 
-1. Log in to the VM Migration Assistant.
+1. [Access the VM Migration Assistant service console](./create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console).
 
 2. From the left **Main Menu**, select **Plans for virtualization**.
 
@@ -537,7 +537,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
 ## Validate
 
-1. Log in to the VM Migration Assistant.
+1. [Access the VM Migration Assistant service console](./create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console).
 
 2. From the left **Main Menu**, select **Plans for virtualization**.
 
