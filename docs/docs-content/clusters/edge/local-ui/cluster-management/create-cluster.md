@@ -39,7 +39,8 @@ guides you through how to create a cluster using Local UI.
   :::warning
 
   Content bundles must be built with a Palette Edge CLI version that is later than `4.5.b`. Visit the
-  [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page to build the content bundle
+  [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page to download the appropriate version of the Palette
+  Edge CLI to build the content bundle.
 
   :::
 
