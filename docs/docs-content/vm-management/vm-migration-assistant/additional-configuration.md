@@ -72,9 +72,7 @@ The **Details** tab has configurable settings for the provider.
 
 #### Configure Provider Details
 
-<Tabs queryString="provider-type">
-
-<TabItem label="Source Provider" value="source-provider">
+##### Source Provider
 
 The configurable settings are described in the following table. These were originally defined when you performed the
 steps in [Create Source Providers](./create-source-providers.md).
@@ -85,9 +83,13 @@ steps in [Create Source Providers](./create-source-providers.md).
 | **External web UI link** | Your vSphere / ESXi UI endpoint. You can specify a Full Qualified Domain Name (FQDN) or an IP address. For example, `https://vcenter.mycompany.com/ui`.                                                                                               |
 | **VDDK init image**      | Provide the registry URL to the VMware Virtual Disk Development Kit (VDDK) image. If providing an image, make sure you specify the registry URL without the HTTP scheme `https://` or `http://`. For example, `docker.io/myorganization/vddk:v8.0.3`. |
 
-</TabItem>
+Perform the following steps to change a setting.
 
-<TabItem label="Host Cluster" value="host-cluster">
+1. Click the pencil icon next to each value.
+2. Adjust the value in the pop-up window.
+3. Click **Save** after making changes.
+
+##### Host Cluster
 
 The configurable settings are described in the following table. These are automatically defined when the VM Migration
 Assistant is installed on your VMO cluster.
@@ -95,10 +97,6 @@ Assistant is installed on your VMO cluster.
 | Setting                      | Description                                                                                        |
 | ---------------------------- | -------------------------------------------------------------------------------------------------- |
 | **Default Transfer Network** | Select a default migration network. If no network is selected, the pod network is used by default. |
-
-</TabItem>
-
-</Tabs>
 
 Perform the following steps to change a setting.
 
