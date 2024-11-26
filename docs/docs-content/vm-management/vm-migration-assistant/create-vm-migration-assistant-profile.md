@@ -79,7 +79,8 @@ Here are some examples for each `console.service.type`:
   `https://<NODE_IP>:30443`.
 - If you configured a `LoadBalancer` with a `loadBalancerPort` of `443`, you can access the service console at
   `https://<LOAD_BALANCER_IP>`, where the load balancer IP address is provided by your load balancer solution (such as
-  <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm"/>).
+  <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm" />
+  ).
 
 ## Next Steps
 
