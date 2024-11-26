@@ -7,9 +7,10 @@ sidebar_position: 90
 tags: ["edge"]
 ---
 
-You can delete an active cluster using Local UI. Deleting a cluster will free up all the hosts in the cluster for new
-workloads. Deleting a cluster does not unlink the linked hosts. For more information about linking or unlinking hosts,
-refer to [Link Hosts](./link-hosts.md).
+You can delete an active cluster using Local UI. Deleting a cluster will return all nodes in the cluster to **Ready**
+status. Deleting a cluster does not unlink the linked hosts. If you want to use the hosts that were freed from the
+cluster, you must unlink them first. For more information about linking or unlinking hosts, refer to
+[Link Hosts](./link-hosts.md).
 
 ## Prerequisites
 

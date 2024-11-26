@@ -34,11 +34,11 @@ installed in airgap mode in Local UI.
 
 3. On the **Cluster** page, click **Nodes** to view the **Nodes** tab.
 
-4. Select a node pool you'd like to edit. You can either edit the control plane or the worker pool.
+4. Select a node pool you want to edit. You can either edit the control plane or the worker pool.
 
 5. In the pop-up window,scroll down to **Pool Configuration** and click on **Add Item**.
 
-6. Select a host that you'd like to add to the cluster.
+6. Select a host that you want to add to the node pool.
 
 7. Click **Confirm** to confirm your changes. It may take 15 to 25 mins for the change to take effect depending on your
    environment and workload.
@@ -74,10 +74,10 @@ hosts installed in airgap mode in Local UI.
 
 3. On the **Cluster** page, click **Nodes** to view the **Nodes** tab.
 
-4. Select a node pool you'd like to edit. You can either edit the control plane or the worker pool.
+4. Select a node pool you want to edit. You can either edit the control plane or the worker pool.
 
-5. In the pop-up window,scroll down to **Pool Configuration**. Click the **Delete** button next to the nodes you want to
-   remove.
+5. In the pop-up window, scroll down to **Pool Configuration**. Click the **Delete** button next to the nodes you want
+   to remove.
 
 6. When you are done removing nodes, Click **Confirm** to confirm your changes. It may take 15 to 25 mins for the change
    to take effect depending on your environment and workload. If you have deleted all nodes in the worker pool, you can

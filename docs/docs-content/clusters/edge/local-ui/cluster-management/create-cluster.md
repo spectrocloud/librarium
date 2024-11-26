@@ -25,15 +25,23 @@ guides you through how to create a cluster using Local UI.
 
 - Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
 
-- `stylus.enableMultiNode` parameter is set to `true` in your user data configuration. For more information, refer to
-  [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
+- The `stylus.enableMultiNode` parameter is set to `true` in your user data configuration. For more information, refer
+  to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
+
+- The `stylus.installationMode` parameter is set to `airgap` in your user data configuration for all your hosts.
 
 - Credentials to log into Local UI. Any OS user can be used to log in to Local UI.
 
 - You have uploaded the necessary software artifacts to the Edge host or included the artifacts in the Edge Installer
   ISO during EdgeForge. For more information, refer to [Upload Content Bundle](./upload-content-bundle.md) and
-  [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md). Content bundles must be built
-  with a Palette Edge CLI version that is later than 4.5.b.
+  [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md).
+
+  :::warning
+
+  Content bundles must be built with a Palette Edge CLI version that is later than `4.5.b`. Visit the
+  [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page to build the content bundle
+
+  :::
 
 - You must ensure your hosts have stable IP addresses. You have the following options to achieve a stable IP address:
 

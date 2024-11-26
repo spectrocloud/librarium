@@ -7,24 +7,24 @@ sidebar_position: 30
 tags: ["edge"]
 ---
 
-To create a multi-node cluster with hosts provisioned in `airgap` installation mode, the hosts must first be able to
-identify and securely communicate with each other. By default, hosts that are provisioned in `airgap` installation mode
-are not aware of each other even if they are on the same network, and they do not have the credentials to communicate
-with each other securely.
+To create a multi-node cluster with hosts provisioned in the airgap installation mode, the hosts must first be able to
+identify and securely communicate with each other. By default, hosts that are provisioned in the airgap installation
+mode are not aware of each other even if they are on the same network, and they do not have the credentials to
+communicate with each other securely.
+
+![A diagram of the order of operations for linking hosts.](/clusters_edge_localui_cluster-mgmt_link-hosts.webp)
 
 Host linking provides the hosts with the necessary network and security infrastructure to form a cluster together. In a
 group of linked hosts, hosts can broadcast information to all its peers. Every group has a leader node, which provides
 tokens with its IP and a One-Time Password (OTP) credentials that you can use to link other nodes.
 
-![A diagram of the order of operations for linking hosts.](/clusters_edge_localui_cluster-mgmt_link-hosts.webp)
-
-Linked hosts will sync uploaded content, including images for the Palette agent, provider images, and host status, with
-each other. In a group of linked hosts that have not formed a cluster, only the leader node has access to functionality
-such as to change host settings, upload content, and create clusters. Once a cluster is created, only the control plane
-nodes have access to features such as cluster management and can change host settings. Once a cluster is formed, all
-control plane nodes will be considered leader nodes.
-
 ## Link Hosts
+
+Linked hosts will sync their status and uploaded content, including images for the Palette agent and provider images,
+with each other. In a group of linked hosts that have not formed a cluster, only the leader node has access to
+functionality such as to change host settings, upload content, and create clusters. Once a cluster is created, all
+control plane nodes will be considered leader nodes and only the control plane nodes have access to cluster and host
+management features.
 
 ### Limitations
 
@@ -41,12 +41,14 @@ control plane nodes will be considered leader nodes.
   [Appliance Mode Installation](../../site-deployment/stage.md) or
   [Agent Mode Installation](../../../../deployment-modes/agent-mode/install-agent-host.md).
 
-- `stylus.enableMultiNode` parameter is set to `true` in your user data configuration for all your hosts. For more
-  information, refer to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
+- The `stylus.enableMultiNode` parameter is set to `true` in your user data configuration for all your hosts. For more
+  information, refer to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md) and
+  [Installer Reference](../../edge-configuration/installer-reference.md).
 
-- All hosts must be idle. They cannot have any current cluster workloads, or are linked to another node. Refer to
-  [Delete a Cluster](./delete-cluster.md) and [Unlink Hosts](#unlink-hosts) to learn how to delete a cluster and unlink
-  a host to free it up for linking.
+- The `stylus.installationMode` parameter is set to `airgap` in your user data configuration for all your hosts.
+
+- No host has any current cluster workloads. Refer to [Delete a Cluster](./delete-cluster.md) and
+  [Unlink Hosts](#unlink-hosts) to learn how to delete a cluster and unlink a host to free it up for linking.
 
 ### Procedure
 
@@ -55,8 +57,9 @@ control plane nodes will be considered leader nodes.
 
 2. From the left **Main Menu**, click **Linked Edge Hosts**.
 
-3. Click **Generate token**. This will generate a token you will use to link this host with other hosts. The base-64
-   encoded token contains the IP address of the node, as well as an OTP that will expire in two minutes.
+3. Click **Generate token**. This will make the host start generating tokens you will use to link this host with other
+   hosts. The base-64 encoded token contains the IP address of the node, as well as an OTP that will expire in two
+   minutes. Once a token expires, the leader node generates another token automatically.
 
 4. Click the **Copy** button to copy the token.
 
@@ -66,9 +69,9 @@ control plane nodes will be considered leader nodes.
 
 7. Click **Link this device to another**.
 
-8. In the pop-up box that appears, enter the token you coped from the leader node.
+8. In the pop-up box that appears, enter the token you copied from the leader node.
 
-9. Click confirm.
+9. Click **Confirm**.
 
 10. Repeat this process for every node you want to link to the leader node.
 
@@ -83,8 +86,8 @@ control plane nodes will be considered leader nodes.
 ## Unlink Hosts
 
 You can unlink a host to either link it to another host or to use it for independent workloads. You can only unlink a
-follower host. Once all follower hosts have been unlinked, the leader host is automatically unlinked as long as it is
-not already in use by an existing cluster.
+follower host. Once all follower hosts have been unlinked, you can
+[remove its leader status](#remove-leader-node-status) and link it to another node.
 
 You can unlink a follower host on the follower host itself or from the leader node.
 
@@ -104,7 +107,7 @@ You can unlink a follower host on the follower host itself or from the leader no
 
 <TabItem value="From Leader Node">
 
-1. Log in to Local UI on the leader node to which the node you want to unlink is paired.
+1. Log in to Local UI on the leader node.
 
 2. From the left **Main Menu**, click **Linked Edge Hosts**.
 
