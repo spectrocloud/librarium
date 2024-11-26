@@ -147,7 +147,7 @@ You can unlink a follower host on the follower host itself or from the leader no
 If you have made a host the leader of a group of linked hosts, but later want to link it to another leader node, you
 must first remove its leader node status.
 
-### Prerequisite
+### Prerequisites
 
 - Access to Local UI on a host that generates pairing tokens.
 
