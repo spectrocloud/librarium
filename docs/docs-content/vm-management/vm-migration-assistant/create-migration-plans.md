@@ -495,7 +495,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
 2. From the left **Main Menu**, select **Plans for virtualization**.
 
-3. In the top-left corner, use the **Namespace** drop-down Menu to select your Kubernetes namespace for the migration.
+3. In the top-left corner, use the **Namespace drop-down Menu** to select your Kubernetes namespace for the migration.
 
 4. In the top-right corner, click **Create Plan**.
 
@@ -530,7 +530,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
     | **Disk decryption passphrases** | Provide a list of passphrases for [LUKS-encrypted devices](https://docs.fedoraproject.org/en-US/quick-docs/encrypting-drives-using-LUKS/#_encrypting_block_devices_using_dm_cryptluks) on the VMs you intend to migrate.                                        |
     | **Transfer Network**            | Change the migration transfer network for this plan. If a migration transfer network is defined for the source provider and exists in the target namespace, it is used by default. Otherwise, the pod network is used.                                          |
     | **Preserve static IPs**         | Choose whether to preserve the static IPs of the VMs migrated from vSphere.                                                                                                                                                                                     |
-    | **Root device**                 | Choose the root filesystem to convert. By default, the first root device is chosen in multi-boot systems. You can specify a root device (for example, `/dev/sda1`) for multi-boot systems, but if it is not detected as a root device, the migration will fail. |
+    | **Root device**                 | Choose the root filesystem to convert. By default, the first root device is chosen in multi-boot systems. You can specify a root device, for example, `/dev/sda1`, for multi-boot systems, but if it is not detected as a root device, the migration will fail. |
 
     If you want to explore all additional plan settings, refer to the
     [Additional Configuration - Plan Settings](./additional-configuration.md#plan-settings) for guidance.
@@ -541,7 +541,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
 2. From the left **Main Menu**, select **Plans for virtualization**.
 
-3. In the top-left corner, use the **Namespace** drop-down Menu to select your Kubernetes namespace for the migration.
+3. In the top-left corner, use the **Namespace drop-down Menu** to select your Kubernetes namespace for the migration.
 
 4. In the table, click on a plan name to view the plan details.
 

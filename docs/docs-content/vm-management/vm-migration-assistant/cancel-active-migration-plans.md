@@ -25,7 +25,7 @@ is a migration plan that has been started, but not yet completed.
 
 2. From the left **Main Menu**, select **Plans for virtualization**.
 
-3. In the top-left corner, use the **Namespace** drop-down Menu to select your Kubernetes namespace for the migration.
+3. In the top-left corner, use the **Namespace drop-down Menu** to select your Kubernetes namespace for the migration.
 
 4. Click on the active migration plan name to view its details.
 
@@ -43,7 +43,7 @@ is a migration plan that has been started, but not yet completed.
 
 2. From the left **Main Menu**, select **Plans for virtualization**.
 
-3. In the top-left corner, use the **Namespace** drop-down Menu to select your Kubernetes namespace for the migration.
+3. In the top-left corner, use the **Namespace drop-down Menu** to select your Kubernetes namespace for the migration.
 
 4. Click on the migration plan name to view its details.
 
