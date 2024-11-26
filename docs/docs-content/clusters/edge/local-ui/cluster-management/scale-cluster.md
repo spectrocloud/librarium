@@ -80,7 +80,8 @@ hosts installed in airgap mode in Local UI.
    remove.
 
 6. When you are done removing nodes, Click **Confirm** to confirm your changes. It may take 15 to 25 mins for the change
-   to take effect depending on your environment and workload.
+   to take effect depending on your environment and workload. If you have deleted all nodes in the worker pool, you can
+   remove the pool altogether.
 
 ### Validate
 

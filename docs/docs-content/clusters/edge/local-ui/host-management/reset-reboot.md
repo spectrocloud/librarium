@@ -43,21 +43,23 @@ Edge host is rebooting.
 
 3. After waiting a few minutes, try to access Local UI again to confirm that the Edge host has rebooted successfully.
 
-## Reset Edge Host to Factory Default
+## Reset Edge Host
 
-You can reset an airgapped Edge host to factory default from Local UI. This restores the Edge host to the state right
-after the [initial configuration](../../site-deployment/site-installation/initial-setup.md) is completed in the Terminal
-User Interface (TUI). Reset to factory default removes all workloads, content, and cluster definition from the Edge
-host. This includes content bundles that were built into the ISO image during EdgeForge. If your host was
-[linked](../cluster-management/link-hosts.md) with another host, resetting the host will unlink the host.
+You can reset an airgapped Edge host from Local UI. This restores the Edge host to the state right after the
+[initial configuration](../../site-deployment/site-installation/initial-setup.md) is completed in the Terminal User
+Interface (TUI).
 
-If your Edge host has a connection to Palette, you cannot reset the Edge host to factory default through Local UI as the
-cluster is managed through Palette.
+A reset removes all workloads, content, and cluster definition from the Edge host. This includes content bundles that
+were built into the ISO image during EdgeForge. If your host was [linked](../cluster-management/link-hosts.md) with
+another host, resetting the host will unlink the host.
+
+If your Edge host has a connection to Palette, you cannot reset the Edge host through Local UI as the cluster is managed
+through Palette.
 
 :::info
 
-If you configured HTTP/HTTPS proxy through Local UI, the proxy setting will be retained after the factory reset. For
-more information about HTTP proxy, refer to [Configure HTTP Proxy](configure-proxy.md).
+If you configured HTTP/HTTPS proxy through Local UI, the proxy setting will be retained after the reset. For more
+information about HTTP proxy, refer to [Configure HTTP Proxy](configure-proxy.md).
 
 :::
 
@@ -73,7 +75,7 @@ more information about HTTP proxy, refer to [Configure HTTP Proxy](configure-pro
 
 2. Under the upper-right **User Menu**, click on **Actions** to open the actions drop-down menu.
 
-3. Click **Reset to factory default**.
+3. Click **Reset**.
 
 4. Click **Confirm** to confirm.
 

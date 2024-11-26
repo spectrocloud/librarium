@@ -16,10 +16,13 @@ Host linking provides the hosts with the necessary network and security infrastr
 group of linked hosts, hosts can broadcast information to all its peers. Every group has a leader node, which provides
 tokens with its IP and a One-Time Password (OTP) credentials encrypted that you can use to link other nodes.
 
-Linked hosts will sync images for the Palette agent, provider images, cluster definitions, as well as host status with
+![A diagram of the order of operations for linking hosts.](/clusters_edge_localui_cluster-mgmt_link-hosts.webp)
+
+Linked hosts will sync uploaded content, including images for the Palette agent, provider images, and host status, with
 each other. In a group of linked hosts that have not formed a cluster, only the leader node has access to functionality
 such as change host settings, upload content, and create clusters. Once a cluster is created, only the control plane
-nodes have access to features such as cluster management and can change host settings.
+nodes have access to features such as cluster management and can change host settings. Once a cluster is formed, all
+control plane nodes will be considered leader nodes.
 
 ## Link Hosts
 
@@ -29,6 +32,8 @@ nodes have access to features such as cluster management and can change host set
   [Deployment Modes](../../../../deployment-modes/deployment-modes.md).
 
 - For hosts that are deployed in agent mode, all hosts must share the same Operating System (OS).
+
+- You cannot update the IP address of a linked node.
 
 ### Prerequisites
 
@@ -43,13 +48,12 @@ nodes have access to features such as cluster management and can change host set
 ### Procedure
 
 1. Decide on a node that you plan to use as the leader of the group. Log in to
-   [Local UI](../host-management/access-console.md) of that node. The leader node may or may not already be in a
-   cluster, but the follower nodes must be idle and cannot be in a cluster.
+   [Local UI](../host-management/access-console.md) of that node.
 
 2. From the left **Main Menu**, click **Linked Edge Hosts**.
 
-3. Click **Generate token**. This will generate a token you will use to link this host with other hosts. The token
-   contains the encrypted IP address of the node, as well as an OTP that will expire in two minutes.
+3. Click **Generate token**. This will generate a token you will use to link this host with other hosts. The base-64
+   encoded token contains the IP address of the node, as well as an OTP that will expire in two minutes.
 
 4. Click the **Copy** button to copy the token.
 
@@ -76,7 +80,8 @@ nodes have access to features such as cluster management and can change host set
 ## Unlink Hosts
 
 You can unlink a host to either link it to another host or to use it for independent workloads. You can only unlink a
-follower host. Leader hosts cannot be unlinked.
+follower host. Once all follower hosts have been unlinked, the leader host is automatically unlinked as long as it is
+not already in use by an existing cluster.
 
 You can unlink a follower host on the follower host itself or from the leader node.
 
@@ -85,6 +90,10 @@ You can unlink a follower host on the follower host itself or from the leader no
 - Two or more linked hosts.
 
 - [Access to Local UI](../host-management/access-console.md) on the host you want to unlink or on the leader host.
+
+- The host you want to unlink cannot be in-use by a cluster. If you want to remove a node from your cluster and then
+  unlink it, you must first scale down the cluster. Once the host is in **Ready** state instead of **In-Use**, you can
+  proceed to unlink it. For more information, refer to [Scale Down a Cluster](./scale-cluster.md#scale-down-a-cluster).
 
 ### Procedure
 

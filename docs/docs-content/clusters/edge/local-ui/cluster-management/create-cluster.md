@@ -25,11 +25,15 @@ guides you through how to create a cluster using Local UI.
 
 - Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
 
+- `stylus.enableMultiNode` parameter is set to `true` in your user data configuration. For more information, refer to
+  [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
+
 - Credentials to log into Local UI. Any OS user can be used to log in to Local UI.
 
 - You have uploaded the necessary software artifacts to the Edge host or included the artifacts in the Edge Installer
   ISO during EdgeForge. For more information, refer to [Upload Content Bundle](./upload-content-bundle.md) and
-  [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md).
+  [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md). Content bundles must be built
+  with a Palette Edge CLI version that is later than 4.5.b.
 
 - You must ensure your hosts have stable IP addresses. You have the following options to achieve a stable IP address:
 
@@ -91,7 +95,8 @@ guides you through how to create a cluster using Local UI.
 8. In the **Node Config** step, you can specify configurations for worker pools and control plane pools. To assign a
    host to a node pool, click **Add Edge Hosts** in the corresponding node pool and select the host to add to the pool.
    For multi-node clusters, the leader node is a mandatory control plane node and cannot be unassigned. Additionally,
-   you must ensure that you have an odd number of nodes in the control plane.
+   you must ensure that you have an odd number of nodes in the control plane. Once a cluster is formed, every node in
+   the control plane will be considered a leader node.
 
    For more information about node pool configurations, refer to [Node pools](../../../cluster-management/node-pool.md).
    After you finish configuration, click **Next**.
