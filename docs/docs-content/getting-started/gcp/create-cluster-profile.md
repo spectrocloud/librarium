@@ -102,7 +102,7 @@ Select the **Enable Hello Universe API** preset. The pack manifest changes accor
 The pack requires two values to be replaced for the authorization token and for the database password when using this
 preset. Replace these values with your own base64 encoded values. The
 [_hello-universe_](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer) repository
-provides an unencoded that you can use.
+provides an unencoded token that you can use.
 
 Click on **Confirm Updates**. The manifest editor closes.
 
