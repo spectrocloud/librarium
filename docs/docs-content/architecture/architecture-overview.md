@@ -98,7 +98,7 @@ that a quorum is available for each cluster. The broker system is designed to pr
 1. It efficiently distributes incoming gRPC requests across multiple replicas of the message broker to optimize resource
    usage and platform performance. This capability supports Palette's ability to manage large, enterprise Kubernetes
    clusters.
-2. It provides high availability by enabling clients to failover to alternative replicas in the case of a pod failure.
+2. It provides high availability by enabling clients to fail over to alternative replicas in the case of a pod failure.
    By default, two replicas of the message broker are created in each cluster.
 3. It automatically adjusts to changes in the number of broker replicas without manual reconfiguration, ensuring that
    the platform dynamically scales in response to load changes.
@@ -108,7 +108,7 @@ that a quorum is available for each cluster. The broker system is designed to pr
 Any Enterprise and VerteX Palette cluster will have a message broker that you can inspect. First, ensure that you can
 connect to the cluster. Refer to the
 [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide for further
-infomation. You can then view your message broker by executing the following command.
+information. You can then view your message broker by executing the following command.
 
 ```bash
 kubectl get statefulset msgbroker --namespace hubble-system
