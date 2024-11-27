@@ -26,7 +26,7 @@ are interested in upgrading to this patch release, please reach out to our suppo
   local Harbor registry enabled to be stuck in the **Provisioning** state.
 
 - Resolved several CVEs in the previous release. For a complete list of current CVEs, refer to
-  [CVE Report](../security-bulletins/reports/reports.md).
+  [CVE Report](../security-bulletins/reports/reports.mdx).
 
 - Fixed an issue that caused clusters to experience problems in communicating with Palette through gPRC using domain
   names and port 443, resulting in clusters appearing in an **Unhealthy** state.
@@ -76,10 +76,8 @@ the following sections for a complete list of features, improvements, and known 
 
 ### Security Notices
 
-- Kubernetes version 1.27.9 is deprecated due to a security vulnerability. We recommend upgrading to a newer version of
-  Kubernetes, such as 1.27.11, to avoid issues.
-
-- Review the [Security Bulletins](../security-bulletins/security-bulletins.md) page for the latest security advisories.
+<!-- prettier-ignore -->
+- Review the <VersionedLink text="Security Bulletins" url="/security-bulletins/reports/" /> page for the latest security advisories.
 
 ### Palette
 

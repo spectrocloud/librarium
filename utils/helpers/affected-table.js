@@ -1,0 +1,48 @@
+const semver = require("semver");
+
+function generateMarkdownTable(cveImpactMap) {
+  if (!cveImpactMap || typeof cveImpactMap !== "object") {
+    throw new Error("Invalid input: cveImpactMap must be an object.");
+  }
+
+  const impactData = {
+    "Palette Enterprise": cveImpactMap.impactsPaletteEnterprise,
+    "Palette Enterprise Airgap": cveImpactMap.impactsPaletteEnterpriseAirgap,
+    VerteX: cveImpactMap.impactsVerteX,
+    "VerteX Airgap": cveImpactMap.impactsVerteXAirgap,
+  };
+
+  const allProductsFalse = Object.values(impactData).every((value) => value === false);
+  if (allProductsFalse) {
+    return "Investigation is ongoing to determine how this vulnerability affects our products";
+  }
+
+  const anyProductTrue = Object.values(impactData).some((value) => value === true);
+  if (anyProductTrue && (!cveImpactMap.versions || cveImpactMap.versions.length === 0)) {
+    throw new Error("Error: Data inconsistency - Products impacted but no versions provided.");
+  }
+
+  // Create the header row with the specified order
+  const header = `| Version | Palette Enterprise | Palette Enterprise Airgap | VerteX | VerteX Airgap |\n`;
+  const separator = `| - | -------- | -------- | -------- | -------- |\n`;
+
+  // const uniqueVersions = Array.from(new Set(cveImpactMap.versions)).sort((a, b) => b.localeCompare(a));
+  const uniqueVersions = Array.from(new Set(cveImpactMap.versions)).sort(semver.rcompare);
+
+  const rows = uniqueVersions
+    .map((version) => {
+      const row = [
+        `| ${version}`,
+        impactData["Palette Enterprise"] ? "Impacted" : "No Impact",
+        impactData["Palette Enterprise Airgap"] ? "Impacted" : "No Impact",
+        impactData["VerteX"] ? "Impacted" : "No Impact",
+        impactData["VerteX Airgap"] ? "Impacted" : "No Impact",
+      ].join(" | ");
+      return row + " |";
+    })
+    .join("\n");
+
+  return header + separator + rows;
+}
+
+module.exports = { generateMarkdownTable };
