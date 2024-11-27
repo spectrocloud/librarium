@@ -111,12 +111,14 @@ export default function CveReportsTable() {
 
     const loadData = async () => {
       try {
-        const response = await import("../../../.docusaurus/security-bulletins/default/data.json");
-        const reducedData = {
-          palette: response.palette.map(minimizeData),
-          paletteAirgap: response.paletteAirgap.map(minimizeData),
-          vertex: response.vertex.map(minimizeData),
-          vertexAirgap: response.vertexAirgap.map(minimizeData),
+        const response = (await import("../../../.docusaurus/security-bulletins/default/data.json")).default;
+        const responseData = response as CveData;
+
+        const reducedData: CveDataUnion = {
+          palette: responseData.palette.map(minimizeData),
+          paletteAirgap: responseData.paletteAirgap.map(minimizeData),
+          vertex: responseData.vertex.map(minimizeData),
+          vertexAirgap: responseData.vertexAirgap.map(minimizeData),
         };
         setData(reducedData);
       } catch (error) {
@@ -125,6 +127,7 @@ export default function CveReportsTable() {
         setLoading(false);
       }
     };
+
     loadData().catch((error) => console.error("Error loading data:", error));
   }, []);
 
