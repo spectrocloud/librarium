@@ -27,8 +27,8 @@ a quick overview of Palette's key functionalities.
 ## Deploy Kubernetes Clusters with Palette
 
 The first step towards adopting Palette in your organization is to
-[create a login](https://www.spectrocloud.com/get-started). The
-[Palette Free Tier](https://www.spectrocloud.com/free-tier) allows you to experience the benefits of Palette first-hand.
+[book a demo](https://www.spectrocloud.com/get-started) with one of our experts. This will allow you to experience the
+benefits of Palette first-hand.
 
 We have curated the pages in the Getting Started section to give you a gradual introduction to the fundamental concepts
 and workflows you need to deploy and manage Kubernetes clusters through Palette.

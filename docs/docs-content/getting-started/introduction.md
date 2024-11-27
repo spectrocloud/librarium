@@ -75,3 +75,37 @@ The diagram below illustrates some of the popular technologies that you can use 
 out the [Packs List](../integrations/integrations.mdx) page to learn more about individual packs.
 
 ![Diagram of stack grouped as a unit](/getting-started/getting-started_cluster-profiles_stack-grouped-packs.webp)
+
+## Next Steps
+
+Select your infrastructure provider to start exploring Palette.
+
+<SimpleCardGrid
+  hideNumber="true"
+  cards={[
+    {
+      title: "Deploy a Cluster to Amazon Web Services (AWS)",
+      description: "Deploy and update a Palette host cluster to AWS.",
+      buttonText: "Learn more",
+      relativeURL: "./aws",
+    },
+    {
+      title: "Deploy a Cluster to Microsoft Azure",
+      description: "Deploy and update a Palette host cluster to Azure.",
+      buttonText: "Learn more",
+      relativeURL: "./azure",
+    },
+    {
+      title: "Deploy a Cluster to Google Cloud Platform (GCP)",
+      description: "Deploy and update a Palette host cluster to Google Cloud.",
+      buttonText: "Learn more",
+      relativeURL: "./gcp",
+    },
+    {
+      title: "Deploy a Cluster to VMware",
+      description: "Deploy and update a Palette host cluster to VMware vSphere.",
+      buttonText: "Learn more",
+      relativeURL: "./vmware",
+    },
+  ]}
+/>
