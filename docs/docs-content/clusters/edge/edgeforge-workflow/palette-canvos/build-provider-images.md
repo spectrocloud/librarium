@@ -140,12 +140,32 @@ artifacts at the same time.
 
     Refer to [Edge Artifact Build Configurations](./arg.md) for all available arguments.
 
-11. (Optional) You can embed a public key in your provider image. If you choose to add a public key to your provider
+11. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
+    require client certificates.
+
+    You can provide the base-64 encoded certificates in PEM format in the **certs** folder at the root directory of the
+    **CanvOS** repository. You can provide as many certificates as you need in the folder.
+
+    If you are using a CanvOS tag that is earlier than `4.5.b`, you need to use the `PROXY_CERT_PATH` build argument to
+    provide a path to the certificate. This approach only allows you to specify one certificate. For more information,
+    refer to [Earthly Build Arguments](../../edgeforge-workflow/palette-canvos/arg.md).
+
+    :::warning
+
+    These proxy settings are only configured for the build process itself, when your builder machine needs to pull
+    certain images to build the Edge artifacts. These certificates will not be present on the host after it has been
+    deployed. To configure the proxy network settings for a host, refer to
+    [Configure HTTP Proxy](../../local-ui/host-management/configure-proxy.md) or
+    [Configure Proxy in User Data](../prepare-user-data.md#configure-proxy-settings-optional).
+
+    :::
+
+12. (Optional) You can embed a public key in your provider image. If you choose to add a public key to your provider
     image, after you create a cluster with the provider image, only content that is signed by the corresponding private
     key can be uploaded to the Edge host through Local UI. This includes both the content bundle and cluster definition.
     For more information, refer to [Embed Public Key in Edge Artifacts](./signed-content.md).
 
-12. CanvOS utility uses [Earthly](https://earthly.dev/)(https://earthly.dev/) to build the target artifacts. Issue the
+13. CanvOS utility uses [Earthly](https://earthly.dev/)(https://earthly.dev/) to build the target artifacts. Issue the
     following command to start the build process.
 
    <Tabs group="earthly">

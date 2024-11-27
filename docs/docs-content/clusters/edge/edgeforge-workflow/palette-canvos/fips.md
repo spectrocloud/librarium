@@ -227,7 +227,27 @@ workaround.
     | BASE_IMAGE       | The base image used by EdgeForge to build the Edge Installer and provider images. This must be the same image that you build in the previous step.                |
     | ISO_NAME         | The file name of the ISO file that will be generated.                                                                                                             |
 
-14. Create a file named **user-data**. It must have the `#cloud-init` header at the top of the file. Ensure you have the
+14. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
+    require client certificates.
+
+    You can provide the base-64 encoded certificates in PEM format in the **certs** folder at the root directory of the
+    **CanvOS** repository. You can provide as many certificates as you need in the folder.
+
+    If you are using a CanvOS tag that is earlier than `4.5.b`, you need to use the `PROXY_CERT_PATH` build argument to
+    provide a path to the certificate. This approach only allows you to specify one certificate. For more information,
+    refer to [Earthly Build Arguments](../../edgeforge-workflow/palette-canvos/arg.md).
+
+    :::warning
+
+    These proxy settings are only configured for the build process itself, when your builder machine needs to pull
+    certain images to build the Edge artifacts. These certificates will not be present on the host after it has been
+    deployed. To configure the proxy network settings for a host, refer to
+    [Configure HTTP Proxy](../../local-ui/host-management/configure-proxy.md) or
+    [Configure Proxy in User Data](../prepare-user-data.md#configure-proxy-settings-optional).
+
+    :::
+
+15. Create a file named **user-data**. It must have the `#cloud-init` header at the top of the file. Ensure you have the
     following blocks at the root level of the **user-data** file. Replace the value for `edgeHostToken` with your VerteX
     registration token, and replace the value `paletteEndPoint` with the URL of your Palette instance. Replace the user
     `kairos` and its password with your desired username and password.
@@ -258,10 +278,10 @@ workaround.
     the Edge Host with the registration token and the Palette endpoint. And the configurations in the `stage` block
     create a system user that you can use to log in to the Operating System (OS).
 
-15. Add further customization to the **user-data** file as needed. This file configures the Edge Installer. Refer to
+16. Add further customization to the **user-data** file as needed. This file configures the Edge Installer. Refer to
     [Installer Reference](../../edge-configuration/installer-reference.md) for more information.
 
-16. Issue the following command to build the Edge Installer ISO.
+17. Issue the following command to build the Edge Installer ISO.
 
     <Tabs group="earthly">
 

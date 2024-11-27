@@ -36,6 +36,11 @@ below and take necessary actions to avoid any disruptions in your environment.
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ----------------- |
 | The Terraform resource, `spectrocloud_cluster_import` is deprecated. To import a cluster deployed outside of the context of Palette, refer to the [Import a Cluster](../clusters/imported-clusters/cluster-import.md) guide. | January, 2025 | November 15, 2024 |
 
+| The Earthly build argument `PROXY_CERT_PATH` is deprecated. To provide client certificates needed for proxy servers,
+use the **cert** directory in the **CanvOS** repository instead. Refer to
+[Configure Proxy Settings](../clusters/edge/edgeforge-workflow/prepare-user-data.md#configure-proxy-settings-optional)
+for more information. | February, 2025 | December 7th, 2024 |
+
 ## Implemented Changes
 
 You can review previously implemented changes in Palette and VerteX in the following table. Refer to respective release
