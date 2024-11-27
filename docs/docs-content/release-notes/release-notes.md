@@ -19,6 +19,8 @@ tags: ["release-notes"]
 
 #### Improvements
 
+- The "Export Profile" and "Delete" buttons were renamed to "Export profile version" and "Delete profile version" in the cluster profile editor. The revised text clarifies that the export and delete operations only apply to a single profile version. 
+
 ### Edge
 
 #### Features
