@@ -121,7 +121,9 @@ function getProviders(packData: PackData) {
     .join(", ");
 }
 
-function processPackUiMap(packUidMap: Record<string, { readme?: string }>): Record<string, { deprecated?: boolean; readme?: ReactElement; registryUid?: string }> {
+function processPackUiMap(
+  packUidMap: Record<string, { readme?: string }>
+): Record<string, { deprecated?: boolean; readme?: ReactElement; registryUid?: string }> {
   const newPackUidMap: Record<string, { deprecated?: boolean; readme?: ReactElement; registryUid?: string }> = {};
   Object.entries(packUidMap).map(([key, value]) => {
     if (key) {
@@ -129,17 +131,21 @@ function processPackUiMap(packUidMap: Record<string, { readme?: string }>): Reco
         const readmeFileName = packUidMap[key].readme;
         let module = undefined;
         if (readmeFileName) {
-          module = (<ReactMarkDown remarkPlugins={[remarkGfm]} components={{
-            h2: (props) => {
-              const h2Id = props.children?.toString().replace(/\s+/g, '-').toLowerCase();
-              return(
-                <h2 id={h2Id} >
-                  {props.children}
-                  <a href={`#${h2Id}`} className="hash-link" />
-                </h2>
-                )
-              },
-            }}>
+          module = (
+            <ReactMarkDown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                h2: (props) => {
+                  const h2Id = props.children?.toString().replace(/\s+/g, "-").toLowerCase();
+                  return (
+                    <h2 id={h2Id}>
+                      {props.children}
+                      <a href={`#${h2Id}`} className="hash-link" />
+                    </h2>
+                  );
+                },
+              }}
+            >
               {readmeFileName}
             </ReactMarkDown>
           );
@@ -292,12 +298,12 @@ export default function PacksReadme() {
       const ReadMe = selectedPackUid ? packData.packUidMap[selectedPackUid]?.readme : null;
 
       const tabs = [
-         ReadMe && {
+        ReadMe && {
           label: `README`,
           key: "main",
           children: ReadMe,
         },
-         customReadme && {
+        customReadme && {
           label: `Additional Details`,
           key: "custom",
           children: customReadme,
@@ -306,14 +312,17 @@ export default function PacksReadme() {
       if (tabs.length > 1) {
         return (
           <div>
-            <Tabs 
+            <Tabs
               defaultActiveKey={selectedTabPane || "main"}
               items={tabs}
-              onChange={(key)=>{
+              onChange={(key) => {
                 setSelectedTabPane(key);
                 const parentVersion = getParentVersion(selectedVersion, packData)?.title || "";
-                history.replace({ search: `?pack=${packName}&version=${selectedVersion}&parent=${parentVersion}&tab=${key}` });
-            }} />
+                history.replace({
+                  search: `?pack=${packName}&version=${selectedVersion}&parent=${parentVersion}&tab=${key}`,
+                });
+              }}
+            />
           </div>
         );
       }
@@ -334,7 +343,7 @@ export default function PacksReadme() {
           <div className={styles.emptyContentTitle}>No README found</div>
         </div>
       );
-    }
+    };
 
     return (
       <div className={styles.wrapper}>

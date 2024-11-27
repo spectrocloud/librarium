@@ -31,7 +31,9 @@ export default function Packs(props: Packs) {
         const data = props?.route?.data;
         return data ? (
           <Switch>
-            <Redirect to={`/integrations/packs?pack=${data.name}&version=${data.version}&parent=${data.parent}&tab=${data.tab}`} />
+            <Redirect
+              to={`/integrations/packs?pack=${data.name}&version=${data.version}&parent=${data.parent}&tab=${data.tab}`}
+            />
           </Switch>
         ) : (
           <PacksReadme />
