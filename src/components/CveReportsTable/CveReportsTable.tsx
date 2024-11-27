@@ -225,10 +225,10 @@ export default function CveReportsTable() {
           defaultPageSize: 100,
           showSizeChanger: true,
         }}
-        virtual
         scroll={{ y: 800 }}
         bordered={true}
         tableLayout="fixed"
+        sticky={true}
       />
     </div>
   );
@@ -263,7 +263,7 @@ export default function CveReportsTable() {
             activeKey={activeTabKey}
             onChange={(key) => setActiveTabKey(key)}
             items={tabs}
-            destroyInactiveTabPane
+            destroyInactiveTabPane={false}
             type="card"
           />
         </div>
