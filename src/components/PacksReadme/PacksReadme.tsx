@@ -127,31 +127,35 @@ function processPackUiMap(
   const newPackUidMap: Record<string, { deprecated?: boolean; readme?: ReactElement; registryUid?: string }> = {};
   Object.entries(packUidMap).map(([key, value]) => {
     if (key) {
-        const readmeFileName = packUidMap[key].readme;
-        let module;
-        if (readmeFileName) {
-          module = (<ReactMarkDown remarkPlugins={[remarkGfm]} components={{
-            h2: (props) => {
-              const h2Id = props.children?.toString().replace(/\s+/g, '-').toLowerCase();
-              return(
-                <h2 id={h2Id} >
-                  {props.children}
-                  <a href={`#${h2Id}`} className="hash-link" />
-                </h2>
-                )
+      const readmeFileName = packUidMap[key].readme;
+      let module;
+      if (readmeFileName) {
+        module = (
+          <ReactMarkDown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              h2: (props) => {
+                const h2Id = props.children?.toString().replace(/\s+/g, "-").toLowerCase();
+                return (
+                  <h2 id={h2Id}>
+                    {props.children}
+                    <a href={`#${h2Id}`} className="hash-link" />
+                  </h2>
+                );
               },
-            }}>
-              {readmeFileName}
-            </ReactMarkDown>
-          );
-        }
-        newPackUidMap[key] = {
-          ...value,
-          readme: module ? (module as ReactElement) : undefined,
-        };
+            }}
+          >
+            {readmeFileName}
+          </ReactMarkDown>
+        );
       }
-    });
-    return newPackUidMap;
+      newPackUidMap[key] = {
+        ...value,
+        readme: module ? (module as ReactElement) : undefined,
+      };
+    }
+  });
+  return newPackUidMap;
 }
 
 function getRegistries(packData: PackData, selectedVersion: string, selectedPackUid: string) {
