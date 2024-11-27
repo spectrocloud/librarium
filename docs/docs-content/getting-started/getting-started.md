@@ -49,6 +49,8 @@ orchestration.
 
 Explore more through the following pages.
 
+<!-- vale off -->
+
 <SimpleCardGrid
   cards={[
     {

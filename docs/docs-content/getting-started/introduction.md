@@ -80,6 +80,8 @@ out the [Packs List](../integrations/integrations.mdx) page to learn more about 
 
 Select your infrastructure provider to start exploring Palette.
 
+<!-- vale off -->
+
 <SimpleCardGrid
   hideNumber="true"
   cards={[
