@@ -111,7 +111,7 @@ export default function CveReportsTable() {
 
     const loadData = async () => {
       try {
-        const response = (await import("../../../.docusaurus/security-bulletins/default/data.json")).default;
+        const response = (await import("../../../.docusaurus/security-bulletins/default/data.json")).default; // eslint-disable-line @typescript-eslint/no-unsafe-member-access
         const responseData = response as CveData;
 
         const reducedData: CveDataUnion = {
