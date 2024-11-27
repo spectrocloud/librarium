@@ -32,7 +32,7 @@ initialize: ## Initialize the repository dependencies
 	npx husky-init
 	vale sync
 
-clean: ## Clean common artifacts
+clean: clean-security ## Clean common artifacts
 	npm run clear && npm run clean-api-docs
 	rm -rfv build
 
@@ -55,6 +55,10 @@ clean-packs: ## Clean supplemental packs and pack images
 	rm -rf static/img/packs
 	rm -rf .docusaurus/packs-integrations/api_pack_response.json
 	rm -rf .docusaurus/packs-integrations/api_repositories_response.json
+
+clean-security: ## Clean security bulletins
+	rm -rf .docusaurus/security-bulletins/default/*.json
+	rm -rfv docs/docs-content/security-bulletins/reports/*.md 
 
 clean-api: ## Clean API docs
 	@echo "cleaning api docs"
@@ -80,6 +84,7 @@ init: ## Initialize npm dependencies
 
 start: ## Start a local development server
 	make generate-partials
+	npm run cves
 	npm run start
 
 start-cached-packs: ## Start a local development server with cached packs retry.
