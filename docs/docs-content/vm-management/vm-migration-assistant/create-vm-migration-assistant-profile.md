@@ -33,12 +33,12 @@ Follow these steps to create a new add-on profile that will be applied to your e
 6. Palette displays the YAML file in the editor on the right. You can edit the YAML as needed. Review the following
    service console parameters and adjust to your requirements if needed.
 
-   | **Parameter** | **Description** | **Default Value** | **Required** |
-   |---|---|---|---|
-   | `vm-migration-assistant-ui.console.ingress.domain` | If choosing `Ingress` as the service type, specify the domain name that the Ingress resource will use to expose the VM Migration Assistant service console. | `vm-migration.spectrocloud.dev` | Yes |
-   | `vm-migration-assistant-ui.console.service.type` | Choose how to expose the service console: `NodePort` / `LoadBalancer` / `Ingress` | `"LoadBalancer"` | Yes |
-   | `vm-migration-assistant-ui.console.service.loadBalancerPort` | Choose the external port to expose the service console when LoadBalancer is selected | `"443"` | Yes |
-   | `vm-migration-assistant-ui.console.service.nodePort` | Choose the external port to expose the service console when nodePort is selected | `"30443"` | Yes |
+   | **Parameter**                                                | **Description**                                                                                                                                             | **Default Value**               | **Required** |
+   | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ------------ |
+   | `vm-migration-assistant-ui.console.ingress.domain`           | If choosing `Ingress` as the service type, specify the domain name that the Ingress resource will use to expose the VM Migration Assistant service console. | `vm-migration.spectrocloud.dev` | Yes          |
+   | `vm-migration-assistant-ui.console.service.type`             | Choose how to expose the service console: `NodePort` / `LoadBalancer` / `Ingress`                                                                           | `"LoadBalancer"`                | Yes          |
+   | `vm-migration-assistant-ui.console.service.loadBalancerPort` | Choose the external port to expose the service console when LoadBalancer is selected                                                                        | `"443"`                         | Yes          |
+   | `vm-migration-assistant-ui.console.service.nodePort`         | Choose the external port to expose the service console when nodePort is selected                                                                            | `"30443"`                       | Yes          |
 
 7. Click on **Confirm & Create**.
 
