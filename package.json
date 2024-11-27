@@ -20,7 +20,7 @@
     "clean-api-docs": "docusaurus clean-api-docs palette && docusaurus clean-api-docs emc",
     "run-api-parser": "node utils/api-parser/index.js",
     "generate-partials": "./scripts/generate-partials.sh",
-    "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
+    "lint": "eslint . -c .eslintrc.js --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css}\"",
     "format-check": "prettier . --check"
