@@ -1,0 +1,50 @@
+---
+sidebar_label: "CVE Reports"
+title: "CVE Reports"
+description: "Security bulletins for Common Vulnerabilities and Exposures (CVEs) related to Palette and Palette VerteX"
+icon: ""
+hide_table_of_contents: true
+sidebar_position: 0
+toc_max_heading_level: 2
+tags: ["security", "cve"]
+---
+
+import CveReportsTable from "@site/src/components/CveReportsTable";
+
+# Security Bulletins
+
+The vulnerabilities reported in this Security Bulletin include vulnerabilities within the Palette VerteX, Palette
+Enterprise, and airgap environments. The reported vulnerabilities also include third-party component vulnerabilities,
+which we have become aware of. These vulnerabilities are discovered via our Bug Bounty program, our security monitoring
+program, or reported to us by our supply chain.
+
+:::info
+
+The CVSS Severity is provided by either the third-party service provider, or NIST CVE. We do not provide the criticality
+score for third-party components. Previous security bulletins are available in the
+[Security Bulletins Archive](../../unlisted/cve-reports.md).
+
+:::
+
+To fix all the vulnerabilities impacting your products, we recommend patching your instances to the latest version
+regarding any third-party components. For vulnerabilities originating in our products, we will provide mitigations and
+workarounds where applicable.
+
+### Status
+
+We use the following statuses to track the progress of each vulnerability. N - 2 means two versions behind the latest
+versions.
+
+| Status  | Description                                                                                                                     |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Open    | The vulnerability has been identified and is pending an investigation.                                                          |
+| Ongoing | The vulnerability is being investigated.                                                                                        |
+| Fixed   | The vulnerability has been addressed in the latest versions of Palette or Vertex. Previous versions (N -2) are being worked on. |
+| Closed  | The vulnerability has been addressed in the latest version and in N - 2 versions.                                               |
+
+### CVE Reports
+
+By default, the table is sorted to display descending entries that were recently modified. Click on the CVE ID to view
+the full details of the vulnerability.
+
+<CveReportsTable />
