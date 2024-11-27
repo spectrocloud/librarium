@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .tabPane {
+    padding-top: 15px;
+    font-size: 16px;
+    width: 100%;
+    // Karl's workaround for reducing the jank issue where the tabs disappear when refreshing the page.
+    // The spinner is displayed while the page is loading, and the entire table is hidden until the page is fully loaded.
+    min-height: 300px;
+  }
+}
+
+.tableContainer {
+  display: block;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.unsupportedMessage {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2em;
+    color: #555;
+  }
+}
