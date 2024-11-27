@@ -24,6 +24,16 @@ async function generateCVEs() {
   const dirname = path.join(".docusaurus", "security-bulletins", "default");
   const filename = path.join(dirname, "data.json");
 
+  if (process.env.DISABLE_SECURITY_INTEGRATIONS === "true") {
+    logger.info("Security integrations are disabled. Skipping generation of security bulletins.");
+    if (!existsSync(dirname) || !existsSync(filename)) {
+      // Write the security bulletins data to a JSON file
+      mkdirSync(dirname, { recursive: true });
+      await fs.writeFile(filename, JSON.stringify({}, null, 2));
+    }
+    return;
+  }
+
   if (existsSync(dirname) && existsSync(filename)) {
     logger.info("Security bulletins JSON file already exists. Skipping fetching.");
     GlobalCVEData = JSON.parse(await fs.readFile(filename, "utf-8"));
@@ -267,11 +277,6 @@ ${revisionHistory ? revisionHistory : "No revision history available."}
         error: err,
       };
     });
-}
-
-if (process.env.DISABLE_SECURITY_INTEGRATIONS === "true") {
-  logger.info("Security integrations are disabled. Skipping generation of security bulletins.");
-  return;
 }
 
 // Call the main function to generate CVEs
