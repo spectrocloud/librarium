@@ -127,25 +127,20 @@ function processPackUiMap(
   const newPackUidMap: Record<string, { deprecated?: boolean; readme?: ReactElement; registryUid?: string }> = {};
   Object.entries(packUidMap).map(([key, value]) => {
     if (key) {
-      try {
         const readmeFileName = packUidMap[key].readme;
-        let module = undefined;
+        let module;
         if (readmeFileName) {
-          module = (
-            <ReactMarkDown
-              remarkPlugins={[remarkGfm]}
-              components={{
-                h2: (props) => {
-                  const h2Id = props.children?.toString().replace(/\s+/g, "-").toLowerCase();
-                  return (
-                    <h2 id={h2Id}>
-                      {props.children}
-                      <a href={`#${h2Id}`} className="hash-link" />
-                    </h2>
-                  );
-                },
-              }}
-            >
+          module = (<ReactMarkDown remarkPlugins={[remarkGfm]} components={{
+            h2: (props) => {
+              const h2Id = props.children?.toString().replace(/\s+/g, '-').toLowerCase();
+              return(
+                <h2 id={h2Id} >
+                  {props.children}
+                  <a href={`#${h2Id}`} className="hash-link" />
+                </h2>
+                )
+              },
+            }}>
               {readmeFileName}
             </ReactMarkDown>
           );
@@ -154,16 +149,9 @@ function processPackUiMap(
           ...value,
           readme: module ? (module as ReactElement) : undefined,
         };
-      } catch (error) {
-        console.error("Error importing custom readme component for pack. Additional information follows: \n", error);
-        newPackUidMap[key] = {
-          ...value,
-          readme: undefined,
-        };
       }
-    }
-  });
-  return newPackUidMap;
+    });
+    return newPackUidMap;
 }
 
 function getRegistries(packData: PackData, selectedVersion: string, selectedPackUid: string) {
@@ -277,7 +265,10 @@ export default function PacksReadme() {
     }, [packData]);
 
     useEffect(() => {
-      const searchParams = window ? new URLSearchParams(window.location.search) : null;
+      let searchParams;
+      if (isBrowser) {
+        searchParams = new URLSearchParams(window.location.search);
+      }
       const urlParamVersion = searchParams?.get("version");
       const urlParamTag = searchParams?.get("tab");
       setSelectedTabPane(urlParamTag || "main");
