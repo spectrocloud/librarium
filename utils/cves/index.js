@@ -269,5 +269,10 @@ ${revisionHistory ? revisionHistory : "No revision history available."}
     });
 }
 
+if (process.env.DISABLE_SECURITY_INTEGRATIONS === "true") {
+  logger.info("Security integrations are disabled. Skipping generation of security bulletins.");
+  return;
+}
+
 // Call the main function to generate CVEs
 generateCVEs();
