@@ -19,16 +19,24 @@ tags: ["release-notes"]
 
 - Palette provides the ability to migrate VMs from VMware vSphere to Virtual Machine Orchestrator (VMO) using the
   Virtual Machine Migration Assistant (VM Migration Assistant). The
-  <VersionedLink text="VM Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant-pack"/> add-on pack
-  provides you with an UI to perform the VM migrations. Refer to the
-  [VM Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) section for further
-  information.
+  <VersionedLink text="VM Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant-pack" /> add-on
+  pack provides you with an UI to perform the VM migrations. Refer to the [VM Migration
+  Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) section for further information.
 
 #### Improvements
 
 - The "Export Profile" and "Delete" buttons were renamed to "Export profile version" and "Delete profile version" in the
   cluster profile editor. The revised text clarifies that the export and delete operations only apply to a single
   profile version.
+
+- Palette's virtual machine (VM) cloning capabilities were improved to cover complete VM configurations, including data
+  volumes and data volume templates. These improved capabilities ensure accurate VM duplication, allowing users to
+  correctly replicate environments. Refer to the [Clone a VM](../vm-management/create-manage-vm/clone-vm.md) guide for
+  further details.
+
+- The reconciliation loop that Palette uses to check the status of Kubernetes resources was optimized. The improvements
+  involve using a session cache, improved session management and enhanced session keep alives. These changes allow
+  Palette to operate on environments experiencing heavy load.
 
 ### Edge
 
