@@ -135,12 +135,21 @@ function processPackUiMap(
             remarkPlugins={[remarkGfm]}
             components={{
               h2: (props) => {
-                const h2Id = props.children?.toString().replace(/\s+/g, "-").toLowerCase();
+                const headingId = props.children?.toString().replace(/\s+/g, "-").toLowerCase();
                 return (
-                  <h2 id={h2Id}>
+                  <h2 id={headingId}>
                     {props.children}
-                    <a href={`#${h2Id}`} className="hash-link" />
+                    <a href={`#${headingId}`} className="hash-link" />
                   </h2>
+                );
+              },
+              h3: (props) => {
+                const headingId = props.children?.toString().replace(/\s+/g, "-").toLowerCase();
+                return (
+                  <h3 id={headingId}>
+                    {props.children}
+                    <a href={`#${headingId}`} className="hash-link" />
+                  </h3>
                 );
               },
             }}
@@ -187,7 +196,6 @@ export default function PacksReadme() {
     const [selectedVersion, setSelectedVersion] = useState<string>("");
     const history = useHistory();
     const isBrowser = useIsBrowser();
-    const [componentsMounted, isComponentsMounted] = useState<boolean>(false);
 
     useEffect(() => {
       let pckName = "";
@@ -253,20 +261,15 @@ export default function PacksReadme() {
     }, [packName]);
 
     useEffect(() => {
-      if (isBrowser && fragmentIdentifier && componentsMounted) {
-        const elementId = fragmentIdentifier.replace("#", "");
-        const parent = document.getElementById?.(elementId);
-        parent?.querySelector?.("a")?.click();
-      }
-    }, [fragmentIdentifier, componentsMounted]);
-
-    useEffect(() => {
-      if (packData) {
-        setTimeout(() => {
-          isComponentsMounted(true);
+      if (isBrowser && fragmentIdentifier) {
+        const timeoutId = setTimeout(() => {
+          const elementId = fragmentIdentifier.replace("#", "");
+          const parent = document.getElementById?.(elementId);
+          parent?.querySelector?.("a")?.click();
         }, 1000);
+        return () => clearTimeout(timeoutId);
       }
-    }, [packData]);
+    }, [fragmentIdentifier]);
 
     useEffect(() => {
       let searchParams;
