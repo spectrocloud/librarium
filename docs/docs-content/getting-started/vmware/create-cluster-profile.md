@@ -51,18 +51,19 @@ The **Profile Layers** step is where you specify the packs that compose the prof
 infrastructure packs and several optional add-on packs you can choose from. Every pack requires you to select the **Pack
 Type**, **Registry**, and **Pack Name**.
 
-For this tutorial, use the following packs:
+For this tutorial, use the following packs. If there are differences between the latest version of a pack and the
+version you select, a YAML editor will open. Click **Confirm Changes** to proceed.
 
-| Pack Name       | Version | Layer            |
-| --------------- | ------- | ---------------- |
-| ubuntu-vsphere  | 22.4.x  | Operating System |
-| kubernetes      | 1.28.x  | Kubernetes       |
-| cni-calico      | 3.27.x  | Network          |
-| csi-vsphere-csi | 3.1.x   | Storage          |
+| Pack Name                   | Version | Registry    | Layer            |
+| --------------------------- | ------- | ----------- | ---------------- |
+| Ubuntu                      | 22.4.x  | Public Repo | Operating System |
+| Palette eXtended Kubernetes | 1.28.x  | Public Repo | Kubernetes       |
+| Calico                      | 3.27.x  | Public Repo | Network          |
+| vSphere CSI                 | 3.1.x   | Public Repo | Storage          |
 
-As you fill out the information for each layer, click on **Next** to proceed to the next layer.
+As you select each layer, click on **Next Layer** to proceed to the next one.
 
-Click on **Confirm** after you have completed filling out all the core layers.
+Click on **Confirm** and then **Next** after you have completed selecting all the core layers.
 
 ![VMware core layers](/getting-started/vmware/getting-started_create-cluster-profile_cluster-profile-core-stack.webp)
 
@@ -125,7 +126,7 @@ Select the **Enable Hello Universe API** preset. The pack manifest changes accor
 The pack requires two values to be replaced for the authorization token and for the database password when using this
 preset. Replace these values with your own base64 encoded values. The
 [_hello-universe_](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer) repository
-provides a token that you can use.
+provides an unencoded token that you can use.
 
 Click on **Confirm Updates**. The manifest editor closes.
 
