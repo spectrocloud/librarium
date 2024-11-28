@@ -22,6 +22,8 @@ introducing you with Palette workflows and capabilities.
 In this section, you learn how to create a cluster profile. Then, you deploy a cluster to GCP by using Palette. Once
 your cluster is deployed, you can update it using cluster profile updates.
 
+<!-- vale off -->
+
 <SimpleCardGrid
   cards={[
     {
