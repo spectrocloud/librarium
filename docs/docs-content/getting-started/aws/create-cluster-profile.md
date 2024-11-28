@@ -60,7 +60,7 @@ version you select, a YAML editor will open. Click **Confirm Changes** to procee
 | Calico                      | 3.27.x  | Public Repo | Network          |
 | Amazon EBS CSI              | 1.26.x  | Public Repo | Storage          |
 
-As you fill out the information for each layer, click on **Next Layer** to proceed to the next layer.
+As you select each layer, click on **Next Layer** to proceed to the next one.
 
 Click on **Confirm** and then **Next** after you have completed selecting all the core layers.
 
