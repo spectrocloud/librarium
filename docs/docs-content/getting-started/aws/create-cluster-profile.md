@@ -43,24 +43,25 @@ In the **Basic Information** section, assign the name **aws-profile**, a brief p
 defaults to **1.0.0**. Click on **Next**.
 
 **Cloud Type** allows you to choose the infrastructure provider with which this cluster profile is associated. Select
-**AWS** and click on **Next**.
+**AWS IaaS** and click on **Next**.
 
 The **Profile Layers** step is where you specify the packs that compose the profile. There are four required
 infrastructure packs and several optional add-on packs you can choose from. Every pack requires you to select the **Pack
 Type**, **Registry**, and **Pack Name**.
 
-For this tutorial, use the following packs:
+For this tutorial, use the following packs. If there are differences between the latest version of a pack and the
+version you select, a YAML editor will open. Click **Confirm Changes** to proceed.
 
-| Pack Name      | Version | Layer            |
-| -------------- | ------- | ---------------- |
-| ubuntu-aws LTS | 22.4.x  | Operating System |
-| Kubernetes     | 1.29.x  | Kubernetes       |
-| cni-calico     | 3.27.x  | Network          |
-| csi-aws-ebs    | 1.26.x  | Storage          |
+| Pack Name                   | Version | Registry    | Layer            |
+| --------------------------- | ------- | ----------- | ---------------- |
+| Ubuntu                      | 22.4.x  | Public Repo | Operating System |
+| Palette eXtended Kubernetes | 1.29.x  | Public Repo | Kubernetes       |
+| Calico                      | 3.27.x  | Public Repo | Network          |
+| Amazon EBS CSI              | 1.26.x  | Public Repo | Storage          |
 
-As you fill out the information for each layer, click on **Next** to proceed to the next layer.
+As you select each layer, click on **Next Layer** to proceed to the next one.
 
-Click on **Confirm** after you have completed filling out all the core layers.
+Click on **Confirm** and then **Next** after you have completed selecting all the core layers.
 
 ![A view of the cluster profile stack](/getting-started/aws/getting-started_create-cluster-profile_clusters_parameters.webp)
 
@@ -100,7 +101,7 @@ Select the **Enable Hello Universe API** preset. The pack manifest changes accor
 The pack requires two values to be replaced for the authorization token and for the database password when using this
 preset. Replace these values with your own base64 encoded values. The
 [_hello-universe_](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer) repository
-provides a token that you can use.
+provides an unencoded token that you can use.
 
 Click on **Confirm Updates**. The manifest editor closes.
 
