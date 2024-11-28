@@ -62,7 +62,7 @@ version you select, a YAML editor will open. Click **Confirm Changes** to procee
 
 As you fill out the information for each layer, click on **Next Layer** to proceed to the next layer.
 
-Click on **Confirm** and then **Next** after you have completed filling out all the core layers.
+Click on **Confirm** and then **Next** after you have completed selecting all the core layers.
 
 ![GCP cluster profile view](/getting-started/gcp/getting-started_create-cluster-profile_cluster_profile_stack.webp)
 

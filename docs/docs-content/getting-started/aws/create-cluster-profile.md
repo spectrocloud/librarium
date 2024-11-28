@@ -62,7 +62,7 @@ version you select, a YAML editor will open. Click **Confirm Changes** to procee
 
 As you fill out the information for each layer, click on **Next Layer** to proceed to the next layer.
 
-Click on **Confirm** and then **Next** after you have completed filling out all the core layers.
+Click on **Confirm** and then **Next** after you have completed selecting all the core layers.
 
 ![A view of the cluster profile stack](/getting-started/aws/getting-started_create-cluster-profile_clusters_parameters.webp)
 
@@ -102,7 +102,7 @@ Select the **Enable Hello Universe API** preset. The pack manifest changes accor
 The pack requires two values to be replaced for the authorization token and for the database password when using this
 preset. Replace these values with your own base64 encoded values. The
 [_hello-universe_](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer) repository
-provides an unencoded that you can use.
+provides an unencoded token that you can use.
 
 Click on **Confirm Updates**. The manifest editor closes.
 
