@@ -90,10 +90,11 @@ repository.
 
 ### Message Brokers
 
-Palette requires reliable, scalable, and secure communication. The internal microservices use a Publish-Subscribe pattern
-implemented with [gRPC](https://grpc.io/) to achieve this. In order to support this communication pattern, a message
-broker service acts as the central hub for message exchange. Palette message brokers are automatically scaled, ensuring
-that a quorum is available for each cluster. The broker system is designed to provide the following functionality.
+Palette requires reliable, scalable, and secure communication. The internal microservices use a Publish-Subscribe
+pattern implemented with [gRPC](https://grpc.io/) to achieve this. In order to support this communication pattern, a
+message broker service acts as the central hub for message exchange. Palette message brokers are automatically scaled,
+ensuring that a quorum is available for each cluster. The broker system is designed to provide the following
+functionality.
 
 1. It efficiently distributes incoming gRPC requests across multiple replicas of the message broker to optimize resource
    usage and platform performance. This capability supports Palette's ability to manage large enterprise Kubernetes
