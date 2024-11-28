@@ -149,6 +149,8 @@ kubectl commands against the host cluster.
 ![Image that the kubeconfig file](/getting-started/azure/getting-started_update-k8s-cluster_download-kubeconfig.webp)
 
 Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
+Issue the following command, replacing `~/Downloads/admin.azure-cluster.kubeconfig` with the path to your kubeconfig
+file.
 
 ```shell
 export KUBECONFIG=~/Downloads/admin.azure-cluster.kubeconfig
