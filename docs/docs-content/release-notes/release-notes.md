@@ -38,6 +38,11 @@ tags: ["release-notes"]
   involve using a session cache, improved session management and enhanced session keep alives. These changes allow
   Palette to operate on environments experiencing heavy load.
 
+- Palette's message brokers are now automatically scaled, ensuring that a quorum is available for each management plane
+  cluster. By default, two replicas of the message broker are created in each management plane cluster. This improvement
+  supports Palette's ability to manage large enterprise Kubernetes clusters, which are often distributed across numerous
+  Kubernetes clusters.
+
 ### Edge
 
 #### Features
