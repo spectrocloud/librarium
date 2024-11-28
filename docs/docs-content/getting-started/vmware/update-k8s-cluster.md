@@ -150,6 +150,9 @@ This file enables you and other users to issue kubectl commands against the host
 
 Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
 
+Issue the following command, replacing `~/Downloads/admin.vmware-cluster.kubeconfig` with the path to your kubeconfig
+file.
+
 ```shell
 export KUBECONFIG=~/Downloads/admin.vmware-cluster.kubeconfig
 ```
