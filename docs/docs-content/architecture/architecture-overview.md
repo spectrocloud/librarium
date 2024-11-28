@@ -93,21 +93,21 @@ repository.
 Palette requires reliable, scalable, and secure communication. The internal microservices use a Publish-Subscribe
 pattern implemented with [gRPC](https://grpc.io/) to achieve this. In order to support this communication pattern, a
 message broker service acts as the central hub for message exchange. Palette message brokers are automatically scaled,
-ensuring that a quorum is available for each cluster. The broker system is designed to provide the following
-functionality.
+ensuring that a quorum is available for each management plane cluster. The broker system is designed to provide the
+following functionality.
 
 1. It efficiently distributes incoming gRPC requests across multiple replicas of the message broker to optimize resource
    usage and platform performance. This capability supports Palette's ability to manage large enterprise Kubernetes
-   clusters.
+   clusters, which are often distributed across numerous Kubernetes clusters.
 2. It provides high availability by enabling clients to fail over to alternative replicas in the case of a pod failure.
-   By default, two replicas of the message broker are created in each cluster.
+   By default, two replicas of the message broker are created in each management plane cluster.
 3. It automatically adjusts to changes in the number of broker replicas without manual reconfiguration, ensuring that
    the platform dynamically scales in response to load changes.
 4. It enforces message authentication and security by generating secondary certificates used for broker to broker
    communication. This provides security in depth.
 
 Any Enterprise and VerteX Palette cluster will have a message broker that you can inspect. First, ensure that you can
-connect to the cluster. Refer to the
+connect to the management plane cluster. Refer to the
 [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide for further
 information. You can then view your message broker by executing the following command.
 
