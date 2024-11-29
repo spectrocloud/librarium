@@ -69,11 +69,70 @@ tags: ["release-notes"]
 
 #### Kubernetes
 
+| Pack Name                                | New Version |
+| ---------------------------------------- | ----------- |
+| Kubernetes EKS                           | 1.31.1      |
+| Kubernetes AKS                           | 1.31.1      |
+| Kubernetes GKE                           | 1.31.1      |
+| K3s                                      | 1.28.15     |
+| K3s                                      | 1.29.10     |
+| K3s                                      | 1.30.6      |
+| K3s                                      | 1.31.1      |
+| Palette eXtended Kubernetes (PXK)        | 1.28.15     |
+| Palette eXtended Kubernetes (PXK)        | 1.29.10     |
+| Palette eXtended Kubernetes (PXK)        | 1.30.6      |
+| Palette eXtended Kubernetes (PXK)        | 1.31.1      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.28.15     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.29.10     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.30.6      |
+| RKE2 - Edge                              | 1.28.15     |
+| RKE2 - Edge                              | 1.29.10     |
+| RKE2 - Edge                              | 1.30.6      |
+| RKE2 - Edge                              | 1.31.1      |
+
+#### CNI
+
+| Pack Name          | New Version |
+| ------------------ | ----------- |
+| AWS VPC CNI (Helm) | 1.18.6      |
+| Calico             | 3.29.0      |
+| Flannel            | 0.26.1      |
+
 #### CSI
+
+| Pack Name            | New Version |
+| -------------------- | ----------- |
+| Longhorn             | 1.7.2       |
+| Portworx /w Operator | 3.2         |
 
 #### Add-on Packs
 
+| Pack Name             | New Version |
+| --------------------- | ----------- |
+| Argo CD               | 7.6.12      |
+| Calico Network Policy | 3.29.0      |
+| Longhorn              | 1.7.2       |
+| Nginx                 | 1.11.3      |
+| Portworx /w Operator  | 3.2         |
+| Vault                 | 0.29.1      |
+
 #### FIPS Packs
+
+| Pack Name                                | New Version |
+| ---------------------------------------- | ----------- |
+| Calico                                   | 3.29.0      |
+| Flannel                                  | 0.26.1      |
+| Palette eXtended Kubernetes (PXK)        | 1.28.15     |
+| Palette eXtended Kubernetes (PXK)        | 1.29.10     |
+| Palette eXtended Kubernetes (PXK)        | 1.30.6      |
+| Palette eXtended Kubernetes (PXK)        | 1.31.1      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.28.15     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.29.10     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.30.6      |
+| RKE2 - Edge                              | 1.28.15     |
+| RKE2 - Edge                              | 1.29.10     |
+| RKE2 - Edge                              | 1.30.6      |
+| RKE2 - Edge                              | 1.31.1      |
 
 #### Community Packs
 
