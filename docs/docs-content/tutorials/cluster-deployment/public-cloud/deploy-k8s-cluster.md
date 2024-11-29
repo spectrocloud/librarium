@@ -634,6 +634,11 @@ In the manifest editor, insert the following content.
 
 ```yaml
 apiVersion: v1
+kind: Namespace
+metadata:
+  name: hello-universe
+---
+apiVersion: v1
 kind: Service
 metadata:
   name: hello-universe-service
