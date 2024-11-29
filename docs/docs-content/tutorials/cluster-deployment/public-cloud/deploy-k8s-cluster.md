@@ -634,9 +634,15 @@ In the manifest editor, insert the following content.
 
 ```yaml
 apiVersion: v1
+kind: Namespace
+metadata:
+  name: hello-universe
+---
+apiVersion: v1
 kind: Service
 metadata:
   name: hello-universe-service
+  namespace: hello-universe
 spec:
   type: LoadBalancer
   ports:
@@ -650,6 +656,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-universe-deployment
+  namespace: hello-universe
 spec:
   replicas: 2
   selector:
