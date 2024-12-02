@@ -374,7 +374,7 @@ your environment. Reach out to our support team if you need assistance.
 
     <TabItem label="OCI Registry" value="oci">
 
-    ```yaml {53,68-75}
+    ```yaml {53,68-75,87-95}
     #########################
     # Spectro Cloud Palette #
     #########################
