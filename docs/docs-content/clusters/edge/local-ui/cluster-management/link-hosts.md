@@ -164,8 +164,8 @@ You can unlink a follower host on the follower host itself or from the leader no
 
 ## Remove Leader Node Status
 
-If you have made a host the leader of a group of linked hosts, but later want to link it to another leader node, you
-must first remove its leader node status.
+Removing the leader node status of a node allows you to link the node to another group of linked nodes as a follower.
+You can only do this when the node is not part of an active cluster.
 
 ### Prerequisites
 
