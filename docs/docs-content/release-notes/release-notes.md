@@ -48,7 +48,23 @@ tags: ["release-notes"]
 - Palette's message brokers are now automatically scaled, ensuring that a quorum is available for each management plane
   cluster. By default, two replicas of the message broker are created in each management plane cluster. This improvement
   supports Palette's ability to manage large enterprise Kubernetes clusters, which are often distributed across numerous
-  Kubernetes clusters.
+  Kubernetes clusters. Refer to the [Message Brokers](../architecture/architecture-overview.md#message-brokers) for
+  further details.
+
+- Audit log entries now display the **Resource UID** in the Palette UI. This facilitates precise event and user action
+  tracking for Palette users. Refer to the [Audit Logs](../audit-logs/audit-logs.md) section to learn more about how to
+  use and enable audit logs.
+
+- The cluster profile differential editor was improved with a change legend and informative tooltips. These changes
+  provide an improved user experience for users who modify and update cluster profiles. Refer to the
+  [Modify Cluster Profiles](../profiles/cluster-profiles/modify-cluster-profiles/modify-cluster-profiles.md) to learn
+  about all the ways cluster profiles can be modified.
+
+- Cluster backups now provide three backup options of cluster resources. These options allow users to specify whether to
+  include cluster-wide resources regardless of namespace in their backup configuration. By default, Palette now backs up
+  only namespaced resources and their associated persistent volumes. Refer to the
+  [Create Cluster Backup](../clusters/cluster-management/backup-restore/create-cluster-backup.md) guide to learn more
+  about Palette's backup capabilities.
 
 ### Edge
 
@@ -125,9 +141,7 @@ tags: ["release-notes"]
 | --------------------- | ----------- |
 | Argo CD               | 7.6.12      |
 | Calico Network Policy | 3.29.0      |
-| Longhorn              | 1.7.2       |
 | Nginx                 | 1.11.3      |
-| Portworx /w Operator  | 3.2.0       |
 | Vault                 | 0.29.1      |
 
 #### FIPS Packs
