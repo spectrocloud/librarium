@@ -40,8 +40,8 @@ installed in airgap mode in Local UI.
 
 6. Select a host that you want to add to the node pool.
 
-7. Click **Confirm** to confirm your changes. It may take 15 to 25 mins for the change to take effect depending on your
-   environment and workload.
+7. Click **Confirm** to confirm your changes. It may take 15 to 25 minutes for the change to take effect, depending on
+   your environment and workload.
 
 ### Validate
 
@@ -79,9 +79,9 @@ hosts installed in airgap mode in Local UI.
 5. In the pop-up window, scroll down to **Pool Configuration**. Click the **Delete** button next to the nodes you want
    to remove.
 
-6. When you are done removing nodes, Click **Confirm** to confirm your changes. It may take 15 to 25 mins for the change
-   to take effect depending on your environment and workload. If you have deleted all nodes in the worker pool, you can
-   remove the pool altogether.
+6. When you are done removing nodes, Click **Confirm** to confirm your changes. It may take 15 to 25 minutes for the
+   change to take effect depending on your environment and workload. If you have deleted all nodes in the worker pool,
+   you can remove the pool altogether.
 
 ### Validate
 

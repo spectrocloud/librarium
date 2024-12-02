@@ -8,7 +8,7 @@ tags: ["edge"]
 ---
 
 You can create and manage single-node as well as multi-node clusters on airgapped hosts locally from Local UI. This page
-guides you through how to create a cluster using Local UI.
+teaches you how to create a cluster using Local UI.
 
 :::preview
 
@@ -38,7 +38,7 @@ guides you through how to create a cluster using Local UI.
 
   :::warning
 
-  Content bundles must be built with a Palette Edge CLI version that is later than `4.5.b`. Visit the
+  Content bundles must be built with a Palette Edge CLI version that is later than `4.5.7`. Visit the
   [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page to download the appropriate version of the Palette
   Edge CLI to build the content bundle.
 
