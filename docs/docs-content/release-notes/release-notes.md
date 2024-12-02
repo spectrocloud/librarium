@@ -62,6 +62,21 @@ tags: ["release-notes"]
 
 #### Improvements
 
+- The EdgeForge build process utility, CanvOS, now supports adding multiple certificates that may be required for
+  network proxy configurations. The certificates can be stored in the **certs** folder in the root of the project
+  directory. The **certs** folder is automatically included in the CanvOS build process. Refer to the
+  [Build Provider Images](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md) for guidance on
+  using the **certs** folder to pass multiple proxy certificates to the CanvOS build process.
+
+#### Deprecations and Removals
+
+- The EdgeForge build process utility, CanvOS has an argument variable named `PROXY_CERT_PATH`. This variable is
+  deprecated and no longer the recommended way to pass proxy certificates to the CanvOS build process. Use the **certs**
+  folder in the root of the project directory to store proxy certificates. The **certs** folder is automatically
+  included in the CanvOS build process. Refer to the
+  [Build Provider Images](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md) for guidance on
+  using the **certs** folder to pass proxy certificates to the CanvOS build process.
+
 ### VerteX
 
 #### Features
@@ -71,12 +86,22 @@ tags: ["release-notes"]
 
 ### Automation
 
+- Terraform version 0.23.0 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
 #### Deprecations and Removals
 
 - The Terraform resource, `spectrocloud_cluster_import` is deprecated. To import a cluster deployed outside of the
   context of Palette, refer to the [Import a Cluster](../clusters/imported-clusters/cluster-import.md) guide.
 
 ### Docs and Education
+
+- The Security Bulletins page has been updated with a new and improved table design to help you find information. You
+  can now sort columns, change page size, enjoy a fixed column header, and link directly to different vulnerability
+  reports for a specific product edition. Check out the [Security Bulletins](../security-bulletins/reports/reports.md)
+  page for the latest security advisories.
 
 ### Packs
 
