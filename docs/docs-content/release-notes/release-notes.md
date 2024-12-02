@@ -17,7 +17,31 @@ tags: ["release-notes"]
 
 #### Features
 
+- Palette provides the ability to migrate VMs from VMware vSphere to Virtual Machine Orchestrator (VMO) using the
+  Virtual Machine Migration Assistant (VM Migration Assistant). The
+  <VersionedLink text="VM Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant-pack" /> add-on
+  pack provides you with an UI to perform the VM migrations. Refer to the [VM Migration
+  Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) section for further information.
+
 #### Improvements
+
+- The "Export Profile" and "Delete" buttons were renamed to "Export profile version" and "Delete profile version" in the
+  cluster profile editor. The revised text clarifies that the export and delete operations only apply to a single
+  profile version.
+
+- Palette's virtual machine (VM) cloning capabilities were improved to cover complete VM configurations, including data
+  volumes and data volume templates. These improved capabilities ensure accurate VM duplication, allowing users to
+  correctly replicate environments. Refer to the [Clone a VM](../vm-management/create-manage-vm/clone-vm.md) guide for
+  further details.
+
+- The reconciliation loop that Palette uses to check the status of Kubernetes resources was optimized. The improvements
+  involve using a session cache, improved session management and enhanced session keep alives. These changes allow
+  Palette to operate on environments experiencing heavy load.
+
+- Palette's message brokers are now automatically scaled, ensuring that a quorum is available for each management plane
+  cluster. By default, two replicas of the message broker are created in each management plane cluster. This improvement
+  supports Palette's ability to manage large enterprise Kubernetes clusters, which are often distributed across numerous
+  Kubernetes clusters.
 
 ### Edge
 
@@ -45,11 +69,76 @@ tags: ["release-notes"]
 
 #### Kubernetes
 
+| Pack Name                                | New Version |
+| ---------------------------------------- | ----------- |
+| K3s                                      | 1.28.15     |
+| K3s                                      | 1.29.10     |
+| K3s                                      | 1.30.6      |
+| K3s                                      | 1.31.1      |
+| Kubernetes EKS                           | 1.31.1      |
+| Kubernetes AKS                           | 1.31.1      |
+| Kubernetes GKE                           | 1.31.1      |
+| Palette eXtended Kubernetes (PXK)        | 1.28.15     |
+| Palette eXtended Kubernetes (PXK)        | 1.29.10     |
+| Palette eXtended Kubernetes (PXK)        | 1.30.6      |
+| Palette eXtended Kubernetes (PXK)        | 1.31.1      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.28.15     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.29.10     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.30.6      |
+| RKE2                                     | 1.28.15     |
+| RKE2                                     | 1.29.10     |
+| RKE2                                     | 1.30.6      |
+| RKE2 - Edge                              | 1.28.15     |
+| RKE2 - Edge                              | 1.29.10     |
+| RKE2 - Edge                              | 1.30.6      |
+| RKE2 - Edge                              | 1.31.1      |
+
+#### CNI
+
+| Pack Name          | New Version |
+| ------------------ | ----------- |
+| AWS VPC CNI (Helm) | 1.18.6      |
+| Calico             | 3.29.0      |
+| Flannel            | 0.26.1      |
+
 #### CSI
+
+| Pack Name            | New Version |
+| -------------------- | ----------- |
+| Longhorn             | 1.7.2       |
+| Portworx /w Operator | 3.2.0       |
 
 #### Add-on Packs
 
+| Pack Name             | New Version |
+| --------------------- | ----------- |
+| Argo CD               | 7.6.12      |
+| Calico Network Policy | 3.29.0      |
+| Longhorn              | 1.7.2       |
+| Nginx                 | 1.11.3      |
+| Portworx /w Operator  | 3.2.0       |
+| Vault                 | 0.29.1      |
+
 #### FIPS Packs
+
+| Pack Name                                | New Version |
+| ---------------------------------------- | ----------- |
+| Calico                                   | 3.29.0      |
+| Flannel                                  | 0.26.1      |
+| Palette eXtended Kubernetes (PXK)        | 1.28.15     |
+| Palette eXtended Kubernetes (PXK)        | 1.29.10     |
+| Palette eXtended Kubernetes (PXK)        | 1.30.6      |
+| Palette eXtended Kubernetes (PXK)        | 1.31.1      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.28.15     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.29.10     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.30.6      |
+| RKE2                                     | 1.28.15     |
+| RKE2                                     | 1.29.10     |
+| RKE2                                     | 1.30.6      |
+| RKE2 - Edge                              | 1.28.15     |
+| RKE2 - Edge                              | 1.29.10     |
+| RKE2 - Edge                              | 1.30.6      |
+| RKE2 - Edge                              | 1.31.1      |
 
 #### Community Packs
 
