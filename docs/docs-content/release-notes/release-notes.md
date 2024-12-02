@@ -115,7 +115,7 @@ tags: ["release-notes"]
 
 - The Security Bulletins page has been updated with a new and improved table design to help you find information. You
   can now sort columns, change page size, enjoy a fixed column header, and link directly to different vulnerability
-  reports for a specific product edition. Check out the [Security Bulletins](../security-bulletins/reports/reports.md)
+  reports for a specific product edition. Check out the [Security Bulletins](../security-bulletins/reports/reports.mdx)
   page for the latest security advisories.
 
 - The User & Role Management section of the documentation has been updated to provide a more comprehensive information
