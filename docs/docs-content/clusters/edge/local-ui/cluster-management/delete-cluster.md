@@ -17,8 +17,8 @@ For more information about leader nodes, refer to [Link Hosts](link-hosts.md#lea
 
 ## Prerequisites
 
-- Access to [Local UI](../host-management/access-console.md). Any Operating System user can be used to log in to
-  Local UI.
+- Access to [Local UI](../host-management/access-console.md). Any Operating System user can be used to log in to Local
+  UI.
 
 - An active cluster deployed and managed by Local UI.
 

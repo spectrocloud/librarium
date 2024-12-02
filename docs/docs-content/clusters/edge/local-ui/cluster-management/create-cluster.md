@@ -7,7 +7,8 @@ sidebar_position: 20
 tags: ["edge"]
 ---
 
-You can create and manage single-node as well as multi-node clusters on airgapped hosts locally from Local UI. This page teaches you how to create a cluster using Local UI.
+You can create and manage single-node as well as multi-node clusters on airgapped hosts locally from Local UI. This page
+teaches you how to create a cluster using Local UI.
 
 :::preview
 
