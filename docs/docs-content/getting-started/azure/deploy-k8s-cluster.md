@@ -144,6 +144,13 @@ application with a frontend, API server, and Postgres database.
 
 Use the following steps to remove all the resources you created for the tutorial.
 
+:::tip
+
+If you plan to explore the [Deploy Cluster Profile Updates](./update-k8s-cluster.md) tutorial, do not delete your
+cluster, as it is a prerequisite for the tutorial.
+
+:::
+
 To remove the cluster, navigate to the left **Main Menu** and click on **Clusters**. Select the cluster you want to
 delete to access its details page.
 
