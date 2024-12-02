@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## December 9, 2024 - Release 4.5.12
+## December 7, 2024 - Release 4.5.12
 
 ### Palette {#palette-enterprise-4-5-12}
 
@@ -118,6 +118,10 @@ tags: ["release-notes"]
   can now sort columns, change page size, enjoy a fixed column header, and link directly to different vulnerability
   reports for a specific product edition. Check out the [Security Bulletins](../security-bulletins/reports/reports.md)
   page for the latest security advisories.
+
+- The User & Role Management section of the documentation has been updated to provide a more comprehensive information
+  about user management in Palette. The section now includes guides on how to manage users, roles, and permissions in
+  Palette. Check out the [User & Role Management](../user-management/user-management.md) section to learn more.
 
 ### Packs
 
