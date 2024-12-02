@@ -15,23 +15,47 @@ communicate with each other securely.
 ![A diagram of the order of operations for linking hosts.](/clusters_edge_localui_cluster-mgmt_link-hosts.webp)
 
 Host linking provides the hosts with the necessary network and security infrastructure to form a cluster together. In a
-group of linked hosts, hosts can broadcast information to all its peers. Every group has a leader node, which provides
-tokens with its IP and a One-Time Password (OTP) credentials that you can use to link other nodes.
+group of linked hosts, hosts can broadcast information to all its peers.
+
+## Leader Nodes
+
+To link hosts together, you designate one node as the leader node. The leader node has two obligations:
+
+- Generate tokens with its IP address and One-Time Password (OTP) credentials, which you can use to link other nodes as
+  followers.
+- Sync content bundles uploaded to the node and configuration changes made to the node to the rest of the cluster.
+
+A group of linked hosts that have not formed a cluster only has one leader node, where you can upload content bundles
+and create a cluster.
+
+Once a cluster is formed, every control plane node will be generating the pairing tokens and can act as the leader node.
+When you perform an action on any control plane node, that node will act as the leader and propagate the action to the
+rest of the cluster. For example, if you upload a content bundle to a control plane node, the content bundle will be
+synced from that node to the rest of the cluster, even if the control plane node was not the leader node before a
+cluster is formed. This design removes the need to memorize which node was the leader before forming a cluster.
+
+When you [delete a cluster](../cluster-management/delete-cluster.md), all nodes will return to the **Ready** state, but
+will remain linked. Since the group of hosts no longer have a cluster, they will only have one leader node, which is the
+host where you performed the delete action from.
 
 ## Link Hosts
 
 Linked hosts will sync their status and uploaded content, including images for the Palette agent and provider images,
-with each other. In a group of linked hosts that have not formed a cluster, only the leader node has access to
-functionality such as to change host settings, upload content, and create clusters. Once a cluster is created, all
-control plane nodes will be considered leader nodes and only the control plane nodes have access to cluster and host
-management features.
+with each other.
+
+In a group of linked hosts that have not formed a cluster, only the leader node has access to functionality such as to
+change host settings, upload content, and create clusters. Once a cluster is created, all control plane nodes can act as
+leader nodes, and all control plane nodes will generate pairing tokens which you can use to link other nodes. If you
+upload content bundles to any of the control plane nodes, its content will be synced with the rest of the group of
+linked hosts.
 
 ### Limitations
 
 - All hosts must be deployed in the same deployment mode. For more information, refer to
   [Deployment Modes](../../../../deployment-modes/deployment-modes.md).
 
-- For hosts that are deployed in agent mode, all hosts must share the same Operating System (OS).
+- For hosts that are deployed in [agent mode](../../../../deployment-modes/agent-mode/agent-mode.md), all hosts must
+  share the same Operating System (OS).
 
 - You cannot update the IP address of a linked node.
 
@@ -47,7 +71,7 @@ management features.
 
 - The `stylus.installationMode` parameter is set to `airgap` in your user data configuration for all your hosts.
 
-- No host has any current cluster workloads. Refer to [Delete a Cluster](./delete-cluster.md) and
+- No follower host has any current cluster workloads. Refer to [Delete a Cluster](./delete-cluster.md) and
   [Unlink Hosts](#unlink-hosts) to learn how to delete a cluster and unlink a host to free it up for linking.
 
 ### Procedure
@@ -60,6 +84,8 @@ management features.
 3. Click **Generate token**. This will make the host start generating tokens you will use to link this host with other
    hosts. The base-64 encoded token contains the IP address of the node, as well as an OTP that will expire in two
    minutes. Once a token expires, the leader node generates another token automatically.
+
+   If you have already made the
 
 4. Click the **Copy** button to copy the token.
 
