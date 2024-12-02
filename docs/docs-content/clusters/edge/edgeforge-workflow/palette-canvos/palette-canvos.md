@@ -912,7 +912,7 @@ git checkout v4.4.12
 
     :::
 
-23. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s
+23. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the K3s
     version 1.27.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.27.2 to the
     ttl.sh image registry.
 

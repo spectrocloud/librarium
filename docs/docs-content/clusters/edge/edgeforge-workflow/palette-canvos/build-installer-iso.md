@@ -179,7 +179,7 @@ a disconnected Edge host instance via [Local UI](../../local-ui/local-ui.md). Fo
 [Upload Content Bundle](../../local-ui/cluster-management/upload-content-bundle.md).
 
 10. Refer to [Build Content Bundle](build-content-bundle.md) to learn how to build content bundles for your ISO image.
-    Since you are including the content bundle in the Installer ISO, you should choose either the zst format or the tar
+    Since you are including the content bundle in the Installer ISO, you should choose either the ZST format or the tar
     format for the content bundle. Do not build the content bundle as an ISO image.
 
     :::info
