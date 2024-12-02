@@ -9,7 +9,7 @@ tags: ["projects"]
 
 Tenant administrators can create and manage projects in Palette. A tenant administrator automatically has access to all
 projects within the tenant. You can associate users and teams with a project. Check out the
-[Project Association](../../user-management/project-association.md) page to learn more.
+[Assign a Role](../../user-management/palette-rbac/assign-a-role.md) page to learn more.
 
 ## Create a Project
 

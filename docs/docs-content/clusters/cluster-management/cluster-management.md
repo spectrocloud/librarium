@@ -78,10 +78,10 @@ The following sections describe these capabilities in detail:
   filter Kubernetes clusters. You can find these capabilities on the **Clusters** page. Mapping and filtering is
   available for clusters deployed to public clouds, data centers and edge hosts.
 
-- [Palette Access Control](cluster-tag-filter/cluster-tag-filter.md) - Palette provides the ability to manage user and
-  role access privileges through tags. This feature helps you reduce the overhead in managing user and role access to
-  clusters by assigning tags. Tags can be used to group clusters, allowing you to apply access controls to the tag
-  rather than to each cluster, user, or role. This reduces the overhead of managing access controls for individual users
-  and clusters.
+- [Palette Access Control](../../user-management/palette-rbac/implement-abac.md) - Palette provides the ability to
+  manage user and role access privileges through tags. This feature helps you reduce the overhead in managing user and
+  role access to clusters by assigning tags. Tags can be used to group clusters, allowing you to apply access controls
+  to the tag rather than to each cluster, user, or role. This reduces the overhead of managing access controls for
+  individual users and clusters.
 
 - [Image Swap](image-swap.md) - Learn how to use image swap capabilities with Palette.

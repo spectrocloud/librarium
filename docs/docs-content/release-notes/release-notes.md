@@ -240,7 +240,7 @@ to learn more about the changes introduced in this release.
 
 ### Security Notices
 
-- Review the [Security Bulletins](../security-bulletins/reports/reports.md) page for the latest security advisories.
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
 
 ### Palette Enterprise {#palette-enterprise-4-5-3}
 
@@ -250,7 +250,8 @@ to learn more about the changes introduced in this release.
   [decision to deprecate](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr) the `gcr.io`
   container registry, we are adding a new image registry that Palette agents will use to pull images. The new registry
   is `us-docker.pkg.dev`. If you have network restrictions in place, ensure that the new registry is allowed. The new
-  registry is available for use starting with this release. Refer to the
+  registry is available for use starting with this release. Ensure network connections to `grc.io` are allowed until the
+  migration is complete. Refer to the
   [Proxy Requirements](../enterprise-version/install-palette/install-palette.md#proxy-requirements) for a complete list
   of domains that must be allowed.
 

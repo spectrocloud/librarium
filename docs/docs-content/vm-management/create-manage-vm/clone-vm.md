@@ -23,6 +23,28 @@ clone a VM for the following reasons:
 
 - An active cluster in Palette with the Virtual Machine Orchestrator (VMO) pack.
 
+  :::warning
+
+  Ensure that the **Snapshot** feature gate is enabled in the Virtual Machine Orchestrator (VMO) pack. This is enabled
+  by default, but may be modified during cluster profile creation and editing. This feature gate allows Palette to
+  access the KubeVirt resources required for correctly cloning your VMs and their data volumes. Learn more about the
+  KubeVirt clone capabilities on the [Clone API](https://kubevirt.io/user-guide/storage/clone_api/#clone-api) page in
+  the official project documentation.
+
+  Select the VMO pack in your cluster profile. Then, click on **Values** under the **Pack Details** section. Verify that
+  `Snapshot` is present in the `charts.virtual-machine-orchestrator.kubevirt.kubevirtResources.additionalFeatureGates`
+  field.
+
+  ```yaml hideClipboard {5}
+  kubevirtResource:
+    name: kubevirt
+    useEmulation: false
+    additionalFeatureGates:
+      - Snapshot
+  ```
+
+  :::
+
 - Outbound internet connectivity for port 443 is allowed so that you and your applications can connect with the Spectro
   Cloud reverse proxy.
 
