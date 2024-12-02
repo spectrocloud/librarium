@@ -424,7 +424,7 @@ to learn more about the changes introduced in this release.
 
 ### Security Notices
 
-- Review the [Security Bulletins](../security-bulletins/reports/reports.md) page for the latest security advisories.
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
 
 ### Palette Enterprise {#palette-enterprise-4-5-3}
 
