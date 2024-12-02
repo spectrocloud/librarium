@@ -136,15 +136,17 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
    through Local UI. This includes both the content bundle and cluster definition. For more information, refer to
    [Embed Public Key in Edge Artifacts](./signed-content.md).
 
+### Provide Client Certificates for Proxy Servers
+
 8. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
    require client certificates.
 
    You can provide the base-64 encoded certificates in PEM format in the **certs** folder at the root directory of the
    **CanvOS** repository. You can provide as many certificates as you need in the folder.
 
-   If you are using a CanvOS tag that is earlier than `4.5.b`, you need to use the `PROXY_CERT_PATH` build argument to
-   provide a path to the certificate. This approach only allows you to specify one certificate. For more information,
-   refer to [Earthly Build Arguments](../../edgeforge-workflow/palette-canvos/arg.md).
+   If you are using a CanvOS tag that is earlier than `4.5.b`, you need to use the `PROXY_CERT_PATH` build argument in
+   the **.arg** file to provide a path to the certificate. This approach only allows you to specify one certificate. For
+   more information, refer to [Earthly Build Arguments](../../edgeforge-workflow/palette-canvos/arg.md).
 
    :::warning
 
