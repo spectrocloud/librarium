@@ -27,9 +27,7 @@ tags: ["release-notes"]
 - The Spectro Cloud Artifactory Repository (SCAR) is now hosted inside an Open Container Initiative (OCI) repository.
   Previously, airgaped self-hosted Palette or VerteX installations required a file server to host the SCAR repository.
   With this release, the SCAR repository is now hosted inside the same OCI registry hosting packs and images. This
-  removes the need for a file server to host the SCAR content. This change applies to new self-hosted installations of
-  Palette Enterprise or VerteX. If you are using Palette SaaS, or a self-hosted installation of Palette Enterprise or
-  VerteX that is not airgapped, no action is required. If you have an existing airgaped self-hosted installation of
+  removes the need for a file server to host the SCAR content. If you have an existing self-hosted installation of
   Palette Enterprise or VerteX, reach out to our support team before upgrading to this release.
 
 #### Improvements
@@ -55,6 +53,12 @@ tags: ["release-notes"]
 ### Edge
 
 #### Features
+
+- <TpBadge /> Palette now supports the ability to link Edge hosts for the purpose of creating a multi-node cluster
+  through Local UI. Previously, Local UI only supported single-node clusters. Host linking provides Edge hosts with the
+  necessary network and security infrastructure to form a cluster. This feature allows you to create multi-node clusters
+  using Local UI, providing you with more flexibility when deploying Edge clusters. Check out the [Link
+  Hosts](../clusters/edge/local-ui/cluster-management/cluster-management.md) guide to learn more about this feature.
 
 #### Improvements
 
@@ -85,8 +89,6 @@ tags: ["release-notes"]
 | K3s                                      | 1.30.6      |
 | K3s                                      | 1.31.1      |
 | Kubernetes EKS                           | 1.31.1      |
-| Kubernetes AKS                           | 1.31.1      |
-| Kubernetes GKE                           | 1.31.1      |
 | Palette eXtended Kubernetes (PXK)        | 1.28.15     |
 | Palette eXtended Kubernetes (PXK)        | 1.29.10     |
 | Palette eXtended Kubernetes (PXK)        | 1.30.6      |
