@@ -43,12 +43,6 @@ host where you performed the delete action from.
 Linked hosts will sync their status and uploaded content, including images for the Palette agent and provider images,
 with each other.
 
-In a group of linked hosts that have not formed a cluster, only the leader node has access to functionality such as to
-change host settings, upload content, and create clusters. Once a cluster is created, all control plane nodes can act as
-leader nodes, and all control plane nodes will generate pairing tokens which you can use to link other nodes. If you
-upload content bundles to any of the control plane nodes, its content will be synced with the rest of the group of
-linked hosts.
-
 ### Limitations
 
 - All hosts must be deployed in the same deployment mode. For more information, refer to
