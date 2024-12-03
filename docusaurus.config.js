@@ -262,7 +262,7 @@ const config = {
       defer: true,
     },
     {
-      src: "https://widget.kapa.ai/kapa-widget.bundle.js",
+      src: "/scripts/kapa.bundle.js",
       "data-website-id": "9c212df9-d1fc-4f65-9c93-8bcd9c8ec6ca",
       "data-project-name": "Spectro Cloud Docs AI",
       "data-project-color": "#3679c6",
@@ -271,6 +271,7 @@ const config = {
       "data-modal-title": "Spectro Cloud - Ask Docs",
       "data-modal-disclaimer":
         "This is a custom LLM with access to all [Spectro Cloud public documentation](https://docs.spectrocloud.com). This instance is for internal testing and feedback purposes only. If you have any feedback, please share them in the Spectro Cloud #docs internal Slack channel.",
+      async: true,
     },
   ],
   themes: ["docusaurus-theme-openapi-docs"],
