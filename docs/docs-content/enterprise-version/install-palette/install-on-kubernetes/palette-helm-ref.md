@@ -273,30 +273,6 @@ config:
     mirrorRegistries: ""
 ```
 
-### Spectro Cloud Artifact Repository (SCAR)
-
-The Spectro Cloud Artifact Repository (SCAR) does not require any configuration. However, are using a previous
-installation of Palette and configured SCAR, reach out to the support team for guidance on how to update the SCAR
-settings.
-
-| **Parameters**            | **Description**                                                                                | **Type** | **Default value**              |
-| ------------------------- | ---------------------------------------------------------------------------------------------- | -------- | ------------------------------ |
-| `scar.endpoint`           | The endpoint URL of SCAR.                                                                      | String   | `https://specman-service:8443` |
-| `scar.username`           | The username for SCAR.                                                                         | String   | `""`                           |
-| `scar.password`           | The base64-encoded password for the SCAR.                                                      | String   | `""`                           |
-| `scar.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the SCAR connection. | Boolean  | `true`                         |
-| `scar.caCert`             | The base64-encoded certificate authority (CA) certificate for SCAR.                            | String   | `""`                           |
-
-```yaml
-config:
-  scar:
-    endpoint: "https://specman-service:8443"
-    username: ""
-    password: ""
-    insecureSkipVerify: false
-    caCert: ""
-```
-
 ### Image Swap Configuration
 
 You can configure Palette to use image swap to download the required images. This is an advanced configuration option,

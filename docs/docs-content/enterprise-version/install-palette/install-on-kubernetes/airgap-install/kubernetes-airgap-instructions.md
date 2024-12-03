@@ -44,23 +44,6 @@ prerequisite listed is required for a successful installation.
 
   :::
 
-- An HTTP file server to host the Palette manifest. The file server must be accessible from the target environment where
-  Palette will be installed. Below is a list of common file servers:
-
-  - [Apache HTTP Server](https://httpd.apache.org/)
-
-  - [Nginx](https://www.nginx.com/)
-
-  - [Caddy](https://caddyserver.com/)
-
-  :::warning
-
-  Take the necessary steps to secure your file server and ensure it can automatically recover from failure. The file
-  server is a critical component of the airgap installation and must be available post-install for Palette to function
-  properly.
-
-  :::
-
 - To interact with the OCI registry, you must have the following tools installed and available.
 
   - [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) - Required for AWS ECR.
@@ -260,7 +243,7 @@ Complete the following steps before deploying the airgap Palette installation.
     - Pushing image gcr.io/cloud-provider-vsphere/cpi/release/manager:v1.22.8
     .....
     Preparing Manifests Archive
-    Manifests are available in /tmp/spectro-manifests-1696971110.zip. Extract the archive to a file server to serve as a Spectro Cloud Repository
+    Manifests are available in /tmp/spectro-manifests-1696971110.zip.
     Setup Completed
     ```
 
@@ -271,40 +254,12 @@ Complete the following steps before deploying the airgap Palette installation.
 
     :::
 
-13. Move the manifest file located in your temporary directory to the location of your file server. Unzip the manifest
-    file to a folder accessible by the file server. Replace the file name below with the name of the manifest file
-    provided to you by the airgap setup.
-
-    ```shell
-    unzip spectro-manifests-XXXXXXXXXXXX.zip -d /target/folder
-    ```
-
-    :::tip
-
-    If you want to get started quickly with a file server, install
-    [Caddy](https://caddyserver.com/docs/quick-starts/static-files) or use Python3's
-    [http sever](https://docs.python.org/3/library/http.server.html) and issue one of the following commands in the
-    folder where you unzipped the manifest content. Each command will start a file server on port 2015.
-
-    ```shell
-    caddy file-server --listen :2015 --browse
-    ```
-
-    ```shell
-    python3 -m http.server 2015
-    ```
-
-    We do not recommend serving the manifest content over HTTP, but it is an option if you want to get started quickly.
-    For production workloads, enable HTTPS on your file server.
-
-    :::
-
-14. Review the additional packs available for download. The supplemental packs are optional and not required for a
+13. Review the additional packs available for download. The supplemental packs are optional and not required for a
     successful installation. However, to create cluster profiles you may require several of the packs available for
     download. Refer to the [Additional Packs](../../airgap/supplemental-packs.md) resource for a list of available
     packs.
 
-15. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the
+14. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the
     upload process. This step requires internet access, so you may have to download the binaries on a separate machine
     outside the airgap environment and transfer them to the airgap environment using an approved method.
 
@@ -325,7 +280,7 @@ Complete the following steps before deploying the airgap Palette installation.
       Setup Completed
     ```
 
-16. Repeat step 14 for each pack you want to install.
+15. Repeat step 14 for each pack you want to install.
 
 You have now completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to
 ensure the airgap setup process completed successfully.
@@ -336,35 +291,7 @@ Use the following steps to validate the airgap setup process completed successfu
 
 1. Log in to your OCI registry and verify the Palette images and packs are available.
 
-2. Verify the manifest file is accessible from the file server. The manifest file is required for the Palette
-   installation process. The screenshot below is an example of a file server hosting the unzipped manifest content. The
-   example shows Caddy as the file server.
-
-![Example of a file server hosting the unzipped manifest content](/enterprise-version_airgap_airgap-instructions_file-server-caddy.webp)
-
-3. Ensure your file server is accessible from the environment in which you are installing Palette. Use the following
-   command to verify the file server can access the manifest content. Replace the hostname or IP address below with your
-   file server hostname or IP address.
-
-   ```shell
-   curl http://<hostname>:<port>/roar/nickfury/versions.yaml
-   ```
-
-   ```yaml hideClipboard
-   versions:
-     - version: "3.3"
-       filepath: "/roar/nickfury/3.3/version.yaml"
-       patchVersionsFilepath: "/roar/nickfury/3.3/versions.yaml"
-     - version: "3.4"
-       filepath: "/roar/nickfury/3.4/version.yaml"
-       patchVersionsFilepath: "/roar/nickfury/3.4/versions.yaml"
-     - version: "4.0"
-       filepath: "/roar/nickfury/4.0/version.yaml"
-       patchVersionsFilepath: "/roar/nickfury/4.0/versions.yaml"
-   ```
-
 ## Next Steps
 
-You are now ready to install the airgap self-hosted Palette. You will specify your OCI registry and file server during
-the installation process. Refer to the [Install Palette](./airgap-install.md) guide for detailed guidance on installing
-Palette.
+You are now ready to install the airgap self-hosted Palette. You will specify your OCI registry during the installation
+process. Refer to the [Install Palette](./airgap-install.md) guide for detailed guidance on installing Palette.

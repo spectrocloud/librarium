@@ -244,13 +244,6 @@ your environment. Reach out to our support team if you need assistance.
       #   caCert: ""
       #   mirrorRegistries: ""
 
-      scar:
-        endpoint: "https://specman-service:8443" #<Contact Spectro Cloud Sales for More info>
-        username: "" #<Contact Spectro Cloud Sales for More info>
-        password: "" #<Contact Spectro Cloud Sales for More info> Note: Password must be base64
-        insecureSkipVerify: false
-        caCert: ""
-
       imageSwapImages:
         imageSwapInitImage: "gcr.io/spectro-images-public/release-fips/thewebroot/imageswap-init:v1.5.2"
         imageSwapImage: "gcr.io/spectro-images-public/release-fips/thewebroot/imageswap:v1.5.2"
@@ -483,13 +476,6 @@ your environment. Reach out to our support team if you need assistance.
       # For each registry, follow this example format:
       # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>
       # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
-
-      scar:
-        endpoint: "https://specman-service:8443" #<Contact Spectro Cloud Sales for More info>
-        username: "" #<Contact Spectro Cloud Sales for More info>
-        password: "" #<Contact Spectro Cloud Sales for More info> Note: Password must be base64
-        insecureSkipVerify: false
-        caCert: ""
 
       imageSwapImages:
         imageSwapInitImage: "gcr.io/spectro-images-public/release-fips/thewebroot/imageswap-init:v1.5.2"
