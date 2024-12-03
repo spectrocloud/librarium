@@ -7,12 +7,14 @@ on:
   schedule:
     - cron: '0 20 * * 1-5'  # At 12:00 PM PST (8 PM UTC), Monday through Friday
     - cron: '0 5 * * 2-6'  # At 9:00 PM PST (5 AM UTC next day), Monday through Friday
+    - cron: '0 20 * * 6' # At 12:00 PM PST (8 PM UTC next day), Saturday - Due to Security Buletin Publication
+    - cron: '0 20 * * 0' # At 12:00 PM PST (8 PM UTC next day),  Sunday - Due to Security Buletin Publication
   workflow_dispatch:
     inputs:
       useGitHubHostedLargeRunner:
         description: 'Use the GitHub-hosted large runner. Allowed values are true or false. Caution - this results in additional charges to the organization.'
         required: false
-        default: false
+        default: 'false'
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -27,6 +29,8 @@ env:
   ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
   PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
   DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
+  DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
+  DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
 
 
 concurrency:
@@ -54,12 +58,18 @@ jobs:
           cache: "npm"
 
       - run: npm ci
-
-      - name: Compile
+      
+      - name: Build
         run: |
           touch .env
           make versions-ci
-          make build
+          make build-ci
+      
+      - name: Build with cached packs
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
+        uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload to AWS
         run: |
@@ -90,10 +100,20 @@ jobs:
 
       - run: npm ci
 
-      - name: Compile
+      - name: Versions
         run: |
+      
+      - name: Build
+        run: |
+          touch .env
           make versions-ci
-          make build
+          make build-ci
+      
+      - name: Build with cached packs
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
+        uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload to AWS
         run: |

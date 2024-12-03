@@ -22,6 +22,8 @@ env:
   ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
   PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
   DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
+  DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
+  DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
 
 jobs:
   run-ci:
@@ -96,4 +98,11 @@ jobs:
 
       - name: Build
         run: |
-          npm run build
+          touch .env
+          make build-ci
+      
+      - name: Build with cached packs
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
+        uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
