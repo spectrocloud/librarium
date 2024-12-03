@@ -261,6 +261,15 @@ const config = {
       src: `https://w.appzi.io/w.js?token=${process.env.APPZI_TOKEN}`,
       defer: true,
     },
+    {
+      src: "https://widget.kapa.ai/kapa-widget.bundle.js",
+      "data-website-id": "9c212df9-d1fc-4f65-9c93-8bcd9c8ec6ca",
+      "data-project-name": "docs-test",
+      "data-project-color": "#3679c6",
+      "data-project-logo":
+        "https://cdn.prod.website-files.com/64196dbe03e13c204de1b1c8/6470c9c40076accc99546ecb_Spectro%20Cloud%20logo_600x600px_white%20bg.png",
+      async: true,
+    },
   ],
   themes: ["docusaurus-theme-openapi-docs"],
   themeConfig:
