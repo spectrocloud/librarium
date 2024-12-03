@@ -263,9 +263,6 @@ const config = {
     },
   ],
   themes: ["docusaurus-theme-openapi-docs"],
-  customFields: {
-    // Put your custom environment here
-  },
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
