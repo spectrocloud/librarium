@@ -37,8 +37,6 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
   [Add a Database User](https://www.mongodb.com/docs/guides/atlas/db-user/) guide for guidance on how to create a
   database user in Atlas.
 
-- https://spectrocloud.atlassian.net/browse/DOC-1490
-
 - We recommended the following resources for Palette. Refer to the
   [Palette size guidelines](../install-palette.md#size-guidelines) for additional sizing information.
 
