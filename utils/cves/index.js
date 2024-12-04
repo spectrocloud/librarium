@@ -56,6 +56,11 @@ async function generateCVEs() {
             field: "spec.impact.impactedDeployments.connected",
             operator: "ex",
           },
+          {
+            field: "status.state",
+            options: ["Analyzed", "Modified"],
+            operator: "in",
+          },
         ],
       });
       const paletteAirgap = await getSecurityBulletins({
@@ -72,6 +77,11 @@ async function generateCVEs() {
           {
             field: "spec.impact.impactedDeployments.airgap",
             operator: "ex",
+          },
+          {
+            field: "status.state",
+            options: ["Analyzed", "Modified"],
+            operator: "in",
           },
         ],
       });
@@ -90,6 +100,11 @@ async function generateCVEs() {
             field: "spec.impact.impactedDeployments.connected",
             operator: "ex",
           },
+          {
+            field: "status.state",
+            options: ["Analyzed", "Modified"],
+            operator: "in",
+          },
         ],
       });
       const vertexAirgap = await getSecurityBulletins({
@@ -106,6 +121,11 @@ async function generateCVEs() {
           {
             field: "spec.impact.impactedDeployments.airgap",
             operator: "ex",
+          },
+          {
+            field: "status.state",
+            options: ["Analyzed", "Modified"],
+            operator: "in",
           },
         ],
       });
