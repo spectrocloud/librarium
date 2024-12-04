@@ -254,6 +254,15 @@ workaround.
                   passwd: kairos
     ```
 
+    :::info
+
+    You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. Refer to
+    [Edit User Data](../../local-ui/host-management/edit-user-data.md) for more information. However, we still recommend
+    you provide user data during EdgeForge for production workloads, because not all user data fields can be updated in
+    Local UI.
+
+    :::
+
     The command in the `install` block is required for FIPS installations. Configurations in the `stylus` block provide
     the Edge Host with the registration token and the Palette endpoint. And the configurations in the `stage` block
     create a system user that you can use to log in to the Operating System (OS).
