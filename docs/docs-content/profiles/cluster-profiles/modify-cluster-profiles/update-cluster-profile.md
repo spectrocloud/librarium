@@ -155,9 +155,9 @@ Review the following steps to accept incoming pack updates to a cluster profile.
 
 3. Select the profile you want to update to access the profile details page.
 
-4. Palette displays profile details and the profile stack. If there are pending updates, Palette displays the **Updates**
-   button in the top right-hand corner of the page. Click on the **Updates** button to view the **Changes Summary**
-   modal.
+4. Palette displays profile details and the profile stack. If there are pending updates, Palette displays the
+   **Updates** button in the top right-hand corner of the page. Click on the **Updates** button to view the **Changes
+   Summary** modal.
 
 5. If the changes can be applied without any issues, then Palette will display the **Apply Changes** button.
 
