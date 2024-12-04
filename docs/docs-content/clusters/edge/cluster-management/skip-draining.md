@@ -37,27 +37,33 @@ unmanageable state. You can configure your cluster to skip node draining to avoi
 
 4. Select the operating system layer of your profile, and add the following lines.
 
-   ```yaml
+   ```yaml {2,3}
    pack:
-     drainOnUpgrade: false
-     drainPodSelector: upgrade.cattle.io/plan!=control-plan,upgrade.cattle.io/plan!=worker-plan,app!=spectro,app!=spectro-proxy,app!=palette-webhook
+     drainPods: false
+     podSelector: upgrade.cattle.io/plan!=control-plan,upgrade.cattle.io/plan!=worker-plan,app!=spectro,app!=spectro-proxy,app!=palette-webhook
    ```
 
    The following table provides a brief description of the parameters.
 
-   | Parameter          | Description                                                                                                                                                                                                                                                                    | Default                                                                                                                         |
-   | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
-   | `drainOnUpgrade`   | Controls the node drain behavior during a cluster upgrade. `true` means nodes will be drained. `false` means nodes will not be drained. `auto` means nodes will only be drained for multi-node clusters, while single-node clusters will not drain nodes during an upgrade.    | `auto`                                                                                                                          |
-   | `drainPodSelector` | If `drainOnUpgrade` is set to `true` for either single-node or multi-node clusters, or set to `auto` for multi-node clusters, only pods matching the selectors will be drained. The default value avoids draining pods related to planning, or any critical Palette workloads. | `upgrade.cattle.io/plan!=control-plan,upgrade.cattle.io/plan!=worker-plan,app!=spectro,app!=spectro-proxy,app!=palette-webhook` |
+   | Parameter     | Description                                                                                                                                                                                                                                                                 | Default                                                                                                                         |
+   | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+   | `drainPods`   | Controls the node drain behavior during a cluster upgrade. `true` means nodes will be drained. `false` means nodes will not be drained. `auto` means nodes will only be drained for multi-node clusters, while single-node clusters will not drain nodes during an upgrade. | `auto`                                                                                                                          |
+   | `podSelector` | If `drainPods` is set to `true` for either single-node or multi-node clusters, or set to `auto` for multi-node clusters, only pods matching the selectors will be drained. The default value avoids draining pods related to planning, or any critical Palette workloads.   | `upgrade.cattle.io/plan!=control-plan,upgrade.cattle.io/plan!=worker-plan,app!=spectro,app!=spectro-proxy,app!=palette-webhook` |
 
 5. Create a new cluster with the updated cluster profile, or update an existing cluster to use the new cluster profile.
    For more information, refer to [Create a Cluster](../site-deployment/cluster-deployment.md) or
    [Update a Cluster](../../cluster-management/cluster-updates.md).
 
+   For existing clusters, when you update the profile without changing the `system.uri` parameter, these changes alone
+   will take effect and will not trigger any reboot or repave. The next time you made a change to the cluster profile
+   that will trigger a repave or reboot, the new draining settings will apply. For more information about cluster
+   behavior during upgrades, refer to [Edge Cluster Upgrade Behavior](../cluster-management/upgrade-behavior.md).
+
 ## Validate
 
-1. Update the cluster to use a new version of a cluster profile. For more information, refer to
-   [Update a Cluster](../../cluster-management/cluster-updates.md).
+1. Update the cluster to use a new version of a cluster profile. Ensure that your change will trigger a reboot or
+   repave. For more information, refer to [Update a Cluster](../../cluster-management/cluster-updates.md) and
+   [Edge Cluster Upgrade Behavior](../cluster-management/upgrade-behavior.md).
 
 2. After the upgrade is completed, use `kubectl logs` to check on a pod for which you skipped pod draining. Confirm that
    you do not see any messages that look like `Evicting pod <pod-name> as part of upgrade plan`. The absence of such
