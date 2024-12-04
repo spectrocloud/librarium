@@ -285,7 +285,7 @@ function generateRoutes(packsAllData) {
       metadata: {
         sourceFilePath: "../docs/docs-content/integrations/packs.mdx",
       },
-      data: { name: pack.name, version: pack.latestVersion, parent: parentVersion?.title },
+      data: { name: pack.name, version: pack.latestVersion, parent: parentVersion?.title, tab: "main" },
     };
   });
 }
