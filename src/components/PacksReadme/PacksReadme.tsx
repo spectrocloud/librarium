@@ -134,6 +134,15 @@ function processPackUiMap(
           <ReactMarkDown
             remarkPlugins={[remarkGfm]}
             components={{
+              h1: (props) => {
+                const headingId = props.children?.toString().replace(/\s+/g, "-").toLowerCase();
+                return (
+                  <h1 id={headingId}>
+                    {props.children}
+                    <a href={`#${headingId}`} className="hash-link" />
+                  </h1>
+                );
+              },
               h2: (props) => {
                 const headingId = props.children?.toString().replace(/\s+/g, "-").toLowerCase();
                 return (
