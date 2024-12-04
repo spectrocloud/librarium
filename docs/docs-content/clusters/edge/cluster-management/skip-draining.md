@@ -23,7 +23,7 @@ will apply to both appliance mode and [agent mode](../../../deployment-modes/age
 
 - An Edge-type cluster profile.
 
-- An Edge device registered with your Palette account or an existing Edge cluster. For more information, refer to
+- An host registered with your Palette account or an existing Edge-type cluster. For more information, refer to
   [Edge Host Registration](../site-deployment/site-installation/edge-host-registration.md) and
   [Deployment](../site-deployment/site-deployment.md).
 
@@ -50,6 +50,17 @@ will apply to both appliance mode and [agent mode](../../../deployment-modes/age
    | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
    | `drainPods`   | Controls the node drain behavior during a cluster upgrade. `true` means nodes will be drained. `false` means nodes will not be drained. `auto` means nodes will only be drained for multi-node clusters, while single-node clusters will not drain nodes during an upgrade. | `auto`                                                                                                                          |
    | `podSelector` | If `drainPods` is set to `true` for either single-node or multi-node clusters, or set to `auto` for multi-node clusters, only pods matching the selectors will be drained. The default value avoids draining pods related to planning, or any critical Palette workloads.   | `upgrade.cattle.io/plan!=control-plan,upgrade.cattle.io/plan!=worker-plan,app!=spectro,app!=spectro-proxy,app!=palette-webhook` |
+
+   :::warning
+
+   In single-node clusters, disabling node draining means normal workloads and the upgrade process happen in parallel.
+   This will increase memory usage, and may cause problems if your host is memory-constrained.
+
+   In such cases, you may set the `pack.drainPods` parameter to `true`, and set `pack.disableEviction` to `true`. This
+   will prevent the drain process from hanging indefinitely due to `PodDisruptionBudget` constraints, while the default
+   `podSelector` will protect most critical pods.
+
+   :::
 
 5. Create a new cluster with the updated cluster profile, or update an existing cluster to use the new cluster profile.
    For more information, refer to [Create a Cluster](../site-deployment/cluster-deployment.md) or
