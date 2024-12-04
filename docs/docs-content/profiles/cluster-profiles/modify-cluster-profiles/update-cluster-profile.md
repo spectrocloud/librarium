@@ -284,7 +284,7 @@ Ensure you follow these practices when updating to a new pack version.
    customizations lines you added, use the **Keep** button to transfer the lines to the new version. Otherwise, click on
    **Next** to proceed.
 
-6. Review the any orange-highlights in the current configuration. Ensure that the corresponding new blue-highlight
+6. Review the orange-highlights in the current configuration. Ensure that the corresponding new blue-highlight
    values will suit your needs.
 
 7. Check for changed settings in the new configuration, and copy settings from the current configuration to the new
