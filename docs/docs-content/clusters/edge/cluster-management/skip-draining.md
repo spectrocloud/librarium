@@ -14,7 +14,8 @@ downtime.
 
 However, the benefits of draining a node in a single-node cluster are minimal because there are no other nodes to
 schedule the workloads onto. In addition, if system-critical workloads are drained, the cluster may get stuck in an
-unmanageable state. You can configure your cluster to skip node draining to avoid such outcomes.
+unmanageable state. You can configure your cluster to skip node draining to avoid such outcomes. These configurations
+will apply to both appliance mode and [agent mode](../../../deployment-modes/agent-mode/agent-mode.md) deployments.
 
 ## Prerequisites
 
