@@ -38,7 +38,7 @@ through how to create a cluster using Local UI.
   - Enable network overlay on your Edge cluster. Network overlay can only be enabled during cluster creation. For more
     information about network overlay, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md).
 
-- If you configure an [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md) local cluster to use Network Time Protocol (NTP) servers, you must have `systemd-timesyncd` installed and enabled on your host.
+- If you configure a local [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md) cluster to use Network Time Protocol (NTP) servers, you must have `systemd-timesyncd` installed and enabled on your host.
 
 ## Create Local Cluster
 
@@ -74,7 +74,7 @@ through how to create a cluster using Local UI.
    Enter the values for the profile variables and click **Next**.
 
 7. In the **Cluster Config** step, enter a virtual IP address to be used by your cluster. Optionally, you can also
-   specify a Network Time Protocol server and an SSH public key.
+   specify an NTP server and an SSH public key.
 
    | Parameter                   | Description                                                                                   |
    | --------------------------- | --------------------------------------------------------------------------------------------- |
