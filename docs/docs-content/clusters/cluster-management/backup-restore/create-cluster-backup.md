@@ -41,6 +41,20 @@ months. Additionally, you can initiate a backup on demand for an existing cluste
 - If you want to include volume snapshots in the backup, ensure that your CSI driver supports volume snapshots. For more
   information about volume support, review the CSI pack README for your CSI driver in use. Refer to the [Volume Snapshots](backup-restore.md#volume-snapshots) section for more information.
 
+   :::warning
+   
+   Ensure that `manifests.volume-snapshot-class.deletionPolicy` is set to the `Retain` value if you have configured <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> as a layer in your cluster profile. This setting allows volume snapshot content to be retained when volume snapshots are deleted, facilitating backup and restore functionality. 
+
+   ```yaml hideClipboard {5}
+   volume-snapshot-class:
+      create: true
+      name: "spectro-volume-snapshot-class"
+      driver: ""
+      deletionPolicy: "Retain"
+   ```
+
+   :::
+
 ## Enablement
 
 <Tabs>
