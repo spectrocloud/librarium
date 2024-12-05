@@ -1,3 +1,11 @@
+# Instructions:
+# You need to replace the the variables below with your own credentials.
+# Use envsubst to replace the variables in the file.
+# Source a .env file with the variables or export them in your shell.
+# You can use the following command to generate the file. 
+# Assuming you have a .env file in the current directory.
+# source .env && envsubst < palette-install.tape > palette-install-creds.tape
+
 Output palette-install.mp4
 
 
