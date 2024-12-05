@@ -266,6 +266,7 @@ const config = {
       "data-website-id": "9c212df9-d1fc-4f65-9c93-8bcd9c8ec6ca",
       "data-project-name": "Spectro Cloud Docs AI",
       "data-project-color": "#3679c6",
+      "data-consent-required": true,
       "data-project-logo": "/img/spectrocloud-logo-no-text.svg",
       "data-modal-title": "Spectro Cloud - Ask Docs",
       "data-modal-disclaimer":
