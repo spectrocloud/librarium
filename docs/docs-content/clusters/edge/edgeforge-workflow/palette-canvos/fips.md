@@ -228,7 +228,7 @@ workaround.
     | ISO_NAME         | The file name of the ISO file that will be generated.                                                                                                             |
 
 14. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
-    require client certificates.
+    require client certificates or if your base image is in a registry that requires client certificates.
 
     You can provide the base-64 encoded certificates in PEM format in the **certs** folder at the root directory of the
     **CanvOS** repository. You can provide as many certificates as you need in the folder.
