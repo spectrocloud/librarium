@@ -79,5 +79,5 @@ will apply to both appliance mode and [agent mode](../../../deployment-modes/age
    [Edge Cluster Upgrade Behavior](../cluster-management/upgrade-behavior.md).
 
 2. After the upgrade is completed, use `kubectl logs` to check on a node for which you skipped pod draining. Confirm
-   that you do not see any messages that look like `Evicting pod <pod-name> as part of upgrade plan`. The absence of
+   that no messages that look like `Evicting pod <pod-name> as part of upgrade plan` are displayed. The absence of
    such messages means that the pods were not drained during the upgrade.
