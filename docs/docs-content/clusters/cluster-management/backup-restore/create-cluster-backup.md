@@ -29,7 +29,9 @@ specify the backup expiry period, meaning the duration after which Palette will 
 example, you can schedule a backup for every week on Sunday at midnight and automatically expire the backup after three
 months. Additionally, you can initiate a backup on demand for an existing cluster.
 
-## Prerequisites
+## Schedule a Backup
+
+### Prerequisites
 
 - An available backup location in Palette. Refer to the
   [Add a Backup Location using Static Credentials](add-backup-location-static.md) or
@@ -55,11 +57,7 @@ months. Additionally, you can initiate a backup on demand for an existing cluste
 
    :::
 
-## Enablement
-
-<Tabs>
-
-<TabItem label="Schedule a Backup" value="schedule-backup">
+### Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -120,9 +118,53 @@ months. Additionally, you can initiate a backup on demand for an existing cluste
 7. Click on **Save Changes**. Depending on the size of the cluster, the backup process may take some time to complete.
    You can view the status of the backup in the **Backups** tab.
 
-</TabItem>
+### Validate
 
-<TabItem label="On-Demand backup" value="on-demand-backup">
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. Navigate to the left **Main Menu**, and then select **Clusters**.
+
+3. Select the cluster that you configured a backup for. The cluster **Overview** appears.
+
+4. Navigate to the **Backups** tab and click on the **Backups** nested tab. Palette displays a list of all available
+   backups for the current cluster, including the newly created one.
+
+   ![A screenshot highlighting the list of available backups for the specific cluster.](/clusters_cluster-management_backup-restore_view-backup.webp)
+
+5. You can click on the newly created backup from the list to view its details. Palette displays the backup name,
+   status, creation date, expiry date, list of backed-up namespaces, and a boolean field indicating whether the backup
+   includes all disks and cluster-scoped resources.
+
+## On-Demand backup
+
+### Prerequisites
+
+- An available backup location in Palette. Refer to the
+  [Add a Backup Location using Static Credentials](add-backup-location-static.md) or
+  [Add a Backup Location using Dynamic Credentials](add-backup-location-dynamic.md).
+
+- An active cluster in Palette.
+
+<!-- prettier-ignore -->
+- If you want to include volume snapshots in the backup, ensure that your CSI driver supports volume snapshots. For more
+  information about volume support, review the CSI pack README for your CSI driver in use. Refer to the [Volume Snapshots](backup-restore.md#volume-snapshots) section for more information.
+
+   :::warning
+   
+   Ensure that `manifests.volume-snapshot-class.deletionPolicy` is set to the `Retain` value if you have configured <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> as a layer in your cluster profile. This setting allows volume snapshot content to be retained when volume snapshots are deleted, facilitating backup and restore functionality. 
+
+   ```yaml hideClipboard {5}
+   volume-snapshot-class:
+      create: true
+      name: "spectro-volume-snapshot-class"
+      driver: ""
+      deletionPolicy: "Retain"
+   ```
+
+   :::
+
+### Enablement
+
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. Navigate to the left **Main Menu** and select **Clusters**.
@@ -168,11 +210,7 @@ months. Additionally, you can initiate a backup on demand for an existing cluste
 6. Click on the **Create Backup** button. Depending on the size of the cluster, the backup process may take some time to
    complete. You can view the status of the backup in the **Backups** tab.
 
-</TabItem>
-
-</Tabs>
-
-## Validate
+### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
