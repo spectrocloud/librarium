@@ -8,9 +8,10 @@ hide_table_of_contents: false
 tags: ["edge"]
 ---
 
-When you apply a new cluster profile to your cluster, depending on your settings, the cluster may drain each node as it
-updates the pods on that node. This is helpful in multi-node clusters as it allows you to avoid or minimize application
-downtime.
+When you apply a new cluster profile to your cluster with changes that require node reboot or repave, the cluster may
+drain each node as it updates the pods on that node. This is helpful in multi-node clusters as it allows you to avoid or
+minimize application downtime. For more information what changes will cause reboot or repave, refer to
+[Edge Cluster Upgrade Behavior](../cluster-management/upgrade-behavior.md).
 
 However, the benefits of draining a node in a single-node cluster are minimal because there are no other nodes to
 schedule the workloads onto. In addition, if system-critical workloads are drained, the cluster may get stuck in an
@@ -46,10 +47,10 @@ will apply to both appliance mode and [agent mode](../../../deployment-modes/age
 
    The following table provides a brief description of the parameters.
 
-   | Parameter     | Description                                                                                                                                                                                                                                                                                                                                                                              | Default |
-   | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-   | `drainPods`   | Controls the node drain behavior during a cluster upgrade. `true` means nodes will be drained. `false` means nodes will not be drained. `auto` means nodes will only be drained for multi-node clusters, while single-node clusters will not drain nodes during an upgrade.                                                                                                              | `auto`  |
-   | `podSelector` | If `drainPods` is set to `true` for either single-node or multi-node clusters, or set to `auto` for multi-node clusters, only pods matching the selectors will be drained. Pods with any of the following labels are always protected from draining: `upgrade.cattle.io/plan=control-plan`,`upgrade.cattle.io/plan=worker-plan`,`app=spectro`,`app=spectro-proxy` ,`app=palette-webhook` | None    |
+   | Parameter     | Description                                                                                                                                                                                                                                                                                                                                                                                            | Default |
+   | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
+   | `drainPods`   | Controls the node drain behavior during a cluster upgrade. `true` means nodes will be drained. `false` means nodes will not be drained. `auto` means nodes will only be drained for multi-node clusters, while single-node clusters will not drain nodes during an upgrade.                                                                                                                            | `auto`  |
+   | `podSelector` | If `drainPods` is set to `true` for either single-node or multi-node clusters, or set to `auto` for multi-node clusters, only pods matching the selectors will be drained. <br /> <br /> Pods with any of the following labels are always protected from draining: `upgrade.cattle.io/plan=control-plan`,`upgrade.cattle.io/plan=worker-plan`,`app=spectro`,`app=spectro-proxy` ,`app=palette-webhook` | None    |
 
    :::warning
 
@@ -67,7 +68,7 @@ will apply to both appliance mode and [agent mode](../../../deployment-modes/age
    [Update a Cluster](../../cluster-management/cluster-updates.md).
 
    For existing clusters, when you update the profile without changing the `system.uri` parameter, these changes alone
-   will take effect and will not trigger any reboot or repave. The next time you made a change to the cluster profile
+   will take effect and will not trigger any reboot or repave. The next time you make a change to the cluster profile
    that will trigger a repave or reboot, the new draining settings will apply. For more information about cluster
    behavior during upgrades, refer to [Edge Cluster Upgrade Behavior](../cluster-management/upgrade-behavior.md).
 
@@ -77,6 +78,6 @@ will apply to both appliance mode and [agent mode](../../../deployment-modes/age
    repave. For more information, refer to [Update a Cluster](../../cluster-management/cluster-updates.md) and
    [Edge Cluster Upgrade Behavior](../cluster-management/upgrade-behavior.md).
 
-2. After the upgrade is completed, use `kubectl logs` to check on a pod for which you skipped pod draining. Confirm that
-   you do not see any messages that look like `Evicting pod <pod-name> as part of upgrade plan`. The absence of such
-   messages means that the pods were not drained during the upgrade.
+2. After the upgrade is completed, use `kubectl logs` to check on a node for which you skipped pod draining. Confirm
+   that you do not see any messages that look like `Evicting pod <pod-name> as part of upgrade plan`. The absence of
+   such messages means that the pods were not drained during the upgrade.
