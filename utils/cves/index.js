@@ -58,7 +58,7 @@ async function generateCVEs() {
           },
           {
             field: "status.state",
-            options: ["Analyzed", "Modified"],
+            options: ["Analyzed", "Modified", "Awaiting Analyses", "Reopened"],
             operator: "in",
           },
         ],
@@ -80,7 +80,7 @@ async function generateCVEs() {
           },
           {
             field: "status.state",
-            options: ["Analyzed", "Modified"],
+            options: ["Analyzed", "Modified", "Awaiting Analyses", "Reopened"],
             operator: "in",
           },
         ],
@@ -102,7 +102,7 @@ async function generateCVEs() {
           },
           {
             field: "status.state",
-            options: ["Analyzed", "Modified"],
+            options: ["Analyzed", "Modified", "Awaiting Analyses", "Reopened"],
             operator: "in",
           },
         ],
@@ -124,7 +124,7 @@ async function generateCVEs() {
           },
           {
             field: "status.state",
-            options: ["Analyzed", "Modified"],
+            options: ["Analyzed", "Modified", "Awaiting Analyses", "Reopened"],
             operator: "in",
           },
         ],
