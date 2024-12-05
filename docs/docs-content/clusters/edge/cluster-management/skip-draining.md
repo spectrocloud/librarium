@@ -9,7 +9,7 @@ tags: ["edge"]
 ---
 
 When you apply a new cluster profile to your cluster, depending on your settings, the cluster may drain each node as it
-updates the pods on that node. This is helpful in multi-node clusters as it allow you to avoid or minimize application
+updates the pods on that node. This is helpful in multi-node clusters as it allows you to avoid or minimize application
 downtime.
 
 However, the benefits of draining a node in a single-node cluster are minimal because there are no other nodes to
@@ -46,15 +46,15 @@ will apply to both appliance mode and [agent mode](../../../deployment-modes/age
 
    The following table provides a brief description of the parameters.
 
-   | Parameter     | Description                                                                                                                                                                                                                                                                 | Default                                                                                                                         |
-   | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-   | `drainPods`   | Controls the node drain behavior during a cluster upgrade. `true` means nodes will be drained. `false` means nodes will not be drained. `auto` means nodes will only be drained for multi-node clusters, while single-node clusters will not drain nodes during an upgrade. | `auto`                                                                                                                          |
-   | `podSelector` | If `drainPods` is set to `true` for either single-node or multi-node clusters, or set to `auto` for multi-node clusters, only pods matching the selectors will be drained. The default value avoids draining pods related to planning, or any critical Palette workloads.   | `upgrade.cattle.io/plan!=control-plan,upgrade.cattle.io/plan!=worker-plan,app!=spectro,app!=spectro-proxy,app!=palette-webhook` |
+   | Parameter     | Description                                                                                                                                                                                                                                                                                                                                                                              | Default |
+   | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+   | `drainPods`   | Controls the node drain behavior during a cluster upgrade. `true` means nodes will be drained. `false` means nodes will not be drained. `auto` means nodes will only be drained for multi-node clusters, while single-node clusters will not drain nodes during an upgrade.                                                                                                              | `auto`  |
+   | `podSelector` | If `drainPods` is set to `true` for either single-node or multi-node clusters, or set to `auto` for multi-node clusters, only pods matching the selectors will be drained. Pods with any of the following labels are always protected from draining: `upgrade.cattle.io/plan=control-plan`,`upgrade.cattle.io/plan=worker-plan`,`app=spectro`,`app=spectro-proxy` ,`app=palette-webhook` | None    |
 
    :::warning
 
    In single-node clusters, disabling node draining means normal workloads and the upgrade process happen in parallel.
-   This will increase memory usage, and may cause problems if your host is memory-constrained.
+   This will increase memory usage, and may cause your node to become unresponsive if your host is memory-constrained.
 
    In such cases, you may set the `pack.drainPods` parameter to `true`, and set `pack.disableEviction` to `true`. This
    will prevent the drain process from hanging indefinitely due to `PodDisruptionBudget` constraints, while the default
