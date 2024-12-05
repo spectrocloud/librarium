@@ -200,7 +200,7 @@ Use the following steps to install Palette VerteX.
     | **Registry Endpoint**                            | Enter the registry endpoint. Airgap users, provide the **Spectro Cloud Repository** URL or hostname shared by the airgap setup script.           |
     | **Registry Base Path**                           | Enter the registry base path.                                                                                                                    |
     | **Allow Insecure Connection**                    | Bypasses x509 verification. Type `n` to specify a certificate authority in the follow-up prompt. Airgap user, ensure you select `n`.             |
-    | **Registry CA certificate filepath**             | Specify the file path to the certificate authority. Use absolute paths. Airgap users, provide the filepath displayed by the aurgap setup script. |
+    | **Registry CA certificate filepath**             | Specify the file path to the certificate authority. Use absolute paths. Airgap users, provide the filepath displayed by the airgap setup script. |
     | **Registry Username** or **Registry Access Key** | Enter the registry username or the access key if using `OCI ECR`.                                                                                |
     | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`.                                                                                |
     | **Registry Region**                              | Enter the registry region. This option is only available if you are using `OCI ECR`.                                                             |
@@ -277,7 +277,7 @@ Use the following steps to install Palette VerteX.
         | **Large**     | Deploy VM nodes with 32 CPU, 64 GB memory, 120 GB storage. The database specs are 80 GB database with 8 CPU limit and 16 GB memory limit.                                   |
         | **Custom**    | Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you specify custom, you will be prompted for the CPU, memory, and storage. |
 
-15. The last propmt is for node affinity. Enter `y` to schedule all Palette pods on control plane nodes.
+15. The last prompt is for node affinity. Enter `y` to schedule all Palette pods on control plane nodes.
 
         #### Additional vSphere Machine Configuration
 
