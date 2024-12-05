@@ -267,7 +267,6 @@ const config = {
       "data-project-name": "Spectro Cloud Docs AI",
       "data-project-color": "#3679c6",
       "data-project-logo": "/img/spectrocloud-logo-no-text.svg",
-      "data-consent-required": true,
       "data-modal-title": "Spectro Cloud - Ask Docs",
       "data-modal-disclaimer":
         "This is a custom LLM with access to all [Spectro Cloud public documentation](https://docs.spectrocloud.com). This instance is for internal testing and feedback purposes only. If you have any feedback, please share them in the Spectro Cloud #docs internal Slack channel.",
