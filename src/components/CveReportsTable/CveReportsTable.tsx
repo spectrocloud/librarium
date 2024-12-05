@@ -51,6 +51,7 @@ interface MinimizedCve {
     cvssScore: number;
     cvePublishedTimestamp: string;
     cveLastModifiedTimestamp: string;
+    advLastModifiedTimestamp: string;
   };
   spec: {
     assessment: {
@@ -99,6 +100,7 @@ export default function CveReportsTable() {
         cvssScore: entry.metadata.cvssScore,
         cvePublishedTimestamp: entry.metadata.cvePublishedTimestamp,
         cveLastModifiedTimestamp: entry.metadata.cveLastModifiedTimestamp,
+        advLastModifiedTimestamp: entry.metadata.advLastModifiedTimestamp,
       },
       spec: {
         assessment: {
@@ -160,12 +162,12 @@ export default function CveReportsTable() {
       },
       {
         title: "Modified Date",
-        dataIndex: ["metadata", "cveLastModifiedTimestamp"],
-        key: "modifiedDateTime",
+        dataIndex: ["metadata", "advLastModifiedTimestamp"],
+        key: "advLastModifiedTimestamp",
         sorter: (a, b) =>
-          new Date(a.metadata.cveLastModifiedTimestamp).getTime() -
-          new Date(b.metadata.cveLastModifiedTimestamp).getTime(),
-        render: (text: string) => new Date(text).toLocaleDateString(),
+          new Date(a.metadata.advLastModifiedTimestamp).getTime() -
+          new Date(b.metadata.advLastModifiedTimestamp).getTime(),
+        render: (value: string) => (value ? new Date(value).toLocaleDateString() : "N/A"),
         defaultSortOrder: "descend",
       },
       {
