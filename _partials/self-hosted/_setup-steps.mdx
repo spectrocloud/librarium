@@ -13,24 +13,6 @@ partial_name: setup-steps
 
 - The RHEL VM must have Podman installed.
 
-- An HTTP file server installed within the RHEL VM to host the {props.edition} files. The file server must serve files from the
-  `/var/www/html` directory and have SSL support enabled. Below is a list of common file servers. This guide uses Apache
-  as an example.
-
-  - [Apache HTTP Server](https://httpd.apache.org/)
-
-  - [Nginx](https://www.nginx.com/)
-
-  - [Caddy](https://caddyserver.com/)
-
-  :::warning
-
-  Take the necessary steps to secure your file server and ensure it can automatically recover from failure. The file
-  server is a critical component of the airgap installation and must be available post-install for {props.edition} to function
-  properly.
-
-  :::
-
 - Review the required vSphere <VersionedLink text="permissions" url="/enterprise-version/install-palette/install-on-vmware/vmware-system-requirements/" /> and ensure you have
   created the proper custom roles and zone tags. Zone tagging enables dynamic storage allocation across fault domains
   when provisioning workloads that require persistent storage. Refer to <VersionedLink text="Zone Tagging" url="/enterprise-version/install-palette/install-on-vmware/vmware-system-requirements/" /> for information.
@@ -109,32 +91,15 @@ partial_name: setup-steps
     timedatectl set-timezone UTC
     ```
 
-8.  Ensure that ports `80` and `443` are not in use by your file server, as these ports will be used by the Harbor
+8.  Ensure that ports `80` and `443` are not in use by other processes, as these ports will be used by the Harbor
     registry that will be installed later.
 
-    Open the `/etc/httpd/conf.d/ssl.conf` file and make the following changes:
 
-    - Replace the line `Listen 443 https` with `Listen 8443 https`.
-    - Replace the line `<VirtualHost _default_:443>` with `<VirtualHost _default_:8443>`.
-
-    Save and exit the file.
-
-9.  Next, open the `/etc/httpd/conf/httpd.conf` file and replace the line `Listen 80` with `Listen 8080`. Save and exit
-    the file.
-
-10. Restart the Apache HTTP server to apply the configuration changes.
-
-    ```shell
-    systemctl restart httpd.service
-    ```
-
-11. Allow TCP traffic on ports `80`, `8080`, `443`, and `8443`, then reload the firewall.
+9. Allow TCP traffic on ports `80`, `443`, and reload the firewall.
 
     ```shell
     firewall-cmd --permanent --add-port=80/tcp
-    firewall-cmd --permanent --add-port=8080/tcp
     firewall-cmd --permanent --add-port=443/tcp
-    firewall-cmd --permanent --add-port=8443/tcp
     firewall-cmd --reload
     ```
 
@@ -144,13 +109,13 @@ partial_name: setup-steps
     success
     ```
 
-12. Set the `AIRGAP_BUILD` variable as `true`. This is required for the RHEL airgap appliance binary.
+10. Set the `AIRGAP_BUILD` variable as `true`. This is required for the RHEL airgap appliance binary.
 
     ```shell
     export AIRGAP_BUILD=true
     ```
 
-13. Start the RHEL airgap appliance binary, which installs the tools and configures the manifests that are required to
+11. Start the RHEL airgap appliance binary, which installs the tools and configures the manifests that are required to
     set up the Harbor registry and push images. Replace `<version>` with the version of the binary received from the support team.
 
     ```shell
@@ -181,7 +146,7 @@ partial_name: setup-steps
     Reboot the system for selinux changes to take effect
     ```
 
-14. Reboot your RHEL VM to apply the changes.
+12. Reboot your RHEL VM to apply the changes.
 
     ```shell
     reboot
@@ -190,13 +155,13 @@ partial_name: setup-steps
     <!-- prettier-ignore -->
     Your SSH connection will be terminated. 
     
-15. Start a new SSH session and switch to `sudo` mode before proceeding.
+13. Start a new SSH session and switch to `sudo` mode before proceeding.
 
     ```shell
     sudo --login
     ```
 
-16. Issue the following command to configure the Harbor registry. Replace `palette.example.com` with the FQDN of the
+14. Issue the following command to configure the Harbor registry. Replace `palette.example.com` with the FQDN of the
     RHEL airgap VM. The script will generate a self-signed certificate for the value you provide.
 
     ```shell
@@ -240,30 +205,8 @@ partial_name: setup-steps
     Password: **************
     ```
 
-17. Update the SSL certificate file and key in the **httpd** service.
 
-    :::warning
-
-    You can skip this step if you do not plan to use the local Spectro Cloud Artifact Repository (SCAR) during the
-    [{props.edition} installation](#next-steps) process.
-
-    :::
-
-    Open the `/etc/httpd/conf.d/ssl.conf` file and add the path to the certificate and key generated in step **15** of
-    this guide:
-
-    - Replace the line `SSLCertificateFile /etc/pki/tls/certs/localhost.crt` with
-      `SSLCertificateFile  /opt/spectro/ssl/server.crt`.
-    - Replace the line `SSLCertificateKeyFile /etc/pki/tls/private/localhost.key` with
-      `SSLCertificateKeyFile /opt/spectro/ssl/server.key`.
-
-    Save and exit the file. Next, restart the HTTP server to apply the changes.
-
-    ```shell
-    systemctl restart httpd.service
-    ```
-
-18. Start the {props.edition} installation binary, which uploads release-specific {props.edition} images and packs to the Harbor registry. Replace `<version>` with the version of the binary received from the support team.
+15. Start the {props.edition} installation binary, which uploads release-specific {props.edition} images and packs to the Harbor registry. Replace `<version>` with the version of the binary received from the support team.
 
     ```shell
     chmod +x airgap-<version>.bin && ./airgap-<version>.bin
@@ -288,19 +231,8 @@ partial_name: setup-steps
     Setup Completed
     ```
 
-19. Grant the Apache user and group the necessary permissions to serve the files in the `/var/www/html` directory.
 
-    ```shell
-    chown -R apache.apache /var/www/html
-    ```
-
-    Restart the HTTP server to apply the changes.
-
-    ```shell
-    systemctl restart httpd.service
-    ```
-
-20. Review the <PaletteVertexUrlMapper edition={props.edition} text="Additional Packs" palettePath="/install-palette/airgap/supplemental-packs/" vertexPath="/install-palette-vertex/airgap/supplemental-packs/" /> page and identify any additional packs you want
+46. Review the <PaletteVertexUrlMapper edition={props.edition} text="Additional Packs" palettePath="/install-palette/airgap/supplemental-packs/" vertexPath="/install-palette-vertex/airgap/supplemental-packs/" /> page and identify any additional packs you want
     to add to your registry. You can also add additional packs after the installation is complete.
 
 You have now completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to
@@ -313,14 +245,13 @@ Do not power off the RHEL VM. The RHEL VM is required for {props.edition} to fun
 remain available at all times. If for some reason the VM is powered off, power the VM back on and restart
 the required services.
 
-Switch to `sudo` mode and restart the file server.
+Switch to `sudo` mode.
 
 ```shell
 sudo --login
-systemctl restart httpd
 ```
 
-Next, navigate to the **/opt/spectro/harbor** directory and issue the following command to restart the registry.
+Navigate to the **/opt/spectro/harbor** directory and issue the following command to restart the registry.
 
 ```shell
 docker compose up --detach
@@ -404,8 +335,6 @@ example values are for reference only.
 
 | Output Value                          | Palette CLI Prompt                   | Example Value                                          |
 | ------------------------------------- | ------------------------------------ | ------------------------------------------------------ |
-| **Spectro Cloud Repository Location** | **SCAR Location**                    | `https://palette.example.com:8443`                     |
-| **CA certificate filepath**           | **SCAR CA certificate filepath**     | `/opt/spectro/ssl/server.crt`                          |
 | **OCI Registry**                      | **Registry Type**                    | `OCI`                                                  |
 | **Pack OCI Registry**                 | **Registry Endpoint**                | `https://palette.example.com`                          |
 | **CA certificate Filepath**           | **Registry CA certificate filepath** | `/opt/spectro/ssl/server.crt`                          |
