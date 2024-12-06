@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Skip Node Draining During Upgrades"
-title: "Skip Node Draining During Upgrades"
-description: "Learn how to skip node draining during cluster upgrades."
+sidebar_label: "Skip Node Draining
+title: "Skip Node Draining
+description: "Learn how to skip node draining during cluster upgrades and cluster repaves."
 icon: ""
 sidebar_position: 40
 hide_table_of_contents: false
@@ -15,9 +15,11 @@ minimize application downtime. For more information what changes will cause rebo
 
 However, the benefits of draining a node in a single-node cluster are minimal because there are no other nodes to
 schedule the workloads onto. In addition, if system-critical workloads are drained, the cluster may get stuck in an
-unmanageable state. From Palette 4.5.12 onwards, Palette will only drain multi-node edge clusters by default. You can
-configure draining behavior via the BYOS Edge OS layer of the cluster profile. These configurations will apply to both
-appliance mode and [agent mode](../../../deployment-modes/agent-mode/agent-mode.md) deployments.
+unmanageable state.
+
+By default, Palette will only drain nodes in multi-node Edge clusters. You can configure draining behavior via the OS
+layer of the cluster profile. These configurations will apply to both appliance mode and
+[agent mode](../../../deployment-modes/agent-mode/agent-mode.md) deployments.
 
 ## Prerequisites
 
@@ -29,7 +31,7 @@ appliance mode and [agent mode](../../../deployment-modes/agent-mode/agent-mode.
   [Edge Host Registration](../site-deployment/site-installation/edge-host-registration.md) and
   [Deployment](../site-deployment/site-deployment.md).
 
-- Palette 4.5.12 or higher, with Stylus agent 4.5.11 or higher
+- Palette version 4.5.b or higher, with Palette agent version 4.5.11 or higher.
 
 ## Skip Node Draining During Upgrades or Repaves
 
